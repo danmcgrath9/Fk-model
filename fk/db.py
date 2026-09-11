@@ -5,15 +5,14 @@ import json
 from datetime import datetime, timezone
 from typing import Any, Iterable
 
-import psycopg
 from psycopg.types.json import Jsonb
+
+from .pg import connect
 
 
 class Db:
     def __init__(self, database_url: str):
-        if not database_url:
-            raise RuntimeError("DATABASE_URL is not set; put the Supabase connection string in .env")
-        self.conn = psycopg.connect(database_url, autocommit=False)
+        self.conn = connect(database_url, autocommit=False)
 
     def close(self) -> None:
         self.conn.close()

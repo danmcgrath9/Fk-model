@@ -65,3 +65,13 @@ def test_postgres_ledger_matches_sqlite_semantics():
     assert rows[0].params == {"raceId": "R1"}
     assert l.summary("2026-09")["by_operation"][0]["credits"] == 30
     l.close()
+
+
+def test_pooler_candidates_from_a_direct_supabase_url():
+    from fk.pg import pooler_candidates, redact
+    direct = "postgresql://postgres:Secret123@db.vlnjvlgxiagywaudfuen.supabase.co:5432/postgres"
+    c = pooler_candidates(direct, region="ap-southeast-2")
+    assert c[0] == "postgresql://postgres.vlnjvlgxiagywaudfuen:Secret123@aws-0-ap-southeast-2.pooler.supabase.com:5432/postgres"
+    assert len(c) == 4 and c[-1].endswith("aws-1-ap-southeast-2.pooler.supabase.com:6543/postgres")
+    assert pooler_candidates("postgresql://u:p@localhost:5432/x") == []
+    assert "Secret123" not in redact(direct) and "db.vlnjvlgxiagywaudfuen.supabase.co" in redact(direct)

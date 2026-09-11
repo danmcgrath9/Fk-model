@@ -78,9 +78,8 @@ class Ledger:
 
     @classmethod
     def postgres(cls, database_url: str, monthly_allowance: int = 20000) -> "Ledger":
-        import psycopg
-        conn = psycopg.connect(database_url, autocommit=False)
-        return cls(None, monthly_allowance, _pg_conn=conn)
+        from .pg import connect
+        return cls(None, monthly_allowance, _pg_conn=connect(database_url, autocommit=False))
 
     @property
     def is_postgres(self) -> bool:
