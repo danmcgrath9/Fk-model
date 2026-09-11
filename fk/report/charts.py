@@ -11,10 +11,15 @@ DARK = dict(
     paper_bgcolor="#0f1115",
     plot_bgcolor="#161a22",
     font=dict(family="Inter, Helvetica, Arial, sans-serif", size=13, color="#e6e6e6"),
-    margin=dict(l=50, r=20, t=60, b=50),
+    margin=dict(l=44, r=12, t=60, b=50),
     legend=dict(orientation="h", x=0, y=-0.34, yanchor="top", bgcolor="rgba(0,0,0,0)"),
     autosize=True,
 )
+
+
+def phone(fig: go.Figure, height: int, full_min: int = 0) -> None:
+    """Heights the page applies on a phone (under 700px) and in full screen, see html.CSS/JS."""
+    fig.update_layout(meta=dict(phoneHeight=height, fullMinHeight=full_min))
 
 
 @dataclass
@@ -81,6 +86,7 @@ def position_worm(runners: list[RunnerRuns], title: str) -> go.Figure:
             )
     fig.update_layout(title=title, yaxis=dict(title="Position in running (1 = leader)", autorange="reversed"),
                       xaxis=dict(title="Race section"), **DARK)
+    phone(fig, 560)
     return fig
 
 
@@ -101,6 +107,7 @@ def sectional_worm(runners: list[RunnerRuns], title: str, last_600m_sections: in
                       line_width=0, annotation_text="last 600m", annotation_position="top left")
     fig.update_layout(title=title, yaxis=dict(title="vs Class (above 0 = faster than class)"),
                       xaxis=dict(title="Race section"), **DARK)
+    phone(fig, 560)
     return fig
 
 
@@ -163,6 +170,7 @@ def speedmap_chart(runners: list[SpeedmapRunner], title: str) -> go.Figure:
         **DARK,
     )
     fig.update_layout(height=380)
+    phone(fig, 440)
     return fig
 
 
@@ -182,6 +190,7 @@ def value_ladder(names: list[str], value_pts: list[float | None], title: str) ->
     fig.add_vline(x=0, line=dict(color="#9aa0a6", width=1))
     fig.update_layout(title=title, xaxis=dict(title="Value, probability points"),
                       yaxis=dict(autorange="reversed"), **DARK)
+    phone(fig, 120 + 44 * len(names))
     return fig
 
 
@@ -215,6 +224,7 @@ def market_move_chart(names: list[str], opening: list[float | None], current: li
     )
     fig.add_vline(x=0, line=dict(color="#9aa0a6", width=1))
     fig.update_layout(title=title, xaxis=dict(title=axis), yaxis=dict(autorange="reversed"), **DARK)
+    phone(fig, 120 + 44 * len(names))
     return fig
 
 
@@ -299,8 +309,8 @@ def ratings_profile_chart(profiles: list[RunnerProfile], title: str) -> go.Figur
         c = _colour(pi)
         fig.add_trace(go.Scatter(x=x, y=[r.get("atWeights") for r in runs], name="At weights", mode="lines+markers+text", text=labels,
                                  textposition=["top center" if i % 2 == 0 else "bottom center" for i in range(len(runs))],
-                                 textfont=dict(size=9), marker=dict(symbol=sym, size=8, color=c),
-                                 line=dict(color=c, width=2), hovertext=hover, hovertemplate="%{hovertext}<br>at weights %{y}<extra></extra>"), row=1, col=1)
+                                 textfont=dict(size=11), marker=dict(symbol=sym, size=10, color=c),
+                                 line=dict(color=c, width=3), hovertext=hover, hovertemplate="%{hovertext}<br>at weights %{y}<extra></extra>"), row=1, col=1)
         fig.add_trace(go.Scatter(x=x, y=[r.get("wfaRat") if r.get("wfaRat") is not None else r.get("wfa") for r in runs], name="WFA rating",
                                  mode="lines+markers", marker=dict(symbol=sym, size=6), line=dict(color="#9aa0a6", width=1),
                                  hovertemplate="WFA %{y}<extra></extra>"), row=1, col=1)
@@ -335,7 +345,7 @@ def ratings_profile_chart(profiles: list[RunnerProfile], title: str) -> go.Figur
     fig.add_hline(y=0, line=dict(color="#9aa0a6", width=1, dash="dash"), row=2, col=1)
     fig.add_hline(y=100, line=dict(color="#9aa0a6", width=1, dash="dash"), row=3, col=1)
     fig.update_layout(title=title, height=760, showlegend=False, **DARK)
-    fig.update_layout(margin=dict(l=50, r=44, t=90, b=60),
+    fig.update_layout(margin=dict(l=44, r=44, t=90, b=50),
                       updatemenus=[dict(type="dropdown", buttons=buttons, x=0, xanchor="left", y=1.12, yanchor="top",
                                         bgcolor="#1c2130", bordercolor="#2a2f3a", font=dict(color="#e6e6e6"))] if buttons else [])
     for a in fig.layout.annotations:
@@ -347,6 +357,7 @@ def ratings_profile_chart(profiles: list[RunnerProfile], title: str) -> go.Figur
             ticks = _tick_spec(p)
             b["args"].append({"xaxis3.tickvals": ticks[0], "xaxis3.ticktext": ticks[1],
                               "xaxis.range": [0.3, len(p.runs) + 0.7], "xaxis2.range": [0.3, len(p.runs) + 0.7], "xaxis3.range": [0.3, len(p.runs) + 0.7]})
+    phone(fig, 1150, 760)
     return fig
 
 
@@ -427,4 +438,5 @@ def trend_grid(panels: list[TrendPanel], title: str, cols: int = 2) -> go.Figure
     fig.update_layout(margin=dict(l=40, r=10, t=70, b=20))   # over 60 so the renderer keeps it
     for a in fig.layout.annotations:
         a.font = dict(size=11, color="#e6e6e6")
+    phone(fig, 90 + 230 * rows, 90 + 200 * rows)
     return fig

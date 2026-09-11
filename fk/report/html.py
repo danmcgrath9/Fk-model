@@ -18,7 +18,7 @@ nav.races a{color:#e6e6e6;text-decoration:none;background:#1c2130;border:1px sol
   padding:8px 14px;white-space:nowrap;min-height:28px;font-size:14px}
 .tablewrap{overflow-x:auto}
 @media (max-width:700px){
-  body{padding:12px}
+  body{padding:8px}
   h1{font-size:22px} h2{font-size:18px;margin-top:28px}
   th,td{padding:8px 6px;font-size:13px}
   /* on a phone the table keeps what prices a race: runner, barrier, Neural, rated, price, move, value, flag */
@@ -34,7 +34,13 @@ th:first-child,td:first-child,th.l,td.l{text-align:left}
 th{color:#9aa0a6;font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
 .flag-model{background:rgba(76,175,80,.18)} .flag-market{background:rgba(244,67,54,.18)}
 .firm{color:#81c784} .drift{color:#e57373} .note{color:#9aa0a6;font-size:12px}
-.chart{margin:8px 0 16px}
+.chart{margin:8px 0 16px;position:relative}
+.chart .bar{display:flex;justify-content:flex-end;margin:0 0 2px}
+.chart button.fs{min-height:44px;min-width:44px;padding:0 14px;background:#1c2130;color:#e6e6e6;border:1px solid #2a2f3a;
+  border-radius:8px;font-size:14px;cursor:pointer}
+.chart.full{position:fixed;inset:0;z-index:50;background:#0f1115;padding:8px;margin:0;overflow:auto;-webkit-overflow-scrolling:touch}
+.chart.full .bar{position:sticky;top:0;background:#0f1115;z-index:2}
+body.noscroll{overflow:hidden}
 h3{font-weight:500;font-size:14px;color:#c9ced6;margin:20px 0 4px}
 table.narrow{width:auto;min-width:420px}
 .pos{color:#81c784} .neg{color:#e57373}
@@ -43,6 +49,50 @@ table.strip td{white-space:nowrap;vertical-align:top;font-size:12px} td.trial{co
 .gear{color:#ffb74d}
 .facts{color:#c9ced6;margin:0 0 12px;font-size:14px} .facts span{margin-right:24px}
 details.method{margin:0 0 16px} details.method summary{cursor:pointer;color:#9aa0a6;font-size:13px;min-height:28px}
+"""
+
+
+# Phone sizing and full screen. A phone gets each chart at the height it asked for
+# (layout.meta.phoneHeight) instead of the desktop height squeezed into 390px; every
+# chart has a Full screen button that fills the viewport (turn the phone sideways for a
+# wide chart) and scrolls inside itself when the chart needs more height than the screen.
+PAGE_JS = """
+(function(){
+  var PHONE = window.innerWidth < 700;
+  function meta(gd){ return (gd && gd.layout && gd.layout.meta) || {}; }
+  // Plotly redraws the SVG at the new height but the graph div keeps its inline height,
+  // so the next chart would draw over this one: size the box, then the plot.
+  function setHeight(gd, h){
+    gd.style.height = h + 'px';
+    if (gd.parentElement) gd.parentElement.style.height = h + 'px';   // to_html's wrapper carries the inline height
+    Plotly.relayout(gd, {height: h});
+  }
+  function plots(){ return Array.prototype.slice.call(document.querySelectorAll('.chart .js-plotly-plot')); }
+  function sizePhone(){
+    if (!PHONE) return;
+    plots().forEach(function(gd){ var h = meta(gd).phoneHeight; if (h) setHeight(gd, h); });
+  }
+  function fitFull(chart){
+    var gd = chart.querySelector('.js-plotly-plot'); if (!gd) return;
+    var h = Math.max(window.innerHeight - 64, meta(gd).fullMinHeight || 0);
+    setHeight(gd, h);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.chart'), function(chart){
+    var btn = chart.querySelector('button.fs'); var gd = chart.querySelector('.js-plotly-plot'); if (!btn || !gd) return;
+    var base = null;
+    btn.addEventListener('click', function(){
+      var on = chart.classList.toggle('full');
+      document.body.classList.toggle('noscroll', on);
+      btn.textContent = on ? 'Close' : 'Full screen';
+      if (on) { base = gd.layout.height; fitFull(chart); }
+      else { setHeight(gd, base); }
+    });
+  });
+  window.addEventListener('resize', function(){
+    Array.prototype.forEach.call(document.querySelectorAll('.chart.full'), fitFull);
+  });
+  if (document.readyState === 'complete') sizePhone(); else window.addEventListener('load', sizePhone);
+})();
 """
 
 
@@ -267,9 +317,10 @@ def render_meeting(title: str, subtitle: str, sections: list[RaceSection], metho
             t = fig.layout.margin.t
             fig.update_layout(title=None, margin=dict(t=20 if t is None or t <= 60 else t))
             parts.append(f"<h3>{html.escape(title)}</h3>" if title else "")
-            parts.append("<div class='chart'>" + pio.to_html(fig, full_html=False, include_plotlyjs=False,
-                                                            config={"responsive": True, "displayModeBar": False}) + "</div>")
+            parts.append("<div class='chart'><div class='bar'><button class='fs' type='button'>Full screen</button></div><div class='plot'>"
+                         + pio.to_html(fig, full_html=False, include_plotlyjs=False, config={"responsive": True, "displayModeBar": False})
+                         + "</div></div>")
         if s.late_speed:
             parts.append(late_speed_html(s.late_speed))
-    parts.append("</body></html>")
+    parts.append("<script>" + PAGE_JS + "</script></body></html>")
     return "".join(parts)
