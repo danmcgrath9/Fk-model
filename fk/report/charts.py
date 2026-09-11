@@ -12,7 +12,7 @@ DARK = dict(
     plot_bgcolor="#161a22",
     font=dict(family="Inter, Helvetica, Arial, sans-serif", size=13, color="#e6e6e6"),
     margin=dict(l=50, r=20, t=60, b=50),
-    legend=dict(orientation="h", x=0, y=-0.25, bgcolor="rgba(0,0,0,0)"),
+    legend=dict(orientation="h", x=0, y=-0.34, yanchor="top", bgcolor="rgba(0,0,0,0)"),
     autosize=True,
 )
 
@@ -233,3 +233,98 @@ def late_speed_table(runners: list[RunnerRuns], last_600m_sections: int = 3, dec
                                  sum(late) / len(late) if late else None, len(r.runs)))
     rows.sort(key=lambda x: (x.last_600 is None, -(x.last_600 or 0)))
     return rows
+
+
+# ---- ratings profile -------------------------------------------------------------------------
+
+@dataclass
+class RunnerProfile:
+    """Every rating Form King gave a runner, run by run, oldest first, plus the peaks."""
+    name: str
+    runs: list[dict]                 # fk.fields.run_ratings dicts, oldest first
+    peak: float | None = None
+    peak12m: float | None = None
+
+
+def _rank_label(r: dict) -> str:
+    rk = r.get("ranks") or {}
+    parts = []
+    if r.get("finish") is not None:
+        n = f"/{r['runners']}" if r.get("runners") else ""
+        parts.append(f"{int(r['finish'])}{n}")
+    if rk.get("raceRank") is not None:
+        parts.append(f"r{rk['raceRank']}")
+    if rk.get("meetRatingRank") is not None:
+        parts.append(f"m{rk['meetRatingRank']}")
+    elif rk.get("meetRank") is not None:
+        parts.append(f"m{rk['meetRank']}")
+    return " ".join(parts)
+
+
+def ratings_profile_chart(profiles: list[RunnerProfile], title: str) -> go.Figure:
+    """Three panels sharing the run axis, one runner shown at a time (dropdown):
+    1. Form King scale: rating at weights carried, WFA rating, market-expected rating,
+       the race's rating, with the career and 12-month peaks as reference lines;
+       beside each point the finish (3/12), the race rank (r) and meeting rank (m) of the
+       last-600 section.
+    2. Lengths vs class, track and all-average benchmarks (0 = par).
+    3. Speed rating (100 = class par) and finishing speed (%, right axis).
+    Trials are hollow markers."""
+    from plotly.subplots import make_subplots
+    fig = make_subplots(rows=3, cols=1, shared_xaxes=True, vertical_spacing=0.07,
+                        specs=[[{}], [{}], [{"secondary_y": True}]],
+                        subplot_titles=("Form King ratings (peaks dashed)", "Lengths vs benchmark (0 = par)", "Speed rating (100 = par) and finishing speed %"))
+    counts: list[int] = []
+    for pi, p in enumerate(profiles):
+        runs = p.runs
+        x = [r.get("date") or "" for r in runs]
+        sym = ["circle-open" if r.get("trial") else "circle" for r in runs]
+        labels = [_rank_label(r) for r in runs]
+        hover = [f"{r.get('date','')} {r.get('track','') or ''} {r.get('distance') or ''}m"
+                 f"{' trial' if r.get('trial') else ''}<br>finish {r.get('finish')} of {r.get('runners')}<br>"
+                 f"{'verified' if r.get('trackSpeedVerified') else 'unverified'} track speed" for r in runs]
+        n0 = len(fig.data)
+        c = _colour(pi)
+        fig.add_trace(go.Scatter(x=x, y=[r.get("atWeights") for r in runs], name="At weights", mode="lines+markers+text", text=labels,
+                                 textposition=["top center" if i % 2 == 0 else "bottom center" for i in range(len(runs))],
+                                 textfont=dict(size=9), marker=dict(symbol=sym, size=8, color=c),
+                                 line=dict(color=c, width=2), hovertext=hover, hovertemplate="%{hovertext}<br>at weights %{y}<extra></extra>"), row=1, col=1)
+        fig.add_trace(go.Scatter(x=x, y=[r.get("wfaRat") if r.get("wfaRat") is not None else r.get("wfa") for r in runs], name="WFA rating",
+                                 mode="lines+markers", marker=dict(symbol=sym, size=6), line=dict(color="#9aa0a6", width=1),
+                                 hovertemplate="WFA %{y}<extra></extra>"), row=1, col=1)
+        fig.add_trace(go.Scatter(x=x, y=[r.get("expected") for r in runs], name="Market expected", mode="lines+markers",
+                                 marker=dict(symbol=sym, size=6), line=dict(color="#ffb74d", width=1, dash="dot"),
+                                 hovertemplate="market expected %{y}<extra></extra>"), row=1, col=1)
+        fig.add_trace(go.Scatter(x=x, y=[r.get("raceRating") for r in runs], name="Race rating", mode="markers",
+                                 marker=dict(symbol="diamond-open", size=7, color="#e6e6e6"), hovertemplate="race rating %{y}<extra></extra>"), row=1, col=1)
+        for val, nm, dash in ((p.peak, "Career peak", "dash"), (p.peak12m, "12-month peak", "longdash")):
+            fig.add_trace(go.Scatter(x=x, y=[val] * len(x) if val is not None else [None] * len(x), name=nm, mode="lines",
+                                     line=dict(color="#81c784" if nm == "Career peak" else "#4fc3f7", width=1, dash=dash),
+                                     hovertemplate=f"{nm} %{{y}}<extra></extra>"), row=1, col=1)
+        for key, nm, col in (("vsClass", "vs Class", c), ("vsTrack", "vs Track", "#9aa0a6"), ("vsAllAvg", "vs All average", "#ba68c8")):
+            fig.add_trace(go.Scatter(x=x, y=[r.get(key) for r in runs], name=nm, mode="lines+markers", marker=dict(symbol=sym, size=6),
+                                     line=dict(color=col, width=1.5 if key == "vsClass" else 1), hovertemplate=nm + " %{y:.2f} lengths<extra></extra>"), row=2, col=1)
+        fig.add_trace(go.Scatter(x=x, y=[r.get("speedRating") for r in runs], name="Speed rating", mode="lines+markers",
+                                 marker=dict(symbol=sym, size=6), line=dict(color=c, width=1.5), hovertemplate="speed rating %{y}<extra></extra>"), row=3, col=1)
+        fig.add_trace(go.Scatter(x=x, y=[r.get("finishingSpeed") for r in runs], name="Finishing speed %", mode="lines+markers",
+                                 marker=dict(symbol=sym, size=6), line=dict(color="#ffb74d", width=1, dash="dot"),
+                                 hovertemplate="finishing speed %{y:.1f}%<extra></extra>"), row=3, col=1, secondary_y=True)
+        counts.append(len(fig.data) - n0)
+    total = len(fig.data)
+    buttons, start = [], 0
+    for pi, p in enumerate(profiles):
+        vis = [False] * total
+        for i in range(start, start + counts[pi]):
+            vis[i] = True
+        buttons.append(dict(label=p.name, method="update", args=[{"visible": vis}]))
+        start += counts[pi]
+    for i, tr in enumerate(fig.data):
+        tr.visible = i < (counts[0] if counts else 0)
+    fig.add_hline(y=0, line=dict(color="#9aa0a6", width=1, dash="dash"), row=2, col=1)
+    fig.add_hline(y=100, line=dict(color="#9aa0a6", width=1, dash="dash"), row=3, col=1)
+    fig.update_layout(title=title, height=820, **DARK)
+    fig.update_layout(legend=dict(orientation="h", x=0, y=-0.08), margin=dict(l=50, r=20, t=90, b=60),
+                      updatemenus=[dict(type="dropdown", buttons=buttons, x=0, xanchor="left", y=1.12, yanchor="top",
+                                        bgcolor="#1c2130", bordercolor="#2a2f3a", font=dict(color="#e6e6e6"))] if buttons else [])
+    fig.update_xaxes(title_text="Run date", row=3, col=1)
+    return fig

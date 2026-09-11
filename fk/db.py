@@ -121,6 +121,15 @@ class Db:
         keys = ["run_id", "event_date", "track_speed_verified", "sections", "positions", "vs_class", "raw"]
         return [dict(zip(keys, r)) for r in rows]
 
+    def past_events_for_horse(self, horse_id: str, limit: int) -> list[dict[str, Any]]:
+        """Newest first, races and trials, with the whole PastEvent for the ratings profile."""
+        rows = self.conn.execute(
+            """select past_event_id, event_date, raw from fk.past_events
+               where horse_id = %s order by event_date desc nulls last, past_event_id desc limit %s""",
+            (horse_id, limit),
+        ).fetchall()
+        return [{"past_event_id": r[0], "event_date": r[1], "raw": r[2]} for r in rows]
+
     def speedmap_for_race(self, race_id: str) -> list[dict[str, Any]] | None:
         row = self.conn.execute("select runners from fk.speedmaps where race_id = %s", (race_id,)).fetchone()
         return row[0] if row else None

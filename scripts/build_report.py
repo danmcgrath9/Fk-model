@@ -17,14 +17,16 @@ from pathlib import Path
 
 from _common import load_settings, today_melbourne
 from fk import fields as F
-from fk.report.charts import (LateSpeedRow, RunnerRuns, SpeedmapRunner, lane_assignments, market_move_chart,
-                              position_worm, recency_weighted_mean, sectional_worm, speedmap_chart, value_ladder)
+from fk.report.charts import (LateSpeedRow, RunnerProfile, RunnerRuns, SpeedmapRunner, lane_assignments, market_move_chart,
+                              position_worm, ratings_profile_chart, recency_weighted_mean, sectional_worm, speedmap_chart,
+                              value_ladder)
 from fk.report.html import RaceSection, SummaryRow, render_meeting
 from fk.report.probability import (disagreement, market_implied, market_percentage, rated_price, rating_implied,
                                    tempo_reading, value_points)
 
 POSITION_RUNS = 5      # last 5 benchmarked runs for the position worm
 SECTIONAL_RUNS = 10    # last 10 for the sectional worm
+PROFILE_RUNS = 20      # runs (and trials) on the ratings profile
 NEURAL_SCALE = None    # Neural -> probability is a points share; see rating_implied
 FLAG_THRESHOLD = 0.05
 
@@ -62,7 +64,8 @@ def drop_empty_columns(runners: list[RunnerRuns]) -> list[RunnerRuns]:
 
 
 def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list[dict]],
-                  speedmap: list[dict] | None, odds: dict[str, dict[str, float]], tempo: str | None = None) -> RaceSection:
+                  speedmap: list[dict] | None, odds: dict[str, dict[str, float]], tempo: str | None = None,
+                  events_by_horse: dict[str, list[dict]] | None = None) -> RaceSection:
     heading = f"Race {race.get('race_number') or '?'}: {race.get('race_name') or ''}".strip()
     sub = " ".join(x for x in [f"{race['distance_m']}m" if race.get("distance_m") else "", str(race.get("scheduled_at") or "")] if x)
     section = RaceSection(heading=heading, subheading=sub)
@@ -143,6 +146,19 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         section.figures.append(sectional_worm(sec_runners, "Sectional worm: vs-Class by section, recency weighted (last 10 runs)"))
         late_rows.sort(key=lambda x: (x.last_600 is None, -(x.last_600 or 0)))
         section.late_speed = late_rows
+    # Ratings profile: every rating per run, oldest first, one runner at a time.
+    profiles = []
+    for e in active:
+        events = (events_by_horse or {}).get(e["horse_id"], [])
+        runs = [F.run_ratings(ev["raw"]) for ev in events if ev.get("raw")]
+        runs = [r for r in runs if r.get("date")]
+        if not runs:
+            continue
+        runs.sort(key=lambda r: r["date"])
+        peak, peak12 = F.entry_peak_ratings(e["raw"]) if e.get("raw") else (None, None)
+        profiles.append(RunnerProfile(e["name"], runs, peak, peak12))
+    if profiles:
+        section.figures.append(ratings_profile_chart(profiles, "Ratings profile: pick a runner. Beside each point: finish, race rank (r) and meeting rank (m) of the last 600m"))
     else:
         section.notes.append("No benchmarked runs stored for this field.")
     return section
@@ -177,8 +193,9 @@ def from_database(target: str, track: str | None, out_dir: Path, open_it: bool) 
         for r in rs:
             entries = db.entries_for_race(r["race_id"])
             runs = {e["horse_id"]: db.runs_for_horse(e["horse_id"], SECTIONAL_RUNS) for e in entries}
+            events = {e["horse_id"]: db.past_events_for_horse(e["horse_id"], PROFILE_RUNS) for e in entries}
             sm, tempo = db.speedmap_for_race(r["race_id"]), db.speedmap_tempo(r["race_id"])
-            sections.append(build_section(r, entries, runs, sm, db.latest_odds(r["race_id"]), tempo))
+            sections.append(build_section(r, entries, runs, sm, db.latest_odds(r["race_id"]), tempo, events))
         write_report(target, trk, sections, out_dir, open_it)
 
 
@@ -215,7 +232,21 @@ def demo(out_dir: Path, open_it: bool) -> Path:
             price = round((total / w) / 1.18, 2)   # 1 / chance, shortened by the 118% overround
             odds[hid] = dict(current=price, opening=round(price * rng.uniform(0.85, 1.2), 2))
         race = dict(race_number=n, race_name=f"Demo Handicap {n}", distance_m=1200 + 200 * n, scheduled_at="13:00")
-        race_sections.append(build_section(race, entries, runs, speed, odds, tempo="Average to Fast"))
+        events = {}
+        for e in entries:
+            e["raw"] = {"ratings": {"peak": 96.0, "peak12m": 93.5}}
+            evs = []
+            for k, run in enumerate(runs[e["horse_id"]]):
+                raw = dict(run["raw"])
+                raw.update(weightForAgeRating=88 + rng.uniform(-6, 6), adjustedForTodaysWeight=87 + rng.uniform(-6, 6), numRunners=12,
+                           track="Demo Park", distance=1400, trial=k == 9)
+                raw["benchmark"].update(atWeights=88 + rng.uniform(-6, 6), wfaRat=89 + rng.uniform(-6, 6), raceRating=95 + rng.uniform(-3, 3),
+                                        expectedRating=90 + rng.uniform(-5, 5), vsAllAvg=rng.uniform(-2, 2), vsTrack=rng.uniform(-2, 2),
+                                        speedRating=100 + rng.uniform(-5, 5), finishingSpeed=100 + rng.uniform(-4, 4))
+                raw["benchmark"]["sections"]["6-F"].update(raceRank=rng.randint(1, 12), meetRatingRank=rng.randint(1, 90))
+                evs.append({"raw": raw})
+            events[e["horse_id"]] = evs
+        race_sections.append(build_section(race, entries, runs, speed, odds, tempo="Average to Fast", events_by_horse=events))
     return write_report("demo", "Demo Park", race_sections, out_dir, open_it)
 
 

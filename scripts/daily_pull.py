@@ -53,7 +53,9 @@ def store_past_events(db: Db, hid: str, events: list[dict], fetched_at: datetime
     benchmarked_runs. Returns the number of benchmarked runs stored."""
     stored = 0
     for p in events:
-        if not F.past_event_is_race(p):
+        # Races and barrier trials are kept (a trial is a first-upper's only recent form);
+        # spells and scratchings are not runs.
+        if F.past_event_is_spell(p) or bool(p.get("scratched", False)):
             continue
         rid = F.past_event_race_id(p)
         if not rid:
@@ -112,9 +114,9 @@ def main() -> None:
     first = client.plan(ops.UPCOMING_MEETINGS, states=a.state)
     print(f"{target} {a.state}: step 1 is {first.op.key} for {first.credits} credit (balance {ledger.balance()})")
     if a.dry_run:
-        rf12 = client.plan(ops.RACE_FORM, meetingId="M", raceId="R", numBenchmarks=a.race_benchmarks, racesOnly=True, runners=12)
+        rf12 = client.plan(ops.RACE_FORM, meetingId="M", raceId="R", numBenchmarks=a.race_benchmarks, racesOnly=False, runners=12)
         sm = client.plan(ops.MEETING_SPEEDMAPS, meetingId="M")
-        hf = client.plan(ops.HORSE_FORM, horseId="H", numBenchmarks=ops.FIRST_SIGHT_BENCHMARKS, racesOnly=True)
+        hf = client.plan(ops.HORSE_FORM, horseId="H", numBenchmarks=ops.FIRST_SIGHT_BENCHMARKS, racesOnly=False)
         print("dry run, unit prices from credits.yaml:")
         print(f"  {sm.op.key}: {sm.credits} per meeting")
         print(f"  {rf12.op.key} at numBenchmarks={a.race_benchmarks}: {rf12.credits} per race of 12 runners")
@@ -157,7 +159,7 @@ def main() -> None:
         mid = F.meeting_id(m)
         for r in F.meeting_races(m):
             planned.append(("race", F.race_id(r), client.plan(
-                ops.RACE_FORM, meetingId=mid, raceId=F.race_id(r), numBenchmarks=a.race_benchmarks, racesOnly=True,
+                ops.RACE_FORM, meetingId=mid, raceId=F.race_id(r), numBenchmarks=a.race_benchmarks, racesOnly=False,
                 runners=max(F.race_runner_count(r), 1))))
     for m in meetings:   # after the forms: a speedmap failure must never cost the race data
         planned.append(("speedmaps", F.meeting_id(m), client.plan(ops.MEETING_SPEEDMAPS, meetingId=F.meeting_id(m))))
@@ -223,7 +225,7 @@ def main() -> None:
     if not to_fetch:
         print(f"done. ledger balance {ledger.balance()}")
         return
-    plans = [(d, client.plan(ops.HORSE_FORM, horseId=d.horse_id, numBenchmarks=d.num_benchmarks, racesOnly=True)) for d in to_fetch]
+    plans = [(d, client.plan(ops.HORSE_FORM, horseId=d.horse_id, numBenchmarks=d.num_benchmarks, racesOnly=False)) for d in to_fetch]
     if a.yes and live:
         # Unattended: fetch as many as the cap and floor allow, and say what was left.
         spent_so_far = sum(p.credits for _, _, p in planned) + first.credits

@@ -114,3 +114,23 @@ def test_drop_empty_columns():
          RunnerRuns("b", "B", ["Settle", "1200m", "800m", "Finish"], [[5, None, None, 4]])]
     out = drop_empty_columns(r)
     assert out[0].sections == ["Settle", "800m", "Finish"] and out[0].runs[0] == [3, 2, 1] and out[1].runs[0] == [5, None, 4]
+
+
+def test_run_ratings_and_profile_chart():
+    from fixtures import past_event
+    from fk.report.charts import RunnerProfile, ratings_profile_chart
+    p = past_event("R1", 14)
+    p["benchmark"]["sections"]["6-F"].update(raceRank=2, meetRatingRank=17)
+    p.update(weightForAgeRating=91.5, numRunners=12)
+    r = F.run_ratings(p)
+    assert r["atWeights"] == 90.0 and r["wfa"] == 91.5 and r["speedRating"] == 101.0 and r["vsClass"] == 0.8
+    assert r["ranks"] == {"section": "6-F", "raceRank": 2, "meetRank": None, "meetRatingRank": 17}
+    assert r["finish"] == 3 and r["runners"] == 12 and r["trial"] is False
+    profiles = [RunnerProfile("A", [r, dict(r, date="2026-08-01", trial=True)], 95.0, 93.0), RunnerProfile("B", [r], None, None)]
+    fig = ratings_profile_chart(profiles, "t")
+    assert len(fig.layout.updatemenus[0].buttons) == 2
+    per = len(fig.data) // 2
+    assert all(t.visible for t in fig.data[:per]) and not any(t.visible for t in fig.data[per:])
+    assert fig.data[0].text[0] == "3/12 r2 m17"                       # finish, race rank, meeting rank beside the point
+    assert fig.data[0].marker.symbol[1] == "circle-open"               # the trial is hollow
+    assert F.entry_peak_ratings({"ratings": {"peak": 95.0, "peak12m": 93.0}}) == (95.0, 93.0)

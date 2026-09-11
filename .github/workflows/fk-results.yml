@@ -1,7 +1,8 @@
 name: fk results
 
-# Next morning: results and final odds for yesterday's Victorian races, into the
-# fk-model database, and the credit ledger in the run summary. Same guards as the pull.
+# Next morning: results and final odds for yesterday's Victorian races, then a fresh price
+# snapshot for TODAY's meetings (one Meeting Summary each) and the reports rebuilt with the
+# overnight market. Same guards as the pull.
 
 on:
   schedule:
@@ -18,6 +19,9 @@ on:
 concurrency:
   group: fk-results
   cancel-in-progress: false
+
+permissions:
+  contents: write   # to push the rebuilt reports to the `reports` branch
 
 jobs:
   results:
@@ -51,9 +55,40 @@ jobs:
           DATE_ARG=""
           [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
           python scripts/fetch_results.py --key ${{ steps.key.outputs.key }} --yes $DATE_ARG
+      - name: Morning odds for today
+        if: always()
+        env:
+          FK_API_KEY: ${{ steps.key.outputs.key == 'live' && secrets.FK_API_KEY || 'FK-TEST-API-KEY' }}
+        run: python scripts/morning_odds.py --key ${{ steps.key.outputs.key }} --yes
+
+      - name: Rebuild today's reports
+        if: always()
+        run: python scripts/build_report.py --no-open --date "$(TZ=Australia/Melbourne date +%Y-%m-%d)"
+
       - name: Ledger
         if: always()
         run: |
           echo '## Credits' >> "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
           python scripts/ledger.py show --limit 30 | tee -a "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fk-reports-morning
+          path: reports/*.html
+          if-no-files-found: ignore
+
+      - name: Push reports to the reports branch
+        if: always()
+        run: |
+          ls reports/*.html >/dev/null 2>&1 || { echo "no reports to push"; exit 0; }
+          rm -rf /tmp/reports-branch && mkdir /tmp/reports-branch && cp reports/*.html /tmp/reports-branch/
+          cd /tmp/reports-branch
+          git init -q -b reports
+          git config user.name "fk morning" && git config user.email "actions@users.noreply.github.com"
+          printf '# Reports\n\nLatest form reports, replaced on every run.\n' > README.md
+          git add -A && git commit -q -m "Reports rebuilt with morning odds $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -q --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" reports
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -384,3 +384,59 @@ def usage_daily_rows(payload: Any) -> list[tuple[str, int, int]]:
     if not isinstance(payload, list):
         raise FieldUnmapped("daily usage", ["<array of DailyUsageSummary>"], payload)
     return [(str(r.get("date")), int(r.get("totalCalls") or 0), int(r.get("creditsDeducted") or 0)) for r in payload]
+
+
+# ---- ratings on a past run (PastEvent + BenchmarkedRun) --------------------------------
+
+def run_ratings(p: dict) -> dict[str, Any]:
+    """Every rating Form King attaches to one past run, on their own scales:
+    FK scale (roughly 60 to 110): weightForAgeRating, adjustedForTodaysWeight, atWeights,
+      wfaRat, raceRating, expectedRating.
+    Lengths vs a benchmark: vsClass, vsAllAvg, vsTrack.
+    Speed: speedRating (100 = class par), finishingSpeed (last 600 as % of run-to-600 speed).
+    Ranks (late sections only, per the spec): raceRank, meetRank, meetRatingRank of the
+      last-600m section, else the last-400, else the last-200.
+    """
+    b = past_event_benchmark(p) or {}
+    secs = b.get("sections") if isinstance(b.get("sections"), dict) else {}
+    ranks: dict[str, Any] = {}
+    for key in ("6-F", "4-F", "2-F"):
+        sec = secs.get(key)
+        if isinstance(sec, dict) and any(sec.get(k) is not None for k in ("raceRank", "meetRank", "meetRatingRank")):
+            ranks = {"section": key, "raceRank": _int(sec.get("raceRank")), "meetRank": _int(sec.get("meetRank")),
+                     "meetRatingRank": _int(sec.get("meetRatingRank"))}
+            break
+    return {
+        "date": past_event_date(p),
+        "track": past_event_track(p),
+        "distance": past_event_distance(p),
+        "finish": past_event_finish(p),
+        "runners": _int(p.get("numRunners")),
+        "trial": bool(p.get("trial", False)),
+        "wfa": _num(p.get("weightForAgeRating")),
+        "adjToday": _num(p.get("adjustedForTodaysWeight")),
+        "atWeights": _num(b.get("atWeights")),
+        "wfaRat": _num(b.get("wfaRat")),
+        "raceRating": _num(b.get("raceRating")),
+        "expected": _num(b.get("expectedRating")),
+        "vsClass": _num(b.get("vsClass")),
+        "vsAllAvg": _num(b.get("vsAllAvg")),
+        "vsTrack": _num(b.get("vsTrack")),
+        "speedRating": _num(b.get("speedRating")),
+        "finishingSpeed": _num(b.get("finishingSpeed")),
+        "trackSpeedVerified": bool(p.get("trackSpeedVerified", False)),
+        "ranks": ranks,
+    }
+
+
+def entry_peak_ratings(e: dict) -> tuple[float | None, float | None]:
+    """RaceEntryRatings.peak (career) and peak12m, adjusted to today's weight."""
+    return _num(pick(e, "peak", ["ratings.peak"], default=None)), _num(pick(e, "peak12m", ["ratings.peak12m"], default=None))
+
+
+def past_event_is_spell(p: dict) -> bool:
+    return bool(pick(p, "spell", ["spell"], default=False))
+
+
+def past_event_is_trial(p: dict) -> bool:
+    return bool(pick(p, "trial", ["trial"], default=False))
