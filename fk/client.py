@@ -26,8 +26,8 @@ from .spec import Operation, Spec, SpecError
 
 
 class FormKingError(Exception):
-    def __init__(self, op: Operation, status: int, body: str):
-        self.op, self.status, self.body = op, status, body
+    def __init__(self, op: Operation, status: int, body: str, retry_after: str | None = None):
+        self.op, self.status, self.body, self.retry_after = op, status, body, retry_after
         super().__init__(f"{op.method.upper()} {op.path} -> HTTP {status}: {body[:500]}")
 
 
@@ -103,6 +103,9 @@ class FormKingClient:
         try:
             return self._execute_once(planned)
         except FormKingError as e:
+            if e.status == 429 and retries_on_5xx > 0:
+                time.sleep(max(1.0, float(e.retry_after or 10)))
+                return self.execute(planned, retries_on_5xx=retries_on_5xx - 1)
             if 500 <= e.status < 600 and retries_on_5xx > 0:
                 time.sleep(3)
                 return self.execute(planned, retries_on_5xx=retries_on_5xx - 1)
@@ -152,5 +155,5 @@ class FormKingClient:
                 params=params, http_status=status, note=note,
             )
         if not (200 <= status < 300):
-            raise FormKingError(op, status, resp.text)
+            raise FormKingError(op, status, resp.text, resp.headers.get("Retry-After"))
         return payload

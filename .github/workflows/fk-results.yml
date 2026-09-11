@@ -26,6 +26,7 @@ jobs:
     env:
       FK_SPEC_PATH: b2c-openapi.yaml
       FK_LEDGER: postgres
+      PYTHONUNBUFFERED: '1'
       DATABASE_URL: ${{ secrets.FK_DATABASE_URL }}
       FK_MAX_CREDITS_PER_RUN: ${{ vars.FK_MAX_CREDITS_PER_RUN || '600' }}
       FK_MIN_BALANCE: ${{ vars.FK_MIN_BALANCE || '1000' }}

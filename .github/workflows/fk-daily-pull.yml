@@ -37,6 +37,7 @@ jobs:
     env:
       FK_SPEC_PATH: b2c-openapi.yaml
       FK_LEDGER: postgres
+      PYTHONUNBUFFERED: '1'
       DATABASE_URL: ${{ secrets.FK_DATABASE_URL }}
       SUPABASE_URL: ${{ secrets.FK_SUPABASE_URL }}
       SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.FK_SUPABASE_SERVICE_ROLE_KEY }}

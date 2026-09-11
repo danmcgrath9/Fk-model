@@ -26,6 +26,8 @@ from fk.cache import decide_profile_fetch
 from fk.client import FormKingError, PlannedCall
 from fk.db import Db, utc_now
 from fk.estimate import estimate
+from fk.guard import credit_cap, fit_under_cap, time_budget_seconds
+from fk.pace import run_batch
 
 PULL_STATUSES = {"FINAL_FIELDS", "INTERIM_RESULTS", "RESULTED"}
 
@@ -222,26 +224,42 @@ def main() -> None:
         print(f"done. ledger balance {ledger.balance()}")
         return
     plans = [(d, client.plan(ops.HORSE_FORM, horseId=d.horse_id, numBenchmarks=d.num_benchmarks, racesOnly=True)) for d in to_fetch]
+    if a.yes and live:
+        # Unattended: fetch as many as the cap and floor allow, and say what was left.
+        spent_so_far = sum(p.credits for _, _, p in planned) + first.credits
+        n_fit = fit_under_cap([p.credits for _, p in plans], ledger.balance(), cap=max(0, credit_cap() - spent_so_far))
+        if n_fit < len(plans):
+            print(f"credit cap: fetching {n_fit} of {len(plans)} profiles today; the rest are picked up when those horses next race")
+            plans = plans[:n_fit]
+        if not plans:
+            print(f"done. ledger balance {ledger.balance()}")
+            return
     pest = estimate([p for _, p in plans])
     print(pest.render(ledger.balance() if live else None))
-    if not confirm("Fetch profiles?", a.yes, estimated=pest.total, balance=ledger.balance(), live=live):
-        sys.exit("stopped before profiles")
+    if not (a.yes and live):
+        if not confirm("Fetch profiles?", a.yes, estimated=pest.total, balance=ledger.balance(), live=live):
+            sys.exit("stopped before profiles")
+
+    def fetch(item):
+        d, p = item
+        return client.execute(p)
+
     client.allow_live = True
     try:
-        for d, p in plans:
-            try:
-                payload = client.execute(p)
-            except FormKingError as e:
-                failures.append(f"{p.op.key} {p.params}: HTTP {e.status} {e.body[:120]}")
-                print(f"FAILED {failures[-1]}")
-                continue
-            at = utc_now()
-            n = store_past_events(db, d.horse_id, F.horse_form_past_events(payload), at)
-            db.upsert("horses", ["horse_id"], dict(horse_id=d.horse_id, name=F.horse_form_name(payload) or horses_on_cards[d.horse_id],
-                                                   profile_depth=d.num_benchmarks, profile_fetched_at=at, raw=payload, fetched_at=at))
-            db.commit()
+        batch = run_batch(plans, fetch, workers=4, per_second=1.0, budget_seconds=time_budget_seconds())
     finally:
         client.allow_live = False
+    for (d, p), payload in batch.done:
+        at = utc_now()
+        store_past_events(db, d.horse_id, F.horse_form_past_events(payload), at)
+        db.upsert("horses", ["horse_id"], dict(horse_id=d.horse_id, name=F.horse_form_name(payload) or horses_on_cards[d.horse_id],
+                                               profile_depth=d.num_benchmarks, profile_fetched_at=at, raw=payload, fetched_at=at))
+    db.commit()
+    for (d, p), e in batch.failed:
+        msg = f"{p.op.key} {p.params}: {getattr(e, 'status', '')} {str(e)[:120]}"
+        failures.append(msg)
+        print(f"FAILED {msg}")
+    print(f"profiles: {len(batch.done)} fetched, {len(batch.failed)} failed, {len(batch.skipped)} left for another day (time budget)")
     print(f"done. ledger balance {ledger.balance()}")
 
 

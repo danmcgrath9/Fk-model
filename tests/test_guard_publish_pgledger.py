@@ -83,3 +83,22 @@ def test_settings_strip_pasted_whitespace(monkeypatch, tmp_path):
     monkeypatch.setenv("DATABASE_URL", "postgresql://u:p@h:5432/postgres\n")
     s = load_settings(tmp_path / "none.env")
     assert s.api_key == "abc123" and s.database_url == "postgresql://u:p@h:5432/postgres"
+
+
+def test_fit_under_cap_and_batch():
+    from fk.guard import fit_under_cap
+    from fk.pace import run_batch
+    # five profiles at 5 credits each, 12 credits of cap left: two fit
+    assert fit_under_cap([5, 5, 5, 5, 5], 20000, cap=12, floor=1000) == 2
+    # the balance floor also trims: 1004 balance, floor 1000, only 4 credits to spend
+    assert fit_under_cap([3, 3], 1004, cap=100, floor=1000) == 1
+    calls = []
+    def fn(x):
+        calls.append(x)
+        if x == 3:
+            raise ValueError("boom")
+        return x * 2
+    r = run_batch([1, 2, 3], fn, workers=2, per_second=50, budget_seconds=None)
+    assert sorted(v for _, v in r.done) == [2, 4] and len(r.failed) == 1 and r.skipped == []
+    r2 = run_batch([1, 2, 3], fn, workers=1, per_second=50, budget_seconds=-1)
+    assert r2.skipped == [1, 2, 3] and r2.done == []

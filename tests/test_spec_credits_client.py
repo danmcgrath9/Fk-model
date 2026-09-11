@@ -55,7 +55,7 @@ def test_count_benchmarks_reads_both_shapes():
 
 class FakeResponse:
     def __init__(self, status, body):
-        self.status_code, self._body, self.text = status, body, str(body)
+        self.status_code, self._body, self.text, self.headers = status, body, str(body), {}
     def json(self):
         return self._body
 

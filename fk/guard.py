@@ -32,3 +32,23 @@ def check_spend(estimated: int, balance: int, *, cap: int | None = None, floor: 
             f"estimated {estimated} credits would take the balance from {balance} to {balance - estimated}, "
             f"below the floor of {floor} (FK_MIN_BALANCE). Not spending."
         )
+
+
+def time_budget_seconds() -> float:
+    """FK_TIME_BUDGET_SECONDS, default 1200: how long the profile batch may run before the
+    rest is left for another day. The workflow's own limit is 30 minutes."""
+    return float(os.environ.get("FK_TIME_BUDGET_SECONDS", "1200"))
+
+
+def fit_under_cap(estimates: list[int], balance: int, *, cap: int | None = None, floor: int | None = None) -> int:
+    """How many of the items (priced in order) can be fetched without breaching the cap or
+    the balance floor. Used to trim a profile batch rather than refuse it whole."""
+    cap = credit_cap() if cap is None else cap
+    floor = balance_floor() if floor is None else floor
+    total, n = 0, 0
+    for c in estimates:
+        if total + c > cap or balance - (total + c) < floor:
+            break
+        total += c
+        n += 1
+    return n
