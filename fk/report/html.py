@@ -164,10 +164,13 @@ def _run_cell(m: dict) -> str:
     fin = f"{int(m['finish'])}" if m.get("finish") is not None else "?"
     fld = f"/{m['runners']}" if m.get("runners") else ""
     top = f"<b>{fin}{fld}</b>"
-    if m.get("margin") is not None:
-        top += f" {m['margin']:.1f}L"
-    if m.get("sp") is not None:
-        top += f" ${m['sp']:.2f}"
+    # A trial has no market and its margin is not measured: Form King writes 0 for both,
+    # and 0.0L at $0.00 would read as a dead-heat at no price.
+    if not m.get("trial"):
+        if m.get("margin") is not None:
+            top += f" {m['margin']:.1f}L"
+        if m.get("sp"):
+            top += f" ${m['sp']:.2f}"
     from fk.report.charts import short_date
     bits = [str(m["going"]) if m.get("going") else "", f"{int(m['distance'])}m" if m.get("distance") else "",
             str(m["track"]) if m.get("track") else "", short_date(m["date"]) if m.get("date") else ""]
