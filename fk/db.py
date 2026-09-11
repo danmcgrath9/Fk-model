@@ -53,11 +53,21 @@ class Db:
         ).fetchall()
         return {r[0]: {"profile_depth": r[1], "profile_fetched_at": r[2]} for r in rows}
 
-    def latest_run_date(self, horse_id: str) -> datetime | None:
-        row = self.conn.execute(
-            "select max(event_date) from fk.benchmarked_runs where horse_id = %s", (horse_id,)
-        ).fetchone()
-        return row[0] if row else None
+    def benchmarked_run_counts(self, horse_ids: Iterable[str]) -> dict[str, int]:
+        ids = list(horse_ids)
+        if not ids:
+            return {}
+        rows = self.conn.execute(
+            "select horse_id, count(*) from fk.benchmarked_runs where horse_id = any(%s) group by horse_id", (ids,)
+        ).fetchall()
+        return {r[0]: int(r[1]) for r in rows}
+
+    def meetings_on(self, meeting_date: str, state: str) -> list[dict[str, Any]]:
+        rows = self.conn.execute(
+            "select meeting_id, track, raw from fk.meetings where meeting_date = %s and state = %s order by track",
+            (meeting_date, state),
+        ).fetchall()
+        return [{"meeting_id": r[0], "track": r[1], "raw": r[2]} for r in rows]
 
     def races_on(self, meeting_date: str, state: str) -> list[dict[str, Any]]:
         rows = self.conn.execute(
@@ -74,26 +84,30 @@ class Db:
     def entries_for_race(self, race_id: str) -> list[dict[str, Any]]:
         rows = self.conn.execute(
             """select e.horse_id, h.name, e.barrier, e.weight_kg, e.jockey, e.trainer, e.scratched,
-                      e.neural_rating, e.exp_rating, e.days_since_last_run
+                      e.neural_rating, e.exp_rating, e.days_since_last_run, e.raw
                from fk.entries e join fk.horses h using (horse_id)
                where e.race_id = %s order by e.barrier nulls last""",
             (race_id,),
         ).fetchall()
-        keys = ["horse_id", "name", "barrier", "weight_kg", "jockey", "trainer", "scratched", "neural_rating", "exp_rating", "days_since_last_run"]
+        keys = ["horse_id", "name", "barrier", "weight_kg", "jockey", "trainer", "scratched", "neural_rating", "exp_rating", "days_since_last_run", "raw"]
         return [dict(zip(keys, r)) for r in rows]
 
     def runs_for_horse(self, horse_id: str, limit: int) -> list[dict[str, Any]]:
         rows = self.conn.execute(
-            """select run_id, event_date, track_speed_verified, sections, positions, vs_class
+            """select run_id, event_date, track_speed_verified, sections, positions, vs_class, raw
                from fk.benchmarked_runs where horse_id = %s
                order by event_date desc nulls last, run_id desc limit %s""",
             (horse_id, limit),
         ).fetchall()
-        keys = ["run_id", "event_date", "track_speed_verified", "sections", "positions", "vs_class"]
+        keys = ["run_id", "event_date", "track_speed_verified", "sections", "positions", "vs_class", "raw"]
         return [dict(zip(keys, r)) for r in rows]
 
     def speedmap_for_race(self, race_id: str) -> list[dict[str, Any]] | None:
         row = self.conn.execute("select runners from fk.speedmaps where race_id = %s", (race_id,)).fetchone()
+        return row[0] if row else None
+
+    def speedmap_tempo(self, race_id: str) -> str | None:
+        row = self.conn.execute("select raw->'expectedTempo'->>'description' from fk.speedmaps where race_id = %s", (race_id,)).fetchone()
         return row[0] if row else None
 
     def latest_odds(self, race_id: str) -> dict[str, dict[str, float]]:

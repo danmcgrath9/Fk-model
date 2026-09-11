@@ -24,6 +24,7 @@ credits.yaml shape:
 """
 from __future__ import annotations
 
+import math
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -39,10 +40,31 @@ class UnknownCost(Exception):
 
 
 @dataclass(frozen=True)
+class VariableCost:
+    """Form King's benchmark pricing: per_item credits for each BenchmarkedRun returned beyond
+    free_per_runner for each runner, rounded up per response."""
+    param: str = "numBenchmarks"
+    free_per_runner: int = 5
+    per_item: float = 0.5
+
+    def upper_bound(self, params: dict[str, Any], runners: int) -> float:
+        depth = params.get(self.param)
+        try:
+            depth = int(depth) if depth is not None else self.free_per_runner
+        except (TypeError, ValueError):
+            depth = self.free_per_runner
+        return self.per_item * max(0, depth - self.free_per_runner) * max(runners, 1)
+
+    def from_counts(self, benchmarks_per_runner: list[int]) -> float:
+        return self.per_item * sum(max(0, n - self.free_per_runner) for n in benchmarks_per_runner)
+
+
+@dataclass(frozen=True)
 class CostRule:
     cost: int
     when: dict[str, str] = field(default_factory=dict)  # param -> condition like "<=5", "10", ">5"
     source: str = ""
+    variable: VariableCost | None = None
 
     def matches(self, params: dict[str, Any]) -> bool:
         for name, cond in self.when.items():
@@ -71,15 +93,31 @@ class CostTable:
     def __init__(self, rules: dict[str, list[CostRule]]):
         self.rules = rules
 
-    def cost_of(self, op_key: str, params: dict[str, Any] | None = None) -> int:
+    def rule_for(self, op_key: str, params: dict[str, Any] | None = None) -> CostRule:
         params = params or {}
         for rule in self.rules.get(op_key, []):
             if rule.matches(params):
-                return rule.cost
+                return rule
         raise UnknownCost(
             f"no credit cost known for {op_key!r} with params {params}. "
             "Add it to credits.yaml after reading the spec; an unpriced call is never made."
         )
+
+    def cost_of(self, op_key: str, params: dict[str, Any] | None = None, *, runners: int = 1) -> int:
+        """The price to plan on: the flat cost, plus the variable upper bound for the depth
+        asked for across `runners` runners, rounded up as Form King rounds."""
+        rule = self.rule_for(op_key, params)
+        if rule.variable is None:
+            return rule.cost
+        return math.ceil(rule.cost + rule.variable.upper_bound(params or {}, runners) - 1e-9)
+
+    def actual_cost(self, op_key: str, params: dict[str, Any], benchmarks_per_runner: list[int] | None) -> int:
+        """What the response actually cost, from the BenchmarkedRun items it carried."""
+        rule = self.rule_for(op_key, params)
+        if rule.variable is None or benchmarks_per_runner is None:
+            return rule.cost
+        return math.ceil(rule.cost + rule.variable.from_counts(benchmarks_per_runner) - 1e-9)
+
 
     def known(self, op_key: str) -> bool:
         return bool(self.rules.get(op_key))
@@ -89,7 +127,8 @@ class CostTable:
         for key, rules in sorted(self.rules.items()):
             for r in rules:
                 cond = " when " + ", ".join(f"{k}{v}" for k, v in r.when.items()) if r.when else ""
-                out.append(f"{key}: {r.cost} credits{cond}  [{r.source}]")
+                var = f" + {r.variable.per_item} per BenchmarkedRun beyond {r.variable.free_per_runner} per runner" if r.variable else ""
+                out.append(f"{key}: {r.cost} credits{var}{cond}  [{r.source}]")
         return out
 
 
@@ -109,7 +148,11 @@ def _rules_from_value(value: Any, source: str) -> list[CostRule]:
             if isinstance(item, (int, float)) and not isinstance(item, bool):
                 rules.append(CostRule(cost=int(item), source=source))
             elif isinstance(item, dict) and "cost" in item:
-                rules.append(CostRule(cost=int(item["cost"]), when={k: str(v) for k, v in (item.get("when") or {}).items()}, source=source))
+                var = item.get("variable")
+                rules.append(CostRule(
+                    cost=int(item["cost"]), when={k: str(v) for k, v in (item.get("when") or {}).items()}, source=source,
+                    variable=VariableCost(str(var.get("param", "numBenchmarks")), int(var.get("free_per_runner", 5)),
+                                          float(var.get("per_item", 0.5))) if isinstance(var, dict) else None))
             else:
                 raise ValueError(f"{source}: unreadable cost rule {item!r}")
         # Defaults (no `when`) go last so conditional rules get first look.

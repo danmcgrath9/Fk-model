@@ -1,0 +1,24 @@
+# Credit costs, copied from the "API Credit Model" table in b2c-openapi.yaml (1.0.8).
+# Keys are the spec's operation summaries. A bare number is a flat cost. A rule with
+# `variable` adds per_item credits for every BenchmarkedRun returned beyond
+# free_per_runner for each runner, and the total is rounded UP per response (the spec's
+# words: "partial credits rounded up at the response level").
+#
+# The estimate before a call uses the upper bound (numBenchmarks minus the free five,
+# times the runners on the card). The ledger records the ACTUAL charge, counted from the
+# BenchmarkedRun items in the response. Form King's own usage log is the final word:
+# `python scripts/ledger.py check` compares the two.
+Get Upcoming Meetings: 1
+Get Meetings By Date: 1
+Get Meeting Summary: 5
+Get Meeting Speedmaps: 5
+Get Race Speedmap: 1
+Get Race Form:
+  - cost: 2
+    variable: {param: numBenchmarks, free_per_runner: 5, per_item: 0.5}
+Get Horse Form:
+  - cost: 2
+    variable: {param: numBenchmarks, free_per_runner: 5, per_item: 0.5}
+Get Account Info: 1
+Get Usage Log: 1
+"Create, Revoke or Get API Key / Account": 1

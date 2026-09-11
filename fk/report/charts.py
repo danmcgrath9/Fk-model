@@ -178,28 +178,36 @@ def value_ladder(names: list[str], value_pts: list[float | None], title: str) ->
     return fig
 
 
-def market_move_chart(names: list[str], opening: list[float | None], current: list[float | None], title: str) -> go.Figure:
-    """Firm and drift from opening to current price, as % change in price, firmers first.
-    A shorter price is a firmer (negative % change), drawn green; a drifter red."""
+def market_move_chart(names: list[str], opening: list[float | None], current: list[float | None] | None, title: str) -> go.Figure:
+    """Firm and drift since opening, firmers first. Two inputs are accepted:
+    * opening and current PRICES: the move is the % change in price (negative = firmed);
+    * `current` None: `opening` already holds Form King's firmOrDrift in points of win
+      chance, where POSITIVE is a firm; it is negated so firmers still sit left in green."""
     rows = []
-    for n, o, c in zip(names, opening, current):
-        if o is None or c is None or o <= 0:
-            continue
-        rows.append((n, (c - o) / o * 100, o, c))
+    if current is None:
+        for n, v in zip(names, opening):
+            if v is not None:
+                rows.append((n, -float(v), None, None))
+        axis = "Form King firm or drift, points of win chance (negative = firmed)"
+    else:
+        for n, o, c in zip(names, opening, current):
+            if o is None or c is None or o <= 0:
+                continue
+            rows.append((n, (c - o) / o * 100, o, c))
+        axis = "% change in price since opening (negative = firmed)"
     rows.sort(key=lambda t: t[1])
     fig = go.Figure(
         go.Bar(
             x=[m for _, m, _, _ in rows], y=[n for n, _, _, _ in rows], orientation="h",
             marker=dict(color=["#66bb6a" if m < 0 else "#ef5350" if m > 0 else "#9aa0a6" for _, m, _, _ in rows]),
-            text=[f"{m:+.0f}%" for _, m, _, _ in rows],
-            customdata=[[o, c] for _, _, o, c in rows],
+            text=[f"{m:+.0f}%" if current is not None else f"{-m:+.1f} pts" for _, m, _, _ in rows],
+            customdata=[[o if o is not None else 0, c if c is not None else 0] for _, _, o, c in rows],
             textposition="auto", cliponaxis=False, textangle=0, constraintext="none",
             hovertemplate="%{y}: %{customdata[0]:.2f} to %{customdata[1]:.2f}, %{x:+.1f}%<extra></extra>",
         )
     )
     fig.add_vline(x=0, line=dict(color="#9aa0a6", width=1))
-    fig.update_layout(title=title, xaxis=dict(title="% change in price since opening"),
-                      yaxis=dict(autorange="reversed"), **DARK)
+    fig.update_layout(title=title, xaxis=dict(title=axis), yaxis=dict(autorange="reversed"), **DARK)
     return fig
 
 

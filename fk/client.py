@@ -19,6 +19,7 @@ import requests
 
 from .config import TEST_API_KEY
 from .credits import CostTable
+from .fields import count_benchmarks
 from .ledger import Ledger
 from .spec import Operation, Spec, SpecError
 
@@ -37,7 +38,8 @@ class LiveCallRefused(Exception):
 class PlannedCall:
     op: Operation
     params: dict[str, Any]
-    credits: int
+    credits: int          # the estimate: flat cost plus the variable upper bound
+    runners: int = 1      # the estimation hint the variable component was priced over
 
 
 class FormKingClient:
@@ -70,8 +72,9 @@ class FormKingClient:
 
     # ---- planning ------------------------------------------------------------------
 
-    def plan(self, op_name: str, **params: Any) -> PlannedCall:
-        """Resolve the operation and price it. No network."""
+    def plan(self, op_name: str, *, runners: int = 1, **params: Any) -> PlannedCall:
+        """Resolve the operation and price it. No network. `runners` is only an estimation
+        hint for the per-BenchmarkedRun component; it is never sent."""
         op = self.spec.find_operation(op_name)
         clean = {k: v for k, v in params.items() if v is not None}
         known = set(op.path_params()) | set(op.query_params())
@@ -84,7 +87,7 @@ class FormKingClient:
         missing = [p.name for p in op.parameters if p.required and p.name not in clean and p.location != "header"]
         if missing:
             raise SpecError(f"{op.key}: required parameters missing: {missing}")
-        return PlannedCall(op=op, params=clean, credits=self.costs.cost_of(op.key, clean))
+        return PlannedCall(op=op, params=clean, credits=self.costs.cost_of(op.key, clean, runners=runners), runners=runners)
 
     # ---- calling -------------------------------------------------------------------
 
@@ -106,19 +109,35 @@ class FormKingClient:
         headers = {self.header_name: self.api_key, "Accept": "application/json"}
 
         status: int | None = None
+        payload: Any = None
+        charged = planned.credits
+        note: str | None = None
         try:
             resp = self.session.request(op.method.upper(), url, params=query, headers=headers, timeout=self.timeout)
             status = resp.status_code
+            if 200 <= status < 300:
+                try:
+                    payload = resp.json()
+                except ValueError as e:
+                    raise FormKingError(op, status, f"non-JSON body: {resp.text[:200]}") from e
+                # The variable component is charged on what came back, not what was asked for.
+                charged = self.costs.actual_cost(op.key, params, count_benchmarks(payload))
+                if charged != planned.credits:
+                    note = f"estimated {planned.credits}, charged {charged} from the response"
+            else:
+                charged = planned.credits if self.charge_failed else 0
+                note = f"non-2xx (status={status})"
+        except FormKingError:
+            raise
+        except Exception:
+            charged = planned.credits if self.charge_failed else 0
+            note = "transport failure before a response"
+            raise
         finally:
-            charged = planned.credits if (status is not None and 200 <= status < 300) or self.charge_failed else 0
             self.ledger.record(
                 op.key, charged, key_kind=self.key_kind, method=op.method.upper(), path=op.path,
-                params=params, http_status=status,
-                note=None if status and 200 <= status < 300 else f"non-2xx or transport failure (status={status})",
+                params=params, http_status=status, note=note,
             )
-        if not (200 <= resp.status_code < 300):
-            raise FormKingError(op, resp.status_code, resp.text)
-        try:
-            return resp.json()
-        except ValueError as e:
-            raise FormKingError(op, resp.status_code, f"non-JSON body: {resp.text[:200]}") from e
+        if not (200 <= status < 300):
+            raise FormKingError(op, status, resp.text)
+        return payload

@@ -29,7 +29,7 @@ def main() -> None:
     for line in costs.describe() or ["  (none: write credits.yaml)"]:
         print("  " + line)
     print("\nfk/ops.py expects these operation names:")
-    for name in (ops.UPCOMING_MEETINGS, ops.RACE_FORM, ops.HORSE_PROFILE, ops.MEETING_SPEEDMAPS, ops.RACE_RESULTS, ops.RACE_ODDS):
+    for name in (ops.UPCOMING_MEETINGS, ops.MEETINGS_BY_DATE, ops.MEETING_SUMMARY, ops.MEETING_SPEEDMAPS, ops.RACE_FORM, ops.HORSE_FORM, ops.USAGE_LOG):
         try:
             op = spec.find_operation(name)
             print(f"  {name!r:28} -> {op.method.upper()} {op.path}  {'priced' if costs.known(op.key) else 'NO COST KNOWN'}")

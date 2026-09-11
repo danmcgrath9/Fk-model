@@ -3,8 +3,8 @@
   python scripts/fetch_results.py --key test --dry-run
   python scripts/fetch_results.py --key live [--date YYYY-MM-DD]
 
-Reads the races we stored for that date (no meetings call), prices one results call and
-one odds call per race, prints the estimate, asks, then runs.
+One Get Meeting Summary per stored meeting (5 credits): every race's entries with
+horseResult (finish, margin, SP, Betfair SP) and the closing odds.
 """
 from __future__ import annotations
 
@@ -13,7 +13,6 @@ import sys
 from datetime import date, timedelta
 
 from _common import bootstrap, confirm, make_client, today_melbourne
-from daily_pull import _id_param
 from fk import fields as F
 from fk import ops
 from fk.db import Db, utc_now
@@ -32,45 +31,53 @@ def main() -> None:
 
     settings, spec, costs, ledger = bootstrap(a.key)
     client = make_client(a.key, settings, spec, costs, ledger, allow_live=False)
+    live = client.key_kind == "live"
     db = Db(settings.database_url)
-    races = db.races_on(target.isoformat(), a.state)
-    if not races:
-        sys.exit(f"no {a.state} races stored for {target}; run daily_pull.py for that date first")
+    meetings = db.meetings_on(target.isoformat(), a.state)
+    if not meetings:
+        sys.exit(f"no {a.state} meetings stored for {target}; run daily_pull.py for that date first")
 
-    plans = []
-    for r in races:
-        plans.append((r, client.plan(ops.RACE_RESULTS, **_id_param(spec, ops.RACE_RESULTS, r["race_id"]))))
-        plans.append((r, client.plan(ops.RACE_ODDS, **_id_param(spec, ops.RACE_ODDS, r["race_id"]))))
-    print(f"{len(races)} {a.state} races on {target}")
+    plans = [(m, client.plan(ops.MEETING_SUMMARY, meetingId=m["meeting_id"])) for m in meetings]
     est = estimate([p for _, p in plans])
-    print(est.render(ledger.balance() if client.key_kind == "live" else None))
+    print(f"{len(meetings)} {a.state} meeting(s) on {target}: " + ", ".join(m["track"] for m in meetings))
+    print(est.render(ledger.balance() if live else None))
     if a.dry_run:
         return
-    if not confirm("Proceed?", a.yes, estimated=est.total, balance=ledger.balance(), live=client.key_kind == "live"):
+    if not confirm("Proceed?", a.yes, estimated=est.total, balance=ledger.balance(), live=live):
         sys.exit("stopped")
 
     client.allow_live = True
+    stored = 0
     try:
-        for r, p in plans:
+        for m, p in plans:
             payload = client.execute(p)
             at = utc_now()
-            rid = r["race_id"]
-            if p.op.key == spec.find_operation(ops.RACE_RESULTS).key:
-                for x in F.results_list(payload):
-                    db.upsert("results", ["race_id", "horse_id"], dict(
-                        race_id=rid, horse_id=F.horse_id(x), finish_position=F.run_finish_position(x),
-                        margin=F.result_margin(x), starting_price=F.odds_starting_price(x), raw=x, fetched_at=at))
-            else:
-                for x in F.odds_list(payload):
-                    hid = F.horse_id(x)
-                    for kind, price in (("opening", F.odds_opening_price(x)), ("current", F.odds_current_price(x)), ("starting", F.odds_starting_price(x))):
-                        if price is not None:
-                            db.upsert("odds_snapshots", ["race_id", "horse_id", "source", "kind", "observed_at"], dict(
-                                race_id=rid, horse_id=hid, source="formking", kind=kind, price=price, observed_at=at, raw=x, fetched_at=at))
+            for r in F.meeting_races(payload):
+                rid = F.race_id(r)
+                db.upsert("races", ["race_id"], dict(race_id=rid, meeting_id=m["meeting_id"], race_number=F.race_number(r),
+                                                    race_name=F.race_name(r), distance_m=F.race_distance(r), raw=r, fetched_at=at))
+                for e in F.race_entries(r):
+                    hid = F.horse_id(e)
+                    db.upsert("horses", ["horse_id"], dict(horse_id=hid, name=F.horse_name(e), fetched_at=at))
+                    res = F.entry_result(e)
+                    if res:
+                        db.upsert("results", ["race_id", "horse_id"], dict(
+                            race_id=rid, horse_id=hid, finish_position=F.result_finish_position(res), margin=F.result_margin(res),
+                            starting_price=F.result_starting_price(res), raw=res, fetched_at=at))
+                        stored += 1
+                        for source, price in (("formking", F.result_starting_price(res)), ("betfair", F.result_betfair_sp(res))):
+                            if price is not None:
+                                db.upsert("odds_snapshots", ["race_id", "horse_id", "source", "kind", "observed_at"], dict(
+                                    race_id=rid, horse_id=hid, source=source, kind="starting", price=price, observed_at=at, raw=res, fetched_at=at))
+                    odds = F.entry_odds(e)
+                    if odds and F.odds_current_price(odds) is not None:
+                        db.upsert("odds_snapshots", ["race_id", "horse_id", "source", "kind", "observed_at"], dict(
+                            race_id=rid, horse_id=hid, source="formking", kind="current", price=F.odds_current_price(odds),
+                            observed_at=F.odds_timestamp(odds) or at, raw=odds, fetched_at=at))
             db.commit()
     finally:
         client.allow_live = False
-    print(f"done. ledger balance {ledger.balance()}")
+    print(f"done: {stored} results stored. ledger balance {ledger.balance()}")
 
 
 if __name__ == "__main__":

@@ -7,31 +7,26 @@ A credit-aware data layer for the Form King Modellers API (Single State Pro, Vic
 
 | Piece | Where | Status |
 |---|---|---|
-| Spec reader (server, auth header, operations, parameters) | `fk/spec.py` | tested on a stand-in spec |
-| Credit cost table (spec prose, `x-credits`, `credits.yaml` override) | `fk/credits.py` | tested |
+| Spec reader (server, auth header, operations, parameters) | `fk/spec.py` | tested on the real spec |
+| Credit cost table with Form King's variable benchmark pricing; actual charge counted from each response | `fk/credits.py`, `credits.yaml` | tested against the spec's worked figures |
 | SQLite credit ledger with derived running balance | `fk/ledger.py`, `scripts/ledger.py` | tested |
 | HTTP client: prices before calling, ledgers every call, refuses live without a yes | `fk/client.py` | tested with a fake session |
 | Supabase schema, 9 tables, `fetched_at` on every row, `track_speed_verified` NOT NULL | `sql/001_schema.sql` | applied twice on Postgres 16, idempotent, RLS on, browser roles revoked |
-| Horse profile cache policy (first sight 10, known 5 after a new start, else no call) | `fk/cache.py` | tested |
+| Horse depth policy (race form at 5 carries the newest five free; one Get Horse Form at 10 per never-seen horse) | `fk/cache.py` | tested |
 | Daily VIC pull with estimate-then-confirm | `scripts/daily_pull.py` | written; cannot run until the spec is present |
-| Next-morning results and final odds | `scripts/fetch_results.py` | written; same |
+| Next-morning results, SP, Betfair SP and closing odds via Get Meeting Summary | `scripts/fetch_results.py` | written; same |
 | Form report: tempo line, market %, rated price and value per runner, lane speedmap, value ladder, market moves, position worm, sectional worm, late-speed table | `fk/report/`, `scripts/build_report.py` | charts and maths tested; `--demo` renders |
 
 ## What is NOT done, and why
 
-1. **The spec was not available to the session that wrote this.** `b2c-openapi.yaml`
-   was in a claude.ai project's knowledge, which a cloud session cannot read, and
-   formking.com.au is blocked from that environment. So:
-   - the operation names in `fk/ops.py` are the names from your brief, not the spec's;
-   - the credit costs are read from the spec at runtime by a parser that has only been
-     tested on a stand-in, so `credits.yaml` is the safe path;
-   - every response field is a candidate list in `fk/fields.py` that raises with the
-     real keys when it misses. Nothing is guessed silently.
-2. **No call has been made against FK-TEST-API-KEY.** The API host is unreachable from the
-   session. The first test-key run happens on your machine.
-3. **Neural rating to probability** is a softmax stand-in, stated on the report page.
-   If the spec exposes a rated price or probability, map it in `fk/fields.py` and
-   use that instead.
+1. **No call has been made against FK-TEST-API-KEY yet.** Every field name, cost and
+   path is taken from `b2c-openapi.yaml` 1.0.8, and the tests run against that file,
+   but a live response can still differ from its documentation. The first test-key run
+   (the `fk daily pull` workflow with key `test`) is where that shows.
+2. **Neural rating to probability** is a softmax stand-in, stated on the report page.
+   Form King publishes no rated price for Neural, and EXP is derived from the market
+   (RaceEntryRatings.exp), so it cannot be priced against the market. Once results
+   accumulate (fetch_results.py), the scale can be calibrated on this state's history.
 
 ## Running it from your phone (no computer needed)
 
@@ -90,17 +85,37 @@ cp credits.example.yaml credits.yaml
    errors naming the real keys; put them first in `fk/fields.py` and re-run. Test-key
    calls are ledgered under `test` and never charged.
 6. Only when you say so: `python scripts/daily_pull.py --key live`. It prints the
-   estimate and asks. A nine-race Saturday meeting should be about 300 credits. If it
-   says 3,000, stop.
+   estimate and asks. At the default depth a nine-race meeting is about 24 credits
+   plus 5 for each horse never held before (see "What a day costs"). If it says
+   3,000, stop.
 7. Next morning: `python scripts/fetch_results.py --key live`.
 8. `python scripts/build_report.py --date YYYY-MM-DD` writes `reports/YYYY-MM-DD-<track>.html`
    and opens it. `--demo` renders synthetic data to check the layout.
+
+## What a day costs (from the spec's credit table, 1.0.8)
+
+| Call | Credits |
+|---|---|
+| Get Upcoming Meetings (filtered to VIC) | 1 |
+| Get Meeting Speedmaps, per meeting | 5 |
+| Get Race Form at numBenchmarks=5, per race | 2 (every runner's newest 5 benchmarked runs and full race career) |
+| Get Horse Form at numBenchmarks=10, per horse never held before | 5 (runs six to ten; done once per horse) |
+| Get Meeting Summary next morning, per meeting | 5 (results, SP, Betfair SP, closing odds for every race) |
+
+A nine-race meeting: 1 + 5 + 18 = 24 credits, plus 5 per new horse. The first weeks are
+dear (every horse is new: about 100 horses a meeting, 500 credits); after that most horses
+are known and a meeting settles near 30 to 80 credits. The brief's original plan, every
+race form at numBenchmarks=10, costs 2 + 2.5 x runners per race (about 294 for a
+nine-race Saturday) and re-buys the same deep runs each time a horse races;
+`--race-benchmarks 10` still does that if wanted. Monthly allowance on Single State Pro
+is 20,000.
 
 ## After the first live pull
 
 ```
 python scripts/ledger.py show
-python scripts/ledger.py reconcile --site-used <credits used per the Form King usage tab> --note "usage tab, 12 Sep"
+python scripts/ledger.py check          # 1 credit: Form King's usage log per day beside ours
+python scripts/ledger.py reconcile --site-used <credits per the usage tab> --note "usage tab, 12 Sep"
 ```
 
 If the site and the ledger disagree, the ledger is wrong: a cost in `credits.yaml`, or

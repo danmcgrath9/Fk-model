@@ -1,17 +1,18 @@
 """Where response JSON meets our code. THE ONLY file that names response keys.
 
-The spec was not available when this layer was written, so every accessor
-carries a list of CANDIDATE keys and raises FieldUnmapped, naming the keys the
-payload actually has, when none matches. That is deliberate: a wrong guess here
-puts a horse in the wrong race silently; a raised error costs one minute to fix.
-
-To confirm a mapping: run scripts/spec_report.py, read the response schema for
-the operation, and put the real key FIRST in the candidate list (or replace the
-list with the single real key). Each accessor is one line to change.
+Every key here is taken from b2c-openapi.yaml 1.0.8 (components.schemas). Required
+fields are read directly; optional ones return None. A missing REQUIRED key raises
+FieldUnmapped naming what was present, because a payload that breaks the spec is
+something to look at, not paper over.
 """
 from __future__ import annotations
 
+import math
+from datetime import date, datetime, timezone
 from typing import Any, Iterable
+from zoneinfo import ZoneInfo
+
+MELBOURNE = ZoneInfo("Australia/Melbourne")
 
 
 class FieldUnmapped(KeyError):
@@ -19,12 +20,12 @@ class FieldUnmapped(KeyError):
         keys = sorted(payload.keys()) if isinstance(payload, dict) else type(payload).__name__
         super().__init__(
             f"{what}: none of {list(candidates)} present. Payload keys: {keys}. "
-            "Confirm the field in b2c-openapi.yaml and update fk/fields.py."
+            "Check b2c-openapi.yaml and fk/fields.py."
         )
 
 
 def pick(payload: Any, what: str, candidates: list[str], *, default: Any = ...) -> Any:
-    """Return the first candidate key present in payload (dot paths allowed)."""
+    """Return the first candidate key present (dot paths allowed), else default, else raise."""
     if isinstance(payload, dict):
         for cand in candidates:
             node: Any = payload
@@ -42,166 +43,341 @@ def pick(payload: Any, what: str, candidates: list[str], *, default: Any = ...) 
     raise FieldUnmapped(what, candidates, payload)
 
 
-def as_list(payload: Any, what: str, candidates: list[str]) -> list[Any]:
-    """Some endpoints return a bare list, others wrap it. Accept both."""
-    if isinstance(payload, list):
-        return payload
-    value = pick(payload, what, candidates)
-    if not isinstance(value, list):
-        raise FieldUnmapped(what, candidates, payload)
-    return value
+def _num(v: Any) -> float | None:
+    if v is None:
+        return None
+    try:
+        f = float(v)
+    except (TypeError, ValueError):
+        return None
+    return None if math.isnan(f) else f
 
 
-# ---- meetings ----------------------------------------------------------------------
+def _int(v: Any) -> int | None:
+    f = _num(v)
+    return int(f) if f is not None else None
+
+
+def epoch_ms_to_melbourne_date(ms: Any) -> str | None:
+    """Form King dates are Unix milliseconds (UTC). A meeting's civil date is Melbourne's."""
+    if ms is None:
+        return None
+    return datetime.fromtimestamp(int(ms) / 1000, tz=timezone.utc).astimezone(MELBOURNE).date().isoformat()
+
+
+def epoch_ms_to_utc(ms: Any) -> datetime | None:
+    return datetime.fromtimestamp(int(ms) / 1000, tz=timezone.utc) if ms is not None else None
+
+
+# ---- meetings (MeetingSummaryLite / MeetingSummary) -------------------------------------
 
 def meetings_list(payload: Any) -> list[dict]:
-    return as_list(payload, "meetings list", ["meetings", "data", "items", "results"])
+    if not isinstance(payload, list):
+        raise FieldUnmapped("meetings list", ["<array>"], payload)
+    return payload
 
 def meeting_id(m: dict) -> str:
-    return str(pick(m, "meeting id", ["meetingId", "id", "meeting_id"]))
+    return str(pick(m, "meeting id", ["id"]))
 
 def meeting_state(m: dict) -> str:
-    return str(pick(m, "meeting state", ["state", "stateCode", "track.state", "venue.state"]))
+    return str(pick(m, "meeting state", ["state"], default="") or "")
 
-def meeting_date(m: dict) -> str:
-    return str(pick(m, "meeting date", ["meetingDate", "date", "meeting_date", "raceDate"]))[:10]
+def meeting_date(m: dict) -> str | None:
+    return epoch_ms_to_melbourne_date(pick(m, "meeting date", ["date"], default=None))
 
 def meeting_track(m: dict) -> str:
-    return str(pick(m, "meeting track", ["track", "trackName", "venue", "track.name", "venue.name"]))
+    return str(pick(m, "meeting track", ["trackName"], default="") or "")
+
+def meeting_status(m: dict) -> str:
+    return str(pick(m, "meeting status", ["status"], default="") or "")
 
 def meeting_races(m: dict) -> list[dict]:
-    return as_list(m, "races in meeting", ["races", "raceList"])
+    return list(pick(m, "races in meeting", ["races"], default=[]) or [])
 
-# ---- races ---------------------------------------------------------------------------
+# ---- races (RaceLite / RaceSummary) --------------------------------------------------------
 
 def race_id(r: dict) -> str:
-    return str(pick(r, "race id", ["raceId", "id", "race_id"]))
+    return str(pick(r, "race id", ["raceId"]))
 
 def race_number(r: dict) -> int | None:
-    v = pick(r, "race number", ["raceNumber", "number", "race_number", "raceNo"], default=None)
-    return int(v) if v is not None else None
+    return _int(pick(r, "race number", ["number"], default=None))
 
 def race_name(r: dict) -> str | None:
-    return pick(r, "race name", ["raceName", "name", "race_name"], default=None)
+    return pick(r, "race name", ["name"], default=None)
 
 def race_distance(r: dict) -> int | None:
-    v = pick(r, "race distance", ["distance", "distanceMetres", "distance_m"], default=None)
-    return int(v) if v is not None else None
+    return _int(pick(r, "race distance", ["distance"], default=None))
 
 def race_start_time(r: dict) -> str | None:
-    return pick(r, "race start time", ["startTime", "raceTime", "scheduledStart", "start_time"], default=None)
+    """RaceSummary.startTime is a string the spec does not shape; kept verbatim."""
+    v = pick(r, "race start time", ["startTime"], default=None)
+    return str(v) if v is not None else None
 
-def race_entries(payload: Any) -> list[dict]:
-    return as_list(payload, "entries in race form", ["runners", "entries", "horses", "form"])
+def race_status(r: dict) -> str | None:
+    return pick(r, "race status", ["status"], default=None)
 
-# ---- entries / horses -------------------------------------------------------------
+def race_market_percentage(r: dict) -> float | None:
+    """RaceSummary.syntheticHold: 1.2 means a 120% market. Returned as a percentage."""
+    v = _num(pick(r, "syntheticHold", ["syntheticHold"], default=None))
+    return v * 100 if v is not None else None
+
+def race_entries(r: dict) -> list[dict]:
+    return list(pick(r, "entries in race", ["entries"], default=[]) or [])
+
+def race_runner_count(r: dict) -> int:
+    """Runners on the card less scratchings: what a race-form call is priced over."""
+    return sum(1 for e in race_entries(r) if not entry_scratched(e))
+
+# ---- entries (RaceEntryLite / RaceEntry) ---------------------------------------------------
 
 def horse_id(e: dict) -> str:
-    return str(pick(e, "horse id", ["horseId", "horse.id", "horse_id", "id"]))
+    """breedingId is Form King's horse identifier on race entries and speedmap entries."""
+    return str(pick(e, "horse id", ["breedingId"]))
 
 def horse_name(e: dict) -> str:
-    return str(pick(e, "horse name", ["horseName", "horse.name", "name", "runnerName"]))
+    return str(pick(e, "horse name", ["horse.name", "horse"]))
+
+def entry_number(e: dict) -> int | None:
+    return _int(pick(e, "saddlecloth", ["number"], default=None))
 
 def entry_barrier(e: dict) -> int | None:
-    v = pick(e, "barrier", ["barrier", "barrierNumber", "gate"], default=None)
-    return int(v) if v is not None else None
+    return _int(pick(e, "barrier", ["barrier"], default=None))
 
 def entry_weight(e: dict) -> float | None:
-    v = pick(e, "weight", ["weight", "handicapWeight", "weightCarried"], default=None)
-    return float(v) if v is not None else None
+    return _num(pick(e, "weight", ["weightCarried", "weight"], default=None))
 
 def entry_jockey(e: dict) -> str | None:
-    return pick(e, "jockey", ["jockey", "jockeyName", "jockey.name"], default=None)
+    return pick(e, "jockey", ["jockey"], default=None)
 
 def entry_trainer(e: dict) -> str | None:
-    return pick(e, "trainer", ["trainer", "trainerName", "trainer.name"], default=None)
+    return pick(e, "trainer", ["trainer"], default=None)
 
 def entry_scratched(e: dict) -> bool:
-    return bool(pick(e, "scratched", ["scratched", "isScratched"], default=False))
+    return bool(pick(e, "scratched", ["scratched"], default=False))
 
 def entry_neural_rating(e: dict) -> float | None:
-    v = pick(e, "FK Neural rating", ["neural", "neuralRating", "ratings.neural", "fkNeural"], default=None)
-    return float(v) if v is not None else None
+    return _num(pick(e, "Neural rating", ["ratings.neural"], default=None))
 
 def entry_exp_rating(e: dict) -> float | None:
-    v = pick(e, "FK EXP rating", ["exp", "expRating", "ratings.exp", "fkExp"], default=None)
-    return float(v) if v is not None else None
+    return _num(pick(e, "EXP rating", ["ratings.exp"], default=None))
 
 def entry_days_since_last_run(e: dict) -> int | None:
-    v = pick(e, "days since last run", ["daysSinceLastRun", "daysSince", "lastStartDays"], default=None)
-    return int(v) if v is not None else None
+    return _int(pick(e, "days since last race", ["daysSinceLastRace"], default=None))
 
-# ---- runs (past events + benchmarks) -------------------------------------------
+def entry_past_events(e: dict) -> list[dict]:
+    return list(pick(e, "past events", ["pastEvents"], default=[]) or [])
 
-def entry_runs(e: dict) -> list[dict]:
-    """The horse's past runs as carried on a race-form entry or a horse profile."""
-    return as_list(e, "benchmarked runs", ["benchmarkedRuns", "benchmarks", "runs", "pastEvents", "form"])
-
-def run_id(r: dict) -> str:
-    return str(pick(r, "run id", ["runId", "eventId", "pastEventId", "id"]))
-
-def run_date(r: dict) -> str | None:
-    v = pick(r, "run date", ["date", "eventDate", "meetingDate", "raceDate"], default=None)
-    return str(v)[:10] if v else None
-
-def run_track_speed_verified(r: dict) -> bool:
-    """Every benchmarked_runs row stores this. Absent means unverified, stored as false,
-    but it is asked for by name so the payload has to carry it to be trusted."""
-    return bool(pick(r, "trackSpeedVerified", ["trackSpeedVerified", "track_speed_verified"]))
-
-def run_positions(r: dict) -> list[float | None]:
-    """Position in running across the race sections, in running order (early to finish)."""
-    v = pick(r, "position in running", ["positionInRunning", "positions", "pir", "runningPositions"])
-    return [None if x is None else float(x) for x in v]
-
-def run_vs_class(r: dict) -> list[float | None]:
-    """vs-Class benchmark per section, in running order. Above zero is faster than class."""
-    v = pick(r, "vs-class sectionals", ["vsClass", "vs_class", "sectionalsVsClass", "benchmarkVsClass"])
-    return [None if x is None else float(x) for x in v]
-
-def run_sections(r: dict) -> list[str] | None:
-    return pick(r, "section labels", ["sections", "sectionLabels", "sectionNames"], default=None)
-
-def run_finish_position(r: dict) -> int | None:
-    v = pick(r, "finish position", ["finishPosition", "position", "placing", "finish"], default=None)
-    return int(v) if v is not None else None
-
-# ---- speedmaps -----------------------------------------------------------------------
-
-def speedmap_races(payload: Any) -> list[dict]:
-    return as_list(payload, "speedmap races", ["races", "speedmaps", "data"])
-
-def speedmap_runners(sm: dict) -> list[dict]:
-    return as_list(sm, "speedmap runners", ["runners", "horses", "entries"])
-
-def speedmap_early_speed(r: dict) -> float | None:
-    v = pick(r, "early speed metric", ["earlySpeed", "speed", "earlySpeedRating", "pace"], default=None)
-    return float(v) if v is not None else None
-
-def speedmap_predicted_position(r: dict) -> float | None:
-    v = pick(r, "predicted early position", ["predictedPosition", "settlePosition", "position", "mapPosition"], default=None)
-    return float(v) if v is not None else None
-
-# ---- odds and results ----------------------------------------------------------------
-
-def odds_list(payload: Any) -> list[dict]:
-    return as_list(payload, "odds runners", ["runners", "odds", "prices", "data"])
+# odds (RaceEntryOdds), present only when a market exists
+def entry_odds(e: dict) -> dict | None:
+    o = pick(e, "odds", ["odds"], default=None)
+    return o if isinstance(o, dict) else None
 
 def odds_current_price(o: dict) -> float | None:
-    v = pick(o, "current price", ["currentPrice", "price", "win", "fixedWin"], default=None)
-    return float(v) if v is not None else None
+    return _num(pick(o, "best price now", ["bestNow"], default=None))
+
+def odds_average_price(o: dict) -> float | None:
+    return _num(pick(o, "average price now", ["avgNow"], default=None))
 
 def odds_opening_price(o: dict) -> float | None:
-    v = pick(o, "opening price", ["openingPrice", "openPrice", "open"], default=None)
-    return float(v) if v is not None else None
+    return _num(pick(o, "average opening price", ["avgOpen"], default=None))
 
-def odds_starting_price(o: dict) -> float | None:
-    v = pick(o, "starting price", ["startingPrice", "sp", "finalPrice"], default=None)
-    return float(v) if v is not None else None
+def odds_firm_or_drift(o: dict) -> float | None:
+    """Form King's own move since open, in points of win chance, normalised for the
+    bookmaker percentage and scratchings. Negative is a drift."""
+    return _num(pick(o, "firmOrDrift", ["firmOrDrift"], default=None))
 
-def results_list(payload: Any) -> list[dict]:
-    return as_list(payload, "results", ["results", "runners", "placings", "data"])
+def odds_timestamp(o: dict) -> datetime | None:
+    return epoch_ms_to_utc(pick(o, "odds timestamp", ["timestamp"], default=None))
+
+# result (HorseResult), present once the race is resulted
+def entry_result(e: dict) -> dict | None:
+    r = pick(e, "horse result", ["horseResult"], default=None)
+    return r if isinstance(r, dict) else None
+
+def result_finish_position(r: dict) -> int | None:
+    return _int(pick(r, "finish position", ["finishPosition"], default=None))
 
 def result_margin(r: dict) -> float | None:
-    v = pick(r, "margin", ["margin", "marginLengths"], default=None)
-    return float(v) if v is not None else None
+    return _num(pick(r, "margin", ["margin"], default=None))
+
+def result_starting_price(r: dict) -> float | None:
+    return _num(pick(r, "starting price", ["startingPrice"], default=None))
+
+def result_betfair_sp(r: dict) -> float | None:
+    return _num(pick(r, "Betfair SP", ["betfairStartingPrice"], default=None))
+
+# ---- past events (PastEvent) and benchmarks (BenchmarkedRun) -----------------------------
+
+def past_event_is_race(p: dict) -> bool:
+    return bool(pick(p, "race flag", ["race"], default=True)) and not bool(pick(p, "scratched", ["scratched"], default=False))
+
+def past_event_race_id(p: dict) -> str | None:
+    v = pick(p, "past race id", ["raceId"], default=None)
+    return str(v) if v is not None else None
+
+def past_event_date(p: dict) -> str | None:
+    return epoch_ms_to_melbourne_date(pick(p, "past event date", ["date"], default=None))
+
+def past_event_track(p: dict) -> str | None:
+    return pick(p, "past event track", ["track"], default=None)
+
+def past_event_distance(p: dict) -> int | None:
+    return _int(pick(p, "past event distance", ["distance"], default=None))
+
+def past_event_finish(p: dict) -> int | None:
+    return _int(pick(p, "past finish position", ["finishPosition"], default=None))
+
+def past_event_margin(p: dict) -> float | None:
+    return _num(pick(p, "past margin", ["margin"], default=None))
+
+def past_event_track_speed_verified(p: dict) -> bool:
+    """Required by the spec on every PastEvent. Stored on every benchmarked_runs row."""
+    return bool(pick(p, "trackSpeedVerified", ["trackSpeedVerified"]))
+
+def past_event_benchmark(p: dict) -> dict | None:
+    b = pick(p, "benchmark", ["benchmark"], default=None)
+    return b if isinstance(b, dict) else None
+
+
+# Position in running, in running order. The benchmark's pir fields are per 200m marker;
+# the PastEvent carries a coarser set on every run. Labels are fixed so runs over
+# different distances share an axis; a marker the race did not have is None.
+POSITION_LABELS = ["Settle", "1200m", "1000m", "800m", "600m", "400m", "200m", "Finish"]
+
+
+def run_positions(p: dict) -> list[float | None]:
+    b = past_event_benchmark(p) or {}
+    def g(*keys):
+        for k in keys:
+            v = _num(b.get(k)) if k in b else None
+            if v is not None:
+                return v
+        return None
+    return [
+        _num(p.get("posSettling")),
+        g("pir12") if "pir12" in b else _num(p.get("pos1200m")),
+        g("pir10"),
+        g("pir8") if "pir8" in b else _num(p.get("pos800m")),
+        g("pir6"),
+        g("pir4") if "pir4" in b else _num(p.get("pos400m")),
+        g("pir2"),
+        _num(p.get("finishPosition")),
+    ]
+
+
+# Sectional splits vs the Class benchmark, in running order. The first slot is the run
+# from the start to the first marker the race has (S-12, S-10, S-8 or S-6), then the
+# 200m splits to the finish. Section keys per the spec's SectionKey enum.
+SPLIT_LABELS = ["Start to first marker", "1200-1000", "1000-800", "800-600", "600-400", "400-200", "200-Finish"]
+_SPLIT_KEYS = ["12-10", "10-8", "8-6", "6-4", "4-2", "2-F"]
+LAST_600_SLOTS = 3  # the final three labels are the last 600m
+
+
+def run_splits_vs_class(p: dict, metric: str = "vsClass") -> list[float | None]:
+    b = past_event_benchmark(p)
+    if not b or not isinstance(b.get("sections"), dict):
+        return [None] * len(SPLIT_LABELS)
+    secs = b["sections"]
+    def val(key):
+        s = secs.get(key)
+        return _num(s.get(metric)) if isinstance(s, dict) else None
+    if "12-10" in secs:
+        first = val("S-12")
+    elif "10-8" in secs:
+        first = val("S-10")
+    elif "8-6" in secs:
+        first = val("S-8")
+    else:
+        first = val("S-6")
+    return [first] + [val(k) for k in _SPLIT_KEYS]
+
+
+def run_to_600_vs_class(p: dict) -> float | None:
+    b = past_event_benchmark(p) or {}
+    s = (b.get("sections") or {}).get("S-6")
+    return _num(s.get("vsClass")) if isinstance(s, dict) else None
+
+
+def run_last_600_vs_class(p: dict) -> float | None:
+    b = past_event_benchmark(p) or {}
+    s = (b.get("sections") or {}).get("6-F")
+    return _num(s.get("vsClass")) if isinstance(s, dict) else None
+
+
+def run_overall_vs_class(p: dict) -> float | None:
+    b = past_event_benchmark(p) or {}
+    return _num(b.get("vsClass"))
+
+
+def count_benchmarks(payload: Any) -> list[int] | None:
+    """BenchmarkedRun items per runner in a Get Race Form or Get Horse Form response:
+    what Form King charges the variable component on."""
+    if not isinstance(payload, dict):
+        return None
+    if isinstance(payload.get("entries"), list):
+        return [sum(1 for p in entry_past_events(e) if past_event_benchmark(p)) for e in payload["entries"]]
+    if isinstance(payload.get("pastEvents"), list):
+        return [sum(1 for p in payload["pastEvents"] if past_event_benchmark(p))]
+    return None
+
+
+# ---- horse form (HorseForm) ---------------------------------------------------------------------
+
+def horse_form_id(payload: dict) -> str:
+    return str(pick(payload, "horse form id", ["id"]))
+
+def horse_form_name(payload: dict) -> str | None:
+    return pick(payload, "horse form name", ["horse.name"], default=None)
+
+def horse_form_past_events(payload: dict) -> list[dict]:
+    return list(pick(payload, "horse past events", ["pastEvents"], default=[]) or [])
+
+
+# ---- speedmaps (Speedmap / SpeedmapEntry / ExpectedTempo) ------------------------------
+
+def speedmap_list(payload: Any) -> list[dict]:
+    if isinstance(payload, list):
+        return payload
+    if isinstance(payload, dict) and "raceId" in payload:
+        return [payload]
+    raise FieldUnmapped("speedmaps", ["<array of Speedmap>"], payload)
+
+def speedmap_race_id(sm: dict) -> str:
+    return str(pick(sm, "speedmap race id", ["raceId"]))
+
+def speedmap_entries(sm: dict) -> list[dict]:
+    return list(pick(sm, "speedmap entries", ["entries"], default=[]) or [])
+
+def speedmap_tempo(sm: dict) -> dict | None:
+    t = pick(sm, "expected tempo", ["expectedTempo"], default=None)
+    return t if isinstance(t, dict) else None
+
+def tempo_description(t: dict) -> str | None:
+    return pick(t, "tempo description", ["description"], default=None)
+
+def speedmap_early_speed(e: dict) -> float | None:
+    """earlySpeedValues.overall: a 1 to 10 speed figure (type SPEED_FIGURE) or the raw score."""
+    return _num(pick(e, "early speed overall", ["earlySpeedValues.overall"], default=None))
+
+def speedmap_pir(e: dict) -> float | None:
+    return _num(pick(e, "early speed pir", ["earlySpeedValues.pir"], default=None))
+
+def speedmap_median_vs_benchmark(e: dict) -> float | None:
+    return _num(pick(e, "median early vs benchmark", ["medianEarlyVsBenchmark"], default=None))
+
+
+def speedmap_predicted_order(entries: list[dict]) -> list[tuple[dict, int]]:
+    """(entry, predicted early position) with 1 the runner mapped to lead: highest early
+    speed score first, ties broken by the lower settling position score."""
+    scored = [e for e in entries if speedmap_early_speed(e) is not None]
+    scored.sort(key=lambda e: (-(speedmap_early_speed(e) or 0), speedmap_pir(e) if speedmap_pir(e) is not None else 99))
+    return [(e, i + 1) for i, e in enumerate(scored)]
+
+
+# ---- usage log (DailyUsageSummary) ----------------------------------------------------------
+
+def usage_daily_rows(payload: Any) -> list[tuple[str, int, int]]:
+    """(date, calls, credits) per day from Get Usage Log with aggregate=daily."""
+    if not isinstance(payload, list):
+        raise FieldUnmapped("daily usage", ["<array of DailyUsageSummary>"], payload)
+    return [(str(r.get("date")), int(r.get("totalCalls") or 0), int(r.get("creditsDeducted") or 0)) for r in payload]
