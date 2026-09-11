@@ -399,6 +399,14 @@ def run_ratings(p: dict) -> dict[str, Any]:
     """
     b = past_event_benchmark(p) or {}
     secs = b.get("sections") if isinstance(b.get("sections"), dict) else {}
+
+    def rated(v: Any) -> float | None:
+        # Form King writes 0 on a run it did not rate (a trial, a run before benchmarking).
+        # On a scale that runs 60 to 110, 0 is an absence, not a rating, and drawing it
+        # crushes every real point into the top of the chart.
+        n = _num(v)
+        return None if n is None or n == 0 else n
+
     ranks: dict[str, Any] = {}
     for key in ("6-F", "4-F", "2-F"):
         sec = secs.get(key)
@@ -413,17 +421,17 @@ def run_ratings(p: dict) -> dict[str, Any]:
         "finish": past_event_finish(p),
         "runners": _int(p.get("numRunners")),
         "trial": bool(p.get("trial", False)),
-        "wfa": _num(p.get("weightForAgeRating")),
-        "adjToday": _num(p.get("adjustedForTodaysWeight")),
-        "atWeights": _num(b.get("atWeights")),
-        "wfaRat": _num(b.get("wfaRat")),
-        "raceRating": _num(b.get("raceRating")),
-        "expected": _num(b.get("expectedRating")),
+        "wfa": rated(p.get("weightForAgeRating")),
+        "adjToday": rated(p.get("adjustedForTodaysWeight")),
+        "atWeights": rated(b.get("atWeights")),
+        "wfaRat": rated(b.get("wfaRat")),
+        "raceRating": rated(b.get("raceRating")),
+        "expected": rated(b.get("expectedRating")),
         "vsClass": _num(b.get("vsClass")),
         "vsAllAvg": _num(b.get("vsAllAvg")),
         "vsTrack": _num(b.get("vsTrack")),
-        "speedRating": _num(b.get("speedRating")),
-        "finishingSpeed": _num(b.get("finishingSpeed")),
+        "speedRating": rated(b.get("speedRating")),
+        "finishingSpeed": rated(b.get("finishingSpeed")),
         "trackSpeedVerified": bool(p.get("trackSpeedVerified", False)),
         "ranks": ranks,
     }

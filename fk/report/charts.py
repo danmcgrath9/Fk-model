@@ -110,9 +110,15 @@ class SpeedmapRunner:
     predicted_position: float | None
     early_speed: float | None
     barrier: int | None = None
+    pir: float | None = None                  # Form King's settling-position score
+    median_vs_benchmark: float | None = None  # median early speed against the runner's own benchmark
 
 
 LANES = ["Leader", "On pace", "Midfield", "Off pace", "Backmarker"]
+
+
+def _nan(v: float | None) -> float:
+    return float("nan") if v is None else float(v)
 
 
 def lane_assignments(runners: list[SpeedmapRunner]) -> list[tuple[SpeedmapRunner, int, str]]:
@@ -144,8 +150,9 @@ def speedmap_chart(runners: list[SpeedmapRunner], title: str) -> go.Figure:
                 textfont=dict(color="#0f1115", size=12),
                 marker=dict(size=30, color=speeds, colorscale="Blues", showscale=any(v is not None for v in speeds),
                             colorbar=dict(title="Early speed", thickness=12), line=dict(color="#e6e6e6", width=1)),
-                customdata=[[r.name, rank, r.early_speed if r.early_speed is not None else float("nan")] for r, rank, _ in placed],
-                hovertemplate="%{customdata[0]}<br>predicted %{customdata[1]}th early, barrier %{text}<br>early speed %{customdata[2]:.1f}<extra></extra>",
+                customdata=[[r.name, rank, _nan(r.early_speed), _nan(r.pir), _nan(r.median_vs_benchmark)] for r, rank, _ in placed],
+                hovertemplate=("%{customdata[0]}<br>predicted %{customdata[1]}th early, barrier %{text}<br>early speed %{customdata[2]:.1f}"
+                               "<br>settling score %{customdata[3]:.1f}<br>median early vs own benchmark %{customdata[4]:+.2f}<extra></extra>"),
                 showlegend=False,
             )
         )
@@ -273,11 +280,16 @@ def ratings_profile_chart(profiles: list[RunnerProfile], title: str) -> go.Figur
     from plotly.subplots import make_subplots
     fig = make_subplots(rows=3, cols=1, shared_xaxes=True, vertical_spacing=0.07,
                         specs=[[{}], [{}], [{"secondary_y": True}]],
-                        subplot_titles=("Form King ratings (peaks dashed)", "Lengths vs benchmark (0 = par)", "Speed rating (100 = par) and finishing speed %"))
+                        subplot_titles=("Ratings: at weights (blue), WFA (grey), expected (orange), race (diamond)<br>career peak green dashed, 12-month peak blue dashed",
+                                        "Lengths vs class (blue), track (grey), all average (purple); 0 = par",
+                                        "Speed rating, 100 = par (blue, left); finishing speed % (orange, right)"))
     counts: list[int] = []
     for pi, p in enumerate(profiles):
         runs = p.runs
-        x = [r.get("date") or "" for r in runs]
+        # Runs sit evenly along the axis, oldest left, so a horse that raced four times in a
+        # month and then spelled for six does not bunch its points into one blob; the date
+        # is the tick label and the hover.
+        x = list(range(1, len(runs) + 1))
         sym = ["circle-open" if r.get("trial") else "circle" for r in runs]
         labels = [_rank_label(r) for r in runs]
         hover = [f"{r.get('date','')} {r.get('track','') or ''} {r.get('distance') or ''}m"
@@ -322,9 +334,97 @@ def ratings_profile_chart(profiles: list[RunnerProfile], title: str) -> go.Figur
         tr.visible = i < (counts[0] if counts else 0)
     fig.add_hline(y=0, line=dict(color="#9aa0a6", width=1, dash="dash"), row=2, col=1)
     fig.add_hline(y=100, line=dict(color="#9aa0a6", width=1, dash="dash"), row=3, col=1)
-    fig.update_layout(title=title, height=820, **DARK)
-    fig.update_layout(legend=dict(orientation="h", x=0, y=-0.08), margin=dict(l=50, r=20, t=90, b=60),
+    fig.update_layout(title=title, height=760, showlegend=False, **DARK)
+    fig.update_layout(margin=dict(l=50, r=44, t=90, b=60),
                       updatemenus=[dict(type="dropdown", buttons=buttons, x=0, xanchor="left", y=1.12, yanchor="top",
                                         bgcolor="#1c2130", bordercolor="#2a2f3a", font=dict(color="#e6e6e6"))] if buttons else [])
-    fig.update_xaxes(title_text="Run date", row=3, col=1)
+    for a in fig.layout.annotations:
+        a.font = dict(size=11, color="#c9ced6")
+    # Ticks are the run dates of the runner shown first; the dropdown relabels them.
+    if profiles:
+        _profile_ticks(fig, profiles[0])
+        for b, p in zip(buttons, profiles):
+            ticks = _tick_spec(p)
+            b["args"].append({"xaxis3.tickvals": ticks[0], "xaxis3.ticktext": ticks[1],
+                              "xaxis.range": [0.3, len(p.runs) + 0.7], "xaxis2.range": [0.3, len(p.runs) + 0.7], "xaxis3.range": [0.3, len(p.runs) + 0.7]})
+    return fig
+
+
+def short_date(d: str) -> str:
+    """'2025-11-14' -> '14 Nov 25'; anything else is returned as given."""
+    try:
+        y, m, dd = str(d)[:10].split("-")
+        return f"{int(dd)} {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][int(m)-1]} {y[2:]}"
+    except (ValueError, IndexError):
+        return str(d)
+
+
+def _tick_spec(p: RunnerProfile) -> tuple[list[int], list[str]]:
+    n = len(p.runs)
+    step = max(1, -(-n // 5))   # at most about five labels, so they never collide on a phone
+    idx = list(range(1, n + 1, step))
+    if idx and idx[-1] != n:
+        if n - idx[-1] < step:
+            idx[-1] = n          # the last label is the latest run, never a label beside it
+        else:
+            idx.append(n)
+    return idx, [short_date(p.runs[i - 1].get("date") or "") for i in idx]
+
+
+def _profile_ticks(fig: go.Figure, p: RunnerProfile) -> None:
+    vals, text = _tick_spec(p)
+    n = len(p.runs)
+    fig.update_xaxes(tickvals=vals, ticktext=text, tickangle=0, tickfont=dict(size=10), range=[0.3, n + 0.7], row=3, col=1)
+    fig.update_xaxes(range=[0.3, n + 0.7], row=1, col=1)
+    fig.update_xaxes(range=[0.3, n + 0.7], row=2, col=1)
+
+
+@dataclass
+class TrendPanel:
+    """One runner's rating line for the trend grid."""
+    name: str
+    values: list[float]              # rated runs, oldest first (trials already left out)
+    dates: list[str]
+    reading: str                     # rising / steady / falling / too few runs
+    slope: float | None
+    peak: float | None = None
+
+
+TREND_COLOURS = {"rising": "#81c784", "falling": "#e57373", "steady": "#9aa0a6", "too few runs": "#5c6370"}
+
+
+def trend_grid(panels: list[TrendPanel], title: str, cols: int = 2) -> go.Figure:
+    """Small multiples: one panel per runner, the same rating scale on every panel so a
+    high line is a high horse, the reading and slope in each panel's title (the word rides
+    beside the colour), the career peak dashed, the latest run emphasised."""
+    from plotly.subplots import make_subplots
+    n = len(panels)
+    rows = max(1, -(-n // cols))
+    titles = []
+    for p in panels:
+        sl = f" {(0.0 if abs(p.slope) < 0.05 else p.slope):+.1f}/run" if p.slope is not None else ""
+        # Two lines: the name, then the reading. One line collides with its neighbour on a phone.
+        titles.append(f"{p.name}<br>{p.reading}{sl}")
+    height = 70 + 185 * rows
+    fig = make_subplots(rows=rows, cols=cols, subplot_titles=titles, vertical_spacing=(48 / height) if rows > 1 else 0.05,
+                        horizontal_spacing=0.08)
+    allv = [v for p in panels for v in p.values] + [p.peak for p in panels if p.peak is not None]
+    lo, hi = (min(allv) - 2, max(allv) + 2) if allv else (0, 1)
+    for i, p in enumerate(panels):
+        r, c = i // cols + 1, i % cols + 1
+        col = TREND_COLOURS.get(p.reading, "#9aa0a6")
+        x = list(range(1, len(p.values) + 1))
+        fig.add_trace(go.Scatter(x=x, y=p.values, mode="lines+markers", line=dict(color=col, width=2),
+                                 marker=dict(size=[9 if j == len(x) - 1 else 5 for j in range(len(x))], color=col),
+                                 hovertext=p.dates, hovertemplate=f"{p.name}<br>%{{hovertext}}<br>rating %{{y:.1f}}<extra></extra>",
+                                 showlegend=False), row=r, col=c)
+        if p.peak is not None and x:
+            fig.add_trace(go.Scatter(x=[x[0], x[-1]], y=[p.peak, p.peak], mode="lines", line=dict(color="#4fc3f7", width=1, dash="dash"),
+                                     hovertemplate=f"career peak {p.peak}<extra></extra>", showlegend=False), row=r, col=c)
+        fig.update_xaxes(showticklabels=False, showgrid=False, row=r, col=c)
+        fig.update_yaxes(range=[lo, hi], showticklabels=(c == 1), gridcolor="#2a2f3a", row=r, col=c)
+    fig.update_layout(title=title, height=height, **DARK)
+    fig.update_layout(margin=dict(l=40, r=10, t=70, b=20))   # over 60 so the renderer keeps it
+    for a in fig.layout.annotations:
+        a.font = dict(size=11, color="#e6e6e6")
     return fig

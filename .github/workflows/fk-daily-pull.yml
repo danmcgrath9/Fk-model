@@ -25,6 +25,9 @@ on:
       date:
         description: 'meeting date YYYY-MM-DD (default: tomorrow, Melbourne)'
         default: ''
+      rebuild_only:
+        description: 'yes = rebuild the reports from stored data, no Form King calls, no credits'
+        default: 'no'
 
 concurrency:
   group: fk-daily-pull
@@ -75,6 +78,7 @@ jobs:
         run: python scripts/spec_report.py
 
       - name: Daily pull
+        if: github.event.inputs.rebuild_only != 'yes'
         env:
           FK_API_KEY: ${{ steps.key.outputs.key == 'live' && secrets.FK_API_KEY || 'FK-TEST-API-KEY' }}
         run: |

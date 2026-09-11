@@ -139,16 +139,37 @@ free; the default assumes they cost). Fix the cause; the adjustment row records 
 
 Per race, in the order a punter reads it (sources in `docs/PUNTER_PRESENTATION_RESEARCH.md`):
 
-1. Tempo line and the market percentage on current prices.
-2. Summary table sorted by Neural: barrier, weight, jockey, days, Neural, EXP, rated price
-   (1 / Neural %, a market framed to 100%), price, opening, firm/drift, market %, Neural %,
-   value in probability points (Neural % minus market %, the Betfair Hub definition), flag
-   at more than 5 points either way.
-3. Speedmap as a lane map: Leader, On pace, Midfield, Off pace, Backmarker by predicted
-   early position, leader at the front, barrier in the marker, colour by early speed.
-4. Value ladder (best value at the top) and market moves since opening (firmers first).
-5. Position worm (last 5 runs, newest solid) and sectional worm (recency-weighted vs-Class,
+1. Race facts (going, rail, class, grade, prizemoney, LWS, expAdj), the tempo line and the
+   market percentage on current prices.
+2. Summary table sorted by Neural: barrier, weight, jockey, days, Neural, EXP, **trend**
+   (rising / steady / falling and the slope in rating points per run over the last six race
+   runs), last and best rating, rated price (1 / Neural %, a market framed to 100%), price,
+   opening, firm/drift, market %, Neural %, value in probability points (Neural % minus
+   market %, the Betfair Hub definition), flag at more than 5 points either way.
+3. Runner context: career, track, distance, track-and-distance and today's-going records,
+   the run in this prep with the matching first-up / second-up record, days since the last
+   win, 12-month jockey and trainer win rates, the jockey-horse combination, gear changes,
+   the official rating, distance change, age and sex, prizemoney.
+4. Form strip: every runner's last six runs side by side, newest first: finish / field,
+   margin, starting price, going, distance, track, date; trials greyed.
+5. Speedmap as a lane map: Leader, On pace, Midfield, Off pace, Backmarker by predicted
+   early position, leader at the front, barrier in the marker, colour by early speed; the
+   hover carries the settling score and the median early speed against the runner's own
+   benchmark.
+6. Rating trend grid: every runner at once on ONE scale, last six race runs, career peak
+   dashed, the latest run the big dot, the reading and slope in each panel's title.
+7. Value ladder (best value at the top) and market moves since opening (firmers first).
+8. Position worm (last 5 runs, newest solid) and sectional worm (recency-weighted vs-Class,
    last 600m shaded), with a ranked late-speed table: to the 600m against the last 600m.
+9. Ratings profile, one runner at a time from a dropdown: every rating Form King attaches to
+   a run (at weights, WFA, market expected, race rating, the career and 12-month peaks),
+   lengths vs class / track / all average, speed rating and finishing speed, with the
+   finish, race rank and meeting rank of the last 600m beside each point; trials hollow.
+   Runs sit evenly along the axis (a spell is a gap in the dates, not in the picture) and a
+   rating Form King wrote as 0 is drawn as no rating.
+
+To re-render the reports after a code change without spending a credit: Actions > fk daily
+pull > Run workflow > rebuild_only = yes.
 
 ## Design notes
 

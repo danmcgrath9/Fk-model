@@ -17,10 +17,11 @@ from pathlib import Path
 
 from _common import load_settings, today_melbourne
 from fk import fields as F
-from fk.report.charts import (LateSpeedRow, RunnerProfile, RunnerRuns, SpeedmapRunner, lane_assignments, market_move_chart,
-                              position_worm, ratings_profile_chart, recency_weighted_mean, sectional_worm, speedmap_chart,
-                              value_ladder)
-from fk.report.html import RaceSection, SummaryRow, render_meeting
+from fk.report.charts import (LateSpeedRow, RunnerProfile, RunnerRuns, SpeedmapRunner, TrendPanel, lane_assignments,
+                              market_move_chart, position_worm, ratings_profile_chart, recency_weighted_mean, sectional_worm,
+                              speedmap_chart, trend_grid, value_ladder)
+from fk.report.html import ContextRow, FormStripRow, RaceSection, SummaryRow, render_meeting
+from fk.trend import rating_series, trend
 from fk.report.probability import (disagreement, market_implied, market_percentage, rated_price, rating_implied,
                                    tempo_reading, value_points)
 
@@ -41,8 +42,64 @@ METHOD_NOTE = (
     "mean (newest 1.0, then x0.8 per run) of the vs-Class benchmark for each 200m split over the last 10 benchmarked runs, "
     "in lengths, above zero faster than class. Position worm: position in running at each marker, last 5 runs, newest solid. "
     "Speedmap: Form King's early speed score (higher = faster early) orders the field; lanes are by that order; the tempo "
-    "line is Form King's expected tempo for the race."
+    "line is Form King's expected tempo for the race. Trend: least-squares slope, in rating points per run, of the runner's "
+    "rating adjusted to today's weight over its last six race runs (trials left out); rising or falling past 0.75 a run, "
+    "else steady; Last and Best are the latest and highest of those ratings. The trend grid draws every runner on one scale "
+    "with the career peak dashed. Form strip and context are Form King's own form-guide fields, printed as given."
 )
+
+PREP_FORM = {1: "firstUpForm", 2: "secondUpForm", 3: "thirdUpForm"}
+
+
+def _ordinal(n: int) -> str:
+    return f"{n}{'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
+
+
+def race_facts_line(raw: dict | None) -> list[str]:
+    """Race-level facts for the header, only those the payload carries."""
+    if not raw:
+        return []
+    f = F.race_facts(raw)
+    out = []
+    if f.get("going"):
+        out.append(f"Going {f['going']}" + (f" {f['goingNumber']}" if f.get("goingNumber") is not None else ""))
+    if f.get("rail"):
+        out.append(f"Rail: {f['rail']}")
+    if f.get("restrictions"):
+        out.append(str(f["restrictions"]))
+    if f.get("grade"):
+        out.append(f"Grade {f['grade']}")
+    if f.get("prizemoney") is not None:
+        out.append(f"Prize ${f['prizemoney']:,.0f}")
+    if f.get("lws") is not None:
+        out.append(f"LWS {f['lws']:.1f}")
+    if f.get("expAdj") is not None:
+        out.append(f"expAdj {f['expAdj']:+.1f}")
+    if f.get("direction"):
+        out.append(str(f["direction"]).replace("_", " ").lower())
+    return out
+
+
+def context_row(e: dict) -> ContextRow:
+    raw = e.get("raw") or {}
+    fr = F.entry_form_record(raw)
+    j, t = F.entry_jockey_form(raw), F.entry_trainer_form(raw)
+    _, changes = F.entry_gear(raw)
+    c = F.entry_context(raw)
+    prep = None
+    if c.get("runInPrep") is not None:
+        n = int(c["runInPrep"])
+        rec = fr.get(PREP_FORM.get(n, ""))
+        prep = f"{_ordinal(n)} up" + (f": {rec}" if rec else "")
+    elif c.get("firstStarter"):
+        prep = "first starter"
+    age_sex = " ".join(x for x in [f"{c['age']}yo" if c.get("age") else "", c.get("sex") or ""] if x) or None
+    return ContextRow(
+        name=e["name"], career=fr.get("careerForm"), track=fr.get("trackForm"), distance=fr.get("distanceForm"),
+        track_distance=fr.get("trackAndDistanceForm"), going=fr.get("todaysGoingForm"), prep=prep,
+        days_since_win=c.get("daysSinceLastWin"), jockey_win=(j or {}).get("win12m"), trainer_win=(t or {}).get("win12m"),
+        combo=(j or {}).get("horseCombo") or None, gear_changes=", ".join(changes) or None, ohr=c.get("ohr"),
+        distance_change=c.get("distanceChange"), age_sex=age_sex, prizemoney=c.get("prizemoney"))
 
 
 def slug(s: str) -> str:
@@ -69,6 +126,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
     heading = f"Race {race.get('race_number') or '?'}: {race.get('race_name') or ''}".strip()
     sub = " ".join(x for x in [f"{race['distance_m']}m" if race.get("distance_m") else "", str(race.get("scheduled_at") or "")] if x)
     section = RaceSection(heading=heading, subheading=sub)
+    section.facts.extend(race_facts_line(race.get("raw")))
     active = [e for e in entries if not e.get("scratched")]
 
     pos_runners, sec_runners, late_rows = [], [], []
@@ -95,7 +153,8 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         names = {e["horse_id"]: e["name"] for e in entries}
         barriers = {e["horse_id"]: e.get("barrier") for e in entries}
         sm_runners = [SpeedmapRunner(names.get(r["horse_id"], r.get("name") or r["horse_id"]), r.get("predicted_position"),
-                                     r.get("early_speed"), r.get("barrier") if r.get("barrier") is not None else barriers.get(r["horse_id"]))
+                                     r.get("early_speed"), r.get("barrier") if r.get("barrier") is not None else barriers.get(r["horse_id"]),
+                                     pir=r.get("pir"), median_vs_benchmark=r.get("median_vs_benchmark"))
                       for r in speedmap]
         placed = lane_assignments(sm_runners)
         front = [r.name for r, _, lane in placed if lane in ("Leader", "On pace")]
@@ -109,6 +168,16 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         section.figures.append(speedmap_chart(sm_runners, "Speedmap: predicted settling position by lane, barrier in the marker, colour is early speed"))
     else:
         section.notes.append("No speedmap stored for this race.")
+
+    # Ratings by run, oldest first, for the trend column, the trend grid and the profile.
+    ratings_by_horse: dict[str, list[dict]] = {}
+    for e in active:
+        evs = (events_by_horse or {}).get(e["horse_id"], [])
+        rr = [F.run_ratings(ev["raw"]) for ev in evs if ev.get("raw")]
+        rr = [r for r in rr if r.get("date")]
+        rr.sort(key=lambda r: r["date"])
+        ratings_by_horse[e["horse_id"]] = rr
+    trends = {hid: trend(rating_series(rr)) for hid, rr in ratings_by_horse.items()}
 
     prices = {e["horse_id"]: (odds.get(e["horse_id"], {}).get("current")) for e in active}
     market = market_implied(prices)
@@ -126,8 +195,34 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
             price=prices.get(hid), opening=odds.get(hid, {}).get("opening"),
             market_prob=market.get(hid), model_prob=model.get(hid),
             flag=disagreement(market.get(hid), model.get(hid), FLAG_THRESHOLD),
-            rated_price=rated_price(model.get(hid)), value_pts=value_points(market.get(hid), model.get(hid))))
+            rated_price=rated_price(model.get(hid)), value_pts=value_points(market.get(hid), model.get(hid)),
+            trend=trends[hid].reading if hid in trends and trends[hid].n else None, slope=trends[hid].slope if hid in trends else None,
+            last_rating=trends[hid].last if hid in trends else None, best_rating=trends[hid].best if hid in trends else None))
     names_l = [e["name"] for e in active]
+    # Context and form strip in the summary's order (Neural, best first).
+    order = sorted(active, key=lambda e: (e.get("neural_rating") is None, -float(e.get("neural_rating") or 0)))
+    section.context = [context_row(e) for e in order]
+    for e in order:
+        evs = (events_by_horse or {}).get(e["horse_id"], [])
+        ms = [F.run_market(ev["raw"]) for ev in evs if ev.get("raw")]
+        ms = [m for m in ms if m.get("date")]
+        ms.sort(key=lambda m: m["date"], reverse=True)
+        if ms:
+            section.form_strip.append(FormStripRow(e["name"], ms))
+    # Trend grid: every runner at once, one scale, career peak dashed.
+    panels = []
+    for e in order:
+        rr = ratings_by_horse.get(e["horse_id"], [])
+        races = [r for r in rr if not r.get("trial")]
+        series = rating_series(races)
+        pts = [(r["date"], v) for r, v in zip(races, series) if v is not None][-6:]
+        if not pts:
+            continue
+        peak, _ = F.entry_peak_ratings(e["raw"]) if e.get("raw") else (None, None)
+        t = trends[e["horse_id"]]
+        panels.append(TrendPanel(e["name"], [v for _, v in pts], [str(d) for d, _ in pts], t.reading, t.slope, peak))
+    if panels:
+        section.figures.append(trend_grid(panels, "Rating trend, every runner on one scale: last six race runs, career peak dashed, latest run the big dot"))
     if any(r.value_pts is not None for r in section.rows):
         section.figures.append(value_ladder(names_l, [r.value_pts for r in section.rows], "Value: Neural chance minus market chance, best value at the top"))
     # Form King's firmOrDrift (points of win chance since open) when the entry carries it;
@@ -149,12 +244,9 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
     # Ratings profile: every rating per run, oldest first, one runner at a time.
     profiles = []
     for e in active:
-        events = (events_by_horse or {}).get(e["horse_id"], [])
-        runs = [F.run_ratings(ev["raw"]) for ev in events if ev.get("raw")]
-        runs = [r for r in runs if r.get("date")]
+        runs = ratings_by_horse.get(e["horse_id"], [])
         if not runs:
             continue
-        runs.sort(key=lambda r: r["date"])
         peak, peak12 = F.entry_peak_ratings(e["raw"]) if e.get("raw") else (None, None)
         profiles.append(RunnerProfile(e["name"], runs, peak, peak12))
     if profiles:
@@ -231,15 +323,27 @@ def demo(out_dir: Path, open_it: bool) -> Path:
         for hid, w in weights.items():
             price = round((total / w) / 1.18, 2)   # 1 / chance, shortened by the 118% overround
             odds[hid] = dict(current=price, opening=round(price * rng.uniform(0.85, 1.2), 2))
-        race = dict(race_number=n, race_name=f"Demo Handicap {n}", distance_m=1200 + 200 * n, scheduled_at="13:00")
+        race = dict(race_number=n, race_name=f"Demo Handicap {n}", distance_m=1200 + 200 * n, scheduled_at="13:00",
+                    raw=dict(going="Good", goingNumber=4, railPosition="True", restrictions="BM78", prizemoneyGrade="MSAT",
+                             totalPrizeMoney=150000, lws=92.0, expAdj=-0.4, direction="ANTI_CLOCKWISE"))
         events = {}
         for e in entries:
-            e["raw"] = {"ratings": {"peak": 96.0, "peak12m": 93.5}}
+            e["raw"] = {"ratings": {"peak": 96.0, "peak12m": 93.5},
+                        "form": {"careerForm": "14: 3-2-2", "trackForm": "3: 1-0-1", "distanceForm": "5: 2-1-0", "trackAndDistanceForm": "1: 0-0-1",
+                                 "todaysGoingForm": "8: 2-1-1", "firstUpForm": "3: 1-0-0", "secondUpForm": "3: 0-1-1"},
+                        "jockeyForm": {"lastTwelveMonthWinPercentage": 10 + rng.uniform(0, 12), "horseComboForm": "2: 1-0-0"},
+                        "trainerForm": {"lastTwelveMonthWinPercentage": 12 + rng.uniform(0, 10)},
+                        "gear": [{"gear": "Blinkers", "on": True, "change": "first time"}] if rng.random() < 0.3 else [],
+                        "raceInPrep": rng.choice([1, 2, 3, 4]), "daysSinceLastWin": rng.choice([60, 140, 300, None]),
+                        "benchmarkRating": 70 + rng.uniform(0, 20), "distanceChange": rng.choice(["0", "+200", "-100"]),
+                        "totalPrizeMoney": rng.uniform(50000, 400000), "age": rng.choice([3, 4, 5, 6]), "type": rng.choice(["G", "M", "H"])}
             evs = []
             for k, run in enumerate(runs[e["horse_id"]]):
                 raw = dict(run["raw"])
-                raw.update(weightForAgeRating=88 + rng.uniform(-6, 6), adjustedForTodaysWeight=87 + rng.uniform(-6, 6), numRunners=12,
-                           track="Demo Park", distance=1400, trial=k == 9)
+                drift = (9 - k) * rng.uniform(-0.6, 0.9)   # some runners improve run to run, some go the other way
+                raw.update(weightForAgeRating=88 + rng.uniform(-6, 6), adjustedForTodaysWeight=84 + drift + rng.uniform(-2, 2), numRunners=12,
+                           track="Demo Park", distance=1400, trial=k == 9, margin=round(rng.uniform(0, 6), 1), going="Good 4",
+                           startingPrice=round(rng.uniform(2.5, 30), 1), bsp=round(rng.uniform(2.5, 32), 1))
                 raw["benchmark"].update(atWeights=88 + rng.uniform(-6, 6), wfaRat=89 + rng.uniform(-6, 6), raceRating=95 + rng.uniform(-3, 3),
                                         expectedRating=90 + rng.uniform(-5, 5), vsAllAvg=rng.uniform(-2, 2), vsTrack=rng.uniform(-2, 2),
                                         speedRating=100 + rng.uniform(-5, 5), finishingSpeed=100 + rng.uniform(-4, 4))

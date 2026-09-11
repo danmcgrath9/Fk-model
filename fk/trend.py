@@ -55,3 +55,20 @@ def trend(values_oldest_first: list[float | None], *, window: int = 6, recent: i
         best=max(vals),
         n=len(vals),
     )
+
+
+RATING_KEYS = ("adjToday", "atWeights", "wfaRat", "wfa")
+
+
+def rating_series(runs_oldest_first: list[dict], *, races_only: bool = True) -> list[float | None]:
+    """One rating per run for the trend, from fk.fields.run_ratings dicts: the rating
+    adjusted to today's weight where Form King gives it (the scale the peaks are on),
+    else at weights carried, else the WFA rating. Trials are left out by default because
+    a trial rating is not run to win."""
+    out: list[float | None] = []
+    for r in runs_oldest_first:
+        if races_only and r.get("trial"):
+            continue
+        val = next((r[k] for k in RATING_KEYS if r.get(k) is not None), None)
+        out.append(float(val) if val is not None else None)
+    return out

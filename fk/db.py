@@ -91,13 +91,13 @@ class Db:
     def races_on(self, meeting_date: str, state: str) -> list[dict[str, Any]]:
         rows = self.conn.execute(
             """select r.race_id, r.meeting_id, r.race_number, r.race_name, r.distance_m, r.scheduled_at,
-                      m.track, m.meeting_date
+                      m.track, m.meeting_date, r.raw
                from fk.races r join fk.meetings m using (meeting_id)
                where m.meeting_date = %s and m.state = %s
                order by m.track, r.race_number""",
             (meeting_date, state),
         ).fetchall()
-        keys = ["race_id", "meeting_id", "race_number", "race_name", "distance_m", "scheduled_at", "track", "meeting_date"]
+        keys = ["race_id", "meeting_id", "race_number", "race_name", "distance_m", "scheduled_at", "track", "meeting_date", "raw"]
         return [dict(zip(keys, r)) for r in rows]
 
     def entries_for_race(self, race_id: str) -> list[dict[str, Any]]:
