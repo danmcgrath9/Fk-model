@@ -37,17 +37,21 @@ def load_settings(env_file: str | os.PathLike | None = None) -> Settings:
     """
     load_dotenv(env_file or PROJECT_ROOT / ".env", override=False)
 
+    def env(name: str, default: str = "") -> str:
+        # A value pasted into a secrets form often carries a trailing newline or space;
+        # "postgres\n" is not a database and "abc \n" is not an API key. Strip, always.
+        return (os.environ.get(name) or default).strip()
+
     def path(name: str, default: str) -> Path:
-        raw = os.environ.get(name, default)
-        p = Path(raw)
+        p = Path(env(name, default))
         return p if p.is_absolute() else PROJECT_ROOT / p
 
     return Settings(
-        api_key=os.environ.get("FK_API_KEY") or None,
+        api_key=env("FK_API_KEY") or None,
         spec_path=path("FK_SPEC_PATH", "b2c-openapi.yaml"),
-        base_url=os.environ.get("FK_BASE_URL") or None,
-        database_url=os.environ.get("DATABASE_URL") or None,
+        base_url=env("FK_BASE_URL") or None,
+        database_url=env("DATABASE_URL") or None,
         ledger_path=path("FK_LEDGER_PATH", "credits.sqlite"),
-        monthly_credits=int(os.environ.get("FK_MONTHLY_CREDITS", "20000")),
+        monthly_credits=int(env("FK_MONTHLY_CREDITS", "20000")),
         credits_overrides_path=path("FK_CREDITS_PATH", "credits.yaml"),
     )

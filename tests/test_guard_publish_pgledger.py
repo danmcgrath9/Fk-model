@@ -75,3 +75,11 @@ def test_pooler_candidates_from_a_direct_supabase_url():
     assert len(c) == 4 and c[-1].endswith("aws-1-ap-southeast-2.pooler.supabase.com:6543/postgres")
     assert pooler_candidates("postgresql://u:p@localhost:5432/x") == []
     assert "Secret123" not in redact(direct) and "db.vlnjvlgxiagywaudfuen.supabase.co" in redact(direct)
+
+
+def test_settings_strip_pasted_whitespace(monkeypatch, tmp_path):
+    from fk.config import load_settings
+    monkeypatch.setenv("FK_API_KEY", "abc123 \n")
+    monkeypatch.setenv("DATABASE_URL", "postgresql://u:p@h:5432/postgres\n")
+    s = load_settings(tmp_path / "none.env")
+    assert s.api_key == "abc123" and s.database_url == "postgresql://u:p@h:5432/postgres"

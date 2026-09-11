@@ -52,8 +52,8 @@ def main() -> None:
     ap.add_argument("--summary", help="file to append markdown to (GitHub: $GITHUB_STEP_SUMMARY)")
     ap.add_argument("--ledger-lines", help="file whose lines go under a Credits heading")
     a = ap.parse_args()
-    base = os.environ.get("SUPABASE_URL", "").rstrip("/")
-    key = os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "")
+    base = os.environ.get("SUPABASE_URL", "").strip().rstrip("/")
+    key = os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "").strip()
     if not base or not key:
         sys.exit("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required")
     files = sorted(Path(a.dir).glob("*.html"))

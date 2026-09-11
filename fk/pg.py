@@ -46,6 +46,7 @@ def redact(url: str) -> str:
 
 
 def connect(database_url: str, *, autocommit: bool = False) -> psycopg.Connection:
+    database_url = (database_url or "").strip()
     if not database_url:
         raise RuntimeError("DATABASE_URL is not set; put the Supabase connection string in .env or the FK_DATABASE_URL secret")
     if "YOUR-PASSWORD" in database_url.upper() or "YOUR_PASSWORD" in database_url.upper():
