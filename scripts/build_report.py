@@ -149,7 +149,9 @@ def from_database(target: str, track: str | None, out_dir: Path, open_it: bool) 
     if track:
         races = [r for r in races if r["track"].lower() == track.lower()]
     if not races:
-        raise SystemExit(f"no VIC races stored for {target}{' at ' + track if track else ''}; run daily_pull.py first")
+        # A day with no racing stored is not an error; the pull already said why.
+        print(f"no VIC races stored for {target}{' at ' + track if track else ''}; no report to build")
+        return
     by_track: dict[str, list[dict]] = {}
     for r in races:
         by_track.setdefault(r["track"], []).append(r)

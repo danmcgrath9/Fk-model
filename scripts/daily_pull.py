@@ -137,6 +137,10 @@ def main() -> None:
         print(f"  {F.meeting_track(m)}: status {F.meeting_status(m)}, not at final fields yet; skipped (use --all-statuses to pull anyway)")
     if not meetings:
         print(f"no {a.state} meetings on {target} to pull; nothing else to fetch")
+        everything = F.meetings_list(meetings_payload)
+        print(f"the upcoming list held {len(everything)} meeting(s) in total:")
+        for m in everything:
+            print(f"  {F.meeting_date(m)}  {F.meeting_state(m):4} {F.meeting_track(m):24} {F.meeting_status(m):16} {len(F.meeting_races(m))} races  id={F.meeting_id(m)}")
         return
     db = Db(settings.database_url)
     for m in meetings:
