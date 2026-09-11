@@ -30,6 +30,9 @@ concurrency:
   group: fk-daily-pull
   cancel-in-progress: false
 
+permissions:
+  contents: write   # to push the built reports to the `reports` branch
+
 jobs:
   pull:
     runs-on: ubuntu-latest
@@ -108,3 +111,19 @@ jobs:
           name: fk-reports
           path: reports/*.html
           if-no-files-found: ignore
+
+      # The latest reports also live on the `reports` branch: an orphan branch replaced on
+      # every run (force push, one commit), so the repository never grows with old pages.
+      - name: Push reports to the reports branch
+        if: always()
+        run: |
+          ls reports/*.html >/dev/null 2>&1 || { echo "no reports to push"; exit 0; }
+          rm -rf /tmp/reports-branch && mkdir /tmp/reports-branch && cp reports/*.html /tmp/reports-branch/
+          cd /tmp/reports-branch
+          git init -q -b reports
+          git config user.name "fk daily pull" && git config user.email "actions@users.noreply.github.com"
+          printf '# Reports\n\nLatest form reports, replaced on every run.\n' > README.md
+          git add -A && git commit -q -m "Reports built $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -q --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" reports
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
