@@ -11,8 +11,15 @@ from .pg import connect
 
 
 class Db:
+    """Writes are buffered per (table, key) and flushed on commit() in psycopg's pipeline
+    mode, so a race's thousand-odd past-event rows cost one batched round to the server
+    rather than one round trip each. From a GitHub runner to Sydney that is the
+    difference between seconds and minutes per race. Reads see committed data only, which
+    is how the scripts already use them (commit after each unit, then read)."""
+
     def __init__(self, database_url: str):
         self.conn = connect(database_url, autocommit=False)
+        self._pending: dict[tuple[str, tuple[str, ...], tuple[str, ...]], list[list[Any]]] = {}
 
     def close(self) -> None:
         self.conn.close()
@@ -25,20 +32,32 @@ class Db:
     # ---- generic upsert ----------------------------------------------------------
 
     def upsert(self, table: str, key_cols: list[str], row: dict[str, Any]) -> None:
-        cols = list(row)
+        cols = tuple(row)
         vals = [Jsonb(v) if isinstance(v, (dict, list)) else v for v in row.values()]
-        updates = [c for c in cols if c not in key_cols]
-        sql = (
-            f"insert into fk.{table} ({', '.join(cols)}) values ({', '.join(['%s'] * len(cols))})"
-            f" on conflict ({', '.join(key_cols)}) do update set "
-            + ", ".join(f"{c} = excluded.{c}" for c in updates)
-        )
-        self.conn.execute(sql, vals)
+        self._pending.setdefault((table, tuple(key_cols), cols), []).append(vals)
+
+    def flush(self) -> None:
+        """Send every buffered write, one executemany per (table, column set), pipelined."""
+        if not self._pending:
+            return
+        pending, self._pending = self._pending, {}
+        with self.conn.pipeline():
+            with self.conn.cursor() as cur:
+                for (table, key_cols, cols), rows in pending.items():
+                    updates = [c for c in cols if c not in key_cols]
+                    sql = (
+                        f"insert into fk.{table} ({', '.join(cols)}) values ({', '.join(['%s'] * len(cols))})"
+                        f" on conflict ({', '.join(key_cols)}) do update set "
+                        + (", ".join(f"{c} = excluded.{c}" for c in updates) if updates else f"{cols[0]} = excluded.{cols[0]}")
+                    )
+                    cur.executemany(sql, rows)
 
     def commit(self) -> None:
+        self.flush()
         self.conn.commit()
 
     def rollback(self) -> None:
+        self._pending.clear()
         self.conn.rollback()
 
     # ---- typed reads the scripts need -------------------------------------------

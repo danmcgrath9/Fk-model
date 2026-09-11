@@ -102,3 +102,24 @@ def test_fit_under_cap_and_batch():
     assert sorted(v for _, v in r.done) == [2, 4] and len(r.failed) == 1 and r.skipped == []
     r2 = run_batch([1, 2, 3], fn, workers=1, per_second=50, budget_seconds=-1)
     assert r2.skipped == [1, 2, 3] and r2.done == []
+
+
+@pytest.mark.skipif(not os.environ.get("FK_TEST_DATABASE_URL"), reason="needs a Postgres with sql/001 applied")
+def test_db_buffered_upserts_flush_on_commit():
+    from datetime import datetime, timezone
+    from fk.db import Db
+    db = Db(os.environ["FK_TEST_DATABASE_URL"])
+    db.conn.execute("delete from fk.entries; delete from fk.races; delete from fk.meetings; delete from fk.horses")
+    db.conn.commit()
+    at = datetime(2026, 9, 11, tzinfo=timezone.utc)
+    db.upsert("meetings", ["meeting_id"], dict(meeting_id="M1", meeting_date="2026-07-11", track="Caulfield", state="VIC", raw={"id": "M1"}, fetched_at=at))
+    db.upsert("races", ["race_id"], dict(race_id="R1", meeting_id="M1", race_number=1, raw={}, fetched_at=at))
+    for i in range(3):
+        db.upsert("horses", ["horse_id"], dict(horse_id=f"H{i}", name=f"Horse {i}", fetched_at=at))
+    db.upsert("horses", ["horse_id"], dict(horse_id="H0", name="Horse 0 renamed", fetched_at=at))   # same key twice in one batch
+    assert db.conn.execute("select count(*) from fk.horses").fetchone()[0] == 0                   # nothing sent yet
+    db.commit()
+    assert db.conn.execute("select count(*) from fk.horses").fetchone()[0] == 3
+    assert db.conn.execute("select name from fk.horses where horse_id='H0'").fetchone()[0] == "Horse 0 renamed"
+    assert db.races_on("2026-07-11", "VIC")[0]["race_id"] == "R1"
+    db.close()
