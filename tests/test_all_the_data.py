@@ -46,7 +46,7 @@ def test_form_strip_cell_and_padding():
     assert "<b>3/12</b> 1.5L $6.50" in out and "Good 4 1400m Flemington 29 Aug 26" in out
     assert out.count("<td></td>") == 2   # two empty cells pad the strip to three runs
     t = dict(m, trial=True)
-    assert "class='trial'" in form_strip_html([FormStripRow("A", [t])], n=1)
+    assert "class='l trial'" in form_strip_html([FormStripRow("A", [t])], n=1)
 
 
 def test_context_row_render():
