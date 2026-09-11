@@ -23,10 +23,17 @@ A credit-aware data layer for the Form King Modellers API (Single State Pro, Vic
    path is taken from `b2c-openapi.yaml` 1.0.8, and the tests run against that file,
    but a live response can still differ from its documentation. The first test-key run
    (the `fk daily pull` workflow with key `test`) is where that shows.
-2. **Neural rating to probability** is a softmax stand-in, stated on the report page.
-   Form King publishes no rated price for Neural, and EXP is derived from the market
+2. **Neural rating to probability** is a stand-in: each runner's share of the field's
+   Neural points, stated on the report page. Form King calls Neural "a collection of
+   points" and its scale changes race to race (a field can top out at 15 or at 40), so
+   a share is the only scale-free reading; it is flatter than a market, so the value
+   column leans towards long shots until a calibrated conversion exists. Form King
+   publishes no rated price for Neural, and EXP is derived from the market
    (RaceEntryRatings.exp), so it cannot be priced against the market. Once results
-   accumulate (fetch_results.py), the scale can be calibrated on this state's history.
+   accumulate (fetch_results.py), the conversion can be fitted on this state's history.
+3. **The test key's speedmap endpoint answers HTTP 500** for the sample meetings, so no
+   run has yet exercised the speedmap mapping on live data; the race section says
+   "No speedmap stored" and everything else renders. The live key will tell.
 
 ## Running it from your phone (no computer needed)
 
@@ -56,6 +63,12 @@ GitHub mobile app shows. Everything below is a website form.
 Guards while nobody is watching: `FK_MAX_CREDITS_PER_RUN` (600) and `FK_MIN_BALANCE`
 (1000) are repository variables; a run whose estimate breaks either stops before its
 first paid call and says so on the run page.
+
+Where the reports end up after every run:
+- the run page's **Artifacts** section (a zip of the HTML files);
+- the `reports` branch of this repository (replaced each run, never grows), so the latest
+  pages are always at `github.com/danmcgrath9/Fk-model/tree/reports`;
+- and, if the two optional Supabase secrets are set, a tap-to-open link in the run summary.
 
 ## Setup (on a computer)
 
