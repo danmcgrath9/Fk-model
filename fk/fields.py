@@ -440,3 +440,115 @@ def past_event_is_spell(p: dict) -> bool:
 
 def past_event_is_trial(p: dict) -> bool:
     return bool(pick(p, "trial", ["trial"], default=False))
+
+
+# ---- the rest of the entry: conditions record, people, gear, race facts --------------
+
+def _s(v: Any) -> str | None:
+    return None if v is None else str(v)
+
+
+def entry_form_record(e: dict) -> dict[str, Any]:
+    """The form-guide strings on RaceEntry.form, as Form King writes them ("3: 1-0-1-1"
+    is starts: wins-seconds-thirds-other). Kept as strings; they are read, not summed."""
+    f = pick(e, "form", ["form"], default=None) or {}
+    keys = ("careerForm", "classForm", "distanceForm", "trackForm", "trackAndDistanceForm", "todaysGoingForm", "firstUpForm",
+            "secondUpForm", "thirdUpForm", "todaysWeight", "insideBarriers", "middleBarriers", "wideBarriers", "goodForm", "heavyForm",
+            "wet", "synthetic", "similarDistance", "sprintRaces", "middleRaces", "mileRaces", "stayingRaces")
+    out = {k: _s(f.get(k)) for k in keys if isinstance(f, dict)}
+    out["lengthsBeatenLastThree"] = _num(f.get("lengthsBeatenLastThree")) if isinstance(f, dict) else None
+    out["wonWithTodaysWeightOrHigher"] = bool(f.get("wonWithTodaysWeightOrHigher")) if isinstance(f, dict) else None
+    return out
+
+
+def entry_track_speed_going_form(e: dict) -> dict[str, str] | None:
+    g = pick(e, "trackSpeedGoingForm", ["trackSpeedGoingForm"], default=None)
+    return {k: str(v) for k, v in g.items()} if isinstance(g, dict) else None
+
+
+def entry_jockey_form(e: dict) -> dict[str, Any] | None:
+    j = pick(e, "jockeyForm", ["jockeyForm"], default=None)
+    if not isinstance(j, dict):
+        return None
+    return {"rides12m": _int(j.get("lastTwelveMonthRides")), "win12m": _num(j.get("lastTwelveMonthWinPercentage")),
+            "place12m": _num(j.get("lastTwelveMonthPlacePercentage")), "horseCombo": _s(j.get("horseComboForm")),
+            "horseComboWin": _num(j.get("horseComboWinPercentage")), "trackCombo": _s(j.get("trackComboForm")),
+            "trackComboWin": _num(j.get("trackComboWinPercentage"))}
+
+
+def entry_trainer_form(e: dict) -> dict[str, Any] | None:
+    t = pick(e, "trainerForm", ["trainerForm"], default=None)
+    if not isinstance(t, dict):
+        return None
+    return {"win12m": _num(t.get("lastTwelveMonthWinPercentage")), "form12m": _s(t.get("lastTwelveMonthForm")),
+            "horseCombo": _s(t.get("horseComboForm")), "jockeyCombo": _s(t.get("jockeyComboForm")),
+            "jockeyComboWin": _num(t.get("jockeyComboWinPercentage")), "trackCombo": _s(t.get("trackComboForm")),
+            "trackComboWin": _num(t.get("trackComboWinPercentage"))}
+
+
+def entry_gear(e: dict) -> tuple[list[str], list[str]]:
+    """(gear worn, gear changes) as plain names, e.g. (["Blinkers", "Tongue Tie"], ["Blinkers first time"])."""
+    worn, changes = [], []
+    for g in pick(e, "gear", ["gear"], default=[]) or []:
+        if not isinstance(g, dict):
+            continue
+        name = str(g.get("gear") or "")
+        if g.get("on"):
+            worn.append(name)
+        ch = g.get("change")
+        if ch and str(ch).lower() not in ("", "none", "no", "false", "unchanged"):
+            changes.append(f"{name} {ch}".strip())
+    txt = pick(e, "gearChanges", ["gearChanges"], default=None)
+    if txt and not changes:
+        changes.append(str(txt))
+    return worn, changes
+
+
+def entry_context(e: dict) -> dict[str, Any]:
+    """Odds and ends a form guide prints beside a runner."""
+    return {
+        "runInPrep": _int(pick(e, "raceInPrep", ["raceInPrep"], default=None)),
+        "firstStarter": bool(pick(e, "firstStarter", ["firstStarter"], default=False)),
+        "daysSinceLastWin": _int(pick(e, "daysSinceLastWin", ["daysSinceLastWin"], default=None)),
+        "distanceChange": _s(pick(e, "distanceChange", ["distanceChange"], default=None)),
+        "ohr": _num(pick(e, "benchmarkRating", ["benchmarkRating"], default=None)),
+        "apprenticeClaim": _num(pick(e, "apprenticeClaim", ["apprenticeClaim"], default=None)),
+        "wfaDiff": _num(pick(e, "wfaDiff", ["wfaDiff"], default=None)),
+        "prizemoney": _num(pick(e, "totalPrizeMoney", ["totalPrizeMoney"], default=None)),
+        "avgPrizemoney": _num(pick(e, "averagePrizeMoney", ["averagePrizeMoney"], default=None)),
+        "emergency": bool(pick(e, "emergency", ["emergency"], default=False)),
+        "dualAcceptor": bool(pick(e, "dualAcceptor", ["dualAcceptor"], default=False)),
+        "age": _int(pick(e, "age", ["horse.age"], default=None)),
+        "sex": _s(pick(e, "type", ["horse.type"], default=None)),
+        "sire": _s(pick(e, "sire", ["horse.sire"], default=None)),
+        "dam": _s(pick(e, "dam", ["horse.dam"], default=None)),
+        "trainingLocation": _s(pick(e, "training location", ["horse.trainingLocation"], default=None)),
+    }
+
+
+def race_facts(r: dict) -> dict[str, Any]:
+    """Race-level facts from RaceSummary the header should carry."""
+    return {
+        "going": _s(pick(r, "going", ["going"], default=None)),
+        "goingNumber": _int(pick(r, "goingNumber", ["goingNumber"], default=None)),
+        "rail": _s(pick(r, "railPosition", ["railPosition"], default=None)),
+        "direction": _s(pick(r, "direction", ["direction"], default=None)),
+        "lws": _num(pick(r, "lws", ["lws"], default=None)),
+        "expAdj": _num(pick(r, "expAdj", ["expAdj"], default=None)),
+        "restrictions": _s(pick(r, "restrictions", ["restrictions"], default=None)),
+        "grade": _s(pick(r, "prizemoneyGrade", ["prizemoneyGrade"], default=None)),
+        "prizemoney": _num(pick(r, "totalPrizeMoney", ["totalPrizeMoney"], default=None)),
+        "runners": _int(pick(r, "numRunners", ["numRunners"], default=None)),
+        "startTime": race_start_time(r),
+        "status": race_status(r),
+    }
+
+
+def run_market(p: dict) -> dict[str, Any]:
+    """What the market thought of a past run and how it went."""
+    return {"date": past_event_date(p), "sp": _num(p.get("startingPrice")), "bsp": _num(p.get("bsp")),
+            "finish": past_event_finish(p), "runners": _int(p.get("numRunners")), "margin": past_event_margin(p),
+            "going": _s(p.get("going")), "distance": past_event_distance(p), "track": past_event_track(p),
+            "weight": _num(p.get("weight")), "jockey": _s(p.get("jockey")), "raceInPrep": _int(p.get("raceInPrep")),
+            "daysSincePrevious": _int(p.get("daysSincePreviousRace")), "trial": past_event_is_trial(p),
+            "fieldStrength": _num(p.get("fieldStrength")), "prizemoney": _num(p.get("totalPrizemoney"))}
