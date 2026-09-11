@@ -12,6 +12,7 @@ Guarantees:
 from __future__ import annotations
 
 import os
+import time
 from dataclasses import dataclass
 from typing import Any
 
@@ -95,7 +96,19 @@ class FormKingClient:
         planned = self.plan(op_name, **params)
         return self.execute(planned)
 
-    def execute(self, planned: PlannedCall) -> Any:
+    def execute(self, planned: PlannedCall, *, retries_on_5xx: int = 1) -> Any:
+        """Make the call. A 5xx from Form King is retried once after a pause, since the
+        spec says a failed call is still billed and the retry is the cheaper of the two
+        ways to find out whether the fault was momentary."""
+        try:
+            return self._execute_once(planned)
+        except FormKingError as e:
+            if 500 <= e.status < 600 and retries_on_5xx > 0:
+                time.sleep(3)
+                return self.execute(planned, retries_on_5xx=retries_on_5xx - 1)
+            raise
+
+    def _execute_once(self, planned: PlannedCall) -> Any:
         if self.key_kind == "live" and not self.allow_live:
             raise LiveCallRefused(
                 f"refusing live call {planned.op.key} for {planned.credits} credits: "

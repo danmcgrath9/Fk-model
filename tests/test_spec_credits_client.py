@@ -113,3 +113,14 @@ def test_failed_live_call_is_still_ledgered(tmp_path):
         c.call(ops.UPCOMING_MEETINGS)
     row = ledger.rows()[0]
     assert row.http_status == 402 and row.credits == 1 and row.key_kind == "live"
+
+
+def test_server_error_is_retried_once_then_raised(tmp_path, monkeypatch):
+    import fk.client as client_mod
+    monkeypatch.setattr(client_mod.time, "sleep", lambda s: None)
+    s = FakeSession(status=500, body={"message": "Internal server error"})
+    c, ledger = make(tmp_path, session=s)
+    with pytest.raises(FormKingError):
+        c.call(ops.MEETING_SPEEDMAPS, meetingId="caulfield-20260711")
+    assert len(s.calls) == 2                 # one retry
+    assert len(ledger.rows()) == 2           # both attempts ledgered, as the spec bills them

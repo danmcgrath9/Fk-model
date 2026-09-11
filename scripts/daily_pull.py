@@ -23,7 +23,7 @@ from _common import bootstrap, confirm, make_client, today_melbourne
 from fk import fields as F
 from fk import ops
 from fk.cache import decide_profile_fetch
-from fk.client import PlannedCall
+from fk.client import FormKingError, PlannedCall
 from fk.db import Db, utc_now
 from fk.estimate import estimate
 
@@ -153,11 +153,12 @@ def main() -> None:
     planned: list[tuple[str, str, PlannedCall]] = []
     for m in meetings:
         mid = F.meeting_id(m)
-        planned.append(("speedmaps", mid, client.plan(ops.MEETING_SPEEDMAPS, meetingId=mid)))
         for r in F.meeting_races(m):
             planned.append(("race", F.race_id(r), client.plan(
                 ops.RACE_FORM, meetingId=mid, raceId=F.race_id(r), numBenchmarks=a.race_benchmarks, racesOnly=True,
                 runners=max(F.race_runner_count(r), 1))))
+    for m in meetings:   # after the forms: a speedmap failure must never cost the race data
+        planned.append(("speedmaps", F.meeting_id(m), client.plan(ops.MEETING_SPEEDMAPS, meetingId=F.meeting_id(m))))
     est = estimate([p for _, _, p in planned])
     print(f"\n{len(meetings)} {a.state} meeting(s) on {target}: " + ", ".join(f"{F.meeting_track(m)} ({len(F.meeting_races(m))} races)" for m in meetings))
     print(est.render(ledger.balance() if live else None))
@@ -166,10 +167,18 @@ def main() -> None:
 
     race_meeting = {F.race_id(r): F.meeting_id(m) for m in meetings for r in F.meeting_races(m)}
     horses_on_cards: dict[str, str] = {}
+    failures: list[str] = []
+    ok_races = 0
     client.allow_live = True
     try:
         for kind, owner_id, p in planned:
-            payload = client.execute(p)
+            try:
+                payload = client.execute(p)
+            except FormKingError as e:
+                # Recorded in the ledger already. Keep going: one bad call is not a bad day.
+                failures.append(f"{p.op.key} {p.params}: HTTP {e.status} {e.body[:120]}")
+                print(f"FAILED {failures[-1]}")
+                continue
             at = utc_now()
             if kind == "speedmaps":
                 for sm in F.speedmap_list(payload):
@@ -187,10 +196,17 @@ def main() -> None:
                     hid = store_entry(db, rid, e, at)
                     horses_on_cards[hid] = F.horse_name(e)
                     store_past_events(db, hid, F.entry_past_events(e), at)
+                ok_races += 1
             db.commit()
     finally:
         client.allow_live = False
-    print(f"stored {len(horses_on_cards)} runners across {sum(1 for k, _, _ in planned if k == 'race')} races")
+    print(f"stored {len(horses_on_cards)} runners across {ok_races} of {sum(1 for k, _, _ in planned if k == 'race')} races")
+    if failures:
+        print(f"\n{len(failures)} call(s) failed and were skipped:")
+        for f in failures:
+            print("  " + f)
+    if ok_races == 0:
+        sys.exit("no race form succeeded; nothing to report on")
 
     if a.no_profiles or not horses_on_cards:
         print(f"done (no profile fetches). ledger balance {ledger.balance()}")
@@ -213,7 +229,12 @@ def main() -> None:
     client.allow_live = True
     try:
         for d, p in plans:
-            payload = client.execute(p)
+            try:
+                payload = client.execute(p)
+            except FormKingError as e:
+                failures.append(f"{p.op.key} {p.params}: HTTP {e.status} {e.body[:120]}")
+                print(f"FAILED {failures[-1]}")
+                continue
             at = utc_now()
             n = store_past_events(db, d.horse_id, F.horse_form_past_events(payload), at)
             db.upsert("horses", ["horse_id"], dict(horse_id=d.horse_id, name=F.horse_form_name(payload) or horses_on_cards[d.horse_id],
