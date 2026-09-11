@@ -77,3 +77,11 @@ def test_saturday_meeting_estimate(tmp_path):
     deep = estimate(plans[:2] + [c.plan(ops.RACE_FORM, meetingId="M", raceId=f"R{i}", numBenchmarks=10, racesOnly=True, runners=12) for i in range(9)]).total
     assert cheap == 24
     assert deep == 1 + 5 + 9 * 32           # 294: the brief's "about 300 credits" for a nine-race Saturday at depth 10
+
+
+def test_zero_position_means_no_marker():
+    p = past_event("R9", 14)
+    p["pos1200m"] = 0
+    p["benchmark"]["pir8"] = 0
+    # [Settle, 1200, 1000, 800, 600, 400, 200, Finish]: 1200 sent as 0 -> None; pir8 0 falls back to pos800m
+    assert F.run_positions(p) == [5, None, None, 5, 5, 4, 3, 3]

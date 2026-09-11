@@ -39,6 +39,7 @@ h3{font-weight:500;font-size:14px;color:#c9ced6;margin:20px 0 4px}
 table.narrow{width:auto;min-width:420px}
 .pos{color:#81c784} .neg{color:#e57373}
 .facts{color:#c9ced6;margin:0 0 12px;font-size:14px} .facts span{margin-right:24px}
+details.method{margin:0 0 16px} details.method summary{cursor:pointer;color:#9aa0a6;font-size:13px;min-height:28px}
 """
 
 
@@ -134,7 +135,7 @@ def render_meeting(title: str, subtitle: str, sections: list[RaceSection], metho
              # plotly.js is embedded (about 4 MB) so the report opens with no network.
              "<script>" + get_plotlyjs() + "</script></head><body>",
              f"<h1>{html.escape(title)}</h1><div class='sub'>{html.escape(subtitle)}</div>",
-             f"<p class='note'>{html.escape(method_note)}</p>"]
+             f"<details class='method'><summary>How to read this page</summary><p class='note'>{html.escape(method_note)}</p></details>"]
     # Sticky race navigation: one tap per race on a phone.
     parts.append("<nav class='races'>" + "".join(
         f"<a href='#race-{i+1}'>{html.escape(s.heading.split(':')[0])}</a>" for i, s in enumerate(sections)) + "</nav>")

@@ -245,23 +245,26 @@ def past_event_benchmark(p: dict) -> dict | None:
 POSITION_LABELS = ["Settle", "1200m", "1000m", "800m", "600m", "400m", "200m", "Finish"]
 
 
+def _pos(v: Any) -> float | None:
+    """A position in running is 1 or more; Form King sends 0 for a marker the race did not have."""
+    f = _num(v)
+    return f if f is not None and f >= 1 else None
+
+
 def run_positions(p: dict) -> list[float | None]:
     b = past_event_benchmark(p) or {}
-    def g(*keys):
-        for k in keys:
-            v = _num(b.get(k)) if k in b else None
-            if v is not None:
-                return v
-        return None
+    def g(key, fallback=None):
+        v = _pos(b.get(key)) if key in b else None
+        return v if v is not None else _pos(p.get(fallback)) if fallback else v
     return [
-        _num(p.get("posSettling")),
-        g("pir12") if "pir12" in b else _num(p.get("pos1200m")),
+        _pos(p.get("posSettling")),
+        g("pir12", "pos1200m"),
         g("pir10"),
-        g("pir8") if "pir8" in b else _num(p.get("pos800m")),
+        g("pir8", "pos800m"),
         g("pir6"),
-        g("pir4") if "pir4" in b else _num(p.get("pos400m")),
+        g("pir4", "pos400m"),
         g("pir2"),
-        _num(p.get("finishPosition")),
+        _pos(p.get("finishPosition")),
     ]
 
 

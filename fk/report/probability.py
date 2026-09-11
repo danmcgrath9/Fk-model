@@ -14,24 +14,28 @@ def market_implied(prices: dict[str, float | None]) -> dict[str, float | None]:
     return {k: (raw[k] / total if k in raw else None) for k in prices}
 
 
-def rating_implied(ratings: dict[str, float | None], scale: float) -> dict[str, float | None]:
-    """Softmax of rating/scale over the runners that have a rating.
+def rating_implied(ratings: dict[str, float | None], scale: float | None = None) -> dict[str, float | None]:
+    """Neural-implied chance as each runner's SHARE of the field's Neural points.
 
-    ASSUMPTION, printed on the report: Form King's Neural rating is treated as a
-    log-odds-like score and converted with softmax(rating / scale). If the spec
-    exposes a rated price or probability, map it in fk.fields and prefer that;
-    this is a stand-in until then. `scale` is the rating-point gap that doubles
-    the odds ratio divided by ln 2; the default in the report is documented there.
+    Form King describes Neural as "a collection of points awarded to runners based on
+    traditional form and statistics", and its scale moves from race to race (a field
+    can top out at 15 points or at 40), so a fixed softmax temperature either flattens
+    one race or exaggerates another. Points share is scale-free and needs no parameter.
+    A runner with zero or negative points gets a floor of 1% of the top runner's share.
+    This is a stand-in until results history allows a calibrated conversion; the
+    report says so. `scale` is accepted for compatibility and ignored.
     """
-    if scale <= 0:
-        raise ValueError("scale must be positive")
     have = {k: float(v) for k, v in ratings.items() if v is not None}
     if not have:
         return {k: None for k in ratings}
     top = max(have.values())
-    exps = {k: math.exp((v - top) / scale) for k, v in have.items()}
-    total = sum(exps.values())
-    return {k: (exps[k] / total if k in exps else None) for k in ratings}
+    if top <= 0:
+        n = len(have)
+        return {k: (1.0 / n if k in have else None) for k in ratings}
+    floor = top * 0.01
+    pts = {k: max(v, floor) for k, v in have.items()}
+    total = sum(pts.values())
+    return {k: (pts[k] / total if k in pts else None) for k in ratings}
 
 
 def disagreement(market: float | None, model: float | None, threshold: float = 0.05) -> str | None:

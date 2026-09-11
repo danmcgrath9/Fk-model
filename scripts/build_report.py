@@ -25,14 +25,15 @@ from fk.report.probability import (disagreement, market_implied, market_percenta
 
 POSITION_RUNS = 5      # last 5 benchmarked runs for the position worm
 SECTIONAL_RUNS = 10    # last 10 for the sectional worm
-NEURAL_SCALE = 10.0    # softmax temperature for Neural -> probability; see report note
+NEURAL_SCALE = None    # Neural -> probability is a points share; see rating_implied
 FLAG_THRESHOLD = 0.05
 
 METHOD_NOTE = (
     "Price is Form King's best bookmaker price now; Open is the average price at market open. Market % is 1/price "
-    "normalised over the field (the race's market percentage is stated in its header). Neural % is a stand-in: "
-    f"softmax(Neural / {NEURAL_SCALE:g}) over runners with a rating; Form King publishes no rated price for Neural, and EXP "
-    "is derived from the market so it cannot price against it. Rated $ is 1 / Neural %. Value is Neural % minus Market %, "
+    "normalised over the field (the race's market percentage is stated in its header). Neural % is a stand-in: each "
+    "runner's share of the field's Neural points (Form King calls Neural a collection of points, and its scale changes "
+    "race to race); Form King publishes no rated price for Neural, and EXP is derived from the market so it cannot price "
+    "against it. Rated $ is 1 / Neural %. Value is Neural % minus Market %, "
     "in probability points (the Betfair Hub definition); Flag marks more than 5 points either way. Move is Form King's "
     "firmOrDrift: points of win chance since open, normalised for the book and scratchings. Sectional worm: recency-weighted "
     "mean (newest 1.0, then x0.8 per run) of the vs-Class benchmark for each 200m split over the last 10 benchmarked runs, "
@@ -44,6 +45,20 @@ METHOD_NOTE = (
 
 def slug(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
+
+
+def drop_empty_columns(runners: list[RunnerRuns]) -> list[RunnerRuns]:
+    """Remove a section label no run of any runner has a value for, so a sprint's axis does
+    not carry the 1200m and 1000m markers it never passed."""
+    if not runners:
+        return runners
+    n = len(runners[0].sections)
+    keep = [i for i in range(n) if any(i < len(run) and run[i] is not None for r in runners for run in r.runs)]
+    out = []
+    for r in runners:
+        out.append(RunnerRuns(r.horse_id, r.name, [r.sections[i] for i in keep],
+                              [[run[i] if i < len(run) else None for i in keep] for run in r.runs], r.run_labels))
+    return out
 
 
 def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list[dict]],
@@ -70,6 +85,8 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         last600 = [[F.run_last_600_vs_class(r["raw"])] for r in runs[:SECTIONAL_RUNS] if r.get("raw")]
         late_rows.append(LateSpeedRow(e["name"], recency_weighted_mean(to600, 1)[0] if to600 else None,
                                       recency_weighted_mean(last600, 1)[0] if last600 else None, len(runs[:SECTIONAL_RUNS])))
+    pos_runners = drop_empty_columns(pos_runners)
+    sec_runners = drop_empty_columns(sec_runners)
     # Speedmap first: it is the first thing a punter reads about a race.
     if speedmap:
         names = {e["horse_id"]: e["name"] for e in entries}

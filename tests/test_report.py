@@ -13,12 +13,14 @@ def test_market_implied_removes_overround():
     assert round(p["a"], 4) == 0.6667 and round(p["b"], 4) == 0.3333
 
 
-def test_rating_implied_softmax_sums_to_one_and_orders():
-    p = rating_implied({"a": 70.0, "b": 60.0, "c": None}, scale=10.0)
-    assert p["c"] is None
-    assert abs(p["a"] + p["b"] - 1) < 1e-9
-    # exp(1)/(exp(1)+1) = 0.7311
-    assert round(p["a"], 4) == 0.7311
+def test_rating_implied_is_a_points_share():
+    p = rating_implied({"a": 14.5, "b": 13.4, "c": 2.1, "d": None})
+    assert p["d"] is None and abs(p["a"] + p["b"] + p["c"] - 1) < 1e-9
+    # 14.5 / (14.5 + 13.4 + 2.1) = 0.4833
+    assert round(p["a"], 4) == 0.4833
+    # zero points gets a 1% floor of the top, never nothing
+    q = rating_implied({"a": 40.0, "b": 0.0})
+    assert round(q["b"], 4) == round(0.4 / 40.4, 4)
 
 
 def test_disagreement_threshold():
@@ -103,4 +105,12 @@ def test_probabilities_accept_decimals_from_postgres():
     from decimal import Decimal
     from fk.report.probability import market_implied, rating_implied
     assert round(market_implied({"a": Decimal("2.0"), "b": Decimal("4.0")})["a"], 4) == 0.6667
-    assert round(rating_implied({"a": Decimal("70.0"), "b": Decimal("60.0")}, 10.0)["a"], 4) == 0.7311
+    assert round(rating_implied({"a": Decimal("70.0"), "b": Decimal("30.0")})["a"], 4) == 0.7
+
+
+def test_drop_empty_columns():
+    from build_report import drop_empty_columns
+    r = [RunnerRuns("a", "A", ["Settle", "1200m", "800m", "Finish"], [[3, None, 2, 1], [4, None, 3, 2]]),
+         RunnerRuns("b", "B", ["Settle", "1200m", "800m", "Finish"], [[5, None, None, 4]])]
+    out = drop_empty_columns(r)
+    assert out[0].sections == ["Settle", "800m", "Finish"] and out[0].runs[0] == [3, 2, 1] and out[1].runs[0] == [5, None, 4]
