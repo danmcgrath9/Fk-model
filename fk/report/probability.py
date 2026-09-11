@@ -7,7 +7,7 @@ import math
 def market_implied(prices: dict[str, float | None]) -> dict[str, float | None]:
     """1/price, normalised so the field sums to 1 (removes the bookmaker's overround).
     Runners with no price get None and are excluded from the normalisation."""
-    raw = {k: (1.0 / p) for k, p in prices.items() if p is not None and p > 1.0}
+    raw = {k: (1.0 / float(p)) for k, p in prices.items() if p is not None and float(p) > 1.0}
     total = sum(raw.values())
     if total <= 0:
         return {k: None for k in prices}
@@ -25,7 +25,7 @@ def rating_implied(ratings: dict[str, float | None], scale: float) -> dict[str, 
     """
     if scale <= 0:
         raise ValueError("scale must be positive")
-    have = {k: v for k, v in ratings.items() if v is not None}
+    have = {k: float(v) for k, v in ratings.items() if v is not None}
     if not have:
         return {k: None for k in ratings}
     top = max(have.values())

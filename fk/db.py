@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 from datetime import datetime, timezone
+from decimal import Decimal
 from typing import Any, Iterable
 
 from psycopg.types.json import Jsonb
@@ -108,7 +109,7 @@ class Db:
             (race_id,),
         ).fetchall()
         keys = ["horse_id", "name", "barrier", "weight_kg", "jockey", "trainer", "scratched", "neural_rating", "exp_rating", "days_since_last_run", "raw"]
-        return [dict(zip(keys, r)) for r in rows]
+        return [dict(zip(keys, (_plain(v) for v in r))) for r in rows]
 
     def runs_for_horse(self, horse_id: str, limit: int) -> list[dict[str, Any]]:
         rows = self.conn.execute(
@@ -140,6 +141,11 @@ class Db:
         for horse_id, kind, price in rows:
             out.setdefault(horse_id, {})[kind] = float(price)
         return out
+
+
+def _plain(v: Any) -> Any:
+    """Postgres numeric arrives as Decimal; the report maths wants float."""
+    return float(v) if isinstance(v, Decimal) else v
 
 
 def utc_now() -> datetime:

@@ -97,3 +97,10 @@ def test_lane_map_and_late_speed_and_ladders():
     assert list(v.data[0].y) == ["B", "A"]
     m = market_move_chart(["A", "B"], [4.0, 3.0], [3.0, 3.6], "t")
     assert [round(x, 1) for x in m.data[0].x] == [-25.0, 20.0]   # A firmed 25%, B drifted 20%
+
+
+def test_probabilities_accept_decimals_from_postgres():
+    from decimal import Decimal
+    from fk.report.probability import market_implied, rating_implied
+    assert round(market_implied({"a": Decimal("2.0"), "b": Decimal("4.0")})["a"], 4) == 0.6667
+    assert round(rating_implied({"a": Decimal("70.0"), "b": Decimal("60.0")}, 10.0)["a"], 4) == 0.7311
