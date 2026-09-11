@@ -42,7 +42,8 @@ jobs:
         id: key
         run: |
           WANT="${{ github.event.inputs.key || 'live' }}"
-          if [ "$WANT" = "live" ] && [ "${{ vars.FK_LIVE }}" = "true" ]; then echo "key=live" >> "$GITHUB_OUTPUT"; else echo "key=test" >> "$GITHUB_OUTPUT"; fi
+          LIVE_FLAG="$(echo "${{ vars.FK_LIVE }}" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
+          if [ "$WANT" = "live" ] && [ "$LIVE_FLAG" = "true" ]; then echo "key=live" >> "$GITHUB_OUTPUT"; else echo "key=test" >> "$GITHUB_OUTPUT"; fi
       - name: Fetch results
         env:
           FK_API_KEY: ${{ steps.key.outputs.key == 'live' && secrets.FK_API_KEY || 'FK-TEST-API-KEY' }}
