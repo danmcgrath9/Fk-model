@@ -20,7 +20,10 @@ def to_body(html: str) -> str:
     body = re.search(r"<body>(.*)</body>", html, re.S)
     if not (title and style and body):
         raise SystemExit("not a report this script knows: no title, style or body")
-    return f"<title>{title.group(1)}</title>{style.group(0)}{''.join(scripts)}{body.group(1)}"
+    out = f"<title>{title.group(1)}</title>{style.group(0)}{''.join(scripts)}{body.group(1)}"
+    # plotly.min.js carries one literal U+FFFD inside a regex (/\ufffd/g). Some hosts refuse a
+    # file holding that character; the escaped form is the same regex.
+    return out.replace("\ufffd", "\\uFFFD")
 
 
 if __name__ == "__main__":
