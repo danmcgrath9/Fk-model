@@ -1,0 +1,13 @@
+# Secrets live in .env only. Never commit the key.
+.env
+# Local state
+*.sqlite
+*.sqlite-journal
+reports/*.html
+__pycache__/
+*.pyc
+.pytest_cache/
+# b2c-openapi.yaml is committed on purpose: the scheduled workflow reads it. The repo is private.
+.env*
+!env.example
+.venv/

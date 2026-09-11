@@ -1,0 +1,18 @@
+# Copy to credits.yaml and fill in from the "Credits" section of b2c-openapi.yaml.
+# This file OVERRIDES anything the parser read from the spec. Keys are the spec's
+# operation summaries (see: python scripts/spec_report.py). A bare number is a flat
+# cost; a list of rules lets the cost depend on a parameter (first match wins, the
+# rule with no `when` is the default).
+#
+# Get Upcoming Meetings: 1
+# Get Meeting Speedmaps: 5
+# Get Race Form:
+#   - when: {numBenchmarks: "<=5"}
+#     cost: 10
+#   - cost: 30
+# Get Horse Profile:
+#   - when: {numBenchmarks: "<=5"}
+#     cost: 0
+#   - cost: 4
+# Get Race Results: 2
+# Get Race Odds: 2

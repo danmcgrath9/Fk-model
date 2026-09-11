@@ -1,0 +1,114 @@
+"""Postgres (Supabase) store. Thin: upserts keyed on the primary key, raw payload kept."""
+from __future__ import annotations
+
+import json
+from datetime import datetime, timezone
+from typing import Any, Iterable
+
+import psycopg
+from psycopg.types.json import Jsonb
+
+
+class Db:
+    def __init__(self, database_url: str):
+        if not database_url:
+            raise RuntimeError("DATABASE_URL is not set; put the Supabase connection string in .env")
+        self.conn = psycopg.connect(database_url, autocommit=False)
+
+    def close(self) -> None:
+        self.conn.close()
+
+    def migrate(self, sql_path: str) -> None:
+        with open(sql_path, "r", encoding="utf-8") as fh:
+            self.conn.execute(fh.read())
+        self.conn.commit()
+
+    # ---- generic upsert ----------------------------------------------------------
+
+    def upsert(self, table: str, key_cols: list[str], row: dict[str, Any]) -> None:
+        cols = list(row)
+        vals = [Jsonb(v) if isinstance(v, (dict, list)) else v for v in row.values()]
+        updates = [c for c in cols if c not in key_cols]
+        sql = (
+            f"insert into fk.{table} ({', '.join(cols)}) values ({', '.join(['%s'] * len(cols))})"
+            f" on conflict ({', '.join(key_cols)}) do update set "
+            + ", ".join(f"{c} = excluded.{c}" for c in updates)
+        )
+        self.conn.execute(sql, vals)
+
+    def commit(self) -> None:
+        self.conn.commit()
+
+    def rollback(self) -> None:
+        self.conn.rollback()
+
+    # ---- typed reads the scripts need -------------------------------------------
+
+    def known_horses(self, horse_ids: Iterable[str]) -> dict[str, dict[str, Any]]:
+        ids = list(horse_ids)
+        if not ids:
+            return {}
+        rows = self.conn.execute(
+            "select horse_id, profile_depth, profile_fetched_at from fk.horses where horse_id = any(%s)", (ids,)
+        ).fetchall()
+        return {r[0]: {"profile_depth": r[1], "profile_fetched_at": r[2]} for r in rows}
+
+    def latest_run_date(self, horse_id: str) -> datetime | None:
+        row = self.conn.execute(
+            "select max(event_date) from fk.benchmarked_runs where horse_id = %s", (horse_id,)
+        ).fetchone()
+        return row[0] if row else None
+
+    def races_on(self, meeting_date: str, state: str) -> list[dict[str, Any]]:
+        rows = self.conn.execute(
+            """select r.race_id, r.meeting_id, r.race_number, r.race_name, r.distance_m, r.scheduled_at,
+                      m.track, m.meeting_date
+               from fk.races r join fk.meetings m using (meeting_id)
+               where m.meeting_date = %s and m.state = %s
+               order by m.track, r.race_number""",
+            (meeting_date, state),
+        ).fetchall()
+        keys = ["race_id", "meeting_id", "race_number", "race_name", "distance_m", "scheduled_at", "track", "meeting_date"]
+        return [dict(zip(keys, r)) for r in rows]
+
+    def entries_for_race(self, race_id: str) -> list[dict[str, Any]]:
+        rows = self.conn.execute(
+            """select e.horse_id, h.name, e.barrier, e.weight_kg, e.jockey, e.trainer, e.scratched,
+                      e.neural_rating, e.exp_rating, e.days_since_last_run
+               from fk.entries e join fk.horses h using (horse_id)
+               where e.race_id = %s order by e.barrier nulls last""",
+            (race_id,),
+        ).fetchall()
+        keys = ["horse_id", "name", "barrier", "weight_kg", "jockey", "trainer", "scratched", "neural_rating", "exp_rating", "days_since_last_run"]
+        return [dict(zip(keys, r)) for r in rows]
+
+    def runs_for_horse(self, horse_id: str, limit: int) -> list[dict[str, Any]]:
+        rows = self.conn.execute(
+            """select run_id, event_date, track_speed_verified, sections, positions, vs_class
+               from fk.benchmarked_runs where horse_id = %s
+               order by event_date desc nulls last, run_id desc limit %s""",
+            (horse_id, limit),
+        ).fetchall()
+        keys = ["run_id", "event_date", "track_speed_verified", "sections", "positions", "vs_class"]
+        return [dict(zip(keys, r)) for r in rows]
+
+    def speedmap_for_race(self, race_id: str) -> list[dict[str, Any]] | None:
+        row = self.conn.execute("select runners from fk.speedmaps where race_id = %s", (race_id,)).fetchone()
+        return row[0] if row else None
+
+    def latest_odds(self, race_id: str) -> dict[str, dict[str, float]]:
+        """{horse_id: {opening: p, current: p}} using the newest observation of each kind."""
+        rows = self.conn.execute(
+            """select distinct on (horse_id, kind) horse_id, kind, price
+               from fk.odds_snapshots where race_id = %s
+               order by horse_id, kind, observed_at desc""",
+            (race_id,),
+        ).fetchall()
+        out: dict[str, dict[str, float]] = {}
+        for horse_id, kind, price in rows:
+            out.setdefault(horse_id, {})[kind] = float(price)
+        return out
+
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
