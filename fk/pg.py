@@ -48,6 +48,11 @@ def redact(url: str) -> str:
 def connect(database_url: str, *, autocommit: bool = False) -> psycopg.Connection:
     if not database_url:
         raise RuntimeError("DATABASE_URL is not set; put the Supabase connection string in .env or the FK_DATABASE_URL secret")
+    if "YOUR-PASSWORD" in database_url.upper() or "YOUR_PASSWORD" in database_url.upper():
+        raise RuntimeError(
+            "FK_DATABASE_URL still contains the [YOUR-PASSWORD] placeholder. Replace it (brackets included) with the "
+            "database password from Supabase, Settings, Database, and save the secret again."
+        )
     try:
         return psycopg.connect(database_url, autocommit=autocommit, connect_timeout=15)
     except psycopg.OperationalError as first:
@@ -59,7 +64,15 @@ def connect(database_url: str, *, autocommit: bool = False) -> psycopg.Connectio
             try:
                 conn = psycopg.connect(cand, autocommit=autocommit, connect_timeout=15)
             except psycopg.OperationalError as e:
-                print(f"database: {redact(cand)} failed: {str(e).strip().splitlines()[0]}")
+                msg = str(e).strip().splitlines()[0]
+                print(f"database: {redact(cand)} failed: {msg}")
+                if "password authentication failed" in msg:
+                    raise RuntimeError(
+                        f"the database at {redact(cand)} answered, but refused the PASSWORD in FK_DATABASE_URL. "
+                        "Reset the database password in Supabase (Settings, Database, Reset database password; letters "
+                        "and numbers only), then save the secret as "
+                        f"{cand.split('//')[0]}//{urlsplit(cand).username}:<new password>@{urlsplit(cand).hostname}:{urlsplit(cand).port}/postgres"
+                    ) from e
                 continue
             print(f"database: connected via {redact(cand)}. Set FK_DATABASE_URL to this Session pooler form to skip the retries.")
             return conn
