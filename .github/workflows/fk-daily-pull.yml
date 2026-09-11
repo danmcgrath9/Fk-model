@@ -87,9 +87,19 @@ jobs:
         if: always()
         run: python scripts/ledger.py show --limit 30 > ledger.txt; cat ledger.txt
 
-      - name: Publish
-        if: always()
+      # Optional: needs FK_SUPABASE_URL and FK_SUPABASE_SERVICE_ROLE_KEY. Without them the
+      # reports are still attached to the run as a downloadable zip (the step below).
+      - name: Publish links
+        if: always() && env.SUPABASE_URL != '' && env.SUPABASE_SERVICE_ROLE_KEY != ''
         run: python scripts/publish_report.py --summary "$GITHUB_STEP_SUMMARY" --ledger-lines ledger.txt
+
+      - name: Credits in the summary
+        if: always() && (env.SUPABASE_URL == '' || env.SUPABASE_SERVICE_ROLE_KEY == '')
+        run: |
+          echo '## Reports' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Download the fk-reports zip under Artifacts below and open the .html inside it.' >> "$GITHUB_STEP_SUMMARY"
+          echo '## Credits' >> "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
+          cat ledger.txt >> "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"
 
       - uses: actions/upload-artifact@v4
         if: always()

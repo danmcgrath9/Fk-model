@@ -44,10 +44,11 @@ GitHub mobile app shows. Everything below is a website form.
    Not the cafe project: these keys go into GitHub, and the cafe's never do.
 2. In that project's SQL editor, paste and run `sql/001_schema.sql`, then
    `sql/002_credit_ledger_and_reports.sql`.
-3. On GitHub, repo **Settings > Secrets and variables > Actions**, add four secrets:
+3. On GitHub, repo **Settings > Secrets and variables > Actions**, add two secrets:
    - `FK_API_KEY`: your Form King key
    - `FK_DATABASE_URL`: Supabase Settings > Database > Connection string (URI), with the
      password filled in
+   Optional, for a tap-to-open report link instead of a zip download:
    - `FK_SUPABASE_URL`: Supabase Settings > API > Project URL
    - `FK_SUPABASE_SERVICE_ROLE_KEY`: Supabase Settings > API > service_role key
 4. Upload the spec: open the repository on GitHub, **Add file > Upload files**,
