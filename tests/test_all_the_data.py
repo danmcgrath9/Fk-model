@@ -172,3 +172,24 @@ def test_report_uses_the_projection_model_when_deployed():
     assert any(f.startswith("Rated by the projection model") for f in sec.facts)
     out = render_meeting("t", "s", [sec], "note")
     assert "Projected figure and the sim" in out and "20,000 times" in out
+
+
+def test_projection_table_shows_beside_a_logit_price():
+    from build_report import build_section
+    from fk.projection import Params
+    model = {"model": "all_form", "beta": {"neural_rel": 8.0, "last_rel": 0.2, "peak_rel": 0.0, "peak12_rel": 0.0},
+             "features": ["neural_rel", "last_rel", "peak_rel", "peak12_rel"], "races": 120, "to": "2026-09-10",
+             "projection_params": vars(Params())}
+    summ = race_summary(n_runners=3)
+    entries = [dict(horse_id=x["breedingId"], name=x["horse"]["name"], barrier=x["barrier"], weight_kg=56.0, jockey="J", trainer="T",
+                    scratched=False, neural_rating=x["ratings"]["neural"], exp_rating=58.0, days_since_last_run=14, raw=x) for x in summ["entries"]]
+    sec = build_section(dict(race_number=3, race_name="Demo", distance_m=1400, raw=summ), entries, {}, None, {}, rated_model=model)
+    assert len(sec.projections) == 3 and any(f.startswith("Rated by the back-tested model") for f in sec.facts)
+
+
+def test_select_meetings_takes_several_tracks():
+    from daily_pull import select_meetings
+    from fixtures import meeting_lite
+    ms = [meeting_lite(mid="A"), meeting_lite(mid="B"), meeting_lite(mid="C")]
+    ms[0]["trackName"], ms[1]["trackName"], ms[2]["trackName"] = "Flemington", "Caulfield Heath", "Echuca"
+    assert [m["id"] for m in select_meetings(ms, "flemington, caulfield", None)] == ["A", "B"]

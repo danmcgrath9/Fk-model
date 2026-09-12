@@ -21,6 +21,12 @@ on:
       fit_only:
         description: 'yes = no pulling, just fit on what is stored'
         default: 'no'
+      track:
+        description: 'only these tracks, comma separated (e.g. Flemington,Caulfield,Moonee Valley,Sandown); blank = all'
+        default: ''
+      days_of_week:
+        description: 'only these weekdays, 1=Monday .. 7=Sunday, comma separated (e.g. 6 for Saturdays); blank = every day'
+        default: ''
 
 concurrency:
   group: fk-daily-pull
@@ -64,8 +70,14 @@ jobs:
             if [ "$SPENT" -ge "${{ github.event.inputs.max_credits }}" ]; then
               echo "stopping before $d: $SPENT credits spent this run (max ${{ github.event.inputs.max_credits }})"; break
             fi
+            DOW=$(date -d "$d" +%u)
+            if [ -n "${{ github.event.inputs.days_of_week }}" ] && ! echo ",${{ github.event.inputs.days_of_week }}," | tr -d ' ' | grep -q ",$DOW,"; then
+              d=$(date -I -d "$d + 1 day"); continue
+            fi
             echo "=== $d (spent so far $SPENT) ==="
-            python scripts/daily_pull.py --key live --yes --no-profiles --date "$d" || echo "day $d failed; continuing"
+            TRACK_ARG=""
+            [ -n "${{ github.event.inputs.track }}" ] && TRACK_ARG="--track"
+            python scripts/daily_pull.py --key live --yes --no-profiles --date "$d" $TRACK_ARG ${{ github.event.inputs.track && format('"{0}"', github.event.inputs.track) || '' }} || echo "day $d failed; continuing"
             d=$(date -I -d "$d + 1 day")
           done
           echo "run spent $((START - $(python scripts/ledger.py balance))) credits" | tee -a "$GITHUB_STEP_SUMMARY"

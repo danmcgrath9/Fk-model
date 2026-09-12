@@ -67,12 +67,12 @@ def load_rated_price_model(path: Path = MODEL_PATH) -> dict | None:
 SIM_RUNS = 20000
 
 
-def projection_chances(model: dict, entries: list[dict], speedmap: list[dict] | None, tempo_raw: dict | None
+def projection_chances(params_dict: dict, entries: list[dict], speedmap: list[dict] | None, tempo_raw: dict | None
                        ) -> tuple[dict[str, float | None], list[ProjectionRow]]:
     """The projection model: each active runner's projected figure, the exact win chance,
     and the sim's win and place counts, as rows for the page."""
     from fk import projection as P
-    params = P.Params(**model["params"])
+    params = P.Params(**params_dict)
     positions = {r["horse_id"]: r.get("predicted_position") for r in (speedmap or []) if r.get("horse_id")}
     inputs = [i for i in (P.inputs_from_entry(e["raw"], positions.get(e["horse_id"]), len(entries)) for e in entries if e.get("raw")) if i is not None]
     tempo = P.tempo_score(tempo_raw)
@@ -243,15 +243,22 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
     k = neural_scale if neural_scale is not None else DEFAULT_SCALE
     lws = F.race_facts(race["raw"]).get("lws") if race.get("raw") else None
     model: dict = {}
+    priced_by_projection = False
     if rated_model and rated_model.get("model") == "projection_sim" and rated_model.get("params"):
-        model, section.projections = projection_chances(rated_model, active, speedmap, tempo_raw)
+        model, section.projections = projection_chances(rated_model["params"], active, speedmap, tempo_raw)
         section.sim_runs = SIM_RUNS
+        priced_by_projection = True
         model = {e["horse_id"]: model.get(e["horse_id"]) for e in active}
         section.facts.append(f"Rated by the projection model: a projected figure per runner and the race run {SIM_RUNS:,} times; "
                              f"weights fitted to Betfair SP over {rated_model['races']} races to {rated_model['to']}")
     elif rated_model:
         model = model_chances(rated_model, active, race.get("distance_m"), lws)
-    if model and not section.projections:
+        if rated_model.get("projection_params"):
+            # The projection is the founder's own method; it is shown beside the price even
+            # when the back-test trusts another model to set it.
+            _, section.projections = projection_chances(rated_model["projection_params"], active, speedmap, tempo_raw)
+            section.sim_runs = SIM_RUNS
+    if model and not priced_by_projection:
         model = {e["horse_id"]: model.get(e["horse_id"]) for e in active}
         section.facts.append(f"Rated by the back-tested model: fitted to Betfair SP over {rated_model['races']} races to {rated_model['to']}")
     else:

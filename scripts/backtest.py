@@ -103,6 +103,11 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         final_params = None
     final_score = B.score(final_probs, with_bsp)
     calib = B.calibration(final_probs, with_bsp)
+    # The projection (the founder's method) is shown on the page whether or not it prices,
+    # so its parameters are always fitted on every race and saved.
+    projection_params = None
+    if proj_ok:
+        projection_params = vars(final_params) if final_params is not None else vars(P.fit_params([proj[r.race_id] for r in with_bsp]))
 
     lines = ["# Back-test against Betfair SP", "",
              f"Fitted {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} over {len(with_bsp)} resulted races "
@@ -149,6 +154,7 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         "races": len(with_bsp), "runners": final_score.runners, "from": dates[0], "to": dates[-1],
         "model": chosen_name, "features": chosen_feats, "beta": final_beta,
         "params": vars(final_params) if final_params is not None else None,
+        "projection_params": projection_params,
         "scores": {"deployed_in_sample": vars(final_score),
                    **{f"{name}_out_of_sample": vars(o) for name, _, _, o in rows},
                    **{f"{name}_out_of_sample": vars(o) for name, (_, o) in yard.items()}},

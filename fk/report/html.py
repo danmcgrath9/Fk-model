@@ -291,7 +291,8 @@ def projection_html(rows: list[ProjectionRow], sim_runs: int) -> str:
             f"<td>{r.base:.1f}</td><td class='m'>{_signed(r.scope)}</td><td class='m'>{_signed(r.shape)}</td><td class='m'>{_signed(r.late)}</td>"
             f"<td><b>{r.projected:.1f}</b></td><td>{r.sd:.1f}</td><td>{_fmt(r.win, pct=True)}</td><td class='m'>{_fmt(r.place, pct=True)}</td>"
             f"<td>{_fmt(r.rated)}</td></tr>")
-    return (f"<h3>Projected figure and the sim: base from recent runs, scope, race shape, late speed; the race run {sim_runs:,} times</h3>"
+    return (f"<h3>Projected figure and the sim: base from recent runs, scope and Neural, race shape, late speed; "
+            f"the race run {sim_runs:,} times. Rated $ here is the sim's own price</h3>"
             f"<div class='tablewrap'><table>{head}{''.join(body)}</table></div>")
 
 

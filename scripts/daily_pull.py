@@ -102,11 +102,13 @@ def meetings_call(client, target: date, today: date, state: str):
 
 
 def select_meetings(meetings: list[dict], track: str | None, races: set[int] | None) -> list[dict]:
-    """Keep the meeting at `track` (case-insensitive, prefix allowed) and, within it, only
-    the race numbers asked for. A meeting left with no races is dropped."""
+    """Keep the meetings whose track starts with one of `track`'s comma-separated names
+    (case-insensitive) and, within them, only the race numbers asked for. A meeting left
+    with no races is dropped."""
+    wanted = [t.strip().lower() for t in (track or "").split(",") if t.strip()]
     out = []
     for m in meetings:
-        if track and not F.meeting_track(m).lower().startswith(track.lower()):
+        if wanted and not any(F.meeting_track(m).lower().startswith(t) for t in wanted):
             continue
         if races:
             m = dict(m)
@@ -128,7 +130,7 @@ def main() -> None:
     ap.add_argument("--yes", action="store_true", help="unattended: the credit cap and balance floor decide")
     ap.add_argument("--no-profiles", action="store_true", help="skip Get Horse Form for new horses")
     ap.add_argument("--all-statuses", action="store_true", help="pull meetings not yet at final fields too")
-    ap.add_argument("--track", help="only this track (case-insensitive, e.g. ballarat)")
+    ap.add_argument("--track", help="only these tracks, comma separated prefixes (e.g. flemington,caulfield)")
     ap.add_argument("--races", help="only these race numbers, comma separated (e.g. 1,3)")
     a = ap.parse_args()
 
