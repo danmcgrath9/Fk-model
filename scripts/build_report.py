@@ -76,7 +76,7 @@ def projection_chances(model: dict, entries: list[dict], speedmap: list[dict] | 
     positions = {r["horse_id"]: r.get("predicted_position") for r in (speedmap or []) if r.get("horse_id")}
     inputs = [i for i in (P.inputs_from_entry(e["raw"], positions.get(e["horse_id"]), len(entries)) for e in entries if e.get("raw")) if i is not None]
     tempo = P.tempo_score(tempo_raw)
-    projs = [P.project(i, tempo, params) for i in inputs]
+    projs = P.project_field(inputs, tempo, params)
     probs = P.win_probabilities(projs)
     sim = P.simulate(projs, n=SIM_RUNS)
     rows = [ProjectionRow(q.name, q.base, q.scope, q.shape, q.late, q.projected, q.sd, probs.get(q.horse_id),

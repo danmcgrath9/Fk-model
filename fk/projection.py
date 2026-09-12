@@ -42,6 +42,8 @@ class Params:
     sd_floor: float = 3.0        # least run-to-run spread, rating points
     light_sd: float = 1.5        # extra spread under six starts or three rated runs
     sd_scale: float = 1.0        # overall spread multiplier, fitted
+    unrated_gap: float = 3.0     # a runner with no rated run projects this far below the field's mean projection
+    unrated_sd: float = 3.0      # and with this much extra spread (before sd_scale)
 
 
 TEMPO_WORDS = {"slow": -1.0, "below average": -0.5, "average": 0.0, "above average": 0.5, "fast": 1.0}
@@ -158,6 +160,23 @@ def project(inp: Inputs, tempo: float, p: Params) -> Projection:
                       "; ".join(notes))
 
 
+def project_field(inputs: list[Inputs], tempo: float, p: Params) -> list[Projection]:
+    """Every runner projected; one with no rated run is not dropped but placed below the
+    field's mean projection with a wide spread, because "unknown" is not "cannot win"
+    (maidens are full of them and one of them wins)."""
+    projs = [project(i, tempo, p) for i in inputs]
+    rated = [q.projected for q in projs if q.projected is not None]
+    if rated:
+        mean = sum(rated) / len(rated)
+        for q in projs:
+            if q.projected is None:
+                q.base = mean - p.unrated_gap
+                q.projected = q.base
+                q.sd = (p.sd_floor + p.light_sd + p.unrated_sd) * p.sd_scale
+                q.note = "no rated run: field mean less the unrated gap, wide spread"
+    return projs
+
+
 def _phi(z: float) -> float:
     return math.exp(-0.5 * z * z) / math.sqrt(2 * math.pi)
 
@@ -225,7 +244,7 @@ class ProjRace:
 
 
 def race_probs(race: ProjRace, p: Params) -> dict[str, float | None]:
-    return win_probabilities([project(i, race.tempo, p) for i in race.inputs])
+    return win_probabilities(project_field(race.inputs, race.tempo, p))
 
 
 def kl_to_bsp(races: list[ProjRace], p: Params) -> float:
@@ -244,11 +263,12 @@ def kl_to_bsp(races: list[ProjRace], p: Params) -> float:
 
 
 SEARCH = {
-    "sd_scale": [0.6, 0.8, 1.0, 1.3, 1.7, 2.2],
-    "shape_weight": [0.0, 1.0, 2.0, 3.0, 4.5],
-    "late_weight": [0.0, 0.5, 1.0, 2.0, 3.0],
-    "scope_bonus": [0.0, 1.0, 2.0, 3.0, 4.5],
-    "trend_weight": [0.0, 0.5, 1.0, 1.5],
+    "sd_scale": [0.7, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 9.0],
+    "unrated_gap": [0.0, 2.0, 4.0, 7.0, 10.0],
+    "shape_weight": [0.0, 1.0, 2.0, 3.0, 4.5, 6.0],
+    "late_weight": [0.0, 0.5, 1.0, 2.0, 3.0, 4.5],
+    "scope_bonus": [0.0, 1.0, 2.0, 3.0, 4.5, 6.0],
+    "trend_weight": [0.0, 0.5, 1.0, 1.5, 2.5],
 }
 
 

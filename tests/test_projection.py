@@ -56,3 +56,14 @@ def test_inputs_from_entry_and_fit_moves_towards_bsp():
     wide = Params(sd_scale=2.2)
     fitted = fit_params([r], start=wide, sweeps=1)
     assert fitted.sd_scale < 2.2 and kl_to_bsp([r], fitted) < kl_to_bsp([r], wide)
+
+
+def test_unrated_runner_stays_in_the_field():
+    from fk.projection import project_field
+    p = Params(sd_scale=1.0)
+    projs = project_field([Inputs("a", "A", [100.0] * 4, 0.0, 20, None, None), Inputs("b", "B", [94.0] * 4, 0.0, 20, None, None),
+                           Inputs("c", "C", [], None, 0, None, None)], 0.0, p)
+    c = projs[2]
+    assert c.projected == 97.0 - 3.0 and c.sd == 3.0 + 1.5 + 3.0 and "no rated run" in c.note
+    probs = win_probabilities(projs)
+    assert probs["c"] is not None and 0 < probs["c"] < probs["a"]

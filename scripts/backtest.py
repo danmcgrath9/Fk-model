@@ -128,6 +128,10 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
                   "above was tuned against BSP."]
     if proj_rows and final_params is None:
         lines += ["", "projection_sim parameters on the training races: " + ", ".join(f"{k} {v}" for k, v in vars(params_tr).items())]
+    if proj_ok:
+        total = sum(len(proj[r.race_id].inputs) for r in with_bsp)
+        unrated = sum(1 for r in with_bsp for i in proj[r.race_id].inputs if not i.ratings)
+        lines += ["", f"Runners with no rated run (projected at the field mean less the unrated gap): {unrated} of {total}."]
     lines += ["", "Features, all relative within the race: neural_rel = Neural points / the race's top (top = 1); last_rel, "
               "peak_rel, peak12_rel = points below the race's best of the latest rated run (adjusted to today's weight), the "
               "career peak and the 12-month peak; wfa_rel, wfa_best_rel = points below the best of the latest and the best "
