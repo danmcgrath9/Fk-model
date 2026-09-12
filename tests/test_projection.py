@@ -67,3 +67,12 @@ def test_unrated_runner_stays_in_the_field():
     assert c.projected == 97.0 - 3.0 and c.sd == 3.0 + 1.5 + 3.0 and "no rated run" in c.note
     probs = win_probabilities(projs)
     assert probs["c"] is not None and 0 < probs["c"] < probs["a"]
+
+
+def test_neural_component_centres_on_the_field():
+    from fk.projection import project_field
+    p = Params(neural_weight=10.0)
+    projs = project_field([Inputs("a", "A", [100.0] * 4, 0.0, 20, None, None, neural=40.0),
+                           Inputs("b", "B", [100.0] * 4, 0.0, 20, None, None, neural=20.0)], 0.0, p)
+    # rel = 1.0 and 0.5, mean 0.75: a gains 10 x 0.25 = 2.5, b gives back 2.5
+    assert projs[0].projected == 102.5 and projs[1].projected == 97.5

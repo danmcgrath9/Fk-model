@@ -44,6 +44,7 @@ class Params:
     sd_scale: float = 1.0        # overall spread multiplier, fitted
     unrated_gap: float = 3.0     # a runner with no rated run projects this far below the field's mean projection
     unrated_sd: float = 3.0      # and with this much extra spread (before sd_scale)
+    neural_weight: float = 0.0   # points added per unit of Neural relative to the race's top (top = 1), centred on the field
 
 
 TEMPO_WORDS = {"slow": -1.0, "below average": -0.5, "average": 0.0, "above average": 0.5, "fast": 1.0}
@@ -81,6 +82,7 @@ class Inputs:
     starts: int | None
     late600: float | None         # recency-weighted last-600m vs class, lengths (+ = faster than class)
     settle: float | None          # 0 leader .. 1 backmarker, from the speedmap; None if unmapped
+    neural: float | None = None   # Form King's Neural points today
 
 
 def inputs_from_entry(e: dict, predicted_position: float | None = None, field_size: int | None = None) -> Inputs | None:
@@ -107,7 +109,7 @@ def inputs_from_entry(e: dict, predicted_position: float | None = None, field_si
     settle = None
     if predicted_position is not None and field_size and field_size > 1:
         settle = max(0.0, min(1.0, (float(predicted_position) - 1) / (field_size - 1)))
-    return Inputs(F.horse_id(e), F.horse_name(e), series, tr.slope, starts, late, settle)
+    return Inputs(F.horse_id(e), F.horse_name(e), series, tr.slope, starts, late, settle, F.entry_neural_rating(e))
 
 
 @dataclass
@@ -165,6 +167,21 @@ def project_field(inputs: list[Inputs], tempo: float, p: Params) -> list[Project
     field's mean projection with a wide spread, because "unknown" is not "cannot win"
     (maidens are full of them and one of them wins)."""
     projs = [project(i, tempo, p) for i in inputs]
+    # Neural as a component of the figure: form points relative to the race's top, centred
+    # on the field, so a runner with the most points gains and the rest give back.
+    if p.neural_weight:
+        neur = [i.neural for i in inputs]
+        have = [v for v in neur if v is not None]
+        if have and max(have) > 0:
+            top = max(have)
+            rel = [(max(v, top * 0.01) / top) if v is not None else None for v in neur]
+            known = [r for r in rel if r is not None]
+            mean_rel = sum(known) / len(known)
+            for q, r in zip(projs, rel):
+                if q.projected is not None and r is not None:
+                    adj = p.neural_weight * (r - mean_rel)
+                    q.scope += adj
+                    q.projected += adj
     rated = [q.projected for q in projs if q.projected is not None]
     if rated:
         mean = sum(rated) / len(rated)
@@ -269,6 +286,7 @@ SEARCH = {
     "late_weight": [0.0, 0.5, 1.0, 2.0, 3.0, 4.5],
     "scope_bonus": [0.0, 1.0, 2.0, 3.0, 4.5, 6.0],
     "trend_weight": [0.0, 0.5, 1.0, 1.5, 2.5],
+    "neural_weight": [0.0, 5.0, 10.0, 15.0, 20.0, 30.0],
 }
 
 
