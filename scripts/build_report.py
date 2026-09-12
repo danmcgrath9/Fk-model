@@ -67,19 +67,23 @@ def load_rated_price_model(path: Path = MODEL_PATH) -> dict | None:
 SIM_RUNS = 20000
 
 
-def projection_chances(params_dict: dict, entries: list[dict], speedmap: list[dict] | None, tempo_raw: dict | None
-                       ) -> tuple[dict[str, float | None], list[ProjectionRow]]:
+def projection_chances(params_dict: dict, entries: list[dict], speedmap: list[dict] | None, tempo_raw: dict | None,
+                       late_by_horse: dict[str, float | None] | None = None) -> tuple[dict[str, float | None], list[ProjectionRow]]:
     """The projection model: each active runner's projected figure, the exact win chance,
-    and the sim's win and place counts, as rows for the page."""
+    and the sim's win and place counts, as rows for the page. `late_by_horse` is the
+    last-600m figure the late-speed table prints, so the projection and the table agree."""
     from fk import projection as P
     params = P.Params(**params_dict)
     positions = {r["horse_id"]: r.get("predicted_position") for r in (speedmap or []) if r.get("horse_id")}
     inputs = [i for i in (P.inputs_from_entry(e["raw"], positions.get(e["horse_id"]), len(entries)) for e in entries if e.get("raw")) if i is not None]
+    for i in inputs:
+        if late_by_horse and late_by_horse.get(i.horse_id) is not None:
+            i.late600 = late_by_horse[i.horse_id]
     tempo = P.tempo_score(tempo_raw)
     projs = P.project_field(inputs, tempo, params)
     probs = P.win_probabilities(projs)
     sim = P.simulate(projs, n=SIM_RUNS)
-    rows = [ProjectionRow(q.name, q.base, q.scope, q.shape, q.late, q.projected, q.sd, probs.get(q.horse_id),
+    rows = [ProjectionRow(q.name, q.base, q.scope, q.shape, q.late, q.neural, q.projected, q.sd, probs.get(q.horse_id),
                           sim.get(q.horse_id, {}).get("place"), rated_price(probs.get(q.horse_id)), q.note) for q in projs]
     return probs, rows
 
@@ -188,6 +192,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
     active = [e for e in entries if not e.get("scratched")]
 
     pos_runners, sec_runners, late_rows = [], [], []
+    late_by_horse: dict[str, float | None] = {}
     for e in active:
         runs = runs_by_horse.get(e["horse_id"], [])
         if not runs:
@@ -204,6 +209,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         last600 = [[F.run_last_600_vs_class(r["raw"])] for r in runs[:SECTIONAL_RUNS] if r.get("raw")]
         late_rows.append(LateSpeedRow(e["name"], recency_weighted_mean(to600, 1)[0] if to600 else None,
                                       recency_weighted_mean(last600, 1)[0] if last600 else None, len(runs[:SECTIONAL_RUNS])))
+        late_by_horse[e["horse_id"]] = late_rows[-1].last_600
     pos_runners = drop_empty_columns(pos_runners)
     sec_runners = drop_empty_columns(sec_runners)
     # Speedmap first: it is the first thing a punter reads about a race.
@@ -245,7 +251,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
     model: dict = {}
     priced_by_projection = False
     if rated_model and rated_model.get("model") == "projection_sim" and rated_model.get("params"):
-        model, section.projections = projection_chances(rated_model["params"], active, speedmap, tempo_raw)
+        model, section.projections = projection_chances(rated_model["params"], active, speedmap, tempo_raw, late_by_horse)
         section.sim_runs = SIM_RUNS
         priced_by_projection = True
         model = {e["horse_id"]: model.get(e["horse_id"]) for e in active}
@@ -256,7 +262,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         if rated_model.get("projection_params"):
             # The projection is the founder's own method; it is shown beside the price even
             # when the back-test trusts another model to set it.
-            _, section.projections = projection_chances(rated_model["projection_params"], active, speedmap, tempo_raw)
+            _, section.projections = projection_chances(rated_model["projection_params"], active, speedmap, tempo_raw, late_by_horse)
             section.sim_runs = SIM_RUNS
     if model and not priced_by_projection:
         model = {e["horse_id"]: model.get(e["horse_id"]) for e in active}

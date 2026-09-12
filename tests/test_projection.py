@@ -33,14 +33,14 @@ def test_projection_arithmetic_by_hand():
 
 def test_win_probability_matches_the_closed_form_and_the_sim():
     from fk.projection import Projection
-    a = Projection("a", "A", 100.0, 0, 0, 0, 100.0, 3.0, 5, "")
-    b = Projection("b", "B", 97.0, 0, 0, 0, 97.0, 3.0, 5, "")
+    a = Projection("a", "A", 100.0, 0, 0, 0, 0, 100.0, 3.0, 5, "")
+    b = Projection("b", "B", 97.0, 0, 0, 0, 0, 97.0, 3.0, 5, "")
     probs = win_probabilities([a, b])
     expect = 0.5 * (1 + math.erf(3 / (3 * math.sqrt(2)) / math.sqrt(2)))   # Phi(0.7071) = 0.7602
     assert abs(probs["a"] - expect) < 1e-3 and abs(probs["a"] + probs["b"] - 1) < 1e-9
     sim = simulate([a, b], n=20000, seed=1)
     assert abs(sim["a"]["win"] - expect) < 0.01 and sim["a"]["place"] == 1.0
-    none = Projection("c", "C", None, 0, 0, 0, None, None, 0, "no rated run")
+    none = Projection("c", "C", None, 0, 0, 0, 0, None, None, 0, "no rated run")
     assert win_probabilities([a, b, none])["c"] is None
 
 
@@ -75,4 +75,4 @@ def test_neural_component_centres_on_the_field():
     projs = project_field([Inputs("a", "A", [100.0] * 4, 0.0, 20, None, None, neural=40.0),
                            Inputs("b", "B", [100.0] * 4, 0.0, 20, None, None, neural=20.0)], 0.0, p)
     # rel = 1.0 and 0.5, mean 0.75: a gains 10 x 0.25 = 2.5, b gives back 2.5
-    assert projs[0].projected == 102.5 and projs[1].projected == 97.5
+    assert projs[0].projected == 102.5 and projs[1].projected == 97.5 and projs[0].neural == 2.5 and projs[0].scope == 0.0

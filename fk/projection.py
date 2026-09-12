@@ -120,7 +120,8 @@ class Projection:
     scope: float
     shape: float
     late: float
-    projected: float | None
+    neural: float = 0.0           # the Neural component, when the fit gives it weight
+    projected: float | None = None
     sd: float | None
     n_rated: int
     note: str
@@ -130,7 +131,7 @@ def project(inp: Inputs, tempo: float, p: Params) -> Projection:
     """One runner's projected figure for today and the spread around it."""
     rs = inp.ratings[-p.recent_runs:]
     if not rs:
-        return Projection(inp.horse_id, inp.name, None, 0.0, 0.0, 0.0, None, None, 0, "no rated run")
+        return Projection(inp.horse_id, inp.name, None, 0.0, 0.0, 0.0, 0.0, None, None, 0, "no rated run")
     w = [p.decay ** i for i in range(len(rs))][::-1]          # newest weight 1.0
     base = sum(r * wi for r, wi in zip(rs, w)) / sum(w)
     notes = []
@@ -158,7 +159,7 @@ def project(inp: Inputs, tempo: float, p: Params) -> Projection:
     if (inp.starts is not None and inp.starts < 6) or len(inp.ratings) < 3:
         sd += p.light_sd
     sd *= p.sd_scale
-    return Projection(inp.horse_id, inp.name, base, scope, shape, late, base + scope + shape + late, sd, len(inp.ratings),
+    return Projection(inp.horse_id, inp.name, base, scope, shape, late, 0.0, base + scope + shape + late, sd, len(inp.ratings),
                       "; ".join(notes))
 
 
@@ -179,9 +180,8 @@ def project_field(inputs: list[Inputs], tempo: float, p: Params) -> list[Project
             mean_rel = sum(known) / len(known)
             for q, r in zip(projs, rel):
                 if q.projected is not None and r is not None:
-                    adj = p.neural_weight * (r - mean_rel)
-                    q.scope += adj
-                    q.projected += adj
+                    q.neural = p.neural_weight * (r - mean_rel)
+                    q.projected += q.neural
     rated = [q.projected for q in projs if q.projected is not None]
     if rated:
         mean = sum(rated) / len(rated)

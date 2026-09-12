@@ -135,6 +135,7 @@ class ProjectionRow:
     scope: float
     shape: float
     late: float
+    neural: float
     projected: float | None
     sd: float | None
     win: float | None       # exact chance
@@ -279,16 +280,16 @@ def projection_html(rows: list[ProjectionRow], sim_runs: int) -> str:
     """The projected figure per runner and where it came from, then the sim."""
     if not rows:
         return ""
-    head = ("<tr><th class='l'>Runner</th><th>Base</th><th class='m'>Scope</th><th class='m'>Shape</th><th class='m'>Late</th>"
+    head = ("<tr><th class='l'>Runner</th><th>Base</th><th class='m'>Scope</th><th class='m'>Neural</th><th class='m'>Shape</th><th class='m'>Late</th>"
             "<th>Projected</th><th>&plusmn;</th><th>Win</th><th class='m'>Place</th><th>Rated $</th></tr>")
     body = []
     for r in sorted(rows, key=lambda r: (r.projected is None, -(r.projected or 0))):
         if r.projected is None:
-            body.append(f"<tr><td class='l'>{html.escape(r.name)}</td><td colspan='9' class='l tiny'>{html.escape(r.note or 'no rated run')}</td></tr>")
+            body.append(f"<tr><td class='l'>{html.escape(r.name)}</td><td colspan='10' class='l tiny'>{html.escape(r.note or 'no rated run')}</td></tr>")
             continue
         body.append(
             f"<tr><td class='l'>{html.escape(r.name)}{'<br><span class=tiny>' + html.escape(r.note) + '</span>' if r.note else ''}</td>"
-            f"<td>{r.base:.1f}</td><td class='m'>{_signed(r.scope)}</td><td class='m'>{_signed(r.shape)}</td><td class='m'>{_signed(r.late)}</td>"
+            f"<td>{r.base:.1f}</td><td class='m'>{_signed(r.scope)}</td><td class='m'>{_signed(r.neural)}</td><td class='m'>{_signed(r.shape)}</td><td class='m'>{_signed(r.late)}</td>"
             f"<td><b>{r.projected:.1f}</b></td><td>{r.sd:.1f}</td><td>{_fmt(r.win, pct=True)}</td><td class='m'>{_fmt(r.place, pct=True)}</td>"
             f"<td>{_fmt(r.rated)}</td></tr>")
     return (f"<h3>Projected figure and the sim: base from recent runs, scope and Neural, race shape, late speed; "
