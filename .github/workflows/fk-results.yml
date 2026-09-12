@@ -83,12 +83,20 @@ jobs:
         if: always()
         run: |
           ls reports/*.html >/dev/null 2>&1 || { echo "no reports to push"; exit 0; }
-          rm -rf /tmp/reports-branch && mkdir /tmp/reports-branch && cp reports/*.html /tmp/reports-branch/
-          cd /tmp/reports-branch
-          git init -q -b reports
+          # The branch keeps every report ever built (one file per meeting and day); this run's
+          # files replace their own names and leave the rest, so a past day pulled on its own
+          # never wipes tomorrow's card. A fresh clone is used when the branch does not exist yet.
+          REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          rm -rf /tmp/reports-branch
+          if git clone -q --depth 1 --branch reports "$REMOTE" /tmp/reports-branch 2>/dev/null; then
+            cd /tmp/reports-branch
+          else
+            mkdir /tmp/reports-branch && cd /tmp/reports-branch && git init -q -b reports
+          fi
           git config user.name "fk morning" && git config user.email "actions@users.noreply.github.com"
-          printf '# Reports\n\nLatest form reports, replaced on every run.\n' > README.md
-          git add -A && git commit -q -m "Reports rebuilt with morning odds $(date -u +%Y-%m-%dT%H:%MZ)"
-          git push -q --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" reports
+          cp "$GITHUB_WORKSPACE"/reports/*.html .
+          printf '# Reports\n\nEvery form report built, one file per meeting and day; a rebuild replaces its own file.\n' > README.md
+          git add -A && git commit -q -m "Reports rebuilt with morning odds $(date -u +%Y-%m-%dT%H:%MZ)" || echo "nothing new to push"
+          git push -q "$REMOTE" reports
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
