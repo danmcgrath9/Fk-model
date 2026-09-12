@@ -76,3 +76,18 @@ def test_wfa_handicap_and_distance_features():
     assert round(r.x["dist_win"], 4) == round(0.30 - (0.30 + 1 / 3) / 2, 4)
     assert set(RATINGS) <= set(r.x) and set(DISTANCE) <= set(r.x)
     assert "ratings_only" in MODEL_SETS and "neural_rel" not in MODEL_SETS["ratings_only"]
+
+
+def test_class_trend_and_scope_features():
+    e = race_entry("H1", "Quagmire", 3, result=1)
+    e["form"] = {"careerForm": "8: 6-1-0"}
+    r = runner_from_entry(e, race_distance=1400, lws=85.0)
+    assert r.raw["last_vs_lws"] == 5.0 and r.raw["best_vs_lws"] == 5.0        # 90 rated against a standard of 85
+    assert r.raw["starts"] == 8 and r.raw["trend_slope"] is not None
+    assert runner_from_entry(e, race_distance=1400).raw["last_vs_lws"] is None
+    o = runner_from_entry(race_entry("H2", "Other", 4, result=2), race_distance=1400, lws=85.0)
+    o.raw.update(last_vs_lws=-3.0, best_vs_lws=0.0, starts=30, trend_slope=-1.0)
+    race_features([r, o])
+    assert r.x["last_vs_lws"] == 5.0 and o.x["last_vs_lws"] == -3.0          # kept as points against the standard
+    import math
+    assert round(r.x["starts_log"], 6) == round(math.log(9) - (math.log(9) + math.log(31)) / 2, 6)

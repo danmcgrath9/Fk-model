@@ -19,12 +19,16 @@ import math
 from dataclasses import dataclass, field
 
 from fk import fields as F
-from fk.trend import rating_series
+from fk.trend import rating_series, trend
 
 # Candidate pre-race features, all made relative within the race by race_features.
 NEURAL = ["neural_rel"]
 RATINGS = ["last_rel", "peak_rel", "peak12_rel", "wfa_rel", "wfa_best_rel", "ohr_rel"]
 DISTANCE = ["dist_rel", "dist_win"]
+# Class and scope: the ratings against the race's own standard (Form King's Likely Winning
+# Standard, so a figure above the standard in a Group race is not read like the same gap
+# in a country maiden), the trend of the ratings, and how lightly raced the horse is.
+CLASS = ["last_vs_lws", "best_vs_lws", "trend_slope", "starts_log"]
 FORM_FEATURES = NEURAL + RATINGS + DISTANCE
 MARKET_FEATURE = "open_logit"
 
@@ -34,6 +38,8 @@ MODEL_SETS = {
     "ratings_only": RATINGS,                 # WFA, handicap and weight-adjusted ratings, no Neural
     "ratings_plus_distance": RATINGS + DISTANCE,
     "all_form": FORM_FEATURES,
+    "all_form_plus_class": FORM_FEATURES + CLASS,
+    "ratings_class_distance": RATINGS + DISTANCE + CLASS,   # no Neural: ratings read against the standard
     "all_form_plus_open_market": FORM_FEATURES + [MARKET_FEATURE],
 }
 DISTANCE_BAND_M = 200   # a run within this of today's trip counts as "at the distance"
@@ -70,7 +76,7 @@ def _form_record(txt: str | None) -> tuple[int, int] | None:
         return None
 
 
-def runner_from_entry(e: dict, race_distance: int | None = None) -> Runner | None:
+def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | None = None) -> Runner | None:
     """A RaceEntry (Get Race Form) already run: features from what was knowable before the
     jump, the result from horseResult. None for a scratching.
     Raw values: Form King's Neural; the latest rating adjusted to today's weight and the
@@ -96,7 +102,12 @@ def runner_from_entry(e: dict, race_distance: int | None = None) -> Runner | Non
             if d is not None and v is not None and abs(float(d) - float(race_distance)) <= DISTANCE_BAND_M:
                 at_distance.append(v)
     ctx = F.entry_context(e)
-    rec = _form_record(F.entry_form_record(e).get("distanceForm"))
+    form = F.entry_form_record(e)
+    rec = _form_record(form.get("distanceForm"))
+    career = _form_record(form.get("careerForm"))
+    tr = trend(rating_series(runs))
+    last = series[-1] if series else None
+    best_rated = max(series) if series else None
     odds = F.entry_odds(e)
     open_price = F.odds_opening_price(odds) if odds else None
     return Runner(
@@ -107,6 +118,10 @@ def runner_from_entry(e: dict, race_distance: int | None = None) -> Runner | Non
              "ohr": ctx.get("ohr"),
              "dist": sum(at_distance) / len(at_distance) if at_distance else None,
              "dist_starts": rec[0] if rec else None, "dist_wins": rec[1] if rec else None,
+             "last_vs_lws": (last - lws) if last is not None and lws is not None else None,
+             "best_vs_lws": (best_rated - lws) if best_rated is not None and lws is not None else None,
+             "trend_slope": tr.slope,
+             "starts": career[0] if career else None,
              "open": open_price},
         bsp=F.result_betfair_sp(res) if res else None,
         sp=F.result_starting_price(res) if res else None,
@@ -142,6 +157,13 @@ def race_features(runners: list[Runner]) -> None:
     rates = _fill_mean(rates)
     mean_rate = sum(rates) / n
     cols["dist_win"] = [v - mean_rate for v in rates]
+    # Against the race's standard: kept as points, not made relative, because the standard
+    # already is the reference; a missing value takes the race mean like everything else.
+    for key, out in (("last_vs_lws", "last_vs_lws"), ("best_vs_lws", "best_vs_lws"), ("trend_slope", "trend_slope")):
+        cols[out] = _fill_mean([r.raw.get(key) for r in runners])
+    starts = _fill_mean([math.log(1 + r.raw["starts"]) if r.raw.get("starts") is not None else None for r in runners])
+    mean_starts = sum(starts) / n
+    cols["starts_log"] = [v - mean_starts for v in starts]
     opens = [r.raw.get("open") for r in runners]
     inv = [1.0 / o if o is not None and o > 1 else None for o in opens]
     have = [v for v in inv if v is not None]

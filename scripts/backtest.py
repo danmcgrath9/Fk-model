@@ -27,7 +27,7 @@ def load_races(state: str) -> list[B.Race]:
     db = Db(load_settings().database_url)
     races = []
     for row in db.resulted_races(state):
-        runners = [r for r in (B.runner_from_entry(e, row.get("distance_m")) for e in row["entries"]) if r is not None]
+        runners = [r for r in (B.runner_from_entry(e, row.get("distance_m"), row.get("lws")) for e in row["entries"]) if r is not None]
         if len(runners) < 2:
             continue
         B.race_features(runners)
@@ -82,8 +82,10 @@ def run(races: list[B.Race]) -> tuple[dict, str]:
               "career peak and the 12-month peak; wfa_rel, wfa_best_rel = points below the best of the latest and the best "
               "WFA rating; ohr_rel = points below the top official handicap rating; dist_rel = points below the best mean "
               f"rating of runs within {B.DISTANCE_BAND_M}m of today's trip; dist_win = the record at the distance as a shrunk "
-              "win rate, against the race mean; open_logit = log of the opening-market chance (comparison only, never deployed, "
-              "so Value keeps meaning disagreement with the market).",
+              "win rate, against the race mean; last_vs_lws, best_vs_lws = the latest and the best rated run against the race's "
+              "Likely Winning Standard (class); trend_slope = rating points per run over the last six runs; starts_log = log of "
+              "career starts against the race mean (scope); open_logit = log of the opening-market chance (comparison only, never "
+              "deployed, so Value keeps meaning disagreement with the market).",
               "", "## Calibration of the deployed model", "", "| rated chance | runners | mean rated | share that won |", "|---|---|---|---|"]
     for bucket, n, mean, won in calib:
         lines.append(f"| {bucket} | {n} | {mean:.1%} | {won:.1%} |")
