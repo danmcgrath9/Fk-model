@@ -15,6 +15,7 @@ from pathlib import Path
 
 from _common import load_settings
 from fk import backtest as B
+from fk import projection as P
 
 ROOT = Path(__file__).resolve().parents[1]
 MODEL_PATH = ROOT / "config" / "rated_price.json"
@@ -22,20 +23,47 @@ REPORT_PATH = ROOT / "docs" / "BACKTEST.md"
 MIN_RACES = 40   # below this a fit is a coincidence, not a model
 
 
-def load_races(state: str) -> list[B.Race]:
+def load_races(state: str) -> tuple[list[B.Race], dict[str, P.ProjRace]]:
+    """The logit races and, keyed by race id, the projection inputs for the same races."""
     from fk.db import Db
     db = Db(load_settings().database_url)
-    races = []
+    races, proj = [], {}
     for row in db.resulted_races(state):
         runners = [r for r in (B.runner_from_entry(e, row.get("distance_m"), row.get("lws")) for e in row["entries"]) if r is not None]
         if len(runners) < 2:
             continue
         B.race_features(runners)
-        races.append(B.Race(row["race_id"], row["date"], row["track"], runners))
-    return races
+        race = B.Race(row["race_id"], row["date"], row["track"], runners)
+        races.append(race)
+        proj[race.race_id] = proj_race(race, row["entries"], row.get("speedmap"), row.get("tempo"))
+    return races, proj
 
 
-def run(races: list[B.Race]) -> tuple[dict, str]:
+def proj_race(race: B.Race, entries: list[dict], speedmap: list[dict] | None, tempo: dict | None) -> P.ProjRace:
+    positions = {r["horse_id"]: r.get("predicted_position") for r in (speedmap or []) if r.get("horse_id")}
+    active = [e for e in entries if not B.F.entry_scratched(e)]
+    inputs = [i for i in (P.inputs_from_entry(e, positions.get(B.F.horse_id(e)), len(active)) for e in active) if i is not None]
+    q = B.bsp_chances(race.runners) or []
+    bsp = {r.horse_id: qi for r, qi in zip(race.runners, q)}
+    winner = next((r.horse_id for r in race.runners if r.finish == 1), None)
+    return P.ProjRace(race.race_id, inputs, P.tempo_score(tempo), bsp, winner)
+
+
+def proj_probs(proj: dict[str, P.ProjRace], races: list[B.Race], params: P.Params) -> list[list[float]]:
+    """The projection model's chances in the logit races' runner order, so B.score applies."""
+    out = []
+    for race in races:
+        probs = P.race_probs(proj[race.race_id], params)
+        have = [probs.get(r.horse_id) for r in race.runners]
+        floor = 1e-6
+        vals = [v if v is not None else floor for v in have]
+        s = sum(vals)
+        out.append([v / s for v in vals])
+    return out
+
+
+def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple[dict, str]:
+    proj = proj or {}
     with_bsp = [r for r in races if B.bsp_chances(r.runners) is not None and any(x.finish == 1 for x in r.runners)]
     if len(with_bsp) < MIN_RACES:
         raise SystemExit(f"only {len(with_bsp)} resulted races with BSPs stored; {MIN_RACES} needed before a fit means anything. "
@@ -54,12 +82,27 @@ def run(races: list[B.Race]) -> tuple[dict, str]:
         rows.append((name, feats, ins, out))
     yard = {"bsp_itself": (B.score(B.bsp_probs(train), train), B.score(B.bsp_probs(test), test)),
             "opening_market": (B.score(B.market_probs(train), train), B.score(B.market_probs(test), test))}
-    form_rows = [r for r in rows if B.MARKET_FEATURE not in r[1]]
+    # The projection-and-simulation model: parameters tuned on the training races, scored out of sample.
+    proj_ok = all(r.race_id in proj for r in with_bsp)
+    proj_rows = []
+    if proj_ok:
+        params_tr = P.fit_params([proj[r.race_id] for r in train])
+        ins = B.score(proj_probs(proj, train, params_tr), train)
+        out = B.score(proj_probs(proj, test, params_tr), test)
+        proj_rows.append(("projection_sim", None, ins, out))
+    form_rows = [r for r in rows if B.MARKET_FEATURE not in r[1]] + proj_rows
     best = min(form_rows, key=lambda r: r[3].kl_to_bsp)
     chosen_name, chosen_feats = best[0], best[1]
-    final_beta = B.fit(with_bsp, chosen_feats)             # deployed: refitted on every race
-    final_score = B.score([B.predict(final_beta, r.runners) for r in with_bsp], with_bsp)
-    calib = B.calibration([B.predict(final_beta, r.runners) for r in with_bsp], with_bsp)
+    if chosen_name == "projection_sim":
+        final_params = P.fit_params([proj[r.race_id] for r in with_bsp])
+        final_probs = proj_probs(proj, with_bsp, final_params)
+        final_beta = None
+    else:
+        final_beta = B.fit(with_bsp, chosen_feats)             # deployed: refitted on every race
+        final_probs = [B.predict(final_beta, r.runners) for r in with_bsp]
+        final_params = None
+    final_score = B.score(final_probs, with_bsp)
+    calib = B.calibration(final_probs, with_bsp)
 
     lines = ["# Back-test against Betfair SP", "",
              f"Fitted {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} over {len(with_bsp)} resulted races "
@@ -71,12 +114,20 @@ def run(races: list[B.Race]) -> tuple[dict, str]:
              "| model | KL to BSP (in / out) | log loss vs winners (in / out) | top pick won (in / out) |", "|---|---|---|---|"]
     for name, (i, o) in yard.items():
         lines.append(f"| {name} | {i.kl_to_bsp:.4f} / {o.kl_to_bsp:.4f} | {i.log_loss:.4f} / {o.log_loss:.4f} | {i.winner_top_rated:.1%} / {o.winner_top_rated:.1%} |")
-    for name, feats, i, o in rows:
+    for name, feats, i, o in rows + proj_rows:
         mark = " **(deployed)**" if name == chosen_name else ""
         lines.append(f"| {name}{mark} | {i.kl_to_bsp:.4f} / {o.kl_to_bsp:.4f} | {i.log_loss:.4f} / {o.log_loss:.4f} | {i.winner_top_rated:.1%} / {o.winner_top_rated:.1%} |")
-    lines += ["", f"Deployed: **{chosen_name}**, the form-only model closest to BSP out of sample, refitted on all {len(with_bsp)} races.", "",
-              "## Coefficients of the deployed model", ""]
-    lines += [f"- {k}: {v:+.4f}" for k, v in final_beta.items()]
+    lines += ["", f"Deployed: **{chosen_name}**, the form-only model closest to BSP out of sample, refitted on all {len(with_bsp)} races.", ""]
+    if final_beta is not None:
+        lines += ["## Coefficients of the deployed model", ""] + [f"- {k}: {v:+.4f}" for k, v in final_beta.items()]
+    else:
+        lines += ["## Parameters of the deployed projection model", ""] + [f"- {k}: {v}" for k, v in vars(final_params).items()]
+        lines += ["", "projection_sim = the founder's method: a projected figure per runner (recency-weighted recent ratings, anchored at "
+                  "the last run when rising; scope for lightly raced horses and the trend; tempo x settling position; last-600m vs "
+                  "class weighted up in a slow race) and the race run with each figure drawn around its projection; every weight "
+                  "above was tuned against BSP."]
+    if proj_rows and final_params is None:
+        lines += ["", "projection_sim parameters on the training races: " + ", ".join(f"{k} {v}" for k, v in vars(params_tr).items())]
     lines += ["", "Features, all relative within the race: neural_rel = Neural points / the race's top (top = 1); last_rel, "
               "peak_rel, peak12_rel = points below the race's best of the latest rated run (adjusted to today's weight), the "
               "career peak and the 12-month peak; wfa_rel, wfa_best_rel = points below the best of the latest and the best "
@@ -93,6 +144,7 @@ def run(races: list[B.Race]) -> tuple[dict, str]:
         "fitted_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "races": len(with_bsp), "runners": final_score.runners, "from": dates[0], "to": dates[-1],
         "model": chosen_name, "features": chosen_feats, "beta": final_beta,
+        "params": vars(final_params) if final_params is not None else None,
         "scores": {"deployed_in_sample": vars(final_score),
                    **{f"{name}_out_of_sample": vars(o) for name, _, _, o in rows},
                    **{f"{name}_out_of_sample": vars(o) for name, (_, o) in yard.items()}},
@@ -105,9 +157,9 @@ def main() -> None:
     ap.add_argument("--state", default="VIC")
     ap.add_argument("--dry", action="store_true")
     a = ap.parse_args()
-    races = load_races(a.state)
+    races, proj = load_races(a.state)
     print(f"{len(races)} resulted races loaded")
-    model, report = run(races)
+    model, report = run(races, proj)
     print(report)
     if a.dry:
         return

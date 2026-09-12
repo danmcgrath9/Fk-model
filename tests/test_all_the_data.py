@@ -153,3 +153,22 @@ def test_report_uses_the_backtested_model_when_present(tmp_path):
     sec = build_section(dict(race_number=3, race_name="Demo", distance_m=1400, raw=summ), entries, {}, None, {}, rated_model=model)
     assert any(f.startswith("Rated by the back-tested model: fitted to Betfair SP over 120 races") for f in sec.facts)
     assert round(sum(r.model_prob for r in sec.rows), 9) == 1.0
+
+
+def test_report_uses_the_projection_model_when_deployed():
+    from build_report import build_section, load_rated_price_model
+    from fk.projection import Params
+    model = {"model": "projection_sim", "params": vars(Params()), "races": 209, "to": "2026-08-31", "features": None, "beta": None}
+    summ = race_summary(n_runners=3)
+    for i, x in enumerate(summ["entries"]):
+        x["form"] = {"careerForm": f"{5 + i}: 1-0-0"}
+    entries = [dict(horse_id=x["breedingId"], name=x["horse"]["name"], barrier=x["barrier"], weight_kg=56.0, jockey="J", trainer="T",
+                    scratched=False, neural_rating=x["ratings"]["neural"], exp_rating=58.0, days_since_last_run=14, raw=x) for x in summ["entries"]]
+    sm = [dict(horse_id="H0", predicted_position=1), dict(horse_id="H1", predicted_position=2), dict(horse_id="H2", predicted_position=3)]
+    sec = build_section(dict(race_number=3, race_name="Demo", distance_m=1400, raw=summ), entries, {}, sm, {}, rated_model=model,
+                        tempo_raw={"min": "-0.2", "max": "-0.1"})
+    assert len(sec.projections) == 3 and sec.sim_runs == 20000
+    assert round(sum(r.model_prob for r in sec.rows), 6) == 1.0
+    assert any(f.startswith("Rated by the projection model") for f in sec.facts)
+    out = render_meeting("t", "s", [sec], "note")
+    assert "Projected figure and the sim" in out and "20,000 times" in out

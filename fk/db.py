@@ -135,16 +135,19 @@ class Db:
         entries raw) for the back-test. A race is 'resulted' when any entry holds a finish."""
         rows = self.conn.execute(
             """select r.race_id, m.meeting_date, m.track, r.distance_m, (r.raw->>'lws')::numeric as lws,
-                      jsonb_agg(e.raw order by e.barrier nulls last) as entries
+                      jsonb_agg(e.raw order by e.barrier nulls last) as entries,
+                      sm.runners, sm.raw->'expectedTempo'
                from fk.races r join fk.meetings m using (meeting_id) join fk.entries e using (race_id)
+                    left join fk.speedmaps sm using (race_id)
                where (%s::text is null or m.state = %s)
-               group by r.race_id, m.meeting_date, m.track, r.distance_m, r.raw->>'lws'
+               group by r.race_id, m.meeting_date, m.track, r.distance_m, r.raw->>'lws', sm.runners, sm.raw
                having bool_or(e.raw ? 'horseResult')
                order by m.meeting_date, m.track, r.race_id""",
             (state, state),
         ).fetchall()
         return [{"race_id": r[0], "date": str(r[1]), "track": r[2], "distance_m": r[3],
-                 "lws": float(r[4]) if r[4] is not None else None, "entries": r[5]} for r in rows]
+                 "lws": float(r[4]) if r[4] is not None else None, "entries": r[5],
+                 "speedmap": r[6], "tempo": r[7]} for r in rows]
 
     def speedmap_for_race(self, race_id: str) -> list[dict[str, Any]] | None:
         row = self.conn.execute("select runners from fk.speedmaps where race_id = %s", (race_id,)).fetchone()
@@ -153,6 +156,11 @@ class Db:
     def speedmap_tempo(self, race_id: str) -> str | None:
         row = self.conn.execute("select raw->'expectedTempo'->>'description' from fk.speedmaps where race_id = %s", (race_id,)).fetchone()
         return row[0] if row else None
+
+    def speedmap_tempo_raw(self, race_id: str) -> dict[str, Any] | None:
+        """Form King's whole expectedTempo object (description, min, max, categories)."""
+        row = self.conn.execute("select raw->'expectedTempo' from fk.speedmaps where race_id = %s", (race_id,)).fetchone()
+        return row[0] if row and isinstance(row[0], dict) else None
 
     def latest_odds(self, race_id: str) -> dict[str, dict[str, float]]:
         """{horse_id: {opening: p, current: p}} using the newest observation of each kind."""

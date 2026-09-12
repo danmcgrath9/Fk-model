@@ -128,6 +128,22 @@ class FormStripRow:
 
 
 @dataclass
+class ProjectionRow:
+    """One runner's projected figure and the sim, as the projection model built it."""
+    name: str
+    base: float | None
+    scope: float
+    shape: float
+    late: float
+    projected: float | None
+    sd: float | None
+    win: float | None       # exact chance
+    place: float | None     # from the simulation
+    rated: float | None
+    note: str
+
+
+@dataclass
 class ContextRow:
     """What a form guide prints beside a runner that no chart holds."""
     name: str
@@ -159,6 +175,8 @@ class RaceSection:
     late_speed: list = field(default_factory=list)       # LateSpeedRow, ranked
     form_strip: list[FormStripRow] = field(default_factory=list)
     context: list[ContextRow] = field(default_factory=list)
+    projections: list[ProjectionRow] = field(default_factory=list)
+    sim_runs: int = 0
 
 
 def _fmt(v: Any, nd: int = 2, pct: bool = False) -> str:
@@ -257,6 +275,26 @@ def form_strip_html(rows: list[FormStripRow], n: int = 6) -> str:
             f"<div class='tablewrap'><table class='strip'>{head}{''.join(body)}</table></div>")
 
 
+def projection_html(rows: list[ProjectionRow], sim_runs: int) -> str:
+    """The projected figure per runner and where it came from, then the sim."""
+    if not rows:
+        return ""
+    head = ("<tr><th class='l'>Runner</th><th>Base</th><th class='m'>Scope</th><th class='m'>Shape</th><th class='m'>Late</th>"
+            "<th>Projected</th><th>&plusmn;</th><th>Win</th><th class='m'>Place</th><th>Rated $</th></tr>")
+    body = []
+    for r in sorted(rows, key=lambda r: (r.projected is None, -(r.projected or 0))):
+        if r.projected is None:
+            body.append(f"<tr><td class='l'>{html.escape(r.name)}</td><td colspan='9' class='l tiny'>{html.escape(r.note or 'no rated run')}</td></tr>")
+            continue
+        body.append(
+            f"<tr><td class='l'>{html.escape(r.name)}{'<br><span class=tiny>' + html.escape(r.note) + '</span>' if r.note else ''}</td>"
+            f"<td>{r.base:.1f}</td><td class='m'>{_signed(r.scope)}</td><td class='m'>{_signed(r.shape)}</td><td class='m'>{_signed(r.late)}</td>"
+            f"<td><b>{r.projected:.1f}</b></td><td>{r.sd:.1f}</td><td>{_fmt(r.win, pct=True)}</td><td class='m'>{_fmt(r.place, pct=True)}</td>"
+            f"<td>{_fmt(r.rated)}</td></tr>")
+    return (f"<h3>Projected figure and the sim: base from recent runs, scope, race shape, late speed; the race run {sim_runs:,} times</h3>"
+            f"<div class='tablewrap'><table>{head}{''.join(body)}</table></div>")
+
+
 def _pct(v: float | None) -> str:
     return "" if v is None else f"{v:.1f}%"
 
@@ -318,6 +356,8 @@ def render_meeting(title: str, subtitle: str, sections: list[RaceSection], metho
             parts.append(f"<p class='note'>{html.escape(n)}</p>")
         if s.rows:
             parts.append(summary_table(s.rows))
+        if s.projections:
+            parts.append(projection_html(s.projections, s.sim_runs))
         if s.context:
             parts.append(context_html(s.context))
         if s.form_strip:

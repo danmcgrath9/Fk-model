@@ -21,7 +21,7 @@ from fk import fields as F
 from fk.report.charts import (LateSpeedRow, RunnerProfile, RunnerRuns, SpeedmapRunner, TrendPanel, lane_assignments,
                               market_move_chart, position_worm, ratings_profile_chart, recency_weighted_mean, sectional_worm,
                               speedmap_chart, trend_grid, value_ladder)
-from fk.report.html import ContextRow, FormStripRow, RaceSection, SummaryRow, render_meeting
+from fk.report.html import ContextRow, FormStripRow, ProjectionRow, RaceSection, SummaryRow, render_meeting
 from fk.trend import rating_series, trend
 from fk.report.probability import (DEFAULT_SCALE, disagreement, fit_scale, market_implied, market_percentage, rated_price,
                                    rating_implied, tempo_reading, value_points)
@@ -62,6 +62,26 @@ def load_rated_price_model(path: Path = MODEL_PATH) -> dict | None:
         return None
     m = json.loads(path.read_text(encoding="utf-8"))
     return m if m.get("beta") and m.get("features") else None
+
+
+SIM_RUNS = 20000
+
+
+def projection_chances(model: dict, entries: list[dict], speedmap: list[dict] | None, tempo_raw: dict | None
+                       ) -> tuple[dict[str, float | None], list[ProjectionRow]]:
+    """The projection model: each active runner's projected figure, the exact win chance,
+    and the sim's win and place counts, as rows for the page."""
+    from fk import projection as P
+    params = P.Params(**model["params"])
+    positions = {r["horse_id"]: r.get("predicted_position") for r in (speedmap or []) if r.get("horse_id")}
+    inputs = [i for i in (P.inputs_from_entry(e["raw"], positions.get(e["horse_id"]), len(entries)) for e in entries if e.get("raw")) if i is not None]
+    tempo = P.tempo_score(tempo_raw)
+    projs = [P.project(i, tempo, params) for i in inputs]
+    probs = P.win_probabilities(projs)
+    sim = P.simulate(projs, n=SIM_RUNS)
+    rows = [ProjectionRow(q.name, q.base, q.scope, q.shape, q.late, q.projected, q.sd, probs.get(q.horse_id),
+                          sim.get(q.horse_id, {}).get("place"), rated_price(probs.get(q.horse_id)), q.note) for q in projs]
+    return probs, rows
 
 
 def model_chances(model: dict, entries: list[dict], distance_m: int | None = None, lws: float | None = None) -> dict[str, float]:
@@ -160,7 +180,7 @@ def neural_scale_for_meeting(races: list[tuple[list[dict], dict[str, dict[str, f
 def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list[dict]],
                   speedmap: list[dict] | None, odds: dict[str, dict[str, float]], tempo: str | None = None,
                   events_by_horse: dict[str, list[dict]] | None = None, neural_scale: float | None = None,
-                  scale_fitted: bool = False, rated_model: dict | None = None) -> RaceSection:
+                  scale_fitted: bool = False, rated_model: dict | None = None, tempo_raw: dict | None = None) -> RaceSection:
     heading = f"Race {race.get('race_number') or '?'}: {race.get('race_name') or ''}".strip()
     sub = " ".join(x for x in [f"{race['distance_m']}m" if race.get("distance_m") else "", str(race.get("scheduled_at") or "")] if x)
     section = RaceSection(heading=heading, subheading=sub)
@@ -222,8 +242,16 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
     market = market_implied(prices)
     k = neural_scale if neural_scale is not None else DEFAULT_SCALE
     lws = F.race_facts(race["raw"]).get("lws") if race.get("raw") else None
-    model = model_chances(rated_model, active, race.get("distance_m"), lws) if rated_model else {}
-    if model:
+    model: dict = {}
+    if rated_model and rated_model.get("model") == "projection_sim" and rated_model.get("params"):
+        model, section.projections = projection_chances(rated_model, active, speedmap, tempo_raw)
+        section.sim_runs = SIM_RUNS
+        model = {e["horse_id"]: model.get(e["horse_id"]) for e in active}
+        section.facts.append(f"Rated by the projection model: a projected figure per runner and the race run {SIM_RUNS:,} times; "
+                             f"weights fitted to Betfair SP over {rated_model['races']} races to {rated_model['to']}")
+    elif rated_model:
+        model = model_chances(rated_model, active, race.get("distance_m"), lws)
+    if model and not section.projections:
         model = {e["horse_id"]: model.get(e["horse_id"]) for e in active}
         section.facts.append(f"Rated by the back-tested model: fitted to Betfair SP over {rated_model['races']} races to {rated_model['to']}")
     else:
@@ -341,7 +369,8 @@ def from_database(target: str, track: str | None, out_dir: Path, open_it: bool) 
             runs = {e["horse_id"]: db.runs_for_horse(e["horse_id"], SECTIONAL_RUNS) for e in entries}
             events = {e["horse_id"]: db.past_events_for_horse(e["horse_id"], PROFILE_RUNS) for e in entries}
             sm, tempo = db.speedmap_for_race(r["race_id"]), db.speedmap_tempo(r["race_id"])
-            sections.append(build_section(r, entries, runs, sm, odds, tempo, events, neural_scale=k, scale_fitted=fitted, rated_model=rated_model))
+            sections.append(build_section(r, entries, runs, sm, odds, tempo, events, neural_scale=k, scale_fitted=fitted, rated_model=rated_model,
+                                          tempo_raw=db.speedmap_tempo_raw(r["race_id"])))
         write_report(target, trk, sections, out_dir, open_it)
 
 
