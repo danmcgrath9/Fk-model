@@ -34,6 +34,9 @@ on:
       races:
         description: 'only these race numbers, comma separated (e.g. 1,3)'
         default: ''
+      horse:
+        description: 'only the race this horse ran in (name as Form King spells it); skips speedmaps and profiles'
+        default: ''
 
 concurrency:
   group: fk-daily-pull
@@ -92,7 +95,8 @@ jobs:
           [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
           [ -n "${{ github.event.inputs.track }}" ] && DATE_ARG="$DATE_ARG --track ${{ github.event.inputs.track }}"
           [ -n "${{ github.event.inputs.races }}" ] && DATE_ARG="$DATE_ARG --races ${{ github.event.inputs.races }}"
-          python scripts/daily_pull.py --key ${{ steps.key.outputs.key }} --yes $DATE_ARG
+          [ -n "${{ github.event.inputs.horse }}" ] && DATE_ARG="$DATE_ARG --no-speedmaps --no-profiles --horse \"${{ github.event.inputs.horse }}\""
+          eval python scripts/daily_pull.py --key ${{ steps.key.outputs.key }} --yes $DATE_ARG
 
       - name: Build reports
         run: |

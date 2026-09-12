@@ -101,7 +101,7 @@ def meetings_call(client, target: date, today: date, state: str):
     return client.plan(ops.UPCOMING_MEETINGS, states=state)
 
 
-def select_meetings(meetings: list[dict], track: str | None, races: set[int] | None) -> list[dict]:
+def select_meetings(meetings: list[dict], track: str | None, races: set[int] | None, horse: str | None = None) -> list[dict]:
     """Keep the meetings whose track starts with one of `track`'s comma-separated names
     (case-insensitive) and, within them, only the race numbers asked for. A meeting left
     with no races is dropped."""
@@ -113,6 +113,14 @@ def select_meetings(meetings: list[dict], track: str | None, races: set[int] | N
         if races:
             m = dict(m)
             m["races"] = [r for r in F.meeting_races(m) if F.race_number(r) in races]
+            if not m["races"]:
+                continue
+        if horse:
+            # The lite card carries each runner's name, so one horse's race can be picked
+            # out of the day before a race form is paid for.
+            m = dict(m)
+            m["races"] = [r for r in F.meeting_races(m)
+                          if any(F.horse_name(e).lower() == horse.lower() for e in F.race_entries(r))]
             if not m["races"]:
                 continue
         out.append(m)
@@ -132,6 +140,8 @@ def main() -> None:
     ap.add_argument("--all-statuses", action="store_true", help="pull meetings not yet at final fields too")
     ap.add_argument("--track", help="only these tracks, comma separated prefixes (e.g. flemington,caulfield)")
     ap.add_argument("--races", help="only these race numbers, comma separated (e.g. 1,3)")
+    ap.add_argument("--horse", help="only the race(s) this horse is in (name as Form King spells it)")
+    ap.add_argument("--no-speedmaps", action="store_true", help="skip the meeting speedmap call")
     a = ap.parse_args()
 
     today = today_melbourne()
@@ -165,7 +175,7 @@ def main() -> None:
         client.allow_live = False
 
     all_meetings = [m for m in F.meetings_list(meetings_payload) if F.meeting_date(m) == target.isoformat()]
-    all_meetings = select_meetings(all_meetings, a.track, race_filter)
+    all_meetings = select_meetings(all_meetings, a.track, race_filter, a.horse)
     # A day already run is pulled whatever its status reads; the filter is for the days ahead.
     held = [m for m in all_meetings if not a.all_statuses and target >= today and F.meeting_status(m) not in PULL_STATUSES]
     meetings = [m for m in all_meetings if m not in held]
@@ -193,7 +203,7 @@ def main() -> None:
             planned.append(("race", F.race_id(r), client.plan(
                 ops.RACE_FORM, meetingId=mid, raceId=F.race_id(r), numBenchmarks=a.race_benchmarks, racesOnly=False,
                 runners=max(F.race_runner_count(r), 1))))
-    for m in meetings:   # after the forms: a speedmap failure must never cost the race data
+    for m in meetings if not a.no_speedmaps else []:   # after the forms: a speedmap failure must never cost the race data
         planned.append(("speedmaps", F.meeting_id(m), client.plan(ops.MEETING_SPEEDMAPS, meetingId=F.meeting_id(m))))
     est = estimate([p for _, _, p in planned])
     print(f"\n{len(meetings)} {a.state} meeting(s) on {target}: " + ", ".join(f"{F.meeting_track(m)} ({len(F.meeting_races(m))} races)" for m in meetings))

@@ -193,3 +193,13 @@ def test_select_meetings_takes_several_tracks():
     ms = [meeting_lite(mid="A"), meeting_lite(mid="B"), meeting_lite(mid="C")]
     ms[0]["trackName"], ms[1]["trackName"], ms[2]["trackName"] = "Flemington", "Caulfield Heath", "Echuca"
     assert [m["id"] for m in select_meetings(ms, "flemington, caulfield", None)] == ["A", "B"]
+
+
+def test_select_meetings_by_horse_name():
+    from daily_pull import select_meetings
+    from fixtures import meeting_lite
+    ms = [meeting_lite(mid="A", n_races=3)]
+    ms[0]["races"][1]["entries"][2]["horse"]["name"] = "Regal Ambition"
+    kept = select_meetings(ms, None, None, "regal ambition")
+    assert [r["number"] for r in kept[0]["races"]] == [2]
+    assert select_meetings(ms, None, None, "Nobody") == []
