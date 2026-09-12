@@ -93,6 +93,30 @@ def store_entry(db: Db, rid: str, e: dict, at: datetime) -> str:
     return hid
 
 
+def meetings_call(client, target: date, today: date, state: str):
+    """A day already run is asked for by date (Get Meetings By Date, DDMMYY); today and
+    later come from the upcoming list, which is the only one that carries future days."""
+    if target < today:
+        return client.plan(ops.MEETINGS_BY_DATE, ddmmyy=target.strftime("%d%m%y"), states=state)
+    return client.plan(ops.UPCOMING_MEETINGS, states=state)
+
+
+def select_meetings(meetings: list[dict], track: str | None, races: set[int] | None) -> list[dict]:
+    """Keep the meeting at `track` (case-insensitive, prefix allowed) and, within it, only
+    the race numbers asked for. A meeting left with no races is dropped."""
+    out = []
+    for m in meetings:
+        if track and not F.meeting_track(m).lower().startswith(track.lower()):
+            continue
+        if races:
+            m = dict(m)
+            m["races"] = [r for r in F.meeting_races(m) if F.race_number(r) in races]
+            if not m["races"]:
+                continue
+        out.append(m)
+    return out
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--key", choices=["test", "live"], default="test")
@@ -104,14 +128,18 @@ def main() -> None:
     ap.add_argument("--yes", action="store_true", help="unattended: the credit cap and balance floor decide")
     ap.add_argument("--no-profiles", action="store_true", help="skip Get Horse Form for new horses")
     ap.add_argument("--all-statuses", action="store_true", help="pull meetings not yet at final fields too")
+    ap.add_argument("--track", help="only this track (case-insensitive, e.g. ballarat)")
+    ap.add_argument("--races", help="only these race numbers, comma separated (e.g. 1,3)")
     a = ap.parse_args()
 
-    target = date.fromisoformat(a.date) if a.date else today_melbourne() + timedelta(days=1)
+    today = today_melbourne()
+    target = date.fromisoformat(a.date) if a.date else today + timedelta(days=1)
+    race_filter = {int(x) for x in a.races.split(",") if x.strip()} if a.races else None
     settings, spec, costs, ledger = bootstrap(a.key)
     client = make_client(a.key, settings, spec, costs, ledger, allow_live=False)
     live = client.key_kind == "live"
 
-    first = client.plan(ops.UPCOMING_MEETINGS, states=a.state)
+    first = meetings_call(client, target, today, a.state)
     print(f"{target} {a.state}: step 1 is {first.op.key} for {first.credits} credit (balance {ledger.balance()})")
     if a.dry_run:
         rf12 = client.plan(ops.RACE_FORM, meetingId="M", raceId="R", numBenchmarks=a.race_benchmarks, racesOnly=False, runners=12)
@@ -135,7 +163,9 @@ def main() -> None:
         client.allow_live = False
 
     all_meetings = [m for m in F.meetings_list(meetings_payload) if F.meeting_date(m) == target.isoformat()]
-    held = [m for m in all_meetings if not a.all_statuses and F.meeting_status(m) not in PULL_STATUSES]
+    all_meetings = select_meetings(all_meetings, a.track, race_filter)
+    # A day already run is pulled whatever its status reads; the filter is for the days ahead.
+    held = [m for m in all_meetings if not a.all_statuses and target >= today and F.meeting_status(m) not in PULL_STATUSES]
     meetings = [m for m in all_meetings if m not in held]
     for m in held:
         print(f"  {F.meeting_track(m)}: status {F.meeting_status(m)}, not at final fields yet; skipped (use --all-statuses to pull anyway)")

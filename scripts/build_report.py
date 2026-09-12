@@ -187,6 +187,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         section.facts.append(f"Market {mp:.0f}% on current prices")
     for e in active:
         hid = e["horse_id"]
+        res = F.entry_result(e["raw"]) if e.get("raw") else None
         section.rows.append(SummaryRow(
             name=e["name"], barrier=e.get("barrier"), weight=float(e["weight_kg"]) if e.get("weight_kg") is not None else None,
             jockey=e.get("jockey"), days_since=e.get("days_since_last_run"),
@@ -197,7 +198,8 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
             flag=disagreement(market.get(hid), model.get(hid), FLAG_THRESHOLD),
             rated_price=rated_price(model.get(hid)), value_pts=value_points(market.get(hid), model.get(hid)),
             trend=trends[hid].reading if hid in trends and trends[hid].n else None, slope=trends[hid].slope if hid in trends else None,
-            last_rating=trends[hid].last if hid in trends else None, best_rating=trends[hid].best if hid in trends else None))
+            last_rating=trends[hid].last if hid in trends else None, best_rating=trends[hid].best if hid in trends else None,
+            finish=F.result_finish_position(res) if res else None, result_sp=F.result_starting_price(res) if res else None))
     names_l = [e["name"] for e in active]
     # Context and form strip in the summary's order (Neural, best first).
     order = sorted(active, key=lambda e: (e.get("neural_rating") is None, -float(e.get("neural_rating") or 0)))
@@ -272,7 +274,7 @@ def from_database(target: str, track: str | None, out_dir: Path, open_it: bool) 
     db = Db(settings.database_url)
     races = db.races_on(target, "VIC")
     if track:
-        races = [r for r in races if r["track"].lower() == track.lower()]
+        races = [r for r in races if r["track"].lower().startswith(track.lower())]
     if not races:
         # A day with no racing stored is not an error; the pull already said why.
         print(f"no VIC races stored for {target}{' at ' + track if track else ''}; no report to build")

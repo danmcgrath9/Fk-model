@@ -116,6 +116,8 @@ class SummaryRow:
     slope: float | None = None       # rating points per run over the last six rated runs
     last_rating: float | None = None
     best_rating: float | None = None
+    finish: int | None = None          # official result, when the race has run
+    result_sp: float | None = None
 
 
 @dataclass
@@ -179,9 +181,18 @@ def _move(row: SummaryRow) -> str:
     return "held"
 
 
+def _result(r: SummaryRow) -> str:
+    if r.finish is None:
+        return ""
+    n = int(r.finish)
+    word = f"{n}{'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
+    return word + (f" ${r.result_sp:.2f}" if r.result_sp else "")
+
+
 def summary_table(rows: list[SummaryRow]) -> str:
     ordered = sorted(rows, key=lambda r: (r.neural is None, -(r.neural or 0)))
-    head = ("<tr><th class='l'>Runner</th><th>Bar</th><th class='m'>Wt</th><th class='l m'>Jockey</th><th class='m'>Days</th>"
+    run = any(r.finish is not None for r in rows)
+    head = ("<tr><th class='l'>Runner</th>" + ("<th>Result</th>" if run else "") + "<th>Bar</th><th class='m'>Wt</th><th class='l m'>Jockey</th><th class='m'>Days</th>"
             "<th>Neural</th><th class='m'>EXP</th><th>Trend</th><th class='m'>Last</th><th class='m'>Best</th>"
             "<th>Rated $</th><th>Price</th><th class='m'>Open</th><th>Move</th>"
             "<th class='m'>Market %</th><th class='m'>Neural %</th><th>Value</th><th>Flag</th></tr>")
@@ -190,7 +201,8 @@ def summary_table(rows: list[SummaryRow]) -> str:
         cls = {"model_higher": "flag-model", "market_higher": "flag-market"}.get(r.flag or "", "")
         flag = {"model_higher": "Neural > market", "market_higher": "market > Neural"}.get(r.flag or "", "")
         body.append(
-            f"<tr class='{cls}'><td class='l'>{html.escape(r.name)}</td><td>{_fmt(r.barrier)}</td><td class='m'>{_fmt(r.weight,1)}</td>"
+            f"<tr class='{cls}'><td class='l'>{html.escape(r.name)}</td>" + (f"<td class='{'pos' if r.finish == 1 else ''}'>{_result(r)}</td>" if run else "")
+            + f"<td>{_fmt(r.barrier)}</td><td class='m'>{_fmt(r.weight,1)}</td>"
             f"<td class='l m'>{_fmt(r.jockey)}</td><td class='m'>{_fmt(r.days_since)}</td><td>{_fmt(r.neural,1)}</td><td class='m'>{_fmt(r.exp,1)}</td>"
             f"<td class='trend-{(r.trend or 'none').split()[0]}'>{_trend(r)}</td><td class='m'>{_fmt(r.last_rating,1)}</td><td class='m'>{_fmt(r.best_rating,1)}</td>"
             f"<td>{_fmt(r.rated_price)}</td><td>{_fmt(r.price)}</td><td class='m'>{_fmt(r.opening)}</td><td>{_move(r)}</td>"

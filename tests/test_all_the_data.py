@@ -99,3 +99,34 @@ def test_trend_grid_and_profile_axes():
     fig = ratings_profile_chart([prof], "p")
     assert fig.layout.showlegend is False and fig.layout.xaxis3.range == (0.3, 12.7)
     assert fig.data[0].x == tuple(range(1, 13))
+
+
+def test_past_day_is_asked_for_by_date_and_filtered():
+    from datetime import date
+    from daily_pull import meetings_call, select_meetings
+    from fixtures import meeting_lite
+    from fk import ops
+
+    class Client:
+        def plan(self, op, **params):
+            return (op, params)
+    today = date(2026, 9, 12)
+    assert meetings_call(Client(), date(2026, 4, 30), today, "VIC") == (ops.MEETINGS_BY_DATE, {"ddmmyy": "300426", "states": "VIC"})
+    assert meetings_call(Client(), date(2026, 9, 13), today, "VIC") == (ops.UPCOMING_MEETINGS, {"states": "VIC"})
+    assert meetings_call(Client(), today, today, "VIC")[0] == ops.UPCOMING_MEETINGS
+    ms = [meeting_lite(mid="BALL", n_races=3), meeting_lite(mid="FLEM", n_races=2)]
+    ms[0]["trackName"] = "Ballarat Synthetic"
+    kept = select_meetings(ms, "ballarat", {1})
+    assert [m["id"] for m in kept] == ["BALL"] and [r["number"] for r in kept[0]["races"]] == [1]
+    assert len(ms[0]["races"]) == 3   # the caller's list is untouched
+    assert select_meetings(ms, None, {9}) == []
+    assert len(select_meetings(ms, None, None)) == 2
+
+
+def test_summary_table_result_column_only_when_run():
+    a = SummaryRow("A", 1, 55.0, "J", 14, 60.0, 58.0, 5.0, 6.0, 0.2, 0.25, None)
+    assert "Result" not in summary_table([a])
+    b = SummaryRow("B", 2, 55.0, "J", 14, 50.0, 58.0, 5.0, 6.0, 0.2, 0.25, None, finish=1, result_sp=4.6)
+    c = SummaryRow("C", 3, 55.0, "J", 14, 40.0, 58.0, 5.0, 6.0, 0.2, 0.25, None, finish=12, result_sp=None)
+    out = summary_table([a, b, c])
+    assert "<th>Result</th>" in out and "1st $4.60" in out and "12th" in out

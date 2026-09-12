@@ -28,6 +28,12 @@ on:
       rebuild_only:
         description: 'yes = rebuild the reports from stored data, no Form King calls, no credits'
         default: 'no'
+      track:
+        description: 'only this track (e.g. Ballarat); a past date pulls that day by date'
+        default: ''
+      races:
+        description: 'only these race numbers, comma separated (e.g. 1,3)'
+        default: ''
 
 concurrency:
   group: fk-daily-pull
@@ -84,12 +90,15 @@ jobs:
         run: |
           DATE_ARG=""
           [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
+          [ -n "${{ github.event.inputs.track }}" ] && DATE_ARG="$DATE_ARG --track ${{ github.event.inputs.track }}"
+          [ -n "${{ github.event.inputs.races }}" ] && DATE_ARG="$DATE_ARG --races ${{ github.event.inputs.races }}"
           python scripts/daily_pull.py --key ${{ steps.key.outputs.key }} --yes $DATE_ARG
 
       - name: Build reports
         run: |
           DATE_ARG=""
           [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
+          [ -n "${{ github.event.inputs.track }}" ] && DATE_ARG="$DATE_ARG --track ${{ github.event.inputs.track }}"
           python scripts/build_report.py --no-open $DATE_ARG
 
       - name: Ledger
