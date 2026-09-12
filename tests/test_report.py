@@ -13,6 +13,22 @@ def test_market_implied_removes_overround():
     assert round(p["a"], 4) == 0.6667 and round(p["b"], 4) == 0.3333
 
 
+def test_rating_implied_softmax_fitted_to_market():
+    from fk.report.probability import fit_scale
+    # hand-calculated: x = 1 and 0.875; p_a/p_b = exp(0.125k) = 3 -> k = ln3 / 0.125 = 8.7889
+    k = fit_scale([({"a": 80.0, "b": 70.0}, {"a": 0.75, "b": 0.25})])
+    assert round(k, 3) == 8.789
+    p = rating_implied({"a": 80.0, "b": 70.0}, k)
+    assert round(p["a"], 4) == 0.75 and round(p["b"], 4) == 0.25
+    # the failure that prompted it: a dominant top horse must not price like a share of points
+    field = {"sheza": 85.2, "sir": 78.3, "tre": 61.2, "mrb": 52.8, "half": 51.2, "hus": 39.1, "lim": 37.0, "aut": 34.4, "ano": 28.4, "oho": 11.6}
+    share = rating_implied(field)            # the old stand-in
+    steep = rating_implied(field, 10.0)
+    assert 1 / share["sheza"] > 5 and 1 / steep["sheza"] < 2.5
+    assert fit_scale([]) is None and fit_scale([({"a": 1.0}, {"a": 1.0})]) is None
+    assert rating_implied({"a": None, "b": None}, 10.0) == {"a": None, "b": None}
+
+
 def test_rating_implied_is_a_points_share():
     p = rating_implied({"a": 14.5, "b": 13.4, "c": 2.1, "d": None})
     assert p["d"] is None and abs(p["a"] + p["b"] + p["c"] - 1) < 1e-9
