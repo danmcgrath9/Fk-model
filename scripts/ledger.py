@@ -31,6 +31,7 @@ def main() -> None:
     c = sub.add_parser("check")
     c.add_argument("--key", choices=["test", "live"], default="live")
     c.add_argument("--month")
+    sub.add_parser("balance", help="print the live balance as a bare number (for scripts)")
     r = sub.add_parser("reconcile")
     r.add_argument("--site-used", type=int, required=True, help="credits used this month per the Form King usage tab")
     r.add_argument("--note", required=True)
@@ -39,6 +40,9 @@ def main() -> None:
 
     settings = load_settings()
     ledger = open_ledger(settings)
+    if a.cmd == "balance":
+        print(ledger.balance())
+        return
     if a.cmd == "show":
         summ = ledger.summary(a.month)
         print(f"month {summ['month']}: allowance {summ['allowance']}, spent {summ['spent']}, balance {summ['balance']}")

@@ -9,6 +9,7 @@ Writes reports/YYYY-MM-DD-<track>.html and opens it (unless --no-open).
 from __future__ import annotations
 
 import argparse
+import json
 import random
 import re
 import webbrowser
@@ -35,10 +36,11 @@ METHOD_NOTE = (
     "Price is Form King's best bookmaker price now; Open is the average price at market open. Market % is 1/price "
     "normalised over the field (the race's market percentage is stated in its header). Neural % converts Form King's "
     "Neural points to a win chance: each runner is read relative to the top runner of its race (the scale of Neural "
-    "changes race to race), then a softmax whose steepness is FITTED to this meeting's market (the k in each race's "
-    "header), so Neural % agrees with the market on how much a gap in points is worth and disagrees only on the ORDER "
-    "and the gaps Form King's form points see. Form King publishes no rated price for Neural, and EXP is derived from "
-    "the market so it cannot price against it. Rated $ is 1 / Neural %. Value is Neural % minus Market %, "
+    "changes race to race), then a softmax. Once a back-test exists (docs/BACKTEST.md) the chance comes from a model "
+    "fitted to Betfair SP over past races on Neural, the latest rated run and the career and 12-month peaks, and each race "
+    "header says so; before that the softmax steepness is fitted to this meeting's market (the k in the header). Form King "
+    "publishes no rated price for Neural, and EXP is derived from the market so it cannot price against it. Rated $ is "
+    "1 / Neural %. Value is Neural % minus Market %, "
     "in probability points (the Betfair Hub definition); Flag marks more than 5 points either way. Move is Form King's "
     "firmOrDrift: points of win chance since open, normalised for the book and scratchings. Sectional worm: recency-weighted "
     "mean (newest 1.0, then x0.8 per run) of the vs-Class benchmark for each 200m split over the last 10 benchmarked runs, "
@@ -51,6 +53,27 @@ METHOD_NOTE = (
 )
 
 PREP_FORM = {1: "firstUpForm", 2: "secondUpForm", 3: "thirdUpForm"}
+MODEL_PATH = Path(__file__).resolve().parents[1] / "config" / "rated_price.json"
+
+
+def load_rated_price_model(path: Path = MODEL_PATH) -> dict | None:
+    """The back-tested rated-price model (scripts/backtest.py), or None before one exists."""
+    if not path.exists():
+        return None
+    m = json.loads(path.read_text(encoding="utf-8"))
+    return m if m.get("beta") and m.get("features") else None
+
+
+def model_chances(model: dict, entries: list[dict]) -> dict[str, float]:
+    """Win chance per active runner from the back-tested conditional logit, on the same
+    features the fit used (fk.backtest.race_features over each entry's own record)."""
+    from fk import backtest as B
+    runners = [r for r in (B.runner_from_entry(e["raw"]) for e in entries if e.get("raw")) if r is not None]
+    if not runners:
+        return {}
+    B.race_features(runners)
+    p = B.predict(model["beta"], runners)
+    return {r.horse_id: pi for r, pi in zip(runners, p)}
 
 
 def _ordinal(n: int) -> str:
@@ -137,7 +160,7 @@ def neural_scale_for_meeting(races: list[tuple[list[dict], dict[str, dict[str, f
 def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list[dict]],
                   speedmap: list[dict] | None, odds: dict[str, dict[str, float]], tempo: str | None = None,
                   events_by_horse: dict[str, list[dict]] | None = None, neural_scale: float | None = None,
-                  scale_fitted: bool = False) -> RaceSection:
+                  scale_fitted: bool = False, rated_model: dict | None = None) -> RaceSection:
     heading = f"Race {race.get('race_number') or '?'}: {race.get('race_name') or ''}".strip()
     sub = " ".join(x for x in [f"{race['distance_m']}m" if race.get("distance_m") else "", str(race.get("scheduled_at") or "")] if x)
     section = RaceSection(heading=heading, subheading=sub)
@@ -197,11 +220,16 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
     prices = {e["horse_id"]: (odds.get(e["horse_id"], {}).get("current")) for e in active}
     market = market_implied(prices)
     k = neural_scale if neural_scale is not None else DEFAULT_SCALE
-    model = rating_implied({e["horse_id"]: e.get("neural_rating") for e in active}, k)
+    model = model_chances(rated_model, active) if rated_model else {}
+    if model:
+        model = {e["horse_id"]: model.get(e["horse_id"]) for e in active}
+        section.facts.append(f"Rated by the back-tested model: fitted to Betfair SP over {rated_model['races']} races to {rated_model['to']}")
+    else:
+        model = rating_implied({e["horse_id"]: e.get("neural_rating") for e in active}, k)
+        section.facts.append(f"Neural scale k = {k:.1f}" + (" fitted to this meeting's market" if scale_fitted else " (default, no market to fit to)"))
     mp = market_percentage(prices)
     if mp is not None:
         section.facts.append(f"Market {mp:.0f}% on current prices")
-    section.facts.append(f"Neural scale k = {k:.1f}" + (" fitted to this meeting's market" if scale_fitted else " (default, no market to fit to)"))
     for e in active:
         hid = e["horse_id"]
         res = F.entry_result(e["raw"]) if e.get("raw") else None
@@ -299,6 +327,9 @@ def from_database(target: str, track: str | None, out_dir: Path, open_it: bool) 
     by_track: dict[str, list[dict]] = {}
     for r in races:
         by_track.setdefault(r["track"], []).append(r)
+    rated_model = load_rated_price_model()
+    if rated_model:
+        print(f"rated price: back-tested model, {rated_model['races']} races to {rated_model['to']}")
     for trk, rs in by_track.items():
         loaded = [(r, db.entries_for_race(r["race_id"]), db.latest_odds(r["race_id"])) for r in rs]
         k, fitted = neural_scale_for_meeting([(entries, odds) for _, entries, odds in loaded])
@@ -308,7 +339,7 @@ def from_database(target: str, track: str | None, out_dir: Path, open_it: bool) 
             runs = {e["horse_id"]: db.runs_for_horse(e["horse_id"], SECTIONAL_RUNS) for e in entries}
             events = {e["horse_id"]: db.past_events_for_horse(e["horse_id"], PROFILE_RUNS) for e in entries}
             sm, tempo = db.speedmap_for_race(r["race_id"]), db.speedmap_tempo(r["race_id"])
-            sections.append(build_section(r, entries, runs, sm, odds, tempo, events, neural_scale=k, scale_fitted=fitted))
+            sections.append(build_section(r, entries, runs, sm, odds, tempo, events, neural_scale=k, scale_fitted=fitted, rated_model=rated_model))
         write_report(target, trk, sections, out_dir, open_it)
 
 

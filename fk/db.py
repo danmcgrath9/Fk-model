@@ -130,6 +130,21 @@ class Db:
         ).fetchall()
         return [{"past_event_id": r[0], "event_date": r[1], "raw": r[2]} for r in rows]
 
+    def resulted_races(self, state: str | None = "VIC") -> list[dict[str, Any]]:
+        """Every stored race whose entries carry an official result: (race_id, date, track,
+        entries raw) for the back-test. A race is 'resulted' when any entry holds a finish."""
+        rows = self.conn.execute(
+            """select r.race_id, m.meeting_date, m.track,
+                      jsonb_agg(e.raw order by e.barrier nulls last) as entries
+               from fk.races r join fk.meetings m using (meeting_id) join fk.entries e using (race_id)
+               where (%s::text is null or m.state = %s)
+               group by r.race_id, m.meeting_date, m.track
+               having bool_or(e.raw ? 'horseResult')
+               order by m.meeting_date, m.track, r.race_id""",
+            (state, state),
+        ).fetchall()
+        return [{"race_id": r[0], "date": str(r[1]), "track": r[2], "entries": r[3]} for r in rows]
+
     def speedmap_for_race(self, race_id: str) -> list[dict[str, Any]] | None:
         row = self.conn.execute("select runners from fk.speedmaps where race_id = %s", (race_id,)).fetchone()
         return row[0] if row else None

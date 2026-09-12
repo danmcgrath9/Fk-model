@@ -135,3 +135,21 @@ def test_summary_table_result_column_only_when_run():
 def test_fmt_never_prints_minus_zero():
     from fk.report.html import _fmt
     assert _fmt(-0.0, 1) == "0.0" and _fmt(-0.04, 1) == "0.0" and _fmt(-0.06, 1) == "-0.1" and _fmt(2.5, 1) == "2.5"
+
+
+def test_report_uses_the_backtested_model_when_present(tmp_path):
+    import json
+    from build_report import build_section, load_rated_price_model, model_chances
+    assert load_rated_price_model(tmp_path / "none.json") is None
+    path = tmp_path / "rated_price.json"
+    path.write_text(json.dumps({"beta": {"neural_rel": 8.0, "last_rel": 0.2, "peak_rel": 0.0, "peak12_rel": 0.0},
+                                "features": ["neural_rel", "last_rel", "peak_rel", "peak12_rel"], "races": 120, "to": "2026-09-10"}))
+    model = load_rated_price_model(path)
+    summ = race_summary(n_runners=3)
+    entries = [dict(horse_id=x["breedingId"], name=x["horse"]["name"], barrier=x["barrier"], weight_kg=56.0, jockey="J", trainer="T",
+                    scratched=False, neural_rating=x["ratings"]["neural"], exp_rating=58.0, days_since_last_run=14, raw=x) for x in summ["entries"]]
+    p = model_chances(model, entries)
+    assert round(sum(p.values()), 9) == 1.0 and p["H2"] > p["H1"] > p["H0"]   # Neural 63 > 62 > 61, same ratings
+    sec = build_section(dict(race_number=3, race_name="Demo", distance_m=1400, raw=summ), entries, {}, None, {}, rated_model=model)
+    assert any(f.startswith("Rated by the back-tested model: fitted to Betfair SP over 120 races") for f in sec.facts)
+    assert round(sum(r.model_prob for r in sec.rows), 9) == 1.0
