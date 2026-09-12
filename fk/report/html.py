@@ -167,7 +167,8 @@ def _fmt(v: Any, nd: int = 2, pct: bool = False) -> str:
     if pct:
         return f"{v*100:.1f}%"
     if isinstance(v, float):
-        return f"{v:.{nd}f}"
+        out = f"{v:.{nd}f}"
+        return out[1:] if out.startswith("-") and float(out) == 0 else out   # never "-0.0"
     return html.escape(str(v))
 
 

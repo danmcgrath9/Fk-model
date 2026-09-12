@@ -130,3 +130,8 @@ def test_summary_table_result_column_only_when_run():
     c = SummaryRow("C", 3, 55.0, "J", 14, 40.0, 58.0, 5.0, 6.0, 0.2, 0.25, None, finish=12, result_sp=None)
     out = summary_table([a, b, c])
     assert "<th>Result</th>" in out and "1st $4.60" in out and "12th" in out
+
+
+def test_fmt_never_prints_minus_zero():
+    from fk.report.html import _fmt
+    assert _fmt(-0.0, 1) == "0.0" and _fmt(-0.04, 1) == "0.0" and _fmt(-0.06, 1) == "-0.1" and _fmt(2.5, 1) == "2.5"
