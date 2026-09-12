@@ -21,8 +21,22 @@ from dataclasses import dataclass, field
 from fk import fields as F
 from fk.trend import rating_series
 
-FORM_FEATURES = ["neural_rel", "last_rel", "peak_rel", "peak12_rel"]
+# Candidate pre-race features, all made relative within the race by race_features.
+NEURAL = ["neural_rel"]
+RATINGS = ["last_rel", "peak_rel", "peak12_rel", "wfa_rel", "wfa_best_rel", "ohr_rel"]
+DISTANCE = ["dist_rel", "dist_win"]
+FORM_FEATURES = NEURAL + RATINGS + DISTANCE
 MARKET_FEATURE = "open_logit"
+
+# The feature sets the back-test compares. The one closest to BSP out of sample is deployed.
+MODEL_SETS = {
+    "neural_only": NEURAL,
+    "ratings_only": RATINGS,                 # WFA, handicap and weight-adjusted ratings, no Neural
+    "ratings_plus_distance": RATINGS + DISTANCE,
+    "all_form": FORM_FEATURES,
+    "all_form_plus_open_market": FORM_FEATURES + [MARKET_FEATURE],
+}
+DISTANCE_BAND_M = 200   # a run within this of today's trip counts as "at the distance"
 
 
 @dataclass
@@ -44,22 +58,56 @@ class Race:
     runners: list[Runner]
 
 
-def runner_from_entry(e: dict) -> Runner | None:
+def _form_record(txt: str | None) -> tuple[int, int] | None:
+    """'5: 2-1-0' -> (starts 5, wins 2); None when unreadable."""
+    if not txt or ":" not in str(txt):
+        return None
+    try:
+        starts, rest = str(txt).split(":", 1)
+        wins = rest.strip().split("-")[0]
+        return int(starts.strip()), int(wins.strip())
+    except ValueError:
+        return None
+
+
+def runner_from_entry(e: dict, race_distance: int | None = None) -> Runner | None:
     """A RaceEntry (Get Race Form) already run: features from what was knowable before the
-    jump, the result from horseResult. None for a scratching."""
+    jump, the result from horseResult. None for a scratching.
+    Raw values: Form King's Neural; the latest rating adjusted to today's weight and the
+    career and 12-month peaks (that scale); the latest and the best WFA rating; the
+    official handicap rating (benchmarkRating); the mean weight-adjusted rating of runs
+    within DISTANCE_BAND_M of today's trip; the record at the distance; the opening price."""
     if F.entry_scratched(e):
         return None
     res = F.entry_result(e)
     peak, peak12 = F.entry_peak_ratings(e)
-    runs = [F.run_ratings(p) for p in F.entry_past_events(e)]
+    events = F.entry_past_events(e)
+    runs = [F.run_ratings(p) for p in events]
     runs = sorted([r for r in runs if r.get("date")], key=lambda r: r["date"])
     series = [v for v in rating_series(runs) if v is not None]
+    races_only = [r for r in runs if not r.get("trial")]
+    wfa = [r["wfaRat"] if r.get("wfaRat") is not None else r.get("wfa") for r in races_only]
+    wfa = [v for v in wfa if v is not None]
+    at_distance = []
+    if race_distance:
+        for r in races_only:
+            d = r.get("distance")
+            v = next((r[k] for k in ("adjToday", "atWeights", "wfaRat", "wfa") if r.get(k) is not None), None)
+            if d is not None and v is not None and abs(float(d) - float(race_distance)) <= DISTANCE_BAND_M:
+                at_distance.append(v)
+    ctx = F.entry_context(e)
+    rec = _form_record(F.entry_form_record(e).get("distanceForm"))
     odds = F.entry_odds(e)
     open_price = F.odds_opening_price(odds) if odds else None
     return Runner(
         horse_id=F.horse_id(e), name=F.horse_name(e),
         raw={"neural": F.entry_neural_rating(e), "last": series[-1] if series else None,
-             "peak": peak, "peak12": peak12, "open": open_price},
+             "peak": peak, "peak12": peak12,
+             "wfa": wfa[-1] if wfa else None, "wfa_best": max(wfa) if wfa else None,
+             "ohr": ctx.get("ohr"),
+             "dist": sum(at_distance) / len(at_distance) if at_distance else None,
+             "dist_starts": rec[0] if rec else None, "dist_wins": rec[1] if rec else None,
+             "open": open_price},
         bsp=F.result_betfair_sp(res) if res else None,
         sp=F.result_starting_price(res) if res else None,
         finish=F.result_finish_position(res) if res else None,
@@ -82,10 +130,18 @@ def race_features(runners: list[Runner]) -> None:
     neural = _fill_mean([r.raw.get("neural") for r in runners])
     top = max(neural) if max(neural) > 0 else 1.0
     cols = {"neural_rel": [max(v, top * 0.01) / top for v in neural]}
-    for key, out in (("last", "last_rel"), ("peak", "peak_rel"), ("peak12", "peak12_rel")):
+    for key, out in (("last", "last_rel"), ("peak", "peak_rel"), ("peak12", "peak12_rel"), ("wfa", "wfa_rel"),
+                     ("wfa_best", "wfa_best_rel"), ("ohr", "ohr_rel"), ("dist", "dist_rel")):
         vals = _fill_mean([r.raw.get(key) for r in runners])
         best = max(vals)
         cols[out] = [v - best for v in vals]
+    # Record at the distance as a shrunk win rate: (wins + 1) / (starts + 5), so one win
+    # from one start reads 33%, not 100%; a runner with no record takes the race mean.
+    rates = [((r.raw["dist_wins"] + 1) / (r.raw["dist_starts"] + 5)) if r.raw.get("dist_starts") is not None and r.raw.get("dist_wins") is not None else None
+             for r in runners]
+    rates = _fill_mean(rates)
+    mean_rate = sum(rates) / n
+    cols["dist_win"] = [v - mean_rate for v in rates]
     opens = [r.raw.get("open") for r in runners]
     inv = [1.0 / o if o is not None and o > 1 else None for o in opens]
     have = [v for v in inv if v is not None]

@@ -64,11 +64,11 @@ def load_rated_price_model(path: Path = MODEL_PATH) -> dict | None:
     return m if m.get("beta") and m.get("features") else None
 
 
-def model_chances(model: dict, entries: list[dict]) -> dict[str, float]:
+def model_chances(model: dict, entries: list[dict], distance_m: int | None = None) -> dict[str, float]:
     """Win chance per active runner from the back-tested conditional logit, on the same
     features the fit used (fk.backtest.race_features over each entry's own record)."""
     from fk import backtest as B
-    runners = [r for r in (B.runner_from_entry(e["raw"]) for e in entries if e.get("raw")) if r is not None]
+    runners = [r for r in (B.runner_from_entry(e["raw"], distance_m) for e in entries if e.get("raw")) if r is not None]
     if not runners:
         return {}
     B.race_features(runners)
@@ -220,7 +220,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
     prices = {e["horse_id"]: (odds.get(e["horse_id"], {}).get("current")) for e in active}
     market = market_implied(prices)
     k = neural_scale if neural_scale is not None else DEFAULT_SCALE
-    model = model_chances(rated_model, active) if rated_model else {}
+    model = model_chances(rated_model, active, race.get("distance_m")) if rated_model else {}
     if model:
         model = {e["horse_id"]: model.get(e["horse_id"]) for e in active}
         section.facts.append(f"Rated by the back-tested model: fitted to Betfair SP over {rated_model['races']} races to {rated_model['to']}")

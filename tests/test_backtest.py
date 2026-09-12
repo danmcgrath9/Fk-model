@@ -54,3 +54,25 @@ def test_calibration_buckets():
     race = _race("r1", [{"f": 1.0}, {"f": 0.0}], [1 / 0.75, 1 / 0.25], winner=0)
     rows = calibration([[0.75, 0.25]], [race])
     assert rows == [("20% to 30%", 1, 0.25, 0.0), ("50% to 100%", 1, 0.75, 1.0)]
+
+
+def test_wfa_handicap_and_distance_features():
+    from fk.backtest import DISTANCE, MODEL_SETS, RATINGS, _form_record
+    assert _form_record("5: 2-1-0") == (5, 2) and _form_record("") is None and _form_record("x") is None
+    e = race_entry("H1", "Quagmire", 3, result=2)
+    e["benchmarkRating"] = 78
+    e["form"] = {"distanceForm": "5: 2-1-0"}
+    # fixture runs are all 1400m with wfaRat 91 on the benchmarked ones, atWeights 90
+    r = runner_from_entry(e, race_distance=1400)
+    assert r.raw["ohr"] == 78 and r.raw["wfa"] == 91.0 and r.raw["wfa_best"] == 91.0
+    assert r.raw["dist"] == 90.0 and r.raw["dist_starts"] == 5 and r.raw["dist_wins"] == 2
+    assert runner_from_entry(e, race_distance=2000).raw["dist"] is None       # nothing within 200m of the trip
+    other = runner_from_entry(race_entry("H2", "Other", 4, result=1), race_distance=1400)
+    other.raw.update(ohr=70, dist_starts=1, dist_wins=1, wfa=85.0, wfa_best=88.0)
+    race_features([r, other])
+    assert r.x["ohr_rel"] == 0.0 and other.x["ohr_rel"] == -8.0
+    assert r.x["wfa_rel"] == 0.0 and other.x["wfa_rel"] == -6.0 and other.x["wfa_best_rel"] == -3.0
+    # shrunk win rates: (2+1)/(5+5) = 0.30 and (1+1)/(1+5) = 0.333, centred on their mean
+    assert round(r.x["dist_win"], 4) == round(0.30 - (0.30 + 1 / 3) / 2, 4)
+    assert set(RATINGS) <= set(r.x) and set(DISTANCE) <= set(r.x)
+    assert "ratings_only" in MODEL_SETS and "neural_rel" not in MODEL_SETS["ratings_only"]
