@@ -1,6 +1,6 @@
 # Back-test against Betfair SP
 
-Fitted 2026-09-12 02:07 UTC over 209 resulted races (2095 runners), 2026-04-30 to 2026-08-31. Out of sample = fitted on the first 146 races by date, scored on the last 63.
+Fitted 2026-09-12 02:10 UTC over 209 resulted races (2095 runners), 2026-04-30 to 2026-08-31. Out of sample = fitted on the first 146 races by date, scored on the last 63.
 
 Each model is a conditional logit fitted to minimise the cross-entropy against the BSP-implied chances. 'KL to BSP' is how far it sits from BSP (0 = BSP itself); 'log loss' is scored on the actual winners (lower is better); 'top pick won' is the share of races the model's highest-rated runner won.
 
@@ -15,7 +15,7 @@ Each model is a conditional logit fitted to minimise the cross-entropy against t
 | all_form_plus_class **(deployed)** | 0.1832 / 0.2067 | 1.9005 / 1.9867 | 27.4% / 33.3% |
 | ratings_class_distance | 0.2495 / 0.2825 | 1.9683 / 2.0721 | 30.8% / 27.0% |
 | all_form_plus_open_market | 0.1234 / 0.1278 | 1.8214 / 1.9136 | 35.6% / 20.6% |
-| projection_sim | 0.4210 / 0.4359 | 2.1419 / 2.2185 | 23.3% / 19.0% |
+| projection_sim | 0.3208 / 0.3330 | 2.0605 / 2.1028 | 32.9% / 28.6% |
 
 Deployed: **all_form_plus_class**, the form-only model closest to BSP out of sample, refitted on all 209 races.
 
@@ -35,7 +35,7 @@ Deployed: **all_form_plus_class**, the form-only model closest to BSP out of sam
 - trend_slope: -0.0034
 - starts_log: -0.2331
 
-projection_sim parameters on the training races: recent_runs 4, decay 0.7, scope_bonus 0.0, trend_weight 0.0, shape_weight 0.0, late_weight 0.5, sd_floor 3.0, light_sd 1.5, sd_scale 3.0, unrated_gap 7.0, unrated_sd 3.0
+projection_sim parameters on the training races: recent_runs 4, decay 0.7, scope_bonus 0.0, trend_weight 0.0, shape_weight 0.0, late_weight 0.5, sd_floor 3.0, light_sd 1.5, sd_scale 4.0, unrated_gap 7.0, unrated_sd 3.0, neural_weight 20.0
 
 Runners with no rated run (projected at the field mean less the unrated gap): 88 of 2095.
 
