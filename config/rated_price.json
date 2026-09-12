@@ -1,5 +1,5 @@
 {
-  "fitted_at": "2026-09-12T01:55:57+00:00",
+  "fitted_at": "2026-09-12T02:05:19+00:00",
   "races": 209,
   "runners": 2095,
   "from": "2026-04-30",
@@ -35,6 +35,7 @@
     "trend_slope": -0.003375629082961838,
     "starts_log": -0.23307230164416995
   },
+  "params": null,
   "scores": {
     "deployed_in_sample": {
       "races": 209,
