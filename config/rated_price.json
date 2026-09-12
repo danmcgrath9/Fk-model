@@ -1,0 +1,88 @@
+{
+  "fitted_at": "2026-09-12T01:02:41+00:00",
+  "races": 209,
+  "runners": 2095,
+  "from": "2026-04-30",
+  "to": "2026-08-31",
+  "model": "all_form",
+  "features": [
+    "neural_rel",
+    "last_rel",
+    "peak_rel",
+    "peak12_rel",
+    "wfa_rel",
+    "wfa_best_rel",
+    "ohr_rel",
+    "dist_rel",
+    "dist_win"
+  ],
+  "beta": {
+    "neural_rel": 1.746405600670189,
+    "last_rel": -0.03027731705179908,
+    "peak_rel": 0.009378022301431267,
+    "peak12_rel": 0.04237450706252614,
+    "wfa_rel": 0.05709879427363943,
+    "wfa_best_rel": -0.01288954021448196,
+    "ohr_rel": -0.004625057044888042,
+    "dist_rel": 0.04793386808192367,
+    "dist_win": 0.6028537720917939
+  },
+  "scores": {
+    "deployed_in_sample": {
+      "races": 209,
+      "runners": 2095,
+      "kl_to_bsp": 0.1958954098227136,
+      "log_loss": 1.942567277584517,
+      "winner_top_rated": 0.2679425837320574
+    },
+    "neural_only_out_of_sample": {
+      "races": 63,
+      "runners": 626,
+      "kl_to_bsp": 0.2652580450808812,
+      "log_loss": 2.0545635170506733,
+      "winner_top_rated": 0.30158730158730157
+    },
+    "ratings_only_out_of_sample": {
+      "races": 63,
+      "runners": 626,
+      "kl_to_bsp": 0.3133190270931576,
+      "log_loss": 2.1169476317344094,
+      "winner_top_rated": 0.1746031746031746
+    },
+    "ratings_plus_distance_out_of_sample": {
+      "races": 63,
+      "runners": 626,
+      "kl_to_bsp": 0.2897397823613746,
+      "log_loss": 2.0896074563621947,
+      "winner_top_rated": 0.25396825396825395
+    },
+    "all_form_out_of_sample": {
+      "races": 63,
+      "runners": 626,
+      "kl_to_bsp": 0.21519235976250017,
+      "log_loss": 2.010996534755119,
+      "winner_top_rated": 0.2698412698412698
+    },
+    "all_form_plus_open_market_out_of_sample": {
+      "races": 63,
+      "runners": 626,
+      "kl_to_bsp": 0.12775227405375297,
+      "log_loss": 1.9135599038829025,
+      "winner_top_rated": 0.20634920634920634
+    },
+    "bsp_itself_out_of_sample": {
+      "races": 63,
+      "runners": 626,
+      "kl_to_bsp": 0.0,
+      "log_loss": 1.8101942637493418,
+      "winner_top_rated": 0.3333333333333333
+    },
+    "opening_market_out_of_sample": {
+      "races": 63,
+      "runners": 626,
+      "kl_to_bsp": 0.13408140207503386,
+      "log_loss": 1.9124500532395436,
+      "winner_top_rated": 0.2698412698412698
+    }
+  }
+}
