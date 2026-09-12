@@ -203,7 +203,8 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         unmapped = [r.name for r in sm_runners if r.predicted_position is None]
         if unmapped:
             section.notes.append("Not on the speedmap (no predicted position): " + ", ".join(unmapped))
-        section.figures.append(speedmap_chart(sm_runners, "Speedmap: predicted settling position by lane, barrier in the marker, colour is early speed"))
+        section.figures.append(speedmap_chart(sm_runners, "Early speed: who leads and who sits back" + (f". Tempo: {tempo}" if tempo else "")
+                                              + " (bar = Form King early speed score, colour and word = mapped lane, barrier in brackets)"))
     else:
         section.notes.append("No speedmap stored for this race.")
 

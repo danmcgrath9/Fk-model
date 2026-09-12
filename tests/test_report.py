@@ -60,7 +60,7 @@ def test_charts_build():
     fig2 = sectional_worm(r, "t")
     assert len(fig2.data) == 2
     fig3 = speedmap_chart([SpeedmapRunner("One", 3, 80), SpeedmapRunner("Two", 1, 95)], "t")
-    assert list(fig3.data[0].y) == ["Leader", "Backmarker"]
+    assert list(fig3.data[0].text) == ["Leader", "Backmarker"] and list(fig3.data[0].y) == ["Two", "One"]
 
 
 def test_summary_table_sorts_by_neural_and_flags():
@@ -104,8 +104,10 @@ def test_lane_map_and_late_speed_and_ladders():
     placed = lane_assignments(sm)
     assert [(r.name, rank, lane) for r, rank, lane in placed] == [("Lead", 1, "Leader"), ("Mid", 2, "Midfield"), ("Slow", 3, "Backmarker")]
     fig = speedmap_chart(sm, "t")
-    assert list(fig.data[0].text) == ["7", "1", "3"]        # barrier in the marker
-    assert list(fig.data[0].x) == [3, 2, 1]                   # leader furthest right
+    assert list(fig.data[0].y) == ["Lead (7)", "Mid (1)", "Slow (3)"]   # leader at the top, barrier in brackets
+    assert list(fig.data[0].x) == [95, 80, 60]                           # bar = early speed score
+    assert list(fig.data[0].text) == ["Leader", "Midfield", "Backmarker"]
+    assert fig.layout.yaxis.autorange == "reversed"
     secs = ["1000m", "800m", "600m", "400m", "200m", "Finish"]
     rows = late_speed_table([RunnerRuns("a", "A", secs, [[0.0, 0.0, 0.0, 1.0, 1.0, 1.0]]),
                              RunnerRuns("b", "B", secs, [[2.0, 2.0, 2.0, -1.0, -1.0, -1.0]])])

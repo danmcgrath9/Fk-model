@@ -138,39 +138,39 @@ def lane_assignments(runners: list[SpeedmapRunner]) -> list[tuple[SpeedmapRunner
     return [(r, i + 1, settling_group(i + 1, n)) for i, r in enumerate(ordered)]
 
 
+LANE_COLOURS = {"Leader": "#e57373", "On pace": "#ffb74d", "Midfield": "#9aa0a6", "Off pace": "#4fc3f7", "Backmarker": "#5c6370"}
+
+
 def speedmap_chart(runners: list[SpeedmapRunner], title: str) -> go.Figure:
-    """The Australian speed-map shape: a field map read left to right, the predicted leader
-    furthest forward (right), each runner in its settling lane, labelled with its barrier,
-    coloured by the early speed metric."""
+    """Early speed as a bar per runner, the likely leader at the top: bar length is Form
+    King's early speed score, the bar is coloured by the lane it maps to (Leader, On pace,
+    Midfield, Off pace, Backmarker) with the lane written on the bar so the word rides
+    beside the colour, and the runner's name and barrier sit on the axis. Hover carries
+    the settling score and the median early speed against the runner's own benchmark."""
     placed = lane_assignments(runners)
     fig = go.Figure()
     if placed:
-        n = len(placed)
-        speeds = [r.early_speed for r, _, _ in placed]
-        fig.add_trace(
-            go.Scatter(
-                x=[n - rank + 1 for _, rank, _ in placed],   # leader at the right, like a field on the track
-                y=[lane for _, _, lane in placed],
-                mode="markers+text",
-                text=[str(r.barrier) if r.barrier is not None else "" for r, _, _ in placed],
-                textposition="middle center",
-                textfont=dict(color="#0f1115", size=12),
-                marker=dict(size=30, color=speeds, colorscale="Blues", showscale=any(v is not None for v in speeds),
-                            colorbar=dict(title="Early speed", thickness=12), line=dict(color="#e6e6e6", width=1)),
-                customdata=[[r.name, rank, _nan(r.early_speed), _nan(r.pir), _nan(r.median_vs_benchmark)] for r, rank, _ in placed],
-                hovertemplate=("%{customdata[0]}<br>predicted %{customdata[1]}th early, barrier %{text}<br>early speed %{customdata[2]:.1f}"
-                               "<br>settling score %{customdata[3]:.1f}<br>median early vs own benchmark %{customdata[4]:+.2f}<extra></extra>"),
-                showlegend=False,
-            )
-        )
+        names = [f"{r.name} ({r.barrier})" if r.barrier is not None else r.name for r, _, _ in placed]
+        speeds = [r.early_speed if r.early_speed is not None else 0.0 for r, _, _ in placed]
+        lanes = [lane for _, _, lane in placed]
+        fig.add_trace(go.Bar(
+            x=speeds, y=names, orientation="h",
+            marker=dict(color=[LANE_COLOURS[l] for l in lanes]),
+            text=lanes, textposition="inside", insidetextanchor="start", textfont=dict(color="#0f1115", size=12),
+            customdata=[[rank, _nan(r.pir), _nan(r.median_vs_benchmark), lane] for r, rank, lane in placed],
+            hovertemplate=("%{y}<br>%{customdata[3]}, predicted %{customdata[0]}th early<br>early speed %{x:.1f}"
+                           "<br>settling score %{customdata[1]:.1f}<br>median early vs own benchmark %{customdata[2]:+.2f}<extra></extra>"),
+            showlegend=False,
+        ))
     fig.update_layout(
         title=title,
-        xaxis=dict(title="Predicted early position, leader to the right", showticklabels=False, zeroline=False, showgrid=False),
-        yaxis=dict(categoryorder="array", categoryarray=list(reversed(LANES)), title=""),
+        xaxis=dict(title="Early speed score, higher = faster early", zeroline=False, gridcolor="#2a2f3a"),
+        yaxis=dict(autorange="reversed", title=""),
+        bargap=0.25,
         **DARK,
     )
-    fig.update_layout(height=380)
-    phone(fig, 440)
+    fig.update_layout(height=90 + 34 * max(len(placed), 1), margin=dict(l=150, r=12, t=60, b=50))
+    phone(fig, 90 + 40 * max(len(placed), 1))
     return fig
 
 
