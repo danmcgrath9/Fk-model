@@ -79,6 +79,8 @@ jobs:
           git add config/rated_price.json docs/BACKTEST.md
           git diff --cached --quiet && { echo "model unchanged"; exit 0; }
           git commit -q -m "Back-test: rated price refitted to Betfair SP"
+          # main may have moved during a long pull; replay the model commit on top of it
+          git pull -q --rebase "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
           git push -q "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
