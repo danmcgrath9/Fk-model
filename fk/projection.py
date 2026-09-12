@@ -120,8 +120,8 @@ class Projection:
     scope: float
     shape: float
     late: float
-    neural: float = 0.0           # the Neural component, when the fit gives it weight
-    projected: float | None = None
+    neural: float                 # the Neural component, when the fit gives it weight
+    projected: float | None
     sd: float | None
     n_rated: int
     note: str
