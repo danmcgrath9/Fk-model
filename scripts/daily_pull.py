@@ -215,7 +215,11 @@ def main() -> None:
                 continue
             at = utc_now()
             if kind == "speedmaps":
+                # The meeting call returns every race's speedmap; with --races only some of
+                # those races exist in the database, and a speedmap keys on its race.
                 for sm in F.speedmap_list(payload):
+                    if F.speedmap_race_id(sm) not in race_meeting:
+                        continue
                     runners = [dict(horse_id=F.horse_id(e), name=F.horse_name(e), number=F.entry_number(e), barrier=F.entry_barrier(e),
                                     predicted_position=rank, early_speed=F.speedmap_early_speed(e), pir=F.speedmap_pir(e),
                                     median_vs_benchmark=F.speedmap_median_vs_benchmark(e))
