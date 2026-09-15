@@ -188,6 +188,22 @@ class Db:
         return [{"bet_id": r[0], "stake": float(r[1]), "finish": r[2], "sp": float(r[3]) if r[3] is not None else None,
                  "bsp": float(r[4]) if r[4] is not None else None} for r in rows]
 
+    def open_paper_bets_with_jump(self) -> list[dict[str, Any]]:
+        """Unsettled bets with when they were placed and when their race was due to start."""
+        rows = self.conn.execute(
+            """select b.bet_id, b.placed_at, m.meeting_date, r.raw->>'startTime', b.track, b.race_number
+               from fk.paper_bets b join fk.races r using (race_id) join fk.meetings m using (meeting_id)
+               where b.settled_at is null"""
+        ).fetchall()
+        keys = ["bet_id", "placed_at", "meeting_date", "start_time", "track", "race_number"]
+        return [dict(zip(keys, r)) for r in rows]
+
+    def delete_paper_bets(self, bet_ids: list[str]) -> int:
+        if not bet_ids:
+            return 0
+        cur = self.conn.execute("delete from fk.paper_bets where bet_id = any(%s)", (bet_ids,))
+        return cur.rowcount
+
     def settle_paper_bet(self, bet_id: str, settle_price: float | None, finish: int | None, won: bool, returned: float) -> None:
         self.conn.execute(
             "update fk.paper_bets set settled_at = now(), settle_price = %s, finish = %s, won = %s, returned = %s where bet_id = %s",

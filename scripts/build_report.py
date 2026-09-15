@@ -367,12 +367,19 @@ def paper_rows(section: RaceSection):
 def place_paper(db, race: dict, section: RaceSection) -> int:
     """The paper book: every plan's bets for a race not yet run, at the prices on the page."""
     from datetime import datetime, timezone
+    from fk import fields as F
     from fk import paper as P
+    now = datetime.now(timezone.utc)
+    jump = P.jump_time(race.get("meeting_date"), F.race_start_time(race.get("raw") or {}))
+    if not P.before_the_jump(jump, now):
+        # A page built after the race has run carries a price nobody could take now.
+        when = jump.strftime("%H:%M Melbourne") if jump else "unknown"
+        print(f"paper: race {race.get('race_number')} not bet, jump {when} has passed or is unknown")
+        return 0
     bets = P.place(paper_rows(section))
     if not bets:
         return 0
     db.ensure_paper_book()
-    now = datetime.now(timezone.utc)
     return db.place_paper_bets([dict(
         bet_id=f"{race['race_id']}|{b.horse_id}|{b.plan}", race_id=race["race_id"], horse_id=b.horse_id, plan=b.plan,
         meeting_date=race["meeting_date"], track=race.get("track"), race_number=race.get("race_number"), horse_name=b.name,

@@ -7,6 +7,8 @@ per plan, so "would we be ahead" is a chart with a sample behind it.
 """
 from __future__ import annotations
 
+import re
+
 from dataclasses import dataclass
 
 UNIT = 1.0
@@ -58,6 +60,35 @@ def kelly_stake(p: float | None, price: float | None) -> float:
     if f <= 0:
         return 0.0
     return min(KELLY_CAP, KELLY_FRACTION * f * BANK)
+
+
+def jump_time(meeting_date, start_time: str | None):
+    """The race's scheduled start as an instant, from the meeting date and Form King's
+    startTime string ("12:25pm", "1:05 pm", "13:05"), read in Melbourne time.
+    None when the string cannot be read: an unknown jump time is never treated as future."""
+    from datetime import date, datetime
+    from zoneinfo import ZoneInfo
+    if start_time is None or meeting_date is None:
+        return None
+    m = re.fullmatch(r"\s*(\d{1,2})[:.](\d{2})\s*([ap]m)?\s*", str(start_time), re.I)
+    if not m:
+        return None
+    hour, minute, ampm = int(m.group(1)), int(m.group(2)), (m.group(3) or "").lower()
+    if ampm == "pm" and hour < 12:
+        hour += 12
+    if ampm == "am" and hour == 12:
+        hour = 0
+    if hour > 23 or minute > 59:
+        return None
+    d = meeting_date if isinstance(meeting_date, date) else date.fromisoformat(str(meeting_date)[:10])
+    return datetime(d.year, d.month, d.day, hour, minute, tzinfo=ZoneInfo("Australia/Melbourne"))
+
+
+def before_the_jump(jump, now) -> bool:
+    """A paper bet is only a bet if it is placed before the race is due to start. An
+    unknown jump time refuses, because a price captured after the race is not a price
+    anyone could have taken."""
+    return jump is not None and now < jump
 
 
 def place(rows: list[Row]) -> list[Bet]:

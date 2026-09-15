@@ -1,4 +1,6 @@
-from fk.paper import Bet, Row, kelly_stake, place, running, settle, summarise
+from datetime import datetime, timezone
+
+from fk.paper import Bet, Row, before_the_jump, jump_time, kelly_stake, place, running, settle, summarise
 
 
 def test_kelly_by_hand_and_the_edge_gate():
@@ -34,3 +36,20 @@ def test_settle_summarise_and_running():
     assert s["value_flags"].roi == -1.0
     r = running(settled)
     assert [v for _, v in r["top_pick"]] == [3.5, 2.5]
+
+
+def test_jump_time_reads_form_king_start_strings_in_melbourne():
+    j = jump_time("2026-09-15", "12:25pm")
+    assert j.isoformat() == "2026-09-15T12:25:00+10:00"          # AEST in September
+    assert jump_time("2026-09-15", "1:05 PM").hour == 13
+    assert jump_time("2026-09-15", "12:05am").hour == 0
+    assert jump_time("2026-09-15", "13:05").hour == 13
+    assert jump_time("2026-09-15", None) is None and jump_time("2026-09-15", "soon") is None
+    assert jump_time("2026-10-10", "12:25pm").isoformat() == "2026-10-10T12:25:00+11:00"   # daylight saving
+
+
+def test_a_bet_after_the_jump_or_with_no_jump_is_not_a_bet():
+    j = jump_time("2026-09-15", "3:00pm")                          # 05:00 UTC
+    assert before_the_jump(j, datetime(2026, 9, 15, 4, 59, tzinfo=timezone.utc))
+    assert not before_the_jump(j, datetime(2026, 9, 15, 5, 0, tzinfo=timezone.utc))
+    assert not before_the_jump(None, datetime(2026, 9, 15, 4, 0, tzinfo=timezone.utc))
