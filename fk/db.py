@@ -149,6 +149,61 @@ class Db:
                  "lws": float(r[4]) if r[4] is not None else None, "entries": r[5],
                  "speedmap": r[6], "tempo": r[7]} for r in rows]
 
+    # ---- the paper book ------------------------------------------------------------
+
+    def ensure_paper_book(self) -> None:
+        """Apply sql/003 when fk.paper_bets is missing (the file is guarded, so re-running is safe)."""
+        row = self.conn.execute("select to_regclass('fk.paper_bets')").fetchone()
+        if row and row[0]:
+            return
+        from pathlib import Path
+        sql = (Path(__file__).resolve().parents[1] / "sql" / "003_paper_book.sql").read_text(encoding="utf-8")
+        self.conn.execute(sql)
+        self.conn.commit()
+
+    def place_paper_bets(self, rows: list[dict[str, Any]]) -> int:
+        """Insert bets that are not already there; a bet once placed is never re-priced."""
+        if not rows:
+            return 0
+        cols = list(rows[0].keys())
+        placeholders = ", ".join(["%s"] * len(cols))
+        n = 0
+        with self.conn.cursor() as cur:
+            for r in rows:
+                cur.execute(
+                    f"insert into fk.paper_bets ({', '.join(cols)}) values ({placeholders}) on conflict (bet_id) do nothing",
+                    [r[c] for c in cols],
+                )
+                n += cur.rowcount
+        self.conn.commit()
+        return n
+
+    def open_paper_bets_with_results(self) -> list[dict[str, Any]]:
+        """Unsettled bets whose race now has a result: the finish, SP and Betfair SP for the horse."""
+        rows = self.conn.execute(
+            """select b.bet_id, b.stake, r.finish_position, r.starting_price, (r.raw->>'betfairStartingPrice')::numeric
+               from fk.paper_bets b join fk.results r using (race_id, horse_id)
+               where b.settled_at is null"""
+        ).fetchall()
+        return [{"bet_id": r[0], "stake": float(r[1]), "finish": r[2], "sp": float(r[3]) if r[3] is not None else None,
+                 "bsp": float(r[4]) if r[4] is not None else None} for r in rows]
+
+    def settle_paper_bet(self, bet_id: str, settle_price: float | None, finish: int | None, won: bool, returned: float) -> None:
+        self.conn.execute(
+            "update fk.paper_bets set settled_at = now(), settle_price = %s, finish = %s, won = %s, returned = %s where bet_id = %s",
+            (settle_price, finish, won, returned, bet_id),
+        )
+
+    def paper_bets(self) -> list[dict[str, Any]]:
+        rows = self.conn.execute(
+            """select bet_id, plan, meeting_date, track, race_number, horse_name, price, rated_price, stake,
+                      settled_at, settle_price, finish, won, returned
+               from fk.paper_bets order by meeting_date, race_number, bet_id"""
+        ).fetchall()
+        keys = ["bet_id", "plan", "meeting_date", "track", "race_number", "horse_name", "price", "rated_price", "stake",
+                "settled_at", "settle_price", "finish", "won", "returned"]
+        return [dict(zip(keys, (_plain(v) for v in r))) for r in rows]
+
     def races_fetched_since(self, since: datetime) -> set[str]:
         """Race ids whose race form (entries) was fetched at or after `since`."""
         rows = self.conn.execute(

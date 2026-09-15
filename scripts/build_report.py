@@ -290,7 +290,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
             trend=trends[hid].reading if hid in trends and trends[hid].n else None, slope=trends[hid].slope if hid in trends else None,
             last_rating=trends[hid].last if hid in trends else None, best_rating=trends[hid].best if hid in trends else None,
             finish=F.result_finish_position(res) if res else (stored or {}).get("finish"),
-            result_sp=F.result_starting_price(res) if res else (stored or {}).get("sp")))
+            result_sp=F.result_starting_price(res) if res else (stored or {}).get("sp"), horse_id=hid))
     names_l = [e["name"] for e in active]
     # Context and form strip in the summary's order (Neural, best first).
     order = sorted(active, key=lambda e: (e.get("neural_rating") is None, -float(e.get("neural_rating") or 0)))
@@ -359,7 +359,28 @@ def write_report(meeting_date: str, track: str, sections: list[RaceSection], out
     return path
 
 
-def from_database(target: str, track: str | None, out_dir: Path, open_it: bool) -> None:
+def paper_rows(section: RaceSection):
+    from fk import paper as P
+    return [P.Row(r.horse_id, r.name, r.rated_price, r.price, r.model_prob, r.market_prob, r.flag, r.finish) for r in section.rows if r.horse_id]
+
+
+def place_paper(db, race: dict, section: RaceSection) -> int:
+    """The paper book: every plan's bets for a race not yet run, at the prices on the page."""
+    from datetime import datetime, timezone
+    from fk import paper as P
+    bets = P.place(paper_rows(section))
+    if not bets:
+        return 0
+    db.ensure_paper_book()
+    now = datetime.now(timezone.utc)
+    return db.place_paper_bets([dict(
+        bet_id=f"{race['race_id']}|{b.horse_id}|{b.plan}", race_id=race["race_id"], horse_id=b.horse_id, plan=b.plan,
+        meeting_date=race["meeting_date"], track=race.get("track"), race_number=race.get("race_number"), horse_name=b.name,
+        placed_at=now, price=b.price, rated_price=b.rated_price, model_prob=b.model_prob, market_prob=b.market_prob, stake=b.stake,
+    ) for b in bets])
+
+
+def from_database(target: str, track: str | None, out_dir: Path, open_it: bool, paper: bool = False) -> None:
     from fk.db import Db
     settings = load_settings()
     db = Db(settings.database_url)
@@ -381,12 +402,18 @@ def from_database(target: str, track: str | None, out_dir: Path, open_it: bool) 
         k, fitted = neural_scale_for_meeting([(entries, odds) for _, entries, odds in loaded])
         print(f"{trk}: Neural scale k = {k:.2f} ({'fitted to the market' if fitted else 'default, no market'})")
         sections = []
+        placed = 0
         for r, entries, odds in loaded:
             runs = {e["horse_id"]: db.runs_for_horse(e["horse_id"], SECTIONAL_RUNS) for e in entries}
             events = {e["horse_id"]: db.past_events_for_horse(e["horse_id"], PROFILE_RUNS) for e in entries}
             sm, tempo = db.speedmap_for_race(r["race_id"]), db.speedmap_tempo(r["race_id"])
-            sections.append(build_section(r, entries, runs, sm, odds, tempo, events, neural_scale=k, scale_fitted=fitted, rated_model=rated_model,
-                                          tempo_raw=db.speedmap_tempo_raw(r["race_id"]), results=db.results_for_race(r["race_id"])))
+            section = build_section(r, entries, runs, sm, odds, tempo, events, neural_scale=k, scale_fitted=fitted, rated_model=rated_model,
+                                    tempo_raw=db.speedmap_tempo_raw(r["race_id"]), results=db.results_for_race(r["race_id"]))
+            sections.append(section)
+            if paper:
+                placed += place_paper(db, r, section)
+        if paper:
+            print(f"{trk}: {placed} paper bets placed")
         write_report(target, trk, sections, out_dir, open_it)
 
 
@@ -459,6 +486,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", help="meeting date YYYY-MM-DD (default: tomorrow, Melbourne)")
     ap.add_argument("--track")
+    ap.add_argument("--paper", action="store_true", help="log the paper book's bets for races not yet run, at the prices on the page")
     ap.add_argument("--demo", action="store_true")
     ap.add_argument("--out", default=str(Path(__file__).resolve().parent.parent / "reports"))
     ap.add_argument("--no-open", action="store_true")
@@ -468,7 +496,7 @@ def main() -> None:
         demo(out_dir, not a.no_open)
         return
     target = a.date or (today_melbourne() + timedelta(days=1)).isoformat()
-    from_database(target, a.track, out_dir, not a.no_open)
+    from_database(target, a.track, out_dir, not a.no_open, paper=a.paper)
 
 
 if __name__ == "__main__":

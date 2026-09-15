@@ -1,0 +1,136 @@
+"""The paper book. Pure, hand-tested.
+
+Every plan is a rule over one race's summary rows (what the page shows before the race):
+which runners to back and for how many units. Bets are placed at the market price on the
+page and settled at Betfair SP. summarise() turns settled bets into the running account
+per plan, so "would we be ahead" is a chart with a sample behind it.
+"""
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+UNIT = 1.0
+BANK = 100.0          # units the Kelly plan sizes against
+KELLY_FRACTION = 0.25
+KELLY_CAP = 5.0       # units, so one wild edge cannot dominate the book
+
+PLANS = {
+    "top_pick": "the model's top-rated runner, one unit",
+    "value_flags": "every runner flagged Neural > market (5+ points of value), one unit",
+    "value_under_8": "value flags rated under $8, one unit",
+    "top_pick_to_win_1": "the top pick, staked to win one unit at the morning price",
+    "kelly_quarter": "quarter Kelly on a 100-unit bank from the model's chance and the morning price, capped at 5 units",
+}
+
+
+@dataclass
+class Row:
+    horse_id: str
+    name: str
+    rated_price: float | None
+    price: float | None         # morning market price
+    model_prob: float | None
+    market_prob: float | None
+    flag: str | None            # model_higher / market_higher / None
+    finish: int | None = None   # already run: not a bet
+
+
+@dataclass
+class Bet:
+    plan: str
+    horse_id: str
+    name: str
+    stake: float
+    price: float | None
+    rated_price: float | None
+    model_prob: float | None
+    market_prob: float | None
+
+
+def kelly_stake(p: float | None, price: float | None) -> float:
+    """Quarter Kelly stake in units on BANK: f = (p*b - q) / b with b = price - 1, only when
+    positive, capped. Hand-checked: p 0.3 at $5 -> b 4, f = (1.2 - 0.7) / 4 = 0.125,
+    quarter of that on 100 units = 3.125."""
+    if p is None or price is None or price <= 1:
+        return 0.0
+    b = price - 1
+    f = (p * b - (1 - p)) / b
+    if f <= 0:
+        return 0.0
+    return min(KELLY_CAP, KELLY_FRACTION * f * BANK)
+
+
+def place(rows: list[Row]) -> list[Bet]:
+    """Every plan's bets for one race. A race with a result on any row is not bet on."""
+    if not rows or any(r.finish is not None for r in rows):
+        return []
+    rated = [r for r in rows if r.rated_price]
+    if not rated:
+        return []
+    top = min(rated, key=lambda r: r.rated_price)
+    bets: list[Bet] = []
+
+    def bet(plan: str, r: Row, stake: float) -> None:
+        if stake > 0:
+            bets.append(Bet(plan, r.horse_id, r.name, round(stake, 4), r.price, r.rated_price, r.model_prob, r.market_prob))
+
+    bet("top_pick", top, UNIT)
+    if top.price and top.price > 1:
+        bet("top_pick_to_win_1", top, UNIT / (top.price - 1))
+    for r in rows:
+        if r.flag == "model_higher":
+            bet("value_flags", r, UNIT)
+            if r.rated_price and r.rated_price < 8:
+                bet("value_under_8", r, UNIT)
+        bet("kelly_quarter", r, kelly_stake(r.model_prob, r.price))
+    return bets
+
+
+def settle(stake: float, won: bool, settle_price: float | None) -> float:
+    """Units returned: stake x price on a winner, nothing on a loser; a winner with no
+    settlement price returns the stake (void), never a guess."""
+    if not won:
+        return 0.0
+    if settle_price is None or settle_price <= 1:
+        return stake
+    return stake * settle_price
+
+
+@dataclass
+class PlanSummary:
+    plan: str
+    bets: int
+    winners: int
+    staked: float
+    returned: float
+
+    @property
+    def profit(self) -> float:
+        return self.returned - self.staked
+
+    @property
+    def roi(self) -> float | None:
+        return (self.returned / self.staked - 1) if self.staked else None
+
+
+def summarise(settled: list[dict]) -> dict[str, PlanSummary]:
+    """settled: dicts with plan, stake, returned, won. Per-plan totals."""
+    out: dict[str, PlanSummary] = {}
+    for b in settled:
+        s = out.setdefault(b["plan"], PlanSummary(b["plan"], 0, 0, 0.0, 0.0))
+        s.bets += 1
+        s.winners += 1 if b.get("won") else 0
+        s.staked += float(b["stake"])
+        s.returned += float(b.get("returned") or 0.0)
+    return out
+
+
+def running(settled: list[dict]) -> dict[str, list[tuple[str, float]]]:
+    """Cumulative profit per plan in bet order (meeting_date, race_number, bet_id):
+    [(label, cumulative units), ...]."""
+    out: dict[str, list[tuple[str, float]]] = {}
+    for b in sorted(settled, key=lambda b: (str(b.get("meeting_date")), b.get("race_number") or 0, b.get("bet_id") or "")):
+        seq = out.setdefault(b["plan"], [])
+        prev = seq[-1][1] if seq else 0.0
+        seq.append((f"{b.get('meeting_date')} R{b.get('race_number')}", prev + float(b.get("returned") or 0.0) - float(b["stake"])))
+    return out

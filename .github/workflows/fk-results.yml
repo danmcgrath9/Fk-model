@@ -55,17 +55,25 @@ jobs:
           DATE_ARG=""
           [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
           python scripts/fetch_results.py --key ${{ steps.key.outputs.key }} --yes $DATE_ARG
+
+      - name: Settle the paper book
+        if: always()
+        run: python scripts/paper_settle.py | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Morning odds for today
         if: always()
         env:
           FK_API_KEY: ${{ steps.key.outputs.key == 'live' && secrets.FK_API_KEY || 'FK-TEST-API-KEY' }}
         run: python scripts/morning_odds.py --key ${{ steps.key.outputs.key }} --yes
 
-      - name: Rebuild today's reports, and yesterday's with the results in
+      - name: Rebuild today's reports (placing the paper book's bets), and yesterday's with the results in
         if: always()
         run: |
-          python scripts/build_report.py --no-open --date "$(TZ=Australia/Melbourne date +%Y-%m-%d)"
+          python scripts/build_report.py --no-open --paper --date "$(TZ=Australia/Melbourne date +%Y-%m-%d)"
           python scripts/build_report.py --no-open --date "$(TZ=Australia/Melbourne date -d 'yesterday' +%Y-%m-%d)"
+
+      - name: Paper book account
+        if: always()
+        run: python scripts/paper_report.py | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Ledger
         if: always()

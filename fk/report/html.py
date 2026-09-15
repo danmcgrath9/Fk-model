@@ -118,6 +118,7 @@ class SummaryRow:
     best_rating: float | None = None
     finish: int | None = None          # official result, when the race has run
     result_sp: float | None = None
+    horse_id: str | None = None
 
 
 @dataclass

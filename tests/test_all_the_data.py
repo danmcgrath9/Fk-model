@@ -224,3 +224,20 @@ def test_result_column_falls_back_to_the_results_table():
                         results={"H1": {"finish": 1, "sp": 4.6}, "H0": {"finish": 3, "sp": 9.0}})
     by = {r.name: r for r in sec.rows}
     assert by["Horse 1"].finish == 1 and by["Horse 1"].result_sp == 4.6 and by["Horse 0"].finish == 3 and by["Horse 2"].finish is None
+
+
+def test_paper_rows_from_a_section_and_a_run_race_is_not_bet():
+    from build_report import build_section, paper_rows
+    from fk import paper as P
+    summ = race_summary(n_runners=3)
+    entries = [dict(horse_id=x["breedingId"], name=x["horse"]["name"], barrier=x["barrier"], weight_kg=56.0, jockey="J", trainer="T",
+                    scratched=False, neural_rating=x["ratings"]["neural"], exp_rating=58.0, days_since_last_run=14, raw=x) for x in summ["entries"]]
+    odds = {"H0": {"current": 4.0}, "H1": {"current": 6.0}, "H2": {"current": 2.5}}
+    sec = build_section(dict(race_number=3, race_name="Demo", distance_m=1400, raw=summ), entries, {}, None, odds)
+    rows = paper_rows(sec)
+    assert {r.horse_id for r in rows} == {"H0", "H1", "H2"} and all(r.price for r in rows)
+    bets = P.place(rows)
+    assert any(b.plan == "top_pick" for b in bets)
+    sec2 = build_section(dict(race_number=3, race_name="Demo", distance_m=1400, raw=summ), entries, {}, None, odds,
+                         results={"H2": {"finish": 1, "sp": 2.4}})
+    assert P.place(paper_rows(sec2)) == []

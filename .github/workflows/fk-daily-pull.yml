@@ -39,6 +39,9 @@ on:
       horse:
         description: 'only the race this horse ran in (name as Form King spells it); skips speedmaps and profiles'
         default: ''
+      paper:
+        description: 'yes = also log the paper book bets for the day being built, then settle and report'
+        default: 'no'
 
 concurrency:
   group: fk-daily-pull
@@ -105,7 +108,12 @@ jobs:
           DATE_ARG=""
           [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
           [ -n "${{ github.event.inputs.track }}" ] && DATE_ARG="$DATE_ARG --track ${{ github.event.inputs.track }}"
+          [ "${{ github.event.inputs.paper }}" = "yes" ] && DATE_ARG="$DATE_ARG --paper"
           python scripts/build_report.py --no-open $DATE_ARG
+          if [ "${{ github.event.inputs.paper }}" = "yes" ]; then
+            python scripts/paper_settle.py | tee -a "$GITHUB_STEP_SUMMARY"
+            python scripts/paper_report.py | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Ledger
         if: always()
