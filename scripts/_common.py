@@ -17,6 +17,14 @@ from fk.spec import Spec  # noqa: E402
 AEST = timezone(timedelta(hours=10))  # Victoria is +10, +11 in daylight saving; date maths only
 
 
+def now_melbourne() -> datetime:
+    try:
+        from zoneinfo import ZoneInfo
+        return datetime.now(ZoneInfo("Australia/Melbourne"))
+    except Exception:
+        return datetime.now(AEST)
+
+
 def today_melbourne() -> date:
     # zoneinfo is exact; fall back to a fixed offset if tzdata is missing on the machine.
     try:

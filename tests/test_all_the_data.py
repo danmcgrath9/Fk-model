@@ -203,3 +203,24 @@ def test_select_meetings_by_horse_name():
     kept = select_meetings(ms, None, None, "regal ambition")
     assert [r["number"] for r in kept[0]["races"]] == [2]
     assert select_meetings(ms, None, None, "Nobody") == []
+
+
+def test_default_target_before_and_after_noon():
+    from datetime import datetime, date
+    from daily_pull import default_target
+    # a run that GitHub started six hours late, 01:12 Tuesday: the pull is for Tuesday, not Wednesday
+    assert default_target(datetime(2026, 9, 15, 1, 12)) == date(2026, 9, 15)
+    assert default_target(datetime(2026, 9, 14, 18, 30)) == date(2026, 9, 15)
+    assert default_target(datetime(2026, 9, 14, 12, 0)) == date(2026, 9, 15)
+    assert default_target(datetime(2026, 9, 14, 11, 59)) == date(2026, 9, 14)
+
+
+def test_result_column_falls_back_to_the_results_table():
+    from build_report import build_section
+    summ = race_summary(n_runners=3)
+    entries = [dict(horse_id=x["breedingId"], name=x["horse"]["name"], barrier=x["barrier"], weight_kg=56.0, jockey="J", trainer="T",
+                    scratched=False, neural_rating=x["ratings"]["neural"], exp_rating=58.0, days_since_last_run=14, raw=x) for x in summ["entries"]]
+    sec = build_section(dict(race_number=3, race_name="Demo", distance_m=1400, raw=summ), entries, {}, None, {},
+                        results={"H1": {"finish": 1, "sp": 4.6}, "H0": {"finish": 3, "sp": 9.0}})
+    by = {r.name: r for r in sec.rows}
+    assert by["Horse 1"].finish == 1 and by["Horse 1"].result_sp == 4.6 and by["Horse 0"].finish == 3 and by["Horse 2"].finish is None

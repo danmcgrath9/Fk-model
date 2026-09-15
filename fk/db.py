@@ -149,6 +149,20 @@ class Db:
                  "lws": float(r[4]) if r[4] is not None else None, "entries": r[5],
                  "speedmap": r[6], "tempo": r[7]} for r in rows]
 
+    def races_fetched_since(self, since: datetime) -> set[str]:
+        """Race ids whose race form (entries) was fetched at or after `since`."""
+        rows = self.conn.execute(
+            "select distinct race_id from fk.entries where fetched_at >= %s", (since,)
+        ).fetchall()
+        return {r[0] for r in rows}
+
+    def results_for_race(self, race_id: str) -> dict[str, dict[str, Any]]:
+        """{horse_id: {finish, sp}} from the results the morning job stores."""
+        rows = self.conn.execute(
+            "select horse_id, finish_position, starting_price from fk.results where race_id = %s", (race_id,)
+        ).fetchall()
+        return {r[0]: {"finish": r[1], "sp": float(r[2]) if r[2] is not None else None} for r in rows}
+
     def speedmap_for_race(self, race_id: str) -> list[dict[str, Any]] | None:
         row = self.conn.execute("select runners from fk.speedmaps where race_id = %s", (race_id,)).fetchone()
         return row[0] if row else None

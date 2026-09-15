@@ -93,6 +93,13 @@ def store_entry(db: Db, rid: str, e: dict, at: datetime) -> str:
     return hid
 
 
+def default_target(now_local: datetime) -> date:
+    """The day the nightly pull is for. Before noon Melbourne it is TODAY: a scheduled run
+    that GitHub starts hours late can land after midnight, and "tomorrow" would then skip
+    the day about to race. From noon it is tomorrow, as designed."""
+    return now_local.date() if now_local.hour < 12 else now_local.date() + timedelta(days=1)
+
+
 def meetings_call(client, target: date, today: date, state: str):
     """A day already run is asked for by date (Get Meetings By Date, DDMMYY); today and
     later come from the upcoming list, which is the only one that carries future days."""
@@ -142,10 +149,11 @@ def main() -> None:
     ap.add_argument("--races", help="only these race numbers, comma separated (e.g. 1,3)")
     ap.add_argument("--horse", help="only the race(s) this horse is in (name as Form King spells it)")
     ap.add_argument("--no-speedmaps", action="store_true", help="skip the meeting speedmap call")
+    ap.add_argument("--force", action="store_true", help="re-fetch races already fetched in the last 12 hours")
     a = ap.parse_args()
 
     today = today_melbourne()
-    target = date.fromisoformat(a.date) if a.date else today + timedelta(days=1)
+    target = date.fromisoformat(a.date) if a.date else default_target(now_melbourne())
     race_filter = {int(x) for x in a.races.split(",") if x.strip()} if a.races else None
     settings, spec, costs, ledger = bootstrap(a.key)
     client = make_client(a.key, settings, spec, costs, ledger, allow_live=False)
@@ -189,6 +197,22 @@ def main() -> None:
             print(f"  {F.meeting_date(m)}  {F.meeting_state(m):4} {F.meeting_track(m):24} {F.meeting_status(m):16} {len(F.meeting_races(m))} races  id={F.meeting_id(m)}")
         return
     db = Db(settings.database_url)
+    # A race whose form was fetched in the last 12 hours is not paid for twice: the second
+    # scheduled run of the evening is a catch-up for a late first one, not a re-pull.
+    if not a.force:
+        fresh = db.races_fetched_since(utc_now() - timedelta(hours=12))
+        kept = []
+        for m in meetings:
+            m = dict(m)
+            m["races"] = [r for r in F.meeting_races(m) if F.race_id(r) not in fresh]
+            if m["races"]:
+                kept.append(m)
+            else:
+                print(f"  {F.meeting_track(m)}: every race fetched in the last 12 hours; skipped (--force to re-fetch)")
+        meetings = kept
+        if not meetings:
+            print("nothing new to fetch; the earlier run covered it")
+            return
     for m in meetings:
         mid = store_meeting(db, m, fetched_at)
         for r in F.meeting_races(m):

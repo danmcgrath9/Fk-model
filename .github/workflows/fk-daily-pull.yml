@@ -17,6 +17,8 @@ name: fk daily pull
 on:
   schedule:
     - cron: '30 8 * * *'   # 18:30 Melbourne in standard time, 19:30 in daylight saving
+    - cron: '0 11 * * *'   # catch-up at 21:00 Melbourne: GitHub can start a schedule hours late, and a race
+                           # already fetched in the last 12 hours is skipped, so this costs one credit when the first ran
   workflow_dispatch:
     inputs:
       key:

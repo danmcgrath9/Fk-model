@@ -184,7 +184,8 @@ def neural_scale_for_meeting(races: list[tuple[list[dict], dict[str, dict[str, f
 def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list[dict]],
                   speedmap: list[dict] | None, odds: dict[str, dict[str, float]], tempo: str | None = None,
                   events_by_horse: dict[str, list[dict]] | None = None, neural_scale: float | None = None,
-                  scale_fitted: bool = False, rated_model: dict | None = None, tempo_raw: dict | None = None) -> RaceSection:
+                  scale_fitted: bool = False, rated_model: dict | None = None, tempo_raw: dict | None = None,
+                  results: dict[str, dict] | None = None) -> RaceSection:
     heading = f"Race {race.get('race_number') or '?'}: {race.get('race_name') or ''}".strip()
     sub = " ".join(x for x in [f"{race['distance_m']}m" if race.get("distance_m") else "", str(race.get("scheduled_at") or "")] if x)
     section = RaceSection(heading=heading, subheading=sub)
@@ -276,6 +277,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
     for e in active:
         hid = e["horse_id"]
         res = F.entry_result(e["raw"]) if e.get("raw") else None
+        stored = (results or {}).get(hid)   # the morning job's results table, for a race pulled before it ran
         section.rows.append(SummaryRow(
             name=e["name"], barrier=e.get("barrier"), weight=float(e["weight_kg"]) if e.get("weight_kg") is not None else None,
             jockey=e.get("jockey"), days_since=e.get("days_since_last_run"),
@@ -287,7 +289,8 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
             rated_price=rated_price(model.get(hid)), value_pts=value_points(market.get(hid), model.get(hid)),
             trend=trends[hid].reading if hid in trends and trends[hid].n else None, slope=trends[hid].slope if hid in trends else None,
             last_rating=trends[hid].last if hid in trends else None, best_rating=trends[hid].best if hid in trends else None,
-            finish=F.result_finish_position(res) if res else None, result_sp=F.result_starting_price(res) if res else None))
+            finish=F.result_finish_position(res) if res else (stored or {}).get("finish"),
+            result_sp=F.result_starting_price(res) if res else (stored or {}).get("sp")))
     names_l = [e["name"] for e in active]
     # Context and form strip in the summary's order (Neural, best first).
     order = sorted(active, key=lambda e: (e.get("neural_rating") is None, -float(e.get("neural_rating") or 0)))
@@ -383,7 +386,7 @@ def from_database(target: str, track: str | None, out_dir: Path, open_it: bool) 
             events = {e["horse_id"]: db.past_events_for_horse(e["horse_id"], PROFILE_RUNS) for e in entries}
             sm, tempo = db.speedmap_for_race(r["race_id"]), db.speedmap_tempo(r["race_id"])
             sections.append(build_section(r, entries, runs, sm, odds, tempo, events, neural_scale=k, scale_fitted=fitted, rated_model=rated_model,
-                                          tempo_raw=db.speedmap_tempo_raw(r["race_id"])))
+                                          tempo_raw=db.speedmap_tempo_raw(r["race_id"]), results=db.results_for_race(r["race_id"])))
         write_report(target, trk, sections, out_dir, open_it)
 
 
