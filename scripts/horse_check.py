@@ -53,7 +53,7 @@ def main() -> None:
     store_past_events(db, hid, events, datetime.now(timezone.utc))   # the one writer the daily pull uses
     db.commit()
     print(f"{F.horse_form_name(payload) or hid}: {len(events)} past events stored")
-    runs = sorted([p for p in events if F.past_event_date(p)], key=F.past_event_date, reverse=True)[:5]
+    runs = sorted([p for p in events if F.past_event_date(p)], key=F.past_event_date, reverse=True)[:max(5, a.benchmarks)]
     for p in runs:
         r = F.run_ratings(p)
         m = F.run_market(p)
