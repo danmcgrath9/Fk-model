@@ -19,7 +19,7 @@ import argparse
 import sys
 from datetime import date, datetime, timedelta
 
-from _common import bootstrap, confirm, make_client, today_melbourne
+from _common import bootstrap, confirm, make_client, now_melbourne, today_melbourne
 from fk import fields as F
 from fk import ops
 from fk.cache import decide_profile_fetch

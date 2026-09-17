@@ -241,3 +241,18 @@ def test_paper_rows_from_a_section_and_a_run_race_is_not_bet():
     sec2 = build_section(dict(race_number=3, race_name="Demo", distance_m=1400, raw=summ), entries, {}, None, odds,
                          results={"H2": {"finish": 1, "sp": 2.4}})
     assert P.place(paper_rows(sec2)) == []
+
+
+def test_every_script_imports_cleanly_and_the_nightly_default_path_resolves():
+    """Three scheduled pulls failed on a NameError that no manual run (which always passes
+    --date) could reach: the default-target path must be exercised by a test."""
+    import importlib
+    import sys
+    from pathlib import Path
+    scripts = Path(__file__).resolve().parents[1] / "scripts"
+    sys.path.insert(0, str(scripts))
+    for name in ("daily_pull", "build_report", "paper_settle", "paper_report", "horse_check", "backtest"):
+        mod = importlib.import_module(name)
+        assert hasattr(mod, "main"), name
+    dp = importlib.import_module("daily_pull")
+    assert dp.default_target(dp.now_melbourne()) is not None
