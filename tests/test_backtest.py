@@ -91,3 +91,44 @@ def test_class_trend_and_scope_features():
     assert r.x["last_vs_lws"] == 5.0 and o.x["last_vs_lws"] == -3.0          # kept as points against the standard
     import math
     assert round(r.x["starts_log"], 6) == round(math.log(9) - (math.log(9) + math.log(31)) / 2, 6)
+
+
+def test_distance_aware_features_read_the_latest_and_best_run_at_the_trip():
+    from fk.backtest import DISTANCE_AWARE, MODEL_SETS, NON_DEPLOYABLE, SHAPE
+    e = race_entry("H1", "Sheza", 3, result=1)
+    # fixture runs are 14 days apart, newest first in the list; make the two newest 1600m
+    # runs rate 84 and 88 (adjToday), and the older 2000m runs rate 95, so the trip decides
+    for i, p in enumerate(e["pastEvents"]):
+        p["distance"] = 1600 if i < 2 else 2000
+        p["adjustedForTodaysWeight"] = [84.0, 88.0][i] if i < 2 else 95.0
+    r = runner_from_entry(e, race_distance=1600)
+    assert r.raw["last_dist"] == 84.0 and r.raw["best_dist"] == 88.0     # only the 1600m runs count
+    assert r.raw["dist_change"] == 0.0                                     # the newest run was at 1600m, same as today
+    assert r.raw["exp"] == 58.0
+    r2 = runner_from_entry(e, race_distance=2000)
+    assert r2.raw["last_dist"] == 95.0 and r2.raw["best_dist"] == 95.0
+    assert r2.raw["dist_change"] == 4.0                                    # 2000 - 1600, in hundreds of metres
+    o = runner_from_entry(race_entry("H2", "Delius", 4, result=2), race_distance=1600)
+    o.raw.update(last_dist=None, best_dist=None, dist_change=None, exp=70.0)
+    race_features([r, o])
+    assert r.x["last_dist_rel"] == 0.0 and o.x["last_dist_rel"] == 0.0     # a missing value takes the mean, so no gap
+    assert r.x["exp_rel"] == -12.0 and o.x["exp_rel"] == 0.0
+    assert r.x["early_pos"] == 0.0 and r.x["early_x_tempo"] == 0.0         # no speedmap yet
+    assert set(DISTANCE_AWARE) <= set(r.x) and set(SHAPE) <= set(r.x)
+    assert "distance_aware" in MODEL_SETS and "exp_rel" in NON_DEPLOYABLE
+    assert "exp_rel" not in MODEL_SETS["distance_shape"] and "exp_rel" in MODEL_SETS["distance_shape_exp"]
+
+
+def test_shape_features_place_the_leader_against_the_tempo():
+    from fk.backtest import positions_from_speedmap, shape_features
+    rs = [runner_from_entry(race_entry(f"H{i}", f"R{i}", i + 1, result=i + 1), race_distance=1400) for i in range(3)]
+    race_features(rs)
+    positions = positions_from_speedmap([{"horse_id": "H0", "predicted_position": 1}, {"horse_id": "H2", "predicted_position": 3},
+                                         {"horse_id": "HX", "predicted_position": None}])
+    assert positions == {"H0": 1, "H2": 3}
+    shape_features(rs, positions, tempo=-1.0)                              # a slow lead
+    # front 0, back 1, the unmapped H1 takes the mean 0.5; centred on 0.5: -0.5, 0, +0.5
+    assert [round(r.x["early_pos"], 6) for r in rs] == [-0.5, 0.0, 0.5]
+    assert [round(r.x["early_x_tempo"], 6) for r in rs] == [0.5, -0.0, -0.5]   # leader x slow tempo is positive
+    shape_features(rs, {}, tempo=-1.0)                                     # no map: untouched
+    assert rs[0].x["early_pos"] == -0.5

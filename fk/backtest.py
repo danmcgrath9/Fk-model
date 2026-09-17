@@ -29,8 +29,20 @@ DISTANCE = ["dist_rel", "dist_win"]
 # Standard, so a figure above the standard in a Group race is not read like the same gap
 # in a country maiden), the trend of the ratings, and how lightly raced the horse is.
 CLASS = ["last_vs_lws", "best_vs_lws", "trend_slope", "starts_log"]
+# Distance read properly: the LATEST and the BEST rating the horse has run at today's trip
+# (not the mean of every run near it), and how far today's trip is from the last run's,
+# so a figure earned over a hard 2000m is not read at face value at a soft 1600m.
+DISTANCE_AWARE = ["last_dist_rel", "best_dist_rel", "dist_change"]
+# Race shape: where the horse is mapped to settle (front = 0, back = 1, centred on the
+# field) and that position against the expected tempo, so the fit can learn that a slow
+# lead helps the leaders and costs the back markers.
+SHAPE = ["early_pos", "early_x_tempo"]
+# Form King's EXP is derived partly from the market, so a model carrying it is measured
+# for information and never deployed to price against that market.
+EXP = ["exp_rel"]
 FORM_FEATURES = NEURAL + RATINGS + DISTANCE
 MARKET_FEATURE = "open_logit"
+NON_DEPLOYABLE = {MARKET_FEATURE, *EXP}
 
 # The feature sets the back-test compares. The one closest to BSP out of sample is deployed.
 MODEL_SETS = {
@@ -41,6 +53,9 @@ MODEL_SETS = {
     "all_form_plus_class": FORM_FEATURES + CLASS,
     "ratings_class_distance": RATINGS + DISTANCE + CLASS,   # no Neural: ratings read against the standard
     "all_form_plus_open_market": FORM_FEATURES + [MARKET_FEATURE],
+    "distance_aware": FORM_FEATURES + CLASS + DISTANCE_AWARE,
+    "distance_shape": FORM_FEATURES + CLASS + DISTANCE_AWARE + SHAPE,
+    "distance_shape_exp": FORM_FEATURES + CLASS + DISTANCE_AWARE + SHAPE + EXP,   # information only
 }
 DISTANCE_BAND_M = 200   # a run within this of today's trip counts as "at the distance"
 
@@ -94,13 +109,15 @@ def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | No
     races_only = [r for r in runs if not r.get("trial")]
     wfa = [r["wfaRat"] if r.get("wfaRat") is not None else r.get("wfa") for r in races_only]
     wfa = [v for v in wfa if v is not None]
-    at_distance = []
+    at_distance = []          # in date order, so the last entry is the latest run at the trip
+    last_run_distance = None
     if race_distance:
         for r in races_only:
             d = r.get("distance")
             v = next((r[k] for k in ("adjToday", "atWeights", "wfaRat", "wfa") if r.get(k) is not None), None)
             if d is not None and v is not None and abs(float(d) - float(race_distance)) <= DISTANCE_BAND_M:
                 at_distance.append(v)
+        last_run_distance = next((float(r["distance"]) for r in reversed(races_only) if r.get("distance") is not None), None)
     ctx = F.entry_context(e)
     form = F.entry_form_record(e)
     rec = _form_record(form.get("distanceForm"))
@@ -117,6 +134,11 @@ def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | No
              "wfa": wfa[-1] if wfa else None, "wfa_best": max(wfa) if wfa else None,
              "ohr": ctx.get("ohr"),
              "dist": sum(at_distance) / len(at_distance) if at_distance else None,
+             "last_dist": at_distance[-1] if at_distance else None,
+             "best_dist": max(at_distance) if at_distance else None,
+             # today's trip less the last run's, in hundreds of metres: +4 is stepping up 400m
+             "dist_change": (float(race_distance) - last_run_distance) / 100.0 if race_distance and last_run_distance is not None else None,
+             "exp": F.entry_exp_rating(e),
              "dist_starts": rec[0] if rec else None, "dist_wins": rec[1] if rec else None,
              "last_vs_lws": (last - lws) if last is not None and lws is not None else None,
              "best_vs_lws": (best_rated - lws) if best_rated is not None and lws is not None else None,
@@ -127,6 +149,37 @@ def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | No
         sp=F.result_starting_price(res) if res else None,
         finish=F.result_finish_position(res) if res else None,
     )
+
+
+def positions_from_speedmap(speedmap: list[dict] | None) -> dict[str, int]:
+    """horse id -> predicted settling position, from the stored speedmap runners."""
+    out = {}
+    for r in speedmap or []:
+        hid, pos = r.get("horse_id"), r.get("predicted_position")
+        if hid and pos is not None:
+            try:
+                out[hid] = int(pos)
+            except (TypeError, ValueError):
+                pass
+    return out
+
+
+def shape_features(runners: list[Runner], positions: dict[str, int], tempo: float) -> None:
+    """Race shape on top of race_features: early_pos is the mapped settling position scaled
+    front 0 to back 1 and centred on the field (a runner the map does not place takes the
+    mean, so it neither helps nor hurts); early_x_tempo is that against the expected tempo
+    (-1 slow to +1 fast), which is what lets the fit price a leader in a slow race
+    differently from a leader in a fast one. Call after race_features."""
+    n = len(runners)
+    if n < 2 or not positions:
+        return
+    span = max(1, max(positions.values()) - 1)
+    raw = [((positions[r.horse_id] - 1) / span) if r.horse_id in positions else None for r in runners]
+    filled = _fill_mean(raw)
+    mean = sum(filled) / n
+    for r, v in zip(runners, filled):
+        r.x["early_pos"] = v - mean
+        r.x["early_x_tempo"] = (v - mean) * tempo
 
 
 def _fill_mean(vals: list[float | None]) -> list[float]:
@@ -146,10 +199,18 @@ def race_features(runners: list[Runner]) -> None:
     top = max(neural) if max(neural) > 0 else 1.0
     cols = {"neural_rel": [max(v, top * 0.01) / top for v in neural]}
     for key, out in (("last", "last_rel"), ("peak", "peak_rel"), ("peak12", "peak12_rel"), ("wfa", "wfa_rel"),
-                     ("wfa_best", "wfa_best_rel"), ("ohr", "ohr_rel"), ("dist", "dist_rel")):
+                     ("wfa_best", "wfa_best_rel"), ("ohr", "ohr_rel"), ("dist", "dist_rel"),
+                     ("last_dist", "last_dist_rel"), ("best_dist", "best_dist_rel"), ("exp", "exp_rel")):
         vals = _fill_mean([r.raw.get(key) for r in runners])
         best = max(vals)
         cols[out] = [v - best for v in vals]
+    # Distance change is centred on the field, so it reads as "stepping up more than the others".
+    changes = _fill_mean([r.raw.get("dist_change") for r in runners])
+    mean_change = sum(changes) / n
+    cols["dist_change"] = [v - mean_change for v in changes]
+    # Shape features are zero until shape_features() is given a speedmap.
+    cols["early_pos"] = [0.0] * n
+    cols["early_x_tempo"] = [0.0] * n
     # Record at the distance as a shrunk win rate: (wins + 1) / (starts + 5), so one win
     # from one start reads 33%, not 100%; a runner with no record takes the race mean.
     rates = [((r.raw["dist_wins"] + 1) / (r.raw["dist_starts"] + 5)) if r.raw.get("dist_starts") is not None and r.raw.get("dist_wins") is not None else None

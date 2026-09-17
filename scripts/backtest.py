@@ -33,6 +33,7 @@ def load_races(state: str) -> tuple[list[B.Race], dict[str, P.ProjRace]]:
         if len(runners) < 2:
             continue
         B.race_features(runners)
+        B.shape_features(runners, B.positions_from_speedmap(row.get("speedmap")), P.tempo_score(row.get("tempo")))
         race = B.Race(row["race_id"], row["date"], row["track"], runners)
         races.append(race)
         proj[race.race_id] = proj_race(race, row["entries"], row.get("speedmap"), row.get("tempo"))
@@ -90,7 +91,7 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         ins = B.score(proj_probs(proj, train, params_tr), train)
         out = B.score(proj_probs(proj, test, params_tr), test)
         proj_rows.append(("projection_sim", None, ins, out))
-    form_rows = [r for r in rows if B.MARKET_FEATURE not in r[1]] + proj_rows
+    form_rows = [r for r in rows if not (set(r[1]) & B.NON_DEPLOYABLE)] + proj_rows
     best = min(form_rows, key=lambda r: r[3].kl_to_bsp)
     chosen_name, chosen_feats = best[0], best[1]
     if chosen_name == "projection_sim":

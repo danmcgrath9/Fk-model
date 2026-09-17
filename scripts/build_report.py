@@ -88,14 +88,18 @@ def projection_chances(params_dict: dict, entries: list[dict], speedmap: list[di
     return probs, rows
 
 
-def model_chances(model: dict, entries: list[dict], distance_m: int | None = None, lws: float | None = None) -> dict[str, float]:
+def model_chances(model: dict, entries: list[dict], distance_m: int | None = None, lws: float | None = None,
+                  speedmap: list[dict] | None = None, tempo_raw: dict | None = None) -> dict[str, float]:
     """Win chance per active runner from the back-tested conditional logit, on the same
-    features the fit used (fk.backtest.race_features over each entry's own record)."""
+    features the fit used (fk.backtest.race_features over each entry's own record, then
+    the race shape from the speedmap and expected tempo)."""
     from fk import backtest as B
+    from fk import projection as P
     runners = [r for r in (B.runner_from_entry(e["raw"], distance_m, lws) for e in entries if e.get("raw")) if r is not None]
     if not runners:
         return {}
     B.race_features(runners)
+    B.shape_features(runners, B.positions_from_speedmap(speedmap), P.tempo_score(tempo_raw))
     p = B.predict(model["beta"], runners)
     return {r.horse_id: pi for r, pi in zip(runners, p)}
 
@@ -259,7 +263,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         section.facts.append(f"Rated by the projection model: a projected figure per runner and the race run {SIM_RUNS:,} times; "
                              f"weights fitted to Betfair SP over {rated_model['races']} races to {rated_model['to']}")
     elif rated_model:
-        model = model_chances(rated_model, active, race.get("distance_m"), lws)
+        model = model_chances(rated_model, active, race.get("distance_m"), lws, speedmap, tempo_raw)
         if rated_model.get("projection_params"):
             # The projection is the founder's own method; it is shown beside the price even
             # when the back-test trusts another model to set it.
