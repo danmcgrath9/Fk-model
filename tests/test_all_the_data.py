@@ -256,3 +256,24 @@ def test_every_script_imports_cleanly_and_the_nightly_default_path_resolves():
         assert hasattr(mod, "main"), name
     dp = importlib.import_module("daily_pull")
     assert dp.default_target(dp.now_melbourne()) is not None
+
+
+def test_what_if_exclusion_drops_one_run_from_everything_the_page_reads():
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    from build_report import apply_exclusions, parse_exclusions
+    from fixtures import race_entry
+    assert parse_exclusions(" Aethera@2026-08-29 , Other Horse@2026-07-01") == [("aethera", "2026-08-29"), ("other horse", "2026-07-01")]
+    assert parse_exclusions("") == []
+    raw = race_entry("H1", "Aethera", 3)
+    dates = sorted({__import__("fk.fields", fromlist=["past_event_date"]).past_event_date(p) for p in raw["pastEvents"]})
+    gone = dates[-1]                                            # the latest run
+    entries = [{"horse_id": "H1", "raw": raw}]
+    events = {"H1": [{"event_date": d, "raw": {}} for d in dates]}
+    runs = {"H1": [{"event_date": d} for d in dates]}
+    notes = apply_exclusions(entries, events, runs, [("aethera", gone), ("nobody", gone)])
+    assert len(notes) == 1 and "Aethera" in notes[0] and gone in notes[0]
+    from fk import fields as F
+    assert gone not in {F.past_event_date(p) for p in raw["pastEvents"]} and len(raw["pastEvents"]) == len(dates) - 1
+    assert all(ev["event_date"] != gone for ev in events["H1"]) and all(r["event_date"] != gone for r in runs["H1"])

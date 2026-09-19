@@ -42,6 +42,9 @@ on:
       paper:
         description: 'yes = also log the paper book bets for the day being built, then settle and report'
         default: 'no'
+      exclude_run:
+        description: "what-if: leave a horse's run out of every figure, NAME@YYYY-MM-DD (comma separated); writes a -whatif page, places no bets"
+        default: ''
 
 concurrency:
   group: fk-daily-pull
@@ -104,12 +107,18 @@ jobs:
           eval python scripts/daily_pull.py --key ${{ steps.key.outputs.key }} --yes $DATE_ARG
 
       - name: Build reports
+        env:
+          EXCLUDE_RUN: ${{ github.event.inputs.exclude_run }}
         run: |
           DATE_ARG=""
           [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
           [ -n "${{ github.event.inputs.track }}" ] && DATE_ARG="$DATE_ARG --track ${{ github.event.inputs.track }}"
           [ "${{ github.event.inputs.paper }}" = "yes" ] && DATE_ARG="$DATE_ARG --paper"
-          python scripts/build_report.py --no-open $DATE_ARG
+          if [ -n "$EXCLUDE_RUN" ]; then
+            python scripts/build_report.py --no-open $DATE_ARG --exclude-run "$EXCLUDE_RUN"
+          else
+            python scripts/build_report.py --no-open $DATE_ARG
+          fi
           if [ "${{ github.event.inputs.paper }}" = "yes" ]; then
             python scripts/paper_settle.py | tee -a "$GITHUB_STEP_SUMMARY"
             python scripts/paper_report.py | tee -a "$GITHUB_STEP_SUMMARY"

@@ -353,10 +353,11 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
     return section
 
 
-def write_report(meeting_date: str, track: str, sections: list[RaceSection], out_dir: Path, open_it: bool) -> Path:
+def write_report(meeting_date: str, track: str, sections: list[RaceSection], out_dir: Path, open_it: bool, suffix: str = "") -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
-    path = out_dir / f"{meeting_date}-{slug(track)}.html"
-    path.write_text(render_meeting(f"{track}, {meeting_date}", f"{len(sections)} races. Built from stored Form King data.", sections, METHOD_NOTE), encoding="utf-8")
+    path = out_dir / f"{meeting_date}-{slug(track)}{suffix}.html"
+    label = " (what-if)" if suffix else ""
+    path.write_text(render_meeting(f"{track}, {meeting_date}{label}", f"{len(sections)} races. Built from stored Form King data.", sections, METHOD_NOTE), encoding="utf-8")
     print(f"wrote {path}")
     if open_it:
         webbrowser.open(path.resolve().as_uri())
@@ -391,7 +392,44 @@ def place_paper(db, race: dict, section: RaceSection) -> int:
     ) for b in bets])
 
 
-def from_database(target: str, track: str | None, out_dir: Path, open_it: bool, paper: bool = False) -> None:
+def parse_exclusions(text: str | None) -> list[tuple[str, str]]:
+    """'Aethera@2026-08-29, Other Horse@2026-07-01' -> [(name lower-cased, date)]."""
+    out = []
+    for part in (text or "").split(","):
+        part = part.strip()
+        if not part:
+            continue
+        if "@" not in part:
+            raise SystemExit(f"--exclude-run wants NAME@YYYY-MM-DD, got {part!r}")
+        name, date = part.rsplit("@", 1)
+        out.append((name.strip().lower(), date.strip()))
+    return out
+
+
+def apply_exclusions(entries: list[dict], events: dict[str, list[dict]], runs: dict[str, list[dict]],
+                     exclusions: list[tuple[str, str]]) -> list[str]:
+    """A what-if: drop a horse's run on a given date from everything the page and the
+    price read (the entry's past events, the ratings profile and the sectional runs), so a
+    run the owner wants disregarded (a wet track it did not handle) prices as if it never
+    happened. Mutates in place; returns one note per exclusion that matched."""
+    notes = []
+    for name, date in exclusions:
+        for e in entries:
+            raw = e.get("raw") or {}
+            if F.horse_name(raw).lower() != name:
+                continue
+            before = len(F.entry_past_events(raw))
+            raw["pastEvents"] = [p for p in F.entry_past_events(raw) if F.past_event_date(p) != date]
+            hid = e["horse_id"]
+            events[hid] = [ev for ev in events.get(hid, []) if str(ev.get("event_date") or "")[:10] != date]
+            runs[hid] = [r for r in runs.get(hid, []) if str(r.get("event_date") or "")[:10] != date]
+            if len(raw["pastEvents"]) < before:
+                notes.append(f"What-if: {F.horse_name(raw)}'s run on {date} is left out of every figure on this page, at your request")
+    return notes
+
+
+def from_database(target: str, track: str | None, out_dir: Path, open_it: bool, paper: bool = False,
+                  exclusions: list[tuple[str, str]] | None = None) -> None:
     from fk.db import Db
     settings = load_settings()
     db = Db(settings.database_url)
@@ -418,14 +456,17 @@ def from_database(target: str, track: str | None, out_dir: Path, open_it: bool, 
             runs = {e["horse_id"]: db.runs_for_horse(e["horse_id"], SECTIONAL_RUNS) for e in entries}
             events = {e["horse_id"]: db.past_events_for_horse(e["horse_id"], PROFILE_RUNS) for e in entries}
             sm, tempo = db.speedmap_for_race(r["race_id"]), db.speedmap_tempo(r["race_id"])
+            notes = apply_exclusions(entries, events, runs, exclusions or [])
             section = build_section(r, entries, runs, sm, odds, tempo, events, neural_scale=k, scale_fitted=fitted, rated_model=rated_model,
                                     tempo_raw=db.speedmap_tempo_raw(r["race_id"]), results=db.results_for_race(r["race_id"]))
+            section.facts = list(notes) + list(section.facts)
             sections.append(section)
-            if paper:
+            # A what-if page never places bets: the book runs on the figures as published.
+            if paper and not exclusions:
                 placed += place_paper(db, r, section)
-        if paper:
+        if paper and not exclusions:
             print(f"{trk}: {placed} paper bets placed")
-        write_report(target, trk, sections, out_dir, open_it)
+        write_report(target, trk, sections, out_dir, open_it, suffix="-whatif" if exclusions else "")
 
 
 def demo(out_dir: Path, open_it: bool) -> Path:
@@ -498,6 +539,7 @@ def main() -> None:
     ap.add_argument("--date", help="meeting date YYYY-MM-DD (default: tomorrow, Melbourne)")
     ap.add_argument("--track")
     ap.add_argument("--paper", action="store_true", help="log the paper book's bets for races not yet run, at the prices on the page")
+    ap.add_argument("--exclude-run", help="what-if: leave out a horse's run, NAME@YYYY-MM-DD, comma separated; writes a -whatif page and places no bets")
     ap.add_argument("--demo", action="store_true")
     ap.add_argument("--out", default=str(Path(__file__).resolve().parent.parent / "reports"))
     ap.add_argument("--no-open", action="store_true")
@@ -507,7 +549,7 @@ def main() -> None:
         demo(out_dir, not a.no_open)
         return
     target = a.date or (today_melbourne() + timedelta(days=1)).isoformat()
-    from_database(target, a.track, out_dir, not a.no_open, paper=a.paper)
+    from_database(target, a.track, out_dir, not a.no_open, paper=a.paper, exclusions=parse_exclusions(a.exclude_run))
 
 
 if __name__ == "__main__":
