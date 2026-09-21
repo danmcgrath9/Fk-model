@@ -277,3 +277,18 @@ def test_what_if_exclusion_drops_one_run_from_everything_the_page_reads():
     from fk import fields as F
     assert gone not in {F.past_event_date(p) for p in raw["pastEvents"]} and len(raw["pastEvents"]) == len(dates) - 1
     assert all(ev["event_date"] != gone for ev in events["H1"]) and all(r["event_date"] != gone for r in runs["H1"])
+
+
+def test_the_pull_and_the_builder_share_one_default_day():
+    """The pull stored Swan Hill for the 22nd and the builder looked for the 23rd."""
+    import sys
+    from datetime import datetime
+    from pathlib import Path
+    from zoneinfo import ZoneInfo
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    import build_report, daily_pull
+    from _common import default_target
+    assert build_report.default_target is daily_pull.default_target is default_target
+    mel = ZoneInfo("Australia/Melbourne")
+    assert default_target(datetime(2026, 9, 22, 1, 14, tzinfo=mel)).isoformat() == "2026-09-22"   # 1:14am: today
+    assert default_target(datetime(2026, 9, 22, 12, 0, tzinfo=mel)).isoformat() == "2026-09-23"   # noon: tomorrow

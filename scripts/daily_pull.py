@@ -19,7 +19,7 @@ import argparse
 import sys
 from datetime import date, datetime, timedelta
 
-from _common import bootstrap, confirm, make_client, now_melbourne, today_melbourne
+from _common import bootstrap, confirm, default_target, make_client, now_melbourne, today_melbourne
 from fk import fields as F
 from fk import ops
 from fk.cache import decide_profile_fetch
@@ -93,13 +93,6 @@ def store_entry(db: Db, rid: str, e: dict, at: datetime) -> str:
     return hid
 
 
-def default_target(now_local: datetime) -> date:
-    """The day the nightly pull is for. Before noon Melbourne it is TODAY: a scheduled run
-    that GitHub starts hours late can land after midnight, and "tomorrow" would then skip
-    the day about to race. From noon it is tomorrow, as designed."""
-    return now_local.date() if now_local.hour < 12 else now_local.date() + timedelta(days=1)
-
-
 def meetings_call(client, target: date, today: date, state: str):
     """A day already run is asked for by date (Get Meetings By Date, DDMMYY); today and
     later come from the upcoming list, which is the only one that carries future days."""
@@ -137,7 +130,7 @@ def select_meetings(meetings: list[dict], track: str | None, races: set[int] | N
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--key", choices=["test", "live"], default="test")
-    ap.add_argument("--date", help="meeting date YYYY-MM-DD (default: tomorrow, Melbourne)")
+    ap.add_argument("--date", help="meeting date YYYY-MM-DD (default: today before noon Melbourne, else tomorrow)")
     ap.add_argument("--state", default="VIC")
     ap.add_argument("--race-benchmarks", type=int, default=ops.RACE_FORM_BENCHMARKS,
                     help=f"numBenchmarks per race form (default {ops.RACE_FORM_BENCHMARKS}; 10 costs 2 + 2.5 x runners per race)")

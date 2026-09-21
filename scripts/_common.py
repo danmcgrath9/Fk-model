@@ -78,3 +78,13 @@ def confirm(prompt: str, assume_yes: bool, *, estimated: int = 0, balance: int |
         return True
     answer = input(f"{prompt} [y/N] ").strip().lower()
     return answer in ("y", "yes")
+
+
+def default_target(now_local: datetime) -> date:
+    """THE day a run with no --date is for, shared by the pull and the page builder so they
+    can never disagree: before noon Melbourne it is TODAY (a scheduled run that GitHub
+    starts hours late can land after midnight, and "tomorrow" would then skip the day about
+    to race); from noon it is tomorrow. The pull built Swan Hill and the builder looked for
+    the day after, because each had its own rule."""
+    from datetime import timedelta
+    return now_local.date() if now_local.hour < 12 else now_local.date() + timedelta(days=1)

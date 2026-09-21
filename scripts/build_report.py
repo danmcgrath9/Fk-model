@@ -16,7 +16,7 @@ import webbrowser
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from _common import load_settings, today_melbourne
+from _common import default_target, load_settings, now_melbourne
 from fk import fields as F
 from fk.report.charts import (LateSpeedRow, RunnerProfile, RunnerRuns, SpeedmapRunner, TrendPanel, lane_assignments,
                               market_move_chart, position_worm, ratings_profile_chart, recency_weighted_mean, sectional_worm,
@@ -536,7 +536,7 @@ def demo(out_dir: Path, open_it: bool) -> Path:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--date", help="meeting date YYYY-MM-DD (default: tomorrow, Melbourne)")
+    ap.add_argument("--date", help="meeting date YYYY-MM-DD (default: today before noon Melbourne, else tomorrow, the pull's rule)")
     ap.add_argument("--track")
     ap.add_argument("--paper", action="store_true", help="log the paper book's bets for races not yet run, at the prices on the page")
     ap.add_argument("--exclude-run", help="what-if: leave out a horse's run, NAME@YYYY-MM-DD, comma separated; writes a -whatif page and places no bets")
@@ -548,7 +548,7 @@ def main() -> None:
     if a.demo:
         demo(out_dir, not a.no_open)
         return
-    target = a.date or (today_melbourne() + timedelta(days=1)).isoformat()
+    target = a.date or default_target(now_melbourne()).isoformat()
     from_database(target, a.track, out_dir, not a.no_open, paper=a.paper, exclusions=parse_exclusions(a.exclude_run))
 
 
