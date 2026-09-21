@@ -104,9 +104,9 @@ def test_lane_map_and_late_speed_and_ladders():
     placed = lane_assignments(sm)
     assert [(r.name, rank, lane) for r, rank, lane in placed] == [("Lead", 1, "Leader"), ("Mid", 2, "Midfield"), ("Slow", 3, "Backmarker")]
     fig = speedmap_chart(sm, "t")
-    assert list(fig.data[0].y) == ["Lead (7)", "Mid (1)", "Slow (3)"]   # leader at the top, barrier in brackets
-    assert list(fig.data[0].x) == [95, 80, 60]                           # bar = early speed score
-    assert list(fig.data[0].text) == ["Leader", "Midfield", "Backmarker"]
+    assert list(fig.data[0].y) == ["Mid (1)", "Slow (3)", "Lead (7)"]   # barrier order, 1 at the top
+    assert list(fig.data[0].x) == [80, 60, 95]                           # bar = early speed score
+    assert list(fig.data[0].text) == ["Midfield", "Backmarker", "Leader"]  # the lane still says who leads
     assert fig.layout.yaxis.autorange == "reversed"
     secs = ["1000m", "800m", "600m", "400m", "200m", "Finish"]
     rows = late_speed_table([RunnerRuns("a", "A", secs, [[0.0, 0.0, 0.0, 1.0, 1.0, 1.0]]),

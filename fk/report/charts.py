@@ -142,12 +142,15 @@ LANE_COLOURS = {"Leader": "#e57373", "On pace": "#ffb74d", "Midfield": "#9aa0a6"
 
 
 def speedmap_chart(runners: list[SpeedmapRunner], title: str) -> go.Figure:
-    """Early speed as a bar per runner, the likely leader at the top: bar length is Form
+    """Early speed as a bar per runner, in barrier order from 1 down: bar length is Form
     King's early speed score, the bar is coloured by the lane it maps to (Leader, On pace,
     Midfield, Off pace, Backmarker) with the lane written on the bar so the word rides
     beside the colour, and the runner's name and barrier sit on the axis. Hover carries
     the settling score and the median early speed against the runner's own benchmark."""
     placed = lane_assignments(runners)
+    # Rows run in BARRIER order, 1 at the top, so the chart reads like the starting gates;
+    # the lane colour and word carry who leads. A runner with no barrier sits at the bottom.
+    placed.sort(key=lambda t: (t[0].barrier is None, t[0].barrier if t[0].barrier is not None else 0, t[1]))
     fig = go.Figure()
     if placed:
         names = [f"{r.name} ({r.barrier})" if r.barrier is not None else r.name for r, _, _ in placed]
