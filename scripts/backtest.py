@@ -150,12 +150,30 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
               "", "## Calibration of the deployed model", "", "| rated chance | runners | mean rated | share that won |", "|---|---|---|---|"]
     for bucket, n, mean, won in calib:
         lines.append(f"| {bucket} | {n} | {mean:.1%} | {won:.1%} |")
+    # The plans, replayed over every stored race out of sample (5 date blocks, each priced
+    # by a fit on the other four), at the opening price and again at BSP.
+    replay_feats = chosen_feats if chosen_feats else B.MODEL_SETS["all_form_plus_class"]
+    replay = B.plan_replay(with_bsp, replay_feats)
+    lines += ["", f"## The plans, replayed over {replay['races']} races the fit never saw", "",
+              "Five blocks by date, each priced by a model fitted on the other four; bets at the OPENING price and settled at "
+              "Betfair SP (the live book's rule), then the same bets at BSP itself. A plan that only pays at the opening price "
+              "is living on the market firming after it, which a real bet placed late does not get.", "",
+              "| plan | bets | winners | staked | returned | profit | return | at BSP: profit | return |", "|---|---|---|---|---|---|---|---|---|"]
+    from fk import paper as PB
+    for plan in PB.PLANS:
+        a = replay["at_open"].get(plan); b = replay["at_bsp"].get(plan)
+        if not a:
+            continue
+        b_profit = f"{b.profit:+.1f}" if b else "n/a"
+        b_roi = f"{b.roi:+.1%}" if b and b.roi is not None else "n/a"
+        lines.append(f"| {plan} | {a.bets} | {a.winners} | {a.staked:.1f} | {a.returned:.1f} | {a.profit:+.1f} | {a.roi:+.1%} | {b_profit} | {b_roi} |")
     model = {
         "fitted_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "races": len(with_bsp), "runners": final_score.runners, "from": dates[0], "to": dates[-1],
         "model": chosen_name, "features": chosen_feats, "beta": final_beta,
         "params": vars(final_params) if final_params is not None else None,
         "projection_params": projection_params,
+        "plan_replay": {side: {plan: vars(summ) for plan, summ in replay[side].items()} for side in ("at_open", "at_bsp")},
         "scores": {"deployed_in_sample": vars(final_score),
                    **{f"{name}_out_of_sample": vars(o) for name, _, _, o in rows},
                    **{f"{name}_out_of_sample": vars(o) for name, (_, o) in yard.items()}},

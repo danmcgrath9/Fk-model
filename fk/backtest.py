@@ -366,3 +366,40 @@ def market_probs(races: list[Race]) -> list[list[float]]:
 
 def bsp_probs(races: list[Race]) -> list[list[float]]:
     return [bsp_chances(r.runners) or [1.0 / len(r.runners)] * len(r.runners) for r in races]
+
+
+def plan_replay(races: list[Race], features: list[str], folds: int = 5, threshold: float = 0.05) -> dict[str, dict]:
+    """The paper book's plans run over the stored races as if the page had been built each
+    morning, with no race priced by a fit that saw it: the races are cut into `folds`
+    contiguous blocks by date and each block is priced by a model fitted on the others.
+    Bets go on at the OPENING price (the market the morning page carries) and settle at
+    Betfair SP, which is exactly the live book's rule; a second pass bets at BSP itself,
+    which says whether the edge survives the market firming. Returns
+    {"at_open": {plan: PlanSummary}, "at_bsp": {...}, "races": n}."""
+    from fk import paper as P
+    from fk.report.probability import disagreement
+    ordered = sorted(races, key=lambda r: (r.date, r.race_id))
+    n = len(ordered)
+    blocks = [ordered[i * n // folds:(i + 1) * n // folds] for i in range(folds)]
+    settled = {"at_open": [], "at_bsp": []}
+    for k, block in enumerate(blocks):
+        train = [r for j, b in enumerate(blocks) if j != k for r in b]
+        if not train or not block:
+            continue
+        beta = fit(train, features)
+        for race in block:
+            probs = predict(beta, race.runners)
+            market = market_probs([race])[0]
+            for key, price_of in (("at_open", lambda r: r.raw.get("open")), ("at_bsp", lambda r: r.bsp)):
+                rows = [P.Row(r.horse_id, r.name, (1.0 / pi) if pi > 0 else None, price_of(r), pi, mi,
+                              disagreement(mi, pi, threshold), None)
+                        for r, pi, mi in zip(race.runners, probs, market)]
+                by_id = {r.horse_id: r for r in race.runners}
+                for b in P.place(rows):
+                    runner = by_id[b.horse_id]
+                    won = runner.finish == 1
+                    settle_price = runner.bsp if runner.bsp else runner.sp
+                    settled[key].append({"plan": b.plan, "stake": b.stake, "won": won,
+                                         "returned": P.settle(b.stake, won, settle_price),
+                                         "meeting_date": race.date, "race_number": 0, "bet_id": f"{race.race_id}|{b.horse_id}|{b.plan}"})
+    return {"at_open": P.summarise(settled["at_open"]), "at_bsp": P.summarise(settled["at_bsp"]), "races": n}

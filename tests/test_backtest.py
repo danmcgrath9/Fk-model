@@ -132,3 +132,27 @@ def test_shape_features_place_the_leader_against_the_tempo():
     assert [round(r.x["early_x_tempo"], 6) for r in rs] == [0.5, -0.0, -0.5]   # leader x slow tempo is positive
     shape_features(rs, {}, tempo=-1.0)                                     # no map: untouched
     assert rs[0].x["early_pos"] == -0.5
+
+
+def test_plan_replay_prices_each_block_out_of_sample_and_settles_at_bsp():
+    from fk.backtest import plan_replay
+    from fixtures import race_entry
+    # Ten one-feature races: runner A carries the higher Neural and the shorter BSP ($1.6),
+    # so a fit to BSP on any four blocks makes A the top pick in the fifth; A wins eight of
+    # the ten, opens at $2 and settles at its BSP.
+    races = []
+    for i in range(10):
+        rs = []
+        for hid, neural, won in (("A", 80, i % 5 != 0), ("B", 40, i % 5 == 0)):
+            e = race_entry(hid, hid, 1 if hid == "A" else 2, result=1 if won else 2)
+            r = runner_from_entry(e)
+            r.raw["neural"] = neural; r.raw["open"] = 2.0 if hid == "A" else 2.5
+            r.bsp = 1.6 if hid == "A" else 2.5; r.sp = r.bsp
+            rs.append(r)
+        race_features(rs)
+        races.append(Race(f"R{i}", f"2026-08-{i + 1:02d}", "T", rs))
+    out = plan_replay(races, ["neural_rel"], folds=5)
+    top = out["at_open"]["top_pick"]
+    assert out["races"] == 10 and top.bets == 10 and top.winners == 8            # A is top pick everywhere, wins 8
+    assert round(top.returned, 2) == round(8 * 1.6, 2) and round(top.staked, 2) == 10.0   # settled at BSP, one unit each
+    assert out["at_bsp"]["top_pick"].bets == 10                                    # the BSP pass ran too
