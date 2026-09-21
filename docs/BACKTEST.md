@@ -1,6 +1,6 @@
 # Back-test against Betfair SP
 
-Fitted 2026-09-17 07:50 UTC over 327 resulted races (3393 runners), 2026-04-30 to 2026-09-09. Out of sample = fitted on the first 228 races by date, scored on the last 99.
+Fitted 2026-09-21 23:55 UTC over 327 resulted races (3393 runners), 2026-04-30 to 2026-09-09. Out of sample = fitted on the first 228 races by date, scored on the last 99.
 
 Each model is a conditional logit fitted to minimise the cross-entropy against the BSP-implied chances. 'KL to BSP' is how far it sits from BSP (0 = BSP itself); 'log loss' is scored on the actual winners (lower is better); 'top pick won' is the share of races the model's highest-rated runner won.
 
@@ -54,3 +54,15 @@ Features, all relative within the race: neural_rel = Neural points / the race's 
 | 20% to 30% | 227 | 23.9% | 25.1% |
 | 30% to 50% | 90 | 37.1% | 42.2% |
 | 50% to 100% | 13 | 58.8% | 69.2% |
+
+## The plans, replayed over 327 races the fit never saw
+
+Five blocks by date, each priced by a model fitted on the other four; bets at the OPENING price and settled at Betfair SP (the live book's rule), then the same bets at BSP itself. A plan that only pays at the opening price is living on the market firming after it, which a real bet placed late does not get.
+
+| plan | bets | winners | staked | returned | profit | return | at BSP: profit | return |
+|---|---|---|---|---|---|---|---|---|
+| top_pick | 327 | 90 | 327.0 | 339.7 | +12.7 | +3.9% | +12.7 | +3.9% |
+| value_flags | 342 | 54 | 342.0 | 373.5 | +31.5 | +9.2% | +31.5 | +9.2% |
+| value_under_8 | 251 | 46 | 251.0 | 239.8 | -11.2 | -4.5% | -11.2 | -4.5% |
+| top_pick_to_win_1 | 327 | 90 | 137.6 | 157.4 | +19.8 | +14.4% | +9.8 | +6.9% |
+| kelly_quarter | 1537 | 122 | 1352.4 | 1562.6 | +210.2 | +15.5% | +235.5 | +11.6% |

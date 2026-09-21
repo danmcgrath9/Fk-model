@@ -1,5 +1,5 @@
 {
-  "fitted_at": "2026-09-17T07:50:44+00:00",
+  "fitted_at": "2026-09-21T23:55:57+00:00",
   "races": 327,
   "runners": 3393,
   "from": "2026-04-30",
@@ -49,6 +49,82 @@
     "unrated_gap": 7.0,
     "unrated_sd": 3.0,
     "neural_weight": 20.0
+  },
+  "plan_replay": {
+    "at_open": {
+      "top_pick": {
+        "plan": "top_pick",
+        "bets": 327,
+        "winners": 90,
+        "staked": 327.0,
+        "returned": 339.74594167000004
+      },
+      "top_pick_to_win_1": {
+        "plan": "top_pick_to_win_1",
+        "bets": 327,
+        "winners": 90,
+        "staked": 137.55400000000003,
+        "returned": 157.37901434656592
+      },
+      "kelly_quarter": {
+        "plan": "kelly_quarter",
+        "bets": 1537,
+        "winners": 122,
+        "staked": 1352.3712000000007,
+        "returned": 1562.5745190383639
+      },
+      "value_flags": {
+        "plan": "value_flags",
+        "bets": 342,
+        "winners": 54,
+        "staked": 342.0,
+        "returned": 373.54631494999995
+      },
+      "value_under_8": {
+        "plan": "value_under_8",
+        "bets": 251,
+        "winners": 46,
+        "staked": 251.0,
+        "returned": 239.79631494999995
+      }
+    },
+    "at_bsp": {
+      "top_pick": {
+        "plan": "top_pick",
+        "bets": 327,
+        "winners": 90,
+        "staked": 327.0,
+        "returned": 339.74594167000004
+      },
+      "top_pick_to_win_1": {
+        "plan": "top_pick_to_win_1",
+        "bets": 327,
+        "winners": 90,
+        "staked": 142.9572,
+        "returned": 152.792193522315
+      },
+      "kelly_quarter": {
+        "plan": "kelly_quarter",
+        "bets": 2118,
+        "winners": 127,
+        "staked": 2025.3526999999972,
+        "returned": 2260.842767864856
+      },
+      "value_flags": {
+        "plan": "value_flags",
+        "bets": 342,
+        "winners": 54,
+        "staked": 342.0,
+        "returned": 373.54631494999995
+      },
+      "value_under_8": {
+        "plan": "value_under_8",
+        "bets": 251,
+        "winners": 46,
+        "staked": 251.0,
+        "returned": 239.79631494999995
+      }
+    }
   },
   "scores": {
     "deployed_in_sample": {
