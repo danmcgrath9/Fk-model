@@ -131,17 +131,29 @@ class Db:
         return [{"past_event_id": r[0], "event_date": r[1], "raw": r[2]} for r in rows]
 
     def resulted_races(self, state: str | None = "VIC") -> list[dict[str, Any]]:
-        """Every stored race whose entries carry an official result: (race_id, date, track,
-        entries raw) for the back-test. A race is 'resulted' when any entry holds a finish."""
+        """Every stored race with an official result, for the back-test: (race_id, date,
+        track, entries raw). A race pulled AFTER it ran carries the result inside each entry
+        (horseResult); a race pulled the night before, the live pipeline's way, has its
+        result in fk.results from the morning job, and that is folded into the entry here
+        under the same horseResult key, so the fit sees the form as it stood before the
+        jump and the result as it came in. Without this the fit stopped at the last
+        back-test pull and never learned from a day the pipeline ran."""
         rows = self.conn.execute(
             """select r.race_id, m.meeting_date, m.track, r.distance_m, (r.raw->>'lws')::numeric as lws,
-                      jsonb_agg(e.raw order by e.barrier nulls last) as entries,
+                      jsonb_agg(
+                        case when e.raw ? 'horseResult' or res.finish_position is null then e.raw
+                             else e.raw || jsonb_build_object('horseResult', jsonb_strip_nulls(jsonb_build_object(
+                                    'finishPosition', res.finish_position,
+                                    'startingPrice', res.starting_price,
+                                    'betfairStartingPrice', (res.raw->>'betfairStartingPrice')::numeric)))
+                        end order by e.barrier nulls last) as entries,
                       sm.runners, sm.raw->'expectedTempo'
                from fk.races r join fk.meetings m using (meeting_id) join fk.entries e using (race_id)
+                    left join fk.results res on res.race_id = e.race_id and res.horse_id = e.horse_id
                     left join fk.speedmaps sm using (race_id)
                where (%s::text is null or m.state = %s)
                group by r.race_id, m.meeting_date, m.track, r.distance_m, r.raw->>'lws', sm.runners, sm.raw
-               having bool_or(e.raw ? 'horseResult')
+               having bool_or(e.raw ? 'horseResult' or res.finish_position is not null)
                order by m.meeting_date, m.track, r.race_id""",
             (state, state),
         ).fetchall()

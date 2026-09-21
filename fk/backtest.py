@@ -373,8 +373,8 @@ def plan_replay(races: list[Race], features: list[str], folds: int = 5, threshol
     morning, with no race priced by a fit that saw it: the races are cut into `folds`
     contiguous blocks by date and each block is priced by a model fitted on the others.
     Bets go on at the OPENING price (the market the morning page carries) and settle at
-    Betfair SP, which is exactly the live book's rule; a second pass bets at BSP itself,
-    which says whether the edge survives the market firming. Returns
+    Betfair SP, which is exactly the live book's rule; a second pass judges the flags
+    against BSP and bets at BSP, which says whether the edge survives the market firming. Returns
     {"at_open": {plan: PlanSummary}, "at_bsp": {...}, "races": n}."""
     from fk import paper as P
     from fk.report.probability import disagreement
@@ -389,11 +389,13 @@ def plan_replay(races: list[Race], features: list[str], folds: int = 5, threshol
         beta = fit(train, features)
         for race in block:
             probs = predict(beta, race.runners)
-            market = market_probs([race])[0]
+            # The market the flag is judged against is the one the bet is placed into: the
+            # opening market for the morning page, BSP for the BSP pass.
+            markets = {"at_open": market_probs([race])[0], "at_bsp": bsp_chances(race.runners) or [None] * len(race.runners)}
             for key, price_of in (("at_open", lambda r: r.raw.get("open")), ("at_bsp", lambda r: r.bsp)):
                 rows = [P.Row(r.horse_id, r.name, (1.0 / pi) if pi > 0 else None, price_of(r), pi, mi,
                               disagreement(mi, pi, threshold), None)
-                        for r, pi, mi in zip(race.runners, probs, market)]
+                        for r, pi, mi in zip(race.runners, probs, markets[key])]
                 by_id = {r.horse_id: r for r in race.runners}
                 for b in P.place(rows):
                     runner = by_id[b.horse_id]
