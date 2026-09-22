@@ -220,3 +220,30 @@ def test_running_style_meets_todays_tempo():
     assert set(STYLE) <= set(rs[0].x)
     # H0 is mapped to lead and habitually leads, so today asks nothing unusual of it
     assert round(rs[0].x["map_vs_habit"], 4) == 0.0
+
+
+def test_fitting_to_winners_differs_from_fitting_to_the_market():
+    """Fitting to BSP asks the model to be the market; fitting to winners asks it to be
+    right. Where the two disagree the fitted weights must disagree too, or the choice of
+    target would be decoration."""
+    from fk.backtest import bsp_chances, fit, winner_chances
+    races = []
+    for i in range(12):
+        rs = []
+        # A is the market's favourite every time ($1.5 against $3), but B wins two in three.
+        for hid, neural, bsp, won in (("A", 80, 1.5, i % 3 == 0), ("B", 40, 3.0, i % 3 != 0)):
+            e = race_entry(hid, hid, 1 if hid == "A" else 2, result=1 if won else 2)
+            r = runner_from_entry(e)
+            r.raw["neural"] = neural
+            r.bsp = bsp
+            r.sp = bsp
+            rs.append(r)
+        race_features(rs)
+        races.append(Race(f"R{i}", f"2026-08-{i + 1:02d}", "T", rs))
+    to_market = fit(races, ["neural_rel"], target=bsp_chances)["neural_rel"]
+    to_winners = fit(races, ["neural_rel"], target=winner_chances)["neural_rel"]
+    # neural_rel is 1.0 for A and 0.5 for B, so a POSITIVE weight favours A
+    assert to_market > 0                      # the market likes A, so fitting to BSP likes A
+    assert to_winners < 0                     # B keeps winning, so fitting to winners turns against A
+    assert winner_chances(races[0].runners) == [1.0, 0.0]
+    assert winner_chances([races[0].runners[0]]) is None

@@ -365,19 +365,36 @@ def _solve(a: list[list[float]], b: list[float]) -> list[float]:
     return [m[i][n] / m[i][i] for i in range(n)]
 
 
-def fit(races: list[Race], features: list[str], iterations: int = 40, ridge: float = 1e-8) -> dict[str, float]:
-    """Conditional logit fitted to the BSP-implied chances by Newton's method.
-    Minimises sum over races of sum_i q_i * (-log p_i), q from BSP, p from the model.
+def winner_chances(runners: list[Runner]) -> list[float] | None:
+    """The race's actual result as a target: 1 on the winner, 0 on everything else. Fitting
+    to this asks the model to be RIGHT. Fitting to BSP asks it to be the MARKET, and a model
+    that reached BSP exactly would have no edge by construction, because it would price
+    every runner the way the market already does. None when the winner is not stored."""
+    idx = next((i for i, r in enumerate(runners) if r.finish == 1), None)
+    if idx is None or len(runners) < 2:
+        return None
+    return [1.0 if i == idx else 0.0 for i in range(len(runners))]
+
+
+def fit(races: list[Race], features: list[str], iterations: int = 40, ridge: float = 1e-8,
+        target=bsp_chances) -> dict[str, float]:
+    """Conditional logit fitted by Newton's method to whatever `target` returns per race.
+    Minimises sum over races of sum_i q_i * (-log p_i), p from the model.
     Gradient: sum_i (p_i - q_i) x_i. Hessian: sum_i p_i (x_i - xbar)(x_i - xbar)^T.
+
+    `target` is bsp_chances (mimic the market's closing price: low variance, every runner
+    carries information, but the best attainable model IS the market) or winner_chances (be
+    right about who won: one data point per race, noisier, but an objective that leaves room
+    for an edge).
 
     Hand-calculated check: one race, two runners, one feature x = (1, 0), BSP 75% / 25%.
     p_a / p_b = exp(beta) = 3, so beta = ln 3 = 1.0986.
     """
     d = len(features)
     beta = [0.0] * d
-    usable = [(r, q) for r in races if (q := bsp_chances(r.runners)) is not None]
+    usable = [(r, q) for r in races if (q := target(r.runners)) is not None]
     if not usable:
-        raise ValueError("no race with two or more BSPs to fit against")
+        raise ValueError(f"no race {target.__name__} can score; nothing to fit against")
     for _ in range(iterations):
         g = [ridge * b for b in beta]
         h = [[ridge if i == j else 0.0 for j in range(d)] for i in range(d)]
@@ -453,7 +470,8 @@ def bsp_probs(races: list[Race]) -> list[list[float]]:
     return [bsp_chances(r.runners) or [1.0 / len(r.runners)] * len(r.runners) for r in races]
 
 
-def plan_replay(races: list[Race], features: list[str], folds: int = 5, threshold: float = 0.05) -> dict[str, dict]:
+def plan_replay(races: list[Race], features: list[str], folds: int = 5, threshold: float = 0.05,
+                target=bsp_chances) -> dict[str, dict]:
     """The paper book's plans run over the stored races as if the page had been built each
     morning, with no race priced by a fit that saw it: the races are cut into `folds`
     contiguous blocks by date and each block is priced by a model fitted on the others.
@@ -471,7 +489,7 @@ def plan_replay(races: list[Race], features: list[str], folds: int = 5, threshol
         train = [r for j, b in enumerate(blocks) if j != k for r in b]
         if not train or not block:
             continue
-        beta = fit(train, features)
+        beta = fit(train, features, target=target)
         for race in block:
             probs = predict(beta, race.runners)
             # The market the flag is judged against is the one the bet is placed into: the

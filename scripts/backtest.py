@@ -75,12 +75,17 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
     # model with more features has to earn them on races it never saw.
     cut = int(len(with_bsp) * 0.7)
     train, test = with_bsp[:cut], with_bsp[cut:]
+    # Every feature set is fitted BOTH ways: to the market's closing price and to the actual
+    # winner. Fitting to BSP is low variance but its best attainable model is the market
+    # itself, which by construction has no edge; fitting to winners is noisier and leaves
+    # room to disagree with the market and be right.
     rows = []
     for name, feats in B.MODEL_SETS.items():
-        beta_tr = B.fit(train, feats)
-        ins = B.score([B.predict(beta_tr, r.runners) for r in train], train)
-        out = B.score([B.predict(beta_tr, r.runners) for r in test], test)
-        rows.append((name, feats, ins, out))
+        for target, suffix in ((B.bsp_chances, ""), (B.winner_chances, " @winners")):
+            beta_tr = B.fit(train, feats, target=target)
+            ins = B.score([B.predict(beta_tr, r.runners) for r in train], train)
+            out = B.score([B.predict(beta_tr, r.runners) for r in test], test)
+            rows.append((name + suffix, feats, ins, out, target))
     yard = {"bsp_itself": (B.score(B.bsp_probs(train), train), B.score(B.bsp_probs(test), test)),
             "opening_market": (B.score(B.market_probs(train), train), B.score(B.market_probs(test), test))}
     # The projection-and-simulation model: parameters tuned on the training races, scored out of sample.
@@ -90,16 +95,21 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         params_tr = P.fit_params([proj[r.race_id] for r in train])
         ins = B.score(proj_probs(proj, train, params_tr), train)
         out = B.score(proj_probs(proj, test, params_tr), test)
-        proj_rows.append(("projection_sim", None, ins, out))
+        proj_rows.append(("projection_sim", None, ins, out, None))
+    # Deployed on LOG LOSS AGAINST THE ACTUAL WINNERS, not on distance from BSP. A model
+    # chosen for sitting close to BSP is chosen for agreeing with the market, and the point
+    # of the thing is to be right where the market is wrong. Winner log loss is noisier
+    # (one data point per race rather than one per runner) and it is the right question.
     form_rows = [r for r in rows if not (set(r[1]) & B.NON_DEPLOYABLE)] + proj_rows
-    best = min(form_rows, key=lambda r: r[3].kl_to_bsp)
+    best = min(form_rows, key=lambda r: r[3].log_loss)
     chosen_name, chosen_feats = best[0], best[1]
+    chosen_target = best[4] if len(best) > 4 else B.bsp_chances
     if chosen_name == "projection_sim":
         final_params = P.fit_params([proj[r.race_id] for r in with_bsp])
         final_probs = proj_probs(proj, with_bsp, final_params)
         final_beta = None
     else:
-        final_beta = B.fit(with_bsp, chosen_feats)             # deployed: refitted on every race
+        final_beta = B.fit(with_bsp, chosen_feats, target=chosen_target or B.bsp_chances)   # deployed: refitted on every race
         final_probs = [B.predict(final_beta, r.runners) for r in with_bsp]
         final_params = None
     final_score = B.score(final_probs, with_bsp)
@@ -120,10 +130,14 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
              "| model | KL to BSP (in / out) | log loss vs winners (in / out) | top pick won (in / out) |", "|---|---|---|---|"]
     for name, (i, o) in yard.items():
         lines.append(f"| {name} | {i.kl_to_bsp:.4f} / {o.kl_to_bsp:.4f} | {i.log_loss:.4f} / {o.log_loss:.4f} | {i.winner_top_rated:.1%} / {o.winner_top_rated:.1%} |")
-    for name, feats, i, o in rows + proj_rows:
+    for name, feats, i, o, _t in rows + proj_rows:
         mark = " **(deployed)**" if name == chosen_name else ""
         lines.append(f"| {name}{mark} | {i.kl_to_bsp:.4f} / {o.kl_to_bsp:.4f} | {i.log_loss:.4f} / {o.log_loss:.4f} | {i.winner_top_rated:.1%} / {o.winner_top_rated:.1%} |")
-    lines += ["", f"Deployed: **{chosen_name}**, the form-only model closest to BSP out of sample, refitted on all {len(with_bsp)} races.", ""]
+    lines += ["", f"Deployed: **{chosen_name}**, the form-only model with the lowest log loss against the ACTUAL WINNERS out of "
+              f"sample, refitted on all {len(with_bsp)} races. Not the one closest to BSP: a model chosen for sitting close to "
+              "BSP is chosen for agreeing with the market, and a model that reached BSP exactly would price every runner the "
+              "way the market already does and have no edge at all. '@winners' marks a model fitted to the actual result "
+              "rather than to the market's closing price.", ""]
     if final_beta is not None:
         lines += ["## Coefficients of the deployed model", ""] + [f"- {k}: {v:+.4f}" for k, v in final_beta.items()]
     else:
@@ -162,7 +176,7 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
     # The plans, replayed over every stored race out of sample (5 date blocks, each priced
     # by a fit on the other four), at the opening price and again at BSP.
     replay_feats = chosen_feats if chosen_feats else B.MODEL_SETS["all_form_plus_class"]
-    replay = B.plan_replay(with_bsp, replay_feats)
+    replay = B.plan_replay(with_bsp, replay_feats, target=chosen_target or B.bsp_chances)
     lines += ["", f"## The plans, replayed over {replay['races']} races the fit never saw", "",
               "Five blocks by date, each priced by a model fitted on the other four; bets at the OPENING price and settled at "
               "Betfair SP (the live book's rule), then the same bets at BSP itself. A plan that only pays at the opening price "
@@ -180,11 +194,12 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         "fitted_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "races": len(with_bsp), "runners": final_score.runners, "from": dates[0], "to": dates[-1],
         "model": chosen_name, "features": chosen_feats, "beta": final_beta,
+        "fitted_to": "winners" if chosen_target is B.winner_chances else "bsp",
         "params": vars(final_params) if final_params is not None else None,
         "projection_params": projection_params,
         "plan_replay": {side: {plan: vars(summ) for plan, summ in replay[side].items()} for side in ("at_open", "at_bsp")},
         "scores": {"deployed_in_sample": vars(final_score),
-                   **{f"{name}_out_of_sample": vars(o) for name, _, _, o in rows},
+                   **{f"{name}_out_of_sample": vars(o) for name, _, _, o, _t in rows},
                    **{f"{name}_out_of_sample": vars(o) for name, (_, o) in yard.items()}},
     }
     return model, "\n".join(lines) + "\n"
