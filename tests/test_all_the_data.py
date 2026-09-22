@@ -314,3 +314,37 @@ def test_the_deployed_model_prices_a_live_race_with_every_feature_it_was_fitted_
     assert all(k in runners[0].x for k in model["beta"]), [k for k in model["beta"] if k not in runners[0].x]
     p = model_chances(model, entries, 1400, 85.0)
     assert set(p) == {"H0", "H1", "H2", "H3"} and abs(sum(p.values()) - 1) < 1e-9 and all(v > 0 for v in p.values())
+
+
+def test_a_race_already_priced_into_the_book_is_never_re_bet():
+    """A page rebuilt later could only ADD bets, so the book took the union of every flag
+    seen at any pricing. One pricing decides a race."""
+    import sys
+    from datetime import datetime, timezone
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    from build_report import place_paper
+    from fk.report.html import RaceSection, SummaryRow
+
+    class FakeDb:
+        def __init__(self, first_at): self.first_at, self.placed = first_at, []
+        def ensure_paper_book(self): pass
+        def race_first_priced_at(self, race_id): return self.first_at
+        def place_paper_bets(self, rows): self.placed += rows; return len(rows)
+
+    section = RaceSection(heading="Race 1", subheading="")
+    def row(hid, name, rated, price, model_p, market_p, flag=None, opening=None):
+        return SummaryRow(name=name, barrier=1, weight=56.0, jockey="J", days_since=14, neural=10.0, exp=70.0,
+                          rated_price=rated, price=price, model_prob=model_p, market_prob=market_p, flag=flag,
+                          opening=opening, horse_id=hid)
+
+    section.rows = [row("H1", "A", 3.0, 4.0, 0.33, 0.25, "model_higher", 5.0),
+                    row("H2", "B", 6.0, 5.0, 0.17, 0.20)]
+    race = {"race_id": "R1", "meeting_date": "2026-09-23", "track": "T", "race_number": 1,
+            "raw": {"startTime": "11:59pm"}}                      # jump still ahead, so the race is bettable
+    fresh = FakeDb(None)
+    assert place_paper(fresh, race, section) > 0
+    assert all(r["opening_price"] == (5.0 if r["horse_id"] == "H1" else None) for r in fresh.placed)
+    assert all(r["first_priced_at"] == r["placed_at"] for r in fresh.placed)
+    again = FakeDb(datetime(2026, 9, 22, 21, 0, tzinfo=timezone.utc))
+    assert place_paper(again, race, section) == 0 and again.placed == []

@@ -65,6 +65,35 @@ def main() -> None:
         cls = "pos" if s.profit > 0 else "neg" if s.profit < 0 else ""
         rows_html.append(f"<tr><td class='l'>{H.escape(plan)}<br><span class='tiny'>{H.escape(P.PLANS[plan])}</span></td><td>{s.bets}</td>"
                          f"<td>{s.winners}</td><td>{s.staked:.1f}</td><td>{s.returned:.1f}</td><td class='{cls}'>{s.profit:+.1f}</td><td class='{cls}'>{roi}</td></tr>")
+    # How the market moved after each bet was struck. A plan whose selections drift is one
+    # the market disagrees with after we have backed them; one that firms has the late
+    # money coming the same way.
+    move = P.movement_summary(settled)
+    move_rows = []
+    if move:
+        lines += ["", "## How the market moved after the bet", "",
+                  "From the price the bet was struck at to the price it settled at (Betfair SP). "
+                  "Firmed = the price shortened, the market came our way.", "",
+                  "| plan | settled bets | median move | share that firmed |", "|---|---|---|---|"]
+        for plan in P.PLANS:
+            m = move.get(plan)
+            if not m:
+                continue
+            lines.append(f"| {plan} | {m['n']} | {m['median']:+.1%} | {m['firmed_share']:.0%} |")
+            cls = "pos" if m["median"] < 0 else "neg"
+            move_rows.append(f"<tr><td class='l'>{H.escape(plan)}</td><td>{m['n']}</td>"
+                             f"<td class='{cls}'>{m['median']:+.1%}</td><td>{m['firmed_share']:.0%}</td></tr>")
+    # Races priced more than once before the one-snapshot rule: their later bets are the
+    # union bias the rule now prevents, and they stay in the book, named rather than hidden.
+    by_race: dict[str, set] = {}
+    for b in bets:
+        if b.get("race_id") and b.get("placed_at"):
+            by_race.setdefault(b["race_id"], set()).add(str(b["placed_at"])[:10])
+    multi = sorted(r for r, days in by_race.items() if len(days) > 1)
+    if multi:
+        lines += ["", f"{len(multi)} race(s) in the book were priced on more than one day, before a race was held to one "
+                  "pricing: their bets are the union of the flags that appeared at each, which is not a rule anyone could "
+                  "follow. They stay in the book and are named here: " + ", ".join(multi) + "."]
     lines += ["", "Plans: " + "; ".join(f"{k} = {v}" for k, v in P.PLANS.items()) + ".", "",
               "A plan needs a few hundred bets before its return means anything; the chart says how the sample is going, not whether it is over."]
     (ROOT / "docs" / "PAPER_BOOK.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -79,6 +108,14 @@ def main() -> None:
             + pio.to_html(fig.update_layout(title=None, margin=dict(t=20)), full_html=False, include_plotlyjs=False,
                           config={"responsive": True, "displayModeBar": False}) + "</div></div>",
             "<p class='note'>A plan needs a few hundred bets before its return means anything; this says how the sample is going, not whether it is over.</p>"]
+    if move_rows:
+        body += ["<h3>How the market moved after the bet</h3>",
+                 "<div class='tablewrap'><table><tr><th class='l'>Plan</th><th>Settled bets</th><th>Median move</th>"
+                 "<th>Share that firmed</th></tr>" + "".join(move_rows) + "</table></div>",
+                 "<p class='note'>Struck price to Betfair SP. Firmed (green, negative) = the price shortened, the market came our way.</p>"]
+    if multi:
+        body.append(f"<p class='note'>{len(multi)} race(s) were priced on more than one day before a race was held to one "
+                    "pricing; their bets are the union of the flags seen at each.</p>")
     if open_bets:
         by_day: dict[str, int] = {}
         for b in open_bets:

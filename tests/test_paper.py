@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 
-from fk.paper import Bet, Row, before_the_jump, jump_time, kelly_stake, place, running, settle, summarise
+from fk.paper import (Bet, Row, before_the_jump, jump_time, kelly_stake, movement, movement_summary, place,
+                      running, settle, summarise)
 
 
 def test_kelly_by_hand_and_the_edge_gate():
@@ -53,3 +54,28 @@ def test_a_bet_after_the_jump_or_with_no_jump_is_not_a_bet():
     assert before_the_jump(j, datetime(2026, 9, 15, 4, 59, tzinfo=timezone.utc))
     assert not before_the_jump(j, datetime(2026, 9, 15, 5, 0, tzinfo=timezone.utc))
     assert not before_the_jump(None, datetime(2026, 9, 15, 4, 0, tzinfo=timezone.utc))
+
+
+def test_movement_from_struck_to_settled_price():
+    assert round(movement(5.0, 4.0), 4) == -0.20        # $5 into $4: firmed 20%
+    assert round(movement(4.0, 5.0), 4) == 0.25         # $4 out to $5: drifted 25%
+    assert movement(None, 4.0) is None and movement(5.0, None) is None and movement(1.0, 4.0) is None
+
+
+def test_movement_summary_medians_and_firmed_share_per_plan():
+    settled = [{"plan": "a", "price": 5.0, "settle_price": 4.0},      # -20%
+               {"plan": "a", "price": 4.0, "settle_price": 5.0},      # +25%
+               {"plan": "a", "price": 10.0, "settle_price": 8.0},     # -20%
+               {"plan": "a", "price": 3.0, "settle_price": None},     # no settle price: not counted
+               {"plan": "b", "price": 2.0, "settle_price": 3.0}]      # +50%
+    m = movement_summary(settled)
+    assert m["a"]["n"] == 3 and round(m["a"]["median"], 4) == -0.20 and round(m["a"]["firmed_share"], 4) == round(2 / 3, 4)
+    assert m["b"]["n"] == 1 and round(m["b"]["median"], 4) == 0.50 and m["b"]["firmed_share"] == 0.0
+
+
+def test_the_opening_price_rides_onto_every_bet():
+    rows = [Row("a", "A", 3.0, 4.0, 0.33, 0.25, "model_higher", None, 6.0),
+            Row("b", "B", 6.0, 5.0, 0.17, 0.20, None, None, 4.5)]
+    bets = place(rows)
+    assert {b.horse_id: b.opening for b in bets if b.plan == "kelly_quarter"} or True
+    assert all(b.opening == (6.0 if b.horse_id == "a" else 4.5) for b in bets)

@@ -35,6 +35,7 @@ class Row:
     market_prob: float | None
     flag: str | None            # model_higher / market_higher / None
     finish: int | None = None   # already run: not a bet
+    opening: float | None = None   # the market open, for the movement the bet lived through
 
 
 @dataclass
@@ -47,6 +48,7 @@ class Bet:
     rated_price: float | None
     model_prob: float | None
     market_prob: float | None
+    opening: float | None = None
 
 
 def kelly_stake(p: float | None, price: float | None) -> float:
@@ -103,7 +105,7 @@ def place(rows: list[Row]) -> list[Bet]:
 
     def bet(plan: str, r: Row, stake: float) -> None:
         if stake > 0:
-            bets.append(Bet(plan, r.horse_id, r.name, round(stake, 4), r.price, r.rated_price, r.model_prob, r.market_prob))
+            bets.append(Bet(plan, r.horse_id, r.name, round(stake, 4), r.price, r.rated_price, r.model_prob, r.market_prob, r.opening))
 
     bet("top_pick", top, UNIT)
     if top.price and top.price > 1:
@@ -115,6 +117,37 @@ def place(rows: list[Row]) -> list[Bet]:
                 bet("value_under_8", r, UNIT)
         bet("kelly_quarter", r, kelly_stake(r.model_prob, r.price))
     return bets
+
+
+def movement(struck: float | None, settled: float | None) -> float | None:
+    """How the market moved between the price a bet was struck at and the price it settled
+    at, as a share of the struck price. Negative = it FIRMED (shortened, the market came
+    our way); positive = it DRIFTED. None when either price is missing.
+    Hand-checked: struck $5.00, settled $4.00 -> (4 - 5) / 5 = -0.20, firmed 20%."""
+    if not struck or not settled or struck <= 1 or settled <= 1:
+        return None
+    return (settled - struck) / struck
+
+
+def movement_summary(settled: list[dict]) -> dict[str, dict]:
+    """Per plan: how many settled bets carry both prices, the median movement from struck
+    to settled, and the share that firmed. A plan whose selections drift is one the market
+    disagrees with after we have backed them."""
+    out: dict[str, dict] = {}
+    for b in settled:
+        m = movement(b.get("price"), b.get("settle_price"))
+        if m is None:
+            continue
+        out.setdefault(b["plan"], {"n": 0, "moves": [], "firmed": 0})
+        row = out[b["plan"]]
+        row["n"] += 1
+        row["moves"].append(m)
+        row["firmed"] += 1 if m < 0 else 0
+    for row in out.values():
+        moves = sorted(row.pop("moves"))
+        row["median"] = moves[len(moves) // 2] if len(moves) % 2 else (moves[len(moves) // 2 - 1] + moves[len(moves) // 2]) / 2
+        row["firmed_share"] = row["firmed"] / row["n"]
+    return out
 
 
 def settle(stake: float, won: bool, settle_price: float | None) -> float:

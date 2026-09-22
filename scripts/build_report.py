@@ -366,7 +366,8 @@ def write_report(meeting_date: str, track: str, sections: list[RaceSection], out
 
 def paper_rows(section: RaceSection):
     from fk import paper as P
-    return [P.Row(r.horse_id, r.name, r.rated_price, r.price, r.model_prob, r.market_prob, r.flag, r.finish) for r in section.rows if r.horse_id]
+    return [P.Row(r.horse_id, r.name, r.rated_price, r.price, r.model_prob, r.market_prob, r.flag, r.finish, r.opening)
+            for r in section.rows if r.horse_id]
 
 
 def place_paper(db, race: dict, section: RaceSection) -> int:
@@ -381,14 +382,23 @@ def place_paper(db, race: dict, section: RaceSection) -> int:
         when = jump.strftime("%H:%M Melbourne") if jump else "unknown"
         print(f"paper: race {race.get('race_number')} not bet, jump {when} has passed or is unknown")
         return 0
+    db.ensure_paper_book()
+    # ONE pricing decides a race. A page rebuilt later could only ever ADD bets (a horse
+    # already backed was left alone; a horse whose price had drifted far enough to raise a
+    # flag was backed on the second pass), so the book took the union of every flag that
+    # appeared at any observation, which is not a rule anyone could follow.
+    already = db.race_first_priced_at(race["race_id"])
+    if already is not None:
+        print(f"paper: race {race.get('race_number')} already priced at {already:%Y-%m-%d %H:%M} UTC, not re-bet")
+        return 0
     bets = P.place(paper_rows(section))
     if not bets:
         return 0
-    db.ensure_paper_book()
     return db.place_paper_bets([dict(
         bet_id=f"{race['race_id']}|{b.horse_id}|{b.plan}", race_id=race["race_id"], horse_id=b.horse_id, plan=b.plan,
         meeting_date=race["meeting_date"], track=race.get("track"), race_number=race.get("race_number"), horse_name=b.name,
-        placed_at=now, price=b.price, rated_price=b.rated_price, model_prob=b.model_prob, market_prob=b.market_prob, stake=b.stake,
+        placed_at=now, first_priced_at=now, price=b.price, opening_price=b.opening, rated_price=b.rated_price,
+        model_prob=b.model_prob, market_prob=b.market_prob, stake=b.stake,
     ) for b in bets])
 
 
