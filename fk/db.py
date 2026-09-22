@@ -150,7 +150,7 @@ class Db:
                       sm.runners, sm.raw->'expectedTempo'
                from fk.races r join fk.meetings m using (meeting_id) join fk.entries e using (race_id)
                     left join fk.results res on res.race_id = e.race_id and res.horse_id = e.horse_id
-                    left join fk.speedmaps sm using (race_id)
+                    left join fk.speedmaps sm on sm.race_id = r.race_id
                where (%s::text is null or m.state = %s)
                group by r.race_id, m.meeting_date, m.track, r.distance_m, r.raw->>'lws', sm.runners, sm.raw
                having bool_or(e.raw ? 'horseResult' or res.finish_position is not null)
