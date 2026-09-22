@@ -292,3 +292,25 @@ def test_the_pull_and_the_builder_share_one_default_day():
     mel = ZoneInfo("Australia/Melbourne")
     assert default_target(datetime(2026, 9, 22, 1, 14, tzinfo=mel)).isoformat() == "2026-09-22"   # 1:14am: today
     assert default_target(datetime(2026, 9, 22, 12, 0, tzinfo=mel)).isoformat() == "2026-09-23"   # noon: tomorrow
+
+
+def test_the_deployed_model_prices_a_live_race_with_every_feature_it_was_fitted_on():
+    """config/rated_price.json is what the page prices with; every coefficient it carries must
+    be a feature the live path (runner_from_entry -> race_features -> shape_features) computes,
+    or the page would price on zeros for the missing ones without a word."""
+    import json
+    import sys
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(root / "scripts"))
+    from build_report import model_chances
+    from fixtures import race_entry
+    from fk import backtest as B
+    model = json.load(open(root / "config" / "rated_price.json"))
+    assert set(model["beta"]) == set(model["features"])
+    entries = [{"horse_id": f"H{i}", "raw": race_entry(f"H{i}", f"Horse {i}", i + 1)} for i in range(4)]
+    runners = [B.runner_from_entry(e["raw"], 1400, 85.0) for e in entries]
+    B.race_features(runners)
+    assert all(k in runners[0].x for k in model["beta"]), [k for k in model["beta"] if k not in runners[0].x]
+    p = model_chances(model, entries, 1400, 85.0)
+    assert set(p) == {"H0", "H1", "H2", "H3"} and abs(sum(p.values()) - 1) < 1e-9 and all(v > 0 for v in p.values())
