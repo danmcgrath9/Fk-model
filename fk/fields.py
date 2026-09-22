@@ -414,7 +414,21 @@ def run_ratings(p: dict) -> dict[str, Any]:
             ranks = {"section": key, "raceRank": _int(sec.get("raceRank")), "meetRank": _int(sec.get("meetRank")),
                      "meetRatingRank": _int(sec.get("meetRatingRank"))}
             break
+    def section_vs_class(keys: tuple[str, ...]) -> float | None:
+        """vsClass for the first of these sections the run carries: lengths against the
+        class standard over that part of the race, higher = faster than the standard."""
+        for key in keys:
+            sec = secs.get(key)
+            if isinstance(sec, dict) and _num(sec.get("vsClass")) is not None:
+                return _num(sec.get("vsClass"))
+        return None
+
     return {
+        # The last 600m and the run to it, against the class standard. Form King names the
+        # sections from the distance out ("6-F" is 600m to the finish, "S-6" the start to
+        # the 600), and a short race is sectioned shallower, so each falls back in turn.
+        "last600": section_vs_class(("6-F", "4-F", "2-F")),
+        "to600": section_vs_class(("S-6", "S-8", "S-4")),
         "date": past_event_date(p),
         "track": past_event_track(p),
         "distance": past_event_distance(p),

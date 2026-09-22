@@ -140,7 +140,11 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         lines += ["", f"Runners with no rated run (projected at the field mean less the unrated gap): {unrated} of {total}."]
     lines += ["", "Features, all relative within the race: neural_rel = Neural points / the race's top (top = 1); last_rel, "
               "peak_rel, peak12_rel = points below the race's best of the latest rated run (adjusted to today's weight), the "
-              "career peak and the 12-month peak; wfa_rel, wfa_best_rel = points below the best of the latest and the best "
+              "career peak and the 12-month peak; speed_rel, speed_best_rel = points below the race\'s best of Form King\'s speed "
+              f"figure (100 = class par) read over the last {B.RECENT_RUNS} races newest-weighted, and of the best one; "
+              "finish_speed_rel = the same over finishing speed (last 600 as a share of the run to the 600); last600_rel, "
+              "to600_rel = the last 600m and the run to it against the class standard, in lengths; "
+              "wfa_rel, wfa_best_rel = points below the best of the latest and the best "
               "WFA rating; ohr_rel = points below the top official handicap rating; dist_rel = points below the best mean "
               f"rating of runs within {B.DISTANCE_BAND_M}m of today's trip; dist_win = the record at the distance as a shrunk "
               "win rate, against the race mean; last_vs_lws, best_vs_lws = the latest and the best rated run against the race's "

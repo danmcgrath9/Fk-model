@@ -33,6 +33,10 @@ CLASS = ["last_vs_lws", "best_vs_lws", "trend_slope", "starts_log"]
 # (not the mean of every run near it), and how far today's trip is from the last run's,
 # so a figure earned over a hard 2000m is not read at face value at a soft 1600m.
 DISTANCE_AWARE = ["last_dist_rel", "best_dist_rel", "dist_change"]
+# Speed and sectionals, the half of Form King's data the model had never seen: its speed
+# figure (100 = class par), how much it finished off (last 600 as a share of the run to
+# the 600), and the last 600m and the run to it against the class standard, in lengths.
+SPEED = ["speed_rel", "speed_best_rel", "finish_speed_rel", "last600_rel", "to600_rel"]
 # Race shape: where the horse is mapped to settle (front = 0, back = 1, centred on the
 # field) and that position against the expected tempo, so the fit can learn that a slow
 # lead helps the leaders and costs the back markers.
@@ -56,7 +60,13 @@ MODEL_SETS = {
     "distance_aware": FORM_FEATURES + CLASS + DISTANCE_AWARE,
     "distance_shape": FORM_FEATURES + CLASS + DISTANCE_AWARE + SHAPE,
     "distance_shape_exp": FORM_FEATURES + CLASS + DISTANCE_AWARE + SHAPE + EXP,   # information only
+    "speed_only": SPEED,
+    "form_plus_speed": FORM_FEATURES + CLASS + SPEED,
+    "distance_speed": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED,
+    "everything": FORM_FEATURES + CLASS + DISTANCE_AWARE + SHAPE + SPEED,
 }
+RECENT_RUNS = 4      # how many recent races a speed or sectional figure is read over
+RECENCY_DECAY = 0.8  # each older run counts this much less, the weighting the page's worm uses
 DISTANCE_BAND_M = 200   # a run within this of today's trip counts as "at the distance"
 
 
@@ -140,6 +150,11 @@ def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | No
              "dist_change": (float(race_distance) - last_run_distance) / 100.0 if race_distance and last_run_distance is not None else None,
              "exp": F.entry_exp_rating(e),
              "dist_starts": rec[0] if rec else None, "dist_wins": rec[1] if rec else None,
+             "speed": recent_weighted(races_only, "speedRating"),
+             "speed_best": max((r["speedRating"] for r in races_only if r.get("speedRating") is not None), default=None),
+             "finish_speed": recent_weighted(races_only, "finishingSpeed"),
+             "last600": recent_weighted(races_only, "last600"),
+             "to600": recent_weighted(races_only, "to600"),
              "last_vs_lws": (last - lws) if last is not None and lws is not None else None,
              "best_vs_lws": (best_rated - lws) if best_rated is not None and lws is not None else None,
              "trend_slope": tr.slope,
@@ -182,6 +197,18 @@ def shape_features(runners: list[Runner], positions: dict[str, int], tempo: floa
         r.x["early_x_tempo"] = (v - mean) * tempo
 
 
+def recent_weighted(runs: list[dict], key: str, n: int = RECENT_RUNS, decay: float = RECENCY_DECAY) -> float | None:
+    """A figure read over the most recent races, newest counting most. `runs` oldest first;
+    runs missing the figure are skipped rather than counted as zero, and None when none
+    carry it. Hand-check: values [10, 20] newest last, decay 0.8 ->
+    (20 * 1 + 10 * 0.8) / 1.8 = 15.5555..."""
+    have = [r[key] for r in reversed(runs) if r.get(key) is not None][:n]
+    if not have:
+        return None
+    weights = [decay ** i for i in range(len(have))]
+    return sum(v * w for v, w in zip(have, weights)) / sum(weights)
+
+
 def _fill_mean(vals: list[float | None]) -> list[float]:
     have = [v for v in vals if v is not None]
     m = sum(have) / len(have) if have else 0.0
@@ -200,7 +227,9 @@ def race_features(runners: list[Runner]) -> None:
     cols = {"neural_rel": [max(v, top * 0.01) / top for v in neural]}
     for key, out in (("last", "last_rel"), ("peak", "peak_rel"), ("peak12", "peak12_rel"), ("wfa", "wfa_rel"),
                      ("wfa_best", "wfa_best_rel"), ("ohr", "ohr_rel"), ("dist", "dist_rel"),
-                     ("last_dist", "last_dist_rel"), ("best_dist", "best_dist_rel"), ("exp", "exp_rel")):
+                     ("last_dist", "last_dist_rel"), ("best_dist", "best_dist_rel"), ("exp", "exp_rel"),
+                     ("speed", "speed_rel"), ("speed_best", "speed_best_rel"), ("finish_speed", "finish_speed_rel"),
+                     ("last600", "last600_rel"), ("to600", "to600_rel")):
         vals = _fill_mean([r.raw.get(key) for r in runners])
         best = max(vals)
         cols[out] = [v - best for v in vals]

@@ -156,3 +156,33 @@ def test_plan_replay_prices_each_block_out_of_sample_and_settles_at_bsp():
     assert out["races"] == 10 and top.bets == 10 and top.winners == 8            # A is top pick everywhere, wins 8
     assert round(top.returned, 2) == round(8 * 1.6, 2) and round(top.staked, 2) == 10.0   # settled at BSP, one unit each
     assert out["at_bsp"]["top_pick"].bets == 10                                    # the BSP pass ran too
+
+
+def test_recent_weighted_reads_newest_first_and_skips_the_runs_that_lack_it():
+    from fk.backtest import recent_weighted
+    runs = [{"speedRating": 10.0}, {"speedRating": 20.0}]                     # oldest first
+    assert round(recent_weighted(runs, "speedRating"), 4) == round((20 + 10 * 0.8) / 1.8, 4)
+    assert recent_weighted([{"speedRating": None}, {"speedRating": 5.0}], "speedRating") == 5.0
+    assert recent_weighted([{"x": 1.0}], "speedRating") is None
+    many = [{"v": float(i)} for i in range(10)]                               # only the last 4 count
+    assert round(recent_weighted(many, "v", n=4), 4) == round(
+        (9 + 8 * 0.8 + 7 * 0.64 + 6 * 0.512) / (1 + 0.8 + 0.64 + 0.512), 4)
+
+
+def test_speed_and_sectional_features_reach_the_model():
+    from fk.backtest import MODEL_SETS, SPEED
+    e = race_entry("H1", "Fast", 3, result=1)
+    r = runner_from_entry(e, race_distance=1400)
+    # the fixture's benchmarked runs carry speedRating 101, finishingSpeed 102.3,
+    # section 6-F vsClass +0.9 (the last 600) and S-6 vsClass -0.3 (the run to it)
+    assert r.raw["speed"] == 101.0 and r.raw["speed_best"] == 101.0
+    assert round(r.raw["finish_speed"], 1) == 102.3
+    assert round(r.raw["last600"], 2) == 0.90 and round(r.raw["to600"], 2) == -0.30
+    o = runner_from_entry(race_entry("H2", "Slow", 4, result=2), race_distance=1400)
+    o.raw.update(speed=95.0, speed_best=97.0, finish_speed=99.0, last600=-1.1, to600=0.4)
+    race_features([r, o])
+    assert r.x["speed_rel"] == 0.0 and o.x["speed_rel"] == -6.0
+    assert round(r.x["last600_rel"], 2) == 0.0 and round(o.x["last600_rel"], 2) == -2.0
+    assert round(o.x["to600_rel"], 2) == 0.0 and round(r.x["to600_rel"], 2) == -0.7   # o's run to the 600 was better
+    assert set(SPEED) <= set(r.x)
+    assert "form_plus_speed" in MODEL_SETS and "everything" in MODEL_SETS
