@@ -1,10 +1,10 @@
 {
-  "fitted_at": "2026-09-22T23:39:16+00:00",
+  "fitted_at": "2026-09-22T23:51:42+00:00",
   "races": 386,
   "runners": 4024,
   "from": "2026-04-30",
   "to": "2026-09-22",
-  "model": "distance_aware",
+  "model": "form_plus_position",
   "features": [
     "neural_rel",
     "last_rel",
@@ -19,27 +19,29 @@
     "best_vs_lws",
     "trend_slope",
     "starts_log",
-    "last_dist_rel",
-    "best_dist_rel",
-    "dist_change"
+    "settle_share",
+    "pos800_share",
+    "pos_gain",
+    "late_gain"
   ],
   "beta": {
-    "neural_rel": 1.7515277531399942,
-    "last_rel": 0.10826874185168328,
-    "peak_rel": 0.005130202491313117,
-    "peak12_rel": 0.05038569742669316,
-    "wfa_rel": -0.19223029837167907,
-    "wfa_best_rel": 0.2043615773950194,
-    "ohr_rel": -0.0019728906433071677,
-    "dist_rel": 0.029465629452550345,
-    "dist_win": -0.20419198071813924,
-    "last_vs_lws": 0.10826726906504745,
-    "best_vs_lws": -0.2083370776365357,
-    "trend_slope": 0.006562155518065773,
-    "starts_log": -0.3236978563793391,
-    "last_dist_rel": 0.0021389059958599743,
-    "best_dist_rel": 0.014526146886540591,
-    "dist_change": 0.00012606089183422352
+    "neural_rel": 1.5820712395612466,
+    "last_rel": 0.11515264678126104,
+    "peak_rel": 0.0070931008150590495,
+    "peak12_rel": 0.04841772779362588,
+    "wfa_rel": -0.21266891866546664,
+    "wfa_best_rel": 0.22778368086195538,
+    "ohr_rel": -0.0011941682638741242,
+    "dist_rel": 0.03703319514033466,
+    "dist_win": -0.210185567443277,
+    "last_vs_lws": 0.11515071031484991,
+    "best_vs_lws": -0.22642543362437711,
+    "trend_slope": -0.0012527269169360872,
+    "starts_log": -0.2982387247394133,
+    "settle_share": -0.5934387335902487,
+    "pos800_share": -0.17684339167277957,
+    "pos_gain": 0.28178107945427056,
+    "late_gain": 0.3631675333380871
   },
   "params": null,
   "projection_params": {
@@ -61,74 +63,74 @@
       "top_pick": {
         "plan": "top_pick",
         "bets": 386,
-        "winners": 105,
+        "winners": 112,
         "staked": 386.0,
-        "returned": 369.0301493800001
+        "returned": 427.5896331800001
       },
       "top_pick_to_win_1": {
         "plan": "top_pick_to_win_1",
         "bets": 385,
-        "winners": 105,
-        "staked": 158.40490000000005,
-        "returned": 177.46617483407692
+        "winners": 112,
+        "staked": 161.19310000000013,
+        "returned": 184.99425949984888
       },
       "kelly_quarter": {
         "plan": "kelly_quarter",
-        "bets": 1802,
-        "winners": 146,
-        "staked": 1588.406700000002,
-        "returned": 1724.1261369274694
+        "bets": 1789,
+        "winners": 139,
+        "staked": 1567.7638999999983,
+        "returned": 1707.5594942587397
       },
       "value_flags": {
         "plan": "value_flags",
-        "bets": 403,
-        "winners": 66,
-        "staked": 403.0,
-        "returned": 425.05108659999996
+        "bets": 395,
+        "winners": 63,
+        "staked": 395.0,
+        "returned": 382.18661701999997
       },
       "value_under_8": {
         "plan": "value_under_8",
-        "bets": 302,
-        "winners": 59,
-        "staked": 302.0,
-        "returned": 297.1166170199999
+        "bets": 303,
+        "winners": 55,
+        "staked": 303.0,
+        "returned": 278.0966170199999
       }
     },
     "at_bsp": {
       "top_pick": {
         "plan": "top_pick",
         "bets": 386,
-        "winners": 105,
+        "winners": 112,
         "staked": 386.0,
-        "returned": 369.0301493800001
+        "returned": 427.5896331800001
       },
       "top_pick_to_win_1": {
         "plan": "top_pick_to_win_1",
         "bets": 384,
-        "winners": 105,
-        "staked": 172.04799999999997,
-        "returned": 186.2547184219671
-      },
-      "kelly_quarter": {
-        "plan": "kelly_quarter",
-        "bets": 2476,
-        "winners": 143,
-        "staked": 2419.291799999994,
-        "returned": 2617.114018688948
+        "winners": 112,
+        "staked": 171.86769999999993,
+        "returned": 195.14868762482013
       },
       "value_flags": {
         "plan": "value_flags",
-        "bets": 556,
-        "winners": 49,
-        "staked": 556.0,
-        "returned": 621.03151785
+        "bets": 549,
+        "winners": 48,
+        "staked": 549.0,
+        "returned": 641.64844675
+      },
+      "kelly_quarter": {
+        "plan": "kelly_quarter",
+        "bets": 2475,
+        "winners": 144,
+        "staked": 2407.4915000000033,
+        "returned": 2599.024144463474
       },
       "value_under_8": {
         "plan": "value_under_8",
-        "bets": 325,
-        "winners": 40,
-        "staked": 325.0,
-        "returned": 273.44151784999997
+        "bets": 330,
+        "winners": 39,
+        "staked": 330.0,
+        "returned": 256.63844674999996
       }
     }
   },
@@ -136,9 +138,9 @@
     "deployed_in_sample": {
       "races": 386,
       "runners": 4024,
-      "kl_to_bsp": 0.18820425782303085,
-      "log_loss": 1.9940774606663854,
-      "winner_top_rated": 0.2772020725388601
+      "kl_to_bsp": 0.1846297103239191,
+      "log_loss": 1.9966142031543896,
+      "winner_top_rated": 0.28756476683937826
     },
     "neural_only_out_of_sample": {
       "races": 116,
@@ -237,6 +239,34 @@
       "kl_to_bsp": 0.23134281966119324,
       "log_loss": 1.9863577560071746,
       "winner_top_rated": 0.3275862068965517
+    },
+    "position_only_out_of_sample": {
+      "races": 116,
+      "runners": 1211,
+      "kl_to_bsp": 0.3790633667431313,
+      "log_loss": 2.1667807242788784,
+      "winner_top_rated": 0.19827586206896552
+    },
+    "form_plus_position_out_of_sample": {
+      "races": 116,
+      "runners": 1211,
+      "kl_to_bsp": 0.22737067519334436,
+      "log_loss": 1.9831614854890822,
+      "winner_top_rated": 0.3017241379310345
+    },
+    "position_and_style_out_of_sample": {
+      "races": 116,
+      "runners": 1211,
+      "kl_to_bsp": 0.2288862855390736,
+      "log_loss": 1.980107682966238,
+      "winner_top_rated": 0.29310344827586204
+    },
+    "the_lot_out_of_sample": {
+      "races": 116,
+      "runners": 1211,
+      "kl_to_bsp": 0.2296325055652752,
+      "log_loss": 1.9812643931130627,
+      "winner_top_rated": 0.3103448275862069
     },
     "bsp_itself_out_of_sample": {
       "races": 116,
