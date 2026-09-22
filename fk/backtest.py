@@ -37,10 +37,26 @@ DISTANCE_AWARE = ["last_dist_rel", "best_dist_rel", "dist_change"]
 # figure (100 = class par), how much it finished off (last 600 as a share of the run to
 # the 600), and the last 600m and the run to it against the class standard, in lengths.
 SPEED = ["speed_rel", "speed_best_rel", "finish_speed_rel", "last600_rel", "to600_rel"]
+# Position in running, the horse's own racing pattern from its history. Every figure is a
+# SHARE OF THE FIELD (0 = on the lead, 1 = last), so fifth of eight and fifth of sixteen are
+# not read as the same thing, and each is centred on today's field so it says "more forward
+# than these rivals" rather than a bare number.
+#   settle_share  where it settles
+#   pos800_share  where it is with 800m to run
+#   pos_gain      positions made up from settling to the post
+#   late_gain     positions made up from the 400m to the post
+# The research behind them: the first four settling positions take about 60% of races and
+# the identified leader about 43% of metro races, while backmarkers win less often than
+# their price implies, which is the drift we are already measuring on our own flags.
+POSITION = ["settle_share", "pos800_share", "pos_gain", "late_gain"]
 # Race shape: where the horse is mapped to settle (front = 0, back = 1, centred on the
 # field) and that position against the expected tempo, so the fit can learn that a slow
 # lead helps the leaders and costs the back markers.
 SHAPE = ["early_pos", "early_x_tempo"]
+# The horse's own pattern against today's race: its habitual settling share read against the
+# expected tempo (a backmarker in a slow-run race is the classic disadvantage), and how far
+# today's map asks it to race from where it usually does.
+STYLE = ["style_x_tempo", "map_vs_habit"]
 # Form King's EXP is derived partly from the market, so a model carrying it is measured
 # for information and never deployed to price against that market.
 EXP = ["exp_rel"]
@@ -64,6 +80,10 @@ MODEL_SETS = {
     "form_plus_speed": FORM_FEATURES + CLASS + SPEED,
     "distance_speed": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED,
     "everything": FORM_FEATURES + CLASS + DISTANCE_AWARE + SHAPE + SPEED,
+    "position_only": POSITION,
+    "form_plus_position": FORM_FEATURES + CLASS + POSITION,
+    "position_and_style": FORM_FEATURES + CLASS + POSITION + SHAPE + STYLE,
+    "the_lot": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE,
 }
 RECENT_RUNS = 4      # how many recent races a speed or sectional figure is read over
 RECENCY_DECAY = 0.8  # each older run counts this much less, the weighting the page's worm uses
@@ -150,6 +170,7 @@ def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | No
              "dist_change": (float(race_distance) - last_run_distance) / 100.0 if race_distance and last_run_distance is not None else None,
              "exp": F.entry_exp_rating(e),
              "dist_starts": rec[0] if rec else None, "dist_wins": rec[1] if rec else None,
+             **{k: recent_weighted([{**r, **position_shares(r)} for r in races_only], k) for k in POSITION},
              "speed": recent_weighted(races_only, "speedRating"),
              "speed_best": max((r["speedRating"] for r in races_only if r.get("speedRating") is not None), default=None),
              "finish_speed": recent_weighted(races_only, "finishingSpeed"),
@@ -195,6 +216,33 @@ def shape_features(runners: list[Runner], positions: dict[str, int], tempo: floa
     for r, v in zip(runners, filled):
         r.x["early_pos"] = v - mean
         r.x["early_x_tempo"] = (v - mean) * tempo
+        # The horse's own habit against today's race. style_x_tempo is the classic one: a
+        # backmarker (positive share) in a slow-run race (negative tempo) reads negative.
+        habit = r.x.get("settle_share")
+        r.x["style_x_tempo"] = (habit * tempo) if habit is not None else 0.0
+        r.x["map_vs_habit"] = ((v - mean) - habit) if habit is not None else 0.0
+
+
+def position_shares(run: dict) -> dict[str, float | None]:
+    """One past run's positions as shares of its own field: 0 = on the lead, 1 = last, so a
+    field of 8 and a field of 16 are comparable. `positions` is [settling, 1200, 1000, 800,
+    600, 400, 200, finish]. Gains are positive when the horse made ground.
+    Hand-check: 10 runners, settled 6th, 400m 4th, finished 2nd ->
+    settle (6 - 1) / 9 = 0.5556, late gain (4 - 2) / 9 = 0.2222, gain (6 - 2) / 9 = 0.4444."""
+    pos = run.get("positions") or []
+    n = run.get("runners")
+    if not n or n < 2 or len(pos) < 8:
+        return {}
+    span = n - 1
+    settle, p800, p400, finish = pos[0], pos[3], pos[5], pos[7]
+
+    def share(v):
+        return None if v is None else (v - 1) / span
+
+    out = {"settle_share": share(settle), "pos800_share": share(p800)}
+    out["pos_gain"] = (settle - finish) / span if settle is not None and finish is not None else None
+    out["late_gain"] = (p400 - finish) / span if p400 is not None and finish is not None else None
+    return out
 
 
 def recent_weighted(runs: list[dict], key: str, n: int = RECENT_RUNS, decay: float = RECENCY_DECAY) -> float | None:
@@ -233,6 +281,12 @@ def race_features(runners: list[Runner]) -> None:
         vals = _fill_mean([r.raw.get(key) for r in runners])
         best = max(vals)
         cols[out] = [v - best for v in vals]
+    # Position shares are already scale-free, so they are centred on the field: "more forward
+    # than these rivals", not a bare share.
+    for key in POSITION:
+        vals = _fill_mean([r.raw.get(key) for r in runners])
+        mean = sum(vals) / n
+        cols[key] = [v - mean for v in vals]
     # Distance change is centred on the field, so it reads as "stepping up more than the others".
     changes = _fill_mean([r.raw.get("dist_change") for r in runners])
     mean_change = sum(changes) / n
@@ -240,6 +294,8 @@ def race_features(runners: list[Runner]) -> None:
     # Shape features are zero until shape_features() is given a speedmap.
     cols["early_pos"] = [0.0] * n
     cols["early_x_tempo"] = [0.0] * n
+    cols["style_x_tempo"] = [0.0] * n
+    cols["map_vs_habit"] = [0.0] * n
     # Record at the distance as a shrunk win rate: (wins + 1) / (starts + 5), so one win
     # from one start reads 33%, not 100%; a runner with no record takes the race mean.
     rates = [((r.raw["dist_wins"] + 1) / (r.raw["dist_starts"] + 5)) if r.raw.get("dist_starts") is not None and r.raw.get("dist_wins") is not None else None

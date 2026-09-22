@@ -186,3 +186,37 @@ def test_speed_and_sectional_features_reach_the_model():
     assert round(o.x["to600_rel"], 2) == 0.0 and round(r.x["to600_rel"], 2) == -0.7   # o's run to the 600 was better
     assert set(SPEED) <= set(r.x)
     assert "form_plus_speed" in MODEL_SETS and "everything" in MODEL_SETS
+
+
+def test_position_shares_are_read_against_the_field_size():
+    from fk.backtest import position_shares
+    # 10 runners, settled 6th, 800m 5th, 400m 4th, finished 2nd
+    run = {"runners": 10, "positions": [6, None, None, 5, None, 4, None, 2]}
+    p = position_shares(run)
+    assert round(p["settle_share"], 4) == round(5 / 9, 4)        # (6 - 1) / 9
+    assert round(p["pos800_share"], 4) == round(4 / 9, 4)
+    assert round(p["pos_gain"], 4) == round(4 / 9, 4)            # 6th to 2nd
+    assert round(p["late_gain"], 4) == round(2 / 9, 4)           # 4th to 2nd
+    # the same finishing position in a bigger field is a smaller share
+    big = position_shares({"runners": 19, "positions": [6, None, None, 5, None, 4, None, 2]})
+    assert big["settle_share"] < p["settle_share"]
+    assert position_shares({"runners": 1, "positions": [1] * 8}) == {}       # no field to share
+    assert position_shares({"runners": 10, "positions": []}) == {}
+
+
+def test_running_style_meets_todays_tempo():
+    from fk.backtest import POSITION, STYLE, positions_from_speedmap, shape_features
+    rs = [runner_from_entry(race_entry(f"H{i}", f"R{i}", i + 1, result=i + 1), race_distance=1400) for i in range(3)]
+    # H0 habitually leads, H2 habitually comes from last, H1 sits in between
+    for r, share in zip(rs, (0.0, 0.5, 1.0)):
+        r.raw.update(settle_share=share, pos800_share=share, pos_gain=0.0, late_gain=0.0)
+    race_features(rs)
+    assert set(POSITION) <= set(rs[0].x)
+    assert [round(r.x["settle_share"], 4) for r in rs] == [-0.5, 0.0, 0.5]        # centred on the field
+    shape_features(rs, positions_from_speedmap([{"horse_id": "H0", "predicted_position": 1},
+                                                {"horse_id": "H2", "predicted_position": 3}]), tempo=-1.0)
+    # a slow tempo (-1): the habitual leader reads positive, the habitual backmarker negative
+    assert rs[0].x["style_x_tempo"] > 0 > rs[2].x["style_x_tempo"]
+    assert set(STYLE) <= set(rs[0].x)
+    # H0 is mapped to lead and habitually leads, so today asks nothing unusual of it
+    assert round(rs[0].x["map_vs_habit"], 4) == 0.0

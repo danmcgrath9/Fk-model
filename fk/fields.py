@@ -424,6 +424,8 @@ def run_ratings(p: dict) -> dict[str, Any]:
         return None
 
     return {
+        # Where the horse was through the run: settling, then each marker, then the finish.
+        "positions": run_positions(p),
         # The last 600m and the run to it, against the class standard. Form King names the
         # sections from the distance out ("6-F" is 600m to the finish, "S-6" the start to
         # the 600), and a short race is sectioned shallower, so each falls back in turn.
