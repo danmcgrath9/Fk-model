@@ -47,6 +47,7 @@ def main() -> None:
     settled = [b for b in bets if b.get("settled_at") is not None]
     open_bets = [b for b in bets if b.get("settled_at") is None]
     summ = P.summarise(settled)
+    struck = P.summarise_at_struck(settled)
     run = P.running(settled)
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     days = sorted({str(b["meeting_date"]) for b in settled})
@@ -54,17 +55,23 @@ def main() -> None:
     lines = ["# Paper book", "", f"As at {stamp}. {len(settled)} bets settled over {len(days)} race days"
              f"{' (' + days[0] + ' to ' + days[-1] + ')' if days else ''}; {len(open_bets)} open. Placed at the morning price on the page, settled at "
              "Betfair SP (starting price where there is no BSP). Nothing is bet for real.", "",
-             "| plan | bets | winners | staked | returned | profit | return |", "|---|---|---|---|---|---|---|"]
+             "| plan | bets | winners | staked | returned | profit | return | at the struck price: profit | return |",
+             "|---|---|---|---|---|---|---|---|---|"]
     rows_html = []
     for plan in P.PLANS:
         s = summ.get(plan)
         if not s:
             continue
         roi = f"{s.roi:+.1%}" if s.roi is not None else ""
-        lines.append(f"| {plan} | {s.bets} | {s.winners} | {s.staked:.1f} | {s.returned:.1f} | {s.profit:+.1f} | {roi} |")
+        k = struck.get(plan)
+        k_profit = f"{k.profit:+.1f}" if k else "n/a"
+        k_roi = f"{k.roi:+.1%}" if k and k.roi is not None else "n/a"
+        lines.append(f"| {plan} | {s.bets} | {s.winners} | {s.staked:.1f} | {s.returned:.1f} | {s.profit:+.1f} | {roi} | {k_profit} | {k_roi} |")
         cls = "pos" if s.profit > 0 else "neg" if s.profit < 0 else ""
+        kcls = "pos" if k and k.profit > 0 else "neg" if k and k.profit < 0 else ""
         rows_html.append(f"<tr><td class='l'>{H.escape(plan)}<br><span class='tiny'>{H.escape(P.PLANS[plan])}</span></td><td>{s.bets}</td>"
-                         f"<td>{s.winners}</td><td>{s.staked:.1f}</td><td>{s.returned:.1f}</td><td class='{cls}'>{s.profit:+.1f}</td><td class='{cls}'>{roi}</td></tr>")
+                         f"<td>{s.winners}</td><td>{s.staked:.1f}</td><td>{s.returned:.1f}</td><td class='{cls}'>{s.profit:+.1f}</td><td class='{cls}'>{roi}</td>"
+                         f"<td class='{kcls}'>{k_profit}</td><td class='{kcls}'>{k_roi}</td></tr>")
     # How the market moved after each bet was struck. A plan whose selections drift is one
     # the market disagrees with after we have backed them; one that firms has the late
     # money coming the same way.
@@ -101,8 +108,12 @@ def main() -> None:
     fig = chart(run)
     body = [f"<h1>Paper book</h1><div class='sub'>{len(settled)} bets settled over {len(days)} race days, {len(open_bets)} open. "
             "Placed at the morning price on the page, settled at Betfair SP. Nothing is bet for real.</div>",
-            "<div class='tablewrap'><table><tr><th class='l'>Plan</th><th>Bets</th><th>Winners</th><th>Staked</th><th>Returned</th><th>Profit</th><th>Return</th></tr>"
+            "<div class='tablewrap'><table><tr><th class='l'>Plan</th><th>Bets</th><th>Winners</th><th>Staked</th><th>Returned</th>"
+            "<th>Profit</th><th>Return</th><th>Struck $: profit</th><th>Return</th></tr>"
             + "".join(rows_html) + "</table></div>",
+            "<p class='note'>Two settlement bases. Profit settles at Betfair SP, which is what you get betting into the jump. "
+            "Struck $ pays the price on the page when the bet went on, which is what you get taking that price at the time. "
+            "They differ by however far the selections moved.</p>",
             "<h3>Running profit by plan, units, in bet order</h3>",
             "<div class='chart'><div class='bar'><button class='fs' type='button'>Full screen</button></div><div class='plot'>"
             + pio.to_html(fig.update_layout(title=None, margin=dict(t=20)), full_html=False, include_plotlyjs=False,

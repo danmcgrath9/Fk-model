@@ -177,6 +177,25 @@ class PlanSummary:
         return (self.returned / self.staked - 1) if self.staked else None
 
 
+def summarise_at_struck(settled: list[dict]) -> dict[str, PlanSummary]:
+    """The same bets paid at the price they were STRUCK at rather than at Betfair SP.
+    The book decides at the morning market and settles at BSP, which is coherent only if
+    you bet into BSP; a punter who actually took the morning price gets the price on the
+    screen. Where the selections drift, BSP is the longer price and the book flatters the
+    plan, so both bases belong side by side. A bet with no struck price is skipped."""
+    out: dict[str, PlanSummary] = {}
+    for b in settled:
+        price = b.get("price")
+        if not price or price <= 1:
+            continue
+        s = out.setdefault(b["plan"], PlanSummary(b["plan"], 0, 0, 0.0, 0.0))
+        s.bets += 1
+        s.winners += 1 if b.get("won") else 0
+        s.staked += float(b["stake"])
+        s.returned += settle(float(b["stake"]), bool(b.get("won")), float(price))
+    return out
+
+
 def summarise(settled: list[dict]) -> dict[str, PlanSummary]:
     """settled: dicts with plan, stake, returned, won. Per-plan totals."""
     out: dict[str, PlanSummary] = {}

@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
 from fk.paper import (Bet, Row, before_the_jump, jump_time, kelly_stake, movement, movement_summary, place,
-                      running, settle, summarise)
+                      running, settle, summarise, summarise_at_struck)
 
 
 def test_kelly_by_hand_and_the_edge_gate():
@@ -79,3 +79,13 @@ def test_the_opening_price_rides_onto_every_bet():
     bets = place(rows)
     assert {b.horse_id: b.opening for b in bets if b.plan == "kelly_quarter"} or True
     assert all(b.opening == (6.0 if b.horse_id == "a" else 4.5) for b in bets)
+
+
+def test_the_two_settlement_bases_differ_by_the_movement():
+    settled = [{"plan": "a", "stake": 1.0, "won": True, "returned": 13.0, "price": 10.0},   # struck $10, settled $13
+               {"plan": "a", "stake": 1.0, "won": False, "returned": 0.0, "price": 4.0},
+               {"plan": "a", "stake": 1.0, "won": True, "returned": 2.0, "price": None}]     # no struck price: skipped
+    at_bsp, at_struck = summarise(settled), summarise_at_struck(settled)
+    assert at_bsp["a"].bets == 3 and round(at_bsp["a"].returned, 2) == 15.0
+    assert at_struck["a"].bets == 2 and round(at_struck["a"].returned, 2) == 10.0            # the drifted winner pays $10, not $13
+    assert at_struck["a"].winners == 1 and round(at_struck["a"].profit, 2) == 8.0
