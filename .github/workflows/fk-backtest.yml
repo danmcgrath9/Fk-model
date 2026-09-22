@@ -83,7 +83,11 @@ jobs:
           echo "run spent $((START - $(python scripts/ledger.py balance))) credits" | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Fit to Betfair SP
-        run: python scripts/backtest.py | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          # Without pipefail a failed fit piped into tee reads as success and the job
+          # says "model unchanged" over a traceback.
+          set -o pipefail
+          python scripts/backtest.py | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Commit the model
         run: |
