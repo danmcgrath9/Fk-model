@@ -7,6 +7,8 @@ name: fk backtest
 # and max_credits stops the loop for the whole run.
 
 on:
+  schedule:
+    - cron: '30 22 * * 1'   # Monday 22:30 UTC = Tuesday 8:30am Melbourne, after the weekend's results: refit on everything stored, no credits
   workflow_dispatch:
     inputs:
       from:
@@ -56,7 +58,7 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Pull past days
-        if: github.event.inputs.fit_only != 'yes'
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.fit_only != 'yes'
         env:
           FK_API_KEY: ${{ secrets.FK_API_KEY }}
         run: |
