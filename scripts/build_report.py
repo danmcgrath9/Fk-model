@@ -471,18 +471,18 @@ def place_paper(db, race: dict, section: RaceSection) -> int:
         print(f"paper: race {race.get('race_number')} not bet, the rated-price model does not read the market")
         return 0
     db.ensure_paper_book()
-    # ONE pricing decides a race. A page rebuilt later could only ever ADD bets (a horse
-    # already backed was left alone; a horse whose price had drifted far enough to raise a
-    # flag was backed on the second pass), so the book took the union of every flag that
-    # appeared at any observation, which is not a rule anyone could follow.
-    already = db.race_first_priced_at(race["race_id"])
+    # Each model prices a race ONCE, at its own first pricing. A page rebuilt later could only
+    # ever ADD bets (a drifting price raises new flags), so the book would take the union of
+    # every flag seen, which is not a rule anyone could follow. The real-price model is judged
+    # separately, so a race the deployed model already priced can still take its first rp bets.
+    bets = []
+    already = db.race_first_priced_at(race["race_id"], real_price=False)
     if already is not None:
-        print(f"paper: race {race.get('race_number')} already priced at {already:%Y-%m-%d %H:%M} UTC, not re-bet")
-        return 0
-    bets = [(b, section.model_name) for b in P.place(paper_rows(section))]
-    # The real-price model's plans, over the same rows with ITS chances, tagged with its name.
+        print(f"paper: race {race.get('race_number')} already priced by the deployed model at {already:%Y-%m-%d %H:%M} UTC, not re-bet")
+    else:
+        bets += [(b, section.model_name) for b in P.place(paper_rows(section))]
     rp = getattr(section, "rp_probs", None) or {}
-    if rp:
+    if rp and db.race_first_priced_at(race["race_id"], real_price=True) is None:
         from fk import realprice as R
         rp_rows = [P.Row(r.horse_id, r.name, R.rated_price(rp.get(r.horse_id)), r.price, rp.get(r.horse_id), r.market_prob, None, r.finish, r.opening)
                    for r in section.rows if r.horse_id]

@@ -329,7 +329,7 @@ def test_a_race_already_priced_into_the_book_is_never_re_bet():
     class FakeDb:
         def __init__(self, first_at): self.first_at, self.placed = first_at, []
         def ensure_paper_book(self): pass
-        def race_first_priced_at(self, race_id): return self.first_at
+        def race_first_priced_at(self, race_id, real_price=None): return self.first_at
         def place_paper_bets(self, rows): self.placed += rows; return len(rows)
 
     section = RaceSection(heading="Race 1", subheading="")
@@ -400,3 +400,38 @@ def test_a_race_is_stored_without_a_second_copy_of_its_runners():
     # every field a reader of races.raw uses is still there
     assert F.race_start_time(slim) == "13:30" and F.race_facts(slim)["lws"] == 92.0
     assert F.race_distance(slim) == 1400 and F.race_facts(slim)["going"] == "Good"
+
+
+def test_a_race_the_deployed_model_already_priced_still_takes_its_first_real_price_bets():
+    import sys
+    from datetime import datetime, timedelta, timezone
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    from build_report import place_paper
+    from fk.report.html import RaceSection, SummaryRow
+
+    class FakeDb:
+        def __init__(self, deployed_at, rp_at): self.at, self.placed = {False: deployed_at, True: rp_at}, []
+        def ensure_paper_book(self): pass
+        def race_first_priced_at(self, race_id, real_price=None): return self.at[bool(real_price)]
+        def place_paper_bets(self, rows): self.placed += rows; return len(rows)
+
+    section = RaceSection(heading="Race 1", subheading="")
+    section.model_reads_market = True
+    section.model_name = "deployed"
+    section.rp_model_name = "realprice_compact_open (50 races to 2026-09-23)"
+    section.rp_probs = {"H1": 0.40, "H2": 0.60}
+    def row(hid, rated, price, model_p, market_p):
+        return SummaryRow(name=hid, barrier=1, weight=56.0, jockey="J", days_since=14, neural=10.0, exp=70.0,
+                          rated_price=rated, price=price, model_prob=model_p, market_prob=market_p, flag=None, opening=None, horse_id=hid)
+    section.rows = [row("H1", 3.0, 3.0, 0.33, 0.33), row("H2", 1.6, 1.7, 0.60, 0.59)]
+    tomorrow = (datetime.now(timezone(timedelta(hours=10))) + timedelta(days=1)).date().isoformat()
+    race = {"race_id": "R1", "meeting_date": tomorrow, "track": "T", "race_number": 1, "raw": {"startTime": "11:59pm"}}
+    earlier = datetime(2026, 9, 23, 23, 16, tzinfo=timezone.utc)
+    db = FakeDb(deployed_at=earlier, rp_at=None)
+    assert place_paper(db, race, section) > 0
+    assert db.placed and all(r["plan"].startswith("rp_") for r in db.placed)
+    assert all(r["model"].startswith("realprice") for r in db.placed)
+    # and once the rp model has priced it too, nothing more
+    done = FakeDb(deployed_at=earlier, rp_at=earlier)
+    assert place_paper(done, race, section) == 0

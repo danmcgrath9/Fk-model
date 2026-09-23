@@ -211,11 +211,14 @@ class Db:
             self.conn.execute((sql_dir / "006_paper_model.sql").read_text(encoding="utf-8"))
             self.conn.commit()
 
-    def race_first_priced_at(self, race_id: str):
+    def race_first_priced_at(self, race_id: str, real_price: bool | None = None):
         """When this race was first priced into the book, or None if it never was. A race is
-        bet ONCE, at its first pricing; a later run must not add to it."""
+        bet ONCE per model, at that model's first pricing; a later run must not add to it.
+        real_price=True asks about the real-price model's plans (rp_*), False about every
+        other plan, None about any plan."""
+        where = {True: " and plan like 'rp\\_%%'", False: " and plan not like 'rp\\_%%'", None: ""}[real_price]
         row = self.conn.execute(
-            "select min(coalesce(first_priced_at, placed_at)) from fk.paper_bets where race_id = %s", (race_id,)
+            "select min(coalesce(first_priced_at, placed_at)) from fk.paper_bets where race_id = %s" + where, (race_id,)
         ).fetchone()
         return row[0] if row else None
 

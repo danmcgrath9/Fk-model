@@ -23,9 +23,12 @@ COMPACT_FEATURES = [B.MARKET_FEATURE, "neural_rel", "speed_rel", "last_rel", "pe
                     "class_win", "first_starter", "first_starter_x_market"]
 REAL_PRICE_FEATURES = COMPACT_FEATURES + [AVG_OPEN_FEATURE]
 REAL_PRICE_RIDGE = 0.1
-# Fewer real-price races than this and the model is not fitted: eleven coefficients on
-# fewer than sixty races is noise wearing a decimal point.
-MIN_REAL_PRICE_RACES = 60
+# Fewer real-price races than this and the model is not fitted. It feeds the PAPER book only,
+# where a bet costs nothing and is how the sample grows; eleven coefficients on 45 races is
+# thin, and the book's record, not the fit, is what decides whether it is ever recommended.
+# (On 24 Sep 53 races carried both a real 9am price and a Betfair SP; the replay's "92" counted
+# races before dropping those without a BSP.)
+MIN_REAL_PRICE_RACES = 45
 # A race is priced only when this share of its runners carry the real price.
 MIN_PRICE_COVERAGE = 0.8
 
