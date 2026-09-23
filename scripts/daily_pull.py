@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import argparse
 import sys
-from datetime import date, datetime, timedelta
+from datetime import timezone, date, datetime, timedelta
 
 from _common import bootstrap, confirm, default_target, make_client, now_melbourne, today_melbourne
 from fk import fields as F
@@ -149,6 +149,12 @@ def main() -> None:
     ap.add_argument("--horse", help="only the race(s) this horse is in (name as Form King spells it)")
     ap.add_argument("--no-speedmaps", action="store_true", help="skip the meeting speedmap call")
     ap.add_argument("--force", action="store_true", help="re-fetch races already fetched in the last 12 hours")
+    ap.add_argument("--skip-held", action="store_true",
+                    help="back-test: skip any race already stored, however long ago; a past race's form never changes")
+    ap.add_argument("--no-past-events", action="store_true",
+                    help="back-test: keep each runner's form only inside its entry. The model reads it there, and the "
+                         "separate past_events and benchmarked_runs copies are what the form pages read, which a past "
+                         "day does not need. Roughly two thirds less disk per race")
     a = ap.parse_args()
 
     today = today_melbourne()
@@ -199,7 +205,10 @@ def main() -> None:
     # A race whose form was fetched in the last 12 hours is not paid for twice: the second
     # scheduled run of the evening is a catch-up for a late first one, not a re-pull.
     if not a.force:
-        fresh = db.races_fetched_since(utc_now() - timedelta(hours=12))
+        # A back-test pull skips every race already held: a past race's form is fixed, so
+        # paying for it twice buys nothing. The nightly pull keeps its 12-hour window.
+        since = datetime(1970, 1, 1, tzinfo=timezone.utc) if a.skip_held else utc_now() - timedelta(hours=12)
+        fresh = db.races_fetched_since(since)
         kept = []
         for m in meetings:
             m = dict(m)
@@ -271,7 +280,8 @@ def main() -> None:
                 for e in F.race_entries(payload):
                     hid = store_entry(db, rid, e, at)
                     horses_on_cards[hid] = F.horse_name(e)
-                    store_past_events(db, hid, F.entry_past_events(e), at)
+                    if not a.no_past_events:
+                        store_past_events(db, hid, F.entry_past_events(e), at)
                 ok_races += 1
             db.commit()
     finally:

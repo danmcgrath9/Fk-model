@@ -29,6 +29,12 @@ on:
       days_of_week:
         description: 'only these weekdays, 1=Monday .. 7=Sunday, comma separated (e.g. 6 for Saturdays); blank = every day'
         default: ''
+      pull_only:
+        description: 'yes = pull and stop, no fit (a long backfill and its fit are too much for one job)'
+        default: 'no'
+      disk_stop_mb:
+        description: 'stop pulling once the database reaches this many MB (the disk ran out just under 1 GB)'
+        default: '850'
 
 concurrency:
   group: fk-daily-pull
@@ -65,26 +71,33 @@ jobs:
           LIVE_FLAG="$(echo "${{ vars.FK_LIVE }}" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
           [ "$LIVE_FLAG" = "true" ] || { echo "FK_LIVE is not true; a back-test needs the live key"; exit 1; }
           START=$(python scripts/ledger.py balance)
-          d="${{ github.event.inputs.from }}"
-          while [ "$d" != "$(date -I -d "${{ github.event.inputs.to }} + 1 day")" ]; do
+          # NEWEST FIRST: when the credit cap or the disk guard stops the run, what was kept
+          # is the most recent racing, which is the most like tomorrow's.
+          d="${{ github.event.inputs.to }}"
+          while [ "$d" != "$(date -I -d "${{ github.event.inputs.from }} - 1 day")" ]; do
             NOW=$(python scripts/ledger.py balance)
             SPENT=$((START - NOW))
             if [ "$SPENT" -ge "${{ github.event.inputs.max_credits }}" ]; then
               echo "stopping before $d: $SPENT credits spent this run (max ${{ github.event.inputs.max_credits }})"; break
             fi
+            MB=$(python scripts/db_size.py --mb)
+            if [ "$MB" -ge "${{ github.event.inputs.disk_stop_mb || '850' }}" ]; then
+              echo "stopping before $d: database at $MB MB (guard ${{ github.event.inputs.disk_stop_mb || '850' }} MB); $SPENT credits spent"; break
+            fi
             DOW=$(date -d "$d" +%u)
             if [ -n "${{ github.event.inputs.days_of_week }}" ] && ! echo ",${{ github.event.inputs.days_of_week }}," | tr -d ' ' | grep -q ",$DOW,"; then
-              d=$(date -I -d "$d + 1 day"); continue
+              d=$(date -I -d "$d - 1 day"); continue
             fi
-            echo "=== $d (spent so far $SPENT) ==="
+            echo "=== $d (spent so far $SPENT, database $MB MB) ==="
             TRACK_ARG=""
             [ -n "${{ github.event.inputs.track }}" ] && TRACK_ARG="--track"
-            python scripts/daily_pull.py --key live --yes --no-profiles --date "$d" $TRACK_ARG ${{ github.event.inputs.track && format('"{0}"', github.event.inputs.track) || '' }} || echo "day $d failed; continuing"
-            d=$(date -I -d "$d + 1 day")
+            python scripts/daily_pull.py --key live --yes --no-profiles --skip-held --no-past-events --date "$d" $TRACK_ARG ${{ github.event.inputs.track && format('"{0}"', github.event.inputs.track) || '' }} || echo "day $d failed; continuing"
+            d=$(date -I -d "$d - 1 day")
           done
           echo "run spent $((START - $(python scripts/ledger.py balance))) credits" | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Fit to Betfair SP
+        if: github.event.inputs.pull_only != 'yes'
         run: |
           # Without pipefail a failed fit piped into tee reads as success and the job
           # says "model unchanged" over a traceback.
@@ -92,6 +105,7 @@ jobs:
           python scripts/backtest.py | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Commit the model
+        if: github.event.inputs.pull_only != 'yes'
         run: |
           git config user.name "fk backtest" && git config user.email "actions@users.noreply.github.com"
           git add config/rated_price.json docs/BACKTEST.md

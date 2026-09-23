@@ -17,8 +17,13 @@ def mb(n: int | None) -> str:
 
 
 def main() -> None:
+    import sys
     db = Db(load_settings().database_url)
     total = db.conn.execute("select pg_database_size(current_database())").fetchone()[0]
+    if "--mb" in sys.argv:
+        # Just the whole-database size in whole megabytes, for a shell loop's disk guard.
+        print(int(total / 1024 / 1024))
+        return
     print(f"database total {mb(total)}")
     rows = db.conn.execute(
         """select c.relname, pg_total_relation_size(c.oid), pg_relation_size(c.oid),
