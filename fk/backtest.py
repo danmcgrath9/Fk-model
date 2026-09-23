@@ -481,9 +481,13 @@ def plan_replay(races: list[Race], features: list[str], folds: int = 5, threshol
     morning, with no race priced by a fit that saw it: the races are cut into `folds`
     contiguous blocks by date and each block is priced by a model fitted on the others.
     Bets go on at the OPENING price (the market the morning page carries) and settle at
-    Betfair SP, which is exactly the live book's rule; a second pass judges the flags
-    against BSP and bets at BSP, which says whether the edge survives the market firming. Returns
-    {"at_open": {plan: PlanSummary}, "at_bsp": {...}, "races": n}."""
+    Betfair SP, which is exactly the live book's rule; the SAME bets are then settled at the
+    price they were STRUCK at, which is what taking the morning price actually gets you.
+    Where the selections drift, BSP is the longer price and the first column flatters them.
+    Both columns are the same bets, so they compare; an earlier version re-flagged against
+    BSP, which needed tomorrow's price to pick today's bets and left two different bet sets
+    under one bet count.
+    Returns {"at_open": {plan: PlanSummary}, "at_struck": {...}, "races": n}."""
     from fk import paper as P
     from fk.report.probability import disagreement
     ordered = sorted(races, key=lambda r: (r.date, r.race_id))

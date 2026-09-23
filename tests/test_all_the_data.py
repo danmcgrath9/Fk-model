@@ -348,3 +348,35 @@ def test_a_race_already_priced_into_the_book_is_never_re_bet():
     assert all(r["first_priced_at"] == r["placed_at"] for r in fresh.placed)
     again = FakeDb(datetime(2026, 9, 22, 21, 0, tzinfo=timezone.utc))
     assert place_paper(again, race, section) == 0 and again.placed == []
+
+
+def test_the_back_test_report_runs_end_to_end_on_synthetic_races():
+    """The plan-replay rename shipped to fk/ and not to scripts/, so the fit crashed on a
+    KeyError that no test touched: every test exercised the library and none ran the report
+    that writes the model. This one runs it."""
+    import sys
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(root / "scripts"))
+    from backtest import run
+    from fixtures import race_entry
+    from fk import backtest as B
+    races = []
+    for i in range(60):
+        rs = []
+        for hid, neural, bsp, won in (("A", 80, 1.8, i % 3 != 0), ("B", 50, 4.0, i % 3 == 0),
+                                      ("C", 30, 9.0, False)):
+            e = race_entry(hid, hid, {"A": 1, "B": 2, "C": 3}[hid], result=1 if won else 2)
+            r = B.runner_from_entry(e, race_distance=1400, lws=85.0)
+            r.raw.update(neural=neural, open=bsp * 1.1)
+            r.bsp, r.sp = bsp, bsp
+            rs.append(r)
+        B.race_features(rs)
+        races.append(B.Race(f"R{i}", f"2026-07-{i % 28 + 1:02d}", "T", rs))
+    model, report = run(races)
+    assert model["races"] == 60 and model["beta"] and model["model"] in B.MODEL_SETS
+    assert set(model["plan_replay"]) == {"at_open", "at_struck"}
+    assert "vs the morning market" in report and "the struck price" in report
+    # the two replay columns must describe the SAME bets
+    for plan, a in model["plan_replay"]["at_open"].items():
+        assert model["plan_replay"]["at_struck"][plan]["bets"] == a["bets"]
