@@ -1,3 +1,5 @@
+import math
+
 from fixtures import past_event, race_entry
 from fk.backtest import (FORM_FEATURES, MARKET_FEATURE, Race, Runner, bsp_chances, calibration, fit, predict, race_features,
                          runner_from_entry, score)
@@ -344,3 +346,34 @@ def test_every_remaining_form_king_field_reaches_the_model():
     assert round(inside.raw["barrier_share"], 4) == round(1 / 9, 4) and wide.raw["barrier_share"] == 1.0
     assert set(EXTRAS) <= set(inside.x)
     assert "kitchen_sink" in MODEL_SETS and "market_kitchen_sink" in MODEL_SETS
+
+
+def test_value_edge_hand_values():
+    from fk.backtest import value_edge
+    assert round(value_edge("gap", 0.30, 0.22, 4.0), 6) == 0.08
+    assert round(value_edge("ev", 0.30, 0.22, 4.0), 6) == 0.20     # 0.30 x 4.00 - 1
+    assert value_edge("ev", 0.30, 0.22, None) is None
+
+
+def test_value_sweep_chooses_on_the_older_half_only():
+    from fk import backtest as B
+    import random
+    rnd = random.Random(3)
+    races = []
+    for i in range(60):
+        runners = []
+        for h in range(6):
+            q = rnd.uniform(0.05, 0.4)
+            r = Runner(f"h{i}_{h}", f"H{h}", {"open": round(1 / q, 2)}, round(1 / q, 2), None, None)
+            r.x = {"f": rnd.gauss(0, 1), B.MARKET_FEATURE: math.log(q)}
+            runners.append(r)
+        runners[rnd.randrange(6)].finish = 1
+        races.append(Race(f"r{i:03d}", f"2026-0{1 + i // 10}-{10 + i % 10}", "T", runners))
+    rows, best = B.value_sweep(races, ["f", B.MARKET_FEATURE])
+    n = sum(len(v) for v in B.VALUE_RULES.values())
+    assert len(rows) == 2 * n
+    chooser = [r for r in rows if r.half == "choose" and r.bets >= B.SWEEP_MIN_BETS]
+    if best is not None:
+        top = max(chooser, key=lambda r: r.roi_bsp)
+        assert best == (top.rule, top.threshold)
+    assert {r.half for r in rows} == {"choose", "confirm"}

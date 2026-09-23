@@ -238,6 +238,27 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         b_profit = f"{b.profit:+.1f}" if b else "n/a"
         b_roi = f"{b.roi:+.1%}" if b and b.roi is not None else "n/a"
         lines.append(f"| {plan} | {a.bets} | {a.winners} | {a.staked:.1f} | {a.profit:+.1f} | {a.roi:+.1%} | {b_profit} | {b_roi} |")
+    # Which rule should pick a value bet, and at what edge. Chosen on the older racing only
+    # and then shown on the newer racing it never saw, so a rule that only fits the past
+    # shows up as one that stops working.
+    sweeps = {}
+    for label, under in (("value_flags", None), ("value_under_8", 8.0)):
+        sweep_rows, best = B.value_sweep(with_bsp, replay_feats, target=chosen_target or B.bsp_chances, ridge=chosen_ridge, under=under)
+        sweeps[label] = {"chosen": list(best) if best else None, "rows": [vars(r) for r in sweep_rows]}
+        lines += ["", f"## Choosing the value rule: {label}", "",
+                  "gap = our chance beats the market's by more than the threshold in percentage points (the live rule is gap "
+                  "0.05). ev = our chance times the morning price is more than 1 plus the threshold. Each rule is picked on the "
+                  f"OLDER {B.SWEEP_CHOOSE_BLOCKS} fifths of the racing by its return at Betfair SP (at least {B.SWEEP_MIN_BETS} "
+                  "bets), then shown on the NEWER two fifths it never saw. Returns are one unit a bet, before commission.", "",
+                  "| rule | threshold | older: bets | at BSP | at morning price | newer: bets | at BSP | at morning price |",
+                  "|---|---|---|---|---|---|---|---|"]
+        by = {(r.rule, r.threshold, r.half): r for r in sweep_rows}
+        for rule, ts in B.VALUE_RULES.items():
+            for t in ts:
+                c, f = by[(rule, t, "choose")], by[(rule, t, "confirm")]
+                mark = " **(chosen)**" if best == (rule, t) else (" (live)" if (rule, t) == ("gap", 0.05) else "")
+                lines.append(f"| {rule}{mark} | {t:.2f} | {c.bets} | {c.roi_bsp:+.1%} | {c.roi_struck:+.1%} | "
+                             f"{f.bets} | {f.roi_bsp:+.1%} | {f.roi_struck:+.1%} |")
     model = {
         "fitted_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "races": len(with_bsp), "runners": final_score.runners, "from": dates[0], "to": dates[-1],
@@ -246,6 +267,7 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         "ridge": chosen_ridge,
         "params": vars(final_params) if final_params is not None else None,
         "projection_params": projection_params,
+        "value_sweep": sweeps,
         "plan_replay": {side: {plan: vars(summ) for plan, summ in replay[side].items()} for side in ("at_open", "at_struck")},
         "scores": {"deployed_in_sample": vars(final_score),
                    **{f"{name}_out_of_sample": vars(o) for name, _, _, o, _t, _r in rows},

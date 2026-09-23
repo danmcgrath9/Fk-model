@@ -630,6 +630,90 @@ def bsp_probs(races: list[Race]) -> list[list[float]]:
     return [bsp_chances(r.runners) or [1.0 / len(r.runners)] * len(r.runners) for r in races]
 
 
+def fold_predictions(races: list[Race], features: list[str], folds: int = 5, target=bsp_chances, ridge: float = 1e-8):
+    """(block index, race, model chances, morning market chances) for every race, each race
+    priced by a model fitted on the OTHER date blocks, so no race is priced by a fit that
+    saw it. Block 0 is the oldest racing."""
+    ordered = sorted(races, key=lambda r: (r.date, r.race_id))
+    n = len(ordered)
+    blocks = [ordered[i * n // folds:(i + 1) * n // folds] for i in range(folds)]
+    for k, block in enumerate(blocks):
+        train = [r for j, b in enumerate(blocks) if j != k for r in b]
+        if not train or not block:
+            continue
+        beta = fit(train, features, ridge=ridge, target=target)
+        for race in block:
+            yield k, race, predict(beta, race.runners), market_probs([race])[0]   # the morning market, the one we bet into
+
+
+# The rules a value bet can be chosen by, each with the thresholds tried.
+#   gap: the model's chance beats the market's by more than t (the live rule, t = 0.05). A
+#        fixed gap in percentage points means far more on a $21 chance than a $2 one.
+#   ev:  the model's chance times the morning price is more than 1 + t, i.e. the bet is
+#        worth at least t per unit staked at the price we would take, on our numbers.
+VALUE_RULES = {"gap": [0.02, 0.03, 0.05, 0.08, 0.10], "ev": [0.05, 0.10, 0.20, 0.30, 0.50]}
+SWEEP_CHOOSE_BLOCKS = 3          # of 5: choose on the older three fifths, confirm on the newer two
+SWEEP_MIN_BETS = 30              # a rule with fewer bets than this in the choosing half is not chosen
+
+
+def value_edge(rule: str, model_p: float, market_p: float, price: float | None) -> float | None:
+    """How far a runner clears the rule. Hand-checked: gap, model 0.30 v market 0.22 -> 0.08;
+    ev, model 0.30 at $4.00 -> 0.30 x 4 - 1 = 0.20."""
+    if rule == "gap":
+        return model_p - market_p
+    if rule == "ev":
+        return model_p * price - 1.0 if price and price > 1 else None
+    raise ValueError(rule)
+
+
+@dataclass
+class SweepRow:
+    rule: str
+    threshold: float
+    half: str                # "choose" (older racing) or "confirm" (newer racing)
+    bets: int
+    winners: int
+    roi_bsp: float           # one unit per bet, paid at Betfair SP
+    roi_struck: float        # the same bets paid at the morning price
+
+
+def value_sweep(races: list[Race], features: list[str], folds: int = 5, target=bsp_chances,
+                ridge: float = 1e-8, under: float | None = None) -> tuple[list[SweepRow], tuple[str, float] | None]:
+    """Every value rule and threshold replayed out of sample, split by date into a CHOOSING
+    half (the older blocks) and a CONFIRMING half (the newer ones). The rule picked is the
+    best by return at Betfair SP in the choosing half alone, so the confirming half is a
+    genuine test of the choice rather than part of it. `under` keeps only runners the model
+    rates under that price (the value_under_8 plan). Returns (rows, (rule, threshold) or None)."""
+    cands = []   # (half, model_p, market_p, open price, won, bsp)
+    for k, race, probs, market in fold_predictions(races, features, folds, target=target, ridge=ridge):
+        half = "choose" if k < SWEEP_CHOOSE_BLOCKS else "confirm"
+        for r, pi, mi in zip(race.runners, probs, market):
+            if under is not None and not (pi > 0 and 1.0 / pi < under):
+                continue
+            cands.append((half, pi, mi, r.raw.get("open"), r.finish == 1, r.bsp if r.bsp else r.sp))
+    rows = []
+    for rule, thresholds in VALUE_RULES.items():
+        for t in thresholds:
+            for half in ("choose", "confirm"):
+                bets = wins = 0
+                ret_bsp = ret_struck = 0.0
+                for h, pi, mi, price, won, bsp in cands:
+                    if h != half:
+                        continue
+                    edge = value_edge(rule, pi, mi, price)
+                    if edge is None or edge <= t or not price or price <= 1:
+                        continue
+                    bets += 1
+                    wins += won
+                    ret_bsp += (bsp if bsp and bsp > 1 else 1.0) if won else 0.0
+                    ret_struck += price if won else 0.0
+                rows.append(SweepRow(rule, t, half, bets, wins,
+                                     (ret_bsp - bets) / bets if bets else 0.0, (ret_struck - bets) / bets if bets else 0.0))
+    eligible = [r for r in rows if r.half == "choose" and r.bets >= SWEEP_MIN_BETS]
+    best = max(eligible, key=lambda r: r.roi_bsp, default=None)
+    return rows, ((best.rule, best.threshold) if best else None)
+
+
 def plan_replay(races: list[Race], features: list[str], folds: int = 5, threshold: float = 0.05,
                 target=bsp_chances, ridge: float = 1e-8) -> dict[str, dict]:
     """The paper book's plans run over the stored races as if the page had been built each
@@ -645,28 +729,19 @@ def plan_replay(races: list[Race], features: list[str], folds: int = 5, threshol
     Returns {"at_open": {plan: PlanSummary}, "at_struck": {...}, "races": n}."""
     from fk import paper as P
     from fk.report.probability import disagreement
-    ordered = sorted(races, key=lambda r: (r.date, r.race_id))
-    n = len(ordered)
-    blocks = [ordered[i * n // folds:(i + 1) * n // folds] for i in range(folds)]
+    n = len(races)
     settled = {"at_open": [], "at_struck": []}
-    for k, block in enumerate(blocks):
-        train = [r for j, b in enumerate(blocks) if j != k for r in b]
-        if not train or not block:
-            continue
-        beta = fit(train, features, ridge=ridge, target=target)
-        for race in block:
-            probs = predict(beta, race.runners)
-            market = market_probs([race])[0]     # the morning market, the one we bet into
-            rows = [P.Row(r.horse_id, r.name, (1.0 / pi) if pi > 0 else None, r.raw.get("open"), pi, mi,
-                          disagreement(mi, pi, threshold), None)
-                    for r, pi, mi in zip(race.runners, probs, market)]
-            by_id = {r.horse_id: r for r in race.runners}
-            for b in P.place(rows):
-                runner = by_id[b.horse_id]
-                won = runner.finish == 1
-                common = {"plan": b.plan, "stake": b.stake, "won": won, "meeting_date": race.date,
-                          "race_number": 0, "bet_id": f"{race.race_id}|{b.horse_id}|{b.plan}"}
-                bsp = runner.bsp if runner.bsp else runner.sp
-                settled["at_open"].append({**common, "returned": P.settle(b.stake, won, bsp)})
-                settled["at_struck"].append({**common, "returned": P.settle(b.stake, won, b.price)})
+    for _k, race, probs, market in fold_predictions(races, features, folds, target=target, ridge=ridge):
+        rows = [P.Row(r.horse_id, r.name, (1.0 / pi) if pi > 0 else None, r.raw.get("open"), pi, mi,
+                      disagreement(mi, pi, threshold), None)
+                for r, pi, mi in zip(race.runners, probs, market)]
+        by_id = {r.horse_id: r for r in race.runners}
+        for b in P.place(rows):
+            runner = by_id[b.horse_id]
+            won = runner.finish == 1
+            common = {"plan": b.plan, "stake": b.stake, "won": won, "meeting_date": race.date,
+                      "race_number": 0, "bet_id": f"{race.race_id}|{b.horse_id}|{b.plan}"}
+            bsp = runner.bsp if runner.bsp else runner.sp
+            settled["at_open"].append({**common, "returned": P.settle(b.stake, won, bsp)})
+            settled["at_struck"].append({**common, "returned": P.settle(b.stake, won, b.price)})
     return {"at_open": P.summarise(settled["at_open"]), "at_struck": P.summarise(settled["at_struck"]), "races": n}
