@@ -287,6 +287,7 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
     held_bsp = [p for p in pairs if p[1].roi_bsp > 0 and p[2].roi_bsp > 0]
     held_open = [p for p in pairs if p[1].roi_open > 0 and p[2].roi_open > 0]
     solid = [p for p in pairs if p[2].roi_bsp > 2 * p[2].se_bsp and p[1].roi_bsp > 0]
+    solid_open = [p for p in pairs if p[2].roi_open > 2 * p[2].se_open and p[1].roi_open > 0]
     lines += ["", "## The strategy search: where, if anywhere, the bets make money", "",
               f"{len(pairs)} strategies: each betting rule (ev = our chance x the opening price must beat 1 by the threshold; "
               "gap = our chance must beat the market's by the threshold in points) crossed with a slice of the racing (price "
@@ -297,6 +298,7 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
               f"- Profitable at Betfair SP in BOTH halves: {len(held_bsp)} of {len(pairs)}",
               f"- Profitable at the average opening price in BOTH halves: {len(held_open)} of {len(pairs)} (upper bound: an average, not a takeable price)",
               f"- Profitable at Betfair SP on the newer racing by more than two standard errors, and profitable on the older: {len(solid)}",
+              f"- Profitable at the average opening price on the newer racing by more than two standard errors, and on the older: {len(solid_open)}",
               ""]
     def strat_table(title, key):
         out = ["", f"### {title}", "",
@@ -308,6 +310,14 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         return out
     lines += strat_table("Best twelve on the older racing at Betfair SP, and how they did on the newer", lambda r: r.roi_bsp)
     lines += strat_table("Best twelve on the older racing at the opening price, and how they did on the newer", lambda r: r.roi_open)
+    # The live goal is to beat the morning market: rank by how far clear of luck each strategy
+    # is at the opening price on the NEWER racing, among those profitable on the older too.
+    lines += ["", "### Beating the morning price, ranked by how far clear of luck on the newer racing", "",
+              "| rule | slice | older: bets | at open | newer: bets | at open | at BSP | standard errors clear |",
+              "|---|---|---|---|---|---|---|---|"]
+    for (rule, t, sl), c, f in sorted(solid_open, key=lambda p: -p[2].roi_open / max(p[2].se_open, 1e-9))[:20]:
+        lines.append(f"| {rule} {t:.2f} | {sl} | {c.bets} | {c.roi_open:+.1%} | {f.bets} | {f.roi_open:+.1%} ±{f.se_open:.1%} | "
+                     f"{f.roi_bsp:+.1%} | {f.roi_open / max(f.se_open, 1e-9):.1f} |")
     model = {
         "fitted_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "races": len(with_bsp), "runners": final_score.runners, "from": dates[0], "to": dates[-1],

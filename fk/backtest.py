@@ -809,11 +809,18 @@ def plan_replay(races: list[Race], features: list[str], folds: int = 5, threshol
 # of luck printed beside every figure are what separate an edge from a streak.
 
 METRO_TRACKS = ("flemington", "caulfield", "moonee valley", "sandown", "the valley")
-STRATEGY_RULES = [("ev", 0.05), ("ev", 0.10), ("ev", 0.20), ("ev", 0.35), ("gap", 0.03), ("gap", 0.05), ("gap", 0.10)]
+STRATEGY_RULES = [("ev", 0.05), ("ev", 0.10), ("ev", 0.15), ("ev", 0.20), ("ev", 0.25), ("ev", 0.35), ("ev", 0.50),
+                  ("gap", 0.03), ("gap", 0.05), ("gap", 0.10)]
 
 
-def _slices(price: float, field: int, first_starter: bool, metro: bool) -> list[str]:
+def _slices(price: float, field: int, first_starter: bool, metro: bool, saturday: bool = False,
+            our_price: float | None = None, top_pick: bool = False) -> list[str]:
     out = ["all"]
+    out.append("Saturdays" if saturday else "weekdays")
+    if our_price is not None:
+        out.append("we rate <$5" if our_price < 5 else "we rate $5-10" if our_price < 10 else "we rate $10+")
+    if top_pick:
+        out.append("our top pick")
     out.append("price <$4" if price < 4 else "price $4-8" if price < 8 else "price $8-16" if price < 16 else "price $16+")
     out.append("field <=8" if field <= 8 else "field 9-12" if field <= 12 else "field 13+")
     out.append("first starters" if first_starter else "raced horses")
@@ -860,13 +867,19 @@ def strategy_search(races: list[Race], features: list[str], folds: int = 5, targ
         half = "choose" if k < SWEEP_CHOOSE_BLOCKS else "confirm"
         metro = any((race.track or "").lower().startswith(t) for t in METRO_TRACKS)
         field_n = len(race.runners)
-        for r, pi, mi in zip(race.runners, probs, market):
+        try:
+            from datetime import date as _d
+            saturday = _d.fromisoformat(str(race.date)[:10]).weekday() == 5
+        except ValueError:
+            saturday = False
+        top = max(range(len(probs)), key=lambda i: probs[i]) if probs else -1
+        for i, (r, pi, mi) in enumerate(zip(race.runners, probs, market)):
             price = r.raw.get("open")
             if not price or price <= 1:
                 continue
             fs = r.x.get("first_starter", 0.0) == 1.0
             cands.append((half, pi, mi, price, r.finish == 1, r.bsp if r.bsp and r.bsp > 1 else None,
-                          _slices(price, field_n, fs, metro)))
+                          _slices(price, field_n, fs, metro, saturday, (1.0 / pi) if pi > 0 else None, i == top)))
     rows = []
     for rule, t in STRATEGY_RULES:
         buckets: dict[tuple[str, str], tuple[list[float], list[float], int]] = {}
