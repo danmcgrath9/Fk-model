@@ -28,6 +28,9 @@ PLANS = {
     "top_pick_to_win_1": "the top pick, staked to win one unit at the morning price",
     "kelly_quarter": "quarter Kelly on a 100-unit bank from the model's chance and the morning price, capped at 5 units",
     "value_ev20": "every runner whose chance on our numbers times the morning price beats 1.20 (worth 20c a unit or more), one unit",
+    "value_ev05": "every runner worth 5c a unit or more at the morning price, one unit",
+    "value_ev10": "every runner worth 10c a unit or more at the morning price, one unit",
+    "value_tiered": "worth 5c to 10c: 1 unit; 10c to 20c: 2 units; 20c or more: 3 units",
 }
 # The value_ev20 rule, chosen by the 23 Sep back-test on 3,260 races: on the older three fifths
 # +57% at the average opening price, on the newer two fifths it never saw +85% (1,239 bets,
@@ -125,8 +128,14 @@ def place(rows: list[Row]) -> list[Bet]:
     for r in rows:
         if r.model_prob and r.market_prob and r.model_prob > MAX_MODEL_TO_MARKET * r.market_prob:
             continue   # too far from the market to be an edge: not bet, whatever the plan
-        if r.model_prob and r.price and r.price > 1 and r.model_prob * r.price - 1.0 > EV_THRESHOLD:
+        ev = r.model_prob * r.price - 1.0 if r.model_prob and r.price and r.price > 1 else None
+        if ev is not None and ev > EV_THRESHOLD:
             bet("value_ev20", r, UNIT)
+        if ev is not None and ev > 0.05:
+            bet("value_ev05", r, UNIT)
+            bet("value_tiered", r, UNIT * (3 if ev > 0.20 else 2 if ev > 0.10 else 1))
+        if ev is not None and ev > 0.10:
+            bet("value_ev10", r, UNIT)
         if r.flag == "model_higher":
             bet("value_flags", r, UNIT)
             if r.rated_price and r.rated_price < 8:

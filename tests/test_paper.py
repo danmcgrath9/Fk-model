@@ -129,3 +129,17 @@ def test_value_ev20_hand_values():
     far = Row("P", "Pneuma", 4.91, 71.0, 1 / 4.91, 1 / 71.0, None, None)  # 14x the market: never
     ids = {b.horse_id for b in place([fav, yes, no, far]) if b.plan == "value_ev20"}
     assert ids == {"Y"}
+
+
+def test_tiered_value_stakes():
+    from fk.paper import Row, place
+    fav = Row("F", "Fav", 2.2, 2.0, 1 / 2.2, 1 / 2.0, None, None)  # 0.4545 x 2 = 0.91: no value
+    a = Row("A", "A", 1 / 0.214, 5.0, 0.214, 0.20, None, None)    # 0.214 x 5 - 1 = 0.07: 5c band
+    b = Row("B", "B", 1 / 0.23, 5.0, 0.23, 0.20, None, None)      # 0.15: 10c band
+    c = Row("C", "C", 1 / 0.25, 5.0, 0.25, 0.20, None, None)      # 0.25: 20c band
+    bets = place([fav, a, b, c])
+    tier = {x.horse_id: x.stake for x in bets if x.plan == "value_tiered"}
+    assert tier == {"A": 1.0, "B": 2.0, "C": 3.0}
+    assert {x.horse_id for x in bets if x.plan == "value_ev05"} == {"A", "B", "C"}
+    assert {x.horse_id for x in bets if x.plan == "value_ev10"} == {"B", "C"}
+    assert {x.horse_id for x in bets if x.plan == "value_ev20"} == {"C"}
