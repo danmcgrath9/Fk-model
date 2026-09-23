@@ -338,6 +338,23 @@ class Db:
         row = self.conn.execute("select raw->'expectedTempo' from fk.speedmaps where race_id = %s", (race_id,)).fetchone()
         return row[0] if row and isinstance(row[0], dict) else None
 
+    def races_pulled_before_the_jump(self, state: str | None = "VIC") -> set[str]:
+        """Race ids whose entries were first fetched BEFORE the meeting day began (UTC
+        midnight of the meeting date, which is 10am or 11am in Melbourne, hours before the
+        first race): the live pipeline's races. A race first fetched after that day was
+        pulled by a back-fill, and any 'what happened afterwards' field in its payload may
+        already know the future. Races held only in the history files are not here, and
+        were all pulled after they ran."""
+        rows = self.conn.execute(
+            """select e.race_id
+               from fk.entries e join fk.races r using (race_id) join fk.meetings m using (meeting_id)
+               where (%s::text is null or m.state = %s)
+               group by e.race_id, m.meeting_date
+               having min(e.fetched_at) < (m.meeting_date::timestamp at time zone 'UTC')""",
+            (state, state),
+        ).fetchall()
+        return {r[0] for r in rows}
+
     def latest_odds(self, race_id: str) -> dict[str, dict[str, float]]:
         """{horse_id: {opening: p, current: p}} using the newest observation of each kind."""
         rows = self.conn.execute(

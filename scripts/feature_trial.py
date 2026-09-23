@@ -95,9 +95,10 @@ def main() -> None:
             ("deployed + history + next-run collateral", B.MODEL_SETS["market_kitchen_sink_history"] + B.COLLATERAL_NEXT),
             ("deployed + history + intent", B.MODEL_SETS["market_kitchen_sink_history"] + B.INTENT),
             ("deployed + history + both", B.MODEL_SETS["market_kitchen_sink_intent"])]
-    results = {}
+    results, betas = {}, {}
     for name, feats in rows:
-        kl = logit_trial(train, test, feats, a.ridge)
+        betas[name] = (B.fit(train, feats, ridge=a.ridge), feats)
+        kl = B.score([B.predict(betas[name][0], r.runners) for r in test], test).kl_to_bsp
         results[name] = kl
         print(f"| logit: {name} | {len(feats)} | {kl:.4f} | {kl - mkt:+.4f} |")
     if "--trees" in sys.argv:
@@ -109,6 +110,33 @@ def main() -> None:
             print(f"| trees: {name} | {len(feats)} | {kl:.4f} | {kl - mkt:+.4f} |")
     gain = results["deployed (market_kitchen_sink_exp)"] - results["deployed + history"]
     print(f"\nHISTORY on top of the deployed set: {gain:+.4f} KL ({'sharper' if gain > 0 else 'not sharper'}).")
+
+    # THE LEAKAGE CHECK. 'What the fields it met did afterwards' is only honest if it was
+    # computed as at the race day. Races the live pipeline pulled the evening before cannot
+    # carry anything from after the jump; races back-filled weeks later might. A feature
+    # whose gain lives only on the back-filled races is reading the future, not the form.
+    try:
+        pre = Db(load_settings().database_url).races_pulled_before_the_jump(a.state)
+    except Exception as ex:  # noqa: BLE001
+        print(f"\nleakage check skipped: {type(ex).__name__}: {ex}")
+        return
+    before = [r for r in test if r.race_id in pre]
+    after = [r for r in test if r.race_id not in pre]
+    print(f"\nLeakage check: the newer races split by WHEN we pulled them. Before the jump (the live pipeline): {len(before)}; "
+          f"after they ran (back-filled): {len(after)}. A real feature helps both; a leak helps only the second.\n")
+    print("| model | pulled before the jump: KL | vs market | back-filled: KL | vs market |")
+    print("|---|---|---|---|---|")
+    for label, probs_fn in [("the opening market", lambda rs: B.market_probs(rs))] + [
+            (name, (lambda rs, b=betas[name][0]: [B.predict(b, r.runners) for r in rs])) for name in betas]:
+        cells = []
+        for subset in (before, after):
+            if len(subset) < 20:
+                cells += ["too few", ""]
+                continue
+            v = B.score(probs_fn(subset), subset).kl_to_bsp
+            m = B.score(B.market_probs(subset), subset).kl_to_bsp
+            cells += [f"{v:.4f}", f"{v - m:+.4f}"]
+        print(f"| {label} | " + " | ".join(cells) + " |")
 
 
 if __name__ == "__main__":
