@@ -166,11 +166,17 @@ DEDUCTION_CAP = 0.75
 
 
 def model_family(label: str | None) -> str:
-    """The kind of model a bet was priced by, without the fit's size and date.
-    'market_kitchen_sink (1330 races to 2026-09-22)' -> 'market_kitchen_sink'."""
+    """The kind of model a bet was priced by, for the live scoreboard: whether it reads the
+    morning market or prices from form alone. The weekly refit, and the fit switching between
+    close cousins (the market model with or without the first-starter terms), are the same
+    strategy getting sharper; only reading the market or not changes what is being tested.
+    'market_kitchen_sink (1330 races to 2026-09-22)' -> 'reads the market'."""
     if not label:
         return "unrecorded"
-    return label.split(" (")[0].strip()
+    name = label.split(" (")[0].strip()
+    if name.startswith("market_") or name.endswith("open_market"):
+        return "reads the market"
+    return "form only"
 
 
 def deduction_for(scratched_prices: list[float | None]) -> float:

@@ -114,6 +114,8 @@ def test_void_bets_are_left_out_of_every_figure():
 def test_a_refit_does_not_start_a_new_scoreboard():
     from fk.paper import model_family
     assert model_family("market_kitchen_sink (1330 races to 2026-09-22)") == model_family(
-        "market_kitchen_sink (4100 races to 2026-09-29)") == "market_kitchen_sink"
-    assert model_family("form_only (before the market model)") == "form_only"
+        "market_kitchen_sink_exp (4100 races to 2026-09-29)") == "reads the market"
+    assert model_family("all_form_plus_open_market (386 races to 2026-09-22)") == "reads the market"
+    assert model_family("form_only (before the market model)") == "form only"
+    assert model_family("distance_aware (378 races to 2026-09-21)") == "form only"
     assert model_family(None) == "unrecorded"
