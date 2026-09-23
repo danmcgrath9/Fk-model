@@ -70,6 +70,21 @@ MARKET_FEATURE = "open_logit"
 NON_DEPLOYABLE = set(EXP)
 
 # The feature sets the back-test compares. The one closest to BSP out of sample is deployed.
+# The shape of the market, not just its level. `open_logit` is the log of the opening
+# chance; `market_prob` is that chance itself, and carrying both lets the fit bend the
+# market's own curve, which is where the favourite-longshot bias lives: short prices are
+# historically underbet and long ones overbet, and a model with only log-chance cannot
+# correct for it. `market_x_neural` lets the fit trust form more in some races than others.
+MARKET_SHAPE = ["market_prob", "market_x_neural"]
+
+# DELIBERATELY NOT A FEATURE: the move from the opening price to the price now (avgNow,
+# bestNow, firmOrDrift). It is the single most promising thing we hold, because money
+# moving towards a horse between the open and the morning keeps moving to the close. It is
+# also leakage in this back-test: a race PULLED AFTER IT RAN carries its FINAL price in
+# avgNow, so the feature would be reading the answer on most of the sample and would score
+# like EXP does. It becomes usable when the live pipeline has stored enough pre-race
+# snapshots to fit on, with the odds timestamp checked against the jump.
+
 MODEL_SETS = {
     "neural_only": NEURAL,
     "ratings_only": RATINGS,                 # WFA, handicap and weight-adjusted ratings, no Neural
@@ -98,11 +113,14 @@ MODEL_SETS = {
     "market_plus_position": FORM_FEATURES + CLASS + POSITION + [MARKET_FEATURE],
     "market_plus_everything": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + [MARKET_FEATURE],
     "market_the_lot": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + [MARKET_FEATURE],
+    "market_shaped": FORM_FEATURES + CLASS + [MARKET_FEATURE] + MARKET_SHAPE,
+    "market_shaped_all": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + [MARKET_FEATURE] + MARKET_SHAPE,
 }
 # Ridge strengths tried by cross-validation inside the training races. Every model so far
 # has been fitted with effectively none (1e-8) and every one lands far worse out of sample
 # than in it, which is the signature of a fit that has memorised its training races.
 RIDGES = [1e-8, 1e-3, 1e-2, 0.1, 1.0, 10.0]
+
 RECENT_RUNS = 4      # how many recent races a speed or sectional figure is read over
 RECENCY_DECAY = 0.8  # each older run counts this much less, the weighting the page's worm uses
 DISTANCE_BAND_M = 200   # a run within this of today's trip counts as "at the distance"
@@ -335,9 +353,15 @@ def race_features(runners: list[Runner]) -> None:
         mean = sum(have) / len(have)
         inv = [mean if v is None else v for v in inv]
         tot = sum(inv)
-        cols[MARKET_FEATURE] = [math.log(v / tot) for v in inv]
+        probs = [v / tot for v in inv]
+        cols[MARKET_FEATURE] = [math.log(v) for v in probs]
+        mean_p = sum(probs) / n
+        cols["market_prob"] = [v - mean_p for v in probs]
     else:
         cols[MARKET_FEATURE] = [0.0] * n
+        cols["market_prob"] = [0.0] * n
+    # The market read against the form: lets the fit lean on Neural harder in some races.
+    cols["market_x_neural"] = [m * q for m, q in zip(cols[MARKET_FEATURE], cols["neural_rel"])]
     for i, r in enumerate(runners):
         r.x = {k: cols[k][i] for k in cols}
 

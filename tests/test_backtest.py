@@ -285,3 +285,29 @@ def test_cross_validated_ridge_is_chosen_inside_the_training_races():
     assert ridge in RIDGES
     assert ridge > 1e-8                                  # noise must be shrunk, not fitted
     assert abs(beta["neural_rel"]) < 1.0                 # and the weight pulled towards zero
+
+
+def test_the_market_shape_features_carry_the_curve_not_just_the_level():
+    """open_logit is the log of the opening chance; market_prob is the chance itself.
+    Carrying both lets the fit bend the market's own curve, which is where the
+    favourite-longshot bias lives."""
+    from fk.backtest import MARKET_FEATURE, MARKET_SHAPE, MODEL_SETS
+    rs = []
+    for hid, price in (("A", 2.0), ("B", 4.0), ("C", 4.0)):        # 1/2 + 1/4 + 1/4 = 1 exactly
+        r = runner_from_entry(race_entry(hid, hid, 1, result=1 if hid == "A" else 2))
+        r.raw["open"] = price
+        rs.append(r)
+    race_features(rs)
+    probs = [0.5, 0.25, 0.25]
+    mean_p = sum(probs) / 3
+    assert [round(r.x["market_prob"], 6) for r in rs] == [round(p - mean_p, 6) for p in probs]
+    import math
+    assert [round(r.x[MARKET_FEATURE], 6) for r in rs] == [round(math.log(p), 6) for p in probs]
+    # the interaction is the market read against Neural, so it must be their product
+    assert all(round(r.x["market_x_neural"], 9) == round(r.x[MARKET_FEATURE] * r.x["neural_rel"], 9) for r in rs)
+    assert set(MARKET_SHAPE) <= set(rs[0].x)
+    assert "market_shaped" in MODEL_SETS and "market_shaped_all" in MODEL_SETS
+    # a field with no market at all falls back to zero rather than to a guess
+    bare = [runner_from_entry(race_entry(h, h, 1, result=2, odds=False)) for h in ("X", "Y")]
+    race_features(bare)
+    assert all(b.x["market_prob"] == 0.0 and b.x[MARKET_FEATURE] == 0.0 for b in bare)
