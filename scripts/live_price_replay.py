@@ -108,13 +108,13 @@ def fit_blend(days: dict[str, list[tuple[list[float], list[float], object]]]) ->
     return best
 
 
-def form_plus_price(train, test, feats_form: list[str], ridge: float) -> tuple[float, tuple[float, float], list[list[float]]]:
+def form_plus_price(train, test, feats_form: list[str], ridge: float, target=B.bsp_chances) -> tuple[float, tuple[float, float], list[list[float]]]:
     """A form-only model (no market input, so nothing learned from the soft opening average),
     blended with the REAL price: chance ~ exp(a log(price chance) + b form score). a and b
     are the only things learned from the real-price races, leave-one-day-out, so every race
     is scored by weights that never saw its day. Returns (mean KL to BSP, (a, b) on all days,
     the blend's chances per test race in test order)."""
-    beta = B.fit(train, feats_form, ridge=ridge)
+    beta = B.fit(train, feats_form, ridge=ridge, target=target)
     days: dict[str, list] = {}
     for idx, race in enumerate(test):
         sc = [sum(beta.get(k, 0.0) * race.runners[i].x.get(k, 0.0) for k in feats_form) for i in range(len(race.runners))]
@@ -217,6 +217,14 @@ def main() -> None:
     print(f"Form-only model blended with the real {label} price (weights learned leave-one-day-out): {blend_kl:.4f} "
           f"({verdict} the {label} market; on all days the blend is {ba:.2f} x market + {bb:.2f} x form)")
     contenders = [("blend", blend_pr)]
+    # The same blend with the form model fitted to WINNERS rather than to the close. A model
+    # taught to copy the close can at best equal the market; one taught to be right about who
+    # won is noisier but is the only kind that can carry something the price does not.
+    win_kl, (wa, wb), win_pr = form_plus_price(train, test, form_feats, ridge, target=B.winner_chances)
+    verdict = "BEATS" if win_kl < mkt.kl_to_bsp else "does NOT beat"
+    print(f"Form fitted to winners, blended with the real {label} price: {win_kl:.4f} "
+          f"({verdict} the {label} market; {wa:.2f} x market + {wb:.2f} x form)")
+    contenders.append(("winners blend", win_pr))
     # The deployed features, and a compact set, refitted on the real-price races themselves.
     print(f"\nRefitted on the real-price races (five blocks of whole days, each priced by the other four):")
     print("| model | ridge | KL to BSP | vs the market |")
