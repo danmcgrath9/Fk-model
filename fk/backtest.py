@@ -127,6 +127,16 @@ EXPERIENCE = ["first_starter", "unrated", "trial_margin", "trialled_recently", "
 #   field_strength    recency-weighted strength of the fields it has been racing in
 #   strength_last     the latest run's field strength
 HISTORY = ["mkt_class", "beat_market", "beat_market_last", "collateral_wins", "collateral_roi", "field_strength", "strength_last"]
+# The sharper window of collateral form: what the fields it met did in their VERY NEXT runs
+# (NEXT_10), and whether money followed those horses afterwards.
+COLLATERAL_NEXT = ["collateral_next_wins", "collateral_drift"]
+# Intent: what the connections' behaviour says. A trainer with one runner at the meeting or
+# a jockey with one ride has travelled for a reason; an apprentice claim is free weight; a
+# dual acceptor or an emergency is a horse the stable has not committed to.
+#   trainer_only, jockey_only, dual_acceptor, emergency   1 or 0
+#   apprentice_claim                                       kilograms claimed
+#   days_since_win_log                                     log days since it last won
+INTENT = ["trainer_only", "jockey_only", "apprentice_claim", "days_since_win_log", "dual_acceptor", "emergency"]
 TRIAL_WINDOW_DAYS = 120
 
 MODEL_SETS = {
@@ -172,6 +182,8 @@ MODEL_SETS = {
     "market_plus_history": FORM_FEATURES + CLASS + [MARKET_FEATURE] + EXPERIENCE + HISTORY,
     "market_kitchen_sink_history": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS
                                    + [MARKET_FEATURE] + MARKET_SHAPE + EXPERIENCE + HISTORY,
+    "market_kitchen_sink_intent": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS
+                                  + [MARKET_FEATURE] + MARKET_SHAPE + EXPERIENCE + HISTORY + COLLATERAL_NEXT + INTENT,
 }
 # Ridge strengths tried by cross-validation inside the training races. Every model so far
 # has been fitted with effectively none (1e-8) and every one lands far worse out of sample
@@ -260,7 +272,8 @@ def market_history(events: list[dict]) -> dict[str, float | None]:
         if bsp and bsp > 1 and finish is not None:
             row["logbsp"] = -math.log(bsp)
             row["beat"] = (1.0 if finish == 1 else 0.0) - 1.0 / bsp
-        sub = (p.get("subsequentForm") or {}).get("ALL") if isinstance(p.get("subsequentForm"), dict) else None
+        subs = p.get("subsequentForm") if isinstance(p.get("subsequentForm"), dict) else {}
+        sub = subs.get("ALL")
         if isinstance(sub, dict) and sub.get("races"):
             woe = sub.get("winsOverExpectations")
             roi = sub.get("proportionalStakingROI")
@@ -268,13 +281,19 @@ def market_history(events: list[dict]) -> dict[str, float | None]:
                 row["woe"] = float(woe) / float(sub["races"])
             if roi is not None:
                 row["roi"] = float(roi) / 100.0
+            if sub.get("averageFirmOrDrift") is not None:
+                row["drift"] = float(sub["averageFirmOrDrift"])
+        nxt = subs.get("NEXT_10")
+        if isinstance(nxt, dict) and nxt.get("races") and nxt.get("winsOverExpectations") is not None:
+            row["woe_next"] = float(nxt["winsOverExpectations"]) / float(nxt["races"])
         runs.append(row)
     runs.sort(key=lambda r: r["date"])
     last = runs[-1] if runs else {}
     return {"mkt_class": recent_weighted(runs, "logbsp"), "beat_market": recent_weighted(runs, "beat"),
             "beat_market_last": last.get("beat"), "collateral_wins": recent_weighted(runs, "woe"),
             "collateral_roi": recent_weighted(runs, "roi"), "field_strength": recent_weighted(runs, "fieldStrength"),
-            "strength_last": last.get("fieldStrength")}
+            "strength_last": last.get("fieldStrength"),
+            "collateral_next_wins": recent_weighted(runs, "woe_next"), "collateral_drift": recent_weighted(runs, "drift")}
 
 
 def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | None = None,
@@ -430,6 +449,20 @@ def _win_rate(txt: str | None) -> float | None:
     return (wins + 1) / (starts + 5)
 
 
+def intent_features(e: dict) -> dict[str, float | None]:
+    """The INTENT raw values straight off the entry. A missing flag is None, never 0, so
+    race_features fills it with the field mean like every other gap."""
+    def flag(key):
+        v = e.get(key)
+        return None if v is None else (1.0 if v else 0.0)
+    claim = e.get("apprenticeClaim")
+    days = e.get("daysSinceLastWin")
+    return {"trainer_only": flag("trainersOnlyRaceAtMeeting"), "jockey_only": flag("jockeysOnlyRideAtMeeting"),
+            "apprentice_claim": float(claim) if claim is not None else None,
+            "days_since_win_log": math.log(1 + days) if isinstance(days, (int, float)) and days >= 0 else None,
+            "dual_acceptor": flag("dualAcceptor"), "emergency": flag("emergency")}
+
+
 def extra_features(e: dict) -> dict[str, float | None]:
     """Everything else Form King sends about a runner, as plain numbers. Missing stays None
     and race_features fills it with the field mean, so a runner with no jockey record is
@@ -461,6 +494,7 @@ def extra_features(e: dict) -> dict[str, float | None]:
         "up_win": _win_rate(form.get(up_key)) if up_key else None,
         "jockey_win": jockey.get("win12m"),
         "trainer_win": trainer.get("win12m"),
+        **intent_features(e),
         "jt_combo_win": trainer.get("jockeyComboWin"),
     }
 
@@ -504,7 +538,7 @@ def race_features(runners: list[Runner]) -> None:
     for r, v in zip(runners, raw_share):
         r.raw["barrier_share"] = v
     # Every extra is centred on the field: "more than these rivals", never a bare number.
-    for key in EXTRAS + HISTORY:
+    for key in EXTRAS + HISTORY + COLLATERAL_NEXT + INTENT:
         vals = _fill_mean([r.raw.get(key) for r in runners])
         mean = sum(vals) / n
         cols[key] = [v - mean for v in vals]

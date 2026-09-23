@@ -75,6 +75,7 @@ def main() -> None:
     ap.add_argument("--state", default="VIC")
     ap.add_argument("--history", default=str(ROOT / "history"))
     ap.add_argument("--ridge", type=float, default=1.0)
+    ap.add_argument("--trees", action="store_true", help="also fit the gradient-boosted trees (scored worse on 23 Sep; off by default)")
     a = ap.parse_args()
     from backtest import load_races
     races, _ = load_races(a.state, Path(a.history))
@@ -90,18 +91,22 @@ def main() -> None:
     deployed = B.MODEL_SETS["market_kitchen_sink_exp"]
     rows = [("market only", [B.MARKET_FEATURE]), ("deployed (market_kitchen_sink_exp)", deployed),
             ("history + market", B.MODEL_SETS["history_plus_market"]), ("market + history (compact form)", B.MODEL_SETS["market_plus_history"]),
-            ("deployed + history", B.MODEL_SETS["market_kitchen_sink_history"])]
+            ("deployed + history", B.MODEL_SETS["market_kitchen_sink_history"]),
+            ("deployed + history + next-run collateral", B.MODEL_SETS["market_kitchen_sink_history"] + B.COLLATERAL_NEXT),
+            ("deployed + history + intent", B.MODEL_SETS["market_kitchen_sink_history"] + B.INTENT),
+            ("deployed + history + both", B.MODEL_SETS["market_kitchen_sink_intent"])]
     results = {}
     for name, feats in rows:
         kl = logit_trial(train, test, feats, a.ridge)
         results[name] = kl
         print(f"| logit: {name} | {len(feats)} | {kl:.4f} | {kl - mkt:+.4f} |")
-    for name, feats in (("deployed", deployed), ("deployed + history", B.MODEL_SETS["market_kitchen_sink_history"])):
-        kl = tree_trial(train, test, feats)
-        if kl is None:
-            print("| trees | - | scikit-learn not installed | - |")
-            break
-        print(f"| trees: {name} | {len(feats)} | {kl:.4f} | {kl - mkt:+.4f} |")
+    if "--trees" in sys.argv:
+        for name, feats in (("deployed", deployed), ("deployed + history", B.MODEL_SETS["market_kitchen_sink_history"])):
+            kl = tree_trial(train, test, feats)
+            if kl is None:
+                print("| trees | - | scikit-learn not installed | - |")
+                break
+            print(f"| trees: {name} | {len(feats)} | {kl:.4f} | {kl - mkt:+.4f} |")
     gain = results["deployed (market_kitchen_sink_exp)"] - results["deployed + history"]
     print(f"\nHISTORY on top of the deployed set: {gain:+.4f} KL ({'sharper' if gain > 0 else 'not sharper'}).")
 

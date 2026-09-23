@@ -428,3 +428,23 @@ def test_market_history_reads_price_result_and_collateral_form():
     assert h["collateral_wins"] == 0.2 and h["collateral_roi"] == 0.25
     assert round(h["field_strength"], 4) == round((60 * 1 + 40 * 0.8) / 1.8, 4) and h["strength_last"] == 60.0
     assert all(v is None for v in B.market_history([]).values())
+
+
+def test_intent_features_read_the_flags_and_leave_gaps_as_none():
+    import math
+    from fk import backtest as B
+    e = {"trainersOnlyRaceAtMeeting": True, "jockeysOnlyRideAtMeeting": False, "apprenticeClaim": 1.5,
+         "daysSinceLastWin": 99, "dualAcceptor": False, "emergency": True}
+    f = B.intent_features(e)
+    assert f == {"trainer_only": 1.0, "jockey_only": 0.0, "apprentice_claim": 1.5, "days_since_win_log": math.log(100),
+                 "dual_acceptor": 0.0, "emergency": 1.0}
+    assert all(v is None for v in B.intent_features({}).values())
+
+
+def test_market_history_reads_the_next_run_window_and_the_drift():
+    from fk import backtest as B
+    ev = {"date": 1700000000000, "bsp": 3.0, "finishPosition": 2,
+          "subsequentForm": {"ALL": {"races": 20, "winsOverExpectations": 1.0, "proportionalStakingROI": 10.0, "averageFirmOrDrift": -1.5},
+                             "NEXT_10": {"races": 10, "winsOverExpectations": 2.5}}}
+    h = B.market_history([ev])
+    assert h["collateral_next_wins"] == 0.25 and h["collateral_drift"] == -1.5 and h["collateral_wins"] == 0.05
