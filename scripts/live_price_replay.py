@@ -1,0 +1,160 @@
+"""Replay every betting method at the REAL race-morning prices we stored.
+
+    python scripts/live_price_replay.py [--history history] [--state VIC]
+
+The back-test pays bets at Form King's average opening price, which nobody can take. The
+morning odds job has stored the actual price on offer at about 9am Melbourne for every
+race it priced since the pipeline started, and those races have since run. So: fit the
+deployed model on every resulted race that ran BEFORE the first race with a morning
+price, then price the races that have one with that 9am price as the market input (the
+same price the bet is struck at, exactly as the live book now does), and score every
+rule at the struck price and at Betfair SP. Small sample, honest prices. Read-only.
+"""
+from __future__ import annotations
+
+import argparse
+import math
+import sys
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common import load_settings  # noqa: E402
+from fk import backtest as B  # noqa: E402
+from fk import fields as F  # noqa: E402
+from fk import paper as P  # noqa: E402
+from fk.db import Db  # noqa: E402
+
+ROOT = Path(__file__).resolve().parents[1]
+MORNING_START_UTC = 20   # the morning odds job runs about 23:15 UTC the day before (9:15am Melbourne)
+MORNING_END_UTC = 2      # ...and a snapshot up to 02:00 UTC race day (noon Melbourne) still counts as morning
+
+
+def morning_prices(db: Db, race_id: str, race_date: str) -> dict[str, float]:
+    """{horse_id: price} from the latest 'current' snapshot fetched in the race-morning window."""
+    d = datetime.fromisoformat(race_date[:10]).replace(tzinfo=timezone.utc)
+    lo = d - timedelta(days=1) + timedelta(hours=MORNING_START_UTC)
+    hi = d + timedelta(hours=MORNING_END_UTC)
+    rows = db.conn.execute(
+        """select distinct on (horse_id) horse_id, price
+           from fk.odds_snapshots
+           where race_id = %s and source = 'formking' and kind = 'current' and fetched_at between %s and %s
+           order by horse_id, fetched_at desc""",
+        (race_id, lo, hi),
+    ).fetchall()
+    return {r[0]: float(r[1]) for r in rows if r[1] is not None and float(r[1]) > 1}
+
+
+def with_price(e: dict, price: float | None) -> dict:
+    if not price:
+        return e
+    odds = dict(e.get("odds") or {})
+    odds["avgOpen"] = price
+    return {**e, "odds": odds}
+
+
+def roi_se(returns: list[float], stakes: list[float]) -> tuple[float, float, float, float]:
+    """(staked, returned, roi, se of roi) with stakes weighted."""
+    staked = sum(stakes)
+    if staked <= 0:
+        return 0.0, 0.0, 0.0, 0.0
+    returned = sum(returns)
+    prof = [r - s for r, s in zip(returns, stakes)]
+    n = len(prof)
+    mean = sum(prof) / n
+    var = sum((p - mean) ** 2 for p in prof) / (n - 1) if n > 1 else 0.0
+    se_total = math.sqrt(var * n)
+    return staked, returned, returned / staked - 1, se_total / staked
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--state", default="VIC")
+    ap.add_argument("--history", default=str(ROOT / "history"))
+    a = ap.parse_args()
+    import json
+    from backtest import races_from_rows
+    from fk import history as H
+    model_cfg = json.load(open(ROOT / "config" / "rated_price.json"))
+    feats, ridge = model_cfg["features"], float(model_cfg.get("ridge") or 1e-8)
+
+    db = Db(load_settings().database_url)
+    rows = db.resulted_races(a.state)
+    # Which resulted races carry a real morning price for at least 80% of their runners.
+    test_rows, morning = [], {}
+    for row in rows:
+        active = [e for e in row["entries"] if not F.entry_scratched(e)]
+        prices = morning_prices(db, row["race_id"], row["date"])
+        have = sum(1 for e in active if F.horse_id(e) in prices)
+        if active and have / len(active) >= 0.8:
+            test_rows.append(row)
+            morning[row["race_id"]] = prices
+    if not test_rows:
+        print("no resulted race carries a morning price snapshot yet")
+        return
+    first_day = min(r["date"] for r in test_rows)
+    test_ids = {r["race_id"] for r in test_rows}
+    train_rows = [r for r in rows if r["race_id"] not in test_ids and r["date"] < first_day]
+    train_rows += [r for r in H.resulted_races(Path(a.history), a.state, skip={r["race_id"] for r in rows}) if r["date"] < first_day]
+    print(f"{len(test_rows)} races with a real morning price ({first_day} on); model fitted on {len(train_rows)} earlier races")
+
+    train, _ = races_from_rows(train_rows)
+    train = [r for r in train if B.bsp_chances(r.runners)]
+    beta = B.fit(train, feats, ridge=ridge)
+    # Test races: the model's market input IS the morning price, as live.
+    test_rows = [{**r, "entries": [with_price(e, morning[r["race_id"]].get(F.horse_id(e))) for e in r["entries"]]} for r in test_rows]
+    test, _ = races_from_rows(test_rows)
+    test = [r for r in test if B.bsp_chances(r.runners)]
+    probs = [B.predict(beta, r.runners) for r in test]
+    market = B.market_probs(test)
+    ours = B.score(probs, test)
+    mkt = B.score(market, test)
+    print(f"\nKL to Betfair SP on these races: 9am market {mkt.kl_to_bsp:.4f}, our model {ours.kl_to_bsp:.4f} "
+          f"({'BEATS the 9am market' if ours.kl_to_bsp < mkt.kl_to_bsp else 'does NOT beat the 9am market'})")
+
+    # Every method, paid at the struck (9am) price and at BSP.
+    methods = {}
+    def add(name, stake, price, won, bsp):
+        m = methods.setdefault(name, {"st": [], "struck": [], "bsp": [], "w": 0})
+        m["st"].append(stake); m["w"] += 1 if won else 0
+        m["struck"].append(stake * price if won else 0.0)
+        m["bsp"].append(stake * (bsp if bsp and bsp > 1 else 1.0) if won else 0.0)
+    for race, pr, mk in zip(test, probs, market):
+        top = max(range(len(pr)), key=lambda i: pr[i])
+        for i, (r, pi, mi) in enumerate(zip(race.runners, pr, mk)):
+            price = r.raw.get("open")
+            if not price or price <= 1:
+                continue
+            won, bsp = r.finish == 1, r.bsp
+            ev = pi * price - 1.0
+            guard = pi <= 3.0 * mi
+            if i == top:
+                add("top pick, 1u", 1.0, price, won, bsp)
+                add("top pick, to win 1u", 1.0 / (price - 1), price, won, bsp)
+            for t in (0.05, 0.10, 0.15, 0.20, 0.25, 0.35, 0.50):
+                if guard and ev > t:
+                    add(f"value {int(t * 100)}c+, 1u", 1.0, price, won, bsp)
+                    add(f"value {int(t * 100)}c+, quarter Kelly", P.kelly_stake(pi, price), price, won, bsp)
+            for g in (0.03, 0.05, 0.10):
+                if guard and pi - mi > g:
+                    add(f"gap {int(g * 100)} points, 1u", 1.0, price, won, bsp)
+            if guard and ev > 0.05:
+                add("tiered 1u/2u/3u by band", 3.0 if ev > 0.20 else 2.0 if ev > 0.10 else 1.0, price, won, bsp)
+            if guard and ev > 0.20:
+                for lo, hi, lab in ((0, 4, "<$4"), (4, 8, "$4-8"), (8, 16, "$8-16"), (16, 999, "$16+")):
+                    if lo <= price < hi:
+                        add(f"value 20c+, 1u, price {lab}", 1.0, price, won, bsp)
+            k = P.kelly_stake(pi, price)
+            if k > 0:
+                add("quarter Kelly, every positive edge", k, price, won, bsp)
+    print(f"\n| method | bets | winners | staked | at the 9am price: returned | return | at BSP: returned | return |")
+    print("|---|---|---|---|---|---|---|---|")
+    for name, m in sorted(methods.items(), key=lambda kv: -sum(kv[1]['st'])):
+        st, rs, roi_s, se_s = roi_se(m["struck"], m["st"])
+        _, rb, roi_b, se_b = roi_se(m["bsp"], m["st"])
+        print(f"| {name} | {len(m['st'])} | {m['w']} | {st:.1f} | {rs:.1f} | {roi_s:+.1%} ±{se_s:.0%} | {rb:.1f} | {roi_b:+.1%} ±{se_b:.0%} |")
+    print("\nOne unit = 1. '±' is one standard error: inside about two of it is luck. No deductions or commission taken off.")
+
+
+if __name__ == "__main__":
+    main()
