@@ -1,6 +1,6 @@
 # Back-test against Betfair SP
 
-Fitted 2026-09-22 23:51 UTC over 386 resulted races (4024 runners), 2026-04-30 to 2026-09-22. Out of sample = fitted on the first 270 races by date, scored on the last 116.
+Fitted 2026-09-23 00:01 UTC over 386 resulted races (4024 runners), 2026-04-30 to 2026-09-22. Out of sample = fitted on the first 270 races by date, scored on the last 116.
 
 Each model is a conditional logit fitted to minimise the cross-entropy against the BSP-implied chances. 'KL to BSP' is how far it sits from BSP (0 = BSP itself); 'log loss' is scored on the actual winners (lower is better); 'top pick won' is the share of races the model's highest-rated runner won.
 
@@ -9,46 +9,68 @@ Each model is a conditional logit fitted to minimise the cross-entropy against t
 | bsp_itself | 0.0000 / 0.0000 | 1.8651 / 1.7809 | 35.6% / 37.9% |
 | opening_market | 0.1187 / 0.1611 | 1.9821 / 1.9337 | 31.9% / 32.8% |
 | neural_only | 0.2326 / 0.2860 | 2.1460 / 2.0778 | 21.1% / 25.9% |
+| neural_only @winners | 0.2333 / 0.2865 | 2.1454 / 2.0800 | 21.1% / 25.9% |
 | ratings_only | 0.2767 / 0.3261 | 2.0714 / 2.0623 | 25.2% / 30.2% |
+| ratings_only @winners | 0.3754 / 0.3982 | 1.9805 / 2.0690 | 27.8% / 26.7% |
 | ratings_plus_distance | 0.2428 / 0.3055 | 2.0281 / 2.0459 | 31.1% / 27.6% |
+| ratings_plus_distance @winners | 0.3493 / 0.3859 | 1.9310 / 2.0561 | 31.5% / 25.0% |
 | all_form | 0.1796 / 0.2450 | 1.9986 / 1.9950 | 26.3% / 27.6% |
+| all_form @winners | 0.2904 / 0.3456 | 1.8963 / 2.0232 | 31.1% / 26.7% |
 | all_form_plus_class | 0.1713 / 0.2304 | 1.9928 / 1.9857 | 26.3% / 32.8% |
+| all_form_plus_class @winners | 0.2885 / 0.3394 | 1.8846 / 2.0202 | 33.0% / 28.4% |
 | ratings_class_distance | 0.2316 / 0.2881 | 2.0201 / 2.0354 | 31.9% / 28.4% |
+| ratings_class_distance @winners | 0.3442 / 0.3768 | 1.9173 / 2.0509 | 32.6% / 25.0% |
 | all_form_plus_open_market | 0.1080 / 0.1539 | 1.9400 / 1.9091 | 33.7% / 31.9% |
+| all_form_plus_open_market @winners | 0.2204 / 0.2522 | 1.8368 / 1.9342 | 36.3% / 31.0% |
 | distance_aware | 0.1709 / 0.2302 | 1.9895 / 1.9895 | 27.8% / 32.8% |
+| distance_aware @winners | 0.2960 / 0.3405 | 1.8741 / 2.0434 | 34.1% / 29.3% |
 | distance_shape | 0.1706 / 0.2305 | 1.9875 / 1.9858 | 28.1% / 31.9% |
+| distance_shape @winners | 0.2986 / 0.3452 | 1.8698 / 2.0350 | 33.7% / 30.2% |
 | distance_shape_exp | 0.0158 / 0.0662 | 1.8925 / 1.8466 | 34.4% / 33.6% |
+| distance_shape_exp @winners | 0.1543 / 0.1758 | 1.7649 / 1.8834 | 41.1% / 31.9% |
 | speed_only | 0.3391 / 0.4588 | 2.2202 / 2.2635 | 18.9% / 20.7% |
+| speed_only @winners | 0.3459 / 0.4633 | 2.2137 / 2.2614 | 22.6% / 20.7% |
 | form_plus_speed | 0.1696 / 0.2313 | 1.9946 / 1.9854 | 27.4% / 31.9% |
+| form_plus_speed @winners | 0.3133 / 0.3723 | 1.8605 / 2.0354 | 35.6% / 30.2% |
 | distance_speed | 0.1692 / 0.2309 | 1.9925 / 1.9905 | 27.0% / 32.8% |
+| distance_speed @winners | 0.3198 / 0.3706 | 1.8530 / 2.0494 | 34.8% / 30.2% |
 | everything | 0.1688 / 0.2313 | 1.9911 / 1.9864 | 27.8% / 32.8% |
+| everything @winners | 0.3207 / 0.3719 | 1.8506 / 2.0367 | 35.2% / 29.3% |
 | position_only | 0.2986 / 0.3791 | 2.1585 / 2.1668 | 24.1% / 19.8% |
-| form_plus_position **(deployed)** | 0.1672 / 0.2274 | 1.9994 / 1.9832 | 28.9% / 30.2% |
-| position_and_style | 0.1666 / 0.2289 | 1.9980 / 1.9801 | 28.1% / 29.3% |
+| position_only @winners | 0.3110 / 0.3858 | 2.1464 / 2.1728 | 23.3% / 18.1% |
+| form_plus_position | 0.1672 / 0.2274 | 1.9994 / 1.9832 | 28.9% / 30.2% |
+| form_plus_position @winners | 0.3250 / 0.3854 | 1.8555 / 2.0661 | 36.3% / 27.6% |
+| position_and_style **(deployed)** | 0.1666 / 0.2289 | 1.9980 / 1.9801 | 28.1% / 29.3% |
+| position_and_style @winners | 0.3343 / 0.3887 | 1.8452 / 2.0477 | 35.2% / 27.6% |
 | the_lot | 0.1651 / 0.2296 | 1.9946 / 1.9813 | 28.5% / 31.0% |
+| the_lot @winners | 0.3541 / 0.3984 | 1.8251 / 2.0594 | 34.8% / 30.2% |
 | projection_sim | 0.3034 / 0.3665 | 2.1628 / 2.1095 | 28.9% / 30.2% |
 
-Deployed: **form_plus_position**, the form-only model closest to BSP out of sample, refitted on all 386 races.
+Deployed: **position_and_style**, the form-only model with the lowest log loss against the ACTUAL WINNERS out of sample, refitted on all 386 races. Not the one closest to BSP: a model chosen for sitting close to BSP is chosen for agreeing with the market, and a model that reached BSP exactly would price every runner the way the market already does and have no edge at all. '@winners' marks a model fitted to the actual result rather than to the market's closing price.
 
 ## Coefficients of the deployed model
 
-- neural_rel: +1.5821
-- last_rel: +0.1152
-- peak_rel: +0.0071
+- neural_rel: +1.5808
+- last_rel: +0.1171
+- peak_rel: +0.0072
 - peak12_rel: +0.0484
-- wfa_rel: -0.2127
-- wfa_best_rel: +0.2278
+- wfa_rel: -0.2166
+- wfa_best_rel: +0.2313
 - ohr_rel: -0.0012
-- dist_rel: +0.0370
-- dist_win: -0.2102
-- last_vs_lws: +0.1152
-- best_vs_lws: -0.2264
-- trend_slope: -0.0013
-- starts_log: -0.2982
-- settle_share: -0.5934
-- pos800_share: -0.1768
-- pos_gain: +0.2818
-- late_gain: +0.3632
+- dist_rel: +0.0369
+- dist_win: -0.2076
+- last_vs_lws: +0.1171
+- best_vs_lws: -0.2298
+- trend_slope: -0.0015
+- starts_log: -0.2990
+- settle_share: -0.6549
+- pos800_share: -0.1746
+- pos_gain: +0.2879
+- late_gain: +0.3610
+- early_pos: +0.0436
+- early_x_tempo: -0.0897
+- style_x_tempo: +0.1255
+- map_vs_habit: -0.0094
 
 projection_sim parameters on the training races: recent_runs 4, decay 0.7, scope_bonus 1.0, trend_weight 0.0, shape_weight 0.0, late_weight 0.5, sd_floor 3.0, light_sd 1.5, sd_scale 4.0, unrated_gap 7.0, unrated_sd 3.0, neural_weight 20.0
 
@@ -60,12 +82,12 @@ Features, all relative within the race: neural_rel = Neural points / the race's 
 
 | rated chance | runners | mean rated | share that won |
 |---|---|---|---|
-| 0% to 5% | 1241 | 3.1% | 2.3% |
-| 5% to 10% | 1455 | 7.2% | 7.8% |
-| 10% to 20% | 913 | 13.8% | 13.4% |
-| 20% to 30% | 274 | 24.0% | 24.5% |
-| 30% to 50% | 103 | 37.5% | 45.6% |
-| 50% to 100% | 17 | 56.5% | 64.7% |
+| 0% to 5% | 1244 | 3.1% | 2.3% |
+| 5% to 10% | 1456 | 7.2% | 7.8% |
+| 10% to 20% | 905 | 13.8% | 13.3% |
+| 20% to 30% | 278 | 24.0% | 24.8% |
+| 30% to 50% | 104 | 37.7% | 46.2% |
+| 50% to 100% | 16 | 56.9% | 62.5% |
 
 ## The plans, replayed over 386 races the fit never saw
 
@@ -73,8 +95,8 @@ Five blocks by date, each priced by a model fitted on the other four; bets at th
 
 | plan | bets | winners | staked | returned | profit | return | at BSP: profit | return |
 |---|---|---|---|---|---|---|---|---|
-| top_pick | 386 | 112 | 386.0 | 427.6 | +41.6 | +10.8% | +41.6 | +10.8% |
-| value_flags | 395 | 63 | 395.0 | 382.2 | -12.8 | -3.2% | +92.6 | +16.9% |
-| value_under_8 | 303 | 55 | 303.0 | 278.1 | -24.9 | -8.2% | -73.4 | -22.2% |
-| top_pick_to_win_1 | 385 | 112 | 161.2 | 185.0 | +23.8 | +14.8% | +23.3 | +13.5% |
-| kelly_quarter | 1789 | 139 | 1567.8 | 1707.6 | +139.8 | +8.9% | +191.5 | +8.0% |
+| top_pick | 386 | 110 | 386.0 | 420.3 | +34.3 | +8.9% | +34.3 | +8.9% |
+| value_flags | 400 | 63 | 400.0 | 382.2 | -17.8 | -4.5% | +90.2 | +16.3% |
+| value_under_8 | 302 | 56 | 302.0 | 289.4 | -12.6 | -4.2% | -72.8 | -22.1% |
+| top_pick_to_win_1 | 385 | 110 | 160.8 | 182.1 | +21.2 | +13.2% | +20.6 | +12.0% |
+| kelly_quarter | 1793 | 140 | 1572.5 | 1707.0 | +134.5 | +8.6% | +190.4 | +7.9% |
