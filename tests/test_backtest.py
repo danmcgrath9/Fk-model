@@ -377,3 +377,35 @@ def test_value_sweep_chooses_on_the_older_half_only():
         top = max(chooser, key=lambda r: r.roi_bsp)
         assert best == (top.rule, top.threshold)
     assert {r.half for r in rows} == {"choose", "confirm"}
+
+
+def test_roi_and_its_margin_of_luck_hand_values():
+    from fk.backtest import _roi_se
+    mean, se = _roi_se([3.0, 0.0, 0.0, 0.0])      # profits 2, -1, -1, -1
+    assert mean == -0.25 and round(se, 6) == 0.75   # sd 1.5 over sqrt(4)
+    assert _roi_se([]) == (0.0, 0.0)
+
+
+def test_strategy_search_runs_and_splits_halves():
+    from fk import backtest as B
+    import random
+    rnd = random.Random(5)
+    races = []
+    for i in range(80):
+        runners = []
+        qs = [rnd.uniform(0.04, 0.35) for _ in range(8)]
+        qs = [q / sum(qs) for q in qs]                       # a fair opening market
+        fs = [rnd.gauss(0, 1) for _ in range(8)]              # form the market does not see
+        w = [q * math.exp(0.8 * f) for q, f in zip(qs, fs)]
+        bsp_p = [v / sum(w) for v in w]                       # the close moves with the form
+        for h in range(8):
+            r = Runner(f"h{i}_{h}", f"H{h}", {"open": round(1 / qs[h], 2)}, round(1 / bsp_p[h], 2), None, None)
+            r.x = {"f": fs[h], B.MARKET_FEATURE: math.log(qs[h]), "first_starter": 0.0}
+            runners.append(r)
+        runners[rnd.randrange(8)].finish = 1
+        races.append(Race(f"r{i:03d}", f"2026-0{1 + i // 20}-{10 + i % 20}", "Flemington" if i % 2 else "Kyneton", runners))
+    rows = B.strategy_search(races, ["f", B.MARKET_FEATURE], min_bets=5)
+    assert rows and {r.half for r in rows} == {"choose", "confirm"}
+    keys = {(r.rule, r.threshold, r.slice) for r in rows}
+    # every kept strategy carries both halves
+    assert all(sum(1 for r in rows if (r.rule, r.threshold, r.slice) == k) == 2 for k in keys)

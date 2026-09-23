@@ -277,6 +277,37 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
                 mark = " **(chosen)**" if best == (rule, t) else (" (live)" if (rule, t) == ("gap", 0.05) else "")
                 lines.append(f"| {rule}{mark} | {t:.2f} | {c.bets} | {c.roi_bsp:+.1%} | {c.roi_struck:+.1%} | "
                              f"{f.bets} | {f.roi_bsp:+.1%} | {f.roi_struck:+.1%} |")
+    # The strategy search: every betting rule crossed with a slice of the racing, chosen on
+    # the older racing and shown on the newer racing it never saw.
+    strat = B.strategy_search(with_bsp, replay_feats, target=chosen_target or B.bsp_chances, ridge=chosen_ridge)
+    by_key: dict = {}
+    for r in strat:
+        by_key.setdefault((r.rule, r.threshold, r.slice), {})[r.half] = r
+    pairs = [(k, v["choose"], v["confirm"]) for k, v in by_key.items() if "choose" in v and "confirm" in v]
+    held_bsp = [p for p in pairs if p[1].roi_bsp > 0 and p[2].roi_bsp > 0]
+    held_open = [p for p in pairs if p[1].roi_open > 0 and p[2].roi_open > 0]
+    solid = [p for p in pairs if p[2].roi_bsp > 2 * p[2].se_bsp and p[1].roi_bsp > 0]
+    lines += ["", "## The strategy search: where, if anywhere, the bets make money", "",
+              f"{len(pairs)} strategies: each betting rule (ev = our chance x the opening price must beat 1 by the threshold; "
+              "gap = our chance must beat the market's by the threshold in points) crossed with a slice of the racing (price "
+              "band, field size, first starters, metro or not). Every one is scored on the OLDER three fifths of the racing and "
+              "then on the NEWER two fifths it never saw. One unit a bet, before commission. '±' is one standard error: a "
+              "return inside about two of them is indistinguishable from luck. With this many tried, some look good on the "
+              "older racing by chance alone, so only the newer column counts.", "",
+              f"- Profitable at Betfair SP in BOTH halves: {len(held_bsp)} of {len(pairs)}",
+              f"- Profitable at the average opening price in BOTH halves: {len(held_open)} of {len(pairs)} (upper bound: an average, not a takeable price)",
+              f"- Profitable at Betfair SP on the newer racing by more than two standard errors, and profitable on the older: {len(solid)}",
+              ""]
+    def strat_table(title, key):
+        out = ["", f"### {title}", "",
+               "| rule | slice | older: bets | at BSP | at open | newer: bets | at BSP | at open |",
+               "|---|---|---|---|---|---|---|---|"]
+        for (rule, t, sl), c, f in sorted(pairs, key=lambda p: -key(p[1]))[:12]:
+            out.append(f"| {rule} {t:.2f} | {sl} | {c.bets} | {c.roi_bsp:+.1%} ±{c.se_bsp:.1%} | {c.roi_open:+.1%} ±{c.se_open:.1%} | "
+                       f"{f.bets} | {f.roi_bsp:+.1%} ±{f.se_bsp:.1%} | {f.roi_open:+.1%} ±{f.se_open:.1%} |")
+        return out
+    lines += strat_table("Best twelve on the older racing at Betfair SP, and how they did on the newer", lambda r: r.roi_bsp)
+    lines += strat_table("Best twelve on the older racing at the opening price, and how they did on the newer", lambda r: r.roi_open)
     model = {
         "fitted_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "races": len(with_bsp), "runners": final_score.runners, "from": dates[0], "to": dates[-1],
@@ -286,6 +317,7 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         "params": vars(final_params) if final_params is not None else None,
         "projection_params": projection_params,
         "value_sweep": sweeps,
+        "strategy_search": [vars(r) for r in strat],
         "plan_replay": {side: {plan: vars(summ) for plan, summ in replay[side].items()} for side in ("at_open", "at_struck")},
         "scores": {"deployed_in_sample": vars(final_score),
                    **{f"{name}_out_of_sample": vars(o) for name, _, _, o, _t, _r in rows},

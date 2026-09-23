@@ -800,3 +800,93 @@ def plan_replay(races: list[Race], features: list[str], folds: int = 5, threshol
             settled["at_open"].append({**common, "returned": P.settle(b.stake, won, bsp)})
             settled["at_struck"].append({**common, "returned": P.settle(b.stake, won, b.price)})
     return {"at_open": P.summarise(settled["at_open"]), "at_struck": P.summarise(settled["at_struck"]), "races": n}
+
+
+# ---- the strategy search -----------------------------------------------------------------
+# A rule for picking a bet, crossed with a slice of the racing, each chosen on the older
+# racing and shown on the newer racing it never saw. Many combinations are tried, so some
+# will look good in the choosing half by chance alone; the confirming half and the margin
+# of luck printed beside every figure are what separate an edge from a streak.
+
+METRO_TRACKS = ("flemington", "caulfield", "moonee valley", "sandown", "the valley")
+STRATEGY_RULES = [("ev", 0.05), ("ev", 0.10), ("ev", 0.20), ("ev", 0.35), ("gap", 0.03), ("gap", 0.05), ("gap", 0.10)]
+
+
+def _slices(price: float, field: int, first_starter: bool, metro: bool) -> list[str]:
+    out = ["all"]
+    out.append("price <$4" if price < 4 else "price $4-8" if price < 8 else "price $8-16" if price < 16 else "price $16+")
+    out.append("field <=8" if field <= 8 else "field 9-12" if field <= 12 else "field 13+")
+    out.append("first starters" if first_starter else "raced horses")
+    out.append("metro" if metro else "country and provincial")
+    return out
+
+
+@dataclass
+class StrategyRow:
+    rule: str
+    threshold: float
+    slice: str
+    half: str
+    bets: int
+    winners: int
+    roi_bsp: float
+    se_bsp: float            # standard error of roi_bsp: the margin of luck, one sigma
+    roi_open: float
+    se_open: float
+
+
+def _roi_se(returns: list[float]) -> tuple[float, float]:
+    """Mean profit per unit and its standard error. Hand-checked: returns [3, 0, 0, 0]
+    (one $3 winner in four) -> profits [2, -1, -1, -1], mean -0.25, sample sd 1.5,
+    se 1.5 / 2 = 0.75."""
+    n = len(returns)
+    if n == 0:
+        return 0.0, 0.0
+    prof = [r - 1.0 for r in returns]
+    mean = sum(prof) / n
+    if n < 2:
+        return mean, 0.0
+    var = sum((p - mean) ** 2 for p in prof) / (n - 1)
+    return mean, math.sqrt(var / n)
+
+
+def strategy_search(races: list[Race], features: list[str], folds: int = 5, target=bsp_chances,
+                    ridge: float = 1e-8, min_bets: int = 40) -> list[StrategyRow]:
+    """Every (rule, threshold) x slice, out of sample, split into the choosing (older) and
+    confirming (newer) halves. One unit a bet; paid at Betfair SP and at the average
+    opening price. Slices with fewer than `min_bets` bets in either half are dropped."""
+    cands = []
+    for k, race, probs, market in fold_predictions(races, features, folds, target=target, ridge=ridge):
+        half = "choose" if k < SWEEP_CHOOSE_BLOCKS else "confirm"
+        metro = any((race.track or "").lower().startswith(t) for t in METRO_TRACKS)
+        field_n = len(race.runners)
+        for r, pi, mi in zip(race.runners, probs, market):
+            price = r.raw.get("open")
+            if not price or price <= 1:
+                continue
+            fs = r.x.get("first_starter", 0.0) == 1.0
+            cands.append((half, pi, mi, price, r.finish == 1, r.bsp if r.bsp and r.bsp > 1 else None,
+                          _slices(price, field_n, fs, metro)))
+    rows = []
+    for rule, t in STRATEGY_RULES:
+        buckets: dict[tuple[str, str], tuple[list[float], list[float], int]] = {}
+        for half, pi, mi, price, won, bsp, slices in cands:
+            if pi > 3.0 * mi:          # the live guard: never bet a rating 3x the market
+                continue
+            edge = value_edge(rule, pi, mi, price)
+            if edge is None or edge <= t:
+                continue
+            for sl in slices:
+                rb, ro, w = buckets.get((sl, half), ([], [], 0))
+                rb.append((bsp if bsp else 1.0) if won else 0.0)
+                ro.append(price if won else 0.0)
+                buckets[(sl, half)] = (rb, ro, w + (1 if won else 0))
+        for sl in sorted({s for s, _ in buckets}):
+            got = {h: buckets.get((sl, h)) for h in ("choose", "confirm")}
+            if any(g is None or len(g[0]) < min_bets for g in got.values()):
+                continue
+            for h, (rb, ro, w) in got.items():
+                mb, sb = _roi_se(rb)
+                mo, so = _roi_se(ro)
+                rows.append(StrategyRow(rule, t, sl, h, len(rb), w, mb, sb, mo, so))
+    return rows
