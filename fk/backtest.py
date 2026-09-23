@@ -89,7 +89,20 @@ MODEL_SETS = {
     "form_plus_position": FORM_FEATURES + CLASS + POSITION,
     "position_and_style": FORM_FEATURES + CLASS + POSITION + SHAPE + STYLE,
     "the_lot": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE,
+    # The market plus each layer of form. The model that first beat the morning market
+    # carried only Neural, ratings and distance beside the price, so none of the class,
+    # distance-at-the-trip, speed, sectional or position work had ever been tried WITH it.
+    "market_plus_class": FORM_FEATURES + CLASS + [MARKET_FEATURE],
+    "market_plus_distance": FORM_FEATURES + CLASS + DISTANCE_AWARE + [MARKET_FEATURE],
+    "market_plus_speed": FORM_FEATURES + CLASS + SPEED + [MARKET_FEATURE],
+    "market_plus_position": FORM_FEATURES + CLASS + POSITION + [MARKET_FEATURE],
+    "market_plus_everything": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + [MARKET_FEATURE],
+    "market_the_lot": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + [MARKET_FEATURE],
 }
+# Ridge strengths tried by cross-validation inside the training races. Every model so far
+# has been fitted with effectively none (1e-8) and every one lands far worse out of sample
+# than in it, which is the signature of a fit that has memorised its training races.
+RIDGES = [1e-8, 1e-3, 1e-2, 0.1, 1.0, 10.0]
 RECENT_RUNS = 4      # how many recent races a speed or sectional figure is read over
 RECENCY_DECAY = 0.8  # each older run counts this much less, the weighting the page's worm uses
 DISTANCE_BAND_M = 200   # a run within this of today's trip counts as "at the distance"
@@ -430,6 +443,37 @@ class Score:
     winner_top_rated: float   # share of races where the model's top pick won
 
 
+def fit_cv(races: list[Race], features: list[str], folds: int = 5, target=bsp_chances,
+           ridges: list[float] | None = None) -> tuple[dict[str, float], float]:
+    """Fit with the ridge strength chosen by cross-validation INSIDE these races, never on
+    the races the model is later judged on: the training set is cut into `folds` blocks by
+    date, each ridge is fitted on four and scored on the fifth, and the winner is refitted
+    on all of them. Returns (beta, ridge). Selecting the ridge on the test block would be
+    marking our own homework, which is what makes this worth the extra fitting."""
+    ridges = ridges or RIDGES
+    ordered = sorted(races, key=lambda r: (r.date, r.race_id))
+    n = len(ordered)
+    blocks = [ordered[i * n // folds:(i + 1) * n // folds] for i in range(folds)]
+    best_ridge, best_loss = ridges[0], float("inf")
+    for ridge in ridges:
+        loss, scored = 0.0, 0
+        for k, block in enumerate(blocks):
+            train = [r for j, b in enumerate(blocks) if j != k for r in b]
+            if not train or not block:
+                continue
+            try:
+                beta = fit(train, features, ridge=ridge, target=target)
+            except ValueError:
+                continue
+            s = score([predict(beta, r.runners) for r in block], block)
+            if s.races:
+                loss += s.kl_to_bsp * s.races
+                scored += s.races
+        if scored and loss / scored < best_loss:
+            best_ridge, best_loss = ridge, loss / scored
+    return fit(races, features, ridge=best_ridge, target=target), best_ridge
+
+
 def score(probs_by_race: list[list[float]], races: list[Race]) -> Score:
     kl, ll, tops, n_r, n_run = 0.0, 0.0, 0, 0, 0
     for p, race in zip(probs_by_race, races):
@@ -476,7 +520,7 @@ def bsp_probs(races: list[Race]) -> list[list[float]]:
 
 
 def plan_replay(races: list[Race], features: list[str], folds: int = 5, threshold: float = 0.05,
-                target=bsp_chances) -> dict[str, dict]:
+                target=bsp_chances, ridge: float = 1e-8) -> dict[str, dict]:
     """The paper book's plans run over the stored races as if the page had been built each
     morning, with no race priced by a fit that saw it: the races are cut into `folds`
     contiguous blocks by date and each block is priced by a model fitted on the others.
@@ -498,7 +542,7 @@ def plan_replay(races: list[Race], features: list[str], folds: int = 5, threshol
         train = [r for j, b in enumerate(blocks) if j != k for r in b]
         if not train or not block:
             continue
-        beta = fit(train, features, target=target)
+        beta = fit(train, features, ridge=ridge, target=target)
         for race in block:
             probs = predict(beta, race.runners)
             market = market_probs([race])[0]     # the morning market, the one we bet into

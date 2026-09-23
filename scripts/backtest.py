@@ -82,10 +82,12 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
     rows = []
     for name, feats in B.MODEL_SETS.items():
         for target, suffix in ((B.bsp_chances, ""), (B.winner_chances, " @winners")):
-            beta_tr = B.fit(train, feats, target=target)
+            # The ridge is chosen by cross-validation inside the training races, so the test
+            # block stays untouched by every choice the model makes about itself.
+            beta_tr, ridge = B.fit_cv(train, feats, target=target)
             ins = B.score([B.predict(beta_tr, r.runners) for r in train], train)
             out = B.score([B.predict(beta_tr, r.runners) for r in test], test)
-            rows.append((name + suffix, feats, ins, out, target))
+            rows.append((name + suffix, feats, ins, out, target, ridge))
     yard = {"bsp_itself": (B.score(B.bsp_probs(train), train), B.score(B.bsp_probs(test), test)),
             "opening_market": (B.score(B.market_probs(train), train), B.score(B.market_probs(test), test))}
     # The projection-and-simulation model: parameters tuned on the training races, scored out of sample.
@@ -95,7 +97,7 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         params_tr = P.fit_params([proj[r.race_id] for r in train])
         ins = B.score(proj_probs(proj, train, params_tr), train)
         out = B.score(proj_probs(proj, test, params_tr), test)
-        proj_rows.append(("projection_sim", None, ins, out, None))
+        proj_rows.append(("projection_sim", None, ins, out, None, None))
     # Deployed on DISTANCE FROM BSP, with the bar set at the morning market rather than at
     # zero. BSP is the sharpest price anyone gets, so it stands for the truth; the morning
     # market is the price we actually bet into. A model closer to BSP than the morning market
@@ -106,12 +108,14 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
     best = min(form_rows, key=lambda r: r[3].kl_to_bsp)
     chosen_name, chosen_feats = best[0], best[1]
     chosen_target = best[4] if len(best) > 4 else B.bsp_chances
+    chosen_ridge = best[5] if len(best) > 5 and best[5] is not None else 1e-8
     if chosen_name == "projection_sim":
         final_params = P.fit_params([proj[r.race_id] for r in with_bsp])
         final_probs = proj_probs(proj, with_bsp, final_params)
         final_beta = None
     else:
-        final_beta = B.fit(with_bsp, chosen_feats, target=chosen_target or B.bsp_chances)   # deployed: refitted on every race
+        # Deployed: refitted on every race at the ridge its own cross-validation chose.
+        final_beta = B.fit(with_bsp, chosen_feats, ridge=chosen_ridge, target=chosen_target or B.bsp_chances)
         final_probs = [B.predict(final_beta, r.runners) for r in with_bsp]
         final_params = None
     final_score = B.score(final_probs, with_bsp)
@@ -132,15 +136,16 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
              f"which sits at {market_bar:.4f} out of sample: that is the price we bet into, so a model closer to BSP than "
              "it is has beaten the market it is betting against. 'log loss' is scored on the actual winners and 'top pick "
              "won' is the share of races the model's highest-rated runner won.", "",
-             "| model | KL to BSP (in / out) | vs the morning market | log loss vs winners (in / out) | top pick won (in / out) |",
-             "|---|---|---|---|---|"]
+             "| model | KL to BSP (in / out) | vs the morning market | ridge | log loss vs winners (in / out) | top pick won (in / out) |",
+             "|---|---|---|---|---|---|"]
     for name, (i, o) in yard.items():
-        lines.append(f"| {name} | {i.kl_to_bsp:.4f} / {o.kl_to_bsp:.4f} | {'the bar' if name == 'opening_market' else '-'} | "
+        lines.append(f"| {name} | {i.kl_to_bsp:.4f} / {o.kl_to_bsp:.4f} | {'the bar' if name == 'opening_market' else '-'} | - | "
                      f"{i.log_loss:.4f} / {o.log_loss:.4f} | {i.winner_top_rated:.1%} / {o.winner_top_rated:.1%} |")
-    for name, feats, i, o, _t in rows + proj_rows:
+    for name, feats, i, o, _t, ridge in rows + proj_rows:
         mark = " **(deployed)**" if name == chosen_name else ""
         beat = "BEATS IT" if o.kl_to_bsp < market_bar else f"{o.kl_to_bsp - market_bar:+.4f}"
-        lines.append(f"| {name}{mark} | {i.kl_to_bsp:.4f} / {o.kl_to_bsp:.4f} | {beat} | {i.log_loss:.4f} / {o.log_loss:.4f} | {i.winner_top_rated:.1%} / {o.winner_top_rated:.1%} |")
+        rg = f"{ridge:g}" if ridge is not None else "-"
+        lines.append(f"| {name}{mark} | {i.kl_to_bsp:.4f} / {o.kl_to_bsp:.4f} | {beat} | {rg} | {i.log_loss:.4f} / {o.log_loss:.4f} | {i.winner_top_rated:.1%} / {o.winner_top_rated:.1%} |")
     verdict = ("BEATS the morning market" if best[3].kl_to_bsp < market_bar
                else f"does NOT beat the morning market, {best[3].kl_to_bsp - market_bar:+.4f} behind it")
     lines += ["", f"Deployed: **{chosen_name}**, the model closest to BSP out of sample, refitted on all {len(with_bsp)} races. "
@@ -186,7 +191,7 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
     # The plans, replayed over every stored race out of sample (5 date blocks, each priced
     # by a fit on the other four), at the opening price and again at BSP.
     replay_feats = chosen_feats if chosen_feats else B.MODEL_SETS["all_form_plus_class"]
-    replay = B.plan_replay(with_bsp, replay_feats, target=chosen_target or B.bsp_chances)
+    replay = B.plan_replay(with_bsp, replay_feats, target=chosen_target or B.bsp_chances, ridge=chosen_ridge)
     lines += ["", f"## The plans, replayed over {replay['races']} races the fit never saw", "",
               "Five blocks by date, each priced by a model fitted on the other four. Every bet is chosen against the MORNING "
               "market and struck at the morning price. The two profit columns are the SAME bets on two settlement bases: paid "
@@ -207,11 +212,12 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         "races": len(with_bsp), "runners": final_score.runners, "from": dates[0], "to": dates[-1],
         "model": chosen_name, "features": chosen_feats, "beta": final_beta,
         "fitted_to": "winners" if chosen_target is B.winner_chances else "bsp",
+        "ridge": chosen_ridge,
         "params": vars(final_params) if final_params is not None else None,
         "projection_params": projection_params,
         "plan_replay": {side: {plan: vars(summ) for plan, summ in replay[side].items()} for side in ("at_open", "at_struck")},
         "scores": {"deployed_in_sample": vars(final_score),
-                   **{f"{name}_out_of_sample": vars(o) for name, _, _, o, _t in rows},
+                   **{f"{name}_out_of_sample": vars(o) for name, _, _, o, _t, _r in rows},
                    **{f"{name}_out_of_sample": vars(o) for name, (_, o) in yard.items()}},
     }
     return model, "\n".join(lines) + "\n"

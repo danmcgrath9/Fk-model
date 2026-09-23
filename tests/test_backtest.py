@@ -261,3 +261,27 @@ def test_only_exp_is_barred_from_deployment_not_the_morning_market():
     assert MARKET_FEATURE not in NON_DEPLOYABLE
     assert not (set(MODEL_SETS["all_form_plus_open_market"]) & NON_DEPLOYABLE)
     assert set(MODEL_SETS["distance_shape_exp"]) & NON_DEPLOYABLE
+
+
+def test_cross_validated_ridge_is_chosen_inside_the_training_races():
+    """A stronger ridge must win when the features are noise, because a fit with no ridge
+    memorises the noise and a cross-validated one will not."""
+    import random
+    from fk.backtest import RIDGES, fit_cv
+    rng = random.Random(7)
+    races = []
+    for i in range(40):
+        rs = []
+        for hid in ("A", "B", "C"):
+            e = race_entry(hid, hid, {"A": 1, "B": 2, "C": 3}[hid], result=1 if hid == "A" else 2)
+            r = runner_from_entry(e)
+            # the feature and the target are independent noise, so the true weight is zero
+            r.raw["neural"] = rng.uniform(0, 100)
+            r.bsp = r.sp = rng.uniform(1.5, 12.0)
+            rs.append(r)
+        race_features(rs)
+        races.append(Race(f"R{i}", f"2026-08-{i % 28 + 1:02d}", "T", rs))
+    beta, ridge = fit_cv(races, ["neural_rel"])
+    assert ridge in RIDGES
+    assert ridge > 1e-8                                  # noise must be shrunk, not fitted
+    assert abs(beta["neural_rel"]) < 1.0                 # and the weight pulled towards zero
