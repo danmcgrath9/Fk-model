@@ -40,7 +40,7 @@ permissions:
 jobs:
   backtest:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
     env:
       FK_SPEC_PATH: b2c-openapi.yaml
       FK_LEDGER: postgres

@@ -21,6 +21,9 @@ ROOT = Path(__file__).resolve().parents[1]
 MODEL_PATH = ROOT / "config" / "rated_price.json"
 REPORT_PATH = ROOT / "docs" / "BACKTEST.md"
 MIN_RACES = 40   # below this a fit is a coincidence, not a model
+# The sets still fitted to the winners as well as to BSP, as a standing check that the
+# winners target keeps losing; if it ever stops losing, widen this.
+WINNER_CHECK_SETS = {"all_form_plus_open_market", "market_kitchen_sink"}
 
 
 def load_races(state: str) -> tuple[list[B.Race], dict[str, P.ProjRace]]:
@@ -81,7 +84,14 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
     # room to disagree with the market and be right.
     rows = []
     for name, feats in B.MODEL_SETS.items():
-        for target, suffix in ((B.bsp_chances, ""), (B.winner_chances, " @winners")):
+        # Fitting to the winners has lost to fitting to BSP on every set in every run so far,
+        # by overfitting: one winner per race is too little signal. It stays on two sets as a
+        # standing check, and off the rest, which halves a run that would otherwise outgrow
+        # its time limit as the history grows.
+        targets = [(B.bsp_chances, "")]
+        if name in WINNER_CHECK_SETS:
+            targets.append((B.winner_chances, " @winners"))
+        for target, suffix in targets:
             # The ridge is chosen by cross-validation inside the training races, so the test
             # block stays untouched by every choice the model makes about itself.
             beta_tr, ridge = B.fit_cv(train, feats, target=target)
