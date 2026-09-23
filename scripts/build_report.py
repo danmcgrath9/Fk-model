@@ -119,14 +119,14 @@ def open_coverage(entries: list[dict], openings: dict[str, float | None] | None 
 
 def model_chances(model: dict, entries: list[dict], distance_m: int | None = None, lws: float | None = None,
                   speedmap: list[dict] | None = None, tempo_raw: dict | None = None,
-                  openings: dict[str, float | None] | None = None) -> dict[str, float]:
+                  openings: dict[str, float | None] | None = None, race_date: str | None = None) -> dict[str, float]:
     """Win chance per active runner from the back-tested conditional logit, on the same
     features the fit used (fk.backtest.race_features over each entry's own record, then
     the race shape from the speedmap and expected tempo). `openings` = {horse_id: the
     morning snapshot's opening price}, which replaces the evening form's."""
     from fk import backtest as B
     from fk import projection as P
-    runners = [r for r in (B.runner_from_entry(with_opening(e["raw"], (openings or {}).get(e["horse_id"])), distance_m, lws)
+    runners = [r for r in (B.runner_from_entry(with_opening(e["raw"], (openings or {}).get(e["horse_id"])), distance_m, lws, race_date)
                            for e in entries if e.get("raw")) if r is not None]
     if not runners:
         return {}
@@ -304,7 +304,8 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
             section.bettable = False
             section.facts.append(f"Market not formed: {have} of {n} runners carry an opening price, so the model's market "
                                  f"input is incomplete. Rated for reading only; no paper bets on this race.")
-        model = model_chances(rated_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, openings)
+        model = model_chances(rated_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, openings,
+                              str(race.get("meeting_date")) if race.get("meeting_date") else None)
         if rated_model.get("projection_params"):
             # The projection is the founder's own method; it is shown beside the price even
             # when the back-test trusts another model to set it.

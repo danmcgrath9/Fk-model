@@ -105,6 +105,19 @@ EXTRAS = ["barrier_share", "days_log", "run_in_prep", "weight_rel", "wfa_diff", 
           "track_win", "going_win", "class_win", "td_win", "wet_win", "up_win",
           "jockey_win", "trainer_win", "jt_combo_win"]
 
+# Horses with little or no race form. Every rating of a runner without a rated run is
+# filled with the field's average, which rates an unraced horse like an ordinary one; these
+# say so, so the fit can learn how such runners really go against the market.
+#   first_starter      1 when the horse has no race start (trials do not count)
+#   unrated            1 when it has no rated run at all, so its ratings are the field mean
+#   trial_margin       lengths behind the winner at its latest trial within 120 days
+#                      (0 = won), centred on the field; no recent trial = the field mean
+#   trialled_recently  1 when it has trialled within 120 days
+#   first_starter_x_market   the opening-market chance (log) for a first starter, 0 for the
+#                      rest: lets the fit trust the market more where the form is empty
+EXPERIENCE = ["first_starter", "unrated", "trial_margin", "trialled_recently", "first_starter_x_market"]
+TRIAL_WINDOW_DAYS = 120
+
 MODEL_SETS = {
     "neural_only": NEURAL,
     "ratings_only": RATINGS,                 # WFA, handicap and weight-adjusted ratings, no Neural
@@ -140,6 +153,9 @@ MODEL_SETS = {
     "kitchen_sink": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS,
     "market_kitchen_sink": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS
                            + [MARKET_FEATURE] + MARKET_SHAPE,
+    "market_kitchen_sink_exp": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS
+                               + [MARKET_FEATURE] + MARKET_SHAPE + EXPERIENCE,
+    "market_plus_experience": FORM_FEATURES + CLASS + [MARKET_FEATURE] + EXPERIENCE,
 }
 # Ridge strengths tried by cross-validation inside the training races. Every model so far
 # has been fitted with effectively none (1e-8) and every one lands far worse out of sample
@@ -185,7 +201,34 @@ def _form_record(txt: str | None) -> tuple[int, int] | None:
         return None
 
 
-def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | None = None) -> Runner | None:
+def latest_trial(events: list[dict], today: str | None = None) -> float | None:
+    """Lengths behind the winner at the latest trial within TRIAL_WINDOW_DAYS of `today` (the
+    race's date), 0 for a trial won; None with no recent trial or no race date. Hand-checked:
+    trials 30 and 200 days back, beaten 1.5 and 0.2 lengths -> 1.5."""
+    from datetime import date
+    trials = [(F.past_event_date(p), p) for p in events if F.past_event_is_trial(p) and F.past_event_date(p)]
+    if not trials:
+        return None
+    if not today:
+        return None
+    trials = [t for t in trials if t[0][:10] < str(today)[:10]]   # never a trial on or after race day
+    if not trials:
+        return None
+    trials.sort(key=lambda t: t[0])
+    d, p = trials[-1]
+    try:
+        gap = (date.fromisoformat(str(today)[:10]) - date.fromisoformat(d[:10])).days
+    except ValueError:
+        return None
+    if gap > TRIAL_WINDOW_DAYS:
+        return None
+    if F.past_event_finish(p) == 1:
+        return 0.0
+    return F.past_event_margin(p)
+
+
+def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | None = None,
+                      race_date: str | None = None) -> Runner | None:
     """A RaceEntry (Get Race Form) already run: features from what was knowable before the
     jump, the result from horseResult. None for a scratching.
     Raw values: Form King's Neural; the latest rating adjusted to today's weight and the
@@ -221,6 +264,7 @@ def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | No
     best_rated = max(series) if series else None
     odds = F.entry_odds(e)
     open_price = F.odds_opening_price(odds) if odds else None
+    trial = latest_trial(events, race_date)
     return Runner(
         horse_id=F.horse_id(e), name=F.horse_name(e),
         raw={"neural": F.entry_neural_rating(e), "last": series[-1] if series else None,
@@ -245,6 +289,9 @@ def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | No
              "best_vs_lws": (best_rated - lws) if best_rated is not None and lws is not None else None,
              "trend_slope": tr.slope,
              "starts": career[0] if career else None,
+             "race_starts": len(races_only),
+             "rated_runs": len(series),
+             "trial_margin": trial,
              "open": open_price},
         bsp=F.result_betfair_sp(res) if res else None,
         sp=F.result_starting_price(res) if res else None,
@@ -449,6 +496,14 @@ def race_features(runners: list[Runner]) -> None:
         cols["market_prob"] = [0.0] * n
     # The market read against the form: lets the fit lean on Neural harder in some races.
     cols["market_x_neural"] = [m * q for m, q in zip(cols[MARKET_FEATURE], cols["neural_rel"])]
+    # Little or no form (EXPERIENCE).
+    cols["first_starter"] = [1.0 if r.raw.get("race_starts") == 0 else 0.0 for r in runners]
+    cols["unrated"] = [1.0 if not r.raw.get("rated_runs") else 0.0 for r in runners]
+    cols["trialled_recently"] = [1.0 if r.raw.get("trial_margin") is not None else 0.0 for r in runners]
+    margins = _fill_mean([r.raw.get("trial_margin") for r in runners])
+    mean_margin = sum(margins) / n
+    cols["trial_margin"] = [v - mean_margin for v in margins]
+    cols["first_starter_x_market"] = [fs * m for fs, m in zip(cols["first_starter"], cols[MARKET_FEATURE])]
     for i, r in enumerate(runners):
         r.x = {k: cols[k][i] for k in cols}
 

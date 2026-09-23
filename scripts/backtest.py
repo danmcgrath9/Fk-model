@@ -32,7 +32,9 @@ WINNER_CHECK_SETS = {"all_form_plus_open_market", "market_kitchen_sink"}
 # FK_ALL_SETS=1 searches all of B.MODEL_SETS, for when a new feature group needs trying.
 SEARCH_SETS = ["neural_only", "kitchen_sink", "all_form_plus_open_market", "market_plus_class", "market_plus_distance",
                "market_plus_speed", "market_plus_position", "market_plus_everything", "market_the_lot",
-               "market_shaped", "market_shaped_all", "market_kitchen_sink"]
+               "market_shaped", "market_shaped_all", "market_kitchen_sink",
+               # first starters and trial form (fk.backtest.EXPERIENCE)
+               "market_plus_experience", "market_kitchen_sink_exp"]
 
 
 def load_races(state: str, history_dir: Path | None = None) -> tuple[list[B.Race], dict[str, P.ProjRace]]:
@@ -58,7 +60,8 @@ def races_from_rows(rows) -> tuple[list[B.Race], dict[str, P.ProjRace]]:
     """Rows shaped like Db.resulted_races (a history file's lines are the same shape)."""
     races, proj = [], {}
     for row in rows:
-        runners = [r for r in (B.runner_from_entry(e, row.get("distance_m"), row.get("lws")) for e in row["entries"]) if r is not None]
+        runners = [r for r in (B.runner_from_entry(e, row.get("distance_m"), row.get("lws"), row.get("date")) for e in row["entries"])
+                   if r is not None]
         if len(runners) < 2:
             continue
         B.race_features(runners)
