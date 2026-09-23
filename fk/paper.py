@@ -32,7 +32,15 @@ PLANS = {
     "value_ev10": "every runner worth 10c a unit or more at the morning price, one unit",
     "value_tiered": "worth 5c to 10c: 1 unit; 10c to 20c: 2 units; 20c or more: 3 units (tracked, not recommended: the lower bands lose)",
     "value_ev20_kelly": "worth 20c a unit or more, staked quarter Kelly on a 100-unit bank: value / (price - 1) x 25, capped at 5 units",
+    # The real-price model (fk/realprice.py): fitted on the races with a real 9am price, so it
+    # is judged here against the price it was built to beat. Tracked, not recommended, until
+    # the book says otherwise.
+    "rp_top_pick": "the real-price model's top-rated runner, one unit",
+    "rp_value_ev05": "every runner the real-price model makes worth 5c a unit or more at the current price, one unit",
+    "rp_value_ev10": "every runner the real-price model makes worth 10c a unit or more at the current price, one unit",
+    "rp_value_ev05_kelly": "real-price model, worth 5c or more, staked quarter Kelly on a 100-unit bank, capped at 5 units",
 }
+REAL_PRICE_PLANS = ("rp_top_pick", "rp_value_ev05", "rp_value_ev10", "rp_value_ev05_kelly")
 # The value_ev20 rule, chosen by the 23 Sep back-test on 3,260 races: on the older three fifths
 # +57% at the average opening price, on the newer two fifths it never saw +85% (1,239 bets,
 # two standard errors clear), and +16% at Betfair SP. The live gap rule managed +17% on the
@@ -149,6 +157,34 @@ def place(rows: list[Row]) -> list[Bet]:
     return bets
 
 
+def place_real_price(rows: list[Row]) -> list[Bet]:
+    """The real-price model's plans for one race, over rows whose model_prob and rated_price
+    are that model's. Same guards as place(): no race already run, nothing more than three
+    times the market's chance."""
+    if not rows or any(r.finish is not None for r in rows):
+        return []
+    rated = [r for r in rows if r.rated_price]
+    if not rated:
+        return []
+    bets: list[Bet] = []
+
+    def bet(plan: str, r: Row, stake: float) -> None:
+        if stake > 0:
+            bets.append(Bet(plan, r.horse_id, r.name, round(stake, 4), r.price, r.rated_price, r.model_prob, r.market_prob, r.opening))
+
+    bet("rp_top_pick", min(rated, key=lambda r: r.rated_price), UNIT)
+    for r in rows:
+        if r.model_prob and r.market_prob and r.model_prob > MAX_MODEL_TO_MARKET * r.market_prob:
+            continue
+        ev = r.model_prob * r.price - 1.0 if r.model_prob and r.price and r.price > 1 else None
+        if ev is not None and ev > 0.05:
+            bet("rp_value_ev05", r, UNIT)
+            bet("rp_value_ev05_kelly", r, kelly_stake(r.model_prob, r.price))
+        if ev is not None and ev > 0.10:
+            bet("rp_value_ev10", r, UNIT)
+    return bets
+
+
 def movement(struck: float | None, settled: float | None) -> float | None:
     """How the market moved between the price a bet was struck at and the price it settled
     at, as a share of the struck price. Negative = it FIRMED (shortened, the market came
@@ -197,6 +233,8 @@ def model_family(label: str | None) -> str:
     if not label:
         return "unrecorded"
     name = label.split(" (")[0].strip()
+    if name.startswith("realprice"):
+        return "real-price refit"
     if name.startswith("market_") or name.endswith("open_market"):
         return "reads the market"
     return "form only"

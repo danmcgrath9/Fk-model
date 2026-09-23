@@ -120,10 +120,9 @@ GRID_B = [0.0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.6, 0.8, 1.0, 1.3, 1.6, 2.0]
 REFIT_RIDGES = [0.1, 1.0, 10.0]
 # A small model for the same job: the market plus the handful of form figures that carry the
 # most weight in the big fit. Fewer coefficients, so a small sample can actually pin them.
-AVG_OPEN_FEATURE = "avg_open_logit"
-AVG_NOW_FEATURE = "avg_now_logit"
-COMPACT_FEATURES = [B.MARKET_FEATURE, "neural_rel", "speed_rel", "last_rel", "peak_rel", "jockey_win", "trainer_win",
-                    "class_win", "first_starter", "first_starter_x_market"]
+# One definition of the compact set and the two average-price features: fk/realprice.py,
+# which the live paper book prices with.
+from fk.realprice import AVG_NOW_FEATURE, AVG_OPEN_FEATURE, COMPACT_FEATURES  # noqa: E402
 
 
 def fit_blend(days: dict[str, list[tuple[list[float], list[float], object]]]) -> tuple[float, float]:

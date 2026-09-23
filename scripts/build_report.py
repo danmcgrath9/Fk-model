@@ -136,6 +136,31 @@ def model_chances(model: dict, entries: list[dict], distance_m: int | None = Non
     return {r.horse_id: pi for r, pi in zip(runners, p)}
 
 
+def real_price_chances(model: dict, entries: list[dict], distance_m: int | None = None, lws: float | None = None,
+                       speedmap: list[dict] | None = None, tempo_raw: dict | None = None,
+                       openings: dict[str, float | None] | None = None, race_date: str | None = None) -> dict[str, float]:
+    """Win chance per active runner from the real-price model (fk/realprice.py): the current
+    price as the market input, the entry's own opening average as a second feature."""
+    from fk import backtest as B
+    from fk import projection as P
+    from fk import realprice as R
+
+    def runners_for(raws):
+        rs = [r for r in (B.runner_from_entry(raw, distance_m, lws, race_date) for raw in raws) if r is not None]
+        if rs:
+            B.race_features(rs)
+            B.shape_features(rs, B.positions_from_speedmap(speedmap), P.tempo_score(tempo_raw))
+        return rs
+    with_raw = [e for e in entries if e.get("raw")]
+    priced = runners_for([with_opening(e["raw"], (openings or {}).get(e["horse_id"])) for e in with_raw])
+    original = runners_for([e["raw"] for e in with_raw])
+    if not priced:
+        return {}
+    R.attach_opening_average(priced, original)
+    p = B.predict(model["beta"], priced)
+    return {r.horse_id: pi for r, pi in zip(priced, p)}
+
+
 def _ordinal(n: int) -> str:
     return f"{n}{'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
 
@@ -221,7 +246,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
                   speedmap: list[dict] | None, odds: dict[str, dict[str, float]], tempo: str | None = None,
                   events_by_horse: dict[str, list[dict]] | None = None, neural_scale: float | None = None,
                   scale_fitted: bool = False, rated_model: dict | None = None, tempo_raw: dict | None = None,
-                  results: dict[str, dict] | None = None) -> RaceSection:
+                  results: dict[str, dict] | None = None, real_price_model: dict | None = None) -> RaceSection:
     heading = f"Race {race.get('race_number') or '?'}: {race.get('race_name') or ''}".strip()
     sub = " ".join(x for x in [f"{race['distance_m']}m" if race.get("distance_m") else "", str(race.get("scheduled_at") or "")] if x)
     section = RaceSection(heading=heading, subheading=sub)
@@ -310,8 +335,14 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
             section.bettable = False
             section.facts.append(f"Market not formed: {have} of {n} runners carry a price, so the model's market "
                                  f"input is incomplete. Rated for reading only; no paper bets on this race.")
-        model = model_chances(rated_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, openings,
-                              str(race.get("meeting_date")) if race.get("meeting_date") else None)
+        race_date = str(race.get("meeting_date")) if race.get("meeting_date") else None
+        model = model_chances(rated_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, openings, race_date)
+        if real_price_model and getattr(section, "bettable", True):
+            # The real-price model prices the same runners from the same current price, with
+            # the opening average kept beside it. Its chances ride on the section for the paper
+            # book; the page's rated price stays the deployed model's.
+            section.rp_probs = real_price_chances(real_price_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, openings, race_date)
+            section.rp_model_name = f"{real_price_model['model']} ({real_price_model['races']} races to {real_price_model['to']})"
         if rated_model.get("projection_params"):
             # The projection is the founder's own method; it is shown beside the price even
             # when the back-test trusts another model to set it.
@@ -448,16 +479,23 @@ def place_paper(db, race: dict, section: RaceSection) -> int:
     if already is not None:
         print(f"paper: race {race.get('race_number')} already priced at {already:%Y-%m-%d %H:%M} UTC, not re-bet")
         return 0
-    bets = P.place(paper_rows(section))
+    bets = [(b, section.model_name) for b in P.place(paper_rows(section))]
+    # The real-price model's plans, over the same rows with ITS chances, tagged with its name.
+    rp = getattr(section, "rp_probs", None) or {}
+    if rp:
+        from fk import realprice as R
+        rp_rows = [P.Row(r.horse_id, r.name, R.rated_price(rp.get(r.horse_id)), r.price, rp.get(r.horse_id), r.market_prob, None, r.finish, r.opening)
+                   for r in section.rows if r.horse_id]
+        bets += [(b, section.rp_model_name) for b in P.place_real_price(rp_rows)]
     if not bets:
         return 0
     return db.place_paper_bets([dict(
         bet_id=f"{race['race_id']}|{b.horse_id}|{b.plan}", race_id=race["race_id"], horse_id=b.horse_id, plan=b.plan,
         meeting_date=race["meeting_date"], track=race.get("track"), race_number=race.get("race_number"), horse_name=b.name,
         placed_at=now, first_priced_at=now, price=b.price, opening_price=b.opening, rated_price=b.rated_price,
-        model_prob=b.model_prob, market_prob=b.market_prob, stake=b.stake, model=section.model_name,
+        model_prob=b.model_prob, market_prob=b.market_prob, stake=b.stake, model=label,
         field_ids=Jsonb([r.horse_id for r in section.rows if r.horse_id]),
-    ) for b in bets])
+    ) for b, label in bets])
 
 
 def parse_exclusions(text: str | None) -> list[tuple[str, str]]:
@@ -514,6 +552,17 @@ def from_database(target: str, track: str | None, out_dir: Path, open_it: bool, 
     rated_model = load_rated_price_model()
     if rated_model:
         print(f"rated price: back-tested model, {rated_model['races']} races to {rated_model['to']}")
+    real_price_model = None
+    if paper and not exclusions:
+        # Fitted fresh on every stored race with a real 9am price (a few seconds); only the
+        # paper book uses it, so a page that places no bets never pays for the fit.
+        try:
+            from real_price_model import fit_real_price_model
+            real_price_model = fit_real_price_model(db)
+            if real_price_model:
+                print(f"real-price model: {real_price_model['races']} races {real_price_model['from']} to {real_price_model['to']}")
+        except Exception as ex:  # noqa: BLE001
+            print(f"real-price model not fitted: {type(ex).__name__}: {ex}")
     for trk, rs in by_track.items():
         loaded = [(r, db.entries_for_race(r["race_id"]), db.latest_odds(r["race_id"])) for r in rs]
         k, fitted = neural_scale_for_meeting([(entries, odds) for _, entries, odds in loaded])
@@ -526,7 +575,8 @@ def from_database(target: str, track: str | None, out_dir: Path, open_it: bool, 
             sm, tempo = db.speedmap_for_race(r["race_id"]), db.speedmap_tempo(r["race_id"])
             notes = apply_exclusions(entries, events, runs, exclusions or [])
             section = build_section(r, entries, runs, sm, odds, tempo, events, neural_scale=k, scale_fitted=fitted, rated_model=rated_model,
-                                    tempo_raw=db.speedmap_tempo_raw(r["race_id"]), results=db.results_for_race(r["race_id"]))
+                                    tempo_raw=db.speedmap_tempo_raw(r["race_id"]), results=db.results_for_race(r["race_id"]),
+                                    real_price_model=real_price_model)
             section.facts = list(notes) + list(section.facts)
             sections.append(section)
             # A what-if page never places bets: the book runs on the figures as published.
