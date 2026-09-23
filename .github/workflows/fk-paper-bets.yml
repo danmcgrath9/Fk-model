@@ -40,3 +40,9 @@ jobs:
           TRACK_ARG=""
           [ -n "${{ github.event.inputs.track }}" ] && TRACK_ARG="--track"
           python scripts/paper_bets_day.py --date "${{ github.event.inputs.date }}" $TRACK_ARG ${{ github.event.inputs.track && format('"{0}"', github.event.inputs.track) || '' }} | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Which opening price the model had
+        run: |
+          set -o pipefail
+          TRACK_ARG=""
+          [ -n "${{ github.event.inputs.track }}" ] && TRACK_ARG="--track"
+          python scripts/open_price_check.py --date "${{ github.event.inputs.date }}" $TRACK_ARG ${{ github.event.inputs.track && format('"{0}"', github.event.inputs.track) || '' }} | tee -a "$GITHUB_STEP_SUMMARY"
