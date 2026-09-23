@@ -143,3 +143,12 @@ def test_tiered_value_stakes():
     assert {x.horse_id for x in bets if x.plan == "value_ev05"} == {"A", "B", "C"}
     assert {x.horse_id for x in bets if x.plan == "value_ev10"} == {"B", "C"}
     assert {x.horse_id for x in bets if x.plan == "value_ev20"} == {"C"}
+
+
+def test_value_ev20_kelly_shrinks_with_price():
+    from fk.paper import Row, place
+    fav = Row("F", "Fav", 2.2, 2.0, 1 / 2.2, 1 / 2.0, None, None)
+    short = Row("S", "S", 1 / 0.25, 5.0, 0.25, 0.20, None, None)     # value 0.25 at $5: 0.25/4 x 25 = 1.5625
+    long_ = Row("L", "L", 1 / 0.03, 41.0, 0.03, 0.024, None, None)   # value 0.23 at $41: 0.23/40 x 25 = 0.14375
+    st = {b.horse_id: b.stake for b in place([fav, short, long_]) if b.plan == "value_ev20_kelly"}
+    assert round(st["S"], 4) == 1.5625 and round(st["L"], 4) == 0.1437
