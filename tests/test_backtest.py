@@ -409,3 +409,22 @@ def test_strategy_search_runs_and_splits_halves():
     keys = {(r.rule, r.threshold, r.slice) for r in rows}
     # every kept strategy carries both halves
     assert all(sum(1 for r in rows if (r.rule, r.threshold, r.slice) == k) == 2 for k in keys)
+
+
+def test_market_history_reads_price_result_and_collateral_form():
+    import math
+    from fk import backtest as B
+    events = [
+        # newest last once sorted: BSP 4 won, then BSP 2 ran third
+        {"date": 1700000000000, "bsp": 4.0, "finishPosition": 1, "fieldStrength": 40.0,
+         "subsequentForm": {"ALL": {"races": 10, "winsOverExpectations": 2.0, "proportionalStakingROI": 25.0}}},
+        {"date": 1710000000000, "bsp": 2.0, "finishPosition": 3, "fieldStrength": 60.0},
+        {"date": 1705000000000, "bsp": 3.0, "finishPosition": 2, "trial": True},   # a trial: skipped
+    ]
+    h = B.market_history(events)
+    assert round(h["beat_market"], 4) == round((-0.5 * 1 + 0.75 * 0.8) / 1.8, 4)
+    assert h["beat_market_last"] == -0.5
+    assert round(h["mkt_class"], 4) == round((-math.log(2) * 1 + -math.log(4) * 0.8) / 1.8, 4)
+    assert h["collateral_wins"] == 0.2 and h["collateral_roi"] == 0.25
+    assert round(h["field_strength"], 4) == round((60 * 1 + 40 * 0.8) / 1.8, 4) and h["strength_last"] == 60.0
+    assert all(v is None for v in B.market_history([]).values())

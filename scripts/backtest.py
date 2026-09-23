@@ -34,7 +34,9 @@ SEARCH_SETS = ["neural_only", "kitchen_sink", "all_form_plus_open_market", "mark
                "market_plus_speed", "market_plus_position", "market_plus_everything", "market_the_lot",
                "market_shaped", "market_shaped_all", "market_kitchen_sink",
                # first starters and trial form (fk.backtest.EXPERIENCE)
-               "market_plus_experience", "market_kitchen_sink_exp"]
+               "market_plus_experience", "market_kitchen_sink_exp",
+               # the market's memory of the horse and the collateral form of the fields it met (fk.backtest.HISTORY)
+               "history_plus_market", "market_plus_history", "market_kitchen_sink_history"]
 
 
 def load_races(state: str, history_dir: Path | None = None) -> tuple[list[B.Race], dict[str, P.ProjRace]]:

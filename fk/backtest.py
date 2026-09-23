@@ -116,6 +116,17 @@ EXTRAS = ["barrier_share", "days_log", "run_in_prep", "weight_rel", "wfa_diff", 
 #   first_starter_x_market   the opening-market chance (log) for a first starter, 0 for the
 #                      rest: lets the fit trust the market more where the form is empty
 EXPERIENCE = ["first_starter", "unrated", "trial_margin", "trialled_recently", "first_starter_x_market"]
+# What the MARKET thought of this horse's past runs, and what became of the horses it met.
+# Every past run carries its Betfair SP; about half carry Form King's subsequentForm (how
+# the field it raced in went on). None of this is today's price, so none of it is leakage.
+#   mkt_class         recency-weighted -log(BSP) over past races: how short the market has priced it
+#   beat_market       recency-weighted (won - 1/BSP): ran better than its price, on average
+#   beat_market_last  the same for the latest run only
+#   collateral_wins   recency-weighted wins-over-expectation per race of the fields it met afterwards
+#   collateral_roi    recency-weighted staking return (as a fraction) of those fields afterwards
+#   field_strength    recency-weighted strength of the fields it has been racing in
+#   strength_last     the latest run's field strength
+HISTORY = ["mkt_class", "beat_market", "beat_market_last", "collateral_wins", "collateral_roi", "field_strength", "strength_last"]
 TRIAL_WINDOW_DAYS = 120
 
 MODEL_SETS = {
@@ -156,6 +167,11 @@ MODEL_SETS = {
     "market_kitchen_sink_exp": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS
                                + [MARKET_FEATURE] + MARKET_SHAPE + EXPERIENCE,
     "market_plus_experience": FORM_FEATURES + CLASS + [MARKET_FEATURE] + EXPERIENCE,
+    # The market's own memory of the horse and the collateral form of the fields it met.
+    "history_plus_market": HISTORY + [MARKET_FEATURE] + MARKET_SHAPE,
+    "market_plus_history": FORM_FEATURES + CLASS + [MARKET_FEATURE] + EXPERIENCE + HISTORY,
+    "market_kitchen_sink_history": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS
+                                   + [MARKET_FEATURE] + MARKET_SHAPE + EXPERIENCE + HISTORY,
 }
 # Ridge strengths tried by cross-validation inside the training races. Every model so far
 # has been fitted with effectively none (1e-8) and every one lands far worse out of sample
@@ -227,6 +243,40 @@ def latest_trial(events: list[dict], today: str | None = None) -> float | None:
     return F.past_event_margin(p)
 
 
+def market_history(events: list[dict]) -> dict[str, float | None]:
+    """The HISTORY raw values from a horse's raw past events (oldest or newest first, sorted
+    here). Trials are skipped; a run without a BSP contributes nothing to the market figures.
+    Hand-check: two races, newest last, BSP 4 then 2, finishes 1 then 3, decay 0.8:
+    beat = [1 - 0.25, 0 - 0.5] = [0.75, -0.5]; recency-weighted (newest first) = (-0.5 x 1 +
+    0.75 x 0.8) / 1.8 = 0.0556; beat_market_last = -0.5; mkt_class = (-ln 2 x 1 + -ln 4 x 0.8)
+    / 1.8 = -1.0013."""
+    runs = []
+    for p in events:
+        m = F.run_market(p)
+        if m.get("trial") or not m.get("date"):
+            continue
+        row: dict = {"date": m["date"], "fieldStrength": m.get("fieldStrength")}
+        bsp, finish = m.get("bsp"), m.get("finish")
+        if bsp and bsp > 1 and finish is not None:
+            row["logbsp"] = -math.log(bsp)
+            row["beat"] = (1.0 if finish == 1 else 0.0) - 1.0 / bsp
+        sub = (p.get("subsequentForm") or {}).get("ALL") if isinstance(p.get("subsequentForm"), dict) else None
+        if isinstance(sub, dict) and sub.get("races"):
+            woe = sub.get("winsOverExpectations")
+            roi = sub.get("proportionalStakingROI")
+            if woe is not None:
+                row["woe"] = float(woe) / float(sub["races"])
+            if roi is not None:
+                row["roi"] = float(roi) / 100.0
+        runs.append(row)
+    runs.sort(key=lambda r: r["date"])
+    last = runs[-1] if runs else {}
+    return {"mkt_class": recent_weighted(runs, "logbsp"), "beat_market": recent_weighted(runs, "beat"),
+            "beat_market_last": last.get("beat"), "collateral_wins": recent_weighted(runs, "woe"),
+            "collateral_roi": recent_weighted(runs, "roi"), "field_strength": recent_weighted(runs, "fieldStrength"),
+            "strength_last": last.get("fieldStrength")}
+
+
 def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | None = None,
                       race_date: str | None = None) -> Runner | None:
     """A RaceEntry (Get Race Form) already run: features from what was knowable before the
@@ -279,6 +329,7 @@ def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | No
              "exp": F.entry_exp_rating(e),
              "dist_starts": rec[0] if rec else None, "dist_wins": rec[1] if rec else None,
              **extra_features(e),
+             **market_history(events),
              **{k: recent_weighted([{**r, **position_shares(r)} for r in races_only], k) for k in POSITION},
              "speed": recent_weighted(races_only, "speedRating"),
              "speed_best": max((r["speedRating"] for r in races_only if r.get("speedRating") is not None), default=None),
@@ -453,7 +504,7 @@ def race_features(runners: list[Runner]) -> None:
     for r, v in zip(runners, raw_share):
         r.raw["barrier_share"] = v
     # Every extra is centred on the field: "more than these rivals", never a bare number.
-    for key in EXTRAS:
+    for key in EXTRAS + HISTORY:
         vals = _fill_mean([r.raw.get(key) for r in runners])
         mean = sum(vals) / n
         cols[key] = [v - mean for v in vals]

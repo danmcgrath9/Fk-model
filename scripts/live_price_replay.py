@@ -320,7 +320,8 @@ def main() -> None:
     for name, fs in (("deployed features", feats), ("deployed + opening average", feats + [AVG_OPEN_FEATURE]),
                      ("compact", COMPACT_FEATURES), ("compact + opening average", COMPACT_FEATURES + [AVG_OPEN_FEATURE]),
                      ("compact + average price", COMPACT_FEATURES + [AVG_NOW_FEATURE]),
-                     ("compact + both averages", COMPACT_FEATURES + [AVG_OPEN_FEATURE, AVG_NOW_FEATURE])):
+                     ("compact + both averages", COMPACT_FEATURES + [AVG_OPEN_FEATURE, AVG_NOW_FEATURE]),
+                     ("compact + opening + history", COMPACT_FEATURES + [AVG_OPEN_FEATURE] + B.HISTORY)):
         for rg, kl, pr in refit_on_real(test, fs):
             print(f"| {name} | {rg:g} | {kl:.4f} | {'beats it' if kl < mkt.kl_to_bsp else 'does not'} |")
             if kl < best_kl:
