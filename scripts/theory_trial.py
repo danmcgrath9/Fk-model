@@ -103,8 +103,9 @@ def main() -> None:
         beta = B.fit(train, feats, ridge=a.ridge, weights=recency_weight(train[-1].date, hl))
         row(f"1. recency, half-life {hl} days", kl(predict_all(beta, test), test))
 
-    # 2. race type interactions (the form block only, to keep the count sane)
-    form_block = [f for f in feats if f not in (B.MARKET_FEATURE, "market_prob", "market_x_neural")]
+    # 2. race type interactions, over a small core of form figures: every one of the fifty
+    # crossed three ways is 150 extra terms, which the pure-Python Newton fit takes hours over.
+    form_block = ["neural_rel", "last_rel", "speed_rel", "barrier_share", "days_log", "dist_win", "jockey_win", "trainer_win"]
     extra = add_type_interactions(races, form_block)
     for scale, label in ((a.ridge, "same ridge"), (a.ridge * 10, "ridge x10 on the extra terms")):
         beta = B.fit(train, feats + extra, ridge=scale)
