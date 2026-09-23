@@ -37,10 +37,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
         run: |
-          mkdir -p history
-          N=$(gh release view history --json assets --jq '.assets | length' 2>/dev/null || echo 0)
-          if [ "$N" -gt 0 ]; then gh release download history --dir history --pattern '*.jsonl.gz' --clobber; fi
-          echo "history files: $(ls history | wc -l)"
+          scripts/fetch_history.sh
       - name: Replay at the real morning prices
         run: |
           set -o pipefail

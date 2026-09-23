@@ -76,10 +76,8 @@ jobs:
         run: |
           gh release view history >/dev/null 2>&1 || gh release create history --target main --latest=false \
             --title "Race history" --notes "Past days for the back-test, one compressed file per day (fk/history.py). Written by the fk backtest workflow; do not delete."
-          mkdir -p history
-          N=$(gh release view history --json assets --jq '.assets | length')
-          if [ "$N" -gt 0 ]; then gh release download history --dir history --pattern '*.jsonl.gz' --clobber; fi
-          echo "history files: $(ls history | wc -l), $(du -sh history | cut -f1)" | tee -a "$GITHUB_STEP_SUMMARY"
+          scripts/fetch_history.sh | tee -a "$GITHUB_STEP_SUMMARY"
+          test "${PIPESTATUS[0]}" -eq 0
 
       - name: Pull past days
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.fit_only != 'yes'
