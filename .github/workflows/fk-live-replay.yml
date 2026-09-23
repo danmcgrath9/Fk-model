@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
     inputs:
       window:
-        description: 'morning = the 9am price; evening = the price at the evening-before pull, the first we see'
-        default: 'morning'
+        description: 'both, morning (the 9am price) or evening (the price at the evening-before pull, the first we see)'
+        default: 'both'
 
 permissions:
   contents: read
@@ -41,7 +41,8 @@ jobs:
       - name: Replay at the real morning prices
         run: |
           set -o pipefail
-          python scripts/live_price_replay.py --window "${{ github.event.inputs.window || 'morning' }}" | tee -a "$GITHUB_STEP_SUMMARY"
-          if [ -z "${{ github.event.inputs.window }}" ]; then
+          W="${{ github.event.inputs.window || 'both' }}"
+          if [ "$W" != "evening" ]; then python scripts/live_price_replay.py --window morning | tee -a "$GITHUB_STEP_SUMMARY"; fi
+          if [ "$W" != "morning" ]; then
             echo; echo "## Evening-before prices"; python scripts/live_price_replay.py --window evening | tee -a "$GITHUB_STEP_SUMMARY"
           fi

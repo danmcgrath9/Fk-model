@@ -34,7 +34,7 @@ WINDOWS = {"morning": (-1, 20, 0, 2), "evening": (-1, 6, -1, 14)}
 
 
 def morning_prices(db: Db, race_id: str, race_date: str, window: str = "morning") -> dict[str, float]:
-    """{horse_id: price} from the latest 'current' snapshot fetched in the window."""
+    """{horse_id: best bookmaker price} from the latest 'current' snapshot fetched in the window."""
     d = datetime.fromisoformat(race_date[:10]).replace(tzinfo=timezone.utc)
     d0, h0, d1, h1 = WINDOWS[window]
     lo = d + timedelta(days=d0, hours=h0)
@@ -47,6 +47,33 @@ def morning_prices(db: Db, race_id: str, race_date: str, window: str = "morning"
         (race_id, lo, hi),
     ).fetchall()
     return {r[0]: float(r[1]) for r in rows if r[1] is not None and float(r[1]) > 1}
+
+
+def average_prices(db: Db, race_id: str, race_date: str, window: str = "morning") -> dict[str, float]:
+    """{horse_id: AVERAGE bookmaker price} from the same snapshots: the raw odds object the
+    morning job stored carries avgNow beside bestNow. The best of a dozen books is inflated
+    on every runner by construction (whoever is longest wins the column), most of all on
+    outsiders; the average is the books' consensus, and the fairer market to learn from,
+    while the best price is still the one a bet is struck at."""
+    d = datetime.fromisoformat(race_date[:10]).replace(tzinfo=timezone.utc)
+    d0, h0, d1, h1 = WINDOWS[window]
+    lo = d + timedelta(days=d0, hours=h0)
+    hi = d + timedelta(days=d1, hours=h1)
+    rows = db.conn.execute(
+        """select distinct on (horse_id) horse_id, raw->>'avgNow'
+           from fk.odds_snapshots
+           where race_id = %s and source = 'formking' and kind = 'current' and fetched_at between %s and %s
+           order by horse_id, fetched_at desc""",
+        (race_id, lo, hi),
+    ).fetchall()
+    out = {}
+    for hid, v in rows:
+        try:
+            if v is not None and float(v) > 1:
+                out[hid] = float(v)
+        except ValueError:
+            continue
+    return out
 
 
 def with_price(e: dict, price: float | None) -> dict:
@@ -94,6 +121,7 @@ REFIT_RIDGES = [0.1, 1.0, 10.0]
 # A small model for the same job: the market plus the handful of form figures that carry the
 # most weight in the big fit. Fewer coefficients, so a small sample can actually pin them.
 AVG_OPEN_FEATURE = "avg_open_logit"
+AVG_NOW_FEATURE = "avg_now_logit"
 COMPACT_FEATURES = [B.MARKET_FEATURE, "neural_rel", "speed_rel", "last_rel", "peak_rel", "jockey_win", "trainer_win",
                     "class_win", "first_starter", "first_starter_x_market"]
 
@@ -186,7 +214,7 @@ def main() -> None:
     db = Db(load_settings().database_url)
     rows = db.resulted_races(a.state)
     # Which resulted races carry a real morning price for at least 80% of their runners.
-    test_rows, morning = [], {}
+    test_rows, morning, averages = [], {}, {}
     for row in rows:
         active = [e for e in row["entries"] if not F.entry_scratched(e)]
         prices = morning_prices(db, row["race_id"], row["date"], a.window)
@@ -194,6 +222,7 @@ def main() -> None:
         if active and have / len(active) >= 0.8:
             test_rows.append(row)
             morning[row["race_id"]] = prices
+            averages[row["race_id"]] = average_prices(db, row["race_id"], row["date"], a.window)
     if not test_rows:
         print("no resulted race carries a morning price snapshot yet")
         return
@@ -212,23 +241,36 @@ def main() -> None:
     # the real price (the founder's call: train on the opening price and the 9am price).
     orig, _ = races_from_rows(test_rows)
     orig_by_id = {r.race_id: r for r in orig}
+    # And the AVERAGE bookmaker price as the market input: the consensus rather than the best.
+    avg_rows = [{**r, "entries": [with_price(e, averages[r["race_id"]].get(F.horse_id(e))) for e in r["entries"]]} for r in test_rows]
+    avg_races, _ = races_from_rows(avg_rows)
+    avg_by_id = {r.race_id: r for r in avg_races}
+    avg_cover = sum(len(averages[r["race_id"]]) for r in test_rows) / max(1, sum(len(morning[r["race_id"]]) for r in test_rows))
     # Test races: the model's market input IS the morning price, as live.
     test_rows = [{**r, "entries": [with_price(e, morning[r["race_id"]].get(F.horse_id(e))) for e in r["entries"]]} for r in test_rows]
     test, _ = races_from_rows(test_rows)
-    test = [r for r in test if B.bsp_chances(r.runners) and r.race_id in orig_by_id]
-    opening_scores = []
+    test = [r for r in test if B.bsp_chances(r.runners) and r.race_id in orig_by_id and r.race_id in avg_by_id]
+    opening_scores, avg_market = [], []
     for race in test:
         o = orig_by_id[race.race_id]
         by_horse = {r.horse_id: r for r in o.runners}
+        av = {r.horse_id: r for r in avg_by_id[race.race_id].runners}
         for r in race.runners:
             r.x[AVG_OPEN_FEATURE] = by_horse[r.horse_id].x.get(B.MARKET_FEATURE, 0.0) if r.horse_id in by_horse else 0.0
+            r.x[AVG_NOW_FEATURE] = av[r.horse_id].x.get(B.MARKET_FEATURE, r.x.get(B.MARKET_FEATURE, 0.0)) if r.horse_id in av else r.x.get(B.MARKET_FEATURE, 0.0)
         opening_scores.append([math.log(max(p, 1e-9)) for p in B.predict(beta, [by_horse.get(r.horse_id, r) for r in race.runners])])
+        avg_market.append(B.softmax([r.x[AVG_NOW_FEATURE] for r in race.runners]))
     probs = [B.predict(beta, r.runners) for r in test]
     market = B.market_probs(test)
     ours = B.score(probs, test)
     mkt = B.score(market, test)
     print(f"\nKL to Betfair SP on these races: {label} market {mkt.kl_to_bsp:.4f}, our model {ours.kl_to_bsp:.4f} "
           f"({'BEATS the ' + label + ' market' if ours.kl_to_bsp < mkt.kl_to_bsp else 'does NOT beat the ' + label + ' market'})")
+    # The market two ways: the BEST bookmaker price (what a bet is struck at, inflated on
+    # outsiders by construction) and the AVERAGE bookmaker price (the books' consensus).
+    avg_score = B.score(avg_market, test)
+    print(f"The same {label} market read from the AVERAGE bookmaker price instead of the best: {avg_score.kl_to_bsp:.4f} "
+          f"({'sharper' if avg_score.kl_to_bsp < mkt.kl_to_bsp else 'not sharper'} than the best price; average prices cover {avg_cover:.0%} of the priced runners)")
     # The fair contender: form fitted without the market, blended with the real price.
     form_feats = [f for f in feats if f not in (B.MARKET_FEATURE, "market_prob", "market_x_neural", "first_starter_x_market")]
     blend_kl, (ba, bb), blend_pr = form_plus_price(train, test, form_feats, ridge)
@@ -250,13 +292,22 @@ def main() -> None:
     print(f"Deployed model (opening average inside it) blended with the real {label} price: {op_kl:.4f} "
           f"({verdict} the {label} market; {oa:.2f} x market + {ob:.2f} x model)")
     contenders.append(("opening+9am blend", op_pr))
+    # The consensus price as the model, bets struck at the best price: the plainest edge there
+    # is, if it exists, is a best price standing further from the consensus than usual.
+    contenders.append(("average price", avg_market))
+    av_kl, (va, vb), av_pr = blend_scores(test, [[math.log(max(p, 1e-9)) for p in pr] for pr in avg_market])
+    print(f"Average price blended with the best price: {av_kl:.4f} ({'BEATS' if av_kl < mkt.kl_to_bsp else 'does NOT beat'} the best-price market; "
+          f"{va:.2f} x best + {vb:.2f} x average)")
+    contenders.append(("average+best blend", av_pr))
     # The deployed features, and a compact set, refitted on the real-price races themselves.
     print(f"\nRefitted on the real-price races (five blocks of whole days, each priced by the other four):")
     print("| model | ridge | KL to BSP | vs the market |")
     print("|---|---|---|---|")
     best_kl = float("inf")
     for name, fs in (("deployed features", feats), ("deployed + opening average", feats + [AVG_OPEN_FEATURE]),
-                     ("compact", COMPACT_FEATURES), ("compact + opening average", COMPACT_FEATURES + [AVG_OPEN_FEATURE])):
+                     ("compact", COMPACT_FEATURES), ("compact + opening average", COMPACT_FEATURES + [AVG_OPEN_FEATURE]),
+                     ("compact + average price", COMPACT_FEATURES + [AVG_NOW_FEATURE]),
+                     ("compact + both averages", COMPACT_FEATURES + [AVG_OPEN_FEATURE, AVG_NOW_FEATURE])):
         for rg, kl, pr in refit_on_real(test, fs):
             print(f"| {name} | {rg:g} | {kl:.4f} | {'beats it' if kl < mkt.kl_to_bsp else 'does not'} |")
             if kl < best_kl:
