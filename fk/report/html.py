@@ -180,6 +180,8 @@ class RaceSection:
     projections: list[ProjectionRow] = field(default_factory=list)
     sim_runs: int = 0
     bettable: bool = True        # False when the model's market input was incomplete: read, never bet
+    model_name: str | None = None  # the rated-price model that priced the race, stored on every paper bet
+    model_reads_market: bool = False
 
 
 def _fmt(v: Any, nd: int = 2, pct: bool = False) -> str:

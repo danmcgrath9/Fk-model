@@ -333,6 +333,7 @@ def test_a_race_already_priced_into_the_book_is_never_re_bet():
         def place_paper_bets(self, rows): self.placed += rows; return len(rows)
 
     section = RaceSection(heading="Race 1", subheading="")
+    section.model_reads_market = True    # only a model that reads the market may bet
     def row(hid, name, rated, price, model_p, market_p, flag=None, opening=None):
         return SummaryRow(name=name, barrier=1, weight=56.0, jockey="J", days_since=14, neural=10.0, exp=70.0,
                           rated_price=rated, price=price, model_prob=model_p, market_prob=market_p, flag=flag,

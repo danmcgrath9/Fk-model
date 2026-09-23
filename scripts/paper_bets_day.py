@@ -56,6 +56,8 @@ def main() -> None:
     staked = {}
     for b in bets:
         staked[b["plan"]] = staked.get(b["plan"], 0.0) + float(b["stake"])
+    models = sorted({b.get("model") or "unrecorded" for b in bets})
+    print("\nPriced by: " + "; ".join(models))
     print("\nStaked by plan: " + ", ".join(f"{SHORT.get(p, p)} {s:.2f}u" for p, s in staked.items()))
     print("\nOne unit a bet except Kelly (quarter Kelly on a 100-unit bank) and To win 1 (staked to win one unit). "
           "'Price taken' is the price on the page when the race was first priced; settled bets pay at Betfair SP.")

@@ -295,6 +295,9 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         section.facts.append(f"Rated by the projection model: a projected figure per runner and the race run {SIM_RUNS:,} times; "
                              f"weights fitted to Betfair SP over {rated_model['races']} races to {rated_model['to']}")
     elif rated_model:
+        from fk import backtest as _B
+        section.model_name = f"{rated_model.get('model')} ({rated_model.get('races')} races to {rated_model.get('to')})"
+        section.model_reads_market = _B.MARKET_FEATURE in (rated_model.get("features") or [])
         openings = {e["horse_id"]: odds.get(e["horse_id"], {}).get("opening") for e in active}
         have, n = open_coverage(active, openings)
         if n and have / n < MIN_OPEN_COVERAGE:
@@ -423,6 +426,11 @@ def place_paper(db, race: dict, section: RaceSection) -> int:
     if not getattr(section, "bettable", True):
         print(f"paper: race {race.get('race_number')} not bet, market not formed (too few opening prices)")
         return 0
+    if not getattr(section, "model_reads_market", False):
+        # A form-only model back-tests well behind the morning market; every bet it struck in
+        # the book's first eight days was a bet against a sharper price.
+        print(f"paper: race {race.get('race_number')} not bet, the rated-price model does not read the market")
+        return 0
     db.ensure_paper_book()
     # ONE pricing decides a race. A page rebuilt later could only ever ADD bets (a horse
     # already backed was left alone; a horse whose price had drifted far enough to raise a
@@ -439,7 +447,7 @@ def place_paper(db, race: dict, section: RaceSection) -> int:
         bet_id=f"{race['race_id']}|{b.horse_id}|{b.plan}", race_id=race["race_id"], horse_id=b.horse_id, plan=b.plan,
         meeting_date=race["meeting_date"], track=race.get("track"), race_number=race.get("race_number"), horse_name=b.name,
         placed_at=now, first_priced_at=now, price=b.price, opening_price=b.opening, rated_price=b.rated_price,
-        model_prob=b.model_prob, market_prob=b.market_prob, stake=b.stake,
+        model_prob=b.model_prob, market_prob=b.market_prob, stake=b.stake, model=section.model_name,
     ) for b in bets])
 
 

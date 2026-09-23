@@ -53,3 +53,25 @@ def test_a_race_without_a_formed_market_is_not_bet():
     section.bettable = False
     race = {"race_id": "R", "race_number": 1, "meeting_date": "2099-01-01", "raw": {"startTime": "11:59pm"}}
     assert BR.place_paper(NoDb(), race, section) == 0
+
+
+def test_a_form_only_model_never_bets():
+    class NoDb:
+        def ensure_paper_book(self):
+            raise AssertionError("must not reach the database")
+    section = BR.RaceSection(heading="R1", subheading="")
+    section.model_reads_market = False
+    race = {"race_id": "R", "race_number": 1, "meeting_date": "2099-01-01", "raw": {"startTime": "11:59pm"}}
+    assert BR.place_paper(NoDb(), race, section) == 0
+
+
+def test_a_rating_miles_from_the_market_is_never_bet():
+    from fk import paper as P
+    # Pneuma, Geelong 23 Sep: $71 in the market (1.4%), rated $4.91 (20.4%): 14 times the market.
+    far = P.Row("P", "Pneuma", 4.91, 71.0, 1 / 4.91, 1 / 71.0, "model_higher", None)
+    fav = P.Row("F", "Fav", 2.2, 2.5, 1 / 2.2, 1 / 2.5, None, None)
+    bets = P.place([far, fav])
+    assert not any(b.horse_id == "P" and b.plan in ("value_flags", "value_under_8", "kelly_quarter") for b in bets)
+    # the same gap at three times the market or less is still a bet: 0.30 against 0.12 is 2.5x
+    near = P.Row("N", "Near", 1 / 0.30, 8.0, 0.30, 0.12, "model_higher", None)
+    assert any(b.horse_id == "N" and b.plan == "value_flags" for b in P.place([near, fav]))

@@ -15,6 +15,11 @@ UNIT = 1.0
 BANK = 100.0          # units the Kelly plan sizes against
 KELLY_FRACTION = 0.25
 KELLY_CAP = 5.0       # units, so one wild edge cannot dominate the book
+# A value bet or a Kelly stake needs the model's chance to be no more than this many times
+# the market's. A model that reads the market lands within that of it on any real edge; a
+# rating further out (a $71 runner rated $4.91 is 14 times) is a data or model problem
+# until shown otherwise, and it is exactly where Kelly stakes the most.
+MAX_MODEL_TO_MARKET = 3.0
 
 PLANS = {
     "top_pick": "the model's top-rated runner, one unit",
@@ -111,6 +116,8 @@ def place(rows: list[Row]) -> list[Bet]:
     if top.price and top.price > 1:
         bet("top_pick_to_win_1", top, UNIT / (top.price - 1))
     for r in rows:
+        if r.model_prob and r.market_prob and r.model_prob > MAX_MODEL_TO_MARKET * r.market_prob:
+            continue   # too far from the market to be an edge: not bet, whatever the plan
         if r.flag == "model_higher":
             bet("value_flags", r, UNIT)
             if r.rated_price and r.rated_price < 8:

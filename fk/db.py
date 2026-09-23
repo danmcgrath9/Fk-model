@@ -203,6 +203,13 @@ class Db:
         if not have:
             self.conn.execute((sql_dir / "004_paper_opening_and_snapshot.sql").read_text(encoding="utf-8"))
             self.conn.commit()
+        have_model = self.conn.execute(
+            "select 1 from information_schema.columns where table_schema = 'fk' and table_name = 'paper_bets' "
+            "and column_name = 'model'"
+        ).fetchone()
+        if not have_model:
+            self.conn.execute((sql_dir / "006_paper_model.sql").read_text(encoding="utf-8"))
+            self.conn.commit()
 
     def race_first_priced_at(self, race_id: str):
         """When this race was first priced into the book, or None if it never was. A race is
@@ -262,13 +269,14 @@ class Db:
         )
 
     def paper_bets(self) -> list[dict[str, Any]]:
+        self.ensure_paper_book()   # the model column (sql/006) is read below
         rows = self.conn.execute(
             """select bet_id, plan, meeting_date, track, race_number, horse_name, price, rated_price, stake,
-                      settled_at, settle_price, finish, won, returned, opening_price, placed_at, race_id
+                      settled_at, settle_price, finish, won, returned, opening_price, placed_at, race_id, model
                from fk.paper_bets order by meeting_date, race_number, bet_id"""
         ).fetchall()
         keys = ["bet_id", "plan", "meeting_date", "track", "race_number", "horse_name", "price", "rated_price", "stake",
-                "settled_at", "settle_price", "finish", "won", "returned", "opening_price", "placed_at", "race_id"]
+                "settled_at", "settle_price", "finish", "won", "returned", "opening_price", "placed_at", "race_id", "model"]
         return [dict(zip(keys, (_plain(v) for v in r))) for r in rows]
 
     def races_fetched_since(self, since: datetime) -> set[str]:
