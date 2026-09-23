@@ -1,6 +1,6 @@
 # Back-test against Betfair SP
 
-Fitted 2026-09-23 00:13 UTC over 386 resulted races (4024 runners), 2026-04-30 to 2026-09-22. Out of sample = fitted on the first 270 races by date, scored on the last 116.
+Fitted 2026-09-23 00:34 UTC over 386 resulted races (4024 runners), 2026-04-30 to 2026-09-22. Out of sample = fitted on the first 270 races by date, scored on the last 116.
 
 Each model is a conditional logit fitted to minimise the cross-entropy against a target: the BSP-implied chances, or ('@winners') the actual result. 'KL to BSP' is how far it sits from Betfair SP, the sharpest price anyone gets and so the stand-in for the truth. **The bar is not zero, it is the morning market**, which sits at 0.1611 out of sample: that is the price we bet into, so a model closer to BSP than it is has beaten the market it is betting against. 'log loss' is scored on the actual winners and 'top pick won' is the share of races the model's highest-rated runner won.
 
@@ -80,12 +80,12 @@ Features, all relative within the race: neural_rel = Neural points / the race's 
 
 ## The plans, replayed over 386 races the fit never saw
 
-Five blocks by date, each priced by a model fitted on the other four; bets at the OPENING price and settled at Betfair SP (the live book's rule), then the same bets at BSP itself. A plan that only pays at the opening price is living on the market firming after it, which a real bet placed late does not get.
+Five blocks by date, each priced by a model fitted on the other four. Every bet is chosen against the MORNING market and struck at the morning price. The two profit columns are the SAME bets on two settlement bases: paid at Betfair SP, which is what betting into the jump gets you, and paid at the price it was struck at, which is what taking the morning price gets you. They differ by however far the selections moved.
 
-| plan | bets | winners | staked | returned | profit | return | at BSP: profit | return |
-|---|---|---|---|---|---|---|---|---|
-| top_pick | 386 | 125 | 386.0 | 434.3 | +48.3 | +12.5% | +48.3 | +12.5% |
-| value_flags | 63 | 32 | 63.0 | 91.5 | +28.5 | +45.3% | -23.1 | -5.5% |
-| value_under_8 | 63 | 32 | 63.0 | 91.5 | +28.5 | +45.3% | +49.9 | +16.0% |
-| top_pick_to_win_1 | 386 | 125 | 189.6 | 213.7 | +24.1 | +12.7% | +26.1 | +13.5% |
-| kelly_quarter | 931 | 119 | 535.0 | 580.2 | +45.3 | +8.5% | +160.4 | +8.1% |
+| plan | bets | winners | staked | at BSP: profit | return | at the struck price: profit | return |
+|---|---|---|---|---|---|---|---|
+| top_pick | 386 | 125 | 386.0 | +48.3 | +12.5% | +40.4 | +10.5% |
+| value_flags | 63 | 32 | 63.0 | +28.5 | +45.3% | +37.9 | +60.1% |
+| value_under_8 | 63 | 32 | 63.0 | +28.5 | +45.3% | +37.9 | +60.1% |
+| top_pick_to_win_1 | 386 | 125 | 189.6 | +24.1 | +12.7% | +14.7 | +7.8% |
+| kelly_quarter | 931 | 119 | 535.0 | +45.3 | +8.5% | +274.0 | +51.2% |

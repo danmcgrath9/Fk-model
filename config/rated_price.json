@@ -1,5 +1,5 @@
 {
-  "fitted_at": "2026-09-23T00:13:23+00:00",
+  "fitted_at": "2026-09-23T00:34:50+00:00",
   "races": 386,
   "runners": 4024,
   "from": "2026-04-30",
@@ -83,41 +83,41 @@
         "returned": 91.51009400999999
       }
     },
-    "at_bsp": {
+    "at_struck": {
       "top_pick": {
         "plan": "top_pick",
         "bets": 386,
         "winners": 125,
         "staked": 386.0,
-        "returned": 434.31625020000007
+        "returned": 426.3800000000001
       },
       "top_pick_to_win_1": {
         "plan": "top_pick_to_win_1",
-        "bets": 385,
+        "bets": 386,
         "winners": 125,
-        "staked": 192.53609999999995,
-        "returned": 218.60373003104917
+        "staked": 189.5753,
+        "returned": 204.28439000000003
       },
       "kelly_quarter": {
         "plan": "kelly_quarter",
-        "bets": 2485,
-        "winners": 160,
-        "staked": 1978.5327000000004,
-        "returned": 2138.889430916021
+        "bets": 931,
+        "winners": 119,
+        "staked": 534.9643000000004,
+        "returned": 808.9907650000002
       },
       "value_flags": {
         "plan": "value_flags",
-        "bets": 417,
-        "winners": 49,
-        "staked": 417.0,
-        "returned": 393.92084363
+        "bets": 63,
+        "winners": 32,
+        "staked": 63.0,
+        "returned": 100.87
       },
       "value_under_8": {
         "plan": "value_under_8",
-        "bets": 312,
-        "winners": 48,
-        "staked": 312.0,
-        "returned": 361.92084363
+        "bets": 63,
+        "winners": 32,
+        "staked": 63.0,
+        "returned": 100.87
       }
     }
   },
