@@ -71,6 +71,9 @@ def races_from_rows(rows) -> tuple[list[B.Race], dict[str, P.ProjRace]]:
         B.race_features(runners)
         B.shape_features(runners, B.positions_from_speedmap(row.get("speedmap")), P.tempo_score(row.get("tempo")))
         race = B.Race(row["race_id"], row["date"], row["track"], runners)
+        # Race-level facts the theory trials slice on; the Race itself stays four fields.
+        race.distance_m = row.get("distance_m")
+        race.lws = row.get("lws")
         races.append(race)
         proj[race.race_id] = proj_race(race, row["entries"], row.get("speedmap"), row.get("tempo"))
     return races, proj

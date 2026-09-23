@@ -634,6 +634,28 @@ def _solve(a: list[list[float]], b: list[float]) -> list[float]:
     return [m[i][n] / m[i][i] for i in range(n)]
 
 
+def exploded(races: list[Race], depth: int = 3) -> list[Race]:
+    """The finishing order as a sequence of choices (the 'exploded' or rank-ordered logit):
+    the winner chosen from the whole field, then the second from the field without the
+    winner, then the third from what is left, down to `depth` places. Each sub-race is a
+    Race whose 'winner' is the next finisher, so fit(..., target=winner_chances) over them
+    learns from the placings and not only the winner. A race with an incomplete order stops
+    where the order stops. The runners' within-race features are kept as they were computed
+    on the full field. Hand-check: a 5-runner race with places 1-5 known, depth 3 -> three
+    sub-races of 5, 4 and 3 runners."""
+    out = []
+    for race in races:
+        placed = sorted([r for r in race.runners if r.finish], key=lambda r: r.finish)
+        remaining = list(race.runners)
+        for k, nxt in enumerate(placed[:depth]):
+            if nxt.finish != k + 1 or len(remaining) < 2:
+                break
+            sub = [Runner(r.horse_id, r.name, r.raw, r.bsp, r.sp, 1 if r is nxt else 0, r.x) for r in remaining]
+            out.append(Race(f"{race.race_id}#{k + 1}", race.date, race.track, sub))
+            remaining = [r for r in remaining if r is not nxt]
+    return out
+
+
 def winner_chances(runners: list[Runner]) -> list[float] | None:
     """The race's actual result as a target: 1 on the winner, 0 on everything else. Fitting
     to this asks the model to be RIGHT. Fitting to BSP asks it to be the MARKET, and a model
@@ -646,7 +668,7 @@ def winner_chances(runners: list[Runner]) -> list[float] | None:
 
 
 def fit(races: list[Race], features: list[str], iterations: int = 40, ridge: float = 1e-8,
-        target=bsp_chances) -> dict[str, float]:
+        target=bsp_chances, weights=None) -> dict[str, float]:
     """Conditional logit fitted by Newton's method to whatever `target` returns per race.
     Minimises sum over races of sum_i q_i * (-log p_i), p from the model.
     Gradient: sum_i (p_i - q_i) x_i. Hessian: sum_i p_i (x_i - xbar)(x_i - xbar)^T.
@@ -661,23 +683,27 @@ def fit(races: list[Race], features: list[str], iterations: int = 40, ridge: flo
     """
     d = len(features)
     beta = [0.0] * d
-    usable = [(r, q) for r in races if (q := target(r.runners)) is not None]
+    # `weights`, when given, is a callable race -> how much that race counts (1 is a plain
+    # race; 0 leaves it out), so a fit can lean on recent racing without dropping the old.
+    usable = [(r, q, weights(r) if weights else 1.0) for r in races if (q := target(r.runners)) is not None]
+    usable = [(r, q, w) for r, q, w in usable if w > 0]
     if not usable:
         raise ValueError(f"no race {target.__name__} can score; nothing to fit against")
     for _ in range(iterations):
         g = [ridge * b for b in beta]
         h = [[ridge if i == j else 0.0 for j in range(d)] for i in range(d)]
-        for race, q in usable:
+        for race, q, w in usable:
             xs = [[r.x.get(f, 0.0) for f in features] for r in race.runners]
             p = softmax([sum(b * x for b, x in zip(beta, xr)) for xr in xs])
             xbar = [sum(p[i] * xs[i][j] for i in range(len(xs))) for j in range(d)]
             for i, xr in enumerate(xs):
-                diff = p[i] - q[i]
+                diff = (p[i] - q[i]) * w
                 for j in range(d):
                     g[j] += diff * xr[j]
+                pw = p[i] * w
                 for j in range(d):
                     for k in range(d):
-                        h[j][k] += p[i] * (xr[j] - xbar[j]) * (xr[k] - xbar[k])
+                        h[j][k] += pw * (xr[j] - xbar[j]) * (xr[k] - xbar[k])
         step = _solve(h, [-v for v in g])
         beta = [b + s for b, s in zip(beta, step)]
         if max(abs(s) for s in step) < 1e-9:

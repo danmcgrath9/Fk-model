@@ -448,3 +448,17 @@ def test_market_history_reads_the_next_run_window_and_the_drift():
                              "NEXT_10": {"races": 10, "winsOverExpectations": 2.5}}}
     h = B.market_history([ev])
     assert h["collateral_next_wins"] == 0.25 and h["collateral_drift"] == -1.5 and h["collateral_wins"] == 0.05
+
+
+def test_fit_weights_zero_leaves_a_race_out_and_exploded_makes_one_choice_per_place():
+    from fk import backtest as B
+    a = B.Race("a", "2026-01-01", "T", [B.Runner("a1", "", {}, 2.0, None, 1, {"f": 1.0}), B.Runner("a2", "", {}, 2.0, None, 2, {"f": 0.0})])
+    b = B.Race("b", "2026-01-02", "T", [B.Runner("b1", "", {}, 1.5, None, 2, {"f": 1.0}), B.Runner("b2", "", {}, 3.0, None, 1, {"f": 0.0})])
+    only_a = B.fit([a], ["f"], ridge=1e-6)
+    weighted = B.fit([a, b], ["f"], ridge=1e-6, weights=lambda r: 1.0 if r.race_id == "a" else 0.0)
+    assert abs(only_a["f"] - weighted["f"]) < 1e-6
+    five = B.Race("c", "2026-01-03", "T", [B.Runner(f"c{i}", "", {}, 5.0, None, i, {"f": float(i)}) for i in range(1, 6)])
+    ex = B.exploded([five], depth=3)
+    assert [len(r.runners) for r in ex] == [5, 4, 3]
+    assert [sum(1 for r in sub.runners if r.finish == 1) for sub in ex] == [1, 1, 1]
+    assert ex[1].runners[0].horse_id == "c2"     # the winner has been removed from the second choice
