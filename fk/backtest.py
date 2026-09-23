@@ -67,7 +67,7 @@ MARKET_FEATURE = "open_logit"
 # Only EXP is barred. The MORNING PRICE is not: we bet into that price, so a model that
 # uses it and lands closer to BSP than it does has beaten the market we are betting against.
 # Refusing the market as an input was refusing the only thing that has ever cleared the bar.
-NON_DEPLOYABLE = set(EXP)
+NON_DEPLOYABLE = set(EXP) | {"collateral_wins", "collateral_roi", "collateral_next_wins", "collateral_drift"}
 
 # The feature sets the back-test compares. The one closest to BSP out of sample is deployed.
 # The shape of the market, not just its level. `open_logit` is the log of the opening
@@ -126,10 +126,19 @@ EXPERIENCE = ["first_starter", "unrated", "trial_margin", "trialled_recently", "
 #   collateral_roi    recency-weighted staking return (as a fraction) of those fields afterwards
 #   field_strength    recency-weighted strength of the fields it has been racing in
 #   strength_last     the latest run's field strength
-HISTORY = ["mkt_class", "beat_market", "beat_market_last", "collateral_wins", "collateral_roi", "field_strength", "strength_last"]
-# The sharper window of collateral form: what the fields it met did in their VERY NEXT runs
-# (NEXT_10), and whether money followed those horses afterwards.
-COLLATERAL_NEXT = ["collateral_next_wins", "collateral_drift"]
+# THE SAFE HALF: the market's memory of this horse and the strength of the fields it met,
+# all of it settled before today's race.
+MARKET_MEMORY = ["mkt_class", "beat_market", "beat_market_last", "field_strength", "strength_last"]
+# THE LEAKY HALF, QUARANTINED (23 Sep 2026). subsequentForm is what the fields it met did
+# AFTERWARDS, and Form King computes it at FETCH time, so on a race back-filled weeks after
+# it ran, "afterwards" includes the result we are trying to predict. The leakage check in
+# scripts/feature_trial.py showed it: on the 46 newer races pulled BEFORE the jump the
+# next-run collateral made the model worse than the market (+0.0094); on the 1,046 races
+# back-filled after they ran it looked brilliant (-0.0291). Like EXP, it may never be
+# deployed; it stays defined so the check can keep watching it as the live sample grows.
+COLLATERAL = ["collateral_wins", "collateral_roi", "collateral_next_wins", "collateral_drift"]
+HISTORY = MARKET_MEMORY + COLLATERAL          # everything market_history() computes
+COLLATERAL_NEXT: list[str] = []               # folded into COLLATERAL
 # Intent: what the connections' behaviour says. A trainer with one runner at the meeting or
 # a jockey with one ride has travelled for a reason; an apprentice claim is free weight; a
 # dual acceptor or an emergency is a horse the stable has not committed to.
@@ -178,12 +187,15 @@ MODEL_SETS = {
                                + [MARKET_FEATURE] + MARKET_SHAPE + EXPERIENCE,
     "market_plus_experience": FORM_FEATURES + CLASS + [MARKET_FEATURE] + EXPERIENCE,
     # The market's own memory of the horse and the collateral form of the fields it met.
-    "history_plus_market": HISTORY + [MARKET_FEATURE] + MARKET_SHAPE,
-    "market_plus_history": FORM_FEATURES + CLASS + [MARKET_FEATURE] + EXPERIENCE + HISTORY,
-    "market_kitchen_sink_history": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS
-                                   + [MARKET_FEATURE] + MARKET_SHAPE + EXPERIENCE + HISTORY,
-    "market_kitchen_sink_intent": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS
-                                  + [MARKET_FEATURE] + MARKET_SHAPE + EXPERIENCE + HISTORY + COLLATERAL_NEXT + INTENT,
+    "memory_plus_market": MARKET_MEMORY + [MARKET_FEATURE] + MARKET_SHAPE,
+    "market_plus_memory": FORM_FEATURES + CLASS + [MARKET_FEATURE] + EXPERIENCE + MARKET_MEMORY,
+    "market_kitchen_sink_memory": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS
+                                  + [MARKET_FEATURE] + MARKET_SHAPE + EXPERIENCE + MARKET_MEMORY,
+    "market_kitchen_sink_memory_intent": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS
+                                         + [MARKET_FEATURE] + MARKET_SHAPE + EXPERIENCE + MARKET_MEMORY + INTENT,
+    # information only, never deployed: carries the quarantined collateral form
+    "market_kitchen_sink_collateral": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS
+                                      + [MARKET_FEATURE] + MARKET_SHAPE + EXPERIENCE + MARKET_MEMORY + COLLATERAL,
 }
 # Ridge strengths tried by cross-validation inside the training races. Every model so far
 # has been fitted with effectively none (1e-8) and every one lands far worse out of sample
@@ -538,7 +550,7 @@ def race_features(runners: list[Runner]) -> None:
     for r, v in zip(runners, raw_share):
         r.raw["barrier_share"] = v
     # Every extra is centred on the field: "more than these rivals", never a bare number.
-    for key in EXTRAS + HISTORY + COLLATERAL_NEXT + INTENT:
+    for key in EXTRAS + HISTORY + INTENT:
         vals = _fill_mean([r.raw.get(key) for r in runners])
         mean = sum(vals) / n
         cols[key] = [v - mean for v in vals]

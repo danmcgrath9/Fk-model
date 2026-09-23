@@ -321,7 +321,7 @@ def main() -> None:
                      ("compact", COMPACT_FEATURES), ("compact + opening average", COMPACT_FEATURES + [AVG_OPEN_FEATURE]),
                      ("compact + average price", COMPACT_FEATURES + [AVG_NOW_FEATURE]),
                      ("compact + both averages", COMPACT_FEATURES + [AVG_OPEN_FEATURE, AVG_NOW_FEATURE]),
-                     ("compact + opening + history", COMPACT_FEATURES + [AVG_OPEN_FEATURE] + B.HISTORY)):
+                     ("compact + opening + market memory", COMPACT_FEATURES + [AVG_OPEN_FEATURE] + B.MARKET_MEMORY)):
         for rg, kl, pr in refit_on_real(test, fs):
             print(f"| {name} | {rg:g} | {kl:.4f} | {'beats it' if kl < mkt.kl_to_bsp else 'does not'} |")
             if kl < best_kl:

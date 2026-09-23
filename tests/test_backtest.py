@@ -258,8 +258,8 @@ def test_only_exp_is_barred_from_deployment_not_the_morning_market():
     """We bet into the morning price, so a model that uses it and lands closer to BSP than
     it does has beaten the market it is betting against. EXP stays barred: Form King derives
     it from the market without saying which one."""
-    from fk.backtest import EXP, MARKET_FEATURE, MODEL_SETS, NON_DEPLOYABLE
-    assert NON_DEPLOYABLE == set(EXP)
+    from fk.backtest import COLLATERAL, EXP, MARKET_FEATURE, MODEL_SETS, NON_DEPLOYABLE
+    assert NON_DEPLOYABLE == set(EXP) | set(COLLATERAL)
     assert MARKET_FEATURE not in NON_DEPLOYABLE
     assert not (set(MODEL_SETS["all_form_plus_open_market"]) & NON_DEPLOYABLE)
     assert set(MODEL_SETS["distance_shape_exp"]) & NON_DEPLOYABLE
@@ -439,6 +439,14 @@ def test_intent_features_read_the_flags_and_leave_gaps_as_none():
     assert f == {"trainer_only": 1.0, "jockey_only": 0.0, "apprentice_claim": 1.5, "days_since_win_log": math.log(100),
                  "dual_acceptor": 0.0, "emergency": 1.0}
     assert all(v is None for v in B.intent_features({}).values())
+
+
+def test_collateral_form_is_quarantined_from_every_deployable_set():
+    from fk import backtest as B
+    for name, feats in B.MODEL_SETS.items():
+        if name != "market_kitchen_sink_collateral":
+            assert not (set(feats) & set(B.COLLATERAL)), name
+    assert set(B.COLLATERAL) <= B.NON_DEPLOYABLE
 
 
 def test_market_history_reads_the_next_run_window_and_the_drift():

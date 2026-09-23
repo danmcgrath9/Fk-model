@@ -90,11 +90,10 @@ def main() -> None:
     print("|---|---|---|---|")
     deployed = B.MODEL_SETS["market_kitchen_sink_exp"]
     rows = [("market only", [B.MARKET_FEATURE]), ("deployed (market_kitchen_sink_exp)", deployed),
-            ("history + market", B.MODEL_SETS["history_plus_market"]), ("market + history (compact form)", B.MODEL_SETS["market_plus_history"]),
-            ("deployed + history", B.MODEL_SETS["market_kitchen_sink_history"]),
-            ("deployed + history + next-run collateral", B.MODEL_SETS["market_kitchen_sink_history"] + B.COLLATERAL_NEXT),
-            ("deployed + history + intent", B.MODEL_SETS["market_kitchen_sink_history"] + B.INTENT),
-            ("deployed + history + both", B.MODEL_SETS["market_kitchen_sink_intent"])]
+            ("market memory + market", B.MODEL_SETS["memory_plus_market"]), ("market + memory (compact form)", B.MODEL_SETS["market_plus_memory"]),
+            ("deployed + market memory", B.MODEL_SETS["market_kitchen_sink_memory"]),
+            ("deployed + market memory + intent", B.MODEL_SETS["market_kitchen_sink_memory_intent"]),
+            ("deployed + memory + collateral (QUARANTINED, leaks)", B.MODEL_SETS["market_kitchen_sink_collateral"])]
     results, betas = {}, {}
     for name, feats in rows:
         betas[name] = (B.fit(train, feats, ridge=a.ridge), feats)
@@ -108,8 +107,8 @@ def main() -> None:
                 print("| trees | - | scikit-learn not installed | - |")
                 break
             print(f"| trees: {name} | {len(feats)} | {kl:.4f} | {kl - mkt:+.4f} |")
-    gain = results["deployed (market_kitchen_sink_exp)"] - results["deployed + history"]
-    print(f"\nHISTORY on top of the deployed set: {gain:+.4f} KL ({'sharper' if gain > 0 else 'not sharper'}).")
+    gain = results["deployed (market_kitchen_sink_exp)"] - results["deployed + market memory"]
+    print(f"\nMARKET_MEMORY on top of the deployed set: {gain:+.4f} KL ({'sharper' if gain > 0 else 'not sharper'}).")
 
     # THE LEAKAGE CHECK. 'What the fields it met did afterwards' is only honest if it was
     # computed as at the race day. Races the live pipeline pulled the evening before cannot
