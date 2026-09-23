@@ -33,8 +33,11 @@ on:
         description: 'yes = pull and stop, no fit (a long backfill and its fit are too much for one job)'
         default: 'no'
       disk_stop_mb:
-        description: 'stop pulling once the database reaches this many MB (the disk ran out just under 1 GB)'
+        description: 'database store only: stop pulling once the database reaches this many MB (the disk ran out just under 1 GB)'
         default: '850'
+      store:
+        description: 'files = compressed day files on the history release (no database space); database = the old way'
+        default: 'files'
 
 concurrency:
   group: fk-daily-pull
@@ -63,14 +66,33 @@ jobs:
           cache-dependency-path: requirements.txt
       - run: pip install -r requirements.txt
 
+      - name: Fetch the history files
+        # Past days kept as compressed files on the repo's "history" release (fk/history.py),
+        # because the database is nearly full. The fit reads them beside the database, and
+        # the pull checks them so no race is paid for twice.
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release view history >/dev/null 2>&1 || gh release create history --target main --latest=false \
+            --title "Race history" --notes "Past days for the back-test, one compressed file per day (fk/history.py). Written by the fk backtest workflow; do not delete."
+          mkdir -p history
+          N=$(gh release view history --json assets --jq '.assets | length')
+          if [ "$N" -gt 0 ]; then gh release download history --dir history --pattern '*.jsonl.gz' --clobber; fi
+          echo "history files: $(ls history | wc -l), $(du -sh history | cut -f1)" | tee -a "$GITHUB_STEP_SUMMARY"
+
       - name: Pull past days
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.fit_only != 'yes'
         env:
           FK_API_KEY: ${{ secrets.FK_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: |
           LIVE_FLAG="$(echo "${{ vars.FK_LIVE }}" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
           [ "$LIVE_FLAG" = "true" ] || { echo "FK_LIVE is not true; a back-test needs the live key"; exit 1; }
           START=$(python scripts/ledger.py balance)
+          STORE="${{ github.event.inputs.store || 'files' }}"
+          T0=$(date +%s)
           # NEWEST FIRST: when the credit cap or the disk guard stops the run, what was kept
           # is the most recent racing, which is the most like tomorrow's.
           d="${{ github.event.inputs.to }}"
@@ -80,8 +102,12 @@ jobs:
             if [ "$SPENT" -ge "${{ github.event.inputs.max_credits }}" ]; then
               echo "stopping before $d: $SPENT credits spent this run (max ${{ github.event.inputs.max_credits }})"; break
             fi
+            # stop with room to spare before the 180-minute limit kills a day half paid for
+            if [ $(( $(date +%s) - T0 )) -ge 9600 ]; then
+              echo "stopping before $d: 160 minutes used; $SPENT credits spent"; break
+            fi
             MB=$(python scripts/db_size.py --mb)
-            if [ "$MB" -ge "${{ github.event.inputs.disk_stop_mb || '850' }}" ]; then
+            if [ "$STORE" = "database" ] && [ "$MB" -ge "${{ github.event.inputs.disk_stop_mb || '850' }}" ]; then
               echo "stopping before $d: database at $MB MB (guard ${{ github.event.inputs.disk_stop_mb || '850' }} MB); $SPENT credits spent"; break
             fi
             DOW=$(date -d "$d" +%u)
@@ -91,10 +117,27 @@ jobs:
             echo "=== $d (spent so far $SPENT, database $MB MB) ==="
             TRACK_ARG=""
             [ -n "${{ github.event.inputs.track }}" ] && TRACK_ARG="--track"
-            python scripts/daily_pull.py --key live --yes --no-profiles --skip-held --no-past-events --date "$d" $TRACK_ARG ${{ github.event.inputs.track && format('"{0}"', github.event.inputs.track) || '' }} || echo "day $d failed; continuing"
+            if [ "$STORE" = "database" ]; then
+              python scripts/daily_pull.py --key live --yes --no-profiles --skip-held --no-past-events --date "$d" $TRACK_ARG ${{ github.event.inputs.track && format('"{0}"', github.event.inputs.track) || '' }} || echo "day $d failed; continuing"
+            else
+              BEFORE=$(md5sum "history/$d.jsonl.gz" 2>/dev/null | cut -d' ' -f1)
+              python scripts/history_pull.py --key live --yes --out history --date "$d" $TRACK_ARG ${{ github.event.inputs.track && format('"{0}"', github.event.inputs.track) || '' }} || echo "day $d failed; continuing"
+              # Upload the day straight away: a paid-for day that only lives on this runner is
+              # lost when the job ends. If it will not upload, stop spending.
+              AFTER=$(md5sum "history/$d.jsonl.gz" 2>/dev/null | cut -d' ' -f1)
+              if [ -n "$AFTER" ] && [ "$AFTER" != "$BEFORE" ]; then
+                ok=no
+                for i in 1 2 3; do
+                  gh release upload history "history/$d.jsonl.gz" --clobber && { ok=yes; break; }
+                  sleep $((i * 5))
+                done
+                [ "$ok" = yes ] || { echo "could not upload history/$d.jsonl.gz; stopping so no more credits are spent"; exit 1; }
+              fi
+            fi
             d=$(date -I -d "$d - 1 day")
           done
           echo "run spent $((START - $(python scripts/ledger.py balance))) credits" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "history files now: $(ls history | wc -l), $(du -sh history | cut -f1)" | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Fit to Betfair SP
         if: github.event.inputs.pull_only != 'yes'

@@ -21,6 +21,7 @@ from datetime import timezone, date, datetime, timedelta
 
 from _common import bootstrap, confirm, default_target, make_client, now_melbourne, today_melbourne
 from fk import fields as F
+from fk.history import speedmap_runners
 from fk import ops
 from fk.cache import decide_profile_fetch
 from fk.client import FormKingError, PlannedCall
@@ -264,10 +265,7 @@ def main() -> None:
                 for sm in F.speedmap_list(payload):
                     if F.speedmap_race_id(sm) not in race_meeting:
                         continue
-                    runners = [dict(horse_id=F.horse_id(e), name=F.horse_name(e), number=F.entry_number(e), barrier=F.entry_barrier(e),
-                                    predicted_position=rank, early_speed=F.speedmap_early_speed(e), pir=F.speedmap_pir(e),
-                                    median_vs_benchmark=F.speedmap_median_vs_benchmark(e))
-                               for e, rank in F.speedmap_predicted_order(F.speedmap_entries(sm))]
+                    runners = speedmap_runners(sm)
                     db.upsert("speedmaps", ["race_id"], dict(race_id=F.speedmap_race_id(sm), runners=runners, raw=sm, fetched_at=at))
             else:
                 rid = owner_id

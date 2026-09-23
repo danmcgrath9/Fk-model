@@ -26,12 +26,29 @@ MIN_RACES = 40   # below this a fit is a coincidence, not a model
 WINNER_CHECK_SETS = {"all_form_plus_open_market", "market_kitchen_sink"}
 
 
-def load_races(state: str) -> tuple[list[B.Race], dict[str, P.ProjRace]]:
-    """The logit races and, keyed by race id, the projection inputs for the same races."""
+def load_races(state: str, history_dir: Path | None = None) -> tuple[list[B.Race], dict[str, P.ProjRace]]:
+    """The logit races and, keyed by race id, the projection inputs for the same races:
+    every resulted race in the database, then every one in the history files (fk/history.py)
+    that the database does not hold."""
+    from fk import history as H
     from fk.db import Db
     db = Db(load_settings().database_url)
+    rows = db.resulted_races(state)
+    in_db = {row["race_id"] for row in rows}
+    races, proj = races_from_rows(rows)
+    file_races, file_proj = races_from_rows(H.resulted_races(history_dir, state, skip=in_db))
+    print(f"{len(races)} resulted races from the database, {len(file_races)} more from the history files")
+    races += file_races
+    proj.update(file_proj)
+    # the out-of-sample split is by date, so the two sources are put in one date order
+    races.sort(key=lambda r: (r.date, r.track, r.race_id))
+    return races, proj
+
+
+def races_from_rows(rows) -> tuple[list[B.Race], dict[str, P.ProjRace]]:
+    """Rows shaped like Db.resulted_races (a history file's lines are the same shape)."""
     races, proj = [], {}
-    for row in db.resulted_races(state):
+    for row in rows:
         runners = [r for r in (B.runner_from_entry(e, row.get("distance_m"), row.get("lws")) for e in row["entries"]) if r is not None]
         if len(runners) < 2:
             continue
@@ -241,8 +258,9 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--state", default="VIC")
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument("--history", default=str(ROOT / "history"), help="directory of history day files (fk/history.py)")
     a = ap.parse_args()
-    races, proj = load_races(a.state)
+    races, proj = load_races(a.state, Path(a.history))
     print(f"{len(races)} resulted races loaded")
     model, report = run(races, proj)
     print(report)
