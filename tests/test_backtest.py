@@ -155,7 +155,10 @@ def test_plan_replay_prices_each_block_out_of_sample_and_settles_at_bsp():
     top = out["at_open"]["top_pick"]
     assert out["races"] == 10 and top.bets == 10 and top.winners == 8            # A is top pick everywhere, wins 8
     assert round(top.returned, 2) == round(8 * 1.6, 2) and round(top.staked, 2) == 10.0   # settled at BSP, one unit each
-    assert out["at_bsp"]["top_pick"].bets == 10                                    # the BSP pass ran too
+    # the same bets on the other basis: paid the $2.00 they were struck at, not the $1.60 BSP
+    struck = out["at_struck"]["top_pick"]
+    assert struck.bets == top.bets and struck.winners == top.winners
+    assert round(struck.returned, 2) == round(8 * 2.0, 2)
 
 
 def test_recent_weighted_reads_newest_first_and_skips_the_runs_that_lack_it():
