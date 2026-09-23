@@ -247,3 +247,14 @@ def test_fitting_to_winners_differs_from_fitting_to_the_market():
     assert to_winners < 0                     # B keeps winning, so fitting to winners turns against A
     assert winner_chances(races[0].runners) == [1.0, 0.0]
     assert winner_chances([races[0].runners[0]]) is None
+
+
+def test_only_exp_is_barred_from_deployment_not_the_morning_market():
+    """We bet into the morning price, so a model that uses it and lands closer to BSP than
+    it does has beaten the market it is betting against. EXP stays barred: Form King derives
+    it from the market without saying which one."""
+    from fk.backtest import EXP, MARKET_FEATURE, MODEL_SETS, NON_DEPLOYABLE
+    assert NON_DEPLOYABLE == set(EXP)
+    assert MARKET_FEATURE not in NON_DEPLOYABLE
+    assert not (set(MODEL_SETS["all_form_plus_open_market"]) & NON_DEPLOYABLE)
+    assert set(MODEL_SETS["distance_shape_exp"]) & NON_DEPLOYABLE

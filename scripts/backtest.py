@@ -96,12 +96,14 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         ins = B.score(proj_probs(proj, train, params_tr), train)
         out = B.score(proj_probs(proj, test, params_tr), test)
         proj_rows.append(("projection_sim", None, ins, out, None))
-    # Deployed on LOG LOSS AGAINST THE ACTUAL WINNERS, not on distance from BSP. A model
-    # chosen for sitting close to BSP is chosen for agreeing with the market, and the point
-    # of the thing is to be right where the market is wrong. Winner log loss is noisier
-    # (one data point per race rather than one per runner) and it is the right question.
+    # Deployed on DISTANCE FROM BSP, with the bar set at the morning market rather than at
+    # zero. BSP is the sharpest price anyone gets, so it stands for the truth; the morning
+    # market is the price we actually bet into. A model closer to BSP than the morning market
+    # is has beaten the market we are betting against, which is the whole job. Being AT BSP
+    # is neither possible nor the point.
+    market_bar = yard["opening_market"][1].kl_to_bsp
     form_rows = [r for r in rows if not (set(r[1]) & B.NON_DEPLOYABLE)] + proj_rows
-    best = min(form_rows, key=lambda r: r[3].log_loss)
+    best = min(form_rows, key=lambda r: r[3].kl_to_bsp)
     chosen_name, chosen_feats = best[0], best[1]
     chosen_target = best[4] if len(best) > 4 else B.bsp_chances
     if chosen_name == "projection_sim":
@@ -124,20 +126,28 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
              f"Fitted {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} over {len(with_bsp)} resulted races "
              f"({final_score.runners} runners), {dates[0]} to {dates[-1]}. Out of sample = fitted on the first {len(train)} "
              f"races by date, scored on the last {len(test)}.", "",
-             "Each model is a conditional logit fitted to minimise the cross-entropy against the BSP-implied chances. "
-             "'KL to BSP' is how far it sits from BSP (0 = BSP itself); 'log loss' is scored on the actual winners (lower "
-             "is better); 'top pick won' is the share of races the model's highest-rated runner won.", "",
-             "| model | KL to BSP (in / out) | log loss vs winners (in / out) | top pick won (in / out) |", "|---|---|---|---|"]
+             "Each model is a conditional logit fitted to minimise the cross-entropy against a target: the BSP-implied "
+             "chances, or ('@winners') the actual result. 'KL to BSP' is how far it sits from Betfair SP, the sharpest "
+             "price anyone gets and so the stand-in for the truth. **The bar is not zero, it is the morning market**, "
+             f"which sits at {market_bar:.4f} out of sample: that is the price we bet into, so a model closer to BSP than "
+             "it is has beaten the market it is betting against. 'log loss' is scored on the actual winners and 'top pick "
+             "won' is the share of races the model's highest-rated runner won.", "",
+             "| model | KL to BSP (in / out) | vs the morning market | log loss vs winners (in / out) | top pick won (in / out) |",
+             "|---|---|---|---|---|"]
     for name, (i, o) in yard.items():
-        lines.append(f"| {name} | {i.kl_to_bsp:.4f} / {o.kl_to_bsp:.4f} | {i.log_loss:.4f} / {o.log_loss:.4f} | {i.winner_top_rated:.1%} / {o.winner_top_rated:.1%} |")
+        lines.append(f"| {name} | {i.kl_to_bsp:.4f} / {o.kl_to_bsp:.4f} | {'the bar' if name == 'opening_market' else '-'} | "
+                     f"{i.log_loss:.4f} / {o.log_loss:.4f} | {i.winner_top_rated:.1%} / {o.winner_top_rated:.1%} |")
     for name, feats, i, o, _t in rows + proj_rows:
         mark = " **(deployed)**" if name == chosen_name else ""
-        lines.append(f"| {name}{mark} | {i.kl_to_bsp:.4f} / {o.kl_to_bsp:.4f} | {i.log_loss:.4f} / {o.log_loss:.4f} | {i.winner_top_rated:.1%} / {o.winner_top_rated:.1%} |")
-    lines += ["", f"Deployed: **{chosen_name}**, the form-only model with the lowest log loss against the ACTUAL WINNERS out of "
-              f"sample, refitted on all {len(with_bsp)} races. Not the one closest to BSP: a model chosen for sitting close to "
-              "BSP is chosen for agreeing with the market, and a model that reached BSP exactly would price every runner the "
-              "way the market already does and have no edge at all. '@winners' marks a model fitted to the actual result "
-              "rather than to the market's closing price.", ""]
+        beat = "BEATS IT" if o.kl_to_bsp < market_bar else f"{o.kl_to_bsp - market_bar:+.4f}"
+        lines.append(f"| {name}{mark} | {i.kl_to_bsp:.4f} / {o.kl_to_bsp:.4f} | {beat} | {i.log_loss:.4f} / {o.log_loss:.4f} | {i.winner_top_rated:.1%} / {o.winner_top_rated:.1%} |")
+    verdict = ("BEATS the morning market" if best[3].kl_to_bsp < market_bar
+               else f"does NOT beat the morning market, {best[3].kl_to_bsp - market_bar:+.4f} behind it")
+    lines += ["", f"Deployed: **{chosen_name}**, the model closest to BSP out of sample, refitted on all {len(with_bsp)} races. "
+              f"It {verdict}. The morning price is a legitimate input: we bet into it, so using it and landing closer to BSP "
+              "than it does is exactly what beating the market means. EXP is the one thing barred, because Form King derives "
+              "it from the market without saying which one and it scores like a figure that already knows the close. "
+              "'@winners' marks a model fitted to the actual result rather than to the closing price.", ""]
     if final_beta is not None:
         lines += ["## Coefficients of the deployed model", ""] + [f"- {k}: {v:+.4f}" for k, v in final_beta.items()]
     else:

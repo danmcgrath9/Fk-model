@@ -57,12 +57,17 @@ SHAPE = ["early_pos", "early_x_tempo"]
 # expected tempo (a backmarker in a slow-run race is the classic disadvantage), and how far
 # today's map asks it to race from where it usually does.
 STYLE = ["style_x_tempo", "map_vs_habit"]
-# Form King's EXP is derived partly from the market, so a model carrying it is measured
-# for information and never deployed to price against that market.
+# Form King's EXP is derived from the market and Form King does not say from WHICH market.
+# It scores so far ahead of everything else that late money is the likely explanation, and a
+# figure that already knows where the price closed cannot be used to predict where the price
+# will close. Measured for information, never deployed.
 EXP = ["exp_rel"]
 FORM_FEATURES = NEURAL + RATINGS + DISTANCE
 MARKET_FEATURE = "open_logit"
-NON_DEPLOYABLE = {MARKET_FEATURE, *EXP}
+# Only EXP is barred. The MORNING PRICE is not: we bet into that price, so a model that
+# uses it and lands closer to BSP than it does has beaten the market we are betting against.
+# Refusing the market as an input was refusing the only thing that has ever cleared the bar.
+NON_DEPLOYABLE = set(EXP)
 
 # The feature sets the back-test compares. The one closest to BSP out of sample is deployed.
 MODEL_SETS = {
