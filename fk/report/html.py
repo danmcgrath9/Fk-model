@@ -179,6 +179,7 @@ class RaceSection:
     context: list[ContextRow] = field(default_factory=list)
     projections: list[ProjectionRow] = field(default_factory=list)
     sim_runs: int = 0
+    bettable: bool = True        # False when the model's market input was incomplete: read, never bet
 
 
 def _fmt(v: Any, nd: int = 2, pct: bool = False) -> str:

@@ -22,12 +22,13 @@ def table(bets: list[dict]) -> str:
     by_runner: "OrderedDict[tuple, list[dict]]" = OrderedDict()
     for b in sorted(bets, key=lambda b: (b["track"] or "", b["race_number"] or 0, b["horse_name"] or "", b["plan"])):
         by_runner.setdefault((b["track"], b["race_number"], b["horse_name"]), []).append(b)
-    lines = ["| Race | Horse | Price taken | Our price | Plans (units) | Result |", "|---|---|---|---|---|---|"]
+    lines = ["| Race | Horse | Opened | Price taken | Our price | Plans (units) | Result |", "|---|---|---|---|---|---|---|"]
     for (track, race, horse), group in by_runner.items():
         first = group[0]
         plans = ", ".join(f"{SHORT.get(b['plan'], b['plan'])} {float(b['stake']):.2f}" for b in group)
         price = f"${float(first['price']):.2f}" if first["price"] else "n/a"
         rated = f"${float(first['rated_price']):.2f}" if first["rated_price"] else "n/a"
+        opened = f"${float(first['opening_price']):.2f}" if first.get("opening_price") else "n/a"
         if first["settled_at"] is None:
             result = "open"
         else:
@@ -35,7 +36,7 @@ def table(bets: list[dict]) -> str:
             fin = first["finish"] if first["finish"] is not None else "?"
             sp = f" BSP ${float(first['settle_price']):.2f}" if first["settle_price"] else ""
             result = f"{fin}{sp}, {won:+.2f}u"
-        lines.append(f"| R{race} | {horse} | {price} | {rated} | {plans} | {result} |")
+        lines.append(f"| R{race} | {horse} | {opened} | {price} | {rated} | {plans} | {result} |")
     return "\n".join(lines)
 
 

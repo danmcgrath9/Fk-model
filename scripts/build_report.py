@@ -88,14 +88,46 @@ def projection_chances(params_dict: dict, entries: list[dict], speedmap: list[di
     return probs, rows
 
 
+# A race is priced and bet only when at least this share of its runners carry an opening
+# price. The model's market input is the opening price, and a runner without one is
+# filled with the field's average chance, which rates a $151 outsider like an ordinary
+# runner; the first live week showed exactly that, before this check existed.
+MIN_OPEN_COVERAGE = 0.8
+
+
+def with_opening(raw: dict, opening: float | None) -> dict:
+    """The entry with its odds' avgOpen set to `opening` (the newest morning snapshot's
+    opening price, the same Form King field the fit was trained on). The race form is
+    pulled the evening before, often before a market has formed, so the snapshot is the
+    fuller read. No snapshot price: the entry is left as it is."""
+    if opening is None or opening <= 1:
+        return raw
+    odds = dict((raw.get("odds") or {}) if isinstance(raw.get("odds"), dict) else {})
+    odds["avgOpen"] = opening
+    return {**raw, "odds": odds}
+
+
+def open_coverage(entries: list[dict], openings: dict[str, float | None] | None = None) -> tuple[int, int]:
+    """(runners with an opening price the model can use, runners)."""
+    have = 0
+    for e in entries:
+        raw = with_opening(e.get("raw") or {}, (openings or {}).get(e["horse_id"]))
+        if (F.entry_odds(raw) or {}).get("avgOpen") is not None:
+            have += 1
+    return have, len(entries)
+
+
 def model_chances(model: dict, entries: list[dict], distance_m: int | None = None, lws: float | None = None,
-                  speedmap: list[dict] | None = None, tempo_raw: dict | None = None) -> dict[str, float]:
+                  speedmap: list[dict] | None = None, tempo_raw: dict | None = None,
+                  openings: dict[str, float | None] | None = None) -> dict[str, float]:
     """Win chance per active runner from the back-tested conditional logit, on the same
     features the fit used (fk.backtest.race_features over each entry's own record, then
-    the race shape from the speedmap and expected tempo)."""
+    the race shape from the speedmap and expected tempo). `openings` = {horse_id: the
+    morning snapshot's opening price}, which replaces the evening form's."""
     from fk import backtest as B
     from fk import projection as P
-    runners = [r for r in (B.runner_from_entry(e["raw"], distance_m, lws) for e in entries if e.get("raw")) if r is not None]
+    runners = [r for r in (B.runner_from_entry(with_opening(e["raw"], (openings or {}).get(e["horse_id"])), distance_m, lws)
+                           for e in entries if e.get("raw")) if r is not None]
     if not runners:
         return {}
     B.race_features(runners)
@@ -263,7 +295,13 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         section.facts.append(f"Rated by the projection model: a projected figure per runner and the race run {SIM_RUNS:,} times; "
                              f"weights fitted to Betfair SP over {rated_model['races']} races to {rated_model['to']}")
     elif rated_model:
-        model = model_chances(rated_model, active, race.get("distance_m"), lws, speedmap, tempo_raw)
+        openings = {e["horse_id"]: odds.get(e["horse_id"], {}).get("opening") for e in active}
+        have, n = open_coverage(active, openings)
+        if n and have / n < MIN_OPEN_COVERAGE:
+            section.bettable = False
+            section.facts.append(f"Market not formed: {have} of {n} runners carry an opening price, so the model's market "
+                                 f"input is incomplete. Rated for reading only; no paper bets on this race.")
+        model = model_chances(rated_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, openings)
         if rated_model.get("projection_params"):
             # The projection is the founder's own method; it is shown beside the price even
             # when the back-test trusts another model to set it.
@@ -381,6 +419,9 @@ def place_paper(db, race: dict, section: RaceSection) -> int:
         # A page built after the race has run carries a price nobody could take now.
         when = jump.strftime("%H:%M Melbourne") if jump else "unknown"
         print(f"paper: race {race.get('race_number')} not bet, jump {when} has passed or is unknown")
+        return 0
+    if not getattr(section, "bettable", True):
+        print(f"paper: race {race.get('race_number')} not bet, market not formed (too few opening prices)")
         return 0
     db.ensure_paper_book()
     # ONE pricing decides a race. A page rebuilt later could only ever ADD bets (a horse
