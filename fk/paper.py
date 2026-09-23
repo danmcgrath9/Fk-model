@@ -165,6 +165,14 @@ DEDUCTION_MIN = 0.025
 DEDUCTION_CAP = 0.75
 
 
+def model_family(label: str | None) -> str:
+    """The kind of model a bet was priced by, without the fit's size and date.
+    'market_kitchen_sink (1330 races to 2026-09-22)' -> 'market_kitchen_sink'."""
+    if not label:
+        return "unrecorded"
+    return label.split(" (")[0].strip()
+
+
 def deduction_for(scratched_prices: list[float | None]) -> float:
     """Share of winnings deducted for late scratchings, from each scratched runner's last
     price. Hand-checked: $4 and $41 scratched -> 1/4 = 0.25 counts, 1/41 = 0.024 is under

@@ -109,3 +109,11 @@ def test_void_bets_are_left_out_of_every_figure():
     assert (s.bets, s.staked, s.returned) == (1, 1.0, 5.0)
     t = summarise_at_struck(bets)["value_flags"]
     assert (t.bets, t.returned) == (1, 1.0 + 3.0 * 0.75)  # the winner at $4 less a 25c deduction
+
+
+def test_a_refit_does_not_start_a_new_scoreboard():
+    from fk.paper import model_family
+    assert model_family("market_kitchen_sink (1330 races to 2026-09-22)") == model_family(
+        "market_kitchen_sink (4100 races to 2026-09-29)") == "market_kitchen_sink"
+    assert model_family("form_only (before the market model)") == "form_only"
+    assert model_family(None) == "unrecorded"

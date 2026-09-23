@@ -144,10 +144,13 @@ def main() -> None:
     print(f"paper book: {len(settled)} settled, {len(open_bets)} open; wrote {out / 'paper-book.html'} and docs/PAPER_BOOK.md")
     for plan, s in summ.items():
         print(f"  {plan:20} bets {s.bets:4}  staked {s.staked:7.1f}  profit {s.profit:+8.2f}  return {s.roi:+.1%}" if s.roi is not None else f"  {plan}")
-    # One scoreboard per model: a plan's record means nothing across a change of model.
+    # One scoreboard per KIND of model, not per fit: the weekly refit of the same model on
+    # more data is the same strategy getting sharper, and splitting its record at every refit
+    # would leave no scoreboard ever big enough to read. A change of kind (form only to one
+    # that reads the market) is a different strategy and gets its own.
     by_model: dict[str, list[dict]] = {}
     for b in settled:
-        by_model.setdefault(b.get("model") or "unrecorded", []).append(b)
+        by_model.setdefault(P.model_family(b.get("model")), []).append(b)
     for model_name, group in sorted(by_model.items()):
         print(f"\nmodel: {model_name}")
         m_bsp, m_struck = P.summarise(group), P.summarise_at_struck(group)
