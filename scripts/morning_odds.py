@@ -19,6 +19,22 @@ from fk import ops
 from fk.db import Db, utc_now
 from fk.estimate import estimate
 
+# The history the evening pull paid for (Get Race Form at numBenchmarks=5) and that a Meeting
+# Summary may carry more thinly. The model reads its form from the stored entry, so a morning
+# refresh keeps these from the stored copy whenever the stored copy has them.
+KEEP_FROM_STORED = ("pastEvents", "recentTrials")
+
+
+def merged_entry(stored: dict | None, fresh: dict) -> dict:
+    """The fresh entry (odds, scratching, ratings, result) over the stored one, with the
+    stored past runs and trials kept when the stored copy has them. Hand-checked: stored
+    {pastEvents: [a, b], odds: 1}, fresh {pastEvents: [a], odds: 2} -> {pastEvents: [a, b], odds: 2}."""
+    out = {**(stored or {}), **fresh}
+    for k in KEEP_FROM_STORED:
+        if stored and stored.get(k):
+            out[k] = stored[k]
+    return out
+
 
 def main() -> None:
     ap = argparse.ArgumentParser()
@@ -55,6 +71,7 @@ def main() -> None:
             at = utc_now()
             for r in F.meeting_races(payload):
                 rid = F.race_id(r)
+                stored = {x["horse_id"]: x.get("raw") for x in db.entries_for_race(rid)}
                 for e in F.race_entries(r):
                     hid = F.horse_id(e)
                     db.upsert("horses", ["horse_id"], dict(horse_id=hid, name=F.horse_name(e), fetched_at=at))
@@ -62,7 +79,8 @@ def main() -> None:
                     db.upsert("entries", ["race_id", "horse_id"], dict(
                         race_id=rid, horse_id=hid, barrier=F.entry_barrier(e), weight_kg=F.entry_weight(e), jockey=F.entry_jockey(e),
                         trainer=F.entry_trainer(e), scratched=F.entry_scratched(e), neural_rating=F.entry_neural_rating(e),
-                        exp_rating=F.entry_exp_rating(e), days_since_last_run=F.entry_days_since_last_run(e), raw=e, fetched_at=at))
+                        exp_rating=F.entry_exp_rating(e), days_since_last_run=F.entry_days_since_last_run(e),
+                        raw=merged_entry(stored.get(hid), e), fetched_at=at))
                     odds = F.entry_odds(e)
                     if odds:
                         observed = F.odds_timestamp(odds) or at

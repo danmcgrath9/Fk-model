@@ -45,6 +45,9 @@ on:
       exclude_run:
         description: "what-if: leave a horse's run out of every figure, NAME@YYYY-MM-DD (comma separated); writes a -whatif page, places no bets"
         default: ''
+      odds_only:
+        description: 'yes = only refresh the prices (one Meeting Summary per meeting, 5 credits) for the date(s) given, comma separated, and rebuild them'
+        default: 'no'
 
 concurrency:
   group: fk-daily-pull
@@ -94,8 +97,18 @@ jobs:
       - name: Spec report
         run: python scripts/spec_report.py
 
+      - name: Refresh prices only
+        if: github.event.inputs.odds_only == 'yes'
+        env:
+          FK_API_KEY: ${{ steps.key.outputs.key == 'live' && secrets.FK_API_KEY || 'FK-TEST-API-KEY' }}
+        run: |
+          for D in $(echo "${{ github.event.inputs.date }}" | tr ',' ' '); do
+            python scripts/morning_odds.py --key ${{ steps.key.outputs.key }} --yes --date "$D"
+            python scripts/build_report.py --no-open --date "$D"
+          done
+
       - name: Daily pull
-        if: github.event.inputs.rebuild_only != 'yes'
+        if: github.event.inputs.rebuild_only != 'yes' && github.event.inputs.odds_only != 'yes'
         env:
           FK_API_KEY: ${{ steps.key.outputs.key == 'live' && secrets.FK_API_KEY || 'FK-TEST-API-KEY' }}
         run: |
@@ -107,6 +120,7 @@ jobs:
           eval python scripts/daily_pull.py --key ${{ steps.key.outputs.key }} --yes $DATE_ARG
 
       - name: Build reports
+        if: github.event.inputs.odds_only != 'yes'
         env:
           EXCLUDE_RUN: ${{ github.event.inputs.exclude_run }}
         run: |
