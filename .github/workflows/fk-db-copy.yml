@@ -1,0 +1,59 @@
+name: fk db copy
+
+# Copies the whole fk schema from the current database (FK_DATABASE_URL) to the new one
+# (FK_DATABASE_URL_NEW) and proves the copy: every table's row count must match and the
+# browser roles must stay shut out, or the job fails. Nothing is deleted from the old
+# database. No Form King calls, no credits. Runs in the pull's concurrency group, so no
+# pull or fit is writing while it copies.
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: fk-daily-pull
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      OLD_DATABASE_URL: ${{ secrets.FK_DATABASE_URL }}
+      NEW_DATABASE_URL: ${{ secrets.FK_DATABASE_URL_NEW }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - run: pip install -r requirements.txt
+      - name: Check both databases are configured
+        run: |
+          [ -n "$OLD_DATABASE_URL" ] || { echo "FK_DATABASE_URL is not set"; exit 1; }
+          [ -n "$NEW_DATABASE_URL" ] || { echo "FK_DATABASE_URL_NEW is not set: add the new project's Session pooler string as that secret"; exit 1; }
+      - name: Postgres client 17 (pg_dump must be at least the server's version)
+        run: |
+          sudo install -d /usr/share/postgresql-common/pgdg
+          sudo curl -fsSL -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client-17
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+      - name: Refuse to copy over a database that already holds fk data
+        run: |
+          n=$(psql "$NEW_DATABASE_URL" -Atc "select count(*) from pg_namespace where nspname = 'fk'")
+          [ "$n" = "0" ] || { echo "the new database already has an fk schema; not overwriting it"; exit 1; }
+      - name: Dump the fk schema
+        run: |
+          set -o pipefail
+          pg_dump "$OLD_DATABASE_URL" --schema=fk --no-owner --format=custom --file=fk.dump
+          ls -lh fk.dump | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Restore into the new database
+        run: pg_restore --dbname="$NEW_DATABASE_URL" --no-owner --exit-on-error fk.dump
+      - name: Prove the copy
+        run: |
+          set -o pipefail
+          python scripts/db_copy_check.py | tee -a "$GITHUB_STEP_SUMMARY"
