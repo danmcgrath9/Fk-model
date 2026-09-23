@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -24,6 +25,14 @@ MIN_RACES = 40   # below this a fit is a coincidence, not a model
 # The sets still fitted to the winners as well as to BSP, as a standing check that the
 # winners target keeps losing; if it ever stops losing, widen this.
 WINNER_CHECK_SETS = {"all_form_plus_open_market", "market_kitchen_sink"}
+# The sets searched every run. Every form-only set has lost to the morning market by a
+# wide margin in every run (the best, kitchen_sink, stays as the reference for how far
+# form alone gets), and the full search took 45 minutes on 1,330 races, so on the three or
+# four thousand the history files bring it would outgrow the job's time limit.
+# FK_ALL_SETS=1 searches all of B.MODEL_SETS, for when a new feature group needs trying.
+SEARCH_SETS = ["neural_only", "kitchen_sink", "all_form_plus_open_market", "market_plus_class", "market_plus_distance",
+               "market_plus_speed", "market_plus_position", "market_plus_everything", "market_the_lot",
+               "market_shaped", "market_shaped_all", "market_kitchen_sink"]
 
 
 def load_races(state: str, history_dir: Path | None = None) -> tuple[list[B.Race], dict[str, P.ProjRace]]:
@@ -100,7 +109,9 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
     # itself, which by construction has no edge; fitting to winners is noisier and leaves
     # room to disagree with the market and be right.
     rows = []
-    for name, feats in B.MODEL_SETS.items():
+    names = list(B.MODEL_SETS) if os.environ.get("FK_ALL_SETS") == "1" else SEARCH_SETS
+    for name in names:
+        feats = B.MODEL_SETS[name]
         # Fitting to the winners has lost to fitting to BSP on every set in every run so far,
         # by overfitting: one winner per race is too little signal. It stays on two sets as a
         # standing check, and off the rest, which halves a run that would otherwise outgrow
@@ -224,11 +235,15 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
     replay_feats = chosen_feats if chosen_feats else B.MODEL_SETS["all_form_plus_class"]
     replay = B.plan_replay(with_bsp, replay_feats, target=chosen_target or B.bsp_chances, ridge=chosen_ridge)
     lines += ["", f"## The plans, replayed over {replay['races']} races the fit never saw", "",
-              "Five blocks by date, each priced by a model fitted on the other four. Every bet is chosen against the MORNING "
-              "market and struck at the morning price. The two profit columns are the SAME bets on two settlement bases: paid "
-              "at Betfair SP, which is what betting into the jump gets you, and paid at the price it was struck at, which is "
-              "what taking the morning price gets you. They differ by however far the selections moved.", "",
-              "| plan | bets | winners | staked | at BSP: profit | return | at the struck price: profit | return |",
+              "Five blocks by date, each priced by a model fitted on the other four. Every bet is chosen against the OPENING "
+              "market. The two profit columns are the SAME bets on two settlement bases: paid at Betfair SP, which is what "
+              "betting into the jump gets you, and paid at Form King's AVERAGE OPENING price (avgOpen).", "",
+              "**Read the opening-price column as an upper bound, not a result.** avgOpen is an average of the first prices "
+              "bookmakers put up, which nobody can take as a single bet, and it is the one price history holds. The live paper "
+              "book bets at the price on the page when the morning run happens, which is later and sharper than the open, and "
+              "there the value selections have drifted and lost (see the paper book). Profit is judged at Betfair SP here and "
+              "at the struck price in the live book; this column only shows how much the open itself was beatable.", "",
+              "| plan | bets | winners | staked | at BSP: profit | return | at the average opening price: profit | return |",
               "|---|---|---|---|---|---|---|---|"]
     from fk import paper as PB
     for plan in PB.PLANS:
@@ -246,11 +261,11 @@ def run(races: list[B.Race], proj: dict[str, P.ProjRace] | None = None) -> tuple
         sweep_rows, best = B.value_sweep(with_bsp, replay_feats, target=chosen_target or B.bsp_chances, ridge=chosen_ridge, under=under)
         sweeps[label] = {"chosen": list(best) if best else None, "rows": [vars(r) for r in sweep_rows]}
         lines += ["", f"## Choosing the value rule: {label}", "",
-                  "gap = our chance beats the market's by more than the threshold in percentage points (the live rule is gap "
-                  "0.05). ev = our chance times the morning price is more than 1 plus the threshold. Each rule is picked on the "
+                  "gap = our chance beats the opening market's by more than the threshold in percentage points (the live rule is "
+                  "gap 0.05). ev = our chance times the average opening price is more than 1 plus the threshold. Each rule is picked on the "
                   f"OLDER {B.SWEEP_CHOOSE_BLOCKS} fifths of the racing by its return at Betfair SP (at least {B.SWEEP_MIN_BETS} "
                   "bets), then shown on the NEWER two fifths it never saw. Returns are one unit a bet, before commission.", "",
-                  "| rule | threshold | older: bets | at BSP | at morning price | newer: bets | at BSP | at morning price |",
+                  "| rule | threshold | older: bets | at BSP | at avg opening price | newer: bets | at BSP | at avg opening price |",
                   "|---|---|---|---|---|---|---|---|"]
         by = {(r.rule, r.threshold, r.half): r for r in sweep_rows}
         for rule, ts in B.VALUE_RULES.items():
