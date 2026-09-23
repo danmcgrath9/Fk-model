@@ -1,10 +1,10 @@
 {
-  "fitted_at": "2026-09-23T00:34:50+00:00",
-  "races": 386,
-  "runners": 4024,
+  "fitted_at": "2026-09-23T02:28:25+00:00",
+  "races": 856,
+  "runners": 8856,
   "from": "2026-04-30",
   "to": "2026-09-22",
-  "model": "all_form_plus_open_market",
+  "model": "market_kitchen_sink",
   "features": [
     "neural_rel",
     "last_rel",
@@ -15,21 +15,98 @@
     "ohr_rel",
     "dist_rel",
     "dist_win",
-    "open_logit"
+    "last_vs_lws",
+    "best_vs_lws",
+    "trend_slope",
+    "starts_log",
+    "last_dist_rel",
+    "best_dist_rel",
+    "dist_change",
+    "speed_rel",
+    "speed_best_rel",
+    "finish_speed_rel",
+    "last600_rel",
+    "to600_rel",
+    "settle_share",
+    "pos800_share",
+    "pos_gain",
+    "late_gain",
+    "early_pos",
+    "early_x_tempo",
+    "style_x_tempo",
+    "map_vs_habit",
+    "barrier_share",
+    "days_log",
+    "run_in_prep",
+    "weight_rel",
+    "wfa_diff",
+    "beaten_3",
+    "prize_log",
+    "track_win",
+    "going_win",
+    "class_win",
+    "td_win",
+    "wet_win",
+    "up_win",
+    "jockey_win",
+    "trainer_win",
+    "jt_combo_win",
+    "open_logit",
+    "market_prob",
+    "market_x_neural"
   ],
   "beta": {
-    "neural_rel": 0.47948543228792534,
-    "last_rel": 0.020144233069751827,
-    "peak_rel": -0.0028848791529856484,
-    "peak12_rel": 0.013577240361296393,
-    "wfa_rel": -0.011386425100369055,
-    "wfa_best_rel": 0.006290737675519109,
-    "ohr_rel": -0.0031403327577357557,
-    "dist_rel": 0.017960726180802352,
-    "dist_win": 0.3345368569477783,
-    "open_logit": 0.8310052466693229
+    "neural_rel": 0.17665865593250268,
+    "last_rel": 0.010581496627772425,
+    "peak_rel": 0.006203316158076817,
+    "peak12_rel": 0.015491177113076472,
+    "wfa_rel": -0.0031728833170274564,
+    "wfa_best_rel": -0.09323069106210122,
+    "ohr_rel": -0.001327573306855477,
+    "dist_rel": 0.018774530695183648,
+    "dist_win": 0.040999640311093474,
+    "last_vs_lws": 0.010581496627765155,
+    "best_vs_lws": 0.08551282260049267,
+    "trend_slope": 0.007515642316749462,
+    "starts_log": -0.02125693198478685,
+    "last_dist_rel": -0.006109772318808118,
+    "best_dist_rel": 0.007147766209604656,
+    "dist_change": -0.0017920370560348291,
+    "speed_rel": 0.000839342121595501,
+    "speed_best_rel": -0.0011193315384650563,
+    "finish_speed_rel": 0.010260213944805457,
+    "last600_rel": -0.008167410150195335,
+    "to600_rel": 0.002406216218074965,
+    "settle_share": -0.026003024402519195,
+    "pos800_share": -0.14879398537915142,
+    "pos_gain": -0.16930196040456222,
+    "late_gain": 0.3372688005916595,
+    "early_pos": 0.015716667600957513,
+    "early_x_tempo": -0.020833082796892576,
+    "style_x_tempo": 0.02859363827837019,
+    "map_vs_habit": -0.05733373947997504,
+    "barrier_share": 0.0625437371778678,
+    "days_log": -0.05855846201444469,
+    "run_in_prep": -0.004069401413045529,
+    "weight_rel": 0.009569539490671046,
+    "wfa_diff": 0.06278794054259305,
+    "beaten_3": -0.0023279397330876034,
+    "prize_log": -0.030367673082486356,
+    "track_win": 0.27305689417571655,
+    "going_win": 0.4017908975360925,
+    "class_win": -1.8681520460556188e-32,
+    "td_win": 0.15723055046102738,
+    "wet_win": 0.0,
+    "up_win": 0.10423900767581391,
+    "jockey_win": 0.028940403150169793,
+    "trainer_win": 0.007242107087136422,
+    "jt_combo_win": 0.0,
+    "open_logit": 0.7998684071732907,
+    "market_prob": -0.08085994274553174,
+    "market_x_neural": -0.0875005734063199
   },
   "fitted_to": "bsp",
+  "ridge": 1.0,
   "params": null,
   "projection_params": {
     "recent_runs": 4,
@@ -41,7 +118,7 @@
     "sd_floor": 3.0,
     "light_sd": 1.5,
     "sd_scale": 3.0,
-    "unrated_gap": 4.0,
+    "unrated_gap": 7.0,
     "unrated_sd": 3.0,
     "neural_weight": 15.0
   },
@@ -49,351 +126,323 @@
     "at_open": {
       "top_pick": {
         "plan": "top_pick",
-        "bets": 386,
-        "winners": 125,
-        "staked": 386.0,
-        "returned": 434.31625020000007
+        "bets": 856,
+        "winners": 258,
+        "staked": 856.0,
+        "returned": 889.8310416000006
       },
       "top_pick_to_win_1": {
         "plan": "top_pick_to_win_1",
-        "bets": 386,
-        "winners": 125,
-        "staked": 189.5753,
-        "returned": 213.68234862254687
+        "bets": 855,
+        "winners": 258,
+        "staked": 524.5990999999997,
+        "returned": 443.41363279728114
       },
       "kelly_quarter": {
         "plan": "kelly_quarter",
-        "bets": 931,
-        "winners": 119,
-        "staked": 534.9643000000004,
-        "returned": 580.2291830759463
+        "bets": 2358,
+        "winners": 283,
+        "staked": 1536.4678000000024,
+        "returned": 1541.580402826294
       },
       "value_flags": {
         "plan": "value_flags",
-        "bets": 63,
-        "winners": 32,
-        "staked": 63.0,
-        "returned": 91.51009400999999
+        "bets": 236,
+        "winners": 72,
+        "staked": 236.0,
+        "returned": 227.46186298
       },
       "value_under_8": {
         "plan": "value_under_8",
-        "bets": 63,
-        "winners": 32,
-        "staked": 63.0,
-        "returned": 91.51009400999999
+        "bets": 231,
+        "winners": 72,
+        "staked": 231.0,
+        "returned": 227.46186298
       }
     },
     "at_struck": {
       "top_pick": {
         "plan": "top_pick",
-        "bets": 386,
-        "winners": 125,
-        "staked": 386.0,
-        "returned": 426.3800000000001
+        "bets": 856,
+        "winners": 258,
+        "staked": 856.0,
+        "returned": 892.3299999999995
       },
       "top_pick_to_win_1": {
         "plan": "top_pick_to_win_1",
-        "bets": 386,
-        "winners": 125,
-        "staked": 189.5753,
-        "returned": 204.28439000000003
+        "bets": 855,
+        "winners": 258,
+        "staked": 524.5990999999997,
+        "returned": 416.5152229999997
       },
       "kelly_quarter": {
         "plan": "kelly_quarter",
-        "bets": 931,
-        "winners": 119,
-        "staked": 534.9643000000004,
-        "returned": 808.9907650000002
+        "bets": 2358,
+        "winners": 283,
+        "staked": 1536.4678000000024,
+        "returned": 2233.6757119999997
       },
       "value_flags": {
         "plan": "value_flags",
-        "bets": 63,
-        "winners": 32,
-        "staked": 63.0,
-        "returned": 100.87
+        "bets": 236,
+        "winners": 72,
+        "staked": 236.0,
+        "returned": 291.24
       },
       "value_under_8": {
         "plan": "value_under_8",
-        "bets": 63,
-        "winners": 32,
-        "staked": 63.0,
-        "returned": 100.87
+        "bets": 231,
+        "winners": 72,
+        "staked": 231.0,
+        "returned": 291.24
       }
     }
   },
   "scores": {
     "deployed_in_sample": {
-      "races": 386,
-      "runners": 4024,
-      "kl_to_bsp": 0.12154065117779984,
-      "log_loss": 1.935539621888403,
-      "winner_top_rated": 0.3238341968911917
+      "races": 856,
+      "runners": 8856,
+      "kl_to_bsp": 0.11356982738590955,
+      "log_loss": 1.9601358492775138,
+      "winner_top_rated": 0.3060747663551402
     },
     "neural_only_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.2860148152492164,
-      "log_loss": 2.0778184387192216,
-      "winner_top_rated": 0.25862068965517243
-    },
-    "neural_only @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.28652717493895824,
-      "log_loss": 2.0799862034011443,
-      "winner_top_rated": 0.25862068965517243
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.2599937027393629,
+      "log_loss": 2.035618058752206,
+      "winner_top_rated": 0.2490272373540856
     },
     "ratings_only_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.32605082678878644,
-      "log_loss": 2.0623010023533523,
-      "winner_top_rated": 0.3017241379310345
-    },
-    "ratings_only @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.3981885970613109,
-      "log_loss": 2.0690369914418754,
-      "winner_top_rated": 0.2672413793103448
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.3096370923506286,
+      "log_loss": 2.0048308285052143,
+      "winner_top_rated": 0.3035019455252918
     },
     "ratings_plus_distance_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.3054548546465529,
-      "log_loss": 2.0458941879048904,
-      "winner_top_rated": 0.27586206896551724
-    },
-    "ratings_plus_distance @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.385871168850094,
-      "log_loss": 2.056086952612401,
-      "winner_top_rated": 0.25
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.28515490802234444,
+      "log_loss": 1.98698798382818,
+      "winner_top_rated": 0.29961089494163423
     },
     "all_form_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.24498190885497012,
-      "log_loss": 1.9949670459116866,
-      "winner_top_rated": 0.27586206896551724
-    },
-    "all_form @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.3456438380492997,
-      "log_loss": 2.023231936950727,
-      "winner_top_rated": 0.2672413793103448
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.2169612699709531,
+      "log_loss": 1.9326597010247968,
+      "winner_top_rated": 0.3035019455252918
     },
     "all_form_plus_class_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.2304289107478093,
-      "log_loss": 1.9856973449691329,
-      "winner_top_rated": 0.3275862068965517
-    },
-    "all_form_plus_class @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.33935897117565733,
-      "log_loss": 2.020177733356329,
-      "winner_top_rated": 0.28448275862068967
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.2113658383948405,
+      "log_loss": 1.9232198977619357,
+      "winner_top_rated": 0.32684824902723736
     },
     "ratings_class_distance_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.2880812837264319,
-      "log_loss": 2.03540342615997,
-      "winner_top_rated": 0.28448275862068967
-    },
-    "ratings_class_distance @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.37678060380776335,
-      "log_loss": 2.0508655579558255,
-      "winner_top_rated": 0.25
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.2789773708325544,
+      "log_loss": 1.9771608968178593,
+      "winner_top_rated": 0.29571984435797666
     },
     "all_form_plus_open_market_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.1538804136529007,
-      "log_loss": 1.9090969956662707,
-      "winner_top_rated": 0.31896551724137934
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.13908425585880946,
+      "log_loss": 1.8492026995536668,
+      "winner_top_rated": 0.33852140077821014
     },
     "all_form_plus_open_market @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.25218918056090167,
-      "log_loss": 1.9341502689897754,
-      "winner_top_rated": 0.3103448275862069
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.19212791086464512,
+      "log_loss": 1.873994875280581,
+      "winner_top_rated": 0.35797665369649806
     },
     "distance_aware_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.23015265240982083,
-      "log_loss": 1.9895123994319497,
-      "winner_top_rated": 0.3275862068965517
-    },
-    "distance_aware @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.34054398385144263,
-      "log_loss": 2.043437287518347,
-      "winner_top_rated": 0.29310344827586204
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.2109896630498758,
+      "log_loss": 1.9246571381167081,
+      "winner_top_rated": 0.3229571984435798
     },
     "distance_shape_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.2304932813771391,
-      "log_loss": 1.9858074340560707,
-      "winner_top_rated": 0.31896551724137934
-    },
-    "distance_shape @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.34524131041771944,
-      "log_loss": 2.0349738342673276,
-      "winner_top_rated": 0.3017241379310345
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.21007878949347858,
+      "log_loss": 1.9224137267169894,
+      "winner_top_rated": 0.31906614785992216
     },
     "distance_shape_exp_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.06618726757091933,
-      "log_loss": 1.846608168946415,
-      "winner_top_rated": 0.33620689655172414
-    },
-    "distance_shape_exp @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.1758341691665015,
-      "log_loss": 1.8833598770513855,
-      "winner_top_rated": 0.31896551724137934
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.04166169563935451,
+      "log_loss": 1.824925774386891,
+      "winner_top_rated": 0.35019455252918286
     },
     "speed_only_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.4587559981355266,
-      "log_loss": 2.263519153022129,
-      "winner_top_rated": 0.20689655172413793
-    },
-    "speed_only @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.46329755612809054,
-      "log_loss": 2.2614420414013017,
-      "winner_top_rated": 0.20689655172413793
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.4068309022584904,
+      "log_loss": 2.191851737855274,
+      "winner_top_rated": 0.23735408560311283
     },
     "form_plus_speed_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.23131912687360778,
-      "log_loss": 1.9853770604950334,
-      "winner_top_rated": 0.31896551724137934
-    },
-    "form_plus_speed @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.3723058061613495,
-      "log_loss": 2.0354416983437806,
-      "winner_top_rated": 0.3017241379310345
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.21131871063048843,
+      "log_loss": 1.9249793283632348,
+      "winner_top_rated": 0.3229571984435798
     },
     "distance_speed_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.23085235636361376,
-      "log_loss": 1.9904687843557094,
-      "winner_top_rated": 0.3275862068965517
-    },
-    "distance_speed @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.37063058598835186,
-      "log_loss": 2.0493548457014876,
-      "winner_top_rated": 0.3017241379310345
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.21080999841471504,
+      "log_loss": 1.9255508527976823,
+      "winner_top_rated": 0.3229571984435798
     },
     "everything_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.23134281966119324,
-      "log_loss": 1.9863577560071746,
-      "winner_top_rated": 0.3275862068965517
-    },
-    "everything @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.3718646238581453,
-      "log_loss": 2.0367433291484773,
-      "winner_top_rated": 0.29310344827586204
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.20970885784463378,
+      "log_loss": 1.9255816261879115,
+      "winner_top_rated": 0.3229571984435798
     },
     "position_only_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.3790633667431313,
-      "log_loss": 2.1667807242788784,
-      "winner_top_rated": 0.19827586206896552
-    },
-    "position_only @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.3857721524844091,
-      "log_loss": 2.1727549794702976,
-      "winner_top_rated": 0.1810344827586207
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.3411753232215296,
+      "log_loss": 2.1118135081945657,
+      "winner_top_rated": 0.2490272373540856
     },
     "form_plus_position_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.22737067519334436,
-      "log_loss": 1.9831614854890822,
-      "winner_top_rated": 0.3017241379310345
-    },
-    "form_plus_position @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.38535418486287937,
-      "log_loss": 2.0661363504530166,
-      "winner_top_rated": 0.27586206896551724
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.2076240902984707,
+      "log_loss": 1.9224746260655845,
+      "winner_top_rated": 0.31906614785992216
     },
     "position_and_style_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.2288862855390736,
-      "log_loss": 1.980107682966238,
-      "winner_top_rated": 0.29310344827586204
-    },
-    "position_and_style @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.3886628344703406,
-      "log_loss": 2.0476663459522055,
-      "winner_top_rated": 0.27586206896551724
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.20789282887704919,
+      "log_loss": 1.9237032255014583,
+      "winner_top_rated": 0.311284046692607
     },
     "the_lot_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.2296325055652752,
-      "log_loss": 1.9812643931130627,
-      "winner_top_rated": 0.3103448275862069
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.20787512323825216,
+      "log_loss": 1.9223539961691267,
+      "winner_top_rated": 0.33073929961089493
     },
-    "the_lot @winners_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.3984282536437674,
-      "log_loss": 2.0593772701470017,
-      "winner_top_rated": 0.3017241379310345
+    "market_plus_class_out_of_sample": {
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.13947012169023415,
+      "log_loss": 1.8479725643027534,
+      "winner_top_rated": 0.3424124513618677
+    },
+    "market_plus_distance_out_of_sample": {
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.13919864679615496,
+      "log_loss": 1.8486671499179723,
+      "winner_top_rated": 0.3424124513618677
+    },
+    "market_plus_speed_out_of_sample": {
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.14002212181276819,
+      "log_loss": 1.8456675605713817,
+      "winner_top_rated": 0.35019455252918286
+    },
+    "market_plus_position_out_of_sample": {
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.13919347356958478,
+      "log_loss": 1.846640822792651,
+      "winner_top_rated": 0.3540856031128405
+    },
+    "market_plus_everything_out_of_sample": {
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.13969047727642614,
+      "log_loss": 1.845250393132074,
+      "winner_top_rated": 0.33852140077821014
+    },
+    "market_the_lot_out_of_sample": {
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.13985854534861425,
+      "log_loss": 1.8439321059439164,
+      "winner_top_rated": 0.3424124513618677
+    },
+    "market_shaped_out_of_sample": {
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.1396610914636243,
+      "log_loss": 1.8499320131471872,
+      "winner_top_rated": 0.3463035019455253
+    },
+    "market_shaped_all_out_of_sample": {
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.13987590172769046,
+      "log_loss": 1.8470354115558023,
+      "winner_top_rated": 0.3424124513618677
+    },
+    "extras_only_out_of_sample": {
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.34317700084074737,
+      "log_loss": 2.149996914594823,
+      "winner_top_rated": 0.2140077821011673
+    },
+    "form_plus_extras_out_of_sample": {
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.1927724199642806,
+      "log_loss": 1.908180174637439,
+      "winner_top_rated": 0.33073929961089493
+    },
+    "kitchen_sink_out_of_sample": {
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.19010204214187493,
+      "log_loss": 1.9071609295378016,
+      "winner_top_rated": 0.33852140077821014
+    },
+    "market_kitchen_sink_out_of_sample": {
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.1358308058706589,
+      "log_loss": 1.8437965869612223,
+      "winner_top_rated": 0.3463035019455253
+    },
+    "market_kitchen_sink @winners_out_of_sample": {
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.2071418506517871,
+      "log_loss": 1.893247205787216,
+      "winner_top_rated": 0.35797665369649806
     },
     "bsp_itself_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
+      "races": 257,
+      "runners": 2607,
       "kl_to_bsp": 0.0,
-      "log_loss": 1.7809282421654364,
-      "winner_top_rated": 0.3793103448275862
+      "log_loss": 1.7722478812704299,
+      "winner_top_rated": 0.3852140077821012
     },
     "opening_market_out_of_sample": {
-      "races": 116,
-      "runners": 1211,
-      "kl_to_bsp": 0.16114981520080343,
-      "log_loss": 1.933709306222051,
-      "winner_top_rated": 0.3275862068965517
+      "races": 257,
+      "runners": 2607,
+      "kl_to_bsp": 0.14698393972918747,
+      "log_loss": 1.8775026823439118,
+      "winner_top_rated": 0.3424124513618677
     }
   }
 }
