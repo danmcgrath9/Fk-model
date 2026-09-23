@@ -380,3 +380,20 @@ def test_the_back_test_report_runs_end_to_end_on_synthetic_races():
     # the two replay columns must describe the SAME bets
     for plan, a in model["plan_replay"]["at_open"].items():
         assert model["plan_replay"]["at_struck"][plan]["bets"] == a["bets"]
+
+
+def test_a_race_is_stored_without_a_second_copy_of_its_runners():
+    """fk.races.raw held the whole Race Form payload, every runner with every past run, which
+    fk.entries already stores: 917 races took 249 MB and filled the disk."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    from daily_pull import race_without_entries
+    from fixtures import race_summary
+    from fk import fields as F
+    payload = race_summary(n_runners=4)
+    slim = race_without_entries(payload)
+    assert "entries" not in slim and len(F.race_entries(payload)) == 4          # the source is untouched
+    # every field a reader of races.raw uses is still there
+    assert F.race_start_time(slim) == "13:30" and F.race_facts(slim)["lws"] == 92.0
+    assert F.race_distance(slim) == 1400 and F.race_facts(slim)["going"] == "Good"

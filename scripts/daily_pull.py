@@ -40,11 +40,17 @@ def store_meeting(db: Db, m: dict, fetched_at: datetime) -> str:
     return mid
 
 
+def race_without_entries(payload: dict) -> dict:
+    """A race's own facts with the runners taken out: they are stored in fk.entries, and a
+    second copy inside fk.races.raw is what filled the database."""
+    return {k: v for k, v in payload.items() if k != "entries"}
+
+
 def store_race(db: Db, mid: str, r: dict, fetched_at: datetime) -> str:
     rid = F.race_id(r)
     db.upsert("races", ["race_id"], dict(
         race_id=rid, meeting_id=mid, race_number=F.race_number(r), race_name=F.race_name(r),
-        distance_m=F.race_distance(r), raw=r, fetched_at=fetched_at))
+        distance_m=F.race_distance(r), raw=race_without_entries(r), fetched_at=fetched_at))
     return rid
 
 
@@ -256,9 +262,12 @@ def main() -> None:
                     db.upsert("speedmaps", ["race_id"], dict(race_id=F.speedmap_race_id(sm), runners=runners, raw=sm, fetched_at=at))
             else:
                 rid = owner_id
+                # The race's own facts only. The Race Form payload carries every runner with
+                # every past run, which fk.entries already stores; keeping it here too made
+                # fk.races 249 MB for 917 rows and filled the disk.
                 db.upsert("races", ["race_id"], dict(
                     race_id=rid, meeting_id=race_meeting[rid], race_number=F.race_number(payload), race_name=F.race_name(payload),
-                    distance_m=F.race_distance(payload), raw=payload, fetched_at=at))
+                    distance_m=F.race_distance(payload), raw=race_without_entries(payload), fetched_at=at))
                 for e in F.race_entries(payload):
                     hid = store_entry(db, rid, e, at)
                     horses_on_cards[hid] = F.horse_name(e)

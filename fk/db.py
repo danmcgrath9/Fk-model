@@ -11,6 +11,11 @@ from psycopg.types.json import Jsonb
 from .pg import connect
 
 
+# Races whose runners are read in one query by resulted_races: small enough that no single
+# read spills a large sort to disk, large enough that the round trips stay few.
+RESULTED_BATCH = 50
+
+
 class Db:
     """Writes are buffered per (table, key) and flushed on commit() in psycopg's pipeline
     mode, so a race's thousand-odd past-event rows cost one batched round to the server
@@ -138,28 +143,47 @@ class Db:
         under the same horseResult key, so the fit sees the form as it stood before the
         jump and the result as it came in. Without this the fit stopped at the last
         back-test pull and never learned from a day the pipeline ran."""
-        rows = self.conn.execute(
-            """select r.race_id, m.meeting_date, m.track, r.distance_m, (r.raw->>'lws')::numeric as lws,
-                      jsonb_agg(
-                        case when e.raw ? 'horseResult' or res.finish_position is null then e.raw
-                             else e.raw || jsonb_build_object('horseResult', jsonb_strip_nulls(jsonb_build_object(
-                                    'finishPosition', res.finish_position,
-                                    'startingPrice', res.starting_price,
-                                    'betfairStartingPrice', (res.raw->>'betfairStartingPrice')::numeric)))
-                        end order by e.barrier nulls last) as entries,
+        # Two light passes instead of one heavy one. The single query aggregated every
+        # runner's whole form into one GROUP BY, which Postgres sorted on disk, and after the
+        # June and July pull that sort ran the database out of space. The races come first
+        # with their own facts; their runners follow a batch at a time, so no query ever
+        # holds more than one batch of form in memory or in a spill file.
+        races = self.conn.execute(
+            """select r.race_id, m.meeting_date, m.track, r.distance_m, (r.raw->>'lws')::numeric,
                       sm.runners, sm.raw->'expectedTempo'
-               from fk.races r join fk.meetings m using (meeting_id) join fk.entries e using (race_id)
-                    left join fk.results res on res.race_id = e.race_id and res.horse_id = e.horse_id
+               from fk.races r join fk.meetings m using (meeting_id)
                     left join fk.speedmaps sm on sm.race_id = r.race_id
                where (%s::text is null or m.state = %s)
-               group by r.race_id, m.meeting_date, m.track, r.distance_m, r.raw->>'lws', sm.runners, sm.raw
-               having bool_or(e.raw ? 'horseResult' or res.finish_position is not null)
+                 and (exists (select 1 from fk.results res where res.race_id = r.race_id and res.finish_position is not null)
+                      or exists (select 1 from fk.entries e where e.race_id = r.race_id and e.raw ? 'horseResult'))
                order by m.meeting_date, m.track, r.race_id""",
             (state, state),
         ).fetchall()
-        return [{"race_id": r[0], "date": str(r[1]), "track": r[2], "distance_m": r[3],
-                 "lws": float(r[4]) if r[4] is not None else None, "entries": r[5],
-                 "speedmap": r[6], "tempo": r[7]} for r in rows]
+        out = []
+        for i in range(0, len(races), RESULTED_BATCH):
+            batch = races[i:i + RESULTED_BATCH]
+            ids = [r[0] for r in batch]
+            entries: dict[str, list] = {rid: [] for rid in ids}
+            for rid, raw in self.conn.execute(
+                """select e.race_id,
+                          case when e.raw ? 'horseResult' or res.finish_position is null then e.raw
+                               else e.raw || jsonb_build_object('horseResult', jsonb_strip_nulls(jsonb_build_object(
+                                      'finishPosition', res.finish_position,
+                                      'startingPrice', res.starting_price,
+                                      'betfairStartingPrice', (res.raw->>'betfairStartingPrice')::numeric)))
+                          end
+                   from fk.entries e
+                        left join fk.results res on res.race_id = e.race_id and res.horse_id = e.horse_id
+                   where e.race_id = any(%s)
+                   order by e.race_id, e.barrier nulls last""",
+                (ids,),
+            ):
+                entries[rid].append(raw)
+            for r in batch:
+                out.append({"race_id": r[0], "date": str(r[1]), "track": r[2], "distance_m": r[3],
+                            "lws": float(r[4]) if r[4] is not None else None, "entries": entries[r[0]],
+                            "speedmap": r[5], "tempo": r[6]})
+        return out
 
     # ---- the paper book ------------------------------------------------------------
 
