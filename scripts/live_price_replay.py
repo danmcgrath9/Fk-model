@@ -26,15 +26,19 @@ from fk import paper as P  # noqa: E402
 from fk.db import Db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
-MORNING_START_UTC = 20   # the morning odds job runs about 23:15 UTC the day before (9:15am Melbourne)
-MORNING_END_UTC = 2      # ...and a snapshot up to 02:00 UTC race day (noon Melbourne) still counts as morning
+# Two price windows, both fetched_at in UTC relative to race day:
+#   morning: the morning odds job, about 23:15 UTC the day before (9:15am Melbourne), up to noon Melbourne
+#   evening: the nightly pull the evening before, 06:00 to 14:00 UTC (4pm to midnight Melbourne), the
+#            first price we ever see, closest to the opening price the back-test pays
+WINDOWS = {"morning": (-1, 20, 0, 2), "evening": (-1, 6, -1, 14)}
 
 
-def morning_prices(db: Db, race_id: str, race_date: str) -> dict[str, float]:
-    """{horse_id: price} from the latest 'current' snapshot fetched in the race-morning window."""
+def morning_prices(db: Db, race_id: str, race_date: str, window: str = "morning") -> dict[str, float]:
+    """{horse_id: price} from the latest 'current' snapshot fetched in the window."""
     d = datetime.fromisoformat(race_date[:10]).replace(tzinfo=timezone.utc)
-    lo = d - timedelta(days=1) + timedelta(hours=MORNING_START_UTC)
-    hi = d + timedelta(hours=MORNING_END_UTC)
+    d0, h0, d1, h1 = WINDOWS[window]
+    lo = d + timedelta(days=d0, hours=h0)
+    hi = d + timedelta(days=d1, hours=h1)
     rows = db.conn.execute(
         """select distinct on (horse_id) horse_id, price
            from fk.odds_snapshots
@@ -71,6 +75,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--state", default="VIC")
     ap.add_argument("--history", default=str(ROOT / "history"))
+    ap.add_argument("--window", choices=list(WINDOWS), default="morning")
     a = ap.parse_args()
     import json
     from backtest import races_from_rows
@@ -84,7 +89,7 @@ def main() -> None:
     test_rows, morning = [], {}
     for row in rows:
         active = [e for e in row["entries"] if not F.entry_scratched(e)]
-        prices = morning_prices(db, row["race_id"], row["date"])
+        prices = morning_prices(db, row["race_id"], row["date"], a.window)
         have = sum(1 for e in active if F.horse_id(e) in prices)
         if active and have / len(active) >= 0.8:
             test_rows.append(row)
@@ -96,7 +101,8 @@ def main() -> None:
     test_ids = {r["race_id"] for r in test_rows}
     train_rows = [r for r in rows if r["race_id"] not in test_ids and r["date"] < first_day]
     train_rows += [r for r in H.resulted_races(Path(a.history), a.state, skip={r["race_id"] for r in rows}) if r["date"] < first_day]
-    print(f"{len(test_rows)} races with a real morning price ({first_day} on); model fitted on {len(train_rows)} earlier races")
+    label = "9am" if a.window == "morning" else "evening-before"
+    print(f"{len(test_rows)} races with a real {label} price ({first_day} on); model fitted on {len(train_rows)} earlier races")
 
     train, _ = races_from_rows(train_rows)
     train = [r for r in train if B.bsp_chances(r.runners)]
@@ -109,8 +115,8 @@ def main() -> None:
     market = B.market_probs(test)
     ours = B.score(probs, test)
     mkt = B.score(market, test)
-    print(f"\nKL to Betfair SP on these races: 9am market {mkt.kl_to_bsp:.4f}, our model {ours.kl_to_bsp:.4f} "
-          f"({'BEATS the 9am market' if ours.kl_to_bsp < mkt.kl_to_bsp else 'does NOT beat the 9am market'})")
+    print(f"\nKL to Betfair SP on these races: {label} market {mkt.kl_to_bsp:.4f}, our model {ours.kl_to_bsp:.4f} "
+          f"({'BEATS the ' + label + ' market' if ours.kl_to_bsp < mkt.kl_to_bsp else 'does NOT beat the ' + label + ' market'})")
 
     # Every method, paid at the struck (9am) price and at BSP.
     methods = {}
@@ -147,7 +153,7 @@ def main() -> None:
             k = P.kelly_stake(pi, price)
             if k > 0:
                 add("quarter Kelly, every positive edge", k, price, won, bsp)
-    print(f"\n| method | bets | winners | staked | at the 9am price: returned | return | at BSP: returned | return |")
+    print(f"\n| method | bets | winners | staked | at the {label} price: returned | return | at BSP: returned | return |")
     print("|---|---|---|---|---|---|---|---|")
     for name, m in sorted(methods.items(), key=lambda kv: -sum(kv[1]['st'])):
         st, rs, roi_s, se_s = roi_se(m["struck"], m["st"])

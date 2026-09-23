@@ -5,6 +5,10 @@ name: fk live price replay
 
 on:
   workflow_dispatch:
+    inputs:
+      window:
+        description: 'morning = the 9am price; evening = the price at the evening-before pull, the first we see'
+        default: 'morning'
 
 permissions:
   contents: read
@@ -38,4 +42,4 @@ jobs:
       - name: Replay at the real morning prices
         run: |
           set -o pipefail
-          python scripts/live_price_replay.py | tee -a "$GITHUB_STEP_SUMMARY"
+          python scripts/live_price_replay.py --window "${{ github.event.inputs.window || 'morning' }}" | tee -a "$GITHUB_STEP_SUMMARY"
