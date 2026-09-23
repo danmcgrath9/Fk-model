@@ -85,8 +85,16 @@ def kl_to_bsp(probs: list[float], race) -> float:
     return sum(qi * math.log(qi / max(pi, 1e-12)) for qi, pi in zip(q, probs) if qi > 0)
 
 
-GRID_A = [0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2]
-GRID_B = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.3, 1.6, 2.0]
+GRID_A = [0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3]
+GRID_B = [0.0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.6, 0.8, 1.0, 1.3, 1.6, 2.0]
+# Ridge strengths tried when the deployed features are refitted on the real-price races
+# themselves: a few dozen races and fifty-odd features need a heavy hand, so every strength
+# is reported rather than one picked quietly.
+REFIT_RIDGES = [0.1, 1.0, 10.0]
+# A small model for the same job: the market plus the handful of form figures that carry the
+# most weight in the big fit. Fewer coefficients, so a small sample can actually pin them.
+COMPACT_FEATURES = [B.MARKET_FEATURE, "neural_rel", "speed_rel", "last_rel", "peak_rel", "jockey_win", "trainer_win",
+                    "class_win", "first_starter", "first_starter_x_market"]
 
 
 def fit_blend(days: dict[str, list[tuple[list[float], list[float], object]]]) -> tuple[float, float]:
@@ -100,24 +108,60 @@ def fit_blend(days: dict[str, list[tuple[list[float], list[float], object]]]) ->
     return best
 
 
-def form_plus_price(train, test, feats_form: list[str], ridge: float) -> tuple[float, tuple[float, float]]:
+def form_plus_price(train, test, feats_form: list[str], ridge: float) -> tuple[float, tuple[float, float], list[list[float]]]:
     """A form-only model (no market input, so nothing learned from the soft opening average),
     blended with the REAL price: chance ~ exp(a log(price chance) + b form score). a and b
     are the only things learned from the real-price races, leave-one-day-out, so every race
-    is scored by weights that never saw its day. Returns (mean KL to BSP, (a, b) on all days)."""
+    is scored by weights that never saw its day. Returns (mean KL to BSP, (a, b) on all days,
+    the blend's chances per test race in test order)."""
     beta = B.fit(train, feats_form, ridge=ridge)
     days: dict[str, list] = {}
-    for race in test:
+    for idx, race in enumerate(test):
         sc = [sum(beta.get(k, 0.0) * race.runners[i].x.get(k, 0.0) for k in feats_form) for i in range(len(race.runners))]
         mk = B.market_probs([race])[0]
-        days.setdefault(race.date, []).append((sc, mk, race))
+        days.setdefault(race.date, []).append((sc, mk, race, idx))
     total, n = 0.0, 0
+    out: list[list[float]] = [[] for _ in test]
     for d in days:
-        a, b = fit_blend({k: v for k, v in days.items() if k != d})
-        for sc, mk, race in days[d]:
-            total += kl_to_bsp(blend_probs(sc, mk, a, b), race)
+        a, b = fit_blend({k: [t[:3] for t in v] for k, v in days.items() if k != d})
+        for sc, mk, race, idx in days[d]:
+            out[idx] = blend_probs(sc, mk, a, b)
+            total += kl_to_bsp(out[idx], race)
             n += 1
-    return total / max(n, 1), fit_blend(days)
+    return total / max(n, 1), fit_blend({k: [t[:3] for t in v] for k, v in days.items()}), out
+
+
+def day_blocks(races, folds: int = 5) -> list[list[int]]:
+    """Indices of `races` cut into `folds` blocks of consecutive DAYS, a day never split, so
+    a race is never priced by a fit that saw another race from the same afternoon."""
+    days = sorted({r.date for r in races})
+    n = len(days)
+    groups = [days[i * n // folds:(i + 1) * n // folds] for i in range(folds)]
+    return [[i for i, r in enumerate(races) if r.date in set(g)] for g in groups if g]
+
+
+def refit_on_real(test, feats: list[str], ridges: list[float] = REFIT_RIDGES) -> list[tuple[float, float, list[list[float]]]]:
+    """The deployed feature set fitted on the real-price races THEMSELVES, so the market
+    coefficient is learned against the price we actually bet at rather than the soft opening
+    average. Five blocks of whole days: each block is priced by a fit on the other four.
+    Returns [(ridge, mean KL to BSP, chances per test race)] for every ridge, because
+    picking the best of three on this sample and reporting only it would flatter it."""
+    rows = []
+    blocks = day_blocks(test)
+    for ridge in ridges:
+        probs: list[list[float]] = [[] for _ in test]
+        for block in blocks:
+            hold = set(block)
+            train = [r for i, r in enumerate(test) if i not in hold]
+            if not train:
+                continue
+            beta = B.fit(train, feats, ridge=ridge)
+            for i in block:
+                probs[i] = B.predict(beta, test[i].runners)
+        scored = [(p, r) for p, r in zip(probs, test) if p]
+        kl = sum(kl_to_bsp(p, r) for p, r in scored) / max(len(scored), 1)
+        rows.append((ridge, kl, probs))
+    return rows
 
 
 def main() -> None:
@@ -168,12 +212,27 @@ def main() -> None:
           f"({'BEATS the ' + label + ' market' if ours.kl_to_bsp < mkt.kl_to_bsp else 'does NOT beat the ' + label + ' market'})")
     # The fair contender: form fitted without the market, blended with the real price.
     form_feats = [f for f in feats if f not in (B.MARKET_FEATURE, "market_prob", "market_x_neural", "first_starter_x_market")]
-    blend_kl, (ba, bb) = form_plus_price(train, test, form_feats, ridge)
+    blend_kl, (ba, bb), blend_pr = form_plus_price(train, test, form_feats, ridge)
     verdict = "BEATS" if blend_kl < mkt.kl_to_bsp else "does NOT beat"
     print(f"Form-only model blended with the real {label} price (weights learned leave-one-day-out): {blend_kl:.4f} "
-          f"({verdict} the {label} market; on all days the blend is {ba:.1f} x market + {bb:.1f} x form)")
+          f"({verdict} the {label} market; on all days the blend is {ba:.2f} x market + {bb:.2f} x form)")
+    contenders = [("blend", blend_pr)]
+    # The deployed features, and a compact set, refitted on the real-price races themselves.
+    print(f"\nRefitted on the real-price races (five blocks of whole days, each priced by the other four):")
+    print("| model | ridge | KL to BSP | vs the market |")
+    print("|---|---|---|---|")
+    best_kl = float("inf")
+    for name, fs in (("deployed features", feats), ("compact", COMPACT_FEATURES)):
+        for rg, kl, pr in refit_on_real(test, fs):
+            print(f"| {name} | {rg:g} | {kl:.4f} | {'beats it' if kl < mkt.kl_to_bsp else 'does not'} |")
+            if kl < best_kl:
+                best_kl, best_name, best_pr = kl, f"refit {name} r{rg:g}", pr
+    contenders.append((best_name, best_pr))
+    print(f"The best of those six, '{best_name}', is chosen on this same sample, so its figure flatters it a little.")
 
-    # Every method, paid at the struck (9am) price and at BSP.
+    # Every method, paid at the struck (9am) price and at BSP. The deployed model's methods
+    # carry no prefix; the contenders that beat or approach the market are prefixed so the
+    # same rule can be read side by side.
     methods = {}
     def add(name, stake, price, won, bsp):
         m = methods.setdefault(name, {"st": [], "struck": [], "bsp": [], "w": 0})
@@ -208,6 +267,24 @@ def main() -> None:
             k = P.kelly_stake(pi, price)
             if k > 0:
                 add("quarter Kelly, every positive edge", k, price, won, bsp)
+    # The contenders: the same core rules from each model that was fitted against the real price.
+    for prefix, model_probs in contenders:
+        for race, pr, mk in zip(test, model_probs, market):
+            if not pr:
+                continue
+            top = max(range(len(pr)), key=lambda i: pr[i])
+            for i, (r, pi, mi) in enumerate(zip(race.runners, pr, mk)):
+                price = r.raw.get("open")
+                if not price or price <= 1:
+                    continue
+                won, bsp = r.finish == 1, r.bsp
+                ev = pi * price - 1.0
+                if i == top:
+                    add(f"[{prefix}] top pick, 1u", 1.0, price, won, bsp)
+                for t in (0.03, 0.05, 0.10, 0.20):
+                    if pi <= 3.0 * mi and ev > t:
+                        add(f"[{prefix}] value {int(t * 100)}c+, 1u", 1.0, price, won, bsp)
+                        add(f"[{prefix}] value {int(t * 100)}c+, quarter Kelly", P.kelly_stake(pi, price), price, won, bsp)
     print(f"\n| method | bets | winners | staked | at the {label} price: returned | return | at BSP: returned | return |")
     print("|---|---|---|---|---|---|---|---|")
     for name, m in sorted(methods.items(), key=lambda kv: -sum(kv[1]['st'])):

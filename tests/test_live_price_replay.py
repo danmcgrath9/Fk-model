@@ -27,3 +27,51 @@ def test_fit_blend_recovers_the_weights_that_made_the_close():
         race = Race(f"r{i}", f"d{i % 5}", "T", runners)
         days.setdefault(race.date, []).append((sc, m, race))
     assert L.fit_blend(days) == (0.9, 0.8)
+
+
+def _race(i, day, m, close):
+    from fk.backtest import Race, Runner
+    runners = [Runner(f"h{i}_{k}", "H", {"open": 1 / m[k]}, 1 / close[k], None, None) for k in range(len(m))]
+    return Race(f"r{i}", day, "T", runners)
+
+
+def test_day_blocks_never_split_a_day_and_cover_every_race():
+    import random
+    rnd = random.Random(3)
+    races = []
+    for i in range(40):
+        m = [rnd.uniform(0.05, 0.4) for _ in range(5)]
+        m = [v / sum(m) for v in m]
+        races.append(_race(i, f"2026-09-{1 + i // 4:02d}", m, m))
+    blocks = L.day_blocks(races, 5)
+    seen = sorted(i for b in blocks for i in b)
+    assert seen == list(range(40))
+    for b in blocks:
+        days_in = {races[i].date for i in b}
+        for other in blocks:
+            if other is not b:
+                assert not days_in & {races[i].date for i in other}
+
+
+def test_refit_on_real_prices_learns_the_market_scale():
+    """The close is the market stretched to the power 1.2: a market coefficient refitted on
+    the real price should land near 1.2 and beat the market as it stands."""
+    import random
+    from fk import backtest as B
+    rnd = random.Random(11)
+    races = []
+    for i in range(60):
+        m = [rnd.uniform(0.05, 0.4) for _ in range(6)]
+        m = [v / sum(m) for v in m]
+        close = L.blend_probs([0] * 6, m, 1.2, 0.0)
+        race = _race(i, f"d{i % 10:02d}", m, close)
+        for r, mi in zip(race.runners, m):
+            r.x = {B.MARKET_FEATURE: __import__("math").log(mi)}
+        races.append(race)
+    rows = L.refit_on_real(races, [B.MARKET_FEATURE], ridges=[1e-6])
+    (ridge, kl, probs), = rows
+    assert all(probs)
+    market_kl = sum(L.kl_to_bsp(B.market_probs([r])[0], r) for r in races) / len(races)
+    assert kl < market_kl
+    beta = B.fit(races, [B.MARKET_FEATURE], ridge=1e-6)
+    assert abs(beta[B.MARKET_FEATURE] - 1.2) < 0.02
