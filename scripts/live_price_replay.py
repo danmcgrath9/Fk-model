@@ -113,7 +113,7 @@ def cull_long(probs: list[float], cap_price: float = 50.0, keep: float = 0.5) ->
     runner some chance, and a zero on the one that wins scores as infinitely wrong.
     Hand-checked: [0.6, 0.38, 0.02] at $50, keep 0.5 -> the 2% runner keeps 1%, the other 1%
     goes 0.6/0.98 and 0.38/0.98 of the way, so [0.6061, 0.3839, 0.01]."""
-    long = [p < 1.0 / cap_price for p in probs]
+    long = [p <= 1.0 / cap_price for p in probs]   # rated $50 or LONGER: a 2% chance is on the line
     freed = sum(p * (1 - keep) for p, l in zip(probs, long) if l)
     rest = sum(p for p, l in zip(probs, long) if not l)
     if not freed or rest <= 0:
