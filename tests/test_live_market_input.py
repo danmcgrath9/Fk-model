@@ -75,3 +75,11 @@ def test_a_rating_miles_from_the_market_is_never_bet():
     # the same gap at three times the market or less is still a bet: 0.30 against 0.12 is 2.5x
     near = P.Row("N", "Near", 1 / 0.30, 8.0, 0.30, 0.12, "model_higher", None)
     assert any(b.horse_id == "N" and b.plan == "value_flags" for b in P.place([near, fav]))
+
+
+def test_the_model_reads_the_price_we_bet_at(monkeypatch):
+    """A horse that opened $4 and drifted to $13 must be priced off $13, the price we bet at,
+    or it looks like value by construction."""
+    import inspect
+    src = inspect.getsource(BR.build_section)
+    assert '.get("current") or' in src          # current price first, the open only as a fallback

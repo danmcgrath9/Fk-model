@@ -96,10 +96,10 @@ MIN_OPEN_COVERAGE = 0.8
 
 
 def with_opening(raw: dict, opening: float | None) -> dict:
-    """The entry with its odds' avgOpen set to `opening` (the newest morning snapshot's
-    opening price, the same Form King field the fit was trained on). The race form is
-    pulled the evening before, often before a market has formed, so the snapshot is the
-    fuller read. No snapshot price: the entry is left as it is."""
+    """The entry with the model's market input (the avgOpen field the fit was trained on)
+    set to `opening`: live, that is the price the bet is struck at, so the model's input
+    and the bet price are the same price, as they are in the back-test. No price: the
+    entry is left as it is."""
     if opening is None or opening <= 1:
         return raw
     odds = dict((raw.get("odds") or {}) if isinstance(raw.get("odds"), dict) else {})
@@ -298,11 +298,17 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         from fk import backtest as _B
         section.model_name = f"{rated_model.get('model')} ({rated_model.get('races')} races to {rated_model.get('to')})"
         section.model_reads_market = _B.MARKET_FEATURE in (rated_model.get("features") or [])
-        openings = {e["horse_id"]: odds.get(e["horse_id"], {}).get("opening") for e in active}
+        # The model's market input is THE PRICE WE BET AT. In the back-test the input and the
+        # bet price are one and the same (the opening price); live, feeding the model the open
+        # while betting at the current price made every drifter look like value by construction
+        # (Moe, 24 Sep: 12 bets, nearly all drifters). So the current price goes in, and the
+        # open only fills a runner that has no current price yet.
+        openings = {e["horse_id"]: (odds.get(e["horse_id"], {}).get("current") or odds.get(e["horse_id"], {}).get("opening"))
+                    for e in active}
         have, n = open_coverage(active, openings)
         if n and have / n < MIN_OPEN_COVERAGE:
             section.bettable = False
-            section.facts.append(f"Market not formed: {have} of {n} runners carry an opening price, so the model's market "
+            section.facts.append(f"Market not formed: {have} of {n} runners carry a price, so the model's market "
                                  f"input is incomplete. Rated for reading only; no paper bets on this race.")
         model = model_chances(rated_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, openings,
                               str(race.get("meeting_date")) if race.get("meeting_date") else None)
