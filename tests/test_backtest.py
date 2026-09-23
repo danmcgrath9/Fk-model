@@ -311,3 +311,36 @@ def test_the_market_shape_features_carry_the_curve_not_just_the_level():
     bare = [runner_from_entry(race_entry(h, h, 1, result=2, odds=False)) for h in ("X", "Y")]
     race_features(bare)
     assert all(b.x["market_prob"] == 0.0 and b.x[MARKET_FEATURE] == 0.0 for b in bare)
+
+
+def test_every_remaining_form_king_field_reaches_the_model():
+    """Thirty-odd fields sat unused. These are the ones now carried, each centred on the
+    field so it reads as 'more than these rivals' rather than a bare number."""
+    from fk.backtest import EXTRAS, MODEL_SETS, _win_rate, extra_features
+    # one win from one start is shrunk to 33%, not read as a perfect record
+    assert round(_win_rate("1: 1-0-0"), 4) == round(2 / 6, 4)
+    assert round(_win_rate("10: 3-2-1"), 4) == round(4 / 15, 4)
+    assert _win_rate(None) is None and _win_rate("rubbish") is None
+    e = race_entry("H1", "Loaded", 3)
+    e.update(barrier=2, weightCarried=57.5, daysSinceLastRace=21, raceInPrep=2, wfaDiff=1.5,
+             averagePrizeMoney=40000,
+             form={"trackForm": "6: 2-1-0", "todaysGoingForm": "4: 1-0-1", "classForm": "8: 1-2-0",
+                   "trackAndDistanceForm": "3: 1-0-0", "wet": "5: 0-1-1", "secondUpForm": "4: 2-0-0",
+                   "lengthsBeatenLastThree": 3.2},
+             jockeyForm={"lastTwelveMonthWinPercentage": 18.5},
+             trainerForm={"lastTwelveMonthWinPercentage": 22.0, "jockeyComboWinPercentage": 30.0})
+    x = extra_features(e)
+    import math
+    assert x["barrier"] == 2.0 and x["weight_rel"] == 57.5 and x["wfa_diff"] == 1.5
+    assert round(x["days_log"], 4) == round(math.log(22), 4) and x["run_in_prep"] == 2.0
+    assert x["beaten_3"] == 3.2 and round(x["prize_log"], 4) == round(math.log(40001), 4)
+    assert round(x["track_win"], 4) == round(3 / 11, 4) and round(x["td_win"], 4) == round(2 / 8, 4)
+    assert round(x["up_win"], 4) == round(3 / 9, 4)          # run 2 of the prep reads secondUpForm
+    assert x["jockey_win"] == 18.5 and x["trainer_win"] == 22.0 and x["jt_combo_win"] == 30.0
+    # the draw is a share of the field it was drawn in: barrier 2 of 10 is inside, 2 of 3 is not
+    wide = runner_from_entry(race_entry("H2", "Wide", 4)); wide.raw["barrier"] = 10.0
+    inside = runner_from_entry(e); inside.raw["barrier"] = 2.0
+    race_features([inside, wide])
+    assert round(inside.raw["barrier_share"], 4) == round(1 / 9, 4) and wide.raw["barrier_share"] == 1.0
+    assert set(EXTRAS) <= set(inside.x)
+    assert "kitchen_sink" in MODEL_SETS and "market_kitchen_sink" in MODEL_SETS

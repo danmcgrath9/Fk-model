@@ -85,6 +85,26 @@ MARKET_SHAPE = ["market_prob", "market_x_neural"]
 # like EXP does. It becomes usable when the live pipeline has stored enough pre-race
 # snapshots to fit on, with the odds timestamp checked against the jump.
 
+# Everything else Form King sends that the model had never been shown. Thirty-odd fields
+# sat unused: the draw, the weight, the freshness, the campaign, the jockey and the trainer,
+# and a dozen conditional records (this track, today's going, the wet, the class, first-up).
+# Rather than guess which matter, all of them go in and the cross-validated ridge decides
+# how hard to shrink each one, which is what testing everything looks like when the
+# combinatorial search would cost more than the answer is worth.
+#   barrier_share   the draw as a share of the field, 0 inside, 1 widest
+#   days_log        log days since the last run: freshness
+#   run_in_prep     which run of this campaign
+#   weight_rel      weight carried against the field
+#   wfa_diff        Form King's own weight-for-age difference
+#   beaten_3        lengths beaten over the last three runs
+#   prize_log       log average prizemoney: a crude class signal the ratings may miss
+#   track_win, going_win, class_win, td_win, wet_win, up_win   shrunk win rates from the
+#       conditional form strings, each (wins + 1) / (starts + 5) against the field mean
+#   jockey_win, trainer_win, jt_combo_win   strike rates, as percentages
+EXTRAS = ["barrier_share", "days_log", "run_in_prep", "weight_rel", "wfa_diff", "beaten_3", "prize_log",
+          "track_win", "going_win", "class_win", "td_win", "wet_win", "up_win",
+          "jockey_win", "trainer_win", "jt_combo_win"]
+
 MODEL_SETS = {
     "neural_only": NEURAL,
     "ratings_only": RATINGS,                 # WFA, handicap and weight-adjusted ratings, no Neural
@@ -115,6 +135,11 @@ MODEL_SETS = {
     "market_the_lot": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + [MARKET_FEATURE],
     "market_shaped": FORM_FEATURES + CLASS + [MARKET_FEATURE] + MARKET_SHAPE,
     "market_shaped_all": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + [MARKET_FEATURE] + MARKET_SHAPE,
+    "extras_only": EXTRAS,
+    "form_plus_extras": FORM_FEATURES + CLASS + EXTRAS,
+    "kitchen_sink": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS,
+    "market_kitchen_sink": FORM_FEATURES + CLASS + DISTANCE_AWARE + SPEED + POSITION + SHAPE + STYLE + EXTRAS
+                           + [MARKET_FEATURE] + MARKET_SHAPE,
 }
 # Ridge strengths tried by cross-validation inside the training races. Every model so far
 # has been fitted with effectively none (1e-8) and every one lands far worse out of sample
@@ -209,6 +234,7 @@ def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | No
              "dist_change": (float(race_distance) - last_run_distance) / 100.0 if race_distance and last_run_distance is not None else None,
              "exp": F.entry_exp_rating(e),
              "dist_starts": rec[0] if rec else None, "dist_wins": rec[1] if rec else None,
+             **extra_features(e),
              **{k: recent_weighted([{**r, **position_shares(r)} for r in races_only], k) for k in POSITION},
              "speed": recent_weighted(races_only, "speedRating"),
              "speed_best": max((r["speedRating"] for r in races_only if r.get("speedRating") is not None), default=None),
@@ -296,6 +322,51 @@ def recent_weighted(runs: list[dict], key: str, n: int = RECENT_RUNS, decay: flo
     return sum(v * w for v, w in zip(have, weights)) / sum(weights)
 
 
+def _win_rate(txt: str | None) -> float | None:
+    """A Form King record string as a shrunk win rate: (wins + 1) / (starts + 5), so one win
+    from one start reads 33% and not 100%. None when the string carries no starts."""
+    rec = _form_record(txt)
+    if not rec or rec[0] is None:
+        return None
+    starts, wins = rec
+    return (wins + 1) / (starts + 5)
+
+
+def extra_features(e: dict) -> dict[str, float | None]:
+    """Everything else Form King sends about a runner, as plain numbers. Missing stays None
+    and race_features fills it with the field mean, so a runner with no jockey record is
+    neither helped nor hurt by the gap."""
+    ctx = F.entry_context(e)
+    form = F.entry_form_record(e)
+    jockey = F.entry_jockey_form(e) or {}
+    trainer = F.entry_trainer_form(e) or {}
+    barrier = F.entry_barrier(e)
+    days = F.entry_days_since_last_run(e)
+    prep = ctx.get("runInPrep")
+    # First-up, second-up, third-up: the record that matches where this horse is in its
+    # campaign, so one column carries the relevant one instead of three mostly-empty ones.
+    up_key = {1: "firstUpForm", 2: "secondUpForm", 3: "thirdUpForm"}.get(prep)
+    prize = ctx.get("avgPrizemoney")
+    return {
+        "barrier": float(barrier) if barrier else None,     # made a share of the field in race_features
+        "days_log": math.log(1 + days) if days is not None and days >= 0 else None,
+        "run_in_prep": float(prep) if prep is not None else None,
+        "weight_rel": F.entry_weight(e),
+        "wfa_diff": ctx.get("wfaDiff"),
+        "beaten_3": form.get("lengthsBeatenLastThree"),
+        "prize_log": math.log(1 + prize) if prize is not None and prize >= 0 else None,
+        "track_win": _win_rate(form.get("trackForm")),
+        "going_win": _win_rate(form.get("todaysGoingForm")),
+        "class_win": _win_rate(form.get("classForm")),
+        "td_win": _win_rate(form.get("trackAndDistanceForm")),
+        "wet_win": _win_rate(form.get("wet")),
+        "up_win": _win_rate(form.get(up_key)) if up_key else None,
+        "jockey_win": jockey.get("win12m"),
+        "trainer_win": trainer.get("win12m"),
+        "jt_combo_win": trainer.get("jockeyComboWin"),
+    }
+
+
 def _fill_mean(vals: list[float | None]) -> list[float]:
     have = [v for v in vals if v is not None]
     m = sum(have) / len(have) if have else 0.0
@@ -323,6 +394,19 @@ def race_features(runners: list[Runner]) -> None:
     # Position shares are already scale-free, so they are centred on the field: "more forward
     # than these rivals", not a bare share.
     for key in POSITION:
+        vals = _fill_mean([r.raw.get(key) for r in runners])
+        mean = sum(vals) / n
+        cols[key] = [v - mean for v in vals]
+    # The draw only means anything against the field it was drawn in: barrier 8 is wide in a
+    # field of nine and inside in a field of eighteen, so it becomes a share before it is
+    # centred. A runner with no barrier takes the field mean like everything else.
+    bars = [r.raw.get("barrier") for r in runners]
+    widest = max([b for b in bars if b] or [0])
+    raw_share = [((b - 1) / (widest - 1)) if b and widest > 1 else None for b in bars]
+    for r, v in zip(runners, raw_share):
+        r.raw["barrier_share"] = v
+    # Every extra is centred on the field: "more than these rivals", never a bare number.
+    for key in EXTRAS:
         vals = _fill_mean([r.raw.get(key) for r in runners])
         mean = sum(vals) / n
         cols[key] = [v - mean for v in vals]
