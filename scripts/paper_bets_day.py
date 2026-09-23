@@ -29,13 +29,16 @@ def table(bets: list[dict]) -> str:
         price = f"${float(first['price']):.2f}" if first["price"] else "n/a"
         rated = f"${float(first['rated_price']):.2f}" if first["rated_price"] else "n/a"
         opened = f"${float(first['opening_price']):.2f}" if first.get("opening_price") else "n/a"
-        if first["settled_at"] is None:
+        if first.get("void"):
+            result = "void, did not start (stake back)"
+        elif first["settled_at"] is None:
             result = "open"
         else:
             won = sum(float(b["returned"] or 0) - float(b["stake"]) for b in group)
             fin = first["finish"] if first["finish"] is not None else "?"
             sp = f" BSP ${float(first['settle_price']):.2f}" if first["settle_price"] else ""
-            result = f"{fin}{sp}, {won:+.2f}u"
+            ded = f", deduction {float(first['deduction']):.0%}" if first.get("deduction") else ""
+            result = f"{fin}{sp}, {won:+.2f}u{ded}"
         lines.append(f"| R{race} | {horse} | {opened} | {price} | {rated} | {plans} | {result} |")
     return "\n".join(lines)
 

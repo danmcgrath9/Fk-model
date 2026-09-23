@@ -157,6 +157,30 @@ def movement_summary(settled: list[dict]) -> dict[str, dict]:
     return out
 
 
+# Deductions. A runner scratched after a fixed-odds bet is struck takes a share of that
+# bet's winnings: roughly the scratched runner's chance at its last price, the basis of both
+# the Australian bookmakers' tables and Betfair's reduction factors. Runners under 2.5% take
+# nothing (Betfair's threshold), and the total is capped at 75c in the dollar.
+DEDUCTION_MIN = 0.025
+DEDUCTION_CAP = 0.75
+
+
+def deduction_for(scratched_prices: list[float | None]) -> float:
+    """Share of winnings deducted for late scratchings, from each scratched runner's last
+    price. Hand-checked: $4 and $41 scratched -> 1/4 = 0.25 counts, 1/41 = 0.024 is under
+    2.5% and does not -> 0.25. A runner with no price seen deducts nothing (unknown)."""
+    d = sum(1.0 / p for p in scratched_prices if p and p > 1 and 1.0 / p >= DEDUCTION_MIN)
+    return min(d, DEDUCTION_CAP)
+
+
+def settle_struck(stake: float, won: bool, price: float, deduction: float | None) -> float:
+    """Units back at the struck price after deductions, which come off the winnings, not
+    the stake. Hand-checked: 1 unit at $5, 25c deduction -> 1 + 4 x 0.75 = 4.0."""
+    if not won:
+        return 0.0
+    return stake + stake * (price - 1.0) * (1.0 - (deduction or 0.0))
+
+
 def settle(stake: float, won: bool, settle_price: float | None) -> float:
     """Units returned: stake x price on a winner, nothing on a loser; a winner with no
     settlement price returns the stake (void), never a guess."""
@@ -193,20 +217,24 @@ def summarise_at_struck(settled: list[dict]) -> dict[str, PlanSummary]:
     out: dict[str, PlanSummary] = {}
     for b in settled:
         price = b.get("price")
-        if not price or price <= 1:
+        if b.get("void") or not price or price <= 1:
             continue
         s = out.setdefault(b["plan"], PlanSummary(b["plan"], 0, 0, 0.0, 0.0))
         s.bets += 1
         s.winners += 1 if b.get("won") else 0
         s.staked += float(b["stake"])
-        s.returned += settle(float(b["stake"]), bool(b.get("won")), float(price))
+        s.returned += settle_struck(float(b["stake"]), bool(b.get("won")), float(price),
+                                    float(b["deduction"]) if b.get("deduction") is not None else None)
     return out
 
 
 def summarise(settled: list[dict]) -> dict[str, PlanSummary]:
-    """settled: dicts with plan, stake, returned, won. Per-plan totals."""
+    """settled: dicts with plan, stake, returned, won. Per-plan totals. A void bet (the horse
+    was scratched after the bet) is no bet at all and is left out."""
     out: dict[str, PlanSummary] = {}
     for b in settled:
+        if b.get("void"):
+            continue
         s = out.setdefault(b["plan"], PlanSummary(b["plan"], 0, 0, 0.0, 0.0))
         s.bets += 1
         s.winners += 1 if b.get("won") else 0

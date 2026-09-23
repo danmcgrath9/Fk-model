@@ -21,11 +21,21 @@ def main() -> None:
     if late:
         races = sorted({f"{b['track']} R{b['race_number']}" for b in late})
         print(f"struck out {db.delete_paper_bets([b['bet_id'] for b in late])} bets placed after the jump: {', '.join(races)}")
+    # A runner that did not start: the bet is void and the stake comes back, never a loser.
+    voided = db.void_paper_bets_scratched()
+    if voided:
+        print(f"voided {len(voided)} bets on runners that did not start: "
+              + ", ".join(sorted({f"{v['track']} R{v['race_number']} {v['horse_name']}" for v in voided})))
     n = winners = 0
     for b in db.open_paper_bets_with_results():
         won = b["finish"] == 1
         price = b["bsp"] if b["bsp"] else b["sp"]
-        db.settle_paper_bet(b["bet_id"], price, b["finish"], won, P.settle(b["stake"], won, price))
+        # Runners scratched after the race was priced cut a fixed-odds winner's winnings; BSP
+        # is formed after the scratching, so the BSP settlement needs no deduction. Bets placed
+        # before the field was recorded carry None (unknown), never a guessed zero.
+        late = db.late_scratchings(b["race_id"], b.get("field_ids"))
+        deduction = P.deduction_for(list(late.values())) if b.get("field_ids") is not None else None
+        db.settle_paper_bet(b["bet_id"], price, b["finish"], won, P.settle(b["stake"], won, price), deduction)
         n += 1
         winners += 1 if won else 0
     db.conn.commit()

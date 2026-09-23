@@ -44,7 +44,8 @@ def main() -> None:
     db = Db(load_settings().database_url)
     db.ensure_paper_book()
     bets = db.paper_bets()
-    settled = [b for b in bets if b.get("settled_at") is not None]
+    voids = [b for b in bets if b.get("void")]
+    settled = [b for b in bets if b.get("settled_at") is not None and not b.get("void")]
     open_bets = [b for b in bets if b.get("settled_at") is None]
     summ = P.summarise(settled)
     struck = P.summarise_at_struck(settled)
@@ -53,8 +54,10 @@ def main() -> None:
     days = sorted({str(b["meeting_date"]) for b in settled})
 
     lines = ["# Paper book", "", f"As at {stamp}. {len(settled)} bets settled over {len(days)} race days"
-             f"{' (' + days[0] + ' to ' + days[-1] + ')' if days else ''}; {len(open_bets)} open. Placed at the morning price on the page, settled at "
-             "Betfair SP (starting price where there is no BSP). Nothing is bet for real.", "",
+             f"{' (' + days[0] + ' to ' + days[-1] + ')' if days else ''}; {len(open_bets)} open; {len(voids)} void (the horse did not start, "
+             "stake back, left out of every figure). Placed at the morning price on the page, settled at "
+             "Betfair SP (starting price where there is no BSP); the struck-price column takes off bookmaker deductions for "
+             "runners scratched after the bet. Nothing is bet for real.", "",
              "| plan | bets | winners | staked | returned | profit | return | at the struck price: profit | return |",
              "|---|---|---|---|---|---|---|---|---|"]
     rows_html = []
@@ -141,6 +144,19 @@ def main() -> None:
     print(f"paper book: {len(settled)} settled, {len(open_bets)} open; wrote {out / 'paper-book.html'} and docs/PAPER_BOOK.md")
     for plan, s in summ.items():
         print(f"  {plan:20} bets {s.bets:4}  staked {s.staked:7.1f}  profit {s.profit:+8.2f}  return {s.roi:+.1%}" if s.roi is not None else f"  {plan}")
+    # One scoreboard per model: a plan's record means nothing across a change of model.
+    by_model: dict[str, list[dict]] = {}
+    for b in settled:
+        by_model.setdefault(b.get("model") or "unrecorded", []).append(b)
+    for model_name, group in sorted(by_model.items()):
+        print(f"\nmodel: {model_name}")
+        m_bsp, m_struck = P.summarise(group), P.summarise_at_struck(group)
+        for plan, s in m_bsp.items():
+            t = m_struck.get(plan)
+            struck_txt = f"  at struck price {t.roi:+.1%}" if t and t.roi is not None else ""
+            print(f"  {plan:20} bets {s.bets:4}  at BSP {s.roi:+.1%}{struck_txt}" if s.roi is not None else f"  {plan}")
+    if voids:
+        print(f"\n{len(voids)} void bets (did not start), left out of every figure")
 
 
 if __name__ == "__main__":

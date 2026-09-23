@@ -205,7 +205,7 @@ class Db:
             self.conn.commit()
         have_model = self.conn.execute(
             "select 1 from information_schema.columns where table_schema = 'fk' and table_name = 'paper_bets' "
-            "and column_name = 'model'"
+            "and column_name = 'deduction'"
         ).fetchone()
         if not have_model:
             self.conn.execute((sql_dir / "006_paper_model.sql").read_text(encoding="utf-8"))
@@ -239,12 +239,13 @@ class Db:
     def open_paper_bets_with_results(self) -> list[dict[str, Any]]:
         """Unsettled bets whose race now has a result: the finish, SP and Betfair SP for the horse."""
         rows = self.conn.execute(
-            """select b.bet_id, b.stake, r.finish_position, r.starting_price, (r.raw->>'betfairStartingPrice')::numeric
+            """select b.bet_id, b.stake, r.finish_position, r.starting_price, (r.raw->>'betfairStartingPrice')::numeric,
+                      b.race_id, b.field_ids
                from fk.paper_bets b join fk.results r using (race_id, horse_id)
                where b.settled_at is null"""
         ).fetchall()
         return [{"bet_id": r[0], "stake": float(r[1]), "finish": r[2], "sp": float(r[3]) if r[3] is not None else None,
-                 "bsp": float(r[4]) if r[4] is not None else None} for r in rows]
+                 "bsp": float(r[4]) if r[4] is not None else None, "race_id": r[5], "field_ids": r[6]} for r in rows]
 
     def open_paper_bets_with_jump(self) -> list[dict[str, Any]]:
         """Unsettled bets with when they were placed and when their race was due to start."""
@@ -262,21 +263,52 @@ class Db:
         cur = self.conn.execute("delete from fk.paper_bets where bet_id = any(%s)", (bet_ids,))
         return cur.rowcount
 
-    def settle_paper_bet(self, bet_id: str, settle_price: float | None, finish: int | None, won: bool, returned: float) -> None:
+    def settle_paper_bet(self, bet_id: str, settle_price: float | None, finish: int | None, won: bool, returned: float,
+                         deduction: float | None = None) -> None:
         self.conn.execute(
-            "update fk.paper_bets set settled_at = now(), settle_price = %s, finish = %s, won = %s, returned = %s where bet_id = %s",
-            (settle_price, finish, won, returned, bet_id),
+            "update fk.paper_bets set settled_at = now(), settle_price = %s, finish = %s, won = %s, returned = %s, "
+            "deduction = %s where bet_id = %s",
+            (settle_price, finish, won, returned, deduction, bet_id),
         )
+
+    def void_paper_bets_scratched(self) -> list[dict[str, Any]]:
+        """Void every open bet whose race has results but whose horse has none: it did not
+        start (a runner that started and did not finish still gets a result row, and loses).
+        The stake comes back. Returns the voided bets."""
+        rows = self.conn.execute(
+            """update fk.paper_bets b set settled_at = now(), void = true, won = null, returned = b.stake
+               where b.settled_at is null
+                 and exists (select 1 from fk.results r where r.race_id = b.race_id and r.finish_position is not null)
+                 and not exists (select 1 from fk.results r where r.race_id = b.race_id and r.horse_id = b.horse_id)
+               returning b.bet_id, b.track, b.race_number, b.horse_name"""
+        ).fetchall()
+        return [{"bet_id": r[0], "track": r[1], "race_number": r[2], "horse_name": r[3]} for r in rows]
+
+    def late_scratchings(self, race_id: str, field_ids: list[str] | None) -> dict[str, float | None]:
+        """Runners in the field a bet was priced against that did not start (no result row),
+        with the last fixed price seen for each: {horse_id: price or None}."""
+        if not field_ids:
+            return {}
+        ran = {r[0] for r in self.conn.execute("select horse_id from fk.results where race_id = %s", (race_id,)).fetchall()}
+        late = [h for h in field_ids if h not in ran]
+        if not late:
+            return {}
+        prices = self.latest_odds(race_id)
+        return {h: prices.get(h, {}).get("current") for h in late}
+
+    def mark_scratched(self, race_id: str, horse_id: str) -> None:
+        self.conn.execute("update fk.entries set scratched = true where race_id = %s and horse_id = %s", (race_id, horse_id))
 
     def paper_bets(self) -> list[dict[str, Any]]:
         self.ensure_paper_book()   # the model column (sql/006) is read below
         rows = self.conn.execute(
             """select bet_id, plan, meeting_date, track, race_number, horse_name, price, rated_price, stake,
-                      settled_at, settle_price, finish, won, returned, opening_price, placed_at, race_id, model
+                      settled_at, settle_price, finish, won, returned, opening_price, placed_at, race_id, model, void, deduction
                from fk.paper_bets order by meeting_date, race_number, bet_id"""
         ).fetchall()
         keys = ["bet_id", "plan", "meeting_date", "track", "race_number", "horse_name", "price", "rated_price", "stake",
-                "settled_at", "settle_price", "finish", "won", "returned", "opening_price", "placed_at", "race_id", "model"]
+                "settled_at", "settle_price", "finish", "won", "returned", "opening_price", "placed_at", "race_id", "model",
+                "void", "deduction"]
         return [dict(zip(keys, (_plain(v) for v in r))) for r in rows]
 
     def races_fetched_since(self, since: datetime) -> set[str]:

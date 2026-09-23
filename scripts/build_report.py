@@ -415,6 +415,7 @@ def paper_rows(section: RaceSection):
 def place_paper(db, race: dict, section: RaceSection) -> int:
     """The paper book: every plan's bets for a race not yet run, at the prices on the page."""
     from datetime import datetime, timezone
+    from psycopg.types.json import Jsonb
     from fk import fields as F
     from fk import paper as P
     now = datetime.now(timezone.utc)
@@ -449,6 +450,7 @@ def place_paper(db, race: dict, section: RaceSection) -> int:
         meeting_date=race["meeting_date"], track=race.get("track"), race_number=race.get("race_number"), horse_name=b.name,
         placed_at=now, first_priced_at=now, price=b.price, opening_price=b.opening, rated_price=b.rated_price,
         model_prob=b.model_prob, market_prob=b.market_prob, stake=b.stake, model=section.model_name,
+        field_ids=Jsonb([r.horse_id for r in section.rows if r.horse_id]),
     ) for b in bets])
 
 

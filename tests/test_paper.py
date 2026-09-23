@@ -89,3 +89,23 @@ def test_the_two_settlement_bases_differ_by_the_movement():
     assert at_bsp["a"].bets == 3 and round(at_bsp["a"].returned, 2) == 15.0
     assert at_struck["a"].bets == 2 and round(at_struck["a"].returned, 2) == 10.0            # the drifted winner pays $10, not $13
     assert at_struck["a"].winners == 1 and round(at_struck["a"].profit, 2) == 8.0
+
+
+def test_deductions_hand_values():
+    from fk.paper import deduction_for, settle_struck
+    assert deduction_for([4.0, 41.0]) == 0.25            # $41 is 2.4%, under the 2.5% threshold
+    assert deduction_for([None]) == 0.0                   # no price seen: nothing deducted
+    assert deduction_for([1.5, 1.5]) == 0.75              # capped at 75c
+    assert settle_struck(1.0, True, 5.0, 0.25) == 4.0     # 1 + 4 x 0.75
+    assert settle_struck(1.0, True, 5.0, None) == 5.0
+    assert settle_struck(1.0, False, 5.0, 0.25) == 0.0
+
+
+def test_void_bets_are_left_out_of_every_figure():
+    from fk.paper import summarise, summarise_at_struck
+    bets = [dict(plan="value_flags", stake=1.0, returned=5.0, won=True, price=4.0, deduction=0.25),
+            dict(plan="value_flags", stake=1.0, returned=1.0, won=None, price=9.0, void=True)]
+    s = summarise(bets)["value_flags"]
+    assert (s.bets, s.staked, s.returned) == (1, 1.0, 5.0)
+    t = summarise_at_struck(bets)["value_flags"]
+    assert (t.bets, t.returned) == (1, 1.0 + 3.0 * 0.75)  # the winner at $4 less a 25c deduction

@@ -60,6 +60,8 @@ def main() -> None:
                     hid = F.horse_id(e)
                     db.upsert("horses", ["horse_id"], dict(horse_id=hid, name=F.horse_name(e), fetched_at=at))
                     res = F.entry_result(e)
+                    if F.entry_scratched(e):
+                        db.mark_scratched(rid, hid)   # so the book can tell a non-starter from a loser
                     if res:
                         db.upsert("results", ["race_id", "horse_id"], dict(
                             race_id=rid, horse_id=hid, finish_position=F.result_finish_position(res), margin=F.result_margin(res),
