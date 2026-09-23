@@ -93,6 +93,7 @@ GRID_B = [0.0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.6, 0.8, 1.0, 1.3, 1.6, 2.0]
 REFIT_RIDGES = [0.1, 1.0, 10.0]
 # A small model for the same job: the market plus the handful of form figures that carry the
 # most weight in the big fit. Fewer coefficients, so a small sample can actually pin them.
+AVG_OPEN_FEATURE = "avg_open_logit"
 COMPACT_FEATURES = [B.MARKET_FEATURE, "neural_rel", "speed_rel", "last_rel", "peak_rel", "jockey_win", "trainer_win",
                     "class_win", "first_starter", "first_starter_x_market"]
 
@@ -115,9 +116,15 @@ def form_plus_price(train, test, feats_form: list[str], ridge: float, target=B.b
     is scored by weights that never saw its day. Returns (mean KL to BSP, (a, b) on all days,
     the blend's chances per test race in test order)."""
     beta = B.fit(train, feats_form, ridge=ridge, target=target)
+    scores = [[sum(beta.get(k, 0.0) * r.x.get(k, 0.0) for k in feats_form) for r in race.runners] for race in test]
+    return blend_scores(test, scores)
+
+
+def blend_scores(test, scores: list[list[float]]) -> tuple[float, tuple[float, float], list[list[float]]]:
+    """Blend any per-runner score with the real price, weights learned leave-one-day-out."""
     days: dict[str, list] = {}
     for idx, race in enumerate(test):
-        sc = [sum(beta.get(k, 0.0) * race.runners[i].x.get(k, 0.0) for k in feats_form) for i in range(len(race.runners))]
+        sc = scores[idx]
         mk = B.market_probs([race])[0]
         days.setdefault(race.date, []).append((sc, mk, race, idx))
     total, n = 0.0, 0
@@ -200,10 +207,22 @@ def main() -> None:
     train, _ = races_from_rows(train_rows)
     train = [r for r in train if B.bsp_chances(r.runners)]
     beta = B.fit(train, feats, ridge=ridge)
+    # The opening average as the market input, the way the model was trained: its chances are
+    # a score to blend with the real price, and its logit a feature the refit may use BESIDE
+    # the real price (the founder's call: train on the opening price and the 9am price).
+    orig, _ = races_from_rows(test_rows)
+    orig_by_id = {r.race_id: r for r in orig}
     # Test races: the model's market input IS the morning price, as live.
     test_rows = [{**r, "entries": [with_price(e, morning[r["race_id"]].get(F.horse_id(e))) for e in r["entries"]]} for r in test_rows]
     test, _ = races_from_rows(test_rows)
-    test = [r for r in test if B.bsp_chances(r.runners)]
+    test = [r for r in test if B.bsp_chances(r.runners) and r.race_id in orig_by_id]
+    opening_scores = []
+    for race in test:
+        o = orig_by_id[race.race_id]
+        by_horse = {r.horse_id: r for r in o.runners}
+        for r in race.runners:
+            r.x[AVG_OPEN_FEATURE] = by_horse[r.horse_id].x.get(B.MARKET_FEATURE, 0.0) if r.horse_id in by_horse else 0.0
+        opening_scores.append([math.log(max(p, 1e-9)) for p in B.predict(beta, [by_horse.get(r.horse_id, r) for r in race.runners])])
     probs = [B.predict(beta, r.runners) for r in test]
     market = B.market_probs(test)
     ours = B.score(probs, test)
@@ -225,18 +244,25 @@ def main() -> None:
     print(f"Form fitted to winners, blended with the real {label} price: {win_kl:.4f} "
           f"({verdict} the {label} market; {wa:.2f} x market + {wb:.2f} x form)")
     contenders.append(("winners blend", win_pr))
+    # The deployed model as trained (opening average inside it), blended with the real price.
+    op_kl, (oa, ob), op_pr = blend_scores(test, opening_scores)
+    verdict = "BEATS" if op_kl < mkt.kl_to_bsp else "does NOT beat"
+    print(f"Deployed model (opening average inside it) blended with the real {label} price: {op_kl:.4f} "
+          f"({verdict} the {label} market; {oa:.2f} x market + {ob:.2f} x model)")
+    contenders.append(("opening+9am blend", op_pr))
     # The deployed features, and a compact set, refitted on the real-price races themselves.
     print(f"\nRefitted on the real-price races (five blocks of whole days, each priced by the other four):")
     print("| model | ridge | KL to BSP | vs the market |")
     print("|---|---|---|---|")
     best_kl = float("inf")
-    for name, fs in (("deployed features", feats), ("compact", COMPACT_FEATURES)):
+    for name, fs in (("deployed features", feats), ("deployed + opening average", feats + [AVG_OPEN_FEATURE]),
+                     ("compact", COMPACT_FEATURES), ("compact + opening average", COMPACT_FEATURES + [AVG_OPEN_FEATURE])):
         for rg, kl, pr in refit_on_real(test, fs):
             print(f"| {name} | {rg:g} | {kl:.4f} | {'beats it' if kl < mkt.kl_to_bsp else 'does not'} |")
             if kl < best_kl:
                 best_kl, best_name, best_pr = kl, f"refit {name} r{rg:g}", pr
     contenders.append((best_name, best_pr))
-    print(f"The best of those six, '{best_name}', is chosen on this same sample, so its figure flatters it a little.")
+    print(f"The best of those, '{best_name}', is chosen on this same sample, so its figure flatters it a little.")
 
     # Every method, paid at the struck (9am) price and at BSP. The deployed model's methods
     # carry no prefix; the contenders that beat or approach the market are prefixed so the
