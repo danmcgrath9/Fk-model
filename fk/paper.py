@@ -27,7 +27,14 @@ PLANS = {
     "value_under_8": "value flags rated under $8, one unit",
     "top_pick_to_win_1": "the top pick, staked to win one unit at the morning price",
     "kelly_quarter": "quarter Kelly on a 100-unit bank from the model's chance and the morning price, capped at 5 units",
+    "value_ev20": "every runner whose chance on our numbers times the morning price beats 1.20 (worth 20c a unit or more), one unit",
 }
+# The value_ev20 rule, chosen by the 23 Sep back-test on 3,260 races: on the older three fifths
+# +57% at the average opening price, on the newer two fifths it never saw +85% (1,239 bets,
+# two standard errors clear), and +16% at Betfair SP. The live gap rule managed +17% on the
+# newer racing, inside its margin of luck. The opening average is an upper bound, so the
+# live book is the test of how much survives at a price we can actually take.
+EV_THRESHOLD = 0.20
 
 
 @dataclass
@@ -118,6 +125,8 @@ def place(rows: list[Row]) -> list[Bet]:
     for r in rows:
         if r.model_prob and r.market_prob and r.model_prob > MAX_MODEL_TO_MARKET * r.market_prob:
             continue   # too far from the market to be an edge: not bet, whatever the plan
+        if r.model_prob and r.price and r.price > 1 and r.model_prob * r.price - 1.0 > EV_THRESHOLD:
+            bet("value_ev20", r, UNIT)
         if r.flag == "model_higher":
             bet("value_flags", r, UNIT)
             if r.rated_price and r.rated_price < 8:

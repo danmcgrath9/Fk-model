@@ -119,3 +119,13 @@ def test_a_refit_does_not_start_a_new_scoreboard():
     assert model_family("form_only (before the market model)") == "form only"
     assert model_family("distance_aware (378 races to 2026-09-21)") == "form only"
     assert model_family(None) == "unrecorded"
+
+
+def test_value_ev20_hand_values():
+    from fk.paper import Row, place
+    fav = Row("F", "Fav", 2.2, 2.5, 1 / 2.2, 1 / 2.5, None, None)
+    yes = Row("Y", "Yes", 1 / 0.25, 5.0, 0.25, 0.20, None, None)     # 0.25 x 5 - 1 = 0.25 > 0.20
+    no = Row("N", "No", 1 / 0.23, 5.0, 0.23, 0.20, None, None)       # 0.23 x 5 - 1 = 0.15
+    far = Row("P", "Pneuma", 4.91, 71.0, 1 / 4.91, 1 / 71.0, None, None)  # 14x the market: never
+    ids = {b.horse_id for b in place([fav, yes, no, far]) if b.plan == "value_ev20"}
+    assert ids == {"Y"}
