@@ -119,7 +119,10 @@ MODEL_SETS = {
 # Ridge strengths tried by cross-validation inside the training races. Every model so far
 # has been fitted with effectively none (1e-8) and every one lands far worse out of sample
 # than in it, which is the signature of a fit that has memorised its training races.
-RIDGES = [1e-8, 1e-3, 1e-2, 0.1, 1.0, 10.0]
+# Three strengths and three folds, not six and five: the full grid is 1,674 fits at about
+# eight seconds each, which is nearly four hours against a two-hour job. This grid is 540.
+RIDGES = [1e-8, 1e-2, 1.0]
+RIDGE_FOLDS = 3
 
 RECENT_RUNS = 4      # how many recent races a speed or sectional figure is read over
 RECENCY_DECAY = 0.8  # each older run counts this much less, the weighting the page's worm uses
@@ -467,7 +470,7 @@ class Score:
     winner_top_rated: float   # share of races where the model's top pick won
 
 
-def fit_cv(races: list[Race], features: list[str], folds: int = 5, target=bsp_chances,
+def fit_cv(races: list[Race], features: list[str], folds: int = RIDGE_FOLDS, target=bsp_chances,
            ridges: list[float] | None = None) -> tuple[dict[str, float], float]:
     """Fit with the ridge strength chosen by cross-validation INSIDE these races, never on
     the races the model is later judged on: the training set is cut into `folds` blocks by
