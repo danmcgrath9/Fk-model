@@ -20,6 +20,12 @@ KELLY_CAP = 5.0       # units, so one wild edge cannot dominate the book
 # rating further out (a $71 runner rated $4.91 is 14 times) is a data or model problem
 # until shown otherwise, and it is exactly where Kelly stakes the most.
 MAX_MODEL_TO_MARKET = 3.0
+# No value plan backs a runner WE rate at this price or longer (founder, 23 Sep 2026: "get rid
+# of any horse we rate over $50+"). A $50 chance is a 2% chance, and a bet on it is only value
+# when the market has it at $60 or more, which is the one part of the market the books have
+# beaten us in every time: 0 winners from every value bet struck at $16+ at the real prices.
+# The top pick is untouched, since a top pick is never near the line.
+MAX_RATED_PRICE = 50.0
 
 PLANS = {
     "top_pick": "the model's top-rated runner, one unit",
@@ -137,6 +143,8 @@ def place(rows: list[Row]) -> list[Bet]:
     for r in rows:
         if r.model_prob and r.market_prob and r.model_prob > MAX_MODEL_TO_MARKET * r.market_prob:
             continue   # too far from the market to be an edge: not bet, whatever the plan
+        if r.rated_price is not None and r.rated_price >= MAX_RATED_PRICE:
+            continue   # rated too long to be trusted as value, whatever the price on offer
         ev = r.model_prob * r.price - 1.0 if r.model_prob and r.price and r.price > 1 else None
         if ev is not None and ev > EV_THRESHOLD:
             bet("value_ev20", r, UNIT)
@@ -175,6 +183,8 @@ def place_real_price(rows: list[Row]) -> list[Bet]:
     bet("rp_top_pick", min(rated, key=lambda r: r.rated_price), UNIT)
     for r in rows:
         if r.model_prob and r.market_prob and r.model_prob > MAX_MODEL_TO_MARKET * r.market_prob:
+            continue
+        if r.rated_price is not None and r.rated_price >= MAX_RATED_PRICE:
             continue
         ev = r.model_prob * r.price - 1.0 if r.model_prob and r.price and r.price > 1 else None
         if ev is not None and ev > 0.05:

@@ -107,6 +107,20 @@ def blend_probs(scores: list[float], market: list[float], a: float, b: float) ->
     return [v / t for v in w]
 
 
+def cull_long(probs: list[float], cap_price: float = 50.0, keep: float = 0.5) -> list[float]:
+    """The founder's question: a runner rated at `cap_price` or longer keeps only `keep` of its
+    chance and the rest is handed back to the field, pro rata. Never zero: BSP gives every
+    runner some chance, and a zero on the one that wins scores as infinitely wrong.
+    Hand-checked: [0.6, 0.38, 0.02] at $50, keep 0.5 -> the 2% runner keeps 1%, the other 1%
+    goes 0.6/0.98 and 0.38/0.98 of the way, so [0.6061, 0.3839, 0.01]."""
+    long = [p < 1.0 / cap_price for p in probs]
+    freed = sum(p * (1 - keep) for p, l in zip(probs, long) if l)
+    rest = sum(p for p, l in zip(probs, long) if not l)
+    if not freed or rest <= 0:
+        return list(probs)
+    return [p * keep if l else p + freed * p / rest for p, l in zip(probs, long)]
+
+
 def kl_to_bsp(probs: list[float], race) -> float:
     q = B.bsp_chances(race.runners)
     return sum(qi * math.log(qi / max(pi, 1e-12)) for qi, pi in zip(q, probs) if qi > 0)
@@ -313,6 +327,18 @@ def main() -> None:
                 best_kl, best_name, best_pr = kl, f"refit {name} r{rg:g}", pr
     contenders.append((best_name, best_pr))
     print(f"The best of those, '{best_name}', is chosen on this same sample, so its figure flatters it a little.")
+
+    # The founder's question (23 Sep): if a runner we rate $50 or longer gives its chance back to
+    # the field, are we closer to BSP? Scored for the market itself and for each model.
+    print(f"\nIf every runner rated $50 or longer hands back part of its chance to the rest of the field (KL to BSP, {label} market {mkt.kl_to_bsp:.4f}):")
+    print("| chances | as they are | long shots keep half | keep a quarter | keep a tenth |")
+    print("|---|---|---|---|---|")
+    for name, pr_set in [(f"the {label} market", market), ("our model as deployed", probs)] + [(f"[{n}]", p) for n, p in contenders if n.startswith("refit") or n == "blend"]:
+        cells = []
+        for keep in (1.0, 0.5, 0.25, 0.1):
+            kl = sum(kl_to_bsp(cull_long(pr, 50.0, keep), race) for pr, race in zip(pr_set, test) if pr) / max(1, sum(1 for pr in pr_set if pr))
+            cells.append(f"{kl:.4f}")
+        print(f"| {name} | " + " | ".join(cells) + " |")
 
     # Every method, paid at the struck (9am) price and at BSP. The deployed model's methods
     # carry no prefix; the contenders that beat or approach the market are prefixed so the

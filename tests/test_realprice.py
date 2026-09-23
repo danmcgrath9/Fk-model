@@ -65,3 +65,17 @@ def test_place_real_price_plans_and_guards():
 def test_model_family_names_the_real_price_refit():
     assert P.model_family("realprice_compact_open (95 races to 2026-09-22)") == "real-price refit"
     assert P.model_family("market_kitchen_sink_exp (3382 races to 2026-09-22)") == "reads the market"
+
+
+def test_no_value_plan_backs_a_runner_rated_at_the_cap_or_longer():
+    # rated $60 (1.67%) at $90: 50c of value on paper, nine tenths of a one-book price, refused
+    rows = [
+        P.Row("fav", "Fav", 2.0, 2.2, 0.50, 0.45, None),
+        P.Row("rough", "Rough", 60.0, 90.0, 1 / 60, 1 / 90, "model_higher"),
+    ]
+    assert all(b.horse_id == "fav" for b in P.place(rows))
+    assert all(b.horse_id == "fav" for b in P.place_real_price(rows))
+    # one dollar under the cap and it is a candidate again (still subject to the 3x guard)
+    rows[1].rated_price = P.MAX_RATED_PRICE - 1
+    rows[1].model_prob = 1 / rows[1].rated_price
+    assert any(b.horse_id == "rough" for b in P.place(rows))

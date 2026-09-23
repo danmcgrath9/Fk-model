@@ -75,3 +75,11 @@ def test_refit_on_real_prices_learns_the_market_scale():
     assert kl < market_kl
     beta = B.fit(races, [B.MARKET_FEATURE], ridge=1e-6)
     assert abs(beta[B.MARKET_FEATURE] - 1.2) < 0.02
+
+
+def test_cull_long_hands_the_chance_back_pro_rata_and_never_zeroes():
+    out = L.cull_long([0.6, 0.38, 0.02], 50.0, 0.5)
+    assert [round(p, 4) for p in out] == [0.6061, 0.3839, 0.01]
+    assert round(sum(out), 9) == 1.0
+    assert L.cull_long([0.6, 0.4], 50.0, 0.5) == [0.6, 0.4]      # nothing rated $50+: unchanged
+    assert min(L.cull_long([0.9, 0.09, 0.01], 50.0, 0.1)) > 0
