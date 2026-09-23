@@ -351,8 +351,28 @@ def main() -> None:
             k = P.kelly_stake(pi, price)
             if k > 0:
                 add("quarter Kelly, every positive edge", k, price, won, bsp)
+    # The founder's cap: drop any runner WE rate at $50 or longer, and the shorter caps beside
+    # it, on the value rule, so the table shows what a cap costs and saves at the real price.
+    RATED_CAPS = (10, 15, 20, 30, 50)
+    def add_capped(prefix, model_probs, thresholds):
+        for race, pr, mk in zip(test, model_probs, market):
+            if not pr:
+                continue
+            for r, pi, mi in zip(race.runners, pr, mk):
+                price = r.raw.get("open")
+                if not price or price <= 1 or not pi or pi > 3.0 * mi:
+                    continue
+                rated = 1.0 / pi
+                ev = pi * price - 1.0
+                for cap in RATED_CAPS:
+                    for t in thresholds:
+                        if rated < cap and ev > t:
+                            add(f"{prefix}value {int(t * 100)}c+, rated under ${cap}, 1u", 1.0, price, r.finish == 1, r.bsp)
+    add_capped("", probs, (0.05, 0.20))
     # The contenders: the same core rules from each model that was fitted against the real price.
     for prefix, model_probs in contenders:
+        if prefix.startswith("refit"):
+            add_capped(f"[{prefix}] ", model_probs, (0.05, 0.10))
         for race, pr, mk in zip(test, model_probs, market):
             if not pr:
                 continue
