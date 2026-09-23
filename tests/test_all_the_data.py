@@ -341,8 +341,10 @@ def test_a_race_already_priced_into_the_book_is_never_re_bet():
 
     section.rows = [row("H1", "A", 3.0, 4.0, 0.33, 0.25, "model_higher", 5.0),
                     row("H2", "B", 6.0, 5.0, 0.17, 0.20)]
-    race = {"race_id": "R1", "meeting_date": "2026-09-23", "track": "T", "race_number": 1,
-            "raw": {"startTime": "11:59pm"}}                      # jump still ahead, so the race is bettable
+    from datetime import timedelta
+    tomorrow = (datetime.now(timezone(timedelta(hours=10))) + timedelta(days=1)).date().isoformat()
+    race = {"race_id": "R1", "meeting_date": tomorrow, "track": "T", "race_number": 1,
+            "raw": {"startTime": "11:59pm"}}                      # jump still ahead whatever the clock says, so the race is bettable
     fresh = FakeDb(None)
     assert place_paper(fresh, race, section) > 0
     assert all(r["opening_price"] == (5.0 if r["horse_id"] == "H1" else None) for r in fresh.placed)
