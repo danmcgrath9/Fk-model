@@ -4,6 +4,8 @@ name: fk live price replay
 # pipeline has priced, with a model fitted only on earlier races. No Form King calls.
 
 on:
+  schedule:
+    - cron: '30 22 * * *'   # 8:30am Melbourne standard time, after the 7am results job: every day's real prices join the test
   workflow_dispatch:
     inputs:
       window:
@@ -43,3 +45,6 @@ jobs:
         run: |
           set -o pipefail
           python scripts/live_price_replay.py --window "${{ github.event.inputs.window || 'morning' }}" | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ -z "${{ github.event.inputs.window }}" ]; then
+            echo; echo "## Evening-before prices"; python scripts/live_price_replay.py --window evening | tee -a "$GITHUB_STEP_SUMMARY"
+          fi

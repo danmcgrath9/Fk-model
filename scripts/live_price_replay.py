@@ -71,6 +71,55 @@ def roi_se(returns: list[float], stakes: list[float]) -> tuple[float, float, flo
     return staked, returned, returned / staked - 1, se_total / staked
 
 
+def blend_probs(scores: list[float], market: list[float], a: float, b: float) -> list[float]:
+    """chance_i proportional to exp(a * log(market_i) + b * score_i)."""
+    z = [a * math.log(max(m, 1e-9)) + b * s for s, m in zip(scores, market)]
+    mx = max(z)
+    w = [math.exp(v - mx) for v in z]
+    t = sum(w)
+    return [v / t for v in w]
+
+
+def kl_to_bsp(probs: list[float], race) -> float:
+    q = B.bsp_chances(race.runners)
+    return sum(qi * math.log(qi / max(pi, 1e-12)) for qi, pi in zip(q, probs) if qi > 0)
+
+
+GRID_A = [0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2]
+GRID_B = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.3, 1.6, 2.0]
+
+
+def fit_blend(days: dict[str, list[tuple[list[float], list[float], object]]]) -> tuple[float, float]:
+    """(a, b) minimising KL to BSP over every race; days -> [(form scores, market, race)]."""
+    best, best_kl = (1.0, 0.0), float("inf")
+    for a in GRID_A:
+        for b in GRID_B:
+            kl = sum(kl_to_bsp(blend_probs(sc, mk, a, b), race) for rs in days.values() for sc, mk, race in rs)
+            if kl < best_kl:
+                best, best_kl = (a, b), kl
+    return best
+
+
+def form_plus_price(train, test, feats_form: list[str], ridge: float) -> tuple[float, tuple[float, float]]:
+    """A form-only model (no market input, so nothing learned from the soft opening average),
+    blended with the REAL price: chance ~ exp(a log(price chance) + b form score). a and b
+    are the only things learned from the real-price races, leave-one-day-out, so every race
+    is scored by weights that never saw its day. Returns (mean KL to BSP, (a, b) on all days)."""
+    beta = B.fit(train, feats_form, ridge=ridge)
+    days: dict[str, list] = {}
+    for race in test:
+        sc = [sum(beta.get(k, 0.0) * race.runners[i].x.get(k, 0.0) for k in feats_form) for i in range(len(race.runners))]
+        mk = B.market_probs([race])[0]
+        days.setdefault(race.date, []).append((sc, mk, race))
+    total, n = 0.0, 0
+    for d in days:
+        a, b = fit_blend({k: v for k, v in days.items() if k != d})
+        for sc, mk, race in days[d]:
+            total += kl_to_bsp(blend_probs(sc, mk, a, b), race)
+            n += 1
+    return total / max(n, 1), fit_blend(days)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--state", default="VIC")
@@ -117,6 +166,12 @@ def main() -> None:
     mkt = B.score(market, test)
     print(f"\nKL to Betfair SP on these races: {label} market {mkt.kl_to_bsp:.4f}, our model {ours.kl_to_bsp:.4f} "
           f"({'BEATS the ' + label + ' market' if ours.kl_to_bsp < mkt.kl_to_bsp else 'does NOT beat the ' + label + ' market'})")
+    # The fair contender: form fitted without the market, blended with the real price.
+    form_feats = [f for f in feats if f not in (B.MARKET_FEATURE, "market_prob", "market_x_neural", "first_starter_x_market")]
+    blend_kl, (ba, bb) = form_plus_price(train, test, form_feats, ridge)
+    verdict = "BEATS" if blend_kl < mkt.kl_to_bsp else "does NOT beat"
+    print(f"Form-only model blended with the real {label} price (weights learned leave-one-day-out): {blend_kl:.4f} "
+          f"({verdict} the {label} market; on all days the blend is {ba:.1f} x market + {bb:.1f} x form)")
 
     # Every method, paid at the struck (9am) price and at BSP.
     methods = {}
