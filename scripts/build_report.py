@@ -337,6 +337,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         form = model_chances(form_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, None,
                              str(race.get("meeting_date")) if race.get("meeting_date") else None)
         section.form_model_name = f"{form_model.get('model')} ({form_model.get('races')} races to {form_model.get('to')})"
+        section.form_probs = form
     if rated_model and rated_model.get("model") == "projection_sim" and rated_model.get("params"):
         model, section.projections = projection_chances(rated_model["params"], active, speedmap, tempo_raw, late_by_horse)
         section.sim_runs = SIM_RUNS
@@ -512,6 +513,14 @@ def place_paper(db, race: dict, section: RaceSection) -> int:
         rp_rows = [P.Row(r.horse_id, r.name, R.rated_price(rp.get(r.horse_id)), r.price, rp.get(r.horse_id), r.market_prob, None, r.finish, r.opening)
                    for r in section.rows if r.horse_id]
         bets += [(b, section.rp_model_name) for b in P.place_real_price(rp_rows)]
+    fo = getattr(section, "form_probs", None) or {}
+    if fo and db.race_first_priced_at(race["race_id"], family="fo") is None:
+        # The form-only price against the OPENING price, struck there: what an account with
+        # every bookmaker takes when the books open. The 3x guard reads the opening market.
+        open_market = market_implied({r.horse_id: r.opening for r in section.rows if r.horse_id})
+        fo_rows = [P.Row(r.horse_id, r.name, r.form_price, r.opening, fo.get(r.horse_id), open_market.get(r.horse_id), None,
+                         r.finish, r.opening) for r in section.rows if r.horse_id]
+        bets += [(b, section.form_model_name) for b in P.place_form(fo_rows)]
     if not bets:
         return 0
     return db.place_paper_bets([dict(

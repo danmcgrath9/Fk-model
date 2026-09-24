@@ -329,7 +329,7 @@ def test_a_race_already_priced_into_the_book_is_never_re_bet():
     class FakeDb:
         def __init__(self, first_at): self.first_at, self.placed = first_at, []
         def ensure_paper_book(self): pass
-        def race_first_priced_at(self, race_id, real_price=None): return self.first_at
+        def race_first_priced_at(self, race_id, real_price=None, family=None): return self.first_at
         def place_paper_bets(self, rows): self.placed += rows; return len(rows)
 
     section = RaceSection(heading="Race 1", subheading="")
@@ -413,7 +413,7 @@ def test_a_race_the_deployed_model_already_priced_still_takes_its_first_real_pri
     class FakeDb:
         def __init__(self, deployed_at, rp_at): self.at, self.placed = {False: deployed_at, True: rp_at}, []
         def ensure_paper_book(self): pass
-        def race_first_priced_at(self, race_id, real_price=None): return self.at[bool(real_price)]
+        def race_first_priced_at(self, race_id, real_price=None, family=None): return self.at[bool(real_price)]
         def place_paper_bets(self, rows): self.placed += rows; return len(rows)
 
     section = RaceSection(heading="Race 1", subheading="")

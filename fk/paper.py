@@ -47,6 +47,19 @@ PLANS = {
     "rp_value_ev05_kelly": "real-price model, worth 5c or more, staked quarter Kelly on a 100-unit bank, capped at 5 units",
 }
 REAL_PRICE_PLANS = ("rp_top_pick", "rp_value_ev05", "rp_value_ev10", "rp_value_ev05_kelly")
+# The FORM-ONLY price (config/form_price.json) against the OPENING price, struck at that price
+# (founder, 24 Sep 2026: "I have access to every bookmaker, so I can bet opening price"). Form
+# King's avgOpen is the AVERAGE bookmaker price at market open, so an account with every book
+# takes the best opener, at least as long. Back-test on 1,083 races it never saw (24 May to
+# 23 Sep): 20c+ value rated under $50 made +33% +/- 12% at the opening average and +6% +/- 11%
+# at Betfair SP; on the 54 of them pulled live before the jump the same rule LOST 25% +/- 27%
+# at the opening average. This book is the tie-breaker.
+PLANS.update({
+    "fo_top_pick": "the form-only price's top pick, one unit at the opening price",
+    "fo_value_ev10": "form-only price x opening price beats 1.10, rated under $50, one unit at the opening price",
+    "fo_value_ev20": "form-only price x opening price beats 1.20, rated under $50, one unit at the opening price",
+})
+FORM_PLANS = ("fo_top_pick", "fo_value_ev10", "fo_value_ev20")
 # The value_ev20 rule, chosen by the 23 Sep back-test on 3,260 races: on the older three fifths
 # +57% at the average opening price, on the newer two fifths it never saw +85% (1,239 bets,
 # two standard errors clear), and +16% at Betfair SP. The live gap rule managed +17% on the
@@ -192,6 +205,35 @@ def place_real_price(rows: list[Row]) -> list[Bet]:
             bet("rp_value_ev05_kelly", r, kelly_stake(r.model_prob, r.price))
         if ev is not None and ev > 0.10:
             bet("rp_value_ev10", r, UNIT)
+    return bets
+
+
+def place_form(rows: list[Row]) -> list[Bet]:
+    """The form-only price's plans for one race. Each row's `price` is the OPENING price (the
+    bet is struck there) and `model_prob` the form-only chance. Same guards as place(): no
+    race already run, no runner rated $50 or longer in a value plan, nothing more than three
+    times the opening market's chance."""
+    if not rows or any(r.finish is not None for r in rows):
+        return []
+    rated = [r for r in rows if r.rated_price and r.price and r.price > 1]
+    if not rated:
+        return []
+    bets: list[Bet] = []
+
+    def bet(plan: str, r: Row) -> None:
+        bets.append(Bet(plan, r.horse_id, r.name, UNIT, r.price, r.rated_price, r.model_prob, r.market_prob, r.opening))
+
+    bet("fo_top_pick", min(rated, key=lambda r: r.rated_price))
+    for r in rated:
+        if r.model_prob and r.market_prob and r.model_prob > MAX_MODEL_TO_MARKET * r.market_prob:
+            continue
+        if r.rated_price >= MAX_RATED_PRICE:
+            continue
+        ev = r.model_prob * r.price - 1.0 if r.model_prob else None
+        if ev is not None and ev > 0.10:
+            bet("fo_value_ev10", r)
+        if ev is not None and ev > 0.20:
+            bet("fo_value_ev20", r)
     return bets
 
 

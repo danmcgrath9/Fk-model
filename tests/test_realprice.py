@@ -79,3 +79,15 @@ def test_no_value_plan_backs_a_runner_rated_at_the_cap_or_longer():
     rows[1].rated_price = P.MAX_RATED_PRICE - 1
     rows[1].model_prob = 1 / rows[1].rated_price
     assert any(b.horse_id == "rough" for b in P.place(rows))
+
+
+def test_form_plans_strike_at_the_opening_price():
+    from fk import paper as P
+    rows = [P.Row("a", "A", 3.0, 4.0, 1 / 3, 0.25, None, None, 4.0),      # 1/3 x 4.00 = 1.33: 33c, both value plans
+            P.Row("b", "B", 5.0, 5.8, 0.20, 0.17, None, None, 5.8),       # 0.2 x 5.80 = 1.16: 16c, ev10 only
+            P.Row("c", "C", 60.0, 90.0, 1 / 60, 0.011, None, None, 90.0),  # 50% value but rated $60: never a value bet
+            P.Row("d", "D", 8.0, 6.0, 0.125, 0.17, None, None, 6.0)]       # 0.125 x 6 = 0.75: no value
+    plans = sorted((b.plan, b.horse_id, b.price) for b in P.place_form(rows))
+    assert plans == [("fo_top_pick", "a", 4.0), ("fo_value_ev10", "a", 4.0), ("fo_value_ev10", "b", 5.8), ("fo_value_ev20", "a", 4.0)]
+    assert all(p in P.PLANS for p in P.FORM_PLANS)
+    assert P.place_form([P.Row("a", "A", 3.0, 4.0, 1 / 3, 0.25, None, 1, 4.0)]) == []   # race already run
