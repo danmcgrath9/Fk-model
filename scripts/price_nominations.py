@@ -195,14 +195,17 @@ def main() -> None:
     ap.add_argument("--history", default=str(ROOT / "history"))
     ap.add_argument("--track", help="today's track, for the track record")
     ap.add_argument("--refresh", choices=["test", "live"], help="pay for fresh horse form on every horse whose stored entry has run")
-    ap.add_argument("--today", help="entries dated on or before this have run (default: --date less one day)")
+    ap.add_argument("--today", help="entries dated before this have run (default: today in Melbourne)")
     a = ap.parse_args()
     names = [ln.strip() for ln in Path(a.file).read_text(encoding="utf-8").splitlines() if ln.strip()]
     model = json.loads((ROOT / "config" / "form_price.json").read_text())
     found = latest_entries(names, Path(a.history))
     if a.refresh:
-        today = a.today or (a.date and str(__import__("datetime").date.fromisoformat(a.date) - __import__("datetime").timedelta(days=1)))
-        stale = {k: F.horse_id(e) for k, (d, e) in found.items() if today is None or d <= today}
+        # An entry for a race still to come already carries the horse's form up to now; only
+        # an entry whose race has been RUN is out of date. Today is Melbourne's date.
+        from _common import now_melbourne
+        today = a.today or now_melbourne().date().isoformat()
+        stale = {k: F.horse_id(e) for k, (d, e) in found.items() if d[:10] < today}
         fresh = fetch_fresh(sorted(set(stale.values())), a.refresh)
         for k, hid in stale.items():
             if fresh.get(hid):
