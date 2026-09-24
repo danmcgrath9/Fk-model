@@ -121,23 +121,48 @@ def fetch_fresh(horse_ids: list[str], key: str) -> dict[str, list[dict]]:
     settings, spec, costs, ledger = bootstrap(key)
     db = Db(settings.database_url)
     client = make_client(key, settings, spec, costs, ledger, allow_live=False)
+    held = {}
+    for h, raw in db.conn.execute("select horse_id, raw from fk.horses where horse_id = any(%s) and profile_fetched_at > now() - interval '12 hours'",
+                                  (horse_ids,)):
+        if raw and F.horse_form_past_events(raw):
+            held[h] = F.horse_form_past_events(raw)
+    if held:
+        print(f"{len(held)} horses already fetched in the last 12 hours, not paid for again")
+    horse_ids = [h for h in horse_ids if h not in held]
     plans = [(h, client.plan(ops.HORSE_FORM, horseId=h, numBenchmarks=5, racesOnly=False)) for h in horse_ids]
     total = sum(p.credits for _, p in plans)
     if not confirm(f"Get Horse Form for {len(plans)} horses ({total} credits)?", True, estimated=total,
                    balance=ledger.balance(), live=client.key_kind == "live"):
         raise SystemExit("stopped by the credit guard")
-    out = {}
+    out, payloads = {}, {}
     client.allow_live = True
     try:
         for h, plan in plans:
             payload = client.execute(plan)
             out[h] = F.horse_form_past_events(payload)
-            store_past_events(db, h, out[h], datetime.now(timezone.utc))
+            payloads[h] = payload
     finally:
         client.allow_live = False
-    db.commit()
+    # Stored so the next run need not pay again; the horse row goes in first (a horse held
+    # only in the history files has none, and past_events needs one). A failed store never
+    # costs the price: the fetched form is already in hand.
+    try:
+        at = datetime.now(timezone.utc)
+        for h, payload in payloads.items():
+            db.upsert("horses", ["horse_id"], dict(horse_id=h, name=F.horse_form_name(payload) or h, profile_depth=5,
+                                                   profile_fetched_at=at, raw=payload, fetched_at=at))
+        db.commit()
+        for h, events in out.items():
+            store_past_events(db, h, events, at)
+        db.commit()
+    except Exception as ex:  # noqa: BLE001
+        print(f"fresh form not stored ({type(ex).__name__}: {str(ex)[:160]}); pricing with it anyway")
+        try:
+            db.rollback()
+        except Exception:  # noqa: BLE001
+            pass
     print(f"fresh horse form for {len(out)} horses, {total} credits; balance {ledger.balance()}")
-    return out
+    return {**held, **out}
 
 
 def price(names: list[str], found: dict, model: dict, distance: int | None, date: str | None, lws: float | None):
