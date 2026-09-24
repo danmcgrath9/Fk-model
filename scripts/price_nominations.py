@@ -64,6 +64,82 @@ def latest_entries(names: list[str], history_dir: Path | None) -> dict[str, tupl
     return found
 
 
+def _record(runs: list[dict]) -> str:
+    """Form King's record string, 'starts: wins-seconds-thirds-other'."""
+    fin = [r.get("finish") for r in runs]
+    w, s2, t = sum(f == 1 for f in fin), sum(f == 2 for f in fin), sum(f == 3 for f in fin)
+    return f"{len(fin)}: {w}-{s2}-{t}-{len(fin) - w - s2 - t}"
+
+
+def refreshed(entry: dict, fresh_events: list[dict], race_date: str | None, distance: int | None, track: str | None) -> dict:
+    """The stored entry brought up to date with a fresh Get Horse Form: its past events
+    replaced by the full career list (runs before race_date only), the career, distance
+    and track records and the peak ratings recomputed from those runs, and the official
+    handicap rating taken from the latest run. When the horse has RACED since the stored
+    entry, that entry's Neural rating predates runs we now hold, so it is dropped (the
+    field average stands in) rather than pricing a winner off its pre-race rating."""
+    from fk.trend import rating_series
+    events = [p for p in fresh_events if (F.past_event_date(p) or "") < (race_date or "9999")]
+    old_dates = {F.past_event_date(p) for p in F.entry_past_events(entry)}
+    runs = sorted([F.run_ratings(p) for p in events if F.past_event_date(p)], key=lambda r: r["date"])
+    races = [r for r in runs if not r.get("trial") and r.get("finish")]
+    new_races = [r for r in races if r["date"] not in old_dates]
+    out = {**entry, "pastEvents": events}
+    form = dict(entry.get("form") or {})
+    form["careerForm"] = _record(races)
+    if distance:
+        form["distanceForm"] = _record([r for r in races if r.get("distance") and abs(float(r["distance"]) - distance) <= 50])
+    if track:
+        form["trackForm"] = _record([r for r in races if (r.get("track") or "").lower().startswith(track.lower())])
+    out["form"] = form
+    series = [v for v in rating_series(runs) if v is not None]
+    ratings = dict(entry.get("ratings") or {})
+    if series:
+        ratings["peak"] = max([series[-1], *(v for v in [ratings.get("peak")] if v is not None), *series])
+        recent = [v for r, v in zip([r for r in runs if not r.get("trial")], rating_series(runs)) if v is not None
+                  and race_date and r["date"] >= f"{int(race_date[:4]) - 1}{race_date[4:]}"]
+        if recent:
+            ratings["peak12m"] = max(recent)
+    if new_races:
+        ratings["neural"] = None
+    out["ratings"] = ratings
+    ohr = next((p.get("benchmarkRating") for p in sorted(events, key=lambda p: F.past_event_date(p) or "", reverse=True)
+                if p.get("benchmarkRating")), None)
+    if ohr:
+        out["benchmarkRating"] = ohr
+    return out
+
+
+def fetch_fresh(horse_ids: list[str], key: str) -> dict[str, list[dict]]:
+    """One Get Horse Form per horse (2 credits at five benchmarked runs), stored the way the
+    daily pull stores them. Guarded by the credit cap and the balance floor."""
+    from datetime import datetime, timezone
+    from _common import bootstrap, confirm, make_client
+    from daily_pull import store_past_events
+    from fk import ops
+    from fk.db import Db
+    settings, spec, costs, ledger = bootstrap(key)
+    db = Db(settings.database_url)
+    client = make_client(key, settings, spec, costs, ledger, allow_live=False)
+    plans = [(h, client.plan(ops.HORSE_FORM, horseId=h, numBenchmarks=5, racesOnly=False)) for h in horse_ids]
+    total = sum(p.credits for _, p in plans)
+    if not confirm(f"Get Horse Form for {len(plans)} horses ({total} credits)?", True, estimated=total,
+                   balance=ledger.balance(), live=client.key_kind == "live"):
+        raise SystemExit("stopped by the credit guard")
+    out = {}
+    client.allow_live = True
+    try:
+        for h, plan in plans:
+            payload = client.execute(plan)
+            out[h] = F.horse_form_past_events(payload)
+            store_past_events(db, h, out[h], datetime.now(timezone.utc))
+    finally:
+        client.allow_live = False
+    db.commit()
+    print(f"fresh horse form for {len(out)} horses, {total} credits; balance {ledger.balance()}")
+    return out
+
+
 def price(names: list[str], found: dict, model: dict, distance: int | None, date: str | None, lws: float | None):
     from fk import projection as P
     runners, source = [], {}
@@ -92,10 +168,21 @@ def main() -> None:
     ap.add_argument("--date")
     ap.add_argument("--lws", type=float)
     ap.add_argument("--history", default=str(ROOT / "history"))
+    ap.add_argument("--track", help="today's track, for the track record")
+    ap.add_argument("--refresh", choices=["test", "live"], help="pay for fresh horse form on every horse whose stored entry has run")
+    ap.add_argument("--today", help="entries dated on or before this have run (default: --date less one day)")
     a = ap.parse_args()
     names = [ln.strip() for ln in Path(a.file).read_text(encoding="utf-8").splitlines() if ln.strip()]
     model = json.loads((ROOT / "config" / "form_price.json").read_text())
     found = latest_entries(names, Path(a.history))
+    if a.refresh:
+        today = a.today or (a.date and str(__import__("datetime").date.fromisoformat(a.date) - __import__("datetime").timedelta(days=1)))
+        stale = {k: F.horse_id(e) for k, (d, e) in found.items() if today is None or d <= today}
+        fresh = fetch_fresh(sorted(set(stale.values())), a.refresh)
+        for k, hid in stale.items():
+            if fresh.get(hid):
+                d, e = found[k]
+                found[k] = (f"{d}, refreshed", refreshed(e, fresh[hid], a.date, a.distance, a.track))
     rows = price(names, found, model, a.distance, a.date, a.lws)
     print(f"{Path(a.file).stem}: {len(names)} nominations, {len(found)} with a Form King record; model {model['model']}\n")
     print("| rank | horse | Form $ | Take at | rated off |")
