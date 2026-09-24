@@ -54,6 +54,9 @@ METHOD_NOTE = (
 
 PREP_FORM = {1: "firstUpForm", 2: "secondUpForm", 3: "thirdUpForm"}
 MODEL_PATH = Path(__file__).resolve().parents[1] / "config" / "rated_price.json"
+# The form-only price (scripts/fit_form_only.py): Form King's inputs and nothing from today's
+# market, so a race is priced before any book opens. Printed beside the market-reading price.
+FORM_MODEL_PATH = Path(__file__).resolve().parents[1] / "config" / "form_price.json"
 
 
 def load_rated_price_model(path: Path = MODEL_PATH) -> dict | None:
@@ -62,6 +65,20 @@ def load_rated_price_model(path: Path = MODEL_PATH) -> dict | None:
         return None
     m = json.loads(path.read_text(encoding="utf-8"))
     return m if m.get("beta") and m.get("features") else None
+
+
+def load_form_model(path: Path = FORM_MODEL_PATH) -> dict | None:
+    """The form-only model, or None before one has been fitted. Refuses a file that carries a
+    feature built from today's price: a "form-only" price that reads the market is a lie."""
+    m = load_rated_price_model(path)
+    if m is None:
+        return None
+    from fk import backtest as B
+    barred = {B.MARKET_FEATURE, "market_prob", "market_x_neural", "first_starter_x_market"} | set(B.NON_DEPLOYABLE)
+    leaks = barred & set(m["features"])
+    if leaks:
+        raise ValueError(f"{path} is not form-only: it carries {sorted(leaks)}")
+    return m
 
 
 SIM_RUNS = 20000
@@ -246,7 +263,8 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
                   speedmap: list[dict] | None, odds: dict[str, dict[str, float]], tempo: str | None = None,
                   events_by_horse: dict[str, list[dict]] | None = None, neural_scale: float | None = None,
                   scale_fitted: bool = False, rated_model: dict | None = None, tempo_raw: dict | None = None,
-                  results: dict[str, dict] | None = None, real_price_model: dict | None = None) -> RaceSection:
+                  results: dict[str, dict] | None = None, real_price_model: dict | None = None,
+                  form_model: dict | None = None) -> RaceSection:
     heading = f"Race {race.get('race_number') or '?'}: {race.get('race_name') or ''}".strip()
     sub = " ".join(x for x in [f"{race['distance_m']}m" if race.get("distance_m") else "", str(race.get("scheduled_at") or "")] if x)
     section = RaceSection(heading=heading, subheading=sub)
@@ -312,6 +330,13 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
     lws = F.race_facts(race["raw"]).get("lws") if race.get("raw") else None
     model: dict = {}
     priced_by_projection = False
+    form: dict = {}
+    if form_model:
+        # No openings passed and no market feature in the fit: the price is form alone, the
+        # same with a full book, half a book or none.
+        form = model_chances(form_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, None,
+                             str(race.get("meeting_date")) if race.get("meeting_date") else None)
+        section.form_model_name = f"{form_model.get('model')} ({form_model.get('races')} races to {form_model.get('to')})"
     if rated_model and rated_model.get("model") == "projection_sim" and rated_model.get("params"):
         model, section.projections = projection_chances(rated_model["params"], active, speedmap, tempo_raw, late_by_horse)
         section.sim_runs = SIM_RUNS
@@ -369,7 +394,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
             price=prices.get(hid), opening=odds.get(hid, {}).get("opening"),
             market_prob=market.get(hid), model_prob=model.get(hid),
             flag=disagreement(market.get(hid), model.get(hid), FLAG_THRESHOLD),
-            rated_price=rated_price(model.get(hid)), value_pts=value_points(market.get(hid), model.get(hid)),
+            rated_price=rated_price(model.get(hid)), form_price=rated_price(form.get(hid)), value_pts=value_points(market.get(hid), model.get(hid)),
             trend=trends[hid].reading if hid in trends and trends[hid].n else None, slope=trends[hid].slope if hid in trends else None,
             last_rating=trends[hid].last if hid in trends else None, best_rating=trends[hid].best if hid in trends else None,
             finish=F.result_finish_position(res) if res else (stored or {}).get("finish"),
@@ -552,6 +577,9 @@ def from_database(target: str, track: str | None, out_dir: Path, open_it: bool, 
     rated_model = load_rated_price_model()
     if rated_model:
         print(f"rated price: back-tested model, {rated_model['races']} races to {rated_model['to']}")
+    form_model = load_form_model()
+    if form_model:
+        print(f"form-only price: {form_model['model']}, {form_model['races']} races to {form_model['to']}")
     real_price_model = None
     if paper and not exclusions:
         # Fitted fresh on every stored race with a real 9am price (a few seconds); only the
@@ -576,7 +604,7 @@ def from_database(target: str, track: str | None, out_dir: Path, open_it: bool, 
             notes = apply_exclusions(entries, events, runs, exclusions or [])
             section = build_section(r, entries, runs, sm, odds, tempo, events, neural_scale=k, scale_fitted=fitted, rated_model=rated_model,
                                     tempo_raw=db.speedmap_tempo_raw(r["race_id"]), results=db.results_for_race(r["race_id"]),
-                                    real_price_model=real_price_model)
+                                    real_price_model=real_price_model, form_model=form_model)
             section.facts = list(notes) + list(section.facts)
             sections.append(section)
             # A what-if page never places bets: the book runs on the figures as published.

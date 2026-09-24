@@ -435,3 +435,30 @@ def test_a_race_the_deployed_model_already_priced_still_takes_its_first_real_pri
     # and once the rp model has priced it too, nothing more
     done = FakeDb(deployed_at=earlier, rp_at=earlier)
     assert place_paper(done, race, section) == 0
+
+
+def test_form_only_price_prices_a_race_with_no_market(tmp_path):
+    import json
+    import pytest
+    from build_report import build_section, load_form_model
+    assert load_form_model(tmp_path / "none.json") is None
+    bad = tmp_path / "bad.json"
+    bad.write_text(json.dumps({"beta": {"open_logit": 1.0}, "features": ["open_logit"], "races": 1, "to": "x"}))
+    with pytest.raises(ValueError):
+        load_form_model(bad)      # a "form-only" price that reads the market is refused
+    path = tmp_path / "form_price.json"
+    path.write_text(json.dumps({"model": "form_kitchen_sink", "beta": {"neural_rel": 8.0}, "features": ["neural_rel"],
+                                "races": 3000, "to": "2026-09-22"}))
+    form = load_form_model(path)
+    summ = race_summary(n_runners=3)
+    entries = [dict(horse_id=x["breedingId"], name=x["horse"]["name"], barrier=x["barrier"], weight_kg=56.0, jockey="J", trainer="T",
+                    scratched=False, neural_rating=x["ratings"]["neural"], exp_rating=58.0, days_since_last_run=14, raw=x) for x in summ["entries"]]
+    for e in entries:
+        e["raw"] = {**e["raw"], "odds": {}}     # no book at all
+    model = {"model": "m", "beta": {"neural_rel": 8.0, "open_logit": 1.0}, "features": ["neural_rel", "open_logit"], "races": 120, "to": "2026-09-10"}
+    sec = build_section(dict(race_number=3, race_name="Demo", distance_m=1400, raw=summ), entries, {}, None, {},
+                        rated_model=model, form_model=form)
+    assert not sec.bettable                                   # the market-reading price is not formed
+    assert all(r.form_price for r in sec.rows)                # but form prices every runner
+    assert round(sum(1 / r.form_price for r in sec.rows), 6) == 1.0
+    assert "<th>Form $</th>" in summary_table(sec.rows)

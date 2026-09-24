@@ -144,12 +144,14 @@ jobs:
           # says "model unchanged" over a traceback.
           set -o pipefail
           python scripts/backtest.py | tee -a "$GITHUB_STEP_SUMMARY"
+          # the form-only price (no market input) refits on the same racing
+          python scripts/fit_form_only.py | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Commit the model
         if: github.event.inputs.pull_only != 'yes'
         run: |
           git config user.name "fk backtest" && git config user.email "actions@users.noreply.github.com"
-          git add config/rated_price.json docs/BACKTEST.md
+          git add config/rated_price.json docs/BACKTEST.md config/form_price.json
           git diff --cached --quiet && { echo "model unchanged"; exit 0; }
           git commit -q -m "Back-test: rated price refitted to Betfair SP"
           # main may have moved during a long pull; replay the model commit on top of it

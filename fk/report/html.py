@@ -111,6 +111,7 @@ class SummaryRow:
     model_prob: float | None
     flag: str | None  # model_higher | market_higher | None
     rated_price: float | None = None
+    form_price: float | None = None  # the form-only model's price: no market input at all
     value_pts: float | None = None   # model minus market, probability points
     trend: str | None = None         # rising / steady / falling / too few runs (fk.trend)
     slope: float | None = None       # rating points per run over the last six rated runs
@@ -182,6 +183,7 @@ class RaceSection:
     bettable: bool = True        # False when the model's market input was incomplete: read, never bet
     model_name: str | None = None  # the rated-price model that priced the race, stored on every paper bet
     model_reads_market: bool = False
+    form_model_name: str | None = None   # the form-only model behind the Form $ column, when one is fitted
 
 
 def _fmt(v: Any, nd: int = 2, pct: bool = False) -> str:
@@ -216,9 +218,10 @@ def _result(r: SummaryRow) -> str:
 def summary_table(rows: list[SummaryRow]) -> str:
     ordered = sorted(rows, key=lambda r: (r.neural is None, -(r.neural or 0)))
     run = any(r.finish is not None for r in rows)
+    form = any(r.form_price is not None for r in rows)
     head = ("<tr><th class='l'>Runner</th>" + ("<th>Result</th>" if run else "") + "<th>Bar</th><th class='m'>Wt</th><th class='l m'>Jockey</th><th class='m'>Days</th>"
             "<th>Neural</th><th class='m'>EXP</th><th>Trend</th><th class='m'>Last</th><th class='m'>Best</th>"
-            "<th>Rated $</th><th>Price</th><th class='m'>Open</th><th>Move</th>"
+            "<th>Rated $</th>" + ("<th>Form $</th>" if form else "") + "<th>Price</th><th class='m'>Open</th><th>Move</th>"
             "<th class='m'>Market %</th><th class='m'>Neural %</th><th>Value</th><th>Flag</th></tr>")
     body = []
     for r in ordered:
@@ -229,7 +232,7 @@ def summary_table(rows: list[SummaryRow]) -> str:
             + f"<td>{_fmt(r.barrier)}</td><td class='m'>{_fmt(r.weight,1)}</td>"
             f"<td class='l m'>{_fmt(r.jockey)}</td><td class='m'>{_fmt(r.days_since)}</td><td>{_fmt(r.neural,1)}</td><td class='m'>{_fmt(r.exp,1)}</td>"
             f"<td class='trend-{(r.trend or 'none').split()[0]}'>{_trend(r)}</td><td class='m'>{_fmt(r.last_rating,1)}</td><td class='m'>{_fmt(r.best_rating,1)}</td>"
-            f"<td>{_fmt(r.rated_price)}</td><td>{_fmt(r.price)}</td><td class='m'>{_fmt(r.opening)}</td><td>{_move(r)}</td>"
+            f"<td>{_fmt(r.rated_price)}</td>" + (f"<td>{_fmt(r.form_price)}</td>" if form else "") + f"<td>{_fmt(r.price)}</td><td class='m'>{_fmt(r.opening)}</td><td>{_move(r)}</td>"
             f"<td class='m'>{_fmt(r.market_prob,pct=True)}</td><td class='m'>{_fmt(r.model_prob,pct=True)}</td>"
             f"<td>{'' if r.value_pts is None else f'{r.value_pts:+.1f}'}</td><td>{flag}</td></tr>"
         )
