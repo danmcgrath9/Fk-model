@@ -38,6 +38,7 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: scripts/fetch_history.sh
       - name: Fit the form-only price
+        timeout-minutes: 30
         run: |
           set -o pipefail
           python scripts/fit_form_only.py | tee -a "$GITHUB_STEP_SUMMARY"

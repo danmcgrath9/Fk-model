@@ -27,12 +27,14 @@ minutes per candidate on 3,500 races; tests/test_fit_form_only.py holds the two 
 from __future__ import annotations
 
 import argparse
+import os
 import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-import numpy as np
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+import numpy as np  # noqa: E402
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -68,7 +70,10 @@ class Stack:
             xs.extend([[r.x.get(f, 0.0) for f in features] for r in race.runners])
             qs.extend(q)
             sizes.append(len(race.runners))
-        self.X = np.asarray(xs, dtype=float).reshape(-1, len(features))
+        # A missing or non-finite figure counts as the field average (0 after centring), as
+        # r.x.get(f, 0.0) does for an absent one: NaN reaching LAPACK can stall the solve.
+        self.X = np.nan_to_num(np.asarray([[0.0 if v is None else v for v in row] for row in xs], dtype=float)
+                               .reshape(-1, len(features)), nan=0.0, posinf=0.0, neginf=0.0)
         self.q = np.asarray(qs, dtype=float)
         self.starts = np.concatenate([[0], np.cumsum(sizes)[:-1]]).astype(int)
         self.idx = np.repeat(np.arange(len(sizes)), sizes)
@@ -92,6 +97,8 @@ def fit_np(races: list[B.Race], features: list[str], ridge: float, iterations: i
         xbar = np.add.reduceat(st.X * p[:, None], st.starts)[st.idx]
         D = st.X - xbar
         H = (D * p[:, None]).T @ D + ridge * np.eye(d)
+        if not (np.all(np.isfinite(H)) and np.all(np.isfinite(g))):
+            raise ValueError("the fit went non-finite; not writing a model")
         step = np.linalg.solve(H, -g)
         beta = beta + step
         if np.max(np.abs(step)) < 1e-9:
@@ -119,6 +126,7 @@ def choose(train: list[B.Race]) -> tuple[str, float, list[tuple[str, float, floa
         for ridge in RIDGES:
             v = kl(fit_np(inner, feats, ridge), valid)
             table.append((name, ridge, v))
+            print(f"  tried {name} ridge {ridge:g}: {v:.4f}", flush=True)
             if best is None or v < best[2]:
                 best = (name, ridge, v)
     return best[0], best[1], table
@@ -131,8 +139,11 @@ def main() -> None:
     ap.add_argument("--out", default=str(OUT_PATH))
     a = ap.parse_args()
     from backtest import load_races
+    import time
+    t0 = time.time()
     races, _ = load_races(a.state, Path(a.history))
     races = [r for r in races if B.bsp_chances(r.runners)]
+    print(f"loaded in {time.time() - t0:.0f}s", flush=True)
     train, test = split_by_date(races, TRAIN_SHARE)
     print(f"{len(races)} races with a Betfair SP; choosing on the older {len(train)} ({train[0].date} to {train[-1].date}), "
           f"judged once on the newer {len(test)} ({test[0].date} to {test[-1].date}).\n")
