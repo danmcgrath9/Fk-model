@@ -2,9 +2,10 @@
 
     python scripts/record_bets.py data/live_bets/2026-09-30-ballarat-model.json prices.txt data/live_bets/2026-09-30-ballarat-bets.csv
 
-prices.txt: one runner per line, "race, horse, price[, price now]" (e.g. "6, High Falls, 9.50, 8.00"):
-the price is the one the user could take (the opening price); the optional second is the price at
-the time, kept for the record. "race, horse, SCR" marks a scratching: each race's chances are rescaled
+prices.txt: one runner per line, "race, horse, opening price[, price showing]" (e.g. "6, High Falls,
+9.50, 8.00"). Bets are struck at the price SHOWING when the user looked (the fixed price on the
+screen), because that is the only price the user could take; the opening price is kept for the
+record. A line with one price is taken as both. "race, horse, SCR" marks a scratching: each race's chances are rescaled
 over the runners that remain. A runner simply missing from the file stays in the race, unbet.
 Plans, each at the user's price:
   top_pick     the model's top pick, 1 unit
@@ -34,9 +35,10 @@ def main() -> None:
             if parts[2].upper() == "SCR":
                 scr.add(key)
                 continue
-            prices[key] = float(parts[2].replace("$", ""))
-            if len(parts) >= 4 and parts[3]:
-                now[key] = float(parts[3].replace("$", ""))
+            opening = float(parts[2].replace("$", ""))
+            showing = float(parts[3].replace("$", "")) if len(parts) >= 4 and parts[3] else opening
+            prices[key] = showing
+            now[key] = opening
     bets = []
     for rn in sorted({r["race"] for r in rows}):
         field = [r for r in rows if r["race"] == rn and (rn, norm(r["horse"])) not in scr]
@@ -60,7 +62,7 @@ def main() -> None:
                 plans.append(("kelly_q_5c", min(5.0, 25 * ev / (price - 1))))
             for plan, stake in plans:
                 bets.append(dict(race=rn, race_id=r["race_id"], horse=r["horse"], plan=plan, price=price,
-                                 price_now=now.get((rn, norm(r["horse"])), ""),
+                                 price_open=now.get((rn, norm(r["horse"])), ""),
                                  model_price=round(fair, 2), value=round(ev, 3), stake=round(stake, 2), result="", returned=""))
     with open(out, "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(bets[0].keys()))
