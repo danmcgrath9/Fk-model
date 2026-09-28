@@ -31,17 +31,20 @@ RIDGE = 30.0
 
 
 def fav_price(race) -> float | None:
-    opens = [r.raw.get("open") for r in race.runners if r.raw.get("open")]
+    opens = [float(r.raw["open"]) for r in race.runners if r.raw.get("open")]
     return min(opens) if opens else None
 
 
 def segments(race) -> dict[str, str]:
     n = len(race.runners)
-    d = race.distance_m or 0
-    lws = race.lws
+    d = float(getattr(race, "distance_m", None) or 0)
+    try:
+        lws = float(race.lws) if getattr(race, "lws", None) is not None else None
+    except (TypeError, ValueError):
+        lws = None
     fav = fav_price(race)
     return {
-        "track": "metro" if race.track.lower().startswith(B.METRO_TRACKS) else "country",
+        "track": "metro" if (race.track or "").lower().startswith(B.METRO_TRACKS) else "country",
         "day": "Saturday" if date.fromisoformat(str(race.date)[:10]).weekday() == 5 else "midweek/Sunday",
         "field": "8 or fewer" if n <= 8 else ("9 to 12" if n <= 12 else "13+"),
         "distance": "sprint (to 1200)" if d <= 1200 else ("mile-ish (1201-1700)" if d <= 1700 else "staying (1701+)"),
