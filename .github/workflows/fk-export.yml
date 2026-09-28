@@ -1,0 +1,43 @@
+name: fk export
+
+# Read-only: exports every resulted race as a numeric dataset (scripts/export_dataset.py) and
+# keeps it on the `datasets` branch (one commit, replaced each run), so models can be tried
+# outside Actions. No Form King calls.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      FK_SPEC_PATH: b2c-openapi.yaml
+      FK_LEDGER: postgres
+      PYTHONUNBUFFERED: '1'
+      DATABASE_URL: ${{ secrets.FK_DATABASE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - run: pip install -r requirements.txt
+      - name: Fetch the history files
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: scripts/fetch_history.sh
+      - name: Export
+        run: python scripts/export_dataset.py --out /tmp/ds/model_ds.npz | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Keep it on the datasets branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          cd /tmp/ds && git init -q -b datasets && git config user.name "fk export" && git config user.email "actions@users.noreply.github.com"
+          git add -A && git commit -q -m "dataset $(date -u +%Y-%m-%dT%H:%MZ)" && git push -q -f "$REMOTE" datasets
