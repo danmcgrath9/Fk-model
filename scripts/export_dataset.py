@@ -159,6 +159,11 @@ def main() -> None:
     in_db = {r["race_id"] for r in rows}
     rows += list(H.resulted_races(Path(a.history), a.state, skip=in_db))
     B.fill_going(rows)
+    try:
+        pre = set(db.races_pulled_before_the_jump(a.state))
+    except Exception as ex:  # noqa: BLE001
+        print(f"pulled-before-the-jump flag unavailable: {ex}")
+        pre = set()
     by_id = {r["race_id"]: r for r in rows}
     races, _ = races_from_rows(rows)
     races = [r for r in races if B.bsp_chances(r.runners) and B.winner_chances(r.runners)]
@@ -208,6 +213,7 @@ def main() -> None:
         race_id=np.array([m[0] for m in meta]), date=np.array([m[1] for m in meta]), track=np.array([m[2] for m in meta]),
         distance=np.array([m[3] for m in meta]), lws=np.array([m[4] for m in meta]), going=np.array([m[5] for m in meta]),
         field=np.array([m[6] for m in meta], dtype=np.int32),
+        pre_jump=np.array([m[0] in pre for m in meta]),
     )
     print(f"wrote {out}: {X.shape[0]} runners, {X.shape[1]} columns ({len(xcols)} model features), "
           f"{len(meta)} races, past runs {np.stack(pasts).shape}; {out.stat().st_size / 1e6:.1f} MB")
