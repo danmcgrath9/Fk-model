@@ -14,7 +14,7 @@ on:
         default: ''
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   trial:
@@ -39,6 +39,23 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: scripts/fetch_history.sh
       - name: Run the trial
+        id: trial
         run: |
-          set -o pipefail
-          python "scripts/${{ github.event.inputs.script }}" ${{ github.event.inputs.args }} | tee -a "$GITHUB_STEP_SUMMARY"
+          # The output is kept on the "experiments" branch as well as the step summary, because
+          # a job log is not always readable from outside GitHub.
+          set +e
+          python "scripts/${{ github.event.inputs.script }}" ${{ github.event.inputs.args }} > out.md 2>&1
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+          cat out.md | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Keep the output
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          NAME="$(date -u +%Y-%m-%dT%H%MZ)-$(basename "${{ github.event.inputs.script }}" .py)-${{ github.run_id }}.md"
+          REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          rm -rf /tmp/exp && { git clone -q --depth 1 --branch experiments "$REMOTE" /tmp/exp 2>/dev/null || { mkdir /tmp/exp && cd /tmp/exp && git init -q -b experiments; }; }
+          cd /tmp/exp && git config user.name "fk experiment" && git config user.email "actions@users.noreply.github.com"
+          cp "$GITHUB_WORKSPACE/out.md" "$NAME" && git add -A && git commit -q -m "$NAME" && git push -q "$REMOTE" experiments
+          echo "kept as $NAME"
+          test "${{ steps.trial.outputs.status }}" = "0"
