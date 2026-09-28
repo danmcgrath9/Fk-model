@@ -41,3 +41,7 @@ race,race_id,horse,plan,price,price_open,model_price,value,stake,result,returned
 8,TAT_290926_8,Cumboogle,kelly_q_5c,5.0,6.5,4.16,0.201,1.26,,
 1,TAT_290926_1,Bordeaux,narrow_50c_solid_3to20,11.0,11.0,5.81,0.892,1.0,,
 4,TAT_290926_4,Strongside,narrow_50c_solid_3to20,9.0,6.0,5.68,0.585,1.0,,
+1,TAT_290926_1,Alpha Mensae,narrow_at_open,19.0,19.0,11.16,0.7,1.0,,
+1,TAT_290926_1,Bordeaux,narrow_at_open,11.0,11.0,5.81,0.89,1.0,,
+7,,Sugar Schnapps,narrow_at_open,9.0,9.0,5.99,0.5,1.0,,
+8,TAT_290926_8,Cumboogle,narrow_at_open,6.5,6.5,4.16,0.56,1.0,,
