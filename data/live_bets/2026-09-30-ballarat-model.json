@@ -1,0 +1,1028 @@
+[
+ {
+  "race": 1,
+  "race_id": "BRAT_300926_1",
+  "horse": "Hurricane Girl",
+  "horse_id": "2023_toronado_lake-district-girl",
+  "barrier": 1,
+  "jockey": "Declan Bates",
+  "p": 0.004763714397417569
+ },
+ {
+  "race": 1,
+  "race_id": "BRAT_300926_1",
+  "horse": "Sabrina",
+  "horse_id": "2023_blue-point_witchfulthinking",
+  "barrier": 2,
+  "jockey": "Harry Coffey",
+  "p": 0.06669955783134758
+ },
+ {
+  "race": 1,
+  "race_id": "BRAT_300926_1",
+  "horse": "Semantics",
+  "horse_id": "2023_exceed-and-excel_philosophy",
+  "barrier": 3,
+  "jockey": "Ethan Brown",
+  "p": 0.35042272152317144
+ },
+ {
+  "race": 1,
+  "race_id": "BRAT_300926_1",
+  "horse": "Scoville",
+  "horse_id": "2023_too-darn-hot_mrs-kipling",
+  "barrier": 4,
+  "jockey": "Thomas Stockdale",
+  "p": 0.10480283454360644
+ },
+ {
+  "race": 1,
+  "race_id": "BRAT_300926_1",
+  "horse": "Egyptian Dancer",
+  "horse_id": "2023_portland-sky_egyptian-bullet",
+  "barrier": 5,
+  "jockey": "Damian Lane",
+  "p": 0.07856801598661853
+ },
+ {
+  "race": 1,
+  "race_id": "BRAT_300926_1",
+  "horse": "Tallingas Diamond",
+  "horse_id": "2023_prince-of-caviar_tickets-on-herself",
+  "barrier": 6,
+  "jockey": "",
+  "p": 0.001550517279879247
+ },
+ {
+  "race": 1,
+  "race_id": "BRAT_300926_1",
+  "horse": "Epponnee Rae",
+  "horse_id": "2023_hanseatic_special-episode",
+  "barrier": 7,
+  "jockey": "Teodore Nugent",
+  "p": 0.03975280514995201
+ },
+ {
+  "race": 1,
+  "race_id": "BRAT_300926_1",
+  "horse": "Aroused",
+  "horse_id": "2023_snitzel_sexy-eyes",
+  "barrier": 8,
+  "jockey": "Jordan Childs",
+  "p": 0.16103658751418018
+ },
+ {
+  "race": 1,
+  "race_id": "BRAT_300926_1",
+  "horse": "Nautique",
+  "horse_id": "2023_street-boss_seatonic",
+  "barrier": 9,
+  "jockey": "Jye McNeil",
+  "p": 0.011671816467446425
+ },
+ {
+  "race": 1,
+  "race_id": "BRAT_300926_1",
+  "horse": "Masochistic",
+  "horse_id": "2023_hanseatic_shes-sirius",
+  "barrier": 10,
+  "jockey": "",
+  "p": 0.03955739793721985
+ },
+ {
+  "race": 1,
+  "race_id": "BRAT_300926_1",
+  "horse": "Unkechaug",
+  "horse_id": "2023_blue-point_little-indian",
+  "barrier": 11,
+  "jockey": "Jye McNeil",
+  "p": 0.05753878700332222
+ },
+ {
+  "race": 1,
+  "race_id": "BRAT_300926_1",
+  "horse": "Model Gigi",
+  "horse_id": "2023_overshare_invermoray",
+  "barrier": 12,
+  "jockey": "Daniel Stackhouse",
+  "p": 0.08363524436583847
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Lollie's Galore",
+  "horse_id": "2022_the-autumn-sun_bagalollies",
+  "barrier": 1,
+  "jockey": "Zac Spain",
+  "p": 0.17808689648933138
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Sister's Run",
+  "horse_id": "2022_contributer_isle-du-cap",
+  "barrier": 2,
+  "jockey": "Billy Egan",
+  "p": 0.12663886175162375
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Empress Of China",
+  "horse_id": "2022_cool-aza-beel_love-spy",
+  "barrier": 3,
+  "jockey": "Ryan Hurdle",
+  "p": 0.003943818537259424
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Courting",
+  "horse_id": "2023_kermadec_loveseat",
+  "barrier": 4,
+  "jockey": "Jye McNeil",
+  "p": 0.1510808308780554
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Hakusan",
+  "horse_id": "2023_satono-aladdin_kerre",
+  "barrier": 5,
+  "jockey": "Jett Stanley",
+  "p": 0.051444933273408266
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Debbie",
+  "horse_id": "2021_puissance-de-lune_lets-go-home",
+  "barrier": 6,
+  "jockey": "Melea Castle",
+  "p": 0.0017003101057956555
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Mehsun",
+  "horse_id": "2023_mehmas_sunniyra",
+  "barrier": 7,
+  "jockey": "",
+  "p": 0.04240589242939753
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Under Control",
+  "horse_id": "2022_churchill_wheal-leisure",
+  "barrier": 8,
+  "jockey": "John Allen",
+  "p": 0.06376963122199718
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Blanche Bass",
+  "horse_id": "2020_akeed-mofeed_betelgeuse",
+  "barrier": 9,
+  "jockey": "Brad Rawiller",
+  "p": 0.008449711145804877
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Rough Act",
+  "horse_id": "2022_domesday_khali-rock",
+  "barrier": 10,
+  "jockey": "Joe Bowditch",
+  "p": 0.020537430789079613
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Obsidian Stone",
+  "horse_id": "2023_pierro_pedicel",
+  "barrier": 11,
+  "jockey": "Lachlan Neindorf",
+  "p": 0.0343561735635427
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Expensive Taste",
+  "horse_id": "2023_north-pacific_taste-of-money",
+  "barrier": 12,
+  "jockey": "Luke Currie",
+  "p": 0.15392055376642108
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Unoyaself",
+  "horse_id": "2022_sir-prancealot_cover-girl",
+  "barrier": 13,
+  "jockey": "Cian Macredmond",
+  "p": 0.05500083695880808
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Tears Of Happiness",
+  "horse_id": "2023_pierro_tears-of-joy",
+  "barrier": 14,
+  "jockey": "",
+  "p": 0.05685055965879847
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Grinding Away",
+  "horse_id": "2018_coroebus_lourdeaux",
+  "barrier": 15,
+  "jockey": "Teodore Nugent",
+  "p": 0.015730573509382808
+ },
+ {
+  "race": 2,
+  "race_id": "BRAT_300926_2",
+  "horse": "Aerostatique",
+  "horse_id": "2023_adelaide_annonay",
+  "barrier": 16,
+  "jockey": "Declan Bates",
+  "p": 0.03608298592129376
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Pandie Pandie",
+  "horse_id": "2023_shamus-award_charego",
+  "barrier": 1,
+  "jockey": "Luke Nolen",
+  "p": 0.03274650588590262
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Burrow",
+  "horse_id": "2023_cool-aza-beel_shadowbrook-lass",
+  "barrier": 2,
+  "jockey": "Ryan Hurdle",
+  "p": 0.0035481011804879034
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Smashing Success",
+  "horse_id": "2023_savabeel_smashing",
+  "barrier": 3,
+  "jockey": "Michael Dee",
+  "p": 0.02889732369506454
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Reve De Paris",
+  "horse_id": "2023_satono-aladdin_wanaka-dream",
+  "barrier": 4,
+  "jockey": "John Allen",
+  "p": 0.07111251744820848
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "So Royal",
+  "horse_id": "2023_so-you-think_royal-amati",
+  "barrier": 5,
+  "jockey": "Daniel Stackhouse",
+  "p": 0.1093337471065268
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Hedjet",
+  "horse_id": "2023_american-pharoah_sarah-lynx",
+  "barrier": 6,
+  "jockey": "",
+  "p": 0.13074646692134312
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Shiny Diamond",
+  "horse_id": "2022_super-seth_sparkle-and-shine",
+  "barrier": 7,
+  "jockey": "",
+  "p": 0.0283820843844558
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Hoffstadt",
+  "horse_id": "2023_castelvecchio_shirayuki",
+  "barrier": 8,
+  "jockey": "Ben Allen",
+  "p": 0.04069146136878945
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Belle Flamme",
+  "horse_id": "2022_rubick_champagne-ruby",
+  "barrier": 9,
+  "jockey": "Neil Farley",
+  "p": 0.06349416829744392
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Hot Pot Dot",
+  "horse_id": "2022_tassort_la-sangre",
+  "barrier": 10,
+  "jockey": "Declan Bates",
+  "p": 0.0021108708747579297
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Levate",
+  "horse_id": "2023_ghaiyyath_bali-beach",
+  "barrier": 11,
+  "jockey": "Jabez Johnstone",
+  "p": 0.06082631426291707
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Braemar Hill",
+  "horse_id": "2022_earthlight_hundredsnthousands",
+  "barrier": 12,
+  "jockey": "Lachlan Neindorf",
+  "p": 0.11015275385013545
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Shocko In Morocco",
+  "horse_id": "2023_shocking_seonia",
+  "barrier": 13,
+  "jockey": "Holly Durnan",
+  "p": 0.014279927874781032
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Royal Zambezi",
+  "horse_id": "2022_royal-symphony_djina-royale",
+  "barrier": 14,
+  "jockey": "Alana Kelly",
+  "p": 0.006340605789260265
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Paramount War",
+  "horse_id": "2022_impending_dunlani",
+  "barrier": 15,
+  "jockey": "Dean Yendall",
+  "p": 0.01594021990789234
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Zoucity",
+  "horse_id": "2023_zousain_velocita",
+  "barrier": 16,
+  "jockey": "",
+  "p": 0.061423740402249224
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Full Confidence",
+  "horse_id": "2023_i-am-invincible_qafila",
+  "barrier": 17,
+  "jockey": "Harry Coffey",
+  "p": 0.13943790485260704
+ },
+ {
+  "race": 3,
+  "race_id": "BRAT_300926_3",
+  "horse": "Salarae",
+  "horse_id": "2021_zoustar_lonoree",
+  "barrier": 18,
+  "jockey": "Ethan Brown",
+  "p": 0.08053528589717704
+ },
+ {
+  "race": 4,
+  "race_id": "BRAT_300926_4",
+  "horse": "Lope De Lardo",
+  "horse_id": "2022_belardo_acantha",
+  "barrier": 1,
+  "jockey": "Joe Bowditch",
+  "p": 0.03813742058328689
+ },
+ {
+  "race": 4,
+  "race_id": "BRAT_300926_4",
+  "horse": "Invisible Magic",
+  "horse_id": "2021_per-incanto_visible",
+  "barrier": 2,
+  "jockey": "Jabez Johnstone",
+  "p": 0.14349978929340784
+ },
+ {
+  "race": 4,
+  "race_id": "BRAT_300926_4",
+  "horse": "Kingsbury",
+  "horse_id": "2022_extreme-choice_perfect-persuasion",
+  "barrier": 3,
+  "jockey": "",
+  "p": 0.1637906395564526
+ },
+ {
+  "race": 4,
+  "race_id": "BRAT_300926_4",
+  "horse": "Venetian Choice",
+  "horse_id": "2022_castelvecchio_choisir-lane",
+  "barrier": 4,
+  "jockey": "Damian Lane",
+  "p": 0.11404967745701987
+ },
+ {
+  "race": 4,
+  "race_id": "BRAT_300926_4",
+  "horse": "Tempt The Gods",
+  "horse_id": "2022_levendi_hidden-charm",
+  "barrier": 5,
+  "jockey": "",
+  "p": 0.029403921435107033
+ },
+ {
+  "race": 4,
+  "race_id": "BRAT_300926_4",
+  "horse": "Perfect Night",
+  "horse_id": "2022_toronado_promise-to-reign",
+  "barrier": 6,
+  "jockey": "Michael Dee",
+  "p": 0.15274470963012665
+ },
+ {
+  "race": 4,
+  "race_id": "BRAT_300926_4",
+  "horse": "Albanian I Am",
+  "horse_id": "2019_impending_bernicia",
+  "barrier": 7,
+  "jockey": "",
+  "p": 0.035872131258593856
+ },
+ {
+  "race": 4,
+  "race_id": "BRAT_300926_4",
+  "horse": "Celestial Splendor",
+  "horse_id": "2022_deep-field_endean-rose",
+  "barrier": 8,
+  "jockey": "Dean Yendall",
+  "p": 0.04676362014737332
+ },
+ {
+  "race": 4,
+  "race_id": "BRAT_300926_4",
+  "horse": "Miss Ellaneous",
+  "horse_id": "2022_brazen-beau_jesting",
+  "barrier": 9,
+  "jockey": "Harry Coffey",
+  "p": 0.0835476833990296
+ },
+ {
+  "race": 4,
+  "race_id": "BRAT_300926_4",
+  "horse": "Comic Hero",
+  "horse_id": "2019_dalghar_wellington-rose",
+  "barrier": 10,
+  "jockey": "",
+  "p": 0.021924677721340925
+ },
+ {
+  "race": 4,
+  "race_id": "BRAT_300926_4",
+  "horse": "Regal Might",
+  "horse_id": "2020_magnus_los-feliz",
+  "barrier": 11,
+  "jockey": "Daniel Stackhouse",
+  "p": 0.11669359229861709
+ },
+ {
+  "race": 4,
+  "race_id": "BRAT_300926_4",
+  "horse": "Share The Stars",
+  "horse_id": "2021_overshare_sistine-star",
+  "barrier": 12,
+  "jockey": "Declan Bates",
+  "p": 0.029994776705499226
+ },
+ {
+  "race": 4,
+  "race_id": "BRAT_300926_4",
+  "horse": "Jackand",
+  "horse_id": "2019_spieth_titanic-jill",
+  "barrier": 13,
+  "jockey": "Craig Newitt",
+  "p": 0.02357736051414501
+ },
+ {
+  "race": 5,
+  "race_id": "BRAT_300926_5",
+  "horse": "Tanganyika",
+  "horse_id": "2020_ace-high_jezibaba",
+  "barrier": 1,
+  "jockey": "Jackson Radley",
+  "p": 0.05632757880478531
+ },
+ {
+  "race": 5,
+  "race_id": "BRAT_300926_5",
+  "horse": "Sacramental",
+  "horse_id": "2020_sacred-falls_pinzaara",
+  "barrier": 2,
+  "jockey": "Harry Coffey",
+  "p": 0.036827623674514254
+ },
+ {
+  "race": 5,
+  "race_id": "BRAT_300926_5",
+  "horse": "Nic's Choice",
+  "horse_id": "2021_nicconi_poison-ivy",
+  "barrier": 3,
+  "jockey": "Dylan Dean",
+  "p": 0.07076771181138279
+ },
+ {
+  "race": 5,
+  "race_id": "BRAT_300926_5",
+  "horse": "Jenni You Think",
+  "horse_id": "2021_so-you-think_blueberry-smoothie",
+  "barrier": 4,
+  "jockey": "Jett Stanley",
+  "p": 0.15390930223674787
+ },
+ {
+  "race": 5,
+  "race_id": "BRAT_300926_5",
+  "horse": "Easy Dun",
+  "horse_id": "2020_dundeel_mousai",
+  "barrier": 5,
+  "jockey": "Thomas Stockdale",
+  "p": 0.0692856324973613
+ },
+ {
+  "race": 5,
+  "race_id": "BRAT_300926_5",
+  "horse": "Crocodile",
+  "horse_id": "2022_ghaiyyath_monogram",
+  "barrier": 6,
+  "jockey": "Ethan Brown",
+  "p": 0.19547591297839473
+ },
+ {
+  "race": 5,
+  "race_id": "BRAT_300926_5",
+  "horse": "Tierra",
+  "horse_id": "2021_telperion_sierra-gold",
+  "barrier": 7,
+  "jockey": "Cian Macredmond",
+  "p": 0.022145547160964642
+ },
+ {
+  "race": 5,
+  "race_id": "BRAT_300926_5",
+  "horse": "Kiss My Rock",
+  "horse_id": "2021_el-roca_love-and-kisses",
+  "barrier": 8,
+  "jockey": "Craig Newitt",
+  "p": 0.02086288813406835
+ },
+ {
+  "race": 5,
+  "race_id": "BRAT_300926_5",
+  "horse": "First Innings",
+  "horse_id": "2020_contributer_dream-run",
+  "barrier": 9,
+  "jockey": "Tom Madden",
+  "p": 0.0045311033129069814
+ },
+ {
+  "race": 5,
+  "race_id": "BRAT_300926_5",
+  "horse": "Callawadda",
+  "horse_id": "2020_fiorente_ten-black",
+  "barrier": 10,
+  "jockey": "Jack Hill",
+  "p": 0.006056900893345306
+ },
+ {
+  "race": 5,
+  "race_id": "BRAT_300926_5",
+  "horse": "Revolver",
+  "horse_id": "2020_proisir_nedjma",
+  "barrier": 11,
+  "jockey": "Declan Bates",
+  "p": 0.0441871140981868
+ },
+ {
+  "race": 5,
+  "race_id": "BRAT_300926_5",
+  "horse": "Yauson",
+  "horse_id": "2022_so-you-think_brulee",
+  "barrier": 12,
+  "jockey": "Jordan Childs",
+  "p": 0.3196226843973417
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "Mull Of Kintyre",
+  "horse_id": "2023_i-am-invincible_luskintyre-lass",
+  "barrier": 1,
+  "jockey": "Luke Nolen",
+  "p": 0.08869145256357394
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "Handee",
+  "horse_id": "2023_hanseatic_chickadee",
+  "barrier": 2,
+  "jockey": "Ethan Brown",
+  "p": 0.09389818221030981
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "Moana Spirit",
+  "horse_id": "2023_tagaloa_chaminade",
+  "barrier": 3,
+  "jockey": "Holly Durnan",
+  "p": 0.07073740228289313
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "Shaadrille",
+  "horse_id": "2023_shalaa_mlady-pedrille",
+  "barrier": 4,
+  "jockey": "Dylan Dunn",
+  "p": 0.04018733258865658
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "Chapados",
+  "horse_id": "2023_hellbent_sugar-mummy",
+  "barrier": 5,
+  "jockey": "Billy Egan",
+  "p": 0.01713949552537552
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "Turbo Saint",
+  "horse_id": "2023_zousain_nataya-rose",
+  "barrier": 6,
+  "jockey": "",
+  "p": 0.09311931794577115
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "Fast Freddie",
+  "horse_id": "2023_snitzel_spanish-reef",
+  "barrier": 7,
+  "jockey": "Daniel Stackhouse",
+  "p": 0.0713280774166033
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "Cavill Avenue",
+  "horse_id": "2023_farnan_devious-maid",
+  "barrier": 8,
+  "jockey": "Jamie Melham",
+  "p": 0.14111890248829936
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "High Falls",
+  "horse_id": "2023_puissance-de-lune_americain-woman",
+  "barrier": 9,
+  "jockey": "John Allen",
+  "p": 0.11759622058721933
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "Hydro Rush",
+  "horse_id": "2023_headwater_a-little-more-love",
+  "barrier": 10,
+  "jockey": "Damian Lane",
+  "p": 0.04100826277445311
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "Inner Gold",
+  "horse_id": "2023_zoustar_shes-so-high",
+  "barrier": 11,
+  "jockey": "Thomas Stockdale",
+  "p": 0.050420790046671535
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "London Fields",
+  "horse_id": "2023_stay-inside_soffika",
+  "barrier": 12,
+  "jockey": "Jabez Johnstone",
+  "p": 0.048358011311806726
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "Getsmybloodrussian",
+  "horse_id": "2023_russian-revolution_smoodge",
+  "barrier": 13,
+  "jockey": "Zac Spain",
+  "p": 0.013460719471510604
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "Home Invasion",
+  "horse_id": "2023_home-affairs_catwalk",
+  "barrier": 14,
+  "jockey": "Jordan Childs",
+  "p": 0.04651707003896437
+ },
+ {
+  "race": 6,
+  "race_id": "BRAT_300926_6",
+  "horse": "Wonderful Sky",
+  "horse_id": "2023_ole-kirk_medic",
+  "barrier": 15,
+  "jockey": "Michael Dee",
+  "p": 0.06641876274789166
+ },
+ {
+  "race": 7,
+  "race_id": "BRAT_300926_7",
+  "horse": "Balance",
+  "horse_id": "2022_alabama-express_honey-esprit",
+  "barrier": 1,
+  "jockey": "",
+  "p": 0.08295916530438607
+ },
+ {
+  "race": 7,
+  "race_id": "BRAT_300926_7",
+  "horse": "Eeteedee",
+  "horse_id": "2022_strasbourg_black-booty",
+  "barrier": 2,
+  "jockey": "",
+  "p": 0.012885610386309455
+ },
+ {
+  "race": 7,
+  "race_id": "BRAT_300926_7",
+  "horse": "Delivering",
+  "horse_id": "2020_justify_paper-round",
+  "barrier": 3,
+  "jockey": "Jabez Johnstone",
+  "p": 0.026224349424275657
+ },
+ {
+  "race": 7,
+  "race_id": "BRAT_300926_7",
+  "horse": "Stormbender",
+  "horse_id": "2022_ole-kirk_stormcrusher",
+  "barrier": 4,
+  "jockey": "Declan Bates",
+  "p": 0.1050710761951749
+ },
+ {
+  "race": 7,
+  "race_id": "BRAT_300926_7",
+  "horse": "Master Of The Air",
+  "horse_id": "2022_dundeel_dont-doubt-mamma",
+  "barrier": 5,
+  "jockey": "Joe Bowditch",
+  "p": 0.04841265587569603
+ },
+ {
+  "race": 7,
+  "race_id": "BRAT_300926_7",
+  "horse": "Primal Spirit",
+  "horse_id": "2020_charm-spirit_primadonna-girl",
+  "barrier": 6,
+  "jockey": "Ben Allen",
+  "p": 0.029751586082068286
+ },
+ {
+  "race": 7,
+  "race_id": "BRAT_300926_7",
+  "horse": "Sulek",
+  "horse_id": "2022_super-seth_tiff-and-co",
+  "barrier": 7,
+  "jockey": "Billy Egan",
+  "p": 0.11473798619333977
+ },
+ {
+  "race": 7,
+  "race_id": "BRAT_300926_7",
+  "horse": "Brandjam",
+  "horse_id": "2021_alabama-express_falling-waters",
+  "barrier": 8,
+  "jockey": "",
+  "p": 0.02561923514330382
+ },
+ {
+  "race": 7,
+  "race_id": "BRAT_300926_7",
+  "horse": "Carriedo",
+  "horse_id": "2022_lope-de-vega_peace-parade",
+  "barrier": 9,
+  "jockey": "Jordan Childs",
+  "p": 0.2141420440635811
+ },
+ {
+  "race": 7,
+  "race_id": "BRAT_300926_7",
+  "horse": "Imperial Award",
+  "horse_id": "2022_shamus-award_attessa",
+  "barrier": 10,
+  "jockey": "Patrick Moloney",
+  "p": 0.14172575838488438
+ },
+ {
+  "race": 7,
+  "race_id": "BRAT_300926_7",
+  "horse": "Aurora Belle",
+  "horse_id": "2022_belardo_nina-arora",
+  "barrier": 11,
+  "jockey": "Ethan Brown",
+  "p": 0.17346374286490296
+ },
+ {
+  "race": 7,
+  "race_id": "BRAT_300926_7",
+  "horse": "The Flying Popov",
+  "horse_id": "2022_russian-camelot_coutances",
+  "barrier": 12,
+  "jockey": "",
+  "p": 0.025006790082077415
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Walter Spur",
+  "horse_id": "2019_fighting-sun_lady-jetsetter",
+  "barrier": 1,
+  "jockey": "Luke Cartwright",
+  "p": 0.033640809953088234
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Gina's A Star",
+  "horse_id": "2021_starspangledbanner_ginas-hope",
+  "barrier": 2,
+  "jockey": "Jye McNeil",
+  "p": 0.15195634900209398
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Bold Bordeaux",
+  "horse_id": "2022_brazen-beau_chloe-in-paris",
+  "barrier": 3,
+  "jockey": "Ben Allen",
+  "p": 0.143893310079505
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Yolo",
+  "horse_id": "2022_i-am-invincible_akari",
+  "barrier": 4,
+  "jockey": "Ethan Brown",
+  "p": 0.145548281150024
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Blue Humma",
+  "horse_id": "2022_blue-point_humma-mumma",
+  "barrier": 5,
+  "jockey": "Daniel Stackhouse",
+  "p": 0.14920601867358338
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Commands Success",
+  "horse_id": "2019_squamosa_little-elsa",
+  "barrier": 6,
+  "jockey": "Cassidy Hill",
+  "p": 0.029290830091684598
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Hotspur Reale",
+  "horse_id": "2022_calyx_try-pink",
+  "barrier": 7,
+  "jockey": "",
+  "p": 0.08900190482447892
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Just Bolts",
+  "horse_id": "2020_winning-rupert_they-call-me-bolt",
+  "barrier": 8,
+  "jockey": "Damien Thornton",
+  "p": 0.03827089763059186
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "My Zephyr",
+  "horse_id": "2021_street-boss_my-option",
+  "barrier": 9,
+  "jockey": "Neil Farley",
+  "p": 0.034558719548551234
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Cool As Ice",
+  "horse_id": "2019_starcraft_altamaha",
+  "barrier": 10,
+  "jockey": "Craig Newitt",
+  "p": 0.010191526634923787
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Phoenix Flyer",
+  "horse_id": "2015_so-you-think_freckled-face",
+  "barrier": 11,
+  "jockey": "",
+  "p": 0.00040166548845136393
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Strong Box",
+  "horse_id": "2022_farnan_just-one-moment",
+  "barrier": 12,
+  "jockey": "Billy Egan",
+  "p": 0.03713747528968741
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Les Garcons",
+  "horse_id": "2021_sepoy_bad-option",
+  "barrier": 13,
+  "jockey": "John Allen",
+  "p": 0.020085957518057643
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Nostra Bella",
+  "horse_id": "2022_nostradamus_la-bella-miss",
+  "barrier": 14,
+  "jockey": "Dean Yendall",
+  "p": 0.027571680951761882
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Romantic Miss",
+  "horse_id": "2022_toronado_choice-sunday",
+  "barrier": 15,
+  "jockey": "Jordan Childs",
+  "p": 0.06317853741106276
+ },
+ {
+  "race": 8,
+  "race_id": "BRAT_300926_8",
+  "horse": "Fontalicious",
+  "horse_id": "2023_hanseatic_bold-arial",
+  "barrier": 16,
+  "jockey": "Luke Cartwright",
+  "p": 0.026066035752453854
+ }
+]
