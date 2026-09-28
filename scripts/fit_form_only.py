@@ -154,6 +154,22 @@ def choose(train: list[B.Race], target_name: str = "winners") -> tuple[str, floa
     return best[0], best[1], table
 
 
+def gate(challenger: tuple[str, float], incumbent: tuple[str, float] | None, train: list[B.Race],
+         test: list[B.Race], target) -> tuple[str, float, str]:
+    """The set that goes live. A newly chosen set replaces the one already deployed only when,
+    fitted on the same older races, it lands CLOSER TO BSP on the newer races neither has seen.
+    A set that wins on the inner check but not on KL to BSP is not deployed (28 Sep 2026: the
+    map, age and going inputs won the inner check and scored 0.1814 against the deployed
+    0.1792). Ties keep the incumbent."""
+    if incumbent is None or incumbent[0] not in CANDIDATES or incumbent == challenger:
+        return challenger[0], challenger[1], "no deployed set to beat" if incumbent is None or incumbent[0] not in CANDIDATES else "same set as deployed"
+    kl_new = kl(fit_np(train, CANDIDATES[challenger[0]], challenger[1], target=target), test)
+    kl_old = kl(fit_np(train, CANDIDATES[incumbent[0]], incumbent[1], target=target), test)
+    if kl_new < kl_old:
+        return challenger[0], challenger[1], f"{challenger[0]} is closer to BSP: KL {kl_new:.4f} against {kl_old:.4f}"
+    return incumbent[0], incumbent[1], f"kept {incumbent[0]}: {challenger[0]} scored KL {kl_new:.4f} against {kl_old:.4f}"
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--state", default="VIC")
@@ -178,6 +194,16 @@ def main() -> None:
     print("|---|---|---|---|")
     for n, r, v in table:
         print(f"| {n}{' **chosen**' if (n, r) == (name, ridge) else ''} | {len(CANDIDATES[n])} | {r:g} | {v:.4f} |")
+
+    incumbent = None
+    try:
+        cur = json.loads(Path(a.out).read_text(encoding="utf-8"))
+        if cur.get("fitted_to", "bsp") == a.target:
+            incumbent = (cur["model"], float(cur["ridge"]))
+    except (OSError, ValueError, KeyError):
+        pass
+    name, ridge, verdict = gate((name, ridge), incumbent, train, test, target)
+    print(f"\nDeployed set: {verdict}")
 
     feats = CANDIDATES[name]
     beta = fit_np(train, feats, ridge, target=target)

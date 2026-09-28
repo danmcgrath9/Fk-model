@@ -55,3 +55,15 @@ def test_winners_target_fits_and_prefers_the_winning_figure():
     beta = F.fit_np(races, ["a", "b"], 1.0, target=F.TARGETS["winners"])
     assert beta["a"] > 0.5 and abs(beta["b"]) < 0.3
     assert set(F.TARGETS) == {"bsp", "winners"}
+
+
+def test_gate_deploys_a_new_set_only_when_it_is_closer_to_bsp(monkeypatch):
+    import fit_form_only as M
+    scores = {"old": 0.1792, "new": 0.1814, "better": 0.1700}
+    monkeypatch.setattr(M, "CANDIDATES", {k: [k] for k in scores})
+    monkeypatch.setattr(M, "fit_np", lambda races, feats, ridge, target=None: feats[0])
+    monkeypatch.setattr(M, "kl", lambda beta, races: scores[beta])
+    assert M.gate(("new", 30.0), ("old", 30.0), [], [], None)[:2] == ("old", 30.0)      # worse: kept
+    assert M.gate(("better", 30.0), ("old", 30.0), [], [], None)[:2] == ("better", 30.0)
+    assert M.gate(("new", 30.0), None, [], [], None)[:2] == ("new", 30.0)              # nothing deployed yet
+    assert M.gate(("new", 30.0), ("retired", 10.0), [], [], None)[:2] == ("new", 30.0)  # deployed set no longer a candidate
