@@ -1,0 +1,115 @@
+# Form King average prices, refreshed Mon 28 Sep 9:38pm; TAB emergencies out. race, horse, opening average, current average
+1, Hurricane Girl, 101.00, 151.00
+1, Sabrina, 18.00, 14.00
+1, Semantics, 2.70, 2.50
+1, Scoville, 7.50, 7.00
+1, Egyptian Dancer, 7.50, 7.50
+1, Tallingas Diamond, 101.00, 151.00
+1, Epponnee Rae, 51.00, 151.00
+1, Aroused, 3.70, 3.20
+1, Nautique, 19.00, 61.00
+1, Masochistic, 10.00, 17.00
+1, Unkechaug, 9.50, 12.00
+1, Model Gigi, 16.00, 34.00
+2, Lollie's Galore, 6.50, 9.00
+2, Sister's Run, 7.00, 11.00
+2, Empress Of China, SCR
+2, Courting, 8.50, 5.00
+2, Hakusan, 10.00, 18.00
+2, Debbie, SCR
+2, Mehsun, 5.50, 7.00
+2, Under Control, 18.00, 31.00
+2, Blanche Bass, 51.00, 81.00
+2, Rough Act, 34.00, 71.00
+2, Obsidian Stone, 8.00, 19.00
+2, Expensive Taste, 7.00, 6.00
+2, Unoyaself, 18.00, 23.00
+2, Tears Of Happiness, 5.50, 4.00
+2, Grinding Away, 61.00, 61.00
+2, Aerostatique, 31.00, 15.00
+3, Pandie Pandie, 11.00, 13.00
+3, Burrow, 61.00, 101.00
+3, Smashing Success, 15.00, 23.00
+3, Reve De Paris, 21.00, 26.00
+3, So Royal, 7.00, 8.00
+3, Hedjet, 3.35, 2.25
+3, Shiny Diamond, 34.00, 51.00
+3, Hoffstadt, 18.50, 23.00
+3, Belle Flamme, 11.00, 15.00
+3, Hot Pot Dot, SCR
+3, Levate, SCR
+3, Braemar Hill, 8.50, 11.00
+3, Shocko In Morocco, SCR
+3, Royal Zambezi, 61.00, 101.00
+3, Paramount War, 26.00, 41.00
+3, Zoucity, SCR
+3, Full Confidence, 5.50, 5.00
+3, Salarae, 8.50, 10.00
+4, Lope De Lardo, 21.00, 31.00
+4, Invisible Magic, 4.40, 7.50
+4, Kingsbury, 3.80, 2.50
+4, Venetian Choice, 15.00, 11.00
+4, Tempt The Gods, 46.00, 61.00
+4, Perfect Night, 4.20, 5.00
+4, Albanian I Am, 21.00, 34.00
+4, Celestial Splendor, 18.00, 16.00
+4, Miss Ellaneous, 8.00, 11.00
+4, Comic Hero, 28.50, 41.00
+4, Regal Might, 9.50, 9.50
+4, Share The Stars, 31.00, 61.00
+4, Jackand, 21.00, 31.00
+5, Tanganyika, 13.00, 23.00
+5, Sacramental, 18.50, 29.00
+5, Nic's Choice, 8.50, 17.00
+5, Jenni You Think, 5.25, 7.50
+5, Easy Dun, 18.50, 23.00
+5, Crocodile, 3.40, 3.70
+5, Tierra, 26.00, 23.00
+5, Kiss My Rock, 56.00, 71.00
+5, First Innings, 91.00, 201.00
+5, Callawadda, 56.00, 81.00
+5, Revolver, 18.50, 21.00
+5, Yauson, 2.55, 1.90
+6, Mull Of Kintyre, 5.75, 7.00
+6, Handee, 5.20, 5.00
+6, Moana Spirit, 5.75, 8.00
+6, Shaadrille, SCR
+6, Chapados, 71.00, 151.00
+6, Turbo Saint, 7.25, 6.00
+6, Fast Freddie, 8.50, 9.50
+6, Cavill Avenue, 8.75, 7.00
+6, High Falls, 9.50, 9.50
+6, Hydro Rush, 18.00, 34.00
+6, Inner Gold, 22.00, 13.00
+6, London Fields, 22.00, 51.00
+6, Getsmybloodrussian, 71.00, 126.00
+6, Home Invasion, 28.50, 34.00
+6, Wonderful Sky, 14.00, 12.00
+7, Balance, 6.00, 5.00
+7, Eeteedee, 31.00, 51.00
+7, Delivering, 41.00, 51.00
+7, Stormbender, 8.50, 12.00
+7, Master Of The Air, 31.00, 34.00
+7, Primal Spirit, 31.00, 23.00
+7, Sulek, 12.00, 6.50
+7, Brandjam, 61.00, 34.00
+7, Carriedo, 3.00, 4.20
+7, Imperial Award, 9.50, 13.00
+7, Aurora Belle, 3.20, 3.30
+7, The Flying Popov, 18.00, 19.00
+8, Walter Spur, 16.00, 18.00
+8, Gina's A Star, 10.00, 8.00
+8, Bold Bordeaux, 5.00, 3.70
+8, Yolo, 8.00, 6.50
+8, Blue Humma, 3.40, 6.00
+8, Commands Success, 51.00, 41.00
+8, Hotspur Reale, 7.50, 11.00
+8, Just Bolts, 26.00, 26.00
+8, My Zephyr, 16.00, 15.00
+8, Cool As Ice, 61.00, 61.00
+8, Phoenix Flyer, SCR
+8, Strong Box, 12.00, 16.00
+8, Les Garcons, SCR
+8, Nostra Bella, 23.00, 23.00
+8, Romantic Miss, 10.00, 13.00
+8, Fontalicious, 18.00, 23.00
