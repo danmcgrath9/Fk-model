@@ -110,6 +110,22 @@ def entry_extras(e: dict, sm_row: dict | None, tempo: dict | None) -> dict:
     return out
 
 
+def past_ids(e: dict, race_date: str) -> tuple[list[str], list[str]]:
+    """(race ids, jockey names) of the same last N_PAST runs past_runs reads, newest first."""
+    runs = []
+    for p in F.entry_past_events(e):
+        if str(p.get("scratched")).lower() == "true" or p.get("scratched") is True:
+            continue
+        d = F.past_event_date(p)
+        if not d or d >= race_date:
+            continue
+        runs.append((d, p))
+    runs.sort(key=lambda t: t[0], reverse=True)
+    ids = [str(p.get("raceId") or "") for _, p in runs[:N_PAST]]
+    jk = [str(p.get("jockey") or "") for _, p in runs[:N_PAST]]
+    return ids + [""] * (N_PAST - len(ids)), jk + [""] * (N_PAST - len(jk))
+
+
 def past_runs(e: dict, race_date: str, track: str) -> np.ndarray:
     arr = np.full((N_PAST, len(PAST_FIELDS)), np.nan, dtype=np.float32)
     runs = []
@@ -171,6 +187,7 @@ def main() -> None:
     print(f"{len(races)} races with BSP and a winner", flush=True)
 
     recs, pasts, meta = [], [], []
+    past_race_ids, past_jockeys, jockeys, trainers = [], [], [], []
     xkeys, extra_keys = set(), set()
     for ri, race in enumerate(races):
         row = by_id[race.race_id]
@@ -184,6 +201,9 @@ def main() -> None:
             extra_keys |= set(raw) | set(ex)
             recs.append((ri, r, raw, ex))
             pasts.append(past_runs(e, str(race.date)[:10], race.track))
+            ids, jk = past_ids(e, str(race.date)[:10])
+            past_race_ids.append(ids); past_jockeys.append(jk); jockeys.append(str(e.get("jockey") or ""))
+            trainers.append(str(e.get("trainer") or ""))
         meta.append((race.race_id, str(race.date)[:10], race.track or "", float(getattr(race, "distance_m", None) or np.nan),
                      num(getattr(race, "lws", None)) or np.nan, GOING_CODE.get(B.going_band(row.get("going"))) or np.nan,
                      len(race.runners)))
@@ -214,6 +234,8 @@ def main() -> None:
         distance=np.array([m[3] for m in meta]), lws=np.array([m[4] for m in meta]), going=np.array([m[5] for m in meta]),
         field=np.array([m[6] for m in meta], dtype=np.int32),
         pre_jump=np.array([m[0] in pre for m in meta]),
+        past_race_ids=np.array(past_race_ids), past_jockeys=np.array(past_jockeys),
+        jockey=np.array(jockeys), trainer=np.array(trainers),
     )
     print(f"wrote {out}: {X.shape[0]} runners, {X.shape[1]} columns ({len(xcols)} model features), "
           f"{len(meta)} races, past runs {np.stack(pasts).shape}; {out.stat().st_size / 1e6:.1f} MB")
