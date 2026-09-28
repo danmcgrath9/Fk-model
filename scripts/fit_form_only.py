@@ -43,7 +43,13 @@ from fk import backtest as B  # noqa: E402
 ROOT = Path(__file__).resolve().parents[1]
 OUT_PATH = ROOT / "config" / "form_price.json"
 TRAIN_SHARE = 0.7
-RIDGES = [0.1, 1.0, 10.0, 30.0]
+RIDGES = {"bsp": [0.1, 1.0, 10.0, 30.0], "winners": [1.0, 10.0, 30.0, 100.0]}
+# The fit's target. "winners" asks the model to be right about who won; "bsp" asks it to
+# reproduce the market's closing price. The 27 Sep winner study (scripts/winner_study.py)
+# found the winners fit with the horse's past prices the best line on every money measure
+# (+40.9% at the opening average, +7.7% at BSP, on 2,858 out-of-sample bets), and the
+# founder's rule is that today's market never goes in, so winners is the default.
+TARGETS = {"bsp": B.bsp_chances, "winners": B.winner_chances}
 
 # Built from TODAY'S price, or quarantined as leaky: never in a form-only model.
 BARRED = {B.MARKET_FEATURE, "market_prob", "market_x_neural", "first_starter_x_market"} | set(B.NON_DEPLOYABLE)
@@ -61,10 +67,10 @@ for _name, _feats in CANDIDATES.items():
 class Stack:
     """The races as one flat matrix, runners in race order, for the vectorised fit."""
 
-    def __init__(self, races: list[B.Race], features: list[str]):
+    def __init__(self, races: list[B.Race], features: list[str], target=B.bsp_chances):
         xs, qs, sizes = [], [], []
         for race in races:
-            q = B.bsp_chances(race.runners)
+            q = target(race.runners)
             if q is None:
                 continue
             xs.extend([[r.x.get(f, 0.0) for f in features] for r in race.runners])
@@ -85,10 +91,11 @@ class Stack:
         return w / np.add.reduceat(w, self.starts)[self.idx]
 
 
-def fit_np(races: list[B.Race], features: list[str], ridge: float, iterations: int = 60) -> dict[str, float]:
-    st = Stack(races, features)
+def fit_np(races: list[B.Race], features: list[str], ridge: float, iterations: int = 60,
+           target=B.bsp_chances) -> dict[str, float]:
+    st = Stack(races, features, target)
     if not len(st.starts):
-        raise ValueError("no race with a Betfair SP to fit against")
+        raise ValueError(f"no race {target.__name__} can score; nothing to fit against")
     d = len(features)
     beta = np.zeros(d)
     for _ in range(iterations):
@@ -106,6 +113,11 @@ def fit_np(races: list[B.Race], features: list[str], ridge: float, iterations: i
     return dict(zip(features, beta.tolist()))
 
 
+def log_loss(beta: dict[str, float], races: list[B.Race]) -> float:
+    """Mean -ln p(winner): how right the price is about who won. Lower is better."""
+    return B.score([B.predict(beta, r.runners) for r in races], races).log_loss
+
+
 def kl(beta: dict[str, float], races: list[B.Race]) -> float:
     return B.score([B.predict(beta, r.runners) for r in races], races).kl_to_bsp
 
@@ -117,14 +129,16 @@ def split_by_date(races: list[B.Race], share: float) -> tuple[list[B.Race], list
     return [r for r in ordered if r.date < day], [r for r in ordered if r.date >= day]
 
 
-def choose(train: list[B.Race]) -> tuple[str, float, list[tuple[str, float, float]]]:
-    """The candidate set and ridge closest to BSP on the newest fifth of the training races,
-    fitted on the rest of them. The test races take no part in the choice."""
+def choose(train: list[B.Race], target_name: str = "winners") -> tuple[str, float, list[tuple[str, float, float]]]:
+    """The candidate set and ridge that score best on the newest fifth of the training races,
+    fitted on the rest of them: log loss against the winners for the winners target, KL to
+    BSP for the bsp target. The test races take no part in the choice."""
     inner, valid = split_by_date(train, 0.8)
     table, best = [], None
+    judge = log_loss if target_name == "winners" else kl
     for name, feats in CANDIDATES.items():
-        for ridge in RIDGES:
-            v = kl(fit_np(inner, feats, ridge), valid)
+        for ridge in RIDGES[target_name]:
+            v = judge(fit_np(inner, feats, ridge, target=TARGETS[target_name]), valid)
             table.append((name, ridge, v))
             print(f"  tried {name} ridge {ridge:g}: {v:.4f}", flush=True)
             if best is None or v < best[2]:
@@ -137,6 +151,7 @@ def main() -> None:
     ap.add_argument("--state", default="VIC")
     ap.add_argument("--history", default=str(ROOT / "history"))
     ap.add_argument("--out", default=str(OUT_PATH))
+    ap.add_argument("--target", choices=list(TARGETS), default="winners")
     a = ap.parse_args()
     from backtest import load_races
     import time
@@ -148,26 +163,26 @@ def main() -> None:
     print(f"{len(races)} races with a Betfair SP; choosing on the older {len(train)} ({train[0].date} to {train[-1].date}), "
           f"judged once on the newer {len(test)} ({test[0].date} to {test[-1].date}).\n")
 
-    name, ridge, table = choose(train)
-    print("Choice (fitted on the older four fifths of the training races, scored on its newest fifth):\n")
-    print("| set | features | ridge | KL to BSP |")
+    name, ridge, table = choose(train, a.target)
+    print(f"Fitted to {a.target}. Choice (fitted on the older four fifths of the training races, scored on its newest fifth):\n")
+    print(f"| set | features | ridge | {'log loss vs winners' if a.target == 'winners' else 'KL to BSP'} |")
     print("|---|---|---|---|")
     for n, r, v in table:
         print(f"| {n}{' **chosen**' if (n, r) == (name, ridge) else ''} | {len(CANDIDATES[n])} | {r:g} | {v:.4f} |")
 
     feats = CANDIDATES[name]
-    beta = fit_np(train, feats, ridge)
-    form_kl = kl(beta, test)
-    mkt_kl = B.score(B.market_probs(test), test).kl_to_bsp
-    neural_kl = kl(fit_np(train, B.NEURAL, ridge), test)
+    beta = fit_np(train, feats, ridge, target=target)
+    form_kl, form_ll = kl(beta, test), log_loss(beta, test)
+    mkt = B.score(B.market_probs(test), test)
+    mkt_kl, mkt_top = mkt.kl_to_bsp, mkt.winner_top_rated
+    neural_kl = kl(fit_np(train, B.NEURAL, ridge, target=target), test)
     top = B.score([B.predict(beta, r.runners) for r in test], test).winner_top_rated
-    mkt_top = B.score(B.market_probs(test), test).winner_top_rated
-    print(f"\nOn the {len(test)} newer races it never saw (KL to BSP, lower is sharper; 0 would be BSP itself):\n")
-    print("| price | KL to BSP | top pick won |")
-    print("|---|---|---|")
-    print(f"| Neural rating alone | {neural_kl:.4f} | |")
-    print(f"| form-only model ({name}) | {form_kl:.4f} | {top:.1%} |")
-    print(f"| Form King's opening average (a market) | {mkt_kl:.4f} | {mkt_top:.1%} |")
+    print(f"\nOn the {len(test)} newer races it never saw (lower is better on both scores):\n")
+    print("| price | log loss vs winners | top pick won | KL to BSP |")
+    print("|---|---|---|---|")
+    print(f"| Neural rating alone | | | {neural_kl:.4f} |")
+    print(f"| form-only model ({name}, fitted to {a.target}) | {form_ll:.4f} | {top:.1%} | {form_kl:.4f} |")
+    print(f"| Form King's opening average (a market) | {mkt.log_loss:.4f} | {mkt_top:.1%} | {mkt_kl:.4f} |")
 
     leak = {}
     try:
@@ -190,18 +205,19 @@ def main() -> None:
     except Exception as ex:  # noqa: BLE001
         print(f"\nleakage check skipped: {type(ex).__name__}: {ex}")
 
-    final = fit_np(races, feats, ridge)
+    final = fit_np(races, feats, ridge, target=target)
     ordered = sorted(races, key=lambda r: r.date)
     model = {
-        "model": name, "features": feats, "beta": final, "ridge": ridge, "races": len(races),
+        "model": name, "fitted_to": a.target, "features": feats, "beta": final, "ridge": ridge, "races": len(races),
         "from": str(ordered[0].date), "to": str(ordered[-1].date),
         "fitted_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "out_of_sample": {"test_races": len(test), "form_kl": round(form_kl, 4), "market_kl": round(mkt_kl, 4),
+                          "form_log_loss": round(form_ll, 4), "market_log_loss": round(mkt.log_loss, 4),
                           "neural_only_kl": round(neural_kl, 4), "top_pick_won": round(top, 4),
                           "market_top_pick_won": round(mkt_top, 4), "leakage": leak},
     }
     Path(a.out).write_text(json.dumps(model, indent=2) + "\n", encoding="utf-8")
-    print(f"\nwrote {a.out}: {name}, ridge {ridge:g}, refitted on all {len(races)} races ({model['from']} to {model['to']})")
+    print(f"\nwrote {a.out}: {name} fitted to {a.target}, ridge {ridge:g}, refitted on all {len(races)} races ({model['from']} to {model['to']})")
     for f, b in sorted(final.items(), key=lambda kv: -abs(kv[1]))[:12]:
         print(f"  {f:28s} {b:+.3f}")
 

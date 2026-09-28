@@ -42,3 +42,16 @@ def test_no_candidate_reads_todays_market_or_a_quarantined_figure():
         assert B.MARKET_FEATURE not in feats and "market_prob" not in feats and "market_x_neural" not in feats, name
         assert "first_starter_x_market" not in feats, name
         assert not set(B.NON_DEPLOYABLE) & set(feats), name
+
+
+def test_winners_target_fits_and_prefers_the_winning_figure():
+    # Forty races where the runner with the higher "a" wins about 70% of the time: the
+    # winners fit puts a positive weight on "a" and a near-zero one on the noise figure.
+    races = _races(seed=9)
+    for r in races:
+        best = max(r.runners, key=lambda x: x.x["a"])
+        for x in r.runners:
+            x.finish = 1 if x is best else 2
+    beta = F.fit_np(races, ["a", "b"], 1.0, target=F.TARGETS["winners"])
+    assert beta["a"] > 0.5 and abs(beta["b"]) < 0.3
+    assert set(F.TARGETS) == {"bsp", "winners"}

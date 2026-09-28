@@ -28,7 +28,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from fk import backtest as B  # noqa: E402
-from fit_form_only import fit_np, split_by_date, TRAIN_SHARE  # noqa: E402
+from fit_form_only import TARGETS, fit_np, split_by_date, TRAIN_SHARE  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 THRESHOLDS = [0.0, 0.1, 0.2, 0.3, 0.5]
@@ -78,8 +78,8 @@ def main() -> None:
     races, _ = load_races(a.state, Path(a.history))
     races = [r for r in races if B.bsp_chances(r.runners)]
     train, test = split_by_date(races, TRAIN_SHARE)
-    beta = fit_np(train, cfg["features"], cfg["ridge"])
-    print(f"Form-only model ({cfg['model']}, ridge {cfg['ridge']:g}) fitted on {len(train)} races to {train[-1].date}; "
+    beta = fit_np(train, cfg["features"], cfg["ridge"], target=TARGETS[cfg.get("fitted_to", "bsp")])
+    print(f"Form-only model ({cfg['model']} fitted to {cfg.get('fitted_to', 'bsp')}, ridge {cfg['ridge']:g}) fitted on {len(train)} races to {train[-1].date}; "
           f"bets on the {len(test)} newer races ({test[0].date} to {test[-1].date}) it never saw. One unit flat per bet.\n")
     print("Value = form chance x opening price - 1. Profit per unit staked, ± one standard error (the margin of luck).\n")
     print("| rule | bets | winners | at the opening price (cannot be taken) | at Betfair SP | at BSP less 8% commission |")
