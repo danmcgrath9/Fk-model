@@ -100,3 +100,19 @@
 4, Comic Hero, 26.00, 34.00
 4, Share The Stars, 31.00, 41.00
 4, Tempt The Gods, 41.00, 51.00
+# Race 6, screenshots Tue 29 Sep 4:17pm
+6, Handee, 6.00, 4.60
+6, Turbo Saint, 8.00, 5.00
+6, Cavill Avenue, 9.50, 6.00
+6, Mull Of Kintyre, 5.50, 6.00
+6, Moana Spirit, 5.50, 6.50
+6, Fast Freddie, 8.00, 10.00
+6, High Falls, 9.00, 12.00
+6, Wonderful Sky, 13.00, 16.00
+6, Inner Gold, 21.00, 19.00
+6, Hydro Rush, 17.00, 23.00
+6, London Fields, 21.00, 31.00
+6, Home Invasion, 26.00, 41.00
+6, Getsmybloodrussian, 61.00, 101.00
+6, Chapados, 61.00, 126.00
+6, Shaadrille, SCR
