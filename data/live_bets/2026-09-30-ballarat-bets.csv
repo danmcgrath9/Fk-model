@@ -61,3 +61,5 @@ race,race_id,horse,plan,price,price_open,model_price,value,stake,result,returned
 8,BRAT_300926_8,Commands Success,kelly_q_5c,51.0,51.0,33.44,0.525,0.26,,
 8,BRAT_300926_8,Just Bolts,value_20c,31.0,26.0,25.59,0.211,1.0,,
 8,BRAT_300926_8,Just Bolts,kelly_q_5c,31.0,26.0,25.59,0.211,0.18,,
+4,BRAT_300926_4,Venetian Choice,narrow_50c_solid_3to20,14.0,15.0,8.77,0.597,1.0,,
+7,BRAT_300926_7,Imperial Award,narrow_50c_solid_3to20,11.0,9.5,7.06,0.559,1.0,,
