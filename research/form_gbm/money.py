@@ -1,6 +1,6 @@
 import numpy as np, bench as b, json
 D = b.load(); tr, te = b.split(); ri = D["race_idx"]; pre = D["pre_jump"]
-g = np.load("g_aug.npy")
+g = np.load("p_final.npy")
 cfg = json.load(open("form_price.json")); Z = np.nan_to_num(np.stack([D["X"][:, D["colidx"][f]] for f in cfg["features"]], 1).astype(float))
 old = b.softmax_races(Z @ b.clogit(Z, tr, D["won"], ridge=30.0))
 def bets(p, races, ev_min):
@@ -14,7 +14,7 @@ def bets(p, races, ev_min):
     r_bsp = (bsp[won].sum() - n) / n if n else np.nan
     se = np.std(np.where(won, op, 0) - 1) / np.sqrt(max(n, 1))
     return n, won.sum(), r_open, se, r_bsp
-for nm, p in (("old form price (deployed)", old), ("new GBM price", g)):
+for nm, p in (("old form price (deployed)", old), ("final model", g)):
     for label, rs in (("all test", te), ("live-pulled", te[pre[te]])):
         for ev in (0.1, 0.2, 0.3):
             n, w, ro, se, rb = bets(p, rs, ev)

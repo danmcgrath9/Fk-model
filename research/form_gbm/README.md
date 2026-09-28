@@ -27,3 +27,31 @@ runners lacked their speed figures; blanking the same figures on back-filled rac
 most of the drop.
 
 Run: `python run4.py` (needs `ds/model_ds.npz` from the datasets branch, lightgbm, numpy).
+
+## Second pass (same day): 0.1107 -> 0.1020
+
+Decisions made on the newest fifth of the training races; the unseen races scored once at the end.
+
+| step | validation KL |
+|---|---|
+| first model | 0.1136 |
+| + class change, weight-adjusted ratings, first-up history, consistency, campaign runs, past implied chances, race context | 0.1081 |
+| extra_trees, 20% of inputs per tree | 0.1060 |
+| + head-to-head form among today's runners (past race ids), jockey change | 0.1036 |
+| average of five seeds | about 0.103 |
+
+Tried and dropped: race context alone (no KL gain), a winners/BSP target mix, adding first-three
+finishing order to the objective (worse on both scores), temperature scaling (already calibrated),
+blending with the linear price.
+
+Final (`final.py`, five models averaged), unseen races:
+
+| races | market KL | final KL | market log loss | final log loss |
+|---|---|---|---|---|
+| all 1,093 | 0.1371 | 0.1020 | 1.9771 | 1.9627 |
+| 78 pulled before the jump | 0.1817 | 0.1574 | 1.8826 | 1.8568 |
+| 1,015 back-filled | 0.1336 | 0.0977 | 1.9843 | 1.9709 |
+
+Value bets worth 20c+ at the opening price: back-filled +41.9% over 2,257 bets, but -11.6% over
+137 bets on the live-pulled races, where every model tested loses at the stored opening price.
+The live and back-filled opening prices may not be the same quantity; the paper book decides.
