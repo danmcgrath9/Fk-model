@@ -188,6 +188,7 @@ def main() -> None:
 
     recs, pasts, meta = [], [], []
     past_race_ids, past_jockeys, jockeys, trainers = [], [], [], []
+    sires, dam_sires, locs = [], [], []
     xkeys, extra_keys = set(), set()
     for ri, race in enumerate(races):
         row = by_id[race.race_id]
@@ -204,6 +205,9 @@ def main() -> None:
             ids, jk = past_ids(e, str(race.date)[:10])
             past_race_ids.append(ids); past_jockeys.append(jk); jockeys.append(str(e.get("jockey") or ""))
             trainers.append(str(e.get("trainer") or ""))
+            h = e.get("horse") or {}
+            sires.append(str(h.get("sire") or "")); dam_sires.append(str(h.get("sireOfDam") or ""))
+            locs.append(str(h.get("trainingLocation") or ""))
         meta.append((race.race_id, str(race.date)[:10], race.track or "", float(getattr(race, "distance_m", None) or np.nan),
                      num(getattr(race, "lws", None)) or np.nan, GOING_CODE.get(B.going_band(row.get("going"))) or np.nan,
                      len(race.runners)))
@@ -236,6 +240,7 @@ def main() -> None:
         pre_jump=np.array([m[0] in pre for m in meta]),
         past_race_ids=np.array(past_race_ids), past_jockeys=np.array(past_jockeys),
         jockey=np.array(jockeys), trainer=np.array(trainers),
+        sire=np.array(sires), dam_sire=np.array(dam_sires), training_location=np.array(locs),
     )
     print(f"wrote {out}: {X.shape[0]} runners, {X.shape[1]} columns ({len(xcols)} model features), "
           f"{len(meta)} races, past runs {np.stack(pasts).shape}; {out.stat().st_size / 1e6:.1f} MB")
