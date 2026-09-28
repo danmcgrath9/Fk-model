@@ -55,3 +55,21 @@ Final (`final.py`, five models averaged), unseen races:
 Value bets worth 20c+ at the opening price: back-filled +41.9% over 2,257 bets, but -11.6% over
 137 bets on the live-pulled races, where every model tested loses at the stored opening price.
 The live and back-filled opening prices may not be the same quantity; the paper book decides.
+
+## Second stage: the market's past view of each horse (28 Sep 2026)
+
+`stage2.py` adjusts the 3-way price by how BSP rated each horse, trainer, jockey and sire against our own
+price in EARLIER races: the horse's last-run gap, its 120-day decayed average gap, trainer, jockey, sire
+and trainer-at-track averages (shrunk), fed to a 7-leaf race-softmax LightGBM with the 3-way price as
+init score. Trained on all 3,632 out-of-fold races (`stage2_train.py`, models in `models/`); applied to a
+day by `apply_stage2.py`.
+
+| test (KL to BSP, lower is closer) | before | after |
+|---|---|---|
+| out-of-fold, races from 6 May (fit on earlier races) | 0.0940 | 0.0883 |
+| leak-free: stage 1 trained on the older 70%, gaps only from unseen races | 0.1026 | 0.0978 |
+
+Tried with no gain: race-level temperature, recency-weighted training (worse), past open-to-BSP drift
+encodings, jockey x trainer / horse x track / horse x distance / trainer first-up encodings, extra form
+features in the second stage. CatBoost QuerySoftMax as a fourth member: 0.0975 to 0.0969 on the lab
+split, not deployed.
