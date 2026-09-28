@@ -42,3 +42,16 @@
 2, Grinding Away, 61.00, 81.00
 2, Empress Of China, SCR
 2, Debbie, SCR
+# Race 5, screenshots Tue 29 Sep 4:10-4:11pm
+5, Yauson, 2.60, 2.20
+5, Crocodile, 3.60, 3.30
+5, Jenni You Think, 5.00, 6.00
+5, Nics Choice, 8.00, 9.50
+5, Tanganyika, 12.00, 15.00
+5, Sacramental, 18.00, 21.00
+5, Easy Dun, 18.00, 21.00
+5, Revolver, 21.00, 21.00
+5, Tierra, 26.00, 34.00
+5, Kiss My Rock, 51.00, 71.00
+5, Callawadda, 51.00, 71.00
+5, First Innings, 81.00, 126.00
