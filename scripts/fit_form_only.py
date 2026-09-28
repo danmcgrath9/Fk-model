@@ -157,7 +157,8 @@ def main() -> None:
     import time
     t0 = time.time()
     races, _ = load_races(a.state, Path(a.history))
-    races = [r for r in races if B.bsp_chances(r.runners)]
+    target = TARGETS[a.target]
+    races = [r for r in races if B.bsp_chances(r.runners) and B.winner_chances(r.runners)]
     print(f"loaded in {time.time() - t0:.0f}s", flush=True)
     train, test = split_by_date(races, TRAIN_SHARE)
     print(f"{len(races)} races with a Betfair SP; choosing on the older {len(train)} ({train[0].date} to {train[-1].date}), "
