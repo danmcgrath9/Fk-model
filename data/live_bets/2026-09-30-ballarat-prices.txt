@@ -73,3 +73,16 @@
 3, Levate, SCR
 3, Shocko In Morocco, SCR
 3, Hot Pot Dot, SCR
+# Race 7, screenshots Tue 29 Sep 4:13pm
+7, Carriedo, 3.00, 3.40
+7, Aurora Belle, 3.20, 3.60
+7, Balance, 6.00, 4.00
+7, Stormbender, 8.50, 10.00
+7, Imperial Award, 9.50, 11.00
+7, Sulek, 12.00, 7.00
+7, The Flying Popov, 18.00, 19.00
+7, Primal Spirit, 31.00, 41.00
+7, Master Of The Air, 31.00, 41.00
+7, Eeteedee, 31.00, 41.00
+7, Delivering, 41.00, 61.00
+7, Brandjam, 61.00, 81.00
