@@ -6,6 +6,13 @@ name: fk export
 
 on:
   workflow_dispatch:
+    inputs:
+      date:
+        description: 'blank = every resulted race (datasets branch); a day YYYY-MM-DD = the races that day, not yet run (upcoming branch)'
+        default: ''
+      track:
+        description: 'with a date: only this track'
+        default: ''
 
 permissions:
   contents: write
@@ -33,8 +40,21 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: scripts/fetch_history.sh
       - name: Export
+        if: github.event.inputs.date == ''
         run: python scripts/export_dataset.py --out /tmp/ds/model_ds.npz | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Export a day's races
+        if: github.event.inputs.date != ''
+        run: |
+          TRACK_ARG=""
+          [ -n "${{ github.event.inputs.track }}" ] && TRACK_ARG="--track ${{ github.event.inputs.track }}"
+          python scripts/export_dataset.py --date "${{ github.event.inputs.date }}" $TRACK_ARG --out /tmp/up/upcoming.npz | tee -a "$GITHUB_STEP_SUMMARY"
+          REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          cd /tmp/up && git init -q -b upcoming && git config user.name "fk export" && git config user.email "actions@users.noreply.github.com"
+          git add -A && git commit -q -m "upcoming ${{ github.event.inputs.date }} ${{ github.event.inputs.track }}" && git push -q -f "$REMOTE" upcoming
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Keep it on the datasets branch
+        if: github.event.inputs.date == ''
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

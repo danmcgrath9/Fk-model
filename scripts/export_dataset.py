@@ -161,20 +161,44 @@ def past_runs(e: dict, race_date: str, track: str) -> np.ndarray:
     return arr
 
 
+def upcoming_rows(db, day: str, track: str | None, state: str) -> list[dict]:
+    """Rows shaped like Db.resulted_races for the races on `day` (not yet run), optionally one track."""
+    races = db.conn.execute(
+        """select r.race_id, m.meeting_date, m.track, r.distance_m, (r.raw->>'lws')::numeric,
+                  sm.runners, sm.raw->'expectedTempo',
+                  nullif(trim(concat(r.raw->>'going', ' ', r.raw->>'goingNumber')), ''), r.race_number
+           from fk.races r join fk.meetings m using (meeting_id)
+                left join fk.speedmaps sm on sm.race_id = r.race_id
+           where m.meeting_date = %s and m.state = %s and (%s::text is null or m.track ilike %s)
+           order by r.race_number""", (day, state, track, track)).fetchall()
+    out = []
+    for r in races:
+        ents = [x[0] for x in db.conn.execute("select e.raw from fk.entries e where e.race_id = %s order by e.barrier nulls last", (r[0],))]
+        out.append({"race_id": r[0], "date": str(r[1]), "track": r[2], "distance_m": r[3],
+                    "lws": float(r[4]) if r[4] is not None else None, "entries": ents, "speedmap": r[5], "tempo": r[6],
+                    "going": r[7], "race_number": r[8]})
+    return out
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--state", default="VIC")
     ap.add_argument("--history", default=str(ROOT / "history"))
     ap.add_argument("--out", default=str(ROOT / "data" / "model_ds.npz"))
+    ap.add_argument("--date", help="export the races on this day instead (not yet run), for pricing")
+    ap.add_argument("--track", help="with --date: only this track")
     a = ap.parse_args()
     from backtest import races_from_rows
     from fk import history as H
     from fk.db import Db
     db = Db(load_settings().database_url)
-    rows = list(db.resulted_races(a.state))
-    in_db = {r["race_id"] for r in rows}
-    rows += list(H.resulted_races(Path(a.history), a.state, skip=in_db))
-    B.fill_going(rows)
+    if a.date:
+        rows = upcoming_rows(db, a.date, a.track, a.state)
+    else:
+        rows = list(db.resulted_races(a.state))
+        in_db = {r["race_id"] for r in rows}
+        rows += list(H.resulted_races(Path(a.history), a.state, skip=in_db))
+        B.fill_going(rows)
     try:
         pre = set(db.races_pulled_before_the_jump(a.state))
     except Exception as ex:  # noqa: BLE001
@@ -182,9 +206,10 @@ def main() -> None:
         pre = set()
     by_id = {r["race_id"]: r for r in rows}
     races, _ = races_from_rows(rows)
-    races = [r for r in races if B.bsp_chances(r.runners) and B.winner_chances(r.runners)]
+    if not a.date:
+        races = [r for r in races if B.bsp_chances(r.runners) and B.winner_chances(r.runners)]
     races.sort(key=lambda r: (r.date, r.race_id))
-    print(f"{len(races)} races with BSP and a winner", flush=True)
+    print(f"{len(races)} races" + ("" if a.date else " with BSP and a winner"), flush=True)
 
     recs, pasts, meta = [], [], []
     past_race_ids, past_jockeys, jockeys, trainers = [], [], [], []
@@ -237,7 +262,8 @@ def main() -> None:
         race_id=np.array([m[0] for m in meta]), date=np.array([m[1] for m in meta]), track=np.array([m[2] for m in meta]),
         distance=np.array([m[3] for m in meta]), lws=np.array([m[4] for m in meta]), going=np.array([m[5] for m in meta]),
         field=np.array([m[6] for m in meta], dtype=np.int32),
-        pre_jump=np.array([m[0] in pre for m in meta]),
+        pre_jump=np.array([(m[0] in pre) or bool(a.date) for m in meta]),
+        race_number=np.array([by_id[m[0]].get("race_number") or 0 for m in meta], dtype=np.int32),
         past_race_ids=np.array(past_race_ids), past_jockeys=np.array(past_jockeys),
         jockey=np.array(jockeys), trainer=np.array(trainers),
         sire=np.array(sires), dam_sire=np.array(dam_sires), training_location=np.array(locs),
