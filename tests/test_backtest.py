@@ -470,3 +470,101 @@ def test_fit_weights_zero_leaves_a_race_out_and_exploded_makes_one_choice_per_pl
     assert [len(r.runners) for r in ex] == [5, 4, 3]
     assert [sum(1 for r in sub.runners if r.finish == 1) for sub in ex] == [1, 1, 1]
     assert ex[1].runners[0].horse_id == "c2"     # the winner has been removed from the second choice
+
+
+def _mapped_field(barriers, distance):
+    from fk.backtest import shape_features
+    rs = [runner_from_entry({**race_entry(f"H{i}", f"R{i}", i + 1, result=i + 1), "barrier": b}, race_distance=distance)
+          for i, b in enumerate(barriers)]
+    race_features(rs)
+    shape_features(rs, {f"H{i}": i + 1 for i in range(len(rs))}, tempo=0.0, distance_m=distance)
+    return rs
+
+
+def test_map_lays_a_sprint_three_abreast_and_the_leader_takes_the_rail():
+    # mapped 1 to 5 from barriers 7, 6, 11, 2, 9 at 1200m: rows 7, 6, 11 | 2, 9.
+    # 7 leads on the rail, 6 two wide, 11 three wide; 2 rail, 9 two wide -> paths 0 1 2 0 1, mean 0.8
+    rs = _mapped_field([7, 6, 11, 2, 9], 1200)
+    assert [round(r.x["path_width"], 6) for r in rs] == [-0.8, 0.2, 1.2, -0.8, 0.2]
+    assert [r.x["no_cover"] for r in rs] == [0.0, 1.0, 1.0, 0.0, 0.0]
+
+
+def test_map_trails_two_wide_over_a_longer_trip():
+    # 1600m: rows 7, 6 | 11, 2 | 9 -> 7 rail, 6 two wide; 2 rail, 11 two wide; 9 rail -> 0 1 1 0 0, mean 0.4
+    rs = _mapped_field([7, 6, 11, 2, 9], 1600)
+    assert [round(r.x["path_width"], 6) for r in rs] == [-0.4, 0.6, 0.6, -0.4, -0.4]
+    assert [r.x["no_cover"] for r in rs] == [0.0, 1.0, 0.0, 0.0, 0.0]
+
+
+def test_wide_back_is_drawn_wide_times_settling_back():
+    # barriers 1, 3, 5 mapped 3, 2, 1: barrier share 0, 0.5, 1 and map share 1, 0.5, 0
+    # products 0, 0.25, 0 (mean 1/12): the middle horse, drawn middling and settling middling, is the only non-zero
+    rs = _mapped_field([1, 3, 5], 1200)
+    from fk.backtest import shape_features
+    shape_features(rs, {"H0": 3, "H1": 2, "H2": 1}, tempo=0.0, distance_m=1200)
+    assert [round(r.x["wide_back"], 6) for r in rs] == [round(-1 / 12, 6), round(0.25 - 1 / 12, 6), round(-1 / 12, 6)]
+
+
+def test_wet_record_comes_from_the_going_breakdown_when_the_wet_string_is_empty():
+    from fk.backtest import _wet_rate
+    e = {"form": {"wet": None, "goingForm": {"good": "4:2-0-0", "slow": "2:1-0-0", "heavy": "1:0-0-0"}}}
+    assert _wet_rate(e) == (1 + 1) / (3 + 5)          # 3 wet starts, 1 win -> 0.25
+    assert _wet_rate({"form": {"goingForm": {}}}) is None
+
+
+def test_age_flags_mark_the_first_up_three_year_old():
+    def entry(hid, n, age, prep, career):
+        e = race_entry(hid, hid, n, result=n)
+        e["horse"]["age"], e["raceInPrep"] = age, prep
+        e.setdefault("form", {})["careerForm"] = career
+        return e
+    rs = [runner_from_entry(entry("A", 1, 3, 1, "1:1-0-0")), runner_from_entry(entry("B", 2, 3, 2, "2:1-0-0")),
+          runner_from_entry(entry("C", 3, 3, 1, "9:2-1-1")), runner_from_entry(entry("D", 4, 5, 1, "1:1-0-0"))]
+    race_features(rs)
+    assert [r.x["age3"] for r in rs] == [1.0, 1.0, 1.0, 0.0]
+    assert [r.x["age3_first_up"] for r in rs] == [1.0, 0.0, 1.0, 0.0]
+    assert [r.x["age3_light_first_up"] for r in rs] == [1.0, 0.0, 0.0, 0.0]
+
+
+def _run(rid, days_ago, going, rating):
+    p = past_event(rid, days_ago)
+    p["going"] = going
+    p["benchmark"]["atWeights"] = rating
+    return p
+
+
+def test_going_bands_read_form_kings_words_and_numbers():
+    from fk.backtest import going_band
+    assert [going_band(g) for g in ("Good 4", "Dead 4", "Firm 2", "Slow 6", "Soft 5", "Heavy 8", "Synthetic", "Good", "", None)] == \
+        ["good", "good", "good", "soft", "soft", "heavy", "synthetic", "good", None, None]
+
+
+def test_going_features_read_the_horse_on_todays_band():
+    from fk.backtest import going_features
+    runs = [_run("A", 14, "Good 4", 80.0), _run("B", 28, "Soft 6", 70.0), _run("C", 42, "Soft 5", 74.0)]
+    # today Soft 7: best on soft 74, best anywhere 80 -> gap -6, two soft starts
+    assert going_features(runs, "Soft 7") == {"going_best": 74.0, "going_gap": -6.0, "going_starts": 2.0}
+    # today Heavy 8: never run on heavy -> no best, no gap, zero starts
+    assert going_features(runs, "Heavy 8") == {"going_best": None, "going_gap": None, "going_starts": 0.0}
+    assert going_features(runs, None)["going_best"] is None
+
+
+def test_going_rel_ranks_the_field_on_todays_going():
+    # A: 80 good / 70 soft; B: 76 good / 78 soft. On soft B is best (0) and A 8 below.
+    a = runner_from_entry({**race_entry("A", "A", 1, result=1), "pastEvents": [_run("A1", 14, "Good 4", 80.0), _run("A2", 28, "Soft 6", 70.0)]},
+                          race_distance=1400, going="Soft 6")
+    b = runner_from_entry({**race_entry("B", "B", 2, result=2), "pastEvents": [_run("B1", 14, "Good 3", 76.0), _run("B2", 28, "Heavy 8", 60.0),
+                                                                                _run("B3", 42, "Soft 5", 78.0)]},
+                          race_distance=1400, going="Soft 6")
+    race_features([a, b])
+    assert (a.x["going_rel"], b.x["going_rel"]) == (-8.0, 0.0)
+    # gaps: A 70 - 80 = -10, B 78 - 78 = 0, centred on -5
+    assert (a.x["going_gap"], b.x["going_gap"]) == (-5.0, 5.0)
+
+
+def test_fill_going_takes_a_race_going_from_later_form():
+    from fk.backtest import fill_going
+    rows = [{"race_id": "R1", "entries": []},
+            {"race_id": "R2", "going": "Good 4", "entries": [{**race_entry("H", "H", 1), "pastEvents": [_run("R1", 14, "Heavy 9", 70.0)]}]}]
+    fill_going(rows)
+    assert rows[0]["going"] == "Heavy 9" and rows[1]["going"] == "Good 4"

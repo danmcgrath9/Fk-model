@@ -16,6 +16,7 @@ A runner missing a feature is given the race's mean of it, which is neutral.
 from __future__ import annotations
 
 import math
+import re
 from dataclasses import dataclass, field
 
 from fk import fields as F
@@ -57,6 +58,36 @@ SHAPE = ["early_pos", "early_x_tempo"]
 # expected tempo (a backmarker in a slow-run race is the classic disadvantage), and how far
 # today's map asks it to race from where it usually does.
 STYLE = ["style_x_tempo", "map_vs_habit"]
+# Where the map puts the horse ACROSS the track, not only along it. The field is laid out in
+# rows by predicted settling position; a sprint (1300m or less, one turn from a chute, as at
+# Ballarat's 1200) fans three abreast, a longer race trails two wide. Within a row the lower
+# barrier takes the inside path.
+#   path_width   0 on the rail, 1 two wide, 2 three wide, centred on the field
+#   no_cover     1 when the horse races outside the leader with nothing in front of it
+#   wide_back    barrier share x mapped position: drawn wide AND settling back, the horse
+#                that either loses ground or has to drop out and go back further
+MAP = ["path_width", "no_cover", "wide_back"]
+# Age and the first-up 3-year-old. The debut-winner study (28 Sep 2026) found the form price
+# UNDERRATES 3-year-olds first-up (actual winners 1.14 times what it expected over 2,848
+# runners, 1.30 for those with one to three starts and no win), while the market rates them
+# about right. A form price that cannot see age cannot learn that a horse which raced as a
+# 2-year-old comes back a different horse.
+#   age2, age3            1 for that age
+#   age3_first_up         a 3-year-old resuming
+#   age3_light_first_up   a 3-year-old resuming with one to three career starts
+#   jockey_horse_win      the jockey's shrunk win rate on THIS horse (the jockey-trainer combo
+#                         Form King sends is empty on every runner, so jt_combo_win is dead)
+AGE = ["age2", "age3", "age3_first_up", "age3_light_first_up", "jockey_horse_win"]
+# The horse's form on TODAY'S going. A horse rated 85 on good tracks and 72 on soft ones is two
+# different horses, and which one turns up depends on the going the race is expected to be run
+# on (the going on the race record at acceptances; the actual going once it has run). Bands:
+# Firm and Good 1 to 4 (Dead is Good 4), Soft 5 to 7 (Slow is the old Soft), Heavy 8 to 10,
+# Synthetic its own.
+#   going_rel     best rating on today's band, as points below the field's best on it
+#   going_gap     best on today's band less its best anywhere (0 = it has run its best on this
+#                 going; -10 = ten points worse), centred on the field
+#   going_starts  log(1 + runs on today's band), centred: how much it has shown on it
+GOING = ["going_rel", "going_gap", "going_starts"]
 # Form King's EXP is derived from the market and Form King does not say from WHICH market.
 # It scores so far ahead of everything else that late money is the likely explanation, and a
 # figure that already knows where the price closed cannot be used to predict where the price
@@ -308,8 +339,85 @@ def market_history(events: list[dict]) -> dict[str, float | None]:
             "collateral_next_wins": recent_weighted(runs, "woe_next"), "collateral_drift": recent_weighted(runs, "drift")}
 
 
+def going_band(text: str | None) -> str | None:
+    """'good', 'soft', 'heavy' or 'synthetic' from a going as Form King writes it: "Good 4",
+    "Dead 4", "Slow 6", "Heavy 8", "Synthetic", or a bare word. The number wins when there is
+    one: 1 to 4 good, 5 to 7 soft, 8 and up heavy."""
+    if not text:
+        return None
+    s = str(text).strip().lower()
+    if not s:
+        return None
+    if "synth" in s or "all weather" in s or "polytrack" in s or "tapeta" in s:
+        return "synthetic"
+    m = re.search(r"(\d+)", s)
+    if m:
+        n = int(m.group(1))
+        if 1 <= n <= 4:
+            return "good"
+        if 5 <= n <= 7:
+            return "soft"
+        if n >= 8:
+            return "heavy"
+    for word, band in (("firm", "good"), ("good", "good"), ("dead", "good"), ("slow", "soft"), ("soft", "soft"),
+                       ("heavy", "heavy")):
+        if word in s:
+            return band
+    return None
+
+
+def going_features(events: list[dict], today_going: str | None) -> dict[str, float | None]:
+    """going_best, going_gap and going_starts (see GOING) from the horse's past races. Each
+    run's rating is the one the distance features use (adjusted to today's weight first).
+    Hand-check: runs Good 4 rated 80, Soft 6 rated 70, Soft 5 rated 74, today Soft 7 ->
+    best on soft 74, best anywhere 80, gap -6, two soft starts."""
+    band = going_band(today_going)
+    if band is None:
+        return {"going_best": None, "going_gap": None, "going_starts": None}
+    on_band, every = [], []
+    for p in events:
+        r = F.run_ratings(p)
+        if r.get("trial") or not r.get("date"):
+            continue
+        v = next((r[k] for k in ("adjToday", "atWeights", "wfaRat", "wfa") if r.get(k) is not None), None)
+        if v is None:
+            continue
+        every.append(v)
+        if going_band(p.get("going")) == band:
+            on_band.append(v)
+    best = max(on_band) if on_band else None
+    return {"going_best": best, "going_gap": (best - max(every)) if best is not None else None,
+            "going_starts": float(len(on_band)) if every else None}
+
+
+def fill_going(rows: list[dict]) -> None:
+    """Give every row a `going` it lacks from the horses that ran in it: a race in the history
+    files carries no going of its own, but it sits in the later form of every horse that has
+    raced since, and that past run records the going it was run on."""
+    seen: dict[str, str] = {}
+    for row in rows:
+        for e in row.get("entries") or []:
+            for p in F.entry_past_events(e):
+                rid, g = p.get("raceId"), p.get("going")
+                if rid and g and rid not in seen:
+                    seen[rid] = g
+    for row in rows:
+        if not row.get("going") and row.get("race_id") in seen:
+            row["going"] = seen[row["race_id"]]
+
+
+def _first_up(e: dict) -> float | None:
+    """1 when the horse is resuming (first run of a campaign), 0 when it is not, None when the
+    entry cannot say. Form King's run-in-prep first; failing that, 84 days or more off."""
+    prep = F.entry_context(e).get("runInPrep")
+    if prep is not None:
+        return 1.0 if prep == 1 else 0.0
+    days = F.entry_days_since_last_run(e)
+    return None if days is None else (1.0 if days >= 84 else 0.0)
+
+
 def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | None = None,
-                      race_date: str | None = None) -> Runner | None:
+                      race_date: str | None = None, going: str | None = None) -> Runner | None:
     """A RaceEntry (Get Race Form) already run: features from what was knowable before the
     jump, the result from horseResult. None for a scratching.
     Raw values: Form King's Neural; the latest rating adjusted to today's weight and the
@@ -374,6 +482,9 @@ def runner_from_entry(e: dict, race_distance: int | None = None, lws: float | No
              "race_starts": len(races_only),
              "rated_runs": len(series),
              "trial_margin": trial,
+             "age": float(ctx["age"]) if ctx.get("age") is not None else None,
+             "first_up": _first_up(e),
+             **going_features(events, going),
              "open": open_price},
         bsp=F.result_betfair_sp(res) if res else None,
         sp=F.result_starting_price(res) if res else None,
@@ -394,7 +505,8 @@ def positions_from_speedmap(speedmap: list[dict] | None) -> dict[str, int]:
     return out
 
 
-def shape_features(runners: list[Runner], positions: dict[str, int], tempo: float) -> None:
+def shape_features(runners: list[Runner], positions: dict[str, int], tempo: float,
+                   distance_m: float | None = None) -> None:
     """Race shape on top of race_features: early_pos is the mapped settling position scaled
     front 0 to back 1 and centred on the field (a runner the map does not place takes the
     mean, so it neither helps nor hurts); early_x_tempo is that against the expected tempo
@@ -415,6 +527,42 @@ def shape_features(runners: list[Runner], positions: dict[str, int], tempo: floa
         habit = r.x.get("settle_share")
         r.x["style_x_tempo"] = (habit * tempo) if habit is not None else 0.0
         r.x["map_vs_habit"] = ((v - mean) - habit) if habit is not None else 0.0
+    map_features(runners, positions, filled, distance_m)
+
+
+SPRINT_ONE_TURN_M = 1300   # at or under this the field fans three abreast; longer, it trails two wide
+
+
+def map_features(runners: list[Runner], positions: dict[str, int], filled: list[float],
+                 distance_m: float | None) -> None:
+    """MAP on top of shape_features. `filled` is each runner's mapped position share (front 0,
+    back 1, the unmapped at the mean). Hand-check, a 1200m field of five mapped 1 to 5 with
+    barriers 7, 6, 11, 2, 9: three abreast, so row one is 7, 6, 11 and row two 2, 9. The leader
+    (7) crosses to the rail, 6 is two wide and 11 three wide; row two by barrier: 2 rail, 9 two
+    wide. Paths 0, 1, 2, 0, 1 (mean 0.8), and the two outside the leader, 6 and 11, carry no
+    cover. Over 1600m the rows are two: 7, 6 | 11, 2 | 9, paths 0, 1, 1, 0, 0 (mean 0.4)."""
+    n = len(runners)
+    cap = 3 if distance_m and float(distance_m) <= SPRINT_ONE_TURN_M else 2
+    mapped = sorted([r for r in runners if r.horse_id in positions], key=lambda r: (positions[r.horse_id], r.horse_id))
+    path: dict[str, int] = {}
+    cover: dict[str, float] = {}
+    for start in range(0, len(mapped), cap):
+        row = mapped[start:start + cap]
+        # The leader crosses to the rail; everyone else in its row, and every later row, takes
+        # the paths in barrier order.
+        head, rest = (row[:1], row[1:]) if start == 0 else ([], row)
+        row = head + sorted(rest, key=lambda r: (r.raw.get("barrier") or 99, r.horse_id))
+        for i, r in enumerate(row):
+            path[r.horse_id] = i
+            cover[r.horse_id] = 1.0 if start == 0 and i > 0 else 0.0
+    widths = _fill_mean([float(path[r.horse_id]) if r.horse_id in path else None for r in runners])
+    mean_w = sum(widths) / n
+    wide_back = [((r.raw.get("barrier_share") if r.raw.get("barrier_share") is not None else 0.5) * v) for r, v in zip(runners, filled)]
+    mean_wb = sum(wide_back) / n
+    for r, w, wb in zip(runners, widths, wide_back):
+        r.x["path_width"] = w - mean_w
+        r.x["no_cover"] = cover.get(r.horse_id, 0.0)
+        r.x["wide_back"] = wb - mean_wb
 
 
 def position_shares(run: dict) -> dict[str, float | None]:
@@ -461,6 +609,22 @@ def _win_rate(txt: str | None) -> float | None:
     return (wins + 1) / (starts + 5)
 
 
+def _wet_rate(e: dict) -> float | None:
+    """The wet-track record as a shrunk win rate. Form King's `wet` string arrives empty; the
+    same starts sit in the going breakdown as `slow` (Soft) and `heavy`, so the two are added:
+    "2:1-0-0" and "1:0-0-0" read as 3 starts, 1 win, (1 + 1) / (3 + 5) = 0.25."""
+    going = (e.get("form") or {}).get("goingForm") or {}
+    starts = wins = 0
+    seen = False
+    for key in ("slow", "soft", "heavy"):
+        rec = _form_record(going.get(key))
+        if rec and rec[0] is not None:
+            seen = True
+            starts += rec[0]
+            wins += rec[1] or 0
+    return (wins + 1) / (starts + 5) if seen else None
+
+
 def intent_features(e: dict) -> dict[str, float | None]:
     """The INTENT raw values straight off the entry. A missing flag is None, never 0, so
     race_features fills it with the field mean like every other gap."""
@@ -502,12 +666,13 @@ def extra_features(e: dict) -> dict[str, float | None]:
         "going_win": _win_rate(form.get("todaysGoingForm")),
         "class_win": _win_rate(form.get("classForm")),
         "td_win": _win_rate(form.get("trackAndDistanceForm")),
-        "wet_win": _win_rate(form.get("wet")),
+        "wet_win": _win_rate(form.get("wet")) if form.get("wet") else _wet_rate(e),
         "up_win": _win_rate(form.get(up_key)) if up_key else None,
         "jockey_win": jockey.get("win12m"),
         "trainer_win": trainer.get("win12m"),
         **intent_features(e),
         "jt_combo_win": trainer.get("jockeyComboWin"),
+        "jockey_horse_win": _win_rate(jockey.get("horseCombo")),
     }
 
 
@@ -531,7 +696,7 @@ def race_features(runners: list[Runner]) -> None:
                      ("wfa_best", "wfa_best_rel"), ("ohr", "ohr_rel"), ("dist", "dist_rel"),
                      ("last_dist", "last_dist_rel"), ("best_dist", "best_dist_rel"), ("exp", "exp_rel"),
                      ("speed", "speed_rel"), ("speed_best", "speed_best_rel"), ("finish_speed", "finish_speed_rel"),
-                     ("last600", "last600_rel"), ("to600", "to600_rel")):
+                     ("last600", "last600_rel"), ("to600", "to600_rel"), ("going_best", "going_rel")):
         vals = _fill_mean([r.raw.get(key) for r in runners])
         best = max(vals)
         cols[out] = [v - best for v in vals]
@@ -563,6 +728,27 @@ def race_features(runners: list[Runner]) -> None:
     cols["early_x_tempo"] = [0.0] * n
     cols["style_x_tempo"] = [0.0] * n
     cols["map_vs_habit"] = [0.0] * n
+    for key in MAP:
+        cols[key] = [0.0] * n
+    # Age (AGE): flags, not centred, like first_starter.
+    ages = [r.raw.get("age") for r in runners]
+    fups = [r.raw.get("first_up") for r in runners]
+    starts_raw = [r.raw.get("starts") for r in runners]
+    cols["age2"] = [1.0 if a == 2 else 0.0 for a in ages]
+    cols["age3"] = [1.0 if a == 3 else 0.0 for a in ages]
+    cols["age3_first_up"] = [1.0 if a == 3 and f == 1.0 else 0.0 for a, f in zip(ages, fups)]
+    cols["age3_light_first_up"] = [1.0 if a == 3 and f == 1.0 and s is not None and 1 <= s <= 3 else 0.0
+                                   for a, f, s in zip(ages, fups, starts_raw)]
+    for key in ("going_gap", "going_starts"):
+        vals = [r.raw.get(key) for r in runners]
+        if key == "going_starts":
+            vals = [math.log(1 + v) if v is not None else None for v in vals]
+        vals = _fill_mean(vals)
+        mean_v = sum(vals) / n
+        cols[key] = [v - mean_v for v in vals]
+    jh = _fill_mean([r.raw.get("jockey_horse_win") for r in runners])
+    mean_jh = sum(jh) / n
+    cols["jockey_horse_win"] = [v - mean_jh for v in jh]
     # Record at the distance as a shrunk win rate: (wins + 1) / (starts + 5), so one win
     # from one start reads 33%, not 100%; a runner with no record takes the race mean.
     rates = [((r.raw["dist_wins"] + 1) / (r.raw["dist_starts"] + 5)) if r.raw.get("dist_starts") is not None and r.raw.get("dist_wins") is not None else None

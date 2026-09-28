@@ -44,6 +44,7 @@ def load(state: str, history_dir: Path):
     rows = list(db.resulted_races(state))
     in_db = {row["race_id"] for row in rows}
     rows += list(H.resulted_races(history_dir, state, skip=in_db))
+    B.fill_going(rows)
     entries = {row["race_id"]: {F.horse_id(e): e for e in row["entries"]} for row in rows}
     races, _ = races_from_rows(rows)
     races = [r for r in races if B.winner_chances(r.runners) and B.bsp_chances(r.runners)]

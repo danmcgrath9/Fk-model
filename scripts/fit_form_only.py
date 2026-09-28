@@ -59,6 +59,14 @@ CANDIDATES = {
     "form_kitchen_sink_experience": B.MODEL_SETS["kitchen_sink"] + EXPERIENCE_FORM,
     "form_kitchen_sink_memory": B.MODEL_SETS["kitchen_sink"] + EXPERIENCE_FORM + B.MARKET_MEMORY,
     "form_kitchen_sink_memory_intent": B.MODEL_SETS["kitchen_sink"] + EXPERIENCE_FORM + B.MARKET_MEMORY + B.INTENT,
+    # 28 Sep 2026: the map across the track (path, cover, drawn wide and settling back) and
+    # age (the first-up 3-year-old the form price underrates), each alone and together.
+    "form_kitchen_sink_memory_map": B.MODEL_SETS["kitchen_sink"] + EXPERIENCE_FORM + B.MARKET_MEMORY + B.MAP,
+    "form_kitchen_sink_memory_age": B.MODEL_SETS["kitchen_sink"] + EXPERIENCE_FORM + B.MARKET_MEMORY + B.AGE,
+    "form_kitchen_sink_memory_map_age": B.MODEL_SETS["kitchen_sink"] + EXPERIENCE_FORM + B.MARKET_MEMORY + B.MAP + B.AGE,
+    # ratings on today's going (good, soft, heavy)
+    "form_kitchen_sink_memory_going": B.MODEL_SETS["kitchen_sink"] + EXPERIENCE_FORM + B.MARKET_MEMORY + B.GOING,
+    "form_kitchen_sink_memory_all_new": B.MODEL_SETS["kitchen_sink"] + EXPERIENCE_FORM + B.MARKET_MEMORY + B.MAP + B.AGE + B.GOING,
 }
 for _name, _feats in CANDIDATES.items():
     assert not BARRED & set(_feats), f"{_name} carries a barred feature: {BARRED & set(_feats)}"

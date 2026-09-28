@@ -150,7 +150,8 @@ class Db:
         # holds more than one batch of form in memory or in a spill file.
         races = self.conn.execute(
             """select r.race_id, m.meeting_date, m.track, r.distance_m, (r.raw->>'lws')::numeric,
-                      sm.runners, sm.raw->'expectedTempo'
+                      sm.runners, sm.raw->'expectedTempo',
+                      nullif(trim(concat(r.raw->>'going', ' ', r.raw->>'goingNumber')), '')
                from fk.races r join fk.meetings m using (meeting_id)
                     left join fk.speedmaps sm on sm.race_id = r.race_id
                where (%s::text is null or m.state = %s)
@@ -182,7 +183,7 @@ class Db:
             for r in batch:
                 out.append({"race_id": r[0], "date": str(r[1]), "track": r[2], "distance_m": r[3],
                             "lws": float(r[4]) if r[4] is not None else None, "entries": entries[r[0]],
-                            "speedmap": r[5], "tempo": r[6]})
+                            "speedmap": r[5], "tempo": r[6], "going": r[7]})
         return out
 
     # ---- the paper book ------------------------------------------------------------

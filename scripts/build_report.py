@@ -136,26 +136,28 @@ def open_coverage(entries: list[dict], openings: dict[str, float | None] | None 
 
 def model_chances(model: dict, entries: list[dict], distance_m: int | None = None, lws: float | None = None,
                   speedmap: list[dict] | None = None, tempo_raw: dict | None = None,
-                  openings: dict[str, float | None] | None = None, race_date: str | None = None) -> dict[str, float]:
+                  openings: dict[str, float | None] | None = None, race_date: str | None = None,
+                  going: str | None = None) -> dict[str, float]:
     """Win chance per active runner from the back-tested conditional logit, on the same
     features the fit used (fk.backtest.race_features over each entry's own record, then
     the race shape from the speedmap and expected tempo). `openings` = {horse_id: the
     morning snapshot's opening price}, which replaces the evening form's."""
     from fk import backtest as B
     from fk import projection as P
-    runners = [r for r in (B.runner_from_entry(with_opening(e["raw"], (openings or {}).get(e["horse_id"])), distance_m, lws, race_date)
+    runners = [r for r in (B.runner_from_entry(with_opening(e["raw"], (openings or {}).get(e["horse_id"])), distance_m, lws, race_date, going)
                            for e in entries if e.get("raw")) if r is not None]
     if not runners:
         return {}
     B.race_features(runners)
-    B.shape_features(runners, B.positions_from_speedmap(speedmap), P.tempo_score(tempo_raw))
+    B.shape_features(runners, B.positions_from_speedmap(speedmap), P.tempo_score(tempo_raw), distance_m)
     p = B.predict(model["beta"], runners)
     return {r.horse_id: pi for r, pi in zip(runners, p)}
 
 
 def real_price_chances(model: dict, entries: list[dict], distance_m: int | None = None, lws: float | None = None,
                        speedmap: list[dict] | None = None, tempo_raw: dict | None = None,
-                       openings: dict[str, float | None] | None = None, race_date: str | None = None) -> dict[str, float]:
+                       openings: dict[str, float | None] | None = None, race_date: str | None = None,
+                  going: str | None = None) -> dict[str, float]:
     """Win chance per active runner from the real-price model (fk/realprice.py): the current
     price as the market input, the entry's own opening average as a second feature."""
     from fk import backtest as B
@@ -163,10 +165,10 @@ def real_price_chances(model: dict, entries: list[dict], distance_m: int | None 
     from fk import realprice as R
 
     def runners_for(raws):
-        rs = [r for r in (B.runner_from_entry(raw, distance_m, lws, race_date) for raw in raws) if r is not None]
+        rs = [r for r in (B.runner_from_entry(raw, distance_m, lws, race_date, going) for raw in raws) if r is not None]
         if rs:
             B.race_features(rs)
-            B.shape_features(rs, B.positions_from_speedmap(speedmap), P.tempo_score(tempo_raw))
+            B.shape_features(rs, B.positions_from_speedmap(speedmap), P.tempo_score(tempo_raw), distance_m)
         return rs
     with_raw = [e for e in entries if e.get("raw")]
     priced = runners_for([with_opening(e["raw"], (openings or {}).get(e["horse_id"])) for e in with_raw])
@@ -328,6 +330,9 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
     market = market_implied(prices)
     k = neural_scale if neural_scale is not None else DEFAULT_SCALE
     lws = F.race_facts(race["raw"]).get("lws") if race.get("raw") else None
+    # Today's going as the race record has it (expected at acceptances, actual once run), for GOING.
+    _facts = F.race_facts(race["raw"]) if race.get("raw") else {}
+    going_now = " ".join(str(x) for x in (_facts.get("going"), _facts.get("goingNumber")) if x is not None) or None
     model: dict = {}
     priced_by_projection = False
     form: dict = {}
@@ -335,7 +340,7 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
         # No openings passed and no market feature in the fit: the price is form alone, the
         # same with a full book, half a book or none.
         form = model_chances(form_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, None,
-                             str(race.get("meeting_date")) if race.get("meeting_date") else None)
+                             str(race.get("meeting_date")) if race.get("meeting_date") else None, going_now)
         section.form_model_name = f"{form_model.get('model')} ({form_model.get('races')} races to {form_model.get('to')})"
         section.form_probs = form
     if rated_model and rated_model.get("model") == "projection_sim" and rated_model.get("params"):
@@ -362,12 +367,13 @@ def build_section(race: dict, entries: list[dict], runs_by_horse: dict[str, list
             section.facts.append(f"Market not formed: {have} of {n} runners carry a price, so the model's market "
                                  f"input is incomplete. Rated for reading only; no paper bets on this race.")
         race_date = str(race.get("meeting_date")) if race.get("meeting_date") else None
-        model = model_chances(rated_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, openings, race_date)
+        model = model_chances(rated_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, openings, race_date, going_now)
         if real_price_model and getattr(section, "bettable", True):
             # The real-price model prices the same runners from the same current price, with
             # the opening average kept beside it. Its chances ride on the section for the paper
             # book; the page's rated price stays the deployed model's.
-            section.rp_probs = real_price_chances(real_price_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, openings, race_date)
+            section.rp_probs = real_price_chances(real_price_model, active, race.get("distance_m"), lws, speedmap, tempo_raw, openings, race_date,
+                                                  going_now)
             section.rp_model_name = f"{real_price_model['model']} ({real_price_model['races']} races to {real_price_model['to']})"
         if rated_model.get("projection_params"):
             # The projection is the founder's own method; it is shown beside the price even

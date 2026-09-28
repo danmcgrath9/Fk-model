@@ -50,8 +50,10 @@ def load_races(state: str, history_dir: Path | None = None) -> tuple[list[B.Race
     db = Db(load_settings().database_url)
     rows = db.resulted_races(state)
     in_db = {row["race_id"] for row in rows}
+    file_rows = list(H.resulted_races(history_dir, state, skip=in_db))
+    B.fill_going(rows + file_rows)     # a history-file race takes its going from the later form of its runners
     races, proj = races_from_rows(rows)
-    file_races, file_proj = races_from_rows(H.resulted_races(history_dir, state, skip=in_db))
+    file_races, file_proj = races_from_rows(file_rows)
     print(f"{len(races)} resulted races from the database, {len(file_races)} more from the history files")
     races += file_races
     proj.update(file_proj)
@@ -64,12 +66,14 @@ def races_from_rows(rows) -> tuple[list[B.Race], dict[str, P.ProjRace]]:
     """Rows shaped like Db.resulted_races (a history file's lines are the same shape)."""
     races, proj = [], {}
     for row in rows:
-        runners = [r for r in (B.runner_from_entry(e, row.get("distance_m"), row.get("lws"), row.get("date")) for e in row["entries"])
+        runners = [r for r in (B.runner_from_entry(e, row.get("distance_m"), row.get("lws"), row.get("date"), row.get("going"))
+                               for e in row["entries"])
                    if r is not None]
         if len(runners) < 2:
             continue
         B.race_features(runners)
-        B.shape_features(runners, B.positions_from_speedmap(row.get("speedmap")), P.tempo_score(row.get("tempo")))
+        B.shape_features(runners, B.positions_from_speedmap(row.get("speedmap")), P.tempo_score(row.get("tempo")),
+                         row.get("distance_m"))
         race = B.Race(row["race_id"], row["date"], row["track"], runners)
         # Race-level facts the theory trials slice on; the Race itself stays four fields.
         race.distance_m = row.get("distance_m")
