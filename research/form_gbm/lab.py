@@ -24,7 +24,7 @@ def augmented(F, names, share=0.8, seed=1):
 def _part(races, ri):
     m = np.isin(ri, races); _, rr = np.unique(ri[m], return_inverse=True); return m, rr, rr.max() + 1
 
-def train(F, names, train_races, target, params=None, rounds=5000, valid_races=None, aug=True, seed=0, fixed_rounds=None):
+def train(F, names, train_races, target, params=None, rounds=5000, valid_races=None, aug=True, seed=0, fixed_rounds=None, cat_idx=None):
     """Fit on train_races (+ blanked copy). Early-stop on valid_races when given. Returns booster, rounds."""
     nR = D["n_races"]
     if aug:
@@ -37,7 +37,8 @@ def train(F, names, train_races, target, params=None, rounds=5000, valid_races=N
              bagging_freq=1, lambda_l2=10.0, verbose=-1, objective="none", num_threads=4, seed=seed)
     if params: P.update(params)
     fobj = gbm.make_obj(rr, n, t[m])
-    bst = lgb.Booster(params=P, train_set=lgb.Dataset(Fall[m]))
+    ds = lgb.Dataset(Fall[m], categorical_feature=cat_idx) if cat_idx else lgb.Dataset(Fall[m])
+    bst = lgb.Booster(params=P, train_set=ds)
     if fixed_rounds:
         for _ in range(fixed_rounds): bst.update(fobj=fobj)
         return bst, fixed_rounds
