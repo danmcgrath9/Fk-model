@@ -1,4 +1,4 @@
-# TAB fixed odds, screenshots Tue 29 Sep 4:06-4:16pm. race, horse, opening price, price showing (bets are struck at the price showing)
+# TAB fixed odds, screenshots Mon 28 Sep 4:06-4:16pm. race, horse, opening price, price showing (bets are struck at the price showing)
 1, Semantics, 2.70, 3.30
 1, Aroused, 3.70, 3.00
 1, Scoville, 7.50, 6.00
@@ -42,7 +42,7 @@
 2, Grinding Away, 61.00, 81.00
 2, Empress Of China, SCR
 2, Debbie, SCR
-# Race 5, screenshots Tue 29 Sep 4:10-4:11pm
+# Race 5, screenshots Mon 28 Sep 4:10-4:11pm
 5, Yauson, 2.60, 2.20
 5, Crocodile, 3.60, 3.30
 5, Jenni You Think, 5.00, 6.00
@@ -55,7 +55,7 @@
 5, Kiss My Rock, 51.00, 71.00
 5, Callawadda, 51.00, 71.00
 5, First Innings, 81.00, 126.00
-# Race 3, screenshots Tue 29 Sep 4:11pm (just opened: fixed = open unless an open is shown)
+# Race 3, screenshots Mon 28 Sep 4:11pm (just opened: fixed = open unless an open is shown)
 3, Hedjet, 3.10, 3.10
 3, Full Confidence, 4.80, 4.80
 3, So Royal, 7.00, 7.00
@@ -73,7 +73,7 @@
 3, Levate, SCR
 3, Shocko In Morocco, SCR
 3, Hot Pot Dot, SCR
-# Race 7, screenshots Tue 29 Sep 4:13pm
+# Race 7, screenshots Mon 28 Sep 4:13pm
 7, Carriedo, 3.00, 3.40
 7, Aurora Belle, 3.20, 3.60
 7, Balance, 6.00, 4.00
@@ -86,7 +86,7 @@
 7, Eeteedee, 31.00, 41.00
 7, Delivering, 41.00, 61.00
 7, Brandjam, 61.00, 81.00
-# Race 4, screenshots Tue 29 Sep 4:16pm
+# Race 4, screenshots Mon 28 Sep 4:16pm
 4, Kingsbury, 3.80, 2.90
 4, Perfect Night, 4.20, 4.60
 4, Invisible Magic, 4.40, 5.00
@@ -100,7 +100,7 @@
 4, Comic Hero, 26.00, 34.00
 4, Share The Stars, 31.00, 41.00
 4, Tempt The Gods, 41.00, 51.00
-# Race 6, screenshots Tue 29 Sep 4:17pm
+# Race 6, screenshots Mon 28 Sep 4:17pm
 6, Handee, 6.00, 4.60
 6, Turbo Saint, 8.00, 5.00
 6, Cavill Avenue, 9.50, 6.00

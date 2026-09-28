@@ -1,0 +1,1082 @@
+[
+ {
+  "race": 1,
+  "race_id": "TAT_290926_1",
+  "horse": "Love Runs Deep",
+  "horse_id": "2023_anders_runs-deep",
+  "barrier": 1,
+  "jockey": "Teodore Nugent",
+  "p": 0.00556924903126303,
+  "solid": true
+ },
+ {
+  "race": 1,
+  "race_id": "TAT_290926_1",
+  "horse": "Court Jester",
+  "horse_id": "2023_nicconi_mary-valley",
+  "barrier": 2,
+  "jockey": "Jett Stanley",
+  "p": 0.09019537529668537,
+  "solid": true
+ },
+ {
+  "race": 1,
+  "race_id": "TAT_290926_1",
+  "horse": "Firm'n'high",
+  "horse_id": "2023_bivouac_leathernlace",
+  "barrier": 3,
+  "jockey": "Jackson Radley",
+  "p": 0.11685947813793614,
+  "solid": true
+ },
+ {
+  "race": 1,
+  "race_id": "TAT_290926_1",
+  "horse": "Alpha Mensae",
+  "horse_id": "2023_all-too-hard_star-riva",
+  "barrier": 4,
+  "jockey": "Cory Parish",
+  "p": 0.08384644434518744,
+  "solid": true
+ },
+ {
+  "race": 1,
+  "race_id": "TAT_290926_1",
+  "horse": "The Shyster",
+  "horse_id": "2023_profiteer_perlant",
+  "barrier": 5,
+  "jockey": "Logan McNeil",
+  "p": 0.037919603013163015,
+  "solid": false
+ },
+ {
+  "race": 1,
+  "race_id": "TAT_290926_1",
+  "horse": "Plinian",
+  "horse_id": "2023_pinatubo_shalfah",
+  "barrier": 6,
+  "jockey": "Celine Gaudray",
+  "p": 0.08115282207783059,
+  "solid": true
+ },
+ {
+  "race": 1,
+  "race_id": "TAT_290926_1",
+  "horse": "Bordeaux",
+  "horse_id": "2023_brazen-beau_aquitaine",
+  "barrier": 7,
+  "jockey": "Damien Thornton",
+  "p": 0.16095297031955932,
+  "solid": true
+ },
+ {
+  "race": 1,
+  "race_id": "TAT_290926_1",
+  "horse": "Rentier",
+  "horse_id": "2023_gold-standard_runaway-river",
+  "barrier": 8,
+  "jockey": "Linda Meech",
+  "p": 0.15438856455990063,
+  "solid": false
+ },
+ {
+  "race": 1,
+  "race_id": "TAT_290926_1",
+  "horse": "Tyrant Rex",
+  "horse_id": "2023_wild-ruler_maybe-the-best",
+  "barrier": 9,
+  "jockey": "Will Gordon",
+  "p": 0.13309404040791137,
+  "solid": true
+ },
+ {
+  "race": 1,
+  "race_id": "TAT_290926_1",
+  "horse": "Around The Marx",
+  "horse_id": "2023_russian-revolution_consistency",
+  "barrier": 10,
+  "jockey": "Jake Noonan",
+  "p": 0.056602049826934384,
+  "solid": true
+ },
+ {
+  "race": 1,
+  "race_id": "TAT_290926_1",
+  "horse": "Inside Word",
+  "horse_id": "2023_overshare_mona-dream",
+  "barrier": 11,
+  "jockey": "Lachlan King",
+  "p": 0.015306424277552891,
+  "solid": true
+ },
+ {
+  "race": 1,
+  "race_id": "TAT_290926_1",
+  "horse": "Chapel Belle",
+  "horse_id": "2023_churchill_mesmerize-me",
+  "barrier": 12,
+  "jockey": "Carleen Hefel",
+  "p": 0.06411297870607571,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Betty's Rubble",
+  "horse_id": "2022_boulder-city_some-came-running",
+  "barrier": 1,
+  "jockey": "Lachlan King",
+  "p": 0.0051300395454816185,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "I Am Algadon",
+  "horse_id": "2023_i-am-immortal_algadon-miss",
+  "barrier": 2,
+  "jockey": "Nadia Daniels",
+  "p": 0.08520824761728686,
+  "solid": false
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Snitzel Tycoon",
+  "horse_id": "2023_finance-tycoon_crispysnits",
+  "barrier": 3,
+  "jockey": "Zoe Waller",
+  "p": 0.1784232920317239,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Princess Geisha",
+  "horse_id": "2022_prince-of-caviar_mineko",
+  "barrier": 4,
+  "jockey": "Jack Martin",
+  "p": 0.0376215993462452,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Katiya",
+  "horse_id": "2022_russian-camelot_chitraka",
+  "barrier": 5,
+  "jockey": "Cian Macredmond",
+  "p": 0.0083107208075786,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Wunderlust",
+  "horse_id": "2022_hanseatic_special-fragrance",
+  "barrier": 6,
+  "jockey": "",
+  "p": 0.0019227415975121849,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Forward Ho",
+  "horse_id": "2021_shamus-award_leica-forward",
+  "barrier": 7,
+  "jockey": "Carleen Hefel",
+  "p": 0.05455824606493283,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Isle Of Mona",
+  "horse_id": "2023_royal-meeting_ship-of-dreams",
+  "barrier": 8,
+  "jockey": "Jackson Radley",
+  "p": 0.07327916841054391,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Imperial Meeting",
+  "horse_id": "2022_royal-meeting_patricia-anne",
+  "barrier": 9,
+  "jockey": "Nadia Daniels",
+  "p": 0.007309481964716727,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Brave Summit",
+  "horse_id": "2022_bivouac_clarice-cliffs",
+  "barrier": 10,
+  "jockey": "Jett Stanley",
+  "p": 0.08627066221033058,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Valorada",
+  "horse_id": "2022_doubtland_valuabelle",
+  "barrier": 11,
+  "jockey": "Teodore Nugent",
+  "p": 0.004946894504962489,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Bee Admired",
+  "horse_id": "2022_admire-mars_bee-neata",
+  "barrier": 12,
+  "jockey": "Valentin Le Boeuf",
+  "p": 0.1955393133335601,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Zukuro",
+  "horse_id": "2022_bivouac_pursuits",
+  "barrier": 14,
+  "jockey": "Toby Atkinson",
+  "p": 0.008964663246327205,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Rousley",
+  "horse_id": "2022_capitalist_hexameter",
+  "barrier": 15,
+  "jockey": "",
+  "p": 0.005848558859331541,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Moonlight Bid",
+  "horse_id": "2023_puissance-de-lune_exclusive-bid",
+  "barrier": 16,
+  "jockey": "Celine Gaudray",
+  "p": 0.0016347677591083026,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Acharnee",
+  "horse_id": "2022_all-too-hard_laurant",
+  "barrier": 17,
+  "jockey": "Craig Newitt",
+  "p": 0.0780100127129036,
+  "solid": true
+ },
+ {
+  "race": 2,
+  "race_id": "TAT_290926_2",
+  "horse": "Fully Funded",
+  "horse_id": "2022_snitzel_bright-path",
+  "barrier": 18,
+  "jockey": "Will Gordon",
+  "p": 0.1670215899874544,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Thinkimacelebrity",
+  "horse_id": "2022_so-you-think_celebrities-choice",
+  "barrier": 1,
+  "jockey": "Brad Rawiller",
+  "p": 0.06495030777497762,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Aleutian Princess",
+  "horse_id": "2022_north-pacific_misty-rock",
+  "barrier": 2,
+  "jockey": "",
+  "p": 0.004818003351685229,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Miami Man",
+  "horse_id": "2022_inference_paseo-del-rio",
+  "barrier": 3,
+  "jockey": "Logan McNeil",
+  "p": 0.006784721568554274,
+  "solid": false
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Churchill Lane",
+  "horse_id": "2022_churchill_masikota",
+  "barrier": 4,
+  "jockey": "Jackie Beriman",
+  "p": 0.023513193697424332,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Spin Class",
+  "horse_id": "2021_time-test_zaspin",
+  "barrier": 5,
+  "jockey": "Linda Meech",
+  "p": 0.021170045985506605,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Just Basil",
+  "horse_id": "2022_north-pacific_vital",
+  "barrier": 6,
+  "jockey": "Lachlan King",
+  "p": 0.06326596763446497,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Vespasian",
+  "horse_id": "2022_i-am-invincible_puppetshow",
+  "barrier": 7,
+  "jockey": "Celine Gaudray",
+  "p": 0.2539420509954214,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Off'n'gawn",
+  "horse_id": "2022_dargento_fascinating",
+  "barrier": 8,
+  "jockey": "",
+  "p": 0.013366141590486753,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Jillymilly",
+  "horse_id": "2022_russian-camelot_mill-on-brook",
+  "barrier": 9,
+  "jockey": "Teodore Nugent",
+  "p": 0.0009610066565615515,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Who I Think I Am",
+  "horse_id": "2022_so-you-think_crimson-dawn",
+  "barrier": 10,
+  "jockey": "Carleen Hefel",
+  "p": 0.08620473791122236,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Hot Opera",
+  "horse_id": "2021_too-darn-hot_la-boheme",
+  "barrier": 11,
+  "jockey": "Craig Newitt",
+  "p": 0.05701185203728746,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Deadly Devil",
+  "horse_id": "2022_boulder-city_possessed",
+  "barrier": 12,
+  "jockey": "Mitchell Aitken",
+  "p": 0.009250900450696781,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "The Cellist",
+  "horse_id": "2023_lope-de-vega_meu-amor",
+  "barrier": 13,
+  "jockey": "Jackson Radley",
+  "p": 0.0776203529882673,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Classic Cracker",
+  "horse_id": "2021_crackerjack-king_top-classic",
+  "barrier": 14,
+  "jockey": "John Keating",
+  "p": 0.007684157456973666,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Sunday Vendetta",
+  "horse_id": "2022_justify_sweet-gloria",
+  "barrier": 15,
+  "jockey": "Will Gordon",
+  "p": 0.21685878117249843,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Style Guide",
+  "horse_id": "2020_belardo_donaquillo",
+  "barrier": 16,
+  "jockey": "Stephanie Hateley",
+  "p": 0.045613384081325356,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Challenging",
+  "horse_id": "2022_all-too-hard_louiss-girl",
+  "barrier": 17,
+  "jockey": "Cian Macredmond",
+  "p": 0.04440049628018753,
+  "solid": true
+ },
+ {
+  "race": 3,
+  "race_id": "TAT_290926_3",
+  "horse": "Helter Peltzer",
+  "horse_id": "2022_peltzer_keeper-girl",
+  "barrier": 18,
+  "jockey": "",
+  "p": 0.0025838983664582473,
+  "solid": true
+ },
+ {
+  "race": 4,
+  "race_id": "TAT_290926_4",
+  "horse": "Monsun's Pride",
+  "horse_id": "2020_fiorente_rosy-lady",
+  "barrier": 1,
+  "jockey": "Mitchell Aitken",
+  "p": 0.030315066272188995,
+  "solid": true
+ },
+ {
+  "race": 4,
+  "race_id": "TAT_290926_4",
+  "horse": "Mayeki",
+  "horse_id": "2020_grunt_nombeko",
+  "barrier": 2,
+  "jockey": "Teodore Nugent",
+  "p": 0.02331308248185799,
+  "solid": true
+ },
+ {
+  "race": 4,
+  "race_id": "TAT_290926_4",
+  "horse": "Carnival Riches",
+  "horse_id": "2022_written-tycoon_november",
+  "barrier": 3,
+  "jockey": "Caitlin Hollowood",
+  "p": 0.07705427839234373,
+  "solid": true
+ },
+ {
+  "race": 4,
+  "race_id": "TAT_290926_4",
+  "horse": "State Of Affairs",
+  "horse_id": "2021_dundeel_late-change",
+  "barrier": 4,
+  "jockey": "Will Gordon",
+  "p": 0.0784767283713028,
+  "solid": true
+ },
+ {
+  "race": 4,
+  "race_id": "TAT_290926_4",
+  "horse": "Baganov",
+  "horse_id": "2022_russian-revolution_manrose-hattan",
+  "barrier": 5,
+  "jockey": "Jackson Radley",
+  "p": 0.38115438401067503,
+  "solid": true
+ },
+ {
+  "race": 4,
+  "race_id": "TAT_290926_4",
+  "horse": "Isalot",
+  "horse_id": "2021_so-you-think_jessica-ann",
+  "barrier": 6,
+  "jockey": "Jack Martin",
+  "p": 0.03220116588450292,
+  "solid": true
+ },
+ {
+  "race": 4,
+  "race_id": "TAT_290926_4",
+  "horse": "Tassadar",
+  "horse_id": "2021_starcraft_manhattan-vixen",
+  "barrier": 7,
+  "jockey": "Jett Stanley",
+  "p": 0.034864096939788494,
+  "solid": true
+ },
+ {
+  "race": 4,
+  "race_id": "TAT_290926_4",
+  "horse": "Mahmudah",
+  "horse_id": "2021_tassort_mulhimah",
+  "barrier": 8,
+  "jockey": "Lachlan King",
+  "p": 0.16653917160619972,
+  "solid": true
+ },
+ {
+  "race": 4,
+  "race_id": "TAT_290926_4",
+  "horse": "Strongside",
+  "horse_id": "2022_super-seth_garden-of-swans",
+  "barrier": 9,
+  "jockey": "Linda Meech",
+  "p": 0.17608202604114015,
+  "solid": true
+ },
+ {
+  "race": 5,
+  "race_id": "TAT_290926_5",
+  "horse": "Spex",
+  "horse_id": "2022_bivouac_optical",
+  "barrier": 1,
+  "jockey": "Jett Stanley",
+  "p": 0.1692369134767938,
+  "solid": true
+ },
+ {
+  "race": 5,
+  "race_id": "TAT_290926_5",
+  "horse": "Sinister Sauce",
+  "horse_id": "2020_the-autumn-sun_rosa-carolina",
+  "barrier": 2,
+  "jockey": "Stephanie Hateley",
+  "p": 0.11247862439518479,
+  "solid": true
+ },
+ {
+  "race": 5,
+  "race_id": "TAT_290926_5",
+  "horse": "Pomah",
+  "horse_id": "2022_russian-camelot_rapid-romance",
+  "barrier": 3,
+  "jockey": "Damien Thornton",
+  "p": 0.31567016012729665,
+  "solid": true
+ },
+ {
+  "race": 5,
+  "race_id": "TAT_290926_5",
+  "horse": "No Overtaking",
+  "horse_id": "2021_strasbourg_moving-light",
+  "barrier": 4,
+  "jockey": "Cian Macredmond",
+  "p": 0.06779132532613304,
+  "solid": true
+ },
+ {
+  "race": 5,
+  "race_id": "TAT_290926_5",
+  "horse": "Yongtai",
+  "horse_id": "2019_sepoy_shaolin-belle",
+  "barrier": 5,
+  "jockey": "Samantha Noble",
+  "p": 0.0035023826868428843,
+  "solid": true
+ },
+ {
+  "race": 5,
+  "race_id": "TAT_290926_5",
+  "horse": "Snitchy",
+  "horse_id": "2022_star-witness_itchy-ears",
+  "barrier": 6,
+  "jockey": "Jackie Beriman",
+  "p": 0.029629458747819234,
+  "solid": true
+ },
+ {
+  "race": 5,
+  "race_id": "TAT_290926_5",
+  "horse": "Rivazza",
+  "horse_id": "2021_alpine-eagle_raweesha",
+  "barrier": 7,
+  "jockey": "Teodore Nugent",
+  "p": 0.022811929030556576,
+  "solid": true
+ },
+ {
+  "race": 5,
+  "race_id": "TAT_290926_5",
+  "horse": "Stellar Madame",
+  "horse_id": "2021_starspangledbanner_realise-the-dream",
+  "barrier": 8,
+  "jockey": "Chelsea Thompson",
+  "p": 0.00992075252397365,
+  "solid": true
+ },
+ {
+  "race": 5,
+  "race_id": "TAT_290926_5",
+  "horse": "Queen Amanjena",
+  "horse_id": "2021_per-incanto_amanjena",
+  "barrier": 9,
+  "jockey": "Olivia East",
+  "p": 0.2689584536853994,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Savethebesttillast",
+  "horse_id": "2019_your-song_hairpin",
+  "barrier": 1,
+  "jockey": "Chelsea Taylor",
+  "p": 0.10645862917632887,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Bower Boy",
+  "horse_id": "2020_highland-reel_euchre-star",
+  "barrier": 2,
+  "jockey": "Craig Newitt",
+  "p": 0.03139218588116215,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Rushford",
+  "horse_id": "2015_canford-cliffs_ready-charm",
+  "barrier": 3,
+  "jockey": "Samantha Noble",
+  "p": 0.0019848847801336106,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Royal Rhino",
+  "horse_id": "2022_prince-of-caviar_fearless-falcon",
+  "barrier": 4,
+  "jockey": "Mitchell Aitken",
+  "p": 0.022168724070033143,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Lord Domino",
+  "horse_id": "2017_trust-in-a-gust_domino-lady",
+  "barrier": 5,
+  "jockey": "Lauren Burke",
+  "p": 0.026878956820357184,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Jayzeal",
+  "horse_id": "2018_jayemzed_duchess-of-zeal",
+  "barrier": 6,
+  "jockey": "Teodore Nugent",
+  "p": 0.020512402663664595,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Wambeen",
+  "horse_id": "2019_wandjina_issey",
+  "barrier": 7,
+  "jockey": "Cory Parish",
+  "p": 0.07432960516050846,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Immortalised",
+  "horse_id": "2022_i-am-immortal_miss-pasek",
+  "barrier": 8,
+  "jockey": "Jason Maskiell",
+  "p": 0.08400340499203642,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Annotate",
+  "horse_id": "2020_justify_our-miss-jones",
+  "barrier": 9,
+  "jockey": "Hannah Edgley",
+  "p": 0.12549768484882665,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Hell's Itch",
+  "horse_id": "2019_hellbent_zigzag",
+  "barrier": 10,
+  "jockey": "Lachlan King",
+  "p": 0.12309928893754496,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Positivo",
+  "horse_id": "2021_yes-yes-yes_wanted-diva",
+  "barrier": 11,
+  "jockey": "Brad Rawiller",
+  "p": 0.07595229618711133,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Okeah",
+  "horse_id": "2022_russian-camelot_ocean-bloom",
+  "barrier": 12,
+  "jockey": "Cian Macredmond",
+  "p": 0.028017333664272635,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Party At Artie's",
+  "horse_id": "2019_artie-schiller_double-malt",
+  "barrier": 13,
+  "jockey": "",
+  "p": 0.009551986197865342,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Don'tcallmechamp",
+  "horse_id": "2021_overshare_testagame",
+  "barrier": 14,
+  "jockey": "Will Gordon",
+  "p": 0.05413731666055787,
+  "solid": true
+ },
+ {
+  "race": 6,
+  "race_id": "TAT_290926_6",
+  "horse": "Rich King",
+  "horse_id": "2021_rich-enuff_trimouille",
+  "barrier": 15,
+  "jockey": "Jake Noonan",
+  "p": 0.2160152999595969,
+  "solid": true
+ },
+ {
+  "race": 7,
+  "race_id": "TAT_290926_7",
+  "horse": "Turnaquid",
+  "horse_id": "2019_star-turn_devon-princess",
+  "barrier": 1,
+  "jockey": "Bailey Kinninmont",
+  "p": 0.03672951066832935,
+  "solid": true
+ },
+ {
+  "race": 7,
+  "race_id": "TAT_290926_7",
+  "horse": "Asmita",
+  "horse_id": "2021_exceedance_metis",
+  "barrier": 2,
+  "jockey": "Stephanie Hateley",
+  "p": 0.201337520806717,
+  "solid": true
+ },
+ {
+  "race": 7,
+  "race_id": "TAT_290926_7",
+  "horse": "Sugar Schnapps",
+  "horse_id": "2021_per-incanto_shandream",
+  "barrier": 3,
+  "jockey": "Brad Rawiller",
+  "p": 0.16686517255757757,
+  "solid": true
+ },
+ {
+  "race": 7,
+  "race_id": "TAT_290926_7",
+  "horse": "Sheanadh",
+  "horse_id": "2022_night-of-thunder_disbelieve",
+  "barrier": 4,
+  "jockey": "Liana Wood",
+  "p": 0.12770895937151186,
+  "solid": true
+ },
+ {
+  "race": 7,
+  "race_id": "TAT_290926_7",
+  "horse": "Kamezali",
+  "horse_id": "2021_toronado_palatine-hill",
+  "barrier": 5,
+  "jockey": "Zac Moore",
+  "p": 0.04211707909747565,
+  "solid": true
+ },
+ {
+  "race": 7,
+  "race_id": "TAT_290926_7",
+  "horse": "Balgowan",
+  "horse_id": "2020_highland-reel_forty-nine-riddles",
+  "barrier": 6,
+  "jockey": "Teodore Nugent",
+  "p": 0.036540138339864386,
+  "solid": true
+ },
+ {
+  "race": 7,
+  "race_id": "TAT_290926_7",
+  "horse": "Grouse Mountain",
+  "horse_id": "2020_vancouver_sheer-style",
+  "barrier": 7,
+  "jockey": "Nadia Daniels",
+  "p": 0.04689739780817008,
+  "solid": true
+ },
+ {
+  "race": 7,
+  "race_id": "TAT_290926_7",
+  "horse": "Imminance",
+  "horse_id": "2020_impending_gin-lizzie",
+  "barrier": 8,
+  "jockey": "",
+  "p": 0.05591068342342662,
+  "solid": true
+ },
+ {
+  "race": 7,
+  "race_id": "TAT_290926_7",
+  "horse": "Deep Joy",
+  "horse_id": "2021_deep-field_find-joy",
+  "barrier": 9,
+  "jockey": "Craig Newitt",
+  "p": 0.0066415448678370246,
+  "solid": true
+ },
+ {
+  "race": 7,
+  "race_id": "TAT_290926_7",
+  "horse": "Lady Maestro",
+  "horse_id": "2020_gold-standard_von-maestro",
+  "barrier": 10,
+  "jockey": "Mitchell Aitken",
+  "p": 0.04686911389257413,
+  "solid": true
+ },
+ {
+  "race": 7,
+  "race_id": "TAT_290926_7",
+  "horse": "Smash Blue",
+  "horse_id": "2021_brave-smash_butterfly-blue",
+  "barrier": 11,
+  "jockey": "Damien Thornton",
+  "p": 0.03316215367900219,
+  "solid": true
+ },
+ {
+  "race": 7,
+  "race_id": "TAT_290926_7",
+  "horse": "Brave Carol",
+  "horse_id": "2021_brave-smash_go-carol-go",
+  "barrier": 12,
+  "jockey": "Jett Stanley",
+  "p": 0.03131199248187213,
+  "solid": true
+ },
+ {
+  "race": 7,
+  "race_id": "TAT_290926_7",
+  "horse": "Lujaego",
+  "horse_id": "2021_redente_lujaway",
+  "barrier": 13,
+  "jockey": "Cory Parish",
+  "p": 0.16790873300564202,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Bronco Revolution",
+  "horse_id": "2021_russian-revolution_fantastic-destiny",
+  "barrier": 1,
+  "jockey": "Caitlin Hollowood",
+  "p": 0.036759902878943894,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "War Of Wisdom",
+  "horse_id": "2018_the-brothers-war_rubypeeptoes",
+  "barrier": 2,
+  "jockey": "Teodore Nugent",
+  "p": 0.04135114839727929,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Wild Irish Rover",
+  "horse_id": "2019_no-nay-never_fast-and-sexy",
+  "barrier": 3,
+  "jockey": "Will Gordon",
+  "p": 0.043207044941064754,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Boudica Warrior",
+  "horse_id": "2020_swear_no-prior-knowledge",
+  "barrier": 4,
+  "jockey": "",
+  "p": 0.014415792081944458,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Cossack Warrior",
+  "horse_id": "2020_russian-revolution_laetitia",
+  "barrier": 5,
+  "jockey": "John Keating",
+  "p": 0.009470932138723341,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Cumboogle",
+  "horse_id": "2019_outreach_letyahairhangdown",
+  "barrier": 6,
+  "jockey": "Olivia East",
+  "p": 0.21599558146109957,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Please Me Do",
+  "horse_id": "2021_toronado_unique-stone",
+  "barrier": 7,
+  "jockey": "Jett Stanley",
+  "p": 0.06286727687161958,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Simply Luscious",
+  "horse_id": "2021_kobayashi_veronica",
+  "barrier": 8,
+  "jockey": "Cory Parish",
+  "p": 0.044660437421402785,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Flying Mean",
+  "horse_id": "2020_lean-mean-machine_im-a-flying-star",
+  "barrier": 9,
+  "jockey": "",
+  "p": 0.08515588248629495,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Golden Pulse",
+  "horse_id": "2023_tivaci_gold-fever",
+  "barrier": 10,
+  "jockey": "Craig Newitt",
+  "p": 0.09149685848805286,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Bella Cinque",
+  "horse_id": "2019_magnus_bella-dolce",
+  "barrier": 11,
+  "jockey": "Nadia Daniels",
+  "p": 0.13919114872952598,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Noble Style",
+  "horse_id": "2020_needs-further_lustica",
+  "barrier": 12,
+  "jockey": "Liana Wood",
+  "p": 0.07992531661687592,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Hells Son",
+  "horse_id": "2020_hellbent_mowgli",
+  "barrier": 13,
+  "jockey": "Stephanie Hateley",
+  "p": 0.03459938822469791,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Divine Empress",
+  "horse_id": "2022_ole-kirk_natanya",
+  "barrier": 14,
+  "jockey": "Lachlan King",
+  "p": 0.06948189152638827,
+  "solid": true
+ },
+ {
+  "race": 8,
+  "race_id": "TAT_290926_8",
+  "horse": "Densetsu",
+  "horse_id": "2020_lonhro_gigi-girl",
+  "barrier": 15,
+  "jockey": "",
+  "p": 0.03142139773608627,
+  "solid": true
+ }
+]

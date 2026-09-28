@@ -6,16 +6,16 @@ ri0 = D["race_idx"]; pre = D["pre_jump"]; dt0 = D["date"][ri0]
 _recent = (dt0 >= "2026-08-15") & ~pre[ri0]
 
 def gap_cols(F, names):
-    base = np.load("F2.npy")
-    g = [j for j, n in enumerate(names0) if np.isnan(base[pre[ri0], j]).mean() - np.isnan(base[_recent, j]).mean() > 0.4]
-    gn = {names0[j] for j in g}
+    """columns live pulls usually lack (the speed and sectional figures), by name, so any matrix works."""
+    import os
+    gn = set(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "gap_names.txt")).read().split("\n"))
     return [j for j, n in enumerate(names) if n in gn or any(n.startswith(x + "__") for x in gn)]
 
 XZ = ("speed_rel", "speed_best_rel", "finish_speed_rel", "last600_rel", "to600_rel")
 
 def augmented(F, names, share=0.8, seed=1):
     rng = np.random.default_rng(seed)
-    Fa = F.copy(); drop = rng.random(len(ri0)) < share
+    Fa = F.copy(); drop = rng.random(len(F)) < share
     for j in gap_cols(F, names): Fa[drop, j] = np.nan
     for j, n in enumerate(names):
         if n in XZ: Fa[drop, j] = 0.0
