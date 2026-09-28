@@ -55,3 +55,21 @@
 5, Kiss My Rock, 51.00, 71.00
 5, Callawadda, 51.00, 71.00
 5, First Innings, 81.00, 126.00
+# Race 3, screenshots Tue 29 Sep 4:11pm (just opened: fixed = open unless an open is shown)
+3, Hedjet, 3.10, 3.10
+3, Full Confidence, 4.80, 4.80
+3, So Royal, 7.00, 7.00
+3, Braemar Hill, 9.00, 9.00
+3, Salarae, 9.00, 9.00
+3, Belle Flamme, 12.00, 12.00
+3, Pandie Pandie, 12.00, 12.00
+3, Smashing Success, 15.00, 17.00
+3, Hoffstadt, 18.00, 19.00
+3, Reve De Paris, 23.00, 23.00
+3, Paramount War, 26.00, 26.00
+3, Shiny Diamond, 41.00, 41.00
+3, Royal Zambezi, 81.00, 81.00
+3, Burrow, 81.00, 81.00
+3, Levate, SCR
+3, Shocko In Morocco, SCR
+3, Hot Pot Dot, SCR
