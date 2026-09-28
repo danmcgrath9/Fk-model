@@ -1,0 +1,44 @@
+# TAB fixed odds, screenshots Tue 29 Sep 4:06-4:07pm. race, horse, opening price, fixed price then
+1, Semantics, 2.70, 3.30
+1, Aroused, 3.70, 3.00
+1, Scoville, 7.50, 6.00
+1, Egyptian Dancer, 7.50, 7.50
+1, Masochistic, 10.00, 8.50
+1, Unkechaug, 9.50, 13.00
+1, Sabrina, 18.00, 12.00
+1, Nautique, 19.00, 31.00
+1, Model Gigi, 23.00, 23.00
+1, Epponnee Rae, 51.00, 126.00
+1, Hurricane Girl, 101.00, 151.00
+8, Blue Humma, 3.40, 3.40
+8, Bold Bordeaux, 5.00, 5.00
+8, Yolo, 8.00, 7.00
+8, Hotspur Reale, 7.50, 7.50
+8, Gina's A Star, 10.00, 9.00
+8, Romantic Miss, 10.00, 11.00
+8, Strong Box, 12.00, 13.00
+8, My Zephyr, 16.00, 17.00
+8, Walter Spur, 16.00, 17.00
+8, Fontalicious, 19.00, 19.00
+8, Nostra Bella, 23.00, 26.00
+8, Just Bolts, 26.00, 31.00
+8, Commands Success, 51.00, 51.00
+8, Cool As Ice, 61.00, 61.00
+8, Les Garcons, SCR
+8, Phoenix Flyer, SCR
+2, Tears Of Happiness, 4.20, 4.20
+2, Mehsun, 6.00, 6.00
+2, Lollies Galore, 7.00, 7.00
+2, Sisters Run, 7.50, 7.50
+2, Expensive Taste, 7.50, 7.50
+2, Obsidian Stone, 8.00, 9.00
+2, Courting, 9.00, 9.00
+2, Hakusan, 10.00, 12.00
+2, Unoyaself, 18.00, 21.00
+2, Under Control, 18.00, 21.00
+2, Aerostatique, 31.00, 34.00
+2, Rough Act, 41.00, 41.00
+2, Blanche Bass, 61.00, 61.00
+2, Grinding Away, 61.00, 81.00
+2, Empress Of China, SCR
+2, Debbie, SCR
