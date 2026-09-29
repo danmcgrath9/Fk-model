@@ -115,3 +115,24 @@ moves KL only 0.0848 to 0.0847, but as a filter on value bets (1 unit, opening p
 
 Lesson: judge an idea as a bet filter as well as by whole-market KL; a signal on one runner in eight cannot
 move KL and can still be the best bet type.
+
+## Where BSP is wrong (29 Sep 2026)
+
+Single inputs: 3,115 fifths of every input tested for winners vs BSP-expected on older and newer races; 12 were
+off by 8%+ the same way on both, against 18 expected by chance (simulated winners drawn from BSP). BSP prices every
+single input. Edges are combinations with a racing reason.
+
+Handicapping-book angles (Brohamer, Beyer, Quinn, Scott, Mordin, Ragozin, Cramer, Betfair AU) as filters on value
+20c+ bets. Picked on races before 6 May only (BSP ROI > +5%, 60+ bets): beaten by the pace, class drop by prize,
+already run to par, bounce after a new top, third-up, declining deep in prep, market liked it before a bad run, weight
+relief, back in trip after being handy, proven wet, class drop by rating, late 600 beyond tempo. Judged once on the
+untouched newer races:
+
+| value 20c+ and... | newer races bets | BSP | open |
+|---|---|---|---|
+| any picked angle (9.9 bets a meeting) | 1,768 | +15.3% (+/-11%) | +66.0% |
+| no picked angle | 942 | -24.0% | +12.9% |
+
+The angles sort the value bets: value without a racing reason is mostly the market being right. Several are the
+authors' "fade" angles, profitable as value bets: the market over-reacts to the story (bounce, decline, bad last run)
+and a form model does not.
