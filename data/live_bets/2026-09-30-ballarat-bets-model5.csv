@@ -56,3 +56,6 @@ race,race_id,horse,plan,price,price_open,model_price,value,stake,result,returned
 8,BRAT_300926_8,Yolo,value_20c,6.5,8.0,5.33,0.22,1.0,,
 8,BRAT_300926_8,Yolo,kelly_q_5c,6.5,8.0,5.33,0.22,1.0,,
 8,BRAT_300926_8,Commands Success,kelly_q_5c,41.0,51.0,38.7,0.06,0.04,,
+4,BRAT_300926_4,Venetian Choice,springboard,11.0,15.0,8.5,0.294,1.0,,
+6,BRAT_300926_6,Hydro Rush,springboard,34.0,18.0,24.1,0.411,1.0,,
+6,BRAT_300926_6,London Fields,springboard,51.0,22.0,20.31,1.51,1.0,,
