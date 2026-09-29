@@ -73,3 +73,27 @@ Tried with no gain: race-level temperature, recency-weighted training (worse), p
 encodings, jockey x trainer / horse x track / horse x distance / trainer first-up encodings, extra form
 features in the second stage. CatBoost QuerySoftMax as a fourth member: 0.0975 to 0.0969 on the lab
 split, not deployed.
+
+## The longer push (29 Sep 2026): holdout KL 0.0883 to 0.0848
+
+All scores are KL to BSP on races from 6 May (opening market 0.1365).
+
+| step | holdout KL |
+|---|---|
+| trees only, out of fold (what the first second stage was trained on) | 0.0940 |
+| + network out of fold (65/35) | 0.0918 |
+| + CatBoost QuerySoftMax out of fold (trees 0.5, net 0.3, CatBoost 0.2) | 0.0909 |
+| + second stage: BSP-gap encodings (horse, trainer, jockey, sire, trainer at track) | 0.0851 |
+| + stablemates, jockey gap vs the horse's last jockey, horse gap trend | **0.0848** |
+
+Found on the way: the first second stage was fitted on tree-only out-of-fold prices while it was applied to the
+three-way blend; it is now fitted on the blend it is applied to (`p_oof_blend3`, `stage2b_*`).
+Where the remaining distance is: 89% of the KL sits on the eventual BSP favourite; races with 3+ first starters
+(0.145) and 2yo races (0.126) are the hardest per race.
+
+No gain (lab split unless noted): BSP/SP blended labels (0.1015 vs 0.1009), past-market features from the
+last 10 runs (0.1042), bigger trees (0.1025), field-aware set network (0.1077 vs 0.1072), attention network
+(0.1099), second-stage trainer/sire first-starter and dam-sire gaps, a third stage on second-stage gaps (0.0874 vs
+0.0875 walk-forward), second-stage hyperparameters (all 0.0854 to 0.0855).
+
+Day pricing: `price_day2.py` (four models) then `apply_stage2b.py`.

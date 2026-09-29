@@ -33,3 +33,28 @@ def design(E, p, ri, nR):
     cen = lambda v: v - (np.bincount(ri, weights=v, minlength=nR) / np.maximum(cnt, 1))[ri]
     L = np.log(np.maximum(p, 1e-12))
     return np.column_stack([E, np.stack([cen(E[:, j]) for j in range(E.shape[1])], 1), cen(L), np.log(cnt[ri]), p]), L
+
+def extras(rd, ri, horse, trainer, jockey, last_jockey, p, jwin, res):
+    """stablemates (count, rank by our price, rank by jockey 12-month win %), the jockey's BSP gap against
+    the horse's last jockey's, and the horse's second-last gap, run count and trend. Rows see only earlier dates."""
+    trainer = np.asarray(trainer).astype(str); jockey = np.asarray(jockey).astype(str); horse = np.asarray(horse).astype(str)
+    key = np.char.add(np.asarray(ri).astype(str), np.char.add("|", trainer))
+    _, inv, cnts = np.unique(key, return_inverse=True, return_counts=True)
+    nstab = cnts[inv].astype(float); rk = np.zeros(len(ri)); jrk = np.zeros(len(ri))
+    for k in np.where(cnts > 1)[0]:
+        ix = np.where(inv == k)[0]
+        rk[ix[np.argsort(-p[ix])]] = np.arange(1, len(ix) + 1); jrk[ix[np.argsort(-jwin[ix])]] = np.arange(1, len(ix) + 1)
+    A = np.column_stack([nstab, rk, jrk, (rk == 1) & (nstab > 1), (jrk == 1) & (nstab > 1)]).astype(float)
+    known = np.isfinite(res); order = sorted(set(rd.tolist())); byd = [np.where(rd == d)[0] for d in order]
+    s, n = {}, {}; tv = np.zeros(len(ri)); lv = np.zeros(len(ri)); hist = {}; second = np.zeros(len(ri)); nruns = np.zeros(len(ri)); last = np.zeros(len(ri))
+    for ix in byd:
+        for i in ix:
+            tv[i] = s.get(jockey[i], 0) / (n.get(jockey[i], 0) + 5); lv[i] = s.get(last_jockey[i], 0) / (n.get(last_jockey[i], 0) + 5)
+            h = hist.get(horse[i], []); second[i] = h[-2] if len(h) >= 2 else 0; nruns[i] = len(h); last[i] = h[-1] / 2 if h else 0
+        for i in ix:
+            if not known[i]: continue
+            s[jockey[i]] = s.get(jockey[i], 0) + res[i]; n[jockey[i]] = n.get(jockey[i], 0) + 1; hist.setdefault(horse[i], []).append(res[i])
+    chg = (np.asarray(last_jockey) != jockey) & (np.asarray(last_jockey) != "")
+    Bk = np.column_stack([tv - lv, chg.astype(float), np.where(chg, tv - lv, 0)])
+    C = np.column_stack([second, nruns, last - second])
+    return A, Bk, C
