@@ -97,3 +97,21 @@ last 10 runs (0.1042), bigger trees (0.1025), field-aware set network (0.1077 vs
 0.0875 walk-forward), second-stage hyperparameters (all 0.0854 to 0.0855).
 
 Day pricing: `price_day2.py` (four models) then `apply_stage2b.py`.
+
+## Springboard: late speed beyond the tempo (29 Sep 2026, founder's idea)
+
+Raw last-600 vs class barely registered in the trees (ranks 250 to 650 of 743) because a slow tempo inflates
+the late split. Adjusted for the race's early tempo (mean run-to-600 vs class of every runner we hold from
+that race): last600 = -3.94 - 0.35 x tempo, and the residual is late speed beyond the tempo.
+Springboard = last race run in the top fifth of that residual (>= 4.21L) while rated at or below class.
+Next start, out of fold: wins vs our price 1.08, vs BSP 1.07 (4,136 runners). As a second-stage input it
+moves KL only 0.0848 to 0.0847, but as a filter on value bets (1 unit, opening price):
+
+| plan | bets | open | BSP | holdout open |
+|---|---|---|---|---|
+| value 20c+ | 7,111 | +38.7% | -1.6% | +47.4% |
+| value 20c+ and springboard | 914 | +63.4% | +16.7% | +86.6% |
+| value 20c+, not springboard | 6,197 | +35.1% | -4.3% | +42.4% |
+
+Lesson: judge an idea as a bet filter as well as by whole-market KL; a signal on one runner in eight cannot
+move KL and can still be the best bet type.
