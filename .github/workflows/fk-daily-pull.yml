@@ -45,6 +45,9 @@ on:
       exclude_run:
         description: "what-if: leave a horse's run out of every figure, NAME@YYYY-MM-DD (comma separated); writes a -whatif page, places no bets"
         default: ''
+      all_statuses:
+        description: 'yes = pull meetings Form King has not yet marked FINAL_FIELDS (e.g. still at WEIGHTS)'
+        default: 'no'
       odds_only:
         description: 'yes = only refresh the prices (one Meeting Summary per meeting, 5 credits) for the date(s) given, comma separated, and rebuild them'
         default: 'no'
@@ -117,6 +120,7 @@ jobs:
           [ -n "${{ github.event.inputs.track }}" ] && DATE_ARG="$DATE_ARG --track ${{ github.event.inputs.track }}"
           [ -n "${{ github.event.inputs.races }}" ] && DATE_ARG="$DATE_ARG --races ${{ github.event.inputs.races }}"
           [ -n "${{ github.event.inputs.horse }}" ] && DATE_ARG="$DATE_ARG --no-speedmaps --no-profiles --horse \"${{ github.event.inputs.horse }}\""
+          [ "${{ github.event.inputs.all_statuses }}" = "yes" ] && DATE_ARG="$DATE_ARG --all-statuses"
           eval python scripts/daily_pull.py --key ${{ steps.key.outputs.key }} --yes $DATE_ARG
 
       - name: Build reports
