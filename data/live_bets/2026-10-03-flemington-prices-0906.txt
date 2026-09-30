@@ -1,0 +1,156 @@
+# Form King average prices, 9:06am Thu 1 Oct (odds refresh, 5 credits a meeting). race, horse, opening, current. Emergencies and runners missing from the refreshed field listed SCR.
+1, Silent Intent, 2.80, 3.10
+1, Bella Divina, 6.00, 6.75
+1, Maalefushi, 8.50, 8.50
+1, Musandam, 11.00, 9.00
+1, Ankaa, 5.00, 4.40
+1, Capitano, SCR
+1, Proverb, 3.20, 4.00
+10, Home Rule, 17.00, 21.00
+10, Ten Commandments, 11.00, 5.75
+10, Steparty, 6.00, 8.50
+10, Fancify, 18.00, 15.00
+10, Cafe Millenium, 7.00, 8.00
+10, Amenable, 16.00, 15.00
+10, Cote Atlantique, 13.00, 16.00
+10, Just Party, 7.50, 9.00
+10, Zou Sensation, 19.00, 21.00
+10, Lord Of Biscay, 11.00, 14.00
+10, Just Folk, 15.00, 17.00
+10, Enxuto, 8.00, 7.50
+10, Wonder Boy, 26.00, 31.00
+10, Holymanz, 31.00, 26.00
+10, Lord Penman, 21.00, 31.00
+10, Aztec Ruler, 51.00, 81.00
+2, Kahhof, 23.00, 26.00
+2, Kaye Jay, 31.00, 29.00
+2, Thebelmontgangster, 5.50, 7.00
+2, Queen Christine, 16.00, 12.00
+2, Moby Dick, 14.00, 23.00
+2, Charming Nic, 16.50, 9.00
+2, Ruska Roma, 12.00, 15.00
+2, Silver Dagger, 34.00, 31.00
+2, Alero, 23.00, 21.00
+2, Quiseen, 23.00, 23.00
+2, World's My Oyster, 19.00, 31.00
+2, Cabriole, 5.00, 4.60
+2, Esmahli, 7.50, 6.50
+2, Rue De Royale, 14.00, 19.00
+2, King Tut, 8.50, 13.00
+2, Naval Academy, 17.00, 23.00
+3, Lepolo, 3.65, 3.60
+3, Arashi Flash, 21.00, 34.00
+3, Ko Phangan, 26.00, 23.00
+3, Cignetti, 11.00, 13.00
+3, Notified, 21.00, 31.00
+3, Icy You, 6.50, 18.00
+3, Miss Waititi, 31.00, 16.00
+3, Skua, 51.00, 23.00
+3, Corretto, 41.00, 71.00
+3, Vallice, 6.00, 6.00
+3, True Rebel, 8.00, 4.80
+3, Frank Whisper, 8.00, 26.00
+3, Aragog, 13.00, 9.50
+3, Melbourne Boy, 41.00, 34.00
+4, Autumn In Grinzing, 15.00, 15.00
+4, Autumn Lover, 13.00, 23.00
+4, Abaya, 41.00, 71.00
+4, Salann, 26.00, 41.00
+4, Leopard Shark, 61.00, 81.00
+4, Stipulation, 13.00, 7.50
+4, Joely, 26.00, 17.00
+4, Tolaga Bay, 17.00, 13.00
+4, Profligate, 5.00, 5.00
+4, Nikitria, 15.00, 27.00
+4, Crown Of Fire, 17.00, 41.00
+4, Saintly Dancer, 5.00, 6.50
+4, Oceans Fouroseven, 13.00, 15.00
+4, Beautiful You, 15.00, 16.00
+4, Portinari, 8.00, 6.50
+4, La Barrita, 17.00, 19.00
+5, Wrote To Arataki, 23.00, 29.00
+5, Pondalowie, 12.00, 19.00
+5, Gold Medallist, 16.50, 17.00
+5, Astral Flame, 14.50, 19.00
+5, Fireball Miss, 19.00, 26.00
+5, Abounding, 26.00, 12.00
+5, Gold Coast Belle, 4.50, 3.80
+5, Mareth, 10.00, 12.00
+5, Ole Dancer, 34.00, 41.00
+5, Tennessee Bound, 4.90, 5.50
+5, Shohisha, 34.00, 21.00
+5, Betwitchery, 51.00, 71.00
+5, Stylish, 17.50, 13.00
+5, On Display, 6.00, 9.00
+5, Merrigold, 23.00, 31.00
+5, Cilacap, 16.50, 23.00
+6, Stretan Ruler, 24.50, 34.00
+6, Buggsy, 21.00, 26.00
+6, Pocketfullofcash, 21.00, 21.00
+6, Over Excited, 5.50, 6.00
+6, Zambales, 41.00, 41.00
+6, The Next Episode, 4.40, 4.20
+6, Big Sky, 11.50, 13.00
+6, Mbube, 8.50, 10.00
+6, Alibaba, 66.00, 91.00
+6, Natural Fling, 2.40, 2.30
+6, Doubt Time, 31.00, 34.00
+7, Zarir, 81.00, 151.00
+7, Piggyback, 14.00, 13.00
+7, Onesmoothoperator, 34.00, 34.00
+7, Wootton Verni, 12.00, 11.00
+7, Valiant King, 34.00, 34.00
+7, Aethelwulf, 2.60, 2.70
+7, Berkeley Square, 17.00, 23.00
+7, Juja Kibo, 6.00, 5.50
+7, Highland Bling, 81.00, 101.00
+7, Litzdeel, 8.50, 10.00
+7, Newlook, 81.00, 126.00
+7, Mr Monaco, 19.00, 26.00
+7, Soulcombe, 19.00, 18.00
+7, Jennivamoose, 7.50, 9.00
+7, Okita Soushi, 126.00, 151.00
+7, Campaldino, 19.67, 23.00
+8, Zahrann, 11.00, 15.00
+8, Aeliana, 4.40, 4.00
+8, Light Infantry Man, 26.00, 41.00
+8, Cosmic Crusader, 6.50, 5.50
+8, Ohope Wins, 41.00, 91.00
+8, Middle Earth, 26.00, 51.00
+8, She's A Hustler, 19.00, 17.00
+8, Buckaroo, 11.00, 15.00
+8, Sir Delius, 3.40, 3.30
+8, Kings Valley, 81.00, 101.00
+8, Asterix, 51.00, 91.00
+8, Deakin, 41.00, 91.00
+8, Saint George, 11.00, 14.00
+8, Half Yours, 15.00, 17.00
+8, Soul Of Spain, 61.00, 101.00
+9, War Machine, 9.00, 10.00
+9, Desert Lightning, 18.00, 21.00
+9, Hedged, 7.00, 7.00
+9, Inkaruna, 9.00, 11.00
+9, Skybird, 5.45, 4.80
+9, Winnasedge, 17.00, 21.00
+9, Losesomewinmore, 11.00, 12.00
+9, De Bergerac, 21.00, 23.00
+9, Jenni The Fox, 26.00, 41.00
+9, King Zephyr, 15.00, 17.00
+9, Arkansaw Kid, 11.00, 11.00
+9, Jimmy Recard, 15.00, 19.00
+9, Enriched, 21.00, 19.00
+9, Smooth Chino, 5.50, 7.00
+10, Kaye Jay, SCR
+10, Roulette King, SCR
+2, Savilla, SCR
+2, Cooly, SCR
+2, Hankee Alpha, SCR
+2, Ivan's Hero, SCR
+5, Butternut Princess, SCR
+5, Beside The Ocean, SCR
+5, Illyivy, SCR
+5, Grand Omaha, SCR
+7, Tajanis, SCR
+7, Think Giant, SCR
+7, Beach Pad, SCR
+7, Suffolk Star, SCR
