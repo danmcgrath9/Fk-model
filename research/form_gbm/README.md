@@ -158,3 +158,16 @@ it is the model, not the live pipeline. `stage2.trials()` adds 13 trial-form inp
 inputs, so the full fix is trial form in the stage-1 models at the next retrain. Live: stage2d_train.py,
 apply_stage2d.py. score_meet.py scores any priced meeting against its results; subset_meet.py cuts a resulted
 meeting out of the history export so it can be re-priced through the day pipeline.
+
+## Model v5: stage 1 retrained with trial form and section splits (30 Sep 2026)
+
+F9 = the 743 F7 inputs + stage2.trials (13) + stage2.sections (13). Every stage-1 model re-fitted on it,
+same 5 date blocks, same settings (oof_f9.py, oof2_f9.py nn|cb, blend_f9.py 0.5/0.3/0.2), then stage 2 on
+the new blend (stage2e_*). Out-of-fold KL to BSP, all races: trees 0.0963 -> 0.0929, net -> 0.0980,
+CatBoost -> 0.0968, blend 0.0934 -> **0.0897**. Holdout (races from 6 May) with stage 2: live v4 0.0824 ->
+**0.0802** (the trial inputs add nothing in stage 2 once stage 1 has them). Out of sample through the day
+pipeline: Tatura 29 Sep 0.163 -> 0.156 (open 0.153), Kilmore 28 Sep 0.068 -> 0.069 (open 0.169); The Shyster
+$19.80 -> $10.97 (BSP $2.60), so trial form is still under-weighted for first starters.
+Day pricing: price_day3.py (asserts the day's input names equal F9_names.txt) then apply_stage2e.py with
+p_oof_blend9.npy. Final models all9_sm*, all9_rg*, cb_all9.cbm are too large for main: kept on the `models`
+branch, gzipped.
