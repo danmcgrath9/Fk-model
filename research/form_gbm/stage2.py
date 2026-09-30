@@ -91,3 +91,29 @@ def sections(S, sec_fields, P, past_fields, ri, nR):
         return np.where(fin, v - m[ri], np.nan)
     return np.column_stack([mid, midL, l2F, e8, f6, mid - overall, movefade, mid3, f63,
                             rrel(mid), rrel(mid3), rrel(f63), ok.astype(float)])
+
+
+def trials(P, past_fields, ri):
+    """Trial form (13 columns, tested 30 Sep 2026 after Tatura R1, a first-starter that had won its
+    last three trials priced $19.80 against a $2.60 BSP: holdout KL 0.0835 -> 0.0824). Race runs,
+    trials (a duplicated trial record, same days before, counted once), trial wins and placings,
+    wins in the last three trials, the last trial's finish, relative finish, days ago and field,
+    the same for horses with at most one race run, and the trial strike rate."""
+    f = {str(n): i for i, n in enumerate(past_fields)}; P = np.asarray(P, float); n = len(ri)
+    tr = P[:, :, f["trial"]] == 1; days = P[:, :, f["days_before"]]; fin = P[:, :, f["finish"]]; run = P[:, :, f["runners"]]
+    real = ~tr & np.isfinite(fin) & (fin > 0)
+    seen = np.zeros_like(tr)
+    for s in range(P.shape[1]):
+        dup = np.zeros(n, bool)
+        for t in range(s):
+            dup |= tr[:, t] & (days[:, t] == days[:, s])
+        seen[:, s] = tr[:, s] & np.isfinite(fin[:, s]) & (fin[:, s] > 0) & ~dup
+    nraces = real.sum(1); ntr = seen.sum(1)
+    twins = (seen & (fin == 1)).sum(1); tplace = (seen & (fin <= 3)).sum(1)
+    t3wins = (seen & (np.cumsum(seen, 1) <= 3) & (fin == 1)).sum(1)
+    j = np.argmax(seen, 1); ar = np.arange(n); has = seen[ar, j]
+    lfin = np.where(has, fin[ar, j], np.nan); lrel = np.where(has, (fin[ar, j] - 1) / np.maximum(run[ar, j] - 1, 1), np.nan)
+    ldays = np.where(has, days[ar, j], np.nan); lrun = np.where(has, run[ar, j], np.nan)
+    few = (nraces <= 1).astype(float)
+    return np.column_stack([nraces, ntr, twins, tplace, t3wins, lfin, lrel, ldays, lrun, few * twins, few * t3wins,
+                            few * np.nan_to_num(1 - lrel, nan=0.5), twins / np.maximum(ntr, 1)])

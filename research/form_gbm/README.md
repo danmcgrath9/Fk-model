@@ -146,3 +146,15 @@ last 600 vs class, middle minus the whole-run figure, a real-move-then-faded fla
 versions and a has-data flag. Holdout KL to BSP (races from 6 May): 0.0848 -> **0.0835** (t_sec_s2.py).
 As a standalone betting angle the fast middle was slightly over-bet next start (A/E 0.94 at BSP, t_sec.py);
 it helps as a model input, not as a bet on its own. Live: stage2c_train.py (400 rounds x 3 seeds) and apply_stage2c.py.
+
+## Stage 2 v4: trial form (30 Sep 2026)
+
+Found by scoring the first two meetings the models never trained on. Tatura 29 Sep: KL 0.179 against the
+opening market's 0.153, most of it Race 1, where The Shyster (first starter, won its last three trials) was
+$19.80 with us and $2.60 at BSP. Re-pricing Tatura from the history-format export gave the same numbers, so
+it is the model, not the live pipeline. `stage2.trials()` adds 13 trial-form inputs. Holdout KL 0.0835 ->
+**0.0824** (t_trial_s2.py). Out of sample: Tatura 0.179 -> 0.163 (open 0.153), Kilmore 28 Sep 0.090 -> 0.068
+(open 0.169). The Shyster only moves to $14.45: stage 2 adjusts stage 1's price, and stage 1 has no trial
+inputs, so the full fix is trial form in the stage-1 models at the next retrain. Live: stage2d_train.py,
+apply_stage2d.py. score_meet.py scores any priced meeting against its results; subset_meet.py cuts a resulted
+meeting out of the history export so it can be re-priced through the day pipeline.
