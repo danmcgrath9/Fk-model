@@ -110,6 +110,37 @@ def entry_extras(e: dict, sm_row: dict | None, tempo: dict | None) -> dict:
     return out
 
 
+# Every benchmarked section of each past run, in lengths against the class par, the leader
+# and the field (positive = faster). Kept apart from P (in S, named by SEC_FIELDS) so the
+# models already trained on P see exactly the inputs they were trained on.
+SEC_KEYS = ["S-8", "12-10", "10-8", "8-6", "6-4", "4-2", "2-F", "8-4", "S-6", "6-F", "4-F", "8-F"]
+SEC_METRICS = ["vsClass", "vsLeader", "vsField"]
+SEC_FIELDS = [f"{k}|{m}" for k in SEC_KEYS for m in SEC_METRICS]
+
+
+def past_sections(e: dict, race_date: str) -> np.ndarray:
+    """The same last N_PAST runs past_runs reads, newest first: [run, SEC_FIELDS]."""
+    arr = np.full((N_PAST, len(SEC_FIELDS)), np.nan, dtype=np.float32)
+    runs = []
+    for p in F.entry_past_events(e):
+        if str(p.get("scratched")).lower() == "true" or p.get("scratched") is True:
+            continue
+        d = F.past_event_date(p)
+        if not d or d >= race_date:
+            continue
+        runs.append((d, p))
+    runs.sort(key=lambda t: t[0], reverse=True)
+    for i, (_, p) in enumerate(runs[:N_PAST]):
+        b = F.past_event_benchmark(p) or {}
+        secs = b.get("sections") if isinstance(b.get("sections"), dict) else {}
+        for j, name in enumerate(SEC_FIELDS):
+            k, m = name.split("|")
+            v = num((secs.get(k) or {}).get(m)) if isinstance(secs.get(k), dict) else None
+            if v is not None:
+                arr[i, j] = v
+    return arr
+
+
 def past_ids(e: dict, race_date: str) -> tuple[list[str], list[str]]:
     """(race ids, jockey names) of the same last N_PAST runs past_runs reads, newest first."""
     runs = []
@@ -211,7 +242,7 @@ def main() -> None:
     races.sort(key=lambda r: (r.date, r.race_id))
     print(f"{len(races)} races" + ("" if a.date else " with BSP and a winner"), flush=True)
 
-    recs, pasts, meta = [], [], []
+    recs, pasts, meta, secs = [], [], [], []
     past_race_ids, past_jockeys, jockeys, trainers = [], [], [], []
     sires, dam_sires, locs = [], [], []
     xkeys, extra_keys = set(), set()
@@ -227,6 +258,7 @@ def main() -> None:
             extra_keys |= set(raw) | set(ex)
             recs.append((ri, r, raw, ex))
             pasts.append(past_runs(e, str(race.date)[:10], race.track))
+            secs.append(past_sections(e, str(race.date)[:10]))
             ids, jk = past_ids(e, str(race.date)[:10])
             past_race_ids.append(ids); past_jockeys.append(jk); jockeys.append(str(e.get("jockey") or ""))
             trainers.append(str(e.get("trainer") or ""))
@@ -253,6 +285,7 @@ def main() -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
         out, X=X, cols=np.array(xcols + ecols), P=np.stack(pasts), past_fields=np.array(PAST_FIELDS),
+        S=np.stack(secs) if secs else np.zeros((0, N_PAST, len(SEC_FIELDS)), np.float32), sec_fields=np.array(SEC_FIELDS),
         race_idx=np.array([t[0] for t in recs], dtype=np.int32),
         horse_id=np.array([t[1].horse_id for t in recs]), name=np.array([t[1].name for t in recs]),
         bsp=np.array([t[1].bsp or np.nan for t in recs], dtype=np.float64),
