@@ -275,12 +275,24 @@ def main() -> None:
                 db.upsert("races", ["race_id"], dict(
                     race_id=rid, meeting_id=race_meeting[rid], race_number=F.race_number(payload), race_name=F.race_name(payload),
                     distance_m=F.race_distance(payload), raw=race_without_entries(payload), fetched_at=at))
+                field_now: list[str] = []
                 for e in F.race_entries(payload):
                     hid = store_entry(db, rid, e, at)
+                    field_now.append(hid)
                     horses_on_cards[hid] = F.horse_name(e)
                     if not a.no_past_events:
                         store_past_events(db, hid, F.entry_past_events(e), at)
                 ok_races += 1
+                db.commit()
+                # A race first pulled at nominations or weights holds every horse nominated;
+                # once the field is final, the ones that did not accept (and any scratched,
+                # which Race Form leaves out) are no longer in the response. They are dropped
+                # here, or the report and the export would price a 45-horse "field".
+                if field_now:
+                    gone = db.conn.execute("delete from fk.entries where race_id = %s and not (horse_id = any(%s))",
+                                           (rid, field_now)).rowcount
+                    if gone:
+                        print(f"  race {F.race_number(payload)}: {gone} entries no longer in the field removed")
             db.commit()
     finally:
         client.allow_live = False
