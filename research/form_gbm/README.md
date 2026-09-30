@@ -136,3 +136,13 @@ untouched newer races:
 The angles sort the value bets: value without a racing reason is mostly the market being right. Several are the
 authors' "fade" angles, profitable as value bets: the market over-reacts to the story (bounce, decline, bad last run)
 and a form model does not.
+
+## Stage 2 v3: section splits (30 Sep 2026)
+
+Form King's section splits (lengths vs class, leader and field for each 200m and the 800-400) now come through the
+export in `S` / `sec_fields`, kept apart from `P` so stage 1 sees exactly what it was trained on. `stage2.sections()`
+turns the last race runs into 13 inputs: middle (800-400) vs class and vs leader, last 200 vs field, start-800 and
+last 600 vs class, middle minus the whole-run figure, a real-move-then-faded flag, three-run means, race-relative
+versions and a has-data flag. Holdout KL to BSP (races from 6 May): 0.0848 -> **0.0835** (t_sec_s2.py).
+As a standalone betting angle the fast middle was slightly over-bet next start (A/E 0.94 at BSP, t_sec.py);
+it helps as a model input, not as a bet on its own. Live: stage2c_train.py (400 rounds x 3 seeds) and apply_stage2c.py.

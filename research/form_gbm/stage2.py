@@ -58,3 +58,36 @@ def extras(rd, ri, horse, trainer, jockey, last_jockey, p, jwin, res):
     Bk = np.column_stack([tv - lv, chg.astype(float), np.where(chg, tv - lv, 0)])
     C = np.column_stack([second, nruns, last - second])
     return A, Bk, C
+
+
+SEC_NEED = ["8-4|vsClass", "8-4|vsLeader", "2-F|vsField", "S-8|vsClass", "6-F|vsClass"]
+
+
+def sections(S, sec_fields, P, past_fields, ri, nR):
+    """Form King section splits of the last race runs (13 columns, tested 30 Sep 2026: holdout KL
+    0.0848 -> 0.0835): the last race run's 800-400 vs class and vs leader, last 200 vs field,
+    start-800 and last 600 vs class, how much better the middle was than the whole run, the
+    real-move-then-faded flag, the mean of up to three runs for middle and last 600, three of
+    those relative to the race, and whether the horse has any section data at all."""
+    SF = {str(n): i for i, n in enumerate(sec_fields)}; f = {str(n): i for i, n in enumerate(past_fields)}
+    S = np.asarray(S, float); P = np.asarray(P, float); n = len(ri); ar = np.arange(n)
+    tr = P[:, :, f["trial"]] == 1
+    has = ~tr & np.isfinite(S[:, :, SF["8-4|vsClass"]])
+    j = np.argmax(has, 1); ok = has[ar, j]
+    g = lambda k: np.where(ok, S[ar, j, SF[k]], np.nan)
+    def mean3(k):
+        v = np.where(has, S[:, :, SF[k]], np.nan)
+        rank = np.cumsum(np.isfinite(v), 1)
+        v = np.where(np.isfinite(v) & (rank <= 3), v, np.nan)
+        c = np.isfinite(v).sum(1)
+        return np.where(c > 0, np.nansum(v, 1) / np.maximum(c, 1), np.nan)
+    mid, midL, l2F, e8, f6 = (g(k) for k in SEC_NEED)
+    overall = np.where(ok, P[ar, j, f["vsClass"]], np.nan)
+    movefade = np.where(ok, ((midL >= 1.0) & (l2F <= -1.0)).astype(float), np.nan)
+    mid3, f63 = mean3("8-4|vsClass"), mean3("6-F|vsClass")
+    def rrel(v):
+        fin = np.isfinite(v)
+        m = np.bincount(ri, weights=np.where(fin, v, 0), minlength=nR) / np.maximum(np.bincount(ri, weights=fin, minlength=nR), 1)
+        return np.where(fin, v - m[ri], np.nan)
+    return np.column_stack([mid, midL, l2F, e8, f6, mid - overall, movefade, mid3, f63,
+                            rrel(mid), rrel(mid3), rrel(f63), ok.astype(float)])
