@@ -241,6 +241,8 @@ def simulate(projs: list[Projection], n: int = 20000, seed: int = 7) -> dict[str
     """Run the race n times: each figure drawn around its projection; wins and places (top 3)."""
     rng = random.Random(seed)
     live = [q for q in projs if q.projected is not None and q.sd]
+    if not live:
+        return {}                       # no runner has a projection yet (e.g. weights-stage fields): nothing to simulate
     wins = {q.horse_id: 0 for q in live}
     places = {q.horse_id: 0 for q in live}
     for _ in range(n):
