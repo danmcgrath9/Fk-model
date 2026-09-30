@@ -22,6 +22,7 @@ class Settings:
     database_url: str | None
     ledger_path: Path
     monthly_credits: int
+    period_start_day: int
     credits_overrides_path: Path
 
     @property
@@ -53,5 +54,8 @@ def load_settings(env_file: str | os.PathLike | None = None) -> Settings:
         database_url=env("DATABASE_URL") or None,
         ledger_path=path("FK_LEDGER_PATH", "credits.sqlite"),
         monthly_credits=int(env("FK_MONTHLY_CREDITS", "20000")),
+        # The allowance resets on the day of the month the subscription invoice was paid
+        # (11 Sep 2026 for this account), not on the 1st.
+        period_start_day=int(env("FK_PERIOD_START_DAY", "11")),
         credits_overrides_path=path("FK_CREDITS_PATH", "credits.yaml"),
     )

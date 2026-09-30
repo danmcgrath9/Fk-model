@@ -6,9 +6,14 @@ Two backends with one interface:
     every job): Ledger.postgres(database_url), table fk.credit_ledger from
     sql/002_credit_ledger_and_reports.sql
 
-The balance is derived (allowance less the month's live spend, plus any reconciliation
-adjustments), never stored as a mutable counter, so it cannot drift from the rows that
-explain it. Test-key calls are recorded but never charged: key_kind='test'.
+The balance is derived (allowance less the billing period's live spend, plus any
+reconciliation adjustments), never stored as a mutable counter, so it cannot drift from
+the rows that explain it. Test-key calls are recorded but never charged: key_kind='test'.
+
+The allowance resets on the subscription's billing day, not the 1st (FK_PERIOD_START_DAY,
+the day of the month the invoice was paid; 11 for this account). Spend is summed over the
+period by timestamp, so rows written when the ledger assumed calendar months still land in
+the right period. A period is keyed by the month it starts in: "2026-09" is 11 Sep to 10 Oct.
 """
 from __future__ import annotations
 
@@ -41,6 +46,21 @@ def _utc_now() -> datetime:
     return datetime.now(timezone.utc)
 
 
+def period_bounds(key_or_dt: str | datetime | None, start_day: int) -> tuple[str, datetime, datetime]:
+    """(key, start, end) of the billing period holding a moment, or named by its key "YYYY-MM"
+    (the month it starts in). Bounds are UTC midnights on start_day."""
+    if isinstance(key_or_dt, str):
+        y, m = int(key_or_dt[:4]), int(key_or_dt[5:7])
+    else:
+        dt = key_or_dt or _utc_now()
+        y, m = dt.year, dt.month
+        if dt.day < start_day:
+            y, m = (y - 1, 12) if m == 1 else (y, m - 1)
+    start = datetime(y, m, start_day, tzinfo=timezone.utc)
+    ny, nm = (y + 1, 1) if m == 12 else (y, m + 1)
+    return f"{y:04d}-{m:02d}", start, datetime(ny, nm, start_day, tzinfo=timezone.utc)
+
+
 @dataclass(frozen=True)
 class LedgerRow:
     id: int
@@ -60,8 +80,10 @@ class LedgerRow:
 class Ledger:
     """Construct with a SQLite path, or use Ledger.postgres(url)."""
 
-    def __init__(self, path: str | Path | None = None, monthly_allowance: int = 20000, *, _pg_conn: Any = None):
+    def __init__(self, path: str | Path | None = None, monthly_allowance: int = 20000, *, _pg_conn: Any = None,
+                 period_start_day: int = 1):
         self.monthly_allowance = monthly_allowance
+        self.period_start_day = period_start_day
         if _pg_conn is not None:
             self.conn = _pg_conn
             self.table = "fk.credit_ledger"
@@ -77,9 +99,15 @@ class Ledger:
             self.ph = "?"
 
     @classmethod
-    def postgres(cls, database_url: str, monthly_allowance: int = 20000) -> "Ledger":
+    def postgres(cls, database_url: str, monthly_allowance: int = 20000, period_start_day: int = 1) -> "Ledger":
         from .pg import connect
-        return cls(None, monthly_allowance, _pg_conn=connect(database_url, autocommit=False))
+        return cls(None, monthly_allowance, _pg_conn=connect(database_url, autocommit=False), period_start_day=period_start_day)
+
+    def period(self, key_or_dt: str | datetime | None = None) -> tuple[str, datetime, datetime]:
+        return period_bounds(key_or_dt, self.period_start_day)
+
+    def _ts(self, dt: datetime) -> Any:
+        return dt if self.is_postgres else dt.isoformat(timespec="seconds")
 
     @property
     def is_postgres(self) -> bool:
@@ -108,7 +136,7 @@ class Ledger:
     ) -> int:
         at = at or _utc_now()
         values = (
-            at.isoformat(timespec="seconds"), at.strftime("%Y-%m"), key_kind, operation, method, path,
+            at.isoformat(timespec="seconds"), self.period(at)[0], key_kind, operation, method, path,
             json.dumps(params or {}, sort_keys=True, default=str), http_status, int(credits), note,
         )
         cols = "(ts, month, key_kind, operation, method, path, params, http_status, credits, note)"
@@ -128,9 +156,10 @@ class Ledger:
     # ---- reads -----------------------------------------------------------------
 
     def spent(self, month: str | None = None) -> int:
-        month = month or _utc_now().strftime("%Y-%m")
+        _, start, end = self.period(month)
         row = self._run(
-            f"select coalesce(sum(credits),0) from {self.table} where month=? and key_kind in ('live','adjust')", (month,)
+            f"select coalesce(sum(credits),0) from {self.table} where ts >= ? and ts < ? and key_kind in ('live','adjust')",
+            (self._ts(start), self._ts(end)),
         ).fetchone()
         return int(row[0])
 
@@ -141,13 +170,15 @@ class Ledger:
         q = f"select id, ts, month, key_kind, operation, method, path, params, http_status, credits, note from {self.table}"
         args: tuple = ()
         if month:
-            q += " where month=?"
-            args = (month,)
+            _, start, end = self.period(month)
+            q += " where ts >= ? and ts < ?"
+            args = (self._ts(start), self._ts(end))
         q += " order by id"
         out: list[LedgerRow] = []
         running: dict[str, int] = {}
         for r in self._run(q, args).fetchall():
-            m, kind, credits = r[2], r[3], r[9]
+            ts = r[1] if isinstance(r[1], datetime) else datetime.fromisoformat(str(r[1]))
+            m, kind, credits = self.period(ts)[0], r[3], r[9]
             bal = None
             if kind in ("live", "adjust"):
                 running[m] = running.get(m, 0) + credits
@@ -163,14 +194,14 @@ class Ledger:
         return out[-limit:] if limit else out
 
     def summary(self, month: str | None = None) -> dict[str, Any]:
-        month = month or _utc_now().strftime("%Y-%m")
+        month, start, end = self.period(month)
         by_op = self._run(
-            f"select operation, key_kind, count(*), sum(credits) from {self.table} where month=? "
+            f"select operation, key_kind, count(*), sum(credits) from {self.table} where ts >= ? and ts < ? "
             "group by operation, key_kind order by operation",
-            (month,),
+            (self._ts(start), self._ts(end)),
         ).fetchall()
         return {
-            "month": month,
+            "month": f"{month} (billing period {start:%d %b} to {end:%d %b})",
             "allowance": self.monthly_allowance,
             "spent": self.spent(month),
             "balance": self.balance(month),

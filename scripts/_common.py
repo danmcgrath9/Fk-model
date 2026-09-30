@@ -49,8 +49,8 @@ def open_ledger(settings: Settings) -> Ledger:
     if os.environ.get("FK_LEDGER", "sqlite").lower() == "postgres":
         if not settings.database_url:
             sys.exit("FK_LEDGER=postgres but DATABASE_URL is not set")
-        return Ledger.postgres(settings.database_url, settings.monthly_credits)
-    return Ledger(settings.ledger_path, settings.monthly_credits)
+        return Ledger.postgres(settings.database_url, settings.monthly_credits, settings.period_start_day)
+    return Ledger(settings.ledger_path, settings.monthly_credits, period_start_day=settings.period_start_day)
 
 
 def make_client(key: str, settings: Settings, spec: Spec, costs: CostTable, ledger: Ledger, allow_live: bool) -> FormKingClient:
