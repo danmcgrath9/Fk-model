@@ -64,6 +64,16 @@ def main() -> None:
               f"  race rating {r.get('raceRating')}  expected {r.get('expected')}  vs class {r.get('vsClass')}"
               f"  speed {r.get('speedRating')}  finishing speed {r.get('finishingSpeed')}  ranks {r.get('ranks')}"
               f"  {'verified' if r.get('trackSpeedVerified') else 'unverified'}")
+        b = p.get("benchmark") or {}
+        if b:
+            pir = [(k, b.get(k)) for k in ("pir12", "pir10", "pir8", "pir6", "pir4", "pir2") if b.get(k) is not None]
+            print(f"      stage {b.get('dataStage')}  positions " + "  ".join(f"{k[3:]}00m {v}" for k, v in pir))
+        order = ["S-12", "12-10", "10-8", "8-6", "6-4", "4-2", "2-F", "S-10", "S-8", "S-6", "S-4", "8-4", "12-F", "10-F", "8-F", "6-F", "4-F"]
+        secs = b.get("sections") or {}
+        for key in sorted(secs, key=lambda k: order.index(k) if k in order else 99):
+            v = secs[key]
+            print(f"      {key:6} vs leader {v.get('vsLeader'):+6.2f}L  vs field {v.get('vsField'):+6.2f}L  vs winner {v.get('vsWinner'):+6.2f}L"
+                  f"  vs class {v.get('vsClass'):+6.2f}L" + (f"  race rank {v['raceRank']}" if v.get('raceRank') else ""))
     print(f"ledger balance {ledger.balance()}")
 
 
