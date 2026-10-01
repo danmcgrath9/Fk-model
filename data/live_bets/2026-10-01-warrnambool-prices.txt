@@ -1,0 +1,81 @@
+# Form King average prices from the morning odds refresh (fk-results, about 10:20am Thu 1 Oct). race, horse, opening, current. Emergencies and runners with no price listed SCR.
+1, Pitman, 5.50, 7.50
+1, Heidi High, 7.50, 16.00
+1, Welkin Star, 19.00, 26.00
+1, Aurelio, 41.00, 71.00
+1, All Moonlite, 3.80, 5.00
+1, Chercover's Award, 34.00, 71.00
+1, Endless Fury, 10.00, 4.60
+1, Enchilada, 2.60, 1.80
+1, The Noble Steed, 71.00, 126.00
+1, Conjurer, 71.00, 126.00
+2, Black Peppermint, 3.90, 2.70
+2, Octahedron, 10.00, 11.00
+2, Final Impact, SCR
+2, Motiver, 7.50, 8.50
+2, Hemi Two Barrell, 5.50, 7.50
+2, Reddivo, 5.00, 6.00
+2, Legend Beast, 12.00, 13.00
+2, Smokin' Rohie, SCR
+2, Matthew Mark, 7.50, 8.00
+2, Goondiwindi, SCR
+2, Smiling Assassin, 34.00, 13.00
+3, Vulcana, 8.00, 6.00
+3, Jool Of The Bool, 26.00, 16.00
+3, Normandy Peace, 34.00, 51.00
+3, Thermic, 6.00, 5.50
+3, Tuscan Rose, 2.00, 1.55
+3, Captuzy, 51.00, 61.00
+3, Rose Milla, 6.00, 8.50
+4, Cool Aza Breeze, 4.60, 5.50
+4, Mr Cicconi, 3.60, 4.80
+4, Imminent Touch, 151.00, 151.00
+4, Rakiynn, 15.00, 9.50
+4, Tikiela, 11.00, 13.00
+4, Semper Augustus, 8.00, 11.00
+4, Symphony Sista, 15.00, 15.00
+4, Pastoral King, 5.00, 3.30
+4, Iron Stupa, 5.00, 5.00
+5, Billie Bronx, 18.00, 10.00
+5, Celibate, 3.80, 3.10
+5, Break The Taboo, 18.00, 10.00
+5, Secret Hell, 16.00, 8.50
+5, Artistic Genius, 12.00, 5.50
+5, Powering Away, 18.00, 12.00
+5, Singles Moment, 7.50, 7.50
+5, World Action, 18.00, 7.00
+5, Raven's Silver, 23.00, 13.00
+6, Edges Diamond, 22.00, 13.00
+6, Romantic Miss, 5.75, 3.10
+6, Succaforyou, 8.25, 8.50
+6, Fileeta, 15.50, 11.00
+6, Money Honey, 3.60, 5.50
+6, Nordic Strike, 4.10, 3.50
+6, Forever With Ned, 11.50, 8.00
+6, Unique Poet, 56.00, 61.00
+7, Crossoverkid, SCR
+7, Haiiro, 6.50, 14.00
+7, Hoodys Horse, 19.00, 17.00
+7, Overpriced, 10.00, 8.50
+7, Thoughtful, 7.50, 15.00
+7, Philharmonic, 18.00, 9.50
+7, Both Sides Now, 16.00, 7.50
+7, Hill Cry, 10.00, 14.00
+7, Charlecote Mill, SCR
+7, Parkrun, SCR
+7, Sheer Lunacy, 21.00, 41.00
+7, Governor King, 10.00, 9.00
+7, Unamerican, 21.00, 51.00
+7, Just My Lot, 2.95, 5.00
+8, The Quiet Immortal, 9.50, 8.50
+8, Shades Of Stardom, 10.00, 13.00
+8, Albanian I Am, 18.00, 13.00
+8, Mr Sioux, 4.20, 5.00
+8, Invisible Magic, 3.50, 3.70
+8, Spanish Snitzel, 71.00, 51.00
+8, Brroosha, 34.00, 21.00
+8, Pick A Symphony, 10.00, 11.00
+8, Milady, 34.00, 26.00
+8, Victory Tune, 10.00, 5.50
+8, A Blue Star, 101.00, 151.00
+8, Imminent Storm, 23.00, 10.00
