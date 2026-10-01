@@ -1,0 +1,25 @@
+race,race_id,horse,plan,price,price_now,model_price,value,angles,stake,hurdle,result,returned,fs_backed_race
+1,CRAN_021026_1,In A Tizzy,top_pick,2.75,2.3,3.29,-0.164,Beaten by the pace last start; Already run to today's class; Class drop (rating),1.0,no,,,no
+1,CRAN_021026_1,Armorware,EDGE,10.0,9.5,7.74,0.291,Beaten by the pace last start; Late 600 beyond the tempo,1.0,no,,,no
+1,CRAN_021026_1,Armorware,value_20c,10.0,9.5,7.74,0.291,Beaten by the pace last start; Late 600 beyond the tempo,1.0,no,,,no
+1,CRAN_021026_1,Home And A Bay,EDGE,32.5,26.0,10.87,1.991,Class drop (rating); Late 600 beyond the tempo,1.0,no,,,no
+1,CRAN_021026_1,Home And A Bay,value_20c,32.5,26.0,10.87,1.991,Class drop (rating); Late 600 beyond the tempo,1.0,no,,,no
+2,CRAN_021026_2,Model Gigi,EDGE,12.0,9.0,7.52,0.595,Beaten by the pace last start; Already run to today's class,1.0,no,,,no
+2,CRAN_021026_2,Model Gigi,value_20c,12.0,9.0,7.52,0.595,Beaten by the pace last start; Already run to today's class,1.0,no,,,no
+2,CRAN_021026_2,Mr Sapphire,value_20c,34.0,21.0,20.36,0.67,,1.0,no,,,no
+2,CRAN_021026_2,Valaroso,top_pick,4.2,2.9,3.55,0.185,New career-best last start,1.0,no,,,no
+3,CRAN_021026_3,Two Wolves,top_pick,5.5,4.6,6.4,-0.141,"Third-up, improving; Class drop (rating)",1.0,no,,,no
+3,CRAN_021026_3,Fridge Monster,value_20c,13.0,9.5,7.11,0.829,,1.0,no,,,no
+4,CRAN_021026_4,The Speed Machine,top_pick,3.9,3.4,3.97,-0.017,Already run to today's class; Well backed before a bad last run,1.0,no,,,no
+5,CRAN_021026_5,Parcae,EDGE,5.0,3.6,3.68,0.357,Late 600 beyond the tempo,1.0,no,,,no
+5,CRAN_021026_5,Parcae,value_20c,5.0,3.6,3.68,0.357,Late 600 beyond the tempo,1.0,no,,,no
+5,CRAN_021026_5,Headbanger,top_pick,2.6,2.8,3.11,-0.163,Already run to today's class,1.0,no,,,no
+6,CRAN_021026_6,Melek,EDGE,4.4,4.0,3.1,0.42,"Third-up, improving",1.0,no,,,no
+6,CRAN_021026_6,Melek,value_20c,4.4,4.0,3.1,0.42,"Third-up, improving",1.0,no,,,no
+6,CRAN_021026_6,Melek,top_pick,4.4,4.0,3.1,0.42,"Third-up, improving",1.0,no,,,no
+7,CRAN_021026_7,Happy Link,EDGE,10.0,5.5,7.26,0.377,Beaten by the pace last start; Late 600 beyond the tempo,1.0,no,,,no
+7,CRAN_021026_7,Happy Link,value_20c,10.0,5.5,7.26,0.377,Beaten by the pace last start; Late 600 beyond the tempo,1.0,no,,,no
+7,CRAN_021026_7,Cashout,top_pick,3.1,2.7,4.87,-0.363,Already run to today's class,1.0,no,,,no
+7,CRAN_021026_7,Mount Sabyinyo,EDGE,21.0,23.0,15.73,0.335,Well backed before a bad last run,1.0,no,,,no
+7,CRAN_021026_7,Mount Sabyinyo,value_20c,21.0,23.0,15.73,0.335,Well backed before a bad last run,1.0,no,,,no
+8,CRAN_021026_8,The Volta,top_pick,5.0,4.8,4.62,0.081,Beaten by the pace last start; Well backed before a bad last run; Late 600 beyond the tempo,1.0,no,,,no
