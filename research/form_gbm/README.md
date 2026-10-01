@@ -171,3 +171,11 @@ $19.80 -> $10.97 (BSP $2.60), so trial form is still under-weighted for first st
 Day pricing: price_day3.py (asserts the day's input names equal F9_names.txt) then apply_stage2e.py with
 p_oof_blend9.npy. Final models all9_sm*, all9_rg*, cb_all9.cbm are too large for main: kept on the `models`
 branch, gzipped.
+
+## Deductions (1 Oct 2026)
+
+Paper bets struck at the opening price settle at the price after bookmaker deductions for runners scratched after
+the open. The user's bookmaker applies the deduction to the WHOLE price: $10 with a 50c deduction pays $5 (4u profit
+per unit), i.e. effective price = open x (1 - deduction), not 1 + (open - 1) x (1 - deduction). Each race's deduction
+comes from scripts/scratch_report.py (sum of 1/price of runners scratched after a price was quoted, under 2.5c ignored,
+capped at 75c; emergencies that never gained a start do not count). BSP settlement needs no deduction.
