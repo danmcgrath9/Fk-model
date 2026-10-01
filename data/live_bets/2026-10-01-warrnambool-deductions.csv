@@ -1,9 +1,9 @@
-race,deduction
-1,0.000
-2,0.154
-3,0.000
-4,0.062
-5,0.482
-6,0.361
-7,0.078
-8,0.118
+race,deduction,source
+1,0.000,estimate: scratched runners latest FK price
+2,0.154,estimate: scratched runners latest FK price
+3,0.000,estimate: scratched runners latest FK price
+4,0.062,estimate: scratched runners latest FK price
+5,0.310,bookmaker (user)
+6,0.361,estimate: scratched runners latest FK price
+7,0.078,estimate: scratched runners latest FK price
+8,0.118,estimate: scratched runners latest FK price

@@ -13,15 +13,15 @@ race,race_id,horse,plan,price,price_now_1020,model_price,value,angles,stake,hurd
 4,WNBL_011026_4,Rakiynn,value_20c,15.0,9.5,9.53,0.575,Already run to today's class,1.0,no,,,0.062,14.07,0.476
 4,WNBL_011026_4,Tikiela,EDGE,11.0,13.0,8.92,0.234,Already run to today's class; New career-best last start,1.0,no,,,0.062,10.32,0.157
 4,WNBL_011026_4,Tikiela,value_20c,11.0,13.0,8.92,0.234,Already run to today's class; New career-best last start,1.0,no,,,0.062,10.32,0.157
-5,WNBL_011026_5,Celibate,EDGE,3.8,3.1,3.06,0.241,Class drop (rating),1.0,no,,,0.482,1.97,-0.357
-5,WNBL_011026_5,Celibate,value_20c,3.8,3.1,3.06,0.241,Class drop (rating),1.0,no,,,0.482,1.97,-0.357
-5,WNBL_011026_5,Celibate,top_pick,3.8,3.1,3.06,0.241,Class drop (rating),1.0,no,,,0.482,1.97,-0.357
-5,WNBL_011026_5,Secret Hell,value_20c,16.0,8.5,8.63,0.854,,1.0,no,,,0.482,8.29,-0.040
-5,WNBL_011026_5,Artistic Genius,value_20c,12.0,5.5,9.14,0.313,,1.0,no,,,0.482,6.22,-0.320
-5,WNBL_011026_5,Powering Away,EDGE,18.0,12.0,13.42,0.342,Declining deep in prep,1.0,no,,,0.482,9.32,-0.305
-5,WNBL_011026_5,Powering Away,value_20c,18.0,12.0,13.42,0.342,Declining deep in prep,1.0,no,,,0.482,9.32,-0.305
-5,WNBL_011026_5,World Action,EDGE,18.0,7.0,7.64,1.356,Beaten by the pace last start,1.0,no,,,0.482,9.32,0.220
-5,WNBL_011026_5,World Action,value_20c,18.0,7.0,7.64,1.356,Beaten by the pace last start,1.0,no,,,0.482,9.32,0.220
+5,WNBL_011026_5,Celibate,EDGE,3.8,3.1,3.06,0.241,Class drop (rating),1.0,no,,,0.310,2.62,-0.143
+5,WNBL_011026_5,Celibate,value_20c,3.8,3.1,3.06,0.241,Class drop (rating),1.0,no,,,0.310,2.62,-0.143
+5,WNBL_011026_5,Celibate,top_pick,3.8,3.1,3.06,0.241,Class drop (rating),1.0,no,,,0.310,2.62,-0.143
+5,WNBL_011026_5,Secret Hell,value_20c,16.0,8.5,8.63,0.854,,1.0,no,,,0.310,11.04,0.279
+5,WNBL_011026_5,Artistic Genius,value_20c,12.0,5.5,9.14,0.313,,1.0,no,,,0.310,8.28,-0.094
+5,WNBL_011026_5,Powering Away,EDGE,18.0,12.0,13.42,0.342,Declining deep in prep,1.0,no,,,0.310,12.42,-0.075
+5,WNBL_011026_5,Powering Away,value_20c,18.0,12.0,13.42,0.342,Declining deep in prep,1.0,no,,,0.310,12.42,-0.075
+5,WNBL_011026_5,World Action,EDGE,18.0,7.0,7.64,1.356,Beaten by the pace last start,1.0,no,,,0.310,12.42,0.626
+5,WNBL_011026_5,World Action,value_20c,18.0,7.0,7.64,1.356,Beaten by the pace last start,1.0,no,,,0.310,12.42,0.626
 6,WNBL_011026_6,Edges Diamond,EDGE,22.0,13.0,9.51,1.314,"Third-up, improving; Class drop (rating)",1.0,no,,,0.361,14.06,0.478
 6,WNBL_011026_6,Edges Diamond,value_20c,22.0,13.0,9.51,1.314,"Third-up, improving; Class drop (rating)",1.0,no,,,0.361,14.06,0.478
 6,WNBL_011026_6,Nordic Strike,top_pick,4.1,3.5,3.67,0.118,,1.0,no,,,0.361,2.62,-0.286
