@@ -179,3 +179,12 @@ the open. The user's bookmaker applies the deduction to the WHOLE price: $10 wit
 per unit), i.e. effective price = open x (1 - deduction), not 1 + (open - 1) x (1 - deduction). Each race's deduction
 comes from scripts/scratch_report.py (sum of 1/price of runners scratched after a price was quoted, under 2.5c ignored,
 capped at 75c; emergencies that never gained a start do not count). BSP settlement needs no deduction.
+
+## Rule: no EDGE in a race with a backed first-starter (1 Oct 2026)
+
+After Pastoral King (Warrnambool R4, first starter, $5 to $3.30, won by 8L; model $8.19) and The Shyster (Tatura R1).
+Value 20c+ bets on other horses, by race type (p_oof_blend9, all races): no first-starter +53% at open / -1% at BSP
+(5,468 bets); only first-starters over $6 +59% / +6% (924); a first-starter at $6 or shorter at the open +12% / -28%
+(577 bets; newer races -23% at BSP). Backed first-starters win 24.4% against 18.6% the model gives them (market
+21.9%). The pages (market_tpl.html) drop the EDGE tag in such a race and say why; paper bets carry fs_backed_race.
+(Open-price ROI here has no deductions taken off; BSP is unaffected.)

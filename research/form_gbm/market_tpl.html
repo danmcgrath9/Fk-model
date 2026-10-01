@@ -1,0 +1,58 @@
+<title>__TITLE__</title>
+<style>
+:root{--bg:#f4f6f3;--ink:#16211a;--mute:#5b675e;--line:#d5ddd4;--card:#fff;--acc:#1f6b3d;--bet:#fff4d6;--best:#f5e3a8;--x:#a8321f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#101511;--ink:#e5ebe5;--mute:#98a59a;--line:#29322b;--card:#161e18;--acc:#6fcf8e;--bet:#2e2a16;--best:#4a3d12;--x:#f08a80}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#101511;--ink:#e5ebe5;--mute:#98a59a;--line:#29322b;--card:#161e18;--acc:#6fcf8e;--bet:#2e2a16;--best:#4a3d12;--x:#f08a80}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,sans-serif;padding-inline:16px;padding-block:20px 40px}
+.wrap{max-width:1000px;margin:0 auto;display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
+h1{font-size:26px;margin:0} h2{font-size:18px;margin:0} .sub{color:var(--mute);margin:4px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-width:0}
+.hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.hd .sum{color:var(--mute);font-size:13px}
+.scroll{overflow-x:auto} table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap} th{color:var(--mute);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.l{text-align:left} tr.top td{font-weight:600} tr.bet td{background:var(--bet)} td.ang{white-space:normal;min-width:160px;font-size:12px;color:var(--mute)} tr.best td{background:var(--best)}
+tr.scr td{color:var(--mute)} tr.scr td.nm,tr.scr td.f{text-decoration:line-through}
+.pos{color:var(--acc);font-weight:600}
+td.xc{padding:0 2px;width:44px}
+button.x{width:40px;height:40px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--mute);font-size:18px;line-height:1;cursor:pointer}
+tr.scr button.x{background:var(--x);border-color:var(--x);color:#fff}
+</style>
+<div class="wrap"><header><h1>__TITLE__</h1><p class="sub">__SUB__</p></header><div id="races" style="display:grid;gap:18px"></div></div>
+<script>
+const DATA=__DATA__, KEY="scr-__KEY__";
+let S={}; try{S=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){S={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const isX=(r,i)=>{const k=r+"|"+i; return k in S?S[k]:DATA[r][i].x};
+const fm=v=>v==null?"":"$"+(v>=100?v.toFixed(0):v.toFixed(2));
+function race(r){
+  const rs=DATA[r].map((x,i)=>({...x,i,sx:isX(r,i)})), live=rs.filter(x=>!x.sx), tot=live.reduce((a,x)=>a+x.p,0);
+  let top=null; live.forEach(x=>{if(!top||x.p>top.p)top=x});
+  const fsb=live.filter(x=>x.fs&&x.n>1&&x.n<=6);   // a backed first starter: value bets against one lost 28% at BSP (577 bets), so no EDGE here
+  rs.forEach(x=>{x.bets=[];x.kel=0;x.ev=null; if(x.sx)return; x.pp=x.p/tot; x.fair=1/x.pp; const pr=x.n;
+    if(pr>1){x.ev=x.pp*pr-1; const ok=x.fair<50&&pr<3*x.fair;
+      if(x===top)x.bets.push("Top pick");
+      if(ok&&x.ev>0.2)x.bets.push("Value 20c");
+      if(ok&&x.ev>0.2&&x.a&&x.a.length&&!fsb.length)x.bets.unshift("Edge");
+      if(ok&&x.ev>0.5&&x.s&&pr>=3&&pr<=20)x.bets.push("Best bet");
+      if(pr<3&&x.ev>0.1)x.bets.push("Under $3");
+      if(ok&&x.ev>0.05)x.kel=Math.min(5,25*x.ev/(pr-1));}
+    else if(x===top)x.bets.push("Top pick");});
+  const order=[...rs].sort((a,b)=>(a.sx-b.sx)||((b.pp||0)-(a.pp||0)));
+  const nb=rs.filter(x=>x.bets.some(t=>t!=="Top pick")).length, nk=rs.reduce((a,x)=>a+x.kel,0), nx=rs.filter(x=>x.sx).length;
+  let h=`<div class="hd"><h2>Race ${r}</h2><span class="sum">${nb} value bet${nb===1?"":"s"} · ${nk.toFixed(2)}u Kelly${nx?` · ${nx} scratched`:""}${fsb.length?` · <b>no EDGE: first-starter ${fsb.map(x=>x.h).join(", ")} at $6 or shorter</b>`:""}</span></div><div class="scroll"><table>
+  <tr><th></th><th class="l">Horse</th><th>Model $</th><th>Now</th><th>Value</th><th class="l">Bet</th><th class="l">Angles</th><th>Kelly u</th><th>Open</th><th>Chance</th><th>Take at 20c</th><th>Best-bet rule</th><th>Bar</th><th class="l">Jockey</th></tr>`;
+  order.forEach((x,k)=>{
+    const btn=`<td class="xc"><button class="x" data-r="${r}" data-i="${x.i}" aria-pressed="${x.sx}" aria-label="${x.sx?"Put back":"Scratch"} ${x.h}">✕</button></td>`;
+    if(x.sx){h+=`<tr class="scr">${btn}<td class="l nm">${x.h}</td><td colspan="10" class="l">Scratched · tap ✕ to put back</td><td>${x.b??""}</td><td class="l">${x.j}</td></tr>`;return}
+    const cls=(k<2?"top ":"")+(x.bets.includes("Edge")?"best":x.bets.some(t=>t!=="Top pick")?"bet":"");
+    const rule=x.fair*1.1<3?`${fm(x.fair*1.1)}+ (under $3)`:(x.s&&x.fair*1.5>=3&&x.fair*1.5<=20?`${fm(x.fair*1.5)} to $20`:"");
+    const ev=x.ev==null?"":`${x.ev>=0?"+":""}${Math.round(x.ev*100)}%`;
+    h+=`<tr class="${cls}">${btn}<td class="l nm">${x.h}${x.fs?" (FS)":""}${x.a&&x.a.length?" ⚡":""}</td><td class="f">${fm(x.fair)}</td><td>${fm(x.n)}</td><td class="${x.ev>0.2?"pos":""}">${ev}</td><td class="l">${x.bets.map(t=>t==="Edge"?`<b>EDGE</b>`:t).join(", ")}</td><td class="l ang">${(x.a||[]).join("; ")}</td><td>${x.kel?x.kel.toFixed(2):""}</td><td>${fm(x.o)}</td><td>${(x.pp*100).toFixed(1)}%</td><td>${fm(x.fair*1.2)}</td><td>${rule}</td><td>${x.b??""}</td><td class="l">${x.j}</td></tr>`;});
+  return h+"</table></div>";
+}
+const races=Object.keys(DATA).map(Number).sort((a,b)=>a-b), box=document.getElementById("races");
+function render(r){const el=document.getElementById("race-"+r); el.innerHTML=race(r);
+  el.querySelectorAll("button.x").forEach(b=>b.onclick=()=>{const k=b.dataset.r+"|"+b.dataset.i; S[k]=!isX(+b.dataset.r,+b.dataset.i); save(); render(+b.dataset.r)})}
+races.forEach(r=>{const s=document.createElement("section"); s.className="card"; s.id="race-"+r; box.appendChild(s); render(r)});
+</script>
