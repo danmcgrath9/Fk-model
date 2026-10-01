@@ -211,6 +211,27 @@ def upcoming_rows(db, day: str, track: str | None, state: str) -> list[dict]:
     return out
 
 
+def override_going(rows: list[dict], going: str) -> None:
+    """Price a day as if the track were `going`: the race's going (which every going feature
+    reads) and each runner's todaysGoingForm, which Form King fills from the official rating,
+    is swapped for its record on the new band (good: goingForm.good, soft: goingForm.slow,
+    heavy: heavyForm, else goingForm.heavy)."""
+    band = B.going_band(going)
+    key = {"good": "good", "soft": "slow", "heavy": "heavy", "synthetic": "synthetic"}.get(band or "")
+    for row in rows:
+        row["going"] = going
+        for e in row["entries"]:
+            form = e.get("form")
+            if not isinstance(form, dict) or not key:
+                continue
+            rec = (form.get("heavyForm") if key == "heavy" else None) or (form.get("goingForm") or {}).get(key)
+            if rec:
+                form["todaysGoingForm"] = rec
+            else:
+                form.pop("todaysGoingForm", None)
+    print(f"going overridden to {going!r} ({band}) for {len(rows)} races")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--state", default="VIC")
@@ -218,6 +239,8 @@ def main() -> None:
     ap.add_argument("--out", default=str(ROOT / "data" / "model_ds.npz"))
     ap.add_argument("--date", help="export the races on this day instead (not yet run), for pricing")
     ap.add_argument("--track", help="with --date: only this track")
+    ap.add_argument("--going", help="with --date: price as if the track were this (e.g. 'Heavy 8'), when the "
+                                    "official rating is out of date after rain")
     a = ap.parse_args()
     from backtest import races_from_rows
     from fk import history as H
@@ -225,6 +248,8 @@ def main() -> None:
     db = Db(load_settings().database_url)
     if a.date:
         rows = upcoming_rows(db, a.date, a.track, a.state)
+        if a.going:
+            override_going(rows, a.going)
     else:
         rows = list(db.resulted_races(a.state))
         in_db = {r["race_id"] for r in rows}
