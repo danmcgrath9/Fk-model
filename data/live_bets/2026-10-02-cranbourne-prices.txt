@@ -1,0 +1,102 @@
+# Form King average prices at the Thursday evening pull (about 8:15pm Thu 1 Oct). race, horse, opening, current. Emergencies and runners with no price listed SCR.
+1, Acharnee, 26.00, 21.00
+1, Ektifire, 9.25, 5.00
+1, Hansard, 201.00, 151.00
+1, Beast Fighter, 10.00, 12.00
+1, Sihaya, 13.50, 15.00
+1, In A Tizzy, 2.75, 2.30
+1, Chapel Belle, 51.00, 41.00
+1, Armorware, 10.00, 9.50
+1, Swift Star, 6.00, 4.80
+1, Home And A Bay, 32.50, 26.00
+2, Call Me Later, 19.00, 26.00
+2, Model Gigi, 12.00, 9.00
+2, Kiss Me In Paris, 10.00, 14.00
+2, Boy From Zadar, SCR
+2, Mr Sapphire, 34.00, 21.00
+2, Miss Home Body, 14.00, 21.00
+2, Mardaloop, 23.00, 34.00
+2, Senza Nome, SCR
+2, Nautique, SCR
+2, Resonant, 4.60, 5.00
+2, Valaroso, 4.20, 2.90
+2, Gimonnet, 5.00, 6.50
+2, Inside Word, SCR
+2, Teddy's Trotter, 19.00, 26.00
+2, Keen Observer, 7.00, 9.50
+3, Xtra Rush, 3.90, 5.50
+3, Kiwi Jenni, 10.00, 11.00
+3, Haaracaine, 8.50, 5.00
+3, Delightful Journey, 101.00, 101.00
+3, Rock Them Jools, 9.00, 10.00
+3, Two Wolves, 5.50, 4.60
+3, Mr Sioux, 3.90, 7.50
+3, Fridge Monster, 13.00, 9.50
+3, All Business, 6.00, 8.00
+3, Breathless Spirit, 23.00, 21.00
+4, Mr Tickles, 15.00, 10.00
+4, Phoenix Flyer, 101.00, 301.00
+4, Speir, 4.40, 3.40
+4, Leantothemoon, 15.00, 18.00
+4, Bella Cinque, 21.00, 23.00
+4, Yukaina, 3.10, 4.60
+4, Walter Spur, 7.50, 16.00
+4, The Speed Machine, 3.90, 3.40
+4, Room For Bingo, 21.00, 27.00
+4, Jennyanydots, 11.00, 9.00
+5, Le Notre, 15.00, 18.00
+5, Parcae, 5.00, 3.60
+5, Shaime, 8.50, 10.00
+5, Soju, 21.00, 11.00
+5, Shooting For Stars, 101.00, 151.00
+5, Milos Filos, 8.50, 8.50
+5, Fontalicious, 21.00, 23.00
+5, Headbanger, 2.60, 2.80
+5, Sweet Vixen, 7.50, 11.00
+5, Iced Poppy, 7.50, 12.00
+6, Nothingelsematters, SCR
+6, Killenaule, 4.20, 3.10
+6, Fiery Deal, 16.00, 23.00
+6, Chocolate Royal, SCR
+6, Tishman, 13.00, 16.00
+6, Kazungula, 34.00, 51.00
+6, Stuntman, SCR
+6, Eye For An Eye, 41.00, 41.00
+6, Island Boy, 18.00, 18.00
+6, Frank Whisper, 5.00, 6.50
+6, Terrortorian, 8.00, 9.00
+6, Callmeanicon, 23.00, 31.00
+6, Olney, SCR
+6, Melek, 4.40, 4.00
+6, Foix, 7.50, 10.00
+6, Placentia Bay, 16.00, 17.00
+7, Belcony, SCR
+7, Happy Link, 10.00, 5.50
+7, Castellito, 6.00, 8.00
+7, Let It Beel, 8.50, 10.00
+7, Keane Enuff, 18.00, 23.00
+7, Barking Mad, 8.50, 9.50
+7, Cashout, 3.10, 2.70
+7, Finance Shogun, SCR
+7, Regal Might, SCR
+7, Diamond Eye, 14.00, 23.00
+7, Mount Sabyinyo, 21.00, 23.00
+7, Camp Cable, 41.00, 61.00
+7, Cobblestone Way, 19.00, 41.00
+7, Lyrics 'n' Song, 5.00, 6.00
+7, Dollar Chaser, 51.00, 71.00
+8, Purgatorio, SCR
+8, Shystar, 9.00, 9.00
+8, Wolf Twenty One, 21.00, 23.00
+8, Legacy Bay, 12.00, 12.00
+8, Rich On Bubbles, 11.00, 14.00
+8, King West, 17.00, 21.00
+8, Fehmarn, 17.00, 26.00
+8, Electric Elvis, 5.00, 4.60
+8, Express Class, 12.00, 15.00
+8, Persian Caviar, 11.00, 10.00
+8, Karren, SCR
+8, The Volta, 5.00, 4.80
+8, Attachments, 7.00, 7.00
+8, Blue Bandit, SCR
+8, One Day At A Time, 9.00, 9.00
