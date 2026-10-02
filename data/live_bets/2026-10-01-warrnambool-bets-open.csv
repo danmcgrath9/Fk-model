@@ -1,38 +1,38 @@
-race,race_id,horse,plan,price,price_now_1020,model_price,value,angles,stake,hurdle,result,returned,deduction,effective_price,value_after_deduction,fs_backed_race
-1,WNBL_011026_1,Endless Fury,EDGE,10.0,4.6,6.12,0.634,Class drop (rating),1.0,yes,,,0.000,10.00,0.634,no
-1,WNBL_011026_1,Endless Fury,value_20c,10.0,4.6,6.12,0.634,Class drop (rating),1.0,yes,,,0.000,10.00,0.634,no
-1,WNBL_011026_1,Enchilada,top_pick,2.6,1.8,2.49,0.045,Already run to today's class; Class drop (rating),1.0,yes,,,0.000,2.60,0.044,no
-2,WNBL_011026_2,Black Peppermint,top_pick,3.9,2.7,3.63,0.075,Already run to today's class; Class drop (rating),1.0,yes,,,0.154,3.30,-0.091,no
-2,WNBL_011026_2,Smiling Assassin,EDGE,34.0,13.0,10.47,2.248,Class drop (rating),1.0,yes,,,0.154,28.76,1.747,no
-2,WNBL_011026_2,Smiling Assassin,value_20c,34.0,13.0,10.47,2.248,Class drop (rating),1.0,yes,,,0.154,28.76,1.747,no
-3,WNBL_011026_3,Thermic,value_20c,6.0,5.5,4.51,0.33,,1.0,no,,,0.000,6.00,0.330,yes
-3,WNBL_011026_3,Tuscan Rose,top_pick,2.0,1.55,2.24,-0.108,Beaten by the pace last start; Back in trip after being handy,1.0,no,,,0.000,2.00,-0.107,yes
-4,WNBL_011026_4,Mr Cicconi,value_20c,3.6,4.8,2.84,0.268,,1.0,no,,,0.062,3.38,0.189,yes
-4,WNBL_011026_4,Mr Cicconi,top_pick,3.6,4.8,2.84,0.268,,1.0,no,,,0.062,3.38,0.189,yes
-4,WNBL_011026_4,Rakiynn,EDGE,15.0,9.5,9.53,0.575,Already run to today's class,1.0,no,,,0.062,14.07,0.476,yes
-4,WNBL_011026_4,Rakiynn,value_20c,15.0,9.5,9.53,0.575,Already run to today's class,1.0,no,,,0.062,14.07,0.476,yes
-4,WNBL_011026_4,Tikiela,EDGE,11.0,13.0,8.92,0.234,Already run to today's class; New career-best last start,1.0,no,,,0.062,10.32,0.157,yes
-4,WNBL_011026_4,Tikiela,value_20c,11.0,13.0,8.92,0.234,Already run to today's class; New career-best last start,1.0,no,,,0.062,10.32,0.157,yes
-5,WNBL_011026_5,Celibate,EDGE,3.8,3.1,3.06,0.241,Class drop (rating),1.0,no,,,0.310,2.62,-0.143,no
-5,WNBL_011026_5,Celibate,value_20c,3.8,3.1,3.06,0.241,Class drop (rating),1.0,no,,,0.310,2.62,-0.143,no
-5,WNBL_011026_5,Celibate,top_pick,3.8,3.1,3.06,0.241,Class drop (rating),1.0,no,,,0.310,2.62,-0.143,no
-5,WNBL_011026_5,Secret Hell,value_20c,16.0,8.5,8.63,0.854,,1.0,no,,,0.310,11.04,0.279,no
-5,WNBL_011026_5,Artistic Genius,value_20c,12.0,5.5,9.14,0.313,,1.0,no,,,0.310,8.28,-0.094,no
-5,WNBL_011026_5,Powering Away,EDGE,18.0,12.0,13.42,0.342,Declining deep in prep,1.0,no,,,0.310,12.42,-0.075,no
-5,WNBL_011026_5,Powering Away,value_20c,18.0,12.0,13.42,0.342,Declining deep in prep,1.0,no,,,0.310,12.42,-0.075,no
-5,WNBL_011026_5,World Action,EDGE,18.0,7.0,7.64,1.356,Beaten by the pace last start,1.0,no,,,0.310,12.42,0.626,no
-5,WNBL_011026_5,World Action,value_20c,18.0,7.0,7.64,1.356,Beaten by the pace last start,1.0,no,,,0.310,12.42,0.626,no
-6,WNBL_011026_6,Edges Diamond,EDGE,22.0,13.0,9.51,1.314,"Third-up, improving; Class drop (rating)",1.0,no,,,0.361,14.06,0.478,no
-6,WNBL_011026_6,Edges Diamond,value_20c,22.0,13.0,9.51,1.314,"Third-up, improving; Class drop (rating)",1.0,no,,,0.361,14.06,0.478,no
-6,WNBL_011026_6,Nordic Strike,top_pick,4.1,3.5,3.67,0.118,,1.0,no,,,0.361,2.62,-0.286,no
-6,WNBL_011026_6,Forever With Ned,value_20c,11.5,8.0,7.88,0.459,,1.0,no,,,0.361,7.35,-0.067,no
-7,WNBL_011026_7,Hoodys Horse,EDGE,19.0,17.0,13.3,0.428,Declining deep in prep; Well backed before a bad last run,1.0,no,,,0.078,17.52,0.317,no
-7,WNBL_011026_7,Hoodys Horse,value_20c,19.0,17.0,13.3,0.428,Declining deep in prep; Well backed before a bad last run,1.0,no,,,0.078,17.52,0.317,no
-7,WNBL_011026_7,Philharmonic,EDGE,18.0,9.5,11.85,0.519,"Beaten by the pace last start; Third-up, improving; Late 600 beyond the tempo",1.0,no,,,0.078,16.60,0.401,no
-7,WNBL_011026_7,Philharmonic,value_20c,18.0,9.5,11.85,0.519,"Beaten by the pace last start; Third-up, improving; Late 600 beyond the tempo",1.0,no,,,0.078,16.60,0.401,no
-7,WNBL_011026_7,Both Sides Now,value_20c,16.0,7.5,8.74,0.831,,1.0,no,,,0.078,14.75,0.688,no
-7,WNBL_011026_7,Just My Lot,top_pick,2.95,5.0,4.13,-0.286,Well backed before a bad last run,1.0,no,,,0.078,2.72,-0.341,no
-8,WNBL_011026_8,Albanian I Am,value_20c,18.0,13.0,13.73,0.311,,1.0,no,,,0.118,15.88,0.156,no
-8,WNBL_011026_8,Mr Sioux,top_pick,4.2,5.0,4.81,-0.128,,1.0,no,,,0.118,3.70,-0.230,no
-8,WNBL_011026_8,Victory Tune,value_20c,10.0,5.5,7.34,0.362,,1.0,no,,,0.118,8.82,0.202,no
-8,WNBL_011026_8,Imminent Storm,value_20c,23.0,10.0,12.8,0.798,,1.0,no,,,0.118,20.29,0.585,no
+race,race_id,horse,plan,price,price_now_1020,model_price,value,angles,stake,hurdle,result,returned,deduction,effective_price,value_after_deduction,fs_backed_race,profit,profit_no_deduction
+1,WNBL_011026_1,Endless Fury,EDGE,10.0,4.6,6.12,0.634,Class drop (rating),1.0,yes,3rd $4.40,0.00,0.000,10.00,0.634,no,-1.00,-1.00
+1,WNBL_011026_1,Endless Fury,value_20c,10.0,4.6,6.12,0.634,Class drop (rating),1.0,yes,3rd $4.40,0.00,0.000,10.00,0.634,no,-1.00,-1.00
+1,WNBL_011026_1,Enchilada,top_pick,2.6,1.8,2.49,0.045,Already run to today's class; Class drop (rating),1.0,yes,1st $1.85,2.60,0.000,2.60,0.044,no,1.60,1.60
+2,WNBL_011026_2,Black Peppermint,top_pick,3.9,2.7,3.63,0.075,Already run to today's class; Class drop (rating),1.0,yes,1st $2.70,3.30,0.154,3.30,-0.091,no,2.30,2.90
+2,WNBL_011026_2,Smiling Assassin,EDGE,34.0,13.0,10.47,2.248,Class drop (rating),1.0,yes,9th $14.00,0.00,0.154,28.76,1.747,no,-1.00,-1.00
+2,WNBL_011026_2,Smiling Assassin,value_20c,34.0,13.0,10.47,2.248,Class drop (rating),1.0,yes,9th $14.00,0.00,0.154,28.76,1.747,no,-1.00,-1.00
+3,WNBL_011026_3,Thermic,value_20c,6.0,5.5,4.51,0.33,,1.0,no,1st $6.50,6.00,0.000,6.00,0.330,yes,5.00,5.00
+3,WNBL_011026_3,Tuscan Rose,top_pick,2.0,1.55,2.24,-0.108,Beaten by the pace last start; Back in trip after being handy,1.0,no,5th $1.70,0.00,0.000,2.00,-0.107,yes,-1.00,-1.00
+4,WNBL_011026_4,Mr Cicconi,value_20c,3.6,4.8,2.84,0.268,,1.0,no,7th $4.20,0.00,0.062,3.38,0.189,yes,-1.00,-1.00
+4,WNBL_011026_4,Mr Cicconi,top_pick,3.6,4.8,2.84,0.268,,1.0,no,7th $4.20,0.00,0.062,3.38,0.189,yes,-1.00,-1.00
+4,WNBL_011026_4,Rakiynn,EDGE,15.0,9.5,9.53,0.575,Already run to today's class,1.0,no,6th $10.00,0.00,0.062,14.07,0.476,yes,-1.00,-1.00
+4,WNBL_011026_4,Rakiynn,value_20c,15.0,9.5,9.53,0.575,Already run to today's class,1.0,no,6th $10.00,0.00,0.062,14.07,0.476,yes,-1.00,-1.00
+4,WNBL_011026_4,Tikiela,EDGE,11.0,13.0,8.92,0.234,Already run to today's class; New career-best last start,1.0,no,4th $7.50,0.00,0.062,10.32,0.157,yes,-1.00,-1.00
+4,WNBL_011026_4,Tikiela,value_20c,11.0,13.0,8.92,0.234,Already run to today's class; New career-best last start,1.0,no,4th $7.50,0.00,0.062,10.32,0.157,yes,-1.00,-1.00
+5,WNBL_011026_5,Celibate,EDGE,3.8,3.1,3.06,0.241,Class drop (rating),1.0,no,1st $3.10,2.62,0.310,2.62,-0.143,no,1.62,2.80
+5,WNBL_011026_5,Celibate,value_20c,3.8,3.1,3.06,0.241,Class drop (rating),1.0,no,1st $3.10,2.62,0.310,2.62,-0.143,no,1.62,2.80
+5,WNBL_011026_5,Celibate,top_pick,3.8,3.1,3.06,0.241,Class drop (rating),1.0,no,1st $3.10,2.62,0.310,2.62,-0.143,no,1.62,2.80
+5,WNBL_011026_5,Secret Hell,value_20c,16.0,8.5,8.63,0.854,,1.0,no,7th $10.00,0.00,0.310,11.04,0.279,no,-1.00,-1.00
+5,WNBL_011026_5,Artistic Genius,value_20c,12.0,5.5,9.14,0.313,,1.0,no,3rd $8.00,0.00,0.310,8.28,-0.094,no,-1.00,-1.00
+5,WNBL_011026_5,Powering Away,EDGE,18.0,12.0,13.42,0.342,Declining deep in prep,1.0,no,8th $18.00,0.00,0.310,12.42,-0.075,no,-1.00,-1.00
+5,WNBL_011026_5,Powering Away,value_20c,18.0,12.0,13.42,0.342,Declining deep in prep,1.0,no,8th $18.00,0.00,0.310,12.42,-0.075,no,-1.00,-1.00
+5,WNBL_011026_5,World Action,EDGE,18.0,7.0,7.64,1.356,Beaten by the pace last start,1.0,no,6th $5.00,0.00,0.310,12.42,0.626,no,-1.00,-1.00
+5,WNBL_011026_5,World Action,value_20c,18.0,7.0,7.64,1.356,Beaten by the pace last start,1.0,no,6th $5.00,0.00,0.310,12.42,0.626,no,-1.00,-1.00
+6,WNBL_011026_6,Edges Diamond,EDGE,22.0,13.0,9.51,1.314,"Third-up, improving; Class drop (rating)",1.0,no,SCR (refund),1.0,0.000,22.0,0.478,no,0.00,0.00
+6,WNBL_011026_6,Edges Diamond,value_20c,22.0,13.0,9.51,1.314,"Third-up, improving; Class drop (rating)",1.0,no,SCR (refund),1.0,0.000,22.0,0.478,no,0.00,0.00
+6,WNBL_011026_6,Nordic Strike,top_pick,4.1,3.5,3.67,0.118,,1.0,no,3rd $3.40,0.00,0.361,2.62,-0.286,no,-1.00,-1.00
+6,WNBL_011026_6,Forever With Ned,value_20c,11.5,8.0,7.88,0.459,,1.0,no,6th $6.00,0.00,0.361,7.35,-0.067,no,-1.00,-1.00
+7,WNBL_011026_7,Hoodys Horse,EDGE,19.0,17.0,13.3,0.428,Declining deep in prep; Well backed before a bad last run,1.0,no,6th $9.50,0.00,0.078,17.52,0.317,no,-1.00,-1.00
+7,WNBL_011026_7,Hoodys Horse,value_20c,19.0,17.0,13.3,0.428,Declining deep in prep; Well backed before a bad last run,1.0,no,6th $9.50,0.00,0.078,17.52,0.317,no,-1.00,-1.00
+7,WNBL_011026_7,Philharmonic,EDGE,18.0,9.5,11.85,0.519,"Beaten by the pace last start; Third-up, improving; Late 600 beyond the tempo",1.0,no,SCR (refund),1.0,0.000,18.0,0.401,no,0.00,0.00
+7,WNBL_011026_7,Philharmonic,value_20c,18.0,9.5,11.85,0.519,"Beaten by the pace last start; Third-up, improving; Late 600 beyond the tempo",1.0,no,SCR (refund),1.0,0.000,18.0,0.401,no,0.00,0.00
+7,WNBL_011026_7,Both Sides Now,value_20c,16.0,7.5,8.74,0.831,,1.0,no,SCR (refund),1.0,0.000,16.0,0.688,no,0.00,0.00
+7,WNBL_011026_7,Just My Lot,top_pick,2.95,5.0,4.13,-0.286,Well backed before a bad last run,1.0,no,2nd $3.60,0.00,0.078,2.72,-0.341,no,-1.00,-1.00
+8,WNBL_011026_8,Albanian I Am,value_20c,18.0,13.0,13.73,0.311,,1.0,no,4th $8.50,0.00,0.118,15.88,0.156,no,-1.00,-1.00
+8,WNBL_011026_8,Mr Sioux,top_pick,4.2,5.0,4.81,-0.128,,1.0,no,SCR (refund),1.0,0.000,4.2,-0.230,no,0.00,0.00
+8,WNBL_011026_8,Victory Tune,value_20c,10.0,5.5,7.34,0.362,,1.0,no,8th $4.40,0.00,0.118,8.82,0.202,no,-1.00,-1.00
+8,WNBL_011026_8,Imminent Storm,value_20c,23.0,10.0,12.8,0.798,,1.0,no,6th $4.40,0.00,0.118,20.29,0.585,no,-1.00,-1.00
