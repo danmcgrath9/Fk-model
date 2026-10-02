@@ -25,7 +25,7 @@ def flat(d, pre=""):
 
 def main() -> None:
     name, date = sys.argv[1], sys.argv[2]
-    with psycopg.connect(os.environ["DATABASE_URL"]) as c:
+    with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
         h = c.execute("select horse_id from fk.horses where lower(name)=lower(%s) limit 1", (name,)).fetchone()
         if not h:
             sys.exit(f"no horse {name!r}")
