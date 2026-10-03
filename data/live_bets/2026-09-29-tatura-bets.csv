@@ -1,47 +1,47 @@
-race,race_id,horse,plan,price,price_open,model_price,value,stake,result,returned
-1,TAT_290926_1,Firm'n'high,value_20c,11.0,34.0,8.01,0.374,1.0,,
-1,TAT_290926_1,Firm'n'high,kelly_q_5c,11.0,34.0,8.01,0.374,0.93,,
-1,TAT_290926_1,Alpha Mensae,value_20c,15.0,19.0,11.16,0.344,1.0,,
-1,TAT_290926_1,Alpha Mensae,kelly_q_5c,15.0,19.0,11.16,0.344,0.61,,
-1,TAT_290926_1,Bordeaux,top_pick,11.0,11.0,5.81,0.892,1.0,,
-1,TAT_290926_1,Bordeaux,value_20c,11.0,11.0,5.81,0.892,1.0,,
-1,TAT_290926_1,Bordeaux,kelly_q_5c,11.0,11.0,5.81,0.892,2.23,,
-1,TAT_290926_1,Around The Marx,kelly_q_5c,19.0,15.0,16.53,0.149,0.21,,
-2,TAT_290926_2,Snitzel Tycoon,kelly_q_5c,6.0,5.5,5.19,0.155,0.78,,
-2,TAT_290926_2,Brave Summit,value_20c,13.0,10.0,10.74,0.21,1.0,,
-2,TAT_290926_2,Brave Summit,kelly_q_5c,13.0,10.0,10.74,0.21,0.44,,
-2,TAT_290926_2,Bee Admired,top_pick,3.3,3.0,4.74,-0.304,1.0,,
-3,TAT_290926_3,Vespasian,top_pick,2.6,2.5,3.94,-0.34,1.0,,
-3,TAT_290926_3,Sunday Vendetta,kelly_q_5c,5.0,4.8,4.61,0.084,0.53,,
-4,TAT_290926_4,Baganov,top_pick,2.8,2.59,2.62,0.067,1.0,,
-4,TAT_290926_4,Baganov,kelly_q_5c,2.8,2.59,2.62,0.067,0.93,,
-4,TAT_290926_4,Strongside,value_20c,9.0,6.0,5.68,0.585,1.0,,
-4,TAT_290926_4,Strongside,kelly_q_5c,9.0,6.0,5.68,0.585,1.83,,
-5,TAT_290926_5,Pomah,top_pick,2.8,1.95,3.17,-0.116,1.0,,
-5,TAT_290926_5,Queen Amanjena,kelly_q_5c,4.0,4.8,3.72,0.076,0.63,,
-6,TAT_290926_6,Savethebesttillast,kelly_q_5c,10.0,13.0,9.39,0.065,0.18,,
-6,TAT_290926_6,Bower Boy,value_20c,51.0,34.0,31.86,0.601,1.0,,
-6,TAT_290926_6,Bower Boy,kelly_q_5c,51.0,34.0,31.86,0.601,0.3,,
-6,TAT_290926_6,Okeah,value_20c,46.0,15.0,35.69,0.289,1.0,,
-6,TAT_290926_6,Okeah,kelly_q_5c,46.0,15.0,35.69,0.289,0.16,,
-6,TAT_290926_6,Rich King,top_pick,2.5,3.3,4.63,-0.46,1.0,,
-7,TAT_290926_7,Asmita,top_pick,3.9,2.8,4.97,-0.215,1.0,,
-7,TAT_290926_7,Balgowan,value_20c,34.0,26.0,27.37,0.242,1.0,,
-7,TAT_290926_7,Balgowan,kelly_q_5c,34.0,26.0,27.37,0.242,0.18,,
-7,TAT_290926_7,Grouse Mountain,value_20c,34.0,13.0,21.32,0.595,1.0,,
-7,TAT_290926_7,Grouse Mountain,kelly_q_5c,34.0,13.0,21.32,0.595,0.45,,
-7,TAT_290926_7,Smash Blue,kelly_q_5c,34.0,41.0,30.15,0.128,0.1,,
-7,TAT_290926_7,Brave Carol,kelly_q_5c,34.0,26.0,31.94,0.065,0.05,,
-8,TAT_290926_8,War Of Wisdom,value_20c,41.0,34.0,21.74,0.886,1.0,,
-8,TAT_290926_8,War Of Wisdom,kelly_q_5c,41.0,34.0,21.74,0.886,0.55,,
-8,TAT_290926_8,Wild Irish Rover,value_20c,26.0,23.0,20.81,0.249,1.0,,
-8,TAT_290926_8,Wild Irish Rover,kelly_q_5c,26.0,23.0,20.81,0.249,0.25,,
-8,TAT_290926_8,Cumboogle,top_pick,5.0,6.5,4.16,0.201,1.0,,
-8,TAT_290926_8,Cumboogle,value_20c,5.0,6.5,4.16,0.201,1.0,,
-8,TAT_290926_8,Cumboogle,kelly_q_5c,5.0,6.5,4.16,0.201,1.26,,
-1,TAT_290926_1,Bordeaux,narrow_50c_solid_3to20,11.0,11.0,5.81,0.892,1.0,,
-4,TAT_290926_4,Strongside,narrow_50c_solid_3to20,9.0,6.0,5.68,0.585,1.0,,
-1,TAT_290926_1,Alpha Mensae,narrow_at_open,19.0,19.0,11.16,0.7,1.0,,
-1,TAT_290926_1,Bordeaux,narrow_at_open,11.0,11.0,5.81,0.89,1.0,,
-7,,Sugar Schnapps,narrow_at_open,9.0,9.0,5.99,0.5,1.0,,
-8,TAT_290926_8,Cumboogle,narrow_at_open,6.5,6.5,4.16,0.56,1.0,,
+race,race_id,horse,plan,price,price_open,model_price,value,stake,result,returned,bsp,finish_bsp,profit_bsp
+1,TAT_290926_1,Firm'n'high,value_20c,11.0,34.0,8.01,0.374,1.0,,,6.99,6,-1.00
+1,TAT_290926_1,Firm'n'high,kelly_q_5c,11.0,34.0,8.01,0.374,0.93,,,6.99,6,-1.00
+1,TAT_290926_1,Alpha Mensae,value_20c,15.0,19.0,11.16,0.344,1.0,,,23.0,9,-1.00
+1,TAT_290926_1,Alpha Mensae,kelly_q_5c,15.0,19.0,11.16,0.344,0.61,,,23.0,9,-1.00
+1,TAT_290926_1,Bordeaux,top_pick,11.0,11.0,5.81,0.892,1.0,,,9.8,7,-1.00
+1,TAT_290926_1,Bordeaux,value_20c,11.0,11.0,5.81,0.892,1.0,,,9.8,7,-1.00
+1,TAT_290926_1,Bordeaux,kelly_q_5c,11.0,11.0,5.81,0.892,2.23,,,9.8,7,-1.00
+1,TAT_290926_1,Around The Marx,kelly_q_5c,19.0,15.0,16.53,0.149,0.21,,,28.0,5,-1.00
+2,TAT_290926_2,Snitzel Tycoon,kelly_q_5c,6.0,5.5,5.19,0.155,0.78,,,3.35,2,-1.00
+2,TAT_290926_2,Brave Summit,value_20c,13.0,10.0,10.74,0.21,1.0,,,,,
+2,TAT_290926_2,Brave Summit,kelly_q_5c,13.0,10.0,10.74,0.21,0.44,,,,,
+2,TAT_290926_2,Bee Admired,top_pick,3.3,3.0,4.74,-0.304,1.0,,,,,
+3,TAT_290926_3,Vespasian,top_pick,2.6,2.5,3.94,-0.34,1.0,,,2.37,4,-1.00
+3,TAT_290926_3,Sunday Vendetta,kelly_q_5c,5.0,4.8,4.61,0.084,0.53,,,,,
+4,TAT_290926_4,Baganov,top_pick,2.8,2.59,2.62,0.067,1.0,,,3.9,3,-1.00
+4,TAT_290926_4,Baganov,kelly_q_5c,2.8,2.59,2.62,0.067,0.93,,,3.9,3,-1.00
+4,TAT_290926_4,Strongside,value_20c,9.0,6.0,5.68,0.585,1.0,,,16.57,9,-1.00
+4,TAT_290926_4,Strongside,kelly_q_5c,9.0,6.0,5.68,0.585,1.83,,,16.57,9,-1.00
+5,TAT_290926_5,Pomah,top_pick,2.8,1.95,3.17,-0.116,1.0,,,3.07,7,-1.00
+5,TAT_290926_5,Queen Amanjena,kelly_q_5c,4.0,4.8,3.72,0.076,0.63,,,5.06,4,-1.00
+6,TAT_290926_6,Savethebesttillast,kelly_q_5c,10.0,13.0,9.39,0.065,0.18,,,13.53,3,-1.00
+6,TAT_290926_6,Bower Boy,value_20c,51.0,34.0,31.86,0.601,1.0,,,48.0,7,-1.00
+6,TAT_290926_6,Bower Boy,kelly_q_5c,51.0,34.0,31.86,0.601,0.3,,,48.0,7,-1.00
+6,TAT_290926_6,Okeah,value_20c,46.0,15.0,35.69,0.289,1.0,,,184.9,8,-1.00
+6,TAT_290926_6,Okeah,kelly_q_5c,46.0,15.0,35.69,0.289,0.16,,,184.9,8,-1.00
+6,TAT_290926_6,Rich King,top_pick,2.5,3.3,4.63,-0.46,1.0,,,,,
+7,TAT_290926_7,Asmita,top_pick,3.9,2.8,4.97,-0.215,1.0,,,3.6,4,-1.00
+7,TAT_290926_7,Balgowan,value_20c,34.0,26.0,27.37,0.242,1.0,,,42.0,10,-1.00
+7,TAT_290926_7,Balgowan,kelly_q_5c,34.0,26.0,27.37,0.242,0.18,,,42.0,10,-1.00
+7,TAT_290926_7,Grouse Mountain,value_20c,34.0,13.0,21.32,0.595,1.0,,,,,
+7,TAT_290926_7,Grouse Mountain,kelly_q_5c,34.0,13.0,21.32,0.595,0.45,,,,,
+7,TAT_290926_7,Smash Blue,kelly_q_5c,34.0,41.0,30.15,0.128,0.1,,,23.0,6,-1.00
+7,TAT_290926_7,Brave Carol,kelly_q_5c,34.0,26.0,31.94,0.065,0.05,,,58.55,5,-1.00
+8,TAT_290926_8,War Of Wisdom,value_20c,41.0,34.0,21.74,0.886,1.0,,,37.22,11,-1.00
+8,TAT_290926_8,War Of Wisdom,kelly_q_5c,41.0,34.0,21.74,0.886,0.55,,,37.22,11,-1.00
+8,TAT_290926_8,Wild Irish Rover,value_20c,26.0,23.0,20.81,0.249,1.0,,,29.13,10,-1.00
+8,TAT_290926_8,Wild Irish Rover,kelly_q_5c,26.0,23.0,20.81,0.249,0.25,,,29.13,10,-1.00
+8,TAT_290926_8,Cumboogle,top_pick,5.0,6.5,4.16,0.201,1.0,,,4.04,7,-1.00
+8,TAT_290926_8,Cumboogle,value_20c,5.0,6.5,4.16,0.201,1.0,,,4.04,7,-1.00
+8,TAT_290926_8,Cumboogle,kelly_q_5c,5.0,6.5,4.16,0.201,1.26,,,4.04,7,-1.00
+1,TAT_290926_1,Bordeaux,narrow_50c_solid_3to20,11.0,11.0,5.81,0.892,1.0,,,9.8,7,-1.00
+4,TAT_290926_4,Strongside,narrow_50c_solid_3to20,9.0,6.0,5.68,0.585,1.0,,,16.57,9,-1.00
+1,TAT_290926_1,Alpha Mensae,narrow_at_open,19.0,19.0,11.16,0.7,1.0,,,23.0,9,-1.00
+1,TAT_290926_1,Bordeaux,narrow_at_open,11.0,11.0,5.81,0.89,1.0,,,9.8,7,-1.00
+7,,Sugar Schnapps,narrow_at_open,9.0,9.0,5.99,0.5,1.0,,,,,
+8,TAT_290926_8,Cumboogle,narrow_at_open,6.5,6.5,4.16,0.56,1.0,,,4.04,7,-1.00

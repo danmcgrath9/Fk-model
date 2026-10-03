@@ -1,0 +1,156 @@
+# Form King average prices, Saturday 10:20am refresh. race, horse, opening, current.
+1, Silent Intent, 2.80, 3.50
+1, Bella Divina, 6.00, 9.50
+1, Maalefushi, 8.50, 11.00
+1, Musandam, 11.00, 4.80
+1, Ankaa, 5.00, 6.00
+1, Capitano, SCR
+1, Proverb, 3.20, 3.60
+10, Home Rule, 17.00, 11.00
+10, Ten Commandments, 11.00, 2.90
+10, Steparty, SCR
+10, Fancify, 18.00, 17.00
+10, Cafe Millenium, 7.00, 8.00
+10, Amenable, 16.00, 10.00
+10, Cote Atlantique, 13.00, 9.00
+10, Just Party, 7.50, 6.25
+10, Zou Sensation, 19.00, 18.00
+10, Lord Of Biscay, SCR
+10, Just Folk, 15.00, 9.00
+10, Enxuto, SCR
+10, Wonder Boy, SCR
+10, Holymanz, SCR
+10, Lord Penman, SCR
+10, Aztec Ruler, 51.00, 71.00
+2, Kahhof, 23.00, 23.00
+2, Kaye Jay, SCR
+2, Thebelmontgangster, 5.50, 5.75
+2, Queen Christine, 16.00, 8.00
+2, Moby Dick, 14.00, 9.00
+2, Charming Nic, 16.50, 9.00
+2, Ruska Roma, 12.00, 14.00
+2, Silver Dagger, SCR
+2, Alero, 23.00, 16.00
+2, Quiseen, SCR
+2, World's My Oyster, SCR
+2, Cabriole, SCR
+2, Esmahli, 7.50, 6.75
+2, Rue De Royale, 14.00, 23.00
+2, King Tut, SCR
+2, Naval Academy, 17.00, 17.00
+3, Lepolo, 3.65, 3.10
+3, Arashi Flash, 21.00, 34.00
+3, Ko Phangan, 26.00, 26.00
+3, Cignetti, 11.00, 10.00
+3, Notified, 21.00, 18.00
+3, Icy You, 6.50, 12.00
+3, Miss Waititi, 31.00, 8.50
+3, Skua, 51.00, 16.00
+3, Corretto, 41.00, 51.00
+3, Vallice, 6.00, 5.50
+3, True Rebel, SCR
+3, Frank Whisper, SCR
+3, Aragog, 13.00, 8.50
+3, Melbourne Boy, 41.00, 27.00
+4, Autumn In Grinzing, 15.00, 16.00
+4, Autumn Lover, SCR
+4, Abaya, 41.00, 71.00
+4, Salann, 26.00, 23.00
+4, Leopard Shark, SCR
+4, Stipulation, 13.00, 5.50
+4, Joely, 26.00, 17.00
+4, Tolaga Bay, 17.00, 12.00
+4, Profligate, 5.00, 4.40
+4, Nikitria, 15.00, 27.00
+4, Crown Of Fire, SCR
+4, Saintly Dancer, 5.00, 7.00
+4, Oceans Fouroseven, 13.00, 15.00
+4, Beautiful You, 15.00, 15.00
+4, Portinari, 8.00, 5.75
+4, La Barrita, SCR
+5, Wrote To Arataki, 23.00, 18.00
+5, Pondalowie, SCR
+5, Gold Medallist, 16.50, 11.00
+5, Astral Flame, SCR
+5, Fireball Miss, SCR
+5, Abounding, SCR
+5, Gold Coast Belle, 4.50, 2.45
+5, Mareth, 10.00, 10.00
+5, Ole Dancer, SCR
+5, Tennessee Bound, 4.90, 4.80
+5, Shohisha, 34.00, 13.00
+5, Betwitchery, 51.00, 51.00
+5, Stylish, 17.50, 9.50
+5, On Display, SCR
+5, Merrigold, SCR
+5, Cilacap, 16.50, 16.00
+6, Stretan Ruler, 24.50, 41.00
+6, Buggsy, 21.00, 31.00
+6, Pocketfullofcash, 21.00, 26.00
+6, Over Excited, 5.50, 6.25
+6, Zambales, 41.00, 81.00
+6, The Next Episode, 4.40, 3.60
+6, Big Sky, 11.50, 16.00
+6, Mbube, 8.50, 14.00
+6, Alibaba, 66.00, 126.00
+6, Natural Fling, 2.40, 2.35
+6, Doubt Time, 31.00, 26.00
+7, Zarir, 81.00, 101.00
+7, Piggyback, 14.00, 6.50
+7, Onesmoothoperator, SCR
+7, Wootton Verni, 12.00, 5.75
+7, Valiant King, 34.00, 26.00
+7, Aethelwulf, SCR
+7, Berkeley Square, 17.00, 11.00
+7, Juja Kibo, SCR
+7, Highland Bling, SCR
+7, Litzdeel, 8.50, 5.75
+7, Newlook, 81.00, 41.00
+7, Mr Monaco, 19.00, 10.00
+7, Soulcombe, SCR
+7, Jennivamoose, 7.50, 6.75
+7, Okita Soushi, SCR
+7, Campaldino, 19.67, 10.00
+8, Zahrann, 11.00, 15.00
+8, Aeliana, 4.40, 4.20
+8, Light Infantry Man, 26.00, 34.00
+8, Cosmic Crusader, 6.50, 7.50
+8, Ohope Wins, 41.00, 51.00
+8, Middle Earth, 26.00, 51.00
+8, She's A Hustler, 19.00, 17.00
+8, Buckaroo, 11.00, 15.00
+8, Sir Delius, 3.40, 2.80
+8, Kings Valley, 81.00, 126.00
+8, Asterix, 51.00, 71.00
+8, Deakin, SCR
+8, Saint George, 11.00, 13.00
+8, Half Yours, 15.00, 13.00
+8, Soul Of Spain, SCR
+9, War Machine, SCR
+9, Desert Lightning, SCR
+9, Hedged, 7.00, 8.00
+9, Inkaruna, SCR
+9, Skybird, 5.45, 3.30
+9, Winnasedge, 17.00, 19.00
+9, Losesomewinmore, 11.00, 9.00
+9, De Bergerac, 21.00, 13.00
+9, Jenni The Fox, SCR
+9, King Zephyr, 15.00, 16.00
+9, Arkansaw Kid, 11.00, 6.50
+9, Jimmy Recard, 15.00, 14.00
+9, Enriched, 21.00, 19.00
+9, Smooth Chino, 5.50, 6.50
+10, Kaye Jay, SCR
+10, Roulette King, SCR
+2, Savilla, SCR
+2, Cooly, SCR
+2, Hankee Alpha, SCR
+2, Ivan's Hero, SCR
+5, Butternut Princess, SCR
+5, Beside The Ocean, SCR
+5, Illyivy, SCR
+5, Grand Omaha, SCR
+7, Tajanis, SCR
+7, Think Giant, SCR
+7, Beach Pad, SCR
+7, Suffolk Star, SCR
