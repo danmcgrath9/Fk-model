@@ -1,9 +1,9 @@
-race,deduction
-1,0.588
-2,0.111
-3,0.575
-4,0.750
-5,0.000
-6,0.342
-7,0.430
-8,0.330
+race,deduction,source
+1,0.560,estimate: Tabcorp scale on scratched runners' last FK price
+2,0.100,estimate: Tabcorp scale on scratched runners' last FK price
+3,0.550,estimate: Tabcorp scale on scratched runners' last FK price
+4,0.740,estimate: Tabcorp scale on scratched runners' last FK price
+5,0.000,estimate: Tabcorp scale on scratched runners' last FK price
+6,0.330,estimate: Tabcorp scale on scratched runners' last FK price
+7,0.400,estimate: Tabcorp scale on scratched runners' last FK price
+8,0.300,estimate: Tabcorp scale on scratched runners' last FK price
