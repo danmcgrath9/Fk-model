@@ -1,0 +1,19 @@
+# Form King average prices at the Saturday evening pull (about 6:20pm Sat 3 Oct). race, horse, opening, current. Emergencies and runners with no price listed SCR.
+2, Apple Eyes, SCR
+2, Storming Camelot, SCR
+2, Skilled Sailor, SCR
+2, Prestige Fantastic, SCR
+3, Sondera, SCR
+3, Zelkova, SCR
+3, Boutin, SCR
+4, He's A Dandy, SCR
+4, Naked Light, SCR
+4, Pragmatic Lady, SCR
+4, Imperial Meeting, SCR
+5, Zethus, SCR
+5, Volatile, SCR
+5, Prince Pienza, SCR
+5, Bardia's Dream, SCR
+7, Koyuga Rip, SCR
+7, Corona Lad, SCR
+7, Crown Crusher, SCR
