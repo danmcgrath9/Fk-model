@@ -6,7 +6,7 @@ A runner counts as scratched when it has a stored price for the race and either 
 scratched=true, has no entry any more (a re-pull drops runners Race Form no longer lists),
 or is missing from the results of a run race. An emergency that never gained a start was
 never in the field and causes no deduction, so it is listed but not counted. The deduction
-is fk.paper.deduction_for over the counted runners' last fixed price. Prints CSV between
+is fk.paper.deduction_for (Tabcorp's official scale, added) over the counted runners' last fixed price. Prints CSV between
 CSV-BEGIN and CSV-END. Reads the database only: no Form King calls.
 """
 from __future__ import annotations

@@ -7,6 +7,8 @@ per plan, so "would we be ahead" is a chart with a sample behind it.
 """
 from __future__ import annotations
 
+from pathlib import Path
+
 import re
 
 from dataclasses import dataclass
@@ -268,12 +270,39 @@ def movement_summary(settled: list[dict]) -> dict[str, dict]:
     return out
 
 
-# Deductions. A runner scratched after a fixed-odds bet is struck takes a share of that
-# bet's winnings: roughly the scratched runner's chance at its last price, the basis of both
-# the Australian bookmakers' tables and Betfair's reduction factors. Runners under 2.5% take
-# nothing (Betfair's threshold), and the total is capped at 75c in the dollar.
-DEDUCTION_MIN = 0.025
-DEDUCTION_CAP = 0.75
+# Deductions. A runner scratched after a fixed-odds bet is struck takes a cut of that bet,
+# set by the official scale on the scratched runner's fixed price at the time it was
+# withdrawn: Tabcorp's published "Schedule of Deductions for Fixed Odds Racing Betting"
+# (NSW and Victoria; help.tab.com.au, fetched 3 Oct 2026), kept in config/tab_deductions.csv.
+# Every scratched runner's win deduction is looked up and they ADD (TABtouch: "simply add the
+# deductions together"); a price over $51 deducts nothing. The cut comes off the WHOLE price
+# (the ticket's face value), not just the winnings: $10 with 50c of deductions pays $5.
+# Until 3 Oct this used 1/price capped at 75c, which overstated it (Warrnambool R5: 48c
+# estimated against TAB's 31c).
+DEDUCTION_TABLE = Path(__file__).resolve().parent.parent / "config" / "tab_deductions.csv"
+_SCALE: list[tuple[float, float, int]] | None = None
+
+
+def deduction_scale() -> list[tuple[float, float, int]]:
+    """(price_from, price_to, win_cents) rows of the official scale, read once."""
+    global _SCALE
+    if _SCALE is None:
+        import csv
+        with open(DEDUCTION_TABLE, newline="") as fh:
+            _SCALE = [(float(r["price_from"]), float(r["price_to"]), int(r["win_cents"])) for r in csv.DictReader(fh)]
+    return _SCALE
+
+
+def win_deduction(price: float | None) -> float:
+    """Win deduction for one scratched runner at this fixed price, as a share of the dollar.
+    Hand-checked against the scale: $2.00 -> 0.47, $3.00 -> 0.31, $41.00 -> 0.02, $60 -> 0."""
+    if not price or price <= 1.0:
+        return 0.0
+    p = round(price, 2)
+    for lo, hi, cents in deduction_scale():
+        if lo <= p <= hi:
+            return cents / 100.0
+    return 0.0
 
 
 def model_family(label: str | None) -> str:
@@ -293,19 +322,19 @@ def model_family(label: str | None) -> str:
 
 
 def deduction_for(scratched_prices: list[float | None]) -> float:
-    """Share of winnings deducted for late scratchings, from each scratched runner's last
-    price. Hand-checked: $4 and $41 scratched -> 1/4 = 0.25 counts, 1/41 = 0.024 is under
-    2.5% and does not -> 0.25. A runner with no price seen deducts nothing (unknown)."""
-    d = sum(1.0 / p for p in scratched_prices if p and p > 1 and 1.0 / p >= DEDUCTION_MIN)
-    return min(d, DEDUCTION_CAP)
+    """Total deduction for late scratchings: each scratched runner's scale deduction at its
+    last fixed price, added together, never more than the whole dollar. A runner with no
+    price seen deducts nothing (unknown). Hand-checked: $4.00 and $41 scratched -> 0.23 + 0.02 = 0.25."""
+    return min(sum(win_deduction(p) for p in scratched_prices), 1.0)
 
 
 def settle_struck(stake: float, won: bool, price: float, deduction: float | None) -> float:
-    """Units back at the struck price after deductions, which come off the winnings, not
-    the stake. Hand-checked: 1 unit at $5, 25c deduction -> 1 + 4 x 0.75 = 4.0."""
+    """Units back at the struck price after deductions, taken off the WHOLE price (the face
+    value of the ticket), as the bookmaker pays. Hand-checked: 1 unit at $5 with 25c of
+    deductions -> 5 x 0.75 = 3.75; at $10 with 50c -> 5.0."""
     if not won:
         return 0.0
-    return stake + stake * (price - 1.0) * (1.0 - (deduction or 0.0))
+    return stake * price * (1.0 - (deduction or 0.0))
 
 
 def settle(stake: float, won: bool, settle_price: float | None) -> float:

@@ -92,11 +92,16 @@ def test_the_two_settlement_bases_differ_by_the_movement():
 
 
 def test_deductions_hand_values():
-    from fk.paper import deduction_for, settle_struck
-    assert deduction_for([4.0, 41.0]) == 0.25            # $41 is 2.4%, under the 2.5% threshold
+    # Tabcorp's published scale (config/tab_deductions.csv): $2.00 47c, $3.00 31c, $4.00 23c,
+    # $41 2c, over $51 nothing; several scratchings add; the cut comes off the whole price.
+    from fk.paper import deduction_for, settle_struck, win_deduction
+    assert win_deduction(2.0) == 0.47 and win_deduction(3.0) == 0.31 and win_deduction(1.01) == 0.80
+    assert win_deduction(60.0) == 0.0 and win_deduction(None) == 0.0
+    assert round(deduction_for([4.0, 41.0]), 2) == 0.25    # 23c + 2c
     assert deduction_for([None]) == 0.0                   # no price seen: nothing deducted
-    assert deduction_for([1.5, 1.5]) == 0.75              # capped at 75c
-    assert settle_struck(1.0, True, 5.0, 0.25) == 4.0     # 1 + 4 x 0.75
+    assert deduction_for([1.01, 1.01]) == 1.0             # never more than the whole dollar
+    assert settle_struck(1.0, True, 10.0, 0.50) == 5.0    # $10 with 50c of deductions pays $5
+    assert settle_struck(1.0, True, 5.0, 0.25) == 3.75    # 5 x 0.75
     assert settle_struck(1.0, True, 5.0, None) == 5.0
     assert settle_struck(1.0, False, 5.0, 0.25) == 0.0
 
@@ -108,7 +113,7 @@ def test_void_bets_are_left_out_of_every_figure():
     s = summarise(bets)["value_flags"]
     assert (s.bets, s.staked, s.returned) == (1, 1.0, 5.0)
     t = summarise_at_struck(bets)["value_flags"]
-    assert (t.bets, t.returned) == (1, 1.0 + 3.0 * 0.75)  # the winner at $4 less a 25c deduction
+    assert (t.bets, t.returned) == (1, 4.0 * 0.75)  # the winner at $4 less 25c off the whole price
 
 
 def test_a_refit_does_not_start_a_new_scoreboard():
