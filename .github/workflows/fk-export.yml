@@ -49,7 +49,7 @@ jobs:
         if: github.event.inputs.date != ''
         run: |
           TRACK_ARG=""
-          [ -n "${{ github.event.inputs.track }}" ] && TRACK_ARG="--track ${{ github.event.inputs.track }}"
+          [ -n "${{ github.event.inputs.track }}" ] && TRACK_ARG="--track '${{ github.event.inputs.track }}'"
           [ -n "${{ github.event.inputs.going }}" ] && TRACK_ARG="$TRACK_ARG --going '${{ github.event.inputs.going }}'"
           eval python scripts/export_dataset.py --date "${{ github.event.inputs.date }}" $TRACK_ARG --out /tmp/up/upcoming.npz | tee -a "$GITHUB_STEP_SUMMARY"
           REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
