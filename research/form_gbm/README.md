@@ -277,3 +277,10 @@ The founder's question: fold the rules into the price instead of blocking. Two v
 - An overlay surcharge (each risk flag adds to the overlay needed): 10c + 40c a flag, 2,290 bets +5.1%; 10c + 100c a
   flag, 1,832 bets +8.3%. Blocking every flagged horse (7 flags incl. wide draw): 1,329 bets +13.7% (+9.9% older,
   +20.4% newer). The softer the treatment, the worse the return: the flags mark where the model is wrong, not slightly off.
+
+## Betting at BSP with a minimum price (4 Oct 2026, t_loc.py)
+
+The strategy an unattended bot could run (Betfair limit-on-close: back at BSP only if BSP is at least 1.2x our price)
+loses on the holdout: -9.2% at BSP over 4,183 bets with no rules, -6.6% over 2,067 with the risk flags blocked
+(1.1x and 1.3x are no better). A horse whose BSP drifts past our price has usually drifted for a reason. Whatever
+edge there is sits at the early price, before the market moves, which is the price a bot can least easily get.
