@@ -13,6 +13,9 @@ on:
         description: 'track as stored, e.g. Caulfield'
         required: true
 
+permissions:
+  contents: write
+
 concurrency:
   group: fk-daily-pull
   cancel-in-progress: false
@@ -27,7 +30,7 @@ jobs:
       PYTHONUNBUFFERED: '1'
       DATABASE_URL: ${{ secrets.FK_DATABASE_URL }}
       FK_MAX_CREDITS_PER_RUN: ${{ vars.FK_MAX_CREDITS_PER_RUN || '600' }}
-      FK_MIN_BALANCE: ${{ vars.FK_MIN_BALANCE || '1000' }}
+      FK_MIN_BALANCE: ${{ vars.FK_MIN_BALANCE || '100' }}
       FK_API_KEY: ${{ secrets.FK_API_KEY }}
     steps:
       - uses: actions/checkout@v4
@@ -42,3 +45,13 @@ jobs:
           LIVE_FLAG="$(echo "${{ vars.FK_LIVE }}" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
           [ "$LIVE_FLAG" = "true" ] || { echo "FK_LIVE is not true"; exit 1; }
           python scripts/meeting_ratings.py --key live --yes --date "${{ github.event.inputs.date }}" --track "${{ github.event.inputs.track }}"
+      - name: Keep the CSV on the experiments branch
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          rm -rf /tmp/exp && git clone -q --depth 1 --branch experiments "$REMOTE" /tmp/exp
+          mkdir -p /tmp/exp/meeting_ratings && cp data/meeting_ratings/*.csv /tmp/exp/meeting_ratings/ 2>/dev/null || true
+          cd /tmp/exp && git config user.name "fk ratings" && git config user.email "actions@users.noreply.github.com"
+          git add -A && git commit -q -m "meeting ratings ${{ github.event.inputs.date }} ${{ github.event.inputs.track }}" && git push -q "$REMOTE" experiments || echo "nothing new"
