@@ -12,6 +12,7 @@ python3 blend_f9.py
 python3 t_b9_s2.py | tee t_b9_s2.out | tail -2
 grep "stage-2 v4" t_b9_s2.out | sed -E 's/.*KL ([0-9.]+).*/\1/' > holdout.txt
 python3 stage2e_train.py p_oof_blend9.npy 400
+python3 stage2f_train.py p_oof_blend9.npy 400
 python3 train_all_f9.py
 python3 cb_all_f9.py
 echo "holdout KL $(cat holdout.txt)"

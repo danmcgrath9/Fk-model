@@ -284,3 +284,25 @@ The strategy an unattended bot could run (Betfair limit-on-close: back at BSP on
 loses on the holdout: -9.2% at BSP over 4,183 bets with no rules, -6.6% over 2,067 with the risk flags blocked
 (1.1x and 1.3x are no better). A horse whose BSP drifts past our price has usually drifted for a reason. Whatever
 edge there is sits at the early price, before the market moves, which is the price a bot can least easily get.
+
+## Research pass, 4 Oct 2026: Benter, the academic models, the Betfair Hub, Australian pros (stage-2 inputs, holdout KL to BSP, live 0.0806)
+
+Sources read: Benter 1994 (the annotated paper), Bolton & Chapman 1986, Lessmann/Sung/Johnson, the Betfair Hub automation
+tutorials, a 562,000-runner AU/NZ study (BSP is calibrated within 0.2 points across the odds range: no favourite-longshot
+bias to harvest), and what is public of Lawson, Lester, Accardi, O'Sullivan and the King Zone. Benter's factor list is
+covered by Form King's inputs except two adjustments to past runs (barrier drawn, bad luck) and distance preference as a
+standardised slope (his DP6A). Tested, two seeds unless stated:
+
+| input | KL | note |
+|---|---|---|
+| travel: km from the stable's town to the track (pros: "the stable has travelled it") | 0.0803 | 4 seeds 0.0802-0.0805; older 0.0742, newer 0.0888 |
+| collateral form: how last start's rivals went next time (Benter's key race) | 0.0805 | 4 seeds 0.0804-0.0806 |
+| **travel + collateral** | **0.0800** | 4 seeds 0.0800-0.0802; older 0.0740, newer 0.0886: both halves |
+| Benter DP6A distance preference (slope of vsClass on distance similarity / its SE) | 0.0806 | nothing |
+| past-barrier adjustment to each past run's vsClass | 0.0806 | nothing |
+| bad luck: closed from the back far faster than the overall rating | 0.0807 | nothing |
+| King Zone in-day bias (where earlier winners today settled / drew, x this horse's style and draw) | 0.0805 | noise |
+| round-2 pro ideas (bounce, second-up, weight change, pace count, lone speed, backing up) | 0.0806 | see above; betting rules instead |
+
+Stage 2 v6 = v5 + travel + collateral (stage2.travel, stage2.collateral, stage2.last_start; stage2f_train.py,
+apply_stage2f.py). Town coordinates are approximate and hand-entered (LL in stage2.py); an unknown town takes the median.

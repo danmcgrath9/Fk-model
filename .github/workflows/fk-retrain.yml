@@ -75,7 +75,7 @@ jobs:
           if [ "${PROMOTE:-no}" = "yes" ]; then DEST=/tmp/models; ROLE=live; else DEST=/tmp/models/challenger; ROLE=challenger; fi
           mkdir -p "$DEST"
           for f in all9_sm*.txt all9_rg*.txt S_hist.npy; do gzip -c "$f" > "$DEST/$f.gz"; done
-          cp cb_all9.cbm p_oof_blend9.npy S_fields.npy stage2e_*.txt "$DEST/"
+          cp cb_all9.cbm p_oof_blend9.npy S_fields.npy stage2e_*.txt stage2f_*.txt "$DEST/"
           python3 -c "import json; json.dump({'role': '$ROLE', 'holdout_kl': $NEW, 'races': '$RACES', 'trained_through': '$LAST', 'trained_utc': '$(date -u +%Y-%m-%dT%H:%MZ)', 'note': 'holdout KL is a did-anything-break check, not a comparison with the live model'}, open('$DEST/metrics.json','w'), indent=1)"
           { echo "## Retrain"; echo "races (count, last date): $RACES"; echo "holdout KL to BSP: $NEW (a did-anything-break check; not comparable with the live model's figure)"; echo "saved as: $ROLE"; } | tee -a "$GITHUB_STEP_SUMMARY"
           cd /tmp/models && git config user.name "fk retrain" && git config user.email "actions@users.noreply.github.com"
