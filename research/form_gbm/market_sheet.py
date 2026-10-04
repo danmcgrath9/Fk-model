@@ -93,7 +93,8 @@ for race in sorted(races):
         if blocked: tags.append("<span class='tag no'>no bet</span>")
         else:
             if now and pp * now - 1 >= 0.2:
-                stake = min(3.0, (pp * now - 1) / 0.2)      # stake by overlay: 20c over = 1 unit, 60c+ = 3 units (the cap)
+                pbl = (pp / now) ** 0.5                       # chance halfway (geometric) between ours and the market's: Kelly under estimation error
+                stake = min(4.0, 75 * max(0.0, (pbl * now - 1) / (now - 1)))   # Kelly x75 on that blend, capped at 4 units (t_stakeplan.py, 4 Oct 2026)
                 tags.append(("<span class='tag edge'>EDGE</span>" if a else "<span class='tag val'>value</span>") + f"<span class='tag'>stake {stake:.1f}u = ${100 * stake:,.0f}</span>")
             if early: tags.append("<span class='tag early'>early only</span>")
         th = T[i]; order = np.argsort(th); ups = [(tnames[j], th[j]) for j in order[::-1][:3] if th[j] > 0.08]; dns = [(tnames[j], th[j]) for j in order[:3] if th[j] < -0.08]

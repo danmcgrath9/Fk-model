@@ -331,3 +331,16 @@ On the live bet set in the backtest (value 20c+, all rules, our price $2-$15, 1,
 at the open / -0.5% at BSP; stake by overlay (20c over = 1 unit, 60c+ = 3) +72.6% / -0.7%; quarter Kelly +71.1% / +2.5%
 but a biggest bet of 8.6 units. Adopted: stake by overlay, capped at 3 units, on EDGE and value bets (paper_open.py,
 market_sheet.py); top pick stays 1 unit.
+
+## Sizing and confidence, from outside racing (4 Oct 2026, t_confidence.py, t_stakeplan.py, t_targetmix.py)
+
+Holdout, live bet set (1,186 bets), $100 a unit. Kelly under estimation error (Baker and McHale; Chu, Wu and Swartz):
+size on a chance halfway between ours and the market's. Kelly x75 on the 50/50 blend, cap 4u: +64.7% at the open and
++0.2% at BSP at an average stake of 2.0u, worst drawdown about $7,400 typical / $11,000 in a bad season, against
++61.6% / -3.3% and $10,400 / $16,200 for stake-by-overlay cap 3 (avg 2.3u). Adopted. It moves money toward the $2-$6
+horses (where the edge held at BSP) and off the $9-$15 overlays. Ensemble disagreement (trees vs net vs CatBoost):
+the most-disagreed third of bets is worst (open +34%, BSP -16%) but the middle third beats the most-agreed, so a watch,
+not a rule. Races with 2+ bets: +74% open / +4.5% BSP against +41% / -17% for single-bet races (watch). Kelly across
+the runners of one race: no different from independent stakes. Fitting stage 2 to 85% BSP + 15% winner: no gain.
+Closing line value: 77% of our bets shortened from the open to BSP, median move -28%; of the horses we price UNDER
+the open, 18% shortened (median +53%). That is the edge in one line: the market moves toward us.

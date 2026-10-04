@@ -2,7 +2,8 @@
 
 First-starter rule (4 Oct 2026, t_fs_split.py): no EDGE or value bet on a first-starter (FS_JSON from fs_json.py), and none in a
 race with a first-starter at $6 or shorter at the open. Like the race page, no value bet when our price is $50+ or the
-open is 3x our price or more. Stake: EDGE and value bets are staked by overlay, 20c over = 1 unit, capped at 3 units (4 Oct 2026, t_staking.py); top pick 1 unit.
+open is 3x our price or more. Stake (4 Oct 2026, t_stakeplan.py): EDGE and value bets take Kelly x75 on a 50/50 blend of our chance and the market's,
+capped at 4 units (average about 2 units); top pick 1 unit.
 Top pick is a tracking plan and stays unless the top pick is a first-starter."""
 import json, re, csv, collections, sys
 norm=lambda s: re.sub(r"[^a-z0-9]","",s.lower())
@@ -36,7 +37,7 @@ for k in sorted(by):
         tags=(["EDGE"] if bet_ok and val>=0.2 and a else [])+(["value_20c"] if bet_ok and val>=0.2 else [])+(["top_pick"] if r is top and not isfs(r) else [])
         for t in tags:
             rows.append(dict(race=k,race_id=r["race_id"],horse=r["horse"],plan=t,price=op,price_now=cur,model_price=round(1/pp,2),value=round(val,3),
-                             angles="; ".join(a)+("; EARLY ONLY: bet near the open" if is_early else ""),stake=(round(min(3.0,val/0.2),2) if t in ("EDGE","value_20c") else 1.0),hurdle="yes" if k in hurdle else "no",result="",returned=""))
+                             angles="; ".join(a)+("; EARLY ONLY: bet near the open" if is_early else ""),stake=(round(min(4.0,75*max(0.0,((pp/op)**0.5*op-1)/(op-1))),2) if t in ("EDGE","value_20c") else 1.0),hurdle="yes" if k in hurdle else "no",result="",returned=""))
 with open(out,"w",newline="") as fh:
     w=csv.DictWriter(fh,fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
 for r in rows:
