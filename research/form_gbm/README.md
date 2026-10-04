@@ -188,3 +188,24 @@ Value 20c+ bets on other horses, by race type (p_oof_blend9, all races): no firs
 (577 bets; newer races -23% at BSP). Backed first-starters win 24.4% against 18.6% the model gives them (market
 21.9%). The pages (market_tpl.html) drop the EDGE tag in such a race and say why; paper bets carry fs_backed_race.
 (Open-price ROI here has no deductions taken off; BSP is unaffected.)
+
+## Pro punters' ideas tested (4 Oct 2026)
+
+Vince Accardi (Race Speed Profiles), Dan O'Sullivan (WFA ratings, wet tracks), Kingsley Bartholomew (The King Zone:
+barriers, track bias). As stage-2 inputs (t_research.py, holdout KL, live 0.0806): all three sections above the field
+0.0806, best this prep 0.0805, wet-track indicator 0.0806, best zone at the 800 0.0805, all four 0.0808: no gain.
+As filters on value 20c+ bets at BSP (t_research_filter.py, t_kingsley.py; all value bets -14.1%, newer -13.0%):
+
+| filter | bets | BSP all | BSP newer |
+|---|---|---|---|
+| all three sections above the field last run (angle added) | 713 | -0.5% | +1.2% |
+| blinkers first time (angle added) | 476 | +9.1% | +26.9% |
+| wet today, 1L+ worse on wet (no EDGE) | 887 | -27.9% | -32.3% |
+| wide draw (outer quarter, 10+ field), usually back (no EDGE) | 358 | -47.8% | -41.4% |
+| wide draw at 1600m+ (no EDGE) | 383 | -22.3% | -28.9% |
+| wide draw in a sprint (watch, not used) | 383 | +9.5% | +23.4% |
+| last run 3L+ below best this prep (watch) | 440 | +3.9% | +7.1% |
+| best zone at the 800 | | no use | no use |
+
+Cut-offs were chosen on all races, so these are looked-at results, not clean out-of-sample: the newer-races column
+agreeing in direction is the check. Re-judge on live paper bets.

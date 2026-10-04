@@ -33,6 +33,11 @@ with np.errstate(invalid="ignore", all="ignore"):
     vc=R[:,:,f["vsClass"]]; gbR=R[:,:,f["going_band"]]
     wmean=np.nanmean(np.where(wet(gbR),vc,np.nan),1); dmean=np.nanmean(np.where(gbR==1,vc,np.nan),1)
     weakwet=wet(going)&np.isfinite(wmean)&np.isfinite(dmean)&(wmean-dmean<=-1)
+    # Kingsley Bartholomew (The King Zone): a wide barrier costs more than people think. Value 20c+ bets drawn in the
+    # outer quarter of a 10+ field that usually race back (settle in the back 40%) lost 48% at BSP over 358 (41% newer);
+    # drawn wide at 1600m+ lost 22% (29% newer). Neither can be an EDGE bet (4 Oct 2026).
+    fld=np.bincount(ri)[ri]; bsh=x("raw_barrier_share"); ssh=x("raw_settle_share")
+    widebad=(bsh>=0.75)&(fld>=10)&((ssh>=0.6)|(dist>=1600))
     lres=np.full(n,np.nan)
     for i in range(n):
         if np.isfinite(R[i,0,f["last600"]]) and Rid[i,0] in tg.index and tg.loc[Rid[i,0],"count"]>=3:
@@ -49,12 +54,14 @@ with np.errstate(invalid="ignore", all="ignore"):
      "Class drop (rating)":np.isfinite(rr("raceRating",0))&(rr("raceRating",0)>=lws+3),
      "Late 600 beyond the tempo":np.isfinite(lres)&(lres>=q5),
      "Above the field in all three sections":all3,
+     # first-time blinkers: value 20c+ bets +9% at BSP over 476 (+27% over 179 newer races), 4 Oct 2026
+     "Blinkers first time":x("blinkers_first")==1,
     }
 res={}
 for i in range(n):
     # Wet today and the horse rates 1L+ worse (vs class) on soft/heavy than on good: value bets on these lost 28% at BSP
     # (887 bets; 32% on the newer races), so no angle can make one an EDGE bet (4 Oct 2026).
-    if bool(weakwet[i]): res[f"{int(U['race_number'][ri[i]])}|{str(U['name'][i])}"]=[]; continue
+    if bool(weakwet[i]) or bool(widebad[i]): res[f"{int(U['race_number'][ri[i]])}|{str(U['name'][i])}"]=[]; continue
     tags=[k for k,m in A.items() if bool(m[i])]
     res[f"{int(U['race_number'][ri[i]])}|{str(U['name'][i])}"]=tags
 json.dump(res,open(out,"w"),indent=0); print(sum(1 for v in res.values() if v),"of",n,"runners carry an angle")
