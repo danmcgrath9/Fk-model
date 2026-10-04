@@ -267,3 +267,13 @@ these horses on average; the model is wrong when it calls one of them value. Ado
 (bounce, second-up after a good first-up, weight down 2kg+). The three were chosen from about twenty tests on the same
 races, so the +8.2% is the optimistic end; the live paper book is the check. Race prize money is not in the data, so
 class-by-prize was not tested. Bendigo 4 Oct under every rule: no value bets (Shapenapit blocked as a bounce).
+
+## Rules vs one trust layer vs an overlay surcharge (4 Oct 2026, t_trust.py, t_surcharge.py)
+
+The founder's question: fold the rules into the price instead of blocking. Two versions, value bets at BSP on the holdout:
+- A learned blend of our chance and the opening market's, with the weight on ours set by the risk flags (fit on one
+  half, tested on the other): closer to BSP (KL 0.0866 -> 0.0783 and 0.0744 -> 0.0715) but value bets lose 5-9% at BSP,
+  and the flags' effect on trust flips sign between halves.
+- An overlay surcharge (each risk flag adds to the overlay needed): 10c + 40c a flag, 2,290 bets +5.1%; 10c + 100c a
+  flag, 1,832 bets +8.3%. Blocking every flagged horse (7 flags incl. wide draw): 1,329 bets +13.7% (+9.9% older,
+  +20.4% newer). The softer the treatment, the worse the return: the flags mark where the model is wrong, not slightly off.
