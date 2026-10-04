@@ -32,7 +32,8 @@ function race(r){
   // bets against a first-starter at $6 or shorter lost 39% (205). So no bet of any kind on a first-starter, and no bets in such a race.
   const fsb=live.filter(x=>x.fs&&x.n>1&&x.n<=6);
   rs.forEach(x=>{x.bets=[];x.kel=0;x.ev=null; if(x.sx)return; x.pp=x.p/tot; x.fair=1/x.pp; const pr=x.n;
-    if(pr>1){x.ev=x.pp*pr-1; const ok=x.fair<50&&pr<3*x.fair&&!x.fs&&!fsb.length&&!x.fu;   // x.fu: no-bet rules (fu_json.py): first-up, bounce, second-up, weight down
+    if(pr>1){x.ev=x.pp*pr-1; const early=x.fu&&x.fu.startsWith("EARLY:"); const block=x.fu&&!early||(early&&(x.o||pr)>8);   // fu_json.py: blocks, or EARLY (second-up after a good first-up: allowed at $8 or shorter at the open, bet near the open only)
+      const ok=x.fair<50&&pr<3*x.fair&&!x.fs&&!fsb.length&&!block;
       if(x===top)x.bets.push("Top pick");
       if(ok&&x.ev>0.2)x.bets.push("Value 20c");
       if(ok&&x.ev>0.2&&x.a&&x.a.length)x.bets.unshift("Edge");
@@ -50,7 +51,7 @@ function race(r){
     const cls=(k<2?"top ":"")+(x.bets.includes("Edge")?"best":x.bets.some(t=>t!=="Top pick")?"bet":"");
     const rule=x.fair*1.1<3?`${fm(x.fair*1.1)}+ (under $3)`:(x.s&&x.fair*1.5>=3&&x.fair*1.5<=20?`${fm(x.fair*1.5)} to $20`:"");
     const ev=x.ev==null?"":`${x.ev>=0?"+":""}${Math.round(x.ev*100)}%`;
-    h+=`<tr class="${cls}">${btn}<td class="l nm">${x.h}${x.fs?" (FS)":""}${x.fu?" (no bet)":""}${x.a&&x.a.length?" ⚡":""}</td><td class="f">${fm(x.fair)}</td><td>${fm(x.n)}</td><td class="${x.ev>0.2?"pos":""}">${ev}</td><td class="l">${x.bets.map(t=>t==="Edge"?`<b>EDGE</b>`:t).join(", ")}</td><td class="l ang">${x.fu?`<b>No bet:</b> ${x.fu}. `:""}${(x.a||[]).join("; ")}</td><td>${x.kel?x.kel.toFixed(2):""}</td><td>${fm(x.o)}</td><td>${(x.pp*100).toFixed(1)}%</td><td>${fm(x.fair*1.2)}</td><td>${rule}</td><td>${x.b??""}</td><td class="l">${x.j}</td></tr>`;});
+    h+=`<tr class="${cls}">${btn}<td class="l nm">${x.h}${x.fs?" (FS)":""}${x.fu&&!x.fu.startsWith("EARLY:")?" (no bet)":""}${x.fu&&x.fu.startsWith("EARLY:")?((x.o||x.n)>8?" (no bet)":" (EARLY ONLY)"):""}${x.a&&x.a.length?" ⚡":""}</td><td class="f">${fm(x.fair)}</td><td>${fm(x.n)}</td><td class="${x.ev>0.2?"pos":""}">${ev}</td><td class="l">${x.bets.map(t=>t==="Edge"?`<b>EDGE</b>`:t).join(", ")}</td><td class="l ang">${x.fu&&!x.fu.startsWith("EARLY:")?`<b>No bet:</b> ${x.fu}. `:""}${x.fu&&x.fu.startsWith("EARLY:")?`<b>${(x.o||x.n)>8?"No bet (over $8)":"Early only"}:</b> ${x.fu.slice(7)}. `:""}${(x.a||[]).join("; ")}</td><td>${x.kel?x.kel.toFixed(2):""}</td><td>${fm(x.o)}</td><td>${(x.pp*100).toFixed(1)}%</td><td>${fm(x.fair*1.2)}</td><td>${rule}</td><td>${x.b??""}</td><td class="l">${x.j}</td></tr>`;});
   return h+"</table></div>";
 }
 const races=Object.keys(DATA).map(Number).sort((a,b)=>a-b), box=document.getElementById("races");

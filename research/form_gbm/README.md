@@ -317,3 +317,10 @@ is not capacity spent on roughies; a third of it is the roughies' share of the r
 and the rest is the band itself. Value bets at BSP by OUR price: $2-$15 1,000 bets -0.1% (older -0.6%, newer +0.8%);
 over $15 +59% on 318 bets, but wins/model 1.27 (2.18 at $25-$50) says those are the back-filled opening prices being
 softest on roughies, not a real edge. Betting inside $2-$15 is break-even at BSP and depends entirely on beating the open.
+
+## Second-up after a good first-up: the open under-rates them (4 Oct 2026, t_secup_open.py)
+
+Our 200 value bets on them: won 19.5%, open-implied 14.3%, BSP-implied 20.4%, model 21.6%; they firmed 21% to the jump
+(71% shortened). +17% at the open, -32% at BSP. By open price: $1-$4 +79%/+36% (30 bets), $4-$8 +18%/-35%, $8-$15
++12%/-41%, $15+ -10%/-58%. The block (built off BSP) was costing an open-price bettor, so it is now an EARLY-ONLY tag:
+allowed at $8 or shorter at the open, blocked above, and the page says to take the opening price or leave it.

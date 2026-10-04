@@ -11,3 +11,7 @@ Settle at the price actually taken (with deductions on the TAB scale for late sc
 
 Update 4 Oct evening: the round-2 no-bet rules block Corviglia (second-up after running 2nd first-up). Genomic and
 Sky Watcher stand. If Corviglia was already backed, settle it on its own line so the rule's effect can be counted.
+
+Update 4 Oct, late: second-up after a good first-up is an EARLY-ONLY tag, not a block (t_secup_open.py: +17% at the
+open, -32% at BSP; allowed at $8 or shorter). Corviglia is back as an EDGE bet at $3.70 (take at $3.60 or better, ours
+$3.00 on v6): bet near the opening price or not at all. Three bets: Genomic, Corviglia, Sky Watcher.
