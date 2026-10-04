@@ -18,3 +18,8 @@ $3.00 on v6): bet near the opening price or not at all. Three bets: Genomic, Cor
 
 Update 4 Oct, staking (final): Kelly x75 on a 50/50 blend of our chance and the market's, cap 4u, $100 a unit.
 Genomic $10.00: 1.9u = $190. Corviglia $3.70 (early only, $3.60 or better): 3.1u = $310. Sky Watcher $10.00: 0.9u = $90.
+
+Mon 5 Oct 09:50: CORVIGLIA SCRATCHED (R5): the $310 is refunded, no bet. R3: Salarae ($6) and Silky Seth ($4.60) scratched
+after the 5pm prices: Genomic reprices $6.66 -> $4.85 in the remaining field; a $10 bet placed last night carries a 36c
+deduction (effective $6.40, still +32% over ours); the price now is $10 (+106%, take at $5.83 or better). R8: Kakkoii
+($10) scratched: Sky Watcher $8.20 -> $7.28; a $10 bet from last night carries 9c (effective $10.92); price now $12.
