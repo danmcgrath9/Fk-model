@@ -92,7 +92,9 @@ for race in sorted(races):
         a = ang.get(hk, []); tags = []
         if blocked: tags.append("<span class='tag no'>no bet</span>")
         else:
-            if now and pp * now - 1 >= 0.2: tags.append("<span class='tag edge'>EDGE</span>" if a else "<span class='tag val'>value</span>")
+            if now and pp * now - 1 >= 0.2:
+                stake = min(3.0, (pp * now - 1) / 0.2)      # stake by overlay: 20c over = 1 unit, 60c+ = 3 units (the cap)
+                tags.append(("<span class='tag edge'>EDGE</span>" if a else "<span class='tag val'>value</span>") + f"<span class='tag'>stake {stake:.1f}u = ${100 * stake:,.0f}</span>")
             if early: tags.append("<span class='tag early'>early only</span>")
         th = T[i]; order = np.argsort(th); ups = [(tnames[j], th[j]) for j in order[::-1][:3] if th[j] > 0.08]; dns = [(tnames[j], th[j]) for j in order[:3] if th[j] < -0.08]
         why = " · ".join([f"<span class='up'>{t} {pct(c)}</span>" for t, c in ups] + [f"<span class='dn'>{t} {pct(c)}</span>" for t, c in dns]) or "nothing stands out either way"

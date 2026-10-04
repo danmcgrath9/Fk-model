@@ -324,3 +324,10 @@ Our 200 value bets on them: won 19.5%, open-implied 14.3%, BSP-implied 20.4%, mo
 (71% shortened). +17% at the open, -32% at BSP. By open price: $1-$4 +79%/+36% (30 bets), $4-$8 +18%/-35%, $8-$15
 +12%/-41%, $15+ -10%/-58%. The block (built off BSP) was costing an open-price bettor, so it is now an EARLY-ONLY tag:
 allowed at $8 or shorter at the open, blocked above, and the page says to take the opening price or leave it.
+
+## Staking (4 Oct 2026, t_staking.py)
+
+On the live bet set in the backtest (value 20c+, all rules, our price $2-$15, 1,011 bets, average bet 1 unit): flat +56.4%
+at the open / -0.5% at BSP; stake by overlay (20c over = 1 unit, 60c+ = 3) +72.6% / -0.7%; quarter Kelly +71.1% / +2.5%
+but a biggest bet of 8.6 units. Adopted: stake by overlay, capped at 3 units, on EDGE and value bets (paper_open.py,
+market_sheet.py); top pick stays 1 unit.
