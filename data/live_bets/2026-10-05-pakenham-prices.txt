@@ -1,0 +1,125 @@
+# Pakenham Synthetic Mon 5 Oct: Form King best price pulled Sun 4 Oct ~5pm, in both the price-taken and now columns; the fifth field is Form King's average opening price, for the record. Emergencies and three runners that started at Bendigo today (Volestain, Adakite, Majestic Flyer) listed as SCR.
+1, Helvecchio, 2.40, 2.40, fk_open 2.00
+1, Adakite, SCR
+1, Autumn Rainbow, SCR
+1, Majestic Flyer, SCR
+1, Prime Force, 6.50, 6.50, fk_open 6.00
+1, Tuzemak, 6.50, 6.50, fk_open 6.00
+1, Novamira, 10.00, 10.00, fk_open 7.50
+1, Viking Kid, 3.70, 3.70, fk_open 9.00
+1, Seven Sons, 81.00, 81.00, fk_open 51.00
+1, Enticement, SCR
+1, Volestain, SCR
+1, Teen Torque, 23.00, 23.00, fk_open 17.00
+1, Ocean Surge, 81.00, 81.00, fk_open 51.00
+1, Fine And Sunny, 41.00, 41.00, fk_open 51.00
+1, Boutin, 41.00, 41.00, fk_open 51.00
+1, Nova Eclipse, 81.00, 81.00, fk_open 51.00
+2, More Foxie, 8.50, 8.50, fk_open 5.50
+2, Sneaky Russian, 7.00, 7.00, fk_open 5.50
+2, Hedjet, 1.95, 1.95, fk_open 2.00
+2, Windsor Chariot, 7.50, 7.50, fk_open 9.00
+2, Tecknoking, 11.00, 11.00, fk_open 15.00
+2, Diesel Desmond, 7.50, 7.50, fk_open 9.00
+2, Angelotti, 27.00, 27.00, fk_open 26.00
+2, Pierrobid, 71.00, 71.00, fk_open 51.00
+2, Fram Strait, 27.00, 27.00, fk_open 26.00
+2, Table Twentyeight, SCR
+2, Marco Polo, SCR
+2, Flying Riches, SCR
+2, Gypsy Moon, 126.00, 126.00, fk_open 101.00
+2, Moonlight Romance, SCR
+2, Shiny Diamond, 19.00, 19.00, fk_open 17.00
+2, Lacessit, 151.00, 151.00, fk_open 101.00
+3, Silky Seth, 5.00, 5.00, fk_open 4.40
+3, Trouble'n Paradise, SCR
+3, Egyptian Thorn, 5.00, 5.00, fk_open 4.40
+3, Parera, 15.00, 15.00, fk_open 11.00
+3, Genomic, 10.00, 10.00, fk_open 9.00
+3, Monsieur Claude, SCR
+3, Angling Angel, 4.00, 4.00, fk_open 7.50
+3, Salarae, 7.00, 7.00, fk_open 6.00
+3, Little Richo, 15.00, 15.00, fk_open 15.00
+3, The Minstrel Boy, 6.00, 6.00, fk_open 6.00
+3, Maharani Miss, SCR
+3, Ying Moon, 34.00, 34.00, fk_open 26.00
+3, Spin Class, 151.00, 151.00, fk_open 101.00
+3, I'm Mim, 23.00, 23.00, fk_open 17.00
+3, Station Road, 151.00, 151.00, fk_open 101.00
+4, The Troubleshooter, 5.50, 5.50, fk_open 4.40
+4, Nishioka, 7.00, 7.00, fk_open 7.00
+4, Servenia, SCR
+4, Loaded, 3.60, 3.60, fk_open 5.50
+4, Heavy Is The Head, 18.00, 18.00, fk_open 13.00
+4, Written Velocity, 8.00, 8.00, fk_open 13.00
+4, Bee Admired, 6.00, 6.00, fk_open 5.50
+4, Silver Snow, SCR
+4, Xuxa Kiss, 13.00, 13.00, fk_open 8.50
+4, Emanating, 9.00, 9.00, fk_open 13.00
+4, Motherduck, 101.00, 101.00, fk_open 51.00
+4, La Velocita, SCR
+4, The Secret, 26.00, 26.00, fk_open 17.00
+4, Powershare, SCR
+5, Vantaa, 2.15, 2.15, fk_open 4.00
+5, Corviglia, 3.70, 3.70, fk_open 4.00
+5, Cowboykickedfive, 16.00, 16.00, fk_open 11.00
+5, Zverev, 7.50, 7.50, fk_open 13.00
+5, Molesworth, 21.00, 21.00, fk_open 17.00
+5, Doublet, 19.00, 19.00, fk_open 17.00
+5, Corretto, 11.00, 11.00, fk_open 9.00
+5, Hot Spirit, 34.00, 34.00, fk_open 26.00
+5, Latassa, 13.00, 13.00, fk_open 9.00
+5, Bling Baby, 101.00, 101.00, fk_open 101.00
+5, Ask The Captain, SCR
+5, Madame Doubtfire, 101.00, 101.00, fk_open 101.00
+5, Lady Of Alsace, SCR
+5, Ashoka Tano, SCR
+6, Twisted Love, 4.20, 4.20, fk_open 4.00
+6, Caelius, 4.20, 4.20, fk_open 5.00
+6, Mr Margolin, 11.00, 11.00, fk_open 13.00
+6, Chocolate Royal, 11.00, 11.00, fk_open 12.00
+6, Icaro, 6.50, 6.50, fk_open 7.50
+6, Korobeiniki, 10.00, 10.00, fk_open 9.00
+6, Hard To Go Wrong, 34.00, 34.00, fk_open 34.00
+6, Tolpuddle, 5.00, 5.00, fk_open 7.00
+6, Avonview, SCR
+6, Devine Grunt, 34.00, 34.00, fk_open 34.00
+6, So Enchanting, 19.00, 19.00, fk_open 31.00
+7, Bold Print, 3.50, 3.50, fk_open 3.80
+7, Fontalicious, 5.00, 5.00, fk_open 5.25
+7, Helluva Barty, 8.50, 8.50, fk_open 6.00
+7, Irresistible Sir, 26.00, 26.00, fk_open 20.00
+7, Heartattack Jack, 51.00, 51.00, fk_open 51.00
+7, Mr Tickles, 7.00, 7.00, fk_open 4.40
+7, Midnight Devil, 4.60, 4.60, fk_open 7.25
+7, Superliv, 6.00, 6.00, fk_open 5.50
+7, Wind Dreamer, 20.00, 20.00, fk_open 12.00
+7, Anything But, 201.00, 201.00, fk_open 151.00
+8, Sky Watcher, 10.00, 10.00, fk_open 12.00
+8, What A Ripper, SCR
+8, Kakkoii, 10.00, 10.00, fk_open 10.00
+8, Farakta, 5.50, 5.50, fk_open 4.20
+8, New York Scandal, 12.00, 12.00, fk_open 16.00
+8, Kingsbury, 3.80, 3.80, fk_open 3.70
+8, Zourain, SCR
+8, Victoris, 13.00, 13.00, fk_open 10.00
+8, Mamuno, 10.00, 10.00, fk_open 10.00
+8, Ornos, SCR
+8, Russian Roni, 34.00, 34.00, fk_open 23.00
+8, Koolatah Queen, 6.50, 6.50, fk_open 7.00
+8, Russian Front, 8.00, 8.00, fk_open 8.50
+8, Epeiric, 34.00, 34.00, fk_open 23.00
+8, So You Excel, 46.00, 46.00, fk_open 41.00
+8, Tussock, SCR
+9, Tough Romance, 10.00, 10.00, fk_open 13.00
+9, Two To Tango, 4.80, 4.80, fk_open 7.50
+9, Neziha, 4.00, 4.00, fk_open 3.90
+9, Zane Zena, 18.00, 18.00, fk_open 16.00
+9, The Flying Popov, 10.00, 10.00, fk_open 13.00
+9, Headstock, 23.00, 23.00, fk_open 12.00
+9, Balance, 4.00, 4.00, fk_open 2.70
+9, Smart Little Miss, 15.00, 15.00, fk_open 19.00
+9, Empressive Enuff, 11.00, 11.00, fk_open 9.00
+9, Trak Chiller, 34.00, 34.00, fk_open 34.00
+9, Magic Drum, 41.00, 41.00, fk_open 31.00
+9, Alesund, SCR
