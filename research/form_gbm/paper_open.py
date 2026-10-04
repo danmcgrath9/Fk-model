@@ -1,7 +1,11 @@
-"""Paper bets struck at the opening price for a priced meeting. python paper_open.py MODEL_JSON PRICES_TXT ANG_JSON OUT_CSV [HURDLE_RACES]"""
+"""Paper bets struck at the opening price for a priced meeting. python paper_open.py MODEL_JSON PRICES_TXT ANG_JSON OUT_CSV [HURDLE_RACES] [FS_JSON]
+
+First-starter rule (4 Oct 2026, t_fs_split.py): no EDGE or value bet on a first-starter (FS_JSON from fs_json.py), and none in a
+race with a first-starter at $6 or shorter at the open. Top pick is a tracking plan and stays unless the top pick is a first-starter."""
 import json, re, csv, collections, sys
 norm=lambda s: re.sub(r"[^a-z0-9]","",s.lower())
 mj,pt,aj,out=sys.argv[1:5]; hurdle={int(x) for x in sys.argv[5].split(",")} if len(sys.argv)>5 and sys.argv[5] else set()
+fs=set(json.load(open(sys.argv[6]))) if len(sys.argv)>6 and sys.argv[6] else set()
 M=json.load(open(mj)); ang=json.load(open(aj)); pr={}; scr=set()
 for l in open(pt):
     pa=[x.strip() for x in l.split(",")]
@@ -15,11 +19,14 @@ for r in M:
 rows=[]
 for k in sorted(by):
     rs=by[k]; tot=sum(r["p"] for r in rs); top=max(rs,key=lambda r:r["p"])
+    isfs=lambda r: f"{k}|{r['horse']}" in fs
+    fs_backed=any(isfs(r) and (k,norm(r["horse"])) in pr and pr[(k,norm(r["horse"]))][0]<=6 for r in rs)
     for r in rs:
         key=(k,norm(r["horse"]))
         if key not in pr: continue
         op,cur=pr[key]; pp=r["p"]/tot; val=pp*op-1; a=ang.get(f"{k}|{r['horse']}",[])
-        tags=(["EDGE"] if val>=0.2 and a else [])+(["value_20c"] if val>=0.2 else [])+(["top_pick"] if r is top else [])
+        bet_ok=not isfs(r) and not fs_backed
+        tags=(["EDGE"] if bet_ok and val>=0.2 and a else [])+(["value_20c"] if bet_ok and val>=0.2 else [])+(["top_pick"] if r is top and not isfs(r) else [])
         for t in tags:
             rows.append(dict(race=k,race_id=r["race_id"],horse=r["horse"],plan=t,price=op,price_now=cur,model_price=round(1/pp,2),value=round(val,3),
                              angles="; ".join(a),stake=1.0,hurdle="yes" if k in hurdle else "no",result="",returned=""))

@@ -227,3 +227,8 @@ The model is closer to BSP than the open in every group; races with a backed fir
 Value 20c+ bets on non-first-starters at BSP: no first-starter -14.4% (2,153 bets), first-starter none $6 or shorter
 +38.1% (351), backed first-starter -39.1% (205); live-pulled no first-starter -46.4% (94). Back-filled opening-price ROI
 (+57%) is not a price that was available: live-pulled is +21% on 94 bets before deductions.
+
+Value bets ON a first-starter (holdout, same prices): -34.9% at BSP over 266 bets (-15.1% even at the back-filled open),
+live-pulled -84% on 23. Rule from 4 Oct 2026: no bet of any kind on a first-starter, and no bets in a race with a
+first-starter at $6 or shorter. The race pages (market_tpl.html) and paper bets (paper_open.py, FS_JSON from fs_json.py)
+both apply it; Top pick stays as a tracking plan unless the top pick is itself a first-starter.

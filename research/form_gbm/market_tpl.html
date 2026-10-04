@@ -28,19 +28,21 @@ const fm=v=>v==null?"":"$"+(v>=100?v.toFixed(0):v.toFixed(2));
 function race(r){
   const rs=DATA[r].map((x,i)=>({...x,i,sx:isX(r,i)})), live=rs.filter(x=>!x.sx), tot=live.reduce((a,x)=>a+x.p,0);
   let top=null; live.forEach(x=>{if(!top||x.p>top.p)top=x});
-  const fsb=live.filter(x=>x.fs&&x.n>1&&x.n<=6);   // a backed first starter: value bets against one lost 28% at BSP (577 bets), so no EDGE here
+  // First-starter rule (4 Oct 2026, t_fs_split.py, holdout at BSP): value bets ON a first-starter lost 35% (266 bets), and value
+  // bets against a first-starter at $6 or shorter lost 39% (205). So no bet of any kind on a first-starter, and no bets in such a race.
+  const fsb=live.filter(x=>x.fs&&x.n>1&&x.n<=6);
   rs.forEach(x=>{x.bets=[];x.kel=0;x.ev=null; if(x.sx)return; x.pp=x.p/tot; x.fair=1/x.pp; const pr=x.n;
-    if(pr>1){x.ev=x.pp*pr-1; const ok=x.fair<50&&pr<3*x.fair;
+    if(pr>1){x.ev=x.pp*pr-1; const ok=x.fair<50&&pr<3*x.fair&&!x.fs&&!fsb.length;
       if(x===top)x.bets.push("Top pick");
       if(ok&&x.ev>0.2)x.bets.push("Value 20c");
-      if(ok&&x.ev>0.2&&x.a&&x.a.length&&!fsb.length)x.bets.unshift("Edge");
+      if(ok&&x.ev>0.2&&x.a&&x.a.length)x.bets.unshift("Edge");
       if(ok&&x.ev>0.5&&x.s&&pr>=3&&pr<=20)x.bets.push("Best bet");
-      if(pr<3&&x.ev>0.1)x.bets.push("Under $3");
+      if(ok&&pr<3&&x.ev>0.1)x.bets.push("Under $3");
       if(ok&&x.ev>0.05)x.kel=Math.min(5,25*x.ev/(pr-1));}
     else if(x===top)x.bets.push("Top pick");});
   const order=[...rs].sort((a,b)=>(a.sx-b.sx)||((b.pp||0)-(a.pp||0)));
   const nb=rs.filter(x=>x.bets.some(t=>t!=="Top pick")).length, nk=rs.reduce((a,x)=>a+x.kel,0), nx=rs.filter(x=>x.sx).length;
-  let h=`<div class="hd"><h2>Race ${r}</h2><span class="sum">${nb} value bet${nb===1?"":"s"} · ${nk.toFixed(2)}u Kelly${nx?` · ${nx} scratched`:""}${fsb.length?` · <b>no EDGE: first-starter ${fsb.map(x=>x.h).join(", ")} at $6 or shorter</b>`:""}</span></div><div class="scroll"><table>
+  let h=`<div class="hd"><h2>Race ${r}</h2><span class="sum">${nb} value bet${nb===1?"":"s"} · ${nk.toFixed(2)}u Kelly${nx?` · ${nx} scratched`:""}${fsb.length?` · <b>no bets: first-starter ${fsb.map(x=>x.h).join(", ")} at $6 or shorter</b>`:""}</span></div><div class="scroll"><table>
   <tr><th></th><th class="l">Horse</th><th>Model $</th><th>Now</th><th>Value</th><th class="l">Bet</th><th class="l">Angles</th><th>Kelly u</th><th>Open</th><th>Chance</th><th>Take at 20c</th><th>Best-bet rule</th><th>Bar</th><th class="l">Jockey</th></tr>`;
   order.forEach((x,k)=>{
     const btn=`<td class="xc"><button class="x" data-r="${r}" data-i="${x.i}" aria-pressed="${x.sx}" aria-label="${x.sx?"Put back":"Scratch"} ${x.h}">✕</button></td>`;
