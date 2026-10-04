@@ -232,3 +232,12 @@ Value bets ON a first-starter (holdout, same prices): -34.9% at BSP over 266 bet
 live-pulled -84% on 23. Rule from 4 Oct 2026: no bet of any kind on a first-starter, and no bets in a race with a
 first-starter at $6 or shorter. The race pages (market_tpl.html) and paper bets (paper_open.py, FS_JSON from fs_json.py)
 both apply it; Top pick stays as a tracking plan unless the top pick is itself a first-starter.
+
+## Resuming, drawn wide, short of trip (4 Oct 2026, after Garnacho, Bendigo R8)
+
+Settling (t_goback.py, 24,195 past runs of usual midfield settlers): first-up from the wide half and 200m+ short of
+the last trip, they settle 21 points further back than usual and 64% end up in the rear third (30% normally); first-up
+from the inside half moves only 2 points. As stage-2 inputs (t_goback_s2.py) holdout KL 0.0806 -> 0.0808: the model
+already prices this from days off, barrier, settle and distance. Value bets on that profile: 70 bets, -1.9% at BSP.
+The leak is wider (t_firstup.py): value bets on first-uppers that are 200m+ short of their last start OR coming off a
+bottom-half trial lost 25.6% at BSP (198 bets) against -3.2% for the rest (newer half -55.5%, older -8.5%).
