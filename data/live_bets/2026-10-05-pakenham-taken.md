@@ -8,3 +8,6 @@
 
 None of R3, R5 or R8 has a first-starter, so the first-starter rule cannot block them overnight.
 Settle at the price actually taken (with deductions on the TAB scale for late scratchings) and at BSP.
+
+Update 4 Oct evening: the round-2 no-bet rules block Corviglia (second-up after running 2nd first-up). Genomic and
+Sky Watcher stand. If Corviglia was already backed, settle it on its own line so the rule's effect can be counted.

@@ -245,3 +245,25 @@ Adopted 4 Oct 2026: no value or EDGE bet on a runner resuming 60+ days after its
 of that trip or coming off a bottom-half trial (fu_json.py writes the list; market_tpl.html tags it FU with the reason;
 paper_open.py takes it as an optional seventh argument). Bendigo 4 Oct under all the 4 Oct rules: one EDGE bet
 (Shapenapit); Garnacho and Volestain blocked.
+
+## Pro punters' ideas, round 2 (4 Oct 2026, t_pros.py, t_pros_s2.py)
+
+Value bets at BSP on the holdout with every current rule applied (2,135 bets, -3.2%), split by older/newer half:
+
+| idea (source) | bets | BSP | older | newer |
+|---|---|---|---|---|
+| bounce: last start a new career-best rating by 3+ (Ragozin / Thoro-Graph / Mordin) | 190 | -40.1% | -55.4% | -22.8% |
+| second-up after a first-up run that placed or was within 2L | 200 | -32.5% | -28.7% | -37.6% |
+| down 2kg+ in weight on the last start (Don Scott, weight) | 340 | -32.2% | -46.4% | -10.5% |
+| up 2kg+ | 599 | -11.6% | -17.5% | -1.8% |
+| lone speed (quickest away by 1+ point, Form King early speed) | 86 | -27.9% | -26.4% | -30.2% |
+| hot pace (3+ quick types), on-pace or backmarkers | 524 | about -29% | | |
+| backing up within 7 days | 94 | +20.9% | +9.2% | +33.2% |
+| apprentice claiming 2kg+ | 268 | +15.3% | +39.0% | -24.5% |
+| **clear of bounce, second-up and weight-down** | **1,500** | **+8.2%** | **+8.5%** | **+7.8%** |
+
+As stage-2 inputs nothing moved (holdout KL 0.0806 -> 0.0806; bounce alone 0.0809): the model and BSP already price
+these horses on average; the model is wrong when it calls one of them value. Adopted as no-bet rules in fu_json.py
+(bounce, second-up after a good first-up, weight down 2kg+). The three were chosen from about twenty tests on the same
+races, so the +8.2% is the optimistic end; the live paper book is the check. Race prize money is not in the data, so
+class-by-prize was not tested. Bendigo 4 Oct under every rule: no value bets (Shapenapit blocked as a bounce).
