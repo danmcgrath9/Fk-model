@@ -1,12 +1,12 @@
 """The whole backtest of the live betting rules on the holdout (races from 6 May 2026 the model never trained on):
 value 20c+ on our stage-2 v4 price, our price $2-$15, caps, first-starter rules, first-up block, bounce, weight-down,
-second-up early-only at $8 or shorter; staked by overlay (1u at 20c, cap 3u), $100 a unit. Settled at the back-filled
+second-up early-only at $8 or shorter; staked Kelly x75 on a 50/50 blend of our chance and the market's, cap 4u, $100 a unit. Settled at the back-filled
 opening price (no deductions available) and at BSP less 8% commission."""
 import numpy as np, json, os, html
 exec(open("t_surcharge.py").read().split("def row(")[0])
 early_ok=secup&(op<=8); blockset=fs|fsb|fu_block|bounce|wdown|(secup&(op>8))
 live=caps&(v>=0.2)&~blockset&(1/p>=2)&(1/p<=15)
-stake=np.where(live,np.minimum(3.0,v/0.2),0.0)
+pbl=(p/op)**0.5; stake=np.where(live,np.minimum(4.0,75*np.clip((pbl*op-1)/(op-1),0,None)),0.0)   # final plan: Kelly x75 on the 50/50 blend, cap 4
 edge=np.load("edge_mask.npy").astype(bool) if os.path.exists("edge_mask.npy") else None
 if edge is not None and edge.shape[0]!=n: edge=None
 rd=dates[ri].astype(str); mk=np.char.add(rd,D["track"][ri].astype(str))
@@ -16,7 +16,7 @@ def st(m,s=None):
     return dict(bets=int(m.sum()),wins=int(w),invested=inv,ret_open=ro,ret_bsp=rb,roi_open=(ro-inv)/inv*100 if inv else 0,roi_bsp=(rb-inv)/inv*100 if inv else 0,strike=w/max(m.sum(),1)*100,avg=float(np.mean(op[m])) if m.any() else 0,avgw=float(np.mean(op[m&won])) if (m&won).any() else 0)
 rows=[]
 def add(section,label,m,s=None): r=st(m,s); r.update(section=section,label=label); rows.append(r); return r
-add("Overall","Live rules, staked by overlay",live)
+add("Overall","Live rules, Kelly on the 50/50 blend (final plan)",live)
 add("Overall","Live rules, flat $100",live,np.ones(n))
 add("Overall","Top pick (model favourite), flat $100",hm&np.isfinite(op)&(op>1)&np.isfinite(bsp)&(bsp>1)&(p==np.array([p[ri==r].max() for r in range(nR)])[ri]),np.ones(n))
 if edge is not None: add("Overall","EDGE only (an angle as well)",live&edge)
