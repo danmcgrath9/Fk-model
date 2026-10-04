@@ -306,3 +306,14 @@ standardised slope (his DP6A). Tested, two seeds unless stated:
 
 Stage 2 v6 = v5 + travel + collateral (stage2.travel, stage2.collateral, stage2.last_start; stage2f_train.py,
 apply_stage2f.py). Town coordinates are approximate and hand-entered (LL in stage2.py); an unknown town takes the median.
+
+## Focusing on the $2-$15 horses (4 Oct 2026, t_band.py, t_pricecap.py)
+
+Band KL = KL to BSP among runners that started $15 or shorter, renormalised per race (holdout):
+opening market 0.0899; live v5 0.0586 (typical gap 24%, 52% within 25% of BSP); stage 2 fitted on $20-or-shorter runners
+only, roughies left at stage 1: 0.0588 (no gain); per-band calibration of v5: 0.0591 (the band shifts are all under 0.02,
+the model is already calibrated by price band); oracle with every $20+ roughie set to its BSP: 0.0521. So the band error
+is not capacity spent on roughies; a third of it is the roughies' share of the race, which is unknowable before the jump,
+and the rest is the band itself. Value bets at BSP by OUR price: $2-$15 1,000 bets -0.1% (older -0.6%, newer +0.8%);
+over $15 +59% on 318 bets, but wins/model 1.27 (2.18 at $25-$50) says those are the back-filled opening prices being
+softest on roughies, not a real edge. Betting inside $2-$15 is break-even at BSP and depends entirely on beating the open.
