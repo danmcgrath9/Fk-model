@@ -2,17 +2,23 @@ name: fk retrain
 
 # Daily refit of model v5 on every resulted race with a Betfair SP (fitted to BSP), after the
 # morning results run. No Form King calls and no credits: the dataset comes from the database.
-# Deploy gate: the new models replace the live ones on the `models` branch only when the
-# stage-2 holdout KL to BSP is no worse than the live model's (metrics.json on that branch),
-# within a small tolerance for run-to-run noise. Otherwise the run reports and changes nothing.
+#
+# A retrain NEVER replaces the live model on its own. It is saved as the CHALLENGER
+# (challenger/ on the `models` branch) and the live model is untouched. Why: the holdout is
+# every race from 6 May, so each new race lands in the TEST set, not the training set. The
+# holdout KL of a retrain is measured on a different (larger) set of races from the live
+# model's figure, it cannot show what the new races taught the model, and two refits of the
+# same method differ by run-to-run noise either way. Comparing those two numbers is not a test.
+# The challenger goes live only by a deliberate dispatch with promote=yes, once it has beaten
+# the live model at BSP on races run after both were trained.
 
 on:
   schedule:
     - cron: '30 22 * * *'   # 08:30 Melbourne in standard time, 09:30 in daylight saving (after fk results)
   workflow_dispatch:
     inputs:
-      force:
-        description: 'yes = deploy even if the holdout KL is worse (not recommended)'
+      promote:
+        description: 'yes = make this retrain the LIVE model (only after it has won a forward test)'
         default: 'no'
 
 concurrency:
@@ -31,7 +37,6 @@ jobs:
       FK_LEDGER: postgres
       PYTHONUNBUFFERED: '1'
       DATABASE_URL: ${{ secrets.FK_DATABASE_URL }}
-      TOLERANCE: '0.0005'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -55,24 +60,23 @@ jobs:
       - name: Retrain
         working-directory: research/form_gbm
         run: ./retrain.sh 2>&1 | tee retrain.log | grep -v -E "^(nn|cb|sm|rg|block) [0-9]"
-      - name: Gate and deploy
+      - name: Save as challenger (or promote)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FORCE: ${{ github.event.inputs.force }}
+          PROMOTE: ${{ github.event.inputs.promote }}
         working-directory: research/form_gbm
         run: |
           set -euo pipefail
           NEW=$(cat holdout.txt)
           REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           rm -rf /tmp/models && git clone -q --depth 1 --branch models "$REMOTE" /tmp/models
-          OLD=$(python3 -c "import json;print(json.load(open('/tmp/models/metrics.json'))['holdout_kl'])" 2>/dev/null || echo 0.0802)
-          OK=$(python3 -c "print('yes' if $NEW <= $OLD + float('$TOLERANCE') else 'no')")
           RACES=$(python3 -c "import numpy as np; z=np.load('ds/model_ds.npz',allow_pickle=True); print(len(z['race_id']), max(z['date']))")
-          { echo "## Retrain"; echo "races (count, last date): $RACES"; echo "holdout KL to BSP: new $NEW, live $OLD (tolerance $TOLERANCE)"; } | tee -a "$GITHUB_STEP_SUMMARY"
-          if [ "$OK" != "yes" ] && [ "${FORCE:-no}" != "yes" ]; then echo "not deployed: the new models are further from BSP" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; fi
-          for f in all9_sm*.txt all9_rg*.txt S_hist.npy; do gzip -c "$f" > "/tmp/models/$f.gz"; done
-          cp cb_all9.cbm p_oof_blend9.npy S_fields.npy stage2e_*.txt /tmp/models/
-          python3 -c "import json,sys; json.dump({'holdout_kl': $NEW, 'previous_holdout_kl': $OLD, 'races': '$RACES', 'trained_utc': '$(date -u +%Y-%m-%dT%H:%MZ)'}, open('/tmp/models/metrics.json','w'), indent=1)"
+          LAST=$(python3 -c "import numpy as np; z=np.load('ds/model_ds.npz',allow_pickle=True); print(max(z['date']))")
+          if [ "${PROMOTE:-no}" = "yes" ]; then DEST=/tmp/models; ROLE=live; else DEST=/tmp/models/challenger; ROLE=challenger; fi
+          mkdir -p "$DEST"
+          for f in all9_sm*.txt all9_rg*.txt S_hist.npy; do gzip -c "$f" > "$DEST/$f.gz"; done
+          cp cb_all9.cbm p_oof_blend9.npy S_fields.npy stage2e_*.txt "$DEST/"
+          python3 -c "import json; json.dump({'role': '$ROLE', 'holdout_kl': $NEW, 'races': '$RACES', 'trained_through': '$LAST', 'trained_utc': '$(date -u +%Y-%m-%dT%H:%MZ)', 'note': 'holdout KL is a did-anything-break check, not a comparison with the live model'}, open('$DEST/metrics.json','w'), indent=1)"
+          { echo "## Retrain"; echo "races (count, last date): $RACES"; echo "holdout KL to BSP: $NEW (a did-anything-break check; not comparable with the live model's figure)"; echo "saved as: $ROLE"; } | tee -a "$GITHUB_STEP_SUMMARY"
           cd /tmp/models && git config user.name "fk retrain" && git config user.email "actions@users.noreply.github.com"
-          git add -A && git commit -q -m "Model v5 retrained $(date -u +%Y-%m-%d): holdout KL $NEW (was $OLD)" && git push -q "$REMOTE" models
-          echo "deployed" | tee -a "$GITHUB_STEP_SUMMARY"
+          git add -A && git commit -q -m "Model v5 retrained $(date -u +%Y-%m-%d) as $ROLE: trained through $LAST, holdout KL $NEW" && git push -q "$REMOTE" models
