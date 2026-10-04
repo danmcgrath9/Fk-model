@@ -22,6 +22,17 @@ with np.errstate(invalid="ignore", all="ignore"):
     fin0,mgn0,d0=rr("finish",0),rr("margin",0),rr("days_before",0); sp=R[:,:,f["sp"]]
     wet=lambda gb: np.isin(gb,[2,3])
     wetbest=np.nanmax(np.where(wet(R[:,:,f["going_band"]]),R[:,:,f["rating"]],np.nan),1); goodbest=np.nanmax(np.where(R[:,:,f["going_band"]]==1,R[:,:,f["rating"]],np.nan),1)
+    # Accardi's "above the average in every section": early (start-800), middle (800-400) and late (400-finish)
+    # all faster than the field in the last race run with sections. Value 20c+ bets with it: -0.5% at BSP over 713
+    # (+1.2% over 310 newer races) against -14% for all value bets (4 Oct 2026).
+    SF={str(k):j for j,k in enumerate(U["sec_fields"])}; S=U["S"].astype(float); Ptr=(P[:,:,f["trial"]]==1)
+    hs=~Ptr&np.isfinite(S[:,:,SF["8-4|vsField"]]); js=np.argmax(hs,1); oks=hs[np.arange(n),js]
+    cnt=sum((S[np.arange(n),js,SF[k]]>0).astype(int) for k in ("S-8|vsField","8-4|vsField","4-F|vsField"))
+    all3=oks&(cnt==3)
+    # wet-track indicator (Accardi WTI / O'Sullivan): mean vsClass on soft/heavy runs minus on good runs
+    vc=R[:,:,f["vsClass"]]; gbR=R[:,:,f["going_band"]]
+    wmean=np.nanmean(np.where(wet(gbR),vc,np.nan),1); dmean=np.nanmean(np.where(gbR==1,vc,np.nan),1)
+    weakwet=wet(going)&np.isfinite(wmean)&np.isfinite(dmean)&(wmean-dmean<=-1)
     lres=np.full(n,np.nan)
     for i in range(n):
         if np.isfinite(R[i,0,f["last600"]]) and Rid[i,0] in tg.index and tg.loc[Rid[i,0],"count"]>=3:
@@ -37,9 +48,13 @@ with np.errstate(invalid="ignore", all="ignore"):
      "Proven wet on a wet track":wet(going)&(wetbest>=goodbest),
      "Class drop (rating)":np.isfinite(rr("raceRating",0))&(rr("raceRating",0)>=lws+3),
      "Late 600 beyond the tempo":np.isfinite(lres)&(lres>=q5),
+     "Above the field in all three sections":all3,
     }
 res={}
 for i in range(n):
+    # Wet today and the horse rates 1L+ worse (vs class) on soft/heavy than on good: value bets on these lost 28% at BSP
+    # (887 bets; 32% on the newer races), so no angle can make one an EDGE bet (4 Oct 2026).
+    if bool(weakwet[i]): res[f"{int(U['race_number'][ri[i]])}|{str(U['name'][i])}"]=[]; continue
     tags=[k for k,m in A.items() if bool(m[i])]
     res[f"{int(U['race_number'][ri[i]])}|{str(U['name'][i])}"]=tags
 json.dump(res,open(out,"w"),indent=0); print(sum(1 for v in res.values() if v),"of",n,"runners carry an angle")
