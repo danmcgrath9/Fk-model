@@ -209,3 +209,21 @@ As filters on value 20c+ bets at BSP (t_research_filter.py, t_kingsley.py; all v
 
 Cut-offs were chosen on all races, so these are looked-at results, not clean out-of-sample: the newer-races column
 agreeing in direction is the check. Re-judge on live paper bets.
+
+## First-starter races vs the rest (4 Oct 2026, t_fs_split.py)
+
+Holdout races from 6 May, stage-2 v4 out-of-sample prices (pp from t_b9_s2), races with an opening price on every runner.
+KL to BSP, lower is closer:
+
+| races | n | model | opening market |
+|---|---|---|---|
+| all | 1,355 | 0.0806 | 0.1368 |
+| no first-starter | 1,005 | 0.0722 | 0.1287 |
+| first-starter, none $6 or shorter | 208 | 0.0865 | 0.1500 |
+| first-starter at $6 or shorter | 142 | 0.1312 | 0.1746 |
+| live-pulled, no first-starter | 55 | 0.1105 | 0.1611 |
+
+The model is closer to BSP than the open in every group; races with a backed first-starter are where it is weakest.
+Value 20c+ bets on non-first-starters at BSP: no first-starter -14.4% (2,153 bets), first-starter none $6 or shorter
++38.1% (351), backed first-starter -39.1% (205); live-pulled no first-starter -46.4% (94). Back-filled opening-price ROI
+(+57%) is not a price that was available: live-pulled is +21% on 94 bets before deductions.
