@@ -1,8 +1,8 @@
 import json, re, sys, html
 L="/home/user/fk-model/data/live_bets/"
 norm=lambda s: re.sub(r"[^a-z0-9]","",s.lower())
-def data(model,prices,sb=(),ang=None,fs=()):
-    ang=ang or {}; fsk={(int(k.split('|')[0]),norm(k.split('|',1)[1])) for k in fs}
+def data(model,prices,sb=(),ang=None,fs=(),fu=None):
+    ang=ang or {}; fu=fu or {}; fuk={(int(k.split('|')[0]),norm(k.split('|',1)[1])):v for k,v in fu.items()}; fsk={(int(k.split('|')[0]),norm(k.split('|',1)[1])) for k in fs}
     sbk={(int(r),norm(h)) for r,h in sb}
     rows=json.load(open(L+model)); pr={}; scr=set()
     for line in open(L+prices):
@@ -15,7 +15,7 @@ def data(model,prices,sb=(),ang=None,fs=()):
     for r in rows:
         k=(r["race"],norm(r["horse"]))
         races.setdefault(r["race"],[]).append(dict(h=r["horse"],b=r["barrier"],j=r["jockey"],p=round(r["p"],6),s=bool(r["solid"]),
-            o=pr.get(k,(None,None))[0],n=pr.get(k,(None,None))[1],x=k in scr,sb=k in sbk,fs=k in fsk,a=ang.get(f"{r['race']}|{r['horse']}",[])))
+            o=pr.get(k,(None,None))[0],n=pr.get(k,(None,None))[1],x=k in scr,sb=k in sbk,fs=k in fsk,fu=fuk.get(k,""),a=ang.get(f"{r['race']}|{r['horse']}",[])))
     for v in races.values(): v.sort(key=lambda r:-r["p"])
     return races
 if __name__=="__main__":

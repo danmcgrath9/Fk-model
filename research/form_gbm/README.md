@@ -241,3 +241,7 @@ from the inside half moves only 2 points. As stage-2 inputs (t_goback_s2.py) hol
 already prices this from days off, barrier, settle and distance. Value bets on that profile: 70 bets, -1.9% at BSP.
 The leak is wider (t_firstup.py): value bets on first-uppers that are 200m+ short of their last start OR coming off a
 bottom-half trial lost 25.6% at BSP (198 bets) against -3.2% for the rest (newer half -55.5%, older -8.5%).
+Adopted 4 Oct 2026: no value or EDGE bet on a runner resuming 60+ days after its last race start that is 200m+ short
+of that trip or coming off a bottom-half trial (fu_json.py writes the list; market_tpl.html tags it FU with the reason;
+paper_open.py takes it as an optional seventh argument). Bendigo 4 Oct under all the 4 Oct rules: one EDGE bet
+(Shapenapit); Garnacho and Volestain blocked.
