@@ -360,3 +360,6 @@ recalibration 0.0839 -> 0.0839: it is not a calibration bias, it is which favour
 trainer and combo BSP-gap encodings, t_hot.py): 0.0805, nothing. A stage 2 fitted only on first-starter races
 (t_fsmodel.py) is worse on them (0.1077 vs 0.1046); the general model already does best. Stage-1 tree tuning:
 oof_trees_tune.py (num_leaves 63, feature_fraction 0.35, learning_rate 0.03 against the live 31 / 0.2 / 0.05).
+Tuning result: num_leaves 63 / min_data 50 -> 0.0954, feature_fraction 0.35 -> 0.0935, learning_rate 0.03 -> 0.0940,
+all worse than the live trees (0.0932); the live settings stay. price_day3.py now refuses to price a day where more
+than 10% of raced runners lack a last-start speed rating (--allow-gaps overrides).

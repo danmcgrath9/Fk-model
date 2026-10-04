@@ -9,6 +9,15 @@ TR = stage2.trials(D["P"], D["past_fields"], D["race_idx"]); SEC = stage2.sectio
 F = np.hstack([F, TR, SEC]).astype(np.float32); F[~np.isfinite(F)] = np.nan
 nm = list(nm) + [f"tr_{i}" for i in range(TR.shape[1])] + [f"sec_{i}" for i in range(SEC.shape[1])]
 assert nm == open("F9_names.txt").read().split("\n"), "day inputs do not match the F9 training inputs"
+# Guard (4 Oct 2026, t_resid.py): September's live-pulled races had 80% of raced runners with no last-start speed rating,
+# sectionals or vsClass, and priced at KL 0.145 against 0.076 with full data. Refuse to price a day that looks like that.
+_n0 = len(D["race_idx"]) - len(U["race_idx"]); _ci = {n: j for j, n in enumerate(nm)}
+_raced = np.nan_to_num(F[_n0:, _ci["f_careerForm_s"]], nan=0) >= 1
+_miss = np.isnan(F[_n0:, _ci["e_speedRating_last"]])[_raced].mean() if _raced.any() else 0.0
+print(f"raced runners missing a last-start speed rating: {_miss*100:.0f}%")
+if _miss > 0.10 and "--allow-gaps" not in sys.argv:
+    sys.exit(f"STOP: {_miss*100:.0f}% of raced runners have no last-start speed rating (Form King benchmarks missing from the pull). "
+             "Re-pull with benchmarks (daily pull at numBenchmarks 5) before pricing, or pass --allow-gaps to price anyway.")
 import lab, nn
 b.D = D; lab.D = D; lab.ri0 = D["race_idx"]; nn.D = D; nn.ri = D["race_idx"]; nn.nR = D["n_races"]
 sm = [np.log(b.softmax_races(lgb.Booster(model_file=f"all9_sm{s}.txt").predict(F))) for s in range(5)]
