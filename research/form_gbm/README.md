@@ -344,3 +344,19 @@ not a rule. Races with 2+ bets: +74% open / +4.5% BSP against +41% / -17% for si
 the runners of one race: no different from independent stakes. Fitting stage 2 to 85% BSP + 15% winner: no gain.
 Closing line value: 77% of our bets shortened from the open to BSP, median move -28%; of the horses we price UNDER
 the open, 18% shortened (median +53%). That is the edge in one line: the market moves toward us.
+
+## Residuals (4 Oct 2026, t_resid.py): where the model is far from BSP, holdout, model KL vs opening market KL
+
+Field size 4-7 0.073 / 0.103; 8-10 0.077 / 0.134; 11-13 0.084 / 0.149; 14+ 0.093 / 0.148. Distance: sprints (900-1200m)
+0.094 / 0.148 are the weakest, staying races 0.070 / 0.128 the best. First-starters in the race: none 0.072, one 0.086,
+two 0.100, three or more 0.121 (open 0.184). Tracks: metro races are where the open is sharpest (Flemington 0.074 / 0.092,
+Sandown 0.064 / 0.083) and the model's margin over it smallest. THE SEPTEMBER GAP: the 78 live-pulled races score 0.145
+against 0.076 for back-filled races, because 80% of their raced runners carry NO last-start speed rating, sectionals or
+vsClass in the export (1% in back-filled races, and 1-2% in tonight's day files). The back-filled history is cleaner
+than what those September runs were priced on; the current pull is complete, but any future pull without benchmarks
+prices at roughly double the error. Mass by band: the model gives favourites ($1-4) 27% of the race against BSP's 32%
+and roughies 8% against 5%, but a sharpening exponent fitted on any period is 0.99-1.01 (t_temp.py), rolling 8-week
+recalibration 0.0839 -> 0.0839: it is not a calibration bias, it is which favourites. Hot form (30/90-day jockey,
+trainer and combo BSP-gap encodings, t_hot.py): 0.0805, nothing. A stage 2 fitted only on first-starter races
+(t_fsmodel.py) is worse on them (0.1077 vs 0.1046); the general model already does best. Stage-1 tree tuning:
+oof_trees_tune.py (num_leaves 63, feature_fraction 0.35, learning_rate 0.03 against the live 31 / 0.2 / 0.05).

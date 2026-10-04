@@ -1,42 +1,27 @@
-# market-residual encodings (what BSP knew beyond our model), strictly from earlier dates; stage-2 on OOF.
+"""Where is the model far from BSP? KL by segment, model vs opening market, on the holdout (Benter: study the residuals)."""
 import numpy as np, bench as b
-D=b.load(); p=np.load("p_oof.npy"); ri=D["race_idx"]; nR=D["n_races"]; dates=D["date"]
-res=np.clip(np.log(np.maximum(D["q"],1e-4))-np.log(np.maximum(p,1e-4)),-3,3)
-rd=dates[ri]; order=np.argsort(rd,kind="stable")
-keys={"trainer":D["trainer"],"jockey":D["jockey"],"horse":D["horse_id"],"sire":D["sire"],"loc":D["training_location"],
-      "trk_trainer":np.char.add(D["trainer"].astype(str),D["track"][ri].astype(str))}
-def enc(key,k=10):
-    s={};n={};out=np.zeros(len(ri)); cnt=np.zeros(len(ri))
-    ud=np.unique(rd)
-    idx_by_date={d:np.where(rd==d)[0] for d in ud}
-    for d in ud:
-        ix=idx_by_date[d]
-        for i in ix:
-            kk=key[i]; out[i]=s.get(kk,0.0)/(n.get(kk,0)+k); cnt[i]=n.get(kk,0)
-        for i in ix:
-            kk=key[i]; s[kk]=s.get(kk,0.0)+res[i]; n[kk]=n.get(kk,0)+1
-    return out,cnt
-E={}
-for nm,key in keys.items(): E[nm],_=enc(key.astype(str)); print(nm,"done",flush=True)
-def centered(v):
-    m=np.bincount(ri,weights=v,minlength=nR)/np.bincount(ri,minlength=nR); return v-m[ri]
-cut="2026-05-06"; dev=np.where(dates<cut)[0]; hold=np.where(dates>=cut)[0]
-import torch
-L=np.log(np.maximum(p,1e-12)); q=torch.tensor(D["q"]); R=torch.tensor(ri).long()
-def fit(cols):
-    Z=torch.tensor(np.stack([centered(E[c]) for c in cols],1)); Lt=torch.tensor(L)
-    w=torch.zeros(len(cols),dtype=torch.float64,requires_grad=True)
-    md=torch.tensor(np.isin(ri,dev))
-    def lossf(w,m):
-        s=Lt+Z@w; mx=torch.zeros(nR,dtype=torch.float64).index_reduce_(0,R,s.detach(),"amax",include_self=False)
-        e=torch.exp(s-mx[R]); den=torch.zeros(nR,dtype=torch.float64).index_add_(0,R,e)
-        return -(q*(s-mx[R]-torch.log(den[R])))[m].sum()
-    opt=torch.optim.LBFGS([w],max_iter=100)
-    def cl():
-        opt.zero_grad(); l=lossf(w,md)/len(dev)+1e-3*(w**2).sum(); l.backward(); return l
-    opt.step(cl); wv=w.detach().numpy()
-    pn=b.softmax_races(L+np.stack([centered(E[c]) for c in cols],1)@wv); return wv,pn
-print(b.fmt("hold base",b.score(p,hold)))
-for cols in (["trainer"],["jockey"],["horse"],["sire"],["loc"],["trk_trainer"],list(keys)):
-    wv,pn=fit(cols); print(b.fmt(f"hold +{'+'.join(cols)} w={np.round(wv,2)}",b.score(pn,hold)))
-np.save("resid_enc.npy",np.stack([E[c] for c in keys],1))
+D=b.load(); ri=D["race_idx"]; nR=D["n_races"]; dates=D["date"]; q=D["q"]; mkt=D["mkt"]; p=np.load("pp_hold_v4.npy")
+P=D["P"].astype(float); f={str(n):i for i,n in enumerate(D["past_fields"])}
+real=~(P[:,:,f["trial"]]==1)&np.isfinite(P[:,:,f["finish"]])&(P[:,:,f["finish"]]>0); nst=real.sum(1); fs=nst==0
+hold=np.where(dates>="2026-05-06")[0]; hm=np.isin(ri,hold)
+okm=np.bincount(ri,weights=(~np.isfinite(mkt)).astype(float),minlength=nR)==0
+def kl(pr,races):
+    m=np.isin(ri,races)&np.isfinite(pr); return np.where(q[m]>0,q[m]*np.log(np.maximum(q[m],1e-300)/np.maximum(pr[m],1e-12)),0).sum()/len(races)
+def seg(nm,racemask):
+    r=np.where(racemask&np.isin(np.arange(nR),hold)&okm)[0]
+    if len(r)<30: return
+    print(f"{nm:36s} races {len(r):5d}  model {kl(p,r):.4f}  open {kl(mkt,r):.4f}  model/open {kl(p,r)/kl(mkt,r):.2f}")
+fld=np.bincount(ri,minlength=nR); dist=D["distance"]; go=D["going"]; lws=D["lws"] if "lws" in D else None
+nfs=np.bincount(ri,weights=fs.astype(float),minlength=nR); minst=np.full(nR,99); np.minimum.at(minst,ri,nst); medst=np.array([np.median(nst[ri==r]) for r in range(nR)])
+print("by field size"); [seg(f"  {lo}-{hi} runners",(fld>=lo)&(fld<=hi)) for lo,hi in ((4,7),(8,10),(11,13),(14,24))]
+print("by distance"); [seg(f"  {lo}-{hi}m",(dist>=lo)&(dist<hi)) for lo,hi in ((900,1200),(1200,1500),(1500,1900),(1900,4000))]
+print("by going"); [seg(f"  going {g}",go==g) for g in (1,2,3,4)]
+print("by first-starters in the race"); [seg(f"  {n} first-starters",nfs==n) for n in (0,1,2)]; seg("  3+ first-starters",nfs>=3)
+print("by field experience (median starts)"); [seg(f"  median starts {lo}-{hi}",(medst>=lo)&(medst<hi)) for lo,hi in ((0,3),(3,6),(6,12),(12,99))]
+trk=D["track"].astype(str); u,c=np.unique(trk[hold],return_counts=True)
+print("by track (30+ holdout races)")
+for t in u[np.argsort(-c)][:12]: seg(f"  {t}",trk==t)
+# and within race: is the error on the favourite, mid or roughies? mass misallocated per band
+m=hm&np.isfinite(mkt)&okm[ri]
+for nm,lo,hi in (("fav ($1-4)",0.25,1.01),("mid ($4-12)",1/12,0.25),("long ($12-30)",1/30,1/12),("roughies ($30+)",0,1/30)):
+    mm=m&(q>=lo)&(q<hi); print(f"{nm:18s} share of BSP mass {q[mm].sum()/q[m].sum()*100:4.0f}%  model gives it {p[mm].sum()/q[m].sum()*100:4.0f}%  open gives {mkt[mm].sum()/mkt[m].sum()*100:4.0f}%")
