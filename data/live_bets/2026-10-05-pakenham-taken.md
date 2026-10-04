@@ -15,3 +15,6 @@ Sky Watcher stand. If Corviglia was already backed, settle it on its own line so
 Update 4 Oct, late: second-up after a good first-up is an EARLY-ONLY tag, not a block (t_secup_open.py: +17% at the
 open, -32% at BSP; allowed at $8 or shorter). Corviglia is back as an EDGE bet at $3.70 (take at $3.60 or better, ours
 $3.00 on v6): bet near the opening price or not at all. Three bets: Genomic, Corviglia, Sky Watcher.
+
+Update 4 Oct, staking (final): Kelly x75 on a 50/50 blend of our chance and the market's, cap 4u, $100 a unit.
+Genomic $10.00: 1.9u = $190. Corviglia $3.70 (early only, $3.60 or better): 3.1u = $310. Sky Watcher $10.00: 0.9u = $90.
