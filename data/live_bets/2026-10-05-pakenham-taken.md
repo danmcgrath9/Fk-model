@@ -27,3 +27,10 @@ deduction (effective $6.40, still +32% over ours); the price now is $10 (+106%, 
 Mon 5 Oct ~11:45: GENOMIC FIRMED $10 -> $4.20 (the user's report). Bet struck Sunday night at $10; the bookmaker's
 deduction for the R3 scratchings is 16c (the user's account, not our estimate of 36c), so the bet stands at an effective
 $8.40, double the price it is now and 73% over our repriced $4.85. Settle Genomic at $10 x (1 - 0.16).
+
+TAB's actual R3 deductions (user's screenshot, 1:32pm): Salarae 7c (scratched 05:26), Silky Seth 4c (06:46),
+Trouble'n Paradise 5c (07:08, an EMERGENCY: scratching an emergency that was in the market when the bet was struck still
+carries a deduction), Monsieur Claude none (emergency, never in the fixed market). Total 16c. Our estimate, the TAB scale
+applied to Form King's best price, would have said 16c + 20c + 13c = 49c: TAB prices each scratching at its own price at
+the time it came out, which was far longer than the best price we hold. So the scale-on-best-price method OVERSTATES
+deductions roughly 3x, and the 17.8c-per-race haircut in the backtest is too harsh.
