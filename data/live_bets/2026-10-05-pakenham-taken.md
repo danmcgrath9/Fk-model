@@ -23,3 +23,7 @@ Mon 5 Oct 09:50: CORVIGLIA SCRATCHED (R5): the $310 is refunded, no bet. R3: Sal
 after the 5pm prices: Genomic reprices $6.66 -> $4.85 in the remaining field; a $10 bet placed last night carries a 36c
 deduction (effective $6.40, still +32% over ours); the price now is $10 (+106%, take at $5.83 or better). R8: Kakkoii
 ($10) scratched: Sky Watcher $8.20 -> $7.28; a $10 bet from last night carries 9c (effective $10.92); price now $12.
+
+Mon 5 Oct ~11:45: GENOMIC FIRMED $10 -> $4.20 (the user's report). Bet struck Sunday night at $10; the bookmaker's
+deduction for the R3 scratchings is 16c (the user's account, not our estimate of 36c), so the bet stands at an effective
+$8.40, double the price it is now and 73% over our repriced $4.85. Settle Genomic at $10 x (1 - 0.16).
