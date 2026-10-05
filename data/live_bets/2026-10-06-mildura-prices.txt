@@ -1,0 +1,77 @@
+# Mildura Tue 6 Oct: Form King best price at pull time, in both the price-taken and now columns; the fifth field is Form King's average opening price. Emergencies listed as SCR.
+1, Ted Percy, 7.50, 7.50, fk_open 9.00
+1, Shogun Chikara, 5.00, 5.00, fk_open 7.50
+1, Back Up Barbie, 3.60, 3.60, fk_open 3.90
+1, High Performance, 26.00, 26.00, fk_open 26.00
+1, Mizzen Jib, 16.00, 16.00, fk_open 26.00
+1, Apocalypse, 5.00, 5.00, fk_open 7.50
+1, Peace Seeker, 3.70, 3.70, fk_open 3.90
+1, Message Bank, 16.00, 16.00, fk_open 17.00
+1, Scartaka, 101.00, 101.00, fk_open 101.00
+1, Donvilla D'or, 41.00, 41.00, fk_open 51.00
+1, Majestic Glow, 101.00, 101.00, fk_open 101.00
+2, King Koruna, 3.20, 3.20, fk_open 3.90
+2, Little Gangster, 8.00, 8.00, fk_open 6.00
+2, Gamadale Paddy, 7.50, 7.50, fk_open 9.00
+2, White Pointer, 5.50, 5.50, fk_open 6.00
+2, Invisible Caravan, 17.00, 17.00, fk_open 13.00
+2, Stockman's Choice, 6.50, 6.50, fk_open 6.00
+2, Rambition, 26.00, 26.00, fk_open 17.00
+2, Singapore Splash, SCR
+2, Mr Nipper, 51.00, 51.00, fk_open 51.00
+2, Princess Geisha, 10.00, 10.00, fk_open 7.50
+2, Regal Time, 31.00, 31.00, fk_open 26.00
+2, Sammie Ellen Boy, 126.00, 126.00, fk_open 101.00
+3, Holy Racket, 8.50, 8.50, fk_open 8.50
+3, Winning Aura, 27.00, 27.00, fk_open 23.00
+3, Inhabit, 4.00, 4.00, fk_open 4.60
+3, Marilyn's Edge, 3.00, 3.00, fk_open 4.20
+3, Royal Turf, 4.60, 4.60, fk_open 5.50
+3, Smoke Screen, 5.50, 5.50, fk_open 3.70
+3, Reward The Sheriff, 10.00, 10.00, fk_open 14.00
+4, Machrimore, 3.50, 3.50, fk_open 3.50
+4, Ilovediamonds, 6.50, 6.50, fk_open 8.00
+4, Cracked It, 4.00, 4.00, fk_open 3.70
+4, Titus Augustus, SCR
+4, Moon God, 6.50, 6.50, fk_open 6.00
+4, Kinky Mistress, 6.00, 6.00, fk_open 7.00
+4, Bold Starlet, 34.00, 34.00, fk_open 26.00
+4, Gold Bijoux, 20.00, 20.00, fk_open 21.00
+4, Ricky Stanicky, 151.00, 151.00, fk_open 126.00
+4, Our Audio, SCR
+4, Zukuro, 34.00, 34.00, fk_open 26.00
+4, Gamadale Possum, SCR
+5, The Cable Guy, 2.50, 2.50, fk_open 2.50
+5, Piwhane, 10.00, 10.00, fk_open 11.00
+5, Ostrica, 7.00, 7.00, fk_open 6.00
+5, Blue Typhoon, 5.50, 5.50, fk_open 11.00
+5, Causeweluvadelaide, 6.00, 6.00, fk_open 4.60
+5, Drunken Sailor, 13.00, 13.00, fk_open 11.00
+5, Blakmax, 26.00, 26.00, fk_open 26.00
+5, Solar Mist, 19.00, 19.00, fk_open 11.00
+5, Limbering, 10.00, 10.00, fk_open 8.00
+6, Kikorangi, 4.20, 4.20, fk_open 3.50
+6, Verona Rupes, 4.20, 4.20, fk_open 3.50
+6, Love Sparkles, 7.00, 7.00, fk_open 8.00
+6, Callistemon, 5.00, 5.00, fk_open 6.00
+6, Oh Lovey No, 9.50, 9.50, fk_open 11.00
+6, Ring The Sheriff, 31.00, 31.00, fk_open 26.00
+6, Exalted Fire, 6.00, 6.00, fk_open 8.00
+6, Miss Trombari, 23.00, 23.00, fk_open 15.00
+6, Flight Deck, 23.00, 23.00, fk_open 15.00
+6, Baby Rider, 46.00, 46.00, fk_open 26.00
+6, Ain't Tellin, 151.00, 151.00, fk_open 101.00
+7, Share The Music, 3.30, 3.30, fk_open 3.00
+7, Attain, 7.50, 7.50, fk_open 15.00
+7, Azzacool, 5.50, 5.50, fk_open 4.60
+7, Sacred Chord, 21.00, 21.00, fk_open 11.00
+7, Boulderoo, 13.00, 13.00, fk_open 6.00
+7, Razzo Rosso, 9.00, 9.00, fk_open 11.00
+7, Owl Witness, SCR
+7, Reoffer, SCR
+7, Grande Terre, 13.00, 13.00, fk_open 26.00
+7, Where's My Sock, 8.00, 8.00, fk_open 11.00
+7, Sakasu, 34.00, 34.00, fk_open 26.00
+7, Grouse Mountain, 21.00, 21.00, fk_open 26.00
+7, Shalailed, 17.00, 17.00, fk_open 15.00
+7, Costae, 23.00, 23.00, fk_open 11.00

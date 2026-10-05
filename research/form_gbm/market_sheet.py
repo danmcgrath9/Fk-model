@@ -88,7 +88,7 @@ for race in sorted(races):
     H.append(f"<h2>Race {race}</h2><div class='hd'>{int(dist)}m · our market adds to 100% · {len(rs)} runners{' · <b>no bets: a first-starter at $6 or shorter</b>' if fsb else ''}</div>")
     for r, i, k in rs:
         pp = r["p"] / tot; ours = 1 / pp; now = pr.get(k); hk = f"{race}|{r['horse']}"; isfs = hk in fs; fuv = fu.get(hk, "")
-        early = fuv.startswith("EARLY:"); blocked = (fuv and not early) or isfs or fsb or (early and (now or 0) > 8) or ours >= 50 or (now and now >= 3 * ours)
+        early = fuv.startswith("EARLY:"); blocked = (fuv and not early) or isfs or fsb or (early and (now or 0) > 8) or ours > 15 or ours < 2 or (now and now >= 3 * ours)   # bets only at our price $2-$15, as backtested
         a = ang.get(hk, []); tags = []
         if blocked: tags.append("<span class='tag no'>no bet</span>")
         else:
@@ -100,7 +100,9 @@ for race in sorted(races):
         th = T[i]; order = np.argsort(th); ups = [(tnames[j], th[j]) for j in order[::-1][:3] if th[j] > 0.08]; dns = [(tnames[j], th[j]) for j in order[:3] if th[j] < -0.08]
         why = " · ".join([f"<span class='up'>{t} {pct(c)}</span>" for t, c in ups] + [f"<span class='dn'>{t} {pct(c)}</span>" for t, c in dns]) or "nothing stands out either way"
         why = why.rstrip()
-        reason = (f"<b>{'No bet' if (fuv and not early) else 'Early only' if early else ''}:</b> {html.escape(fuv.replace('EARLY: ', ''))}. " if fuv else "") + (f"<b>No bet:</b> first starter. " if isfs else "")
+        if ours > 15 and not fuv and not isfs: fuv_note = "our price over $15 (outside the backtested band)"
+        else: fuv_note = ""
+        reason = (f"<b>No bet:</b> {fuv_note}. " if fuv_note else "") + (f"<b>{'No bet' if (fuv and not early) else 'Early only' if early else ''}:</b> {html.escape(fuv.replace('EARLY: ', ''))}. " if fuv else "") + (f"<b>No bet:</b> first starter. " if isfs else "")
         H.append(f"<div class='r'><div class='px'>${ours:,.2f}</div><div><span class='nm'>{html.escape(r['horse'])}</span>{''.join(tags)}<span class='mk'> · now {'$%.2f' % now if now else 'no price'} · take at ${ours * 1.2:,.2f} or better</span></div>"
                  f"<div class='why'>{reason}<b>Why:</b> {why}.<br>{html.escape(' · '.join(facts(i, race)))}{(' · <b>angles:</b> ' + html.escape('; '.join(a))) if a else ''}</div></div>")
 open(out, "w").write("\n".join(H)); print("ok", out)

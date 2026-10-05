@@ -33,7 +33,7 @@ for k in sorted(by):
         op,cur=pr[key]; pp=r["p"]/tot; val=pp*op-1; a=ang.get(f"{k}|{r['horse']}",[])
         # same caps as the race page (market_tpl.html): our price under $50 and the open under 3x our price
         hk=f"{k}|{norm(r['horse'])}"; is_early=hk in early
-        bet_ok=not isfs(r) and not fs_backed and hk not in fu and 1/pp<50 and op<3/pp and not (is_early and op>8)
+        bet_ok=not isfs(r) and not fs_backed and hk not in fu and 2<=1/pp<=15 and op<3/pp and not (is_early and op>8)   # our price $2-$15, as backtested
         tags=(["EDGE"] if bet_ok and val>=0.2 and a else [])+(["value_20c"] if bet_ok and val>=0.2 else [])+(["top_pick"] if r is top and not isfs(r) else [])
         for t in tags:
             rows.append(dict(race=k,race_id=r["race_id"],horse=r["horse"],plan=t,price=op,price_now=cur,model_price=round(1/pp,2),value=round(val,3),
