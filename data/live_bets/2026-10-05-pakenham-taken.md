@@ -34,3 +34,9 @@ carries a deduction), Monsieur Claude none (emergency, never in the fixed market
 applied to Form King's best price, would have said 16c + 20c + 13c = 49c: TAB prices each scratching at its own price at
 the time it came out, which was far longer than the best price we hold. So the scale-on-best-price method OVERSTATES
 deductions roughly 3x, and the 17.8c-per-race haircut in the backtest is too harsh.
+
+R8 (1:33pm screenshot): SKY WATCHER FIRMED $10 -> $6.60. TAB deduction 4c (Kakkoii only; our scale estimate said 9c).
+Emergencies Zourain, What A Ripper and Ornos carried no deduction (not in TAB's fixed market). Effective price $9.60
+against a $6.60 market and our repriced $7.28.
+
+Running calibration, TAB real vs scale-on-Form-King-best-price: 4 priced scratchings, TAB 20c in total, our method 57c.
