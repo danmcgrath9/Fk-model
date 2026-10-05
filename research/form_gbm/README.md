@@ -366,7 +366,7 @@ than 10% of raced runners lack a last-start speed rating (--allow-gaps overrides
 
 ## Track-range caveats, 6 Oct 2026 (going_range.py)
 
-When the track call is a range ("G4 to S6"), the day is exported twice with fk-export's `going` input, priced at
-both ends, and going_range.py puts a box at the top of the market sheet: each bet's stake at each end, a bet at
-both ends goes on at the smaller stake, a bet at one end only goes on only if the track is that end on race
-morning, and each horse's win record on good, soft and heavy (for reading; the model already prices it).
+When the track call is a range ("G4 to S6"), the day is exported twice with fk-export's `going` input and priced at
+both ends. going_range.py adds a short note to the top of the market sheet naming ONLY the bets the track changes:
+a bet at one end only (bet it only on that track), or a stake 1u or more apart (the stake at each end). Bets the
+track does not change get no note.

@@ -1,9 +1,7 @@
 """Track-range caveats (6 Oct 2026). When the track call is a range (e.g. 'G4 to S6'), the day is priced at
-both ends and this adds a box to the top of the market sheet saying, per bet:
-  - the stake at each end of the range,
-  - what to do: a bet at both ends is bet at the smaller stake; a bet at one end only is bet ONLY if the
-    track is that end on the morning,
-  - the horse's win record on good, soft and heavy (information, not a rule: the model already prices it).
+both ends and this adds a short note to the top of the market sheet naming ONLY the bets the track changes:
+a bet at one end only (bet it only if the track is that end), or a stake that differs by 1u or more between
+the ends (the stake for each). Bets the track does not change get no note.
 python going_range.py PAGE_HTML LABEL_A BETS_A NPZ_A LABEL_B BETS_B NPZ_B"""
 import csv, html, re, sys
 import numpy as np
@@ -36,28 +34,30 @@ A, B, rec = bets(ba), bets(bb), records(na)
 rows = []
 for k in sorted(set(A) | set(B)):
     a, b = A.get(k), B.get(k)
+    if a and b and abs(a["stake"] - b["stake"]) < 1:
+        continue
     if a and b:
-        do = f"Bet {min(a['stake'], b['stake']):.1f}u (${min(a['stake'], b['stake']) * 100:.0f}) either way"
+        do = (f"{a['stake']:.1f}u on a {la} (ours ${a['ours']:.2f}), {b['stake']:.1f}u on a {lb} (ours ${b['ours']:.2f}). "
+              f"Bet {b['stake'] if 'soft' in lb.lower() else a['stake']:.1f}u unless the track is {la if 'soft' in lb.lower() else lb}.")
     elif a:
-        do = f"<b>Only if the track is {la} or better</b>: {a['stake']:.1f}u"
+        do = f"Bet only on a {la} ({a['stake']:.1f}u, ours ${a['ours']:.2f}). No bet on a {lb}."
     else:
-        do = f"<b>Only if the track is {lb} or worse</b>: {b['stake']:.1f}u"
+        do = f"Bet only on a {lb} ({b['stake']:.1f}u, ours ${b['ours']:.2f}). No bet on a {la}."
     gs, gw, ss, sw, hs, hw = rec.get(k[1], (0,) * 6)
-    rc = f"good {gw} from {gs} · soft {sw} from {ss} · heavy {hw} from {hs}"
-    st = lambda x: f"{x['stake']:.1f}u at ${x['price']:.2f} (ours ${x['ours']:.2f})" if x else "no bet"
-    rows.append(f"<tr><td>R{k[0]} {html.escape(k[1])}</td><td>{st(a)}</td><td>{st(b)}</td><td>{do}</td><td>{rc}</td></tr>")
-    print(f"R{k[0]} {k[1]}: {la} {st(a)} | {lb} {st(b)} | {re.sub('<[^>]+>', '', do)} | {rc}")
+    rc = f"Wins: good {gw} from {gs}, soft {sw} from {ss}, heavy {hw} from {hs}."
+    rows.append(f"<li><b>R{k[0]} {html.escape(k[1])}:</b> {do} {rc}</li>")
+    print(f"R{k[0]} {k[1]}: {do} {rc}")
 
-box = (f"<div class='rng'><h2 style='margin-top:0'>Track call {la} to {lb}</h2>"
-       f"<p>Priced at both ends. A bet at both ends goes on at the smaller stake. A bet at one end only goes on only if the "
-       f"track is that end on race morning. The win records are for reading: the model has already priced them.</p>"
-       f"<div style='overflow-x:auto'><table><tr><th>Bet</th><th>{la}</th><th>{lb}</th><th>Do</th><th>Wins on each going</th></tr>"
-       + "".join(rows) + "</table></div></div>")
+box = (f"<div class='rng'><b>Track {la} to {lb}:</b> "
+       + (f"priced at both ends. The track matters for these:<ul>{''.join(rows)}</ul>" if rows
+          else "priced at both ends, and no bet changes between them.") + "</div>")
 css = (".rng{border:2px solid #1b1b1b;padding:12px 14px;margin:0 0 18px}.rng p{font-size:13.5px;margin:4px 0 10px}"
-       ".rng table{border-collapse:collapse;font-size:13px;width:100%}.rng th,.rng td{text-align:left;padding:6px 8px;"
-       "border-bottom:1px solid #ddd;vertical-align:top}@media(prefers-color-scheme:dark){.rng{border-color:#eee}.rng th,.rng td{border-color:#333}}")
+       ".rng{font-size:13.5px}.rng ul{margin:6px 0 0;padding-left:18px}.rng li{margin:4px 0}"
+       "@media(prefers-color-scheme:dark){.rng{border-color:#eee}}")
 s = open(page).read()
 s = re.sub(r"<div class='rng'>.*?</table></div></div>", "", s, flags=re.S)
-s = s.replace("</style>", css + "</style>", 1) if ".rng{" not in s else s
+s = re.sub(r"<div class='rng'>.*?</div>", "", s, flags=re.S)
+s = re.sub(r"\.rng\{.*?@media\(prefers-color-scheme:dark\)\{\.rng\{border-color:#eee\}[^}]*\}\}", "", s)
+s = s.replace("</style>", css + "</style>", 1)
 s = re.sub(r"(<div class='sub'>.*?</div>)", lambda m: m.group(1) + box, s, count=1, flags=re.S)
 open(page, "w").write(s)
