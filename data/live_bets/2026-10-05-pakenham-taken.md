@@ -40,3 +40,7 @@ Emergencies Zourain, What A Ripper and Ornos carried no deduction (not in TAB's 
 against a $6.60 market and our repriced $7.28.
 
 Running calibration, TAB real vs scale-on-Form-King-best-price: 4 priced scratchings, TAB 20c in total, our method 57c.
+
+RESULT R3: GENOMIC 4th, started about $3.50 (user). Mapped on pace by Form King from a wide draw, ridden back to last;
+the leaders walked in front. Loses 1.9u ($190) at an effective $8.40. Note for the map-vs-actual tracker: a horse whose
+finishing sections are weak (last 600 -5.9L vs class) ridden back in a slow-run race has no way to win from there.
