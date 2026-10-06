@@ -96,3 +96,40 @@ for M in (1.12,1.18,1.25):
         for lo,hi,lab in ((0,.3,"forward"),(.3,.65,"midfield"),(.65,1.01,"back")):
             m=L&(ss>=lo)&(ss<hi)
             print(f"     live bets that settle {lab:8s}: {m.sum():4d}  win ROI {(100*(s*po_w)[m].sum())/(100*s[m].sum())*100:+6.1f}%  place ROI {(100*(s*po_p)[m].sum())/(100*s[m].sum())*100:+6.1f}%  place strike {placed[m].mean()*100:4.1f}%")
+
+print("\n(3) REAL place prices: Betfair place dividend (place SP) from Form King's results, against win at BSP, both less 8% commission")
+import csv
+dv={}
+for r in csv.DictReader(l for l in open("place_divs.csv") if not l.startswith("#")):
+    try: dv[(r["race_id"],r["horse_id"])]=float(r["betfairPlaceDiv"] or 0)
+    except ValueError: pass
+rid_=D["race_id"][ri].astype(str); hid_=D["horse_id"].astype(str)
+bpd=np.array([dv.get((rid_[k],hid_[k]),np.nan) for k in range(n)])
+has_pl=np.isfinite(bpd)
+# a placegetter whose dividend is missing cannot be settled: leave those races out
+miss_race=np.bincount(ri,weights=(placed&~(bpd>1)).astype(float),minlength=nR)>0
+L3=live&ok&has_pl&~miss_race[ri]&np.isfinite(bsp)&(bsp>1)
+pw=np.where(won,(bsp-1)*0.92,-1.0); pp3=np.where(placed&(bpd>1),(bpd-1)*0.92,-1.0)
+print(f"  live bets with a real place price: {L3.sum()} of {live.sum()}; place strike {placed[L3].mean()*100:.1f}%, avg place SP of placegetters ${bpd[L3&placed].mean():.2f}")
+def rep3(lab,ws,ps,m=L3):
+    inv=100*(ws+ps)[m].sum(); pr=100*(ws*pw+ps*pp3)[m].sum()
+    idx=np.where(m)[0]; o=idx[np.argsort(D["date"][ri[idx]].astype(str),kind="stable")]
+    cum=np.cumsum(100*(ws*pw+ps*pp3)[o]); dd=(np.maximum.accumulate(np.concatenate([[0],cum]))[1:]-cum).max()
+    print(f"  {lab:46s} invested ${inv:>9,.0f}  profit ${pr:>+8,.0f}  ROI {pr/inv*100:+6.1f}%  worst drawdown ${dd:>6,.0f}")
+s=stake
+rep3("WIN only at BSP (the plan)",s,0*s); rep3("PLACE only at place SP",0*s,s); rep3("EACH-WAY",s/2,s/2)
+for X_ in (6,8,10): rep3(f"win under ${X_} (open), each-way ${X_}+",np.where(op<X_,s,s/2),np.where(op<X_,0,s/2))
+for lo,hi,lab in ((0,.3,"forward"),(.3,.65,"midfield"),(.65,1.01,"back")):
+    m=L3&(ss>=lo)&(ss<hi)
+    print(f"  settle {lab:8s} {m.sum():4d} bets  win ROI {(s*pw)[m].sum()/s[m].sum()*100:+6.1f}%  place ROI {(s*pp3)[m].sum()/s[m].sum()*100:+6.1f}%  place strike {placed[m].mean()*100:4.1f}%")
+for lo,hi in ((2,6),(6,10),(10,20),(20,99)):
+    m=L3&(op>=lo)&(op<hi)
+    print(f"  open ${lo}-${hi:<3d} {m.sum():4d} bets  win ROI {(s*pw)[m].sum()/s[m].sum()*100:+6.1f}%  place ROI {(s*pp3)[m].sum()/s[m].sum()*100:+6.1f}%")
+# how good was the estimate? estimated place price from BSP-market Harville x 1.18 vs real place SP
+okb=hm&np.isfinite(bsp)&(bsp>1)
+pl_b=np.full(n,np.nan)
+for r in np.unique(ri[L3]):
+    ix=np.where(ri==r)[0]; k=places[ix[0]]
+    if okb[ix].all() and k: w=(1/bsp[ix])/(1/bsp[ix]).sum(); pl_b[ix]=harville(w,k)
+m=L3&placed&(bpd>1)&np.isfinite(pl_b)
+print(f"  real place SP vs fair Harville place price off BSP, placegetters: median ratio {np.median(bpd[m]*pl_b[m]):.2f} (1.00 = Betfair place SP is fair)")

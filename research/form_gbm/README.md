@@ -389,3 +389,17 @@ Speed map and ratings do not move the real place or win rate beyond the chance a
 placed 96.5% of what our chance expected (market 97.5%), midfield 104.7%, back 101.4%; wins 99% / 104% / 95%.
 Top-rated last start placed 92% of our expectation (market 98%). Our Harville place chance overrates favourites
 (89%) and underrates longshots (151%) for places; the market's is calibrated within 3% everywhere.
+
+Real place prices (same day): Form King's results carry `betfairPlaceDiv` (Betfair place SP) for 97% of
+placegetters; `totePlace` and `toteWin` are 0 in every stored result. scripts/place_divs.py exports them. On the
+1,163 live bets with a real place price, at BSP and place SP, both less 8% commission:
+
+| staking | ROI | worst drawdown |
+|---|---|---|
+| win only (the plan) | +0.6% | $11,612 |
+| place only | -2.6% | $12,986 |
+| each-way | -1.0% | $11,575 |
+| win under $8, each-way $8+ | +0.6% | $11,634 |
+
+Place never beats win on real prices either. Bets that settle back: win -7.7%, place -10.9% (294 bets), the same
+weak spot the estimate showed. Betfair place SP pays about 7% over the fair Harville place price off BSP.
