@@ -11,6 +11,8 @@ from pathlib import Path
 
 import psycopg
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from fk import fields as F
 from fk import history as H
 
