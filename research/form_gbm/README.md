@@ -370,3 +370,22 @@ When the track call is a range ("G4 to S6"), the day is exported twice with fk-e
 both ends. going_range.py adds a short note to the top of the market sheet naming ONLY the bets the track changes:
 a bet at one end only (bet it only on that track), or a stake 1u or more apart (the stake at each end). Bets the
 track does not change get no note.
+
+## Place and each-way staking, 6 Oct 2026 (t_place.py)
+
+No place prices in the data, so the place price is ESTIMATED: Harville place chance from the opening win market,
+priced at a 1.18 place-book margin (1.12 and 1.25 as sensitivity, same ranking). Holdout, live bets, at the open:
+
+| staking (same stakes) | ROI | worst drawdown | profit/drawdown | longest run with no return |
+|---|---|---|---|---|
+| win only (the plan) | +64.2% | $5,215 | 29.2 | 25 |
+| place only | +20.8% | $6,129 | 8.1 | 14 |
+| each-way, half and half | +42.5% | $3,075 | 32.8 | 14 |
+| win under $6, each-way $6+ | +50.5% | $3,075 | 39.0 | 14 |
+| win under $8, each-way $8+ | +55.2% | $3,583 | 36.5 | 15 |
+| win under $10, each-way $10+ | +60.0% | $3,971 | 35.9 | 16 |
+
+Speed map and ratings do not move the real place or win rate beyond the chance already priced: leaders/on-pace
+placed 96.5% of what our chance expected (market 97.5%), midfield 104.7%, back 101.4%; wins 99% / 104% / 95%.
+Top-rated last start placed 92% of our expectation (market 98%). Our Harville place chance overrates favourites
+(89%) and underrates longshots (151%) for places; the market's is calibrated within 3% everywhere.
