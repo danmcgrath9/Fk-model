@@ -403,3 +403,13 @@ placegetters; `totePlace` and `toteWin` are 0 in every stored result. scripts/pl
 
 Place never beats win on real prices either. Bets that settle back: win -7.7%, place -10.9% (294 bets), the same
 weak spot the estimate showed. Betfair place SP pays about 7% over the fair Harville place price off BSP.
+
+## Back-settlers, 6 Oct 2026 (t_backsettle.py)
+
+Our value bets on horses that usually settle back (settle share 0.65+) win fewer races than our chance says:
+wins/expected 0.83 (older holdout), 1.00 (newer holdout), and on the races BEFORE the holdout, priced with the
+stage-1 out-of-fold chances that played no part in finding it, 0.83 (Jan-Mar) and 0.69 (Mar-May). Back is the
+worst settle group in three of the four periods at BSP. Blocking them raises ROI but cuts profit at the open (they
+still make money there). Shading their chance x0.85 and renormalising the race improves profit at the open AND at
+BSP on both samples (holdout open +$10.1k, BSP +$2.8k; before the holdout open +$5.2k, BSP +$0.8k); x0.90 and x0.80
+also improve both. Not switched on yet.
