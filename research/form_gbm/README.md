@@ -413,3 +413,14 @@ worst settle group in three of the four periods at BSP. Blocking them raises ROI
 still make money there). Shading their chance x0.85 and renormalising the race improves profit at the open AND at
 BSP on both samples (holdout open +$10.1k, BSP +$2.8k; before the holdout open +$5.2k, BSP +$0.8k); x0.90 and x0.80
 also improve both. Not switched on yet.
+
+**Switched on 7 Oct 2026 (founder):** shade_back.py runs after apply_stage2f.py on every day file and multiplies a
+back-settler's chance by 0.85 (p_unshaded kept in the json). Pipeline: drop_scr, price_day3, apply_stage2f,
+**shade_back**, angles_day, fs_json, fu_json, paper_open / market_sheet.
+
+## Bigger place stakes on the short bets, 6 Oct 2026 (t_place_short.py)
+
+Win bet plus a place bet of 1x to 3x the win stake on live bets that opened under $8 (343 bets), place settled at
+REAL Betfair place SP less 8%: the place part alone returns -1.3% (-2.5% on the ones that started $6 or shorter),
+so every extra place unit lowers ROI and profit. Opening place prices are not in the data; the early-price edge on
+places is untested.
