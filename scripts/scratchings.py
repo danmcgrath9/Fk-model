@@ -37,3 +37,21 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
             prices = {k: v for k, v in find(raw, r"^(price|currentPrice|bestPrice|open|openingPrice|averageOpen|firmOrDrift)$")}
             scr = any(("scratch" in k.lower() and v) for k, v in flags.items())
             print(f"R{rn} {name!s:24s} {'SCR' if scr else '   '} {json.dumps(prices)[:120]} {json.dumps({k:v for k,v in flags.items() if v})[:120]}")
+
+    # The same meeting as a live_bets prices file: best price now in both columns, Form King's average
+    # opening price fifth, scratched runners as SCR (6 Oct 2026). Paste below "## prices file".
+    for mid in sys.argv[1:]:
+        rows = c.execute("""select r.race_number, e.raw from fk.entries e join fk.races r using (race_id)
+                            where r.meeting_id = %s order by r.race_number""", (mid,)).fetchall()
+        print(f"\n## prices file: {mid}")
+        for rn, raw in rows:
+            name = raw.get("name") or raw.get("horseName") or (raw.get("horse") or {}).get("name") or "?"
+            scr = any(("scratch" in k.lower() and v) for k, v in find(raw, r"scratch"))
+            o = raw.get("odds") if isinstance(raw.get("odds"), dict) else {}
+            now, op = o.get("bestNow"), o.get("avgOpen")
+            if scr:
+                print(f"{rn}, {name}, SCR")
+            elif now:
+                print(f"{rn}, {name}, {float(now):.2f}, {float(now):.2f}" + (f", fk_open {float(op):.2f}" if op else ""))
+            else:
+                print(f"# {rn}, {name}, NOPRICE")
