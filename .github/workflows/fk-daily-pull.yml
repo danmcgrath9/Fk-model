@@ -53,6 +53,9 @@ on:
       force:
         description: 'yes = re-fetch races already fetched in the last 12 hours (e.g. weights-stage entries now at final fields)'
         default: 'no'
+      max_credits:
+        description: 'optional: credit cap for this run only (overrides FK_MAX_CREDITS_PER_RUN), e.g. to split a low balance across meetings'
+        required: false
       odds_only:
         description: 'yes = only refresh the prices (one Meeting Summary per meeting, 5 credits) for the date(s) given, comma separated, and rebuild them'
         default: 'no'
@@ -75,7 +78,7 @@ jobs:
       DATABASE_URL: ${{ secrets.FK_DATABASE_URL }}
       SUPABASE_URL: ${{ secrets.FK_SUPABASE_URL }}
       SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.FK_SUPABASE_SERVICE_ROLE_KEY }}
-      FK_MAX_CREDITS_PER_RUN: ${{ vars.FK_MAX_CREDITS_PER_RUN || '600' }}
+      FK_MAX_CREDITS_PER_RUN: ${{ github.event.inputs.max_credits || vars.FK_MAX_CREDITS_PER_RUN || '600' }}
       FK_MIN_BALANCE: ${{ vars.FK_MIN_BALANCE || '100' }}
     steps:
       - uses: actions/checkout@v4
