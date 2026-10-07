@@ -434,3 +434,10 @@ out 9m+ 88% (z -1.0). Leaders alone with the rail out win LESS than priced (75-8
 on pace 150% (11 wins from 72) but midfield 53% (3 from 82); five or six meetings per band, which is noise. Our model
 tracks the market in every cell. Verdict: the market already prices the rail and the map; nothing to add. Revisit as
 rail data builds up (every pull adds it).
+
+### Map-wrong and rail as stage-2 inputs, 7 Oct 2026 (t_mapwrong.py, t_rail_halves.py)
+
+Holdout KL to BSP (lower better): live v6 0.0800; + speed-map-wrong inputs (real settling history and its spread,
+mapped vs usual position, habitual leaders in the race, mapped to lead but rarely leads, early-speed rank) 0.0802;
++ rail 0.0801. The rail only exists from 30 Apr, so it was re-tested inside that period, each half fitted and tested
+on the other: v6 0.0819, + rail 0.0820, + rail + map 0.0821. Nothing gets closer to BSP. Not adopted.
