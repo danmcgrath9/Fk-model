@@ -6,3 +6,14 @@
 7, Kingswood, 15.00, 15.00, fk_open 15.00
 7, Treasurethe Moment, 12.00, 12.00, fk_open 15.00
 7, Sheza Alibi, 1.40, 1.40, fk_open 1.40
+8, Unit Five, 23.00, 23.00, fk_open 21.00
+8, Warwoven, 2.15, 2.15, fk_open 2.10
+8, Tornado Valley, 34.00, 34.00, fk_open 37.50
+8, Tron Bolt, 9.50, 9.50, fk_open 8.80
+8, Blind Raise, 3.60, 3.60, fk_open 3.60
+8, Diameter, 18.00, 18.00, fk_open 16.30
+8, Central Europe, 15.00, 15.00, fk_open 14.00
+8, Somethings Burnin, 31.00, 31.00, fk_open 23.30
+8, Wolf Gap, 19.00, 19.00, fk_open 15.70
+8, Seraphox, 67.00, 67.00, fk_open 66.00
+8, Call Me Coach, 26.00, 26.00, fk_open 23.50
