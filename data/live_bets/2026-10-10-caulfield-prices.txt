@@ -70,3 +70,15 @@
 9, Changing Colours, 9.00, 9.00, fk_open 7.30
 9, Pondalowie, 31.00, 31.00, fk_open 26.00
 9, Salty Pearl, 13.00, 13.00, fk_open 11.50
+3, Surfin' Bird, 3.60, 3.60, fk_open 3.60
+3, Private Legacy, 16.00, 16.00, fk_open 15.00
+3, Sneaky Sunrise, 21.00, 21.00, fk_open 18.00
+3, Jennis Meadow, 23.00, 23.00, fk_open 21.00
+3, On Display, 4.40, 4.40, fk_open 4.40
+3, Astral Flame, 10.00, 10.00, fk_open 10.30
+3, Tarvue, 126.00, 126.00, fk_open 96.00
+3, Perfect Ten, 12.00, 12.00, fk_open 15.00
+3, Savitri, 4.20, 4.20, fk_open 4.40
+3, All Business, 61.00, 61.00, fk_open 46.00
+3, Oraqua, 41.00, 41.00, fk_open 32.50
+3, Moonlight Circus, 9.00, 9.00, fk_open 8.00
