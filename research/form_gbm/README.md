@@ -455,3 +455,5 @@ It does not replicate out of sample: before the holdout the blocked bets did BET
 -7.3% BSP). Dropping the rule adds open profit in both samples (holdout +$20.4k, before +$35.2k) and costs $7.3k at BSP
 on the holdout while adding $2.5k before it. Forward runners dropping weight: holdout -43% BSP (56 bets), before +5.6%
 (100 bets): no consistent effect, no new rule. Recommendation to the founder: remove the weight rule.
+**Removed 7 Oct 2026 (founder: "if removing the weight rule works then go ahead, as long as we make money").** fu_json.py
+no longer blocks a 2kg+ weight drop. Live from Caulfield 10 Oct (first bet it adds: R9 Changing Colours).
