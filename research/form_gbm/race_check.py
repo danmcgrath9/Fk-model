@@ -1,7 +1,7 @@
 """One race against the prices file with the live rules. python race_check.py DAYPREFIX GOING RACE"""
 import json, re, sys
 pre, g, race = sys.argv[1], sys.argv[2], int(sys.argv[3])
-THR = 0.4 if any(t in pre.lower() for t in ("caulfield", "flemington", "moonee", "sandown")) else 0.2   # metro needs 40c+ (t_tracks.py)
+THR = 0.2   # metro 40c+ tried 7 Oct and reverted: no extra profit at the open (t_tracks.py)
 norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower())
 M = [r for r in json.load(open(f"{pre}-{g}-v6.json")) if r["race"] == race]
 fu = json.load(open(f"{pre}-{g}-first-up-blocks.json")); ang = json.load(open(f"{pre}-{g}-angles.json")); fs = set(json.load(open(f"{pre}-{g}-first-starters.json")))

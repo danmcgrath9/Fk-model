@@ -7,9 +7,9 @@ capped at 4 units (average about 2 units); top pick 1 unit.
 Top pick is a tracking plan and stays unless the top pick is a first-starter."""
 import json, re, csv, collections, sys
 norm=lambda s: re.sub(r"[^a-z0-9]","",s.lower())
-# metro needs 40c+ (7 Oct 2026, t_tracks.py): our metro chances run high in both samples; the 20c-40c metro bets
-# roughly broke even at the open and lost at BSP. Metro = Flemington, Caulfield, Moonee Valley, Sandown (from the file name).
-mj,pt,aj,out=sys.argv[1:5]; THR=0.4 if any(t in pt.lower() for t in ('caulfield','flemington','moonee','sandown')) else 0.2; hurdle={int(x) for x in sys.argv[5].split(",")} if len(sys.argv)>5 and sys.argv[5] else set()
+# metro 40c+ was tried 7 Oct 2026 and REVERTED the same day (founder): at the open it changed profit by about -$1.8k over
+# both samples; it only helped at BSP, where we do not bet (t_tracks.py).
+mj,pt,aj,out=sys.argv[1:5]; THR=0.2; hurdle={int(x) for x in sys.argv[5].split(",")} if len(sys.argv)>5 and sys.argv[5] else set()
 fs=set(json.load(open(sys.argv[6]))) if len(sys.argv)>6 and sys.argv[6] else set()
 _fu=json.load(open(sys.argv[7])) if len(sys.argv)>7 and sys.argv[7] else {}
 fu={k.split('|')[0]+'|'+norm(k.split('|',1)[1]) for k,v in _fu.items() if not v.startswith("EARLY:")}

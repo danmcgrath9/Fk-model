@@ -3,9 +3,9 @@ contributions grouped into plain themes, relative to the field) plus the horse's
 python market_sheet.py UP_NPZ MODEL_JSON PRICES_TXT ANG_JSON FS_JSON FU_JSON OUT_HTML TITLE SUB"""
 import numpy as np, bench as b, price_day as pdm, lightgbm as lgb, json, sys, re, html
 up, mj, pt, aj, fsj, fuj, out, title, sub = sys.argv[1:10]
-# metro needs 40c+ (7 Oct 2026, t_tracks.py): our metro chances run high in both samples; the 20c-40c metro bets
-# roughly broke even at the open and lost at BSP. Metro = Flemington, Caulfield, Moonee Valley, Sandown (from the file name).
-THR = 0.4 if any(t in pt.lower() for t in ('caulfield', 'flemington', 'moonee', 'sandown')) else 0.2
+# metro 40c+ was tried 7 Oct 2026 and REVERTED the same day (founder): at the open it changed profit by about -$1.8k over
+# both samples; it only helped at BSP, where we do not bet (t_tracks.py).
+THR = 0.2
 D, nR, U, _ = pdm.combined(day=up); pdm.install(D)
 F, nm = pdm.inputs()
 import stage2
