@@ -1,2 +1,8 @@
-# Caulfield Sat 10 Oct: NO MARKET YET at the Wednesday 12:22pm pull (Form King had no prices). Emergencies listed as SCR. Priced on Good 4 (founder's call).
+# Caulfield Sat 10 Oct: Emergencies listed as SCR. Prices: best across the bookmakers from the founder's odds screens as they come in (R7 Wednesday afternoon); fifth field Form King's opening price. Priced on Good 4 (founder's call).
 10, Lord Of Biscay, SCR
+7, Birdman, 3.60, 3.60, fk_open 3.20
+7, Land Legend, 101.00, 101.00, fk_open 81.00
+7, Torranzino, 251.00, 251.00, fk_open 126.00
+7, Kingswood, 15.00, 15.00, fk_open 15.00
+7, Treasurethe Moment, 12.00, 12.00, fk_open 15.00
+7, Sheza Alibi, 1.40, 1.40, fk_open 1.40
