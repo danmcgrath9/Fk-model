@@ -3,6 +3,9 @@ contributions grouped into plain themes, relative to the field) plus the horse's
 python market_sheet.py UP_NPZ MODEL_JSON PRICES_TXT ANG_JSON FS_JSON FU_JSON OUT_HTML TITLE SUB"""
 import numpy as np, bench as b, price_day as pdm, lightgbm as lgb, json, sys, re, html
 up, mj, pt, aj, fsj, fuj, out, title, sub = sys.argv[1:10]
+# metro needs 40c+ (7 Oct 2026, t_tracks.py): our metro chances run high in both samples; the 20c-40c metro bets
+# roughly broke even at the open and lost at BSP. Metro = Flemington, Caulfield, Moonee Valley, Sandown (from the file name).
+THR = 0.4 if any(t in pt.lower() for t in ('caulfield', 'flemington', 'moonee', 'sandown')) else 0.2
 D, nR, U, _ = pdm.combined(day=up); pdm.install(D)
 F, nm = pdm.inputs()
 import stage2
@@ -92,7 +95,7 @@ for race in sorted(races):
         a = ang.get(hk, []); tags = []
         if blocked: tags.append("<span class='tag no'>no bet</span>")
         else:
-            if now and pp * now - 1 >= 0.2:
+            if now and pp * now - 1 >= THR:
                 pbl = (pp / now) ** 0.5                       # chance halfway (geometric) between ours and the market's: Kelly under estimation error
                 stake = min(4.0, 75 * max(0.0, (pbl * now - 1) / (now - 1)))   # Kelly x75 on that blend, capped at 4 units (t_stakeplan.py, 4 Oct 2026)
                 tags.append(("<span class='tag edge'>EDGE</span>" if a else "<span class='tag val'>value</span>") + f"<span class='tag'>stake {stake:.1f}u = ${100 * stake:,.0f}</span>")
@@ -103,6 +106,6 @@ for race in sorted(races):
         if ours > 15 and not fuv and not isfs: fuv_note = "our price over $15 (outside the backtested band)"
         else: fuv_note = ""
         reason = (f"<b>No bet:</b> {fuv_note}. " if fuv_note else "") + (f"<b>{'No bet' if (fuv and not early) else 'Early only' if early else ''}:</b> {html.escape(fuv.replace('EARLY: ', ''))}. " if fuv else "") + (f"<b>No bet:</b> first starter. " if isfs else "")
-        H.append(f"<div class='r'><div class='px'>${ours:,.2f}</div><div><span class='nm'>{html.escape(r['horse'])}</span>{''.join(tags)}<span class='mk'> · now {'$%.2f' % now if now else 'no price'} · take at ${ours * 1.2:,.2f} or better</span></div>"
+        H.append(f"<div class='r'><div class='px'>${ours:,.2f}</div><div><span class='nm'>{html.escape(r['horse'])}</span>{''.join(tags)}<span class='mk'> · now {'$%.2f' % now if now else 'no price'} · take at ${ours * (1 + THR):,.2f} or better</span></div>"
                  f"<div class='why'>{reason}<b>Why:</b> {why}.<br>{html.escape(' · '.join(facts(i, race)))}{(' · <b>angles:</b> ' + html.escape('; '.join(a))) if a else ''}</div></div>")
 open(out, "w").write("\n".join(H)); print("ok", out)

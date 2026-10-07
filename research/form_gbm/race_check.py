@@ -1,6 +1,7 @@
 """One race against the prices file with the live rules. python race_check.py DAYPREFIX GOING RACE"""
 import json, re, sys
 pre, g, race = sys.argv[1], sys.argv[2], int(sys.argv[3])
+THR = 0.4 if any(t in pre.lower() for t in ("caulfield", "flemington", "moonee", "sandown")) else 0.2   # metro needs 40c+ (t_tracks.py)
 norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower())
 M = [r for r in json.load(open(f"{pre}-{g}-v6.json")) if r["race"] == race]
 fu = json.load(open(f"{pre}-{g}-first-up-blocks.json")); ang = json.load(open(f"{pre}-{g}-angles.json")); fs = set(json.load(open(f"{pre}-{g}-first-starters.json")))
@@ -24,8 +25,8 @@ for r in sorted(M, key=lambda r: -r["p"]):
         if early and o > 8: why.append("early only, over $8")
         if not 2 <= 1 / pp <= 15: why.append("our price outside $2-$15")
         if o >= 3 / pp: why.append("open 3x ours")
-        if v < 0.2: why.append(f"value {v*100:+.0f}%")
+        if v < THR: why.append(f"value {v*100:+.0f}%")
     st = 0
     if o and not why:
         st = round(min(4.0, 75 * max(0, ((pp * o) ** 0.5 - 1) / (o - 1))), 2)
-    print(f"{r['horse']:20s} ours ${1/pp:7.2f}  best ${o}  " + (f"BET {st}u, take at ${1.2/pp:.2f}+ " if st else "") + ("; ".join(why)) + ("  [" + "; ".join(ang.get(k, [])) + "]" if st else ""))
+    print(f"{r['horse']:20s} ours ${1/pp:7.2f}  best ${o}  " + (f"BET {st}u, take at ${(1+THR)/pp:.2f}+ " if st else "") + ("; ".join(why)) + ("  [" + "; ".join(ang.get(k, [])) + "]" if st else ""))

@@ -469,3 +469,5 @@ good ones (Ballarat, Pakenham, Geelong, Wangaratta): too few bets per track for 
 Fixes, whole-plan profit open-less-deductions / BSP: metro needs 40c+ holdout $+153.7k / $+0.1k (now $+153.0k / $-4.1k),
 before $+194.2k / $-23.8k (now $+196.7k / $-27.8k), with 137 and 189 fewer bets. Blending metro with the market or
 dropping metro does worse at the open. Proposed to the founder: metro needs 40c+.
+**Switched on 7 Oct 2026 (founder):** paper_open.py, market_sheet.py and race_check.py need 40c+ value at Flemington,
+Caulfield, Moonee Valley and Sandown (from the prices file name), 20c+ elsewhere; the take-at price follows.

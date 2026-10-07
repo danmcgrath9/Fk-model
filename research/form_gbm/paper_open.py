@@ -7,7 +7,9 @@ capped at 4 units (average about 2 units); top pick 1 unit.
 Top pick is a tracking plan and stays unless the top pick is a first-starter."""
 import json, re, csv, collections, sys
 norm=lambda s: re.sub(r"[^a-z0-9]","",s.lower())
-mj,pt,aj,out=sys.argv[1:5]; hurdle={int(x) for x in sys.argv[5].split(",")} if len(sys.argv)>5 and sys.argv[5] else set()
+# metro needs 40c+ (7 Oct 2026, t_tracks.py): our metro chances run high in both samples; the 20c-40c metro bets
+# roughly broke even at the open and lost at BSP. Metro = Flemington, Caulfield, Moonee Valley, Sandown (from the file name).
+mj,pt,aj,out=sys.argv[1:5]; THR=0.4 if any(t in pt.lower() for t in ('caulfield','flemington','moonee','sandown')) else 0.2; hurdle={int(x) for x in sys.argv[5].split(",")} if len(sys.argv)>5 and sys.argv[5] else set()
 fs=set(json.load(open(sys.argv[6]))) if len(sys.argv)>6 and sys.argv[6] else set()
 _fu=json.load(open(sys.argv[7])) if len(sys.argv)>7 and sys.argv[7] else {}
 fu={k.split('|')[0]+'|'+norm(k.split('|',1)[1]) for k,v in _fu.items() if not v.startswith("EARLY:")}
@@ -34,7 +36,7 @@ for k in sorted(by):
         # same caps as the race page (market_tpl.html): our price under $50 and the open under 3x our price
         hk=f"{k}|{norm(r['horse'])}"; is_early=hk in early
         bet_ok=not isfs(r) and not fs_backed and hk not in fu and 2<=1/pp<=15 and op<3/pp and not (is_early and op>8)   # our price $2-$15, as backtested
-        tags=(["EDGE"] if bet_ok and val>=0.2 and a else [])+(["value_20c"] if bet_ok and val>=0.2 else [])+(["top_pick"] if r is top and not isfs(r) else [])
+        tags=(["EDGE"] if bet_ok and val>=THR and a else [])+(["value_20c"] if bet_ok and val>=THR else [])+(["top_pick"] if r is top and not isfs(r) else [])
         for t in tags:
             rows.append(dict(race=k,race_id=r["race_id"],horse=r["horse"],plan=t,price=op,price_now=cur,model_price=round(1/pp,2),value=round(val,3),
                              angles="; ".join(a)+("; EARLY ONLY: bet near the open" if is_early else ""),stake=(round(min(4.0,75*max(0.0,((pp/op)**0.5*op-1)/(op-1))),2) if t in ("EDGE","value_20c") else 1.0),hurdle="yes" if k in hurdle else "no",result="",returned=""))
