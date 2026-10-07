@@ -50,3 +50,15 @@ Pakenham (estimate 57c, real 20c, 2.9x) the real deduction runs at roughly a thi
 | R8 Stay Humble | 4.0u | $4.79 | WON | +15.16 |
 
 Geelong: 5 bets, 2 winners, 12.0u staked, +18.84u (+157%).
+
+## Price we held against the starting price (founder)
+
+| Bet | Price held | SP | Beat SP by |
+|---|---|---|---|
+| Nightowl | $13.95 | $9.00 | +55% |
+| Silky Seth | $3.80 | $5.00 | -24% |
+| Mr Natural | $3.65 | $2.20 | +66% |
+| Mount Sabyinyo | $13.30 | $7.50 | +77% |
+| Stay Humble | $4.79 | $2.70 | +77% |
+
+Four of five beat the SP, average +50% (backtest: 77% of bets shorten from the open).
