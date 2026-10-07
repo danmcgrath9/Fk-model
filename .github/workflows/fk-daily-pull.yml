@@ -56,6 +56,9 @@ on:
       max_credits:
         description: 'optional: credit cap for this run only (overrides FK_MAX_CREDITS_PER_RUN), e.g. to split a low balance across meetings'
         required: false
+      min_balance:
+        description: 'optional: balance floor for this run only (overrides FK_MIN_BALANCE)'
+        required: false
       odds_only:
         description: 'yes = only refresh the prices (one Meeting Summary per meeting, 5 credits) for the date(s) given, comma separated, and rebuild them'
         default: 'no'
@@ -79,7 +82,7 @@ jobs:
       SUPABASE_URL: ${{ secrets.FK_SUPABASE_URL }}
       SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.FK_SUPABASE_SERVICE_ROLE_KEY }}
       FK_MAX_CREDITS_PER_RUN: ${{ github.event.inputs.max_credits || vars.FK_MAX_CREDITS_PER_RUN || '600' }}
-      FK_MIN_BALANCE: ${{ vars.FK_MIN_BALANCE || '100' }}
+      FK_MIN_BALANCE: ${{ github.event.inputs.min_balance || vars.FK_MIN_BALANCE || '100' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
