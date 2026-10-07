@@ -39,4 +39,14 @@ Emergencies count only if they were in TAB's fixed market when we bet (they were
 Estimate 107c in total against 29c real: the TAB scale on Monday's TAB prices overstates by about 3.7x. With
 Pakenham (estimate 57c, real 20c, 2.9x) the real deduction runs at roughly a third of our scale estimate.
 
-Results: pending.
+## RESULTS (founder, Wednesday night)
+
+| Bet | Stake | Price held | Result | Units |
+|---|---|---|---|---|
+| R2 Nightowl | 1.3u | $13.95 | unplaced (not reported as placed) | -1.30 |
+| R3 Silky Seth | 2.7u | $3.80 | 2nd | -2.70 |
+| R4 Mr Natural | 3.2u | $3.65 | WON | +8.48 |
+| R7 Mount Sabyinyo | 0.8u | $13.30 | 2nd | -0.80 |
+| R8 Stay Humble | 4.0u | $4.79 | WON | +15.16 |
+
+Geelong: 5 bets, 2 winners, 12.0u staked, +18.84u (+157%).
