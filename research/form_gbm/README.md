@@ -457,3 +457,15 @@ on the holdout while adding $2.5k before it. Forward runners dropping weight: ho
 (100 bets): no consistent effect, no new rule. Recommendation to the founder: remove the weight rule.
 **Removed 7 Oct 2026 (founder: "if removing the weight rule works then go ahead, as long as we make money").** fu_json.py
 no longer blocks a 2kg+ weight drop. Live from Caulfield 10 Oct (first bet it adds: R9 Changing Colours).
+
+## By track, 7 Oct 2026 (t_tracks.py)
+
+One model for every track; track enters through the bias inputs (track x distance x barrier / position), the horse's
+track record and track speed. The plan by track type (open less 7% deductions / BSP / wins vs our expectation):
+metro holdout +29% / -13% / 0.87, before +35% / -2% / 0.89; provincial & country +56% / 0% / 0.99 and +43% / -7% / 0.94;
+synthetic (holdout only) +81% / +9% / 1.20. Metro is the one pattern in both samples: still profitable at the open,
+but our metro chances run high. Single tracks flip between samples (Bendigo, Seymour, Echuca) except the consistent
+good ones (Ballarat, Pakenham, Geelong, Wangaratta): too few bets per track for track-by-track rules.
+Fixes, whole-plan profit open-less-deductions / BSP: metro needs 40c+ holdout $+153.7k / $+0.1k (now $+153.0k / $-4.1k),
+before $+194.2k / $-23.8k (now $+196.7k / $-27.8k), with 137 and 189 fewer bets. Blending metro with the market or
+dropping metro does worse at the open. Proposed to the founder: metro needs 40c+.
