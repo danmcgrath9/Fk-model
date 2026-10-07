@@ -1,91 +1,91 @@
-# Geelong Wed 7 Oct: best price across Betwatch's bookmakers from the user's Form King odds screens, Monday evening (all 8 races), in both the price-taken and now columns; the fifth field is Form King's opening price. Emergencies listed as SCR. Shooting Brake (R3 No.10) missing from the R3 market, so SCR.
-1, Al Jadith, 5.50, 5.50, fk_open 4.60
-1, Cold Shower, 2.20, 2.20, fk_open 2.00
-1, Gradivus, 10.00, 10.00, fk_open 8.00
-1, Locked In, 8.00, 8.00, fk_open 15.00
-1, Melboy, 20.00, 20.00, fk_open 26.00
+# Geelong Wed 7 Oct: Form King best price now at the 11:21am refresh (final fields, scratchings applied, emergencies in), both columns; fifth field Form King's average opening price.
+1, Gradivus, 11.00, 11.00, fk_open 8.00
+1, Prestige Ricky, 16.00, 16.00, fk_open 15.00
+1, Winter Arc, 7.50, 7.50, fk_open 4.60
+1, Al Jadith, 3.80, 3.80, fk_open 4.60
+1, Melboy, 19.00, 19.00, fk_open 26.00
 1, Obsidian Stone, 9.00, 9.00, fk_open 15.00
-1, Prestige Ricky, 19.00, 19.00, fk_open 15.00
-1, Winter Arc, 6.00, 6.00, fk_open 4.60
-2, Challenging, 16.00, 16.00, fk_open 15.00
-2, Nightowl, 15.00, 15.00, fk_open 15.00
-2, Trentino, 16.00, 16.00, fk_open 11.00
-2, Princess Of Sol, 35.00, 35.00, fk_open 26.00
-2, Sheistheboss, 15.00, 15.00, fk_open 8.00
-2, Circus Moon, 15.00, 15.00, fk_open 11.00
-2, King Winston, 10.00, 10.00, fk_open 11.00
-2, Murshidi, 3.60, 3.60, fk_open 4.00
-2, Fringilla, 2.50, 2.50, fk_open 3.00
-2, Little Ally Bama, 14.00, 14.00, fk_open 6.00
+1, Locked In, 7.00, 7.00, fk_open 15.00
+1, Cold Shower, 2.60, 2.60, fk_open 2.00
+2, Nightowl, 8.50, 8.50, fk_open 15.00
+2, Challenging, SCR
 2, Off'n'gawn, SCR
-2, Helter Peltzer, SCR
-2, Dark Rosey, SCR
-3, Ambitious Achiever, 10.00, 10.00, fk_open 11.00
+2, Dark Rosey, 151.00, 151.00, fk_open 81.00
+2, Sheistheboss, 15.00, 15.00, fk_open 8.00
+2, Helter Peltzer, 151.00, 151.00, fk_open 81.00
+2, Trentino, 15.00, 15.00, fk_open 11.00
+2, Princess Of Sol, SCR
+2, Little Ally Bama, 14.00, 14.00, fk_open 6.00
+2, King Winston, 9.50, 9.50, fk_open 11.00
+2, Circus Moon, SCR
+2, Fringilla, 2.30, 2.30, fk_open 3.00
+2, Murshidi, 2.90, 2.90, fk_open 4.00
+3, Marco Polo, 8.00, 8.00, fk_open 8.00
+3, Sacre Bleu, 41.00, 41.00, fk_open 51.00
+3, Outfoxthefox, 151.00, 151.00, fk_open 101.00
+3, Tempered Edge, 16.00, 16.00, fk_open 15.00
 3, Fantasy Reel, 41.00, 41.00, fk_open 51.00
-3, Hedjet, 2.15, 2.15, fk_open 3.60
-3, Marco Polo, 7.00, 7.00, fk_open 8.00
-3, Outfoxthefox, 67.00, 67.00, fk_open 101.00
-3, Sacre Bleu, 35.00, 35.00, fk_open 51.00
-3, Silky Seth, 3.80, 3.80, fk_open 4.60
-3, Tecknoking, 9.00, 9.00, fk_open 11.00
-3, Tempered Edge, 13.00, 13.00, fk_open 15.00
+3, Ambitious Achiever, 10.00, 10.00, fk_open 11.00
+3, Silky Seth, 4.20, 4.20, fk_open 4.60
+3, Rock It Fuel, 81.00, 81.00, fk_open 81.00
+3, Tecknoking, 8.50, 8.50, fk_open 11.00
+3, Hedjet, 1.85, 1.85, fk_open 3.60
 3, Shooting Brake, SCR
-3, Rock It Fuel, SCR
-4, Abydos, 26.00, 26.00, fk_open 15.00
-4, Boutin, 15.00, 15.00, fk_open 15.00
-4, Bureau, 7.50, 7.50, fk_open 8.00
-4, Civic Square, 3.30, 3.30, fk_open 3.00
-4, Faster Link, 7.50, 7.50, fk_open 6.00
-4, Mr Natural, 3.80, 3.80, fk_open 4.60
-4, Perfect Dismount, 23.00, 23.00, fk_open 15.00
-4, Written Velocity, 8.50, 8.50, fk_open 11.00
-4, Flamenco Star, 12.00, 12.00, fk_open 8.00
-4, Neonova, 26.00, 26.00, fk_open 15.00
-4, Pneuma, SCR
-4, Via Theresa, SCR
+4, Abydos, 41.00, 41.00, fk_open 15.00
+4, Pneuma, 101.00, 101.00, fk_open 51.00
 4, Dextrose, SCR
-5, Les Braves, 9.00, 9.00, fk_open 8.00
-5, Prince Pienza, 10.00, 10.00, fk_open 8.00
-5, Turbo Saint, 2.70, 2.70, fk_open 2.50
-5, Home Tomurra, 9.50, 9.50, fk_open 11.00
-5, Shaadrille, 5.00, 5.00, fk_open 8.00
-5, Succaforyou, 15.00, 15.00, fk_open 11.00
-5, Smoke Screen, 12.00, 12.00, fk_open 8.00
-5, Ladhar, 5.00, 5.00, fk_open 4.40
-6, Warrior Within, 11.00, 11.00, fk_open 11.00
-6, Power And The Beat, 5.50, 5.50, fk_open 6.00
-6, Insain Harry, 7.00, 7.00, fk_open 15.00
-6, Moonraker, 7.50, 7.50, fk_open 6.00
-6, Exfortythree, 9.00, 9.00, fk_open 6.00
-6, Kentahten, 15.00, 15.00, fk_open 11.00
-6, Nerola, 12.00, 12.00, fk_open 11.00
-6, Grifter, 6.50, 6.50, fk_open 6.00
-6, Purgatorio, 5.00, 5.00, fk_open 4.40
-6, Chapados, 12.00, 12.00, fk_open 11.00
-6, Sistine Tunnel, SCR
+4, Perfect Dismount, 12.00, 12.00, fk_open 15.00
+4, Bureau, 10.00, 10.00, fk_open 8.00
+4, Mr Natural, 2.90, 2.90, fk_open 4.60
+4, Faster Link, 7.00, 7.00, fk_open 6.00
+4, Boutin, 15.00, 15.00, fk_open 15.00
+4, Civic Square, 3.60, 3.60, fk_open 3.00
+4, Via Theresa, SCR
+4, Written Velocity, 6.50, 6.50, fk_open 11.00
+4, Flamenco Star, SCR
+4, Neonova, 41.00, 41.00, fk_open 15.00
+5, Les Braves, SCR
+5, Smoke Screen, SCR
+5, Succaforyou, SCR
+5, Prince Pienza, 6.50, 6.50, fk_open 8.00
+5, Ladhar, 5.25, 5.25, fk_open 4.40
+5, Home Tomurra, 6.00, 6.00, fk_open 11.00
+5, Shaadrille, 3.60, 3.60, fk_open 8.00
+5, Turbo Saint, 2.60, 2.60, fk_open 2.50
+6, Kentahten, 21.00, 21.00, fk_open 11.00
+6, Sistine Tunnel, 16.00, 16.00, fk_open 8.00
 6, Imminance, SCR
-7, Cobblestone Way, 14.00, 14.00, fk_open 11.00
-7, Bella Verona, 2.30, 2.30, fk_open 2.50
-7, Dollar Chaser, 41.00, 41.00, fk_open 51.00
-7, Mount Sabyinyo, 14.00, 14.00, fk_open 11.00
-7, Lyrics 'n' Song, 4.00, 4.00, fk_open 3.50
-7, Charming Deel, 6.50, 6.50, fk_open 6.00
-7, Diamond Eye, 14.00, 14.00, fk_open 8.00
-7, Prince Magnetite, 41.00, 41.00, fk_open 26.00
+6, Nerola, 15.00, 15.00, fk_open 11.00
+6, Exfortythree, 12.00, 12.00, fk_open 6.00
+6, Warrior Within, 14.00, 14.00, fk_open 11.00
+6, Insain Harry, 6.50, 6.50, fk_open 15.00
+6, Moonraker, SCR
+6, Power And The Beat, 4.40, 4.40, fk_open 6.00
+6, Purgatorio, 3.40, 3.40, fk_open 4.40
+6, Chapados, 12.00, 12.00, fk_open 11.00
+6, Grifter, 7.50, 7.50, fk_open 6.00
+7, Dollar Chaser, 26.00, 26.00, fk_open 51.00
+7, Cobblestone Way, 18.00, 18.00, fk_open 11.00
+7, Jackand, 23.00, 23.00, fk_open 26.00
+7, Charming Deel, 6.00, 6.00, fk_open 6.00
+7, Prince Magnetite, 51.00, 51.00, fk_open 26.00
 7, Belcony, 23.00, 23.00, fk_open 26.00
-7, Prevention, 13.00, 13.00, fk_open 15.00
-7, Jackand, SCR
-8, Stay Humble, 5.50, 5.50, fk_open 6.00
-8, Mickidabeel, 12.00, 12.00, fk_open 26.00
-8, Superstock, 12.00, 12.00, fk_open 26.00
-8, Lunar Force, 11.00, 11.00, fk_open 11.00
-8, Sarapo, 6.00, 6.00, fk_open 4.40
-8, Cushioned, 5.50, 5.50, fk_open 4.40
-8, Two Sigma, 27.00, 27.00, fk_open 26.00
-8, Limosa, 12.00, 12.00, fk_open 11.00
-8, Rockzino, 5.00, 5.00, fk_open 4.40
-8, Kiwi Jenni, 7.00, 7.00, fk_open 6.00
-8, Mozu Marcassin, SCR
-8, Prince Of Byron, SCR
-8, King Tagaloa, SCR
+7, Diamond Eye, SCR
+7, Bella Verona, 1.90, 1.90, fk_open 2.50
+7, Mount Sabyinyo, 8.50, 8.50, fk_open 11.00
+7, Prevention, SCR
+7, Lyrics 'n' Song, 4.60, 4.60, fk_open 3.50
+8, Superstock, 8.00, 8.00, fk_open 26.00
 8, Maputo, SCR
+8, Mozu Marcassin, 21.00, 21.00, fk_open 26.00
+8, Stay Humble, 3.50, 3.50, fk_open 6.00
+8, Prince Of Byron, 6.00, 6.00, fk_open 11.00
+8, Limosa, SCR
+8, Mickidabeel, 10.00, 10.00, fk_open 26.00
+8, Two Sigma, SCR
+8, Sarapo, 5.00, 5.00, fk_open 4.40
+8, Cushioned, SCR
+8, Lunar Force, 11.00, 11.00, fk_open 11.00
+8, King Tagaloa, 41.00, 41.00, fk_open 51.00
+8, Rockzino, SCR
+8, Kiwi Jenni, 5.50, 5.50, fk_open 6.00
