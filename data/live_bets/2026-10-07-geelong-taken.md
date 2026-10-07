@@ -25,4 +25,18 @@ account shows the real ones (at Pakenham the real figure came in under our estim
 
 Emergencies count only if they were in TAB's fixed market when we bet (they were on the Monday screens).
 
+## REAL TAB deductions (founder's account, Wednesday afternoon)
+
+| Bet | Taken | Estimate | Real | Price we hold | Our price on final fields (Soft) | Edge held |
+|---|---|---|---|---|---|---|
+| R2 Nightowl | $15.00 | 18c | 7c | $13.95 | $8.55 | +63% |
+| R3 Silky Seth | $3.80 | 0c | 0c | $3.80 | $3.13 | +21% |
+| R4 Mr Natural | $3.80 | 24c | 4c | $3.65 | $2.84 | +29% |
+| R7 Mount Sabyinyo | $14.00 | 14c | 5c | $13.30 | $9.44 | +41% |
+| R8 Stay Humble | $5.50 | 51c | 13c | $4.79 | $2.96 | +62% |
+
+(The founder wrote "Race 9 13c"; Geelong has eight races and our R8 bet is the only one left, so taken as R8.)
+Estimate 107c in total against 29c real: the TAB scale on Monday's TAB prices overstates by about 3.7x. With
+Pakenham (estimate 57c, real 20c, 2.9x) the real deduction runs at roughly a third of our scale estimate.
+
 Results: pending.
