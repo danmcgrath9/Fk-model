@@ -441,3 +441,17 @@ Holdout KL to BSP (lower better): live v6 0.0800; + speed-map-wrong inputs (real
 mapped vs usual position, habitual leaders in the race, mapped to lead but rarely leads, early-speed rank) 0.0802;
 + rail 0.0801. The rail only exists from 30 Apr, so it was re-tested inside that period, each half fitted and tested
 on the other: v6 0.0819, + rail 0.0820, + rail + map 0.0821. Nothing gets closer to BSP. Not adopted.
+
+## Weight-down rule re-checked, 7 Oct 2026 (t_weightdrop.py)
+
+The bets the 2kg+ weight-drop rule blocks, settled as if taken (back-settler shade on, as live):
+
+| sample | blocked bets | open ROI | BSP ROI | wins/expected |
+|---|---|---|---|---|
+| holdout (where the rule was found) | 201 | +52.2% | -18.6% | 0.86 |
+| before the holdout (stage-1 out of fold) | 305 | +59.9% | +4.2% | 0.93 |
+
+It does not replicate out of sample: before the holdout the blocked bets did BETTER than the ones we kept (+51.0% open,
+-7.3% BSP). Dropping the rule adds open profit in both samples (holdout +$20.4k, before +$35.2k) and costs $7.3k at BSP
+on the holdout while adding $2.5k before it. Forward runners dropping weight: holdout -43% BSP (56 bets), before +5.6%
+(100 bets): no consistent effect, no new rule. Recommendation to the founder: remove the weight rule.
