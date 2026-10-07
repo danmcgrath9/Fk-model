@@ -424,3 +424,13 @@ Win bet plus a place bet of 1x to 3x the win stake on live bets that opened unde
 REAL Betfair place SP less 8%: the place part alone returns -1.3% (-2.5% on the ones that started $6 or shorter),
 so every extra place unit lowers ROI and profit. Opening place prices are not in the data; the early-price edge on
 places is untested.
+
+## Rail position x speed map, 7 Oct 2026 (t_rail.py, scripts/rail_positions.py)
+
+Founder's question: with the rail out 9m at Caulfield, should on-speed runners be worth more? 1,408 races carry a
+rail (DB pulls from 30 Apr; the history files carry none). Position = Form King's predicted settling position.
+Wins against what the market (BSP) expected, leaders + on pace combined: rail true 100%, out 1-4m 104%, out 5-8m 97%,
+out 9m+ 88% (z -1.0). Leaders alone with the rail out win LESS than priced (75-83%). Caulfield with the rail out 9m+:
+on pace 150% (11 wins from 72) but midfield 53% (3 from 82); five or six meetings per band, which is noise. Our model
+tracks the market in every cell. Verdict: the market already prices the rail and the map; nothing to add. Revisit as
+rail data builds up (every pull adds it).
