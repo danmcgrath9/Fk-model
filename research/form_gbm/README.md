@@ -486,3 +486,22 @@ Asked on Cranbourne R1 Kotahitanga (ours $1.91, market $2.40). Same live rules, 
 
 Under $1.60 the model is overconfident (wins far fewer than it says). $1.60-$2 is calibrated and profitable in both
 samples, on 50 bets. Not live: a founder decision.
+
+## Where the edge is, 8 Oct 2026 (t_edges.py, t_onlyride.py)
+
+Live plan split by segment, holdout / before the holdout, open ROI (BSP ROI):
+
+| holds in both samples | holdout | before |
+|---|---|---|
+| jockey's only ride at the meeting (114 / 171 bets) | +117% (+46%) | +88% (+21%) |
+| field of 8 or fewer | +75% (+9%) | +71% (+5%) |
+| barriers 1-4 (weakest; win 0.87x / 0.82x our chance) | +40% (-11%) | +34% (-17%) |
+| bets that drifted from open to BSP | -34% | -33% |
+
+Model vs the opening market on every runner (margin removed): where we rate a horse 2x+ the market's chance, a flat
+1u at the open returns +95% / +88%; where we rate it under 0.6x, -64% / -66%, and those horses win about what WE said,
+not what the market said. Inconsistent between samples (not acted on): 1600m+, class under 75, $15-$30, metro.
+
+Adjusting our chance for the two consistent ones (only-ride x1.1 to x1.3, barrier 1-4 x0.85 to x0.9) moves profit by
+1-3% and not in the same direction in both samples: not adopted. The only-ride horses are already our best bets; the
+open question is staking them harder, not finding more of them.
