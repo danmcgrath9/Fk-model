@@ -473,3 +473,16 @@ dropping metro does worse at the open. Proposed to the founder: metro needs 40c+
 Caulfield, Moonee Valley and Sandown (from the prices file name), 20c+ elsewhere; the take-at price follows.
 **Reverted the same day (founder: 'this makes us $700 more, surely not').** At the open, where we bet, metro 40c+ was
 +$0.7k on the holdout and -$2.5k before it: no money in it. Back to 20c everywhere.
+
+## Bets we price under $2, 8 Oct 2026 (t_under2.py)
+
+Asked on Cranbourne R1 Kotahitanga (ours $1.91, market $2.40). Same live rules, only the $2 floor removed, open ROI:
+
+| our price | holdout bets | open ROI | strike vs our chance | before-holdout bets | open ROI | strike vs our chance |
+|---|---|---|---|---|---|---|
+| under $1.60 | 9 | -15.0% | 33% vs 69% | 11 | +12.5% | 45% vs 68% |
+| $1.60-$2 | 10 | +75.0% | 60% vs 57% | 40 | +48.5% | 53% vs 55% |
+| $2-$3 (live) | 108 | +85.2% | 48% vs 40% | 186 | +68.9% | 39% vs 39% |
+
+Under $1.60 the model is overconfident (wins far fewer than it says). $1.60-$2 is calibrated and profitable in both
+samples, on 50 bets. Not live: a founder decision.
