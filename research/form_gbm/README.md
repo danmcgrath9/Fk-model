@@ -505,3 +505,20 @@ not what the market said. Inconsistent between samples (not acted on): 1600m+, c
 Adjusting our chance for the two consistent ones (only-ride x1.1 to x1.3, barrier 1-4 x0.85 to x0.9) moves profit by
 1-3% and not in the same direction in both samples: not adopted. The only-ride horses are already our best bets; the
 open question is staking them harder, not finding more of them.
+
+## Batch of plan variants, 8 Oct 2026 (t_batch.py, t_batch2.py, t_batch3.py)
+
+Raised BOTH profit and ROI at the open in both samples: only-ride stake x1.5/x2, field of 8 or fewer stake x1.5, cap
+6u. Raised ROI but cut profit (less invested): value 40c+, barrier 1-4 stake x0.5. Worse or mixed: value 15c/25c/30c,
+Kelly x50/x100 (profit moves with stake size, ROI falls at x100), price band to $10 or $20.
+
+Proposed: only-ride x2, field<=8 x1.5 (both: x3), no bet over 8u.
+
+| | holdout live | holdout proposed | before live | before proposed |
+|---|---|---|---|---|
+| profit at open | +$188,906 (+65.7%) | +$241,115 (+69.1%) | +$255,052 (+51.9%) | +$351,841 (+56.8%) |
+| open less 7% | +54.1% | +57.3% | +41.3% | +45.9% |
+| BSP less 8% | -1.2% | +2.7% | -5.8% | -2.6% |
+| worst drawdown | $5,282 | $6,954 | $9,772 | $12,271 |
+
+The only-ride AND small-field bets: 35 holdout bets +196% at the open, 65 before +98%.
