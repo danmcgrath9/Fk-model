@@ -1,6 +1,6 @@
 # Ballarat Fri 9 Oct: take-at list (no market at the Thursday pull)
 
-Priced on Soft (official), each race renormalised to 100% after the back-settler shade (as paper_open and the sheet do). Take a horse only at or above its take-at price, and under 3x our price. Stake shown is at the take-at price (Kelly x75 on sqrt(ours x yours), cap 4u); a bigger price earns a bigger stake.
+Priced on Soft (official), each race at 100% after the back-settler shade. Our price band $1.60-$15 (floor lowered from $2 on 8 Oct 2026, t_under2.py). Take a horse only at or above its take-at price, and under 3x our price. Stake shown is at the take-at price (Kelly x75 on sqrt(ours x yours), cap 4u); a bigger price earns a bigger stake.
 EARLY = second-up after a good first-up: only at the open, and never over $8. FS race = a first starter runs: no bet in that race if a first starter opens $6 or shorter.
 
 | Race | Horse | Ours (Soft) | Take at | Stake at take-at | Ours (Good 4) | Note |

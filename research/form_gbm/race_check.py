@@ -23,7 +23,7 @@ for r in sorted(M, key=lambda r: -r["p"]):
         if fsb: why.append("first starter at $6 or shorter in race")
         if f and not early: why.append("no bet: " + f[:50])
         if early and o > 8: why.append("early only, over $8")
-        if not 2 <= 1 / pp <= 15: why.append("our price outside $2-$15")
+        if not 1.6 <= 1 / pp <= 15: why.append("our price outside $1.60-$15")
         if o >= 3 / pp: why.append("open 3x ours")
         if v < THR: why.append(f"value {v*100:+.0f}%")
     st = 0

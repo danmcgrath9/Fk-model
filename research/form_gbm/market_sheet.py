@@ -91,7 +91,7 @@ for race in sorted(races):
     H.append(f"<h2>Race {race}</h2><div class='hd'>{int(dist)}m · our market adds to 100% · {len(rs)} runners{' · <b>no bets: a first-starter at $6 or shorter</b>' if fsb else ''}</div>")
     for r, i, k in rs:
         pp = r["p"] / tot; ours = 1 / pp; now = pr.get(k); hk = f"{race}|{r['horse']}"; isfs = hk in fs; fuv = fu.get(hk, "")
-        early = fuv.startswith("EARLY:"); blocked = (fuv and not early) or isfs or fsb or (early and (now or 0) > 8) or ours > 15 or ours < 2 or (now and now >= 3 * ours)   # bets only at our price $2-$15, as backtested
+        early = fuv.startswith("EARLY:"); blocked = (fuv and not early) or isfs or fsb or (early and (now or 0) > 8) or ours > 15 or ours < 1.6 or (now and now >= 3 * ours)   # bets only at our price $1.60-$15 (floor $2 until 8 Oct 2026, t_under2.py)
         a = ang.get(hk, []); tags = []
         if blocked: tags.append("<span class='tag no'>no bet</span>")
         else:

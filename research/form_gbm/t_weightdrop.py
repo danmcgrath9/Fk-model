@@ -9,7 +9,7 @@ def bets2(pp,mask,blk):
     mkt_=D["mkt"].astype(float)
     okr_=np.bincount(ri,weights=(~np.isfinite(mkt_)|~np.isfinite(pp)).astype(float),minlength=nR)==0
     cp=mask&okr_[ri]&np.isfinite(bsp)&np.isfinite(op)&(op>1)&(bsp>1)&(1/pp<50)&(op<3/pp)
-    lv=cp&(pp*op-1>=0.2)&~blk&(1/pp>=2)&(1/pp<=15)
+    lv=cp&(pp*op-1>=0.2)&~blk&(1/pp>=1.6)&(1/pp<=15)
     return lv,np.where(lv,np.minimum(4.0,75*np.clip(((pp/op)**0.5*op-1)/(op-1),0,None)),0.0)
 def shade(P_):
     pa=np.where(ss>=.65,P_*0.85,P_); tot=np.bincount(ri,weights=np.nan_to_num(pa),minlength=nR)[ri]; return pa/np.where(tot>0,tot,1)
