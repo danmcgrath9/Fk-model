@@ -61,9 +61,6 @@
 ],
 "3|Duchess Xenia": [],
 "3|Kiss Me In Paris": [],
-"3|Capital Affair": [
-"Class drop (rating)"
-],
 "3|Howcani Resistyou": [
 "Class drop (rating)"
 ],
@@ -78,12 +75,6 @@
 "3|All Eyes On Erin": [],
 "4|Quarter Mile": [
 "Class drop (rating)"
-],
-"4|Stark Varg": [
-"Already run to today's class",
-"Third-up, improving",
-"Class drop (rating)",
-"Blinkers first time"
 ],
 "4|Engulf": [],
 "4|Skjaldmo": [
@@ -107,8 +98,9 @@
 "Already run to today's class",
 "Class drop (rating)"
 ],
-"4|Bianbuttons": [],
-"4|Eidfjord": [],
+"4|Eidfjord": [
+"Class drop (rating)"
+],
 "5|Wind Dreamer": [
 "New career-best last start"
 ],
@@ -131,9 +123,6 @@
 ],
 "5|Becauseyou're Mine": [],
 "5|Makarim": [],
-"5|Master Jack": [
-"Class drop (rating)"
-],
 "6|Russian Sky": [],
 "6|Our Little Star": [
 "Beaten by the pace last start"
@@ -143,10 +132,6 @@
 "6|Arabella Star": [
 "Already run to today's class",
 "Well backed before a bad last run"
-],
-"6|Heidi Dancer": [
-"Well backed before a bad last run",
-"Class drop (rating)"
 ],
 "6|Dihheri": [
 "Already run to today's class",
@@ -158,8 +143,7 @@
 ],
 "6|Tipsy Gypsy": [],
 "7|Imperial Award": [
-"Third-up, improving",
-"Late 600 beyond the tempo"
+"Third-up, improving"
 ],
 "7|Sun Devil": [],
 "7|Talkin' Italian": [
