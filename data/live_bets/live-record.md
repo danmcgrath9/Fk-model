@@ -15,5 +15,11 @@
 | 7 Oct | Geelong | Mount Sabyinyo | 0.8u | $13.30 (5c ded.) | 2nd | -0.80 |
 | 7 Oct | Geelong | Stay Humble | 4.0u | $4.79 (13c ded.) | WON | +15.16 |
 | 8 Oct | Kyneton | Corviglia | 2.06u | $4.60 (~3c ded. est.) | WON (SP $5.20) | +7.13 |
+| 8 Oct | Kyneton | Windhowler | 1.45u | $19.00 | 7th (SP $21) | -1.45 |
+| 8 Oct | Kyneton | Angelic Code | 0.59u | $17.00 | 8th (SP $13) | -0.59 |
+| 8 Oct | Kyneton | Lim's Ida | 1.43u | $23.00 | 3rd (SP $14) | -1.43 |
+| 8 Oct | Kyneton | Ataegina | 2.02u | $5.00 | 3rd (SP $6) | -2.02 |
+| 8 Oct | Kyneton | Brutalrule | 1.22u | $7.50 | 7th (SP $5) | -1.22 |
+| 8 Oct | Kyneton | Blue Moon Summit | 2.38u | $18.00 | 6th (SP $16) | -2.38 |
 
-Settled: 12 bets, 4 winners, 23.0u staked, +29.55u (+129%). Kyneton R1 Corviglia's deduction is an estimate until the account shows it; the rest of Kyneton settles tonight.
+Settled: 18 bets, 4 winners, 32.1u staked, +20.46u (+64%). Kyneton R1 Corviglia's deduction is an estimate until the account shows it.

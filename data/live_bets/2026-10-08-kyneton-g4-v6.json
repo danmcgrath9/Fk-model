@@ -6,7 +6,7 @@
   "horse_id": "2021_gold-standard_the-donchess",
   "barrier": 1,
   "jockey": "Lachlan King",
-  "p": 0.008898564443872261,
+  "p": 0.008898564443872263,
   "solid": true,
   "p_trees": 0.010202661371596453,
   "p_net": 0.011151432644571874,
@@ -15,7 +15,8 @@
   "p_stage1": 0.010320346611705455,
   "p_unshaded": 0.010358611077536047,
   "settle_share": 0.823,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -24,7 +25,7 @@
   "horse_id": "2023_ghaiyyath_snitzels-moon",
   "barrier": 2,
   "jockey": "Craig Williams",
-  "p": 0.4981546454829855,
+  "p": 0.49815464548298555,
   "solid": true,
   "p_trees": 0.499298518846447,
   "p_net": 0.4926771467126072,
@@ -32,7 +33,8 @@
   "p_3way": 0.502885523072503,
   "p_stage1": 0.502885523072503,
   "p_unshaded": 0.4929066617810005,
-  "settle_share": 0.306
+  "settle_share": 0.306,
+  "only_ride": true
  },
  {
   "race": 1,
@@ -41,7 +43,7 @@
   "horse_id": "2021_shooting-to-win_paeroa",
   "barrier": 3,
   "jockey": "Jake Noonan",
-  "p": 0.012552993933022937,
+  "p": 0.012552993933022939,
   "solid": true,
   "p_trees": 0.012900358835243847,
   "p_net": 0.016143940277993377,
@@ -49,7 +51,8 @@
   "p_3way": 0.014183492863801234,
   "p_stage1": 0.014183492863801234,
   "p_unshaded": 0.012420750044164389,
-  "settle_share": 0.146
+  "settle_share": 0.146,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -58,7 +61,7 @@
   "horse_id": "2022_dargento_fascinating",
   "barrier": 4,
   "jockey": "Teodore Nugent",
-  "p": 0.006243203880350875,
+  "p": 0.006243203880350876,
   "solid": true,
   "p_trees": 0.00574796352106145,
   "p_net": 0.007047001787091965,
@@ -66,7 +69,8 @@
   "p_3way": 0.006366111395768285,
   "p_stage1": 0.006366111395768285,
   "p_unshaded": 0.006177432673539214,
-  "settle_share": 0.346
+  "settle_share": 0.346,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -75,7 +79,7 @@
   "horse_id": "2022_kermadec_buon-amica",
   "barrier": 5,
   "jockey": "Valentin Le Boeuf",
-  "p": 0.0009881819945308015,
+  "p": 0.0009881819945308018,
   "solid": true,
   "p_trees": 0.0014247234910097853,
   "p_net": 0.0006154563215157616,
@@ -84,7 +88,8 @@
   "p_stage1": 0.0011498518344204933,
   "p_unshaded": 0.0011503195846625895,
   "settle_share": 0.871,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": true
  },
  {
   "race": 1,
@@ -93,7 +98,7 @@
   "horse_id": "2023_prague_aunt-liberty",
   "barrier": 7,
   "jockey": "Ben Allen",
-  "p": 0.05044632798951229,
+  "p": 0.0504463279895123,
   "solid": true,
   "p_trees": 0.0650363792424203,
   "p_net": 0.07382249648262483,
@@ -102,7 +107,8 @@
   "p_stage1": 0.06510769015431164,
   "p_unshaded": 0.0587233924335987,
   "settle_share": 0.729,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -111,7 +117,7 @@
   "horse_id": "2022_too-darn-hot_geblitzt",
   "barrier": 8,
   "jockey": "Damien Thornton",
-  "p": 0.022147907359804774,
+  "p": 0.022147907359804778,
   "solid": true,
   "p_trees": 0.02180641966533718,
   "p_net": 0.02776763952371838,
@@ -119,7 +125,8 @@
   "p_3way": 0.024498438041577746,
   "p_stage1": 0.024498438041577746,
   "p_unshaded": 0.021914582511966336,
-  "settle_share": 0.521
+  "settle_share": 0.521,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -128,7 +135,7 @@
   "horse_id": "2022_wootton-bassett_full-of-spirit",
   "barrier": 9,
   "jockey": "Will Gordon",
-  "p": 0.030576852307341217,
+  "p": 0.03057685230734122,
   "solid": true,
   "p_trees": 0.032175856877682874,
   "p_net": 0.03119053835354181,
@@ -136,7 +143,8 @@
   "p_3way": 0.032485085504664786,
   "p_stage1": 0.032485085504664786,
   "p_unshaded": 0.030254729801765967,
-  "settle_share": 0.019
+  "settle_share": 0.019,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -145,7 +153,7 @@
   "horse_id": "2022_super-seth_alpine-charm",
   "barrier": 10,
   "jockey": "Lachlan Neindorf",
-  "p": 0.26491650702125535,
+  "p": 0.2649165070212554,
   "solid": true,
   "p_trees": 0.2433992027688267,
   "p_net": 0.2613844536687192,
@@ -153,7 +161,8 @@
   "p_3way": 0.24900554698394523,
   "p_stage1": 0.24900554698394523,
   "p_unshaded": 0.2621256517640763,
-  "settle_share": 0.589
+  "settle_share": 0.589,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -162,7 +171,7 @@
   "horse_id": "2020_grunt_pickpocket",
   "barrier": 11,
   "jockey": "Brittany Button",
-  "p": 0.0005673412427955056,
+  "p": 0.0005673412427955057,
   "solid": true,
   "p_trees": 0.000804657840350911,
   "p_net": 0.00036591435935429275,
@@ -170,7 +179,8 @@
   "p_3way": 0.0006871086132505211,
   "p_stage1": 0.0006871086132505211,
   "p_unshaded": 0.0005613643887750678,
-  "settle_share": 0.479
+  "settle_share": 0.479,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -179,7 +189,7 @@
   "horse_id": "2022_ghaiyyath_albany-crest",
   "barrier": 12,
   "jockey": "Brad Rawiller",
-  "p": 0.09809106892354731,
+  "p": 0.09809106892354733,
   "solid": true,
   "p_trees": 0.10016034415178848,
   "p_net": 0.07325315688145122,
@@ -187,7 +197,8 @@
   "p_3way": 0.08696155823968905,
   "p_stage1": 0.08696155823968905,
   "p_unshaded": 0.0970576943767297,
-  "settle_share": 0.427
+  "settle_share": 0.427,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -196,7 +207,7 @@
   "horse_id": "2022_kings-legacy_tennessee-tango",
   "barrier": 16,
   "jockey": "Bailey Kinninmont",
-  "p": 0.001896308124815018,
+  "p": 0.0018963081248150183,
   "solid": true,
   "p_trees": 0.00171522932138987,
   "p_net": 0.0014124056402909882,
@@ -204,7 +215,8 @@
   "p_3way": 0.0017760550052831855,
   "p_stage1": 0.0017760550052831855,
   "p_unshaded": 0.0018763308060783391,
-  "settle_share": 0.571
+  "settle_share": 0.571,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -213,7 +225,7 @@
   "horse_id": "2021_epaulette_serendipitious",
   "barrier": 17,
   "jockey": "Darryl Horner",
-  "p": 0.0036009240554611913,
+  "p": 0.0036009240554611918,
   "solid": true,
   "p_trees": 0.004202043274371256,
   "p_net": 0.0025340566327654735,
@@ -221,7 +233,8 @@
   "p_3way": 0.003658552650443179,
   "p_stage1": 0.003658552650443179,
   "p_unshaded": 0.0035629888662052044,
-  "settle_share": 0.444
+  "settle_share": 0.444,
+  "only_ride": true
  },
  {
   "race": 1,
@@ -230,7 +243,7 @@
   "horse_id": "2021_all-too-hard_zazita",
   "barrier": 18,
   "jockey": "Chelsea Jokic",
-  "p": 0.0009191732407049057,
+  "p": 0.0009191732407049058,
   "solid": true,
   "p_trees": 0.0011256407924737667,
   "p_net": 0.0006343607137537485,
@@ -238,7 +251,8 @@
   "p_3way": 0.000914639028636215,
   "p_stage1": 0.000914639028636215,
   "p_unshaded": 0.000909489889901576,
-  "settle_share": 0.205
+  "settle_share": 0.205,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -255,7 +269,8 @@
   "p_3way": 0.11860098072808713,
   "p_stage1": 0.11860098072808713,
   "p_unshaded": 0.10918578924462326,
-  "settle_share": 0.451
+  "settle_share": 0.451,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -273,7 +288,8 @@
   "p_stage1": 0.02449036757578815,
   "p_unshaded": 0.02471595802187585,
   "settle_share": 0.666,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -290,7 +306,8 @@
   "p_3way": 0.19736891122133454,
   "p_stage1": 0.19736891122133454,
   "p_unshaded": 0.21559563418271172,
-  "settle_share": 0.433
+  "settle_share": 0.433,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -307,7 +324,8 @@
   "p_3way": 0.22509480968043902,
   "p_stage1": 0.22509480968043902,
   "p_unshaded": 0.20296534006457642,
-  "settle_share": 0.514
+  "settle_share": 0.514,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -325,7 +343,8 @@
   "p_stage1": 0.04813667085065962,
   "p_unshaded": 0.044880391219882555,
   "settle_share": 0.891,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -342,7 +361,8 @@
   "p_3way": 0.0951663346660285,
   "p_stage1": 0.0951663346660285,
   "p_unshaded": 0.1272288486380954,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -359,7 +379,8 @@
   "p_3way": 0.028187617881082584,
   "p_stage1": 0.028187617881082584,
   "p_unshaded": 0.02725180978265297,
-  "settle_share": 0.556
+  "settle_share": 0.556,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -376,7 +397,8 @@
   "p_3way": 0.2436143781044785,
   "p_stage1": 0.2436143781044785,
   "p_unshaded": 0.2267637103874681,
-  "settle_share": 0.441
+  "settle_share": 0.441,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -393,7 +415,8 @@
   "p_3way": 0.019339929292101862,
   "p_stage1": 0.019339929292101862,
   "p_unshaded": 0.02141251845811372,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -402,7 +425,7 @@
   "horse_id": "2023_maurice_only-words",
   "barrier": 2,
   "jockey": "Jordan Childs",
-  "p": 0.05510262937886986,
+  "p": 0.055102629378869866,
   "solid": true,
   "p_trees": 0.05748721001427621,
   "p_net": 0.05894487152071746,
@@ -410,7 +433,8 @@
   "p_3way": 0.058019269417193174,
   "p_stage1": 0.058019269417193174,
   "p_unshaded": 0.05427411418120118,
-  "settle_share": 0.286
+  "settle_share": 0.286,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -419,7 +443,7 @@
   "horse_id": "2023_gold-standard_runaway-river",
   "barrier": 3,
   "jockey": "Fred W Kersley",
-  "p": 0.07165442333775267,
+  "p": 0.07165442333775268,
   "solid": true,
   "p_trees": 0.07666834252630167,
   "p_net": 0.05935580940840602,
@@ -427,7 +451,8 @@
   "p_3way": 0.07185853870105641,
   "p_stage1": 0.07185853870105641,
   "p_unshaded": 0.07057703775044567,
-  "settle_share": 0.125
+  "settle_share": 0.125,
+  "only_ride": true
  },
  {
   "race": 3,
@@ -436,7 +461,7 @@
   "horse_id": "2021_squamosa_flying-tormenta",
   "barrier": 4,
   "jockey": "Jackie Beriman",
-  "p": 0.009413593202229075,
+  "p": 0.009413593202229077,
   "solid": true,
   "p_trees": 0.011088411342987586,
   "p_net": 0.0075636436058429575,
@@ -444,7 +469,8 @@
   "p_3way": 0.010054343809970832,
   "p_stage1": 0.010054343809970832,
   "p_unshaded": 0.009272051770892078,
-  "settle_share": 0.181
+  "settle_share": 0.181,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -453,7 +479,7 @@
   "horse_id": "2023_yes-yes-yes_muzyka",
   "barrier": 5,
   "jockey": "Linda Meech",
-  "p": 0.0973393451167438,
+  "p": 0.09733934511674382,
   "solid": false,
   "p_trees": 0.07919039745100404,
   "p_net": 0.09381660036654751,
@@ -461,7 +487,8 @@
   "p_3way": 0.08421042410161503,
   "p_stage1": 0.08421042410161503,
   "p_unshaded": 0.09587576474554532,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -470,7 +497,7 @@
   "horse_id": "2022_rebel-dane_marion-type",
   "barrier": 6,
   "jockey": "Will Gordon",
-  "p": 0.053969076489997304,
+  "p": 0.05396907648999731,
   "solid": false,
   "p_trees": 0.053345306942452216,
   "p_net": 0.030485601534544226,
@@ -478,7 +505,8 @@
   "p_3way": 0.04842767018536856,
   "p_stage1": 0.04842767018536856,
   "p_unshaded": 0.053157605230274574,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -487,7 +515,7 @@
   "horse_id": "2023_impending_madam-prancealot",
   "barrier": 7,
   "jockey": "Joe Bowditch",
-  "p": 0.0124040112644756,
+  "p": 0.012404011264475602,
   "solid": false,
   "p_trees": 0.016083389876496795,
   "p_net": 0.011002641595830346,
@@ -495,7 +523,8 @@
   "p_3way": 0.014652680566674701,
   "p_stage1": 0.014652680566674701,
   "p_unshaded": 0.012217506337931889,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": true
  },
  {
   "race": 3,
@@ -504,7 +533,7 @@
   "horse_id": "2022_earthlight_carousing",
   "barrier": 8,
   "jockey": "John Allen",
-  "p": 0.07957807396547857,
+  "p": 0.07957807396547859,
   "solid": true,
   "p_trees": 0.10178179282960928,
   "p_net": 0.09476081275747597,
@@ -513,7 +542,8 @@
   "p_stage1": 0.09909938631463618,
   "p_unshaded": 0.09221358765735864,
   "settle_share": 0.775,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -522,7 +552,7 @@
   "horse_id": "2020_overshare_alvilda",
   "barrier": 9,
   "jockey": "Chelsea Jokic",
-  "p": 0.018242412855338917,
+  "p": 0.01824241285533892,
   "solid": true,
   "p_trees": 0.020833045897040322,
   "p_net": 0.027070509616873878,
@@ -530,7 +560,8 @@
   "p_3way": 0.02370746547737509,
   "p_stage1": 0.02370746547737509,
   "p_unshaded": 0.01796812256351138,
-  "settle_share": 0.304
+  "settle_share": 0.304,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -539,7 +570,7 @@
   "horse_id": "2023_alabama-express_awesome-amy",
   "barrier": 11,
   "jockey": "Billy Egan",
-  "p": 0.15878197141073255,
+  "p": 0.15878197141073258,
   "solid": false,
   "p_trees": 0.17578818029721488,
   "p_net": 0.15195559249201357,
@@ -547,7 +578,8 @@
   "p_3way": 0.15570168444881569,
   "p_stage1": 0.15570168444881569,
   "p_unshaded": 0.1563945485615421,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -556,7 +588,7 @@
   "horse_id": "2023_bivouac_radharcnafarraige",
   "barrier": 12,
   "jockey": "Lachlan Neindorf",
-  "p": 0.37562877927109856,
+  "p": 0.3756287792710986,
   "solid": true,
   "p_trees": 0.33797561449779645,
   "p_net": 0.39850557522977165,
@@ -564,7 +596,8 @@
   "p_3way": 0.36631596645783454,
   "p_stage1": 0.36631596645783454,
   "p_unshaded": 0.3699808790562464,
-  "settle_share": 0.3
+  "settle_share": 0.3,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -573,7 +606,7 @@
   "horse_id": "2021_bawaardi_duchys-revenge",
   "barrier": 13,
   "jockey": "Luke Cartwright",
-  "p": 0.03669475316920003,
+  "p": 0.03669475316920004,
   "solid": true,
   "p_trees": 0.03729856747704722,
   "p_net": 0.04549309313402671,
@@ -581,7 +614,8 @@
   "p_3way": 0.03893508243701255,
   "p_stage1": 0.03893508243701255,
   "p_unshaded": 0.0361430161465192,
-  "settle_share": 0.408
+  "settle_share": 0.408,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -590,7 +624,7 @@
   "horse_id": "2022_supido_glamorous-star",
   "barrier": 14,
   "jockey": "",
-  "p": 0.006925769059600022,
+  "p": 0.006925769059600023,
   "solid": true,
   "p_trees": 0.008631713021300176,
   "p_net": 0.006915458542340452,
@@ -599,7 +633,8 @@
   "p_stage1": 0.008384713319552086,
   "p_unshaded": 0.008025451992581511,
   "settle_share": 0.937,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -608,7 +643,7 @@
   "horse_id": "2023_palace-pier_white-sage",
   "barrier": 16,
   "jockey": "",
-  "p": 0.02426516147848296,
+  "p": 0.024265161478482962,
   "solid": false,
   "p_trees": 0.023828027826472996,
   "p_net": 0.01412979019560925,
@@ -616,7 +651,8 @@
   "p_3way": 0.020632774762895274,
   "p_stage1": 0.020632774762895274,
   "p_unshaded": 0.02390031400594988,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -633,7 +669,8 @@
   "p_3way": 0.05092217201160844,
   "p_stage1": 0.05092217201160844,
   "p_unshaded": 0.05270914006704928,
-  "settle_share": 0.5
+  "settle_share": 0.5,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -650,7 +687,8 @@
   "p_3way": 0.10427604753911789,
   "p_stage1": 0.10427604753911789,
   "p_unshaded": 0.13618331399301617,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -668,7 +706,8 @@
   "p_stage1": 0.03286578348263465,
   "p_unshaded": 0.03259760663721041,
   "settle_share": 0.9,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -686,7 +725,8 @@
   "p_stage1": 0.009626066648090308,
   "p_unshaded": 0.007690353374190089,
   "settle_share": 0.75,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -704,7 +744,8 @@
   "p_stage1": 0.046965302035626634,
   "p_unshaded": 0.04667826194852844,
   "settle_share": 0.686,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -721,7 +762,8 @@
   "p_3way": 0.018936029662641688,
   "p_stage1": 0.018936029662641688,
   "p_unshaded": 0.01524235737573576,
-  "settle_share": 0.354
+  "settle_share": 0.354,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -738,7 +780,8 @@
   "p_3way": 0.004840189120069756,
   "p_stage1": 0.004840189120069756,
   "p_unshaded": 0.00513619623138508,
-  "settle_share": 0.531
+  "settle_share": 0.531,
+  "only_ride": true
  },
  {
   "race": 4,
@@ -756,7 +799,8 @@
   "p_stage1": 0.005354481934864357,
   "p_unshaded": 0.004887541293865925,
   "settle_share": 0.704,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -774,7 +818,8 @@
   "p_stage1": 0.003716752069201783,
   "p_unshaded": 0.003211367368733831,
   "settle_share": 0.705,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -791,7 +836,8 @@
   "p_3way": 0.1414692399320934,
   "p_stage1": 0.1414692399320934,
   "p_unshaded": 0.12071845821825421,
-  "settle_share": 0.0
+  "settle_share": 0.0,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -808,7 +854,8 @@
   "p_3way": 0.004746024011151963,
   "p_stage1": 0.004746024011151963,
   "p_unshaded": 0.00404485624015379,
-  "settle_share": 0.578
+  "settle_share": 0.578,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -825,7 +872,8 @@
   "p_3way": 0.19464249972577888,
   "p_stage1": 0.19464249972577888,
   "p_unshaded": 0.2270256066992257,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -843,7 +891,8 @@
   "p_stage1": 0.013127122692117812,
   "p_unshaded": 0.012990486913499058,
   "settle_share": 0.725,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -860,7 +909,8 @@
   "p_3way": 0.36851228913500245,
   "p_stage1": 0.36851228913500245,
   "p_unshaded": 0.33088445363915236,
-  "settle_share": 0.636
+  "settle_share": 0.636,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -869,7 +919,7 @@
   "horse_id": "2022_frosted_mandayana",
   "barrier": 1,
   "jockey": "Neil Farley",
-  "p": 0.01504884001096874,
+  "p": 0.015048840010968744,
   "solid": true,
   "p_trees": 0.016763399485422357,
   "p_net": 0.016440698513111647,
@@ -877,7 +927,8 @@
   "p_3way": 0.017142784732135746,
   "p_stage1": 0.017142784732135746,
   "p_unshaded": 0.01503357104473525,
-  "settle_share": 0.311
+  "settle_share": 0.311,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -886,7 +937,7 @@
   "horse_id": "2023_harry-angel_verlan",
   "barrier": 2,
   "jockey": "John Allen",
-  "p": 0.06550772911447779,
+  "p": 0.0655077291144778,
   "solid": true,
   "p_trees": 0.059269903879310304,
   "p_net": 0.07485912576297389,
@@ -894,7 +945,8 @@
   "p_3way": 0.06119408716411039,
   "p_stage1": 0.06119408716411039,
   "p_unshaded": 0.06544126317403635,
-  "settle_share": 0.455
+  "settle_share": 0.455,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -903,7 +955,7 @@
   "horse_id": "2022_ilovethiscity_de-sweet-soca-song",
   "barrier": 3,
   "jockey": "Ryan Hurdle",
-  "p": 0.00575539515743436,
+  "p": 0.005755395157434361,
   "solid": true,
   "p_trees": 0.0074276484519458065,
   "p_net": 0.008481090164458355,
@@ -912,7 +964,8 @@
   "p_stage1": 0.007840959629868506,
   "p_unshaded": 0.006764183029995455,
   "settle_share": 0.889,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -921,7 +974,7 @@
   "horse_id": "2023_captivant_war-heroine",
   "barrier": 4,
   "jockey": "Jackson Radley",
-  "p": 0.27975981887913814,
+  "p": 0.2797598188791382,
   "solid": true,
   "p_trees": 0.24623698153390997,
   "p_net": 0.220082214390642,
@@ -929,7 +982,8 @@
   "p_3way": 0.22933912834664782,
   "p_stage1": 0.22933912834664782,
   "p_unshaded": 0.2794759668862377,
-  "settle_share": 0.583
+  "settle_share": 0.583,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -938,7 +992,7 @@
   "horse_id": "2022_rulership_rewrite-the-stars",
   "barrier": 5,
   "jockey": "Lachlan Neindorf",
-  "p": 0.07731644206896296,
+  "p": 0.07731644206896297,
   "solid": true,
   "p_trees": 0.07006510259313785,
   "p_net": 0.0716902072827437,
@@ -946,7 +1000,8 @@
   "p_3way": 0.07308318450549223,
   "p_stage1": 0.07308318450549223,
   "p_unshaded": 0.07723799468415561,
-  "settle_share": 0.0
+  "settle_share": 0.0,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -955,7 +1010,7 @@
   "horse_id": "2022_i-am-immortal_flying-nostra",
   "barrier": 6,
   "jockey": "Chelsea Jokic",
-  "p": 0.03144130934847269,
+  "p": 0.031441309348472696,
   "solid": false,
   "p_trees": 0.027259950432132644,
   "p_net": 0.036934780900559405,
@@ -963,7 +1018,8 @@
   "p_3way": 0.030072462592024545,
   "p_stage1": 0.030072462592024545,
   "p_unshaded": 0.03140940813280233,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -972,7 +1028,7 @@
   "horse_id": "2022_blue-point_pink-avenue",
   "barrier": 7,
   "jockey": "Damien Thornton",
-  "p": 0.05988497502069014,
+  "p": 0.05988497502069015,
   "solid": true,
   "p_trees": 0.07198540656224148,
   "p_net": 0.07983889573344617,
@@ -980,7 +1036,8 @@
   "p_3way": 0.07458740002439028,
   "p_stage1": 0.07458740002439028,
   "p_unshaded": 0.05982421408092216,
-  "settle_share": 0.582
+  "settle_share": 0.582,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -989,7 +1046,7 @@
   "horse_id": "2023_lucky-vega_toronado-queen",
   "barrier": 8,
   "jockey": "Zac Spain",
-  "p": 0.028046079278538458,
+  "p": 0.028046079278538465,
   "solid": true,
   "p_trees": 0.03233254209342701,
   "p_net": 0.031094937381866028,
@@ -997,7 +1054,8 @@
   "p_3way": 0.033528747209377555,
   "p_stage1": 0.033528747209377555,
   "p_unshaded": 0.028017622956511397,
-  "settle_share": 0.375
+  "settle_share": 0.375,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -1006,7 +1064,7 @@
   "horse_id": "2022_ole-kirk_magnaflight",
   "barrier": 9,
   "jockey": "Harry Coffey",
-  "p": 0.0836233862464144,
+  "p": 0.08362338624641441,
   "solid": false,
   "p_trees": 0.08404860664354138,
   "p_net": 0.09774603091133074,
@@ -1014,7 +1072,8 @@
   "p_3way": 0.09194856602103903,
   "p_stage1": 0.09194856602103903,
   "p_unshaded": 0.08353853966289061,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -1023,7 +1082,7 @@
   "horse_id": "2022_omaha-beach_gibberer",
   "barrier": 10,
   "jockey": "Ben Allen",
-  "p": 0.22143707670570562,
+  "p": 0.22143707670570567,
   "solid": false,
   "p_trees": 0.2172331279799241,
   "p_net": 0.22168453864707865,
@@ -1031,7 +1090,8 @@
   "p_3way": 0.22771532232275435,
   "p_stage1": 0.22771532232275435,
   "p_unshaded": 0.22121240056823602,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -1040,7 +1100,7 @@
   "horse_id": "2023_acrobat_fume-blanc",
   "barrier": 14,
   "jockey": "Linda Meech",
-  "p": 0.13217894816919662,
+  "p": 0.13217894816919665,
   "solid": false,
   "p_trees": 0.16737733034500707,
   "p_net": 0.1411474803117894,
@@ -1048,7 +1108,8 @@
   "p_3way": 0.15354735745215958,
   "p_stage1": 0.15354735745215958,
   "p_unshaded": 0.13204483577947734,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1057,7 +1118,7 @@
   "horse_id": "2020_palentino_finest-sailing",
   "barrier": 1,
   "jockey": "Caitlin Hollowood",
-  "p": 0.08169536524390021,
+  "p": 0.08169536524390023,
   "solid": true,
   "p_trees": 0.08364632049104716,
   "p_net": 0.07471815526706446,
@@ -1065,7 +1126,8 @@
   "p_3way": 0.08128180954080605,
   "p_stage1": 0.08128180954080605,
   "p_unshaded": 0.07986189923329744,
-  "settle_share": 0.482
+  "settle_share": 0.482,
+  "only_ride": true
  },
  {
   "race": 6,
@@ -1074,7 +1136,7 @@
   "horse_id": "2020_charge-forward_grand-journey",
   "barrier": 2,
   "jockey": "Bailey Kinninmont",
-  "p": 0.13857110357993127,
+  "p": 0.1385711035799313,
   "solid": true,
   "p_trees": 0.12320417419972093,
   "p_net": 0.1293821756198552,
@@ -1082,7 +1144,8 @@
   "p_3way": 0.12506807383739446,
   "p_stage1": 0.12506807383739446,
   "p_unshaded": 0.1354611914361149,
-  "settle_share": 0.184
+  "settle_share": 0.184,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1091,7 +1154,7 @@
   "horse_id": "2019_spieth_bloodline",
   "barrier": 3,
   "jockey": "Sam Kennedy",
-  "p": 0.04347311538780918,
+  "p": 0.04347311538780919,
   "solid": true,
   "p_trees": 0.049511156251651076,
   "p_net": 0.048827882896573395,
@@ -1099,7 +1162,8 @@
   "p_3way": 0.05086261239326309,
   "p_stage1": 0.05086261239326309,
   "p_unshaded": 0.04249746053639138,
-  "settle_share": 0.61
+  "settle_share": 0.61,
+  "only_ride": true
  },
  {
   "race": 6,
@@ -1108,7 +1172,7 @@
   "horse_id": "2021_vancouver_la-casade",
   "barrier": 4,
   "jockey": "Nadia Daniels",
-  "p": 0.11630611248061956,
+  "p": 0.11630611248061958,
   "solid": true,
   "p_trees": 0.12376607604509653,
   "p_net": 0.1038111274054231,
@@ -1116,7 +1180,8 @@
   "p_3way": 0.11662544683454629,
   "p_stage1": 0.11662544683454629,
   "p_unshaded": 0.1136958872441949,
-  "settle_share": 0.642
+  "settle_share": 0.642,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1125,7 +1190,7 @@
   "horse_id": "2021_brutal_rock-the-world",
   "barrier": 6,
   "jockey": "Luke Cartwright",
-  "p": 0.16928795570920213,
+  "p": 0.16928795570920216,
   "solid": true,
   "p_trees": 0.163151795335934,
   "p_net": 0.1805071513657646,
@@ -1133,7 +1198,8 @@
   "p_3way": 0.1682703185027993,
   "p_stage1": 0.1682703185027993,
   "p_unshaded": 0.16548867392778646,
-  "settle_share": 0.552
+  "settle_share": 0.552,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1142,7 +1208,7 @@
   "horse_id": "2021_alabama-express_cerberus-gal",
   "barrier": 7,
   "jockey": "Stephanie Hateley",
-  "p": 0.07516311104321703,
+  "p": 0.07516311104321705,
   "solid": true,
   "p_trees": 0.08731997344655183,
   "p_net": 0.11575063639601489,
@@ -1151,7 +1217,8 @@
   "p_stage1": 0.09629329521004781,
   "p_unshaded": 0.0864426430221977,
   "settle_share": 0.774,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1160,7 +1227,7 @@
   "horse_id": "2020_shalaa_arizona-girl",
   "barrier": 9,
   "jockey": "",
-  "p": 0.09921422462785424,
+  "p": 0.09921422462785426,
   "solid": true,
   "p_trees": 0.0940003619284984,
   "p_net": 0.06995477282559862,
@@ -1168,7 +1235,8 @@
   "p_3way": 0.08970282973879799,
   "p_stage1": 0.08970282973879799,
   "p_unshaded": 0.09698758780359375,
-  "settle_share": 0.414
+  "settle_share": 0.414,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1177,7 +1245,7 @@
   "horse_id": "2019_atomic_dont-worry-toff",
   "barrier": 10,
   "jockey": "Jade Smith",
-  "p": 0.011118482575846224,
+  "p": 0.011118482575846226,
   "solid": true,
   "p_trees": 0.015121185177435352,
   "p_net": 0.017000674275457678,
@@ -1186,7 +1254,8 @@
   "p_stage1": 0.01527846967491956,
   "p_unshaded": 0.012787004248663737,
   "settle_share": 0.705,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": true
  },
  {
   "race": 6,
@@ -1195,7 +1264,7 @@
   "horse_id": "2022_kobayashi_the-cure",
   "barrier": 11,
   "jockey": "Brittany Button",
-  "p": 0.0374263783663205,
+  "p": 0.037426378366320505,
   "solid": true,
   "p_trees": 0.043351616200473585,
   "p_net": 0.04466277347251639,
@@ -1203,7 +1272,8 @@
   "p_3way": 0.044514202787646194,
   "p_stage1": 0.044514202787646194,
   "p_unshaded": 0.036586428726218596,
-  "settle_share": 0.581
+  "settle_share": 0.581,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1212,7 +1282,7 @@
   "horse_id": "2021_impending_baveno",
   "barrier": 12,
   "jockey": "Jackson Radley",
-  "p": 0.04381349335599377,
+  "p": 0.04381349335599378,
   "solid": true,
   "p_trees": 0.03884719812086501,
   "p_net": 0.053837934063631174,
@@ -1221,7 +1291,8 @@
   "p_stage1": 0.04266998528276287,
   "p_unshaded": 0.050388469997602416,
   "settle_share": 0.707,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1230,7 +1301,7 @@
   "horse_id": "2018_i-am-invincible_tai-tai-tess",
   "barrier": 13,
   "jockey": "Olivia East",
-  "p": 0.10990992268858532,
+  "p": 0.10990992268858533,
   "solid": true,
   "p_trees": 0.08671040738984459,
   "p_net": 0.08837412136765674,
@@ -1238,7 +1309,8 @@
   "p_3way": 0.08912421335932483,
   "p_stage1": 0.08912421335932483,
   "p_unshaded": 0.10744324533331705,
-  "settle_share": 0.645
+  "settle_share": 0.645,
+  "only_ride": true
  },
  {
   "race": 6,
@@ -1247,7 +1319,7 @@
   "horse_id": "2022_star-witness_ditas",
   "barrier": 16,
   "jockey": "Holly Durnan",
-  "p": 0.0740207349407204,
+  "p": 0.07402073494072041,
   "solid": true,
   "p_trees": 0.09136973541288142,
   "p_net": 0.07317259504444386,
@@ -1255,7 +1327,8 @@
   "p_3way": 0.08030874283769156,
   "p_stage1": 0.08030874283769156,
   "p_unshaded": 0.07235950849062162,
-  "settle_share": 0.323
+  "settle_share": 0.323,
+  "only_ride": true
  },
  {
   "race": 7,
@@ -1264,7 +1337,7 @@
   "horse_id": "2022_the-autumn-sun_teodora",
   "barrier": 1,
   "jockey": "Will Gordon",
-  "p": 0.14403195157431462,
+  "p": 0.14403195157431464,
   "solid": true,
   "p_trees": 0.09934156161751859,
   "p_net": 0.162992833818282,
@@ -1272,7 +1345,8 @@
   "p_3way": 0.11998003131014132,
   "p_stage1": 0.11998003131014132,
   "p_unshaded": 0.13806418410622048,
-  "settle_share": 0.6
+  "settle_share": 0.6,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1281,7 +1355,7 @@
   "horse_id": "2022_almanzor_vanity-queen",
   "barrier": 3,
   "jockey": "Nadia Daniels",
-  "p": 0.10256679809857962,
+  "p": 0.10256679809857963,
   "solid": true,
   "p_trees": 0.11706897592304388,
   "p_net": 0.10398643428712415,
@@ -1289,7 +1363,8 @@
   "p_3way": 0.11403075179962605,
   "p_stage1": 0.11403075179962605,
   "p_unshaded": 0.09831708271036961,
-  "settle_share": 0.25
+  "settle_share": 0.25,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1298,7 +1373,7 @@
   "horse_id": "2021_hellbent_annenberg",
   "barrier": 4,
   "jockey": "",
-  "p": 0.054554916590459204,
+  "p": 0.05455491659045921,
   "solid": true,
   "p_trees": 0.06415222690221727,
   "p_net": 0.04937325467135201,
@@ -1306,7 +1381,8 @@
   "p_3way": 0.0559155284611385,
   "p_stage1": 0.0559155284611385,
   "p_unshaded": 0.052294508029063366,
-  "settle_share": 0.284
+  "settle_share": 0.284,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1315,7 +1391,7 @@
   "horse_id": "2019_kermadec_unicaja",
   "barrier": 6,
   "jockey": "Billy Egan",
-  "p": 0.2449393316940872,
+  "p": 0.24493933169408721,
   "solid": true,
   "p_trees": 0.2605634060940643,
   "p_net": 0.22313384653449278,
@@ -1324,7 +1400,8 @@
   "p_stage1": 0.25210553781913164,
   "p_unshaded": 0.27622424065700274,
   "settle_share": 0.714,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1333,7 +1410,7 @@
   "horse_id": "2021_brutal_lorna-may",
   "barrier": 7,
   "jockey": "Zac Spain",
-  "p": 0.13969959047839794,
+  "p": 0.13969959047839797,
   "solid": true,
   "p_trees": 0.12670007629479832,
   "p_net": 0.12433154129033082,
@@ -1341,7 +1418,8 @@
   "p_3way": 0.12367047647542799,
   "p_stage1": 0.12367047647542799,
   "p_unshaded": 0.13391132848339954,
-  "settle_share": 0.423
+  "settle_share": 0.423,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1350,7 +1428,7 @@
   "horse_id": "2020_the-autumn-sun_nurture",
   "barrier": 8,
   "jockey": "Harry Coffey",
-  "p": 0.06227982749996009,
+  "p": 0.0622798274999601,
   "solid": true,
   "p_trees": 0.06568996459580506,
   "p_net": 0.07186745418404049,
@@ -1358,7 +1436,8 @@
   "p_3way": 0.06802364644159328,
   "p_stage1": 0.06802364644159328,
   "p_unshaded": 0.05969934779104627,
-  "settle_share": 0.489
+  "settle_share": 0.489,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1367,7 +1446,7 @@
   "horse_id": "2022_farnan_champagne-jane",
   "barrier": 10,
   "jockey": "Thomas Stockdale",
-  "p": 0.04181423650498321,
+  "p": 0.04181423650498322,
   "solid": true,
   "p_trees": 0.038839876449134364,
   "p_net": 0.044601941198656125,
@@ -1375,7 +1454,8 @@
   "p_3way": 0.04106190336723356,
   "p_stage1": 0.04106190336723356,
   "p_unshaded": 0.04008172064589703,
-  "settle_share": 0.193
+  "settle_share": 0.193,
+  "only_ride": true
  },
  {
   "race": 7,
@@ -1384,7 +1464,7 @@
   "horse_id": "2022_russian-camelot_rapid-romance",
   "barrier": 11,
   "jockey": "Lachlan Neindorf",
-  "p": 0.0976529756752646,
+  "p": 0.09765297567526461,
   "solid": true,
   "p_trees": 0.09624868004916572,
   "p_net": 0.09951078229974425,
@@ -1392,7 +1472,8 @@
   "p_3way": 0.09702579823243944,
   "p_stage1": 0.09702579823243944,
   "p_unshaded": 0.09360685781719512,
-  "settle_share": 0.567
+  "settle_share": 0.567,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1401,7 +1482,7 @@
   "horse_id": "2021_pariah_spring-colours",
   "barrier": 13,
   "jockey": "Ben Allen",
-  "p": 0.11246037188395352,
+  "p": 0.11246037188395354,
   "solid": true,
   "p_trees": 0.13139523207425247,
   "p_net": 0.12020191171597738,
@@ -1409,7 +1490,8 @@
   "p_3way": 0.12818632609326833,
   "p_stage1": 0.12818632609326833,
   "p_unshaded": 0.10780072975980617,
-  "settle_share": 0.365
+  "settle_share": 0.365,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1418,7 +1500,7 @@
   "horse_id": "2020_kingman_patsy-boyne",
   "barrier": 1,
   "jockey": "Nathan Punch",
-  "p": 0.01515928971292329,
+  "p": 0.015159289712923291,
   "solid": true,
   "p_trees": 0.01984824456616913,
   "p_net": 0.015040591012901483,
@@ -1426,7 +1508,8 @@
   "p_3way": 0.018608076865723053,
   "p_stage1": 0.018608076865723053,
   "p_unshaded": 0.014980034751551428,
-  "settle_share": 0.315
+  "settle_share": 0.315,
+  "only_ride": true
  },
  {
   "race": 8,
@@ -1435,7 +1518,7 @@
   "horse_id": "2021_al-maher_rondalago",
   "barrier": 3,
   "jockey": "",
-  "p": 0.061656066199520736,
+  "p": 0.06165606619952074,
   "solid": true,
   "p_trees": 0.05242076492022131,
   "p_net": 0.049611677496050645,
@@ -1443,7 +1526,8 @@
   "p_3way": 0.050444377331009975,
   "p_stage1": 0.050444377331009975,
   "p_unshaded": 0.06092699801926727,
-  "settle_share": 0.255
+  "settle_share": 0.255,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1452,7 +1536,7 @@
   "horse_id": "2022_proisir_scottish-star",
   "barrier": 4,
   "jockey": "Toby Atkinson",
-  "p": 0.0013694905472002603,
+  "p": 0.0013694905472002605,
   "solid": true,
   "p_trees": 0.0019434362046153208,
   "p_net": 0.0009323138592729982,
@@ -1460,7 +1544,8 @@
   "p_3way": 0.001557124055918759,
   "p_stage1": 0.001557124055918759,
   "p_unshaded": 0.001353296650270628,
-  "settle_share": 0.549
+  "settle_share": 0.549,
+  "only_ride": true
  },
  {
   "race": 8,
@@ -1469,7 +1554,7 @@
   "horse_id": "2021_brutal_ever-the-same",
   "barrier": 5,
   "jockey": "Ryan Hurdle",
-  "p": 0.15766681495236395,
+  "p": 0.15766681495236398,
   "solid": true,
   "p_trees": 0.12404372186242288,
   "p_net": 0.11416947567451907,
@@ -1477,7 +1562,8 @@
   "p_3way": 0.11575229661803432,
   "p_stage1": 0.11575229661803432,
   "p_unshaded": 0.1558024427186295,
-  "settle_share": 0.322
+  "settle_share": 0.322,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1486,7 +1572,7 @@
   "horse_id": "2021_tivaci_bellazeel",
   "barrier": 6,
   "jockey": "Lachlan King",
-  "p": 0.054187345964984736,
+  "p": 0.05418734596498474,
   "solid": true,
   "p_trees": 0.06751223962244746,
   "p_net": 0.06793432497726182,
@@ -1494,7 +1580,8 @@
   "p_3way": 0.06871275994261294,
   "p_stage1": 0.06871275994261294,
   "p_unshaded": 0.05354659360839402,
-  "settle_share": 0.465
+  "settle_share": 0.465,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1503,7 +1590,7 @@
   "horse_id": "2021_justify_swift-lady",
   "barrier": 7,
   "jockey": "John Allen",
-  "p": 0.08996405961019713,
+  "p": 0.08996405961019714,
   "solid": true,
   "p_trees": 0.09716387713432798,
   "p_net": 0.09879219170160808,
@@ -1511,7 +1598,8 @@
   "p_3way": 0.09922871305581767,
   "p_stage1": 0.09922871305581767,
   "p_unshaded": 0.08890025620412238,
-  "settle_share": 0.45
+  "settle_share": 0.45,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1520,7 +1608,7 @@
   "horse_id": "2022_savabeel_vihari",
   "barrier": 8,
   "jockey": "Teodore Nugent",
-  "p": 0.025776522901948498,
+  "p": 0.0257765229019485,
   "solid": true,
   "p_trees": 0.03198240546527477,
   "p_net": 0.030529858764093733,
@@ -1528,7 +1616,8 @@
   "p_3way": 0.030634572666752503,
   "p_stage1": 0.030634572666752503,
   "p_unshaded": 0.0254717217071306,
-  "settle_share": 0.552
+  "settle_share": 0.552,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1537,7 +1626,7 @@
   "horse_id": "2020_crowded-house_buyback",
   "barrier": 10,
   "jockey": "Chelsea Jokic",
-  "p": 0.029366001968663815,
+  "p": 0.02936600196866382,
   "solid": true,
   "p_trees": 0.03151368358021995,
   "p_net": 0.03332025587402002,
@@ -1545,7 +1634,8 @@
   "p_3way": 0.032184068938601686,
   "p_stage1": 0.032184068938601686,
   "p_unshaded": 0.029018756045653894,
-  "settle_share": 0.617
+  "settle_share": 0.617,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1554,7 +1644,7 @@
   "horse_id": "2022_capitalist_single-view",
   "barrier": 11,
   "jockey": "Declan Bates",
-  "p": 0.08453912015416873,
+  "p": 0.08453912015416874,
   "solid": true,
   "p_trees": 0.09993130271730093,
   "p_net": 0.09782735974479523,
@@ -1562,7 +1652,8 @@
   "p_3way": 0.10148383545506359,
   "p_stage1": 0.10148383545506359,
   "p_unshaded": 0.08353946535472731,
-  "settle_share": 0.517
+  "settle_share": 0.517,
+  "only_ride": true
  },
  {
   "race": 8,
@@ -1571,7 +1662,7 @@
   "horse_id": "2021_foxwedge_room-to-rhyme",
   "barrier": 13,
   "jockey": "Linda Meech",
-  "p": 0.3173989892267049,
+  "p": 0.31739898922670495,
   "solid": true,
   "p_trees": 0.2660357930550608,
   "p_net": 0.3134534981377104,
@@ -1579,7 +1670,8 @@
   "p_3way": 0.2833680837003255,
   "p_stage1": 0.2833680837003255,
   "p_unshaded": 0.3136458223811107,
-  "settle_share": 0.614
+  "settle_share": 0.614,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1588,7 +1680,7 @@
   "horse_id": "2021_proisir_high-spin",
   "barrier": 14,
   "jockey": "",
-  "p": 0.023158830555312985,
+  "p": 0.02315883055531299,
   "solid": true,
   "p_trees": 0.025292155585579255,
   "p_net": 0.015579817434806062,
@@ -1596,7 +1688,8 @@
   "p_3way": 0.02200460083014487,
   "p_stage1": 0.02200460083014487,
   "p_unshaded": 0.02288498294403136,
-  "settle_share": 0.579
+  "settle_share": 0.579,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1605,7 +1698,7 @@
   "horse_id": "2020_almanzor_hurry",
   "barrier": 15,
   "jockey": "Jett Stanley",
-  "p": 0.05868111162767663,
+  "p": 0.058681111627676634,
   "solid": true,
   "p_trees": 0.07636470446881341,
   "p_net": 0.07046796473498257,
@@ -1613,7 +1706,8 @@
   "p_3way": 0.0741079720011449,
   "p_stage1": 0.0741079720011449,
   "p_unshaded": 0.057987221571000044,
-  "settle_share": 0.524
+  "settle_share": 0.524,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1622,7 +1716,7 @@
   "horse_id": "2021_pierro_deedra",
   "barrier": 17,
   "jockey": "Stephanie Hateley",
-  "p": 0.013267560985562378,
+  "p": 0.01326756098556238,
   "solid": true,
   "p_trees": 0.015356847086801236,
   "p_net": 0.013628277989206393,
@@ -1630,7 +1724,8 @@
   "p_3way": 0.013867895392246456,
   "p_stage1": 0.013867895392246456,
   "p_unshaded": 0.013110675262220187,
-  "settle_share": 0.036
+  "settle_share": 0.036,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1639,7 +1734,7 @@
   "horse_id": "2020_fiorente_zeftabaa",
   "barrier": 18,
   "jockey": "Brad Rawiller",
-  "p": 0.06780879559277184,
+  "p": 0.06780879559277185,
   "solid": true,
   "p_trees": 0.09059082373074555,
   "p_net": 0.07871239259877152,
@@ -1648,7 +1743,8 @@
   "p_stage1": 0.08804562314660382,
   "p_unshaded": 0.07883173278189078,
   "settle_share": 0.659,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1665,7 +1761,8 @@
   "p_3way": 0.11081250525151377,
   "p_stage1": 0.11081250525151377,
   "p_unshaded": 0.10862242933696672,
-  "settle_share": 0.107
+  "settle_share": 0.107,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1683,7 +1780,8 @@
   "p_stage1": 0.09065916007684112,
   "p_unshaded": 0.10188175197551201,
   "settle_share": 0.915,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1700,7 +1798,8 @@
   "p_3way": 0.057234382672437197,
   "p_stage1": 0.057234382672437197,
   "p_unshaded": 0.05765960371643117,
-  "settle_share": 0.334
+  "settle_share": 0.334,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1717,7 +1816,8 @@
   "p_3way": 0.029855463246385574,
   "p_stage1": 0.029855463246385574,
   "p_unshaded": 0.02925527348405738,
-  "settle_share": 0.233
+  "settle_share": 0.233,
+  "only_ride": true
  },
  {
   "race": 9,
@@ -1735,7 +1835,8 @@
   "p_stage1": 0.0522963139035097,
   "p_unshaded": 0.04432225993169019,
   "settle_share": 0.718,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1752,7 +1853,8 @@
   "p_3way": 0.01084106457259241,
   "p_stage1": 0.01084106457259241,
   "p_unshaded": 0.008706623098999626,
-  "settle_share": 0.226
+  "settle_share": 0.226,
+  "only_ride": true
  },
  {
   "race": 9,
@@ -1769,7 +1871,8 @@
   "p_3way": 0.09474414059821867,
   "p_stage1": 0.09474414059821867,
   "p_unshaded": 0.10286959147754902,
-  "settle_share": 0.336
+  "settle_share": 0.336,
+  "only_ride": true
  },
  {
   "race": 9,
@@ -1786,7 +1889,8 @@
   "p_3way": 0.09618476355196251,
   "p_stage1": 0.09618476355196251,
   "p_unshaded": 0.07941511746891933,
-  "settle_share": 0.313
+  "settle_share": 0.313,
+  "only_ride": true
  },
  {
   "race": 9,
@@ -1803,7 +1907,8 @@
   "p_3way": 0.11969799292973253,
   "p_stage1": 0.11969799292973253,
   "p_unshaded": 0.11020842862139307,
-  "settle_share": 0.477
+  "settle_share": 0.477,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1820,7 +1925,8 @@
   "p_3way": 0.09356631976681339,
   "p_stage1": 0.09356631976681339,
   "p_unshaded": 0.12030242899133799,
-  "settle_share": 0.565
+  "settle_share": 0.565,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1837,7 +1943,8 @@
   "p_3way": 0.028160804668322315,
   "p_stage1": 0.028160804668322315,
   "p_unshaded": 0.02690251325710861,
-  "settle_share": 0.56
+  "settle_share": 0.56,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1854,7 +1961,8 @@
   "p_3way": 0.18501969256157463,
   "p_stage1": 0.18501969256157463,
   "p_unshaded": 0.1844770558712356,
-  "settle_share": 0.288
+  "settle_share": 0.288,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1871,6 +1979,7 @@
   "p_3way": 0.030927396200096,
   "p_stage1": 0.030927396200096,
   "p_unshaded": 0.025376922768799142,
-  "settle_share": 0.572
+  "settle_share": 0.572,
+  "only_ride": false
  }
 ]
