@@ -14,5 +14,6 @@
 | 7 Oct | Geelong | Mr Natural | 3.2u | $3.65 (4c ded.) | WON | +8.48 |
 | 7 Oct | Geelong | Mount Sabyinyo | 0.8u | $13.30 (5c ded.) | 2nd | -0.80 |
 | 7 Oct | Geelong | Stay Humble | 4.0u | $4.79 (13c ded.) | WON | +15.16 |
+| 8 Oct | Kyneton | Corviglia | 2.06u | $4.60 (~3c ded. est.) | WON (SP $5.20) | +7.13 |
 
-Settled: 11 bets, 3 winners, 20.9u staked, +22.42u (+107%).
+Settled: 12 bets, 4 winners, 23.0u staked, +29.55u (+129%). Kyneton R1 Corviglia's deduction is an estimate until the account shows it; the rest of Kyneton settles tonight.
