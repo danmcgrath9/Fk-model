@@ -1,5 +1,7 @@
 """One race against the prices file with the live rules. python race_check.py DAYPREFIX GOING RACE"""
-import json, re, sys
+import json, re, sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import stake_rule
 pre, g, race = sys.argv[1], sys.argv[2], int(sys.argv[3])
 THR = 0.2   # metro 40c+ tried 7 Oct and reverted: no extra profit at the open (t_tracks.py)
 norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower())
@@ -28,5 +30,5 @@ for r in sorted(M, key=lambda r: -r["p"]):
         if v < THR: why.append(f"value {v*100:+.0f}%")
     st = 0
     if o and not why:
-        st = round(min(4.0, 75 * max(0, ((pp * o) ** 0.5 - 1) / (o - 1))), 2)
+        st = stake_rule.stake(pp, o, r.get("only_ride", False), len(M))
     print(f"{r['horse']:20s} ours ${1/pp:7.2f}  best ${o}  " + (f"BET {st}u, take at ${(1+THR)/pp:.2f}+ " if st else "") + ("; ".join(why)) + ("  [" + "; ".join(ang.get(k, [])) + "]" if st else ""))

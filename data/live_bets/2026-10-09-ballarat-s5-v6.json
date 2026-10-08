@@ -14,7 +14,8 @@
   "p_3way": 0.07291652329898599,
   "p_stage1": 0.07291652329898599,
   "p_unshaded": 0.0644121471558272,
-  "settle_share": 0.64
+  "settle_share": 0.64,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -31,7 +32,8 @@
   "p_3way": 0.01868106379016701,
   "p_stage1": 0.01868106379016701,
   "p_unshaded": 0.01840768125638184,
-  "settle_share": 0.298
+  "settle_share": 0.298,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -49,7 +51,8 @@
   "p_stage1": 0.26221177103338,
   "p_unshaded": 0.24083150051508334,
   "settle_share": 0.748,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -66,7 +69,8 @@
   "p_3way": 0.03133217575979386,
   "p_stage1": 0.03133217575979386,
   "p_unshaded": 0.036587807577151285,
-  "settle_share": 0.403
+  "settle_share": 0.403,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -83,7 +87,8 @@
   "p_3way": 0.1273146893952762,
   "p_stage1": 0.1273146893952762,
   "p_unshaded": 0.1524198937095754,
-  "settle_share": 0.265
+  "settle_share": 0.265,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -100,7 +105,8 @@
   "p_3way": 0.07988668438864187,
   "p_stage1": 0.07988668438864187,
   "p_unshaded": 0.08206386636655744,
-  "settle_share": 0.437
+  "settle_share": 0.437,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -117,7 +123,8 @@
   "p_3way": 0.013393031556577563,
   "p_stage1": 0.013393031556577563,
   "p_unshaded": 0.011168591411848838,
-  "settle_share": 0.428
+  "settle_share": 0.428,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -135,7 +142,8 @@
   "p_stage1": 0.008452630111053223,
   "p_unshaded": 0.008418811821300486,
   "settle_share": 0.843,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -153,7 +161,8 @@
   "p_stage1": 0.24408112606573928,
   "p_unshaded": 0.2036231679744127,
   "settle_share": 0.819,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -171,7 +180,8 @@
   "p_stage1": 0.017063112748636124,
   "p_unshaded": 0.017130538042404126,
   "settle_share": 0.925,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 1,
@@ -189,7 +199,8 @@
   "p_stage1": 0.1246671918517489,
   "p_unshaded": 0.16493599416945737,
   "settle_share": 0.84,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 10,
@@ -206,7 +217,8 @@
   "p_3way": 0.10385808796367067,
   "p_stage1": 0.10385808796367067,
   "p_unshaded": 0.10004113928337227,
-  "settle_share": 0.237
+  "settle_share": 0.237,
+  "only_ride": false
  },
  {
   "race": 10,
@@ -223,7 +235,8 @@
   "p_3way": 0.12783952965068374,
   "p_stage1": 0.12783952965068374,
   "p_unshaded": 0.1235262868931089,
-  "settle_share": 0.32
+  "settle_share": 0.32,
+  "only_ride": false
  },
  {
   "race": 10,
@@ -240,7 +253,8 @@
   "p_3way": 0.026480812774030436,
   "p_stage1": 0.026480812774030436,
   "p_unshaded": 0.023565912058396102,
-  "settle_share": 0.334
+  "settle_share": 0.334,
+  "only_ride": false
  },
  {
   "race": 10,
@@ -257,7 +271,8 @@
   "p_3way": 0.03621107193758612,
   "p_stage1": 0.03621107193758612,
   "p_unshaded": 0.033878613245649336,
-  "settle_share": 0.472
+  "settle_share": 0.472,
+  "only_ride": false
  },
  {
   "race": 10,
@@ -274,7 +289,8 @@
   "p_3way": 0.13810179928424693,
   "p_stage1": 0.13810179928424693,
   "p_unshaded": 0.1190369005208376,
-  "settle_share": 0.401
+  "settle_share": 0.401,
+  "only_ride": false
  },
  {
   "race": 10,
@@ -291,7 +307,8 @@
   "p_3way": 0.04558325660307708,
   "p_stage1": 0.04558325660307708,
   "p_unshaded": 0.057656018009157116,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": true
  },
  {
   "race": 10,
@@ -308,7 +325,8 @@
   "p_3way": 0.15151874901398313,
   "p_stage1": 0.15151874901398313,
   "p_unshaded": 0.1498844185653033,
-  "settle_share": 0.549
+  "settle_share": 0.549,
+  "only_ride": false
  },
  {
   "race": 10,
@@ -325,7 +343,8 @@
   "p_3way": 0.23808175660255007,
   "p_stage1": 0.23808175660255007,
   "p_unshaded": 0.27496269226186126,
-  "settle_share": 0.463
+  "settle_share": 0.463,
+  "only_ride": true
  },
  {
   "race": 10,
@@ -343,7 +362,8 @@
   "p_stage1": 0.05305482464882462,
   "p_unshaded": 0.04628105085525374,
   "settle_share": 0.721,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 10,
@@ -360,7 +380,8 @@
   "p_3way": 0.03763022859801273,
   "p_stage1": 0.03763022859801273,
   "p_unshaded": 0.03589250538019307,
-  "settle_share": 0.604
+  "settle_share": 0.604,
+  "only_ride": false
  },
  {
   "race": 10,
@@ -378,7 +399,8 @@
   "p_stage1": 0.04163988292333434,
   "p_unshaded": 0.03527446292686688,
   "settle_share": 0.675,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -395,7 +417,8 @@
   "p_3way": 0.15693069882650482,
   "p_stage1": 0.15693069882650482,
   "p_unshaded": 0.13140182369935896,
-  "settle_share": 0.336
+  "settle_share": 0.336,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -413,7 +436,8 @@
   "p_stage1": 0.11186547193189704,
   "p_unshaded": 0.09564255743293491,
   "settle_share": 0.818,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -430,7 +454,8 @@
   "p_3way": 0.03138874722251033,
   "p_stage1": 0.03138874722251033,
   "p_unshaded": 0.032235607961052765,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -447,7 +472,8 @@
   "p_3way": 0.1487826894173769,
   "p_stage1": 0.1487826894173769,
   "p_unshaded": 0.13487307886746155,
-  "settle_share": 0.188
+  "settle_share": 0.188,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -464,7 +490,8 @@
   "p_3way": 0.03803615807113291,
   "p_stage1": 0.03803615807113291,
   "p_unshaded": 0.04252971647586667,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -482,7 +509,8 @@
   "p_stage1": 0.13554139317221703,
   "p_unshaded": 0.162700620239987,
   "settle_share": 0.699,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -499,7 +527,8 @@
   "p_3way": 0.11244435478059289,
   "p_stage1": 0.11244435478059289,
   "p_unshaded": 0.10724950179768344,
-  "settle_share": 0.111
+  "settle_share": 0.111,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -516,7 +545,8 @@
   "p_3way": 0.03536630705395069,
   "p_stage1": 0.03536630705395069,
   "p_unshaded": 0.03712532460561608,
-  "settle_share": 0.478
+  "settle_share": 0.478,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -533,7 +563,8 @@
   "p_3way": 0.11294746072615712,
   "p_stage1": 0.11294746072615712,
   "p_unshaded": 0.13733525600598154,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -550,7 +581,8 @@
   "p_3way": 0.05236918885960244,
   "p_stage1": 0.05236918885960244,
   "p_unshaded": 0.04481810096632771,
-  "settle_share": 0.578
+  "settle_share": 0.578,
+  "only_ride": false
  },
  {
   "race": 2,
@@ -568,7 +600,8 @@
   "p_stage1": 0.06432752993805779,
   "p_unshaded": 0.07408841194772937,
   "settle_share": 0.753,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -577,7 +610,7 @@
   "horse_id": "2023_pinatubo_excellent-magic",
   "barrier": 1,
   "jockey": "Luke Currie",
-  "p": 0.11144304068402486,
+  "p": 0.11144304068402483,
   "solid": true,
   "p_trees": 0.11044728023719756,
   "p_net": 0.08897880640535859,
@@ -585,7 +618,8 @@
   "p_3way": 0.10085667295963313,
   "p_stage1": 0.10085667295963313,
   "p_unshaded": 0.1086524300780118,
-  "settle_share": 0.559
+  "settle_share": 0.559,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -594,7 +628,7 @@
   "horse_id": "2023_russian-revolution_germanotta",
   "barrier": 2,
   "jockey": "Lachlan King",
-  "p": 0.058342174133734215,
+  "p": 0.0583421741337342,
   "solid": false,
   "p_trees": 0.05583286460796616,
   "p_net": 0.07921366194926434,
@@ -602,7 +636,8 @@
   "p_3way": 0.06633336247899534,
   "p_stage1": 0.06633336247899534,
   "p_unshaded": 0.0568812458522,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -611,7 +646,7 @@
   "horse_id": "2023_capitalist_fromparis-withlove",
   "barrier": 3,
   "jockey": "Harry Coffey",
-  "p": 0.09960147170878504,
+  "p": 0.09960147170878501,
   "solid": true,
   "p_trees": 0.09678054147104659,
   "p_net": 0.10538007863844039,
@@ -619,7 +654,8 @@
   "p_3way": 0.09833573385021936,
   "p_stage1": 0.09833573385021936,
   "p_unshaded": 0.09710738215757551,
-  "settle_share": 0.25
+  "settle_share": 0.25,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -628,7 +664,7 @@
   "horse_id": "2023_home-affairs_telopea",
   "barrier": 4,
   "jockey": "Zac Spain",
-  "p": 0.026095785630795697,
+  "p": 0.02609578563079569,
   "solid": true,
   "p_trees": 0.021847574670275833,
   "p_net": 0.030442444089327576,
@@ -636,7 +672,8 @@
   "p_3way": 0.02392509503212309,
   "p_stage1": 0.02392509503212309,
   "p_unshaded": 0.025442329159161746,
-  "settle_share": 0.551
+  "settle_share": 0.551,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -645,7 +682,7 @@
   "horse_id": "2023_russian-revolution_just-zerene",
   "barrier": 6,
   "jockey": "Mark Zahra",
-  "p": 0.18502026455945758,
+  "p": 0.18502026455945755,
   "solid": true,
   "p_trees": 0.18827810288173372,
   "p_net": 0.17609833626458996,
@@ -653,7 +690,8 @@
   "p_3way": 0.18448670716341353,
   "p_stage1": 0.18448670716341353,
   "p_unshaded": 0.18038722951807812,
-  "settle_share": 0.444
+  "settle_share": 0.444,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -662,7 +700,7 @@
   "horse_id": "2023_written-tycoon_saltoree",
   "barrier": 7,
   "jockey": "Ben Allen",
-  "p": 0.11801729442118845,
+  "p": 0.11801729442118843,
   "solid": false,
   "p_trees": 0.09133810245046554,
   "p_net": 0.12250346319250509,
@@ -670,7 +708,8 @@
   "p_3way": 0.10391873521105056,
   "p_stage1": 0.10391873521105056,
   "p_unshaded": 0.11506205996703787,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -679,7 +718,7 @@
   "horse_id": "2023_lucky-vega_cajou",
   "barrier": 8,
   "jockey": "Teodore Nugent",
-  "p": 0.02442033350835887,
+  "p": 0.024420333508358864,
   "solid": true,
   "p_trees": 0.025840810123627312,
   "p_net": 0.029357714953143835,
@@ -687,7 +726,8 @@
   "p_3way": 0.027390404633052957,
   "p_stage1": 0.027390404633052957,
   "p_unshaded": 0.02380883151350554,
-  "settle_share": 0.625
+  "settle_share": 0.625,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -696,7 +736,7 @@
   "horse_id": "2023_hanseatic_amanpour",
   "barrier": 9,
   "jockey": "Fred W Kersley",
-  "p": 0.0961939398044761,
+  "p": 0.09619393980447608,
   "solid": false,
   "p_trees": 0.07831203573189438,
   "p_net": 0.09023487735540325,
@@ -704,7 +744,8 @@
   "p_3way": 0.08303659672017594,
   "p_stage1": 0.08303659672017594,
   "p_unshaded": 0.09378517720247871,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -713,7 +754,7 @@
   "horse_id": "2023_hanseatic_de-long-star",
   "barrier": 10,
   "jockey": "Nathan Punch",
-  "p": 0.07374063753798771,
+  "p": 0.0737406375379877,
   "solid": true,
   "p_trees": 0.10720964749541108,
   "p_net": 0.0819892794575975,
@@ -722,7 +763,8 @@
   "p_stage1": 0.09946344214871396,
   "p_unshaded": 0.08458131895505548,
   "settle_share": 0.816,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": true
  },
  {
   "race": 3,
@@ -731,7 +773,7 @@
   "horse_id": "2023_i-am-invincible_impecunious",
   "barrier": 11,
   "jockey": "Billy Egan",
-  "p": 0.13532398894043904,
+  "p": 0.135323988940439,
   "solid": true,
   "p_trees": 0.15892839615795354,
   "p_net": 0.12898631788810583,
@@ -739,7 +781,8 @@
   "p_3way": 0.14748822018245974,
   "p_stage1": 0.14748822018245974,
   "p_unshaded": 0.13193538291831963,
-  "settle_share": 0.333
+  "settle_share": 0.333,
+  "only_ride": false
  },
  {
   "race": 3,
@@ -748,7 +791,7 @@
   "horse_id": "2023_tagaloa_all-highs-on-me",
   "barrier": 12,
   "jockey": "John Allen",
-  "p": 0.0718010690707525,
+  "p": 0.07180106907075248,
   "solid": true,
   "p_trees": 0.06518464417242824,
   "p_net": 0.06681501980626359,
@@ -757,7 +800,8 @@
   "p_stage1": 0.0647650296201623,
   "p_unshaded": 0.0823566126785756,
   "settle_share": 0.8,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -774,7 +818,8 @@
   "p_3way": 0.03144088302672502,
   "p_stage1": 0.03144088302672502,
   "p_unshaded": 0.029434456512451117,
-  "settle_share": 0.167
+  "settle_share": 0.167,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -792,7 +837,8 @@
   "p_stage1": 0.09557306120802636,
   "p_unshaded": 0.13141273926341313,
   "settle_share": 0.85,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -809,7 +855,8 @@
   "p_3way": 0.06999255060093353,
   "p_stage1": 0.06999255060093353,
   "p_unshaded": 0.07003960245206972,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": true
  },
  {
   "race": 4,
@@ -826,7 +873,8 @@
   "p_3way": 0.2753955457182059,
   "p_stage1": 0.2753955457182059,
   "p_unshaded": 0.26993062467418305,
-  "settle_share": 0.471
+  "settle_share": 0.471,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -843,7 +891,8 @@
   "p_3way": 0.22684895785490772,
   "p_stage1": 0.22684895785490772,
   "p_unshaded": 0.22768981252208687,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -861,7 +910,8 @@
   "p_stage1": 0.13354328485337633,
   "p_unshaded": 0.11175186370937691,
   "settle_share": 1.0,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -879,7 +929,8 @@
   "p_stage1": 0.0050839085224042724,
   "p_unshaded": 0.006094239575596503,
   "settle_share": 0.852,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -896,7 +947,8 @@
   "p_3way": 0.06759822206435892,
   "p_stage1": 0.06759822206435892,
   "p_unshaded": 0.06293845380940664,
-  "settle_share": 0.286
+  "settle_share": 0.286,
+  "only_ride": true
  },
  {
   "race": 4,
@@ -913,7 +965,8 @@
   "p_3way": 0.05068782467534305,
   "p_stage1": 0.05068782467534305,
   "p_unshaded": 0.05115538162408202,
-  "settle_share": 0.584
+  "settle_share": 0.584,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -930,7 +983,8 @@
   "p_3way": 0.03792285471855599,
   "p_stage1": 0.03792285471855599,
   "p_unshaded": 0.03476595789250443,
-  "settle_share": null
+  "settle_share": null,
+  "only_ride": false
  },
  {
   "race": 4,
@@ -948,7 +1002,8 @@
   "p_stage1": 0.005912906757162963,
   "p_unshaded": 0.004786867964829483,
   "settle_share": 0.782,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": true
  },
  {
   "race": 5,
@@ -957,7 +1012,7 @@
   "horse_id": "2018_dream-ahead_windrunner",
   "barrier": 1,
   "jockey": "Sam Kennedy",
-  "p": 0.07554337177504457,
+  "p": 0.07554337177504458,
   "solid": true,
   "p_trees": 0.0804583067088967,
   "p_net": 0.060838192673287016,
@@ -965,7 +1020,8 @@
   "p_3way": 0.07456079873570205,
   "p_stage1": 0.07456079873570205,
   "p_unshaded": 0.07276241665890885,
-  "settle_share": 0.209
+  "settle_share": 0.209,
+  "only_ride": true
  },
  {
   "race": 5,
@@ -974,7 +1030,7 @@
   "horse_id": "2022_ole-kirk_natanya",
   "barrier": 2,
   "jockey": "Harry Coffey",
-  "p": 0.0593233950344031,
+  "p": 0.059323395034403106,
   "solid": true,
   "p_trees": 0.06257933236270162,
   "p_net": 0.08044216908891001,
@@ -982,7 +1038,8 @@
   "p_3way": 0.06623592164475654,
   "p_stage1": 0.06623592164475654,
   "p_unshaded": 0.05713954097744184,
-  "settle_share": 0.452
+  "settle_share": 0.452,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -991,7 +1048,7 @@
   "horse_id": "2017_written-tycoon_ella-listo",
   "barrier": 3,
   "jockey": "Olivia East",
-  "p": 0.0536902196257593,
+  "p": 0.05369021962575931,
   "solid": true,
   "p_trees": 0.06633375728790973,
   "p_net": 0.059132890477083165,
@@ -1000,7 +1057,8 @@
   "p_stage1": 0.06631616715279096,
   "p_unshaded": 0.06083969169161307,
   "settle_share": 0.77,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -1009,7 +1067,7 @@
   "horse_id": "2022_written-tycoon_tawteen",
   "barrier": 4,
   "jockey": "Stephanie Hateley",
-  "p": 0.2248060361188729,
+  "p": 0.22480603611887293,
   "solid": true,
   "p_trees": 0.2039284441625884,
   "p_net": 0.29593899540413626,
@@ -1017,7 +1075,8 @@
   "p_3way": 0.22705695912472842,
   "p_stage1": 0.22705695912472842,
   "p_unshaded": 0.2165303200422244,
-  "settle_share": 0.209
+  "settle_share": 0.209,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -1026,7 +1085,7 @@
   "horse_id": "2020_gold-standard_trust-in-laura",
   "barrier": 5,
   "jockey": "Teodore Nugent",
-  "p": 0.009242700259585164,
+  "p": 0.009242700259585165,
   "solid": true,
   "p_trees": 0.017766036152043762,
   "p_net": 0.005865243556399901,
@@ -1035,7 +1094,8 @@
   "p_stage1": 0.01232480118513602,
   "p_unshaded": 0.010473472414729405,
   "settle_share": 0.751,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -1044,7 +1104,7 @@
   "horse_id": "2018_turn-me-loose_angel-del-dinero",
   "barrier": 6,
   "jockey": "Brad Rawiller",
-  "p": 0.15364517608383316,
+  "p": 0.15364517608383318,
   "solid": true,
   "p_trees": 0.14046628208615106,
   "p_net": 0.1130394462023301,
@@ -1053,7 +1113,8 @@
   "p_stage1": 0.13697044525442584,
   "p_unshaded": 0.17410480359367336,
   "settle_share": 0.676,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -1062,7 +1123,7 @@
   "horse_id": "2021_omaha-beach_santa-monica",
   "barrier": 7,
   "jockey": "Caitlin Hollowood",
-  "p": 0.19915613968900406,
+  "p": 0.19915613968900409,
   "solid": true,
   "p_trees": 0.20269305136878804,
   "p_net": 0.20173802694749113,
@@ -1070,7 +1131,8 @@
   "p_3way": 0.2095567355758786,
   "p_stage1": 0.2095567355758786,
   "p_unshaded": 0.1918246654303857,
-  "settle_share": 0.308
+  "settle_share": 0.308,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -1079,7 +1141,7 @@
   "horse_id": "2017_pride-of-dubai_sarah-vee",
   "barrier": 8,
   "jockey": "John Allen",
-  "p": 0.07880544114411821,
+  "p": 0.07880544114411822,
   "solid": true,
   "p_trees": 0.0776019132540472,
   "p_net": 0.06016278355575036,
@@ -1087,7 +1149,8 @@
   "p_3way": 0.06768280943972087,
   "p_stage1": 0.06768280943972087,
   "p_unshaded": 0.07590440046272431,
-  "settle_share": 0.085
+  "settle_share": 0.085,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -1096,7 +1159,7 @@
   "horse_id": "2021_frosted_put-a-spell-on-you",
   "barrier": 9,
   "jockey": "Tom Madden",
-  "p": 0.07793542880230275,
+  "p": 0.07793542880230277,
   "solid": true,
   "p_trees": 0.07972005374792619,
   "p_net": 0.05753932898778336,
@@ -1104,7 +1167,8 @@
   "p_3way": 0.07199013527949173,
   "p_stage1": 0.07199013527949173,
   "p_unshaded": 0.07506641562002919,
-  "settle_share": 0.311
+  "settle_share": 0.311,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -1113,7 +1177,7 @@
   "horse_id": "2022_blue-point_camargue",
   "barrier": 10,
   "jockey": "Neil Farley",
-  "p": 0.0360930741327387,
+  "p": 0.036093074132738705,
   "solid": true,
   "p_trees": 0.0318468170749548,
   "p_net": 0.03039566091457499,
@@ -1121,7 +1185,8 @@
   "p_3way": 0.031080353596876126,
   "p_stage1": 0.031080353596876126,
   "p_unshaded": 0.03476439079748329,
-  "settle_share": 0.031
+  "settle_share": 0.031,
+  "only_ride": false
  },
  {
   "race": 5,
@@ -1130,7 +1195,7 @@
   "horse_id": "2021_master-of-design_another-girl",
   "barrier": 11,
   "jockey": "Jack Hill",
-  "p": 0.031759017334338044,
+  "p": 0.03175901733433805,
   "solid": true,
   "p_trees": 0.036606005793992376,
   "p_net": 0.03490726219225368,
@@ -1138,7 +1203,8 @@
   "p_3way": 0.03622487301049302,
   "p_stage1": 0.03622487301049302,
   "p_unshaded": 0.030589882310786624,
-  "settle_share": 0.265
+  "settle_share": 0.265,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1155,7 +1221,8 @@
   "p_3way": 0.09903859349258208,
   "p_stage1": 0.09903859349258208,
   "p_unshaded": 0.12203485854831997,
-  "settle_share": 0.565
+  "settle_share": 0.565,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1172,7 +1239,8 @@
   "p_3way": 0.05993952419277397,
   "p_stage1": 0.05993952419277397,
   "p_unshaded": 0.054557892234485636,
-  "settle_share": 0.147
+  "settle_share": 0.147,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1189,7 +1257,8 @@
   "p_3way": 0.13875051861014698,
   "p_stage1": 0.13875051861014698,
   "p_unshaded": 0.14813300655291234,
-  "settle_share": 0.623
+  "settle_share": 0.623,
+  "only_ride": true
  },
  {
   "race": 6,
@@ -1207,7 +1276,8 @@
   "p_stage1": 0.017894034420855794,
   "p_unshaded": 0.019442647118637486,
   "settle_share": 0.762,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1224,7 +1294,8 @@
   "p_3way": 0.17469519000547104,
   "p_stage1": 0.17469519000547104,
   "p_unshaded": 0.17434047770921973,
-  "settle_share": 0.611
+  "settle_share": 0.611,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1241,7 +1312,8 @@
   "p_3way": 0.0912844404717092,
   "p_stage1": 0.0912844404717092,
   "p_unshaded": 0.08873432825392506,
-  "settle_share": 0.283
+  "settle_share": 0.283,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1258,7 +1330,8 @@
   "p_3way": 0.2281964415979651,
   "p_stage1": 0.2281964415979651,
   "p_unshaded": 0.21627743153659815,
-  "settle_share": 0.234
+  "settle_share": 0.234,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1275,7 +1348,8 @@
   "p_3way": 0.07189678809048601,
   "p_stage1": 0.07189678809048601,
   "p_unshaded": 0.06907400046548837,
-  "settle_share": 0.477
+  "settle_share": 0.477,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1292,7 +1366,8 @@
   "p_3way": 0.026106962529302224,
   "p_stage1": 0.026106962529302224,
   "p_unshaded": 0.025104882407956258,
-  "settle_share": 0.062
+  "settle_share": 0.062,
+  "only_ride": false
  },
  {
   "race": 6,
@@ -1309,7 +1384,8 @@
   "p_3way": 0.09219750658870758,
   "p_stage1": 0.09219750658870758,
   "p_unshaded": 0.08230047517245714,
-  "settle_share": 0.52
+  "settle_share": 0.52,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1326,7 +1402,8 @@
   "p_3way": 0.17260880564680087,
   "p_stage1": 0.17260880564680087,
   "p_unshaded": 0.1584472042497109,
-  "settle_share": 0.193
+  "settle_share": 0.193,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1343,7 +1420,8 @@
   "p_3way": 0.04915286613758498,
   "p_stage1": 0.04915286613758498,
   "p_unshaded": 0.04036408422929001,
-  "settle_share": 0.287
+  "settle_share": 0.287,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1361,7 +1439,8 @@
   "p_stage1": 0.04927408930348802,
   "p_unshaded": 0.058709797269136894,
   "settle_share": 0.771,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1378,7 +1457,8 @@
   "p_3way": 0.10555376047373213,
   "p_stage1": 0.10555376047373213,
   "p_unshaded": 0.09997237064545417,
-  "settle_share": 0.491
+  "settle_share": 0.491,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1396,7 +1476,8 @@
   "p_stage1": 0.08549269496553381,
   "p_unshaded": 0.11092628465095113,
   "settle_share": 0.729,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1413,7 +1494,8 @@
   "p_3way": 0.07943850740485087,
   "p_stage1": 0.07943850740485087,
   "p_unshaded": 0.07728623381942859,
-  "settle_share": 0.279
+  "settle_share": 0.279,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1430,7 +1512,8 @@
   "p_3way": 0.07478445728273676,
   "p_stage1": 0.07478445728273676,
   "p_unshaded": 0.06531112668724659,
-  "settle_share": 0.23
+  "settle_share": 0.23,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1447,7 +1530,8 @@
   "p_3way": 0.025607375567964785,
   "p_stage1": 0.025607375567964785,
   "p_unshaded": 0.024556185992361503,
-  "settle_share": 0.338
+  "settle_share": 0.338,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1465,7 +1549,8 @@
   "p_stage1": 0.08070916660025165,
   "p_unshaded": 0.0647610066366219,
   "settle_share": 0.672,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1482,7 +1567,8 @@
   "p_3way": 0.23313057946632518,
   "p_stage1": 0.23313057946632518,
   "p_unshaded": 0.26081387208514545,
-  "settle_share": 0.195
+  "settle_share": 0.195,
+  "only_ride": false
  },
  {
   "race": 7,
@@ -1499,7 +1585,8 @@
   "p_3way": 0.04424769715073105,
   "p_stage1": 0.04424769715073105,
   "p_unshaded": 0.038851833734653084,
-  "settle_share": 0.219
+  "settle_share": 0.219,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1516,7 +1603,8 @@
   "p_3way": 0.017075498616347013,
   "p_stage1": 0.017075498616347013,
   "p_unshaded": 0.019136886589742212,
-  "settle_share": 0.36
+  "settle_share": 0.36,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1533,7 +1621,8 @@
   "p_3way": 0.04785614510414114,
   "p_stage1": 0.04785614510414114,
   "p_unshaded": 0.05985744632770841,
-  "settle_share": 0.635
+  "settle_share": 0.635,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1550,7 +1639,8 @@
   "p_3way": 0.11236456069602774,
   "p_stage1": 0.11236456069602774,
   "p_unshaded": 0.12783121741163259,
-  "settle_share": 0.358
+  "settle_share": 0.358,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1567,7 +1657,8 @@
   "p_3way": 0.18192134157783724,
   "p_stage1": 0.18192134157783724,
   "p_unshaded": 0.16727086403304336,
-  "settle_share": 0.457
+  "settle_share": 0.457,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1584,7 +1675,8 @@
   "p_3way": 0.07110099426673173,
   "p_stage1": 0.07110099426673173,
   "p_unshaded": 0.07778113634210736,
-  "settle_share": 0.139
+  "settle_share": 0.139,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1601,7 +1693,8 @@
   "p_3way": 0.08287118831194044,
   "p_stage1": 0.08287118831194044,
   "p_unshaded": 0.0773507189591669,
-  "settle_share": 0.411
+  "settle_share": 0.411,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1618,7 +1711,8 @@
   "p_3way": 0.021785523921072053,
   "p_stage1": 0.021785523921072053,
   "p_unshaded": 0.019028177177983364,
-  "settle_share": 0.403
+  "settle_share": 0.403,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1636,7 +1730,8 @@
   "p_stage1": 0.2854674561919626,
   "p_unshaded": 0.2755887142304761,
   "settle_share": 1.0,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1654,7 +1749,8 @@
   "p_stage1": 0.0347863066271631,
   "p_unshaded": 0.03278592055835687,
   "settle_share": 0.946,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1672,7 +1768,8 @@
   "p_stage1": 0.07692411091399742,
   "p_unshaded": 0.07193040409203012,
   "settle_share": 0.683,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 8,
@@ -1689,7 +1786,8 @@
   "p_3way": 0.06784687377277965,
   "p_stage1": 0.06784687377277965,
   "p_unshaded": 0.0714385142777526,
-  "settle_share": 0.183
+  "settle_share": 0.183,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1698,7 +1796,7 @@
   "horse_id": "2021_shalaa_crystal-diamonds",
   "barrier": 1,
   "jockey": "Jack Hill",
-  "p": 0.1183174685947074,
+  "p": 0.11831746859470738,
   "solid": true,
   "p_trees": 0.1020557715885092,
   "p_net": 0.09061172019141434,
@@ -1706,7 +1804,8 @@
   "p_3way": 0.09862502475837094,
   "p_stage1": 0.09862502475837094,
   "p_unshaded": 0.11205464541655288,
-  "settle_share": 0.495
+  "settle_share": 0.495,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1715,7 +1814,7 @@
   "horse_id": "2020_russian-revolution_spanish-lake",
   "barrier": 2,
   "jockey": "Billy Egan",
-  "p": 0.11836819246023464,
+  "p": 0.11836819246023461,
   "solid": true,
   "p_trees": 0.14250546528488978,
   "p_net": 0.11947712234205674,
@@ -1724,7 +1823,8 @@
   "p_stage1": 0.13629106293369359,
   "p_unshaded": 0.13188551099767684,
   "settle_share": 0.699,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1733,7 +1833,7 @@
   "horse_id": "2019_choisir_macattack",
   "barrier": 3,
   "jockey": "Cian Macredmond",
-  "p": 0.04654318057480409,
+  "p": 0.04654318057480408,
   "solid": true,
   "p_trees": 0.0442621991010784,
   "p_net": 0.049544539275594796,
@@ -1741,7 +1841,8 @@
   "p_3way": 0.042937345050631216,
   "p_stage1": 0.042937345050631216,
   "p_unshaded": 0.04407954005281651,
-  "settle_share": 0.309
+  "settle_share": 0.309,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1750,7 +1851,7 @@
   "horse_id": "2019_written-tycoon_keena",
   "barrier": 5,
   "jockey": "Luke Currie",
-  "p": 0.10077768452969421,
+  "p": 0.10077768452969418,
   "solid": true,
   "p_trees": 0.10828262522194054,
   "p_net": 0.08780900464388854,
@@ -1758,7 +1859,8 @@
   "p_3way": 0.10219618931636462,
   "p_stage1": 0.10219618931636462,
   "p_unshaded": 0.09544328356583226,
-  "settle_share": 0.606
+  "settle_share": 0.606,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1767,7 +1869,7 @@
   "horse_id": "2018_casino-prince_bells-of-troy",
   "barrier": 6,
   "jockey": "Eoin Walsh",
-  "p": 0.008553972899821715,
+  "p": 0.008553972899821714,
   "solid": true,
   "p_trees": 0.01100693958646968,
   "p_net": 0.008190260190394823,
@@ -1776,7 +1878,8 @@
   "p_stage1": 0.010549301077432946,
   "p_unshaded": 0.009530812826530764,
   "settle_share": 0.915,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": true
  },
  {
   "race": 9,
@@ -1785,7 +1888,7 @@
   "horse_id": "2021_too-darn-hot_collection-privee",
   "barrier": 7,
   "jockey": "Declan Bates",
-  "p": 0.11095995078811417,
+  "p": 0.11095995078811415,
   "solid": true,
   "p_trees": 0.09101711478282033,
   "p_net": 0.10687615133421592,
@@ -1793,7 +1896,8 @@
   "p_3way": 0.09959679935560482,
   "p_stage1": 0.09959679935560482,
   "p_unshaded": 0.10508657841211178,
-  "settle_share": 0.501
+  "settle_share": 0.501,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1802,7 +1906,7 @@
   "horse_id": "2022_impending_bernicia",
   "barrier": 8,
   "jockey": "Linda Meech",
-  "p": 0.11770963357161181,
+  "p": 0.11770963357161178,
   "solid": true,
   "p_trees": 0.1332284806320653,
   "p_net": 0.16120516837852905,
@@ -1811,7 +1915,8 @@
   "p_stage1": 0.1430415144583654,
   "p_unshaded": 0.13115174651464426,
   "settle_share": 0.722,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1820,7 +1925,7 @@
   "horse_id": "2020_trust-in-a-gust_downalatte",
   "barrier": 9,
   "jockey": "John Allen",
-  "p": 0.07694880454470944,
+  "p": 0.07694880454470943,
   "solid": true,
   "p_trees": 0.07544720078786166,
   "p_net": 0.07126244888550712,
@@ -1828,7 +1933,8 @@
   "p_3way": 0.07525541124181079,
   "p_stage1": 0.07525541124181079,
   "p_unshaded": 0.07287572250232162,
-  "settle_share": 0.574
+  "settle_share": 0.574,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1837,7 +1943,7 @@
   "horse_id": "2021_puissance-de-lune_celestial-dance",
   "barrier": 11,
   "jockey": "Will Gordon",
-  "p": 0.10965692582152266,
+  "p": 0.10965692582152263,
   "solid": true,
   "p_trees": 0.10428283146094819,
   "p_net": 0.10329788797956217,
@@ -1845,7 +1951,8 @@
   "p_3way": 0.10427976708664863,
   "p_stage1": 0.10427976708664863,
   "p_unshaded": 0.10385252563584355,
-  "settle_share": 0.446
+  "settle_share": 0.446,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1854,7 +1961,7 @@
   "horse_id": "2021_proisir_ipanema-girl",
   "barrier": 13,
   "jockey": "Brad Rawiller",
-  "p": 0.07208270416587878,
+  "p": 0.07208270416587877,
   "solid": true,
   "p_trees": 0.07878641132779517,
   "p_net": 0.08706445942447667,
@@ -1863,7 +1970,8 @@
   "p_stage1": 0.08130633447665805,
   "p_unshaded": 0.08031434860513749,
   "settle_share": 0.79,
-  "back_shaded": true
+  "back_shaded": true,
+  "only_ride": false
  },
  {
   "race": 9,
@@ -1872,7 +1980,7 @@
   "horse_id": "2020_sheer-talent_legacy",
   "barrier": 14,
   "jockey": "Teodore Nugent",
-  "p": 0.12008148204890114,
+  "p": 0.12008148204890111,
   "solid": true,
   "p_trees": 0.10912496022562153,
   "p_net": 0.11466123735435978,
@@ -1880,6 +1988,7 @@
   "p_3way": 0.10592125024441894,
   "p_stage1": 0.10592125024441894,
   "p_unshaded": 0.11372528547053178,
-  "settle_share": 0.645
+  "settle_share": 0.645,
+  "only_ride": false
  }
 ]

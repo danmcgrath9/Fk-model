@@ -11,8 +11,11 @@ mj, npz = sys.argv[1:3]
 U = np.load(npz, allow_pickle=True)
 c = {str(x): i for i, x in enumerate(U["cols"])}
 ss = {(str(U["race_id"][U["race_idx"][i]]), str(U["horse_id"][i])): float(U["X"][i, c["raw_settle_share"]]) for i in range(len(U["name"]))}
+orc = c.get("jockeysOnlyRideAtMeeting")
+onr = {(str(U["race_id"][U["race_idx"][i]]), str(U["horse_id"][i])): (orc is not None and float(U["X"][i, orc]) == 1) for i in range(len(U["name"]))}
 rows = json.load(open(mj)); k = 0
 for r in rows:
+    r["only_ride"] = bool(onr.get((r["race_id"], r["horse_id"]), False))   # jockey's only ride at the meeting (stake_rule.py)
     if "p_unshaded" in r:
         continue
     s = ss.get((r["race_id"], r["horse_id"]), float("nan"))

@@ -5,7 +5,7 @@ race with a first-starter at $6 or shorter at the open. Like the race page, no v
 open is 3x our price or more. Stake (4 Oct 2026, t_stakeplan.py): EDGE and value bets take Kelly x75 on a 50/50 blend of our chance and the market's,
 capped at 4 units (average about 2 units); top pick 1 unit.
 Top pick is a tracking plan and stays unless the top pick is a first-starter."""
-import json, re, csv, collections, sys
+import stake_rule, json, re, csv, collections, sys
 norm=lambda s: re.sub(r"[^a-z0-9]","",s.lower())
 # metro 40c+ was tried 7 Oct 2026 and REVERTED the same day (founder): at the open it changed profit by about -$1.8k over
 # both samples; it only helped at BSP, where we do not bet (t_tracks.py).
@@ -39,7 +39,7 @@ for k in sorted(by):
         tags=(["EDGE"] if bet_ok and val>=THR and a else [])+(["value_20c"] if bet_ok and val>=THR else [])+(["top_pick"] if r is top and not isfs(r) else [])
         for t in tags:
             rows.append(dict(race=k,race_id=r["race_id"],horse=r["horse"],plan=t,price=op,price_now=cur,model_price=round(1/pp,2),value=round(val,3),
-                             angles="; ".join(a)+("; EARLY ONLY: bet near the open" if is_early else ""),stake=(round(min(4.0,75*max(0.0,((pp/op)**0.5*op-1)/(op-1))),2) if t in ("EDGE","value_20c") else 1.0),hurdle="yes" if k in hurdle else "no",result="",returned=""))
+                             angles="; ".join(a)+("; EARLY ONLY: bet near the open" if is_early else ""),stake=(stake_rule.stake(pp,op,r.get("only_ride",False),len(rs)) if t in ("EDGE","value_20c") else 1.0),hurdle="yes" if k in hurdle else "no",result="",returned=""))
 with open(out,"w",newline="") as fh:
     w=csv.DictWriter(fh,fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
 for r in rows:

@@ -8,7 +8,7 @@ up, mj, pt, aj, fsj, fuj, out, title, sub = sys.argv[1:10]
 THR = 0.2
 D, nR, U, _ = pdm.combined(day=up); pdm.install(D)
 F, nm = pdm.inputs()
-import stage2
+import stage2, stake_rule
 S_all = np.concatenate([np.load("S_hist.npy"), U["S"]]); SF = U["sec_fields"]
 TR = stage2.trials(D["P"], D["past_fields"], D["race_idx"]); SEC = stage2.sections(S_all, SF, D["P"], D["past_fields"], D["race_idx"], int(D["race_idx"].max()) + 1)
 F = np.hstack([F, TR, SEC]).astype(np.float32); F[~np.isfinite(F)] = np.nan
@@ -96,8 +96,7 @@ for race in sorted(races):
         if blocked: tags.append("<span class='tag no'>no bet</span>")
         else:
             if now and pp * now - 1 >= THR:
-                pbl = (pp / now) ** 0.5                       # chance halfway (geometric) between ours and the market's: Kelly under estimation error
-                stake = min(4.0, 75 * max(0.0, (pbl * now - 1) / (now - 1)))   # Kelly x75 on that blend, capped at 4 units (t_stakeplan.py, 4 Oct 2026)
+                stake = stake_rule.stake(pp, now, r.get("only_ride", False), len(rs))   # stake_rule.py: Kelly x75 on the blend, x2 only ride, x1.5 field<=8, max 5u
                 tags.append(("<span class='tag edge'>EDGE</span>" if a else "<span class='tag val'>value</span>") + f"<span class='tag'>stake {stake:.1f}u = ${100 * stake:,.0f}</span>")
             if early: tags.append("<span class='tag early'>early only</span>")
         th = T[i]; order = np.argsort(th); ups = [(tnames[j], th[j]) for j in order[::-1][:3] if th[j] > 0.08]; dns = [(tnames[j], th[j]) for j in order[:3] if th[j] < -0.08]
