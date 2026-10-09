@@ -56,3 +56,17 @@ while live stakes (bigger on the shorter, higher-edge bets) are square. Our pric
 so we are about 1.3 sd under it: a bad week, not yet a signal. Beat BSP on 14 of 29; Ballarat drifted on 4 of 5 (the
 drifters-lose finding again). Opening = the first Form King snapshot with a market up (Cranbourne: Thursday 9:30am, so
 Sisterly and Art 'n' Soul, not the later Piastri and Small Town Hero). Kyneton's v6 is the race-morning file.
+
+## Every runner against BSP, 5-9 Oct (wk_vs_bsp.py)
+
+| Meeting | Races | Log loss ours | Log loss BSP | Log loss opening | KL(BSP, ours) | Our top pick won | BSP fav won |
+|---|---|---|---|---|---|---|---|
+| Mon 5 Oct Pakenham | 8 | 1.970 | 1.918 | 1.863 (8) | 0.064 | 1/8 | 1/8 |
+| Tue 6 Oct Mildura (G4) | 7 | 1.655 | 1.717 | 1.892 (7) | 0.130 | 1/7 | 3/7 |
+| Wed 7 Oct Geelong (Soft) | 8 | 1.187 | 1.113 | 1.293 (8) | 0.110 | 6/8 | 5/8 |
+| Thu 8 Oct Kyneton (G4) | 8 | 1.844 | 1.516 | 1.115 (2) | 0.144 | 2/8 | 3/8 |
+| Fri 9 Oct Ballarat (G4) | 10 | 1.839 | 1.838 | 1.798 (10) | 0.101 | 3/10 | 4/10 |
+| Fri 9 Oct Cranbourne (G4) | 9 | 1.606 | 1.297 | 1.776 (6) | 0.083 | 3/9 | 5/9 |
+| **Week** | **50** | **1.689** | **1.569** | **1.692** (41; ours on the same races 1.702) | **0.104** | **16/50** | **21/50** |
+
+Backtest holdout KL to BSP for live v6 is 0.0800; this week 0.104. Ours about level with the opening market on the same 41 races (1.702 vs 1.692), BSP clearly best (1.569). 50 races is small (a week's KL swings a lot), but live is further from BSP than the backtest said, consistent with the archive leak test (our post-race copy flatters the backtest).
