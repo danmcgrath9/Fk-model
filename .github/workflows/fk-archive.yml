@@ -76,4 +76,10 @@ jobs:
           cd /tmp/exp && git config user.name "fk archive" && git config user.email "actions@users.noreply.github.com"
           touch "$GITHUB_WORKSPACE/out.md"; cp "$GITHUB_WORKSPACE/out.md" "$NAME" && git add -A && git commit -q -m "$NAME" && git push -q "$REMOTE" experiments
           echo "kept as $NAME"
+          if [ -d "$GITHUB_WORKSPACE/npz_out" ]; then
+            rm -rf /tmp/rp && mkdir /tmp/rp && cd /tmp/rp && git init -q -b archive-replay
+            git config user.name "fk archive" && git config user.email "actions@users.noreply.github.com"
+            cp "$GITHUB_WORKSPACE"/npz_out/*.npz . && cp "$GITHUB_WORKSPACE/out.md" replay.md
+            git add -A && git commit -q -m "archive export ${{ github.run_id }}" && git push -q -f "$REMOTE" archive-replay
+          fi
           test "${{ steps.run.outputs.status }}" = "0"
