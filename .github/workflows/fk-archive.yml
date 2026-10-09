@@ -55,7 +55,7 @@ jobs:
             ls -la archive.zip
             sudo apt-get install -y p7zip-full >/dev/null 2>&1
             7z x -y -p"$ZIPPW" -oarchive archive.zip 2>&1 | tail -5
-            du -sh archive; find archive -maxdepth 3 | head -60
+            du -sh archive; find archive -maxdepth 2 | grep -v "/meetings/" | head -40 || true; echo "meetings: $(ls archive/meetings | wc -l)"
             echo '```'
           } 2>&1 | tee out.md
       - name: Run the script
