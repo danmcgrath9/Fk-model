@@ -537,3 +537,28 @@ Sample: 20-26 Aug 2026, all states, 38 meetings; the 8 VIC meetings (66 races, 6
   field_strength, and the sectional vs-class features.
 - Not yet known: whether the moved values make our historical prices sharper than a pre-race model could have been.
   Next test: price these 66 races from both copies and compare the chance each gave the winner.
+
+## Clean archive vs our copy, priced (9 Oct 2026, t_archive_eval.py, scripts/archive_export.py)
+
+20-26 Aug 2026 VIC, 66 races, 625 runners. Day files built from each copy by the same code (race_bundle +
+export_dataset); a stage-1 tree model trained only on the 3,400 races before 20 Aug prices both.
+
+| | chance given to the winner (mean) | mean log chance on winner |
+|---|---|---|
+| clean archive | 22.8% | -1.785 |
+| our copy | 22.9% | -1.761 |
+| market at BSP | 24.9% | -1.708 |
+
+Our copy rates the winner higher by +0.025 log (62% of races, t = 1.56; losers -0.007). Prices differ between
+copies by 10.4% on average. Opening prices are identical in both copies (100%), so the open we settle at is pre-race.
+
+Betting rules on the 66 races (simplified: no first-up/first-starter blocks), at the same opening price:
+clean copy 106 bets, 20 winners, +43.0% ROI; our copy 109 bets, 23 winners, +62.8%. 93 bets shared; the gap is five
+winners only our copy backed (three at Bendigo 26 Aug, e.g. Tiger Fox clean $10.89 vs ours $7.20) against two only the
+clean copy backed. Too small to measure the leak precisely; the edge holds on clean data. The full 15-month archive
+is the test.
+
+Archive quality (archive_quality.py, all 38 meetings): no past run on/after race day, no flucs after the start, no
+ratings after the start, no par created after the race. 17% of benchmarked past runs not frozen by race time (known,
+flagged by Dave). Missing: Swan Hill 21 Aug (VIC) and Strathalbyn 26 Aug (skipped, never resulted); Kununurra R7 no
+winner/BSP; 15 runners without exp.
