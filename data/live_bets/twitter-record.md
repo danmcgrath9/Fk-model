@@ -27,3 +27,12 @@ Ballarat 9 Oct (tweeted at the 12:30pm prices):
 | 2026-10-09 | Ballarat (G4) | R9 | Aka Daka | $13 | $8.20 | 1u | 2nd (short half head) | | -1 |
 
 Ballarat 9 Oct: 5 tips, 0 winners, 4.0u, -4.0u (placings and SPs to fill from tonight's results). Running total: 12 tips, 1 winner, -5.96u.
+
+Cranbourne 9 Oct night (G4; R3 Epicus cancelled, picnic race):
+
+| Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
+|---|---|---|---|---|---|---|---|---|---|
+| 2026-10-09 | Cranbourne (G4) | R7 | Piastri | $11 | $7.63 | 0.9u | lost (bad ride, no run) | | -0.9 |
+| 2026-10-09 | Cranbourne (G4) | R9 | Small Town Hero | $13 | $9.84 | 0.6u | pending | | |
+
+Running total after Piastri: 13 tips, 1 winner, -6.86u.
