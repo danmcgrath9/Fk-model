@@ -33,6 +33,6 @@ Cranbourne 9 Oct night (G4; R3 Epicus cancelled, picnic race):
 | Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
 |---|---|---|---|---|---|---|---|---|---|
 | 2026-10-09 | Cranbourne (G4) | R7 | Piastri | $11 | $7.63 | 0.9u | lost (bad ride, no run) | | -0.9 |
-| 2026-10-09 | Cranbourne (G4) | R9 | Small Town Hero | $13 | $9.84 | 0.6u | pending | | |
+| 2026-10-09 | Cranbourne (G4) | R9 | Small Town Hero | $13 | $9.84 | 0.6u | lost | | -0.6 |
 
-Running total after Piastri: 13 tips, 1 winner, -6.86u.
+Cranbourne 9 Oct: 2 tips, 0 winners, 1.5u, -1.5u. Running total: 14 tips, 1 winner, -7.46u.
