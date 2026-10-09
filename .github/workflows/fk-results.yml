@@ -15,6 +15,9 @@ on:
       date:
         description: 'race date YYYY-MM-DD (default: yesterday, Melbourne)'
         default: ''
+      min_balance:
+        description: 'override FK_MIN_BALANCE for this run (blank = default)'
+        default: ''
 
 concurrency:
   group: fk-results
@@ -52,6 +55,7 @@ jobs:
         env:
           FK_API_KEY: ${{ steps.key.outputs.key == 'live' && secrets.FK_API_KEY || 'FK-TEST-API-KEY' }}
         run: |
+          [ -n "${{ github.event.inputs.min_balance }}" ] && export FK_MIN_BALANCE="${{ github.event.inputs.min_balance }}"
           DATE_ARG=""
           [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
           python scripts/fetch_results.py --key ${{ steps.key.outputs.key }} --yes $DATE_ARG
