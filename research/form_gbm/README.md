@@ -562,3 +562,20 @@ Archive quality (archive_quality.py, all 38 meetings): no past run on/after race
 ratings after the start, no par created after the race. 17% of benchmarked past runs not frozen by race time (known,
 flagged by Dave). Missing: Swan Hill 21 Aug (VIC) and Strathalbyn 26 Aug (skipped, never resulted); Kununurra R7 no
 winner/BSP; 15 runners without exp.
+
+## Jockeys by price band, 9 Oct 2026 (t_jockeys.py, t_jockeys2.py)
+
+Live-staked bets split by opening price (<$4, $4-8, $8-10, $10+) and jockey quality measured pre-race (Form King 12-month
+win %, our rolling wins-vs-market jockey_ae, apprentice). Only one pattern holds in every band in both samples: bets
+ridden by jockeys in the top third of jockey_ae (cut 1.10) return less than the band average (holdout +35% to +67% vs
++56% to +83%; before +14% to +61% vs +30% to +71%). They are still profitable, so cutting them costs money:
+
+| variant | holdout profit / ROI | before profit / ROI |
+|---|---|---|
+| live | +$150,697 / +69.1% | +$219,900 / +56.8% |
+| skip high-A/E jockeys | +$119,087 / +81.9% | +$159,419 / +67.0% |
+| half stake on them | +$134,892 / +74.2% | +$189,660 / +60.7% |
+| x1.5 on $10+ with a top-third 12m-win% jockey | +$157,411 / +68.7% | +$231,134 / +57.1% |
+
+Not adopted: better ROI only by betting less, and the $10+ top-jockey boost adds a little profit with no ROI gain and
+a deeper drawdown. Other cells (e.g. $4-$8 top jockeys) flip between samples.
