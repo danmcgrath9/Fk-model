@@ -20,19 +20,19 @@ Ballarat 9 Oct (tweeted at the 12:30pm prices):
 
 | Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
 |---|---|---|---|---|---|---|---|---|---|
-| 2026-10-09 | Ballarat (G4) | R5 | Old Time Rock | $17 | $12.61 | 0.5u | lost | | -0.5 |
-| 2026-10-09 | Ballarat (G4) | R6 | Russian Sky | $11 | $7.55 | 1.5u | lost | | -1.5 |
-| 2026-10-09 | Ballarat (G4) | R8 | Chantra | $17 | $11.36 | 0.6u | lost | | -0.6 |
-| 2026-10-09 | Ballarat (G4) | R8 | Mister Martini | $19 | $14.72 | 0.4u | 2nd (nose) | | -0.4 |
-| 2026-10-09 | Ballarat (G4) | R9 | Aka Daka | $13 | $8.20 | 1u | 2nd (short half head) | | -1 |
+| 2026-10-09 | Ballarat (G4) | R5 | Old Time Rock | $17 | $12.61 | 0.5u | 7th | BSP $80 | -0.5 |
+| 2026-10-09 | Ballarat (G4) | R6 | Russian Sky | $11 | $7.55 | 1.5u | 3rd | BSP $14.50 | -1.5 |
+| 2026-10-09 | Ballarat (G4) | R8 | Chantra | $17 | $11.36 | 0.6u | 5th | BSP $16 | -0.6 |
+| 2026-10-09 | Ballarat (G4) | R8 | Mister Martini | $19 | $14.72 | 0.4u | 2nd (nose) | BSP $22 | -0.4 |
+| 2026-10-09 | Ballarat (G4) | R9 | Aka Daka | $13 | $8.20 | 1u | 2nd (short half head) | BSP $18 | -1 |
 
-Ballarat 9 Oct: 5 tips, 0 winners, 4.0u, -4.0u (placings and SPs to fill from tonight's results). Running total: 12 tips, 1 winner, -5.96u.
+Ballarat 9 Oct: 5 tips, 0 winners, 4.0u, -4.0u. Running total: 12 tips, 1 winner, -5.96u.
 
 Cranbourne 9 Oct night (G4; R3 Epicus cancelled, picnic race):
 
 | Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
 |---|---|---|---|---|---|---|---|---|---|
-| 2026-10-09 | Cranbourne (G4) | R7 | Piastri | $11 | $7.63 | 0.9u | lost (bad ride, no run) | | -0.9 |
-| 2026-10-09 | Cranbourne (G4) | R9 | Small Town Hero | $13 | $9.84 | 0.6u | lost | | -0.6 |
+| 2026-10-09 | Cranbourne (G4) | R7 | Piastri | $11 | $7.63 | 0.9u | 5th (bad ride, no run) | SP $9.50 | -0.9 |
+| 2026-10-09 | Cranbourne (G4) | R9 | Small Town Hero | $13 | $9.84 | 0.6u | 4th | SP $16 | -0.6 |
 
 Cranbourne 9 Oct: 2 tips, 0 winners, 1.5u, -1.5u. Running total: 14 tips, 1 winner, -7.46u.
