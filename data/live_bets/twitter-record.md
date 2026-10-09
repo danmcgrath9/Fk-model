@@ -46,3 +46,10 @@ Caulfield 10 Oct (Good 4; tweeted at the Saturday 8:24am prices, the bets taken 
 | 2026-10-10 | Caulfield (G4) | R6 | Grand Larceny | $14 | $10.06 | 0.65u | | | |
 | 2026-10-10 | Caulfield (G4) | R9 | Changing Colours | $8.50 | $6.10 | 1.1u | | | |
 | 2026-10-10 | Caulfield (G4) | R10 | Run Harry Run | $15 | $8.37 | 1.1u | | | |
+
+Caulfield 10 Oct lays (tweeted; lay to win 1u each, liability = price less 1; untested, logged apart from the win tips):
+
+| Date | Meeting | Race | Horse | Tweeted price | Our price | Lay to win | Liability | Result | P/L (u) |
+|---|---|---|---|---|---|---|---|---|---|
+| 2026-10-10 | Caulfield (G4) | R2 | Fiery Fun | $4.40 | $9.31 | 1u | 3.4u | | |
+| 2026-10-10 | Caulfield (G4) | R10 | Enxuto | $7 | $16.40 | 1u | 6u | | |
