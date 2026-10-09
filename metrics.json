@@ -1,0 +1,8 @@
+{
+ "role": "live",
+ "holdout_kl": 0.0822,
+ "races": "3720 2026-10-09",
+ "trained_through": "2026-10-09",
+ "trained_utc": "2026-10-09T22:19Z",
+ "note": "holdout KL is a did-anything-break check, not a comparison with the live model"
+}
