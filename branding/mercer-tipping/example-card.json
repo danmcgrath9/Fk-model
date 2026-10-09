@@ -1,13 +1,67 @@
-{"day": "Friday", "date": "9 October",
+{
+ "day": "Friday",
+ "date": "9 October",
  "meetings": [
-  {"name": "Ballarat", "note": "Good 4", "bets": [
-    {"race": 5, "horse": "Old Time Rock", "price": "$17", "units": "0.5u"},
-    {"race": 6, "horse": "Russian Sky", "price": "$11", "units": "1.5u"},
-    {"race": 8, "horse": "Chantra", "price": "$17", "units": "0.6u"},
-    {"race": 8, "horse": "Mister Martini", "price": "$19", "units": "0.4u"},
-    {"race": 9, "horse": "Aka Daka", "price": "$13", "units": "1u"}]},
-  {"name": "Cranbourne", "note": "Tonight", "bets": [
-    {"race": 3, "horse": "Epicus", "price": "$6.50", "units": "2u"},
-    {"race": 6, "horse": "Art 'n' Soul", "price": "$14", "units": "0.4u"},
-    {"race": 7, "horse": "Piastri", "price": "$11", "units": "1.2u"},
-    {"race": 9, "horse": "Small Town Hero", "price": "$13", "units": "0.5u"}]}]}
+  {
+   "name": "Ballarat",
+   "note": "Good 4",
+   "bets": [
+    {
+     "race": 5,
+     "horse": "Old Time Rock",
+     "price": "$17",
+     "units": "0.5u",
+     "time": "3:00PM"
+    },
+    {
+     "race": 6,
+     "horse": "Russian Sky",
+     "price": "$11",
+     "units": "1.5u",
+     "time": "3:30PM"
+    },
+    {
+     "race": 8,
+     "horse": "Chantra",
+     "price": "$17",
+     "units": "0.6u",
+     "time": "4:30PM"
+    },
+    {
+     "race": 8,
+     "horse": "Mister Martini",
+     "price": "$19",
+     "units": "0.4u",
+     "time": "4:30PM"
+    },
+    {
+     "race": 9,
+     "horse": "Aka Daka",
+     "price": "$13",
+     "units": "1u",
+     "time": "5:00PM"
+    }
+   ]
+  },
+  {
+   "name": "Cranbourne",
+   "note": "Tonight \u00b7 Good 4",
+   "bets": [
+    {
+     "race": 7,
+     "horse": "Piastri",
+     "price": "$11",
+     "units": "0.9u",
+     "time": "8:45PM"
+    },
+    {
+     "race": 9,
+     "horse": "Small Town Hero",
+     "price": "$13",
+     "units": "0.6u",
+     "time": "9:45PM"
+    }
+   ]
+  }
+ ]
+}
