@@ -47,16 +47,22 @@ jobs:
         env:
           ZIPPW: ${{ github.event.inputs.password }}
         run: |
-          gdown --id "${{ github.event.inputs.drive_id }}" -O archive.zip
-          ls -la archive.zip
-          sudo apt-get install -y p7zip-full >/dev/null
-          7z x -p"$ZIPPW" -oarchive archive.zip >/dev/null
-          du -sh archive; find archive -maxdepth 3 | head -50
+          # every line of this step goes into out.md too, so a failure is readable from the experiments branch
+          set -o pipefail
+          {
+            echo "## Download and unzip"; echo '```'
+            gdown "https://drive.google.com/uc?id=${{ github.event.inputs.drive_id }}" -O archive.zip 2>&1 | tail -5
+            ls -la archive.zip
+            sudo apt-get install -y p7zip-full >/dev/null 2>&1
+            7z x -y -p"$ZIPPW" -oarchive archive.zip 2>&1 | tail -5
+            du -sh archive; find archive -maxdepth 3 | head -60
+            echo '```'
+          } 2>&1 | tee out.md
       - name: Run the script
         id: run
         run: |
           set +e
-          python "scripts/${{ github.event.inputs.script }}" archive ${{ github.event.inputs.args }} > out.md 2>&1
+          python "scripts/${{ github.event.inputs.script }}" archive ${{ github.event.inputs.args }} >> out.md 2>&1
           echo "status=$?" >> "$GITHUB_OUTPUT"
           cat out.md | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Keep the output
@@ -68,6 +74,6 @@ jobs:
           REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           rm -rf /tmp/exp && { git clone -q --depth 1 --branch experiments "$REMOTE" /tmp/exp 2>/dev/null || { mkdir /tmp/exp && cd /tmp/exp && git init -q -b experiments; }; }
           cd /tmp/exp && git config user.name "fk archive" && git config user.email "actions@users.noreply.github.com"
-          cp "$GITHUB_WORKSPACE/out.md" "$NAME" && git add -A && git commit -q -m "$NAME" && git push -q "$REMOTE" experiments
+          touch "$GITHUB_WORKSPACE/out.md"; cp "$GITHUB_WORKSPACE/out.md" "$NAME" && git add -A && git commit -q -m "$NAME" && git push -q "$REMOTE" experiments
           echo "kept as $NAME"
           test "${{ steps.run.outputs.status }}" = "0"
