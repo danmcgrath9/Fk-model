@@ -23,7 +23,7 @@ Ballarat 9 Oct (tweeted at the 12:30pm prices):
 | 2026-10-09 | Ballarat (G4) | R5 | Old Time Rock | $17 | $12.61 | 0.5u | lost | | -0.5 |
 | 2026-10-09 | Ballarat (G4) | R6 | Russian Sky | $11 | $7.55 | 1.5u | lost | | -1.5 |
 | 2026-10-09 | Ballarat (G4) | R8 | Chantra | $17 | $11.36 | 0.6u | lost | | -0.6 |
-| 2026-10-09 | Ballarat (G4) | R8 | Mister Martini | $19 | $14.72 | 0.4u | lost | | -0.4 |
-| 2026-10-09 | Ballarat (G4) | R9 | Aka Daka | $13 | $8.20 | 1u | lost | | -1 |
+| 2026-10-09 | Ballarat (G4) | R8 | Mister Martini | $19 | $14.72 | 0.4u | 2nd (nose) | | -0.4 |
+| 2026-10-09 | Ballarat (G4) | R9 | Aka Daka | $13 | $8.20 | 1u | 2nd (short half head) | | -1 |
 
 Ballarat 9 Oct: 5 tips, 0 winners, 4.0u, -4.0u (placings and SPs to fill from tonight's results). Running total: 12 tips, 1 winner, -5.96u.
