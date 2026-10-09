@@ -1,0 +1,116 @@
+# Caulfield Sat 10 Oct: Form King best price at the Friday 9:51pm pull, both columns; fifth field Form King's average opening price. Scratched runners and emergencies not gaining a start as SCR. Priced on Good 4.
+1, Regal Lion, 35.00, 35.00, fk_open 34.00
+1, Korobeiniki, 126.00, 126.00, fk_open 101.00
+1, Charisse, 81.00, 81.00, fk_open 81.00
+1, Foujita San, 67.00, 67.00, fk_open 61.00
+1, Bring Forth, 26.00, 26.00, fk_open 31.00
+1, Ichnusa, 7.50, 7.50, fk_open 9.50
+1, Just Desserts, 5.50, 5.50, fk_open 6.50
+1, Classic Gem, 14.00, 14.00, fk_open 7.50
+1, Emperor Tzu, 9.50, 9.50, fk_open 8.50
+1, In'kantosstar, 4.40, 4.40, fk_open 5.50
+1, Veyepee, 3.00, 3.00, fk_open 2.40
+2, Gas Station Rose, 9.00, 9.00, fk_open 17.00
+2, Roseatic, 8.00, 8.00, fk_open 15.00
+2, Jacaranda, 9.00, 9.00, fk_open 7.00
+2, Superbec, 13.00, 13.00, fk_open 17.00
+2, Sequinned, 3.20, 3.20, fk_open 3.15
+2, Fiery Fun, 4.20, 4.20, fk_open 6.00
+2, Almost An Angel, 51.00, 51.00, fk_open 41.00
+2, Moana Spirit, 8.00, 8.00, fk_open 5.50
+2, Verzain, 13.00, 13.00, fk_open 11.00
+3, Tarvue, 151.00, 151.00, fk_open 96.00
+3, Perfect Ten, 10.00, 10.00, fk_open 15.00
+3, Private Legacy, 17.00, 17.00, fk_open 15.00
+3, Jenni's Meadow, 31.00, 31.00, fk_open 21.00
+3, On Display, 4.40, 4.40, fk_open 4.40
+3, Astral Flame, 10.00, 10.00, fk_open 10.33
+3, Sneaky Sunrise, 26.00, 26.00, fk_open 18.00
+3, Surfin' Bird, 3.80, 3.80, fk_open 3.65
+3, All Business, 71.00, 71.00, fk_open 46.00
+3, Moonlight Circus, 13.00, 13.00, fk_open 8.00
+3, Oraqua, 51.00, 51.00, fk_open 32.50
+3, Savitri, 4.40, 4.40, fk_open 4.40
+4, Onesmoothoperator, 34.00, 34.00, fk_open 26.00
+4, Okita Soushi, 151.00, 151.00, fk_open 113.50
+4, Future History, 8.00, 8.00, fk_open 4.60
+4, Knight's Choice, 9.00, 9.00, fk_open 9.17
+4, Soulcombe, 16.00, 16.00, fk_open 16.00
+4, Zakouma, 6.50, 6.50, fk_open 6.00
+4, Campaldino, 34.00, 34.00, fk_open 18.00
+4, Highland Bling, 151.00, 151.00, fk_open 101.00
+4, Machine Gun Gracie, 11.00, 11.00, fk_open 9.75
+4, Sunset Park, 34.00, 34.00, fk_open 18.00
+4, Shockletz, 5.50, 5.50, fk_open 6.00
+4, Suntora, 31.00, 31.00, fk_open 19.33
+4, Pinhole, 3.70, 3.70, fk_open 5.75
+4, Strictly Business, 67.00, 67.00, fk_open 41.00
+5, Merrigold, 31.00, 31.00, fk_open 21.00
+5, Quiseen, 51.00, 51.00, fk_open 31.00
+5, Abounding, 13.00, 13.00, fk_open 21.00
+5, Hearcomesthestar, 31.00, 31.00, fk_open 26.00
+5, Eagle Express, 17.00, 17.00, fk_open 17.00
+5, Guerite, 41.00, 41.00, fk_open 34.00
+5, Bridal Waltz, 2.70, 2.70, fk_open 2.85
+5, Bossy Benita, 31.00, 31.00, fk_open 26.00
+5, Jenni The Fox, 34.00, 34.00, fk_open 26.00
+5, Point Barrow, 2.80, 2.80, fk_open 3.50
+5, Naifah, 11.00, 11.00, fk_open 10.00
+5, Tomato Toastie, 23.00, 23.00, fk_open 13.00
+6, Jigsaw, 2.40, 2.40, fk_open 2.60
+6, Rey Magnerio, 4.60, 4.60, fk_open 4.80
+6, Desert Lightning, 21.00, 21.00, fk_open 18.00
+6, Watchme Win, 27.00, 27.00, fk_open 21.00
+6, Grand Larceny, 14.00, 14.00, fk_open 13.00
+6, Flying For Fun, 5.75, 5.75, fk_open 5.00
+6, Spywire, 19.00, 19.00, fk_open 26.00
+6, Inkaruna, 12.00, 12.00, fk_open 8.00
+6, Streisand, 14.00, 14.00, fk_open 10.50
+7, Torranzino, 201.00, 201.00, fk_open 126.00
+7, Land Legend, 151.00, 151.00, fk_open 81.00
+7, Kingswood, 13.00, 13.00, fk_open 15.00
+7, Treasurethe Moment, 15.00, 15.00, fk_open 15.00
+7, Birdman, 4.40, 4.40, fk_open 3.20
+7, Sheza Alibi, 1.36, 1.36, fk_open 1.35
+8, Blind Raise, 3.70, 3.70, fk_open 3.57
+8, Diameter, 31.00, 31.00, fk_open 16.33
+8, Call Me Coach, 15.00, 15.00, fk_open 23.50
+8, Central Europe, 16.00, 16.00, fk_open 14.00
+8, Seraphox, 91.00, 91.00, fk_open 66.00
+8, Wolf Gap, 19.00, 19.00, fk_open 15.67
+8, Unit Five, 31.00, 31.00, fk_open 21.00
+8, Warwoven, 2.30, 2.30, fk_open 2.15
+8, Somethings Burnin', 31.00, 31.00, fk_open 23.33
+8, Tornado Valley, 41.00, 41.00, fk_open 37.50
+8, Tron Bolt, 9.00, 9.00, fk_open 8.75
+9, Von Hauke, 31.00, 31.00, fk_open 22.00
+9, Hellsing, 151.00, 151.00, fk_open 51.00
+9, Pondalowie, 51.00, 51.00, fk_open 26.00
+9, Changing Colours, 8.50, 8.50, fk_open 7.25
+9, Sun God, 21.00, 21.00, fk_open 17.50
+9, Warnie, 12.00, 12.00, fk_open 11.25
+9, Sabaj, 10.00, 10.00, fk_open 9.75
+9, Evaporate, 9.50, 9.50, fk_open 8.25
+9, Welcometotheshow, 17.00, 17.00, fk_open 26.00
+9, Lady Shenandoah, 5.75, 5.75, fk_open 6.25
+9, Feroce, 21.00, 21.00, fk_open 18.50
+9, Too Darn Discreet, 31.00, 31.00, fk_open 20.00
+9, Regal Award, 5.00, 5.00, fk_open 6.25
+9, Salty Pearl, 13.00, 13.00, fk_open 11.50
+9, Panova, 23.00, 23.00, fk_open 17.50
+10, Bianco Vilano, 101.00, 101.00, fk_open 101.00
+10, Pinstriped, 23.00, 23.00, fk_open 13.00
+10, Holymanz, 27.00, 27.00, fk_open 21.00
+10, Steparty, 6.50, 6.50, fk_open 9.50
+10, Persian Spirit, 6.00, 6.00, fk_open 7.00
+10, Enxuto, 7.50, 7.50, fk_open 8.00
+10, Lord Of Biscay, SCR
+10, Run Harry Run, 15.00, 15.00, fk_open 13.00
+10, Regal Zeus, 12.00, 12.00, fk_open 13.00
+10, Lord Penman, 26.00, 26.00, fk_open 17.00
+10, Wonder Boy, 26.00, 26.00, fk_open 21.00
+10, Recon, 13.00, 13.00, fk_open 13.00
+10, Harry's Yacht, 6.50, 6.50, fk_open 6.00
+10, Athanatos, 27.00, 27.00, fk_open 15.00
+10, Fireball Miss, 21.00, 21.00, fk_open 18.00
+10, Ole Dancer, 23.00, 23.00, fk_open 21.00
