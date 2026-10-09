@@ -1,21 +1,124 @@
-# Ballarat Fri 9 Oct: no market in Form King at the Friday 8:38am pull. Scratched runners and emergencies NOT gaining a start as SCR; everything else unpriced.
+# Ballarat Fri 9 Oct: Form King best price at the Friday 12:30pm pull, both columns; fifth field Form King's average opening price. Scratched runners and emergencies NOT gaining a start as SCR.
+1, The Noble Steed, 126.00, 126.00, fk_open 93.86
+1, Call Me Francis, 19.00, 19.00, fk_open 17.00
+1, Charlie Messy Hair, 10.00, 10.00, fk_open 6.30
+1, Good Lordy Me, 6.75, 6.75, fk_open 5.36
+1, Alltogethernow, 7.50, 7.50, fk_open 15.57
 1, Debbie, SCR
-2, Aitana, SCR
+1, Devoted To You, 11.00, 11.00, fk_open 11.57
+1, Raghnall, 2.60, 2.60, fk_open 3.49
+1, Startin'sumthin', 201.00, 201.00, fk_open 78.14
+1, Ashina, 4.20, 4.20, fk_open 2.63
+1, Aurelio, 41.00, 41.00, fk_open 39.00
+1, Diamond Burglar, 21.00, 21.00, fk_open 29.57
+2, Challenging, 11.00, 11.00, fk_open 6.33
+2, Aitana, 201.00, 201.00, fk_open 99.33
+2, Zovozo, 5.50, 5.50, fk_open 2.60
+2, Top Rich, 6.50, 6.50, fk_open 15.11
+2, Belle Flamme, SCR
+2, Millsy's Award, 12.00, 12.00, fk_open 7.83
+2, Open Fire, 12.00, 12.00, fk_open 15.11
 2, Surhomme, SCR
+2, Whitebait, 7.00, 7.00, fk_open 9.00
+2, Enticement, 21.00, 21.00, fk_open 22.17
+2, Noble Fox, 29.00, 29.00, fk_open 22.17
+2, Endemic, 5.25, 5.25, fk_open 4.80
+2, Mack The Knife, 5.50, 5.50, fk_open 7.83
+3, Kiss Me In Paris, 18.00, 18.00, fk_open 7.00
+3, Girton, 17.00, 17.00, fk_open 13.25
+3, Ruby Guild, 9.50, 9.50, fk_open 6.63
 3, Capital Affair, SCR
+3, Miss Dividend, 3.60, 3.60, fk_open 4.23
+3, Alvear, 151.00, 151.00, fk_open 40.75
 3, White Sapphire, SCR
+3, Explosive Magic, 18.00, 18.00, fk_open 14.50
+3, Duchess Xenia, 11.00, 11.00, fk_open 9.38
+3, Howcani Resistyou, 2.65, 2.65, fk_open 4.03
+3, All Eyes On Erin, 34.00, 34.00, fk_open 15.50
+3, Diamond Heist, 5.50, 5.50, fk_open 6.75
 4, Bianbuttons, SCR
+4, Skjaldmo, 2.20, 2.20, fk_open 3.63
 4, Tickety Boo, SCR
+4, Real Heir, 14.00, 14.00, fk_open 8.33
+4, Eidfjord, 151.00, 151.00, fk_open 20.33
+4, Chasing Atlantis, 201.00, 201.00, fk_open 79.89
 4, Stark Varg, SCR
+4, Quarter Mile, 41.00, 41.00, fk_open 20.33
+4, The Destroyer, 6.00, 6.00, fk_open 3.12
+4, Engulf, 2.70, 2.70, fk_open 5.39
+4, Meritorious, 8.00, 8.00, fk_open 3.03
+5, Old Time Rock, 17.00, 17.00, fk_open 10.25
+5, El Salto, 13.00, 13.00, fk_open 9.75
+5, Wind Dreamer, 9.00, 9.00, fk_open 4.95
+5, Bifrost, 6.00, 6.00, fk_open 9.25
+5, Laura's Gold, 67.00, 67.00, fk_open 60.00
+5, Becauseyou're Mine, 8.50, 8.50, fk_open 10.50
 5, Master Jack, SCR
+5, Les Braves, 3.40, 3.40, fk_open 4.73
+5, Makarim, 19.00, 19.00, fk_open 15.25
+5, Divine Empress, SCR
+5, Koko, 2.90, 2.90, fk_open 2.28
+6, Do It Now, SCR
+6, Swycho, 34.00, 34.00, fk_open 22.00
+6, Our Little Star, 13.00, 13.00, fk_open 26.00
+6, Brave Carol, 21.00, 21.00, fk_open 26.00
+6, Tipsy Gypsy, 8.50, 8.50, fk_open 18.00
 6, Heidi Dancer, SCR
-7, Frosted In Time, SCR
+6, Dirty Diana, 4.40, 4.40, fk_open 6.00
+6, Dihheri, 2.75, 2.75, fk_open 2.15
+6, Russian Sky, 11.00, 11.00, fk_open 5.50
+6, Arabella Star, 3.50, 3.50, fk_open 3.00
+7, Talkin' Italian, 14.00, 14.00, fk_open 11.50
+7, Kokako, SCR
+7, Blue Bandit, 14.00, 14.00, fk_open 17.00
+7, Frosted In Time, 4.40, 4.40, fk_open 4.00
+7, Sea Poem, 10.00, 10.00, fk_open 8.50
+7, Wolf Twenty One, 21.00, 21.00, fk_open 16.00
+7, Silver Bullet, 9.50, 9.50, fk_open 8.00
+7, Pasadena, 6.00, 6.00, fk_open 4.70
+7, Express Class, 5.00, 5.00, fk_open 7.00
+7, Nostra Bella, 23.00, 23.00, fk_open 20.00
 7, Catwalk Icon, SCR
+7, Imperial Award, 7.50, 7.50, fk_open 4.70
+7, Sun Devil, 14.00, 14.00, fk_open 9.50
+8, Our Smokeshow, 51.00, 51.00, fk_open 14.00
+8, Into You, 19.00, 19.00, fk_open 22.00
 8, Break The Taboo, SCR
+8, Chantra, 17.00, 17.00, fk_open 10.50
+8, So Long Ago, 81.00, 81.00, fk_open 48.50
+8, Racey Casey, 7.00, 7.00, fk_open 4.80
+8, Antalian, 13.00, 13.00, fk_open 11.00
+8, She's Stargazing, 41.00, 41.00, fk_open 18.50
+8, Kakkoii, 10.00, 10.00, fk_open 8.50
 8, Tempt The Gods, SCR
+8, Mister Martini, 19.00, 19.00, fk_open 16.50
+8, Russian Duchess, 7.50, 7.50, fk_open 9.50
 8, Shades Of Stardom, SCR
 8, On The Loose, SCR
+8, Strong Tempo, 1.85, 1.85, fk_open 2.33
+9, Bell's Bighouse, 51.00, 51.00, fk_open 21.50
 9, Nightynight, SCR
+9, Surfy Pete, 41.00, 41.00, fk_open 18.00
 9, Ataegina, SCR
+9, Fearless Writer, 10.00, 10.00, fk_open 9.75
+9, Lake Vostok, 5.00, 5.00, fk_open 5.92
+9, Inherently, 8.50, 8.50, fk_open 11.83
+9, Gunado, 9.50, 9.50, fk_open 12.50
 9, En Flique, SCR
 9, Untapped, SCR
+9, His Finest Hour, 10.00, 10.00, fk_open 13.00
+9, Cute Girl, 4.80, 4.80, fk_open 4.35
+9, Big Rooster, 7.50, 7.50, fk_open 4.42
+9, Aka Daka, 13.00, 13.00, fk_open 7.75
+9, Durham, 6.50, 6.50, fk_open 6.92
+10, Queen Of Tuscany, 23.00, 23.00, fk_open 22.50
+10, Aseventy Seven, 34.00, 34.00, fk_open 20.00
+10, Durban Harbour, 19.00, 19.00, fk_open 13.00
+10, Haaracaine, 5.00, 5.00, fk_open 7.00
+10, So Brave, 23.00, 23.00, fk_open 15.00
+10, The Muffin Man, 5.75, 5.75, fk_open 11.50
+10, Soldier Boi, 4.40, 4.40, fk_open 8.25
+10, Captain Redbeard, 3.70, 3.70, fk_open 2.95
+10, Ardashir, 8.00, 8.00, fk_open 4.80
+10, Philharmonic, 41.00, 41.00, fk_open 20.00
+10, Falls Of Acharn, 23.00, 23.00, fk_open 9.50
