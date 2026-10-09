@@ -522,3 +522,18 @@ Proposed: only-ride x2, field<=8 x1.5 (both: x3), no bet over 8u.
 | worst drawdown | $5,282 | $6,954 | $9,772 | $12,271 |
 
 The only-ride AND small-field bets: 35 holdout bets +196% at the open, 65 before +98%.
+
+## Dave's point-in-time sample vs our stored form, 9 Oct 2026 (scripts/archive_compare.py, fk-archive workflow)
+
+Sample: 20-26 Aug 2026, all states, 38 meetings; the 8 VIC meetings (66 races, 625 runners) are all in our DB.
+
+- Our stored race form for these races was pulled AFTER the race: 360 of 625 entries carry past runs dated on/after
+  the race. export_dataset.py drops any past run dated on or after the race (`d >= race_date`), so those runs never
+  reached the model. Not a leak.
+- Values that DID move between our copy and the point-in-time copy, and that the model reads:
+  race lws (63 of 66 races, typical 1.2 points, some 6-8: WNBL R1 76.6 -> 68.3), the expected rating on past runs
+  (63% of runs, ~1.1), past-run sectional benchmarks (60%, ~0.4-0.7), peak12m (57%, ~0.5), race fieldStrength (all),
+  entry exp (all, ~2.4). Features exposed: last_vs_lws, best_vs_lws, e_rat_minus_lws, e_expected_*, peak12_rel,
+  field_strength, and the sectional vs-class features.
+- Not yet known: whether the moved values make our historical prices sharper than a pre-race model could have been.
+  Next test: price these 66 races from both copies and compare the chance each gave the winner.
