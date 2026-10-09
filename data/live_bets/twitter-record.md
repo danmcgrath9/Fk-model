@@ -36,3 +36,13 @@ Cranbourne 9 Oct night (G4; R3 Epicus cancelled, picnic race):
 | 2026-10-09 | Cranbourne (G4) | R9 | Small Town Hero | $13 | $9.84 | 0.6u | 4th | SP $16 | -0.6 |
 
 Cranbourne 9 Oct: 2 tips, 0 winners, 1.5u, -1.5u. Running total: 14 tips, 1 winner, -7.46u.
+
+Caulfield 10 Oct (Good 4; tweeted at the Saturday 8:24am prices, the bets taken Wednesday at opening, held stakes):
+
+| Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
+|---|---|---|---|---|---|---|---|---|---|
+| 2026-10-10 | Caulfield (G4) | R4 | Sunset Park | $34 | $12.24 | 1.4u | | | |
+| 2026-10-10 | Caulfield (G4) | R4 | Campaldino | $31 | $9.23 | 2.0u | | | |
+| 2026-10-10 | Caulfield (G4) | R6 | Grand Larceny | $14 | $10.06 | 1.2u | | | |
+| 2026-10-10 | Caulfield (G4) | R9 | Changing Colours | $8.50 | $6.10 | 2.2u | | | |
+| 2026-10-10 | Caulfield (G4) | R10 | Run Harry Run | $15 | $8.37 | 1.8u | | | |
