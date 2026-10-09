@@ -1,0 +1,118 @@
+# Cranbourne Fri 9 Oct (night): Form King best price at the Friday 8:38am pull, both columns; fifth field Form King's average opening price. Scratched runners and emergencies NOT gaining a start as SCR.
+1, Table Twentyeight, 46.00, 46.00, fk_open 41.00
+1, Jupiter's Girl, 41.00, 41.00, fk_open 31.00
+1, Dempsey, 51.00, 51.00, fk_open 41.00
+1, Handsome Missile, 10.00, 10.00, fk_open 7.00
+1, Numbersneverseen, SCR
+1, Guthrie, 101.00, 101.00, fk_open 101.00
+1, Sirvaldane, 23.00, 23.00, fk_open 21.00
+1, Canticle, 21.00, 21.00, fk_open 13.00
+1, Cab Franc, 3.40, 3.40, fk_open 5.00
+1, Stoneflight, 6.00, 6.00, fk_open 4.60
+1, Pinazaki, SCR
+1, Your It, 13.00, 13.00, fk_open 13.00
+1, Kotahitanga, 1.95, 1.95, fk_open 3.00
+1, Via Theresa, 21.00, 21.00, fk_open 31.00
+2, Sheer Panic, SCR
+2, Somethingintheair, 19.00, 19.00, fk_open 15.00
+2, Silver Lightning, 41.00, 41.00, fk_open 26.00
+2, Big Kapow, 5.50, 5.50, fk_open 4.00
+2, She's Loaded, 8.00, 8.00, fk_open 9.00
+2, Mr Spendedoe, 23.00, 23.00, fk_open 17.00
+2, Expanding Power, 21.00, 21.00, fk_open 14.00
+2, Neville Bartos, 41.00, 41.00, fk_open 41.00
+2, Moz, 16.00, 16.00, fk_open 21.00
+2, Dama Royale, SCR
+2, Flamingo Flyer, 51.00, 51.00, fk_open 31.00
+2, Shields, 21.00, 21.00, fk_open 17.00
+2, La Velocita, 126.00, 126.00, fk_open 61.00
+2, In A Tizzy, 1.40, 1.40, fk_open 2.00
+3, Anything But, SCR
+3, Diamanda, 2.25, 2.25, fk_open 3.80
+3, Lika Mosh, 26.00, 26.00, fk_open 31.00
+3, Disclevaboy, SCR
+3, Midivani, 23.00, 23.00, fk_open 21.00
+3, Qubella, 2.70, 2.70, fk_open 3.00
+3, Italian Informant, 15.00, 15.00, fk_open 14.00
+3, Epicus, 6.50, 6.50, fk_open 2.80
+3, Downtown Man, 46.00, 46.00, fk_open 41.00
+3, Nic Says No, 27.00, 27.00, fk_open 21.00
+3, Rebillyous, 31.00, 31.00, fk_open 14.00
+3, Besson, 26.00, 26.00, fk_open 17.00
+4, Blue And Gold, 41.00, 41.00, fk_open 19.00
+4, Julius Maximus, 9.50, 9.50, fk_open 26.00
+4, Chip In, SCR
+4, See Three Pee Oh, 20.00, 20.00, fk_open 12.00
+4, Boy From Zadar, SCR
+4, Sound System, 34.00, 34.00, fk_open 19.00
+4, Diamonds For Her, 101.00, 101.00, fk_open 81.00
+4, Lavancher, 101.00, 101.00, fk_open 31.00
+4, Youmzaa, 2.40, 2.40, fk_open 4.80
+4, Optimus, 18.00, 18.00, fk_open 8.00
+4, Valaroso, 8.50, 8.50, fk_open 8.00
+4, Ghana's Akan, 1.95, 1.95, fk_open 1.75
+4, Little Gangster, SCR
+4, Tagabella, SCR
+4, Sisterly, 29.00, 29.00, fk_open 15.00
+4, Run Run Win, 34.00, 34.00, fk_open 21.00
+5, Divine Vicky, 29.00, 29.00, fk_open 34.00
+5, Street Conqueror, 10.00, 10.00, fk_open 14.00
+5, Egerton, 6.50, 6.50, fk_open 11.00
+5, Abovethefrostline, 26.00, 26.00, fk_open 14.00
+5, Upinthecity, SCR
+5, Inside Man, SCR
+5, Presscode, 4.60, 4.60, fk_open 3.60
+5, Don't Russia, 7.00, 7.00, fk_open 9.50
+5, Blue Humma, 3.50, 3.50, fk_open 3.10
+5, Pacific Glamour, 26.00, 26.00, fk_open 41.00
+5, Fehmarn, 6.00, 6.00, fk_open 5.00
+5, Le Notre, 10.00, 10.00, fk_open 9.00
+6, Understated, 151.00, 151.00, fk_open 151.00
+6, The Maggstar, 151.00, 151.00, fk_open 151.00
+6, Toronova, 151.00, 151.00, fk_open 126.00
+6, Calypso King, 16.00, 16.00, fk_open 12.00
+6, Art 'n' Soul, 14.00, 14.00, fk_open 18.00
+6, Two Sigma, 21.00, 21.00, fk_open 12.00
+6, Left Hook, 12.00, 12.00, fk_open 8.00
+6, Cushioned, 5.00, 5.00, fk_open 6.50
+6, Savannah Chill, 9.50, 9.50, fk_open 7.00
+6, Island Boy, 6.00, 6.00, fk_open 7.50
+6, Rockzino, 4.40, 4.40, fk_open 5.50
+6, Hydrothermal, 3.60, 3.60, fk_open 2.90
+7, El Rocko, 35.00, 35.00, fk_open 21.00
+7, Celsius Star, 15.00, 15.00, fk_open 26.00
+7, Klabel, 18.00, 18.00, fk_open 18.00
+7, Power Beau, 34.00, 34.00, fk_open 26.00
+7, Piastri, 11.00, 11.00, fk_open 8.50
+7, Scheelite, 29.00, 29.00, fk_open 26.00
+7, Bustling, 2.20, 2.20, fk_open 3.20
+7, Behaviour, 7.00, 7.00, fk_open 5.00
+7, Ndola, 8.00, 8.00, fk_open 8.00
+7, La Fracas, 10.00, 10.00, fk_open 6.50
+7, Miss Playlounge, 51.00, 51.00, fk_open 17.00
+7, Charcoals, 16.00, 16.00, fk_open 13.00
+8, Rick's Cafe, 23.00, 23.00, fk_open 21.00
+8, She's A Con, 19.00, 19.00, fk_open 17.00
+8, New York Scandal, 126.00, 126.00, fk_open 101.00
+8, Pariah Pearl, 6.50, 6.50, fk_open 3.90
+8, Realika, 19.00, 19.00, fk_open 26.00
+8, Sun Gift, 5.50, 5.50, fk_open 4.60
+8, Sapphire Siren, 2.60, 2.60, fk_open 4.80
+8, Eye Tracker, 51.00, 51.00, fk_open 41.00
+8, Cool Star, 71.00, 71.00, fk_open 41.00
+8, Wolfess, 16.00, 16.00, fk_open 17.00
+8, Ocean Bay, 3.80, 3.80, fk_open 3.00
+9, Small Town Hero, 12.00, 12.00, fk_open 10.00
+9, Ti Tree Lad, 126.00, 126.00, fk_open 81.00
+9, Illuminance, 10.00, 10.00, fk_open 10.00
+9, Too Tough, 8.00, 8.00, fk_open 6.00
+9, Cosmic Charger, 21.00, 21.00, fk_open 13.00
+9, Shidan, 11.00, 11.00, fk_open 10.00
+9, Hellberg, SCR
+9, Vaderlee, 15.00, 15.00, fk_open 12.00
+9, Master Of The Air, 8.00, 8.00, fk_open 6.50
+9, Regal Visions, 67.00, 67.00, fk_open 31.00
+9, Chip'n'dale, SCR
+9, Jenni Poppins, 11.00, 11.00, fk_open 8.50
+9, Aradeo, 2.30, 2.30, fk_open 2.40
+9, Knurl, 21.00, 21.00, fk_open 31.00
