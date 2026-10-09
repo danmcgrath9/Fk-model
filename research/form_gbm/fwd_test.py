@@ -5,13 +5,13 @@ python fwd_test.py RESULTS_TXT OUT_MD   (meetings listed in MEETINGS below; RESU
 Stakes: stake_rule.py (live staking, most 5u). Also flat 1u, and closing-line value (opening price / Betfair SP)."""
 import csv, json, re, subprocess, sys, os, collections, tempfile
 L = os.path.join(os.path.dirname(__file__), "../../data/live_bets")
-# (label, meeting id in results, v6/angles prefix, opening prices file)
+# (label, meeting id in results, v6/angles prefix, opening prices file = the first snapshot with a market up)
 MEETINGS = [
     ("Mon 5 Oct Pakenham", "pakenham-synthetic-20261005", "2026-10-05-pakenham", "2026-10-05-pakenham-prices.txt"),
     ("Tue 6 Oct Mildura (G4)", "mildura-20261006", "2026-10-06-mildura-g4", "2026-10-06-mildura-prices-monday.txt"),
     ("Wed 7 Oct Geelong (Soft)", "geelong-20261007", "2026-10-07-geelong-s6", "2026-10-07-geelong-prices-monday.txt"),
     ("Thu 8 Oct Kyneton (G4)", "kyneton-20261008", "2026-10-08-kyneton-g4", "2026-10-08-kyneton-prices-wed.txt"),
-    ("Fri 9 Oct Ballarat (G4)", "ballarat-20261009", "2026-10-09-ballarat-g4", "2026-10-09-ballarat-prices-thu930.txt"),
+    ("Fri 9 Oct Ballarat (G4)", "ballarat-20261009", "2026-10-09-ballarat-g4", "2026-10-09-ballarat-prices.txt"),
     ("Fri 9 Oct Cranbourne (G4)", "cranbourne-20261009", "2026-10-09-cranbourne-g4", "2026-10-09-cranbourne-prices-thu930.txt"),
 ]
 norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower())
