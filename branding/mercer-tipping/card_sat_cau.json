@@ -2,46 +2,11 @@
  "day": "Saturday",
  "date": "10 October",
  "meetings": [
-  {
-   "name": "Caulfield",
-   "note": "Good 4",
+  {"name": "Caulfield", "note": "Good 4",
    "bets": [
-    {
-     "race": 4,
-     "horse": "Sunset Park",
-     "price": "$34",
-     "units": "1u",
-     "time": "2:00PM"
-    },
-    {
-     "race": 4,
-     "horse": "Campaldino",
-     "price": "$31",
-     "units": "1.3u",
-     "time": "2:00PM"
-    },
-    {
-     "race": 6,
-     "horse": "Grand Larceny",
-     "price": "$14",
-     "units": "0.65u",
-     "time": "3:15PM"
-    },
-    {
-     "race": 9,
-     "horse": "Changing Colours",
-     "price": "$8.50",
-     "units": "1.1u",
-     "time": "5:10PM"
-    },
-    {
-     "race": 10,
-     "horse": "Run Harry Run",
-     "price": "$15",
-     "units": "1.1u",
-     "time": "5:45PM"
-    }
-   ]
-  }
+    {"race": 4, "horse": "Campaldino", "price": "$31", "units": "1.4u", "time": "2:00PM"},
+    {"race": 6, "horse": "Grand Larceny", "price": "$15", "units": "0.75u", "time": "3:15PM"},
+    {"race": 9, "horse": "Changing Colours", "price": "$8.50", "units": "1.1u", "time": "5:10PM"}
+   ]}
  ]
 }
