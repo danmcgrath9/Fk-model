@@ -37,14 +37,14 @@ Cranbourne 9 Oct night (G4; R3 Epicus cancelled, picnic race):
 
 Cranbourne 9 Oct: 2 tips, 0 winners, 1.5u, -1.5u. Running total: 14 tips, 1 winner, -7.46u.
 
-Caulfield 10 Oct (Good 4; tweeted at the Saturday 8:24am prices, the bets taken Wednesday at opening; stakes on the current 5u rule at the tweeted price, not the pre-rescale stakes taken):
+Caulfield 10 Oct (Good 4; LOCKED as first tweeted, at the Saturday 8:24am prices, the bets taken Wednesday at opening; stakes on the current 5u rule at the tweeted price, not the pre-rescale stakes taken):
 
 | Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
 |---|---|---|---|---|---|---|---|---|---|
 | 2026-10-10 | Caulfield (G4) | R4 | Sunset Park | $34 | $12.24 | 1u | SCR (refund) | | 0 |
-| 2026-10-10 | Caulfield (G4) | R4 | Campaldino | $31 | $8.46 | 1.4u | | | |
-| 2026-10-10 | Caulfield (G4) | R6 | Grand Larceny | $15 | $10.04 | 0.75u | | | |
-| 2026-10-10 | Caulfield (G4) | R9 | Changing Colours | $8.50 | $6.13 | 1.1u | | | |
+| 2026-10-10 | Caulfield (G4) | R4 | Campaldino | $31 | $9.23 | 1.3u | | | |
+| 2026-10-10 | Caulfield (G4) | R6 | Grand Larceny | $14 | $10.06 | 0.65u | | | |
+| 2026-10-10 | Caulfield (G4) | R9 | Changing Colours | $8.50 | $6.10 | 1.1u | | | |
 | 2026-10-10 | Caulfield (G4) | R10 | Run Harry Run | $15 | $8.37 | 1.1u | SCR (refund) | | 0 |
 | 2026-10-10 | Caulfield (G4) | R4 | Machine Gun Gracie | $11 | $8.53 | 0.65u | | | |
 | 2026-10-10 | Caulfield (G4) | R9 | Salty Pearl | $13 | $10.22 | 0.5u | | | |
