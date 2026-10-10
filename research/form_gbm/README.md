@@ -579,3 +579,12 @@ ridden by jockeys in the top third of jockey_ae (cut 1.10) return less than the 
 
 Not adopted: better ROI only by betting less, and the $10+ top-jockey boost adds a little profit with no ROI gain and
 a deeper drawdown. Other cells (e.g. $4-$8 top jockeys) flip between samples.
+
+## First time up in trip, by last-start sectionals, 10 Oct 2026 (t_stepup.py)
+
+Step-up = today's trip 200m+ past the longest race in the last 10. A/E = winners over expected (BSP, renormalised).
+Overall the market prices step-ups right (3,295 runners, A/E 1.01 vs BSP, 1.02 vs our model). Strong closers (last start's
+last 600 in the top third vs class) step up a little better (1.05 BSP, 1.09 model); weak closers worse (0.85). Strong
+MID-race sections do not carry (0.95). The one cell worth watching: strong closer stepping up at BSP under $8, 480 runners,
+A/E 1.08 vs BSP (+8.5% flat at BSP, about 1 sd: not significant) and 1.20 vs our model (about 2 sd: the model underrates
+them). Not adopted; recheck on the full archive (clean, point-in-time sectionals).
