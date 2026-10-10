@@ -46,6 +46,9 @@ Caulfield 10 Oct (Good 4; tweeted at the Saturday 8:24am prices, the bets taken 
 | 2026-10-10 | Caulfield (G4) | R6 | Grand Larceny | $15 | $10.04 | 0.75u | | | |
 | 2026-10-10 | Caulfield (G4) | R9 | Changing Colours | $8.50 | $6.13 | 1.1u | | | |
 | 2026-10-10 | Caulfield (G4) | R10 | Run Harry Run | $15 | $8.37 | 1.1u | SCR (refund) | | 0 |
+| 2026-10-10 | Caulfield (G4) | R4 | Machine Gun Gracie | $11 | $8.53 | 0.65u | | | |
+| 2026-10-10 | Caulfield (G4) | R9 | Salty Pearl | $13 | $10.22 | 0.5u | | | |
+| 2026-10-10 | Caulfield (G4) | R9 | Feroce | $21 | $13.72 | 0.55u | | | |
 
 Caulfield 10 Oct lays (tweeted; lay to win 1u each, liability = price less 1; untested, logged apart from the win tips):
 
