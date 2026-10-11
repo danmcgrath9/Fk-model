@@ -79,3 +79,10 @@ Backtest holdout KL to BSP for live v6 is 0.0800; this week 0.104. Ours about le
 King's avgOpen, the very first price, much weaker than the best price at the time we actually pull and bet (0.086 here);
 (2) our backtest KL is helped by post-race recalculated fields in our history copy (archive leak test). Small sample
 (47 races), but the gap the backtest promised is not there against the prices we can actually get.
+
+## Against the TRUE open (Form King avgOpen, the first market), same 47 races
+
+KL to BSP: ours 0.100, true open 0.152, the later price we have been betting into 0.086. We beat the true open at all six
+meetings. Flat 1u at the true open with the 20c value rule (price $1.60-$15, open under 3x ours): 69 bets, 15 won,
++28.6u (+41%), against +45.2u expected by our prices. The edge is real against the first market and gone by the time we
+had been betting; the fix is timing: take the price at the open, from a take-at list priced before markets go up.
