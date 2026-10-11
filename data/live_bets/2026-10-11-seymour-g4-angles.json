@@ -1,10 +1,7 @@
 {
-"1|Meet The Prince": [
-"New career-best last start",
-"Third-up, improving"
-],
 "1|Handsome Missile": [
-"Beaten by the pace last start"
+"Beaten by the pace last start",
+"Late 600 beyond the tempo"
 ],
 "1|Mossquillo": [],
 "1|More Foxie": [
@@ -13,15 +10,10 @@
 "1|Dela Bella": [
 "Beaten by the pace last start",
 "Third-up, improving",
+"Late 600 beyond the tempo",
 "Blinkers first time"
 ],
 "1|Dance Day": [],
-"1|Our Inheritance": [],
-"1|Open Fire": [],
-"1|Sentaloa": [
-"Above the field in all three sections",
-"Blinkers first time"
-],
 "1|Riverlea Prince": [
 "Third-up, improving"
 ],
@@ -36,8 +28,15 @@
 "Beaten by the pace last start",
 "Late 600 beyond the tempo"
 ],
+"10|Wetumpka": [
+"Already run to today's class",
+"Late 600 beyond the tempo"
+],
 "10|Eamonn's Memory": [],
-"10|Bullets High": [],
+"10|Camp Cable": [
+"Beaten by the pace last start",
+"Late 600 beyond the tempo"
+],
 "10|Chicago Blues": [],
 "10|Expeetee": [
 "Class drop (rating)"
@@ -54,39 +53,37 @@
 "Beaten by the pace last start",
 "Above the field in all three sections"
 ],
-"10|Escarpa": [],
-"10|Boltsaver": [
-"Class drop (rating)",
-"Late 600 beyond the tempo"
-],
-"10|Regal Tycoon": [
-"Beaten by the pace last start",
-"Third-up, improving"
-],
-"10|Savoyard": [],
-"2|Youmzaa": [
-"Already run to today's class",
-"Class drop (rating)",
+"10|Lofty Thoughts": [
+"Late 600 beyond the tempo",
 "Above the field in all three sections"
 ],
+"10|Highly Intrigued": [
+"Class drop (rating)",
+"Blinkers first time"
+],
+"10|Savoyard": [],
+"2|Novamira": [],
 "2|Chip In": [],
+"2|Big Lap": [
+"Late 600 beyond the tempo"
+],
 "2|Lavancher": [],
 "2|Lomu": [
 "Third-up, improving",
 "Class drop (rating)"
 ],
-"2|Tighten Up": [],
 "2|Carnevale": [],
 "2|Action Point": [],
 "2|Nerves Of Steel": [],
 "2|Tagged": [],
 "2|Shamakita": [],
+"2|Avedis": [],
 "2|Tirate": [],
-"2|Nickibi": [],
 "2|Blue And Gold": [],
 "2|Valaroso": [
 "Already run to today's class",
-"Class drop (rating)"
+"Class drop (rating)",
+"Late 600 beyond the tempo"
 ],
 "3|Mr Spendedoe": [
 "Well backed before a bad last run"
@@ -101,23 +98,21 @@
 "Class drop (rating)",
 "Late 600 beyond the tempo"
 ],
+"3|Ubique": [],
 "3|Sakura Jenni": [],
+"3|Apple Eyes": [],
 "3|Rough Enuff": [
 "Well backed before a bad last run"
 ],
 "3|Shades Of Sheriff": [],
-"3|Plucky Enuff": [],
-"3|Real Comedy": [],
-"3|Lei": [
+"3|Cries And Whispers": [
 "Well backed before a bad last run",
 "Blinkers first time"
 ],
+"3|Plucky Enuff": [],
+"3|Real Comedy": [],
+"3|Pretty Stylish": [],
 "3|Rock About": [],
-"3|Dama Royale": [
-"Beaten by the pace last start",
-"Already run to today's class"
-],
-"3|No Drama": [],
 "4|Razanne": [],
 "4|Port Philip": [],
 "4|Terrortorian": [],
@@ -125,9 +120,11 @@
 "Third-up, improving",
 "Late 600 beyond the tempo"
 ],
+"4|Brassi Road": [],
 "4|Lauding": [],
 "4|Olney": [
-"Third-up, improving"
+"Third-up, improving",
+"Late 600 beyond the tempo"
 ],
 "4|Jean Georges": [
 "Above the field in all three sections"
@@ -137,10 +134,7 @@
 "Beaten by the pace last start",
 "Late 600 beyond the tempo"
 ],
-"4|Slane": [],
-"4|Ahab": [],
 "4|Takemetothemoon": [],
-"4|Earthly Crown": [],
 "4|Placentia Bay": [],
 "5|Pure Grunt": [
 "Third-up, improving"
@@ -159,14 +153,7 @@
 "Beaten by the pace last start",
 "Late 600 beyond the tempo"
 ],
-"5|Ragazzone": [
-"Beaten by the pace last start",
-"Late 600 beyond the tempo"
-],
 "5|Covert Thinking": [
-"Blinkers first time"
-],
-"5|Mehsun": [
 "Blinkers first time"
 ],
 "5|Frostration": [],
@@ -174,6 +161,7 @@
 "Already run to today's class"
 ],
 "5|Yahoo Bar": [],
+"5|Dashing Donkey": [],
 "5|Vellasglory": [],
 "5|Only Opera": [],
 "6|Tookay Pete": [
@@ -185,9 +173,6 @@
 "6|Salamanca Six": [
 "Class drop (rating)",
 "Blinkers first time"
-],
-"6|The Shyster": [
-"Above the field in all three sections"
 ],
 "6|Abovethefrostline": [],
 "6|Bel Lupa": [
@@ -206,11 +191,9 @@
 "Well backed before a bad last run",
 "Class drop (rating)"
 ],
+"6|Ourzacracker": [],
 "6|Cumboogle": [
 "Declining deep in prep"
-],
-"6|Don't Russia": [
-"Class drop (rating)"
 ],
 "6|Ulfberht": [
 "Well backed before a bad last run",
@@ -236,25 +219,22 @@
 "7|Bajaria": [
 "Above the field in all three sections"
 ],
+"7|Russian Choice": [
+"Already run to today's class",
+"Well backed before a bad last run"
+],
 "7|Pretty Penguin": [
 "Third-up, improving",
 "Above the field in all three sections"
 ],
-"7|Coco De Luxe": [
-"Third-up, improving"
-],
-"7|Tapo": [
-"Declining deep in prep"
-],
 "7|Bon Mistress": [
 "Class drop (rating)"
 ],
-"7|Kippis": [
-"Well backed before a bad last run"
-],
+"7|Befuddle": [],
 "7|Tsarine": [],
 "8|Yolo": [
-"New career-best last start"
+"New career-best last start",
+"Late 600 beyond the tempo"
 ],
 "8|Big Day Out": [],
 "8|Interest Point": [],
@@ -262,17 +242,20 @@
 "8|Brenlyn's Legacy": [
 "New career-best last start"
 ],
+"8|Farcited": [
+"Blinkers first time"
+],
 "8|Narcissist": [],
+"8|Just For Show": [],
+"8|Electric Elvis": [
+"Late 600 beyond the tempo"
+],
 "8|La Astro Chat": [
 "Blinkers first time"
 ],
 "8|Jakivy": [
 "Late 600 beyond the tempo"
 ],
-"8|Wingsandpropellers": [
-"Well backed before a bad last run"
-],
-"8|Bacash": [],
 "8|Educated": [],
 "8|Castellar": [
 "Blinkers first time"
@@ -292,6 +275,9 @@
 "9|Wymark": [
 "Already run to today's class"
 ],
+"9|New York Hurricane": [
+"Late 600 beyond the tempo"
+],
 "9|Lim's Saltoro": [
 "Above the field in all three sections",
 "Blinkers first time"
@@ -300,9 +286,8 @@
 "9|Justadeel": [
 "Well backed before a bad last run"
 ],
-"9|Regal Zeus": [],
 "9|Saganti": [],
-"9|Statuario": [],
 "9|Black Storm": [],
-"9|Al Duca": []
+"9|Al Duca": [],
+"9|My Brothers Keeper": []
 }
