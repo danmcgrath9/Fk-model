@@ -15,8 +15,7 @@ name: fk daily pull
 # Variable: FK_LIVE = "true" to switch from the test key to the live key.
 
 on:
-  # PAUSED 4 Oct 2026 until the credit reset on 11 Oct: the floor is down to 100 so the month's last credits can be
-  # spent on meetings asked for by hand, and an automatic pull of every Victorian meeting would spend them all.
+  # Paused 4 to 11 Oct 2026 while the month's last credits went on meetings asked for by hand; back on from the reset.
   schedule:
     - cron: '30 8 * * *'   # 18:30 Melbourne in standard time, 19:30 in daylight saving
     - cron: '0 11 * * *'   # catch-up at 21:00 Melbourne
