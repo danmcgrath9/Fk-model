@@ -22,4 +22,11 @@
 | 8 Oct | Kyneton | Brutalrule | 1.22u | $7.50 | 7th (SP $5) | -1.22 |
 | 8 Oct | Kyneton | Blue Moon Summit | 2.38u | $18.00 | 6th (SP $16) | -2.38 |
 
-Settled: 18 bets, 4 winners, 32.1u staked, +20.46u (+64%). Kyneton R1 Corviglia's deduction is an estimate until the account shows it.
+| 10 Oct | Caulfield | Campaldino | 1.95u | $26.00 | 11th (SP $26) | -1.95 |
+| 10 Oct | Caulfield | Grand Larceny | 1.18u | $16.00 | 4th (SP $16) | -1.18 |
+| 10 Oct | Caulfield | Changing Colours | 2.18u | $8.00 | 2nd (SP $8) | -2.18 |
+| 10 Oct | Caulfield | Sunset Park, Run Harry Run | 3.16u | - | scratched, refunded | 0 |
+
+Caulfield 10 Oct: -5.31u (the Wednesday opening bets; Ballarat and Cranbourne 9 Oct not confirmed as taken, so not in this record).
+
+Settled before Caulfield: 18 bets, 4 winners, 32.1u staked, +20.46u (+64%). Kyneton R1 Corviglia's deduction is an estimate until the account shows it.

@@ -42,17 +42,19 @@ Caulfield 10 Oct (Good 4; LOCKED as first tweeted, at the Saturday 8:24am prices
 | Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
 |---|---|---|---|---|---|---|---|---|---|
 | 2026-10-10 | Caulfield (G4) | R4 | Sunset Park | $34 | $12.24 | 1u | SCR (refund) | | 0 |
-| 2026-10-10 | Caulfield (G4) | R4 | Campaldino | $31 | $9.23 | 1.3u | | | |
-| 2026-10-10 | Caulfield (G4) | R6 | Grand Larceny | $14 | $10.06 | 0.65u | | | |
-| 2026-10-10 | Caulfield (G4) | R9 | Changing Colours | $8.50 | $6.10 | 1.1u | | | |
+| 2026-10-10 | Caulfield (G4) | R4 | Campaldino | $31 | $9.23 | 1.3u | 11th | SP $26 | -1.3 |
+| 2026-10-10 | Caulfield (G4) | R6 | Grand Larceny | $14 | $10.06 | 0.65u | 4th | SP $16 | -0.65 |
+| 2026-10-10 | Caulfield (G4) | R9 | Changing Colours | $8.50 | $6.10 | 1.1u | 2nd | SP $8 | -1.1 |
 | 2026-10-10 | Caulfield (G4) | R10 | Run Harry Run | $15 | $8.37 | 1.1u | SCR (refund) | | 0 |
-| 2026-10-10 | Caulfield (G4) | R4 | Machine Gun Gracie | $11 | $8.53 | 0.65u | | | |
-| 2026-10-10 | Caulfield (G4) | R9 | Salty Pearl | $13 | $10.22 | 0.5u | | | |
-| 2026-10-10 | Caulfield (G4) | R9 | Feroce | $21 | $13.72 | 0.55u | | | |
+| 2026-10-10 | Caulfield (G4) | R4 | Machine Gun Gracie | $11 | $8.53 | 0.65u | 10th | SP $13 | -0.65 |
+| 2026-10-10 | Caulfield (G4) | R9 | Salty Pearl | $13 | $10.22 | 0.5u | 6th | SP $10 | -0.5 |
+| 2026-10-10 | Caulfield (G4) | R9 | Feroce | $21 | $13.72 | 0.55u | 13th | SP $19 | -0.55 |
 
 Caulfield 10 Oct lays (tweeted; lay to win 1u each, liability = price less 1; untested, logged apart from the win tips):
 
 | Date | Meeting | Race | Horse | Tweeted price | Our price | Lay to win | Liability | Result | P/L (u) |
 |---|---|---|---|---|---|---|---|---|---|
-| 2026-10-10 | Caulfield (G4) | R2 | Fiery Fun | $4.40 | $9.31 | 1u | 3.4u | | |
-| 2026-10-10 | Caulfield (G4) | R10 | Enxuto | $7 | $16.40 | 1u | 6u | | |
+| 2026-10-10 | Caulfield (G4) | R2 | Fiery Fun | $4.40 | $9.31 | 1u | 3.4u | 5th (lay won) | +1 |
+| 2026-10-10 | Caulfield (G4) | R10 | Enxuto | $7 | $16.40 | 1u | 6u | 6th (lay won) | +1 |
+
+Caulfield 10 Oct: win tips 6 settled (2 scratched, refunded), 0 winners, 4.75u, -4.75u (Changing Colours 2nd); lays 2 from 2, +2u. Day -2.75u. Running total (win tips): 20 settled, 1 winner, -12.21u; lays +2u.
