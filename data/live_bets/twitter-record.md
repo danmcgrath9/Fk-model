@@ -58,3 +58,13 @@ Caulfield 10 Oct lays (tweeted; lay to win 1u each, liability = price less 1; un
 | 2026-10-10 | Caulfield (G4) | R10 | Enxuto | $7 | $16.40 | 1u | 6u | 6th (lay won) | +1 |
 
 Caulfield 10 Oct: win tips 6 settled (2 scratched, refunded), 0 winners, 4.75u, -4.75u (Changing Colours 2nd); lays 2 from 2, +2u. Day -2.75u. Running total (win tips): 20 settled, 1 winner, -12.21u; lays +2u.
+
+Seymour 11 Oct (Good 4; tweeted at the Sunday 12:20pm prices; Kippis and Wingsandpropellers scratched before posting):
+
+| Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
+|---|---|---|---|---|---|---|---|---|---|
+| 2026-10-11 | Seymour (G4) | R1 | More Foxie | $4 | $2.81 | 2.5u | | | |
+| 2026-10-11 | Seymour (G4) | R4 | Olney | $18 | $13.17 | 0.5u | | | |
+| 2026-10-11 | Seymour (G4) | R6 | Bel Lupa | $6 | $4.75 | 1.2u | | | |
+| 2026-10-11 | Seymour (G4) | R6 | Ulfberht | $17 | $8.21 | 1.3u | | | |
+| 2026-10-11 | Seymour (G4) | R10 | Chicago Blues | $21 | $7.55 | 1.6u | | | |

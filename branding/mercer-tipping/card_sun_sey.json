@@ -1,0 +1,14 @@
+{
+ "day": "Sunday",
+ "date": "11 October",
+ "meetings": [
+  {"name": "Seymour", "note": "Good 4",
+   "bets": [
+    {"race": 1, "horse": "More Foxie", "price": "$4", "units": "2.5u", "time": "12:30PM"},
+    {"race": 4, "horse": "Olney", "price": "$18", "units": "0.5u", "time": "2:00PM"},
+    {"race": 6, "horse": "Bel Lupa", "price": "$6", "units": "1.2u", "time": "3:10PM"},
+    {"race": 6, "horse": "Ulfberht", "price": "$17", "units": "1.3u", "time": "3:10PM"},
+    {"race": 10, "horse": "Chicago Blues", "price": "$21", "units": "1.6u", "time": "5:25PM"}
+   ]}
+ ]
+}
