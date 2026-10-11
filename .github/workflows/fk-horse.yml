@@ -30,7 +30,7 @@ jobs:
       PYTHONUNBUFFERED: '1'
       DATABASE_URL: ${{ secrets.FK_DATABASE_URL }}
       FK_MAX_CREDITS_PER_RUN: ${{ vars.FK_MAX_CREDITS_PER_RUN || '600' }}
-      FK_MIN_BALANCE: ${{ vars.FK_MIN_BALANCE || '100' }}
+      FK_MIN_BALANCE: ${{ vars.FK_MIN_BALANCE || '1000' }}
       FK_API_KEY: ${{ secrets.FK_API_KEY }}
     steps:
       - uses: actions/checkout@v4

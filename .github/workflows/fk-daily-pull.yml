@@ -6,7 +6,7 @@ name: fk daily pull
 # Safety, in order:
 #   * runs on the FREE test key until the repository variable FK_LIVE is set to "true";
 #   * on the live key the per-run credit cap (FK_MAX_CREDITS_PER_RUN, 600) and the
-#     balance floor (FK_MIN_BALANCE, 100 until 11 Oct 2026, then back to 1000) stop a run before its first paid call;
+#     balance floor (FK_MIN_BALANCE, default 1000) stop a run before its first paid call;
 #   * the credit ledger lives in the fk-model Supabase project, so it survives the runner.
 #
 # Secrets (repo Settings > Secrets and variables > Actions), all for the fk-model
@@ -17,10 +17,9 @@ name: fk daily pull
 on:
   # PAUSED 4 Oct 2026 until the credit reset on 11 Oct: the floor is down to 100 so the month's last credits can be
   # spent on meetings asked for by hand, and an automatic pull of every Victorian meeting would spend them all.
-  # On 11 Oct restore both lines below and the FK_MIN_BALANCE default of 1000 in every workflow.
-  # schedule:
-  #   - cron: '30 8 * * *'   # 18:30 Melbourne in standard time, 19:30 in daylight saving
-  #   - cron: '0 11 * * *'   # catch-up at 21:00 Melbourne
+  schedule:
+    - cron: '30 8 * * *'   # 18:30 Melbourne in standard time, 19:30 in daylight saving
+    - cron: '0 11 * * *'   # catch-up at 21:00 Melbourne
   workflow_dispatch:
     inputs:
       key:
@@ -82,7 +81,7 @@ jobs:
       SUPABASE_URL: ${{ secrets.FK_SUPABASE_URL }}
       SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.FK_SUPABASE_SERVICE_ROLE_KEY }}
       FK_MAX_CREDITS_PER_RUN: ${{ github.event.inputs.max_credits || vars.FK_MAX_CREDITS_PER_RUN || '600' }}
-      FK_MIN_BALANCE: ${{ github.event.inputs.min_balance || vars.FK_MIN_BALANCE || '100' }}
+      FK_MIN_BALANCE: ${{ github.event.inputs.min_balance || vars.FK_MIN_BALANCE || '1000' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
