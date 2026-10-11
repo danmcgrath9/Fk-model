@@ -70,3 +70,12 @@ Sisterly and Art 'n' Soul, not the later Piastri and Small Town Hero). Kyneton's
 | **Week** | **50** | **1.689** | **1.569** | **1.692** (41; ours on the same races 1.702) | **0.104** | **16/50** | **21/50** |
 
 Backtest holdout KL to BSP for live v6 is 0.0800; this week 0.104. Ours about level with the opening market on the same 41 races (1.702 vs 1.692), BSP clearly best (1.569). 50 races is small (a week's KL swings a lot), but live is further from BSP than the backtest said, consistent with the archive leak test (our post-race copy flatters the backtest).
+
+## Ours vs the price we actually bet into, 5-9 Oct (same KL-to-BSP measure as the backtest)
+
+47 races with a market at the first snapshot: KL to BSP ours 0.100, the market we bet into 0.086 (closer to BSP than us at
+4 of 6 meetings). Log loss on the winner: ours 1.649, that market 1.629, BSP 1.552. The backtest said 0.080 for us against
+0.137 for the opening market, and both sides of that comparison flattered us: (1) the backtest's "opening market" is Form
+King's avgOpen, the very first price, much weaker than the best price at the time we actually pull and bet (0.086 here);
+(2) our backtest KL is helped by post-race recalculated fields in our history copy (archive leak test). Small sample
+(47 races), but the gap the backtest promised is not there against the prices we can actually get.
