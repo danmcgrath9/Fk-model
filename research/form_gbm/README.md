@@ -703,3 +703,15 @@ ALL +28% / +24% (0.69 / 0.75). HOLDS IN BOTH, strongest to weakest:
 INCONSISTENT between samples (not acted on): field size (8 or fewer +18% / +42%), 1801m+ (-3% / +31%), going (the
 holdout is mostly wet), age. Every consistent segment is still positive after deductions, so nothing is cut; the
 deduction is a flat 16c here and really varies by race.
+
+## Do the early bettors miss the sectionals? 13 Oct 2026 (founder: "does the first 24h miss the big mid-race sectionals
+## but the late bettors get it"). All runners in races with every open and BSP (36,087), last start's section vs class
+## benchmark, actual wins against the opening market's chance and BSP's chance (A/E, 1.00 = priced right):
+- LATE section (400 to finish), top 15%: A/E 1.12 vs the open, 1.04 vs BSP. Holds in every open price band ($1-4
+  1.08/0.99, $4-8 1.13/1.07, $8-15 1.18/1.11, $15+ 1.05/1.01) and in both periods (holdout 1.10/1.04, earlier
+  1.12/1.04). The early market underrates last-start closers; the late money fixes about two thirds of it.
+  Bottom-15% closers: 0.88 vs the open, 0.93 vs BSP (overrated early).
+- MID-RACE (800 to 400), top 15%: 0.94 / 0.94, no early-vs-late gap. Big mid-race then finished 5th or worse: 0.80 /
+  0.84, overrated by BOTH markets (the "it ran a big middle section" story is priced in, and then some).
+- EARLY section top 15%: 0.95 / 0.93, slightly overrated by both.
+So the early market misses the closing sectionals, not the mid-race ones.
