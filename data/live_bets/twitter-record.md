@@ -76,7 +76,7 @@ Kilmore 13 Oct (Soft 5; blended price; tweeted Monday evening at the 7:45pm pric
 | Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
 |---|---|---|---|---|---|---|---|---|---|
 | 2026-10-13 | Kilmore (S5) | R7 | Winter Nights | $18 | $12.30 | 0.6u | | | |
-| 2026-10-13 | Kilmore (S5) | R7 | Spirit Angel | $14 | $11.65 | 0.35u | | | |
+| 2026-10-13 | Kilmore (S5) | R7 | Spirit Angel | $14 | $11.65 | 0.35u | not tipped (ran 2nd on the Monday, scratched) | | 0 |
 
 Caulfield 14 Oct (Good 4 list; blended price; tweeted Monday evening at the 7:48pm prices; Lincoln Rocks R6 $16 0.35u is a Soft 5 addition, not tweeted unless the track is called Soft):
 
