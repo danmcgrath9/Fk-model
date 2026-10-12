@@ -1,6 +1,7 @@
 name: fk daily pull
 
-# Pulls tomorrow's Victorian meetings from Form King every evening, builds the form
+# Pulls Victorian meetings from Form King when their fields come out (10:30 Melbourne, two days ahead;
+# Saturday metro three days ahead on the Wednesday), with an evening catch-up for tomorrow, builds the form
 # reports and posts phone links in the run summary. This is the horse model's own repository.
 #
 # Safety, in order:
@@ -17,8 +18,16 @@ name: fk daily pull
 on:
   # Paused 4 to 11 Oct 2026 while the month's last credits went on meetings asked for by hand; back on from the reset.
   schedule:
+    # Fields release (13 Oct 2026, founder): fields are declared 9am but Form King has them about 10, so pull at
+    # 10:30 Melbourne. Non-metro meetings are declared two days out, Wednesday metro on the Monday (also two days),
+    # Saturday metro on the Wednesday (three days). So every day at 10:30 pull the meetings two days ahead, and on a
+    # Wednesday also three days ahead. Two crons because GitHub runs in UTC; the step only acts on the one that lands
+    # at 10am Melbourne, whichever daylight saving says it is.
+    - cron: '30 23 * * *'  # 10:30 Melbourne in daylight saving
+    - cron: '30 0 * * *'   # 10:30 Melbourne in standard time
+    # Evening catch-up for tomorrow: only races not already stored (a fields-release pull is not paid for twice).
     - cron: '30 8 * * *'   # 18:30 Melbourne in standard time, 19:30 in daylight saving
-    - cron: '0 11 * * *'   # catch-up at 21:00 Melbourne
+    - cron: '0 11 * * *'   # 21:00 Melbourne
   workflow_dispatch:
     inputs:
       key:
@@ -131,6 +140,22 @@ jobs:
           [ -n "${{ github.event.inputs.horse }}" ] && DATE_ARG="$DATE_ARG --no-speedmaps --no-profiles --horse \"${{ github.event.inputs.horse }}\""
           [ "${{ github.event.inputs.all_statuses }}" = "yes" ] && DATE_ARG="$DATE_ARG --all-statuses"
           [ "${{ github.event.inputs.force }}" = "yes" ] && DATE_ARG="$DATE_ARG --force"
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            HOUR=$(TZ=Australia/Melbourne date +%H); DOW=$(TZ=Australia/Melbourne date +%u)
+            case "${{ github.event.schedule }}" in
+              '30 23 * * *'|'30 0 * * *')
+                [ "$HOUR" = "10" ] || { echo "fields-release cron at Melbourne hour $HOUR, not 10: the other cron covers today"; exit 0; }
+                DAYS="2"; [ "$DOW" = "3" ] && DAYS="2 3"   # Wednesday: Saturday metro too
+                for N in $DAYS; do
+                  D=$(TZ=Australia/Melbourne date -d "+$N days" +%F)
+                  echo "fields release: pulling $D (meetings at final fields only; races already stored are skipped)"
+                  python scripts/daily_pull.py --key ${{ steps.key.outputs.key }} --yes --date "$D" --skip-held
+                done
+                exit 0 ;;
+              *)
+                DATE_ARG="$DATE_ARG --skip-held" ;;
+            esac
+          fi
           eval python scripts/daily_pull.py --key ${{ steps.key.outputs.key }} --yes $DATE_ARG
 
       - name: Build reports
