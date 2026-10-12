@@ -2,9 +2,13 @@
 
 Kelly x75 on the blend sqrt(ours x market), capped at 4u; x2 when it is the jockey's only ride at the meeting; x1.5
 when the field is 8 or fewer (x3 for both); never over 8u; then everything x5/8, so the biggest bet is 5u and a
-normal capped bet is 2.5u. Backtest (holdout / before): open +69.1% / +56.8%, worst drawdown $4,346 / $7,669 at
+normal capped bet is 2.5u; from 12 Oct, half that at $8 and over, and the price is the market BLEND (blend_open.py). Backtest (holdout / before): open +69.1% / +56.8%, worst drawdown $4,346 / $7,669 at
 $100 a unit, against the 4u plan's +65.7% / +51.9% and $5,282 / $9,772."""
 ONLY_RIDE, SMALL_FIELD, SMALL_FIELD_MAX, CEILING, SCALE = 2.0, 1.5, 8, 8.0, 5 / 8
+# 12 Oct 2026 (founder, on the by-band read in t_blend_open.py): under $8 is the core book (31% strike, +55% at the
+# open, break-even at BSP); $8 and over still pays at the open but wins one in eight to eleven and loses at BSP, so it
+# is kept at HALF stakes rather than dropped ("if it makes money it makes money").
+LONG_PRICE, LONG_FACTOR = 8.0, 0.5
 
 
 def stake(pp: float, price: float, only_ride: bool, field: int) -> float:
@@ -12,4 +16,5 @@ def stake(pp: float, price: float, only_ride: bool, field: int) -> float:
         return 0.0
     base = min(4.0, 75 * max(0.0, ((pp * price) ** 0.5 - 1) / (price - 1)))
     s = base * (ONLY_RIDE if only_ride else 1.0) * (SMALL_FIELD if field <= SMALL_FIELD_MAX else 1.0)
-    return round(min(s, CEILING) * SCALE, 2)
+    s = min(s, CEILING) * (LONG_FACTOR if price >= LONG_PRICE else 1.0)
+    return round(s * SCALE, 2)
