@@ -5,7 +5,8 @@ The page opens with the bets at the prices in the file (and the bets taken, from
 under a race bar that stays at the top while scrolling (8 Oct 2026, founder)."""
 import numpy as np, bench as b, price_day as pdm, lightgbm as lgb, json, sys, re, html
 up, mj, pt, aj, fsj, fuj, out, title, sub = sys.argv[1:10]; taken_md = sys.argv[10] if len(sys.argv) > 10 else ""
-BETS = []   # (race, horse, now, ours, stake, edge, early)
+BETS = []   # (race, horse, now, ours, stake, edge, early, open, tab_open): value at the open AND still takeable now
+OPEN_BETS = []   # (race, horse, fk_open, tab_open, now, ours, stake, edge): value at the opening price, whatever the price did after (the shadow book's bets)
 # metro 40c+ was tried 7 Oct 2026 and REVERTED the same day (founder): at the open it changed profit by about -$1.8k over
 # both samples; it only helped at BSP, where we do not bet (t_tracks.py).
 THR = 0.2
@@ -101,6 +102,10 @@ for race in sorted(races):
         o_ = opn.get(k, now)   # 12 Oct 2026: value judged at the open, and still takeable now (no drift tag: not back-testable)
         early = fuv.startswith("EARLY:"); blocked = (fuv and not early) or isfs or fsb or (early and (now or 0) > 8) or ours > 15 or ours < 1.6 or (o_ and o_ >= 3 * ours)   # bets only at our price $1.60-$15 (floor $2 until 8 Oct 2026, t_under2.py)
         a = ang.get(hk, []); tags = []
+        if k in opn:   # 12 Oct 2026: the bets struck at the opening price, recorded on the sheet whatever the price did after
+            ob = opn[k]; blocked_o = (fuv and not early) or isfs or fsb or (early and ob > 8) or ours > 15 or ours < 1.6 or ob >= 3 * ours
+            if not blocked_o and pp * ob - 1 >= THR:
+                OPEN_BETS.append((race, r["horse"], fko.get(k), tabo.get(k), now, ours, stake_rule.stake(pp, ob, r.get("only_ride", False), len(rs)), bool(a)))
         if blocked: tags.append("<span class='tag no'>no bet</span>")
         else:
             if now and o_ and pp * o_ - 1 >= THR and pp * now - 1 >= THR:
@@ -123,10 +128,10 @@ NAV_CSS = ("<style>.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index
            ".nav a.hb{background:#1b5e20;color:#fff}h2{scroll-margin-top:64px}.bets{border:2px solid #1b5e20;border-radius:8px;padding:12px 14px;margin:0 0 18px}"
            ".bets h2{margin:0 0 8px;border:0;padding:0;font-size:17px}.bets table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}"
            ".bets td,.bets th{padding:6px 6px;border-bottom:1px solid #e3e3e3;text-align:right}.bets td:nth-child(2),.bets th:nth-child(2),.bets td:first-child,.bets th:first-child{text-align:left}"
-           ".bets th{font-size:12px;color:#555;font-weight:600}.tw{overflow-x:auto}.bets .note{font-size:12.5px;color:#555;margin-top:8px}"
+           ".bets th{font-size:12px;color:#555;font-weight:600}.tw{overflow-x:auto}.bets .note{font-size:12.5px;color:#555;margin-top:8px}.bets .gone{font-size:11px;font-weight:700;color:#8a1c1c;text-transform:uppercase;letter-spacing:.04em}"
            "@media(prefers-color-scheme:dark){.nav{background:#121212;border-color:#333}.nav a{background:#2a2a2a;color:#eee}.nav a.hb{background:#2e7d32}"
-           ".bets td,.bets th{border-color:#333}.bets th,.bets .note{color:#aaa}}</style>")
-races_with_bets = {b_[0] for b_ in BETS}
+           ".bets td,.bets th{border-color:#333}.bets th,.bets .note{color:#aaa}.bets .gone{color:#ef9a9a}}</style>")
+races_with_bets = {b_[0] for b_ in BETS} | {b_[0] for b_ in OPEN_BETS}
 HB, EDGE_T, EARLY_T = " class='hb'", " <span class='tag edge'>EDGE</span>", " <span class='tag early'>early only</span>"
 nav = "<nav class='nav'><a href='#bets' class='hb'>Bets</a>" + "".join(f"<a href='#r{rc}'{HB if rc in races_with_bets else ''}>R{rc}</a>" for rc in sorted(races)) + "</nav>"
 top = [NAV_CSS, nav, "<div class='bets' id='bets'>"]
@@ -143,8 +148,17 @@ if taken_md:
                        + "".join("<tr>" + "".join(f"<td>{html.escape(c)}</td>" for c in row) + "</tr>" for row in body) + "</table></div><div style='height:14px'></div>")
     except OSError:
         pass
+if OPEN_BETS:
+    m_ = lambda v: "$%.2f" % v if v else "-"
+    def now_cell(n_, ours_):
+        if not n_: return "no price"
+        return m_(n_) + ("" if n_ >= ours_ * (1 + THR) else " <span class='gone'>gone</span>")
+    top.append(f"<h2>Bets at the opening price ({len(OPEN_BETS)})</h2><div class='tw'><table><tr><th>Race</th><th>Horse</th><th>FK open</th><th>TAB open</th><th>Ours</th><th>Stake</th><th>Now</th></tr>"
+               + "".join(f"<tr><td><a href='#r{rc}'>R{rc}</a></td><td>{html.escape(h)}{EDGE_T if ed else ''}</td><td>{m_(fk_)}</td><td>{m_(tb_)}</td>"
+                         f"<td>${ours_:,.2f}</td><td>{st:.1f}u</td><td>{now_cell(n_, ours_)}</td></tr>" for rc, h, fk_, tb_, n_, ours_, st, ed in OPEN_BETS)
+               + "</table></div><div class='note'>Value at Form King's opening price (the TAB's when Form King has none), staked at the open. This is the shadow book: the bets that were on when the market opened. <b>gone</b> means the price has since come in under the take-at price.</div><div style='height:14px'></div>")
 if BETS:
-    top.append(f"<h2>Bets at these prices ({len(BETS)})</h2><div class='tw'><table><tr><th>Race</th><th>Horse</th><th>FK open</th><th>TAB open</th><th>Now</th><th>Ours</th><th>Stake</th><th>Take at</th></tr>"
+    top.append(f"<h2>Still on at the current price ({len(BETS)})</h2><div class='tw'><table><tr><th>Race</th><th>Horse</th><th>FK open</th><th>TAB open</th><th>Now</th><th>Ours</th><th>Stake</th><th>Take at</th></tr>"
                + "".join(f"<tr><td><a href='#r{rc}'>R{rc}</a></td><td>{html.escape(h)}{EDGE_T if ed else ''}{EARLY_T if ea else ''}</td>"
                          f"<td>{'$%.2f' % op_ if op_ else '-'}</td><td>{'$%.2f' % tb_ if tb_ else '-'}</td><td>${n_:,.2f}</td><td>${o_:,.2f}</td><td>{st:.1f}u</td><td>${o_ * (1 + THR):,.2f}+</td></tr>" for rc, h, n_, o_, st, ed, ea, op_, tb_ in BETS)
                + "</table></div><div class='note'>A bet is judged at Form King's opening price (the TAB's when Form King has none yet) and must still be at or over its take-at price now. Take a bet only at or above its take-at price. Stakes: x2 when it is the jockey's only ride at the meeting, x1.5 in a field of 8 or fewer, most 5u; $100 a unit.</div>")
