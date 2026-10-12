@@ -14,13 +14,16 @@ fs=set(json.load(open(sys.argv[6]))) if len(sys.argv)>6 and sys.argv[6] else set
 _fu=json.load(open(sys.argv[7])) if len(sys.argv)>7 and sys.argv[7] else {}
 fu={k.split('|')[0]+'|'+norm(k.split('|',1)[1]) for k,v in _fu.items() if not v.startswith("EARLY:")}
 early={k.split('|')[0]+'|'+norm(k.split('|',1)[1]) for k,v in _fu.items() if v.startswith("EARLY:")}   # allowed at $8 or shorter at the open; tagged early_only
-M=json.load(open(mj)); ang=json.load(open(aj)); pr={}; scr=set()
+M=json.load(open(mj)); ang=json.load(open(aj)); pr={}; scr=set(); opn={}
 for l in open(pt):
     pa=[x.strip() for x in l.split(",")]
     if len(pa)>=3 and pa[0].isdigit():
         k=(int(pa[0]),norm(pa[1]))
         if pa[2].upper()=="SCR": scr.add(k)
-        else: pr[k]=(float(pa[2]),float(pa[3]) if len(pa)>3 and pa[3] else float(pa[2]))
+        else:
+            pr[k]=(float(pa[2]),float(pa[3]) if len(pa)>3 and pa[3] else float(pa[2]))
+            mo=re.search(r"([\d.]+)\s*$",pa[4]) if len(pa)>4 else None
+            if mo and float(mo.group(1))>1: opn[k]=float(mo.group(1))
 by=collections.defaultdict(list)
 for r in M:
     if (r["race"],norm(r["horse"])) not in scr: by[r["race"]].append(r)
@@ -32,13 +35,18 @@ for k in sorted(by):
     for r in rs:
         key=(k,norm(r["horse"]))
         if key not in pr: continue
-        op,cur=pr[key]; pp=r["p"]/tot; val=pp*op-1; a=ang.get(f"{k}|{r['horse']}",[])
+        op,cur=pr[key]; pp=r["p"]/tot; a=ang.get(f"{k}|{r['horse']}",[])
+        # 12 Oct 2026 (founder): value is judged at the OPENING price (Form King's average open, the prices file's fifth
+        # field), as the +49.5% holdout back-test does, so a horse that only became value by drifting is not a bet; and it
+        # must still be takeable now (current price at or over the take-at). No drift tag: the founder dropped it the same
+        # day because a mid-market drift cannot be back-tested on the holdout (only last week's races carry the path).
+        o_=opn.get(key,op); val=pp*o_-1; still=pp*op-1>=THR
         # same caps as the race page (market_tpl.html): our price under $50 and the open under 3x our price
         hk=f"{k}|{norm(r['horse'])}"; is_early=hk in early
-        bet_ok=not isfs(r) and not fs_backed and hk not in fu and 1.6<=1/pp<=15 and op<3/pp and not (is_early and op>8)   # our price $1.60-$15 (floor $2 until 8 Oct 2026, t_under2.py)
+        bet_ok=not isfs(r) and not fs_backed and hk not in fu and 1.6<=1/pp<=15 and o_<3/pp and not (is_early and op>8) and still   # our price $1.60-$15 (floor $2 until 8 Oct 2026, t_under2.py)
         tags=(["EDGE"] if bet_ok and val>=THR and a else [])+(["value_20c"] if bet_ok and val>=THR else [])+(["top_pick"] if r is top and not isfs(r) else [])
         for t in tags:
-            rows.append(dict(race=k,race_id=r["race_id"],horse=r["horse"],plan=t,price=op,price_now=cur,model_price=round(1/pp,2),value=round(val,3),
+            rows.append(dict(race=k,race_id=r["race_id"],horse=r["horse"],plan=t,price=op,price_now=cur,open=o_,model_price=round(1/pp,2),value=round(val,3),
                              angles="; ".join(a)+("; EARLY ONLY: bet near the open" if is_early else ""),stake=(stake_rule.stake(pp,op,r.get("only_ride",False),len(rs)) if t in ("EDGE","value_20c") else 1.0),hurdle="yes" if k in hurdle else "no",result="",returned=""))
 with open(out,"w",newline="") as fh:
     w=csv.DictWriter(fh,fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
