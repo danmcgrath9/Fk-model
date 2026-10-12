@@ -662,3 +662,10 @@ few for a rule. The live rule already refuses the drift-made bet (value is judge
   24h 0% (10), race day 0 winners from 17. Tiny samples (one $10 winner moves a cell by 40 points); direction agrees with
   the holdout (drift-made value -13% staked on 1,902 bets) and with Law & Peel 2002 (shortening prices profitable only
   when the shortening carries information).
+- REAL DEDUCTIONS, same day (scripts/scratch_opens.py: every resulted VIC race since 1 Jul 2025, 4,013 races, 829
+  scratched runners, 199 with an opening price, i.e. scratched after the market opened). Holdout value-at-open bets
+  re-settled with the deduction a fixed-odds bet actually takes (about 0.95 / the scratched runner's last price, the
+  TAB schedule's shape, summed per race, applied to the winnings): 1,725 bets +49.5% flat / +63.5% staked before,
+  +47.2% / +59.3% after. Only 81 bets (5%) sat in a race with a scratching after the open (average deduction 43c);
+  those 81 go from +26% to -24% flat. Caveat: the extract may not hold every scratched runner (0.2 per race is low),
+  so this is a floor on the effect, not a ceiling. Shadow-book and forward-test settlement to apply it from now.
