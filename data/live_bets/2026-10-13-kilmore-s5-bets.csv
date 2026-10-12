@@ -1,0 +1,11 @@
+race,race_id,horse,plan,price,price_now,model_price,value,angles,stake,hurdle,result,returned
+1,KILM_131026_1,Full Confidence,top_pick,1.65,1.65,2.44,-0.323,,1.0,no,,
+2,KILM_131026_2,Nishioka,top_pick,3.6,3.6,4.94,-0.272,Already run to today's class; Class drop (rating); Late 600 beyond the tempo; EARLY ONLY: bet near the open,1.0,no,,
+3,KILM_131026_3,Sugar Schnapps,top_pick,3.2,3.2,3.03,0.058,Above the field in all three sections,1.0,no,,
+4,KILM_131026_4,Manchego,top_pick,3.2,3.2,2.83,0.129,,1.0,no,,
+5,KILM_131026_5,Give Some Lip,top_pick,2.6,2.6,4.08,-0.363,Beaten by the pace last start; Already run to today's class; Class drop (rating); Late 600 beyond the tempo; Above the field in all three sections,1.0,no,,
+6,KILM_131026_6,Skydream,top_pick,1.9,1.9,1.78,0.066,Already run to today's class; New career-best last start; Class drop (rating),1.0,no,,
+7,KILM_131026_7,Switch Hit,top_pick,2.45,2.45,2.89,-0.154,,1.0,no,,
+7,KILM_131026_7,Winter Nights,EDGE,18.0,18.0,12.3,0.464,Class drop (rating),0.29,no,,
+7,KILM_131026_7,Winter Nights,value_20c,18.0,18.0,12.3,0.464,Class drop (rating),0.29,no,,
+7,KILM_131026_7,Spirit Angel,value_20c,14.0,14.0,11.65,0.202,,0.17,no,,
