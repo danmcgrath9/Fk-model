@@ -634,3 +634,16 @@ The model is less accurate on young horses, and so is the opening price, so the 
   every race's LWS shifted): +/-1.2 points (the typical bug size) moves runners under $15 by 0.1% median, 0.5% at most;
   +/-6 points (the worst seen) by 0.4% median, 1.5% at most. LWS is a race-level figure, so a shift mostly cancels when
   the race is renormalised to 100%. No emergency retrain: the clean export fixes it with the duplicates and ratings.
+
+## When to bet: the timing study, 13 Oct 2026 (founder: "when is the best time to place a bet, when is the last available")
+Two samples. HOLDOUT (1,413 races, open + BSP, blended price): value-at-open bets under the live rules, 1,725 bets,
++50% flat at the open and -11% at BSP; split by what the price did by the jump: firmed 20%+ (1,102 bets) +85% at the
+open, firmed 5-20% +34%, held within 5% -36%, drifted 5-25% -50%, drifted 25%+ -27%. Bets NOT value at the open that
+became value only by drifting (the "it has drifted, now it's value" bet), taken at BSP: 1,902 bets, -16% flat, -13%
+staked. TIMED PATHS (scripts/fluc_timing.py, 82 races 3-11 Oct, 83 value-at-open bets on the live model's own prices):
+markets open a median 66h before the jump; share of value bets still at or over take-at: 54% 20 min after the open
+(nearly half gone in the first 20 minutes, the TAB-first move), 52-55% from 1h to 12h after, 47% at 24h, 26% six hours
+before the jump, 17-25% in the last 3h. Runners that firm 20%+ have done 12% of it 20 min after the open, 42% by 24h
+after, 83% six hours before the jump. Bets still on 12h after the open: not drifted (20) firmed 10%+ by the jump 75%,
+drifted 5%+ (21) firmed 67% and kept drifting 19% (vs 5%): drift raises the risk but most still firm; 21 bets is too
+few for a rule. The live rule already refuses the drift-made bet (value is judged at the open).
