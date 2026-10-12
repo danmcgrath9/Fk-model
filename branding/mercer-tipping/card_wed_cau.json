@@ -1,0 +1,7 @@
+{"day": "Wednesday", "date": "14 October",
+ "meetings": [{"name": "Caulfield", "note": "Good 4",
+   "bets": [
+    {"race": 2, "horse": "Katoto", "price": "$7.50", "units": "1u", "time": "2:15PM"},
+    {"race": 4, "horse": "Beach Pad", "price": "$12", "units": "0.45u", "time": "3:25PM"},
+    {"race": 7, "horse": "Prince Eric", "price": "$13", "units": "0.7u", "time": "5:10PM"},
+    {"race": 8, "horse": "Lawborough", "price": "$13", "units": "0.5u", "time": "5:45PM"}]}]}
