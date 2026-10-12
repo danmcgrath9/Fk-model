@@ -5,9 +5,9 @@ import os, sys, json, collections
 import psycopg
 days = int(sys.argv[1]) if len(sys.argv) > 1 else 14
 with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
-    rows = c.execute("""select (called_at at time zone 'Australia/Melbourne')::date, operation, credits, args
-                        from fk.ledger where key_kind='live' and called_at > now() - (%s || ' days')::interval
-                        order by called_at""", (str(days),)).fetchall()
+    rows = c.execute("""select ((ts::timestamptz) at time zone 'Australia/Melbourne')::date, operation, credits, params
+                        from fk.credit_ledger where key_kind='live' and ts::timestamptz > now() - (%s || ' days')::interval
+                        order by ts""", (str(days),)).fetchall()
 by_day = collections.Counter(); by_meet = collections.defaultdict(collections.Counter); ops = collections.Counter()
 for d, op, cr, args in rows:
     a = args if isinstance(args, dict) else (json.loads(args) if args else {})
