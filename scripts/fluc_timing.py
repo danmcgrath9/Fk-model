@@ -24,7 +24,7 @@ def ms(v):
     except Exception: return None
 AFTER = (0.33, 1, 2, 4, 8, 12, 24); BEFORE = (12, 6, 3, 1, 0.5)
 print("CSV-BEGIN")
-print("race_id,horse_id,n,open_h_before_jump,open," + ",".join(f"a{h}" for h in AFTER) + "," + ",".join(f"b{h}" for h in BEFORE) + ",last")
+print("race_id,horse_id,n,open_h_before_jump,open," + ",".join(f"a{h}" for h in AFTER) + "," + ",".join(f"b{h}" for h in BEFORE) + ",last,finish,bsp")
 n_r = 0
 for r in rows:
     ents = []
@@ -41,5 +41,5 @@ for r in rows:
             c = [p for t, p in fl if t <= cut]; return c[-1] if c else ""
         a = [upto(t0 + h * 3600e3) if t0 + h * 3600e3 < end else "" for h in AFTER]
         b = [upto(end - h * 3600e3) if end - h * 3600e3 >= t0 else "" for h in BEFORE]
-        print(f"{r['race_id']},{F.horse_id(e)},{len(fl)},{(end - t0) / 3600e3:.2f},{fl[0][1]}," + ",".join(map(str, a)) + "," + ",".join(map(str, b)) + f",{fl[-1][1]}")
+        print(f"{r['race_id']},{F.horse_id(e)},{len(fl)},{(end - t0) / 3600e3:.2f},{fl[0][1]}," + ",".join(map(str, a)) + "," + ",".join(map(str, b)) + f",{fl[-1][1]},{(F.result_finish_position(F.entry_result(e) or {}) or '')},{(F.result_betfair_sp(F.entry_result(e) or {}) or '')}")
 print("CSV-END"); print(f"{n_r} races with timed flucs since {since}", file=sys.stderr)
