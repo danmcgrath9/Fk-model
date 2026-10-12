@@ -662,10 +662,20 @@ few for a rule. The live rule already refuses the drift-made bet (value is judge
   24h 0% (10), race day 0 winners from 17. Tiny samples (one $10 winner moves a cell by 40 points); direction agrees with
   the holdout (drift-made value -13% staked on 1,902 bets) and with Law & Peel 2002 (shortening prices profitable only
   when the shortening carries information).
-- REAL DEDUCTIONS, same day (scripts/scratch_opens.py: every resulted VIC race since 1 Jul 2025, 4,013 races, 829
+- WRONG, kept as a record (corrected below): REAL DEDUCTIONS, same day (scripts/scratch_opens.py: every resulted VIC race since 1 Jul 2025, 4,013 races, 829
   scratched runners, 199 with an opening price, i.e. scratched after the market opened). Holdout value-at-open bets
   re-settled with the deduction a fixed-odds bet actually takes (about 0.95 / the scratched runner's last price, the
   TAB schedule's shape, summed per race, applied to the winnings): 1,725 bets +49.5% flat / +63.5% staked before,
   +47.2% / +59.3% after. Only 81 bets (5%) sat in a race with a scratching after the open (average deduction 43c);
   those 81 go from +26% to -24% flat. Caveat: the extract may not hold every scratched runner (0.2 per race is low),
   so this is a floor on the effect, not a ceiling. Shadow-book and forward-test settlement to apply it from now.
+- CORRECTION, same day (founder: "This doesn't sound right at all"). The stored race records hold most scratchings
+  for recent meetings (142 in 48 races) but only 23 of them still carry a price, and older records hold few scratched
+  runners at all, so the +59% above settled almost every bet with no deduction. Measured instead from our own saved
+  price files taken before the scratchings (7 meetings, 63 races, 6-11 Oct): 87 runners priced in the earlier file
+  were scratched later; 50 of 69 value-at-open bets (72%) were in a race with a later scratching; deduction per bet
+  mean 15.9c, median 12c, max 51c (0.95 / the scratched runner's earlier price, summed per race; the earlier files
+  were taken hours after the open, so this misses scratchings in between and is a floor). Holdout value-at-open bets
+  with that deduction on the winnings: none +50% flat / +64% staked; 12c +34% / +47%; 15.9c +29% / +41%; 20c +23%
+  / +36%; 25c +17% / +29%. The open is still profitable after deductions, but about a third less than the backtest
+  said, and a bet placed after the scratchings takes no deduction, which narrows the gap to a later price.
