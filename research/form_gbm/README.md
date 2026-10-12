@@ -679,3 +679,11 @@ few for a rule. The live rule already refuses the drift-made bet (value is judge
   with that deduction on the winnings: none +50% flat / +64% staked; 12c +34% / +47%; 15.9c +29% / +41%; 20c +23%
   / +36%; 25c +17% / +29%. The open is still profitable after deductions, but about a third less than the backtest
   said, and a bet placed after the scratchings takes no deduction, which narrows the gap to a later price.
+- LATE BETS WITH DEDUCTIONS (founder: "is betting 24 hours after the open still profitable, or race morning?"). Timed
+  sample, 74 value-at-open bets with results, deduction per race measured from the saved earlier price files (58 bets)
+  or the 15.9c average: taken at the open (deductions) +20% (74 bets); 24h after the open, still at or over take-at
+  (deductions still apply, scratchings come on race morning) +3% (34 bets), not drifted +5% (24); race morning 6h
+  before the jump (after scratchings, no deduction) -23% (16), not drifted +37% (9); 1h before +17% (14). The 24h bet
+  is about break-even after deductions; race morning is too few bets to call. Bounds from the holdout: the open after
+  a 16c deduction +29% flat, BSP (no deduction) -11% flat. This overturns the earlier "still fine 24h after the open"
+  (that was settled without deductions). The proper answer needs timed prices on a large sample: Dave's export.
