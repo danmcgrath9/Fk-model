@@ -4,14 +4,12 @@ name: fk odds
 # best price, average, opening price and scratchings. For pricing a meeting ahead of race day
 # (e.g. Saturday's metro on Wednesday) without re-pulling the form. Same guards as the pull.
 
-# PRICE PATH (12 Oct 2026): on a schedule, one snapshot of today's VIC meetings every hour from 8am to 9pm
+# PRICE PATH (12 Oct 2026, switched off the same day: not worth the credits while the back-test answers it). When scheduled, one snapshot of today's VIC meetings every hour from 8am to 9pm
 # Melbourne (daylight-saving UTC+11; an hour later in Melbourne terms from April), and tomorrow's at 10am,
 # 1pm, 5pm and 8pm so the true open and the night-before price are on file. Each snapshot is its own row
 # (keyed by Form King's odds timestamp). About 5 credits a meeting a snapshot, roughly 4,000 a month.
 
 on:
-  schedule:
-    - cron: '0 0-10,21-23 * * *'
   workflow_dispatch:
     inputs:
       key:
