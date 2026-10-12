@@ -1,5 +1,19 @@
-{"day": "Tuesday", "date": "13 October",
- "meetings": [{"name": "Kilmore", "note": "Soft 5",
+{
+ "day": "Tuesday",
+ "date": "13 October",
+ "meetings": [
+  {
+   "name": "Kilmore",
+   "note": "Soft 5",
    "bets": [
-    {"race": 7, "horse": "Winter Nights", "price": "$18", "units": "0.6u", "time": "5:00PM"},
-    {"race": 7, "horse": "Spirit Angel", "price": "$14", "units": "0.35u", "time": "5:00PM"}]}]}
+    {
+     "race": 7,
+     "horse": "Winter Nights",
+     "price": "$18",
+     "units": "0.6u",
+     "time": "5:00PM"
+    }
+   ]
+  }
+ ]
+}
