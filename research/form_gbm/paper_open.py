@@ -6,6 +6,7 @@ open is 3x our price or more. Stake (4 Oct 2026, t_stakeplan.py): EDGE and value
 capped at 4 units (average about 2 units); top pick 1 unit.
 Top pick is a tracking plan and stays unless the top pick is a first-starter."""
 import stake_rule, json, re, csv, collections, sys
+from opens import parse_opens, open_used
 norm=lambda s: re.sub(r"[^a-z0-9]","",s.lower())
 # metro 40c+ was tried 7 Oct 2026 and REVERTED the same day (founder): at the open it changed profit by about -$1.8k over
 # both samples; it only helped at BSP, where we do not bet (t_tracks.py).
@@ -14,7 +15,7 @@ fs=set(json.load(open(sys.argv[6]))) if len(sys.argv)>6 and sys.argv[6] else set
 _fu=json.load(open(sys.argv[7])) if len(sys.argv)>7 and sys.argv[7] else {}
 fu={k.split('|')[0]+'|'+norm(k.split('|',1)[1]) for k,v in _fu.items() if not v.startswith("EARLY:")}
 early={k.split('|')[0]+'|'+norm(k.split('|',1)[1]) for k,v in _fu.items() if v.startswith("EARLY:")}   # allowed at $8 or shorter at the open; tagged early_only
-M=json.load(open(mj)); ang=json.load(open(aj)); pr={}; scr=set(); opn={}
+M=json.load(open(mj)); ang=json.load(open(aj)); pr={}; scr=set(); opn={}; fko={}; tabo={}
 for l in open(pt):
     pa=[x.strip() for x in l.split(",")]
     if len(pa)>=3 and pa[0].isdigit():
@@ -22,8 +23,9 @@ for l in open(pt):
         if pa[2].upper()=="SCR": scr.add(k)
         else:
             pr[k]=(float(pa[2]),float(pa[3]) if len(pa)>3 and pa[3] else float(pa[2]))
-            mo=re.search(r"([\d.]+)\s*$",pa[4]) if len(pa)>4 else None
-            if mo and float(mo.group(1))>1: opn[k]=float(mo.group(1))
+            f5=pa[4] if len(pa)>4 else ""; v,_src=open_used(f5); fk_,tab_=parse_opens(f5)
+            if v: opn[k]=v
+            fko[k],tabo[k]=fk_,tab_
 by=collections.defaultdict(list)
 for r in M:
     if (r["race"],norm(r["horse"])) not in scr: by[r["race"]].append(r)
@@ -46,7 +48,7 @@ for k in sorted(by):
         bet_ok=not isfs(r) and not fs_backed and hk not in fu and 1.6<=1/pp<=15 and o_<3/pp and not (is_early and op>8) and still   # our price $1.60-$15 (floor $2 until 8 Oct 2026, t_under2.py)
         tags=(["EDGE"] if bet_ok and val>=THR and a else [])+(["value_20c"] if bet_ok and val>=THR else [])+(["top_pick"] if r is top and not isfs(r) else [])
         for t in tags:
-            rows.append(dict(race=k,race_id=r["race_id"],horse=r["horse"],plan=t,price=op,price_now=cur,open=o_,model_price=round(1/pp,2),value=round(val,3),
+            rows.append(dict(race=k,race_id=r["race_id"],horse=r["horse"],plan=t,price=op,price_now=cur,open=o_,fk_open=fko.get(key) or "",tab_open=tabo.get(key) or "",model_price=round(1/pp,2),value=round(val,3),
                              angles="; ".join(a)+("; EARLY ONLY: bet near the open" if is_early else ""),stake=(stake_rule.stake(pp,op,r.get("only_ride",False),len(rs)) if t in ("EDGE","value_20c") else 1.0),hurdle="yes" if k in hurdle else "no",result="",returned=""))
 with open(out,"w",newline="") as fh:
     w=csv.DictWriter(fh,fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)

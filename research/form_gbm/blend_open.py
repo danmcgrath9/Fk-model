@@ -4,6 +4,7 @@ per race. The weights are the BSP-fitted cross-fit on the holdout (0.815 / 0.225
 ("fk_open 8.50", Form King's average opening price); a runner with no open keeps its model price and the race is
 renormalised. The model price is kept as p_model. python blend_open.py MODEL_JSON PRICES_TXT"""
 import json, math, re, sys, collections
+from opens import open_used
 W_OURS, W_OPEN = 0.82, 0.22
 mj, pt = sys.argv[1:3]
 norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower())
@@ -11,12 +12,8 @@ op = {}
 for l in open(pt):
     pa = [x.strip() for x in l.split("#")[0].split(",")]
     if len(pa) >= 5 and pa[0].isdigit():
-        m = re.search(r"([\d.]+)\s*$", pa[4])
-        if m:
-            try:
-                v = float(m.group(1))
-                if v > 1: op[(int(pa[0]), norm(pa[1]))] = v
-            except ValueError: pass
+        v, _ = open_used(pa[4])
+        if v: op[(int(pa[0]), norm(pa[1]))] = v
 rows = json.load(open(mj))
 by = collections.defaultdict(list)
 for r in rows: by[r["race_id"]].append(r)

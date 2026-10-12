@@ -12,6 +12,7 @@ THR = 0.2
 D, nR, U, _ = pdm.combined(day=up); pdm.install(D)
 F, nm = pdm.inputs()
 import stage2, stake_rule
+from opens import parse_opens, open_used
 S_all = np.concatenate([np.load("S_hist.npy"), U["S"]]); SF = U["sec_fields"]
 TR = stage2.trials(D["P"], D["past_fields"], D["race_idx"]); SEC = stage2.sections(S_all, SF, D["P"], D["past_fields"], D["race_idx"], int(D["race_idx"].max()) + 1)
 F = np.hstack([F, TR, SEC]).astype(np.float32); F[~np.isfinite(F)] = np.nan
@@ -48,7 +49,7 @@ theme_of = np.array(theme_of); tnames = [t for t, _ in THEMES]
 T = np.column_stack([C[:, theme_of == t].sum(1) for t in tnames])
 norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower())
 rows = json.load(open(mj)); ang = json.load(open(aj)); fs = set(json.load(open(fsj))); fu = json.load(open(fuj))
-pr = {}; scr = set(); opn = {}
+pr = {}; scr = set(); opn = {}; fko = {}; tabo = {}
 for l in open(pt):
     pa = [x.strip() for x in l.split(",")]
     if len(pa) >= 3 and pa[0].isdigit():
@@ -56,8 +57,8 @@ for l in open(pt):
         if pa[2].upper().startswith("SCR"): scr.add(k)
         else:
             pr[k] = float(pa[2])
-            mo = re.search(r"([\d.]+)\s*$", pa[4]) if len(pa) > 4 else None
-            if mo and float(mo.group(1)) > 1: opn[k] = float(mo.group(1))
+            f5 = pa[4] if len(pa) > 4 else ""; v, _src = open_used(f5); fko[k], tabo[k] = parse_opens(f5)
+            if v: opn[k] = v
 key = {(str(U["race_id"][rid[i]]), str(D["horse_id"][n0 + i])): i for i in range(len(rid))}
 cols = {str(c): i for i, c in enumerate(U["cols"])}; X = U["X"]; P = U["P"].astype(float); pf = {str(n): i for i, n in enumerate(U["past_fields"])}
 def facts(i, race):
@@ -104,7 +105,7 @@ for race in sorted(races):
         else:
             if now and o_ and pp * o_ - 1 >= THR and pp * now - 1 >= THR:
                 stake = stake_rule.stake(pp, now, r.get("only_ride", False), len(rs))   # stake_rule.py: Kelly x75 on the blend, x2 only ride, x1.5 field<=8, max 5u
-                BETS.append((race, r["horse"], now, ours, stake, bool(a), early, o_))
+                BETS.append((race, r["horse"], now, ours, stake, bool(a), early, o_, tabo.get(k)))
                 tags.append(("<span class='tag edge'>EDGE</span>" if a else "<span class='tag val'>value</span>") + f"<span class='tag'>stake {stake:.1f}u = ${100 * stake:,.0f}</span>")
             if early: tags.append("<span class='tag early'>early only</span>")
         th = T[i]; order = np.argsort(th); ups = [(tnames[j], th[j]) for j in order[::-1][:3] if th[j] > 0.08]; dns = [(tnames[j], th[j]) for j in order[:3] if th[j] < -0.08]
@@ -113,7 +114,7 @@ for race in sorted(races):
         if ours > 15 and not fuv and not isfs: fuv_note = "our price over $15 (outside the backtested band)"
         else: fuv_note = ""
         reason = (f"<b>No bet:</b> {fuv_note}. " if fuv_note else "") + (f"<b>{'No bet' if (fuv and not early) else 'Early only' if early else ''}:</b> {html.escape(fuv.replace('EARLY: ', ''))}. " if fuv else "") + (f"<b>No bet:</b> first starter. " if isfs else "")
-        H.append(f"<div class='r'><div class='px'>${ours:,.2f}</div><div><span class='nm'>{html.escape(r['horse'])}</span>{''.join(tags)}<span class='mk'> · opened {'$%.2f' % o_ if o_ else '-'} · now {'$%.2f' % now if now else 'no price'} · take at ${ours * (1 + THR):,.2f} or better</span></div>"
+        H.append(f"<div class='r'><div class='px'>${ours:,.2f}</div><div><span class='nm'>{html.escape(r['horse'])}</span>{''.join(tags)}<span class='mk'> · FK opened {'$%.2f' % fko[k] if fko.get(k) else '-'} · TAB opened {'$%.2f' % tabo[k] if tabo.get(k) else '-'} · now {'$%.2f' % now if now else 'no price'} · take at ${ours * (1 + THR):,.2f} or better</span></div>"
                  f"<div class='why'>{reason}<b>Why:</b> {why}.<br>{html.escape(' · '.join(facts(i, race)))}{(' · <b>angles:</b> ' + html.escape('; '.join(a))) if a else ''}</div></div>")
 # ---- top of the page: race bar (sticky) and the bets, inserted after the title ----------------------------------
 NAV_CSS = ("<style>.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#fff;display:flex;gap:6px;overflow-x:auto;"
@@ -143,10 +144,10 @@ if taken_md:
     except OSError:
         pass
 if BETS:
-    top.append(f"<h2>Bets at these prices ({len(BETS)})</h2><div class='tw'><table><tr><th>Race</th><th>Horse</th><th>Opened</th><th>Now</th><th>Ours</th><th>Stake</th><th>Take at</th></tr>"
+    top.append(f"<h2>Bets at these prices ({len(BETS)})</h2><div class='tw'><table><tr><th>Race</th><th>Horse</th><th>FK open</th><th>TAB open</th><th>Now</th><th>Ours</th><th>Stake</th><th>Take at</th></tr>"
                + "".join(f"<tr><td><a href='#r{rc}'>R{rc}</a></td><td>{html.escape(h)}{EDGE_T if ed else ''}{EARLY_T if ea else ''}</td>"
-                         f"<td>${op_:,.2f}</td><td>${n_:,.2f}</td><td>${o_:,.2f}</td><td>{st:.1f}u</td><td>${o_ * (1 + THR):,.2f}+</td></tr>" for rc, h, n_, o_, st, ed, ea, op_ in BETS)
-               + "</table></div><div class='note'>A bet is judged at its opening price and must still be at or over its take-at price now. Take a bet only at or above its take-at price. Stakes: x2 when it is the jockey's only ride at the meeting, x1.5 in a field of 8 or fewer, most 5u; $100 a unit.</div>")
+                         f"<td>{'$%.2f' % op_ if op_ else '-'}</td><td>{'$%.2f' % tb_ if tb_ else '-'}</td><td>${n_:,.2f}</td><td>${o_:,.2f}</td><td>{st:.1f}u</td><td>${o_ * (1 + THR):,.2f}+</td></tr>" for rc, h, n_, o_, st, ed, ea, op_, tb_ in BETS)
+               + "</table></div><div class='note'>A bet is judged at Form King's opening price (the TAB's when Form King has none yet) and must still be at or over its take-at price now. Take a bet only at or above its take-at price. Stakes: x2 when it is the jockey's only ride at the meeting, x1.5 in a field of 8 or fewer, most 5u; $100 a unit.</div>")
 else:
     top.append("<h2>Bets at these prices</h2><div class='note'>None: no runner is 20% or more over our price within the rules. Where there is no market yet, each race below shows our price and the take-at price.</div>")
 top.append("</div>")
