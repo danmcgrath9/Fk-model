@@ -630,3 +630,7 @@ The model is less accurate on young horses, and so is the opening price, so the 
 - 5,000 free top-up credits to every active API user (13 Oct) to re-pull 1 Oct to now, once Dave confirms the fixes.
 - API v1.1.0 (8 Oct): point-in-time integrity for lws and exp; Dave says the fixes back to 1 Jul 2025 are live on the
   API as well as in the export, so a model trained on the export and priced off live pulls sees the same form.
+- How much the LWS bug moves OUR prices (13 Oct, Caulfield 14 Oct G4 inputs re-priced through the live pipeline with
+  every race's LWS shifted): +/-1.2 points (the typical bug size) moves runners under $15 by 0.1% median, 0.5% at most;
+  +/-6 points (the worst seen) by 0.4% median, 1.5% at most. LWS is a race-level figure, so a shift mostly cancels when
+  the race is renormalised to 100%. No emergency retrain: the clean export fixes it with the duplicates and ratings.
