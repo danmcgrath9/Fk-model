@@ -600,3 +600,15 @@ for selection and staking: 1,725 bets (was 2,071), strike 18.0% (16.5%), flat +4
 $8-$15 13%, +36% / -21%; $15+ 9%, +60% / -14%. So the under-$8 book (565 bets) is 31% strike, +55% at the open and
 about break-even at BSP; $8-$15 is the weakest band on both measures. Caveat as before: back-filled opening prices may
 be softer than a live open, so the open-price ROI is an upper bound; the KL and calibration gains do not depend on it.
+
+## Rating of the day, 12 Oct 2026 (t_dayrank.py), founder's idea: NOT ADOPTED, and where the gap really is
+Each past run ranked against every run we hold from its meeting (and its whole day), raw and weight-for-age rating:
+last run, best of last three, top-3-of-the-meeting count in the last five, plus the same times a young-horse flag
+(age 3 or under, or 5 starts or fewer). 92% of runners have a ranked last run. Holdout KL to BSP (lower is better):
+live v6 0.0817, + rating of the day 0.0815, + young weighting 0.0815. Young-horse races (median age 3 or under,
+368 races): 0.0928, 0.0923, 0.0924. Too small to separate from noise, so not adopted. Likely why: Form King already
+hands the model the day's context (vsAllAvg, vsTrack, raceRating, track_speed), so the rank adds little on top.
+THE FINDING THAT MATTERS: young-horse races are where we are weakest, and it is ours, not the race type. The opening
+market is only 3% worse on them (KL 0.1426 vs 0.1382, races with every open held), we are 13% worse (0.0928 vs
+0.0817). Trials would be the obvious young-horse form, and they cannot be used: trial runs carry no rating and no
+sectional in our data (40,964 trial cells, 0 rated). That is the next thing to fix, not another rating transform.
