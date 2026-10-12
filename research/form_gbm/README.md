@@ -588,3 +588,15 @@ last 600 in the top third vs class) step up a little better (1.05 BSP, 1.09 mode
 MID-race sections do not carry (0.95). The one cell worth watching: strong closer stepping up at BSP under $8, 480 runners,
 A/E 1.08 vs BSP (+8.5% flat at BSP, about 1 sd: not significant) and 1.20 vs our model (about 2 sd: the model underrates
 them). Not adopted; recheck on the full archive (clean, point-in-time sectionals).
+
+## The market blend, 12 Oct 2026 (t_blend_open.py): Benter's last step, finally tested
+
+Holdout (1,369 races from 6 May with an open price and a BSP on every runner), stage-2 v6 refitted on the races before the
+cut, blend weights cross-fitted on halves of the holdout. A logit blend of 0.82 x ours + 0.22 x the opening market:
+KL to BSP 0.0801 -> 0.0765, winner log loss 1.9108 -> 1.9073, and it is CALIBRATED on its own bets (expected 307 wins,
+got 310) where the live price overrates its picks (expected 368, got 342). Bets at the open under the live rules, blend
+for selection and staking: 1,725 bets (was 2,071), strike 18.0% (16.5%), flat +49.5% at the open (+43.8%), -11.2% at BSP
+(-9.4%). By opening-price band with the blend: $1.60-$4 47% strike, +54% open / +15% BSP; $4-$8 27%, +55% / -1%;
+$8-$15 13%, +36% / -21%; $15+ 9%, +60% / -14%. So the under-$8 book (565 bets) is 31% strike, +55% at the open and
+about break-even at BSP; $8-$15 is the weakest band on both measures. Caveat as before: back-filled opening prices may
+be softer than a live open, so the open-price ROI is an upper bound; the KL and calibration gains do not depend on it.
