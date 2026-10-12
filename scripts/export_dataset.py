@@ -263,6 +263,13 @@ def main() -> None:
     by_id = {r["race_id"]: r for r in rows}
     races, _ = races_from_rows(rows)
     if not a.date:
+        # 12 Oct 2026: count what this drops, by reason. A race with no BSP used to vanish silently, which is how 308
+        # meetings missing Betfair SP at Form King's end (Dave, Oct 2026) never showed up here as anything at all.
+        no_bsp = [r for r in races if not B.bsp_chances(r.runners)]
+        no_win = [r for r in races if B.bsp_chances(r.runners) and not B.winner_chances(r.runners)]
+        meets = sorted({r.race_id.rsplit("_", 1)[0] for r in no_bsp})
+        print(f"dropped {len(no_bsp)} races with no BSP ({len(meets)} meetings) and {len(no_win)} with no winner", flush=True)
+        if meets: print("  meetings with a race missing BSP: " + ", ".join(meets[:40]) + (" ..." if len(meets) > 40 else ""), flush=True)
         races = [r for r in races if B.bsp_chances(r.runners) and B.winner_chances(r.runners)]
     races.sort(key=lambda r: (r.date, r.race_id))
     print(f"{len(races)} races" + ("" if a.date else " with BSP and a winner"), flush=True)

@@ -57,6 +57,10 @@ jobs:
         run: |
           mkdir -p research/form_gbm/ds
           python scripts/export_dataset.py --out research/form_gbm/ds/model_ds.npz | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Data checks (report only, never fails the run)
+        continue-on-error: true
+        run: |
+          python scripts/data_checks.py research/form_gbm/ds/model_ds.npz --list data-flags.csv | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Retrain
         working-directory: research/form_gbm
         run: ./retrain.sh 2>&1 | tee retrain.log | grep -v -E "^(nn|cb|sm|rg|block) [0-9]"
