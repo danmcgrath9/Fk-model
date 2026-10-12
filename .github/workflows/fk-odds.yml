@@ -4,7 +4,14 @@ name: fk odds
 # best price, average, opening price and scratchings. For pricing a meeting ahead of race day
 # (e.g. Saturday's metro on Wednesday) without re-pulling the form. Same guards as the pull.
 
+# PRICE PATH (12 Oct 2026): on a schedule, one snapshot of today's VIC meetings every hour from 8am to 9pm
+# Melbourne (daylight-saving UTC+11; an hour later in Melbourne terms from April), and tomorrow's at 10am,
+# 1pm, 5pm and 8pm so the true open and the night-before price are on file. Each snapshot is its own row
+# (keyed by Form King's odds timestamp). About 5 credits a meeting a snapshot, roughly 4,000 a month.
+
 on:
+  schedule:
+    - cron: '0 0-10,21-23 * * *'
   workflow_dispatch:
     inputs:
       key:
@@ -40,10 +47,17 @@ jobs:
       - name: Decide which key
         id: key
         run: |
-          WANT="${{ github.event.inputs.key || 'test' }}"
+          WANT="${{ github.event.inputs.key || 'live' }}"
           LIVE_FLAG="$(echo "${{ vars.FK_LIVE }}" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
           if [ "$WANT" = "live" ] && [ "$LIVE_FLAG" = "true" ]; then echo "key=live" >> "$GITHUB_OUTPUT"; else echo "key=test" >> "$GITHUB_OUTPUT"; fi
       - name: Price snapshot
         env:
           FK_API_KEY: ${{ steps.key.outputs.key == 'live' && secrets.FK_API_KEY || 'FK-TEST-API-KEY' }}
-        run: python scripts/morning_odds.py --key ${{ steps.key.outputs.key }} --date "${{ github.event.inputs.date }}" --yes | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            python scripts/morning_odds.py --key ${{ steps.key.outputs.key }} --date "${{ github.event.inputs.date }}" --yes | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            TODAY=$(TZ=Australia/Melbourne date +%F); TOMORROW=$(TZ=Australia/Melbourne date -d tomorrow +%F); H=$(date -u +%H)
+            python scripts/morning_odds.py --key ${{ steps.key.outputs.key }} --date "$TODAY" --yes | tee -a "$GITHUB_STEP_SUMMARY"
+            case "$H" in 23|02|06|09) python scripts/morning_odds.py --key ${{ steps.key.outputs.key }} --date "$TOMORROW" --yes | tee -a "$GITHUB_STEP_SUMMARY";; esac
+          fi
