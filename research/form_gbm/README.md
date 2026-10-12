@@ -647,3 +647,18 @@ before the jump, 17-25% in the last 3h. Runners that firm 20%+ have done 12% of 
 after, 83% six hours before the jump. Bets still on 12h after the open: not drifted (20) firmed 10%+ by the jump 75%,
 drifted 5%+ (21) firmed 67% and kept drifting 19% (vs 5%): drift raises the risk but most still firm; 21 bets is too
 few for a rule. The live rule already refuses the drift-made bet (value is judged at the open).
+- SCRATCHINGS AT THE OPEN (Dave's question, 13 Oct; the founder had asked for it earlier and it was not done until now).
+  The open market included runners later scratched, so starters' open prices sit higher than a final-field market and
+  real open bets take deductions. Holdout, 1,369 races with every open: starters-only open book % by field size: 2-6
+  runners median 104% (10th pct 54%), 7-9 110%, 10-12 123%, 13+ 124%. Value-at-open bets by the race's book %: lowest
+  third (most likely scratchings) +40% flat, middle +45%, highest (full market) +68%. With a crude deduction (a race
+  below its field size's median book has every starter's winnings scaled by book/median; Dave's renormalise-and-restore
+  idea) 1,145 bets +55% flat, +62% staked; harsh version (deduct against the 90th-percentile book) 824 bets +51% flat,
+  +52% staked, against +51% / +65% unadjusted. Scratchings are not what makes the open look good. Still to do: real
+  deductions in the shadow book, which needs the opening price of every runner that is later scratched.
+- Late-taken bets SETTLED (timed sample, 74 value-at-open bets with results, 15 winners): taken at the open +41%; still
+  at or over take-at and NOT drifted past the open: 20 min after +14% (32 bets), 1h +77% (17), 12h +75% (19), 24h +35%
+  (24), race day 6h before +37% (9); DRIFTED 5%+ but still over take-at: 20 min +34% (17), 1h +4% (26), 12h +13% (19),
+  24h 0% (10), race day 0 winners from 17. Tiny samples (one $10 winner moves a cell by 40 points); direction agrees with
+  the holdout (drift-made value -13% staked on 1,902 bets) and with Law & Peel 2002 (shortening prices profitable only
+  when the shortening carries information).
