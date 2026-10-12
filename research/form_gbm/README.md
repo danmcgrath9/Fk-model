@@ -687,3 +687,19 @@ few for a rule. The live rule already refuses the drift-made bet (value is judge
   is about break-even after deductions; race morning is too few bets to call. Bounds from the holdout: the open after
   a 16c deduction +29% flat, BSP (no deduction) -11% flat. This overturns the earlier "still fine 24h after the open"
   (that was settled without deductions). The proper answer needs timed prices on a large sample: Dave's export.
+
+## Where the value is, 13 Oct 2026 (t_segments_open.py): value-at-open bets by segment, two samples, after deductions
+HOLD = holdout (1,349 bets with every open and a BSP), OLD = the races before it, stage-1 out-of-fold blended with the
+open the same way (3,148 bets). Flat ROI at the open after the measured 16c average deduction, HOLD / OLD; in brackets
+the median BSP/open (under 1 = the market firmed after the open, i.e. the open underrated the horse).
+ALL +28% / +24% (0.69 / 0.75). HOLDS IN BOTH, strongest to weakest:
+- edge at the open 70%+: +59-60% / +35-90% (0.43-0.61): the bigger the edge, the better, and the more the open is wrong.
+  Edge 20-40%: +17% / +11% (0.80 / 0.85).
+- jockey's only ride +45% / +34%; open 2nd-3rd favourite +56% / +33%; open favourite +36% / +20%.
+- country +39% / +31% and provincial +30% / +25% against metro +8% / +13% (metro opens firm least: 0.76 / 0.77).
+- midweek +35% / +28% against Saturday +14% / +12% (Saturday 0.74 / 0.82).
+- racing fit (under 70 days) +36% / +27% against first up +6% / +20%.
+- barrier 1-4 weakest of the barriers +2% / +12%; open 4th-6th in the market +0% / +15%; open $12+ +13% / +19%.
+INCONSISTENT between samples (not acted on): field size (8 or fewer +18% / +42%), 1801m+ (-3% / +31%), going (the
+holdout is mostly wet), age. Every consistent segment is still positive after deductions, so nothing is cut; the
+deduction is a flat 16c here and really varies by race.
