@@ -63,10 +63,10 @@ Seymour 11 Oct (Good 4; tweeted at the Sunday 12:20pm prices; Kippis and Wingsan
 
 | Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
 |---|---|---|---|---|---|---|---|---|---|
-| 2026-10-11 | Seymour (G4) | R1 | More Foxie | $4 | $2.81 | 2.5u | lost | | -2.5 |
-| 2026-10-11 | Seymour (G4) | R4 | Olney | $18 | $13.17 | 0.5u | lost | | -0.5 |
-| 2026-10-11 | Seymour (G4) | R6 | Bel Lupa | $6 | $4.75 | 1.2u | lost | | -1.2 |
-| 2026-10-11 | Seymour (G4) | R6 | Ulfberht | $17 | $8.21 | 1.3u | lost | | -1.3 |
-| 2026-10-11 | Seymour (G4) | R10 | Chicago Blues | $21 | $7.55 | 1.6u | lost | | -1.6 |
+| 2026-10-11 | Seymour (G4) | R1 | More Foxie | $4 | $2.81 | 2.5u | 7th | SP $4 | -2.5 |
+| 2026-10-11 | Seymour (G4) | R4 | Olney | $18 | $13.17 | 0.5u | 11th | SP $19 | -0.5 |
+| 2026-10-11 | Seymour (G4) | R6 | Bel Lupa | $6 | $4.75 | 1.2u | 6th | SP $4.40 | -1.2 |
+| 2026-10-11 | Seymour (G4) | R6 | Ulfberht | $17 | $8.21 | 1.3u | 7th | SP $19 | -1.3 |
+| 2026-10-11 | Seymour (G4) | R10 | Chicago Blues | $21 | $7.55 | 1.6u | 8th | SP $14 | -1.6 |
 
-Seymour 11 Oct: 5 tips, 0 winners, 7.1u, -7.1u. Running total (win tips): 25 settled, 1 winner, -19.31u; lays 2 from 2, +2u. Placings and SPs from the morning results.
+Seymour 11 Oct: 5 tips, 0 winners, 7.1u, -7.1u. Running total (win tips): 25 settled, 1 winner, -19.31u; lays 2 from 2, +2u. Not tipped: Lofty Thoughts (R10, $15 at 12:20pm, ours $7.13 on the retrained model, an added bet nobody took) WON at SP $13.
