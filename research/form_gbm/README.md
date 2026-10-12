@@ -612,3 +612,8 @@ THE FINDING THAT MATTERS: young-horse races are where we are weakest, and it is 
 market is only 3% worse on them (KL 0.1426 vs 0.1382, races with every open held), we are 13% worse (0.0928 vs
 0.0817). Trials would be the obvious young-horse form, and they cannot be used: trial runs carry no rating and no
 sectional in our data (40,964 trial cells, 0 rated). That is the next thing to fix, not another rating transform.
+Follow-up the same night (founder: "wouldn't we want to be careful with those races"): NO. Holdout bets under the live
+rules (blend, full stakes, at the open): young-horse races 480 bets, 19% strike, +64% on stakes; older-horse races
+1,245 bets, 17%, +63%. Young or lightly raced RUNNERS return less (+57% vs +71%) and the $15+ young-race bucket is the
+weakest (137 bets, 9 won, +44% staked, -30% flat at BSP) but every slice is profitable at the open, so no rule added.
+The model is less accurate on young horses, and so is the opening price, so the value gap is still there.
