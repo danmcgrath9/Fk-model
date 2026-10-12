@@ -70,3 +70,19 @@ Seymour 11 Oct (Good 4; tweeted at the Sunday 12:20pm prices; Kippis and Wingsan
 | 2026-10-11 | Seymour (G4) | R10 | Chicago Blues | $21 | $7.55 | 1.6u | 8th | SP $14 | -1.6 |
 
 Seymour 11 Oct: 5 tips, 0 winners, 7.1u, -7.1u. Running total (win tips): 25 settled, 1 winner, -19.31u; lays 2 from 2, +2u. Not tipped: Lofty Thoughts (R10, $15 at 12:20pm, ours $7.13 on the retrained model, an added bet nobody took) WON at SP $13.
+
+Kilmore 13 Oct (Soft 5; blended price; tweeted Monday evening at the 7:45pm prices):
+
+| Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
+|---|---|---|---|---|---|---|---|---|---|
+| 2026-10-13 | Kilmore (S5) | R7 | Winter Nights | $18 | $12.30 | 0.6u | | | |
+| 2026-10-13 | Kilmore (S5) | R7 | Spirit Angel | $14 | $11.65 | 0.35u | | | |
+
+Caulfield 14 Oct (Good 4 list; blended price; tweeted Monday evening at the 7:48pm prices; Lincoln Rocks R6 $16 0.35u is a Soft 5 addition, not tweeted unless the track is called Soft):
+
+| Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
+|---|---|---|---|---|---|---|---|---|---|
+| 2026-10-14 | Caulfield (G4) | R2 | Katoto | $7.50 | $5.77 | 1.0u | | | |
+| 2026-10-14 | Caulfield (G4) | R4 | Beach Pad | $12 | $9.84 | 0.45u | | | |
+| 2026-10-14 | Caulfield (G4) | R7 | Prince Eric | $13 | $9.39 | 0.7u | | | |
+| 2026-10-14 | Caulfield (G4) | R8 | Lawborough | $13 | $10.24 | 0.5u | | | |
