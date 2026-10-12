@@ -617,3 +617,16 @@ rules (blend, full stakes, at the open): young-horse races 480 bets, 19% strike,
 1,245 bets, 17%, +63%. Young or lightly raced RUNNERS return less (+57% vs +71%) and the $15+ young-race bucket is the
 weakest (137 bets, 9 won, +44% staked, -30% flat at BSP) but every slice is profitable at the open, so no rule added.
 The model is less accurate on young horses, and so is the opening price, so the value gap is still there.
+
+## From the Form King Slack, 13 Oct 2026 (#api, #bugs)
+- LWS bug (Dave, 25 Sep): the API's Likely Winning Standard used the past run's weight-vs-WFA difference instead of
+  today's, so LWS pulled since July was wrong in many races. Nine model inputs read LWS (last_vs_lws, best_vs_lws,
+  e_rat_minus_lws and its race aggregates, c_lws, x_class_change). Our 9 Oct archive check had SEEN this (LWS moved in
+  63 of 66 races, e.g. WNBL R1 76.6 -> 68.3) and filed it as point-in-time drift; it was this bug. Training data pulled
+  July to 24 Sep carries the wrong LWS, live pulls since carry the right one. The clean export fixes it: retrain on it.
+- Bad auto-reviewed ratings 3-5 Oct (field strengths -1.4L to -40.3L, e.g. Salamanca Six's Bendigo maiden win at
+  -39.8, Seymour 11 Oct R6), a few lingering to 12 Oct. Checked: Kilmore 13 Oct and Caulfield 14 Oct inputs have no
+  past race rated under 40; the training set's 22 under 40 are all older runs. Seymour 11 Oct inputs no longer on disk.
+- 5,000 free top-up credits to every active API user (13 Oct) to re-pull 1 Oct to now, once Dave confirms the fixes.
+- API v1.1.0 (8 Oct): point-in-time integrity for lws and exp; Dave says the fixes back to 1 Jul 2025 are live on the
+  API as well as in the export, so a model trained on the export and priced off live pulls sees the same form.
