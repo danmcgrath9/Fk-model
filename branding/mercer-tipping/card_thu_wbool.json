@@ -1,0 +1,19 @@
+{
+ "day": "Thursday",
+ "date": "15 October",
+ "meetings": [
+  {
+   "name": "Warrnambool",
+   "note": "Good 4",
+   "bets": [
+    {
+     "race": 3,
+     "horse": "Who I Think I Am",
+     "price": "$4.40",
+     "units": "2.1u",
+     "time": "4:00PM"
+    }
+   ]
+  }
+ ]
+}
