@@ -2,7 +2,7 @@
 short of that start's trip, or whose trial since it finished in the bottom half of the field. Value bets on them lost
 25.6% at BSP (198 holdout bets) against -3.2% for the rest. Writes {"race|horse": reason}.
 Also (4 Oct 2026, t_pros.py, round-2 pro ideas), each a no-bet rule for value bets:
-  bounce (Ragozin/Thoro-Graph): last start a new career-best rating by 3+ points  (190 bets, -40% at BSP)
+  bounce (Ragozin/Thoro-Graph): last start a new career-best by 3+ (190 bets, -40% at BSP) -- REMOVED 13 Oct 2026, profitable at the open
   second-up after a first-up run that placed or was within 2L: EARLY-ONLY tag, see below (not a block)
   (down 2kg+ in weight: removed 7 Oct 2026, did not replicate out of sample, t_weightdrop.py)
 Value bets clear of all three made +8.2% at BSP (1,500 bets; +8.5% older half, +7.8% newer).
@@ -18,7 +18,8 @@ for k in range(len(ri)):
     j=idx[0]; gap=days[k,j]; reasons=[]; early=[]
     if len(idx)>1 and np.isfinite(rat[k,j]):
         best=np.nanmax(rat[k,idx[1:]])
-        if np.isfinite(best) and rat[k,j]>=best+3: reasons.append(f"bounce: last start a new peak ({rat[k,j]:.1f} vs best {best:.1f})")
+        # bounce block REMOVED 13 Oct 2026: it was tested at BSP only; at the open bounce bets made +7% / +39% after
+        # deductions in the two samples (README, "The bounce block at the OPEN"), so blocking them cost money where we bet.
     # second-up after a good first-up: EARLY-ONLY, not a block (4 Oct 2026, t_secup_open.py). The open under-rates them
     # (14% implied vs 19.5% winners) and they firm 21% to the jump: +17% at the open, -32% at BSP. Allowed at $8 or
     # shorter at the open (short ones +79%/+36%), blocked above $8 (-10% at the open, -58% at BSP). Bet at the open or not at all.

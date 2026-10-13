@@ -722,3 +722,7 @@ after the 16c deduction, and at BSP. HOLD: bounce 146 bets +24% / +7% / -15%, re
 OLD: bounce 205 bets +61% / +39% / +3%, rest 2,943 +43% / +23% / -8%. Inconsistent between samples and profitable at
 the open in both, so the BSP-tested block does not carry over to betting at the open. (Founder query: Regal Ambition,
 Thousand Guineas, was blocked by it, not by the first-up rule as the take-at list mislabelled it.)
+- Bounce block REMOVED from fu_json.py (13 Oct 2026, founder: "just want to have the best model possible to bet").
+  The first-up block (resuming 60+ days 200m+ short, or off a bottom-half trial) was re-tested at the open the same
+  day and HOLDS: HOLD 92 bets -1% at the open / -15% after deductions / -42% BSP, rest +53% / +32%; OLD 251 bets
+  -11% / -23% / -38%, rest +49% / +28%. Kept.
