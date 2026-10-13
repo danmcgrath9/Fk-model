@@ -1,4 +1,4 @@
-# Warrnambool Thu 15 Oct, Good 4: final fields (Form King still at WEIGHTS, pulled by founder's say-so 13 Oct 12:17pm). Emergencies as SCR until they gain a start; no market yet.
+# Warrnambool Thu 15 Oct, Good 4: final fields (Form King still at WEIGHTS, pulled 13 Oct 12:17pm on the founder's word). Emergencies (raw_emergency) as SCR until they gain a start; no market yet.
 1, A Little Reward, 0, 0
 1, Smart And Mighty, 0, 0
 1, Zercardy, 0, 0
@@ -71,7 +71,7 @@
 6, Stolen Art, 0, 0
 7, Mayeki, 0, 0
 7, Johnny Be Good, 0, 0
-7, Spanish Snitzel, 0, 0
+7, Spanish Snitzel, SCR
 7, Tishman, 0, 0
 7, Both Sides Now, 0, 0
 7, Milady, 0, 0

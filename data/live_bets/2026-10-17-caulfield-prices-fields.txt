@@ -1,0 +1,36 @@
+# Caulfield Sat 17 Oct, Good 4: Thousand Guineas (R4) and Caulfield Cup (R8) only; the rest of the card was still at weights on 13 Oct. Emergencies as SCR.
+4, Rubi's Choice, 0, 0
+4, Sing Your Song, 0, 0
+4, Grinzinger Heart, 0, 0
+4, Saintly Dancer, 0, 0
+4, Pretty Baby, 0, 0
+4, Salann, 0, 0
+4, De Armas, 0, 0
+4, Katoto, 0, 0
+4, Lara Antipova, 0, 0
+4, Icelady, 0, 0
+4, Regal Ambition, 0, 0
+4, Platinum Pearl, 0, 0
+4, Over The Bridge, 0, 0
+8, Enfjaar, 0, 0
+8, Saint George, 0, 0
+8, Mr Monaco, SCR
+8, Zahrann, 0, 0
+8, Treasurethe Moment, 0, 0
+8, She's A Hustler, 0, 0
+8, Half Yours, 0, 0
+8, Royal Supremacy, 0, 0
+8, The Euphrates, SCR
+8, Asterix, 0, 0
+8, Middle Earth, 0, 0
+8, Kings Valley, 0, 0
+8, Soul Of Spain, 0, 0
+8, Juja Kibo, SCR
+8, Starford, 0, 0
+8, Ohope Wins, 0, 0
+8, Cosmic Crusader, 0, 0
+8, Green Spaces, 0, 0
+8, Wine Dark Sea, 0, 0
+8, Kingswood, 0, 0
+8, Point Of Law, SCR
+8, Knight's Choice, 0, 0
