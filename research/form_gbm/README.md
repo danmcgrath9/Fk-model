@@ -778,3 +778,14 @@ sized at its own price staked 1,366u for +679u (+49.7%); sized at the NEXT step'
 (+45.8%); a stake that follows the price exactly (if BetMatic offers one) is +893u (t_betmatic.py). Checking the $15 band
 on the blended price at the order's own price instead of the model price drops a profitable class of long ones (-40u),
 so it stays on the model price. betmatic_orders.py now uses the 8 steps sized at the next step.
+
+## Bet at the open, top up after scratchings? (14 Oct 2026, t_topup.py; founder: "Bet at opening. Adjust our market after scratchings and we can top up bets")
+Stage 1: the BetMatic orders at the open (16c deduction). Stage 2: our market re-priced on the final field; every
+value-at-open bet topped up to the full sheet stake at the later price if that price is still at or over take-at (and
+missed value-at-open bets struck in full the same way), no deduction. The stage-2 slice on its own: holdout, later price
+Betfair SP less 8%: 266 bets, -7.6%; older races: 875 bets, -18.4%; live timed sample (52 races, corporate fluc 6h before
+the jump): 13 bets, -75%. Adding the top-up takes the holdout from +803u to +788u and the older races from +1,569u to
++1,455u. A bet still over take-at after the scratchings is mostly one the market drifted (the drift finding again); the
+ones we would want more of have firmed past take-at by then. Not a top-up rule. Limit: the datasets hold final fields
+only, so the moment scratchings shorten our price before the market moves is not simulated; the saved race-morning price
+files (from 14 Oct) will allow a proper test after a few weeks.
