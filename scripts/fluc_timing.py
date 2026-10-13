@@ -11,6 +11,8 @@ from fk import fields as F
 from fk import history as H
 from fk.db import Db
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
+MEL = ZoneInfo("Australia/Melbourne")
 since = sys.argv[1] if len(sys.argv) > 1 else "2026-09-01"
 ROOT = Path(__file__).resolve().parent.parent
 db = Db(load_settings().database_url)
@@ -24,7 +26,7 @@ def ms(v):
     except Exception: return None
 AFTER = (0.33, 1, 2, 4, 8, 12, 24); BEFORE = (12, 6, 3, 1, 0.5)
 print("CSV-BEGIN")
-print("race_id,horse_id,n,open_h_before_jump,open," + ",".join(f"a{h}" for h in AFTER) + "," + ",".join(f"b{h}" for h in BEFORE) + ",last,finish,bsp")
+print("race_id,horse_id,n,open_h_before_jump,open," + ",".join(f"a{h}" for h in AFTER) + "," + ",".join(f"b{h}" for h in BEFORE) + ",last,finish,bsp,am930,jump_mel,scratched")
 n_r = 0
 for r in rows:
     ents = []
@@ -41,5 +43,12 @@ for r in rows:
             c = [p for t, p in fl if t <= cut]; return c[-1] if c else ""
         a = [upto(t0 + h * 3600e3) if t0 + h * 3600e3 < end else "" for h in AFTER]
         b = [upto(end - h * 3600e3) if end - h * 3600e3 >= t0 else "" for h in BEFORE]
-        print(f"{r['race_id']},{F.horse_id(e)},{len(fl)},{(end - t0) / 3600e3:.2f},{fl[0][1]}," + ",".join(map(str, a)) + "," + ",".join(map(str, b)) + f",{fl[-1][1]},{(F.result_finish_position(F.entry_result(e) or {}) or '')},{(F.result_betfair_sp(F.entry_result(e) or {}) or '')}")
+        # 14 Oct 2026: the price standing at 9:30am Melbourne on race day (the race-morning top-up check), the jump time
+        # in Melbourne, and whether the runner was scratched (so a replay can rebuild the field before the scratchings)
+        day = str(r["date"])[:10]
+        t930 = datetime(int(day[:4]), int(day[5:7]), int(day[8:10]), 9, 30, tzinfo=MEL).timestamp() * 1000
+        am930 = upto(t930) if t0 <= t930 < end else ""
+        jump = datetime.fromtimestamp(end / 1000, MEL).strftime("%H:%M")
+        scr = "1" if F.entry_scratched(e) else ""
+        print(f"{r['race_id']},{F.horse_id(e)},{len(fl)},{(end - t0) / 3600e3:.2f},{fl[0][1]}," + ",".join(map(str, a)) + "," + ",".join(map(str, b)) + f",{fl[-1][1]},{(F.result_finish_position(F.entry_result(e) or {}) or '')},{(F.result_betfair_sp(F.entry_result(e) or {}) or '')},{am930},{jump},{scr}")
 print("CSV-END"); print(f"{n_r} races with timed flucs since {since}", file=sys.stderr)
