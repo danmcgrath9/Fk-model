@@ -1,0 +1,100 @@
+{
+ "day": "Saturday",
+ "date": "17 October",
+ "race": "Caulfield Cup",
+ "note": "R8 \u00b7 2400m \u00b7 Good 4",
+ "footer": "Our rated prices.",
+ "runners": [
+  {
+   "horse": "Cosmic Crusader",
+   "barrier": 17,
+   "ours": "$3.75"
+  },
+  {
+   "horse": "Half Yours",
+   "barrier": 7,
+   "ours": "$9.68"
+  },
+  {
+   "horse": "Kingswood",
+   "barrier": 20,
+   "ours": "$11"
+  },
+  {
+   "horse": "Wine Dark Sea",
+   "barrier": 19,
+   "ours": "$14"
+  },
+  {
+   "horse": "Royal Supremacy",
+   "barrier": 8,
+   "ours": "$14"
+  },
+  {
+   "horse": "Zahrann",
+   "barrier": 4,
+   "ours": "$21"
+  },
+  {
+   "horse": "Treasurethe Moment",
+   "barrier": 5,
+   "ours": "$21"
+  },
+  {
+   "horse": "She's A Hustler",
+   "barrier": 6,
+   "ours": "$23"
+  },
+  {
+   "horse": "Enfjaar",
+   "barrier": 1,
+   "ours": "$24"
+  },
+  {
+   "horse": "Green Spaces",
+   "barrier": 18,
+   "ours": "$25"
+  },
+  {
+   "horse": "Saint George",
+   "barrier": 2,
+   "ours": "$26"
+  },
+  {
+   "horse": "Starford",
+   "barrier": 15,
+   "ours": "$32"
+  },
+  {
+   "horse": "Soul Of Spain",
+   "barrier": 13,
+   "ours": "$34"
+  },
+  {
+   "horse": "Knight's Choice",
+   "barrier": 22,
+   "ours": "$36"
+  },
+  {
+   "horse": "Ohope Wins",
+   "barrier": 16,
+   "ours": "$46"
+  },
+  {
+   "horse": "Middle Earth",
+   "barrier": 11,
+   "ours": "$61"
+  },
+  {
+   "horse": "Asterix",
+   "barrier": 10,
+   "ours": "$123"
+  },
+  {
+   "horse": "Kings Valley",
+   "barrier": 12,
+   "ours": "$135"
+  }
+ ],
+ "show_market": false
+}
