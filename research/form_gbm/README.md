@@ -742,3 +742,15 @@ the scratchings and the day's track, which no form model sees.
   Form King open and a BSP): KL to BSP open 0.142, live model 0.092, live model blended with the open 0.086. Winner
   log loss: open 1.871, live model 1.826, blend 1.814, BSP 1.789. The blend closes about 70% of the gap between
   the opening market and BSP at picking winners (model alone about 55%); BSP is still the best price there is.
+
+## What makes our value bets drift? 13 Oct 2026 (t_drift_why.py)
+Value-at-open bets, HOLD 1,349 / OLD 3,148; DRIFT = BSP 1.25x+ the open (9% / 14% of our bets), FIRM = BSP 0.8x or
+less (66% / 56%). Groups where (drift rate - firm rate) is 2.5+ points off our average in the same direction in both
+samples, with flat ROI at the open after a 16c deduction:
+MORE DRIFT: edge only 20-40% (drift 15% / 18%, firm 50% / 44%, ROI +17% / +11%); low Neural rating (+32% / +25%);
+few career starts (+19% / +24%); early in the preparation (+20% / +20%); best rating BELOW today's standard (+26% / +21%).
+LESS DRIFT: edge 100%+ (drift 1% / 6%, firm 91% / 81%, +60% / +90%); best rating ABOVE today's standard (+59% / +40%);
+experienced (+35% / +34%); ran recently (+28% / +31%); on-pace types (+50% / +28%).
+Reading: the market drifts the bets whose case is uncertainty (lightly raced, unproven at the level, small edge) and
+firms the ones whose case is proven ability (rated above today's standard, fit, experienced, big edge). Every group is
+still profitable at the open after deductions, so nothing is excluded; it says which bets to be on first.
