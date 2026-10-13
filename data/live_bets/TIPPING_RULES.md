@@ -1,5 +1,10 @@
 # Mercer Tipping: rules for public tips
 
+**From Thu 15 Oct 2026: tips are posted at their OPENING price** (founder, 14 Oct: "make sure we post opening prices").
+The tips are the BetMatic book's fills (orders made before the market, filled at Form King's opening price), posted once
+the market is up and quoted at the price each opened at, never a later price. The record is public-record.md, settled at
+the opening price less the race's scratching deduction. The earlier Twitter record (evening/9am prices) was deleted.
+
 1. **A tip is locked once it is tweeted.** Price, stake and our quoted price stay exactly as posted, and it is settled at
    that price. A later refresh, reprice or model change never edits a tip already out. (Founder, 10 Oct 2026, after
    Caulfield's Campaldino and Grand Larceny were restaked and repriced in a reissue.)
