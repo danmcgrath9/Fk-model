@@ -1,0 +1,99 @@
+# Warrnambool Thu 15 Oct, Good 4: final fields (Form King still at WEIGHTS, pulled by founder's say-so 13 Oct 12:17pm). Emergencies as SCR until they gain a start; no market yet.
+1, A Little Reward, 0, 0
+1, Smart And Mighty, 0, 0
+1, Zercardy, 0, 0
+1, Acharnee, 0, 0
+1, Blues Jazz, 0, 0
+1, Mamzelle Raine, 0, 0
+1, Listen Up, 0, 0
+1, Niccotein, 0, 0
+1, Twister, 0, 0
+1, Villa Grande, 0, 0
+1, Northern Gold, 0, 0
+2, Stomping Ground, 0, 0
+2, Champagne Sabre, 0, 0
+2, Black Aces, 0, 0
+2, Trust My, 0, 0
+2, Ocean Surge, 0, 0
+2, Almorina, 0, 0
+2, Semper Augustus, 0, 0
+2, Balgownie Lad, 0, 0
+2, The Toronado Kid, 0, 0
+2, Symphony Sista, 0, 0
+2, Prince Iadora, 0, 0
+2, Jack Will, 0, 0
+2, Prestige Erick, 0, 0
+3, Tempered Edge, 0, 0
+3, Kermalina, 0, 0
+3, Chilly Sav, 0, 0
+3, Monsoon Indi, 0, 0
+3, Paramount War, 0, 0
+3, Miss Delightful, 0, 0
+3, Girl With A Pearl, 0, 0
+3, Who I Think I Am, 0, 0
+3, Midnightbrilliance, 0, 0
+3, Cowboykickedfive, 0, 0
+3, A Rus In Grinzing, 0, 0
+3, My Rosalie, 0, 0
+4, Conjurer, 0, 0
+4, Princess Chic, 0, 0
+4, Endless Fury, 0, 0
+4, Winter Arc, 0, 0
+4, Rollin'ontheriver, 0, 0
+4, Mack The Knife, 0, 0
+4, Heidi High, 0, 0
+4, Black Hex, 0, 0
+4, Ideas Galore, 0, 0
+4, Cold Train, 0, 0
+4, Greystone, 0, 0
+4, Deelamour, 0, 0
+5, Ain't Tellin, 0, 0
+5, Ataegina, 0, 0
+5, Super Snitch, 0, 0
+5, Fully Justified, 0, 0
+5, The Daily Planet, 0, 0
+5, Shades Of Stardom, 0, 0
+5, Prestige Zerprise, 0, 0
+5, Belcony, 0, 0
+5, Raven's Silver, 0, 0
+5, Diamond Eye, 0, 0
+5, High Falls, 0, 0
+6, Helluva Barty, 0, 0
+6, Bancoora, 0, 0
+6, Buzitup, 0, 0
+6, Port Louis, 0, 0
+6, Singles Moment, 0, 0
+6, Icy Pole, 0, 0
+6, Phoenix Flyer, 0, 0
+6, Tauri, 0, 0
+6, King West, 0, 0
+6, Artistic Genius, 0, 0
+6, Stolen Art, 0, 0
+7, Mayeki, 0, 0
+7, Johnny Be Good, 0, 0
+7, Spanish Snitzel, 0, 0
+7, Tishman, 0, 0
+7, Both Sides Now, 0, 0
+7, Milady, 0, 0
+7, Cute Girl, 0, 0
+7, En Flique, 0, 0
+7, Garnacho, 0, 0
+7, Just My Lot, 0, 0
+7, State Of Affairs, 0, 0
+7, Sakakibara, 0, 0
+7, Share The Stars, 0, 0
+7, Scenic Host, 0, 0
+7, Asal, 0, 0
+8, Prince Sonic, 0, 0
+8, Salaria, 0, 0
+8, Midnight Devil, 0, 0
+8, Kid Dynamite, 0, 0
+8, Positive Image, 0, 0
+8, Outer Banks, 0, 0
+8, Flying Straz, 0, 0
+8, Ziggy Bama, 0, 0
+8, Nordic Strike, 0, 0
+8, Shooting For Stars, 0, 0
+8, Soju, 0, 0
+8, Francine, 0, 0
+8, Meisho, 0, 0
