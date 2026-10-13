@@ -6,7 +6,7 @@
   "horse_id": "2023_rubick_redasun",
   "barrier": 1,
   "jockey": "Lachlan Neindorf",
-  "p": 0.04656053993021295,
+  "p": 0.0359681560060229,
   "solid": true,
   "p_trees": 0.05431590538974857,
   "p_net": 0.06330693871981156,
@@ -15,7 +15,9 @@
   "p_stage1": 0.055987715151274424,
   "only_ride": false,
   "p_unshaded": 0.043981222872525344,
-  "settle_share": 0.466
+  "settle_share": 0.466,
+  "p_model": 0.04656053993021295,
+  "open_used": 51.0
  },
  {
   "race": 4,
@@ -24,7 +26,7 @@
   "horse_id": "2023_snitzel_never-listen",
   "barrier": 2,
   "jockey": "",
-  "p": 0.0163822896097344,
+  "p": 0.019991986041108113,
   "solid": true,
   "p_trees": 0.020683907369562726,
   "p_net": 0.01175957898875199,
@@ -33,7 +35,9 @@
   "p_stage1": 0.017360510601784847,
   "only_ride": false,
   "p_unshaded": 0.015474758917485119,
-  "settle_share": 0.602
+  "settle_share": 0.602,
+  "p_model": 0.0163822896097344,
+  "open_used": 15.0
  },
  {
   "race": 4,
@@ -42,7 +46,7 @@
   "horse_id": "2023_toronado_veravarti",
   "barrier": 3,
   "jockey": "Lachlan King",
-  "p": 0.008151664421010622,
+  "p": 0.007414469847625192,
   "solid": true,
   "p_trees": 0.01128080625427964,
   "p_net": 0.0072767807121237975,
@@ -51,7 +55,9 @@
   "p_stage1": 0.009714948484676236,
   "only_ride": true,
   "p_unshaded": 0.007700086172107747,
-  "settle_share": 0.17
+  "settle_share": 0.17,
+  "p_model": 0.008151664421010622,
+  "open_used": 101.0
  },
  {
   "race": 4,
@@ -60,7 +66,7 @@
   "horse_id": "2023_st-marks-basilica_thinkyoucandance",
   "barrier": 4,
   "jockey": "",
-  "p": 0.15254911657122375,
+  "p": 0.1586468290429047,
   "solid": true,
   "p_trees": 0.13368063552847684,
   "p_net": 0.12488312162328294,
@@ -69,7 +75,9 @@
   "p_stage1": 0.13095384902359963,
   "only_ride": false,
   "p_unshaded": 0.14409834389768758,
-  "settle_share": 0.204
+  "settle_share": 0.204,
+  "p_model": 0.15254911657122375,
+  "open_used": 5.0
  },
  {
   "race": 4,
@@ -78,7 +86,7 @@
   "horse_id": "2023_barbados_louisiana",
   "barrier": 5,
   "jockey": "Damian Lane",
-  "p": 0.1319791189241665,
+  "p": 0.12704083297892269,
   "solid": true,
   "p_trees": 0.16267679243888414,
   "p_net": 0.15208910721451002,
@@ -88,7 +96,9 @@
   "only_ride": false,
   "p_unshaded": 0.14666807489329695,
   "settle_share": 0.693,
-  "back_shaded": true
+  "back_shaded": true,
+  "p_model": 0.1319791189241665,
+  "open_used": 8.0
  },
  {
   "race": 4,
@@ -97,7 +107,7 @@
   "horse_id": "2023_shamus-award_a-pinch-of-salt",
   "barrier": 6,
   "jockey": "",
-  "p": 0.0022018857616888745,
+  "p": 0.0029460161882784333,
   "solid": true,
   "p_trees": 0.0041434514339801195,
   "p_net": 0.0014153527168601313,
@@ -107,7 +117,9 @@
   "only_ride": false,
   "p_unshaded": 0.0024469503087638346,
   "settle_share": 0.944,
-  "back_shaded": true
+  "back_shaded": true,
+  "p_model": 0.0022018857616888745,
+  "open_used": 51.0
  },
  {
   "race": 4,
@@ -116,7 +128,7 @@
   "horse_id": "2023_ardrossan_regal-winks",
   "barrier": 7,
   "jockey": "",
-  "p": 0.08615792998276658,
+  "p": 0.09540204418426258,
   "solid": true,
   "p_trees": 0.08732367621322165,
   "p_net": 0.09189951415977463,
@@ -125,7 +137,9 @@
   "p_stage1": 0.08918520157609082,
   "only_ride": false,
   "p_unshaded": 0.08138503390396915,
-  "settle_share": 0.521
+  "settle_share": 0.521,
+  "p_model": 0.08615792998276658,
+  "open_used": 6.0
  },
  {
   "race": 4,
@@ -134,7 +148,7 @@
   "horse_id": "2023_wootton-bassett_rose-of-savannah",
   "barrier": 8,
   "jockey": "",
-  "p": 0.01093649546412784,
+  "p": 0.01096537559439984,
   "solid": true,
   "p_trees": 0.014312112921489038,
   "p_net": 0.007888444440024428,
@@ -143,7 +157,9 @@
   "p_stage1": 0.012216416899645494,
   "only_ride": false,
   "p_unshaded": 0.010330645760833406,
-  "settle_share": 0.637
+  "settle_share": 0.637,
+  "p_model": 0.01093649546412784,
+  "open_used": 51.0
  },
  {
   "race": 4,
@@ -152,7 +168,7 @@
   "horse_id": "2023_russian-revolution_artistic-lass",
   "barrier": 9,
   "jockey": "Craig Williams",
-  "p": 0.08854404438163078,
+  "p": 0.07975160642430432,
   "solid": true,
   "p_trees": 0.09141548331574043,
   "p_net": 0.11315335053873421,
@@ -161,7 +177,9 @@
   "p_stage1": 0.09655605667057665,
   "only_ride": true,
   "p_unshaded": 0.0836389645785937,
-  "settle_share": 0.285
+  "settle_share": 0.285,
+  "p_model": 0.08854404438163078,
+  "open_used": 15.0
  },
  {
   "race": 4,
@@ -170,7 +188,7 @@
   "horse_id": "2023_maurice_lady-patricia",
   "barrier": 10,
   "jockey": "",
-  "p": 0.04477132344628448,
+  "p": 0.04881152758094573,
   "solid": true,
   "p_trees": 0.04165127649911729,
   "p_net": 0.05140042789099875,
@@ -179,7 +197,9 @@
   "p_stage1": 0.04249809485069444,
   "only_ride": false,
   "p_unshaded": 0.04229112372279896,
-  "settle_share": 0.127
+  "settle_share": 0.127,
+  "p_model": 0.04477132344628448,
+  "open_used": 11.0
  },
  {
   "race": 4,
@@ -188,7 +208,7 @@
   "horse_id": "2023_palace-pier_dame-pattie",
   "barrier": 11,
   "jockey": "Michael Dee",
-  "p": 0.19814558923187867,
+  "p": 0.20219782157055108,
   "solid": true,
   "p_trees": 0.18535036974178393,
   "p_net": 0.2022425869345148,
@@ -198,7 +218,9 @@
   "only_ride": true,
   "p_unshaded": 0.22019871293379428,
   "settle_share": 0.908,
-  "back_shaded": true
+  "back_shaded": true,
+  "p_model": 0.19814558923187867,
+  "open_used": 4.4
  },
  {
   "race": 4,
@@ -207,7 +229,7 @@
   "horse_id": "2023_frankel_of-good-cheer",
   "barrier": 12,
   "jockey": "",
-  "p": 0.026870775322045154,
+  "p": 0.03095644421832824,
   "solid": true,
   "p_trees": 0.027653768274167066,
   "p_net": 0.022630791543027384,
@@ -216,7 +238,9 @@
   "p_stage1": 0.026190314630968797,
   "only_ride": false,
   "p_unshaded": 0.025382213349926172,
-  "settle_share": 0.219
+  "settle_share": 0.219,
+  "p_model": 0.026870775322045154,
+  "open_used": 13.0
  },
  {
   "race": 4,
@@ -225,7 +249,7 @@
   "horse_id": "2023_toronado_waafiya",
   "barrier": 13,
   "jockey": "",
-  "p": 0.18674922695322935,
+  "p": 0.17990689032234614,
   "solid": true,
   "p_trees": 0.16551181461954848,
   "p_net": 0.15005400451758544,
@@ -234,7 +258,9 @@
   "p_stage1": 0.16541444599891403,
   "only_ride": false,
   "p_unshaded": 0.17640386868821756,
-  "settle_share": 0.357
+  "settle_share": 0.357,
+  "p_model": 0.18674922695322935,
+  "open_used": 6.0
  },
  {
   "race": 8,
@@ -243,7 +269,7 @@
   "horse_id": "2020_lope-de-vega_tesoro",
   "barrier": 1,
   "jockey": "Ray Dawson",
-  "p": 0.038542465175956615,
+  "p": 0.041623442506329954,
   "solid": false,
   "p_trees": 0.03099068133217128,
   "p_net": 0.0499604523557795,
@@ -252,7 +278,9 @@
   "p_stage1": 0.0350295623802568,
   "only_ride": true,
   "p_unshaded": 0.037355659061507264,
-  "settle_share": null
+  "settle_share": null,
+  "p_model": 0.038542465175956615,
+  "open_used": 15.0
  },
  {
   "race": 8,
@@ -261,7 +289,7 @@
   "horse_id": "2020_roaring-lion_lady-dragon",
   "barrier": 2,
   "jockey": "",
-  "p": 0.03288889460632004,
+  "p": 0.039127464751438606,
   "solid": true,
   "p_trees": 0.02935625064352558,
   "p_net": 0.03864114322002027,
@@ -271,7 +299,9 @@
   "only_ride": false,
   "p_unshaded": 0.03750138140496731,
   "settle_share": 0.821,
-  "back_shaded": true
+  "back_shaded": true,
+  "p_model": 0.03288889460632004,
+  "open_used": 11.0
  },
  {
   "race": 8,
@@ -280,7 +310,7 @@
   "horse_id": "2022_night-of-thunder_zannda",
   "barrier": 4,
   "jockey": "",
-  "p": 0.03949766442180615,
+  "p": 0.04751851949447476,
   "solid": true,
   "p_trees": 0.034358319449269814,
   "p_net": 0.04562590659826294,
@@ -289,7 +319,9 @@
   "p_stage1": 0.039258598736482665,
   "only_ride": false,
   "p_unshaded": 0.0382814456504259,
-  "settle_share": 0.469
+  "settle_share": 0.469,
+  "p_model": 0.03949766442180615,
+  "open_used": 9.0
  },
  {
   "race": 8,
@@ -298,7 +330,7 @@
   "horse_id": "2021_alabama-express_draconic-treasure",
   "barrier": 5,
   "jockey": "Daniel Stackhouse",
-  "p": 0.05595893821880793,
+  "p": 0.04719927114840164,
   "solid": true,
   "p_trees": 0.06543555633479757,
   "p_net": 0.07247891347807525,
@@ -307,7 +339,9 @@
   "p_stage1": 0.0709364607066671,
   "only_ride": true,
   "p_unshaded": 0.054235841117131006,
-  "settle_share": 0.465
+  "settle_share": 0.465,
+  "p_model": 0.05595893821880793,
+  "open_used": 34.0
  },
  {
   "race": 8,
@@ -316,7 +350,7 @@
   "horse_id": "2020_ace-high_snow-petal",
   "barrier": 6,
   "jockey": "",
-  "p": 0.04613682237278165,
+  "p": 0.04273981648849737,
   "solid": true,
   "p_trees": 0.04005109936668534,
   "p_net": 0.052164214770888284,
@@ -325,7 +359,9 @@
   "p_stage1": 0.04305448235683076,
   "only_ride": false,
   "p_unshaded": 0.04471616952550508,
-  "settle_share": 0.323
+  "settle_share": 0.323,
+  "p_model": 0.04613682237278165,
+  "open_used": 26.0
  },
  {
   "race": 8,
@@ -334,7 +370,7 @@
   "horse_id": "2020_st-jean_la-gazelle",
   "barrier": 7,
   "jockey": "Mark Zahra",
-  "p": 0.10180664941471507,
+  "p": 0.10328821658430559,
   "solid": true,
   "p_trees": 0.12322976316119506,
   "p_net": 0.11950549776236871,
@@ -344,7 +380,9 @@
   "only_ride": true,
   "p_unshaded": 0.11608447273656207,
   "settle_share": 0.688,
-  "back_shaded": true
+  "back_shaded": true,
+  "p_model": 0.10180664941471507,
+  "open_used": 9.0
  },
  {
   "race": 8,
@@ -353,7 +391,7 @@
   "horse_id": "2021_make-believe_adelasia",
   "barrier": 8,
   "jockey": "",
-  "p": 0.06942140767237685,
+  "p": 0.06959287138377894,
   "solid": true,
   "p_trees": 0.06201241875904792,
   "p_net": 0.07337505998349127,
@@ -362,7 +400,9 @@
   "p_stage1": 0.0625442603675659,
   "only_ride": false,
   "p_unshaded": 0.06728377193156145,
-  "settle_share": 0.176
+  "settle_share": 0.176,
+  "p_model": 0.06942140767237685,
+  "open_used": 13.0
  },
  {
   "race": 8,
@@ -371,7 +411,7 @@
   "horse_id": "2018_tavistock_mourasana",
   "barrier": 10,
   "jockey": "",
-  "p": 0.0073172089071147015,
+  "p": 0.008141520602385726,
   "solid": true,
   "p_trees": 0.010560837802648111,
   "p_net": 0.007326212872107993,
@@ -381,7 +421,9 @@
   "only_ride": false,
   "p_unshaded": 0.008343407260419199,
   "settle_share": 0.747,
-  "back_shaded": true
+  "back_shaded": true,
+  "p_model": 0.0073172089071147015,
+  "open_used": 51.0
  },
  {
   "race": 8,
@@ -390,7 +432,7 @@
   "horse_id": "2020_roaring-lion_roheryn",
   "barrier": 11,
   "jockey": "",
-  "p": 0.014413195653100034,
+  "p": 0.016462545454263927,
   "solid": true,
   "p_trees": 0.019258810067848957,
   "p_net": 0.01644132903197442,
@@ -400,7 +442,9 @@
   "only_ride": false,
   "p_unshaded": 0.016434567166859242,
   "settle_share": 0.704,
-  "back_shaded": true
+  "back_shaded": true,
+  "p_model": 0.014413195653100034,
+  "open_used": 26.0
  },
  {
   "race": 8,
@@ -409,7 +453,7 @@
   "horse_id": "2021_territories_crystal-etoile",
   "barrier": 12,
   "jockey": "",
-  "p": 0.005456055602917539,
+  "p": 0.007422567601307604,
   "solid": true,
   "p_trees": 0.006906984187364111,
   "p_net": 0.006912369585912681,
@@ -419,7 +463,9 @@
   "only_ride": false,
   "p_unshaded": 0.006221237429256775,
   "settle_share": 0.719,
-  "back_shaded": true
+  "back_shaded": true,
+  "p_model": 0.005456055602917539,
+  "open_used": 26.0
  },
  {
   "race": 8,
@@ -428,7 +474,7 @@
   "horse_id": "2021_phoenix-of-spain_aimhirgin-lass",
   "barrier": 13,
   "jockey": "",
-  "p": 0.028801711612473135,
+  "p": 0.029042671313583998,
   "solid": true,
   "p_trees": 0.037015418688885166,
   "p_net": 0.024564511376469766,
@@ -437,7 +483,9 @@
   "p_stage1": 0.031038101173039876,
   "only_ride": false,
   "p_unshaded": 0.027914844431242255,
-  "settle_share": 0.615
+  "settle_share": 0.615,
+  "p_model": 0.028801711612473135,
+  "open_used": 26.0
  },
  {
   "race": 8,
@@ -446,7 +494,7 @@
   "horse_id": "2022_beckford_red-stars",
   "barrier": 15,
   "jockey": "Lachlan Neindorf",
-  "p": 0.029056128882497322,
+  "p": 0.03171777389764961,
   "solid": false,
   "p_trees": 0.026341586213457842,
   "p_net": 0.024310057721191537,
@@ -455,7 +503,9 @@
   "p_stage1": 0.02592341624658944,
   "only_ride": false,
   "p_unshaded": 0.028161427641605032,
-  "settle_share": null
+  "settle_share": null,
+  "p_model": 0.029056128882497322,
+  "open_used": 18.0
  },
  {
   "race": 8,
@@ -464,7 +514,7 @@
   "horse_id": "2022_ocean-park_choux-mania",
   "barrier": 16,
   "jockey": "",
-  "p": 0.01815054824578614,
+  "p": 0.021564397781137314,
   "solid": true,
   "p_trees": 0.023159556127825606,
   "p_net": 0.033011499157032914,
@@ -474,7 +524,9 @@
   "only_ride": false,
   "p_unshaded": 0.02069606293012008,
   "settle_share": 0.827,
-  "back_shaded": true
+  "back_shaded": true,
+  "p_model": 0.01815054824578614,
+  "open_used": 18.0
  },
  {
   "race": 8,
@@ -483,7 +535,7 @@
   "horse_id": "2020_maurice_cosmic-storm",
   "barrier": 17,
   "jockey": "William Pike",
-  "p": 0.2689311291382783,
+  "p": 0.26681277581014995,
   "solid": true,
   "p_trees": 0.23673459502853209,
   "p_net": 0.19241926859723518,
@@ -492,7 +544,9 @@
   "p_stage1": 0.2291003669058937,
   "only_ride": true,
   "p_unshaded": 0.2606501562692627,
-  "settle_share": 0.456
+  "settle_share": 0.456,
+  "p_model": 0.2689311291382783,
+  "open_used": 4.5
  },
  {
   "race": 8,
@@ -501,7 +555,7 @@
   "horse_id": "2022_street-boss_outdoor",
   "barrier": 18,
   "jockey": "Rachel King",
-  "p": 0.04194606094449349,
+  "p": 0.03952940945474857,
   "solid": true,
   "p_trees": 0.03945208769860783,
   "p_net": 0.05176339907698674,
@@ -510,7 +564,9 @@
   "p_stage1": 0.045224585586166856,
   "only_ride": true,
   "p_unshaded": 0.04065445073277707,
-  "settle_share": 0.64
+  "settle_share": 0.64,
+  "p_model": 0.04194606094449349,
+  "open_used": 26.0
  },
  {
   "race": 8,
@@ -519,7 +575,7 @@
   "horse_id": "2022_ulysses_ajwibah",
   "barrier": 19,
   "jockey": "Damian Lane",
-  "p": 0.05890391740880329,
+  "p": 0.06969543771283143,
   "solid": false,
   "p_trees": 0.058510243672212726,
   "p_net": 0.04665671448482593,
@@ -528,7 +584,9 @@
   "p_stage1": 0.05383704278456033,
   "only_ride": false,
   "p_unshaded": 0.05709013800920752,
-  "settle_share": null
+  "settle_share": null,
+  "p_model": 0.05890391740880329,
+  "open_used": 7.0
  },
  {
   "race": 8,
@@ -537,7 +595,7 @@
   "horse_id": "2020_roaring-lion_all-at-sea",
   "barrier": 20,
   "jockey": "John Allen",
-  "p": 0.11526130647829608,
+  "p": 0.09055116808246638,
   "solid": true,
   "p_trees": 0.12152718684618063,
   "p_net": 0.11141185814467196,
@@ -546,7 +604,9 @@
   "p_stage1": 0.11669338702682314,
   "only_ride": true,
   "p_unshaded": 0.11171216081095574,
-  "settle_share": 0.179
+  "settle_share": 0.179,
+  "p_model": 0.11526130647829608,
+  "open_used": 26.0
  },
  {
   "race": 8,
@@ -555,7 +615,7 @@
   "horse_id": "2019_extreme-choice_midnight-pearl",
   "barrier": 22,
   "jockey": "Robbie Dolan",
-  "p": 0.027509895243475843,
+  "p": 0.02797012993224863,
   "solid": true,
   "p_trees": 0.03509860461974435,
   "p_net": 0.0334315917827049,
@@ -564,6 +624,8 @@
   "p_stage1": 0.0321926227064921,
   "only_ride": true,
   "p_unshaded": 0.026662805890634314,
-  "settle_share": 0.567
+  "settle_share": 0.567,
+  "p_model": 0.027509895243475843,
+  "open_used": 26.0
  }
 ]

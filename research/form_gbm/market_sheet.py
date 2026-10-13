@@ -110,7 +110,7 @@ for race in sorted(races):
         else:
             if now and o_ and pp * o_ - 1 >= THR and pp * now - 1 >= THR:
                 stake = stake_rule.stake(pp, now, r.get("only_ride", False), len(rs))   # stake_rule.py: Kelly x75 on the blend, x2 only ride, x1.5 field<=8, max 5u
-                BETS.append((race, r["horse"], now, ours, stake, bool(a), early, o_, tabo.get(k)))
+                BETS.append((race, r["horse"], now, ours, stake, bool(a), early, fko.get(k), tabo.get(k)))   # display: Form King's own open (blank when it has none), and the TAB's
                 tags.append(("<span class='tag edge'>EDGE</span>" if a else "<span class='tag val'>value</span>") + f"<span class='tag'>stake {stake:.1f}u = ${100 * stake:,.0f}</span>")
             if early: tags.append("<span class='tag early'>early only</span>")
         th = T[i]; order = np.argsort(th); ups = [(tnames[j], th[j]) for j in order[::-1][:3] if th[j] > 0.08]; dns = [(tnames[j], th[j]) for j in order[:3] if th[j] < -0.08]

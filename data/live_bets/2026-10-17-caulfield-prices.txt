@@ -1,0 +1,38 @@
+# Caulfield Sat 17 Oct (Good 4), Thousand Guineas (R4) and Caulfield Cup (R8) only. From the founder's TAB screenshots, Tue 13 Oct 12:45pm.
+# Columns: now (TAB fixed), now, then the TAB opening price as "tab_open X" (TAB's own fluc line; where TAB shows no flucs the price has not moved, so open = now).
+# These are Group 1 futures-style markets: TAB's "open" is when the race's market first went up, not an open after final fields.
+4, Regal Ambition, 4.20, 4.20, tab_open 4.40
+4, Saintly Dancer, 6.00, 6.00, tab_open 5.00
+4, De Armas, 6.00, 6.00, tab_open 6.00
+4, Over The Bridge, 6.00, 6.00, tab_open 6.00
+4, Pretty Baby, 7.00, 7.00, tab_open 8.00
+4, Icelady, 11.00, 11.00, tab_open 11.00
+4, Platinum Pearl, 13.00, 13.00, tab_open 13.00
+4, Lara Antipova, 15.00, 15.00, tab_open 15.00
+4, Sing Your Song, 15.00, 15.00, tab_open 15.00
+4, Rubi's Choice, 51.00, 51.00, tab_open 51.00
+4, Salann, 71.00, 71.00, tab_open 51.00
+4, Katoto, 71.00, 71.00, tab_open 51.00
+4, Grinzinger Heart, 101.00, 101.00, tab_open 101.00
+8, Cosmic Crusader, 5.00, 5.00, tab_open 4.50
+8, Zahrann, 7.00, 7.00, tab_open 9.00
+8, Half Yours, 9.00, 9.00, tab_open 9.00
+8, Wine Dark Sea, 9.00, 9.00, tab_open 7.00
+8, Saint George, 9.00, 9.00, tab_open 11.00
+8, Enfjaar, 13.00, 13.00, tab_open 15.00
+8, Royal Supremacy, 13.00, 13.00, tab_open 13.00
+8, Starford, 21.00, 21.00, tab_open 18.00
+8, She's A Hustler, 21.00, 21.00, tab_open 26.00
+8, Ohope Wins, 21.00, 21.00, tab_open 18.00
+8, Treasurethe Moment, 26.00, 26.00, tab_open 34.00
+8, Middle Earth, 26.00, 26.00, tab_open 26.00
+8, Kings Valley, 26.00, 26.00, tab_open 26.00
+8, Kingswood, 31.00, 31.00, tab_open 26.00
+8, Knight's Choice, 34.00, 34.00, tab_open 26.00
+8, Green Spaces, 34.00, 34.00, tab_open 26.00
+8, Soul Of Spain, 34.00, 34.00, tab_open 26.00
+8, Asterix, 51.00, 51.00, tab_open 51.00
+8, The Euphrates, SCR
+8, Juja Kibo, SCR
+8, Point Of Law, SCR
+8, Mr Monaco, SCR
