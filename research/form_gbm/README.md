@@ -726,3 +726,15 @@ Thousand Guineas, was blocked by it, not by the first-up rule as the take-at lis
   The first-up block (resuming 60+ days 200m+ short, or off a bottom-half trial) was re-tested at the open the same
   day and HOLDS: HOLD 92 bets -1% at the open / -15% after deductions / -42% BSP, rest +53% / +32%; OLD 251 bets
   -11% / -23% / -38%, rest +49% / +28%. Kept.
+
+## Is BSP sharp? 13 Oct 2026 (t_bsp_sharp.py; founder: "test if BSP is actually sharp and where the edges are")
+36,239 runners in 3,693 races with every BSP; median BSP book 100.4%; two halves by date (split 29 Mar 2026).
+A/E vs BSP (1.00 = priced right): ALL 1.00 / 1.00. Flat 1u on everyone at BSP: -5% / -8% gross, -12% / -14% after 8%.
+Small, consistent leans: BSP favourite 1.02 / 1.01, 2nd-3rd in the BSP market 1.05 / 1.04 (+5% / +3% gross, -2% / -4%
+after 8% commission); 4th and out 0.93 / 0.96; last-start top-15% closers 1.04 / 1.05, bottom-15% 0.93 / 0.94;
+barriers 1-4 0.98 / 0.97. Nothing clears an 8% commission in both halves.
+OUR MODEL AGAINST BSP (our chance / BSP's chance, holdout live model and earlier out-of-fold): where we rate a horse
+1.6-2.5x BSP, it wins 0.88 / 0.93 of what BSP says and 0.46 / 0.49 of what we say; where we rate it under 0.6x BSP it
+wins 1.04 / 1.02 of BSP and 2.17 / 2.13 of ours. When the model and BSP disagree, BSP is right. Our edge is that the
+OPEN is soft (the model beats the open, KL 0.100 vs 0.152), not that the model beats BSP; BSP has the late money,
+the scratchings and the day's track, which no form model sees.
