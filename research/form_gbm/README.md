@@ -738,3 +738,7 @@ OUR MODEL AGAINST BSP (our chance / BSP's chance, holdout live model and earlier
 wins 1.04 / 1.02 of BSP and 2.17 / 2.13 of ours. When the model and BSP disagree, BSP is right. Our edge is that the
 OPEN is soft (the model beats the open, KL 0.100 vs 0.152), not that the model beats BSP; BSP has the late money,
 the scratchings and the day's track, which no form model sees.
+- LIVE prices against the open and BSP, 5-11 Oct 2026 (42 races where every runner had the live model price, a
+  Form King open and a BSP): KL to BSP open 0.142, live model 0.092, live model blended with the open 0.086. Winner
+  log loss: open 1.871, live model 1.826, blend 1.814, BSP 1.789. The blend closes about 70% of the gap between
+  the opening market and BSP at picking winners (model alone about 55%); BSP is still the best price there is.
