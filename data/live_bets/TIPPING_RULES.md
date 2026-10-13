@@ -10,3 +10,8 @@
    stays on the sheet (the "Bets taken" box) and in the records until it is settled, even if the model no longer rates it.
    (Founder, 11 Oct 2026.)
 5. Stakes follow the live 5u rule (stake_rule.py) at the price tweeted, and are fixed from then on.
+
+## Messages on the founder's behalf (13 Oct 2026, founder: "Never send a message again without drafting it to me")
+Every message sent for the founder (Slack, email, anything) is shown to him as a final draft first, word for word, and is
+sent only after he approves that exact text. Changing the wording after his approval means showing it again. No
+exceptions for "small" edits, for messages he described in outline, or for ones he said to send before seeing them.
