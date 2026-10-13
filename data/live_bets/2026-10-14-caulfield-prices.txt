@@ -1,105 +1,105 @@
-# Caulfield Wed 14 Oct (Good 4): snapshot Tue 13 Oct 5:34pm Melbourne. Form King best price now, fk_open = Form King's average opening price. Scratched runners and emergencies not gaining a start as SCR.
-1, Royal Press, 2.50, 2.50, fk_open 2.20
-1, Act Up, 14.00, 14.00, fk_open 20.00
-1, Sonance, 11.00, 11.00, fk_open 11.50
-1, Stone Skyrider, 11.00, 11.00, fk_open 11.50
+# Caulfield Wed 14 Oct (Good 4): race-morning snapshot Wed 8:45am Melbourne (after scratchings). Form King best price now, fk_open = Form King's average opening price. Scratched runners and emergencies not gaining a start as SCR.
+1, Royal Press, 2.30, 2.30, fk_open 2.20
+1, Act Up, 13.00, 13.00, fk_open 20.00
+1, Sonance, SCR
+1, Stone Skyrider, 10.00, 10.00, fk_open 11.50
 1, Maalefushi, 4.40, 4.40, fk_open 4.00
-1, Fabienne, 9.00, 9.00, fk_open 6.25
-1, Soldi, 4.80, 4.80, fk_open 8.00
-2, Cliff Runner, 14.00, 14.00, fk_open 19.00
+1, Fabienne, 8.00, 8.00, fk_open 6.25
+1, Soldi, 4.00, 4.00, fk_open 8.00
+2, Cliff Runner, 15.00, 15.00, fk_open 19.00
 2, Hierarchy, 4.20, 4.20, fk_open 4.40
 2, Crudens Tycoon, 6.50, 6.50, fk_open 6.00
-2, True Rebel, 3.70, 3.70, fk_open 8.00
-2, Refuse To Curtsy, 23.00, 23.00, fk_open 26.00
+2, True Rebel, 3.60, 3.60, fk_open 8.00
+2, Refuse To Curtsy, SCR
 2, So Royal, 15.00, 15.00, fk_open 19.00
-2, Mister Whiskers, 9.50, 9.50, fk_open 15.00
+2, Mister Whiskers, 9.00, 9.00, fk_open 15.00
 2, Nikitria, 21.00, 21.00, fk_open 26.00
-2, Boys Bounce, 6.50, 6.50, fk_open 4.40
+2, Boys Bounce, SCR
 2, Katoto, SCR
 2, Written Empire, 4.00, 4.00, fk_open 6.00
-3, Fighting Floyd, 126.00, 126.00, fk_open 51.00
-3, Keane Enuff, 34.00, 34.00, fk_open 26.00
+3, Fighting Floyd, 91.00, 91.00, fk_open 51.00
+3, Keane Enuff, 27.00, 27.00, fk_open 26.00
 3, Final Countdown, SCR
-3, Boltsaver, 18.00, 18.00, fk_open 11.00
-3, Space Age, 201.00, 201.00, fk_open 101.00
-3, Porter, 6.50, 6.50, fk_open 6.00
-3, Puglia, 17.00, 17.00, fk_open 11.00
+3, Boltsaver, 15.00, 15.00, fk_open 11.00
+3, Space Age, 151.00, 151.00, fk_open 101.00
+3, Porter, 5.50, 5.50, fk_open 6.00
+3, Puglia, 14.00, 14.00, fk_open 11.00
 3, Miss Castelvecchio, SCR
-3, Escarpa, SCR
-3, Stealth Of Night, 6.50, 6.50, fk_open 6.00
-3, Naina, 10.00, 10.00, fk_open 11.00
+3, Escarpa, 9.00, 9.00, fk_open 8.00
+3, Stealth Of Night, 5.00, 5.00, fk_open 6.00
+3, Naina, 9.50, 9.50, fk_open 11.00
 3, Bold Strike, SCR
-3, Zourain, 51.00, 51.00, fk_open 26.00
-3, Cooly, 21.00, 21.00, fk_open 9.00
-3, Romantic Encounter, 7.50, 7.50, fk_open 4.80
-3, Loud Charlie, 3.20, 3.20, fk_open 4.20
-4, Wuddzz, 20.00, 20.00, fk_open 9.00
+3, Zourain, SCR
+3, Cooly, 17.00, 17.00, fk_open 9.00
+3, Romantic Encounter, SCR
+3, Loud Charlie, 2.70, 2.70, fk_open 4.20
+4, Wuddzz, SCR
 4, Shultzy, 23.00, 23.00, fk_open 23.00
 4, Farag, 151.00, 151.00, fk_open 51.00
-4, Fernao, 10.00, 10.00, fk_open 7.00
-4, Beach Pad, 8.00, 8.00, fk_open 8.00
+4, Fernao, 9.50, 9.50, fk_open 7.00
+4, Beach Pad, 9.00, 9.00, fk_open 8.00
 4, Federer, 8.00, 8.00, fk_open 5.00
-4, Diwali, 81.00, 81.00, fk_open 34.00
-4, Leonchroi, 2.80, 2.80, fk_open 3.30
-4, Bur Dubai, 16.00, 16.00, fk_open 15.00
-4, Autumnheat, 6.00, 6.00, fk_open 9.00
+4, Diwali, 67.00, 67.00, fk_open 34.00
+4, Leonchroi, 2.60, 2.60, fk_open 3.30
+4, Bur Dubai, 15.00, 15.00, fk_open 15.00
+4, Autumnheat, 5.75, 5.75, fk_open 9.00
 4, Savisanta, 6.00, 6.00, fk_open 10.00
-5, Presser, SCR
-5, He'll Rip, 15.00, 15.00, fk_open 11.00
-5, Fiorenot, 8.50, 8.50, fk_open 7.00
+5, Presser, 23.00, 23.00, fk_open 15.00
+5, He'll Rip, 13.00, 13.00, fk_open 11.00
+5, Fiorenot, 11.00, 11.00, fk_open 7.00
 5, Yam, SCR
-5, Villasaurus, 41.00, 41.00, fk_open 34.00
-5, Chase Your Dreams, 51.00, 51.00, fk_open 34.00
-5, Battle Cry, 23.00, 23.00, fk_open 26.00
-5, Markdel, 13.00, 13.00, fk_open 8.00
-5, Test Of Love, 41.00, 41.00, fk_open 34.00
-5, Real Class, 31.00, 31.00, fk_open 19.00
+5, Villasaurus, 71.00, 71.00, fk_open 34.00
+5, Chase Your Dreams, 81.00, 81.00, fk_open 34.00
+5, Battle Cry, 27.00, 27.00, fk_open 26.00
+5, Markdel, 19.00, 19.00, fk_open 8.00
+5, Test Of Love, SCR
+5, Real Class, 61.00, 61.00, fk_open 19.00
 5, Ferivia, SCR
-5, Jett Smash, 3.90, 3.90, fk_open 4.40
-5, Fundamental Nature, SCR
-5, Grecian Destiny, 151.00, 151.00, fk_open 101.00
-5, Buccleuch, 3.40, 3.40, fk_open 3.00
-5, Space Rider, 12.00, 12.00, fk_open 11.00
-6, Lincoln Rocks, 21.00, 21.00, fk_open 15.00
+5, Jett Smash, 3.10, 3.10, fk_open 4.40
+5, Fundamental Nature, 6.50, 6.50, fk_open 6.00
+5, Grecian Destiny, SCR
+5, Buccleuch, 3.10, 3.10, fk_open 3.00
+5, Space Rider, 17.00, 17.00, fk_open 11.00
+6, Lincoln Rocks, 23.00, 23.00, fk_open 15.00
 6, Affluential, 151.00, 151.00, fk_open 51.00
-6, Shaiyhar, 91.00, 91.00, fk_open 71.00
-6, House Of Lords, 61.00, 61.00, fk_open 51.00
+6, Shaiyhar, 81.00, 81.00, fk_open 71.00
+6, House Of Lords, 51.00, 51.00, fk_open 51.00
 6, Tishman, SCR
 6, Ruakaka Raider, SCR
-6, Inevitable Award, 31.00, 31.00, fk_open 26.00
-6, Xtra Rush, 10.00, 10.00, fk_open 7.00
-6, Politely Dun, 8.00, 8.00, fk_open 7.00
+6, Inevitable Award, 29.00, 29.00, fk_open 26.00
+6, Xtra Rush, 9.00, 9.00, fk_open 7.00
+6, Politely Dun, 7.50, 7.50, fk_open 7.00
 6, Eye For An Eye, SCR
-6, Best Time, 27.00, 27.00, fk_open 34.00
-6, Johnich, 8.00, 8.00, fk_open 6.00
-6, Freedom Flame, 15.00, 15.00, fk_open 15.00
-6, Emperor Tzu, 6.00, 6.00, fk_open 4.60
+6, Best Time, 29.00, 29.00, fk_open 34.00
+6, Johnich, 8.50, 8.50, fk_open 6.00
+6, Freedom Flame, 16.00, 16.00, fk_open 15.00
+6, Emperor Tzu, 5.50, 5.50, fk_open 4.60
 6, Yauson, 2.35, 2.35, fk_open 3.70
-6, Dad And Dave, 35.00, 35.00, fk_open 19.00
+6, Dad And Dave, 34.00, 34.00, fk_open 19.00
 7, Smokin' Romans, 20.00, 20.00, fk_open 19.00
-7, Pounding, 7.00, 7.00, fk_open 6.00
+7, Pounding, 7.50, 7.50, fk_open 6.00
 7, Newfoundland, 91.00, 91.00, fk_open 51.00
 7, Ambassadorial, 11.00, 11.00, fk_open 11.00
 7, Air Assault, 9.00, 9.00, fk_open 11.00
 7, Ziryab, 5.50, 5.50, fk_open 4.00
-7, Statuario, 35.00, 35.00, fk_open 51.00
+7, Statuario, 41.00, 41.00, fk_open 51.00
 7, Military Academy, 17.00, 17.00, fk_open 15.00
-7, Darkbonee, 3.60, 3.60, fk_open 4.80
-7, Sunset Park, 9.00, 9.00, fk_open 8.00
-7, Prince Eric, 13.00, 13.00, fk_open 11.00
-7, Autumn Mystery, 21.00, 21.00, fk_open 19.00
-8, Per Sempre, 41.00, 41.00, fk_open 34.00
+7, Darkbonee, 3.70, 3.70, fk_open 4.80
+7, Sunset Park, 11.00, 11.00, fk_open 8.00
+7, Prince Eric, 11.00, 11.00, fk_open 11.00
+7, Autumn Mystery, 16.00, 16.00, fk_open 19.00
+8, Per Sempre, 51.00, 51.00, fk_open 34.00
 8, Dirty Grin, 35.00, 35.00, fk_open 34.00
-8, Harry Got Styles, 15.00, 15.00, fk_open 26.00
+8, Harry Got Styles, 16.00, 16.00, fk_open 26.00
 8, Ten Warriors, SCR
-8, Verdoux, 14.00, 14.00, fk_open 26.00
+8, Verdoux, 12.00, 12.00, fk_open 26.00
 8, King Tut, 8.50, 8.50, fk_open 8.00
-8, Sweethearted, 13.00, 13.00, fk_open 8.00
+8, Sweethearted, 12.00, 12.00, fk_open 8.00
 8, Rosa Aotearoa, 18.00, 18.00, fk_open 11.00
-8, Foxenberg, SCR
-8, Wingsandpropellers, 23.00, 23.00, fk_open 26.00
+8, Foxenberg, 35.00, 35.00, fk_open 34.00
+8, Wingsandpropellers, 26.00, 26.00, fk_open 26.00
 8, Tres Magnifique, 5.50, 5.50, fk_open 5.00
-8, Swift Force, 3.50, 3.50, fk_open 3.70
-8, Miewa, 31.00, 31.00, fk_open 26.00
-8, Lawborough, 14.00, 14.00, fk_open 9.00
-8, Romantic Miss, 9.00, 9.00, fk_open 8.00
+8, Swift Force, 3.30, 3.30, fk_open 3.70
+8, Miewa, SCR
+8, Lawborough, 13.00, 13.00, fk_open 9.00
+8, Romantic Miss, 10.00, 10.00, fk_open 8.00
