@@ -22,3 +22,7 @@ Every meeting, the bets the live rules would have struck at Form King's opening 
 | 2026-10-14 Caulfield (S5) | R7 | Prince Eric | $11 | - | $9.03 | 0.49u | | | |
 | 2026-10-17 Caulfield (G4) | R8 | Cosmic Crusader | - | $4.5 | $3.75 | 2.56u | | | |
 | 2026-10-17 Caulfield (G4) | R8 | Kingswood | - | $26 | $11.04 | 2u | | | |
+| 2026-10-15 Warrnambool (G4) | R3 | Who I Think I Am | $6 | - | $3.29 | 2.5u | | | |
+| 2026-10-15 Warrnambool (G4) | R6 | Buzitup | $11 | - | $8.40 | 0.68u | | | |
+| 2026-10-15 Warrnambool (G4) | R7 | Both Sides Now | $15 | - | $11.62 | 0.46u | | | |
+| 2026-10-15 Warrnambool (G4) | R8 | Kid Dynamite | $15 | - | $12.45 | 0.33u | | | |

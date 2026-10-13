@@ -1,0 +1,13 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,WNBL_151026_1,Villa Grande,top_pick,2.5,2.5,2.5,2.5,,2.72,-0.08,; EARLY ONLY: bet near the open,1.0,no,,
+2,WNBL_151026_2,Semper Augustus,top_pick,3.55,3.55,3.55,3.55,,3.96,-0.102,; EARLY ONLY: bet near the open,1.0,no,,
+3,WNBL_151026_3,Who I Think I Am,value_20c,6.0,6.0,6.0,6.0,,3.29,0.821,,2.5,no,,
+3,WNBL_151026_3,Who I Think I Am,top_pick,6.0,6.0,6.0,6.0,,3.29,0.821,,1.0,no,,
+6,WNBL_151026_6,Buzitup,EDGE,11.0,11.0,11.0,11.0,,8.4,0.31,Late 600 beyond the tempo,0.68,no,,
+6,WNBL_151026_6,Buzitup,value_20c,11.0,11.0,11.0,11.0,,8.4,0.31,Late 600 beyond the tempo,0.68,no,,
+6,WNBL_151026_6,King West,top_pick,3.6,3.6,3.6,3.6,,3.86,-0.067,Beaten by the pace last start; Already run to today's class; New career-best last start; Class drop (rating),1.0,no,,
+7,WNBL_151026_7,Both Sides Now,EDGE,15.0,15.0,15.0,15.0,,11.62,0.291,Blinkers first time,0.46,no,,
+7,WNBL_151026_7,Both Sides Now,value_20c,15.0,15.0,15.0,15.0,,11.62,0.291,Blinkers first time,0.46,no,,
+7,WNBL_151026_7,Just My Lot,top_pick,4.4,4.4,4.4,4.4,,4.52,-0.027,New career-best last start; Above the field in all three sections,1.0,no,,
+8,WNBL_151026_8,Kid Dynamite,value_20c,15.0,15.0,15.0,15.0,,12.45,0.205,,0.33,no,,
+8,WNBL_151026_8,Ziggy Bama,top_pick,4.6,4.6,4.6,4.6,,4.77,-0.036,Above the field in all three sections,1.0,no,,
