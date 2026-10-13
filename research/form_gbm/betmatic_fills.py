@@ -29,7 +29,7 @@ def main():
             if m:
                 won[(int(m[1]), norm(m[2]))] = m[3] == "1"
         from deductions import race_deductions
-        ded = race_deductions(f"{L}/{a.prefix}")[0]
+        ded = race_deductions(a.prefix)[0]
     fills, staked, pl, missing = [], 0.0, 0.0, set()
     for o in csv.DictReader(open(a.orders)):
         k = (int(o["race"]), norm(o["horse"])); op = opens.get(k)

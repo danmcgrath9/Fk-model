@@ -1,6 +1,5 @@
 {
 "1|Royal Press": [],
-"1|Sonance": [],
 "1|Fabienne": [],
 "1|Maalefushi": [],
 "1|Act Up": [],
@@ -9,9 +8,6 @@
 "2|Cliff Runner": [
 "Class drop (rating)",
 "Blinkers first time"
-],
-"2|Refuse To Curtsy": [
-"Above the field in all three sections"
 ],
 "2|Mister Whiskers": [
 "Above the field in all three sections"
@@ -35,11 +31,11 @@
 "Class drop (rating)"
 ],
 "2|So Royal": [],
-"2|Boys Bounce": [],
 "3|Loud Charlie": [
 "Beaten by the pace last start",
 "Late 600 beyond the tempo"
 ],
+"3|Escarpa": [],
 "3|Cooly": [],
 "3|Stealth Of Night": [
 "Class drop (rating)",
@@ -63,15 +59,10 @@
 "Beaten by the pace last start",
 "Class drop (rating)"
 ],
-"3|Zourain": [],
 "3|Keane Enuff": [],
-"3|Romantic Encounter": [
-"Already run to today's class"
-],
 "3|Fighting Floyd": [
 "Declining deep in prep"
 ],
-"4|Wuddzz": [],
 "4|Autumnheat": [],
 "4|Fernao": [
 "Declining deep in prep"
@@ -84,6 +75,13 @@
 "4|Federer": [],
 "4|Farag": [],
 "4|Shultzy": [],
+"5|Presser": [
+"Late 600 beyond the tempo"
+],
+"5|Fundamental Nature": [
+"Already run to today's class",
+"Well backed before a bad last run"
+],
 "5|He'll Rip": [
 "Beaten by the pace last start",
 "Late 600 beyond the tempo"
@@ -91,9 +89,6 @@
 "5|Buccleuch": [
 "Already run to today's class",
 "Well backed before a bad last run"
-],
-"5|Grecian Destiny": [
-"Third-up, improving"
 ],
 "5|Battle Cry": [],
 "5|Markdel": [],
@@ -111,9 +106,6 @@
 "Late 600 beyond the tempo"
 ],
 "5|Villasaurus": [],
-"5|Test Of Love": [
-"Well backed before a bad last run"
-],
 "5|Jett Smash": [],
 "6|Politely Dun": [],
 "6|House Of Lords": [
@@ -150,7 +142,9 @@
 "Back in trip after being handy"
 ],
 "7|Smokin' Romans": [],
-"7|Prince Eric": [],
+"7|Prince Eric": [
+"Late 600 beyond the tempo"
+],
 "7|Statuario": [],
 "7|Ambassadorial": [
 "Well backed before a bad last run"
@@ -186,8 +180,8 @@
 "8|Wingsandpropellers": [
 "Well backed before a bad last run"
 ],
-"8|Miewa": [],
 "8|King Tut": [],
+"8|Foxenberg": [],
 "8|Rosa Aotearoa": [
 "Back in trip after being handy"
 ]
