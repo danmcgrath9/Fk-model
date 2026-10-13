@@ -37,10 +37,14 @@ def main():
     v = json.load(open(f"{L}/{a.prefix}-{a.gtag}-v6.json"))
     field = {}
     for r in v: field[int(r["race"])] = field.get(int(r["race"]), 0) + 1
+    B = f"{L}/{a.prefix}-{a.gtag}"
+    fs = set(json.load(open(f"{B}-first-starters.json"))) if os.path.exists(f"{B}-first-starters.json") else set()
+    fu = json.load(open(f"{B}-first-up-blocks.json")) if os.path.exists(f"{B}-first-up-blocks.json") else {}
     rows = []
     for r in v:
-        k = (int(r["race"]), norm(r["horse"]))
+        k = (int(r["race"]), norm(r["horse"])); hk = f"{int(r['race'])}|{r['horse']}"
         if k not in px or not px[k][1]: continue
+        if hk in fs or (fu.get(hk) and not fu[hk].startswith("EARLY")): continue   # the sheet's own blocks
         now, op = px[k]; ours = 1 / r["p"]; take = 1.2 * ours
         if not (1.6 <= ours <= 15 and op >= take and op < 3 * ours): continue
         s0 = got.get(k, 0.0)

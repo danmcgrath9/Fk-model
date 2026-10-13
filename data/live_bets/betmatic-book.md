@@ -21,3 +21,15 @@ prices before the market (Caulfield from Monday evening's price file, Warrnamboo
 250 orders on 37 runners, 10 filled, 5.04u; Katoto's orders void (scratched); deductions measured on race morning R2 31c
 (Katoto, Boys Bounce, Refuse To Curtsy), R4 5c, R5 9c, R7 0c, R8 3c. Warrnambool 15 Oct: 199 orders on 31 runners, 7
 filled, 3.54u; Kid Dynamite (R8) missed by under 1%.
+
+## 9:30am top-ups (paper, tracked from 14 Oct 2026)
+Each race day at 9:30am, after scratchings: prices refreshed, our market re-priced on the final field, and every bet that
+was value at its open and is still at or over take-at at the 9:30am price topped up to the full sheet stake, less what
+the BetMatic orders already got (research/form_gbm/topup.py, DAYPREFIX-topups.csv). No deduction (struck after the
+scratchings). The backtest says the top-up slice loses (t_topup.py: -7.6% holdout at BSP; t_topup_timed.py: 6 top-ups on
+41 timed races, -27%), so this is a live sample to confirm or overturn that, not a rule.
+
+| Meeting | Race | Horse | Opened | 9:30am price | Ours (final field) | BetMatic stake | Top-up | Result | P/L (u) |
+|---|---|---|---|---|---|---|---|---|---|
+
+Caulfield 14 Oct (re-priced 8:45am): 5 value-at-open runners on the final field, all under take-at at race-morning prices, so no top-ups.

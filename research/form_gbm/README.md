@@ -789,3 +789,8 @@ the jump): 13 bets, -75%. Adding the top-up takes the holdout from +803u to +788
 ones we would want more of have firmed past take-at by then. Not a top-up rule. Limit: the datasets hold final fields
 only, so the moment scratchings shorten our price before the market moves is not simulated; the saved race-morning price
 files (from 14 Oct) will allow a proper test after a few weeks.
+- Timed replay (t_topup_timed.py, 41 resulted races since 3 Oct with timed flucs and live model prices; the field before
+  the scratchings rebuilt by putting the scratched runners' share of the opening market back; the real price at 9:30am
+  race day): orders at the open 31 bets, 4 won, +37.5% staked; with the 9:30am top-up 37 bets, +28.5%; the top-up slice
+  alone 6 bets, 2 won, -27% (one 3.75u top-up that ran 2nd decides it). Same direction as the backtest, far too small to
+  settle. Tracked live from 14 Oct (topup.py, betmatic-book.md).

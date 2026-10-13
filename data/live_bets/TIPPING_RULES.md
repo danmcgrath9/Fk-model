@@ -29,3 +29,6 @@ Every meeting is now run and recorded as if the bets went through BetMatic at th
 4. The race-level first-starter rule needs the market, so it is checked once the market is up; a filled order in such a
    race is marked, not deleted (taken is taken).
 Until BetMatic is live these are paper bets; what the founder actually takes stays in live-record.md.
+5. **9:30am top-up check (from 14 Oct 2026, paper):** on race day at 9:30am, after scratchings, refresh prices, re-price
+   on the final field and run `research/form_gbm/topup.py DAYPREFIX GTAG`; log any top-ups in the top-up section of
+   betmatic-book.md and settle them with the results. Tracked to see whether a top-up earns; the backtests say it does not.
