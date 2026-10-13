@@ -56,7 +56,7 @@ def main():
     n_orders = sum(counts.values())
     sec = (f"{START}<h2>BetMatic: filled at the open ({len(rows)})</h2><div class='tw'>{body}</div>"
            f"<div class='note'>The order file BetMatic would have been sent before the market ({n_orders} orders on {len(counts)} runners: "
-           f"minimum odds from our model, 5% under, stake in up to three price steps). Filled where Form King's opening price was at or over "
+           f"minimum odds from our model, 5% under, stake in up to eight price steps). Filled where Form King's opening price was at or over "
            f"the minimum. {tot:.2f}u (${tot * 100:.0f})" + (f", P/L {pl:+.2f}u" if won else "") + ". Deduction = the race's scratchings after the "
            f"open, taken off the winnings.</div><div style='height:14px'></div>{END}")
     page = open(a.page).read()

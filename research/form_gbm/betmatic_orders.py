@@ -5,9 +5,9 @@
 BEFORE THE MARKET (default): every runner the live rules could bet, priced on our model alone, gets a minimum odds
     min odds = 0.95 x (1.2 / p_model^0.82)^(1/0.78)
 (the blend with the open, worked backwards, shaded 5%: t_betmatic.py found 5% recovers most of the bets the unshaded
-formula misses without letting weak ones in) and a stake in up to three price tiers, so the stake grows with the price
-the market opens at: tier prices are the minimum, x1.25 and x1.5, each tier its own order carrying the extra stake the
-live stake rule (stake_rule.py) gives at that price, with our chance at that open taken from the same blend.
+formula misses without letting weak ones in) and a stake in up to eight price steps (the minimum x1 to x2), so the stake grows with the
+price the market opens at: each step its own order carrying the extra stake the live stake rule (stake_rule.py)
+gives at the next step's price, with our chance at that open taken from the same blend.
 Filters: our price $1.60-$15, no first starters, no first-up/bounce blocks, EARLY-only runners only at $8 or shorter,
 and nothing at 3x our price or more. The race-level first-starter rule (no bets in a race where a first starter opens
 $6 or shorter) needs the market, so it cannot be in a pre-open order: check it when the market is up.
@@ -20,17 +20,19 @@ import argparse, csv, json, os, sys
 here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, here)
 import stake_rule
 L = os.path.join(here, "../../data/live_bets")
-SHADE, TIERS = 0.95, (1.0, 1.25, 1.5)
+SHADE, TIERS = 0.95, (1.0, 1.1, 1.2, 1.3, 1.45, 1.6, 1.8, 2.0)   # 14 Oct: 8 steps sized at the next step (t_betmatic_tiers.py)
 
 
 def tiers(min_odds, cap, chance_at, only_ride, field):
-    """[(price, extra stake, total stake)]: each tier adds what the stake rule gives at its price over the tier before."""
+    """[(price, extra stake, total stake)]: each step adds what the stake rule gives at the NEXT step's price over the
+    steps before it, so a horse opening anywhere in a step is staked as if at the top of it (14 Oct 2026,
+    t_betmatic_tiers.py: 8 steps sized this way made 18% more on the holdout than 3 steps sized at their own price,
+    at the same ROI). The last step is sized at its own price."""
+    ts = [round(min_odds * m, 2) for m in TIERS if min_odds * m < cap]
     out, prev = [], 0.0
-    for m in TIERS:
-        t = round(min_odds * m, 2)
-        if t >= cap:
-            break
-        s = stake_rule.stake(chance_at(t), t, only_ride, field)
+    for k, t in enumerate(ts):
+        tp = ts[k + 1] if k + 1 < len(ts) else t
+        s = stake_rule.stake(chance_at(tp), tp, only_ride, field)
         if s - prev >= 0.01:
             out.append((t, round(s - prev, 2), s)); prev = s
     return out
@@ -40,10 +42,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("prefix"); ap.add_argument("gtag"); ap.add_argument("out")
     ap.add_argument("--times", default=""); ap.add_argument("--after-open", action="store_true")
+    ap.add_argument("--v6", help="price file to use instead of DAYPREFIX-GTAG-v6.json (e.g. the version priced before the market)")
     a = ap.parse_args()
     B = f"{L}/{a.prefix}-{a.gtag}"
     times = dict(x.split("=", 1) for x in a.times.split(",") if "=" in x)
-    v = json.load(open(f"{B}-v6.json"))
+    v = json.load(open(a.v6 or f"{B}-v6.json"))
     field = {}
     for r in v:
         field[int(r["race"])] = field.get(int(r["race"]), 0) + 1

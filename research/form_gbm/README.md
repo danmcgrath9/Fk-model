@@ -770,3 +770,11 @@ fixed stake (set at the minimum odds) earns about 55-60% of what staking by the 
 overlays open well above their minimum. If BetMatic cannot take a stake that scales with price, send each horse as
 two or three orders at rising minimum odds (each its own slice of the stake). Assumes every fill is at Form King's
 average open, with no bookmaker limits.
+
+## BetMatic staking: getting closer to the sheet's stake (14 Oct 2026, t_betmatic_tiers.py; founder: "we wanted to be 8.6 invested but on the BetMatic theory we have less")
+Holdout, orders at the 5%-shaded minimum, the stake a ladder of orders at rising prices: 3 steps (x1, x1.25, x1.5) each
+sized at its own price staked 1,366u for +679u (+49.7%); sized at the NEXT step's price 1,758u, +801u (+45.6%); 8 steps
+(x1 to x2) sized at the next step 1,691u, +801u (+47.4%). The sheet (exact stake at the real open) is 2,214u, +1,014u
+(+45.8%); a stake that follows the price exactly (if BetMatic offers one) is +893u (t_betmatic.py). Checking the $15 band
+on the blended price at the order's own price instead of the model price drops a profitable class of long ones (-40u),
+so it stays on the model price. betmatic_orders.py now uses the 8 steps sized at the next step.
