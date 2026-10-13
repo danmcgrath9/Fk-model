@@ -1,0 +1,5 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+4,CAUL_171026_4,Regal Ambition,top_pick,4.4,4.4,4.4,,4.4,4.95,-0.11,,1.0,no,,
+8,CAUL_171026_8,Cosmic Crusader,value_20c,4.5,4.5,4.5,,4.5,3.75,0.201,,2.56,no,,
+8,CAUL_171026_8,Cosmic Crusader,top_pick,4.5,4.5,4.5,,4.5,3.75,0.201,,1.0,no,,
+8,CAUL_171026_8,Kingswood,value_20c,26.0,26.0,26.0,,26.0,11.04,1.354,,2.0,no,,

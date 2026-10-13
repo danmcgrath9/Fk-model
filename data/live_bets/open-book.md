@@ -20,3 +20,5 @@ Every meeting, the bets the live rules would have struck at Form King's opening 
 | 2026-10-14 Caulfield (S5) | R6 | Freedom Flame | $15 | - | $12.45 | 0.33u | | | |
 | 2026-10-14 Caulfield (S5) | R7 | Darkbonee | $4.8 | - | $3.92 | 1.31u | | | |
 | 2026-10-14 Caulfield (S5) | R7 | Prince Eric | $11 | - | $9.03 | 0.49u | | | |
+| 2026-10-17 Caulfield (G4) | R8 | Cosmic Crusader | - | $4.5 | $3.75 | 2.56u | | | |
+| 2026-10-17 Caulfield (G4) | R8 | Kingswood | - | $26 | $11.04 | 2u | | | |
