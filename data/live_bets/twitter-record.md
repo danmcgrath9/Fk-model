@@ -75,10 +75,10 @@ Kilmore 13 Oct (Soft 5; blended price; tweeted Monday evening at the 7:45pm pric
 
 | Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
 |---|---|---|---|---|---|---|---|---|---|
-| 2026-10-13 | Kilmore (S5) | R7 | Winter Nights | $18 | $12.30 | 0.6u | unplaced (Celestial Splendor won) | | -0.6 |
+| 2026-10-13 | Kilmore (S5) | R7 | Winter Nights | $18 | $12.30 | 0.6u | 3rd (Celestial Splendor won) | SP $12 | -0.6 |
 | 2026-10-13 | Kilmore (S5) | R7 | Spirit Angel | $14 | $11.65 | 0.35u | not tipped (ran 2nd on the Monday, scratched) | | 0 |
 
-Kilmore 13 Oct: 1 tip, 0 winners, 0.6u, -0.6u (result from the founder; Form King results not out at 7pm, SP to fill). Running total (win tips): 26 settled, 1 winner, -19.91u; lays 2 from 2, +2u.
+Kilmore 13 Oct: 1 tip, 0 winners, 0.6u, -0.6u (confirmed against Form King's results 14 Oct). Running total (win tips): 26 settled, 1 winner, -19.91u; lays 2 from 2, +2u.
 
 Caulfield 14 Oct (Good 4 list; blended price; tweeted Monday evening at the 7:48pm prices; Lincoln Rocks R6 $16 0.35u is a Soft 5 addition, not tweeted unless the track is called Soft):
 

@@ -13,7 +13,8 @@ Live stakes from stake_rule.py ($100 a unit, most 5u); flat = 1u a bet. CLV = op
 | Fri 9 Oct Cranbourne (G4) | 1 | 0 | 0.49u | -0.49u | -1.00u | 0.76 | 0/1 |
 | Sat 10 Oct Caulfield (G4) | 2 | 0 | 2.23u | -2.23u | -2.00u | 0.73 | 0/2 |
 | Sun 11 Oct Seymour (G4) | 9 | 0 | 13.98u | -13.98u | -9.00u | 0.95 | 4/9 |
-| **Total** | **28** | **3** | **39.32u** | **-16.22u (-41%)** | **-16.66u** | **1.15** | **15/28** |
+| Tue 13 Oct Kilmore (S5) | 1 | 0 | 0.58u | -0.58u | -1.00u | 1.09 | 1/1 |
+| **Total** | **29** | **3** | **39.90u** | **-16.80u (-42%)** | **-17.66u** | **1.15** | **16/29** |
 
 ## Every bet
 
@@ -47,3 +48,4 @@ Live stakes from stake_rule.py ($100 a unit, most 5u); flat = 1u a bet. CLV = op
 | Sun 11 Oct Seymour (G4) | R10 | Chest Of Gold | $26 | $12.03 | 0.88u | 13 | $17.13 | 37c | -0.88 |
 | Sun 11 Oct Seymour (G4) | R10 | Chicago Blues | $14 | $8.60 | 0.99u | 8 | $16.50 | 37c | -0.99 |
 | Sun 11 Oct Seymour (G4) | R10 | Savoyard | $2.6 | $2.04 | 2.5u | 5 | $3.05 | 37c | -2.50 |
+| Tue 13 Oct Kilmore (S5) | R7 | Winter Nights | $18 | $12.30 | 0.58u | 3 | $16.44 | 18c | -0.58 |

@@ -18,6 +18,7 @@ MEETINGS = [
     ("Fri 9 Oct Cranbourne (G4)", "cranbourne-20261009", "2026-10-09-cranbourne-g4", "2026-10-09-cranbourne-prices-thu930.txt"),
     ("Sat 10 Oct Caulfield (G4)", "caulfield-20261010", "2026-10-10-caulfield-g4", "2026-10-10-caulfield-prices-wed927pm.txt"),
     ("Sun 11 Oct Seymour (G4)", "seymour-20261011", "2026-10-11-seymour-g4", "2026-10-11-seymour-prices-fri115.txt"),
+    ("Tue 13 Oct Kilmore (S5)", "kilmore-20261013", "2026-10-13-kilmore-s5", "2026-10-13-kilmore-prices-mon745pm.txt"),
 ]
 norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower())
 res_p, out_p = sys.argv[1:3]
