@@ -23,7 +23,7 @@ exceptions for "small" edits, for messages he described in outline, or for ones 
 
 ## The BetMatic standard (13 Oct 2026, founder: "treating like BetMatic, and then that's how we document everything from now on")
 Every meeting is now run and recorded as if the bets went through BetMatic at the open:
-1. **Before the market opens** (straight after the 10:30 fields pull): `research/form_gbm/betmatic_orders.py DAYPREFIX GTAG OUT.csv`
+1. **Before the market opens** (straight after the 11:30am fields pull: one pull per meeting bet, no retries, founder 14 Oct "make all pulls at 11:30am now so we dont waste credits"): `research/form_gbm/betmatic_orders.py DAYPREFIX GTAG OUT.csv`
    writes the order file, `data/live_bets/DAYPREFIX-betmatic-preopen.csv`: every runner the rules could bet, a minimum odds
    from our model alone shaded 5% (`0.95 x (1.2 / p_model^0.82)^(1/0.78)`, tested in t_betmatic.py) and the stake in up to
    three price tiers so it grows with the opening price. This is the file BetMatic would be sent.
