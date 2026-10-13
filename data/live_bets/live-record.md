@@ -26,6 +26,7 @@
 | 10 Oct | Caulfield | Grand Larceny | 1.18u | $16.00 | 4th (SP $16) | -1.18 |
 | 10 Oct | Caulfield | Changing Colours | 2.18u | $8.00 | 2nd (SP $8) | -2.18 |
 | 10 Oct | Caulfield | Sunset Park, Run Harry Run | 3.16u | - | scratched, refunded | 0 |
+| 15 Oct | Warrnambool | Who I Think I Am (R3) | 2.1u | $4.40 (deductions if R3 has scratchings) | | |
 
 Caulfield 10 Oct: -5.31u (the Wednesday opening bets; Ballarat and Cranbourne 9 Oct not confirmed as taken, so not in this record).
 
