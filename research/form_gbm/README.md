@@ -715,3 +715,10 @@ deduction is a flat 16c here and really varies by race.
   0.84, overrated by BOTH markets (the "it ran a big middle section" story is priced in, and then some).
 - EARLY section top 15%: 0.95 / 0.93, slightly overrated by both.
 So the early market misses the closing sectionals, not the mid-race ones.
+
+## The bounce block at the OPEN, 13 Oct 2026 (it was only ever tested at BSP)
+Value-at-open bets whose last start was a new career-best rating by 3+ points, against the rest; flat at the open,
+after the 16c deduction, and at BSP. HOLD: bounce 146 bets +24% / +7% / -15%, rest 1,203 +52% / +31% / -12%.
+OLD: bounce 205 bets +61% / +39% / +3%, rest 2,943 +43% / +23% / -8%. Inconsistent between samples and profitable at
+the open in both, so the BSP-tested block does not carry over to betting at the open. (Founder query: Regal Ambition,
+Thousand Guineas, was blocked by it, not by the first-up rule as the take-at list mislabelled it.)
