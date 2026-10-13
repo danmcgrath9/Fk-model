@@ -256,7 +256,7 @@ def main() -> None:
         rows += list(H.resulted_races(Path(a.history), a.state, skip=in_db))
         B.fill_going(rows)
     try:
-        pre = set(db.races_pulled_before_the_jump(a.state))
+        pre = H.pulled_before_jump(db, Path(a.history), a.state)
     except Exception as ex:  # noqa: BLE001
         print(f"pulled-before-the-jump flag unavailable: {ex}")
         pre = set()

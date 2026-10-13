@@ -20,6 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import load_settings  # noqa: E402
 from fk import backtest as B  # noqa: E402
+from fk import history as H  # noqa: E402
 from fk.db import Db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -115,7 +116,7 @@ def main() -> None:
     # carry anything from after the jump; races back-filled weeks later might. A feature
     # whose gain lives only on the back-filled races is reading the future, not the form.
     try:
-        pre = Db(load_settings().database_url).races_pulled_before_the_jump(a.state)
+        pre = H.pulled_before_jump(Db(load_settings().database_url), Path(a.history), a.state)
     except Exception as ex:  # noqa: BLE001
         print(f"\nleakage check skipped: {type(ex).__name__}: {ex}")
         return

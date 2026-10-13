@@ -114,3 +114,17 @@ def resulted_races(directory: Path | None, state: str | None = "VIC", skip: set[
             if state is not None and b.get("state") != state:
                 continue
             yield b
+
+
+def pulled_before_jump_ids(directory: Path | None, state: str | None = "VIC") -> set[str]:
+    """Races in the files that the live pipeline pulled before the jump: the file half of
+    Db.races_pulled_before_the_jump. Only races moved out of the database by
+    scripts/db_to_history.py carry the flag; a back-test day file was pulled after its races
+    ran, so it has none and reads as False, which is what it is."""
+    return {b["race_id"] for p in files(directory) for b in read_file(p)
+            if b.get("pulled_before_jump") and (state is None or b.get("state") == state)}
+
+
+def pulled_before_jump(db: Any, directory: Path | None, state: str | None = "VIC") -> set[str]:
+    """Every live-pipeline race, wherever it is held: the database's and the files'."""
+    return set(db.races_pulled_before_the_jump(state)) | pulled_before_jump_ids(directory, state)

@@ -222,8 +222,9 @@ def main() -> None:
     leak = {}
     try:
         from _common import load_settings
+        from fk import history as H
         from fk.db import Db
-        pre = Db(load_settings().database_url).races_pulled_before_the_jump(a.state)
+        pre = H.pulled_before_jump(Db(load_settings().database_url), Path(a.history), a.state)
         before = [r for r in test if r.race_id in pre]
         after = [r for r in test if r.race_id not in pre]
         print(f"\nLeakage check: pulled before the jump {len(before)}, back-filled {len(after)}. "

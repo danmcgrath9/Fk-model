@@ -92,8 +92,9 @@ def main() -> None:
 
     try:
         from _common import load_settings
+        from fk import history as H
         from fk.db import Db
-        pre = Db(load_settings().database_url).races_pulled_before_the_jump(a.state)
+        pre = H.pulled_before_jump(Db(load_settings().database_url), Path(a.history), a.state)
         live = [r for r in test if r.race_id in pre]
         print(f"\nOnly the {len(live)} newer races the live pipeline pulled BEFORE the jump (no back-filled data at all):\n")
         print("| rule | bets | winners | at the opening price | at Betfair SP | at BSP less 8% |")

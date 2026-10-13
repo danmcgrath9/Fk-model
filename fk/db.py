@@ -135,14 +135,23 @@ class Db:
         ).fetchall()
         return [{"past_event_id": r[0], "event_date": r[1], "raw": r[2]} for r in rows]
 
-    def resulted_races(self, state: str | None = "VIC") -> list[dict[str, Any]]:
+    def resulted_races(self, state: str | None = "VIC", before: str | None = None) -> list[dict[str, Any]]:
         """Every stored race with an official result, for the back-test: (race_id, date,
         track, entries raw). A race pulled AFTER it ran carries the result inside each entry
         (horseResult); a race pulled the night before, the live pipeline's way, has its
         result in fk.results from the morning job, and that is folded into the entry here
         under the same horseResult key, so the fit sees the form as it stood before the
         jump and the result as it came in. Without this the fit stopped at the last
-        back-test pull and never learned from a day the pipeline ran."""
+        back-test pull and never learned from a day the pipeline ran.
+
+        `before` (an ISO date) keeps only meetings before that day: scripts/db_to_history.py
+        uses it to copy old races out to the history files. Each row also carries the
+        meeting's state and `pulled_before_jump` (the races_pulled_before_the_jump test for
+        that race), so a race moved to a file keeps both.
+
+        A race counts as held here only while its runners are: once a race's entries have
+        moved to the history files, its fk.results rows stay behind, and without this test
+        the race would come back with no runners and hide the file's full copy."""
         # Two light passes instead of one heavy one. The single query aggregated every
         # runner's whole form into one GROUP BY, which Postgres sorted on disk, and after the
         # June and July pull that sort ran the database out of space. The races come first
@@ -151,14 +160,19 @@ class Db:
         races = self.conn.execute(
             """select r.race_id, m.meeting_date, m.track, r.distance_m, (r.raw->>'lws')::numeric,
                       sm.runners, sm.raw->'expectedTempo',
-                      nullif(trim(concat(r.raw->>'going', ' ', r.raw->>'goingNumber')), '')
+                      nullif(trim(concat(r.raw->>'going', ' ', r.raw->>'goingNumber')), ''),
+                      m.state,
+                      (select min(e.fetched_at) from fk.entries e where e.race_id = r.race_id)
+                          < (m.meeting_date::timestamp at time zone 'UTC')
                from fk.races r join fk.meetings m using (meeting_id)
                     left join fk.speedmaps sm on sm.race_id = r.race_id
                where (%s::text is null or m.state = %s)
+                 and (%s::date is null or m.meeting_date < %s::date)
+                 and exists (select 1 from fk.entries e where e.race_id = r.race_id)
                  and (exists (select 1 from fk.results res where res.race_id = r.race_id and res.finish_position is not null)
                       or exists (select 1 from fk.entries e where e.race_id = r.race_id and e.raw ? 'horseResult'))
                order by m.meeting_date, m.track, r.race_id""",
-            (state, state),
+            (state, state, before, before),
         ).fetchall()
         out = []
         for i in range(0, len(races), RESULTED_BATCH):
@@ -183,7 +197,8 @@ class Db:
             for r in batch:
                 out.append({"race_id": r[0], "date": str(r[1]), "track": r[2], "distance_m": r[3],
                             "lws": float(r[4]) if r[4] is not None else None, "entries": entries[r[0]],
-                            "speedmap": r[5], "tempo": r[6], "going": r[7]})
+                            "speedmap": r[5], "tempo": r[6], "going": r[7], "state": r[8],
+                            "pulled_before_jump": bool(r[9])})
         return out
 
     # ---- the paper book ------------------------------------------------------------
