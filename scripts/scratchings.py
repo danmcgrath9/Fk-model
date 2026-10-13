@@ -39,7 +39,7 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
             print(f"R{rn} {name!s:24s} {'SCR' if scr else '   '} {json.dumps(prices)[:120]} {json.dumps({k:v for k,v in flags.items() if v})[:120]}")
 
     # The same meeting as a live_bets prices file: best price now in both columns, Form King's average
-    # opening price fifth, scratched runners as SCR (6 Oct 2026). Paste below "## prices file".
+    # opening price fifth, scratched runners as SCR with their last price kept (6 Oct, 13 Oct 2026). Paste below "## prices file".
     for mid in sys.argv[1:]:
         rows = c.execute("""select r.race_number, e.raw from fk.entries e join fk.races r using (race_id)
                             where r.meeting_id = %s order by r.race_number""", (mid,)).fetchall()
@@ -49,8 +49,8 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
             scr = any(("scratch" in k.lower() and v) for k, v in find(raw, r"scratch"))
             o = raw.get("odds") if isinstance(raw.get("odds"), dict) else {}
             now, op = o.get("bestNow"), o.get("avgOpen")
-            if scr:
-                print(f"{rn}, {name}, SCR")
+            if scr:   # keep its last price: an open bet's deduction is set by it (13 Oct 2026, deductions.py)
+                print(f"{rn}, {name}, SCR" + (f", last {float(now):.2f}" if now else "") + (f", fk_open {float(op):.2f}" if op else ""))
             elif now:
                 print(f"{rn}, {name}, {float(now):.2f}, {float(now):.2f}" + (f", fk_open {float(op):.2f}" if op else ""))
             else:
