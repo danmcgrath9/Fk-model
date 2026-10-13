@@ -1,83 +1,94 @@
-# Kilmore Tue 13 Oct: Form King best price at the Monday 7:45pm pull, both columns; fifth field Form King's average opening price. Scratched runners and emergencies not gaining a start as SCR.
-1, Forward Ho, 14.00, 14.00, fk_open 8.50
-1, Zephartie, SCR
-1, Cool Aza Breeze, 23.00, 23.00, fk_open 12.00
-1, Theatrical Queen, 6.50, 6.50, fk_open 4.20
-1, Red Light Rachel, 18.00, 18.00, fk_open 12.00
-1, Sweet But Sassy, 81.00, 81.00, fk_open 101.00
-1, Grandstraz, SCR
-1, Lacessit, 151.00, 151.00, fk_open 101.00
-1, Billycart, 16.00, 16.00, fk_open 12.00
-1, Ambition In Bloom, 7.50, 7.50, fk_open 6.00
-1, Full Confidence, 1.65, 1.65, fk_open 2.60
-1, Blue Gamble, 8.50, 8.50, fk_open 7.50
-2, Storm Bella, 27.00, 27.00, fk_open 13.00
-2, Queens Code, SCR
-2, Diamonds For Her, SCR
-2, Nishioka, 3.60, 3.60, fk_open 4.00
-2, Sound Byte, 7.50, 7.50, fk_open 8.00
-2, Just Jean, 31.00, 31.00, fk_open 13.00
-2, Prolocutor, 3.60, 3.60, fk_open 7.00
-2, Moonlight Bid, SCR
-2, Vanara Princess, 21.00, 21.00, fk_open 9.50
-2, Tighten Up, 5.50, 5.50, fk_open 9.50
-2, Hurricane Girl, 23.00, 23.00, fk_open 26.00
-2, Flamenco Star, 8.00, 8.00, fk_open 5.00
-3, Smashing Ruby, 35.00, 35.00, fk_open 71.00
-3, Vizie, 18.00, 18.00, fk_open 31.00
-3, Pure Rain, 71.00, 71.00, fk_open 101.00
-3, She Nailed It, 27.00, 27.00, fk_open 51.00
-3, Deep Joy, 81.00, 81.00, fk_open 101.00
+# Kilmore Tue 13 Oct, race-day snapshot 1:26pm (after scratchings): Form King best price now, fk_open, scratched runners with their last price.
+1, Forward Ho, 18.00, 18.00, fk_open 8.50
+1, Zephartie, 126.00, 126.00, fk_open 81.00
+1, Cool Aza Breeze, SCR, last 23.00, fk_open 12.00
+1, Theatrical Queen, 9.00, 9.00, fk_open 4.20
+1, Red Light Rachel, 26.00, 26.00, fk_open 12.00
+1, Sweet But Sassy, 126.00, 126.00, fk_open 101.00
+1, Grandstraz, SCR, last 91.00, fk_open 81.00
+1, Lacessit, 201.00, 201.00, fk_open 101.00
+1, Billycart, 23.00, 23.00, fk_open 12.00
+1, Ambition In Bloom, 8.50, 8.50, fk_open 6.00
+1, Full Confidence, 1.55, 1.55, fk_open 2.60
+1, Blue Gamble, 6.00, 6.00, fk_open 7.50
+2, Storm Bella, 18.00, 18.00, fk_open 13.00
+2, Queens Code, SCR, last 18.00, fk_open 13.00
+2, Diamonds For Her, SCR, last 26.00, fk_open 13.00
+2, Nishioka, 3.00, 3.00, fk_open 4.00
+2, Miss Graff, SCR
+2, Je Suis Beyonce, SCR
+2, Sound Byte, 4.40, 4.40, fk_open 8.00
+2, Just Jean, 41.00, 41.00, fk_open 13.00
+2, Prolocutor, 3.80, 3.80, fk_open 7.00
+2, Moonlight Bid, 251.00, 251.00, fk_open 126.00
+2, Vanara Princess, 34.00, 34.00, fk_open 9.50
+2, Tighten Up, 6.50, 6.50, fk_open 9.50
+2, Lipstick Legal, SCR
+2, High Yield, SCR
+2, Hurricane Girl, 20.00, 20.00, fk_open 26.00
+2, Flamenco Star, 12.00, 12.00, fk_open 5.00
+3, Smashing Ruby, 41.00, 41.00, fk_open 71.00
+3, Vizie, 21.00, 21.00, fk_open 31.00
+3, Pure Rain, 81.00, 81.00, fk_open 101.00
+3, She Nailed It, 18.00, 18.00, fk_open 51.00
+3, Deep Joy, 101.00, 101.00, fk_open 101.00
 3, Asmita, 5.50, 5.50, fk_open 6.00
 3, Sugar Schnapps, 3.20, 3.20, fk_open 2.90
-3, Succaforyou, 5.50, 5.50, fk_open 9.00
-3, Bliss Bomb, 4.60, 4.60, fk_open 6.00
-3, Le Notre, 4.50, 4.50, fk_open 3.90
-4, La Cache A Vin, 101.00, 101.00, fk_open 51.00
-4, Sub Gauge, SCR
-4, Suspect, 8.50, 8.50, fk_open 11.00
-4, Flux, 8.50, 8.50, fk_open 5.50
-4, Seeyou Raider, 10.00, 10.00, fk_open 10.00
-4, Eight Under, 51.00, 51.00, fk_open 34.00
-4, Black Adam, 10.00, 10.00, fk_open 7.00
-4, Manchego, 3.20, 3.20, fk_open 2.50
-4, Ryanman, 21.00, 21.00, fk_open 14.00
-4, I Said So, 3.30, 3.30, fk_open 5.00
-4, Royal Heritage, 14.00, 14.00, fk_open 14.00
-4, Grassilli, 151.00, 151.00, fk_open 71.00
-5, Adki, 5.00, 5.00, fk_open 3.60
-5, Ellmaknifico, SCR
-5, I'm Dynamite, 11.00, 11.00, fk_open 9.00
-5, Testing The Cugat, 23.00, 23.00, fk_open 41.00
-5, Mishima, SCR
-5, Squagaga, SCR
+3, Think Sassy, SCR
+3, Succaforyou, 6.00, 6.00, fk_open 9.00
+3, Luminary Miss, SCR
+3, Bliss Bomb, 5.00, 5.00, fk_open 6.00
+3, Le Notre, 4.00, 4.00, fk_open 3.90
+4, La Cache A Vin, 71.00, 71.00, fk_open 51.00
+4, Sub Gauge, SCR, last 16.00, fk_open 11.00
+4, Suspect, 9.00, 9.00, fk_open 11.00
+4, Flux, 6.75, 6.75, fk_open 5.50
+4, Mickidamuzz, SCR
+4, Seeyou Raider, 5.00, 5.00, fk_open 10.00
+4, Eight Under, 41.00, 41.00, fk_open 34.00
+4, Black Adam, 8.00, 8.00, fk_open 7.00
+4, Manchego, SCR, last 3.20, fk_open 2.50
+4, Ryanman, 12.00, 12.00, fk_open 14.00
+4, I Said So, 2.70, 2.70, fk_open 5.00
+4, Royal Heritage, 7.50, 7.50, fk_open 14.00
+4, Grassilli, 101.00, 101.00, fk_open 71.00
+5, Adki, 6.00, 6.00, fk_open 3.60
+5, Ellmaknifico, SCR, last 23.00, fk_open 41.00
+5, I'm Dynamite, 13.00, 13.00, fk_open 9.00
+5, Testing The Cugat, 26.00, 26.00, fk_open 41.00
+5, Mishima, SCR, last 7.50, fk_open 7.00
+5, Squagaga, SCR, last 23.00, fk_open 26.00
 5, Slate Ripper, 5.50, 5.50, fk_open 4.80
-5, Give Some Lip, 2.60, 2.60, fk_open 2.40
-5, Sacred Ingot, 11.00, 11.00, fk_open 9.00
-5, Knock Of Beers, 7.50, 7.50, fk_open 21.00
-5, Barrett Reef, SCR
+5, Give Some Lip, 2.65, 2.65, fk_open 2.40
+5, Sacred Ingot, 13.00, 13.00, fk_open 9.00
+5, Knock Of Beers, 4.80, 4.80, fk_open 21.00
+5, Barrett Reef, SCR, last 31.00, fk_open 51.00
 5, Rivazza, 11.00, 11.00, fk_open 15.00
 5, Battle Point, 41.00, 41.00, fk_open 41.00
-5, Somax, 41.00, 41.00, fk_open 41.00
-6, Tarakash, SCR
-6, Trinity's D'oro, 26.00, 26.00, fk_open 41.00
-6, Hidden Witness, SCR
-6, Sinister Sauce, 10.00, 10.00, fk_open 13.00
-6, Pacific Jewel, 11.00, 11.00, fk_open 9.00
+5, Somax, 51.00, 51.00, fk_open 41.00
+6, Tarakash, 26.00, 26.00, fk_open 13.00
+6, Trinity's D'oro, 23.00, 23.00, fk_open 41.00
+6, Hidden Witness, SCR, last 7.50, fk_open 6.00
+6, Sinister Sauce, 11.00, 11.00, fk_open 13.00
+6, Pacific Jewel, 15.00, 15.00, fk_open 9.00
 6, Hustle, 10.00, 10.00, fk_open 6.50
-6, No Overtaking, 17.00, 17.00, fk_open 9.00
-6, Mahmudah, 11.00, 11.00, fk_open 9.00
-6, Skydream, 1.90, 1.90, fk_open 1.85
-6, So You Excel, 21.00, 21.00, fk_open 21.00
-7, Dane On Tour, SCR
-7, Spirit Angel, 14.00, 14.00, fk_open 10.00
-7, Hell's Itch, 26.00, 26.00, fk_open 19.00
-7, Switch Hit, 2.45, 2.45, fk_open 3.20
-7, Monsun's Pride, 35.00, 35.00, fk_open 23.00
-7, Great Prosperity, 15.00, 15.00, fk_open 7.50
-7, Grunnettan, 35.00, 35.00, fk_open 19.00
-7, Sensational Ruler, 21.00, 21.00, fk_open 16.00
-7, Celestial Splendor, 7.00, 7.00, fk_open 19.00
-7, Dance Lady, 9.50, 9.50, fk_open 7.50
-7, Immortalised, 14.00, 14.00, fk_open 14.00
-7, Winter Nights, 18.00, 18.00, fk_open 16.00
+6, No Overtaking, 18.00, 18.00, fk_open 9.00
+6, You Said What, SCR
+6, Mahmudah, 13.00, 13.00, fk_open 9.00
+6, Skydream, 1.40, 1.40, fk_open 1.85
+6, So You Excel, 26.00, 26.00, fk_open 21.00
+6, Snitchy, SCR
+6, Carnival Riches, SCR
+7, Dane On Tour, 4.80, 4.80, fk_open 4.00
+7, Spirit Angel, SCR, last 14.00, fk_open 10.00
+7, Hell's Itch, 21.00, 21.00, fk_open 19.00
+7, Switch Hit, 2.40, 2.40, fk_open 3.20
+7, Monsun's Pride, 29.00, 29.00, fk_open 23.00
+7, Great Prosperity, SCR, last 15.00, fk_open 7.50
+7, Grunnettan, 26.00, 26.00, fk_open 19.00
+7, Sensational Ruler, SCR, last 21.00, fk_open 16.00
+7, Celestial Splendor, 6.50, 6.50, fk_open 19.00
+7, Dance Lady, 6.00, 6.00, fk_open 7.50
+7, Immortalised, 12.00, 12.00, fk_open 14.00
+7, Washington Lilac, SCR
+7, Winter Nights, 13.00, 13.00, fk_open 16.00
