@@ -1,0 +1,16 @@
+{
+ "day": "Thursday",
+ "date": "15 October",
+ "footer": "Opening prices. Win bets.",
+ "meetings": [
+  {
+   "name": "Warrnambool",
+   "note": "Good 4",
+   "bets": [
+    {"race": 3, "horse": "Who I Think I Am", "price": "$6", "units": "2.5u", "time": "4:00PM"},
+    {"race": 6, "horse": "Buzitup", "price": "$11", "units": "0.66u", "time": "5:30PM"},
+    {"race": 7, "horse": "Both Sides Now", "price": "$15", "units": "0.38u", "time": "6:00PM"}
+   ]
+  }
+ ]
+}
