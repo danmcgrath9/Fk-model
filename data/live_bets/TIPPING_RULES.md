@@ -15,3 +15,17 @@
 Every message sent for the founder (Slack, email, anything) is shown to him as a final draft first, word for word, and is
 sent only after he approves that exact text. Changing the wording after his approval means showing it again. No
 exceptions for "small" edits, for messages he described in outline, or for ones he said to send before seeing them.
+
+## The BetMatic standard (13 Oct 2026, founder: "treating like BetMatic, and then that's how we document everything from now on")
+Every meeting is now run and recorded as if the bets went through BetMatic at the open:
+1. **Before the market opens** (straight after the 10:30 fields pull): `research/form_gbm/betmatic_orders.py DAYPREFIX GTAG OUT.csv`
+   writes the order file, `data/live_bets/DAYPREFIX-betmatic-preopen.csv`: every runner the rules could bet, a minimum odds
+   from our model alone shaded 5% (`0.95 x (1.2 / p_model^0.82)^(1/0.78)`, tested in t_betmatic.py) and the stake in up to
+   three price tiers so it grows with the opening price. This is the file BetMatic would be sent.
+2. **After the open**: `betmatic_fills.py ORDERS.csv DAYPREFIX` records which orders fill at Form King's opening price.
+   Those fills are the BetMatic bets, logged in `data/live_bets/betmatic-book.md`.
+3. **After the races**: the same script with `--results` settles them (scratching deductions applied); the book carries
+   each meeting's P/L beside the open book and the tips.
+4. The race-level first-starter rule needs the market, so it is checked once the market is up; a filled order in such a
+   race is marked, not deleted (taken is taken).
+Until BetMatic is live these are paper bets; what the founder actually takes stays in live-record.md.

@@ -1,4 +1,4 @@
-# Warrnambool Thu 15 Oct, Good 4: snapshot Tue 13 Oct 5:17pm Melbourne (markets open for R1-3 and R6-8; R4 and R5 not yet up). Form King best price now, fk_open = Form King's average opening price. Emergencies not yet in as SCR.
+# Warrnambool Thu 15 Oct, Good 4: snapshot Tue 13 Oct 5:46pm Melbourne (all eight markets up). Form King best price now, fk_open = Form King's average opening price. Emergencies not yet in as SCR.
 1, Northern Gold, 51.00, 51.00, fk_open 51.00
 1, Mamzelle Raine, 41.00, 41.00, fk_open 26.00
 1, Smart And Mighty, 34.00, 34.00, fk_open 26.00
@@ -15,12 +15,12 @@
 2, Trust My, 151.00, 151.00, fk_open 113.50
 2, Almorina, 14.00, 14.00, fk_open 11.50
 2, Black Aces, 5.50, 5.50, fk_open 11.00
-2, Jack Will, 5.50, 5.50, fk_open 4.60
+2, Jack Will, 6.00, 6.00, fk_open 4.60
 2, Symphony Sista, 14.00, 14.00, fk_open 11.00
 2, Prestige Erick, 5.00, 5.00, fk_open 5.50
 2, Semper Augustus, 3.90, 3.90, fk_open 3.55
 2, Prince Iadora, 14.00, 14.00, fk_open 11.00
-2, Balgownie Lad, 81.00, 81.00, fk_open 51.00
+2, Balgownie Lad, 91.00, 91.00, fk_open 51.00
 2, Stomping Ground, 14.00, 14.00, fk_open 11.00
 2, Ocean Surge, 14.00, 14.00, fk_open 11.50
 3, Monsoon Indi, 151.00, 151.00, fk_open 101.00
@@ -35,6 +35,29 @@
 3, Midnightbrilliance, 21.00, 21.00, fk_open 15.00
 3, Kermalina, 23.00, 23.00, fk_open 15.00
 3, A Rus In Grinzing, 15.00, 15.00, fk_open 11.00
+4, Cold Train, 23.00, 23.00, fk_open 11.00
+4, Conjurer, 21.00, 21.00, fk_open 15.00
+4, Heidi High, 34.00, 34.00, fk_open 26.00
+4, Deelamour, 101.00, 101.00, fk_open 51.00
+4, Black Hex, 61.00, 61.00, fk_open 26.00
+4, Rollin'ontheriver, 21.00, 21.00, fk_open 11.00
+4, Greystone, 101.00, 101.00, fk_open 51.00
+4, Ideas Galore, 18.00, 18.00, fk_open 11.00
+4, Princess Chic, 67.00, 67.00, fk_open 26.00
+4, Endless Fury, 3.40, 3.40, fk_open 6.00
+4, Winter Arc, 5.00, 5.00, fk_open 4.00
+4, Mack The Knife, 2.15, 2.15, fk_open 2.50
+5, Super Snitch, 51.00, 51.00, fk_open 51.00
+5, Raven's Silver, 17.00, 17.00, fk_open 11.00
+5, Ataegina, 7.50, 7.50, fk_open 8.00
+5, Ain't Tellin, 151.00, 151.00, fk_open 101.00
+5, The Daily Planet, 17.00, 17.00, fk_open 11.00
+5, Belcony, 4.20, 4.20, fk_open 8.00
+5, Diamond Eye, 5.00, 5.00, fk_open 6.00
+5, Fully Justified, 14.00, 14.00, fk_open 8.00
+5, Prestige Zerprise, 8.50, 8.50, fk_open 6.00
+5, Shades Of Stardom, 12.00, 12.00, fk_open 8.00
+5, High Falls, 3.40, 3.40, fk_open 3.50
 6, Phoenix Flyer, 151.00, 151.00, fk_open 101.00
 6, Port Louis, 26.00, 26.00, fk_open 11.00
 6, Helluva Barty, 9.00, 9.00, fk_open 4.60
