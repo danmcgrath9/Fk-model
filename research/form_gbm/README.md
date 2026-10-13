@@ -754,3 +754,19 @@ experienced (+35% / +34%); ran recently (+28% / +31%); on-pace types (+50% / +28
 Reading: the market drifts the bets whose case is uncertainty (lightly raced, unproven at the level, small edge) and
 firms the ones whose case is proven ability (rated above today's standard, fit, experienced, big edge). Every group is
 still profitable at the open after deductions, so nothing is excluded; it says which bets to be on first.
+
+## BetMatic-style orders, tested (13 Oct 2026, t_betmatic.py; founder: "why haven't we done a test on this method?")
+An order sent before the market exists carries a minimum odds from our chance alone, (1.2 / p_model^0.82)^(1/0.78)
+(the blend without the per-race rescale), fires if the open is at or over it, and carries one stake. Against the sheet
+(exact blend at the open), flat ROI after the 16c deduction, profit at $100 a unit:
+- HOLD: sheet 1,378 bets +30.4% flat, +45.8% staked, +1,014u. Orders at the raw minimum: 1,068 bets +35.1%, miss 386
+  of the sheet's bets and add 76; fixed stake +482u, stake by price (ladder) +824u. Minimum shaded 5%: 1,245 bets
+  +34.7%, miss 220, add 87; fixed +534u, ladder +893u (88% of the sheet). Shaded 10%: misses 100 but adds 185 and the
+  flat ROI falls to +28.7%.
+- OLD: sheet 3,148 bets +24.2%, +1,844u; shaded 5%: 2,822 bets +29.1%, fixed +1,026u, ladder +1,828u (99%).
+Reading: the formula is stricter than the exact blend, so the orders take fewer bets at a higher ROI; shading the
+minimum 5% recovers most of the missed ones without letting weak ones in. The stake matters more than the price: one
+fixed stake (set at the minimum odds) earns about 55-60% of what staking by the price got does, because the best
+overlays open well above their minimum. If BetMatic cannot take a stake that scales with price, send each horse as
+two or three orders at rising minimum odds (each its own slice of the stake). Assumes every fill is at Form King's
+average open, with no bookmaker limits.
