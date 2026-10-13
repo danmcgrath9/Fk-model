@@ -9,12 +9,12 @@ Every meeting, the bets the live rules would have struck at Form King's opening 
 | 2026-10-13 Kilmore (S5) | R7 | Celestial Splendor | $19 | - | $11.07 | 0.81u | | | |
 | 2026-10-13 Kilmore (S5) | R7 | Winter Nights | $16 | - | $12.30 | 0.44u | | | |
 | 2026-10-14 Caulfield (G4) | R2 | True Rebel | $8 | - | $5.65 | 1.27u | | | |
-| 2026-10-14 Caulfield (G4) | R2 | Katoto | $11 | - | $5.77 | 1.79u | | | |
+| 2026-10-14 Caulfield (G4) | R2 | Katoto | $11 | - | $5.77 | 1.79u | scratched, void | | 0 |
 | 2026-10-14 Caulfield (G4) | R4 | Savisanta | $10 | - | $7.10 | 0.97u | | | |
 | 2026-10-14 Caulfield (G4) | R5 | Jett Smash | $4.4 | - | $3.52 | 1.62u | | | |
 | 2026-10-14 Caulfield (G4) | R7 | Darkbonee | $4.8 | - | $3.82 | 1.49u | | | |
 | 2026-10-14 Caulfield (S5) | R2 | True Rebel | $8 | - | $5.61 | 1.3u | | | |
-| 2026-10-14 Caulfield (S5) | R2 | Katoto | $11 | - | $6.17 | 1.57u | | | |
+| 2026-10-14 Caulfield (S5) | R2 | Katoto | $11 | - | $6.17 | 1.57u | scratched, void | | 0 |
 | 2026-10-14 Caulfield (S5) | R4 | Savisanta | $10 | - | $7.27 | 0.9u | | | |
 | 2026-10-14 Caulfield (S5) | R5 | Jett Smash | $4.4 | - | $3.49 | 1.69u | | | |
 | 2026-10-14 Caulfield (S5) | R6 | Freedom Flame | $15 | - | $12.45 | 0.33u | | | |

@@ -82,7 +82,7 @@ Caulfield 14 Oct (Good 4 list; blended price; tweeted Monday evening at the 7:48
 
 | Date | Meeting | Race | Horse | Tweeted price | Our price | Stake | Result | SP | P/L (u) |
 |---|---|---|---|---|---|---|---|---|---|
-| 2026-10-14 | Caulfield (G4) | R2 | Katoto | $7.50 | $5.77 | 1.0u | | | |
+| 2026-10-14 | Caulfield (G4) | R2 | Katoto | $7.50 | $5.77 | 1.0u | scratched, refunded | | 0 |
 | 2026-10-14 | Caulfield (G4) | R4 | Beach Pad | $12 | $9.84 | 0.45u | not tipped (dropped before posting: not value at the opening price) | | 0 |
 | 2026-10-14 | Caulfield (G4) | R7 | Prince Eric | $13 | $9.39 | 0.7u | not tipped (dropped before posting: not value at the opening price) | | 0 |
 | 2026-10-14 | Caulfield (G4) | R8 | Lawborough | $13 | $10.24 | 0.5u | not tipped (dropped before posting: not value at the opening price) | | 0 |
