@@ -99,8 +99,9 @@ for race in sorted(races):
     H.append(f"<h2 id='r{race}'>Race {race}</h2><div class='hd'>{int(dist)}m · our market adds to 100% · {len(rs)} runners{' · <b>no bets: a first-starter at $6 or shorter</b>' if fsb else ''}</div>")
     for r, i, k in rs:
         pp = r["p"] / tot; ours = 1 / pp; now = pr.get(k); hk = f"{race}|{r['horse']}"; isfs = hk in fs; fuv = fu.get(hk, "")
-        o_ = opn.get(k, now)   # 12 Oct 2026: value judged at the open, and still takeable now (no drift tag: not back-testable)
-        early = fuv.startswith("EARLY:"); blocked = (fuv and not early) or isfs or fsb or (early and (now or 0) > 8) or ours > 15 or ours < 1.6 or (o_ and o_ >= 3 * ours)   # bets only at our price $1.60-$15 (floor $2 until 8 Oct 2026, t_under2.py)
+        o_ = opn.get(k)   # 12 Oct 2026: value judged at the open, and still takeable now. 13 Oct 2026: no open recorded = no bet
+        # (it used to fall back to the price now, which let a drift-made 'value' bet through: those lost 13% on 1,902 holdout bets)
+        early = fuv.startswith("EARLY:"); blocked = (fuv and not early) or isfs or fsb or (early and (now or 0) > 8) or ours > 15 or ours < 1.6 or o_ is None or o_ >= 3 * ours   # bets only at our price $1.60-$15 (floor $2 until 8 Oct 2026, t_under2.py)
         a = ang.get(hk, []); tags = []
         if k in opn:   # 12 Oct 2026: the bets struck at the opening price, recorded on the sheet whatever the price did after
             ob = opn[k]; blocked_o = (fuv and not early) or isfs or fsb or (early and ob > 8) or ours > 15 or ours < 1.6 or ob >= 3 * ours
@@ -117,6 +118,7 @@ for race in sorted(races):
         why = " · ".join([f"<span class='up'>{t} {pct(c)}</span>" for t, c in ups] + [f"<span class='dn'>{t} {pct(c)}</span>" for t, c in dns]) or "nothing stands out either way"
         why = why.rstrip()
         if ours > 15 and not fuv and not isfs: fuv_note = "our price over $15 (outside the backtested band)"
+        elif o_ is None and now: fuv_note = "no opening price recorded, so value at the open cannot be judged"
         else: fuv_note = ""
         reason = (f"<b>No bet:</b> {fuv_note}. " if fuv_note else "") + (f"<b>{'No bet' if (fuv and not early) else 'Early only' if early else ''}:</b> {html.escape(fuv.replace('EARLY: ', ''))}. " if fuv else "") + (f"<b>No bet:</b> first starter. " if isfs else "")
         H.append(f"<div class='r'><div class='px'>${ours:,.2f}</div><div><span class='nm'>{html.escape(r['horse'])}</span>{''.join(tags)}<span class='mk'> · FK opened {'$%.2f' % fko[k] if fko.get(k) else '-'} · TAB opened {'$%.2f' % tabo[k] if tabo.get(k) else '-'} · now {'$%.2f' % now if now else 'no price'} · take at ${ours * (1 + THR):,.2f} or better</span></div>"
