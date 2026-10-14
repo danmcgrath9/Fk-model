@@ -921,3 +921,13 @@ our own data; not in v10 because a live day export cannot do that join yet.)
 THE LIVE MODEL IS STILL v9: day pricing runs from the scratch model directory with the v9 name lists and the v9
 training set. On promotion of a v10 challenger, copy F9_names.txt and F7_names.txt from here and model_ds.npz from the
 models branch together with the models, or price_day3.py's name check stops the pricing (by design).
+
+## v10 inputs on profit (15 Oct 2026, t_v10_profit.py)
+Stage-1 trees, 3 seeds each, trained before 3 Jun 2026, races from 3 Jun under the live BetMatic rules (3 steps, 5% shade,
+3x ceiling, $1.60-$15, 16c deduction) at Form King's open:
+| inputs | KL to BSP | bets | winners | staked | profit | ROI |
+|---|---|---|---|---|---|---|
+| v9 (live inputs) | 0.0928 | 1419 | 234 | 1988.4u | +618.3u | +31.1% |
+| v10 (+ gear detail, price moves) | 0.0916 | 1421 | 241 | 1999.3u | +711.8u | +35.6% |
++93.5u (+15%) on almost the same bets; 7 more winners. One sample and stage 1 only (the live price is the blend plus
+stage 2), so the size is indicative; the direction agrees with the KL and log-loss checks.
