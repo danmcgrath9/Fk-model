@@ -9,6 +9,7 @@ payload; nothing is sent without --send.
     python betmatic_send.py send ORDERS.csv --unit 25 --session 101 [--bookie TAB] [--send]
     python betmatic_send.py cancel LEDGER.csv [--race 3] [--number 7] [--send]
     python betmatic_send.py status LEDGER.csv                      per-bookmaker placements: odds taken, stake, result
+    python betmatic_send.py summary 2026-10-17 [--ledger LEDGER.csv] won / lost / pending that day, against the ledger
 
 send: one Fixed Win, Market Open bet per order row (each price step is its own bet, as BetMatic requires), to ONE
 bookmaker and ONE session (target_session, so the stake is never multiplied across accounts), with the row's minimum
@@ -16,7 +17,8 @@ odds (check_odds/odds) and maximum odds (check_max_odds/max_odds), stake = stake
 (a step under $1 is dropped). Every bet carries a unique label; a label already on BetMatic is skipped, so a re-run or a
 retry after a timeout cannot double-bet (BetMatic does no duplicate detection). The returned notification IDs go to
 a ledger beside the orders (ORDERS-ledger.csv) for cancel and status. Refuses to send if no session shows
-bot_running, if a row has no saddlecloth number, or if the venue/race is not in BetMatic's race schedule."""
+bot_running, if no bot machine is connected, if the TAB balance cannot cover the bets (unless --allow-short), if a row
+has no saddlecloth number, or if the venue/race is not in BetMatic's race schedule."""
 import argparse, csv, json, os, re, sys, time
 import requests
 
@@ -75,11 +77,24 @@ def bookie_id(bm, name):
              + ", ".join(str(b.get("title")) for b in bm.get_all("/bookie/names/")) + ")")
 
 
+def readiness(bm):
+    """GET /account/readiness/: problems, bot_session_running (connected bot machines), accounts_running (running
+    bookmaker sessions) and two notes. A session can read bot_running true while no bot machine is connected, and then
+    nothing places, so send checks both (API reference, Bot Diagnostics)."""
+    r = bm.get("/account/readiness/")
+    return r if isinstance(r, dict) else {}
+
+
 def check(a):
     bm = BM()
     for s in sessions(bm):
-        print(f"session {s.get('id')}: {s.get('display_name')} bookie={s.get('bookie') or s.get('bookie_name')} bot_running={s.get('bot_running')}")
-    print("readiness:", json.dumps(bm.get("/account/readiness/"))[:600])
+        print(f"session {s.get('id')}: {s.get('display_name')} bookie={s.get('bookie')} bot_running={s.get('bot_running')} "
+              f"balance ${float(s.get('balance') or 0):,.2f} (bonus ${float(s.get('bonus_balance') or 0):,.2f}) as at {s.get('update_time')}")
+    r = readiness(bm)
+    print(f"readiness: {r.get('problems')} problem(s), {r.get('bot_session_running')} bot machine(s) connected, "
+          f"{r.get('accounts_running')} session(s) running. {r.get('bot_session_note', '')} {r.get('bot_version_note', '')}".rstrip())
+    for x in bm.get("/account/connect_activity/", page_size=5).get("results", [])[:5]:
+        print(f"  bot {x.get('session_nickname')}: {x.get('note')} at {x.get('created_at')}")
     want = getattr(a, "bookie", "TAB")
     tab = [b for b in bm.get_all("/bookie/names/") if str(b.get("title", "")).strip().lower() == want.lower()]
     print("bookmaker:", tab[0] if tab else f"{want!r} not found by title")
@@ -122,6 +137,18 @@ def send(a):
     live = [s for s in sessions(bm) if str(s.get("id")) == str(a.session) and s.get("bot_running")]
     if not live:
         sys.exit(f"session {a.session} is not running (bot_running false): start the bot and the session first")
+    if not int(readiness(bm).get("bot_session_running") or 0):
+        sys.exit("no bot machine is connected (GET /account/readiness/): the bets would queue and never place. "
+                 "Start the BetMatic bot on the always-on machine first")
+    # balance is the session's real-money balance (bonus is not used: use_bonus is off). A Market Open bet that finds
+    # no money fails at TAB, so a short balance means the later bets of the day fail. Stale by up to the update_time.
+    bal = float(live[0].get("balance") or 0)
+    if bal < total:
+        msg = (f"TAB balance ${bal:,.2f} (as at {live[0].get('update_time')}) is below the ${total:,} these bets "
+               f"need if every one fires")
+        if not a.allow_short:
+            sys.exit(msg + ". Fund the account, or add --allow-short to send anyway")
+        print("WARNING:", msg)
     bid = bookie_id(bm, a.bookie)
     # A bet names the venue and race number; without start_time BetMatic takes the NEXT race at that venue and number,
     # and the schedule runs up to 5-6 days ahead (API reference: Race Schedule; Create a Bet). So each bet is matched to
@@ -198,6 +225,29 @@ def pending(a):
     print(f"{ok} pending, {missing} not pending, {len(live)} pending on BetMatic in all")
 
 
+def bot_logs(bm, nid):
+    """The bot's own log lines for one bet (GET /bot/logs/{notification_id}/, grouped by bot instance). Empty when the
+    bot never saw the bet, which is itself the diagnosis (API reference, Bot Diagnostics)."""
+    try:
+        got = bm.get(f"/bot/logs/{nid}/")
+    except requests.HTTPError as e:
+        print(f"    bot logs: unavailable ({e})"); return
+    lines = [f"{g.get('bot_instance')}: {l.get('log')}" for g in (got if isinstance(got, list) else []) for l in g.get("logs") or []]
+    print("    bot logs: " + (" | ".join(lines[-6:]) if lines else "none (the bot never received this bet)"))
+
+
+def summary(a):
+    """GET /bet/summary/: won, lost and pending bets for one Sydney day (date_to is exclusive, so the day after), next
+    to the ledger's count of bets sent, so a bet that never reached BetMatic shows as a gap."""
+    from datetime import date, timedelta
+    d = date.fromisoformat(a.date)
+    got = BM().get("/bet/summary/", date_from=str(d), date_to=str(d + timedelta(days=1)), code="Galloping")
+    print(f"{a.date}: won {got.get('won')}, lost {got.get('lost')}, pending {got.get('pending')} (all BetMatic racing bets that day)")
+    if a.ledger:
+        sent = sum(1 for r in csv.DictReader(open(a.ledger)) for i in r["notification_ids"].split("&") if i)
+        print(f"ledger: {sent} bets sent; BetMatic accounts for {sum(int(got.get(k) or 0) for k in ('won', 'lost', 'pending'))}")
+
+
 def status(a):
     """Every order's placement at TAB, from the bet records (GET /bet/notification/{id}/ -> "bets"): amount TAB took,
     the odds taken (current_odds), submit_result / submit_error, status and profit. Flags a bet TAB took for LESS than
@@ -216,7 +266,7 @@ def status(a):
                 recs = [x for x in (recs if isinstance(recs, list) else [recs]) if isinstance(x, dict)]
                 ask = float(r["stake"] or 0); tot_ask += ask
                 if not recs:
-                    print(f"{r['label']} #{i}: no placement yet (waiting for the open, or nothing was sent)"); continue
+                    print(f"{r['label']} #{i}: no placement yet (waiting for the open, or nothing was sent)"); bot_logs(bm, i); continue
                 for x in recs:
                     took = float(x.get("amount") or 0) if x.get("submit_result") == "Success" else 0.0; tot_took += took
                     flag = []
@@ -228,6 +278,8 @@ def status(a):
                     if odds and r.get("min_odds") and float(odds) + 1e-9 < float(r["min_odds"]):
                         flag.append(f"BELOW MIN ODDS {r['min_odds']}")
                     print(f"{r['label']} #{i}: ${took:g} @ {odds} {x.get('status') or 'unsettled'} {x.get('profit', '')} deduction {ded} {'; '.join(flag)}")
+                    if x.get("submit_result") != "Success":
+                        bot_logs(bm, i)
     print(f"asked ${tot_ask:,.0f}, TAB took ${tot_took:,.0f}; {n_cut} reduced, {n_fail} failed. raw records: {out}")
 
 
@@ -237,8 +289,11 @@ if __name__ == "__main__":
     s = sp.add_parser("send"); s.add_argument("orders"); s.add_argument("--unit", type=float, required=True, help="dollars a unit")
     s.add_argument("--session", required=True, help="the TAB session ID from 'check'"); s.add_argument("--bookie", default="TAB")
     s.add_argument("--attempts", type=int, default=60, help="placement retries a second apart if the first fails at the open (BetMatic's own default is 60)")
+    s.add_argument("--allow-short", action="store_true", help="send even if the TAB balance is below the total stake")
     s.add_argument("--send", action="store_true")
     c = sp.add_parser("cancel"); c.add_argument("ledger"); c.add_argument("--race"); c.add_argument("--number"); c.add_argument("--send", action="store_true")
     t = sp.add_parser("status"); t.add_argument("ledger")
     pn = sp.add_parser("pending"); pn.add_argument("ledger")
-    a = ap.parse_args(); {"check": check, "send": send, "cancel": cancel, "status": status, "pending": pending}[a.cmd](a)
+    sm = sp.add_parser("summary"); sm.add_argument("date", help="Sydney day, YYYY-MM-DD"); sm.add_argument("--ledger")
+    a = ap.parse_args(); {"check": check, "send": send, "cancel": cancel, "status": status, "pending": pending,
+                          "summary": summary}[a.cmd](a)

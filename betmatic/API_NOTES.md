@@ -128,3 +128,41 @@ API Overview (api-reference/overview): rate limits, errors.
   -placed.jsonl, replacing the founder's manual TAB deduction readings and the 16c estimate for live bets.
 - POST /bet/search/ {"ids": [...]} fetches known bet record ids. GET /notification/{id}/race/detail/ gives the race's
   result ("5/1/8/3") for settling without Form King.
+
+## Bet Summary (pasted 15 Oct)
+- GET /bet/summary/ -> {"won", "lost", "pending"}; filters date_from / date_to (Sydney days, date_to exclusive),
+  bookie, market, code, label. New command `summary DAY [--ledger LEDGER]` (also a workflow action): the day's counts
+  next to the number of bets the ledger sent. It counts every BetMatic racing bet that day, ours and any placed by hand.
+
+## Sessions (pasted 15 Oct)
+- GET /bookieaccount/ is a plain array: id, display_name, bookie (display name, e.g. "TAB"), balance (real money),
+  bonus_balance, bot_running, update_time. `check` now prints balance and update_time per session.
+- `send` now refuses when the session's real-money balance is below the total stake the file would place, because a
+  Market Open bet that finds no money fails at TAB. `--allow-short` overrides (deliberately not exposed in the workflow).
+  The balance is BetMatic's last reading (update_time), not live.
+- POST /bookieaccount/control/{id}/ {"command": "ON"|"OFF"} starts or stops one session (30-60 s to show); control/
+  with all_on / all_off does every session. Only works while the bot machine is running. NOT wired into the sender:
+  session start times stay in the bot's own settings, so a script cannot switch the account off by mistake.
+
+## Bot Diagnostics (pasted 15 Oct)
+- GET /account/readiness/: problems, bot_session_running (connected bot machines), accounts_running. A session can show
+  bot_running while no bot machine is connected; then nothing places. `send` now refuses when bot_session_running is 0,
+  and `check` prints readiness plus the last five connect/disconnect events (GET /account/connect_activity/).
+- GET /bot/logs/{notification_id}/: the bot's own lines for one bet. `status` prints them under any FAILED bet and any
+  bet with no placement, so a failure arrives with its reason ("none" = the bot never received it).
+
+## Tip Connect publishing (pasted 15 Oct) - NOT BUILT, founder decision
+- POST /pick/tipster/publish/ with a package API key publishes tips (venue, race, saddlecloth, amount_units, min/max
+  odds, start_time) to a BetMatic tip package; subscribers' bots bet them automatically. POST /pick/tipster/message/ sends
+  a pre-alert to wake subscribers' sessions a few minutes before. Duplicates are skipped silently.
+- Needs approved-tipster status and a package API key from BetMatic support. If taken up, the key goes in the GitHub
+  "betmatic" environment like the others, never in a file or a message.
+- Clashes with the standing order of play (our TAB bets first, then members, then X): a published tip fires on every
+  subscriber's bot at once and competes with us at the same bookmakers at the open. It would have to publish only after
+  our own fills are in (status), and members' fills would come at worse prices.
+
+## WebSocket and odds request (pasted 15 Oct) - NOT BUILT
+- wss://betmatic.app/ws/private?token=... (access by email to support). POST /notification/odds/request/ asks our own
+  running bot to read a race's live odds from the TAB session; the answer arrives only on the WebSocket
+  (category "odds_update_anwser", spelled as sent). Would give TAB's own price per runner from our own session, a check
+  on the fill price before the open. Not needed for Market Open bets, which carry min/max odds already.

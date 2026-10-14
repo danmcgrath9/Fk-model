@@ -10,10 +10,10 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'send | pending | cancel | status | check'
+        description: 'send | pending | cancel | status | summary | check'
         default: 'send'
       file:
-        description: 'send: the order file (data/live_bets/DAYPREFIX-betmatic-preopen.csv); cancel/status: its -ledger.csv'
+        description: 'send: the order file (data/live_bets/DAYPREFIX-betmatic-preopen.csv); cancel/status/pending/summary: its -ledger.csv (summary also takes a bare YYYY-MM-DD)'
         default: ''
       unit:
         description: 'send: dollars a unit (founder, 14 Oct: $75 when live)'
@@ -66,6 +66,10 @@ jobs:
             cancel) python betmatic/betmatic_send.py cancel "$FILE" ${RACE:+--race "$RACE"} ${NUM:+--number "$NUM"} $SEND ;;
             status) python betmatic/betmatic_send.py status "$FILE" ;;
             pending) python betmatic/betmatic_send.py pending "$FILE" ;;
+            summary)
+              D=$(basename "$FILE" | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}')
+              case "$FILE" in *.csv) python betmatic/betmatic_send.py summary "$D" --ledger "$FILE" ;;
+                              *) python betmatic/betmatic_send.py summary "$D" ;; esac ;;
             *) echo "unknown action $A"; exit 1 ;;
           esac
       - name: Keep the ledger and placements
