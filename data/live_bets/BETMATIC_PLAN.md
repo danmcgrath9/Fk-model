@@ -103,3 +103,10 @@ horses that never ran held 10-19% of each race's probability, so every starter's
    one of them to the guarantee, $75 units still makes 80% of its uncapped profit, which is more than $50 uncapped
    ($45,300 against $37,600 over the holdout). BetMatic takes a reduced offer at the reduced stake, so log every
    reduced offer: the stake TAB actually took is the number that matters.
+
+## Approval (15 Oct 2026, founder)
+The "betmatic" environment has NO required-reviewer gate, by the founder's choice ("I'm fine without approval right
+now, you can send me the copy here and I'll have enough time to review"). So the approval is in the chat: Claude shows
+the exact bets (meeting, race, horse, number, minimum and maximum odds, stake in dollars, total) and starts the send only
+after the founder approves that exact list. Any change to the list after approval is shown again. Dry run first,
+every time. TAB session: 636816 (BETMATIC_TAB_SESSION); the Sportsbet session is set up as a spare and is never sent to.
