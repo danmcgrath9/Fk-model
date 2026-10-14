@@ -1,38 +1,130 @@
-# Caulfield Sat 17 Oct (Good 4), Thousand Guineas (R4) and Caulfield Cup (R8) only. From the founder's TAB screenshots, Tue 13 Oct 12:45pm.
-# Columns: now (TAB fixed), now, then the TAB opening price as "tab_open X" (TAB's own fluc line; where TAB shows no flucs the price has not moved, so open = now).
-# These are Group 1 futures-style markets: TAB's "open" is when the race's market first went up, not an open after final fields.
-4, Regal Ambition, 4.20, 4.20, tab_open 4.40
-4, Saintly Dancer, 6.00, 6.00, tab_open 5.00
-4, De Armas, 6.00, 6.00, tab_open 6.00
-4, Over The Bridge, 6.00, 6.00, tab_open 6.00
-4, Pretty Baby, 7.00, 7.00, tab_open 8.00
-4, Icelady, 11.00, 11.00, tab_open 11.00
-4, Platinum Pearl, 13.00, 13.00, tab_open 13.00
-4, Lara Antipova, 15.00, 15.00, tab_open 15.00
-4, Sing Your Song, 15.00, 15.00, tab_open 15.00
-4, Rubi's Choice, 51.00, 51.00, tab_open 51.00
-4, Salann, 71.00, 71.00, tab_open 51.00
-4, Katoto, 71.00, 71.00, tab_open 51.00
-4, Grinzinger Heart, 101.00, 101.00, tab_open 101.00
-8, Cosmic Crusader, 5.00, 5.00, tab_open 4.50
-8, Zahrann, 7.00, 7.00, tab_open 9.00
-8, Half Yours, 9.00, 9.00, tab_open 9.00
-8, Wine Dark Sea, 9.00, 9.00, tab_open 7.00
-8, Saint George, 9.00, 9.00, tab_open 11.00
-8, Enfjaar, 13.00, 13.00, tab_open 15.00
-8, Royal Supremacy, 13.00, 13.00, tab_open 13.00
-8, Starford, 21.00, 21.00, tab_open 18.00
-8, She's A Hustler, 21.00, 21.00, tab_open 26.00
-8, Ohope Wins, 21.00, 21.00, tab_open 18.00
-8, Treasurethe Moment, 26.00, 26.00, tab_open 34.00
-8, Middle Earth, 26.00, 26.00, tab_open 26.00
-8, Kings Valley, 26.00, 26.00, tab_open 26.00
-8, Kingswood, 31.00, 31.00, tab_open 26.00
-8, Knight's Choice, 34.00, 34.00, tab_open 26.00
-8, Green Spaces, 34.00, 34.00, tab_open 26.00
-8, Soul Of Spain, 34.00, 34.00, tab_open 26.00
-8, Asterix, 51.00, 51.00, tab_open 51.00
-8, The Euphrates, SCR
-8, Juja Kibo, SCR
-8, Point Of Law, SCR
-8, Mr Monaco, SCR
+# Caulfield Sat 17 Oct (Caulfield Cup day), Good 4: final fields pulled 14 Oct 11am. Emergencies as SCR until they gain a start; no market yet.
+1, Lepolo, 0, 0
+1, Vallice, 0, 0
+1, Cignetti, 0, 0
+1, Aragog, 0, 0
+1, Skua, 0, 0
+1, Russian Rock, 0, 0
+1, Vantaa, 0, 0
+1, King Snitz, 0, 0
+1, Aerostatique, 0, 0
+2, Voynichese, 0, 0
+2, Miss Waititi, 0, 0
+2, Leopard Shark, 0, 0
+2, Quick Finish, 0, 0
+2, Your Colour, 0, 0
+2, Notified, 0, 0
+2, Autumn In Grinzing, 0, 0
+2, Fringilla, 0, 0
+2, Refuse To Curtsy, 0, 0
+2, Tharwa, 0, 0
+2, Shameful Impulse, 0, 0
+2, Oceans Fouroseven, 0, 0
+2, Abaya, 0, 0
+2, Levate, 0, 0
+2, Tears Of Happiness, 0, 0
+3, Geegees Mistruth, 0, 0
+3, Dance To The Boom, 0, 0
+3, Snow Mercy, 0, 0
+3, Thanks Gorgeous, 0, 0
+3, Stardom, 0, 0
+3, Gentle Steel, 0, 0
+3, Eagle Express, 0, 0
+3, Signature Scent, 0, 0
+3, Photograph, 0, 0
+4, Milsons Point, 0, 0
+4, Obambulate, 0, 0
+4, Zambales, 0, 0
+4, Star Of Macedon, 0, 0
+4, Shooting Brake, 0, 0
+4, The Thorncaster, 0, 0
+4, Boys Bounce, 0, 0
+4, Aemond, 0, 0
+4, Kotahitanga, 0, 0
+4, Yourworstnightmare, 0, 0
+4, Zoehrer, 0, 0
+4, Calamari Ring, 0, 0
+4, I Am Aria, 0, 0
+4, Ektifire, 0, 0
+4, Autumn Lover, 0, 0
+5, Private Eye, 0, 0
+5, War Machine, 0, 0
+5, Willaidow, 0, 0
+5, Hughes, 0, 0
+5, Here To Shock, 0, 0
+5, Zou Sensation, 0, 0
+5, El Rocko, 0, 0
+5, Cartoon Graveyard, 0, 0
+5, Amenable, 0, 0
+6, Sweynesday, 0, 0
+6, Cavalry Girl, 0, 0
+6, Gallant Son, 0, 0
+6, Oak Hill, 0, 0
+6, Bev's Nine, 0, 0
+6, Pallaton, 0, 0
+6, Don't Hope Do, 0, 0
+6, Hidden Motive, 0, 0
+6, Always Enuff, 0, 0
+6, I'm Foxing, 0, 0
+6, Saluted, 0, 0
+7, Lara Antipova, 0, 0
+7, Pretty Baby, 0, 0
+7, Saintly Dancer, 0, 0
+7, De Armas, 0, 0
+7, Icelady, 0, 0
+7, Grinzinger Heart, 0, 0
+7, Rubi's Choice, 0, 0
+7, Over The Bridge, 0, 0
+7, Regal Ambition, 0, 0
+7, Salann, 0, 0
+7, Sing Your Song, 0, 0
+7, Katoto, 0, 0
+7, Platinum Pearl, 0, 0
+8, Stretan Ruler, 0, 0
+8, Marffiano, 0, 0
+8, Threads, 0, 0
+8, Neveu, 0, 0
+8, Tales Of Time, 0, 0
+8, Doubt Time, 0, 0
+8, Jarbardar, 0, 0
+8, Organised Crime, 0, 0
+8, Barracks, 0, 0
+8, Half Pipe, 0, 0
+8, Pocketfullofcash, 0, 0
+8, Over Excited, 0, 0
+9, Half Yours, 0, 0
+9, Cosmic Crusader, 0, 0
+9, Treasurethe Moment, 0, 0
+9, Kingswood, 0, 0
+9, Knight's Choice, 0, 0
+9, Middle Earth, 0, 0
+9, Enfjaar, 0, 0
+9, Green Spaces, 0, 0
+9, Royal Supremacy, 0, 0
+9, Wine Dark Sea, 0, 0
+9, Asterix, 0, 0
+9, Saint George, 0, 0
+9, Starford, 0, 0
+9, She's A Hustler, 0, 0
+9, Soul Of Spain, 0, 0
+9, Zahrann, 0, 0
+9, Ohope Wins, 0, 0
+9, Kings Valley, 0, 0
+9, The Euphrates, SCR
+9, Juja Kibo, SCR
+9, Point Of Law, SCR
+9, Mr Monaco, SCR
+10, Ferivia, 0, 0
+10, Wrote To Arataki, 0, 0
+10, Oh Too Good, 0, 0
+10, Shadhavar, 0, 0
+10, Merrigold, 0, 0
+10, Guerite, 0, 0
+10, Betwitchery, 0, 0
+10, Recuperato, 0, 0
+10, Gold Medallist, 0, 0
+10, Terilee, 0, 0
+10, Butternut Princess, 0, 0
+10, Concord Connie, 0, 0
+10, Grand Omaha, 0, 0
+10, Pillow Fight, 0, 0
