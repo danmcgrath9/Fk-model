@@ -881,3 +881,9 @@ gear_first_time, gear_changes (export_dataset.py). Holdout: runners with first-t
 BSP's 9.1%, won 8.9%; first-time blinkers 670, ours 9.0%, BSP 9.0%, won 8.1%. The market does not move on gear in a way
 our price misses. Not in: which item (tongue tie, nose roll, lugging bit), gear coming OFF, and the horse's gear in past
 runs (past-run rows carry no gear), so "raced well in blinkers before" cannot be learnt yet.
+Gear detail trial (15 Oct 2026, t_gear.py, stage-1 trees, 2 seeds, trained before 3 Jun 2026, holdout 1,231 races):
+F9 KL 0.0937 / log loss 1.9033; F9 + gear detail (per item worn, on first time, off; counts on, off, on again; and from
+the horse's earlier races in our data: gear last start, same as last start, rating with vs without each key item)
+KL 0.0930 / log loss 1.8996. Keep. Blinkers worn ranks 65th of 817 inputs by gain. Next: build it from each past
+run's own gear field (Form King sends it) instead of joining our races, for full coverage, and fix the FIRST bug in
+export_dataset.py in the same change.
