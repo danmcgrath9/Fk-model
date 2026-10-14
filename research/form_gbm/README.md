@@ -870,3 +870,9 @@ Against WINNERS (t_winners.py, log loss, lower = better): holdout ours 1.896, op
 calibrated in every price band); what changed is the 2025 opening market, 1.919 against 1.957, so the gap we bet
 into was much smaller. BSP beats us on winners in both: it carries every late move, which is the point of betting
 at the open, before the market finds out.
+More history helps (t_more_data.py, stage-1 trees, all9 settings, 2 seeds, holdout of 1,231 races from 3 Jun): trained
+on 8 Oct 2025 to 2 Jun 2026 (2,603 races) KL 0.0958, log loss 1.9049; with 1 Jul to 7 Oct 2025 added (3,636 races)
+KL 0.0937, log loss 1.9033 (open 0.1429 / 1.9478). The next daily retrain's challenger trains on them.
+Where the live price is still furthest from BSP (t_gap_now.py, holdout, ours / open): 2+ first starters 0.138 / 0.189,
+one 0.103 / 0.164, none 0.075 / 0.135; sprints to 1200m 0.093 / 0.153, 1700-2000m 0.062 / 0.126; metro 0.065 /
+0.097, non-metro 0.086 / 0.152; fields 14+ 0.090, up to 7 0.073.
