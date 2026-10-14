@@ -49,3 +49,7 @@ API Overview (api-reference/overview): rate limits, errors.
 - Check placement: GET /bet/notification/{id}/ (per-session submit_result and odds taken). GET /bet/ = per-bookmaker
   history; GET /notification/ = one row per instruction.
 - 400 "Internal error." usually means a wrong venue name, a race already run, a bad market string or a wrong type.
+- Support, 14 Oct (replied 81 seconds after the question, so probably an automated assistant: confirm on the first
+  live meetings): if the TAB offers a reduced amount, the bot accepts the reduced stake, and the accepted amount (not
+  the attempted one) is what is recorded and sent on the WebSocket feed. So a post-open check can read the shortfall
+  and resend it.
