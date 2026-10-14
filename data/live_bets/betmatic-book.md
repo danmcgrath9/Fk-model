@@ -18,8 +18,9 @@ BetMatic standard in TIPPING_RULES.md.
 Order files (data/live_bets/DAYPREFIX-betmatic-preopen.csv) rebuilt 14 Oct with the 8-step staking (each step sized at the
 next step's price, t_betmatic_tiers.py: +18% profit on the holdout over the first 3-step version), from the model's own
 prices before the market (Caulfield from Monday evening's price file, Warrnambool from Tuesday's). Caulfield 14 Oct:
-250 orders on 37 runners, 10 filled, 5.04u; Katoto's orders void (scratched); deductions measured on race morning R2 31c
-(Katoto, Boys Bounce, Refuse To Curtsy), R4 5c, R5 9c, R7 0c, R8 3c. Warrnambool 15 Oct: 199 orders on 31 runners, 7
+250 orders on 37 runners, 10 filled, 5.04u; Katoto's orders void (scratched); deductions TAB actually applied at its opening price
+(founder's account): R2 20c, R4 2c, R5 2c, R7 0c, R8 0c (the estimate was 31c, 5c, 9c, 0c, 3c; actuals now override it,
+data/live_bets/DAYPREFIX-deductions-actual.txt). Warrnambool 15 Oct: 199 orders on 31 runners, 7
 filled, 3.54u; Kid Dynamite (R8) missed by under 1%.
 
 ## 9:30am top-ups (paper, tracked from 14 Oct 2026)

@@ -1,0 +1,6 @@
+# Caulfield Wed 14 Oct: deductions TAB applied to bets struck at TAB's opening price (founder's account, 14 Oct). Cents in the dollar, win.
+2, 20  # True Rebel (estimate was 31c)
+4, 2   # Savisanta (estimate 5c)
+5, 2   # Jett Smash (estimate 9c)
+7, 0   # Darkbonee (estimate 0c)
+8, 0   # Verdoux (estimate 3c)

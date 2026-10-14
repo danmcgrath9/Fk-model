@@ -28,8 +28,25 @@ def _read(fn):
             except ValueError: pass
     return d
 
+def actual_deductions(prefix):
+    """The deductions TAB actually applied, from the founder's account (14 Oct 2026, founder: "This is deductions from TAB
+    at opening"): data/live_bets/<prefix>-deductions-actual.txt, lines "race, cents  # horse". They replace the estimate
+    for those races, because the estimate (0.95 / price of every runner scratched after the open, the TAB schedule) ran
+    2.5x too high on the first meeting checked (Caulfield 14 Oct: 59c estimated against 24c applied)."""
+    fn = f"{L}/{prefix}-deductions-actual.txt"
+    if not os.path.exists(fn): return {}
+    out = {}
+    for l in open(fn):
+        pa = [x.strip() for x in l.split("#")[0].split(",")]
+        if len(pa) >= 2 and pa[0].isdigit(): out[int(pa[0])] = float(pa[1]) / 100
+    return out
+
 def race_deductions(prefix):
-    """-> ({race: deduction 0..0.95}, {race: [(horse, price)]}). Races with no late scratching are absent (0)."""
+    """-> ({race: deduction 0..0.95}, {race: [(horse, price)]}). Races with no late scratching are absent (0).
+    Actual TAB deductions (actual_deductions) replace the estimate wherever they are recorded."""
+    d, w = _estimated(prefix); d.update(actual_deductions(prefix)); return d, w
+
+def _estimated(prefix):
     final_fn = f"{L}/{prefix}-prices.txt"
     if not os.path.exists(final_fn): return {}, {}
     final = _read(final_fn)
