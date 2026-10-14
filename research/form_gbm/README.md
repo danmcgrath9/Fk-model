@@ -849,3 +849,13 @@ that ran held only 0.81-0.90 of the probability; every starter's price came out 
 Files from 14 Oct are priced on final fields (probabilities of the runners left total 1.00 at Caulfield 14, Warrnambool,
 Cranbourne 16; 0.996 at Caulfield 17), so this is already fixed going forward. Caveat: re-spreading over the runners
 that ran also uses late scratchings, which a pre-open order cannot know.
+
+## The races the models never trained on (14-15 Oct 2026, mk_newraces.py, t_new75.py)
+Form King's history starts 1 Jul 2025 (an earlier date answers HTTP 400 "Date is earlier than the minimum allowed
+meeting date"). Backfilled 14 Oct for about 3,330 credits: 1 Jul to 7 Oct 2025, 1-11 Sep 2026 and 2 Oct 2026, 1,147
+resulted races. Priced through the live day pipeline on the final field (price_day3 -> apply_stage2f -> shade_back,
+1% of raced runners missing a last-start speed rating), then the BetMatic live-rules backtest. Jul to 7 Oct 2025:
+1,033 races, 885 bets, 128 won, +20.7% on turnover (Jul +3%, Aug +26%, Sep +18%, Oct 1-7 +82%), against +60% on the
+holdout with the same rules. Those races precede the dataset, so the rolling jockey/trainer/horse encodings built from
+our own history are empty for them; that may understate the method. Sep and Oct 2026 additions (with history):
+121 bets, +13.4% (Sep -2% on 110 bets). Plan on +20% to +45% on turnover, not +60%.
