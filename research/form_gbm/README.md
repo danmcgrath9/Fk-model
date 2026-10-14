@@ -821,3 +821,11 @@ open, the average price stood at x0.927 of the open after 2 minutes, x0.901 afte
 says nothing; the price decay is the result. Applied to the holdout's +47% staked at the open, (1.47 x ratio) - 1 gives
 roughly +36% at 2 minutes, +32% at 5, +28% at 10, +21% at 20, before the member's own fill and limits. Re-run on the
 historical export's timed flucs (back to July 2025) when it arrives.
+
+## Is live tracking the backtest? (14 Oct 2026, t_vol.py; founder: "are we sure we are tracking toward back test")
+Holdout with every live rule applied (no first starters, the first-starter race rule, first-up/bounce blocks, EARLY
+runners $8 or shorter, 3 steps): 0.80 bets a race, 1.14u staked a race, +0.68u a race (+60%); without the rules
+1.13 bets a race. Live, the six meetings 11-17 Oct (51 races): 0.90 value-at-open runners a race before the rules
+(80% of the backtest's 1.13), 0.55 bets a race after them (69% of 0.80). The back-settler shade is not the cause
+(46 fires with it, 47 without). About two standard deviations short on 51 races: watch it, not yet a finding.
+Forward test 5-13 Oct: +24.66u on 79 races (0.31u a race against the backtest's 0.68u), on 7 winners.
