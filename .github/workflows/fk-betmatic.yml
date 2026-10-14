@@ -26,6 +26,11 @@ on:
       number:
         description: 'cancel: only this saddlecloth number in that race'
         default: ''
+      when:
+        description: "send: 'open' = fire at the market's open (normal); 'now' = place straight away on a market already up (test bets)"
+        type: choice
+        options: [open, now]
+        default: 'open'
       dry_run:
         description: 'yes = print exactly what would be sent, send nothing'
         default: 'yes'
@@ -52,6 +57,7 @@ jobs:
       RACE: ${{ github.event.inputs.race }}
       NUM: ${{ github.event.inputs.number }}
       DRY: ${{ github.event.inputs.dry_run }}
+      WHEN: ${{ github.event.inputs.when }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -68,7 +74,8 @@ jobs:
           SEND=""; [ "$DRY" = "yes" ] || SEND="--send"
           case "$A" in
             check)  python betmatic/betmatic_send.py check ;;
-            send)   python betmatic/betmatic_send.py send "$FILE" --unit "$UNIT" --session "$SESSION" $SEND ;;
+            send)   NOW=""; [ "$WHEN" = "now" ] && NOW="--now"
+                    python betmatic/betmatic_send.py send "$FILE" --unit "$UNIT" --session "$SESSION" $NOW $SEND ;;
             cancel) python betmatic/betmatic_send.py cancel "$FILE" ${RACE:+--race "$RACE"} ${NUM:+--number "$NUM"} $SEND ;;
             status) python betmatic/betmatic_send.py status "$FILE" ;;
             pending) python betmatic/betmatic_send.py pending "$FILE" ;;

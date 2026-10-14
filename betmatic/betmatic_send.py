@@ -120,7 +120,7 @@ def send(a):
             "event_number": int(o["race"]), "market": "Fixed Win", "selection": str(o["number"]), "stake": stake,
             "check_odds": True, "odds": float(o["min_odds"]),
             "check_max_odds": bool(o.get("max_odds")), **({"max_odds": float(o["max_odds"])} if o.get("max_odds") else {}),
-            "is_market_open": True, "max_attempts": a.attempts, "delay_between_attempts": 1,
+            "is_market_open": not a.now, "max_attempts": a.attempts, "delay_between_attempts": 1,
             "allow_double_bets": False, "take_sp": False, "label": None}))
     total = sum(b[2]["stake"] for b in bets)
     print(f"{len(bets)} bets, ${total:,} if every one fired, unit ${a.unit}")
@@ -289,6 +289,7 @@ if __name__ == "__main__":
     s = sp.add_parser("send"); s.add_argument("orders"); s.add_argument("--unit", type=float, required=True, help="dollars a unit")
     s.add_argument("--session", required=True, help="the TAB session ID from 'check'"); s.add_argument("--bookie", default="TAB")
     s.add_argument("--attempts", type=int, default=60, help="placement retries a second apart if the first fails at the open (BetMatic's own default is 60)")
+    s.add_argument("--now", action="store_true", help="place now on a market that is already up (a test bet), not as a Market Open bet")
     s.add_argument("--allow-short", action="store_true", help="send even if the TAB balance is below the total stake")
     s.add_argument("--send", action="store_true")
     c = sp.add_parser("cancel"); c.add_argument("ledger"); c.add_argument("--race"); c.add_argument("--number"); c.add_argument("--send", action="store_true")
