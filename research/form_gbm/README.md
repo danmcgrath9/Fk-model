@@ -894,3 +894,8 @@ field 0.0938 / 1.9042, no help (the gain in t_gear.py is today's gear detail); +
 meetings 0.0934 / 1.9048, mixed, drop; + age in days, foal month, home track 0.0934 / 1.9056, mixed, drop; all four
 0.0923 / 1.9027. Race-review comments not tested (only in recently pulled races) and dropped by the founder as
 subjective; acceptances never populated.
+The market clock (15 Oct 2026, t_market_clock.py, the 40 races in fluc_timing.py's sample with every runner priced at
+every point), KL to BSP / log loss vs winners: our price 0.103 / 1.658; open 0.161 / 1.740; +2 min 0.152; +5 min 0.145;
++10 min 0.144; +20 min 0.136; +1 hour 0.118; +4 hours 0.108; +12 hours 0.112; 3 hours before the jump 0.069; 1 hour
+before 0.054; last fluc 0.041. Our price is about where the market stands 4 to 12 hours after the open; the market
+only passes us on race day.
