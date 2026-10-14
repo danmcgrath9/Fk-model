@@ -55,6 +55,80 @@ def record(txt):
         return None
 
 
+# Gear detail (15 Oct 2026, research/form_gbm/t_gear.py, t_combo.py: holdout KL to BSP 0.0929 -> 0.0920, with the past
+# price moves below 0.0912). Form King's change codes are ON_FIRST_TIME, OFF_FIRST_TIME, ON_AGAIN, OFF_AGAIN and
+# STAYING_ON. gear_first_time and blinkers_first above match the word FIRST, so they also count gear coming OFF for the
+# first time (wrong on about 5% of runners); they stay as they are because the live model was trained on them, and
+# these columns carry the correct meaning.
+GEAR_ITEMS = (("blinkers", r"blink"), ("winkers", r"winker"), ("visors", r"visor"), ("tongue", r"tongue"),
+              ("noseroll", r"nose roll"), ("earmuffs", r"ear muff|earmuff|ear plug|earplug|hood"),
+              ("lugging", r"lugging|bit|cross"), ("pacifier", r"pacifier"), ("bandages", r"bandage|boot"),
+              ("shoes", r"shoe|plate|bar"), ("other", r""))
+
+
+def gear_item(name: str) -> str:
+    import re
+    n = name.lower()
+    for k, pat in GEAR_ITEMS[:-1]:
+        if re.search(pat, n):
+            return k
+    return "other"
+
+
+def gear_detail(gear: list) -> dict:
+    """Per item: worn today, put on for the first time, taken off (first time or again); and the counts."""
+    out = {}
+    for k, _ in GEAR_ITEMS:
+        out[f"gd_{k}_worn"] = out[f"gd_{k}_on1"] = out[f"gd_{k}_off"] = 0.0
+    out["gd_n_on1"] = out["gd_n_off"] = out["gd_n_back"] = 0.0
+    for g in gear:
+        if not isinstance(g, dict):
+            continue
+        k = gear_item(str(g.get("gear") or "")); ch = str(g.get("change") or "").upper()
+        if g.get("on"):
+            out[f"gd_{k}_worn"] = 1.0
+        if ch == "ON_FIRST_TIME":
+            out[f"gd_{k}_on1"] = 1.0; out["gd_n_on1"] += 1
+        if ch.startswith("OFF"):
+            out[f"gd_{k}_off"] = 1.0; out["gd_n_off"] += 1
+        if ch == "ON_AGAIN":
+            out["gd_n_back"] += 1
+    return out
+
+
+def past_price_moves(e: dict, race_date: str) -> dict:
+    """How the horse was backed in its recent runs (15 Oct 2026, research/form_gbm/t_wide.py: holdout KL to BSP 0.0937
+    -> 0.0923): each past run's first and last price fluc, from Form King's past-run flucs. log(last / first), so
+    negative = backed. The same last runs past_runs reads, newest first."""
+    runs = []
+    for p in F.entry_past_events(e):
+        if str(p.get("scratched")).lower() == "true" or p.get("scratched") is True:
+            continue
+        d = F.past_event_date(p)
+        if d and d < race_date:
+            runs.append((d, p))
+    runs.sort(key=lambda t: t[0], reverse=True)
+
+    def first_last(p):
+        fl = [num(x.get("price")) for x in (p.get("flucs") or []) if isinstance(x, dict)]
+        fl = [x for x in fl if x is not None and x > 1]
+        return (fl[0], fl[-1]) if fl else (None, None)
+
+    out = {"fl_last_move": None, "fl_last_first": None, "fl_mean5_move": None, "fl_n_backed5": None}
+    if runs:
+        a, z = first_last(runs[0][1])
+        if a and z:
+            out["fl_last_move"], out["fl_last_first"] = math.log(z / a), math.log(a)
+    mv = []
+    for _, p in runs[:5]:
+        a, z = first_last(p)
+        if a and z:
+            mv.append(math.log(z / a))
+    if mv:
+        out["fl_mean5_move"] = sum(mv) / len(mv); out["fl_n_backed5"] = float(sum(m < -0.15 for m in mv))
+    return out
+
+
 def entry_extras(e: dict, sm_row: dict | None, tempo: dict | None) -> dict:
     out = {}
     horse = e.get("horse") or {}
@@ -66,6 +140,7 @@ def entry_extras(e: dict, sm_row: dict | None, tempo: dict | None) -> dict:
     out["gear_changes"] = float(sum(1 for g in gear if isinstance(g, dict) and g.get("change") and g.get("change") != "STAYING_ON"))
     out["blinkers_first"] = float(any(isinstance(g, dict) and "blinker" in str(g.get("gear") or "").lower()
                                       and "FIRST" in str(g.get("change") or "") for g in gear))
+    out.update(gear_detail(gear))
     for k in ("apprenticeClaim", "daysSinceLastRace", "daysSinceLastWin", "raceInPrep", "weight", "weightCarried",
               "ridingWeight", "barrier", "benchmarkRating", "averagePrizeMoney", "totalPrizeMoney", "wfaDiff"):
         out[k] = num(e.get(k))
@@ -286,6 +361,7 @@ def main() -> None:
             e = ent.get(r.horse_id) or {}
             raw = {f"raw_{k}": num(v) for k, v in r.raw.items() if not isinstance(v, (list, dict))}
             ex = entry_extras(e, sm.get(r.horse_id), row.get("tempo"))
+            ex.update(past_price_moves(e, str(race.date)[:10]))
             xkeys |= set(r.x)
             extra_keys |= set(raw) | set(ex)
             recs.append((ri, r, raw, ex))
