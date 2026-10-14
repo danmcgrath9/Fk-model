@@ -62,10 +62,17 @@ def sessions(bm):
 
 
 def bookie_id(bm, name):
+    """The bookmaker's numeric id from GET /bookie/names/, matched on its "title" (e.g. "TAB") or its id. Stops if the
+    bookmaker is disabled or in maintenance: BetMatic skips bets to a bookmaker in maintenance without an error
+    (API reference, Data: Bookmakers)."""
     for b in bm.get_all("/bookie/names/"):
-        if str(b.get("name", "")).strip().lower() == name.lower() or str(b.get("id")) == str(name):
+        if str(b.get("title", "")).strip().lower() == name.lower() or str(b.get("id")) == str(name):
+            if not b.get("enabled", True) or b.get("maintain"):
+                sys.exit(f"bookmaker {b.get('title')} (id {b.get('id')}) is {'in maintenance' if b.get('maintain') else 'disabled'} "
+                         "on BetMatic: bets to it would be skipped. Not sending.")
             return str(b["id"])
-    sys.exit(f"bookmaker {name!r} not in GET /bookie/names/")
+    sys.exit(f"bookmaker {name!r} not in GET /bookie/names/ (titles: "
+             + ", ".join(str(b.get("title")) for b in bm.get_all("/bookie/names/")) + ")")
 
 
 def check(a):
@@ -73,6 +80,9 @@ def check(a):
     for s in sessions(bm):
         print(f"session {s.get('id')}: {s.get('display_name')} bookie={s.get('bookie') or s.get('bookie_name')} bot_running={s.get('bot_running')}")
     print("readiness:", json.dumps(bm.get("/account/readiness/"))[:600])
+    want = getattr(a, "bookie", "TAB")
+    tab = [b for b in bm.get_all("/bookie/names/") if str(b.get("title", "")).strip().lower() == want.lower()]
+    print("bookmaker:", tab[0] if tab else f"{want!r} not found by title")
 
 
 def label(o, step):

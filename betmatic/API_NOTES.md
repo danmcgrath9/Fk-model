@@ -67,3 +67,10 @@ API Overview (api-reference/overview): rate limits, errors.
   and GET /bot/logs/{notification_id}/ (what the bot did with one bet), GET /bet/summary/.
 - POST /bookieaccount/control/{id}/ starts or stops one session from the API.
 - Errors: 400 validation ({"error": ...} or {"field": [...]}), 401 token, 403 subscription inactive, 404, 500.
+
+## Bookmakers page (pasted 15 Oct)
+- GET /bookie/names/ is a plain array of {id, title, markets_unavailable, enabled, bonus_enabled, sports, maintain}.
+  The bookmaker's NAME is "title": the sender matched "name" and would have stopped on the first live send with
+  "bookmaker 'TAB' not in GET /bookie/names/". Fixed: matches title, and refuses to send when TAB is disabled or in
+  maintenance, because BetMatic skips bets to a bookmaker in maintenance without an error. `check` prints TAB's row.
+- bookies field: numeric ids joined with "&". GET /bookie/{id}/ adds home_link, note, support_manual_login.
