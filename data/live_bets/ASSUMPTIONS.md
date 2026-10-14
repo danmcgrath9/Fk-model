@@ -24,3 +24,13 @@ was checked. CHECKED = tested against raw data or a live record; NOT CHECKED = s
 | Order files are built on the final field | CHECKED | betmatic_orders.py drops emergencies and scratchings and warns on a pre-final-field file (14 Oct) |
 | The order builder bets what the backtest bets | CHECKED | Cranbourne 16 and Caulfield 17 order files rebuild identically under the same rules |
 | The holdout's rules were not tuned on the holdout | WRONG | the 20% edge, 5% shade and 3 steps were chosen looking at it, so it flatters; the 2025 races (+21%) are the cleaner test |
+
+## Field coverage (15 Oct 2026, scripts/wide_table.py over 51,492 runners)
+Checked rather than assumed: how often each unread field is actually filled, by race month.
+- Race-review comments (videoComment): 63-68% of last starts for races pulled in the 14 Oct backfill (Jul-Sep 2025) and
+  55% in Oct 2026, but 0% for every race pulled from Nov 2025 to Aug 2026. The field depends on WHEN a race was pulled,
+  not when it was run, so it cannot be tested or trained on until the year is re-pulled (about 25 credits a meeting).
+- Acceptances: never populated (0%).
+- Past-run price flucs 61-72%, past-run gear 52-64%, position at 1200m 34-43%, home track 92-98%, foal date 100%.
+- September 2026 is thinner than its neighbours on flucs (34%) and spell (56%): the races pulled live that month
+  (the "September gap" of 4 Oct) carried less.
