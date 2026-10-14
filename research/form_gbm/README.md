@@ -887,3 +887,10 @@ the horse's earlier races in our data: gear last start, same as last start, rati
 KL 0.0930 / log loss 1.8996. Keep. Blinkers worn ranks 65th of 817 inputs by gain. Next: build it from each past
 run's own gear field (Form King sends it) instead of joining our races, for full coverage, and fix the FIRST bug in
 export_dataset.py in the same change.
+Unread fields, group by group (15 Oct 2026, t_wide.py over scripts/wide_table.py, stage-1 trees, 2 seeds, holdout from
+3 Jun 2026), KL to BSP / log loss vs winners: current F9 0.0937 / 1.9033; + past-run price flucs (last start move,
+first fluc, mean move and times backed over the last 5) 0.0923 / 1.9015, KEEP; + past-run gear from Form King's own
+field 0.0938 / 1.9042, no help (the gain in t_gear.py is today's gear detail); + position at 1200m, spell, night
+meetings 0.0934 / 1.9048, mixed, drop; + age in days, foal month, home track 0.0934 / 1.9056, mixed, drop; all four
+0.0923 / 1.9027. Race-review comments not tested (only in recently pulled races) and dropped by the founder as
+subjective; acceptances never populated.
