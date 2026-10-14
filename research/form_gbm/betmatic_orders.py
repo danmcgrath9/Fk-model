@@ -54,11 +54,11 @@ def main():
     rows = []
 
     def add(r, ours, min_odds, cap, chance_at, note):
-        rc = int(r["race"])
+        rc = int(r["race"])   # max_odds: the 3x-our-price (or EARLY $8) ceiling; an open above it is not a bet (14 Oct 2026)
         ts = tiers(min_odds, cap, chance_at, r.get("only_ride", False), field[rc])
         for k, (t, extra, total) in enumerate(ts, 1):
             rows.append(dict(date=date, venue=venue, race=rc, jump=times.get(str(rc), ""), horse=r["horse"], bet="WIN",
-                             min_odds=f"{t:.2f}", stake_units=f"{extra:.2f}", stake_dollars=f"{extra * 100:.0f}",
+                             min_odds=f"{t:.2f}", max_odds=f"{cap:.2f}", stake_units=f"{extra:.2f}", stake_dollars=f"{extra * 100:.0f}",
                              order=f"{k} of {len(ts)}", total_if_all_fire=f"{total:.2f}u", our_price=f"{ours:.2f}", note=note))
 
     if a.after_open:

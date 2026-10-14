@@ -1,5 +1,7 @@
 # Forward test: the model's whole book at opening prices, settled
 
+> RETIRED 14 Oct 2026 (founder: "Forward test I only want the model that we would be using with betmatic"). This was the sheet's whole book at the open. The forward test is now forward-test-betmatic.md (research/form_gbm/fwd_betmatic.py).
+
 Every bet the current rules flag at each meeting's opening prices (not just the bets taken or tweeted).
 Live stakes from stake_rule.py ($100 a unit, most 5u); flat = 1u a bet. CLV = opening price over Betfair SP (above 1 = we beat the close).
 

@@ -37,3 +37,13 @@ Until BetMatic is live these are paper bets; what the founder actually takes sta
 5. **9:30am top-up check (from 14 Oct 2026, paper):** on race day at 9:30am, after scratchings, refresh prices, re-price
    on the final field and run `research/form_gbm/topup.py DAYPREFIX GTAG`; log any top-ups in the top-up section of
    betmatic-book.md and settle them with the results. Tracked to see whether a top-up earns; the backtests say it does not.
+
+## The forward test is the BetMatic method only (14 Oct 2026)
+Founder: "Forward test I only want the model that we would be using with betmatic". data/live_bets/forward-test-betmatic.md,
+from research/form_gbm/fwd_betmatic.py: every meeting the founder bets, the pre-open order file built from the model's
+FIRST price for the meeting (git history, never re-made after the race), filled at the opening price, 8 steps,
+first-starter race rule, scratched runners void, deductions. Add each meeting to MEETINGS and re-run it when its results
+are in. The old sheet forward test (forward-test.md) is retired.
+Order files now carry max_odds (3x our price, $8 for EARLY runners): a minimum-odds order alone also fills at an open
+far past our price, which the rules would not bet. Whether BetMatic can carry a maximum price is a question for them;
+the forward test reports the result both ways.
