@@ -803,3 +803,11 @@ stage 1, Oct 2025 to May 2026): every month positive, +18% to +67%, total +$153,
 Long ones ($8-15 on our price) are the thin slice: holdout +19u on 456 bets, earlier +293u on 970. Requiring a 40% edge
 on them instead of 20%: holdout 1,033 bets +813u (+51.1%) vs 1,245 bets +801u (+47.4%); earlier 2,359 bets +1,578u
 vs 2,822 bets +1,564u. Same profit on 17% fewer bets in both samples. 30% and 50% land in the same place.
+
+## Forward test, BetMatic method only (14 Oct 2026, fwd_betmatic.py; founder: "Forward test I only want the model that we would be using with betmatic")
+5-13 Oct, 9 meetings, orders rebuilt from each meeting's first priced file and filled at the first saved open: 32 horses,
+7 won, 32.61u, +26.28u (+81%), 23/32 opened above BSP. Using each meeting's LAST pre-race price file instead: 36 horses,
+the same 7 winners, +20.06u (+55%): the result does not hang on which price file is used. From 14 Oct the test reads the
+real pre-open order file instead of rebuilding it (the first priced Warrnambool file still held an emergency and would
+have filled Endless Fury at $6 against the real order's $6.02); with that, 14 and 15 Oct match the BetMatic book bet for bet.
+3 fills opened past 3x our price (-3.97u): order files now carry max_odds.

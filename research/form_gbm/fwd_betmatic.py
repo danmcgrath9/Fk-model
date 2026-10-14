@@ -76,15 +76,33 @@ for label, mid, pre, g, snap in MEETINGS:
     # race-level first-starter rule: no bets where a first starter opens $6 or shorter
     fs_short = {int(k.split("|")[0]) for k in fs if (opens.get((int(k.split("|")[0]), norm(k.split("|", 1)[1]))) or 99) <= 6}
     ded, _ = race_deductions(pre)
+    sent = None   # from 14 Oct a real pre-open order file exists (built before the open, never rebuilt): use it exactly
+    if os.path.exists(f"{L}/{pre}-betmatic-preopen.csv"):
+        import csv
+        sent = collections.defaultdict(list)
+        for o in csv.DictReader(open(f"{L}/{pre}-betmatic-preopen.csv")):
+            sent[(int(o["race"]), norm(o["horse"]))].append((float(o["min_odds"]), float(o["stake_units"]), None,
+                                                             float(o["max_odds"]) if o.get("max_odds") else 3 * float(o["our_price"])))
     n_orders = n = w = 0; st_t = pl = 0.0; clv = []
-    for r in v:
-        k = f"{int(r['race'])}|{r['horse']}"; pm = r.get("p_model", r["p"]); ours = 1 / pm; blk = fu.get(k, "")
-        if k in fs or (blk and not blk.startswith("EARLY")) or not 1.6 <= ours <= 15: continue
-        mo = round(SHADE * (1.2 / pm ** 0.82) ** (1 / 0.78), 2); cap = min(3 * ours, 8.0 if blk.startswith("EARLY") else 1e9)
-        if mo >= cap: continue
-        ts = tiers(mo, cap, lambda t, pm=pm: pm ** 0.82 * t ** -0.22, r.get("only_ride", False), field[int(r["race"])])
+    cands = []   # (race, horse, ours, steps [(min, stake, _, cap)], cap)
+    if sent is not None:   # the order file actually built before the open: used exactly, never rebuilt
+        names = {(int(r["race"]), norm(r["horse"])): r["horse"] for r in v}
+        import csv
+        ours_of = {(int(o["race"]), norm(o["horse"])): (o["horse"], float(o["our_price"])) for o in csv.DictReader(open(f"{L}/{pre}-betmatic-preopen.csv"))}
+        for key, ts in sent.items():
+            cands.append((key[0], ours_of[key][0], ours_of[key][1], ts, ts[0][3]))
+    else:
+        for r in v:
+            k = f"{int(r['race'])}|{r['horse']}"; pm = r.get("p_model", r["p"]); ours = 1 / pm; blk = fu.get(k, "")
+            if k in fs or (blk and not blk.startswith("EARLY")) or not 1.6 <= ours <= 15: continue
+            mo = round(SHADE * (1.2 / pm ** 0.82) ** (1 / 0.78), 2); cap = min(3 * ours, 8.0 if blk.startswith("EARLY") else 1e9)
+            if mo >= cap: continue
+            ts = tiers(mo, cap, lambda t, pm=pm: pm ** 0.82 * t ** -0.22, r.get("only_ride", False), field[int(r["race"])])
+            cands.append((int(r["race"]), r["horse"], ours, ts, cap))
+    for rc, horse, ours, ts, cap in sorted(cands, key=lambda c: (c[0], c[1])):
+        r = {"race": rc, "horse": horse}; mo = ts[0][0]
         n_orders += len(ts)
-        rc = int(r["race"]); op = opens.get((rc, norm(r["horse"])))
+        op = opens.get((rc, norm(horse)))
         if op is None or rc in fs_short: continue
         filled = [x for x in ts if op >= x[0]]
         if not filled: continue
