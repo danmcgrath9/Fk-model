@@ -17,7 +17,7 @@ odds (check_odds/odds) and maximum odds (check_max_odds/max_odds), stake = stake
 retry after a timeout cannot double-bet (BetMatic does no duplicate detection). The returned notification IDs go to
 a ledger beside the orders (ORDERS-ledger.csv) for cancel and status. Refuses to send if no session shows
 bot_running, if a row has no saddlecloth number, or if the venue/race is not in BetMatic's race schedule."""
-import argparse, csv, json, os, sys, time
+import argparse, csv, json, os, re, sys, time
 import requests
 
 API = "https://betmatic.app/api"
@@ -115,20 +115,46 @@ def send(a):
             print(json.dumps(body))
         print("DRY RUN: nothing sent. Add --send to send.")
         return
+    if not str(a.session).isdigit():
+        sys.exit("--session must be the numeric session ID from 'check': BetMatic ignores a non-numeric target_session "
+                 "and sends the bet to EVERY session (API reference, Create a Bet)")
     bm = BM()
     live = [s for s in sessions(bm) if str(s.get("id")) == str(a.session) and s.get("bot_running")]
     if not live:
         sys.exit(f"session {a.session} is not running (bot_running false): start the bot and the session first")
     bid = bookie_id(bm, a.bookie)
+    # A bet names the venue and race number; without start_time BetMatic takes the NEXT race at that venue and number,
+    # and the schedule runs up to 5-6 days ahead (API reference: Race Schedule; Create a Bet). So each bet is matched to
+    # the schedule entry on the order's own date and pinned with that race's startTime, copied as BetMatic gives it.
+    # A bet is skipped if that race is not in the schedule, its saddlecloth is no longer running (scratched runners
+    # leave "runners"), or the name at that number is not our horse.
     sched = bm.get_all("/competition/namecodes/")
-    known = {(str(c.get("name", "")).upper(), str(c.get("code")), int(c.get("event_number", 0))) for c in sched if isinstance(c, dict)}
+    on_day = {}
+    for c in sched:
+        if isinstance(c, dict) and c.get("code") == "Galloping":
+            on_day[(str(c.get("name", "")).upper(), int(c.get("event_number", 0)), str(c.get("startTime", ""))[:10])] = c
+    norm = lambda s: re.sub(r"[^a-z0-9]", "", str(s).lower())
+
+    def race_problem(o, body):
+        c = on_day.get((body["competition"], body["event_number"], o["date"]))
+        if c is None:
+            return f"{body['competition']} R{body['event_number']} on {o['date']} is not in BetMatic's race schedule"
+        nums = [x.strip() for x in str(c.get("runners", "")).split(",")]
+        names = str(c.get("runner_names", "")).split("#&#")
+        if body["selection"] not in nums:
+            return f"No. {body['selection']} is not running (scratched) in BetMatic's schedule"
+        if len(names) == len(nums) and norm(names[nums.index(body["selection"])]) != norm(o["horse"]):
+            return f"No. {body['selection']} is {names[nums.index(body['selection'])]!r} on BetMatic, not {o['horse']!r}"
+        body["start_time"] = c["startTime"]
+        return None
     ledger_fn = a.orders.replace(".csv", "-ledger.csv"); new = not os.path.exists(ledger_fn)
     with open(ledger_fn, "a", newline="") as fh:
         w = csv.writer(fh)
         if new: w.writerow(["label", "race", "number", "horse", "min_odds", "max_odds", "stake", "notification_ids", "message"])
         for lab, o, body in bets:
-            if known and (body["competition"], "Galloping", body["event_number"]) not in known:
-                print(f"SKIP {lab}: {body['competition']} R{body['event_number']} not in BetMatic's race schedule"); continue
+            prob = race_problem(o, body)
+            if prob:
+                print(f"SKIP {lab}: {prob}"); w.writerow([lab, o["race"], o["number"], o["horse"], o["min_odds"], o.get("max_odds", ""), body["stake"], "", "SKIPPED: " + prob]); continue
             if results(bm.get("/notification/", label=lab)):
                 print(f"SKIP {lab}: already on BetMatic"); continue
             body.update(label=lab, bookies=bid, target_session=str(a.session))
@@ -160,7 +186,9 @@ def status(a):
         for r in csv.DictReader(open(a.ledger)):
             for i in r["notification_ids"].split("&"):
                 if not i: continue
-                recs = results(bm.get(f"/bet/notification/{i}/"))
+                got = bm.get(f"/bet/notification/{i}/")
+                # {"bets": [...]} per the API's worked examples; status is "" until settled as Won / Lost / Refund
+                recs = got.get("bets", results(got)) if isinstance(got, dict) else got
                 fh.write(json.dumps({"label": r["label"], "notification": i, "records": recs}) + "\n")
                 for x in (recs if isinstance(recs, list) else [recs]):
                     print(r["label"], i, {k: x.get(k) for k in ("submit_result", "status", "odds", "stake", "profit") if isinstance(x, dict)})
@@ -172,7 +200,7 @@ if __name__ == "__main__":
     sp.add_parser("check")
     s = sp.add_parser("send"); s.add_argument("orders"); s.add_argument("--unit", type=float, required=True, help="dollars a unit")
     s.add_argument("--session", required=True, help="the TAB session ID from 'check'"); s.add_argument("--bookie", default="TAB")
-    s.add_argument("--attempts", type=int, default=10, help="placement retries a second apart if the first fails at the open")
+    s.add_argument("--attempts", type=int, default=60, help="placement retries a second apart if the first fails at the open (BetMatic's own default is 60)")
     s.add_argument("--send", action="store_true")
     c = sp.add_parser("cancel"); c.add_argument("ledger"); c.add_argument("--race"); c.add_argument("--number"); c.add_argument("--send", action="store_true")
     t = sp.add_parser("status"); t.add_argument("ledger")

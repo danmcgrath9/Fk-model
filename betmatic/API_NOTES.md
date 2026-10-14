@@ -74,3 +74,20 @@ API Overview (api-reference/overview): rate limits, errors.
   "bookmaker 'TAB' not in GET /bookie/names/". Fixed: matches title, and refuses to send when TAB is disabled or in
   maintenance, because BetMatic skips bets to a bookmaker in maintenance without an error. `check` prints TAB's row.
 - bookies field: numeric ids joined with "&". GET /bookie/{id}/ adds home_link, note, support_manual_login.
+
+## Race Schedule, Create a Bet, Bet Types, Bet Examples, Session Targeting, Scheduling (pasted 15 Oct)
+- start_time: "copied directly from GET /competition/namecodes/; if omitted, the system matches the NEXT race" for the
+  venue + code + race number, and the schedule runs 5-6 days ahead. The sender now matches each bet to the schedule
+  entry on the ORDER'S date and pins it with that race's startTime; a bet is skipped (and the skip written to the
+  ledger) if that race is missing, the saddlecloth is no longer in "runners" (scratched), or the name at that number
+  is not our horse. Before this, Saturday's Caulfield orders sent before a midweek Caulfield meeting would have fired
+  on the midweek race.
+- target_session must be numeric: anything else is IGNORED and the bet goes to every running session. The sender
+  refuses a non-numeric --session.
+- Fixed Wager to one session: each order bets exactly its stake. ensure_total_wager / allow_double_bets only matter
+  across several sessions; we send allow_double_bets false.
+- Market open: max_attempts / delay_between_attempts are retries if the first placement fails; BetMatic's own
+  example uses 60 x 1s. Our default is now 60 (every retry still keeps min and max odds).
+- GET /bet/notification/{id}/ returns {"bets": [...]}; status is "" until Won / Lost / Refund. `status` reads "bets".
+- GET /notification/scheduled/ lists only the last 24 hours: the ledger keeps every notification id for cancels.
+- Response id for a market-open create is "&"-joined (one per bookmaker); we target TAB only, so one id.
