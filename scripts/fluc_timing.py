@@ -25,8 +25,9 @@ def ms(v):
     try: return datetime.fromisoformat(str(v).replace("Z", "+00:00")).replace(tzinfo=timezone.utc).timestamp() * 1000 if "T" in str(v) else float(v)
     except Exception: return None
 AFTER = (0.33, 1, 2, 4, 8, 12, 24); BEFORE = (12, 6, 3, 1, 0.5)
+MINS = (2, 5, 10, 20)   # 14 Oct 2026: the price standing 2/5/10/20 minutes after the open (a follower's price)
 print("CSV-BEGIN")
-print("race_id,horse_id,n,open_h_before_jump,open," + ",".join(f"a{h}" for h in AFTER) + "," + ",".join(f"b{h}" for h in BEFORE) + ",last,finish,bsp,am930,jump_mel,scratched")
+print("race_id,horse_id,n,open_h_before_jump,open," + ",".join(f"a{h}" for h in AFTER) + "," + ",".join(f"b{h}" for h in BEFORE) + ",last,finish,bsp,am930,jump_mel,scratched," + ",".join(f"m{m}" for m in MINS) + ",nflucs_10m")
 n_r = 0
 for r in rows:
     ents = []
@@ -50,5 +51,7 @@ for r in rows:
         am930 = upto(t930) if t0 <= t930 < end else ""
         jump = datetime.fromtimestamp(end / 1000, MEL).strftime("%H:%M")
         scr = "1" if F.entry_scratched(e) else ""
+        mm = [upto(t0 + m * 60e3) if t0 + m * 60e3 < end else "" for m in MINS]
+        n10 = sum(1 for t, p in fl if t <= t0 + 10 * 60e3)
         print(f"{r['race_id']},{F.horse_id(e)},{len(fl)},{(end - t0) / 3600e3:.2f},{fl[0][1]}," + ",".join(map(str, a)) + "," + ",".join(map(str, b)) + f",{fl[-1][1]},{(F.result_finish_position(F.entry_result(e) or {}) or '')},{(F.result_betfair_sp(F.entry_result(e) or {}) or '')},{am930},{jump},{scr}")
 print("CSV-END"); print(f"{n_r} races with timed flucs since {since}", file=sys.stderr)
