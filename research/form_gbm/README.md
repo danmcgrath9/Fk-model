@@ -794,3 +794,12 @@ files (from 14 Oct) will allow a proper test after a few weeks.
   race day): orders at the open 31 bets, 4 won, +37.5% staked; with the 9:30am top-up 37 bets, +28.5%; the top-up slice
   alone 6 bets, 2 won, -27% (one 3.75u top-up that ran 2nd decides it). Same direction as the backtest, far too small to
   settle. Tracked live from 14 Oct (topup.py, betmatic-book.md).
+
+## Month by month with expenses, and a stricter edge on long ones (14 Oct 2026, t_monthly.py)
+BetMatic orders (8 steps, 5% shade, 16c deduction), $100 a unit, less $359 a month (BetMatic $199 + Form King $160).
+Holdout (live model): Jun +$14,849, Jul +$15,950, Aug +$33,545, Sep +$7,840 (129 races held), Oct to the 9th +$6,111;
+total +$78,295 net on $169,106 staked (+47%), worst drawdown 48u ($4,764), no losing month. Earlier races (out-of-fold
+stage 1, Oct 2025 to May 2026): every month positive, +18% to +67%, total +$153,154 net, worst drawdown 66u.
+Long ones ($8-15 on our price) are the thin slice: holdout +19u on 456 bets, earlier +293u on 970. Requiring a 40% edge
+on them instead of 20%: holdout 1,033 bets +813u (+51.1%) vs 1,245 bets +801u (+47.4%); earlier 2,359 bets +1,578u
+vs 2,822 bets +1,564u. Same profit on 17% fewer bets in both samples. 30% and 50% land in the same place.
