@@ -48,3 +48,16 @@ within the forward test's range. Then decide: the 40% edge on long ones, a secon
   stake and price; the ladder sends each horse as several small bets; Victoria's MBL makes the TAB take a win bet to
   win $1,000 (country/provincial) or $2,000 (metro). Planned: a post-open check that resends a refused or cut step
   at an MBL-sized stake with the same minimum odds. Asked BetMatic whether the bot accepts a reduced offer.
+
+## Order of play (founder, 14 Oct): "Big dog eats first"
+Our orders fire at TAB's open; members get the tips (with minimum prices) once our fills are back; then the public X
+post. No member cap is needed to protect our fills, because we are already on.
+
+## Start-up checklist (14 Oct)
+1. Machine: the 2019 MacBook Air (1.6GHz dual-core, under BetMatic's 4GHz spec) for sign-up and tests; buy the GMKtec
+   M8 (Ryzen 5 PRO 6650H, 16GB, $549.99 Amazon AU) for live betting; confirm Windows 11 on arrival.
+2. Sign up to BetMatic; install the bot; connect TAB as the only session.
+3. On that machine: Python, the repo's betmatic/ folder, BETMATIC_EMAIL and BETMATIC_PASSWORD set as environment
+   variables there (never in the repo, never sent to Claude). Run `betmatic_send.py check`.
+4. $2,000 into TAB (covers a two-meeting day at $25 a unit if every order fired).
+5. Simulation tab once, then one $1 bet to the TAB session, then the first meeting at $25 a unit.
