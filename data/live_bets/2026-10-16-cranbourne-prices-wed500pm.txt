@@ -1,0 +1,106 @@
+# Cranbourne Fri 16 Oct, Good 4: first market snapshot with Form King prices, pulled Wed 14 Oct 5:00pm Melbourne (Form King open = fk_open).
+1, Front Page Edition, 23.00, 23.00, fk_open 10.00
+1, Locard, 11.00, 11.00, fk_open 7.50
+1, Splendacious, 5.50, 5.50, fk_open 11.00
+1, Capital Affair, 31.00, 31.00, fk_open 15.00
+1, Truant, 4.20, 4.20, fk_open 5.50
+1, Pragmatic Lady, 151.00, 151.00, fk_open 101.00
+1, Go Maggie Mae, 5.50, 5.50, fk_open 7.50
+1, Lonnegan, 11.00, 11.00, fk_open 6.50
+1, Call Me Later, 15.00, 15.00, fk_open 13.00
+1, Mystic River Queen, 51.00, 51.00, fk_open 18.00
+1, Strike Package, 3.50, 3.50, fk_open 3.00
+2, Graceful Mist, 151.00, 151.00, fk_open 126.00
+2, Golde 'n' Fire, SCR
+2, Last Piece, SCR
+2, San Pueblo, 31.00, 31.00, fk_open 21.00
+2, Galagacisco, 71.00, 71.00, fk_open 51.00
+2, Silver Snow, 41.00, 41.00, fk_open 41.00
+2, Dun Gracefully, 41.00, 41.00, fk_open 21.00
+2, Ottalaus, 8.00, 8.00, fk_open 7.00
+2, Capital Charlie, 3.50, 3.50, fk_open 2.90
+2, Doubt It's Love, 27.00, 27.00, fk_open 17.00
+2, True Spirit, 10.00, 10.00, fk_open 8.00
+2, Chandler, 2.25, 2.25, fk_open 3.10
+2, Fanfire, 16.00, 16.00, fk_open 13.00
+2, Naked Light, 7.50, 7.50, fk_open 11.00
+3, Piccina, 34.00, 34.00, fk_open 81.00
+3, No Drama, 6.50, 6.50, fk_open 6.50
+3, Unannounced, 17.00, 17.00, fk_open 15.00
+3, Celestra, 5.50, 5.50, fk_open 5.50
+3, Beast Fighter, 4.60, 4.60, fk_open 4.20
+3, La Velocita, 11.00, 11.00, fk_open 11.00
+3, Fort Of Dreams, 12.00, 12.00, fk_open 11.00
+3, The Sheriff, SCR
+3, Lady Blanc, 14.00, 14.00, fk_open 18.00
+3, Mo, 13.00, 13.00, fk_open 13.00
+3, Red Tide, 10.00, 10.00, fk_open 9.50
+3, March On By, 19.00, 19.00, fk_open 15.00
+3, Tagabella, 7.00, 7.00, fk_open 5.50
+4, Immortal Diva, 151.00, 151.00, fk_open 101.00
+4, Braemar Hill, 5.00, 5.00, fk_open 9.00
+4, Oda Mae, SCR
+4, Who'llstoplorraine, 101.00, 101.00, fk_open 71.00
+4, Tecknoking, 35.00, 35.00, fk_open 26.00
+4, Canticle, 21.00, 21.00, fk_open 15.00
+4, Jourama, 9.50, 9.50, fk_open 7.50
+4, The Turk, 71.00, 71.00, fk_open 51.00
+4, Late Night Wonder, 21.00, 21.00, fk_open 34.00
+4, Chaville, 23.00, 23.00, fk_open 18.00
+4, Kan Corner Quickly, 9.00, 9.00, fk_open 7.50
+4, Top Effort, 10.00, 10.00, fk_open 8.00
+4, Conquer The World, 1.75, 1.75, fk_open 1.70
+5, Empressive Enuff, 16.00, 16.00, fk_open 12.00
+5, Lygon Street Luigi, 21.00, 21.00, fk_open 17.00
+5, Jewel Bay, 35.00, 35.00, fk_open 26.00
+5, Ashau Valley, 101.00, 101.00, fk_open 81.00
+5, Ballistic Blue, 126.00, 126.00, fk_open 101.00
+5, Jewel Of Heaven, 9.00, 9.00, fk_open 6.00
+5, Prestige Ole, 41.00, 41.00, fk_open 34.00
+5, Aubaine, 11.00, 11.00, fk_open 7.50
+5, The Volta, 5.00, 5.00, fk_open 5.00
+5, Angelotti, 51.00, 51.00, fk_open 41.00
+5, Ranarsson, 1.55, 1.55, fk_open 1.75
+6, Black Peppermint, 4.80, 4.80, fk_open 3.90
+6, She's A Con, 7.00, 7.00, fk_open 11.00
+6, Chihuly, 6.50, 6.50, fk_open 5.50
+6, Hollandia, 21.00, 21.00, fk_open 21.00
+6, Verifier, SCR
+6, Trump Card, SCR
+6, Amawasha, 7.50, 7.50, fk_open 7.00
+6, Kazungula, 11.00, 11.00, fk_open 18.00
+6, Foix, 6.50, 6.50, fk_open 6.00
+6, Tempest Moon, 19.00, 19.00, fk_open 19.00
+6, Power Pivot, SCR
+6, Eye Tracker, 10.00, 10.00, fk_open 9.00
+6, Princess Painton, 13.00, 13.00, fk_open 10.00
+6, Celtic Park, 23.00, 23.00, fk_open 21.00
+6, Wolves' Den, 21.00, 21.00, fk_open 19.00
+7, Sheer Lunacy, SCR
+7, Itsukushima, 21.00, 21.00, fk_open 26.00
+7, Finance Shogun, 21.00, 21.00, fk_open 21.00
+7, Glenfinnan, 26.00, 26.00, fk_open 31.00
+7, Miss Castelvecchio, 8.00, 8.00, fk_open 6.50
+7, Kastun Star, 23.00, 23.00, fk_open 26.00
+7, Rogan, 34.00, 34.00, fk_open 21.00
+7, Two Sigma, 23.00, 23.00, fk_open 21.00
+7, Venetian Choice, 17.00, 17.00, fk_open 17.00
+7, Crocodile, 3.50, 3.50, fk_open 2.80
+7, Overpriced, 26.00, 26.00, fk_open 26.00
+7, Hedjet, 4.00, 4.00, fk_open 3.15
+7, Autumn Rainbow, 4.20, 4.20, fk_open 7.25
+8, Claymore Mine, 21.00, 21.00, fk_open 26.00
+8, Grouse Mountain, 51.00, 51.00, fk_open 31.00
+8, Hustle In Heels, 9.50, 9.50, fk_open 5.50
+8, Iced Poppy, 6.00, 6.00, fk_open 6.00
+8, Oceanella, 13.00, 13.00, fk_open 17.00
+8, Volatile, SCR
+8, Kippis, 8.50, 8.50, fk_open 8.00
+8, Arlington Row, 7.00, 7.00, fk_open 8.00
+8, Cattle Camp, 6.50, 6.50, fk_open 5.00
+8, The Flying Popov, 7.00, 7.00, fk_open 8.50
+8, Our Yonglee, SCR
+8, Holding Captive, SCR
+8, What A Ripper, 17.00, 17.00, fk_open 31.00
+8, Simply Steffi, 9.50, 9.50, fk_open 8.50
+8, Crank, 11.00, 11.00, fk_open 8.50
