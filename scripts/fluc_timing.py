@@ -53,5 +53,5 @@ for r in rows:
         scr = "1" if F.entry_scratched(e) else ""
         mm = [upto(t0 + m * 60e3) if t0 + m * 60e3 < end else "" for m in MINS]
         n10 = sum(1 for t, p in fl if t <= t0 + 10 * 60e3)
-        print(f"{r['race_id']},{F.horse_id(e)},{len(fl)},{(end - t0) / 3600e3:.2f},{fl[0][1]}," + ",".join(map(str, a)) + "," + ",".join(map(str, b)) + f",{fl[-1][1]},{(F.result_finish_position(F.entry_result(e) or {}) or '')},{(F.result_betfair_sp(F.entry_result(e) or {}) or '')},{am930},{jump},{scr}")
+        print(f"{r['race_id']},{F.horse_id(e)},{len(fl)},{(end - t0) / 3600e3:.2f},{fl[0][1]}," + ",".join(map(str, a)) + "," + ",".join(map(str, b)) + f",{fl[-1][1]},{(F.result_finish_position(F.entry_result(e) or {}) or '')},{(F.result_betfair_sp(F.entry_result(e) or {}) or '')},{am930},{jump},{scr}," + ",".join(map(str, mm)) + f",{n10}")
 print("CSV-END"); print(f"{n_r} races with timed flucs since {since}", file=sys.stderr)
