@@ -43,6 +43,8 @@ def main():
     ap.add_argument("prefix"); ap.add_argument("gtag"); ap.add_argument("out")
     ap.add_argument("--times", default=""); ap.add_argument("--after-open", action="store_true")
     ap.add_argument("--v6", help="price file to use instead of DAYPREFIX-GTAG-v6.json (e.g. the version priced before the market)")
+    ap.add_argument("--numbers", help="entry_numbers.py output (race|number|name|emergency|scratched): adds the saddlecloth "
+                                      "number BetMatic bets on (default DAYPREFIX-entry-numbers.txt if it exists)")
     a = ap.parse_args()
     B = f"{L}/{a.prefix}-{a.gtag}"
     times = dict(x.split("=", 1) for x in a.times.split(",") if "=" in x)
@@ -51,13 +53,22 @@ def main():
     for r in v:
         field[int(r["race"])] = field.get(int(r["race"]), 0) + 1
     date, venue = a.prefix[:10], a.prefix[11:].replace("-", " ").title()
+    import re
+    nm = lambda x: re.sub(r"[^a-z0-9]", "", x.lower())
+    nums_fn = a.numbers or (f"{L}/{a.prefix}-entry-numbers.txt" if os.path.exists(f"{L}/{a.prefix}-entry-numbers.txt") else None)
+    numbers = {}
+    if nums_fn:
+        for l in open(nums_fn):
+            pa = l.strip().split("|")
+            if len(pa) == 5 and pa[0].isdigit() and pa[1].isdigit():
+                numbers[(int(pa[0]), nm(pa[2]))] = pa[1]
     rows = []
 
     def add(r, ours, min_odds, cap, chance_at, note):
         rc = int(r["race"])   # max_odds: the 3x-our-price (or EARLY $8) ceiling; an open above it is not a bet (14 Oct 2026)
         ts = tiers(min_odds, cap, chance_at, r.get("only_ride", False), field[rc])
         for k, (t, extra, total) in enumerate(ts, 1):
-            rows.append(dict(date=date, venue=venue, race=rc, jump=times.get(str(rc), ""), horse=r["horse"], bet="WIN",
+            rows.append(dict(date=date, venue=venue, race=rc, jump=times.get(str(rc), ""), number=numbers.get((rc, nm(r["horse"])), ""), horse=r["horse"], bet="WIN",
                              min_odds=f"{t:.2f}", max_odds=f"{cap:.2f}", stake_units=f"{extra:.2f}", stake_dollars=f"{extra * 100:.0f}",
                              order=f"{k} of {len(ts)}", total_if_all_fire=f"{total:.2f}u", our_price=f"{ours:.2f}", note=note))
 

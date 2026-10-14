@@ -27,3 +27,25 @@ Login: POST /api/account/login/ {"email", "password"} -> {"token"}. Every call: 
 ## Still needed
 Create a Bet (placing-bets/create-bet): fields, market-open flag, bookmaker, stake, min/max odds, response id.
 API Overview (api-reference/overview): rate limits, errors.
+
+## API Overview and Create a Bet (pasted 14 Oct)
+- Base https://betmatic.app/api; token valid 60 days (refresh only within 7 days of login). No webhooks; polling has
+  no enforced rate limit (keep it to a few requests a second). WebSocket optional.
+- No sandbox or dry-run flag in the API: every accepted instruction can place real money. Dry run = the website's
+  Simulation tab (Tip Connect page). Safe start: simulate, then $1 bets to ONE session with a unique label.
+- POST /notification/create/ only broadcasts to running bot machines; 200 can still mean nothing placed (check the
+  message: "no signal was sent to the bot" = failure). Bot offline = signal lost, never replayed.
+- No duplicate detection: unique label per bet; on a timeout, GET /notification/?label=... before retrying.
+- Racing fields: type "Fixed Wager", sports "RACING", competition = exact UPPERCASE name from
+  GET /competition/namecodes/, code "Galloping", event_number, market "Fixed Win", selection = saddlecloth number as
+  a string, stake (dollars PER SESSION: target one session or the stake multiplies), start_time optional.
+- Odds: check_odds + odds (minimum), check_max_odds + max_odds.
+- Targeting: bookies "id&id" (IDs from GET /bookie/names/), target_session "id&id" (from GET /bookieaccount/).
+- Market Open: is_market_open true (no is_scheduled/auto_trigger); max_attempts and delay_between_attempts for retries
+  (website uses 60 x 1s). One notification per bookmaker, id returned as "a&b&c". If the bookmaker's market is ALREADY
+  open when the bet is created, it fires immediately at the current price (odds checks still apply), so orders must
+  be in before TAB opens. Pending ones: GET /notification/scheduled/; cancel POST /notification/{id}/cancel/;
+  POST /notification/{id}/trigger/ fires now.
+- Check placement: GET /bet/notification/{id}/ (per-session submit_result and odds taken). GET /bet/ = per-bookmaker
+  history; GET /notification/ = one row per instruction.
+- 400 "Internal error." usually means a wrong venue name, a race already run, a bad market string or a wrong type.
