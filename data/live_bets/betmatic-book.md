@@ -14,6 +14,18 @@ BetMatic standard in TIPPING_RULES.md.
 | 2026-10-15 Warrnambool (G4) | R3 | Who I Think I Am | 4 of 4 | $6.00 | 2.50u | | |
 | 2026-10-15 Warrnambool (G4) | R6 | Buzitup | 2 of 7 | $11.00 | 0.66u | | |
 | 2026-10-15 Warrnambool (G4) | R7 | Both Sides Now | 1 of 7 | $15.00 | 0.38u | | |
+| 2026-10-16 Cranbourne (G4) | R6 | Hollandia | 1 of 2 | $21.00 | 0.34u | | |
+| 2026-10-17 Caulfield (G4) | R2 | Autumn In Grinzing | 2 of 2 | $41.00 | 0.44u | | |
+| 2026-10-17 Caulfield (G4) | R2 | Voynichese | 1 of 2 | $9.50 | 0.91u | | |
+| 2026-10-17 Caulfield (G4) | R3 | Stardom | 1 of 2 | $15.00 | 0.54u | | |
+| 2026-10-17 Caulfield (G4) | R4 | Aemond | 2 of 2 | $13.00 | 0.85u | | |
+| 2026-10-17 Caulfield (G4) | R6 | Hidden Motive | 1 of 2 | $13.00 | 0.58u | | |
+| 2026-10-17 Caulfield (G4) | R7 | Over The Bridge | 2 of 2 | $6.00 | 2.00u | | |
+| 2026-10-17 Caulfield (G4) | R7 | Saintly Dancer | 2 of 2 | $7.00 | 1.64u | | |
+| 2026-10-17 Caulfield (G4) | R8 | Threads | 1 of 2 | $15.00 | 0.46u | | |
+| 2026-10-17 Caulfield (G4) | R9 | Cosmic Crusader | 1 of 2 | $5.00 | 1.54u | | |
+| 2026-10-17 Caulfield (G4) | R9 | Kingswood | 2 of 2 | $25.00 | 0.59u | | |
+| 2026-10-17 Caulfield (G4) | R10 | Shadhavar | 2 of 2 | $7.50 | 1.78u | | |
 
 Order files (data/live_bets/DAYPREFIX-betmatic-preopen.csv) rebuilt 14 Oct with the 8-step staking (each step sized at the
 next step's price, t_betmatic_tiers.py: +18% profit on the holdout over the first 3-step version), from the model's own
@@ -25,6 +37,9 @@ Caulfield 14 Oct settled (founder, 14 Oct): no winner, -5.04u. Every fill was ta
 TAB deduction against SP: True Rebel $6.60/$2.80, Savisanta $9.82/$5, Jett Smash $4.32/$2.50, Darkbonee $4.80/$3.10,
 Verdoux $26/$12): about 2x the SP on average. True Rebel beaten a nose. Warrnambool 15 Oct: 199 orders on 31 runners, 7
 filled, 3.54u; Kid Dynamite (R8) missed by under 1%.
+Cranbourne 16 Oct (Form King open, Wed 5:00pm): 3 orders filled on 3 runners, but Truant (R1, $5.50) and Naked Light (R2, $11) sit in races
+where a first starter opens $6 or shorter, so the race rule voids them: 1 bet, Hollandia 0.34u. Caulfield 17 Oct (Form King open, Wed 3:48pm):
+17 orders on 11 runners, 11.33u; none opened past its maximum price (Autumn In Grinzing $41 against a $41.06 ceiling, the closest).
 
 ## 9:30am top-ups (paper, tracked from 14 Oct 2026)
 Each race day at 9:30am, after scratchings: prices refreshed, our market re-priced on the final field, and every bet that
