@@ -1,0 +1,49 @@
+name: fk tweet
+
+# Posts one prepared Mercer Tipping tweet (card, main post, replies) from data/live_bets/tweets/NAME.json.
+# The job runs in the "twitter" environment, which requires the founder's approval in GitHub before it starts,
+# and holds the X keys as environment secrets, so nothing can post (or read the keys) until he approves.
+# Founder, 14 Oct 2026: "after we place the bet we send it out".
+
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: 'post file, e.g. data/live_bets/tweets/2026-10-16-cranbourne.json'
+        required: true
+      dry_run:
+        description: 'yes = show what would be posted, post nothing'
+        default: 'no'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fk-tweet
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    environment: twitter
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests requests-oauthlib
+      - name: Post
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+        run: python scripts/post_tweet.py "${{ github.event.inputs.file }}" ${{ github.event.inputs.dry_run == 'yes' && '--dry-run' || '' }}
+      - name: Keep the record of what was posted
+        if: always() && github.event.inputs.dry_run != 'yes'
+        run: |
+          F="${{ github.event.inputs.file }}"; P="${F%.json}.posted.json"
+          [ -f "$P" ] || exit 0
+          git config user.name "fk-tweet"; git config user.email "actions@users.noreply.github.com"
+          git add "$P" && git commit -m "Posted: $F" && git push

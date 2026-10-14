@@ -55,3 +55,10 @@ uses them in place of the estimate (betmatic_fills.py, betmatic_html.py, fwd_bet
 estimate (0.95 / price of every runner scratched after the open, matching TAB's published schedule) ran 2.5x too high on
 Caulfield 14 Oct (59c against 24c). The backtest KEEPS its 16c average deduction and the estimate stays as it is
 (founder, 14 Oct: "I'm fine with high deductions"): conservative on purpose. At 6.5c the holdout would be +61% staked.
+
+## Posting tips to X (14 Oct 2026)
+Founder: "after we place the bet we send it out". Claude writes data/live_bets/tweets/DAYPREFIX.json (main post, card
+image path, one reply per horse, all at the opening prices actually taken) and the card PNG beside it, commits, and
+dispatches the fk-tweet workflow. The job runs in the GitHub environment "twitter", which needs the founder's approval
+before it starts and holds the X keys (X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET) as environment
+secrets. Approve = post. NAME.posted.json records the post IDs and blocks a second posting. Only after the bets are on.
