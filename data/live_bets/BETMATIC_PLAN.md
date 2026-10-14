@@ -68,3 +68,9 @@ The fk-betmatic workflow runs betmatic_send.py on GitHub: Claude commits the ord
 only runs the BetMatic bot. Environment "betmatic" (required reviewer: the founder) holds BETMATIC_EMAIL,
 BETMATIC_PASSWORD and BETMATIC_TAB_SESSION. Ledgers and placements are committed back to data/live_bets/. The
 seconds-level shortfall resend (later) is the one piece that may still need to live on the PC.
+
+## Start (founder, 14 Oct): $50 units, first live meeting Bendigo Saturday or a Sunday meeting (decided 15 Oct)
+TAB balance about $3,750, bank about $5,000. Orders must be with BetMatic before TAB opens, and non-metro Saturday
+fields come out on the Thursday, Sunday fields on the Friday, so the set-up (bot running with TAB connected, the
+"betmatic" GitHub environment and its secrets, check run, $1 test) has to be done by about 11am on the day the
+chosen meeting's fields come out.
