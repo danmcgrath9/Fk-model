@@ -53,3 +53,17 @@ API Overview (api-reference/overview): rate limits, errors.
   live meetings): if the TAB offers a reduced amount, the bot accepts the reduced stake, and the accepted amount (not
   the attempted one) is what is recorded and sent on the WebSocket feed. So a post-open check can read the shortfall
   and resend it.
+
+## API Overview and Authentication pages (pasted by the founder 15 Oct)
+- Pagination: lists page at 10-20 rows by default (page_size max 100); an out-of-range page returns page 1, not an
+  error; "count" is never below 1, so count from "results". betmatic_send.py now walks every page (get_all) for
+  sessions, bookmakers and the race schedule; before this it read page 1 only, so TAB or a venue on page 2 would
+  have stopped the send.
+- Login: send "version": "API" (now sent). Rate limit on login 30/min; betting and data endpoints unlimited.
+- Tokens are stateless JWTs: logging in again does not invalidate the bot's or website's tokens, so a login per run is
+  fine. A leaked token cannot be revoked by logging in again: tell support@betmatic.io.
+- POST /account/logout/ disconnects a bot session: never call it from the sender.
+- Diagnostics worth using: GET /account/readiness/ (used by `check`), GET /account/connect_activity/, GET /bot/logs/
+  and GET /bot/logs/{notification_id}/ (what the bot did with one bet), GET /bet/summary/.
+- POST /bookieaccount/control/{id}/ starts or stops one session from the API.
+- Errors: 400 validation ({"error": ...} or {"field": [...]}), 401 token, 403 subscription inactive, 404, 500.

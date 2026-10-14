@@ -26,12 +26,27 @@ API = "https://betmatic.app/api"
 class BM:
     def __init__(self):
         r = requests.post(f"{API}/account/login/", json={"email": os.environ["BETMATIC_EMAIL"],
-                                                         "password": os.environ["BETMATIC_PASSWORD"]}, timeout=30)
+                                                         "password": os.environ["BETMATIC_PASSWORD"],
+                                                         "version": "API"}, timeout=30)
+        # Tokens are stateless JWTs: a fresh login per run does not disturb the bot's own session. Never call
+        # /account/logout/ from here: it disconnects a bot session (API reference, Authentication).
         r.raise_for_status()
         self.h = {"Authorization": f"Token {r.json()['token']}", "Content-Type": "application/json"}
 
     def get(self, path, **params):
         r = requests.get(f"{API}{path}", headers=self.h, params=params, timeout=30); r.raise_for_status(); return r.json()
+
+    def get_all(self, path, **params):
+        """Every page of a paginated list. BetMatic pages at 10-20 rows by default (100 max), an out-of-range page
+        returns page 1 rather than an error, and "count" is never below 1, so pages are walked by total_pages and
+        rows are counted from "results" (API reference, Overview: Pagination)."""
+        first = self.get(path, page=1, page_size=100, **params)
+        if not isinstance(first, dict) or "results" not in first:
+            return first if isinstance(first, list) else []
+        rows = list(first["results"])
+        for pg in range(2, int(first.get("total_pages") or 1) + 1):
+            rows += list(self.get(path, page=pg, page_size=100, **params).get("results") or [])
+        return rows
 
     def post(self, path, body=None):
         r = requests.post(f"{API}{path}", headers=self.h, json=body or {}, timeout=30)
@@ -43,11 +58,11 @@ def results(x):
 
 
 def sessions(bm):
-    return results(bm.get("/bookieaccount/"))
+    return bm.get_all("/bookieaccount/")
 
 
 def bookie_id(bm, name):
-    for b in results(bm.get("/bookie/names/")):
+    for b in bm.get_all("/bookie/names/"):
         if str(b.get("name", "")).strip().lower() == name.lower() or str(b.get("id")) == str(name):
             return str(b["id"])
     sys.exit(f"bookmaker {name!r} not in GET /bookie/names/")
@@ -95,7 +110,7 @@ def send(a):
     if not live:
         sys.exit(f"session {a.session} is not running (bot_running false): start the bot and the session first")
     bid = bookie_id(bm, a.bookie)
-    sched = results(bm.get("/competition/namecodes/"))
+    sched = bm.get_all("/competition/namecodes/")
     known = {(str(c.get("name", "")).upper(), str(c.get("code")), int(c.get("event_number", 0))) for c in sched if isinstance(c, dict)}
     ledger_fn = a.orders.replace(".csv", "-ledger.csv"); new = not os.path.exists(ledger_fn)
     with open(ledger_fn, "a", newline="") as fh:
