@@ -11,9 +11,9 @@ BetMatic standard in TIPPING_RULES.md.
 | 2026-10-14 Caulfield (G4) | R5 | Jett Smash | 1 of 6 | $4.40 | 1.47u | lost, SP $2.50 | -1.47 |
 | 2026-10-14 Caulfield (G4) | R7 | Darkbonee | 1 of 7 | $4.80 | 1.30u | 2nd (head), SP $3.10 | -1.30 |
 | 2026-10-14 Caulfield (G4) | R8 | Verdoux | 3 of 7 | $26.00 | 0.35u | 5th, SP $12 | -0.35 |
-| 2026-10-15 Warrnambool (G4) | R3 | Who I Think I Am | 4 of 4 | $6.00 | 2.50u | | |
-| 2026-10-15 Warrnambool (G4) | R6 | Buzitup | 2 of 7 | $11.00 | 0.66u | | |
-| 2026-10-15 Warrnambool (G4) | R7 | Both Sides Now | 1 of 7 | $15.00 | 0.38u | | |
+| 2026-10-15 Warrnambool (G4) | R3 | Who I Think I Am | 2 of 2 | $6.00 | 2.50u | | |
+| 2026-10-15 Warrnambool (G4) | R6 | Buzitup | 1 of 2 | $11.00 | 0.71u | | |
+| 2026-10-15 Warrnambool (G4) | R7 | Both Sides Now | 1 of 2 | $15.00 | 0.50u | | |
 | 2026-10-16 Cranbourne (G4) | R6 | Hollandia | 1 of 2 | $21.00 | 0.34u | | |
 | 2026-10-17 Caulfield (G4) | R2 | Autumn In Grinzing | 2 of 2 | $41.00 | 0.44u | | |
 | 2026-10-17 Caulfield (G4) | R2 | Voynichese | 1 of 2 | $9.50 | 0.91u | | |
@@ -25,7 +25,7 @@ BetMatic standard in TIPPING_RULES.md.
 | 2026-10-17 Caulfield (G4) | R8 | Threads | 1 of 2 | $15.00 | 0.46u | | |
 | 2026-10-17 Caulfield (G4) | R9 | Cosmic Crusader | 1 of 2 | $5.00 | 1.54u | | |
 | 2026-10-17 Caulfield (G4) | R9 | Kingswood | 2 of 2 | $25.00 | 0.59u | | |
-| 2026-10-17 Caulfield (G4) | R10 | Shadhavar | 2 of 2 | $7.50 | 1.78u | | |
+| 2026-10-17 Caulfield (G4) | R10 | Shadhavar | 2 of 2 | $7.50 | 1.88u | | |
 
 Order files (data/live_bets/DAYPREFIX-betmatic-preopen.csv) rebuilt 14 Oct with the 8-step staking (each step sized at the
 next step's price, t_betmatic_tiers.py: +18% profit on the holdout over the first 3-step version), from the model's own
@@ -39,7 +39,7 @@ Verdoux $26/$12): about 2x the SP on average. True Rebel beaten a nose. Warrnamb
 filled, 3.54u; Kid Dynamite (R8) missed by under 1%.
 Cranbourne 16 Oct (Form King open, Wed 5:00pm): 3 orders filled on 3 runners, but Truant (R1, $5.50) and Naked Light (R2, $11) sit in races
 where a first starter opens $6 or shorter, so the race rule voids them: 1 bet, Hollandia 0.34u. Caulfield 17 Oct (Form King open, Wed 3:48pm):
-17 orders on 11 runners, 11.33u; none opened past its maximum price (Autumn In Grinzing $41 against a $41.06 ceiling, the closest).
+17 orders on 11 runners, 11.43u; none opened past its maximum price (Autumn In Grinzing $41 against a $41.06 ceiling, the closest).
 
 ## 9:30am top-ups (paper, tracked from 14 Oct 2026)
 Each race day at 9:30am, after scratchings: prices refreshed, our market re-priced on the final field, and every bet that
@@ -52,3 +52,11 @@ scratchings). The backtest says the top-up slice loses (t_topup.py: -7.6% holdou
 |---|---|---|---|---|---|---|---|---|---|
 
 Caulfield 14 Oct (re-priced 8:45am): 5 value-at-open runners on the final field, all under take-at at race-morning prices, so no top-ups.
+
+Rebuilt 14 Oct (founder: "Rebuild anything that's live... to update our paper bets"), the three unsettled meetings, with
+the final-field guard (betmatic_orders.py drops emergencies and scratchings and re-spreads the probability) and 3 price
+steps: Warrnambool 15 Oct (was 8 steps, 199 orders; now 61 orders on 31 runners, 3.71u: Buzitup 0.66u to 0.71u, Both
+Sides Now 0.38u to 0.50u, Who I Think I Am unchanged at 2.50u; its file was already priced without its emergency, Tue
+11:37am, before the 5:17pm open). Caulfield 17 Oct: Pillow Fight (R10) was already scratched in the Wed 3:48pm opening
+snapshot, so R10 is re-priced without him: Shadhavar 1.78u to 1.88u, 11.43u in all. Cranbourne 16 Oct unchanged (1 bet,
+Hollandia 0.34u). Every change uses only what was known at the open. The files sent before are in git history.
