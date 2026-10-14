@@ -910,3 +910,14 @@ style, rail band x style, track x rail band x barrier, plus rail metres; 3 seeds
 1.9043 -> 1.9033. No gain; not adopted (same verdict as 7 Oct, now on 3x the races). As a betting rule (t_rail_bets.py):
 our own bets with the rail out 9m+ on runners mapped on pace returned +40% in the holdout (16 bets) and +40% earlier
 (33 bets), so the model already avoids the ones that matter; no rule.
+
+## Challenger inputs v10 (15 Oct 2026)
+scripts/export_dataset.py now exports 40 more columns (gd_* gear detail with Form King's real change codes, fl_* past-run
+price moves), and feats.build takes every exported column, so they reach training and day pricing by the same path.
+F9_names.txt / F7_names.txt are the v10 lists (809 / 769 + trials + sections); nothing else in the input list changed.
+Check on the new export (t_v10_check.py, 3 seeds, holdout from 3 Jun): without the new columns KL 0.0929 / log loss
+1.9043, with them 0.0916 / 1.9027. (The trial's 0.0912 / 1.8991 also had gear from the horse's earlier races joined from
+our own data; not in v10 because a live day export cannot do that join yet.)
+THE LIVE MODEL IS STILL v9: day pricing runs from the scratch model directory with the v9 name lists and the v9
+training set. On promotion of a v10 challenger, copy F9_names.txt and F7_names.txt from here and model_ds.npz from the
+models branch together with the models, or price_day3.py's name check stops the pricing (by design).
