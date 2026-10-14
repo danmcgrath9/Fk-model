@@ -6,11 +6,11 @@ BetMatic standard in TIPPING_RULES.md.
 
 | Meeting | Race | Horse | Orders filled | Price | Stake | Result | P/L (u) |
 |---|---|---|---|---|---|---|---|
-| 2026-10-14 Caulfield (G4) | R2 | True Rebel | 2 of 7 | $8.00 | 1.01u | 2nd, SP $2.80 | -1.01 |
-| 2026-10-14 Caulfield (G4) | R4 | Savisanta | 3 of 7 | $10.00 | 0.91u | lost, SP $5 | -0.91 |
+| 2026-10-14 Caulfield (G4) | R2 | True Rebel | 2 of 7 | $8.00 | 1.01u | 2nd (nose), SP $2.80 | -1.01 |
+| 2026-10-14 Caulfield (G4) | R4 | Savisanta | 3 of 7 | $10.00 | 0.91u | 3rd, SP $5 | -0.91 |
 | 2026-10-14 Caulfield (G4) | R5 | Jett Smash | 1 of 6 | $4.40 | 1.47u | lost, SP $2.50 | -1.47 |
-| 2026-10-14 Caulfield (G4) | R7 | Darkbonee | 1 of 7 | $4.80 | 1.30u | lost, SP $3.10 | -1.30 |
-| 2026-10-14 Caulfield (G4) | R8 | Verdoux | 3 of 7 | $26.00 | 0.35u | lost, SP $12 | -0.35 |
+| 2026-10-14 Caulfield (G4) | R7 | Darkbonee | 1 of 7 | $4.80 | 1.30u | 2nd (head), SP $3.10 | -1.30 |
+| 2026-10-14 Caulfield (G4) | R8 | Verdoux | 3 of 7 | $26.00 | 0.35u | 5th, SP $12 | -0.35 |
 | 2026-10-15 Warrnambool (G4) | R3 | Who I Think I Am | 4 of 4 | $6.00 | 2.50u | | |
 | 2026-10-15 Warrnambool (G4) | R6 | Buzitup | 2 of 7 | $11.00 | 0.66u | | |
 | 2026-10-15 Warrnambool (G4) | R7 | Both Sides Now | 1 of 7 | $15.00 | 0.38u | | |
