@@ -811,3 +811,13 @@ the same 7 winners, +20.06u (+55%): the result does not hang on which price file
 real pre-open order file instead of rebuilding it (the first priced Warrnambool file still held an emergency and would
 have filled Endless Fury at $6 against the real order's $6.02); with that, 14 and 15 Oct match the BetMatic book bet for bet.
 3 fills opened past 3x our price (-3.97u): order files now carry max_odds.
+
+## A member who gets the tip after the open (14 Oct 2026, t_follower.py; founder: "run a test of 2 minutes after opening, 5, 10 and 20 minutes")
+41 resulted races with timed Form King flucs (Form King's average across the corporate books, so an average book, not
+the best one; no bookmaker count in the data) and the live model's prices. On the runners our BetMatic orders got at the
+open, the average price stood at x0.927 of the open after 2 minutes, x0.901 after 5, x0.874 after 10, x0.823 after 20
+(median 3 price moves in the first 10 minutes). The same orders still clearing their minimum: 29 bets at the open,
+27 at +2, 25 at +5, 21 at +10, 21 at +20. Profit by time on this sample swings on single winners (3-4 per row) and
+says nothing; the price decay is the result. Applied to the holdout's +47% staked at the open, (1.47 x ratio) - 1 gives
+roughly +36% at 2 minutes, +32% at 5, +28% at 10, +21% at 20, before the member's own fill and limits. Re-run on the
+historical export's timed flucs (back to July 2025) when it arrives.
