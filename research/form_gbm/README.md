@@ -902,3 +902,11 @@ only passes us on race day.
 Combined (t_combo.py, 3 seeds, same holdout): F9 0.0929 / 1.9043; + gear detail 0.0920 / 1.8995; + past price flucs
 0.0915 / 1.9000; + both 0.0912 / 1.8991 (1.8% closer to BSP than F9, 0.27% lower log loss). Both go into the next
 challenger.
+Rail x track x run style, 15 Oct 2026 (rails for 4,750 of 4,858 races from scripts/race_rails.py; table in
+data/live_bets/rail-bias.md). Actual leaders win 154% of what the open implied on a true rail and 129% with the rail out
+9m+; by Form King's predicted position (known before the race), rail out 9m+ (396 races): mapped on pace 82% of the
+open, midfield 112%. As a model input (t_rail_feat.py: rolling earlier-meetings-only A/E by track x rail band x mapped
+style, rail band x style, track x rail band x barrier, plus rail metres; 3 seeds): KL 0.0929 -> 0.0929, log loss
+1.9043 -> 1.9033. No gain; not adopted (same verdict as 7 Oct, now on 3x the races). As a betting rule (t_rail_bets.py):
+our own bets with the rail out 9m+ on runners mapped on pace returned +40% in the holdout (16 bets) and +40% earlier
+(33 bets), so the model already avoids the ones that matter; no rule.
