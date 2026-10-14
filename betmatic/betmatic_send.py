@@ -211,7 +211,8 @@ def status(a):
                 got = bm.get(f"/bet/notification/{i}/")
                 # {"bets": [...]} per the API's worked examples; status is "" until settled as Won / Lost / Refund
                 recs = got.get("bets", results(got)) if isinstance(got, dict) else got
-                fh.write(json.dumps({"label": r["label"], "notification": i, "records": recs}) + "\n")
+                ded = got.get("average_deduction_percentage") if isinstance(got, dict) else None   # TAB's actual scratching deduction
+                fh.write(json.dumps({"label": r["label"], "notification": i, "deduction": ded, "records": recs}) + "\n")
                 recs = [x for x in (recs if isinstance(recs, list) else [recs]) if isinstance(x, dict)]
                 ask = float(r["stake"] or 0); tot_ask += ask
                 if not recs:
@@ -226,7 +227,7 @@ def status(a):
                     odds = x.get("current_odds")
                     if odds and r.get("min_odds") and float(odds) + 1e-9 < float(r["min_odds"]):
                         flag.append(f"BELOW MIN ODDS {r['min_odds']}")
-                    print(f"{r['label']} #{i}: ${took:g} @ {odds} {x.get('status') or 'unsettled'} {x.get('profit', '')} {'; '.join(flag)}")
+                    print(f"{r['label']} #{i}: ${took:g} @ {odds} {x.get('status') or 'unsettled'} {x.get('profit', '')} deduction {ded} {'; '.join(flag)}")
     print(f"asked ${tot_ask:,.0f}, TAB took ${tot_took:,.0f}; {n_cut} reduced, {n_fail} failed. raw records: {out}")
 
 

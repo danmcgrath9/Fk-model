@@ -120,3 +120,11 @@ API Overview (api-reference/overview): rate limits, errors.
 - The sender's `status` command now reads those fields (it read "odds" and "stake", which do not exist) and flags a
   REDUCED bet (TAB took less than asked: the limiting record), a FAILED submission, and any fill below our minimum
   odds; it totals asked against taken.
+
+## Bet Lookup (pasted 15 Oct)
+- GET /bet/notification/{id}/ -> {"bets": [...], "logs", "session_info", "bot_logs", "average_deduction_percentage"}.
+  An empty "bets" right after firing = still in flight (seconds); staying empty = no session received it.
+- average_deduction_percentage is TAB's actual scratching deduction on the bet: `status` now prints it and saves it in
+  -placed.jsonl, replacing the founder's manual TAB deduction readings and the 16c estimate for live bets.
+- POST /bet/search/ {"ids": [...]} fetches known bet record ids. GET /notification/{id}/race/detail/ gives the race's
+  result ("5/1/8/3") for settling without Form King.
