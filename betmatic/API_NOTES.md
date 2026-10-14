@@ -102,3 +102,13 @@ API Overview (api-reference/overview): rate limits, errors.
   then, or the bet is missed (BetMatic suggests scheduled session start times in the bot's settings).
 - Trigger: fires now; 400 if already triggered or the market is closed (about 5 hours after the start). Cancel: "OK";
   400 if already placed or cancelled; a bet already sent to the bookmaker cannot be undone.
+
+## List Bets (pasted 15 Oct)
+- GET /notification/ pages at 10 by default; filters include label, date_from / date_to (Sydney days; date_to is
+  exclusive, so use the day after), code, market, source (MANUAL for our own API bets; source_type is "API").
+- The duplicate check now treats a bet as already sent only when a returned notification's label is EXACTLY ours (the
+  docs do not say whether ?label= is exact or partial).
+- Bet state: no records yet = queued or nothing placed; total_accepted 0 after the bot reports = failed (see
+  submit_result); total_accepted > 0 with empty status = placed, unsettled; status Won / Lost / Refund = settled.
+- stake / target_profit / total_wager default to 1: for Fixed Wager read stake; actual dollars per session are in the
+  bet records' "amount".
