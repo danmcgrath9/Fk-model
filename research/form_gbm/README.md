@@ -829,3 +829,11 @@ runners $8 or shorter, 3 steps): 0.80 bets a race, 1.14u staked a race, +0.68u a
 (80% of the backtest's 1.13), 0.55 bets a race after them (69% of 0.80). The back-settler shade is not the cause
 (46 fires with it, 47 without). About two standard deviations short on 51 races: watch it, not yet a finding.
 Forward test 5-13 Oct: +24.66u on 79 races (0.31u a race against the backtest's 0.68u), on 7 winners.
+Why live runs light (same day, t_margin.py): the opening BOOK. The holdout's recorded opens sum to a median 1.19 per
+race; the live first snapshots run 1.18-1.32 (Seymour 1.31, Kilmore 1.18, Caulfield Wed 1.25, Warrnambool 1.32,
+Cranbourne 1.32, Caulfield Sat 1.25). Same number of candidates a race (5.2 holdout, 5.3 live) and the same spread of
+disagreement with the market (sd of log open/ours 0.448 vs 0.438), but live opens sit about 4% shorter against our
+prices (median open/ours 0.965 vs 0.928), so fewer clear the minimum (21.7% vs 17.2% of candidates). Shortening the
+holdout's opens until each race's book is 1.25 (crude: margin spread evenly, where bookmakers load longshots): 0.66
+bets a race, +39% staked, +368u (against 1.13, +46%, +801u). The ROI a bet holds; the number of bets is what the
+bigger live margin costs. Live sits between the two: plan on roughly 60-80% of the backtest's bets and profit.
