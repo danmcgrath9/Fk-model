@@ -1,0 +1,6 @@
+## caulfield-20261014: founder's finishes (14 Oct), until Form King posts results. Jett Smash's place not given (0 = unplaced, lost).
+R2 True Rebel               finish 2  SP 2.8  BSP None
+R4 Savisanta                finish 3  SP 5  BSP None
+R5 Jett Smash               finish 0  SP 2.5  BSP None
+R7 Darkbonee                finish 2  SP 3.1  BSP None
+R8 Verdoux                  finish 5  SP 12  BSP None

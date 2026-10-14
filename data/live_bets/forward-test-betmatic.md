@@ -15,13 +15,13 @@ scratched runners void, winnings less scratching deductions. $100 a unit. CLV = 
 | Sat 10 Oct Caulfield | 60 | 1 | 0 | 0.62u | -0.62u | 0.53 | 0/1 |
 | Sun 11 Oct Seymour | 80 | 4 | 0 | 4.60u | -4.60u | 1.60 | 2/4 |
 | Tue 13 Oct Kilmore | 48 | 4 | 1 | 3.66u | +6.94u | 2.05 | 3/4 |
-| Wed 14 Oct Caulfield | not run yet | | | | | | |
+| Wed 14 Oct Caulfield | 250 | 5 | 0 | 5.04u | -5.04u | 0.00 | 0/0 |
 | Thu 15 Oct Warrnambool | not run yet | | | | | | |
 | Fri 16 Oct Cranbourne | not run yet | | | | | | |
 | Sat 17 Oct Caulfield | not run yet | | | | | | |
-| **Total** | **528** | **32** | **7** | **33.70u** | **+24.66u (+73%)** | **1.67** | **23/32** |
+| **Total** | **778** | **37** | **7** | **38.74u** | **+19.62u (+51%)** | **1.67** | **23/32** |
 
-Of these, 3 opened at or past the ceiling (3x our price, $8 for EARLY runners), where the rules would not bet: 3.44u staked, -3.44u. With a maximum price on the order: 29 bets, 30.26u, +28.10u (+93%).
+Of these, 3 opened at or past the ceiling (3x our price, $8 for EARLY runners), where the rules would not bet: 3.44u staked, -3.44u. With a maximum price on the order: 34 bets, 35.30u, +23.06u (+65%).
 
 ## Every fill
 
@@ -63,3 +63,9 @@ Of these, 3 opened at or past the ceiling (3x our price, $8 for EARLY runners), 
 | Tue 13 Oct Kilmore | R5 | Knock Of Beers | $5.55 | $7.28 | $21 | 2 of 2 | 1.22u | 8 | $5.77 | 24c | -1.22 | opened past the 3x ceiling
 | Tue 13 Oct Kilmore | R7 | Celestial Splendor | $9.39 | $12.64 | $19 | 2 of 2 | 0.67u | 1 | $7.80 | 18c | +9.93 |
 | Tue 13 Oct Kilmore | R7 | Winter Nights | $11.18 | $15.18 | $16 | 1 of 2 | 0.45u | 3 | $16.44 | 18c | -0.45 |
+| Wed 14 Oct Caulfield | R2 | Katoto | $4.87 | $6.34 | $11 | 6 of 7 | 1.58u | scratched | | | 0 |
+| Wed 14 Oct Caulfield | R2 | True Rebel | $5.17 | $6.75 | $8 | 2 of 7 | 1.01u | 2 |  | 20c | -1.01 |
+| Wed 14 Oct Caulfield | R4 | Savisanta | $6.25 | $8.24 | $10 | 3 of 7 | 0.91u | 3 |  | 2c | -0.91 |
+| Wed 14 Oct Caulfield | R5 | Jett Smash | $3.30 | $4.22 | $4.4 | 1 of 6 | 1.47u | 0 |  | 2c | -1.47 |
+| Wed 14 Oct Caulfield | R7 | Darkbonee | $3.62 | $4.64 | $4.8 | 1 of 7 | 1.30u | 2 |  |  | -1.30 |
+| Wed 14 Oct Caulfield | R8 | Verdoux | $14.54 | $20.02 | $26 | 3 of 7 | 0.35u | 5 |  |  | -0.35 |
