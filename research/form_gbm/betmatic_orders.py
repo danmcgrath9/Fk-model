@@ -49,19 +49,48 @@ def main():
     B = f"{L}/{a.prefix}-{a.gtag}"
     times = dict(x.split("=", 1) for x in a.times.split(",") if "=" in x)
     v = json.load(open(a.v6 or f"{B}-v6.json"))
-    field = {}
-    for r in v:
-        field[int(r["race"])] = field.get(int(r["race"]), 0) + 1
     date, venue = a.prefix[:10], a.prefix[11:].replace("-", " ").title()
     import re
     nm = lambda x: re.sub(r"[^a-z0-9]", "", x.lower())
     nums_fn = a.numbers or (f"{L}/{a.prefix}-entry-numbers.txt" if os.path.exists(f"{L}/{a.prefix}-entry-numbers.txt") else None)
-    numbers = {}
+    numbers, out_ = {}, set()
     if nums_fn:
         for l in open(nums_fn):
             pa = l.strip().split("|")
             if len(pa) == 5 and pa[0].isdigit() and pa[1].isdigit():
                 numbers[(int(pa[0]), nm(pa[2]))] = pa[1]
+                if pa[3] == "True" or pa[4] == "True":
+                    out_.add((int(pa[0]), nm(pa[2])))
+    for pf in (f"{L}/{a.prefix}-prices-fields.txt", f"{L}/{a.prefix}-prices.txt"):   # SCR in a fields/prices file = out
+        if os.path.exists(pf):
+            for l in open(pf):
+                pa = [x.strip() for x in l.split("#")[0].split(",")]
+                if len(pa) >= 3 and pa[0].isdigit() and pa[2].upper().startswith("SCR"):
+                    out_.add((int(pa[0]), nm(pa[1])))
+    if not out_ and not nums_fn:
+        print("WARNING: no entry-numbers or fields file, so emergencies and scratchings cannot be checked. Build orders "
+              "only on a model file priced on the final field.")
+    # FINAL FIELD ONLY (14 Oct 2026, t_overlap.py): the 5-9 Oct files were priced with emergencies and scratched horses
+    # still in, so the runners who ran held only 81-90% of the probability, every price came out ~15% too long, and the
+    # forward test staked half what the same races support. Emergencies and scratched runners are dropped here and each
+    # race's model probability is re-spread over the runners left, so an order is never priced against a horse that will
+    # not run. A race whose runners held under 97% before the re-spread is named: the model file was made before the
+    # final field and should be re-made.
+    dropped = [r for r in v if (int(r["race"]), nm(r["horse"])) in out_]
+    v = [r for r in v if (int(r["race"]), nm(r["horse"])) not in out_]
+    tot = {}
+    for r in v:
+        tot[int(r["race"])] = tot.get(int(r["race"]), 0.0) + r.get("p_model", r["p"])
+    low = {rc: t for rc, t in tot.items() if abs(t - 1) > 0.03}
+    if dropped:
+        print(f"final field: dropped {len(dropped)} emergencies/scratched runners from the model file")
+    if low:
+        print("WARNING: model probability of the final field, by race (re-spread to 1.00 for these orders; re-make the "
+              "model file on the final field): " + ", ".join(f"R{rc} {t:.2f}" for rc, t in sorted(low.items())))
+    v = [dict(r, p_model=r.get("p_model", r["p"]) / tot[int(r["race"])]) for r in v]
+    field = {}
+    for r in v:
+        field[int(r["race"])] = field.get(int(r["race"]), 0) + 1
     rows = []
 
     def add(r, ours, min_odds, cap, chance_at, note):

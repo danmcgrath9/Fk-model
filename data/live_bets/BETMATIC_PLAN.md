@@ -74,3 +74,17 @@ TAB balance about $3,750, bank about $5,000. Orders must be with BetMatic before
 fields come out on the Thursday, Sunday fields on the Friday, so the set-up (bot running with TAB connected, the
 "betmatic" GitHub environment and its secrets, check run, $1 test) has to be done by about 11am on the day the
 chosen meeting's fields come out.
+
+## Keeping the volume up (14 Oct 2026, t_overlap.py)
+The forward test staked half what its races support because the 5-9 Oct model files were priced before final fields:
+horses that never ran held 10-19% of each race's probability, so every starter's price was ~15% too long. Rules from here:
+1. Price on the FINAL field only (the 11am routine). betmatic_orders.py now drops emergencies and scratched runners
+   (entry-numbers file and any SCR in the fields/prices file) and re-spreads each race's probability over the runners
+   left; it prints a WARNING naming any race whose runners held under 97% before the re-spread. A warning means re-make
+   the model file on the final field before sending.
+2. A scratching that lands before the open: rebuild that race's orders and, once live, cancel and resend that race
+   (Caulfield 17 Oct R10 Pillow Fight is the first case: three runners' minimum odds tighten).
+3. Weekly check: staked per race. Expect about 1.0u a race with the live rules (holdout 1.14u); under 0.7u for a week
+   means something is starving the orders again.
+4. Planning figure at $50 a unit: about $1,300-1,400 a week, $5,500-6,000 a month before $359 expenses
+   (holdout with live rules: full months +$6,500 to +$14,600 net, median week +$1,825; t_live_monthly.py).
