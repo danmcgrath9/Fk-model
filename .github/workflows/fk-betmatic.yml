@@ -10,8 +10,10 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'send | pending | cancel | status | summary | check'
-        default: 'send'
+        description: 'what to do (check = read the account only, never bets)'
+        type: choice
+        options: [check, send, pending, status, summary, cancel]
+        default: 'check'
       file:
         description: 'send: the order file (data/live_bets/DAYPREFIX-betmatic-preopen.csv); cancel/status/pending/summary: its -ledger.csv (summary also takes a bare YYYY-MM-DD)'
         default: ''
@@ -59,6 +61,10 @@ jobs:
       - name: BetMatic
         run: |
           set -e
+          # The secrets must live in the "betmatic" environment of this repo. An empty value means they are somewhere
+          # else (another environment name, Codespaces or Dependabot secrets): stop with a plain message, never a traceback.
+          [ -n "$BETMATIC_EMAIL" ] && [ -n "$BETMATIC_PASSWORD" ] || { echo "BETMATIC_EMAIL / BETMATIC_PASSWORD are empty: add them under Settings > Environments > betmatic > Environment secrets"; exit 1; }
+          case "$A" in check|summary) ;; *) [ -n "$FILE" ] || { echo "action $A needs a file"; exit 1; } ;; esac
           SEND=""; [ "$DRY" = "yes" ] || SEND="--send"
           case "$A" in
             check)  python betmatic/betmatic_send.py check ;;
