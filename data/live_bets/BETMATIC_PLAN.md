@@ -61,3 +61,10 @@ post. No member cap is needed to protect our fills, because we are already on.
    variables there (never in the repo, never sent to Claude). Run `betmatic_send.py check`.
 4. $2,000 into TAB (covers a two-meeting day at $25 a unit if every order fired).
 5. Simulation tab once, then one $1 bet to the TAB session, then the first meeting at $25 a unit.
+
+## Sending from GitHub, not the PC (14 Oct)
+The fk-betmatic workflow runs betmatic_send.py on GitHub: Claude commits the order file and starts the workflow
+(dry run first), the founder sees the payloads and approves in the GitHub app, and the bets go to BetMatic; the PC
+only runs the BetMatic bot. Environment "betmatic" (required reviewer: the founder) holds BETMATIC_EMAIL,
+BETMATIC_PASSWORD and BETMATIC_TAB_SESSION. Ledgers and placements are committed back to data/live_bets/. The
+seconds-level shortfall resend (later) is the one piece that may still need to live on the PC.

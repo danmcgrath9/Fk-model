@@ -1,0 +1,75 @@
+name: fk betmatic
+
+# Sends a BetMatic pre-open order file as Market Open bets (or cancels them, or reads back what was placed), from
+# GitHub instead of the founder's PC: the PC only runs the BetMatic bot that actually places the bets at the open.
+# The job runs in the "betmatic" environment, which needs the founder's approval in GitHub before it starts and holds
+# the BetMatic login as environment secrets, so nothing is sent (and the login cannot be read) until he approves.
+# Claude prepares the order file and starts this workflow; the founder's approval is the send. (14 Oct 2026.)
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'send | cancel | status | check'
+        default: 'send'
+      file:
+        description: 'send: the order file (data/live_bets/DAYPREFIX-betmatic-preopen.csv); cancel/status: its -ledger.csv'
+        default: ''
+      unit:
+        description: 'send: dollars a unit'
+        default: '25'
+      race:
+        description: 'cancel: only this race (blank = every bet in the ledger)'
+        default: ''
+      number:
+        description: 'cancel: only this saddlecloth number in that race'
+        default: ''
+      dry_run:
+        description: 'yes = print exactly what would be sent, send nothing'
+        default: 'yes'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fk-betmatic
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    environment: betmatic
+    timeout-minutes: 20
+    env:
+      BETMATIC_EMAIL: ${{ secrets.BETMATIC_EMAIL }}
+      BETMATIC_PASSWORD: ${{ secrets.BETMATIC_PASSWORD }}
+      SESSION: ${{ secrets.BETMATIC_TAB_SESSION }}
+      A: ${{ github.event.inputs.action }}
+      FILE: ${{ github.event.inputs.file }}
+      UNIT: ${{ github.event.inputs.unit }}
+      RACE: ${{ github.event.inputs.race }}
+      NUM: ${{ github.event.inputs.number }}
+      DRY: ${{ github.event.inputs.dry_run }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+      - name: BetMatic
+        run: |
+          set -e
+          SEND=""; [ "$DRY" = "yes" ] || SEND="--send"
+          case "$A" in
+            check)  python betmatic/betmatic_send.py check ;;
+            send)   python betmatic/betmatic_send.py send "$FILE" --unit "$UNIT" --session "$SESSION" $SEND ;;
+            cancel) python betmatic/betmatic_send.py cancel "$FILE" ${RACE:+--race "$RACE"} ${NUM:+--number "$NUM"} $SEND ;;
+            status) python betmatic/betmatic_send.py status "$FILE" ;;
+            *) echo "unknown action $A"; exit 1 ;;
+          esac
+      - name: Keep the ledger and placements
+        if: always()
+        run: |
+          git config user.name "fk-betmatic"; git config user.email "actions@users.noreply.github.com"
+          git add -A data/live_bets/*-ledger.csv data/live_bets/*-placed.jsonl 2>/dev/null || true
+          git diff --cached --quiet || { git commit -m "BetMatic $A: $FILE"; git pull --rebase -q; git push -q; }

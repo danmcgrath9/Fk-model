@@ -4,6 +4,7 @@ this tool, the founder sends. There is no sandbox in BetMatic's API, so DRY RUN 
 payload; nothing is sent without --send.
 
     set BETMATIC_EMAIL and BETMATIC_PASSWORD in the environment, then:
+    (normally run by the fk-betmatic GitHub workflow after the founder approves; it also runs on any machine)
     python betmatic_send.py check                                   bots and sessions running? bookmaker and session IDs
     python betmatic_send.py send ORDERS.csv --unit 25 --session 101 [--bookie TAB] [--send]
     python betmatic_send.py cancel LEDGER.csv [--race 3] [--number 7] [--send]
