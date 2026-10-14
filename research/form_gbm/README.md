@@ -876,3 +876,8 @@ KL 0.0937, log loss 1.9033 (open 0.1429 / 1.9478). The next daily retrain's chal
 Where the live price is still furthest from BSP (t_gap_now.py, holdout, ours / open): 2+ first starters 0.138 / 0.189,
 one 0.103 / 0.164, none 0.075 / 0.135; sprints to 1200m 0.093 / 0.153, 1700-2000m 0.062 / 0.126; metro 0.065 /
 0.097, non-metro 0.086 / 0.152; fields 14+ 0.090, up to 7 0.073.
+Gear (15 Oct 2026, founder asked): IS in the model, from Form King's gearChanges on each entry: blinkers_first,
+gear_first_time, gear_changes (export_dataset.py). Holdout: runners with first-time gear 2,282, our average chance 9.2%,
+BSP's 9.1%, won 8.9%; first-time blinkers 670, ours 9.0%, BSP 9.0%, won 8.1%. The market does not move on gear in a way
+our price misses. Not in: which item (tongue tie, nose roll, lugging bit), gear coming OFF, and the horse's gear in past
+runs (past-run rows carry no gear), so "raced well in blinkers before" cannot be learnt yet.
