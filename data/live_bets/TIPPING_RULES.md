@@ -53,5 +53,5 @@ Founder: "This is deductions from TAB at opening". For every meeting bet, record
 struck at its opening price in data/live_bets/DAYPREFIX-deductions-actual.txt ("race, cents  # horse"); deductions.py
 uses them in place of the estimate (betmatic_fills.py, betmatic_html.py, fwd_betmatic.py all read through it). The
 estimate (0.95 / price of every runner scratched after the open, matching TAB's published schedule) ran 2.5x too high on
-Caulfield 14 Oct (59c against 24c). Once about 10 meetings of actuals exist, refit the estimate and the backtest's 16c
-average deduction (at 6.5c the holdout would be +61% staked, +1,033u, instead of +47%, +801u).
+Caulfield 14 Oct (59c against 24c). The backtest KEEPS its 16c average deduction and the estimate stays as it is
+(founder, 14 Oct: "I'm fine with high deductions"): conservative on purpose. At 6.5c the holdout would be +61% staked.
