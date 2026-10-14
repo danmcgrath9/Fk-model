@@ -54,7 +54,7 @@ for res_p in res_ps:
             res[(cur, int(m.group(1)), norm(m.group(2)))] = (None if m.group(3) == "None" else int(m.group(3)), None if m.group(5) == "None" else float(m.group(5)))
 head = ["# Forward test: the BetMatic method only, settled", "",
         "Every meeting since 5 Oct run as BetMatic would have run it: the pre-open order file from the model's first price for the",
-        "meeting (made before the race, never re-made), filled at the opening price, 8 price steps, first-starter race rule,",
+        "meeting (made before the race, never re-made), filled at the opening price, the order file's price steps (3 from 14 Oct), first-starter race rule,",
         "scratched runners void, winnings less scratching deductions. $100 a unit. CLV = opening price / Betfair SP.", "",
         "| Meeting | Orders | Horses filled | Won | Staked | P/L | Avg CLV | Beat BSP |", "|---|---|---|---|---|---|---|---|"]
 detail = ["", "## Every fill", "", "| Meeting | Race | Horse | Ours | Min odds | Opened | Steps filled | Stake | Finish | BSP | Deduction | P/L |",

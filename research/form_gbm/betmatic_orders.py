@@ -20,7 +20,7 @@ import argparse, csv, json, os, sys
 here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, here)
 import stake_rule
 L = os.path.join(here, "../../data/live_bets")
-SHADE, TIERS = 0.95, (1.0, 1.1, 1.2, 1.3, 1.45, 1.6, 1.8, 2.0)   # 14 Oct: 8 steps sized at the next step (t_betmatic_tiers.py)
+SHADE, TIERS = 0.95, (1.0, 1.25, 1.5)   # 14 Oct: 3 steps sized at the next step: same holdout profit as 8 (+801u), at most 3 bets a horse (t_monthly.py)
 
 
 def tiers(min_odds, cap, chance_at, only_ride, field):

@@ -62,3 +62,9 @@ image path, one reply per horse, all at the opening prices actually taken) and t
 dispatches the fk-tweet workflow. The job runs in the GitHub environment "twitter", which needs the founder's approval
 before it starts and holds the X keys (X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET) as environment
 secrets. Approve = post. NAME.posted.json records the post IDs and blocks a second posting. Only after the bets are on.
+
+## Three price steps, not eight (14 Oct 2026)
+Each horse's order is now 3 steps (x1, x1.25, x1.5 of its minimum), each sized at the next step's price. Same holdout
+profit as 8 steps (+801u; earlier races +1,584u against +1,564u), at most 3 bets a horse at the open instead of 8, so
+fewer simultaneous bets for TAB to see. Turnover about 4% higher. Forward test 5-13 Oct: +24.66u (8 steps: +26.28u),
+same 32 horses and 7 winners.
