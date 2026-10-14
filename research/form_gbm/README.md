@@ -859,3 +859,9 @@ resulted races. Priced through the live day pipeline on the final field (price_d
 holdout with the same rules. Those races precede the dataset, so the rolling jockey/trainer/horse encodings built from
 our own history are empty for them; that may understate the method. Sep and Oct 2026 additions (with history):
 121 bets, +13.4% (Sep -2% on 110 bets). Plan on +20% to +45% on turnover, not +60%.
+Why (t_newgap.py, KL to BSP, ours / opening market / our margin): Jul 2025 0.107 / 0.117 / +0.010, Aug 0.091 / 0.107 /
++0.015, Sep 0.096 / 0.113 / +0.017; holdout 0.082 / 0.142 / +0.060; Sep-Oct 2026 additions 0.078 / 0.153 / +0.075.
+Our price is somewhat weaker on the 2025 races (the missing own-history encodings), but the bigger change is the
+OPENING PRICE: in the 2025 data it sits far closer to BSP than in the holdout, so there is a quarter of the edge to
+take. Whether 2025 opens were genuinely sharper or Form King's avgOpen for older races is a different quantity is
+not known; the live forward test's fills beat BSP by 1.67x on average, which looks like the holdout, not 2025.
