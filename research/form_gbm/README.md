@@ -899,3 +899,6 @@ every point), KL to BSP / log loss vs winners: our price 0.103 / 1.658; open 0.1
 +10 min 0.144; +20 min 0.136; +1 hour 0.118; +4 hours 0.108; +12 hours 0.112; 3 hours before the jump 0.069; 1 hour
 before 0.054; last fluc 0.041. Our price is about where the market stands 4 to 12 hours after the open; the market
 only passes us on race day.
+Combined (t_combo.py, 3 seeds, same holdout): F9 0.0929 / 1.9043; + gear detail 0.0920 / 1.8995; + past price flucs
+0.0915 / 1.9000; + both 0.0912 / 1.8991 (1.8% closer to BSP than F9, 0.27% lower log loss). Both go into the next
+challenger.
