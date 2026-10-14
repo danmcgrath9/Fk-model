@@ -29,7 +29,8 @@ was checked. CHECKED = tested against raw data or a live record; NOT CHECKED = s
 Checked rather than assumed: how often each unread field is actually filled, by race month.
 - Race-review comments (videoComment): 63-68% of last starts for races pulled in the 14 Oct backfill (Jul-Sep 2025) and
   55% in Oct 2026, but 0% for every race pulled from Nov 2025 to Aug 2026. The field depends on WHEN a race was pulled,
-  not when it was run, so it cannot be tested or trained on until the year is re-pulled (about 25 credits a meeting).
+  not when it was run, so it cannot be tested or trained on until the year is re-pulled (about 25 credits a meeting). DROPPED (founder, 15 Oct
+  2026: "I don't care for video comments, they're subjective"): no re-pull, not a model input.
 - Acceptances: never populated (0%).
 - Past-run price flucs 61-72%, past-run gear 52-64%, position at 1200m 34-43%, home track 92-98%, foal date 100%.
 - September 2026 is thinner than its neighbours on flucs (34%) and spell (56%): the races pulled live that month
