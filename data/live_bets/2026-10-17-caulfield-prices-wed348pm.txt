@@ -1,0 +1,130 @@
+# Caulfield Sat 17 Oct, Good 4: first market snapshot, pulled Wed 14 Oct 3:48pm Melbourne (Form King open = fk_open).
+1, Aerostatique, 51.00, 51.00, fk_open 34.00
+1, Aragog, 7.50, 7.50, fk_open 11.00
+1, Skua, 11.00, 11.00, fk_open 9.00
+1, Vallice, 3.20, 3.20, fk_open 3.80
+1, Russian Rock, 6.25, 6.25, fk_open 5.50
+1, King Snitz, 14.00, 14.00, fk_open 9.00
+1, Vantaa, 6.75, 6.75, fk_open 8.00
+1, Cignetti, 7.50, 7.50, fk_open 7.00
+1, Lepolo, 8.50, 8.50, fk_open 6.00
+2, Leopard Shark, 81.00, 81.00, fk_open 66.00
+2, Miss Waititi, 2.70, 2.70, fk_open 2.85
+2, Abaya, 41.00, 41.00, fk_open 34.00
+2, Levate, 101.00, 101.00, fk_open 113.50
+2, Fringilla, 3.50, 3.50, fk_open 4.95
+2, Quick Finish, 16.00, 16.00, fk_open 7.75
+2, Your Colour, 10.00, 10.00, fk_open 6.25
+2, Notified, 41.00, 41.00, fk_open 32.50
+2, Oceans Fouroseven, 27.00, 27.00, fk_open 41.00
+2, Tears Of Happiness, 71.00, 71.00, fk_open 41.00
+2, Voynichese, 8.00, 8.00, fk_open 9.50
+2, Refuse To Curtsy, 26.00, 26.00, fk_open 32.50
+2, Shameful Impulse, 51.00, 51.00, fk_open 41.00
+2, Tharwa, 20.00, 20.00, fk_open 10.50
+2, Autumn In Grinzing, 27.00, 27.00, fk_open 41.00
+3, Gentle Steel, 14.00, 14.00, fk_open 9.50
+3, Eagle Express, 8.50, 8.50, fk_open 7.50
+3, Photograph, 6.50, 6.50, fk_open 6.00
+3, Dance To The Boom, 12.00, 12.00, fk_open 8.00
+3, Geegees Mistruth, 2.30, 2.30, fk_open 3.10
+3, Thanks Gorgeous, 29.00, 29.00, fk_open 19.00
+3, Snow Mercy, 27.00, 27.00, fk_open 13.00
+3, Signature Scent, 6.00, 6.00, fk_open 5.50
+3, Stardom, 12.00, 12.00, fk_open 15.00
+4, Milsons Point, 81.00, 81.00, fk_open 26.00
+4, Yourworstnightmare, 46.00, 46.00, fk_open 31.00
+4, The Thorncaster, 41.00, 41.00, fk_open 34.00
+4, Shooting Brake, 23.00, 23.00, fk_open 18.00
+4, Ektifire, 26.00, 26.00, fk_open 15.00
+4, I Am Aria, 5.00, 5.00, fk_open 4.80
+4, Zambales, 9.50, 9.50, fk_open 9.50
+4, Calamari Ring, 4.00, 4.00, fk_open 3.50
+4, Kotahitanga, 17.00, 17.00, fk_open 15.00
+4, Autumn Lover, 31.00, 31.00, fk_open 18.00
+4, Obambulate, 101.00, 101.00, fk_open 31.00
+4, Zoehrer, 23.00, 23.00, fk_open 17.00
+4, Boys Bounce, 26.00, 26.00, fk_open 13.00
+4, Aemond, 6.00, 6.00, fk_open 13.00
+4, Star Of Macedon, 8.00, 8.00, fk_open 13.00
+5, Private Eye, 2.45, 2.45, fk_open 2.45
+5, Here To Shock, 12.00, 12.00, fk_open 7.75
+5, El Rocko, 41.00, 41.00, fk_open 34.00
+5, Willaidow, 9.00, 9.00, fk_open 8.75
+5, Amenable, 9.00, 9.00, fk_open 10.00
+5, Hughes, 14.00, 14.00, fk_open 15.50
+5, Cartoon Graveyard, 23.00, 23.00, fk_open 18.50
+5, Zou Sensation, 7.50, 7.50, fk_open 9.25
+5, War Machine, 4.60, 4.60, fk_open 4.10
+6, Oak Hill, 11.00, 11.00, fk_open 13.00
+6, Don't Hope Do, 19.00, 19.00, fk_open 26.00
+6, Sweynesday, 27.00, 27.00, fk_open 17.00
+6, Always Enuff, 71.00, 71.00, fk_open 34.00
+6, Bev's Nine, 6.00, 6.00, fk_open 6.50
+6, Gallant Son, 8.50, 8.50, fk_open 13.00
+6, Cavalry Girl, 2.70, 2.70, fk_open 2.50
+6, Hidden Motive, 13.00, 13.00, fk_open 13.00
+6, I'm Foxing, 9.50, 9.50, fk_open 6.00
+6, Saluted, 51.00, 51.00, fk_open 26.00
+6, Pallaton, 8.00, 8.00, fk_open 7.00
+7, De Armas, 8.00, 8.00, fk_open 6.00
+7, Pretty Baby, 8.00, 8.00, fk_open 6.67
+7, Platinum Pearl, 26.00, 26.00, fk_open 13.00
+7, Icelady, 12.00, 12.00, fk_open 10.67
+7, Regal Ambition, 4.40, 4.40, fk_open 3.93
+7, Rubi's Choice, 41.00, 41.00, fk_open 41.00
+7, Lara Antipova, 19.00, 19.00, fk_open 18.33
+7, Salann, 91.00, 91.00, fk_open 74.33
+7, Sing Your Song, 18.00, 18.00, fk_open 13.33
+7, Saintly Dancer, 5.00, 5.00, fk_open 7.00
+7, Grinzinger Heart, 151.00, 151.00, fk_open 84.33
+7, Over The Bridge, 5.75, 5.75, fk_open 6.00
+7, Katoto, 51.00, 51.00, fk_open 51.00
+8, Doubt Time, 4.80, 4.80, fk_open 5.50
+8, Half Pipe, 11.00, 11.00, fk_open 10.00
+8, Marffiano, 41.00, 41.00, fk_open 21.00
+8, Barracks, 13.00, 13.00, fk_open 15.00
+8, Organised Crime, 17.00, 17.00, fk_open 9.00
+8, Tales Of Time, 8.50, 8.50, fk_open 6.50
+8, Pocketfullofcash, 23.00, 23.00, fk_open 34.00
+8, Neveu, 151.00, 151.00, fk_open 51.00
+8, Threads, 12.00, 12.00, fk_open 15.00
+8, Stretan Ruler, 17.00, 17.00, fk_open 18.00
+8, Jarbardar, 10.00, 10.00, fk_open 13.00
+8, Over Excited, 3.20, 3.20, fk_open 3.10
+9, Asterix, 67.00, 67.00, fk_open 47.67
+9, Knight's Choice, 34.00, 34.00, fk_open 33.00
+9, She's A Hustler, 18.00, 18.00, fk_open 18.00
+9, Enfjaar, 13.00, 13.00, fk_open 11.67
+9, Cosmic Crusader, 5.00, 5.00, fk_open 5.00
+9, Kingswood, 21.00, 21.00, fk_open 25.00
+9, Saint George, 9.00, 9.00, fk_open 8.50
+9, Middle Earth, 26.00, 26.00, fk_open 23.00
+9, Half Yours, 13.00, 13.00, fk_open 11.67
+9, Treasurethe Moment, 31.00, 31.00, fk_open 30.33
+9, Juja Kibo, SCR
+9, The Euphrates, SCR
+9, Royal Supremacy, 17.00, 17.00, fk_open 13.00
+9, Soul Of Spain, 34.00, 34.00, fk_open 33.00
+9, Mr Monaco, SCR
+9, Kings Valley, 34.00, 34.00, fk_open 26.00
+9, Starford, 18.00, 18.00, fk_open 22.33
+9, Zahrann, 8.50, 8.50, fk_open 6.00
+9, Ohope Wins, 21.00, 21.00, fk_open 23.00
+9, Green Spaces, 35.00, 35.00, fk_open 36.33
+9, Wine Dark Sea, 10.00, 10.00, fk_open 9.00
+9, Point Of Law, SCR
+10, Wrote To Arataki, 81.00, 81.00, fk_open 28.50
+10, Oh Too Good, 16.00, 16.00, fk_open 10.00
+10, Merrigold, 9.50, 9.50, fk_open 13.50
+10, Betwitchery, 41.00, 41.00, fk_open 28.50
+10, Butternut Princess, 12.00, 12.00, fk_open 15.00
+10, Gold Medallist, 8.50, 8.50, fk_open 10.50
+10, Shadhavar, 6.50, 6.50, fk_open 7.50
+10, Guerite, 11.00, 11.00, fk_open 10.50
+10, Terilee, 11.00, 11.00, fk_open 10.50
+10, Ferivia, 91.00, 91.00, fk_open 37.50
+10, Concord Connie, 2.50, 2.50, fk_open 2.35
+10, Recuperato, 67.00, 67.00, fk_open 32.50
+10, Grand Omaha, 71.00, 71.00, fk_open 56.00
+10, Pillow Fight, SCR
