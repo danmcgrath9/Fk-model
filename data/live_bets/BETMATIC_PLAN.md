@@ -69,8 +69,9 @@ only runs the BetMatic bot. Environment "betmatic" (required reviewer: the found
 BETMATIC_PASSWORD and BETMATIC_TAB_SESSION. Ledgers and placements are committed back to data/live_bets/. The
 seconds-level shortfall resend (later) is the one piece that may still need to live on the PC.
 
-## Start (founder, 14 Oct): $50 units, first live meeting Bendigo Saturday or a Sunday meeting (decided 15 Oct)
-TAB balance about $3,750, bank about $5,000. Orders must be with BetMatic before TAB opens, and non-metro Saturday
+## Start (founder, 14 Oct): $75 units (was $50 earlier the same day), first live meeting Bendigo Saturday or a Sunday meeting (decided 15 Oct)
+TAB balance about $5,600, bank about $7,500. Biggest single bet $375 (5u); a big Saturday card is about 11u ($850)
+out at once. Worst losing run at $75: about $2,000 in the holdout with the live rules, $3,600 in the full backtest. Orders must be with BetMatic before TAB opens, and non-metro Saturday
 fields come out on the Thursday, Sunday fields on the Friday, so the set-up (bot running with TAB connected, the
 "betmatic" GitHub environment and its secrets, check run, $1 test) has to be done by about 11am on the day the
 chosen meeting's fields come out.
@@ -86,5 +87,11 @@ horses that never ran held 10-19% of each race's probability, so every starter's
    (Caulfield 17 Oct R10 Pillow Fight is the first case: three runners' minimum odds tighten).
 3. Weekly check: staked per race. Expect about 1.0u a race with the live rules (holdout 1.14u); under 0.7u for a week
    means something is starving the orders again.
-4. Planning figure at $50 a unit: about $1,300-1,400 a week, $5,500-6,000 a month before $359 expenses
-   (holdout with live rules: full months +$6,500 to +$14,600 net, median week +$1,825; t_live_monthly.py).
+4. Planning figure at $75 a unit: about $2,000 a week, $8,250-9,000 a month before $359 expenses (at $50: $1,300-1,400
+   and $5,500-6,000; holdout with live rules at $50: full months +$6,500 to +$14,600 net, median week +$1,825;
+   t_live_monthly.py).
+5. TAB limits (t_mbl.py): Victoria only guarantees a fixed-odds win bet to win $1,000 at non-metro meetings and $2,000
+   at metro. At $75 units 23% of holdout bets try to win more than that (44% of the profit); at $50, 9%. If TAB cut every
+   one of them to the guarantee, $75 units still makes 80% of its uncapped profit, which is more than $50 uncapped
+   ($45,300 against $37,600 over the holdout). BetMatic takes a reduced offer at the reduced stake, so log every
+   reduced offer: the stake TAB actually took is the number that matters.
