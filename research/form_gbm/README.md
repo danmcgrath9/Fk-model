@@ -837,3 +837,15 @@ prices (median open/ours 0.965 vs 0.928), so fewer clear the minimum (21.7% vs 1
 holdout's opens until each race's book is 1.25 (crude: margin spread evenly, where bookmakers load longshots): 0.66
 bets a race, +39% staked, +368u (against 1.13, +46%, +801u). The ROI a bet holds; the number of bets is what the
 bigger live margin costs. Live sits between the two: plan on roughly 60-80% of the backtest's bets and profit.
+
+## t_overlap.py: why the forward test stakes a quarter of the backtest (14 Oct 2026)
+Same 50 races (5-9 Oct, in both the backtest data and the forward test), inputs swapped one at a time. The opening
+prices are identical (the backtest's 'open' is Form King's open), so the market is not the cause. The cause is the model
+file: the 5-9 Oct files were priced before final fields, so 11.0 runners a race against 10.3 that ran, and the horses
+that ran held only 0.81-0.90 of the probability; every starter's price came out about 15% too long. Backtest model:
+49 bets, 73.4u (1.47u a race). Live files as made: 41 bets, 56.4u. Live files re-spread over the runners that ran:
+67 bets, 97.9u (1.96u a race); with every live rule 39 bets, 50.5u (1.01u a race), +48.7u, against the forward test's
+24.8u and +22.9u on the same meetings. The live rules remove 25u of turnover with about 0u of profit on these races.
+Files from 14 Oct are priced on final fields (probabilities of the runners left total 1.00 at Caulfield 14, Warrnambool,
+Cranbourne 16; 0.996 at Caulfield 17), so this is already fixed going forward. Caveat: re-spreading over the runners
+that ran also uses late scratchings, which a pre-open order cannot know.
