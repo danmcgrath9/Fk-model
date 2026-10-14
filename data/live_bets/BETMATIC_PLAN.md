@@ -40,3 +40,11 @@ within the forward test's range. Then decide: the 40% edge on long ones, a secon
 - TAB limits or restricts the account.
 - Fills or prices fall well short of the paper book for two straight weeks.
 - The machine misses a market open twice in a week (fix the machine before going on).
+
+## Notes (14 Oct)
+- Founder: TAB's opening price matches Form King's open "and it's normally slightly better", so the backtest's fills
+  at Form King's open are, if anything, conservative on price.
+- Account limits: deal with them when they come (founder). Every bet reports Placed / Not Placed / Rejected with the
+  stake and price; the ladder sends each horse as several small bets; Victoria's MBL makes the TAB take a win bet to
+  win $1,000 (country/provincial) or $2,000 (metro). Planned: a post-open check that resends a refused or cut step
+  at an MBL-sized stake with the same minimum odds. Asked BetMatic whether the bot accepts a reduced offer.
