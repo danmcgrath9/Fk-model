@@ -37,6 +37,8 @@ Until BetMatic is live these are paper bets; what the founder actually takes sta
 5. **9:30am top-up check (from 14 Oct 2026, paper):** on race day at 9:30am, after scratchings, refresh prices, re-price
    on the final field and run `research/form_gbm/topup.py DAYPREFIX GTAG`; log any top-ups in the top-up section of
    betmatic-book.md and settle them with the results. Tracked to see whether a top-up earns; the backtests say it does not.
+   Kept on (founder, 15 Oct 2026: "5c is nothing for something that I would want to sell to clients"): paper only, every
+   race day, 5 credits a meeting, until the live sample settles the question.
 
 ## The forward test is the BetMatic method only (14 Oct 2026)
 Founder: "Forward test I only want the model that we would be using with betmatic". data/live_bets/forward-test-betmatic.md,
