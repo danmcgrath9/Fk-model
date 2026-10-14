@@ -180,6 +180,23 @@ def cancel(a):
         print(i, code, resp)
 
 
+def pending(a):
+    """Before the open: is every order in the ledger waiting on BetMatic? GET /notification/scheduled/ lists pending
+    Market Open and scheduled bets (a plain array, last 24 hours only); a ledger id missing from it has fired, been
+    cancelled, or never registered, and is named so it can be resent while there is time."""
+    bm = BM(); got = bm.get("/notification/scheduled/"); got = got if isinstance(got, list) else results(got)
+    live = {str(n.get("id")): n for n in got if isinstance(n, dict) and not n.get("is_canceled")}
+    rows = [r for r in csv.DictReader(open(a.ledger)) if r.get("notification_ids")]
+    ok = missing = 0
+    for r in rows:
+        for i in r["notification_ids"].split("&"):
+            if i in live:
+                ok += 1
+            else:
+                missing += 1; print(f"NOT PENDING {r['label']} (id {i}): fired, cancelled or never registered")
+    print(f"{ok} pending, {missing} not pending, {len(live)} pending on BetMatic in all")
+
+
 def status(a):
     bm = BM(); out = a.ledger.replace("-ledger.csv", "-placed.jsonl")
     with open(out, "a") as fh:
@@ -204,4 +221,5 @@ if __name__ == "__main__":
     s.add_argument("--send", action="store_true")
     c = sp.add_parser("cancel"); c.add_argument("ledger"); c.add_argument("--race"); c.add_argument("--number"); c.add_argument("--send", action="store_true")
     t = sp.add_parser("status"); t.add_argument("ledger")
-    a = ap.parse_args(); {"check": check, "send": send, "cancel": cancel, "status": status}[a.cmd](a)
+    pn = sp.add_parser("pending"); pn.add_argument("ledger")
+    a = ap.parse_args(); {"check": check, "send": send, "cancel": cancel, "status": status, "pending": pending}[a.cmd](a)

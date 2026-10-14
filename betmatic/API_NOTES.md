@@ -91,3 +91,14 @@ API Overview (api-reference/overview): rate limits, errors.
 - GET /bet/notification/{id}/ returns {"bets": [...]}; status is "" until Won / Lost / Refund. `status` reads "bets".
 - GET /notification/scheduled/ lists only the last 24 hours: the ledger keeps every notification id for cancels.
 - Response id for a market-open create is "&"-joined (one per bookmaker); we target TAB only, so one id.
+
+## Scheduled bets, Market Open, Trigger & Cancel (pasted 15 Oct)
+- GET /notification/scheduled/ is a plain array of pending notifications (last 24 hours only); fields as GET
+  /notification/ ("tip": {"competition": {...}}, "label", "is_canceled"). New sender command `pending LEDGER`
+  (also a workflow action): every ledger id must be pending before the open; anything not pending is named so it can
+  be resent while there is time.
+- Market Open: one notification per bookmaker; a 404 "The market is not available for the specified bookies" means
+  TAB does not offer the market (logged as FAIL). Markets are often posted early morning: the bot must be running
+  then, or the bet is missed (BetMatic suggests scheduled session start times in the bot's settings).
+- Trigger: fires now; 400 if already triggered or the market is closed (about 5 hours after the start). Cancel: "OK";
+  400 if already placed or cancelled; a bet already sent to the bookmaker cannot be undone.

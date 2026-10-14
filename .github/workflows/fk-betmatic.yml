@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'send | cancel | status | check'
+        description: 'send | pending | cancel | status | check'
         default: 'send'
       file:
         description: 'send: the order file (data/live_bets/DAYPREFIX-betmatic-preopen.csv); cancel/status: its -ledger.csv'
@@ -65,6 +65,7 @@ jobs:
             send)   python betmatic/betmatic_send.py send "$FILE" --unit "$UNIT" --session "$SESSION" $SEND ;;
             cancel) python betmatic/betmatic_send.py cancel "$FILE" ${RACE:+--race "$RACE"} ${NUM:+--number "$NUM"} $SEND ;;
             status) python betmatic/betmatic_send.py status "$FILE" ;;
+            pending) python betmatic/betmatic_send.py pending "$FILE" ;;
             *) echo "unknown action $A"; exit 1 ;;
           esac
       - name: Keep the ledger and placements
