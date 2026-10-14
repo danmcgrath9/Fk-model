@@ -23,6 +23,7 @@ was checked. CHECKED = tested against raw data or a live record; NOT CHECKED = s
 | The 2025 races' opening prices are the same quantity as 2026's | UNKNOWN | the 2025 opens sit much closer to BSP (KL 0.11 vs 0.14); the live TAB opens will show which era they resemble |
 | Order files are built on the final field | CHECKED | betmatic_orders.py drops emergencies and scratchings and warns on a pre-final-field file (14 Oct) |
 | The order builder bets what the backtest bets | CHECKED | Cranbourne 16 and Caulfield 17 order files rebuild identically under the same rules |
+| A fields-time pull carries the jockeys and gear the model trained with | WRONG | Cranbourne 16 Oct at 11:21am: 27 of 105 runners no jockey, 0 gear changes; at 5pm 4 and 37. Fixed: price after the jockey refresh (BETMATIC_PLAN daily flow) |
 | The holdout's rules were not tuned on the holdout | WRONG | the 20% edge, 5% shade and 3 steps were chosen looking at it, so it flatters; the 2025 races (+21%) are the cleaner test |
 
 ## Field coverage (15 Oct 2026, scripts/wide_table.py over 51,492 runners)

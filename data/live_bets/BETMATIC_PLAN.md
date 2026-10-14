@@ -25,9 +25,17 @@ Claude:
 
 ## Phase 1: small stakes (about 2 weeks)
 - First meeting through BetMatic's Simulation tab (no real bets), then live at a small unit (founder's call).
-- Daily flow: 11am fields pull -> price -> order file -> founder approves -> founder's machine sends -> before the
+- Daily flow: 10:30am fields pull -> **price refresh once jockeys are declared** (5 credits a meeting, see below) -> price -> order file -> founder approves -> founder's machine sends -> before the
   open, cancel and resend anything hit by a scratching or rating change -> bets fire at TAB's open -> fills logged ->
   results settled with TAB's actual deductions -> tips posted at the opening price.
+- JOCKEYS AND GEAR ARRIVE AFTER THE FIELDS (found 15 Oct 2026): at Cranbourne 16 Oct's 11:21am fields pull, 27 of 105
+  runners had no jockey and no runner had a gear change posted; by the 5pm market snapshot jockeys were in (4 blank) and
+  37 runners carried gear changes. The model was trained on races pulled after the fact, with every jockey and gear
+  change, so a fields-time price is off its training data for a quarter of the field (Strike Package $9.26 -> $3.15
+  once Mark Zahra was booked). The Meeting Summary refresh (scripts/morning_odds.py, odds_only in fk-daily-pull, 5
+  credits a meeting) writes the fresh entry over the stored one, jockeys and gear included, so the routine is: fields
+  pull, then the refresh once riders are declared, then export, price and build the orders. Check jockey coverage on
+  the export before pricing (run_meeting.sh prints it); price anyway only with the blank-jockey runners named.
 - Measure every meeting: fill rate against the paper book, price taken against Form King's open, speed, partial
   stakes, any account restriction.
 
