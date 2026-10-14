@@ -865,3 +865,8 @@ Our price is somewhat weaker on the 2025 races (the missing own-history encoding
 OPENING PRICE: in the 2025 data it sits far closer to BSP than in the holdout, so there is a quarter of the edge to
 take. Whether 2025 opens were genuinely sharper or Form King's avgOpen for older races is a different quantity is
 not known; the live forward test's fills beat BSP by 1.67x on average, which looks like the holdout, not 2025.
+Against WINNERS (t_winners.py, log loss, lower = better): holdout ours 1.896, opening market 1.957, BSP 1.800; Jul to
+7 Oct 2025 ours 1.898, open 1.919, BSP 1.822. Our price picks winners equally well in both periods (and is well
+calibrated in every price band); what changed is the 2025 opening market, 1.919 against 1.957, so the gap we bet
+into was much smaller. BSP beats us on winners in both: it carries every late move, which is the point of betting
+at the open, before the market finds out.
