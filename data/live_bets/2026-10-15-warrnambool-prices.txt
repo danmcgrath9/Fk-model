@@ -1,99 +1,99 @@
-# Warrnambool Thu 15 Oct, Good 4: snapshot Tue 13 Oct 5:46pm Melbourne (all eight markets up). Form King best price now, fk_open = Form King's average opening price. Emergencies not yet in as SCR.
-1, Northern Gold, 51.00, 51.00, fk_open 51.00
-1, Mamzelle Raine, 41.00, 41.00, fk_open 26.00
+# Warrnambool Thu 15 Oct, Good 4: race morning, pulled Thu 15 Oct 9:34am Melbourne after scratchings (Form King open = fk_open).
+1, Northern Gold, 101.00, 101.00, fk_open 51.00
+1, Mamzelle Raine, 61.00, 61.00, fk_open 26.00
 1, Smart And Mighty, 34.00, 34.00, fk_open 26.00
-1, Blues Jazz, 23.00, 23.00, fk_open 15.00
+1, Blues Jazz, 29.00, 29.00, fk_open 15.00
 1, A Little Reward, 151.00, 151.00, fk_open 101.00
-1, Acharnee, 5.00, 5.00, fk_open 4.60
-1, Listen Up, 61.00, 61.00, fk_open 51.00
-1, Niccotein, 8.00, 8.00, fk_open 8.00
-1, Twister, 16.00, 16.00, fk_open 11.00
-1, Zercardy, 2.90, 2.90, fk_open 3.50
-1, Villa Grande, 2.60, 2.60, fk_open 2.50
-2, Champagne Sabre, 21.00, 21.00, fk_open 15.50
+1, Acharnee, 5.75, 5.75, fk_open 4.60
+1, Listen Up, 81.00, 81.00, fk_open 51.00
+1, Niccotein, 8.50, 8.50, fk_open 8.00
+1, Twister, 17.00, 17.00, fk_open 11.00
+1, Zercardy, 2.15, 2.15, fk_open 3.50
+1, Villa Grande, 3.00, 3.00, fk_open 2.50
+2, Champagne Sabre, 26.00, 26.00, fk_open 15.50
 2, The Toronado Kid, 151.00, 151.00, fk_open 101.00
 2, Trust My, 151.00, 151.00, fk_open 113.50
-2, Almorina, 14.00, 14.00, fk_open 11.50
-2, Black Aces, 5.50, 5.50, fk_open 11.00
-2, Jack Will, 6.00, 6.00, fk_open 4.60
-2, Symphony Sista, 14.00, 14.00, fk_open 11.00
+2, Almorina, 13.00, 13.00, fk_open 11.50
+2, Black Aces, 4.20, 4.20, fk_open 11.00
+2, Jack Will, 7.50, 7.50, fk_open 4.60
+2, Symphony Sista, 16.00, 16.00, fk_open 11.00
 2, Prestige Erick, 5.00, 5.00, fk_open 5.50
-2, Semper Augustus, 3.90, 3.90, fk_open 3.55
+2, Semper Augustus, 3.70, 3.70, fk_open 3.55
 2, Prince Iadora, 14.00, 14.00, fk_open 11.00
-2, Balgownie Lad, 91.00, 91.00, fk_open 51.00
+2, Balgownie Lad, 126.00, 126.00, fk_open 51.00
 2, Stomping Ground, 14.00, 14.00, fk_open 11.00
 2, Ocean Surge, 14.00, 14.00, fk_open 11.50
-3, Monsoon Indi, 151.00, 151.00, fk_open 101.00
-3, Cowboykickedfive, 7.00, 7.00, fk_open 6.00
-3, Miss Delightful, 12.00, 12.00, fk_open 8.00
-3, Tempered Edge, 15.00, 15.00, fk_open 11.00
-3, Paramount War, 5.50, 5.50, fk_open 4.40
-3, Who I Think I Am, 4.40, 4.40, fk_open 6.00
-3, My Rosalie, 10.00, 10.00, fk_open 8.00
-3, Chilly Sav, 81.00, 81.00, fk_open 51.00
-3, Girl With A Pearl, 3.70, 3.70, fk_open 6.00
-3, Midnightbrilliance, 21.00, 21.00, fk_open 15.00
-3, Kermalina, 23.00, 23.00, fk_open 15.00
-3, A Rus In Grinzing, 15.00, 15.00, fk_open 11.00
+3, Monsoon Indi, 201.00, 201.00, fk_open 101.00
+3, Cowboykickedfive, 11.00, 11.00, fk_open 6.00
+3, Miss Delightful, 29.00, 29.00, fk_open 8.00
+3, Tempered Edge, 31.00, 31.00, fk_open 11.00
+3, Paramount War, 7.50, 7.50, fk_open 4.40
+3, Who I Think I Am, 4.60, 4.60, fk_open 6.00
+3, My Rosalie, 7.50, 7.50, fk_open 8.00
+3, Chilly Sav, 201.00, 201.00, fk_open 51.00
+3, Girl With A Pearl, 2.50, 2.50, fk_open 6.00
+3, Midnightbrilliance, 19.00, 19.00, fk_open 15.00
+3, Kermalina, 14.00, 14.00, fk_open 15.00
+3, A Rus In Grinzing, 26.00, 26.00, fk_open 11.00
 4, Cold Train, 23.00, 23.00, fk_open 11.00
 4, Conjurer, 21.00, 21.00, fk_open 15.00
-4, Heidi High, 34.00, 34.00, fk_open 26.00
-4, Deelamour, 101.00, 101.00, fk_open 51.00
-4, Black Hex, 61.00, 61.00, fk_open 26.00
-4, Rollin'ontheriver, 21.00, 21.00, fk_open 11.00
+4, Heidi High, 19.00, 19.00, fk_open 26.00
+4, Deelamour, 41.00, 41.00, fk_open 51.00
+4, Black Hex, 41.00, 41.00, fk_open 26.00
+4, Rollin'ontheriver, 20.00, 20.00, fk_open 11.00
 4, Greystone, 101.00, 101.00, fk_open 51.00
-4, Ideas Galore, 18.00, 18.00, fk_open 11.00
+4, Ideas Galore, 15.00, 15.00, fk_open 11.00
 4, Princess Chic, 67.00, 67.00, fk_open 26.00
-4, Endless Fury, 3.40, 3.40, fk_open 6.00
+4, Endless Fury, 3.50, 3.50, fk_open 6.00
 4, Winter Arc, 5.00, 5.00, fk_open 4.00
-4, Mack The Knife, 2.15, 2.15, fk_open 2.50
-5, Super Snitch, 51.00, 51.00, fk_open 51.00
-5, Raven's Silver, 17.00, 17.00, fk_open 11.00
-5, Ataegina, 7.50, 7.50, fk_open 8.00
-5, Ain't Tellin, 151.00, 151.00, fk_open 101.00
-5, The Daily Planet, 17.00, 17.00, fk_open 11.00
-5, Belcony, 4.20, 4.20, fk_open 8.00
-5, Diamond Eye, 5.00, 5.00, fk_open 6.00
-5, Fully Justified, 14.00, 14.00, fk_open 8.00
-5, Prestige Zerprise, 8.50, 8.50, fk_open 6.00
-5, Shades Of Stardom, 12.00, 12.00, fk_open 8.00
-5, High Falls, 3.40, 3.40, fk_open 3.50
+4, Mack The Knife, 2.30, 2.30, fk_open 2.50
+5, Super Snitch, 23.00, 23.00, fk_open 51.00
+5, Raven's Silver, 8.50, 8.50, fk_open 11.00
+5, Ataegina, 5.00, 5.00, fk_open 8.00
+5, Ain't Tellin, 101.00, 101.00, fk_open 101.00
+5, The Daily Planet, 12.00, 12.00, fk_open 11.00
+5, Belcony, SCR
+5, Diamond Eye, SCR
+5, Fully Justified, 7.50, 7.50, fk_open 8.00
+5, Prestige Zerprise, 7.50, 7.50, fk_open 6.00
+5, Shades Of Stardom, 6.50, 6.50, fk_open 8.00
+5, High Falls, 2.90, 2.90, fk_open 3.50
 6, Phoenix Flyer, 151.00, 151.00, fk_open 101.00
-6, Port Louis, 26.00, 26.00, fk_open 11.00
-6, Helluva Barty, 9.00, 9.00, fk_open 4.60
-6, Bancoora, 23.00, 23.00, fk_open 11.00
-6, Buzitup, 9.00, 9.00, fk_open 11.00
-6, Artistic Genius, 10.00, 10.00, fk_open 11.00
-6, Stolen Art, 6.00, 6.00, fk_open 8.00
-6, Tauri, 31.00, 31.00, fk_open 11.00
-6, Icy Pole, 5.00, 5.00, fk_open 8.00
-6, King West, 3.70, 3.70, fk_open 3.60
-6, Singles Moment, 7.50, 7.50, fk_open 8.00
-7, Spanish Snitzel, SCR
+6, Port Louis, 18.00, 18.00, fk_open 11.00
+6, Helluva Barty, 8.50, 8.50, fk_open 4.60
+6, Bancoora, 18.00, 18.00, fk_open 11.00
+6, Buzitup, 6.25, 6.25, fk_open 11.00
+6, Artistic Genius, SCR
+6, Stolen Art, 4.60, 4.60, fk_open 8.00
+6, Tauri, 10.00, 10.00, fk_open 11.00
+6, Icy Pole, 4.40, 4.40, fk_open 8.00
+6, King West, 3.40, 3.40, fk_open 3.60
+6, Singles Moment, SCR
+7, Spanish Snitzel, 101.00, 101.00, fk_open 81.00
 7, Scenic Host, 61.00, 61.00, fk_open 51.00
-7, Tishman, 7.00, 7.00, fk_open 6.00
-7, Mayeki, 34.00, 34.00, fk_open 26.00
+7, Tishman, SCR
+7, Mayeki, 27.00, 27.00, fk_open 26.00
 7, Both Sides Now, 9.00, 9.00, fk_open 15.00
-7, Garnacho, 10.00, 10.00, fk_open 11.00
-7, En Flique, 12.00, 12.00, fk_open 11.00
-7, Milady, 34.00, 34.00, fk_open 26.00
-7, State Of Affairs, 13.00, 13.00, fk_open 15.00
-7, Share The Stars, 26.00, 26.00, fk_open 26.00
-7, Asal, 7.50, 7.50, fk_open 6.00
+7, Garnacho, 9.50, 9.50, fk_open 11.00
+7, En Flique, 8.00, 8.00, fk_open 11.00
+7, Milady, 26.00, 26.00, fk_open 26.00
+7, State Of Affairs, SCR
+7, Share The Stars, 19.00, 19.00, fk_open 26.00
+7, Asal, 5.00, 5.00, fk_open 6.00
 7, Cute Girl, 5.00, 5.00, fk_open 4.40
-7, Sakakibara, 34.00, 34.00, fk_open 26.00
-7, Johnny Be Good, 34.00, 34.00, fk_open 26.00
-7, Just My Lot, 4.00, 4.00, fk_open 4.40
-8, Francine, 61.00, 61.00, fk_open 26.00
-8, Prince Sonic, 101.00, 101.00, fk_open 51.00
-8, Midnight Devil, 7.50, 7.50, fk_open 4.60
-8, Shooting For Stars, 71.00, 71.00, fk_open 26.00
-8, Soju, 16.00, 16.00, fk_open 26.00
-8, Kid Dynamite, 7.00, 7.00, fk_open 15.00
-8, Flying Straz, 41.00, 41.00, fk_open 15.00
-8, Ziggy Bama, 4.00, 4.00, fk_open 4.60
-8, Nordic Strike, 7.50, 7.50, fk_open 8.00
-8, Salaria, 5.00, 5.00, fk_open 6.00
-8, Outer Banks, 5.50, 5.50, fk_open 6.00
-8, Meisho, 23.00, 23.00, fk_open 11.00
-8, Positive Image, 34.00, 34.00, fk_open 15.00
+7, Sakakibara, 29.00, 29.00, fk_open 26.00
+7, Johnny Be Good, 26.00, 26.00, fk_open 26.00
+7, Just My Lot, 3.80, 3.80, fk_open 4.40
+8, Francine, 34.00, 34.00, fk_open 26.00
+8, Prince Sonic, SCR
+8, Midnight Devil, 9.50, 9.50, fk_open 4.60
+8, Shooting For Stars, SCR
+8, Soju, SCR
+8, Kid Dynamite, 7.50, 7.50, fk_open 15.00
+8, Flying Straz, SCR
+8, Ziggy Bama, 2.90, 2.90, fk_open 4.60
+8, Nordic Strike, SCR
+8, Salaria, 3.50, 3.50, fk_open 6.00
+8, Outer Banks, 5.00, 5.00, fk_open 6.00
+8, Meisho, 14.00, 14.00, fk_open 11.00
+8, Positive Image, 19.00, 19.00, fk_open 15.00

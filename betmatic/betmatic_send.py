@@ -146,9 +146,10 @@ def send(a):
     if bal < total:
         msg = (f"TAB balance ${bal:,.2f} (as at {live[0].get('update_time')}) is below the ${total:,} these bets "
                f"need if every one fires")
-        if not a.allow_short:
-            sys.exit(msg + ". Fund the account, or add --allow-short to send anyway")
-        print("WARNING:", msg)
+        # Warning only (15 Oct 2026): BetMatic read the TAB session at $0.00 for an hour after the founder loaded $5
+        # into that same account, so its balance is not a reliable gate. TAB itself refuses a bet it cannot cover,
+        # and status shows that as FAILED with the bot's own log line.
+        print("WARNING:", msg, "(BetMatic's TAB balance reading has been unreliable; sending, TAB will refuse what it cannot cover)")
     bid = bookie_id(bm, a.bookie)
     # A bet names the venue and race number; without start_time BetMatic takes the NEXT race at that venue and number,
     # and the schedule runs up to 5-6 days ahead (API reference: Race Schedule; Create a Bet). So each bet is matched to
