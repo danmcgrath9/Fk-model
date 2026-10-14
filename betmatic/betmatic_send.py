@@ -199,7 +199,11 @@ def pending(a):
 
 
 def status(a):
+    """Every order's placement at TAB, from the bet records (GET /bet/notification/{id}/ -> "bets"): amount TAB took,
+    the odds taken (current_odds), submit_result / submit_error, status and profit. Flags a bet TAB took for LESS than
+    we asked (reduced offer), a failed submission, and a fill below our minimum odds (should never happen)."""
     bm = BM(); out = a.ledger.replace("-ledger.csv", "-placed.jsonl")
+    tot_ask = tot_took = 0.0; n_cut = n_fail = 0
     with open(out, "a") as fh:
         for r in csv.DictReader(open(a.ledger)):
             for i in r["notification_ids"].split("&"):
@@ -208,9 +212,22 @@ def status(a):
                 # {"bets": [...]} per the API's worked examples; status is "" until settled as Won / Lost / Refund
                 recs = got.get("bets", results(got)) if isinstance(got, dict) else got
                 fh.write(json.dumps({"label": r["label"], "notification": i, "records": recs}) + "\n")
-                for x in (recs if isinstance(recs, list) else [recs]):
-                    print(r["label"], i, {k: x.get(k) for k in ("submit_result", "status", "odds", "stake", "profit") if isinstance(x, dict)})
-    print("raw records:", out)
+                recs = [x for x in (recs if isinstance(recs, list) else [recs]) if isinstance(x, dict)]
+                ask = float(r["stake"] or 0); tot_ask += ask
+                if not recs:
+                    print(f"{r['label']} #{i}: no placement yet (waiting for the open, or nothing was sent)"); continue
+                for x in recs:
+                    took = float(x.get("amount") or 0) if x.get("submit_result") == "Success" else 0.0; tot_took += took
+                    flag = []
+                    if x.get("submit_result") != "Success":
+                        flag.append(f"FAILED: {x.get('submit_error')}"); n_fail += 1
+                    elif took + 0.01 < ask:
+                        flag.append(f"REDUCED: asked ${ask:g}, TAB took ${took:g}"); n_cut += 1
+                    odds = x.get("current_odds")
+                    if odds and r.get("min_odds") and float(odds) + 1e-9 < float(r["min_odds"]):
+                        flag.append(f"BELOW MIN ODDS {r['min_odds']}")
+                    print(f"{r['label']} #{i}: ${took:g} @ {odds} {x.get('status') or 'unsettled'} {x.get('profit', '')} {'; '.join(flag)}")
+    print(f"asked ${tot_ask:,.0f}, TAB took ${tot_took:,.0f}; {n_cut} reduced, {n_fail} failed. raw records: {out}")
 
 
 if __name__ == "__main__":

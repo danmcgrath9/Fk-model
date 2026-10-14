@@ -112,3 +112,11 @@ API Overview (api-reference/overview): rate limits, errors.
   submit_result); total_accepted > 0 with empty status = placed, unsettled; status Won / Lost / Refund = settled.
 - stake / target_profit / total_wager default to 1: for Fixed Wager read stake; actual dollars per session are in the
   bet records' "amount".
+
+## Bet Records (pasted 15 Oct)
+- One record per session per bet: amount (dollars actually staked), current_odds (odds taken), submit_result
+  ("Success" or an error code), submit_error (message), status (Won / Lost / Refund, "" = unsettled or failed), profit,
+  bookie (numeric id), display_name.
+- The sender's `status` command now reads those fields (it read "odds" and "stake", which do not exist) and flags a
+  REDUCED bet (TAB took less than asked: the limiting record), a FAILED submission, and any fill below our minimum
+  odds; it totals asked against taken.
