@@ -1,3 +1,4 @@
 # Warrnambool Thu 15 Oct: deductions TAB applied to bets struck at TAB's opening price (founder's account, 15 Oct). Cents in the dollar, win.
 6, 13  # Buzitup
 7, 9   # Both Sides Now
+3, 0  # Who I Think I Am (BetMatic)
