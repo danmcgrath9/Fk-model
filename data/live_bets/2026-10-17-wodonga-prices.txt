@@ -1,0 +1,75 @@
+# Wodonga Sat 17 Oct, Good 4: final fields pulled Thu 15 Oct 1:15pm, refreshed 1:25pm Melbourne (jockeys and gear). Emergencies as SCR until they gain a start; no market yet.
+1, Bon Over, 0, 0
+1, Idol Eyes, 0, 0
+1, Love Dad, 0, 0
+1, Magic Royale, 0, 0
+1, Money Bags, 0, 0
+1, Oriane, 0, 0
+1, Pure Warrior, 0, 0
+1, Valour Vino, 0, 0
+1, Hazardous, 0, 0
+1, Isle Of Mona, 0, 0
+1, Bokka Bokka, SCR
+1, Tallingas Diamond, SCR
+1, Betty's Rubble, SCR
+1, Community Gaz, SCR
+2, Flashman, 0, 0
+2, Mighty Mozzie, 0, 0
+2, Orthotropic, 0, 0
+2, Apple Eyes, 0, 0
+2, Dingle, 0, 0
+2, Don'tmindameeting, 0, 0
+2, Lull Us Away, 0, 0
+2, Mirraway, 0, 0
+2, Pacific Sushi, 0, 0
+2, Don'tpushsend, 0, 0
+2, My Boy Grunt, SCR
+2, Who'llstoplorraine, SCR
+3, Saker Falcon, 0, 0
+3, Mishima, 0, 0
+3, Salina Special, 0, 0
+3, Moral Turpitude, 0, 0
+3, Darken, 0, 0
+3, I've Forgotten, 0, 0
+3, Lucky Compass, 0, 0
+3, Cumbrian Queen, 0, 0
+3, Kulina, 0, 0
+3, Fleet Destination, 0, 0
+3, Imposing Tallulah, SCR
+4, Lord Domino, 0, 0
+4, Wambeen, 0, 0
+4, Stand By Me Ned, 0, 0
+4, Don'tcallmechamp, 0, 0
+4, Jayzeal, 0, 0
+4, Jingu Express, 0, 0
+4, Marbastion, 0, 0
+4, Winning Witness, 0, 0
+4, Cinephile, 0, 0
+4, Rivazza, 0, 0
+4, Misil Beauty, SCR
+5, Captain Barbossa, 0, 0
+5, Kiwiesque, 0, 0
+5, Dashing Donkey, 0, 0
+5, Surely Special, 0, 0
+5, Aberlutely, 0, 0
+5, Helping Hands, 0, 0
+5, Tosen Glory, 0, 0
+5, Whisper The Wind, 0, 0
+5, Blonde Suspect, 0, 0
+5, Brassi Road, 0, 0
+5, Dreamstone, SCR
+5, King Kauffo, SCR
+6, Time Angel, 0, 0
+6, Wannabeapoodle, 0, 0
+6, It'swhatyoumakeit, 0, 0
+6, Prince Rupert, 0, 0
+6, Densetsu, 0, 0
+6, Gargantuan, 0, 0
+6, Rowdy Anthem, 0, 0
+6, Apple Cider, 0, 0
+6, Black Panther, 0, 0
+6, Doubtfree, 0, 0
+6, Balgowan, SCR
+6, Ima Guru, SCR
+6, Kilmister, SCR
+6, Hillbily Kynection, SCR
