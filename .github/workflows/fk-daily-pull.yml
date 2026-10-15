@@ -23,10 +23,10 @@ on:
     # Saturday metro on the Wednesday (three days). So every day at 10:30 pull the meetings two days ahead, and on a
     # Wednesday also three days ahead. Two crons because GitHub runs in UTC; the step only acts on the one that lands
     # at 10am Melbourne, whichever daylight saving says it is.
-    # Moved to 12:45 (founder, 15 Oct 2026): riders are not declared until 12 and TAB's odds are not up until 2-3pm,
-    # so one pull at 12:45 carries the jockeys and gear the model needs, still well before the market.
-    - cron: '45 1 * * *'   # 12:45 Melbourne in daylight saving
-    - cron: '45 2 * * *'   # 12:45 Melbourne in standard time
+    # Moved to 12:20 (founder, 15 Oct 2026; 12:45 first, then "make it 12:20"): riders are not declared until 12 and TAB's odds are not up until 2-3pm,
+    # so one pull at 12:20 carries the jockeys and gear the model needs, still well before the market.
+    - cron: '20 1 * * *'   # 12:20 Melbourne in daylight saving
+    - cron: '20 2 * * *'   # 12:20 Melbourne in standard time
     # Evening catch-up for tomorrow: only races not already stored (a fields-release pull is not paid for twice).
     - cron: '30 8 * * *'   # 18:30 Melbourne in standard time, 19:30 in daylight saving
     - cron: '0 11 * * *'   # 21:00 Melbourne
@@ -145,7 +145,7 @@ jobs:
           if [ "${{ github.event_name }}" = "schedule" ]; then
             HOUR=$(TZ=Australia/Melbourne date +%H); DOW=$(TZ=Australia/Melbourne date +%u)
             case "${{ github.event.schedule }}" in
-              '45 1 * * *'|'45 2 * * *')
+              '20 1 * * *'|'20 2 * * *')
                 [ "$HOUR" = "12" ] || { echo "fields-release cron at Melbourne hour $HOUR, not 12: the other cron covers today"; exit 0; }
                 DAYS="2"; [ "$DOW" = "3" ] && DAYS="2 3"   # Wednesday: Saturday metro too
                 for N in $DAYS; do
