@@ -1,0 +1,102 @@
+# Horsham Sun 18 Oct, Good 4: final fields pulled Thu 15 Oct 1:15pm Melbourne. Emergencies as SCR until they gain a start; no market yet.
+1, Sitar, 0, 0
+1, Son Of Vadamos, 0, 0
+1, Taajwar, 0, 0
+1, Vadar, 0, 0
+1, Eminent Ella, 0, 0
+1, Empress Of China, 0, 0
+1, Helichrysum, 0, 0
+1, Under Control, 0, 0
+1, Courting, 0, 0
+1, Little Ally Bama, 0, 0
+2, Best Terms, 0, 0
+2, Brutal Tempo, 0, 0
+2, Shujinko, 0, 0
+2, Apadana, 0, 0
+2, Back Up Barbie, 0, 0
+2, Blue Valentine, 0, 0
+2, His Lady Bay, 0, 0
+2, Mark's Magus, 0, 0
+2, Mystic Rapture, 0, 0
+2, Bronx Brawler, 0, 0
+2, Canticle, 0, 0
+2, Hannan Street, 0, 0
+2, Whiskey And War, 0, 0
+2, La Moma, SCR
+3, Hard Hitter, 0, 0
+3, Whata Stretch, 0, 0
+3, Buchan Outkast, 0, 0
+3, Moab, 0, 0
+3, Te Awam Utu, 0, 0
+3, Tikiela, 0, 0
+3, Cosmic Voyage, 0, 0
+3, Hollywood Hustler, 0, 0
+3, Impendalot, 0, 0
+3, Lucifer's Girl, 0, 0
+3, Starseatic, 0, 0
+3, Strength Within, 0, 0
+3, Valentina Girl, 0, 0
+3, Miss Verona, SCR
+3, Immortal Truth, SCR
+4, Monix, 0, 0
+4, Razzo Rosso, 0, 0
+4, Milos Filos, 0, 0
+4, Miss Mahjong, 0, 0
+4, Min Kiata, 0, 0
+4, Nostra Bella, 0, 0
+4, Gina's A Star, 0, 0
+4, Tapo, 0, 0
+4, Xtramagic, 0, 0
+5, Nordic Strike, 0, 0
+5, Bazzar, 0, 0
+5, Second Fix, 0, 0
+5, Tower Bridge, 0, 0
+5, Edges Diamond, 0, 0
+5, Marilyn's Edge, 0, 0
+5, Makarim, 0, 0
+5, Thunder Park, 0, 0
+5, What A Ripper, 0, 0
+5, Attain, 0, 0
+5, Caribbean Villa, 0, 0
+5, Barclaps, 0, 0
+6, Figlio D'argento, 0, 0
+6, Endless Summer, 0, 0
+6, Mr Independent, 0, 0
+6, Royal Infantry, 0, 0
+6, Celibate, 0, 0
+6, Col Klink, 0, 0
+6, Coronationhercules, 0, 0
+6, Colour Our World, 0, 0
+6, Final Countdown, 0, 0
+6, Naraghi, 0, 0
+6, Stargust, 0, 0
+6, Cat Noir, 0, 0
+6, Spex, 0, 0
+6, Hedjet, SCR
+6, Vim Vitae, SCR
+6, Racey Casey, SCR
+6, Brutify, SCR
+7, The Pendragon, 0, 0
+7, Miracle Spin, 0, 0
+7, Any Luck, 0, 0
+7, Aftermath, 0, 0
+7, Raf Attack, 0, 0
+7, Tikemyson, 0, 0
+7, Budjik Boy, 0, 0
+7, Male Model, 0, 0
+7, Nothingelsematters, 0, 0
+7, Dschingis Prestige, 0, 0
+7, Takemetothemoon, 0, 0
+8, First Innings, 0, 0
+8, Kilna, 0, 0
+8, Eddystone, 0, 0
+8, Octane Reign, 0, 0
+8, Weather Delay, 0, 0
+8, Kingsford, 0, 0
+8, Crown Of Russia, 0, 0
+8, Late Harvest, 0, 0
+8, State Of Affairs, 0, 0
+8, Surfy Pete, 0, 0
+8, Philharmonic, 0, 0
+8, Pianta, 0, 0
+8, Hoodys Horse, 0, 0
