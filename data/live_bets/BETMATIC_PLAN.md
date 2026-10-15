@@ -25,7 +25,7 @@ Claude:
 
 ## Phase 1: small stakes (about 2 weeks)
 - First meeting through BetMatic's Simulation tab (no real bets), then live at a small unit (founder's call).
-- Daily flow: 12:20pm fields pull (riders are declared by 12, TAB odds up 2-3pm; founder 15 Oct) -> price -> order file -> founder approves -> founder's machine sends -> before the
+- Daily flow: fields pull per meeting at the time the founder gives, after its riders are declared (15 Oct: Bendigo 12:15, Avoca 12:45, Wodonga, Horsham, Moe 1:15) -> price -> order file -> founder approves -> founder's machine sends -> before the
   open, cancel and resend anything hit by a scratching or rating change -> bets fire at TAB's open -> fills logged ->
   results settled with TAB's actual deductions -> tips posted at the opening price.
 - JOCKEYS AND GEAR ARRIVE AFTER THE FIELDS (found 15 Oct 2026): at Cranbourne 16 Oct's 11:21am fields pull, 27 of 105

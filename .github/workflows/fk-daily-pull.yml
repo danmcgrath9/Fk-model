@@ -23,10 +23,9 @@ on:
     # Saturday metro on the Wednesday (three days). So every day at 10:30 pull the meetings two days ahead, and on a
     # Wednesday also three days ahead. Two crons because GitHub runs in UTC; the step only acts on the one that lands
     # at 10am Melbourne, whichever daylight saving says it is.
-    # Moved to 12:20 (founder, 15 Oct 2026; 12:45 first, then "make it 12:20"): riders are not declared until 12 and TAB's odds are not up until 2-3pm,
-    # so one pull at 12:20 carries the jockeys and gear the model needs, still well before the market.
-    - cron: '20 1 * * *'   # 12:20 Melbourne in daylight saving
-    - cron: '20 2 * * *'   # 12:20 Melbourne in standard time
+    # Fields-release crons REMOVED (founder, 15 Oct 2026): each meeting is pulled by hand at its own time, after its
+    # riders are declared ("Bendigo pull at 12:15, Avoca 12:45, Wodonga 1:15, Horsham 1:15, Moe 1:15"). A blanket pull
+    # before a meeting's riders are in would store it without jockeys, and the later pull would then skip it.
     # Evening catch-up for tomorrow: only races not already stored (a fields-release pull is not paid for twice).
     - cron: '30 8 * * *'   # 18:30 Melbourne in standard time, 19:30 in daylight saving
     - cron: '0 11 * * *'   # 21:00 Melbourne
