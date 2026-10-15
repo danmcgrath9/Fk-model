@@ -184,7 +184,10 @@ def send(a):
             if prob:
                 print(f"SKIP {lab}: {prob}"); w.writerow([lab, o["race"], o["number"], o["horse"], o["min_odds"], o.get("max_odds", ""), body["stake"], "", "SKIPPED: " + prob]); continue
             # exact label only: the docs do not say whether ?label= matches exactly or as part of a longer label
-            if any(isinstance(n, dict) and n.get("label") == lab for n in results(bm.get("/notification/", label=lab, page_size=100))):
+            # a cancelled notification keeps its label, so it does not count as already sent (15 Oct 2026: Horsham was
+            # cancelled to re-price after the gear changes, and the re-send would otherwise have skipped every bet)
+            if any(isinstance(n, dict) and n.get("label") == lab and not n.get("is_canceled")
+                   for n in results(bm.get("/notification/", label=lab, page_size=100))):
                 print(f"SKIP {lab}: already on BetMatic"); continue
             body.update(label=lab, bookies=bid, target_session=str(a.session))
             code, resp = bm.post("/notification/create/", body)

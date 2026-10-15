@@ -111,3 +111,13 @@ now, you can send me the copy here and I'll have enough time to review"). So the
 the exact bets (meeting, race, horse, number, minimum and maximum odds, stake in dollars, total) and starts the send only
 after the founder approves that exact list. Any change to the list after approval is shown again. Dry run first,
 every time. TAB session: 636816 (BETMATIC_TAB_SESSION); the Sportsbet session is set up as a spare and is never sent to.
+
+## Lessons from the first live day (15 Oct 2026)
+- GitHub keeps one waiting run per concurrency group and cancels the older one when another is queued: Wodonga's live
+  send was cancelled behind Horsham's and had to be resent. The group is removed; runs may overlap and the ledger push
+  retries.
+- Horsham (Sunday) was sent, then cancelled at the founder's word to re-price after the evening gear changes. A
+  cancelled notification keeps its label, so the duplicate check now ignores cancelled ones; otherwise the re-send would
+  have skipped every bet.
+- Form King lags the rider declarations and posts gear changes later still: a refresh (5 credits a meeting) before
+  pricing took Bendigo from 15 riderless runners to 4 and 0 gear changes to 29.

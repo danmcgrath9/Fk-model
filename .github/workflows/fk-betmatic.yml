@@ -38,9 +38,9 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: fk-betmatic
-  cancel-in-progress: false
+# No concurrency group (15 Oct 2026): GitHub keeps only ONE waiting run per group and silently cancels the older one
+# when another is queued, which is how Wodonga's first live send was lost behind Horsham's. Sends are independent
+# (each bet has its own label) and the ledger commit pulls before it pushes, so runs may overlap.
 
 jobs:
   run:
@@ -92,4 +92,4 @@ jobs:
           # one file at a time: a pattern that matches nothing (no -placed.jsonl before the first status) made the whole
           # add fail silently, so the first live send's ledger was never kept (15 Oct 2026)
           for f in data/live_bets/*-ledger.csv data/live_bets/*-placed.jsonl data/live_bets/*-deductions-actual.txt; do [ -e "$f" ] && git add "$f"; done
-          git diff --cached --quiet || { git commit -m "BetMatic $A: $FILE"; git pull --rebase -q; git push -q; }
+          git diff --cached --quiet || { git commit -m "BetMatic $A: $FILE"; for i in 1 2 3 4; do git pull --rebase -q && git push -q && break; sleep $((i*3)); done; }
