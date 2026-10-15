@@ -931,3 +931,9 @@ Stage-1 trees, 3 seeds each, trained before 3 Jun 2026, races from 3 Jun under t
 | v10 (+ gear detail, price moves) | 0.0916 | 1421 | 241 | 1999.3u | +711.8u | +35.6% |
 +93.5u (+15%) on almost the same bets; 7 more winners. One sample and stage 1 only (the live price is the blend plus
 stage 2), so the size is indicative; the direction agrees with the KL and log-loss checks.
+
+## v10 LIVE (15 Oct 2026, founder: "lets send this model live then")
+The challenger retrained 15 Oct (models branch 9d6fdfc, trained through 14 Oct, 4,875 races, 809 inputs, holdout KL
+0.0792) is now the day pricer, starting with Bendigo Sat 17 Oct. The v9 files are kept beside it (scratch model_v9) to
+switch back. Profit backtest behind the decision: t_v10_profit.py (+618u -> +712u on the holdout, same rules). The
+models branch root still holds the v9 "live" copy; promote there with the next fk-retrain promote=yes run.
