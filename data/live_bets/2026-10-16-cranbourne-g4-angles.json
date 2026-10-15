@@ -12,15 +12,7 @@
 "1|Pragmatic Lady": [
 "Class drop (rating)"
 ],
-"1|Truant": [
-"Already run to today's class",
-"Class drop (rating)",
-"Late 600 beyond the tempo"
-],
 "1|Front Page Edition": [],
-"1|Lonnegan": [],
-"1|Mystic River Queen": [],
-"1|Go Maggie Mae": [],
 "2|True Spirit": [],
 "2|Ottalaus": [],
 "2|Naked Light": [
@@ -32,11 +24,13 @@
 "New career-best last start",
 "Class drop (rating)"
 ],
+"2|Last Piece": [
+"Class drop (rating)"
+],
 "2|Galagacisco": [
 "Declining deep in prep"
 ],
 "2|Chandler": [],
-"2|Fanfire": [],
 "2|Doubt It's Love": [
 "Already run to today's class"
 ],
@@ -50,7 +44,6 @@
 "3|Celestra": [
 "Already run to today's class"
 ],
-"3|Unannounced": [],
 "3|No Drama": [],
 "3|Fort Of Dreams": [],
 "3|Beast Fighter": [
@@ -58,12 +51,18 @@
 "Class drop (rating)"
 ],
 "3|March On By": [],
+"3|The Sheriff": [
+"Already run to today's class",
+"Class drop (rating)"
+],
 "3|La Velocita": [],
 "3|Red Tide": [
 "Class drop (rating)"
 ],
-"3|Mo": [],
 "4|Chaville": [],
+"4|Oda Mae": [
+"Late 600 beyond the tempo"
+],
 "4|Immortal Diva": [
 "Class drop (rating)"
 ],
@@ -82,19 +81,9 @@
 "Class drop (rating)"
 ],
 "4|Top Effort": [],
-"4|Late Night Wonder": [
-"Class drop (rating)"
-],
-"4|Canticle": [],
 "4|The Turk": [],
 "4|Braemar Hill": [
 "Above the field in all three sections"
-],
-"4|Who'llstoplorraine": [
-"Class drop (rating)"
-],
-"5|Aubaine": [
-"Well backed before a bad last run"
 ],
 "5|Ranarsson": [
 "Already run to today's class",
@@ -142,9 +131,6 @@
 "6|Wolves' Den": [],
 "6|Kazungula": [],
 "7|Two Sigma": [],
-"7|Hedjet": [
-"New career-best last start"
-],
 "7|Miss Castelvecchio": [
 "New career-best last start",
 "Class drop (rating)"
@@ -157,28 +143,26 @@
 "New career-best last start",
 "Above the field in all three sections"
 ],
-"7|Autumn Rainbow": [],
-"7|Overpriced": [
-"Above the field in all three sections"
-],
+"7|Sheer Lunacy": [],
 "7|Finance Shogun": [
 "Declining deep in prep"
 ],
 "7|Venetian Choice": [],
-"7|Glenfinnan": [],
 "7|Kastun Star": [],
 "7|Rogan": [],
+"8|Our Yonglee": [],
 "8|The Flying Popov": [
 "Beaten by the pace last start",
 "Late 600 beyond the tempo"
 ],
 "8|Iced Poppy": [],
-"8|Crank": [
-"Well backed before a bad last run"
-],
 "8|Oceanella": [
 "Beaten by the pace last start",
 "Late 600 beyond the tempo"
+],
+"8|Holding Captive": [],
+"8|Volatile": [
+"Declining deep in prep"
 ],
 "8|Hustle In Heels": [],
 "8|Arlington Row": [
@@ -188,16 +172,8 @@
 "Third-up, improving",
 "Late 600 beyond the tempo"
 ],
-"8|Grouse Mountain": [],
 "8|Claymore Mine": [
 "Class drop (rating)"
 ],
-"8|Simply Steffi": [],
-"8|Kippis": [
-"Well backed before a bad last run",
-"Class drop (rating)"
-],
-"8|What A Ripper": [
-"Well backed before a bad last run"
-]
+"8|Simply Steffi": []
 }
