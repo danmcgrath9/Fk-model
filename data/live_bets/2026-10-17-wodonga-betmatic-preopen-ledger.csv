@@ -1,0 +1,54 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-17-wodonga-r1-n10-s1,1,10,Isle Of Mona,11.40,25.52,46,13922851,Notification has been scheduled.
+fk-2026-10-17-wodonga-r1-n10-s2,1,10,Isle Of Mona,14.25,25.52,11,13922852,Notification has been scheduled.
+fk-2026-10-17-wodonga-r1-n4-s1,1,4,Magic Royale,12.27,27.38,42,13922853,Notification has been scheduled.
+fk-2026-10-17-wodonga-r1-n4-s2,1,4,Magic Royale,15.34,27.38,10,13922854,Notification has been scheduled.
+fk-2026-10-17-wodonga-r1-n7-s1,1,7,Pure Warrior,6.18,8.00,89,13922855,Notification has been scheduled.
+fk-2026-10-17-wodonga-r2-n4-s1,2,4,Apple Eyes,10.49,23.58,50,13922856,Notification has been scheduled.
+fk-2026-10-17-wodonga-r2-n4-s2,2,4,Apple Eyes,13.11,23.58,12,13922857,Notification has been scheduled.
+fk-2026-10-17-wodonga-r2-n5-s1,2,5,Dingle,6.89,15.81,80,13922858,Notification has been scheduled.
+fk-2026-10-17-wodonga-r2-n5-s2,2,5,Dingle,8.61,15.81,17,13922859,Notification has been scheduled.
+fk-2026-10-17-wodonga-r2-n7-s1,2,7,Lull Us Away,11.35,25.43,46,13922860,Notification has been scheduled.
+fk-2026-10-17-wodonga-r2-n7-s2,2,7,Lull Us Away,14.19,25.43,11,13922861,Notification has been scheduled.
+fk-2026-10-17-wodonga-r2-n8-s1,2,8,Mirraway,16.36,36.01,31,13922862,Notification has been scheduled.
+fk-2026-10-17-wodonga-r2-n8-s2,2,8,Mirraway,20.45,36.01,8,13922863,Notification has been scheduled.
+fk-2026-10-17-wodonga-r3-n8-s1,3,8,Cumbrian Queen,15.91,35.06,32,13922864,Notification has been scheduled.
+fk-2026-10-17-wodonga-r3-n8-s2,3,8,Cumbrian Queen,19.89,35.06,8,13922865,Notification has been scheduled.
+fk-2026-10-17-wodonga-r3-n7-s1,3,7,Lucky Compass,9.14,20.68,58,13922866,Notification has been scheduled.
+fk-2026-10-17-wodonga-r3-n7-s2,3,7,Lucky Compass,11.43,20.68,14,13922867,Notification has been scheduled.
+fk-2026-10-17-wodonga-r3-n2-s1,3,2,Mishima,5.18,12.06,110,13922869,Notification has been scheduled.
+fk-2026-10-17-wodonga-r3-n2-s2,3,2,Mishima,6.47,12.06,24,13922870,Notification has been scheduled.
+fk-2026-10-17-wodonga-r3-n4-s1,3,4,Moral Turpitude,7.63,17.43,70,13922872,Notification has been scheduled.
+fk-2026-10-17-wodonga-r3-n4-s2,3,4,Moral Turpitude,9.54,17.43,16,13922873,Notification has been scheduled.
+fk-2026-10-17-wodonga-r3-n3-s1,3,3,Salina Special,13.37,29.71,38,13922874,Notification has been scheduled.
+fk-2026-10-17-wodonga-r3-n3-s2,3,3,Salina Special,16.71,29.71,9,13922875,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n9-s1,4,9,Cinephile,19.16,41.83,26,13922876,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n9-s2,4,9,Cinephile,23.95,41.83,7,13922877,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n4-s1,4,4,Don'tcallmechamp,15.41,34.00,33,13922879,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n4-s2,4,4,Don'tcallmechamp,19.26,34.00,8,13922880,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n6-s1,4,6,Jingu Express,19.80,43.16,26,13922881,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n6-s2,4,6,Jingu Express,24.75,43.16,6,13922882,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n1-s1,4,1,Lord Domino,9.72,21.94,54,13922883,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n1-s2,4,1,Lord Domino,12.15,21.94,13,13922884,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n10-s1,4,10,Rivazza,18.56,40.59,27,13922885,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n10-s2,4,10,Rivazza,23.20,40.59,7,13922886,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n3-s1,4,3,Stand By Me Ned,9.80,22.10,53,13922887,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n3-s2,4,3,Stand By Me Ned,12.25,22.10,13,13922888,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n2-s1,4,2,Wambeen,3.59,8.52,172,13922889,Notification has been scheduled.
+fk-2026-10-17-wodonga-r4-n2-s2,4,2,Wambeen,4.49,8.52,15,13922890,Notification has been scheduled.
+fk-2026-10-17-wodonga-r5-n5-s1,5,5,Aberlutely,5.08,11.83,112,13922891,Notification has been scheduled.
+fk-2026-10-17-wodonga-r5-n5-s2,5,5,Aberlutely,6.35,11.83,25,13922892,Notification has been scheduled.
+fk-2026-10-17-wodonga-r5-n3-s1,5,3,Dashing Donkey,10.97,24.62,47,13922893,Notification has been scheduled.
+fk-2026-10-17-wodonga-r5-n3-s2,5,3,Dashing Donkey,13.71,24.62,11,13922894,Notification has been scheduled.
+fk-2026-10-17-wodonga-r5-n2-s1,5,2,Kiwiesque,16.84,37.01,30,13922895,Notification has been scheduled.
+fk-2026-10-17-wodonga-r5-n2-s2,5,2,Kiwiesque,21.05,37.01,8,13922896,Notification has been scheduled.
+fk-2026-10-17-wodonga-r5-n7-s1,5,7,Tosen Glory,12.64,28.17,40,13922897,Notification has been scheduled.
+fk-2026-10-17-wodonga-r5-n7-s2,5,7,Tosen Glory,15.80,28.17,10,13922898,Notification has been scheduled.
+fk-2026-10-17-wodonga-r6-n9-s1,6,9,Black Panther,6.00,13.86,93,13922899,Notification has been scheduled.
+fk-2026-10-17-wodonga-r6-n9-s2,6,9,Black Panther,7.50,13.86,20,13922900,Notification has been scheduled.
+fk-2026-10-17-wodonga-r6-n5-s1,6,5,Densetsu,19.80,43.16,26,13922901,Notification has been scheduled.
+fk-2026-10-17-wodonga-r6-n5-s2,6,5,Densetsu,24.75,43.16,6,13922902,Notification has been scheduled.
+fk-2026-10-17-wodonga-r6-n6-s1,6,6,Gargantuan,18.88,41.25,27,13922903,Notification has been scheduled.
+fk-2026-10-17-wodonga-r6-n6-s2,6,6,Gargantuan,23.60,41.25,6,13922904,Notification has been scheduled.
+fk-2026-10-17-wodonga-r6-n2-s1,6,2,Wannabeapoodle,13.83,30.68,37,13922905,Notification has been scheduled.
+fk-2026-10-17-wodonga-r6-n2-s2,6,2,Wannabeapoodle,17.29,30.68,9,13922906,Notification has been scheduled.
