@@ -255,6 +255,7 @@ def status(a):
     we asked (reduced offer), a failed submission, and a fill below our minimum odds (should never happen)."""
     bm = BM(); out = a.ledger.replace("-ledger.csv", "-placed.jsonl")
     tot_ask = tot_took = 0.0; n_cut = n_fail = 0
+    deds = {}   # race -> (cents, horse): TAB's own deduction on our settled bets, filed for settling (15 Oct 2026)
     with open(out, "a") as fh:
         for r in csv.DictReader(open(a.ledger)):
             for i in r["notification_ids"].split("&"):
@@ -268,6 +269,12 @@ def status(a):
                 ask = float(r["stake"] or 0); tot_ask += ask
                 if not recs:
                     print(f"{r['label']} #{i}: no placement yet (waiting for the open, or nothing was sent)"); bot_logs(bm, i); continue
+                if ded not in (None, "") and any(x.get("status") for x in recs):
+                    try:
+                        c = round(float(str(ded).rstrip("%")))
+                        if c > deds.get(r["race"], (-1, ""))[0]: deds[r["race"]] = (c, r["horse"])
+                    except ValueError:
+                        pass
                 for x in recs:
                     took = float(x.get("amount") or 0) if x.get("submit_result") == "Success" else 0.0; tot_took += took
                     flag = []
@@ -282,6 +289,25 @@ def status(a):
                     if x.get("submit_result") != "Success":
                         bot_logs(bm, i)
     print(f"asked ${tot_ask:,.0f}, TAB took ${tot_took:,.0f}; {n_cut} reduced, {n_fail} failed. raw records: {out}")
+    if deds:
+        # DAYPREFIX-deductions-actual.txt is what deductions.py, betmatic_fills.py and the forward test settle with. A race
+        # already in the file (typed by the founder from his account) is left as he wrote it.
+        m = re.match(r"^(\d{4}-\d{2}-\d{2}-[a-z0-9-]+?)-(?:betmatic|test)", os.path.basename(a.ledger))
+        if not m:
+            print("deductions not filed: cannot read the meeting from", a.ledger); return
+        fn = os.path.join(os.path.dirname(a.ledger), m.group(1) + "-deductions-actual.txt")
+        have = set()
+        if os.path.exists(fn):
+            have = {l.split(",")[0].strip() for l in open(fn) if l[:1].isdigit()}
+        new = [(rc, c, h) for rc, (c, h) in sorted(deds.items(), key=lambda kv: int(kv[0])) if rc not in have]
+        if new:
+            fresh = not os.path.exists(fn)
+            with open(fn, "a") as fh:
+                if fresh:
+                    fh.write("# deductions TAB applied to our settled bets, read from BetMatic (average_deduction_percentage). Cents in the dollar, win.\n")
+                for rc, c, h in new:
+                    fh.write(f"{rc}, {c}  # {h} (BetMatic)\n")
+            print(f"deductions filed in {fn}: " + ", ".join(f"R{rc} {c}c" for rc, c, h in new))
 
 
 if __name__ == "__main__":
