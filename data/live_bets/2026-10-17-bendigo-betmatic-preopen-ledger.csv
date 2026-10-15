@@ -1,0 +1,64 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-17-bendigo-r1-n9-s1,1,9,Adakite,7.35,16.82,74,13922306,Notification has been scheduled.
+fk-2026-10-17-bendigo-r1-n9-s2,1,9,Adakite,9.19,16.82,16,13922307,Notification has been scheduled.
+fk-2026-10-17-bendigo-r1-n11-s1,1,11,Quynh,15.04,33.24,34,13922308,Notification has been scheduled.
+fk-2026-10-17-bendigo-r1-n11-s2,1,11,Quynh,18.80,33.24,8,13922309,Notification has been scheduled.
+fk-2026-10-17-bendigo-r2-n1-s1,2,1,Akari Spirit,12.66,28.22,40,13922310,Notification has been scheduled.
+fk-2026-10-17-bendigo-r2-n1-s2,2,1,Akari Spirit,15.82,28.22,10,13922311,Notification has been scheduled.
+fk-2026-10-17-bendigo-r2-n2-s1,2,2,Genomic,4.87,11.37,118,13922312,Notification has been scheduled.
+fk-2026-10-17-bendigo-r2-n2-s2,2,2,Genomic,6.09,11.37,25,13922313,Notification has been scheduled.
+fk-2026-10-17-bendigo-r2-n10-s1,2,10,Girt By Sea,6.28,8.00,88,13922314,Notification has been scheduled.
+fk-2026-10-17-bendigo-r2-n12-s1,2,12,Zovozo,12.66,28.21,40,13922315,Notification has been scheduled.
+fk-2026-10-17-bendigo-r2-n12-s2,2,12,Zovozo,15.82,28.21,10,13922316,Notification has been scheduled.
+fk-2026-10-17-bendigo-r3-n12-s1,3,12,Sanctuary,4.58,10.72,128,13922317,Notification has been scheduled.
+fk-2026-10-17-bendigo-r3-n12-s2,3,12,Sanctuary,5.72,10.72,27,13922318,Notification has been scheduled.
+fk-2026-10-17-bendigo-r3-n8-s1,3,8,Verismo,9.17,20.76,58,13922319,Notification has been scheduled.
+fk-2026-10-17-bendigo-r3-n8-s2,3,8,Verismo,11.46,20.76,14,13922320,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n11-s1,4,11,Boudica Warrior,13.74,30.50,38,13922321,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n11-s2,4,11,Boudica Warrior,17.18,30.50,9,13922322,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n1-s1,4,1,Bring The Thunder,16.20,35.67,32,13922323,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n1-s2,4,1,Bring The Thunder,20.25,35.67,8,13922324,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n7-s1,4,7,Bronco Revolution,17.58,38.55,58,13922325,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n7-s2,4,7,Bronco Revolution,21.97,38.55,14,13922326,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n2-s1,4,2,Brummagen,14.51,32.13,35,13922327,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n2-s2,4,2,Brummagen,18.14,32.13,8,13922328,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n5-s1,4,5,El Salto,8.76,19.88,61,13922329,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n5-s2,4,5,El Salto,10.95,19.88,14,13922330,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n9-s1,4,9,Frose,17.91,39.24,28,13922331,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n9-s2,4,9,Frose,22.39,39.24,7,13922332,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n3-s1,4,3,Shelly's Legacy,14.06,31.17,36,13922333,Notification has been scheduled.
+fk-2026-10-17-bendigo-r4-n3-s2,4,3,Shelly's Legacy,17.57,31.17,9,13922334,Notification has been scheduled.
+fk-2026-10-17-bendigo-r5-n4-s1,5,4,Baganov,13.89,30.82,37,13922335,Notification has been scheduled.
+fk-2026-10-17-bendigo-r5-n4-s2,5,4,Baganov,17.36,30.82,9,13922336,Notification has been scheduled.
+fk-2026-10-17-bendigo-r5-n11-s1,5,11,Fast Freddie,9.69,21.87,54,13922337,Notification has been scheduled.
+fk-2026-10-17-bendigo-r5-n11-s2,5,11,Fast Freddie,12.11,21.87,13,13922338,Notification has been scheduled.
+fk-2026-10-17-bendigo-r5-n10-s1,5,10,Miss Ellaneous,19.39,42.32,26,13922339,Notification has been scheduled.
+fk-2026-10-17-bendigo-r5-n10-s2,5,10,Miss Ellaneous,24.24,42.32,6,13922340,Notification has been scheduled.
+fk-2026-10-17-bendigo-r5-n6-s1,5,6,Misty Whisper,8.27,18.81,64,13922341,Notification has been scheduled.
+fk-2026-10-17-bendigo-r5-n6-s2,5,6,Misty Whisper,10.34,18.81,15,13922342,Notification has been scheduled.
+fk-2026-10-17-bendigo-r5-n3-s1,5,3,Tempt The Gods,18.67,40.83,27,13922343,Notification has been scheduled.
+fk-2026-10-17-bendigo-r5-n3-s2,5,3,Tempt The Gods,23.34,40.83,7,13922344,Notification has been scheduled.
+fk-2026-10-17-bendigo-r5-n1-s1,5,1,Thinking Sensation,14.20,31.47,36,13922345,Notification has been scheduled.
+fk-2026-10-17-bendigo-r5-n1-s2,5,1,Thinking Sensation,17.75,31.47,8,13922346,Notification has been scheduled.
+fk-2026-10-17-bendigo-r6-n2-s1,6,2,Flying Mean,10.36,23.31,50,13922347,Notification has been scheduled.
+fk-2026-10-17-bendigo-r6-n2-s2,6,2,Flying Mean,12.95,23.31,12,13922348,Notification has been scheduled.
+fk-2026-10-17-bendigo-r6-n4-s1,6,4,Frozen Tide,10.52,23.65,50,13922349,Notification has been scheduled.
+fk-2026-10-17-bendigo-r6-n4-s2,6,4,Frozen Tide,13.15,23.65,12,13922350,Notification has been scheduled.
+fk-2026-10-17-bendigo-r6-n12-s1,6,12,Hidden Witness,6.72,15.45,82,13922351,Notification has been scheduled.
+fk-2026-10-17-bendigo-r6-n12-s2,6,12,Hidden Witness,8.40,15.45,18,13922352,Notification has been scheduled.
+fk-2026-10-17-bendigo-r6-n6-s1,6,6,Savethebesttillast,17.03,37.40,30,13922353,Notification has been scheduled.
+fk-2026-10-17-bendigo-r6-n6-s2,6,6,Savethebesttillast,21.29,37.40,7,13922354,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n9-s1,7,9,Carnival Riches,10.79,24.23,48,13922355,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n9-s2,7,9,Carnival Riches,13.49,24.23,12,13922356,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n6-s1,7,6,Forest Jim,10.19,22.96,51,13922357,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n6-s2,7,6,Forest Jim,12.74,22.96,13,13922358,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n10-s1,7,10,Lisa Lass,8.10,18.45,66,13922359,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n10-s2,7,10,Lisa Lass,10.12,18.45,15,13922360,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n8-s1,7,8,Makusha,10.94,24.56,47,13922361,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n8-s2,7,8,Makusha,13.67,24.56,11,13922362,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n3-s1,7,3,Newcombe,16.23,35.73,32,13922363,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n3-s2,7,3,Newcombe,20.29,35.73,8,13922364,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n4-s1,7,4,Paltinian,14.26,31.60,36,13922365,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n4-s2,7,4,Paltinian,17.82,31.60,8,13922366,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n5-s1,7,5,Positivo,9.09,20.58,58,13922367,Notification has been scheduled.
+fk-2026-10-17-bendigo-r7-n5-s2,7,5,Positivo,11.36,20.58,14,13922368,Notification has been scheduled.
