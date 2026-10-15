@@ -1,0 +1,56 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-17-avoca-r1-n4-s1,1,4,Creusa,19.26,42.04,26,13922379,Notification has been scheduled.
+fk-2026-10-17-avoca-r1-n4-s2,1,4,Creusa,24.08,42.04,6,13922380,Notification has been scheduled.
+fk-2026-10-17-avoca-r1-n5-s1,1,5,Julep,10.45,23.51,50,13922381,Notification has been scheduled.
+fk-2026-10-17-avoca-r1-n5-s2,1,5,Julep,13.06,23.51,11,13922382,Notification has been scheduled.
+fk-2026-10-17-avoca-r1-n1-s1,1,1,Khan Capital,13.02,28.96,40,13922383,Notification has been scheduled.
+fk-2026-10-17-avoca-r1-n1-s2,1,1,Khan Capital,16.27,28.96,9,13922384,Notification has been scheduled.
+fk-2026-10-17-avoca-r1-n2-s1,1,2,Lollie's Galore,2.72,6.54,188,13922385,Notification has been scheduled.
+fk-2026-10-17-avoca-r2-n9-s1,2,9,Core Business,20.13,43.84,25,13922386,Notification has been scheduled.
+fk-2026-10-17-avoca-r2-n9-s2,2,9,Core Business,25.16,43.84,6,13922387,Notification has been scheduled.
+fk-2026-10-17-avoca-r2-n6-s1,2,6,Cosmic Command,10.78,24.21,48,13922388,Notification has been scheduled.
+fk-2026-10-17-avoca-r2-n6-s2,2,6,Cosmic Command,13.47,24.21,12,13922389,Notification has been scheduled.
+fk-2026-10-17-avoca-r2-n7-s1,2,7,Fully Funded,5.19,12.09,110,13922390,Notification has been scheduled.
+fk-2026-10-17-avoca-r2-n7-s2,2,7,Fully Funded,6.49,12.09,24,13922391,Notification has been scheduled.
+fk-2026-10-17-avoca-r2-n10-s1,2,10,Pinazaki,3.10,7.39,188,13922392,Notification has been scheduled.
+fk-2026-10-17-avoca-r3-n2-s1,3,2,Count Chevalier,8.58,19.48,62,13922393,Notification has been scheduled.
+fk-2026-10-17-avoca-r3-n2-s2,3,2,Count Chevalier,10.72,19.48,14,13922394,Notification has been scheduled.
+fk-2026-10-17-avoca-r3-n7-s1,3,7,Miss Home Body,14.01,31.07,37,13922395,Notification has been scheduled.
+fk-2026-10-17-avoca-r3-n7-s2,3,7,Miss Home Body,17.51,31.07,8,13922396,Notification has been scheduled.
+fk-2026-10-17-avoca-r3-n10-s1,3,10,Wee Bit Kinky,4.89,11.41,118,13922397,Notification has been scheduled.
+fk-2026-10-17-avoca-r3-n10-s2,3,10,Wee Bit Kinky,6.11,11.41,26,13922398,Notification has been scheduled.
+fk-2026-10-17-avoca-r4-n1-s1,4,1,Ambello,2.78,6.66,188,13922399,Notification has been scheduled.
+fk-2026-10-17-avoca-r4-n6-s1,4,6,Grumpyoldcol,16.84,37.00,30,13922400,Notification has been scheduled.
+fk-2026-10-17-avoca-r4-n6-s2,4,6,Grumpyoldcol,21.05,37.00,8,13922401,Notification has been scheduled.
+fk-2026-10-17-avoca-r4-n7-s1,4,7,Nicking Gracie,12.30,27.45,42,13922402,Notification has been scheduled.
+fk-2026-10-17-avoca-r4-n7-s2,4,7,Nicking Gracie,15.38,27.45,10,13922403,Notification has been scheduled.
+fk-2026-10-17-avoca-r4-n4-s1,4,4,Soobooma,9.90,22.33,53,13922404,Notification has been scheduled.
+fk-2026-10-17-avoca-r4-n4-s2,4,4,Soobooma,12.38,22.33,12,13922405,Notification has been scheduled.
+fk-2026-10-17-avoca-r5-n7-s1,5,7,Break The Taboo,11.34,25.41,46,13922406,Notification has been scheduled.
+fk-2026-10-17-avoca-r5-n7-s2,5,7,Break The Taboo,14.18,25.41,11,13922407,Notification has been scheduled.
+fk-2026-10-17-avoca-r5-n10-s1,5,10,Chapados,9.92,22.36,53,13922408,Notification has been scheduled.
+fk-2026-10-17-avoca-r5-n10-s2,5,10,Chapados,12.40,22.36,12,13922409,Notification has been scheduled.
+fk-2026-10-17-avoca-r5-n1-s1,5,1,Sheanadh,12.64,28.16,40,13922410,Notification has been scheduled.
+fk-2026-10-17-avoca-r5-n1-s2,5,1,Sheanadh,15.80,28.16,10,13922411,Notification has been scheduled.
+fk-2026-10-17-avoca-r6-n2-s1,6,2,Fox Appeal,12.19,27.22,42,13922412,Notification has been scheduled.
+fk-2026-10-17-avoca-r6-n2-s2,6,2,Fox Appeal,15.24,27.22,11,13922413,Notification has been scheduled.
+fk-2026-10-17-avoca-r6-n7-s1,6,7,Omnic,4.20,9.87,142,13922414,Notification has been scheduled.
+fk-2026-10-17-avoca-r6-n7-s2,6,7,Omnic,5.25,9.87,28,13922415,Notification has been scheduled.
+fk-2026-10-17-avoca-r6-n1-s1,6,1,Raf Attack,8.34,18.96,64,13922416,Notification has been scheduled.
+fk-2026-10-17-avoca-r6-n1-s2,6,1,Raf Attack,10.43,18.96,15,13922417,Notification has been scheduled.
+fk-2026-10-17-avoca-r6-n4-s1,6,4,Tikemyson,9.58,21.64,55,13922418,Notification has been scheduled.
+fk-2026-10-17-avoca-r6-n4-s2,6,4,Tikemyson,11.97,21.64,13,13922419,Notification has been scheduled.
+fk-2026-10-17-avoca-r6-n6-s1,6,6,Verona Rupes,9.81,22.14,53,13922420,Notification has been scheduled.
+fk-2026-10-17-avoca-r6-n6-s2,6,6,Verona Rupes,12.26,22.14,13,13922421,Notification has been scheduled.
+fk-2026-10-17-avoca-r7-n9-s1,7,9,Bell's Bighouse,14.46,32.01,35,13922422,Notification has been scheduled.
+fk-2026-10-17-avoca-r7-n9-s2,7,9,Bell's Bighouse,18.08,32.01,8,13922423,Notification has been scheduled.
+fk-2026-10-17-avoca-r7-n5-s1,7,5,Jackand,7.38,16.89,74,13922424,Notification has been scheduled.
+fk-2026-10-17-avoca-r7-n5-s2,7,5,Jackand,9.22,16.89,16,13922425,Notification has been scheduled.
+fk-2026-10-17-avoca-r7-n7-s1,7,7,Mannerheim,12.77,28.43,40,13922426,Notification has been scheduled.
+fk-2026-10-17-avoca-r7-n7-s2,7,7,Mannerheim,15.96,28.43,10,13922427,Notification has been scheduled.
+fk-2026-10-17-avoca-r7-n3-s1,7,3,Mike's Hope,4.91,11.46,117,13922428,Notification has been scheduled.
+fk-2026-10-17-avoca-r7-n3-s2,7,3,Mike's Hope,6.14,11.46,26,13922429,Notification has been scheduled.
+fk-2026-10-17-avoca-r7-n10-s1,7,10,Princess Sakiko,10.04,22.63,52,13922430,Notification has been scheduled.
+fk-2026-10-17-avoca-r7-n10-s2,7,10,Princess Sakiko,12.55,22.63,12,13922431,Notification has been scheduled.
+fk-2026-10-17-avoca-r7-n8-s1,7,8,Semper Fortis,14.97,33.08,34,13922432,Notification has been scheduled.
+fk-2026-10-17-avoca-r7-n8-s2,7,8,Semper Fortis,18.71,33.08,8,13922433,Notification has been scheduled.
