@@ -1,0 +1,61 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-18-horsham-r1-n9-s1,1,9,Courting,2.43,5.87,188,13922777,Notification has been scheduled.
+fk-2026-10-18-horsham-r1-n8-s1,1,8,Under Control,13.06,29.06,39,13922778,Notification has been scheduled.
+fk-2026-10-18-horsham-r1-n8-s2,1,8,Under Control,16.32,29.06,10,13922779,Notification has been scheduled.
+fk-2026-10-18-horsham-r2-n1-s1,2,1,Best Terms,2.46,5.94,188,13922780,Notification has been scheduled.
+fk-2026-10-18-horsham-r2-n6-s1,2,6,Blue Valentine,13.40,29.78,38,13922781,Notification has been scheduled.
+fk-2026-10-18-horsham-r2-n6-s2,2,6,Blue Valentine,16.75,29.78,9,13922782,Notification has been scheduled.
+fk-2026-10-18-horsham-r3-n7-s1,3,7,Cosmic Voyage,3.34,7.95,188,13922783,Notification has been scheduled.
+fk-2026-10-18-horsham-r3-n12-s1,3,12,Strength Within,13.09,29.12,39,13922784,Notification has been scheduled.
+fk-2026-10-18-horsham-r3-n12-s2,3,12,Strength Within,16.36,29.12,10,13922785,Notification has been scheduled.
+fk-2026-10-18-horsham-r4-n7-s1,4,7,Gina's A Star,3.66,8.67,168,13922786,Notification has been scheduled.
+fk-2026-10-18-horsham-r4-n7-s2,4,7,Gina's A Star,4.58,8.67,20,13922787,Notification has been scheduled.
+fk-2026-10-18-horsham-r4-n3-s1,4,3,Milos Filos,5.91,8.00,94,13922788,Notification has been scheduled.
+fk-2026-10-18-horsham-r4-n4-s1,4,4,Miss Mahjong,10.43,23.46,50,13922789,Notification has been scheduled.
+fk-2026-10-18-horsham-r4-n4-s2,4,4,Miss Mahjong,13.04,23.46,11,13922790,Notification has been scheduled.
+fk-2026-10-18-horsham-r4-n2-s1,4,2,Razzo Rosso,18.02,39.46,28,13922791,Notification has been scheduled.
+fk-2026-10-18-horsham-r4-n2-s2,4,2,Razzo Rosso,22.52,39.46,7,13922792,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n2-s1,5,2,Bazzar,5.06,11.80,112,13922793,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n2-s2,5,2,Bazzar,6.32,11.80,25,13922794,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n5-s1,5,5,Edges Diamond,15.35,33.88,33,13922795,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n5-s2,5,5,Edges Diamond,19.19,33.88,8,13922796,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n7-s1,5,7,Makarim,15.86,34.95,32,13922797,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n7-s2,5,7,Makarim,19.82,34.95,8,13922798,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n6-s1,5,6,Marilyn's Edge,12.56,28.00,41,13922799,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n6-s2,5,6,Marilyn's Edge,15.70,28.00,10,13922800,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n1-s1,5,1,Nordic Strike,10.51,23.64,50,13922801,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n1-s2,5,1,Nordic Strike,13.14,23.64,12,13922802,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n4-s1,5,4,Tower Bridge,12.58,28.05,40,13922803,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n4-s2,5,4,Tower Bridge,15.72,28.05,11,13922804,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n9-s1,5,9,What A Ripper,12.85,28.62,40,13922805,Notification has been scheduled.
+fk-2026-10-18-horsham-r5-n9-s2,5,9,What A Ripper,16.06,28.62,10,13922806,Notification has been scheduled.
+fk-2026-10-18-horsham-r6-n6-s1,6,6,Col Klink,4.56,8.00,128,13922807,Notification has been scheduled.
+fk-2026-10-18-horsham-r6-n6-s2,6,6,Col Klink,5.70,8.00,27,13922808,Notification has been scheduled.
+fk-2026-10-18-horsham-r6-n2-s1,6,2,Endless Summer,10.84,24.33,48,13922809,Notification has been scheduled.
+fk-2026-10-18-horsham-r6-n2-s2,6,2,Endless Summer,13.55,24.33,11,13922810,Notification has been scheduled.
+fk-2026-10-18-horsham-r7-n7-s1,7,7,Budjik Boy,17.64,38.67,28,13922811,Notification has been scheduled.
+fk-2026-10-18-horsham-r7-n7-s2,7,7,Budjik Boy,22.05,38.67,7,13922812,Notification has been scheduled.
+fk-2026-10-18-horsham-r7-n2-s1,7,2,Miracle Spin,18.46,40.38,27,13922813,Notification has been scheduled.
+fk-2026-10-18-horsham-r7-n2-s2,7,2,Miracle Spin,23.08,40.38,7,13922814,Notification has been scheduled.
+fk-2026-10-18-horsham-r7-n9-s1,7,9,Nothingelsematters,18.21,39.86,28,13922815,Notification has been scheduled.
+fk-2026-10-18-horsham-r7-n9-s2,7,9,Nothingelsematters,22.76,39.86,7,13922816,Notification has been scheduled.
+fk-2026-10-18-horsham-r7-n5-s1,7,5,Raf Attack,11.90,26.61,44,13922817,Notification has been scheduled.
+fk-2026-10-18-horsham-r7-n5-s2,7,5,Raf Attack,14.88,26.61,11,13922818,Notification has been scheduled.
+fk-2026-10-18-horsham-r7-n1-s1,7,1,The Pendragon,6.59,15.15,83,13922819,Notification has been scheduled.
+fk-2026-10-18-horsham-r7-n1-s2,7,1,The Pendragon,8.24,15.15,19,13922820,Notification has been scheduled.
+fk-2026-10-18-horsham-r7-n6-s1,7,6,Tikemyson,10.26,23.10,51,13922821,Notification has been scheduled.
+fk-2026-10-18-horsham-r7-n6-s2,7,6,Tikemyson,12.82,23.10,12,13922822,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n7-s1,8,7,Crown Of Russia,17.77,38.94,28,13922823,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n7-s2,8,7,Crown Of Russia,22.21,38.94,7,13922824,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n13-s1,8,13,Hoodys Horse,17.38,38.14,29,13922825,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n13-s2,8,13,Hoodys Horse,21.72,38.14,7,13922826,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n6-s1,8,6,Kingsford,13.97,30.98,37,13922827,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n6-s2,8,6,Kingsford,17.46,30.98,9,13922828,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n4-s1,8,4,Octane Reign,18.53,40.54,27,13922829,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n4-s2,8,4,Octane Reign,23.16,40.54,7,13922830,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n11-s1,8,11,Philharmonic,16.02,35.30,32,13922831,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n11-s2,8,11,Philharmonic,20.02,35.30,8,13922832,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n10-s1,8,10,Surfy Pete,6.22,14.34,89,13922833,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n10-s2,8,10,Surfy Pete,7.77,14.34,20,13922834,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n5-s1,8,5,Weather Delay,7.95,18.13,68,13922835,Notification has been scheduled.
+fk-2026-10-18-horsham-r8-n5-s2,8,5,Weather Delay,9.94,18.13,16,13922836,Notification has been scheduled.
