@@ -22,6 +22,13 @@
 2|12|Hannan Street|False|False
 2|13|Whiskey And War|False|False
 2|14|La Moma|True|False
+3|9|Impendalot|False|False
+3|10|Lucifer's Girl|False|False
+3|11|Starseatic|False|False
+3|12|Strength Within|False|False
+3|13|Valentina Girl|False|False
+3|14|Miss Verona|True|False
+3|15|Immortal Truth|True|False
 3|1|Hard Hitter|False|False
 3|2|Whata Stretch|False|False
 3|3|Buchan Outkast|False|False
@@ -30,13 +37,6 @@
 3|6|Tikiela|False|False
 3|7|Cosmic Voyage|False|False
 3|8|Hollywood Hustler|False|False
-3|9|Impendalot|False|False
-3|10|Lucifer's Girl|False|False
-3|11|Starseatic|False|False
-3|12|Strength Within|False|False
-3|13|Valentina Girl|False|False
-3|14|Miss Verona|True|False
-3|15|Immortal Truth|True|False
 4|1|Monix|False|False
 4|2|Razzo Rosso|False|False
 4|3|Milos Filos|False|False
