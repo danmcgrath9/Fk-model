@@ -1,0 +1,120 @@
+# Echuca Mon 19 Oct, Good 4: fields pulled Fri 16 Oct 1:56pm Melbourne. Emergencies as SCR until they gain a start; no market yet.
+1, Challenging, 0, 0
+1, Dimachaerus, 0, 0
+1, Interrogate, 0, 0
+1, Prestige Fantastic, 0, 0
+1, Storming Camelot, 0, 0
+1, Meggie Noodles, 0, 0
+1, Platinum Rush, 0, 0
+1, Sihaya, 0, 0
+1, Who'llstoplorraine, 0, 0
+1, Woah Shamrock, 0, 0
+1, Selita's Fury, 0, 0
+1, Stash Royale, 0, 0
+1, Caledonian Summer, SCR
+1, Norfolk Victory, SCR
+1, Blue Valentine, SCR
+2, Casamar, 0, 0
+2, Dramatic Dream, 0, 0
+2, Sibun, 0, 0
+2, Snakeunderfoot, 0, 0
+2, Tallingas Petey, 0, 0
+2, Trouble'n Paradise, 0, 0
+2, Bambu Babe, 0, 0
+2, Ninetyfiveinafifty, 0, 0
+2, Plinian, 0, 0
+2, Smithers, 0, 0
+2, Vaulted, 0, 0
+2, Lipstick Legal, 0, 0
+2, Sayalero, 0, 0
+2, Tungamah Tess, 0, 0
+2, The Buncha, SCR
+2, Gojiboy, SCR
+2, Pray For Elegance, SCR
+2, Tallingas Diamond, SCR
+3, Aerial Pursuit, 0, 0
+3, Daynes Dahwun, 0, 0
+3, Inside Word, 0, 0
+3, Little Gangster, 0, 0
+3, Lonnegan, 0, 0
+3, Magnusaurus Rex, 0, 0
+3, Truant, 0, 0
+3, Genki Girl, 0, 0
+3, Valentina Girl, 0, 0
+4, Deadly Devil, 0, 0
+4, Fantastic Beast, 0, 0
+4, Just Basil, 0, 0
+4, Notre Citrouille, 0, 0
+4, Debbie, 0, 0
+4, Dejavast, 0, 0
+4, Lady Of Alsace, 0, 0
+4, Supreme Lass, 0, 0
+4, Under Control, 0, 0
+4, Amsterdam Nights, 0, 0
+4, Meet The Prince, 0, 0
+4, Musical Journey, 0, 0
+4, Little Ally Bama, 0, 0
+5, Callawadda, 0, 0
+5, Mickio, 0, 0
+5, Earthly Crown, 0, 0
+5, King Kauffo, 0, 0
+5, Love Sparkles, 0, 0
+5, Treasury Place, 0, 0
+5, Lyttelton, 0, 0
+5, Sasterion, 0, 0
+5, Misil Beauty, 0, 0
+5, Phoenician, 0, 0
+5, Ring The Sheriff, 0, 0
+5, Brookers Turbo, 0, 0
+5, Idling Behind, 0, 0
+5, Aberlutely, 0, 0
+5, Kawhia, SCR
+5, Circa, SCR
+6, Lim's Ida, 0, 0
+6, Alexander Thegreat, 0, 0
+6, Sheanadh, 0, 0
+6, On The Loose, 0, 0
+6, Miss Ellaneous, 0, 0
+6, Wondering Spirit, 0, 0
+6, Boulderoo, 0, 0
+6, Cossack Warrior, 0, 0
+6, Elle Mcfearsome, 0, 0
+6, Hustle, 0, 0
+6, Limbering, 0, 0
+6, Ice Quake, 0, 0
+6, So Enchanting, 0, 0
+6, Burning Sensation, SCR
+6, Poetic Storm, SCR
+6, Blakmax, SCR
+6, Blackhill Boy, SCR
+7, Forever With Ned, 0, 0
+7, Sir Basil, 0, 0
+7, This Is The Moment, 0, 0
+7, Shalailed, 0, 0
+7, Strike Gold, 0, 0
+7, Sacred Chord, 0, 0
+7, Here Comes Wozza, 0, 0
+7, Reel Latino, 0, 0
+7, Western Lane, 0, 0
+7, Gobbo's Mate, 0, 0
+7, The Bantam, 0, 0
+7, True Prophet, 0, 0
+7, Lujaego, 0, 0
+7, Ironic Fortune, SCR
+7, Tallingas Indirose, SCR
+7, Mickidamuzz, SCR
+7, Blessing Season, SCR
+8, Adieu Grasse, 0, 0
+8, Cumboogle, 0, 0
+8, Do It Now, 0, 0
+8, Epic Centre, 0, 0
+8, Bridgeitall, 0, 0
+8, She's Elusive, 0, 0
+8, Wallaby Jack, 0, 0
+8, Cilento, 0, 0
+8, Ilovediamonds, 0, 0
+8, Beau Strada, 0, 0
+8, Queue Jumper, 0, 0
+8, Silver Top Ridge, 0, 0
+8, Bella Katelyn, 0, 0
+8, Raging Monkey, SCR
