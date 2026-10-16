@@ -1,0 +1,10 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,AVOC_171026_1,Lollie's Galore,top_pick,1.8,1.8,2.54,2.54,,2.28,0.116,Already run to today's class; Well backed before a bad last run; Class drop (rating),1.0,no,,
+2,AVOC_171026_2,Pinazaki,top_pick,2.35,2.35,2.55,2.55,,2.52,0.013,Well backed before a bad last run; Above the field in all three sections,1.0,no,,
+3,AVOC_171026_3,Wee Bit Kinky,top_pick,1.8,1.8,2.9,2.9,,2.24,0.293,Class drop (rating),1.0,no,,
+3,AVOC_171026_3,Miss Home Body,EDGE,9.0,9.0,10.5,10.5,,6.47,0.624,Already run to today's class; Class drop (rating),1.58,no,,
+3,AVOC_171026_3,Miss Home Body,value_20c,9.0,9.0,10.5,10.5,,6.47,0.624,Already run to today's class; Class drop (rating),1.58,no,,
+4,AVOC_171026_4,Ambello,top_pick,2.7,2.7,2.75,2.75,,2.25,0.222,Beaten by the pace last start; Already run to today's class; Class drop (rating); Above the field in all three sections,1.0,no,,
+5,AVOC_171026_5,Brave Summit,top_pick,6.75,6.75,3.0,3.0,,3.35,-0.104,New career-best last start; Above the field in all three sections,1.0,no,,
+6,AVOC_171026_6,Omnic,top_pick,3.2,3.2,2.8,2.8,,3.22,-0.131,,1.0,no,,
+7,AVOC_171026_7,Jackand,top_pick,3.5,3.5,4.4,4.4,,4.78,-0.08,,1.0,no,,

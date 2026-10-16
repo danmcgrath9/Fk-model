@@ -44,6 +44,10 @@
 "2|Cosmic Command": [],
 "2|Core Business": [],
 "2|Dimachaerus": [],
+"3|Inside Word": [
+"New career-best last start",
+"Class drop (rating)"
+],
 "3|Court Jester": [
 "Class drop (rating)",
 "Above the field in all three sections"
@@ -51,11 +55,9 @@
 "3|Song'n'dance": [
 "Blinkers first time"
 ],
-"3|Berardo": [],
 "3|Jool Of The Bool": [
 "Class drop (rating)"
 ],
-"3|Tungamah Tess": [],
 "3|My Boy Arnie": [
 "Class drop (rating)"
 ],
@@ -68,12 +70,6 @@
 ],
 "3|Secret Crossing": [
 "Class drop (rating)"
-],
-"3|Count Chevalier": [
-"Already run to today's class",
-"Third-up, improving",
-"Class drop (rating)",
-"Late 600 beyond the tempo"
 ],
 "4|Reward With A Rose": [
 "Class drop (rating)"
@@ -88,6 +84,7 @@
 "Beaten by the pace last start",
 "Late 600 beyond the tempo"
 ],
+"4|Padstow Polly": [],
 "4|Nicking Gracie": [
 "Third-up, improving",
 "Blinkers first time"
@@ -103,11 +100,11 @@
 "Class drop (rating)"
 ],
 "4|Arabian Myth": [],
-"4|Pippie Pomar": [
-"Above the field in all three sections"
-],
 "5|Chapados": [
 "Already run to today's class"
+],
+"5|Drover's Yarn": [
+"Class drop (rating)"
 ],
 "5|Mislight": [],
 "5|Brave Summit": [
@@ -120,22 +117,15 @@
 "5|You Said What": [
 "Above the field in all three sections"
 ],
-"5|Sheanadh": [
-"Above the field in all three sections"
-],
-"5|Manchego": [
-"Third-up, improving"
+"5|French Love": [
+"Blinkers first time"
 ],
 "5|Break The Taboo": [],
-"5|Boulderoo": [
-"Class drop (rating)"
-],
 "6|Fox Appeal": [],
 "6|Raf Attack": [
 "Class drop (rating)"
 ],
 "6|Mangione": [],
-"6|Eddystone": [],
 "6|Haiiro": [
 "Already run to today's class"
 ],
@@ -143,8 +133,13 @@
 "6|Tikemyson": [
 "Class drop (rating)"
 ],
-"6|Verona Rupes": [],
-"6|Scalextrics": [],
+"6|Verona Rupes": [
+"Above the field in all three sections"
+],
+"6|Scalextrics": [
+"Declining deep in prep",
+"Class drop (rating)"
+],
 "6|Omnic": [],
 "7|Rebel's Idol": [],
 "7|Mannerheim": [],
@@ -158,6 +153,6 @@
 "Above the field in all three sections"
 ],
 "7|Princess Sakiko": [],
-"7|Mike's Hope": [],
+"7|Whistler Girl": [],
 "7|Jackand": []
 }

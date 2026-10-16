@@ -1,0 +1,90 @@
+# Avoca Sat 17 Oct, Good 4: final fields pulled Thu 15 Oct 12:45pm Melbourne. Emergencies as SCR until they gain a start; no market yet.
+1, Khan Capital, 0, 0
+1, Lollie's Galore, 0, 0
+1, Power Of Hindsight, 0, 0
+1, Creusa, 0, 0
+1, Julep, 0, 0
+1, Lady Colonist, 0, 0
+1, Royal Zambezi, 0, 0
+1, Rubiboo, 0, 0
+1, Spin Class, 0, 0
+1, Regal Banter, 0, 0
+1, Muladaan, SCR
+1, Lady Of Alsace, SCR
+1, La Moma, SCR
+2, Billy Be Good, 0, 0
+2, Celestial Option, 0, 0
+2, Dimachaerus, 0, 0
+2, French Reign, 0, 0
+2, Wookie One, 0, 0
+2, Cosmic Command, 0, 0
+2, Fully Funded, 0, 0
+2, Katiya, 0, 0
+2, Core Business, 0, 0
+2, Pinazaki, 0, 0
+2, Rule Of Thunder, SCR
+2, Flaws And Sins, SCR
+2, Money Wheel, SCR
+2, Mark's Magus, SCR
+3, Berardo, 0, 0
+3, Count Chevalier, 0, 0
+3, Court Jester, 0, 0
+3, My Boy Arnie, 0, 0
+3, Song'n'dance, 0, 0
+3, Jool Of The Bool, 0, 0
+3, Miss Home Body, 0, 0
+3, Secret Crossing, 0, 0
+3, Tungamah Tess, 0, 0
+3, Wee Bit Kinky, 0, 0
+3, Inside Word, SCR
+4, Ambello, 0, 0
+4, Arabian Myth, 0, 0
+4, Danerich Dan, 0, 0
+4, Soobooma, 0, 0
+4, Pippie Pomar, 0, 0
+4, Grumpyoldcol, 0, 0
+4, Nicking Gracie, 0, 0
+4, Squagaga, 0, 0
+4, Party At Artie's, 0, 0
+4, Reward With A Rose, 0, 0
+4, Padstow Polly, SCR
+4, Galaxy Turf, SCR
+4, Deep Core, SCR
+4, Ask For More, SCR
+5, Sheanadh, 0, 0
+5, Boulderoo, 0, 0
+5, Manchego, 0, 0
+5, Costae, 0, 0
+5, Brave Summit, 0, 0
+5, You Said What, 0, 0
+5, Break The Taboo, 0, 0
+5, Mislight, 0, 0
+5, Chapados, 0, 0
+5, Garfield, SCR
+5, French Love, SCR
+5, Drover's Yarn, SCR
+6, Raf Attack, 0, 0
+6, Fox Appeal, 0, 0
+6, Mangione, 0, 0
+6, Tikemyson, 0, 0
+6, Scalextrics, 0, 0
+6, Verona Rupes, 0, 0
+6, Omnic, 0, 0
+6, Kiss My Rock, 0, 0
+6, Eddystone, 0, 0
+6, Haiiro, 0, 0
+6, Pianta, SCR
+7, Baby Rider, 0, 0
+7, Last Raider, 0, 0
+7, Mike's Hope, 0, 0
+7, La Reel Deal, 0, 0
+7, Jackand, 0, 0
+7, Rebel's Idol, 0, 0
+7, Mannerheim, 0, 0
+7, Semper Fortis, 0, 0
+7, Bell's Bighouse, 0, 0
+7, Princess Sakiko, 0, 0
+7, Whistler Girl, SCR
+7, Treasury Place, SCR
+7, Serin, SCR
+7, A Blue Star, SCR

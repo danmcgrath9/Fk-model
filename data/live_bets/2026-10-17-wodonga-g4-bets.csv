@@ -1,0 +1,5 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+3,WOD_171026_3,Mishima,top_pick,4.8,4.8,4.9,4.9,,4.56,0.075,Class drop (rating),1.0,no,,
+4,WOD_171026_4,Wambeen,top_pick,2.9,2.9,2.35,2.35,,2.64,-0.11,"Beaten by the pace last start; Third-up, improving",1.0,no,,
+5,WOD_171026_5,Surely Special,top_pick,3.6,3.6,5.0,5.0,,4.63,0.079,,1.0,no,,
+6,WOD_171026_6,Time Angel,top_pick,3.5,3.5,3.4,3.4,,4.92,-0.309,Beaten by the pace last start; Already run to today's class; New career-best last start; Class drop (rating); Above the field in all three sections,1.0,no,,

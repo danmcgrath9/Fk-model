@@ -1,0 +1,98 @@
+# Bendigo Sat 17 Oct, Good 4: final fields pulled Thu 15 Oct 12:15pm, refreshed 12:35pm Melbourne (jockeys and gear). Emergencies as SCR until they gain a start; no market yet.
+1, Aye Aye, 0, 0
+1, Bow And Ammo, 0, 0
+1, Burrow, 0, 0
+1, Golden Rainbow, 0, 0
+1, Mellavac, 0, 0
+1, Shape The World, 0, 0
+1, Star Bowl, 0, 0
+1, Trigger Warning, 0, 0
+1, Adakite, 0, 0
+1, Hellbent Halo, 0, 0
+1, Quynh, 0, 0
+1, Roebuck Plane, 0, 0
+1, Pandie Pandie, SCR
+1, Raisonic, SCR
+1, Miss Capri, SCR
+2, Akari Spirit, 0, 0
+2, Genomic, 0, 0
+2, Masakari, 0, 0
+2, Mehsun, 0, 0
+2, Rang A Round Up, 0, 0
+2, Sirvaldane, 0, 0
+2, Vellasprince, 0, 0
+2, Belle Flamme, 0, 0
+2, Classic Cracker, 0, 0
+2, Girt By Sea, 0, 0
+2, Princess Of Sol, 0, 0
+2, Zovozo, 0, 0
+2, Surhomme, SCR
+2, Rat Pack, SCR
+2, Norfolk Victory, SCR
+3, Big Storm, 0, 0
+3, I'm Intrigued, 0, 0
+3, See No City, 0, 0
+3, The Buncha, SCR
+3, Golde 'n' Fire, 0, 0
+3, Immortal Truth, 0, 0
+3, Lonnegan, 0, 0
+3, Verismo, 0, 0
+3, Bella Blaze, 0, 0
+3, Miss Verona, 0, 0
+3, Princess Prada, 0, 0
+3, Sanctuary, 0, 0
+3, Pragmatic Lady, SCR
+4, Bring The Thunder, 0, 0
+4, Brummagen, 0, 0
+4, Shelly's Legacy, 0, 0
+4, King's Chamber, 0, 0
+4, El Salto, 0, 0
+4, Foxiet, 0, 0
+4, Bronco Revolution, 0, 0
+4, Airclash, 0, 0
+4, Frose, 0, 0
+4, Spinhof, 0, 0
+4, Boudica Warrior, 0, 0
+5, Thinking Sensation, 0, 0
+5, Heavenly Eagle, 0, 0
+5, Tempt The Gods, 0, 0
+5, Baganov, 0, 0
+5, Gazerati, 0, 0
+5, Misty Whisper, 0, 0
+5, Titan Of Choice, 0, 0
+5, Legacy Bel, 0, 0
+5, Victory Tune, 0, 0
+5, Miss Ellaneous, 0, 0
+5, Fast Freddie, 0, 0
+5, Shapenapit, SCR
+5, Vim Vitae, SCR
+5, Holding Captive, SCR
+5, On The Loose, SCR
+5, Shalailed, SCR
+6, Bakersbend, 0, 0
+6, Flying Mean, 0, 0
+6, Undercut, 0, 0
+6, Frozen Tide, 0, 0
+6, It's Gnarly, 0, 0
+6, Savethebesttillast, 0, 0
+6, Drunken Sailor, 0, 0
+6, Lulu Darling, 0, 0
+6, Popthebubbly, 0, 0
+6, Smash Blue, 0, 0
+6, Sweater Girl, 0, 0
+6, Hidden Witness, 0, 0
+6, Triomphe, SCR
+6, Harry Devil, SCR
+6, Bellakai, SCR
+7, Boy From Tennessee, 0, 0
+7, Determinato, 0, 0
+7, Newcombe, 0, 0
+7, Paltinian, 0, 0
+7, Positivo, 0, 0
+7, Forest Jim, 0, 0
+7, Solar Mist, 0, 0
+7, Makusha, 0, 0
+7, Carnival Riches, 0, 0
+7, Lisa Lass, 0, 0
+7, Conaltri, 0, 0
+7, Final Quarter, 0, 0

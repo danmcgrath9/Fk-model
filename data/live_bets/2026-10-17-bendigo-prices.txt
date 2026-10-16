@@ -1,98 +1,98 @@
-# Bendigo Sat 17 Oct, Good 4: final fields pulled Thu 15 Oct 12:15pm, refreshed 12:35pm Melbourne (jockeys and gear). Emergencies as SCR until they gain a start; no market yet.
-1, Aye Aye, 0, 0
-1, Bow And Ammo, 0, 0
-1, Burrow, 0, 0
-1, Golden Rainbow, 0, 0
-1, Mellavac, 0, 0
-1, Shape The World, 0, 0
-1, Star Bowl, 0, 0
-1, Trigger Warning, 0, 0
-1, Adakite, 0, 0
-1, Hellbent Halo, 0, 0
-1, Quynh, 0, 0
-1, Roebuck Plane, 0, 0
+# Bendigo Sat 17 Oct, Good 4: race morning, pulled Sat 17 Oct 9:35am Melbourne after scratchings (Form King open = fk_open).
+1, Bow And Ammo, 3.40, 3.40, fk_open 7.00
+1, Mellavac, 51.00, 51.00, fk_open 61.00
+1, Burrow, 151.00, 151.00, fk_open 71.00
+1, Aye Aye, 12.00, 12.00, fk_open 7.50
+1, Roebuck Plane, 2.15, 2.15, fk_open 2.80
+1, Hellbent Halo, 126.00, 126.00, fk_open 101.00
+1, Quynh, 10.00, 10.00, fk_open 4.60
+1, Trigger Warning, 26.00, 26.00, fk_open 26.00
+1, Adakite, 5.00, 5.00, fk_open 3.50
+1, Star Bowl, 91.00, 91.00, fk_open 81.00
+1, Golden Rainbow, SCR
 1, Pandie Pandie, SCR
-1, Raisonic, SCR
+1, Raisonic, 101.00, 101.00, fk_open 81.00
+1, Shape The World, 101.00, 101.00, fk_open 101.00
 1, Miss Capri, SCR
-2, Akari Spirit, 0, 0
-2, Genomic, 0, 0
-2, Masakari, 0, 0
-2, Mehsun, 0, 0
-2, Rang A Round Up, 0, 0
-2, Sirvaldane, 0, 0
-2, Vellasprince, 0, 0
-2, Belle Flamme, 0, 0
-2, Classic Cracker, 0, 0
-2, Girt By Sea, 0, 0
-2, Princess Of Sol, 0, 0
-2, Zovozo, 0, 0
+2, Classic Cracker, 26.00, 26.00, fk_open 21.00
+2, Rang A Round Up, 23.00, 23.00, fk_open 16.50
+2, Akari Spirit, 4.40, 4.40, fk_open 4.10
+2, Masakari, SCR
+2, Girt By Sea, SCR
+2, Zovozo, 5.00, 5.00, fk_open 4.90
+2, Norfolk Victory, 51.00, 51.00, fk_open 51.00
+2, Sirvaldane, 21.00, 21.00, fk_open 36.00
+2, Belle Flamme, 6.50, 6.50, fk_open 7.25
+2, Princess Of Sol, 23.00, 23.00, fk_open 19.50
 2, Surhomme, SCR
-2, Rat Pack, SCR
-2, Norfolk Victory, SCR
-3, Big Storm, 0, 0
-3, I'm Intrigued, 0, 0
-3, See No City, 0, 0
+2, Rat Pack, 34.00, 34.00, fk_open 48.50
+2, Genomic, 3.90, 3.90, fk_open 11.00
+2, Vellasprince, 41.00, 41.00, fk_open 38.00
+2, Mehsun, 6.50, 6.50, fk_open 7.50
+3, Golde 'n' Fire, 26.00, 26.00, fk_open 14.00
+3, See No City, 41.00, 41.00, fk_open 74.00
+3, I'm Intrigued, SCR
+3, Big Storm, 9.00, 9.00, fk_open 7.00
 3, The Buncha, SCR
-3, Golde 'n' Fire, 0, 0
-3, Immortal Truth, 0, 0
-3, Lonnegan, 0, 0
-3, Verismo, 0, 0
-3, Bella Blaze, 0, 0
-3, Miss Verona, 0, 0
-3, Princess Prada, 0, 0
-3, Sanctuary, 0, 0
+3, Immortal Truth, 20.00, 20.00, fk_open 11.50
+3, Verismo, 3.30, 3.30, fk_open 7.00
+3, Miss Verona, 5.00, 5.00, fk_open 11.00
+3, Sanctuary, 3.20, 3.20, fk_open 2.53
+3, Princess Prada, 151.00, 151.00, fk_open 91.00
 3, Pragmatic Lady, SCR
-4, Bring The Thunder, 0, 0
-4, Brummagen, 0, 0
-4, Shelly's Legacy, 0, 0
-4, King's Chamber, 0, 0
-4, El Salto, 0, 0
-4, Foxiet, 0, 0
-4, Bronco Revolution, 0, 0
-4, Airclash, 0, 0
-4, Frose, 0, 0
-4, Spinhof, 0, 0
-4, Boudica Warrior, 0, 0
-5, Thinking Sensation, 0, 0
-5, Heavenly Eagle, 0, 0
-5, Tempt The Gods, 0, 0
-5, Baganov, 0, 0
-5, Gazerati, 0, 0
-5, Misty Whisper, 0, 0
-5, Titan Of Choice, 0, 0
-5, Legacy Bel, 0, 0
-5, Victory Tune, 0, 0
-5, Miss Ellaneous, 0, 0
-5, Fast Freddie, 0, 0
-5, Shapenapit, SCR
-5, Vim Vitae, SCR
-5, Holding Captive, SCR
-5, On The Loose, SCR
+3, Lonnegan, SCR
+3, Bella Blaze, 5.00, 5.00, fk_open 5.25
+4, El Salto, 7.00, 7.00, fk_open 4.40
+4, Airclash, 7.00, 7.00, fk_open 6.75
+4, Spinhof, 13.00, 13.00, fk_open 18.50
+4, Frose, 12.00, 12.00, fk_open 14.00
+4, King's Chamber, 51.00, 51.00, fk_open 34.00
+4, Brummagen, 11.00, 11.00, fk_open 5.75
+4, Boudica Warrior, 7.00, 7.00, fk_open 6.75
+4, Bring The Thunder, 10.00, 10.00, fk_open 9.75
+4, Shelly's Legacy, 4.20, 4.20, fk_open 12.50
+4, Bronco Revolution, 9.00, 9.00, fk_open 7.25
+4, Foxiet, 10.00, 10.00, fk_open 7.25
+5, Heavenly Eagle, 21.00, 21.00, fk_open 31.00
+5, Titan Of Choice, 23.00, 23.00, fk_open 17.00
 5, Shalailed, SCR
-6, Bakersbend, 0, 0
-6, Flying Mean, 0, 0
-6, Undercut, 0, 0
-6, Frozen Tide, 0, 0
-6, It's Gnarly, 0, 0
-6, Savethebesttillast, 0, 0
-6, Drunken Sailor, 0, 0
-6, Lulu Darling, 0, 0
-6, Popthebubbly, 0, 0
-6, Smash Blue, 0, 0
-6, Sweater Girl, 0, 0
-6, Hidden Witness, 0, 0
-6, Triomphe, SCR
-6, Harry Devil, SCR
+5, Legacy Bel, 18.00, 18.00, fk_open 16.00
+5, Thinking Sensation, 10.00, 10.00, fk_open 8.00
+5, Shapenapit, SCR
+5, Miss Ellaneous, 9.00, 9.00, fk_open 6.50
+5, Misty Whisper, SCR
+5, Gazerati, 3.70, 3.70, fk_open 7.50
+5, Tempt The Gods, SCR
+5, Baganov, SCR
+5, Vim Vitae, 5.00, 5.00, fk_open 19.00
+5, Victory Tune, SCR
+5, On The Loose, SCR
+5, Holding Captive, SCR
+5, Fast Freddie, 2.45, 2.45, fk_open 3.40
+6, Lulu Darling, 7.50, 7.50, fk_open 13.00
 6, Bellakai, SCR
-7, Boy From Tennessee, 0, 0
-7, Determinato, 0, 0
-7, Newcombe, 0, 0
-7, Paltinian, 0, 0
-7, Positivo, 0, 0
-7, Forest Jim, 0, 0
-7, Solar Mist, 0, 0
-7, Makusha, 0, 0
-7, Carnival Riches, 0, 0
-7, Lisa Lass, 0, 0
-7, Conaltri, 0, 0
-7, Final Quarter, 0, 0
+6, Savethebesttillast, 14.00, 14.00, fk_open 14.00
+6, Hidden Witness, 4.20, 4.20, fk_open 4.20
+6, Harry Devil, SCR
+6, Flying Mean, 9.00, 9.00, fk_open 7.00
+6, Drunken Sailor, 27.00, 27.00, fk_open 13.00
+6, Frozen Tide, 9.00, 9.00, fk_open 7.50
+6, Bakersbend, 12.00, 12.00, fk_open 9.50
+6, Smash Blue, 13.00, 13.00, fk_open 17.00
+6, Sweater Girl, 14.00, 14.00, fk_open 12.00
+6, Triomphe, SCR
+6, Popthebubbly, 10.00, 10.00, fk_open 7.00
+6, It's Gnarly, 7.00, 7.00, fk_open 13.00
+6, Undercut, 21.00, 21.00, fk_open 9.00
+7, Boy From Tennessee, 26.00, 26.00, fk_open 8.00
+7, Makusha, 12.00, 12.00, fk_open 6.00
+7, Solar Mist, 16.00, 16.00, fk_open 13.00
+7, Paltinian, 11.00, 11.00, fk_open 6.50
+7, Final Quarter, 51.00, 51.00, fk_open 41.00
+7, Lisa Lass, 5.00, 5.00, fk_open 8.00
+7, Conaltri, 81.00, 81.00, fk_open 41.00
+7, Newcombe, 9.50, 9.50, fk_open 5.00
+7, Forest Jim, 3.50, 3.50, fk_open 8.00
+7, Positivo, 5.00, 5.00, fk_open 9.00
+7, Determinato, 18.00, 18.00, fk_open 8.50
+7, Carnival Riches, 10.00, 10.00, fk_open 13.00
