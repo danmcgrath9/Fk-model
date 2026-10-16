@@ -34,6 +34,9 @@ on:
       dry_run:
         description: 'yes = print exactly what would be sent, send nothing'
         default: 'yes'
+      tag:
+        description: "send: label suffix for a resend after the first set already fired and can't be cancelled (e.g. b); blank normally"
+        default: ''
 
 permissions:
   contents: write
@@ -58,6 +61,7 @@ jobs:
       NUM: ${{ github.event.inputs.number }}
       DRY: ${{ github.event.inputs.dry_run }}
       WHEN: ${{ github.event.inputs.when }}
+      TAG: ${{ github.event.inputs.tag }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -75,7 +79,7 @@ jobs:
           case "$A" in
             check)  python betmatic/betmatic_send.py check ;;
             send)   NOW=""; [ "$WHEN" = "now" ] && NOW="--now"
-                    python betmatic/betmatic_send.py send "$FILE" --unit "$UNIT" --session "$SESSION" $NOW $SEND ;;
+                    python betmatic/betmatic_send.py send "$FILE" --unit "$UNIT" --session "$SESSION" ${TAG:+--tag "$TAG"} $NOW $SEND ;;
             cancel) python betmatic/betmatic_send.py cancel "$FILE" ${RACE:+--race "$RACE"} ${NUM:+--number "$NUM"} $SEND ;;
             status) python betmatic/betmatic_send.py status "$FILE" ;;
             pending) python betmatic/betmatic_send.py pending "$FILE" ;;

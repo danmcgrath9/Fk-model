@@ -100,8 +100,10 @@ def check(a):
     print("bookmaker:", tab[0] if tab else f"{want!r} not found by title")
 
 
-def label(o, step):
-    return f"fk-{o['date']}-{o['venue'].lower().replace(' ', '')}-r{o['race']}-n{o['number']}-s{step}"
+def label(o, step, tag=""):
+    # tag: a resend after BetMatic has already fired (and so will not cancel) the first set; the fired labels stay live
+    # and would block the duplicate check, so the resend carries its own (16 Oct 2026, Avoca fired before the TAB priced)
+    return f"fk-{o['date']}-{o['venue'].lower().replace(' ', '')}-r{o['race']}-n{o['number']}-s{step}" + (f"-{tag}" if tag else "")
 
 
 def send(a):
@@ -115,7 +117,7 @@ def send(a):
         stake = round(float(o["stake_units"]) * a.unit)
         if stake < 1:
             continue
-        bets.append((label(o, step[k]), o, {
+        bets.append((label(o, step[k], getattr(a, "tag", "")), o, {
             "type": "Fixed Wager", "sports": "RACING", "competition": o["venue"].upper(), "code": "Galloping",
             "event_number": int(o["race"]), "market": "Fixed Win", "selection": str(o["number"]), "stake": stake,
             "check_odds": True, "odds": float(o["min_odds"]),
@@ -321,6 +323,7 @@ if __name__ == "__main__":
     s.add_argument("--attempts", type=int, default=60, help="placement retries a second apart if the first fails at the open (BetMatic's own default is 60)")
     s.add_argument("--now", action="store_true", help="place now on a market that is already up (a test bet), not as a Market Open bet")
     s.add_argument("--allow-short", action="store_true", help="send even if the TAB balance is below the total stake")
+    s.add_argument("--tag", default="", help="suffix for every label, for a resend after the first set already fired (e.g. b)")
     s.add_argument("--send", action="store_true")
     c = sp.add_parser("cancel"); c.add_argument("ledger"); c.add_argument("--race"); c.add_argument("--number"); c.add_argument("--send", action="store_true")
     t = sp.add_parser("status"); t.add_argument("ledger")
