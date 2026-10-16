@@ -52,6 +52,22 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
                 print(f"| {rn} | {name} | {e.get('firstStarter')} | {st} ({e.get('careerForm')!s:.20}) | {len(real)} | {dict(tracks.most_common(4))} | {ckeys} {vals} |")
             if rn == only and sample is None and pe:
                 sample = (name, pe[-1])
+        # overseas runs: which rating/sectional fields Form King fills on them (the model reads these the same as local runs)
+        KEYS = ("lws", "weightForAgeRating", "adjustedForTodaysWeight", "exp", "sectionalTimeInMillis", "trackSpeed",
+                "fieldStrength", "margin", "finishPosition", "bsp", "startingPrice", "pos400m")
+        ov = []
+        for rn, e in rows:
+            if F.entry_scratched(e) or (only and rn != only):
+                continue
+            for p in F.entry_past_events(e):
+                if str(p.get("country") or "") not in ("Australia", "", "None") and not p.get("trial"):
+                    ov.append(p)
+        if ov:
+            print(f"\noverseas runs held for these runners: {len(ov)}; share with each field filled:")
+            for k in KEYS:
+                n = sum(1 for p in ov if p.get(k) not in (None, 0, 0.0, ""))
+                print(f"  {k}: {n}/{len(ov)}")
+            print("example:", json.dumps({k: ov[0].get(k) for k in ("horse", "track", "country", "date", "distance", "finishPosition", "margin") + KEYS}))
         if sample:
             print(f"\nsample past-run keys for {sample[0]}: {sorted(sample[1].keys())}")
             print(json.dumps({k: sample[1].get(k) for k in sorted(sample[1]) if not isinstance(sample[1][k], (dict, list))})[:1500])
