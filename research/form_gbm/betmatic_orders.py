@@ -20,7 +20,14 @@ import argparse, csv, json, os, sys
 here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, here)
 import stake_rule
 L = os.path.join(here, "../../data/live_bets")
-SHADE, TIERS = 0.95, (1.0, 1.25, 1.5)   # 14 Oct: 3 steps sized at the next step: same holdout profit as 8 (+801u), at most 3 bets a horse (t_monthly.py)
+SHADE, TIERS = 0.95, (1.0, 1.25, 1.5)
+# Short opens (founder, 16 Oct 2026: "do it for Moe and moving forward"; t_short_edge.py): when the TAB opens a runner
+# under $4 the edge is 1.15, not 1.2. On the holdout the extra bets this lets in still beat the open like our normal ones
+# (77% shortened after the open, open 1.23x BSP, against 83% and 1.31x for the live under-$4 bets); 1.10 and below fell
+# to coin-flip. Built as two ladders per runner: the 1.2 ladder with every step under $4 lifted to $4.00 (fires only on
+# an open of $4 or more), and a 1.15 ladder capped at $3.99 (fires only on an open under $4), so each open price meets
+# exactly one rule and the stakes are the backtest's.
+SHORT_OPEN, SHORT_EDGE = 4.0, 1.15   # 14 Oct: 3 steps sized at the next step: same holdout profit as 8 (+801u), at most 3 bets a horse (t_monthly.py)
 
 
 def tiers(min_odds, cap, chance_at, only_ride, field):
@@ -93,12 +100,19 @@ def main():
         field[int(r["race"])] = field.get(int(r["race"]), 0) + 1
     rows = []
 
-    def add(r, ours, min_odds, cap, chance_at, note):
+    def add(r, ours, min_odds, cap, chance_at, note, band=None):
+        """band: None for one ladder; "open4+" lifts every step under SHORT_OPEN to it; "under4" keeps only the steps
+        under SHORT_OPEN and caps them there. Steps are sized on the full ladder first, so the stakes match the backtest."""
         rc = int(r["race"])   # max_odds: the 3x-our-price (or EARLY $8) ceiling; an open above it is not a bet (14 Oct 2026)
         ts = tiers(min_odds, cap, chance_at, r.get("only_ride", False), field[rc])
+        hi = cap
+        if band == "open4+":
+            ts = [(max(t, SHORT_OPEN), extra, total) for t, extra, total in ts]
+        elif band == "under4":
+            ts = [x for x in ts if x[0] < SHORT_OPEN]; hi = min(cap, SHORT_OPEN - 0.01)
         for k, (t, extra, total) in enumerate(ts, 1):
             rows.append(dict(date=date, venue=venue, race=rc, jump=times.get(str(rc), ""), number=numbers.get((rc, nm(r["horse"])), ""), horse=r["horse"], bet="WIN",
-                             min_odds=f"{t:.2f}", max_odds=f"{cap:.2f}", stake_units=f"{extra:.2f}", stake_dollars=f"{extra * 100:.0f}",
+                             min_odds=f"{t:.2f}", max_odds=f"{hi:.2f}", stake_units=f"{extra:.2f}", stake_dollars=f"{extra * 100:.0f}",
                              order=f"{k} of {len(ts)}", total_if_all_fire=f"{total:.2f}u", our_price=f"{ours:.2f}", note=note))
 
     if a.after_open:
@@ -118,10 +132,13 @@ def main():
             if k in fs or (blk and not blk.startswith("EARLY")) or not 1.6 <= ours <= 15:
                 continue
             min_odds = round(SHADE * (1.2 / pm ** 0.82) ** (1 / 0.78), 2)
+            min_short = round(SHADE * (SHORT_EDGE / pm ** 0.82) ** (1 / 0.78), 2)
             cap = min(3 * ours, 8.0 if blk.startswith("EARLY") else 1e9)
-            if min_odds >= cap:
-                continue
-            add(r, ours, min_odds, cap, lambda t, pm=pm: pm ** 0.82 * t ** -0.22, "EARLY: $8 or shorter only" if blk else "")
+            ch = lambda t, pm=pm: pm ** 0.82 * t ** -0.22; note = "EARLY: $8 or shorter only" if blk else ""
+            if min_odds < cap and SHORT_OPEN < cap:
+                add(r, ours, min_odds, cap, ch, note, "open4+")
+            if min_short < min(cap, SHORT_OPEN):
+                add(r, ours, min_short, cap, ch, (note + "; " if note else "") + "opens under $4: edge 1.15", "under4")
     rows.sort(key=lambda x: (x["race"], x["horse"], float(x["min_odds"])))
     with open(a.out, "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0]) if rows else ["date"]); w.writeheader(); w.writerows(rows)

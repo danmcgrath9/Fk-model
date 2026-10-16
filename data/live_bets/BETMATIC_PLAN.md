@@ -123,3 +123,9 @@ every time. TAB session: 636816 (BETMATIC_TAB_SESSION); the Sportsbet session is
   have skipped every bet.
 - Form King lags the rider declarations and posts gear changes later still: a refresh (5 credits a meeting) before
   pricing took Bendigo from 15 riderless runners to 4 and 0 gear changes to 29.
+
+## Short opens: edge 1.15 when TAB opens under $4 (founder, 16 Oct 2026, from Moe Sun 18 Oct on)
+research/form_gbm/t_short_edge.py. Each runner whose 1.15 minimum is under $4 gets a second ladder capped at $3.99; the
+normal 1.2 ladder's steps under $4 are lifted to $4.00, so any opening price meets exactly one rule. Under $3 opens were
+break-even at every edge tried; the 1.15 extras still beat the open (77% shortened, open 1.23x BSP). Moe: 1 runner
+affected (The Minstrel Boy), Echuca: 1 (Sihaya).

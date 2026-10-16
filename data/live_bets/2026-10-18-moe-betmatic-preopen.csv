@@ -13,7 +13,8 @@ date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollar
 2026-10-18,Moe,2,,8,Mr Sapphire,WIN,25.20,43.92,0.08,8,2 of 2,0.41u,14.64,
 2026-10-18,Moe,3,,12,Smashing Success,WIN,13.70,30.41,0.50,50,1 of 2,0.50u,10.14,
 2026-10-18,Moe,3,,12,Smashing Success,WIN,17.12,30.41,0.12,12,2 of 2,0.62u,10.14,
-2026-10-18,Moe,3,,5,The Minstrel Boy,WIN,3.69,8.74,2.22,222,1 of 2,2.22u,2.91,
+2026-10-18,Moe,3,,5,The Minstrel Boy,WIN,3.50,3.99,2.05,205,1 of 1,2.05u,2.91,opens under $4: edge 1.15
+2026-10-18,Moe,3,,5,The Minstrel Boy,WIN,4.00,8.74,2.22,222,1 of 2,2.22u,2.91,
 2026-10-18,Moe,3,,5,The Minstrel Boy,WIN,4.61,8.74,0.28,28,2 of 2,2.50u,2.91,
 2026-10-18,Moe,3,,6,Victory Edition,WIN,14.54,32.19,0.47,47,1 of 2,0.47u,10.73,
 2026-10-18,Moe,3,,6,Victory Edition,WIN,18.17,32.19,0.11,11,2 of 2,0.58u,10.73,
