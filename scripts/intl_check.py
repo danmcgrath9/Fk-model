@@ -1,7 +1,7 @@
 """Imported / overseas-form runners on stored meetings: Form King's firstStarter flag, career starts (careerForm),
 the past runs we hold, their tracks, and any country/state key on those runs. DB only, no credits.
 
-    python scripts/intl_check.py caulfield-20261017 [more meeting ids]
+    python scripts/intl_check.py caulfield-20261017 [more meeting ids] [--race 8]   (--race prints every runner in it)
 """
 from __future__ import annotations
 
@@ -23,8 +23,12 @@ def starts(e):
     return int(m.group(1)) if m else None
 
 
+args = sys.argv[1:]
+only = None
+if "--race" in args:
+    i = args.index("--race"); only = int(args[i + 1]); args = args[:i] + args[i + 2:]
 with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
-    for mid in sys.argv[1:]:
+    for mid in args:
         rows = c.execute("""select r.race_number, e.raw from fk.entries e join fk.races r using (race_id)
                             where r.meeting_id = %s order by r.race_number""", (mid,)).fetchall()
         print(f"## {mid}: {len(rows)} entries")
@@ -44,8 +48,10 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
             flag = (st or 0) > len(real)
             if flag and sample is None and pe:
                 sample = (name, pe[0])
-            if flag or e.get("firstStarter"):
-                print(f"| {rn} | {name} | {e.get('firstStarter')} | {st} | {len(real)} | {dict(tracks.most_common(4))} | {ckeys} {vals} |")
+            if flag or e.get("firstStarter") or rn == only:
+                print(f"| {rn} | {name} | {e.get('firstStarter')} | {st} ({e.get('careerForm')!s:.20}) | {len(real)} | {dict(tracks.most_common(4))} | {ckeys} {vals} |")
+            if rn == only and sample is None and pe:
+                sample = (name, pe[-1])
         if sample:
             print(f"\nsample past-run keys for {sample[0]}: {sorted(sample[1].keys())}")
             print(json.dumps({k: sample[1].get(k) for k in sorted(sample[1]) if not isinstance(sample[1][k], (dict, list))})[:1500])
