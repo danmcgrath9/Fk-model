@@ -937,3 +937,11 @@ The challenger retrained 15 Oct (models branch 9d6fdfc, trained through 14 Oct, 
 0.0792) is now the day pricer, starting with Bendigo Sat 17 Oct. The v9 files are kept beside it (scratch model_v9) to
 switch back. Profit backtest behind the decision: t_v10_profit.py (+618u -> +712u on the holdout, same rules). The
 models branch root still holds the v9 "live" copy; promote there with the next fk-retrain promote=yes run.
+
+## A smaller edge on short-priced horses (16 Oct 2026, t_short_edge.py; founder: "why do we never bet sub $4 horses")
+We do bet them: on the holdout (1,231 races from 3 Jun, v10, live BetMatic rules at the open) runners we price under $4
+are the best part of the book (under $3: 157 bets, +35%; $3-$4: 175 bets, +62%; $4 and over +25%), and 84 bets filled
+at an opening price under $4. What blocks a short one is the edge: at 1.2 a horse we price $3.33 needs $4.26 at the open.
+Lowering the edge for runners we price under $4 only: 1.15 adds 49 runners (19 won, +29% flat, total +712u -> +735u);
+1.10 adds 56 more that lose (-19% flat, total +703u); 1.05 and 1.00 add break-even to losing runners. So the extra
+edge is earning its keep below 1.15, and 1.15 itself is a 49-bet gain inside the noise of one holdout. Not changed.
