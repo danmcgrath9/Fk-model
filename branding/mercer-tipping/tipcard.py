@@ -30,12 +30,15 @@ body{{width:1080px;height:1350px;background:{NAVY};color:{INK};font-family:BC;di
 """
 def card(d):
     n = sum(len(m["bets"]) for m in d["meetings"]); hs = 58 if n <= 6 else 48 if n <= 9 else 40
+    # ten or more rows: tighter rows and badges, or the last rows and the footer fall off the 1350px card (17 Oct 2026)
+    dense = (".row{padding:7px 0}.r{font-size:28px;padding:4px 0}.t{font-size:19px;margin-top:4px}.list{gap:22px}"
+             ".u{font-size:27px}") if n >= 10 else ""
     rows = []
     for m in d["meetings"]:
         b = "".join(f"<div class='row'><div><div class='r'>R{x['race']}</div>" + (f"<div class='t'>{html.escape(x['time'])}</div>" if x.get('time') else "") + f"</div><div class='h'>{html.escape(x['horse'])}</div>"
                     f"<div class='p'>{html.escape(x['price'])}</div><div class='u'>{html.escape(x['units'])} WIN</div></div>" for x in m["bets"])
         rows.append(f"<div class='mtg'><h2>{html.escape(m['name'])}<small>{html.escape(m.get('note',''))}</small></h2>{b}</div>")
-    return (f"<html><head><style>{CSS.replace('{hs}', str(hs))}</style></head><body>"
+    return (f"<html><head><style>{CSS.replace('{hs}', str(hs))}{dense}</style></head><body>"
             f"<div class='top'><div class='lock'><div class='mark'><span>M</span></div><div class='brand'>MERCER<span>TIPPING</span></div></div><div class='when'>{html.escape(d['day'])}<span>{html.escape(d['date'])}</span></div></div>"
             f"<div class='list'>{''.join(rows)}</div>"
             f"<div class='foot'><span>{html.escape(d.get('footer','Prices at time of posting. Win bets.'))}</span><span>18+ · Gamble responsibly</span></div></body></html>")

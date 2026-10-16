@@ -1,0 +1,83 @@
+{
+ "day": "Saturday",
+ "date": "17 October",
+ "footer": "Opening prices. Win bets.",
+ "meetings": [
+  {
+   "name": "Caulfield",
+   "note": "Good 4",
+   "bets": [
+    {
+     "race": 2,
+     "horse": "Voynichese",
+     "price": "$9.50",
+     "units": "0.91u",
+     "time": "12:50PM"
+    },
+    {
+     "race": 2,
+     "horse": "Autumn In Grinzing",
+     "price": "$41",
+     "units": "0.44u",
+     "time": "12:50PM"
+    },
+    {
+     "race": 3,
+     "horse": "Stardom",
+     "price": "$15",
+     "units": "0.54u",
+     "time": "1:25PM"
+    },
+    {
+     "race": 4,
+     "horse": "Aemond",
+     "price": "$13",
+     "units": "0.85u",
+     "time": "2:00PM"
+    },
+    {
+     "race": 6,
+     "horse": "Hidden Motive",
+     "price": "$13",
+     "units": "0.58u",
+     "time": "3:10PM"
+    },
+    {
+     "race": 7,
+     "horse": "Over The Bridge",
+     "price": "$6",
+     "units": "2u",
+     "time": "3:45PM"
+    },
+    {
+     "race": 7,
+     "horse": "Saintly Dancer",
+     "price": "$7",
+     "units": "1.64u",
+     "time": "3:45PM"
+    },
+    {
+     "race": 8,
+     "horse": "Threads",
+     "price": "$15",
+     "units": "0.46u",
+     "time": "4:30PM"
+    },
+    {
+     "race": 9,
+     "horse": "Kingswood",
+     "price": "$25",
+     "units": "0.59u",
+     "time": "5:15PM"
+    },
+    {
+     "race": 10,
+     "horse": "Shadhavar",
+     "price": "$7.50",
+     "units": "1.88u",
+     "time": "5:50PM"
+    }
+   ]
+  }
+ ]
+}

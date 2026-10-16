@@ -1,0 +1,54 @@
+{
+ "day": "Saturday",
+ "date": "17 October",
+ "footer": "Opening prices. Win bets.",
+ "meetings": [
+  {
+   "name": "Bendigo",
+   "note": "Good 4",
+   "bets": [
+    {
+     "race": 2,
+     "horse": "Genomic",
+     "price": "$11",
+     "units": "1.91u",
+     "time": "2:19PM"
+    },
+    {
+     "race": 7,
+     "horse": "Carnival Riches",
+     "price": "$13",
+     "units": "0.64u",
+     "time": "5:31PM"
+    }
+   ]
+  },
+  {
+   "name": "Wodonga",
+   "note": "Good 4",
+   "bets": [
+    {
+     "race": 3,
+     "horse": "Moral Turpitude",
+     "price": "$9",
+     "units": "0.94u",
+     "time": "3:03PM"
+    },
+    {
+     "race": 4,
+     "horse": "Stand By Me Ned",
+     "price": "$11",
+     "units": "0.71u",
+     "time": "3:35PM"
+    },
+    {
+     "race": 6,
+     "horse": "Black Panther",
+     "price": "$8.50",
+     "units": "1.51u",
+     "time": "4:58PM"
+    }
+   ]
+  }
+ ]
+}
