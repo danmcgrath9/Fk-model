@@ -1,9 +1,11 @@
 1|1|Challenging|False|False
 1|17|Blue Valentine|True|False
 1|8|Platinum Rush|False|False
+1|10|Some Chance|False|True
 1|7|Meggie Noodles|False|False
 1|12|Woah Shamrock|False|False
 1|2|Dimachaerus|False|False
+1|4|Mister Speaker|False|True
 1|9|Sihaya|False|False
 1|16|Norfolk Victory|True|False
 1|6|Storming Camelot|False|False
@@ -79,6 +81,7 @@
 6|10|Hustle|False|False
 6|6|Wondering Spirit|False|False
 6|15|Burning Sensation|True|False
+6|11|Shipstern Bluff|False|True
 6|7|Boulderoo|False|False
 6|5|Miss Ellaneous|False|False
 6|13|Ice Quake|False|False
@@ -93,6 +96,7 @@
 7|5|Strike Gold|False|False
 7|7|Here Comes Wozza|False|False
 7|17|Mickidamuzz|True|False
+7|8|Manchego|False|True
 7|6|Sacred Chord|False|False
 7|12|The Bantam|False|False
 7|9|Reel Latino|False|False
@@ -112,6 +116,7 @@
 8|9|Ilovediamonds|False|False
 8|7|Wallaby Jack|False|False
 8|6|She's Elusive|False|False
+8|14|Magnea|False|True
 8|11|Queue Jumper|False|False
 8|12|Silver Top Ridge|False|False
 8|13|Bella Katelyn|False|False

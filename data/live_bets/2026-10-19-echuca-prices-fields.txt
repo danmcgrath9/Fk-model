@@ -1,12 +1,14 @@
-# Echuca Mon 19 Oct, Good 4: fields pulled Fri 16 Oct 1:56pm Melbourne. Emergencies as SCR until they gain a start; no market yet.
+# Echuca Mon 19 Oct, Good 4: fields pulled Fri 16 Oct 1:56pm, refreshed 3:36pm Melbourne (jockeys, gear, scratchings). Emergencies as SCR until they gain a start; no market yet.
 1, Challenging, 0, 0
 1, Dimachaerus, 0, 0
 1, Interrogate, 0, 0
+1, Mister Speaker, SCR
 1, Prestige Fantastic, 0, 0
 1, Storming Camelot, 0, 0
 1, Meggie Noodles, 0, 0
 1, Platinum Rush, 0, 0
 1, Sihaya, 0, 0
+1, Some Chance, SCR
 1, Who'llstoplorraine, 0, 0
 1, Woah Shamrock, 0, 0
 1, Selita's Fury, 0, 0
@@ -80,6 +82,7 @@
 6, Cossack Warrior, 0, 0
 6, Elle Mcfearsome, 0, 0
 6, Hustle, 0, 0
+6, Shipstern Bluff, SCR
 6, Limbering, 0, 0
 6, Ice Quake, 0, 0
 6, So Enchanting, 0, 0
@@ -94,6 +97,7 @@
 7, Strike Gold, 0, 0
 7, Sacred Chord, 0, 0
 7, Here Comes Wozza, 0, 0
+7, Manchego, SCR
 7, Reel Latino, 0, 0
 7, Western Lane, 0, 0
 7, Gobbo's Mate, 0, 0
@@ -117,4 +121,5 @@
 8, Queue Jumper, 0, 0
 8, Silver Top Ridge, 0, 0
 8, Bella Katelyn, 0, 0
+8, Magnea, SCR
 8, Raging Monkey, SCR
