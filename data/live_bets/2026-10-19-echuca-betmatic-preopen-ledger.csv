@@ -1,0 +1,68 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-19-echuca-r1-n3-s1,1,3,Interrogate,11.54,25.82,60,13931957,Notification has been scheduled.
+fk-2026-10-19-echuca-r1-n3-s2,1,3,Interrogate,14.42,25.82,14,13931958,Notification has been scheduled.
+fk-2026-10-19-echuca-r1-n8-s1,1,8,Platinum Rush,12.19,27.21,56,13931960,Notification has been scheduled.
+fk-2026-10-19-echuca-r1-n8-s2,1,8,Platinum Rush,15.24,27.21,14,13931961,Notification has been scheduled.
+fk-2026-10-19-echuca-r1-n5-s1,1,5,Prestige Fantastic,17.94,39.31,37,13931962,Notification has been scheduled.
+fk-2026-10-19-echuca-r1-n5-s2,1,5,Prestige Fantastic,22.43,39.31,10,13931963,Notification has been scheduled.
+fk-2026-10-19-echuca-r1-n9-s1,1,9,Sihaya,3.79,8.00,215,13931964,Notification has been scheduled.
+fk-2026-10-19-echuca-r1-n9-s2,1,9,Sihaya,4.74,8.00,35,13931965,Notification has been scheduled.
+fk-2026-10-19-echuca-r2-n8-s1,2,8,Ninetyfiveinafifty,8.73,19.82,81,13931966,Notification has been scheduled.
+fk-2026-10-19-echuca-r2-n8-s2,2,8,Ninetyfiveinafifty,10.91,19.82,19,13931967,Notification has been scheduled.
+fk-2026-10-19-echuca-r2-n9-s1,2,9,Plinian,18.87,41.23,36,13931968,Notification has been scheduled.
+fk-2026-10-19-echuca-r2-n9-s2,2,9,Plinian,23.59,41.23,8,13931969,Notification has been scheduled.
+fk-2026-10-19-echuca-r2-n6-s1,2,6,Trouble'n Paradise,13.15,29.25,52,13931970,Notification has been scheduled.
+fk-2026-10-19-echuca-r2-n6-s2,2,6,Trouble'n Paradise,16.44,29.25,13,13931971,Notification has been scheduled.
+fk-2026-10-19-echuca-r3-n1-s1,3,1,Aerial Pursuit,14.87,32.87,46,13931972,Notification has been scheduled.
+fk-2026-10-19-echuca-r3-n1-s2,3,1,Aerial Pursuit,18.59,32.87,11,13931973,Notification has been scheduled.
+fk-2026-10-19-echuca-r3-n8-s1,3,8,Genki Girl,12.27,27.38,56,13931974,Notification has been scheduled.
+fk-2026-10-19-echuca-r3-n8-s2,3,8,Genki Girl,15.34,27.38,13,13931975,Notification has been scheduled.
+fk-2026-10-19-echuca-r3-n7-s1,3,7,Truant,4.33,8.00,181,13931976,Notification has been scheduled.
+fk-2026-10-19-echuca-r3-n7-s2,3,7,Truant,5.41,8.00,39,13931978,Notification has been scheduled.
+fk-2026-10-19-echuca-r4-n3-s1,4,3,Just Basil,18.64,40.76,36,13931979,Notification has been scheduled.
+fk-2026-10-19-echuca-r4-n3-s2,4,3,Just Basil,23.30,40.76,9,13931980,Notification has been scheduled.
+fk-2026-10-19-echuca-r4-n11-s1,4,11,Meet The Prince,6.41,14.77,114,13931981,Notification has been scheduled.
+fk-2026-10-19-echuca-r4-n11-s2,4,11,Meet The Prince,8.01,14.77,26,13931982,Notification has been scheduled.
+fk-2026-10-19-echuca-r4-n12-s1,4,12,Musical Journey,14.60,32.30,47,13931983,Notification has been scheduled.
+fk-2026-10-19-echuca-r4-n12-s2,4,12,Musical Journey,18.25,32.30,11,13931984,Notification has been scheduled.
+fk-2026-10-19-echuca-r4-n4-s1,4,4,Notre Citrouille,14.29,31.65,48,13931985,Notification has been scheduled.
+fk-2026-10-19-echuca-r4-n4-s2,4,4,Notre Citrouille,17.86,31.65,11,13931986,Notification has been scheduled.
+fk-2026-10-19-echuca-r4-n9-s1,4,9,Under Control,10.51,23.64,66,13931987,Notification has been scheduled.
+fk-2026-10-19-echuca-r4-n9-s2,4,9,Under Control,13.14,23.64,16,13931988,Notification has been scheduled.
+fk-2026-10-19-echuca-r5-n14-s1,5,14,Aberlutely,13.59,30.18,50,13931990,Notification has been scheduled.
+fk-2026-10-19-echuca-r5-n14-s2,5,14,Aberlutely,16.99,30.18,12,13931991,Notification has been scheduled.
+fk-2026-10-19-echuca-r5-n5-s1,5,5,Love Sparkles,8.42,19.13,85,13931992,Notification has been scheduled.
+fk-2026-10-19-echuca-r5-n5-s2,5,5,Love Sparkles,10.53,19.13,19,13931993,Notification has been scheduled.
+fk-2026-10-19-echuca-r5-n2-s1,5,2,Mickio,4.99,11.63,154,13931994,Notification has been scheduled.
+fk-2026-10-19-echuca-r5-n2-s2,5,2,Mickio,6.24,11.63,32,13931995,Notification has been scheduled.
+fk-2026-10-19-echuca-r5-n10-s1,5,10,Phoenician,13.69,30.38,50,13931996,Notification has been scheduled.
+fk-2026-10-19-echuca-r5-n10-s2,5,10,Phoenician,17.11,30.38,12,13931997,Notification has been scheduled.
+fk-2026-10-19-echuca-r5-n8-s1,5,8,Sasterion,16.31,35.91,41,13931998,Notification has been scheduled.
+fk-2026-10-19-echuca-r5-n8-s2,5,8,Sasterion,20.39,35.91,10,13931999,Notification has been scheduled.
+fk-2026-10-19-echuca-r6-n2-s1,6,2,Alexander Thegreat,7.57,8.00,53,13932000,Notification has been scheduled.
+fk-2026-10-19-echuca-r6-n7-s1,6,7,Boulderoo,19.43,42.41,34,13932001,Notification has been scheduled.
+fk-2026-10-19-echuca-r6-n7-s2,6,7,Boulderoo,24.29,42.41,9,13932002,Notification has been scheduled.
+fk-2026-10-19-echuca-r6-n13-s1,6,13,Ice Quake,13.00,28.94,53,13932003,Notification has been scheduled.
+fk-2026-10-19-echuca-r6-n13-s2,6,13,Ice Quake,16.25,28.94,12,13932004,Notification has been scheduled.
+fk-2026-10-19-echuca-r6-n1-s1,6,1,Lim's Ida,20.26,44.12,33,13932005,Notification has been scheduled.
+fk-2026-10-19-echuca-r6-n1-s2,6,1,Lim's Ida,25.33,44.12,8,13932006,Notification has been scheduled.
+fk-2026-10-19-echuca-r6-n5-s1,6,5,Miss Ellaneous,7.43,17.00,97,13932007,Notification has been scheduled.
+fk-2026-10-19-echuca-r6-n5-s2,6,5,Miss Ellaneous,9.29,17.00,22,13932008,Notification has been scheduled.
+fk-2026-10-19-echuca-r6-n3-s1,6,3,Sheanadh,15.21,33.60,89,13932009,Notification has been scheduled.
+fk-2026-10-19-echuca-r6-n3-s2,6,3,Sheanadh,19.01,33.60,22,13932010,Notification has been scheduled.
+fk-2026-10-19-echuca-r7-n1-s1,7,1,Forever With Ned,7.98,18.19,89,13932011,Notification has been scheduled.
+fk-2026-10-19-echuca-r7-n1-s2,7,1,Forever With Ned,9.98,18.19,21,13932012,Notification has been scheduled.
+fk-2026-10-19-echuca-r7-n7-s1,7,7,Here Comes Wozza,7.93,18.07,90,13932013,Notification has been scheduled.
+fk-2026-10-19-echuca-r7-n7-s2,7,7,Here Comes Wozza,9.91,18.07,21,13932014,Notification has been scheduled.
+fk-2026-10-19-echuca-r7-n14-s1,7,14,Lujaego,12.36,27.58,56,13932015,Notification has been scheduled.
+fk-2026-10-19-echuca-r7-n14-s2,7,14,Lujaego,15.45,27.58,13,13932016,Notification has been scheduled.
+fk-2026-10-19-echuca-r7-n6-s1,7,6,Sacred Chord,13.86,30.74,49,13932017,Notification has been scheduled.
+fk-2026-10-19-echuca-r7-n6-s2,7,6,Sacred Chord,17.32,30.74,12,13932018,Notification has been scheduled.
+fk-2026-10-19-echuca-r7-n10-s1,7,10,Western Lane,11.02,24.72,63,13932019,Notification has been scheduled.
+fk-2026-10-19-echuca-r7-n10-s2,7,10,Western Lane,13.77,24.72,15,13932020,Notification has been scheduled.
+fk-2026-10-19-echuca-r8-n10-s1,8,10,Beau Strada,6.42,14.79,114,13932021,Notification has been scheduled.
+fk-2026-10-19-echuca-r8-n10-s2,8,10,Beau Strada,8.03,14.79,26,13932022,Notification has been scheduled.
+fk-2026-10-19-echuca-r8-n11-s1,8,11,Queue Jumper,18.61,40.70,36,13932023,Notification has been scheduled.
+fk-2026-10-19-echuca-r8-n11-s2,8,11,Queue Jumper,23.26,40.70,9,13932024,Notification has been scheduled.
+fk-2026-10-19-echuca-r8-n6-s1,8,6,She's Elusive,14.08,31.22,48,13932025,Notification has been scheduled.
+fk-2026-10-19-echuca-r8-n6-s2,8,6,She's Elusive,17.60,31.22,12,13932026,Notification has been scheduled.
