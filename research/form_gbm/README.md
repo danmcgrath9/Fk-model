@@ -945,3 +945,7 @@ at an opening price under $4. What blocks a short one is the edge: at 1.2 a hors
 Lowering the edge for runners we price under $4 only: 1.15 adds 49 runners (19 won, +29% flat, total +712u -> +735u);
 1.10 adds 56 more that lose (-19% flat, total +703u); 1.05 and 1.00 add break-even to losing runners. So the extra
 edge is earning its keep below 1.15, and 1.15 itself is a 49-bet gain inside the noise of one holdout. Not changed.
+By the MARKET's opening price instead (founder: "Not we price the market does"): the edge applied when the open is
+under $4. Live (1.2): 20 bets opened under $3 (+8%), 64 opened $3-$4 (+42%), 1,337 opened $4+ (+36%). Lowering the edge
+helps only in the $3-$4 band: at 1.05 it holds 120 bets at +38% (+26u more than live); under $3 every setting is about
+break-even (+0.4u to +5.5u). Buildable as one extra order per runner with max odds $4 (fires only when TAB opens under $4).
