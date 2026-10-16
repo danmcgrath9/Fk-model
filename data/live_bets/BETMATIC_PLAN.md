@@ -78,6 +78,8 @@ only runs the BetMatic bot. Environment "betmatic" (required reviewer: the found
 BETMATIC_PASSWORD and BETMATIC_TAB_SESSION. Ledgers and placements are committed back to data/live_bets/. The
 seconds-level shortfall resend (later) is the one piece that may still need to live on the PC.
 
+## Unit size (founder, 16 Oct): $100 a unit from Moe Sun 18 Oct and every meeting after ("we are at $100 a unit for moe and moving forward").
+
 ## Start (founder, 14 Oct): $75 units (was $50 earlier the same day), first live meeting Bendigo Saturday or a Sunday meeting (decided 15 Oct)
 TAB balance about $5,600, bank about $7,500. Biggest single bet $375 (5u); a big Saturday card is about 11u ($850)
 out at once. Worst losing run at $75: about $2,000 in the holdout with the live rules, $3,600 in the full backtest. Orders must be with BetMatic before TAB opens, and non-metro Saturday
