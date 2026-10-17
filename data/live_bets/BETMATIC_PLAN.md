@@ -9,6 +9,9 @@ pending when the machine is offline at the open expires. $199/month + 1% of turn
 Standing rule: Claude builds the order files and the API payloads; the founder's machine sends them. Claude does not
 place bets.
 
+## LIVE from Monday 19 Oct 2026 (founder, Sat 17 Oct)
+Founder: "I've been holding off actually betting until I saw the model work, but I think it's time to fire it up starting Monday next week. Leave all the orders but we are firing live live on Monday." Every order already on BetMatic stays. Sunday's Moe orders stay pending and are paper unless the TAB account is funded; from Monday 19 Oct (Echuca, 68 orders already scheduled at $100 a unit) the BetMatic fills are real bets, recorded in betmatic-book.md from TAB's actual fills and deductions (-deductions-actual.txt), not Form King's open. Before each first race: the account funded, and a BetMatic check showing the bot machine connected and the session running (the 17 Oct check found it offline while the app looked connected).
+
 ## Phase 0: set-up (this week)
 Founder:
 - Take Dave's intro to Joel (BetMatic waives the subscription for a group of FK subscribers).
