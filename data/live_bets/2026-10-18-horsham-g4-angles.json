@@ -3,10 +3,6 @@
 "1|Vadar": [
 "Late 600 beyond the tempo"
 ],
-"1|Under Control": [
-"Class drop (rating)",
-"Blinkers first time"
-],
 "1|Son Of Vadamos": [
 "Declining deep in prep",
 "Class drop (rating)"
@@ -26,9 +22,6 @@
 "1|Empress Of China": [],
 "1|Helichrysum": [],
 "2|Whiskey And War": [],
-"2|Canticle": [
-"Blinkers first time"
-],
 "2|Hannan Street": [],
 "2|Brutal Tempo": [],
 "2|Shujinko": [],
@@ -37,9 +30,7 @@
 "Already run to today's class",
 "Above the field in all three sections"
 ],
-"2|Back Up Barbie": [
-"Above the field in all three sections"
-],
+"2|La Moma": [],
 "2|Apadana": [
 "Already run to today's class",
 "Well backed before a bad last run",
@@ -49,10 +40,6 @@
 "Blinkers first time"
 ],
 "2|Mark's Magus": [],
-"2|Mystic Rapture": [
-"Class drop (rating)"
-],
-"2|His Lady Bay": [],
 "2|Blue Valentine": [],
 "3|Te Awam Utu": [
 "Already run to today's class"
@@ -75,12 +62,10 @@
 "3|Hollywood Hustler": [
 "Blinkers first time"
 ],
-"3|Valentina Girl": [],
 "3|Moab": [],
 "3|Tikiela": [
 "Already run to today's class"
 ],
-"3|Lucifer's Girl": [],
 "4|Nostra Bella": [
 "Already run to today's class"
 ],
@@ -120,9 +105,6 @@
 "5|Barclaps": [],
 "5|Tower Bridge": [],
 "5|Makarim": [],
-"5|Nordic Strike": [
-"Well backed before a bad last run"
-],
 "5|Marilyn's Edge": [],
 "6|Naraghi": [
 "Class drop (rating)"
@@ -157,9 +139,6 @@
 "6|Final Countdown": [
 "Above the field in all three sections"
 ],
-"6|Celibate": [
-"Above the field in all three sections"
-],
 "6|Mr Independent": [
 "Already run to today's class",
 "Well backed before a bad last run",
@@ -176,9 +155,6 @@
 "7|The Pendragon": [
 "Class drop (rating)"
 ],
-"7|Raf Attack": [
-"Class drop (rating)"
-],
 "7|Takemetothemoon": [
 "New career-best last start",
 "Above the field in all three sections"
@@ -191,8 +167,9 @@
 ],
 "7|Miracle Spin": [],
 "7|Dschingis Prestige": [],
-"7|Budjik Boy": [],
-"7|Tikemyson": [],
+"7|Budjik Boy": [
+"Above the field in all three sections"
+],
 "8|Octane Reign": [],
 "8|Pianta": [
 "Declining deep in prep"
@@ -206,7 +183,6 @@
 "Already run to today's class",
 "Well backed before a bad last run"
 ],
-"8|Eddystone": [],
 "8|First Innings": [
 "Third-up, improving",
 "Class drop (rating)"
@@ -216,6 +192,5 @@
 ],
 "8|Hoodys Horse": [],
 "8|Surfy Pete": [],
-"8|Crown Of Russia": [],
 "8|Weather Delay": []
 }

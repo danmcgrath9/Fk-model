@@ -1,101 +1,101 @@
-# Moe Sun 18 Oct, Good 4: final fields pulled Thu 15 Oct 1:30pm, refreshed 8:00pm Melbourne (jockeys, gear, scratchings). Emergencies as SCR until they gain a start; no market yet.
-1, Bohemian Blitz, 0, 0
-1, Iron Eagle, 0, 0
-1, Mongolian Hero, 0, 0
-1, Nickibi, 0, 0
-1, Prestige Valour, 0, 0
-1, Satoshi, 0, 0
-1, Frewdamoss, 0, 0
-1, Mystic River Queen, 0, 0
-1, Ruby Guild, 0, 0
-1, Tale Of Genji, 0, 0
-1, Teddy's Trotter, 0, 0
-1, Red Tide, SCR
+# Moe Sun 18 Oct, Good 4: race morning, pulled Sun 18 Oct 9:35am Melbourne after scratchings (Form King open = fk_open).
+1, Iron Eagle, 9.50, 9.50, fk_open 19.00
+1, Frewdamoss, 11.00, 11.00, fk_open 4.40
 1, Mo, SCR
-1, Selenic, SCR
-1, Genki Girl, SCR
-2, Barossa Bourbon, 0, 0
-2, Getthereandwin, 0, 0
-2, Welcometodetroit, 0, 0
-2, Dama Royale, 0, 0
-2, Fanfire, 0, 0
-2, Tickety Boo, 0, 0
-2, Express Sonic, 0, 0
-2, Mr Sapphire, 0, 0
-2, Smart Step, 0, 0
-2, Go Maggie Mae, 0, 0
-2, Fort Of Dreams, SCR
-2, Zouie, SCR
-2, Gold Nugget, SCR
+1, Tale Of Genji, 6.00, 6.00, fk_open 4.40
+1, Mongolian Hero, 3.50, 3.50, fk_open 5.50
+1, Ruby Guild, 4.80, 4.80, fk_open 4.40
+1, Prestige Valour, SCR
+1, Teddy's Trotter, SCR
+1, Genki Girl, 13.00, 13.00, fk_open 19.00
+1, Nickibi, 21.00, 21.00, fk_open 34.00
+1, Bohemian Blitz, 15.00, 15.00, fk_open 4.80
+1, Selenic, 151.00, 151.00, fk_open 81.00
+1, Red Tide, SCR
+1, Mystic River Queen, SCR
+1, Satoshi, 8.00, 8.00, fk_open 9.00
 2, Powershare, SCR
-3, Guthrie, 0, 0
-3, Hirarkee, 0, 0
-3, Pneuma, 0, 0
-3, Shuwaib, 0, 0
-3, The Minstrel Boy, 0, 0
-3, Victory Edition, 0, 0
-3, I'mfallinforyou, 0, 0
-3, Kuheylan, 0, 0
-3, Style Guide, 0, 0
-3, Amsterdam Nights, 0, 0
-3, Miss Capri, 0, 0
-3, Smashing Success, 0, 0
-3, Rico, SCR
-3, Maharani Miss, SCR
+2, Welcometodetroit, 21.00, 21.00, fk_open 11.00
+2, Gold Nugget, 41.00, 41.00, fk_open 51.00
+2, Tickety Boo, 8.00, 8.00, fk_open 4.60
+2, Zouie, 29.00, 29.00, fk_open 17.00
+2, Fanfire, SCR
+2, Getthereandwin, SCR
+2, Dama Royale, 6.00, 6.00, fk_open 7.00
+2, Fort Of Dreams, SCR
+2, Barossa Bourbon, 71.00, 71.00, fk_open 31.00
+2, Mr Sapphire, 15.00, 15.00, fk_open 19.00
+2, Go Maggie Mae, 2.15, 2.15, fk_open 2.90
+2, Smart Step, 6.00, 6.00, fk_open 3.90
+2, Express Sonic, 10.00, 10.00, fk_open 11.00
+3, Style Guide, 10.00, 10.00, fk_open 8.00
+3, Rico, 101.00, 101.00, fk_open 61.00
+3, I'mfallinforyou, 5.00, 5.00, fk_open 8.00
+3, Maharani Miss, 101.00, 101.00, fk_open 51.00
+3, Kuheylan, 12.00, 12.00, fk_open 12.00
+3, Hirarkee, 23.00, 23.00, fk_open 13.00
+3, Victory Edition, SCR
+3, Pneuma, 9.50, 9.50, fk_open 7.00
+3, Guthrie, 81.00, 81.00, fk_open 61.00
+3, The Minstrel Boy, 3.00, 3.00, fk_open 2.15
+3, Shuwaib, 4.80, 4.80, fk_open 8.00
 3, Lollie's Galore, SCR
 3, Genomic, SCR
-4, Aseventy Seven, 0, 0
-4, Great Prosperity, 0, 0
-4, King Tagaloa, 0, 0
-4, Olney, 0, 0
-4, Devine Grunt, 0, 0
-4, Staphani, 0, 0
-4, Stole Him, 0, 0
-4, Frank Express, 0, 0
-4, Larryoctane, 0, 0
-4, Women In Uniform, 0, 0
-4, African Grey, 0, 0
+3, Amsterdam Nights, 8.50, 8.50, fk_open 8.00
+3, Smashing Success, SCR
+3, Miss Capri, SCR
+4, Women In Uniform, 18.00, 18.00, fk_open 14.67
+4, Frank Express, 11.00, 11.00, fk_open 16.75
+4, Aseventy Seven, 7.50, 7.50, fk_open 7.50
 4, Opus, SCR
+4, Great Prosperity, SCR
+4, Larryoctane, 15.00, 15.00, fk_open 8.17
 4, Kiwiesque, SCR
-5, Bleak Mid Winter, 0, 0
-5, Irresistible Sir, 0, 0
-5, Sleeping Tiger, 0, 0
-5, Adiuro, 0, 0
-5, Moonlight Rustler, 0, 0
+4, Devine Grunt, 17.00, 17.00, fk_open 13.00
+4, Olney, 3.80, 3.80, fk_open 3.80
+4, African Grey, 11.00, 11.00, fk_open 7.50
+4, Stole Him, 6.00, 6.00, fk_open 6.00
+4, Staphani, 4.00, 4.00, fk_open 4.20
+4, King Tagaloa, 51.00, 51.00, fk_open 19.25
+5, Moonlight Rustler, 17.00, 17.00, fk_open 10.50
+5, Squazeemoto, 14.00, 14.00, fk_open 9.25
+5, The Cruiser, 19.00, 19.00, fk_open 10.00
+5, Sleeping Tiger, 7.50, 7.50, fk_open 9.50
+5, Charming Di, 19.00, 19.00, fk_open 10.50
+5, Irresistible Sir, 4.20, 4.20, fk_open 5.75
+5, Laura's Gold, 8.00, 8.00, fk_open 6.00
 5, Shyleah, SCR
-5, Rock Glory, 0, 0
-5, The Cruiser, 0, 0
-5, Laura's Gold, 0, 0
-5, Charming Di, 0, 0
-5, Squazeemoto, SCR
 5, Cheeky Doll, SCR
+5, Adiuro, 14.00, 14.00, fk_open 11.50
 5, Bring The Thunder, SCR
-6, Ruby Avenue, 0, 0
-6, Frederick, 0, 0
-6, Gatsby Crown, 0, 0
-6, Mont Saint Michel, 0, 0
-6, Ocean's Jen, 0, 0
-6, Ze Bee Nine, 0, 0
-6, Elly Dee, 0, 0
-6, Noble Style, 0, 0
-6, Night Colours, 0, 0
-6, Alpinova, 0, 0
-6, Night Eruption, 0, 0
+5, Bleak Mid Winter, 4.80, 4.80, fk_open 5.05
+5, Rock Glory, 6.50, 6.50, fk_open 5.15
+6, Night Eruption, 41.00, 41.00, fk_open 48.50
+6, Ocean's Jen, 6.50, 6.50, fk_open 3.60
+6, Elly Dee, 11.00, 11.00, fk_open 7.75
+6, Alpinova, 7.50, 7.50, fk_open 10.00
 6, Mrs Gossip, SCR
+6, Ze Bee Nine, 14.00, 14.00, fk_open 14.50
+6, Mont Saint Michel, 8.00, 8.00, fk_open 9.75
+6, Frederick, 5.50, 5.50, fk_open 6.25
+6, Noble Style, 6.00, 6.00, fk_open 6.50
 6, Smash Blue, SCR
-7, Delightful Journey, 0, 0
-7, Russian Roni, 0, 0
-7, Up And Under, 0, 0
-7, Hard To Go Wrong, 0, 0
-7, Tassadar, 0, 0
-7, Scandoval, 0, 0
-7, Mac Kalhoun, 0, 0
-7, Shubael, 0, 0
-7, Cable De Vega, 0, 0
-7, Preservator, 0, 0
-7, Spirit Angel, 0, 0
-7, Rapido River, 0, 0
-7, Neck High, SCR
+6, Gatsby Crown, 10.00, 10.00, fk_open 8.50
+6, Night Colours, 81.00, 81.00, fk_open 26.00
+6, Ruby Avenue, 6.00, 6.00, fk_open 7.00
 7, Little Richie Turf, SCR
+7, Delightful Journey, 7.50, 7.50, fk_open 8.17
+7, Cable De Vega, 15.00, 15.00, fk_open 9.75
 7, Shout Out Girl, SCR
+7, Mac Kalhoun, 41.00, 41.00, fk_open 26.00
+7, Spirit Angel, 3.50, 3.50, fk_open 3.45
 7, Nic Says No, SCR
+7, Russian Roni, 14.00, 14.00, fk_open 14.00
+7, Hard To Go Wrong, 12.00, 12.00, fk_open 8.75
+7, Shubael, 6.00, 6.00, fk_open 5.50
+7, Up And Under, 13.00, 13.00, fk_open 14.50
+7, Preservator, 5.50, 5.50, fk_open 7.33
+7, Neck High, SCR
+7, Rapido River, 61.00, 61.00, fk_open 43.00
+7, Scandoval, 21.00, 21.00, fk_open 11.50
+7, Tassadar, 12.00, 12.00, fk_open 11.50

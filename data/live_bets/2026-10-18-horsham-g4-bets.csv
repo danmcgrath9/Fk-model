@@ -1,0 +1,11 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,HSHM_181026_1,Courting,top_pick,1.85,1.85,1.85,1.85,,1.82,0.017,Class drop (rating),1.0,no,,
+2,HSHM_181026_2,Best Terms,top_pick,2.0,2.0,1.95,1.95,,1.78,0.099,Beaten by the pace last start; Already run to today's class; Above the field in all three sections,1.0,no,,
+3,HSHM_181026_3,Cosmic Voyage,top_pick,2.0,2.0,1.9,1.9,,1.72,0.106,Already run to today's class; Late 600 beyond the tempo; Above the field in all three sections; EARLY ONLY: bet near the open,1.0,no,,
+4,HSHM_181026_4,Gina's A Star,top_pick,3.2,3.2,3.3,3.3,,3.01,0.097,Already run to today's class; Above the field in all three sections,1.0,no,,
+5,HSHM_181026_5,Bazzar,top_pick,4.0,4.0,6.0,6.0,,3.92,0.531,Already run to today's class; Above the field in all three sections,1.0,no,,
+5,HSHM_181026_5,Makarim,value_20c,16.0,16.0,16.0,16.0,,11.46,0.396,,0.57,no,,
+6,HSHM_181026_6,Col Klink,top_pick,3.9,3.9,4.6,4.6,,3.77,0.22,Late 600 beyond the tempo; EARLY ONLY: bet near the open,1.0,no,,
+7,HSHM_181026_7,The Pendragon,top_pick,3.7,3.7,4.0,4.0,,3.78,0.059,Class drop (rating),1.0,no,,
+8,HSHM_181026_8,Surfy Pete,top_pick,4.4,4.4,9.0,9.0,,4.89,0.839,,1.0,no,,
+8,HSHM_181026_8,Weather Delay,value_20c,7.5,7.5,7.0,7.0,,5.5,0.273,,1.21,no,,

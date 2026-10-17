@@ -1,0 +1,9 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,MOE_181026_1,Mongolian Hero,top_pick,3.5,3.5,5.5,5.5,,5.24,0.049,Class drop (rating),1.0,no,,
+3,MOE_181026_3,The Minstrel Boy,top_pick,3.0,3.0,2.15,2.15,,2.37,-0.093,Class drop (rating); Blinkers first time,1.0,no,,
+4,MOE_181026_4,Staphani,top_pick,4.0,4.0,4.2,4.2,,5.13,-0.181,,1.0,no,,
+5,MOE_181026_5,Irresistible Sir,top_pick,4.2,4.2,5.75,5.75,,6.17,-0.067,Declining deep in prep,1.0,no,,
+6,MOE_181026_6,Gatsby Crown,value_20c,10.0,10.0,8.5,8.5,,7.08,0.201,,0.98,no,,
+6,MOE_181026_6,Noble Style,top_pick,6.0,6.0,6.5,6.5,,6.28,0.035,Already run to today's class; Declining deep in prep,1.0,no,,
+6,MOE_181026_6,Ze Bee Nine,value_20c,14.0,14.0,14.5,14.5,,9.4,0.543,,0.8,no,,
+7,MOE_181026_7,Spirit Angel,top_pick,3.5,3.5,3.45,3.45,,5.54,-0.378,,1.0,no,,

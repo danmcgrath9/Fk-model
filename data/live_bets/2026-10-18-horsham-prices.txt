@@ -1,102 +1,102 @@
-# Horsham Sun 18 Oct, Good 4: final fields pulled Thu 15 Oct 1:15pm, refreshed 8:00pm Melbourne (jockeys, gear, scratchings). Emergencies as SCR until they gain a start; no market yet.
-1, Sitar, 0, 0
-1, Son Of Vadamos, 0, 0
-1, Taajwar, 0, 0
-1, Vadar, 0, 0
-1, Eminent Ella, 0, 0
-1, Empress Of China, 0, 0
-1, Helichrysum, 0, 0
-1, Under Control, 0, 0
-1, Courting, 0, 0
-1, Little Ally Bama, 0, 0
-2, Best Terms, 0, 0
-2, Brutal Tempo, 0, 0
-2, Shujinko, 0, 0
-2, Apadana, 0, 0
-2, Back Up Barbie, 0, 0
-2, Blue Valentine, 0, 0
-2, His Lady Bay, 0, 0
-2, Mark's Magus, 0, 0
-2, Mystic Rapture, 0, 0
-2, Bronx Brawler, 0, 0
-2, Canticle, 0, 0
-2, Hannan Street, 0, 0
-2, Whiskey And War, 0, 0
-2, La Moma, SCR
-3, Hard Hitter, 0, 0
-3, Whata Stretch, 0, 0
-3, Buchan Outkast, 0, 0
-3, Moab, 0, 0
-3, Te Awam Utu, 0, 0
-3, Tikiela, 0, 0
-3, Cosmic Voyage, 0, 0
-3, Hollywood Hustler, 0, 0
-3, Impendalot, 0, 0
-3, Lucifer's Girl, 0, 0
-3, Starseatic, 0, 0
-3, Strength Within, 0, 0
-3, Valentina Girl, 0, 0
-3, Miss Verona, SCR
+# Horsham Sun 18 Oct, Good 4: race morning, pulled Sun 18 Oct 9:35am Melbourne after scratchings (Form King open = fk_open).
+1, Son Of Vadamos, 29.00, 29.00, fk_open 26.00
+1, Eminent Ella, 27.00, 27.00, fk_open 51.00
+1, Sitar, 23.00, 23.00, fk_open 17.00
+1, Vadar, 10.00, 10.00, fk_open 13.00
+1, Taajwar, 29.00, 29.00, fk_open 26.00
+1, Under Control, SCR
+1, Empress Of China, 14.00, 14.00, fk_open 26.00
+1, Helichrysum, 61.00, 61.00, fk_open 51.00
+1, Little Ally Bama, 2.70, 2.70, fk_open 2.90
+1, Courting, 1.85, 1.85, fk_open 1.85
+2, Mystic Rapture, SCR
+2, Shujinko, 14.00, 14.00, fk_open 10.00
+2, La Moma, 126.00, 126.00, fk_open 101.00
+2, Mark's Magus, 101.00, 101.00, fk_open 101.00
+2, Back Up Barbie, SCR
+2, His Lady Bay, SCR
+2, Brutal Tempo, 5.50, 5.50, fk_open 16.00
+2, Blue Valentine, 6.00, 6.00, fk_open 5.50
+2, Best Terms, 2.00, 2.00, fk_open 1.95
+2, Apadana, 17.00, 17.00, fk_open 12.00
+2, Canticle, SCR
+2, Hannan Street, 81.00, 81.00, fk_open 51.00
+2, Whiskey And War, 6.00, 6.00, fk_open 10.00
+2, Bronx Brawler, 31.00, 31.00, fk_open 101.00
+3, Whata Stretch, 41.00, 41.00, fk_open 51.00
+3, Te Awam Utu, 51.00, 51.00, fk_open 17.00
+3, Hard Hitter, 18.00, 18.00, fk_open 51.00
 3, Immortal Truth, SCR
-4, Monix, 0, 0
-4, Razzo Rosso, 0, 0
-4, Milos Filos, 0, 0
-4, Miss Mahjong, 0, 0
-4, Min Kiata, 0, 0
-4, Nostra Bella, 0, 0
-4, Gina's A Star, 0, 0
-4, Tapo, 0, 0
-4, Xtramagic, 0, 0
-5, Nordic Strike, 0, 0
-5, Bazzar, 0, 0
-5, Second Fix, 0, 0
-5, Tower Bridge, 0, 0
-5, Edges Diamond, 0, 0
-5, Marilyn's Edge, 0, 0
-5, Makarim, 0, 0
-5, Thunder Park, 0, 0
-5, What A Ripper, 0, 0
-5, Attain, 0, 0
-5, Caribbean Villa, 0, 0
-5, Barclaps, 0, 0
-6, Figlio D'argento, 0, 0
-6, Endless Summer, 0, 0
-6, Mr Independent, 0, 0
-6, Royal Infantry, 0, 0
-6, Celibate, 0, 0
-6, Col Klink, 0, 0
-6, Coronationhercules, 0, 0
-6, Colour Our World, 0, 0
-6, Final Countdown, 0, 0
-6, Naraghi, 0, 0
-6, Stargust, 0, 0
-6, Cat Noir, 0, 0
-6, Spex, 0, 0
-6, Hedjet, SCR
-6, Vim Vitae, SCR
-6, Racey Casey, SCR
+3, Buchan Outkast, 61.00, 61.00, fk_open 51.00
+3, Moab, 8.50, 8.50, fk_open 13.00
+3, Tikiela, 41.00, 41.00, fk_open 17.00
+3, Miss Verona, SCR
+3, Hollywood Hustler, 41.00, 41.00, fk_open 17.00
+3, Starseatic, 12.00, 12.00, fk_open 17.00
+3, Impendalot, 41.00, 41.00, fk_open 17.00
+3, Lucifer's Girl, SCR
+3, Valentina Girl, SCR
+3, Cosmic Voyage, 2.00, 2.00, fk_open 1.90
+3, Strength Within, 3.10, 3.10, fk_open 9.00
+4, Tapo, 18.00, 18.00, fk_open 17.00
+4, Xtramagic, 14.00, 14.00, fk_open 8.50
+4, Razzo Rosso, 10.00, 10.00, fk_open 8.50
+4, Monix, 12.00, 12.00, fk_open 7.00
+4, Min Kiata, 26.00, 26.00, fk_open 17.00
+4, Gina's A Star, 3.20, 3.20, fk_open 3.30
+4, Miss Mahjong, 4.60, 4.60, fk_open 5.50
+4, Milos Filos, 3.60, 3.60, fk_open 3.80
+4, Nostra Bella, 11.00, 11.00, fk_open 12.00
+5, Thunder Park, 16.00, 16.00, fk_open 16.00
+5, Barclaps, 151.00, 151.00, fk_open 151.00
+5, Second Fix, 29.00, 29.00, fk_open 18.00
+5, Attain, 15.00, 15.00, fk_open 18.00
+5, Edges Diamond, 6.00, 6.00, fk_open 9.50
+5, Marilyn's Edge, 6.50, 6.50, fk_open 6.00
+5, Nordic Strike, SCR
+5, Makarim, 16.00, 16.00, fk_open 16.00
+5, Tower Bridge, 6.00, 6.00, fk_open 9.00
+5, Bazzar, 4.00, 4.00, fk_open 6.00
+5, Caribbean Villa, 11.00, 11.00, fk_open 18.00
+5, What A Ripper, 5.00, 5.00, fk_open 4.60
+6, Final Countdown, 11.00, 11.00, fk_open 10.00
+6, Royal Infantry, 15.00, 15.00, fk_open 11.00
+6, Cat Noir, 14.00, 14.00, fk_open 13.00
+6, Stargust, 18.00, 18.00, fk_open 10.00
+6, Colour Our World, 10.00, 10.00, fk_open 13.00
 6, Brutify, SCR
-7, The Pendragon, 0, 0
-7, Miracle Spin, 0, 0
-7, Any Luck, 0, 0
-7, Aftermath, 0, 0
-7, Raf Attack, 0, 0
-7, Tikemyson, 0, 0
-7, Budjik Boy, 0, 0
-7, Male Model, 0, 0
-7, Nothingelsematters, 0, 0
-7, Dschingis Prestige, 0, 0
-7, Takemetothemoon, 0, 0
-8, First Innings, 0, 0
-8, Kilna, 0, 0
-8, Eddystone, 0, 0
-8, Octane Reign, 0, 0
-8, Weather Delay, 0, 0
-8, Kingsford, 0, 0
-8, Crown Of Russia, 0, 0
-8, Late Harvest, 0, 0
-8, State Of Affairs, 0, 0
-8, Surfy Pete, 0, 0
-8, Philharmonic, 0, 0
-8, Pianta, 0, 0
-8, Hoodys Horse, 0, 0
+6, Figlio D'argento, 14.00, 14.00, fk_open 26.00
+6, Racey Casey, SCR
+6, Endless Summer, 7.00, 7.00, fk_open 8.50
+6, Spex, 6.50, 6.50, fk_open 6.00
+6, Mr Independent, 11.00, 11.00, fk_open 18.00
+6, Celibate, SCR
+6, Coronationhercules, 9.00, 9.00, fk_open 8.50
+6, Naraghi, 23.00, 23.00, fk_open 19.00
+6, Col Klink, 3.90, 3.90, fk_open 4.60
+6, Vim Vitae, SCR
+6, Hedjet, SCR
+7, Tikemyson, SCR
+7, Male Model, 15.00, 15.00, fk_open 13.00
+7, Miracle Spin, 6.00, 6.00, fk_open 4.60
+7, Any Luck, 20.00, 20.00, fk_open 15.00
+7, Takemetothemoon, 14.00, 14.00, fk_open 17.00
+7, Aftermath, 3.70, 3.70, fk_open 7.50
+7, Dschingis Prestige, 35.00, 35.00, fk_open 51.00
+7, Budjik Boy, 9.50, 9.50, fk_open 11.00
+7, Raf Attack, SCR
+7, Nothingelsematters, 6.50, 6.50, fk_open 6.00
+7, The Pendragon, 3.70, 3.70, fk_open 4.00
+8, Surfy Pete, 4.40, 4.40, fk_open 9.00
+8, Hoodys Horse, 12.00, 12.00, fk_open 13.00
+8, First Innings, 23.00, 23.00, fk_open 13.00
+8, Pianta, 16.00, 16.00, fk_open 8.00
+8, Eddystone, SCR
+8, Kilna, 10.00, 10.00, fk_open 8.00
+8, Late Harvest, 13.00, 13.00, fk_open 18.00
+8, Kingsford, 10.00, 10.00, fk_open 8.50
+8, State Of Affairs, 11.00, 11.00, fk_open 8.50
+8, Weather Delay, 7.50, 7.50, fk_open 7.00
+8, Octane Reign, 5.00, 5.00, fk_open 9.00
+8, Philharmonic, 10.00, 10.00, fk_open 9.00
+8, Crown Of Russia, SCR
