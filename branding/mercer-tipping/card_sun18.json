@@ -1,0 +1,55 @@
+{
+ "day": "Sunday",
+ "date": "18 October",
+ "footer": "Win bets.",
+ "meetings": [
+  {
+   "name": "Horsham",
+   "note": "Good 4",
+   "bets": [
+    {
+     "race": 5,
+     "horse": "Bazzar",
+     "price": "$6",
+     "units": "1.55u",
+     "time": "3:55PM"
+    },
+    {
+     "race": 8,
+     "horse": "Surfy Pete",
+     "price": "$9",
+     "units": "1.43u",
+     "time": "5:40PM"
+    }
+   ]
+  },
+  {
+   "name": "Moe",
+   "note": "Good 4",
+   "bets": [
+    {
+     "race": 5,
+     "horse": "Sleeping Tiger",
+     "price": "$9.50",
+     "units": "1.34u",
+     "time": "4:10PM"
+    },
+    {
+     "race": 6,
+     "horse": "Ze Bee Nine",
+     "price": "$14.50",
+     "units": "0.79u",
+     "time": "4:45PM"
+    },
+    {
+     "race": 7,
+     "horse": "Preservator",
+     "price": "$7.33",
+     "units": "1u",
+     "time": "5:20PM"
+    }
+   ]
+  }
+ ],
+ "prices": false
+}
