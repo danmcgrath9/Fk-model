@@ -1021,3 +1021,17 @@ the race-day best price and BSP; the weekend, Thu 15 to Sun 18, 27 races with 9:
   +589u. Dropped with x2 on the firm third +867u / +867u; kept at x0.5 with x2 on the firm third +899u / +952u (best).
   "Forecast to drift" means the least likely of our value bets to firm, not a horse expected to lose money: they are
   still value at the open, and a smaller stake on them beats none.
+- LIVE FROM 19 OCT 2026 (founder: "Yeah fine, let's do it", on dropping the forecast-to-drift third and doubling the
+  forecast-to-firm third). drift_forecast.py holds the model (trained on every holdout race from 6 May to 9 Oct with an
+  open and BSP, 13,990 runners, stage-2 v6 price; models/drift_model.txt + drift_meta.json, copied to the live model
+  dir) and betmatic_orders.py --drift DAY_NPZ applies it (run_meeting.sh passes it). The orders go in before the
+  market, so the forecast is worked out at each step's own price (opening chance there = 1/price over the median
+  opening book for the field size) and the thirds are set at the bets' minimum odds. t_drift_orders.py tests exactly
+  that, cross-fitted by date halves (before / from 15 Jul), 16c deduction:
+  live stakes 1,589 bets, 3,170u invested, +1,347u (+42%; halves +682u / +665u); founder's pick 1,301 bets, 3,797u,
+  +1,860u (+49%; +981u / +880u); half on the drift third and x2 on firmers 1,589 bets, 4,080u, +1,899u (+47%);
+  drop the drift third, firmers at normal stakes 2,604u, +1,270u (+49%). The pick wins both halves. Because the
+  forecast firms as the price rises, a horse is usually "drift" only at its lowest step: in effect the bottom step is
+  dropped for those horses and the higher steps are doubled. More money goes in (about 20% more turnover in the
+  backtest; Kyneton 20 Oct 51.8u to 73.1u if every order fired). Not modelled in the test, same for every version:
+  first starters, first-up blocks, the race-level first-starter rule. Re-fit the drift model when stage 2 is retrained.

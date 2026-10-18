@@ -22,4 +22,4 @@ python3.13 shade_back.py $B-v6.json $US | tail -1
 python3.13 angles_day.py $US $B-angles.json | tail -1
 python3.13 fs_json.py $US $B-first-starters.json
 python3.13 fu_json.py $US $B-first-up-blocks.json > ${U%.npz}_fu.log; head -1 ${U%.npz}_fu.log
-[ -n "${LOUT:-}" ] && exit 0; cd $R && python3.13 betmatic_orders.py $P $G $L/$P-betmatic-preopen.csv | tail -4
+[ -n "${LOUT:-}" ] && exit 0; cd $R && python3.13 betmatic_orders.py $P $G $L/$P-betmatic-preopen.csv --drift "$( [[ $US = /* ]] && echo $US || echo $S/$US )" --drift-dir $S | tail -5   # firm/drift stakes from 18 Oct 2026 (drift_forecast.py)

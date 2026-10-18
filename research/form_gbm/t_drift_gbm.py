@@ -43,6 +43,8 @@ X = np.asarray(D["X"], np.float32)[idx]
 fld = cnt[ri[idx]].astype(np.float32)
 Xa = np.column_stack([X, np.log(qo[idx]), fld]); na = cols + ["open_chance_log", "field"]
 Xb = np.column_stack([Xa, dis[idx]]); nb = na + ["OUR_MODEL_vs_open"]
+if os.environ.get("FEATS") == "min":   # prices only: our price vs the open, the open chance, field size
+    Xb = np.column_stack([dis[idx], np.log(qo[idx]), fld]); nb = ["OUR_MODEL_vs_open", "open_chance_log", "field"]; print("drift model on prices only")
 Y = y[idx]
 params = dict(objective="regression", learning_rate=0.03, num_leaves=15, min_data_in_leaf=80, feature_fraction=0.3,
               bagging_fraction=0.8, bagging_freq=1, lambda_l2=10, verbose=-1)

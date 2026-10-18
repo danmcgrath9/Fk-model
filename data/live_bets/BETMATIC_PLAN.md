@@ -137,3 +137,10 @@ research/form_gbm/t_short_edge.py. Each runner whose 1.15 minimum is under $4 ge
 normal 1.2 ladder's steps under $4 are lifted to $4.00, so any opening price meets exactly one rule. Under $3 opens were
 break-even at every edge tried; the 1.15 extras still beat the open (77% shortened, open 1.23x BSP). Moe: 1 runner
 affected (The Minstrel Boy), Echuca: 1 (Sihaya).
+
+## Firm/drift stakes from 18 Oct 2026 (founder: "Yeah fine, let's do it")
+Every order ladder now carries the firm/drift forecast (research/form_gbm/drift_forecast.py): at each price step, a
+runner forecast to firm (the market expected to come to us) gets twice the stake rule's stake (still capped at 5u), a
+runner forecast to drift gets no order at that step, the middle third is unchanged. Backtest as the orders fire: +1,860u
+on 3,797u (+49%) against +1,347u on 3,170u (+42%) on the live stakes, better in both halves. The order sheet's note
+shows the forecast for each step ("forecast drift/firm/firm by step"). Built by run_meeting.sh from the next meeting.

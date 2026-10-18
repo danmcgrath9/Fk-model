@@ -30,16 +30,20 @@ SHADE, TIERS = 0.95, (1.0, 1.25, 1.5)
 SHORT_OPEN, SHORT_EDGE = 4.0, 1.15   # 14 Oct: 3 steps sized at the next step: same holdout profit as 8 (+801u), at most 3 bets a horse (t_monthly.py)
 
 
-def tiers(min_odds, cap, chance_at, only_ride, field):
+def tiers(min_odds, cap, chance_at, only_ride, field, mult_at=None):
     """[(price, extra stake, total stake)]: each step adds what the stake rule gives at the NEXT step's price over the
     steps before it, so a horse opening anywhere in a step is staked as if at the top of it (14 Oct 2026,
     t_betmatic_tiers.py: 8 steps sized this way made 18% more on the holdout than 3 steps sized at their own price,
-    at the same ROI). The last step is sized at its own price."""
+    at the same ROI). The last step is sized at its own price.
+    mult_at(t): the firm/drift multiplier at a step's own price (drift_forecast.py, 18 Oct 2026); the step's total is
+    the stake rule's total times it, capped at the stake rule's maximum."""
     ts = [round(min_odds * m, 2) for m in TIERS if min_odds * m < cap]
     out, prev = [], 0.0
     for k, t in enumerate(ts):
         tp = ts[k + 1] if k + 1 < len(ts) else t
         s = stake_rule.stake(chance_at(tp), tp, only_ride, field)
+        if mult_at is not None:
+            s = round(min(stake_rule.MAX_UNITS, s * mult_at(t)), 2)
         if s - prev >= 0.01:
             out.append((t, round(s - prev, 2), s)); prev = s
     return out
@@ -50,6 +54,9 @@ def main():
     ap.add_argument("prefix"); ap.add_argument("gtag"); ap.add_argument("out")
     ap.add_argument("--times", default=""); ap.add_argument("--after-open", action="store_true")
     ap.add_argument("--v6", help="price file to use instead of DAYPREFIX-GTAG-v6.json (e.g. the version priced before the market)")
+    ap.add_argument("--drift", metavar="DAY_NPZ", help="stake by the firm/drift forecast (drift_forecast.py): the day's "
+                                      "final-field npz the model file was priced from; the forecast model is read from --drift-dir")
+    ap.add_argument("--drift-dir", default=os.environ.get("FK_MODEL_DIR", "."), help="directory holding drift_model.txt and drift_meta.json")
     ap.add_argument("--numbers", help="entry_numbers.py output (race|number|name|emergency|scratched): adds the saddlecloth "
                                       "number BetMatic bets on (default DAYPREFIX-entry-numbers.txt if it exists)")
     a = ap.parse_args()
@@ -99,12 +106,37 @@ def main():
     for r in v:
         field[int(r["race"])] = field.get(int(r["race"]), 0) + 1
     rows = []
+    FC, XR = None, {}
+    if a.drift:   # firm/drift stakes (founder, 18 Oct 2026: drop the forecast-to-drift third, x2 on the forecast-to-firm third)
+        import numpy as np, drift_forecast
+        FC = drift_forecast.Forecast(a.drift_dir); U = np.load(a.drift, allow_pickle=True)
+        uc = {str(c): j for j, c in enumerate(U["cols"])}; miss = [c for c in FC.cols if c not in uc]
+        if miss:
+            sys.exit(f"STOP: the day file lacks {len(miss)} columns the drift model needs ({', '.join(miss[:5])}...)")
+        sel = [uc[c] for c in FC.cols]
+        for i in range(len(U["name"])):
+            XR[(int(U["race_number"][U["race_idx"][i]]), nm(str(U["name"][i])))] = np.asarray(U["X"][i, sel], np.float32)
+        print(f"firm/drift stakes: drift third x{drift_forecast.DRIFT_MULT:g}, firm third x{drift_forecast.FIRM_MULT:g} "
+              f"(forecast thresholds {FC.t1:.3f} / {FC.t2:.3f})")
+    nodrift = []
 
     def add(r, ours, min_odds, cap, chance_at, note, band=None):
         """band: None for one ladder; "open4+" lifts every step under SHORT_OPEN to it; "under4" keeps only the steps
         under SHORT_OPEN and caps them there. Steps are sized on the full ladder first, so the stakes match the backtest."""
         rc = int(r["race"])   # max_odds: the 3x-our-price (or EARLY $8) ceiling; an open above it is not a bet (14 Oct 2026)
-        ts = tiers(min_odds, cap, chance_at, r.get("only_ride", False), field[rc])
+        mult_at = None
+        if FC is not None:
+            xr = XR.get((rc, nm(r["horse"])))
+            if xr is None:
+                sys.exit(f"STOP: R{rc} {r['horse']} is not in the day file given to --drift")
+            mult_at = lambda t, xr=xr, pm=r["p_model"], f=field[rc]: FC.mult(xr, pm, t, f)[0]
+            ms = [mult_at(round(min_odds * mm, 2)) for mm in TIERS if min_odds * mm < cap]
+            lab_ = {0.0: "drift", 1.0: "middle", 2.0: "firm"}
+            fc_note = "forecast " + "/".join(lab_.get(x, f"x{x:g}") for x in ms) + " by step"
+            note = (note + "; " if note else "") + fc_note
+        ts = tiers(min_odds, cap, chance_at, r.get("only_ride", False), field[rc], mult_at)
+        if FC is not None and not ts:
+            nodrift.append(f"R{rc} {r['horse']}")
         hi = cap
         if band == "open4+":
             ts = [(max(t, SHORT_OPEN), extra, total) for t, extra, total in ts]
@@ -143,6 +175,8 @@ def main():
     with open(a.out, "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0]) if rows else ["date"]); w.writeheader(); w.writerows(rows)
     print(f"{a.out}: {len(rows)} orders on {len({(x['race'], x['horse']) for x in rows})} runners")
+    if FC is not None and nodrift:
+        print(f"forecast to drift at every step, no order (ladder dropped): {', '.join(sorted(set(nodrift)))}")
 
 
 if __name__ == "__main__":
