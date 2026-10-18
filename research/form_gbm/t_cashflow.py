@@ -61,3 +61,22 @@ print(f"\n- money out at once (stakes on the next 3 days' races): typical ${np.m
 cum = np.cumsum([x[3] for x in sorted(bets)]); dd = (np.maximum.accumulate(cum) - cum).max()
 print(f"- worst losing run (peak to trough, bets in date order): {dd:.0f}u = ${dd * UNIT:,.0f}")
 print(f"- total: staked ${sum(x[2] for x in bets) * UNIT:,.0f}, profit ${sum(x[3] for x in bets) * UNIT:+,.0f} over {days_all} days")
+# money out at once, on the founder's timings (18 Oct 2026: "bets are returned instantly. Saturday metro meetings go out
+# Wednesday afternoon. And everything else 2 days before"): a meeting's stakes are out from its market opening until
+# its races run; winnings back at once. Peak on day D = everything on D still to run + every market already up.
+METRO = {"Flemington", "Caulfield", "Caulfield Heath", "Moonee Valley", "Sandown Hillside", "Sandown Lakeside"}
+mstake = collections.defaultdict(float)
+for dt, tk, st, pl in bets:
+    mstake[(dt, tk)] += st
+peak = []
+for c in cal:
+    tot = 0.0
+    for (dt, tk), st in mstake.items():
+        r = date.fromisoformat(dt); lead = 3 if (tk in METRO and r.weekday() == 5) else 2
+        if r - timedelta(days=lead) <= c <= r: tot += st
+    peak.append(tot)
+wd = collections.defaultdict(list)
+for c, v in zip(cal, peak): wd[c.strftime("%a")].append(v)
+print(f"\n- MONEY OUT AT ONCE, founder's timings (Saturday metro from Wednesday, the rest 2 days before, winnings back at once):"
+      f" typical ${np.median(peak) * UNIT:,.0f}, busy 1 in 10 ${np.quantile(peak, 0.9) * UNIT:,.0f}, most ${max(peak) * UNIT:,.0f}")
+print("  by day of the week (typical / most): " + ", ".join(f"{k} ${np.median(wd[k]) * UNIT:,.0f} / ${max(wd[k]) * UNIT:,.0f}" for k in ("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")))
