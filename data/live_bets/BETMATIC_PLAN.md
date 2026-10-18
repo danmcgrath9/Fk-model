@@ -152,3 +152,5 @@ no order; firmers still x2, 5u cap. Backtest as the orders fire: +1,937u on 4,36
 **Final, 18 Oct (founder: "double the top third bets, keep mid tier the same and then lower tier half"):** firm third
 x2, middle x1, drift third x0.5, 5u cap. Backtest as the orders fire: +1,899u on 4,080u (+47%). The units go to the best
 bets first; when the accounts get limited, spread them wider.
+
+**Unit size from 18 Oct 2026: $50** (founder: "$50 unit sizes today and moving forward until I tell you"; was $100). The fk-betmatic send workflow defaults to 50; the most on one horse is 5u = $250.

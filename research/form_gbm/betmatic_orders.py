@@ -21,6 +21,7 @@ here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, here)
 import stake_rule
 L = os.path.join(here, "../../data/live_bets")
 SHADE, TIERS = 0.95, (1.0, 1.25, 1.5)
+UNIT_DOLLARS = 50   # founder, 18 Oct 2026: $50 a unit until he says otherwise (the send workflow's unit input is what BetMatic gets)
 # Short opens (founder, 16 Oct 2026: "do it for Moe and moving forward"; t_short_edge.py): when the TAB opens a runner
 # under $4 the edge is 1.15, not 1.2. On the holdout the extra bets this lets in still beat the open like our normal ones
 # (77% shortened after the open, open 1.23x BSP, against 83% and 1.31x for the live under-$4 bets); 1.10 and below fell
@@ -144,7 +145,7 @@ def main():
             ts = [x for x in ts if x[0] < SHORT_OPEN]; hi = min(cap, SHORT_OPEN - 0.01)
         for k, (t, extra, total) in enumerate(ts, 1):
             rows.append(dict(date=date, venue=venue, race=rc, jump=times.get(str(rc), ""), number=numbers.get((rc, nm(r["horse"])), ""), horse=r["horse"], bet="WIN",
-                             min_odds=f"{t:.2f}", max_odds=f"{hi:.2f}", stake_units=f"{extra:.2f}", stake_dollars=f"{extra * 100:.0f}",
+                             min_odds=f"{t:.2f}", max_odds=f"{hi:.2f}", stake_units=f"{extra:.2f}", stake_dollars=f"{extra * UNIT_DOLLARS:.0f}",
                              order=f"{k} of {len(ts)}", total_if_all_fire=f"{total:.2f}u", our_price=f"{ours:.2f}", note=note))
 
     if a.after_open:
