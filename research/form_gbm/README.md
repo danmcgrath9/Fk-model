@@ -967,3 +967,38 @@ ROI barely moves with stake size (33-36% holdout, 58-60% earlier): a bigger stak
 drawdown in about equal measure. The only-ride and small-field multipliers are not noise: they lift ROI about 2 points,
 and the bets they push to the max are the best in the book (live 4.5u+ bets: +80% holdout, +124% earlier). A max bet
 "without rules" comes from a bigger Kelly multiplier: x125 makes 103 holdout bets 4.5u+ instead of 15. Not changed.
+
+## Getting closer to BSP, and why it moves (18 Oct 2026, t_drift_gbm.py, t_weekend_bsp.py; founder: "a backtest with the data we pulled this weekend, for getting closer to bsp, always keeping the model the sharpest etc and looking for betting angles / why bsp is moving")
+HOLDOUT (1,194 races from 3 Jun with every open and BSP, v10 stage-1 price out of sample, two date halves each scored by
+a model fitted on the other). The move y = log(BSP chance / opening chance), sd 0.73.
+- Predictable share of the move (R2): our price vs the open, straight line 0.45 (BSP goes 0.88-0.92 of the way from
+  the open to our price); form inputs + the open, no price of ours, 0.31; both 0.50. The market moves to where the
+  form says, and our price is most of that.
+- Drivers after our price (gain share): our price vs the open 35%, then the opening chance, jockey win rate, trip vs
+  the horse's best, Neural rating, market class (past BSPs), WFA, peak ratings. Firm: good jockeys, high-rated horses,
+  in their trip. Drift: horses whose past prices drifted (fl_mean5_move top fifth x0.66 against x0.95) and horses that
+  ran better than their price last time (x0.71 against x1.02).
+- SHARPER PRICE: "predicted BSP" = the open moved by the drift model (with our price as an input): KL to BSP 0.0823,
+  winner log loss 1.8924, against the live-style blend 0.0840 / 1.8964 and ours alone 0.0897 / 1.9046.
+- ANGLE: value-at-open bets (1,422, live rules on the blend, 16c deduction) by the forecast: forecast to firm most
+  (top third) +60% at the open and +1% at BSP, in both halves (+60% / +59%); middle +6%; drift third +12% (-14% / +35%,
+  inconsistent). Within every edge band the forecast-to-firm half beats the other half: edge 20-50% +23% vs +12%,
+  50-100% +44% vs -1%, 100%+ +113% vs +53%. So it adds to the edge, it is not the edge again.
+- VALUE ON THE PREDICTED BSP instead of the blend: 1,528 bets +31% flat at the open (live rule 1,422, +26%), flat at
+  BSP +2% (live -9%). Half by half, staked on the live stake rule: Jun-Jul +23% / +439u (live +25% / +446u, a tie);
+  Aug-Oct, where the drift model saw only earlier races, +58% / +975u (live +50% / +741u). Not adopted yet: one honest
+  half, and the drift model is trained on stage 1, not the live stage-2 price. Next: refit on the live price and
+  forward-test it beside the live orders.
+LIVE MEETINGS (5 to 18 Oct, 66 races where every starter had our pre-market price, the race-morning re-price, the open,
+the race-day best price and BSP; the weekend, Thu 15 to Sun 18, 27 races with 9:35am pulls):
+- KL to BSP, all / weekend: open 0.150 / 0.175, ours before the market 0.096 / 0.111, our race-morning re-price
+  (blended with the open) 0.096 / 0.111, race-morning market 0.054 / 0.061. BSP moved 0.86 of the way to our price;
+  where we were 25%+ off the open it moved our way 79% / 83% of the time. 43-44% of the open-to-BSP move is done by
+  the race-morning pull.
+- The morning-to-BSP move keeps going the way the open-to-morning move went (slope +0.32 / +0.42): momentum, not
+  reversal. Our re-price against the morning market still points the way to BSP (correlation 0.26 / 0.28).
+- RACE-MORNING PRICE: blending the re-price with the OPEN adds nothing on the day (0.096 either way). Blended with the
+  MORNING market instead (0.20 ours + 0.90-0.95 morning, fitted on one half of the meetings, scored on the other): KL
+  0.054 -> 0.049 (weekend 0.061 -> 0.056). The 9:30 top-up price should lean on the morning market, not the open.
+- Filled bets (24 with full races): median open/BSP 1.53, morning/BSP 0.95; 88% had firmed by race morning, so a
+  9:30 top-up on a filled bet is usually below the BSP it ends at.
