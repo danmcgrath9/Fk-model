@@ -1,0 +1,11 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,ECHA_191026_1,Sihaya,top_pick,2.0,2.0,2.3,2.3,,2.66,-0.137,Already run to today's class; Class drop (rating); EARLY ONLY: bet near the open,1.0,no,,
+2,ECHA_191026_2,Sayalero,top_pick,4.2,4.2,3.9,3.9,,3.39,0.15,Already run to today's class; Late 600 beyond the tempo,1.0,no,,
+3,ECHA_191026_3,Truant,top_pick,3.4,3.4,4.2,4.2,,3.1,0.355,Already run to today's class; Class drop (rating); Late 600 beyond the tempo; EARLY ONLY: bet near the open,1.0,no,,
+4,ECHA_191026_4,Meet The Prince,top_pick,3.4,3.4,4.6,4.6,,3.53,0.304,,1.0,no,,
+5,ECHA_191026_5,Mickio,top_pick,3.6,3.6,7.5,7.5,,3.94,0.903,Well backed before a bad last run; Class drop (rating),1.0,no,,
+6,ECHA_191026_6,Sheanadh,top_pick,4.6,4.6,5.5,5.5,,5.25,0.047,Above the field in all three sections,1.0,no,,
+6,ECHA_191026_6,Ice Quake,EDGE,7.0,7.0,8.5,8.5,,5.3,0.605,Class drop (rating),1.95,no,,
+6,ECHA_191026_6,Ice Quake,value_20c,7.0,7.0,8.5,8.5,,5.3,0.605,Class drop (rating),1.95,no,,
+7,ECHA_191026_7,Here Comes Wozza,top_pick,5.5,5.5,11.0,11.0,,5.13,1.145,Above the field in all three sections,1.0,no,,
+8,ECHA_191026_8,Beau Strada,top_pick,5.0,5.0,3.5,3.5,,4.31,-0.188,Well backed before a bad last run,1.0,no,,

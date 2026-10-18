@@ -1,125 +1,125 @@
-# Echuca Mon 19 Oct, Good 4: fields pulled Fri 16 Oct 1:56pm, refreshed 3:36pm Melbourne (jockeys, gear, scratchings). Emergencies as SCR until they gain a start; no market yet.
-1, Challenging, 0, 0
-1, Dimachaerus, 0, 0
-1, Interrogate, 0, 0
-1, Mister Speaker, SCR
-1, Prestige Fantastic, 0, 0
-1, Storming Camelot, 0, 0
-1, Meggie Noodles, 0, 0
-1, Platinum Rush, 0, 0
-1, Sihaya, 0, 0
-1, Some Chance, SCR
-1, Who'llstoplorraine, 0, 0
-1, Woah Shamrock, 0, 0
-1, Selita's Fury, 0, 0
-1, Stash Royale, 0, 0
-1, Caledonian Summer, SCR
-1, Norfolk Victory, SCR
+# Echuca Mon 19 Oct, Good 4: race morning, pulled Mon 19 Oct 9:33am Melbourne after scratchings (Form King open = fk_open).
+1, Challenging, 12.00, 12.00, fk_open 12.00
 1, Blue Valentine, SCR
-2, Casamar, 0, 0
-2, Dramatic Dream, 0, 0
-2, Sibun, 0, 0
-2, Snakeunderfoot, 0, 0
-2, Tallingas Petey, 0, 0
-2, Trouble'n Paradise, 0, 0
-2, Bambu Babe, 0, 0
-2, Ninetyfiveinafifty, 0, 0
-2, Plinian, 0, 0
-2, Smithers, 0, 0
-2, Vaulted, 0, 0
-2, Lipstick Legal, 0, 0
-2, Sayalero, 0, 0
-2, Tungamah Tess, 0, 0
-2, The Buncha, SCR
-2, Gojiboy, SCR
+1, Platinum Rush, 7.00, 7.00, fk_open 5.50
+1, Some Chance, SCR
+1, Meggie Noodles, 41.00, 41.00, fk_open 51.00
+1, Woah Shamrock, 61.00, 61.00, fk_open 71.00
+1, Dimachaerus, SCR
+1, Mister Speaker, SCR
+1, Sihaya, 2.00, 2.00, fk_open 2.30
+1, Norfolk Victory, SCR
+1, Storming Camelot, 10.00, 10.00, fk_open 7.50
+1, Who'llstoplorraine, 41.00, 41.00, fk_open 51.00
+1, Caledonian Summer, 27.00, 27.00, fk_open 26.00
+1, Interrogate, 5.00, 5.00, fk_open 10.00
+1, Prestige Fantastic, 17.00, 17.00, fk_open 26.00
+1, Stash Royale, SCR
+1, Selita's Fury, 26.00, 26.00, fk_open 34.00
+2, Gojiboy, 46.00, 46.00, fk_open 81.00
+2, Bambu Babe, SCR
+2, The Buncha, 51.00, 51.00, fk_open 51.00
+2, Dramatic Dream, 8.00, 8.00, fk_open 11.00
+2, Snakeunderfoot, 10.00, 10.00, fk_open 19.00
+2, Trouble'n Paradise, SCR
+2, Sibun, 26.00, 26.00, fk_open 19.00
+2, Ninetyfiveinafifty, 5.50, 5.50, fk_open 4.40
+2, Tallingas Petey, 151.00, 151.00, fk_open 101.00
+2, Casamar, 9.00, 9.00, fk_open 15.00
 2, Pray For Elegance, SCR
+2, Tungamah Tess, SCR
+2, Smithers, SCR
+2, Vaulted, 14.00, 14.00, fk_open 11.00
+2, Sayalero, 4.20, 4.20, fk_open 3.90
+2, Plinian, 4.00, 4.00, fk_open 11.00
 2, Tallingas Diamond, SCR
-3, Aerial Pursuit, 0, 0
-3, Daynes Dahwun, 0, 0
-3, Inside Word, 0, 0
-3, Little Gangster, 0, 0
-3, Lonnegan, 0, 0
-3, Magnusaurus Rex, 0, 0
-3, Truant, 0, 0
-3, Genki Girl, 0, 0
-3, Valentina Girl, 0, 0
-4, Deadly Devil, 0, 0
-4, Fantastic Beast, 0, 0
-4, Just Basil, 0, 0
-4, Notre Citrouille, 0, 0
-4, Debbie, 0, 0
-4, Dejavast, 0, 0
-4, Lady Of Alsace, 0, 0
-4, Supreme Lass, 0, 0
-4, Under Control, 0, 0
-4, Amsterdam Nights, 0, 0
-4, Meet The Prince, 0, 0
-4, Musical Journey, 0, 0
-4, Little Ally Bama, 0, 0
-5, Callawadda, 0, 0
-5, Mickio, 0, 0
-5, Earthly Crown, 0, 0
-5, King Kauffo, 0, 0
-5, Love Sparkles, 0, 0
-5, Treasury Place, 0, 0
-5, Lyttelton, 0, 0
-5, Sasterion, 0, 0
-5, Misil Beauty, 0, 0
-5, Phoenician, 0, 0
-5, Ring The Sheriff, 0, 0
-5, Brookers Turbo, 0, 0
-5, Idling Behind, 0, 0
-5, Aberlutely, 0, 0
-5, Kawhia, SCR
-5, Circa, SCR
-6, Lim's Ida, 0, 0
-6, Alexander Thegreat, 0, 0
-6, Sheanadh, 0, 0
-6, On The Loose, 0, 0
-6, Miss Ellaneous, 0, 0
-6, Wondering Spirit, 0, 0
-6, Boulderoo, 0, 0
-6, Cossack Warrior, 0, 0
-6, Elle Mcfearsome, 0, 0
-6, Hustle, 0, 0
-6, Shipstern Bluff, SCR
-6, Limbering, 0, 0
-6, Ice Quake, 0, 0
-6, So Enchanting, 0, 0
-6, Burning Sensation, SCR
-6, Poetic Storm, SCR
+2, Lipstick Legal, 23.00, 23.00, fk_open 26.00
+3, Aerial Pursuit, SCR
+3, Magnusaurus Rex, 5.00, 5.00, fk_open 8.50
+3, Genki Girl, SCR
+3, Daynes Dahwun, 17.00, 17.00, fk_open 12.00
+3, Inside Word, SCR
+3, Truant, 3.40, 3.40, fk_open 4.20
+3, Valentina Girl, 2.05, 2.05, fk_open 2.90
+3, Little Gangster, 67.00, 67.00, fk_open 51.00
+3, Lonnegan, 8.50, 8.50, fk_open 5.00
+4, Dejavast, 23.00, 23.00, fk_open 51.00
+4, Fantastic Beast, 23.00, 23.00, fk_open 26.00
+4, Notre Citrouille, 7.00, 7.00, fk_open 11.00
+4, Debbie, 91.00, 91.00, fk_open 101.00
+4, Deadly Devil, 27.00, 27.00, fk_open 34.00
+4, Under Control, 5.00, 5.00, fk_open 6.00
+4, Just Basil, 9.00, 9.00, fk_open 11.00
+4, Lady Of Alsace, 8.00, 8.00, fk_open 34.00
+4, Supreme Lass, 34.00, 34.00, fk_open 51.00
+4, Little Ally Bama, SCR
+4, Amsterdam Nights, SCR
+4, Meet The Prince, 3.40, 3.40, fk_open 4.60
+4, Musical Journey, 4.60, 4.60, fk_open 5.00
+5, Treasury Place, SCR
+5, Lyttelton, 26.00, 26.00, fk_open 19.00
+5, Circa, 31.00, 31.00, fk_open 34.00
+5, Kawhia, 26.00, 26.00, fk_open 34.00
+5, Love Sparkles, 5.50, 5.50, fk_open 4.80
+5, Callawadda, 13.00, 13.00, fk_open 19.00
+5, Brookers Turbo, 71.00, 71.00, fk_open 71.00
+5, Ring The Sheriff, 46.00, 46.00, fk_open 34.00
+5, Mickio, 3.60, 3.60, fk_open 7.50
+5, Idling Behind, 6.75, 6.75, fk_open 7.50
+5, Aberlutely, 7.50, 7.50, fk_open 7.50
+5, Sasterion, 8.00, 8.00, fk_open 9.50
+5, Phoenician, 8.50, 8.50, fk_open 7.50
+5, King Kauffo, SCR
+5, Earthly Crown, 34.00, 34.00, fk_open 34.00
+5, Misil Beauty, SCR
+6, Limbering, 8.50, 8.50, fk_open 15.00
+6, Lim's Ida, 10.00, 10.00, fk_open 26.00
 6, Blakmax, SCR
+6, Elle Mcfearsome, 17.00, 17.00, fk_open 26.00
+6, Cossack Warrior, 51.00, 51.00, fk_open 101.00
+6, Poetic Storm, 18.00, 18.00, fk_open 81.00
 6, Blackhill Boy, SCR
-7, Forever With Ned, 0, 0
-7, Sir Basil, 0, 0
-7, This Is The Moment, 0, 0
-7, Shalailed, 0, 0
-7, Strike Gold, 0, 0
-7, Sacred Chord, 0, 0
-7, Here Comes Wozza, 0, 0
+6, Hustle, 4.60, 4.60, fk_open 8.50
+6, Wondering Spirit, SCR
+6, Burning Sensation, 26.00, 26.00, fk_open 81.00
+6, Shipstern Bluff, SCR
+6, Boulderoo, 7.00, 7.00, fk_open 9.50
+6, Miss Ellaneous, SCR
+6, Ice Quake, 7.00, 7.00, fk_open 8.50
+6, Alexander Thegreat, SCR
+6, Sheanadh, 4.60, 4.60, fk_open 5.50
+6, So Enchanting, 10.00, 10.00, fk_open 23.00
+6, On The Loose, SCR
+7, Gobbo's Mate, 61.00, 61.00, fk_open 51.00
+7, Shalailed, 13.00, 13.00, fk_open 13.00
+7, This Is The Moment, SCR
+7, True Prophet, 16.00, 16.00, fk_open 15.00
+7, Strike Gold, 11.00, 11.00, fk_open 34.00
+7, Here Comes Wozza, 5.50, 5.50, fk_open 11.00
+7, Mickidamuzz, 41.00, 41.00, fk_open 51.00
 7, Manchego, SCR
-7, Reel Latino, 0, 0
-7, Western Lane, 0, 0
-7, Gobbo's Mate, 0, 0
-7, The Bantam, 0, 0
-7, True Prophet, 0, 0
-7, Lujaego, 0, 0
-7, Ironic Fortune, SCR
-7, Tallingas Indirose, SCR
-7, Mickidamuzz, SCR
+7, Sacred Chord, 3.80, 3.80, fk_open 6.50
+7, The Bantam, SCR
+7, Reel Latino, 27.00, 27.00, fk_open 26.00
+7, Forever With Ned, SCR
+7, Lujaego, 7.00, 7.00, fk_open 11.00
+7, Western Lane, 6.00, 6.00, fk_open 4.80
 7, Blessing Season, SCR
-8, Adieu Grasse, 0, 0
-8, Cumboogle, 0, 0
-8, Do It Now, 0, 0
-8, Epic Centre, 0, 0
-8, Bridgeitall, 0, 0
-8, She's Elusive, 0, 0
-8, Wallaby Jack, 0, 0
-8, Cilento, 0, 0
-8, Ilovediamonds, 0, 0
-8, Beau Strada, 0, 0
-8, Queue Jumper, 0, 0
-8, Silver Top Ridge, 0, 0
-8, Bella Katelyn, 0, 0
+7, Ironic Fortune, 26.00, 26.00, fk_open 34.00
+7, Sir Basil, SCR
+7, Tallingas Indirose, 7.00, 7.00, fk_open 41.00
+8, Raging Monkey, 27.00, 27.00, fk_open 34.00
+8, Cumboogle, 11.00, 11.00, fk_open 15.50
+8, Epic Centre, 16.00, 16.00, fk_open 15.00
+8, Bridgeitall, SCR
+8, Cilento, 19.00, 19.00, fk_open 26.00
+8, Do It Now, 10.00, 10.00, fk_open 9.00
+8, Ilovediamonds, SCR
+8, Wallaby Jack, 12.00, 12.00, fk_open 15.00
+8, She's Elusive, 4.60, 4.60, fk_open 11.00
 8, Magnea, SCR
-8, Raging Monkey, SCR
+8, Queue Jumper, 6.50, 6.50, fk_open 8.00
+8, Silver Top Ridge, 17.00, 17.00, fk_open 15.00
+8, Bella Katelyn, 34.00, 34.00, fk_open 51.00
+8, Beau Strada, 5.00, 5.00, fk_open 3.50
+8, Adieu Grasse, 7.00, 7.00, fk_open 5.00
