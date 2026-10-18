@@ -5,7 +5,7 @@ DB only, no credits.
 
 Per race: when the market opened (the first fluc), and at each pull how many runners were priced, how many bookmakers
 held each runner's best price (a proxy for how many have opened and matched it), the share of runners where TAB held
-the best price, and the best and average price against the open. Then the best price from the flucs at fixed minutes
+the best price, and the best and average price against the open. Then the AVERAGE price from the flucs at fixed minutes
 after the open (the minute-level path between pulls), and the bookmakers in the order they first appeared."""
 import os, sys, statistics as st, collections
 from datetime import datetime, timezone, timedelta
@@ -44,7 +44,7 @@ for rn in sorted(by_race):
         m = lambda v: f"x{st.mean(v):.3f}" if v else ""
         mins = f" (+{int((at - t0).total_seconds() // 60)} min)" if t0 else ""
         print(f"| {fmt(at)}{mins} | {len(hs)} | {st.mean(nb):.1f} | {tab} of {len(hs)} | {m(rb)} | {m(ra)} |")
-    print("\nBest price from the flucs, against the first price, minutes after the open:\n")
+    print("\nAverage corporate price from the flucs (Form King's flucs are the average, checked 18 Oct: scripts/fluc_kind.py), against the average open, minutes after the open:\n")
     marks = (5, 15, 30, 60, 120, 240)
     rat = {k: [] for k in marks}
     for h, fl in flucs.items():
