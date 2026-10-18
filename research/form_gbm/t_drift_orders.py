@@ -28,12 +28,13 @@ for h in (0, 1):
         ts = [mo * s for s in TIERS if mo * s < 3 * q]
         ys = bst.predict(dfc.design(np.repeat(X[i][None, :], len(ts), 0), [p] * len(ts), ts, [field[i]] * len(ts), [book(field[i])] * len(ts)))
         for name, dm, fm in (("live stakes", 1.0, 1.0), ("drop the drift third, x2 on firmers (founder's pick)", 0.0, 2.0),
-                             ("half on the drift third, x2 on firmers", 0.5, 2.0), ("drop the drift third, normal on firmers", 0.0, 1.0)):
+                             ("half on the drift third, x2 on firmers", 0.5, 2.0), ("drop the drift third, normal on firmers", 0.0, 1.0),
+                             ("everyone normal, x2 on firmers only", 1.0, 2.0), ("firm third only, normal stakes", None, 1.0), ("firm third only, x2", None, 2.0)):
             tot = prev = 0.0
             for k, t in enumerate(ts):
                 tp = ts[k + 1] if k + 1 < len(ts) else t
                 base = stake_rule.stake(p ** 0.82 * tp ** -0.22, tp)
-                mult = dm if ys[k] < t1 else fm if ys[k] >= t2 else 1.0
+                mult = (0.0 if dm is None else dm) if ys[k] < t1 else fm if ys[k] >= t2 else (0.0 if dm is None else 1.0)
                 T_k = min(CAP, base * mult); add = max(0.0, T_k - prev); prev = max(prev, T_k)
                 if o[i] >= t: tot += add
             if tot > 0:

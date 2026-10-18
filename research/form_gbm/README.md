@@ -1035,3 +1035,7 @@ the race-day best price and BSP; the weekend, Thu 15 to Sun 18, 27 races with 9:
   dropped for those horses and the higher steps are doubled. More money goes in (about 20% more turnover in the
   backtest; Kyneton 20 Oct 51.8u to 73.1u if every order fired). Not modelled in the test, same for every version:
   first starters, first-up blocks, the race-level first-starter rule. Re-fit the drift model when stage 2 is retrained.
+- MORE VARIANTS, as the orders fire (founder: "what's the ROI if we only double the top third"), halves before / from
+  15 Jul: everyone normal and x2 on firmers 4,363u, +1,937u (+44%; +983u / +954u); firm third only at normal stakes
+  911 bets, 1,847u, +1,027u (+56%; +581u / +447u); firm third only x2 3,040u, +1,617u (+53%). Best ROI = bet only the
+  firm third; most profit = keep everyone and double the firmers; the live pick (+1,860u, +49%) sits between.
