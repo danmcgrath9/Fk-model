@@ -949,3 +949,21 @@ By the MARKET's opening price instead (founder: "Not we price the market does"):
 under $4. Live (1.2): 20 bets opened under $3 (+8%), 64 opened $3-$4 (+42%), 1,337 opened $4+ (+36%). Lowering the edge
 helps only in the $3-$4 band: at 1.05 it holds 120 bets at +38% (+26u more than live); under $3 every setting is about
 break-even (+0.4u to +5.5u). Buildable as one extra order per runner with max odds $4 (fires only when TAB opens under $4).
+
+## Stake rules head to head (18 Oct 2026, t_stakes.py; founder: "surely there can be max bets without stupid rules, can we test everything?")
+Same bets as live (v10, BetMatic rules at the open, edge 1.2), only the stake function changes. Units at $100.
+
+| stake rule | holdout profit | ROI | worst drawdown | 4.5u+ bets | earlier races profit | ROI | drawdown |
+|---|---|---|---|---|---|---|---|
+| live (cap 4, x2 only ride, x1.5 field<=8, x5/8) | +711u | +35.6% | 62u | 15 | +3,708u | +60.3% | 43u |
+| plain Kelly x75, max 2.5u (no multipliers) | +541u | +33.4% | 46u | 0 | +2,828u | +57.9% | 38u |
+| plain Kelly x100, max 5u | +766u | +33.6% | 49u | 50 | +4,095u | +57.9% | 58u |
+| plain Kelly x125, max 5u | +935u | +33.6% | 68u | 103 | +4,932u | +57.9% | 66u |
+| plain Kelly x150, max 5u | +1,083u | +33.4% | 91u | 169 | +5,655u | +57.9% | 75u |
+| live multipliers on Kelly x125, base cap 8 | +1,115u | +34.8% | 91u | 198 | +5,694u | +58.4% | 70u |
+| flat 1-5u by edge bands | +1,472u | +29.5% | 187u | - | +7,535u | +56.7% | 115u |
+
+ROI barely moves with stake size (33-36% holdout, 58-60% earlier): a bigger stake buys more profit and a bigger
+drawdown in about equal measure. The only-ride and small-field multipliers are not noise: they lift ROI about 2 points,
+and the bets they push to the max are the best in the book (live 4.5u+ bets: +80% holdout, +124% earlier). A max bet
+"without rules" comes from a bigger Kelly multiplier: x125 makes 103 holdout bets 4.5u+ instead of 15. Not changed.
