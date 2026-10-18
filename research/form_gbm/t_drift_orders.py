@@ -39,16 +39,17 @@ for h in (0, 1):
                 if o[i] >= t: tot += add
             if tot > 0:
                 pl = tot * (o[i] - 1) * (1 - DED) if won[i] else -tot
-                results.setdefault((name, h), []).append((tot, pl))
+                results.setdefault((name, h), []).append((tot, pl, dates[i]))
 print(f"holdout split at {cut}; orders as built before the market, the forecast at each step's own price\n")
-print("| stakes | period | bets | units invested | profit | ROI |\n|---|---|---|---|---|---|")
+print("| stakes | period | bets | units invested | profit | ROI | worst losing run | biggest single bet |\n|---|---|---|---|---|---|---|---|")
 names = []
+dd = lambda pl: float((np.maximum.accumulate(np.cumsum(pl)) - np.cumsum(pl)).max())   # worst peak-to-trough, in date order
 for (name, h) in results:
     if name not in names: names.append(name)
 for name in names:
     tt = []
     for h, lab in ((0, f"before {cut}"), (1, f"from {cut}")):
-        r = np.array(results.get((name, h), [(0, 0)])); tt.append(r)
-        print(f"| {name} | {lab} | {len(r)} | {r[:, 0].sum():.0f}u | {r[:, 1].sum():+.0f}u | {r[:, 1].sum() / r[:, 0].sum():+.0%} |")
-    r = np.vstack(tt)
-    print(f"| {name} | both | {len(r)} | {r[:, 0].sum():.0f}u | {r[:, 1].sum():+.0f}u | {r[:, 1].sum() / r[:, 0].sum():+.0%} |")
+        rr = sorted(results.get((name, h), []), key=lambda x: x[2]); r = np.array([x[:2] for x in rr]); tt.append(rr)
+        print(f"| {name} | {lab} | {len(r)} | {r[:, 0].sum():.0f}u | {r[:, 1].sum():+.0f}u | {r[:, 1].sum() / r[:, 0].sum():+.0%} | {dd(r[:, 1]):.0f}u | {r[:, 0].max():.2f}u |")
+    rr = sorted(tt[0] + tt[1], key=lambda x: x[2]); r = np.array([x[:2] for x in rr])
+    print(f"| {name} | both | {len(r)} | {r[:, 0].sum():.0f}u | {r[:, 1].sum():+.0f}u | {r[:, 1].sum() / r[:, 0].sum():+.0%} | {dd(r[:, 1]):.0f}u | {r[:, 0].max():.2f}u |")

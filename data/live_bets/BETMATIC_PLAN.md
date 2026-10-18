@@ -144,3 +144,7 @@ runner forecast to firm (the market expected to come to us) gets twice the stake
 runner forecast to drift gets no order at that step, the middle third is unchanged. Backtest as the orders fire: +1,860u
 on 3,797u (+49%) against +1,347u on 3,170u (+42%) on the live stakes, better in both halves. The order sheet's note
 shows the forecast for each step ("forecast drift/firm/firm by step"). Built by run_meeting.sh from the next meeting.
+
+**Changed 18 Oct night (founder: bet more until limited):** forecast-to-drift steps keep their normal stake instead of
+no order; firmers still x2, 5u cap. Backtest as the orders fire: +1,937u on 4,363u (+44%), worst losing run 78u, against
++1,347u / 58u on the old stakes and +1,860u / 86u dropping the drifters.
