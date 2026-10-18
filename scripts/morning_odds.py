@@ -41,6 +41,7 @@ def main() -> None:
     ap.add_argument("--key", choices=["test", "live"], default="test")
     ap.add_argument("--date", help="meeting date YYYY-MM-DD (default: today, Melbourne)")
     ap.add_argument("--state", default="VIC")
+    ap.add_argument("--track", help="only this track (e.g. Kyneton), to watch one meeting's market for 5 credits a pull")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--yes", action="store_true")
     a = ap.parse_args()
@@ -51,6 +52,8 @@ def main() -> None:
     live = client.key_kind == "live"
     db = Db(settings.database_url)
     meetings = db.meetings_on(target.isoformat(), a.state)
+    if a.track:
+        meetings = [m for m in meetings if str(m["track"]).lower().startswith(a.track.lower())]
     if not meetings:
         print(f"no {a.state} meetings stored for {target}; nothing to refresh")
         return
