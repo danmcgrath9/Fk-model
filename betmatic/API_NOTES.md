@@ -189,3 +189,17 @@ API Overview (api-reference/overview): rate limits, errors.
   closed, bookmaker refused).
 - NOT stated: whether High Odds First can be combined with Market Open (support, 14 Oct: "High Odds First only for
   standard bets"), and how far High Odds First fills the top bookmaker before moving to the next.
+
+## Create a Bet, API, full page (pasted by the founder 18 Oct 2026)
+- Stake fields by type: stake (Fixed Wager, dollars PER SESSION), target_profit (Fixed Profit), total_wager (High Odds
+  First: the total distributed across sessions).
+- Session targeting: bookies "id&id"; target_session "id&id" (numeric only); choose_best_odds N (only the N sessions
+  with the best current odds, 0 = all); choose_random_accounts N; ensure_total_wager (treat the stake as a TOTAL across
+  sessions); enable_group_bot (needs choose_best_odds / choose_random_accounts / ensure_total_wager).
+- Odds: check_odds + odds (min), check_max_odds + max_odds, boost_if_available, spg_if_available (Same Price Guarantee).
+- Market Open: is_market_open true, max_attempts / delay_between_attempts; ONE notification per bookmaker (ids "a&b&c");
+  bookies omitted = every bookmaker that posts that venue's markets where we have a running session; a market already
+  open fires at once; odds checks apply at placement; don't combine with scheduling; /trigger/ fires a pending one.
+- A 200 can still mean nothing was placed ("no signal was sent to the bot"); bot offline = signal lost, never replayed.
+- NOT stated on this page: High Odds First with is_market_open, and ensure_total_wager across the per-bookmaker split
+  of a Market Open bet. Session Targeting / Bet Types / Market Open Bets pages should say.
