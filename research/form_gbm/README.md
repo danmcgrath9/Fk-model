@@ -1006,3 +1006,13 @@ the race-day best price and BSP; the weekend, Thu 15 to Sun 18, 27 races with 9:
   / Aug-Oct (only Aug-Oct is honest): live stakes +446u / +741u; x1.5 forecast-to-firm and x0.5 forecast-to-drift
   +621u / +731u; x2 / x0.5 +682u / +778u; the live stake rule on the predicted-BSP chance +490u / +831u. The honest half
   gains little from a hand multiplier and most from pricing the chance better, which weights the firmers by itself.
+- RE-RUN ON THE LIVE-STYLE PRICE (PRICE=stage2: stage 2 v6 refitted before 6 May, t_blend_open.py's blend_hold.npz; 1,373
+  holdout races, halves split at 15 Jul). CLOSER TO BSP: NO. KL to BSP stage 2 alone 0.0801, blended with the open
+  0.0767, predicted BSP 0.0791 (winner log loss 1.9062 against the blend's 1.9082, a hair better). The stage-1 gain
+  above was against a weaker price; stage 2 already carries most of it. PROFIT: YES, in both halves. Value on the
+  predicted BSP, live stakes: +878u / +1,055u against the live rule's +776u / +760u (staked +38% / +59% against +37% /
+  +45%). Forecast-to-firm third +56% flat at the open, middle +20%, drift third +9%. Stake x2 forecast-to-firm and x0.5
+  forecast-to-drift on the live bets: +899u / +952u against +776u / +760u. So it does not price the whole field closer
+  to BSP; it sorts OUR bets better: which of them the market will come to. Not live yet: the orders go in before the
+  market, so the open is not known when the order is built; the minimum odds have to be solved per runner against the
+  drift model, then forward-tested beside the live orders.

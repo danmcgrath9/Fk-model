@@ -17,8 +17,13 @@ Two date halves, each predicted by a model trained on the other (cross-fitted, s
     python3.13 t_drift_gbm.py"""
 import numpy as np, lightgbm as lgb, bench as b
 
-D = b.load("ds/model_ds_v10.npz")
-P = np.load("v10_profit_preds.npz"); p10 = P["p10"]; hold = P["hold"]
+import os
+if os.environ.get("PRICE") == "stage2":   # the live-style price: stage 2 v6 refitted before 6 May (t_blend_open.py's blend_hold.npz)
+    D = b.load(os.environ.get("DS", "../model_v9/model_ds.npz")); z = np.load("blend_hold.npz"); p10 = z["p2"]
+    hold = (D["date"][D["race_idx"]] >= "2026-05-06") & np.isfinite(p10) & (p10 > 0); print("price: stage 2 v6 (live-style), holdout from 6 May")
+else:
+    D = b.load("ds/model_ds_v10.npz")
+    P = np.load("v10_profit_preds.npz"); p10 = P["p10"]; hold = P["hold"]
 ri = D["race_idx"]; nR = D["n_races"]; cols = [str(c) for c in D["cols"]]
 op = np.asarray(D["open"], float); bs = np.asarray(D["bsp"], float); won = np.asarray(D["finish"], float) == 1
 okp = lambda x: np.isfinite(x) & (x > 1)
@@ -90,7 +95,7 @@ PB = race_norm(np.log(QO) + gb); PA = race_norm(np.log(QO) + ga)
 BL2, wb2 = fit_blend((np.log(BL), np.log(PB)))
 print(f"\n## 2. Sharpness on {rmask.sum()} holdout races (lower is better)\n")
 print("| price | KL to BSP | winner log loss |\n|---|---|---|")
-for lab_, q in (("opening market", QO), ("our model (v10 stage 1)", PM), (f"blend ours + open (weights {wb[0][0]:.2f}/{wb[0][1]:.2f}, {wb[1][0]:.2f}/{wb[1][1]:.2f})", BL),
+for lab_, q in (("opening market", QO), (os.environ.get("PRICE", "v10 stage 1") + " (our model)", PM), (f"blend ours + open (weights {wb[0][0]:.2f}/{wb[0][1]:.2f}, {wb[1][0]:.2f}/{wb[1][1]:.2f})", BL),
                 ("predicted BSP: open moved by the form-only drift model", PA), ("predicted BSP: open moved by the drift model with our price", PB),
                 (f"blend of the two above (weights {wb2[0][0]:.2f}/{wb2[0][1]:.2f}, {wb2[1][0]:.2f}/{wb2[1][1]:.2f})", BL2), ("BSP itself", QB)):
     print(f"| {lab_} | {kl(q):.4f} | {ll(q):.4f} |")
@@ -129,12 +134,12 @@ for h in (0, 1):
 val2 = (PB * oo >= 1.2) & (1 / PB >= 1.6) & (1 / PB <= 15) & (oo <= 3 / PB)
 for lab_, s in (("value on our blend (live)", val), ("value on the predicted BSP", val2), ("both", val & val2), ("blend only", val & ~val2), ("predicted BSP only", val2 & ~val)):
     print(f"{lab_}: {s.sum()} bets, strike {W[s].mean():.0%}, open {ret_open[s].mean():+.0%}, BSP {ret_bsp[s].mean():+.0%}")
-np.savez("drift_gbm_preds.npz", idx=idx, gb=gb, ga=ga, half=half)
+np.savez(f"drift_gbm_preds_{os.environ.get('PRICE','v10')}.npz", idx=idx, gb=gb, ga=ga, half=half)
 # robustness: each half on its own (half 1 is the honest one: its drift model was trained only on earlier races), flat and staked
 import stake_rule
 print("\n| rule | half | bets | strike | flat at the open | staked at the open | staked P/L units | flat at BSP |\n|---|---|---|---|---|---|---|---|")
 for lab_, s, pp in (("value on our blend (live)", val, BL), ("value on the predicted BSP", val2, PB)):
-    for h, hn in ((0, "Jun-Jul (drift model fitted on later races)"), (1, "Aug-Oct (drift model fitted on earlier races only)")):
+    for h, hn in ((0, f"before {cut} (drift model fitted on later races)"), (1, f"from {cut} (drift model fitted on earlier races only)")):
         t = s & (half == h)
         st = np.array([stake_rule.stake(pp[i], oo[i]) for i in np.where(t)[0]])
         r = ret_open[t]
