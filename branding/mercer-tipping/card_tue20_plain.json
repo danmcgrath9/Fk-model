@@ -1,0 +1,49 @@
+{
+ "day": "Tuesday",
+ "date": "20 October",
+ "footer": "Win bets.",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Kyneton",
+   "note": "Good 3",
+   "bets": [
+    {
+     "race": 1,
+     "horse": "Tuzemak",
+     "price": "$3.50",
+     "units": "2.5u",
+     "time": "2:00PM"
+    },
+    {
+     "race": 3,
+     "horse": "Bourne Legacy",
+     "price": "$3.40",
+     "units": "2.15u",
+     "time": "3:00PM"
+    },
+    {
+     "race": 3,
+     "horse": "Sabrina",
+     "price": "$26",
+     "units": "0.52u",
+     "time": "3:00PM"
+    },
+    {
+     "race": 4,
+     "horse": "Bliss Bomb",
+     "price": "$6",
+     "units": "1.46u",
+     "time": "3:30PM"
+    },
+    {
+     "race": 7,
+     "horse": "Biratu",
+     "price": "$11",
+     "units": "0.66u",
+     "time": "5:00PM"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "day": "Monday",
+ "date": "19 October",
+ "footer": "Win bets.",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Echuca",
+   "note": "Good 4",
+   "bets": [
+    {
+     "race": 1,
+     "horse": "Prestige Fantastic",
+     "price": "$26",
+     "units": "0.47u",
+     "time": "1:30PM"
+    },
+    {
+     "race": 5,
+     "horse": "Mickio",
+     "price": "$7.50",
+     "units": "1.86u",
+     "time": "3:30PM"
+    },
+    {
+     "race": 6,
+     "horse": "Lim's Ida",
+     "price": "$26",
+     "units": "0.41u",
+     "time": "4:00PM"
+    },
+    {
+     "race": 7,
+     "horse": "Here Comes Wozza",
+     "price": "$11",
+     "units": "1.11u",
+     "time": "4:30PM"
+    }
+   ]
+  }
+ ]
+}
