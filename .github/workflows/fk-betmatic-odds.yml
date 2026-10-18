@@ -1,0 +1,53 @@
+name: fk betmatic odds
+
+# Every bookmaker's price from our own BetMatic bot, race by race, every minute (betmatic/odds_watch_live.py).
+# Runs in the "betmatic" environment (the founder approves in GitHub; the login is an environment secret).
+# Read-only: odds requests only, no bets.
+
+on:
+  workflow_dispatch:
+    inputs:
+      venue:
+        description: 'BetMatic venue name, uppercase, e.g. KYNETON'
+        required: true
+      date:
+        description: 'race date YYYY-MM-DD'
+        required: true
+      every:
+        description: 'seconds between rounds'
+        default: '60'
+      minutes:
+        description: 'how long to watch (max 330)'
+        default: '240'
+      races:
+        description: 'race numbers, e.g. 1,2,3 (blank = all)'
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    environment: betmatic
+    timeout-minutes: 345
+    env:
+      BETMATIC_EMAIL: ${{ secrets.BETMATIC_EMAIL }}
+      BETMATIC_PASSWORD: ${{ secrets.BETMATIC_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests websocket-client
+      - name: Watch
+        run: |
+          python betmatic/odds_watch_live.py --venue "${{ github.event.inputs.venue }}" --date "${{ github.event.inputs.date }}" \
+            --every "${{ github.event.inputs.every }}" --minutes "${{ github.event.inputs.minutes }}" \
+            ${{ github.event.inputs.races && format('--races {0}', github.event.inputs.races) || '' }} | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Keep the log
+        if: always()
+        run: |
+          git config user.name "fk-betmatic-odds"; git config user.email "actions@users.noreply.github.com"
+          for f in data/live_bets/odds-live-*.jsonl; do [ -e "$f" ] && git add "$f"; done
+          git diff --cached --quiet || { git commit -m "BetMatic odds watch: ${{ github.event.inputs.venue }} ${{ github.event.inputs.date }}"; for i in 1 2 3 4; do git pull --rebase -q && git push -q && break; sleep $((i*3)); done; }
