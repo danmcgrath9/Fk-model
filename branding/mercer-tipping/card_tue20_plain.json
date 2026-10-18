@@ -12,35 +12,35 @@
      "race": 1,
      "horse": "Tuzemak",
      "price": "$3.50",
-     "units": "2.5u",
+     "units": "5u",
      "time": "2:00PM"
     },
     {
      "race": 3,
      "horse": "Bourne Legacy",
      "price": "$3.40",
-     "units": "2.15u",
+     "units": "3.58u",
      "time": "3:00PM"
     },
     {
      "race": 3,
      "horse": "Sabrina",
      "price": "$26",
-     "units": "0.52u",
+     "units": "0.86u",
      "time": "3:00PM"
     },
     {
      "race": 4,
      "horse": "Bliss Bomb",
      "price": "$6",
-     "units": "1.46u",
+     "units": "2.43u",
      "time": "3:30PM"
     },
     {
      "race": 7,
      "horse": "Biratu",
      "price": "$11",
-     "units": "0.66u",
+     "units": "1.1u",
      "time": "5:00PM"
     }
    ]

@@ -1,20 +1,19 @@
-"""The live stake, one definition (8 Oct 2026, t_batch.py to t_batch4.py; founder: 'max is 5u, so make an 8u 5u').
+"""The live stake, one definition.
 
-Kelly x75 on the blend sqrt(ours x market), capped at 4u; x2 when it is the jockey's only ride at the meeting; x1.5
-when the field is 8 or fewer (x3 for both); never over 8u; then everything x5/8, so the biggest bet is 5u and a
-normal capped bet is 2.5u; from 12 Oct the price is the market BLEND (blend_open.py), full stakes in every band. Backtest (holdout / before): open +69.1% / +56.8%, worst drawdown $4,346 / $7,669 at
-$100 a unit, against the 4u plan's +65.7% / +51.9% and $5,282 / $9,772."""
-ONLY_RIDE, SMALL_FIELD, SMALL_FIELD_MAX, CEILING, SCALE = 2.0, 1.5, 8, 8.0, 5 / 8
-# 12 Oct 2026: half stakes at $8+ were tried for an hour and dropped the same day (founder: "I don't mind about the
-# peaks and troughs"): on the holdout they kept the ROI (+62.9% vs +63.5%) and cost 420u of profit. Full stakes in
-# every band; the price is the market blend (blend_open.py), which is where the gain is.
-LONG_PRICE, LONG_FACTOR = 8.0, 1.0
+From 18 Oct 2026 (founder: "surely there can be max bets without stupid rules, can we test everything?" then "Yep do
+it"): plain Kelly x125 on the blend sqrt(ours x market), everything x5/8, capped at 5u. No only-ride or small-field
+multipliers: the size comes from the edge alone, so a max bet is any bet with enough edge. t_stakes.py, holdout from
+3 Jun: +935u, +33.6% at the open, worst drawdown 68u, 103 bets of 4.5u+ (the old rule: +711u, +35.6%, 62u, 15).
+
+Before 18 Oct (8 Oct to 18 Oct): Kelly x75 capped at 4u, x2 when the jockey's only ride, x1.5 when the field is 8 or
+fewer, never over 8u, then x5/8 (git history; t_batch.py to t_batch3.py)."""
+KELLY, SCALE, MAX_UNITS = 125, 5 / 8, 5.0
 
 
-def stake(pp: float, price: float, only_ride: bool, field: int) -> float:
+def stake(pp: float, price: float, only_ride: bool = False, field: int = 0) -> float:
+    """Units to stake at `price` for a runner with blended chance `pp`. only_ride and field are accepted so every caller
+    keeps working, and no longer change the stake (18 Oct 2026)."""
     if price <= 1:
         return 0.0
-    base = min(4.0, 75 * max(0.0, ((pp * price) ** 0.5 - 1) / (price - 1)))
-    s = base * (ONLY_RIDE if only_ride else 1.0) * (SMALL_FIELD if field <= SMALL_FIELD_MAX else 1.0)
-    s = min(s, CEILING) * (LONG_FACTOR if price >= LONG_PRICE else 1.0)
-    return round(s * SCALE, 2)
+    k = max(0.0, ((pp * price) ** 0.5 - 1) / (price - 1))
+    return round(min(MAX_UNITS, KELLY * k * SCALE), 2)

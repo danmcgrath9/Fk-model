@@ -14,7 +14,8 @@ the opening price less the race's scratching deduction. The earlier Twitter reco
 4. **A bet taken is never dropped.** A reprice, model change or new price can add bets, but every bet already taken
    stays on the sheet (the "Bets taken" box) and in the records until it is settled, even if the model no longer rates it.
    (Founder, 11 Oct 2026.)
-5. Stakes follow the live 5u rule (stake_rule.py) at the price tweeted, and are fixed from then on.
+5. Stakes follow the live rule (stake_rule.py: from 18 Oct 2026 plain Kelly x125, x5/8, max 5u, no only-ride or
+   small-field multipliers) at the price tweeted, and are fixed from then on.
 
 ## Messages on the founder's behalf (13 Oct 2026, founder: "Never send a message again without drafting it to me")
 Every message sent for the founder (Slack, email, anything) is shown to him as a final draft first, word for word, and is

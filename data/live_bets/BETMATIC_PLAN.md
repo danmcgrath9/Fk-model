@@ -12,6 +12,11 @@ place bets.
 ## LIVE from Monday 19 Oct 2026 (founder, Sat 17 Oct)
 Founder: "I've been holding off actually betting until I saw the model work, but I think it's time to fire it up starting Monday next week. Leave all the orders but we are firing live live on Monday." Every order already on BetMatic stays. Sunday's Moe orders stay pending and are paper unless the TAB account is funded; from Monday 19 Oct (Echuca, 68 orders already scheduled at $100 a unit) the BetMatic fills are real bets, recorded in betmatic-book.md from TAB's actual fills and deductions (-deductions-actual.txt), not Form King's open. Before each first race: the account funded, and a BetMatic check showing the bot machine connected and the session running (the 17 Oct check found it offline while the app looked connected).
 
+## Stakes from 18 Oct 2026
+Founder: "Yep do it" (after t_stakes.py). stake_rule.py is plain Kelly x125 on the blend, x5/8, max 5u; the only-ride
+and small-field multipliers are gone. Kyneton 20 Oct is the first order file built on it. Orders already on BetMatic
+(Moe, Echuca) keep their old stakes.
+
 ## Phase 0: set-up (this week)
 Founder:
 - Take Dave's intro to Joel (BetMatic waives the subscription for a group of FK subscribers).
