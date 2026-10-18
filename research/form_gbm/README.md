@@ -1047,3 +1047,9 @@ the race-day best price and BSP; the weekend, Thu 15 to Sun 18, 27 races with 9:
 - FINAL, 18 Oct (founder: "ROI is more important... double the top third bets, keep mid tier the same and then lower
   tier half"; the money goes to the best bets first, spread wider once the accounts get limited): DRIFT_MULT 0.5.
   As the orders fire: 1,589 bets, 4,080u, +1,899u (+47%), worst losing run 81u; halves +982u / +917u.
+- CASH FLOW AT $50 A UNIT (t_cashflow.py; founder: "how much is normally out for $50 a unit"), backtest 6 May to 9 Oct,
+  live stakes, every VIC meeting: per meeting with a bet 8.9 bets, typical $1,048 (1 in 10 over $1,924); per racing day
+  $1,380 (1 in 10 over $2,363, most $4,071); per week $9,649 staked, typical profit +$4,509, 4 losing weeks of 23 (worst
+  -$463); money out at once (next 3 days' races) typical $4,074, 1 in 10 over $6,023, most $7,220; worst losing run
+  $4,293. Upper bound on volume: no first-starter or first-up filters here, and the live forward test fills far fewer
+  bets a meeting.
