@@ -203,3 +203,11 @@ API Overview (api-reference/overview): rate limits, errors.
 - A 200 can still mean nothing was placed ("no signal was sent to the bot"); bot offline = signal lost, never replayed.
 - NOT stated on this page: High Odds First with is_market_open, and ensure_total_wager across the per-bookmaker split
   of a Market Open bet. Session Targeting / Bet Types / Market Open Bets pages should say.
+
+## Support, 18 Oct 2026 (Thomas)
+- WebSocket access ENABLED on the account.
+- High Odds First, choose_best_odds and ensure_total_wager do NOT work with Market Open bets (a Market Open bet targets
+  one bookmaker); use Fixed Wager or Fixed Profit for Market Open.
+- High Odds First: the FULL stake goes to the highest-priced bookmaker; it moves down to lower-priced ones only if the
+  bet is rejected, limited, or the stake is not fully filled.
+- (14 Oct, same thread) oddsmatic.app: BetMatic's separate odds WebSocket service, streaming live prices as markets open.
