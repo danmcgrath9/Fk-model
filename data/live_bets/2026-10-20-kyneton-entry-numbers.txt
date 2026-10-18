@@ -1,0 +1,91 @@
+1|1|Canticle|False|False
+1|8|Teen Torque|False|False
+1|6|Ruthless Soul|False|False
+1|3|Noir Velocity|False|False
+1|9|Tuzemak|False|False
+1|2|Golden Rainbow|False|False
+1|10|Pandie Pandie|True|False
+1|7|Sondera|False|False
+1|5|High Yield|False|False
+1|4|The Underquoter|False|False
+2|2|Confidential Girl|False|False
+2|6|Miss Verona|False|False
+2|13|Chapel Belle|True|False
+2|1|Better By Far|False|False
+2|3|Diamonds For Her|False|False
+2|5|Fox Phire|False|False
+2|7|Model Gigi|False|False
+2|11|With Benefits|False|False
+2|4|Explosive Magic|False|False
+2|8|Moon God|False|False
+2|14|Miss Home Body|True|False
+2|10|Unwavering|False|False
+2|12|Nautique|True|False
+2|9|Mystic River Queen|False|False
+3|2|Duke Of Oman|False|False
+3|14|The Secret|True|False
+3|16|All Too Single|True|False
+3|4|Ravens Glow|False|False
+3|6|Zouie|False|False
+3|5|Unannounced|False|False
+3|17|Sarazain|True|False
+3|3|Western Edge|False|False
+3|9|Ciphered|False|False
+3|12|Sabrina|False|False
+3|8|Bourne Legacy|False|False
+3|7|Bohemian Blitz|False|False
+3|13|Velvet Reign|False|False
+3|11|Merry Chase|False|False
+3|10|Count Chevalier|False|False
+4|9|Kulina|False|False
+4|11|Snow On Her|False|False
+4|7|Hidden Comfort|False|False
+4|6|Break The Taboo|False|False
+4|10|Miss Xtravaganza|False|False
+4|1|Kamezali|False|False
+4|4|Please Me Do|False|False
+4|2|Dancingonmyown|False|False
+4|8|The Birthday Party|False|False
+4|5|Hexed|False|False
+4|3|Bliss Bomb|False|False
+5|13|Mahjing|False|False
+5|5|Headstock|False|False
+5|11|Count Of Anjou|False|False
+5|12|Kilmister|False|False
+5|6|Manchego|False|False
+5|10|Becauseyou're Mine|False|False
+5|2|Ryanman|False|False
+5|9|Battle Of The Ice|False|False
+5|8|Rattle'n'roll|False|False
+5|3|Colt Forty Five|False|False
+5|7|Western Lane|False|False
+5|4|Bucks Night|False|False
+5|1|Onlooker|False|False
+6|7|Titan Of Choice|False|False
+6|1|Savvie Blanc|False|False
+6|6|Russian Front|False|False
+6|3|Our Smokeshow|False|False
+6|2|Seeyou Raider|False|False
+6|13|Brutify|True|False
+6|5|Earl Of Gloucester|False|False
+6|12|Hurco|True|False
+6|4|Tempt The Gods|False|False
+6|9|Our Pierro|False|False
+6|11|Aubaine|True|False
+6|8|Victory Tune|False|False
+6|10|Brroosha|True|False
+7|14|Corona Lad|True|False
+7|1|Slane|False|False
+7|15|Jackand|True|False
+7|2|Sound Of Jura|False|False
+7|3|Kiss My Rock|False|False
+7|13|Tierra|False|False
+7|10|Mike's Hope|False|False
+7|11|Super Mirage|False|False
+7|12|Frostration|False|False
+7|6|The Quiet Immortal|False|False
+7|8|Biratu|False|False
+7|4|Lunar Force|False|False
+7|7|Mr Margolin|False|False
+7|9|Crown Of Russia|False|False
+7|5|Haiiro|False|False

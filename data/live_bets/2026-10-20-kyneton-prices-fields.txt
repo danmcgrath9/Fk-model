@@ -1,0 +1,92 @@
+# Kyneton Tue 20 Oct, priced at Good 3.5 (average of Good 3 and Good 4, founder): fields pulled Sun 18 Oct 12:57pm Melbourne. Emergencies as SCR until they gain a start; no market yet.
+1, Canticle, 0, 0
+1, Golden Rainbow, 0, 0
+1, Noir Velocity, 0, 0
+1, The Underquoter, 0, 0
+1, High Yield, 0, 0
+1, Ruthless Soul, 0, 0
+1, Sondera, 0, 0
+1, Teen Torque, 0, 0
+1, Tuzemak, 0, 0
+1, Pandie Pandie, SCR
+2, Better By Far, 0, 0
+2, Confidential Girl, 0, 0
+2, Diamonds For Her, 0, 0
+2, Explosive Magic, 0, 0
+2, Fox Phire, 0, 0
+2, Miss Verona, 0, 0
+2, Model Gigi, 0, 0
+2, Moon God, 0, 0
+2, Mystic River Queen, 0, 0
+2, Unwavering, 0, 0
+2, With Benefits, 0, 0
+2, Nautique, SCR
+2, Chapel Belle, SCR
+2, Miss Home Body, SCR
+3, Duke Of Oman, 0, 0
+3, Western Edge, 0, 0
+3, Ravens Glow, 0, 0
+3, Unannounced, 0, 0
+3, Zouie, 0, 0
+3, Bohemian Blitz, 0, 0
+3, Bourne Legacy, 0, 0
+3, Ciphered, 0, 0
+3, Count Chevalier, 0, 0
+3, Merry Chase, 0, 0
+3, Sabrina, 0, 0
+3, Velvet Reign, 0, 0
+3, The Secret, SCR
+3, All Too Single, SCR
+3, Sarazain, SCR
+4, Kamezali, 0, 0
+4, Dancingonmyown, 0, 0
+4, Bliss Bomb, 0, 0
+4, Please Me Do, 0, 0
+4, Hexed, 0, 0
+4, Break The Taboo, 0, 0
+4, Hidden Comfort, 0, 0
+4, The Birthday Party, 0, 0
+4, Kulina, 0, 0
+4, Miss Xtravaganza, 0, 0
+4, Snow On Her, 0, 0
+5, Onlooker, 0, 0
+5, Ryanman, 0, 0
+5, Colt Forty Five, 0, 0
+5, Bucks Night, 0, 0
+5, Headstock, 0, 0
+5, Manchego, 0, 0
+5, Western Lane, 0, 0
+5, Rattle'n'roll, 0, 0
+5, Battle Of The Ice, 0, 0
+5, Becauseyou're Mine, 0, 0
+5, Count Of Anjou, 0, 0
+5, Kilmister, 0, 0
+5, Mahjing, 0, 0
+6, Savvie Blanc, 0, 0
+6, Seeyou Raider, 0, 0
+6, Our Smokeshow, 0, 0
+6, Tempt The Gods, 0, 0
+6, Earl Of Gloucester, 0, 0
+6, Russian Front, 0, 0
+6, Titan Of Choice, 0, 0
+6, Victory Tune, 0, 0
+6, Our Pierro, 0, 0
+6, Brroosha, SCR
+6, Aubaine, SCR
+6, Hurco, SCR
+6, Brutify, SCR
+7, Slane, 0, 0
+7, Sound Of Jura, 0, 0
+7, Kiss My Rock, 0, 0
+7, Lunar Force, 0, 0
+7, Haiiro, 0, 0
+7, The Quiet Immortal, 0, 0
+7, Mr Margolin, 0, 0
+7, Biratu, 0, 0
+7, Crown Of Russia, 0, 0
+7, Mike's Hope, 0, 0
+7, Super Mirage, 0, 0
+7, Frostration, 0, 0
+7, Tierra, 0, 0
+7, Corona Lad, SCR
+7, Jackand, SCR
