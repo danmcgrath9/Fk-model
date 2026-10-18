@@ -32,6 +32,11 @@ MEETINGS = [
     ("Thu 15 Oct Warrnambool", "warrnambool-20261015", "2026-10-15-warrnambool", "g4", "2026-10-15-warrnambool-prices.txt"),
     ("Fri 16 Oct Cranbourne", "cranbourne-20261016", "2026-10-16-cranbourne", "g4", "2026-10-16-cranbourne-prices.txt"),
     ("Sat 17 Oct Caulfield", "caulfield-20261017", "2026-10-17-caulfield", "g4", "2026-10-17-caulfield-prices.txt"),
+    ("Sat 17 Oct Bendigo", "bendigo-20261017", "2026-10-17-bendigo", "g4", "2026-10-17-bendigo-prices.txt"),
+    ("Sat 17 Oct Wodonga", "wodonga-20261017", "2026-10-17-wodonga", "g4", "2026-10-17-wodonga-prices.txt"),
+    ("Sat 17 Oct Avoca", "avoca-20261017", "2026-10-17-avoca", "g4", "2026-10-17-avoca-prices.txt"),
+    ("Sun 18 Oct Horsham", "horsham-20261018", "2026-10-18-horsham", "g4", "2026-10-18-horsham-prices.txt"),
+    ("Sun 18 Oct Moe", "moe-20261018", "2026-10-18-moe", "g4", "2026-10-18-moe-prices.txt"),
 ]   # add each meeting the founder bets; the opening snapshot is the first saved file with the market up
 def git_first(path):
     """The file as first committed (the price made before the race), or None."""
@@ -99,6 +104,21 @@ for label, mid, pre, g, snap in MEETINGS:
             if mo >= cap: continue
             ts = tiers(mo, cap, lambda t, pm=pm: pm ** 0.82 * t ** -0.22, r.get("only_ride", False), field[int(r["race"])])
             cands.append((int(r["race"]), r["horse"], ours, ts, cap))
+    if os.environ.get("RESTAKE"):   # every ladder re-sized with today's stake_rule.py; the prices and steps are kept as built
+        import stake_rule
+        re_c = []
+        for rc, horse, ours, ts, cap in cands:
+            if len(ts[0]) < 4:   # built here by tiers(), which already sizes with today's stake_rule.py
+                re_c.append((rc, horse, ours, ts, cap)); continue
+            pm = 1 / ours; out = []
+            for cp in sorted({x[3] for x in ts}):            # one ladder per ceiling (the under-$4 ladder has its own)
+                lad = sorted(x for x in ts if x[3] == cp); prev = 0.0
+                for k, x in enumerate(lad):
+                    tp = lad[k + 1][0] if k + 1 < len(lad) else x[0]
+                    tgt = stake_rule.stake(pm ** 0.82 * tp ** -0.22, tp); add = max(0.0, tgt - prev); prev = max(prev, tgt)
+                    out.append((x[0], round(add, 2), None, cp))
+            re_c.append((rc, horse, ours, out, cap))
+        cands = re_c
     for rc, horse, ours, ts, cap in sorted(cands, key=lambda c: (c[0], c[1])):
         r = {"race": rc, "horse": horse}; mo = ts[0][0]
         n_orders += len(ts)

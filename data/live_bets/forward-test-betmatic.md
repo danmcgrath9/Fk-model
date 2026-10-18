@@ -15,13 +15,18 @@ scratched runners void, winnings less scratching deductions. $100 a unit. CLV = 
 | Sat 10 Oct Caulfield | 60 | 1 | 0 | 0.62u | -0.62u | 0.53 | 0/1 |
 | Sun 11 Oct Seymour | 80 | 4 | 0 | 4.60u | -4.60u | 1.60 | 2/4 |
 | Tue 13 Oct Kilmore | 48 | 4 | 1 | 3.66u | +6.94u | 2.05 | 3/4 |
-| Wed 14 Oct Caulfield | 250 | 5 | 0 | 5.04u | -5.04u | 0.00 | 0/0 |
-| Thu 15 Oct Warrnambool | not run yet | | | | | | |
-| Fri 16 Oct Cranbourne | not run yet | | | | | | |
-| Sat 17 Oct Caulfield | not run yet | | | | | | |
-| **Total** | **778** | **37** | **7** | **38.74u** | **+19.62u (+51%)** | **1.67** | **23/32** |
+| Wed 14 Oct Caulfield | 250 | 5 | 0 | 5.04u | -5.04u | 1.89 | 5/5 |
+| Thu 15 Oct Warrnambool | 61 | 3 | 2 | 3.71u | +18.18u | 1.33 | 3/3 |
+| Fri 16 Oct Cranbourne | 48 | 1 | 0 | 0.34u | -0.34u | 0.51 | 0/1 |
+| Sat 17 Oct Caulfield | 76 | 10 | 3 | 9.89u | +28.80u | 1.61 | 8/10 |
+| Sat 17 Oct Bendigo | 63 | 2 | 1 | 2.55u | +5.77u | 2.07 | 2/2 |
+| Sat 17 Oct Wodonga | 53 | 3 | 0 | 3.16u | -3.16u | 1.17 | 2/3 |
+| Sat 17 Oct Avoca | 55 | 0 | 0 | 0.00u | +0.00u | 0.00 | 0/0 |
+| Sun 18 Oct Horsham | 58 | 2 | 1 | 2.98u | +6.32u | 2.37 | 2/2 |
+| Sun 18 Oct Moe | 73 | 3 | 0 | 3.13u | -3.13u | 0.97 | 1/3 |
+| **Total** | **1265** | **61** | **14** | **64.50u** | **+72.05u (+112%)** | **1.62** | **46/61** |
 
-Of these, 3 opened at or past the ceiling (3x our price, $8 for EARLY runners), where the rules would not bet: 3.44u staked, -3.44u. With a maximum price on the order: 34 bets, 35.30u, +23.06u (+65%).
+Of these, 3 opened at or past the ceiling (3x our price, $8 for EARLY runners), where the rules would not bet: 3.44u staked, -3.44u. With a maximum price on the order: 58 bets, 61.06u, +75.49u (+124%).
 
 ## Every fill
 
@@ -64,8 +69,32 @@ Of these, 3 opened at or past the ceiling (3x our price, $8 for EARLY runners), 
 | Tue 13 Oct Kilmore | R7 | Celestial Splendor | $9.39 | $12.64 | $19 | 2 of 2 | 0.67u | 1 | $7.80 | 18c | +9.93 |
 | Tue 13 Oct Kilmore | R7 | Winter Nights | $11.18 | $15.18 | $16 | 1 of 2 | 0.45u | 3 | $16.44 | 18c | -0.45 |
 | Wed 14 Oct Caulfield | R2 | Katoto | $4.87 | $6.34 | $11 | 6 of 7 | 1.58u | scratched | | | 0 |
-| Wed 14 Oct Caulfield | R2 | True Rebel | $5.17 | $6.75 | $8 | 2 of 7 | 1.01u | 2 |  | 20c | -1.01 |
-| Wed 14 Oct Caulfield | R4 | Savisanta | $6.25 | $8.24 | $10 | 3 of 7 | 0.91u | 3 |  | 2c | -0.91 |
-| Wed 14 Oct Caulfield | R5 | Jett Smash | $3.30 | $4.22 | $4.4 | 1 of 6 | 1.47u | 0 |  | 2c | -1.47 |
-| Wed 14 Oct Caulfield | R7 | Darkbonee | $3.62 | $4.64 | $4.8 | 1 of 7 | 1.30u | 2 |  |  | -1.30 |
-| Wed 14 Oct Caulfield | R8 | Verdoux | $14.54 | $20.02 | $26 | 3 of 7 | 0.35u | 5 |  |  | -0.35 |
+| Wed 14 Oct Caulfield | R2 | True Rebel | $5.17 | $6.75 | $8 | 2 of 7 | 1.01u | 2 | $3.10 | 20c | -1.01 |
+| Wed 14 Oct Caulfield | R4 | Savisanta | $6.25 | $8.24 | $10 | 3 of 7 | 0.91u | 3 | $5.78 | 2c | -0.91 |
+| Wed 14 Oct Caulfield | R5 | Jett Smash | $3.30 | $4.22 | $4.4 | 1 of 6 | 1.47u | 6 | $2.52 | 2c | -1.47 |
+| Wed 14 Oct Caulfield | R7 | Darkbonee | $3.62 | $4.64 | $4.8 | 1 of 7 | 1.30u | 2 | $3.06 |  | -1.30 |
+| Wed 14 Oct Caulfield | R8 | Verdoux | $14.54 | $20.02 | $26 | 3 of 7 | 0.35u | 6 | $14.29 |  | -0.35 |
+| Thu 15 Oct Warrnambool | R3 | Who I Think I Am | $2.83 | $3.59 | $6 | 2 of 2 | 2.50u | 1 | $5.70 |  | +12.50 |
+| Thu 15 Oct Warrnambool | R6 | Buzitup | $7.43 | $9.88 | $11 | 1 of 2 | 0.71u | 1 | $8.46 | 13c | +6.18 |
+| Thu 15 Oct Warrnambool | R7 | Both Sides Now | $10.17 | $13.75 | $15 | 1 of 2 | 0.50u | 8 | $9.20 | 9c | -0.50 |
+| Fri 16 Oct Cranbourne | R6 | Hollandia | $14.35 | $19.75 | $21 | 1 of 2 | 0.34u | 10 | $41.36 |  | -0.34 |
+| Sat 17 Oct Caulfield | R2 | Autumn In Grinzing | $13.69 | $18.78 | $41 | 2 of 2 | 0.44u | 6 | $18.50 | 1c | -0.44 |
+| Sat 17 Oct Caulfield | R2 | Voynichese | $5.99 | $7.89 | $9.5 | 1 of 2 | 0.91u | 7 | $9.21 | 1c | -0.91 |
+| Sat 17 Oct Caulfield | R3 | Stardom | $9.36 | $12.60 | $15 | 1 of 2 | 0.54u | 5 | $13.00 |  | -0.54 |
+| Sat 17 Oct Caulfield | R4 | Aemond | $7.60 | $10.11 | $13 | 2 of 2 | 0.85u | 9 | $8.73 | 24c | -0.85 |
+| Sat 17 Oct Caulfield | R6 | Hidden Motive | $8.84 | $11.86 | $13 | 1 of 2 | 0.58u | 9 | $9.20 | 1c | -0.58 |
+| Sat 17 Oct Caulfield | R7 | Over The Bridge | $3.65 | $4.68 | $6 | 2 of 2 | 2.00u | 11 | $6.00 | 1c | -2.00 |
+| Sat 17 Oct Caulfield | R7 | Saintly Dancer | $4.31 | $5.57 | $7 | 2 of 2 | 1.64u | 1 | $5.21 | 1c | +9.74 |
+| Sat 17 Oct Caulfield | R8 | Threads | $10.81 | $14.65 | $15 | 1 of 2 | 0.46u | 7 | $4.03 | 10c | -0.46 |
+| Sat 17 Oct Caulfield | R9 | Kingswood | $10.53 | $14.26 | $25 | 2 of 2 | 0.59u | 1 | $28.12 |  | +14.16 |
+| Sat 17 Oct Caulfield | R10 | Shadhavar | $3.86 | $4.97 | $7.5 | 2 of 2 | 1.88u | 1 | $3.98 | 13c | +10.68 |
+| Sat 17 Oct Bendigo | R2 | Genomic | $3.79 | $4.87 | $11 | 2 of 2 | 1.91u | 5 | $4.81 |  | -1.91 |
+| Sat 17 Oct Bendigo | R7 | Carnival Riches | $8.08 | $10.79 | $13 | 1 of 2 | 0.64u | 1 | $7.00 |  | +7.68 |
+| Sat 17 Oct Wodonga | R3 | Moral Turpitude | $5.81 | $7.63 | $9 | 1 of 2 | 0.94u | 6 | $6.74 |  | -0.94 |
+| Sat 17 Oct Wodonga | R4 | Stand By Me Ned | $7.37 | $9.80 | $11 | 1 of 2 | 0.71u | 5 | $13.47 |  | -0.71 |
+| Sat 17 Oct Wodonga | R6 | Black Panther | $4.62 | $6.00 | $8.5 | 2 of 2 | 1.51u | 8 | $6.25 |  | -1.51 |
+| Sun 18 Oct Horsham | R5 | Bazzar | $3.85 | $4.95 | $6 | 1 of 2 | 1.55u | 1 | $2.25 |  | +7.75 |
+| Sun 18 Oct Horsham | R8 | Surfy Pete | $4.84 | $6.30 | $9 | 2 of 2 | 1.43u | 9 | $4.35 |  | -1.43 |
+| Sun 18 Oct Moe | R5 | Sleeping Tiger | $5.11 | $6.67 | $9.5 | 2 of 2 | 1.34u | 3 | $12.00 |  | -1.34 |
+| Sun 18 Oct Moe | R6 | Ze Bee Nine | $8.09 | $10.80 | $14.5 | 2 of 2 | 0.79u | 9 | $11.48 |  | -0.79 |
+| Sun 18 Oct Moe | R7 | Preservator | $5.51 | $7.22 | $7.33 | 1 of 2 | 1.00u | 6 | $8.67 |  | -1.00 |
