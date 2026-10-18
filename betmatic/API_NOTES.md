@@ -166,3 +166,26 @@ API Overview (api-reference/overview): rate limits, errors.
   running bot to read a race's live odds from the TAB session; the answer arrives only on the WebSocket
   (category "odds_update_anwser", spelled as sent). Would give TAB's own price per runner from our own session, a check
   on the fill price before the open. Not needed for Market Open bets, which carry min/max odds already.
+
+## Creating a Bet, website (pasted by the founder 18 Oct 2026)
+- Bet types: Fixed Wager (flat stake as-is); Fixed Profit (stake from a target profit at current odds); HIGH ODDS FIRST
+  (one total budget, "allocated starting with the highest-priced bookmaker"; Best Odds / Random Accounts filters are
+  ignored for it, because it already picks accounts by price).
+- Stake allocation for Fixed Wager / Fixed Profit: "Each account" (every account bets the full amount, so $10 x 5
+  accounts = $50) or "Split total" ($10 over 5 accounts = $2 each). High Odds First always works from one total.
+- Allow Double Bets (with Split total): a stake that fails at one account is re-placed at accounts that succeeded,
+  at most two bets per bookmaker.
+- Odds checks per bookmaker: Check Min Odds (default on, 2.00) skips any bookmaker below it; Max Odds skips above.
+- Timing: Now / Schedule (seconds before the jump, auto trigger) / Market Open ("triggers when each bookmaker's market
+  first becomes available"; Market Open bets are split per bookmaker, retry delay 1s, max attempts 60).
+- Built-in templates include "Market Open TAB" and "Best Odds (Top 5)" (the 5 bookmakers with the best prices).
+- Selection filter "Best Odds (top N)": only the N accounts with the best current odds place the bet.
+- Live odds: "Get live odds" pulls prices from the running bot (up to a minute); the All prices grid shows EVERY
+  bookmaker's price for the runner. Same source as POST /notification/odds/request/ + the WebSocket: a per-bookmaker
+  price feed from our own bot, free of Form King credits (WebSocket access must be requested from support).
+- Targeting: Machines / Bookies / Accounts filters; empty = all; a targeting that resolves to no account is created
+  and silently never sent. Per-account delays exist for staggering.
+- Outcomes per account: Bet Placed / Bet Not Placed / Bet Rejected (below min odds, account not running, market
+  closed, bookmaker refused).
+- NOT stated: whether High Odds First can be combined with Market Open (support, 14 Oct: "High Odds First only for
+  standard bets"), and how far High Odds First fills the top bookmaker before moving to the next.
