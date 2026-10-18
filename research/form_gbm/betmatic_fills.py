@@ -44,7 +44,7 @@ def main():
             fills.append((o["race"], o["horse"], o["order"], o["min_odds"], op, st, res))
     for f in fills:
         print(f"R{f[0]} {f[1]:20s} order {f[2]:7s} min ${f[3]:>6s} opened ${f[4]:<6} {f[5]:.2f}u {f[6]}")
-    print(f"{len(fills)} orders filled, {staked:.2f}u (${staked * 100:.0f})" + (f", P/L {pl:+.2f}u" if won else "")
+    print(f"{len(fills)} orders filled, {staked:.2f}u" + (f", P/L {pl:+.2f}u" if won else "")
           + (f"; no open yet in races {sorted(missing, key=int)}" if missing else ""))
 
 

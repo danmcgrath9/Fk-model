@@ -57,7 +57,7 @@ def main():
     sec = (f"{START}<h2>BetMatic: filled at the open ({len(rows)})</h2><div class='tw'>{body}</div>"
            f"<div class='note'>The order file BetMatic would have been sent before the market ({n_orders} orders on {len(counts)} runners: "
            f"minimum odds from our model, 5% under, stake in up to eight price steps). Filled where Form King's opening price was at or over "
-           f"the minimum. {tot:.2f}u (${tot * 100:.0f})" + (f", P/L {pl:+.2f}u" if won else "") + ". Deduction = what TAB took off the winnings for "
+           f"the minimum. {tot:.2f}u" + (f", P/L {pl:+.2f}u" if won else "") + ". Deduction = what TAB took off the winnings for "
            f"runners scratched after the open: TAB's actual figure where recorded (DAYPREFIX-deductions-actual.txt), else our estimate.</div><div style='height:14px'></div>{END}")
     page = open(a.page).read()
     page = re.sub(re.escape(START) + ".*?" + re.escape(END), "", page, flags=re.S)

@@ -154,3 +154,5 @@ x2, middle x1, drift third x0.5, 5u cap. Backtest as the orders fire: +1,899u on
 bets first; when the accounts get limited, spread them wider.
 
 **Unit size from 18 Oct 2026: $50** (founder: "$50 unit sizes today and moving forward until I tell you"; was $100). The fk-betmatic send workflow defaults to 50; the most on one horse is 5u = $250.
+
+**Unit size from Wednesday 21 Oct 2026: $25** (founder, 19 Oct: "We are going to start at $25 for Wednesday"), replacing the $50 set on 18 Oct. The most on one horse is 5u = $125. The actual P&L in betmatic-book.md is kept in real dollars from the bets TAB took; paper is kept in units only.
