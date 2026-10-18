@@ -156,3 +156,5 @@ bets first; when the accounts get limited, spread them wider.
 **Unit size from 18 Oct 2026: $50** (founder: "$50 unit sizes today and moving forward until I tell you"; was $100). The fk-betmatic send workflow defaults to 50; the most on one horse is 5u = $250.
 
 **Unit size from Wednesday 21 Oct 2026: $25** (founder, 19 Oct: "We are going to start at $25 for Wednesday"), replacing the $50 set on 18 Oct. The most on one horse is 5u = $125. The actual P&L in betmatic-book.md is kept in real dollars from the bets TAB took; paper is kept in units only.
+
+**19 Oct 2026, 10:36am: no live orders on BetMatic** (founder: "any live order delete them all"). Pending showed 0 scheduled; a cancel run on all 70 Echuca notifications returned "not a scheduled / on market open notification or already triggered" for every one (Echuca's market opened Saturday, before any money went in, so nothing fired). Every earlier ledger's races have been run. Wednesday 21 Oct's orders are the first to go on.
