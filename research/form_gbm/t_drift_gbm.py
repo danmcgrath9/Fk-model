@@ -162,3 +162,11 @@ for lab_, st in (("live stakes", base), ("x1.5 forecast to firm, x0.5 forecast t
     for h in (0, 1):
         t = val & (half == h)
         print(f"| {lab_} | {h} | {st[t].sum():.0f}u | {(st * ret_open)[t].sum():+.0f}u | {(st * ret_open)[t].sum() / st[t].sum():+.0%} |")
+# founder: "why would we bet on drifters": drop the forecast-to-drift third outright
+print("\n| bets kept | half | bets | staked | P/L units | ROI | drift third alone: bets, P/L |\n|---|---|---|---|---|---|---|")
+dr = pf < q3[0]
+for lab_, keep, st in (("all value bets, live stakes", val, base), ("drop the forecast-to-drift third", val & ~dr, base),
+                       ("drop the drift third, x2 on the firm third", val & ~dr, np.minimum(base * np.where(pf >= q3[1], 2, 1), 5))):
+    for h in (0, 1):
+        t = keep & (half == h); d0 = val & dr & (half == h)
+        print(f"| {lab_} | {h} | {t.sum()} | {st[t].sum():.0f}u | {(st * ret_open)[t].sum():+.0f}u | {(st * ret_open)[t].sum() / st[t].sum():+.0%} | {d0.sum()}, {(base * ret_open)[d0].sum():+.0f}u |")

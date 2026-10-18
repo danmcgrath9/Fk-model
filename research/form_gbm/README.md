@@ -1016,3 +1016,8 @@ the race-day best price and BSP; the weekend, Thu 15 to Sun 18, 27 races with 9:
   to BSP; it sorts OUR bets better: which of them the market will come to. Not live yet: the orders go in before the
   market, so the open is not known when the order is built; the minimum odds have to be solved per runner against the
   drift model, then forward-tested beside the live orders.
+- DROP THE FORECAST-TO-DRIFT THIRD? (founder: "why would we bet on drifters"). Live-style price, by half: the drift
+  third alone made +64u / +171u at the open (318 / 260 bets), so dropping it cuts profit: +776u / +760u becomes +712u /
+  +589u. Dropped with x2 on the firm third +867u / +867u; kept at x0.5 with x2 on the firm third +899u / +952u (best).
+  "Forecast to drift" means the least likely of our value bets to firm, not a horse expected to lose money: they are
+  still value at the open, and a smaller stake on them beats none.
