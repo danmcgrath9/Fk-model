@@ -5,7 +5,7 @@
 The forecast y = predicted log(BSP chance / opening chance), from a LightGBM model on the dataset's form inputs (the
 v9 columns), the opening chance, the field size and our price against the open (log our chance - log opening chance).
 Our value bets split into thirds by y: the forecast-to-drift third, the middle and the forecast-to-firm third. The
-stake multiplier is DRIFT_MULT / 1 / FIRM_MULT on those thirds (founder, 18 Oct: normal stakes on the drift and middle thirds, x2 on
+stake multiplier is DRIFT_MULT / 1 / FIRM_MULT on those thirds (founder, 18 Oct: half stakes on the drift third, normal on the middle, x2 on
 the firm third; t_drift_orders.py has both versions).
 
 An order is built before the market exists, so the forecast is worked out at each step's own price: the opening
@@ -13,7 +13,7 @@ chance at a price t is (1/t) / the median opening book for the race's field size
 
     python3.13 drift_forecast.py train      in the live model dir: writes drift_model.txt and drift_meta.json"""
 import json, os, numpy as np
-DRIFT_MULT, FIRM_MULT = 1.0, 2.0   # 18 Oct 2026, founder: bet more until limited; was 0.0 (drop the drift third) the same day
+DRIFT_MULT, FIRM_MULT = 0.5, 2.0   # 18 Oct 2026, founder: "double the top third, keep mid tier the same and then lower tier half" (was 0.0, then 1.0, the same night)
 MODEL, META = "drift_model.txt", "drift_meta.json"
 PARAMS = dict(objective="regression", learning_rate=0.03, num_leaves=15, min_data_in_leaf=80, feature_fraction=0.3,
               bagging_fraction=0.8, bagging_freq=1, lambda_l2=10, verbose=-1, seed=1)

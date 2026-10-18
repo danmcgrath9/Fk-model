@@ -148,3 +148,7 @@ shows the forecast for each step ("forecast drift/firm/firm by step"). Built by 
 **Changed 18 Oct night (founder: bet more until limited):** forecast-to-drift steps keep their normal stake instead of
 no order; firmers still x2, 5u cap. Backtest as the orders fire: +1,937u on 4,363u (+44%), worst losing run 78u, against
 +1,347u / 58u on the old stakes and +1,860u / 86u dropping the drifters.
+
+**Final, 18 Oct (founder: "double the top third bets, keep mid tier the same and then lower tier half"):** firm third
+x2, middle x1, drift third x0.5, 5u cap. Backtest as the orders fire: +1,899u on 4,080u (+47%). The units go to the best
+bets first; when the accounts get limited, spread them wider.

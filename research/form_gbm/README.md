@@ -1044,3 +1044,6 @@ the race-day best price and BSP; the weekend, Thu 15 to Sun 18, 27 races with 9:
   the most (+1,937u on 4,363u, +44%) and its worst losing run is SMALLER than the drop-the-drifters version (78u
   against 86u; live stakes 58u, firm third only 51u). Every version keeps the 5u ($500) cap per horse, under the
   Racing Victoria minimum bet limit ($1,000 country / $2,000 metro to lose).
+- FINAL, 18 Oct (founder: "ROI is more important... double the top third bets, keep mid tier the same and then lower
+  tier half"; the money goes to the best bets first, spread wider once the accounts get limited): DRIFT_MULT 0.5.
+  As the orders fire: 1,589 bets, 4,080u, +1,899u (+47%), worst losing run 81u; halves +982u / +917u.
