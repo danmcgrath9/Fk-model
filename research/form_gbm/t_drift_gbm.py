@@ -146,3 +146,14 @@ for lo_, hi_ in ((0.2, 0.5), (0.5, 1.0), (1.0, 99)):
     s = val & (edge >= lo_) & (edge < hi_); md = np.median(pf[s])
     for t, ss in (("firm half", s & (pf >= md)), ("drift half", s & (pf < md))):
         print(f"| {lo_:.0%}-{hi_:.0%} | {t} | {ss.sum()} | {ret_open[ss].mean():+.0%} | {ret_bsp[ss].mean():+.0%} |")
+# weighting the stake by the forecast (founder, 18 Oct: "if it's certain factors that have a better ROI, why aren't we weighting those more")
+print("\n| stake weighting on the live bets | half | staked | P/L units | ROI |\n|---|---|---|---|---|")
+base = np.array([stake_rule.stake(BL[i], oo[i]) if val[i] else 0.0 for i in range(len(oo))])
+kel2 = np.array([stake_rule.stake(PB[i], oo[i]) if val[i] else 0.0 for i in range(len(oo))])
+q3 = np.quantile(pf[val], [1 / 3, 2 / 3]); mult = np.where(pf >= q3[1], 1.5, np.where(pf < q3[0], 0.5, 1.0))
+for lab_, st in (("live stakes", base), ("x1.5 forecast to firm, x0.5 forecast to drift", np.minimum(base * mult, 5)),
+                 ("x2 / x0.5", np.minimum(base * np.where(pf >= q3[1], 2, np.where(pf < q3[0], 0.5, 1)), 5)),
+                 ("live stake rule on the predicted-BSP chance", kel2)):
+    for h in (0, 1):
+        t = val & (half == h)
+        print(f"| {lab_} | {h} | {st[t].sum():.0f}u | {(st * ret_open)[t].sum():+.0f}u | {(st * ret_open)[t].sum() / st[t].sum():+.0%} |")

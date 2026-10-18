@@ -1002,3 +1002,7 @@ the race-day best price and BSP; the weekend, Thu 15 to Sun 18, 27 races with 9:
   0.054 -> 0.049 (weekend 0.061 -> 0.056). The 9:30 top-up price should lean on the morning market, not the open.
 - Filled bets (24 with full races): median open/BSP 1.53, morning/BSP 0.95; 88% had firmed by race morning, so a
   9:30 top-up on a filled bet is usually below the BSP it ends at.
+- WEIGHTING THE STAKE BY THE FORECAST (founder: "why aren't we weighting those more"), live bets, P/L at the open, Jun-Jul
+  / Aug-Oct (only Aug-Oct is honest): live stakes +446u / +741u; x1.5 forecast-to-firm and x0.5 forecast-to-drift
+  +621u / +731u; x2 / x0.5 +682u / +778u; the live stake rule on the predicted-BSP chance +490u / +831u. The honest half
+  gains little from a hand multiplier and most from pricing the chance better, which weights the firmers by itself.
