@@ -12,7 +12,7 @@ on:
       action:
         description: 'what to do (check = read the account only, never bets)'
         type: choice
-        options: [check, send, pending, status, summary, cancel]
+        options: [check, send, pending, status, summary, cancel, inspect]
         default: 'check'
       file:
         description: 'send: the order file (data/live_bets/DAYPREFIX-betmatic-preopen.csv); cancel/status/pending/summary: its -ledger.csv (summary also takes a bare YYYY-MM-DD)'
@@ -83,6 +83,7 @@ jobs:
             cancel) python betmatic/betmatic_send.py cancel "$FILE" ${RACE:+--race "$RACE"} ${NUM:+--number "$NUM"} $SEND ;;
             status) python betmatic/betmatic_send.py status "$FILE" ;;
             pending) python betmatic/betmatic_send.py pending "$FILE" ;;
+            inspect) python betmatic/betmatic_send.py inspect "$FILE" ${RACE:+--race "$RACE"} ;;
             summary)
               D=$(basename "$FILE" | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}')
               case "$FILE" in *.csv) python betmatic/betmatic_send.py summary "$D" --ledger "$FILE" ;;

@@ -231,6 +231,37 @@ def pending(a):
     print(f"{ok} pending, {missing} not pending, {len(live)} pending on BetMatic in all")
 
 
+def inspect(a):
+    """Read-only: what BetMatic has stored for each order in the ledger (GET /notification/?label=, the instruction as
+    BetMatic holds it) and the race it linked the order to (GET /notification/{id}/race/detail/). Added 19 Oct 2026
+    after Geelong R5's orders fired at TAB's open while R8 and R9's never reached the bot: compare the fired race's
+    orders with the others field by field. --race limits it to one race."""
+    bm = BM(); shown = set()
+    for r in csv.DictReader(open(a.ledger)):
+        if a.race and r["race"] != str(a.race):
+            continue
+        for i in r["notification_ids"].split("&"):
+            if not i:
+                continue
+            got = bm.get("/notification/", label=r["label"])
+            rows = [n for n in (got if isinstance(got, list) else results(got)) if isinstance(n, dict) and n.get("label") == r["label"]]
+            n = rows[0] if rows else {}
+            tip = n.get("tip") or {}
+            comp = tip.get("competition") if isinstance(tip.get("competition"), dict) else {"name": tip.get("competition")}
+            if r["race"] not in shown:   # the full stored record once per race, so the fields can be compared
+                shown.add(r["race"])
+                print(f"--- R{r['race']} full record for {r['label']}:\n{json.dumps(n, default=str)[:2500]}")
+            keep = {k: n.get(k) for k in ("id", "is_market_open", "is_canceled", "is_triggered", "status", "created_at",
+                                          "scheduled_time", "market_open_time", "triggered_at") if k in n}
+            print(f"R{r['race']} {r['label']} #{i}: {comp} event {tip.get('event_number')} sel {tip.get('selection')} "
+                  f"start {tip.get('start_time') or tip.get('event_time')} {keep}")
+            try:
+                d = bm.get(f"/notification/{i}/race/detail/")
+                print("    race detail:", json.dumps(d, default=str)[:600])
+            except requests.HTTPError as e:
+                print(f"    race detail: unavailable ({e})")
+
+
 def bot_logs(bm, nid):
     """The bot's own log lines for one bet (GET /bot/logs/{notification_id}/, grouped by bot instance). Empty when the
     bot never saw the bet, which is itself the diagnosis (API reference, Bot Diagnostics)."""
@@ -328,6 +359,7 @@ if __name__ == "__main__":
     c = sp.add_parser("cancel"); c.add_argument("ledger"); c.add_argument("--race"); c.add_argument("--number"); c.add_argument("--send", action="store_true")
     t = sp.add_parser("status"); t.add_argument("ledger")
     pn = sp.add_parser("pending"); pn.add_argument("ledger")
+    ins = sp.add_parser("inspect"); ins.add_argument("ledger"); ins.add_argument("--race")
     sm = sp.add_parser("summary"); sm.add_argument("date", help="Sydney day, YYYY-MM-DD"); sm.add_argument("--ledger")
     a = ap.parse_args(); {"check": check, "send": send, "cancel": cancel, "status": status, "pending": pending,
-                          "summary": summary}[a.cmd](a)
+                          "summary": summary, "inspect": inspect}[a.cmd](a)
