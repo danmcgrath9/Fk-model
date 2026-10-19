@@ -1,0 +1,71 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-21-geelong-r1-n2-s1,1,2,Mr O'reilly,6.85,15.73,22,13959389,Notification has been scheduled.
+fk-2026-10-21-geelong-r1-n2-s2,1,2,Mr O'reilly,8.56,15.73,32,13959390,Notification has been scheduled.
+fk-2026-10-21-geelong-r1-n2-s3,1,2,Mr O'reilly,10.27,15.73,54,13959391,Notification has been scheduled.
+fk-2026-10-21-geelong-r1-n3-s1,1,3,Nottolook,4.63,10.83,70,13959392,Notification has been scheduled.
+fk-2026-10-21-geelong-r1-n3-s2,1,3,Nottolook,5.79,10.83,55,13959393,Notification has been scheduled.
+fk-2026-10-21-geelong-r1-n5-s1,1,5,Sapphire Siren,15.01,33.16,10,13959394,Notification has been scheduled.
+fk-2026-10-21-geelong-r1-n5-s2,1,5,Sapphire Siren,18.76,33.16,14,13959395,Notification has been scheduled.
+fk-2026-10-21-geelong-r1-n5-s3,1,5,Sapphire Siren,22.52,33.16,24,13959396,Notification has been scheduled.
+fk-2026-10-21-geelong-r2-n7-s1,2,7,Immortal Triumph,14.23,31.52,40,13959397,Notification has been scheduled.
+fk-2026-10-21-geelong-r2-n7-s2,2,7,Immortal Triumph,17.79,31.52,10,13959398,Notification has been scheduled.
+fk-2026-10-21-geelong-r2-n14-s1,2,14,Kippis,20.46,44.53,14,13959399,Notification has been scheduled.
+fk-2026-10-21-geelong-r2-n14-s2,2,14,Kippis,25.58,44.53,20,13959400,Notification has been scheduled.
+fk-2026-10-21-geelong-r2-n8-s1,2,8,Mr Assertive,16.10,35.46,35,13959401,Notification has been scheduled.
+fk-2026-10-21-geelong-r2-n8-s2,2,8,Mr Assertive,20.12,35.46,8,13959402,Notification has been scheduled.
+fk-2026-10-21-geelong-r2-n4-s1,2,4,Purple Streak,9.15,20.72,32,13959403,Notification has been scheduled.
+fk-2026-10-21-geelong-r2-n4-s2,2,4,Purple Streak,11.44,20.72,47,13959404,Notification has been scheduled.
+fk-2026-10-21-geelong-r3-n1-s1,3,1,Alero,13.03,28.99,44,13959405,Notification has been scheduled.
+fk-2026-10-21-geelong-r3-n1-s2,3,1,Alero,16.29,28.99,10,13959406,Notification has been scheduled.
+fk-2026-10-21-geelong-r3-n9-s1,3,9,Attachments,14.15,31.37,20,13959407,Notification has been scheduled.
+fk-2026-10-21-geelong-r3-n9-s2,3,9,Attachments,17.69,31.37,30,13959408,Notification has been scheduled.
+fk-2026-10-21-geelong-r3-n7-s1,3,7,Aurora Belle,4.24,8.00,78,13959409,Notification has been scheduled.
+fk-2026-10-21-geelong-r3-n7-s2,3,7,Aurora Belle,5.30,8.00,47,13959410,Notification has been scheduled.
+fk-2026-10-21-geelong-r3-n4-s1,3,4,Charming Nic,19.25,42.02,14,13959411,Notification has been scheduled.
+fk-2026-10-21-geelong-r3-n4-s2,3,4,Charming Nic,24.06,42.02,22,13959412,Notification has been scheduled.
+fk-2026-10-21-geelong-r3-n11-s1,3,11,Misty Whisper,8.28,18.84,36,13959413,Notification has been scheduled.
+fk-2026-10-21-geelong-r3-n11-s2,3,11,Misty Whisper,10.35,18.84,52,13959414,Notification has been scheduled.
+fk-2026-10-21-geelong-r3-n10-s1,3,10,Yum,13.59,30.18,21,13959415,Notification has been scheduled.
+fk-2026-10-21-geelong-r3-n10-s2,3,10,Yum,16.99,30.18,31,13959416,Notification has been scheduled.
+fk-2026-10-21-geelong-r4-n9-s1,4,9,Karren,2.75,3.99,117,13959417,Notification has been scheduled.
+fk-2026-10-21-geelong-r4-n9-s2,4,9,Karren,3.44,3.99,8,13959418,Notification has been scheduled.
+fk-2026-10-21-geelong-r4-n9-s3,4,9,Karren,4.00,6.96,125,13959419,Notification has been scheduled.
+fk-2026-10-21-geelong-r5-n5-s1,5,5,Cold Shower,17.07,37.48,16,13959420,Notification has been scheduled.
+fk-2026-10-21-geelong-r5-n5-s2,5,5,Cold Shower,21.34,37.48,24,13959421,Notification has been scheduled.
+fk-2026-10-21-geelong-r5-n13-s1,5,13,Expensive Taste,19.57,42.70,7,13959422,Notification has been scheduled.
+fk-2026-10-21-geelong-r5-n13-s2,5,13,Expensive Taste,24.46,42.70,28,13959423,Notification has been scheduled.
+fk-2026-10-21-geelong-r5-n2-s1,5,2,Icy You,12.67,28.22,11,13959424,Notification has been scheduled.
+fk-2026-10-21-geelong-r5-n2-s2,5,2,Icy You,15.84,28.22,45,13959425,Notification has been scheduled.
+fk-2026-10-21-geelong-r5-n4-s1,5,4,Meness,10.26,23.11,28,13959426,Notification has been scheduled.
+fk-2026-10-21-geelong-r5-n4-s2,5,4,Meness,12.82,23.11,42,13959427,Notification has been scheduled.
+fk-2026-10-21-geelong-r5-n7-s1,5,7,Murshidi,4.89,11.42,66,13959428,Notification has been scheduled.
+fk-2026-10-21-geelong-r5-n7-s2,5,7,Murshidi,6.11,11.42,60,13959429,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n6-s1,6,6,A Diva,19.85,43.28,7,13959430,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n6-s2,6,6,A Diva,24.81,43.28,28,13959431,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n8-s1,6,8,Caelius,13.86,30.74,20,13959432,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n8-s2,6,8,Caelius,17.32,30.74,30,13959433,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n12-s1,6,12,Jenni You Think,11.71,26.19,49,13959434,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n12-s2,6,12,Jenni You Think,14.64,26.19,12,13959435,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n13-s1,6,13,Perfect Night,10.38,23.36,56,13959437,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n13-s2,6,13,Perfect Night,12.98,23.36,13,13959438,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n11-s1,6,11,Revolver,20.17,43.94,28,13959439,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n11-s2,6,11,Revolver,25.21,43.94,7,13959440,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n4-s1,6,4,Stay Humble,6.32,14.57,97,13959441,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n4-s2,6,4,Stay Humble,7.90,14.57,22,13959442,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n5-s1,6,5,Stung,13.58,30.15,10,13959443,Notification has been scheduled.
+fk-2026-10-21-geelong-r6-n5-s2,6,5,Stung,16.98,30.15,42,13959444,Notification has been scheduled.
+fk-2026-10-21-geelong-r8-n1-s1,8,1,Celsius Star,7.61,8.00,44,13959445,Notification has been scheduled.
+fk-2026-10-21-geelong-r8-n5-s1,8,5,Immortal Star,14.76,32.63,10,13959446,Notification has been scheduled.
+fk-2026-10-21-geelong-r8-n5-s2,8,5,Immortal Star,18.45,32.63,38,13959447,Notification has been scheduled.
+fk-2026-10-21-geelong-r8-n7-s1,8,7,Laa De Sha,14.94,33.01,10,13959449,Notification has been scheduled.
+fk-2026-10-21-geelong-r8-n7-s2,8,7,Laa De Sha,18.68,33.01,38,13959452,Notification has been scheduled.
+fk-2026-10-21-geelong-r8-n4-s1,8,4,Rue De Royale,12.23,27.29,24,13959453,Notification has been scheduled.
+fk-2026-10-21-geelong-r8-n4-s2,8,4,Rue De Royale,15.29,27.29,34,13959454,Notification has been scheduled.
+fk-2026-10-21-geelong-r9-n10-s1,9,10,Bella Verona,5.36,12.44,59,13959455,Notification has been scheduled.
+fk-2026-10-21-geelong-r9-n10-s2,9,10,Bella Verona,6.70,12.44,66,13959456,Notification has been scheduled.
+fk-2026-10-21-geelong-r9-n5-s1,9,5,Mr Verse,8.26,18.80,18,13959457,Notification has been scheduled.
+fk-2026-10-21-geelong-r9-n5-s2,9,5,Mr Verse,10.32,18.80,71,13959458,Notification has been scheduled.
+fk-2026-10-21-geelong-r9-n3-s1,9,3,Somewhere,9.80,22.12,15,13959459,Notification has been scheduled.
+fk-2026-10-21-geelong-r9-n3-s2,9,3,Somewhere,12.25,22.12,59,13959460,Notification has been scheduled.
+fk-2026-10-21-geelong-r9-n12-s1,9,12,Sulek,9.08,20.57,64,13959461,Notification has been scheduled.
+fk-2026-10-21-geelong-r9-n12-s2,9,12,Sulek,11.35,20.57,15,13959462,Notification has been scheduled.
