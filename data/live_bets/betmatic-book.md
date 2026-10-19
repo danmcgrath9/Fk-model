@@ -14,7 +14,9 @@ might be $100. For those paper bets that is. Now to keep an actual P&L let's jus
 |---|---|---|---|---|---|---|---|---|
 | | | | | | | | | |
 
-Running total: nothing bet yet (first real bets Wednesday 21 Oct, $25 a unit).
+Placed so far (Mon 19 Oct, for Wednesday): Geelong R5 Murshidi (#7), $126 (5.04u) at $11, our price $3.81, both order steps filled at TAB's open 11:45am Monday. Tweeted by the founder the same morning as 5u at $11 (locked).
+
+Running total: settles Wednesday 21 Oct.
 
 ## Paper (units only)
 
