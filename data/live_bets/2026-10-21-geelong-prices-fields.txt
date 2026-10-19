@@ -1,0 +1,136 @@
+# Geelong Wed 21 Oct (official going): fields pulled Mon 19 Oct 11:25am Melbourne. Emergencies as SCR until they gain a start; no market yet.
+1, Shultzy, 0, 0
+1, Mr O'reilly, 0, 0
+1, Nottolook, 0, 0
+1, Fiorowngood, 0, 0
+1, Sapphire Siren, 0, 0
+1, Haaland, 0, 0
+1, Ragazzone, 0, 0
+1, Jenny The Beaver, 0, 0
+1, No Rumours, 0, 0
+1, The Cunning Fox, 0, 0
+1, Hawk Power, 0, 0
+1, Roaring Engine, 0, 0
+1, The Claimant, 0, 0
+2, Jennyanydots, 0, 0
+2, Yes Yoshi, 0, 0
+2, Bold Bordeaux, 0, 0
+2, Purple Streak, 0, 0
+2, Tookay Pete, 0, 0
+2, Bedtime Angel, 0, 0
+2, Immortal Triumph, 0, 0
+2, Mr Assertive, 0, 0
+2, My Zephyr, 0, 0
+2, Ten Warriors, 0, 0
+2, Tennessee Spirit, 0, 0
+2, Spirit Of Wealth, 0, 0
+2, Vain Champagne, 0, 0
+2, Kippis, 0, 0
+2, Superliv, SCR
+2, Egerton, SCR
+2, Home Tomurra, SCR
+2, Royal Rendezvous, SCR
+3, Alero, 0, 0
+3, Lario, 0, 0
+3, Delivering, 0, 0
+3, Charming Nic, 0, 0
+3, Silver Dagger, 0, 0
+3, Bold Strike, 0, 0
+3, Aurora Belle, 0, 0
+3, Savilla, 0, 0
+3, Attachments, 0, 0
+3, Yum, 0, 0
+3, Misty Whisper, 0, 0
+4, Zourain, 0, 0
+4, Regal Might, 0, 0
+4, Ole Royale, 0, 0
+4, Don Rubio, 0, 0
+4, Express Class, 0, 0
+4, Mount Sabyinyo, 0, 0
+4, Let It Beel, 0, 0
+4, Power And The Beat, 0, 0
+4, Karren, 0, 0
+4, Sunlit Serenade, 0, 0
+4, Castellito, 0, 0
+4, Brass In Pocket, 0, 0
+4, Russian Choice, 0, 0
+4, Mr Natural, 0, 0
+4, Catch The Moon, SCR
+4, Alexander Thegreat, SCR
+4, Crown Crusher, SCR
+4, Viva Mauricio, SCR
+5, True Tone, 0, 0
+5, Icy You, 0, 0
+5, Frank Whisper, 0, 0
+5, Meness, 0, 0
+5, Cold Shower, 0, 0
+5, Enchilada, 0, 0
+5, Murshidi, 0, 0
+5, Melbourne Boy, 0, 0
+5, Gradivus, 0, 0
+5, Hakusan, 0, 0
+5, Crimsonor, 0, 0
+5, Locked In, 0, 0
+5, Expensive Taste, 0, 0
+6, Gregolimo, 0, 0
+6, Sea Strike, 0, 0
+6, Interjection, 0, 0
+6, Stay Humble, 0, 0
+6, Stung, 0, 0
+6, A Diva, 0, 0
+6, Kazaru, 0, 0
+6, Caelius, 0, 0
+6, Dubai Watch, 0, 0
+6, Ko Phangan, 0, 0
+6, Revolver, 0, 0
+6, Jenni You Think, 0, 0
+6, Perfect Night, 0, 0
+6, So Long Ago, 0, 0
+6, Lunar Force, SCR
+7, Vauban, 0, 0
+7, The Euphrates, 0, 0
+7, Wootton Verni, 0, 0
+7, Berkeley Square, 0, 0
+7, Onesmoothoperator, 0, 0
+7, Soulcombe, 0, 0
+7, Torranzino, 0, 0
+7, Point Of Law, 0, 0
+7, Valiant King, 0, 0
+7, Small Fry, 0, 0
+7, Litzdeel, 0, 0
+7, Manzor Blue, 0, 0
+7, Omni Man, 0, 0
+7, Jennivamoose, 0, 0
+7, Hurry Curry, 0, 0
+7, Asva, 0, 0
+7, Vegas Jack, 0, 0
+7, Sapphire Siren, SCR
+8, Celsius Star, 0, 0
+8, El Soleado, 0, 0
+8, Keep Your Cool, 0, 0
+8, Rue De Royale, 0, 0
+8, Immortal Star, 0, 0
+8, Xidaki, 0, 0
+8, Laa De Sha, 0, 0
+8, Everain, 0, 0
+8, World's My Oyster, 0, 0
+8, Just A Journey, 0, 0
+8, Vail Mountain, 0, 0
+8, Inside Man, 0, 0
+9, Different Gravy, 0, 0
+9, Yam, 0, 0
+9, Somewhere, 0, 0
+9, Bullets High, 0, 0
+9, Mr Verse, 0, 0
+9, Spirited Defence, 0, 0
+9, Hiyaam Proud, 0, 0
+9, Van Roy, 0, 0
+9, Recuperato, 0, 0
+9, Bella Verona, 0, 0
+9, Untapped, 0, 0
+9, Sulek, 0, 0
+9, Umgawa, 0, 0
+9, Charming Deel, 0, 0
+9, Aka Daka, SCR
+9, Rip Current, SCR
+9, Albanian I Am, SCR

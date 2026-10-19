@@ -1,0 +1,71 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-10-21,Geelong,1,,2,Mr O'reilly,WIN,6.85,15.73,0.89,22,1 of 3,0.89u,5.24,forecast x0.5/middle/firm by step
+2026-10-21,Geelong,1,,2,Mr O'reilly,WIN,8.56,15.73,1.28,32,2 of 3,2.17u,5.24,forecast x0.5/middle/firm by step
+2026-10-21,Geelong,1,,2,Mr O'reilly,WIN,10.27,15.73,2.17,54,3 of 3,4.34u,5.24,forecast x0.5/middle/firm by step
+2026-10-21,Geelong,1,,3,Nottolook,WIN,4.63,10.83,2.80,70,1 of 2,2.80u,3.61,forecast middle/firm/firm by step
+2026-10-21,Geelong,1,,3,Nottolook,WIN,5.79,10.83,2.20,55,2 of 2,5.00u,3.61,forecast middle/firm/firm by step
+2026-10-21,Geelong,1,,5,Sapphire Siren,WIN,15.01,33.16,0.38,10,1 of 3,0.38u,11.05,forecast x0.5/middle/firm by step
+2026-10-21,Geelong,1,,5,Sapphire Siren,WIN,18.76,33.16,0.56,14,2 of 3,0.94u,11.05,forecast x0.5/middle/firm by step
+2026-10-21,Geelong,1,,5,Sapphire Siren,WIN,22.52,33.16,0.94,24,3 of 3,1.88u,11.05,forecast x0.5/middle/firm by step
+2026-10-21,Geelong,2,,7,Immortal Triumph,WIN,14.23,31.52,1.60,40,1 of 2,1.60u,10.51,forecast firm/firm/firm by step
+2026-10-21,Geelong,2,,7,Immortal Triumph,WIN,17.79,31.52,0.38,10,2 of 2,1.98u,10.51,forecast firm/firm/firm by step
+2026-10-21,Geelong,2,,14,Kippis,WIN,20.46,44.53,0.55,14,1 of 2,0.55u,14.84,forecast middle/firm/firm by step
+2026-10-21,Geelong,2,,14,Kippis,WIN,25.58,44.53,0.81,20,2 of 2,1.36u,14.84,forecast middle/firm/firm by step
+2026-10-21,Geelong,2,,8,Mr Assertive,WIN,16.10,35.46,1.40,35,1 of 2,1.40u,11.82,forecast firm/firm/firm by step
+2026-10-21,Geelong,2,,8,Mr Assertive,WIN,20.12,35.46,0.34,8,2 of 2,1.74u,11.82,forecast firm/firm/firm by step
+2026-10-21,Geelong,2,,4,Purple Streak,WIN,9.15,20.72,1.28,32,1 of 2,1.28u,6.91,forecast middle/firm/firm by step
+2026-10-21,Geelong,2,,4,Purple Streak,WIN,11.44,20.72,1.88,47,2 of 2,3.16u,6.91,forecast middle/firm/firm by step
+2026-10-21,Geelong,3,,1,Alero,WIN,13.03,28.99,1.76,44,1 of 2,1.76u,9.66,forecast firm/firm/firm by step
+2026-10-21,Geelong,3,,1,Alero,WIN,16.29,28.99,0.42,10,2 of 2,2.18u,9.66,forecast firm/firm/firm by step
+2026-10-21,Geelong,3,,9,Attachments,WIN,14.15,31.37,0.80,20,1 of 2,0.80u,10.46,forecast middle/firm/firm by step
+2026-10-21,Geelong,3,,9,Attachments,WIN,17.69,31.37,1.20,30,2 of 2,2.00u,10.46,forecast middle/firm/firm by step
+2026-10-21,Geelong,3,,7,Aurora Belle,WIN,4.24,8.00,3.12,78,1 of 2,3.12u,3.32,EARLY: $8 or shorter only; forecast middle/firm/firm by step
+2026-10-21,Geelong,3,,7,Aurora Belle,WIN,5.30,8.00,1.88,47,2 of 2,5.00u,3.32,EARLY: $8 or shorter only; forecast middle/firm/firm by step
+2026-10-21,Geelong,3,,4,Charming Nic,WIN,19.25,42.02,0.58,14,1 of 2,0.58u,14.01,forecast middle/firm/firm by step
+2026-10-21,Geelong,3,,4,Charming Nic,WIN,24.06,42.02,0.86,22,2 of 2,1.44u,14.01,forecast middle/firm/firm by step
+2026-10-21,Geelong,3,,11,Misty Whisper,WIN,8.28,18.84,1.43,36,1 of 2,1.43u,6.28,forecast middle/firm/firm by step
+2026-10-21,Geelong,3,,11,Misty Whisper,WIN,10.35,18.84,2.09,52,2 of 2,3.52u,6.28,forecast middle/firm/firm by step
+2026-10-21,Geelong,3,,10,Yum,WIN,13.59,30.18,0.84,21,1 of 2,0.84u,10.06,forecast middle/firm/firm by step
+2026-10-21,Geelong,3,,10,Yum,WIN,16.99,30.18,1.24,31,2 of 2,2.08u,10.06,forecast middle/firm/firm by step
+2026-10-21,Geelong,4,,9,Karren,WIN,2.75,3.99,4.69,117,1 of 2,4.69u,2.32,opens under $4: edge 1.15; forecast middle/firm/firm by step
+2026-10-21,Geelong,4,,9,Karren,WIN,3.44,3.99,0.31,8,2 of 2,5.00u,2.32,opens under $4: edge 1.15; forecast middle/firm/firm by step
+2026-10-21,Geelong,4,,9,Karren,WIN,4.00,6.96,5.00,125,1 of 1,5.00u,2.32,forecast middle/firm/firm by step
+2026-10-21,Geelong,5,,5,Cold Shower,WIN,17.07,37.48,0.66,16,1 of 2,0.66u,12.49,forecast middle/firm/firm by step
+2026-10-21,Geelong,5,,5,Cold Shower,WIN,21.34,37.48,0.98,24,2 of 2,1.64u,12.49,forecast middle/firm/firm by step
+2026-10-21,Geelong,5,,13,Expensive Taste,WIN,19.57,42.70,0.28,7,1 of 2,0.28u,14.23,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,5,,13,Expensive Taste,WIN,24.46,42.70,1.14,28,2 of 2,1.42u,14.23,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,5,,2,Icy You,WIN,12.67,28.22,0.45,11,1 of 2,0.45u,9.41,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,5,,2,Icy You,WIN,15.84,28.22,1.79,45,2 of 2,2.24u,9.41,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,5,,4,Meness,WIN,10.26,23.11,1.13,28,1 of 2,1.13u,7.70,forecast middle/firm/firm by step
+2026-10-21,Geelong,5,,4,Meness,WIN,12.82,23.11,1.67,42,2 of 2,2.80u,7.70,forecast middle/firm/firm by step
+2026-10-21,Geelong,5,,7,Murshidi,WIN,4.89,11.42,2.62,66,1 of 2,2.62u,3.81,forecast middle/firm/firm by step
+2026-10-21,Geelong,5,,7,Murshidi,WIN,6.11,11.42,2.38,60,2 of 2,5.00u,3.81,forecast middle/firm/firm by step
+2026-10-21,Geelong,6,,6,A Diva,WIN,19.85,43.28,0.28,7,1 of 2,0.28u,14.43,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,6,,6,A Diva,WIN,24.81,43.28,1.12,28,2 of 2,1.40u,14.43,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,6,,8,Caelius,WIN,13.86,30.74,0.82,20,1 of 2,0.82u,10.25,forecast middle/firm/firm by step
+2026-10-21,Geelong,6,,8,Caelius,WIN,17.32,30.74,1.22,30,2 of 2,2.04u,10.25,forecast middle/firm/firm by step
+2026-10-21,Geelong,6,,12,Jenni You Think,WIN,11.71,26.19,1.96,49,1 of 2,1.96u,8.73,forecast firm/firm/firm by step
+2026-10-21,Geelong,6,,12,Jenni You Think,WIN,14.64,26.19,0.48,12,2 of 2,2.44u,8.73,forecast firm/firm/firm by step
+2026-10-21,Geelong,6,,13,Perfect Night,WIN,10.38,23.36,2.24,56,1 of 2,2.24u,7.79,forecast firm/firm/firm by step
+2026-10-21,Geelong,6,,13,Perfect Night,WIN,12.98,23.36,0.52,13,2 of 2,2.76u,7.79,forecast firm/firm/firm by step
+2026-10-21,Geelong,6,,11,Revolver,WIN,20.17,43.94,1.10,28,1 of 2,1.10u,14.65,forecast firm/firm/firm by step
+2026-10-21,Geelong,6,,11,Revolver,WIN,25.21,43.94,0.28,7,2 of 2,1.38u,14.65,forecast firm/firm/firm by step
+2026-10-21,Geelong,6,,4,Stay Humble,WIN,6.32,14.57,3.88,97,1 of 2,3.88u,4.86,forecast firm/firm/firm by step
+2026-10-21,Geelong,6,,4,Stay Humble,WIN,7.90,14.57,0.86,22,2 of 2,4.74u,4.86,forecast firm/firm/firm by step
+2026-10-21,Geelong,6,,5,Stung,WIN,13.58,30.15,0.42,10,1 of 2,0.42u,10.05,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,6,,5,Stung,WIN,16.98,30.15,1.66,42,2 of 2,2.08u,10.05,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,8,,1,Celsius Star,WIN,7.61,8.00,1.74,44,1 of 1,1.74u,5.79,EARLY: $8 or shorter only; forecast firm by step
+2026-10-21,Geelong,8,,5,Immortal Star,WIN,14.76,32.63,0.39,10,1 of 2,0.39u,10.88,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,8,,5,Immortal Star,WIN,18.45,32.63,1.51,38,2 of 2,1.90u,10.88,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,8,,7,Laa De Sha,WIN,14.94,33.01,0.38,10,1 of 2,0.38u,11.00,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,8,,7,Laa De Sha,WIN,18.68,33.01,1.50,38,2 of 2,1.88u,11.00,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,8,,4,Rue De Royale,WIN,12.23,27.29,0.94,24,1 of 2,0.94u,9.10,forecast middle/firm/firm by step
+2026-10-21,Geelong,8,,4,Rue De Royale,WIN,15.29,27.29,1.38,34,2 of 2,2.32u,9.10,forecast middle/firm/firm by step
+2026-10-21,Geelong,9,,10,Bella Verona,WIN,5.36,12.44,2.35,59,1 of 2,2.35u,4.15,forecast middle/firm/firm by step
+2026-10-21,Geelong,9,,10,Bella Verona,WIN,6.70,12.44,2.65,66,2 of 2,5.00u,4.15,forecast middle/firm/firm by step
+2026-10-21,Geelong,9,,5,Mr Verse,WIN,8.26,18.80,0.71,18,1 of 2,0.71u,6.27,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,9,,5,Mr Verse,WIN,10.32,18.80,2.83,71,2 of 2,3.54u,6.27,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,9,,3,Somewhere,WIN,9.80,22.12,0.59,15,1 of 2,0.59u,7.37,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,9,,3,Somewhere,WIN,12.25,22.12,2.35,59,2 of 2,2.94u,7.37,forecast x0.5/firm/firm by step
+2026-10-21,Geelong,9,,12,Sulek,WIN,9.08,20.57,2.58,64,1 of 2,2.58u,6.86,forecast firm/firm/firm by step
+2026-10-21,Geelong,9,,12,Sulek,WIN,11.35,20.57,0.60,15,2 of 2,3.18u,6.86,forecast firm/firm/firm by step
