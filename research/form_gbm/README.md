@@ -1056,3 +1056,18 @@ the race-day best price and BSP; the weekend, Thu 15 to Sun 18, 27 races with 9:
   On the founder's timings (winnings back at once; Saturday metro markets up from Wednesday afternoon, the rest 2 days
   before): money out at once typical $4,150, 1 in 10 over $6,259, most $7,795; Wednesday the heaviest (typical $4,799).
   Live meetings have filled about a third of the backtest's bets a meeting, so live is roughly a third of these.
+
+## Gear stripped off a forward horse from a wide draw (19 Oct 2026, t_gear_off.py; founder on Prestige Fantastic, Echuca R1: "blinkers off, visors off, tongue tie off. Drawn wide, they were always going back, shows lack of intent")
+We had Prestige Fantastic mapped to lead (Form King speed map position 1, the most forward settler in the field) from
+barrier 15, blinkers and tongue tie off. Tested whether that shape loses. Actual winners against expected (1.00 = priced
+right), every race with an open and BSP / our model on the holdout:
+- 2+ gear items off: 847 runners, 74 wins, 1.18 vs the open, 1.17 vs BSP, 1.16 vs our model (210).
+- 2+ off and mapped top 3 and drawn wide (barrier 10+ or the outside quarter): 107 runners, 13 wins, 1.47 / 1.46,
+  2.21 vs our model (25 runners).
+- 1+ off, mapped top 3, drawn wide: 716 runners, 0.89 / 0.92 (slightly overrated by the market); 1.13 vs our model.
+- No gear off, mapped top 3, drawn wide: 5,427, 1.02 / 1.00.
+- Value-at-open bets in the 2+ off groups: 22 bets, 8 winners, +271% at the open.
+The "going back, no intent" pattern does NOT lose: horses with two or more items stripped win more than their price
+says, if anything (the market reads it as a negative more than it is). Samples are small (13 winners in the exact
+shape), so no rule either way; nothing blocked. Settling position in the race itself is not in the dataset, so whether
+they actually went back is untested.
