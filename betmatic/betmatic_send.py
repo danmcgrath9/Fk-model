@@ -226,6 +226,12 @@ def pending(a):
         for i in r["notification_ids"].split("&"):
             if i in live:
                 ok += 1
+                n = live[i]
+                # 19 Oct 2026, Geelong R8/R9: orders that came out is_draft false before their race opened never fired
+                # when TAB opened it. A Market Open order should sit in draft until the open; flag any that does not.
+                if n.get("is_market_open") and n.get("is_draft") is False and not n.get("triggered_at"):
+                    print(f"NOT DRAFT {r['label']} (id {i}): BetMatic treats this market as already open but has not fired it; "
+                          "check TAB, cancel and resend if the race has not opened")
             else:
                 missing += 1; print(f"NOT PENDING {r['label']} (id {i}): fired, cancelled or never registered")
     print(f"{ok} pending, {missing} not pending, {len(live)} pending on BetMatic in all")
