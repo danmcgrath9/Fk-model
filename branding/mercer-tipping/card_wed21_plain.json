@@ -1,0 +1,16 @@
+{
+ "day": "Wednesday",
+ "date": "21 October",
+ "footer": "Murshidi got $11 at the open, recording $6.50. Win bets.",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Geelong",
+   "note": "",
+   "bets": [
+    {"race": 5, "horse": "Murshidi", "price": "$6.50", "units": "5u"},
+    {"race": 6, "horse": "Jenni You Think", "price": "$12", "units": "2u"}
+   ]
+  }
+ ]
+}
