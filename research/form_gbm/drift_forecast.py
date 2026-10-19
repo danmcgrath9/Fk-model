@@ -61,6 +61,18 @@ class Forecast:
     def y(self, xrow, pm, price, field):
         return float(self.bst.predict(design(xrow[None, :], [pm], [price], [field], [self.book_for(field)]))[0])
 
+    def y_many(self, xrow, pm, prices, field):
+        """y at many prices for one runner, in one predict call (the blend's minimum-odds search)."""
+        prices = np.asarray(prices, float); n = len(prices)
+        return self.bst.predict(design(np.repeat(xrow[None, :], n, 0), np.full(n, pm), prices, np.full(n, field),
+                                       np.full(n, self.book_for(field))))
+
+    def qbsp(self, xrow, pm, prices, field):
+        """Forecast BSP chance at an opening price t: (1/t) / the median opening book for the field x exp(y(t)). An
+        approximation: not re-spread over the race, because the other runners' prices do not exist before the open."""
+        prices = np.asarray(prices, float)
+        return (1.0 / prices) / self.book_for(field) * np.exp(self.y_many(xrow, pm, prices, field))
+
     def mult(self, xrow, pm, price, field, drift_mult=DRIFT_MULT, firm_mult=FIRM_MULT):
         y = self.y(xrow, pm, price, field)
         return (drift_mult if y < self.t1 else firm_mult if y >= self.t2 else 1.0), y

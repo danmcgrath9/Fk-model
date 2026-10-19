@@ -2,7 +2,9 @@
 
     python betmatic_orders.py DAYPREFIX GTAG OUT.csv [--times "1=3:00pm,2=3:30pm,..."] [--after-open]
 
-BEFORE THE MARKET (default): every runner the live rules could bet, priced on our model alone, gets a minimum odds
+BEFORE THE MARKET (default): every runner the live rules could bet gets a minimum odds. From 20 Oct 2026 (with
+--drift) it is 0.95 x the lowest price at which the forecast-BSP blend p^0.15 x qBSP(t)^0.85 times the price reaches
+the edge (see BLEND_W below). The 13 Oct rule, kept behind --no-blend, was
     min odds = 0.95 x (1.2 / p_model^0.82)^(1/0.78)
 (the blend with the open, worked backwards, shaded 5%: t_betmatic.py found 5% recovers most of the bets the unshaded
 formula misses without letting weak ones in) and a stake in up to eight price steps (the minimum x1 to x2), so the stake grows with the
@@ -28,6 +30,15 @@ UNIT_DOLLARS = 50   # founder, 19 Oct 2026 evening: $50 a unit from the orders s
 # to coin-flip. Built as two ladders per runner: the 1.2 ladder with every step under $4 lifted to $4.00 (fires only on
 # an open of $4 or more), and a 1.15 ladder capped at $3.99 (fires only on an open under $4), so each open price meets
 # exactly one rule and the stakes are the backtest's.
+# THE FORECAST-BSP BLEND (founder, 19 Oct 2026: "switch models"; t_drift_blend_orders.py). With --drift, our chance at a
+# step price t is p^W x qBSP(t)^(1-W), where qBSP(t) is the drift forecast's BSP chance for a horse opening at t
+# (drift_forecast.Forecast.qbsp), instead of p^0.82 x t^-0.22 (the blend with the open). The market's own opening price
+# is the weaker partner: it closes only part of the way to BSP, and the forecast says where BSP is likely to land. The
+# minimum odds is 0.95 x the lowest price at which chance x price reaches the edge (1.2, or 1.15 under $4), under the
+# same ceiling. Holdout from 3 Jun, forecast fitted only on earlier races: +564u against +475u (late, P 0.06 that it is
+# no better), +1,037u against +801u (early, cross-fitted, P 0.01). --no-blend restores the 13 Oct rule.
+BLEND_W = 0.15
+GRID = [1.05 * (46.0 / 1.05) ** (k / 2999) for k in range(3000)]   # candidate prices for the blend's minimum odds
 SHORT_OPEN, SHORT_EDGE = 4.0, 1.15   # 14 Oct: 3 steps sized at the next step: same holdout profit as 8 (+801u), at most 3 bets a horse (t_monthly.py)
 
 
@@ -57,6 +68,8 @@ def main():
     ap.add_argument("--v6", help="price file to use instead of DAYPREFIX-GTAG-v6.json (e.g. the version priced before the market)")
     ap.add_argument("--drift", metavar="DAY_NPZ", help="stake by the firm/drift forecast (drift_forecast.py): the day's "
                                       "final-field npz the model file was priced from; the forecast model is read from --drift-dir")
+    ap.add_argument("--no-blend", action="store_true", help="price the orders on the 13 Oct blend with the open "
+                    "(p^0.82 x t^-0.22) instead of the forecast-BSP blend")
     ap.add_argument("--drift-dir", default=os.environ.get("FK_MODEL_DIR", "."), help="directory holding drift_model.txt and drift_meta.json")
     ap.add_argument("--numbers", help="entry_numbers.py output (race|number|name|emergency|scratched): adds the saddlecloth "
                                       "number BetMatic bets on (default DAYPREFIX-entry-numbers.txt if it exists)")
@@ -117,6 +130,8 @@ def main():
         sel = [uc[c] for c in FC.cols]
         for i in range(len(U["name"])):
             XR[(int(U["race_number"][U["race_idx"][i]]), nm(str(U["name"][i])))] = np.asarray(U["X"][i, sel], np.float32)
+        print(("orders priced on the 13 Oct blend with the open (--no-blend)" if a.no_blend else
+               f"orders priced on the forecast-BSP blend: chance = p^{BLEND_W:g} x forecast BSP chance^{1 - BLEND_W:g}"))
         print(f"firm/drift stakes: drift third x{drift_forecast.DRIFT_MULT:g}, firm third x{drift_forecast.FIRM_MULT:g} "
               f"(forecast thresholds {FC.t1:.3f} / {FC.t2:.3f})")
     nodrift = []
@@ -164,10 +179,25 @@ def main():
             k = f"{int(r['race'])}|{r['horse']}"; pm = r["p_model"]; ours = 1 / pm; blk = fu.get(k, "")
             if k in fs or (blk and not blk.startswith("EARLY")) or not 1.6 <= ours <= 15:
                 continue
-            min_odds = round(SHADE * (1.2 / pm ** 0.82) ** (1 / 0.78), 2)
-            min_short = round(SHADE * (SHORT_EDGE / pm ** 0.82) ** (1 / 0.78), 2)
             cap = min(3 * ours, 8.0 if blk.startswith("EARLY") else 1e9)
-            ch = lambda t, pm=pm: pm ** 0.82 * t ** -0.22; note = "EARLY: $8 or shorter only" if blk else ""
+            note = "EARLY: $8 or shorter only" if blk else ""
+            if FC is not None and not a.no_blend:
+                import numpy as np
+                xr = XR.get((int(r["race"]), nm(r["horse"])))
+                if xr is None:
+                    sys.exit(f"STOP: R{r['race']} {r['horse']} is not in the day file given to --drift")
+                f_ = field[int(r["race"])]
+                g = np.array([t for t in GRID if t < cap])
+                if not len(g):
+                    continue
+                val = pm ** BLEND_W * FC.qbsp(xr, pm, g, f_) ** (1 - BLEND_W) * g
+                first = lambda E: round(SHADE * float(g[np.argmax(val >= E)]), 2) if (val >= E).any() else 1e9
+                min_odds, min_short = first(1.2), first(SHORT_EDGE)
+                ch = lambda t, pm=pm, xr=xr, f_=f_: float(pm ** BLEND_W * FC.qbsp(xr, pm, [t], f_)[0] ** (1 - BLEND_W))
+            else:
+                min_odds = round(SHADE * (1.2 / pm ** 0.82) ** (1 / 0.78), 2)
+                min_short = round(SHADE * (SHORT_EDGE / pm ** 0.82) ** (1 / 0.78), 2)
+                ch = lambda t, pm=pm: pm ** 0.82 * t ** -0.22
             if min_odds < cap and SHORT_OPEN < cap:
                 add(r, ours, min_odds, cap, ch, note, "open4+")
             if min_short < min(cap, SHORT_OPEN):
