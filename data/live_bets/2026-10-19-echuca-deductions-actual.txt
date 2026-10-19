@@ -1,0 +1,5 @@
+# Echuca Mon 19 Oct: deductions TAB applied to bets struck at TAB's opening price (founder's account, 19 Oct). Cents in the dollar, win.
+1, 18
+5, 5
+6, 27
+7, 19
