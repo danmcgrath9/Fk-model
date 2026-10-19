@@ -1,0 +1,9 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-21-geelong-r3-n7-s1-now,3,7,Aurora Belle,4.24,8.00,78,13960347,Notification has been sent.
+fk-2026-10-21-geelong-r3-n7-s2-now,3,7,Aurora Belle,5.30,8.00,47,13960348,Notification has been sent.
+fk-2026-10-21-geelong-r3-n4-s1-now,3,4,Charming Nic,19.25,42.02,14,13960349,Notification has been sent.
+fk-2026-10-21-geelong-r3-n4-s2-now,3,4,Charming Nic,24.06,42.02,22,13960350,Notification has been sent.
+fk-2026-10-21-geelong-r3-n11-s1-now,3,11,Misty Whisper,8.28,18.84,36,13960351,Notification has been sent.
+fk-2026-10-21-geelong-r3-n11-s2-now,3,11,Misty Whisper,10.35,18.84,52,13960352,Notification has been sent.
+fk-2026-10-21-geelong-r3-n10-s1-now,3,10,Yum,13.59,30.18,21,13960353,Notification has been sent.
+fk-2026-10-21-geelong-r3-n10-s2-now,3,10,Yum,16.99,30.18,31,13960354,Notification has been sent.
