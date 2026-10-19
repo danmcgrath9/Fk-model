@@ -19,7 +19,7 @@ on:
         default: ''
       unit:
         description: 'send: dollars a unit (founder, 19 Oct: $25 from Wed 21 Oct until he says otherwise; was $50, $100, $75)'
-        default: '25'
+        default: '50'
       race:
         description: 'cancel: only this race (blank = every bet in the ledger)'
         default: ''

@@ -4,8 +4,8 @@ name: fk live price replay
 # pipeline has priced, with a model fitted only on earlier races. No Form King calls.
 
 on:
-  schedule:
-    - cron: '30 22 * * *'   # 8:30am Melbourne standard time, after the 7am results job: every day's real prices join the test
+  # Schedule removed 19 Oct 2026 (founder agreed): this replays the OLD 9am methods. The live rule is tested every day
+  # by fk-oos.yml (research/form_gbm/t_weekly_oos.py). Still runnable by hand.
   workflow_dispatch:
     inputs:
       window:
