@@ -111,10 +111,19 @@ def send(a):
     bad = [r for r in rows if not r.get("number")]
     if bad:
         sys.exit(f"{len(bad)} rows have no saddlecloth number (rebuild the order file with --numbers)")
-    bets, step = [], {}
+    bets, step, cum = [], {}, {}
     for o in rows:
         k = (o["race"], o["number"]); step[k] = step.get(k, 0) + 1
-        stake = round(float(o["stake_units"]) * a.unit)
+        # whole dollars on the ladder's running total, not on each step (19 Oct 2026: two steps of 2.62u and 2.38u at
+        # $25 each rounded up to $66 + $60 = $126, over the 5u = $125 cap); a ladder restarts at "1 of N"
+        tot = (o.get("total_if_all_fire") or "").rstrip("u")
+        if tot:
+            if str(o.get("order", "")).startswith("1 of"):
+                cum[k] = 0.0
+            prev = cum.get(k, 0.0); cum[k] = float(tot)
+            stake = round(cum[k] * a.unit) - round(prev * a.unit)
+        else:
+            stake = round(float(o["stake_units"]) * a.unit)
         if stake < 1:
             continue
         bets.append((label(o, step[k], getattr(a, "tag", "")), o, {
