@@ -61,8 +61,15 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
                 continue
             for p in F.entry_past_events(e):
                 if str(p.get("country") or "") not in ("Australia", "", "None") and not p.get("trial"):
-                    ov.append(p)
+                    ov.append(dict(p, _race=rn, _name=e.get("name") or e.get("horseName") or (e.get("horse") or {}).get("name") or "?",
+                                   _held=len(F.entry_past_events(e))))
         if ov:
+            per = collections.OrderedDict()
+            for p in ov:
+                per.setdefault((p["_race"], p["_name"], p["_held"]), collections.Counter())[str(p.get("country"))] += 1
+            print("\nrunners with overseas runs (race, horse, overseas runs by country, of all runs held):")
+            for (rn, nm, held), cn in per.items():
+                print(f"  R{rn} {nm}: {dict(cn)} of {held}")
             print(f"\noverseas runs held for these runners: {len(ov)}; share with each field filled:")
             for k in KEYS:
                 n = sum(1 for p in ov if p.get(k) not in (None, 0, 0.0, ""))
