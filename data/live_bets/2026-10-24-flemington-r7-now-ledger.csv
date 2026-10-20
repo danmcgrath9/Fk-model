@@ -1,0 +1,3 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-24-flemington-r7-n5-s1-now,7,5,Cosmic Crusader,8.17,16.71,138,,SKIPPED: FLEMINGTON R7 on 2026-10-24 is not in BetMatic's race schedule
+fk-2026-10-24-flemington-r7-n5-s2-now,7,5,Cosmic Crusader,10.21,16.71,58,,SKIPPED: FLEMINGTON R7 on 2026-10-24 is not in BetMatic's race schedule
