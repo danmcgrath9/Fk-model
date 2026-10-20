@@ -1,0 +1,99 @@
+# Mornington Thu 22 Oct (official going, band Good): final fields pulled Tue 20 Oct 11:08am Melbourne. Emergencies as SCR until they gain a start; no market yet.
+1, Deadly Force, 0, 0
+1, Montostratus, 0, 0
+1, Fanfire, 0, 0
+1, Luscombe, 0, 0
+1, Raining Fire, 0, 0
+1, Prolific Angel, 0, 0
+1, Top Ace, 0, 0
+1, Exclusive Punt, 0, 0
+1, Mystic River Queen, 0, 0
+1, He's A Dandy, SCR
+2, Bifrost, 0, 0
+2, Fullproof, 0, 0
+2, Strong Box, 0, 0
+2, Master Jack, 0, 0
+2, Bella Cinque, 0, 0
+2, Party Benefits, 0, 0
+2, Ilovediamonds, 0, 0
+2, Dominant Miss, 0, 0
+3, Aurelio, 0, 0
+3, Call Me Francis, 0, 0
+3, Charlie Messy Hair, 0, 0
+3, Clydebank Robber, 0, 0
+3, Grey Sabre, 0, 0
+3, Grinding Away, 0, 0
+3, Raghnall, 0, 0
+3, Blanche Bass, 0, 0
+3, Deelamour, 0, 0
+3, Prestige Ricky, 0, 0
+3, Kissattack, SCR
+3, Threewinesin, SCR
+3, Verry Zeductive, SCR
+3, Startin'sumthin', SCR
+4, Big Kapow, 0, 0
+4, Foxtrot Charlie, 0, 0
+4, Trouble'n Paradise, 0, 0
+4, Iftihar, 0, 0
+4, Janie's Got A Gun, 0, 0
+4, Around The Marx, 0, 0
+4, Boy From Zadar, 0, 0
+4, Debut Author, 0, 0
+4, Mo, 0, 0
+4, Regal Harry, 0, 0
+4, Model Gigi, 0, 0
+4, Scoot, 0, 0
+4, Symphony Royale, SCR
+4, I'lluvyoulongtime, SCR
+4, All Too Single, SCR
+4, Native Spirit, SCR
+5, Hansard, 0, 0
+5, Parera, 0, 0
+5, The Long Mover, 0, 0
+5, Top Rich, 0, 0
+5, Trentino, 0, 0
+5, Immortal Diva, 0, 0
+5, Boutin, 0, 0
+5, Gilgeous, 0, 0
+5, Late Night Wonder, 0, 0
+5, Levent, 0, 0
+5, Prime Force, 0, 0
+5, Chocolate Freckles, 0, 0
+5, Pierrobid, SCR
+6, Albanian I Am, 0, 0
+6, Sensational Ruler, 0, 0
+6, Ballistic Romeo, 0, 0
+6, Surperb Frost, 0, 0
+6, Wondering Spirit, 0, 0
+6, Amphactor, 0, 0
+6, Chambers Bay, 0, 0
+6, Fearless Writer, 0, 0
+6, Lope De Lardo, 0, 0
+6, Brutify, 0, 0
+6, Qubella, 0, 0
+6, Angelotti, 0, 0
+6, Egerton Reef, SCR
+6, Riozino, SCR
+6, The Kings Gospel, SCR
+7, Alexander Thegreat, 0, 0
+7, Coronation Turbo, 0, 0
+7, Light Moves, 0, 0
+7, Pol Rogeur, 0, 0
+7, Mykindakandy, 0, 0
+7, She Won't Fold, 0, 0
+7, Crank, 0, 0
+7, Home Tomurra, 0, 0
+7, Cresta Crystal, 0, 0
+7, Determined Rose, 0, 0
+7, Lagunanini, 0, 0
+8, Grouse Mountain, 0, 0
+8, Diamanda, 0, 0
+8, Headstock, 0, 0
+8, Yellowknife, 0, 0
+8, Ranakye, 0, 0
+8, Pull My Finger, 0, 0
+8, Russian Benefits, 0, 0
+8, Sacro Catino, 0, 0
+8, Eeteedee, 0, 0
+8, Every Little Thing, 0, 0
+8, Mrs Gossip, 0, 0
