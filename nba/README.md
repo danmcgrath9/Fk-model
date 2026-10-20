@@ -82,11 +82,16 @@ barely beat the averages, so treat threes as the weakest market until step 3 say
 
 ## What costs money (nothing yet)
 
-| Source | Cost | Needed for |
+Researched 21 Oct 2026. No free archive of NBA prop OPENING and CLOSING odds was found.
+
+| Source | Cost | What it really holds |
 |---|---|---|
 | nba_data play-by-play | Free | Done |
-| DunkAPI historical prop lines | From US$19/month (their figure, not yet checked) | Step 3 |
-| The Odds API historical spreads/totals | Paid plan | Replacing the stand-ins |
-| nba_api (stats.nba.com) | Free, but blocked from the cloud box | Live injury/inactive lists |
+| DunkAPI | Free key: 500 credits/month. Paid tiers not confirmed | Prop lines from May 2023 (DraftKings, FanDuel, BetMGM, ESPN BET, Pinnacle and others). **Its own client docs say the NBA archive "mostly holds one pre-game capture per line, so the opening and closing lines are usually the same"**; true opens only from its live capture, October 2026 on. `get_prop_history` = 10 credits for one player, one market, up to 200 games. Game spread/total with open and close per book from July 2020, 10 credits a day. |
+| The Odds API | Historical is paid plans only. Third-party listings: US$30 (20K credits), $59 (100K), $119 (5M), $249 (15M); not confirmed on their site | Player props from 3 May 2023 in snapshots every 5 minutes, so real opens and closes. 10 credits per market per region per game per snapshot: 4 markets x 1 region x open + close = 80 credits a game, about 300K for 2023/24 to 2025/26. |
+| nba_api (stats.nba.com) | Free | Live injury/inactive lists |
+
+Neither odds host nor stats.nba.com is reachable from the cloud box, so any pull runs from
+a new `nba-*` GitHub workflow with the key as a GitHub secret.
 
 Next: step 2, turning each projection into an over/under probability.
