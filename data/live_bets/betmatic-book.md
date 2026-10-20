@@ -155,3 +155,12 @@ Juja Kibo $8.17 to $7.13. Asked whether Form King changed the jockey window befo
 Aethelwulf taken at TAB $8.50 on the draw (founder, 20 Oct evening). Model stake 7.70u. POSTED on Twitter at 3.85u: Twitter stakes are the model stake halved, so the Twitter max is 5u (founder, 20 Oct: "make it out of 5u like that's the max for twitter"). The book records both.
 
 The test: after tonight's draw, re-pull Form King and re-price on the final inputs (barriers, gear, any late jockey changes), and compare the price and stake the model would actually give with the pre-draw ones above, to see which inputs were missing or moved the number. Settle at TAB $8 against SP and BSP after the race.
+
+## Copied tips (founder's call, separate from the model's results)
+
+| Date | Race | Horse | Tipster (price, units) | Order | Placed | Result |
+|---|---|---|---|---|---|---|
+| 2026-10-21 | Eagle Farm R4 (4:18pm) | No. 5 Wootten Hyde (tweeted as "Wooden Hyde") | Anthony Don ($2.50, 6u) | $300 win, min $2.30, High Odds First across every running session | Triggered 10:21am, $0 accepted: TAB balance $0.29 | |
+
+The order path works: BetMatic took a High Odds First bet with the bookmaker list left open (every bookmaker where we have a running session) and fired it at once. Nothing was matched because the only running session (TAB) had no money in it.
+
