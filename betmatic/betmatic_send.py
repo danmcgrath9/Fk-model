@@ -176,7 +176,8 @@ def send(a):
             # number left blank (a copied tip names only the horse, 21 Oct 2026): take it from BetMatic's own field
             hit = [n for n, nm in zip(nums, names) if norm(nm) == norm(o["horse"])] if len(names) == len(nums) else []
             if len(hit) != 1:
-                return f"{o['horse']!r} is not (uniquely) in BetMatic's field for {body['competition']} R{body['event_number']}"
+                return (f"{o['horse']!r} is not (uniquely) in BetMatic's field for {body['competition']} R{body['event_number']}: "
+                        f"runners {nums}, names {names}")
             body["selection"] = o["number"] = hit[0]; print(f"{o['horse']}: No. {hit[0]} in BetMatic's field")
         if body["selection"] not in nums:
             return f"No. {body['selection']} is not running (scratched) in BetMatic's schedule"
