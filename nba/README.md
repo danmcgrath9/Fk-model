@@ -107,4 +107,28 @@ account, exact-name matching only, and nothing already saved is bought twice.
 First request: 11 players x 4 stats over 2024/25 and 2025/26, about 451 of the free 500
 credits.
 
+## First line test (21 Oct 2026, `line_test.py`)
+
+10 players (Durant, Maxey, Brunson, Banchero, Harden, Sengun, Bane, Randle, DeRozan,
+Ingram), 5,436 regular-season lines, 2024/25 and 2025/26. Line = DunkAPI's median across
+~6-7 books from one pre-game capture (opening = closing in 100% of rows). Every line's
+result matched our box score in 99.9% of cases.
+
+| | Our miss | Line's miss |
+|---|---|---|
+| Points | 6.21 | **6.08** |
+| Rebounds | **2.03** | 2.04 |
+| Assists | 2.05 | **2.02** |
+| Threes | 1.16 | 1.16 |
+
+The line is as good as our projection or better on every stat. Betting our side every
+time at the recorded prices: -4.3% (95% CI -7.1% to -1.6%). Only when we disagree with
+the line by 2+ is it positive: 426 bets, +4.0% (CI -4.6% to +12.8%), almost all points,
+positive in all three calendar years; 3+: 229 bets, +7.3% (CI -4.8% to +19.5%). Not proven.
+Not the under bias: backing every under loses 2.9%.
+
+Two cautions. Our projection knows who played; the line was captured at an unknown time
+before tip, so some "edge" may be late scratches the capture missed. And the first-cut
+probabilities are overconfident (says 73%, wins 55%), so step 2 has to calibrate them.
+
 Next: step 2, turning each projection into an over/under probability.
