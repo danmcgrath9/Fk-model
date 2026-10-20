@@ -107,3 +107,46 @@ def test_no_feature_sees_its_own_game():
     a8 = base[(base.gameId == 8) & (base.personId == 1)].iloc[0]
     c8 = moved[(moved.gameId == 8) & (moved.personId == 1)].iloc[0]
     assert c8.min_last == 48 and a8.min_last != 48
+
+
+def test_dunkapi_pull_respects_budget_and_skips_saved(tmp_path, monkeypatch):
+    """Fake DunkAPI: the pull must refuse fuzzy names, stop at the cap, and never re-buy."""
+    import json
+    import types
+    import pull_dunkapi as pdk
+
+    calls = []
+
+    class FakeClient:
+        last_credits_used = None
+        last_credits_remaining = 500
+
+        def search_players(self, name, limit=5):
+            calls.append(("search", name))
+            self.last_credits_used, self.last_credits_remaining = 1, self.last_credits_remaining - 1
+            return {"players": [{"name": "Nikola Jokić", "player_id": "3112335"},
+                                {"name": "Nikola Jovic", "player_id": "999"}]}
+
+        def get_prop_history(self, pid, market, **kw):
+            calls.append(("history", pid, market))
+            self.last_credits_used, self.last_credits_remaining = 10, self.last_credits_remaining - 10
+            return {"games": [{"date": "2025-01-01", "line": 28.5}]}
+
+    fake = types.SimpleNamespace(Client=FakeClient, APIError=Exception, InsufficientCreditsError=RuntimeError)
+    monkeypatch.setitem(sys.modules, "dunkapi", fake)
+    monkeypatch.setattr(pdk, "OUT", tmp_path)
+    monkeypatch.setenv("DUNKAPI_API_KEY", "x")
+    req = tmp_path / "req.json"
+    req.write_text(json.dumps({"from_date": "2024-10-01", "to_date": "2026-04-30", "max_credits": 25,
+                               "markets": ["player_points", "player_rebounds", "player_assists"],
+                               "players": [{"name": "Nikola Jokic", "personId": 203999},
+                                           {"name": "Nobody Real", "personId": 1}]}))
+    pdk.main(str(req))
+    # accent-blind exact match picks Jokić, not Jovic; 1 + 10 + 10 = 21, a third market would be 31 > 25
+    assert ("history", "3112335", "player_points") in calls
+    assert sum(c[0] == "history" for c in calls) == 2
+    calls.clear()
+    pdk.main(str(req))      # second run: id cached, two markets saved, so only new purchases
+    assert ("search", "Nikola Jokic") not in calls
+    assert ("history", "3112335", "player_points") not in calls
+    assert pdk.pick_player([{"name": "Nikola Jovic"}], "Nikola Jokic") is None

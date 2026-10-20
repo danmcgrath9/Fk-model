@@ -94,4 +94,17 @@ Researched 21 Oct 2026. No free archive of NBA prop OPENING and CLOSING odds was
 Neither odds host nor stats.nba.com is reachable from the cloud box, so any pull runs from
 a new `nba-*` GitHub workflow with the key as a GitHub secret.
 
+## Pulling prop lines (DunkAPI, free key)
+
+`pull_dunkapi.py` reads a request file in `nba/requests/` and saves one JSON per
+player-stat to `nba/lines/dunkapi/`, with every call's credits in `ledger.csv`. It runs in
+the **nba props pull** workflow (`.github/workflows/nba-props-pull.yml`, its own
+concurrency group), which fires when a request file changes on this branch and commits
+what came back. The key is the `DUNKAPI_API_KEY` GitHub secret; without it the run
+skips and spends nothing. Hard cap per run (`max_credits`), a 20-credit floor on the
+account, exact-name matching only, and nothing already saved is bought twice.
+
+First request: 11 players x 4 stats over 2024/25 and 2025/26, about 451 of the free 500
+credits.
+
 Next: step 2, turning each projection into an over/under probability.

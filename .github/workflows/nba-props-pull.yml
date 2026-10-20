@@ -1,0 +1,50 @@
+name: nba props pull
+
+# NBA only. Pulls historical prop lines from DunkAPI for the players in a request file
+# under nba/requests/, and commits what it got to nba/lines/dunkapi/ on the same branch.
+# Own concurrency group, so it never queues behind or blocks the fk-* racing workflows.
+# Runs on a push that changes a request file (so it works from the claude/nba-props
+# branch without touching main), or by hand. Re-runs only buy what is not already saved.
+
+on:
+  push:
+    branches: [claude/nba-props]
+    paths: ['nba/requests/**']
+  workflow_dispatch:
+    inputs:
+      request:
+        description: 'request file'
+        default: 'nba/requests/dunkapi_first_pull.json'
+
+concurrency:
+  group: nba-props-pull
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      DUNKAPI_API_KEY: ${{ secrets.DUNKAPI_API_KEY }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install dunkapi==0.1.4
+      - name: Pull
+        run: python nba/pull_dunkapi.py "${{ github.event.inputs.request || 'nba/requests/dunkapi_first_pull.json' }}"
+      - name: Commit what came back
+        if: always()
+        run: |
+          git config user.name "nba props pull"
+          git config user.email "actions@users.noreply.github.com"
+          git add nba/lines/dunkapi || true
+          git diff --cached --quiet && { echo "nothing new"; exit 0; }
+          git commit -m "NBA: DunkAPI prop lines pulled by workflow run ${{ github.run_id }}"
+          for i in 1 2 3; do git pull --rebase -q origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0; sleep 5; done
+          exit 1
