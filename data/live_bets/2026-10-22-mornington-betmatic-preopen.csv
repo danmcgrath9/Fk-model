@@ -1,9 +1,4 @@
 date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
-2026-10-22,Mornington,1,,1,Deadly Force,WIN,3.75,3.99,1.69,84,1 of 1,1.69u,2.69,opens under $4: edge 1.15; forecast x0.5/firm/firm by step
-2026-10-22,Mornington,1,,1,Deadly Force,WIN,4.00,8.06,1.68,84,1 of 2,1.68u,2.69,forecast x0.5/firm/firm by step
-2026-10-22,Mornington,1,,1,Deadly Force,WIN,4.74,8.06,3.32,166,2 of 2,5.00u,2.69,forecast x0.5/firm/firm by step
-2026-10-22,Mornington,1,,6,Prolific Angel,WIN,15.03,33.96,0.86,43,1 of 2,0.86u,11.32,forecast middle/firm/firm by step
-2026-10-22,Mornington,1,,6,Prolific Angel,WIN,18.79,33.96,1.30,65,2 of 2,2.16u,11.32,forecast middle/firm/firm by step
 2026-10-22,Mornington,2,,5,Bella Cinque,WIN,5.82,13.51,1.11,56,1 of 2,1.11u,4.50,forecast x0.5/firm/firm by step
 2026-10-22,Mornington,2,,5,Bella Cinque,WIN,7.28,13.51,3.89,194,2 of 2,5.00u,4.50,forecast x0.5/firm/firm by step
 2026-10-22,Mornington,2,,1,Bifrost,WIN,7.54,18.19,0.86,43,1 of 2,0.86u,6.06,forecast x0.5/firm/firm by step
@@ -19,10 +14,6 @@ date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollar
 2026-10-22,Mornington,3,,7,Raghnall,WIN,3.28,3.99,4.01,200,1 of 1,4.01u,2.92,opens under $4: edge 1.15; forecast middle/firm/firm by step
 2026-10-22,Mornington,3,,7,Raghnall,WIN,4.00,8.77,4.60,230,1 of 2,4.60u,2.92,forecast middle/firm/firm by step
 2026-10-22,Mornington,3,,7,Raghnall,WIN,4.33,8.77,0.40,20,2 of 2,5.00u,2.92,forecast middle/firm/firm by step
-2026-10-22,Mornington,4,,1,Big Kapow,WIN,17.57,32.50,1.44,72,1 of 2,1.44u,10.83,forecast firm/firm/firm by step
-2026-10-22,Mornington,4,,1,Big Kapow,WIN,21.96,32.50,0.08,4,2 of 2,1.52u,10.83,forecast firm/firm/firm by step
-2026-10-22,Mornington,4,,11,Model Gigi,WIN,7.88,17.76,3.36,168,1 of 2,3.36u,5.92,forecast firm/firm/firm by step
-2026-10-22,Mornington,4,,11,Model Gigi,WIN,9.85,17.76,0.88,44,2 of 2,4.24u,5.92,forecast firm/firm/firm by step
 2026-10-22,Mornington,5,,8,Gilgeous,WIN,2.79,3.99,5.00,250,1 of 1,5.00u,2.29,opens under $4: edge 1.15; forecast firm/firm/firm by step
 2026-10-22,Mornington,5,,8,Gilgeous,WIN,4.00,6.86,5.00,250,1 of 1,5.00u,2.29,forecast firm/firm/firm by step
 2026-10-22,Mornington,5,,9,Late Night Wonder,WIN,11.17,22.83,1.88,94,1 of 2,1.88u,7.61,forecast firm/firm/firm by step
