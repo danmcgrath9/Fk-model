@@ -131,4 +131,34 @@ Two cautions. Our projection knows who played; the line was captured at an unkno
 before tip, so some "edge" may be late scratches the capture missed. And the first-cut
 probabilities are overconfident (says 73%, wins 55%), so step 2 has to calibrate them.
 
-Next: step 2, turning each projection into an over/under probability.
+## Step 2 and the role players (21 Oct 2026, `probability.py`)
+
+**Probabilities.** Each stat is a negative binomial around the projection, with its
+spread fitted to the model's out-of-sample misses in 2023/24. The textbook spread (grows
+with the projection squared) was wrong for points, whose spread grows in a straight line,
+so each stat gets its own curve. Checked on 2024/25: rebounds, assists and threes within
+2 to 4 points of honest in every bin (60% said, ~60% happened); points within 5. The
+model is now re-trained before each season (walk-forward); freezing it at 2023/24 had
+2025/26 points running half a point low.
+
+**Against the bookie.** Blend `logit p = a + b x model + c x market` fitted on 2024/25
+lines (3,071), scored on 2025/26 lines it never saw (3,554), 12 players:
+
+| Log loss on 2025/26 (lower is better) | |
+|---|---|
+| Market alone | **0.6885** |
+| Blend | 0.6892 |
+| Coin flip | 0.6931 |
+| Model alone | 0.6981 |
+
+The line alone is best: on these players, at roughly the close, **it already holds
+everything our model knows.** Betting the blend: +2.3% at any edge (CI -4.1% to +9.1%),
+falling as the demanded edge rises, which is what no edge looks like.
+
+**Role players are no softer.** Naz Reid and Josh Hart, 1,189 lines: our miss 2.54, the
+line's 2.54. Our side every time: -4.6%.
+
+**What is left to test.** (1) The opening line, before the market sharpens: needs The
+Odds API's timed snapshots. (2) Australian books against the US close (step 4): needs
+no model at all. (3) A better model: real spread/total, injury-news timing.
+

@@ -30,6 +30,7 @@ from features import DATA
 
 HERE = Path(__file__).resolve().parent
 STAT = {"points": "pts", "rebounds": "reb", "assists": "ast", "threes": "fg3m"}
+ROLE_PLAYERS = {1629675: "Naz Reid", 1628404: "Josh Hart"}   # the second pull
 
 
 def load_lines() -> pd.DataFrame:
@@ -128,6 +129,18 @@ def main() -> None:
         win = (b.pnl > 0).sum() / (b.result != "push").sum()
         print(f"   {edge:>6.0%} {len(b):>6} {win:>6.1%} {b.pnl.sum() / len(b):>+7.1%}   "
               f"{np.percentile(boot, 2.5):+.1%} to {np.percentile(boot, 97.5):+.1%}")
+    print("\n4. Stars against role players")
+    j["group"] = np.where(j.personId.isin(list(ROLE_PLAYERS)), "role players", "stars")
+    side_dec = np.where(j.side == "over", j.dec_over, j.dec_under)
+    j["pnl_side"] = np.where(j.result == "push", 0.0, np.where(j.result == j.side, side_dec - 1, -1.0))
+    for grp, g in j.groupby("group"):
+        big = g[(g.proj - g.line).abs() >= 2]
+        print(f"   {grp:<12} {len(g):>5} lines | miss: ours {(g.proj - g.actual).abs().mean():.2f}, "
+              f"line {(g.line - g.actual).abs().mean():.2f} | our side every time {g.pnl_side.mean():+.1%} | "
+              f"disagree by 2+: {len(big)} bets {big.pnl_side.mean():+.1%}")
+        for st, h in g.groupby("st"):
+            print(f"      {st:<5} miss ours {(h.proj - h.actual).abs().mean():.2f} line "
+                  f"{(h.line - h.actual).abs().mean():.2f}   our side {h.pnl_side.mean():+.1%} ({len(h)})")
     b = j[j.ev >= 0.05]
     print("\n   At a 5% edge, by stat:")
     print(b.groupby("st").agg(bets=("pnl", "size"), roi=("pnl", "mean")).round(3).to_string())

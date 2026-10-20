@@ -1,8 +1,11 @@
 """Step 1: projection = minutes x per-minute rate, for points, rebounds, assists, threes.
 
-Time split, no tuning on the test seasons:
-    train  2020/21 - 2023/24   (seasons 2020-2023 in nba_data's naming)
-    test   2024/25 and 2025/26 (seasons 2024, 2025), each reported on its own
+Walk-forward time split, no tuning on the test seasons (seasons named by start year):
+    2024/25 is projected by a model trained on 2020/21 - 2023/24
+    2025/26 is projected by a model trained on 2020/21 - 2024/25
+which is how it would run live: re-trained before each season, never seeing the season
+it projects. (The first version froze the model at 2023/24 for both test seasons, and its
+points ran about half a point low in 2025/26 as league scoring rose.)
 
 Two LightGBM models per stat: one for minutes, one for the per-minute rate (weighted by
 minutes, so a 2-minute cameo does not count as much as a 36-minute night). The
@@ -82,9 +85,9 @@ def bootstrap_mae_gain(pred: pd.DataFrame, st: str, base: str, n: int = 1000, se
 def main() -> None:
     df = pd.read_parquet(DATA / "features.parquet")
     df = df[df.game_ok]
-    train = df[df.season.isin(TRAIN) & df.min_ewm5.notna()]
     preds = []
     for season in TEST:
+        train = df[(df.season < season) & (df.season >= TRAIN[0]) & df.min_ewm5.notna()]
         test = df[(df.season == season)]
         preds.append(fit_predict(train, test))
     pred = pd.concat(preds, ignore_index=True)
