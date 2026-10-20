@@ -152,3 +152,28 @@ def test_dunkapi_pull_respects_budget_and_skips_saved(tmp_path, monkeypatch):
     assert ("search", "Nikola Jokic") not in calls
     assert ("history", "3112335", "player_points") not in calls
     assert pdk.pick_player([{"name": "Nikola Jovic"}], "Nikola Jokic") is None
+
+
+def test_injury_snapshots_and_missing_reports(tmp_path, monkeypatch):
+    """Six US Eastern snapshots per game day; a missing report is logged, never invented."""
+    from datetime import datetime
+    import pull_injuries as pi
+
+    times = pi.snapshot_times("2025-01")
+    assert datetime(2024, 12, 31, 17) in times          # 5pm the day before 1 Jan
+    assert datetime(2025, 1, 1, 11) in times and datetime(2025, 1, 1, 19) in times
+    assert len(times) == len(set(times))
+
+    monkeypatch.setattr(pi, "OUT", tmp_path)
+    monkeypatch.setattr(pi, "PAUSE", 0)
+
+    def fake(ts):
+        if ts.hour == 13:
+            raise IOError("no report this hour")
+        return pd.DataFrame({"Player Name": ["Doe, John"], "Current Status": ["Out"]})
+
+    pi.main("2025-01", fetch=fake)
+    log = pd.read_csv(tmp_path / "2025-01_log.csv")
+    rows = pd.read_csv(tmp_path / "2025-01.csv")
+    assert (log.status.str.startswith("missing")).sum() == sum(t.hour == 13 for t in times)
+    assert len(rows) == (log.status == "ok").sum() and rows.report_time.notna().all()
