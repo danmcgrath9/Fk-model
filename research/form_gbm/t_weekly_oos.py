@@ -48,7 +48,7 @@ okp = np.isfinite(o) & (o > 1); race_ok = np.bincount(ri, weights=~okp, minlengt
 fld = np.bincount(ri, minlength=nR)[ri]
 fc = dfc.Forecast("models"); X = np.asarray(D["X"], np.float32); ci = {str(c): j for j, c in enumerate(D["cols"])}
 XD = X[:, [ci[c] for c in fc.cols]]
-DED, TIERS, CAP = 0.16, (1.0, 1.25, 1.5), 5.0
+DED, TIERS, CAP = 0.16, (1.0, 1.25, 1.5), stake_rule.MAX_UNITS
 HEAD = ["week_start", "week_end", "trained_to", "races", "bets", "winners", "staked_u", "profit_u", "roi",
         "bsp_profit_u", "bsp_roi", "clv_open_over_bsp"]
 
