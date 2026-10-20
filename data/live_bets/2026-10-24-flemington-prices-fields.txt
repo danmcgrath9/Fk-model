@@ -118,7 +118,8 @@
 7, Aeliana, 0, 0
 7, Warwoven, 0, 0
 7, Blind Raise, 0, 0
-8, The Euphrates, SCR  # running in the Geelong Cup Wed 21 Oct (founder, 20 Oct)
+# R8 The Euphrates: running in the Geelong Cup Wed 21 Oct (founder, 20 Oct)
+8, The Euphrates, SCR
 8, Juja Kibo, 0, 0
 8, Pinhole, 0, 0
 8, Torranzino, 0, 0

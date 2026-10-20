@@ -132,4 +132,12 @@ Recorded Tue 20 Oct 4:38pm, before the barrier draw, on TAB's fixed prices, pric
 |---|---|---|---|---|
 | Aethelwulf | $8 | $3.16 | $4.65 / $5.81 | 7.76u |
 
+After the draw (Tue 20 Oct 7pm, barriers from the published draw, re-priced with The Euphrates out): Aethelwulf drew 19,
+14 of the 15 starters once the scratching and the four emergencies come out. Ours $3.24 on the draw and $3.24 with the
+barrier blank on the same run, so the gate is worth nothing to him in our model; orders $4.77 / $5.96, 7.70u if both
+fire (pre-draw 7.76u). The pre-draw $3.16 was priced on a field file whose Euphrates SCR line carried an inline comment,
+which drop_scr.py does not read as SCR, so that run kept The Euphrates in the field; the comment now sits on its own line.
+Jockeys, gear and weights still as at Tue 3pm; the Wed 8:30am re-pull checks them.
+Cox Plate on the draw: Cosmic Crusader gate 8, ours $5.89 (blank $5.85); founder's bet $11 at Ladbrokes stands.
+
 The test: after tonight's draw, re-pull Form King and re-price on the final inputs (barriers, gear, any late jockey changes), and compare the price and stake the model would actually give with the pre-draw ones above, to see which inputs were missing or moved the number. Settle at TAB $8 against SP and BSP after the race.
