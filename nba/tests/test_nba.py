@@ -132,9 +132,11 @@ def test_dunkapi_pull_respects_budget_and_skips_saved(tmp_path, monkeypatch):
             self.last_credits_used, self.last_credits_remaining = 10, self.last_credits_remaining - 10
             return {"games": [{"date": "2025-01-01", "line": 28.5}]}
 
-    fake = types.SimpleNamespace(Client=FakeClient, APIError=Exception, InsufficientCreditsError=RuntimeError)
+    fake = types.SimpleNamespace(Client=FakeClient, APIError=Exception, InsufficientCreditsError=RuntimeError,
+                                 RateLimitError=KeyError)
     monkeypatch.setitem(sys.modules, "dunkapi", fake)
     monkeypatch.setattr(pdk, "OUT", tmp_path)
+    monkeypatch.setattr(pdk, "PAUSE", 0)
     monkeypatch.setenv("DUNKAPI_API_KEY", "x")
     req = tmp_path / "req.json"
     req.write_text(json.dumps({"from_date": "2024-10-01", "to_date": "2026-04-30", "max_credits": 25,

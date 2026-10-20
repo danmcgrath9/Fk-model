@@ -30,7 +30,8 @@ from pathlib import Path
 OUT = Path(__file__).resolve().parent / "lines" / "dunkapi"
 COST_SEARCH = 1          # DunkAPI client docs, v0.1.4
 COST_HISTORY = 10
-FLOOR = 20               # never spend the account below this
+FLOOR = 20               # never spend the account below this (a request may set "floor")
+PAUSE = 3.0              # seconds between calls: DunkAPI rate-limited a back-to-back run
 
 
 def norm(name: str) -> str:
@@ -49,13 +50,13 @@ def pick_player(results: list[dict], wanted: str) -> dict | None:
 
 
 class Budget:
-    def __init__(self, cap: int):
-        self.cap, self.spent, self.remaining = cap, 0, None
+    def __init__(self, cap: int, floor: int = FLOOR):
+        self.cap, self.floor, self.spent, self.remaining = cap, floor, 0, None
 
     def can(self, cost: int) -> bool:
         if self.spent + cost > self.cap:
             return False
-        return self.remaining is None or self.remaining - cost >= FLOOR
+        return self.remaining is None or self.remaining - cost >= self.floor
 
     def record(self, client, what: str, ledger: Path, expected: int) -> None:
         # If DunkAPI sends no counter, count the documented price rather than zero.
@@ -71,7 +72,9 @@ class Budget:
 
 
 def main(request_path: str) -> int:
-    from dunkapi import APIError, Client, InsufficientCreditsError
+    import time
+
+    from dunkapi import APIError, Client, InsufficientCreditsError, RateLimitError
 
     if not os.environ.get("DUNKAPI_API_KEY"):
         # Not an error: the workflow fires on the first push, before the secret exists.
@@ -83,7 +86,7 @@ def main(request_path: str) -> int:
     ids_path = OUT / "players.json"
     ids = json.loads(ids_path.read_text()) if ids_path.exists() else {}
     client = Client()
-    budget = Budget(int(req["max_credits"]))
+    budget = Budget(int(req["max_credits"]), int(req.get("floor", FLOOR)))
     problems = []
 
     for p in req["players"]:
@@ -92,7 +95,12 @@ def main(request_path: str) -> int:
             if not budget.can(COST_SEARCH):
                 problems.append(f"budget: stopped before searching {p['name']}")
                 break
-            res = client.search_players(p["name"], limit=5)
+            time.sleep(PAUSE)
+            try:
+                res = client.search_players(p["name"], limit=5)
+            except RateLimitError:
+                problems.append(f"rate limited before searching {p['name']}; re-run to continue")
+                break
             budget.record(client, f"search_players {p['name']}", ledger, COST_SEARCH)
             hit = pick_player(res.get("players", []), p["name"])
             if hit is None:
@@ -109,9 +117,13 @@ def main(request_path: str) -> int:
             if not budget.can(COST_HISTORY):
                 problems.append(f"budget: stopped before {p['name']} {market}")
                 break
+            time.sleep(PAUSE)
             try:
                 data = client.get_prop_history(did, market, from_date=req["from_date"],
                                                to_date=req["to_date"], limit=200)
+            except RateLimitError:
+                problems.append(f"rate limited at {p['name']} {market}; re-run to continue")
+                break
             except InsufficientCreditsError:
                 problems.append("DunkAPI says the account is out of credits")
                 break

@@ -49,11 +49,7 @@
     {
       "name": "Brandon Ingram",
       "personId": 1627742
-    },
-    {
-      "name": "Mikal Bridges",
-      "personId": 1628969
     }
   ],
-  "run": "2026-10-21 first pull (key in the Dunk API environment)"
+  "note": "Done 21 Oct 2026: 10 players pulled. Mikal Bridges dropped (DunkAPI rate limit stopped the run before him); everything here is cached, so re-runs cost nothing."
 }

@@ -13,8 +13,8 @@ on:
   workflow_dispatch:
     inputs:
       request:
-        description: 'request file'
-        default: 'nba/requests/dunkapi_first_pull.json'
+        description: 'one request file (blank = all)'
+        default: ''
 
 concurrency:
   group: nba-props-pull
@@ -39,7 +39,10 @@ jobs:
           python-version: '3.12'
       - run: pip install dunkapi==0.1.4
       - name: Pull
-        run: python nba/pull_dunkapi.py "${{ github.event.inputs.request || 'nba/requests/dunkapi_first_pull.json' }}"
+        # Every request file; anything already saved is skipped, so finished ones cost nothing.
+        run: |
+          if [ -n "${{ github.event.inputs.request }}" ]; then FILES="${{ github.event.inputs.request }}"; else FILES=$(ls nba/requests/*.json); fi
+          for f in $FILES; do echo "== $f"; python nba/pull_dunkapi.py "$f"; done
       - name: Commit what came back
         if: always()
         run: |

@@ -1,0 +1,23 @@
+{
+  "why": "Role players: are their lines softer than the stars'? Uses the last of October's free credits.",
+  "from_date": "2024-10-01",
+  "to_date": "2026-04-30",
+  "markets": [
+    "player_points",
+    "player_rebounds",
+    "player_assists",
+    "player_threes"
+  ],
+  "max_credits": 85,
+  "floor": 5,
+  "players": [
+    {
+      "name": "Naz Reid",
+      "personId": 1629675
+    },
+    {
+      "name": "Josh Hart",
+      "personId": 1628404
+    }
+  ]
+}
