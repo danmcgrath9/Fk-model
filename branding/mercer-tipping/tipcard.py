@@ -33,7 +33,8 @@ def card(d):
     # ten or more rows: tighter rows and badges, or the last rows and the footer fall off the 1350px card (17 Oct 2026)
     dense = (".row{padding:7px 0}.r{font-size:28px;padding:4px 0}.t{font-size:19px;margin-top:4px}.list{gap:22px}"
              ".u{font-size:27px}") if n >= 10 else ""
-    # optional (18 Oct 2026, founder): "prices": false drops the price column; "brand": false drops the Mercer mark
+    # optional (18 Oct 2026, founder): "prices": false drops the price column; "brand": false drops the Mercer mark;
+    # "foot": false drops the notes line at the bottom (21 Oct 2026, founder)
     show_p, brand = d.get("prices", True), d.get("brand", True)
     if not show_p:
         dense += ".row{grid-template-columns:96px 1fr 150px}.u{border-left:0;padding-left:0}"
@@ -47,7 +48,8 @@ def card(d):
     return (f"<html><head><style>{CSS.replace('{hs}', str(hs))}{dense}</style></head><body>"
             f"<div class='top'><div class='lock'>" + ("<div class='mark'><span>M</span></div><div class='brand'>MERCER<span>TIPPING</span></div>" if brand else "") + f"</div><div class='when'>{html.escape(d['day'])}<span>{html.escape(d['date'])}</span></div></div>"
             f"<div class='list'>{''.join(rows)}</div>"
-            f"<div class='foot'><span>{html.escape(d.get('footer','Prices at time of posting. Win bets.'))}</span><span>18+ · Gamble responsibly</span></div></body></html>")
+            + ("" if d.get("foot") is False else f"<div class='foot'><span>{html.escape(d.get('footer','Prices at time of posting. Win bets.'))}</span><span>18+ · Gamble responsibly</span></div>")
+            + "</body></html>")
 async def main(src, out):
     from playwright.async_api import async_playwright
     exe = glob.glob("/opt/pw-browsers/chromium-*/chrome-linux*/chrome")[0]
