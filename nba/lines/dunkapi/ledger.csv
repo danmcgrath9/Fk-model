@@ -49,3 +49,13 @@ utc,call,credits_used,credits_remaining
 2026-10-20T23:32:07+00:00,get_prop_history Brandon Ingram player_rebounds,10,110
 2026-10-20T23:32:08+00:00,get_prop_history Brandon Ingram player_assists,10,100
 2026-10-20T23:32:10+00:00,get_prop_history Brandon Ingram player_threes,10,90
+2026-10-20T23:38:36+00:00,search_players Naz Reid,1,89
+2026-10-20T23:38:40+00:00,get_prop_history Naz Reid player_points,10,79
+2026-10-20T23:38:45+00:00,get_prop_history Naz Reid player_rebounds,10,69
+2026-10-20T23:38:50+00:00,get_prop_history Naz Reid player_assists,10,59
+2026-10-20T23:38:55+00:00,get_prop_history Naz Reid player_threes,10,49
+2026-10-20T23:38:59+00:00,search_players Josh Hart,1,48
+2026-10-20T23:39:04+00:00,get_prop_history Josh Hart player_points,10,38
+2026-10-20T23:39:09+00:00,get_prop_history Josh Hart player_rebounds,10,28
+2026-10-20T23:39:14+00:00,get_prop_history Josh Hart player_assists,10,18
+2026-10-20T23:39:18+00:00,get_prop_history Josh Hart player_threes,10,8
