@@ -27,6 +27,8 @@ jobs:
   pull:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    # The key lives in the "Dunk API" environment's secrets, like betmatic's.
+    environment: Dunk API
     env:
       DUNKAPI_API_KEY: ${{ secrets.DUNKAPI_API_KEY }}
       PYTHONUNBUFFERED: '1'
