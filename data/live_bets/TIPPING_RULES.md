@@ -71,3 +71,5 @@ Each horse's order is now 3 steps (x1, x1.25, x1.5 of its minimum), each sized a
 profit as 8 steps (+801u; earlier races +1,584u against +1,564u), at most 3 bets a horse at the open instead of 8, so
 fewer simultaneous bets for TAB to see. Turnover about 4% higher. Forward test 5-13 Oct: +24.66u (8 steps: +26.28u),
 same 32 horses and 7 winners.
+
+**Twitter stakes are the model stake halved (founder, 20 Oct 2026).** The model cap went to 10u on 20 Oct; Twitter keeps a 5u max, so every posted stake is half the model stake (7.70u model posts as 3.85u). Tweets before 20 Oct were already on a 5u max, so the posted record stays on one scale. The book keeps the model stake and the posted stake side by side.

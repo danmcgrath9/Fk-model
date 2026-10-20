@@ -139,6 +139,6 @@ fire (pre-draw 7.76u). The pre-draw $3.16 was priced on a field file whose Euphr
 which drop_scr.py does not read as SCR, so that run kept The Euphrates in the field; the comment now sits on its own line.
 Jockeys, gear and weights still as at Tue 3pm; the Wed 8:30am re-pull checks them.
 Cox Plate on the draw: Cosmic Crusader gate 8, ours $5.89 (blank $5.85); founder's bet $11 at Ladbrokes stands.
-Aethelwulf taken at TAB $8.50 on the draw (founder, 20 Oct evening). Model stake 7.70u; POSTED on Twitter at 10u, the same as the real bet (founder: "keep it 10 - just like we are", replacing an earlier 5u-for-Twitter idea). Tweet and card record 10u at $8.50.
+Aethelwulf taken at TAB $8.50 on the draw (founder, 20 Oct evening). Model stake 7.70u. POSTED on Twitter at 3.85u: Twitter stakes are the model stake halved, so the Twitter max is 5u (founder, 20 Oct: "make it out of 5u like that's the max for twitter"). The book records both.
 
 The test: after tonight's draw, re-pull Form King and re-price on the final inputs (barriers, gear, any late jockey changes), and compare the price and stake the model would actually give with the pre-draw ones above, to see which inputs were missing or moved the number. Settle at TAB $8 against SP and BSP after the race.
