@@ -1,0 +1,87 @@
+{
+ "day": "Saturday",
+ "date": "24 October",
+ "race": "MV Gold Cup",
+ "note": "Flemington R8 \u00b7 2500m \u00b7 Good 4",
+ "runners": [
+  {
+   "horse": "Aethelwulf",
+   "barrier": 19,
+   "ours": "$3.24"
+  },
+  {
+   "horse": "Juja Kibo",
+   "barrier": 20,
+   "ours": "$8.17"
+  },
+  {
+   "horse": "King Pedro",
+   "barrier": 2,
+   "ours": "$11"
+  },
+  {
+   "horse": "Point Of Law",
+   "barrier": 6,
+   "ours": "$12"
+  },
+  {
+   "horse": "Pinhole",
+   "barrier": 9,
+   "ours": "$12"
+  },
+  {
+   "horse": "So You Are",
+   "barrier": 1,
+   "ours": "$13"
+  },
+  {
+   "horse": "Mr Monaco",
+   "barrier": 13,
+   "ours": "$17"
+  },
+  {
+   "horse": "Future History",
+   "barrier": 18,
+   "ours": "$21"
+  },
+  {
+   "horse": "Kings Valley",
+   "barrier": 17,
+   "ours": "$22"
+  },
+  {
+   "horse": "Valiant King",
+   "barrier": 4,
+   "ours": "$48"
+  },
+  {
+   "horse": "Deakin",
+   "barrier": 15,
+   "ours": "$53"
+  },
+  {
+   "horse": "Manzor Blue",
+   "barrier": 14,
+   "ours": "$84"
+  },
+  {
+   "horse": "Strictly Business",
+   "barrier": 5,
+   "ours": "$93"
+  },
+  {
+   "horse": "Autumn Mystery",
+   "barrier": 7,
+   "ours": "$103"
+  },
+  {
+   "horse": "Torranzino",
+   "barrier": 12,
+   "ours": "$219"
+  }
+ ],
+ "market_label": "TAB",
+ "show_market": false,
+ "footer": "Our rated prices on the barrier draw. Bet: Aethelwulf $8.50.",
+ "first_col": "Gate"
+}
