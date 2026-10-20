@@ -1,0 +1,152 @@
+{
+ "title": "Our price v BSP",
+ "sub": "Sat 17 \u2013 Mon 19 Oct",
+ "bets": [
+  {
+   "horse": "Voynichese",
+   "day": "Sat",
+   "taken": 9.5,
+   "bsp": 9.21
+  },
+  {
+   "horse": "Autumn In Grinzing",
+   "day": "Sat",
+   "taken": 41,
+   "bsp": 18.5
+  },
+  {
+   "horse": "Stardom",
+   "day": "Sat",
+   "taken": 15,
+   "bsp": 13.0
+  },
+  {
+   "horse": "Aemond",
+   "day": "Sat",
+   "taken": 13,
+   "bsp": 8.73
+  },
+  {
+   "horse": "Hidden Motive",
+   "day": "Sat",
+   "taken": 13,
+   "bsp": 9.2
+  },
+  {
+   "horse": "Over The Bridge",
+   "day": "Sat",
+   "taken": 6,
+   "bsp": 6.0
+  },
+  {
+   "horse": "Saintly Dancer",
+   "day": "Sat",
+   "taken": 6.64,
+   "bsp": 5.21
+  },
+  {
+   "horse": "Threads",
+   "day": "Sat",
+   "taken": 15,
+   "bsp": 4.03
+  },
+  {
+   "horse": "Kingswood",
+   "day": "Sat",
+   "taken": 25,
+   "bsp": 28.12
+  },
+  {
+   "horse": "Shadhavar",
+   "day": "Sat",
+   "taken": 6.79,
+   "bsp": 3.98
+  },
+  {
+   "horse": "Genomic",
+   "day": "Sat",
+   "taken": 11,
+   "bsp": 4.81
+  },
+  {
+   "horse": "Carnival Riches",
+   "day": "Sat",
+   "taken": 13,
+   "bsp": 7.0
+  },
+  {
+   "horse": "Moral Turpitude",
+   "day": "Sat",
+   "taken": 9,
+   "bsp": 6.74
+  },
+  {
+   "horse": "Stand By Me Ned",
+   "day": "Sat",
+   "taken": 11,
+   "bsp": 13.47
+  },
+  {
+   "horse": "Black Panther",
+   "day": "Sat",
+   "taken": 8.5,
+   "bsp": 6.25
+  },
+  {
+   "horse": "Bazzar",
+   "day": "Sun",
+   "taken": 6,
+   "bsp": 2.25
+  },
+  {
+   "horse": "Surfy Pete",
+   "day": "Sun",
+   "taken": 9,
+   "bsp": 4.35
+  },
+  {
+   "horse": "Sleeping Tiger",
+   "day": "Sun",
+   "taken": 9.5,
+   "bsp": 12
+  },
+  {
+   "horse": "Ze Bee Nine",
+   "day": "Sun",
+   "taken": 14.5,
+   "bsp": 11.48
+  },
+  {
+   "horse": "Preservator",
+   "day": "Sun",
+   "taken": 7.33,
+   "bsp": 8.67
+  },
+  {
+   "horse": "Prestige Fantastic",
+   "day": "Mon",
+   "taken": 21.5,
+   "bsp": 23
+  },
+  {
+   "horse": "Mickio",
+   "day": "Mon",
+   "taken": 7.18,
+   "bsp": 3.0
+  },
+  {
+   "horse": "Lim's Ida",
+   "day": "Mon",
+   "taken": 19.25,
+   "bsp": 13.84
+  },
+  {
+   "horse": "Here Comes Wozza",
+   "day": "Mon",
+   "taken": 9.1,
+   "bsp": 4.93
+  }
+ ],
+ "note": "Every bet, the price we took (after deductions) against Betfair SP. The wins won't always come; <b>beating the closing price</b> is the edge. Kyneton (Tue) added when its BSP is in.",
+ "footer": "Posted tips, Sat 17 \u2013 Mon 19 Oct."
+}
