@@ -1,92 +1,94 @@
-# Kyneton Tue 20 Oct, priced at Good 3.5 (average of Good 3 and Good 4, founder): fields pulled Sun 18 Oct 12:57pm Melbourne. Emergencies as SCR until they gain a start; no market yet.
-1, Canticle, 0, 0
-1, Golden Rainbow, 0, 0
-1, Noir Velocity, 0, 0
-1, The Underquoter, 0, 0
-1, High Yield, 0, 0
-1, Ruthless Soul, 0, 0
-1, Sondera, 0, 0
-1, Teen Torque, 0, 0
-1, Tuzemak, 0, 0
+# Kyneton Tue 20 Oct, Good 3.5: race day, pulled Tue 20 Oct 11:55am Melbourne after scratchings (Form King open = fk_open).
+1, Canticle, 9.50, 9.50, fk_open 6.00
+1, Teen Torque, 6.25, 6.25, fk_open 11.00
+1, Ruthless Soul, 51.00, 51.00, fk_open 15.00
+1, Noir Velocity, 81.00, 81.00, fk_open 26.00
+1, Tuzemak, 1.85, 1.85, fk_open 3.50
+1, Golden Rainbow, SCR
 1, Pandie Pandie, SCR
-2, Better By Far, 0, 0
-2, Confidential Girl, 0, 0
-2, Diamonds For Her, 0, 0
-2, Explosive Magic, 0, 0
-2, Fox Phire, 0, 0
-2, Miss Verona, 0, 0
-2, Model Gigi, 0, 0
-2, Moon God, 0, 0
-2, Mystic River Queen, 0, 0
-2, Unwavering, 0, 0
-2, With Benefits, 0, 0
-2, Nautique, SCR
+1, Sondera, 5.50, 5.50, fk_open 6.00
+1, High Yield, 31.00, 31.00, fk_open 11.00
+1, The Underquoter, 6.50, 6.50, fk_open 3.50
+2, Confidential Girl, SCR
+2, Miss Verona, SCR
 2, Chapel Belle, SCR
+2, Better By Far, 1.50, 1.50, fk_open 1.75
+2, Diamonds For Her, 26.00, 26.00, fk_open 18.00
+2, Fox Phire, SCR
+2, Model Gigi, SCR
+2, With Benefits, SCR
+2, Explosive Magic, 13.00, 13.00, fk_open 18.00
+2, Moon God, SCR
 2, Miss Home Body, SCR
-3, Duke Of Oman, 0, 0
-3, Western Edge, 0, 0
-3, Ravens Glow, 0, 0
-3, Unannounced, 0, 0
-3, Zouie, 0, 0
-3, Bohemian Blitz, 0, 0
-3, Bourne Legacy, 0, 0
-3, Ciphered, 0, 0
-3, Count Chevalier, 0, 0
-3, Merry Chase, 0, 0
-3, Sabrina, 0, 0
-3, Velvet Reign, 0, 0
+2, Unwavering, 3.50, 3.50, fk_open 8.00
+2, Nautique, SCR
+2, Mystic River Queen, SCR
+3, Duke Of Oman, 41.00, 41.00, fk_open 26.00
 3, The Secret, SCR
 3, All Too Single, SCR
+3, Buffalo Milk, SCR
+3, Ravens Glow, SCR
+3, Zouie, SCR
+3, Unannounced, 12.00, 12.00, fk_open 11.00
+3, Wunderlust, SCR
 3, Sarazain, SCR
-4, Kamezali, 0, 0
-4, Dancingonmyown, 0, 0
-4, Bliss Bomb, 0, 0
-4, Please Me Do, 0, 0
-4, Hexed, 0, 0
-4, Break The Taboo, 0, 0
-4, Hidden Comfort, 0, 0
-4, The Birthday Party, 0, 0
-4, Kulina, 0, 0
-4, Miss Xtravaganza, 0, 0
-4, Snow On Her, 0, 0
-5, Onlooker, 0, 0
-5, Ryanman, 0, 0
-5, Colt Forty Five, 0, 0
-5, Bucks Night, 0, 0
-5, Headstock, 0, 0
-5, Manchego, 0, 0
-5, Western Lane, 0, 0
-5, Rattle'n'roll, 0, 0
-5, Battle Of The Ice, 0, 0
-5, Becauseyou're Mine, 0, 0
-5, Count Of Anjou, 0, 0
-5, Kilmister, 0, 0
-5, Mahjing, 0, 0
-6, Savvie Blanc, 0, 0
-6, Seeyou Raider, 0, 0
-6, Our Smokeshow, 0, 0
-6, Tempt The Gods, 0, 0
-6, Earl Of Gloucester, 0, 0
-6, Russian Front, 0, 0
-6, Titan Of Choice, 0, 0
-6, Victory Tune, 0, 0
-6, Our Pierro, 0, 0
-6, Brroosha, SCR
-6, Aubaine, SCR
-6, Hurco, SCR
+3, Western Edge, 151.00, 151.00, fk_open 101.00
+3, Ciphered, 10.00, 10.00, fk_open 8.00
+3, Sabrina, SCR
+3, Bourne Legacy, 1.70, 1.70, fk_open 3.40
+3, Bohemian Blitz, SCR
+3, Velvet Reign, 31.00, 31.00, fk_open 15.00
+3, Merry Chase, 3.70, 3.70, fk_open 6.00
+3, Count Chevalier, 14.00, 14.00, fk_open 11.00
+4, Kulina, 27.00, 27.00, fk_open 15.00
+4, Snow On Her, 41.00, 41.00, fk_open 51.00
+4, Hidden Comfort, 11.00, 11.00, fk_open 26.00
+4, Break The Taboo, SCR
+4, Miss Xtravaganza, 71.00, 71.00, fk_open 101.00
+4, Kamezali, 4.40, 4.40, fk_open 6.00
+4, Please Me Do, 3.70, 3.70, fk_open 6.00
+4, Dancingonmyown, SCR
+4, The Birthday Party, 13.00, 13.00, fk_open 15.00
+4, Hexed, 11.00, 11.00, fk_open 8.00
+4, Bliss Bomb, 2.70, 2.70, fk_open 6.00
+5, Mahjing, 126.00, 126.00, fk_open 101.00
+5, Headstock, SCR
+5, Count Of Anjou, 91.00, 91.00, fk_open 101.00
+5, Kilmister, SCR
+5, Manchego, 1.75, 1.75, fk_open 3.50
+5, Becauseyou're Mine, SCR
+5, Ryanman, SCR
+5, Battle Of The Ice, 8.50, 8.50, fk_open 11.00
+5, Rattle'n'roll, 6.25, 6.25, fk_open 8.00
+5, Colt Forty Five, 6.25, 6.25, fk_open 8.00
+5, Western Lane, SCR
+5, Bucks Night, 31.00, 31.00, fk_open 51.00
+5, Onlooker, 6.50, 6.50, fk_open 4.40
+6, Titan Of Choice, SCR
+6, Savvie Blanc, 9.50, 9.50, fk_open 7.50
+6, Russian Front, 3.60, 3.60, fk_open 4.20
+6, Our Smokeshow, 31.00, 31.00, fk_open 14.00
+6, Seeyou Raider, 7.00, 7.00, fk_open 5.50
 6, Brutify, SCR
-7, Slane, 0, 0
-7, Sound Of Jura, 0, 0
-7, Kiss My Rock, 0, 0
-7, Lunar Force, 0, 0
-7, Haiiro, 0, 0
-7, The Quiet Immortal, 0, 0
-7, Mr Margolin, 0, 0
-7, Biratu, 0, 0
-7, Crown Of Russia, 0, 0
-7, Mike's Hope, 0, 0
-7, Super Mirage, 0, 0
-7, Frostration, 0, 0
-7, Tierra, 0, 0
+6, Earl Of Gloucester, 26.00, 26.00, fk_open 14.00
+6, Hurco, SCR
+6, Tempt The Gods, 11.00, 11.00, fk_open 7.50
+6, Our Pierro, 5.50, 5.50, fk_open 4.20
+6, Aubaine, SCR
+6, Victory Tune, SCR
+6, Brroosha, SCR
 7, Corona Lad, SCR
+7, Slane, SCR
 7, Jackand, SCR
+7, Sound Of Jura, 14.00, 14.00, fk_open 8.00
+7, Kiss My Rock, 9.50, 9.50, fk_open 15.00
+7, Tierra, SCR
+7, Mike's Hope, 5.00, 5.00, fk_open 4.00
+7, Super Mirage, SCR
+7, Frostration, 8.50, 8.50, fk_open 15.00
+7, The Quiet Immortal, SCR
+7, Biratu, 5.00, 5.00, fk_open 11.00
+7, Lunar Force, 3.70, 3.70, fk_open 8.00
+7, Mr Margolin, 17.00, 17.00, fk_open 11.00
+7, Crown Of Russia, 31.00, 31.00, fk_open 26.00
+7, Haiiro, SCR
