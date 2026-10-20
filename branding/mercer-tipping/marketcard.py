@@ -37,7 +37,7 @@ def card(d):
             f"<div class='top'><div class='lock'><div class='mark'><span>M</span></div><div class='brand'>MERCER<span>TIPPING</span></div></div>"
             f"<div class='when'>{html.escape(d['day'])}<span>{html.escape(d['date'])}</span></div></div>"
             f"<div class='list{'' if show else ' nomkt'}'><div class='title'><h2>{html.escape(d['race'])}</h2><small>{html.escape(d.get('note', ''))}</small></div>"
-            f"<div class='hd'><span>Gate</span><span>Our market</span><span>Ours</span>{label}</div>{rows}</div>"
+            f"<div class='hd'><span>{html.escape(d.get('first_col', 'Gate'))}</span><span>Our market</span><span>Ours</span>{label}</div>{rows}</div>"
             f"<div class='foot'><span>{html.escape(d.get('footer', 'Our rated prices, not a bet on every runner.'))}</span><span>18+ · Gamble responsibly</span></div></body></html>")
 
 

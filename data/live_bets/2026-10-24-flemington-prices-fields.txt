@@ -1,0 +1,140 @@
+# Flemington Sat 24 Oct (Cox Plate R7; other races at weights stage): fields pulled Tue 20 Oct 3:03pm Melbourne. No market in Form King yet.
+1, Barracks, 0, 0
+1, Big Wigs, 0, 0
+1, Buggsy, 0, 0
+1, Half Pipe, 0, 0
+1, Hank Honk, 0, 0
+1, Inner Gold, 0, 0
+1, Lady Catalina, 0, 0
+1, Mr Natural, 0, 0
+1, Peyton, 0, 0
+1, Punxsutawney Phil, 0, 0
+1, Regal Harry, 0, 0
+1, The Speed Machine, 0, 0
+1, Threads, 0, 0
+1, Turbo Saint, 0, 0
+1, Valaroso, 0, 0
+2, Aerostatique, 0, 0
+2, Bohemian Boy, 0, 0
+2, Circus Moon, 0, 0
+2, Frank Whisper, 0, 0
+2, Gilgeous, 0, 0
+2, Hakusan, 0, 0
+2, Hierarchy, 0, 0
+2, Icy You, 0, 0
+2, Joely, 0, 0
+2, King Winston, 0, 0
+2, Lepolo, 0, 0
+2, Mack The Knife, 0, 0
+2, Melbourne Boy, 0, 0
+2, Meness, 0, 0
+2, Mossquillo, 0, 0
+2, Murshidi, 0, 0
+2, Salann, 0, 0
+2, Skua, 0, 0
+2, True Rebel, 0, 0
+2, True Tone, 0, 0
+2, Winter Arc, 0, 0
+2, Written Empire, 0, 0
+3, Almost An Angel, 0, 0
+3, Angels Fury, 0, 0
+3, Anglais, 0, 0
+3, Aroused, 0, 0
+3, Avery Anna, 0, 0
+3, Caddington, 0, 0
+3, Chayan, 0, 0
+3, Ciaron's Star, 0, 0
+3, Jacaranda, 0, 0
+3, Ladhar, 0, 0
+3, Lady Catalina, 0, 0
+3, Miss Dividend, 0, 0
+3, Nishioka, 0, 0
+3, Semantics, 0, 0
+3, Simply Steffi, 0, 0
+3, Superbec, 0, 0
+3, Unkechaug, 0, 0
+4, Always Enuff, 0, 0
+4, Arkansaw Kid, 0, 0
+4, Bred 'em All, 0, 0
+4, Dragon Scroll, 0, 0
+4, Ice Kool, 0, 0
+4, Mcgaw, 0, 0
+4, Perilous Fighter, 0, 0
+4, Philosopher, 0, 0
+4, Point And Shoot, 0, 0
+4, Saluted, 0, 0
+4, Spywire, 0, 0
+4, Stokke, 0, 0
+4, Unflinching, 0, 0
+4, Way To The Stars, 0, 0
+5, Arkansaw Kid, 0, 0
+5, Extragalactic, 0, 0
+5, Hedged, 0, 0
+5, Jenni The Fox, 0, 0
+5, Jigsaw, 0, 0
+5, Klabel, 0, 0
+5, La Fracas, 0, 0
+5, Losesomewinmore, 0, 0
+5, Mazu, 0, 0
+5, Rey Magnerio, 0, 0
+5, Smooth Chino, 0, 0
+5, Splash Back, 0, 0
+5, Verdoux, 0, 0
+6, Another Wil, 0, 0
+6, Astral Flame, 0, 0
+6, Buckaroo, 0, 0
+6, Encap, 0, 0
+6, Enxuto, 0, 0
+6, Evaporate, 0, 0
+6, Feroce, 0, 0
+6, Freedom Rally, 0, 0
+6, Harry's Yacht, 0, 0
+6, Holymanz, 0, 0
+6, Just Folk, 0, 0
+6, Magnaspin, 0, 0
+6, Mr Brightside, 0, 0
+6, On Display, 0, 0
+6, Persian Spirit, 0, 0
+6, Pinstriped, 0, 0
+6, Plymouth, 0, 0
+6, Pondalowie, 0, 0
+6, Shohisha, 0, 0
+6, Sun God, 0, 0
+6, Surfin' Bird, 0, 0
+6, Tom Kitten, 0, 0
+6, Von Hauke, 0, 0
+6, Welcometotheshow, 0, 0
+6, Wonder Boy, 0, 0
+6, Zakouma, 0, 0
+7, Ceolwulf, 0, 0
+7, Light Infantry Man, 0, 0
+7, Sir Delius, 0, 0
+7, Attrition, 0, 0
+7, Cosmic Crusader, 0, 0
+7, Birdman, 0, 0
+7, Land Legend, 0, 0
+7, Middle Earth, 0, 0
+7, Saint George, 0, 0
+7, Aeliana, 0, 0
+7, Warwoven, 0, 0
+7, Blind Raise, 0, 0
+8, The Euphrates, SCR  # running in the Geelong Cup Wed 21 Oct (founder, 20 Oct)
+8, Juja Kibo, 0, 0
+8, Pinhole, 0, 0
+8, Torranzino, 0, 0
+8, Valiant King, 0, 0
+8, So You Are, 0, 0
+8, Mr Monaco, 0, 0
+8, Future History, 0, 0
+8, Kings Valley, 0, 0
+8, Deakin, 0, 0
+8, King Pedro, 0, 0
+8, Aethelwulf, 0, 0
+8, Autumn Mystery, 0, 0
+8, Manzor Blue, 0, 0
+8, Point Of Law, 0, 0
+8, Strictly Business, 0, 0
+8, Newfoundland, SCR
+8, Kizlyar, SCR
+8, Omni Man, SCR
+8, Jennivamoose, SCR

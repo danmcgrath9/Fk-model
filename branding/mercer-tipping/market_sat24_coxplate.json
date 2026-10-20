@@ -2,7 +2,7 @@
  "day": "Saturday",
  "date": "24 October",
  "race": "Cox Plate",
- "note": "Flemington R7 \u00b7 2040m \u00b7 Good 4",
+ "note": "Flemington R7 \u00b7 2040m \u00b7 Good 4 \u00b7 draw tonight",
  "runners": [
   {
    "horse": "Warwoven",
@@ -79,5 +79,6 @@
  ],
  "market_label": "TAB",
  "show_market": true,
- "footer": "Our rated prices v TAB, Tue 3:52pm. Bet: Cosmic Crusader $11."
+ "footer": "Our rated prices v TAB, Tue 3:52pm. Bet: Cosmic Crusader $11.",
+ "first_col": "No."
 }

@@ -1,0 +1,102 @@
+{
+ "day": "Saturday",
+ "date": "24 October",
+ "race": "MV Gold Cup",
+ "note": "Flemington R8 \u00b7 2500m \u00b7 Good 4 \u00b7 draw tonight",
+ "runners": [
+  {
+   "horse": "Aethelwulf",
+   "barrier": 12,
+   "ours": "$3.16",
+   "market": "$8"
+  },
+  {
+   "horse": "Juja Kibo",
+   "barrier": 2,
+   "ours": "$8.17",
+   "market": "$3.50"
+  },
+  {
+   "horse": "Point Of Law",
+   "barrier": 15,
+   "ours": "$11",
+   "market": "$9"
+  },
+  {
+   "horse": "King Pedro",
+   "barrier": 11,
+   "ours": "$11",
+   "market": "$7"
+  },
+  {
+   "horse": "Pinhole",
+   "barrier": 3,
+   "ours": "$13",
+   "market": "$9"
+  },
+  {
+   "horse": "So You Are",
+   "barrier": 6,
+   "ours": "$14",
+   "market": "$21"
+  },
+  {
+   "horse": "Mr Monaco",
+   "barrier": 7,
+   "ours": "$17",
+   "market": "$7.50"
+  },
+  {
+   "horse": "Future History",
+   "barrier": 8,
+   "ours": "$20",
+   "market": "$21"
+  },
+  {
+   "horse": "Kings Valley",
+   "barrier": 9,
+   "ours": "$21",
+   "market": "$16"
+  },
+  {
+   "horse": "Valiant King",
+   "barrier": 5,
+   "ours": "$50",
+   "market": "$16"
+  },
+  {
+   "horse": "Deakin",
+   "barrier": 10,
+   "ours": "$51",
+   "market": "$26"
+  },
+  {
+   "horse": "Manzor Blue",
+   "barrier": 14,
+   "ours": "$72",
+   "market": "$101"
+  },
+  {
+   "horse": "Strictly Business",
+   "barrier": 16,
+   "ours": "$100",
+   "market": "$101"
+  },
+  {
+   "horse": "Autumn Mystery",
+   "barrier": 13,
+   "ours": "$109",
+   "market": "$101"
+  },
+  {
+   "horse": "Torranzino",
+   "barrier": 4,
+   "ours": "$217",
+   "market": "$71"
+  }
+ ],
+ "market_label": "TAB",
+ "show_market": true,
+ "footer": "Our rated prices v TAB, Tue 4:38pm. Bet: Aethelwulf $8.",
+ "first_col": "No."
+}
