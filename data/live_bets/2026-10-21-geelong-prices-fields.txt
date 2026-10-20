@@ -1,4 +1,5 @@
 # Geelong Wed 21 Oct (official going): fields pulled Mon 19 Oct 11:25am Melbourne. Emergencies as SCR until they gain a start; no market yet.
+# R5 Murshidi scratched Wed 21 Oct morning (founder); also entered Flemington R2 Sat 24 Oct. The $126 at $11 is refunded.
 1, Shultzy, 0, 0
 1, Mr O'reilly, 0, 0
 1, Nottolook, 0, 0
@@ -65,7 +66,7 @@
 5, Meness, 0, 0
 5, Cold Shower, 0, 0
 5, Enchilada, 0, 0
-5, Murshidi, 0, 0
+5, Murshidi, SCR
 5, Melbourne Boy, 0, 0
 5, Gradivus, 0, 0
 5, Hakusan, 0, 0
