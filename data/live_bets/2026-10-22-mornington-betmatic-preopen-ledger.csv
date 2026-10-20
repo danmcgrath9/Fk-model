@@ -1,0 +1,50 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-22-mornington-r2-n5-s1,2,5,Bella Cinque,5.82,13.51,56,13962225,Notification has been scheduled.
+fk-2026-10-22-mornington-r2-n5-s2,2,5,Bella Cinque,7.28,13.51,194,13962226,Notification has been scheduled.
+fk-2026-10-22-mornington-r2-n1-s1,2,1,Bifrost,7.54,18.19,43,13962227,Notification has been scheduled.
+fk-2026-10-22-mornington-r2-n1-s2,2,1,Bifrost,9.43,18.19,175,13962228,Notification has been scheduled.
+fk-2026-10-22-mornington-r2-n6-s1,2,6,Party Benefits,8.55,19.87,36,13962229,Notification has been scheduled.
+fk-2026-10-22-mornington-r2-n6-s2,2,6,Party Benefits,10.69,19.87,163,13962230,Notification has been scheduled.
+fk-2026-10-22-mornington-r3-n8-s1,3,8,Blanche Bass,23.30,43.66,24,13962231,Notification has been scheduled.
+fk-2026-10-22-mornington-r3-n8-s2,3,8,Blanche Bass,29.12,43.66,41,13962232,Notification has been scheduled.
+fk-2026-10-22-mornington-r3-n3-s1,3,3,Charlie Messy Hair,11.02,23.15,64,13962233,Notification has been scheduled.
+fk-2026-10-22-mornington-r3-n3-s2,3,3,Charlie Messy Hair,13.77,23.15,97,13962234,Notification has been scheduled.
+fk-2026-10-22-mornington-r3-n6-s1,3,6,Grinding Away,11.29,25.91,112,13962235,Notification has been scheduled.
+fk-2026-10-22-mornington-r3-n6-s2,3,6,Grinding Away,14.11,25.91,32,13962236,Notification has been scheduled.
+fk-2026-10-22-mornington-r3-n7-s1,3,7,Raghnall,3.28,3.99,200,13962237,Notification has been scheduled.
+fk-2026-10-22-mornington-r3-n7-s2,3,7,Raghnall,4.00,8.77,230,13962238,Notification has been scheduled.
+fk-2026-10-22-mornington-r3-n7-s3,3,7,Raghnall,4.33,8.77,20,13962239,Notification has been scheduled.
+fk-2026-10-22-mornington-r5-n8-s1,5,8,Gilgeous,2.79,3.99,250,13962240,Notification has been scheduled.
+fk-2026-10-22-mornington-r5-n8-s2,5,8,Gilgeous,4.00,6.86,250,13962241,Notification has been scheduled.
+fk-2026-10-22-mornington-r5-n9-s1,5,9,Late Night Wonder,11.17,22.83,94,13962242,Notification has been scheduled.
+fk-2026-10-22-mornington-r5-n9-s2,5,9,Late Night Wonder,13.96,22.83,38,13962243,Notification has been scheduled.
+fk-2026-10-22-mornington-r5-n11-s1,5,11,Prime Force,20.31,41.50,56,13962244,Notification has been scheduled.
+fk-2026-10-22-mornington-r5-n11-s2,5,11,Prime Force,25.39,41.50,17,13962245,Notification has been scheduled.
+fk-2026-10-22-mornington-r5-n4-s1,5,4,Top Rich,8.35,18.82,150,13962246,Notification has been scheduled.
+fk-2026-10-22-mornington-r5-n4-s2,5,4,Top Rich,10.44,18.82,45,13962247,Notification has been scheduled.
+fk-2026-10-22-mornington-r6-n1-s1,6,1,Albanian I Am,14.16,24.64,96,13962248,Notification has been scheduled.
+fk-2026-10-22-mornington-r6-n1-s2,6,1,Albanian I Am,17.70,24.64,40,13962249,Notification has been scheduled.
+fk-2026-10-22-mornington-r6-n6-s1,6,6,Amphactor,16.56,37.87,81,13962250,Notification has been scheduled.
+fk-2026-10-22-mornington-r6-n6-s2,6,6,Amphactor,20.70,37.87,20,13962251,Notification has been scheduled.
+fk-2026-10-22-mornington-r6-n10-s1,6,10,Brutify,5.85,14.37,224,13962252,Notification has been scheduled.
+fk-2026-10-22-mornington-r6-n10-s2,6,10,Brutify,7.31,14.37,26,13962253,Notification has been scheduled.
+fk-2026-10-22-mornington-r6-n8-s1,6,8,Fearless Writer,7.77,17.52,171,13962254,Notification has been scheduled.
+fk-2026-10-22-mornington-r6-n8-s2,6,8,Fearless Writer,9.71,17.52,54,13962255,Notification has been scheduled.
+fk-2026-10-22-mornington-r6-n9-s1,6,9,Lope De Lardo,10.84,21.75,46,13962256,Notification has been scheduled.
+fk-2026-10-22-mornington-r6-n9-s2,6,9,Lope De Lardo,13.55,21.75,82,13962257,Notification has been scheduled.
+fk-2026-10-22-mornington-r7-n7-s1,7,7,Crank,18.71,39.31,31,13962258,Notification has been scheduled.
+fk-2026-10-22-mornington-r7-n7-s2,7,7,Crank,23.39,39.31,49,13962259,Notification has been scheduled.
+fk-2026-10-22-mornington-r7-n9-s1,7,9,Cresta Crystal,11.03,24.98,52,13962260,Notification has been scheduled.
+fk-2026-10-22-mornington-r7-n9-s2,7,9,Cresta Crystal,13.79,24.98,84,13962261,Notification has been scheduled.
+fk-2026-10-22-mornington-r7-n10-s1,7,10,Determined Rose,2.96,3.99,192,13962262,Notification has been scheduled.
+fk-2026-10-22-mornington-r7-n10-s2,7,10,Determined Rose,3.70,3.99,58,13962263,Notification has been scheduled.
+fk-2026-10-22-mornington-r7-n10-s3,7,10,Determined Rose,4.00,7.55,250,13962264,Notification has been scheduled.
+fk-2026-10-22-mornington-r8-n9-s1,8,9,Eeteedee,12.34,27.96,44,13962265,Notification has been scheduled.
+fk-2026-10-22-mornington-r8-n9-s2,8,9,Eeteedee,15.43,27.96,66,13962266,Notification has been scheduled.
+fk-2026-10-22-mornington-r8-n6-s1,8,6,Pull My Finger,10.57,23.92,52,13962267,Notification has been scheduled.
+fk-2026-10-22-mornington-r8-n6-s2,8,6,Pull My Finger,13.21,23.92,87,13962268,Notification has been scheduled.
+fk-2026-10-22-mornington-r8-n5-s1,8,5,Ranakye,19.16,42.96,32,13962269,Notification has been scheduled.
+fk-2026-10-22-mornington-r8-n5-s2,8,5,Ranakye,23.95,42.96,42,13962270,Notification has been scheduled.
+fk-2026-10-22-mornington-r8-n7-s1,8,7,Russian Benefits,5.74,15.23,250,13962271,Notification has been scheduled.
+fk-2026-10-22-mornington-r8-n4-s1,8,4,Yellowknife,8.66,17.40,77,13962272,Notification has been scheduled.
+fk-2026-10-22-mornington-r8-n4-s2,8,4,Yellowknife,10.82,17.40,124,13962273,Notification has been scheduled.
