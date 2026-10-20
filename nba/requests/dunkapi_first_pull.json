@@ -2,19 +2,58 @@
   "why": "First free test: do our projections beat the market's prop line? 11 players x 4 stats, the two out-of-sample seasons. About 451 of the free 500 credits.",
   "from_date": "2024-10-01",
   "to_date": "2026-04-30",
-  "markets": ["player_points", "player_rebounds", "player_assists", "player_threes"],
+  "markets": [
+    "player_points",
+    "player_rebounds",
+    "player_assists",
+    "player_threes"
+  ],
   "max_credits": 460,
   "players": [
-    {"name": "Kevin Durant", "personId": 201142},
-    {"name": "Tyrese Maxey", "personId": 1630178},
-    {"name": "Jalen Brunson", "personId": 1628973},
-    {"name": "Paolo Banchero", "personId": 1631094},
-    {"name": "James Harden", "personId": 201935},
-    {"name": "Alperen Sengun", "personId": 1630578},
-    {"name": "Desmond Bane", "personId": 1630217},
-    {"name": "Julius Randle", "personId": 203944},
-    {"name": "DeMar DeRozan", "personId": 201942},
-    {"name": "Brandon Ingram", "personId": 1627742},
-    {"name": "Mikal Bridges", "personId": 1628969}
-  ]
+    {
+      "name": "Kevin Durant",
+      "personId": 201142
+    },
+    {
+      "name": "Tyrese Maxey",
+      "personId": 1630178
+    },
+    {
+      "name": "Jalen Brunson",
+      "personId": 1628973
+    },
+    {
+      "name": "Paolo Banchero",
+      "personId": 1631094
+    },
+    {
+      "name": "James Harden",
+      "personId": 201935
+    },
+    {
+      "name": "Alperen Sengun",
+      "personId": 1630578
+    },
+    {
+      "name": "Desmond Bane",
+      "personId": 1630217
+    },
+    {
+      "name": "Julius Randle",
+      "personId": 203944
+    },
+    {
+      "name": "DeMar DeRozan",
+      "personId": 201942
+    },
+    {
+      "name": "Brandon Ingram",
+      "personId": 1627742
+    },
+    {
+      "name": "Mikal Bridges",
+      "personId": 1628969
+    }
+  ],
+  "run": "2026-10-21 first pull (key added)"
 }
