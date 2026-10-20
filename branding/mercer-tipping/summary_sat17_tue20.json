@@ -1,0 +1,68 @@
+{
+ "title": "4 Days",
+ "sub": "Sat 17 \u2013 Tue 20 Oct",
+ "big": [
+  {
+   "v": "+59.9u",
+   "k": "Profit on 32.3u"
+  },
+  {
+   "v": "9 / 28",
+   "k": "Winners"
+  },
+  {
+   "v": "18 / 24",
+   "k": "Beat BSP"
+  }
+ ],
+ "rows": [
+  {
+   "day": "Sat",
+   "where": "Caulfield \u00b7 Bendigo \u00b7 Wodonga",
+   "bets": 15,
+   "won": 4,
+   "staked": "15.6u",
+   "profit": "+31.4u",
+   "bsp": "12 / 15"
+  },
+  {
+   "day": "Sun",
+   "where": "Horsham \u00b7 Moe",
+   "bets": 5,
+   "won": 1,
+   "staked": "6.1u",
+   "profit": "+3.2u",
+   "bsp": "3 / 5"
+  },
+  {
+   "day": "Mon",
+   "where": "Echuca",
+   "bets": 4,
+   "won": 2,
+   "staked": "3.9u",
+   "profit": "+17.4u",
+   "bsp": "3 / 4"
+  },
+  {
+   "day": "Tue",
+   "where": "Kyneton",
+   "bets": 4,
+   "won": 2,
+   "staked": "6.8u",
+   "profit": "+7.9u",
+   "bsp": "\u2013"
+  },
+  {
+   "day": "Total",
+   "where": "",
+   "bets": 28,
+   "won": 9,
+   "staked": "32.3u",
+   "profit": "+59.9u",
+   "bsp": "18 / 24",
+   "total": true
+  }
+ ],
+ "note": "+185% won't last. What will: our price beat <b>BSP on 18 of 24</b> bets, on average <b>1.57x BSP</b>. Kyneton's BSP isn't in yet.",
+ "footer": "Win bets at posted prices, after deductions."
+}
