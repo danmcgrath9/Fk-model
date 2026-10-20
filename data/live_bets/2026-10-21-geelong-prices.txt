@@ -1,136 +1,136 @@
-# Geelong Wed 21 Oct (official going): fields pulled Mon 19 Oct 11:25am Melbourne. Emergencies as SCR until they gain a start; no market yet.
-1, Shultzy, 0, 0
-1, Mr O'reilly, 0, 0
-1, Nottolook, 0, 0
-1, Fiorowngood, 0, 0
-1, Sapphire Siren, 0, 0
-1, Haaland, 0, 0
-1, Ragazzone, 0, 0
-1, Jenny The Beaver, 0, 0
-1, No Rumours, 0, 0
-1, The Cunning Fox, 0, 0
-1, Hawk Power, 0, 0
-1, Roaring Engine, 0, 0
-1, The Claimant, 0, 0
-2, Jennyanydots, 0, 0
-2, Yes Yoshi, 0, 0
-2, Bold Bordeaux, 0, 0
-2, Purple Streak, 0, 0
-2, Tookay Pete, 0, 0
-2, Bedtime Angel, 0, 0
-2, Immortal Triumph, 0, 0
-2, Mr Assertive, 0, 0
-2, My Zephyr, 0, 0
-2, Ten Warriors, 0, 0
-2, Tennessee Spirit, 0, 0
-2, Spirit Of Wealth, 0, 0
-2, Vain Champagne, 0, 0
-2, Kippis, 0, 0
-2, Superliv, SCR
+# Geelong Wed 21 Oct: race-morning prices after scratchings, pulled 9:31am Melbourne.
+1, Shultzy, 15.00, 15.00, fk_open 18.00
+1, The Claimant, 81.00, 81.00, fk_open 61.00
+1, Haaland, 18.00, 18.00, fk_open 17.00
+1, The Cunning Fox, 16.00, 16.00, fk_open 17.00
+1, Jenny The Beaver, 27.00, 27.00, fk_open 23.00
+1, Roaring Engine, 5.50, 5.50, fk_open 11.00
+1, No Rumours, SCR
+1, Nottolook, 4.40, 4.40, fk_open 3.70
+1, Mr O'reilly, 3.40, 3.40, fk_open 4.60
+1, Fiorowngood, 5.25, 5.25, fk_open 7.50
+1, Hawk Power, 41.00, 41.00, fk_open 26.00
+1, Sapphire Siren, SCR
+1, Ragazzone, 18.00, 18.00, fk_open 16.00
+2, Tookay Pete, 151.00, 151.00, fk_open 81.00
 2, Egerton, SCR
-2, Home Tomurra, SCR
-2, Royal Rendezvous, SCR
-3, Alero, 0, 0
-3, Lario, 0, 0
-3, Delivering, 0, 0
-3, Charming Nic, 0, 0
-3, Silver Dagger, 0, 0
-3, Bold Strike, 0, 0
-3, Aurora Belle, 0, 0
-3, Savilla, 0, 0
-3, Attachments, 0, 0
-3, Yum, 0, 0
-3, Misty Whisper, 0, 0
-4, Zourain, 0, 0
-4, Regal Might, 0, 0
-4, Ole Royale, 0, 0
-4, Don Rubio, 0, 0
-4, Express Class, 0, 0
-4, Mount Sabyinyo, 0, 0
-4, Let It Beel, 0, 0
-4, Power And The Beat, 0, 0
-4, Karren, 0, 0
-4, Sunlit Serenade, 0, 0
-4, Castellito, 0, 0
-4, Brass In Pocket, 0, 0
-4, Russian Choice, 0, 0
-4, Mr Natural, 0, 0
-4, Catch The Moon, SCR
-4, Alexander Thegreat, SCR
+2, Jennyanydots, 13.00, 13.00, fk_open 8.00
+2, Mr Assertive, 15.00, 15.00, fk_open 11.00
+2, Ten Warriors, 6.00, 6.00, fk_open 9.00
+2, Spirit Of Wealth, 8.00, 8.00, fk_open 9.00
+2, Bedtime Angel, 51.00, 51.00, fk_open 34.00
+2, Vain Champagne, 11.00, 11.00, fk_open 16.00
+2, My Zephyr, 21.00, 21.00, fk_open 16.00
+2, Bold Bordeaux, 9.00, 9.00, fk_open 10.00
+2, Tennessee Spirit, SCR
+2, Kippis, SCR
+2, Superliv, 18.00, 18.00, fk_open 15.00
+2, Immortal Triumph, 9.00, 9.00, fk_open 14.00
+2, Royal Rendezvous, 3.90, 3.90, fk_open 6.00
+2, Yes Yoshi, SCR
+2, Purple Streak, SCR
+2, Home Tomurra, 13.00, 13.00, fk_open 15.00
+3, Delivering, 41.00, 41.00, fk_open 23.00
+3, Silver Dagger, 16.00, 16.00, fk_open 12.00
+3, Lario, 9.00, 9.00, fk_open 10.00
+3, Savilla, 101.00, 101.00, fk_open 81.00
+3, Charming Nic, SCR
+3, Attachments, SCR
+3, Bold Strike, 14.00, 14.00, fk_open 11.00
+3, Alero, SCR
+3, Aurora Belle, 1.80, 1.80, fk_open 2.50
+3, Misty Whisper, 4.80, 4.80, fk_open 5.50
+3, Yum, 7.00, 7.00, fk_open 7.00
 4, Crown Crusher, SCR
-4, Viva Mauricio, SCR
-5, True Tone, 0, 0
-5, Icy You, 0, 0
-5, Frank Whisper, 0, 0
-5, Meness, 0, 0
-5, Cold Shower, 0, 0
-5, Enchilada, 0, 0
-5, Murshidi, 0, 0
-5, Melbourne Boy, 0, 0
-5, Gradivus, 0, 0
-5, Hakusan, 0, 0
-5, Crimsonor, 0, 0
-5, Locked In, 0, 0
-5, Expensive Taste, 0, 0
-6, Gregolimo, 0, 0
-6, Sea Strike, 0, 0
-6, Interjection, 0, 0
-6, Stay Humble, 0, 0
-6, Stung, 0, 0
-6, A Diva, 0, 0
-6, Kazaru, 0, 0
-6, Caelius, 0, 0
-6, Dubai Watch, 0, 0
-6, Ko Phangan, 0, 0
-6, Revolver, 0, 0
-6, Jenni You Think, 0, 0
-6, Perfect Night, 0, 0
-6, So Long Ago, 0, 0
+4, Regal Might, SCR
+4, Don Rubio, 20.00, 20.00, fk_open 12.00
+4, Zourain, 21.00, 21.00, fk_open 23.00
+4, Power And The Beat, 8.50, 8.50, fk_open 14.00
+4, Castellito, 9.50, 9.50, fk_open 10.00
+4, Brass In Pocket, 4.40, 4.40, fk_open 9.00
+4, Express Class, 12.00, 12.00, fk_open 11.00
+4, Alexander Thegreat, SCR
+4, Viva Mauricio, 10.00, 10.00, fk_open 17.00
+4, Ole Royale, 7.00, 7.00, fk_open 15.00
+4, Catch The Moon, 17.00, 17.00, fk_open 14.00
+4, Russian Choice, 15.00, 15.00, fk_open 16.00
+4, Let It Beel, SCR
+4, Karren, SCR
+4, Mount Sabyinyo, SCR
+4, Sunlit Serenade, 20.00, 20.00, fk_open 19.00
+4, Mr Natural, 8.00, 8.00, fk_open 21.00
+5, Gradivus, 81.00, 81.00, fk_open 41.00
+5, Crimsonor, 41.00, 41.00, fk_open 19.00
+5, True Tone, 2.90, 2.90, fk_open 3.80
+5, Frank Whisper, 15.00, 15.00, fk_open 6.00
+5, Meness, 15.00, 15.00, fk_open 9.00
+5, Melbourne Boy, 23.00, 23.00, fk_open 31.00
+5, Murshidi, 4.20, 4.20, fk_open 11.00
+5, Expensive Taste, 34.00, 34.00, fk_open 19.00
+5, Enchilada, 8.00, 8.00, fk_open 8.00
+5, Icy You, 7.00, 7.00, fk_open 5.00
+5, Hakusan, 151.00, 151.00, fk_open 81.00
+5, Locked In, 151.00, 151.00, fk_open 101.00
+5, Cold Shower, 12.00, 12.00, fk_open 8.00
+6, Gregolimo, 26.00, 26.00, fk_open 21.00
+6, A Diva, 7.50, 7.50, fk_open 6.50
+6, Revolver, 9.00, 9.00, fk_open 15.00
+6, Stay Humble, 5.50, 5.50, fk_open 5.50
+6, Dubai Watch, 7.50, 7.50, fk_open 8.00
+6, Sea Strike, 26.00, 26.00, fk_open 19.00
+6, Jenni You Think, SCR
+6, So Long Ago, 51.00, 51.00, fk_open 26.00
+6, Interjection, 29.00, 29.00, fk_open 31.00
+6, Stung, 4.80, 4.80, fk_open 5.50
+6, Kazaru, 19.00, 19.00, fk_open 21.00
 6, Lunar Force, SCR
-7, Vauban, 0, 0
-7, The Euphrates, 0, 0
-7, Wootton Verni, 0, 0
-7, Berkeley Square, 0, 0
-7, Onesmoothoperator, 0, 0
-7, Soulcombe, 0, 0
-7, Torranzino, 0, 0
-7, Point Of Law, 0, 0
-7, Valiant King, 0, 0
-7, Small Fry, 0, 0
-7, Litzdeel, 0, 0
-7, Manzor Blue, 0, 0
-7, Omni Man, 0, 0
-7, Jennivamoose, 0, 0
-7, Hurry Curry, 0, 0
-7, Asva, 0, 0
-7, Vegas Jack, 0, 0
-7, Sapphire Siren, SCR
-8, Celsius Star, 0, 0
-8, El Soleado, 0, 0
-8, Keep Your Cool, 0, 0
-8, Rue De Royale, 0, 0
-8, Immortal Star, 0, 0
-8, Xidaki, 0, 0
-8, Laa De Sha, 0, 0
-8, Everain, 0, 0
-8, World's My Oyster, 0, 0
-8, Just A Journey, 0, 0
-8, Vail Mountain, 0, 0
-8, Inside Man, 0, 0
-9, Different Gravy, 0, 0
-9, Yam, 0, 0
-9, Somewhere, 0, 0
-9, Bullets High, 0, 0
-9, Mr Verse, 0, 0
-9, Spirited Defence, 0, 0
-9, Hiyaam Proud, 0, 0
-9, Van Roy, 0, 0
-9, Recuperato, 0, 0
-9, Bella Verona, 0, 0
-9, Untapped, 0, 0
-9, Sulek, 0, 0
-9, Umgawa, 0, 0
-9, Charming Deel, 0, 0
-9, Aka Daka, SCR
-9, Rip Current, SCR
-9, Albanian I Am, SCR
+6, Caelius, 5.00, 5.00, fk_open 7.50
+6, Perfect Night, SCR
+6, Ko Phangan, 14.00, 14.00, fk_open 19.00
+7, Onesmoothoperator, 34.00, 34.00, fk_open 26.00
+7, Vauban, 15.00, 15.00, fk_open 11.00
+7, Asva, SCR
+7, Soulcombe, 11.00, 11.00, fk_open 16.00
+7, Torranzino, SCR
+7, Berkeley Square, 35.00, 35.00, fk_open 31.00
+7, Jennivamoose, SCR
+7, Manzor Blue, SCR
+7, Valiant King, SCR
+7, Litzdeel, 6.00, 6.00, fk_open 6.00
+7, The Euphrates, 3.60, 3.60, fk_open 5.00
+7, Small Fry, 6.00, 6.00, fk_open 6.00
+7, Sapphire Siren, 61.00, 61.00, fk_open 101.00
+7, Hurry Curry, 41.00, 41.00, fk_open 31.00
+7, Vegas Jack, 41.00, 41.00, fk_open 31.00
+7, Wootton Verni, 21.00, 21.00, fk_open 26.00
+7, Omni Man, 21.00, 21.00, fk_open 13.00
+7, Point Of Law, 5.00, 5.00, fk_open 5.00
+8, Vail Mountain, SCR
+8, Celsius Star, 5.50, 5.50, fk_open 12.00
+8, El Soleado, 61.00, 61.00, fk_open 41.00
+8, Keep Your Cool, 7.00, 7.00, fk_open 7.50
+8, Laa De Sha, 6.00, 6.00, fk_open 8.75
+8, Xidaki, 23.00, 23.00, fk_open 34.00
+8, World's My Oyster, 14.00, 14.00, fk_open 10.00
+8, Immortal Star, 7.00, 7.00, fk_open 7.50
+8, Inside Man, SCR
+8, Everain, 4.00, 4.00, fk_open 4.30
+8, Rue De Royale, 6.50, 6.50, fk_open 6.25
+8, Just A Journey, SCR
+9, Van Roy, SCR
+9, Umgawa, SCR
+9, Albanian I Am, 51.00, 51.00, fk_open 26.00
+9, Bullets High, 51.00, 51.00, fk_open 81.00
+9, Charming Deel, SCR
+9, Spirited Defence, SCR
+9, Yam, 23.00, 23.00, fk_open 21.00
+9, Hiyaam Proud, SCR
+9, Untapped, 11.00, 11.00, fk_open 10.00
+9, Mr Verse, 5.00, 5.00, fk_open 7.75
+9, Somewhere, 5.50, 5.50, fk_open 5.25
+9, Aka Daka, 31.00, 31.00, fk_open 34.00
+9, Rip Current, 71.00, 71.00, fk_open 51.00
+9, Bella Verona, 3.60, 3.60, fk_open 3.85
+9, Recuperato, SCR
+9, Different Gravy, 13.00, 13.00, fk_open 8.00
+9, Sulek, 3.90, 3.90, fk_open 7.00
