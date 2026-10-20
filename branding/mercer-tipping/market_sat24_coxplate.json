@@ -1,0 +1,83 @@
+{
+ "day": "Saturday",
+ "date": "24 October",
+ "race": "Cox Plate",
+ "note": "Flemington R7 \u00b7 2040m \u00b7 Good 4",
+ "runners": [
+  {
+   "horse": "Warwoven",
+   "barrier": 11,
+   "ours": "$5.30",
+   "market": "$5"
+  },
+  {
+   "horse": "Cosmic Crusader",
+   "barrier": 5,
+   "ours": "$5.57",
+   "market": "$10"
+  },
+  {
+   "horse": "Sir Delius",
+   "barrier": 3,
+   "ours": "$6.03",
+   "market": "$4.50"
+  },
+  {
+   "horse": "Aeliana",
+   "barrier": 10,
+   "ours": "$8.84",
+   "market": "$4.50"
+  },
+  {
+   "horse": "Blind Raise",
+   "barrier": 12,
+   "ours": "$9.34",
+   "market": "$13"
+  },
+  {
+   "horse": "Ceolwulf",
+   "barrier": 1,
+   "ours": "$15",
+   "market": "$5"
+  },
+  {
+   "horse": "Saint George",
+   "barrier": 9,
+   "ours": "$16",
+   "market": "$31"
+  },
+  {
+   "horse": "Birdman",
+   "barrier": 6,
+   "ours": "$21",
+   "market": "$13"
+  },
+  {
+   "horse": "Light Infantry Man",
+   "barrier": 2,
+   "ours": "$31",
+   "market": "$18"
+  },
+  {
+   "horse": "Land Legend",
+   "barrier": 7,
+   "ours": "$53",
+   "market": "$34"
+  },
+  {
+   "horse": "Attrition",
+   "barrier": 4,
+   "ours": "$98",
+   "market": "$51"
+  },
+  {
+   "horse": "Middle Earth",
+   "barrier": 8,
+   "ours": "$140",
+   "market": "$101"
+  }
+ ],
+ "market_label": "TAB",
+ "show_market": true,
+ "footer": "Our rated prices v TAB, Tue 3:52pm. Bet: Cosmic Crusader $10."
+}
