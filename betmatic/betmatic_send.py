@@ -108,9 +108,9 @@ def label(o, step, tag=""):
 
 def send(a):
     rows = list(csv.DictReader(open(a.orders)))
-    bad = [r for r in rows if not r.get("number")]
+    bad = [r for r in rows if not r.get("number") and not r.get("horse")]
     if bad:
-        sys.exit(f"{len(bad)} rows have no saddlecloth number (rebuild the order file with --numbers)")
+        sys.exit(f"{len(bad)} rows have no saddlecloth number and no horse (rebuild the order file with --numbers)")
     bets, step = [], {}
     for o in rows:
         k = (o["race"], o["number"]); step[k] = step.get(k, 0) + 1
@@ -124,14 +124,15 @@ def send(a):
             "check_max_odds": bool(o.get("max_odds")), **({"max_odds": float(o["max_odds"])} if o.get("max_odds") else {}),
             "is_market_open": not a.now, "max_attempts": a.attempts, "delay_between_attempts": 1,
             "allow_double_bets": False, "take_sp": False, "label": None}))
+        if getattr(a, "best_price", False):
+            # best bookie price (21 Oct 2026, founder: "do top bookie price"): High Odds First puts the whole stake with
+            # the highest-priced bookmaker and moves down only if it is rejected or not filled (support, 18 Oct). It is
+            # a standard bet only (not Market Open), works from one total, and spans every running session.
+            b = bets[-1][2]; b.update(type="High Odds First", total_wager=b["stake"])
     total = sum(b[2]["stake"] for b in bets)
     print(f"{len(bets)} bets, ${total:,} if every one fired, unit ${a.unit}")
-    if not a.send:
-        for lab, o, body in bets:
-            body["label"] = lab; body["bookies"] = f"<{a.bookie}>"; body["target_session"] = str(a.session)
-            print(json.dumps(body))
-        print("DRY RUN: nothing sent. Add --send to send.")
-        return
+    # dry run (21 Oct 2026): logs in and checks every bet against BetMatic's race schedule too (venue, race, the
+    # number at that name), so a dry run proves the order would land on the right horse; it only stops short of posting
     if not str(a.session).isdigit():
         sys.exit("--session must be the numeric session ID from 'check': BetMatic ignores a non-numeric target_session "
                  "and sends the bet to EVERY session (API reference, Create a Bet)")
@@ -171,6 +172,12 @@ def send(a):
             return f"{body['competition']} R{body['event_number']} on {o['date']} is not in BetMatic's race schedule"
         nums = [x.strip() for x in str(c.get("runners", "")).split(",")]
         names = str(c.get("runner_names", "")).split("#&#")
+        if body["selection"] in ("", "0"):
+            # number left blank (a copied tip names only the horse, 21 Oct 2026): take it from BetMatic's own field
+            hit = [n for n, nm in zip(nums, names) if norm(nm) == norm(o["horse"])] if len(names) == len(nums) else []
+            if len(hit) != 1:
+                return f"{o['horse']!r} is not (uniquely) in BetMatic's field for {body['competition']} R{body['event_number']}"
+            body["selection"] = o["number"] = hit[0]; print(f"{o['horse']}: No. {hit[0]} in BetMatic's field")
         if body["selection"] not in nums:
             return f"No. {body['selection']} is not running (scratched) in BetMatic's schedule"
         if len(names) == len(nums) and norm(names[nums.index(body["selection"])]) != norm(o["horse"]):
@@ -178,20 +185,24 @@ def send(a):
         body["start_time"] = c["startTime"]
         return None
     ledger_fn = a.orders.replace(".csv", "-ledger.csv"); new = not os.path.exists(ledger_fn)
-    with open(ledger_fn, "a", newline="") as fh:
+    with open(ledger_fn if a.send else os.devnull, "a", newline="") as fh:
         w = csv.writer(fh)
         if new: w.writerow(["label", "race", "number", "horse", "min_odds", "max_odds", "stake", "notification_ids", "message"])
         for lab, o, body in bets:
             prob = race_problem(o, body)
             if prob:
                 print(f"SKIP {lab}: {prob}"); w.writerow([lab, o["race"], o["number"], o["horse"], o["min_odds"], o.get("max_odds", ""), body["stake"], "", "SKIPPED: " + prob]); continue
+            if not a.send:
+                shown = dict(body, label=lab)
+                if not getattr(a, "best_price", False): shown.update(bookies=f"<{a.bookie}>", target_session=str(a.session))
+                print("DRY RUN, would send:", json.dumps(shown)); continue
             # exact label only: the docs do not say whether ?label= matches exactly or as part of a longer label
             # a cancelled notification keeps its label, so it does not count as already sent (15 Oct 2026: Horsham was
             # cancelled to re-price after the gear changes, and the re-send would otherwise have skipped every bet)
             if any(isinstance(n, dict) and n.get("label") == lab and not n.get("is_canceled")
                    for n in results(bm.get("/notification/", label=lab, page_size=100))):
                 print(f"SKIP {lab}: already on BetMatic"); continue
-            body.update(label=lab, bookies=bid, target_session=str(a.session))
+            body.update(label=lab) if getattr(a, "best_price", False) else body.update(label=lab, bookies=bid, target_session=str(a.session))
             code, resp = bm.post("/notification/create/", body)
             msg = resp.get("message", "") if isinstance(resp, dict) else str(resp)
             ids = str(resp.get("id", "")) if isinstance(resp, dict) else ""
@@ -199,7 +210,7 @@ def send(a):
             print(f"{'OK ' if ok else 'FAIL'} {lab} ${body['stake']} min {body['odds']} -> {code} {msg} {ids}")
             w.writerow([lab, o["race"], o["number"], o["horse"], o["min_odds"], o.get("max_odds", ""), body["stake"], ids, msg])
             time.sleep(0.2)
-    print("ledger:", ledger_fn)
+    print("ledger:", ledger_fn if a.send else "(dry run: nothing sent, no ledger written; add --send to send)")
 
 
 def cancel(a):
@@ -359,6 +370,7 @@ if __name__ == "__main__":
     s.add_argument("--session", required=True, help="the TAB session ID from 'check'"); s.add_argument("--bookie", default="TAB")
     s.add_argument("--attempts", type=int, default=60, help="placement retries a second apart if the first fails at the open (BetMatic's own default is 60)")
     s.add_argument("--now", action="store_true", help="place now on a market that is already up (a test bet), not as a Market Open bet")
+    s.add_argument("--best-price", action="store_true", help="with --now: High Odds First across every running session (the top bookie price)")
     s.add_argument("--allow-short", action="store_true", help="send even if the TAB balance is below the total stake")
     s.add_argument("--tag", default="", help="suffix for every label, for a resend after the first set already fired (e.g. b)")
     s.add_argument("--send", action="store_true")

@@ -27,9 +27,9 @@ on:
         description: 'cancel: only this saddlecloth number in that race'
         default: ''
       when:
-        description: "send: 'open' = fire at the market's open (normal); 'now' = place straight away on a market already up (test bets)"
+        description: "send: 'open' = fire at the market's open (normal); 'now' = place straight away on a market already up (test bets); 'best' = now, High Odds First at the top bookie price"
         type: choice
-        options: [open, now]
+        options: [open, now, best]
         default: 'open'
       dry_run:
         description: 'yes = print exactly what would be sent, send nothing'
@@ -78,7 +78,7 @@ jobs:
           SEND=""; [ "$DRY" = "yes" ] || SEND="--send"
           case "$A" in
             check)  python betmatic/betmatic_send.py check ;;
-            send)   NOW=""; [ "$WHEN" = "now" ] && NOW="--now"
+            send)   NOW=""; [ "$WHEN" = "now" ] && NOW="--now"; [ "$WHEN" = "best" ] && NOW="--now --best-price"
                     python betmatic/betmatic_send.py send "$FILE" --unit "$UNIT" --session "$SESSION" ${TAG:+--tag "$TAG"} $NOW $SEND ;;
             cancel) python betmatic/betmatic_send.py cancel "$FILE" ${RACE:+--race "$RACE"} ${NUM:+--number "$NUM"} $SEND ;;
             status) python betmatic/betmatic_send.py status "$FILE" ;;
