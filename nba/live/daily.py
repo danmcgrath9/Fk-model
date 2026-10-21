@@ -12,7 +12,7 @@ does it (Out/Doubtful missing, Questionable half). Spread of outcomes: live/vari
 fitted on 2023/24 out-of-sample misses (probability.py).
 
 Writes nba/live/projections/<date>_<HHMM>ET.csv, and scores earlier days against what
-happened in nba/live/scorecard.csv. Paper only: nothing is bet.
+happened in nba/live/scorecard.csv. Paper only: nothing is bet. (Needs lightgbm with scikit-learn, nbainjuries with Java.)
 
     python nba/live/daily.py            # today, US Eastern
     python nba/live/daily.py 2026-10-22
