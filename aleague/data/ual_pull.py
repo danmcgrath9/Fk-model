@@ -36,6 +36,9 @@ class Getter:
     def __init__(self):
         self.s = requests.Session()
         self.s.headers['User-Agent'] = UA
+        # the site closes idle kept-alive connections, so a reused one fails on the next request; a fresh
+        # connection each time avoids a failed request and a retry wait per page
+        self.s.headers['Connection'] = 'close'
         self.t = 0.0
         self.n = 0
 
@@ -46,7 +49,7 @@ class Getter:
             try:
                 r = self.s.get(BASE + path, timeout=60)
             except requests.RequestException as e:
-                print(f'  {path}: {e}; retrying', flush=True); time.sleep(30 * (attempt + 1)); continue
+                print(f'  {path}: {e}; retrying', flush=True); time.sleep(5 * (attempt + 1)); continue
             self.t = time.time()
             self.n += 1
             r.elapsed_s = self.t - t0
