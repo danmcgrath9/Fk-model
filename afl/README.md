@@ -65,6 +65,11 @@ where the named 22 moved our margin by 6+ points, the named prediction missed by
 24.9), so the lineup-strength measure (recent SuperCoach) is not good enough. Next: AFL Player Ratings
 from Fryzigg, a proper expected-22 at the open, and the test that matters, against real opening lines.
 
+## What the props models use
+Form, opponent (including what the opponent concedes to each position), role, teammates in and out, game context,
+time on ground, age and rest; weather, travel and head-to-head record where they earned a place. Each part's worth and
+what is still missing: `docs/INPUTS.md`.
+
 ## Data sources and their terms (checked 21 Oct 2026)
 
 | Source | What we take | How | Terms |
