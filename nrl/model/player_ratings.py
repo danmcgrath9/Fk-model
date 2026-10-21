@@ -9,6 +9,8 @@ ratings, per team-game:
   strength_named  the sum over the 17 who took the field in this game
   strength_open   the sum over the 17 who took the field in the team's previous game (knowable when
                   books open, before Tuesday's lists)
+  strength_tuesday  the sum over Tuesday's named 1-17 (nrl/teamlists/parse.py), where a list was parsed;
+                  a named player we could not match counts as average
 
 Usage: python -m nrl.model.player_ratings nrl/cache  -> nrl/cache/player_strength.parquet
 """
@@ -53,6 +55,13 @@ def main(cache):
     pm = pm.assign(w=np.where(num <= 13, 1.0, BENCH_WEIGHT))
     col = {p: j for j, p in enumerate(players)}
     by_match = {k: v for k, v in pm.groupby('match_id')}
+    try:
+        nt = pd.read_parquet(f'{cache}/named_teams.parquet')
+        nt = nt[(nt.kind == 'named') & (nt.jersey <= 17)]
+        tuesday = {k: list(zip(v.player_id, np.where(v.jersey <= 13, 1.0, BENCH_WEIGHT)))
+                   for k, v in nt.groupby(['match_id', 'team'])}
+    except FileNotFoundError:
+        tuesday = {}
     out = []
     prev_17 = {}
     order = m[m.season >= FIRST_SEASON - 3]
@@ -74,7 +83,10 @@ def main(cache):
                     named = float(sum(rating[col[p]] * w for p, w in zip(tg.player_id, tg.w)))
                     prev = prev_17.get(team)
                     opened = float(sum(rating[col[p]] * w for p, w in prev)) if prev else np.nan
-                    out.append(dict(match_id=mid, team=team, strength_named=named, strength_open=opened))
+                    tl = tuesday.get((mid, team))
+                    tues = float(sum(rating[col[p]] * w for p, w in tl if pd.notna(p) and p in col)) if tl else np.nan
+                    out.append(dict(match_id=mid, team=team, strength_named=named, strength_open=opened,
+                                    strength_tuesday=tues))
                 prev_17[team] = list(zip(tg.player_id, tg.w))
     df = pd.DataFrame(out)
     df.to_parquet(f'{cache}/player_strength.parquet', index=False)

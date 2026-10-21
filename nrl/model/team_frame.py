@@ -167,9 +167,9 @@ def build(m, pm):
     try:
         ps = pd.read_parquet(f'{CACHE}/player_strength.parquet')
         tg = tg.merge(ps, on=['match_id', 'team'], how='left')
-        o = ps.rename(columns={'team': 'opp', 'strength_named': 'opp_strength_named', 'strength_open': 'opp_strength_open'})
+        o = ps.rename(columns={'team': 'opp', **{c: 'opp_' + c for c in ps.columns if c.startswith('strength_')}})
         tg = tg.merge(o, on=['match_id', 'opp'], how='left')
-        for t in ('named', 'open'):
+        for t in [c[len('strength_'):] for c in ps.columns if c.startswith('strength_')]:
             tg[f'strength_diff_{t}'] = tg[f'strength_{t}'] - tg[f'opp_strength_{t}']
     except FileNotFoundError:
         print('no player_strength.parquet yet: run nrl.model.player_ratings first')
