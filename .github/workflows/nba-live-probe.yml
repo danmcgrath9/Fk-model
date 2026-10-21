@@ -1,0 +1,38 @@
+name: nba live probe
+
+# NBA only. One-off: three requests to the NBA's public live-data files, trimmed samples
+# committed to nba/live/probe/ so the daily pipeline can be built against the real format.
+
+on:
+  push:
+    branches: [claude/nba-props]
+    paths: ['nba/live/probe.py']
+  workflow_dispatch:
+
+concurrency:
+  group: nba-live-probe
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python nba/live/probe.py
+      - name: Commit
+        if: always()
+        run: |
+          git config user.name "nba live probe"
+          git config user.email "actions@users.noreply.github.com"
+          git add nba/live/probe || true
+          git diff --cached --quiet && { echo "nothing new"; exit 0; }
+          git commit -m "NBA: live-data format samples (workflow run ${{ github.run_id }})"
+          for i in 1 2 3; do git pull --rebase -q origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0; sleep 5; done
+          exit 1
