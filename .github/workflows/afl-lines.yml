@@ -1,16 +1,14 @@
 name: afl lines
 
-# AFL betting lines from The Odds API (afl/README.md). Probe first: a capped look at what the archive
-# holds, run once. The raw responses go to the afl-history release; PROBE.md is printed to the log and
-# the run page. Separate from every fk-* and nba-* workflow: its own concurrency group, no Form King
-# key, no BetMatic. The key lives only in the ODDS_API_KEY secret.
+# AFL betting lines from The Odds API (afl/README.md). Two jobs, each spends credits at most once:
+#   probe  a capped look at what the archive holds (afl/lines/probe.py), once ever
+#   pull   the historical lines named in afl/lines/PULL.json, only when it says enabled and its run_id is new
+# Every response bought is kept on the afl-history release (lines_raw_*.tar.gz) and downloaded before a pull, so no call
+# is ever paid for twice. Separate from every fk-* and nba-* workflow: its own concurrency group, no Form King key, no
+# BetMatic. The key lives only in the ODDS_API_KEY secret.
 
 on:
   workflow_dispatch:
-    inputs:
-      max_credits:
-        description: 'stop before spending more than this many credits'
-        default: '300'
   push:
     branches: [afl-props]
     paths:
@@ -25,31 +23,60 @@ permissions:
   contents: write
 
 jobs:
-  probe:
+  lines:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 300
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GH_REPO: ${{ github.repository }}
       ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-      MAX_CREDITS: ${{ github.event.inputs.max_credits || '300' }}
       PYTHONUNBUFFERED: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install requests
+      - run: pip install -r afl/requirements.txt requests
 
-      - name: Run the probe once
+      - name: Probe (once ever)
+        env:
+          MAX_CREDITS: '300'
         run: |
-          # a re-push must not spend again: the probe's results on the release mean it has run
           if gh release view afl-history --json assets --jq '.assets[].name' | grep -qx 'odds_probe_v1.tar.gz'; then
-            echo "probe v1 already on the release; not spending credits again" | tee -a "$GITHUB_STEP_SUMMARY"
-            exit 0
+            echo "probe already on the release; not spending again" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0
           fi
-          [ -n "$ODDS_API_KEY" ] || { echo "ODDS_API_KEY secret is not set"; exit 1; }
+          if [ -z "$ODDS_API_KEY" ]; then echo "ODDS_API_KEY secret is not set; nothing spent" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; fi
           set -o pipefail
           python afl/lines/probe.py
           tar czf odds_probe_v1.tar.gz -C afl/cache odds_probe
           gh release upload afl-history odds_probe_v1.tar.gz --clobber
+
+      - name: Pull (only when PULL.json is enabled and its run_id is new)
+        run: |
+          cfg=afl/lines/PULL.json
+          enabled=$(python -c "import json;print(json.load(open('$cfg'))['enabled'])")
+          run_id=$(python -c "import json;print(json.load(open('$cfg'))['run_id'])")
+          [ "$enabled" = "True" ] || { echo "PULL.json not enabled; nothing pulled" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; }
+          [ -n "$ODDS_API_KEY" ] || { echo "ODDS_API_KEY secret is not set"; exit 1; }
+          if gh release view afl-history --json assets --jq '.assets[].name' | grep -qx "lines_raw_${run_id}.tar.gz"; then
+            echo "pull $run_id already on the release; not spending again" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0
+          fi
+          # what earlier pulls bought, so the cache skips it
+          mkdir -p afl/cache/lines
+          gh release download afl-history --dir /tmp/lines --pattern 'lines_raw_*.tar.gz' 2>/dev/null || true
+          for t in /tmp/lines/*.tar.gz; do [ -e "$t" ] && tar xzf "$t" -C afl/cache; done
+          gh release download afl-history --dir afl/cache --pattern 'afltables.parquet' --pattern 'footywire.parquet' --clobber
+          python -m afl.model.frame afl/cache
+          args=$(python - <<'PY'
+          import json
+          c = json.load(open('afl/lines/PULL.json'))
+          a = [f"--seasons {c['seasons']}", f"--max-credits {c['max_credits']}", f"--offsets {c['offsets']}", f"--markets {c['markets']}"]
+          if not c.get('team', True): a.append('--no-team')
+          print(' '.join(a))
+          PY
+          )
+          set -o pipefail
+          # stop the pull before the job's time limit kills it mid-way; whatever was bought is uploaded below either way
+          timeout 270m python -m afl.lines.odds_api $args | tee -a "$GITHUB_STEP_SUMMARY" || echo "pull stopped (cap or time); keeping what was bought"
+          tar czf "lines_raw_${run_id}.tar.gz" -C afl/cache lines
+          for i in 1 2 3; do gh release upload afl-history "lines_raw_${run_id}.tar.gz" --clobber && break; sleep $((i * 10)); done

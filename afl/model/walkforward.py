@@ -1,0 +1,50 @@
+"""Out-of-sample projections for every prop, season by season, for testing against real lines.
+
+For each season S from 2023: fit on 2013..S-2, early-stop and fit the spread on S-1, predict S. So every projection was
+made by a model that never saw that season, which is what a backtest against 2023-2026 lines needs. Stats: disposals,
+marks, tackles, goals. Output: afl/cache/walkforward.parquet, one row per player-game with mu (expected count) and a
+(negative binomial spread) per stat.
+
+Usage: python -m afl.model.walkforward afl/cache
+"""
+import sys
+import warnings
+
+import lightgbm as lgb
+import numpy as np
+import pandas as pd
+
+from afl.model import props as P
+from afl.model.disposals import PARAMS, fit_dispersion
+from afl.model.frame import FEATURES
+
+warnings.filterwarnings('ignore')
+STATS = {'D': 'disposals', 'M': 'marks', 'T': 'tackles', 'G': 'goals'}
+SEASONS = (2023, 2024, 2025, 2026)
+
+
+def run(cache):
+    base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
+    keys = ['game', 'season', 'Round', 'date', 'team', 'opp', 'player_id', 'Player']
+    out = None
+    for stat in STATS:
+        m, sfeats = P.stat_features(base, stat)
+        feats = list(dict.fromkeys(FEATURES + sfeats + ['exp_score']))
+        m = P.eligible(m)
+        m = m[m[f'{stat}_l10'].notna()]
+        parts = []
+        for S in SEASONS:
+            tr, tu, te = m[m.season.between(2013, S - 2)], m[m.season == S - 1], m[m.season == S]
+            mdl = lgb.LGBMRegressor(objective='poisson', **PARAMS).fit(
+                tr[feats], tr[stat], eval_set=[(tu[feats], tu[stat])], callbacks=[lgb.early_stopping(150, verbose=False)])
+            a = max(fit_dispersion(tu[stat].to_numpy(), mdl.predict(tu[feats])), 1e-3)
+            parts.append(te[keys + [stat]].assign(**{f'mu_{stat}': mdl.predict(te[feats]), f'a_{stat}': a}))
+            print(f'{STATS[stat]} {S}: {len(te):,} player-games, spread {a:.3f}', flush=True)
+        p = pd.concat(parts)
+        out = p if out is None else out.merge(p.drop(columns=['Player']), on=[k for k in keys if k != 'Player'], how='outer')
+    out.to_parquet(f'{cache}/walkforward.parquet', index=False)
+    return out
+
+
+if __name__ == '__main__':
+    run(sys.argv[1] if len(sys.argv) > 1 else 'afl/cache')
