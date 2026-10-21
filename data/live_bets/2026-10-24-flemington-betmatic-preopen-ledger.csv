@@ -1,0 +1,87 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-24-flemington-r1-n11-s1,1,11,Bred 'em All,6.21,8.00,94,13965732,Notification has been scheduled.
+fk-2026-10-24-flemington-r1-n4-s1,1,4,Ice Kool,2.67,3.99,102,13965733,Notification has been scheduled.
+fk-2026-10-24-flemington-r1-n4-s2,1,4,Ice Kool,3.34,3.99,148,13965734,Notification has been scheduled.
+fk-2026-10-24-flemington-r1-n4-s3,1,4,Ice Kool,4.00,6.80,250,13965735,Notification has been scheduled.
+fk-2026-10-24-flemington-r1-n1-s1,1,1,Spywire,12.38,23.57,21,13965736,Notification has been scheduled.
+fk-2026-10-24-flemington-r1-n1-s2,1,1,Spywire,15.48,23.57,37,13965737,Notification has been scheduled.
+fk-2026-10-24-flemington-r2-n4-s1,2,4,Barracks,6.22,12.87,48,13965738,Notification has been scheduled.
+fk-2026-10-24-flemington-r2-n4-s2,2,4,Barracks,7.77,12.87,81,13965739,Notification has been scheduled.
+fk-2026-10-24-flemington-r2-n1-s1,2,1,Big Wigs,19.95,40.63,14,13965740,Notification has been scheduled.
+fk-2026-10-24-flemington-r2-n1-s2,2,1,Big Wigs,24.94,40.63,24,13965741,Notification has been scheduled.
+fk-2026-10-24-flemington-r2-n2-s1,2,2,Buggsy,12.80,26.48,24,13965742,Notification has been scheduled.
+fk-2026-10-24-flemington-r2-n2-s2,2,2,Buggsy,16.00,26.48,42,13965743,Notification has been scheduled.
+fk-2026-10-24-flemington-r2-n6-s1,2,6,Half Pipe,15.14,31.32,19,13965744,Notification has been scheduled.
+fk-2026-10-24-flemington-r2-n6-s2,2,6,Half Pipe,18.93,31.32,34,13965745,Notification has been scheduled.
+fk-2026-10-24-flemington-r2-n8-s1,2,8,Peyton,12.87,25.90,23,13965746,Notification has been scheduled.
+fk-2026-10-24-flemington-r2-n8-s2,2,8,Peyton,16.09,25.90,38,13965747,Notification has been scheduled.
+fk-2026-10-24-flemington-r2-n9-s1,2,9,Turbo Saint,17.84,36.90,16,13965748,Notification has been scheduled.
+fk-2026-10-24-flemington-r2-n9-s2,2,9,Turbo Saint,22.30,36.90,28,13965749,Notification has been scheduled.
+fk-2026-10-24-flemington-r3-n3-s1,3,3,Hierarchy,13.16,26.94,21,13965750,Notification has been scheduled.
+fk-2026-10-24-flemington-r3-n3-s2,3,3,Hierarchy,16.45,26.94,38,13965751,Notification has been scheduled.
+fk-2026-10-24-flemington-r3-n11-s1,3,11,Joely,7.80,16.39,39,13965752,Notification has been scheduled.
+fk-2026-10-24-flemington-r3-n11-s2,3,11,Joely,9.75,16.39,66,13965753,Notification has been scheduled.
+fk-2026-10-24-flemington-r3-n10-s1,3,10,Salann,19.07,40.66,16,13965754,Notification has been scheduled.
+fk-2026-10-24-flemington-r3-n10-s2,3,10,Salann,23.84,40.66,26,13965756,Notification has been scheduled.
+fk-2026-10-24-flemington-r3-n2-s1,3,2,True Rebel,3.32,3.99,93,13965757,Notification has been scheduled.
+fk-2026-10-24-flemington-r3-n2-s2,3,2,True Rebel,4.00,7.63,114,13965758,Notification has been scheduled.
+fk-2026-10-24-flemington-r3-n2-s3,3,2,True Rebel,4.30,7.63,136,13965759,Notification has been scheduled.
+fk-2026-10-24-flemington-r3-n5-s1,3,5,Written Empire,19.46,36.32,6,13965760,Notification has been scheduled.
+fk-2026-10-24-flemington-r3-n5-s2,3,5,Written Empire,24.33,36.32,32,13965761,Notification has been scheduled.
+fk-2026-10-24-flemington-r4-n3-s1,4,3,Angels Fury,7.69,14.78,33,13965762,Notification has been scheduled.
+fk-2026-10-24-flemington-r4-n3-s2,4,3,Angels Fury,9.61,14.78,59,13965763,Notification has been scheduled.
+fk-2026-10-24-flemington-r4-n11-s1,4,11,Aroused,6.46,8.00,24,13965764,Notification has been scheduled.
+fk-2026-10-24-flemington-r4-n1-s1,4,1,Chayan,7.84,16.65,35,13965765,Notification has been scheduled.
+fk-2026-10-24-flemington-r4-n1-s2,4,1,Chayan,9.80,16.65,62,13965766,Notification has been scheduled.
+fk-2026-10-24-flemington-r5-n8-s1,5,8,Extragalactic,6.09,12.55,22,13965767,Notification has been scheduled.
+fk-2026-10-24-flemington-r5-n8-s2,5,8,Extragalactic,7.61,12.55,38,13965768,Notification has been scheduled.
+fk-2026-10-24-flemington-r5-n8-s3,5,8,Extragalactic,9.13,12.55,60,13965769,Notification has been scheduled.
+fk-2026-10-24-flemington-r5-n2-s1,5,2,Jigsaw,3.93,3.99,37,13965770,Notification has been scheduled.
+fk-2026-10-24-flemington-r5-n2-s2,5,2,Jigsaw,4.21,8.00,47,13965771,Notification has been scheduled.
+fk-2026-10-24-flemington-r5-n2-s3,5,2,Jigsaw,5.26,8.00,191,13965772,Notification has been scheduled.
+fk-2026-10-24-flemington-r5-n1-s1,5,1,Mazu,19.60,40.36,7,13965773,Notification has been scheduled.
+fk-2026-10-24-flemington-r5-n1-s2,5,1,Mazu,24.50,40.36,27,13965774,Notification has been scheduled.
+fk-2026-10-24-flemington-r5-n3-s1,5,3,Rey Magnerio,22.58,44.31,7,13965775,Notification has been scheduled.
+fk-2026-10-24-flemington-r5-n3-s2,5,3,Rey Magnerio,28.22,44.31,28,13965776,Notification has been scheduled.
+fk-2026-10-24-flemington-r5-n5-s1,5,5,Smooth Chino,11.68,24.03,20,13965777,Notification has been scheduled.
+fk-2026-10-24-flemington-r5-n5-s2,5,5,Smooth Chino,14.60,24.03,6,13965778,Notification has been scheduled.
+fk-2026-10-24-flemington-r5-n5-s3,5,5,Smooth Chino,17.52,24.03,26,13965779,Notification has been scheduled.
+fk-2026-10-24-flemington-r6-n7-s1,6,7,Another Wil,20.91,42.22,24,13965780,Notification has been scheduled.
+fk-2026-10-24-flemington-r6-n7-s2,6,7,Another Wil,26.14,42.22,11,13965781,Notification has been scheduled.
+fk-2026-10-24-flemington-r6-n2-s1,6,2,Evaporate,18.38,31.62,38,13965782,Notification has been scheduled.
+fk-2026-10-24-flemington-r6-n2-s2,6,2,Evaporate,22.97,31.62,18,13965783,Notification has been scheduled.
+fk-2026-10-24-flemington-r6-n8-s1,6,8,Feroce,16.98,34.29,34,13965784,Notification has been scheduled.
+fk-2026-10-24-flemington-r6-n8-s2,6,8,Feroce,21.23,34.29,14,13965786,Notification has been scheduled.
+fk-2026-10-24-flemington-r6-n12-s1,6,12,Surfin' Bird,3.70,3.99,84,13965787,Notification has been scheduled.
+fk-2026-10-24-flemington-r6-n12-s2,6,12,Surfin' Bird,4.00,8.25,180,13965788,Notification has been scheduled.
+fk-2026-10-24-flemington-r6-n12-s3,6,12,Surfin' Bird,4.84,8.25,69,13965789,Notification has been scheduled.
+fk-2026-10-24-flemington-r6-n4-s1,6,4,Welcometotheshow,23.15,38.30,13,13965792,Notification has been scheduled.
+fk-2026-10-24-flemington-r6-n4-s2,6,4,Welcometotheshow,28.94,38.30,26,13965795,Notification has been scheduled.
+fk-2026-10-24-flemington-r7-n11-s1,7,11,King Pedro,24.50,37.04,7,13965798,Notification has been sent.
+fk-2026-10-24-flemington-r7-n11-s2,7,11,King Pedro,30.62,37.04,34,13965801,Notification has been sent.
+fk-2026-10-24-flemington-r7-n3-s1,7,3,Pinhole,19.83,33.12,16,13965804,Notification has been sent.
+fk-2026-10-24-flemington-r7-n3-s2,7,3,Pinhole,24.79,33.12,18,13965807,Notification has been sent.
+fk-2026-10-24-flemington-r7-n15-s1,7,15,Point Of Law,22.49,34.00,6,13965811,Notification has been sent.
+fk-2026-10-24-flemington-r7-n15-s2,7,15,Point Of Law,28.11,34.00,32,13965814,Notification has been sent.
+fk-2026-10-24-flemington-r7-n6-s1,7,6,So You Are,24.81,44.99,4,13965817,Notification has been sent.
+fk-2026-10-24-flemington-r7-n6-s2,7,6,So You Are,31.01,44.99,23,13965820,Notification has been sent.
+fk-2026-10-24-flemington-r8-n10-s1,8,10,Aeliana,11.92,22.04,55,13965823,Notification has been sent.
+fk-2026-10-24-flemington-r8-n10-s2,8,10,Aeliana,14.90,22.04,1,13965825,Notification has been sent.
+fk-2026-10-24-flemington-r8-n12-s1,8,12,Blind Raise,16.31,30.13,37,13965827,Notification has been sent.
+fk-2026-10-24-flemington-r8-n12-s2,8,12,Blind Raise,20.39,30.13,1,13965828,Notification has been sent.
+fk-2026-10-24-flemington-r8-n1-s1,8,1,Ceolwulf,25.35,42.42,12,13965829,Notification has been sent.
+fk-2026-10-24-flemington-r8-n1-s2,8,1,Ceolwulf,31.69,42.42,25,13965831,Notification has been sent.
+fk-2026-10-24-flemington-r8-n3-s1,8,3,Sir Delius,9.02,18.44,58,13965832,Notification has been sent.
+fk-2026-10-24-flemington-r8-n3-s2,8,3,Sir Delius,11.27,18.44,25,13965833,Notification has been sent.
+fk-2026-10-24-flemington-r8-n11-s1,8,11,Warwoven,9.28,17.79,63,13965834,Notification has been sent.
+fk-2026-10-24-flemington-r8-n11-s2,8,11,Warwoven,11.60,17.79,5,13965835,Notification has been sent.
+fk-2026-10-24-flemington-r9-n14-s1,9,14,Classic Gem,10.22,22.00,30,13965836,Notification has been scheduled.
+fk-2026-10-24-flemington-r9-n14-s2,9,14,Classic Gem,12.78,22.00,35,13965837,Notification has been scheduled.
+fk-2026-10-24-flemington-r9-n9-s1,9,9,Perfect Ten,12.16,22.45,24,13965838,Notification has been scheduled.
+fk-2026-10-24-flemington-r9-n9-s2,9,9,Perfect Ten,15.20,22.45,44,13965839,Notification has been scheduled.
+fk-2026-10-24-flemington-r9-n3-s1,9,3,Shockletz,12.71,24.30,12,13965840,Notification has been scheduled.
+fk-2026-10-24-flemington-r9-n3-s2,9,3,Shockletz,15.89,24.30,54,13965841,Notification has been scheduled.
+fk-2026-10-24-flemington-r9-n4-s1,9,4,Sunset Park,19.48,36.28,14,13965844,Notification has been scheduled.
+fk-2026-10-24-flemington-r9-n4-s2,9,4,Sunset Park,24.35,36.28,29,13965847,Notification has been scheduled.
+fk-2026-10-24-flemington-r9-n1-s1,9,1,Too Darn Discreet,14.43,28.85,10,13965850,Notification has been scheduled.
+fk-2026-10-24-flemington-r9-n1-s2,9,1,Too Darn Discreet,18.04,28.85,47,13965853,Notification has been scheduled.
