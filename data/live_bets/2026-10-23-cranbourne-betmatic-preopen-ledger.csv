@@ -1,0 +1,94 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-23-cranbourne-r1-n1-s1,1,1,Angels Fury,3.12,3.99,44,13965398,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n1-s2,1,1,Angels Fury,3.90,3.99,20,13965400,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n1-s3,1,1,Angels Fury,4.00,6.67,53,13965402,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n1-s4,1,1,Angels Fury,4.12,6.67,78,13965404,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n1-s5,1,1,Angels Fury,4.95,6.67,119,13965406,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n6-s1,1,6,Fovea,12.28,26.11,10,13965408,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n6-s2,1,6,Fovea,15.35,26.11,18,13965409,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n6-s3,1,6,Fovea,18.42,26.11,28,13965411,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n7-s1,1,7,Handee,17.24,41.36,9,13965413,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n7-s2,1,7,Handee,21.55,41.36,38,13965415,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n2-s1,1,2,Lady Catalina,9.04,22.87,16,13965417,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n2-s2,1,2,Lady Catalina,11.30,22.87,20,13965419,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n2-s3,1,2,Lady Catalina,13.56,22.87,36,13965421,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n3-s1,1,3,Myhro's Ruler,17.59,37.67,7,13965423,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n3-s2,1,3,Myhro's Ruler,21.99,37.67,14,13965425,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r1-n3-s3,1,3,Myhro's Ruler,26.38,37.67,21,13965427,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n4-s1,2,4,Covert Thinking,14.41,28.20,20,13965429,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n4-s2,2,4,Covert Thinking,18.01,28.20,26,13965431,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n5-s1,2,5,Eye For An Eye,16.33,39.67,36,13965432,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n5-s2,2,5,Eye For An Eye,20.41,39.67,11,13965434,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n10-s1,2,10,Killenaule,8.84,16.34,70,13965436,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n10-s2,2,10,Killenaule,11.05,16.34,2,13965438,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n6-s1,2,6,Nothingelsematters,12.25,27.19,44,13965440,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n6-s2,2,6,Nothingelsematters,15.31,27.19,20,13965442,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n7-s1,2,7,Pariah Pearl,8.78,18.27,68,13965444,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n7-s2,2,7,Pariah Pearl,10.97,18.27,24,13965446,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n12-s1,2,12,Sarapo,21.06,35.23,14,13965448,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n12-s2,2,12,Sarapo,26.32,35.23,27,13965450,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n11-s1,2,11,Superstock,12.84,31.18,49,13965452,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r2-n11-s2,2,11,Superstock,16.05,31.18,13,13965454,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r3-n10-s1,3,10,Bajaria,20.91,37.92,14,13965456,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r3-n10-s2,3,10,Bajaria,26.14,37.92,18,13965457,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r3-n4-s1,3,4,Escarpa,13.74,31.89,46,13965459,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r3-n4-s2,3,4,Escarpa,17.18,31.89,12,13965461,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r3-n5-s1,3,5,Karren,2.82,3.99,101,13965463,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r3-n5-s2,3,5,Karren,3.52,3.99,149,13965465,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r3-n5-s3,3,5,Karren,4.00,6.39,133,13965467,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r3-n5-s4,3,5,Karren,4.00,6.39,117,13965469,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r4-n7-s1,4,7,Cashout,2.51,3.99,56,13965471,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r4-n7-s2,4,7,Cashout,3.14,3.99,108,13965473,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r4-n7-s3,4,7,Cashout,3.76,3.99,85,13965475,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r4-n7-s4,4,7,Cashout,4.00,6.01,135,13965477,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r4-n7-s5,4,7,Cashout,4.00,6.01,115,13965478,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r4-n4-s1,4,4,Itazura,16.19,34.78,18,13965480,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r4-n4-s2,4,4,Itazura,20.24,34.78,28,13965482,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r4-n6-s1,4,6,Regal Tycoon,11.25,26.30,27,13965484,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r4-n6-s2,4,6,Regal Tycoon,14.06,26.30,38,13965486,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r4-n2-s1,4,2,Romantic Encounter,8.53,20.47,31,13965488,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r4-n2-s2,4,2,Romantic Encounter,10.66,20.47,57,13965490,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r5-n4-s1,5,4,Bossy Benita,4.97,11.54,27,13965492,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r5-n4-s2,5,4,Bossy Benita,6.21,11.54,125,13965494,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r5-n1-s1,5,1,Regal Zeus,10.90,22.43,13,13965496,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r5-n1-s2,5,1,Regal Zeus,13.62,22.43,53,13965498,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r5-n2-s1,5,2,Run Harry Run,6.40,13.18,23,13965499,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r5-n2-s2,5,2,Run Harry Run,8.00,13.18,88,13965500,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r5-n3-s1,5,3,Ten Commandments,5.17,10.75,64,13965501,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r5-n3-s2,5,3,Ten Commandments,6.46,10.75,90,13965502,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n2-s1,6,2,Castellar,14.80,37.22,18,13965503,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n2-s2,6,2,Castellar,18.50,37.22,36,13965504,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n7-s1,6,7,Headbanger,2.87,3.99,87,13965505,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n7-s2,6,7,Headbanger,3.59,3.99,163,13965506,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n7-s3,6,7,Headbanger,4.00,7.21,106,13965507,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n7-s4,6,7,Headbanger,4.00,7.21,144,13965508,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n5-s1,6,5,Magnabelle Royale,20.21,41.78,15,13965509,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n5-s2,6,5,Magnabelle Royale,25.26,41.78,24,13965510,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n3-s1,6,3,Saluted,15.70,32.96,21,13965511,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n3-s2,6,3,Saluted,19.62,32.96,29,13965512,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n4-s1,6,4,Speir,11.86,30.03,25,13965513,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n4-s2,6,4,Speir,14.82,30.03,41,13965514,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n1-s1,6,1,You're Two Vain,11.01,20.63,26,13965515,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r6-n1-s2,6,1,You're Two Vain,13.76,20.63,44,13965516,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r7-n2-s1,7,2,Charming Nic,15.41,32.08,42,13965517,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r7-n2-s2,7,2,Charming Nic,19.26,32.08,13,13965518,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r7-n1-s1,7,1,Esmahli,7.22,16.28,80,13965519,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r7-n1-s2,7,1,Esmahli,9.03,16.28,26,13965520,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r7-n3-s1,7,3,Imperial Award,15.51,33.30,38,13965521,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r7-n3-s2,7,3,Imperial Award,19.39,33.30,13,13965522,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r7-n8-s1,7,8,Insain Harry,16.11,36.31,36,13965523,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r7-n8-s2,7,8,Insain Harry,20.14,36.31,11,13965524,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r7-n12-s1,7,12,Ladhar,10.49,21.45,50,13965525,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r7-n12-s2,7,12,Ladhar,13.11,21.45,21,13965526,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r7-n9-s1,7,9,Onavuitton,7.68,18.66,74,13965527,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r7-n9-s2,7,9,Onavuitton,9.60,18.66,22,13965528,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r8-n4-s1,8,4,Flying Valley,21.99,44.12,23,13965529,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r8-n4-s2,8,4,Flying Valley,27.49,44.12,8,13965530,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r8-n2-s1,8,2,Makdane,20.00,33.44,31,13965531,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r8-n2-s2,8,2,Makdane,25.00,33.44,15,13965532,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r8-n3-s1,8,3,Nation's Call,15.14,30.92,34,13965533,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r8-n3-s2,8,3,Nation's Call,18.93,30.92,16,13965534,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r8-n10-s1,8,10,Stage 'n' Screen,15.18,34.22,38,13965535,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r8-n10-s2,8,10,Stage 'n' Screen,18.98,34.22,12,13965536,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r8-n7-s1,8,7,Two Wolves,8.30,16.95,71,13965537,Notification has been scheduled.
+fk-2026-10-23-cranbourne-r8-n7-s2,8,7,Two Wolves,10.38,16.95,22,13965538,Notification has been scheduled.
