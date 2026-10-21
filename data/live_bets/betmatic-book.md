@@ -237,3 +237,20 @@ Fri/Sat card ("Placed early. Win bets.", rated price shown under each):
 
 The order path works: BetMatic took a High Odds First bet with the bookmaker list left open (every bookmaker where we have a running session) and fired it at once. Nothing was matched because the only running session (TAB) had no money in it.
 
+
+## Ballarat Fri 23 Oct: paper (orders fired, TAB empty)
+BetMatic triggered all 48 $50 Market Open orders at 9:25:15am Thu 22 Oct when TAB opened the meeting. No bet records
+on any of them, the signature of an empty account: the TAB balance read $0.44 at 10:03am. Founder: "I didn't place any
+actual bets, so paper only". The cancel run was refused for every order ("already triggered"), so nothing is live.
+Paper at Form King's opening price (every step whose band holds the open), 5 bets, 16.59u:
+
+| Race | Horse | FK open | Ours | Stake (u) | Twitter (u, halved) | TAB 9:55am |
+|---|---|---|---|---|---|---|
+| R3 | Star Je Taime | $7.50 | $4.15 | 6.22 | 3.11 | $5.00 |
+| R3 | Wavelets | $14 | $8.60 | 0.83 | 0.42 | $12.00 |
+| R7 | Bel Lupa | $19 | $13.11 | 1.50 | 0.75 | $9.00 |
+| R8 | Jenni You Think | $8.75 | $4.37 | 5.92 | 2.96 | $4.60 |
+| R9 | Russian Duchess | $11 | $8.51 | 2.12 | 1.06 | $11.00 |
+
+Not value at the open: the other 18 runners opened under their minimum (Anglais $4.00 sat in the gap between its
+$3.97-$3.99 and $4.48 steps).
