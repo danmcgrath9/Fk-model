@@ -48,7 +48,8 @@ MIN_FEATURES = ['min_ew', 'min_ew_season', 'min_last', 'min_l3', 'min_sd', 'star
 
 
 def eligible(p):
-    return p[(p.played == 1) & (p.games_prior >= MIN_GAMES) & (p.min_ew >= MIN_MINUTES)].copy()
+    """Rows that count: played (a prop on a player who does not play is void), or still to be played."""
+    return p[((p.played == 1) | p.played.isna()) & (p.games_prior >= MIN_GAMES) & (p.min_ew >= MIN_MINUTES)].copy()
 
 
 def gbm(X, y, Xv, yv, loss):
@@ -180,14 +181,16 @@ def bets(d, thr):
     return b
 
 
-def project(p):
-    """Fit every model on FIT, choose on TUNE; return projections for every eligible row and the choices."""
+def project(p, fit_range=FIT, tune_season=TUNE):
+    """Fit every model on fit_range, choose on tune_season; return projections for every eligible row
+    (including games still to be played) and the choices."""
     e = eligible(p)
-    fit, tune = e[e.season.between(*FIT)], e[e.season == TUNE]
+    done = e.played == 1
+    fit, tune = e[done & e.season.between(*fit_range)], e[done & (e.season == tune_season)]
     # minutes model (shared by every market)
     mm = gbm(fit[MIN_FEATURES], fit['min'], tune[MIN_FEATURES], tune['min'], 'squared_error')
     e['min_hat'] = mm.predict(e[MIN_FEATURES])
-    fit, tune = e[e.season.between(*FIT)], e[e.season == TUNE]
+    fit, tune = e[done & e.season.between(*fit_range)], e[done & (e.season == tune_season)]
     info = {'min_mae_model': float(np.abs(tune.min_hat - tune['min']).mean()),
             'min_mae_ew': float(np.abs(tune.min_ew - tune['min']).mean())}
     feats = PLAYER_FEATURES + ['min_hat']
@@ -200,7 +203,7 @@ def project(p):
         dm = gbm(fit[feats], fit[mk], tune[feats], tune[mk], 'poisson')
         e[f'{mk}_direct'] = np.clip(dm.predict(e[feats]), 1e-3, None)
         e[f'{mk}_blend'] = (e[f'{mk}_struct'] + e[f'{mk}_direct']) / 2
-        tu = e[e.season == TUNE]
+        tu = e[done & (e.season == tune_season)]
         dev = {k: poisson_dev(tu[mk], tu[f'{mk}_{k}']) for k in ('struct', 'direct', 'blend')}
         pick = min(dev, key=dev.get)
         e[f'{mk}_hat'] = e[f'{mk}_{pick}']
@@ -214,7 +217,7 @@ def project(p):
 def run(cache, out_md):
     final = FINAL if os.environ.get('NBL_FINAL') == '1' else ()
     p = pd.read_parquet(f'{cache}/players.parquet')
-    e, choice, info = project(p)
+    e, choice, info = project(p[p.played.notna()])
     e['rnd'] = round_id(e)
     (e if final else e[~e.season.isin(FINAL)]).to_parquet(f'{cache}/props_projections.parquet', index=False)
     tune = e[e.season == TUNE]

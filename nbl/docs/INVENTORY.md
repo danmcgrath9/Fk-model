@@ -14,7 +14,7 @@ checks in this session), or from a workflow run named beside it. Nothing here is
 | Shot locations | same | x/y, made/missed, shooter | 2015-16, 2017-18 to 2024-25 (none for 2016-17, 2025-26, 2026-27) | same | free |
 | Line-ups / team news | none found | | | | |
 | Injury lists | none found | | | | |
-| Who dressed and didn't play | box scores: 0:00 rows | the 12-man game-day squad incl. players who sat | 2018-19 on (2015-16 to 2017-18 list only players who played) | | free |
+| Who dressed and didn't play | box scores: 0:00 rows | the 12-man game-day squad incl. players who sat | 2015-16 on (2015-16 to 2017-18 write the minutes as a bare "0") | | free |
 | Weather | not needed | the NBL is indoors | | | |
 | Travel, rest, back-to-backs | derived from results | venue and tip time per game | 1979 on | | free |
 | Betting odds | The Odds API | to be confirmed by the probe (see below) | | paid plan already held | from the 60,000-credit NBL budget |
@@ -55,7 +55,7 @@ prop result will carry wide intervals, and the backtest will say so.
    Townsville Crocodiles (gone after 2015-16). One mapping table.
 4. **2020-21 ran January to June** (COVID hub season) and 2021-22 started in December. The league went from 8 teams
    to 10 (9 in 2019-20 and 2020-21), and a team's regular season from 28 games to 36 (2020-21) and 33 (2025-26 on). Rolling form needs games, not dates.
-5. **Who sat is known from 2018-19 only.** From then on a player listed at 0:00 dressed and did not
+5. **Who sat is known from 2015-16.** A player listed at 0:00 (or "0" in 2015-16 to 2017-18) dressed and did not
    play; that is the closest thing to "named then out" we have.
 6. **nblR is one person's project.** His scheduled updater still points at the 2024-25 season; the
    2025-26 and 2026-27 files come from a separate folder (update-26) and are current to 18 Oct 2026.
@@ -92,6 +92,6 @@ backtest against**, only this season's openers recorded from now on, and team-ma
 
 - **History of announced teams** (named and then withdrawn): nothing found. The NBL does not publish
   pre-game squads in a form anyone archives. Fallback, as the brief allows: build from who actually
-  dressed (0:00 rows, 2018-19 on) and who played.
+  dressed (0:00 rows, 2015-16 on) and who played.
 - **Historical injury lists**: nothing found. Same fallback. Going forward, team news can be recorded
   as it is published.

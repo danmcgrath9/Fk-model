@@ -86,3 +86,24 @@ def test_squad_context_values_missing_players_at_their_usual_minutes():
     assert np.isnan(out.loc['g1', 'min_out'])
     assert out.loc['g2', 'min_out'] == 20.0      # c (usually 20 minutes) did not dress for g2
     assert out.loc['g2', 'min_in'] == 5.0
+
+
+def test_expected_squads_copy_the_teams_latest_squad_and_stay_empty():
+    tip1, tip2 = pd.Timestamp('2026-10-10', tz='UTC'), pd.Timestamp('2026-10-20', tz='UTC')
+    cols = ['game', 'season', 'tip', 'day', 'finals', 'round_no', 'venue', 'team', 'opp', 'is_home', 'key', 'player', 'pos',
+            'starter', 'min', 'played'] + frame.STATS + ['pra', 'eff']
+    rows = []
+    for gm, tip, keys in (('g0', tip1 - pd.Timedelta(days=5), ['a', 'z']), ('g1', tip1, ['a', 'b'])):
+        for k in keys:
+            r = {c: 1.0 for c in cols}
+            r.update(game=gm, season=2026, tip=tip, day=tip.tz_localize(None), venue='V', team='T', opp='O', key=k, player=k, pos='G')
+            rows.append(r)
+    players = pd.DataFrame(rows)[cols]
+    games = pd.DataFrame([dict(game='g2', season=2026, tip=tip2, day=tip2.tz_localize(None), finals=0.0, round_no=5.0, venue='V',
+                               home='O', away='T', scheduled=True)])
+    out = frame.expected_squads(players, games)
+    t = out[out.team == 'T']
+    assert sorted(t.key) == ['a', 'b']                     # the latest squad (g1), not g0's
+    assert t.is_home.eq(0.0).all() and t.opp.eq('O').all()
+    assert t[['min', 'played', 'pts']].isna().all().all()  # nothing about the game itself
+    assert out[out.team == 'O'].empty                      # a team with no past games gets no squad

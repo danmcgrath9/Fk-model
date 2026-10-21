@@ -2,14 +2,13 @@
 before the tip.
 
 Known before the tip means: each player's own past games, who dressed for this game (the game-day
-squad of 12 is announced before the tip; from 2018-19 the box score lists players who dressed and did
-not play at 0:00), the teams' past games, the venue, the date and the schedule. Nothing from the game
+squad of 12 is announced before the tip, and the box score lists players who dressed and did not play
+at 0:00, or "0" in 2015-16 to 2017-18), the teams' past games, the venue, the date and the schedule. Nothing from the game
 itself. Every rolling figure is built from earlier games only, and nbl/tests/test_frame.py changes a
 game's stats and checks that game's features do not move.
 
 Two versions of "who is playing":
-  named  the players who dressed for the game (before 2018-19 only those who played are listed,
-         so the named squad is slightly optimistic in 2015-16 to 2017-18)
+  named  the players who dressed for the game
   open   the players who dressed for the team's previous game: what was knowable when books open,
          with no team news
 
@@ -62,11 +61,16 @@ def km(a, b):
     return 12742 * math.asin(math.sqrt(h))
 
 
-def base_games(results):
-    """Completed games from 2015-16: one row per game, both source shapes (numbers before 2025-26, text ids after)."""
+def base_games(results, scheduled_until=None):
+    """Completed games from 2015-16: one row per game, both source shapes (numbers before 2025-26, text ids after).
+    With scheduled_until (a UTC timestamp), games still to be played up to then are kept too, with no score."""
     r = results.copy()
     r['season'] = r.season.map(season_year)
-    r = r[(r.season >= FIRST_SEASON) & (r.match_status == 'COMPLETE')].copy()
+    keep = r.match_status == 'COMPLETE'
+    if scheduled_until is not None:
+        tip = pd.to_datetime(r.match_time_utc, utc=True, format='mixed')
+        keep |= (r.match_status == 'SCHEDULED') & (tip <= scheduled_until)
+    r = r[(r.season >= FIRST_SEASON) & keep].copy()
     r['tip'] = pd.to_datetime(r.match_time_utc, utc=True, format='mixed')
     r['home_score'] = pd.to_numeric(r.home_score_string, errors='coerce')
     r['away_score'] = pd.to_numeric(r.away_score_string, errors='coerce')
@@ -76,8 +80,11 @@ def base_games(results):
     r['round_no'] = pd.to_numeric(rn, errors='coerce')
     r['ot'] = pd.to_numeric(r.extra_periods_used, errors='coerce').fillna(0)
     g = r.rename(columns={'match_id': 'game', 'home_team_name': 'home', 'away_team_name': 'away', 'venue_name': 'venue'})
-    g = g[['game', 'season', 'tip', 'round_number', 'round_no', 'finals', 'venue', 'home', 'away', 'home_score', 'away_score', 'ot']]
-    g = g[g.home_score.notna() & g.away_score.notna()]
+    g = g[['game', 'season', 'tip', 'round_number', 'round_no', 'finals', 'venue', 'home', 'away', 'home_score', 'away_score', 'ot',
+           'match_status']]
+    g['scheduled'] = g.home_score.isna() | g.away_score.isna()
+    if scheduled_until is None:
+        g = g[~g.scheduled]
     # Australian date of the game (for rest days and back-to-backs)
     g['day'] = (g.tip + pd.Timedelta(hours=10)).dt.normalize().dt.tz_localize(None)
     return g.sort_values(['tip', 'game']).reset_index(drop=True)
@@ -118,10 +125,33 @@ def base_players(box, games):
     # the NBL's own efficiency rating: what a player put up less his misses and turnovers
     b['eff'] = b.pts + b.reb + b.ast + b.stl + b.blk - (b.fga - b.fgm) - (b.fta - b.ftm) - b.tov
     b = b.drop_duplicates(['game', 'team', 'key'])
+    num_cols = ['starter', 'min', 'played'] + STATS + ['pra', 'eff']
+    b[num_cols] = b[num_cols].astype('float64')          # plain floats: NaN, never pandas' NA
     b = b.merge(games[['game', 'season', 'tip', 'day', 'finals', 'round_no', 'venue']], on='game')
     keep = ['game', 'season', 'tip', 'day', 'finals', 'round_no', 'venue', 'team', 'opp', 'is_home', 'key', 'player', 'pos',
             'starter', 'min', 'played'] + STATS + ['pra', 'eff']
     return b[keep].sort_values(['tip', 'game', 'team', 'key']).reset_index(drop=True)
+
+
+def expected_squads(players, games):
+    """Player rows for games still to be played: each team's squad from its latest completed game (the
+    open view, no team news). Stats are empty; features are built from history like any other row."""
+    upcoming = games[games.scheduled]
+    done = players.sort_values('tip')
+    rows = []
+    for g in upcoming.itertuples():
+        for team, opp, home in ((g.home, g.away, 1.0), (g.away, g.home, 0.0)):
+            past = done[(done.team == team) & (done.tip < g.tip)]
+            if past.empty:
+                continue
+            last = past[past.game == past.game.iloc[-1]]
+            for r in last.itertuples():
+                rows.append(dict(game=g.game, season=g.season, tip=g.tip, day=g.day, finals=g.finals, round_no=g.round_no,
+                                 venue=g.venue, team=team, opp=opp, is_home=home, key=r.key, player=r.player, pos=r.pos))
+    out = pd.DataFrame(rows)
+    for c in ['starter', 'min', 'played'] + STATS + ['pra', 'eff']:
+        out[c] = np.nan
+    return out[players.columns].astype({c: 'float64' for c in ['starter', 'min', 'played', 'is_home'] + STATS + ['pra', 'eff']})
 
 
 def team_box(players, games):
@@ -155,6 +185,8 @@ def elo(games):
         rh, ra = r.get(g.home, 0.0), r.get(g.away, 0.0)
         exp = rh - ra + ELO_HCA
         out.append(exp)
+        if pd.isna(g.home_score) or pd.isna(g.away_score):
+            continue                         # a game still to be played: priced, not learned from
         err = float(np.clip((g.home_score - g.away_score) - exp, -ELO_CAP, ELO_CAP))
         r[g.home] = rh + ELO_K * err
         r[g.away] = ra - ELO_K * err
@@ -216,7 +248,7 @@ def player_history(p, league_rate):
     """Each player's decayed minutes and per-minute rates from earlier games only, shrunk to the league.
 
     One pass in time order per player. Rates count played games; minutes count played games; the DNP
-    rate counts games he dressed for (2018-19 on). A season break keeps the history (decay continues).
+    rate counts games he dressed for. A season break keeps the history (decay continues).
     """
     p = p.sort_values(['tip', 'game']).copy()
     n = len(p)

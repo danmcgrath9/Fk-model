@@ -89,25 +89,28 @@ class Ridge:
         return dict(zip(['intercept'] + self.cols, np.round(self.b, 2)))
 
 
-def choose(dev, cols, target):
-    """Penalty with the lowest miss when each season from CV_FROM is predicted from the seasons before it."""
+def choose(dev, cols, target, cv_from=CV_FROM):
+    """Penalty with the lowest miss when each season from cv_from is predicted from the seasons before it."""
     best = None
+    last = int(dev.season.max())
     for lam in (0.1, 1, 10, 30, 100, 300, 1000):
         errs = []
-        for s in range(CV_FROM, FIT[1] + 1):
+        for s in range(cv_from, last + 1):
             tr, te = dev[dev.season < s], dev[dev.season == s]
-            errs.append(np.abs(Ridge(cols, lam).fit(tr, tr[target]).predict(te) - te[target]))
+            if len(te):
+                errs.append(np.abs(Ridge(cols, lam).fit(tr, tr[target]).predict(te) - te[target]))
         mae = np.concatenate(errs).mean()
         if best is None or mae < best[0]:
             best = (mae, lam)
     return Ridge(cols, best[1]).fit(dev, dev[target])
 
 
-def fitted(g):
-    """Fit every model on FIT with the penalty chosen by rolling-origin validation; return models and spreads."""
-    fit = g[g.season.between(*FIT)]
-    models = {f'm_{k}': choose(fit, c, 'home_margin') for k, c in MARGIN.items()}
-    models.update({f't_{k}': choose(fit, c, 'total') for k, c in TOTAL.items()})
+def fitted(g, fit_range=FIT, cv_from=CV_FROM):
+    """Fit every model on fit_range (completed games) with the penalty chosen by rolling-origin validation;
+    return models and spreads."""
+    fit = g[g.season.between(*fit_range) & g.home_margin.notna()]
+    models = {f'm_{k}': choose(fit, c, 'home_margin', cv_from) for k, c in MARGIN.items()}
+    models.update({f't_{k}': choose(fit, c, 'total', cv_from) for k, c in TOTAL.items()})
     sd_m = float(np.std(fit.home_margin - models['m_named'].predict(fit)))
     sd_t = float(np.std(fit.total - models['t_named'].predict(fit)))
     return models, sd_m, sd_t, fit

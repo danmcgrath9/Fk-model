@@ -8,7 +8,7 @@ Writes to <out>:
   results.parquet      every game since 1979: teams, scores, venue, round, type, tip time (UTC)
   box_team.parquet     one row per team per game, 2015-16 on
   box_player.parquet   one row per player per game, 2015-16 on (game-day squad, including 0:00 rows
-                       for players who dressed and did not play from 2018-19)
+                       for players who dressed and did not play)
   shots.parquet        shot locations, 2015-16 and 2017-18 to 2024-25
   pbp.parquet          play-by-play (read from pbp.csv.gz, which the workflow writes with R, because
                        the .rds holds types pyreadr cannot read)
