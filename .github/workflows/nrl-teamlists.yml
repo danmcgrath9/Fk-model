@@ -42,3 +42,32 @@ jobs:
           python nrl/teamlists/probe.py
           tar czf teamlists_probe_v2.tar.gz -C nrl/cache teamlists_probe
           gh release upload nrl-history teamlists_probe_v2.tar.gz --clobber
+
+  pull:
+    needs: probe
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      NRL_UA: fk-model NRL research ${{ vars.NRL_CONTACT }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+      - name: Pull each season once
+        run: |
+          held=$(gh release view nrl-history --json assets --jq '.assets[].name')
+          for y in $(seq 2009 2026); do
+            f=teamlists_$y.jsonl.gz
+            if echo "$held" | grep -qx "$f"; then echo "$f held"; continue; fi
+            python nrl/teamlists/pull.py nrl/teamlists/urls.txt $y | tee -a "$GITHUB_STEP_SUMMARY"
+            [ -s nrl/cache/teamlists/$y.jsonl.gz ] || continue
+            cp nrl/cache/teamlists/$y.jsonl.gz "$f"
+            ok=no
+            for i in 1 2 3; do gh release upload nrl-history "$f" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
+            [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }
+          done
