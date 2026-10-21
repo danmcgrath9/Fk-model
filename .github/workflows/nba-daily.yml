@@ -1,0 +1,61 @@
+name: nba daily projections
+
+# NBA only, paper only. Through each NBA game day, before the tip-offs still to come: download the season's published
+# box scores and schedule (SportsDataVerse, from ESPN), read the latest official injury report,
+# project every rotation player and commit nba/live/projections/<date>_<HHMM>ET.csv, plus a
+# scorecard of earlier days against what happened. Nothing is bet or sent anywhere.
+# Own concurrency group: never queues behind or blocks the fk-* racing workflows.
+# Scheduled runs only fire from the default branch; this file must be on main for the schedule.
+
+on:
+  schedule:                 # UTC; US Eastern is UTC-4 until 1 Nov, then UTC-5 (runs an hour earlier, local)
+    - cron: '30 15 * * *'   # late morning ET
+    - cron: '30 21 * * *'   # late afternoon ET
+    - cron: '30 22 * * *'   # ~30-60 min before the 7:00/7:30pm ET tip-offs
+    - cron: '30 23 * * *'   # before the 8pm ET tip-offs
+    - cron: '30 0 * * *'    # before the 9pm ET tip-offs
+    - cron: '30 1 * * *'    # before the 10pm ET tip-offs
+    - cron: '0 2 * * *'     # before the 10:30pm ET tip-offs
+  push:
+    branches: [claude/nba-props]
+    paths: ['nba/live/daily.py']
+  workflow_dispatch:
+
+concurrency:
+  group: nba-daily
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  project:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/nba-props
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install nbainjuries==1.1.1 lightgbm scikit-learn pyarrow scipy
+      - name: Project today's games
+        run: python nba/live/daily.py
+      - name: Commit
+        if: always()
+        run: |
+          git config user.name "nba daily"
+          git config user.email "actions@users.noreply.github.com"
+          git add nba/live/projections || true
+          git add nba/live/scorecard.csv 2>/dev/null || true
+          git diff --cached --quiet && { echo "nothing new"; exit 0; }
+          git commit -m "NBA: paper projections $(TZ=America/New_York date '+%Y-%m-%d %H:%M') ET (workflow run ${{ github.run_id }})"
+          for i in 1 2 3; do git pull --rebase -q origin claude/nba-props && git push -q origin HEAD:claude/nba-props && exit 0; sleep 5; done
+          exit 1
