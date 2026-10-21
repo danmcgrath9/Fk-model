@@ -53,13 +53,13 @@ little. That is honest: most of the signal is form, read better.
 |---|---|---|---|---|
 | 2024, bits per game (rank) | 0.147 (4th) | 0.139 (7th) | 0.155 (2nd) | 0.134 (12th) |
 | 2025, bits per game (rank) | 0.229 (7th) | 0.224 (9th) | 0.232 (4th) | 0.239 (1st) |
+| 2026, bits per game (rank) | 0.232 (15th) | 0.240 (7th) | 0.237 (11th) | 0.246 (3rd) |
 
 Bits: Squiggle's score for a win probability (higher is better). Competitive with the public models,
-level with the market over two seasons, not better than Wheelo. Team news does not help yet: in games
+roughly level with Wheelo over three seasons, behind the market in two of them. Team news does not help yet: in games
 where the named 22 moved our margin by 6+ points, the named prediction missed by more (25.8 against
 24.9), so the lineup-strength measure (recent SuperCoach) is not good enough. Next: AFL Player Ratings
 from Fryzigg, a proper expected-22 at the open, and the test that matters, against real opening lines.
-Squiggle's 2026 tips file did not reach the release (re-pull pending), so 2026 has no comparison yet.
 
 ## Data sources and their terms (checked 21 Oct 2026)
 

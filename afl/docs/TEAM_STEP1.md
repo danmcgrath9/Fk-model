@@ -82,9 +82,39 @@ Win chance = normal around the predicted margin, spread 34.2 points (fitted on t
 
 | rank | model | games | tips correct | margin miss (pts) | bits per game |
 |---|---|---|---|---|---|
-| 1 | **ours, at the open (no team news)** | 218 | 71.6% | 25.0 | 0.240 |
-| 2 | results-only rating | 218 | 70.2% | 25.7 | 0.234 |
-| 3 | **ours, teams named** | 218 | 68.8% | 25.4 | 0.232 |
+| 1 | Don't Blame the Data | 218 | 71.1% | 25.4 | 0.253 |
+| 2 | s10 | 218 | 72.9% | 24.9 | 0.249 |
+| 3 | **Punters** | 218 | 73.9% | 25.0 | 0.246 |
+| 4 | Matter of Stats | 218 | 70.6% | 25.5 | 0.243 |
+| 5 | AFLalytics | 218 | 71.6% | 24.8 | 0.242 |
+| 6 | The Wooden Finger | 218 | 71.6% | 26.1 | 0.240 |
+| 7 | **ours, at the open (no team news)** | 218 | 71.6% | 25.0 | 0.240 |
+| 8 | ZaphBot | 218 | 72.5% | 25.8 | 0.239 |
+| 9 | Drop Kick Data | 218 | 74.3% | 25.1 | 0.237 |
+| 10 | The Cruncher | 213 | 70.9% | 25.9 | 0.237 |
+| 11 | **Wheelo Ratings** | 218 | 72.5% | 24.6 | 0.237 |
+| 12 | Aggregate | 218 | 72.5% | 25.0 | 0.236 |
+| 13 | What Snoo Thinks | 207 | 73.4% | 25.6 | 0.236 |
+| 14 | results-only rating | 218 | 70.2% | 25.7 | 0.234 |
+| 15 | **ours, teams named** | 218 | 68.8% | 25.4 | 0.232 |
+| 16 | Stattraction | 218 | 70.2% | 25.2 | 0.232 |
+| 17 | Winnable | 218 | 70.2% | 25.2 | 0.231 |
+| 18 | In The Game | 218 | 68.8% | 26.3 | 0.228 |
+| 19 | footycharts | 218 | 70.2% | 25.4 | 0.227 |
+| 20 | Informed Stats | 218 | 72.0% | 25.8 | 0.226 |
+| 21 | Glicko Ratings | 218 | 72.5% | 25.3 | 0.224 |
+| 22 | HBin | 218 | 70.2% | 25.2 | 0.223 |
+| 23 | PlusSixOne | 216 | 69.0% | 24.9 | 0.217 |
+| 24 | Elo Predicts! | 218 | 68.8% | 26.4 | 0.214 |
+| 25 | Graft | 218 | 69.3% | 26.3 | 0.214 |
+| 26 | Live Ladders | 218 | 68.8% | 25.8 | 0.213 |
+| 27 | Hyperion | 208 | 70.7% | 26.0 | 0.211 |
+| 28 | AFL Lab | 218 | 70.2% | 26.0 | 0.211 |
+| 29 | Squiggle | 218 | 67.0% | 26.0 | 0.198 |
+| 30 | The Footycast | 218 | 70.2% | 25.7 | 0.190 |
+| 31 | Cheap Stats | 217 | 70.5% | 26.2 | 0.186 |
+| 32 | AFL Scorigami | 215 | 67.9% | 26.9 | 0.186 |
+| 33 | Holy Grail Ratings | 218 | 74.3% | 25.3 | 0.162 |
 
 ## Team news: how much the named 22 moves the prediction
 
