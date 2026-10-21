@@ -32,9 +32,23 @@ HOME_START = 3.0        # home advantage in points, updated slowly
 K_HOME = 0.005
 
 
-def load(cache):
+def history(cache):
+    """RLP's games plus the Champion Data games RLP does not hold yet (nrl/data/link_cd.py), if built."""
     m = pd.read_parquet(f'{cache}/matches.parquet')
     pm = pd.read_parquet(f'{cache}/player_matches.parquet')
+    try:
+        mc = pd.read_parquet(f'{cache}/matches_cd.parquet')
+        pc = pd.read_parquet(f'{cache}/player_matches_cd.parquet')
+        if len(mc):
+            m = pd.concat([m, mc[m.columns]], ignore_index=True)
+            pm = pd.concat([pm, pc[pm.columns]], ignore_index=True)
+    except FileNotFoundError:
+        pass
+    return m, pm
+
+
+def load(cache):
+    m, pm = history(cache)
     m = m.dropna(subset=['home_team_score', 'away_team_score']).copy()
     m['kick_off'] = pd.to_datetime(m['date'].dt.strftime('%Y-%m-%d') + ' ' + m['time_24hr'].fillna('15:00:00'))
     m = m.sort_values(['kick_off', 'match_id']).reset_index(drop=True)
