@@ -19,23 +19,43 @@ import time
 import requests
 
 API = 'https://en.wikipedia.org/w/api.php'
-UA = os.environ.get('ALEAGUE_UA', 'fk-model A-League research')
-PAUSE = float(os.environ.get('WIKI_PAUSE', '3'))
+# Wikimedia's User-Agent policy asks for a way to reach the operator; the repository URL is one
+UA = (os.environ.get('ALEAGUE_UA', '').strip() or 'fk-model A-League research') + \
+    ' (https://github.com/danmcgrath9/Fk-model) python-requests'
+PAUSE = float(os.environ.get('WIKI_PAUSE', '5'))
+
+
+def call(session, params):
+    """One API request, waiting out 429s and replication lag."""
+    for attempt in range(6):
+        r = session.get(API, params=params, timeout=60)
+        if r.status_code == 429 or 'maxlag' in r.text[:200]:
+            wait = int(r.headers.get('Retry-After', 0) or 0) or 30 * (attempt + 1)
+            print(f'  {r.status_code}: waiting {wait} s (attempt {attempt + 1})')
+            time.sleep(wait)
+            continue
+        r.raise_for_status()
+        time.sleep(PAUSE)
+        return r.json()
+    r.raise_for_status()
+    raise RuntimeError(f'Wikipedia kept refusing after 6 attempts ({r.status_code})')
 
 
 def fetch(session, titles):
-    """{title: wikitext} for up to 50 titles, following redirects."""
-    r = session.get(API, params={'action': 'query', 'prop': 'revisions', 'rvprop': 'content', 'rvslots': 'main',
-                                 'redirects': 1, 'format': 'json', 'formatversion': 2, 'titles': '|'.join(titles)},
-                    timeout=60)
-    r.raise_for_status()
-    time.sleep(PAUSE)
+    """{title: wikitext} for up to 50 titles, following redirects and the API's continuation
+    (a batch whose content is too large comes back in parts)."""
+    params = {'action': 'query', 'prop': 'revisions', 'rvprop': 'content', 'rvslots': 'main', 'redirects': 1,
+              'format': 'json', 'formatversion': 2, 'maxlag': 5, 'titles': '|'.join(titles)}
     out = {}
-    for p in r.json().get('query', {}).get('pages', []):
-        if p.get('missing'):
-            continue
-        out[p['title']] = p['revisions'][0]['slots']['main']['content']
-    return out
+    while True:
+        j = call(session, params)
+        for p in j.get('query', {}).get('pages', []):
+            if p.get('missing') or not p.get('revisions'):
+                continue
+            out[p['title']] = p['revisions'][0]['slots']['main']['content']
+        if 'continue' not in j:
+            return out
+        params = {**params, **j['continue']}
 
 
 def safe(title):
@@ -51,20 +71,23 @@ def main():
     s = requests.Session()
     s.headers['User-Agent'] = UA
     log = []
-    for season in args.seasons.split(','):
-        league = f'{season} A-League Men'
-        got = fetch(s, [league])
-        if not got:  # before 2021-22 the league was "A-League"
-            league = f'{season} A-League'
-            got = fetch(s, [league])
-        if not got:
-            log.append(f'{league}: missing'); continue
-        title, text = next(iter(got.items()))
+    seasons = args.seasons.split(',')
+    # before 2021-22 the league was "A-League"; ask for both names in one request
+    names = [f'{x} A-League Men' for x in seasons] + [f'{x} A-League' for x in seasons]
+    leagues = {}
+    for i in range(0, len(names), 10):
+        leagues.update(fetch(s, names[i:i + 10]))
+    for season in seasons:
+        hit = [(t, b) for t, b in leagues.items() if t.startswith(season + ' ')]
+        if not hit:
+            log.append(f'{season}: league page missing'); continue
+        title, text = hit[0]
+        league = title
         open(os.path.join(args.out, safe(title) + '.wiki'), 'w').write(text)
         clubs = sorted(set(re.findall(r'\[\[(' + re.escape(season) + r' [^\]|]+? season)', text)))
         log.append(f'{league}: {len(text):,} chars, {len(clubs)} club season pages linked')
-        for i in range(0, len(clubs), 50):
-            for t, body in fetch(s, clubs[i:i + 50]).items():
+        for i in range(0, len(clubs), 20):
+            for t, body in fetch(s, clubs[i:i + 20]).items():
                 open(os.path.join(args.out, safe(t) + '.wiki'), 'w').write(body)
                 n = len(re.findall(r'\{\{\s*[Ff]ootball ?box', body))
                 log.append(f'  {t}: {len(body):,} chars, {n} footballboxes')
