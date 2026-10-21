@@ -1,6 +1,6 @@
 # BBL (Big Bash) betting model: team markets and player props
 
-Paste this whole file into a new session. It stands alone.
+Paste this whole file into a new session. It stands alone. Before anything else, read `prompts/HOUSE_STANDARD.md` on branch `afl-props` of Fk-model: it is the house standard for pricing, staking, correlation caps and how a model is judged, and it overrides anything here that disagrees.
 
 I want to build a betting model for BBL (Big Bash), the same way we built my horse-racing model and the AFL
 props model: team betting (head-to-head, line, total) AND individual player props. Work in my GitHub
@@ -14,7 +14,7 @@ watch (recording prices); orders only after my OK on the exact list, same as rac
 ### Who I am and how we work
 - I'm Dan, the founder. I run a horse-racing model (Form King data, BetMatic for automated betting at
   the open, TAB account, Mercer Tipping on Twitter). Our racing edge is beating the OPENING price: the
-  backtest makes about +46% at the open and loses at Betfair SP, so getting on early is the whole game.
+  backtest makes about +65% at the average opening price (an upper bound) and about +5% at Betfair SP, so getting on early is the whole game.
   Assume the same is true here until the data says otherwise: the test that matters is the opening line.
 - Talk to me in plain English, short answers, tables where they help. Facts from the data, not guesses.
   Flag risks loudly. I'd rather you refuse than guess. Every number must trace to code you ran.
