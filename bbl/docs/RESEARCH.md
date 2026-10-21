@@ -80,4 +80,59 @@ now shuffles the list order and checks no feature moves. Corrected figures are i
 
 ## 5. What was built, and whether it helped
 
-(In progress: the league adjustment and the ball-by-ball simulator are being compared with v1 on the choose seasons. This section is filled when those runs finish.)
+All choices on the choose seasons (2022/23, 2023/24); 2024/25 confirms; 2025/26 still held back.
+
+**League-strength adjustment: adopted.** Each player-game's figures are divided by its league's factor
+(estimated on matches before July 2022) before they enter his form, and the model is told the league of
+the game being priced. On the choose seasons, against the leak-free unadjusted build, per player-game
+log-likelihood of runs (when he bats): BBL +0.0004 (90% interval -0.0003 to +0.0011, 82% likely positive),
+WBBL +0.0038 (+0.0013 to +0.0064, 99%). Chance to bat: BBL +0.004, WBBL -0.006 (worse). Team win chance
+unchanged; WBBL first-innings runs 0.15 runs worse (noise at ~100 games). A small, principled gain on the
+market we would bet; on by default (`LEAGUE_ADJUST=0` builds the unadjusted frame).
+
+**Ball-by-ball simulator (v2): not adopted, kept as the research direction.** Two rounds:
+
+| choose seasons | v1 (current) | v2, first build | v2, with home ground, ratings, varied batting order |
+|---|---|---|---|
+| BBL head-to-head, bits | 0.062 | 0.005 | 0.038 |
+| WBBL head-to-head, bits | 0.036 | 0.019 | 0.025 |
+| BBL first-innings runs, CRPS | 16.37 | 16.63 | 16.74 |
+| WBBL first-innings runs, CRPS | 16.33 | 16.66 | **16.34** (miss 23.06 against v1's 23.28) |
+| BBL player runs, log-lik | -3.772 | -3.856 | -3.803 |
+| WBBL player runs, log-lik | -3.705 | -3.759 | -3.750 |
+| WBBL chance to bat, log-lik | -0.466 | -0.469 | **-0.456** |
+
+A 50/50 or 25/75 blend of v1 and the first v2 did not beat v1 on runs, and only WBBL win chance edged up.
+The first build's diagnosis found the gaps that the second closed half of: a fixed batting order credited
+openers with 26.8 runs a game against an actual 24.2 (BBL) and 27.1 against 23.1 (WBBL), and the ball model
+had no home advantage. What remains, in order of likely value:
+1. **Match-level conditions.** WBBL simulated first innings spread 24.6 runs against 29.2 in reality; nothing
+   in a ball model makes a whole match high or low scoring (the "thin tails" critique of WASP-style models).
+   A shared per-match draw (pitch, weather) would add it.
+2. **Phase-specific player skill.** A batter's power-play and death-over rates differ; the ball model sees
+   one blended rate per player (the batting-order paper's point).
+3. **Bowling plans.** Workload-weighted random overs ignore who bowls at the death.
+4. **More simulations and a bigger ball model** once the structure is right (600 simulations, 150 trees now).
+The simulator's value is that it prices every market from one match, so same-game combinations, top batter
+and player props agree with the team price; that is worth building toward, not worth betting on yet.
+
+**Corrected stand-in results (v1, leak-free, league-adjusted, current build):**
+
+| runs vs stand-in line, 1.87 both ways | bets | hit | ROI | 90% interval |
+|---|---|---|---|---|
+| BBL choose 2022/23-2023/24 | 178 | 64.0% | +19.8% | +7.1% to +32.4% |
+| **BBL confirm 2024/25** | 88 | 60.2% | **+12.6%** | **-1.8% to +21.8%** |
+| WBBL choose | 392 | 62.8% | +17.4% | +10.9% to +23.7% |
+| **WBBL confirm 2024/25** | 116 | 58.6% | **+9.6%** | **-1.8% to +25.3%** |
+
+Both confirm intervals now include zero. Still an upper bound against a stand-in, as before.
+
+## 6. What "best in the world" needs that we do not have
+
+- **Real prices.** The literature's test is closing line value against a sharp close (Betfair). Without
+  recorded prices every return above is a proxy. The single most valuable next step is the odds key.
+- **Ball-tracking data** (line, length, speed, shot type) is what CricViz and the broadcasters' models run on;
+  not public. Cricsheet's ball outcome is the ceiling of what we can know about each delivery.
+- **Start times and weather** for dew and rain: Cricsheet has dates only. Open-Meteo history needs a paid
+  plan for this use; a fixture list with start times would let BOM daily data in for free.
+- **Announced squads and late changes** for the team-news test (no archive exists; record them ourselves).

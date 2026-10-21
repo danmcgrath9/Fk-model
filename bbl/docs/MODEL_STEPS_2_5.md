@@ -1,5 +1,11 @@
 # BBL model, steps 2 to 5 (21 Oct 2026): data layer, team model, player props, stand-in backtest
 
+> **Correction (same day): the prop figures below were made with a leak.** Cricsheet lists each XI in the
+> order it batted, and the prop model used that list position. Fixed, with a test; league adjustment then
+> added. Current, leak-free figures: runs against the stand-in line on 2024/25, BBL +12.6% (-1.8% to +21.8%,
+> 88 bets), WBBL +9.6% (-1.8% to +25.3%, 116 bets). Details in `docs/RESEARCH.md` sections 4 and 5. The data
+> layer and team model sections are unaffected.
+
 Everything here is built from Cricsheet alone (no odds yet). Every figure is from `python -m bbl.model.team`
 and `python -m bbl.model.backtest` on the 21 Oct pull; the full reports are `TEAM.md` and `PROPS.md` on the
 `bbl-history` release (the `bbl model` workflow rebuilds them).
