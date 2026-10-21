@@ -12,7 +12,7 @@ From the `aleague data` run of 21 Oct 2026 (raw responses: `inventory_v1.tar.gz`
 | FotMob | not sampled | "use of automatic services (robots, crawler...) ... not permitted" | no |
 | Sofascore | 403 | terms page 403 | no |
 | Transfermarkt | not sampled | terms page did not load | no (known to forbid scraping) |
-| Ultimate A-League | robots.txt allows match pages | no terms page found | lineups, goals, cards, subs since 2005; no shots. Founder's call |
+| Ultimate A-League | every match since 2005: line-ups and bench, substitutions with minutes, goals, cards, referee, crowd | **content licensed CC BY 4.0** (site footer); terms (found at /legal/) restrict nothing about access; robots.txt allows /match/ and /matches/; a private API and researcher datasets on request | **yes**: pulled once, 5 s apart (aleague lineups workflow) |
 | API-Football (api-sports.io) | not called: needs an account | licensed API, built for this | best candidate; cost below |
 | worldfootballR_data (GitHub) | FBref A-League results mirror, results only, no player stats | MIT mirror | results only |
 | Open-Meteo archive | works: hourly temperature, rain, wind | free tier is non-commercial only | founder's call; BOM is the free alternative |
@@ -20,3 +20,15 @@ From the `aleague data` run of 21 Oct 2026 (raw responses: `inventory_v1.tar.gz`
 Not found anywhere: a history of named squads and late withdrawals, or of injury lists. ESPN-style
 data records who started and who came on, which is "who actually played"; the model will build
 from that unless a source turns up.
+
+## Second and third looks (21 Oct 2026, inventory2_v1 and inventory3_v1 on the release)
+
+- **Ultimate A-League is the player source.** Its footer licenses the content CC BY 4.0, its terms page
+  (Copyright and Trademark section) restricts nothing about access, and robots.txt allows the match
+  pages. Each match page has both line-ups with the bench, substitution minutes, a timeline of goals and
+  cards with the minute and player, the referee and the crowd: minutes played per player per match,
+  which the props need. No shots. The site also runs a private API and offers researchers datasets on
+  request (enquiries [at] ultimatealeague.com); asking is the friendlier route for the future and needs
+  the founder's OK on the exact email.
+- aussportsbetting.com (historical odds spreadsheets): its pages answered 403 to GitHub's runners and its
+  terms page could not be read; not used.

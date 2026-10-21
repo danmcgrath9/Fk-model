@@ -15,7 +15,7 @@ Paper only until the founder says otherwise.
 | 1. Inventory | one look at each candidate source and its terms | done, `docs/INVENTORY.md` |
 | 1. Inventory | The Odds API probe (capped at 300 of 20,000 credits) | waiting for the `ODDS_API_KEY` secret; 0 credits spent |
 | 2. Data | matches 2013-14 to now, goals with scorer and minute, one row per team per game, leak-tested | done, on the release |
-| 2. Data | one row per player per game (minutes, shots, cards) | no permitted free source; API-Football is the candidate (paid, ask first) |
+| 2. Data | one row per player per game (minutes, goals, cards, started or not, referee) | being pulled from Ultimate A-League (CC BY 4.0), 2013-14 to now; no shots anywhere free |
 | 3. Team model | expected goals per side, every team market priced from one score matrix, "at the open"; settings frozen in `model/settings.json` | done, `docs/TEAM_STEP1.md`: beats base rates on head-to-head, level with Elo, no better than base rates on goals markets |
 | 3. Team model | "teams named" version | needs line-ups (the same player feed) |
 | 4. Props | pricing machinery (scorer, shots, cards as count distributions), tested | done; projections wait for minutes data |
@@ -38,6 +38,7 @@ Where both sources hold a match (2013-14 to 2024-25), Wikipedia's score agrees w
 Wikipedia lags in-season by a few days (two round-1 results of 2026-27 were missing on 21 Oct), so for
 paper betting the current week's results should come from The Odds API's scores endpoint once the key is in.
 
+Player data: Ultimate A-League (ultimatealeague.com), CC BY 4.0.
 Wikipedia text is CC BY-SA 4.0, by Wikipedia contributors; our tables are derived from it and are
 shared on the same terms if ever published. Every pull identifies itself with the repository URL.
 
