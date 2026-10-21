@@ -39,7 +39,7 @@ jobs:
           t = html.unescape(re.sub(r'<script.*?</script>|<style.*?</style>|<[^>]+>', ' ', t, flags=re.S))
           t = re.sub(r'\s+', ' ', t)
           print('####', sys.argv[1], len(t), 'chars of text')
-          for m in re.finditer(r'[^.]{0,300}(scrap|robot|spider|crawl|automat|data min|harvest|commercial|reproduc|lineup|team selection)[^.]{0,300}\.', t, re.I):
+          for m in re.finditer(r'[^.]{0,400}(scrap|robot|spider|crawl|automat|data min|harvest|commercial|reproduc|lineup|team selection|personal use|non-commercial|permitted|you may|q=)[^.]{0,400}\.', t, re.I):
               print('  >', m.group(0).strip()[:700])
           PY
           done
