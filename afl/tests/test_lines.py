@@ -58,3 +58,16 @@ def test_flatten_match_open_close_settle(raw):
     assert o.p_side == pytest.approx(expected)
     # beating the close: took 2.00, closed 1.70 -> 1/1.70 - 1/2.00 = +8.8 points of chance
     assert (1 / o.price_close - 1 / o.price_open) == pytest.approx(0.0882, abs=1e-3)
+
+
+def test_market_consensus_removes_margin_and_takes_the_median():
+    rows = []
+    for book, over, under in [('a', 1.80, 2.00), ('b', 1.90, 1.90), ('c', 2.10, 1.70)]:
+        for side, price in [('Over', over), ('Under', under)]:
+            rows.append(dict(game='g1', player_id=7, market_stat='player_disposals', point=27.5, book=book, side=side,
+                             price_close=price, p_side=0.55 if side == 'Over' else 0.45, won=True, season=2025))
+    mc = backtest.market_compare(pd.DataFrame(rows))
+    # book a: (1/1.8) / (1/1.8 + 1/2.0) = 0.5263; b: 0.5; c: (1/2.1) / (1/2.1 + 1/1.7) = 0.4474. Median 0.5
+    assert len(mc) == 1 and mc.books.iloc[0] == 3
+    assert mc.p_mkt.iloc[0] == pytest.approx(0.5)
+    assert mc.p_ours.iloc[0] == 0.55

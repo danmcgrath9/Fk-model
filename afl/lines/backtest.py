@@ -59,6 +59,33 @@ def evaluate(oc, wf):
     return pd.concat(rows)
 
 
+def market_compare(ev):
+    """Our chance of each over against the market's, at the close, with the bookmaker's margin taken out.
+
+    Per book: where it closed both sides of a line, its chance of the over = (1/over) / (1/over + 1/under). The
+    CONSENSUS is the median of those across books on the same player, market and line: one Australian book's close can
+    be a copy of another's, so a single book is not a fair benchmark. Returns one row per player/market/line with our
+    chance, the consensus, the number of books and the outcome, for log loss and closing-line value against the consensus.
+    """
+    if ev.empty:
+        return pd.DataFrame()
+    keys = ['game', 'player_id', 'market_stat', 'point']
+    two = ev.pivot_table(index=keys + ['book'], columns=ev.side.str.lower(), values='price_close', aggfunc='last')
+    if not {'over', 'under'} <= set(two.columns):
+        return pd.DataFrame()
+    two = two.dropna(subset=['over', 'under'])
+    two['p_book'] = (1 / two.over) / (1 / two.over + 1 / two.under)
+    cons = two.groupby(level=keys).p_book.agg(p_mkt='median', books='size').reset_index()
+    ours = ev[ev.side.str.lower() == 'over'].groupby(keys).agg(p_ours=('p_side', 'first'), won=('won', 'first'),
+                                                                 season=('season', 'first')).reset_index()
+    return cons.merge(ours, on=keys, how='inner')
+
+
+def log_loss(p, y):
+    p = np.clip(p, 1e-4, 1 - 1e-4)
+    return -(y * np.log(p) + (1 - y) * np.log(1 - p))
+
+
 def roi_ci(b, price_col, n_boot=2000, seed=5):
     if b.empty:
         return np.nan, np.nan, np.nan
@@ -90,6 +117,29 @@ def report(ev):
             rc, lc, hc = roi_ci(bc, 'price_close')
             out.append(f'| {mkt} | {e:.0%} | {len(bo):,} | {ro:+.1%} | {lo:+.1%} to {hi:+.1%} | {100 * bo.clv.mean():+.2f} | '
                        f'{len(bc):,} | {rc:+.1%} | {lc:+.1%} to {hc:+.1%} |')
+    mc = market_compare(ev)
+    if not mc.empty:
+        out += ['', '## Our chances against the market\'s, at the close', '',
+                'Log loss of the over (lower is better): ours, and the consensus of the books (median, margin removed). '
+                'Positive "ours minus market" means the market was better. This is the honest test of the model: it '
+                'needs no bet selection.', '',
+                '| market | season | lines | books (median) | ours | market | ours minus market | ± |', '|---|---|---|---|---|---|---|---|']
+        for (mkt, season), g in mc.groupby(['market_stat', 'season']):
+            y = g.won.astype(float).to_numpy()
+            d = log_loss(g.p_ours.to_numpy(), y) - log_loss(g.p_mkt.to_numpy(), y)
+            out.append(f'| {mkt} | {season} | {len(g):,} | {g.books.median():.0f} | {log_loss(g.p_ours.to_numpy(), y).mean():.4f} | '
+                       f'{log_loss(g.p_mkt.to_numpy(), y).mean():.4f} | {d.mean():+.4f} | {d.std() / np.sqrt(len(d)):.4f} |')
+        b = ev[ev.ev_open > 0.05].merge(mc[['game', 'player_id', 'market_stat', 'point', 'p_mkt']],
+                                         on=['game', 'player_id', 'market_stat', 'point'], how='inner')
+        if len(b):
+            b['p_mkt_side'] = np.where(b.side.str.lower() == 'over', b.p_mkt, 1 - b.p_mkt)
+            b['clv_cons'] = b.price_open * b.p_mkt_side - 1
+            out += ['', '## Closing-line value against the consensus (bets at the open, 5% edge)', '',
+                    'Expected return of the price taken if the consensus close is the truth. Positive and steady is the '
+                    'sign of a real edge long before profit can show one.', '',
+                    '| market | bets | average | share positive |', '|---|---|---|---|']
+            for mkt, g in b.groupby('market_stat'):
+                out.append(f'| {mkt} | {len(g):,} | {g.clv_cons.mean():+.2%} | {(g.clv_cons > 0).mean():.0%} |')
     out += ['', '## At the open, 5% edge, by book', '', '| book | bets | ROI | 90% | CLV |', '|---|---|---|---|---|']
     for bk, g in ev[ev.ev_open > 0.05].groupby('book'):
         r, lo, hi = roi_ci(g, 'price_open')
