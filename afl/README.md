@@ -19,7 +19,8 @@ no BetMatic orders. Paper only until the founder says otherwise.
 | 4. Team-news repricing test | measurable from recorded prices only | from round 1 2027 |
 | 5. Paper season | record openers, compare with projection and close | from round 1 2027 |
 | Team model | margin, win chance and total per game, at the open (no team news) and with teams named | first cut done, see `docs/TEAM_STEP1.md` |
-| Goals, marks, tackles | same machinery, count models | not started |
+| Lineup strength | AFL Player Ratings per player (2026 stand-in from box scores), named 22 vs side expected at the open | done, see `docs/TEAM_STEP2_LINEUPS.md`: no lineup measure improves the team model out of sample |
+| Goals, marks, tackles | same machinery, count models | done, see `docs/PROPS_STEP1.md` (marks and tackles against stand-in lines; goals as calibrated 1+/2+/3+ chances) |
 | Weather | rain and wind by ground | not started; Open-Meteo history may need a paid plan for this use, BOM is the free alternative |
 
 ## Disposals, step 1 results (2025 and 2026, never seen in fitting or tuning)
