@@ -14,8 +14,7 @@ on:
   push:
     branches: [nbl-model]
     paths:
-      - 'nbl/lines/**'
-      - '.github/workflows/nbl-lines.yml'
+      - 'nbl/lines/probe.py'
 
 concurrency:
   group: nbl-lines
