@@ -1,0 +1,58 @@
+name: nbl lines
+
+# NBL betting lines from The Odds API (nbl/README.md). Probe first: a capped look at what the archive
+# holds, run once. The raw responses go to the nbl-history release; PROBE.md is printed to the log and
+# the run page. Separate from every fk-*, nba-* and afl-* workflow: its own concurrency group, no Form
+# King key, no BetMatic. The key lives only in the ODDS_API_KEY secret. NBL budget: 60,000 credits.
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_credits:
+        description: 'stop before spending more than this many credits'
+        default: '300'
+  push:
+    branches: [nbl-model]
+    paths:
+      - 'nbl/lines/**'
+      - '.github/workflows/nbl-lines.yml'
+
+concurrency:
+  group: nbl-lines
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+      MAX_CREDITS: ${{ github.event.inputs.max_credits || '300' }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+
+      - name: Run the probe once
+        run: |
+          gh release view nbl-history >/dev/null 2>&1 || gh release create nbl-history --target main --latest=false \
+            --title "NBL history" --notes "NBL betting-model data (nbl/README.md). Written by the nbl data and nbl lines workflows; do not delete." \
+            || gh release view nbl-history >/dev/null  # the other nbl workflow may have created it first
+          # a re-push must not spend again: the probe's results on the release mean it has run
+          if gh release view nbl-history --json assets --jq '.assets[].name' | grep -qx 'odds_probe_v1.tar.gz'; then
+            echo "probe v1 already on the release; not spending credits again" | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          [ -n "$ODDS_API_KEY" ] || { echo "ODDS_API_KEY secret is not set"; exit 1; }
+          set -o pipefail
+          python nbl/lines/probe.py
+          tar czf odds_probe_v1.tar.gz -C nbl/cache odds_probe
+          gh release upload nbl-history odds_probe_v1.tar.gz --clobber

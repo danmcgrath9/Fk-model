@@ -12,3 +12,4 @@ __pycache__/
 !env.example
 .venv/
 history/
+nbl/cache/
