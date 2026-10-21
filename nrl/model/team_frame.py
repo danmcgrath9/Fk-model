@@ -35,7 +35,10 @@ K_HOME = 0.005
 def history(cache):
     """RLP's games plus the Champion Data games RLP does not hold yet (nrl/data/link_cd.py), if built."""
     m = pd.read_parquet(f'{cache}/matches.parquet')
+    # RLP lists fixtures before their results (2026 from round 16): a game with no score is not history
+    m = m.dropna(subset=['home_team_score', 'away_team_score'])
     pm = pd.read_parquet(f'{cache}/player_matches.parquet')
+    pm = pm[pm.match_id.isin(m.match_id)]
     try:
         mc = pd.read_parquet(f'{cache}/matches_cd.parquet')
         pc = pd.read_parquet(f'{cache}/player_matches_cd.parquet')
@@ -44,12 +47,21 @@ def history(cache):
             pm = pd.concat([pm, pc[pm.columns]], ignore_index=True)
     except FileNotFoundError:
         pass
+    try:   # games not played yet, written by nrl/price/card.py: no score, line-ups as named (or last week's)
+        mu = pd.read_parquet(f'{cache}/matches_upcoming.parquet')
+        pu = pd.read_parquet(f'{cache}/player_matches_upcoming.parquet')
+        mu = mu.assign(upcoming=True)
+        m = pd.concat([m.assign(upcoming=False), mu[list(m.columns) + ['upcoming']]], ignore_index=True)
+        pm = pd.concat([pm, pu[pm.columns]], ignore_index=True)
+    except FileNotFoundError:
+        pass
     return m, pm
 
 
 def load(cache):
     m, pm = history(cache)
-    m = m.dropna(subset=['home_team_score', 'away_team_score']).copy()
+    m = m.copy()
+    m['upcoming'] = m['upcoming'].fillna(False).astype(bool) if 'upcoming' in m else False
     m['kick_off'] = pd.to_datetime(m['date'].dt.strftime('%Y-%m-%d') + ' ' + m['time_24hr'].fillna('15:00:00'))
     m = m.sort_values(['kick_off', 'match_id']).reset_index(drop=True)
     m['is_final'] = ~m['round'].astype(str).str.startswith('Round')
@@ -74,6 +86,8 @@ def ratings(m):
         exp_h = league / 2 + ah + da + home_adv / 2
         exp_a = league / 2 + aa + dh - home_adv / 2
         out[i] = (exp_h, exp_a, league, home_adv, (ah - dh) - (aa - da))
+        if g.upcoming:   # not played yet: priced, never learned from
+            continue
         # only now does the game's result touch the ratings
         sh, sa = g.home_team_score, g.away_team_score
         eh, ea = sh - exp_h, sa - exp_a
@@ -134,12 +148,12 @@ def build(m, pm):
                              is_final=m.is_final, venue_id=m.venue_id, team=m.home_team, opp=m.away_team, home=1,
                              exp_for=m.exp_home, exp_against=m.exp_away, score_for=m.home_team_score,
                              score_against=m.away_team_score, league_total=m.league_total, home_adv=m.home_adv,
-                             rating_diff=m.rating_diff))
+                             rating_diff=m.rating_diff, upcoming=m.upcoming))
     away = pd.DataFrame(dict(i=m.i, match_id=m.match_id, season=m.season, kick_off=m.kick_off, round_no=m.round_no,
                              is_final=m.is_final, venue_id=m.venue_id, team=m.away_team, opp=m.home_team, home=0,
                              exp_for=m.exp_away, exp_against=m.exp_home, score_for=m.away_team_score,
                              score_against=m.home_team_score, league_total=m.league_total, home_adv=m.home_adv,
-                             rating_diff=-m.rating_diff))
+                             rating_diff=-m.rating_diff, upcoming=m.upcoming))
     tg = pd.concat([home, away], ignore_index=True)
     tries = pm.groupby(['match_id', 'team']).tries.sum().rename('tries_for').reset_index()
     tg = tg.merge(tries, on=['match_id', 'team'], how='left')

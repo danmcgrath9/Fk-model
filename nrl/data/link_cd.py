@@ -30,7 +30,10 @@ def norm(name):
 
 def main(cache):
     m = pd.read_parquet(f'{cache}/matches.parquet')
+    # an RLP game listed before its result is not held: Champion Data supplies it
+    m = m.dropna(subset=['home_team_score', 'away_team_score'])
     pm = pd.read_parquet(f'{cache}/player_matches.parquet')
+    pm = pm[pm.match_id.isin(m.match_id)]
     cp = pd.read_parquet(f'{cache}/cd_player_games.parquet')
     cp['date'] = pd.to_datetime(cp.utc_start, utc=True).dt.tz_convert('Australia/Sydney').dt.date.astype(str)
     g = cp.drop_duplicates('cd_match_id')

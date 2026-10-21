@@ -59,7 +59,7 @@ def main(cache):
     first = order.groupby('round_key', sort=False).kick_off.min().sort_values()
     for rk, start in first.items():
         idx = m.index[(m.round_key == rk)]
-        past = m.index[m.kick_off < start]
+        past = m.index[(m.kick_off < start) & ~m.upcoming]
         if m.loc[idx[0], 'season'] >= FIRST_SEASON and len(past) > 200:
             age = (start - m.loc[past, 'kick_off']).dt.days.to_numpy()
             sw = 0.5 ** (age / HALF_LIFE_DAYS)
