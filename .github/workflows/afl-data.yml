@@ -110,7 +110,7 @@ jobs:
           python afl/data/to_parquet.py afl/cache/raw afl/cache | tee -a "$GITHUB_STEP_SUMMARY"
           if [ -s afl/cache/new_files.txt ]; then
             # upload one at a time with retries: a file that only lives on this runner is lost when the job ends
-            while read -r f; do
+            while read -r f || [ -n "$f" ]; do
               ok=no
               for i in 1 2 3; do gh release upload afl-history "$f" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
               [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }

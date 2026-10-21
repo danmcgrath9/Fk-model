@@ -25,7 +25,8 @@ def main(raw, out):
         made.append(dest)
         print(f'{dest}: {len(df):,} rows, {df.shape[1]} columns')
     with open(os.path.join(out, 'new_files.txt'), 'w') as fh:
-        fh.write('\n'.join(made))
+        # one path per line, newline-terminated: `while read` skips a last line without one
+        fh.write(''.join(f + '\n' for f in made))
 
 
 if __name__ == '__main__':
