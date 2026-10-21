@@ -13,9 +13,9 @@ watch (recording prices); orders only after my OK on the exact list, same as rac
 
 ### Who I am and how we work
 - I'm Dan, the founder. I run a horse-racing model (Form King data, BetMatic for automated betting at
-  the open, TAB account, Mercer Tipping on Twitter). Our racing edge is beating the OPENING price: the
-  backtest makes about +65% at the average opening price (an upper bound) and about +5% at Betfair SP, so getting on early is the whole game.
-  Assume the same is true here until the data says otherwise: the test that matters is the opening line.
+  the open, TAB account, Mercer Tipping on Twitter). The racing premise, and this one's: price every
+  outcome ourselves and bet only when the bookie's price beats ours by enough. When to bet (opener, after teams,
+  near the start) is for this sport's data to decide.
 - Talk to me in plain English, short answers, tables where they help. Facts from the data, not guesses.
   Flag risks loudly. I'd rather you refuse than guess. Every number must trace to code you ran.
 
@@ -81,8 +81,8 @@ What we know (21 Oct 2026):
 4. **Player props.** A projection per player per market (minutes or time on field x per-minute rate,
    adjusted for role, teammates in and out, opponent, venue, weather, expected margin), turned into a
    distribution (count model, not just a mean) and priced over/under at each line.
-5. **Backtest.** Out-of-sample only. Against real opening and closing lines once pulled: ROI at the open,
-   ROI at the close, closing line value, by market, line size and book. Before real lines exist, a
+5. **Backtest.** Out-of-sample only. Against real lines once pulled: ROI at each point we could bet (open, after teams are
+   named, close), closing line value, by market, line size and book. Before real lines exist, a
    stand-in line (the player's recent average, tuned so a blind over wins half the time) is allowed,
    labelled as a proxy, never as a market test. Bootstrap the profit by round; say when a sample is too
    small. Test angles on the oldest seasons, confirm on the next, final check on the newest, untouched
@@ -90,7 +90,7 @@ What we know (21 Oct 2026):
 6. **Team-news angle.** Do books reprice fast enough after team announcements and late changes
    (a key player out: his team's line and his teammates' props should move)? Measurable from recorded
    prices.
-7. **Paper season.** Record openers (BetMatic odds watch and/or The Odds API), compare with our numbers
+7. **Paper season.** Record prices through the week (BetMatic odds watch and/or The Odds API), compare with our numbers
    and the close, then talk to me about small real stakes.
 
 ### Risks to keep in front of us
