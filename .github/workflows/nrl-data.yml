@@ -1,0 +1,56 @@
+name: nrl data
+
+# NRL history (nrl/README.md). Copies uselessnrlstats' cleaned Rugby League Project data (one git
+# clone of their GitHub repo, no request to RLP) into parquet on the "nrl-history" release. A file the
+# release already holds is not copied again unless refresh_mirror = yes. Separate from every fk-*,
+# nba-* and afl-* workflow: its own concurrency group, no Form King key, no BetMatic, no database.
+
+on:
+  workflow_dispatch:
+    inputs:
+      refresh_mirror:
+        description: 'yes = re-copy even though the release holds it'
+        default: 'no'
+  push:
+    branches: [nrl-model]
+    paths:
+      - 'nrl/data/**'
+      - '.github/workflows/nrl-data.yml'
+
+concurrency:
+  group: nrl-data
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas pyarrow
+      - name: Release
+        run: |
+          gh release view nrl-history >/dev/null 2>&1 || gh release create nrl-history --target main --latest=false \
+            --title "NRL history" --notes "NRL model data (nrl/README.md). Written by the nrl-* workflows; do not delete." || gh release view nrl-history >/dev/null
+      - name: Mirror uselessnrlstats
+        run: |
+          held=$(gh release view nrl-history --json assets --jq '.assets[].name' | grep -cx 'player_matches.parquet' || true)
+          if [ "$held" = "1" ] && [ "${{ github.event.inputs.refresh_mirror }}" != "yes" ]; then
+            echo "mirror held on the release, not re-copied" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0
+          fi
+          set -o pipefail
+          python nrl/data/mirror.py --out nrl/cache | tee -a "$GITHUB_STEP_SUMMARY"
+          for f in nrl/cache/*.parquet nrl/cache/mirror_source.txt; do
+            ok=no
+            for i in 1 2 3; do gh release upload nrl-history "$f" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
+            [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }
+          done

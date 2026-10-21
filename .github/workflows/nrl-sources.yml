@@ -1,0 +1,44 @@
+name: nrl sources
+
+# Reads every NRL data source's robots.txt and terms before anything is pulled from it, plus a
+# three-request sample of the Champion Data match-centre feed (only if robots.txt allows it) and the
+# AusSportsBetting download page (the page, not the file). Output: the run page and the
+# nrl-history release (sources_check.tar.gz). Its own concurrency group; no keys of any kind.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [nrl-model]
+    paths:
+      - 'nrl/sources/**'
+      - '.github/workflows/nrl-sources.yml'
+
+concurrency:
+  group: nrl-sources
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      NRL_UA: fk-model NRL research ${{ vars.NRL_CONTACT }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+      - run: python nrl/sources/check.py
+      - name: Keep the pages
+        run: |
+          gh release view nrl-history >/dev/null 2>&1 || gh release create nrl-history --target main --latest=false \
+            --title "NRL history" --notes "NRL model data (nrl/README.md). Written by the nrl-* workflows; do not delete." || gh release view nrl-history >/dev/null
+          tar czf sources_check.tar.gz -C nrl/cache sources
+          gh release upload nrl-history sources_check.tar.gz --clobber
