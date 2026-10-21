@@ -1,5 +1,5 @@
 # One look at the terms of the sites that could give us named teams each week, so we read them before building on any.
-# A handful of page loads, once per push of this file. Nothing is stored beyond the run's log and artifact.
+# A handful of page loads, once per push of this file (second run: fuller extracts of the permitted-use clauses). Nothing is stored beyond the run's log and artifact.
 name: afl check terms
 on:
   push:
@@ -22,6 +22,8 @@ jobs:
           get() { echo "== $1"; curl -sSL -A "$UA" --max-time 30 "$1" -o "out/$2" -w "%{http_code} %{url_effective}\n" || true; sleep 5; }
           get https://www.afl.com.au/robots.txt afl_robots.txt
           get https://www.afl.com.au/ afl_home.html
+          get https://www.telstra.com.au/terms-of-use telstra_terms.html
+          get https://api.squiggle.com.au/?q=sources squiggle_sources.html
           for p in $(grep -oiE 'href="[^"]*(terms|legal|conditions|privacy)[^"]*"' out/afl_home.html | sed -E 's/href="//; s/"$//' | sort -u | head -6); do
             case "$p" in http*) u="$p";; *) u="https://www.afl.com.au$p";; esac
             get "$u" "afl_$(echo "$p" | tr -c 'a-zA-Z0-9' '_' | cut -c1-60).html"
