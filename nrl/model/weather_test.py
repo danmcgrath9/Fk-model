@@ -82,12 +82,42 @@ def counts_test(cache, w):
     return out
 
 
+def forecast_test(cache, w):
+    """Live use: weather effects learned from actual weather (2009-2018), then fed the archived FORECAST."""
+    try:
+        wf = pd.read_parquet(f'{cache}/weather/weather_forecast.parquet')
+    except FileNotFoundError:
+        return ['| forecast test | | | weather_forecast.parquet not pulled yet |']
+    wf = weather(cache).iloc[:0].pipe(lambda _: wf)
+    for c in ('rain_game', 'rain_pre3', 'rain_24', 'wind', 'gusts'):
+        wf.loc[wf.roof, c] = 0.0
+    wf = wf.rename(columns={c: f'w_{c}' for c in ('rain_game', 'rain_pre3', 'rain_24', 'wind', 'gusts', 'temp')})
+    wf = wf.rename(columns={'dew_point': 'w_dew'})
+    g = team.games(pd.read_parquet(f'{cache}/team_frame.parquet'))
+    ga, gf = g.merge(w, on='match_id'), g.merge(wf, on='match_id')
+    fit = ga[ga.season.isin(range(2009, 2019))]
+    base = team.LinearT().fit(fit[team.TOTAL_FEATURES].to_numpy(), fit.total.to_numpy())
+    wm = team.LinearT().fit(fit[team.TOTAL_FEATURES + W].to_numpy(), fit.total.to_numpy())
+    out = []
+    for lab, ss in (('2022', [2022]), ('2023-2024', [2023, 2024])):
+        ta, tf_ = ga[ga.season.isin(ss)], gf[gf.season.isin(ss)]
+        ta = ta[ta.match_id.isin(tf_.match_id)]
+        tf_ = tf_.set_index('match_id').loc[ta.match_id].reset_index()
+        miss = lambda mdl, d, f: np.abs(mdl.mean(d[f].to_numpy()) - d.total).mean()
+        out += [f'| totals, live test | {lab} | no weather | miss {miss(base, ta, team.TOTAL_FEATURES):.3f} ({len(ta)} games) |',
+                f'| totals, live test | {lab} | actual weather (hindsight) | miss {miss(wm, ta, team.TOTAL_FEATURES + W):.3f} |',
+                f'| totals, live test | {lab} | archived forecast (what a bettor knew) | miss {miss(wm, tf_, team.TOTAL_FEATURES + W):.3f} |']
+        r = tf_.merge(ta[['match_id', 'w_rain_game']], on='match_id', suffixes=('_fc', '_act'))
+        out.append(f'| | {lab} | forecast against actual rain in the game | correlation {r.w_rain_game_fc.corr(r.w_rain_game_act):.2f} |')
+    return out
+
+
 def main(cache, out=None):
     w = weather(cache)
     lines = ['# Weather: does it help? (dev and confirm only; actual weather, so an upper bound on a forecast)', '',
              f'{len(w):,} games with weather; {int(w.roof.sum())} under a roof.', '',
              '| market | set | version | result |', '|---|---|---|---|']
-    lines += totals(cache, w) + tries_test(cache, w) + counts_test(cache, w)
+    lines += totals(cache, w) + forecast_test(cache, w) + tries_test(cache, w) + counts_test(cache, w)
     text = '\n'.join(lines) + '\n'
     print(text)
     if out:
