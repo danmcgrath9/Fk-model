@@ -40,7 +40,8 @@ def main(tables, out, days=8, today=None):
     t = pd.DataFrame(priced)
     t.to_parquet(out.replace('.md', '.parquet'), index=False)
     lines = [f'# Our prices, A-League Men, {today} to {today + dt.timedelta(days=days)}', '',
-             f'Fitted on {len(rows):,} matches to {first}; settings {s}. At the open: no team news. '
+             f'Fitted on {len(rows):,} matches played before {first}, run {dt.datetime.now(dt.timezone.utc):%Y-%m-%d %H:%M} UTC; settings {s}. '
+             'At the open: no team news. '
              'Fair prices, no margin: a book must beat these by enough before a bet is worth it.', '',
              '| date | match | xG | home | draw | away | over 2.5 | under 2.5 | BTTS yes | home -0.5 | home +0.5 |',
              '|---|---|---|---|---|---|---|---|---|---|---|']
