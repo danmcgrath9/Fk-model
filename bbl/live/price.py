@@ -172,7 +172,10 @@ def price(d, fixtures, xis=None):
     fm, fp, notes = future_rows(m, pl, fixtures, xis)
     allm = pd.concat([m.assign(future=False), fm], ignore_index=True)
     allp = pd.concat([pl, fp], ignore_index=True)
-    g, t = frame.build_from(allm, allp, dl, inn)
+    # league factors from every match before the first fixture (the backtest used matches before July 2022)
+    from bbl.model.leagues import league_factors
+    factors = league_factors(m, dl, fm.start_date.min())
+    g, t = frame.build_from(allm, allp, dl, inn, factors)
     tt = allm[['match_id', 'team_type']]
     g, t = g.merge(tt, on='match_id'), t.merge(tt, on='match_id')
     fut_ids = set(fm.match_id)

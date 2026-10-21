@@ -314,7 +314,7 @@ def venue_features(t):
     return g[['match_id', 'venue_first_runs', 'venue_games', 'venue_bat_first_win']]
 
 
-def build(d, league_adjust=False):
+def build(d, league_adjust=True):
     m = match_table(pd.read_parquet(os.path.join(d, 't20_matches.parquet')))
     pl = pd.read_parquet(os.path.join(d, 't20_players.parquet'))
     dl = pd.read_parquet(os.path.join(d, 't20_deliveries.parquet'))
@@ -411,7 +411,8 @@ OUTCOMES = ['bat_runs', 'bat_balls', 'bat_4s', 'bat_6s', 'bat_out', 'how_out', '
 
 
 def main(d):
-    g, t = build(d, league_adjust=os.environ.get('LEAGUE_ADJUST') == '1')
+    # on by default (bbl/docs/RESEARCH.md section 5); LEAGUE_ADJUST=0 builds the unadjusted frame for comparison
+    g, t = build(d, league_adjust=os.environ.get('LEAGUE_ADJUST', '1') != '0')
     g.to_parquet(os.path.join(d, 'player_frame.parquet'), index=False)
     t.to_parquet(os.path.join(d, 'team_frame.parquet'), index=False)
     for name, x in (('player_frame', g), ('team_frame', t)):

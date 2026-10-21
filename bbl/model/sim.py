@@ -33,12 +33,12 @@ BAT_RUNS = np.array([0, 1, 2, 3, 4, 6, 0, 0, 0, 0])    # runs to the batter
 LEGAL = np.array([1, 1, 1, 1, 1, 1, 1, 0, 0, 1], bool)
 WICKET = 6
 SIX = 5
-N_SIMS = 1000
+N_SIMS = 600
 TRAIN_FROM = '2015-01-01'
-MAX_TRAIN_BALLS = 900_000
+MAX_TRAIN_BALLS = 600_000
 BALL_FEATS = ['b_sr', 'b_out', 'b_six', 'b_four', 'b_games', 'w_econ', 'w_wkt', 'w_balls', 'innings', 'over', 'wkts',
               'faced', 'runs_so_far', 'need', 'req_rate', 'venue_first_runs', 'lf_bat_runs', 'lf_bat_outs']
-LGB = dict(objective='multiclass', num_class=len(OUTCOMES), learning_rate=0.08, n_estimators=250, num_leaves=31,
+LGB = dict(objective='multiclass', num_class=len(OUTCOMES), learning_rate=0.08, n_estimators=150, num_leaves=31,
            min_child_samples=200, subsample=0.7, subsample_freq=1, colsample_bytree=0.8, verbose=-1)
 SEASONS = CHOOSE + CONFIRM
 
