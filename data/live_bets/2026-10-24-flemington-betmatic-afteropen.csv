@@ -1,0 +1,14 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-10-24,Flemington,1,,4,Ice Kool,WIN,2.73,6.81,7.31,366,1 of 2,7.31u,2.27,value at the open ($2.8); forecast middle/firm/firm by step
+2026-10-24,Flemington,1,,4,Ice Kool,WIN,3.41,6.81,2.69,134,2 of 2,10.00u,2.27,value at the open ($2.8); forecast middle/firm/firm by step
+2026-10-24,Flemington,2,,9,Turbo Saint,WIN,14.76,36.90,0.51,26,1 of 3,0.51u,12.30,value at the open ($17.0); forecast x0.5/middle/firm by step
+2026-10-24,Flemington,2,,9,Turbo Saint,WIN,18.45,36.90,0.75,38,2 of 3,1.26u,12.30,value at the open ($17.0); forecast x0.5/middle/firm by step
+2026-10-24,Flemington,2,,9,Turbo Saint,WIN,22.14,36.90,1.26,63,3 of 3,2.52u,12.30,value at the open ($17.0); forecast x0.5/middle/firm by step
+2026-10-24,Flemington,6,,12,Surfin' Bird,WIN,3.30,8.25,5.61,280,1 of 2,5.61u,2.75,value at the open ($4.4); forecast middle/firm/firm by step
+2026-10-24,Flemington,6,,12,Surfin' Bird,WIN,4.12,8.25,4.39,219,2 of 2,10.00u,2.75,value at the open ($4.4); forecast middle/firm/firm by step
+2026-10-24,Flemington,9,,14,Classic Gem,WIN,8.80,21.99,0.88,44,1 of 3,0.88u,7.33,value at the open ($13.5); forecast x0.5/middle/firm by step
+2026-10-24,Flemington,9,,14,Classic Gem,WIN,11.00,21.99,1.31,66,2 of 3,2.19u,7.33,value at the open ($13.5); forecast x0.5/middle/firm by step
+2026-10-24,Flemington,9,,14,Classic Gem,WIN,13.20,21.99,2.19,110,3 of 3,4.38u,7.33,value at the open ($13.5); forecast x0.5/middle/firm by step
+2026-10-24,Flemington,9,,3,Shockletz,WIN,9.72,24.30,0.79,40,1 of 3,0.79u,8.10,value at the open ($12.67); forecast x0.5/x0.5/firm by step
+2026-10-24,Flemington,9,,3,Shockletz,WIN,12.15,24.30,0.19,10,2 of 3,0.98u,8.10,value at the open ($12.67); forecast x0.5/x0.5/firm by step
+2026-10-24,Flemington,9,,3,Shockletz,WIN,14.58,24.30,2.96,148,3 of 3,3.94u,8.10,value at the open ($12.67); forecast x0.5/x0.5/firm by step

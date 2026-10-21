@@ -28,3 +28,11 @@ Every meeting, the bets the live rules would have struck at Form King's opening 
 | 2026-10-15 Warrnambool (G4) | R8 | Kid Dynamite | $15 | - | $12.45 | 0.33u | | | |
 
 Kilmore 13 Oct (open book): 4 bets, 1 winner (Celestial Splendor $19), 4.24u staked, +8.53u after deductions (confirmed against Form King's results 14 Oct). Every one of the four beat Betfair SP from the open except Winter Nights ($16 open, BSP $16.44); Knock Of Beers went $21 to $5, Celestial Splendor $19 to $6.
+| 2026-10-24 Flemington (G4) | R1 | Ice Kool | $2.8 | - | $2.27 | 4.82u | | | |
+| 2026-10-24 Flemington (G4) | R2 | Turbo Saint | $17 | - | $12.30 | 0.86u | | | |
+| 2026-10-24 Flemington (G4) | R6 | Surfin' Bird | $4.4 | - | $2.75 | 6.1u | | | |
+| 2026-10-24 Flemington (G4) | R7 | Aethelwulf | $7.25 | - | $3.24 | 6.2u | | | |
+| 2026-10-24 Flemington (G4) | R8 | Cosmic Crusader | $9 | - | $5.58 | 2.63u | | | |
+| 2026-10-24 Flemington (G4) | R8 | Blind Raise | $13.2 | - | $10.04 | 0.94u | | | |
+| 2026-10-24 Flemington (G4) | R9 | Shockletz | $12.67 | - | $8.10 | 1.68u | | | |
+| 2026-10-24 Flemington (G4) | R9 | Classic Gem | $13.5 | - | $7.33 | 2.23u | | | |
