@@ -1,0 +1,50 @@
+name: aleague lineups
+
+# A-League Men line-ups, substitutions, goals and cards from Ultimate A-League (CC BY 4.0; see
+# aleague/data/ual_pull.py for the terms check). One match page every 5 seconds, each season uploaded to
+# the aleague-history release as soon as it is finished, and a season the release holds is never pulled
+# again. About 2,100 pages in all, roughly three hours, run once. Separate from every fk-*, nba-*, afl-*
+# workflow: its own concurrency group, no keys, no BetMatic.
+
+on:
+  workflow_dispatch:
+    inputs:
+      refresh:
+        description: 'a season to pull again even if held, e.g. 2026-27 (in-season update); blank = none'
+        default: ''
+  push:
+    branches: [aleague-model]
+    paths:
+      - 'aleague/data/ual_pull.py'
+      - '.github/workflows/aleague-lineups.yml'
+
+concurrency:
+  group: aleague-lineups
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      ALEAGUE_UA: fk-model A-League research ${{ vars.ALEAGUE_CONTACT }}
+      UAL_PAUSE: '5'
+      UAL_BUDGET_SECONDS: '18000'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+      - name: Pull what the release does not hold
+        run: |
+          gh release view aleague-history --json assets --jq '.assets[].name' > held.txt
+          seasons=$(python -c "print(','.join(f'{y}-{str(y+1)[2:]}' for y in range(2013, 2027)))")
+          python aleague/data/ual_pull.py --out aleague/cache/ual --seasons "$seasons" --held held.txt \
+            --refresh "${{ github.event.inputs.refresh }}" --upload aleague-history | tee -a "$GITHUB_STEP_SUMMARY"
