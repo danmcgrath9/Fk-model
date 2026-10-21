@@ -1,0 +1,93 @@
+{"label": "fk-2026-10-23-cranbourne-r1-n1-s1", "notification": "13965398", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n1-s2", "notification": "13965400", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n1-s3", "notification": "13965402", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n1-s4", "notification": "13965404", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n1-s5", "notification": "13965406", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n6-s1", "notification": "13965408", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n6-s2", "notification": "13965409", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n6-s3", "notification": "13965411", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n7-s1", "notification": "13965413", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n7-s2", "notification": "13965415", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n2-s1", "notification": "13965417", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n2-s2", "notification": "13965419", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n2-s3", "notification": "13965421", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n3-s1", "notification": "13965423", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n3-s2", "notification": "13965425", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r1-n3-s3", "notification": "13965427", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n4-s1", "notification": "13965429", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n4-s2", "notification": "13965431", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n5-s1", "notification": "13965432", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n5-s2", "notification": "13965434", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n10-s1", "notification": "13965436", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n10-s2", "notification": "13965438", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n6-s1", "notification": "13965440", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n6-s2", "notification": "13965442", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n7-s1", "notification": "13965444", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n7-s2", "notification": "13965446", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n12-s1", "notification": "13965448", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n12-s2", "notification": "13965450", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n11-s1", "notification": "13965452", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r2-n11-s2", "notification": "13965454", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r3-n10-s1", "notification": "13965456", "deduction": "0%", "records": [{"id": 32091732, "transaction_min_created_at": null, "sports": "RACING", "display_name": "Karina Antolasic ", "amount": 0.0, "current_odds": 5.0, "created_at": "2026-10-21T15:09:24.068438+11:00", "meeting_date": "2026-10-23", "market": "Fixed Win", "submit_time": null, "result_time": null, "submit_result": "Error", "submit_error": "Current odds is less than the notification odds.", "profit": 0.0, "used_boost": false, "used_spg": false, "used_bonus": false, "transaction_id": "", "bot_id": "npbUGEfxDF1jmFi", "notified": true, "reported_usage": 0.0, "profit_updated_by": "none", "profit_updated_at": null, "settled_at": "", "transaction_result": "", "status": "", "status_notes": "", "label": "fk-2026-10-23-cranbourne-r3-n10-s1", "owner": 2565, "bookie": 41, "notification": 13965456}]}
+{"label": "fk-2026-10-23-cranbourne-r3-n10-s2", "notification": "13965457", "deduction": "0%", "records": [{"id": 32091730, "transaction_min_created_at": null, "sports": "RACING", "display_name": "Karina Antolasic ", "amount": 0.0, "current_odds": 5.0, "created_at": "2026-10-21T15:09:22.470241+11:00", "meeting_date": "2026-10-23", "market": "Fixed Win", "submit_time": null, "result_time": null, "submit_result": "Error", "submit_error": "Current odds is less than the notification odds.", "profit": 0.0, "used_boost": false, "used_spg": false, "used_bonus": false, "transaction_id": "", "bot_id": "npbUGEfxDF1jmFi", "notified": true, "reported_usage": 0.0, "profit_updated_by": "none", "profit_updated_at": null, "settled_at": "", "transaction_result": "", "status": "", "status_notes": "", "label": "fk-2026-10-23-cranbourne-r3-n10-s2", "owner": 2565, "bookie": 41, "notification": 13965457}]}
+{"label": "fk-2026-10-23-cranbourne-r3-n4-s1", "notification": "13965459", "deduction": "0%", "records": [{"id": 32091734, "transaction_min_created_at": null, "sports": "RACING", "display_name": "Karina Antolasic ", "amount": 0.0, "current_odds": 9.0, "created_at": "2026-10-21T15:09:24.836299+11:00", "meeting_date": "2026-10-23", "market": "Fixed Win", "submit_time": null, "result_time": null, "submit_result": "Error", "submit_error": "Current odds is less than the notification odds.", "profit": 0.0, "used_boost": false, "used_spg": false, "used_bonus": false, "transaction_id": "", "bot_id": "npbUGEfxDF1jmFi", "notified": true, "reported_usage": 0.0, "profit_updated_by": "none", "profit_updated_at": null, "settled_at": "", "transaction_result": "", "status": "", "status_notes": "", "label": "fk-2026-10-23-cranbourne-r3-n4-s1", "owner": 2565, "bookie": 41, "notification": 13965459}]}
+{"label": "fk-2026-10-23-cranbourne-r3-n4-s2", "notification": "13965461", "deduction": "0%", "records": [{"id": 32091731, "transaction_min_created_at": null, "sports": "RACING", "display_name": "Karina Antolasic ", "amount": 0.0, "current_odds": 9.0, "created_at": "2026-10-21T15:09:23.455942+11:00", "meeting_date": "2026-10-23", "market": "Fixed Win", "submit_time": null, "result_time": null, "submit_result": "Error", "submit_error": "Current odds is less than the notification odds.", "profit": 0.0, "used_boost": false, "used_spg": false, "used_bonus": false, "transaction_id": "", "bot_id": "npbUGEfxDF1jmFi", "notified": true, "reported_usage": 0.0, "profit_updated_by": "none", "profit_updated_at": null, "settled_at": "", "transaction_result": "", "status": "", "status_notes": "", "label": "fk-2026-10-23-cranbourne-r3-n4-s2", "owner": 2565, "bookie": 41, "notification": 13965461}]}
+{"label": "fk-2026-10-23-cranbourne-r3-n5-s1", "notification": "13965463", "deduction": "0%", "records": [{"id": 32091735, "transaction_min_created_at": null, "sports": "RACING", "display_name": "Karina Antolasic ", "amount": 0.0, "current_odds": 2.7, "created_at": "2026-10-21T15:09:25.428565+11:00", "meeting_date": "2026-10-23", "market": "Fixed Win", "submit_time": null, "result_time": null, "submit_result": "Error", "submit_error": "Current odds is less than the notification odds.", "profit": 0.0, "used_boost": false, "used_spg": false, "used_bonus": false, "transaction_id": "", "bot_id": "npbUGEfxDF1jmFi", "notified": true, "reported_usage": 0.0, "profit_updated_by": "none", "profit_updated_at": null, "settled_at": "", "transaction_result": "", "status": "", "status_notes": "", "label": "fk-2026-10-23-cranbourne-r3-n5-s1", "owner": 2565, "bookie": 41, "notification": 13965463}]}
+{"label": "fk-2026-10-23-cranbourne-r3-n5-s2", "notification": "13965465", "deduction": "0%", "records": [{"id": 32091736, "transaction_min_created_at": null, "sports": "RACING", "display_name": "Karina Antolasic ", "amount": 0.0, "current_odds": 2.7, "created_at": "2026-10-21T15:09:26.002951+11:00", "meeting_date": "2026-10-23", "market": "Fixed Win", "submit_time": null, "result_time": null, "submit_result": "Error", "submit_error": "Current odds is less than the notification odds.", "profit": 0.0, "used_boost": false, "used_spg": false, "used_bonus": false, "transaction_id": "", "bot_id": "npbUGEfxDF1jmFi", "notified": true, "reported_usage": 0.0, "profit_updated_by": "none", "profit_updated_at": null, "settled_at": "", "transaction_result": "", "status": "", "status_notes": "", "label": "fk-2026-10-23-cranbourne-r3-n5-s2", "owner": 2565, "bookie": 41, "notification": 13965465}]}
+{"label": "fk-2026-10-23-cranbourne-r3-n5-s3", "notification": "13965467", "deduction": "0%", "records": [{"id": 32091737, "transaction_min_created_at": null, "sports": "RACING", "display_name": "Karina Antolasic ", "amount": 0.0, "current_odds": 2.7, "created_at": "2026-10-21T15:09:26.586414+11:00", "meeting_date": "2026-10-23", "market": "Fixed Win", "submit_time": null, "result_time": null, "submit_result": "Error", "submit_error": "Current odds is less than the notification odds.", "profit": 0.0, "used_boost": false, "used_spg": false, "used_bonus": false, "transaction_id": "", "bot_id": "npbUGEfxDF1jmFi", "notified": true, "reported_usage": 0.0, "profit_updated_by": "none", "profit_updated_at": null, "settled_at": "", "transaction_result": "", "status": "", "status_notes": "", "label": "fk-2026-10-23-cranbourne-r3-n5-s3", "owner": 2565, "bookie": 41, "notification": 13965467}]}
+{"label": "fk-2026-10-23-cranbourne-r3-n5-s4", "notification": "13965469", "deduction": "0%", "records": [{"id": 32091738, "transaction_min_created_at": null, "sports": "RACING", "display_name": "Karina Antolasic ", "amount": 0.0, "current_odds": 2.7, "created_at": "2026-10-21T15:09:27.210192+11:00", "meeting_date": "2026-10-23", "market": "Fixed Win", "submit_time": null, "result_time": null, "submit_result": "Error", "submit_error": "Current odds is less than the notification odds.", "profit": 0.0, "used_boost": false, "used_spg": false, "used_bonus": false, "transaction_id": "", "bot_id": "npbUGEfxDF1jmFi", "notified": true, "reported_usage": 0.0, "profit_updated_by": "none", "profit_updated_at": null, "settled_at": "", "transaction_result": "", "status": "", "status_notes": "", "label": "fk-2026-10-23-cranbourne-r3-n5-s4", "owner": 2565, "bookie": 41, "notification": 13965469}]}
+{"label": "fk-2026-10-23-cranbourne-r4-n7-s1", "notification": "13965471", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r4-n7-s2", "notification": "13965473", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r4-n7-s3", "notification": "13965475", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r4-n7-s4", "notification": "13965477", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r4-n7-s5", "notification": "13965478", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r4-n4-s1", "notification": "13965480", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r4-n4-s2", "notification": "13965482", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r4-n6-s1", "notification": "13965484", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r4-n6-s2", "notification": "13965486", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r4-n2-s1", "notification": "13965488", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r4-n2-s2", "notification": "13965490", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r5-n4-s1", "notification": "13965492", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r5-n4-s2", "notification": "13965494", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r5-n1-s1", "notification": "13965496", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r5-n1-s2", "notification": "13965498", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r5-n2-s1", "notification": "13965499", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r5-n2-s2", "notification": "13965500", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r5-n3-s1", "notification": "13965501", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r5-n3-s2", "notification": "13965502", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n2-s1", "notification": "13965503", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n2-s2", "notification": "13965504", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n7-s1", "notification": "13965505", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n7-s2", "notification": "13965506", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n7-s3", "notification": "13965507", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n7-s4", "notification": "13965508", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n5-s1", "notification": "13965509", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n5-s2", "notification": "13965510", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n3-s1", "notification": "13965511", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n3-s2", "notification": "13965512", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n4-s1", "notification": "13965513", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n4-s2", "notification": "13965514", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n1-s1", "notification": "13965515", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r6-n1-s2", "notification": "13965516", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r7-n2-s1", "notification": "13965517", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r7-n2-s2", "notification": "13965518", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r7-n1-s1", "notification": "13965519", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r7-n1-s2", "notification": "13965520", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r7-n3-s1", "notification": "13965521", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r7-n3-s2", "notification": "13965522", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r7-n8-s1", "notification": "13965523", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r7-n8-s2", "notification": "13965524", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r7-n12-s1", "notification": "13965525", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r7-n12-s2", "notification": "13965526", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r7-n9-s1", "notification": "13965527", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r7-n9-s2", "notification": "13965528", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r8-n4-s1", "notification": "13965529", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r8-n4-s2", "notification": "13965530", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r8-n2-s1", "notification": "13965531", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r8-n2-s2", "notification": "13965532", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r8-n3-s1", "notification": "13965533", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r8-n3-s2", "notification": "13965534", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r8-n10-s1", "notification": "13965535", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r8-n10-s2", "notification": "13965536", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r8-n7-s1", "notification": "13965537", "deduction": "0%", "records": []}
+{"label": "fk-2026-10-23-cranbourne-r8-n7-s2", "notification": "13965538", "deduction": "0%", "records": []}
