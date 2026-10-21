@@ -37,7 +37,11 @@ N_SIMS = 600
 TRAIN_FROM = '2015-01-01'
 MAX_TRAIN_BALLS = 600_000
 BALL_FEATS = ['b_sr', 'b_out', 'b_six', 'b_four', 'b_games', 'w_econ', 'w_wkt', 'w_balls', 'innings', 'over', 'wkts',
-              'faced', 'runs_so_far', 'need', 'req_rate', 'venue_first_runs', 'lf_bat_runs', 'lf_bat_outs']
+              'faced', 'runs_so_far', 'need', 'req_rate', 'venue_first_runs', 'lf_bat_runs', 'lf_bat_outs',
+              'bat_elo', 'bowl_elo', 'bat_home', 'bowl_home']
+# batting order is not fixed in real games (pinch hitters, promotions): each simulation jitters the usual
+# positions by this many places (sd) before ordering
+ORDER_JITTER = 0.8
 LGB = dict(objective='multiclass', num_class=len(OUTCOMES), learning_rate=0.08, n_estimators=150, num_leaves=31,
            min_child_samples=200, subsample=0.7, subsample_freq=1, colsample_bytree=0.8, verbose=-1)
 SEASONS = CHOOSE + CONFIRM
@@ -89,6 +93,13 @@ def ball_table(m, dl, g, t):
                           'w_pre_bowl_balls_pg': 'w_balls'})
     vf = t.drop_duplicates('match_id').set_index('match_id').venue_first_runs
     d['venue_first_runs'] = d.match_id.map(vf)
+    # each side's pre-game rating and how often it has played at this ground (the batting side is `team` on the ball)
+    side = t.drop_duplicates(['match_id', 'team']).set_index(['match_id', 'team'])
+    opp = side.opp.reindex(pd.MultiIndex.from_arrays([d.match_id, d.team])).to_numpy()
+    for who, teams in (('bat', d.team.to_numpy()), ('bowl', opp)):
+        key = pd.MultiIndex.from_arrays([d.match_id.to_numpy(), teams])
+        d[f'{who}_elo'] = side.elo_pre.reindex(key).to_numpy()
+        d[f'{who}_home'] = side.venue_share.reindex(key).to_numpy()
     lf = g.drop_duplicates('match_id').set_index('match_id')
     for c in ('lf_bat_runs', 'lf_bat_outs'):
         d[c] = d.match_id.map(lf[c]) if c in lf else 1.0
@@ -132,14 +143,27 @@ def bowling_plan(xi, rng, n):
     return plans
 
 
-def simulate_innings(mdl, bat, bowl, plans, ctx, innings, target, rng):
-    """Advance N simulations of one innings ball by ball. bat/bowl: the two XIs (batting order already applied)."""
+def batting_orders(xi, rng, n):
+    """n batting orders: usual positions jittered by ORDER_JITTER places (sd) per simulation, then ranked."""
+    base = xi.exp_pos.to_numpy(float)
+    return np.argsort(base[None, :] + rng.normal(0, ORDER_JITTER, (n, len(base))), axis=1)
+
+
+def simulate_innings(mdl, bat, bowl, plans, ctx, innings, target, rng, sides=(1500.0, 1500.0, np.nan, np.nan), orders=None):
+    """Advance N simulations of one innings ball by ball.
+
+    bat/bowl: the two XIs. orders: (n, 11) player indices in batting order per simulation (default: the XI as
+    given). sides: batting side's rating, bowling side's rating, batting side's and bowling side's home share.
+    Every per-player figure is indexed by player, not by position.
+    """
     n = plans.shape[0]
+    if orders is None:
+        orders = np.tile(np.arange(len(bat)), (n, 1))
     bat_rates = bat[['pre_sr', 'pre_out_per_ball', 'six_pb', 'four_pb', 'pre_games']].to_numpy(float)
     bowl_rates = bowl[['pre_econ', 'pre_wkts_per_ball', 'pre_bowl_balls_pg']].to_numpy(float)
-    striker = np.zeros(n, int)
-    non = np.ones(n, int)
-    nxt = np.full(n, 2)
+    striker = orders[:, 0].copy()        # player indices
+    non = orders[:, 1].copy()
+    nxt = np.full(n, 2)                  # next position in this simulation's order
     wkts = np.zeros(n, int)
     runs = np.zeros(n, int)
     legal = np.zeros(n, int)
@@ -147,7 +171,8 @@ def simulate_innings(mdl, bat, bowl, plans, ctx, innings, target, rng):
     p_runs = np.zeros((n, len(bat)), int)
     p_six = np.zeros((n, len(bat)), int)
     batted = np.zeros((n, len(bat)), bool)
-    batted[:, 0] = batted[:, 1] = True
+    batted[np.arange(n), striker] = True
+    batted[np.arange(n), non] = True
     w_wkts = np.zeros((n, len(bowl)), int)
     w_runs = np.zeros((n, len(bowl)), int)
     w_balls = np.zeros((n, len(bowl)), int)
@@ -167,7 +192,8 @@ def simulate_innings(mdl, bat, bowl, plans, ctx, innings, target, rng):
         req = need / (np.maximum(120 - legal[i], 1) / 6) if target is not None else np.full(len(i), np.nan)
         X = np.column_stack([br, wr, np.full(len(i), innings), over, wkts[i], faced[i, striker[i]], runs[i], need, req,
                              np.full(len(i), ctx['venue_first_runs']), np.full(len(i), ctx['lf_bat_runs']),
-                             np.full(len(i), ctx['lf_bat_outs'])])
+                             np.full(len(i), ctx['lf_bat_outs']), np.full(len(i), sides[0]), np.full(len(i), sides[1]),
+                             np.full(len(i), sides[2]), np.full(len(i), sides[3])])
         prob = mdl.predict_proba(pd.DataFrame(X, columns=BALL_FEATS))
         u = rng.random(len(i))[:, None]
         cls = (prob.cumsum(1) < u).sum(1).clip(max=len(OUTCOMES) - 1)
@@ -186,8 +212,9 @@ def simulate_innings(mdl, bat, bowl, plans, ctx, innings, target, rng):
         wkts[i] += out
         # the out batter is replaced by the next in the order
         new = out & (nxt[i] < len(bat))
-        striker[i[new]] = nxt[i[new]]
-        batted[i[new], nxt[i[new]]] = True
+        incoming = orders[i[new], nxt[i[new]]]
+        striker[i[new]] = incoming
+        batted[i[new], incoming] = True
         nxt[i[new]] += 1
         # odd runs swap ends; so does the end of an over
         odd = (RUNS[cls] % 2 == 1) & ~out
@@ -200,12 +227,19 @@ def simulate_innings(mdl, bat, bowl, plans, ctx, innings, target, rng):
 
 
 def simulate_match(mdl, xi1, xi2, ctx, rng, n=N_SIMS):
-    """Team 1 and team 2 each bat first in half the simulations (the toss is not known before it happens)."""
+    """Team 1 and team 2 each bat first in half the simulations (the toss is not known before it happens).
+
+    ctx may carry 'elo1', 'elo2', 'home1', 'home2' (each side's pre-game rating and home-ground share).
+    """
+    e1, e2 = ctx.get('elo1', 1500.0), ctx.get('elo2', 1500.0)
+    h1, h2 = ctx.get('home1', np.nan), ctx.get('home2', np.nan)
     res = {}
-    for first, second, label in ((xi1, xi2, 't1_first'), (xi2, xi1, 't2_first')):
+    for first, second, label, sf, ss in ((xi1, xi2, 't1_first', (e1, e2, h1, h2), (e2, e1, h2, h1)),
+                                         (xi2, xi1, 't2_first', (e2, e1, h2, h1), (e1, e2, h1, h2))):
         h = n // 2
-        a = simulate_innings(mdl, first, second, bowling_plan(second, rng, h), ctx, 1, None, rng)
-        b = simulate_innings(mdl, second, first, bowling_plan(first, rng, h), ctx, 2, a['runs'] + 1, rng)
+        a = simulate_innings(mdl, first, second, bowling_plan(second, rng, h), ctx, 1, None, rng, sf, batting_orders(first, rng, h))
+        b = simulate_innings(mdl, second, first, bowling_plan(first, rng, h), ctx, 2, a['runs'] + 1, rng, ss,
+                             batting_orders(second, rng, h))
         res[label] = (a, b)
     return res
 
@@ -266,7 +300,10 @@ def run(d, seasons=SEASONS):
                 if len(xi1) < 11 or len(xi2) < 11:
                     continue
                 vfr = t.loc[t.match_id == r.match_id, 'venue_first_runs'].iloc[0]
-                ctx = dict(venue_first_runs=vfr if pd.notna(vfr) else np.nan,
+                side = t[t.match_id == r.match_id].set_index('team')
+                ctx = dict(elo1=float(side.elo_pre.get(r.team1, 1500.0)), elo2=float(side.elo_pre.get(r.team2, 1500.0)),
+                           home1=float(side.venue_share.get(r.team1, np.nan)), home2=float(side.venue_share.get(r.team2, np.nan)),
+                           venue_first_runs=vfr if pd.notna(vfr) else np.nan,
                            lf_bat_runs=float(xg.lf_bat_runs.iloc[0]) if 'lf_bat_runs' in xg else 1.0,
                            lf_bat_outs=float(xg.lf_bat_outs.iloc[0]) if 'lf_bat_outs' in xg else 1.0)
                 gm, pls = summarise(r.match_id, xi1, xi2, simulate_match(mdl, xi1, xi2, ctx, rng))
@@ -278,7 +315,8 @@ def run(d, seasons=SEASONS):
 
 
 def main(d):
-    games, players = run(d)
+    seasons = os.environ.get('SIM_SEASONS', ','.join(SEASONS)).split(',')
+    games, players = run(d, seasons)
     games.to_pickle(os.path.join(d, 'sim_games.pkl'))
     players.to_pickle(os.path.join(d, 'sim_players.pkl'))
     print(f'sim: {len(games)} games, {len(players)} player-games')

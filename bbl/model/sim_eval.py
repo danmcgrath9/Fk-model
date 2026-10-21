@@ -25,7 +25,10 @@ def crps_sample(samples, y):
 
 
 def nb_from_moments(mean, var):
-    var = max(var, mean + 1e-6)
+    """A negative binomial with the simulated mean and variance (floors keep a 0-run or 1-sample player defined)."""
+    mean = max(float(mean), 0.05)
+    var = float(var) if np.isfinite(var) else 3 * mean
+    var = max(var, mean * 1.01)
     r = mean ** 2 / (var - mean)
     return r, r / (r + mean)
 
