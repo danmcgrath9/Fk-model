@@ -174,6 +174,29 @@ The test: after tonight's draw, re-pull Form King and re-price on the final inpu
   straight away because TAB's markets for the two feature races were already up; none was placed (no bet records), and BetMatic
   reports them as already triggered, so nothing is left live. Founder, 21 Oct: R7 and R8 are Aethelwulf and Cosmic Crusader only.
 - TAB balance read $0.29 at every send: it must be funded before Friday's opens or TAB refuses what fires.
+- CORRECTION (21 Oct 4pm): the Cranbourne R3 $0 records were NOT the TAB balance. Every one reads "Current odds is less
+  than the notification odds": TAB opened them under our minimums (Karren $2.70 v $2.82, Escarpa $9 v $13.74, Bajaria $5 v
+  $20.91). TAB was funded by 3:45pm ($1,250).
+- Cranbourne and Flemington markets opened Wed 21 Oct afternoon. Cranbourne R1, R2 and R4 orders TRIGGERED (R1 2:56pm) but
+  the bot never attempted them: no bet record at all (same fault as Geelong R1/R2, Mon 19 Oct). Every other race shows the
+  bot's refusal on price. R2's Eye For An Eye (FK open $22, min $16.33) and Superstock (FK open $17.50, min $12.84) were value
+  at the open and were missed by that fault; placed by hand after.
+- Unit $50 from 21 Oct 4pm (founder). Ballarat's 48 orders cancelled and resent at $50 to fire at the open.
+
+### Taken, Wed 21 Oct (TAB, real money)
+| Meeting | Race | Horse | Price | Stake | Units | Ours | How |
+|---|---|---|---|---|---|---|---|
+| Cranbourne Fri 23 | R6 | Castellar | $17 | $18 | 0.72u ($25 unit) | $12.41 | open order (min $14.80) |
+| Cranbourne Fri 23 | R2 | Eye For An Eye | $23 | $95 | 1.90u | $13.22 | placed after the open, two steps ($73 + $22) |
+| Cranbourne Fri 23 | R2 | Superstock | $15 | $98 | 1.96u | $10.39 | placed after the open, first step (second needed $16.05) |
+| Flemington Sat 24 | R2 | Turbo Saint | $18 | $26 | 0.52u | $12.30 | after-open, value at FK open $17 |
+| Flemington Sat 24 | R9 | Classic Gem | $9 | $44 | 0.88u | $7.33 | after-open, value at FK open $13.50 |
+| Flemington Sat 24 | R9 | Shockletz | $10 | $40 | 0.80u | $8.10 | after-open, value at FK open $12.67 |
+| **Total** | | | | **$321** | **6.78u** | | |
+
+Flemington after-open, not filled (TAB under the minimum): Ice Kool ($2.30 v $2.73), Surfin' Bird ($2.90 v $3.30), and the
+higher steps of the three above. Flemington R7/R8: Aethelwulf and Cosmic Crusader only (founder's own bets).
+
 
 ## Copied tips (founder's call, separate from the model's results)
 
