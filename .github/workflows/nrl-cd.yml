@@ -1,0 +1,61 @@
+name: nrl champion data
+
+# Champion Data match-centre JSON, NRL 2014-2026 (nrl/docs/INVENTORY.md). Approved by the founder for
+# private research on 21 Oct 2026; the feed publishes no terms. One season per job, one job at a time,
+# one request every 3 seconds. A season already on the nrl-history release is never pulled again
+# (refresh names a season to re-pull, e.g. the current one in-season). Its own concurrency group; no keys.
+
+on:
+  workflow_dispatch:
+    inputs:
+      refresh:
+        description: 'seasons to pull again even if held, comma separated; blank = none'
+        default: ''
+  push:
+    branches: [nrl-model]
+    paths:
+      - 'nrl/data/pull_cd.py'
+      - '.github/workflows/nrl-cd.yml'
+
+concurrency:
+  group: nrl-cd
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      max-parallel: 1
+      fail-fast: false
+      matrix:
+        season: [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      NRL_UA: fk-model NRL research ${{ vars.NRL_CONTACT }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+      - name: Pull ${{ matrix.season }} unless held
+        run: |
+          f=cd_raw_${{ matrix.season }}.jsonl.gz
+          refresh=",${{ github.event.inputs.refresh }},"
+          if gh release view nrl-history --json assets --jq '.assets[].name' | grep -qx "$f" && [[ "$refresh" != *",${{ matrix.season }},"* ]]; then
+            echo "$f held on the release, not pulled again" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0
+          fi
+          set -o pipefail
+          python nrl/data/pull_cd.py --seasons ${{ matrix.season }} --out nrl/cache/cd | tee -a "$GITHUB_STEP_SUMMARY"
+          for g in nrl/cache/cd/$f nrl/cache/cd/cd_missing_${{ matrix.season }}.txt; do
+            [ -e "$g" ] || continue
+            ok=no
+            for i in 1 2 3; do gh release upload nrl-history "$g" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
+            [ "$ok" = yes ] || { echo "could not upload $g"; exit 1; }
+          done
