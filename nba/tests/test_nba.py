@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -177,3 +178,57 @@ def test_injury_snapshots_and_missing_reports(tmp_path, monkeypatch):
     rows = pd.read_csv(tmp_path / "2025-01.csv")
     assert (log.status.str.startswith("missing")).sum() == sum(t.hour == 13 for t in times)
     assert len(rows) == (log.status == "ok").sum() and rows.report_time.notna().all()
+
+
+def test_oddsapi_puller_with_a_fake_api(tmp_path, monkeypatch):
+    """Empty snapshots are free and are skipped past; the open is narrowed between the last
+    empty and first priced rung; the cap stops spending; the key never reaches the ledger;
+    a finished game is never bought twice."""
+    import json
+    from datetime import datetime, timezone
+    from urllib.parse import parse_qs, urlparse
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "odds"))
+    import pull_oddsapi as oa
+
+    tip = datetime(2024, 1, 16, 0, 30, tzinfo=timezone.utc)
+    opens = tip.replace(hour=0) - oa.timedelta(hours=10)          # props posted 10.5h before tip
+    calls = []
+
+    def fake(url):
+        q = {k: v[0] for k, v in parse_qs(urlparse(url).query).items()}
+        calls.append((urlparse(url).path, q))
+        if urlparse(url).path.endswith("/events"):
+            return {"data": [{"id": "e1", "commence_time": oa.iso(tip), "home_team": "H", "away_team": "A"}]}, \
+                {"x-requests-last": "1", "x-requests-remaining": "99999"}
+        when = oa.parse_iso(q["date"])
+        if when < opens:
+            return {"timestamp": q["date"], "data": {"id": "e1", "bookmakers": []}}, \
+                {"x-requests-last": "0", "x-requests-remaining": "99999"}
+        body = {"timestamp": q["date"], "data": {"id": "e1", "commence_time": oa.iso(tip), "home_team": "H",
+                "away_team": "A", "bookmakers": [{"key": "sportsbet", "markets": [{"key": "player_points",
+                "outcomes": [{"name": "Over", "description": "X Y", "price": 1.9, "point": 20.5},
+                             {"name": "Under", "description": "X Y", "price": 1.9, "point": 20.5}]}]}]}}
+        return body, {"x-requests-last": "10", "x-requests-remaining": "99999"}
+
+    monkeypatch.setattr(oa, "HERE", tmp_path)
+    req = {"sport": "basketball_nba", "regions": ["au"], "markets": ["player_points"],
+           "ladder_minutes_before": [1440, 720, 120], "open_search_steps": 3, "day_start_utc_hour": 12}
+    client = oa.Client("SECRETKEY", 10_000, 0, tmp_path / "ledger.csv", fetch=fake, pause=0)
+    rows = oa.pull_event(client, "basketball_nba", {"id": "e1", "commence_time": oa.iso(tip)}, req)
+    # Props open 10.5h before tip. Rungs 24h and 12h are empty (free), 2h is priced; three
+    # search steps between 12h and 2h (17:30 priced, 15:00 priced, 13:45 empty) put the
+    # first priced snapshot within 75 minutes of the real open.
+    assert client.spent == 10 * len({r["requested"] for r in rows})
+    first = min(oa.parse_iso(r["requested"]) for r in rows)
+    assert opens <= first <= opens + oa.timedelta(minutes=75)
+    assert "SECRETKEY" not in (tmp_path / "ledger.csv").read_text()
+
+    capped = oa.Client("k", 15, 0, tmp_path / "l2.csv", fetch=fake, pause=0)
+    with pytest.raises(oa.OutOfBudget):
+        oa.pull_event(capped, "basketball_nba", {"id": "e1", "commence_time": oa.iso(tip)}, req)
+
+    monkeypatch.setattr(oa, "game_days", lambda req, month: ["2024-01-15"])
+    oa.pull_month(client, req, "2024-01")
+    n = len(calls)
+    oa.pull_month(client, req, "2024-01")                           # done: only the 1-credit event list
+    assert len(calls) == n + 1

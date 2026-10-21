@@ -1,0 +1,73 @@
+{
+ "why": "NBA player props, US and Australian books, a ladder of snapshots from 30 hours before tip-off to 10 minutes before, for 2023/24 to 2025/26. Run 'probe' first (~200 credits), read nba/odds/probe.json, then switch mode to 'pull'.",
+ "mode": "probe",
+ "sport": "basketball_nba",
+ "regions": [
+  "us",
+  "au"
+ ],
+ "markets": [
+  "player_points",
+  "player_rebounds",
+  "player_assists",
+  "player_threes"
+ ],
+ "ladder_minutes_before": [
+  1800,
+  1440,
+  1080,
+  720,
+  480,
+  240,
+  120,
+  60,
+  15
+ ],
+ "open_search_steps": 2,
+ "game_days_file": "injuries/game_days.json",
+ "day_start_utc_hour": 12,
+ "games_per_day": 7.6,
+ "months": [
+  "2023-10",
+  "2023-11",
+  "2023-12",
+  "2024-01",
+  "2024-02",
+  "2024-03",
+  "2024-04",
+  "2024-10",
+  "2024-11",
+  "2024-12",
+  "2025-01",
+  "2025-02",
+  "2025-03",
+  "2025-04",
+  "2025-10",
+  "2025-11",
+  "2025-12",
+  "2026-01",
+  "2026-02",
+  "2026-03",
+  "2026-04"
+ ],
+ "max_credits": 300000,
+ "floor": 5000,
+ "probe": {
+  "nba_day": "2024-01-15",
+  "afl_day": "2025-06-14",
+  "afl_day_start_utc_hour": 0,
+  "afl_candidate_markets": [
+   "player_disposals",
+   "player_disposals_over",
+   "player_goal_scorer_anytime",
+   "player_goals_scored_over",
+   "player_marks",
+   "player_marks_over",
+   "player_tackles",
+   "player_tackles_over",
+   "player_kicks",
+   "player_handballs",
+   "player_afl_fantasy_points"
+  ]
+ }
+}

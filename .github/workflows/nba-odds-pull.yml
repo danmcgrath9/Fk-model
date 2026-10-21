@@ -1,0 +1,96 @@
+name: nba odds pull
+
+# NBA (and AFL) only. Historical prop prices from The Odds API, driven by nba/odds/request.json:
+# mode "probe" (~200 credits, writes nba/odds/probe.json) or "pull" (one job per month, hard
+# credit cap per job, nothing bought twice). The key is the ODDS_API_KEY secret in the
+# "Odds API" environment. Own concurrency group: never queues behind or blocks fk-* racing jobs.
+
+on:
+  push:
+    branches: [claude/nba-props]
+    paths: ['nba/odds/request.json']
+  workflow_dispatch:
+
+concurrency:
+  group: nba-odds-pull
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      mode: ${{ steps.p.outputs.mode }}
+      todo: ${{ steps.p.outputs.todo }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: p
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os
+          r = json.load(open("nba/odds/request.json"))
+          print("mode=" + r["mode"])
+          todo = [m for m in r["months"]
+                  if not os.path.exists(f"nba/odds/raw/{r['sport']}/{m}_complete")] if r["mode"] == "pull" else []
+          print("todo=" + json.dumps(todo or ["none"]))
+          PY
+
+  probe:
+    needs: plan
+    if: needs.plan.outputs.mode == 'probe'
+    runs-on: ubuntu-latest
+    environment: Odds API
+    timeout-minutes: 15
+    env:
+      ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python nba/odds/pull_oddsapi.py probe
+      - name: Commit
+        if: always()
+        run: |
+          git config user.name "nba odds pull"
+          git config user.email "actions@users.noreply.github.com"
+          git add nba/odds || true
+          git diff --cached --quiet && { echo "nothing new"; exit 0; }
+          git commit -m "NBA: Odds API probe (workflow run ${{ github.run_id }})"
+          for i in 1 2 3; do git pull --rebase -q origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0; sleep 5; done
+          exit 1
+
+  pull:
+    needs: plan
+    if: needs.plan.outputs.mode == 'pull' && needs.plan.outputs.todo != '["none"]'
+    runs-on: ubuntu-latest
+    environment: Odds API
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        month: ${{ fromJson(needs.plan.outputs.todo) }}
+    env:
+      ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pull ${{ matrix.month }}
+        run: python nba/odds/pull_oddsapi.py pull ${{ matrix.month }}
+      - name: Commit
+        if: always()
+        run: |
+          git config user.name "nba odds pull"
+          git config user.email "actions@users.noreply.github.com"
+          git add nba/odds || true
+          git diff --cached --quiet && { echo "nothing new"; exit 0; }
+          git commit -m "NBA: Odds API prices for ${{ matrix.month }} (workflow run ${{ github.run_id }})"
+          for i in 1 2 3 4 5; do git pull --rebase -q origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0; sleep $((RANDOM % 10 + 5)); done
+          exit 1
