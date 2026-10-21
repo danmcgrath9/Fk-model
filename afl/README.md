@@ -21,7 +21,10 @@ no BetMatic orders. Paper only until the founder says otherwise.
 | Team model | margin, win chance and total per game, at the open (no team news) and with teams named | first cut done, see `docs/TEAM_STEP1.md` |
 | Lineup strength | AFL Player Ratings per player (2026 stand-in from box scores), named 22 vs side expected at the open | done, see `docs/TEAM_STEP2_LINEUPS.md`: no lineup measure improves the team model out of sample |
 | Goals, marks, tackles | same machinery, count models | done, see `docs/PROPS_STEP1.md` (marks and tackles against stand-in lines; goals as calibrated 1+/2+/3+ chances) |
-| Weather | rain and wind by ground | not started; Open-Meteo history may need a paid plan for this use, BOM is the free alternative |
+| Weather | rain and wind by ground | tested on Fryzigg's match weather: small, consistent gain (docs/STEP3_WITHOUT_ODDS.md); 2027 needs a forecast source |
+| Market benchmark | Squiggle's "Punters" (the market's win chance and margin, 2017-2026) | done: the market beats our team model; blending adds nothing detectable |
+| Odds pipeline | pull, name matching, real-line backtest, walk-forward projections | built and tested; waits on the ODDS_API_KEY secret and PULL.json |
+| Price sheet | every player's line and fair prices per round | done for past rounds (docs/SHEET_2026_R24.md); live needs a named-teams source |
 
 ## Disposals, step 1 results (2025 and 2026, never seen in fitting or tuning)
 
