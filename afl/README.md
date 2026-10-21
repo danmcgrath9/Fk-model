@@ -10,13 +10,15 @@ no BetMatic orders. Paper only until the founder says otherwise.
 | Step | What | Status |
 |---|---|---|
 | Data | AFL Tables + Footywire per-game player stats 2012-2026 from fitzRoy's GitHub mirror | done: 138,255 player-games, all matched |
-| Data | Fryzigg advanced stats, Footywire betting odds, Squiggle games and tips | `afl data` workflow, one call per season, parquet on the `afl-history` release |
+| Data | Fryzigg advanced stats (incl. AFL Player Ratings, spoils, pressure, weather), Squiggle games and every model's tips | on the `afl-history` release: Fryzigg 2012-2025 (2026 not published yet), Squiggle games 2012-2026, tips 2017-2025 |
+| Data | Footywire betting odds | failed every season ("cannot open the connection": Footywire refuses GitHub's runners); The Odds API covers odds from 2020 |
 | 1. Projection | disposals: time on ground x disposals per full game, and a direct model, on pre-game features | done, see `docs/DISPOSALS_STEP1.md` |
 | 2. Probabilities | negative binomial around the projection, spread fitted on 2024 | done for disposals |
 | 3. Backtest | against STAND-IN lines (recent averages), 2025 and 2026 unseen | done; real lines do not exist yet |
 | 3. Backtest | against real opening and closing lines | needs recorded lines (round 1 2027) or a paid source |
 | 4. Team-news repricing test | measurable from recorded prices only | from round 1 2027 |
 | 5. Paper season | record openers, compare with projection and close | from round 1 2027 |
+| Team model | margin, win chance and total per game, at the open (no team news) and with teams named | first cut done, see `docs/TEAM_STEP1.md` |
 | Goals, marks, tackles | same machinery, count models | not started |
 | Weather | rain and wind by ground | not started; Open-Meteo history may need a paid plan for this use, BOM is the free alternative |
 
@@ -44,6 +46,20 @@ What drives the projection: an exponentially weighted disposals average (68% of 
 model's gain), then disposals per full game on the ground, then the player's share of his
 team's usual disposals. Team news (outs), opponent, ground and expected margin each add a
 little. That is honest: most of the signal is form, read better.
+
+## Team model, first cut (scored against Squiggle's 30-odd public models)
+
+| season | ours, teams named | ours, at the open | Wheelo Ratings | Punters (the betting market) |
+|---|---|---|---|---|
+| 2024, bits per game (rank) | 0.147 (4th) | 0.139 (7th) | 0.155 (2nd) | 0.134 (12th) |
+| 2025, bits per game (rank) | 0.229 (7th) | 0.224 (9th) | 0.232 (4th) | 0.239 (1st) |
+
+Bits: Squiggle's score for a win probability (higher is better). Competitive with the public models,
+level with the market over two seasons, not better than Wheelo. Team news does not help yet: in games
+where the named 22 moved our margin by 6+ points, the named prediction missed by more (25.8 against
+24.9), so the lineup-strength measure (recent SuperCoach) is not good enough. Next: AFL Player Ratings
+from Fryzigg, a proper expected-22 at the open, and the test that matters, against real opening lines.
+Squiggle's 2026 tips file did not reach the release (re-pull pending), so 2026 has no comparison yet.
 
 ## Data sources and their terms (checked 21 Oct 2026)
 

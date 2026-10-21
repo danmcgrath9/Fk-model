@@ -19,7 +19,7 @@ import unicodedata
 import numpy as np
 import pandas as pd
 
-TEAM = {'Brisbane Lions': 'Brisbane', 'Footscray': 'Western Bulldogs'}
+TEAM = {'Brisbane Lions': 'Brisbane', 'Footscray': 'Western Bulldogs', 'Greater Western Sydney': 'GWS'}
 STATS = ['D', 'K', 'HB', 'M', 'G', 'B', 'T', 'HO', 'GA', 'I50', 'CL', 'CG', 'R50', 'FF', 'FA', 'AF', 'SC', 'CP', 'UP',
          'ED', 'DE', 'CM', 'MI5', 'One.Percenters', 'BO', 'TOG', 'MG', 'SI', 'TO', 'ITC', 'T5', 'CCL', 'SCL']
 ELO_K, ELO_HGA, ELO_CARRY = 0.08, 8.0, 0.7     # margin points per point of error, home ground, share kept over summer

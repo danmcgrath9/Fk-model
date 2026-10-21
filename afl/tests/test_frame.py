@@ -57,3 +57,10 @@ def test_elo_expected_margin_is_pregame():
     e = frame.elo(g)
     assert e.iloc[0] == frame.ELO_HGA                       # first meeting knows nothing but home ground
     assert e.iloc[1] == pytest.approx(frame.ELO_HGA + 2 * frame.ELO_K * (40 - frame.ELO_HGA))   # moved only by game 1
+
+
+def test_every_opponent_is_a_team_name(base):
+    # AFL Tables names a club one way as a player's team and another as home or away team ("GWS" against
+    # "Greater Western Sydney"); a mismatch silently cuts every opponent and rating feature for that club
+    assert set(base.opp) == set(base.team)
+    assert base.groupby('game').team.nunique().eq(2).all()
