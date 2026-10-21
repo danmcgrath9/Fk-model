@@ -67,6 +67,14 @@ jobs:
           tar czf inventory2_v1.tar.gz -C aleague/cache inventory2
           gh release upload aleague-history inventory2_v1.tar.gz --clobber
 
+      - name: Inventory, third look (Ultimate A-League integration and match pages), once
+        run: |
+          if grep -qx inventory3_v1.tar.gz held.txt; then echo "inventory 3 held, not repeated"; exit 0; fi
+          set -o pipefail
+          python -m aleague.data.inventory3 --out aleague/cache/inventory3
+          tar czf inventory3_v1.tar.gz -C aleague/cache inventory3
+          gh release upload aleague-history inventory3_v1.tar.gz --clobber
+
       - name: Results sources (FBref results mirror on GitHub, Wikipedia season pages), once
         run: |
           if grep -qx results_raw_v1.tar.gz held.txt; then echo "results raw v1 held, not re-pulled"; exit 0; fi
