@@ -39,6 +39,7 @@ warnings.filterwarnings('ignore')
 FIT, TUNE, CONFIRM, FINAL = (2016, 2021), 2022, (2023, 2024), (2025, 2026)
 PRICE = 1.87                      # both sides, about 7% overround
 MIN_GAMES, MIN_MINUTES = 5, 12.0
+USE_BOOST = False                 # usage redistribution: tried, no gain at any lookback (nbl/docs/RESEARCH.md)
 NAMES = {'pts': 'points', 'reb': 'rebounds', 'ast': 'assists', 'fg3m': 'threes', 'pra': 'points+rebounds+assists'}
 RATE = {'pts': 'r_pts', 'reb': 'r_reb', 'ast': 'r_ast', 'fg3m': 'r_fg3m'}
 OPP = {'pts': 'opp_pts_rel', 'reb': 'opp_reb_rel', 'ast': 'opp_ast_rel', 'fg3m': 'opp_fg3m_rel'}
@@ -79,9 +80,14 @@ def structural_design(d, market, min_hat):
     else:
         base = min_hat * d[RATE[market]]
         opp = d[OPP[market]]
+    boost = (d.boost_pts + d.boost_reb + d.boost_ast) if market == 'pra' else d[f'boost_{market}'] if f'boost_{market}' in d else \
+        d.boost_fg3a * (d.r_fg3m / d.r_fg3a.clip(1e-4))
     X = pd.DataFrame({'log_opp': np.log(opp.fillna(1.0).clip(0.5, 2)), 'log_pace': np.log(d.pace_rel.fillna(1.0).clip(0.8, 1.2)),
                       'blowout': d.exp_blowout.fillna(0) / 10, 'min_out': d.min_out.fillna(0) / 30,
                       'b2b': d.b2b.fillna(0), 'home': d.is_home})
+    if USE_BOOST:
+        # what absent teammates usually produce, this player's share of it, against his own base (usage redistribution)
+        X['log_boost'] = np.log1p(boost.fillna(0) / np.exp(np.log(base.clip(1e-3))))
     return np.log(base.clip(1e-3)), X
 
 
@@ -108,6 +114,24 @@ def fit_dispersion(y, mu):
         a = np.exp(log_a); n = 1 / a
         return -np.sum(stats.nbinom.logpmf(y, n, n / (n + mu)))
     return float(np.exp(optimize.minimize_scalar(nll, bounds=(-8, 2), method='bounded').x))
+
+
+def fit_spread(y, mu):
+    """Negative binomial spread that changes with the projection: a(mu) = a0 * mu^k, by maximum likelihood on
+    the tuning season. Chosen over one spread per market because it scored better on 2022-23 and on 2023-24
+    to 2024-25, in every market but rebounds (level) (nbl/research/distributions.py)."""
+    y = np.asarray(y, float); mu = np.asarray(mu, float)
+
+    def nll(t):
+        a = np.clip(np.exp(t[0]) * mu ** t[1], 1e-4, 50); n = 1 / a
+        return -np.sum(stats.nbinom.logpmf(y, n, n / (n + mu)))
+    t = optimize.minimize(nll, [np.log(0.2), 0.0], method='Nelder-Mead').x
+    return float(np.exp(t[0])), float(t[1])
+
+
+def spread(c, mu):
+    """The spread for projection(s) mu from a market's fitted (a0, k)."""
+    return np.clip(c['a0'] * np.asarray(mu, float) ** c['k'], 1e-4, 50)
 
 
 def p_over(mu, line, a):
@@ -208,7 +232,8 @@ def project(p, fit_range=FIT, tune_season=TUNE):
         pick = min(dev, key=dev.get)
         e[f'{mk}_hat'] = e[f'{mk}_{pick}']
         a = fit_dispersion(tu[mk], tu[f'{mk}_{pick}'])
-        choice[mk] = dict(pick=pick, dev=dev, a=a, coef=dict(zip(['const'] + list(X_f.columns), np.round(b, 3))),
+        a0, k = fit_spread(tu[mk], tu[f'{mk}_{pick}'])
+        choice[mk] = dict(pick=pick, dev=dev, a=a, a0=a0, k=k, coef=dict(zip(['const'] + list(X_f.columns), np.round(b, 3))),
                           mae={k: float(np.abs(tu[mk] - tu[f'{mk}_{k}']).mean()) for k in ('struct', 'direct', 'blend')},
                           mae_l10=float(np.abs(tu[mk] - tu[f'{mk}_l10']).mean()))
     return e, choice, info
@@ -237,16 +262,21 @@ def run(cache, out_md):
       'seasons and before the final check). Seasons are named by the year they start. Fit 2016-2021, tune 2022, '
       'confirm 2023 and 2024, final check 2025 and 2026 (2026 = this season to 18 Oct 2026).')
     W('')
+    if final:
+        W('**Honesty note.** The final-check seasons were scored once with the first version (21 Oct 2026). Since then '
+          'per-stat memory and a spread that changes with the projection were adopted, both chosen on 2016-2022 and '
+          'confirmed on 2023-2024 only (nbl/docs/RESEARCH.md); this is a second look at 2025-2026.')
+        W('')
     W('## Projection accuracy')
     W('')
     W(f'Minutes, tuning season: our minutes model misses by {info["min_mae_model"]:.2f} minutes a game, the player\'s '
       f'decayed average by {info["min_mae_ew"]:.2f}.')
     W('')
-    W('| market | model chosen on 2022 | miss per player-game, 2022: ours | last-10 average | spread (NB a) |')
+    W('| market | model chosen on 2022 | miss per player-game, 2022: ours | last-10 average | spread a(mu) = a0 mu^k |')
     W('|---|---|---|---|---|')
     for mk in PROPS:
         c = choice[mk]
-        W(f'| {NAMES[mk]} | {c["pick"]} | {c["mae"][c["pick"]]:.2f} | {c["mae_l10"]:.2f} | {c["a"]:.3f} |')
+        W(f'| {NAMES[mk]} | {c["pick"]} | {c["mae"][c["pick"]]:.2f} | {c["mae_l10"]:.2f} | {c["a0"]:.3f} mu^{c["k"]:.2f} |')
     W('')
     W('| season | rows | ' + ' | '.join(f'{NAMES[m]}: ours / last 10' for m in PROPS) + ' |')
     W('|---|---|' + '---|' * len(PROPS))
@@ -266,7 +296,7 @@ def run(cache, out_md):
             shifts[(mk, col)] = even_shift(tune[mk].to_numpy(), tune[f'{mk}_{col}'].to_numpy())
         d = e[e.season.isin(CONFIRM)].copy()
         d['line'] = stand_in_line(d[f'{mk}_l10'], shifts[(mk, 'l10')])
-        d['po'] = p_over(d[f'{mk}_hat'], d.line, choice[mk]['a'])
+        d['po'] = p_over(d[f'{mk}_hat'], d.line, spread(choice[mk], d[f'{mk}_hat']))
         d['bin'] = pd.cut(d.po, [0, .3, .4, .5, .6, .7, 1])
         for bn, x in d.groupby('bin', observed=True):
             W(f'| {NAMES[mk]} | {bn.left:.0%} to {bn.right:.0%} | {len(x)} | {(x[mk] > x.line).mean():.0%} |')
@@ -287,7 +317,7 @@ def run(cache, out_md):
                 d['line'] = stand_in_line(d[f'{mk}_{col}'], shifts[(mk, col)])
                 d = marketable(d, mk)
                 d['y'] = d[mk]
-                d['p_over'] = p_over(d[f'{mk}_hat'], d.line, choice[mk]['a'])
+                d['p_over'] = p_over(d[f'{mk}_hat'], d.line, spread(choice[mk], d[f'{mk}_hat']))
                 for thr in (0.56, 0.60):
                     b = bets(d, thr)
                     roi, lo, hi = roi_ci(b)
@@ -334,7 +364,7 @@ def run(cache, out_md):
                 d['line'] = stand_in_line(d[f'{mk}_{col}'], shifts[(mk, col)])
                 d = marketable(d, mk)
                 d['y'] = d[mk]
-                d['p_over'] = p_over(d[f'{mk}_hat'], d.line, choice[mk]['a'])
+                d['p_over'] = p_over(d[f'{mk}_hat'], d.line, spread(choice[mk], d[f'{mk}_hat']))
                 d['price_over'], d['price_under'] = naive_book(d, mk, col, k, a_n)
                 for edge in (0.03, 0.08):
                     b = value_bets(d, edge)
@@ -367,7 +397,7 @@ def run(cache, out_md):
             cells = []
             for mu in (d[f'{mk}_hat'].to_numpy(), rng.permutation(d[f'{mk}_hat'].to_numpy()),
                        (0.5 * d[f'{mk}_l10'] + 0.5 * d.min_ew * rate).to_numpy()):
-                d['p_over'] = p_over(mu, d.line, choice[mk]['a'])
+                d['p_over'] = p_over(mu, d.line, spread(choice[mk], mu))
                 b = value_bets(d, 0.03)
                 cells.append(f'{len(b):,}, {roi_ci(b)[0]:+.1%}')
             W(f'| {NAMES[mk]} | {label} | ' + ' | '.join(cells) + ' |')
@@ -384,7 +414,7 @@ def run(cache, out_md):
         d['line'] = stand_in_line(d[f'{mk}_l10'], shifts[(mk, 'l10')])
         d = marketable(d, mk)
         d['y'] = d[mk]
-        d['p_over'] = p_over(d[f'{mk}_hat'], d.line, choice[mk]['a'])
+        d['p_over'] = p_over(d[f'{mk}_hat'], d.line, spread(choice[mk], d[f'{mk}_hat']))
         d['price_over'], d['price_under'] = naive_book(d, mk, 'l10', k, a_n)
         b = value_bets(d, 0.03)
         cuts = np.unique(np.quantile(d.line, [0, 1 / 3, 2 / 3, 1]))

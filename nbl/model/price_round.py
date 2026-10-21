@@ -114,7 +114,7 @@ def run(cache, out_dir, days=8):
         for x in d.itertuples():
             cells = []
             for mk in MARKETS:
-                mu, a = getattr(x, f'{mk}_hat'), choice[mk]['a']
+                mu = getattr(x, f'{mk}_hat'); a = float(props.spread(choice[mk], mu))
                 ln, po = fair_line(mu, a)
                 cells.append(f'{mu:.1f} (o{ln} {1 / po:.2f} / u {1 / (1 - po):.2f})')
                 for l2 in (ln - 1, ln, ln + 1):

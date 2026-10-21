@@ -18,6 +18,7 @@ NBA and AFL code: everything lives in `nbl/` and the `nbl-*` workflows, with its
 | 4. Player props | minutes x rate and a direct model, negative binomial prices at any line | done: `docs/PROPS_STEP1.md` |
 | 5. Backtest | against stand-in lines only (proxy, not a market test) | done; real lines needed for the real test |
 | 6. Team-news angle | do books reprice after outs? | needs recorded prices |
+| Research | per-stat memory and projection-dependent spreads adopted; redistribution, adjusted efficiency, early-season weights rejected; starters the biggest gain found | `docs/RESEARCH.md`, `research/` |
 | 7. Paper season | our prices for the next 8 days, kept on the release, and graded against results every run | `model/price_round.py`, `model/grade.py`, `nbl prices` workflow (`paper_scorecard.md` on the release) |
 | Line recorder | books' prices from open to close, capped per run and per season (60,000 credits), ledger on the release | `lines/record.py`, `nbl record lines` workflow; idle until `ODDS_API_KEY` exists |
 | Book rules | void rules for a player who does not play | `docs/BOOK_RULES.md` (TAB not found) |
@@ -28,10 +29,10 @@ Scored on seasons it never saw (squads named; log loss, lower is better, a coin 
 
 | season | games | ours, squads named | ours, at the open | results-only rating (Elo) | always the home team |
 |---|---|---|---|---|---|
-| 2023-24 | 154 | 0.674 | 0.680 | 0.674 | 0.676 |
-| 2024-25 | 159 | 0.654 | 0.658 | 0.657 | 0.686 |
-| 2025-26 | 179 | 0.617 | 0.617 | 0.609 | 0.694 |
-| 2026-27 so far | 36 | 0.736 | 0.741 | 0.745 | 0.672 |
+| 2023-24 | 154 | 0.676 | 0.681 | 0.674 | 0.676 |
+| 2024-25 | 159 | 0.653 | 0.656 | 0.657 | 0.686 |
+| 2025-26 | 179 | 0.616 | 0.616 | 0.609 | 0.694 |
+| 2026-27 so far | 36 | 0.735 | 0.742 | 0.745 | 0.672 |
 
 **Plainly: level with a results-only rating, and probably behind the market.** The squad ratings that
 help are on-court plus/minus from the play-by-play (`model/onoff.py`: 54,655 stints rebuilt from 1,587
@@ -43,19 +44,19 @@ on 2016-17 to 2022-23 only. Early season is the weak spot: a third of last seaso
 
 ## Player props
 
-Projection miss per player-game, ours against the player's last-10 average (2025-26, never used for any
-choice): points 4.57 v 4.74, rebounds 1.85 v 1.89, assists 1.26 v 1.30, threes 0.87 v 0.88, PRA 5.80 v 6.01.
+Projection accuracy and every table are in `docs/PROPS_STEP1.md`; what was tried to improve them, and what
+worked, is in `docs/RESEARCH.md`.
 
 Against a **naive stand-in book** (lines from the last-10 average, both sides priced from that average,
 7% overround), betting at 3%+ edge:
 
 | market | 2023-24 and 2024-25 | 2025-26 and 2026-27 so far (final check) |
 |---|---|---|
-| points | +12.5% (1,567 bets) | +14.9% (1,129) |
-| rebounds | +17.2% (2,524) | +11.6% (1,613) |
-| assists | +11.5% (1,557) | +15.0% (1,092) |
-| threes | +16.9% (2,889) | +16.4% (1,884) |
-| points+rebounds+assists | +14.5% (1,832) | +19.3% (1,261) |
+| points | +13.9% (1,807 bets) | +16.2% (1,285) |
+| rebounds | +19.0% (2,468 bets) | +13.5% (1,605) |
+| assists | +12.3% (1,634 bets) | +14.5% (1,148) |
+| threes | +20.0% (2,687 bets) | +20.1% (1,759) |
+| points+rebounds+assists | +12.9% (1,996 bets) | +17.1% (1,455) |
 
 **Read this as an upper bound, not an edge.** It holds across seasons, and shuffled projections lose
 (so the test is not broken), but a plain projection (half the recent average, half per-minute rate x

@@ -27,9 +27,15 @@ import pandas as pd
 FIRST_SEASON = 2015          # box scores start in 2015-16
 STATS = ['pts', 'reb', 'ast', 'fg3m', 'fg3a', 'fga', 'fgm', 'fta', 'ftm', 'oreb', 'tov', 'stl', 'blk', 'pf']
 PROPS = ['pts', 'reb', 'ast', 'fg3m', 'pra']
-RATE_COLS = ['pts', 'reb', 'ast', 'fg3m', 'fg3a', 'fga', 'fta', 'oreb', 'tov', 'stl', 'blk', 'eff']
+RATE_COLS = ['pts', 'reb', 'ast', 'fg3m', 'fg3a', 'fga', 'fgm', 'fta', 'ftm', 'oreb', 'tov', 'stl', 'blk', 'eff']
 DECAY = 0.92                 # weight kept per later game played, in a player's rate and minutes history
-PRIOR_MIN = 60.0             # minutes of league-average play mixed into every rate (shrinkage)
+PRIOR_MIN = 60.0             # minutes of league-average play mixed into a rate with no tuned setting
+# Per-stat memory (DARKO-style): weight kept per later game and minutes of league-average prior, each chosen
+# on 2016-17 to 2022-23 by how well rate x actual minutes predicted the next game (nbl/research/rate_memory.py;
+# 2023-24 and 2024-25 improved 0 to 2% on error). Decaying by days instead of games did no better.
+RATE_MEMORY = {'pts': (0.95, 60), 'reb': (0.95, 15), 'ast': (0.95, 30), 'fg3m': (0.97, 60), 'fg3a': (0.92, 15),
+               'fga': (0.92, 30), 'fta': (0.95, 60), 'oreb': (0.95, 15), 'tov': (0.97, 120), 'stl': (0.985, 240),
+               'blk': (0.95, 60), 'eff': (0.97, 60), 'fgm': (0.92, 30), 'ftm': (0.95, 60)}   # makes follow attempts
 TEAM_DECAY = 0.90            # weight kept per later game, in team pace and defence
 ELO_K, ELO_HCA, ELO_CARRY, ELO_CAP = 0.04, 3.0, 0.6, 30.0   # per point of error, home court, share kept over summer, error cap
 # (chosen on 2016-17 to 2022-23 by margin miss; nbl/docs/TEAM_STEP1.md)
@@ -247,7 +253,8 @@ def team_features(tg, games):
 def player_history(p, league_rate):
     """Each player's decayed minutes and per-minute rates from earlier games only, shrunk to the league.
 
-    One pass in time order per player. Rates count played games; minutes count played games; the DNP
+    One pass in time order per player. Each stat keeps its own memory (RATE_MEMORY). Rates count played games;
+    minutes count played games; the DNP
     rate counts games he dressed for. A season break keeps the history (decay continues).
     """
     p = p.sort_values(['tip', 'game']).copy()
@@ -267,6 +274,7 @@ def player_history(p, league_rate):
         idxs = order[a:b]          # this player's rows, in time order (stable sort kept tip order)
         sw = smin = sstart = 0.0
         sst = {c: 0.0 for c in rate_cols}
+        smc = {c: 0.0 for c in rate_cols}        # each stat's own decayed minutes
         hist_min, hist_dress, recent = [], [], {c: [] for c in ['pts', 'reb', 'ast', 'fg3m', 'pra']}
         last_day = last_season = last_team = None
         season_games = 0
@@ -278,7 +286,8 @@ def player_history(p, league_rate):
                 season_games, sw_s, smin_s = 0, 0.0, 0.0
             lr = league_rate.get(season, league_rate[min(league_rate)])
             for c in rate_cols:
-                out[f'r_{c}'][i] = (sst[c] + PRIOR_MIN * lr[c]) / (smin + PRIOR_MIN)
+                prior = RATE_MEMORY.get(c, (DECAY, PRIOR_MIN))[1]
+                out[f'r_{c}'][i] = (sst[c] + prior * lr[c]) / (smc[c] + prior)
             out['min_ew'][i] = smin / sw if sw > 0 else np.nan
             out['min_ew_season'][i] = smin_s / sw_s if sw_s > 0 else np.nan
             out['start_ew'][i] = sstart / sw if sw > 0 else np.nan
@@ -304,7 +313,9 @@ def player_history(p, league_rate):
                 smin = DECAY * smin + m
                 sstart = DECAY * sstart + float(r[pos['starter']])
                 for c in rate_cols:
-                    sst[c] = DECAY * sst[c] + float(r[pos[c]])
+                    dc = RATE_MEMORY.get(c, (DECAY, PRIOR_MIN))[0]
+                    sst[c] = dc * sst[c] + float(r[pos[c]])
+                    smc[c] = dc * smc[c] + m
                 sw_s = DECAY * sw_s + 1.0
                 smin_s = DECAY * smin_s + m
                 hist_min.append(m)
@@ -328,6 +339,43 @@ def league_rates(players):
         src = s - 1 if s - 1 in rates.index else s
         out[s] = rates.loc[src].to_dict()
     return out
+
+
+REDIST = ['pts', 'reb', 'ast', 'fg3a', 'fga']
+
+
+REDIST_LOOKBACK = 1             # games back that count as "usually in the squad" (1 = last game only)
+
+
+def redistribution(p):
+    """Per player: his share of what absent teammates usually produce. For each stat, a teammate who dressed
+    last game and not this one frees (his rate x his usual minutes); each player in this squad takes the part
+    in proportion to his own (rate x usual minutes) within the squad. Pre-game: rates and usual minutes are
+    the history columns, the squad is who dressed."""
+    p = p.sort_values(['tip', 'game']).copy()
+    for c in REDIST:
+        p[f'_u_{c}'] = p[f'r_{c}'] * p.min_ew.fillna(0)
+    rows = []
+    for team, g in p.groupby('team', sort=False):
+        by = {k: v for k, v in g.groupby('game', sort=False)}
+        hist = []
+        for gm in g.drop_duplicates('game').game:
+            cur = by[gm]
+            if hist:
+                # usual squad: anyone who played in the last REDIST_LOOKBACK games, at his latest values
+                was = pd.concat([by[h] for h in hist[-REDIST_LOOKBACK:]])
+                was = was[was.played == 1].drop_duplicates('key', keep='last')
+                out = was[~was.key.isin(cur.key)]
+                for c in REDIST:
+                    pool = cur[f'_u_{c}'].sum()
+                    freed = out[f'_u_{c}'].sum()
+                    share = cur[f'_u_{c}'] / pool if pool > 0 else 0.0
+                    rows.append(pd.DataFrame({'game': gm, 'team': team, 'key': cur.key, 'stat': c, 'boost': freed * share}))
+            hist.append(gm)
+    if not rows:
+        return pd.DataFrame(columns=['game', 'team', 'key'] + [f'boost_{c}' for c in REDIST])
+    b = pd.concat(rows).pivot_table(index=['game', 'team', 'key'], columns='stat', values='boost').reset_index()
+    return b.rename(columns={c: f'boost_{c}' for c in REDIST})
 
 
 def squad_context(p):
@@ -388,6 +436,7 @@ def add_player_features(players, tg):
     lr = league_rates(players)
     p = player_history(players, lr)
     p = p.merge(squad_context(p), on=['game', 'team'], how='left')
+    p = p.merge(redistribution(p), on=['game', 'team', 'key'], how='left')
     # the player's share of his squad's usual minutes, scaled to the 200 a team plays
     p['min_share'] = p.min_ew / p.squad_min_pool.replace(0, np.nan)
     p['min_scaled'] = 200.0 * p.min_share

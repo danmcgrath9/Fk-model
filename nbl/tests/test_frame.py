@@ -73,7 +73,8 @@ def test_rate_is_shrunk_toward_the_league_and_uses_earlier_games_only():
                          **{c: (pts if c == 'pts' else 0.0) for c in frame.RATE_COLS}))
     h = frame.player_history(pd.DataFrame(rows), lr).set_index('game')
     assert h.loc['g0', 'r_pts'] == pytest.approx(0.5)                                  # nothing yet: the league rate
-    assert h.loc['g1', 'r_pts'] == pytest.approx((20 + frame.PRIOR_MIN * 0.5) / (20 + frame.PRIOR_MIN))   # game 0 only
+    prior = frame.RATE_MEMORY['pts'][1]
+    assert h.loc['g1', 'r_pts'] == pytest.approx((20 + prior * 0.5) / (20 + prior))   # game 0 only
     assert h.loc['g1', 'min_last'] == 20.0
 
 
