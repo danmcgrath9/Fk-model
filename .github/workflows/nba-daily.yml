@@ -49,7 +49,8 @@ jobs:
         run: |
           git config user.name "nba daily"
           git config user.email "actions@users.noreply.github.com"
-          git add nba/live/projections nba/live/scorecard.csv || true
+          git add nba/live/projections || true
+          git add nba/live/scorecard.csv 2>/dev/null || true
           git diff --cached --quiet && { echo "nothing new"; exit 0; }
           git commit -m "NBA: paper projections $(TZ=America/New_York date '+%Y-%m-%d %H:%M') ET (workflow run ${{ github.run_id }})"
           for i in 1 2 3; do git pull --rebase -q origin claude/nba-props && git push -q origin HEAD:claude/nba-props && exit 0; sleep 5; done
