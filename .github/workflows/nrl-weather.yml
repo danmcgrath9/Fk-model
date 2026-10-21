@@ -1,0 +1,49 @@
+name: nrl weather
+
+# Weather at every NRL game since 2009 from Open-Meteo's archive (nrl/weather/pull.py): approved by the
+# founder 21 Oct 2026; free API, non-commercial, CC BY 4.0 (credit Open-Meteo.com). Pulled once: a release that
+# already holds weather.parquet is not pulled again. Its own concurrency group; no keys.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [nrl-model]
+    paths:
+      - 'nrl/weather/pull.py'
+      - 'nrl/weather/games.csv'
+      - '.github/workflows/nrl-weather.yml'
+
+concurrency:
+  group: nrl-weather
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests pandas pyarrow
+      - name: Pull once
+        run: |
+          if gh release view nrl-history --json assets --jq '.assets[].name' | grep -qx 'weather.parquet'; then
+            echo "weather.parquet held on the release; not pulled again" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0
+          fi
+          set -o pipefail
+          python nrl/weather/pull.py nrl/weather/games.csv | tee -a "$GITHUB_STEP_SUMMARY"
+          tar czf weather_raw.tar.gz -C nrl/cache/weather raw.jsonl.gz towns.csv
+          for f in nrl/cache/weather/weather.parquet weather_raw.tar.gz; do
+            ok=no
+            for i in 1 2 3; do gh release upload nrl-history "$f" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
+            [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }
+          done
