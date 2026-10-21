@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-from nbl.model import frame, props, team
+from nbl.model import frame, onoff, props, team
 
 MARKETS = props.PROPS
 
@@ -37,6 +37,11 @@ def build(cache, days):
     tg = frame.team_features(frame.team_box(allp, games), games)
     p = frame.add_player_features(allp, tg)
     tg = tg.merge(frame.lineup_values(p, frame.league_rates(players)), on=['game', 'team'], how='left')
+    rpath = f'{cache}/ratings.parquet'
+    if os.path.exists(rpath):              # squad on-court ratings (onoff.py), refreshed by the workflow before pricing
+        tg = tg.merge(onoff.lineup_ratings(p, pd.read_parquet(rpath)), on=['game', 'team'], how='left')
+    else:
+        tg['named_rapm'] = tg['open_rapm'] = np.nan
     return games, p, tg, now
 
 

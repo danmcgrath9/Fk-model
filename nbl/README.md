@@ -14,29 +14,30 @@ NBA and AFL code: everything lives in `nbl/` and the `nbl-*` workflows, with its
 | Data | nblR's GitHub copy of NBL results, box scores, play-by-play, 2015-16 to now | on `nbl-history` (`nbl data` workflow) |
 | Odds | The Odds API probe, capped at 300 credits | written; waits for the `ODDS_API_KEY` repository secret (0 credits spent) |
 | 2. Data layer | one row per player per game and per team per game, pre-game features only, leakage test | done: `model/frame.py`, `tests/` |
-| 3. Team model | margin and total, at the open and with squads named, priced h2h / line / total | first cut: `docs/TEAM_STEP1.md` |
+| 3. Team model | margin and total, at the open and with squads named, priced h2h / line / total; on-court player ratings | done: `docs/TEAM_STEP1.md`, `model/onoff.py` |
 | 4. Player props | minutes x rate and a direct model, negative binomial prices at any line | done: `docs/PROPS_STEP1.md` |
 | 5. Backtest | against stand-in lines only (proxy, not a market test) | done; real lines needed for the real test |
 | 6. Team-news angle | do books reprice after outs? | needs recorded prices |
 | 7. Paper season | our prices for the next 8 days, kept on the release | `model/price_round.py`, `nbl prices` workflow |
 
-## Team model, first cut
+## Team model
 
-Scored once on seasons it never saw (squads named; log loss, lower is better, a coin flip is 0.693):
+Scored on seasons it never saw (squads named; log loss, lower is better, a coin flip is 0.693):
 
-| season | games | ours | results-only rating (Elo) | always the home team |
-|---|---|---|---|---|
-| 2023-24 | 154 | 0.683 | 0.674 | 0.676 |
-| 2024-25 | 159 | 0.665 | 0.657 | 0.686 |
-| 2025-26 | 179 | 0.615 | 0.609 | 0.694 |
-| 2026-27 so far | 36 | 0.744 | 0.745 | 0.672 |
+| season | games | ours, squads named | ours, at the open | results-only rating (Elo) | always the home team |
+|---|---|---|---|---|---|
+| 2023-24 | 154 | 0.674 | 0.680 | 0.674 | 0.676 |
+| 2024-25 | 159 | 0.654 | 0.658 | 0.657 | 0.686 |
+| 2025-26 | 179 | 0.617 | 0.617 | 0.609 | 0.694 |
+| 2026-27 so far | 36 | 0.736 | 0.741 | 0.745 | 0.672 |
 
-**Plainly: no better than a results-only rating, and probably behind the market.** Squad strength
-(who dressed, valued by recent efficiency) adds almost nothing, so the team-news gap between "open" and
-"named" is near zero in this version. Totals beat the league average by 1 to 3.5 points a game. The
-one clear way to improve it is player ratings from the play-by-play (on-court plus/minus, which handles
-roster churn and outs properly); the data for it is in hand. Early season is the weak spot: a third of
-last season's regulars are not in the league this season.
+**Plainly: level with a results-only rating, and probably behind the market.** The squad ratings that
+help are on-court plus/minus from the play-by-play (`model/onoff.py`: 54,655 stints rebuilt from 1,587
+games), which beat box-score efficiency for valuing a squad. With them the named squad beats the open
+squad slightly, most where team news moved our number (2 to 4 points: miss 9.5 against 10.4, but only 7
+games). Totals beat the league average by 1 to 3.5 points a game. The final-check seasons have been
+looked at three times while the model was built (`docs/TEAM_STEP1.md` says how); every setting was chosen
+on 2016-17 to 2022-23 only. Early season is the weak spot: a third of last season's regulars are gone.
 
 ## Player props
 
@@ -67,6 +68,7 @@ lines. Same conclusion as the AFL disposals work.
 pip install -r nbl/requirements.txt
 python nbl/data/mirror.py --out nbl/cache          # or download the parquet files from the nbl-history release
 python -m nbl.model.frame nbl/cache                # players.parquet, teams.parquet
+python -m nbl.model.onoff nbl/cache                # stints and on-court ratings (needs pbp.parquet)
 python -m nbl.model.team nbl/cache nbl/docs/TEAM_STEP1.md
 python -m nbl.model.props nbl/cache nbl/docs/PROPS_STEP1.md        # NBL_FINAL=1 to include 2025-26 and 2026-27
 python -m nbl.model.price_round nbl/cache nbl/out 8                # our prices for the next 8 days

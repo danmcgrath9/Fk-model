@@ -47,13 +47,22 @@ jobs:
           python-version: '3.12'
       - run: pip install -r nbl/requirements.txt
 
-      - name: Latest NBL results and box scores (nblR's copy)
+      - uses: r-lib/actions/setup-r@v2
+
+      - name: Latest NBL results, box scores and play-by-play (nblR's copy)
         run: |
           set -o pipefail
           mkdir -p nbl/cache/raw
-          # play-by-play is not needed for pricing; an empty marker stops the mirror downloading it
-          touch nbl/cache/raw/pbp.rds
+          curl -sSfL -o nbl/cache/raw/pbp.rds https://github.com/JaseZiv/nblr_data/releases/download/pbp/pbp.rds
+          # pyreadr cannot read pbp.rds; base R can. List columns are flattened to text.
+          Rscript -e 'x <- readRDS("nbl/cache/raw/pbp.rds"); lc <- vapply(x, is.list, logical(1)); x[lc] <- lapply(x[lc], function(c) vapply(c, function(v) paste(unlist(v), collapse="|"), character(1))); write.csv(x, gzfile("nbl/cache/raw/pbp.csv.gz"), row.names = FALSE)'
           python nbl/data/mirror.py --out nbl/cache | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Features and on-court ratings
+        run: |
+          set -o pipefail
+          python -m nbl.model.frame nbl/cache | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m nbl.model.onoff nbl/cache | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Price the next games
         run: |

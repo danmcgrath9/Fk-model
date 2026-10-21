@@ -7,8 +7,9 @@ Two predictions per game:
 The gap between them is the value of team news; once real lines are recorded the test is whether
 "named" beats the opening line by more than the market moved.
 
-Inputs (nbl/model/frame.py, all pre-game): results-only rating (Elo), decayed offensive and defensive
-efficiency and pace, squad value above average (open or named), rest, back-to-backs, travel, finals.
+Inputs (nbl/model/frame.py and onoff.py, all pre-game): results-only rating (Elo), decayed offensive and
+defensive efficiency and pace, squad value above average from box scores and from on-court plus/minus
+(open or named), rest, back-to-backs, travel, finals.
 Ridge regression. The penalty is chosen by predicting each of 2018-19 to 2022-23 from the seasons before it;
 then fitted on 2016-17 to 2022-23 and scored once on seasons it never saw: confirm 2023-24 and 2024-25,
 final check 2025-26 and 2026-27 so far.
@@ -34,15 +35,16 @@ def games_table(tg):
     tg = tg.copy()
     tg['net_ew'] = tg.ortg_ew - tg.drtg_ew
     side = ['game', 'season', 'tip', 'finals', 'venue', 'team', 'score', 'poss_ew', 'ortg_ew', 'drtg_ew', 'net_ew', 'margin_ew',
-            'days_rest', 'b2b', 'travel_km', 'named_val', 'open_val', 'games_prior', 'elo_margin', 'league_poss', 'league_pts', 'ot']
+            'days_rest', 'b2b', 'travel_km', 'named_val', 'open_val', 'named_rapm', 'open_rapm', 'games_prior', 'elo_margin',
+            'league_poss', 'league_pts', 'ot']
     h = tg[tg.is_home == 1][side]
     a = tg[tg.is_home == 0][side]
     g = h.merge(a[['game', 'team', 'score', 'poss_ew', 'ortg_ew', 'drtg_ew', 'net_ew', 'margin_ew', 'days_rest', 'b2b', 'travel_km',
-                   'named_val', 'open_val', 'games_prior']], on='game', suffixes=('_h', '_a'))
+                   'named_val', 'open_val', 'named_rapm', 'open_rapm', 'games_prior']], on='game', suffixes=('_h', '_a'))
     g = g.rename(columns={'team_h': 'home', 'team_a': 'away'})
     g['home_margin'] = g.score_h - g.score_a
     g['total'] = g.score_h + g.score_a
-    for c in ['net_ew', 'margin_ew', 'days_rest', 'b2b', 'travel_km', 'named_val', 'open_val']:
+    for c in ['net_ew', 'margin_ew', 'days_rest', 'b2b', 'travel_km', 'named_val', 'open_val', 'named_rapm', 'open_rapm']:
         g[f'd_{c}'] = g[f'{c}_h'] - g[f'{c}_a']
     g['news'] = g.d_named_val - g.d_open_val
     # expected total: both teams' scoring per 100 against the other's defence, at their combined pace
@@ -55,8 +57,8 @@ def games_table(tg):
 
 MARGIN = {
     'elo': ['elo_margin'],
-    'open': ['elo_margin', 'd_net_ew', 'd_margin_ew', 'd_open_val', 'd_days_rest', 'd_b2b', 'd_travel_km'],
-    'named': ['elo_margin', 'd_net_ew', 'd_margin_ew', 'd_named_val', 'd_days_rest', 'd_b2b', 'd_travel_km'],
+    'open': ['elo_margin', 'd_net_ew', 'd_margin_ew', 'd_open_val', 'd_open_rapm', 'd_days_rest', 'd_b2b', 'd_travel_km'],
+    'named': ['elo_margin', 'd_net_ew', 'd_margin_ew', 'd_named_val', 'd_named_rapm', 'd_days_rest', 'd_b2b', 'd_travel_km'],
 }
 TOTAL = {
     'open': ['exp_total', 'exp_poss', 'league_pts', 'sum_val_open', 'finals'],
@@ -138,8 +140,20 @@ def logloss(p, y):
     return float(-np.mean(y * np.log(p) + (1 - y) * np.log(1 - p)))
 
 
+def with_rapm(tg, cache):
+    """Attach squad on-court ratings (nbl/model/onoff.py) when they have been built; zero otherwise."""
+    import os
+    path = f'{cache}/lineup_rapm.parquet'
+    if os.path.exists(path):
+        tg = tg.drop(columns=['named_rapm', 'open_rapm'], errors='ignore').merge(pd.read_parquet(path), on=['game', 'team'], how='left')
+    for c in ('named_rapm', 'open_rapm'):
+        if c not in tg:
+            tg[c] = np.nan
+    return tg
+
+
 def run(cache, out_md):
-    tg = pd.read_parquet(f'{cache}/teams.parquet')
+    tg = with_rapm(pd.read_parquet(f'{cache}/teams.parquet'), cache)
     g = games_table(tg)
     g = g[(g.games_prior_h >= 1) & (g.games_prior_a >= 1)]
     models, sd_m, sd_t, fit = fitted(g)
@@ -176,8 +190,9 @@ def run(cache, out_md):
     W('')
     W('**Honesty note.** The final-check seasons (2025-26, 2026-27) were scored once with a first version of this model '
       '(Elo K 0.06, penalty chosen on 2022-23 alone). The Elo settings and the penalty method were then changed, both '
-      'chosen on 2016-17 to 2022-23 only, and everything was scored again. It is a second look, not a clean one; '
-      'the first version was no better on those seasons.')
+      'chosen on 2016-17 to 2022-23 only, and everything was scored again; then squad on-court ratings from the '
+      'play-by-play (nbl/model/onoff.py, settings chosen on 2016-17 to 2022-23 only) were added and it was scored a third '
+      'time. So this is a third look, not a clean one. No version beat the results-only rating on 2025-26.')
     W('')
     W(f'Win chance = normal around the predicted margin, spread {sd_m:.1f} points; total spread {sd_t:.1f} points (training seasons).')
     W('')
