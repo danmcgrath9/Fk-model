@@ -48,11 +48,13 @@ jobs:
 
       - name: Cricsheet terms and robots.txt, for the record
         run: |
+          # printed to the log and kept on the release (uploaded below), so the licence at pull time is on record
+          mkdir -p bbl/cache/raw
           {
-            echo "### Cricsheet terms at pull time"
+            echo "### Cricsheet terms at $(date -u +%FT%TZ)"
             for p in register/ downloads/ about/ ""; do
               echo "**https://cricsheet.org/$p** (lines mentioning a licence or attribution)"; echo '```'
-              curl -sL -m 30 -A "$UA" "https://cricsheet.org/$p" | sed 's/<[^>]*>/ /g' | tr -s ' ' \
+              curl -sL -m 30 -A "$UA" "https://cricsheet.org/$p" | sed 's/<[^>]*>/ /g' | tr -s ' \t' ' ' \
                 | grep -iE 'licen|attribut|commons|copyright' | head -20 || echo "(nothing found)"
               echo '```'
               sleep 3
@@ -60,7 +62,8 @@ jobs:
             echo "**robots.txt**"; echo '```'
             curl -s -m 30 -A "$UA" https://cricsheet.org/robots.txt | head -40 || echo "(no answer)"
             echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
+          } > bbl/cache/terms.txt
+          cat bbl/cache/terms.txt | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Fetch what the release already holds
         run: |
@@ -104,9 +107,10 @@ jobs:
           python bbl/data/inventory.py bbl/cache/parquet | tee -a "$GITHUB_STEP_SUMMARY"
           echo "pulled at: $(cat bbl/cache/raw/cricsheet_pulled_at.txt 2>/dev/null)" | tee -a "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload the parquet and the inventory
+      - name: Upload the parquet, the inventory and the terms
         run: |
-          for f in bbl/cache/parquet/*.parquet bbl/cache/parquet/INVENTORY.md; do
+          cp bbl/cache/terms.txt bbl/cache/parquet/cricsheet_terms.txt
+          for f in bbl/cache/parquet/*.parquet bbl/cache/parquet/INVENTORY.md bbl/cache/parquet/cricsheet_terms.txt; do
             ok=no
             for i in 1 2 3; do gh release upload bbl-history "$f" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
             [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }
