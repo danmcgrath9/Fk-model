@@ -59,6 +59,18 @@ jobs:
               echo '```'
               sleep 3
             done
+            # the licensing page and the newest blog post, followed from the home page's own links (not guessed)
+            home=$(curl -sL -m 30 -A "$UA" https://cricsheet.org/)
+            for href in $(echo "$home" | grep -oiE 'href="[^"]*(licen|/blog/)[^"]*"' | sed 's/^href="//; s/"$//' | sort -u | head -4); do
+              case "$href" in http*) u="$href";; /*) u="https://cricsheet.org$href";; *) u="https://cricsheet.org/$href";; esac
+              echo "**$u** (full text)"; echo '```'
+              curl -sL -m 30 -A "$UA" "$u" | sed 's/<[^>]*>/ /g' | tr -s ' \t' ' ' | grep -v '^ *$' | head -80
+              echo '```'
+              sleep 3
+            done
+            echo "**files linked from https://cricsheet.org/register/**"; echo '```'
+            curl -sL -m 30 -A "$UA" https://cricsheet.org/register/ | grep -oiE 'href="[^"]*\.(csv|zip|json)"' | sort -u
+            echo '```'
             echo "**robots.txt**"; echo '```'
             curl -s -m 30 -A "$UA" https://cricsheet.org/robots.txt | head -40 || echo "(no answer)"
             echo '```'
