@@ -1,0 +1,49 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-23-ballarat-r2-n2-s1,2,2,Anglais,3.97,3.99,61,13965399,Notification has been scheduled.
+fk-2026-10-23-ballarat-r2-n2-s2,2,2,Anglais,4.48,10.14,76,13965401,Notification has been scheduled.
+fk-2026-10-23-ballarat-r2-n2-s3,2,2,Anglais,5.60,10.14,113,13965403,Notification has been scheduled.
+fk-2026-10-23-ballarat-r2-n6-s1,2,6,Nialah,5.80,12.19,56,13965405,Notification has been scheduled.
+fk-2026-10-23-ballarat-r2-n6-s2,2,6,Nialah,7.25,12.19,86,13965407,Notification has been scheduled.
+fk-2026-10-23-ballarat-r3-n8-s1,3,8,Endemic,6.99,15.82,97,13965410,Notification has been scheduled.
+fk-2026-10-23-ballarat-r3-n8-s2,3,8,Endemic,8.74,15.82,20,13965412,Notification has been scheduled.
+fk-2026-10-23-ballarat-r3-n9-s1,3,9,Enticement,17.99,35.68,14,13965414,Notification has been scheduled.
+fk-2026-10-23-ballarat-r3-n9-s2,3,9,Enticement,22.49,35.68,28,13965416,Notification has been scheduled.
+fk-2026-10-23-ballarat-r3-n4-s1,3,4,Latassa,27.04,44.70,11,13965418,Notification has been scheduled.
+fk-2026-10-23-ballarat-r3-n4-s2,3,4,Latassa,33.80,44.70,21,13965420,Notification has been scheduled.
+fk-2026-10-23-ballarat-r3-n14-s1,3,14,Star Je Taime,5.59,12.45,127,13965422,Notification has been scheduled.
+fk-2026-10-23-ballarat-r3-n14-s2,3,14,Star Je Taime,6.99,12.45,28,13965424,Notification has been scheduled.
+fk-2026-10-23-ballarat-r3-n7-s1,3,7,Wavelets,12.77,25.80,21,13965426,Notification has been scheduled.
+fk-2026-10-23-ballarat-r3-n7-s2,3,7,Wavelets,15.96,25.80,37,13965428,Notification has been scheduled.
+fk-2026-10-23-ballarat-r6-n10-s1,6,10,Chapados,4.58,10.68,166,13965430,Notification has been scheduled.
+fk-2026-10-23-ballarat-r6-n10-s2,6,10,Chapados,5.72,10.68,38,13965433,Notification has been scheduled.
+fk-2026-10-23-ballarat-r6-n1-s1,6,1,Divine Vicky,14.78,32.23,22,13965435,Notification has been scheduled.
+fk-2026-10-23-ballarat-r6-n1-s2,6,1,Divine Vicky,18.47,32.23,38,13965437,Notification has been scheduled.
+fk-2026-10-23-ballarat-r6-n8-s1,6,8,Lagunanini,5.61,12.50,54,13965439,Notification has been scheduled.
+fk-2026-10-23-ballarat-r6-n8-s2,6,8,Lagunanini,7.01,12.50,86,13965441,Notification has been scheduled.
+fk-2026-10-23-ballarat-r6-n4-s1,6,4,Sistine Tunnel,11.30,25.47,28,13965443,Notification has been scheduled.
+fk-2026-10-23-ballarat-r6-n4-s2,6,4,Sistine Tunnel,14.12,25.47,42,13965445,Notification has been scheduled.
+fk-2026-10-23-ballarat-r6-n2-s1,6,2,Smart Little Miss,13.30,31.94,26,13965447,Notification has been scheduled.
+fk-2026-10-23-ballarat-r6-n2-s2,6,2,Smart Little Miss,16.62,31.94,40,13965449,Notification has been scheduled.
+fk-2026-10-23-ballarat-r6-n6-s1,6,6,Smoke Screen,15.70,34.24,10,13965451,Notification has been scheduled.
+fk-2026-10-23-ballarat-r6-n6-s2,6,6,Smoke Screen,19.62,34.24,43,13965453,Notification has been scheduled.
+fk-2026-10-23-ballarat-r7-n8-s1,7,8,Bel Lupa,17.20,39.32,38,13965455,Notification has been scheduled.
+fk-2026-10-23-ballarat-r7-n8-s2,7,8,Bel Lupa,21.50,39.32,10,13965458,Notification has been scheduled.
+fk-2026-10-23-ballarat-r7-n3-s1,7,3,Du Clisson,11.95,25.10,25,13965460,Notification has been scheduled.
+fk-2026-10-23-ballarat-r7-n3-s2,7,3,Du Clisson,14.94,25.10,41,13965462,Notification has been scheduled.
+fk-2026-10-23-ballarat-r7-n1-s1,7,1,Killiana,8.24,17.31,43,13965464,Notification has been scheduled.
+fk-2026-10-23-ballarat-r7-n1-s2,7,1,Killiana,10.30,17.31,64,13965466,Notification has been scheduled.
+fk-2026-10-23-ballarat-r7-n11-s1,7,11,Semantics,3.91,3.99,92,13965468,Notification has been scheduled.
+fk-2026-10-23-ballarat-r7-n11-s2,7,11,Semantics,4.00,8.00,95,13965470,Notification has been scheduled.
+fk-2026-10-23-ballarat-r7-n11-s3,7,11,Semantics,4.99,8.00,137,13965472,Notification has been scheduled.
+fk-2026-10-23-ballarat-r8-n5-s1,8,5,Cushioned,6.20,14.88,92,13965474,Notification has been scheduled.
+fk-2026-10-23-ballarat-r8-n5-s2,8,5,Cushioned,7.75,14.88,24,13965476,Notification has been scheduled.
+fk-2026-10-23-ballarat-r8-n6-s1,8,6,Jenni You Think,5.46,13.12,120,13965479,Notification has been scheduled.
+fk-2026-10-23-ballarat-r8-n6-s2,8,6,Jenni You Think,6.83,13.12,28,13965481,Notification has been scheduled.
+fk-2026-10-23-ballarat-r8-n7-s1,8,7,Perfect Night,8.73,17.63,69,13965483,Notification has been scheduled.
+fk-2026-10-23-ballarat-r8-n7-s2,8,7,Perfect Night,10.91,17.63,21,13965485,Notification has been scheduled.
+fk-2026-10-23-ballarat-r9-n9-s1,9,9,Farakta,11.20,25.77,57,13965487,Notification has been scheduled.
+fk-2026-10-23-ballarat-r9-n9-s2,9,9,Farakta,14.00,25.77,14,13965489,Notification has been scheduled.
+fk-2026-10-23-ballarat-r9-n2-s1,9,2,Invisible Magic,10.27,20.74,55,13965491,Notification has been scheduled.
+fk-2026-10-23-ballarat-r9-n2-s2,9,2,Invisible Magic,12.84,20.74,22,13965493,Notification has been scheduled.
+fk-2026-10-23-ballarat-r9-n4-s1,9,4,Russian Duchess,10.63,25.52,53,13965495,Notification has been scheduled.
+fk-2026-10-23-ballarat-r9-n4-s2,9,4,Russian Duchess,13.29,25.52,16,13965497,Notification has been scheduled.
