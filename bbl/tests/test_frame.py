@@ -146,3 +146,18 @@ def test_real_data_a_bbl_games_own_result_never_reaches_its_features():
     pl, dl, inn = pl[pl.match_id.isin(ids)], dl[dl.match_id.isin(ids)], inn[inn.match_id.isin(ids)]
     bbl = m[(m.competition == frame.BBL) & (m.season == '2024/25')].sort_values('start_date')
     check(m, pl, dl, inn, bbl.match_id.iloc[len(bbl) // 2], later_n=40)
+
+
+def test_list_order_never_reaches_a_feature():
+    """Cricsheet lists each XI in the order it batted in that game. Shuffling it must move no feature."""
+    m, pl, dl, inn = synth.league(n_matches=12)
+    g0, _ = frame.build_from(m, pl, dl, inn)
+    rng = np.random.default_rng(3)
+    pl2 = pl.copy()
+    pl2['list_order'] = pl2.groupby(['match_id', 'team']).list_order.transform(lambda s: rng.permutation(s.to_numpy()))
+    g1, _ = frame.build_from(m, pl2, dl, inn)
+    from bbl.model import props
+    feats = sorted(set(frame.PLAYER + props.BAT + props.BOWL + props.CTX) & set(g0.columns))
+    assert 'list_order' not in feats
+    key = ['match_id', 'team', 'pid']
+    pd.testing.assert_frame_equal(g0.sort_values(key)[feats].reset_index(drop=True), g1.sort_values(key)[feats].reset_index(drop=True))

@@ -127,8 +127,8 @@ def player_games(m, pl, dl):
     bat = bat.drop(columns='innings').drop_duplicates(['match_id', 'team', 'player'])
     if 'future' not in m:
         m = m.assign(future=False)
-    g = pl.merge(m[['match_id', 'dt', 'season', 'comp', 'split', 'gender', 'team1', 'team2', 'venue_c', 'toss_winner',
-                    'toss_decision', 'bat_first', 'future']], on='match_id')
+    g = pl.merge(m[['match_id', 'dt', 'season', 'comp', 'competition', 'split', 'gender', 'team1', 'team2', 'venue_c',
+                    'toss_winner', 'toss_decision', 'bat_first', 'future']], on='match_id')
     g['opp'] = np.where(g.team == g.team1, g.team2, g.team1)
     g = g.merge(bat, on=['match_id', 'team', 'player'], how='left')
     g = g.merge(bowling(dl), on=['match_id', 'player'], how='left').merge(catches(dl), on=['match_id', 'player'], how='left')
@@ -161,16 +161,23 @@ def player_state(g):
     p = g.groupby('pid', sort=False)
 
     batted = g.did_bat == 1
-    bat_runs = g.bat_runs.where(batted)
+    # league-adjusted figures when bbl.model.leagues has put them on a common scale (build_from(..., factors=...))
+    adj = 'adj_bat_runs' in g
+    runs_col = g.adj_bat_runs if adj else g.bat_runs
+    six_col = g.adj_bat_6s if adj else g.bat_6s
+    four_col = g.adj_bat_4s if adj else g.bat_4s
+    out_col = g.adj_bat_out if adj else g.bat_out
+    bat_runs = runs_col.where(batted)
     bat_balls = g.bat_balls.where(batted)
     s = pd.DataFrame(index=g.index)
     s['pid'], s['dt'], s['match_id'] = g.pid, g.dt, g.match_id
-    tmp = g.assign(_runs0=g.bat_runs.fillna(0), _balls0=g.bat_balls.fillna(0), _6=g.bat_6s.fillna(0), _4=g.bat_4s.fillna(0),
-                   _rb=bat_runs, _bb=bat_balls, _ob=g.bat_out.where(batted), _pos=g.bat_pos)
+    tmp = g.assign(_runs0=runs_col.fillna(0), _balls0=g.bat_balls.fillna(0), _6=six_col.fillna(0), _4=four_col.fillna(0),
+                   _rb=bat_runs, _bb=bat_balls, _ob=out_col.where(batted), _pos=g.bat_pos,
+                   _br=g.adj_bowl_runs if adj else g.bowl_runs, _bw=g.adj_bowl_wkts if adj else g.bowl_wkts)
     # a game not yet played is not an observation: blank every outcome so the weighted averages skip it
     future = g.future.fillna(False).astype(bool) if 'future' in g else pd.Series(False, index=g.index)
-    obs = ['_runs0', '_balls0', '_6', '_4', '_rb', '_bb', '_ob', '_pos', 'did_bat', 'did_bowl', 'bowl_balls', 'bowl_runs',
-           'bowl_wkts', 'catches']
+    obs = ['_runs0', '_balls0', '_6', '_4', '_rb', '_bb', '_ob', '_pos', 'did_bat', 'did_bowl', 'bowl_balls', '_br',
+           '_bw', 'catches']
     tmp[obs] = tmp[obs].astype(float).where(~future)
     p = tmp.groupby('pid', sort=False)
 
@@ -187,8 +194,8 @@ def player_state(g):
     s['out_per_ball'] = ewm('_ob') / ewm('_bb').replace(0, np.nan)
     s['bowl_balls_pg'] = ewm('bowl_balls')
     s['bowl_rate'] = ewm('did_bowl')
-    s['econ'] = ewm('bowl_runs') / ewm('bowl_balls').replace(0, np.nan)
-    s['wkts_per_ball'] = ewm('bowl_wkts') / ewm('bowl_balls').replace(0, np.nan)
+    s['econ'] = ewm('_br') / ewm('bowl_balls').replace(0, np.nan)
+    s['wkts_per_ball'] = ewm('_bw') / ewm('bowl_balls').replace(0, np.nan)
     s['catches_pg'] = ewm('catches')
     s['games'] = p.cumcount() + 1
     return s
@@ -200,6 +207,12 @@ def add_player_features(g, state):
     for c in PLAYER_STATE:
         g[f'pre_{c}'] = prev[c]
     g['pre_games'] = prev.games.fillna(0)
+    # expected batting position: his usual position ranked within this XI, from past games only. NOT Cricsheet's
+    # list order, which is the order the XI actually batted in this game (98% of the time) and so leaks the game.
+    # ties (no history, or the same usual position) break on the player id, never on row order: rows are
+    # sorted by list order, so a row-order tie-break would let the batting order back in
+    order = g.assign(_p=g.pre_pos_ewm.fillna(99.0)).sort_values(['match_id', 'team', '_p', 'pid'])
+    g['exp_pos'] = (order.groupby(['match_id', 'team']).cumcount() + 1).reindex(g.index)
     g['days_rest'] = (g.dt - prev.dt).dt.days.clip(upper=365)
     # the same competition only (BBL form for a BBL game): games at this level, and his ewm runs in it
     future = g.future.fillna(False).astype(bool) if 'future' in g else pd.Series(False, index=g.index)
@@ -301,17 +314,29 @@ def venue_features(t):
     return g[['match_id', 'venue_first_runs', 'venue_games', 'venue_bat_first_win']]
 
 
-def build(d):
+def build(d, league_adjust=False):
     m = match_table(pd.read_parquet(os.path.join(d, 't20_matches.parquet')))
     pl = pd.read_parquet(os.path.join(d, 't20_players.parquet'))
     dl = pd.read_parquet(os.path.join(d, 't20_deliveries.parquet'))
     inn = pd.read_parquet(os.path.join(d, 't20_innings.parquet'))
-    return build_from(m, pl, dl, inn)
+    factors = None
+    if league_adjust:
+        from bbl.model.leagues import league_factors
+        factors = league_factors(m, dl, LEAGUE_CUTOFF)
+    return build_from(m, pl, dl, inn, factors)
 
 
-def build_from(m, pl, dl, inn):
+# League adjustment (bbl/model/leagues.py): factors estimated on matches before this date only, so the
+# choose seasons (from 2022/23) never inform their own factors. None = off.
+LEAGUE_CUTOFF = '2022-07-01'
+
+
+def build_from(m, pl, dl, inn, factors=None):
     m = match_table(m) if 'venue_c' not in m else m
     g = player_games(m, pl, dl)
+    if factors is not None:
+        from bbl.model.leagues import apply_factors
+        g = apply_factors(g, factors)
     state = player_state(g)
     g = add_player_features(g, state)
     t = team_games(m, inn)
@@ -377,14 +402,16 @@ TEAM_OPEN = ['elo_pre', 'opp_elo_pre', 'venue_first_runs', 'venue_games', 'venue
 TEAM_NAMED = TEAM_OPEN + ['won_toss', 'batted_first', 'xi_runs_named', 'xi_sixes_named', 'xi_econ_named', 'xi_wkts_named',
                           'xi_debutants_named', 'opp_xi_runs_named', 'opp_xi_sixes_named', 'opp_xi_econ_named',
                           'opp_xi_wkts_named', 'n_outs', 'outs_runs', 'outs_bowl_balls', 'n_ins', 'ins_runs']
-PLAYER = ['pre_' + c for c in PLAYER_STATE] + ['pre_games', 'days_rest', 'pre_comp_games', 'pre_comp_runs_pg']
+PLAYER = ['pre_' + c for c in PLAYER_STATE] + ['pre_games', 'days_rest', 'pre_comp_games', 'pre_comp_runs_pg', 'exp_pos']
+# Cricsheet's list order is the actual batting order of the game: never a feature (tests/test_frame.py checks)
+NEVER_FEATURES = ['list_order']
 # the game's own facts: never features
 OUTCOMES = ['bat_runs', 'bat_balls', 'bat_4s', 'bat_6s', 'bat_out', 'how_out', 'bat_pos', 'did_bat', 'bowl_balls', 'bowl_runs',
             'bowl_wkts', 'bowl_dots', 'catches', 'did_bowl']
 
 
 def main(d):
-    g, t = build(d)
+    g, t = build(d, league_adjust=os.environ.get('LEAGUE_ADJUST') == '1')
     g.to_parquet(os.path.join(d, 'player_frame.parquet'), index=False)
     t.to_parquet(os.path.join(d, 'team_frame.parquet'), index=False)
     for name, x in (('player_frame', g), ('team_frame', t)):

@@ -28,8 +28,8 @@ from bbl.model.team import CHOOSE, CONFIRM, EVAL_SEASONS, FINAL
 CTX = ['venue_first_runs', 'elo_pre', 'opp_elo_pre', 'xi_runs_named', 'xi_econ_named', 'opp_xi_runs_named',
        'opp_xi_econ_named', 'opp_xi_wkts_named', 'venue_share']
 BAT = ['pre_runs_pg', 'pre_balls_pg', 'pre_sixes_pg', 'pre_fours_pg', 'pre_bat_rate', 'pre_pos_ewm', 'pre_sr',
-       'pre_out_per_ball', 'pre_games', 'pre_comp_games', 'pre_comp_runs_pg', 'days_rest', 'list_order']
-BOWL = ['pre_bowl_balls_pg', 'pre_bowl_rate', 'pre_econ', 'pre_wkts_per_ball', 'pre_games', 'list_order', 'days_rest']
+       'pre_out_per_ball', 'pre_games', 'pre_comp_games', 'pre_comp_runs_pg', 'days_rest', 'exp_pos']
+BOWL = ['pre_bowl_balls_pg', 'pre_bowl_rate', 'pre_econ', 'pre_wkts_per_ball', 'pre_games', 'exp_pos', 'days_rest']
 LGB = dict(objective='poisson', learning_rate=0.05, n_estimators=300, num_leaves=15, min_child_samples=100,
            subsample=0.8, subsample_freq=1, colsample_bytree=0.8, verbose=-1)
 POS_BANDS = [(0, 2.5), (2.5, 4.5), (4.5, 6.5), (6.5, 99)]
@@ -71,9 +71,19 @@ OUT_COLS = ['match_id', 'dt', 'season', 'comp', 'team', 'team_key', 'player', 'p
             'did_bowl', 'bowl_wkts', 'bat_pos', 'pre_pos_ewm', 'pre_runs_pg', 'list_order']
 
 
+LEAGUE_BAT = ['lf_bat_runs', 'lf_bat_outs']      # this game's league factors, when the frame is league-adjusted
+LEAGUE_BOWL = ['lf_bowl_runs', 'lf_bowl_wkts']
+
+
+def feature_sets(x):
+    bf = BAT + CTX + [c for c in LEAGUE_BAT if c in x]
+    wf = BOWL + CTX + [c for c in LEAGUE_BOWL if c in x]
+    return bf, wf
+
+
 def fit_models(train):
     """Every prop model, fitted on the given player-games (club T20, one gender, all before the games to price)."""
-    bf, wf = BAT + CTX, BOWL + CTX
+    bf, wf = feature_sets(train)
     tb = train[train.did_bat == 1]
     tw = train[train.did_bowl == 1]
     m = dict(bat=_fit_cls(train, bf, train.did_bat), runs=_fit_reg(tb, bf, tb.bat_runs), six=_fit_reg(tb, bf, tb.bat_6s),
@@ -86,7 +96,7 @@ def fit_models(train):
 
 
 def apply_models(m, test):
-    bf, wf = BAT + CTX, BOWL + CTX
+    bf, wf = feature_sets(test)
     out = test[[c for c in OUT_COLS if c in test]].copy()
     out['p_bat'] = m['bat'].predict_proba(test[bf])[:, 1]
     out['mu_runs'] = m['runs'].predict(test[bf])
