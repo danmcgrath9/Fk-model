@@ -1,7 +1,7 @@
 # NBL step 1: data inventory (21 Oct 2026)
 
 Every figure below comes from the files themselves, read on 21 Oct 2026 (nbl/data/mirror.py and the
-checks in this session), or from a workflow run named beside it. Nothing here is built on yet.
+checks in this session), or from a workflow run named beside it. The models built on it are in nbl/README.md.
 
 ## What we have, what we don't
 
