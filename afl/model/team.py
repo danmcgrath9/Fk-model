@@ -26,6 +26,7 @@ import pandas as pd
 from scipy import stats
 
 from afl.model.frame import _key
+from afl.model import strength
 
 warnings.filterwarnings('ignore')
 FIT, TUNE, TESTS = (2013, 2022), 2023, (2024, 2025, 2026)
@@ -117,19 +118,23 @@ def build_games(cache):
     m = pd.read_parquet(f'{cache}/frame.parquet')
     m = player_ratings(cache, m)
     ls = lineup_strength(m)
-    tg = team_games(m).merge(ls, on=['game', 'team'], how='left')
+    # lineup strength on AFL Player Ratings (strength.py): named 22, the side expected at the open, and the news between
+    mv, proxy_check = strength.player_values(strength.attach_ratings(pd.read_parquet(f'{cache}/frame.parquet'), cache))
+    lv = strength.lineup_strength(mv)
+    print('rating stand-in, checked on 2025:', {k: round(v, 3) for k, v in proxy_check.items()})
+    tg = team_games(m).merge(ls, on=['game', 'team'], how='left').merge(lv, on=['game', 'team'], how='left')
     elo = m.drop_duplicates(['game', 'team'])[['game', 'team', 'exp_margin']]
     tg = tg.merge(elo, on=['game', 'team'], how='left')
     home = tg[tg.is_home == 1].copy()
     away = tg[tg.is_home == 0].copy()
     feats = ['score_for_f6', 'score_against_f6', 'margin_f6', 'I50_diff_f6', 'CP_diff_f6', 'CL_diff_f6', 'MG_diff_f6', 'T_diff_f6',
-             'rest', 'interstate', 'named_sc', 'named_rp', 'open_sc', 'open_rp', 'n_changes']
+             'rest', 'interstate', 'named_sc', 'named_rp', 'open_sc', 'open_rp', 'n_changes', 'named_val', 'open_val', 'news_val']
     gm = home.merge(away[['game'] + feats + ['team']], on='game', suffixes=('_h', '_a'))
     gm = gm.rename(columns={'team_h': 'home', 'team_a': 'away', 'margin': 'home_margin'})
     gm['total'] = gm.score_for + gm.score_against
     gm['elo_margin'] = gm.exp_margin
     for c in ['score_for_f6', 'margin_f6', 'I50_diff_f6', 'CP_diff_f6', 'CL_diff_f6', 'MG_diff_f6', 'T_diff_f6', 'rest', 'interstate',
-              'named_sc', 'open_sc', 'named_rp', 'open_rp']:
+              'named_sc', 'open_sc', 'named_rp', 'open_rp', 'named_val', 'open_val', 'news_val']:
         gm[f'd_{c}'] = gm[f'{c}_h'] - gm[f'{c}_a']
     gm['sum_attack'] = gm.score_for_f6_h + gm.score_for_f6_a
     gm['sum_defence'] = gm.score_against_f6_h + gm.score_against_f6_a
