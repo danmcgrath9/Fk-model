@@ -156,6 +156,18 @@ Aethelwulf taken at TAB $8.50 on the draw (founder, 20 Oct evening). Model stake
 
 The test: after tonight's draw, re-pull Form King and re-price on the final inputs (barriers, gear, any late jockey changes), and compare the price and stake the model would actually give with the pre-draw ones above, to see which inputs were missing or moved the number. Settle at TAB $8 against SP and BSP after the race.
 
+## Sent Wed 21 Oct for Fri 23 and Sat 24 (Market Open, TAB, $25 a unit)
+- Cranbourne Fri 23: 93 orders on 40 runners, all scheduled. No first starters.
+- Ballarat Fri 23: 48 orders on 23 runners, all scheduled. Resonant (R4) left out on the founder's call: two first starters in the race
+  (Charmingly, Bogey Free). R2 kept with first starter Affair D'or in it (founder's call). R1 and R5 have first starters and no orders.
+- Flemington Sat 24 (final fields Wed 11:50am; Form King now has the MV Gold Cup as R7 and the Cox Plate as R8): 86 orders on 41
+  runners (Ice Kool's 0.02u step rounds to $0 and is dropped). R2 sent with first starter Regal Harry in it (founder's call: "I have a
+  feeling Regal Harry will get scratched"). Aethelwulf and Cosmic Crusader left out of the file: already bet by the founder.
+  The other R7/R8 orders (King Pedro, Pinhole, Point Of Law, So You Are; Aeliana, Blind Raise, Ceolwulf, Sir Delius, Warwoven) fired
+  straight away because TAB's markets for the two feature races were already up; none was placed (no bet records), and BetMatic
+  reports them as already triggered, so nothing is left live. Founder, 21 Oct: R7 and R8 are Aethelwulf and Cosmic Crusader only.
+- TAB balance read $0.29 at every send: it must be funded before Friday's opens or TAB refuses what fires.
+
 ## Copied tips (founder's call, separate from the model's results)
 
 | Date | Race | Horse | Tipster (price, units) | Order | Placed | Result |
