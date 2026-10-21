@@ -1,0 +1,54 @@
+# Research log: what we tried to make the NRL model better, and what happened
+
+Every idea is judged the same way: settings tuned on FIT (2003-2018) only, scored on DEV (2019-2022) and
+CONFIRM (2023-2024), **adopted only if it helps on both**. The final seasons (2025-2026) were scored once on
+21 Oct 2026 and cannot vote on later changes. Numbers are bits per game (higher is better) or log loss / Brier /
+miss (lower is better), from the runs named.
+
+## What the outside world does (21 Oct 2026 reading)
+
+| Who / what | What it does | What we took from it |
+|---|---|---|
+| [Rugby Club Ranks](https://rugbyclubranks.github.io/accuracy_page.html) | Glicko-style rating per player, summed for the named side, separate winner and margin regressions | the same structure as ours (player ratings plus team ratings); its page could not be read from here, so no figures compared yet |
+| [Stats Chat (David Scott)](https://www.statschat.org.nz/author/david-scott/page/167/) | team ratings shrunk between seasons; published NRL tipping rates of about 54% to 66% a season | our teams-named model tips 67% (confirm) and 63% (final): the same band |
+| [Alphr](https://alphr.com.au/nrl/accuracy), [TippingEdge](https://tippingedge.com.au/how-it-works/) | XGBoost ensembles on 100-160 features | they publish 61-64% held-out strike rates and Alphr a -3.2% margin ROI in 2026: accuracy is not profit |
+| [UTS travel study](https://opus.lib.uts.edu.au/handle/10453/151653) | 2,352 NRL games 2007-2019: about 1.1 points of margin lost per 1,000 km travelled | to test (needs venue coordinates from the weather pull) |
+| [Net Wins Added (RQES)](https://lida.sport-iat.de/ta/Record/4092548?lng=en) | player value from Stats Perform match data, "predicts 80.9% of winners" | uses each match's own stats, so it explains games after the fact; not a forecast. Warning, not a method |
+| Plus-minus in soccer ([Sæbø & Hvattum](https://arxiv.org/pdf/1706.04943)) | player ratings and team ratings combined beat either alone | that is our design |
+| Try-scorer sellers ([Hard Yards Edge](https://www.hardyardsedge.com.au/), betting guides) | split the market's implied try total across players; books lean on a player's own record | market-implied team totals are the next try-model input once odds exist |
+| Sharp benchmarks | closing line value against a sharp closing price (Pinnacle, Betfair) is how professionals judge a model | the real test of this model; needs the odds pull |
+
+No peer-reviewed NRL betting-market efficiency study turned up; the favourite-longshot literature is soccer and racing.
+
+## Experiments on our data
+
+| Idea | Result | Decision |
+|---|---|---|
+| Damp blowouts in rating updates (tanh cap), with the update rate re-tuned | FIT miss 13.447 -> 13.444 at best | rejected: noise |
+| Club-specific home advantage | FIT miss 13.447 -> 13.457 and worse | rejected |
+| Faster rating updates in a team's first 6 games of a season | FIT 13.447 -> 13.456 and worse | rejected |
+| Spread that varies by game (expected total, mismatch) | DEV line Brier 0.18321 -> 0.18356, CONFIRM 0.19645 -> 0.19657 | rejected |
+| Gradient-boosted margin model | DEV 0.160 -> 0.118 bits; blend 50/50 DEV 0.144, CONFIRM 0.0945 v 0.0925 | rejected: fails on DEV |
+| Line-up box-score strength (named 17's recent run metres, line breaks, try assists, tackle breaks, missed tackles), ridge | DEV 0.1590 -> 0.1618 bits, CONFIRM 0.0928 -> 0.0886 | rejected: helps one set only. Plain least squares on 11 stats broke outright (collinear stats whose relationship changed with the 2020 six-again rule) |
+| **Key-number margin distribution** (t curve re-weighted by how often each exact margin happens) | exact-margin log loss DEV 4.25 -> 3.87, CONFIRM 4.29 -> 3.91; win bits DEV 0.1581 -> 0.1591, CONFIRM 0.0913 -> 0.0924; half-point lines unchanged | **adopted**: h2h and margin bands in the price card |
+| Champion Data form in the try model (line breaks, tackle breaks, run metres, try assists, possessions) | log loss DEV 0.4238 -> 0.4229, CONFIRM 0.4376 -> 0.4373 | **adopted** (small) |
+| Edge defence for try scorers (tries the opponent concedes to each jersey number) | DEV 0.42294 -> 0.42293, CONFIRM 0.43725 -> 0.43729 | rejected: the position-group feature already holds it |
+
+## What the evidence says about where "best in the world" comes from
+
+1. **Not from more rating tweaks.** Every rating change since tuning moved the miss by under 0.03 points against
+   a typical miss of 13.5: an NRL margin is mostly noise around a well-estimated mean.
+2. **From the market and timing.** The public models tip in the same 60-67% band; the only scoreboard that
+   separates them is closing line value. Real odds (open, after teams, close) are the single biggest unknown.
+3. **From props, where books are said to price on a player's own record.** Our try model already beats a
+   competent stand-in; the next inputs are the market's implied team totals and, for run metres and tackles,
+   whether books even post those lines in Australia.
+4. **From information speed.** Tuesday's list carries nearly all the line-up value (0.050 v 0.051 bits for who
+   played), so the window between lists dropping and books repricing is where a fast model earns, if it exists.
+
+## Still to test
+
+- Travel distance and interstate/NZ trips (coordinates come with the weather pull).
+- Weather (pull running; actual weather is an upper bound on what a forecast adds).
+- Referee tendencies (Champion Data holds penalties and set restarts per game; referee names are in RLP).
+- Market-implied totals for the try model, and CLV, once odds exist.
