@@ -20,7 +20,8 @@ orders. Paper only until the founder says otherwise.
 
 | Step | What | Status |
 |---|---|---|
-| 1. Inventory | sources, what they hold, terms, cost | in progress: see `docs/DATA_INVENTORY.md` |
-| 1. Odds probe | free calls (sport keys, fixtures now) | budget 0, runs on push |
+| 1. Inventory | sources, what they hold, terms, cost | done: `docs/DATA_INVENTORY.md` |
+| Data | Cricsheet: every T20 match (14,686; BBL 2011/12-2025/26, WBBL 2015/16-2025/26), people register; licence text kept | on the `bbl-history` release |
+| 1. Odds probe | free calls (sport keys, fixtures now) | blocked: `ODDS_API_KEY` secret not set in Fk-model |
 | 1. Odds probe | paid calls (archive coverage, markets, props, opening), at most 300 of the 20,000 credits | waiting on the founder's OK |
 | 2-7 | data layer, team model, props, backtest, team-news angle, paper season | not started |
