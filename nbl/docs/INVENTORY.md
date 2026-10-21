@@ -10,7 +10,7 @@ checks in this session), or from a workflow run named beside it. Nothing here is
 | Player box scores | nblR's GitHub copy (JaseZiv/nblr_data releases) | one row per player per game, 50 columns: minutes, points, rebounds (off/def), assists, threes made/attempted, FG/FT, steals, blocks, turnovers, fouls, starter, plus/minus (from 2025-26) | 2015-16 to now (37,922 rows; 2026-27: 36 games to 18 Oct) | nblR is GPL-3; nblr_data has no licence file. We copy his files, never the NBL's site | free |
 | Team box scores | same | one row per team per game, 67 columns incl. quarter scores, possessions-type stats (FGA, FTA, TO, OREB) | 2015-16 to now (3,240 rows) | same | free |
 | Results and fixture | same | every game since 1979: teams, score, venue, round, regular/finals, tip time UTC, attendance; the rest of 2026-27 as SCHEDULED | 1979 to now (8,079 games; 129 still to play this season) | same | free |
-| Play-by-play | same | every event | to be counted by the workflow (pyreadr cannot read this file; R converts it) | same | free |
+| Play-by-play | same | every event (999,579 rows, 33 columns): shots with x/y, substitutions, fouls, scores, game clock and shot clock | 2015-16 to now (1,612 games) | same | free |
 | Shot locations | same | x/y, made/missed, shooter | 2015-16, 2017-18 to 2024-25 (none for 2016-17, 2025-26, 2026-27) | same | free |
 | Line-ups / team news | none found | | | | |
 | Injury lists | none found | | | | |
