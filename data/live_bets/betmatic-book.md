@@ -192,7 +192,8 @@ The test: after tonight's draw, re-pull Form King and re-price on the final inpu
 | Flemington Sat 24 | R2 | Turbo Saint | $18 | $26 | 0.52u | $12.30 | after-open, value at FK open $17 |
 | Flemington Sat 24 | R9 | Classic Gem | $9 | $44 | 0.88u | $7.33 | after-open, value at FK open $13.50 |
 | Flemington Sat 24 | R9 | Shockletz | $10 | $40 | 0.80u | $8.10 | after-open, value at FK open $12.67 |
-| **Total** | | | | **$321** | **6.78u** | | |
+| Cranbourne Fri 23 | R6 | Castellar (top-up) | $11 | $17 | 0.34u | $12.41 | founder's call, below our price; Castellar now $35 at $14.09 average |
+| **Total** | | | | **$338** | **7.12u** | | |
 
 Flemington after-open, not filled (TAB under the minimum): Ice Kool ($2.30 v $2.73), Surfin' Bird ($2.90 v $3.30), and the
 higher steps of the three above. Flemington R7/R8: Aethelwulf and Cosmic Crusader only (founder's own bets).
