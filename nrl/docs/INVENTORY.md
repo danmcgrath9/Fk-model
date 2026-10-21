@@ -1,4 +1,4 @@
-# NRL data inventory (step 1, 21 Oct 2026)
+# NRL data inventory (step 1, 21 Oct 2026; pulls done the same day, see the end)
 
 Every figure here comes from a run: the local mirror (`nrl/data/mirror.py`), the `nrl sources`
 workflow (robots.txt, terms pages and a 3-request Champion Data sample, kept on the release as
@@ -34,3 +34,12 @@ No ready-made history of announced teams or injury lists exists that we found.
 |---|---|---|
 | BOM | own content: personal use only, no commercial use, no scraping | free |
 | Open-Meteo | free API non-commercial only (CC BY 4.0), 10,000 calls a day; commercial use needs a paid plan | paid plan price is not on the saved page; check before buying |
+
+## What was pulled (21 Oct 2026, founder approved: "do everything you can")
+
+- Champion Data: 2,629 games, 2014 to the 2026 grand final, none missing, one request every 3 seconds.
+- NRL.com: 1,105 round team-list and late-mail articles 2009-2026, one request every 3 seconds, for private
+  research only. Tuesday's lists survive in the prose articles (2009-2018); from 2020 the archived pages show
+  only the match-day 18.
+- Correction: RLP's 2026 results stop part-way through round 16 (19 Jun); its later 2026 rows are fixtures
+  without results. Champion Data fills 20 Jun to 4 Oct.

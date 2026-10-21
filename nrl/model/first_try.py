@@ -14,7 +14,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-from nrl.model.tries import CONFIRM, DEV, FIT, bootstrap_roi
+from nrl.model.tries import CONFIRM, DEV, FINAL, FIT, bootstrap_roi
 
 EDGES = [0.10, 0.25, 0.50]
 
@@ -31,7 +31,7 @@ def first_scorers(cache):
     return first[['match_id', 'player_id']].rename(columns={'player_id': 'first_scorer'})
 
 
-def main(cache, out=None):
+def main(cache, out=None, final=False):
     tp = pd.read_parquet(f'{cache}/try_predictions.parquet')
     fs = first_scorers(cache)
     p = tp.merge(fs, on='match_id', how='inner')
@@ -49,7 +49,7 @@ def main(cache, out=None):
              '|---|---|---|---|---|---|']
     bt = ['', '### Backtest against the position-share PROXY at its fair price (upper bound)', '',
           '| set | edge needed | bets | strike rate | avg price | ROI | 90% interval |', '|---|---|---|---|---|---|---|']
-    for lab, ss in (('dev', DEV), ('confirm', CONFIRM)):
+    for lab, ss in (('dev', DEV), ('confirm', CONFIRM)) + ((('final', FINAL),) if final else ()):
         t = p[p.season.isin(ss)]
         if t.empty:
             continue
@@ -76,4 +76,5 @@ def main(cache, out=None):
 
 
 if __name__ == '__main__':
-    main(*sys.argv[1:3])
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    main(args[0], args[1] if len(args) > 1 else None, final='--final' in sys.argv)

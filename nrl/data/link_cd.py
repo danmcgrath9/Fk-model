@@ -45,6 +45,11 @@ def main(cache):
     link = cg.merge(rm[['match_id', 'date', 'h', 'a']], on=['date', 'h', 'a'], how='left')
     # a game whose date differs by a day between sources (time zones, late kick-offs): match on teams within 1 day
     miss = link.match_id.isna()
+    if miss.any():   # neutral-ground games (grand finals) can name opposite home teams in the two sources
+        sw = cg[miss.to_numpy()].rename(columns={'h': 'a', 'a': 'h'}) \
+            .merge(rm[['match_id', 'date', 'h', 'a']], on=['date', 'h', 'a'], how='inner')
+        link.loc[link.cd_match_id.isin(sw.cd_match_id), 'match_id'] = link.cd_match_id.map(dict(zip(sw.cd_match_id, sw.match_id)))
+        miss = link.match_id.isna()
     if miss.any():
         for d in (-1, 1):
             alt = cg[miss.to_numpy()].assign(date=(pd.to_datetime(cg[miss.to_numpy()].date) + pd.Timedelta(days=d)).dt.strftime('%Y-%m-%d'))

@@ -6,15 +6,19 @@ book's price beats ours by enough. Separate from racing and the other sports: ev
 `nrl/` and the `nrl-*` workflows, with its own data release (`nrl-history`). No Form King key, no
 BetMatic orders. Paper only until the founder says otherwise.
 
-## Where it stands
+## Where it stands (21 Oct 2026)
 
-| Step | What | Status |
-|---|---|---|
-| 1. Inventory | every source, what it holds, terms, cost | done, see `docs/INVENTORY.md`; odds probe waits on the ODDS_API_KEY secret |
-| Data | uselessnrlstats (RLP, cleaned): every game and player-game 1998 to round 17 2026 | mirrored: 5,744 games, 194,905 player-games |
-| Data | Champion Data match-centre stats (run metres, tackles, try times) 2014-2026 | sampled (3 requests); full pull waits on the founder's call on terms |
-| Odds | The Odds API | capped probe (300 credits) built; not run, the secret is empty |
-| 2-7 | data layer, team model, props, backtest, team-news test, paper season | not started |
+Results: `docs/RESULTS_2026-10-21.md`. Sources and terms: `docs/INVENTORY.md`. Everything rebuilds with `bash nrl/build.sh`.
+
+| Step | Status |
+|---|---|
+| 1. Inventory | done; odds probe built, waits on the ODDS_API_KEY secret |
+| 2. Data layer | done: RLP 1998-2026 + Champion Data 2014-2026 joined, Tuesday lists 2009-2018 where they survive; leakage tests pass (team, player, try and props frames) |
+| 3. Team model | done: ratings + player ratings; at the open and teams named; final check run once |
+| 4. Props | anytime / 2+ / first try scorer; run metres; tackles |
+| 5. Backtest | against stand-in lines only (upper bounds); real lines wait for odds |
+| 6. Team-news angle | late changes measured (Tuesday list vs who played); book repricing needs recorded prices |
+| 7. Paper season | price card ready; price recording from round 1 2027 |
 
 ## Running it
 

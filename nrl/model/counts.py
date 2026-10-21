@@ -123,6 +123,41 @@ def run(cache, stat, final=False):
         lo, hi = boot(win, rk)
         out.append(f'| {lab} | {len(t):,} | {np.abs(t.y - t.mu).mean():.2f} | {np.abs(t.y - t.last10).mean():.2f} | '
                    f'{over.mean():.1%} | {len(win):,} | {win.mean():.1%} | {win.mean() * PRICE - 1:+.1%} | {lo:+.1%} to {hi:+.1%} |')
+    # a book sees Tuesday's list too: split by whether the player's role (position and starting or bench)
+    # is the same as in his previous game, where a last-10 line is most and least naive
+    f['prev_pos'] = f.groupby('playerId').pos.shift(1)
+    f['same_role'] = (f.pos == f.prev_pos) & (f.starter == f.prev_starter)
+    out += ['', f'### {STATS[stat]}: by role against the previous game (56% threshold)', '',
+            '| set | role | bets | hit rate | ROI at 1.87 | 90% interval |', '|---|---|---|---|---|---|']
+    for lab, ss in sets:
+        t = f[f.season.isin(ss)]
+        for role, sub in (('same as last game', t[t.same_role]), ('changed', t[~t.same_role])):
+            over = sub.y > sub.line
+            to, tu = sub.p_over >= 0.56, (1 - sub.p_over) >= 0.56
+            win = np.r_[over[to].to_numpy(), (~over[tu]).to_numpy()]
+            rk = np.r_[sub.kick_off[to].dt.strftime('%G-%V').to_numpy(), sub.kick_off[tu].dt.strftime('%G-%V').to_numpy()]
+            if len(win):
+                lo, hi = boot(win, rk)
+                out.append(f'| {lab} | {role} | {len(win):,} | {win.mean():.1%} | {win.mean() * PRICE - 1:+.1%} | {lo:+.1%} to {hi:+.1%} |')
+    # a smarter stand-in: the player's average in this position group over his career (shrunk toward his
+    # last 10 when he has few games there), offset on FIT so a blind over wins half the time
+    w = f.group_games / (f.group_games + 5)
+    base2 = (w * f.group_avg.fillna(f.last10) + (1 - w) * f.last10)
+    def line2(o):
+        return np.floor(base2 - o) + 0.5
+    best2 = min(offs, key=lambda o: abs((f.y.to_numpy()[fitmask] > line2(o).to_numpy()[fitmask]).mean() - 0.5))
+    f['line2'] = line2(best2)
+    out += ['', f'### {STATS[stat]}: against the smarter stand-in (career average in this position, offset {best2:+.2f})', '',
+            '| set | bets at 56%+ | hit rate | ROI at 1.87 | 90% interval |', '|---|---|---|---|---|']
+    for lab, ss in sets:
+        t = f[f.season.isin(ss)]
+        po = 1 - stats.norm.cdf(t.line2, t.mu, t.sd)
+        over = t.y > t.line2
+        to, tu = po >= 0.56, (1 - po) >= 0.56
+        win = np.r_[over[to].to_numpy(), (~over[tu]).to_numpy()]
+        rk = np.r_[t.kick_off[to].dt.strftime('%G-%V').to_numpy(), t.kick_off[tu].dt.strftime('%G-%V').to_numpy()]
+        lo, hi = boot(win, rk)
+        out.append(f'| {lab} | {len(win):,} | {win.mean():.1%} | {win.mean() * PRICE - 1:+.1%} | {lo:+.1%} to {hi:+.1%} |')
     imp = pd.Series(mdl.feature_importance('gain'), index=FEATURES)
     imp = (imp / imp.sum()).sort_values(ascending=False)
     out += thr + ['', 'What drives it: ' + ', '.join(f'{k} {v:.0%}' for k, v in imp.head(6).items()), '']

@@ -25,9 +25,10 @@ import pandas as pd
 
 from nrl.model.player_frame import CD_FEATURES, FEATURES as BASE_FEATURES
 
-# CD_TRY=1 adds the Champion Data features (2014 on); compared against the base set in nrl/docs/TRIES_STEP1.md
+# Champion Data features (2014 on) are in by default: they lowered log loss on DEV (0.4238 to 0.4229) and CONFIRM
+# (0.4376 to 0.4373). CD_TRY=0 drops them.
 import os
-FEATURES = BASE_FEATURES + (CD_FEATURES if os.environ.get('CD_TRY') == '1' else [])
+FEATURES = BASE_FEATURES + ([] if os.environ.get('CD_TRY') == '0' else CD_FEATURES)
 
 FIT = range(2003, 2019)
 DEV = range(2019, 2023)
