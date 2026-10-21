@@ -35,7 +35,9 @@ def card(d):
     dense = (".row{padding:7px 0}.r{font-size:28px;padding:4px 0}.t{font-size:19px;margin-top:4px}.list{gap:22px}"
              ".u{font-size:27px}") if n >= 10 else ""
     # optional (18 Oct 2026, founder): "prices": false drops the price column; "brand": false drops the Mercer mark;
-    # "foot": false drops the notes line at the bottom (21 Oct 2026, founder); a bet's optional "rated" prints our price
+    # "foot": false drops the notes line at the bottom (21 Oct 2026, founder), and a card without the brand has no notes
+    # line unless "foot": true (22 Oct 2026, founder: "get rid of the bottom notes when I ask for no Mercer or just a
+    # card"); the Twitter footer is "Win bets." (22 Oct 2026, founder); a bet's optional "rated" prints our price
     # under the taken price (22 Oct 2026, founder: "put rated prices next to them")
     show_p, brand = d.get("prices", True), d.get("brand", True)
     if not show_p:
@@ -50,7 +52,7 @@ def card(d):
     return (f"<html><head><style>{CSS.replace('{hs}', str(hs))}{dense}</style></head><body>"
             f"<div class='top'><div class='lock'>" + ("<div class='mark'><span>M</span></div><div class='brand'>MERCER<span>TIPPING</span></div>" if brand else "") + f"</div><div class='when'>{html.escape(d['day'])}<span>{html.escape(d['date'])}</span></div></div>"
             f"<div class='list'>{''.join(rows)}</div>"
-            + ("" if d.get("foot") is False else f"<div class='foot'><span>{html.escape(d.get('footer','Prices at time of posting. Win bets.'))}</span><span>18+ · Gamble responsibly</span></div>")
+            + ("" if d.get("foot", brand) is False else f"<div class='foot'><span>{html.escape(d.get('footer','Win bets.'))}</span><span>18+ · Gamble responsibly</span></div>")
             + "</body></html>")
 async def main(src, out):
     from playwright.async_api import async_playwright
