@@ -214,3 +214,24 @@ public angles already. One hint to keep: threes unders won 54-56% against a mark
 of 52% in both seasons, but the under is priced short (median 1.77-1.81), so backing every
 under made -2.5% and +1.6% (both 95% ranges span zero). Low lines (0.5, 1.5) did +3% on
 1,022 bets. Not proven; check on more players and best-of-books prices.
+
+## Our own angles (21 Oct 2026, `angles2.py`), directions fixed before testing
+
+| Angle (side) | Test A: actual minus model when on, 95% range | Test B: lines, 24/25 / 25/26 |
+|---|---|---|
+| Whistle-happy referee crew (pts over) | -0.04 [-0.17, +0.07] | -11.0% (248) / -10.3% (317) |
+| Tight referee crew (pts under) | +0.10 [-0.02, +0.21] | -7.1% (264) / -6.5% (307) |
+| Star teammate back (pts under) | -0.07 [-0.25, +0.11] | +9.5% (66) / -3.3% (96) |
+| Minutes jump (reb over) | **+0.09 [+0.01, +0.17]** | +3.3% (40) / -3.0% (28) |
+| **Hot threes last game (threes under)** | **+0.10 [+0.03, +0.18]** (they make MORE than the model expects) | **+8.3% (53) / +16.3% (52)** |
+| Tired: 3 in 4 nights or 4th+ road game (pts under) | -0.08 [-0.21, +0.05] | +0.3% (214) / +2.8% (256) |
+| New team, first 10 games (no side set) | **-0.57 [-1.11, -0.02]** (score less than the model expects) | too few lines |
+| Big favourite's star (pts under) | +0.15 [-0.32, +0.66] | -9.1% (43) / +19.5% (61) |
+
+Dead: referee crews, star back, tired, tanking (too few lines). Leads:
+1. **Threes under after a hot shooting night.** Shooters do keep some of it (they beat the
+   model by 0.10 threes), but the line jumps by more, so unders won in BOTH seasons. Only 105
+   lines, so not proven; fits the wider threes-under lean above.
+2. **New team, early season:** our model overrates these players by about half a point a
+   game. A model fix first; the market may share the bias (season under way now).
+3. **Minutes jump:** our model is slightly slow on rebounds after a role change. Model fix.
