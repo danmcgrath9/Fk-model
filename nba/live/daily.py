@@ -158,8 +158,10 @@ def main(argv: list[str]) -> int:
     box = to_box(raw)
     score_past(box)
     games = slate(sched, day)
+    if not argv:   # live: only games that have not started, so every saved row is pre-game
+        games = games[pd.to_datetime(games.start_date, utc=True) > pd.Timestamp(now) + pd.Timedelta(minutes=5)]
     if games.empty:
-        print(f"{day}: no NBA games scheduled.")
+        print(f"{day}: no NBA games left to tip off.")
         return 0
     box = box[box.date < day]
     tonight = placeholders(box, games, day)

@@ -1,6 +1,6 @@
 name: nba daily projections
 
-# NBA only, paper only. Before each NBA game day's tip-offs: download the season's published
+# NBA only, paper only. Through each NBA game day, before the tip-offs still to come: download the season's published
 # box scores and schedule (SportsDataVerse, from ESPN), read the latest official injury report,
 # project every rotation player and commit nba/live/projections/<date>_<HHMM>ET.csv, plus a
 # scorecard of earlier days against what happened. Nothing is bet or sent anywhere.
@@ -8,10 +8,14 @@ name: nba daily projections
 # Scheduled runs only fire from the default branch; this file must be on main for the schedule.
 
 on:
-  schedule:
-    - cron: '30 15 * * *'   # ~11:30am US Eastern
-    - cron: '30 21 * * *'   # ~5:30pm US Eastern
-    - cron: '0 23 * * *'    # ~7pm US Eastern
+  schedule:                 # UTC; US Eastern is UTC-4 until 1 Nov, then UTC-5 (runs an hour earlier, local)
+    - cron: '30 15 * * *'   # late morning ET
+    - cron: '30 21 * * *'   # late afternoon ET
+    - cron: '30 22 * * *'   # ~30-60 min before the 7:00/7:30pm ET tip-offs
+    - cron: '30 23 * * *'   # before the 8pm ET tip-offs
+    - cron: '30 0 * * *'    # before the 9pm ET tip-offs
+    - cron: '30 1 * * *'    # before the 10pm ET tip-offs
+    - cron: '0 2 * * *'     # before the 10:30pm ET tip-offs
   push:
     branches: [claude/nba-props]
     paths: ['nba/live/daily.py']
