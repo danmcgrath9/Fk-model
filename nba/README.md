@@ -235,3 +235,13 @@ Dead: referee crews, star back, tired, tanking (too few lines). Leads:
 2. **New team, early season:** our model overrates these players by about half a point a
    game. A model fix first; the market may share the bias (season under way now).
 3. **Minutes jump:** our model is slightly slow on rebounds after a role change. Model fix.
+
+## Model v2: the angles as inputs (21 Oct 2026, `model_v2.py`)
+
+Added defence vs role, pace, minutes jump, games with current team, new-team flag and last
+game's excess threes. On all prop-able player-games the gain is real but tiny: points miss
+5.107 -> 5.096 (2024/25) and 5.053 -> 5.043 (2025/26), both 95% ranges above zero;
+rebounds and threes a few thousandths; minutes and assists no change. Against the lines at
+7pm: our miss 2.840 -> 2.831, the line 2.779; our side every time -5.7% -> -6.3%. The
+angles were mostly already in the model, and the line stays ahead. More features on the
+same data have stopped paying; the next answers need more lines.
