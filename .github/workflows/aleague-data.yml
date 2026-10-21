@@ -1,7 +1,8 @@
 name: aleague data
 
 # A-League Men data (aleague/README.md). Step 1, the inventory: one look at each candidate source and
-# its terms, results kept on the aleague-history release. Separate from every fk-*, nba-* and afl-*
+# its terms. Then the raw results sources, pulled once. Everything is kept on the aleague-history release
+# and never pulled twice. Separate from every fk-*, nba-* and afl-*
 # workflow: its own concurrency group, no Form King key, no BetMatic, no database, no paid service.
 
 on:
@@ -27,6 +28,8 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GH_REPO: ${{ github.repository }}
       PAUSE: '8'
+      # Wikipedia API etiquette: identify, batch, and pause; 3 s is ample for a few dozen requests
+      WIKI_PAUSE: '3'
       # set the repository variable ALEAGUE_CONTACT to add a way to reach us to the User-Agent
       ALEAGUE_UA: fk-model A-League research ${{ vars.ALEAGUE_CONTACT }}
       PYTHONUNBUFFERED: '1'
@@ -37,11 +40,29 @@ jobs:
           python-version: '3.12'
       - run: pip install -r aleague/requirements.txt
 
-      - name: Inventory (one look per source)
+      - name: Release
         run: |
-          set -o pipefail
-          python aleague/data/inventory.py --out aleague/cache/inventory
           gh release view aleague-history >/dev/null 2>&1 || gh release create aleague-history --target main --latest=false \
             --title "A-League Men history" --notes "A-League Men data (aleague/README.md). Written by the aleague-* workflows; do not delete." || true
+          gh release view aleague-history --json assets --jq '.assets[].name' > held.txt
+          echo "release holds: $(tr '\n' ' ' < held.txt)" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Inventory (one look per source, once)
+        run: |
+          if grep -qx inventory_v1.tar.gz held.txt; then echo "inventory v1 held, not repeated"; exit 0; fi
+          set -o pipefail
+          python aleague/data/inventory.py --out aleague/cache/inventory
           tar czf inventory_v1.tar.gz -C aleague/cache inventory
           gh release upload aleague-history inventory_v1.tar.gz --clobber
+
+      - name: Results sources (FBref results mirror on GitHub, Wikipedia season pages), once
+        run: |
+          if grep -qx results_raw_v1.tar.gz held.txt; then echo "results raw v1 held, not re-pulled"; exit 0; fi
+          set -o pipefail
+          mkdir -p aleague/cache/raw
+          # worldfootballR's own GitHub release of FBref results (no request to FBref)
+          curl -sSfL -o aleague/cache/raw/AUS_match_results.rds \
+            https://github.com/JaseZiv/worldfootballR_data/releases/download/match_results/AUS_match_results.rds
+          python aleague/data/wiki_fetch.py --out aleague/cache/raw/wiki | tee -a "$GITHUB_STEP_SUMMARY"
+          tar czf results_raw_v1.tar.gz -C aleague/cache raw
+          gh release upload aleague-history results_raw_v1.tar.gz --clobber
