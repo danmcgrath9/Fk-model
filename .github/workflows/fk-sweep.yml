@@ -1,0 +1,52 @@
+name: fk sweep
+
+# After TAB opens a meeting: one round of TAB prices (odds_watch_live.py), every placement read back (status on each of
+# the meeting's ledgers), then open_sweep.py lists the runners with nothing on whose live TAB price is still at or above
+# the order's minimum, and writes them to DAYPREFIX-sweep.csv. READ-ONLY: nothing is sent. Placing the sweep is a
+# separate fk-betmatic run (action send, file the -sweep.csv, when now, a tag), only after the founder's OK. (22 Oct 2026)
+
+on:
+  workflow_dispatch:
+    inputs:
+      orders:
+        description: 'the meeting order file, e.g. data/live_bets/2026-10-23-ballarat-betmatic-preopen.csv'
+        required: true
+      venue:
+        description: 'BetMatic venue name, uppercase, e.g. BALLARAT'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    environment: betmatic
+    timeout-minutes: 15
+    env:
+      BETMATIC_EMAIL: ${{ secrets.BETMATIC_EMAIL }}
+      BETMATIC_PASSWORD: ${{ secrets.BETMATIC_PASSWORD }}
+      ORDERS: ${{ github.event.inputs.orders }}
+      VENUE: ${{ github.event.inputs.venue }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests websocket-client
+      - name: TAB prices now
+        run: |
+          D=$(basename "$ORDERS" | cut -c1-10)
+          python betmatic/odds_watch_live.py --venue "$VENUE" --date "$D" --every 30 --minutes 1 > /dev/null
+      - name: What is on
+        run: |
+          P=$(basename "$ORDERS" | sed 's/-betmatic-.*//')
+          for l in data/live_bets/$P*-ledger.csv; do [ -e "$l" ] && python betmatic/betmatic_send.py status "$l" > /dev/null || true; done
+      - name: Sweep
+        run: python betmatic/open_sweep.py "$ORDERS" | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Keep it
+        if: always()
+        run: |
+          git config user.name "fk-sweep"; git config user.email "actions@users.noreply.github.com"
+          for f in data/live_bets/odds-live-*.jsonl data/live_bets/*-placed.jsonl data/live_bets/*-sweep.csv; do [ -e "$f" ] && git add "$f"; done
+          git diff --cached --quiet || { git commit -m "Sweep: $ORDERS"; for i in 1 2 3 4; do git pull --rebase -q && git push -q && break; sleep $((i*3)); done; }
