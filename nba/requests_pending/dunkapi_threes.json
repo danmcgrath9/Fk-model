@@ -1,0 +1,188 @@
+{
+ "why": "Threes-under lead (hot shooting night, low lines): threes lines only for 44 high-volume shooters not yet pulled, 2024/25 and 2025/26. Move into nba/requests/ once the monthly free credits reset (about 441 credits).",
+ "from_date": "2024-10-01",
+ "to_date": "2026-04-30",
+ "markets": [
+  "player_threes"
+ ],
+ "max_credits": 490,
+ "floor": 5,
+ "players": [
+  {
+   "name": "Stephen Curry",
+   "personId": 201939
+  },
+  {
+   "name": "LaMelo Ball",
+   "personId": 1630163
+  },
+  {
+   "name": "Luka Doncic",
+   "personId": 1629029
+  },
+  {
+   "name": "Anthony Edwards",
+   "personId": 1630162
+  },
+  {
+   "name": "Donovan Mitchell",
+   "personId": 1628378
+  },
+  {
+   "name": "Derrick White",
+   "personId": 1628401
+  },
+  {
+   "name": "Trey Murphy III",
+   "personId": 1630530
+  },
+  {
+   "name": "Tyler Herro",
+   "personId": 1629639
+  },
+  {
+   "name": "Jalen Green",
+   "personId": 1630224
+  },
+  {
+   "name": "Anfernee Simons",
+   "personId": 1629014
+  },
+  {
+   "name": "Klay Thompson",
+   "personId": 202691
+  },
+  {
+   "name": "Michael Porter Jr.",
+   "personId": 1629008
+  },
+  {
+   "name": "Donte DiVincenzo",
+   "personId": 1628978
+  },
+  {
+   "name": "Payton Pritchard",
+   "personId": 1630202
+  },
+  {
+   "name": "CJ McCollum",
+   "personId": 203468
+  },
+  {
+   "name": "Coby White",
+   "personId": 1629632
+  },
+  {
+   "name": "Keyonte George",
+   "personId": 1641718
+  },
+  {
+   "name": "Norman Powell",
+   "personId": 1626181
+  },
+  {
+   "name": "Grayson Allen",
+   "personId": 1628960
+  },
+  {
+   "name": "Zach LaVine",
+   "personId": 203897
+  },
+  {
+   "name": "Darius Garland",
+   "personId": 1629636
+  },
+  {
+   "name": "Austin Reaves",
+   "personId": 1630559
+  },
+  {
+   "name": "Victor Wembanyama",
+   "personId": 1641705
+  },
+  {
+   "name": "Jamal Murray",
+   "personId": 1627750
+  },
+  {
+   "name": "Duncan Robinson",
+   "personId": 1629130
+  },
+  {
+   "name": "Devin Booker",
+   "personId": 1626164
+  },
+  {
+   "name": "Devin Vassell",
+   "personId": 1630170
+  },
+  {
+   "name": "Tim Hardaway Jr.",
+   "personId": 203501
+  },
+  {
+   "name": "Dillon Brooks",
+   "personId": 1628415
+  },
+  {
+   "name": "Shaedon Sharpe",
+   "personId": 1631101
+  },
+  {
+   "name": "Miles Bridges",
+   "personId": 1628970
+  },
+  {
+   "name": "Royce O'Neale",
+   "personId": 1626220
+  },
+  {
+   "name": "Nickeil Alexander-Walker",
+   "personId": 1629638
+  },
+  {
+   "name": "OG Anunoby",
+   "personId": 1628384
+  },
+  {
+   "name": "AJ Green",
+   "personId": 1631260
+  },
+  {
+   "name": "Julian Champagnie",
+   "personId": 1630577
+  },
+  {
+   "name": "Cameron Johnson",
+   "personId": 1629661
+  },
+  {
+   "name": "Toumani Camara",
+   "personId": 1641739
+  },
+  {
+   "name": "Collin Gillespie",
+   "personId": 1631221
+  },
+  {
+   "name": "Cade Cunningham",
+   "personId": 1630595
+  },
+  {
+   "name": "Malik Monk",
+   "personId": 1628370
+  },
+  {
+   "name": "Noah Clowney",
+   "personId": 1641730
+  },
+  {
+   "name": "Jrue Holiday",
+   "personId": 201950
+  },
+  {
+   "name": "De'Aaron Fox",
+   "personId": 1628368
+  }
+ ]
+}

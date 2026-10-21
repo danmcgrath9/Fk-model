@@ -245,3 +245,29 @@ rebounds and threes a few thousandths; minutes and assists no change. Against th
 7pm: our miss 2.840 -> 2.831, the line 2.779; our side every time -5.7% -> -6.3%. The
 angles were mostly already in the model, and the line stays ahead. More features on the
 same data have stopped paying; the next answers need more lines.
+
+## Built without odds, ready for when they arrive (21 Oct 2026)
+
+- **Playoffs:** `python nba/boxscores.py --playoffs` -> `box_playoffs.parquet` (482 games,
+  2020/21-2025/26, every minutes/points/running-total check passed; 2025/26 stops at 10 May 2026
+  in the source). Kept apart from the regular season so earlier results are unchanged.
+- **Positions:** the NBA's player index (nba_api) times out from GitHub's servers; the
+  workflow is kept. We use our own guard/wing/big groups.
+- **Live daily pipeline:** blocked. cdn.nba.com answers 403 to GitHub's servers, as stats.nba.com
+  does. The injury reports (a different NBA host) still work.
+- **The Odds API puller** (`odds/pull_oddsapi.py`, workflow `nba odds pull`, environment
+  "Odds API", secret `ODDS_API_KEY`): `probe` (~200 credits: which books carry NBA props in
+  the US and Australia, which AFL prop keys exist), `pull YYYY-MM` (snapshot ladder from 30h to
+  15 min before tip plus a search for the opening snapshot; empty snapshots are free),
+  `estimate` (worst case 3.26M credits for 2023/24-2025/26). Hard cap per job, account floor,
+  never buys twice, key never logged. Tested against a fake API.
+- **Backtest engine** (`backtest_odds.py`): projection from the injury report filed by each
+  snapshot, calibrated + blended probability (blend fitted on 2024/25 only), best price across
+  books at each decision time (the open, each report hour, 1h before), ROI with ranges, and
+  closing-line value. Checked end to end on the DunkAPI lines reshaped into the same format.
+- **Tendencies** (`tendencies.py`): coach blowout/close-game minutes and player boost when the
+  team is short. No real gain (points +0.008 one season, -0.003 the other). The model has
+  taken what these games can give.
+- **Threes test, queued:** `requests_pending/dunkapi_threes.json`, 44 high-volume shooters'
+  threes lines (names from the official injury reports). Move it into `requests/` when the
+  free credits reset.
