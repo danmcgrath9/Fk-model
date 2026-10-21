@@ -34,6 +34,21 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install requests pandas pyarrow
+      - name: Re-fetch the two towns the geocoder misplaced (once)
+        run: |
+          if gh release view nrl-history --json assets --jq '.assets[].name' | grep -qx 'weather_fix_v1.txt'; then
+            echo "fix v1 already applied"; exit 0
+          fi
+          mkdir -p nrl/cache/weather
+          gh release download nrl-history --pattern weather.parquet --pattern weather_raw.tar.gz --dir nrl/cache/weather --clobber
+          tar xzf nrl/cache/weather/weather_raw.tar.gz -C nrl/cache/weather towns.csv
+          set -o pipefail
+          ONLY_TOWNS=Mudgee,Redcliffe python nrl/weather/pull.py nrl/weather/games.csv | tee -a "$GITHUB_STEP_SUMMARY"
+          tar czf weather_towns.tar.gz -C nrl/cache/weather towns.csv
+          echo "Mudgee and Redcliffe re-fetched with hand-set coordinates" > weather_fix_v1.txt
+          for f in nrl/cache/weather/weather.parquet weather_towns.tar.gz weather_fix_v1.txt; do
+            gh release upload nrl-history "$f" --clobber
+          done
       - name: Pull once
         run: |
           if gh release view nrl-history --json assets --jq '.assets[].name' | grep -qx 'weather.parquet'; then
