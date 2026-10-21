@@ -12,8 +12,8 @@ Paper only until the founder says otherwise.
 
 | Step | What | Status |
 |---|---|---|
-| 1. Inventory | one look at each candidate source and its terms (`aleague data`) | running |
-| 1. Inventory | The Odds API probe, capped at 300 of the 20,000 A-League credits (`aleague lines`) | running |
+| 1. Inventory | one look at each candidate source and its terms (`aleague data`) | done, see `docs/INVENTORY.md` |
+| 1. Inventory | The Odds API probe, capped at 300 of the 20,000 A-League credits (`aleague lines`) | blocked: `ODDS_API_KEY` secret not set; 0 credits spent |
 | 2. Data layer | one row per player per game and per team per game, leak-tested | waits on step 1 |
 | 3-7 | team model, props, backtest, team-news test, paper season | not started |
 
