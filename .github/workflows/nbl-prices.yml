@@ -4,7 +4,7 @@ name: nbl prices
 # five player props per expected rotation player. Paper only: nothing is sent to BetMatic or any book.
 # Each run copies nblR's latest files first (one download each, the same files the nbl data workflow
 # keeps), then writes prices_<date>.md and .csv to the nbl-history release: that record is the paper
-# season, compared later with the lines and the close.
+# season. Every run also grades the earlier sheets against the results (paper_scorecard.md).
 #
 # Separate from every fk-*, nba-* and afl-* workflow: its own concurrency group, no Form King key, no
 # BetMatic. A daily schedule only runs from the default branch: until this file is on main it runs on
@@ -70,9 +70,17 @@ jobs:
           python -m nbl.model.price_round nbl/cache nbl/out "$DAYS" | tee price.log
           cat nbl/out/prices_*.md >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Grade every earlier sheet against the results (the paper season's scorecard)
+        run: |
+          set -o pipefail
+          mkdir -p nbl/sheets
+          gh release download nbl-history --dir nbl/sheets --pattern 'prices_*.csv' --skip-existing || true
+          cp nbl/out/prices_*.csv nbl/sheets/
+          python -m nbl.model.grade nbl/cache nbl/sheets nbl/out/paper_scorecard.md | tee -a "$GITHUB_STEP_SUMMARY"
+
       - name: Keep the record on the release
         run: |
-          for f in nbl/out/prices_*; do
+          for f in nbl/out/prices_* nbl/out/paper_scorecard.md; do
             ok=no
             for i in 1 2 3; do gh release upload nbl-history "$f" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
             [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }

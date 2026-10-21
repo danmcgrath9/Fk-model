@@ -1,0 +1,74 @@
+name: nbl record lines
+
+# Records NBL prices from Australian books (nbl/lines/record.py): team markets every 2 hours, props for
+# games inside 30 hours every 3 hours, and the close inside 40 minutes of each tip. Capped per run
+# (MAX_CREDITS) and per season (NBL_BUDGET, the NBL share of the shared Odds API key); the ledger of what
+# was spent and the snapshots live on the nbl-history release. Does nothing until the ODDS_API_KEY
+# secret exists. Paper only: nothing here bets or touches BetMatic.
+#
+# Separate from every fk-*, nba-* and afl-* workflow: its own concurrency group. The 30-minute schedule
+# only runs from the default branch: until this file is on main it runs on push or by hand.
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_credits:
+        description: 'stop this run before spending more than this many credits'
+        default: '60'
+  schedule:
+    - cron: '*/30 * * * *'
+  push:
+    branches: [nbl-model]
+    paths:
+      - 'nbl/lines/record.py'
+      - '.github/workflows/nbl-record.yml'
+
+concurrency:
+  group: nbl-record
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+      MAX_CREDITS: ${{ github.event.inputs.max_credits || '60' }}
+      NBL_BUDGET: '60000'
+      STATE: nbl/cache/lines
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - name: Key present?
+        id: key
+        run: |
+          if [ -z "$ODDS_API_KEY" ]; then
+            echo "ODDS_API_KEY secret is not set: nothing recorded." | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "skip=yes" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.key.outputs.skip != 'yes'
+      - uses: actions/setup-python@v5
+        if: steps.key.outputs.skip != 'yes'
+        with:
+          python-version: '3.12'
+      - name: Record
+        if: steps.key.outputs.skip != 'yes'
+        run: |
+          set -o pipefail
+          pip install -q pandas requests
+          mkdir -p "$STATE"
+          day=$(TZ=Australia/Melbourne date +%Y-%m-%d)
+          gh release download nbl-history --dir "$STATE" --pattern 'nbl_lines_ledger.csv' --clobber || true
+          gh release download nbl-history --dir "$STATE" --pattern "lines_${day}.jsonl.gz" --clobber || true
+          [ -e "$STATE/nbl_lines_ledger.csv" ] && mv "$STATE/nbl_lines_ledger.csv" "$STATE/ledger.csv"
+          python nbl/lines/record.py
+          if [ -e "$STATE/ledger.csv" ]; then
+            cp "$STATE/ledger.csv" "$STATE/nbl_lines_ledger.csv"
+            gh release upload nbl-history "$STATE/nbl_lines_ledger.csv" --clobber
+          fi
+          [ -e "$STATE/lines_${day}.jsonl.gz" ] && gh release upload nbl-history "$STATE/lines_${day}.jsonl.gz" --clobber || true
