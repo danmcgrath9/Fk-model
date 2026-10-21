@@ -1,0 +1,63 @@
+name: bbl lines
+
+# BBL / WBBL betting lines from The Odds API (bbl/README.md). Probe first: a capped look at what the
+# archive holds. The credit cap is the number in bbl/lines/PROBE_BUDGET, committed on purpose so a
+# paid run is a visible change: 0 runs only the free calls (sport keys, fixtures listed now) and may
+# re-run freely; a paid run happens once, and its raw responses go to the bbl-history release as
+# odds_probe_v1.tar.gz, whose presence stops any second paid run. Separate from every fk-*, nba-*
+# and afl-* workflow: its own concurrency group, no Form King key, no BetMatic. The key lives only
+# in the ODDS_API_KEY secret.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [bbl-model]
+    paths:
+      - 'bbl/lines/**'
+      - '.github/workflows/bbl-lines.yml'
+
+concurrency:
+  group: bbl-lines
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests pandas pyarrow pytest
+
+      - name: Tests first
+        run: python -m pytest -q bbl/tests
+
+      - name: Run the probe
+        run: |
+          MAX_CREDITS=$(tr -dc '0-9' < bbl/lines/PROBE_BUDGET)
+          [ -n "$MAX_CREDITS" ] || { echo "PROBE_BUDGET is not a number"; exit 1; }
+          [ "$MAX_CREDITS" -le 300 ] || { echo "PROBE_BUDGET $MAX_CREDITS is above the agreed 300"; exit 1; }
+          export MAX_CREDITS
+          if [ "$MAX_CREDITS" -gt 0 ] && gh release view bbl-history --json assets --jq '.assets[].name' 2>/dev/null | grep -qx 'odds_probe_v1.tar.gz'; then
+            echo "paid probe v1 already on the release; not spending credits again" | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          [ -n "$ODDS_API_KEY" ] || { echo "ODDS_API_KEY secret is not set"; exit 1; }
+          set -o pipefail
+          python bbl/lines/probe.py
+          if [ "$MAX_CREDITS" -gt 0 ]; then
+            gh release view bbl-history >/dev/null 2>&1 || gh release create bbl-history --target main --latest=false \
+              --title "BBL history" --notes "BBL / WBBL model data (bbl/README.md on branch bbl-model). Written by the bbl workflows; do not delete."
+            tar czf odds_probe_v1.tar.gz -C bbl/cache odds_probe
+            gh release upload bbl-history odds_probe_v1.tar.gz --clobber
+          fi

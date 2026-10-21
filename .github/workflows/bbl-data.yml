@@ -1,0 +1,114 @@
+name: bbl data
+
+# BBL / WBBL history (bbl/README.md). Cricsheet's ball-by-ball JSON, every T20 match, pulled once:
+# the bulk zip and the people register are kept on the "bbl-history" release and never downloaded
+# again unless refresh=yes (in-season, for new games). Parsed parquet and INVENTORY.md go to the
+# same release. Cricsheet's own licence text and robots.txt are recorded on the run page at pull
+# time. Separate from every fk-*, nba-* and afl-* workflow: its own concurrency group, no Form
+# King key, no Odds API key, no BetMatic.
+
+on:
+  workflow_dispatch:
+    inputs:
+      refresh:
+        description: 'yes = download the Cricsheet zip and register again (in-season)'
+        default: 'no'
+  push:
+    branches: [bbl-model]
+    paths:
+      - 'bbl/data/**'
+      - '.github/workflows/bbl-data.yml'
+
+concurrency:
+  group: bbl-data
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      REFRESH: ${{ github.event.inputs.refresh || 'no' }}
+      UA: 'fk-model BBL research (github.com/danmcgrath9/Fk-model)'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas pyarrow pytest
+
+      - name: Tests first
+        run: python -m pytest -q bbl/tests
+
+      - name: Cricsheet terms and robots.txt, for the record
+        run: |
+          {
+            echo "### Cricsheet terms at pull time"
+            for p in register/ downloads/ about/ ""; do
+              echo "**https://cricsheet.org/$p** (lines mentioning a licence or attribution)"; echo '```'
+              curl -sL -m 30 -A "$UA" "https://cricsheet.org/$p" | sed 's/<[^>]*>/ /g' | tr -s ' ' \
+                | grep -iE 'licen|attribut|commons|copyright' | head -20 || echo "(nothing found)"
+              echo '```'
+              sleep 3
+            done
+            echo "**robots.txt**"; echo '```'
+            curl -s -m 30 -A "$UA" https://cricsheet.org/robots.txt | head -40 || echo "(no answer)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fetch what the release already holds
+        run: |
+          gh release view bbl-history >/dev/null 2>&1 || gh release create bbl-history --target main --latest=false \
+            --title "BBL history" --notes "BBL / WBBL model data (bbl/README.md on branch bbl-model). Cricsheet data under the licence recorded on the pulling run page (attribute Cricsheet). Written by the bbl data workflow; do not delete."
+          mkdir -p bbl/cache/raw bbl/cache/parquet
+          gh release download bbl-history --dir bbl/cache/raw --pattern 'cricsheet_*' --skip-existing || true
+          ls -la bbl/cache/raw | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Download from Cricsheet (only what is not held)
+        run: |
+          set -e
+          get() {  # url, destination: one request, a pause after it
+            curl -sfL -m 600 -A "$UA" -o "$2.part" "$1" && mv "$2.part" "$2"
+            echo "downloaded $1: $(du -h "$2" | cut -f1)" | tee -a "$GITHUB_STEP_SUMMARY"
+            sleep 5
+          }
+          new=no
+          if [ ! -s bbl/cache/raw/cricsheet_all_json.zip ] || [ "$REFRESH" = yes ]; then
+            get https://cricsheet.org/downloads/all_json.zip bbl/cache/raw/cricsheet_all_json.zip; new=yes
+          else
+            echo "all_json.zip held, not downloaded again" | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ ! -s bbl/cache/raw/cricsheet_people.csv ] || [ "$REFRESH" = yes ]; then
+            get https://cricsheet.org/register/people.csv bbl/cache/raw/cricsheet_people.csv; new=yes
+          fi
+          if [ "$new" = yes ]; then
+            date -u +%FT%TZ > bbl/cache/raw/cricsheet_pulled_at.txt
+            for f in bbl/cache/raw/cricsheet_*; do
+              ok=no
+              for i in 1 2 3; do gh release upload bbl-history "$f" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
+              [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }
+            done
+          fi
+
+      - name: Parse to parquet and take the inventory
+        run: |
+          set -o pipefail
+          python bbl/data/cricsheet.py bbl/cache/raw/cricsheet_all_json.zip bbl/cache/parquet | tee -a "$GITHUB_STEP_SUMMARY"
+          python -c "import pandas as pd; pd.read_csv('bbl/cache/raw/cricsheet_people.csv', dtype=str).to_parquet('bbl/cache/parquet/people.parquet', index=False)"
+          python bbl/data/inventory.py bbl/cache/parquet | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "pulled at: $(cat bbl/cache/raw/cricsheet_pulled_at.txt 2>/dev/null)" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload the parquet and the inventory
+        run: |
+          for f in bbl/cache/parquet/*.parquet bbl/cache/parquet/INVENTORY.md; do
+            ok=no
+            for i in 1 2 3; do gh release upload bbl-history "$f" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
+            [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }
+          done
+          echo "release now holds $(gh release view bbl-history --json assets --jq '.assets | length') files" | tee -a "$GITHUB_STEP_SUMMARY"
