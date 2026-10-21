@@ -1,8 +1,12 @@
 # House standard for sports models
 
 Written 21 Oct 2026 from the horse-racing model in danmcgrath9/Fk-model and adapted for sports. Every sports session
-reads this first. Racing's rules don't carry over unchanged: each one below says what transfers, what changes, and what
-waits until a sport has its own evidence.
+reads this first.
+
+**Two kinds of rule here.** The *house rules* (section 5) and the *method* (price it, bet the opener, judge by CLV,
+out-of-sample only) hold for every sport. **Everything else is the sport's own call**: staking fractions, caps, edge
+thresholds, price bands, blocks, multipliers. The figures below are racing's, or a starting point where a sport has no
+evidence yet; each sport replaces them with its own rules, proved on its own held-out data and written into its own README.
 
 ## 1. The one idea
 We don't try to pick winners. We price every outcome ourselves and bet only when the bookie's price beats ours by enough.
@@ -16,7 +20,7 @@ way, never as a result.
 
 A sports model is built and judged the same way: price it, bet the opener, measure CLV. Every sport proves this for itself.
 
-## 2. The pipeline
+## 2. The pipeline (the shape holds for every sport; the settings are each sport's)
 1. **Data in, stored once.** Pull once, keep it (parquet on the sport's GitHub release), never re-pull what we hold.
    Results settle everything.
 2. **Features known before the event only.** Every input knowable at bet time; a game's own result never leaks into its
@@ -37,20 +41,19 @@ A sports model is built and judged the same way: price it, bet the opener, measu
 7. **Orders at the open.** BetMatic Market Open orders with a minimum price, so they fire only if the opener is big enough.
    Never chase a price after the market has moved. Check that BetMatic fills the sport's markets this way before relying on it.
 
-## 3. Units and staking
+## 3. Units and staking (starting points: each sport sets its own)
 - **A unit is a fixed dollar amount set by the founder** (racing: $25). Everything is recorded in units.
-- **Stake = fractional Kelly**: Kelly on the bank × 5/8, because our probabilities have error. **Before a sport has a
-  fitted market blend, use 1/4 Kelly**, not 5/8: a model-only price has more error.
-- **Hard cap: 10 units a bet** (public Twitter stake halved, max 5u), as in racing.
+- **Stake = fractional Kelly.** Racing uses 5/8 of Kelly. A sport picks its own fraction; until it has a fitted market
+  blend, start lower (e.g. 1/4), because a model-only price has more error.
+- **Cap per bet:** racing's is 10 units (public Twitter stake halved, max 5u). A sport sets its own.
 - **Edge threshold per market, not racing's $1.60 to $15 price filter.** Prop lines sit near $1.85 each way and try scorers
   run $1.50 to $10, so each market gets its own minimum edge (and, where the backtest shows it, its own price band), set
   on held-out data.
-- **Correlation caps (sports only, racing doesn't need them).** Runners in a race exclude each other; bets in one game
-  don't. Five overs on one team's players are largely one bet on the game. So:
-  - **per game:** total stake across all its markets ≤ 10 units;
-  - **per player:** one position per player per game across markets (disposals and fantasy points on the same player are
-    the same bet twice);
-  - **same direction:** overs on several teammates share one cap, and a team total plus that team's player overs count together.
+- **Correlation caps: every sport needs some, the numbers are its own.** Runners in a race exclude each other; bets in
+  one game don't. Five overs on one team's players are largely one bet on the game. Each sport sets, and justifies:
+  - a cap per game across all its markets;
+  - a rule per player across markets (disposals and fantasy points on the same player are close to the same bet twice);
+  - how same-direction bets on teammates, and a team total plus that team's player overs, are capped together.
 - **Firm/drift multipliers and ladders: after the paper season.** Both need a season of recorded openers and closes for that
   sport. Ladders also need BetMatic to fill the sport's markets in steps.
 - **Banks: founder's call, pending.** Proposal: a separate bank per sport (125 units each) so one bad weekend in one sport
