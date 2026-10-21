@@ -54,7 +54,7 @@ jobs:
           set -o pipefail
           python nrl/data/pull_cd.py --seasons ${{ matrix.season }} --out nrl/cache/cd | tee -a "$GITHUB_STEP_SUMMARY"
           for g in nrl/cache/cd/$f nrl/cache/cd/cd_missing_${{ matrix.season }}.txt; do
-            [ -e "$g" ] || continue
+            [ -s "$g" ] || continue   # an empty missing-list means none missing; GitHub refuses empty files
             ok=no
             for i in 1 2 3; do gh release upload nrl-history "$g" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
             [ "$ok" = yes ] || { echo "could not upload $g"; exit 1; }
