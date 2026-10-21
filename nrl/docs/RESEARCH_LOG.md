@@ -34,7 +34,8 @@ No peer-reviewed NRL betting-market efficiency study turned up; the favourite-lo
 | Champion Data form in the try model (line breaks, tackle breaks, run metres, try assists, possessions) | log loss DEV 0.4238 -> 0.4229, CONFIRM 0.4376 -> 0.4373 | **adopted** (small) |
 | Referee tendency (the referee's recent totals against expectation, from RLP appointments) | totals miss DEV 10.060 -> 10.055, CONFIRM 10.755 -> 10.756 | rejected: no effect |
 | **Travel distance** (away km - home km, per 1,000 km; club base = town of most home games) | teams named DEV 0.1589 -> 0.1597 bits, CONFIRM 0.0913 -> 0.0926; at the open 0.1498 -> 0.1502 and 0.0876 -> 0.0890; 0.7 points per 1,000 km (UTS study: 1.1) | **adopted** in the team model |
-| **Weather, actual** (Open-Meteo archive; roofs dry) | totals miss DEV 10.061 -> 9.911, CONFIRM 10.747 -> 10.613 (rain in the game -1.4 points per mm; 31 games with 2mm+ averaged 35.3 against 43.9); anytime try log loss DEV 0.42294 -> 0.42284, CONFIRM 0.43725 -> 0.43658; run metres mixed, tackles flat | helps totals and tries, **pending the forecast test**. Open-Meteo's archive of past forecasts turned out IDENTICAL to actual weather (rain correlation 1.00: it is stitched from each run's first hours), so it tests nothing; the day-ahead Previous Runs archive (2024 on) is being pulled instead |
+| Weather, actual (Open-Meteo archive; roofs dry) | totals miss DEV 10.061 -> 9.911, CONFIRM 10.747 -> 10.613 (rain in the game -1.4 points per mm; 31 games with 2mm+ averaged 35.3 against 43.9); anytime try log loss DEV 0.42294 -> 0.42284, CONFIRM 0.43725 -> 0.43658; run metres mixed, tackles flat | helps in hindsight only, see the forecast test |
+| Weather, as a bettor knows it (day-ahead forecasts, Previous Runs archive, 2024: the only confirm season it covers, 213 games) | day-ahead rain in the game correlates 0.58 with what fell (temperature 0.97, dew point 0.96). Totals miss 10.901 with no weather, 10.929 with actual weather, 10.977 with the forecast; using only the well-forecast variables (24h rain, temperature, dew point) 10.952. Open-Meteo's "historical forecast" archive was IDENTICAL to actual weather (rain correlation 1.00) and tests nothing | **not adopted** for live prices: the gain exists only in hindsight and came from a few very wet games, which are what forecasts miss. Re-test in 2027 with every game's day-ahead forecast recorded beside the totals line |
 | Team scoring style (each side's recent totals against expectation) | totals miss DEV 10.060 -> 10.055, CONFIRM 10.755 -> 10.778 | rejected: fails CONFIRM |
 | Rain and humidity shrinking the margin (expected margin x rain, x dew point) | DEV 0.1573 -> 0.1539 bits, CONFIRM 0.0893 -> 0.0798 | rejected: rain lowers totals, not margins |
 | Edge defence for try scorers (tries the opponent concedes to each jersey number) | DEV 0.42294 -> 0.42293, CONFIRM 0.43725 -> 0.43729 | rejected: the position-group feature already holds it |
@@ -53,5 +54,5 @@ No peer-reviewed NRL betting-market efficiency study turned up; the favourite-lo
 
 ## Still to test
 
-- Weather with past forecasts instead of actual weather (pull running).
+- Weather against day-ahead forecasts over a full season (record them through 2027).
 - Market-implied totals for the try model, and CLV, once odds exist.
