@@ -1,0 +1,88 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-10-24,Flemington,1,,11,Bred 'em All,WIN,6.21,8.00,3.76,188,1 of 1,3.76u,4.69,EARLY: $8 or shorter only; forecast firm/firm by step
+2026-10-24,Flemington,1,,4,Ice Kool,WIN,2.67,3.99,4.07,204,1 of 2,4.07u,2.27,opens under $4: edge 1.15; forecast middle/firm/firm by step
+2026-10-24,Flemington,1,,4,Ice Kool,WIN,3.34,3.99,5.93,296,2 of 2,10.00u,2.27,opens under $4: edge 1.15; forecast middle/firm/firm by step
+2026-10-24,Flemington,1,,4,Ice Kool,WIN,4.00,6.80,9.98,499,1 of 2,9.98u,2.27,forecast firm/firm/firm by step
+2026-10-24,Flemington,1,,4,Ice Kool,WIN,4.00,6.80,0.02,1,2 of 2,10.00u,2.27,forecast firm/firm/firm by step
+2026-10-24,Flemington,1,,1,Spywire,WIN,12.38,23.57,0.83,42,1 of 2,0.83u,7.86,forecast middle/firm/firm by step
+2026-10-24,Flemington,1,,1,Spywire,WIN,15.48,23.57,1.49,74,2 of 2,2.32u,7.86,forecast middle/firm/firm by step
+2026-10-24,Flemington,2,,4,Barracks,WIN,6.22,12.87,1.94,97,1 of 2,1.94u,4.29,forecast middle/firm/firm by step
+2026-10-24,Flemington,2,,4,Barracks,WIN,7.77,12.87,3.24,162,2 of 2,5.18u,4.29,forecast middle/firm/firm by step
+2026-10-24,Flemington,2,,1,Big Wigs,WIN,19.95,40.63,0.56,28,1 of 2,0.56u,13.54,forecast middle/firm/firm by step
+2026-10-24,Flemington,2,,1,Big Wigs,WIN,24.94,40.63,0.94,47,2 of 2,1.50u,13.54,forecast middle/firm/firm by step
+2026-10-24,Flemington,2,,2,Buggsy,WIN,12.80,26.48,0.96,48,1 of 2,0.96u,8.83,forecast middle/firm/firm by step
+2026-10-24,Flemington,2,,2,Buggsy,WIN,16.00,26.48,1.68,84,2 of 2,2.64u,8.83,forecast middle/firm/firm by step
+2026-10-24,Flemington,2,,6,Half Pipe,WIN,15.14,31.32,0.77,38,1 of 2,0.77u,10.44,forecast middle/firm/firm by step
+2026-10-24,Flemington,2,,6,Half Pipe,WIN,18.93,31.32,1.37,68,2 of 2,2.14u,10.44,forecast middle/firm/firm by step
+2026-10-24,Flemington,2,,8,Peyton,WIN,12.87,25.90,0.93,46,1 of 2,0.93u,8.63,forecast middle/firm/firm by step
+2026-10-24,Flemington,2,,8,Peyton,WIN,16.09,25.90,1.53,76,2 of 2,2.46u,8.63,forecast middle/firm/firm by step
+2026-10-24,Flemington,2,,9,Turbo Saint,WIN,17.84,36.90,0.65,32,1 of 2,0.65u,12.30,forecast middle/firm/firm by step
+2026-10-24,Flemington,2,,9,Turbo Saint,WIN,22.30,36.90,1.11,56,2 of 2,1.76u,12.30,forecast middle/firm/firm by step
+2026-10-24,Flemington,3,,3,Hierarchy,WIN,13.16,26.94,0.84,42,1 of 2,0.84u,8.98,forecast middle/firm/firm by step
+2026-10-24,Flemington,3,,3,Hierarchy,WIN,16.45,26.94,1.54,77,2 of 2,2.38u,8.98,forecast middle/firm/firm by step
+2026-10-24,Flemington,3,,11,Joely,WIN,7.80,16.39,1.57,78,1 of 2,1.57u,5.46,forecast middle/firm/firm by step
+2026-10-24,Flemington,3,,11,Joely,WIN,9.75,16.39,2.63,132,2 of 2,4.20u,5.46,forecast middle/firm/firm by step
+2026-10-24,Flemington,3,,10,Salann,WIN,19.07,40.66,0.66,33,1 of 2,0.66u,13.55,forecast middle/firm/firm by step
+2026-10-24,Flemington,3,,10,Salann,WIN,23.84,40.66,1.06,53,2 of 2,1.72u,13.55,forecast middle/firm/firm by step
+2026-10-24,Flemington,3,,2,True Rebel,WIN,3.32,3.99,3.71,186,1 of 1,3.71u,2.54,opens under $4: edge 1.15; forecast middle/firm/firm by step
+2026-10-24,Flemington,3,,2,True Rebel,WIN,4.00,7.63,4.57,228,1 of 2,4.57u,2.54,forecast middle/firm/firm by step
+2026-10-24,Flemington,3,,2,True Rebel,WIN,4.30,7.63,5.43,272,2 of 2,10.00u,2.54,forecast middle/firm/firm by step
+2026-10-24,Flemington,3,,5,Written Empire,WIN,19.46,36.32,0.23,12,1 of 2,0.23u,12.11,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,3,,5,Written Empire,WIN,24.33,36.32,1.27,64,2 of 2,1.50u,12.11,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,4,,3,Angels Fury,WIN,7.69,14.78,1.31,66,1 of 2,1.31u,4.93,forecast middle/firm/firm by step
+2026-10-24,Flemington,4,,3,Angels Fury,WIN,9.61,14.78,2.35,118,2 of 2,3.66u,4.93,forecast middle/firm/firm by step
+2026-10-24,Flemington,4,,11,Aroused,WIN,6.46,8.00,0.94,47,1 of 1,0.94u,4.57,EARLY: $8 or shorter only; forecast middle by step
+2026-10-24,Flemington,4,,1,Chayan,WIN,7.84,16.65,1.41,70,1 of 2,1.41u,5.55,forecast middle/firm/firm by step
+2026-10-24,Flemington,4,,1,Chayan,WIN,9.80,16.65,2.47,124,2 of 2,3.88u,5.55,forecast middle/firm/firm by step
+2026-10-24,Flemington,5,,8,Extragalactic,WIN,6.09,12.55,0.89,44,1 of 3,0.89u,4.18,forecast x0.5/middle/firm by step
+2026-10-24,Flemington,5,,8,Extragalactic,WIN,7.61,12.55,1.51,76,2 of 3,2.40u,4.18,forecast x0.5/middle/firm by step
+2026-10-24,Flemington,5,,8,Extragalactic,WIN,9.13,12.55,2.40,120,3 of 3,4.80u,4.18,forecast x0.5/middle/firm by step
+2026-10-24,Flemington,5,,2,Jigsaw,WIN,3.93,3.99,1.47,74,1 of 1,1.47u,2.72,EARLY: $8 or shorter only; opens under $4: edge 1.15; forecast x0.5/middle/firm by step
+2026-10-24,Flemington,5,,2,Jigsaw,WIN,4.21,8.00,1.88,94,1 of 2,1.88u,2.72,EARLY: $8 or shorter only; forecast x0.5/firm/firm by step
+2026-10-24,Flemington,5,,2,Jigsaw,WIN,5.26,8.00,7.64,382,2 of 2,9.52u,2.72,EARLY: $8 or shorter only; forecast x0.5/firm/firm by step
+2026-10-24,Flemington,5,,1,Mazu,WIN,19.60,40.36,0.27,14,1 of 2,0.27u,13.45,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,5,,1,Mazu,WIN,24.50,40.36,1.09,55,2 of 2,1.36u,13.45,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,5,,3,Rey Magnerio,WIN,22.58,44.31,0.28,14,1 of 2,0.28u,14.77,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,5,,3,Rey Magnerio,WIN,28.22,44.31,1.14,57,2 of 2,1.42u,14.77,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,5,,5,Smooth Chino,WIN,11.68,24.03,0.82,41,1 of 3,0.82u,8.01,forecast middle/middle/firm by step
+2026-10-24,Flemington,5,,5,Smooth Chino,WIN,14.60,24.03,0.24,12,2 of 3,1.06u,8.01,forecast middle/middle/firm by step
+2026-10-24,Flemington,5,,5,Smooth Chino,WIN,17.52,24.03,1.06,53,3 of 3,2.12u,8.01,forecast middle/middle/firm by step
+2026-10-24,Flemington,6,,7,Another Wil,WIN,20.91,42.22,0.96,48,1 of 2,0.96u,14.07,forecast firm/firm/firm by step
+2026-10-24,Flemington,6,,7,Another Wil,WIN,26.14,42.22,0.44,22,2 of 2,1.40u,14.07,forecast firm/firm/firm by step
+2026-10-24,Flemington,6,,2,Evaporate,WIN,18.38,31.62,1.52,76,1 of 2,1.52u,10.54,forecast firm/firm/firm by step
+2026-10-24,Flemington,6,,2,Evaporate,WIN,22.97,31.62,0.72,36,2 of 2,2.24u,10.54,forecast firm/firm/firm by step
+2026-10-24,Flemington,6,,8,Feroce,WIN,16.98,34.29,1.38,69,1 of 2,1.38u,11.43,forecast firm/firm/firm by step
+2026-10-24,Flemington,6,,8,Feroce,WIN,21.23,34.29,0.54,27,2 of 2,1.92u,11.43,forecast firm/firm/firm by step
+2026-10-24,Flemington,6,,12,Surfin' Bird,WIN,3.70,3.99,3.34,167,1 of 1,3.34u,2.75,opens under $4: edge 1.15; forecast middle/firm/firm by step
+2026-10-24,Flemington,6,,12,Surfin' Bird,WIN,4.00,8.25,7.22,361,1 of 2,7.22u,2.75,forecast firm/firm/firm by step
+2026-10-24,Flemington,6,,12,Surfin' Bird,WIN,4.84,8.25,2.76,138,2 of 2,9.98u,2.75,forecast firm/firm/firm by step
+2026-10-24,Flemington,6,,4,Welcometotheshow,WIN,23.15,38.30,0.53,26,1 of 2,0.53u,12.77,forecast middle/firm/firm by step
+2026-10-24,Flemington,6,,4,Welcometotheshow,WIN,28.94,38.30,1.03,52,2 of 2,1.56u,12.77,forecast middle/firm/firm by step
+2026-10-24,Flemington,7,,11,King Pedro,WIN,24.50,37.04,0.28,14,1 of 2,0.28u,12.35,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,7,,11,King Pedro,WIN,30.62,37.04,1.34,67,2 of 2,1.62u,12.35,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,7,,3,Pinhole,WIN,19.83,33.12,0.64,32,1 of 2,0.64u,11.04,forecast middle/firm/firm by step
+2026-10-24,Flemington,7,,3,Pinhole,WIN,24.79,33.12,0.70,35,2 of 2,1.34u,11.04,forecast middle/firm/firm by step
+2026-10-24,Flemington,7,,15,Point Of Law,WIN,22.49,34.00,0.23,12,1 of 2,0.23u,11.33,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,7,,15,Point Of Law,WIN,28.11,34.00,1.27,64,2 of 2,1.50u,11.33,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,7,,6,So You Are,WIN,24.81,44.99,0.18,9,1 of 2,0.18u,15.00,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,7,,6,So You Are,WIN,31.01,44.99,0.92,46,2 of 2,1.10u,15.00,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,8,,10,Aeliana,WIN,11.92,22.04,2.20,110,1 of 2,2.20u,7.35,forecast firm/firm/firm by step
+2026-10-24,Flemington,8,,10,Aeliana,WIN,14.90,22.04,0.04,2,2 of 2,2.24u,7.35,forecast firm/firm/firm by step
+2026-10-24,Flemington,8,,12,Blind Raise,WIN,16.31,30.13,1.48,74,1 of 2,1.48u,10.04,forecast firm/firm/firm by step
+2026-10-24,Flemington,8,,12,Blind Raise,WIN,20.39,30.13,0.04,2,2 of 2,1.52u,10.04,forecast firm/firm/firm by step
+2026-10-24,Flemington,8,,1,Ceolwulf,WIN,25.35,42.42,0.49,24,1 of 2,0.49u,14.14,forecast middle/firm/firm by step
+2026-10-24,Flemington,8,,1,Ceolwulf,WIN,31.69,42.42,0.99,50,2 of 2,1.48u,14.14,forecast middle/firm/firm by step
+2026-10-24,Flemington,8,,3,Sir Delius,WIN,9.02,18.44,2.34,117,1 of 2,2.34u,6.15,forecast firm/firm/firm by step
+2026-10-24,Flemington,8,,3,Sir Delius,WIN,11.27,18.44,1.00,50,2 of 2,3.34u,6.15,forecast firm/firm/firm by step
+2026-10-24,Flemington,8,,11,Warwoven,WIN,9.28,17.79,2.52,126,1 of 2,2.52u,5.93,forecast firm/firm/firm by step
+2026-10-24,Flemington,8,,11,Warwoven,WIN,11.60,17.79,0.20,10,2 of 2,2.72u,5.93,forecast firm/firm/firm by step
+2026-10-24,Flemington,9,,14,Classic Gem,WIN,10.22,22.00,1.19,60,1 of 2,1.19u,7.33,forecast middle/firm/firm by step
+2026-10-24,Flemington,9,,14,Classic Gem,WIN,12.78,22.00,1.39,70,2 of 2,2.58u,7.33,forecast middle/firm/firm by step
+2026-10-24,Flemington,9,,9,Perfect Ten,WIN,12.16,22.45,0.96,48,1 of 2,0.96u,7.48,forecast middle/firm/firm by step
+2026-10-24,Flemington,9,,9,Perfect Ten,WIN,15.20,22.45,1.74,87,2 of 2,2.70u,7.48,forecast middle/firm/firm by step
+2026-10-24,Flemington,9,,3,Shockletz,WIN,12.71,24.30,0.47,24,1 of 2,0.47u,8.10,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,9,,3,Shockletz,WIN,15.89,24.30,2.15,108,2 of 2,2.62u,8.10,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,9,,4,Sunset Park,WIN,19.48,36.28,0.58,29,1 of 2,0.58u,12.09,forecast middle/firm/firm by step
+2026-10-24,Flemington,9,,4,Sunset Park,WIN,24.35,36.28,1.16,58,2 of 2,1.74u,12.09,forecast middle/firm/firm by step
+2026-10-24,Flemington,9,,1,Too Darn Discreet,WIN,14.43,28.85,0.40,20,1 of 2,0.40u,9.62,forecast x0.5/firm/firm by step
+2026-10-24,Flemington,9,,1,Too Darn Discreet,WIN,18.04,28.85,1.88,94,2 of 2,2.28u,9.62,forecast x0.5/firm/firm by step
