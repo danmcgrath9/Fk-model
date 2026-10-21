@@ -120,8 +120,8 @@ def champion_data_sample(rp):
     for c in sorted(nrl, key=lambda c: str(c.get('season', '')))[:80]:
         report.append(f'| {c.get("id")} | {c.get("name")} | {c.get("season")} |')
     report.append('')
-    men = [c for c in nrl if re.search(r'^NRL|Telstra Premiership|NRL Premiership', str(c.get('name', '')))
-           and not re.search(r'NRLW|Women|State of Origin|Cup|Pre', str(c.get('name', '')), re.I)]
+    # names look like "2014 NRL Premiership" or "2026 Telstra NRL Premiership"
+    men = [c for c in nrl if re.fullmatch(r'\d{4} (Telstra )?NRL Premiership', str(c.get('name', '')).strip())]
     if not men:
         report += ['no men\'s NRL premiership found in the list; fixture not sampled', '']
         return
