@@ -16,6 +16,10 @@ import pandas as pd
 from nrl.model import counts, team, tries
 from nrl.model.player_frame import POSITIONS
 
+import os
+# weather_previous_day1.parquet: the forecast as it stood a day before (the stitched 'forecast' archive was
+# identical to actual weather, so it cannot test anything)
+FORECAST_FILE = os.environ.get('FORECAST_FILE', 'weather_previous_day1.parquet')
 W = ['w_rain_game', 'w_rain_pre3', 'w_rain_24', 'w_wind', 'w_gusts', 'w_temp', 'w_dew']
 
 
@@ -85,7 +89,7 @@ def counts_test(cache, w):
 def forecast_test(cache, w):
     """Live use: weather effects learned from actual weather (2009-2018), then fed the archived FORECAST."""
     try:
-        wf = pd.read_parquet(f'{cache}/weather/weather_forecast.parquet')
+        wf = pd.read_parquet(f'{cache}/weather/{FORECAST_FILE}')
     except FileNotFoundError:
         return ['| forecast test | | | weather_forecast.parquet not pulled yet |']
     wf = weather(cache).iloc[:0].pipe(lambda _: wf)
@@ -99,7 +103,7 @@ def forecast_test(cache, w):
     base = team.LinearT().fit(fit[team.TOTAL_FEATURES].to_numpy(), fit.total.to_numpy())
     wm = team.LinearT().fit(fit[team.TOTAL_FEATURES + W].to_numpy(), fit.total.to_numpy())
     out = []
-    for lab, ss in (('2022', [2022]), ('2023-2024', [2023, 2024])):
+    for lab, ss in (('2024 (the only confirm season with day-ahead forecasts)', [2024]),):
         ta, tf_ = ga[ga.season.isin(ss)], gf[gf.season.isin(ss)]
         ta = ta[ta.match_id.isin(tf_.match_id)]
         tf_ = tf_.set_index('match_id').loc[ta.match_id].reset_index()

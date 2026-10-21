@@ -30,9 +30,13 @@ OUT = 'nrl/cache/weather'
 GEO = 'https://geocoding-api.open-meteo.com/v1/search'
 # SOURCE=forecast reads Open-Meteo's archive of past FORECASTS (short-range, stitched from each model run; about
 # 2022 on) instead of what happened: the test of whether weather still helps when only a forecast is known
+# Tested 21 Oct 2026: SOURCE=forecast returned rain IDENTICAL to the archive (correlation 1.00), so it is not
+# a forecast test. SOURCE=previous reads the Previous Runs archive: the forecast as it stood LEAD days earlier.
 SOURCE = os.environ.get('SOURCE', 'actual')
-ARCHIVE = ('https://historical-forecast-api.open-meteo.com/v1/forecast' if SOURCE == 'forecast'
-           else 'https://archive-api.open-meteo.com/v1/archive')
+LEAD = int(os.environ.get('LEAD_DAYS', '1'))
+ARCHIVE = {'forecast': 'https://historical-forecast-api.open-meteo.com/v1/forecast',
+           'previous': 'https://previous-runs-api.open-meteo.com/v1/forecast'}.get(
+    SOURCE, 'https://archive-api.open-meteo.com/v1/archive')
 FIRST = os.environ.get('FIRST_DATE', '')
 HOURLY = 'temperature_2m,relative_humidity_2m,dew_point_2m,precipitation,wind_speed_10m,wind_gusts_10m'
 CC = {'Australia': 'AU', 'New Zealand': 'NZ', 'United States of America': 'US'}
@@ -101,14 +105,14 @@ def main(games_csv):
             sys.exit(f'could not geocode {t}, {c}')
         towns.append(x)
     towns = pd.DataFrame(towns)
-    if os.path.exists(f'{OUT}/towns.csv') and (ONLY or SOURCE == 'forecast'):
+    if os.path.exists(f'{OUT}/towns.csv') and (ONLY or SOURCE != 'actual'):
         old = pd.read_csv(f'{OUT}/towns.csv')
         towns = pd.concat([old[~old.town.isin(towns.town)], towns], ignore_index=True)
     towns.to_csv(f'{OUT}/towns.csv', index=False)
     print(towns.to_string())
     where = {(r.town, r.country): (r.lat, r.lon) for r in towns.itertuples()}
     rows, calls = [], 0
-    stem = '' if SOURCE == 'actual' else '_forecast'
+    stem = {'actual': '', 'forecast': '_forecast'}.get(SOURCE, f'_previous_day{LEAD}')
     with gzip.open(f'{OUT}/raw{stem}.jsonl.gz', 'wt') as raw:
         for (t, c), grp in g.sort_values('ko').groupby(['town', 'country']):
             lat, lon = where[(t, c)]
@@ -120,8 +124,11 @@ def main(games_csv):
                 while j + 1 < len(grp) and (grp.ko.iloc[j + 1] - start).days <= 12:
                     j += 1
                 end = grp.ko.iloc[j] + pd.Timedelta(hours=3)
+                hourly = HOURLY if SOURCE != 'previous' else ','.join(f'{v}_previous_day{LEAD}' for v in HOURLY.split(','))
                 body = get(ARCHIVE, {'latitude': lat, 'longitude': lon, 'start_date': start.strftime('%Y-%m-%d'),
-                                     'end_date': end.strftime('%Y-%m-%d'), 'hourly': HOURLY, 'timezone': 'GMT'})
+                                     'end_date': end.strftime('%Y-%m-%d'), 'hourly': hourly, 'timezone': 'GMT'})
+                if body and SOURCE == 'previous' and 'hourly' in body:
+                    body['hourly'] = {k.replace(f'_previous_day{LEAD}', ''): v for k, v in body['hourly'].items()}
                 calls += 1
                 raw.write(json.dumps({'town': t, 'country': c, 'start': str(start), 'end': str(end), 'body': body}) + '\n')
                 if body and 'hourly' in body:
