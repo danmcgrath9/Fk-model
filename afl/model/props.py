@@ -21,7 +21,7 @@ import pandas as pd
 from scipy import stats
 
 from afl.model.disposals import PARAMS, PRICE, bets, even_shift, fit_dispersion, nb_logpmf, p_over, roi_with_ci, stand_in_line
-from afl.model.frame import FEATURES
+from afl.model.frame import FEATURES, unplayed
 
 warnings.filterwarnings('ignore')
 TRAIN, TUNE, TESTS = (2013, 2023), 2024, (2025, 2026)
@@ -44,6 +44,7 @@ def stat_features(m, stat):
     m[f'{s}_share'] = m[f'{s}_l10'] / m[f'{s}_team_pool'].replace(0, np.nan)
     # opponent: how many of this stat it has conceded lately, against the league
     team_g = m.groupby(['game', 'dt', 'team', 'opp'], as_index=False)[s].sum()
+    team_g.loc[team_g.game.isin(unplayed(m)), s] = np.nan      # live pricing: an unplayed game has no total
     conc = team_g.rename(columns={'team': 'opp', 'opp': 'team', s: 'against'})[['game', 'team', 'against']]
     tgm = team_g.merge(conc, on=['game', 'team']).sort_values('dt')
     tgm['conc_l8'] = tgm.groupby('team').against.transform(lambda x: x.shift(1).rolling(8, min_periods=3).mean())

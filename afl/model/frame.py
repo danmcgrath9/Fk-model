@@ -101,6 +101,8 @@ def elo(games):
         exp = rh - ra + ELO_HGA
         out.append(exp)
         err = g.margin_home - exp
+        if np.isnan(err):           # a game not yet played (live pricing): rated, never learned from
+            continue
         r[g.home] = rh + ELO_K * err
         r[g.away] = ra - ELO_K * err
     return pd.Series(out, index=games.index)
@@ -167,6 +169,8 @@ def add_features(m):
 
     # opponent: disposals it has conceded lately, against the league at the time
     team_games = m.groupby(['game', 'dt', 'team', 'opp'], as_index=False).agg(D_for=('D', 'sum'), UP_for=('UP', 'sum'), T_for=('T', 'sum'))
+    # a game not yet played (live pricing) has no totals: NaN, not zero, so it never enters a later game's average
+    team_games.loc[team_games.game.isin(unplayed(m)), ['D_for', 'UP_for', 'T_for']] = np.nan
     conc = team_games.rename(columns={'team': 'opp', 'opp': 'team', 'D_for': 'D_against', 'UP_for': 'UP_against', 'T_for': 'T_against'})
     tgm = team_games.merge(conc[['game', 'team', 'D_against', 'UP_against']], on=['game', 'team']).sort_values('dt')
     tgm['opp_conc_D_l8'] = tgm.groupby('team').D_against.transform(lambda s: s.shift(1).rolling(8, min_periods=3).mean())
@@ -186,6 +190,11 @@ def add_features(m):
     m = m.merge(gt[['game', 'league_game_D', 'venue_rel']], on='game', how='left')
     m['opp_conc_rel'] = m.opp_conc_D_l8 / (m.league_game_D / 2)
     return m
+
+
+def unplayed(m):
+    """Games in the table with no stats yet: only rows appended for live pricing (afl/live/price_round.py)."""
+    return set(m.loc[m.D.isna(), 'game'])
 
 
 def outs_and_ins(m):

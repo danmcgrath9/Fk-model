@@ -41,28 +41,40 @@ def position_spread(tu, mu_tu, te, stat, a_single):
     return a_te
 
 
+def stat_matrix(base, cache, stat):
+    """Rows a book would price for this stat, with its features: the core list, the stat's own, and the extra inputs
+    afl/model/extra_test.py kept for it (more than two standard errors better on unseen seasons)."""
+    m, sfeats = P.stat_features(base, stat)
+    kept = []
+    kp = f'{cache}/extra_kept.json'
+    if os.path.exists(kp):
+        kept = [c for c in json.load(open(kp)).get(stat, '').split(',') if c]
+    if kept:
+        m = X.add_extra(m, cache, stat)
+    feats = list(dict.fromkeys(FEATURES + sfeats + ['exp_score'] + kept))
+    if 'pos' not in m:
+        m = m.assign(pos=X.position(m))
+    m = P.eligible(m)
+    return m[m[f'{stat}_l10'].notna()], feats, kept
+
+
+def params_for(stat):
+    """Model settings per stat: the tuned ones (afl/model/tune.py, chosen on 2024) where they exist, else the defaults."""
+    p = os.path.join(os.path.dirname(__file__), 'tuned_params.json')
+    tuned = json.load(open(p)).get(stat, {}) if os.path.exists(p) else {}
+    return {**PARAMS, **tuned}
+
+
 def run(cache):
     base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
     keys = ['game', 'season', 'Round', 'date', 'team', 'opp', 'player_id', 'Player']
     out = None
     for stat in STATS:
-        m, sfeats = P.stat_features(base, stat)
-        # extra inputs kept by afl/model/extra_test.py for this stat (more than two standard errors better on unseen seasons)
-        kept = []
-        kp = f'{cache}/extra_kept.json'
-        if os.path.exists(kp):
-            kept = [c for c in json.load(open(kp)).get(stat, '').split(',') if c]
-        if kept:
-            m = X.add_extra(m, cache, stat)
-        feats = list(dict.fromkeys(FEATURES + sfeats + ['exp_score'] + kept))
-        if 'pos' not in m:
-            m = m.assign(pos=X.position(m))
-        m = P.eligible(m)
-        m = m[m[f'{stat}_l10'].notna()]
+        m, feats, kept = stat_matrix(base, cache, stat)
         parts = []
         for S in SEASONS:
             tr, tu, te = m[m.season.between(2013, S - 2)], m[m.season == S - 1], m[m.season == S]
-            mdl = lgb.LGBMRegressor(objective='poisson', **PARAMS).fit(
+            mdl = lgb.LGBMRegressor(objective='poisson', **params_for(stat)).fit(
                 tr[feats], tr[stat], eval_set=[(tu[feats], tu[stat])], callbacks=[lgb.early_stopping(150, verbose=False)])
             mu_tu = mdl.predict(tu[feats])
             a = max(fit_dispersion(tu[stat].to_numpy(), mu_tu), 1e-3)
