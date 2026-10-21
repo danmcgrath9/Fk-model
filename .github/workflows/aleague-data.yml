@@ -7,6 +7,10 @@ name: aleague data
 
 on:
   workflow_dispatch:
+    inputs:
+      refresh_current:
+        description: 'yes = re-fetch the current season from Wikipedia (in-season update), then rebuild the tables'
+        default: 'no'
   push:
     branches: [aleague-model]
     paths:
@@ -66,3 +70,21 @@ jobs:
           python aleague/data/wiki_fetch.py --out aleague/cache/raw/wiki | tee -a "$GITHUB_STEP_SUMMARY"
           tar czf results_raw_v1.tar.gz -C aleague/cache raw
           gh release upload aleague-history results_raw_v1.tar.gz --clobber
+
+      - name: Tables (matches, goals, team games) built from the raw sources
+        run: |
+          set -o pipefail
+          rm -rf aleague/cache/raw && mkdir -p aleague/cache
+          gh release download aleague-history --pattern results_raw_v1.tar.gz --dir aleague/cache --clobber
+          tar xzf aleague/cache/results_raw_v1.tar.gz -C aleague/cache
+          if [ "${{ github.event.inputs.refresh_current }}" = "yes" ]; then
+            # the season in play: Wikipedia only, a handful of requests; replaces that season's pages
+            cur=$(python -c "import datetime as d; t=d.date.today(); y=t.year if t.month>=7 else t.year-1; print(f'{y}–{str(y+1)[2:]}')")
+            python aleague/data/wiki_fetch.py --out aleague/cache/raw/wiki --seasons "$cur" | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
+          python -m aleague.data.build aleague/cache/raw aleague/cache/tables | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m aleague.data.team_games aleague/cache/tables | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m pytest -q aleague/tests | tail -3 | tee -a "$GITHUB_STEP_SUMMARY"
+          for f in matches.parquet goals.parquet team_games.parquet BUILD.md; do
+            gh release upload aleague-history "aleague/cache/tables/$f" --clobber
+          done
