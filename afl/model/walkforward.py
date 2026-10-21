@@ -7,6 +7,8 @@ marks, tackles, goals. Output: afl/cache/walkforward.parquet, one row per player
 
 Usage: python -m afl.model.walkforward afl/cache
 """
+import json
+import os
 import sys
 import warnings
 
@@ -14,6 +16,7 @@ import lightgbm as lgb
 import numpy as np
 import pandas as pd
 
+from afl.model import extra as X
 from afl.model import props as P
 from afl.model.disposals import PARAMS, fit_dispersion
 from afl.model.frame import FEATURES
@@ -29,7 +32,14 @@ def run(cache):
     out = None
     for stat in STATS:
         m, sfeats = P.stat_features(base, stat)
-        feats = list(dict.fromkeys(FEATURES + sfeats + ['exp_score']))
+        # extra inputs kept by afl/model/extra_test.py for this stat (more than two standard errors better on unseen seasons)
+        kept = []
+        kp = f'{cache}/extra_kept.json'
+        if os.path.exists(kp):
+            kept = [c for c in json.load(open(kp)).get(stat, '').split(',') if c]
+        if kept:
+            m = X.add_extra(m, cache, stat)
+        feats = list(dict.fromkeys(FEATURES + sfeats + ['exp_score'] + kept))
         m = P.eligible(m)
         m = m[m[f'{stat}_l10'].notna()]
         parts = []
@@ -39,7 +49,7 @@ def run(cache):
                 tr[feats], tr[stat], eval_set=[(tu[feats], tu[stat])], callbacks=[lgb.early_stopping(150, verbose=False)])
             a = max(fit_dispersion(tu[stat].to_numpy(), mdl.predict(tu[feats])), 1e-3)
             parts.append(te[keys + [stat]].assign(**{f'mu_{stat}': mdl.predict(te[feats]), f'a_{stat}': a}))
-            print(f'{STATS[stat]} {S}: {len(te):,} player-games, spread {a:.3f}', flush=True)
+            print(f'{STATS[stat]} {S}: {len(te):,} player-games, spread {a:.3f}, extra inputs: {kept or "none"}', flush=True)
         p = pd.concat(parts)
         out = p if out is None else out.merge(p.drop(columns=['Player']), on=[k for k in keys if k != 'Player'], how='outer')
     out.to_parquet(f'{cache}/walkforward.parquet', index=False)
