@@ -24,6 +24,21 @@ from afl.model.frame import FEATURES
 warnings.filterwarnings('ignore')
 STATS = {'D': 'disposals', 'M': 'marks', 'T': 'tackles', 'G': 'goals'}
 SEASONS = (2023, 2024, 2025, 2026)
+# Stats whose spread is fitted per position. Disposals only: a midfielder's spread is narrower than a general player's
+# (0.015 against 0.045 on 2024), and fitting it per position improved 2025-2026 log-likelihood by 0.0018 ± 0.0006 per
+# player-game. Marks, tackles and goals showed no gain (afl/docs/TAILS.md), so they keep one spread.
+POS_SPREAD = {'D'}
+MIN_POS_ROWS = 500   # a position with fewer tuning rows than this uses the single spread
+
+
+def position_spread(tu, mu_tu, te, stat, a_single):
+    """Spread per position, fitted on the tuning season; the single spread where a position is thin."""
+    a_te = np.full(len(te), a_single)
+    for p in te.pos.unique():
+        sel = (tu.pos == p).to_numpy()
+        if sel.sum() >= MIN_POS_ROWS:
+            a_te[(te.pos == p).to_numpy()] = max(fit_dispersion(tu[stat].to_numpy()[sel], mu_tu[sel]), 1e-3)
+    return a_te
 
 
 def run(cache):
@@ -40,6 +55,8 @@ def run(cache):
         if kept:
             m = X.add_extra(m, cache, stat)
         feats = list(dict.fromkeys(FEATURES + sfeats + ['exp_score'] + kept))
+        if 'pos' not in m:
+            m = m.assign(pos=X.position(m))
         m = P.eligible(m)
         m = m[m[f'{stat}_l10'].notna()]
         parts = []
@@ -47,11 +64,15 @@ def run(cache):
             tr, tu, te = m[m.season.between(2013, S - 2)], m[m.season == S - 1], m[m.season == S]
             mdl = lgb.LGBMRegressor(objective='poisson', **PARAMS).fit(
                 tr[feats], tr[stat], eval_set=[(tu[feats], tu[stat])], callbacks=[lgb.early_stopping(150, verbose=False)])
-            a = max(fit_dispersion(tu[stat].to_numpy(), mdl.predict(tu[feats])), 1e-3)
-            parts.append(te[keys + [stat]].assign(**{f'mu_{stat}': mdl.predict(te[feats]), f'a_{stat}': a}))
+            mu_tu = mdl.predict(tu[feats])
+            a = max(fit_dispersion(tu[stat].to_numpy(), mu_tu), 1e-3)
+            a_te = np.full(len(te), a)
+            if stat in POS_SPREAD:
+                a_te = position_spread(tu, mu_tu, te, stat, a)
+            parts.append(te[keys + ['pos', stat]].assign(**{f'mu_{stat}': mdl.predict(te[feats]), f'a_{stat}': a_te}))
             print(f'{STATS[stat]} {S}: {len(te):,} player-games, spread {a:.3f}, extra inputs: {kept or "none"}', flush=True)
         p = pd.concat(parts)
-        out = p if out is None else out.merge(p.drop(columns=['Player']), on=[k for k in keys if k != 'Player'], how='outer')
+        out = p if out is None else out.merge(p.drop(columns=['Player', 'pos']), on=[k for k in keys if k != 'Player'], how='outer')
     out.to_parquet(f'{cache}/walkforward.parquet', index=False)
     return out
 
