@@ -3,7 +3,7 @@
 Content: Ultimate A-League (ultimatealeague.com), CC BY 4.0.
 
 A page carries:
-  title       "<Home> vs <Away>. Round <r>, <season>"
+  title       "<Home> vs <Away>. <stage>, <season>" (stage: Round N, Finals Week N, Pre-Season)
   details     date and time (local, with zone), stadium, referee, attendance, the score
   Timeline    events (goals, cards, ...) with minute, side and player, the icon's alt text saying which
   Lineups     rows of (home player, away player); a row holding only &nbsp; separates the starters from
@@ -15,7 +15,7 @@ from the substitutions and red cards and capped at 90, since bets settle on 90 m
 """
 import re
 
-TITLE = re.compile(r'<title>\s*(.+?) vs (.+?)\. Round ([^,]+), (\d{4}-\d{2}) ::', re.S)
+TITLE = re.compile(r'<title>\s*(.+?) vs (.+?)\. ([^,]+), (\d{4}-\d{2}) ::', re.S)  # stage: 'Round 7', 'Finals Week 1', 'Pre-Season'
 PID = re.compile(r'player_id=(\d+)">([^<]+?)\s*(?:<small>\((\w+)\)</small>)?</a>')
 SENDING_OFF = re.compile(r'red|second yellow', re.I)
 
@@ -47,7 +47,10 @@ def parse_match(html, match_id=None):
         raise ValueError('not a match page (no title)')
     score = re.search(r'<div class="match-score">\s*<div>\s*(\d+)\s*-\s*(\d+)', html)
     att = _detail(html, 'Attendance')
-    match = dict(ual_match_id=match_id, home=t.group(1).strip(), away=t.group(2).strip(), round=t.group(3).strip(),
+    stage = t.group(3).strip()
+    match = dict(ual_match_id=match_id, home=t.group(1).strip(), away=t.group(2).strip(),
+                 round=stage.replace('Round ', ''), stage='Pre-Season' if 'pre-season' in stage.lower() else
+                 'Finals' if 'final' in stage.lower() else 'Regular season',
                  season=t.group(4), when_local=_detail(html, 'Date'), stadium=_detail(html, 'Stadium'),
                  referee=_detail(html, 'Referee'),
                  attendance=int(re.sub(r'\D', '', att)) if att and re.search(r'\d', att) else None,

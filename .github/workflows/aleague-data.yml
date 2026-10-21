@@ -104,3 +104,12 @@ jobs:
           for f in matches.parquet goals.parquet team_games.parquet BUILD.md; do
             gh release upload aleague-history "aleague/cache/tables/$f" --clobber
           done
+          # player tables from the Ultimate A-League seasons held so far (finished seasons only)
+          mkdir -p aleague/cache/ual
+          gh release download aleague-history --pattern 'ual_20??-??.tar.gz' --dir aleague/cache/ual --clobber || true
+          if ls aleague/cache/ual/ual_*.tar.gz >/dev/null 2>&1; then
+            python -m aleague.data.ual_build aleague/cache/ual aleague/cache/tables | tee -a "$GITHUB_STEP_SUMMARY"
+            for f in ual_matches.parquet player_games.parquet ual_events.parquet UAL_BUILD.md; do
+              gh release upload aleague-history "aleague/cache/tables/$f" --clobber
+            done
+          fi

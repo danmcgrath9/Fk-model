@@ -80,7 +80,8 @@ def build(src, tables):
     um['season'] = um.season.map(lambda x: int(x[:4]) + 1)  # '2021-22' -> 2022, as in matches.parquet
     ours = pd.read_parquet(os.path.join(tables, 'matches.parquet'))
     um['match_id'], um['score_agrees'] = link(um, ours)
-    um = um[um.completed & um.home_goals.notna()].copy()
+    preseason = int((um.stage == 'Pre-Season').sum())
+    um = um[um.completed & um.home_goals.notna() & (um.stage != 'Pre-Season')].copy()
 
     # per-player counts from the timeline
     ev['goal'] = ev.event.fillna('').str.match(GOAL) & ~ev.event.fillna('').str.contains(MISSED)
@@ -94,7 +95,7 @@ def build(src, tables):
     p = pl.merge(counts, on=['ual_match_id', 'side', 'player_id'], how='left')
     for c in ('goal', 'pen_goal', 'yellow', 'red'):
         p[c] = p[c].fillna(0).astype(int)
-    p = p.merge(um[['ual_match_id', 'match_id', 'season', 'date', 'home_c', 'away_c', 'referee', 'score_agrees']],
+    p = p.merge(um[['ual_match_id', 'match_id', 'season', 'date', 'stage', 'home_c', 'away_c', 'referee', 'score_agrees']],
                 on='ual_match_id', how='inner')
     p['team'] = p.home_c.where(p.side == 'home', p.away_c)
     p['opponent'] = p.away_c.where(p.side == 'home', p.home_c)
@@ -102,14 +103,25 @@ def build(src, tables):
     p = p.drop(columns=['home_c', 'away_c'])
 
     os.makedirs(tables, exist_ok=True)
-    um.to_parquet(os.path.join(tables, 'ual_matches.parquet'), index=False)
     p.to_parquet(os.path.join(tables, 'player_games.parquet'), index=False)
     ev.to_parquet(os.path.join(tables, 'ual_events.parquet'), index=False)
 
     # checks: goals in the timeline against the score; minutes per side
+    # timeline goals (own goals credited to the other side) against the page's score, regulation only
+    # where no extra time: a match whose timeline does not add up is flagged, not used for goals
+    evm = ev[ev.ual_match_id.isin(um.ual_match_id)]
+    # an own goal is listed under the side it counts for (checked on 2013-14 pages), not the scorer's side
+    sc = evm.assign(for_side=evm.side, g=evm.goal | evm.own_goal)
+    tl = sc[sc.g].groupby(['ual_match_id', 'for_side']).size().unstack(fill_value=0).reindex(columns=['home', 'away'], fill_value=0)
+    chk = um.set_index('ual_match_id')[['home_goals', 'away_goals']].join(tl).fillna(0)
+    um['timeline_reconciles'] = um.ual_match_id.map(
+        ((chk.home == chk.home_goals) & (chk.away == chk.away_goals)).to_dict()).fillna(False)
+    um.to_parquet(os.path.join(tables, 'ual_matches.parquet'), index=False)
     lines = ['# Ultimate A-League tables', '',
-             f'{len(um):,} completed matches, {len(p):,} player-match rows, {len(ev):,} events; '
-             f'{len(bad)} pages unreadable. Content: Ultimate A-League, CC BY 4.0.', '',
+             f'{len(um):,} completed league matches (regular season and finals; {preseason} pre-season pages left out), '
+             f'{len(p):,} player-match rows, {len(ev):,} events; {len(bad)} pages unreadable. '
+             f'Timeline goals add up to the score in {um.timeline_reconciles.sum():,} of {len(um):,} matches '
+             '(extra-time goals count in a final\'s score). Content: Ultimate A-League, CC BY 4.0.', '',
              'Event names seen: ' + ', '.join(f'{k} ({v})' for k, v in ev.event.value_counts().items()), '',
              '| season | matches | linked to matches.parquet | score agrees | player rows | starters per side | minutes per side |',
              '|---|---|---|---|---|---|---|']
