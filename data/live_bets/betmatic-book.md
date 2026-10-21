@@ -205,6 +205,30 @@ Flemington after-open, not filled (TAB under the minimum): Ice Kool ($2.30 v $2.
 higher steps of the three above. Flemington R7/R8: Aethelwulf and Cosmic Crusader only (founder's own bets).
 
 
+## Tweeted Thu 22 Oct (locked)
+Twitter units are the model stake halved (max 5u). Prices are what BetMatic would have taken at Form King's opening price
+(founder: "what betmatic would of got"), not always what we got; our real bets are in "Taken, Wed 21 Oct" above.
+
+Murshidi winner card (Geelong R5, 5u at $11, SP $3.70, +50u), with today's Mornington runners listed without prices:
+R2 Party Benefits, R3 Grinding Away, R7 Cresta Crystal, R8 Russian Benefits (paper; not placed, TAB was empty when they fired).
+Settle on Twitter at the model's open-price stakes halved: Party Benefits 0.36u at $8.75, Grinding Away 1.44u at $21,
+Cresta Crystal 1.35u at $17, Russian Benefits 2.50u at $14.
+
+Fri/Sat card ("Placed early. Win bets.", rated price shown under each):
+
+| Day | Race | Horse | Price | Rated | Twitter units |
+|---|---|---|---|---|---|
+| Fri | Cranbourne R2 | Eye For An Eye | $22 | $13.22 | 0.95u |
+| Fri | Cranbourne R2 | Superstock | $17.50 | $10.39 | 1.24u |
+| Fri | Cranbourne R6 | Castellar | $16.50 | $12.41 | 0.35u |
+| Sat | Flemington R1 | Ice Kool | $2.80 | $2.27 | 2u |
+| Sat | Flemington R2 | Turbo Saint | $18 | $12.30 | 0.26u |
+| Sat | Flemington R6 | Surfin' Bird | $4.40 | $2.75 | 3.6u |
+| Sat | Flemington R7 | Aethelwulf | $8.50 | $3.24 | 3.85u |
+| Sat | Flemington R8 | Cosmic Crusader | $11 | $5.58 | 2u |
+| Sat | Flemington R9 | Classic Gem | $13.50 | $7.33 | 1.3u |
+| Sat | Flemington R9 | Shockletz | $10 | $8.10 | 0.4u |
+
 ## Copied tips (founder's call, separate from the model's results)
 
 | Date | Race | Horse | Tipster (price, units) | Order | Placed | Result |
