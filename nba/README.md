@@ -195,3 +195,22 @@ What is left: the OPENING line (before injury news is priced in) and Australian 
 Odds API's timed snapshots. (2) Australian books against the US close (step 4): needs
 no model at all. (3) A better model: real spread/total, injury-news timing.
 
+
+## Betting angles (21 Oct 2026, `angles.py`)
+
+Angles tested: defence against role (guard/wing/big from per-minute rates; the data has no
+positions), stand-in game total, pace, blowout risk, rest, home/away, last game against
+average, line against average. All built from earlier games only.
+
+**In real games (29,596 prop-able player-games, 2024/25-2025/26)** they are real. Points
+against season average, worst to best bucket: defence vs role 1.17, last game 1.94, total
+0.72, rest 0.52, pace 0.41. Our model already absorbs most of it; what it misses, worst to
+best bucket: defence vs role 0.32 points (and 0.28 rebounds, 0.25 assists), total 0.14.
+So defence vs role is worth adding as a model feature.
+
+**Against the line (12 players, 6,625 lines):** none survives. 9 of 92 buckets were
+profitable on the same side in both seasons, no more than luck. The bookies price these
+public angles already. One hint to keep: threes unders won 54-56% against a market price
+of 52% in both seasons, but the under is priced short (median 1.77-1.81), so backing every
+under made -2.5% and +1.6% (both 95% ranges span zero). Low lines (0.5, 1.5) did +3% on
+1,022 bets. Not proven; check on more players and best-of-books prices.
