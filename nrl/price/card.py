@@ -143,8 +143,11 @@ def main(cache, games_csv, teams_csv=None):
            '| game | version | home win | fair home | fair away | our margin (home) | line | P(home covers) | '
            'our total | total line | P(over) |', '|---|---|---|---|---|---|---|---|---|---|---|']
     for g, (mid, r) in zip(games.itertuples(), up.iterrows()):
-        ver = 'teams named' if g.home in named_teams and g.away in named_teams else 'open'
+        # at the open, ratings only: the open line-up features helped on one season set only and were dropped
+        # (nrl/docs/RESULTS_2026-10-21.md)
+        ver = 'teams named' if g.home in named_teams and g.away in named_teams else 'ratings only'
         feats, mm, tm = models[ver]
+        ver = 'teams named' if ver == 'teams named' else 'open (ratings only)'
         X = r[feats].to_numpy(float)[None, :]
         Xt = r[team.TOTAL_FEATURES].to_numpy(float)[None, :]
         pw = float(team.win_prob(mm, X)[0])
