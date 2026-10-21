@@ -9,7 +9,8 @@ Writes, one row per:
   <out>/matches.parquet         game: season, round, date, kick-off, venue, crowd, scores, penalties
   <out>/player_matches.parquet  player per game: team, jersey, position, tries, goals, field goals,
                                 sin bins, send offs, points
-  <out>/players.parquet, teams.parquet, venues.parquet, ladders.parquet  reference tables
+  <out>/players.parquet, teams.parquet, venues.parquet, ladders.parquet, ref_matches.parquet (referee per game),
+                                refs.parquet  reference tables
   <out>/mirror_source.txt       the commit we copied, so a later run can say what changed
 
 Usage: python nrl/data/mirror.py --out nrl/cache [--src /path/to/existing/uselessnrlstats]
@@ -25,7 +26,8 @@ import pandas as pd
 MIRROR = 'https://github.com/uselessnrlstats/uselessnrlstats.git'
 FIRST_SEASON = 1998
 TABLES = {'match_data': 'matches', 'player_match_data': 'player_matches', 'player_data': 'players',
-          'team_data': 'teams', 'venue_data': 'venues', 'ladder_round_data': 'ladders'}
+          'team_data': 'teams', 'venue_data': 'venues', 'ladder_round_data': 'ladders',
+          'ref_match_data': 'ref_matches', 'ref_data': 'refs'}
 
 
 def clone(dest):
@@ -66,6 +68,7 @@ def main():
     frames['matches'] = m
     pm = frames['player_matches']
     frames['player_matches'] = pm[pm.match_id.isin(m.match_id)].reset_index(drop=True)
+    frames['ref_matches'] = frames['ref_matches'][frames['ref_matches'].match_id.isin(m.match_id)].reset_index(drop=True)
     if 'ladders' in frames and 'competition_year' in frames['ladders']:
         lad = frames['ladders']
         yr = lad.competition_year.astype(str).str.extract(r'(\d{4})')[0].astype(float)

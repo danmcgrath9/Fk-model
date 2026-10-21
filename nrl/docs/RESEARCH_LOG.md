@@ -32,6 +32,7 @@ No peer-reviewed NRL betting-market efficiency study turned up; the favourite-lo
 | Line-up box-score strength (named 17's recent run metres, line breaks, try assists, tackle breaks, missed tackles), ridge | DEV 0.1590 -> 0.1618 bits, CONFIRM 0.0928 -> 0.0886 | rejected: helps one set only. Plain least squares on 11 stats broke outright (collinear stats whose relationship changed with the 2020 six-again rule) |
 | **Key-number margin distribution** (t curve re-weighted by how often each exact margin happens) | exact-margin log loss DEV 4.25 -> 3.87, CONFIRM 4.29 -> 3.91; win bits DEV 0.1581 -> 0.1591, CONFIRM 0.0913 -> 0.0924; half-point lines unchanged | **adopted**: h2h and margin bands in the price card |
 | Champion Data form in the try model (line breaks, tackle breaks, run metres, try assists, possessions) | log loss DEV 0.4238 -> 0.4229, CONFIRM 0.4376 -> 0.4373 | **adopted** (small) |
+| Referee tendency (the referee's recent totals against expectation, from RLP appointments) | totals miss DEV 10.060 -> 10.055, CONFIRM 10.755 -> 10.756 | rejected: no effect |
 | Edge defence for try scorers (tries the opponent concedes to each jersey number) | DEV 0.42294 -> 0.42293, CONFIRM 0.43725 -> 0.43729 | rejected: the position-group feature already holds it |
 
 ## What the evidence says about where "best in the world" comes from
@@ -50,5 +51,4 @@ No peer-reviewed NRL betting-market efficiency study turned up; the favourite-lo
 
 - Travel distance and interstate/NZ trips (coordinates come with the weather pull).
 - Weather (pull running; actual weather is an upper bound on what a forecast adds).
-- Referee tendencies (Champion Data holds penalties and set restarts per game; referee names are in RLP).
 - Market-implied totals for the try model, and CLV, once odds exist.
