@@ -6,10 +6,12 @@ Position comes from the player's own recent role stats (shifted one game), not a
 including 2026 and follows role changes: ruck (hitouts), midfield (centre clearances / clearances), forward (goals,
 marks inside 50), defence (rebounds, intercepts, spoils), else general.
 """
+import glob
+
 import numpy as np
 import pandas as pd
 
-from afl.model.team import CLUB_STATE, VENUE_STATE
+from afl.model.team import CLUB_STATE, FRYZIGG_TEAM, VENUE_STATE
 
 POS = ['ruck', 'mid', 'fwd', 'def', 'gen']
 
@@ -81,9 +83,19 @@ def player_history(m, stat, key, name, shrink=3):
     return m
 
 
+def weather_table(cache):
+    """Match weather per game from the Fryzigg files (2012-2025), keyed as afl/model/frame.py keys games. Both team
+    orders are keyed, since a final's "home" side can differ between sources."""
+    fz = pd.concat([pd.read_parquet(f, columns=['match_date', 'match_home_team', 'match_away_team', 'match_weather_type',
+                                                'match_weather_temp_c']) for f in sorted(glob.glob(f'{cache}/fryzigg_*.parquet'))])
+    d = pd.to_datetime(fz.match_date).dt.strftime('%Y-%m-%d')
+    h, a = fz.match_home_team.replace(FRYZIGG_TEAM), fz.match_away_team.replace(FRYZIGG_TEAM)
+    both = pd.concat([fz.assign(game=d + '|' + h + '|' + a), fz.assign(game=d + '|' + a + '|' + h)])
+    return both.drop_duplicates('game')[['game', 'match_weather_type', 'match_weather_temp_c']]
+
+
 def weather(m, cache):
-    v = pd.read_parquet(f'{cache}/frame_values.parquet', columns=['game', 'match_weather_type', 'match_weather_temp_c']).drop_duplicates('game')
-    m = m.merge(v, on='game', how='left')
+    m = m.merge(weather_table(cache), on='game', how='left')
     wt = m.match_weather_type.astype('string')
     known = wt.notna()
     m['wet'] = wt.str.contains('RAIN|THUNDER', na=False).astype(float).where(known)

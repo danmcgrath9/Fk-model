@@ -29,6 +29,7 @@ SEASONS = (2023, 2024, 2025, 2026)
 # player-game. Marks, tackles and goals showed no gain (afl/docs/TAILS.md), so they keep one spread.
 POS_SPREAD = {'D'}
 MIN_POS_ROWS = 500   # a position with fewer tuning rows than this uses the single spread
+KEPT = os.path.join(os.path.dirname(__file__), 'kept_inputs.json')   # written by afl/model/extra_test.py
 
 
 def position_spread(tu, mu_tu, te, stat, a_single):
@@ -45,10 +46,7 @@ def stat_matrix(base, cache, stat):
     """Rows a book would price for this stat, with its features: the core list, the stat's own, and the extra inputs
     afl/model/extra_test.py kept for it (more than two standard errors better on unseen seasons)."""
     m, sfeats = P.stat_features(base, stat)
-    kept = []
-    kp = f'{cache}/extra_kept.json'
-    if os.path.exists(kp):
-        kept = [c for c in json.load(open(kp)).get(stat, '').split(',') if c]
+    kept = [c for c in json.load(open(KEPT)).get(stat, '').split(',') if c] if os.path.exists(KEPT) else []
     if kept:
         m = X.add_extra(m, cache, stat)
     feats = list(dict.fromkeys(FEATURES + sfeats + ['exp_score'] + kept))

@@ -15,9 +15,10 @@ way gets the same features as the history has for it. Models: afl/live/train_fin
 Output: afl/docs/LIVE_<season>_R<round>.md and afl/cache/live_<season>_R<round>.csv. Players with under five games on
 record, and the named sub, are listed as not priced (books price them, we have too little to go on).
 
-Usage: python -m afl.live.price_round afl/cache named_teams.csv
+Usage: python -m afl.live.price_round afl/cache named_teams.csv   (or a pasted team sheet, .txt)
 """
 import json
+import re
 import sys
 
 import lightgbm as lgb
@@ -33,8 +34,8 @@ from afl.sheet import MILESTONES, fair, median_line, nb_cdf, px
 COLUMNS = ['season', 'round', 'date', 'venue', 'home_team', 'away_team', 'team', 'player', 'sub']
 
 
-def load_named(path, history):
-    n = pd.read_csv(path)
+def load_named(n, history):
+    n = n.copy()
     missing = [c for c in COLUMNS if c not in n.columns]
     if missing:
         raise SystemExit(f'named-teams CSV is missing columns: {missing}')
@@ -95,16 +96,10 @@ def future_rows(n, history):
     return rows
 
 
-def features(cache, csv):
-    at = pd.read_parquet(f'{cache}/afltables.parquet')
-    fw = pd.read_parquet(f'{cache}/footywire.parquet')
-    hist = F.base_table(at, fw)
-    return build_live(hist, load_named(csv, hist))
-
-
 def build_live(hist, n):
     """History plus the named rows, through the same feature code. Returns the table, the unplayed games, and any
     names that could not be matched."""
+    n = load_named(n, hist)
     n, problems = match_players(n, hist)
     fut = future_rows(n[n.player_id.notna()], hist)
     if fut.game.isin(hist.game).any():
@@ -174,9 +169,23 @@ def to_markdown(r, named, problems, season, rnd):
     return '\n'.join(out) + '\n'
 
 
-def run(cache, csv):
-    named = pd.read_csv(csv)
-    m, games, problems = features(cache, csv)
+def read_named(path):
+    """A named-teams CSV, or pasted team-sheet text (.txt, afl/live/team_sheet.py)."""
+    if path.endswith('.txt'):
+        from afl.live import team_sheet
+        text = open(path).read()
+        season = int(re.search(r'\d{4}', text).group(0))
+        named = team_sheet.parse(text, season)
+        for p in team_sheet.check(named):
+            print('CHECK:', p)
+        return named
+    return pd.read_csv(path)
+
+
+def run(cache, path):
+    named = read_named(path)
+    m, games, problems = build_live(F.base_table(pd.read_parquet(f'{cache}/afltables.parquet'),
+                                                 pd.read_parquet(f'{cache}/footywire.parquet')), named)
     r = prices(project(cache, m, games))
     season, rnd = named.season.iloc[0], named['round'].iloc[0]
     md = to_markdown(r, named.assign(home_team=named.home_team.replace(F.TEAM), away_team=named.away_team.replace(F.TEAM)),

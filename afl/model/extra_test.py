@@ -65,7 +65,8 @@ def run(cache, out_md):
         rep.append('')
     rep += ['## Kept, per stat', ''] + [f'- {NAMES[s]}: {", ".join(k) if k else "none"}' for s, k in keep.items()]
     open(out_md, 'w').write('\n'.join(rep) + '\n')
-    pd.Series({s: ','.join(k) for s, k in keep.items()}).to_json(f'{cache}/extra_kept.json')
+    from afl.model.walkforward import KEPT
+    pd.Series({s: ','.join(k) for s, k in keep.items()}).to_json(KEPT)
     print('\n'.join(rep))
 
 
