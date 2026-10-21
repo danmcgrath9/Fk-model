@@ -172,6 +172,9 @@ def build(m, pm):
     tg = pd.concat([home, away], ignore_index=True)
     tries = pm.groupby(['match_id', 'team']).tries.sum().rename('tries_for').reset_index()
     tg = tg.merge(tries, on=['match_id', 'team'], how='left')
+    from nrl.model.travel import travel_by_game
+    tv = travel_by_game(CACHE, m)
+    tg['travel_diff'] = tg.match_id.map(tv).fillna(0.0) * np.where(tg.home == 1, 1.0, -1.0)
     tg['exp_margin'] = tg.exp_for - tg.exp_against
     tg['exp_total'] = tg.exp_for + tg.exp_against
     tg['margin'] = tg.score_for - tg.score_against
@@ -197,7 +200,7 @@ def build(m, pm):
 
 FEATURES_OPEN = ['exp_margin', 'exp_total', 'league_total', 'rest_days', 'opp_rest_days',
                  'missing_weight_open', 'opp_missing_weight_open', 'spine_missing_open', 'opp_spine_missing_open',
-                 'strength_diff_open', 'is_final']
+                 'strength_diff_open', 'travel_diff', 'is_final']
 FEATURES_NAMED = [c.replace('_open', '_named') for c in FEATURES_OPEN]
 
 

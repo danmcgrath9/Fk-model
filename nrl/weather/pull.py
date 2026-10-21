@@ -28,7 +28,12 @@ import requests
 PAUSE = float(os.environ.get('PAUSE', '1'))
 OUT = 'nrl/cache/weather'
 GEO = 'https://geocoding-api.open-meteo.com/v1/search'
-ARCHIVE = 'https://archive-api.open-meteo.com/v1/archive'
+# SOURCE=forecast reads Open-Meteo's archive of past FORECASTS (short-range, stitched from each model run; about
+# 2022 on) instead of what happened: the test of whether weather still helps when only a forecast is known
+SOURCE = os.environ.get('SOURCE', 'actual')
+ARCHIVE = ('https://historical-forecast-api.open-meteo.com/v1/forecast' if SOURCE == 'forecast'
+           else 'https://archive-api.open-meteo.com/v1/archive')
+FIRST = os.environ.get('FIRST_DATE', '')
 HOURLY = 'temperature_2m,relative_humidity_2m,dew_point_2m,precipitation,wind_speed_10m,wind_gusts_10m'
 CC = {'Australia': 'AU', 'New Zealand': 'NZ', 'United States of America': 'US'}
 # the geocoder's first pick was wrong for these (Mudgeeraba QLD; Redcliffe WA): coordinates set by hand
@@ -87,6 +92,8 @@ def main(games_csv):
     g['ko'] = pd.to_datetime(g.kick_off_utc, utc=True)
     if ONLY:
         g = g[g.town.isin(ONLY)]
+    if FIRST:
+        g = g[g.ko >= pd.Timestamp(FIRST, tz='UTC')]
     towns = []
     for (t, c), _ in g.groupby(['town', 'country']):
         x = geocode(t, c)
@@ -94,14 +101,15 @@ def main(games_csv):
             sys.exit(f'could not geocode {t}, {c}')
         towns.append(x)
     towns = pd.DataFrame(towns)
-    if ONLY and os.path.exists(f'{OUT}/towns.csv'):
+    if os.path.exists(f'{OUT}/towns.csv') and (ONLY or SOURCE == 'forecast'):
         old = pd.read_csv(f'{OUT}/towns.csv')
-        towns = pd.concat([old[~old.town.isin(ONLY)], towns], ignore_index=True)
+        towns = pd.concat([old[~old.town.isin(towns.town)], towns], ignore_index=True)
     towns.to_csv(f'{OUT}/towns.csv', index=False)
     print(towns.to_string())
     where = {(r.town, r.country): (r.lat, r.lon) for r in towns.itertuples()}
     rows, calls = [], 0
-    with gzip.open(f'{OUT}/raw.jsonl.gz', 'wt') as raw:
+    stem = '' if SOURCE == 'actual' else '_forecast'
+    with gzip.open(f'{OUT}/raw{stem}.jsonl.gz', 'wt') as raw:
         for (t, c), grp in g.sort_values('ko').groupby(['town', 'country']):
             lat, lon = where[(t, c)]
             grp = grp.sort_values('ko')
@@ -123,10 +131,10 @@ def main(games_csv):
                         rows.append(dict(match_id=r.match_id, roof=r.roof, **summarise(h, r.ko)))
                 i = j + 1
     w = pd.DataFrame(rows)
-    if ONLY and os.path.exists(f'{OUT}/weather.parquet'):
+    if ONLY and SOURCE == 'actual' and os.path.exists(f'{OUT}/weather.parquet'):
         old = pd.read_parquet(f'{OUT}/weather.parquet')
         w = pd.concat([old[~old.match_id.isin(w.match_id)], w], ignore_index=True)
-    w.to_parquet(f'{OUT}/weather.parquet', index=False)
+    w.to_parquet(f'{OUT}/weather{stem}.parquet', index=False)
     print(f'{len(w):,} of {len(g):,} games with weather, {calls:,} archive requests; '
           f'rain in the game window in {(w.rain_game > 0.5).mean():.0%} of games (over 0.5 mm)')
 

@@ -49,6 +49,17 @@ jobs:
           for f in nrl/cache/weather/weather.parquet weather_towns.tar.gz weather_fix_v1.txt; do
             gh release upload nrl-history "$f" --clobber
           done
+      - name: Past forecasts, 2022 on (once)
+        run: |
+          if gh release view nrl-history --json assets --jq '.assets[].name' | grep -qx 'weather_forecast.parquet'; then
+            echo "weather_forecast.parquet held"; exit 0
+          fi
+          mkdir -p nrl/cache/weather
+          gh release download nrl-history --pattern weather_towns.tar.gz --dir nrl/cache/weather --clobber
+          tar xzf nrl/cache/weather/weather_towns.tar.gz -C nrl/cache/weather
+          set -o pipefail
+          SOURCE=forecast FIRST_DATE=2022-01-01 python nrl/weather/pull.py nrl/weather/games.csv | tee -a "$GITHUB_STEP_SUMMARY"
+          gh release upload nrl-history nrl/cache/weather/weather_forecast.parquet --clobber
       - name: Pull once
         run: |
           if gh release view nrl-history --json assets --jq '.assets[].name' | grep -qx 'weather.parquet'; then

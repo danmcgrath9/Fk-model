@@ -33,6 +33,8 @@ No peer-reviewed NRL betting-market efficiency study turned up; the favourite-lo
 | **Key-number margin distribution** (t curve re-weighted by how often each exact margin happens) | exact-margin log loss DEV 4.25 -> 3.87, CONFIRM 4.29 -> 3.91; win bits DEV 0.1581 -> 0.1591, CONFIRM 0.0913 -> 0.0924; half-point lines unchanged | **adopted**: h2h and margin bands in the price card |
 | Champion Data form in the try model (line breaks, tackle breaks, run metres, try assists, possessions) | log loss DEV 0.4238 -> 0.4229, CONFIRM 0.4376 -> 0.4373 | **adopted** (small) |
 | Referee tendency (the referee's recent totals against expectation, from RLP appointments) | totals miss DEV 10.060 -> 10.055, CONFIRM 10.755 -> 10.756 | rejected: no effect |
+| **Travel distance** (away km - home km, per 1,000 km; club base = town of most home games) | teams named DEV 0.1589 -> 0.1597 bits, CONFIRM 0.0913 -> 0.0926; at the open 0.1498 -> 0.1502 and 0.0876 -> 0.0890; 0.7 points per 1,000 km (UTS study: 1.1) | **adopted** in the team model |
+| **Weather, actual** (Open-Meteo archive; roofs dry) | totals miss DEV 10.061 -> 9.911, CONFIRM 10.747 -> 10.613 (rain in the game -1.4 points per mm; 31 games with 2mm+ averaged 35.3 against 43.9); anytime try log loss DEV 0.42294 -> 0.42284, CONFIRM 0.43725 -> 0.43658; run metres mixed, tackles flat | helps totals and tries, **pending the forecast test**: a bet only knows the forecast, so the same test is being re-run on Open-Meteo's archive of past forecasts (2022 on) before weather goes into live prices |
 | Edge defence for try scorers (tries the opponent concedes to each jersey number) | DEV 0.42294 -> 0.42293, CONFIRM 0.43725 -> 0.43729 | rejected: the position-group feature already holds it |
 
 ## What the evidence says about where "best in the world" comes from
@@ -49,6 +51,5 @@ No peer-reviewed NRL betting-market efficiency study turned up; the favourite-lo
 
 ## Still to test
 
-- Travel distance and interstate/NZ trips (coordinates come with the weather pull).
-- Weather (pull running; actual weather is an upper bound on what a forecast adds).
+- Weather with past forecasts instead of actual weather (pull running).
 - Market-implied totals for the try model, and CLV, once odds exist.
