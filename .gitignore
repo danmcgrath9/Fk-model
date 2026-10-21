@@ -12,3 +12,6 @@ __pycache__/
 !env.example
 .venv/
 history/
+
+# AFL: data lives on the afl-history release, never in the repo
+afl/cache/

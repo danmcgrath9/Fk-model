@@ -1,0 +1,120 @@
+name: afl data
+
+# AFL player-props history (afl/README.md). Pulls once and keeps everything on the "afl-history"
+# release as parquet; a file the release already holds is never pulled again, so re-running only
+# fills gaps. Separate from every fk-* and nba-* workflow: its own concurrency group, no Form
+# King key, no BetMatic, no database.
+#
+# Sources, all through fitzRoy:
+#   AFL Tables + Footywire player stats: fitzRoy's own mirror on GitHub (no request to either site)
+#   Fryzigg advanced stats, Footywire betting odds, Squiggle games and tips: one call per season
+#   each, a pause between calls (PAUSE seconds)
+# The AFL website and its API are NOT used: their terms of use prohibit downloading and reuse.
+
+on:
+  workflow_dispatch:
+    inputs:
+      seasons:
+        description: 'R range of seasons, e.g. 2012:2026'
+        default: '2012:2026'
+      refresh:
+        description: 'seasons to pull again even if held, comma separated (the current season in-season); blank = none'
+        default: ''
+      refresh_mirror:
+        description: 'yes = re-copy the AFL Tables / Footywire mirror files'
+        default: 'no'
+  push:
+    branches: [afl-props]
+    paths:
+      - 'afl/data/**'
+      - '.github/workflows/afl-data.yml'
+
+concurrency:
+  group: afl-data
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      SEASONS: ${{ github.event.inputs.seasons || '2012:2026' }}
+      REFRESH: ${{ github.event.inputs.refresh || '' }}
+      PAUSE: '5'
+      # Squiggle asks bots to identify themselves with a way to reach the owner: set the repository
+      # variable AFL_CONTACT (Settings > Secrets and variables > Actions > Variables) to add one.
+      SQUIGGLE_UA: fk-model AFL research ${{ vars.AFL_CONTACT }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r afl/requirements.txt
+
+      - name: Each site's robots.txt, for the record
+        run: |
+          {
+            echo "### robots.txt at pull time"
+            for h in afltables.com www.footywire.com www.fryziggafl.net api.squiggle.com.au; do
+              echo "**$h**"; echo '```'
+              curl -s -m 20 -A "$SQUIGGLE_UA" "https://$h/robots.txt" | head -40 || echo "(no answer)"
+              echo '```'
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fetch what the release already holds
+        run: |
+          gh release view afl-history >/dev/null 2>&1 || gh release create afl-history --target main --latest=false \
+            --title "AFL history" --notes "AFL player-props data (afl/README.md), one parquet per source per season. Written by the afl data workflow; do not delete."
+          mkdir -p afl/cache/raw
+          gh release download afl-history --dir afl/cache --pattern '*.parquet' --skip-existing || true
+          # mark every held season so the R pull skips it: an empty csv.gz is enough, it is never converted
+          for f in afl/cache/*_[0-9][0-9][0-9][0-9].parquet; do
+            [ -e "$f" ] || continue
+            b=$(basename "$f" .parquet); touch -d '2000-01-01' "afl/cache/raw/$b.csv.gz"
+          done
+          echo "held on the release: $(ls afl/cache/*.parquet 2>/dev/null | wc -l) files" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Mirror (AFL Tables + Footywire, from fitzRoy's GitHub copy)
+        run: |
+          if [ ! -e afl/cache/afltables.parquet ] || [ "${{ github.event.inputs.refresh_mirror }}" = "yes" ]; then
+            set -o pipefail
+            python afl/data/mirror.py --out afl/cache | tee -a "$GITHUB_STEP_SUMMARY"
+            gh release upload afl-history afl/cache/afltables.parquet afl/cache/footywire.parquet --clobber
+          else
+            echo "mirror held, not re-copied" | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - name: Install fitzRoy
+        run: Rscript -e 'install.packages(c("fitzRoy", "dplyr", "readr"))'
+
+      - name: Pull Fryzigg, Footywire odds, Squiggle
+        run: |
+          set -o pipefail
+          # a held season was marked with an empty file above; drop the markers the refresh list names
+          for s in $(echo "$REFRESH" | tr ',' ' '); do rm -f afl/cache/raw/*_"$s".csv.gz; done
+          Rscript afl/data/pull_fitzroy.R | tee -a "$GITHUB_STEP_SUMMARY"
+          # markers are empty: remove them so they are not converted
+          find afl/cache/raw -name '*.csv.gz' -size 0 -delete
+
+      - name: Convert and upload what is new
+        run: |
+          python afl/data/to_parquet.py afl/cache/raw afl/cache | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ -s afl/cache/new_files.txt ]; then
+            # upload one at a time with retries: a file that only lives on this runner is lost when the job ends
+            while read -r f; do
+              ok=no
+              for i in 1 2 3; do gh release upload afl-history "$f" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
+              [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }
+            done < afl/cache/new_files.txt
+          fi
+          gh release upload afl-history afl/cache/raw/pull_log.txt --clobber || true
+          echo "release now holds $(gh release view afl-history --json assets --jq '.assets | length') files" | tee -a "$GITHUB_STEP_SUMMARY"
