@@ -42,6 +42,13 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install requests
+      - name: Probe first (one season list, three match pages, timed), saved to the release
+        run: |
+          set -o pipefail
+          python aleague/data/ual_pull.py --out aleague/cache/ual --seasons 2013-14 --probe | tee ual_probe.txt
+          cp aleague/cache/ual/probe_season_2013-14.html ual_probe_season.html
+          gh release upload aleague-history ual_probe.txt ual_probe_season.html --clobber
+
       - name: Pull what the release does not hold
         run: |
           gh release view aleague-history --json assets --jq '.assets[].name' > held.txt
