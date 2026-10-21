@@ -100,8 +100,8 @@ habits, and later on "Ewing", a lineup-level game simulator. Sources: the ESPN p
 below; the details are second-hand.
 
 - **NBL halves are the other way round.** First halves outscore second halves in every one of 12 seasons:
-  3.7 points a game on average (the first half carries 50.5% to 52% of a season's points; 50.8% of our
-  pre-game total, 2016-22). The third quarter is the lowest-scoring quarter in 10 of 12 seasons. A book that
+  3.7 points a game on average (the first half carries 50.4% to 51.5% of a season's points; 50.8% of our
+  pre-game total, 2016-22). The third quarter is the lowest-scoring quarter in 9 of 12 seasons. A book that
   splits a total evenly gives value on first-half overs and second-half unders: the reverse of his NBA bet.
 - **Late fouling does not show up as more second-half points** in close NBL games (final margin 0-5: second
   half 4.2 below the first; 6-10: 1.2 below, with the 4th quarter 1.0 above the other quarters' average).
