@@ -158,6 +158,39 @@ falling as the demanded edge rises, which is what no edge looks like.
 **Role players are no softer.** Naz Reid and Josh Hart, 1,189 lines: our miss 2.54, the
 line's 2.54. Our side every time: -4.6%.
 
+## Injury reports, and the line test without hindsight (21 Oct 2026)
+
+**Data.** The NBA's official injury report (free, no key): `pull_injuries.py` in the
+`nba injuries pull` workflow reads the league's archived PDFs with the `nbainjuries`
+package. Six snapshots per game day (5pm the day before, then 11am, 1pm, 3pm, 5pm, 7pm US
+Eastern), 2023/24 to 2025/26: **2,471 of 2,475 reports read**, saved in
+`nba/injuries/raw/` (about 30 MB of CSV). `injuries_check.py` joins them to our players
+by team, last name and first initial (92.6% one match, 7.0% none, nearly all players out
+for the whole season who never appear in a box score).
+
+**Check.** Last report before tip-off against what happened: Out 29,338 rows, 0.1%
+played; Doubtful 237, 0.4%; Questionable 1,507, 52%; Probable 663, 91%; Available 6,204, 85%.
+
+**Projections without hindsight.** `at_report.py` rebuilds the "who plays tonight" inputs
+from the report filed by each hour (Out or Doubtful = missing, Questionable = half), with
+the same walk-forward models. Minutes miss in January 2025: 4.63 at 5pm the day before,
+4.28 at 7pm, 4.01 if you knew who played.
+
+**The line test again** (`line_test_at_report.py`, 12 players, 6,625 lines):
+
+| Projection made at | Our miss | Line's miss | Our side every time | 2+ apart: bets, ROI | Model weight in blend |
+|---|---|---|---|---|---|
+| 5pm day before | 2.854 | 2.779 | -5.1% | 708, -4.6% | 0.12 |
+| 11am | 2.849 | 2.779 | -6.0% | 606, -5.4% | 0.11 |
+| 3pm | 2.843 | 2.779 | -6.4% | 579, -6.3% | 0.15 |
+| 7pm | 2.840 | 2.779 | -5.7% | 575, -4.3% | 0.19 |
+| Knew who played | 2.804 | 2.779 | -3.9% | 472, +4.9% | 0.39 |
+
+The earlier "+4% when we disagree by 2+" came entirely from knowing who played. With
+only what the injury report said, every hour loses, and the line alone still scores best
+on 2025/26 (log loss 0.688). Against these lines, at roughly the close, there is no edge.
+What is left: the OPENING line (before injury news is priced in) and Australian books.
+
 **What is left to test.** (1) The opening line, before the market sharpens: needs The
 Odds API's timed snapshots. (2) Australian books against the US close (step 4): needs
 no model at all. (3) A better model: real spread/total, injury-news timing.
