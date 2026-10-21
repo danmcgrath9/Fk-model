@@ -25,6 +25,28 @@ FEATURES = ['position_code', 'jersey', 'starter', 'try_ew_fast', 'try_ew_slow', 
             'strength_named', 'opp_strength_named', 'team_tries_ew', 'opp_conceded_ew', 'opp_conceded_group_ew',
             'home', 'league_total', 'is_final']
 POSITIONS = ['W', 'C', 'FB', 'FE', 'HB', 'HK', 'L', '2R', 'FR', 'B']
+# Champion Data (2014 on): a player's recent attacking involvement, from earlier games only; NaN before 2014
+CD_STATS = {'lineBreaks': 'cd_line_breaks', 'tackleBreaks': 'cd_tackle_breaks', 'runMetres': 'cd_run_metres',
+            'tryAssists': 'cd_try_assists', 'possessions': 'cd_possessions'}
+CD_FEATURES = [f'{v}_ew' for v in CD_STATS.values()]
+
+
+def cd_features(cache):
+    """Per (RLP match_id, RLP player_id): exponentially weighted Champion Data stats BEFORE that game."""
+    try:
+        cp = pd.read_parquet(f'{cache}/cd_player_games.parquet')
+        links = pd.read_parquet(f'{cache}/cd_links.parquet')
+        gl = pd.read_parquet(f'{cache}/cd_game_link.parquet')
+    except FileNotFoundError:
+        return None
+    cp = cp[cp.took_field].merge(gl, on='cd_match_id')
+    to_rlp = dict(zip(links.cd_player_id, links.player_id))
+    cp['player_id'] = cp.playerId.map(to_rlp).fillna(-cp.playerId).astype('int64')
+    cp = cp.sort_values('utc_start')
+    out = cp[['match_id', 'player_id']].copy()
+    for src, name in CD_STATS.items():
+        out[f'{name}_ew'] = ew(None, cp.player_id, cp[src].astype(float), 0.15)
+    return out.drop_duplicates(['match_id', 'player_id'])
 
 
 def ew(series_by_key, keys, values, alpha):
@@ -77,6 +99,12 @@ def build(cache):
     p = p.merge(conc[['match_id', 'opp', 'group', 'opp_conceded_group_ew']], on=['match_id', 'opp', 'group'], how='left')
     for c in ('home', 'is_final'):
         p[c] = p[c].astype(float)
+    cf = cd_features(cache)
+    if cf is not None:
+        p = p.merge(cf, on=['match_id', 'player_id'], how='left')
+    else:
+        for c in CD_FEATURES:
+            p[c] = np.nan
     return p.sort_values(['i', 'team', 'jersey']).reset_index(drop=True)
 
 

@@ -23,7 +23,11 @@ from sklearn.linear_model import LogisticRegression
 import numpy as np
 import pandas as pd
 
-from nrl.model.player_frame import FEATURES
+from nrl.model.player_frame import CD_FEATURES, FEATURES as BASE_FEATURES
+
+# CD_TRY=1 adds the Champion Data features (2014 on); compared against the base set in nrl/docs/TRIES_STEP1.md
+import os
+FEATURES = BASE_FEATURES + (CD_FEATURES if os.environ.get('CD_TRY') == '1' else [])
 
 FIT = range(2003, 2019)
 DEV = range(2019, 2023)
