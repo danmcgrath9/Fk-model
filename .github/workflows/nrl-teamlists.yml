@@ -1,0 +1,44 @@
+name: nrl team lists
+
+# NRL.com team-list articles (nrl/docs/INVENTORY.md): downloaded for private, non-commercial research,
+# as NRL.com's terms allow; never republished. Probe first: find the articles through the sitemap and
+# save one sample per season. One request every 3 seconds. Its own concurrency group; no keys.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [nrl-model]
+    paths:
+      - 'nrl/teamlists/**'
+      - '.github/workflows/nrl-teamlists.yml'
+
+concurrency:
+  group: nrl-teamlists
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      NRL_UA: fk-model NRL research ${{ vars.NRL_CONTACT }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+      - name: Probe once
+        run: |
+          if gh release view nrl-history --json assets --jq '.assets[].name' | grep -qx 'teamlists_probe_v1.tar.gz'; then
+            echo "probe v1 already on the release" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0
+          fi
+          python nrl/teamlists/probe.py
+          tar czf teamlists_probe_v1.tar.gz -C nrl/cache teamlists_probe
+          gh release upload nrl-history teamlists_probe_v1.tar.gz --clobber
