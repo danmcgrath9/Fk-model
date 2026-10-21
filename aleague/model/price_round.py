@@ -14,7 +14,9 @@ import sys
 import pandas as pd
 
 from aleague.model.markets import price_all, score_matrix
-from aleague.model.team import fit, training_rows, weights
+import numpy as np
+
+from aleague.model.team import fit, refit_level_and_home, training_rows, weights
 
 SETTINGS = os.path.join(os.path.dirname(__file__), 'settings.json')
 
@@ -31,6 +33,9 @@ def main(tables, out, days=8, today=None):
     rows = training_rows(m, first)
     season_now = int(upcoming.season.iloc[0])
     f = fit(rows, weights(rows, first, season_now, s['half_life'], s['carry']), s['reg'])
+    if s.get('home_half_life'):  # the league level and home edge on their own decay (docs/TEAM_STEP2.md)
+        age = np.array([(first - d).days for d in rows.date], dtype=float)
+        f = refit_level_and_home(f, rows, 0.5 ** (age / s['home_half_life']))
     priced = []
     for _, g in upcoming.iterrows():
         lh, la = f.rates(g.home, g.away, bool(g.neutral))

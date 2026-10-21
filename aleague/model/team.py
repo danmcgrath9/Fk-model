@@ -88,10 +88,35 @@ def fit(rows, w, reg, start=None):
     return Fit(teams, x[0], x[1], x[2:2 + T], x[2 + T:])
 
 
+def refit_level_and_home(f, rows, w2):
+    """Re-estimate the league scoring level (mu) and the home advantage on weights w2, holding every
+    club's attack and defence where the main fit put them. With w2 decaying faster than the main
+    weights, the home edge follows a league whose home advantage is moving (it fell from about 45% home
+    wins to about 36% in 2024-25 and 2025-26) without making team strengths noisier."""
+    ah = rows.home.map(f.att).to_numpy(); dh = rows.home.map(f.dfn).to_numpy()
+    aa = rows.away.map(f.att).to_numpy(); da = rows.away.map(f.dfn).to_numpy()
+    hadv = (~rows.neutral.astype(bool)).to_numpy().astype(float)
+    yh = rows.home_goals_90.astype(float).to_numpy(); ya = rows.away_goals_90.astype(float).to_numpy()
+    sw = w2.sum()
+
+    def nll(x):
+        lh = x[0] + ah + da + x[1] * hadv
+        la = x[0] + aa + dh
+        eh, ea = np.exp(lh), np.exp(la)
+        v = (w2 * (eh - yh * lh + ea - ya * la)).sum() / sw
+        rh, ra = w2 * (eh - yh) / sw, w2 * (ea - ya) / sw
+        return v, np.array([rh.sum() + ra.sum(), (rh * hadv).sum()])
+
+    r = minimize(nll, np.array([f.mu, f.home]), jac=True, method='L-BFGS-B')
+    f.mu, f.home = float(r.x[0]), float(r.x[1])
+    return f
+
+
 def rolling_predictions(matches, seasons, half_life=DEFAULTS['half_life'], carry=DEFAULTS['carry'],
-                        reg=DEFAULTS['reg'], rho=DEFAULTS['rho'], include_unplayed=False):
+                        reg=DEFAULTS['reg'], rho=DEFAULTS['rho'], include_unplayed=False, home_half_life=None):
     """One row per match in `seasons`: expected goals and market probabilities from a fit on
-    earlier days only."""
+    earlier days only. home_half_life (days): re-estimate the league level and home edge with their own,
+    usually faster, decay (refit_level_and_home); None keeps them from the main fit."""
     target = matches[matches.season.isin(seasons)]
     if not include_unplayed:
         target = target[target.home_goals_90.notna()]
@@ -103,8 +128,13 @@ def rolling_predictions(matches, seasons, half_life=DEFAULTS['half_life'], carry
         season_now = int(games.season.iloc[0])
         w = weights(rows, day, season_now, half_life, carry)
         prev = fit(rows, w, reg, start=prev)
+        cur = prev
+        if home_half_life:
+            age = np.array([(day - d).days for d in rows.date], dtype=float)
+            cur = refit_level_and_home(Fit(prev.teams, prev.mu, prev.home, list(prev.att.values()), list(prev.dfn.values())),
+                                       rows, 0.5 ** (age / home_half_life))
         for _, g in games.iterrows():
-            lh, la = prev.rates(g.home, g.away, bool(g.neutral))
+            lh, la = cur.rates(g.home, g.away, bool(g.neutral))
             m = score_matrix(lh, la, rho)
             p = h2h(m)
             out.append(dict(match_id=g.match_id, season=g.season, date=g.date, home=g.home, away=g.away,
@@ -112,7 +142,7 @@ def rolling_predictions(matches, seasons, half_life=DEFAULTS['half_life'], carry
                             p_home=p['home'], p_draw=p['draw'], p_away=p['away'],
                             p_over25=asian_total(m, 2.5)['win'], p_btts=btts(m)['yes'],
                             home_goals=g.home_goals_90, away_goals=g.away_goals_90,
-                            fit_matches=len(rows)))
+                            fit_matches=len(rows), home_adv=cur.home))
     return pd.DataFrame(out)
 
 
