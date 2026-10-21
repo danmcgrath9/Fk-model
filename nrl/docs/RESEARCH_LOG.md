@@ -36,6 +36,7 @@ No peer-reviewed NRL betting-market efficiency study turned up; the favourite-lo
 | **Travel distance** (away km - home km, per 1,000 km; club base = town of most home games) | teams named DEV 0.1589 -> 0.1597 bits, CONFIRM 0.0913 -> 0.0926; at the open 0.1498 -> 0.1502 and 0.0876 -> 0.0890; 0.7 points per 1,000 km (UTS study: 1.1) | **adopted** in the team model |
 | **Weather, actual** (Open-Meteo archive; roofs dry) | totals miss DEV 10.061 -> 9.911, CONFIRM 10.747 -> 10.613 (rain in the game -1.4 points per mm; 31 games with 2mm+ averaged 35.3 against 43.9); anytime try log loss DEV 0.42294 -> 0.42284, CONFIRM 0.43725 -> 0.43658; run metres mixed, tackles flat | helps totals and tries, **pending the forecast test**: a bet only knows the forecast, so the same test is being re-run on Open-Meteo's archive of past forecasts (2022 on) before weather goes into live prices |
 | Team scoring style (each side's recent totals against expectation) | totals miss DEV 10.060 -> 10.055, CONFIRM 10.755 -> 10.778 | rejected: fails CONFIRM |
+| Rain and humidity shrinking the margin (expected margin x rain, x dew point) | DEV 0.1573 -> 0.1539 bits, CONFIRM 0.0893 -> 0.0798 | rejected: rain lowers totals, not margins |
 | Edge defence for try scorers (tries the opponent concedes to each jersey number) | DEV 0.42294 -> 0.42293, CONFIRM 0.43725 -> 0.43729 | rejected: the position-group feature already holds it |
 
 ## What the evidence says about where "best in the world" comes from
