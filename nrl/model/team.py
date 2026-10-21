@@ -62,6 +62,37 @@ class LinearT:
         return np.column_stack([np.ones(len(X)), np.nan_to_num(X, nan=0.0)])
 
 
+class KeyNumbers:
+    """Exact-margin probabilities: the margin model's t curve on whole points, re-weighted by how often each
+    margin really happens (NRL margins cluster on 2, 4, 6, 8, 12 and golden point all but removes draws).
+    Weights fitted on FIT. On DEV it cut exact-margin log loss 4.25 -> 3.87 (CONFIRM 4.29 -> 3.91) and left
+    half-point lines unchanged, so it prices margin bands and whole-number lines; half-point lines keep the t."""
+    M = np.arange(-90, 91)
+
+    def fit(self, mm, X, margin):
+        P = self._pmf_t(mm, X)
+        actual = np.array([(np.asarray(margin) == m).sum() for m in self.M])
+        self.mm, self.w = mm, (actual + 1) / (P.sum(0) + 1)
+        return self
+
+    def _pmf_t(self, mm, X):
+        mu = mm.mean(X)[:, None]
+        hi = stats.t.cdf(self.M[None, :] + 0.5 - mu, mm.df, scale=mm.scale)
+        lo = stats.t.cdf(self.M[None, :] - 0.5 - mu, mm.df, scale=mm.scale)
+        return hi - lo
+
+    def pmf(self, X):
+        q = self._pmf_t(self.mm, X) * self.w[None, :]
+        return q / q.sum(1, keepdims=True)
+
+    def bands(self, X):
+        """Home 1-12, home 13+, draw, away 1-12, away 13+ (rows sum to 1)."""
+        p = self.pmf(X)
+        M = self.M
+        return np.column_stack([p[:, (M >= 1) & (M <= 12)].sum(1), p[:, M >= 13].sum(1), p[:, M == 0].sum(1),
+                                p[:, (M <= -1) & (M >= -12)].sum(1), p[:, M <= -13].sum(1)])
+
+
 def win_prob(model, X):
     """Home win, counting a draw as half (the scoring rule below does the same)."""
     return model.prob_above(X, 0.0) + 0.5 * (model.prob_above(X, -0.5) - model.prob_above(X, 0.5))

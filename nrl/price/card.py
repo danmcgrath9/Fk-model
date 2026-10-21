@@ -142,6 +142,9 @@ def main(cache, games_csv, teams_csv=None):
            'Fair price = 1 / our probability. Paper only.', '',
            '| game | version | home win | fair home | fair away | our margin (home) | line | P(home covers) | '
            'our total | total line | P(over) |', '|---|---|---|---|---|---|---|---|---|---|---|']
+    bands = ['', '## Margin bands (key-number weighted)', '', '| game | home 1-12 | home 13+ | draw | away 1-12 | away 13+ |',
+             '|---|---|---|---|---|---|']
+    fitg = g_all[g_all.season.isin(team.FIT)]
     for g, (mid, r) in zip(games.itertuples(), up.iterrows()):
         # at the open, ratings only: the open line-up features helped on one season set only and were dropped
         # (nrl/docs/RESULTS_2026-10-21.md)
@@ -150,15 +153,21 @@ def main(cache, games_csv, teams_csv=None):
         ver = 'teams named' if ver == 'teams named' else 'open (ratings only)'
         X = r[feats].to_numpy(float)[None, :]
         Xt = r[team.TOTAL_FEATURES].to_numpy(float)[None, :]
-        pw = float(team.win_prob(mm, X)[0])
+        kn = team.KeyNumbers().fit(mm, fitg[feats].to_numpy(), fitg.margin.to_numpy())
+        b = kn.bands(X)[0]
+        # h2h from the key-number distribution: better than the smooth t on DEV and CONFIRM (0.1591 v 0.1581 bits,
+        # 0.0924 v 0.0913); a draw counts half, as books settle it (check each book's dead-heat rule)
+        pw = float(b[0] + b[1] + 0.5 * b[2])
         line = getattr(g, 'line', np.nan)
         tot = getattr(g, 'total', np.nan)
         cover = float(mm.prob_above(X, -line)[0]) if pd.notna(line) else np.nan
         over = float(tm.prob_above(Xt, tot)[0]) if pd.notna(tot) else np.nan
+        bands.append(f'| {g.home} v {g.away} | ' + ' | '.join(f'{x:.1%} (${1 / x:.2f})' for x in b) + ' |')
         out.append(f'| {g.home} v {g.away} | {ver} | {pw:.1%} | {1 / pw:.2f} | {1 / (1 - pw):.2f} | '
                    f'{float(mm.mean(X)[0]):+.1f} | {line if pd.notna(line) else ""} | '
                    f'{"" if np.isnan(cover) else f"{cover:.1%}"} | {float(tm.mean(Xt)[0]):.1f} | '
                    f'{tot if pd.notna(tot) else ""} | {"" if np.isnan(over) else f"{over:.1%}"} |')
+    out += bands
     tp = pd.read_parquet(f'{cache}/try_predictions.parquet')
     tp = tp[tp.match_id.isin(games.match_id)]
     players = pd.read_parquet(f'{cache}/players.parquet').set_index('player_id').full_name

@@ -30,6 +30,10 @@ SEASON_CARRY = 0.5      # share of a rating carried into the next season
 K_LEAGUE = 0.01         # how fast the league scoring level follows actual totals
 HOME_START = 3.0        # home advantage in points, updated slowly
 K_HOME = 0.005
+K_TEAM_HOME = 0.0       # if > 0, each club learns its own home bonus on top of the league's (slowly, so it shrinks)
+EARLY_BOOST = 1.0       # update-rate multiplier for a team's first EARLY_GAMES games of a season
+EARLY_GAMES = 6
+DAMP = None             # if set, each side's surprise is squashed to DAMP * tanh(surprise / DAMP) before updating
 
 
 def history(cache):
@@ -74,27 +78,38 @@ def ratings(m):
     att, dfn = {}, {}
     league = 40.0
     home_adv = HOME_START
+    team_home = {}
+    played = {}
     season = None
     out = np.zeros((len(m), 5))
     for i, g in enumerate(m.itertuples(index=False)):
         if g.season != season:
             season = g.season
+            played = {}
             att = {t: v * SEASON_CARRY for t, v in att.items()}
             dfn = {t: v * SEASON_CARRY for t, v in dfn.items()}
         h, a = g.home_team, g.away_team
         ah, aa, dh, da = att.get(h, 0.0), att.get(a, 0.0), dfn.get(h, 0.0), dfn.get(a, 0.0)
-        exp_h = league / 2 + ah + da + home_adv / 2
-        exp_a = league / 2 + aa + dh - home_adv / 2
+        hb = team_home.get(h, 0.0)
+        exp_h = league / 2 + ah + da + (home_adv + hb) / 2
+        exp_a = league / 2 + aa + dh - (home_adv + hb) / 2
         out[i] = (exp_h, exp_a, league, home_adv, (ah - dh) - (aa - da))
         if g.upcoming:   # not played yet: priced, never learned from
             continue
         # only now does the game's result touch the ratings
         sh, sa = g.home_team_score, g.away_team_score
         eh, ea = sh - exp_h, sa - exp_a
-        att[h], dfn[a] = ah + K_RATING * eh, da + K_RATING * eh
-        att[a], dfn[h] = aa + K_RATING * ea, dh + K_RATING * ea
+        if DAMP:   # a 50-point blowout says less about next week than its size suggests
+            eh, ea = DAMP * np.tanh(eh / DAMP), DAMP * np.tanh(ea / DAMP)
+        kh = K_RATING * (EARLY_BOOST if played.get(h, 0) < EARLY_GAMES else 1.0)
+        ka = K_RATING * (EARLY_BOOST if played.get(a, 0) < EARLY_GAMES else 1.0)
+        att[h], dfn[a] = ah + kh * eh, da + ka * eh
+        att[a], dfn[h] = aa + ka * ea, dh + kh * ea
+        played[h], played[a] = played.get(h, 0) + 1, played.get(a, 0) + 1
         league += K_LEAGUE * ((sh + sa) - league)
         home_adv += K_HOME * ((sh - sa) - (exp_h - exp_a))
+        if K_TEAM_HOME:
+            team_home[h] = hb + K_TEAM_HOME * ((sh - sa) - (exp_h - exp_a))
     return pd.DataFrame(out, columns=['exp_home', 'exp_away', 'league_total', 'home_adv', 'rating_diff'])
 
 
