@@ -35,6 +35,10 @@ def stat_features(m, stat):
     for n in (3, 5, 10, 20):
         m[f'{s}_l{n}'] = p[s].transform(lambda x: x.shift(1).rolling(n, min_periods=1).mean())
     m[f'{s}_ewm'] = p[s].transform(lambda x: x.shift(1).ewm(halflife=5, min_periods=1).mean())
+    # each stat its own memory: shorter and longer half-lives beside the five-game one (docs/RESEARCH_TESTS.md: better
+    # on 2025-2026 for all four stats, by 3 to 6 standard errors)
+    for h in (2, 12, 30):
+        m[f'{s}_ewm{h}'] = p[s].transform(lambda x, h=h: x.shift(1).ewm(halflife=h, min_periods=1).mean())
     m[f'{s}_season'] = m.groupby(['player_id', 'season'], sort=False)[s].transform(lambda x: x.shift(1).expanding().mean())
     num = p[s].transform(lambda x: x.shift(1).rolling(20, min_periods=1).sum())
     den = p.tog_frac.transform(lambda x: x.shift(1).rolling(20, min_periods=1).sum())

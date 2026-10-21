@@ -42,9 +42,12 @@ def market(m, cache):
 
 
 def memory(m, stat):
+    """Adopted: afl/model/props.py stat_features now builds these for every stat; kept here so the test reruns."""
+    if f'{stat}_ewm2' in m:
+        return m
     p = m.groupby('player_id', sort=False)[stat]
     for h in (2, 12, 30):
-        m[f'{stat}_ewm{h}'] = p.transform(lambda x: x.shift(1).ewm(halflife=h, min_periods=1).mean())
+        m[f'{stat}_ewm{h}'] = p.transform(lambda x, h=h: x.shift(1).ewm(halflife=h, min_periods=1).mean())
     return m
 
 

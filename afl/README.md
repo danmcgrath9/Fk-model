@@ -24,7 +24,12 @@ no BetMatic orders. Paper only until the founder says otherwise.
 | Weather | rain and wind by ground | tested on Fryzigg's match weather: small, consistent gain (docs/STEP3_WITHOUT_ODDS.md); 2027 needs a forecast source |
 | Market benchmark | Squiggle's "Punters" (the market's win chance and margin, 2017-2026) | done: the market beats our team model; blending adds nothing detectable |
 | Odds pipeline | pull, name matching, real-line backtest, walk-forward projections | built and tested; waits on the ODDS_API_KEY secret and PULL.json |
-| Price sheet | every player's line and fair prices per round | done for past rounds (docs/SHEET_2026_R24.md); live needs a named-teams source |
+| Price sheet | every player's line and fair prices per round, with milestones (20+/25+/30+ disposals, 5+ marks, 5+ tackles) | done for past rounds (docs/SHEET_2026_R24.md) |
+| Tails | spread per position for disposals; milestone calibration by position | done, see `docs/TAILS.md` |
+| Settings | model settings per stat, chosen on 2024 | done, see `docs/TUNING.md` (small gains) |
+| Research | what the best modellers do, ranked, and the ideas tested without odds | `docs/RESEARCH_BEST_MODEL.md`, `docs/RESEARCH_TESTS.md`, `docs/TEAM_IDEAS.md` |
+| Live pricing | named teams (pasted team sheet or CSV) to a live price sheet; final models trained through 2026 | built and tested (`afl/live/`); the `afl round` workflow prices a round when its teams are committed to `afl/live/named/` |
+| Paper ledger and staking | bets, closes, results, closing-line value; quarter Kelly shrunk for correlated bets | built and tested (`afl/betting/`); starts round 1 2027 |
 
 ## Disposals, step 1 results (2025 and 2026, never seen in fitting or tuning)
 
@@ -87,6 +92,14 @@ for in-season updates).
 To identify us to Squiggle, set the repository variable `AFL_CONTACT` (Settings > Secrets and
 variables > Actions > Variables) to a contact, e.g. an email. Without it the User-Agent says
 "fk-model AFL research".
+
+## Named teams each week
+
+The AFL website runs on Telstra's terms ("only for personal use anticipated by this service", not to be stored in any
+electronic system beyond that), so it is not read automatically without written consent. Champion Data's official API
+has a selected-teams endpoint (with late changes) and is licensed; its price is not published. Until one of those is
+arranged, the team sheet is pasted (by hand, from any source the founder reads) into `afl/live/named/<season>_R<round>.txt`
+in the layout described in `afl/live/team_sheet.py`, and the workflow does the rest.
 
 ## Running it
 
