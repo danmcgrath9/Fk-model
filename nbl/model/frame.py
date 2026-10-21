@@ -26,12 +26,14 @@ import numpy as np
 import pandas as pd
 
 FIRST_SEASON = 2015          # box scores start in 2015-16
-STATS = ['pts', 'reb', 'ast', 'fg3m', 'fg3a', 'fga', 'fta', 'oreb', 'tov', 'stl', 'blk', 'pf']
+STATS = ['pts', 'reb', 'ast', 'fg3m', 'fg3a', 'fga', 'fgm', 'fta', 'ftm', 'oreb', 'tov', 'stl', 'blk', 'pf']
 PROPS = ['pts', 'reb', 'ast', 'fg3m', 'pra']
+RATE_COLS = ['pts', 'reb', 'ast', 'fg3m', 'fg3a', 'fga', 'fta', 'oreb', 'tov', 'stl', 'blk', 'eff']
 DECAY = 0.92                 # weight kept per later game played, in a player's rate and minutes history
 PRIOR_MIN = 60.0             # minutes of league-average play mixed into every rate (shrinkage)
 TEAM_DECAY = 0.90            # weight kept per later game, in team pace and defence
-ELO_K, ELO_HCA, ELO_CARRY = 0.06, 3.0, 0.6     # margin points per point of error, home court, share kept over the summer
+ELO_K, ELO_HCA, ELO_CARRY, ELO_CAP = 0.04, 3.0, 0.6, 30.0   # per point of error, home court, share kept over summer, error cap
+# (chosen on 2016-17 to 2022-23 by margin miss; nbl/docs/TEAM_STEP1.md)
 
 # cities, for travel (the NBL criss-crosses Australia and New Zealand)
 CITY = {'Adelaide 36ers': (-34.93, 138.60), 'Brisbane Bullets': (-27.47, 153.03), 'Cairns Taipans': (-16.92, 145.77),
@@ -102,6 +104,7 @@ def base_players(box, games):
     b['min'] = _minutes(b.minutes)
     num = {'pts': 'points', 'reb': 'rebounds_total', 'ast': 'assists', 'fg3m': 'three_pointers_made',
            'fg3a': 'three_pointers_attempted', 'fga': 'field_goals_attempted', 'fta': 'free_throws_attempted',
+           'fgm': 'field_goals_made', 'ftm': 'free_throws_made',
            'oreb': 'rebounds_offensive', 'tov': 'turnovers', 'stl': 'steals', 'blk': 'blocks', 'pf': 'fouls_personal'}
     for k, c in num.items():
         b[k] = pd.to_numeric(b[c], errors='coerce')
@@ -112,10 +115,12 @@ def base_players(box, games):
     # a player who played has every counting stat; a missing one in a played row is a source gap
     b.loc[b.played == 1, STATS] = b.loc[b.played == 1, STATS].fillna(0)
     b['pra'] = b.pts + b.reb + b.ast
+    # the NBL's own efficiency rating: what a player put up less his misses and turnovers
+    b['eff'] = b.pts + b.reb + b.ast + b.stl + b.blk - (b.fga - b.fgm) - (b.fta - b.ftm) - b.tov
     b = b.drop_duplicates(['game', 'team', 'key'])
     b = b.merge(games[['game', 'season', 'tip', 'day', 'finals', 'round_no', 'venue']], on='game')
     keep = ['game', 'season', 'tip', 'day', 'finals', 'round_no', 'venue', 'team', 'opp', 'is_home', 'key', 'player', 'pos',
-            'starter', 'min', 'played'] + STATS + ['pra']
+            'starter', 'min', 'played'] + STATS + ['pra', 'eff']
     return b[keep].sort_values(['tip', 'game', 'team', 'key']).reset_index(drop=True)
 
 
@@ -150,7 +155,7 @@ def elo(games):
         rh, ra = r.get(g.home, 0.0), r.get(g.away, 0.0)
         exp = rh - ra + ELO_HCA
         out.append(exp)
-        err = (g.home_score - g.away_score) - exp
+        err = float(np.clip((g.home_score - g.away_score) - exp, -ELO_CAP, ELO_CAP))
         r[g.home] = rh + ELO_K * err
         r[g.away] = ra - ELO_K * err
     return pd.Series(out, index=games.index)
@@ -215,7 +220,7 @@ def player_history(p, league_rate):
     """
     p = p.sort_values(['tip', 'game']).copy()
     n = len(p)
-    rate_cols = ['pts', 'reb', 'ast', 'fg3m', 'fg3a', 'fga', 'fta', 'oreb', 'tov']
+    rate_cols = RATE_COLS
     out = {f'r_{c}': np.full(n, np.nan) for c in rate_cols}
     for c in ['min_ew', 'min_last', 'min_l3', 'start_ew', 'start_last', 'dnp_l5', 'games_prior', 'games_season', 'days_since',
               'min_ew_season', 'pra_l10', 'pts_l10', 'reb_l10', 'ast_l10', 'fg3m_l10', 'pts_l5', 'reb_l5', 'ast_l5',
@@ -284,7 +289,7 @@ def league_rates(players):
     """Per-minute league rates by season, from the season BEFORE (the first season uses its own; it is
     only ever a warm-up season and never scored)."""
     pl = players[players.played == 1]
-    by = pl.groupby('season')[['pts', 'reb', 'ast', 'fg3m', 'fg3a', 'fga', 'fta', 'oreb', 'tov', 'min']].sum()
+    by = pl.groupby('season')[RATE_COLS + ['min']].sum()
     rates = by.div(by['min'], axis=0).drop(columns='min')
     out = {}
     for s in sorted(rates.index):
@@ -314,6 +319,37 @@ def squad_context(p):
                 rows.append((gm, team, pool, out.min_ew.fillna(0).sum(), ins.min_ew.fillna(0).sum(), float(len(out))))
             prev = gm
     return pd.DataFrame(rows, columns=['game', 'team', 'squad_min_pool', 'min_out', 'min_in', 'n_out'])
+
+
+def lineup_values(p, lr):
+    """Per team-game, the squad's value above league average: each player's efficiency per minute above
+    the league's, times the minutes he would get if the team's 200 were shared by usual minutes.
+      named  the players who dressed for this game
+      open   the players who dressed for the team's previous game (no team news), at their latest values
+    """
+    p = p.sort_values(['tip', 'game']).copy()
+    p['val'] = p.r_eff - p.season.map(lambda s: lr[s]['eff'])
+    rows = []
+    for team, g in p.groupby('team', sort=False):
+        by = {k: v for k, v in g.groupby('game', sort=False)}
+        order = g.drop_duplicates('game').game.tolist()
+        latest = {}          # key -> (val, min_ew) as of his latest game
+        prev = None
+        for gm in order:
+            cur = by[gm]
+            for r in cur.itertuples():
+                latest[r.key] = (r.val, r.min_ew)
+
+            def strength(pairs):
+                pairs = [(v, m) for v, m in pairs if pd.notna(v) and pd.notna(m) and m > 0]
+                pool = sum(m for _, m in pairs)
+                return sum(v * 200.0 * m / pool for v, m in pairs) if pool > 0 else np.nan
+
+            named = strength(zip(cur.val, cur.min_ew))
+            open_ = strength(latest[k] for k in by[prev].key) if prev is not None else np.nan
+            rows.append((gm, team, named, open_))
+            prev = gm
+    return pd.DataFrame(rows, columns=['game', 'team', 'named_val', 'open_val'])
 
 
 def add_player_features(players, tg):
@@ -358,6 +394,7 @@ def build(cache):
     players = base_players(box, games)
     tg = team_features(team_box(players, games), games)
     p = add_player_features(players, tg)
+    tg = tg.merge(lineup_values(p, league_rates(players)), on=['game', 'team'], how='left')
     return games, p, tg
 
 

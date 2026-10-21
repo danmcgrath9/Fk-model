@@ -35,7 +35,7 @@ def test_a_games_own_stats_never_reach_its_features(base):
     before, tb = _build(games, players)
     g2, p2 = games.copy(), players.copy()
     rows = p2.game == target
-    for c in frame.STATS + ['min', 'pra']:
+    for c in frame.STATS + ['min', 'pra', 'eff']:
         p2.loc[rows, c] = p2.loc[rows, c] * 3 + 7
     g2.loc[g2.game == target, ['home_score', 'away_score']] = [150, 40]
     after, ta = _build(g2, p2)
@@ -64,13 +64,13 @@ def test_minutes_parse_both_source_formats():
 
 
 def test_rate_is_shrunk_toward_the_league_and_uses_earlier_games_only():
-    lr = {2025: {c: 0.5 for c in ['pts', 'reb', 'ast', 'fg3m', 'fg3a', 'fga', 'fta', 'oreb', 'tov']}}
+    lr = {2025: {c: 0.5 for c in frame.RATE_COLS}}
     day = pd.Timestamp('2025-10-01')
     rows = []
     for i, (mins, pts) in enumerate([(20.0, 20.0), (20.0, 0.0)]):
         rows.append(dict(game=f'g{i}', key='a b', season=2025, day=day + pd.Timedelta(days=7 * i), tip=day + pd.Timedelta(days=7 * i),
-                         team='T', min=mins, played=1.0, starter=1.0, pts=pts, reb=0.0, ast=0.0, fg3m=0.0, fg3a=0.0, fga=0.0,
-                         fta=0.0, oreb=0.0, tov=0.0, pra=pts))
+                         team='T', min=mins, played=1.0, starter=1.0, pra=pts,
+                         **{c: (pts if c == 'pts' else 0.0) for c in frame.RATE_COLS}))
     h = frame.player_history(pd.DataFrame(rows), lr).set_index('game')
     assert h.loc['g0', 'r_pts'] == pytest.approx(0.5)                                  # nothing yet: the league rate
     assert h.loc['g1', 'r_pts'] == pytest.approx((20 + frame.PRIOR_MIN * 0.5) / (20 + frame.PRIOR_MIN))   # game 0 only
