@@ -183,6 +183,12 @@ The test: after tonight's draw, re-pull Form King and re-price on the final inpu
   at the open and were missed by that fault; placed by hand after.
 - Unit $50 from 21 Oct 4pm (founder). Ballarat's 48 orders cancelled and resent at $50 to fire at the open.
 
+- CORRECTION (founder, Thu 22 Oct): the "never attempted" orders were the TAB account being EMPTY, not a bot fault. With no
+  money in the account the bot does not attempt the bet at all, so no bet record is written. That fits the timeline: Mornington
+  (Mon afternoon, after Murshidi's $126 took the balance to $0.29), Flemington and Cranbourne R1/R2/R4 (Wed, before TAB was
+  funded about 3pm) left no records; Cranbourne R3 at 3:09pm and later races, after funding, show the bot's price refusals.
+  Lesson: keep TAB funded to cover every order that can fire at an open.
+
 ### Taken, Wed 21 Oct (TAB, real money)
 | Meeting | Race | Horse | Price | Stake | Units | Ours | How |
 |---|---|---|---|---|---|---|---|
