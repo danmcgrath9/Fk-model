@@ -92,8 +92,34 @@ fives (experiment 5) are worth about as much again.
 Differences under 0.003. With these inputs the margin is mostly noise; more needs information (injuries,
 starting fives, the market itself).
 
+### 9. Voulgaris's angles: second halves, tendencies, half time
+`research/voulgaris.py`, 1,503 regulation games whose quarters add up to the final (2015-16 to now).
+Voulgaris made his name on NBA second-half totals (books split the full-game total about 50/50 while second
+halves scored more, late fouling in close games being the usual explanation), on coaches' game-management
+habits, and later on "Ewing", a lineup-level game simulator. Sources: the ESPN profile and secondary write-ups
+below; the details are second-hand.
+
+- **NBL halves are the other way round.** First halves outscore second halves in every one of 12 seasons:
+  3.7 points a game on average (the first half carries 50.5% to 52% of a season's points; 50.8% of our
+  pre-game total, 2016-22). The third quarter is the lowest-scoring quarter in 10 of 12 seasons. A book that
+  splits a total evenly gives value on first-half overs and second-half unders: the reverse of his NBA bet.
+- **Late fouling does not show up as more second-half points** in close NBL games (final margin 0-5: second
+  half 4.2 below the first; 6-10: 1.2 below, with the 4th quarter 1.0 above the other quarters' average).
+- **Team tendencies do not last.** A team's games' second-half lean, odd games against even games in the same
+  season: r = -0.08; one season to the next: r = 0.14; a team's share of its points in the 4th quarter,
+  odd against even: r = 0.11. Coaches are not in the data, so his coach angle cannot be tested directly.
+- **At half time, the first half says almost nothing about the second.** Predicting second-half points on
+  2023-24: "same as the first half" misses by 12.3; our pre-game total x the second-half share misses by 9.6;
+  adding the first half and the half-time margin to the pre-game total does no better (9.6). If a book's live
+  second-half line follows first-half pace, the edge is to trust the pre-game number instead.
+- Built from this: the price sheet now prices first- and second-half totals; the grader scores them; the line
+  recorder takes pre-game half totals with the props and one live snapshot of the second-half lines at half time
+  (40-80 minutes after the tip); the probe checks whether Australian books post NBL half markets at all.
+- "Ewing" (simulate a game lineup by lineup from projected minutes and on-court ratings): the ingredients exist
+  (`model/onoff.py`, the minutes model); not built.
+
 ## Next, in order
-1. Recorded lines: the only test that matters. Then blend our number with the market's and measure closing line value.
+1. Recorded lines, half lines included: the only test that matters. Then blend our number with the market's and measure closing line value.
 2. Starting fives at tip, if a source exists: the largest measured gain.
 3. Points by simulation of shots, in the pricing.
 4. Tried and set aside: Kalman rates, usage redistribution, adjusted efficiency, early-season weights.
@@ -105,4 +131,5 @@ starting fives, the market itself).
 - KenPom, Ratings methodology: https://kenpom.com/blog/ratings-methodology/
 - Points as shots (practitioner): https://www.excelladz.com/post/how-i-built-an-nba-player-prop-model-part-3
 - Usage after an absence (practitioner): https://unabated.com/post/fine-tune-your-nba-prop-betting-strategy-using-unabated-nba
+- Voulgaris, ESPN profile: https://www.espn.com/blog/playbook/dollars/post/_/id/2935/meet-the-worlds-top-nba-gambler ; secondary accounts: https://sportshistorynetwork.com/gambling/inside-the-mind-of-haralabos-voulgaris/ , https://www.sportsboom.us/betting/nba-betting-strategies
 - Market efficiency survey: https://www2.gwu.edu/~forcpgm/Sports_paper_GW1.pdf ; NBA inefficiencies: https://thesportjournal.org/article/nba-gambling-inefficiencies-a-second-look/ ; early-season totals: https://www.ubplj.org/index.php/jpm/article/view/601

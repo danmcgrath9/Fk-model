@@ -22,6 +22,7 @@ from scipy import stats
 from nbl.model import frame, onoff, props, team
 
 MARKETS = props.PROPS
+H1_SHARE, HALF_SD = 0.508, 11.0      # fitted on 2016-17 to 2022-23 against our full-game total (nbl/research/voulgaris.py)
 
 
 def build(cache, days):
@@ -72,7 +73,7 @@ def run(cache, out_dir, days=8):
     gu = g[g.game.isin(up.game)].copy()
     gu['m'] = models['m_open'].predict(gu)
     gu['t'] = models['t_open'].predict(gu)
-    rows = []
+    rows, halves = [], []
     L += ['Paper only. Squads are each team\'s last squad (no team news): re-run after teams are named. Fair price = 1 / our '
           'chance, no margin; a book\'s price has to beat it by enough before it is a bet.', '',
           '## Games', '',
@@ -96,7 +97,20 @@ def run(cache, out_dir, days=8):
             q = team.price(x.m, x.t, sd_m, sd_t, total_line=tl)
             rows.append(dict(kind='team', game=x.game, tip=x.tip, home=x.home, away=x.away, market='total', side='over',
                              line=tl, p=q['p_over'], fair=q['fair_over'], mu=x.t))
+        # halves: the first half is 50.8% of the full total in the NBL (2016-22), the second half (with any
+        # overtime) the rest; spread about 11 points each (nbl/docs/RESEARCH.md, Voulgaris)
+        for mk, mu_h in (('total_h1', H1_SHARE * x.t), ('total_h2', (1 - H1_SHARE) * x.t)):
+            for tl in (np.floor(mu_h) - 3.5, np.floor(mu_h) + 0.5, np.floor(mu_h) + 3.5):
+                ph = float(1 - stats.norm.cdf((tl - mu_h) / HALF_SD))
+                rows.append(dict(kind='team', game=x.game, tip=x.tip, home=x.home, away=x.away, market=mk, side='over',
+                                 line=tl, p=ph, fair=1 / ph, mu=mu_h))
+        halves.append((x.home, x.away, H1_SHARE * x.t, (1 - H1_SHARE) * x.t))
     L += ['', f'Margin spread {sd_m:.1f} points, total spread {sd_t:.1f}. Line and total prices at other numbers are in the CSV.', '']
+    L += ['### Halves', '', 'NBL first halves outscore second halves (50.8% of the points, every season since 2015-16). A book that '
+          'splits the total evenly, or prices the second half off first-half pace at half time, is off (nbl/docs/RESEARCH.md).', '',
+          '| home | away | our 1st-half total | our 2nd-half total (with any overtime) |', '|---|---|---|---|']
+    L += [f'| {h} | {a} | {h1:.1f} | {h2:.1f} |' for h, a, h1, h2 in halves]
+    L.append('')
 
     # player props
     e, choice, _ = props.project(p, fit_range=(props.FIT[0], last_done - 1), tune_season=last_done)

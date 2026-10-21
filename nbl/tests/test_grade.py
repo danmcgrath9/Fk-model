@@ -44,3 +44,21 @@ def test_last_sheet_before_tip_is_kept(tmp_path):
     s = grade.load_sheets(str(tmp_path))
     assert (s.priced_at == TIP - pd.Timedelta(hours=3)).all()
     assert s[s.market == 'h2h'].p.tolist() == [0.7]
+
+
+def test_half_totals_are_graded_from_quarter_scores():
+    base = dict(game='g1', tip=TIP, home='H', away='A', priced_at=TIP - pd.Timedelta(hours=3), team=np.nan, player=np.nan,
+                kind='team', side='over', mu=90.0)
+    sh = pd.DataFrame([dict(base, market='total_h1', line=95.5, p=0.4), dict(base, market='total_h2', line=80.5, p=0.6)])
+    games = pd.DataFrame([dict(game='g1', home_score=90.0, away_score=86.0, scheduled=False)])
+    h1 = pd.Series({'g1': 96.0})
+    s = grade.outcomes(sh, games, pd.DataFrame(columns=['game', 'player', 'played']), h1)
+    y = dict(zip(s.market, s.y))
+    assert y['total_h1'] == 1.0          # 96 first-half points over 95.5
+    assert y['total_h2'] == 0.0          # 176 - 96 = 80 under 80.5
+
+
+def test_first_halves_from_box():
+    bt = pd.DataFrame([dict(match_id='g1', home_away='home', p1_score='25', p2_score='20'),
+                       dict(match_id='g1', home_away='away', p1_score='22', p2_score='19')])
+    assert grade.first_halves(bt)['g1'] == 86.0

@@ -4,8 +4,11 @@ the close, so our prices can finally be tested against real ones.
 Each run (every 30 minutes from the workflow) decides what is worth a call:
   team markets  head-to-head, line and total for every listed game, at most every TEAM_EVERY hours, and
                 again when a game tips within CLOSE_MINUTES (the close)
-  player props  points, rebounds, assists, threes, PRA for each game tipping within PROP_HOURS, at most
-                every PROP_EVERY hours per game, and once more within CLOSE_MINUTES of its tip
+  player props  points, rebounds, assists, threes, PRA (and the first- and second-half totals) for each game
+                tipping within PROP_HOURS, at most every PROP_EVERY hours per game, and once more within
+                CLOSE_MINUTES of its tip
+  half time     once per game, 40 to 80 minutes after the tip: the live second-half total and line (the
+                Voulgaris angle: does the book chase first-half pace? nbl/docs/RESEARCH.md)
 Every call is priced first and skipped if it would take this run past MAX_CREDITS or the season past
 NBL_BUDGET (60,000: the NBL share of the shared key). Spend is read from the provider's own
 x-requests-last header and kept in a ledger on the nbl-history release, so the season total is ours, not
@@ -14,7 +17,8 @@ the whole key's. The response bodies are appended to lines_<date>.jsonl.gz.
 Costs: NOT verified against The Odds API's own pages (blocked from here); secondhand sources say /events
 is free and /odds and event odds cost 1 per market per region. Nothing relies on that: every call's real
 cost, the events call included, is read from x-requests-last and written to the ledger. If those rules
-hold, covering every game this season costs about 13,000 credits (team markets ~5,400, props ~7,700).
+hold, covering every game this season costs about 16,000 credits (team markets ~5,400, props and half totals
+~10,500, half-time snapshots ~300).
 
 Env: ODDS_API_KEY (never printed), MAX_CREDITS (default 60 a run), NBL_BUDGET (60000), STATE (directory
 holding ledger.csv and today's jsonl.gz; the workflow syncs it with the release)
@@ -31,7 +35,10 @@ import requests
 BASE = 'https://api.the-odds-api.com/v4'
 SPORT = 'basketball_nbl'
 TEAM_MARKETS = ['h2h', 'spreads', 'totals']
-PROP_MARKETS = ['player_points', 'player_rebounds', 'player_assists', 'player_threes', 'player_points_rebounds_assists']
+PROP_MARKETS = ['player_points', 'player_rebounds', 'player_assists', 'player_threes', 'player_points_rebounds_assists',
+                'totals_h1', 'totals_h2']                 # half totals ride along pre-game (nbl/docs/RESEARCH.md, Voulgaris)
+HALF_MARKETS = ['totals_h2', 'spreads_h2']                # the live second-half lines, taken once at half time
+HALF_FROM, HALF_TO = 40.0, 80.0                           # minutes after the tip when a half-time snapshot is taken
 TEAM_EVERY, PROP_EVERY, PROP_HOURS, CLOSE_MINUTES = 2.0, 3.0, 30.0, 40.0
 LEDGER_COLS = ['at', 'kind', 'event', 'cost', 'status']
 
@@ -46,7 +53,7 @@ def load_ledger(state):
 
 
 def plan(events, ledger, now):
-    """What to call this run: [('team', None) | ('props', event_id), ...], before any budget check.
+    """What to call this run: [('team', None) | ('props', event_id) | ('half', event_id), ...], before any budget check.
     events: list of dicts with id and commence_time; ledger: earlier calls."""
     calls = []
     ok = ledger[ledger.status == 200] if len(ledger) else ledger
@@ -71,11 +78,18 @@ def plan(events, ledger, now):
         close_done = len(mine) and (mine['at'] >= t - pd.Timedelta(minutes=CLOSE_MINUTES)).any()
         if last is None or now - last >= pd.Timedelta(hours=PROP_EVERY) or (in_close and not close_done):
             calls.append(('props', k))
+    # half time: one live snapshot of the second-half lines, between HALF_FROM and HALF_TO minutes after the tip
+    for k, t in tips.items():
+        since = now - t
+        if pd.Timedelta(minutes=HALF_FROM) <= since <= pd.Timedelta(minutes=HALF_TO):
+            done = ok[(ok.kind == 'half') & (ok.event == k)] if len(ok) else ok
+            if not len(done):
+                calls.append(('half', k))
     return calls
 
 
 def estimated_cost(kind):
-    return len(TEAM_MARKETS) if kind == 'team' else len(PROP_MARKETS)
+    return {'team': len(TEAM_MARKETS), 'props': len(PROP_MARKETS), 'half': len(HALF_MARKETS)}[kind]
 
 
 def main():
@@ -108,7 +122,7 @@ def main():
         if kind == 'team':
             url, mk = f'{BASE}/sports/{SPORT}/odds', TEAM_MARKETS
         else:
-            url, mk = f'{BASE}/sports/{SPORT}/events/{ev}/odds', PROP_MARKETS
+            url, mk = f'{BASE}/sports/{SPORT}/events/{ev}/odds', PROP_MARKETS if kind == 'props' else HALF_MARKETS
         resp = requests.get(url, params={'apiKey': key, 'regions': 'au', 'markets': ','.join(mk), 'oddsFormat': 'decimal'}, timeout=60)
         cost = float(resp.headers.get('x-requests-last', est) or est)
         spent += cost

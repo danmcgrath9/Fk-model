@@ -4,6 +4,7 @@ Reads every prices_<date>.csv (nbl/model/price_round.py), keeps for each game th
 before the tip, and scores it once the game is in the results:
   head-to-head  our home win chance against who won
   line, total   our chance at each priced line against the result (a push is left out)
+  halves        first-half total, and second half with any overtime (full total less the first half)
   props         our over chance at each priced line against the player's figure; a player who did not
                 take the court is left out (void at Australian books)
 Brier score and log loss (lower is better), how often the side we made favourite won, and our chance in
@@ -35,7 +36,17 @@ def load_sheets(price_dir):
     return s[s.priced_at == last].copy()
 
 
-def outcomes(sheet, games, players):
+def first_halves(box_team):
+    """Points scored in the first half of each game, both teams (from the team box's quarter scores)."""
+    bt = box_team.copy()
+    for c in ('p1_score', 'p2_score'):
+        bt[c] = pd.to_numeric(bt[c], errors='coerce')
+    bt = bt.drop_duplicates(['match_id', 'home_away'])
+    h = bt.groupby('match_id').apply(lambda d: d.p1_score.sum() + d.p2_score.sum() if len(d) == 2 and d[['p1_score', 'p2_score']].notna().all().all() else np.nan)
+    return h.rename(index=str)
+
+
+def outcomes(sheet, games, players, h1=None):
     """One row per priced chance with what happened: y = 1 if the priced side won, NaN if void or a push."""
     g = games.set_index('game')
     s = sheet[sheet.game.isin(g.index[~g.scheduled])].copy()
@@ -53,6 +64,12 @@ def outcomes(sheet, games, players):
     y[ln] = np.where(cover[ln] == 0, np.nan, (cover[ln] > 0).astype(float))
     tl = (s.market == 'total').to_numpy()
     y[tl] = np.where(tot[tl] == s.line.to_numpy()[tl], np.nan, (tot[tl] > s.line.to_numpy()[tl]).astype(float))
+    if h1 is not None:
+        half = h1.reindex(s.game.astype(str)).to_numpy(float)
+        for mk, pts in (('total_h1', half), ('total_h2', tot - half)):
+            k = (s.market == mk).to_numpy()
+            ln = s.line.to_numpy()
+            y[k] = np.where(np.isnan(pts[k]) | (pts[k] == ln[k]), np.nan, (pts[k] > ln[k]).astype(float))
     s['actual_margin'], s['actual_total'] = hm, tot
     pr = (s.kind == 'prop').to_numpy()
     if pr.any():
@@ -114,7 +131,7 @@ def report(s):
 def run(cache, price_dir, out_md):
     games = base_games(pd.read_parquet(f'{cache}/results.parquet'), scheduled_until=pd.Timestamp.now(tz='UTC') + pd.Timedelta(days=30))
     players = base_players(pd.read_parquet(f'{cache}/box_player.parquet'), games[~games.scheduled])
-    s = outcomes(load_sheets(price_dir), games, players)
+    s = outcomes(load_sheets(price_dir), games, players, first_halves(pd.read_parquet(f'{cache}/box_team.parquet')))
     text = report(s)
     open(out_md, 'w').write(text)
     print(text)

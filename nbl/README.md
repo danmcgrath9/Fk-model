@@ -18,7 +18,7 @@ NBA and AFL code: everything lives in `nbl/` and the `nbl-*` workflows, with its
 | 4. Player props | minutes x rate and a direct model, negative binomial prices at any line | done: `docs/PROPS_STEP1.md` |
 | 5. Backtest | against stand-in lines only (proxy, not a market test) | done; real lines needed for the real test |
 | 6. Team-news angle | do books reprice after outs? | needs recorded prices |
-| Research | per-stat memory and projection-dependent spreads adopted; redistribution, adjusted efficiency, early-season weights rejected; starters the biggest gain found | `docs/RESEARCH.md`, `research/` |
+| Research | Voulgaris angles: NBL first halves outscore second halves every season (50.8% of points), team tendencies do not last, first-half pace does not predict the second half; half totals now priced, graded and recorded; per-stat memory and projection-dependent spreads adopted; redistribution, adjusted efficiency, early-season weights rejected; starters the biggest gain found | `docs/RESEARCH.md`, `research/` |
 | 7. Paper season | our prices for the next 8 days, kept on the release, and graded against results every run | `model/price_round.py`, `model/grade.py`, `nbl prices` workflow (`paper_scorecard.md` on the release) |
 | Line recorder | books' prices from open to close, capped per run and per season (60,000 credits), ledger on the release | `lines/record.py`, `nbl record lines` workflow; idle until `ODDS_API_KEY` exists |
 | Book rules | void rules for a player who does not play | `docs/BOOK_RULES.md` (TAB not found) |

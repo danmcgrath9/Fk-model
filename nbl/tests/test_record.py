@@ -42,3 +42,12 @@ def test_failed_calls_do_not_count_as_taken():
 
 def test_no_games_no_calls():
     assert record.plan([ev('old', -3)], led([]), NOW) == []
+
+
+def test_half_time_snapshot_once_between_40_and_80_minutes_after_the_tip():
+    l = led([])
+    calls = record.plan([ev('live', -55 / 60)], l, NOW)
+    assert ('half', 'live') in calls
+    assert ('half', 'live') not in record.plan([ev('live', -20 / 60)], l, NOW)        # too early
+    done = led([(NOW - pd.Timedelta(minutes=10), 'half', 'live', 2, 200)])
+    assert ('half', 'live') not in record.plan([ev('live', -65 / 60)], done, NOW)     # already taken

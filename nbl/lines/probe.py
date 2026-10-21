@@ -7,11 +7,12 @@ Answers, each from a real response:
   3. props: points, rebounds, assists, threes and points+rebounds+assists on one 2025-26 game and one
      2026-27 game: which books, how many players each
   4. opening: on the 2026-27 game, how many days before the tip team markets and player points first appear
+  5. half markets: first- and second-half totals and the first-half line on that game
 
 Costs (the-odds-api.com/liveapi/guides/v4): /sports 0; historical events 1 (0 if empty); historical
 odds and historical event odds 10 x markets x regions. The probe stops before any call that would take
 it past MAX_CREDITS, reading the provider's own x-requests-used header after every call. Planned total
-about 280 credits.
+about 290 credits.
 
 Env: ODDS_API_KEY (GitHub secret; never printed), MAX_CREDITS (default 300), OUT (default nbl/cache/odds_probe)
 """
@@ -167,18 +168,34 @@ def main():
         start = dt.datetime.fromisoformat(g['commence_time'].replace('Z', '+00:00'))
         report += [f'## When lines first appear: {g["away_team"]} at {g["home_team"]}, tip {g["commence_time"]}', '',
                    '| days before the tip | h2h books | player_points books (players each) |', '|---|---|---|']
-        for days in (6, 4, 2, 1):
+        for days in (4, 2, 1):
             t = (start - dt.timedelta(days=days)).strftime('%Y-%m-%dT%H:%M:%SZ')
             team = get(f'/historical/sports/{SPORT}/events/{g["id"]}/odds',
                        {'date': t, 'regions': 'au', 'markets': 'h2h', 'oddsFormat': 'decimal'}, f'open h2h -{days}d', 10)
             tb = sorted({b['key'] for b in ((team or {}).get('data') or {}).get('bookmakers', [])})
             pp = 'not asked'
-            if days <= 4:
+            if days <= 2:
                 snap = get(f'/historical/sports/{SPORT}/events/{g["id"]}/odds',
                            {'date': t, 'regions': 'au', 'markets': 'player_points', 'oddsFormat': 'decimal'},
                            f'open points -{days}d', 10)
                 pp = ', '.join(f'{b} ({n})' for b, n, _ in summarise_props(snap, 'player_points')) or 'none'
             report.append(f'| {days} | {", ".join(tb) or "none"} | {pp} |')
+        report.append('')
+
+    # 5: half markets (Voulgaris angle, nbl/docs/RESEARCH.md): do AU books post NBL first- and second-half lines?
+    g = picks.get('2026-10-16')
+    if g:
+        half = ['totals_h1', 'totals_h2', 'spreads_h1']
+        snap = get(f'/historical/sports/{SPORT}/events/{g["id"]}/odds',
+                   {'date': '2026-10-16T08:00:00Z', 'regions': 'au', 'markets': ','.join(half), 'oddsFormat': 'decimal'},
+                   'half markets 2026-10-16', 10 * len(half))
+        data = (snap or {}).get('data') or {}
+        report += ['## Half markets, same 2026 game', '', '| market | books | sample |', '|---|---|---|']
+        for mk in half:
+            books = [(b['key'], m) for b in data.get('bookmakers', []) for m in b.get('markets', []) if m.get('key') == mk]
+            smp = books[0][1]['outcomes'][0] if books and books[0][1].get('outcomes') else None
+            report.append(f'| {mk} | {", ".join(b for b, _ in books) or "none"} | '
+                          f'{(smp.get("name", "") + " " + str(smp.get("point", "")) + " @ " + str(smp.get("price", ""))) if smp else ""} |')
         report.append('')
 
     report += [f'**Credits spent this probe: {budget.spent}** (cap {MAX_CREDITS}); remaining on the plan: '
