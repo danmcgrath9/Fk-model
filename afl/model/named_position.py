@@ -4,7 +4,8 @@ A team sheet names a centre square (C, R, RR = centre, rover, ruck-rover), a ruc
 lines, the interchange (INT) and, since 2021, the substitute. Starting in the centre square is the public, pre-game
 signal closest to centre bounce attendance, which the research (docs/RESEARCH_BEST_MODEL.md, rank 4) puts near the top
 for disposals. Fryzigg holds 2012-2025; 2026 is not published, so this is tested on 2024-2025 with 2023 for tuning.
-For live use it needs the positions on each named team, which the named-teams source would have to carry.
+For live use the positions come from the pasted team sheet (afl/live/team_sheet.py names the same groups).
+Kept for disposals, tackles and goals (docs/RESEARCH_TESTS.md); not for marks.
 """
 import glob
 
@@ -29,15 +30,19 @@ def attach(m, cache):
     fz['key'] = (fz.player_first_name.fillna('') + ' ' + fz.player_last_name.fillna('')).map(_key)
     fz = fz.drop_duplicates(['date', 'team', 'key'], keep=False)
     fz['named_pos'] = fz.player_position.map(GROUPS)
-    m = m.assign(key=m.Player.map(_key)).merge(fz[['date', 'team', 'key', 'named_pos']], on=['date', 'team', 'key'], how='left')
+    m = m.assign(key=m.Player.map(_key)).merge(fz[['date', 'team', 'key', 'named_pos']].rename(columns={'named_pos': 'fz_pos'}),
+                                               on=['date', 'team', 'key'], how='left')
+    # rows that already carry a position (a pasted team sheet, afl/live/team_sheet.py) keep it
+    m['named_pos'] = m['named_pos'].combine_first(m.fz_pos) if 'named_pos' in m else m.fz_pos
+    m = m.drop(columns=['fz_pos'])
     for g in NAMES:
-        m[f'named_{g}'] = (m.named_pos == g).astype(float).where(m.named_pos.notna())
+        m[f'sheet_{g}'] = (m.named_pos == g).astype(float).where(m.named_pos.notna())
     # how often he has been named in the centre square lately (shifted: earlier games only)
     m = m.sort_values(['player_id', 'dt'])
-    m['centre_rate10'] = m.groupby('player_id').named_centre.transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean())
-    m['bench_rate10'] = m.groupby('player_id').named_bench.transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean())
+    m['centre_rate10'] = m.groupby('player_id').sheet_centre.transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean())
+    m['bench_rate10'] = m.groupby('player_id').sheet_bench.transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean())
     return m.drop(columns=['key'])
 
 
 def columns():
-    return [f'named_{g}' for g in NAMES] + ['centre_rate10', 'bench_rate10']
+    return [f'sheet_{g}' for g in NAMES] + ['centre_rate10', 'bench_rate10']

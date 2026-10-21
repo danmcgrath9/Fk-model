@@ -18,17 +18,15 @@ record, and the named sub, are listed as not priced (books price them, we have t
 Usage: python -m afl.live.price_round afl/cache named_teams.csv   (or a pasted team sheet, .txt)
 """
 import json
-import re
 import sys
 
 import lightgbm as lgb
 import numpy as np
 import pandas as pd
 
-from afl.model import extra as X
 from afl.model import frame as F
 from afl.model import props as P
-from afl.model.walkforward import STATS
+from afl.model.walkforward import STATS, prepare
 from afl.sheet import MILESTONES, fair, median_line, nb_cdf, px
 
 COLUMNS = ['season', 'round', 'date', 'venue', 'home_team', 'away_team', 'team', 'player', 'sub']
@@ -90,6 +88,8 @@ def future_rows(n, history):
         'opp': np.where(is_home, n.away_team, n.home_team), 'is_home': is_home.astype(float),
         'player_id': n.player_id, 'Player': n.player, 'named_sub': pd.to_numeric(n['sub'], errors='coerce'),   # blank = not known yet
     })
+    if 'named_pos' in n:          # the position on a pasted team sheet (afl/live/team_sheet.py)
+        rows['named_pos'] = n.named_pos.to_numpy()
     # age on the day: his age at his last game plus the days since (unknown for a debutant, who is not priced anyway)
     last_age, last_dt = rows.player_id.map(ref.age), rows.player_id.map(ref.dt)
     rows['age'] = last_age + (rows.dt - last_dt).dt.days / 365.25
@@ -115,16 +115,14 @@ def project(cache, m, games):
     out = None
     for stat in STATS:
         meta = json.load(open(f'{cache}/models/{stat}.json'))
-        s, _ = P.stat_features(m, stat)
-        if meta['extra_inputs']:
-            s = X.add_extra(s, cache, stat)
-        if 'pos' not in s:
-            s = s.assign(pos=X.position(s))
+        s, feats, _ = prepare(m, cache, stat)
+        if feats != meta['features']:
+            raise SystemExit(f'{stat}: the inputs have changed since the models were trained; retrain (afl/live/train_final.py)')
         s = s[s.game.isin(games)]
         s = P.eligible(s)
         s = s[s[f'{stat}_l10'].notna()]
         mdl = lgb.Booster(model_file=f'{cache}/models/{stat}.txt')
-        s[f'mu_{stat}'] = mdl.predict(s[meta['features']])
+        s[f'mu_{stat}'] = mdl.predict(s[feats])
         s[f'a_{stat}'] = s.pos.map(meta['a_pos']).fillna(meta['a']).astype(float)
         cols = ['game', 'season', 'Round', 'date', 'team', 'opp', 'player_id', 'Player', 'pos', 'exp_margin', f'mu_{stat}', f'a_{stat}']
         p = s[cols]
@@ -173,9 +171,7 @@ def read_named(path):
     """A named-teams CSV, or pasted team-sheet text (.txt, afl/live/team_sheet.py)."""
     if path.endswith('.txt'):
         from afl.live import team_sheet
-        text = open(path).read()
-        season = int(re.search(r'\d{4}', text).group(0))
-        named = team_sheet.parse(text, season)
+        named = team_sheet.parse(open(path).read())     # the season is each game's year, never a guess from the text
         for p in team_sheet.check(named):
             print('CHECK:', p)
         return named

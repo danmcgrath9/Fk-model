@@ -59,3 +59,27 @@ Spread = exp(c0 + c1 x log projection + c2 x the player's own recent volatility 
 | tackles | -0.390 | +0.327 | +0.0004 ± 0.0002 | no |
 | goals | -1.686 | +0.613 | -0.0002 ± 0.0009 | no |
 
+## The position on the team sheet
+
+Named position (centre square, ruck, wing, back, forward, bench, sub) and how often he has lately been named in the centre square. Fryzigg ends at 2025, so fitted 2013-2022, tuned 2023, scored 2024-2025.
+
+| stat | matched | log-lik change | average miss change | kept |
+|---|---|---|---|---|
+| disposals | 99% | +0.0013 ± 0.0005 | -0.004 ± 0.002 | yes |
+| marks | 99% | -0.0000 ± 0.0003 | -0.000 ± 0.001 | no |
+| tackles | 99% | +0.0009 ± 0.0003 | -0.001 ± 0.001 | yes |
+| goals | 99% | +0.0022 ± 0.0005 | -0.001 ± 0.000 | yes |
+
+## What was adopted
+
+| idea | adopted for | how |
+|---|---|---|
+| shorter and longer memory (half-lives 2, 12 and 30 games beside 5) | all four stats | `afl/model/props.py` stat_features |
+| position on the team sheet | disposals, tackles, goals | `afl/model/named_position.py`; live from the pasted team sheet (`afl/live/team_sheet.py`) |
+| market margin in place of ours | marks only passed, and only just | not adopted yet: live it needs the market's margin each week, which arrives with the odds feed; revisit then |
+| spread depending on the player's volatility | marks only passed (+0.0003) | not adopted: too small to be worth another moving part |
+| market view of the game beside ours, substitute risk | none | dropped |
+
+After the rebuild, the walk-forward average miss for disposals is 3.72 (2025) and 3.71 (2026), from 3.74 and 3.72.
+The 2026 figure gains nothing from positions, because Fryzigg has not published 2026; live 2027 rows carry them from the
+team sheet.

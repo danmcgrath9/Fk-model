@@ -20,7 +20,7 @@ Lines can also be labelled INT, INTERCHANGE, FOLL, FOLLOWERS, R (ruck line) or E
 a missing line is fine. IN:/OUT: lines are ignored. The position each player is named in is kept (named_pos) because
 starting in the centre square is a role signal (afl/model/named_position.py).
 
-Usage: python -m afl.live.team_sheet pasted.txt > named.csv
+Usage: python -m afl.live.team_sheet pasted.txt > named.csv   (the season is each game's year)
 """
 import re
 import sys
@@ -47,7 +47,8 @@ def named_pos(line, i):
     return line
 
 
-def parse(text, season):
+def parse(text, season=None):
+    """season: taken from each game's date unless given."""
     rows, game, team, errors = [], None, None, []
     for n, raw in enumerate(text.splitlines(), 1):
         line = raw.strip()
@@ -67,7 +68,7 @@ def parse(text, season):
                 continue
             names = [x.strip() for x in re.split(r',|;', lab.group('names')) if x.strip()]
             for i, name in enumerate(names):
-                rows.append(dict(season=season, round=game['round'], date=game['date'], venue=game['venue'],
+                rows.append(dict(season=season or int(game['date'][:4]), round=game['round'], date=game['date'], venue=game['venue'],
                                  home_team=game['home'], away_team=game['away'], team=team, player=name,
                                  sub=1 if kind == 'sub' else '', named_pos=named_pos(kind, i)))
             continue
@@ -98,8 +99,7 @@ def check(df):
 
 if __name__ == '__main__':
     text = open(sys.argv[1]).read()
-    season = int(sys.argv[2]) if len(sys.argv) > 2 else int(re.search(r'\d{4}', text).group(0))
-    df = parse(text, season)
+    df = parse(text, int(sys.argv[2]) if len(sys.argv) > 2 else None)
     for p in check(df):
         print('CHECK:', p, file=sys.stderr)
     df.to_csv(sys.stdout, index=False)

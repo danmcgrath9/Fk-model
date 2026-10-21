@@ -35,6 +35,11 @@ def test_parse_positions_and_sub():
     assert TS.check(df) == ['Fremantle on 2027-03-20: 4 players named (expected 22, or 23 with the sub)']
 
 
+def test_season_comes_from_the_game_date_not_other_text():
+    df = TS.parse('# notes about 2026\n' + SHEET)
+    assert set(df.season) == {2027}
+
+
 def test_refuses_lines_before_a_game():
     with pytest.raises(ValueError):
         TS.parse('B: X, Y\n', 2027)
