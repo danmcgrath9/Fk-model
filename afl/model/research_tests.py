@@ -132,6 +132,34 @@ def spread_test(cache, rep):
     return res
 
 
+def position_test(cache, out_md):
+    """The team-sheet position (afl/model/named_position.py). Fryzigg stops at 2025, so: fit 2013-2022, tune 2023,
+    score 2024-2025. Appends to the report."""
+    from afl.model import named_position as NP
+    base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
+    rep = ['## The position on the team sheet', '',
+           'Named position (centre square, ruck, wing, back, forward, bench, sub) and how often he has lately been named in '
+           'the centre square. Fryzigg ends at 2025, so fitted 2013-2022, tuned 2023, scored 2024-2025.', '',
+           '| stat | matched | log-lik change | average miss change | kept |', '|---|---|---|---|---|']
+    kept = {}
+    for stat, label in STATS.items():
+        m, feats, _ = stat_matrix(base, cache, stat)
+        m = NP.attach(m, cache)
+        tr, tu, te = m[m.season.between(2013, 2022)], m[m.season == 2023], m[m.season.isin([2024, 2025])]
+        ll0, ae0 = score(tr, tu, te, feats, stat)
+        ll, ae = score(tr, tu, te, feats + NP.columns(), stat)
+        d, da = ll - ll0, ae - ae0
+        se = d.std() / np.sqrt(len(d))
+        kept[stat] = bool(d.mean() > 2 * se)
+        rep.append(f'| {label} | {te.named_pos.notna().mean():.0%} | {d.mean():+.4f} ± {se:.4f} | {da.mean():+.3f} ± {da.std() / np.sqrt(len(da)):.3f} | {"yes" if kept[stat] else "no"} |')
+        print(stat, 'named position', f'{d.mean():+.4f} ± {se:.4f}', flush=True)
+    open(out_md, 'a').write('\n'.join(rep) + '\n\n')
+    k = json.load(open(f'{cache}/research_kept.json'))
+    k['named_position'] = kept
+    json.dump(k, open(f'{cache}/research_kept.json', 'w'), indent=1)
+    print('\n'.join(rep))
+
+
 def run(cache, out_md):
     base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
     rep = ['# Research ideas, tested without bookmaker lines', '',
@@ -148,4 +176,7 @@ def run(cache, out_md):
 
 
 if __name__ == '__main__':
+    if len(sys.argv) > 3 and sys.argv[3] == 'positions':
+        position_test(sys.argv[1], sys.argv[2])
+        sys.exit()
     run(sys.argv[1] if len(sys.argv) > 1 else 'afl/cache', sys.argv[2] if len(sys.argv) > 2 else 'afl/docs/RESEARCH_TESTS.md')
