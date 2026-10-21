@@ -1,0 +1,51 @@
+{
+ "kicker": "First max bet ✓",
+ "horse": "Murshidi",
+ "meeting": "Geelong R5 · 3YO Geelong Classic",
+ "date": "Wed 21 Oct",
+ "stats": [
+  {
+   "v": "$11",
+   "k": "Our price"
+  },
+  {
+   "v": "$3.70",
+   "k": "Started"
+  },
+  {
+   "v": "5u",
+   "k": "Staked"
+  },
+  {
+   "v": "+50u",
+   "k": "Profit"
+  }
+ ],
+ "line": "Taken at <b>nearly 3x his starting price</b>. Get on before the market catches up.",
+ "also_title": "Today · Mornington",
+ "also": [
+  {
+   "race": 2,
+   "horse": "Party Benefits"
+  },
+  {
+   "race": 3,
+   "horse": "Grinding Away"
+  },
+  {
+   "race": 7,
+   "horse": "Cresta Crystal"
+  },
+  {
+   "race": 8,
+   "horse": "Russian Benefits"
+  }
+ ],
+ "silks": {
+  "body": "#f1e3bd",
+  "trim": "#1c2a63",
+  "sleeves": "#1c2a63",
+  "cap": "#1c2a63",
+  "star": "#ffffff"
+ }
+}
