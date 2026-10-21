@@ -1,7 +1,7 @@
 {
  "day": "Fri & Sat",
  "date": "23–24 October",
- "footer": "Prices at the open. Win bets.",
+ "footer": "Placed early. Win bets.",
  "meetings": [
   {"name": "Cranbourne", "note": "Friday", "bets": [
    {"race": 2, "horse": "Eye For An Eye", "price": "$22", "units": "0.95u"},
