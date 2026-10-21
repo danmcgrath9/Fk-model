@@ -33,7 +33,9 @@ ALIASES = {
     'Wests Tigers': 'Wests Tigers', 'Tigers': 'Wests Tigers', 'Warriors': 'Warriors',
 }
 LABEL = re.compile(r'^\s*(?:[A-Za-z .\-\']*?\s)?(' + '|'.join(sorted(map(re.escape, ALIASES), key=len, reverse=True))
-                   + r')\s*(?:\(squad\))?\s*:?\s*(.*)$')
+                   + r')\s*(?:\(squad\))?\s*:?\s*(.*)$', re.I)
+ALIAS_CI = {k.lower(): v for k, v in ALIASES.items()}
+STOP = re.compile(r'^(Referees?|Coach|Venue|Video|Touch|Sideline|Toyota|Bench referee|Play |Tickets|Broadcast|National Rugby League respects|Related)', re.I)
 ENTRY = re.compile(r'(?<![\d.])(\d{1,2})\s*[.)]?\s+([A-Z][^\d,;]*)')
 
 
@@ -45,7 +47,9 @@ def text_lines(html):
 
 
 def clean(name):
-    n = re.sub(r'\((?:c|cc|C|captain|vc)\)', '', name)
+    n = re.sub(r'[©®]|\[[^\]]*\]', '', name)
+    n = re.split(r'\.\s', n)[0]          # "Daniel Fitzhenry. MONDAY": the sentence after a name is not the name
+    n = re.sub(r'\((?:c|cc|C|captain|capt|vc)\)', '', n)
     n = re.sub(r'\(.*?\)', '', n)
     n = re.split(r'\b(?:Interchange|Reserves?|Coach|Bench|Replacement)\b', n)[0]
     return n.strip(' .:&-')
@@ -80,7 +84,10 @@ def parse_article(html):
         if m and (len(line) < 40 or ENTRY.search(m.group(2) or '') or (m.group(2) or '').count(',') >= 8) \
                 and ' v ' not in line:
             flush()
-            club, buf = ALIASES[m.group(1)], [m.group(2) or '']
+            club, buf = ALIAS_CI[m.group(1).lower()], [m.group(2) or '']
+        elif STOP.match(line):
+            flush()
+            club, buf = None, []
         elif ' v ' in line or ' vs ' in line:
             flush()
             club, buf = None, []
@@ -106,7 +113,8 @@ def main(cache, src):
         .merge(m[['match_id', 'season']], on='match_id')
     roster = pm.drop_duplicates(['season', 'team', 'player_id'])
     full = {(r.season, r.team, key(r.full_name)): r.player_id for r in roster.itertuples()}
-    last = roster.assign(k=roster.last_name.map(key)).groupby(['season', 'team', 'k']).player_id.agg(list)
+    roster = roster.assign(k=roster.last_name.map(key), f0=roster.full_name.map(key).str[:1])
+    last = roster.groupby(['season', 'team', 'k']).apply(lambda d: list(zip(d.player_id, d.f0)), include_groups=False)
     played = set(zip(pm.match_id, pm.player_id))
     rows = []
     for f in sorted(glob.glob(os.path.join(src, 'teamlists_*.jsonl.gz'))):
@@ -125,7 +133,9 @@ def main(cache, src):
                 pid = full.get((g.season, club, key(name)))
                 if pid is None:
                     cand = last.get((g.season, club, key(name.split()[-1])), [])
-                    pid = cand[0] if len(cand) == 1 else None
+                    if len(cand) > 1:   # shared surname at the club: settle it by first initial
+                        cand = [c for c in cand if c[1] == key(name)[:1]]
+                    pid = cand[0][0] if len(cand) == 1 else None
                 rows.append(dict(match_id=g.match_id, season=g.season, team=club, jersey=num, name=name,
                                  player_id=pid, kind=kind, url=a['url'], article_date=date))
     df = pd.DataFrame(rows)
