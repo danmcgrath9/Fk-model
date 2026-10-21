@@ -10,10 +10,10 @@ BetMatic orders. Paper only until the founder says otherwise.
 
 | Step | What | Status |
 |---|---|---|
-| 1. Inventory | every source, what it holds, terms, cost | in progress: see `docs/INVENTORY.md` |
+| 1. Inventory | every source, what it holds, terms, cost | done, see `docs/INVENTORY.md`; odds probe waits on the ODDS_API_KEY secret |
 | Data | uselessnrlstats (RLP, cleaned): every game and player-game 1998 to round 17 2026 | mirrored: 5,744 games, 194,905 player-games |
-| Data | Champion Data match-centre stats (run metres, tackles) via nrlR's endpoints | terms and a 3-request sample: `nrl sources` workflow |
-| Odds | The Odds API | capped probe (300 credits): `nrl lines` workflow |
+| Data | Champion Data match-centre stats (run metres, tackles, try times) 2014-2026 | sampled (3 requests); full pull waits on the founder's call on terms |
+| Odds | The Odds API | capped probe (300 credits) built; not run, the secret is empty |
 | 2-7 | data layer, team model, props, backtest, team-news test, paper season | not started |
 
 ## Running it
