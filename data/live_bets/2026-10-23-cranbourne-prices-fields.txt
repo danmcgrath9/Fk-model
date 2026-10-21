@@ -1,0 +1,86 @@
+# Cranbourne Fri 23 Oct 2026: final fields, emergencies SCR
+1, Angels Fury, 0, 0
+1, Lady Catalina, 0, 0
+1, Myhro's Ruler, 0, 0
+1, Senza Nome, 0, 0
+1, Super Wonder, 0, 0
+1, Fovea, 0, 0
+1, Handee, 0, 0
+2, Samuel Langhorne, 0, 0
+2, Flag Flyer, 0, 0
+2, Port Philip, 0, 0
+2, Covert Thinking, 0, 0
+2, Eye For An Eye, 0, 0
+2, Nothingelsematters, 0, 0
+2, Pariah Pearl, 0, 0
+2, Lauding, 0, 0
+2, Icaro, 0, 0
+2, Killenaule, 0, 0
+2, Superstock, 0, 0
+2, Sarapo, 0, 0
+2, Just Dance, SCR
+3, All Business, 0, 0
+3, Autumn Slide, 0, 0
+3, Lathlain, 0, 0
+3, Escarpa, 0, 0
+3, Karren, 0, 0
+3, Carriedo, 0, 0
+3, Tango Jewel, 0, 0
+3, She's Pretty Rich, 0, 0
+3, Shystar, 0, 0
+3, Bajaria, 0, 0
+3, Bon Fete, 0, 0
+4, Didn't Miss Many, 0, 0
+4, Romantic Encounter, 0, 0
+4, Dark Journey, 0, 0
+4, Itazura, 0, 0
+4, Mount Bona, 0, 0
+4, Regal Tycoon, 0, 0
+4, Cashout, 0, 0
+4, Shaalute, 0, 0
+4, Jewel Bay, 0, 0
+5, Regal Zeus, 0, 0
+5, Run Harry Run, 0, 0
+5, Ten Commandments, 0, 0
+5, Bossy Benita, 0, 0
+5, Miss Playlounge, 0, 0
+5, Moby Dick, 0, 0
+5, Umgawa, 0, 0
+5, Racey Casey, 0, 0
+6, You're Two Vain, 0, 0
+6, Castellar, 0, 0
+6, Saluted, 0, 0
+6, Speir, 0, 0
+6, Magnabelle Royale, 0, 0
+6, Arisphere, 0, 0
+6, Headbanger, 0, 0
+6, Room For Bingo, 0, 0
+6, Tennessee Spirit, 0, 0
+6, Fileeta, 0, 0
+6, Dragon Scroll, SCR
+6, Just Bolts, SCR
+7, Esmahli, 0, 0
+7, Charming Nic, 0, 0
+7, Imperial Award, 0, 0
+7, Nation State, 0, 0
+7, Interest Point, 0, 0
+7, Santa Ana Moon, 0, 0
+7, Shaime, 0, 0
+7, Insain Harry, 0, 0
+7, Onavuitton, 0, 0
+7, Warrior Within, 0, 0
+7, Sumo Sandy, 0, 0
+7, Ladhar, 0, 0
+7, Street Conqueror, SCR
+8, Virtuous Circle, 0, 0
+8, Makdane, 0, 0
+8, Nation's Call, 0, 0
+8, Flying Valley, 0, 0
+8, Oceana Dream, 0, 0
+8, Lim's Bighorn, 0, 0
+8, Two Wolves, 0, 0
+8, Wealdstone, 0, 0
+8, Geneva, 0, 0
+8, Stage 'n' Screen, 0, 0
+8, Houdini, 0, 0
+8, Glenfinnan, 0, 0

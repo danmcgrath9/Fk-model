@@ -1,0 +1,118 @@
+# Ballarat Fri 23 Oct 2026: final fields, emergencies SCR
+1, Charlotte's Web, 0, 0
+1, Contemplate Kate, 0, 0
+1, Hegely, 0, 0
+1, Kokeshi, 0, 0
+1, My Infinity, 0, 0
+1, Brookelinda, 0, 0
+1, Corsage, 0, 0
+1, Flash Inquiry, 0, 0
+1, Moon God, 0, 0
+1, Southern Sway, 0, 0
+1, With Benefits, 0, 0
+2, Affair D'or, 0, 0
+2, Anglais, 0, 0
+2, Chilly Sav, 0, 0
+2, Hurricane Girl, 0, 0
+2, Miss Capri, 0, 0
+2, Nialah, 0, 0
+2, Prolocutor, 0, 0
+2, Renaissance Girl, 0, 0
+2, Ruby From Zadar, 0, 0
+2, Scorching Beauty, 0, 0
+2, Vulcana, 0, 0
+3, Dame Of Dubai, 0, 0
+3, Hot Pot Dot, 0, 0
+3, Imminent Touch, 0, 0
+3, Latassa, 0, 0
+3, Moonlight Romance, 0, 0
+3, Open Fire, 0, 0
+3, Wavelets, 0, 0
+3, Endemic, 0, 0
+3, Enticement, 0, 0
+3, Fine And Sunny, 0, 0
+3, Noble Fox, 0, 0
+3, Pandie Pandie, 0, 0
+3, Smashing Success, 0, 0
+3, Star Je Taime, 0, 0
+3, Grandstraz, SCR
+4, Bogey Free, 0, 0
+4, Boy From Zadar, 0, 0
+4, Celestial Blue, 0, 0
+4, Meritorious, 0, 0
+4, Perfect Dismount, 0, 0
+4, Resonant, 0, 0
+4, All Eyes On Erin, 0, 0
+4, Celestaria, 0, 0
+4, Charmingly, 0, 0
+4, Engulf, 0, 0
+4, Sabrina, 0, 0
+4, Scoville, 0, 0
+4, Unkechaug, 0, 0
+5, Charming Chords, 0, 0
+5, Circus Circus, 0, 0
+5, Dextrose, 0, 0
+5, Heavy Is The Head, 0, 0
+5, Incoherent, 0, 0
+5, Pretty Stylish, 0, 0
+5, She's Loaded, 0, 0
+5, Some Chance, 0, 0
+5, Cirque De Coco, 0, 0
+5, Confidential Girl, 0, 0
+5, Kirkstone, 0, 0
+5, Nishioka, 0, 0
+5, Oceans Blue, 0, 0
+5, Vixen Vibes, 0, 0
+5, Chasing Atlantis, SCR
+5, I'lluvyoulongtime, SCR
+6, Divine Vicky, 0, 0
+6, Smart Little Miss, 0, 0
+6, Shipstern Bluff, 0, 0
+6, Sistine Tunnel, 0, 0
+6, Brave Carol, 0, 0
+6, Smoke Screen, 0, 0
+6, Immortal Justice, 0, 0
+6, Lagunanini, 0, 0
+6, Vivid Blooms, 0, 0
+6, Chapados, 0, 0
+7, Killiana, 0, 0
+7, Sharing Moments, 0, 0
+7, Du Clisson, 0, 0
+7, Arabella Star, 0, 0
+7, Catch It Kiss It, 0, 0
+7, Invincible Lover, 0, 0
+7, Skjaldmo, 0, 0
+7, Bel Lupa, 0, 0
+7, Bridgeitall, 0, 0
+7, Flying Straz, 0, 0
+7, Semantics, 0, 0
+8, Antalian, 0, 0
+8, Chantra, 0, 0
+8, Into You, 0, 0
+8, Lady Thinkabell, 0, 0
+8, Cushioned, 0, 0
+8, Jenni You Think, 0, 0
+8, Perfect Night, 0, 0
+8, Cliste, 0, 0
+8, Cheron Finale, 0, 0
+8, Epeiric, 0, 0
+8, Kiwi Jenni, 0, 0
+8, Billycart, 0, 0
+8, Designs Of Eight, 0, 0
+8, Koolatah Queen, 0, 0
+9, Princess Toro, 0, 0
+9, Invisible Magic, 0, 0
+9, Neziha, 0, 0
+9, Russian Duchess, 0, 0
+9, Billie Bronx, 0, 0
+9, M'lady Rose, 0, 0
+9, Jenni Poppins, 0, 0
+9, Luminary Miss, 0, 0
+9, Farakta, 0, 0
+9, Swycho, 0, 0
+9, Frosty Night, 0, 0
+9, Ostrica, 0, 0
+9, Crimson Miss, 0, 0
+9, Rose Of Shalaa, 0, 0
+9, Tauri, SCR
+9, Hidden Witness, SCR

@@ -125,11 +125,21 @@ def main():
         import numpy as np, drift_forecast
         FC = drift_forecast.Forecast(a.drift_dir); U = np.load(a.drift, allow_pickle=True)
         uc = {str(c): j for j, c in enumerate(U["cols"])}; miss = [c for c in FC.cols if c not in uc]
+        # a going-record column (f_goingForm_<band>_*) is only built when some runner in the meeting HAS a record on
+        # that band, and it is blank for every runner without one (97% blank in training for "fast"), so its absence
+        # means blank for the whole field (21 Oct 2026: no Ballarat runner had raced on a fast track). Anything else
+        # missing still stops.
+        blank = [c for c in miss if c.startswith("f_goingForm_")]; miss = [c for c in miss if c not in blank]
         if miss:
             sys.exit(f"STOP: the day file lacks {len(miss)} columns the drift model needs ({', '.join(miss[:5])}...)")
+        if blank:
+            print(f"drift model: {', '.join(blank)} absent from the day file (no runner has that going record), read as blank")
+        Xd = np.asarray(U["X"], np.float32)
+        Xd = np.concatenate([Xd, np.full((len(Xd), len(blank)), np.nan, np.float32)], 1) if blank else Xd
+        uc.update({c: Xd.shape[1] - len(blank) + k for k, c in enumerate(blank)})
         sel = [uc[c] for c in FC.cols]
         for i in range(len(U["name"])):
-            XR[(int(U["race_number"][U["race_idx"][i]]), nm(str(U["name"][i])))] = np.asarray(U["X"][i, sel], np.float32)
+            XR[(int(U["race_number"][U["race_idx"][i]]), nm(str(U["name"][i])))] = Xd[i, sel]
         print(("orders priced on the 13 Oct blend with the open (--no-blend)" if a.no_blend else
                f"orders priced on the forecast-BSP blend: chance = p^{BLEND_W:g} x forecast BSP chance^{1 - BLEND_W:g}"))
         print(f"firm/drift stakes: drift third x{drift_forecast.DRIFT_MULT:g}, firm third x{drift_forecast.FIRM_MULT:g} "
