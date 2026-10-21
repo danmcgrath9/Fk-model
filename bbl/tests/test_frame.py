@@ -132,3 +132,17 @@ def test_unplayed_games_are_not_observations():
     # so check the ground's game count rather than its average)
     assert (t1[t1.match_id == 'f0'].venue_games > 0).all()
     assert t1[t1.match_id == 'f1'].venue_games.tolist() == t1[t1.match_id == 'f0'].venue_games.tolist()
+
+
+@pytest.mark.skipif(not os.path.exists(os.path.join(CACHE, 't20_deliveries.parquet')), reason='no bbl/cache/parquet')
+def test_real_data_a_bbl_games_own_result_never_reaches_its_features():
+    """The tamper test on the real pull: every T20 match from June 2024 to February 2025, a mid-season BBL game."""
+    m = pd.read_parquet(os.path.join(CACHE, 't20_matches.parquet'))
+    m = m[(m.start_date >= '2024-06-01') & (m.start_date <= '2025-02-15')]
+    ids = set(m.match_id)
+    pl = pd.read_parquet(os.path.join(CACHE, 't20_players.parquet'))
+    dl = pd.read_parquet(os.path.join(CACHE, 't20_deliveries.parquet'))
+    inn = pd.read_parquet(os.path.join(CACHE, 't20_innings.parquet'))
+    pl, dl, inn = pl[pl.match_id.isin(ids)], dl[dl.match_id.isin(ids)], inn[inn.match_id.isin(ids)]
+    bbl = m[(m.competition == frame.BBL) & (m.season == '2024/25')].sort_values('start_date')
+    check(m, pl, dl, inn, bbl.match_id.iloc[len(bbl) // 2], later_n=40)

@@ -67,33 +67,44 @@ def _fit_reg(train, feats, y):
     return m
 
 
+OUT_COLS = ['match_id', 'dt', 'season', 'comp', 'team', 'team_key', 'player', 'pid', 'did_bat', 'bat_runs', 'bat_6s',
+            'did_bowl', 'bowl_wkts', 'bat_pos', 'pre_pos_ewm', 'pre_runs_pg', 'list_order']
+
+
+def fit_models(train):
+    """Every prop model, fitted on the given player-games (club T20, one gender, all before the games to price)."""
+    bf, wf = BAT + CTX, BOWL + CTX
+    tb = train[train.did_bat == 1]
+    tw = train[train.did_bowl == 1]
+    m = dict(bat=_fit_cls(train, bf, train.did_bat), runs=_fit_reg(tb, bf, tb.bat_runs), six=_fit_reg(tb, bf, tb.bat_6s),
+             bowl=_fit_cls(train, wf, train.did_bowl), wkts=_fit_reg(tw, wf, tw.bowl_wkts))
+    tb_mu, tb_band = m['runs'].predict(tb[bf]), band(tb.pre_pos_ewm)
+    m['r_runs'] = {k: fit_r(tb.bat_runs[tb_band == k], tb_mu[tb_band == k]) for k in range(len(POS_BANDS))}
+    m['r_6s'] = fit_r(tb.bat_6s, m['six'].predict(tb[bf]))
+    m['r_wkts'] = fit_r(tw.bowl_wkts, m['wkts'].predict(tw[wf]))
+    return m
+
+
+def apply_models(m, test):
+    bf, wf = BAT + CTX, BOWL + CTX
+    out = test[[c for c in OUT_COLS if c in test]].copy()
+    out['p_bat'] = m['bat'].predict_proba(test[bf])[:, 1]
+    out['mu_runs'] = m['runs'].predict(test[bf])
+    out['r_runs'] = [m['r_runs'][k] for k in band(test.pre_pos_ewm)]
+    out['mu_6s'] = m['six'].predict(test[bf])
+    out['r_6s'] = m['r_6s']
+    out['p_bowl'] = m['bowl'].predict_proba(test[wf])[:, 1]
+    out['mu_wkts'] = m['wkts'].predict(test[wf])
+    out['r_wkts'] = m['r_wkts']
+    return out
+
+
 def predict_season(g, gender, comp, season):
     test = g[(g.comp == comp) & (g.season == season)]
     if test.empty:
         return None
     train = g[(g.gender == gender) & (g.team_type == 'club') & (g.dt < test.dt.min())]
-    out = test[['match_id', 'dt', 'season', 'comp', 'team', 'team_key', 'player', 'pid', 'did_bat', 'bat_runs', 'bat_6s',
-                'did_bowl', 'bowl_wkts', 'bat_pos', 'pre_pos_ewm', 'pre_runs_pg', 'list_order']].copy()
-    bf, wf = BAT + CTX, BOWL + CTX
-    # runs and sixes
-    out['p_bat'] = _fit_cls(train, bf, train.did_bat).predict_proba(test[bf])[:, 1]
-    tb = train[train.did_bat == 1]
-    m_runs = _fit_reg(tb, bf, tb.bat_runs)
-    out['mu_runs'] = m_runs.predict(test[bf])
-    tb_mu = m_runs.predict(tb[bf])
-    tb_band, out_band = band(tb.pre_pos_ewm), band(test.pre_pos_ewm)
-    r_band = {k: fit_r(tb.bat_runs[tb_band == k], tb_mu[tb_band == k]) for k in range(len(POS_BANDS))}
-    out['r_runs'] = [r_band[k] for k in out_band]
-    m6 = _fit_reg(tb, bf, tb.bat_6s)
-    out['mu_6s'] = m6.predict(test[bf])
-    out['r_6s'] = fit_r(tb.bat_6s, m6.predict(tb[bf]))
-    # wickets
-    out['p_bowl'] = _fit_cls(train, wf, train.did_bowl).predict_proba(test[wf])[:, 1]
-    tw = train[train.did_bowl == 1]
-    mw = _fit_reg(tw, wf, tw.bowl_wkts)
-    out['mu_wkts'] = mw.predict(test[wf])
-    out['r_wkts'] = fit_r(tw.bowl_wkts, mw.predict(tw[wf]))
-    return out
+    return apply_models(fit_models(train), test)
 
 
 def recalibrate(p):

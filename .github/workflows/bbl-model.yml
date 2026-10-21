@@ -1,0 +1,71 @@
+name: bbl model
+
+# BBL / WBBL models (bbl/README.md): game tables, team model, player props, stand-in backtest. Reads the
+# Cricsheet parquet the bbl data workflow put on the bbl-history release and writes the frames, the
+# predictions and the reports (TEAM.md, PROPS.md) back to it. Makes no request to any outside site.
+# The 2025/26 season stays held back unless dispatched with final=yes. Separate from every fk-*, nba-*
+# and afl-* workflow: its own concurrency group, no secrets beyond the repository token.
+
+on:
+  workflow_dispatch:
+    inputs:
+      final:
+        description: 'yes = score the held-back 2025/26 season (once, when every choice is frozen)'
+        default: 'no'
+  push:
+    branches: [bbl-model]
+    paths:
+      - 'bbl/model/**'
+      - 'bbl/tests/**'
+      - '.github/workflows/bbl-model.yml'
+
+concurrency:
+  group: bbl-model
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      FINAL: ${{ github.event.inputs.final == 'yes' && '1' || '0' }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r bbl/requirements.txt
+
+      - name: Fetch the Cricsheet tables from the release
+        run: |
+          mkdir -p bbl/cache/parquet
+          for f in t20_matches t20_players t20_innings t20_deliveries t20_powerplays t20_replacements people; do
+            gh release download bbl-history --dir bbl/cache/parquet --pattern "$f.parquet" --clobber
+          done
+          ls -la bbl/cache/parquet
+
+      - name: Tests (the leakage tests run on the real data here)
+        run: python -m pytest -q bbl/tests
+
+      - name: Build and report
+        run: |
+          set -o pipefail
+          python -m bbl.model.frame bbl/cache/parquet | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m bbl.model.team bbl/cache/parquet | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m bbl.model.props bbl/cache/parquet | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m bbl.model.backtest bbl/cache/parquet | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload
+        run: |
+          for f in player_frame team_frame team_preds props_preds; do
+            ok=no
+            for i in 1 2 3; do gh release upload bbl-history "bbl/cache/parquet/$f.parquet" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
+            [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }
+          done
+          gh release upload bbl-history bbl/cache/parquet/TEAM.md bbl/cache/parquet/PROPS.md --clobber
