@@ -26,6 +26,8 @@ Running total: settles Wednesday 21 Oct.
 Paper to 18 Oct (forward test, the stakes as sent): 61 bets, 14 won, 64.50u staked, +72.05u, ROI +112%.
 Echuca 19 Oct (opening bets, paper because the market opened before going live): 4 bets, 2 won, 3.85u staked, +17.39u, ROI +452%. Price taken after deductions against BSP: 1.64x on average (Mickio $7.18 v $3.00, Lim's Ida $19.25 v $13.84, Wozza $9.10 v $4.93, Prestige Fantastic $21.50 v $23).
 Paper to 19 Oct: 65 bets, 16 won, 68.35u staked, +89.44u, ROI +131%.
+Kyneton 20 Oct (settled 21 Oct at the POSTED stakes, not the firm/drift ones): 4 bets (Sabrina scratched), 2 won, 6.77u staked, +7.88u, ROI +116%. Price taken after deductions against BSP: Tuzemak $3.43 v $1.81, Bourne Legacy $2.92 v $2.74, Bliss Bomb $4.65 v $2.80; Biratu pending (Form King has no R7 results yet, re-pulled 21 Oct, still empty).
+Paper to 20 Oct: 69 bets, 18 won, 75.12u staked, +97.32u, ROI +130%. Beat BSP on 21 of 27 bets with a BSP, 1.57x BSP on average.
 
 Each meeting run as if the pre-open order file (betmatic_orders.py) had fired: orders fill at Form King's opening price
 when it is at or over their minimum odds; settled with scratching deductions. See the BetMatic standard in
@@ -67,6 +69,11 @@ TIPPING_RULES.md.
 | 2026-10-19 Echuca (G4) | R5 | Mickio | open | $7.50 ($7.18 after 5c ded.) | 1.86u | WON (SP $2.80, BSP $3.00) | +11.49 |
 | 2026-10-19 Echuca (G4) | R6 | Lim's Ida | open | $26.00 ($19.25 after 27c ded.) | 0.41u | WON (SP $9, BSP $13.84) | +7.48 |
 | 2026-10-19 Echuca (G4) | R7 | Here Comes Wozza | open | $11.00 ($9.10 after 19c ded.) | 1.11u | 9th, SP $4, BSP $4.93 | -1.11 |
+| 2026-10-20 Kyneton (G3.5) | R1 | Tuzemak | posted | $3.50 ($3.43 after 3c ded.) | 2.50u | WON (SP $1.65, BSP $1.81) | +6.08 |
+| 2026-10-20 Kyneton (G3.5) | R3 | Bourne Legacy | posted | $3.40 ($2.92 after 20c ded.) | 2.15u | 2nd, SP $2.70, BSP $2.74. Flagged: against the race first-starter rule | -2.15 |
+| 2026-10-20 Kyneton (G3.5) | R3 | Sabrina | posted | $26.00 | 0.52u | scratched, refunded | 0.00 |
+| 2026-10-20 Kyneton (G3.5) | R4 | Bliss Bomb | posted | $6.00 ($4.65 after 27c ded.) | 1.46u | 2nd, SP $2.60, BSP $2.80 | -1.46 |
+| 2026-10-20 Kyneton (G3.5) | R7 | Biratu | posted | $11.00 ($9.20 after 18c ded.) | 0.66u | WON (founder); SP and BSP not yet in Form King, R7 unresulted on 21 Oct | +5.41 |
 
 Order files (data/live_bets/DAYPREFIX-betmatic-preopen.csv) rebuilt 14 Oct with the 8-step staking (each step sized at the
 next step's price, t_betmatic_tiers.py: +18% profit on the holdout over the first 3-step version), from the model's own

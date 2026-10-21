@@ -11,7 +11,7 @@
    "k": "Winners"
   },
   {
-   "v": "18 / 24",
+   "v": "21 / 27",
    "k": "Beat BSP"
   }
  ],
@@ -50,7 +50,7 @@
    "won": 2,
    "staked": "6.8u",
    "profit": "+7.9u",
-   "bsp": "\u2013"
+   "bsp": "3 / 3"
   },
   {
    "day": "Total",
@@ -59,10 +59,10 @@
    "won": 9,
    "staked": "32.3u",
    "profit": "+59.9u",
-   "bsp": "18 / 24",
+   "bsp": "21 / 27",
    "total": true
   }
  ],
- "note": "+185% won't last. What will: our price beat <b>BSP on 18 of 24</b> bets, on average <b>1.57x BSP</b>. Kyneton's BSP isn't in yet.",
+ "note": "+185% won't last. What will: our price beat <b>BSP on 21 of 27</b> bets, on average <b>1.57x BSP</b>. Biratu's BSP isn't in yet (Form King hasn't resulted Kyneton R7).",
  "footer": "Win bets at posted prices, after deductions."
 }
