@@ -21,7 +21,7 @@ import requests
 
 OUT = os.environ.get('OUT', 'nrl/cache/sources')
 UA = os.environ.get('NRL_UA', 'fk-model NRL research')
-PAUSE = 3
+PAUSE = float(os.environ.get("PAUSE", "3"))
 
 SITES = {
     'Rugby League Project': ('https://www.rugbyleagueproject.org',
@@ -69,6 +69,7 @@ def slug(url):
 
 
 def check_site(name, base, paths):
+    global report
     report.extend([f'## {name}', ''])
     rp = urllib.robotparser.RobotFileParser()
     r = fetch(base + '/robots.txt')
@@ -101,6 +102,7 @@ def check_site(name, base, paths):
 
 
 def champion_data_sample(rp):
+    global report
     report.extend(['## Champion Data match-centre feed: what it holds (3-request sample)', ''])
     base = 'https://mc.championdata.com/data'
     if rp is not None and not rp.can_fetch(UA, base + '/competitions.json'):
