@@ -1,0 +1,43 @@
+name: nba positions pull
+
+# NBA only. Six requests to the NBA's player index (nba_api), committed to nba/players/.
+# Own concurrency group, so it never queues behind or blocks the fk-* racing workflows.
+# Runs when nba/players/request.json changes on this branch, or by hand.
+
+on:
+  push:
+    branches: [claude/nba-props]
+    paths: ['nba/players/request.json']
+  workflow_dispatch:
+
+concurrency:
+  group: nba-positions-pull
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install nba_api==1.11.4
+      - name: Pull
+        run: python nba/pull_positions.py
+      - name: Commit what came back
+        if: always()
+        run: |
+          git config user.name "nba positions pull"
+          git config user.email "actions@users.noreply.github.com"
+          git add nba/players || true
+          git diff --cached --quiet && { echo "nothing new"; exit 0; }
+          git commit -m "NBA: listed positions from the NBA player index (workflow run ${{ github.run_id }})"
+          for i in 1 2 3; do git pull --rebase -q origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0; sleep 5; done
+          exit 1

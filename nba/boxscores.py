@@ -189,25 +189,34 @@ def box_for_game(g: pd.DataFrame) -> pd.DataFrame:
     return out.drop(columns=["pointsTotal", "reboundTotal", "assistTotal"])
 
 
-def build_season(csv: Path) -> pd.DataFrame:
+GAME_TYPES = {"2": "regular", "4": "playoffs", "5": "play-in"}   # third digit of the game id
+
+
+def build_season(csv: Path, types: tuple[str, ...] = ("2",)) -> pd.DataFrame:
     df = pd.read_csv(csv, usecols=COLS, low_memory=False)
     for c in ["personId", "teamId", "assistPersonId", "pointsTotal", "reboundTotal", "assistTotal"]:
         df[c] = pd.to_numeric(df[c], errors="coerce").fillna(0)
-    # Regular season only (game id 2YY...). Playoffs are a different rotation game.
-    df = df[df.gameId.astype(str).str.zfill(10).str[2] == "2"]
-    parts = [box_for_game(g) for _, g in df.groupby("gameId", sort=True)]
+    # Regular season by default (game id 2YY...); playoffs are a different rotation game
+    # and are built separately (python nba/boxscores.py --playoffs).
+    gtype = df.gameId.astype(str).str.zfill(10).str[2]
+    df = df.assign(game_type=gtype.map(GAME_TYPES))[gtype.isin(types)]
+    parts = [box_for_game(g).assign(game_type=g.game_type.iloc[0]) for _, g in df.groupby("gameId", sort=True)]
     box = pd.concat(parts, ignore_index=True)
     box["season"] = int(re.search(r"(\d{4})", csv.name).group(1))
     return box
 
 
 def main(argv: list[str]) -> None:
+    playoffs = "--playoffs" in argv
+    pattern = r"cdnnba_po_\d{4}\.csv" if playoffs else r"cdnnba_\d{4}\.csv"
     files = sorted((DATA / "raw").glob("cdnnba_*.csv"))
-    files = [f for f in files if re.fullmatch(r"cdnnba_\d{4}\.csv", f.name)]
-    seasons = [build_season(f) for f in files]
+    files = [f for f in files if re.fullmatch(pattern, f.name)]
+    seasons = [build_season(f, ("4", "5") if playoffs else ("2",)) for f in files]
     box = pd.concat(seasons, ignore_index=True)
     box = box[box["min"] > 0].copy()          # appeared on the floor
-    box.to_parquet(DATA / "box.parquet", index=False)
+    box.to_parquet(DATA / ("box_playoffs.parquet" if playoffs else "box.parquet"), index=False)
+    if playoffs:
+        print(box.drop_duplicates("gameId").groupby(["season", "game_type"]).size().to_string())
     games = box.drop_duplicates("gameId")
     print(f"{len(box):,} player-games from {len(games):,} games, seasons {sorted(box.season.unique())}")
     for col in ["minutes_ok", "points_ok", "game_ok"]:
