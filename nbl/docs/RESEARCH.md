@@ -57,13 +57,27 @@ his usual points, rebounds, assists and shots, shared in proportion to each play
 Looking back 1, 3 and 6 games: no change beyond the fourth decimal in any market. Likely reason: recent
 minutes already carry it (when a teammate is out, the others' minutes go up, and the minutes model sees it).
 
-### 5. Knowing the starters: the biggest gain found
+### 5. Knowing the starters: the biggest gain found (with knowing the squad, experiment 7)
 Adding who starts (announced shortly before the tip, after books post props) to the minutes and prop
 models: minutes miss 4.25 to 4.18; log score better in every market but threes (PRA -3.390 to -3.377,
 rebounds -2.161 to -2.154 on the confirm seasons). **An angle: re-price after starting fives are announced.**
 Not built: no source for starting fives before the tip has been found; the NBL app shows them.
 
-### 6. Team model: nothing beat the current one
+### 6. Kalman filter for each rate (DARKO): rejected
+`research/kalman_rates.py`. A drifting true rate per player and stat, game weight growing with minutes, extra
+drift over the off-season. Against the adopted per-stat decay, error on the confirm seasons changed by 0.02% to
+0.36%, with the best settings at the edge of the search. Not worth the complexity: rate estimation is
+saturated with this data.
+
+### 7. What the backtest assumes about team news
+The prop models use who dressed for the game (the named squad: teammates out, the squad's usual minutes).
+Taking that away (only last game's squad known): minutes miss 4.25 to 4.34, log score worse in every market
+(points -3.107 to -3.113, assists -1.630 to -1.631, confirm seasons). Against the naive stand-in book the
+returns barely move (points +13.9% to +11.7%, PRA +12.9% to +14.3%), because that book ignores team news too;
+a real book does not. **So: bet props after the squads are named, and re-run the price sheet then.** Starting
+fives (experiment 5) are worth about as much again.
+
+### 8. Team model: nothing beat the current one
 `research/team_experiments.py` (rolling 2018-19 to 2022-23, then 2023-24 and 2024-25, log loss):
 
 | features | rolling | confirm |
@@ -82,7 +96,7 @@ starting fives, the market itself).
 1. Recorded lines: the only test that matters. Then blend our number with the market's and measure closing line value.
 2. Starting fives at tip, if a source exists: the largest measured gain.
 3. Points by simulation of shots, in the pricing.
-4. A Kalman-style projection of each rate (DARKO) to replace the plain decay, and a boosted model on top.
+4. Tried and set aside: Kalman rates, usage redistribution, adjusted efficiency, early-season weights.
 
 ## Sources
 - DARKO, What is DARKO: https://www.darko.app/about
