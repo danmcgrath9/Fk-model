@@ -41,7 +41,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install pandas pyarrow pytest
+      - run: pip install -r bbl/requirements.txt
 
       - name: Tests first
         run: python -m pytest -q bbl/tests
