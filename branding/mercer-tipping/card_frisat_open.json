@@ -4,16 +4,16 @@
  "footer": "Placed early. Win bets.",
  "meetings": [
   {"name": "Cranbourne", "note": "Friday", "bets": [
-   {"race": 2, "horse": "Eye For An Eye", "price": "$22", "units": "0.95u"},
-   {"race": 2, "horse": "Superstock", "price": "$17.50", "units": "1.24u"},
-   {"race": 6, "horse": "Castellar", "price": "$16.50", "units": "0.35u"}]},
+   {"race": 2, "horse": "Eye For An Eye", "price": "$23", "rated": "$13.22", "units": "0.95u"},
+   {"race": 2, "horse": "Superstock", "price": "$15", "rated": "$10.39", "units": "0.98u"},
+   {"race": 6, "horse": "Castellar", "price": "$17", "rated": "$12.41", "units": "0.35u"}]},
   {"name": "Flemington", "note": "Saturday", "bets": [
-   {"race": 1, "horse": "Ice Kool", "price": "$2.80", "units": "2u"},
-   {"race": 2, "horse": "Turbo Saint", "price": "$18", "units": "0.26u"},
-   {"race": 6, "horse": "Surfin' Bird", "price": "$4.40", "units": "3.6u"},
-   {"race": 7, "horse": "Aethelwulf", "price": "$8.50", "units": "3.85u"},
-   {"race": 8, "horse": "Cosmic Crusader", "price": "$11", "units": "2u"},
-   {"race": 9, "horse": "Classic Gem", "price": "$13.50", "units": "1.3u"},
-   {"race": 9, "horse": "Shockletz", "price": "$10", "units": "0.4u"}]}
+   {"race": 1, "horse": "Ice Kool", "price": "$2.80", "rated": "$2.27", "units": "2u"},
+   {"race": 2, "horse": "Turbo Saint", "price": "$18", "rated": "$12.30", "units": "0.26u"},
+   {"race": 6, "horse": "Surfin' Bird", "price": "$4.40", "rated": "$2.75", "units": "3.6u"},
+   {"race": 7, "horse": "Aethelwulf", "price": "$8.50", "rated": "$3.24", "units": "3.85u"},
+   {"race": 8, "horse": "Cosmic Crusader", "price": "$11", "rated": "$5.58", "units": "2u"},
+   {"race": 9, "horse": "Classic Gem", "price": "$9", "rated": "$7.33", "units": "0.44u"},
+   {"race": 9, "horse": "Shockletz", "price": "$10", "rated": "$8.10", "units": "0.4u"}]}
  ]
 }
