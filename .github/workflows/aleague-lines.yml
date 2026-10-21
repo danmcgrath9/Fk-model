@@ -1,0 +1,57 @@
+name: aleague lines
+
+# A-League Men betting lines from The Odds API (aleague/README.md). Probe first: a capped look at
+# what the archive holds, run once. The raw responses go to the aleague-history release; PROBE.md is
+# printed to the log and the run page. Separate from every fk-*, nba-* and afl-* workflow: its own
+# concurrency group, no Form King key, no BetMatic. The key lives only in the ODDS_API_KEY secret.
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_credits:
+        description: 'stop before spending more than this many credits'
+        default: '300'
+  push:
+    branches: [aleague-model]
+    paths:
+      - 'aleague/lines/**'
+      - '.github/workflows/aleague-lines.yml'
+
+concurrency:
+  group: aleague-lines
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+      MAX_CREDITS: ${{ github.event.inputs.max_credits || '300' }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+
+      - name: Run the probe once
+        run: |
+          gh release view aleague-history >/dev/null 2>&1 || gh release create aleague-history --target main --latest=false \
+            --title "A-League Men history" --notes "A-League Men data (aleague/README.md). Written by the aleague-* workflows; do not delete." || true
+          # a re-push must not spend again: the probe's results on the release mean it has run
+          if gh release view aleague-history --json assets --jq '.assets[].name' | grep -qx 'odds_probe_v1.tar.gz'; then
+            echo "probe v1 already on the release; not spending credits again" | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          [ -n "$ODDS_API_KEY" ] || { echo "ODDS_API_KEY secret is not set"; exit 1; }
+          set -o pipefail
+          python aleague/lines/probe.py
+          tar czf odds_probe_v1.tar.gz -C aleague/cache odds_probe
+          gh release upload aleague-history odds_probe_v1.tar.gz --clobber
