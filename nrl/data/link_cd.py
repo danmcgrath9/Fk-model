@@ -8,6 +8,7 @@ Champion Data games RLP does not hold yet (from round 18 2026) are written in RL
 model reads one history:
   matches_cd.parquet, player_matches_cd.parquet  appended by team_frame.load()
   cd_links.parquet                               cd player id -> RLP player id, with agreement
+  cd_game_link.parquet                           cd game id -> RLP game id (negative: a game only Champion Data holds)
   named_reserves.parquet                         players listed by Champion Data who never took the field
 
 Usage: python nrl/data/link_cd.py nrl/cache
@@ -48,6 +49,9 @@ def main(cache):
             link.loc[link.cd_match_id.isin(hit.cd_match_id), 'match_id'] = link.cd_match_id.map(dict(zip(hit.cd_match_id, hit.match_id)))
             miss = link.match_id.isna()
     rlp_seasons = set(m.season)
+    gl = link[['cd_match_id', 'match_id']].copy()
+    gl['match_id'] = gl.match_id.fillna(-gl.cd_match_id).astype('int64')
+    gl.to_parquet(f'{cache}/cd_game_link.parquet', index=False)
     print(f'games: {len(link):,} Champion Data games, {link.match_id.notna().sum():,} linked to RLP; '
           f'unlinked by season: {link[link.match_id.isna()].season.value_counts().sort_index().to_dict()}')
 

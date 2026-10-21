@@ -7,6 +7,7 @@ article per season so the parser can be written against real pages. One request 
 
 Writes nrl/cache/teamlists_probe/: urls.txt, sample_<season>.html, PROBE.md
 """
+import gzip
 import os
 import re
 import time
@@ -50,8 +51,9 @@ def main():
         if r is None or r.status_code != 200:
             report.append(f'- {url}: {getattr(r, "status_code", "error")}')
             continue
-        locs = re.findall(r'<loc>\s*([^<\s]+)\s*</loc>', r.text)
-        if '<sitemapindex' in r.text:
+        body = gzip.decompress(r.content).decode('utf-8', 'replace') if r.content[:2] == b'\x1f\x8b' else r.text
+        locs = re.findall(r'<loc>\s*([^<\s]+)\s*</loc>', body)
+        if '<sitemapindex' in body:
             kinds['index'] += 1
             # newest first is the order NRL.com uses; keep every child, prefer ones that look like news
             news = [l for l in locs if re.search(r'news|article|20\d\d', l, re.I)]
@@ -61,6 +63,7 @@ def main():
         else:
             kinds['urlset'] += 1
             hits = [l for l in locs if LIST.search(l)]
+            report.append(f'- {url}: {len(locs):,} URLs, {len(hits)} team-list-like')
             found.update(hits)
     report.append(f'\nFetched {fetched} sitemap files ({dict(kinds)}); {len(found)} team-list-like URLs.\n')
     by_season = defaultdict(list)

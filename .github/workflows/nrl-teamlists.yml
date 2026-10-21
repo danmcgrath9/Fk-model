@@ -36,9 +36,9 @@ jobs:
       - run: pip install requests
       - name: Probe once
         run: |
-          if gh release view nrl-history --json assets --jq '.assets[].name' | grep -qx 'teamlists_probe_v1.tar.gz'; then
+          if gh release view nrl-history --json assets --jq '.assets[].name' | grep -qx 'teamlists_probe_v2.tar.gz'; then
             echo "probe v1 already on the release" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0
           fi
           python nrl/teamlists/probe.py
-          tar czf teamlists_probe_v1.tar.gz -C nrl/cache teamlists_probe
-          gh release upload nrl-history teamlists_probe_v1.tar.gz --clobber
+          tar czf teamlists_probe_v2.tar.gz -C nrl/cache teamlists_probe
+          gh release upload nrl-history teamlists_probe_v2.tar.gz --clobber
