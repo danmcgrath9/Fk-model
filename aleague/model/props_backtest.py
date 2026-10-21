@@ -12,6 +12,13 @@ shrunk towards the league rate with the weight of PRIOR_90S full matches:
   carded   P = 1 - exp(-rate90 x expected minutes / 90 x referee factor)
            (referee factor = his earlier cards per match over the league's, shrunk)
 
+Settings locked on 2016-17 to 2020-21 (the props test seasons are 2021-22 onwards, never looked at):
+  scorer   the model's team multiplier is the match xG over the player's OWN team's recent average xG
+           (his rate already reflects his team), then a 50/50 geometric blend with his raw goals per
+           appearance (log loss on 2016-21: model 0.2674, raw 0.2678, blend 0.2648)
+  carded   yellow or red; NO referee factor (it did not help at any shrinkage on 2016-21, against the
+           literature's expectation), then a 70/30 blend with the raw rate (0.4068 -> 0.4049)
+
 Compared with what a lazy book could do: each player's raw goals (or cards) per appearance to date,
 and a flat league rate per start / per bench appearance. Scored by log loss, with 90% intervals by
 week, plus calibration. No odds yet, so this is not a profit test.
@@ -30,6 +37,8 @@ from aleague.model.team import rolling_predictions
 
 HALF_LIFE = 20          # matches
 PRIOR_90S = {'goal': 6.0, 'yellow': 6.0}
+DEV = [2017, 2018, 2019, 2020, 2021]
+TEST = [2022, 2023, 2024, 2025, 2026, 2027]
 REF_PRIOR = 20.0        # matches of league average behind each referee
 SETTINGS = os.path.join(os.path.dirname(__file__), 'settings.json')
 EPS = 1e-9
@@ -76,7 +85,9 @@ def main(tables, report):
     pg = pd.read_parquet(f'{tables}/player_games.parquet')
     pg = pg[pg.match_id.notna()].copy()
     pg['goal'] = pg.goal.clip(upper=5)
-    pg = decayed_history(pg, ['goal', 'yellow'])
+    pg['carded_n'] = pg.yellow + pg.red
+    pg = decayed_history(pg, ['goal', 'carded_n'])
+    pg['h_yellow'] = pg.h_carded_n
     m = pd.read_parquet(f'{tables}/matches.parquet')
     s = json.load(open(SETTINGS))
     seasons = sorted(pg.season.unique())
@@ -102,17 +113,28 @@ def main(tables, report):
         k = PRIOR_90S[c]
         pg[f'rate90_{c}'] = (pg[f'h_{c}'] + pg[prior] * k) / (pg.h_minutes / 90 + k)
     gk = pg.gk.to_numpy()
-    lam_goal = pg.rate90_goal * pg.exp_min / 90 * pg.team_xg / pg.xg
-    lam_card = pg.rate90_yellow * pg.exp_min / 90 * pg.ref_factor
-    pg['p_goal'] = np.where(gk, 0.002, 1 - np.exp(-lam_goal))
-    pg['p_card'] = 1 - np.exp(-lam_card)
+    tmx = pg.drop_duplicates(['match_id', 'team'])[['match_id', 'team', 'date', 'team_xg']].sort_values('date')
+    tmx['team_avg_xg'] = tmx.groupby('team').team_xg.transform(lambda x: x.shift(1).ewm(halflife=20, min_periods=1).mean())
+    pg = pg.merge(tmx[['match_id', 'team', 'team_avg_xg']], on=['match_id', 'team'], how='left')
+    pg['team_avg_xg'] = pg.team_avg_xg.fillna(pg.xg)
+    gk = pg.gk.to_numpy()
+    lam_goal = pg.rate90_goal * pg.exp_min / 90 * pg.team_xg / pg.team_avg_xg
+    lam_card = pg.rate90_yellow * pg.exp_min / 90
+    pg['p_goal_model'] = np.where(gk, 0.002, 1 - np.exp(-lam_goal))
+    pg['p_card_model'] = 1 - np.exp(-lam_card)
 
     # lazy books: raw per-appearance rate to date (no shrinkage, no minutes), and a flat rate by role
     raw_g = (pg.h_goal + 0.5) / (pg.h_apps + 5)
     raw_y = (pg.h_yellow + 0.5) / (pg.h_apps + 5)
     pg['p_goal_raw'] = np.where(gk, 0.002, 1 - np.exp(-raw_g))
     pg['p_card_raw'] = 1 - np.exp(-raw_y)
-    role = pg.groupby(['season', 'starter']).agg(gr=('goal', lambda x: (x > 0).mean()), yr=('yellow', lambda x: (x > 0).mean()))
+
+    def blend(a, b, w):
+        return np.exp(w * np.log(np.clip(a, EPS, 1)) + (1 - w) * np.log(np.clip(b, EPS, 1)))
+    pg['p_goal'] = blend(pg.p_goal_model, pg.p_goal_raw, 0.5)
+    pg['p_card'] = blend(pg.p_card_model, pg.p_card_raw, 0.7)
+    pg['carded'] = ((pg.yellow > 0) | (pg.red > 0)).astype(int)
+    role = pg.groupby(['season', 'starter']).agg(gr=('goal', lambda x: (x > 0).mean()), yr=('carded', 'mean'))
     role = role.groupby(level='starter').shift(1).reset_index()  # the previous season's rate for the role
     pg = pg.merge(role, on=['season', 'starter'], how='left').dropna(subset=['gr'])
     pg['p_goal_flat'] = np.where(pg.gk, 0.002, pg.gr)
@@ -124,7 +146,7 @@ def main(tables, report):
              'a named player who never came on is left out (a void bet at most books). Every rate from earlier '
              'matches only. Log loss, lower is better; differences with 90% intervals resampling weeks.', '']
     for market, hit, cols in (('anytime scorer', played.goal > 0, ('p_goal', 'p_goal_raw', 'p_goal_flat')),
-                              ('player carded', played.yellow > 0, ('p_card', 'p_card_raw', 'p_card_flat'))):
+                              ('player carded (yellow or red)', played.carded > 0, ('p_card', 'p_card_raw', 'p_card_flat'))):
         y = hit.to_numpy()
         ll = {c: -np.where(y, np.log(np.clip(played[c], EPS, 1)), np.log(np.clip(1 - played[c], EPS, 1))) for c in cols}
         wk = week_of(played.date.to_numpy())
@@ -133,13 +155,19 @@ def main(tables, report):
         for s_, x in played.groupby('season'):
             k = (played.season == s_).to_numpy()
             lines.append(f'| {s_ - 1}-{str(s_)[2:]} | {k.sum():,} | ' + ' | '.join(f'{ll[c][k].mean():.4f}' for c in cols) + ' |')
-        for other in cols[1:]:
-            dd, lo, hi = boot_diff(ll[cols[0]], ll[other], wk)
-            lines.append(f'\nModel minus {other.split("_")[-1]} rate: {dd:+.4f} ({lo:+.4f} to {hi:+.4f}); '
-                         f'{"model better" if hi < 0 else "model worse" if lo > 0 else "no difference"}.')
-        bands = pd.cut(played[cols[0]], [0, .05, .1, .15, .2, .3, .4, .6, 1])
-        lines += ['', '| predicted band | rows | average predicted | happened |', '|---|---|---|---|']
-        for b, x in played.groupby(bands, observed=True):
+        for block_name, block in (('settings chosen on, 2016-17 to 2020-21', DEV), ('untouched test, 2021-22 on', TEST)):
+            k = played.season.isin(block).to_numpy()
+            if not k.any():
+                continue
+            for other in cols[1:]:
+                dd, lo, hi = boot_diff(ll[cols[0]][k], ll[other][k], wk[k])
+                lines.append(f'\n{block_name}: model minus {other.split("_")[-1]} rate {dd:+.4f} ({lo:+.4f} to {hi:+.4f}); '
+                             f'{"model better" if hi < 0 else "model worse" if lo > 0 else "no difference"}.')
+        tp = played[played.season.isin(TEST)] if played.season.isin(TEST).any() else played
+        bands = pd.cut(tp[cols[0]], [0, .05, .1, .15, .2, .3, .4, .6, 1])
+        lines += ['', f'Calibration, {"test seasons" if tp is not played else "all seasons"}:', '',
+                  '| predicted band | rows | average predicted | happened |', '|---|---|---|---|']
+        for b, x in tp.groupby(bands, observed=True):
             lines.append(f'| {b} | {len(x):,} | {x[cols[0]].mean():.3f} | {hit[x.index].mean():.3f} |')
         lines.append('')
     text = '\n'.join(lines) + '\n'
