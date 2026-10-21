@@ -12,7 +12,7 @@ NBA and AFL code: everything lives in `nbl/` and the `nbl-*` workflows, with its
 |---|---|---|
 | 1. Data inventory | every source, what it holds, terms, cost | `docs/INVENTORY.md` |
 | Data | nblR's GitHub copy of NBL results and box scores | `nbl data` workflow copies it to `nbl-history` |
-| Odds | The Odds API probe, capped at 300 credits | `nbl lines` workflow, runs once |
+| Odds | The Odds API probe, capped at 300 credits | written; waiting on the `ODDS_API_KEY` repository secret (not set: 0 credits spent) |
 | 2-7 | data layer, team model, props, backtest, team news, paper season | not started: waiting on the inventory review |
 
 ## Running it
