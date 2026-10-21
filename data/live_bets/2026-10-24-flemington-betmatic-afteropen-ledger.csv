@@ -2,3 +2,16 @@ label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
 fk-2026-10-24-flemington-r2-n9-s3,2,9,Turbo Saint,22.14,36.90,32,13967821,Notification has been sent.
 fk-2026-10-24-flemington-r9-n14-s3,9,14,Classic Gem,13.20,21.99,55,13967822,Notification has been sent.
 fk-2026-10-24-flemington-r9-n3-s3,9,3,Shockletz,14.58,24.30,74,13967823,Notification has been sent.
+fk-2026-10-24-flemington-r1-n4-s1-ao,1,4,Ice Kool,2.73,6.81,366,13967862,Notification has been sent.
+fk-2026-10-24-flemington-r1-n4-s2-ao,1,4,Ice Kool,3.41,6.81,134,13967864,Notification has been sent.
+fk-2026-10-24-flemington-r2-n9-s1-ao,2,9,Turbo Saint,14.76,36.90,26,13967866,Notification has been sent.
+fk-2026-10-24-flemington-r2-n9-s2-ao,2,9,Turbo Saint,18.45,36.90,38,13967868,Notification has been sent.
+fk-2026-10-24-flemington-r2-n9-s3-ao,2,9,Turbo Saint,22.14,36.90,63,13967870,Notification has been sent.
+fk-2026-10-24-flemington-r6-n12-s1-ao,6,12,Surfin' Bird,3.30,8.25,280,13967873,Notification has been sent.
+fk-2026-10-24-flemington-r6-n12-s2-ao,6,12,Surfin' Bird,4.12,8.25,219,13967875,Notification has been sent.
+fk-2026-10-24-flemington-r9-n14-s1-ao,9,14,Classic Gem,8.80,21.99,44,13967877,Notification has been sent.
+fk-2026-10-24-flemington-r9-n14-s2-ao,9,14,Classic Gem,11.00,21.99,66,13967879,Notification has been sent.
+fk-2026-10-24-flemington-r9-n14-s3-ao,9,14,Classic Gem,13.20,21.99,110,13967882,Notification has been sent.
+fk-2026-10-24-flemington-r9-n3-s1-ao,9,3,Shockletz,9.72,24.30,40,13967884,Notification has been sent.
+fk-2026-10-24-flemington-r9-n3-s2-ao,9,3,Shockletz,12.15,24.30,10,13967886,Notification has been sent.
+fk-2026-10-24-flemington-r9-n3-s3-ao,9,3,Shockletz,14.58,24.30,148,13967888,Notification has been sent.
