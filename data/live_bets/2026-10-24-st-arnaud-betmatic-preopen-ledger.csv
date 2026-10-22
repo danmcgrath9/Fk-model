@@ -1,0 +1,48 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-24-starnaud-r3-n9-s1,3,9,Fox Phire,3.41,3.99,212,13972206,Notification has been scheduled.
+fk-2026-10-24-starnaud-r3-n9-s2,3,9,Fox Phire,4.00,7.68,211,13972208,Notification has been scheduled.
+fk-2026-10-24-starnaud-r3-n9-s3,3,9,Fox Phire,4.30,7.68,289,13972210,Notification has been scheduled.
+fk-2026-10-24-starnaud-r3-n4-s1,3,4,Fully Funded,4.07,10.23,132,13972212,Notification has been scheduled.
+fk-2026-10-24-starnaud-r3-n4-s2,3,4,Fully Funded,5.09,10.23,244,13972214,Notification has been scheduled.
+fk-2026-10-24-starnaud-r3-n10-s1,3,10,Isle Of Mona,13.65,28.68,50,13972216,Notification has been scheduled.
+fk-2026-10-24-starnaud-r3-n10-s2,3,10,Isle Of Mona,17.06,28.68,71,13972218,Notification has been scheduled.
+fk-2026-10-24-starnaud-r4-n5-s1,4,5,Becauseyou're Mine,4.42,10.07,170,13972220,Notification has been scheduled.
+fk-2026-10-24-starnaud-r4-n5-s2,4,5,Becauseyou're Mine,5.53,10.07,230,13972222,Notification has been scheduled.
+fk-2026-10-24-starnaud-r4-n8-s1,4,8,Lady Maestro,4.23,9.43,182,13972224,Notification has been scheduled.
+fk-2026-10-24-starnaud-r4-n8-s2,4,8,Lady Maestro,5.29,9.43,194,13972227,Notification has been scheduled.
+fk-2026-10-24-starnaud-r4-n6-s1,4,6,Miss Toronado,9.02,18.66,81,13972229,Notification has been scheduled.
+fk-2026-10-24-starnaud-r4-n6-s2,4,6,Miss Toronado,11.27,18.66,121,13972231,Notification has been scheduled.
+fk-2026-10-24-starnaud-r5-n2-s1,5,2,El Salto,14.20,26.61,40,13972233,Notification has been scheduled.
+fk-2026-10-24-starnaud-r5-n2-s2,5,2,El Salto,17.75,26.61,74,13972235,Notification has been scheduled.
+fk-2026-10-24-starnaud-r5-n3-s1,5,3,Flux,19.09,36.76,32,13972237,Notification has been scheduled.
+fk-2026-10-24-starnaud-r5-n3-s2,5,3,Flux,23.86,36.76,55,13972239,Notification has been scheduled.
+fk-2026-10-24-starnaud-r5-n6-s1,5,6,Spinhof,7.08,17.81,84,13972241,Notification has been scheduled.
+fk-2026-10-24-starnaud-r5-n6-s2,5,6,Spinhof,8.85,17.81,152,13972243,Notification has been scheduled.
+fk-2026-10-24-starnaud-r5-n10-s1,5,10,Steely Hustler,9.23,20.58,68,13972245,Notification has been scheduled.
+fk-2026-10-24-starnaud-r5-n10-s2,5,10,Steely Hustler,11.54,20.58,114,13972247,Notification has been scheduled.
+fk-2026-10-24-starnaud-r5-n1-s1,5,1,Triomphe,12.16,28.88,110,13972249,Notification has been scheduled.
+fk-2026-10-24-starnaud-r5-n1-s2,5,1,Triomphe,15.20,28.88,29,13972251,Notification has been scheduled.
+fk-2026-10-24-starnaud-r5-n5-s1,5,5,Zamora,8.94,20.15,70,13972253,Notification has been scheduled.
+fk-2026-10-24-starnaud-r5-n5-s2,5,5,Zamora,11.17,20.15,125,13972255,Notification has been scheduled.
+fk-2026-10-24-starnaud-r6-n3-s1,6,3,Aftermath,5.71,12.86,120,13972257,Notification has been scheduled.
+fk-2026-10-24-starnaud-r6-n3-s2,6,3,Aftermath,7.14,12.86,168,13972259,Notification has been scheduled.
+fk-2026-10-24-starnaud-r6-n6-s1,6,6,Dartboard,5.59,13.04,230,13972261,Notification has been scheduled.
+fk-2026-10-24-starnaud-r6-n6-s2,6,6,Dartboard,6.99,13.04,56,13972263,Notification has been scheduled.
+fk-2026-10-24-starnaud-r6-n1-s1,6,1,Regal Lion,8.03,15.41,70,13972265,Notification has been scheduled.
+fk-2026-10-24-starnaud-r6-n1-s2,6,1,Regal Lion,10.04,15.41,136,13972267,Notification has been scheduled.
+fk-2026-10-24-starnaud-r6-n5-s1,6,5,Verona Rupes,11.32,25.23,52,13972269,Notification has been scheduled.
+fk-2026-10-24-starnaud-r6-n5-s2,6,5,Verona Rupes,14.15,25.23,86,13972271,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n6-s1,7,6,Coastal Whispers,10.26,23.65,59,13972274,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n6-s2,7,6,Coastal Whispers,12.82,23.65,103,13972276,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n3-s1,7,3,Dashing Donkey,13.60,28.73,55,13972278,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n3-s2,7,3,Dashing Donkey,17.00,28.73,80,13972280,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n2-s1,7,2,Dusty's Deel,8.71,18.63,76,13972282,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n2-s2,7,2,Dusty's Deel,10.89,18.63,122,13972283,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n9-s1,7,9,Ginger Sweet,10.06,19.22,60,13972285,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n9-s2,7,9,Ginger Sweet,12.58,19.22,114,13972287,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n4-s1,7,4,I Could Do Better,16.45,34.02,37,13972290,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n4-s2,7,4,I Could Do Better,20.56,34.02,62,13972291,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n10-s1,7,10,Kamarooka,13.33,29.73,48,13972292,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n10-s2,7,10,Kamarooka,16.66,29.73,72,13972293,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n7-s1,7,7,Pendante,6.67,15.01,107,13972294,Notification has been scheduled.
+fk-2026-10-24-starnaud-r7-n7-s2,7,7,Pendante,8.34,15.01,149,13972295,Notification has been scheduled.
