@@ -1,0 +1,93 @@
+name: nbl data
+
+# NBL betting-model history (nbl/README.md). Records each source's robots.txt and terms, then copies
+# nblR's pre-scraped NBL files (JaseZiv/nblr_data releases) into parquet on the "nbl-history" release.
+# A file the release already holds is not copied again unless `refresh` is yes (in season, to pick up
+# new games). Separate from every fk-*, nba-* and afl-* workflow: its own concurrency group, no Form
+# King key, no BetMatic, no database. Nothing is requested from the NBL's own site or its stats feed.
+
+on:
+  workflow_dispatch:
+    inputs:
+      refresh:
+        description: 'yes = copy nblR files again (in season, for new games)'
+        default: 'no'
+  push:
+    branches: [nbl-model]
+    paths:
+      - 'nbl/data/**'
+      - '.github/workflows/nbl-data.yml'
+
+concurrency:
+  group: nbl-data
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas pyarrow pyreadr requests
+
+      - name: Each source's robots.txt and terms, for the record
+        run: |
+          set -o pipefail
+          python nbl/data/terms.py | tee terms.md
+          { echo "### Terms and robots.txt at pull time"; cat terms.md; } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: When nblR's files were last updated upstream
+        run: |
+          {
+            echo "### JaseZiv/nblr_data release files"
+            for t in league match_results box_team box_player shots pbp; do
+              gh release view "$t" -R JaseZiv/nblr_data --json assets \
+                --jq '.assets[] | select(.name | endswith(".rds")) | "- \(.name): \(.size) bytes, updated \(.updatedAt)"' || echo "- $t: could not read"
+            done
+          } | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Is the copy already held?
+        id: held
+        run: |
+          gh release view nbl-history >/dev/null 2>&1 || gh release create nbl-history --target main --latest=false \
+            --title "NBL history" --notes "NBL betting-model data (nbl/README.md). Written by the nbl data and nbl lines workflows; do not delete." \
+            || gh release view nbl-history >/dev/null  # the other nbl workflow may have created it first
+          gh release upload nbl-history terms.md --clobber
+          if gh release view nbl-history --json assets --jq '.assets[].name' | grep -qx 'box_player.parquet' \
+             && [ "${{ github.event.inputs.refresh }}" != "yes" ]; then
+            echo "copy held, not re-copied (run with refresh = yes in season)" | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "skip=yes" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: r-lib/actions/setup-r@v2
+        if: steps.held.outputs.skip != 'yes'
+
+      - name: Download and convert
+        if: steps.held.outputs.skip != 'yes'
+        run: |
+          set -o pipefail
+          mkdir -p nbl/cache/raw
+          curl -sSfL -o nbl/cache/raw/pbp.rds https://github.com/JaseZiv/nblr_data/releases/download/pbp/pbp.rds
+          # pyreadr cannot read pbp.rds; base R can. List columns are flattened to text.
+          Rscript -e 'x <- readRDS("nbl/cache/raw/pbp.rds"); lc <- vapply(x, is.list, logical(1)); x[lc] <- lapply(x[lc], function(c) vapply(c, function(v) paste(unlist(v), collapse="|"), character(1))); write.csv(x, gzfile("nbl/cache/raw/pbp.csv.gz"), row.names = FALSE); cat("pbp:", nrow(x), "rows,", ncol(x), "columns\n")'
+          python nbl/data/mirror.py --out nbl/cache | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload
+        if: steps.held.outputs.skip != 'yes'
+        run: |
+          for f in nbl/cache/*.parquet; do
+            ok=no
+            for i in 1 2 3; do gh release upload nbl-history "$f" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
+            [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }
+          done
+          echo "release now holds $(gh release view nbl-history --json assets --jq '.assets | length') files" | tee -a "$GITHUB_STEP_SUMMARY"

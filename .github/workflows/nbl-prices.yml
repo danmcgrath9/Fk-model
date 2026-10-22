@@ -1,0 +1,89 @@
+name: nbl prices
+
+# Our NBL prices for the next 8 days (nbl/model/price_round.py): head-to-head, line and total per game and
+# five player props per expected rotation player. Paper only: nothing is sent to BetMatic or any book.
+# Each run copies nblR's latest files first (one download each, the same files the nbl data workflow
+# keeps), then writes prices_<date>.md and .csv to the nbl-history release: that record is the paper
+# season. Every run also grades the earlier sheets against the results (paper_scorecard.md).
+#
+# Separate from every fk-*, nba-* and afl-* workflow: its own concurrency group, no Form King key, no
+# BetMatic. The schedule fires from main (the only branch GitHub schedules from) and checks out nbl-model,
+# so the latest NBL code runs without merging again.
+
+on:
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'price games this many days ahead'
+        default: '8'
+  schedule:
+    - cron: '30 23 * * *'          # 10:30am Melbourne (daylight time), after nblR's overnight update
+  push:
+    branches: [nbl-model]
+    paths:
+      - 'nbl/model/**'
+      - '.github/workflows/nbl-prices.yml'
+
+concurrency:
+  group: nbl-prices
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  price:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      PYTHONUNBUFFERED: '1'
+      DAYS: ${{ github.event.inputs.days || '8' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: nbl-model          # scheduled runs fire from main but run the latest NBL code
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r nbl/requirements.txt
+
+      - uses: r-lib/actions/setup-r@v2
+
+      - name: Latest NBL results, box scores and play-by-play (nblR's copy)
+        run: |
+          set -o pipefail
+          mkdir -p nbl/cache/raw
+          curl -sSfL -o nbl/cache/raw/pbp.rds https://github.com/JaseZiv/nblr_data/releases/download/pbp/pbp.rds
+          # pyreadr cannot read pbp.rds; base R can. List columns are flattened to text.
+          Rscript -e 'x <- readRDS("nbl/cache/raw/pbp.rds"); lc <- vapply(x, is.list, logical(1)); x[lc] <- lapply(x[lc], function(c) vapply(c, function(v) paste(unlist(v), collapse="|"), character(1))); write.csv(x, gzfile("nbl/cache/raw/pbp.csv.gz"), row.names = FALSE)'
+          python nbl/data/mirror.py --out nbl/cache | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Features and on-court ratings
+        run: |
+          set -o pipefail
+          python -m nbl.model.frame nbl/cache | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m nbl.model.onoff nbl/cache | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Price the next games
+        run: |
+          set -o pipefail
+          python -m nbl.model.price_round nbl/cache nbl/out "$DAYS" | tee price.log
+          cat nbl/out/prices_*.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Grade every earlier sheet against the results (the paper season's scorecard)
+        run: |
+          set -o pipefail
+          mkdir -p nbl/sheets
+          gh release download nbl-history --dir nbl/sheets --pattern 'prices_*.csv' --skip-existing || true
+          cp nbl/out/prices_*.csv nbl/sheets/
+          python -m nbl.model.grade nbl/cache nbl/sheets nbl/out/paper_scorecard.md | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Keep the record on the release
+        run: |
+          for f in nbl/out/prices_* nbl/out/paper_scorecard.md; do
+            ok=no
+            for i in 1 2 3; do gh release upload nbl-history "$f" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
+            [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }
+          done
