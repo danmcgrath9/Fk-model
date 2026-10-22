@@ -34,6 +34,10 @@ from afl.lines.odds_api import BASE, PROPS, SPORT, TEAM_MARKETS
 LIVE = 'afl/cache/lines/live'
 STAT_OF = {'player_disposals': 'D', 'player_marks_over': 'M', 'player_tackles_over': 'T', 'player_goals_scored_over': 'G'}
 EDGE = 0.05          # our chance x the best price - 1 must clear this
+# Rounds 1-3: the projection misses by more (3.85 disposals against 3.70 later, 2025-2026) and its level swings with
+# each summer's rule changes (+0.86 disposals under-projected early 2026, -0.09 early 2024), so ask for more edge.
+# A caution, not a tested edge: it only means fewer paper bets in the first three rounds.
+EARLY_EDGE, EARLY_ROUNDS = 0.08, 3
 PAPER_BANK = 10_000  # a notional bank for paper stakes
 
 
@@ -114,7 +118,8 @@ def candidates(sheet, props, edge=EDGE):
     c = pd.DataFrame(rows)
     if c.empty:
         return c
-    c = c[c.ev > edge]
+    rnd = pd.to_numeric(c['round'], errors='coerce')
+    c = c[c.ev > np.where(rnd <= EARLY_ROUNDS, max(edge, EARLY_EDGE), edge)]
     # one side per player, stat and line (the better one), and one line per player and stat (the bigger edge)
     return c.sort_values('ev', ascending=False).drop_duplicates(['game', 'player_id', 'stat'])
 
