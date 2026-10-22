@@ -1,0 +1,46 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-24-yarravalley-r3-n1-s1,3,1,Mehsun,19.38,38.22,31,13972204,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r3-n1-s2,3,1,Mehsun,24.22,38.22,54,13972205,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r3-n2-s1,3,2,Molesworth,12.92,28.79,57,13972207,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r3-n2-s2,3,2,Molesworth,16.15,28.79,70,13972209,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r3-n3-s1,3,3,Nightowl,5.31,13.35,125,13972211,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r3-n3-s2,3,3,Nightowl,6.64,13.35,218,13972213,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r3-n10-s1,3,10,Sentaloa,6.76,15.06,108,13972215,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r3-n10-s2,3,10,Sentaloa,8.45,15.06,118,13972217,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r3-n4-s1,3,4,Zverev,5.62,11.96,135,13972219,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r3-n4-s2,3,4,Zverev,7.03,11.96,182,13972221,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r4-n1-s1,4,1,Devine Grunt,20.13,37.74,30,13972223,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r4-n1-s2,4,1,Devine Grunt,25.16,37.74,52,13972225,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r4-n10-s1,4,10,Pharoah's Daughter,7.06,13.58,94,13972226,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r4-n10-s2,4,10,Pharoah's Daughter,8.82,13.58,164,13972228,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r4-n6-s1,4,6,Surely Special,5.03,11.40,140,13972230,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r4-n6-s2,4,6,Surely Special,6.29,11.40,202,13972232,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r4-n3-s1,4,3,Treasury Place,11.20,25.23,64,13972234,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r4-n3-s2,4,3,Treasury Place,14.00,25.23,97,13972236,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r4-n4-s1,4,4,Up And Under,10.94,24.38,55,13972238,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r4-n4-s2,4,4,Up And Under,13.67,24.38,84,13972240,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r5-n1-s1,5,1,Machinist,12.13,25.06,48,13972242,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r5-n1-s2,5,1,Machinist,15.16,25.06,78,13972244,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r5-n4-s1,5,4,Magnea,10.98,24.73,60,13972246,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r5-n4-s2,5,4,Magnea,13.73,24.73,100,13972248,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r5-n2-s1,5,2,Pacific Glamour,4.49,10.25,168,13972250,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r5-n2-s2,5,2,Pacific Glamour,5.61,10.25,240,13972252,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r5-n5-s1,5,5,Shooting For Stars,18.18,37.59,31,13972254,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r5-n5-s2,5,5,Shooting For Stars,22.73,37.59,57,13972256,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r5-n7-s1,5,7,Wind Dreamer,9.76,23.95,69,13972258,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r5-n7-s2,5,7,Wind Dreamer,12.20,23.95,96,13972260,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r6-n7-s1,6,7,Belmasai,12.63,28.81,50,13972262,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r6-n7-s2,6,7,Belmasai,15.79,28.81,74,13972264,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r6-n2-s1,6,2,Ponte Arcobaleno,9.27,20.68,62,13972266,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r6-n2-s2,6,2,Ponte Arcobaleno,11.59,20.68,98,13972268,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r6-n10-s1,6,10,Smashing Ruby,6.72,8.00,52,13972270,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r6-n3-s1,6,3,The Mount,5.53,8.00,122,13972272,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r6-n3-s2,6,3,The Mount,6.91,8.00,122,13972273,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r6-n5-s1,6,5,Think I'm Divine,13.26,29.58,48,13972275,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r6-n5-s2,6,5,Think I'm Divine,16.57,29.58,82,13972277,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r7-n9-s1,7,9,Clarapatra,12.63,26.52,54,13972279,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r7-n9-s2,7,9,Clarapatra,15.79,26.52,82,13972281,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r7-n7-s1,7,7,Prestige Geoffrey,12.88,28.74,46,13972284,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r7-n7-s2,7,7,Prestige Geoffrey,16.10,28.74,68,13972286,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r7-n3-s1,7,3,Prestige Ole,9.16,18.95,68,13972288,Notification has been scheduled.
+fk-2026-10-24-yarravalley-r7-n3-s2,7,3,Prestige Ole,11.45,18.95,108,13972289,Notification has been scheduled.
