@@ -71,7 +71,7 @@ def card(d):
     return (f"<html><head><style>{CSS}</style></head><body>"
             "<div class='top'><div class='lock'><div class='mark'><span>M</span></div><div class='brand'>MERCER<span>TIPPING</span></div></div>"
             f"<div class='when'>WINNER<span>{html.escape(d['date'])}</span></div></div>"
-            f"<div class='mid'><div class='kick'>{html.escape(d['kicker'])}</div><div class='hero'>{silks(d['silks']) if d.get('silks') else ''}<div><div class='big'>{html.escape(d['horse'])}</div>"
+            f"<div class='mid'>" + (f"<div class='kick'>{html.escape(d['kicker'])}</div>" if d.get('kicker') else "") + f"<div class='hero'>{silks(d['silks']) if d.get('silks') else ''}<div><div class='big'>{html.escape(d['horse'])}</div>"
             f"<div class='sub' style='margin-top:14px'>{html.escape(d['meeting'])}</div></div></div><div class='st'>{st}</div>"
             + (chart(d["chart"]) if d.get("chart") else "") + f"<div class='line'>{d['line']}</div>{also}</div>"
             "<div class='foot'><span>Win bets.</span><span>18+ · Gamble responsibly</span></div></body></html>")
