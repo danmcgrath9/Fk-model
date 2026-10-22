@@ -6,8 +6,8 @@ name: nbl record lines
 # was spent and the snapshots live on the nbl-history release. Does nothing until the ODDS_API_KEY
 # secret exists. Paper only: nothing here bets or touches BetMatic.
 #
-# Separate from every fk-*, nba-* and afl-* workflow: its own concurrency group. The 30-minute schedule
-# only runs from the default branch: until this file is on main it runs on push or by hand.
+# Separate from every fk-*, nba-* and afl-* workflow: its own concurrency group. The 30-minute schedule fires
+# from main (the only branch GitHub schedules from) and checks out nbl-model, so the latest code runs.
 
 on:
   workflow_dispatch:
@@ -52,6 +52,8 @@ jobs:
           fi
       - uses: actions/checkout@v4
         if: steps.key.outputs.skip != 'yes'
+        with:
+          ref: nbl-model          # scheduled runs fire from main but run the latest NBL code
       - uses: actions/setup-python@v5
         if: steps.key.outputs.skip != 'yes'
         with:

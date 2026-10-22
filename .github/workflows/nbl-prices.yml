@@ -7,8 +7,8 @@ name: nbl prices
 # season. Every run also grades the earlier sheets against the results (paper_scorecard.md).
 #
 # Separate from every fk-*, nba-* and afl-* workflow: its own concurrency group, no Form King key, no
-# BetMatic. A daily schedule only runs from the default branch: until this file is on main it runs on
-# push to nbl-model.
+# BetMatic. The schedule fires from main (the only branch GitHub schedules from) and checks out nbl-model,
+# so the latest NBL code runs without merging again.
 
 on:
   workflow_dispatch:
@@ -42,6 +42,8 @@ jobs:
       DAYS: ${{ github.event.inputs.days || '8' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: nbl-model          # scheduled runs fire from main but run the latest NBL code
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
