@@ -15,11 +15,11 @@ Paper only until the founder says otherwise.
 | 1. Inventory | one look at each candidate source and its terms | done, `docs/INVENTORY.md` |
 | 1. Inventory | The Odds API probe (capped at 300 of 20,000 credits) | waiting for the `ODDS_API_KEY` secret; 0 credits spent |
 | 2. Data | matches 2013-14 to now, goals with scorer and minute, one row per team per game, leak-tested | done, on the release |
-| 2. Data | one row per player per game (minutes, goals, cards, started or not, referee) | being pulled from Ultimate A-League (CC BY 4.0), 2013-14 to now; no shots anywhere free |
+| 2. Data | one row per player per game (minutes, goals, cards, started or not, referee) | done: 67,995 player-matches, 1,987 matches 2013-14 to now, from Ultimate A-League (CC BY 4.0), every score cross-checked; no shots anywhere free |
 | 3. Team model | expected goals per side, every team market priced from one score matrix, "at the open"; settings frozen in `model/settings.json` | done, `docs/TEAM_STEP1.md`: beats base rates on head-to-head, level with Elo, no better than base rates on goals markets |
-| 3. Team model | "teams named" version | needs line-ups (the same player feed) |
-| 4. Props | pricing machinery (scorer, shots, cards as count distributions), tested | done; projections wait for minutes data |
-| 5. Backtest | probabilities against base rates and Elo, out of sample | done; against real lines once odds arrive |
+| 3. Team model | "teams named" version (plus-minus ratings of the confirmed XI) | tested, not adopted: no better, slightly worse on the newest seasons (`docs/TEAM_NAMED.md`) |
+| 4. Props | anytime scorer and player carded, teams named | done (`docs/PROPS_STEP1.md`): both beat a raw per-appearance rate in every untouched season 2021-22 to 2025-26; cards need a calibration fix |
+| 5. Backtest | probabilities against base rates and Elo, out of sample; goals-only improvements from the literature (`docs/RESEARCH.md`, `docs/TEAM_STEP2.md`) | done; against real lines once odds arrive |
 | 6. Team-news test | needs recorded prices | after odds |
 | 7. Paper season | `price_round` prints our prices for the coming week | first record: `docs/prices_2026-10-21.md` (round 2, before kick-off); needs a book's prices to compare |
 
