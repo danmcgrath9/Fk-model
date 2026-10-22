@@ -136,3 +136,15 @@ jobs:
             wc -l cricsheet_venues.csv cricsheet_venue_names.csv | tee -a "$GITHUB_STEP_SUMMARY"
             gh release upload bbl-history cricsheet_venues.csv cricsheet_venue_names.csv --clobber
           fi
+
+      - name: Tables from what is held (no requests)
+        run: |
+          set -e
+          for f in t20_players t20_deliveries t20_innings team_frame; do
+            gh release download bbl-history --dir bbl/cache/parquet --pattern "$f.parquet" --clobber
+          done
+          python -m bbl.collect.parse_squads bbl/cache/collect bbl/cache/collect/wiki_squads.csv | head -1 | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m bbl.collect.fixtures_join bbl/cache/collect/wiki_fixtures.csv bbl/cache/parquet bbl/cache/collect | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m bbl.collect.weather_join bbl/cache/collect/power bbl/cache/collect/venue_coords_v3.csv bbl/cache/parquet | tee -a "$GITHUB_STEP_SUMMARY"
+          gh release upload bbl-history bbl/cache/collect/wiki_squads.csv bbl/cache/parquet/match_context.parquet \
+            bbl/cache/parquet/match_weather.parquet bbl/cache/collect/fixtures_*.csv --clobber

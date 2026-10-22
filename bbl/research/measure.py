@@ -129,6 +129,30 @@ def main(d):
         out += [f'On those games the home side\'s share of earlier games at the ground (venue_share) averages '
                 f'{hv.venue_share.mean():.2f}, against {t.venue_share.mean():.2f} for all sides: venue_share is a fair proxy for home.', '']
 
+    # 7. weather (NASA POWER at the ground, start to three hours on; bbl/collect/weather_join.py)
+    wpath = os.path.join(d, 'match_weather.parquet')
+    if os.path.exists(wpath):
+        w = pd.read_parquet(wpath)
+        tf = pd.read_parquet(os.path.join(d, 'team_frame.parquet'),
+                             columns=['match_id', 'batted_first', 'first_inns_runs', 'full_first_inns', 'venue_first_runs'])
+        x = m.merge(w, on='match_id').merge(tf[tf.batted_first == 1].drop(columns='batted_first'), on='match_id')
+        x = x[x.comp.isin(['BBL', 'WBBL']) & x.temp_start.notna()]
+        dec = x[(x.result == 'win') & x.method.isna()].copy()
+        dec['dew'] = pd.cut(dec.dew_gap_end, [-1, 3, 6, 100], labels=['gap under 3C (dew likely)', '3 to 6C', 'over 6C (dry)'])
+        rows = []
+        for (comp, b), g in dec.groupby(['comp', 'dew'], observed=True):
+            rows.append(dict(comp=comp, dew_point_gap_at_end=str(b), games=len(g), chasing_side_won=ci(int((g.winner != g.bat_first).sum()), len(g))))
+        out += ['## 7. Weather: chasing by how close the air is to its dew point at the end of the game', '', md(pd.DataFrame(rows)), '']
+        full = x[x.full_first_inns.fillna(False).astype(bool) & x.method.isna()].copy()
+        full['resid'] = full.first_inns_runs - full.venue_first_runs
+        rows = []
+        for comp, g in full.groupby('comp'):
+            for col in ('temp_start', 'rh_start', 'dew_gap_end', 'wind_mean', 'rain_mm'):
+                gg = g[[col, 'resid']].dropna()
+                rows.append(dict(comp=comp, weather=col, games=len(gg), corr_with_runs_above_ground_average=float(gg.corr().iloc[0, 1])))
+        out += ['First-innings runs above the ground\'s own average, against the weather (correlation; |r| under ~0.1 is nothing at these sizes):', '',
+                md(pd.DataFrame(rows)), '']
+
     text = '\n'.join(out)
     open(os.path.join(d, 'MEASURE.md'), 'w').write(text)
     print(text)

@@ -1,4 +1,4 @@
-# BBL data inventory (21 Oct 2026)
+# BBL data inventory (21 Oct 2026; collection added 22 Oct)
 
 What each source holds, from what season, its terms and its cost. Every figure about Cricsheet is
 counted from the pull on the `bbl-history` release (bbl-data run of 21 Oct 2026, zip downloaded
@@ -10,14 +10,17 @@ counted from the pull on the `bbl-history` release (bbl-data run of 21 Oct 2026,
 |---|---|---|---|---|---|---|
 | ball-by-ball, results, toss, XI, venue | Cricsheet `all_json.zip` | every T20 match: 14,686 (3.35m balls) | BBL 2011/12, WBBL 2015/16 | ODC-BY 1.0 (match data since 7 Oct 2026; register always): use freely, credit Cricsheet on any public use. robots.txt only bars indexing `/data/` | free | **pulled**, on the release |
 | player identity across sites | Cricsheet people register | 18,651 people, keys for Cricinfo, BBL, Cricbuzz, Opta and 15 others | | ODC-BY 1.0 | free | **pulled** |
-| one name per ground | Cricsheet venue register (new, 7 Oct 2026) | `venues.csv`, `venue_names.csv`; Cricsheet says it holds "a limited number of venues" so far | | ODC-BY 1.0 | free | not pulled yet; we will still need our own map (the Gabba appears under 3 names) |
+| one name per ground | Cricsheet venue register (new, 7 Oct 2026) | `venues.csv`, `venue_names.csv`; Cricsheet says it is still "limited" | | ODC-BY 1.0 | free | **pulled** 22 Oct; our own map stays (the Gabba is under 3 names) |
 | bookmaker odds, team markets | The Odds API, `cricket_big_bash` | listed with history from Nov 2020 (their cricket page); h2h is "mainly covered" | 2020/21 | our subscription | shared credits, BBL budget 20,000 | **blocked: `ODDS_API_KEY` secret is not set in Fk-model** |
 | player props (runs, sixes, top batter) | The Odds API | unknown: their cricket page lists no props | | | | probe decides |
 | live prices through the week | BetMatic odds watch | whatever BetMatic shows for BBL | from the 2026/27 season | ours | none extra | not set up; recording only |
-| announced squads / late changes | none found | no archive of named squads or late withdrawals exists that we can use; squads are news articles, the final XI is named at the toss | | | | **gap: build from who played** |
+| contracted squads | Wikipedia season pages, API | each club's squad with captain and overseas country: BBL 2014/15, 2023/24 to 2026/27 and WBBL 2026/27 in full (BBL\|16 119 players, WBBL\|12 109); other seasons laid out differently, unparsed | 2014/15 | CC BY-SA, attribute with page and revision | free | **pulled**; announced XIs and late changes still have no archive: record from the paper season on |
 | injuries | none found | | | | | **gap** |
-| weather and dew | Open-Meteo history | hourly temperature, humidity, dew point, rain, wind | 1940 | free tier is non-commercial; commercial use needs a paid key, about US$29-99 a month per a dated announcement, whether history is in the cheaper plan is unconfirmed | possibly paid | not pulled; terms to settle first |
-| weather (free alternative) | Bureau of Meteorology daily observations | daily rain, max/min temperature by station | decades | Australian government data; licence to confirm before pulling | free | not pulled; daily only, so no dew at 9pm |
+| weather and dew | NASA POWER hourly, at each ground | temperature, dew point, humidity, rain, wind at 2 m, every summer each ground was used, and the coming one | 2011 | "no restrictions on the use, access, and/or download" (NASA, CC BY 4.0); credit the POWER Project | free | **pulled**, resumable; 1,181 games joined, see below |
+| ground coordinates | the Wikipedia article named for each ground, then its Wikidata item (P625) | 133 of 154 venue names placed; 14 of 1,181 games at a ground still unplaced | | CC BY-SA / CC0 | free | **pulled**; a first pass by search was wrong (SCG for the Gabba, Cape Town for the WACA) and was replaced |
+| team news, scorecards | cricket.com.au, ESPNcricinfo | | | cricket.com.au bars copying or reproducing its content; Cricinfo's terms not confirmed | | **not collected** |
+| historical odds | Betfair BASIC (free), OddsPapi and odds-api.io free tiers | exchange and bookmaker prices | varies | each needs the founder's own account or key | free to paid | **needs the founder** |
+| start times, day/night, home side, attendance, coming fixtures | Wikipedia season pages, API | every BBL and WBBL match since 2011/12 with date, local start time, the home side where marked, venue, attendance, toss, result and its Cricinfo id; the full WBBL\|12 and BBL\|16 fixture lists | 2011/12 | CC BY-SA | free | **pulled**: 1,175 of 1,181 Cricsheet games join exactly on the Cricinfo id |
 
 ## Cricsheet: what came back
 
@@ -60,3 +63,21 @@ The probe (`bbl/lines/probe.py`) ran on push at its committed budget of 0 credit
 - "Teams named" for history = the XI that played (named at the toss). "At the open" = expected XI from the squad's recent games. No announced-squad history exists to test against.
 - Weather: decide between Open-Meteo paid (hourly, dew) and BOM free (daily). Dew matters for night games, which needs hourly.
 - Props are in or out on the probe's answer alone.
+
+
+## Collected 22 Oct (bbl-collect workflow; every source pulled once, raw responses on the release)
+
+| table | rows | what it adds | how it joins |
+|---|---|---|---|
+| `wiki_fixtures.csv` | 1,400 matches | date, local start time, night, marked home side, venue, attendance, toss, result, Cricinfo id | Cricinfo id = Cricsheet's file name: 1,175 of 1,181 exact; 4 dates disagree with Cricsheet (start time dropped for those) |
+| `match_context.parquet` | 1,181 | start time for 1,071, marked home side for 465 | match_id |
+| `match_weather.parquet` | 1,181 | temperature, dew point, humidity, rain, wind from the start to three hours on; dew-point gap at the end | ground coordinates + start time in the ground's own time zone |
+| `wiki_squads.csv` | 854 player-club-seasons | contracted squads with captain and overseas country | names matched to Cricsheet within the club first (`bbl/live/price.py`) |
+| `fixtures_2026_27.csv` | 80 priceable (40 WBBL\|12 from 29 Oct, 40 BBL\|16 from 12 Dec) | the pricer's input; finals stay out until their teams are known | |
+
+What it showed (`python -m bbl.research.measure`, sections 5 to 7 of MEASURE.md): BBL day games were won by
+the chasing side 34% of the time (47 games) against 55% at night (500); the marked home side won 52.6% of
+435 BBL games; and in the BBL the chasing side wins more often the closer the air is to its dew point at the
+end of the game (57.1% under a 3C gap, 50.3% over 6C; slope p = 0.04 by permutation over 559 games:
+promising, not proven, and only usable after the toss with a forecast). Weather does not predict
+first-innings runs (every correlation under 0.1).
