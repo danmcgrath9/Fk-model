@@ -4,7 +4,10 @@ NASA POWER: no restrictions on use (credit "NASA Langley Research Center POWER P
 temperature, dew point, humidity, rain and wind at 2 m, in UTC, one request per ground per summer
 (October to February), one at a time. Raw JSON only; nothing is re-asked once held.
 
-Usage: python -m bbl.collect.power <out dir> <venue_coords.csv> <t20_matches.parquet>
+Resumable: a ground-summer already in <out dir> is skipped, and the run stops after BUDGET_MIN minutes so
+what it has can be uploaded; the next run carries on.
+
+Usage: python -m bbl.collect.power <out dir> <venue_coords.csv> <t20_matches.parquet> [fixtures.csv]
 """
 import json
 import os
@@ -18,13 +21,18 @@ API = 'https://power.larc.nasa.gov/api/temporal/hourly/point'
 PARAMS = 'T2M,T2MDEW,RH2M,PRECTOTCORR,WS2M'
 UA = 'fk-model-bbl/0.1 (github.com/danmcgrath9/Fk-model; research)'
 PAUSE = 1.0
+BUDGET_MIN = float(os.environ.get('POWER_BUDGET_MIN', '200'))
 
 
-def main(out, coords, matches):
+def main(out, coords, matches, fixtures=None):
     os.makedirs(out, exist_ok=True)
+    t0 = time.time()
     c = pd.read_csv(coords).dropna(subset=['lat', 'lon'])
     m = pd.read_parquet(matches)
-    m = m[m.competition.isin(['Big Bash League', "Women's Big Bash League"])]
+    m = m[m.competition.isin(['Big Bash League', "Women's Big Bash League"])][['venue', 'start_date']]
+    if fixtures:   # fixtures Cricsheet does not hold yet (the coming season) by their Wikipedia venue name
+        f = pd.read_csv(fixtures)
+        m = pd.concat([m, f[['venue_full', 'date']].rename(columns={'venue_full': 'venue', 'date': 'start_date'}).dropna()])
     m = m.merge(c[['venue', 'lat', 'lon']], on='venue')
     m['summer'] = pd.to_datetime(m.start_date).map(lambda d: d.year if d.month >= 7 else d.year - 1)
     need = m.groupby(['lat', 'lon']).summer.unique()
@@ -38,6 +46,9 @@ def main(out, coords, matches):
         dest = os.path.join(out, f'{lat:.4f}_{lon:.4f}_{s}.json')
         if os.path.exists(dest):
             continue
+        if (time.time() - t0) / 60 > BUDGET_MIN:
+            print(f'time budget of {BUDGET_MIN:.0f} min reached: stopping; the next run carries on')
+            break
         end = min(pd.Timestamp(f'{s + 1}-02-28'), pd.Timestamp.utcnow().tz_localize(None) - pd.Timedelta(days=7))
         if end < pd.Timestamp(f'{s}-10-01'):
             continue

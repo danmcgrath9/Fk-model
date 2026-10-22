@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
     inputs:
       refresh:
-        description: 'source to pull again: wiki, power, register, or blank'
+        description: 'source to pull again: wiki, coords, power, register, or blank'
         default: ''
   push:
     branches: [bbl-model]
@@ -29,7 +29,7 @@ permissions:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 300
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GH_REPO: ${{ github.repository }}
@@ -82,13 +82,33 @@ jobs:
             gh release upload bbl-history wiki_raw_v1.tar.gz --clobber
           fi
 
-      - name: NASA POWER hourly weather at each ground
+      - name: Fixtures table and ground coordinates (exact articles, not search hits)
         run: |
           set -e
-          if grep -qx power_raw_v1.tar.gz held.txt && [ "$REFRESH" != power ]; then
-            echo "power held, not fetched again" | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m bbl.collect.parse_wiki bbl/cache/collect/wiki bbl/cache/collect/wiki_fixtures.csv | tee -a "$GITHUB_STEP_SUMMARY"
+          gh release upload bbl-history bbl/cache/collect/wiki_fixtures.csv --clobber
+          if grep -qx venue_coords_v2.csv held.txt && [ "$REFRESH" != coords ]; then
+            gh release download bbl-history --pattern venue_coords_v2.csv --dir bbl/cache/collect --clobber
+            echo "coordinates held" | tee -a "$GITHUB_STEP_SUMMARY"
           else
-            python -m bbl.collect.power bbl/cache/collect/power bbl/cache/collect/wiki/venue_coords.csv bbl/cache/parquet/t20_matches.parquet | tail -20 | tee -a "$GITHUB_STEP_SUMMARY"
+            python -m bbl.collect.coords bbl/cache/collect/venue_coords_v2.csv bbl/cache/parquet/t20_matches.parquet \
+              bbl/cache/collect/wiki_fixtures.csv | tee -a "$GITHUB_STEP_SUMMARY"
+            gh release upload bbl-history bbl/cache/collect/venue_coords_v2.csv --clobber
+          fi
+
+      - name: NASA POWER hourly weather at each ground (resumes; uploads what it has)
+        run: |
+          set -e
+          mkdir -p bbl/cache/collect/power
+          if grep -qx power_raw_v1.tar.gz held.txt && [ "$REFRESH" != power ]; then
+            gh release download bbl-history --pattern power_raw_v1.tar.gz --dir . --clobber && tar xzf power_raw_v1.tar.gz -C bbl/cache/collect
+          fi
+          before=$(ls bbl/cache/collect/power | wc -l)
+          python -m bbl.collect.power bbl/cache/collect/power bbl/cache/collect/venue_coords_v2.csv \
+            bbl/cache/parquet/t20_matches.parquet bbl/cache/collect/wiki_fixtures.csv | tail -20 | tee -a "$GITHUB_STEP_SUMMARY" || true
+          after=$(ls bbl/cache/collect/power | wc -l)
+          echo "weather files: $before before, $after after" | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ "$after" -gt "$before" ]; then
             tar czf power_raw_v1.tar.gz -C bbl/cache/collect power
             gh release upload bbl-history power_raw_v1.tar.gz --clobber
           fi
