@@ -10,16 +10,41 @@
   },
   {
    "v": "$4",
-   "k": "Started"
-  },
-  {
-   "v": "1.35u",
-   "k": "Staked"
+   "k": "The jump"
   },
   {
    "v": "+17.06u",
-   "k": "Profit"
+   "k": "Our profit"
+  },
+  {
+   "v": "+4.05u",
+   "k": "At the jump"
   }
  ],
- "line": "Taken at <b>more than 3x her starting price</b>, after deductions for a late scratching."
+ "line": "Our price is <b>after the deduction</b> for a late scratching. The shaded gap is what getting on early was worth.",
+ "chart": {
+  "points": [
+   {
+    "k": "Open",
+    "v": 17
+   },
+   {
+    "k": "",
+    "v": 8.5
+   },
+   {
+    "k": "",
+    "v": 8.29
+   },
+   {
+    "k": "Race morning",
+    "v": 6.9
+   },
+   {
+    "k": "Jump",
+    "v": 4
+   }
+  ],
+  "ours": 13.64
+ }
 }
