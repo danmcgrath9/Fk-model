@@ -1,0 +1,21 @@
+# One-off look for Champion Data's published contact details (a few page loads). Removed once read.
+name: afl check contact
+on:
+  push:
+    branches: [afl-props]
+    paths: ['.github/workflows/afl-check.yml']
+concurrency:
+  group: afl-check
+permissions:
+  contents: read
+jobs:
+  contact:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in https://www.championdata.com/ https://www.championdata.com/contact/ https://www.championdata.com/contact-us/ https://www.championdata.com/about-us/ https://www.championdata.com/sport/ https://docs.api.afl.championdata.com/; do
+            echo "== $u"; curl -sSL --max-time 30 -A "fk-model AFL research" "$u" -o page.html -w "%{http_code} %{url_effective}\n" || true
+            grep -oiE '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}' page.html | sort -u | head -20
+            grep -oiE 'href="[^"]*(contact|enquir|mailto)[^"]*"' page.html | sort -u | head -20
+            sleep 4
+          done
