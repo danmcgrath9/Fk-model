@@ -44,8 +44,8 @@ jobs:
         env:
           SHEET: ${{ github.event.inputs.sheet }}
         run: |
-          if [ -n "$SHEET" ]; then files=$(echo "$SHEET" | grep -E '^afl/live/named/[A-Za-z0-9_./-]+\.(txt|csv)$' || true)
-          else files=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- afl/live/named/ | grep -E '\.(txt|csv)$' || true); fi
+          if [ -n "$SHEET" ]; then files=$(echo "$SHEET" | grep -E '^afl/live/named/[0-9]{4}_R[A-Za-z0-9]+\.(txt|csv)$' || true)
+          else files=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- afl/live/named/ | grep -E '/[0-9]{4}_R[A-Za-z0-9]+\.(txt|csv)$' || true); fi
           echo "files=$(echo $files)" >> "$GITHUB_OUTPUT"
           echo "team sheets: ${files:-none}" | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Latest stats (fitzRoy mirror) and the models
