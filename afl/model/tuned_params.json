@@ -1,0 +1,10 @@
+{
+ "D": {
+  "num_leaves": 15,
+  "min_child_samples": 500
+ },
+ "G": {
+  "num_leaves": 15,
+  "min_child_samples": 500
+ }
+}
