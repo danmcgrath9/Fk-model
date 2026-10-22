@@ -5,6 +5,7 @@ name: afl models
 # no Form King key, no BetMatic, no bets.
 
 on:
+  workflow_dispatch:
   push:
     branches: [afl-props]
     paths:
