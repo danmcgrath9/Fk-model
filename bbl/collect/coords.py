@@ -89,6 +89,36 @@ def fetch(titles):
     return out
 
 
+WIKIDATA = 'https://www.wikidata.org/w/api.php'
+
+
+def wikidata_coords(titles):
+    """Fallback for articles with no primary coordinate tag: the article's Wikidata item, property P625 (CC0)."""
+    out = {}
+    titles = sorted(set(titles))
+    for k in range(0, len(titles), 20):
+        batch = titles[k:k + 20]
+        r = requests.get(API, params=dict(action='query', prop='pageprops', ppprop='wikibase_item', titles='|'.join(batch),
+                                          redirects=1, format='json', formatversion=2), headers={'User-Agent': UA}, timeout=60)
+        r.raise_for_status()
+        q = {p['title']: p.get('pageprops', {}).get('wikibase_item') for p in r.json()['query']['pages']}
+        time.sleep(2)
+        ids = [i for i in q.values() if i]
+        if not ids:
+            continue
+        w = requests.get(WIKIDATA, params=dict(action='wbgetentities', ids='|'.join(ids), props='claims', format='json'),
+                         headers={'User-Agent': UA}, timeout=60)
+        w.raise_for_status()
+        ents = w.json().get('entities', {})
+        time.sleep(2)
+        for t, qid in q.items():
+            claim = (ents.get(qid, {}).get('claims', {}).get('P625') or [{}])[0]
+            v = claim.get('mainsnak', {}).get('datavalue', {}).get('value', {})
+            if 'latitude' in v:
+                out[t] = (v['latitude'], v['longitude'], qid)
+    return out
+
+
 def check(df):
     """Rows whose coordinates are missing or outside Australia (unless an allowed overseas ground)."""
     inside = df.lat.between(*AUSTRALIA['lat']) & df.lon.between(*AUSTRALIA['lon'])
@@ -104,7 +134,13 @@ def main(out, matches, fixtures=None):
     got = fetch([r['title'] for r in rows if r['title']])
     for r in rows:
         res, lat, lon = got.get(r['title'], (None, None, None))
-        r.update(resolved=res, lat=lat, lon=lon)
+        r.update(resolved=res, lat=lat, lon=lon, source='wikipedia' if lat is not None else None)
+    missing = sorted({r['resolved'] for r in rows if r['lat'] is None and r['resolved']})
+    wd = wikidata_coords(missing) if missing else {}
+    for r in rows:
+        if r['lat'] is None and r['resolved'] in wd:
+            r['lat'], r['lon'], qid = wd[r['resolved']]
+            r['source'] = f'wikidata {qid}'
     df = pd.DataFrame(rows)
     df.to_csv(out, index=False)
     bad = check(df)

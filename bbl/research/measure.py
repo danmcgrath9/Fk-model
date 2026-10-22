@@ -107,6 +107,28 @@ def main(d):
             '(a STRONGER league for bowling than the IPL), +10% more. Fixed effects, weighted by balls.', '',
             md(L.sort_values('runs_per_out_vs_ipl')), '']
 
+    # 5. start time and the home side (Wikipedia fixtures joined on the Cricinfo match id; bbl/collect)
+    ctx_path = os.path.join(d, 'match_context.parquet')
+    if os.path.exists(ctx_path):
+        ctx = pd.read_parquet(ctx_path)
+        x = m.merge(ctx, on='match_id')
+        x = x[(x.result == 'win') & x.method.isna() & x.comp.isin(['BBL', 'WBBL'])]
+        x['slot'] = pd.cut(x.start_hour, [0, 15.5, 17.5, 24], labels=['day (before 3:30pm)', 'twilight (3:30-5:30pm)', 'night (from 5:30pm)'])
+        rows = []
+        for (comp, slot), g in x.dropna(subset=['slot']).groupby(['comp', 'slot'], observed=True):
+            rows.append(dict(comp=comp, start=str(slot), games=len(g), chasing_side_won=ci(int((g.winner != g.bat_first).sum()), len(g)),
+                             chose_to_field=ci(int((g.toss_decision == 'field').sum()), len(g))))
+        out += ['## 5. Start time (local, from Wikipedia fixtures)', '', md(pd.DataFrame(rows)), '']
+        h = x[x.home_team.notna()]
+        rows = [dict(comp=comp, games=len(g), home_side_won=ci(int((g.winner == g.home_team).sum()), len(g)),
+                     seasons=', '.join(sorted(g.season.unique())))
+                for comp, g in h.groupby('comp')]
+        out += ['## 6. The marked home side (only pages that mark it "(H)")', '', md(pd.DataFrame(rows)), '']
+        t = pd.read_parquet(os.path.join(d, 'team_frame.parquet'), columns=['match_id', 'team', 'venue_share'])
+        hv = h.merge(t, left_on=['match_id', 'home_team'], right_on=['match_id', 'team'])
+        out += [f'On those games the home side\'s share of earlier games at the ground (venue_share) averages '
+                f'{hv.venue_share.mean():.2f}, against {t.venue_share.mean():.2f} for all sides: venue_share is a fair proxy for home.', '']
+
     text = '\n'.join(out)
     open(os.path.join(d, 'MEASURE.md'), 'w').write(text)
     print(text)

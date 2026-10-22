@@ -1,0 +1,81 @@
+date,team1,team2,venue,gender,comp,local_time,night,cricinfo_id,round
+2026-10-29,Melbourne Renegades,Sydney Thunder,"Junction Oval, Melbourne",female,WBBL,15:40,False,1543944,Match 1
+2026-10-29,Melbourne Stars,Hobart Hurricanes,"Junction Oval, Melbourne",female,WBBL,19:10,True,1543945,Match 2
+2026-10-30,Brisbane Heat,Sydney Sixers,"Allan Border Field, Brisbane",female,WBBL,19:40,True,1543946,Match 3
+2026-10-31,Adelaide Strikers,Melbourne Stars,"Karen Rolton Oval, Adelaide",female,WBBL,19:10,False,1543947,Match 4
+2026-10-31,Perth Scorchers,Melbourne Renegades,"WACA Ground, Perth",female,WBBL,19:10,True,1543948,Match 5
+2026-11-01,Sydney Thunder,Brisbane Heat,"Drummoyne Oval, Sydney",female,WBBL,15:40,False,1543949,Match 6
+2026-11-01,Sydney Sixers,Hobart Hurricanes,"Drummoyne Oval, Sydney",female,WBBL,19:10,True,1543950,Match 7
+2026-11-02,Melbourne Stars,Perth Scorchers,"Junction Oval, Melbourne",female,WBBL,19:10,True,1543951,Match 8
+2026-11-04,Hobart Hurricanes,Melbourne Renegades,"Bellerive Oval, Hobart",female,WBBL,19:10,True,1543952,Match 9
+2026-11-05,Adelaide Strikers,Brisbane Heat,"Drummoyne Oval, Sydney",female,WBBL,15:40,False,1543953,Match 10
+2026-11-05,Sydney Thunder,Perth Scorchers,"Drummoyne Oval, Sydney",female,WBBL,19:10,True,1543954,Match 11
+2026-11-06,Melbourne Stars,Sydney Sixers,"Junction Oval, Melbourne",female,WBBL,19:10,True,1543955,Match 12
+2026-11-07,Melbourne Renegades,Adelaide Strikers,"Junction Oval, Melbourne",female,WBBL,15:40,False,1543956,Match 13
+2026-11-07,Brisbane Heat,Hobart Hurricanes,"Allan Border Field, Brisbane",female,WBBL,19:10,True,1543957,Match 14
+2026-11-08,Sydney Sixers,Sydney Thunder,"North Sydney Oval, Sydney",female,WBBL,13:40,False,1543958,Match 15
+2026-11-08,Perth Scorchers,Melbourne Stars,"North Sydney Oval, Sydney",female,WBBL,17:10,True,1543959,Match 16
+2026-11-10,Hobart Hurricanes,Adelaide Strikers,"Bellerive Oval, Hobart",female,WBBL,19:10,True,1543960,Match 17
+2026-11-11,Perth Scorchers,Sydney Thunder,"WACA Ground, Perth",female,WBBL,19:10,True,1543961,Match 18
+2026-11-12,Melbourne Stars,Brisbane Heat,"Junction Oval, Melbourne",female,WBBL,15:40,False,1543962,Match 19
+2026-11-12,Melbourne Renegades,Sydney Sixers,"Junction Oval, Melbourne",female,WBBL,19:10,True,1543963,Match 20
+2026-11-14,Hobart Hurricanes,Brisbane Heat,"Bellerive Oval, Hobart",female,WBBL,15:40,False,1543964,Match 21
+2026-11-14,Perth Scorchers,Adelaide Strikers,"WACA Ground, Perth",female,WBBL,19:10,True,1543965,Match 22
+2026-11-15,Sydney Sixers,Melbourne Renegades,"North Sydney Oval, Sydney",female,WBBL,11:00,False,1543966,Match 23
+2026-11-16,Sydney Thunder,Melbourne Stars,"Drummoyne Oval, Sydney",female,WBBL,19:10,True,1543967,Match 24
+2026-11-17,Adelaide Strikers,Sydney Sixers,"Karen Rolton Oval, Adelaide",female,WBBL,19:10,True,1543968,Match 25
+2026-11-19,Hobart Hurricanes,Perth Scorchers,"Allan Border Field, Brisbane",female,WBBL,15:40,False,1543969,Match 26
+2026-11-19,Brisbane Heat,Sydney Thunder,"Allan Border Field, Brisbane",female,WBBL,19:10,True,1543970,Match 27
+2026-11-20,Adelaide Strikers,Melbourne Renegades,"Adelaide Oval, Adelaide",female,WBBL,19:10,True,1543971,Match 28
+2026-11-21,Hobart Hurricanes,Sydney Thunder,"Bellerive Oval, Hobart",female,WBBL,12:00,False,1543972,Match 29
+2026-11-21,Sydney Sixers,Perth Scorchers,"North Sydney Oval, Sydney",female,WBBL,15:30,False,1543973,Match 30
+2026-11-22,Brisbane Heat,Adelaide Strikers,"Allan Border Field, Brisbane",female,WBBL,15:40,False,1543974,Match 31
+2026-11-22,Melbourne Stars,Melbourne Renegades,"Junction Oval, Melbourne",female,WBBL,19:10,True,1543975,Match 32
+2026-11-25,Melbourne Renegades,Brisbane Heat,"Junction Oval, Melbourne",female,WBBL,19:10,True,1543976,Match 33
+2026-11-26,Sydney Thunder,Adelaide Strikers,"North Sydney Oval, Sydney",female,WBBL,15:40,False,1543977,Match 34
+2026-11-26,Sydney Sixers,Melbourne Stars,"North Sydney Oval, Sydney",female,WBBL,19:10,True,1543978,Match 35
+2026-11-27,Perth Scorchers,Hobart Hurricanes,"WACA Ground, Perth",female,WBBL,21:10,True,1543979,Match 36
+2026-11-28,Melbourne Renegades,Melbourne Stars,"Junction Oval, Melbourne",female,WBBL,15:40,False,1543980,Match 37
+2026-11-28,Sydney Thunder,Sydney Sixers,"Drummoyne Oval, Sydney",female,WBBL,19:10,True,1543981,Match 38
+2026-11-29,Brisbane Heat,Perth Scorchers,"Karen Rolton Oval, Adelaide",female,WBBL,12:00,False,1543982,Match 39
+2026-11-29,Adelaide Strikers,Hobart Hurricanes,"Karen Rolton Oval, Adelaide",female,WBBL,15:30,False,1543983,Match 40
+2026-12-12,Melbourne Renegades,Perth Scorchers,"M. A. Chidambaram Stadium, Chennai",male,BBL,20:10,True,1545498,Match 1
+2026-12-15,Brisbane Heat,Sydney Sixers,"The Gabba, Brisbane",male,BBL,18:15,True,1545499,Match 2
+2026-12-16,Sydney Thunder,Adelaide Strikers,"Manuka Oval, Canberra",male,BBL,19:15,True,1545500,Match 3
+2026-12-17,Hobart Hurricanes,Brisbane Heat,"Bellerive Oval, Hobart",male,BBL,19:15,True,1545501,Match 4
+2026-12-18,Melbourne Stars,Adelaide Strikers,"Melbourne Cricket Ground, Melbourne",male,BBL,19:15,True,1545502,Match 5
+2026-12-19,Sydney Thunder,Sydney Sixers,"Sydney Showground Stadium, Sydney",male,BBL,19:15,True,1545503,Match 6
+2026-12-20,Perth Scorchers,Hobart Hurricanes,"Perth Stadium, Perth",male,BBL,16:15,True,1545504,Match 7
+2026-12-21,Melbourne Stars,Brisbane Heat,"Junction Oval, Melbourne",male,BBL,19:15,True,1545505,Match 8
+2026-12-22,Sydney Sixers,Melbourne Renegades,"Sydney Cricket Ground, Sydney",male,BBL,19:15,True,1545506,Match 9
+2026-12-23,Adelaide Strikers,Sydney Thunder,"Adelaide Oval, Adelaide",male,BBL,18:15,True,1545507,Match 10
+2026-12-24,Melbourne Renegades,Hobart Hurricanes,"Junction Oval, Melbourne",male,BBL,19:15,True,1545508,Match 11
+2026-12-26,Sydney Sixers,Brisbane Heat,"Sydney Cricket Ground, Sydney",male,BBL,18:05,True,1545509,Match 12
+2026-12-26,Perth Scorchers,Melbourne Stars,"Perth Stadium, Perth",male,BBL,18:15,True,1545510,Match 13
+2026-12-27,Sydney Thunder,Melbourne Renegades,"Sydney Showground Stadium, Sydney",male,BBL,19:15,True,1545511,Match 14
+2026-12-28,Brisbane Heat,Adelaide Strikers,"The Gabba, Brisbane",male,BBL,18:15,True,1545512,Match 15
+2026-12-29,Hobart Hurricanes,Melbourne Stars,"Bellerive Oval, Hobart",male,BBL,19:15,True,1545513,Match 16
+2026-12-30,Perth Scorchers,Sydney Thunder,"Perth Stadium, Perth",male,BBL,16:15,False,1545514,Match 17
+2026-12-31,Adelaide Strikers,Melbourne Stars,"Adelaide Oval, Adelaide",male,BBL,18:45,True,1545515,Match 18
+2027-01-01,Melbourne Renegades,Sydney Sixers,"Melbourne Cricket Ground, Melbourne",male,BBL,16:00,True,1545516,Match 19
+2027-01-01,Brisbane Heat,Hobart Hurricanes,"The Gabba, Brisbane",male,BBL,18:15,True,1545517,Match 20
+2027-01-02,Sydney Thunder,Perth Scorchers,"Sydney Showground Stadium, Sydney",male,BBL,19:15,True,1545518,Match 21
+2027-01-03,Sydney Sixers,Adelaide Strikers,"Manuka Oval, Canberra",male,BBL,19:15,True,1545519,Match 22
+2027-01-04,Melbourne Stars,Melbourne Renegades,"Melbourne Cricket Ground, Melbourne",male,BBL,18:05,True,1545520,Match 23
+2027-01-04,Perth Scorchers,Brisbane Heat,"Perth Stadium, Perth",male,BBL,18:15,True,1545521,Match 24
+2027-01-05,Hobart Hurricanes,Sydney Thunder,"Bellerive Oval, Hobart",male,BBL,19:15,True,1545522,Match 25
+2027-01-06,Adelaide Strikers,Melbourne Renegades,"Adelaide Oval, Adelaide",male,BBL,18:45,True,1545523,Match 26
+2027-01-07,Melbourne Stars,Sydney Sixers,"Melbourne Cricket Ground, Melbourne",male,BBL,19:15,True,1545524,Match 27
+2027-01-08,Brisbane Heat,Perth Scorchers,"The Gabba, Brisbane",male,BBL,18:15,True,1545525,Match 28
+2027-01-09,Hobart Hurricanes,Adelaide Strikers,"York Park, Launceston",male,BBL,19:15,True,1545526,Match 29
+2027-01-10,Sydney Sixers,Perth Scorchers,"Sydney Cricket Ground, Sydney",male,BBL,14:10,False,1545527,Match 30
+2027-01-10,Melbourne Renegades,Brisbane Heat,"Junction Oval, Melbourne",male,BBL,19:15,True,1545528,Match 31
+2027-01-11,Sydney Thunder,Melbourne Stars,"Manuka Oval, Canberra",male,BBL,19:15,True,1545529,Match 32
+2027-01-12,Adelaide Strikers,Hobart Hurricanes,"Adelaide Oval, Adelaide",male,BBL,18:45,True,1545530,Match 33
+2027-01-13,Perth Scorchers,Melbourne Renegades,"Perth Stadium, Perth",male,BBL,16:15,True,1545531,Match 34
+2027-01-14,Melbourne Stars,Hobart Hurricanes,"Melbourne Cricket Ground, Melbourne",male,BBL,19:15,True,1545532,Match 35
+2027-01-15,Sydney Sixers,Sydney Thunder,"Sydney Cricket Ground, Sydney",male,BBL,19:15,True,1545533,Match 36
+2027-01-16,Adelaide Strikers,Perth Scorchers,"Adelaide Oval, Adelaide",male,BBL,15:30,True,1545534,Match 37
+2027-01-16,Melbourne Renegades,Melbourne Stars,"Melbourne Cricket Ground, Melbourne",male,BBL,19:15,True,1545535,Match 38
+2027-01-17,Hobart Hurricanes,Sydney Sixers,"Bellerive Oval, Hobart",male,BBL,13:40,False,1545536,Match 39
+2027-01-17,Brisbane Heat,Sydney Thunder,"The Gabba, Brisbane",male,BBL,18:15,True,1545537,Match 40

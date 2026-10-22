@@ -43,6 +43,12 @@ VENUE_ALIAS = {
     'Metricon Stadium': 'Carrara Oval', 'Blundstone Arena': 'Bellerive Oval', 'Spotless Stadium': 'Sydney Showground Stadium',
     'GIANTS Stadium': 'Sydney Showground Stadium', 'ENGIE Stadium': 'Sydney Showground Stadium',
     'UTAS Stadium': 'York Park', 'Junction Oval': 'Junction Oval',
+    # the names Wikipedia's fixtures use (sponsor names included), so a coming fixture meets its ground's history
+    'The Gabba': 'Gabba', 'WACA Ground': 'WACA', 'The WACA': 'WACA', 'Ninja Stadium': 'Bellerive Oval',
+    'CitiPower Centre': 'Junction Oval', 'Heritage Bank Stadium': 'Carrara Oval', 'People First Stadium': 'Carrara Oval',
+    'Carrara Stadium': 'Carrara Oval', 'Engie Stadium': 'Sydney Showground Stadium', 'Etihad Stadium': 'Docklands Stadium',
+    'ANZ Stadium': 'Stadium Australia', 'Kardinia Stadium': 'Kardinia Park', 'York Park': 'York Park',
+    'Lavington Sports Ground': 'Lavington Sports Oval', 'TIO Traeger Park': 'Traeger Park', 'Cazalys Stadium': "Cazaly's Stadium",
 }
 
 
