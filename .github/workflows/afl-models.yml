@@ -1,0 +1,47 @@
+name: afl models
+
+# Trains the models a live round is priced with (afl/live/train_final.py) and keeps them on the "afl-models" release,
+# so the round workflow does not retrain every week. Runs when the model code changes. Its own concurrency group;
+# no Form King key, no BetMatic, no bets.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [afl-props]
+    paths:
+      - 'afl/model/**'
+      - 'afl/live/train_final.py'
+      - '.github/workflows/afl-models.yml'
+
+concurrency:
+  group: afl-models
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r afl/requirements.txt
+      - name: History from the afl-history release
+        run: gh release download afl-history --dir afl/cache --pattern '*.parquet'
+      - name: Build the player-game table
+        run: python -m afl.model.frame afl/cache
+      - name: Train through the last finished season
+        run: python -m afl.live.train_final afl/cache | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Keep the models on the release
+        run: |
+          tar -czf afl-models.tar.gz -C afl/cache models
+          gh release view afl-models >/dev/null 2>&1 || gh release create afl-models --target main --latest=false \
+            --title "AFL models" --notes "Models for live AFL prop pricing (afl/live/). Written by the afl models workflow."
+          gh release upload afl-models afl-models.tar.gz --clobber

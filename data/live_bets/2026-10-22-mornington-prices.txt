@@ -1,99 +1,99 @@
-# Mornington Thu 22 Oct (official going, band Good): final fields pulled Tue 20 Oct 11:08am Melbourne. Emergencies as SCR until they gain a start; no market yet.
-1, Deadly Force, 0, 0
-1, Montostratus, 0, 0
-1, Fanfire, 0, 0
-1, Luscombe, 0, 0
-1, Raining Fire, 0, 0
-1, Prolific Angel, 0, 0
-1, Top Ace, 0, 0
-1, Exclusive Punt, 0, 0
-1, Mystic River Queen, 0, 0
-1, He's A Dandy, SCR
-2, Bifrost, 0, 0
-2, Fullproof, 0, 0
-2, Strong Box, 0, 0
-2, Master Jack, 0, 0
-2, Bella Cinque, 0, 0
-2, Party Benefits, 0, 0
-2, Ilovediamonds, 0, 0
-2, Dominant Miss, 0, 0
-3, Aurelio, 0, 0
-3, Call Me Francis, 0, 0
-3, Charlie Messy Hair, 0, 0
-3, Clydebank Robber, 0, 0
-3, Grey Sabre, 0, 0
-3, Grinding Away, 0, 0
-3, Raghnall, 0, 0
-3, Blanche Bass, 0, 0
-3, Deelamour, 0, 0
-3, Prestige Ricky, 0, 0
-3, Kissattack, SCR
+# Mornington Thu 22 Oct (official going, band Good): race-morning prices 9:32am Thu (Form King, after scratchings); fk_open = Form King opening price. Emergencies as SCR unless they gained a start.
+1, Deadly Force, 1.65, 1.65, fk_open 2.85
+1, Raining Fire, 7.00, 7.00, fk_open 4.40
+1, Luscombe, SCR
+1, Montostratus, 151.00, 151.00, fk_open 113.50
+1, He's A Dandy, 51.00, 51.00, fk_open 51.00
+1, Fanfire, SCR
+1, Prolific Angel, SCR
+1, Exclusive Punt, 34.00, 34.00, fk_open 32.50
+1, Top Ace, 5.25, 5.25, fk_open 4.75
+1, Mystic River Queen, 4.60, 4.60, fk_open 6.75
+2, Bifrost, 4.20, 4.20, fk_open 4.50
+2, Fullproof, 13.00, 13.00, fk_open 16.50
+2, Bella Cinque, 4.40, 4.40, fk_open 4.90
+2, Dominant Miss, 34.00, 34.00, fk_open 66.00
+2, Ilovediamonds, 5.00, 5.00, fk_open 3.65
+2, Party Benefits, SCR
+2, Master Jack, 19.00, 19.00, fk_open 32.50
+2, Strong Box, 2.40, 2.40, fk_open 2.60
+3, Grinding Away, 8.00, 8.00, fk_open 21.00
+3, Clydebank Robber, 11.00, 11.00, fk_open 5.50
+3, Blanche Bass, 6.75, 6.75, fk_open 5.50
+3, Call Me Francis, 29.00, 29.00, fk_open 26.00
+3, Charlie Messy Hair, 5.50, 5.50, fk_open 5.00
+3, Grey Sabre, 7.00, 7.00, fk_open 7.50
+3, Raghnall, 3.20, 3.20, fk_open 2.60
 3, Threewinesin, SCR
-3, Verry Zeductive, SCR
+3, Deelamour, 34.00, 34.00, fk_open 41.00
 3, Startin'sumthin', SCR
-4, Big Kapow, 0, 0
-4, Foxtrot Charlie, 0, 0
-4, Trouble'n Paradise, 0, 0
-4, Iftihar, 0, 0
-4, Janie's Got A Gun, 0, 0
-4, Around The Marx, 0, 0
-4, Boy From Zadar, 0, 0
-4, Debut Author, 0, 0
-4, Mo, 0, 0
-4, Regal Harry, 0, 0
-4, Model Gigi, 0, 0
-4, Scoot, 0, 0
-4, Symphony Royale, SCR
-4, I'lluvyoulongtime, SCR
+3, Kissattack, SCR
+3, Aurelio, 10.00, 10.00, fk_open 10.00
+3, Verry Zeductive, SCR
+3, Prestige Ricky, 15.00, 15.00, fk_open 21.00
+4, Native Spirit, 151.00, 151.00, fk_open 126.00
 4, All Too Single, SCR
-4, Native Spirit, SCR
-5, Hansard, 0, 0
-5, Parera, 0, 0
-5, The Long Mover, 0, 0
-5, Top Rich, 0, 0
-5, Trentino, 0, 0
-5, Immortal Diva, 0, 0
-5, Boutin, 0, 0
-5, Gilgeous, 0, 0
-5, Late Night Wonder, 0, 0
-5, Levent, 0, 0
-5, Prime Force, 0, 0
-5, Chocolate Freckles, 0, 0
-5, Pierrobid, SCR
-6, Albanian I Am, 0, 0
-6, Sensational Ruler, 0, 0
-6, Ballistic Romeo, 0, 0
-6, Surperb Frost, 0, 0
-6, Wondering Spirit, 0, 0
-6, Amphactor, 0, 0
-6, Chambers Bay, 0, 0
-6, Fearless Writer, 0, 0
-6, Lope De Lardo, 0, 0
-6, Brutify, 0, 0
-6, Qubella, 0, 0
-6, Angelotti, 0, 0
-6, Egerton Reef, SCR
-6, Riozino, SCR
+4, Big Kapow, SCR
+4, Foxtrot Charlie, SCR
+4, Trouble'n Paradise, SCR
+4, Symphony Royale, 151.00, 151.00, fk_open 81.00
+4, Janie's Got A Gun, SCR
+4, Iftihar, 10.00, 10.00, fk_open 10.00
+4, I'lluvyoulongtime, 151.00, 151.00, fk_open 81.00
+4, Boy From Zadar, 4.00, 4.00, fk_open 12.00
+4, Mo, 31.00, 31.00, fk_open 14.00
+4, Regal Harry, 3.40, 3.40, fk_open 10.00
+4, Model Gigi, 8.00, 8.00, fk_open 5.50
+4, Around The Marx, SCR
+4, Scoot, 2.40, 2.40, fk_open 4.00
+4, Debut Author, SCR
+5, Immortal Diva, 101.00, 101.00, fk_open 151.00
+5, Parera, 13.00, 13.00, fk_open 10.00
+5, The Long Mover, SCR
+5, Hansard, 126.00, 126.00, fk_open 101.00
+5, Trentino, 10.00, 10.00, fk_open 17.50
+5, Pierrobid, 61.00, 61.00, fk_open 81.00
+5, Top Rich, 3.10, 3.10, fk_open 3.85
+5, Prime Force, 4.00, 4.00, fk_open 4.40
+5, Gilgeous, SCR
+5, Chocolate Freckles, 71.00, 71.00, fk_open 101.00
+5, Levent, 7.00, 7.00, fk_open 12.00
+5, Late Night Wonder, 3.50, 3.50, fk_open 8.25
+5, Boutin, SCR
 6, The Kings Gospel, SCR
-7, Alexander Thegreat, 0, 0
-7, Coronation Turbo, 0, 0
-7, Light Moves, 0, 0
-7, Pol Rogeur, 0, 0
-7, Mykindakandy, 0, 0
-7, She Won't Fold, 0, 0
-7, Crank, 0, 0
-7, Home Tomurra, 0, 0
-7, Cresta Crystal, 0, 0
-7, Determined Rose, 0, 0
-7, Lagunanini, 0, 0
-8, Grouse Mountain, 0, 0
-8, Diamanda, 0, 0
-8, Headstock, 0, 0
-8, Yellowknife, 0, 0
-8, Ranakye, 0, 0
-8, Pull My Finger, 0, 0
-8, Russian Benefits, 0, 0
-8, Sacro Catino, 0, 0
-8, Eeteedee, 0, 0
-8, Every Little Thing, 0, 0
-8, Mrs Gossip, 0, 0
+6, Qubella, 23.00, 23.00, fk_open 10.00
+6, Amphactor, 14.00, 14.00, fk_open 6.50
+6, Albanian I Am, SCR
+6, Chambers Bay, 35.00, 35.00, fk_open 41.00
+6, Fearless Writer, 9.50, 9.50, fk_open 5.50
+6, Brutify, 3.30, 3.30, fk_open 3.20
+6, Surperb Frost, 4.60, 4.60, fk_open 7.50
+6, Sensational Ruler, SCR
+6, Egerton Reef, 11.00, 11.00, fk_open 5.00
+6, Wondering Spirit, 34.00, 34.00, fk_open 34.00
+6, Riozino, 151.00, 151.00, fk_open 81.00
+6, Ballistic Romeo, 23.00, 23.00, fk_open 14.00
+6, Lope De Lardo, 4.20, 4.20, fk_open 10.00
+6, Angelotti, 29.00, 29.00, fk_open 41.00
+7, Mykindakandy, SCR
+7, She Won't Fold, 12.00, 12.00, fk_open 15.00
+7, Coronation Turbo, 11.00, 11.00, fk_open 61.00
+7, Pol Rogeur, 13.00, 13.00, fk_open 15.00
+7, Alexander Thegreat, 15.00, 15.00, fk_open 13.00
+7, Cresta Crystal, 6.00, 6.00, fk_open 17.00
+7, Light Moves, 5.00, 5.00, fk_open 7.00
+7, Determined Rose, 1.85, 1.85, fk_open 2.00
+7, Home Tomurra, SCR
+7, Lagunanini, SCR
+7, Crank, SCR
+8, Diamanda, 8.50, 8.50, fk_open 6.50
+8, Mrs Gossip, 126.00, 126.00, fk_open 101.00
+8, Headstock, 17.00, 17.00, fk_open 16.00
+8, Russian Benefits, 5.50, 5.50, fk_open 14.00
+8, Ranakye, SCR
+8, Grouse Mountain, 19.00, 19.00, fk_open 7.50
+8, Sacro Catino, 17.00, 17.00, fk_open 16.00
+8, Every Little Thing, 7.50, 7.50, fk_open 8.00
+8, Pull My Finger, 5.75, 5.75, fk_open 6.00
+8, Yellowknife, 3.70, 3.70, fk_open 3.80
+8, Eeteedee, 5.50, 5.50, fk_open 4.80

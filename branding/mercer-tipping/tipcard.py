@@ -26,6 +26,7 @@ body{{width:1080px;height:1350px;background:{NAVY};color:{INK};font-family:BC;di
 .h{{font:800 {{hs}}px/1 BC;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
 .p{{font:800 {{hs}}px/1 BC;color:{GOLD};text-align:right}}
 .u{{font:600 30px/1 BC;color:{INK};text-align:right;letter-spacing:2px;border-left:2px solid {LINE};padding-left:18px}}
+.rt{{display:block;font:600 22px/1 BC;color:{PALE};letter-spacing:1px;margin-top:6px}}
 .foot{{display:flex;justify-content:space-between;font:600 24px/1.2 BC;color:{PALE};letter-spacing:2px;border-top:2px solid {LINE};padding-top:22px}}
 """
 def card(d):
@@ -34,7 +35,10 @@ def card(d):
     dense = (".row{padding:7px 0}.r{font-size:28px;padding:4px 0}.t{font-size:19px;margin-top:4px}.list{gap:22px}"
              ".u{font-size:27px}") if n >= 10 else ""
     # optional (18 Oct 2026, founder): "prices": false drops the price column; "brand": false drops the Mercer mark;
-    # "foot": false drops the notes line at the bottom (21 Oct 2026, founder)
+    # "foot": false drops the notes line at the bottom (21 Oct 2026, founder), and a card without the brand has no notes
+    # line unless "foot": true (22 Oct 2026, founder: "get rid of the bottom notes when I ask for no Mercer or just a
+    # card"); the Twitter footer is "Win bets." (22 Oct 2026, founder); a bet's optional "rated" prints our price
+    # under the taken price (22 Oct 2026, founder: "put rated prices next to them")
     show_p, brand = d.get("prices", True), d.get("brand", True)
     if not show_p:
         dense += ".row{grid-template-columns:96px 1fr 150px}.u{border-left:0;padding-left:0}"
@@ -43,12 +47,12 @@ def card(d):
     rows = []
     for m in d["meetings"]:
         b = "".join(f"<div class='row'><div><div class='r'>R{x['race']}</div>" + (f"<div class='t'>{html.escape(x['time'])}</div>" if x.get('time') else "") + f"</div><div class='h'>{html.escape(x['horse'])}</div>"
-                    + (f"<div class='p'>{html.escape(x['price'])}</div>" if show_p else "") + f"<div class='u'>{html.escape(x['units'])} WIN</div></div>" for x in m["bets"])
+                    + (f"<div class='p'>{html.escape(x['price'])}" + (f"<small class='rt'>rated {html.escape(x['rated'])}</small>" if x.get('rated') else "") + "</div>" if show_p else "") + f"<div class='u'>{html.escape(x['units'])} WIN</div></div>" for x in m["bets"])
         rows.append(f"<div class='mtg'><h2>{html.escape(m['name'])}<small>{html.escape(m.get('note',''))}</small></h2>{b}</div>")
     return (f"<html><head><style>{CSS.replace('{hs}', str(hs))}{dense}</style></head><body>"
             f"<div class='top'><div class='lock'>" + ("<div class='mark'><span>M</span></div><div class='brand'>MERCER<span>TIPPING</span></div>" if brand else "") + f"</div><div class='when'>{html.escape(d['day'])}<span>{html.escape(d['date'])}</span></div></div>"
             f"<div class='list'>{''.join(rows)}</div>"
-            + ("" if d.get("foot") is False else f"<div class='foot'><span>{html.escape(d.get('footer','Prices at time of posting. Win bets.'))}</span><span>18+ · Gamble responsibly</span></div>")
+            + ("" if d.get("foot", brand) is False else f"<div class='foot'><span>{html.escape(d.get('footer','Win bets.'))}</span><span>18+ · Gamble responsibly</span></div>")
             + "</body></html>")
 async def main(src, out):
     from playwright.async_api import async_playwright

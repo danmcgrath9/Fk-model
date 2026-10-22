@@ -77,3 +77,4 @@ same 32 horses and 7 winners.
 **Copied tips (founder, 21 Oct 2026, replacing "no follower-book orders" for tips he forwards).** When the founder forwards another tipster's bet and says to take it: units at $50, minimum odds always 20c under the tipster's quoted price, and the top bookie price at the time (BetMatic High Odds First across every running session, `when: best` in fk-betmatic). Placed straight away, dry run first, sent only on his OK on the exact order. Recorded in their own section of betmatic-book.md, never mixed into the model's results.
 
 **Unit size (founder, 21 Oct 2026): $50 a unit moving forward.** Every BetMatic send uses unit 50 unless the founder says otherwise. The Fri 23 Oct (Cranbourne, Ballarat) and Sat 24 Oct (Flemington) orders sent on 21 Oct went at $25.
+- **Cards (founder, 22 Oct 2026):** a card asked for with no Mercer, or "just a card", has no bottom notes line at all. The Twitter card footer is "Win bets." only (no "Placed early").

@@ -12,9 +12,9 @@ might be $100. For those paper bets that is. Now to keep an actual P&L let's jus
 
 | Date | Meeting | Unit | Bets | Won | Staked | Returned | P/L | ROI |
 |---|---|---|---|---|---|---|---|---|
-| | | | | | | | | |
+| 2026-10-21 | Geelong | $25 | 1 (Murshidi; Jenni You Think scratched, $49 refunded) | 1 | $126 (5.04u) | $1,386 | **+$1,260 (+50.40u)** | +1000% |
 
-Placed so far (Mon 19 Oct, for Wednesday): Geelong R5 Murshidi (#7), $126 (5.04u) at $11, our price $3.81, both order steps filled at TAB's open 11:45am Monday. Tweeted by the founder the same morning as 5u at $11 (locked). Card posted Monday afternoon records it at $6.50 (5u), founder's call; the real-money line stays $126 at $11. Runs: no deduction in R5 (founder, Wed 21 Oct).
+Placed so far (Mon 19 Oct, for Wednesday): Geelong R5 Murshidi (#7), $126 (5.04u) at $11, our price $3.81, both order steps filled at TAB's open 11:45am Monday. Tweeted by the founder the same morning as 5u at $11 (locked). Card posted Monday afternoon records it at $6.50 (5u), founder's call; the real-money line stays $126 at $11. Runs: no deduction in R5 (founder, Wed 21 Oct). **WON** (SP $3.70, BSP $3.94): $126 at $11 returns $1,386, +$1,260 (+50.40u). Taken at 2.8x BSP. Twitter: 5u at $11, +50u.
 Geelong R6 Jenni You Think (#12), $49 (1.96u) at $12 before deductions, our price $8.73, first order step filled at TAB's open Monday (the second needed $14.64). SCRATCHED Wed 21 Oct morning (founder): void, $49 refunded, a no-bet on Twitter, not a loss. Firm tier, double stake. Geelong R4 Karren: no bet, TAB opened $2.60 under the $2.75 minimum.
 Geelong R1-R3: NOTHING PLACED, BetMatic late again. R3 triggered 4:11:12pm Monday, the bot saw Alero $11 (min $13.03; opened $15) and Attachments $9.50 (min $14.15); the other 8 R3 orders had not triggered by 4:13pm, cancelled and resent as Now bets (nothing matched). R1/R2 show triggered but the bot never received them. Reported to BetMatic.
 Blocked, paper only (to test the rule): Geelong R4 Mr Natural (#14), our price $10.08, blocked by the bounce rule (last start a new peak, 83.2 vs best 78.7); TAB opened $21, firmed to $7 by 3:30pm Monday. Karren drifted $2.60 to $2.70, still under $2.75: no bet. Then out to $3.70 by about 3:45pm Monday (a 5u bet under the after-open rule, $2.78+); founder's call, NO BET on a drift that big. Paper line to learn from: Karren, $3.70, would-be 5u.
@@ -108,10 +108,10 @@ scratchings). The backtest says the top-up slice loses (t_topup.py: -7.6% holdou
 | 2026-10-18 Moe | R6 | Gatsby Crown | $8.50 | $10.00 | $7.08 | 0.00u | 0.98u | 10th, SP $10 | -0.98 |
 | 2026-10-18 Moe | R6 | Ze Bee Nine | $14.50 | $14.00 | $9.40 | 0.79u | 0.01u | 9th, SP $8.50 | -0.01 |
 | 2026-10-19 Echuca | R6 | Ice Quake | $8.50 | $7.00 | $5.30 | 0.00u | 1.95u | 2nd, SP $6.50, BSP $6.73 | -1.95 |
-| 2026-10-21 Geelong | R2 | Superliv | $15.00 | $18.00 | $12.14 | 0.00u | 1.00u | | |
-| 2026-10-21 Geelong | R6 | Stay Humble | $5.50 | $5.50 | $3.96 | 0.00u | 3.11u | | |
-| 2026-10-21 Geelong | R7 | Litzdeel (Geelong Cup: internationals in the field, flagged) | $6.00 | $6.00 | $4.88 | 0.00u | 1.71u | | |
-| 2026-10-21 Geelong | R8 | Keep Your Cool | $7.50 | $7.00 | $5.81 | 0.00u | 1.27u | | |
+| 2026-10-21 Geelong | R2 | Superliv | $15.00 | $18.00 | $12.14 | 0.00u | 1.00u | 3rd, SP $13, BSP $17 | -1.00 |
+| 2026-10-21 Geelong | R6 | Stay Humble | $5.50 | $5.50 | $3.96 | 0.00u | 3.11u | 3rd, SP $3.60, BSP $4.04 | -3.11 |
+| 2026-10-21 Geelong | R7 | Litzdeel (Geelong Cup: internationals in the field, flagged) | $6.00 | $6.00 | $4.88 | 0.00u | 1.71u | 5th, SP $5.50, BSP $7 | -1.71 |
+| 2026-10-21 Geelong | R8 | Keep Your Cool | $7.50 | $7.00 | $5.81 | 0.00u | 1.27u | 3rd, SP $8.50, BSP $11.88 | -1.27 |
 
 Warrnambool 15 Oct (re-priced 9:34am Thursday, 11 scratched, jockeys and gear in): 6 value-at-open runners on the final field, 1 top-up, Who I Think I Am 0.40u at $4.60; the rest are under take-at now.
 Caulfield 14 Oct (re-priced 8:45am): 5 value-at-open runners on the final field, all under take-at at race-morning prices, so no top-ups.
@@ -183,6 +183,12 @@ The test: after tonight's draw, re-pull Form King and re-price on the final inpu
   at the open and were missed by that fault; placed by hand after.
 - Unit $50 from 21 Oct 4pm (founder). Ballarat's 48 orders cancelled and resent at $50 to fire at the open.
 
+- CORRECTION (founder, Thu 22 Oct): the "never attempted" orders were the TAB account being EMPTY, not a bot fault. With no
+  money in the account the bot does not attempt the bet at all, so no bet record is written. That fits the timeline: Mornington
+  (Mon afternoon, after Murshidi's $126 took the balance to $0.29), Flemington and Cranbourne R1/R2/R4 (Wed, before TAB was
+  funded about 3pm) left no records; Cranbourne R3 at 3:09pm and later races, after funding, show the bot's price refusals.
+  Lesson: keep TAB funded to cover every order that can fire at an open.
+
 ### Taken, Wed 21 Oct (TAB, real money)
 | Meeting | Race | Horse | Price | Stake | Units | Ours | How |
 |---|---|---|---|---|---|---|---|
@@ -192,11 +198,36 @@ The test: after tonight's draw, re-pull Form King and re-price on the final inpu
 | Flemington Sat 24 | R2 | Turbo Saint | $18 | $26 | 0.52u | $12.30 | after-open, value at FK open $17 |
 | Flemington Sat 24 | R9 | Classic Gem | $9 | $44 | 0.88u | $7.33 | after-open, value at FK open $13.50 |
 | Flemington Sat 24 | R9 | Shockletz | $10 | $40 | 0.80u | $8.10 | after-open, value at FK open $12.67 |
-| **Total** | | | | **$321** | **6.78u** | | |
+| Cranbourne Fri 23 | R6 | Castellar (top-up) | $11 | $17 | 0.34u | $12.41 | founder's call, below our price; Castellar now $35 at $14.09 average |
+| **Total** | | | | **$338** | **7.12u** | | |
 
 Flemington after-open, not filled (TAB under the minimum): Ice Kool ($2.30 v $2.73), Surfin' Bird ($2.90 v $3.30), and the
 higher steps of the three above. Flemington R7/R8: Aethelwulf and Cosmic Crusader only (founder's own bets).
 
+
+## Tweeted Thu 22 Oct (locked)
+Twitter units are the model stake halved (max 5u). Prices are what BetMatic would have taken at Form King's opening price
+(founder: "what betmatic would of got"), not always what we got; our real bets are in "Taken, Wed 21 Oct" above.
+
+Murshidi winner card (Geelong R5, 5u at $11, SP $3.70, +50u), with today's Mornington runners listed without prices:
+R2 Party Benefits, R3 Grinding Away, R7 Cresta Crystal, R8 Russian Benefits (paper; not placed, TAB was empty when they fired).
+Settle on Twitter at the model's open-price stakes halved: Party Benefits 0.36u at $8.75, Grinding Away 1.44u at $21,
+Cresta Crystal 1.35u at $17, Russian Benefits 2.50u at $14.
+
+Fri/Sat card ("Placed early. Win bets.", rated price shown under each):
+
+| Day | Race | Horse | Price | Rated | Twitter units |
+|---|---|---|---|---|---|
+| Fri | Cranbourne R2 | Eye For An Eye | $22 | $13.22 | 0.95u |
+| Fri | Cranbourne R2 | Superstock | $17.50 | $10.39 | 1.24u |
+| Fri | Cranbourne R6 | Castellar | $16.50 | $12.41 | 0.35u |
+| Sat | Flemington R1 | Ice Kool | $2.80 | $2.27 | 2u |
+| Sat | Flemington R2 | Turbo Saint | $18 | $12.30 | 0.26u |
+| Sat | Flemington R6 | Surfin' Bird | $4.40 | $2.75 | 3.6u |
+| Sat | Flemington R7 | Aethelwulf | $8.50 | $3.24 | 3.85u |
+| Sat | Flemington R8 | Cosmic Crusader | $11 | $5.58 | 2u |
+| Sat | Flemington R9 | Classic Gem | $13.50 | $7.33 | 1.3u |
+| Sat | Flemington R9 | Shockletz | $10 | $8.10 | 0.4u |
 
 ## Copied tips (founder's call, separate from the model's results)
 
@@ -206,3 +237,20 @@ higher steps of the three above. Flemington R7/R8: Aethelwulf and Cosmic Crusade
 
 The order path works: BetMatic took a High Odds First bet with the bookmaker list left open (every bookmaker where we have a running session) and fired it at once. Nothing was matched because the only running session (TAB) had no money in it.
 
+
+## Ballarat Fri 23 Oct: paper (orders fired, TAB empty)
+BetMatic triggered all 48 $50 Market Open orders at 9:25:15am Thu 22 Oct when TAB opened the meeting. No bet records
+on any of them, the signature of an empty account: the TAB balance read $0.44 at 10:03am. Founder: "I didn't place any
+actual bets, so paper only". The cancel run was refused for every order ("already triggered"), so nothing is live.
+Paper at Form King's opening price (every step whose band holds the open), 5 bets, 16.59u:
+
+| Race | Horse | FK open | Ours | Stake (u) | Twitter (u, halved) | TAB 9:55am |
+|---|---|---|---|---|---|---|
+| R3 | Star Je Taime | $7.50 | $4.15 | 6.22 | 3.11 | $5.00 |
+| R3 | Wavelets | $14 | $8.60 | 0.83 | 0.42 | $12.00 |
+| R7 | Bel Lupa | $19 | $13.11 | 1.50 | 0.75 | $9.00 |
+| R8 | Jenni You Think | $8.75 | $4.37 | 5.92 | 2.96 | $4.60 |
+| R9 | Russian Duchess | $11 | $8.51 | 2.12 | 1.06 | $11.00 |
+
+Not value at the open: the other 18 runners opened under their minimum (Anglais $4.00 sat in the gap between its
+$3.97-$3.99 and $4.48 steps).

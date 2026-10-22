@@ -12,6 +12,11 @@ __pycache__/
 !env.example
 .venv/
 history/
+
+# AFL: data lives on the afl-history release, never in the repo
+afl/cache/
+
+# NBL: data lives on the nbl-history release, never in the repo
 nbl/cache/
 nbl/out/
 nbl/sheets/

@@ -1,0 +1,73 @@
+name: afl round
+
+# Prices a round the moment its named teams are committed to afl/live/named/ (a pasted team sheet, .txt, or the CSV
+# layout of afl/live/teams_template.csv). Fresh player stats come from fitzRoy's GitHub mirror (no request to any
+# league or bookmaker site); the models come from the afl-models release. The sheet is committed back to the branch as
+# afl/docs/LIVE_<season>_R<round>.md on the branch it ran from. Also runs by hand (Actions > afl round > Run workflow,
+# naming the sheet). Pricing only: nothing is bet, nothing is sent to BetMatic.
+
+on:
+  workflow_dispatch:
+    inputs:
+      sheet:
+        description: 'team sheet to price, e.g. afl/live/named/2027_R1.txt'
+        required: true
+  push:
+    branches: [afl-props]
+    paths:
+      - 'afl/live/named/**'
+
+concurrency:
+  group: afl-round
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  price:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r afl/requirements.txt
+      - name: Which team sheets changed
+        id: changed
+        env:
+          SHEET: ${{ github.event.inputs.sheet }}
+        run: |
+          if [ -n "$SHEET" ]; then files=$(echo "$SHEET" | grep -E '^afl/live/named/[A-Za-z0-9_./-]+\.(txt|csv)$' || true)
+          else files=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- afl/live/named/ | grep -E '\.(txt|csv)$' || true); fi
+          echo "files=$(echo $files)" >> "$GITHUB_OUTPUT"
+          echo "team sheets: ${files:-none}" | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Latest stats (fitzRoy mirror) and the models
+        if: steps.changed.outputs.files != ''
+        run: |
+          python afl/data/mirror.py --out afl/cache
+          gh release download afl-history --dir afl/cache --pattern 'fryzigg_*.parquet'
+          gh release download afl-models --dir . --pattern 'afl-models.tar.gz'
+          tar -xzf afl-models.tar.gz -C afl/cache
+      - name: Price
+        if: steps.changed.outputs.files != ''
+        run: |
+          set -o pipefail
+          for f in ${{ steps.changed.outputs.files }}; do
+            python -m afl.live.price_round afl/cache "$f" | tee -a "$GITHUB_STEP_SUMMARY"
+          done
+      - name: Commit the sheets
+        if: steps.changed.outputs.files != ''
+        run: |
+          git config user.name "afl round"
+          git config user.email "actions@users.noreply.github.com"
+          git add afl/docs/LIVE_*.md
+          git diff --cached --quiet && exit 0
+          git commit -m "AFL: live price sheet from $(echo ${{ steps.changed.outputs.files }} | xargs -n1 basename | tr '\n' ' ')"
+          for i in 1 2 3; do git pull --rebase origin "${{ github.ref_name }}" && git push origin "HEAD:${{ github.ref_name }}" && break; sleep $((i * 5)); done

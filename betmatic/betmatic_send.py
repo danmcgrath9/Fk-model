@@ -186,6 +186,7 @@ def send(a):
         body["start_time"] = c["startTime"]
         return None
     ledger_fn = a.orders.replace(".csv", "-ledger.csv"); new = not os.path.exists(ledger_fn)
+    skipped = []   # labels already on BetMatic (22 Oct 2026: 10 of 13 Flemington resends were skipped with one quiet line each)
     with open(ledger_fn if a.send else os.devnull, "a", newline="") as fh:
         w = csv.writer(fh)
         if new: w.writerow(["label", "race", "number", "horse", "min_odds", "max_odds", "stake", "notification_ids", "message"])
@@ -202,7 +203,7 @@ def send(a):
             # cancelled to re-price after the gear changes, and the re-send would otherwise have skipped every bet)
             if any(isinstance(n, dict) and n.get("label") == lab and not n.get("is_canceled")
                    for n in results(bm.get("/notification/", label=lab, page_size=100))):
-                print(f"SKIP {lab}: already on BetMatic"); continue
+                print(f"SKIP {lab}: already on BetMatic"); skipped.append(lab); continue
             body.update(label=lab) if getattr(a, "best_price", False) else body.update(label=lab, bookies=bid, target_session=str(a.session))
             code, resp = bm.post("/notification/create/", body)
             msg = resp.get("message", "") if isinstance(resp, dict) else str(resp)
@@ -211,6 +212,9 @@ def send(a):
             print(f"{'OK ' if ok else 'FAIL'} {lab} ${body['stake']} min {body['odds']} -> {code} {msg} {ids}")
             w.writerow([lab, o["race"], o["number"], o["horse"], o["min_odds"], o.get("max_odds", ""), body["stake"], ids, msg])
             time.sleep(0.2)
+    if skipped:
+        print(f"\n*** {len(skipped)} of {len(bets)} bets NOT SENT: their labels are already on BetMatic "
+              f"(a previous send of this file). To send them again, re-run with a new tag (eg --tag b). ***")
     print("ledger:", ledger_fn if a.send else "(dry run: nothing sent, no ledger written; add --send to send)")
 
 
