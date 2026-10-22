@@ -136,7 +136,7 @@ jobs:
         run: |
           DATE_ARG=""
           [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
-          [ -n "${{ github.event.inputs.track }}" ] && DATE_ARG="$DATE_ARG --track ${{ github.event.inputs.track }}"
+          [ -n "${{ github.event.inputs.track }}" ] && DATE_ARG="$DATE_ARG --track \"${{ github.event.inputs.track }}\""   # quoted: two-word tracks (Yarra Valley, St Arnaud)
           [ -n "${{ github.event.inputs.races }}" ] && DATE_ARG="$DATE_ARG --races ${{ github.event.inputs.races }}"
           [ -n "${{ github.event.inputs.horse }}" ] && DATE_ARG="$DATE_ARG --no-speedmaps --no-profiles --horse \"${{ github.event.inputs.horse }}\""
           [ "${{ github.event.inputs.all_statuses }}" = "yes" ] && DATE_ARG="$DATE_ARG --all-statuses"
@@ -166,12 +166,12 @@ jobs:
         run: |
           DATE_ARG=""
           [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
-          [ -n "${{ github.event.inputs.track }}" ] && DATE_ARG="$DATE_ARG --track ${{ github.event.inputs.track }}"
+          TRACK_ARG=(); [ -n "${{ github.event.inputs.track }}" ] && TRACK_ARG=(--track "${{ github.event.inputs.track }}")   # an array: two-word tracks stay one argument
           [ "${{ github.event.inputs.paper }}" = "yes" ] && DATE_ARG="$DATE_ARG --paper"
           if [ -n "$EXCLUDE_RUN" ]; then
-            python scripts/build_report.py --no-open $DATE_ARG --exclude-run "$EXCLUDE_RUN"
+            python scripts/build_report.py --no-open $DATE_ARG "${TRACK_ARG[@]}" --exclude-run "$EXCLUDE_RUN"
           else
-            python scripts/build_report.py --no-open $DATE_ARG
+            python scripts/build_report.py --no-open $DATE_ARG "${TRACK_ARG[@]}"
           fi
           if [ "${{ github.event.inputs.paper }}" = "yes" ]; then
             python scripts/paper_settle.py | tee -a "$GITHUB_STEP_SUMMARY"
