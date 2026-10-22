@@ -4,10 +4,22 @@
  "meeting": "Mornington R7",
  "date": "Thu 22 Oct",
  "stats": [
-  {"v": "$17", "k": "Our price"},
-  {"v": "$4", "k": "Started"},
-  {"v": "1.35u", "k": "Staked"},
-  {"v": "+17.06u", "k": "Profit"}
+  {
+   "v": "$13.64",
+   "k": "Our price"
+  },
+  {
+   "v": "$4",
+   "k": "Started"
+  },
+  {
+   "v": "1.35u",
+   "k": "Staked"
+  },
+  {
+   "v": "+17.06u",
+   "k": "Profit"
+  }
  ],
- "line": "Taken at <b>more than 4x her starting price</b>. Profit after scratching deductions."
+ "line": "Taken at <b>more than 3x her starting price</b>, after deductions for a late scratching."
 }
