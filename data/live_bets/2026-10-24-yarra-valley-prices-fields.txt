@@ -1,0 +1,86 @@
+# Yarra Valley Sat 24 Oct 2026 (official going, band Good): final fields pulled Thu 22 Oct 11:29am Melbourne, emergencies SCR
+1, Aerial Pursuit, 0, 0
+1, Exacting Standard, 0, 0
+1, Quarters, 0, 0
+1, Confidential Girl, 0, 0
+1, Madame Petite, 0, 0
+1, Skyblock, 0, 0
+1, Velocite Belle, 0, 0
+2, Eleven Herbs, 0, 0
+2, Real Heir, 0, 0
+2, Sheer Panic, 0, 0
+2, Charleanor, 0, 0
+2, Fanfire, 0, 0
+2, Janie's Got A Gun, 0, 0
+2, La Velocita, 0, 0
+2, Luscombe, 0, 0
+2, Russian Tide, 0, 0
+2, Xuxa Kiss, 0, 0
+2, Silver Snow, SCR
+2, Bold Amore, SCR
+2, Powershare, SCR
+2, Baltic, SCR
+3, Mehsun, 0, 0
+3, Molesworth, 0, 0
+3, Nightowl, 0, 0
+3, Zverev, 0, 0
+3, Bling Baby, 0, 0
+3, Camegitchee, 0, 0
+3, Hot Opera, 0, 0
+3, Kissattack, 0, 0
+3, Threewinesin, 0, 0
+3, Sentaloa, 0, 0
+3, Whatwashethinking, SCR
+3, Startin'sumthin', SCR
+3, Ask The Captain, SCR
+4, Devine Grunt, 0, 0
+4, Golden Hips, 0, 0
+4, Treasury Place, 0, 0
+4, Up And Under, 0, 0
+4, Grunnettan, 0, 0
+4, Surely Special, 0, 0
+4, Opus, 0, 0
+4, Avonview, 0, 0
+4, Palace Winter, 0, 0
+4, Pharoah's Daughter, 0, 0
+4, Anchor Down, SCR
+4, Ain't Tellin, SCR
+4, Blonde Suspect, SCR
+5, Machinist, 0, 0
+5, Pacific Glamour, 0, 0
+5, Tipping Rain, 0, 0
+5, Magnea, 0, 0
+5, Shooting For Stars, 0, 0
+5, Heartattack Jack, 0, 0
+5, Wind Dreamer, 0, 0
+5, Montrock, 0, 0
+5, Banjette, 0, 0
+5, Hillbily Kynection, 0, 0
+5, Cavascot, SCR
+6, Pensatore, 0, 0
+6, Ponte Arcobaleno, 0, 0
+6, The Mount, 0, 0
+6, Rockcliff, 0, 0
+6, Think I'm Divine, 0, 0
+6, Aussieaussieaussie, 0, 0
+6, Belmasai, 0, 0
+6, Moose Jaw, 0, 0
+6, Second Guess, 0, 0
+6, Smashing Ruby, 0, 0
+6, Balgowan, SCR
+6, Snow On Her, SCR
+6, Think Sassy, SCR
+7, Colour Circle, 0, 0
+7, Hell's Itch, 0, 0
+7, Prestige Ole, 0, 0
+7, Slate Ripper, 0, 0
+7, The Kings Gospel, 0, 0
+7, Okeah, 0, 0
+7, Prestige Geoffrey, 0, 0
+7, Somax, 0, 0
+7, Clarapatra, 0, 0
+7, Our Paramour, 0, 0
+7, Sacred Ingot, SCR
+7, I'm Dynamite, SCR
+7, Nicking Gracie, SCR
+7, Cuban Dawn, SCR

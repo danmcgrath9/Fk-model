@@ -1,0 +1,86 @@
+# St Arnaud Sat 24 Oct 2026 (official going, band Good): final fields pulled Thu 22 Oct 11:30am Melbourne, emergencies SCR
+1, Billie Stardom, 0, 0
+1, Conjurer, 0, 0
+1, Surhomme, 0, 0
+1, All Moonlite, 0, 0
+1, Heidi High, 0, 0
+1, Julep, 0, 0
+1, Norfolk Victory, 0, 0
+1, Princess Chic, 0, 0
+1, Burrow, 0, 0
+1, Dun Dirt Sweet, 0, 0
+1, Helichrysum, SCR
+1, Studio Artist, SCR
+2, Fram Strait, 0, 0
+2, Helter Peltzer, 0, 0
+2, Intervened, 0, 0
+2, Jakbe Nimble, 0, 0
+2, Last Summer, 0, 0
+2, Lord Lonny, 0, 0
+2, Muladaan, 0, 0
+2, Vicain, 0, 0
+2, Welkin Star, 0, 0
+2, Girt By Sea, 0, 0
+3, Keepy Uppy, 0, 0
+3, Swift Statement, 0, 0
+3, Tarin's Rock, 0, 0
+3, Fully Funded, 0, 0
+3, Inner Thoughts, 0, 0
+3, Scusies, 0, 0
+3, Harder Than All, 0, 0
+3, Big Trouble, 0, 0
+3, Fox Phire, 0, 0
+3, Isle Of Mona, 0, 0
+3, Mr Cicconi, SCR
+3, Highlight Reel, SCR
+3, Wallace And Gromit, SCR
+3, Gold Bijoux, SCR
+4, Krasnoludek, 0, 0
+4, First Division, 0, 0
+4, Simply Excels, 0, 0
+4, Asawin, 0, 0
+4, Becauseyou're Mine, 0, 0
+4, Miss Toronado, 0, 0
+4, Infer, 0, 0
+4, Lady Maestro, 0, 0
+4, High Altitude, 0, 0
+4, Padstow Polly, 0, 0
+4, Ask For More, SCR
+5, Triomphe, 0, 0
+5, El Salto, 0, 0
+5, Flux, 0, 0
+5, Sugar And Sweet, 0, 0
+5, Zamora, 0, 0
+5, Spinhof, 0, 0
+5, Whiskey And Beer, 0, 0
+5, Attaboom, 0, 0
+5, Enigmatise, 0, 0
+5, Steely Hustler, 0, 0
+5, Two Kay Klick, SCR
+5, They Call Me Dusty, SCR
+5, Galaxy Turf, SCR
+5, Cavascot, SCR
+6, Regal Lion, 0, 0
+6, Shaiyhar, 0, 0
+6, Aftermath, 0, 0
+6, Saveadateforme, 0, 0
+6, Verona Rupes, 0, 0
+6, Dartboard, 0, 0
+6, Nicoffhome, 0, 0
+6, Bell's Bighouse, 0, 0
+6, Initial Moment, 0, 0
+6, Topspin, 0, 0
+7, Conaltri, 0, 0
+7, Dusty's Deel, 0, 0
+7, Dashing Donkey, 0, 0
+7, I Could Do Better, 0, 0
+7, Little Richie Turf, 0, 0
+7, Coastal Whispers, 0, 0
+7, Pendante, 0, 0
+7, Serin, 0, 0
+7, Ginger Sweet, 0, 0
+7, Kamarooka, 0, 0
+7, A Blue Star, SCR
+7, Crackerjack Hatch, SCR
+7, Sanika, SCR
+7, Black Rutile, SCR

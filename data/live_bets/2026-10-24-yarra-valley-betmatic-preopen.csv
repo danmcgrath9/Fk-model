@@ -1,0 +1,46 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-10-24,Yarra Valley,3,,1,Mehsun,WIN,19.38,38.22,0.62,31,1 of 2,0.62u,12.74,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,3,,1,Mehsun,WIN,24.22,38.22,1.08,54,2 of 2,1.70u,12.74,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,3,,2,Molesworth,WIN,12.92,28.79,1.15,57,1 of 2,1.15u,9.60,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,3,,2,Molesworth,WIN,16.15,28.79,1.39,70,2 of 2,2.54u,9.60,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,3,,3,Nightowl,WIN,5.31,13.35,2.50,125,1 of 2,2.50u,4.45,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,3,,3,Nightowl,WIN,6.64,13.35,4.36,218,2 of 2,6.86u,4.45,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,3,,10,Sentaloa,WIN,6.76,15.06,2.15,108,1 of 2,2.15u,5.02,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,3,,10,Sentaloa,WIN,8.45,15.06,2.37,118,2 of 2,4.52u,5.02,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,3,,4,Zverev,WIN,5.62,11.96,2.70,135,1 of 2,2.70u,3.99,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,3,,4,Zverev,WIN,7.03,11.96,3.64,182,2 of 2,6.34u,3.99,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,4,,1,Devine Grunt,WIN,20.13,37.74,0.59,30,1 of 2,0.59u,12.58,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,4,,1,Devine Grunt,WIN,25.16,37.74,1.03,52,2 of 2,1.62u,12.58,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,4,,10,Pharoah's Daughter,WIN,7.06,13.58,1.87,94,1 of 2,1.87u,4.53,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,4,,10,Pharoah's Daughter,WIN,8.82,13.58,3.29,164,2 of 2,5.16u,4.53,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,4,,6,Surely Special,WIN,5.03,11.40,2.79,140,1 of 2,2.79u,3.80,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,4,,6,Surely Special,WIN,6.29,11.40,4.03,202,2 of 2,6.82u,3.80,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,4,,3,Treasury Place,WIN,11.20,25.23,1.28,64,1 of 2,1.28u,8.41,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,4,,3,Treasury Place,WIN,14.00,25.23,1.94,97,2 of 2,3.22u,8.41,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,4,,4,Up And Under,WIN,10.94,24.38,1.09,55,1 of 2,1.09u,8.13,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,4,,4,Up And Under,WIN,13.67,24.38,1.69,84,2 of 2,2.78u,8.13,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,5,,1,Machinist,WIN,12.13,25.06,0.95,48,1 of 2,0.95u,8.35,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,5,,1,Machinist,WIN,15.16,25.06,1.57,78,2 of 2,2.52u,8.35,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,5,,4,Magnea,WIN,10.98,24.73,1.19,60,1 of 2,1.19u,8.24,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,5,,4,Magnea,WIN,13.73,24.73,1.99,100,2 of 2,3.18u,8.24,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,5,,2,Pacific Glamour,WIN,4.49,10.25,3.35,168,1 of 2,3.35u,3.42,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,5,,2,Pacific Glamour,WIN,5.61,10.25,4.81,240,2 of 2,8.16u,3.42,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,5,,5,Shooting For Stars,WIN,18.18,37.59,0.62,31,1 of 2,0.62u,12.53,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,5,,5,Shooting For Stars,WIN,22.73,37.59,1.14,57,2 of 2,1.76u,12.53,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,5,,7,Wind Dreamer,WIN,9.76,23.95,1.38,69,1 of 2,1.38u,7.98,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,5,,7,Wind Dreamer,WIN,12.20,23.95,1.92,96,2 of 2,3.30u,7.98,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,6,,7,Belmasai,WIN,12.63,28.81,0.99,50,1 of 2,0.99u,9.60,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,6,,7,Belmasai,WIN,15.79,28.81,1.49,74,2 of 2,2.48u,9.60,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,6,,2,Ponte Arcobaleno,WIN,9.27,20.68,1.25,62,1 of 2,1.25u,6.89,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,6,,2,Ponte Arcobaleno,WIN,11.59,20.68,1.97,98,2 of 2,3.22u,6.89,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,6,,10,Smashing Ruby,WIN,6.72,8.00,1.03,52,1 of 1,1.03u,5.85,EARLY: $8 or shorter only; forecast middle by step
+2026-10-24,Yarra Valley,6,,3,The Mount,WIN,5.53,8.00,2.43,122,1 of 2,2.43u,4.15,EARLY: $8 or shorter only; forecast middle/firm by step
+2026-10-24,Yarra Valley,6,,3,The Mount,WIN,6.91,8.00,2.43,122,2 of 2,4.86u,4.15,EARLY: $8 or shorter only; forecast middle/firm by step
+2026-10-24,Yarra Valley,6,,5,Think I'm Divine,WIN,13.26,29.58,0.96,48,1 of 2,0.96u,9.86,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,6,,5,Think I'm Divine,WIN,16.57,29.58,1.64,82,2 of 2,2.60u,9.86,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,7,,9,Clarapatra,WIN,12.63,26.52,1.08,54,1 of 2,1.08u,8.84,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,7,,9,Clarapatra,WIN,15.79,26.52,1.64,82,2 of 2,2.72u,8.84,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,7,,7,Prestige Geoffrey,WIN,12.88,28.74,0.92,46,1 of 2,0.92u,9.58,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,7,,7,Prestige Geoffrey,WIN,16.10,28.74,1.36,68,2 of 2,2.28u,9.58,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,7,,3,Prestige Ole,WIN,9.16,18.95,1.37,68,1 of 2,1.37u,6.32,forecast middle/firm/firm by step
+2026-10-24,Yarra Valley,7,,3,Prestige Ole,WIN,11.45,18.95,2.17,108,2 of 2,3.54u,6.32,forecast middle/firm/firm by step
