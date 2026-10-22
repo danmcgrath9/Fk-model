@@ -1,17 +1,77 @@
 {
  "day": "Friday",
- "date": "23 October",
+ "date": "23 October · after deductions",
  "footer": "Win bets.",
  "meetings": [
-  {"name": "Cranbourne", "note": "Night", "bets": [
-   {"race": 2, "horse": "Eye For An Eye", "price": "$22", "rated": "$13.22", "units": "0.95u"},
-   {"race": 2, "horse": "Superstock", "price": "$17.50", "rated": "$10.39", "units": "1.24u"},
-   {"race": 6, "horse": "Castellar", "price": "$16.50", "rated": "$12.41", "units": "0.35u"}]},
-  {"name": "Ballarat", "note": "Day", "bets": [
-   {"race": 3, "horse": "Star Je Taime", "price": "$7.50", "rated": "$4.15", "units": "3.11u"},
-   {"race": 3, "horse": "Wavelets", "price": "$14", "rated": "$8.60", "units": "0.42u"},
-   {"race": 7, "horse": "Bel Lupa", "price": "$19", "rated": "$13.11", "units": "0.75u"},
-   {"race": 8, "horse": "Jenni You Think", "price": "$8.75", "rated": "$4.37", "units": "2.96u"},
-   {"race": 9, "horse": "Russian Duchess", "price": "$11", "rated": "$8.51", "units": "1.06u"}]}
+  {
+   "name": "Cranbourne",
+   "note": "Night",
+   "bets": [
+    {
+     "race": 2,
+     "horse": "Eye For An Eye",
+     "price": "$21.16",
+     "rated": "$13.22",
+     "units": "0.95u"
+    },
+    {
+     "race": 2,
+     "horse": "Superstock",
+     "price": "$16.84",
+     "rated": "$10.39",
+     "units": "1.24u"
+    },
+    {
+     "race": 6,
+     "horse": "Castellar",
+     "price": "$16.50",
+     "rated": "$12.41",
+     "units": "0.35u",
+     "scr": true
+    }
+   ]
+  },
+  {
+   "name": "Ballarat",
+   "note": "Day",
+   "bets": [
+    {
+     "race": 3,
+     "horse": "Star Je Taime",
+     "price": "$7.24",
+     "rated": "$4.15",
+     "units": "3.11u"
+    },
+    {
+     "race": 3,
+     "horse": "Wavelets",
+     "price": "$13.48",
+     "rated": "$8.60",
+     "units": "0.42u"
+    },
+    {
+     "race": 7,
+     "horse": "Bel Lupa",
+     "price": "$17.74",
+     "rated": "$13.11",
+     "units": "0.75u"
+    },
+    {
+     "race": 8,
+     "horse": "Jenni You Think",
+     "price": "$8.36",
+     "rated": "$4.37",
+     "units": "2.96u"
+    },
+    {
+     "race": 9,
+     "horse": "Russian Duchess",
+     "price": "$11",
+     "rated": "$8.51",
+     "units": "1.06u",
+     "scr": true
+    }
+   ]
+  }
  ]
 }

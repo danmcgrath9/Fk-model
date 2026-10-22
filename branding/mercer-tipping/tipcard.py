@@ -38,7 +38,7 @@ def card(d):
     # "foot": false drops the notes line at the bottom (21 Oct 2026, founder), and a card without the brand has no notes
     # line unless "foot": true (22 Oct 2026, founder: "get rid of the bottom notes when I ask for no Mercer or just a
     # card"); the Twitter footer is "Win bets." (22 Oct 2026, founder); a bet's optional "rated" prints our price
-    # under the taken price (22 Oct 2026, founder: "put rated prices next to them")
+    # under the taken price (22 Oct 2026, founder: "put rated prices next to them"); "scr": true shows a scratched bet as SCR / REFUND
     show_p, brand = d.get("prices", True), d.get("brand", True)
     if not show_p:
         dense += ".row{grid-template-columns:96px 1fr 150px}.u{border-left:0;padding-left:0}"
@@ -47,7 +47,7 @@ def card(d):
     rows = []
     for m in d["meetings"]:
         b = "".join(f"<div class='row'><div><div class='r'>R{x['race']}</div>" + (f"<div class='t'>{html.escape(x['time'])}</div>" if x.get('time') else "") + f"</div><div class='h'>{html.escape(x['horse'])}</div>"
-                    + (f"<div class='p'>{html.escape(x['price'])}" + (f"<small class='rt'>rated {html.escape(x['rated'])}</small>" if x.get('rated') else "") + "</div>" if show_p else "") + f"<div class='u'>{html.escape(x['units'])} WIN</div></div>" for x in m["bets"])
+                    + (f"<div class='p'>{'SCR' if x.get('scr') else html.escape(x['price'])}" + (f"<small class='rt'>rated {html.escape(x['rated'])}</small>" if x.get('rated') and not x.get('scr') else "") + "</div>" if show_p else "") + f"<div class='u'>{'REFUND' if x.get('scr') else html.escape(x['units']) + ' WIN'}</div></div>" for x in m["bets"])
         rows.append(f"<div class='mtg'><h2>{html.escape(m['name'])}<small>{html.escape(m.get('note',''))}</small></h2>{b}</div>")
     return (f"<html><head><style>{CSS.replace('{hs}', str(hs))}{dense}</style></head><body>"
             f"<div class='top'><div class='lock'>" + ("<div class='mark'><span>M</span></div><div class='brand'>MERCER<span>TIPPING</span></div>" if brand else "") + f"</div><div class='when'>{html.escape(d['day'])}<span>{html.escape(d['date'])}</span></div></div>"

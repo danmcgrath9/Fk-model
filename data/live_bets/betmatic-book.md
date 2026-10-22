@@ -273,3 +273,9 @@ open at about $4.60; Home Tomurra, Lagunanini and Crank were scratched before th
 2.70u x 12.64 = +34.13u. Meeting: 3 bets, 10.58u, +26.25u, ROI +248%. All three opens beat BSP (21 v 5.70, 17 v 5.10, 14 v 4.60).
 Twitter (tweeted, half stakes): Cresta Crystal 1.35u +17.06u, Grinding Away -1.44u, Russian Benefits -2.50u, Party
 Benefits void: +13.12u on 5.29u.
+
+## Friday 23 Oct deductions (TAB, founder)
+Cranbourne: R2 4c (Eye For An Eye taken $23 -> $22.12; Superstock taken $15 -> $14.44). R6 Castellar SCRATCHED: both real
+bets refunded ($18 at $17 and $17 at $11, $35). Ballarat (paper): R3 4c (Star Je Taime $7.50 -> $7.24, Wavelets $14 ->
+$13.48), R7 7c (Bel Lupa $19 -> $17.74), R8 5c (Jenni You Think $8.75 -> $8.36). R9 Russian Duchess SCRATCHED: void.
+Twitter card (Fri) re-issued at the after-deduction prices with the two scratchings shown as SCR / REFUND.
