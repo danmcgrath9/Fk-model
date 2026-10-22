@@ -62,6 +62,24 @@ jobs:
           for f in ${{ steps.changed.outputs.files }}; do
             python -m afl.live.price_round afl/cache "$f" | tee -a "$GITHUB_STEP_SUMMARY"
           done
+      - name: Paper bets at the prices on offer now (only with the ODDS_API_KEY secret)
+        if: steps.changed.outputs.files != ''
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: |
+          set -o pipefail
+          gh release view afl-live >/dev/null 2>&1 || gh release create afl-live --target main --latest=false \
+            --title "AFL live (paper season)" --notes "Paper ledger and saved live odds (afl/lines/live.py). Paper only."
+          gh release upload afl-live afl/cache/live_*.csv --clobber
+          if [ -z "$ODDS_API_KEY" ]; then echo "ODDS_API_KEY is not set: sheet priced, no paper bets" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; fi
+          pip install requests
+          mkdir -p afl/paper
+          gh release download afl-live --dir . --pattern 'ledger.csv' && mv ledger.csv afl/paper/ || true
+          gh release download afl-live --dir . --pattern 'live_odds.tar.gz' && tar -xzf live_odds.tar.gz -C afl/cache || true
+          python -m afl.lines.live snapshot teams --hours 168 --max-credits 150 | tee -a "$GITHUB_STEP_SUMMARY"
+          for f in afl/cache/live_*.csv; do python -m afl.lines.live bets "$f" | tee -a "$GITHUB_STEP_SUMMARY"; done
+          if [ -d afl/cache/lines/live ]; then tar -czf live_odds.tar.gz -C afl/cache lines/live; gh release upload afl-live live_odds.tar.gz --clobber; fi
+          if [ -f afl/paper/ledger.csv ]; then gh release upload afl-live afl/paper/ledger.csv --clobber; fi
       - name: Commit the sheets
         if: steps.changed.outputs.files != ''
         run: |

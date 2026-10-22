@@ -1,0 +1,76 @@
+name: afl live
+
+# The 2027 paper season (afl/lines/live.py). Paper only: nothing is bet and nothing is sent to BetMatic.
+#   close   every 30 minutes on game days in the season's usual hours: the last-hour odds of any game about to start,
+#           then the closing prices onto the paper ledger (closing-line value)
+#   settle  Tuesday morning: results from the latest stats, onto the ledger
+# Paper bets themselves are logged by the afl round workflow, when a round is priced. State (the ledger and the saved
+# odds) lives on the "afl-live" release. Without the ODDS_API_KEY secret every step does nothing and spends nothing.
+# Cost: listing events is free; a closing snapshot is about 7 credits a game.
+
+on:
+  schedule:
+    - cron: '*/30 1-11 * 3-9 0,1,4,5,6'   # Thu-Mon, 11am to 10pm Melbourne time, March to September
+    - cron: '0 22 * 3-10 1'               # Monday 22:00 UTC = Tuesday morning in Melbourne: settle
+  workflow_dispatch:
+    inputs:
+      step:
+        description: 'close or settle'
+        default: 'close'
+
+concurrency:
+  group: afl-live
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+      STEP: ${{ github.event.inputs.step || (github.event.schedule == '0 22 * 3-10 1' && 'settle' || 'close') }}
+    steps:
+      - name: Nothing to do without the key
+        id: key
+        run: |
+          if [ -z "$ODDS_API_KEY" ]; then echo "ODDS_API_KEY is not set; nothing done" | tee -a "$GITHUB_STEP_SUMMARY"; echo "go=no" >> "$GITHUB_OUTPUT"
+          else echo "go=yes" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/checkout@v4
+        if: steps.key.outputs.go == 'yes'
+      - uses: actions/setup-python@v5
+        if: steps.key.outputs.go == 'yes'
+        with:
+          python-version: '3.12'
+      - if: steps.key.outputs.go == 'yes'
+        run: pip install -r afl/requirements.txt requests
+      - name: The ledger and saved odds
+        if: steps.key.outputs.go == 'yes'
+        run: |
+          mkdir -p afl/cache afl/paper
+          gh release view afl-live >/dev/null 2>&1 || gh release create afl-live --target main --latest=false \
+            --title "AFL live (paper season)" --notes "Paper ledger and saved live odds (afl/lines/live.py). Paper only."
+          gh release download afl-live --dir . --pattern 'ledger.csv' --skip-existing && mv ledger.csv afl/paper/ || true
+          gh release download afl-live --dir . --pattern 'live_odds.tar.gz' && tar -xzf live_odds.tar.gz -C afl/cache || true
+      - name: Closing prices
+        if: steps.key.outputs.go == 'yes' && env.STEP == 'close'
+        run: |
+          set -o pipefail
+          python -m afl.lines.live snapshot close --hours 1 --max-credits 100 | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m afl.lines.live close | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Settle
+        if: steps.key.outputs.go == 'yes' && env.STEP == 'settle'
+        run: |
+          set -o pipefail
+          python afl/data/mirror.py --out afl/cache
+          python -m afl.lines.live settle afl/cache | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m afl.betting.ledger summary | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Keep the state
+        if: steps.key.outputs.go == 'yes'
+        run: |
+          if [ -d afl/cache/lines/live ]; then tar -czf live_odds.tar.gz -C afl/cache lines/live; gh release upload afl-live live_odds.tar.gz --clobber; fi
+          if [ -f afl/paper/ledger.csv ]; then gh release upload afl-live afl/paper/ledger.csv --clobber; fi
