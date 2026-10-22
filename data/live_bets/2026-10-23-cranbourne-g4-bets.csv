@@ -1,0 +1,12 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,CRAN_231026_1,Lady Catalina,top_pick,2.6,2.6,6.0,6.0,,3.25,0.846,Already run to today's class; Class drop (rating),1.0,no,,
+2,CRAN_231026_2,Pariah Pearl,value_20c,7.5,7.5,7.25,7.25,,6.01,0.206,,1.41,no,,
+2,CRAN_231026_2,Killenaule,top_pick,2.8,2.8,2.85,2.85,,4.2,-0.321,Above the field in all three sections,1.0,no,,
+2,CRAN_231026_2,Eye For An Eye,value_20c,23.0,23.0,22.0,22.0,,13.84,0.589,,1.03,no,,
+2,CRAN_231026_2,Superstock,value_20c,14.0,14.0,17.5,17.5,,11.24,0.556,,0.7,no,,
+3,CRAN_231026_3,Karren,top_pick,1.85,1.85,2.55,2.55,,2.1,0.211,Already run to today's class; Above the field in all three sections,1.0,no,,
+4,CRAN_231026_4,Cashout,top_pick,1.65,1.65,2.22,2.22,,1.95,0.137,Already run to today's class,1.0,no,,
+5,CRAN_231026_5,Bossy Benita,top_pick,2.6,2.6,3.5,3.5,,2.83,0.236,,1.0,no,,
+6,CRAN_231026_6,Headbanger,top_pick,2.8,2.8,2.23,2.23,,2.43,-0.081,"Already run to today's class; Third-up, improving; Above the field in all three sections",1.0,no,,
+7,CRAN_231026_7,Esmahli,top_pick,2.6,2.6,3.55,3.55,,3.85,-0.079,Class drop (rating); Above the field in all three sections,1.0,no,,
+8,CRAN_231026_8,Oceana Dream,top_pick,4.4,4.4,1.01,1.01,,4.66,-0.783,Already run to today's class; Back in trip after being handy,1.0,no,,

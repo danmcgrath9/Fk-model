@@ -1,0 +1,118 @@
+# Ballarat Fri 23 Oct (official going, band Good): race-morning prices 9:32am Fri (Form King, after scratchings); fk_open = Form King opening price. Emergencies SCR unless they gained a start.
+1, Charlotte's Web, 71.00, 71.00, fk_open 58.50
+1, Contemplate Kate, 67.00, 67.00, fk_open 30.50
+1, Kokeshi, 10.00, 10.00, fk_open 9.25
+1, Hegely, 12.00, 12.00, fk_open 15.00
+1, My Infinity, 15.00, 15.00, fk_open 8.25
+1, Southern Sway, 6.50, 6.50, fk_open 8.75
+1, Flash Inquiry, SCR, last 61.00, fk_open 46.00
+1, Brookelinda, SCR, last 5.00, fk_open 4.70
+1, Corsage, 4.40, 4.40, fk_open 4.10
+1, With Benefits, 4.80, 4.80, fk_open 4.30
+1, Moon God, 11.00, 11.00, fk_open 8.50
+2, Vulcana, 4.60, 4.60, fk_open 2.40
+2, Chilly Sav, 151.00, 151.00, fk_open 151.00
+2, Affair D'or, 15.00, 15.00, fk_open 12.00
+2, Renaissance Girl, 14.00, 14.00, fk_open 15.00
+2, Prolocutor, 21.00, 21.00, fk_open 19.00
+2, Ruby From Zadar, 151.00, 151.00, fk_open 126.00
+2, Nialah, 3.00, 3.00, fk_open 3.60
+2, Scorching Beauty, 41.00, 41.00, fk_open 26.00
+2, Miss Capri, 46.00, 46.00, fk_open 26.00
+2, Hurricane Girl, 13.00, 13.00, fk_open 13.00
+2, Anglais, 2.80, 2.80, fk_open 4.00
+3, Wavelets, 12.00, 12.00, fk_open 14.00
+3, Moonlight Romance, 81.00, 81.00, fk_open 71.00
+3, Imminent Touch, 151.00, 151.00, fk_open 91.00
+3, Dame Of Dubai, 4.40, 4.40, fk_open 5.25
+3, Open Fire, SCR, last 12.00, fk_open 11.00
+3, Latassa, 6.50, 6.50, fk_open 5.75
+3, Grandstraz, 151.00, 151.00, fk_open 91.00
+3, Hot Pot Dot, 151.00, 151.00, fk_open 81.00
+3, Enticement, 8.00, 8.00, fk_open 6.00
+3, Noble Fox, 34.00, 34.00, fk_open 26.50
+3, Fine And Sunny, 23.00, 23.00, fk_open 20.00
+3, Endemic, 4.60, 4.60, fk_open 3.45
+3, Smashing Success, SCR
+3, Pandie Pandie, 23.00, 23.00, fk_open 17.00
+3, Star Je Taime, 4.80, 4.80, fk_open 7.50
+4, Perfect Dismount, 23.00, 23.00, fk_open 10.00
+4, Celestial Blue, 5.00, 5.00, fk_open 10.00
+4, Unkechaug, SCR, last 9.50, fk_open 14.00
+4, Sabrina, 19.00, 19.00, fk_open 26.00
+4, Boy From Zadar, SCR, last 34.00, fk_open 61.00
+4, Bogey Free, SCR, last 9.00, fk_open 7.00
+4, Charmingly, 27.00, 27.00, fk_open 16.00
+4, Resonant, 3.10, 3.10, fk_open 3.00
+4, All Eyes On Erin, 23.00, 23.00, fk_open 16.00
+4, Celestaria, 26.00, 26.00, fk_open 16.00
+4, Scoville, 5.50, 5.50, fk_open 9.00
+4, Engulf, 14.00, 14.00, fk_open 9.00
+4, Meritorious, 16.00, 16.00, fk_open 8.50
+5, She's Loaded, SCR, last 11.00, fk_open 11.00
+5, Some Chance, 20.00, 20.00, fk_open 26.00
+5, Pretty Stylish, 51.00, 51.00, fk_open 81.00
+5, Dextrose, SCR, last 61.00, fk_open 41.00
+5, Incoherent, SCR, last 9.00, fk_open 7.00
+5, Circus Circus, 11.00, 11.00, fk_open 14.00
+5, Chasing Atlantis, 101.00, 101.00, fk_open 126.00
+5, Charming Chords, 34.00, 34.00, fk_open 61.00
+5, Heavy Is The Head, SCR, last 51.00, fk_open 41.00
+5, I'lluvyoulongtime, SCR, last 151.00, fk_open 126.00
+5, Confidential Girl, SCR, last 11.00, fk_open 8.50
+5, Oceans Blue, 2.60, 2.60, fk_open 6.50
+5, Nishioka, SCR, last 2.40, fk_open 3.10
+5, Vixen Vibes, 13.00, 13.00, fk_open 21.00
+5, Kirkstone, 2.60, 2.60, fk_open 5.50
+5, Cirque De Coco, 6.25, 6.25, fk_open 10.00
+6, Smart Little Miss, 5.00, 5.00, fk_open 9.00
+6, Divine Vicky, 8.50, 8.50, fk_open 5.50
+6, Sistine Tunnel, 4.00, 4.00, fk_open 8.00
+6, Brave Carol, 14.00, 14.00, fk_open 21.50
+6, Immortal Justice, 34.00, 34.00, fk_open 25.00
+6, Vivid Blooms, 29.00, 29.00, fk_open 14.00
+6, Shipstern Bluff, 26.00, 26.00, fk_open 18.50
+6, Smoke Screen, 13.00, 13.00, fk_open 11.50
+6, Chapados, 4.40, 4.40, fk_open 3.05
+6, Lagunanini, 5.00, 5.00, fk_open 3.95
+7, Bridgeitall, 81.00, 81.00, fk_open 41.00
+7, Sharing Moments, SCR, last 16.00, fk_open 14.00
+7, Du Clisson, 6.50, 6.50, fk_open 5.75
+7, Flying Straz, 101.00, 101.00, fk_open 28.50
+7, Killiana, SCR, last 7.50, fk_open 5.75
+7, Skjaldmo, 13.00, 13.00, fk_open 8.75
+7, Invincible Lover, SCR
+7, Arabella Star, SCR, last 16.00, fk_open 12.50
+7, Catch It Kiss It, 27.00, 27.00, fk_open 18.50
+7, Bel Lupa, 6.50, 6.50, fk_open 19.00
+7, Semantics, 1.55, 1.55, fk_open 1.93
+8, Designs Of Eight, SCR, last 19.00, fk_open 17.50
+8, Into You, 41.00, 41.00, fk_open 32.50
+8, Cheron Finale, 81.00, 81.00, fk_open 43.50
+8, Chantra, 23.00, 23.00, fk_open 13.00
+8, Cliste, 81.00, 81.00, fk_open 37.50
+8, Lady Thinkabell, 18.00, 18.00, fk_open 12.50
+8, Jenni You Think, 4.80, 4.80, fk_open 8.75
+8, Antalian, 19.00, 19.00, fk_open 18.00
+8, Cushioned, 4.80, 4.80, fk_open 4.90
+8, Koolatah Queen, SCR, last 19.00, fk_open 16.50
+8, Epeiric, SCR, last 61.00, fk_open 34.50
+8, Perfect Night, 5.50, 5.50, fk_open 5.75
+8, Kiwi Jenni, 9.00, 9.00, fk_open 8.75
+8, Billycart, 5.50, 5.50, fk_open 4.10
+9, Billie Bronx, 23.00, 23.00, fk_open 41.00
+9, Hidden Witness, 6.00, 6.00, fk_open 15.00
+9, Swycho, 29.00, 29.00, fk_open 61.00
+9, Crimson Miss, SCR, last 21.00, fk_open 19.00
+9, Rose Of Shalaa, SCR, last 41.00, fk_open 51.00
+9, Tauri, 26.00, 26.00, fk_open 71.00
+9, Ostrica, 23.00, 23.00, fk_open 41.00
+9, Frosty Night, 21.00, 21.00, fk_open 41.00
+9, Invisible Magic, SCR, last 5.00, fk_open 3.80
+9, Princess Toro, 9.00, 9.00, fk_open 16.00
+9, M'lady Rose, 3.20, 3.20, fk_open 8.50
+9, Farakta, 4.60, 4.60, fk_open 7.00
+9, Jenni Poppins, 8.00, 8.00, fk_open 16.00
+9, Russian Duchess, SCR, last 11.00, fk_open 11.00
+9, Neziha, SCR, last 3.50, fk_open 2.60
+9, Luminary Miss, 11.00, 11.00, fk_open 23.00

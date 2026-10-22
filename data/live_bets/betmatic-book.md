@@ -136,6 +136,8 @@ Geelong Wed 21 Oct (re-priced 9:45am on the final field: 33 out incl. Jenni You 
 
 Sunday 18 Oct settled: 5 bets, 6.11u, one winner (Bazzar, taken $6, BSP $2.25). Horsham +6.32u, Moe -3.13u: +3.19u, ROI +52%. Price taken against BSP: 3 of 5 beat it (Bazzar, Surfy Pete, Ze Bee Nine); Sleeping Tiger ($9.50 vs BSP $12) and Preservator ($7.33 vs $8.67) drifted past our price. No deduction recorded on Bazzar (none estimated for R5). Paper top-ups -2.77u.
 
+Friday 23 Oct (re-priced 9:35am Fri on the final field): Cranbourne 12 value-at-open runners, 1 top-up (Pariah Pearl R2 1.41u at $7.50); Eye For An Eye and Superstock already at full stake, Castellar scratched, the rest under take-at. Ballarat (paper, TAB empty at the open) 14 value-at-open runners, 3 top-ups logged (Wavelets R3 0.40u at $12, Circus Circus R5 1.23u at $11, Skjaldmo R7 2.96u at $13); Resonant R4 also flagged 4.93u at $3.10 and is NOT logged (founder left Ballarat R4 out on Wed); Russian Duchess scratched.
+
 Monday 19 Oct Echuca (re-priced 9:33am Mon on the final field, v10; 36 scratched, 11 emergencies in): 9 value-at-open runners, 1 top-up (Ice Quake R6 1.95u at $7), the other 8 under take-at at the 9:30 price. Echuca's market opened Saturday, before going live, so its BetMatic orders never fired (all 70 cleared 10:36am Monday) and its opening bets are paper at Form King's open: 4 horses, 3.85u (Prestige Fantastic 0.47u at $26, Mickio 1.86u at $7.50, Lim's Ida 0.41u at $26, Here Comes Wozza 1.11u at $11).
 
 ## Pre-draw test: MV Gold Cup, Flemington R8, Sat 24 Oct (founder, 20 Oct 2026: "use this as a test for future bets")

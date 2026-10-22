@@ -1,0 +1,13 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+2,BRAT_231026_2,Anglais,top_pick,2.8,2.8,4.0,4.0,,3.53,0.133,Already run to today's class; Well backed before a bad last run; Class drop (rating),1.0,no,,
+3,BRAT_231026_3,Star Je Taime,top_pick,4.8,4.8,7.5,7.5,,4.23,0.774,"Third-up, improving",1.0,no,,
+3,BRAT_231026_3,Wavelets,EDGE,12.0,12.0,14.0,14.0,,8.72,0.605,Beaten by the pace last start; Late 600 beyond the tempo,1.23,no,,
+3,BRAT_231026_3,Wavelets,value_20c,12.0,12.0,14.0,14.0,,8.72,0.605,Beaten by the pace last start; Late 600 beyond the tempo,1.23,no,,
+4,BRAT_231026_4,Resonant,EDGE,3.1,3.1,3.0,3.0,,2.42,0.241,Already run to today's class; EARLY ONLY: bet near the open,4.93,no,,
+4,BRAT_231026_4,Resonant,value_20c,3.1,3.1,3.0,3.0,,2.42,0.241,Already run to today's class; EARLY ONLY: bet near the open,4.93,no,,
+4,BRAT_231026_4,Resonant,top_pick,3.1,3.1,3.0,3.0,,2.42,0.241,Already run to today's class; EARLY ONLY: bet near the open,1.0,no,,
+5,BRAT_231026_5,Oceans Blue,top_pick,2.6,2.6,6.5,6.5,,2.82,1.306,Above the field in all three sections; EARLY ONLY: bet near the open,1.0,no,,
+6,BRAT_231026_6,Chapados,top_pick,4.4,4.4,3.05,3.05,,3.52,-0.133,Beaten by the pace last start,1.0,no,,
+7,BRAT_231026_7,Semantics,top_pick,1.55,1.55,1.93,1.93,,2.06,-0.064,Above the field in all three sections; EARLY ONLY: bet near the open,1.0,no,,
+8,BRAT_231026_8,Cushioned,top_pick,4.8,4.8,4.9,4.9,,4.57,0.073,"Already run to today's class; Third-up, improving",1.0,no,,
+9,BRAT_231026_9,M'lady Rose,top_pick,3.2,3.2,8.5,8.5,,3.35,1.541,Above the field in all three sections,1.0,no,,

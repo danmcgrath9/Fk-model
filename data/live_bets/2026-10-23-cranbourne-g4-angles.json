@@ -12,13 +12,6 @@
 "1|Senza Nome": [
 "Beaten by the pace last start"
 ],
-"1|Fovea": [
-"Beaten by the pace last start",
-"Class drop (rating)"
-],
-"1|Angels Fury": [
-"Late 600 beyond the tempo"
-],
 "1|Myhro's Ruler": [
 "Beaten by the pace last start"
 ],
@@ -30,7 +23,6 @@
 "Above the field in all three sections"
 ],
 "2|Covert Thinking": [],
-"2|Nothingelsematters": [],
 "2|Port Philip": [],
 "2|Sarapo": [
 "Already run to today's class"
@@ -42,6 +34,7 @@
 "2|Icaro": [],
 "2|Lauding": [],
 "2|Superstock": [],
+"2|Just Dance": [],
 "3|Bajaria": [
 "Above the field in all three sections"
 ],
@@ -51,10 +44,6 @@
 ],
 "3|Carriedo": [],
 "3|Bon Fete": [],
-"3|All Business": [
-"Well backed before a bad last run",
-"Class drop (rating)"
-],
 "3|Karren": [
 "Already run to today's class",
 "Above the field in all three sections"
@@ -62,7 +51,6 @@
 "3|Tango Jewel": [],
 "3|Shystar": [],
 "3|Lathlain": [],
-"3|She's Pretty Rich": [],
 "3|Escarpa": [
 "Above the field in all three sections"
 ],
@@ -79,22 +67,17 @@
 "Beaten by the pace last start",
 "Third-up, improving"
 ],
-"4|Shaalute": [],
 "4|Itazura": [
 "Already run to today's class"
 ],
 "4|Dark Journey": [],
 "5|Miss Playlounge": [],
-"5|Ten Commandments": [
-"Already run to today's class"
-],
 "5|Moby Dick": [
 "Above the field in all three sections"
 ],
 "5|Run Harry Run": [],
 "5|Bossy Benita": [],
 "5|Racey Casey": [],
-"5|Umgawa": [],
 "5|Regal Zeus": [
 "Beaten by the pace last start"
 ],
@@ -114,12 +97,11 @@
 "Already run to today's class"
 ],
 "6|Arisphere": [],
-"6|You're Two Vain": [],
-"6|Castellar": [],
-"6|Room For Bingo": [
-"New career-best last start",
-"Above the field in all three sections"
+"6|Dragon Scroll": [
+"Beaten by the pace last start"
 ],
+"6|You're Two Vain": [],
+"6|Just Bolts": [],
 "6|Magnabelle Royale": [
 "Well backed before a bad last run"
 ],
@@ -136,10 +118,6 @@
 "7|Insain Harry": [],
 "7|Shaime": [],
 "7|Warrior Within": [],
-"7|Ladhar": [
-"Third-up, improving",
-"Above the field in all three sections"
-],
 "7|Onavuitton": [
 "Already run to today's class",
 "Class drop (rating)"
@@ -147,17 +125,10 @@
 "7|Sumo Sandy": [
 "Well backed before a bad last run"
 ],
-"7|Interest Point": [],
-"7|Imperial Award": [
-"Above the field in all three sections"
-],
 "7|Santa Ana Moon": [],
 "8|Oceana Dream": [
 "Already run to today's class",
 "Back in trip after being handy"
-],
-"8|Makdane": [
-"Well backed before a bad last run"
 ],
 "8|Two Wolves": [],
 "8|Glenfinnan": [
@@ -175,6 +146,5 @@
 ],
 "8|Flying Valley": [],
 "8|Wealdstone": [],
-"8|Geneva": [],
-"8|Virtuous Circle": []
+"8|Geneva": []
 }
