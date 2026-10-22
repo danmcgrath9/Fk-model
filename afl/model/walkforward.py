@@ -18,6 +18,7 @@ import pandas as pd
 
 from afl.model import extra as X
 from afl.model import named_position as NP
+from afl.model import redistribution as R
 from afl.model import props as P
 from afl.model.disposals import PARAMS, fit_dispersion
 from afl.model.frame import FEATURES
@@ -32,6 +33,8 @@ POS_SPREAD = {'D'}
 MIN_POS_ROWS = 500   # a position with fewer tuning rows than this uses the single spread
 # the position named on the team sheet (afl/model/named_position.py): better on 2024-2025 for these stats
 POSITION_STATS = {'D', 'T', 'G'}
+# who inherits the ball when a teammate is out (afl/model/redistribution.py): better on 2025-2026 for tackles only
+REDIST_STATS = {'T'}
 KEPT = os.path.join(os.path.dirname(__file__), 'kept_inputs.json')   # written by afl/model/extra_test.py
 
 
@@ -59,6 +62,9 @@ def prepare(base, cache, stat):
     if stat in POSITION_STATS:
         m = NP.attach(m, cache)
         feats += NP.columns()
+    if stat in REDIST_STATS:
+        m = R.add(m, stat)
+        feats += R.columns(stat)
     return m, feats, kept
 
 

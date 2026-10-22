@@ -38,9 +38,13 @@ jobs:
       - name: Build the player-game table
         run: python -m afl.model.frame afl/cache
       - name: Train through the last finished season
-        run: python -m afl.live.train_final afl/cache | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          set -o pipefail
+          python -m afl.live.train_final afl/cache | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Keep the models on the release
         run: |
+          # refuse to replace good models with an empty set: all four stats, model and settings
+          for s in D M T G; do test -s "afl/cache/models/$s.txt" && test -s "afl/cache/models/$s.json" || { echo "missing model $s"; exit 1; }; done
           tar -czf afl-models.tar.gz -C afl/cache models
           gh release view afl-models >/dev/null 2>&1 || gh release create afl-models --target main --latest=false \
             --title "AFL models" --notes "Models for live AFL prop pricing (afl/live/). Written by the afl models workflow."

@@ -101,6 +101,19 @@ has a selected-teams endpoint (with late changes) and is licensed; its price is 
 arranged, the team sheet is pasted (by hand, from any source the founder reads) into `afl/live/named/<season>_R<round>.txt`
 in the layout described in `afl/live/team_sheet.py`, and the workflow does the rest.
 
+## The 2027 paper season, week by week
+
+| when | what happens | who |
+|---|---|---|
+| Thursday, teams named | the team sheet is pasted into `afl/live/named/<season>_R<round>.txt` | the founder |
+| straight after | `afl round` prices every player and commits `afl/docs/LIVE_<season>_R<round>.md`; with the odds key it also snapshots the books and logs paper bets where our chance x the best price clears 5% (quarter Kelly on a notional 10,000 bank, shrunk for correlated bets) | automatic |
+| game day, sub named | paste again with the sub filled in; the sheet is repriced, bets already logged stay as they were | the founder, optional |
+| the last hour before each bounce | `afl live` records each logged bet's book's closing price: closing-line value | automatic (every 30 minutes on game days) |
+| Tuesday morning | `afl live` settles the round from the latest stats and writes the ledger summary | automatic |
+
+Paper only: nothing is bet, nothing is sent to BetMatic. The ledger and the saved odds live on the `afl-live` release.
+Without the `ODDS_API_KEY` secret the odds steps do nothing and spend nothing; the sheets are still priced.
+
 ## Running it
 
 ```

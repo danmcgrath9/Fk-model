@@ -83,3 +83,29 @@ Named position (centre square, ruck, wing, back, forward, bench, sub) and how of
 After the rebuild, the walk-forward average miss for disposals is 3.72 (2025) and 3.71 (2026), from 3.74 and 3.72.
 The 2026 figure gains nothing from positions, because Fryzigg has not published 2026; live 2027 rows carry them from the
 team sheet.
+## Who inherits the ball when a teammate is out
+
+Per stat: the usual output of players missing from last week's side, each player's share-weighted slice of it, the same for centre clearances, and his own record in past games when a key midfielder was out. Fitted 2013-2023, tuned 2024, scored 2025-2026.
+
+| stat | log-lik change | average miss change | kept |
+|---|---|---|---|
+| disposals | -0.0002 ± 0.0003 | +0.001 ± 0.001 | no |
+| marks | -0.0000 ± 0.0002 | -0.000 ± 0.000 | no |
+| tackles | +0.0010 ± 0.0003 | -0.001 ± 0.000 | yes |
+| goals | +0.0001 ± 0.0002 | -0.000 ± 0.000 | no |
+
+
+Adopted from the test above: who inherits the ball, for tackles only (`REDIST_STATS` in afl/model/walkforward.py).
+## One model or an average of several
+
+The current model against the average of 5 fitted with different random seeds. Fitted 2013-2023, tuned 2024, scored 2025-2026.
+
+| stat | log-lik change | average miss change | kept |
+|---|---|---|---|
+| disposals | +0.0003 ± 0.0001 | -0.002 ± 0.001 | yes |
+| marks | +0.0001 ± 0.0001 | +0.000 ± 0.000 | no |
+| tackles | -0.0004 ± 0.0001 | +0.000 ± 0.000 | no |
+| goals | +0.0001 ± 0.0001 | +0.000 ± 0.000 | no |
+
+Not adopted from the test above: averaging five seeds. It passes for disposals (+0.0003) and hurts tackles, and five
+times the training for a sixth of what the team-sheet position bought is not worth another moving part.

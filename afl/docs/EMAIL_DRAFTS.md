@@ -4,16 +4,17 @@ Two drafts for the founder to edit and send himself, or not. Nothing here has be
 
 ## 1. Champion Data: API pricing
 
-To: (Champion Data's API sales contact, from docs.api.afl.championdata.com or championdata.com/contact)
-Subject: AFL API access for a private research model: pricing
+Where: Champion Data publishes no email address (checked 22 Oct 2026: none on championdata.com or the API docs); enquiries
+go through the form at https://www.championdata.com/contact/
+Subject: AFL API access for a private model: pricing
 
 Hi,
 
-I build a private statistical model of AFL player statistics for my own research. I'd like to use your AFL API,
+I've built a private statistical model of AFL player statistics, which I use for my own betting analysis. I'd like to use your AFL API,
 mainly the selected team lineups endpoint (including late changes before the bounce) and per-game player
 statistics, for AFLM home-and-away and finals from 2027.
 
-The data would be used privately: not republished, resold or shown on any website.
+The data would be used by me alone: not republished, resold, shared or shown on any website.
 
 Could you tell me:
 - which access tier covers the lineups and player statistics endpoints,

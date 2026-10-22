@@ -38,9 +38,10 @@ def team_name(api_name):
     return None
 
 
-def flatten(raw_dir):
+def flatten(raw_dir, label='*'):
+    """Every saved odds snapshot under raw_dir/odds/<event>/<label>.json (all labels by default)."""
     rows = []
-    for f in glob.glob(os.path.join(raw_dir, 'odds', '*', '*.json')):
+    for f in glob.glob(os.path.join(raw_dir, 'odds', '*', f'{label}.json')):
         with open(f) as fh:
             body = json.load(fh)
         snap = body.get('timestamp')
