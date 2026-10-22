@@ -1,0 +1,106 @@
+name: bbl collect
+
+# Data the Cricsheet pull lacks (bbl/docs/DATA_INVENTORY.md): Wikipedia season pages (fixtures with start
+# times, venues, squads, BBL|16 and WBBL|12 included) and ground coordinates through the Wikipedia API;
+# NASA POWER hourly weather at each ground; Cricsheet's venue register. Each is pulled ONCE: the raw
+# responses go to the bbl-history release and a held file is never fetched again (refresh=yes to redo
+# one source). One request at a time, a pause between them, a User-Agent naming this repo. Terms are
+# recorded at pull time. Separate from every fk-*, nba-* and afl-* workflow; no secrets.
+
+on:
+  workflow_dispatch:
+    inputs:
+      refresh:
+        description: 'source to pull again: wiki, power, register, or blank'
+        default: ''
+  push:
+    branches: [bbl-model]
+    paths:
+      - 'bbl/collect/**'
+      - '.github/workflows/bbl-collect.yml'
+
+concurrency:
+  group: bbl-collect
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      REFRESH: ${{ github.event.inputs.refresh || '' }}
+      UA: 'fk-model-bbl/0.1 (github.com/danmcgrath9/Fk-model; research)'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r bbl/requirements.txt
+
+      - name: Inputs and what the release holds
+        run: |
+          mkdir -p bbl/cache/collect bbl/cache/parquet
+          gh release download bbl-history --dir bbl/cache/parquet --pattern 't20_matches.parquet' --clobber
+          gh release view bbl-history --json assets --jq '.assets[].name' > held.txt
+          held() { grep -qx "$1" held.txt; }
+          echo "held: $(grep -c . held.txt) files"
+
+      - name: Terms at pull time
+        run: |
+          {
+            echo "### Terms at $(date -u +%FT%TZ)"
+            echo "**en.wikipedia.org/robots.txt (api lines)**"; echo '```'
+            curl -s -m 30 -A "$UA" https://en.wikipedia.org/robots.txt | grep -iE 'api|^user-agent: \*' | head -10
+            echo '```'
+            echo "**Wikimedia API usage guidelines**"; echo '```'
+            curl -sL -m 30 -A "$UA" 'https://foundation.wikimedia.org/w/index.php?title=Policy:Wikimedia_Foundation_API_Usage_Guidelines&action=raw' | head -60
+            echo '```'
+            echo "**NASA POWER (lines on use, licence, citation)**"; echo '```'
+            for u in https://power.larc.nasa.gov/docs/ https://power.larc.nasa.gov/docs/referencing/ https://registry.opendata.aws/nasa-power/; do
+              echo "-- $u"; curl -sL -m 30 -A "$UA" "$u" | sed 's/<[^>]*>/ /g' | tr -s ' \t' ' ' | grep -iE 'restrict|licen|citation|acknowledg|terms|creative commons' | head -12
+              sleep 2
+            done
+            echo '```'
+          } | tee bbl/cache/collect/collect_terms.txt >> "$GITHUB_STEP_SUMMARY"
+          gh release upload bbl-history bbl/cache/collect/collect_terms.txt --clobber
+
+      - name: Wikipedia season pages and ground coordinates
+        run: |
+          set -e
+          if grep -qx wiki_raw_v1.tar.gz held.txt && [ "$REFRESH" != wiki ]; then
+            gh release download bbl-history --pattern wiki_raw_v1.tar.gz --dir . && tar xzf wiki_raw_v1.tar.gz -C bbl/cache/collect
+            echo "wiki held, not fetched again" | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            python -m bbl.collect.wiki bbl/cache/collect/wiki bbl/cache/parquet/t20_matches.parquet | tee -a "$GITHUB_STEP_SUMMARY"
+            tar czf wiki_raw_v1.tar.gz -C bbl/cache/collect wiki
+            gh release upload bbl-history wiki_raw_v1.tar.gz --clobber
+          fi
+
+      - name: NASA POWER hourly weather at each ground
+        run: |
+          set -e
+          if grep -qx power_raw_v1.tar.gz held.txt && [ "$REFRESH" != power ]; then
+            echo "power held, not fetched again" | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            python -m bbl.collect.power bbl/cache/collect/power bbl/cache/collect/wiki/venue_coords.csv bbl/cache/parquet/t20_matches.parquet | tail -20 | tee -a "$GITHUB_STEP_SUMMARY"
+            tar czf power_raw_v1.tar.gz -C bbl/cache/collect power
+            gh release upload bbl-history power_raw_v1.tar.gz --clobber
+          fi
+
+      - name: Cricsheet venue register
+        run: |
+          set -e
+          if grep -qx cricsheet_venues.csv held.txt && [ "$REFRESH" != register ]; then
+            echo "venue register held" | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            curl -sfL -m 120 -A "$UA" -o cricsheet_venues.csv https://cricsheet.org/register/venues.csv; sleep 3
+            curl -sfL -m 120 -A "$UA" -o cricsheet_venue_names.csv https://cricsheet.org/register/venue_names.csv
+            wc -l cricsheet_venues.csv cricsheet_venue_names.csv | tee -a "$GITHUB_STEP_SUMMARY"
+            gh release upload bbl-history cricsheet_venues.csv cricsheet_venue_names.csv --clobber
+          fi
