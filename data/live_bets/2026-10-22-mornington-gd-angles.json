@@ -1,13 +1,5 @@
 {
 "1|Mystic River Queen": [],
-"1|Fanfire": [
-"Already run to today's class",
-"Class drop (rating)"
-],
-"1|Luscombe": [
-"Already run to today's class",
-"Class drop (rating)"
-],
 "1|Top Ace": [],
 "1|Deadly Force": [
 "Class drop (rating)",
@@ -19,13 +11,15 @@
 "Class drop (rating)",
 "Above the field in all three sections"
 ],
+"1|He's A Dandy": [
+"Class drop (rating)"
+],
 "1|Exclusive Punt": [
 "Class drop (rating)"
 ],
 "1|Montostratus": [
 "Class drop (rating)"
 ],
-"1|Prolific Angel": [],
 "2|Bella Cinque": [
 "Class drop (rating)"
 ],
@@ -49,10 +43,6 @@
 "2|Dominant Miss": [
 "Class drop (rating)"
 ],
-"2|Party Benefits": [
-"Already run to today's class",
-"Class drop (rating)"
-],
 "3|Charlie Messy Hair": [
 "Class drop (rating)"
 ],
@@ -73,9 +63,14 @@
 "3|Aurelio": [],
 "4|Scoot": [],
 "4|Regal Harry": [],
+"4|Native Spirit": [
+"Third-up, improving"
+],
+"4|I'lluvyoulongtime": [],
 "4|Boy From Zadar": [
 "New career-best last start"
 ],
+"4|Symphony Royale": [],
 "4|Model Gigi": [
 "Already run to today's class"
 ],
@@ -83,18 +78,7 @@
 "Beaten by the pace last start",
 "Already run to today's class"
 ],
-"4|Big Kapow": [],
-"4|Around The Marx": [],
 "4|Mo": [],
-"4|Janie's Got A Gun": [],
-"4|Debut Author": [],
-"4|Foxtrot Charlie": [
-"Back in trip after being handy"
-],
-"4|Trouble'n Paradise": [
-"Third-up, improving",
-"Above the field in all three sections"
-],
 "5|Immortal Diva": [
 "Class drop (rating)"
 ],
@@ -108,19 +92,14 @@
 "Third-up, improving"
 ],
 "5|Levent": [],
+"5|Pierrobid": [
+"Third-up, improving",
+"Late 600 beyond the tempo"
+],
 "5|Prime Force": [
 "Class drop (rating)"
 ],
 "5|Hansard": [
-"Class drop (rating)"
-],
-"5|Boutin": [
-"New career-best last start",
-"Class drop (rating)"
-],
-"5|The Long Mover": [],
-"5|Gilgeous": [
-"Already run to today's class",
 "Class drop (rating)"
 ],
 "5|Parera": [
@@ -132,7 +111,9 @@
 "6|Angelotti": [
 "Class drop (rating)"
 ],
-"6|Albanian I Am": [],
+"6|Egerton Reef": [
+"Above the field in all three sections"
+],
 "6|Qubella": [
 "Above the field in all three sections"
 ],
@@ -147,7 +128,7 @@
 "6|Amphactor": [
 "Declining deep in prep"
 ],
-"6|Sensational Ruler": [],
+"6|Riozino": [],
 "6|Brutify": [],
 "7|Coronation Turbo": [
 "Third-up, improving",
@@ -158,21 +139,7 @@
 "7|Alexander Thegreat": [
 "Back in trip after being handy"
 ],
-"7|Crank": [
-"Well backed before a bad last run"
-],
 "7|Cresta Crystal": [],
-"7|Home Tomurra": [
-"Already run to today's class"
-],
-"7|Mykindakandy": [
-"Already run to today's class",
-"Late 600 beyond the tempo",
-"Above the field in all three sections"
-],
-"7|Lagunanini": [
-"Class drop (rating)"
-],
 "7|Pol Rogeur": [
 "Back in trip after being handy"
 ],
@@ -194,9 +161,6 @@
 ],
 "8|Mrs Gossip": [
 "Class drop (rating)"
-],
-"8|Ranakye": [
-"Declining deep in prep"
 ],
 "8|Headstock": [],
 "8|Eeteedee": [

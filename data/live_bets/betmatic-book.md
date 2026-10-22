@@ -260,3 +260,16 @@ Priced on the final fields (pulled 11:29am / 11:30am Thu). Founder: R1 and R2 le
 kept despite first starter Harder Than All ("bet that race"). Yarra Valley 45 orders on 23 runners (up to 83.21u),
 St Arnaud 47 orders on 23 runners (up to 99.82u); all 92 registered "Notification has been scheduled". TAB balance was
 $0.44 at 10:03am Thu: the orders fire only if the account is funded before the markets open.
+
+## Mornington Thu 22 Oct settled (paper; TAB was empty when the orders fired)
+Results pulled 7:23pm Thu. Paper at Form King's open, the model stakes:
+| Race | Horse | Open | Stake | Result | SP / BSP | P/L (u) |
+|---|---|---|---|---|---|---|
+| R3 | Grinding Away | $21 | 2.88u | 4th | $4.60 / $5.70 | -2.88 |
+| R7 | Cresta Crystal | $17 | 2.70u | WON | $4 / $5.10 | +34.13 |
+| R8 | Russian Benefits | $14 | 5.00u | 5th | $3.90 / $4.60 | -5.00 |
+R2 Party Benefits scratched: void. Cresta Crystal carries an estimated 21c deduction for Mykindakandy (scratched after the
+open at about $4.60; Home Tomurra, Lagunanini and Crank were scratched before the market opened), so $17 pays $13.64:
+2.70u x 12.64 = +34.13u. Meeting: 3 bets, 10.58u, +26.25u, ROI +248%. All three opens beat BSP (21 v 5.70, 17 v 5.10, 14 v 4.60).
+Twitter (tweeted, half stakes): Cresta Crystal 1.35u +17.06u, Grinding Away -1.44u, Russian Benefits -2.50u, Party
+Benefits void: +13.12u on 5.29u.
