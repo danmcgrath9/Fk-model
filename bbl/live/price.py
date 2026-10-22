@@ -11,7 +11,7 @@ choices fixed in bbl/model/team.py and bbl/model/props.py; nothing is tuned here
 Output (in the parquet dir): prices_games.parquet, prices_players.parquet, PRICES.md.
 Fair odds only (1 / our chance). Nothing is sent anywhere: comparing with a book is bbl/live/compare.py.
 
-Usage: python -m bbl.live.price bbl/cache/parquet fixtures.csv [xi.csv]
+Usage: python -m bbl.live.price bbl/cache/parquet fixtures.csv [--xi xi.csv] [--squads squads.csv]
 """
 import os
 import sys
@@ -54,7 +54,38 @@ def last_xi(m, pl, team_name, gender, comp, before):
     return pl[(pl.match_id == last) & (pl.team == team_name)][['player', 'player_id']]
 
 
-def future_rows(m, pl, fixtures, xis):
+def squad_xi(m, pl, side, gender, comp, when, squads, last):
+    """An at-the-open XI from the season's squad: last XI players still in the squad, then squad members with
+    the most T20 games in the past year. Squad names (Wikipedia) are matched to Cricsheet's within everyone of
+    that gender who played T20 in the past two years; an ambiguous or unknown name is left out and noted."""
+    season = season_of(when.strftime('%Y-%m-%d'))
+    sq = squads[(squads.season == season) & (squads.comp == comp) & (squads.club == side)] if squads is not None else None
+    if sq is None or sq.empty:
+        return last, f'last XI (no {season} squad for {side})'
+    mm = m[(m.gender == gender) & (pd.to_datetime(m.start_date) < when) & (pd.to_datetime(m.start_date) >= when - pd.Timedelta(days=730))]
+    pool = pl[pl.match_id.isin(mm.match_id)]
+    recent = pool[pool.match_id.isin(mm[pd.to_datetime(mm.start_date) >= when - pd.Timedelta(days=365)].match_id)]
+    games = recent.groupby('player').size()
+    names_pool = pool.drop_duplicates('player')[['player', 'player_id']]
+    club_pool = pool[pool.team == side].drop_duplicates('player').player
+    matched, unknown = [], []
+    for nm in sq.player:
+        # the club's own recent players first (resolves most common surnames), then everyone of that gender
+        who, how = names.match(nm, club_pool, team=side)
+        if who is None:
+            who, how = names.match(nm, names_pool.player, team=side)
+        (matched if who else unknown).append(who or f'{nm} ({how})')
+    keep = last[last.player.isin(matched)] if last is not None else pd.DataFrame(columns=['player', 'player_id'])
+    extra = [p for p in sorted(set(matched) - set(keep.player), key=lambda p: -games.get(p, 0))]
+    add = names_pool[names_pool.player.isin(extra[:max(0, 11 - len(keep))])]
+    add = add.set_index('player').loc[[p for p in extra[:max(0, 11 - len(keep))]]].reset_index()
+    xi = pd.concat([keep, add[['player', 'player_id']]], ignore_index=True).head(11)
+    note = (f'squad XI: {len(keep)} kept from last XI, {len(add)} added from the {season} squad'
+            + (f'; not matched: {", ".join(unknown)}' if unknown else ''))
+    return xi, note
+
+
+def future_rows(m, pl, fixtures, xis, squads=None):
     fm, fp, notes = [], [], []
     for k, f in enumerate(fixtures.itertuples()):
         mid = f'F{k:03d}_{f.date}'
@@ -76,8 +107,8 @@ def future_rows(m, pl, fixtures, xis):
                     rows.append(pool[pool.player == who].iloc[0])
                 xi, src = pd.DataFrame(rows), 'named'
             else:
-                xi, src = last_xi(m, pl, side, f.gender, f.comp, when), 'last XI'
-                if xi is None:
+                xi, src = squad_xi(m, pl, side, f.gender, f.comp, when, squads, last_xi(m, pl, side, f.gender, f.comp, when))
+                if xi is None or len(xi) == 0:
                     notes.append(f'{f.date} {side}: no previous {f.comp} XI and none named; cannot price')
                     continue
             notes.append(f'{f.date} {side}: {src}, {len(xi)} players')
@@ -165,11 +196,11 @@ def player_prices(g, fut_ids, factors):
     return p
 
 
-def price(d, fixtures, xis=None):
+def price(d, fixtures, xis=None, squads=None):
     m, pl, dl, inn = load(d)
     fixtures = fixtures.copy()
     fixtures['date'] = pd.to_datetime(fixtures.date).dt.strftime('%Y-%m-%d')
-    fm, fp, notes = future_rows(m, pl, fixtures, xis)
+    fm, fp, notes = future_rows(m, pl, fixtures, xis, squads)
     allm = pd.concat([m.assign(future=False), fm], ignore_index=True)
     allp = pd.concat([pl, fp], ignore_index=True)
     # league factors from every match before the first fixture (the backtest used matches before July 2022)
@@ -215,8 +246,16 @@ def write(d, games, players, notes):
 
 
 if __name__ == '__main__':
-    d, fx = sys.argv[1], pd.read_csv(sys.argv[2], dtype=str)
-    xi = pd.read_csv(sys.argv[3], dtype=str) if len(sys.argv) > 3 else None
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument('parquet_dir')
+    ap.add_argument('fixtures')
+    ap.add_argument('--xi', help='named XIs: date, team, player')
+    ap.add_argument('--squads', help='squads csv from bbl.collect.parse_squads (season, comp, club, player)')
+    a = ap.parse_args()
+    fx = pd.read_csv(a.fixtures, dtype=str)
+    xi = pd.read_csv(a.xi, dtype=str) if a.xi else None
     if xi is not None:
         xi['date'] = pd.to_datetime(xi.date).dt.strftime('%Y-%m-%d')
-    print(write(d, *price(d, fx, xi)))
+    sq = pd.read_csv(a.squads, dtype=str) if a.squads else None
+    print(write(a.parquet_dir, *price(a.parquet_dir, fx, xi, sq)))

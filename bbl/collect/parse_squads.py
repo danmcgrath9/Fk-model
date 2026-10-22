@@ -36,6 +36,8 @@ def player(line):
     if not name_m:
         return None
     name = plain(name_m.group(1)).strip()
+    if len(name.split()) > 4:      # a note in the list ("Unless otherwise specified, all players are Australian."), not a player
+        return None
     rest = line[name_m.end():]
     country = re.search(r'\(\s*\[\[[^\]|]*\|([A-Z]{2,4})\]\]\s*\)', rest) or re.search(r'\(\s*([A-Z]{2,4})\s*\)', rest)
     return dict(player=name, captain=bool(re.search(r'\(\s*c\s*\)', rest)), overseas=country.group(1) if country else None,

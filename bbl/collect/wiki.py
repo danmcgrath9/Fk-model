@@ -17,7 +17,7 @@ import requests
 
 API = 'https://en.wikipedia.org/w/api.php'
 UA = os.environ.get('WIKI_UA', 'fk-model-bbl/0.1 (github.com/danmcgrath9/Fk-model; research)')
-PAUSE = 2.0
+PAUSE = 5.0
 
 
 def season_titles():
@@ -30,18 +30,23 @@ def season_titles():
     return out
 
 
-def get(params):
-    for attempt in range(4):
-        r = requests.get(API, params={**params, 'format': 'json', 'formatversion': 2, 'maxlag': 5},
-                         headers={'User-Agent': UA}, timeout=60)
-        if r.status_code == 200 and 'error' not in r.json():
-            time.sleep(PAUSE)
+def polite_get(url, params, pause=PAUSE, tries=6):
+    """One request, then a pause; on 429 / 5xx / maxlag, wait as told (Retry-After) or back off, and retry."""
+    for attempt in range(tries):
+        r = requests.get(url, params=params, headers={'User-Agent': UA}, timeout=60)
+        ok = r.status_code == 200 and 'error' not in (r.json() if 'json' in r.headers.get('content-type', '') else {})
+        if ok:
+            time.sleep(pause)
             return r.json()
-        wait = int(r.headers.get('Retry-After', 10 * (attempt + 1)))
+        wait = int(r.headers.get('Retry-After', 15 * 2 ** attempt))
         print(f'  HTTP {r.status_code}, waiting {wait}s')
-        time.sleep(wait)
+        time.sleep(min(wait, 300))
     r.raise_for_status()
-    return r.json()
+    raise RuntimeError(f'{url}: no answer after {tries} tries')
+
+
+def get(params):
+    return polite_get(API, {**params, 'format': 'json', 'formatversion': 2, 'maxlag': 5})
 
 
 def squad_titles():

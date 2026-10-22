@@ -14,7 +14,7 @@ import time
 import pandas as pd
 import requests
 
-from bbl.collect.wiki import API, UA
+from bbl.collect.wiki import API, UA, polite_get
 
 # Cricsheet's venue name, before any comma -> the Wikipedia article for that ground
 TITLES = {
@@ -73,10 +73,8 @@ def fetch(titles):
     titles = sorted(set(titles))
     for k in range(0, len(titles), 20):
         batch = titles[k:k + 20]
-        r = requests.get(API, params=dict(action='query', prop='coordinates', titles='|'.join(batch), redirects=1,
-                                          format='json', formatversion=2), headers={'User-Agent': UA}, timeout=60)
-        r.raise_for_status()
-        q = r.json()['query']
+        q = polite_get(API, dict(action='query', prop='coordinates', titles='|'.join(batch), redirects=1,
+                                 format='json', formatversion=2))['query']
         step = {x['from']: x['to'] for x in q.get('normalized', []) + q.get('redirects', [])}
         pages = {p['title']: p for p in q['pages']}
         for t in batch:
@@ -85,7 +83,6 @@ def fetch(titles):
                 res = step[res]
             cc = (pages.get(res, {}).get('coordinates') or [{}])[0]
             out[t] = (res, cc.get('lat'), cc.get('lon'))
-        time.sleep(2)
     return out
 
 
@@ -98,19 +95,13 @@ def wikidata_coords(titles):
     titles = sorted(set(titles))
     for k in range(0, len(titles), 20):
         batch = titles[k:k + 20]
-        r = requests.get(API, params=dict(action='query', prop='pageprops', ppprop='wikibase_item', titles='|'.join(batch),
-                                          redirects=1, format='json', formatversion=2), headers={'User-Agent': UA}, timeout=60)
-        r.raise_for_status()
-        q = {p['title']: p.get('pageprops', {}).get('wikibase_item') for p in r.json()['query']['pages']}
-        time.sleep(2)
+        body = polite_get(API, dict(action='query', prop='pageprops', ppprop='wikibase_item', titles='|'.join(batch),
+                                    redirects=1, format='json', formatversion=2))
+        q = {p['title']: p.get('pageprops', {}).get('wikibase_item') for p in body['query']['pages']}
         ids = [i for i in q.values() if i]
         if not ids:
             continue
-        w = requests.get(WIKIDATA, params=dict(action='wbgetentities', ids='|'.join(ids), props='claims', format='json'),
-                         headers={'User-Agent': UA}, timeout=60)
-        w.raise_for_status()
-        ents = w.json().get('entities', {})
-        time.sleep(2)
+        ents = polite_get(WIKIDATA, dict(action='wbgetentities', ids='|'.join(ids), props='claims', format='json')).get('entities', {})
         for t, qid in q.items():
             claim = (ents.get(qid, {}).get('claims', {}).get('P625') or [{}])[0]
             v = claim.get('mainsnak', {}).get('datavalue', {}).get('value', {})
