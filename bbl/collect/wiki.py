@@ -5,6 +5,7 @@ honour throttling. Content is CC BY-SA: kept with its page title and revision id
 Raw responses only: bbl/collect/parse_wiki.py turns them into tables, so a parsing fix never re-asks the site.
 
 Usage: python -m bbl.collect.wiki <out dir> <t20_matches.parquet>
+       python -m bbl.collect.wiki <out dir> --squads   (the separate season squads pages)
 """
 import json
 import os
@@ -43,7 +44,27 @@ def get(params):
     return r.json()
 
 
+def squad_titles():
+    """The separate '<season> squads' pages (most seasons have none; a missing page is recorded as missing)."""
+    return [t + ' squads' for t in season_titles()]
+
+
+def fetch_pages(titles, dest):
+    os.makedirs(dest, exist_ok=True)
+    for k in range(0, len(titles), 4):
+        batch = titles[k:k + 4]
+        body = get(dict(action='query', prop='revisions', rvprop='content|ids|timestamp', rvslots='main',
+                        titles='|'.join(batch), redirects=1))
+        for page in body['query']['pages']:
+            with open(os.path.join(dest, page['title'].replace('/', '_') + '.json'), 'w') as fh:
+                json.dump(page, fh)
+            print(f'{page["title"]}: {"missing" if page.get("missing") else "held"}')
+
+
 def main(out, matches):
+    if matches == '--squads':
+        fetch_pages(squad_titles(), os.path.join(out, 'squads'))
+        return
     os.makedirs(os.path.join(out, 'pages'), exist_ok=True)
     titles = season_titles()
     for k in range(0, len(titles), 4):

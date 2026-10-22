@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
     inputs:
       refresh:
-        description: 'source to pull again: wiki, coords, power, register, or blank'
+        description: 'source to pull again: wiki, squads, coords, power, register, or blank'
         default: ''
   push:
     branches: [bbl-model]
@@ -80,6 +80,18 @@ jobs:
             python -m bbl.collect.wiki bbl/cache/collect/wiki bbl/cache/parquet/t20_matches.parquet | tee -a "$GITHUB_STEP_SUMMARY"
             tar czf wiki_raw_v1.tar.gz -C bbl/cache/collect wiki
             gh release upload bbl-history wiki_raw_v1.tar.gz --clobber
+          fi
+
+      - name: Wikipedia season squads pages
+        run: |
+          set -e
+          if grep -qx wiki_squads_v1.tar.gz held.txt && [ "$REFRESH" != squads ]; then
+            gh release download bbl-history --pattern wiki_squads_v1.tar.gz --dir . --clobber && tar xzf wiki_squads_v1.tar.gz -C bbl/cache/collect
+            echo "squads held" | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            python -m bbl.collect.wiki bbl/cache/collect --squads | tee -a "$GITHUB_STEP_SUMMARY"
+            tar czf wiki_squads_v1.tar.gz -C bbl/cache/collect squads
+            gh release upload bbl-history wiki_squads_v1.tar.gz --clobber
           fi
 
       - name: Fixtures table and ground coordinates (exact articles, not search hits)
