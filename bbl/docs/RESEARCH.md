@@ -136,3 +136,14 @@ Both confirm intervals now include zero. Still an upper bound against a stand-in
 - **Start times and weather** for dew and rain: Cricsheet has dates only. Open-Meteo history needs a paid
   plan for this use; a fixture list with start times would let BOM daily data in for free.
 - **Announced squads and late changes** for the team-news test (no archive exists; record them ourselves).
+
+## 7. Collected 22 Oct: start times, home sides, weather, squads (bbl/docs/DATA_INVENTORY.md)
+
+- **Day against night (BBL):** the chasing side won 34% of 47 day games and 55% of 500 night games.
+- **Dew (BBL):** the closer the air to its dew point at the end of the game, the more often the chase wins:
+  57.6% under a 3C gap, 52.6% at 3 to 6C, 50.8% over 6C (611 games; logistic slope -0.043 per 1C, permutation
+  p = 0.02). Several weather effects were looked at, so this is promising, not proven. It is only usable once the
+  toss says who chases, with a forecast for the night, and it is to be confirmed on seasons not yet looked at.
+- **Home side (BBL):** won 52.6% of 435 games where the page marks it; venue_share (our home proxy) averages
+  0.38 for those sides against 0.19 for all, so the proxy tracks it.
+- **Weather and scoring:** no link between weather and first-innings runs above the ground's average (all |r| < 0.1).

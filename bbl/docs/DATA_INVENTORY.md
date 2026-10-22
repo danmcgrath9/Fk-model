@@ -16,7 +16,7 @@ counted from the pull on the `bbl-history` release (bbl-data run of 21 Oct 2026,
 | live prices through the week | BetMatic odds watch | whatever BetMatic shows for BBL | from the 2026/27 season | ours | none extra | not set up; recording only |
 | contracted squads | Wikipedia season pages, API | each club's squad with captain and overseas country: BBL 2014/15, 2023/24 to 2026/27 and WBBL 2026/27 in full (BBL\|16 119 players, WBBL\|12 109); other seasons laid out differently, unparsed | 2014/15 | CC BY-SA, attribute with page and revision | free | **pulled**; announced XIs and late changes still have no archive: record from the paper season on |
 | injuries | none found | | | | | **gap** |
-| weather and dew | NASA POWER hourly, at each ground | temperature, dew point, humidity, rain, wind at 2 m, every summer each ground was used, and the coming one | 2011 | "no restrictions on the use, access, and/or download" (NASA, CC BY 4.0); credit the POWER Project | free | **pulled**, resumable; 1,181 games joined, see below |
+| weather and dew | NASA POWER hourly, at each ground | temperature, dew point, humidity, rain, wind at 2 m, every summer each ground was used, and the coming one | 2011 | "no restrictions on the use, access, and/or download" (NASA, CC BY 4.0); credit the POWER Project | free | **pulled**, resumable: weather for 657 of 662 BBL games and 401 of 519 WBBL (nearly all the WBBL gaps are games with no recorded start time) |
 | ground coordinates | the Wikipedia article named for each ground, then its Wikidata item (P625) | 133 of 154 venue names placed; 14 of 1,181 games at a ground still unplaced | | CC BY-SA / CC0 | free | **pulled**; a first pass by search was wrong (SCG for the Gabba, Cape Town for the WACA) and was replaced |
 | team news, scorecards | cricket.com.au, ESPNcricinfo | | | cricket.com.au bars copying or reproducing its content; Cricinfo's terms not confirmed | | **not collected** |
 | historical odds | Betfair BASIC (free), OddsPapi and odds-api.io free tiers | exchange and bookmaker prices | varies | each needs the founder's own account or key | free to paid | **needs the founder** |
@@ -78,6 +78,6 @@ The probe (`bbl/lines/probe.py`) ran on push at its committed budget of 0 credit
 What it showed (`python -m bbl.research.measure`, sections 5 to 7 of MEASURE.md): BBL day games were won by
 the chasing side 34% of the time (47 games) against 55% at night (500); the marked home side won 52.6% of
 435 BBL games; and in the BBL the chasing side wins more often the closer the air is to its dew point at the
-end of the game (57.1% under a 3C gap, 50.3% over 6C; slope p = 0.04 by permutation over 559 games:
+end of the game (57.6% under a 3C gap, 50.8% over 6C; slope p = 0.02 by permutation over 611 games:
 promising, not proven, and only usable after the toss with a forecast). Weather does not predict
 first-innings runs (every correlation under 0.1).
