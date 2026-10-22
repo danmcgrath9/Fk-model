@@ -254,3 +254,9 @@ Paper at Form King's opening price (every step whose band holds the open), 5 bet
 
 Not value at the open: the other 18 runners opened under their minimum (Anglais $4.00 sat in the gap between its
 $3.97-$3.99 and $4.48 steps).
+
+## Sent Thu 22 Oct for Sat 24: Yarra Valley and St Arnaud ($50 unit, Market Open, TAB)
+Priced on the final fields (pulled 11:29am / 11:30am Thu). Founder: R1 and R2 left out at both meetings; St Arnaud R3
+kept despite first starter Harder Than All ("bet that race"). Yarra Valley 45 orders on 23 runners (up to 83.21u),
+St Arnaud 47 orders on 23 runners (up to 99.82u); all 92 registered "Notification has been scheduled". TAB balance was
+$0.44 at 10:03am Thu: the orders fire only if the account is funded before the markets open.
