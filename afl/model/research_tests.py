@@ -191,6 +191,39 @@ def redistribution_test(cache, out_md):
     print('\n'.join(rep))
 
 
+def ensemble_test(cache, out_md, seeds=(7, 11, 23, 41, 59)):
+    """One model against the average of several fitted with different random seeds (rows and columns sampled
+    differently each time). Appends to the report."""
+    import lightgbm as lgb
+    from afl.model.disposals import fit_dispersion
+    from afl.model.walkforward import params_for
+    base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
+    rep = ['## One model or an average of several', '',
+           f'The current model against the average of {len(seeds)} fitted with different random seeds. Fitted 2013-2023, '
+           'tuned 2024, scored 2025-2026.', '', '| stat | log-lik change | average miss change | kept |', '|---|---|---|---|']
+    kept = {}
+    for stat, label in STATS.items():
+        m, feats, _ = stat_matrix(base, cache, stat)
+        tr, tu, te = m[m.season.between(2013, 2023)], m[m.season == 2024], m[m.season.isin([2025, 2026])]
+        mus_tu, mus_te = [], []
+        for sd in seeds:
+            mdl = lgb.LGBMRegressor(objective='poisson', **{**params_for(stat), 'random_state': sd}).fit(
+                tr[feats], tr[stat], eval_set=[(tu[feats], tu[stat])], callbacks=[lgb.early_stopping(150, verbose=False)])
+            mus_tu.append(mdl.predict(tu[feats]))
+            mus_te.append(mdl.predict(te[feats]))
+        y_tu, y = tu[stat].to_numpy(), te[stat].to_numpy()
+        a1 = max(fit_dispersion(y_tu, mus_tu[0]), 1e-3)
+        ak = max(fit_dispersion(y_tu, np.mean(mus_tu, 0)), 1e-3)
+        d = nb_logpmf(y, np.mean(mus_te, 0), ak) - nb_logpmf(y, mus_te[0], a1)
+        da = np.abs(y - np.mean(mus_te, 0)) - np.abs(y - mus_te[0])
+        se = d.std() / np.sqrt(len(d))
+        kept[stat] = bool(d.mean() > 2 * se)
+        rep.append(f'| {label} | {d.mean():+.4f} ± {se:.4f} | {da.mean():+.3f} ± {da.std() / np.sqrt(len(da)):.3f} | {"yes" if kept[stat] else "no"} |')
+        print(stat, 'ensemble', f'{d.mean():+.4f} ± {se:.4f}', flush=True)
+    open(out_md, 'a').write('\n'.join(rep) + '\n\n')
+    print('\n'.join(rep))
+
+
 def run(cache, out_md):
     base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
     rep = ['# Research ideas, tested without bookmaker lines', '',
@@ -209,6 +242,9 @@ def run(cache, out_md):
 if __name__ == '__main__':
     if len(sys.argv) > 3 and sys.argv[3] == 'positions':
         position_test(sys.argv[1], sys.argv[2])
+        sys.exit()
+    if len(sys.argv) > 3 and sys.argv[3] == 'ensemble':
+        ensemble_test(sys.argv[1], sys.argv[2])
         sys.exit()
     if len(sys.argv) > 3 and sys.argv[3] == 'redistribution':
         redistribution_test(sys.argv[1], sys.argv[2])
