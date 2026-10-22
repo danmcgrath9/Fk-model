@@ -107,6 +107,7 @@ jobs:
 
       - name: Convert and upload what is new
         run: |
+          set -o pipefail
           python afl/data/to_parquet.py afl/cache/raw afl/cache | tee -a "$GITHUB_STEP_SUMMARY"
           if [ -s afl/cache/new_files.txt ]; then
             # upload one at a time with retries: a file that only lives on this runner is lost when the job ends
