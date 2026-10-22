@@ -96,3 +96,16 @@ Per stat: the usual output of players missing from last week's side, each player
 
 
 Adopted from the test above: who inherits the ball, for tackles only (`REDIST_STATS` in afl/model/walkforward.py).
+## One model or an average of several
+
+The current model against the average of 5 fitted with different random seeds. Fitted 2013-2023, tuned 2024, scored 2025-2026.
+
+| stat | log-lik change | average miss change | kept |
+|---|---|---|---|
+| disposals | +0.0003 ± 0.0001 | -0.002 ± 0.001 | yes |
+| marks | +0.0001 ± 0.0001 | +0.000 ± 0.000 | no |
+| tackles | -0.0004 ± 0.0001 | +0.000 ± 0.000 | no |
+| goals | +0.0001 ± 0.0001 | +0.000 ± 0.000 | no |
+
+Not adopted from the test above: averaging five seeds. It passes for disposals (+0.0003) and hurts tackles, and five
+times the training for a sixth of what the team-sheet position bought is not worth another moving part.
