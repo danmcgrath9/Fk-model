@@ -41,7 +41,7 @@ def card(d):
             f"<div class='mid'><div class='kick'>{html.escape(d['kicker'])}</div><div class='hero'>{silks(d['silks']) if d.get('silks') else ''}<div><div class='big'>{html.escape(d['horse'])}</div>"
             f"<div class='sub' style='margin-top:14px'>{html.escape(d['meeting'])}</div></div></div><div class='st'>{st}</div>"
             f"<div class='line'>{d['line']}</div>{also}</div>"
-            "<div class='foot'><span>Win bets at posted prices.</span><span>18+ · Gamble responsibly</span></div></body></html>")
+            "<div class='foot'><span>Win bets.</span><span>18+ · Gamble responsibly</span></div></body></html>")
 
 async def main(src, out):
     from playwright.async_api import async_playwright

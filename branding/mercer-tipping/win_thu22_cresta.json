@@ -1,0 +1,13 @@
+{
+ "kicker": "Got on early ✓",
+ "horse": "Cresta Crystal",
+ "meeting": "Mornington R7",
+ "date": "Thu 22 Oct",
+ "stats": [
+  {"v": "$17", "k": "Our price"},
+  {"v": "$4", "k": "Started"},
+  {"v": "1.35u", "k": "Staked"},
+  {"v": "+17.06u", "k": "Profit"}
+ ],
+ "line": "Taken at <b>more than 4x her starting price</b>. Profit after scratching deductions."
+}
