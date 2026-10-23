@@ -1,0 +1,130 @@
+# Sale Sun 25 Oct 2026: final fields pulled Sat 24 Oct 10:21am Melbourne, emergencies SCR
+1, Big Kapow, 0, 0
+1, Loaded, 0, 0
+1, Silver Lightning, 0, 0
+1, Trouble'n Paradise, 0, 0
+1, Heavy Is The Head, 0, 0
+1, Incoherent, 0, 0
+1, Mission Miss, 0, 0
+1, Armorware, 0, 0
+1, Boom Boss, 0, 0
+1, Debut Author, 0, 0
+1, Prestige Valour, 0, 0
+1, Saint Willo, 0, 0
+1, Smithers, 0, 0
+1, Diamond Heist, 0, 0
+1, Eidfjord, SCR
+2, Abydos, 0, 0
+2, Always Shining, 0, 0
+2, Bargunn, 0, 0
+2, Egyptian Thorn, 0, 0
+2, Moz, 0, 0
+2, Rough Enuff, 0, 0
+2, Silky Seth, 0, 0
+2, Sir Riverance, 0, 0
+2, Angling Angel, 0, 0
+2, Castelli In Aria, 0, 0
+2, Expanding Power, 0, 0
+2, Goodness, 0, 0
+2, Motherduck, 0, 0
+2, Plucky Enuff, 0, 0
+2, Laundering, SCR
+2, Jupiter's Girl, SCR
+2, Quemax, SCR
+2, Gypsy Moon, SCR
+3, Blue And Gold, 0, 0
+3, Cab Franc, 0, 0
+3, Chip In, 0, 0
+3, Civic Square, 0, 0
+3, Hurtling, 0, 0
+3, Julius Maximus, 0, 0
+3, Majestic Flyer, 0, 0
+3, Sound System, 0, 0
+3, Sunshine Boy, 0, 0
+3, Tagged, 0, 0
+3, Delahra, 0, 0
+3, Holy Russian, 0, 0
+3, Sisterly, 0, 0
+3, Bureau, SCR
+3, Written Velocity, SCR
+3, Boutin, SCR
+4, Feeling Dusty, 0, 0
+4, Mount Sabyinyo, 0, 0
+4, Overpriced, 0, 0
+4, Crown Crusher, 0, 0
+4, Belcony, 0, 0
+4, Wounder, 0, 0
+4, Epeiric, 0, 0
+4, Tanabata, 0, 0
+4, Grand Sage, 0, 0
+4, Neck High, 0, 0
+5, Cable Dancer, 0, 0
+5, Slane, 0, 0
+5, So Brave, 0, 0
+5, Tishman, 0, 0
+5, Pure Grunt, 0, 0
+5, Icaro, 0, 0
+5, Superstock, 0, 0
+5, Navy Heart, 0, 0
+5, Saxon Blood, 0, 0
+5, Ninyo, 0, 0
+5, She's A Con, 0, 0
+5, Wolfess, 0, 0
+5, Jean Georges, 0, 0
+5, Twisted Love, SCR
+5, Chocolate Royal, SCR
+5, Just Dance, SCR
+6, Fehmarn, 0, 0
+6, Hello Romeo, 0, 0
+6, Inside Man, 0, 0
+6, Mr Tickles, 0, 0
+6, Go To Hollywood, 0, 0
+6, Mckeyla, 0, 0
+6, Nordic Strike, 0, 0
+6, Walter Spur, 0, 0
+6, Blue Humma, 0, 0
+6, Hotspur Reale, 0, 0
+6, Soju, 0, 0
+6, Crank, 0, 0
+6, Laura's Gold, 0, 0
+7, Freedom Rally, 0, 0
+7, Enxuto, 0, 0
+7, Doctor Askar, 0, 0
+7, Ten Commandments, 0, 0
+7, Aztec Ruler, 0, 0
+7, Charterhouse, 0, 0
+7, El Rocko, 0, 0
+7, Makdane, 0, 0
+7, Bon Mistress, 0, 0
+7, Haaracaine, 0, 0
+7, All Business, 0, 0
+8, Kahhof, 0, 0
+8, Hiyaam Proud, 0, 0
+8, Boltsaver, 0, 0
+8, Flying Mikki, 0, 0
+8, Chest Of Gold, 0, 0
+8, Cobblestone Way, 0, 0
+8, Shaalute, 0, 0
+8, Bel Mezyaan, 0, 0
+8, Nearing Liberty, 0, 0
+8, Chicago Blues, 0, 0
+8, Umgawa, 0, 0
+8, Wetumpka, 0, 0
+8, Illyivy, 0, 0
+8, Waco Kid, 0, 0
+8, Diamond Eye, SCR
+8, Hedjet, SCR
+8, Gunado, SCR
+9, Alero, 0, 0
+9, Fission, 0, 0
+9, Vail Mountain, 0, 0
+9, Delicate Lady, 0, 0
+9, Electric Elvis, 0, 0
+9, Interest Point, 0, 0
+9, Yes Yoshi, 0, 0
+9, Blankfield, 0, 0
+9, Let It Beel, 0, 0
+9, Cardamom, 0, 0
+9, Kippis, 0, 0
+9, Street Conqueror, 0, 0
+9, Balance, 0, 0

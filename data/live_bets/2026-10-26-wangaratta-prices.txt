@@ -1,0 +1,139 @@
+# Wangaratta Mon 26 Oct 2026: final fields pulled Sat 24 Oct 10:21am Melbourne, emergencies SCR
+1, Bon Over, 0, 0
+1, Hellofa Gamble, 0, 0
+1, Kensington City, 0, 0
+1, Blue Parrot, 0, 0
+1, Fiore Darancio, 0, 0
+1, Kinky Mistress, 0, 0
+1, Super Scholar, 0, 0
+1, Ubique, 0, 0
+1, Valour Vino, 0, 0
+1, Boots Off, 0, 0
+1, Obsidian Arrow, 0, 0
+1, Richy Ric, 0, 0
+1, Brookelinda, 0, 0
+1, Snowy Mountains, 0, 0
+1, Full Of Knowledge, SCR
+2, Getthereandwin, 0, 0
+2, I'm Da Boss, 0, 0
+2, Magnus Maximus, 0, 0
+2, Scorpion, 0, 0
+2, Turquoise Parrot, 0, 0
+2, Estival, 0, 0
+2, Muddy, 0, 0
+2, Ravens Glow, 0, 0
+2, Swift Rosette, 0, 0
+2, Do The Dirty, 0, 0
+2, Prolific Angel, 0, 0
+2, Assisi, 0, 0
+2, Miss Satellite, 0, 0
+2, Tungamah Tess, 0, 0
+3, Brilliant Bull Ant, 0, 0
+3, Foxtrot Charlie, 0, 0
+3, He's Our Boy, 0, 0
+3, Numbersneverseen, 0, 0
+3, Rock About, 0, 0
+3, Somethingintheair, 0, 0
+3, Jezebel Jenni, 0, 0
+3, Lei, 0, 0
+3, Princess Geisha, 0, 0
+3, Shields, 0, 0
+3, Aquafy, 0, 0
+3, Move It, 0, 0
+3, Stash Royale, 0, 0
+3, Nerves Of Steel, SCR
+3, Dextrose, SCR
+3, Neonova, SCR
+3, Tallingas Diamond, SCR
+4, Ashen Knight, 0, 0
+4, Dei Miracoli, 0, 0
+4, Windsor Chariot, 0, 0
+4, Wombat, 0, 0
+4, Dela Bella, 0, 0
+4, Dingle, 0, 0
+4, Fierce Ruby, 0, 0
+4, Open Fire, 0, 0
+4, Red Light Rachel, 0, 0
+4, Rein Me In, 0, 0
+4, Fiorente Charm, 0, 0
+4, Volestain, 0, 0
+4, Smashing Success, 0, 0
+4, Victrix Swan, 0, 0
+4, My Boy Grunt, SCR
+5, Hold This, 0, 0
+5, Riverlea Prince, 0, 0
+5, Waheela, 0, 0
+5, Classic Cracker, 0, 0
+5, Creusa, 0, 0
+5, Hot Opera, 0, 0
+5, Hot Spirit, 0, 0
+5, My Rosalie, 0, 0
+5, Off'n'gawn, 0, 0
+5, Circus Moon, 0, 0
+5, Dance Day, 0, 0
+5, Soaring Legend, 0, 0
+5, High Performance, SCR
+5, Kermalina, SCR
+5, A Rus In Grinzing, SCR
+5, Diamond Burglar, SCR
+6, Super Paradise, 0, 0
+6, Mozu Marcassin, 0, 0
+6, The Mansman, 0, 0
+6, King Kauffo, 0, 0
+6, Cool Star, 0, 0
+6, Dane On Tour, 0, 0
+6, Phantom's Chase, 0, 0
+6, Phoenician, 0, 0
+6, Catalona, 0, 0
+6, Phoenix Flyer, 0, 0
+6, Ain't Tellin, 0, 0
+7, The Quiet Immortal, 0, 0
+7, Helioson, 0, 0
+7, Hurco, 0, 0
+7, Sensational Ruler, 0, 0
+7, Late Harvest, 0, 0
+7, Sheer Lunacy, 0, 0
+7, Too Big, 0, 0
+7, Lord Domino, 0, 0
+7, Positivo, 0, 0
+7, Strummer, 0, 0
+7, Barrett Reef, 0, 0
+7, Give Some Lip, 0, 0
+7, Jingu Express, 0, 0
+7, Sacred Ingot, SCR
+7, Winning Witness, SCR
+7, Teddy Boy, SCR
+8, Ti Tree Lad, 0, 0
+8, Black Adam, 0, 0
+8, Hollerasaurous, 0, 0
+8, Swing Your Magic, 0, 0
+8, Chip'n'dale, 0, 0
+8, Vaderlee, 0, 0
+8, Raven's Silver, 0, 0
+8, Express Guard, 0, 0
+8, Strike First, 0, 0
+8, Tipsy Gypsy, 0, 0
+8, Wallaby Jack, 0, 0
+8, Lujaego, 0, 0
+8, Rose Of Shalaa, 0, 0
+8, Dubai Fountain, 0, 0
+8, So Regal, SCR
+8, Doubtfree, SCR
+9, Helluva Barty, 0, 0
+9, Coco De Luxe, 0, 0
+9, Angling For Info, 0, 0
+9, Rosie's Prophecy, 0, 0
+9, Mythic, 0, 0
+9, Blue Moon Summit, 0, 0
+9, Royal Turf, 0, 0
+9, Swift Hit, 0, 0
+9, Tallingas Chief, 0, 0
+9, Three Musketeers, 0, 0
+9, Heidi Dancer, 0, 0
+9, The Cuban, 0, 0
+9, I Am Algadon, 0, 0
+9, Sheila, 0, 0
+9, Shyleah, SCR
+9, Densetsu, SCR
+9, Alpinova, SCR
+9, Kazotsky, SCR

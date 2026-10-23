@@ -1,0 +1,79 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-10-26,Wangaratta,1,,4,Blue Parrot,WIN,17.84,38.51,0.71,36,1 of 2,0.71u,12.84,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,1,,4,Blue Parrot,WIN,22.30,38.51,1.07,54,2 of 2,1.78u,12.84,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,1,,6,Kinky Mistress,WIN,6.28,12.14,2.03,101,1 of 2,2.03u,4.05,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,1,,6,Kinky Mistress,WIN,7.85,12.14,2.15,108,2 of 2,4.18u,4.05,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,1,,14,Snowy Mountains,WIN,9.81,23.57,2.38,119,1 of 2,2.38u,7.86,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,1,,14,Snowy Mountains,WIN,12.26,23.57,0.60,30,2 of 2,2.98u,7.86,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,2,,10,Do The Dirty,WIN,11.72,28.43,2.32,116,1 of 2,2.32u,9.48,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,2,,10,Do The Dirty,WIN,14.65,28.43,0.52,26,2 of 2,2.84u,9.48,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,2,,11,Prolific Angel,WIN,11.42,25.42,2.22,111,1 of 2,2.22u,8.47,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,2,,11,Prolific Angel,WIN,14.28,25.42,0.62,31,2 of 2,2.84u,8.47,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,3,,2,Foxtrot Charlie,WIN,11.81,27.22,2.16,108,1 of 2,2.16u,9.07,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,3,,2,Foxtrot Charlie,WIN,14.76,27.22,0.56,28,2 of 2,2.72u,9.07,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,3,,5,Rock About,WIN,7.58,17.34,1.41,70,1 of 2,1.41u,5.78,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,3,,5,Rock About,WIN,9.47,17.34,2.31,116,2 of 2,3.72u,5.78,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,4,,5,Dela Bella,WIN,10.81,24.07,2.18,109,1 of 2,2.18u,8.02,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,4,,5,Dela Bella,WIN,13.51,24.07,0.92,46,2 of 2,3.10u,8.02,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,4,,8,Open Fire,WIN,11.72,27.54,1.14,57,1 of 2,1.14u,9.18,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,4,,8,Open Fire,WIN,14.65,27.54,1.66,83,2 of 2,2.80u,9.18,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,4,,12,Volestain,WIN,5.91,14.18,5.20,260,1 of 2,5.20u,4.73,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,4,,12,Volestain,WIN,7.39,14.18,0.04,2,2 of 2,5.24u,4.73,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,4,,3,Windsor Chariot,WIN,11.26,22.73,0.88,44,1 of 2,0.88u,7.58,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,4,,3,Windsor Chariot,WIN,14.07,22.73,1.56,78,2 of 2,2.44u,7.58,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,5,,1,Hold This,WIN,17.97,33.23,1.36,68,1 of 2,1.36u,11.08,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,5,,1,Hold This,WIN,22.46,33.23,0.04,2,2 of 2,1.40u,11.08,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,5,,8,My Rosalie,WIN,13.90,31.34,1.72,86,1 of 2,1.72u,10.45,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,5,,8,My Rosalie,WIN,17.38,31.34,0.64,32,2 of 2,2.36u,10.45,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,5,,12,Soaring Legend,WIN,5.54,12.51,5.16,258,1 of 2,5.16u,4.17,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,5,,12,Soaring Legend,WIN,6.92,12.51,0.80,40,2 of 2,5.96u,4.17,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,6,,9,Catalona,WIN,6.98,15.80,1.63,82,1 of 2,1.63u,5.27,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,6,,9,Catalona,WIN,8.73,15.80,2.65,132,2 of 2,4.28u,5.27,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,6,,4,King Kauffo,WIN,15.61,32.26,0.81,40,1 of 2,0.81u,10.75,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,6,,4,King Kauffo,WIN,19.51,32.26,1.23,62,2 of 2,2.04u,10.75,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,6,,2,Mozu Marcassin,WIN,14.80,28.19,0.79,40,1 of 2,0.79u,9.40,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,6,,2,Mozu Marcassin,WIN,18.50,28.19,1.33,66,2 of 2,2.12u,9.40,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,6,,7,Phantom's Chase,WIN,14.58,31.08,0.90,45,1 of 2,0.90u,10.36,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,6,,7,Phantom's Chase,WIN,18.23,31.08,1.36,68,2 of 2,2.26u,10.36,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,6,,8,Phoenician,WIN,13.77,30.88,0.92,46,1 of 2,0.92u,10.29,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,6,,8,Phoenician,WIN,17.21,30.88,1.12,56,2 of 2,2.04u,10.29,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,6,,1,Super Paradise,WIN,20.08,41.51,0.55,28,1 of 2,0.55u,13.84,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,6,,1,Super Paradise,WIN,25.10,41.51,0.89,44,2 of 2,1.44u,13.84,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,6,,3,The Mansman,WIN,6.94,14.57,1.83,92,1 of 2,1.83u,4.86,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,6,,3,The Mansman,WIN,8.68,14.57,3.25,162,2 of 2,5.08u,4.86,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,7,,13,Give Some Lip,WIN,21.06,40.53,0.54,27,1 of 2,0.54u,13.51,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,7,,13,Give Some Lip,WIN,26.32,40.53,0.84,42,2 of 2,1.38u,13.51,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,7,,2,Helioson,WIN,16.60,35.76,0.85,42,1 of 2,0.85u,11.92,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,7,,2,Helioson,WIN,20.75,35.76,1.11,56,2 of 2,1.96u,11.92,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,7,,5,Late Harvest,WIN,12.98,31.66,2.06,103,1 of 2,2.06u,10.55,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,7,,5,Late Harvest,WIN,16.23,31.66,0.60,30,2 of 2,2.66u,10.55,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,7,,9,Positivo,WIN,5.19,12.01,5.06,253,1 of 2,5.06u,4.00,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,7,,9,Positivo,WIN,6.49,12.01,1.36,68,2 of 2,6.42u,4.00,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,7,,10,Strummer,WIN,14.13,36.46,0.82,41,1 of 2,0.82u,12.15,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,7,,10,Strummer,WIN,17.66,36.46,1.64,82,2 of 2,2.46u,12.15,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,7,,1,The Quiet Immortal,WIN,10.05,20.99,1.11,56,1 of 2,1.11u,7.00,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,7,,1,The Quiet Immortal,WIN,12.56,20.99,1.93,96,2 of 2,3.04u,7.00,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,8,,3,Hollerasaurous,WIN,16.50,30.10,1.32,66,1 of 2,1.32u,10.03,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,8,,3,Hollerasaurous,WIN,20.62,30.10,0.08,4,2 of 2,1.40u,10.03,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,8,,12,Lujaego,WIN,7.55,18.12,2.96,148,1 of 2,2.96u,6.04,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,8,,12,Lujaego,WIN,9.44,18.12,0.90,45,2 of 2,3.86u,6.04,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,8,,13,Rose Of Shalaa,WIN,17.77,39.55,1.46,73,1 of 2,1.46u,13.18,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,8,,13,Rose Of Shalaa,WIN,22.21,39.55,0.34,17,2 of 2,1.80u,13.18,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,8,,4,Swing Your Magic,WIN,19.48,43.38,1.32,66,1 of 2,1.32u,14.46,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,8,,4,Swing Your Magic,WIN,24.35,43.38,0.40,20,2 of 2,1.72u,14.46,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,8,,10,Tipsy Gypsy,WIN,10.84,26.03,2.14,107,1 of 2,2.14u,8.68,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,8,,10,Tipsy Gypsy,WIN,13.55,26.03,0.70,35,2 of 2,2.84u,8.68,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,8,,6,Vaderlee,WIN,7.90,18.95,3.30,165,1 of 2,3.30u,6.32,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,8,,6,Vaderlee,WIN,9.88,18.95,0.32,16,2 of 2,3.62u,6.32,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,9,,6,Blue Moon Summit,WIN,12.07,32.66,2.00,100,1 of 2,2.00u,10.89,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,9,,6,Blue Moon Summit,WIN,15.09,32.66,0.90,45,2 of 2,2.90u,10.89,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,9,,2,Coco De Luxe,WIN,9.25,18.97,2.52,126,1 of 2,2.52u,6.32,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,9,,2,Coco De Luxe,WIN,11.56,18.97,0.74,37,2 of 2,3.26u,6.32,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,9,,1,Helluva Barty,WIN,19.53,38.76,0.49,24,1 of 2,0.49u,12.92,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,9,,1,Helluva Barty,WIN,24.41,38.76,0.95,48,2 of 2,1.44u,12.92,forecast middle/firm/firm by step
+2026-10-26,Wangaratta,9,,13,I Am Algadon,WIN,10.56,21.31,2.30,115,1 of 2,2.30u,7.10,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,9,,13,I Am Algadon,WIN,13.20,21.31,0.66,33,2 of 2,2.96u,7.10,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,9,,7,Royal Turf,WIN,6.33,14.11,4.46,223,1 of 2,4.46u,4.70,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,9,,7,Royal Turf,WIN,7.91,14.11,0.78,39,2 of 2,5.24u,4.70,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,9,,10,Three Musketeers,WIN,18.52,44.33,1.36,68,1 of 2,1.36u,14.78,forecast firm/firm/firm by step
+2026-10-26,Wangaratta,9,,10,Three Musketeers,WIN,23.15,44.33,0.22,11,2 of 2,1.58u,14.78,forecast firm/firm/firm by step

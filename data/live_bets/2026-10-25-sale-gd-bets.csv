@@ -1,0 +1,12 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,SALE_251026_1,Loaded,top_pick,1.9,1.9,2.6,2.6,,2.48,0.05,; EARLY ONLY: bet near the open,1.0,no,,
+2,SALE_251026_2,Rough Enuff,top_pick,3.8,3.8,7.0,7.0,,5.39,0.299,; EARLY ONLY: bet near the open,1.0,no,,
+3,SALE_251026_3,Julius Maximus,top_pick,1.75,1.75,2.4,2.4,,2.63,-0.086,Already run to today's class; Class drop (rating); Late 600 beyond the tempo; EARLY ONLY: bet near the open,1.0,no,,
+4,SALE_251026_4,Mount Sabyinyo,top_pick,3.5,3.5,3.2,3.2,,4.14,-0.226,"Third-up, improving",1.0,no,,
+5,SALE_251026_5,Superstock,EDGE,12.0,12.0,9.0,9.0,,7.23,0.244,Class drop (rating),2.05,no,,
+5,SALE_251026_5,Superstock,value_20c,12.0,12.0,9.0,9.0,,7.23,0.244,Class drop (rating),2.05,no,,
+5,SALE_251026_5,Navy Heart,top_pick,4.6,4.6,4.6,4.6,,5.02,-0.084,,1.0,no,,
+6,SALE_251026_6,Fehmarn,top_pick,5.0,5.0,4.6,4.6,,4.39,0.049,,1.0,no,,
+7,SALE_251026_7,Ten Commandments,top_pick,3.1,3.1,2.9,2.9,,3.11,-0.067,Already run to today's class,1.0,no,,
+8,SALE_251026_8,Bel Mezyaan,top_pick,3.0,3.0,2.7,2.7,,3.43,-0.213,Beaten by the pace last start; Already run to today's class; Class drop (rating); Late 600 beyond the tempo,1.0,no,,
+9,SALE_251026_9,Yes Yoshi,top_pick,3.6,3.6,4.4,4.4,,4.51,-0.025,Back in trip after being handy,1.0,no,,
