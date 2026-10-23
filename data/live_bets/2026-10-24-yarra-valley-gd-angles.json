@@ -1,9 +1,12 @@
 {
-"1|Skyblock": [],
+"1|Skyblock": [
+"Blinkers first time"
+],
 "1|Aerial Pursuit": [],
 "1|Confidential Girl": [],
 "1|Quarters": [
-"Class drop (rating)"
+"Class drop (rating)",
+"Blinkers first time"
 ],
 "1|Velocite Belle": [
 "Beaten by the pace last start",
@@ -20,6 +23,7 @@
 "2|La Velocita": [],
 "2|Eleven Herbs": [],
 "2|Russian Tide": [],
+"2|Silver Snow": [],
 "2|Charleanor": [
 "Above the field in all three sections"
 ],
@@ -27,32 +31,31 @@
 "2|Sheer Panic": [
 "Already run to today's class"
 ],
-"2|Real Heir": [
-"Already run to today's class",
-"Class drop (rating)"
-],
+"2|Real Heir": [],
 "2|Luscombe": [
 "Class drop (rating)"
 ],
-"2|Xuxa Kiss": [],
 "3|Zverev": [],
-"3|Threewinesin": [],
+"3|Threewinesin": [
+"Blinkers first time"
+],
 "3|Mehsun": [
 "Class drop (rating)"
 ],
 "3|Nightowl": [
 "Already run to today's class",
 "Third-up, improving",
-"Class drop (rating)"
+"Class drop (rating)",
+"Blinkers first time"
 ],
 "3|Camegitchee": [
 "Declining deep in prep"
 ],
-"3|Hot Opera": [],
 "3|Bling Baby": [],
 "3|Molesworth": [
 "Well backed before a bad last run"
 ],
+"3|Whatwashethinking": [],
 "3|Sentaloa": [],
 "3|Kissattack": [],
 "4|Pharoah's Daughter": [
@@ -65,6 +68,7 @@
 "4|Golden Hips": [
 "Class drop (rating)"
 ],
+"4|Anchor Down": [],
 "4|Surely Special": [
 "Above the field in all three sections"
 ],
@@ -72,18 +76,16 @@
 "Class drop (rating)"
 ],
 "4|Palace Winter": [],
-"4|Treasury Place": [],
 "4|Up And Under": [],
 "4|Avonview": [],
 "4|Grunnettan": [],
-"5|Magnea": [
-"Already run to today's class"
-],
+"5|Magnea": [],
 "5|Machinist": [],
 "5|Pacific Glamour": [
 "Already run to today's class",
 "Declining deep in prep",
-"Class drop (rating)"
+"Class drop (rating)",
+"Blinkers first time"
 ],
 "5|Banjette": [],
 "5|Tipping Rain": [
@@ -106,10 +108,15 @@
 "6|Rockcliff": [],
 "6|Think I'm Divine": [],
 "6|Moose Jaw": [
+"Already run to today's class",
 "Back in trip after being handy"
 ],
+"6|Balgowan": [
+"Beaten by the pace last start",
+"Already run to today's class",
+"New career-best last start"
+],
 "6|Aussieaussieaussie": [],
-"6|Second Guess": [],
 "7|Prestige Ole": [
 "Class drop (rating)"
 ],
@@ -127,9 +134,7 @@
 "Already run to today's class",
 "Class drop (rating)"
 ],
-"7|Slate Ripper": [
-"New career-best last start"
-],
+"7|Slate Ripper": [],
 "7|Clarapatra": [
 "Above the field in all three sections"
 ],

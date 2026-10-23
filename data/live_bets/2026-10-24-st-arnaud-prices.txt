@@ -1,0 +1,94 @@
+# St Arnaud Sat 24 Oct: race-morning prices pulled Sat 8:55am Melbourne after the Saturday re-pull (scratchings in, jockeys and gear as of 8:50am)
+1, All Moonlite, 5.50, 5.50, fk_open 5.50
+1, Conjurer, 5.50, 5.50, fk_open 3.87
+1, Heidi High, 7.00, 7.00, fk_open 7.00
+1, Billie Stardom, 151.00, 151.00, fk_open 101.00
+1, Studio Artist, SCR
+# ^ emergency, no start
+1, Helichrysum, SCR
+# ^ emergency, no start
+1, Norfolk Victory, 13.00, 13.00, fk_open 39.00
+1, Surhomme, 31.00, 31.00, fk_open 21.00
+1, Julep, 2.50, 2.50, fk_open 2.32
+1, Princess Chic, 41.00, 41.00, fk_open 41.00
+1, Burrow, 9.50, 9.50, fk_open 15.67
+1, Dun Dirt Sweet, 10.00, 10.00, fk_open 9.50
+2, Muladaan, 151.00, 151.00, fk_open 79.33
+2, Welkin Star, 7.00, 7.00, fk_open 10.00
+2, Vicain, 151.00, 151.00, fk_open 81.00
+2, Lord Lonny, 23.00, 23.00, fk_open 14.00
+2, Jakbe Nimble, 61.00, 61.00, fk_open 40.67
+2, Intervened, 4.80, 4.80, fk_open 3.38
+2, Fram Strait, 8.00, 8.00, fk_open 9.67
+2, Last Summer, 81.00, 81.00, fk_open 40.67
+2, Girt By Sea, 1.50, 1.50, fk_open 1.46
+2, Helter Peltzer, 26.00, 26.00, fk_open 38.83
+3, Tarin's Rock, 126.00, 126.00, fk_open 73.29
+3, Highlight Reel, 8.50, 8.50, fk_open 9.36
+3, Wallace And Gromit, SCR
+# ^ emergency, no start
+3, Keepy Uppy, 61.00, 61.00, fk_open 34.80
+3, Mr Cicconi, 8.00, 8.00, fk_open 7.36
+3, Scusies, 21.00, 21.00, fk_open 13.86
+3, Swift Statement, 8.00, 8.00, fk_open 5.08
+3, Fully Funded, 2.60, 2.60, fk_open 2.83
+3, Harder Than All, 35.00, 35.00, fk_open 24.80
+3, Fox Phire, 2.90, 2.90, fk_open 3.21
+3, Big Trouble, 19.00, 19.00, fk_open 12.43
+3, Gold Bijoux, SCR
+# ^ emergency, no start
+4, Ask For More, 101.00, 101.00, fk_open 76.00
+4, Padstow Polly, 126.00, 126.00, fk_open 76.00
+4, First Division, 10.00, 10.00, fk_open 4.70
+4, High Altitude, 23.00, 23.00, fk_open 15.00
+4, Asawin, 6.50, 6.50, fk_open 3.40
+4, Simply Excels, 13.00, 13.00, fk_open 13.50
+4, Lady Maestro, 2.00, 2.00, fk_open 2.65
+4, Infer, 41.00, 41.00, fk_open 24.50
+4, Miss Toronado, 5.50, 5.50, fk_open 5.75
+4, Krasnoludek, 9.00, 9.00, fk_open 6.75
+5, Galaxy Turf, SCR
+# ^ emergency, no start
+5, Sugar And Sweet, 12.00, 12.00, fk_open 12.00
+5, El Salto, 10.00, 10.00, fk_open 8.00
+5, They Call Me Dusty, SCR
+# ^ emergency, no start
+5, Spinhof, 5.50, 5.50, fk_open 23.00
+5, Whiskey And Beer, 11.00, 11.00, fk_open 8.00
+5, Two Kay Klick, SCR
+# ^ emergency, no start
+5, Flux, 6.00, 6.00, fk_open 2.90
+5, Steely Hustler, 6.50, 6.50, fk_open 9.50
+5, Attaboom, 13.00, 13.00, fk_open 9.50
+5, Enigmatise, 26.00, 26.00, fk_open 41.00
+5, Zamora, 4.80, 4.80, fk_open 5.00
+5, Cavascot, SCR
+# ^ emergency, no start
+5, Triomphe, 7.50, 7.50, fk_open 6.00
+6, Bell's Bighouse, 34.00, 34.00, fk_open 26.50
+6, Regal Lion, 3.70, 3.70, fk_open 3.50
+6, Shaiyhar, 12.00, 12.00, fk_open 32.00
+6, Aftermath, 2.40, 2.40, fk_open 2.33
+6, Saveadateforme, 6.00, 6.00, fk_open 5.00
+6, Topspin, 41.00, 41.00, fk_open 43.50
+6, Nicoffhome, 14.00, 14.00, fk_open 13.50
+6, Initial Moment, 23.00, 23.00, fk_open 19.50
+6, Verona Rupes, 7.50, 7.50, fk_open 5.50
+7, I Could Do Better, 9.00, 9.00, fk_open 9.58
+7, Little Richie Turf, 21.00, 21.00, fk_open 38.83
+7, Dusty's Deel, 5.00, 5.00, fk_open 3.57
+7, Dashing Donkey, 7.00, 7.00, fk_open 8.00
+7, Pendante, 4.20, 4.20, fk_open 4.90
+7, A Blue Star, SCR
+# ^ emergency, no start
+7, Serin, 23.00, 23.00, fk_open 18.83
+7, Ginger Sweet, 3.90, 3.90, fk_open 2.64
+7, Conaltri, 71.00, 71.00, fk_open 67.00
+7, Crackerjack Hatch, SCR
+# ^ emergency, no start
+7, Black Rutile, SCR
+# ^ emergency, no start
+7, Coastal Whispers, 9.50, 9.50, fk_open 21.17
+7, Sanika, SCR
+# ^ emergency, no start
+7, Kamarooka, 13.00, 13.00, fk_open 10.83

@@ -24,14 +24,12 @@
 3|12|Highlight Reel|True|False
 3|13|Wallace And Gromit|True|False
 3|1|Keepy Uppy|False|False
-3|5|Inner Thoughts|False|False
 3|11|Mr Cicconi|True|False
 3|6|Scusies|False|False
 3|2|Swift Statement|False|False
 3|4|Fully Funded|False|False
 3|7|Harder Than All|False|False
 3|9|Fox Phire|False|False
-3|10|Isle Of Mona|False|False
 3|8|Big Trouble|False|False
 3|14|Gold Bijoux|True|False
 4|11|Ask For More|True|False
@@ -42,7 +40,6 @@
 4|3|Simply Excels|False|False
 4|8|Lady Maestro|False|False
 4|7|Infer|False|False
-4|5|Becauseyou're Mine|False|False
 4|6|Miss Toronado|False|False
 4|1|Krasnoludek|False|False
 5|13|Galaxy Turf|True|False
@@ -64,7 +61,6 @@
 6|2|Shaiyhar|False|False
 6|3|Aftermath|False|False
 6|4|Saveadateforme|False|False
-6|6|Dartboard|False|False
 6|10|Topspin|False|False
 6|7|Nicoffhome|False|False
 6|9|Initial Moment|False|False

@@ -14,10 +14,8 @@
 "1|Ice Kool": [
 "Already run to today's class"
 ],
-"1|Always Enuff": [],
 "1|Unflinching": [],
 "1|Philosopher": [],
-"2|Regal Harry": [],
 "2|Half Pipe": [
 "Already run to today's class",
 "Declining deep in prep"
@@ -27,16 +25,14 @@
 "Above the field in all three sections"
 ],
 "2|Buggsy": [
-"Class drop (rating)"
+"Class drop (rating)",
+"Blinkers first time"
 ],
 "2|Turbo Saint": [],
-"2|Barracks": [],
-"2|Big Wigs": [
-"Already run to today's class"
-],
 "2|The Speed Machine": [],
-"2|Inner Gold": [],
-"2|Peyton": [],
+"2|Inner Gold": [
+"Blinkers first time"
+],
 "3|Written Empire": [
 "Late 600 beyond the tempo"
 ],
@@ -62,27 +58,17 @@
 "3|Lepolo": [],
 "3|Bohemian Boy": [],
 "3|Hierarchy": [],
-"4|Jacaranda": [
-"Above the field in all three sections"
-],
 "4|Angels Fury": [
 "Late 600 beyond the tempo"
 ],
-"4|Lady Catalina": [
-"Class drop (rating)"
-],
-"4|Ciaron's Star": [
-"Already run to today's class",
-"Class drop (rating)"
-],
 "4|Superbec": [
-"Declining deep in prep"
+"Declining deep in prep",
+"Class drop (rating)"
 ],
 "4|Chayan": [
 "Beaten by the pace last start",
 "Already run to today's class",
-"Class drop (rating)",
-"Late 600 beyond the tempo"
+"Class drop (rating)"
 ],
 "4|Ladhar": [
 "Third-up, improving",
@@ -96,9 +82,7 @@
 "Above the field in all three sections"
 ],
 "4|Almost An Angel": [],
-"4|Nishioka": [
-"New career-best last start"
-],
+"4|Nishioka": [],
 "4|Aroused": [
 "Late 600 beyond the tempo",
 "Above the field in all three sections"
@@ -127,7 +111,6 @@
 "Class drop (rating)"
 ],
 "6|Pondalowie": [],
-"6|Welcometotheshow": [],
 "6|Astral Flame": [],
 "6|Buckaroo": [
 "Class drop (rating)"
@@ -148,19 +131,18 @@
 "6|Another Wil": [
 "Already run to today's class"
 ],
-"6|Harry's Yacht": [],
 "6|Von Hauke": [],
-"6|Evaporate": [],
 "6|Enxuto": [],
 "6|Feroce": [],
-"7|So You Are": [],
 "7|King Pedro": [],
+"7|Newfoundland": [],
 "7|Valiant King": [],
 "7|Strictly Business": [],
-"7|Point Of Law": [],
 "7|Autumn Mystery": [
-"Beaten by the pace last start"
+"Beaten by the pace last start",
+"Late 600 beyond the tempo"
 ],
+"7|Kizlyar": [],
 "7|Pinhole": [
 "Beaten by the pace last start",
 "Late 600 beyond the tempo"
@@ -174,6 +156,7 @@
 "Class drop (rating)",
 "Late 600 beyond the tempo"
 ],
+"7|Jennivamoose": [],
 "7|Kings Valley": [],
 "7|Future History": [],
 "7|Aethelwulf": [],
@@ -190,7 +173,8 @@
 "Already run to today's class"
 ],
 "8|Saint George": [
-"Late 600 beyond the tempo"
+"Late 600 beyond the tempo",
+"Blinkers first time"
 ],
 "8|Middle Earth": [],
 "8|Cosmic Crusader": [
@@ -203,7 +187,6 @@
 "8|Light Infantry Man": [],
 "8|Land Legend": [],
 "9|Sun Worshipper": [],
-"9|Moonlight Circus": [],
 "9|Ocean Bay": [
 "Above the field in all three sections"
 ],
@@ -227,7 +210,6 @@
 "9|Sunset Park": [],
 "9|Chispa": [],
 "9|Sun Gift": [],
-"9|Panova": [],
 "9|Charisse": [],
 "9|Classic Gem": [],
 "9|House Of Lords": []

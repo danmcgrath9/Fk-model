@@ -308,3 +308,11 @@ every step whose band holds it:
 
 Not filled: Spinhof (St Arnaud R5) opened $23, past its $17.81 ceiling; Smashing Ruby (Yarra Valley R6) $10 past its $8
 ceiling. Tweeted Sat 24 Oct with Flemington as posted Thursday (locked): card_sat24.json.
+
+Saturday 24 Oct (re-pulled 8:50am Sat, jockeys and gear in; re-priced on the final fields ~9am, v10). Flemington: Always
+Enuff (R1), Lady Catalina (R4) and Moonlight Circus (R9) carry no price at all this morning after being priced Wednesday,
+so they are treated as late scratchings (estimated deductions: R9 about 6c on Classic Gem and Shockletz). 13 value-at-open
+runners, 5 top-ups logged (paper): Turbo Saint R2 1.23u at $13, Written Empire R3 1.30u at $8 (EDGE), Feroce R6 1.62u at
+$15, Aethelwulf R7 3.78u at $5 and Cosmic Crusader R8 1.40u at $8 (R7/R8 are the founder's own bets, flagged, not
+added). The Speed Machine R2 also qualified and is NOT logged: first-up block. St Arnaud 5 value-at-open, Yarra Valley 2:
+all under take-at now, no top-ups.

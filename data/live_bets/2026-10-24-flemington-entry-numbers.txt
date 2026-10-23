@@ -10,14 +10,10 @@
 1|11|Bred 'em All|False|False
 1|4|Ice Kool|False|False
 2|6|Half Pipe|False|False
-2|1|Big Wigs|False|False
 2|3|The Speed Machine|False|False
-2|10|Regal Harry|False|False
 2|2|Buggsy|False|False
-2|4|Barracks|False|False
 2|5|Valaroso|False|False
 2|9|Turbo Saint|False|False
-2|8|Peyton|False|False
 2|7|Inner Gold|False|False
 3|8|King Winston|False|False
 3|3|Hierarchy|False|False
@@ -35,8 +31,6 @@
 4|8|Ladhar|False|False
 4|13|Nishioka|False|False
 4|3|Angels Fury|False|False
-4|4|Jacaranda|False|False
-4|2|Ciaron's Star|False|False
 4|1|Chayan|False|False
 4|7|Superbec|False|False
 4|11|Aroused|False|False
@@ -59,10 +53,7 @@
 6|10|Enxuto|False|False
 6|13|On Display|False|False
 6|3|Sun God|False|False
-6|9|Harry's Yacht|False|False
 6|14|Astral Flame|False|False
-6|2|Evaporate|False|False
-6|4|Welcometotheshow|False|False
 6|8|Feroce|False|False
 6|12|Surfin' Bird|False|False
 7|8|Future History|False|False
@@ -74,17 +65,13 @@
 7|5|Valiant King|False|False
 7|2|Juja Kibo|False|False
 7|11|King Pedro|False|False
-7|1|The Euphrates|False|False
-7|6|So You Are|False|False
 7|7|Mr Monaco|False|False
 7|9|Kings Valley|False|False
 7|3|Pinhole|False|False
 7|16|Strictly Business|False|False
-7|19|Omni Man|True|False
 7|18|Kizlyar|True|False
 7|12|Aethelwulf|False|False
 7|13|Autumn Mystery|False|False
-7|15|Point Of Law|False|False
 8|4|Attrition|False|False
 8|2|Light Infantry Man|False|False
 8|7|Land Legend|False|False
@@ -111,6 +98,5 @@
 9|14|Classic Gem|False|False
 9|15|Chispa|False|False
 9|5|After Summer|False|False
-9|2|Panova|False|False
 9|13|Soverato|False|False
 9|12|Ocean Bay|False|False

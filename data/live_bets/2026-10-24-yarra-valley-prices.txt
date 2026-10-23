@@ -1,0 +1,98 @@
+# Yarra Valley Sat 24 Oct: race-morning prices pulled Sat 8:58am Melbourne after the Saturday re-pull (scratchings in, jockeys and gear as of 8:50am)
+1, Aerial Pursuit, 10.00, 10.00, fk_open 6.50
+1, Madame Petite, 6.00, 6.00, fk_open 4.80
+1, Confidential Girl, 2.90, 2.90, fk_open 2.90
+1, Quarters, 13.00, 13.00, fk_open 18.00
+1, Velocite Belle, 5.50, 5.50, fk_open 7.00
+1, Exacting Standard, 3.20, 3.20, fk_open 3.20
+1, Skyblock, 23.00, 23.00, fk_open 13.00
+2, Powershare, SCR
+# ^ emergency, no start
+2, Sheer Panic, 12.00, 12.00, fk_open 13.00
+2, Silver Snow, 8.50, 8.50, fk_open 15.00
+2, Luscombe, 26.00, 26.00, fk_open 23.00
+2, Baltic, SCR
+# ^ emergency, no start
+2, Eleven Herbs, 19.00, 19.00, fk_open 19.00
+2, Real Heir, 2.70, 2.70, fk_open 2.80
+2, Fanfire, 5.00, 5.00, fk_open 6.50
+2, Russian Tide, 19.00, 19.00, fk_open 19.00
+2, Janie's Got A Gun, 41.00, 41.00, fk_open 81.00
+2, Bold Amore, SCR
+# ^ emergency, no start
+2, Charleanor, 10.00, 10.00, fk_open 11.00
+2, La Velocita, 4.60, 4.60, fk_open 4.80
+3, Ask The Captain, SCR
+# ^ emergency, no start
+3, Whatwashethinking, 19.00, 19.00, fk_open 31.00
+3, Nightowl, 3.80, 3.80, fk_open 6.50
+3, Hot Opera, SCR
+# ^ emergency, no start
+3, Bling Baby, 17.00, 17.00, fk_open 34.00
+3, Threewinesin, 41.00, 41.00, fk_open 56.00
+3, Startin'sumthin', SCR
+# ^ emergency, no start
+3, Camegitchee, 81.00, 81.00, fk_open 34.00
+3, Zverev, 3.60, 3.60, fk_open 3.05
+3, Molesworth, 9.00, 9.00, fk_open 5.50
+3, Kissattack, 13.00, 13.00, fk_open 12.50
+3, Mehsun, 6.50, 6.50, fk_open 7.75
+3, Sentaloa, 4.60, 4.60, fk_open 3.05
+4, Surely Special, 4.00, 4.00, fk_open 3.50
+4, Blonde Suspect, SCR
+# ^ emergency, no start
+4, Golden Hips, 11.00, 11.00, fk_open 16.00
+4, Avonview, 14.00, 14.00, fk_open 9.50
+4, Pharoah's Daughter, 5.25, 5.25, fk_open 3.50
+4, Opus, 19.00, 19.00, fk_open 8.00
+4, Palace Winter, 15.00, 15.00, fk_open 23.00
+4, Grunnettan, 13.00, 13.00, fk_open 9.50
+4, Up And Under, 6.50, 6.50, fk_open 8.50
+4, Ain't Tellin, SCR
+# ^ emergency, no start
+4, Devine Grunt, 4.60, 4.60, fk_open 8.00
+4, Anchor Down, 26.00, 26.00, fk_open 23.00
+5, Wind Dreamer, 6.50, 6.50, fk_open 5.50
+5, Machinist, 7.50, 7.50, fk_open 8.00
+5, Shooting For Stars, 12.00, 12.00, fk_open 5.00
+5, Hillbily Kynection, 71.00, 71.00, fk_open 51.00
+5, Heartattack Jack, 12.00, 12.00, fk_open 8.00
+5, Montrock, 41.00, 41.00, fk_open 34.00
+5, Magnea, 4.00, 4.00, fk_open 4.40
+5, Tipping Rain, 6.50, 6.50, fk_open 7.50
+5, Cavascot, SCR
+# ^ emergency, no start
+5, Banjette, 41.00, 41.00, fk_open 41.00
+5, Pacific Glamour, 3.10, 3.10, fk_open 3.60
+6, Rockcliff, 13.00, 13.00, fk_open 8.50
+6, Moose Jaw, 9.00, 9.00, fk_open 10.00
+6, Belmasai, 13.00, 13.00, fk_open 6.50
+6, Think I'm Divine, 12.00, 12.00, fk_open 10.00
+6, Smashing Ruby, 5.50, 5.50, fk_open 10.00
+6, Snow On Her, SCR
+# ^ emergency, no start
+6, The Mount, 4.20, 4.20, fk_open 3.70
+6, Balgowan, 6.50, 6.50, fk_open 6.50
+6, Aussieaussieaussie, 16.00, 16.00, fk_open 14.00
+6, Pensatore, 26.00, 26.00, fk_open 18.00
+6, Ponte Arcobaleno, 4.60, 4.60, fk_open 3.10
+6, Think Sassy, SCR
+# ^ emergency, no start
+7, The Kings Gospel, 15.00, 15.00, fk_open 11.00
+7, I'm Dynamite, SCR
+# ^ emergency, no start
+7, Hell's Itch, 7.50, 7.50, fk_open 6.50
+7, Nicking Gracie, SCR
+# ^ emergency, no start
+7, Slate Ripper, 7.50, 7.50, fk_open 5.00
+7, Sacred Ingot, SCR
+# ^ emergency, no start
+7, Cuban Dawn, SCR
+# ^ emergency, no start
+7, Colour Circle, 3.50, 3.50, fk_open 2.80
+7, Clarapatra, 10.00, 10.00, fk_open 8.00
+7, Our Paramour, 14.00, 14.00, fk_open 23.00
+7, Somax, 41.00, 41.00, fk_open 34.00
+7, Prestige Geoffrey, 7.00, 7.00, fk_open 8.00
+7, Prestige Ole, 4.20, 4.20, fk_open 9.50
+7, Okeah, 23.00, 23.00, fk_open 12.00
