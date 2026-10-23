@@ -8,7 +8,7 @@ dozen steps). Read-only: nothing is sent here; the file goes through fk-betmatic
 Reads TAB's latest win price per runner from the meeting's odds log (odds_watch_live.py), and every bet record of the
 meeting from its *-placed.jsonl files (fk-betmatic status). A runner with ANY money on (any file, any step) is left
 out, so a sweep can never double a bet; a part-filled ladder (eg one of two steps) is listed as on, and named."""
-import csv, glob, json, os, sys, collections
+import re, csv, glob, json, os, sys, collections
 
 orders = sys.argv[1]
 base = os.path.basename(orders).split("-betmatic-")[0]            # 2026-10-23-ballarat
@@ -18,6 +18,8 @@ out = os.path.join(L, f"{base}-sweep.csv")
 
 odds, when = {}, None
 log = os.path.join(L, f"odds-live-{date}-{venue}.jsonl")
+if not os.path.exists(log):   # odds_watch_live.py names the log after the BetMatic venue, spaces kept ("yarra valley")
+    log = os.path.join(L, f"odds-live-{date}-{venue.replace('-', ' ')}.jsonl")
 if os.path.exists(log):
     cur = None
     for line in open(log):
@@ -37,10 +39,11 @@ for f in glob.glob(os.path.join(L, f"{base}*-placed.jsonl")):
     for line in open(f):
         d = json.loads(line)
         lab = d["label"]                                           # fk-2026-10-23-ballarat-r2-n6-s1[-tag]
-        rn = lab.split(f"-{venue}-r", 1)[1].split("-")
+        m = re.search(r"-r(\d+)-n(\d+)-s", lab)                    # the venue in a label has no hyphens (yarravalley)
+        if not m: continue
         for x in d.get("records") or []:
             if isinstance(x, dict) and float(x.get("amount") or 0) > 0:
-                took[(int(rn[0]), rn[1][1:])] = took[(int(rn[0]), rn[1][1:])] + float(x["amount"])
+                took[(int(m.group(1)), m.group(2))] += float(x["amount"])
 
 rows = list(csv.DictReader(open(orders)))
 by = collections.OrderedDict()
