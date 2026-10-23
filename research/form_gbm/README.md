@@ -1071,3 +1071,110 @@ The "going back, no intent" pattern does NOT lose: horses with two or more items
 says, if anything (the market reads it as a negative more than it is). Samples are small (13 winners in the exact
 shape), so no rule either way; nothing blocked. Settling position in the race itself is not in the dataset, so whether
 they actually went back is untested.
+## What would make more money, 23 Oct 2026 (founder: "test how we can make this model better... More ROI. More money")
+
+Read first, then tested. Every number below is from code in this folder; nothing is a guess.
+
+### What the live book already says
+
+Paper to 20 Oct: 69 bets, 18 won, 75.12u staked, +97.32u. Beat Betfair SP on 21 of 27 bets with a BSP, 1.57x BSP on
+average. The edge is the OPENING price, not the model being sharper than the jump: the market moves toward us after we
+bet. Nine weeks of back-test say the same thing (below). So "more money" is mostly "more of the same bet", and the
+constraint is getting on, not finding bets.
+
+### 1. Is the edge steady? (t_month_bsp.py, clean holdout: v10 trees trained before 3 Jun, scored 3 Jun to 13 Oct, flat 1u)
+
+| month | races | KL model | KL open | bets | won | ROI open (16c ded) | ROI at BSP (8% comm) | beat BSP | median open/BSP |
+|---|---|---|---|---|---|---|---|---|---|
+| 2026-06 | 293 | 0.0854 | 0.1333 | 461 | 68 | +8.0% | -12.2% | 74% | 1.34 |
+| 2026-07 | 329 | 0.0804 | 0.1278 | 491 | 78 | +31.6% | +18.1% | 72% | 1.31 |
+| 2026-08 | 297 | 0.0901 | 0.1388 | 431 | 76 | +30.8% | +7.9% | 73% | 1.31 |
+| 2026-09 | 210 | 0.1072 | 0.1608 | 352 | 53 | +17.0% | -32.5% | 74% | 1.37 |
+| 2026-10 | 65 | 0.0970 | 0.1540 | 94 | 17 | +18.5% | -20.4% | 68% | 1.30 |
+| all | 1194 | 0.0897 | 0.1391 | 1829 | 292 | +22.0% | -3.6% | 73% | 1.33 |
+
+Positive at the open in every month; the share of bets that beat BSP never leaves 68-74%; the median price edge over
+BSP sits at 1.30-1.37 every month. At BSP it is noise around zero, as every earlier test said. September's model KL
+(0.107) is the known September data gap (live-pulled races without speed figures), not decay: October is back to 0.097.
+
+### 2. The Betfair side (t_month_bsp.py, t_lay_halves.py)
+
+Does our price add anything to BSP? No. A logistic blend of BSP and ours, fitted on one half of the holdout and tested on
+the other, scores WORSE than BSP alone on both halves (0.2638 vs 0.2629; 0.2663 vs 0.2654), and the weight on ours
+flips sign between halves. Backing at BSP is dead, which we knew.
+
+Laying is a different story. Horses we rate at 1.6x or more the BSP chance win 74% (early half) and 79% (late half) of
+what BSP says, on 1,571 and 1,540 runners. Laying every one at BSP, 8% commission: +17.1% and +19.4% on the lay stake.
+By BSP price:
+
+| BSP band | half | runners | wins | expected | A/E | lay ROI | liability per 1u (mean price-1) |
+|---|---|---|---|---|---|---|---|
+| $4-$8 | early / late | 47 / 55 | 9 / 12 | 7.7 / 8.9 | 1.17 / 1.34 | -23% / -41% | 5.3 |
+| $8-$15 | early / late | 166 / 137 | 7 / 12 | 14.5 / 12.4 | 0.48 / 0.97 | +39% / -10% | 10.6 |
+| **$15-$30** | early / late | 278 / 284 | 5 / 5 | 13.2 / 13.7 | **0.38 / 0.37** | **+45% / +60%** | 20.6 |
+| $30+ | early / late | 1054 / 1051 | 14 / 9 | 13.0 / 12.9 | 1.08 / 0.70 | +7% / +15% | 173 |
+
+The $15-$30 cell is the one that holds: 562 runners, 10 winners against 27 expected, the same in both halves. These
+are OUR value roughies that drifted to the jump: the market was right to drift them, and the lay at BSP is the other
+side of the "bets that drifted lose 34%" line from 8 Oct. Read it as a candidate, not a plan: the ratio uses a price
+only known at the jump (a Betfair SP lay order sets a liability and takes BSP), the model here is stage-1 trees without
+the second stage, the test is in-sample for the band choice (five bands, one threshold), and a $20 lay risks 19u to win
+0.92u, so +50% on stake is about 2.6% on liability over about 125 lays a month. Worth a 4-week paper book with the live
+price before anything else. Betfair's base rate on Victorian racing is 8% (10% in NSW and the ACT).
+
+### 3. Other states with the Victorian model (arch_export_states.py, price_states.sh, score_states.py)
+
+Dave's one-week sample (20-26 Aug 2026, all states) run through the live pipeline: the archive's point-in-time race
+form through the same export the history uses, stage 1 v5, stage 2 v6, the back-settler shade; results, average
+opening price and BSP from the archive's own race files. Two honest caveats: the network third of stage 1 could not
+run in this environment (no torch), so stage 1 here is trees 0.7 + CatBoost 0.3; and the model has never seen a
+NSW/QLD/WA horse, jockey or trainer, so the second stage's "what did the market think of this horse last time"
+inputs are empty for them (a real deployment would carry their history). Both make the non-VIC numbers a LOWER bound.
+The VIC row is IN-SAMPLE (v10 trained through 14 Oct includes these races) and is not a fair comparison; the fair VIC
+figure for the same week is the 9 Oct test (trees trained before 20 Aug): winner log loss 1.785 vs BSP 1.708, plan +43%.
+
+| state | races | KL to BSP: ours | KL to BSP: open | ours closer? | winner log loss: ours | open | bets | won | ROI at open (16c ded) | ROI at BSP (8% comm) | beat BSP | median open/BSP |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| NSW | 85 (85 with BSP) | 0.1091 | 0.1440 | yes | 1.820 | 1.859 | 130 | 23 | +9.5% | -1.5% | 61% | 1.10 |
+| QLD | 68 (68 with BSP) | 0.1261 | 0.0857 | NO | 1.688 | 1.607 | 99 | 14 | -6.8% | -30.8% | 55% | 1.04 |
+| VIC | 66 (66 with BSP) | 0.0325 | 0.1444 | yes | 1.735 | 1.765 | 102 | 21 | +6.6% | -23.7% | 97% | 1.59 |
+| WA | 43 (43 with BSP) | 0.0830 | 0.1078 | yes | 1.999 | 1.970 | 47 | 9 | +48.0% | +25.8% | 60% | 1.07 |
+| SA | 16 (16 with BSP) | 0.1370 | 0.1413 | yes | 2.013 | 2.253 | 19 | 5 | +70.7% | +122.5% | 47% | 0.90 |
+| TAS | 9 (9 with BSP) | 0.1505 | 0.1637 | yes | 1.532 | 1.529 | 3 | 0 | -100.0% | -100.0% | 33% | 0.77 |
+| ACT | 7 (7 with BSP) | 0.1033 | 0.1523 | yes | 2.005 | 2.136 | 8 | 2 | +17.4% | -5.7% | 62% | 1.28 |
+| ALL non-VIC | 228 (228 with BSP) | 0.1127 | 0.1206 | yes | 1.822 | 1.828 | 306 | 53 | +13.1% | -0.2% | 58% | 1.07 |
+| ALL | 294 (294 with BSP) | 0.0947 | 0.1260 | yes | 1.803 | 1.814 | 408 | 74 | +11.5% | -6.1% | 67% | 1.25 |
+
+The VIC row proves the in-sample warning: KL 0.0325 and 97% of bets beating BSP is not a model, it is a model that has
+seen the answers (these 66 races are in v10's training set and in the second stage's horse history). Ignore it.
+Outside Victoria, 228 races and 306 plan bets, true out-of-sample: our price is closer to BSP than the opening market in
+five of six states (QLD is the exception, where that week's open was unusually sharp, 0.086), the plan returns +13.1%
+at the open after the 16c deduction allowance and -0.2% at BSP, 58% of bets beat BSP and the median price edge over BSP is
+1.07. Against Victoria's 73% and 1.33 that is a THIN edge, and 306 bets at these prices carry a standard error of about
+14 points, so +13% is one standard error from zero. What it says: the method travels (the shape is the same, open soft,
+BSP sharp, our price in between), but most of Victoria's edge comes from knowing the horses, jockeys and trainers, which
+this run gave the other states none of. The full answer needs a state's own history loaded, which is a subscription
+question for Dave, and should wait until the Victorian point-in-time archive has been loaded and the retrain compared.
+
+### What this adds up to
+
+1. **The money is in volume at the open, not in a sharper model.** Nine weeks of back-test and the live book agree: the
+   edge is that the opening price is soft and the market moves toward us (73% of bets shorten, median 1.33x BSP, every
+   month). Thirty model experiments since 28 Sep moved KL from 0.0897 to 0.0800 and the open-price ROI hardly at all.
+   This week the account was empty at five opens (Mornington, Flemington, Cranbourne R1/R2/R4, Ballarat, Yarra Valley):
+   every one of those was a bet the method had already found and did not get. The cheapest ROI gain available is a
+   funded TAB and a second and third bookmaker running in BetMatic, because each bookmaker's open is a separate chance
+   to be first to a soft price. That is an operations decision, not a model one.
+2. **Candidate, worth a paper book: lay our drifted roughies at BSP.** $15-$30 at BSP, rated 1.6x+ the BSP chance by us:
+   10 winners from 562 against 27 expected, both halves. +45% / +60% on the lay stake, about 2.6% on liability. Four
+   weeks on paper with the live price before a dollar goes on; it needs a Betfair account and SP lay orders.
+3. **Candidate, slower: other states.** The method travels but the edge is thin without local history. Ask Dave what a
+   second state costs; do not buy until the Victorian archive retrain is in and compared.
+4. **The $599 archive is about honesty, not ROI.** The 9 Oct test found our stored copy rates winners a little higher
+   than a point-in-time copy would (+0.025 log), so today's back-test is slightly flattering. Retraining on the clean
+   archive makes the live price more honest and should not be expected to raise ROI; it may lower the back-test.
+5. **Not worth more time** (all tested, here or earlier): more second-stage inputs, backing at BSP, blending our price
+   with BSP, place bets, 9:30 top-ups (live sample now -5.9u on 14, backtest -7.6%), metro-only or track rules.
+
+Decisions for the founder: (a) keep TAB funded to cover every order that can fire; (b) add bookmakers to BetMatic;
+(c) yes/no to a four-week paper lay book; (d) pay the archive invoice and upload the full file for the retrain.
