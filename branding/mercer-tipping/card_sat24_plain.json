@@ -59,19 +59,19 @@
   },
   {
    "name": "Yarra Valley",
-   "note": "at SP",
+   "note": "at the open",
    "bets": [
     {
      "race": 3,
      "horse": "Nightowl",
-     "price": "SP",
+     "price": "$6.50",
      "rated": "$4.45",
      "units": "1.25u"
     },
     {
      "race": 7,
      "horse": "Prestige Ole",
-     "price": "SP",
+     "price": "$9.50",
      "rated": "$6.32",
      "units": "0.69u"
     }
@@ -79,19 +79,19 @@
   },
   {
    "name": "St Arnaud",
-   "note": "at SP",
+   "note": "at the open",
    "bets": [
     {
      "race": 5,
      "horse": "Steely Hustler",
-     "price": "SP",
+     "price": "$9.50",
      "rated": "$6.86",
      "units": "0.68u"
     },
     {
      "race": 7,
      "horse": "Coastal Whispers",
-     "price": "SP",
+     "price": "$21",
      "rated": "$7.88",
      "units": "1.62u"
     }
