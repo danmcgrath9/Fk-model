@@ -4,7 +4,6 @@
  "meetings": [
   {
    "name": "Flemington",
-   "note": "posted Thursday",
    "bets": [
     {
      "race": 1,
@@ -59,7 +58,6 @@
   },
   {
    "name": "Yarra Valley",
-   "note": "at the open",
    "bets": [
     {
      "race": 3,
@@ -79,7 +77,6 @@
   },
   {
    "name": "St Arnaud",
-   "note": "at the open",
    "bets": [
     {
      "race": 5,
