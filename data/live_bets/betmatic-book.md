@@ -281,3 +281,15 @@ Cranbourne: R2 4c (Eye For An Eye taken $23 -> $22.12; Superstock taken $15 -> $
 bets refunded ($18 at $17 and $17 at $11, $35). Ballarat (paper): R3 4c (Star Je Taime $7.50 -> $7.24, Wavelets $14 ->
 $13.48), R7 7c (Bel Lupa $19 -> $17.74), R8 5c (Jenni You Think $8.75 -> $8.36). R9 Russian Duchess SCRATCHED: void.
 Twitter card (Fri) re-issued at the after-deduction prices with the two scratchings shown as SCR / REFUND.
+
+## Paper lay book, from Wed 28 Oct 2026 (founder, 23 Oct: "Let do it starting next Wednesday")
+The rule is fixed before the first race (research/form_gbm/README.md, 23 Oct; t_lay_halves.py). Paper only, four weeks, then judged.
+- Each race morning, after scratchings, every runner on the final field with our price (the live shaded model) gets a trigger:
+  lay it if Betfair SP is between $15 and $30 AND at least 1.6 x our price. The morning list names each horse with its trigger.
+- Paper stake 1u lay at Betfair SP: a loser pays +0.92u (8% commission; NSW/ACT tracks 10%, +0.90u), a winner costs (BSP - 1)u.
+- Settled from Form King's results (betfairStartingPrice). A horse whose BSP misses the band or the trigger is no bet.
+- Backtest to beat: holdout $15-$30 band, 562 lays, 10 winners against 27 expected; +45% / +60% on the lay stake by half.
+  First-starters, internationals and scratchings are excluded, as on the back side.
+
+| Date | Meeting | Race | Horse | Ours | Trigger (BSP at least) | BSP | Result | P/L (u) |
+|---|---|---|---|---|---|---|---|---|
