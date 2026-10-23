@@ -1,0 +1,7 @@
+# Flemington Sat 24 Oct: race, cents deducted (TAB, from the founder)
+1, 0  # Ice Kool
+2, 39  # Turbo Saint
+6, 15  # Surfin' Bird
+7, 10  # Aethelwulf
+8, 0  # Cosmic Crusader
+9, 8  # Classic Gem, Shockletz

@@ -316,3 +316,7 @@ runners, 5 top-ups logged (paper): Turbo Saint R2 1.23u at $13, Written Empire R
 $15, Aethelwulf R7 3.78u at $5 and Cosmic Crusader R8 1.40u at $8 (R7/R8 are the founder's own bets, flagged, not
 added). The Speed Machine R2 also qualified and is NOT logged: first-up block. St Arnaud 5 value-at-open, Yarra Valley 2:
 all under take-at now, no top-ups.
+
+Flemington Sat 24 Oct deductions (TAB, founder): R1 0c, R2 39c, R6 15c, R7 10c, R8 0c, R9 8c. Real bets after deductions:
+Turbo Saint $18 -> $11.37, Classic Gem $9 -> $8.36, Shockletz $10 -> $9.28. The Twitter card re-issued at the
+after-deduction prices; Yarra Valley and St Arnaud were never posted Friday (founder busy), so they are recorded at SP.
