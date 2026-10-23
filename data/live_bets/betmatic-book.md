@@ -293,3 +293,18 @@ The rule is fixed before the first race (research/form_gbm/README.md, 23 Oct; t_
 
 | Date | Meeting | Race | Horse | Ours | Trigger (BSP at least) | BSP | Result | P/L (u) |
 |---|---|---|---|---|---|---|---|---|
+
+## Sat 24 Oct: Yarra Valley and St Arnaud at the open (paper; no bets struck)
+Yarra Valley's orders triggered Fri 10:24am with TAB at $0.19 (no records). St Arnaud's fired Sat 8:07-8:09am and BetMatic
+ignored every one: "No active session" on TAB, TAB took $0 of $5,202 asked. Paper at Form King's opening price (fk_open),
+every step whose band holds it:
+
+| Meeting | Race | Horse | FK open | Ours | Stake | Twitter (halved) | Price at 8:30am Sat |
+|---|---|---|---|---|---|---|---|
+| Yarra Valley | R3 | Nightowl | $6.50 | $4.45 | 2.50u | 1.25u | $3.80 |
+| Yarra Valley | R7 | Prestige Ole | $9.50 | $6.32 | 1.37u | 0.69u | $4.20 |
+| St Arnaud | R5 | Steely Hustler | $9.50 | $6.86 | 1.36u | 0.68u | $8.50 |
+| St Arnaud | R7 | Coastal Whispers | $21.17 | $7.88 | 3.24u | 1.62u | $11 |
+
+Not filled: Spinhof (St Arnaud R5) opened $23, past its $17.81 ceiling; Smashing Ruby (Yarra Valley R6) $10 past its $8
+ceiling. Tweeted Sat 24 Oct with Flemington as posted Thursday (locked): card_sat24.json.
