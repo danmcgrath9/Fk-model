@@ -12,6 +12,7 @@ under his price, top bookie price, dry run first, sent only on the founder's OK)
 | Fri 23 Oct | Scone R5 + Sunshine Coast Poly R2 (Fri 23) | double | Tennessee River ($1.70) / Tilly's Last Wish ($2.60) | Win double | $4.42 TAB | 6u | $300 | No | | | |
 | Sat 24 Oct 8:30am | Eagle Farm (Sat 24) | R7 | Cool Gent | Each way | $11 win / $2.70 place | 2u EW | $200 | Not yet | | | |
 | Sat 24 Oct 12:05pm | Randwick (Sat 24) | R1 | Royal Accord | Win (late bet) | $2.50 | 5u | $250 | Not yet | | | |
+| Sat 24 Oct 1:38pm (edited) | Randwick (Sat 24), The Invitation | R8 | Perfumist | Each way | $7.50 win / $2.40 place | 2u EW | $200 | Not yet | | | |
 
 Running total: settle each row with the result, then: tips, winners, units staked, units profit, ROI.
 Results for non-Victorian races are not in our Form King plan (Single State Pro, VIC); they come from the founder or a
