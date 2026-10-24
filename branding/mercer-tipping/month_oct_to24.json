@@ -1,0 +1,21 @@
+{
+ "title": "October",
+ "sub": "5 to 24 Oct",
+ "kicker": "Profit so far",
+ "big": "+179u",
+ "big_sub": "on 105u staked",
+ "stats": [
+  {"v": "+170%", "k": "Return"},
+  {"v": "86", "k": "Bets"},
+  {"v": "23", "k": "Winners"},
+  {"v": "75%", "k": "Beat the SP"}
+ ],
+ "wins_title": "Biggest wins",
+ "wins": [
+  ["Murshidi", "Geelong", "$11", "+50u"],
+  ["Cosmic Crusader", "Flemington", "$11", "+20u"],
+  ["Cresta Crystal", "Mornington", "$13.64", "+17u"],
+  ["Kingswood", "Caulfield Cup", "$25", "+14u"]
+ ],
+ "end": "We get on early. <span>The market comes to us.</span>"
+}
