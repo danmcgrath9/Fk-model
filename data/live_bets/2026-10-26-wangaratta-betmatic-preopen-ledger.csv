@@ -1,0 +1,79 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-10-26-wangaratta-r1-n4-s1,1,4,Blue Parrot,17.84,38.51,36,13990202,Notification has been sent.
+fk-2026-10-26-wangaratta-r1-n4-s2,1,4,Blue Parrot,22.30,38.51,54,13990203,Notification has been sent.
+fk-2026-10-26-wangaratta-r1-n6-s1,1,6,Kinky Mistress,6.28,12.14,101,13990204,Notification has been sent.
+fk-2026-10-26-wangaratta-r1-n6-s2,1,6,Kinky Mistress,7.85,12.14,108,13990205,Notification has been sent.
+fk-2026-10-26-wangaratta-r1-n14-s1,1,14,Snowy Mountains,9.81,23.57,119,13990206,Notification has been sent.
+fk-2026-10-26-wangaratta-r1-n14-s2,1,14,Snowy Mountains,12.26,23.57,30,13990207,Notification has been sent.
+fk-2026-10-26-wangaratta-r2-n10-s1,2,10,Do The Dirty,11.72,28.43,116,13990208,Notification has been sent.
+fk-2026-10-26-wangaratta-r2-n10-s2,2,10,Do The Dirty,14.65,28.43,26,13990209,Notification has been sent.
+fk-2026-10-26-wangaratta-r2-n11-s1,2,11,Prolific Angel,11.42,25.42,111,13990210,Notification has been sent.
+fk-2026-10-26-wangaratta-r2-n11-s2,2,11,Prolific Angel,14.28,25.42,31,13990211,Notification has been sent.
+fk-2026-10-26-wangaratta-r3-n2-s1,3,2,Foxtrot Charlie,11.81,27.22,108,13990212,Notification has been sent.
+fk-2026-10-26-wangaratta-r3-n2-s2,3,2,Foxtrot Charlie,14.76,27.22,28,13990213,Notification has been sent.
+fk-2026-10-26-wangaratta-r3-n5-s1,3,5,Rock About,7.58,17.34,70,13990214,Notification has been sent.
+fk-2026-10-26-wangaratta-r3-n5-s2,3,5,Rock About,9.47,17.34,116,13990215,Notification has been sent.
+fk-2026-10-26-wangaratta-r4-n5-s1,4,5,Dela Bella,10.81,24.07,109,13990216,Notification has been sent.
+fk-2026-10-26-wangaratta-r4-n5-s2,4,5,Dela Bella,13.51,24.07,46,13990217,Notification has been sent.
+fk-2026-10-26-wangaratta-r4-n8-s1,4,8,Open Fire,11.72,27.54,57,13990218,Notification has been sent.
+fk-2026-10-26-wangaratta-r4-n8-s2,4,8,Open Fire,14.65,27.54,83,13990219,Notification has been sent.
+fk-2026-10-26-wangaratta-r4-n12-s1,4,12,Volestain,5.91,14.18,260,13990220,Notification has been sent.
+fk-2026-10-26-wangaratta-r4-n12-s2,4,12,Volestain,7.39,14.18,2,13990221,Notification has been sent.
+fk-2026-10-26-wangaratta-r4-n3-s1,4,3,Windsor Chariot,11.26,22.73,44,13990222,Notification has been sent.
+fk-2026-10-26-wangaratta-r4-n3-s2,4,3,Windsor Chariot,14.07,22.73,78,13990223,Notification has been sent.
+fk-2026-10-26-wangaratta-r5-n1-s1,5,1,Hold This,17.97,33.23,68,13990224,Notification has been sent.
+fk-2026-10-26-wangaratta-r5-n1-s2,5,1,Hold This,22.46,33.23,2,13990225,Notification has been sent.
+fk-2026-10-26-wangaratta-r5-n8-s1,5,8,My Rosalie,13.90,31.34,86,13990226,Notification has been sent.
+fk-2026-10-26-wangaratta-r5-n8-s2,5,8,My Rosalie,17.38,31.34,32,13990227,Notification has been sent.
+fk-2026-10-26-wangaratta-r5-n12-s1,5,12,Soaring Legend,5.54,12.51,258,13990228,Notification has been sent.
+fk-2026-10-26-wangaratta-r5-n12-s2,5,12,Soaring Legend,6.92,12.51,40,13990229,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n9-s1,6,9,Catalona,6.98,15.80,82,13990230,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n9-s2,6,9,Catalona,8.73,15.80,132,13990231,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n4-s1,6,4,King Kauffo,15.61,32.26,40,13990232,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n4-s2,6,4,King Kauffo,19.51,32.26,62,13990233,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n2-s1,6,2,Mozu Marcassin,14.80,28.19,40,13990234,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n2-s2,6,2,Mozu Marcassin,18.50,28.19,66,13990235,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n7-s1,6,7,Phantom's Chase,14.58,31.08,45,13990236,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n7-s2,6,7,Phantom's Chase,18.23,31.08,68,13990237,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n8-s1,6,8,Phoenician,13.77,30.88,46,13990238,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n8-s2,6,8,Phoenician,17.21,30.88,56,13990239,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n1-s1,6,1,Super Paradise,20.08,41.51,28,13990240,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n1-s2,6,1,Super Paradise,25.10,41.51,44,13990241,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n3-s1,6,3,The Mansman,6.94,14.57,92,13990242,Notification has been sent.
+fk-2026-10-26-wangaratta-r6-n3-s2,6,3,The Mansman,8.68,14.57,162,13990243,Notification has been sent.
+fk-2026-10-26-wangaratta-r7-n13-s1,7,13,Give Some Lip,21.06,40.53,27,13990244,Notification has been sent.
+fk-2026-10-26-wangaratta-r7-n13-s2,7,13,Give Some Lip,26.32,40.53,42,13990245,Notification has been sent.
+fk-2026-10-26-wangaratta-r7-n2-s1,7,2,Helioson,16.60,35.76,42,13990246,Notification has been sent.
+fk-2026-10-26-wangaratta-r7-n2-s2,7,2,Helioson,20.75,35.76,56,13990247,Notification has been sent.
+fk-2026-10-26-wangaratta-r7-n5-s1,7,5,Late Harvest,12.98,31.66,103,13990248,Notification has been sent.
+fk-2026-10-26-wangaratta-r7-n5-s2,7,5,Late Harvest,16.23,31.66,30,13990249,Notification has been sent.
+fk-2026-10-26-wangaratta-r7-n9-s1,7,9,Positivo,5.19,12.01,253,13990250,Notification has been sent.
+fk-2026-10-26-wangaratta-r7-n9-s2,7,9,Positivo,6.49,12.01,68,13990251,Notification has been sent.
+fk-2026-10-26-wangaratta-r7-n10-s1,7,10,Strummer,14.13,36.46,41,13990252,Notification has been sent.
+fk-2026-10-26-wangaratta-r7-n10-s2,7,10,Strummer,17.66,36.46,82,13990253,Notification has been sent.
+fk-2026-10-26-wangaratta-r7-n1-s1,7,1,The Quiet Immortal,10.05,20.99,56,13990254,Notification has been sent.
+fk-2026-10-26-wangaratta-r7-n1-s2,7,1,The Quiet Immortal,12.56,20.99,96,13990255,Notification has been sent.
+fk-2026-10-26-wangaratta-r8-n3-s1,8,3,Hollerasaurous,16.50,30.10,66,13990256,Notification has been sent.
+fk-2026-10-26-wangaratta-r8-n3-s2,8,3,Hollerasaurous,20.62,30.10,4,13990257,Notification has been sent.
+fk-2026-10-26-wangaratta-r8-n12-s1,8,12,Lujaego,7.55,18.12,148,13990258,Notification has been sent.
+fk-2026-10-26-wangaratta-r8-n12-s2,8,12,Lujaego,9.44,18.12,45,13990259,Notification has been sent.
+fk-2026-10-26-wangaratta-r8-n13-s1,8,13,Rose Of Shalaa,17.77,39.55,73,13990260,Notification has been sent.
+fk-2026-10-26-wangaratta-r8-n13-s2,8,13,Rose Of Shalaa,22.21,39.55,17,13990261,Notification has been sent.
+fk-2026-10-26-wangaratta-r8-n4-s1,8,4,Swing Your Magic,19.48,43.38,66,13990262,Notification has been sent.
+fk-2026-10-26-wangaratta-r8-n4-s2,8,4,Swing Your Magic,24.35,43.38,20,13990263,Notification has been sent.
+fk-2026-10-26-wangaratta-r8-n10-s1,8,10,Tipsy Gypsy,10.84,26.03,107,13990264,Notification has been sent.
+fk-2026-10-26-wangaratta-r8-n10-s2,8,10,Tipsy Gypsy,13.55,26.03,35,13990265,Notification has been sent.
+fk-2026-10-26-wangaratta-r8-n6-s1,8,6,Vaderlee,7.90,18.95,165,13990266,Notification has been sent.
+fk-2026-10-26-wangaratta-r8-n6-s2,8,6,Vaderlee,9.88,18.95,16,13990267,Notification has been sent.
+fk-2026-10-26-wangaratta-r9-n6-s1,9,6,Blue Moon Summit,12.07,32.66,100,13990268,Notification has been sent.
+fk-2026-10-26-wangaratta-r9-n6-s2,9,6,Blue Moon Summit,15.09,32.66,45,13990269,Notification has been sent.
+fk-2026-10-26-wangaratta-r9-n2-s1,9,2,Coco De Luxe,9.25,18.97,126,13990270,Notification has been sent.
+fk-2026-10-26-wangaratta-r9-n2-s2,9,2,Coco De Luxe,11.56,18.97,37,13990271,Notification has been sent.
+fk-2026-10-26-wangaratta-r9-n1-s1,9,1,Helluva Barty,19.53,38.76,24,13990272,Notification has been sent.
+fk-2026-10-26-wangaratta-r9-n1-s2,9,1,Helluva Barty,24.41,38.76,48,13990273,Notification has been sent.
+fk-2026-10-26-wangaratta-r9-n13-s1,9,13,I Am Algadon,10.56,21.31,115,13990274,Notification has been sent.
+fk-2026-10-26-wangaratta-r9-n13-s2,9,13,I Am Algadon,13.20,21.31,33,13990275,Notification has been sent.
+fk-2026-10-26-wangaratta-r9-n7-s1,9,7,Royal Turf,6.33,14.11,223,13990276,Notification has been sent.
+fk-2026-10-26-wangaratta-r9-n7-s2,9,7,Royal Turf,7.91,14.11,39,13990277,Notification has been sent.
+fk-2026-10-26-wangaratta-r9-n10-s1,9,10,Three Musketeers,18.52,44.33,68,13990278,Notification has been sent.
+fk-2026-10-26-wangaratta-r9-n10-s2,9,10,Three Musketeers,23.15,44.33,11,13990279,Notification has been sent.
