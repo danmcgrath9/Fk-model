@@ -78,3 +78,8 @@ same 32 horses and 7 winners.
 
 **Unit size (founder, 21 Oct 2026): $50 a unit moving forward.** Every BetMatic send uses unit 50 unless the founder says otherwise. The Fri 23 Oct (Cranbourne, Ballarat) and Sat 24 Oct (Flemington) orders sent on 21 Oct went at $25.
 - **Cards (founder, 22 Oct 2026):** a card asked for with no Mercer, or "just a card", has no bottom notes line at all. The Twitter card footer is "Win bets." only (no "Placed early").
+
+**No explanatory notes on sheets, pages or cards (founder, 24 Oct 2026: "get rid of all the fucking notes about betmatic and shit. Stop fucking doing that moving forward").**
+Race pages and cards carry the prices, the bets and the tables, nothing else: no paragraphs explaining how BetMatic,
+deductions, take-at prices, staking or the shadow book work, and no "BetMatic" labels on the page. market_sheet.py and
+betmatic_html.py no longer write them. Explanations go in chat only if the founder asks.

@@ -158,14 +158,15 @@ if OPEN_BETS:
     top.append(f"<h2>Bets at the opening price ({len(OPEN_BETS)})</h2><div class='tw'><table><tr><th>Race</th><th>Horse</th><th>FK open</th><th>TAB open</th><th>Ours</th><th>Stake</th><th>Now</th></tr>"
                + "".join(f"<tr><td><a href='#r{rc}'>R{rc}</a></td><td>{html.escape(h)}{EDGE_T if ed else ''}</td><td>{m_(fk_)}</td><td>{m_(tb_)}</td>"
                          f"<td>${ours_:,.2f}</td><td>{st:.1f}u</td><td>{now_cell(n_, ours_)}</td></tr>" for rc, h, fk_, tb_, n_, ours_, st, ed in OPEN_BETS)
-               + "</table></div><div class='note'>Value at Form King's opening price (the TAB's when Form King has none), staked at the open. This is the shadow book: the bets that were on when the market opened. <b>gone</b> means the price has since come in under the take-at price.</div><div style='height:14px'></div>")
+               + "</table></div><div style='height:14px'></div>")
 if BETS:
     top.append(f"<h2>Still on at the current price ({len(BETS)})</h2><div class='tw'><table><tr><th>Race</th><th>Horse</th><th>FK open</th><th>TAB open</th><th>Now</th><th>Ours</th><th>Stake</th><th>Take at</th></tr>"
                + "".join(f"<tr><td><a href='#r{rc}'>R{rc}</a></td><td>{html.escape(h)}{EDGE_T if ed else ''}{EARLY_T if ea else ''}</td>"
                          f"<td>{'$%.2f' % op_ if op_ else '-'}</td><td>{'$%.2f' % tb_ if tb_ else '-'}</td><td>${n_:,.2f}</td><td>${o_:,.2f}</td><td>{st:.1f}u</td><td>${o_ * (1 + THR):,.2f}+</td></tr>" for rc, h, n_, o_, st, ed, ea, op_, tb_ in BETS)
-               + "</table></div><div class='note'>A bet is judged at Form King's opening price (the TAB's when Form King has none yet) and must still be at or over its take-at price now. Take a bet only at or above its take-at price. Stakes: x2 when it is the jockey's only ride at the meeting, x1.5 in a field of 8 or fewer, most 5u; $100 a unit.</div>")
+               + "</table></div>")
 else:
-    top.append("<h2>Bets at these prices</h2><div class='note'>None: no runner is 20% or more over our price within the rules. Where there is no market yet, each race below shows our price and the take-at price.</div>")
+    # No explanatory notes on the page (founder, 24 Oct 2026: "get rid of all the notes ... moving forward")
+    top.append("<h2>Bets at these prices</h2><div>None.</div>")
 top.append("</div>")
 H[1:1] = top
 open(out, "w").write("\n".join(H)); print("ok", out)

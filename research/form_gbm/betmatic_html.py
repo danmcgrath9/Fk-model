@@ -52,13 +52,10 @@ def main():
                     f"<td>${b['open']:.2f}</td><td>{b['stake']:.2f}u</td><td>{round(d * 100)}c</td><td>${eff:.2f}</td>"
                     f"<td>{'$%.2f' % b['now'] if b['now'] else 'SCR'}</td><td>{res}</td></tr>")
     body = ("<table><tr><th>Race</th><th>Horse</th><th>Orders filled</th><th>Got on at</th><th>Stake</th><th>Deduction</th>"
-            "<th>After deduction</th><th>Now</th><th>Result</th></tr>" + "".join(rows) + "</table>") if rows else "<div class='note'>No order filled at the open.</div>"
+            "<th>After deduction</th><th>Now</th><th>Result</th></tr>" + "".join(rows) + "</table>") if rows else "<div>None.</div>"
     n_orders = sum(counts.values())
-    sec = (f"{START}<h2>BetMatic: filled at the open ({len(rows)})</h2><div class='tw'>{body}</div>"
-           f"<div class='note'>The order file BetMatic would have been sent before the market ({n_orders} orders on {len(counts)} runners: "
-           f"minimum odds from our model, 5% under, stake in up to eight price steps). Filled where Form King's opening price was at or over "
-           f"the minimum. {tot:.2f}u" + (f", P/L {pl:+.2f}u" if won else "") + ". Deduction = what TAB took off the winnings for "
-           f"runners scratched after the open: TAB's actual figure where recorded (DAYPREFIX-deductions-actual.txt), else our estimate.</div><div style='height:14px'></div>{END}")
+    sec = (f"{START}<h2>Filled at the open ({len(rows)})</h2><div class='tw'>{body}</div>"
+           f"<div style='height:14px'></div>{END}")  # no notes on the page (founder, 24 Oct 2026)
     page = open(a.page).read()
     page = re.sub(re.escape(START) + ".*?" + re.escape(END), "", page, flags=re.S)
     i = page.find("<h2>Bets at the opening price")
