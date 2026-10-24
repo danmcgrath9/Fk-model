@@ -1,0 +1,102 @@
+{
+ "title": "One week",
+ "sub": "Sat 17 \u2013 Sat 24 Oct",
+ "big": [
+  {
+   "v": "+141.9u",
+   "k": "Profit on 62.5u"
+  },
+  {
+   "v": "14 / 45",
+   "k": "Winners"
+  },
+  {
+   "v": "30 / 40",
+   "k": "Beat BSP"
+  }
+ ],
+ "rows": [
+  {
+   "day": "Sat",
+   "where": "Caulfield \u00b7 Bendigo \u00b7 Wodonga",
+   "bets": 15,
+   "won": 4,
+   "staked": "15.6u",
+   "profit": "+31.4u",
+   "bsp": "12 / 15"
+  },
+  {
+   "day": "Sun",
+   "where": "Horsham \u00b7 Moe",
+   "bets": 5,
+   "won": 1,
+   "staked": "6.1u",
+   "profit": "+3.2u",
+   "bsp": "3 / 5"
+  },
+  {
+   "day": "Mon",
+   "where": "Echuca",
+   "bets": 4,
+   "won": 2,
+   "staked": "3.9u",
+   "profit": "+17.4u",
+   "bsp": "3 / 4"
+  },
+  {
+   "day": "Tue",
+   "where": "Kyneton",
+   "bets": 4,
+   "won": 2,
+   "staked": "6.8u",
+   "profit": "+7.9u",
+   "bsp": "3 / 3"
+  },
+  {
+   "day": "Wed",
+   "where": "Geelong",
+   "bets": 1,
+   "won": 1,
+   "staked": "5.0u",
+   "profit": "+50.0u",
+   "bsp": "1 / 1"
+  },
+  {
+   "day": "Thu",
+   "where": "Mornington",
+   "bets": 3,
+   "won": 1,
+   "staked": "5.3u",
+   "profit": "+13.1u",
+   "bsp": "3 / 3"
+  },
+  {
+   "day": "Fri",
+   "where": "Cranbourne",
+   "bets": 2,
+   "won": 0,
+   "staked": "2.2u",
+   "profit": "-2.2u",
+   "bsp": "1 / 2"
+  },
+  {
+   "day": "Sat",
+   "where": "Flemington \u00b7 YV \u00b7 St Arnaud",
+   "bets": 11,
+   "won": 3,
+   "staked": "17.7u",
+   "profit": "+21.1u",
+   "bsp": "4 / 7"
+  },
+  {
+   "day": "Total",
+   "where": "",
+   "bets": 45,
+   "won": 14,
+   "staked": "62.5u",
+   "profit": "+141.9u",
+   "bsp": "30 / 40",
+   "total": true
+  }
+ ]
+}

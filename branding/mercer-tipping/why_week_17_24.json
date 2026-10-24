@@ -1,0 +1,58 @@
+{
+ "title": "Why +227%",
+ "sub": "won't last, and why we still win",
+ "sections": [
+  {
+   "h": "Return on what we staked",
+   "max": 227,
+   "bars": [
+    {
+     "k": "This week (45 bets)",
+     "v": 227,
+     "label": "+227%",
+     "hi": true
+    },
+    {
+     "k": "Best month, backtest",
+     "v": 32,
+     "label": "+32%"
+    },
+    {
+     "k": "Long run (1,829 bets)",
+     "v": 22,
+     "label": "+22%"
+    },
+    {
+     "k": "Worst month, backtest",
+     "v": 8,
+     "label": "+8%"
+    }
+   ]
+  },
+  {
+   "h": "Three winners did most of it",
+   "lines": [
+    "Murshidi <b>$11</b> +50u \u00b7 Cosmic Crusader <b>$11</b> +20u \u00b7 Cresta Crystal <b>$13.64</b> +17u",
+    "That's <b>61%</b> of the week. If all three had lost: still <b>+46.5u</b>."
+   ]
+  },
+  {
+   "h": "The part that repeats",
+   "max": 100,
+   "bars": [
+    {
+     "k": "Beat BSP, this week",
+     "v": 75,
+     "label": "75%",
+     "hi": true
+    },
+    {
+     "k": "Beat BSP, backtest",
+     "v": 73,
+     "label": "73%"
+    }
+   ]
+  }
+ ],
+ "end": "Big weeks come and go. <span>Beating the price</span> is why it stays positive."
+}
