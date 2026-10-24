@@ -10,11 +10,17 @@
   {"v": "23", "k": "Winners"},
   {"v": "75%", "k": "Beat the SP"}
  ],
+ "posted": "Every one <b>posted on Twitter before the race</b>.",
+ "past_title": "That pace won't last. The past year:",
+ "past": [
+  {"v": "+42%", "k": "Return"},
+  {"v": "4,067", "k": "Bets"},
+  {"v": "13 / 13", "k": "Months in profit"}
+ ],
  "wins_title": "Biggest wins",
  "wins": [
   ["Murshidi", "Geelong", "$11", "+50u"],
   ["Cosmic Crusader", "Flemington", "$11", "+20u"],
-  ["Cresta Crystal", "Mornington", "$13.64", "+17u"],
   ["Kingswood", "Caulfield Cup", "$25", "+14u"]
  ],
  "end": "We get on early. <span>The market comes to us.</span>"
