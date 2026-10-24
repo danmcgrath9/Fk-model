@@ -3,14 +3,16 @@
  "sub": "won't last, and why we still win",
  "sections": [
   {
-   "h": "Return on what we staked",
+   "h": "Return on stake, our staking plan",
    "max": 227,
    "bars": [
-    {"k": "5 to 11 Oct (28 bets)", "v": 59, "label": "+59%"},
-    {"k": "12 to 16 Oct (13 bets)", "v": 155, "label": "+155%"},
-    {"k": "17 to 24 Oct (45 bets)", "v": 227, "label": "+227%", "hi": true},
-    {"k": "Since 5 Oct (86 bets)", "v": 170, "label": "+170%"}
-   ]
+    {"k": "This week (45 bets)", "v": 227, "label": "+227%", "hi": true},
+    {"k": "Since 5 Oct (86 bets)", "v": 170, "label": "+170%"},
+    {"k": "Best month, past year", "v": 73, "label": "+73%"},
+    {"k": "Past year (4,067 bets)", "v": 42, "label": "+42%"},
+    {"k": "Worst month, past year", "v": 18, "label": "+18%"}
+   ],
+   "lines": ["Every month of the past year: <b>in profit</b>."]
   },
   {
    "h": "Three winners did most of this week",
@@ -25,10 +27,9 @@
    "h": "The part that repeats: beat BSP",
    "max": 100,
    "bars": [
-    {"k": "5 to 11 Oct", "v": 71, "label": "71%"},
-    {"k": "12 to 16 Oct", "v": 85, "label": "85%"},
-    {"k": "17 to 24 Oct", "v": 75, "label": "75%", "hi": true},
-    {"k": "Since 5 Oct", "v": 75, "label": "75%"}
+    {"k": "This week", "v": 75, "label": "75%", "hi": true},
+    {"k": "Since 5 Oct", "v": 75, "label": "75%"},
+    {"k": "Past 5 months", "v": 73, "label": "73%"}
    ]
   }
  ],
