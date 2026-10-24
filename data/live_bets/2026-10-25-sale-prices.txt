@@ -64,7 +64,7 @@
 5, Tishman, 7.00, 7.00, fk_open 9.50
 5, Pure Grunt, 26.00, 26.00, fk_open 21.00
 5, Icaro, 9.50, 9.50, fk_open 6.50
-5, Superstock, 12.00, 12.00, fk_open 9.00
+5, Superstock, SCR, fk_open 9.00  # scratched Sun morning
 5, Navy Heart, 4.60, 4.60, fk_open 4.60
 5, Saxon Blood, 10.00, 10.00, fk_open 12.00
 5, Ninyo, 27.00, 27.00, fk_open 21.00
