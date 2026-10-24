@@ -6,51 +6,29 @@
    "h": "Return on what we staked",
    "max": 227,
    "bars": [
-    {
-     "k": "This week (45 bets)",
-     "v": 227,
-     "label": "+227%",
-     "hi": true
-    },
-    {
-     "k": "Best month, backtest",
-     "v": 32,
-     "label": "+32%"
-    },
-    {
-     "k": "Long run (1,829 bets)",
-     "v": 22,
-     "label": "+22%"
-    },
-    {
-     "k": "Worst month, backtest",
-     "v": 8,
-     "label": "+8%"
-    }
+    {"k": "5 to 11 Oct (28 bets)", "v": 59, "label": "+59%"},
+    {"k": "12 to 16 Oct (13 bets)", "v": 155, "label": "+155%"},
+    {"k": "17 to 24 Oct (45 bets)", "v": 227, "label": "+227%", "hi": true},
+    {"k": "Since 5 Oct (86 bets)", "v": 170, "label": "+170%"}
    ]
   },
   {
-   "h": "Three winners did most of it",
-   "lines": [
-    "Murshidi <b>$11</b> +50u \u00b7 Cosmic Crusader <b>$11</b> +20u \u00b7 Cresta Crystal <b>$13.64</b> +17u",
-    "That's <b>61%</b> of the week. If all three had lost: still <b>+46.5u</b>."
-   ]
+   "h": "Three winners did most of this week",
+   "table": [
+    ["Murshidi", "$11", "+50u"],
+    ["Cosmic Crusader", "$11", "+20u"],
+    ["Cresta Crystal", "$13.64", "+17u"]
+   ],
+   "lines": ["That's <b>61%</b> of the week. If all three had lost: still <b>+46.5u</b>."]
   },
   {
-   "h": "The part that repeats",
+   "h": "The part that repeats: beat BSP",
    "max": 100,
    "bars": [
-    {
-     "k": "Beat BSP, this week",
-     "v": 75,
-     "label": "75%",
-     "hi": true
-    },
-    {
-     "k": "Beat BSP, backtest",
-     "v": 73,
-     "label": "73%"
-    }
+    {"k": "5 to 11 Oct", "v": 71, "label": "71%"},
+    {"k": "12 to 16 Oct", "v": 85, "label": "85%"},
+    {"k": "17 to 24 Oct", "v": 75, "label": "75%", "hi": true},
+    {"k": "Since 5 Oct", "v": 75, "label": "75%"}
    ]
   }
  ],
