@@ -1,0 +1,26 @@
+{
+ "day": "Sunday",
+ "date": "25 October",
+ "meetings": [
+  {
+   "name": "Sale",
+   "bets": [
+    {
+     "race": 2,
+     "horse": "Rough Enuff",
+     "price": "$7",
+     "rated": "$4.88",
+     "units": "1.12u"
+    },
+    {
+     "race": 5,
+     "horse": "Superstock",
+     "price": "$9",
+     "rated": "$6.64",
+     "units": "0.73u"
+    }
+   ]
+  }
+ ],
+ "brand": false
+}
