@@ -1,0 +1,54 @@
+{
+ "day": "Monday",
+ "date": "26 October",
+ "meetings": [
+  {
+   "name": "Wangaratta",
+   "bets": [
+    {
+     "race": 6,
+     "horse": "Phantom's Chase",
+     "price": "$18.50",
+     "rated": "$10.36",
+     "units": "1.13u"
+    },
+    {
+     "race": 7,
+     "horse": "Positivo",
+     "price": "$8.50",
+     "rated": "$4.00",
+     "units": "3.21u"
+    },
+    {
+     "race": 7,
+     "horse": "Strummer",
+     "price": "$19",
+     "rated": "$12.15",
+     "units": "1.23u"
+    },
+    {
+     "race": 8,
+     "horse": "Vaderlee",
+     "price": "$11",
+     "rated": "$6.32",
+     "units": "1.81u"
+    },
+    {
+     "race": 9,
+     "horse": "Blue Moon Summit",
+     "price": "$21",
+     "rated": "$10.89",
+     "units": "1.45u"
+    },
+    {
+     "race": 9,
+     "horse": "Three Musketeers",
+     "price": "$41",
+     "rated": "$14.78",
+     "units": "0.79u"
+    }
+   ]
+  }
+ ],
+ "brand": false
+}
