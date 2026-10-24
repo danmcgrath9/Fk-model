@@ -332,3 +332,20 @@ is voided):
 | R5 | Superstock | $9 | $6.64 | 1.46u | 0.73u | $12 |
 
 Superstock ran at Cranbourne on Fri 23 (R2, our bet) and is backing up two days later.
+
+## Wangaratta Mon 26 Oct: market opened Sat late morning (paper)
+The 78 pre-open orders were sent live Sat 11:58am (founder: "send for now"), but TAB had already opened the meeting, so every
+order triggered at once; none left a placement record (nothing taken). The founder had meant a dry run ("prices are already
+out, so another dry run"): Wangaratta is paper. At Form King's opening price these fill (R3's Move It, a first starter,
+opened $4.90, so R3 is void under the race rule; no R3 order filled anyway):
+
+| Race | Horse | FK open | Ours | Stake | Twitter (halved) | Price Sat 12:10pm |
+|---|---|---|---|---|---|---|
+| R6 | Phantom's Chase | $18.50 | $10.36 | 2.26u | 1.13u | $16 |
+| R7 | Positivo | $8.50 | $4.00 | 6.42u | 3.21u | $3.70 |
+| R7 | Strummer | $19 | $12.15 | 2.46u | 1.23u | $23 |
+| R8 | Vaderlee | $11 | $6.32 | 3.62u | 1.81u | $5.50 |
+| R9 | Blue Moon Summit | $21 | $10.89 | 2.90u | 1.45u | $23 |
+| R9 | Three Musketeers | $41 | $14.78 | 1.58u | 0.79u | $11 |
+
+Tweeted Sat 24 Oct with Sale (card_sun25_mon26.json).
