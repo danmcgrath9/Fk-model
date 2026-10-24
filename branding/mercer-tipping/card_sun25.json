@@ -1,6 +1,6 @@
 {
  "day": "Sunday",
- "date": "25 October",
+ "date": "25 October \u00b7 after deductions",
  "footer": "Win bets.",
  "meetings": [
   {
@@ -9,7 +9,7 @@
     {
      "race": 2,
      "horse": "Rough Enuff",
-     "price": "$7",
+     "price": "$6.34",
      "rated": "$4.88",
      "units": "1.12u"
     },
@@ -18,7 +18,8 @@
      "horse": "Superstock",
      "price": "$9",
      "rated": "$6.64",
-     "units": "0.73u"
+     "units": "0.73u",
+     "scr": true
     }
    ]
   }

@@ -349,3 +349,4 @@ opened $4.90, so R3 is void under the race rule; no R3 order filled anyway):
 | R9 | Three Musketeers | $41 | $14.78 | 1.58u | 0.79u | $11 |
 
 Tweeted Sat 24 Oct with Sale (card_sun25_mon26.json).
+Sale Sun 25 deductions (TAB, founder): R2 11c (Rough Enuff $7 -> $6.34). R5 Superstock SCRATCHED: void. Card re-issued after deductions.
