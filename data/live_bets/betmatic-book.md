@@ -320,3 +320,15 @@ all under take-at now, no top-ups.
 Flemington Sat 24 Oct deductions (TAB, founder): R1 0c, R2 39c, R6 15c, R7 10c, R8 0c, R9 8c. Real bets after deductions:
 Turbo Saint $18 -> $11.37, Classic Gem $9 -> $8.36, Shockletz $10 -> $9.28. The Twitter card re-issued at the
 after-deduction prices; Yarra Valley and St Arnaud were never posted Friday (founder busy), so they are recorded at SP.
+
+## Sale Sun 25 Oct: market already open when priced (paper)
+Priced Sat 24 Oct 10:40am on the final field; TAB had opened the meeting before any orders were built. Had the pre-open
+orders been in, these two fill at Form King's opening price (first starters in R1-R3 all opened $12 or longer, so no race
+is voided):
+
+| Race | Horse | FK open | Ours | Stake | Twitter (halved) | Price Sat 10:39am |
+|---|---|---|---|---|---|---|
+| R2 | Rough Enuff | $7 | $4.88 | 2.24u | 1.12u | $3.80 |
+| R5 | Superstock | $9 | $6.64 | 1.46u | 0.73u | $12 |
+
+Superstock ran at Cranbourne on Fri 23 (R2, our bet) and is backing up two days later.
