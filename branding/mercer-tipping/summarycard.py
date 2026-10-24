@@ -28,7 +28,7 @@ def card(d):
             f"<div class='when'>{html.escape(d['title'])}<span>{html.escape(d['sub'])}</span></div></div>"
             f"<div class='big'>{big}</div>"
             f"<div class='tb'><div class='hd'><span>Day</span><span>Bets</span><span>Won</span><span>Staked</span><span>Profit</span><span>Beat BSP</span></div>{rows}</div>"
-            f"<div class='note'>{d['note']}</div><div style='flex:1'></div>"
+            f"<div class='note'>{d.get('note', '')}</div><div style='flex:1'></div>"
             f"<div class='foot'><span>{html.escape(d.get('footer', ''))}</span><span>18+ · Gamble responsibly</span></div></body></html>")
 
 

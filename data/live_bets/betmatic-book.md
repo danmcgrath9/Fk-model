@@ -367,3 +367,5 @@ Paper lay sheet (preview, 1u lay at BSP): 5 lays, Turbo Saint +0.92, Caddington 
 Whiskey And Beer +0.92, Molesworth +0.92: -11.08u.
 Friday 23 Cranbourne R2: Eye For An Eye 10th, Superstock 3rd (real bets $95 + $98, lost); Pariah Pearl 2nd (paper top-up -1.41u).
 Ballarat Fri 23 races 3-9 still unresulted in Form King.
+Ballarat Fri 23 Oct ABANDONED after R2 (founder, 25 Oct): every Ballarat bet from R3 on is void, paper and top-ups alike
+(Star Je Taime, Wavelets, Bel Lupa, Jenni You Think; top-ups Wavelets, Circus Circus, Skjaldmo). Twitter Ballarat rows void.

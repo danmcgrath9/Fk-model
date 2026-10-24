@@ -1,0 +1,48 @@
+{
+ "title": "Our price v BSP",
+ "sub": "Flemington \u00b7 Sat 24 Oct",
+ "bets": [
+  {
+   "horse": "Ice Kool",
+   "day": "R1",
+   "taken": 2.8,
+   "bsp": 2.9
+  },
+  {
+   "horse": "Turbo Saint",
+   "day": "R2",
+   "taken": 11.37,
+   "bsp": 15.5
+  },
+  {
+   "horse": "Surfin' Bird",
+   "day": "R6",
+   "taken": 3.89,
+   "bsp": 3.2
+  },
+  {
+   "horse": "Aethelwulf",
+   "day": "R7",
+   "taken": 7.75,
+   "bsp": 7.21
+  },
+  {
+   "horse": "Cosmic Crusader",
+   "day": "R8",
+   "taken": 11.0,
+   "bsp": 9.96
+  },
+  {
+   "horse": "Classic Gem",
+   "day": "R9",
+   "taken": 12.5,
+   "bsp": 11.5
+  },
+  {
+   "horse": "Shockletz",
+   "day": "R9",
+   "taken": 9.28,
+   "bsp": 9.54
+  }
+ ]
+}
