@@ -350,3 +350,20 @@ opened $4.90, so R3 is void under the race rule; no R3 order filled anyway):
 
 Tweeted Sat 24 Oct with Sale (card_sun25_mon26.json).
 Sale Sun 25 deductions (TAB, founder): R2 11c (Rough Enuff $7 -> $6.34). R5 Superstock SCRATCHED: void. Card re-issued after deductions.
+
+## Saturday 24 Oct settled (results pulled Sun 25 Oct)
+Tweeted card (Twitter units, after deductions; Yarra Valley and St Arnaud at SP): 11 bets, 17.65u staked, 3 winners
+(Surfin' Bird $3.89, Cosmic Crusader $11, Nightowl SP $2.20), +21.10u, ROI +120%.
+Ice Kool 3rd -2.00 · Turbo Saint 6th -0.26 · Surfin' Bird WON +10.40 · Aethelwulf 6th -3.85 · Cosmic Crusader WON +20.00 ·
+Classic Gem 14th -1.30 · Shockletz 2nd -0.40 · Nightowl WON (SP $2.20) +1.50 · Prestige Ole 5th -0.69 · Steely Hustler 6th -0.68 ·
+Coastal Whispers 9th -1.62.
+Real money (TAB, $50 unit): Turbo Saint $26 at $11.37 lost, Classic Gem $44 at $8.36 lost, Shockletz $40 at $9.28 2nd lost: -$110.
+Aethelwulf ($8.50) and Cosmic Crusader ($11, Ladbrokes) were the founder's own bets: Cosmic Crusader WON the Cox Plate.
+Paper at the open (model stakes): Flemington Ice Kool -4.07, Surfin' Bird 10.56u at $3.89 +30.52, Classic Gem -2.58;
+Yarra Valley Nightowl 2.50u at $6.50 +13.75 (no deduction recorded), Prestige Ole -1.37; St Arnaud Steely Hustler -1.36,
+Coastal Whispers -3.24: 7 bets, 25.68u, +31.65u, ROI +123%.
+9am top-ups (paper): Turbo Saint -1.23, Written Empire -1.30, Feroce -1.62: -4.15u.
+Paper lay sheet (preview, 1u lay at BSP): 5 lays, Turbo Saint +0.92, Caddington (BSP $15.76, WON) -14.76, Simply Excels +0.92,
+Whiskey And Beer +0.92, Molesworth +0.92: -11.08u.
+Friday 23 Cranbourne R2: Eye For An Eye 10th, Superstock 3rd (real bets $95 + $98, lost); Pariah Pearl 2nd (paper top-up -1.41u).
+Ballarat Fri 23 races 3-9 still unresulted in Form King.
