@@ -18,12 +18,15 @@ CSS = TIP_CSS.replace("{hs}", "40") + f"""
 
 
 def card(d):
+    # rows fill the card (founder, 25 Oct 2026: "fill up"): about 640px under the header row
+    rh = max(80, min(160, 640 // max(1, len(d["rows"]))))
+    css = CSS.replace(".tb .rw{height:104px", f".tb .rw{{height:{rh}px").replace("font:800 34px/1 BC}", f"font:800 {min(46, 34 + (rh - 104) // 5)}px/1 BC}}")
     rows = "".join(
         f"<div class='rw{' tot' if r.get('total') else ''}'><div class='d'>{html.escape(r['day'])}<small>{html.escape(r.get('where', ''))}</small></div>"
         f"<div>{r['bets']}</div><div>{r['won']}</div><div>{html.escape(r['staked'])}</div><div class='g'>{html.escape(r['profit'])}</div>"
         f"<div>{html.escape(r['bsp'])}</div></div>" for r in d["rows"])
     big = "".join(f"<div><b>{html.escape(b['v'])}</b><span>{html.escape(b['k'])}</span></div>" for b in d["big"])
-    return (f"<html><head><style>{CSS}</style></head><body>"
+    return (f"<html><head><style>{css}</style></head><body>"
             f"<div class='top'><div class='lock'><div class='mark'><span>M</span></div><div class='brand'>MERCER<span>TIPPING</span></div></div>"
             f"<div class='when'>{html.escape(d['title'])}<span>{html.escape(d['sub'])}</span></div></div>"
             f"<div class='big'>{big}</div>"

@@ -24,8 +24,10 @@ def card(d):
     pcts = [b["taken"] / b["bsp"] - 1 for b in bets]
     lo, hi = min(min(pcts), -0.2), max(pcts)
     z = -lo / (hi - lo) * 100   # zero line position in % of the track
-    n = len(bets); rh = 34 if n <= 26 else 30
-    css = CSS.replace("{rh}", str(rh)).replace("{fs}", "26" if n <= 26 else "23").replace("{ss}", "17")
+    n = len(bets)
+    # rows fill the card (founder, 25 Oct 2026: "fill up"): about 720px between the boxes and the footer
+    rh = max(30, min(96, 720 // n)); fs = max(23, min(44, int(rh * 0.5))); ss = max(17, int(fs * 0.62))
+    css = CSS.replace("{rh}", str(rh)).replace("{fs}", str(fs)).replace("{ss}", str(ss)).replace("270px 1fr 96px", f"{270 + (fs - 26) * 9}px 1fr {96 + (fs - 26) * 2}px")
     rows = ""
     for b, p in zip(bets, pcts):
         w = abs(p) / (hi - lo) * 100; left = z if p >= 0 else z - w
