@@ -1,7 +1,7 @@
 """Greyhound model v0: our own price from Betfair's free files and Iggy's early-speed ratings, no Topaz yet
 (25 Oct 2026, founder: "we want to build our own model to be better than Iggy and we can bet early").
 
-    python research/greyhound/gbm_v0.py DIR LABEL
+    python research/greyhound/gbm_v0.py DIR LABEL        (a LABEL containing since=YYYY-MM-DD keeps races from that day)
 
 DIR holds the ANZ_Greyhounds files and the Iggy_Model*_Results files. Australian races only, 4+ runners with a BSP,
 exactly one winner.
@@ -221,6 +221,9 @@ def blend_apply(w, cols, df):
 
 def main(d, label):
     df = build(d)
+    m = re.search(r"since=(\d{4}-\d{2}-\d{2})", label)
+    if m:   # Iggy's Early Speed exists only from Jan 2024, so its test needs a window that starts there
+        df = df[df.date >= m.group(1)].reset_index(drop=True)
     has_iggy = "p_iggy" in df
     q50, q75 = df.date.quantile(0.5), df.date.quantile(0.75)
     tr, va, te = df[df.date < q50], df[(df.date >= q50) & (df.date < q75)], df[df.date >= q75].copy()
