@@ -103,9 +103,9 @@ def main(d, label):
         print(f"\nPart 2: holdout {ho.race.nunique():,} races from {ho.date.min():%Y-%m-%d}; ratio = model chance / BSP chance.")
         rows = []
         for lo, hi in ((1, 4), (4, 8), (8, 15), (15, 30), (30, 50), (50, 10000)):
-            rows.append((f"lay, ratio <= 0.625, ${lo}-${hi}", (ho.ratio <= 0.625) & band(ho, lo, hi)))
+            rows.append((f"model rates it 0.625x BSP or less, ${lo}-${hi}", (ho.ratio <= 0.625) & band(ho, lo, hi)))
         for lo, hi in ((1, 4), (4, 8), (8, 15), (15, 30), (30, 10000)):
-            rows.append((f"back, ratio >= 1.5, ${lo}-${hi}", (ho.ratio >= 1.5) & band(ho, lo, hi)))
+            rows.append((f"model rates it 1.5x BSP or more, ${lo}-${hi}", (ho.ratio >= 1.5) & band(ho, lo, hi)))
         for lo, hi in ((0, 0.5), (0.5, 0.625), (0.625, 0.8), (0.8, 1.25), (1.25, 1.5), (1.5, 2), (2, 99)):
             rows.append((f"ratio {lo}-{hi}, all prices", (ho.ratio >= lo) & (ho.ratio < hi)))
         table("Part 2: where the market-history model disagrees with BSP", rows, ho)
