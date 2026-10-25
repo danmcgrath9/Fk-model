@@ -86,8 +86,8 @@ were not found individually; Topaz covers all of them, so they matter only if To
 
 - **The request, changed the same day (founder: "let's deal with them directly and not using it for betting purposes
   yet, but using it for modeling and potentially betting")**: the key is asked of GRV directly, not Betfair. The
-  draft in the founder's Gmail (not sent, To line blank because the address on grv.org.au/racedata is masked in every
-  copy reachable from here; GRV switchboard (03) 8329 1100) says it is research now and may become betting on the
+  draft in the founder's Gmail (not sent) goes to racedata@grv.org.au, the address the founder read off the Race Data
+  page (masked in every copy reachable from here). It says it is research now and may become betting on the
   founder's own account later, and asks for the terms, whether personal-use access covers that later betting or it
   needs the Betfair-issued key, whether prices or tips may be shared (and the licence cost if not), first-split and
   Isolynx sectionals, history depth and rate limit. The earlier Betfair draft (automation@betfair.com.au) is held,
@@ -106,3 +106,17 @@ were not found individually; Topaz covers all of them, so they matter only if To
 
 When the key arrives: add it as the secret, read the terms, set the variable, run **Actions > gh topaz** with
 mode `probe`, then `pull` for VIC from 2020-01. The column list from the probe decides the canonical tables.
+
+## The GRV Race Data page, as read by the founder (25 Oct 2026)
+
+- The page publishes **Isolynx tracking data** for Victorian tracks with the system installed (Sandown, The Meadows,
+  Healesville, Traralgon), per meeting, as CSV files and a data summary. The newest meetings listed in the founder's
+  copy are 8 to 15 June, so the page may have stopped updating when GRV announced the change below.
+- Measures: approximate beam positions; first, mid and home splits; 50m, 300m and last 100m; average distance to the
+  rail; cumulative splits; speed in km/h.
+- **GRV's own caveats**: the data can carry occasional errors (flagged where known); it varies between tracks and
+  distances; Isolynx times can differ from the official FastTrack times because the tracking unit sits between the
+  dog's back and neck; **Isolynx times are not official**. A model built on these has to treat them as a separate
+  measure from the official split times, never mix the two in one column.
+- **Access**: the PDFs and the Google Drive CSV/JSON copies are to be discontinued; the alternative is an API "for
+  personal use only", requested from racedata@grv.org.au. Nothing has been downloaded from the page or the Drive.
