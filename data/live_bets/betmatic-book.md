@@ -112,6 +112,10 @@ scratchings). The backtest says the top-up slice loses (t_topup.py: -7.6% holdou
 | 2026-10-21 Geelong | R6 | Stay Humble | $5.50 | $5.50 | $3.96 | 0.00u | 3.11u | 3rd, SP $3.60, BSP $4.04 | -3.11 |
 | 2026-10-21 Geelong | R7 | Litzdeel (Geelong Cup: internationals in the field, flagged) | $6.00 | $6.00 | $4.88 | 0.00u | 1.71u | 5th, SP $5.50, BSP $7 | -1.71 |
 | 2026-10-21 Geelong | R8 | Keep Your Cool | $7.50 | $7.00 | $5.81 | 0.00u | 1.27u | 3rd, SP $8.50, BSP $11.88 | -1.27 |
+| 2026-10-26 Wangaratta | R1 | Kinky Mistress | $5.00 | $3.60 | $2.77 | 0.00u | 4.22u | | |
+| 2026-10-26 Wangaratta | R3 | Princess Geisha | $15.50 | $14.00 | $11.15 | 0.00u | 0.73u | | |
+| 2026-10-26 Wangaratta | R3 | Somethingintheair | $13.50 | $15.00 | $11.09 | 0.00u | 0.91u | | |
+| 2026-10-26 Wangaratta | R3 | Brilliant Bull Ant | $13.50 | $16.00 | $10.34 | 0.00u | 1.27u | | |
 
 Warrnambool 15 Oct (re-priced 9:34am Thursday, 11 scratched, jockeys and gear in): 6 value-at-open runners on the final field, 1 top-up, Who I Think I Am 0.40u at $4.60; the rest are under take-at now.
 Caulfield 14 Oct (re-priced 8:45am): 5 value-at-open runners on the final field, all under take-at at race-morning prices, so no top-ups.
@@ -387,3 +391,9 @@ the full sheet but R1 was off.
 Wangaratta Mon 26 deductions (TAB, founder, Sun 25 Oct): R6 15c (Phantom's Chase $18.50 -> $15.88), R7 none (Positivo
 $8.50, Strummer $19), R8 none (Vaderlee $11), R9 6c (Blue Moon Summit $21 -> $19.80, Three Musketeers $41 -> $38.60).
 Cards re-issued after deductions.
+
+Wangaratta Mon 26 Oct (re-priced 9:35am Mon on the final field, 36 out): 15 value-at-open runners, 4 top-ups (7.13u: Kinky
+Mistress 4.22u at $3.60, Princess Geisha 0.73u at $14, Somethingintheair 0.91u at $15, Brilliant Bull Ant 1.27u at $16), the
+rest under take-at now. Of the six paper opens, Strummer is the only one still over our price ($23 v ours $13.44, already at
+full stake); the market has come for the other five (Positivo $8.50 to $4.40, Vaderlee $11 to $4.20, Blue Moon Summit $21 to
+$7.50, Three Musketeers $41 to $13, Phantom's Chase $18.50 to $12).
