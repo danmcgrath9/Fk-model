@@ -1263,3 +1263,14 @@ Paired bootstrap over races on the log-loss gap: 10BM minus 5 runs +0.003 (95% -
 and the ROI spread between arms is the same noise on ~960 bets. With the v10 result above (the basics on runs 6-10
 worth 0.008 log loss), the extra benchmarks are second-order at best. Recommendation: 5BM national now; Dave credits it
 into 10BM later if the full-archive retrain ever says the deeper runs matter.
+
+## Public-overreaction angles at BSP, no model (t_bsp_public.py, 25 Oct 2026)
+
+Eleven things punters are said to over- or under-bet, scored at BSP on the clean holdout in two halves. Nearly all
+flip sign between halves (first starters, last-start winners, favourites by field size, first-time gear, first-up,
+apprentices, barriers): BSP has them priced. Two held in both halves and are candidates for the full archive, not rules:
+- LAY top-third jockeys (12-month win rate) at BSP $15-$30: A/E 0.72 / 0.79, lay +16% / +12% on 384 / 301 runners.
+  The public pays for the jockey on a roughie.
+- BACK last-start beaten favourites (SP $3 or under last start, finished 2nd-4th) at BSP $2.50-$4: A/E 1.34 / 1.43,
+  +24% / +30%, but only 36 / 27 runners, so it is a hypothesis.
+Neither is near the roughie lay (A/E 0.37), which remains the only BSP angle with real size.
