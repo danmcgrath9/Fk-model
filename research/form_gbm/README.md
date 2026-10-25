@@ -1178,3 +1178,19 @@ question for Dave, and should wait until the Victorian point-in-time archive has
 
 Decisions for the founder: (a) keep TAB funded to cover every order that can fire; (b) add bookmakers to BetMatic;
 (c) yes/no to a four-week paper lay book; (d) pay the archive invoice and upload the full file for the retrain.
+
+## 5 runs or 10 of benchmark data? 25 Oct 2026 (t_5v10.py)
+
+Form King's national archive comes as 5BM ($989) or 10BM ($1,799): benchmark data for the last 5 or last 10 runs. Our
+dataset already has the benchmark fields (vsClass, vsTrack, speedRating, last600, sectionals) on at most 5 runs for every
+runner; runs 6-10 carry only the basics (rating, finish, margin, days). So the live model is a 5BM model. Test: the same
+quick LightGBM (not the live recipe, so compare the two rows, not the levels) trained before 3 Jun on the full inputs and
+on inputs with runs 6-10 blanked entirely, scored 3 Jun to 13 Oct, 1,194 races:
+
+| inputs | winner log loss | KL to BSP | plan bets | ROI open (16c ded) | ROI BSP |
+|---|---|---|---|---|---|
+| 10 runs (benchmarks on 5) | 1.9490 | 0.1418 | 1,901 | +10.8% | -6.6% |
+| 5 runs only | 1.9570 | 0.1414 | 1,932 | +7.5% | -7.8% |
+
+The basic results on runs 6-10 are worth a little (log loss 0.008; the ROI gap is inside the noise of ~1,900 bets). The
+benchmark figures on runs 6-10 have never been in the model, so their value is untested; this says they are second-order.
