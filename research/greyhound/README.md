@@ -181,3 +181,70 @@ The better route, and the one to test first, because it needs no machine kept on
   is the same for dogs; whether BetMatic objects to a few hundred refused instructions a day.
 - **First live test, needs the founder's OK in chat**: one race (limit 8), the next Victorian meeting, then collect
   after it runs.
+
+## Test 1: Betfair's free ANZ greyhound files (25 Oct 2026)
+
+Run: `fk harness betfair` (run 40177722771) with the 15 greyhound files and the harness session's two scripts
+unchanged (`research/harness/profile_betfair.py`, `research/harness/t_bsp_sharp.py`); they read the shared ANZ file
+layout. Terms: the data listing page's only condition is its disclaimer (no warranty, own risk), read 25 Oct through
+`fk read terms` by the harness session. Files downloaded fresh from Betfair inside the run; nothing stored or committed.
+
+### What the files hold
+
+- 2,453,636 runner rows, 2020-01-01 to 2026-09-30; 4,778 duplicate (market, selection) rows, because two monthly
+  files overlap a day (2020-03 starts 29 Feb, 2020-08 starts 31 Jul). After removing them: 2,448,858 runners in
+  338,996 win markets.
+- Races by state: VIC 99,938, NSW 85,588, QLD 48,684, NZ 32,529, SA 32,071, WA 25,943, TAS 10,057, NT 4,186.
+  Victoria alone is about 1,200 races a month: the brief's "12+ months of Victorian history" is there many times over.
+- Per runner: win and place BSP and BSP volume; pre-play max, min, last and weighted average price (WAP) and volume;
+  best back and lay at the scheduled off and the book percentages; win and place result; track, distance, grade
+  (RACE_TYPE, 145 spellings that need mapping: Gr5, Mdn, Heat, "Gr4/5" ...), box (TAB_NUMBER), dog name, scheduled
+  and actual off time.
+- **Not in the files**: any opening price (the earliest price is the pre-play max/min/WAP, not a timestamped open);
+  no form, times or splits. In-play columns are empty (no in-play betting on Australian dogs).
+- **Gaps**: win BSP is missing on 11-17% of runners from Jan to Oct 2020 (except April), and 0-1% from Nov 2020 on.
+  Place BSP is filled on 86% of rows overall.
+
+### How sharp is BSP? (races with 4+ runners priced and exactly one winner)
+
+305,093 Australian races, 2,202,864 runners. Median BSP book 1.003 (sum of 1/BSP per race).
+
+| BSP band | runners | wins | expected (1/BSP) | A/E | back ROI at BSP, before commission |
+|---|---|---|---|---|---|
+| $1-$2 | 78,790 | 48,118 | 48,308.7 | 0.996 | -0.5% |
+| $2-$3 | 147,342 | 59,550 | 59,374.8 | 1.003 | +0.4% |
+| $3-$4 | 166,325 | 47,821 | 48,017.5 | 0.996 | -0.5% |
+| $4-$6 | 269,919 | 55,191 | 55,558.2 | 0.993 | -0.7% |
+| $6-$8 | 198,683 | 28,798 | 28,956.8 | 0.995 | -0.5% |
+| $8-$11 | 207,012 | 22,243 | 22,306.4 | 0.997 | -0.2% |
+| $11-$16 | 248,519 | 19,151 | 19,149.6 | 1.000 | +0.0% |
+| $16-$21 | 151,082 | 8,394 | 8,359.6 | 1.004 | +0.6% |
+| $21-$31 | 197,992 | 7,870 | 7,902.7 | 0.996 | -0.3% |
+| $31-$51 | 188,706 | 4,752 | 4,857.9 | 0.978 | -2.4% |
+| $51+ | 348,481 | 3,205 | 3,369.6 | 0.951 | -9.9% |
+| all | 2,202,864 | 305,093 | 306,161.9 | 0.997 | -1.9% |
+
+Winner log loss on the same 303,238 Australian races (lower is sharper): **BSP 1.5044, pre-play WAP 1.5067, best back
+at the scheduled off 1.5070.** The two date halves agree (A/E 0.996 and 0.997; BSP log loss 1.5159 and 1.4926).
+By state, longshots ($21+) are most over-bet in WA (A/E 0.901) and SA (0.963), and slightly under-bet in NSW (1.022).
+
+### What it means
+
+1. **BSP on Australian dogs is fair from $1 to $21**: A/E within 0.7% of 1.000 in every band, both halves, every year.
+   Backing at BSP is the brief's "expect about zero", confirmed before commission and negative after it.
+2. **The favourite-longshot bias is at the top end only**: runners over $31 win 2-5% less often than BSP says. A lay
+   at BSP over $51 makes +9.9% of the backer's stake before commission; commission comes off every winning lay, so
+   most of that goes, and it is a known effect, not a model's edge. Not an angle until a test with commission, in
+   two halves, says so.
+3. **The model's bar**: BSP's 1.5044. A model is informative where it beats the price it bets into; the open is not in
+   these files, so that comparison waits for recorded opens (the BetMatic probe) or the brief's Phase 2.
+4. **These files are the results-and-BSP half of the history** (box, grade, distance, track and result for 339,000
+   races, free). Form, run times and first splits still need Topaz.
+
+## The repository is public (checked 25 Oct 2026)
+
+fk-model is a public repository, so its releases and Actions artifacts can be downloaded by anyone. Two corrections
+follow. (1) The Actions-minutes figure in "Where it runs" above assumed a private repository; Actions are free on a
+public one. (2) GRV's API is "for personal use only", so Topaz data must never be stored on a release here:
+`gh topaz` now refuses to pull while the repository is public (the probe, which prints only column names and fill
+rates, is still allowed). Private storage, or a private repository, has to be chosen before the key arrives.

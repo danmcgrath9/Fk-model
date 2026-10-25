@@ -58,6 +58,17 @@ jobs:
         if: github.event.inputs.mode != 'pull'
         run: python -m greyhound.pull --probe | tee -a "$GITHUB_STEP_SUMMARY"
 
+      - name: Refuse to store Topaz data in a public repository
+        if: github.event.inputs.mode == 'pull'
+        run: |
+          # GRV's API is "for personal use only". A release on a public repository can be downloaded by anyone, so
+          # storing Topaz files there would publish GRV's data. The probe (column names and fill rates only) is allowed.
+          VIS=$(gh repo view "$GH_REPO" --json visibility -q .visibility)
+          if [ "$VIS" != "PRIVATE" ]; then
+            echo "Refused: this repository is $VIS. Topaz data must go to private storage first (research/greyhound/README.md)." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+
       - name: Fetch what the release already holds
         if: github.event.inputs.mode == 'pull'
         run: |
