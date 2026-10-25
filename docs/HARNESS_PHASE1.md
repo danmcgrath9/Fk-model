@@ -215,8 +215,8 @@ Provence, Le Croise Laroche), North American (Woodbine, Flamboro Downs, Northfie
 
 | | |
 |---|---|
-| Requests answered | 12,926 (each race asked about 106 times) |
-| Requests unanswered within 20 s | 162 (1.2%); the WebSocket reconnected on its own |
+| Requests answered | 10,820 (median 106 per race; a race stops being asked once it starts or every runner is priced) |
+| Requests unanswered within 20 s | 162 (1.5% of 10,982); the WebSocket reconnected on its own |
 | Races already open at our first look | 17 (Redcliffe's evening card, Ashburton's next-day card) |
 | Races that opened while watched | 8, all French (Salon de Provence, Enghien) |
 | Races still not open when the run ended | 99, including every Australian Monday meeting (Dubbo, Globe Derby, Pinjarra) |
