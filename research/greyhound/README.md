@@ -344,3 +344,56 @@ Iggy's weight -0.028. **Nothing.** Backing at BSP where BSP is at least k times 
 thing in its files is worth keeping: an **Early Speed** rating on every runner since 2020, which no other free source
 has. Whether it adds to BSP is a separate test, and it is a candidate feature for the first-bend layer until Topaz's
 first splits arrive.
+
+## Test 4: model v0, our own price from the free files only (25 Oct 2026, `research/greyhound/gbm_v0.py`, run 40182657412)
+
+Founder: "we want to build our own model to be better than Iggy and we can bet early." v0 is what the free data can
+do before Topaz: no run times, splits, margins or finishing positions (the Betfair files have only win/place results).
+Inputs, all from earlier days: the dog's past BSPs, wins, places, results against the market (won minus 1/BSP), days
+since its last run, last box, distance change, same track; the race's box, box rate (point-in-time), field size,
+distance, track, state, grade; each also relative to the field. LightGBM, softmax within the race, trained on the BSP's
+chances (the gallops recipe) and, as a check, on winners. Fit before 19 Jun 2023 (152,611 races), rounds and blend
+chosen 19 Jun 2023 to 25 Jan 2025 (75,282), scored once from 25 Jan 2025 (77,200; 68,174 with every price present).
+
+| price (last quarter, same 68,174 races) | log loss | first half | second half |
+|---|---|---|---|
+| v0, trained on BSP chances | 1.6743 | 1.6868 | 1.6619 |
+| v0, trained on winners | 1.6841 | 1.6972 | 1.6713 |
+| Iggy (V2 in this window) | 1.6460 | 1.6585 | 1.6338 |
+| pre-play WAP | 1.4848 | 1.4991 | 1.4708 |
+| BSP | 1.4818 | 1.4975 | 1.4664 |
+
+Blended with the market (weights fitted on the middle quarter): v0 + WAP 1.4844 (+0.0004 on WAP alone), v0 + BSP
+1.4817 (+0.0001), with v0's weight slightly negative both times. Every month of the 21 scored: v0 behind Iggy by
+0.015 to 0.057, and both far behind BSP. Top inputs: the dog's last-5 average BSP against the field's (28%), place rate
+against the field's (19%), win rate (9%), last BSP (7%).
+
+**What it means**: from these files v0 is mostly a summary of the market's past opinion of each dog, and it neither
+beats Iggy (1.674 against 1.646) nor adds anything to the market. That is the expected answer and the useful one: the
+free files hold no running form, and running form (times, first splits, margins, in-run positions) is exactly what
+Iggy uses and what Topaz supplies. Beating Iggy and finding something the early market misses waits on Topaz.
+
+The "+ Iggy early speed" fit in this run is not a test: Iggy's files carry Early Speed only from January 2024 (the
+2020-2023 files have no such column), so the training window above never saw it and the fit came out identical to
+v0. Rerun on a window starting 1 Jan 2024 (Test 4b).
+
+### Test 4b: the same, from January 2024, with Iggy's early speed (run 40183623864)
+
+127,012 races from 1 Jan 2024 (dog histories still use every earlier run). Fit before 10 May 2025 (62,817), rounds
+and blend 10 May 2025 to 13 Jan 2026 (31,745), scored from 13 Jan 2026 (32,450; 26,702 with every price present).
+Leak check: the dog Iggy rates fastest early wins 22.4% against a BSP chance of 22.4% (A/E 1.000), so the rating does
+not know the result, and the market already prices it exactly.
+
+| price (same 26,702 races) | log loss | first half | second half |
+|---|---|---|---|
+| v0, BSP chances | 1.6588 | 1.6669 | 1.6507 |
+| v0, winners | 1.6731 | 1.6806 | 1.6657 |
+| v0 + Iggy early speed | 1.6542 | 1.6612 | 1.6472 |
+| Iggy | 1.6346 | 1.6405 | 1.6287 |
+| pre-play WAP | 1.4703 | 1.4772 | 1.4634 |
+| BSP | 1.4654 | 1.4717 | 1.4593 |
+
+Blends with the market: + WAP 1.4700 (+0.0003), + BSP 1.4653 (+0.0001). Early speed helps v0 a little (1.6588 to
+1.6542, both halves) but v0 still trails Iggy in all 9 months and adds nothing to the market. Conclusion unchanged:
+the free files cannot build a model worth betting; the next model waits on Topaz (founder, 25 Oct 2026: "V0 has no
+data hahaha, let's wait for data").
