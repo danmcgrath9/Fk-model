@@ -1,25 +1,9 @@
 date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
-2026-10-27,Swan Hill,1,,,Flash Inquiry,WIN,9.67,22.91,0.59,30,1 of 2,0.59u,7.64,forecast x0.5/firm/firm by step
-2026-10-27,Swan Hill,1,,,Flash Inquiry,WIN,12.09,22.91,2.49,125,2 of 2,3.08u,7.64,forecast x0.5/firm/firm by step
-2026-10-27,Swan Hill,1,,,Ostrom,WIN,9.11,19.58,1.47,74,1 of 2,1.47u,6.53,forecast middle/firm/firm by step
-2026-10-27,Swan Hill,1,,,Ostrom,WIN,11.39,19.58,2.35,118,2 of 2,3.82u,6.53,forecast middle/firm/firm by step
-2026-10-27,Swan Hill,1,,,What Once Was,WIN,2.70,3.99,2.23,112,1 of 2,2.23u,2.16,opens under $4: edge 1.15; forecast x0.5/firm/firm by step
-2026-10-27,Swan Hill,1,,,What Once Was,WIN,3.38,3.99,7.77,388,2 of 2,10.00u,2.16,opens under $4: edge 1.15; forecast x0.5/firm/firm by step
-2026-10-27,Swan Hill,1,,,What Once Was,WIN,4.00,6.48,5.36,268,1 of 2,5.36u,2.16,forecast middle/firm/firm by step
-2026-10-27,Swan Hill,1,,,What Once Was,WIN,4.00,6.48,4.64,232,2 of 2,10.00u,2.16,forecast middle/firm/firm by step
 2026-10-27,Swan Hill,2,,,King Koruna,WIN,18.38,41.41,1.28,64,1 of 2,1.28u,13.80,forecast firm/firm/firm by step
 2026-10-27,Swan Hill,2,,,King Koruna,WIN,22.97,41.41,0.40,20,2 of 2,1.68u,13.80,forecast firm/firm/firm by step
 2026-10-27,Swan Hill,2,,,Magna Sententia,WIN,6.16,8.00,4.54,227,1 of 1,4.54u,4.63,EARLY: $8 or shorter only; forecast firm/firm by step
 2026-10-27,Swan Hill,2,,,Optimus,WIN,18.11,37.00,1.24,62,1 of 2,1.24u,12.33,forecast firm/firm/firm by step
 2026-10-27,Swan Hill,2,,,Optimus,WIN,22.64,37.00,0.56,28,2 of 2,1.80u,12.33,forecast firm/firm/firm by step
-2026-10-27,Swan Hill,3,,,She's Loaded,WIN,6.40,15.90,1.97,98,1 of 2,1.97u,5.30,forecast middle/firm/firm by step
-2026-10-27,Swan Hill,3,,,She's Loaded,WIN,8.00,15.90,2.67,134,2 of 2,4.64u,5.30,forecast middle/firm/firm by step
-2026-10-27,Swan Hill,4,,,Ambitious Achiever,WIN,4.51,8.00,3.18,159,1 of 2,3.18u,3.44,EARLY: $8 or shorter only; forecast middle/firm/firm by step
-2026-10-27,Swan Hill,4,,,Ambitious Achiever,WIN,5.64,8.00,3.58,179,2 of 2,6.76u,3.44,EARLY: $8 or shorter only; forecast middle/firm/firm by step
-2026-10-27,Swan Hill,4,,,Ted Percy,WIN,19.36,41.11,0.65,32,1 of 2,0.65u,13.70,forecast middle/firm/firm by step
-2026-10-27,Swan Hill,4,,,Ted Percy,WIN,24.20,41.11,1.09,55,2 of 2,1.74u,13.70,forecast middle/firm/firm by step
-2026-10-27,Swan Hill,4,,,Windsor Chariot,WIN,9.52,19.44,1.28,64,1 of 2,1.28u,6.48,forecast middle/firm/firm by step
-2026-10-27,Swan Hill,4,,,Windsor Chariot,WIN,11.90,19.44,1.64,82,2 of 2,2.92u,6.48,forecast middle/firm/firm by step
 2026-10-27,Swan Hill,5,,,Commands Success,WIN,19.43,43.29,0.63,32,1 of 2,0.63u,14.43,forecast middle/firm/firm by step
 2026-10-27,Swan Hill,5,,,Commands Success,WIN,24.29,43.29,0.95,48,2 of 2,1.58u,14.43,forecast middle/firm/firm by step
 2026-10-27,Swan Hill,5,,,Killiana,WIN,3.76,3.99,1.53,76,1 of 1,1.53u,2.67,opens under $4: edge 1.15; forecast x0.5/firm/firm by step
