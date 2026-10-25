@@ -376,3 +376,24 @@ Iggy uses and what Topaz supplies. Beating Iggy and finding something the early 
 The "+ Iggy early speed" fit in this run is not a test: Iggy's files carry Early Speed only from January 2024 (the
 2020-2023 files have no such column), so the training window above never saw it and the fit came out identical to
 v0. Rerun on a window starting 1 Jan 2024 (Test 4b).
+
+### Test 4b: the same, from January 2024, with Iggy's early speed (run 40183623864)
+
+127,012 races from 1 Jan 2024 (dog histories still use every earlier run). Fit before 10 May 2025 (62,817), rounds
+and blend 10 May 2025 to 13 Jan 2026 (31,745), scored from 13 Jan 2026 (32,450; 26,702 with every price present).
+Leak check: the dog Iggy rates fastest early wins 22.4% against a BSP chance of 22.4% (A/E 1.000), so the rating does
+not know the result, and the market already prices it exactly.
+
+| price (same 26,702 races) | log loss | first half | second half |
+|---|---|---|---|
+| v0, BSP chances | 1.6588 | 1.6669 | 1.6507 |
+| v0, winners | 1.6731 | 1.6806 | 1.6657 |
+| v0 + Iggy early speed | 1.6542 | 1.6612 | 1.6472 |
+| Iggy | 1.6346 | 1.6405 | 1.6287 |
+| pre-play WAP | 1.4703 | 1.4772 | 1.4634 |
+| BSP | 1.4654 | 1.4717 | 1.4593 |
+
+Blends with the market: + WAP 1.4700 (+0.0003), + BSP 1.4653 (+0.0001). Early speed helps v0 a little (1.6588 to
+1.6542, both halves) but v0 still trails Iggy in all 9 months and adds nothing to the market. Conclusion unchanged:
+the free files cannot build a model worth betting; the next model waits on Topaz (founder, 25 Oct 2026: "V0 has no
+data hahaha, let's wait for data").
