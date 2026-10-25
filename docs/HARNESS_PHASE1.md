@@ -205,3 +205,32 @@ not match the places paid): every band from $1 to $50 is within commission of ze
 is set by almost no money: a real bet there moves the price it is settled at. Read as illiquid prices, not an edge. The
 first run of this test reported two place "edges" before the cleaning; both came from infinite place BSPs in Betfair's
 files.
+
+## Test 5: the opening-price recorder's first run (25 Oct 2026, `fk harness opens` run 40176208641)
+
+Ran 7:20pm to 12:51am Sydney time on Sunday 25 Oct, every race in BetMatic's "Harness" schedule starting within 36
+hours: 124 races at 13 venues. BetMatic's harness schedule is not only Australian: it carried French (Enghien, Salon de
+Provence, Le Croise Laroche), North American (Woodbine, Flamboro Downs, Northfield Park, Yonkers) and New Zealand
+(Ashburton) meetings beside Redcliffe, Dubbo, Globe Derby, Pinjarra and Hamilton.
+
+| | |
+|---|---|
+| Requests answered | 12,926 (each race asked about 106 times) |
+| Requests unanswered within 20 s | 162 (1.2%); the WebSocket reconnected on its own |
+| Races already open at our first look | 17 (Redcliffe's evening card, Ashburton's next-day card) |
+| Races that opened while watched | 8, all French (Salon de Provence, Enghien) |
+| Races still not open when the run ended | 99, including every Australian Monday meeting (Dubbo, Globe Derby, Pinjarra) |
+| Bracket on the 8 opens (opened_at minus last_empty_at) | median 3.2 min, range 2.3 to 5.9 min |
+| When those 8 opened | 20 to 40 minutes before the start |
+| Bookmakers seen | TAB and Sportsbet (the bot's two sessions); on Salon R4 Sportsbet priced 2 min before TAB, otherwise together |
+
+What it says:
+1. The recorder works: answers come back, are paired to the right race, and an open is timed to about three minutes.
+   The bracket is the length of one pass over every watched race, so watching fewer races narrows it.
+2. No Australian open was caught. Tonight's Redcliffe card was already up at 7:20pm, and Monday's Australian meetings
+   were still not up at 12:51am, so Australian harness markets open some time between 1am and the evening of race day
+   at the latest; the next run has to cover the morning.
+3. Overseas races are a third of the schedule and slow every pass: filter to Australian venues.
+4. Proposed (founder to OK): an Australian-venue filter, and the workflow scheduled four times a day (about 5am, 10:30am,
+   4pm and 9:30pm Sydney, 5.5 hours each), which covers about 22 hours a day with half-hour gaps. Free while the
+   repository is public.
