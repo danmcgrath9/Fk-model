@@ -1,130 +1,133 @@
-# Sale Sun 25 Oct 2026: Form King prices and opens pulled Sat 24 Oct 10:39am Melbourne (market already up); emergencies SCR
-1, Big Kapow, 9.00, 9.00, fk_open 6.50
-1, Loaded, 1.90, 1.90, fk_open 2.60
-1, Silver Lightning, 126.00, 126.00, fk_open 61.00
-1, Trouble'n Paradise, 13.00, 13.00, fk_open 15.00
-1, Heavy Is The Head, 34.00, 34.00, fk_open 21.00
-1, Incoherent, 8.50, 8.50, fk_open 7.50
-1, Mission Miss, 151.00, 151.00, fk_open 101.00
-1, Armorware, 8.50, 8.50, fk_open 6.50
+# Sale Sun 25 Oct 2026: Form King prices pulled Sun 25 Oct 3:10pm Melbourne; Cable Dancer, Pure Grunt (R5), Nearing Liberty, Waco Kid (R8) have no market and are treated as SCR
+1, Big Kapow, 6.00, 6.00, fk_open 6.50
+1, Loaded, 2.35, 2.35, fk_open 2.60
+1, Saint Willo, SCR
+1, Smithers, 26.00, 26.00, fk_open 13.00
+1, Diamond Heist, SCR
+1, Eidfjord, 251.00, 251.00, fk_open 126.00
+1, Silver Lightning, 101.00, 101.00, fk_open 61.00
+1, Trouble'n Paradise, 11.00, 11.00, fk_open 15.00
+1, Heavy Is The Head, 13.00, 13.00, fk_open 21.00
+1, Incoherent, 13.00, 13.00, fk_open 7.50
+1, Mission Miss, 251.00, 251.00, fk_open 101.00
+1, Armorware, 9.50, 9.50, fk_open 6.50
 1, Boom Boss, 41.00, 41.00, fk_open 19.00
-1, Debut Author, 41.00, 41.00, fk_open 26.00
-1, Prestige Valour, 61.00, 61.00, fk_open 31.00
-1, Saint Willo, 12.00, 12.00, fk_open 13.00
-1, Smithers, 14.00, 14.00, fk_open 13.00
-1, Diamond Heist, 14.00, 14.00, fk_open 11.00
-1, Eidfjord, SCR, fk_open 126.00  # emergency
-2, Abydos, 12.00, 12.00, fk_open 13.00
-2, Always Shining, 126.00, 126.00, fk_open 81.00
-2, Bargunn, 91.00, 91.00, fk_open 51.00
-2, Egyptian Thorn, 12.00, 12.00, fk_open 8.50
-2, Moz, 13.00, 13.00, fk_open 11.00
-2, Rough Enuff, 3.80, 3.80, fk_open 7.00
-2, Silky Seth, 10.00, 10.00, fk_open 7.50
-2, Sir Riverance, 35.00, 35.00, fk_open 26.00
+1, Debut Author, 11.00, 11.00, fk_open 26.00
+1, Prestige Valour, SCR
+2, Jupiter's Girl, SCR
+2, Egyptian Thorn, 13.00, 13.00, fk_open 8.50
+2, Moz, 7.50, 7.50, fk_open 11.00
+2, Rough Enuff, 3.90, 3.90, fk_open 7.00
+2, Silky Seth, 6.25, 6.25, fk_open 7.50
+2, Sir Riverance, SCR
 2, Angling Angel, 6.50, 6.50, fk_open 6.00
-2, Castelli In Aria, 7.50, 7.50, fk_open 7.00
-2, Expanding Power, 15.00, 15.00, fk_open 11.00
+2, Castelli In Aria, SCR
+2, Expanding Power, SCR
 2, Goodness, 5.50, 5.50, fk_open 4.80
 2, Motherduck, 151.00, 151.00, fk_open 101.00
-2, Plucky Enuff, 15.00, 15.00, fk_open 17.00
-2, Laundering, SCR, fk_open 81.00  # emergency
-2, Jupiter's Girl, SCR, fk_open 61.00  # emergency
-2, Quemax, SCR, fk_open 31.00  # emergency
-2, Gypsy Moon, SCR, fk_open 81.00  # emergency
-3, Blue And Gold, 81.00, 81.00, fk_open 34.00
-3, Cab Franc, 13.00, 13.00, fk_open 8.50
-3, Chip In, 71.00, 71.00, fk_open 34.00
-3, Civic Square, 26.00, 26.00, fk_open 14.00
-3, Hurtling, 26.00, 26.00, fk_open 12.00
-3, Julius Maximus, 1.75, 1.75, fk_open 2.40
-3, Majestic Flyer, 3.70, 3.70, fk_open 3.80
-3, Sound System, 34.00, 34.00, fk_open 41.00
+2, Plucky Enuff, SCR
+2, Laundering, 201.00, 201.00, fk_open 81.00
+2, Quemax, 34.00, 34.00, fk_open 31.00
+2, Gypsy Moon, SCR
+2, Abydos, 16.00, 16.00, fk_open 13.00
+2, Always Shining, 201.00, 201.00, fk_open 81.00
+2, Bargunn, 126.00, 126.00, fk_open 51.00
+3, Sound System, 20.00, 20.00, fk_open 41.00
 3, Sunshine Boy, 151.00, 151.00, fk_open 61.00
-3, Tagged, 19.00, 19.00, fk_open 19.00
-3, Delahra, 41.00, 41.00, fk_open 19.00
-3, Holy Russian, 126.00, 126.00, fk_open 34.00
-3, Sisterly, 9.00, 9.00, fk_open 9.50
-3, Bureau, SCR, fk_open 51.00  # emergency
-3, Written Velocity, SCR, fk_open 26.00  # emergency
-3, Boutin, SCR, fk_open 71.00  # emergency
-4, Feeling Dusty, 3.80, 3.80, fk_open 3.90
-4, Mount Sabyinyo, 3.50, 3.50, fk_open 3.20
-4, Overpriced, 8.50, 8.50, fk_open 6.50
-4, Crown Crusher, 23.00, 23.00, fk_open 19.00
-4, Belcony, 6.50, 6.50, fk_open 5.50
-4, Wounder, 6.00, 6.00, fk_open 5.50
-4, Epeiric, 23.00, 23.00, fk_open 14.00
-4, Tanabata, 5.50, 5.50, fk_open 12.00
-4, Grand Sage, 71.00, 71.00, fk_open 51.00
-4, Neck High, 126.00, 126.00, fk_open 151.00
-5, Cable Dancer, 10.00, 10.00, fk_open 8.50
-5, Slane, 23.00, 23.00, fk_open 21.00
-5, So Brave, 23.00, 23.00, fk_open 21.00
-5, Tishman, 7.00, 7.00, fk_open 9.50
-5, Pure Grunt, 26.00, 26.00, fk_open 21.00
-5, Icaro, 9.50, 9.50, fk_open 6.50
-5, Superstock, SCR, fk_open 9.00  # scratched Sun morning
-5, Navy Heart, 4.60, 4.60, fk_open 4.60
-5, Saxon Blood, 10.00, 10.00, fk_open 12.00
-5, Ninyo, 27.00, 27.00, fk_open 21.00
-5, She's A Con, 9.50, 9.50, fk_open 7.50
-5, Wolfess, 12.00, 12.00, fk_open 12.00
-5, Jean Georges, 19.00, 19.00, fk_open 19.00
-5, Twisted Love, SCR, fk_open 8.00  # emergency
-5, Chocolate Royal, SCR, fk_open 26.00  # emergency
-5, Just Dance, SCR, fk_open 81.00  # emergency
-6, Fehmarn, 5.00, 5.00, fk_open 4.60
-6, Hello Romeo, 7.00, 7.00, fk_open 9.00
-6, Inside Man, 46.00, 46.00, fk_open 16.00
-6, Mr Tickles, 26.00, 26.00, fk_open 16.00
-6, Go To Hollywood, 21.00, 21.00, fk_open 31.00
-6, Mckeyla, 6.50, 6.50, fk_open 10.00
-6, Nordic Strike, 6.50, 6.50, fk_open 8.00
-6, Walter Spur, 14.00, 14.00, fk_open 9.50
-6, Blue Humma, 11.00, 11.00, fk_open 10.00
-6, Hotspur Reale, 6.00, 6.00, fk_open 6.50
-6, Soju, 18.00, 18.00, fk_open 13.00
-6, Crank, 10.00, 10.00, fk_open 6.00
-6, Laura's Gold, 81.00, 81.00, fk_open 51.00
-7, Freedom Rally, 11.00, 11.00, fk_open 9.00
-7, Enxuto, 4.40, 4.40, fk_open 4.30
-7, Doctor Askar, 21.00, 21.00, fk_open 31.00
-7, Ten Commandments, 3.10, 3.10, fk_open 2.90
-7, Aztec Ruler, 23.00, 23.00, fk_open 31.00
-7, Charterhouse, 41.00, 41.00, fk_open 61.00
-7, El Rocko, 7.50, 7.50, fk_open 7.75
-7, Makdane, 6.50, 6.50, fk_open 6.50
-7, Bon Mistress, 19.00, 19.00, fk_open 31.00
+3, Cab Franc, 14.00, 14.00, fk_open 8.50
+3, Majestic Flyer, 8.00, 8.00, fk_open 3.80
+3, Delahra, SCR, last 81.00, fk_open 19.00
+3, Holy Russian, 201.00, 201.00, fk_open 34.00
+3, Sisterly, 8.00, 8.00, fk_open 9.50
+3, Bureau, 201.00, 201.00, fk_open 51.00
+3, Written Velocity, 17.00, 17.00, fk_open 26.00
+3, Boutin, SCR
+3, Blue And Gold, SCR
+3, Chip In, 19.00, 19.00, fk_open 34.00
+3, Civic Square, SCR
+3, Hurtling, 31.00, 31.00, fk_open 12.00
+3, Julius Maximus, 1.90, 1.90, fk_open 2.40
+3, Savfield, SCR
+3, Tagged, 15.00, 15.00, fk_open 19.00
+4, Feeling Dusty, 5.25, 5.25, fk_open 3.90
+4, Mount Sabyinyo, 4.80, 4.80, fk_open 3.20
+4, Overpriced, 6.00, 6.00, fk_open 6.50
+4, Crown Crusher, 26.00, 26.00, fk_open 19.00
+4, Wounder, 9.50, 9.50, fk_open 5.50
+4, Belcony, 5.50, 5.50, fk_open 5.50
+4, Epeiric, 26.00, 26.00, fk_open 14.00
+4, Tanabata, 6.50, 6.50, fk_open 12.00
+4, Grand Sage, 61.00, 61.00, fk_open 51.00
+4, Neck High, 201.00, 201.00, fk_open 151.00
+5, Slane, 10.00, 10.00, fk_open 21.00
+5, So Brave, 21.00, 21.00, fk_open 21.00
+5, Tishman, 5.25, 5.25, fk_open 9.50
+5, Navy Heart, 3.80, 3.80, fk_open 4.60
+5, She's A Con, 8.50, 8.50, fk_open 7.50
+5, Wolfess, 6.00, 6.00, fk_open 12.00
+5, Saxon Blood, 9.00, 9.00, fk_open 12.00
+5, Ninyo, 26.00, 26.00, fk_open 21.00
+5, Jean Georges, 18.00, 18.00, fk_open 19.00
+5, Twisted Love, SCR
+5, Chocolate Royal, 8.50, 8.50, fk_open 26.00
+5, Just Dance, SCR
+5, Icaro, SCR
+5, Superstock, SCR
+5, Korobeiniki, SCR
+6, Fehmarn, 3.40, 3.40, fk_open 4.60
+6, Go To Hollywood, 26.00, 26.00, fk_open 31.00
+6, Blue Humma, 12.00, 12.00, fk_open 10.00
+6, Hotspur Reale, 4.80, 4.80, fk_open 6.50
+6, Crank, 9.50, 9.50, fk_open 6.00
+6, Laura's Gold, 91.00, 91.00, fk_open 51.00
+6, Mckeyla, 5.00, 5.00, fk_open 10.00
+6, Nordic Strike, SCR
+6, Walter Spur, 17.00, 17.00, fk_open 9.50
+6, Soju, 26.00, 26.00, fk_open 13.00
+6, Hello Romeo, 8.00, 8.00, fk_open 9.00
+6, Inside Man, 81.00, 81.00, fk_open 16.00
+6, Mr Tickles, 31.00, 31.00, fk_open 16.00
+7, Pinstriped, SCR
+7, Freedom Rally, 10.00, 10.00, fk_open 9.00
+7, Enxuto, SCR
+7, Doctor Askar, SCR
+7, Ten Commandments, 2.35, 2.35, fk_open 2.90
+7, Bon Mistress, 21.00, 21.00, fk_open 31.00
 7, Haaracaine, 10.00, 10.00, fk_open 17.00
-7, All Business, 20.00, 20.00, fk_open 19.00
-8, Kahhof, 15.00, 15.00, fk_open 11.00
-8, Hiyaam Proud, 19.00, 19.00, fk_open 18.50
-8, Boltsaver, 16.00, 16.00, fk_open 11.00
-8, Flying Mikki, 15.00, 15.00, fk_open 13.00
-8, Chest Of Gold, 34.00, 34.00, fk_open 26.00
-8, Cobblestone Way, 51.00, 51.00, fk_open 51.00
-8, Shaalute, 19.00, 19.00, fk_open 23.00
-8, Bel Mezyaan, 3.00, 3.00, fk_open 2.70
-8, Nearing Liberty, 21.00, 21.00, fk_open 18.50
-8, Chicago Blues, 16.00, 16.00, fk_open 9.50
-8, Umgawa, 126.00, 126.00, fk_open 81.00
-8, Wetumpka, 3.10, 3.10, fk_open 4.10
-8, Illyivy, 14.00, 14.00, fk_open 11.00
-8, Waco Kid, 41.00, 41.00, fk_open 34.00
-8, Diamond Eye, SCR, fk_open 11.00  # emergency
-8, Hedjet, SCR, fk_open 7.00  # emergency
-8, Gunado, SCR, fk_open 34.00  # emergency
-9, Alero, 15.00, 15.00, fk_open 18.00
-9, Fission, 23.00, 23.00, fk_open 31.00
-9, Vail Mountain, 151.00, 151.00, fk_open 101.00
-9, Delicate Lady, 21.00, 21.00, fk_open 21.00
-9, Electric Elvis, 5.00, 5.00, fk_open 6.00
-9, Interest Point, 21.00, 21.00, fk_open 21.00
-9, Yes Yoshi, 3.60, 3.60, fk_open 4.40
+7, All Business, 17.00, 17.00, fk_open 19.00
+7, Aztec Ruler, 21.00, 21.00, fk_open 31.00
+7, Charterhouse, SCR
+7, El Rocko, 3.80, 3.80, fk_open 7.75
+7, Makdane, 6.50, 6.50, fk_open 6.50
+8, Umgawa, 101.00, 101.00, fk_open 81.00
+8, Flying Mikki, 13.00, 13.00, fk_open 13.00
+8, Chest Of Gold, SCR
+8, Cobblestone Way, 81.00, 81.00, fk_open 51.00
+8, Shaalute, 26.00, 26.00, fk_open 23.00
+8, Bel Mezyaan, 3.30, 3.30, fk_open 2.70
+8, Chicago Blues, SCR
+8, Kahhof, 14.00, 14.00, fk_open 11.00
+8, Hiyaam Proud, SCR
+8, Boltsaver, 18.00, 18.00, fk_open 11.00
+8, Diamond Eye, 18.00, 18.00, fk_open 11.00
+8, Hedjet, 5.25, 5.25, fk_open 7.00
+8, Gunado, SCR
+8, Wetumpka, 2.90, 2.90, fk_open 4.10
+8, Illyivy, 16.00, 16.00, fk_open 11.00
+9, Alero, SCR
+9, Fission, SCR
+9, Vail Mountain, 126.00, 126.00, fk_open 101.00
+9, Delicate Lady, 23.00, 23.00, fk_open 21.00
+9, Interest Point, SCR
+9, Kippis, SCR
+9, Electric Elvis, 4.20, 4.20, fk_open 6.00
+9, Yes Yoshi, 2.40, 2.40, fk_open 4.40
 9, Blankfield, 11.00, 11.00, fk_open 8.00
-9, Let It Beel, 17.00, 17.00, fk_open 15.00
-9, Cardamom, 6.00, 6.00, fk_open 3.60
-9, Kippis, 31.00, 31.00, fk_open 26.00
+9, Let It Beel, 13.00, 13.00, fk_open 15.00
+9, Cardamom, 6.50, 6.50, fk_open 3.60
 9, Street Conqueror, 26.00, 26.00, fk_open 17.00
-9, Balance, 6.00, 6.00, fk_open 6.00
+9, Balance, 6.75, 6.75, fk_open 6.00
+5, Cable Dancer, SCR
+5, Pure Grunt, SCR
+8, Nearing Liberty, SCR
+8, Waco Kid, SCR

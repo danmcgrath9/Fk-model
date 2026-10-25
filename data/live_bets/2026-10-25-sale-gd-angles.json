@@ -1,5 +1,4 @@
 {
-"1|Prestige Valour": [],
 "1|Armorware": [
 "Third-up, improving",
 "Class drop (rating)"
@@ -7,13 +6,15 @@
 "1|Smithers": [],
 "1|Debut Author": [],
 "1|Silver Lightning": [],
-"1|Diamond Heist": [],
 "1|Trouble'n Paradise": [
 "Third-up, improving",
 "Above the field in all three sections",
 "Blinkers first time"
 ],
 "1|Big Kapow": [],
+"1|Eidfjord": [
+"Blinkers first time"
+],
 "1|Incoherent": [
 "Class drop (rating)"
 ],
@@ -22,7 +23,6 @@
 "Class drop (rating)",
 "Late 600 beyond the tempo"
 ],
-"1|Saint Willo": [],
 "1|Loaded": [],
 "1|Boom Boss": [],
 "1|Mission Miss": [],
@@ -38,19 +38,19 @@
 "Already run to today's class",
 "Well backed before a bad last run"
 ],
-"2|Sir Riverance": [],
 "2|Egyptian Thorn": [],
 "2|Motherduck": [],
 "2|Silky Seth": [
 "Above the field in all three sections"
 ],
-"2|Expanding Power": [
-"Well backed before a bad last run"
+"2|Quemax": [
+"Above the field in all three sections"
 ],
 "2|Moz": [],
-"2|Abydos": [],
-"2|Plucky Enuff": [],
-"2|Castelli In Aria": [],
+"2|Abydos": [
+"Late 600 beyond the tempo"
+],
+"2|Laundering": [],
 "2|Always Shining": [],
 "3|Hurtling": [
 "Blinkers first time"
@@ -62,9 +62,9 @@
 "Class drop (rating)",
 "Late 600 beyond the tempo"
 ],
+"3|Written Velocity": [],
 "3|Tagged": [
-"Class drop (rating)",
-"Late 600 beyond the tempo"
+"Class drop (rating)"
 ],
 "3|Chip In": [
 "Class drop (rating)"
@@ -72,12 +72,11 @@
 "3|Majestic Flyer": [
 "Beaten by the pace last start"
 ],
-"3|Sunshine Boy": [
+"3|Bureau": [
 "Blinkers first time"
 ],
-"3|Delahra": [],
-"3|Blue And Gold": [
-"Class drop (rating)"
+"3|Sunshine Boy": [
+"Blinkers first time"
 ],
 "3|Cab Franc": [],
 "3|Julius Maximus": [
@@ -85,7 +84,6 @@
 "Class drop (rating)",
 "Late 600 beyond the tempo"
 ],
-"3|Civic Square": [],
 "3|Sound System": [],
 "4|Wounder": [
 "Beaten by the pace last start",
@@ -119,7 +117,9 @@
 "5|Pure Grunt": [],
 "5|Slane": [],
 "5|Tishman": [],
-"5|Icaro": [],
+"5|Chocolate Royal": [
+"Third-up, improving"
+],
 "5|Navy Heart": [],
 "5|Jean Georges": [],
 "6|Mckeyla": [
@@ -148,9 +148,6 @@
 "Blinkers first time"
 ],
 "6|Soju": [],
-"6|Nordic Strike": [
-"Well backed before a bad last run"
-],
 "6|Blue Humma": [
 "Well backed before a bad last run"
 ],
@@ -166,7 +163,6 @@
 "7|Haaracaine": [
 "Third-up, improving"
 ],
-"7|Charterhouse": [],
 "7|Ten Commandments": [
 "Already run to today's class"
 ],
@@ -176,9 +172,9 @@
 "7|Freedom Rally": [
 "Class drop (rating)"
 ],
-"7|Enxuto": [],
-"7|Doctor Askar": [],
-"7|Aztec Ruler": [],
+"7|Aztec Ruler": [
+"Blinkers first time"
+],
 "8|Umgawa": [],
 "8|Waco Kid": [],
 "8|Nearing Liberty": [
@@ -194,8 +190,9 @@
 "8|Illyivy": [
 "Class drop (rating)"
 ],
-"8|Chicago Blues": [
-"Well backed before a bad last run"
+"8|Hedjet": [
+"New career-best last start",
+"Third-up, improving"
 ],
 "8|Cobblestone Way": [],
 "8|Shaalute": [],
@@ -210,15 +207,12 @@
 "Class drop (rating)",
 "Blinkers first time"
 ],
-"8|Hiyaam Proud": [],
-"8|Chest Of Gold": [],
+"8|Diamond Eye": [],
 "8|Flying Mikki": [],
-"9|Interest Point": [],
 "9|Vail Mountain": [],
 "9|Yes Yoshi": [
 "Back in trip after being handy"
 ],
-"9|Fission": [],
 "9|Balance": [
 "Third-up, improving",
 "Blinkers first time"
@@ -228,17 +222,15 @@
 "Late 600 beyond the tempo"
 ],
 "9|Delicate Lady": [],
-"9|Alero": [
-"Well backed before a bad last run",
+"9|Electric Elvis": [
+"Already run to today's class"
+],
+"9|Blankfield": [
 "Class drop (rating)"
 ],
-"9|Electric Elvis": [
+"9|Cardamom": [
+"Beaten by the pace last start",
 "Already run to today's class",
 "Late 600 beyond the tempo"
-],
-"9|Blankfield": [],
-"9|Kippis": [
-"Well backed before a bad last run"
-],
-"9|Cardamom": []
+]
 }
