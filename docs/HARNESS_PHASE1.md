@@ -142,3 +142,66 @@ What it says:
    earlier, which brings it back to the opening price the recorder is collecting.
 4. Calibration on average is not the same as unbeatable runner by runner: these tables say the market has no bias by
    price band, not that a model cannot find the runners it has wrong. That needs form data (RISE).
+
+## Test 3: a price from the market's own history of each horse, scored against BSP (25 Oct 2026, hx_model.py)
+
+Founder: build on what we have while RISE is asked. Inputs, all from races that started BEFORE this one in Betfair's
+files: the horse's last three BSP chances and its five-run mean, runs, days since, wins and places, wins against what
+BSP expected, last start's BSP rank and in-running low, changes of distance, track and gait; plus the field (track,
+state, distance, gait, TAB number, field size, the market name's last word). No current-race price. Scratchings excluded
+from history. Trees (LightGBM, 289 rounds by early stopping) and a logistic regression; the validation months chose
+the trees alone. Train 64,799 races to 30 Jun 2024; validation 7,299 (Jul-Dec 2024); holdout 24,111 (Jan 2025 to Sep
+2026), split at 15 Nov 2025.
+
+| price | winner log loss, 1st half | 2nd half | KL to BSP, 1st half | 2nd half |
+|---|---|---|---|---|
+| equal chances | 2.1901 | 2.1832 | 0.5826 | 0.6089 |
+| market-history model | 2.1017 | 2.1026 | 0.4934 | 0.5185 |
+| pre-play WAP | 1.5942 | 1.5794 | 0.0084 | 0.0107 |
+| BSP | 1.5897 | 1.5692 | 0 | 0 |
+
+By month the model closes 10% to 16% of the distance from equal chances to BSP (every month, no trend). Biggest inputs
+by gain: track 18.9%, mean of the last five BSP chances 13.5%, last start's BSP rank 10.9%, field 7.9%, last BSP chance
+7.7%, days since 5.9%, TAB number 3.7%.
+
+Verdict: market history alone is nowhere near BSP. For scale, the gallops model with full Form King form sat at KL
+0.08-0.09 against an opening market at 0.14; this sits at 0.49-0.52. A horse's past prices say who the market rated,
+not why, and in harness the why (driver, draw, how the race will be run, the horse's actual times) is the price. The
+pipeline (point-in-time history, cut-off, halves, KL by month) is built and is where RISE's form drops in.
+
+## Test 4: betting angles at BSP, both halves, 8% commission (25 Oct 2026, hx_angles.py)
+
+82,587 Australian races, Jan 2021 to Sep 2026 (2020 builds the history), split at 15 Nov 2023. Every angle is a back or
+a lay at BSP because BSP is the only price the files carry. Each table also shows the back ROI without the group's ten
+biggest wins. Full tables are in the run's step summary (`fk harness betfair`, run 40177753707).
+
+Held in both halves after commission: one.
+
+| angle | half | bets | wins | A/E | lay ROI after 8% |
+|---|---|---|---|---|---|
+| TAB 1 pacers under $4 (lay) | 2021-Nov 2023 | 7,232 | 2,991 | 0.932 | +3.2% |
+| | Nov 2023-Sep 2026 | 6,353 | 2,569 | 0.950 | +0.4% |
+
+The lean behind it is the clearest in the set: TAB 1 pacers as a whole win 4.4% and 7.1% less than BSP says (A/E 0.956
+and 0.929 on 35,654 and 34,164 runners), and TAB 2 and TAB 1-2 in fields of 10+ lean the same way (A/E 0.92-0.97). The
+market overrates the inside draw in pacers. After an 8% commission the lay is close to break-even (+1.8% across both
+halves), so whether it pays depends on the commission actually charged; at 5% it would be about +5%. Not a bet yet: one
+lean that survives about thirty angles tried is what chance alone would also produce now and then, so it needs a
+forward test on races after September 2026 before it is believed.
+
+Did not hold (selected): favourites (A/E 0.998/1.008, lose 3-5% after commission either side); favourites in
+low-volume races (A/E 1.009/1.033, still -1.3% to -4.1% backed); $21-$51 lay (-7.1%, -2.5%); first up, backed up,
+beaten favourite, unlucky last start (traded $1.50 or less and lost), surprise last-start winners, gait switchers, horses
+that beat BSP before: all within commission of zero in at least one half.
+
+Model-disagreement angles (Test 3's model on its holdout): the only group positive in both halves, runners the model
+rates at 0.625x BSP or less at $15-$30 BACKED, is 86 and 61 bets with 8 and 6 winners, and minus its ten biggest wins it
+is -100%: noise. Runners the model rates at 2x BSP or more win less than BSP says (A/E 0.933, 0.921): BSP is right about
+them and the model is wrong, as expected of a model this far from BSP.
+
+Place market (63,333 races after cleaning; 1,764 dropped for infinite or absurd place BSPs or a placed count that does
+not match the places paid): every band from $1 to $50 is within commission of zero. Place BSPs of $50 and up show A/E
+2.59 and 1.16 and +444%/+41% backed, but minus the ten biggest wins the second half is -1.9%, and a place BSP above $50
+is set by almost no money: a real bet there moves the price it is settled at. Read as illiquid prices, not an edge. The
+first run of this test reported two place "edges" before the cleaning; both came from infinite place BSPs in Betfair's
+files.
