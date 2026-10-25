@@ -46,22 +46,37 @@ def main(d):
     for c in cols:
         s = df[c]; ex = s.dropna()
         print(f"| {c} | {s.notna().mean():.1%} | {s.nunique():,} | {str(ex.iloc[0])[:40] if len(ex) else ''} |")
-    date = guess(cols, "date") or guess(cols, "time")
-    market = guess(cols, "market", "id") or guess(cols, "event", "id")
+    date = "LOCAL_MEETING_DATE" if "LOCAL_MEETING_DATE" in cols else guess(cols, "date")
+    market = "WIN_MARKET_ID" if "WIN_MARKET_ID" in cols else guess(cols, "market", "id")
     track = guess(cols, "track") or guess(cols, "venue")
-    bsp = guess(cols, "bsp")
+    bsp = "WIN_BSP" if "WIN_BSP" in cols else guess(cols, "bsp")
     print(f"\nread as: date={date} market={market} track={track} bsp={bsp}")
     if date:
-        dt = pd.to_datetime(df[date], errors="coerce", utc=True, format="mixed")
-        print(f"dates {dt.min()} to {dt.max()}; unparsed {dt.isna().mean():.1%}")
+        # Betfair writes the meeting date day first (1/12/2020 is 1 December 2020)
+        dt = pd.to_datetime(df[date], errors="coerce", dayfirst=True, format="%d/%m/%Y")
+        print(f"dates {dt.min():%Y-%m-%d} to {dt.max():%Y-%m-%d}; unparsed {dt.isna().mean():.1%}")
         df["_month"] = dt.dt.strftime("%Y-%m")
+        print("\nwhat each file actually holds (a file whose dates are not its own month is a copy):")
+        print("| file | rows | first date | last date |\n|---|---|---|---|")
+        for f, g in df.assign(_d=dt).groupby("_file", sort=False):
+            print(f"| {f} | {len(g):,} | {g._d.min():%Y-%m-%d} | {g._d.max():%Y-%m-%d} |")
+    if market and "SELECTION_ID" in cols:
+        k = df[market].astype(str) + ":" + df["SELECTION_ID"].astype(str)
+        dup = k.duplicated()
+        print(f"\nduplicate runner rows (same market and selection in more than one place): {dup.sum():,} of {len(df):,}")
+        df = df[~dup].copy()
+        print(f"after removing them: {len(df):,} runner rows, {df[market].nunique():,} win markets")
     if market and date:
         g = df.groupby("_month").agg(rows=(market, "size"), races=(market, "nunique"))
         if bsp:
             g["bsp_filled"] = df.groupby("_month")[bsp].apply(lambda s: pd.to_numeric(s, errors="coerce").gt(1).mean())
-        print("\n| month | runner rows | races | runners with a BSP |\n|---|---|---|---|")
+        print("\nde-duplicated, by meeting month:")
+        print("\n| month | runner rows | races | runners with a win BSP |\n|---|---|---|---|")
         for m, r in g.iterrows():
             print(f"| {m} | {int(r.rows):,} | {int(r.races):,} | {r.get('bsp_filled', float('nan')):.1%} |")
+    for c in ("STATE_CODE", "RACE_TYPE"):
+        if c in df.columns and market:
+            print(f"\nraces by {c}: " + ", ".join(f"{k} {v:,}" for k, v in df.groupby(c)[market].nunique().sort_values(ascending=False).items()))
     if track:
         print(f"\ntracks: {df[track].nunique()}; top 25 by rows:")
         for t, n in df[track].value_counts().head(25).items():
