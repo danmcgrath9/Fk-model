@@ -5,7 +5,8 @@ angles"). Run after hx_model.py, which leaves DIR/hx_preds.parquet.
 
 Betfair SP is the only price in these files, so every angle is a back or a lay at BSP. 8% commission on winnings (the
 figure the gallops tests use). Per 1-unit bet: back = won ? (BSP-1)*0.92 : -1; lay (1 unit of the backer's stake) =
-won ? -(BSP-1) : 0.92. A/E = wins / sum of 1/BSP. An angle counts only if it makes money in BOTH halves; with this many
+won ? -(BSP-1) : 0.92. A/E = wins / sum of 1/BSP. Each table also shows the back ROI with that group's ten biggest wins removed, because a
+handful of long-priced winners can carry a whole angle. An angle counts only if it makes money in BOTH halves; with this many
 angles tried, a few will pass one half by chance, so the size of the sample matters as much as the sign.
 
 Part 1, no model: market-structure and form angles from Betfair's own record, over 2021-2026 (2020 is spent building
@@ -29,7 +30,8 @@ def pl(s, kind, price="WIN_BSP", res="won"):
 
 def table(title, angles, df, price="WIN_BSP", res="won"):
     print(f"\n## {title}\n")
-    print("| angle | half | bets | wins | A/E | back ROI | lay ROI |\n|---|---|---|---|---|---|---|")
+    print("| angle | half | bets | wins | A/E | back ROI | back ROI without its 10 biggest wins | lay ROI |\n"
+          "|---|---|---|---|---|---|---|---|")
     held = []
     for name, mask in angles:
         signs = {}
@@ -38,9 +40,12 @@ def table(title, angles, df, price="WIN_BSP", res="won"):
             if not len(s):
                 continue
             exp = (1 / s[price]).sum()
-            bk, ly = pl(s, "back", price, res).mean(), pl(s, "lay", price, res).mean()
+            bp = np.sort(pl(s, "back", price, res))
+            bk, ly = bp.mean(), pl(s, "lay", price, res).mean()
+            trim = bp[:-10].mean() if len(bp) > 50 else float("nan")   # a few huge winners can carry a whole angle
             signs[h] = (bk, ly)
-            print(f"| {name} | {h} | {len(s):,} | {int(s[res].sum()):,} | {s[res].sum() / exp:.3f} | {bk:+.1%} | {ly:+.1%} |")
+            print(f"| {name} | {h} | {len(s):,} | {int(s[res].sum()):,} | {s[res].sum() / exp:.3f} | {bk:+.1%} | "
+                  f"{trim:+.1%} | {ly:+.1%} |")
         if len(signs) == 2:
             for k, side in ((0, "back"), (1, "lay")):
                 if all(v[k] > 0 for v in signs.values()):
@@ -123,7 +128,7 @@ def main(d, label):
           f"= places paid).")
     pdf = pdf[good]
     rows = [(f"place ${lo}-${hi}", band(pdf, lo, hi, "PLACE_BSP")) for lo, hi in
-            ((1, 1.5), (1.5, 2), (2, 3), (3, 5), (5, 10), (10, 10000))]
+            ((1, 1.5), (1.5, 2), (2, 3), (3, 5), (5, 10), (10, 20), (20, 50), (50, 10000))]
     rows += [("place, win favourite", pdf.bsp_rank == 1), ("place, win $21+", band(pdf, 21, 10000))]
     print(f"Part 3: {pdf.race.nunique():,} races.")
     table("Part 3: the place market at place BSP", rows, pdf, "PLACE_BSP", "placed")
