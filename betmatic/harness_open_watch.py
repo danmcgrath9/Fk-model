@@ -52,11 +52,25 @@ def race_key(venue, number):
     return f"{venue}|R{int(number)}"
 
 
-def schedule_races(sched, now, horizon_hours):
-    """Harness races from GET /competition/namecodes/ that start after now and within the horizon."""
+TRACKS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "config", "harness_au_tracks.txt")
+
+
+def australian_tracks(path=TRACKS):
+    """The Australian harness venues to watch (BetMatic's schedule also carries France, North America and NZ)."""
+    return {l.strip().upper() for l in open(path) if l.strip() and not l.startswith("#")}
+
+
+def schedule_races(sched, now, horizon_hours, allowed=None, skipped=None):
+    """Harness races from GET /competition/namecodes/ that start after now and within the horizon, at an allowed
+    venue when a set is given. Venues left out are added to `skipped`, so a misspelt Australian track shows up."""
     out = []
     for c in sched:
         if not isinstance(c, dict) or c.get("code") != CODE:
+            continue
+        venue = str(c.get("name", "")).upper()
+        if allowed is not None and venue not in allowed:
+            if skipped is not None:
+                skipped.add(venue)
             continue
         start = parse_start(c.get("startTime"))
         if now < start <= now + dt.timedelta(hours=horizon_hours):
@@ -192,8 +206,10 @@ def main():
             codes = sorted({str(c.get("code")) for c in sched if isinstance(c, dict)})
             if CODE not in codes:
                 sys.exit(f"no {CODE!r} races in BetMatic's schedule (codes seen: {codes}). Not recording.")
-            races = schedule_races(sched, now_utc(), a.horizon); sched_at = t0
-            print(f"schedule: {len(races)} harness races within {a.horizon}h")
+            skipped = set()
+            races = schedule_races(sched, now_utc(), a.horizon, australian_tracks(), skipped); sched_at = t0
+            print(f"schedule: {len(races)} Australian harness races within {a.horizon}h; "
+                  f"venues skipped (not in config/harness_au_tracks.txt): {', '.join(sorted(skipped)) or 'none'}")
         opened = 0
         for r in races:
             if time.time() >= end:

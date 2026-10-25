@@ -101,3 +101,19 @@ def test_an_unreadable_start_time_stops_the_run():
         w.parse_start("tomorrow 7pm")
     with pytest.raises(SystemExit):
         w.parse_start("2026-10-25T19:00:00")                            # no timezone: refused, not assumed
+
+
+def test_schedule_watches_only_australian_venues():
+    now = dt.datetime(2026, 10, 25, 0, 0, tzinfo=UTC)
+    sched = [{"code": "Harness", "name": n, "event_number": 1, "startTime": "2026-10-25T19:00:00+11:00", "runners": "1"}
+             for n in ("Redcliffe", "ENGHIEN", "ASHBURTON", "Globe Derby")]
+    skipped = set()
+    got = w.schedule_races(sched, now, 36, w.australian_tracks(), skipped)
+    assert [r["venue"] for r in got] == ["REDCLIFFE", "GLOBE DERBY"]
+    assert skipped == {"ENGHIEN", "ASHBURTON"}                          # France and NZ, named in the log
+
+
+def test_track_file_is_australian_only():
+    t = w.australian_tracks()
+    assert {"MENANGLE", "MELTON", "ALBION PARK", "GLOBE DERBY", "GLOUCESTER PARK", "HOBART"} <= t
+    assert not t & {"ADDINGTON", "ALEXANDRA PARK", "CAMBRIDGE", "ASHBURTON"}   # NZ tracks are not in it
