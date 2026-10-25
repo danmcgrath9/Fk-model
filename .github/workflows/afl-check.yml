@@ -1,0 +1,26 @@
+# One-off read of Champion Data's contact page text (one page load), for a follow-up route. Removed once read.
+name: afl check contact
+on:
+  push:
+    branches: [afl-props]
+    paths: ['.github/workflows/afl-check.yml']
+concurrency:
+  group: afl-check
+permissions:
+  contents: read
+jobs:
+  contact:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -sSL --max-time 30 -A "fk-model AFL research" https://www.championdata.com/contact/ -o page.html
+          python3 - <<'PY'
+          import re, html
+          t = open('page.html', errors='ignore').read()
+          t = html.unescape(re.sub(r'<script.*?</script>|<style.*?</style>|<[^>]+>', ' ', t, flags=re.S))
+          t = re.sub(r'\s+', ' ', t)
+          i = t.lower().find('contact')
+          print(t[i:i + 2500])
+          print('PHONES:', sorted(set(re.findall(r'(?:\+61|\(0\d\)|0\d)[\d ]{7,12}\d', t))))
+          print('EMAILS:', sorted(set(re.findall(r'[\w.+-]+@[\w-]+\.[\w.]+', t))))
+          PY
