@@ -369,3 +369,17 @@ Friday 23 Cranbourne R2: Eye For An Eye 10th, Superstock 3rd (real bets $95 + $9
 Ballarat Fri 23 races 3-9 still unresulted in Form King.
 Ballarat Fri 23 Oct ABANDONED after R2 (founder, 25 Oct): every Ballarat bet from R3 on is void, paper and top-ups alike
 (Star Je Taime, Wavelets, Bel Lupa, Jenni You Think; top-ups Wavelets, Circus Circus, Skjaldmo). Twitter Ballarat rows void.
+
+## Swan Hill Tue 27 Oct (paper: the market opened Sunday afternoon before the orders were sent)
+Priced Sun 25 Oct on the fields; founder took races 1, 3 and 4 off the sheet (42 orders on 19 runners, races 2, 5-8).
+The first-starter rule would have voided those three races anyway at the open (Winna's Sister $4.80, Tremont $6.00,
+Town Planner $4.60). Two fills at Form King's open:
+
+| Race | Horse | FK open | Ours | Stake | Twitter (halved) | Deduction (est.) | Price after |
+|---|---|---|---|---|---|---|---|
+| R7 | Habitual | $6 | $3.25 | 11.78u | 5u (cap) | 0c | $6.00 |
+| R8 | Mr Butt's Boats | $21 | $8.23 | 3.60u | 1.80u | 10c | $19.08 |
+
+Nineteen others opened under their minimums; the market opened short on most of our book (Killiana $2.30 v ours
+$2.67, Neziha $2.80 v $4.92, Switch Hit $3.80 v $6.76). Flash Inquiry (R1, $18 open, 3.08u) would have filled on
+the full sheet but R1 was off.

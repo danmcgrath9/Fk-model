@@ -1,0 +1,106 @@
+# Swan Hill Tue 27 Oct 2026: fields pulled Sun 25 Oct 3:25pm Melbourne; no market yet
+1, Sammie Ellen Boy, 0, 0
+1, Street Painter, 0, 0
+1, Titus Augustus, 0, 0
+1, Gamadale Possum, 0, 0
+1, Ostrom, 0, 0
+1, Flash Inquiry, 0, 0
+1, Frosted Steele, 0, 0
+1, What Once Was, 0, 0
+1, Winna's Sister, 0, 0
+2, Boots Off, 0, 0
+2, Carnevale, 0, 0
+2, Celtic Spy, 0, 0
+2, Gangland, 0, 0
+2, King Koruna, 0, 0
+2, Magna Sententia, 0, 0
+2, My Boy Arnie, 0, 0
+2, Optimus, 0, 0
+2, Pray For Elegance, 0, 0
+2, Rentier, 0, 0
+2, Unclaimed, 0, 0
+2, Magna Peak, 0, 0
+3, Presno, 0, 0
+3, Tremont, 0, 0
+3, Back Up Barbie, 0, 0
+3, Peace Seeker, 0, 0
+3, She's Loaded, 0, 0
+3, Tell Me Why, 0, 0
+3, Bogey Free, 0, 0
+3, Cast A Line, 0, 0
+3, Fullboardsupport, 0, 0
+3, Gamadale Paddy, 0, 0
+3, The Pallet Man, 0, 0
+3, Swift Action, 0, 0
+3, Vanara Princess, 0, 0
+3, Slick Vixen, SCR
+3, Rule Of Thunder, SCR
+3, Invisible Caravan, SCR
+3, Xiguous Equus, SCR
+4, Ambitious Achiever, 0, 0
+4, Efreeti, 0, 0
+4, Ella's Boy, 0, 0
+4, Intervened, 0, 0
+4, Pete The Prophet, 0, 0
+4, Poorlittlerichkid, 0, 0
+4, Ted Percy, 0, 0
+4, Windsor Chariot, 0, 0
+4, Donvilla D'or, 0, 0
+4, Red Light Rachel, 0, 0
+4, Studio Artist, 0, 0
+4, High Performance, 0, 0
+4, Town Planner, 0, 0
+5, Monix, 0, 0
+5, Maximillius, 0, 0
+5, Ziggy Bama, 0, 0
+5, Commands Success, 0, 0
+5, Do It Now, 0, 0
+5, Killiana, 0, 0
+5, Wareo Road, 0, 0
+5, Kikkuli, 0, 0
+5, Caribbean Villa, 0, 0
+6, Legend Beast, 0, 0
+6, Baby Rider, 0, 0
+6, Fierce Fiasco, 0, 0
+6, Hula Beat, 0, 0
+6, Motiver, 0, 0
+6, Only Opera, 0, 0
+6, Verifier, 0, 0
+6, Larryoctane, 0, 0
+6, Three Reel Roses, 0, 0
+6, Legs Power, 0, 0
+6, Fuwari, 0, 0
+6, Milady, 0, 0
+6, Flying Shelby, 0, 0
+6, Kawhia, 0, 0
+6, King Kauffo, SCR
+7, His Finest Hour, 0, 0
+7, Blacklist, 0, 0
+7, Dealer Sing, 0, 0
+7, Great Prosperity, 0, 0
+7, Switch Hit, 0, 0
+7, Jawsome Rob, 0, 0
+7, Habitual, 0, 0
+7, Callistemon, 0, 0
+7, Nightynight, 0, 0
+7, Parkrun, 0, 0
+7, No Overtaking, 0, 0
+7, Solar Mist, 0, 0
+7, Poetic Storm, 0, 0
+8, Annotate, 0, 0
+8, Shalailed, 0, 0
+8, Yoomee Wonder, 0, 0
+8, Baganov, 0, 0
+8, Share The Music, 0, 0
+8, Sir Loyne, 0, 0
+8, Grande Terre, 0, 0
+8, Neziha, 0, 0
+8, Somebody Told Me, 0, 0
+8, Mr Butt's Boats, 0, 0
+8, Two To Tango, 0, 0
+8, Apocalypse, 0, 0
+8, Costae, 0, 0
+8, Succaforyou, SCR
+8, Gift Of Oratory, SCR
+8, The Bantam, SCR
+8, Bakersbend, SCR
