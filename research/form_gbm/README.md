@@ -1194,3 +1194,34 @@ on inputs with runs 6-10 blanked entirely, scored 3 Jun to 13 Oct, 1,194 races:
 
 The basic results on runs 6-10 are worth a little (log loss 0.008; the ROI gap is inside the noise of ~1,900 bets). The
 benchmark figures on runs 6-10 have never been in the model, so their value is untested; this says they are second-order.
+
+## More angles around BSP, 25 Oct 2026 (t_bsp_angles.py, t_bsp_angles2.py)
+
+Same clean holdout as the lay test (v10 stage-1 trees trained before 3 Jun, races from 3 Jun with an open and a BSP on
+every runner, two date halves; an angle counts only if it holds in both). 8% commission, 16c deduction at the open.
+
+**Held in both halves**
+
+1. **Back at the open, lay the same horse at BSP for a level result.** Plan bets, 1u backed: +18.1% / +18.8% per bet
+   locked in whichever way the race goes, 57% of bets lock a profit, against +21% / +23% unhedged and +4% / -13% at BSP.
+   Month by month +16% to +21%, no losing month; std per bet 0.60u against 3.38u unhedged. The lay stake is
+   O_eff / (BSP - c), median 1.16u, and its liability a median 8.4u per 1u backed (90th pct 16.7u), so it is capital
+   heavy for a day but settles at the jump. This turns "73% of our bets beat BSP" into cash without needing the winner.
+   The exact level stake needs BSP, which is unknown when an SP lay is placed, so live it is a liability-capped SP lay
+   and the result is near-level rather than level; expectation is unchanged because the lay at BSP is close to fair.
+2. **The roughie lay is about our rating, not the drift.** $15-$30 at BSP, ours/BSP 1.6+: +45% / +60% (A/E 0.38 / 0.37).
+   Split by what the market did from the open: drifted 1.25x+ +42% / +51%, held or firmed +56% / +92% (1 winner from
+   133). So the drift is not the signal; the model's disagreement with BSP is. Widening the band: $8-$12 +69% / +30%,
+   $30-$50 +16% / +78%; $8-$30 as one rule 865 lays +40% on stake, 2.3% on liability, one losing month (Oct, -2.9u on
+   45); $8-$50 1,338 lays +43% / 1.8% on liability, no losing month. $12-$15 does not hold (A/E 1.50 late). Our own
+   plan bets inside the band do NOT lay well in the early half (5 winners from 91, A/E 1.13): a horse we backed at the
+   open and that drifted to $15-$30 is not a lay.
+
+**Did not hold**
+
+- Laying horses we are cold on (ours/BSP under 0.6): early half A/E 1.07 to 1.51, lay -27% to -80%; late +9% to +16%.
+  They do not "win what we say" in both halves. Dead at every price band.
+- Laying on market drift alone, no model: drift 2x+ +4% / +14%; $15-$30 drifted 1.5x+ +16% / +13% (A/E 0.70 / 0.81).
+  Weakly positive and far below the model's 0.37; the model adds most of it.
+- Backing at BSP the plan bets the drift model forecasts to firm: +6% / -0%. The forecast sorts the OPEN return
+  (firm third +30% / +48% against drift third +28% / +12%) and does nothing at BSP. No BSP backing angle exists.
