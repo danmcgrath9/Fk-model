@@ -248,3 +248,23 @@ follow. (1) The Actions-minutes figure in "Where it runs" above assumed a privat
 public one. (2) GRV's API is "for personal use only", so Topaz data must never be stored on a release here:
 `gh topaz` now refuses to pull while the repository is public (the probe, which prints only column names and fill
 rates, is still allowed). Private storage, or a private repository, has to be chosen before the key arrives.
+
+## Plan: our own base ratings, Form King's job for dogs (founder, 25 Oct 2026: "Yeah nice")
+
+There is no Form King for greyhounds, so the per-run benchmarks the gallops model leans on are built from raw results.
+Needs Topaz runs carrying time, first split, margin and in-run positions (the probe confirms); nothing is built first.
+
+| Form King (horses) | Ours (dogs) | Built from |
+|---|---|---|
+| Par per track, distance, class | Par per track, distance, grade | Winning times of EARLIER races only |
+| Track speed on the day | Meeting variant | That meeting's times against par |
+| Speed / vs-track rating | Run rating, in lengths | Time against par and the variant |
+| Sectional / last-600 benchmarks | First-split rating | First split against the track-distance par (early speed decides most dog races) |
+| vs-class rating | Class rating | Who beat whom, updated race by race |
+| Peak and recent ratings | Best and recent ratings | The dog's own runs |
+| (debut runners) | Trial ratings | Topaz trial results |
+
+Rules carried from the gallops: point-in-time only (a par or variant uses nothing from the race day onward); reset
+pars at a track change (resurface, rail move, new distance) rather than averaging across it; Isolynx times kept apart
+from official times; stewards' comments used for interference if Topaz carries them. Judged only by whether a model on
+these ratings beats the opening price and BSP (winner log loss 1.5044), by month, in both date halves.
