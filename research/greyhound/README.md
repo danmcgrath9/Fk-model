@@ -268,3 +268,79 @@ Rules carried from the gallops: point-in-time only (a par or variant uses nothin
 pars at a track change (resurface, rail move, new distance) rather than averaging across it; Isolynx times kept apart
 from official times; stewards' comments used for interference if Topaz carries them. Judged only by whether a model on
 these ratings beats the opening price and BSP (winner log loss 1.5044), by month, in both date halves.
+
+## Test 2: box bias, and whether BSP already prices it (25 Oct 2026, `research/greyhound/t_box_bias.py`, run 40182088401)
+
+305,093 Australian races, 2,202,864 runners, 260 track-distances. TAB numbers 9-10 (50,679 reserves who took a
+scratched dog's box, real box unknown) stay in their races but out of the box rates.
+
+| box | runners | win rate | field-size share | wins / share | A/E at BSP | A/E first half | A/E second half |
+|---|---|---|---|---|---|---|---|
+| 1 | 290,717 | 19.1% | 14.1% | 1.35 | 0.988 | 0.984 | 0.992 |
+| 2 | 287,760 | 15.8% | 14.1% | 1.12 | 0.993 | 0.986 | 0.999 |
+| 3 | 243,246 | 13.1% | 13.4% | 0.98 | 1.007 | 0.997 | 1.016 |
+| 4 | 285,341 | 13.3% | 14.1% | 0.95 | 1.000 | 1.002 | 0.998 |
+| 5 | 233,501 | 12.3% | 13.7% | 0.90 | 1.010 | 1.007 | 1.014 |
+| 6 | 247,680 | 11.9% | 13.6% | 0.88 | 1.010 | 1.012 | 1.008 |
+| 7 | 278,182 | 12.4% | 13.9% | 0.89 | 1.009 | 1.016 | 1.003 |
+| 8 | 285,758 | 13.5% | 14.1% | 0.96 | 0.970 | 0.981 | 0.959 |
+
+By track and distance (2,000+ races; box 1's wins against its field-size share): from 1.76 at Richmond 401m, 1.71
+Albion Park 395m and 1.61 Sandown Park 515m down to 0.95 at Capalaba 366m, where box 8 is the strong box (1.38). The
+full table is in the run log. A/E at BSP by box stays mostly within about 0.05-0.15 of 1 per track-distance, noisy at
+these sample sizes.
+
+Does a point-in-time box rate (that track and distance, earlier days only, shrunk 200 starts toward the national rate
+for the box) add to BSP? Fit before 19 Jun 2023, scored on the 152,470 races after (12 races left out because a
+runner's BSP chance was zero: bad BSP rows, e.g. at Capalaba):
+
+| model | BSP weight | box weight | test log loss |
+|---|---|---|---|
+| BSP alone | 1.004 | - | 1.49255 |
+| BSP + box rate | 1.005 | -0.005 | 1.49255 |
+
+The box rate alone, with no prices, is 1.95243 against 1.96646 for equal chances.
+
+**What it means**: the box is real and large (box 1 wins 35% more than its share, 76% more at Richmond 401m), and the
+market has priced it completely: at BSP the box adds exactly nothing. Box 1 and box 8 are, if anything, slightly
+over-bet at BSP (A/E 0.988 and 0.970, both halves). The box stays in the model as a feature, because the interaction
+with a dog's early speed and its neighbours' is where any edge would be, but box on its own is not an angle.
+
+## Test 3: Betfair's Iggy model against BSP (25 Oct 2026, `research/greyhound/t_iggy.py`, run 40181694455)
+
+Iggy's daily results files (free, same data listing; V1 to Aug 2024, V2 since) joined to the ANZ files by market and
+selection. Columns: Date, Track, Race Name, Race, MarketId, SelectionId, Rug, Dog, Rated Price, Early Speed,
+WIN_RESULT, WIN_BSP, PLACE_RESULT, PLACE_BSP, WIN_VALUE. Kept: 278,526 Australian races (31 Mar 2020 to 30 Sep 2026)
+where Iggy priced every runner with a BSP, 4+ runners, one winner. Iggy's rated prices renormalised per race.
+
+Winner log loss on the same 277,455 races (lower is sharper):
+
+| group | races | Iggy | BSP | pre-play WAP |
+|---|---|---|---|---|
+| all | 277,455 | 1.7023 | 1.5074 | 1.5095 |
+| V1 (to Aug 2024) | 188,352 | 1.7260 | 1.5167 | 1.5184 |
+| V2 (from Aug 2024) | 89,103 | 1.6524 | 1.4878 | 1.4907 |
+| 2025 | 43,346 | 1.6565 | 1.4947 | 1.4965 |
+| 2026 | 27,841 | 1.6329 | 1.4639 | 1.4687 |
+
+Iggy's calibration (wins against its own chances): $1-$2 0.820, $2-$3 1.034, $3-$4 1.077, $4-$6 1.051, $6-$8 0.990,
+$8-$11 0.938, $11-$16 0.913, $16-$21 0.900, $21-$31 0.887, $31-$51 0.886, $51+ 1.049. It is too sure of its short
+favourites and too generous to $8-$51 runners.
+
+Does Iggy add to BSP (fit before 7 Jul 2023, score the 139,186 races after)? BSP alone 1.49680; BSP + Iggy 1.49676,
+Iggy's weight -0.028. **Nothing.** Backing at BSP where BSP is at least k times Iggy's fair price, flat 1 unit:
+
+| k | half | bets | wins | A/E at BSP | ROI before commission | after 8% |
+|---|---|---|---|---|---|---|
+| 1.2 | first | 512,143 | 29,783 | 0.983 | -3.1% | -10.3% |
+| 1.2 | second | 524,810 | 29,727 | 0.987 | -4.3% | -11.5% |
+| 1.5 | first | 400,473 | 17,760 | 0.976 | -3.4% | -10.8% |
+| 1.5 | second | 412,533 | 17,418 | 0.976 | -5.8% | -13.0% |
+| 2.0 | first | 280,416 | 8,923 | 0.979 | -4.0% | -11.5% |
+| 2.0 | second | 293,285 | 8,579 | 0.965 | -7.0% | -14.2% |
+
+**What it means**: the best free Australian greyhound model is far behind BSP (1.70 against 1.51; V2 1.65 against
+1.49), badly calibrated, adds nothing to BSP and loses where it disagrees with it. Iggy is not the bar; BSP is. One
+thing in its files is worth keeping: an **Early Speed** rating on every runner since 2020, which no other free source
+has. Whether it adds to BSP is a separate test, and it is a candidate feature for the first-bend layer until Topaz's
+first splits arrive.
