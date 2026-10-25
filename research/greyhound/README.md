@@ -86,7 +86,7 @@ were not found individually; Topaz covers all of them, so they matter only if To
 
 - **The request, changed the same day (founder: "let's deal with them directly and not using it for betting purposes
   yet, but using it for modeling and potentially betting")**: the key is asked of GRV directly, not Betfair. The
-  draft in the founder's Gmail (not sent) goes to racedata@grv.org.au, the address the founder read off the Race Data
+  email was SENT 25 Oct 2026 (about 7pm Melbourne) to racedata@grv.org.au, the address the founder read off the Race Data
   page (masked in every copy reachable from here). It says it is research now and may become betting on the
   founder's own account later, and asks for the terms, whether personal-use access covers that later betting or it
   needs the Betfair-issued key, what data the access includes, and history depth and rate limit. No tips will be
