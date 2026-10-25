@@ -1,0 +1,53 @@
+name: fk harness opens
+
+# TAB's opening price for every harness runner, with the time it was first seen (betmatic/harness_open_watch.py).
+# The harness brief's hard requirement, recorded forward because no historical source holds it.
+# READ-ONLY: odds requests from our own BetMatic bot, never a bet. The bot must be running with its TAB session online.
+# Manual runs only for now (25 Oct 2026): the first runs measure whether BetMatic carries harness and when TAB opens
+# it; where it runs long-term (here or the founder's always-on machine) is decided from that.
+
+on:
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: 'how long to record (max 330)'
+        default: '330'
+      every:
+        description: 'seconds between passes over the unopened races'
+        default: '120'
+      horizon:
+        description: 'watch races starting within this many hours'
+        default: '36'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harness-opens
+  cancel-in-progress: false
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    environment: betmatic
+    timeout-minutes: 345
+    env:
+      BETMATIC_EMAIL: ${{ secrets.BETMATIC_EMAIL }}
+      BETMATIC_PASSWORD: ${{ secrets.BETMATIC_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests websocket-client
+      - name: Record
+        run: |
+          python betmatic/harness_open_watch.py --minutes "${{ github.event.inputs.minutes }}" \
+            --every "${{ github.event.inputs.every }}" --horizon "${{ github.event.inputs.horizon }}" \
+            | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Keep the record
+        if: always()
+        run: |
+          git config user.name "fk-harness-opens"; git config user.email "actions@users.noreply.github.com"
+          for f in data/harness_opens/*.json; do [ -e "$f" ] && git add "$f"; done
+          git diff --cached --quiet || { git commit -m "Harness opens recorded $(date -u +%Y-%m-%dT%H:%MZ)"; for i in 1 2 3 4; do git pull --rebase -q && git push -q && break; sleep $((i*3)); done; }

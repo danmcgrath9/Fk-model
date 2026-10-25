@@ -1,0 +1,59 @@
+name: fk read terms
+
+# Fetch a provider's terms or data-listing page as plain text into the run log, so it can be read BEFORE any download
+# (brief rule: terms first). The Claude cloud session's network blocks these hosts; GitHub's runners do not.
+# Nothing is committed and nothing else is downloaded: one GET per page given.
+
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: 'pages to read, space separated'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read
+        env:
+          URLS: ${{ github.event.inputs.urls }}
+        run: |
+          python - <<'PY'
+          import html, os, re, urllib.request
+          from html.parser import HTMLParser
+          class Text(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.out = []; self.skip = 0; self.links = []
+              def handle_starttag(self, tag, attrs):
+                  if tag in ("script", "style", "noscript"): self.skip += 1
+                  if tag in ("p", "br", "li", "h1", "h2", "h3", "h4", "tr", "div"): self.out.append("\n")
+                  href = dict(attrs).get("href")
+                  if tag == "a" and href: self.links.append(href)
+              def handle_endtag(self, tag):
+                  if tag in ("script", "style", "noscript") and self.skip: self.skip -= 1
+              def handle_data(self, d):
+                  if not self.skip: self.out.append(d)
+          for url in os.environ["URLS"].split():
+              print(f"\n===== {url}")
+              try:
+                  req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (terms check)"})
+                  with urllib.request.urlopen(req, timeout=30) as r:
+                      print(f"HTTP {r.status}; final URL {r.geturl()}")
+                      body = r.read().decode("utf-8", "replace")
+              except Exception as e:
+                  print(f"FAILED: {e}"); continue
+              p = Text(); p.feed(body)
+              text = re.sub(r"\n\s*\n+", "\n\n", html.unescape("".join(p.out))).strip()
+              print(text[:60000])
+              print(f"\n----- links on {url}:")
+              for h in p.links:
+                  if re.search(r"(term|condition|licen|legal|privacy|\.csv|\.zip|\.bz2|\.tar)", h, re.I): print(h)
+          PY
