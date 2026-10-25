@@ -95,6 +95,14 @@ def nll(params, d, use_box):
 
 
 def blend(df):
+    bad = pd.Series(False, index=df.index)
+    for c in ("p_bsp", "box_ratio"):
+        nf = ~np.isfinite(np.log(df[c].astype(float).where(df[c] > 0)))
+        if nf.any():
+            print(f"\n{c}: {nf.sum():,} runners with a zero or missing value (e.g. "
+                  f"{df.loc[nf, ['TRACK', 'td', 'box', c]].head(3).to_dict('records')}); their races are left out")
+        bad |= nf
+    df = df[~bad.groupby(df.WIN_MARKET_ID).transform("any")]
     cut = df.date.quantile(0.5)
     tr, te = df[df.date < cut], df[df.date >= cut]
     print(f"\n## 3. Does the point-in-time box rate add to BSP? (fit before {cut:%Y-%m-%d}, score after)\n")
