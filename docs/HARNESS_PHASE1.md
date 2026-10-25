@@ -185,7 +185,7 @@ Held in both halves after commission: one.
 The lean behind it is the clearest in the set: TAB 1 pacers as a whole win 4.4% and 7.1% less than BSP says (A/E 0.956
 and 0.929 on 35,654 and 34,164 runners), and TAB 2 and TAB 1-2 in fields of 10+ lean the same way (A/E 0.92-0.97). The
 market overrates the inside draw in pacers. After an 8% commission the lay is close to break-even (+1.8% across both
-halves), so whether it pays depends on the commission actually charged; at 5% it would be about +5%. Not a bet yet: one
+halves), so whether it pays depends on the commission actually charged; at 5% it would be about +3.5% (the 3 points saved apply only to the 59% of lays that win). Not a bet yet: one
 lean that survives about thirty angles tried is what chance alone would also produce now and then, so it needs a
 forward test on races after September 2026 before it is believed.
 
