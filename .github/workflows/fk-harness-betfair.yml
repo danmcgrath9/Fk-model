@@ -1,0 +1,43 @@
+name: fk harness betfair
+
+# Download Betfair's free ANZ harness CSVs (Automation Hub data listing) and profile them
+# (research/harness/profile_betfair.py). The page's only condition on downloading is its disclaimer (no warranty,
+# own risk); read 25 Oct 2026 through fk read terms. The files are not committed or mirrored: Betfair hosts them, and a
+# run downloads them fresh. The profile report is kept as a run artifact.
+
+on:
+  workflow_dispatch:
+    inputs:
+      files:
+        description: 'file names under betfair-datascientists.github.io/data/assets/, space separated'
+        default: 'ANZ_Harness_2020.zip ANZ_Harness_2021.zip ANZ_Harness_2022.zip ANZ_Harness_2023.zip ANZ_Harness_2024.zip ANZ_Harness_2025.zip ANZ_Harness_2026_01.csv ANZ_Harness_2026_02.csv ANZ_Harness_2026_03.csv ANZ_Harness_2026_04.csv ANZ_Harness_2026_05.csv ANZ_Harness_2026_06.csv ANZ_Harness_2026_07.csv ANZ_Harness_2026_08.csv ANZ_Harness_2026_09.csv'
+
+permissions:
+  contents: read
+
+jobs:
+  profile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas
+      - name: Download
+        env:
+          FILES: ${{ github.event.inputs.files }}
+        run: |
+          mkdir -p dl
+          for f in $FILES; do
+            curl -fsSL --retry 3 -o "dl/$f" "https://betfair-datascientists.github.io/data/assets/$f" \
+              && echo "$f $(stat -c %s "dl/$f") bytes" || echo "FAILED $f"
+          done
+      - name: Profile
+        run: python research/harness/profile_betfair.py dl | tee profile.md | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: harness-betfair-profile
+          path: profile.md
