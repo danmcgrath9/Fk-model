@@ -12,7 +12,7 @@ on:
         description: 'file names under betfair-datascientists.github.io/data/assets/, space separated'
         default: 'ANZ_Harness_2020.zip ANZ_Harness_2021.zip ANZ_Harness_2022.zip ANZ_Harness_2023.zip ANZ_Harness_2024.zip ANZ_Harness_2025.zip ANZ_Harness_2026_01.csv ANZ_Harness_2026_02.csv ANZ_Harness_2026_03.csv ANZ_Harness_2026_04.csv ANZ_Harness_2026_05.csv ANZ_Harness_2026_06.csv ANZ_Harness_2026_07.csv ANZ_Harness_2026_08.csv ANZ_Harness_2026_09.csv'
       script:
-        description: 'research script, run as: python SCRIPT dl LABEL'
+        description: 'research scripts, space separated, each run in turn as: python SCRIPT dl LABEL'
         default: 'research/harness/profile_betfair.py'
       label:
         description: 'label for the report'
@@ -24,13 +24,13 @@ permissions:
 jobs:
   profile:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install pandas
+      - run: pip install pandas pyarrow lightgbm scikit-learn
       - name: Download
         env:
           FILES: ${{ github.event.inputs.files }}
@@ -44,7 +44,9 @@ jobs:
         env:
           SCRIPT: ${{ github.event.inputs.script }}
           LABEL: ${{ github.event.inputs.label }}
-        run: python "$SCRIPT" dl "$LABEL" | tee profile.md | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          set -o pipefail
+          for s in $SCRIPT; do python "$s" dl "$LABEL" | tee -a profile.md | tee -a "$GITHUB_STEP_SUMMARY"; done
       - uses: actions/upload-artifact@v4
         if: always()
         with:
