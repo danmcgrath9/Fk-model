@@ -1225,3 +1225,20 @@ every runner, two date halves; an angle counts only if it holds in both). 8% com
   Weakly positive and far below the model's 0.37; the model adds most of it.
 - Backing at BSP the plan bets the drift model forecasts to firm: +6% / -0%. The forecast sorts the OPEN return
   (firm third +30% / +48% against drift third +28% / +12%) and does nothing at BSP. No BSP backing angle exists.
+
+## The last minutes before the jump, 25 Oct 2026 (t_late_market.py, archive sample 20-26 Aug, 292 races all states)
+
+Founder: "surely there's a way in the last 10 minutes... something the public over reacts to". Corporate-average flucs
+with timestamps to the jump, settled at BSP (the exchange is the only late venue with size; BSP the only exchange price
+we hold). One week, so nothing here is proven; what it says:
+- Late moves are already in BSP. Runners that firmed 25%+ in the last 10 min win 1.15x what BSP says but return -12%
+  backed at BSP; drifters 25%+ win 0.77x and return -5% laid. The same at 30 and 60 min. The $10-$30 late firmers
+  (9 wins from 83, +27%) are one week's noise, not a rule.
+- Our model against the late corp price, backed at BSP: -28% to -43% at every T. The late lay (ours/BSP 1.6+) is +14%
+  to +35%, which is the roughie lay again.
+- The corps are far shorter than the exchange late: median corp/BSP 0.70 at 10 min out, and only 9% of runners have a
+  corp price above BSP. There is nothing to back with a bookmaker late; the exchange is the only market, and its price
+  at the jump is the sharpest we have.
+What a real test needs: the full archive's timestamped flucs (15 months, all states) for the corp side, and Betfair's
+own pre-jump exchange prices for the exchange side, because BSP is the end of the move and a 10-minutes-out strategy
+is bought at the price 10 minutes out.
