@@ -89,8 +89,8 @@ were not found individually; Topaz covers all of them, so they matter only if To
   draft in the founder's Gmail (not sent) goes to racedata@grv.org.au, the address the founder read off the Race Data
   page (masked in every copy reachable from here). It says it is research now and may become betting on the
   founder's own account later, and asks for the terms, whether personal-use access covers that later betting or it
-  needs the Betfair-issued key, whether prices or tips may be shared (and the licence cost if not), first-split and
-  Isolynx sectionals, history depth and rate limit. The earlier Betfair draft (automation@betfair.com.au) is held,
+  needs the Betfair-issued key, what data the access includes, and history depth and rate limit. No tips will be
+  built on it (founder, 25 Oct 2026), so publishing was taken out of the email. The earlier Betfair draft (automation@betfair.com.au) is held,
   unsent: it is the route if GRV says betting needs it.
 - **The code**: `greyhound/topaz.py` (client) and `greyhound/pull.py` (bulk runs, one gzipped JSON per state and
   month, resumable, current and previous month always re-pulled), tested in `tests/test_topaz.py` against a fake
