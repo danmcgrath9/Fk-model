@@ -1,0 +1,9 @@
+{
+ "day": "Tuesday", "date": "27 Oct", "brand": false,
+ "meetings": [
+  {"name": "Swan Hill", "note": "", "bets": [
+   {"race": 7, "horse": "Habitual", "price": "$6", "units": "5u"},
+   {"race": 8, "horse": "Mr Butt's Boats", "price": "$19.08", "units": "1.8u"}
+  ]}
+ ]
+}
