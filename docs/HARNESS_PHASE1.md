@@ -50,3 +50,42 @@ those races are left out of any open-price test. Gaps between runs widen the bra
 - When does TAB open harness markets? Measured by the recorder.
 - Where it runs long-term: continuous recording is about 1,440 Actions minutes a day. That is free while this repository
   is public and roughly US$300+ a month if it is made private, so the founder's always-on machine may be the place.
+
+## Test 1: Betfair's free ANZ harness files (25 Oct 2026, `fk harness betfair`, research/harness/profile_betfair.py)
+
+Terms: read through `fk read terms` from the data listing page itself. Its only condition on downloading is a
+disclaimer (no warranty as to accuracy or completeness; use at your own risk). Downloaded fresh on each run from
+Betfair; nothing mirrored or committed. harness.org.au's terms page answered 403 to GitHub's runner too (it blocks
+automated clients), and historicdata.betfair.com did the same; neither was pushed past.
+
+What the files hold: 15 files (yearly zips 2020-2025, monthly CSVs Jan-Sep 2026), 41 columns, the same in every file.
+
+| | |
+|---|---|
+| Runner rows | 1,043,222 as published; 1,025,126 after removing 18,096 duplicates |
+| Win markets (races) | 112,242, Jan 2020 to Sep 2026, every month present (1,100 to 1,600 races a month) |
+| By state | NSW 26,834, VIC 24,950, QLD 18,078, NZ 15,569, WA 14,406, SA 6,838, TAS 4,817, ACT 750 |
+| By gait | Pace 96,332, Trot 15,870 (a few dozen races carry a class word in the gait field instead) |
+| Win BSP present | 84.4% of rows overall; 77% to 98% by month, about 80% to 87% since 2022 |
+| Place BSP present | 62.7% of rows |
+| Tracks | 125; Albion Park, Redcliffe, Gloucester Park, Menangle and Melton carry the most |
+
+Columns, all one row per runner per race: meeting date, scheduled and actual off time, track, state, race number,
+distance, gait (RACE_TYPE), win and place market ids and the win market name (e.g. "R1 2138m Trot S"), selection id,
+TAB number, name, win and place result, win and place BSP and BSP volume, pre-play max/min/last/weighted-average price
+and volume, in-play the same, best back and lay at the scheduled off and the book percentages there.
+
+What they do NOT hold: any timestamped early price (the earliest prices are pre-play extremes and averages over the
+whole pre-play period, with no time on them), driver, trainer, barrier draw (TAB_NUMBER is the saddlecloth, which in
+harness usually follows the draw but is not guaranteed to), start type stated as such (the trailing letter in the
+market name may encode it: not yet checked), margins, mile rate, sectionals, or whether a horse broke.
+
+Data quality: several 2021 and 2022 monthly files (Jan-Apr 2021, Jul-Sep 2021, Jan-Mar 2022, Jul-Aug 2022, Oct-Nov 2022)
+carry exactly the row count of a neighbouring file and start days before their own month, i.e. they overlap. Removing
+duplicate (market, selection) pairs leaves every month at a normal size, but a file with an identical row count to its
+neighbour may also be missing rows of its own month; spot-check a few days against another source before trusting
+2021-22 month by month. Two of the first profile's errors were mine and are fixed: the meeting date is written day
+first (1/12/2020 is 1 December), and coverage was first counted on place BSP instead of win BSP.
+
+Use: BSP history for the Phase 2 scoring (KL to BSP, winner log loss) and the BSP lay test, across about 96,700
+Australian races. Not usable for the open-price edge, which still needs the recorder.
