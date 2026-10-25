@@ -23,3 +23,4 @@ nbl/sheets/
 
 # Greyhounds: Topaz files live on the greyhound-history release, never in the repo
 greyhound/cache/
+data/greyhound/

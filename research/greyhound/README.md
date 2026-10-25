@@ -120,3 +120,38 @@ mode `probe`, then `pull` for VIC from 2020-01. The column list from the probe d
   measure from the official split times, never mix the two in one column.
 - **Access**: the PDFs and the Google Drive CSV/JSON copies are to be discontinued; the alternative is an API "for
   personal use only", requested from racedata@grv.org.au. Nothing has been downloaded from the page or the Drive.
+
+## Recording opening prices ourselves (founder, 25 Oct 2026: "let's record it ourselves from now on")
+
+No history of timestamped bookmaker opens exists for Australian dogs, so we build one from now. Built, not yet run.
+
+- **How**: `betmatic/greyhound_opens.py` asks our own BetMatic bot for every bookmaker's price on each upcoming
+  Victorian greyhound race (the same odds request the gallops watcher uses, code `Greyhounds`). Read-only: no bet is
+  ever placed. Rules in `greyhound/opens.py`, 10 tests in `tests/test_greyhound_opens.py`; a dry run against a fake
+  BetMatic exercised the loop end to end before commit.
+- **The open is a window, not a guess**: a race is polled every 3 minutes until a bookmaker prices it; the open
+  happened after the last answered poll without a price and at or before the first poll with one. Both times are
+  kept. A bookmaker already priced the first time we looked is recorded with `open_known` False and must never be
+  used as an open: the gallops lesson, back-filled opens +41.9% against live opens -11.6%. A poll BetMatic did not
+  answer is never read as "closed", because no answer can mean the bot is off. After TAB opens, a race is polled
+  every 20 minutes until the jump to see the price move.
+- **One request at a time**: an odds answer does not name its race, and the gallops logs show answers arriving late
+  (up to 37 seconds) or twice. So an answer is filed only if it arrives while that race's request is the only one
+  open; anything else is logged as unattributed and never filed.
+- **Only the next race per venue and number**: an odds request names venue and race number, and BetMatic answers for
+  the NEXT such race, so tomorrow's R3 at a track racing today is not polled until today's R3 has run.
+- **Output**: per race day `opens-YYYY-MM-DD.csv.gz` (date, venue, race, start, runner, bookie, open_known, closed_at,
+  first_seen_at, first_price, last_seen_at, last_price), merged across runs so an open caught earlier is never replaced;
+  and a raw log of every message per run. Kept on the `greyhound-history` release, never in git.
+- **What the first run settles**: whether BetMatic's TAB bot answers greyhound requests at all; whether it answers
+  for a race whose market is not up yet (if it does not, no open window can be caught and the method needs a rethink);
+  whether BetMatic's startTime is Sydney time (the run prints a raw sample beside how it was read); when TAB opens
+  dogs, and which bookmaker opens first.
+
+### Where it runs: a founder decision
+
+The bot only answers while the bot machine is on with its TAB session running, so recording needs that machine on
+from early morning to about 11pm, every day. The recorder itself cannot live on GitHub day to day: a job stops at 6
+hours, and recording all day would use roughly 40,000 Actions minutes a month against the 2,000 to 3,000 a private
+repo gets free. Options: run the script on the bot machine itself (free; it is on anyway), or a small cloud server
+(about $6-10 a month). The `gh greyhound opens` workflow (manual, up to 5.7 hours) is for the first test runs.
