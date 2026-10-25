@@ -21,6 +21,15 @@ on:
       days:
         description: 'races starting within this many days'
         default: '3'
+      day:
+        description: 'only races on this Sydney day YYYY-MM-DD (blank = any)'
+        default: ''
+      venue:
+        description: 'only this venue, BetMatic name e.g. SALE (blank = any)'
+        default: ''
+      race:
+        description: 'only this race number (0 = any)'
+        default: '0'
       send:
         description: 'yes = really send; anything else = dry run'
         default: 'no'
@@ -65,7 +74,8 @@ jobs:
         run: |
           SEND=""; [ "${{ github.event.inputs.send }}" = "yes" ] && SEND="--send"
           python betmatic/greyhound_open_probe.py --dir "$D" send --session "$SESSION" \
-            --limit "${{ github.event.inputs.limit }}" --days "${{ github.event.inputs.days }}" $SEND | tee -a "$GITHUB_STEP_SUMMARY"
+            --limit "${{ github.event.inputs.limit }}" --days "${{ github.event.inputs.days }}" \
+            --day "${{ github.event.inputs.day }}" --venue "${{ github.event.inputs.venue }}" --race "${{ github.event.inputs.race }}" $SEND | tee -a "$GITHUB_STEP_SUMMARY"
           exit ${PIPESTATUS[0]}
       - name: Collect
         if: github.event.inputs.action == 'collect'

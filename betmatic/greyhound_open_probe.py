@@ -1,7 +1,8 @@
 """TAB's opening price on every Victorian greyhound runner, via BetMatic's Market Open trigger and an instruction that can
 never fill (rules and safety in greyhound/open_probe.py). DRY RUN is the default: nothing is sent without --send.
 
-    python betmatic/greyhound_open_probe.py send --session 101 [--days 3] [--limit 0] [--state VIC] [--send]
+    python betmatic/greyhound_open_probe.py send --session 101 [--days 3] [--day YYYY-MM-DD] [--venue SALE] [--race 6]
+           [--limit 0] [--state VIC] [--send]
     python betmatic/greyhound_open_probe.py collect
 
 send:    one instruction per runner in every upcoming race not already in the ledger (data/greyhound/probe/ledger.csv);
@@ -33,6 +34,15 @@ def send(a, ledger):
     bm = BM()
     done = {r["label"] for r in read_csv(ledger) if r.get("notification_id")}
     todo = plan(bm.get_all("/competition/namecodes/"), datetime.now(timezone.utc), a.state, timedelta(days=a.days), done)
+    if a.day:          # the first test uses a race whose market is not up yet, so it can measure an open
+        todo = [p for p in todo if p["date"] == a.day]
+    if a.venue:
+        todo = [p for p in todo if p["venue"] == a.venue.upper()]
+    if a.race:
+        todo = [p for p in todo if int(p["race"]) == a.race]
+    races = sorted({(p["start_time"], p["venue"], p["race"]) for p in todo})
+    print(f"{len(races)} races match: " + "; ".join(f"{v} R{r} {t[:16]}" for t, v, r in races[:12])
+          + (" ..." if len(races) > 12 else ""))
     if a.limit:
         todo = todo[: a.limit]
     print(f"{len(todo)} instructions to send ({len(done)} already in the ledger); each min ${1000:,} / max $1.01, $1, TAB, "
@@ -111,6 +121,8 @@ if __name__ == "__main__":
     sp = ap.add_subparsers(dest="cmd", required=True)
     s = sp.add_parser("send"); s.add_argument("--session", required=True); s.add_argument("--days", type=float, default=3)
     s.add_argument("--limit", type=int, default=0); s.add_argument("--state", default="VIC")
+    s.add_argument("--day", default="", help="only races on this Sydney day, YYYY-MM-DD")
+    s.add_argument("--venue", default=""); s.add_argument("--race", type=int, default=0)
     s.add_argument("--send", action="store_true")
     sp.add_parser("collect")
     a = ap.parse_args()
