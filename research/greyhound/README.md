@@ -155,3 +155,29 @@ from early morning to about 11pm, every day. The recorder itself cannot live on 
 hours, and recording all day would use roughly 40,000 Actions minutes a month against the 2,000 to 3,000 a private
 repo gets free. Options: run the script on the bot machine itself (free; it is on anyway), or a small cloud server
 (about $6-10 a month). The `gh greyhound opens` workflow (manual, up to 5.7 hours) is for the first test runs.
+
+## Opening prices from BetMatic's Market Open trigger (founder, 25 Oct 2026: "With betmatic there's a feature to have a script waiting for market open")
+
+The better route, and the one to test first, because it needs no machine kept on: short GitHub jobs send and collect.
+
+- **How**: for every runner, a Market Open instruction to TAB that can never fill: minimum odds $1,000 AND maximum
+  odds $1.01 (no price meets both), $1 stake, one attempt, one session, no boosts. When TAB opens the market,
+  BetMatic's bot fires it, the odds check refuses it before anything reaches TAB, and BetMatic keeps the refusal with
+  `current_odds` (TAB's price the bot saw) and `created_at` (when it fired).
+- **Why we know the record shape**: our gallops history already holds 168 such refusals ("Current odds is less than
+  the notification odds.", amount 0, submit_time null), and Geelong 21 Oct R5's are stamped 11:45:19, the minute the
+  founder saw TAB open that race (2026-10-21-geelong-book-opens.md).
+- **What a record is, honestly**: TAB's price when BetMatic fired, which is the open only when BetMatic fired on
+  time. It has not always: at the same meeting R3 fired at 4:11pm and R1-R2 never fired (betmatic-book.md). A record
+  fired within 2 minutes of our sending it means the market was already up and is marked `open_known` False. Before
+  any record is trusted as an open, BetMatic's punctuality on dogs is checked against `betmatic/greyhound_opens.py`
+  (our own odds requests) on test days.
+- **Code**: `greyhound/open_probe.py` (rules, 7 tests in `tests/test_greyhound_open_probe.py`),
+  `betmatic/greyhound_open_probe.py` (send / collect; DRY RUN by default; stops at the first refusal from BetMatic;
+  collect stops loudly if any record shows money staked), workflow `gh greyhound probe`. Dry run, real-mode run
+  and collect were exercised against a fake BetMatic before commit.
+- **Open questions only a live test answers**: whether BetMatic accepts a maximum below the minimum (if it refuses,
+  the fallback is the minimum alone, the guard the 168 gallops refusals already prove); whether the refusal message
+  is the same for dogs; whether BetMatic objects to a few hundred refused instructions a day.
+- **First live test, needs the founder's OK in chat**: one race (limit 8), the next Victorian meeting, then collect
+  after it runs.

@@ -1,0 +1,79 @@
+name: gh greyhound probe
+
+# TAB's opening price on every Victorian greyhound runner via BetMatic's Market Open trigger and an instruction that
+# can never fill (min $1,000 / max $1.01, $1, TAB, one attempt): BetMatic refuses it at the open and keeps TAB's price
+# and the time. betmatic/greyhound_open_probe.py; rules and safety in greyhound/open_probe.py. Manual only.
+# send: DRY RUN unless "send" is "yes" (founder's OK in chat first). collect: read BetMatic's records into opens.csv.
+# The ledger and opens.csv live on the greyhound-history release (probe-ledger.csv, probe-opens.csv), never in git.
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'send or collect'
+        default: 'send'
+      session:
+        description: 'numeric TAB session id (from fk-betmatic check)'
+        default: ''
+      limit:
+        description: 'send only the first N instructions (0 = all)'
+        default: '8'
+      days:
+        description: 'races starting within this many days'
+        default: '3'
+      send:
+        description: 'yes = really send; anything else = dry run'
+        default: 'no'
+
+concurrency:
+  group: gh-greyhound-probe
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    environment: betmatic
+    timeout-minutes: 60
+    env:
+      PYTHONUNBUFFERED: '1'
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      BETMATIC_EMAIL: ${{ secrets.BETMATIC_EMAIL }}
+      BETMATIC_PASSWORD: ${{ secrets.BETMATIC_PASSWORD }}
+      D: data/greyhound/probe
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+      - name: Ledger from the release
+        run: |
+          gh release view greyhound-history >/dev/null 2>&1 || gh release create greyhound-history --target main --latest=false \
+            --title "Greyhound history" --notes "Greyhound data (research/greyhound/README.md). Written by the gh-* workflows; do not delete."
+          mkdir -p "$D"
+          gh release download greyhound-history --dir "$D" --pattern 'probe-*.csv' 2>/dev/null || true
+          [ -f "$D/probe-ledger.csv" ] && mv "$D/probe-ledger.csv" "$D/ledger.csv"
+          [ -f "$D/probe-opens.csv" ] && mv "$D/probe-opens.csv" "$D/opens.csv"
+          true
+      - name: Send
+        if: github.event.inputs.action == 'send'
+        run: |
+          SEND=""; [ "${{ github.event.inputs.send }}" = "yes" ] && SEND="--send"
+          python betmatic/greyhound_open_probe.py --dir "$D" send --session "${{ github.event.inputs.session }}" \
+            --limit "${{ github.event.inputs.limit }}" --days "${{ github.event.inputs.days }}" $SEND | tee -a "$GITHUB_STEP_SUMMARY"
+          exit ${PIPESTATUS[0]}
+      - name: Collect
+        if: github.event.inputs.action == 'collect'
+        run: |
+          python betmatic/greyhound_open_probe.py --dir "$D" collect | tee -a "$GITHUB_STEP_SUMMARY"
+          exit ${PIPESTATUS[0]}
+      - name: Ledger back to the release
+        if: always()
+        run: |
+          [ -f "$D/ledger.csv" ] && cp "$D/ledger.csv" "$D/probe-ledger.csv" && gh release upload greyhound-history "$D/probe-ledger.csv" --clobber
+          [ -f "$D/opens.csv" ] && cp "$D/opens.csv" "$D/probe-opens.csv" && gh release upload greyhound-history "$D/probe-opens.csv" --clobber
+          true
