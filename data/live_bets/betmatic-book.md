@@ -383,3 +383,7 @@ Town Planner $4.60). Two fills at Form King's open:
 Nineteen others opened under their minimums; the market opened short on most of our book (Killiana $2.30 v ours
 $2.67, Neziha $2.80 v $4.92, Switch Hit $3.80 v $6.76). Flash Inquiry (R1, $18 open, 3.08u) would have filled on
 the full sheet but R1 was off.
+
+Wangaratta Mon 26 deductions (TAB, founder, Sun 25 Oct): R6 15c (Phantom's Chase $18.50 -> $15.88), R7 none (Positivo
+$8.50, Strummer $19), R8 none (Vaderlee $11), R9 6c (Blue Moon Summit $21 -> $19.80, Three Musketeers $41 -> $38.60).
+Cards re-issued after deductions.
