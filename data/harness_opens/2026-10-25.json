@@ -1,0 +1,1914 @@
+{
+ "ENGHIEN|R1": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "first_poll_at": "2026-10-25T08:20:52Z",
+  "last_empty_at": "2026-10-25T12:09:39Z",
+  "open_seen_on_first_poll": false,
+  "opened_at": "2026-10-25T12:15:33Z",
+  "polls": 77,
+  "race": 1,
+  "runners": {
+   "1": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 1.9,
+     "win": 10.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 1.9,
+     "win": 10.0
+    }
+   },
+   "2": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 2.55,
+     "win": 17.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 2.7,
+     "win": 19.0
+    }
+   },
+   "3": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 2.27,
+     "win": 14.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 2.4,
+     "win": 15.0
+    }
+   },
+   "4": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 1.46,
+     "win": 5.5
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 1.45,
+     "win": 5.5
+    }
+   },
+   "5": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 4.05,
+     "win": 34.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 4.6,
+     "win": 41.0
+    }
+   },
+   "6": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 1.06,
+     "win": 1.4
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 1.04,
+     "win": 1.35
+    }
+   },
+   "7": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 2.55,
+     "win": 17.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 2.7,
+     "win": 19.0
+    }
+   },
+   "8": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 5.6,
+     "win": 51.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T12:15:33Z",
+     "place": 5.0,
+     "win": 51.0
+    }
+   }
+  },
+  "start_time": "2026-10-25T23:40:00+11:00",
+  "venue": "ENGHIEN"
+ },
+ "REDCLIFFE|R3": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "first_poll_at": "2026-10-25T08:20:37Z",
+  "last_empty_at": null,
+  "open_seen_on_first_poll": true,
+  "opened_at": "2026-10-25T08:20:37Z",
+  "polls": 1,
+  "race": 3,
+  "runners": {
+   "1": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 1.04,
+     "win": 1.33
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 1.04,
+     "win": 1.33
+    }
+   },
+   "2": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 1.45,
+     "win": 6.5
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 1.55,
+     "win": 7.0
+    }
+   },
+   "3": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 7.5,
+     "win": 81.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 6.0,
+     "win": 81.0
+    }
+   },
+   "4": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 7.5,
+     "win": 81.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 6.0,
+     "win": 71.0
+    }
+   },
+   "5": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 1.5,
+     "win": 7.5
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 1.5,
+     "win": 6.5
+    }
+   },
+   "6": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 13.0,
+     "win": 151.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 11.0,
+     "win": 151.0
+    }
+   },
+   "7": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 2.2,
+     "win": 15.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 2.3,
+     "win": 16.0
+    }
+   },
+   "8": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 7.0,
+     "win": 71.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 6.0,
+     "win": 71.0
+    }
+   },
+   "9": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 1.6,
+     "win": 8.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:37Z",
+     "place": 1.55,
+     "win": 7.0
+    }
+   }
+  },
+  "start_time": "2026-10-25T19:26:00+11:00",
+  "venue": "REDCLIFFE"
+ },
+ "REDCLIFFE|R4": {
+  "field": [
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "field_at_first_look": [
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "first_poll_at": "2026-10-25T08:20:39Z",
+  "last_empty_at": null,
+  "open_seen_on_first_poll": true,
+  "opened_at": "2026-10-25T08:20:39Z",
+  "polls": 1,
+  "race": 4,
+  "runners": {
+   "1": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "scratched": true
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "scratched": true
+    }
+   },
+   "2": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 8.0,
+     "win": 61.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 8.0,
+     "win": 61.0
+    }
+   },
+   "3": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 1.35,
+     "win": 2.9
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 1.35,
+     "win": 2.8
+    }
+   },
+   "4": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 1.7,
+     "win": 5.5
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 1.7,
+     "win": 5.0
+    }
+   },
+   "5": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 1.85,
+     "win": 6.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 1.85,
+     "win": 6.0
+    }
+   },
+   "6": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 2.3,
+     "win": 9.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 2.2,
+     "win": 8.5
+    }
+   },
+   "7": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 2.3,
+     "win": 9.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 2.2,
+     "win": 8.5
+    }
+   },
+   "8": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 2.4,
+     "win": 10.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 2.3,
+     "win": 9.5
+    }
+   },
+   "9": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 1.45,
+     "win": 3.4
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:39Z",
+     "place": 1.45,
+     "win": 3.5
+    }
+   }
+  },
+  "start_time": "2026-10-25T20:02:00+11:00",
+  "venue": "REDCLIFFE"
+ },
+ "REDCLIFFE|R5": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "first_poll_at": "2026-10-25T08:20:40Z",
+  "last_empty_at": null,
+  "open_seen_on_first_poll": true,
+  "opened_at": "2026-10-25T08:20:40Z",
+  "polls": 1,
+  "race": 5,
+  "runners": {
+   "1": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 2.7,
+     "win": 12.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 2.6,
+     "win": 12.0
+    }
+   },
+   "2": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 1.9,
+     "win": 6.5
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 1.85,
+     "win": 6.5
+    }
+   },
+   "3": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 1.95,
+     "win": 7.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 1.95,
+     "win": 7.0
+    }
+   },
+   "4": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 1.26,
+     "win": 2.4
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 1.24,
+     "win": 2.3
+    }
+   },
+   "5": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 5.5,
+     "win": 34.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 5.0,
+     "win": 34.0
+    }
+   },
+   "6": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 2.5,
+     "win": 11.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 2.6,
+     "win": 12.0
+    }
+   },
+   "7": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 20.0,
+     "win": 151.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 17.0,
+     "win": 151.0
+    }
+   },
+   "8": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 1.3,
+     "win": 2.7
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 1.3,
+     "win": 2.8
+    }
+   },
+   "9": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 2.4,
+     "win": 10.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:40Z",
+     "place": 2.5,
+     "win": 11.0
+    }
+   }
+  },
+  "start_time": "2026-10-25T20:31:00+11:00",
+  "venue": "REDCLIFFE"
+ },
+ "REDCLIFFE|R6": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "first_poll_at": "2026-10-25T08:20:43Z",
+  "last_empty_at": null,
+  "open_seen_on_first_poll": true,
+  "opened_at": "2026-10-25T08:20:43Z",
+  "polls": 1,
+  "race": 6,
+  "runners": {
+   "1": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 1.85,
+     "win": 9.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 2.1,
+     "win": 11.0
+    }
+   },
+   "2": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 2.7,
+     "win": 17.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 2.7,
+     "win": 18.0
+    }
+   },
+   "3": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 2.4,
+     "win": 14.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 2.6,
+     "win": 17.0
+    }
+   },
+   "4": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 1.16,
+     "win": 2.4
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 1.16,
+     "win": 2.4
+    }
+   },
+   "5": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 5.0,
+     "win": 41.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 4.0,
+     "win": 34.0
+    }
+   },
+   "6": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 9.5,
+     "win": 91.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 8.0,
+     "win": 81.0
+    }
+   },
+   "7": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 1.09,
+     "win": 1.7
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 1.08,
+     "win": 1.65
+    }
+   },
+   "8": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 7.0,
+     "win": 61.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 6.0,
+     "win": 61.0
+    }
+   },
+   "9": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 2.1,
+     "win": 11.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:43Z",
+     "place": 2.1,
+     "win": 11.0
+    }
+   }
+  },
+  "start_time": "2026-10-25T21:06:00+11:00",
+  "venue": "REDCLIFFE"
+ },
+ "REDCLIFFE|R7": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "first_poll_at": "2026-10-25T08:20:46Z",
+  "last_empty_at": null,
+  "open_seen_on_first_poll": true,
+  "opened_at": "2026-10-25T08:20:46Z",
+  "polls": 1,
+  "race": 7,
+  "runners": {
+   "1": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 2.25,
+     "win": 12.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 2.3,
+     "win": 13.0
+    }
+   },
+   "2": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 2.6,
+     "win": 15.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 2.2,
+     "win": 17.0
+    }
+   },
+   "3": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 1.07,
+     "win": 1.35
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 1.08,
+     "win": 1.35
+    }
+   },
+   "4": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 1.65,
+     "win": 6.5
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 1.6,
+     "win": 6.0
+    }
+   },
+   "5": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 4.4,
+     "win": 31.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 4.2,
+     "win": 34.0
+    }
+   },
+   "6": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 2.5,
+     "win": 14.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 2.4,
+     "win": 14.0
+    }
+   },
+   "7": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 2.6,
+     "win": 15.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 2.9,
+     "win": 19.0
+    }
+   },
+   "8": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 1.65,
+     "win": 6.5
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "place": 1.65,
+     "win": 6.5
+    }
+   },
+   "9": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "scratched": true
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:46Z",
+     "scratched": true
+    }
+   }
+  },
+  "start_time": "2026-10-25T21:33:00+11:00",
+  "venue": "REDCLIFFE"
+ },
+ "REDCLIFFE|R8": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "first_poll_at": "2026-10-25T08:20:48Z",
+  "last_empty_at": null,
+  "open_seen_on_first_poll": true,
+  "opened_at": "2026-10-25T08:20:48Z",
+  "polls": 1,
+  "race": 8,
+  "runners": {
+   "1": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 1.65,
+     "win": 4.4
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 1.55,
+     "win": 3.9
+    }
+   },
+   "2": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 1.75,
+     "win": 4.8
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 1.75,
+     "win": 5.0
+    }
+   },
+   "3": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 20.0,
+     "win": 151.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 19.0,
+     "win": 151.0
+    }
+   },
+   "4": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 2.1,
+     "win": 7.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 2.0,
+     "win": 6.5
+    }
+   },
+   "5": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 2.35,
+     "win": 8.5
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 2.5,
+     "win": 10.0
+    }
+   },
+   "6": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 1.75,
+     "win": 5.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 1.85,
+     "win": 5.5
+    }
+   },
+   "7": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 1.95,
+     "win": 6.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 2.0,
+     "win": 6.5
+    }
+   },
+   "8": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 6.0,
+     "win": 34.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 6.0,
+     "win": 34.0
+    }
+   },
+   "9": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 1.4,
+     "win": 3.6
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T08:20:48Z",
+     "place": 1.5,
+     "win": 3.6
+    }
+   }
+  },
+  "start_time": "2026-10-25T21:59:00+11:00",
+  "venue": "REDCLIFFE"
+ },
+ "SALON DE PROVENCE|R1": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13"
+  ],
+  "first_poll_at": "2026-10-25T08:20:42Z",
+  "last_empty_at": "2026-10-25T09:11:23Z",
+  "open_seen_on_first_poll": false,
+  "opened_at": "2026-10-25T09:13:55Z",
+  "polls": 19,
+  "race": 1,
+  "runners": {
+   "1": {
+    "TAB": {
+     "first_seen_at": "2026-10-25T09:13:55Z",
+     "place": 1.85,
+     "win": 4.6
+    }
+   },
+   "10": {
+    "TAB": {
+     "first_seen_at": "2026-10-25T09:13:55Z",
+     "place": 1.5,
+     "win": 3.0
+    }
+   },
+   "11": {
+    "TAB": {
+     "first_seen_at": "2026-10-25T09:13:55Z",
+     "place": 7.0,
+     "win": 31.0
+    }
+   },
+   "12": {
+    "TAB": {
+     "first_seen_at": "2026-10-25T09:13:55Z",
+     "place": 5.0,
+     "win": 21.0
+    }
+   },
+   "13": {
+    "TAB": {
+     "first_seen_at": "2026-10-25T09:13:55Z",
+     "place": 7.0,
+     "win": 34.0
+    }
+   },
+   "2": {
+    "TAB": {
+     "first_seen_at": "2026-10-25T09:13:55Z",
+     "place": 4.2,
+     "win": 17.0
+    }
+   },
+   "3": {
+    "TAB": {
+     "first_seen_at": "2026-10-25T09:13:55Z",
+     "place": 3.3,
+     "win": 12.0
+    }
+   },
+   "4": {
+    "TAB": {
+     "first_seen_at": "2026-10-25T09:13:55Z",
+     "place": 7.0,
+     "win": 31.0
+    }
+   },
+   "5": {
+    "TAB": {
+     "first_seen_at": "2026-10-25T09:13:55Z",
+     "place": 2.4,
+     "win": 7.0
+    }
+   },
+   "6": {
+    "TAB": {
+     "first_seen_at": "2026-10-25T09:13:55Z",
+     "place": 2.7,
+     "win": 8.5
+    }
+   },
+   "7": {
+    "TAB": {
+     "first_seen_at": "2026-10-25T09:13:55Z",
+     "place": 2.6,
+     "win": 8.0
+    }
+   },
+   "8": {
+    "TAB": {
+     "first_seen_at": "2026-10-25T09:13:55Z",
+     "place": 3.3,
+     "win": 12.0
+    }
+   },
+   "9": {
+    "TAB": {
+     "first_seen_at": "2026-10-25T09:13:55Z",
+     "place": 8.0,
+     "win": 41.0
+    }
+   }
+  },
+  "start_time": "2026-10-25T20:54:00+11:00",
+  "venue": "SALON DE PROVENCE"
+ },
+ "SALON DE PROVENCE|R2": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14"
+  ],
+  "first_poll_at": "2026-10-25T08:20:44Z",
+  "last_empty_at": "2026-10-25T09:57:18Z",
+  "open_seen_on_first_poll": false,
+  "opened_at": "2026-10-25T10:00:32Z",
+  "polls": 33,
+  "race": 2,
+  "runners": {
+   "1": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 3.3,
+     "win": 11.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 3.2,
+     "win": 11.0
+    }
+   },
+   "10": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 8.0,
+     "win": 34.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 7.0,
+     "win": 34.0
+    }
+   },
+   "11": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 2.0,
+     "win": 5.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 2.0,
+     "win": 5.0
+    }
+   },
+   "12": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 9.5,
+     "win": 41.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 8.0,
+     "win": 41.0
+    }
+   },
+   "13": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 2.9,
+     "win": 9.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 2.8,
+     "win": 9.0
+    }
+   },
+   "14": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 8.0,
+     "win": 34.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 7.0,
+     "win": 34.0
+    }
+   },
+   "2": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 3.1,
+     "win": 10.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 3.0,
+     "win": 10.0
+    }
+   },
+   "3": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 7.5,
+     "win": 31.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 7.0,
+     "win": 31.0
+    }
+   },
+   "4": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 2.25,
+     "win": 6.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 2.2,
+     "win": 6.0
+    }
+   },
+   "5": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 9.5,
+     "win": 41.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 8.0,
+     "win": 41.0
+    }
+   },
+   "6": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 1.65,
+     "win": 3.5
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 1.65,
+     "win": 3.5
+    }
+   },
+   "7": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 2.5,
+     "win": 7.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 2.4,
+     "win": 7.0
+    }
+   },
+   "8": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 4.6,
+     "win": 17.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 4.4,
+     "win": 17.0
+    }
+   },
+   "9": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 5.5,
+     "win": 21.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:00:32Z",
+     "place": 5.0,
+     "win": 21.0
+    }
+   }
+  },
+  "start_time": "2026-10-25T21:24:00+11:00",
+  "venue": "SALON DE PROVENCE"
+ },
+ "SALON DE PROVENCE|R3": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16"
+  ],
+  "first_poll_at": "2026-10-25T08:20:47Z",
+  "last_empty_at": "2026-10-25T10:33:08Z",
+  "open_seen_on_first_poll": false,
+  "opened_at": "2026-10-25T10:35:28Z",
+  "polls": 45,
+  "race": 3,
+  "runners": {
+   "1": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 2.9,
+     "win": 8.5
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 3.0,
+     "win": 9.0
+    }
+   },
+   "10": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 6.0,
+     "win": 22.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 6.0,
+     "win": 23.0
+    }
+   },
+   "11": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 4.2,
+     "win": 14.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 4.2,
+     "win": 14.0
+    }
+   },
+   "12": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 9.0,
+     "win": 34.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 8.0,
+     "win": 34.0
+    }
+   },
+   "13": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 9.0,
+     "win": 34.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 8.0,
+     "win": 34.0
+    }
+   },
+   "14": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 9.0,
+     "win": 34.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 8.0,
+     "win": 34.0
+    }
+   },
+   "15": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 5.5,
+     "win": 19.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 5.0,
+     "win": 19.0
+    }
+   },
+   "16": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 5.0,
+     "win": 17.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 4.8,
+     "win": 17.0
+    }
+   },
+   "2": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 2.0,
+     "win": 5.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 2.1,
+     "win": 5.0
+    }
+   },
+   "3": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 5.0,
+     "win": 17.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 4.8,
+     "win": 17.0
+    }
+   },
+   "4": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 5.0,
+     "win": 17.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 4.8,
+     "win": 17.0
+    }
+   },
+   "5": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 5.0,
+     "win": 17.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 4.8,
+     "win": 17.0
+    }
+   },
+   "6": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 6.0,
+     "win": 21.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 6.0,
+     "win": 21.0
+    }
+   },
+   "7": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 4.2,
+     "win": 14.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 4.2,
+     "win": 14.0
+    }
+   },
+   "8": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 1.65,
+     "win": 3.6
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 1.8,
+     "win": 3.8
+    }
+   },
+   "9": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 2.4,
+     "win": 6.5
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T10:35:28Z",
+     "place": 2.5,
+     "win": 6.5
+    }
+   }
+  },
+  "start_time": "2026-10-25T21:56:00+11:00",
+  "venue": "SALON DE PROVENCE"
+ },
+ "SALON DE PROVENCE|R4": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "first_poll_at": "2026-10-25T08:20:50Z",
+  "last_empty_at": "2026-10-25T11:06:46Z",
+  "open_seen_on_first_poll": false,
+  "opened_at": "2026-10-25T11:10:35Z",
+  "polls": 58,
+  "race": 4,
+  "runners": {
+   "1": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:10:35Z",
+     "place": 3.9,
+     "win": 19.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:12:58Z",
+     "place": 4.2,
+     "win": 23.0
+    }
+   },
+   "10": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:10:35Z",
+     "place": 2.7,
+     "win": 11.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:12:58Z",
+     "place": 2.7,
+     "win": 11.0
+    }
+   },
+   "11": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:10:35Z",
+     "place": 9.0,
+     "win": 51.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:12:58Z",
+     "place": 6.0,
+     "win": 41.0
+    }
+   },
+   "12": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:10:35Z",
+     "place": 1.9,
+     "win": 6.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:12:58Z",
+     "place": 1.8,
+     "win": 5.5
+    }
+   },
+   "2": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:10:35Z",
+     "place": 6.0,
+     "win": 31.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:12:58Z",
+     "place": 6.0,
+     "win": 34.0
+    }
+   },
+   "3": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:10:35Z",
+     "place": 5.0,
+     "win": 26.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:12:58Z",
+     "place": 4.6,
+     "win": 26.0
+    }
+   },
+   "4": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:10:35Z",
+     "place": 3.0,
+     "win": 13.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:12:58Z",
+     "place": 3.2,
+     "win": 15.0
+    }
+   },
+   "5": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:10:35Z",
+     "place": 6.0,
+     "win": 31.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:12:58Z",
+     "place": 6.0,
+     "win": 34.0
+    }
+   },
+   "6": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:10:35Z",
+     "place": 3.9,
+     "win": 19.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:12:58Z",
+     "place": 3.8,
+     "win": 19.0
+    }
+   },
+   "7": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:10:35Z",
+     "place": 1.16,
+     "win": 1.65
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:12:58Z",
+     "place": 1.16,
+     "win": 1.7
+    }
+   },
+   "8": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:10:35Z",
+     "place": 1.95,
+     "win": 6.5
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:12:58Z",
+     "place": 1.9,
+     "win": 6.0
+    }
+   },
+   "9": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:10:35Z",
+     "place": 7.5,
+     "win": 41.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:12:58Z",
+     "place": 6.0,
+     "win": 34.0
+    }
+   }
+  },
+  "start_time": "2026-10-25T22:28:00+11:00",
+  "venue": "SALON DE PROVENCE"
+ },
+ "SALON DE PROVENCE|R5": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11"
+  ],
+  "first_poll_at": "2026-10-25T08:20:51Z",
+  "last_empty_at": "2026-10-25T11:44:03Z",
+  "open_seen_on_first_poll": false,
+  "opened_at": "2026-10-25T11:47:06Z",
+  "polls": 70,
+  "race": 5,
+  "runners": {
+   "1": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 3.3,
+     "win": 13.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 3.6,
+     "win": 15.0
+    }
+   },
+   "10": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 3.7,
+     "win": 15.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 3.8,
+     "win": 16.0
+    }
+   },
+   "11": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 3.2,
+     "win": 12.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 3.3,
+     "win": 13.0
+    }
+   },
+   "2": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 5.5,
+     "win": 26.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 7.0,
+     "win": 34.0
+    }
+   },
+   "3": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 6.0,
+     "win": 31.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 7.0,
+     "win": 34.0
+    }
+   },
+   "4": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 4.8,
+     "win": 22.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 5.0,
+     "win": 26.0
+    }
+   },
+   "5": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 2.2,
+     "win": 6.5
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 2.1,
+     "win": 6.0
+    }
+   },
+   "6": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 1.6,
+     "win": 3.6
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 1.6,
+     "win": 3.7
+    }
+   },
+   "7": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 3.0,
+     "win": 11.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 2.8,
+     "win": 10.0
+    }
+   },
+   "8": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 3.5,
+     "win": 14.0
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 3.8,
+     "win": 16.0
+    }
+   },
+   "9": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 1.55,
+     "win": 3.2
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T11:47:06Z",
+     "place": 1.45,
+     "win": 2.9
+    }
+   }
+  },
+  "start_time": "2026-10-25T23:05:00+11:00",
+  "venue": "SALON DE PROVENCE"
+ }
+}
