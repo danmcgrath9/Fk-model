@@ -1242,3 +1242,24 @@ we hold). One week, so nothing here is proven; what it says:
 What a real test needs: the full archive's timestamped flucs (15 months, all states) for the corp side, and Betfair's
 own pre-jump exchange prices for the exchange side, because BSP is the end of the move and a 10-minutes-out strategy
 is bought at the price 10 minutes out.
+
+### On the 10BM national sample (t_5v10_sample.py, concat_days.py; archive 20 Aug to 2 Sep 2026, run 40148641612)
+
+Dave's 2-week 10BM sample, exported through scripts/archive_export_states.py for every state (58 day files, 615 races,
+5,838 runners; results, open and BSP all present). The archive DOES carry the benchmark fields on past runs 6-10:
+vsClass / speedRating / last600 / sectionals are present on 49-54% of runners at slots 6-10, against 55-66% at slots
+1-5, where our own dataset has 0% past slot 5. Three arms of one quick LightGBM, cross-validated by day (7 folds of two
+days, 3 seeds); 14 days of training makes every arm weak (KL to BSP 0.22 against the live model's 0.09), so compare
+the rows, not the levels:
+
+| arm | races | winner log loss | KL to BSP | plan bets | ROI open | ROI BSP |
+|---|---|---|---|---|---|---|
+| 10BM (benchmarks on 10 runs) | 614 | 1.9712 | 0.2202 | 962 | +10.6% | +8.7% |
+| 10 basic (runs 6-10 rating/finish/margin only) | 614 | 1.9667 | 0.2207 | 961 | -6.3% | -5.3% |
+| 5 runs (6-10 blanked) | 614 | 1.9684 | 0.2133 | 970 | -2.4% | -9.8% |
+
+Paired bootstrap over races on the log-loss gap: 10BM minus 5 runs +0.003 (95% -0.021 to +0.027), 10BM minus 10 basic
++0.005 (-0.013 to +0.023). No difference the sample can see; a gap under about 0.02 log loss is invisible at 615 races,
+and the ROI spread between arms is the same noise on ~960 bets. With the v10 result above (the basics on runs 6-10
+worth 0.008 log loss), the extra benchmarks are second-order at best. Recommendation: 5BM national now; Dave credits it
+into 10BM later if the full-archive retrain ever says the deeper runs matter.
