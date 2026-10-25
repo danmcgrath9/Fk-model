@@ -231,6 +231,6 @@ What it says:
    were still not up at 12:51am, so Australian harness markets open some time between 1am and the evening of race day
    at the latest; the next run has to cover the morning.
 3. Overseas races are a third of the schedule and slow every pass: filter to Australian venues.
-4. Proposed (founder to OK): an Australian-venue filter, and the workflow scheduled four times a day (about 5am, 10:30am,
+4. Done 26 Oct (founder OK): an Australian-venue filter (config/harness_au_tracks.txt), races more than 6 hours out asked every 10 minutes instead of 2, and the workflow scheduled four times a day (about 5am, 10:30am,
    4pm and 9:30pm Sydney, 5.5 hours each), which covers about 22 hours a day with half-hour gaps. Free while the
    repository is public.

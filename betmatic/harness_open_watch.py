@@ -4,11 +4,13 @@ The harness brief's hard requirement is a TIMESTAMPED OPENING PRICE per runner. 
 Phase 1 search: PuntersEdge only from 4 Aug 2026, nothing free), so this records it forward from our own BetMatic bot.
 READ-ONLY: it sends odds requests only, never a bet.
 
-    python betmatic/harness_open_watch.py [--minutes 330] [--every 120] [--horizon 36] [--out data/harness_opens]
+    python betmatic/harness_open_watch.py [--minutes 330] [--every 120] [--far-every 600] [--far-hours 6]
+                                          [--horizon 36] [--out data/harness_opens]
 
-Every --every seconds it asks BetMatic for TAB's prices on each harness race in BetMatic's schedule that starts within
---horizon hours and has not jumped, one request at a time, waiting for that race's answer before the next (the answer
-carries no race id; it is paired with the request echo that precedes it on the WebSocket). An empty answer means the
+It asks BetMatic for TAB's prices on each Australian harness race (config/harness_au_tracks.txt) in BetMatic's schedule
+that starts within --horizon hours and has not jumped: every --far-every seconds while the race is more than
+--far-hours away, every --every seconds after that, one request at a time, waiting for that race's answer before the
+next (the answer carries no race id; it is paired with the request echo that precedes it on the WebSocket). An empty answer means the
 market is not up yet. The first answer with a price opens the race.
 
 What is stored, one JSON file per race date (data/harness_opens/YYYY-MM-DD.json), per race:
@@ -78,6 +80,13 @@ def schedule_races(sched, now, horizon_hours, allowed=None, skipped=None):
                         "start_time": str(c.get("startTime")), "date": str(c.get("startTime"))[:10],
                         "runners": [x.strip() for x in str(c.get("runners", "")).split(",") if x.strip()]})
     return out
+
+
+def poll_interval(start, now, every, far_every, far_hours):
+    """Seconds between asks for one race: every `far_every` while the start is more than `far_hours` away, every
+    `every` after that. Lighter polling for far-off races keeps the reads through our TAB and Sportsbet sessions down
+    (about a quarter of the first run's), at the price of a wider bracket on an open that lands far from the jump."""
+    return far_every if start - now > dt.timedelta(hours=far_hours) else every
 
 
 def new_race(r):
@@ -178,6 +187,7 @@ def main():
 
     ap = argparse.ArgumentParser()
     ap.add_argument("--minutes", type=int, default=330); ap.add_argument("--every", type=int, default=120)
+    ap.add_argument("--far-every", type=int, default=600); ap.add_argument("--far-hours", type=float, default=6)
     ap.add_argument("--horizon", type=float, default=36); ap.add_argument("--wait", type=int, default=20)
     ap.add_argument("--out", default="data/harness_opens")
     a = ap.parse_args()
@@ -198,7 +208,7 @@ def main():
 
     end = time.time() + a.minutes * 60
     days, sched_at, races, n_pass = {}, 0.0, [], 0
-    unanswered = 0
+    unanswered, asked, last_ask = 0, 0, {}
     while time.time() < end:
         t0 = time.time(); n_pass += 1
         if t0 - sched_at > 1800:                      # new meetings join the schedule during the day
@@ -218,8 +228,13 @@ def main():
             day = days.setdefault(path, load(path))
             rec = day.setdefault(race_key(r["venue"], r["race"]), new_race(r))
             rec["field"] = r["runners"]; rec["start_time"] = r["start_time"]   # scratched runners leave the schedule
-            if now_utc() >= parse_start(r["start_time"]) or complete(rec):
+            start, now = parse_start(r["start_time"]), now_utc()
+            if now >= start or complete(rec):
                 continue
+            key = race_key(r["venue"], r["race"])
+            if time.time() - last_ask.get(key, 0) < poll_interval(start, now, a.every, a.far_every, a.far_hours):
+                continue
+            last_ask[key] = time.time(); asked += 1
             code, body = bm.post("/notification/odds/request/", {"code": CODE, "competition": r["venue"],
                                                                  "event_number": r["race"]})
             if code != 200:
@@ -231,9 +246,11 @@ def main():
                 opened += 1
                 print(f"OPEN {r['venue']} R{r['race']} at {rec['opened_at']} (last empty {rec['last_empty_at']})")
             save(path, day)
-        print(f"pass {n_pass} at {iso(now_utc())}: {opened} opened; {unanswered} unanswered so far")
-        time.sleep(max(0, a.every - (time.time() - t0)))
+        if opened or n_pass % 30 == 0:
+            print(f"pass {n_pass} at {iso(now_utc())}: {opened} opened; {asked} asked, {unanswered} unanswered so far")
+        time.sleep(max(0, 15 - (time.time() - t0)))      # a short tick: each race is asked only when it is due
     ws.close()
+    print(f"asked {asked} times in {a.minutes} min; {unanswered} unanswered")
     for path, day in days.items():
         save(path, day)
         op = [v for v in day.values() if v["opened_at"]]

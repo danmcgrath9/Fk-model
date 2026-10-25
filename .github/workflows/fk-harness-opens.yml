@@ -3,18 +3,28 @@ name: fk harness opens
 # TAB's opening price for every harness runner, with the time it was first seen (betmatic/harness_open_watch.py).
 # The harness brief's hard requirement, recorded forward because no historical source holds it.
 # READ-ONLY: odds requests from our own BetMatic bot, never a bet. The bot must be running with its TAB session online.
-# Manual runs only for now (25 Oct 2026): the first runs measure whether BetMatic carries harness and when TAB opens
-# it; where it runs long-term (here or the founder's always-on machine) is decided from that.
+# Scheduled four times a day from 26 Oct 2026 (founder's OK), 5.5 hours each, about 22 hours a day: 5am, 10:30am, 4pm
+# and 9:30pm Sydney summer time (an hour earlier in winter: cron is UTC). The first run (Test 5) found Australian
+# markets open after 1am on race day. Races more than 6 hours from the start are asked every 10 minutes, nearer ones
+# every 2, to keep the reads through our TAB and Sportsbet sessions down. Free while the repository is public.
 
 on:
+  schedule:
+    - cron: '0 18 * * *'
+    - cron: '30 23 * * *'
+    - cron: '0 5 * * *'
+    - cron: '30 10 * * *'
   workflow_dispatch:
     inputs:
       minutes:
         description: 'how long to record (max 330)'
         default: '330'
       every:
-        description: 'seconds between passes over the unopened races'
+        description: 'seconds between asks for a race within 6 hours of its start'
         default: '120'
+      far_every:
+        description: 'seconds between asks for a race further out'
+        default: '600'
       horizon:
         description: 'watch races starting within this many hours'
         default: '36'
@@ -42,8 +52,9 @@ jobs:
       - run: pip install requests websocket-client
       - name: Record
         run: |
-          python betmatic/harness_open_watch.py --minutes "${{ github.event.inputs.minutes }}" \
-            --every "${{ github.event.inputs.every }}" --horizon "${{ github.event.inputs.horizon }}" \
+          python betmatic/harness_open_watch.py --minutes "${{ github.event.inputs.minutes || '330' }}" \
+            --every "${{ github.event.inputs.every || '120' }}" --far-every "${{ github.event.inputs.far_every || '600' }}" \
+            --horizon "${{ github.event.inputs.horizon || '36' }}" \
             | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Keep the record
         if: always()

@@ -117,3 +117,10 @@ def test_track_file_is_australian_only():
     t = w.australian_tracks()
     assert {"MENANGLE", "MELTON", "ALBION PARK", "GLOBE DERBY", "GLOUCESTER PARK", "HOBART"} <= t
     assert not t & {"ADDINGTON", "ALEXANDRA PARK", "CAMBRIDGE", "ASHBURTON"}   # NZ tracks are not in it
+
+
+def test_far_off_races_are_asked_less_often():
+    start = dt.datetime(2026, 10, 26, 19, 0, tzinfo=UTC)
+    assert w.poll_interval(start, start - dt.timedelta(hours=10), 120, 600, 6) == 600   # 10 h out: every 10 min
+    assert w.poll_interval(start, start - dt.timedelta(hours=6), 120, 600, 6) == 120    # 6 h out: every 2 min
+    assert w.poll_interval(start, start - dt.timedelta(minutes=30), 120, 600, 6) == 120
