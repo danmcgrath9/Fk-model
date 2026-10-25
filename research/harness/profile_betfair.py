@@ -53,13 +53,21 @@ def main(d):
     print(f"\nread as: date={date} market={market} track={track} bsp={bsp}")
     if date:
         # Betfair writes the meeting date day first (1/12/2020 is 1 December 2020)
-        dt = pd.to_datetime(df[date], errors="coerce", dayfirst=True, format="%d/%m/%Y")
+        # and later files write it as ISO (2023-01-01, sometimes with a time); each format is read by its own pattern
+        raw = df[date].astype(str).str.strip()
+        dt = pd.to_datetime(raw, errors="coerce", format="%d/%m/%Y")
+        iso = pd.to_datetime(raw.str[:10], errors="coerce", format="%Y-%m-%d")
+        dt = dt.fillna(iso)
+        bad = raw[dt.isna()]
+        if len(bad):
+            print(f"unreadable meeting dates: {len(bad):,}, e.g. {bad.unique()[:5].tolist()}")
         print(f"dates {dt.min():%Y-%m-%d} to {dt.max():%Y-%m-%d}; unparsed {dt.isna().mean():.1%}")
         df["_month"] = dt.dt.strftime("%Y-%m")
         print("\nwhat each file actually holds (a file whose dates are not its own month is a copy):")
         print("| file | rows | first date | last date |\n|---|---|---|---|")
         for f, g in df.assign(_d=dt).groupby("_file", sort=False):
-            print(f"| {f} | {len(g):,} | {g._d.min():%Y-%m-%d} | {g._d.max():%Y-%m-%d} |")
+            lo, hi = g._d.min(), g._d.max()
+            print(f"| {f} | {len(g):,} | {lo.date() if pd.notna(lo) else 'unread'} | {hi.date() if pd.notna(hi) else 'unread'} |")
     if market and "SELECTION_ID" in cols:
         k = df[market].astype(str) + ":" + df["SELECTION_ID"].astype(str)
         dup = k.duplicated()
