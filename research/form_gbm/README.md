@@ -1281,3 +1281,19 @@ Neither is near the roughie lay (A/E 0.37), which remains the only BSP angle wit
    real timestamped 9am price, settled at that price, two halves. 66 live races so far is too few.
 3. Place on Betfair from our win probabilities against place BSP (betfairPlaceDiv in the archive).
 4. Lay top-third jockeys at BSP $15-$30 and back last-start beaten favourites $2.50-$4 (t_bsp_public.py candidates).
+
+## Betting only at 9:30am, nothing at the open (25 Oct 2026, t_9am_only.py)
+
+Founder: "only betting at 9am, blend our model, not taking into account our opening prices... on the side". 173
+resulted VIC races since 5 Oct with timed flucs and a live model price (p_model, before any blend with the open), 1,727
+runners, 18 race days split alternately into two halves. The 9:30 price is Form King's corporate average.
+- The blend is sharper than the 9:30 market in one half (KL to BSP 0.0684 -> 0.0599) and not the other (0.0583 ->
+  0.0619); fitted weights swing (ours 0.25 / 0.10, market 0.80 / 1.30). Our model alone is far behind the 9:30 market
+  (KL 0.10 against 0.06): by 9:30 the market has most of what we know.
+- THE 9:30 CORPORATE BOOK IS 132.5% (median). Against that margin a market-led blend finds almost nothing: 3 bets at
+  10c+ value in 18 days, none at 20c+. Our model alone finds 161 at 10c+ and loses -30% at the 9:30 price (-58% / -2% by
+  half) and -25% at BSP; at 30c+ -9% (-49% / +25%). The 9:30 prices it takes are 0.72x BSP at the median.
+- So 9am at the corporates is structurally out: a 30%+ margin swallows an edge the size the blend can find. The version
+  worth a paper book is 9:30 ON THE EXCHANGE (book ~101-105%), which needs Betfair's 9:30 back price per runner; we do
+  not hold it. Once the Betfair account for the lay book exists, record the exchange price at 9:30 daily and run the
+  side book on that; the full archive's timed flucs give the corporate side at scale meanwhile.
