@@ -1,7 +1,7 @@
 name: fk harness betfair
 
-# Download Betfair's free ANZ harness CSVs (Automation Hub data listing) and profile them
-# (research/harness/profile_betfair.py). The page's only condition on downloading is its disclaimer (no warranty,
+# Download Betfair's free ANZ CSVs (Automation Hub data listing) and run one research script over them
+# (default: research/harness/profile_betfair.py; also t_bsp_sharp.py). The page's only condition on downloading is its disclaimer (no warranty,
 # own risk); read 25 Oct 2026 through fk read terms. The files are not committed or mirrored: Betfair hosts them, and a
 # run downloads them fresh. The profile report is kept as a run artifact.
 
@@ -11,6 +11,12 @@ on:
       files:
         description: 'file names under betfair-datascientists.github.io/data/assets/, space separated'
         default: 'ANZ_Harness_2020.zip ANZ_Harness_2021.zip ANZ_Harness_2022.zip ANZ_Harness_2023.zip ANZ_Harness_2024.zip ANZ_Harness_2025.zip ANZ_Harness_2026_01.csv ANZ_Harness_2026_02.csv ANZ_Harness_2026_03.csv ANZ_Harness_2026_04.csv ANZ_Harness_2026_05.csv ANZ_Harness_2026_06.csv ANZ_Harness_2026_07.csv ANZ_Harness_2026_08.csv ANZ_Harness_2026_09.csv'
+      script:
+        description: 'research script, run as: python SCRIPT dl LABEL'
+        default: 'research/harness/profile_betfair.py'
+      label:
+        description: 'label for the report'
+        default: 'harness'
 
 permissions:
   contents: read
@@ -34,10 +40,13 @@ jobs:
             curl -fsSL --retry 3 -o "dl/$f" "https://betfair-datascientists.github.io/data/assets/$f" \
               && echo "$f $(stat -c %s "dl/$f") bytes" || echo "FAILED $f"
           done
-      - name: Profile
-        run: python research/harness/profile_betfair.py dl | tee profile.md | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Run
+        env:
+          SCRIPT: ${{ github.event.inputs.script }}
+          LABEL: ${{ github.event.inputs.label }}
+        run: python "$SCRIPT" dl "$LABEL" | tee profile.md | tee -a "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: harness-betfair-profile
+          name: betfair-${{ github.event.inputs.label }}-${{ github.run_id }}
           path: profile.md
