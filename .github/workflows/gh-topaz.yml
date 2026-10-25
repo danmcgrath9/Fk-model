@@ -1,0 +1,84 @@
+name: gh topaz
+
+# Greyhound form and results from Topaz (research/greyhound/README.md). Manual only.
+# Two guards before any call: the TOPAZ_API_KEY secret (issued by Betfair AU's automation team) and the repository
+# variable TOPAZ_TERMS_READ=yes, set by the founder after reading the terms that come with the key.
+# mode=probe: health + one Victorian day's column list, nothing stored. Run this first with a new key.
+# mode=pull: bulk runs, one file per state and month, kept on the "greyhound-history" release; a month the release
+# already holds is not pulled again (except this month and last), so re-running only fills gaps.
+# Separate from every fk-* workflow: no Form King key, no BetMatic, no database.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'probe or pull'
+        default: 'probe'
+      states:
+        description: 'comma separated: VIC,NSW,QLD,SA,WA,TAS,NT,NZ'
+        default: 'VIC'
+      from:
+        description: 'first month YYYY-MM'
+        default: '2020-01'
+      to:
+        description: 'last month YYYY-MM (blank = this month)'
+        default: ''
+      refresh:
+        description: 'months to pull again, comma separated YYYY-MM; blank = none'
+        default: ''
+      max_calls:
+        description: 'API calls this run (the rest resume next run)'
+        default: '400'
+
+concurrency:
+  group: gh-topaz
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # to create and upload to the greyhound-history release
+
+jobs:
+  topaz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      PYTHONUNBUFFERED: '1'
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      TOPAZ_API_KEY: ${{ secrets.TOPAZ_API_KEY }}
+      TOPAZ_TERMS_READ: ${{ vars.TOPAZ_TERMS_READ }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'requests>=2.31'
+
+      - name: Probe
+        if: github.event.inputs.mode != 'pull'
+        run: python -m greyhound.pull --probe | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Fetch what the release already holds
+        if: github.event.inputs.mode == 'pull'
+        run: |
+          gh release view greyhound-history >/dev/null 2>&1 || gh release create greyhound-history --target main --latest=false \
+            --title "Greyhound history" --notes "Topaz bulk runs, one gzipped JSON per state and month (research/greyhound/README.md). Written by the gh topaz workflow; do not delete."
+          mkdir -p greyhound/cache/topaz
+          gh release download greyhound-history --dir greyhound/cache/topaz --pattern 'runs_*.json.gz' --skip-existing || true
+
+      - name: Pull
+        if: github.event.inputs.mode == 'pull'
+        run: |
+          touch /tmp/before-pull
+          TO_ARG=""; [ -n "${{ github.event.inputs.to }}" ] && TO_ARG="--to ${{ github.event.inputs.to }}"
+          python -m greyhound.pull --states "${{ github.event.inputs.states }}" --from "${{ github.event.inputs.from }}" $TO_ARG \
+            --refresh "${{ github.event.inputs.refresh }}" --max-calls "${{ github.event.inputs.max_calls }}" | tee -a "$GITHUB_STEP_SUMMARY"
+          exit ${PIPESTATUS[0]}
+
+      - name: Upload to the release
+        if: github.event.inputs.mode == 'pull'
+        run: |
+          # only the files this run wrote; the held ones are already on the release
+          NEW=$(find greyhound/cache/topaz -name 'runs_*.json.gz' -newer /tmp/before-pull)
+          [ -n "$NEW" ] || { echo "nothing new to upload"; exit 0; }
+          gh release upload greyhound-history $NEW --clobber

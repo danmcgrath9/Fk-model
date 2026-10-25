@@ -81,3 +81,23 @@ hosts allowed) reads each terms page in full.** The pages to read are listed und
 No canonical tables, no download, no model code (brief section 0 and the founder's instruction). Harness was not
 researched: the brief does harness only if greyhounds work. The other states' own data terms (QLD, SA, WA, TAS, NZ)
 were not found individually; Topaz covers all of them, so they matter only if Topaz is refused.
+
+## Topaz: chosen 25 Oct 2026 (founder: "Okay let's do topaz"), built and waiting for the key
+
+- **The request**: a draft to automation@betfair.com.au is in the founder's Gmail (not sent). It needs the Betfair
+  username filled in, and asks for the terms, whether bookmaker betting counts toward keeping access, whether tips
+  built on the data may be published, first-split access, and the bulk rate limit.
+- **The code**: `greyhound/topaz.py` (client) and `greyhound/pull.py` (bulk runs, one gzipped JSON per state and
+  month, resumable, current and previous month always re-pulled), tested in `tests/test_topaz.py` against a fake
+  session (13 tests: key header, key never in a repr or error, 404 = no data, 429/5xx retried with Retry-After,
+  401 not retried, budget, resume, atomic writes, the terms guard, probe prints column names and never a row).
+- **Endpoints are from the unofficial Topaz-api wrapper** (PyPI 0.0.7, MIT): `/api/health`,
+  `/api/bulk/runs/{STATE}/{year}/{month}`, header `X-API-Key`. The official docs (topaz.grv.org.au/docs) could not
+  be opened from here, so the first run is `mode=probe`, which checks the server answers and lists one day's columns.
+- **Two guards before any call**: the `TOPAZ_API_KEY` repository secret, and the repository variable
+  `TOPAZ_TERMS_READ=yes`, which the founder sets only after reading the terms that come with the key.
+- **Where the data lives**: the `greyhound-history` release, like AFL and NBL. Never in git (`greyhound/cache/` is
+  ignored).
+
+When the key arrives: add it as the secret, read the terms, set the variable, run **Actions > gh topaz** with
+mode `probe`, then `pull` for VIC from 2020-01. The column list from the probe decides the canonical tables.
