@@ -1,0 +1,69 @@
+name: gh greyhound opens
+
+# Every bookmaker's opening price on Victorian greyhound races, from our own BetMatic bot (betmatic/greyhound_opens.py,
+# rules in greyhound/opens.py). Read-only: odds requests only, no bets. Manual, for test runs: a GitHub job stops at
+# 6 hours and greyhounds race from morning to about 11pm, so the everyday recorder runs on a machine that stays on
+# (research/greyhound/README.md, "Recording opening prices"). The day's files go to the greyhound-history release,
+# merged with any earlier run that day, never into git.
+
+on:
+  workflow_dispatch:
+    inputs:
+      hours:
+        description: 'how long to record (max 5.7)'
+        default: '5.5'
+      state:
+        default: 'VIC'
+      every:
+        description: 'seconds between polls before TAB opens'
+        default: '180'
+      open_every:
+        description: 'seconds between polls once TAB is open'
+        default: '1200'
+
+concurrency:
+  group: gh-greyhound-opens
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    environment: betmatic
+    timeout-minutes: 350
+    env:
+      PYTHONUNBUFFERED: '1'
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      BETMATIC_EMAIL: ${{ secrets.BETMATIC_EMAIL }}
+      BETMATIC_PASSWORD: ${{ secrets.BETMATIC_PASSWORD }}
+      OUT: data/greyhound/opens
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests websocket-client
+      - name: Today's and tomorrow's files already on the release
+        run: |
+          gh release view greyhound-history >/dev/null 2>&1 || gh release create greyhound-history --target main --latest=false \
+            --title "Greyhound history" --notes "Greyhound data (research/greyhound/README.md). Written by the gh-* workflows; do not delete."
+          mkdir -p "$OUT"
+          for d in "$(TZ=Australia/Sydney date +%F)" "$(TZ=Australia/Sydney date -d tomorrow +%F)"; do
+            gh release download greyhound-history --dir "$OUT" --pattern "opens-$d.csv.gz" 2>/dev/null || true
+          done
+          touch /tmp/before-run
+      - name: Record
+        run: |
+          python betmatic/greyhound_opens.py --hours "${{ github.event.inputs.hours }}" --state "${{ github.event.inputs.state }}" \
+            --every "${{ github.event.inputs.every }}" --open-every "${{ github.event.inputs.open_every }}" --out "$OUT" \
+            | tee -a "$GITHUB_STEP_SUMMARY"
+          exit ${PIPESTATUS[0]}
+      - name: Keep the files
+        if: always()
+        run: |
+          NEW=$(find "$OUT" -name '*.gz' -newer /tmp/before-run)
+          [ -n "$NEW" ] || { echo "nothing recorded"; exit 0; }
+          gh release upload greyhound-history $NEW --clobber
