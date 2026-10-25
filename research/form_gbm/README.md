@@ -1274,3 +1274,10 @@ apprentices, barriers): BSP has them priced. Two held in both halves and are can
 - BACK last-start beaten favourites (SP $3 or under last start, finished 2nd-4th) at BSP $2.50-$4: A/E 1.34 / 1.43,
   +24% / +30%, but only 36 / 27 runners, so it is a hypothesis.
 Neither is near the roughie lay (A/E 0.37), which remains the only BSP angle with real size.
+
+## Queued for the national archive (25 Oct 2026)
+1. Retrain on all states, score Jun-Oct Victoria against v10, both halves; live only if closer to BSP in both.
+2. The 9am test, properly: value against the morning blend (0.20 ours + morning market, fitted on one half) at the
+   real timestamped 9am price, settled at that price, two halves. 66 live races so far is too few.
+3. Place on Betfair from our win probabilities against place BSP (betfairPlaceDiv in the archive).
+4. Lay top-third jockeys at BSP $15-$30 and back last-start beaten favourites $2.50-$4 (t_bsp_public.py candidates).
