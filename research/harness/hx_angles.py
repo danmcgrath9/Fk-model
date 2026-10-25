@@ -44,7 +44,8 @@ def table(title, angles, df, price="WIN_BSP", res="won"):
         if len(signs) == 2:
             for k, side in ((0, "back"), (1, "lay")):
                 if all(v[k] > 0 for v in signs.values()):
-                    held.append(f"{name}: {side} ({signs['first half'][k]:+.1%}, {signs['second half'][k]:+.1%})")
+                    n = int((mask & df.half.isin(["first half", "second half"])).sum())
+                    held.append(f"{name}: {side} at BSP ({signs['first half'][k]:+.1%}, {signs['second half'][k]:+.1%}; {n:,} bets)")
     print("\nprofitable in both halves after commission: " + ("; ".join(held) if held else "none"))
 
 
@@ -73,6 +74,10 @@ def main(d, label):
         ("$21-$51", band(df, 21, 51)),
         ("$51+", band(df, 51, 10000)),
         ("TAB 1, pacers", (df.TAB_NUMBER == 1) & (df.trot == 0)),
+        ("TAB 1, pacers, under $4", (df.TAB_NUMBER == 1) & (df.trot == 0) & band(df, 1, 4)),
+        ("TAB 1, pacers, $4-$10", (df.TAB_NUMBER == 1) & (df.trot == 0) & band(df, 4, 10)),
+        ("TAB 1, pacers, $10+", (df.TAB_NUMBER == 1) & (df.trot == 0) & band(df, 10, 10000)),
+        ("TAB 1-2, pacers, field 10+", (df.TAB_NUMBER <= 2) & (df.trot == 0) & (df.field >= 10)),
         ("TAB 1, trotters", (df.TAB_NUMBER == 1) & (df.trot == 1)),
         ("TAB 2", df.TAB_NUMBER == 2),
         ("TAB 10+", df.TAB_NUMBER >= 10),
@@ -107,11 +112,20 @@ def main(d, label):
     else:
         print("\nPart 2 skipped: run hx_model.py first")
 
-    pdf = df[(df.PLACE_BSP > 1) & df.placed.notna()]
+    # Place market, cleaned: a finite place BSP up to $1000, and a race whose placed count is the number of places
+    # Betfair pays for the field (2 for 7 or fewer starters, 3 for 8+); anything else is a data error or a dead heat.
+    pdf = df[np.isfinite(df.PLACE_BSP) & (df.PLACE_BSP > 1) & (df.PLACE_BSP <= 1000)].copy()
+    pg = pdf.groupby("race")
+    places = np.where(pdf.field <= 7, 2, 3)
+    good = (pg.placed.transform("sum") == places) & (pg.PLACE_BSP.transform("size") == pdf.field)
+    print(f"\nPlace data: {df[df.PLACE_BSP.notna()].race.nunique():,} races carry a place BSP; "
+          f"{pdf[good].race.nunique():,} pass the cleaning (finite price to $1000, every starter priced, placed count "
+          f"= places paid).")
+    pdf = pdf[good]
     rows = [(f"place ${lo}-${hi}", band(pdf, lo, hi, "PLACE_BSP")) for lo, hi in
             ((1, 1.5), (1.5, 2), (2, 3), (3, 5), (5, 10), (10, 10000))]
     rows += [("place, win favourite", pdf.bsp_rank == 1), ("place, win $21+", band(pdf, 21, 10000))]
-    print(f"\nPart 3: {pdf.race.nunique():,} races with a place BSP.")
+    print(f"Part 3: {pdf.race.nunique():,} races.")
     table("Part 3: the place market at place BSP", rows, pdf, "PLACE_BSP", "placed")
 
 
