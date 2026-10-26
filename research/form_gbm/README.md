@@ -1297,3 +1297,7 @@ runners, 18 race days split alternately into two halves. The 9:30 price is Form 
   worth a paper book is 9:30 ON THE EXCHANGE (book ~101-105%), which needs Betfair's 9:30 back price per runner; we do
   not hold it. Once the Betfair account for the lay book exists, record the exchange price at 9:30 daily and run the
   side book on that; the full archive's timed flucs give the corporate side at scale meanwhile.
+
+## First starters: a market weight and debut records (26 Oct 2026, t_fs_weight.py, t_fs_feats.py)
+Neither helps out of sample; the race rule stands. Numbers and reasons in FIRST_STARTERS_RESEARCH_2026-10-26.md. Queued
+for the national archive: retest trainer_fs on the deeper history (median 11 debutants per trainer here is too thin).

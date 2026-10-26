@@ -45,3 +45,22 @@ model.
 (5) market weight for first starters: an hour, testable now. (2) trainer first-starter A/E and (3) jockey booking:
 a day, testable on the current data. (1) trial times: depends on Form King. Until then the race rule stands (no bets
 in a race where a first starter opens $6 or shorter, no bets on first starters), which is where the money already is.
+
+## Tested the same day (t_fs_weight.py, t_fs_feats.py): neither helps, the race rule stands
+- (5) A FIRST-STARTER MARKET WEIGHT. Own (ours, open) blend weights for first starters, fitted on one half of the v10
+  holdout, scored on the other. Worse out of sample in both halves: winner log loss in first-starter races 1.8480 v
+  1.8349 live (early), 1.7465 v 1.7410 (late); KL to BSP 0.1111 v 0.1018 (early). The fitted weights swing (ours 0.30 /
+  0.65, open 1.05 / 0.30), so the half they are fitted on does not describe the other. The plan inside first-starter
+  races is also worse with them (early, race rule applied: open +15.6% against +41.1% live).
+- (2) and (3) TRAINER AND JOCKEY DEBUT RECORDS. trainer_fs (runs, A/E, win rate), jockey_fs, and for first starters
+  the booked jockey's 12-month win rate and its rank in the race, point in time. Same LightGBM as t_5v10.py, 3 seeds,
+  trained before 3 Jun. The trees barely use them (0.4% of gain across all seven) and nothing improves in both halves:
+  first-starter-race log loss 1.9047 v 1.9169 early (better), 1.7976 v 1.7757 late (worse); KL to BSP worse in both
+  (0.1660 v 0.1610, 0.1876 v 0.1865); the plan's ROI at the open falls in both (+11.3% to 0.0%, +10.3% to +8.2%).
+  15 months of data is a median of 11 debutants per trainer, too thin for the record to say anything the market has not.
+- What did not move: backed first starters (open $6 or under) won 29.5% / 27.4% of the time; the model gives them
+  15.4% / 18.0%, BSP 24.1% / 24.5%. The blind spot is real and none of the cheap inputs closes it. Trial quality
+  (item 1, a Form King question) and the national archive's depth for the trainer record (item 2 again, retest on it)
+  are what is left. Until then: no bets on first starters, no bets in a race where one opens $6 or shorter.
+- Side note: f_careerForm_s == 0 marks 3,305 runners as unraced; the first_starter column marks 1,739. Not chased
+  here; the two definitions should be reconciled before the trainer record is retested on the archive.
