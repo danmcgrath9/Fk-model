@@ -1356,3 +1356,22 @@ on the open bets, so the P/L has wide error bars (open: +3% to +66%, 90% range);
 The open bets' own horses: median price 0.91x the open after 15 minutes, 0.81x after an hour, 0.54x by 9:30am race day.
 The edge roughly halves in the first hour, holds through the day before, and is gone by race morning. The same bets at
 BSP lost 21% in this window (a poor six weeks at BSP; October's tips were +73u at BSP), which is the noise warning.
+
+## A strategy for 30-60 minutes after the open (26 Oct 2026)
+
+Founder: "what would a sharp betting strategy look like ... when we bet 30-60 minutes after markets open. Because
+that's when all the books open and we can spread." `t_window_strat.py` on `fluc_windows.py` (1 Sep to 26 Oct, the only
+stretch with archive flucs): 294 Vic races, rules chosen on 1 Sep-13 Oct (v10 holdout), checked on 14-26 Oct (live v6).
+A watcher checks 30/40/45/50/60 min after the open and takes the first price that clears the rule. "Best of accounts" =
+average x the final best/average ratio (median 1.10, the only per-account figure the archive holds). No deductions.
+
+| | bets | staked | beat BSP | price / BSP | P/L (90% range) | design | check |
+|---|---|---|---|---|---|---|---|
+| live rule at the open, average price | 365 | 778u | 76% | 1.57 | +365u (+47%) | +41% | +56% |
+| watcher 30-60 min, average price | 329 | 669u | 63% | 1.31 | +152u (+23%, -2% to +48%) | +34% | +4% |
+| same, best of accounts | 430 | 855u | 64% | 1.35 | +299u (+35%, +13% to +59%) | +43% | +22% |
+| + skip horses 20%+ out from the open, edge 1.3 | 208 | 478u | 71% | 1.50 | +323u (+68%, +32% to +104%) | +63% | +77% |
+
+Drift after the open keeps going: of runners 20%+ out at 30 min, BSP was shorter than the 30-min price only 27% of
+the time (firmers 41%). Bets on big drifters beat BSP 54% at 1.13x; firmers 72% at 1.39x. Our price band (under or
+over $5) flipped between the halves, so it is not a rule. Every P/L is a few dozen winners: price / BSP is the steady read.
