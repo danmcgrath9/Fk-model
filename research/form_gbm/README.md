@@ -1446,3 +1446,16 @@ Open bets under the live rule on the v10 holdout (3 Jun-13 Oct): 1,421 bets, +32
   (both groups were profitable at the open).
 - Next: the thin-form gap is a DATA gap (barrier trials, stable information). Pricing from trial sectionals is the
   feature most likely to turn drifters into non-bets before the open.
+
+### Founder's read on the ideas list (27 Oct 2026)
+- Other books do not take a stance at their own open: they wait for TAB, then open about 20 minutes later at TAB's new
+  price, and very rarely differ. So "each book's open is its own open" is not an edge; the second book's open is TAB's
+  price at about +20 min. The watcher's per-book opening table will confirm the minute; the first after-open look moves
+  to it.
+- No scratchings/emergencies rule ("Hate the scratching rule").
+- Going/rainfall pricing (historical rainfall, how the track pulls up, what it starts on): a lot of work for a little
+  gain. Parked.
+- "The market knows more than us at 30 minutes" is only true for certain types of horse, not the field as a whole
+  (consistent with the drifter study: the market's extra information sits in thin-form horses). Any blend change after
+  the open should be by horse type, not one weight for all.
+- Barrier trials are the big one; the founder is thinking about it.
