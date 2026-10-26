@@ -1,0 +1,724 @@
+{
+"bets": [
+{
+"horse": "Genomic",
+"date": 5,
+"u": 0.8,
+"taken": 9.0,
+"bsp": 3.58,
+"won": false
+},
+{
+"horse": "Sky Watcher",
+"date": 5,
+"u": 0.63,
+"taken": 12.0,
+"bsp": 9.23,
+"won": false
+},
+{
+"horse": "Apocalypse",
+"date": 6,
+"u": 1.13,
+"taken": 5.88,
+"bsp": 2.65,
+"won": true
+},
+{
+"horse": "Blue Typhoon",
+"date": 6,
+"u": 0.73,
+"taken": 11.0,
+"bsp": 5.98,
+"won": false
+},
+{
+"horse": "Piwhane",
+"date": 6,
+"u": 0.69,
+"taken": 11.0,
+"bsp": 15.0,
+"won": false
+},
+{
+"horse": "Attain",
+"date": 6,
+"u": 0.49,
+"taken": 13.32,
+"bsp": 16.86,
+"won": false
+},
+{
+"horse": "Locked In",
+"date": 7,
+"u": 0.76,
+"taken": 15.0,
+"bsp": 8.26,
+"won": false
+},
+{
+"horse": "Obsidian Stone",
+"date": 7,
+"u": 1.18,
+"taken": 15.0,
+"bsp": 8.82,
+"won": false
+},
+{
+"horse": "Nightowl",
+"date": 7,
+"u": 0.51,
+"taken": 12.9,
+"bsp": 12.0,
+"won": false
+},
+{
+"horse": "Hedjet",
+"date": 7,
+"u": 2.5,
+"taken": 3.6,
+"bsp": 1.77,
+"won": true
+},
+{
+"horse": "Silky Seth",
+"date": 7,
+"u": 2.01,
+"taken": 4.6,
+"bsp": 6.73,
+"won": false
+},
+{
+"horse": "Mr Natural",
+"date": 7,
+"u": 2.5,
+"taken": 4.31,
+"bsp": 2.82,
+"won": true
+},
+{
+"horse": "Insain Harry",
+"date": 7,
+"u": 0.55,
+"taken": 13.18,
+"bsp": 8.64,
+"won": true
+},
+{
+"horse": "Stay Humble",
+"date": 7,
+"u": 2.16,
+"taken": 3.6,
+"bsp": 2.57,
+"won": true
+},
+{
+"horse": "Windhowler",
+"date": 8,
+"u": 0.59,
+"taken": 20.0,
+"bsp": 34.0,
+"won": false
+},
+{
+"horse": "Lim's Ida",
+"date": 8,
+"u": 0.53,
+"taken": 16.75,
+"bsp": 19.0,
+"won": false
+},
+{
+"horse": "Blue Moon Summit",
+"date": 8,
+"u": 0.85,
+"taken": 39.4,
+"bsp": 22.53,
+"won": false
+},
+{
+"horse": "Alltogethernow",
+"date": 9,
+"u": 0.91,
+"taken": 15.57,
+"bsp": 10.5,
+"won": false
+},
+{
+"horse": "Top Rich",
+"date": 9,
+"u": 0.91,
+"taken": 15.11,
+"bsp": 4.45,
+"won": false
+},
+{
+"horse": "Explosive Magic",
+"date": 9,
+"u": 0.51,
+"taken": 14.5,
+"bsp": 13.9,
+"won": false
+},
+{
+"horse": "The Muffin Man",
+"date": 9,
+"u": 0.98,
+"taken": 11.5,
+"bsp": 4.0,
+"won": false
+},
+{
+"horse": "Kotahitanga",
+"date": 9,
+"u": 2.5,
+"taken": 2.5,
+"bsp": 1.9,
+"won": true
+},
+{
+"horse": "Art 'n' Soul",
+"date": 9,
+"u": 0.4,
+"taken": 18.0,
+"bsp": 21.0,
+"won": false
+},
+{
+"horse": "Campaldino",
+"date": 10,
+"u": 0.62,
+"taken": 17.32,
+"bsp": 33.98,
+"won": false
+},
+{
+"horse": "More Foxie",
+"date": 11,
+"u": 1.85,
+"taken": 3.65,
+"bsp": 4.86,
+"won": false
+},
+{
+"horse": "Yahoo Bar",
+"date": 11,
+"u": 0.81,
+"taken": 12.18,
+"bsp": 10.5,
+"won": false
+},
+{
+"horse": "Bel Lupa",
+"date": 11,
+"u": 1.37,
+"taken": 14.14,
+"bsp": 5.2,
+"won": false
+},
+{
+"horse": "Ulfberht",
+"date": 11,
+"u": 0.57,
+"taken": 9.76,
+"bsp": 26.0,
+"won": false
+},
+{
+"horse": "Succaforyou",
+"date": 13,
+"u": 1.32,
+"taken": 9.0,
+"bsp": 7.91,
+"won": false
+},
+{
+"horse": "Knock Of Beers",
+"date": 13,
+"u": 1.22,
+"taken": 16.2,
+"bsp": 5.77,
+"won": false
+},
+{
+"horse": "Celestial Splendor",
+"date": 13,
+"u": 0.67,
+"taken": 15.76,
+"bsp": 7.8,
+"won": true
+},
+{
+"horse": "Winter Nights",
+"date": 13,
+"u": 0.45,
+"taken": 13.3,
+"bsp": 16.44,
+"won": false
+},
+{
+"horse": "True Rebel",
+"date": 14,
+"u": 1.01,
+"taken": 6.6,
+"bsp": 3.1,
+"won": false
+},
+{
+"horse": "Savisanta",
+"date": 14,
+"u": 0.91,
+"taken": 9.82,
+"bsp": 5.78,
+"won": false
+},
+{
+"horse": "Jett Smash",
+"date": 14,
+"u": 1.47,
+"taken": 4.33,
+"bsp": 2.52,
+"won": false
+},
+{
+"horse": "Darkbonee",
+"date": 14,
+"u": 1.3,
+"taken": 4.8,
+"bsp": 3.06,
+"won": false
+},
+{
+"horse": "Verdoux",
+"date": 14,
+"u": 0.35,
+"taken": 26.0,
+"bsp": 14.29,
+"won": false
+},
+{
+"horse": "Who I Think I Am",
+"date": 15,
+"u": 2.5,
+"taken": 6.0,
+"bsp": 5.7,
+"won": true
+},
+{
+"horse": "Buzitup",
+"date": 15,
+"u": 0.71,
+"taken": 9.7,
+"bsp": 8.46,
+"won": true
+},
+{
+"horse": "Both Sides Now",
+"date": 15,
+"u": 0.5,
+"taken": 13.74,
+"bsp": 9.2,
+"won": false
+},
+{
+"horse": "Hollandia",
+"date": 16,
+"u": 0.34,
+"taken": 21.0,
+"bsp": 41.36,
+"won": false
+},
+{
+"horse": "Voynichese",
+"date": 17,
+"u": 0.91,
+"taken": 9.5,
+"bsp": 9.21,
+"won": false
+},
+{
+"horse": "Autumn In Grinzing",
+"date": 17,
+"u": 0.44,
+"taken": 41.0,
+"bsp": 18.5,
+"won": false
+},
+{
+"horse": "Stardom",
+"date": 17,
+"u": 0.54,
+"taken": 15.0,
+"bsp": 13.0,
+"won": false
+},
+{
+"horse": "Aemond",
+"date": 17,
+"u": 0.85,
+"taken": 13.0,
+"bsp": 8.73,
+"won": false
+},
+{
+"horse": "Hidden Motive",
+"date": 17,
+"u": 0.58,
+"taken": 13.0,
+"bsp": 9.2,
+"won": false
+},
+{
+"horse": "Over The Bridge",
+"date": 17,
+"u": 2.0,
+"taken": 6.0,
+"bsp": 6.0,
+"won": false
+},
+{
+"horse": "Saintly Dancer",
+"date": 17,
+"u": 1.64,
+"taken": 7.0,
+"bsp": 5.21,
+"won": true
+},
+{
+"horse": "Threads",
+"date": 17,
+"u": 0.46,
+"taken": 15.0,
+"bsp": 4.03,
+"won": false
+},
+{
+"horse": "Kingswood",
+"date": 17,
+"u": 0.59,
+"taken": 25.0,
+"bsp": 28.12,
+"won": true
+},
+{
+"horse": "Shadhavar",
+"date": 17,
+"u": 1.88,
+"taken": 7.5,
+"bsp": 3.98,
+"won": true
+},
+{
+"horse": "Genomic",
+"date": 17,
+"u": 1.91,
+"taken": 11.0,
+"bsp": 4.81,
+"won": false
+},
+{
+"horse": "Carnival Riches",
+"date": 17,
+"u": 0.64,
+"taken": 13.0,
+"bsp": 7.0,
+"won": true
+},
+{
+"horse": "Moral Turpitude",
+"date": 17,
+"u": 0.94,
+"taken": 9.0,
+"bsp": 6.74,
+"won": false
+},
+{
+"horse": "Stand By Me Ned",
+"date": 17,
+"u": 0.71,
+"taken": 11.0,
+"bsp": 13.47,
+"won": false
+},
+{
+"horse": "Black Panther",
+"date": 17,
+"u": 1.51,
+"taken": 8.5,
+"bsp": 6.25,
+"won": false
+},
+{
+"horse": "Bazzar",
+"date": 18,
+"u": 1.55,
+"taken": 6.0,
+"bsp": 2.25,
+"won": true
+},
+{
+"horse": "Surfy Pete",
+"date": 18,
+"u": 1.43,
+"taken": 9.0,
+"bsp": 4.35,
+"won": false
+},
+{
+"horse": "Sleeping Tiger",
+"date": 18,
+"u": 1.34,
+"taken": 9.5,
+"bsp": 12.0,
+"won": false
+},
+{
+"horse": "Ze Bee Nine",
+"date": 18,
+"u": 0.79,
+"taken": 14.5,
+"bsp": 11.48,
+"won": false
+},
+{
+"horse": "Preservator",
+"date": 18,
+"u": 1.0,
+"taken": 7.33,
+"bsp": 8.67,
+"won": false
+},
+{
+"horse": "Prestige Fantastic",
+"date": 19,
+"u": 0.47,
+"taken": 26.0,
+"bsp": 23.0,
+"won": false
+},
+{
+"horse": "Mickio",
+"date": 19,
+"u": 1.86,
+"taken": 7.5,
+"bsp": 3.0,
+"won": true
+},
+{
+"horse": "Lim's Ida",
+"date": 19,
+"u": 0.41,
+"taken": 26.0,
+"bsp": 13.84,
+"won": true
+},
+{
+"horse": "Here Comes Wozza",
+"date": 19,
+"u": 1.11,
+"taken": 11.0,
+"bsp": 4.93,
+"won": false
+},
+{
+"horse": "Tuzemak",
+"date": 20,
+"u": 5.0,
+"taken": 3.5,
+"bsp": 1.81,
+"won": true
+},
+{
+"horse": "Bourne Legacy",
+"date": 20,
+"u": 3.58,
+"taken": 3.4,
+"bsp": 2.74,
+"won": false
+},
+{
+"horse": "Bliss Bomb",
+"date": 20,
+"u": 2.43,
+"taken": 6.0,
+"bsp": 2.8,
+"won": false
+},
+{
+"horse": "Murshidi",
+"date": 21,
+"u": 5,
+"taken": 11,
+"bsp": 3.94,
+"won": true
+},
+{
+"horse": "Cresta Crystal",
+"date": 22,
+"u": 1.35,
+"taken": 13.64,
+"bsp": 5.1,
+"won": true
+},
+{
+"horse": "Grinding Away",
+"date": 22,
+"u": 1.44,
+"taken": 21,
+"bsp": 5.7,
+"won": false
+},
+{
+"horse": "Russian Benefits",
+"date": 22,
+"u": 2.5,
+"taken": 14,
+"bsp": 4.6,
+"won": false
+},
+{
+"horse": "Eye For An Eye",
+"date": 23,
+"u": 0.95,
+"taken": 22.12,
+"bsp": 31.00453488,
+"won": false
+},
+{
+"horse": "Superstock",
+"date": 23,
+"u": 1.24,
+"taken": 14.44,
+"bsp": 11.5,
+"won": false
+},
+{
+"horse": "Ice Kool",
+"date": 24,
+"u": 2.0,
+"taken": 2.8,
+"bsp": 2.9,
+"won": false
+},
+{
+"horse": "Turbo Saint",
+"date": 24,
+"u": 0.26,
+"taken": 11.37,
+"bsp": 15.5,
+"won": false
+},
+{
+"horse": "Surfin' Bird",
+"date": 24,
+"u": 3.6,
+"taken": 3.89,
+"bsp": 3.2,
+"won": true
+},
+{
+"horse": "Aethelwulf",
+"date": 24,
+"u": 3.85,
+"taken": 7.75,
+"bsp": 7.21,
+"won": false
+},
+{
+"horse": "Cosmic Crusader",
+"date": 24,
+"u": 2.0,
+"taken": 11.0,
+"bsp": 9.96,
+"won": true
+},
+{
+"horse": "Classic Gem",
+"date": 24,
+"u": 1.3,
+"taken": 12.5,
+"bsp": 11.5,
+"won": false
+},
+{
+"horse": "Shockletz",
+"date": 24,
+"u": 0.4,
+"taken": 9.28,
+"bsp": 9.54,
+"won": false
+},
+{
+"horse": "Steely Hustler",
+"date": 24,
+"u": 0.68,
+"taken": 6.0,
+"bsp": 6.6,
+"won": false
+},
+{
+"horse": "Coastal Whispers",
+"date": 24,
+"u": 1.62,
+"taken": 6.0,
+"bsp": 7.58,
+"won": false
+},
+{
+"horse": "Rough Enuff",
+"date": 25,
+"u": 1.12,
+"taken": 6.34,
+"bsp": 4.42,
+"won": true
+},
+{
+"horse": "Phantom's Chase",
+"date": 26,
+"u": 1.13,
+"taken": 15.88,
+"bsp": 18.5,
+"won": false
+},
+{
+"horse": "Positivo",
+"date": 26,
+"u": 3.21,
+"taken": 8.5,
+"bsp": 3.77,
+"won": true
+},
+{
+"horse": "Strummer",
+"date": 26,
+"u": 1.23,
+"taken": 19.0,
+"bsp": 24.0,
+"won": false
+},
+{
+"horse": "Vaderlee",
+"date": 26,
+"u": 1.81,
+"taken": 11.0,
+"bsp": 5.29,
+"won": false
+},
+{
+"horse": "Blue Moon Summit",
+"date": 26,
+"u": 1.45,
+"taken": 19.8,
+"bsp": 7.8,
+"won": false
+},
+{
+"horse": "Three Musketeers",
+"date": 26,
+"u": 0.79,
+"taken": 38.6,
+"bsp": 6.4,
+"won": false
+}
+]
+}

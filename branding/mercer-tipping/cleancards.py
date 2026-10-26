@@ -1,4 +1,4 @@
-"""Mercer Tipping clean set (26 Oct 2026, founder: "start again and go clean ... how profitable we are, beating BSP but
+"""Mercer Tipping clean set (units at $50 a unit since the founder's "we don't flat stake, we use units") (26 Oct 2026, founder: "start again and go clean ... how profitable we are, beating BSP but
 also we tip at a profit at BSP"): $100 on every tip, three cards. 1 the money at our price and at Betfair SP; 2 the running
 profit, both lines; 3 beating the market (tipped bigger than BSP, winners against what BSP expected). 1080x1350.
 python cleancards.py PROFIT.json OUTDIR     PROFIT.json: profit_oct_to26.json ({"bets": [{"horse","date","taken","bsp","won"}]})"""
@@ -23,21 +23,22 @@ TOP = (f"<div class='top'><div class='lock'><div class='mark'><span>M</span></di
        "<div class='when'>October<span>{sub}</span></div></div>")
 FOOT = "<div class='foot'><span>Win bets.</span><span>18+ · Gamble responsibly</span></div>"
 def page(sub, body): return f"<html><head><style>{CSS}</style></head><body>{TOP.format(sub=sub)}{body}<div style='flex:1'></div>{FOOT}</body></html>"
+UNIT = 50
 def run(b, key, c=0.0):
     out = [0.0]
-    for x in b: c += 100 * ((x[key] - 1) if x["won"] else -1); out.append(c)
+    for x in b: c += UNIT * x.get("u", 1) * ((x[key] - 1) if x["won"] else -1); out.append(c)
     return out
 def money(v): return f"{'+' if v >= 0 else '-'}${abs(v):,.0f}"
 def card1(b):
-    a, s = run(b, "taken")[-1], run(b, "bsp")[-1]; n = 100 * len(b)
-    body = (f"<div class='hero'>$100 on <span>every tip</span></div>"
-            f"<div class='money'><div class='m'><div class='v g'>{money(a)}</div><div class='l'>At the price we tipped · {100*a/n/100:+.0%}</div></div>"
-            f"<div class='m'><div class='v w'>{money(s)}</div><div class='l'>At Betfair SP · {100*s/n/100:+.0%}</div></div></div>"
-            f"<div class='sub'><b>{len(b)} tips</b>, 5 to 26 October. Miss our price and it still pays.</div>")
-    return page("$100 a tip", body)
+    a, s = run(b, "taken")[-1], run(b, "bsp")[-1]; n = UNIT * sum(x.get("u", 1) for x in b)
+    body = (f"<div class='hero'>$50 a unit, <span>every tip</span></div>"
+            f"<div class='money'><div class='m'><div class='v g'>{money(a)}</div><div class='l'>At the price we tipped · {a/UNIT:+.0f}u · {a/n:+.0%}</div></div>"
+            f"<div class='m'><div class='v w'>{money(s)}</div><div class='l'>At Betfair SP · {s/UNIT:+.0f}u · {s/n:+.0%}</div></div></div>"
+            f"<div class='sub'><b>{len(b)} tips</b> at our units, 5 to 26 October. Miss our price and it still pays.</div>")
+    return page("$50 a unit", body)
 def chart(b, W=936, H=700):
     a, s = run(b, "taken"), run(b, "bsp"); n = len(b)
-    hi, lo, step = 14000, -2000, 2000; L, R, T, B = 110, 150, 20, 50
+    hi, lo, step = 12000, -2000, 2000; L, R, T, B = 110, 150, 20, 50
     x = lambda i: L + i * (W - L - R) / n; y = lambda v: T + (hi - v) / (hi - lo) * (H - T - B)
     g = []
     v = lo
@@ -58,7 +59,7 @@ def card2(b):
            f"<span><i style='display:inline-block;width:44px;height:9px;border-radius:5px;background:{GOLD};margin-right:12px;vertical-align:middle'></i>Our price</span>"
            f"<span><i style='display:inline-block;width:44px;height:9px;border-radius:5px;background:{INK};margin-right:12px;vertical-align:middle'></i>Betfair SP</span></div>")
     body = f"<div class='hero'>Both lines <span>go up</span></div>{key}{chart(b)}"
-    return page("$100 a tip", body)
+    return page("$50 a unit", body)
 def card3(b):
     n = len(b); beat = sum(x["taken"] > x["bsp"] for x in b); w = sum(x["won"] for x in b); exp = sum(1 / x["bsp"] for x in b)
     med = statistics.median(x["taken"] / x["bsp"] for x in b)
