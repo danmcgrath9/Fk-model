@@ -54,11 +54,11 @@
 "Blinkers first time"
 ],
 "2|Magna Sententia": [],
-"2|Pray For Elegance": [],
 "2|Unclaimed": [],
 "3|Vanara Princess": [
 "Class drop (rating)"
 ],
+"3|Rule Of Thunder": [],
 "3|Peace Seeker": [
 "Already run to today's class",
 "Declining deep in prep"
@@ -81,31 +81,19 @@
 "New career-best last start",
 "Third-up, improving"
 ],
+"3|Slick Vixen": [],
 "3|Gamadale Paddy": [
 "Beaten by the pace last start",
 "New career-best last start",
 "Late 600 beyond the tempo"
 ],
-"3|Tell Me Why": [],
+"3|Invisible Caravan": [],
 "3|Bogey Free": [],
-"3|Presno": [],
-"4|Ambitious Achiever": [
-"Class drop (rating)"
-],
 "4|Studio Artist": [],
-"4|Donvilla D'or": [
-"Blinkers first time"
-],
 "4|Pete The Prophet": [],
-"4|Intervened": [
-"Already run to today's class",
-"Blinkers first time"
-],
-"4|Ella's Boy": [],
 "4|Poorlittlerichkid": [],
 "4|Windsor Chariot": [],
 "4|Ted Percy": [],
-"4|Red Light Rachel": [],
 "4|Town Planner": [],
 "4|Efreeti": [],
 "4|High Performance": [],
@@ -190,12 +178,19 @@
 "8|Sir Loyne": [
 "New career-best last start"
 ],
+"8|Succaforyou": [
+"Already run to today's class"
+],
 "8|Neziha": [
 "Above the field in all three sections"
 ],
 "8|Two To Tango": [
 "Already run to today's class",
 "Well backed before a bad last run"
+],
+"8|The Bantam": [],
+"8|Gift Of Oratory": [
+"Back in trip after being handy"
 ],
 "8|Mr Butt's Boats": [
 "Class drop (rating)"
@@ -216,12 +211,5 @@
 "Above the field in all three sections"
 ],
 "8|Yoomee Wonder": [],
-"8|Grande Terre": [],
-"8|Share The Music": [
-"Third-up, improving",
-"Above the field in all three sections"
-],
-"8|Somebody Told Me": [
-"Back in trip after being handy"
-]
+"8|Grande Terre": []
 }
