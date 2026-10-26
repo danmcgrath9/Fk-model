@@ -432,3 +432,6 @@ Every tip from 5 to 26 Oct with a Betfair SP (clv_oct_to24.json, plus Sale and W
 At the tipped price +118.19u (+134%); at BSP +49.91u (+57%), +40.72u (+46%) after 8% commission on winnings. Kingswood ($25
 tipped, BSP $28.12) is +27.12u of the BSP figure; without him +22.79u (+26%). Yarra Valley Sat 24 (Nightowl) has no BSP in
 Form King and is not counted.
+Swan Hill Tue 27 Twitter (founder, Mon 26 Oct evening: "This is just for Twitter"): tweeted at BSP with our rated prices,
+Habitual 5u (rated $3.25) and Mr Butt's Boats 1.80u (rated $8.23); settled on Twitter at Betfair SP. The book's paper fills
+stay at the open ($6 and $21, R8 deduction est. 17c on the Mon 9:05pm scratchings).
