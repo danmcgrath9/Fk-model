@@ -21,4 +21,7 @@ python -m nrl.model.tries $C nrl/docs/TRIES_STEP1.md "$@"
 python -m nrl.model.first_try $C nrl/docs/FIRST_TRY_STEP1.md "$@"
 python -m nrl.model.counts $C nrl/docs/COUNTS_STEP1.md "$@"
 python -m nrl.model.late_changes $C nrl/docs/LATE_CHANGES.md
+python -m nrl.model.walkforward $C
+python nrl/lines/pull.py $C --dry
+[ -s $C/odds.parquet ] && python -m nrl.lines.backtest $C nrl/docs/LINES_BACKTEST.md || echo 'no odds yet: real-price backtest skipped'
 python -m pytest -q nrl/tests

@@ -44,6 +44,12 @@ No peer-reviewed NRL betting-market efficiency study turned up; the favourite-lo
 | Two-stage try model (players rescaled to a team-level try model) | the players' own sum is the better team total (Poisson deviance DEV -1.2576 v -1.2384); full rescale DEV 0.42286 -> 0.42401 | rejected |
 | **Refit before each season on every completed season** (live policy; backtests keep the frozen 2003-2018 fit) | on 2023-24 with a fit through 2022: try model 0.4372 -> 0.43635 (tries per team-game predicted 3.78 -> 3.90, actual 4.00), team model 0.0930 -> 0.0979 bits | **adopted** for the price card |
 | Running league-level try correction | DEV unchanged, CONFIRM 0.4372 -> 0.43697 | not needed once the models are refitted each season |
+| Attack and defence ratings per player (each side's score from its 17's attack and the other 17's defence; ridge tuned on 2006-2018 to 5,000) | margin unchanged; totals miss DEV 10.060 -> 10.088, CONFIRM 10.755 -> 10.769 (a lighter ridge: DEV worse, CONFIRM better) | rejected: the 2006-2018 gain does not carry into the post-2020 game |
+| Try calibration by position (diagnostic) | both DEV and CONFIRM: centres over-predicted 6-9%, forwards under-predicted (second row 13%, props 13-20%, hookers 12%): tries have shifted from centres to forwards in the modern game | led to the two tests below |
+| Running per-position try correction | frozen fit: DEV 0.42286 -> 0.42267, CONFIRM 0.43720 -> 0.43658; on top of the refit-before-season model: 0.43635 -> 0.43627 at best (chosen on the same seasons) | rejected: the refit already does this job |
+| Season as a try-model feature | DEV 0.42286 -> 0.42310, CONFIRM 0.43720 -> 0.43716; refit 0.43635 -> 0.43646 | rejected |
+| Team try style (share of the attacking team's recent tries by this player's position group) | DEV 0.42286 -> 0.42298, CONFIRM 0.43720 -> 0.43697 | rejected: fails DEV |
+| Line-up experience (summed log career games) and age (named 17, home minus away) | DEV 0.1589 -> 0.1532 / 0.1515 bits, CONFIRM 0.0930 -> 0.0946 / 0.0963 (older sides worse, -0.6 points per year of average age) | rejected: fails DEV |
 | Edge defence for try scorers (tries the opponent concedes to each jersey number) | DEV 0.42294 -> 0.42293, CONFIRM 0.43725 -> 0.43729 | rejected: the position-group feature already holds it |
 
 ## What the evidence says about where "best in the world" comes from

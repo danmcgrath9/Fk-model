@@ -1,0 +1,31 @@
+{
+  "approved": false,
+  "note": "Set approved to true only after the founder OKs the dry-run's credit total in chat.",
+  "sport": "rugbyleague_nrl",
+  "region": "au",
+  "seasons": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "team_markets": [
+    "h2h",
+    "spreads",
+    "totals"
+  ],
+  "prop_markets": [
+    "player_try_scorer_anytime"
+  ],
+  "prop_from": "2023-05-03",
+  "snapshots_sydney": {
+    "open": "Monday 12:00",
+    "named": "Tuesday 20:00"
+  },
+  "close_minutes_before": 30,
+  "max_credits": 45000,
+  "close_mode": "per_day"
+}
