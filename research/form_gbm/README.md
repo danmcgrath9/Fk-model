@@ -1472,3 +1472,13 @@ sectionals. 2,334 first-up / first-starter runners on the holdout with a stored 
 - Candidate inputs for the retrain: last-trial finish (won / placed / unplaced), days since the last trial, the trial
   jockey's strength. Cheap, already in our pulls. Bought timed trials (Punting Form, owned by BetMakers, sells
   sectionals as a B2B product; coverage of trials and price unknown) only if these do not close the gap.
+
+### The trial findings put into the model: not better (27 Oct 2026, t_trial_model.py)
+
+A correction layer on the live v10 price (won the trial, placed, trial 21+ days back, trial jockey strength), fitted on
+one half of the holdout and scored on the other, both ways. Held-out log loss got WORSE both ways (1.8334 -> 1.8350,
+1.9606 -> 1.9712) and the coefficients flipped between halves (stale trial -0.34 / +0.03; won trial +0.09 / +0.40).
+Open bets: half 1 +25% -> +18% (price/BSP 1.58 -> 1.48), half 2 +40% -> +41%. It swapped 192 bets that made +106u at
+1.52x BSP for 196 that made +14u at 1.13x. One input at a time is no better (each helps one half and hurts the other).
+The A/E gaps in the table above were real in the aggregate but too unstable to fit on 2,800 trialled runners. Not
+adopted. Re-test at the retrain, when the full archive gives several times the trialled runners.
