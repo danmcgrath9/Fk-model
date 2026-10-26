@@ -64,6 +64,17 @@ def season_ids(html):
     return sorted({int(x) for x in re.findall(r'/match/\?match_id=(\d+)', html)})
 
 
+def match_dates(html):
+    """{match_id: date} from the match cards on a season or round page ("Fri 16/10/2026" after the link)."""
+    import datetime as dt
+    out = {}
+    for m in re.finditer(r'/match/\?match_id=(\d+)"', html):
+        d = re.search(r'(\d{1,2})/(\d{1,2})/(\d{4})', html[m.end():m.end() + 800])
+        if d:
+            out.setdefault(int(m.group(1)), dt.date(int(d.group(3)), int(d.group(2)), int(d.group(1))))
+    return out
+
+
 def gh(*args, check=True):
     return subprocess.run(['gh', *args], check=check, capture_output=True, text=True)
 
@@ -133,6 +144,10 @@ def main():
         open(os.path.join(folder, season, 'season.html'), 'wb').write(r.content)
         have = {int(f.split('.')[0]) for f in os.listdir(os.path.join(folder, season)) if f[0].isdigit()}
         todo = [i for i in ids if i not in have]
+        if season == args.refresh:  # a match not yet played has nothing to read; skip it until its day
+            import datetime as dt
+            dates, today = match_dates(r.text), dt.date.today()
+            todo = [i for i in todo if dates.get(i, today) <= today]
         got, bad, stopped = 0, [], False
         for mid in todo:
             if time.time() - start > BUDGET:
