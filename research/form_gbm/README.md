@@ -1327,3 +1327,8 @@ The World Pool tote is not better than an ordinary metro Saturday tote; it sits 
 and on World Pool favourites (SP under $5) the tote paid LESS than bookie SP (0.97x, metro Saturdays 1.03x). The tote
 beats SP most at the smaller meetings (1.10x). Small sample, day-level labels, and the TAB-tote-equals-World-Pool
 assumption is unverified, so this is indicative.
+Winners only (founder, 26 Oct: "Flemington Saturday? Pretty sure every winner paid under the SP"): right, and the all-runner
+medians hid it. The tote pays only on the winner, and winners are where it gets crunched. Flemington Sat 24 Oct: 8 of 9
+winners paid under bookie SP (median -10%), while only 43% of all runners' final tote odds were under SP. Stored past runs,
+winners: under SP on World Pool days 44% (median tote/SP 1.00, tote/BSP 0.82), other metro Saturdays 33% (1.03, 0.90),
+other meetings 21% (1.07, 0.92). Late money into the pool lands on the winners. scripts/meeting_tote.py does any meeting.
