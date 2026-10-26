@@ -465,3 +465,59 @@ history. Benter's edge came from fundamentals the public was underweighting; on 
 such gap at BSP. (3) The structure is right and stays: when Topaz's times, splits and full finishing order arrive,
 stage 1 gets the inputs Benter's had, and when recorded opens exist the opening price replaces WAP/BSP as the
 market in stage 2, which is the price BetMatic would actually take.
+
+## Test 7: betting angles at BSP (26 Oct 2026, `research/greyhound/t_angles.py`, runs 40264014700 and 40264692031)
+
+Founder: "find betting angles like our horse bets where we can send pre market slips to betmatic and get the best
+odds". No greyhound opening-price history exists (TAB's or anyone's), so every angle is tested at BSP, the sharpest
+price there is (Test 1): an angle that holds at BSP is a candidate for the open; one that fails at BSP needs a softer
+open to work, and that test waits for recorded opens. Rules: positive after 8% commission in BOTH date halves, A/E
+beside ROI, every angle printed. Structural angles over the whole period, 305,093 races, halves at the median date.
+Model angles on the last quarter (77,200 races from 25 Jan 2025), models fitted before the median date. Lays are
+given two ways: ROI per unit of backer's stake, and the return on the money actually at risk (the liability, BSP − 1).
+
+**Structural angles:**
+
+| angle | side | bets 1st / 2nd half | A/E | ROI after commission | return on money at risk | both halves |
+|---|---|---|---|---|---|---|
+| every runner | back | 1,101,282 / 1,101,582 | 0.996 / 0.997 | −8.3% / −9.0% | | no |
+| favourites (BSP rank 1) | back | 153,121 / 153,025 | 0.998 / 1.003 | −4.9% / −4.1% | | no |
+| box 1, strong box-1 track and distance (box rate ≥ 1.5×) | back | 23,955 / 29,081 | 0.993 / 1.016 | −7.5% / −6.9% | | no |
+| top Elo in the race, BSP rank 3+ | back | 42,346 / 46,658 | 0.962 / 0.945 | −11.8% / −13.8% | | no |
+| the same, under $11 | back | 27,307 / 28,457 | 0.969 / 0.958 | −10.4% / −10.8% | | no |
+| first-up after 28+ days, under $6 | back | 23,440 / 24,624 | 1.020 / 0.990 | −3.4% / −6.5% | | no |
+| distance up 100m+ | back | 63,822 / 57,730 | 1.014 / 1.005 | −6.9% / −10.0% | | no |
+| distance down 100m+ | back | 66,238 / 61,224 | 1.011 / 0.990 | −6.7% / −7.2% | | no |
+| first start in the files, under $6 | back | 13,306 / 8,512 | 0.988 / 0.992 | −6.7% / −7.1% | | no |
+| lay every runner over $101 | lay | 84,266 / 100,026 | 0.872 / 0.881 | +7.6% / +10.1% | +0.04% / +0.00% | yes, worth nothing |
+| lay every runner over $51 | lay | 168,290 / 180,173 | 0.953 / 0.950 | +0.9% / +2.9% | +0.01% / +0.00% | yes, worth nothing |
+| lay $31-$51 | lay | 93,695 / 94,960 | 0.995 / 0.962 | −7.2% / −3.7% | −0.18% / −0.10% | no |
+| lay $21-$31 | lay | 91,967 / 93,460 | 0.990 / 1.006 | −6.9% / −8.2% | −0.28% / −0.33% | no |
+| lay box 8 at a weak box-8 track and distance (box rate ≤ 0.8×) | lay | 9,748 / 16,023 | 0.965 / 0.907 | +2.2% / +14.7% | +0.06% / +0.35% | yes, see below |
+| the same, under $11 | lay | 4,073 / 6,444 | 0.974 / 0.934 | −3.7% / +0.6% | −0.79% / +0.13% | no |
+| the same, $11-$51 | lay | 3,926 / 6,524 | 0.949 / 0.827 | −0.3% / +10.5% | −0.01% / +0.45% | no |
+| the same, over $51 | lay | 1,749 / 3,055 | 0.713 / 0.483 | +21.6% / +53.3% | +0.17% / +0.33% | yes |
+| box 8 anywhere, over $51 | lay | 20,573 / 22,645 | 0.958 / 0.891 | +2.2% / +9.6% | +0.02% / +0.00% | yes, worth nothing |
+| lay the BSP favourite when its Elo ranks 5th or worse | lay | 13,383 / 14,235 | 0.992 / 1.025 | −4.5% / −8.1% | −2.03% / −3.78% | no |
+| lay first-up after 28+ days, under $4 | lay | 13,513 / 14,523 | 1.018 / 0.992 | −6.7% / −4.0% | −3.77% / −2.29% | no |
+
+**Model angles** (back where our chance × BSP is 1.2 or 1.5 and up, lay where it is 0.6 or 0.5 and down, in price
+bands): all sixteen lose in both halves, for v0 + Elo and for stage 1 form only. The best back is form only, $2-$8,
+edge ≥ 1.2: 18,129 / 18,169 bets, A/E 1.001 / 0.985, −6.7% / −8.1%. The best lay is form only, under $6, ≤ 0.6:
+A/E 0.984 / 1.000, −3.4% / −5.5% per stake. Our models are 0.16 worse than BSP on log loss (Tests 5-6), so where they
+disagree with BSP, BSP is usually right; the A/E of every "value" selection is below 1.
+
+**What it means.** (1) Nothing backs at BSP: every back angle has A/E between 0.94 and 1.02, so before commission
+they are at best level, and after 8% they lose. (2) The lays that pass are the favourite-longshot bias, which Test 1
+already showed (BSP over $51 wins 5% less than it says): real, but the return on the money at risk is 0.00% to 0.04%,
+because laying a $200 shot risks $199 to win 92c. Not worth a bank. The weak-box-8 longshot lay (+0.17% / +0.33% on
+risk) rests on about 15 and 30 winners a half against roughly 25 and 60 expected; it is one cell among 31 tried, and
+the box-8-under-$51 cells beside it fail, so it is noise until a third period says otherwise. (3) BetMatic sends to
+the TAB, which takes back bets only, so no lay angle could go on a slip anyway. **For BetMatic slips, the only
+possible edge left is the price itself: a TAB open above the dog's fair price.** That is the horse approach (a minimum
+price on every slip), and it needs two things we do not have yet: recorded TAB opens to measure how often an open
+beats BSP, and by how much, and a fair price good enough to trust when it disagrees with the open. On the second,
+BSP is the fair price after the fact; the question for the open is whether a TAB open above our pre-race estimate of
+BSP (the copy recipe, 1.6409, the best pre-race estimate we have) wins more than its price says. That test is
+`t_angles.py`'s model section rerun at the recorded open, and it is the first thing to run once a few weeks of opens
+exist.
