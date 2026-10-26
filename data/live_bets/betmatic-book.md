@@ -116,6 +116,9 @@ scratchings). The backtest says the top-up slice loses (t_topup.py: -7.6% holdou
 | 2026-10-26 Wangaratta | R3 | Princess Geisha | $15.50 | $14.00 | $11.15 | 0.00u | 0.73u | | |
 | 2026-10-26 Wangaratta | R3 | Somethingintheair | $13.50 | $15.00 | $11.09 | 0.00u | 0.91u | | |
 | 2026-10-26 Wangaratta | R3 | Brilliant Bull Ant | $13.50 | $16.00 | $10.34 | 0.00u | 1.27u | | |
+| 2026-10-27 Swan Hill | R2 | Magna Sententia (R2 has first starters) | $4.00 | $3.50 | $2.90 | 0.00u | 3.09u | | |
+| 2026-10-27 Swan Hill | R7 | His Finest Hour | $6.50 | $7.00 | $5.20 | 0.00u | 2.08u | | |
+| 2026-10-27 Swan Hill | R8 | Baganov | $10.00 | $10.00 | $7.90 | 0.00u | 1.08u | | |
 
 Warrnambool 15 Oct (re-priced 9:34am Thursday, 11 scratched, jockeys and gear in): 6 value-at-open runners on the final field, 1 top-up, Who I Think I Am 0.40u at $4.60; the rest are under take-at now.
 Caulfield 14 Oct (re-priced 8:45am): 5 value-at-open runners on the final field, all under take-at at race-morning prices, so no top-ups.
@@ -435,6 +438,7 @@ Every tip from 5 to 26 Oct with a Betfair SP (clv_oct_to24.json, plus Sale and W
 At the tipped price +118.19u (+134%); at BSP +49.91u (+57%), +40.72u (+46%) after 8% commission on winnings. Kingswood ($25
 tipped, BSP $28.12) is +27.12u of the BSP figure; without him +22.79u (+26%). Yarra Valley Sat 24 (Nightowl) has no BSP in
 Form King and is not counted.
+Swan Hill Tue 27 Oct (re-priced 9:50am Tue on the final field: 30 out): 11 value-at-open runners, 3 paper top-ups (6.25u: Magna Sententia 3.09u at $3.50, His Finest Hour 2.08u at $7, Baganov 1.08u at $10), the rest under take-at now. Habitual (our open bet at $6) is $1.85; Mr Butt's Boats $9 (opened $21).
 Swan Hill Tue 27 Twitter (founder, Mon 26 Oct evening: "This is just for Twitter"): tweeted at BSP with our rated prices,
 Habitual 5u (rated $3.25) and Mr Butt's Boats 1.80u (rated $8.23); settled on Twitter at Betfair SP. The book's paper fills
 stay at the open ($6 and $21, R8 deduction est. 17c on the Mon 9:05pm scratchings).
