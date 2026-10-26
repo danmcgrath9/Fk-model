@@ -1,0 +1,13 @@
+{
+ "day": "Wednesday", "date": "28 Oct", "brand": false,
+ "meetings": [
+  {"name": "Bendigo", "note": "", "bets": [
+   {"race": 3, "horse": "Purple Streak", "price": "$8", "units": "5.32u"},
+   {"race": 4, "horse": "Yahoo Bar", "price": "$7", "units": "3.90u"},
+   {"race": 5, "horse": "Jenni You Think", "price": "$7", "units": "4.80u"},
+   {"race": 6, "horse": "Lawborough", "price": "$4.40", "units": "3.36u"},
+   {"race": 8, "horse": "Litzdeel", "price": "$8.50", "units": "1.48u"},
+   {"race": 8, "horse": "See That Storm", "price": "$16", "units": "2.22u"}
+  ]}
+ ]
+}
