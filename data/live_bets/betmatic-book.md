@@ -403,3 +403,20 @@ Rough Enuff (R2) WON: SP $3.50, BSP $4.42, against $6.34 after the 11c deduction
 Tweeted card (Twitter units, after deductions): 1 bet, 1.12u at $6.34, +5.98u, ROI +534%.
 Paper at the open (model stakes, 11c deduction): Rough Enuff 2.24u at $6.34, +11.96u; Superstock void. No real money (the
 market was open before any orders were built). Open book (GD stake 1.82u): +9.72u.
+
+## Bendigo Wed 28 Oct (orders sent Mon 26 Oct 12:04pm; nothing placed by 3:38pm, BetMatic bot not answering)
+61 orders on 30 runners (R1 off, founder), 109u, sent live to fire at the TAB open. Form King had race 8 priced by 3:05pm
+Mon and every race by 5:29pm; BetMatic status showed 0 placed and its odds feed returned nothing ("the bot must be running
+with its sessions online"). Mickio (R4) and Turned Down (R7) scratched; Only Opera and Princess Toro in.
+Value at the open (paper_open, Form King open), the Twitter card (card_wed28.json, model stake halved):
+
+| Race | Horse | FK open | Ours | Stake | Twitter (halved) |
+|---|---|---|---|---|---|
+| R3 | Purple Streak | $8 | $4.36 | 3.14u | 1.57u |
+| R4 | Yahoo Bar | $7 | $4.30 | 2.83u | 1.42u |
+| R7 | Imperial Award | $11 | $8.45 | 2.25u | 1.13u |
+| R8 | Litzdeel | $8.50 | $5.73 | 1.73u | 0.87u |
+| R8 | See That Storm | $16 | $8.40 | 1.39u | 0.70u |
+
+The pre-open order sheet at the same opens fills 21.08u: Purple Streak 5.32u, Yahoo Bar 3.90u, Jenni You Think 4.80u,
+Lawborough 3.36u, Litzdeel 1.48u, See That Storm 2.22u (Imperial Award's orders start at $12.58, so none fill at $11).

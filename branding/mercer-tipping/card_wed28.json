@@ -1,0 +1,17 @@
+{
+ "day": "Wednesday",
+ "date": "28 October",
+ "footer": "Win bets.",
+ "meetings": [
+  {
+   "name": "Bendigo",
+   "bets": [
+    {"race": 3, "horse": "Purple Streak", "price": "$8", "rated": "$4.36", "units": "1.57u", "price_open": "$8"},
+    {"race": 4, "horse": "Yahoo Bar", "price": "$7", "rated": "$4.30", "units": "1.42u", "price_open": "$7"},
+    {"race": 7, "horse": "Imperial Award", "price": "$11", "rated": "$8.45", "units": "1.13u", "price_open": "$11"},
+    {"race": 8, "horse": "Litzdeel", "price": "$8.50", "rated": "$5.73", "units": "0.87u", "price_open": "$8.5"},
+    {"race": 8, "horse": "See That Storm", "price": "$16", "rated": "$8.40", "units": "0.70u", "price_open": "$16"}
+   ]
+  }
+ ]
+}

@@ -1,0 +1,122 @@
+# Bendigo Wed 28 Oct 2026: fields pulled Mon 26 Oct 11:15am Melbourne (before Form King's final-fields flag); no market yet
+1, Magnusaurus Rex, 0, 0
+1, Resonant, 0, 0
+1, Running Rich, 0, 0
+1, Tandarra, 0, 0
+1, Hot Samba, 0, 0
+1, Scoville, 0, 0
+1, Takasago, 0, 0
+1, Vixen Vibes, 0, 0
+2, Hydro Rush, 0, 0
+2, Nickibi, 0, 0
+2, Purgatorio, 0, 0
+2, Centenary Florin, 0, 0
+2, Sunbliss, 0, 0
+2, Sound Byte, 0, 0
+3, The Shaper, 0, 0
+3, Romantic Miss, 0, 0
+3, Savoyard, 0, 0
+3, Purple Streak, 0, 0
+3, Yukaina, 0, 0
+3, Art's Alive, 0, 0
+3, Sea Poem, 0, 0
+3, Sussex Duchess, 0, 0
+3, Prestige Lucky, 0, 0
+3, Prince Pienza, 0, 0
+3, Pure Passion, 0, 0
+3, Love Symbol, 0, 0
+3, Star Of Omaha, 0, 0
+3, Simply Steffi, 0, 0
+3, Semantics, SCR
+3, Zemgrinda, SCR
+4, Yahoo Bar, 0, 0
+4, Budjik Boy, 0, 0
+4, Salsita, 0, 0
+4, No Rumours, 0, 0
+4, You Betcha Woo, 0, 0
+4, Dschingis Prestige, 0, 0
+4, Melek, 0, 0
+4, Mickio, 0, 0
+4, Celtic Park, 0, 0
+4, Dandruff, 0, 0
+4, Amawasha, 0, 0
+4, Hollandia, 0, 0
+4, Trump Card, 0, 0
+4, Pee Bee Noir, 0, 0
+4, Only Opera, SCR
+4, Hula Beat, SCR
+4, Fuwari, SCR
+4, Verifier, SCR
+5, Jackknife, 0, 0
+5, Expeetee, 0, 0
+5, Itsukushima, 0, 0
+5, Brung King, 0, 0
+5, Keane Enuff, 0, 0
+5, Mr Independent, 0, 0
+5, Savannah Chill, 0, 0
+5, Highly Intrigued, 0, 0
+5, The Muffin Man, 0, 0
+5, Chantra, 0, 0
+5, Cushioned, 0, 0
+5, Jenni You Think, 0, 0
+5, Kiwi Jenni, 0, 0
+5, Jawsome Rob, 0, 0
+6, Dirty Grin, 0, 0
+6, Ka Ying Cheer, 0, 0
+6, Miewa, 0, 0
+6, Fission, 0, 0
+6, Per Sempre, 0, 0
+6, Wingsandpropellers, 0, 0
+6, Weapon Clear, 0, 0
+6, Yolo, 0, 0
+6, Interest Point, 0, 0
+6, Lawborough, 0, 0
+6, Yes Yoshi, 0, 0
+7, Alero, 0, 0
+7, Zourain, 0, 0
+7, Dirty Look, 0, 0
+7, Imperial Award, 0, 0
+7, Acelum, 0, 0
+7, Flying Embers, 0, 0
+7, Razzo Rosso, 0, 0
+7, Turned Down, 0, 0
+7, Wolf Twenty One, 0, 0
+7, Small Town Hero, 0, 0
+7, Tsarine, 0, 0
+7, Blue Bandit, 0, 0
+7, Jamesjohno, 0, 0
+7, Legacy Bay, 0, 0
+7, Princess Toro, SCR
+8, Starford, 0, 0
+8, The Euphrates, 0, 0
+8, Berkeley Square, 0, 0
+8, So You Are, 0, 0
+8, Soulcombe, 0, 0
+8, Kings Valley, 0, 0
+8, Suntora, 0, 0
+8, Litzdeel, 0, 0
+8, Machine Gun Gracie, 0, 0
+8, See That Storm, 0, 0
+8, Taramansour, 0, 0
+8, Grand Pierro, 0, 0
+8, Raging Bull, 0, 0
+8, Affluential, 0, 0
+8, Male Model, 0, 0
+9, Black Storm, 0, 0
+9, Spirited Defence, 0, 0
+9, Hiyaam Proud, 0, 0
+9, Van Roy, 0, 0
+9, Enna's Dream, 0, 0
+9, Rosa Aotearoa, 0, 0
+9, Chest Of Gold, 0, 0
+9, Coco Jen, 0, 0
+9, Flying Basil, 0, 0
+9, Shaalute, 0, 0
+9, Bel Mezyaan, 0, 0
+9, He's Beset, 0, 0
+9, Chicago Blues, 0, 0
+9, Charming Deel, 0, 0
+9, Silver Bullet, SCR
+9, Col Klink, SCR
+9, Coronationhercules, SCR
+9, Gunado, SCR
