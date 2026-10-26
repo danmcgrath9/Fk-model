@@ -1,57 +1,57 @@
-# Swan Hill Tue 27 Oct 2026: Form King prices and opens pulled Sun 25 Oct 4:00pm Melbourne (market opened Sunday)
-1, Street Painter, 71.00, 71.00, fk_open 51.00
-1, Titus Augustus, 13.00, 13.00, fk_open 9.50
-1, Ostrom, 4.20, 4.20, fk_open 4.00
+# Swan Hill Tue 27 Oct 2026: Form King prices and opens pulled Mon 26 Oct 9:05pm Melbourne
+1, Street Painter, 81.00, 81.00, fk_open 51.00
+1, Titus Augustus, 15.00, 15.00, fk_open 9.50
+1, Ostrom, 4.40, 4.40, fk_open 4.00
 1, Hegely, SCR
-1, Gamadale Possum, 15.00, 15.00, fk_open 11.00
-1, Sammie Ellen Boy, 61.00, 61.00, fk_open 61.00
-1, Winna's Sister, 4.40, 4.40, fk_open 4.80
-1, Flash Inquiry, 8.50, 8.50, fk_open 18.00
-1, Frosted Steele, 51.00, 51.00, fk_open 51.00
-1, What Once Was, 2.05, 2.05, fk_open 1.85
-2, Unclaimed, 61.00, 61.00, fk_open 31.00
-2, My Boy Arnie, 151.00, 151.00, fk_open 151.00
-2, Pray For Elegance, 7.00, 7.00, fk_open 12.00
-2, Boots Off, 26.00, 26.00, fk_open 18.00
-2, Celtic Spy, 4.00, 4.00, fk_open 4.00
-2, Rentier, 21.00, 21.00, fk_open 18.00
-2, Optimus, 10.00, 10.00, fk_open 7.00
-2, Magna Peak, 26.00, 26.00, fk_open 15.00
-2, Carnevale, 7.00, 7.00, fk_open 8.00
-2, King Koruna, 8.00, 8.00, fk_open 11.00
-2, Gangland, 9.50, 9.50, fk_open 7.00
-2, Magna Sententia, 4.20, 4.20, fk_open 4.00
+1, Gamadale Possum, 17.00, 17.00, fk_open 11.00
+1, Sammie Ellen Boy, 71.00, 71.00, fk_open 61.00
+1, Winna's Sister, 4.60, 4.60, fk_open 4.80
+1, Flash Inquiry, 5.50, 5.50, fk_open 18.00
+1, Frosted Steele, 71.00, 71.00, fk_open 51.00
+1, What Once Was, 2.10, 2.10, fk_open 1.85
+2, Unclaimed, 41.00, 41.00, fk_open 31.00
+2, My Boy Arnie, 126.00, 126.00, fk_open 151.00
+2, Pray For Elegance, SCR, last 7.00, fk_open 12.00
+2, Boots Off, 23.00, 23.00, fk_open 18.00
+2, Celtic Spy, 3.70, 3.70, fk_open 4.00
+2, Rentier, 19.00, 19.00, fk_open 18.00
+2, Optimus, 9.00, 9.00, fk_open 7.00
+2, Magna Peak, 19.00, 19.00, fk_open 15.00
+2, Carnevale, 6.00, 6.00, fk_open 8.00
+2, King Koruna, 7.50, 7.50, fk_open 11.00
+2, Gangland, 8.50, 8.50, fk_open 7.00
+2, Magna Sententia, 3.80, 3.80, fk_open 4.00
 3, Xiguous Equus, SCR, fk_open 81.00
-3, Rule Of Thunder, SCR, fk_open 126.00
-3, Back Up Barbie, 16.00, 16.00, fk_open 6.50
+3, Rule Of Thunder, 201.00, 201.00, fk_open 126.00
+3, Back Up Barbie, 17.00, 17.00, fk_open 6.50
 3, Duke Of Zhou, SCR
-3, She's Loaded, 4.20, 4.20, fk_open 3.00
-3, Slick Vixen, SCR, fk_open 81.00
-3, Tell Me Why, 201.00, 201.00, fk_open 71.00
-3, Invisible Caravan, SCR, fk_open 81.00
-3, Presno, 201.00, 201.00, fk_open 34.00
+3, She's Loaded, 5.50, 5.50, fk_open 3.00
+3, Slick Vixen, 151.00, 151.00, fk_open 81.00
+3, Tell Me Why, SCR, last 201.00, fk_open 71.00
+3, Invisible Caravan, 151.00, 151.00, fk_open 81.00
+3, Presno, SCR, last 201.00, fk_open 34.00
 3, Tremont, 1.90, 1.90, fk_open 6.00
-3, Peace Seeker, 27.00, 27.00, fk_open 10.00
-3, The Pallet Man, 23.00, 23.00, fk_open 21.00
+3, Peace Seeker, 26.00, 26.00, fk_open 10.00
+3, The Pallet Man, 18.00, 18.00, fk_open 21.00
 3, Gamadale Paddy, 3.80, 3.80, fk_open 7.00
-3, Bogey Free, 19.00, 19.00, fk_open 8.50
+3, Bogey Free, 16.00, 16.00, fk_open 8.50
 3, Vanara Princess, 151.00, 151.00, fk_open 26.00
 3, Fullboardsupport, 41.00, 41.00, fk_open 12.00
 3, Swift Action, 151.00, 151.00, fk_open 26.00
-3, Cast A Line, 201.00, 201.00, fk_open 31.00
-4, Ella's Boy, 151.00, 151.00, fk_open 101.00
-4, Pete The Prophet, 11.00, 11.00, fk_open 14.00
-4, Windsor Chariot, 5.00, 5.00, fk_open 6.50
-4, Studio Artist, 151.00, 151.00, fk_open 151.00
-4, Intervened, 6.50, 6.50, fk_open 7.50
-4, Red Light Rachel, 12.00, 12.00, fk_open 11.00
-4, Poorlittlerichkid, 51.00, 51.00, fk_open 34.00
-4, Ted Percy, 11.00, 11.00, fk_open 8.00
-4, Efreeti, 12.00, 12.00, fk_open 19.00
-4, Ambitious Achiever, 3.10, 3.10, fk_open 2.70
-4, Donvilla D'or, 126.00, 126.00, fk_open 81.00
-4, High Performance, 41.00, 41.00, fk_open 26.00
-4, Town Planner, 5.50, 5.50, fk_open 4.60
+3, Cast A Line, 151.00, 151.00, fk_open 31.00
+4, Ella's Boy, SCR, last 151.00, fk_open 101.00
+4, Pete The Prophet, 7.00, 7.00, fk_open 14.00
+4, Windsor Chariot, 3.10, 3.10, fk_open 6.50
+4, Studio Artist, 81.00, 81.00, fk_open 151.00
+4, Intervened, SCR, last 6.50, fk_open 7.50
+4, Red Light Rachel, SCR, last 12.00, fk_open 11.00
+4, Poorlittlerichkid, 21.00, 21.00, fk_open 34.00
+4, Ted Percy, 5.50, 5.50, fk_open 8.00
+4, Efreeti, 7.00, 7.00, fk_open 19.00
+4, Ambitious Achiever, SCR, last 3.10, fk_open 2.70
+4, Donvilla D'or, SCR, last 126.00, fk_open 81.00
+4, High Performance, 21.00, 21.00, fk_open 26.00
+4, Town Planner, 2.80, 2.80, fk_open 4.60
 5, Shooting For Stars, SCR
 5, Commands Success, 8.00, 8.00, fk_open 19.00
 5, Maximillius, 8.00, 8.00, fk_open 11.00
@@ -63,48 +63,48 @@
 5, Killiana, 3.30, 3.30, fk_open 2.30
 5, Caribbean Villa, 7.50, 7.50, fk_open 8.50
 6, Baby Rider, 46.00, 46.00, fk_open 26.00
-6, Hula Beat, 31.00, 31.00, fk_open 18.00
-6, Legend Beast, 4.40, 4.40, fk_open 7.50
-6, Verifier, 4.00, 4.00, fk_open 4.60
-6, Kawhia, 41.00, 41.00, fk_open 31.00
-6, Larryoctane, 19.00, 19.00, fk_open 13.00
+6, Hula Beat, 34.00, 34.00, fk_open 18.00
+6, Legend Beast, 4.60, 4.60, fk_open 7.50
+6, Verifier, 3.90, 3.90, fk_open 4.60
+6, Kawhia, 34.00, 34.00, fk_open 31.00
+6, Larryoctane, 18.00, 18.00, fk_open 13.00
 6, Flying Shelby, 91.00, 91.00, fk_open 34.00
-6, Fuwari, 23.00, 23.00, fk_open 18.00
+6, Fuwari, 21.00, 21.00, fk_open 18.00
 6, Milady, 14.00, 14.00, fk_open 15.00
 6, Motiver, 8.50, 8.50, fk_open 8.50
 6, Three Reel Roses, 12.00, 12.00, fk_open 6.00
-6, Legs Power, 20.00, 20.00, fk_open 12.00
+6, Legs Power, 21.00, 21.00, fk_open 12.00
 6, Only Opera, 5.00, 5.00, fk_open 6.00
 6, Fierce Fiasco, 26.00, 26.00, fk_open 12.00
 6, King Kauffo, SCR, fk_open 9.00
 7, Nightynight, 31.00, 31.00, fk_open 23.00
 7, Solar Mist, 41.00, 41.00, fk_open 41.00
-7, Switch Hit, 5.00, 5.00, fk_open 3.80
-7, Great Prosperity, 11.00, 11.00, fk_open 8.00
+7, Switch Hit, 5.25, 5.25, fk_open 3.80
+7, Great Prosperity, 12.00, 12.00, fk_open 8.00
 7, Jawsome Rob, 10.00, 10.00, fk_open 11.00
-7, Blacklist, 31.00, 31.00, fk_open 19.00
+7, Blacklist, 34.00, 34.00, fk_open 19.00
 7, Poetic Storm, 41.00, 41.00, fk_open 34.00
 7, Callistemon, 16.00, 16.00, fk_open 11.00
-7, Habitual, 4.00, 4.00, fk_open 6.00
+7, Habitual, 3.80, 3.80, fk_open 6.00
 7, Parkrun, 31.00, 31.00, fk_open 21.00
-7, His Finest Hour, 7.00, 7.00, fk_open 6.50
-7, No Overtaking, 19.00, 19.00, fk_open 16.00
-7, Dealer Sing, 5.00, 5.00, fk_open 5.50
-8, Gift Of Oratory, SCR, fk_open 81.00
-8, Shalailed, 35.00, 35.00, fk_open 31.00
-8, Yoomee Wonder, 10.00, 10.00, fk_open 19.00
+7, His Finest Hour, 7.50, 7.50, fk_open 6.50
+7, No Overtaking, 18.00, 18.00, fk_open 16.00
+7, Dealer Sing, 5.75, 5.75, fk_open 5.50
+8, Gift Of Oratory, 61.00, 61.00, fk_open 81.00
+8, Shalailed, 31.00, 31.00, fk_open 31.00
+8, Yoomee Wonder, 9.50, 9.50, fk_open 19.00
 8, Zemgrinda, SCR
-8, Annotate, 23.00, 23.00, fk_open 19.00
+8, Annotate, 21.00, 21.00, fk_open 19.00
 8, Bakersbend, SCR, fk_open 51.00
 8, Mr Butt's Boats, 9.00, 9.00, fk_open 21.00
-8, The Bantam, SCR, fk_open 61.00
+8, The Bantam, 35.00, 35.00, fk_open 61.00
 8, Costae, 126.00, 126.00, fk_open 81.00
-8, Grande Terre, 61.00, 61.00, fk_open 51.00
-8, Succaforyou, SCR, fk_open 19.00
-8, Share The Music, 9.50, 9.50, fk_open 6.50
-8, Sir Loyne, 15.00, 15.00, fk_open 8.00
-8, Baganov, 12.00, 12.00, fk_open 10.00
-8, Neziha, 3.20, 3.20, fk_open 2.80
-8, Somebody Told Me, 18.00, 18.00, fk_open 21.00
+8, Grande Terre, 51.00, 51.00, fk_open 51.00
+8, Succaforyou, 19.00, 19.00, fk_open 19.00
+8, Share The Music, SCR, last 9.50, fk_open 6.50
+8, Sir Loyne, 14.00, 14.00, fk_open 8.00
+8, Baganov, 10.00, 10.00, fk_open 10.00
+8, Neziha, 2.80, 2.80, fk_open 2.80
+8, Somebody Told Me, SCR, last 18.00, fk_open 21.00
 8, Two To Tango, 5.00, 5.00, fk_open 6.50
-8, Apocalypse, 11.00, 11.00, fk_open 8.50
+8, Apocalypse, 10.00, 10.00, fk_open 8.50
