@@ -1,0 +1,11 @@
+{"title": "Monday", "sub": "26 October · Wangaratta",
+ "big": [{"v": "+17.7u", "k": "Profit on 9.6u"}, {"v": "1 / 6", "k": "Winners"}, {"v": "4 / 6", "k": "Beat BSP"}],
+ "cols": ["Horse", "Tipped", "BSP", "Units", "Profit", "Finish"],
+ "rows": [
+  {"day": "Positivo", "where": "Race 7", "bets": "$8.50", "won": "$3.77", "staked": "3.21u", "profit": "+24.08u", "bsp": "1st"},
+  {"day": "Vaderlee", "where": "Race 8", "bets": "$11", "won": "$5.29", "staked": "1.81u", "profit": "-1.81u", "bsp": "2nd"},
+  {"day": "Strummer", "where": "Race 7", "bets": "$19", "won": "$24", "staked": "1.23u", "profit": "-1.23u", "bsp": "3rd"},
+  {"day": "Blue Moon Summit", "where": "Race 9", "bets": "$19.80", "won": "$7.80", "staked": "1.45u", "profit": "-1.45u", "bsp": "3rd"},
+  {"day": "Phantom's Chase", "where": "Race 6", "bets": "$15.88", "won": "$18.50", "staked": "1.13u", "profit": "-1.13u", "bsp": "4th"},
+  {"day": "Three Musketeers", "where": "Race 9", "bets": "$38.60", "won": "$6.40", "staked": "0.79u", "profit": "-0.79u", "bsp": "6th"}
+ ]}
