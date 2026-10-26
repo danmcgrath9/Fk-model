@@ -177,3 +177,25 @@ Fitted 2013-2023, tuned 2024, scored 2025-2026. Milestone column: change in log 
 
 Adopted from the test above: for goals only, the player's range and his goal-kicking (shots and accuracy), both on the
 line. Range did nothing for the other stats (disposals and tackles slightly worse).
+## Supply, tackle chances, momentum, travel load
+
+Each group added on its own to the current model. Fitted 2013-2023, tuned 2024, scored 2025-2026.
+
+| stat | supply | tackle chances | momentum | travel load |
+|---|---|---|---|---|
+| disposals | +0.0001 ± 0.0003 | +0.0000 ± 0.0003 | +0.0004 ± 0.0003 | -0.0004 ± 0.0002 |
+| marks | +0.0003 ± 0.0003 | -0.0002 ± 0.0002 | +0.0002 ± 0.0003 | +0.0001 ± 0.0002 |
+| tackles | +0.0002 ± 0.0002 | -0.0000 ± 0.0002 | -0.0002 ± 0.0002 | -0.0000 ± 0.0002 |
+| goals | +0.0003 ± 0.0002 | +0.0003 ± 0.0003 | +0.0004 ± 0.0002 **kept** | +0.0003 ± 0.0003 |
+
+Not adopted from the test above: momentum for goals passed at exactly two standard errors, one result in sixteen tried
+in this batch. With this many tests, a couple of two-standard-error passes are expected by chance alone, so a lone
+borderline pass is not taken. Supply, tackle chances and travel load earned nothing.
+
+## A caution on how many ideas have now been tried
+
+Roughly 70 input groups have been tested on the same 2025-2026 seasons. At a two-standard-error bar, about one or two
+of them would pass by luck. The adoptions that cleared it comfortably (form memories, team-sheet position, opponent by
+position, league level for 2026) are safe; the ones that only just cleared (ground shape and game time for marks,
+range and goal-kicking for goals) each add very little and are the first to drop if 2027 or real lines say so. The
+fresh test is 2027 itself and the bookmakers' lines, not more slicing of 2025-2026.
