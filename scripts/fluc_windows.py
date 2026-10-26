@@ -1,4 +1,4 @@
-"""Price at the open and 15/30/45/60 min after it, with BSP and the finish, for every runner in resulted VIC races in a
+"""Price at the open and 15 to 180 min after it, the final best/average ratio, with BSP and the finish, for every runner in resulted VIC races in a
 date range (26 Oct 2026, founder: "How often do we beat bsp this week with betting 15 / 30 / 45 / 60 minutes after?").
 Form King corporate-average flucs. Reads the database and history files, no credits. CSV between CSV-BEGIN and CSV-END.
     python scripts/fluc_windows.py 2026-10-20 2026-10-26"""
@@ -22,8 +22,8 @@ def ms(v):
     if isinstance(v, (int, float)): return float(v)
     try: return datetime.fromisoformat(str(v).replace("Z", "+00:00")).replace(tzinfo=timezone.utc).timestamp() * 1000 if "T" in str(v) else float(v)
     except Exception: return None
-MINS = (15, 30, 45, 60)
-print("CSV-BEGIN"); print("race_id,horse_id,horse,finish,bsp,open," + ",".join(f"m{m}" for m in MINS) + ",last")
+MINS = (15, 20, 30, 40, 45, 50, 60, 90, 120, 180)
+print("CSV-BEGIN"); print("race_id,horse_id,horse,finish,bsp,open," + ",".join(f"m{m}" for m in MINS) + ",last,best_over_avg,nflucs")
 for r in rows:
     for e in r["entries"]:
         o = e.get("odds") or {}; hr = e.get("horseResult") or {}
@@ -33,7 +33,8 @@ for r in rows:
         def upto(cut):
             c = [p for t, p in fl if t <= cut]; return c[-1] if c else ""
         a = [upto(t0 + m * 60e3) if t0 + m * 60e3 < end else "" for m in MINS]
+        bo = (float(o["bestNow"]) / float(o["avgNow"])) if o.get("bestNow") and o.get("avgNow") else ""
         nm = str(e.get("horseName") or e.get("name") or "").replace(",", " ")
         print(f"{r['race_id']},{F.horse_id(e)},{nm},{hr.get('finishPosition') or ''},{hr.get('betfairStartingPrice') or ''},"
-              f"{fl[0][1]},{','.join(str(x) for x in a)},{fl[-1][1]}")
+              f"{fl[0][1]},{','.join(str(x) for x in a)},{fl[-1][1]},{bo},{len(fl)}")
 print("CSV-END")
