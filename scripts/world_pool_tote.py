@@ -79,6 +79,10 @@ for lo, hi, nm in ((1, 5, "SP under $5"), (5, 13, "SP $5-$13"), (13, 1e9, "SP $1
     for g in groups:
         xs = [x for x in R if x["grp"] == g and lo <= x["sp"] < hi]
         if xs: row(xs, g)
+print("\n## WINNERS ONLY (the tote pays out only on the winner)\n| group | winners | tote under SP | median tote/SP | median BSP/SP | median tote/BSP |\n|---|---|---|---|---|---|")
+for g in groups:
+    w = [x for x in R if x["grp"] == g and x["fin"] == 1]
+    if w: print(f"| {g} | {len(w)} | {100*sum(x['tote'] < x['sp'] for x in w)/len(w):.0f}% | {med([x['tote']/x['sp'] for x in w]):.3f} | {med([x['bsp']/x['sp'] for x in w]):.3f} | {med([x['tote']/x['bsp'] for x in w]):.3f} |")
 print("\n## World Pool days found in the data")
 c = collections.Counter((x["date"], x["wp"], x["grp"]) for x in R if x["wp"])
 for (d, w, g), n in sorted(c.items()): print(f"{d} {w} [{g.split('(')[1][:-1]}]: {n} runs")
