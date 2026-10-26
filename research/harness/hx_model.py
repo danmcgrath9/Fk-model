@@ -24,7 +24,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from hx_data import load, history, FEATURES, CATS, renorm
+from hx_data import load, history, FEATURES, FEATURES_V2, CATS, renorm
 
 TRAIN_END, VALID_END = "2024-07-01", "2025-01-01"
 
@@ -40,6 +40,30 @@ def kl_to_bsp(p, q, race):
     return float(t.groupby(np.asarray(race)).sum().mean())
 
 
+def fit(tr, va, ho, feats):
+    """Trees and a logistic regression on these inputs, each renormalised per race, blended on validation log loss."""
+    X = feats + CATS
+    m = lgb.LGBMClassifier(n_estimators=3000, learning_rate=0.03, num_leaves=63, min_child_samples=200,
+                           subsample=0.8, subsample_freq=1, colsample_bytree=0.8, reg_lambda=1.0, verbose=-1)
+    m.fit(tr[X], tr.won, eval_set=[(va[X], va.won)], callbacks=[lgb.early_stopping(100, verbose=False)])
+    lr = make_pipeline(SimpleImputer(strategy="median"), StandardScaler(), LogisticRegression(max_iter=2000, C=0.5))
+    lr.fit(tr[feats], tr.won)
+    out = []
+    for part in (va, ho):
+        part = part.copy()
+        part["p_tree"] = renorm(m.predict_proba(part[X], num_iteration=m.best_iteration_)[:, 1], part.race)
+        part["p_lr"] = renorm(lr.predict_proba(part[feats])[:, 1], part.race)
+        out.append(part)
+    va, ho = out
+    best = min(np.arange(0, 1.01, 0.1), key=lambda w: winner_ll(
+        renorm(np.exp(w * np.log(va.p_tree) + (1 - w) * np.log(va.p_lr)), va.race), va.won, va.race))
+    for part in (va, ho):
+        part["p_model"] = renorm(np.exp(best * np.log(part.p_tree) + (1 - best) * np.log(part.p_lr)), part.race)
+        part["p_equal"] = 1 / part.field
+    print(f"{len(feats)} inputs: trees {m.best_iteration_} rounds; blend {best:.1f} trees + {1 - best:.1f} logistic")
+    return va, ho, m, best
+
+
 def main(d, label):
     df = history(load(d))
     df = df[df.STATE_CODE != "NZ"]
@@ -52,30 +76,24 @@ def main(d, label):
     print(f"# {label}: market-history model v BSP\n")
     print(f"races: train {tr.race.nunique():,} (to {TRAIN_END}), validation {va.race.nunique():,}, "
           f"holdout {ho.race.nunique():,} ({ho.date.min():%Y-%m-%d} to {ho.date.max():%Y-%m-%d})")
-    X = FEATURES + CATS
-    m = lgb.LGBMClassifier(n_estimators=3000, learning_rate=0.03, num_leaves=63, min_child_samples=200,
-                           subsample=0.8, subsample_freq=1, colsample_bytree=0.8, reg_lambda=1.0, verbose=-1)
-    m.fit(tr[X], tr.won, eval_set=[(va[X], va.won)], callbacks=[lgb.early_stopping(100, verbose=False)])
-    print(f"trees: {m.best_iteration_} rounds (early stopping on validation)")
-    lr = make_pipeline(SimpleImputer(strategy="median"), StandardScaler(), LogisticRegression(max_iter=2000, C=0.5))
-    lr.fit(tr[FEATURES], tr.won)
-    out = []
-    for part in (va, ho):
-        part = part.copy()
-        part["p_tree"] = renorm(m.predict_proba(part[X], num_iteration=m.best_iteration_)[:, 1], part.race)
-        part["p_lr"] = renorm(lr.predict_proba(part[FEATURES])[:, 1], part.race)
-        out.append(part)
-    va, ho = out
-    best = min(np.arange(0, 1.01, 0.1), key=lambda w: winner_ll(
-        renorm(np.exp(w * np.log(va.p_tree) + (1 - w) * np.log(va.p_lr)), va.race), va.won, va.race))
-    for part in (va, ho):
-        part["p_model"] = renorm(np.exp(best * np.log(part.p_tree) + (1 - best) * np.log(part.p_lr)), part.race)
-        part["p_equal"] = 1 / part.field
-    print(f"blend: {best:.1f} trees + {1 - best:.1f} logistic (geometric, chosen on validation log loss)\n")
-
+    results = {}
+    for name, feats in (("v1", FEATURES), ("v2", FEATURES_V2)):
+        results[name] = fit(tr, va, ho, feats)
+    dates = np.sort(ho.date.unique()); cut = dates[len(dates) // 2]
+    print(f"\n## v1 v v2 on the holdout, split at {pd.Timestamp(cut):%Y-%m-%d}\n")
+    print("| inputs | LL 1st half | LL 2nd half | KL to BSP 1st half | KL 2nd half | gap closed, all holdout |\n"
+          "|---|---|---|---|---|---|")
+    for name, (_, h, _, _) in results.items():
+        h1, h2 = h[h.date < cut], h[h.date >= cut]
+        le, lm, lb = (winner_ll(h[c], h.won, h.race) for c in ("p_equal", "p_model", "p_bsp"))
+        print(f"| {name} | {winner_ll(h1.p_model, h1.won, h1.race):.4f} | {winner_ll(h2.p_model, h2.won, h2.race):.4f} | "
+              f"{kl_to_bsp(h1.p_model, h1.p_bsp, h1.race):.4f} | {kl_to_bsp(h2.p_model, h2.p_bsp, h2.race):.4f} | "
+              f"{(le - lm) / (le - lb):.1%} |")
+    va, ho, m, best = results["v2"]
+    X = FEATURES_V2 + CATS
+    print("\nDetail below is v2.\n")
     ho = ho.copy()
     ho["p_wap"] = ho.p_wap.where(ho.p_wap.notna().groupby(ho.race).transform("all"))
-    dates = np.sort(ho.date.unique()); cut = dates[len(dates) // 2]
     ho["half"] = np.where(ho.date < cut, "first half", "second half")
     ho["month"] = ho.date.dt.strftime("%Y-%m")
     cols = [("equal chances", "p_equal"), ("trees", "p_tree"), ("logistic", "p_lr"), ("model (blend)", "p_model")]

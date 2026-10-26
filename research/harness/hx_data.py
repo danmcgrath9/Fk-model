@@ -90,7 +90,44 @@ def history(df):
     df["last_field"] = prev("field")
     df["log_vol_prev"] = np.log1p(g["race_vol"].transform(lambda s: s.shift(1).rolling(5, min_periods=1).mean()))
     df["tab_rel"] = df.TAB_NUMBER / df.field.where(df.field > 0)
+    df = add_v2(df, g)
     return df.sort_values(["start", "race", "TAB_NUMBER"]).reset_index(drop=True)
+
+
+def add_v2(df, g):
+    """v2 inputs (26 Oct 2026), still only from earlier races:
+    - a market rating per run, mr = log(BSP chance x field): 0 is an average runner whatever the field size, so runs in
+      fields of 6 and 12 compare; the horse's smoothed rating (EWMA, alpha 0.3), its best of the last five and its trend;
+    - how it ran against that rating: won minus its BSP chance, smoothed; and how close it got in running (log of its
+      lowest in-play price), smoothed;
+    - the race it meets today: each runner's smoothed rating against the mean of its rivals' and its rank in the field
+      (no other input says who it is racing against);
+    - the draw: point-in-time win rate, and wins against what BSP expected, for this TAB number at this track and gait,
+      from every earlier race there."""
+    df["mr"] = np.log((df.p_bsp * df.field).where(df.p_bsp > 0))
+    df["perf"] = (df.won - df.p_bsp).where(df.p_bsp.notna())
+    df["close"] = np.log(df.WIN_INPLAY_MIN_PRICE_TAKEN)
+    ewm = lambda c: g[c].transform(lambda x: x.shift(1).ewm(alpha=0.3, ignore_na=True).mean())
+    df["mr_ewm"], df["perf_ewm"], df["close_ewm"] = ewm("mr"), ewm("perf"), ewm("close")
+    df["mr_best5"] = g["mr"].transform(lambda x: x.shift(1).rolling(5, min_periods=1).max())
+    df["mr_trend"] = g["mr"].shift(1) - df.mr_ewm.where(df.n_prev >= 2)
+    # today's rivals: mean smoothed rating of the others in the race (a first starter counts as the field's median)
+    base = df.mr_ewm.fillna(df.mr_ewm.median())
+    tot, cnt = base.groupby(df.race).transform("sum"), base.groupby(df.race).transform("size")
+    df["rivals_mr"] = (tot - base) / (cnt - 1).where(cnt > 1)
+    df["mr_vs_rivals"] = df.mr_ewm - df.rivals_mr
+    df["mr_rank"] = df.mr_ewm.groupby(df.race).rank(ascending=False, method="min")
+    # the draw at this track and gait, from earlier races only
+    o = df.sort_values(["start", "race"])
+    key = [o.TRACK, o.trot, o.TAB_NUMBER]
+    k = o.groupby(key, sort=False)
+    runs = k.cumcount()
+    wins = k.won.cumsum() - o.won
+    exp = k.p_bsp.transform(lambda x: x.fillna(0).cumsum()) - o.p_bsp.fillna(0)
+    df.loc[o.index, "draw_win_rate"] = (wins + 1) / (runs + 10)
+    df.loc[o.index, "draw_ae"] = (wins + 5) / (exp + 5)
+    df.loc[o.index, "draw_runs"] = runs
+    return df
 
 
 FEATURES = ["DISTANCE", "trot", "TAB_NUMBER", "tab_rel", "field", "n_prev", "days_since", "p_last1", "p_last2",
@@ -98,6 +135,8 @@ FEATURES = ["DISTANCE", "trot", "TAB_NUMBER", "tab_rel", "field", "n_prev", "day
             "last_placed", "last_inplay_min", "last_close_lost", "last_bsp_rank", "dist_change", "same_track",
             "gait_change", "last_tab", "last_field", "log_vol_prev"]
 CATS = ["STATE_CODE", "TRACK", "name_tag"]
+FEATURES_V2 = FEATURES + ["mr_ewm", "mr_best5", "mr_trend", "perf_ewm", "close_ewm", "rivals_mr", "mr_vs_rivals",
+                          "mr_rank", "draw_win_rate", "draw_ae", "draw_runs"]
 
 
 def renorm(p, race):
