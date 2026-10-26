@@ -1,5 +1,26 @@
-{"day": "Tuesday", "date": "27 October", "footer": "Recorded at Betfair SP.",
- "meetings": [{"name": "Swan Hill", "bets": [
-  {"race": 7, "horse": "Habitual", "price": "$6", "rated": "$3.25", "units": "5u"},
-  {"race": 8, "horse": "Mr Butt's Boats", "price": "$21", "rated": "$8.23", "units": "1.80u"}
- ]}]}
+{
+ "day": "Tuesday",
+ "date": "27 October",
+ "footer": "Win bets.",
+ "meetings": [
+  {
+   "name": "Swan Hill",
+   "bets": [
+    {
+     "race": 7,
+     "horse": "Habitual",
+     "price": "BSP",
+     "rated": "$3.25",
+     "units": "5u"
+    },
+    {
+     "race": 8,
+     "horse": "Mr Butt's Boats",
+     "price": "BSP",
+     "rated": "$8.23",
+     "units": "1.80u"
+    }
+   ]
+  }
+ ]
+}
