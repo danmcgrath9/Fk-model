@@ -1,0 +1,72 @@
+{
+ "title": "October",
+ "sub": "88 tips, 1u each",
+ "sections": [
+  {
+   "h": "Winners",
+   "max": 23,
+   "bars": [
+    {
+     "k": "Betfair SP expected",
+     "v": 15.2,
+     "label": "15"
+    },
+    {
+     "k": "We had",
+     "v": 23,
+     "label": "23",
+     "hi": true
+    }
+   ],
+   "lines": [
+    "<b>51% more winners</b> than the final market said they would."
+   ]
+  },
+  {
+   "h": "Our price v Betfair SP",
+   "max": 88,
+   "bars": [
+    {
+     "k": "Tipped bigger than BSP",
+     "v": 65,
+     "label": "65",
+     "hi": true
+    },
+    {
+     "k": "Tipped shorter than BSP",
+     "v": 23,
+     "label": "23"
+    }
+   ],
+   "lines": [
+    "Typical tip: <b>1.4x the Betfair SP</b>."
+   ]
+  },
+  {
+   "h": "Return on stake",
+   "max": 134,
+   "bars": [
+    {
+     "k": "At our tipped price",
+     "v": 134,
+     "label": "+134%",
+     "hi": true
+    },
+    {
+     "k": "At Betfair SP",
+     "v": 57,
+     "label": "+57%"
+    },
+    {
+     "k": "Betfair SP, after commission",
+     "v": 46,
+     "label": "+46%"
+    }
+   ],
+   "lines": [
+    "Back them at the jump and <b>still in profit</b>."
+   ]
+  }
+ ],
+ "end": "We get on early. <span>The market comes to us.</span>"
+}
