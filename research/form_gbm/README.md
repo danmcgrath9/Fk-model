@@ -1393,3 +1393,21 @@ races) produced no top-up while the backtest claimed one every six races. Re-run
 The honest planning figure is the average-price row until the BetMatic watcher records real per-book prices at 30-90 min.
 Price / BSP holds at 1.46 in every row, so the edge is real; the bet count and the size were inflated. Mon 19-Mon 26 Oct at
 the average price: 5 top-ups (Lim's Ida won at $15.50; Superliv, Mr Natural, Litzdeel, Densetsu lost), +15.2u.
+
+## Benter blend weights by time after the open (27 Oct 2026, t_blend_time.py)
+
+chance = ours^a x market^b per race, fitted on the design races (to 13 Oct, 164), scored on the check races (14-26 Oct, 130).
+
+| when | ours a | market b | market share | check log loss: refit / live 0.82-0.22 / ours / market |
+|---|---|---|---|---|
+| open | 0.85 | 0.40 | 32% | 1.9746 / **1.9653** / 1.9749 / 2.0090 |
+| 30 min | 0.60 | 0.70 | 54% | 1.9528 / 1.9575 / 1.9749 / **1.9483** |
+| 45 min | 0.65 | 0.60 | 48% | 1.9449 / 1.9551 / 1.9749 / **1.9368** |
+| 60 min | 0.60 | 0.70 | 54% | 1.9435 / 1.9544 / 1.9749 / **1.9341** |
+| 90 min | 0.55 | 0.75 | 58% | 1.9339 / 1.9520 / 1.9749 / **1.9227** |
+
+The market's share of the best blend rises from about a third at the open to over half by 30 minutes, and on the check
+races the market alone predicts winners better than any blend from 30 minutes on. Betting the 30-90 min check with the
+refit weights did NOT help: all bets +21% vs +28% with the live weights (check half -2% vs +11%), price/BSP 1.35 vs 1.42;
+new horses 1.08x BSP vs 1.25x. Kept: the live 0.82/0.22 value test for the 30-90 min check. The edge after the open is in
+the few horses where our price is far from the market, not in the field as a whole. 294 races; refit at the retrain.
