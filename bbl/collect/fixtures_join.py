@@ -23,12 +23,17 @@ def main(fx_path, d, live):
         f.drop(columns=['competition', 'team1', 'team2']), left_on='match_id', right_on='cricinfo_id', how='left')
     j['date_mismatch'] = j.date.notna() & (j.date != j.start_date)
     j.loc[j.date_mismatch, 'local_time'] = None
-    hour = pd.to_numeric(j.local_time.str.split(':').str[0], errors='coerce')
+    hour = pd.to_numeric(j.local_time.astype('string').str.split(':').str[0], errors='coerce')
     j['start_hour'] = hour
     ctx = j[['match_id', 'local_time', 'start_hour', 'night', 'home_team', 'attendance', 'date_mismatch', 'source_revid']]
-    ctx.to_parquet(os.path.join(d, 'match_context.parquet'), index=False)
-    print(f'match_context: {len(ctx)} matches, {ctx.local_time.notna().sum()} with a start time, '
-          f'{ctx.home_team.notna().sum()} with a marked home side, {int(ctx.date_mismatch.sum())} date mismatches')
+    # fixtures from the current season's pages alone join no held match: then the held match_context is left
+    # alone rather than overwritten with an empty one (the daily price run reads only those two pages)
+    if j.cricinfo_id.notna().any():
+        ctx.to_parquet(os.path.join(d, 'match_context.parquet'), index=False)
+        print(f'match_context: {len(ctx)} matches, {ctx.local_time.notna().sum()} with a start time, '
+              f'{ctx.home_team.notna().sum()} with a marked home side, {int(ctx.date_mismatch.sum())} date mismatches')
+    else:
+        print('these fixtures join no held match: match_context left as it is')
 
     # fixtures Cricsheet does not hold: the pricer's input, per season
     held = set(m.match_id)

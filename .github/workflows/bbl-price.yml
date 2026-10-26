@@ -72,11 +72,12 @@ jobs:
 
       - name: Current season pages, fixtures and squads
         run: |
-          set -e
+          set -eo pipefail
           python -m bbl.collect.wiki bbl/cache/collect/wiki --current | tee -a "$GITHUB_STEP_SUMMARY"
-          python -m bbl.collect.parse_wiki bbl/cache/collect/wiki bbl/cache/collect/current_fixtures.csv | head -1
+          python -m bbl.collect.parse_wiki bbl/cache/collect/wiki bbl/cache/collect/current_fixtures.csv > parse.log; head -1 parse.log
           python -m bbl.collect.fixtures_join bbl/cache/collect/current_fixtures.csv bbl/cache/parquet bbl/cache/collect | tee -a "$GITHUB_STEP_SUMMARY"
-          python -m bbl.collect.parse_squads bbl/cache/collect bbl/cache/collect/current_squads.csv | head -1 | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m bbl.collect.parse_squads bbl/cache/collect bbl/cache/collect/current_squads.csv > squads.log; head -1 squads.log | tee -a "$GITHUB_STEP_SUMMARY"
+          ls bbl/cache/collect/fixtures_*.csv
 
       - name: Price the next days and log
         run: |
