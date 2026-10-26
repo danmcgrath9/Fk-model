@@ -140,6 +140,43 @@ def p_over(mu, line, a):
     return 1 - stats.nbinom.cdf(np.floor(line), n, n / (n + np.asarray(mu, float)))
 
 
+SHOT_DRAWS = 3000
+
+
+def shot_draws(d, mu, min_sd, seed=12345):
+    """Points as shots: minutes ~ normal(min_hat, min_sd), two-point, three-point and free-throw attempts
+    Poisson from the player's per-minute rates, makes binomial at his shrunk percentages; then rescaled so
+    the draws' mean is the projection (the model owns the mean, the shots own the shape). One row per player."""
+    rng = np.random.default_rng(seed)
+    n = len(d)
+    m = np.clip(rng.normal(d.min_hat.to_numpy(float)[:, None], min_sd, (n, SHOT_DRAWS)), 1, 48)
+    fga, fg3a, fta = (d[c].to_numpy(float)[:, None] for c in ('r_fga', 'r_fg3a', 'r_fta'))
+    pct3 = np.clip(d.r_fg3m.to_numpy(float) / np.clip(d.r_fg3a.to_numpy(float), 1e-4, None), 0.05, 0.7)[:, None]
+    pct_fg = np.clip(d.r_fgm.to_numpy(float) / np.clip(d.r_fga.to_numpy(float), 1e-4, None), 0.2, 0.8)[:, None]
+    fga2 = np.clip(fga - fg3a, 1e-4, None)
+    pct2 = np.clip((pct_fg * fga - pct3 * fg3a) / fga2, 0.2, 0.85)
+    pctft = np.clip(d.r_ftm.to_numpy(float) / np.clip(d.r_fta.to_numpy(float), 1e-4, None), 0.3, 0.98)[:, None]
+    pts = (2 * rng.binomial(rng.poisson(fga2 * m), pct2) + 3 * rng.binomial(rng.poisson(fg3a * m), pct3)
+           + rng.binomial(2 * rng.poisson(fta * m / 2), pctft)).astype(float)
+    scale = np.asarray(mu, float) / np.clip(pts.mean(1), 0.1, None)
+    return np.rint(pts * scale[:, None])
+
+
+def chance_over(mk, d, mu, line, c):
+    """Our chance of finishing above a .5 line: shot simulation for points when chosen on the tuning season
+    (c['shots']), else the negative binomial with the projection-dependent spread."""
+    mu, line = np.asarray(mu, float), np.asarray(line, float)
+    if mk == 'pts' and c.get('shots'):
+        draws = shot_draws(d, mu, c['min_sd'])
+        return (draws > line[:, None]).mean(1)
+    return p_over(mu, line, spread(c, mu))
+
+
+def line_logloss(y, po, line):
+    po = np.clip(po, 1e-4, 1 - 1e-4)
+    return float(np.mean(np.where(np.asarray(y) > np.asarray(line), -np.log(po), -np.log(1 - po))))
+
+
 MIN_LINE = {'pts': 7.5, 'reb': 2.5, 'ast': 1.5, 'fg3m': 0.5, 'pra': 11.5}   # books post props on rotation players
 
 
@@ -233,9 +270,19 @@ def project(p, fit_range=FIT, tune_season=TUNE):
         e[f'{mk}_hat'] = e[f'{mk}_{pick}']
         a = fit_dispersion(tu[mk], tu[f'{mk}_{pick}'])
         a0, k = fit_spread(tu[mk], tu[f'{mk}_{pick}'])
-        choice[mk] = dict(pick=pick, dev=dev, a=a, a0=a0, k=k, coef=dict(zip(['const'] + list(X_f.columns), np.round(b, 3))),
+        choice[mk] = dict(pick=pick, dev=dev, a=a, a0=a0, k=k, min_sd=float(np.std(tu['min'] - tu.min_hat)), coef=dict(zip(['const'] + list(X_f.columns), np.round(b, 3))),
                           mae={k: float(np.abs(tu[mk] - tu[f'{mk}_{k}']).mean()) for k in ('struct', 'direct', 'blend')},
                           mae_l10=float(np.abs(tu[mk] - tu[f'{mk}_l10']).mean()))
+    # points: shots or negative binomial, whichever prices three lines around the projection better on the tuning season
+    c, tu = choice['pts'], e[done & (e.season == tune_season)]
+    mu = tu.pts_hat.to_numpy()
+    lls = {}
+    for shots in (False, True):
+        c['shots'] = shots
+        lls[shots] = np.mean([line_logloss(tu.pts, chance_over('pts', tu, mu, np.floor(mu) + off, c), np.floor(mu) + off)
+                              for off in (-1.5, 0.5, 2.5)])
+    c['shots'] = lls[True] < lls[False]
+    c['line_logloss'] = lls
     return e, choice, info
 
 
@@ -296,7 +343,7 @@ def run(cache, out_md):
             shifts[(mk, col)] = even_shift(tune[mk].to_numpy(), tune[f'{mk}_{col}'].to_numpy())
         d = e[e.season.isin(CONFIRM)].copy()
         d['line'] = stand_in_line(d[f'{mk}_l10'], shifts[(mk, 'l10')])
-        d['po'] = p_over(d[f'{mk}_hat'], d.line, spread(choice[mk], d[f'{mk}_hat']))
+        d['po'] = chance_over(mk, d, d[f'{mk}_hat'], d.line, choice[mk])
         d['bin'] = pd.cut(d.po, [0, .3, .4, .5, .6, .7, 1])
         for bn, x in d.groupby('bin', observed=True):
             W(f'| {NAMES[mk]} | {bn.left:.0%} to {bn.right:.0%} | {len(x)} | {(x[mk] > x.line).mean():.0%} |')
@@ -317,7 +364,7 @@ def run(cache, out_md):
                 d['line'] = stand_in_line(d[f'{mk}_{col}'], shifts[(mk, col)])
                 d = marketable(d, mk)
                 d['y'] = d[mk]
-                d['p_over'] = p_over(d[f'{mk}_hat'], d.line, spread(choice[mk], d[f'{mk}_hat']))
+                d['p_over'] = chance_over(mk, d, d[f'{mk}_hat'], d.line, choice[mk])
                 for thr in (0.56, 0.60):
                     b = bets(d, thr)
                     roi, lo, hi = roi_ci(b)
@@ -364,7 +411,7 @@ def run(cache, out_md):
                 d['line'] = stand_in_line(d[f'{mk}_{col}'], shifts[(mk, col)])
                 d = marketable(d, mk)
                 d['y'] = d[mk]
-                d['p_over'] = p_over(d[f'{mk}_hat'], d.line, spread(choice[mk], d[f'{mk}_hat']))
+                d['p_over'] = chance_over(mk, d, d[f'{mk}_hat'], d.line, choice[mk])
                 d['price_over'], d['price_under'] = naive_book(d, mk, col, k, a_n)
                 for edge in (0.03, 0.08):
                     b = value_bets(d, edge)
@@ -397,7 +444,7 @@ def run(cache, out_md):
             cells = []
             for mu in (d[f'{mk}_hat'].to_numpy(), rng.permutation(d[f'{mk}_hat'].to_numpy()),
                        (0.5 * d[f'{mk}_l10'] + 0.5 * d.min_ew * rate).to_numpy()):
-                d['p_over'] = p_over(mu, d.line, spread(choice[mk], mu))
+                d['p_over'] = chance_over(mk, d, mu, d.line, choice[mk])
                 b = value_bets(d, 0.03)
                 cells.append(f'{len(b):,}, {roi_ci(b)[0]:+.1%}')
             W(f'| {NAMES[mk]} | {label} | ' + ' | '.join(cells) + ' |')
@@ -414,7 +461,7 @@ def run(cache, out_md):
         d['line'] = stand_in_line(d[f'{mk}_l10'], shifts[(mk, 'l10')])
         d = marketable(d, mk)
         d['y'] = d[mk]
-        d['p_over'] = p_over(d[f'{mk}_hat'], d.line, spread(choice[mk], d[f'{mk}_hat']))
+        d['p_over'] = chance_over(mk, d, d[f'{mk}_hat'], d.line, choice[mk])
         d['price_over'], d['price_under'] = naive_book(d, mk, 'l10', k, a_n)
         b = value_bets(d, 0.03)
         cuts = np.unique(np.quantile(d.line, [0, 1 / 3, 2 / 3, 1]))

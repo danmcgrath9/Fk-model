@@ -46,12 +46,18 @@ def build(cache, days):
     return games, p, tg, now
 
 
-def fair_line(mu, a):
-    """The .5 line closest to an even chance, and our chance of the over there."""
+def fair_line(mk, row, mu, c):
+    """The .5 line closest to an even chance, our chance of the over there, and a function giving our
+    chance at any line (shot simulation for points when chosen, else the negative binomial)."""
     lines = np.arange(0.5, max(60.5, mu * 3), 1.0)
-    po = props.p_over(np.full(len(lines), mu), lines, a)
+    if mk == 'pts' and c.get('shots'):
+        draws = props.shot_draws(row, np.array([mu]), c['min_sd'])[0]
+        chance = lambda L: float((draws > L).mean())
+    else:
+        chance = lambda L: float(props.p_over(np.array([mu]), np.array([L]), props.spread(c, mu))[0])
+    po = np.array([chance(L) for L in lines])
     i = int(np.argmin(np.abs(po - 0.5)))
-    return float(lines[i]), float(po[i])
+    return float(lines[i]), float(po[i]), chance
 
 
 def run(cache, out_dir, days=8):
@@ -125,16 +131,17 @@ def run(cache, out_dir, days=8):
         L += [f'### {gm.home} v {gm.away}, {tip}', '',
               '| player | team | minutes | ' + ' | '.join(props.NAMES[m] for m in MARKETS) + ' |',
               '|---|---|---|' + '---|' * len(MARKETS)]
-        for x in d.itertuples():
+        for i, x in enumerate(d.itertuples()):
+            row = d.iloc[[i]]
             cells = []
             for mk in MARKETS:
-                mu = getattr(x, f'{mk}_hat'); a = float(props.spread(choice[mk], mu))
-                ln, po = fair_line(mu, a)
+                mu = getattr(x, f'{mk}_hat')
+                ln, po, chance = fair_line(mk, row, mu, choice[mk])
                 cells.append(f'{mu:.1f} (o{ln} {1 / po:.2f} / u {1 / (1 - po):.2f})')
                 for l2 in (ln - 1, ln, ln + 1):
                     if l2 < 0:
                         continue
-                    q = float(props.p_over(np.array([mu]), np.array([l2]), a)[0])
+                    q = chance(l2)
                     rows.append(dict(kind='prop', game=gm.game, tip=gm.tip, home=gm.home, away=gm.away, team=x.team, player=x.player,
                                      market=mk, side='over', line=l2, p=q, fair=1 / q if q > 0 else np.nan, mu=mu))
             L.append(f'| {x.player} | {x.team.split()[-1]} | {x.min_hat:.0f} | ' + ' | '.join(cells) + ' |')
