@@ -253,6 +253,36 @@ def movers_test(cache, out_md):
     print('\n'.join(rep))
 
 
+def grounds_test(cache, out_md):
+    """Ground shape and size, measured per stat and per position (afl/model/grounds.py). Appends to the report."""
+    from afl.model import grounds as GR
+    from afl.model.walkforward import prepare
+    base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
+    rep = ['## Ground shape and size', '',
+           'What each ground has done lately to each stat, overall and for each position group, and how often the player '
+           'has played there. Fitted 2013-2023, tuned 2024, scored 2025-2026; also scored at the grounds most unlike the '
+           'MCG (Kardinia Park, the SCG, the Gabba, Docklands).', '',
+           '| stat | log-lik change (all) | at those four grounds | kept |', '|---|---|---|---|']
+    odd = {'Kardinia Park', 'S.C.G.', 'Gabba', 'Docklands'}
+    kept = {}
+    for stat, label in STATS.items():
+        m, feats, _ = prepare(base, cache, stat)
+        m = GR.add(m, stat)
+        m = P.eligible(m)
+        m = m[m[f'{stat}_l10'].notna()]
+        tr, tu, te = m[m.season.between(2013, 2023)], m[m.season == 2024], m[m.season.isin([2025, 2026])]
+        ll0, _ = score(tr, tu, te, feats, stat)
+        ll, _ = score(tr, tu, te, feats + GR.columns(stat), stat)
+        d = ll - ll0
+        se = d.std() / np.sqrt(len(d))
+        k = te.venue.isin(odd).to_numpy()
+        kept[stat] = bool(d.mean() > 2 * se)
+        rep.append(f'| {label} | {d.mean():+.4f} ± {se:.4f} | {d[k].mean():+.4f} ± {d[k].std() / np.sqrt(k.sum()):.4f} ({k.sum():,}) | {"yes" if kept[stat] else "no"} |')
+        print(stat, 'grounds', f'{d.mean():+.4f} ± {se:.4f}', flush=True)
+    open(out_md, 'a').write('\n'.join(rep) + '\n\n')
+    print('\n'.join(rep))
+
+
 def run(cache, out_md):
     base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
     rep = ['# Research ideas, tested without bookmaker lines', '',
@@ -271,6 +301,9 @@ def run(cache, out_md):
 if __name__ == '__main__':
     if len(sys.argv) > 3 and sys.argv[3] == 'positions':
         position_test(sys.argv[1], sys.argv[2])
+        sys.exit()
+    if len(sys.argv) > 3 and sys.argv[3] == 'grounds':
+        grounds_test(sys.argv[1], sys.argv[2])
         sys.exit()
     if len(sys.argv) > 3 and sys.argv[3] == 'movers':
         movers_test(sys.argv[1], sys.argv[2])

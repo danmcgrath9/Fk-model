@@ -123,3 +123,16 @@ Games at his current club, a new-club flag (first 16 games after 20+ elsewhere),
 Not adopted from the test above: nothing about a club move earns a place. Recent movers are projected about as well as
 everyone else, because their form inputs follow them across clubs, and the "lifts against his old club" effect is
 not there in 274 such games in 2025-2026 (all four stats within their noise).
+## Ground shape and size
+
+What each ground has done lately to each stat, overall and for each position group, and how often the player has played there. Fitted 2013-2023, tuned 2024, scored 2025-2026; also scored at the grounds most unlike the MCG (Kardinia Park, the SCG, the Gabba, Docklands).
+
+| stat | log-lik change (all) | at those four grounds | kept |
+|---|---|---|---|
+| disposals | +0.0002 ± 0.0003 | +0.0002 ± 0.0005 (6,709) | no |
+| marks | +0.0010 ± 0.0005 | +0.0014 ± 0.0009 (6,709) | yes |
+| tackles | -0.0008 ± 0.0003 | +0.0005 ± 0.0004 (6,709) | no |
+| goals | +0.0001 ± 0.0002 | +0.0003 ± 0.0004 (6,709) | no |
+
+Adopted from the test above: ground shape and size for marks only (`GROUND_STATS` in afl/model/walkforward.py), on
+the line (+0.0010 ± 0.0005). The overall disposal level of each ground was already in the model (venue_rel).
