@@ -4,7 +4,8 @@ shown beside it, never used to qualify.
   (A) horses we hold: still clear the live minimum (edge 1.15 under $4, else 1.2), not 20%+ out from the open:
       top up the shortfall (target at this price minus what filled at the open). Paper.
   (B) new horses: edge 1.3, not 20%+ out, ours $1.60-$15, under 3x ours, not in a first-starter race. Real bets.
-Twitter units = half the rule stake at that price, max 5u. Prints the tweet draft in the founder's format (27 Oct:
+Twitter units = half the FULL rule stake at that price, max 5u (the Twitter book takes no open bets), so a held horse
+already filled in full is still a Twitter tip with a 0u book top-up. Prints the tweet draft in the founder's format (27 Oct:
 "the book (if it's multiple say multiple), the race - number - horse name - units").
     python3.13 topup_meeting.py FLUC_CSV V6_JSON FIRST_STARTERS_JSON ["Horse=filled_units;Horse=..."] [--upto m60]"""
 import sys, csv, json, collections, stake_rule
@@ -46,13 +47,14 @@ for rn in sorted(byr):
         for c in W:
             if not x[c] or float(x[c]) / op >= 1.2: continue
             t = float(x[c]); st, mo = target(p, t, (1.15 if t < 4 else 1.2) if mine else 1.3)
+            full = st
             if mine: st = max(0.0, st - held[nm.lower()])
-            if st > 0:
+            if full > 0:
                 bb = [b for b in x["best_bookies"].split() if b]
                 book = "Multiple" if len(bb) > 1 else (BOOK.get(bb[0], bb[0].title()) if bb else "?")
                 (A if mine else B).append(dict(race=rn, num=x["number"], horse=nm, ours=1 / p, open=op, when=c[1:], avg=t,
                                                best=x["best_now"], books=" ".join(BOOK.get(b, b) for b in bb), book=book,
-                                               mo=mo, units=round(st, 2), tw=round(min(5.0, st / 2), 2)))
+                                               mo=mo, units=round(st, 2), tw=round(min(5.0, full / 2), 2)))
                 break
 for lab, L_ in (("(A) TOP-UP, horses we hold (paper)", A), ("(B) NEW HORSES (real bets, your OK)", B)):
     print(f"\n## {lab}\n")
