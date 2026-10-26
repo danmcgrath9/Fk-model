@@ -420,8 +420,8 @@ the rest tied behind), added to v0 and relative to the field.
 | 2024-2026 window, with early speed, scored from Jan 2026 | 26,702 | 1.6542 | **1.6228** | 1.6346 | 1.4703 | 1.4654 |
 | first half / second half | | 1.6612 / 1.6472 | 1.6305 / 1.6152 | 1.6405 / 1.6287 | | 1.4717 / 1.4593 |
 
-v0 + Elo now beats Iggy in both windows and both halves: by 0.004 over 2025-26 (ahead in 13 of 21 months, level or
-behind in the 8 from Jan to Nov 2025) and by 0.012 in 2026 with early speed (ahead in all 9 months). Blended with the
+v0 + Elo now beats Iggy in both windows and both halves: by 0.004 over 2025-26 (ahead in 16 of 21 months, behind in
+Jan-Mar and Oct-Nov 2025) and by 0.012 in 2026 with early speed (ahead in all 9 months). Blended with the
 market it still adds nothing: + WAP +0.0003, + BSP +0.0001, our weight slightly negative. **What it means**: the first
 real step beyond Iggy came from the strength rating, from finishing order alone; the market still prices everything v0
 knows. The same Elo on Topaz's full finishing order and margins is the next step.
