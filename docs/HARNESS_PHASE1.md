@@ -234,3 +234,51 @@ What it says:
 4. Done 26 Oct (founder OK): an Australian-venue filter (config/harness_au_tracks.txt), races more than 6 hours out asked every 10 minutes instead of 2, and the workflow scheduled four times a day (about 5am, 10:30am,
    4pm and 9:30pm Sydney, 5.5 hours each), which covers about 22 hours a day with half-hour gaps. Free while the
    repository is public.
+
+## Test 5b: the recorder's second run, Monday morning (26 Oct 2026, run 40245645282, cancelled at 2:16pm)
+
+Australian venues only, lighter polling. Cancelled at 2:16pm Sydney by us (founder: "don't get my TAB limited"); the
+record was kept. Monday's four Australian meetings (Dubbo, Globe Derby, Hamilton, Pinjarra: 32 races) were already
+priced at the run's first look at 10:38am, by TAB and Sportsbet together, and they had not been at 12:51am, so they
+opened between 1am and 10:38am on race day (the bracket, about 9.9 hours, is honest and too wide to use). Tuesday's
+42 races were not open by 2:16pm Monday. So Australian harness markets open on the MORNING OF RACE DAY: a recorder
+only has to watch race-day mornings, which is a small fraction of the reads of round-the-clock watching. The schedule
+is paused until the founder decides how far odds reads through his TAB session may go.
+
+## Test 6: model v2 and v3, and a ranking model (26 Oct 2026, hx_model.py, runs 40262142697 and 40263348982)
+
+Same splits as Test 3 (train to 30 Jun 2024, validation Jul-Dec 2024, holdout 24,111 races 2025-26 in two halves).
+v2 adds each horse's market rating per run, log(BSP chance x field), smoothed, best and trend; how it ran against its
+price and in running; its rating against today's rivals and its rank in the field; and point-in-time draw records by
+track, gait and TAB number. v3 adds its record in the place market (placed minus place-BSP chance, smoothed), its
+in-running high last start, the class move (today's rivals against last start's) and its rating at this track and
+distance band. A test pins that every input uses earlier races only.
+
+| inputs | LL 1st half | LL 2nd half | KL to BSP 1st half | KL 2nd half | gap to BSP closed |
+|---|---|---|---|---|---|
+| v1 (Test 3) | 2.1017 | 2.1026 | 0.4934 | 0.5185 | 13.9% |
+| v2 | 2.0966 | 2.1017 | 0.4893 | 0.5159 | 14.4% |
+| **v3** | **2.0844** | **2.0916** | **0.4776** | **0.5045** | **16.3%** |
+| v3 as a ranking model (lambdarank, winner 2, placed 1) | 2.1029 | 2.1065 | 0.4966 | 0.5213 | 13.5% |
+
+v3 is better than v2 in both halves on both measures, and closes 12% to 21% of the gap by month (every month). Its
+biggest inputs by gain: rating against today's rivals 16.6%, track 16.0%, field 6.2%, class move 5.9%, rating at this
+track 4.7%, draw win rate 4.0%. The ranking objective is worse than the win model on the same inputs; dropped.
+
+## Test 7: Benter's second stage (26 Oct 2026, hx_stage2.py)
+
+Founder: "Are we doing a Benter style model?" Yes in structure: stage 1 (the fundamental model), then stage 2,
+log p = a x log(model) + b x log(market), fitted on validation. The market for live bets will be the open; until enough
+opens are recorded the pre-play weighted average price (WAP) stands in for it.
+
+| price | LL 1st half | LL 2nd half | KL to BSP 1st half | KL 2nd half |
+|---|---|---|---|---|
+| v3 model alone | 2.0845 | 2.0918 | 0.4777 | 0.5045 |
+| pre-play WAP alone | 1.5942 | 1.5794 | 0.0084 | 0.0107 |
+| stage 2: model + WAP (fitted: a = 0.00, b = 1.00) | 1.5942 | 1.5794 | 0.0084 | 0.0107 |
+| BSP | 1.5899 | 1.5697 | 0 | 0 |
+
+Same answer with v2 (a = 0.00). The fit gives the model NO weight: a model built from a horse's past Betfair prices
+knows nothing the market does not, because those prices are the market's own opinion. Benter's edge came from form the
+market had not fully priced; this is the measured case for waiting on RISE's form and sectionals. Stage 1 can still be
+made closer to BSP on Betfair data, but no bet should be expected from it until stage 2 gives the model a weight.
