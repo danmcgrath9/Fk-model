@@ -83,17 +83,32 @@ def slate(sched: pd.DataFrame, day: str) -> pd.DataFrame:
     return s[["game_id", "start_date", "home_id", "away_id", "home_abbreviation", "away_abbreviation"]]
 
 
-def placeholders(box: pd.DataFrame, games: pd.DataFrame, day: str) -> pd.DataFrame:
-    """Tonight's rows, one per player whose latest appearance was for that team within the
-    last 200 days. Their stats are blank; every feature comes from earlier games."""
+def placeholders(box: pd.DataFrame, games: pd.DataFrame, day: str, raw: pd.DataFrame) -> pd.DataFrame:
+    """Tonight's rows. A team's candidates: everyone on its most recent game sheet this season
+    (played or not, so new signings and benched players are there), plus players whose latest
+    appearance was for that team within 200 days and who are not on another team's latest
+    sheet (an offseason move would otherwise leave a player on his old team). Stats blank;
+    every feature comes from earlier games."""
+    season = int(box.season.max()) + 1                      # SportsDataVerse naming
+    r = raw[(raw.season == season) & (pd.to_datetime(raw.game_date).dt.strftime("%Y-%m-%d") < day)]
+    last_game = r.sort_values("game_date").groupby("team_id").game_id.last()
+    sheet = r[r.game_id.isin(last_game.values)][["team_id", "athlete_id", "athlete_display_name", "team_abbreviation"]]
+    on_sheet = dict(zip(sheet.athlete_id.astype(int), sheet.team_id.astype(int)))
     last = box.sort_values("date").groupby("personId").tail(1)
     recent = last[pd.to_datetime(last.date) >= pd.to_datetime(day) - timedelta(days=200)]
     rows = []
     for g in games.itertuples():
         for team, opp, home in [(g.home_id, g.away_id, True), (g.away_id, g.home_id, False)]:
-            for p in recent[recent.teamId == int(team)].itertuples():
-                rows.append({"gameId": int(g.game_id), "personId": p.personId, "teamId": int(team),
-                             "opp_teamId": int(opp), "date": day, "home": home, "team": p.team, "name": p.name,
+            team = int(team)
+            cand = {pid: (nm, ESPN_TO_NBA.get(ab, ab)) for pid, nm, ab in
+                    sheet[sheet.team_id == team][["athlete_id", "athlete_display_name", "team_abbreviation"]]
+                    .itertuples(index=False)}
+            for pl in recent[recent.teamId == team].itertuples():
+                if on_sheet.get(pl.personId, team) == team:
+                    cand.setdefault(pl.personId, (pl.name, pl.team))
+            for pid, (nm, ab) in cand.items():
+                rows.append({"gameId": int(g.game_id), "personId": int(pid), "teamId": team,
+                             "opp_teamId": int(opp), "date": day, "home": home, "team": ab, "name": nm,
                              "season": int(box.season.max()), "game_ok": True, "game_minutes": 48,
                              "starter": np.nan, "tip": g.start_date})
     return pd.DataFrame(rows)
@@ -134,20 +149,64 @@ def report_status(rep: pd.DataFrame, tonight: pd.DataFrame, day: str, label: str
                          "Current Status": s["Current Status"].astype(str)}).astype({"date": str, "report_time": str})
 
 
-def score_past(box: pd.DataFrame) -> None:
-    files = sorted((HERE / "projections").glob("*.csv"))
-    if not files:
-        return
+def pregame_rows() -> pd.DataFrame:
+    """One row per player-game: from the LAST projection file made before that game's tip."""
     rows = []
-    for f in files:
+    for f in sorted((HERE / "projections").glob("*.csv")):
         p = pd.read_csv(f)
-        a = p.merge(box[["date", "personId", "min", "pts", "reb", "ast", "fg3m"]], on=["date", "personId"])
-        if a.empty:
+        if p.empty:
             continue
-        rows.append({"file": f.name, "players": len(a), **{f"miss_{s}": (a[f"{s}_proj"] - a[s]).abs().mean()
-                                                            for s in ["min", "pts", "reb", "ast", "fg3m"]}})
-    if rows:
-        pd.DataFrame(rows).round(3).to_csv(HERE / "scorecard.csv", index=False)
+        made = pd.Timestamp(f"{f.stem[:10]} {f.stem[11:13]}:{f.stem[13:15]}", tz=ET)
+        p = p[pd.to_datetime(p.tip, utc=True) > made]
+        rows.append(p.assign(made=made))
+    if not rows:
+        return pd.DataFrame()
+    return pd.concat(rows).sort_values("made").groupby(["gameId", "personId"]).tail(1)
+
+
+def score_past(box: pd.DataFrame) -> pd.DataFrame:
+    """scorecard.csv: per game day, the average miss of the last pre-game projection, for all
+    projected players and for those averaging 20+ minutes, beside a naive baseline (his
+    recent minutes average) for minutes."""
+    p = pregame_rows()
+    if p.empty:
+        return p
+    a = p.merge(box[["date", "personId", "min", "pts", "reb", "ast", "fg3m"]], on=["date", "personId"])
+    if a.empty:
+        return a
+    out = []
+    for (day, grp), g in a.assign(grp=np.where(a.min_ewm5 >= 20, "20+ min", "10-20 min")).groupby(["date", "grp"]):
+        out.append({"date": day, "players": grp, "n": len(g),
+                    "miss_min": (g.min_proj - g["min"]).abs().mean(),
+                    "miss_min_naive": (g.min_ewm5 - g["min"]).abs().mean(),
+                    **{f"miss_{s}": (g[f"{s}_proj"] - g[s]).abs().mean() for s in ["pts", "reb", "ast", "fg3m"]}})
+    pd.DataFrame(out).round(3).to_csv(HERE / "scorecard.csv", index=False)
+    return a
+
+
+def calibrate(a: pd.DataFrame, today: str) -> None:
+    """Rolling recalibration (tested on 2024/25-2025/26: closes the 2-4 point gap in points
+    over-rates): per stat, the logit shift that makes our P(over) match what happened over
+    the last 30 days, on synthetic half-point lines around each projection. Saved for pricing
+    against real lines; needs 500+ player-games, else 0."""
+    import probability as pb
+    from scipy import optimize
+    var = {k: np.array(v) for k, v in json.loads((HERE / "variance.json").read_text()).items()}
+    a = a[(pd.to_datetime(a.date) >= pd.to_datetime(today) - timedelta(days=30)) & (a.min_ewm5 >= 20)]
+    rng = np.random.default_rng(0)
+    out = {"made": today, "window_days": 30, "players": int(len(a))}
+    for st in pr.TARGETS:
+        if len(a) < 500:
+            out[st] = 0.0
+            continue
+        mu = np.maximum(a[f"{st}_proj"].to_numpy(), 0.05)
+        line = np.maximum(np.floor(mu + rng.uniform(-3, 3, len(mu)) * (1.5 if st == "pts" else 0.6)) + 0.5, 0.5)
+        o, _ = pb.p_over_under(mu, line, var[st])
+        z = pb.logit(o)
+        y = (a[st].to_numpy() > line).astype(float)
+        out[st] = float(optimize.minimize_scalar(lambda c: np.sum(np.logaddexp(0, c + z) - y * (c + z)),
+                                                 bounds=(-1, 1), method="bounded").x)
+    (HERE / "calibration.json").write_text(json.dumps(out, indent=1))
 
 
 def main(argv: list[str]) -> int:
@@ -156,7 +215,9 @@ def main(argv: list[str]) -> int:
     current = int(day[:4]) + (1 if int(day[5:7]) >= 8 else 0)
     raw, sched = load(current)
     box = to_box(raw)
-    score_past(box)
+    scored = score_past(box)
+    if len(scored):
+        calibrate(scored, day)
     games = slate(sched, day)
     if not argv:   # live: only games that have not started, so every saved row is pre-game
         games = games[pd.to_datetime(games.start_date, utc=True) > pd.Timestamp(now) + pd.Timedelta(minutes=5)]
@@ -164,7 +225,7 @@ def main(argv: list[str]) -> int:
         print(f"{day}: no NBA games left to tip off.")
         return 0
     box = box[box.date < day]
-    tonight = placeholders(box, games, day)
+    tonight = placeholders(box, games, day, raw)
     df = F.build(pd.concat([box, tonight.drop(columns=["tip"])], ignore_index=True))
     when, rep = latest_report(now) if not argv else (None, None)
     label = when.strftime("%H:%M") if when else "none"
