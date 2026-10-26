@@ -1332,3 +1332,27 @@ medians hid it. The tote pays only on the winner, and winners are where it gets 
 winners paid under bookie SP (median -10%), while only 43% of all runners' final tote odds were under SP. Stored past runs,
 winners: under SP on World Pool days 44% (median tote/SP 1.00, tote/BSP 0.82), other metro Saturdays 33% (1.03, 0.90),
 other meetings 21% (1.07, 0.92). Late money into the pool lands on the winners. scripts/meeting_tote.py does any meeting.
+
+## Betting after the open (26 Oct 2026, founder: "how profitable are we after the market opens if all accounts are available")
+
+`scripts/fluc_after_open.py` (corporate-average flucs from the archive) joined to the v10 holdout by `t_after_open.py`.
+The live rule (E 1.15/1.2, $1.60-$15, 3x ceiling, steps, 10u cap) decided and settled at the average price standing at
+each time; "best" = average x the final best/average ratio (median 1.10; per-account history does not exist). No
+deductions. 161 Vic races, 1 Sep to 13 Oct (the only stretch where the archive flucs and the holdout overlap), 36 winners
+on the open bets, so the P/L has wide error bars (open: +3% to +66%, 90% range); price taken / BSP is the steadier read.
+
+| when | bets | staked | P/L avg price | ROI | P/L best of accounts | ROI | price taken / BSP |
+|---|---|---|---|---|---|---|---|
+| open | 211 | 462u | +180u | +39% | +227u | +49% | 1.59 |
+| 15 min after | 168 | 383u | +88u | +23% | +123u | +32% | 1.42 |
+| 1 hour after | 161 | 347u | +78u | +22% | +108u | +31% | 1.34 |
+| 3 hours after | 154 | 335u | +84u | +25% | +114u | +34% | 1.35 |
+| 6 hours after | 156 | 328u | +67u | +21% | +96u | +29% | 1.36 |
+| 12 hours after | 150 | 326u | +31u | +10% | +54u | +16% | 1.37 |
+| 9:30am race day | 59 | 110u | -41u | -37% | -35u | -32% | 0.91 |
+| 1 hour before | 80 | 145u | -3u | -2% | +14u | +10% | 0.86 |
+| last price | 112 | 194u | -37u | -19% | -20u | -10% | 0.79 |
+
+The open bets' own horses: median price 0.91x the open after 15 minutes, 0.81x after an hour, 0.54x by 9:30am race day.
+The edge roughly halves in the first hour, holds through the day before, and is gone by race morning. The same bets at
+BSP lost 21% in this window (a poor six weeks at BSP; October's tips were +73u at BSP), which is the noise warning.
