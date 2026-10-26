@@ -65,7 +65,8 @@ for lab, L_ in (("(A) TOP-UP, horses we hold (paper)", A), ("(B) NEW HORSES (rea
               f"${b['best']} ({b['books'][:60]}) | ${b['mo']:.2f} | {b['units']:.2f}u | {b['tw']:.2f}u |")
 tips = sorted(A + B, key=lambda b: (b["race"], b["num"]))
 # Tweet drafts, one per race (founder 27 Oct: "Need the odds. Do it something like this", Anthony Don's layout:
-# TRACK R1 - DAY / horse - $best BOOK / $avg OTHERS / units WIN). Best book named, "MULTIPLE" when several share it.
+# TRACK R1 - DAY / horse - $best BOOK / $avg OTHERS / units WIN). Founder picked option 2 (27 Oct): one horse emoji on
+# the title, the price on its own line, and our rated price under the units. Best book named, "MULTIPLE" when several share it.
 import datetime as _dt
 track = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--track=")), "")
 def _day(rid):
@@ -74,10 +75,10 @@ rid_of = {int(r["race"]): r["race_id"] for r in R}
 print("\n## Tweet drafts (one per race)\n")
 if not tips: print("(no tips)")
 for rn in sorted({b["race"] for b in tips}):
-    lines = [f"{track.upper()} R{rn} - {_day(rid_of[rn])}", ""]
+    lines = [f"{track.upper()} R{rn} - {_day(rid_of[rn])} \U0001F3C7", ""]
     for b in [t for t in tips if t["race"] == rn]:
         best = float(b["best"]) if b["best"] else b["avg"]
         book = "MULTIPLE" if b["book"] == "Multiple" else b["book"].upper()
         px = f"${best:.2f} {book} / ${b['avg']:.2f} OTHERS" if best > b["avg"] + 0.005 else f"${b['avg']:.2f} ALL BOOKS"
-        lines += [f"{b['num']}. {b['horse'].upper()} - {px}", f"{b['tw']:g} units WIN", ""]
+        lines += [f"{b['num']}. {b['horse'].upper()}", px, f"{b['tw']:g} units WIN", "", f"Rated ${b['ours']:.2f}.", ""]
     print("\n".join(lines).rstrip() + "\n\n---\n")
