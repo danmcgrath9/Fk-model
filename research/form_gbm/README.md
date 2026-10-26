@@ -1428,3 +1428,21 @@ and price/BSP; P/L is a few dozen winners a cell.
 - Our price band, field size: flip sign between halves. Noise. Not used.
 - Flat 1u vs the blend stake: mixed (design +35% vs +32%, check +55% vs +14%); the stake rule leans on short prices, which
   lost on the check half. Watch, do not change.
+
+## What our losers and big drifters have in common (27 Oct 2026, t_drifters.py, t_drifters2.py)
+
+Open bets under the live rule on the v10 holdout (3 Jun-13 Oct): 1,421 bets, +32% at the open less 16c.
+- THE MONEY IS IN THE FIRMERS. Firmed 40%+ to BSP: 507 bets, +89%; 20-40%: +25%; up to 20%: +11%. Every drifting group
+  loses at the open price: drifted up to 25% -69% (6 winners from 144, 15 expected at BSP), 25-60% -37%, 60%+ -21%.
+- Big drifters (BSP 25%+ over the open, 167) against firmers (891): THIN FORM. First starters 20% vs 8%, unrated 21% vs 8%,
+  3 or fewer starts 43% vs 28%, first up 35% vs 21%; weaker first/second-up records, beaten further in the last three,
+  lower prize-money class, our price longer ($8.23 vs $6.82), a smaller overlay (open 1.61x our price vs 1.82x), and a
+  looser opening book (market 111% vs 100%). Horses with little form for us to read, where the market learns what we
+  cannot see (trials, stable confidence).
+- Spotting them before the open: a cross-fitted GBM finds some (AUC 0.74 / 0.65 by half), but dropping the 20% most
+  likely drifters lifts price/BSP only 1.58 -> 1.63 and 1.57 -> 1.61, and that slice still made +20% / +19% at 1.32x BSP.
+  Dropping them gives up profit; staking them smaller is the right response, which the live drift-forecast multiplier
+  (x0.5 on forecast drifters) already does. Dropping first starters or 3-or-fewer-starts horses outright does not help
+  (both groups were profitable at the open).
+- Next: the thin-form gap is a DATA gap (barrier trials, stable information). Pricing from trial sectionals is the
+  feature most likely to turn drifters into non-bets before the open.
