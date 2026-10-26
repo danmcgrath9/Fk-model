@@ -521,3 +521,24 @@ BSP is the fair price after the fact; the question for the open is whether a TAB
 BSP (the copy recipe, 1.6409, the best pre-race estimate we have) wins more than its price says. That test is
 `t_angles.py`'s model section rerun at the recorded open, and it is the first thing to run once a few weeks of opens
 exist.
+
+## Betwatch: a possible source of TAB opening prices (26 Oct 2026, founder: "could you check betwatch")
+
+Betwatch Pty Ltd (betwatch.com, betwatch.com.au redirects there) is an Australian odds-comparison site for
+thoroughbreds, harness and greyhounds across 50+ Australian bookmakers; the website is free to sign up. Its API is
+GraphQL at api.betwatch.com (key in an `X-Api-Key` header; keys by request to api@betwatch.com; no pricing page).
+What the public SDK (github.com/betwatch/betwatch-sdk-python, read 26 Oct) says the API holds: races by date range
+and type (`Greyhound` is one), every runner's fixed win and place price per bookmaker (`Tab` is one) with its
+**flucs**, the list of price changes each with a timestamp, so the first fluc is that bookmaker's open; and the
+runner's Betfair SP and back/lay. NOT known: whether past races can be queried with their flucs, and how far back.
+The SDK's examples only ask for the last 2 to 7 days.
+
+Terms (betwatch.com/terms, read through fk read terms, run 40265276223): API data "may not be used for any commercial
+purpose without prior consent"; no software or service that competes with Betwatch; high-frequency or abusive use can
+be cut off; the data carries no licence for third-party race fields or results. They also offer a browser extension
+that fills bookmaker bet slips.
+
+Emailed api@betwatch.com from the founder's Gmail, 26 Oct 2026 (founder: "Yep sounds good to me"), asking how far
+back greyhound flucs go (TAB especially), what a key costs and its limits, and whether modelling for his own betting
+is fine under the commercial-use clause. If the history goes back a few years, it replaces both BetMatic's $3,000
+history and weeks of recording our own opens, and Test 7's model angles are rerun at the TAB open.
