@@ -37,7 +37,9 @@ def main():
     for o in csv.DictReader(open(a.orders)):
         k = (int(o["race"]), norm(o["horse"])); counts[k] += 1
         now, op, scr = px.get(k, (None, None, True))
-        if scr or op is None or op < float(o["min_odds"]):
+        # an order fires only inside its band: min_odds <= open <= max_odds (BetMatic check_max_odds; 26 Oct 2026, the
+        # one-step Lawborough order at $3.75-$3.99 was counted at a $4.40 open)
+        if scr or op is None or op < float(o["min_odds"]) or (o.get("max_odds") and op > float(o["max_odds"])):
             continue
         b = by.setdefault(k, dict(race=int(o["race"]), horse=o["horse"], n=0, stake=0.0, open=op, now=now))
         b["n"] += 1; b["stake"] += float(o["stake_units"])
