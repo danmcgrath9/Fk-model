@@ -420,3 +420,15 @@ Value at the open (paper_open, Form King open), the Twitter card (card_wed28.jso
 
 The pre-open order sheet at the same opens fills 21.08u: Purple Streak 5.32u, Yahoo Bar 3.90u, Jenni You Think 4.80u,
 Lawborough 3.36u, Litzdeel 1.48u, See That Storm 2.22u (Imperial Award's orders start at $12.58, so none fill at $11).
+
+## Monday 26 Oct Wangaratta settled (results pulled Mon 26 Oct 6:20pm)
+Positivo (R7) WON: SP $3.70, BSP $3.77, tipped $8.50. Vaderlee 2nd, Strummer 3rd, Blue Moon Summit 3rd, Phantom's Chase 4th,
+Three Musketeers 6th.
+Tweeted card (Twitter units, after deductions): 6 bets, 9.62u, +17.67u (Positivo 3.21u x 7.50 = +24.08), ROI +184%. At BSP
+the same stakes: +2.48u.
+
+## October tips settled at Betfair SP (founder, 26 Oct: "show how we are profitable at BSP even without prices tipped early")
+Every tip from 5 to 26 Oct with a Betfair SP (clv_oct_to24.json, plus Sale and Wangaratta), 1u each: 88 bets, 23 winners.
+At the tipped price +118.19u (+134%); at BSP +49.91u (+57%), +40.72u (+46%) after 8% commission on winnings. Kingswood ($25
+tipped, BSP $28.12) is +27.12u of the BSP figure; without him +22.79u (+26%). Yarra Valley Sat 24 (Nightowl) has no BSP in
+Form King and is not counted.
