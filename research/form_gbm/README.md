@@ -1375,3 +1375,21 @@ average x the final best/average ratio (median 1.10, the only per-account figure
 Drift after the open keeps going: of runners 20%+ out at 30 min, BSP was shorter than the 30-min price only 27% of
 the time (firmers 41%). Bets on big drifters beat BSP 54% at 1.13x; firmers 72% at 1.39x. Our price band (under or
 over $5) flipped between the halves, so it is not a rule. Every P/L is a few dozen winners: price / BSP is the steady read.
+
+### Correction (27 Oct 2026): "best of accounts" was overstated
+
+The best-of-accounts price above is the 30-90 min AVERAGE price times the FINAL snapshot's best/average ratio. That ratio
+is taken near the jump, where one book is often out on its own (a fifth of runners over 1.2x, some 1.57x), and it is not
+what the books show 30-90 minutes after the open. Founder caught it from the live meetings: Swan Hill and Bendigo (17
+races) produced no top-up while the backtest claimed one every six races. Re-run with the ratio capped:
+
+| best price assumed | 30-90 min alone: bets, P/L | top-up after the open bets: bets, P/L |
+|---|---|---|
+| final-snapshot ratio (reported, wrong) | 210, +317u (+65%) | 48, +148u |
+| average x1.10 at most | 204, +234u (+49%) | 40, +104u |
+| average x1.05 at most | 190, +154u (+34%) | 30, +70u |
+| average price only | 166, +98u (+26%) | 21, +66u |
+
+The honest planning figure is the average-price row until the BetMatic watcher records real per-book prices at 30-90 min.
+Price / BSP holds at 1.46 in every row, so the edge is real; the bet count and the size were inflated. Mon 19-Mon 26 Oct at
+the average price: 5 top-ups (Lim's Ida won at $15.50; Superliv, Mr Natural, Litzdeel, Densetsu lost), +15.2u.
