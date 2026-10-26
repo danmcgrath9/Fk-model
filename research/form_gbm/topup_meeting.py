@@ -7,7 +7,7 @@ shown beside it, never used to qualify.
 Twitter units = half the FULL rule stake at that price, max 5u (the Twitter book takes no open bets), so a held horse
 already filled in full is still a Twitter tip with a 0u book top-up. Prints the tweet draft in the founder's format (27 Oct:
 "the book (if it's multiple say multiple), the race - number - horse name - units").
-    python3.13 topup_meeting.py FLUC_CSV V6_JSON FIRST_STARTERS_JSON ["Horse=filled_units;Horse=..."] [--upto m60]"""
+    python3.13 topup_meeting.py FLUC_CSV V6_JSON FIRST_STARTERS_JSON ["Horse=filled_units;Horse=..."] [--upto m60] [--track=Bendigo]"""
 import sys, csv, json, collections, stake_rule
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
 upto = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--upto=")), "m90")
@@ -64,5 +64,20 @@ for lab, L_ in (("(A) TOP-UP, horses we hold (paper)", A), ("(B) NEW HORSES (rea
         print(f"| R{b['race']} | {b['num']} | {b['horse']} | ${b['ours']:.2f} | ${b['open']:g} | {b['when']} min | ${b['avg']:g} | "
               f"${b['best']} ({b['books'][:60]}) | ${b['mo']:.2f} | {b['units']:.2f}u | {b['tw']:.2f}u |")
 tips = sorted(A + B, key=lambda b: (b["race"], b["num"]))
-print("\n## Tweet draft\n")
-print("\n".join(f"{b['book']} - R{b['race']} - {b['num']} - {b['horse']} - {b['tw']:g}u" for b in tips) + "\n\nWin bets." if tips else "(no tips)")
+# Tweet drafts, one per race (founder 27 Oct: "Need the odds. Do it something like this", Anthony Don's layout:
+# TRACK R1 - DAY / horse - $best BOOK / $avg OTHERS / units WIN). Best book named, "MULTIPLE" when several share it.
+import datetime as _dt
+track = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--track=")), "")
+def _day(rid):
+    d = rid.rsplit("_", 2)[1]; return _dt.date(2000 + int(d[4:6]), int(d[2:4]), int(d[0:2])).strftime("%A").upper()
+rid_of = {int(r["race"]): r["race_id"] for r in R}
+print("\n## Tweet drafts (one per race)\n")
+if not tips: print("(no tips)")
+for rn in sorted({b["race"] for b in tips}):
+    lines = [f"{track.upper()} R{rn} - {_day(rid_of[rn])}", ""]
+    for b in [t for t in tips if t["race"] == rn]:
+        best = float(b["best"]) if b["best"] else b["avg"]
+        book = "MULTIPLE" if b["book"] == "Multiple" else b["book"].upper()
+        px = f"${best:.2f} {book} / ${b['avg']:.2f} OTHERS" if best > b["avg"] + 0.005 else f"${b['avg']:.2f} ALL BOOKS"
+        lines += [f"{b['num']}. {b['horse'].upper()} - {px}", f"{b['tw']:g} units WIN", ""]
+    print("\n".join(lines).rstrip() + "\n\n---\n")
