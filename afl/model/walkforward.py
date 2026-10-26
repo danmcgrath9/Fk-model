@@ -21,6 +21,7 @@ from afl.model import named_position as NP
 from afl.model import redistribution as R
 from afl.model import grounds as GR
 from afl.model import context as CX
+from afl.model import shape as SH
 from afl.model import props as P
 from afl.model.disposals import PARAMS, fit_dispersion
 from afl.model.frame import FEATURES
@@ -43,6 +44,8 @@ GROUND_STATS = {'M'}
 LEAGUE_STATS = {'M', 'T'}
 # game time (night, twilight, weekday; afl/model/context.py): better on 2025-2026 for marks only (dew at night)
 GAME_TIME_STATS = {'M'}
+# goals: the player's range (ceiling, floor) and goal-kicking (shots, accuracy), afl/model/shape.py: better on 2025-2026
+SHAPE_STATS = {'G'}
 KEPT = os.path.join(os.path.dirname(__file__), 'kept_inputs.json')   # written by afl/model/extra_test.py
 
 
@@ -79,6 +82,9 @@ def prepare(base, cache, stat):
     if stat in GAME_TIME_STATS:
         m, cols = CX.game_time(m, cache)
         feats += cols
+    if stat in SHAPE_STATS:
+        m = SH.add(m, stat)
+        feats += sum(SH.groups(stat).values(), [])
     if stat in GROUND_STATS:
         m = GR.add(m, stat)
         feats += GR.columns(stat)

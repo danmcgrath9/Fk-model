@@ -163,3 +163,17 @@ Each group added on its own to the current model. Fitted 2013-2023, tuned 2024, 
 Adopted from the test above: game time for marks only (`GAME_TIME_STATS`): fewer marks at night, as dew would
 suggest. Umpire crew, coach changes, ruck matchup and opposition style earned nothing for any stat. For live rounds the
 start time goes on the team sheet's Game: line (optional; without it the game time is treated as unknown).
+## Range and goal-kicking
+
+Fitted 2013-2023, tuned 2024, scored 2025-2026. Milestone column: change in log loss of the milestone chance (negative is better).
+
+| stat | added | log-lik change | milestone log loss change | kept |
+|---|---|---|---|---|
+| disposals | range | -0.0004 ± 0.0002 | +0.0002 ± 0.0001 | no |
+| marks | range | +0.0002 ± 0.0002 | +0.0000 ± 0.0002 | no |
+| tackles | range | -0.0003 ± 0.0002 | +0.0003 ± 0.0001 | no |
+| goals | range | +0.0005 ± 0.0002 | -0.0004 ± 0.0002 | yes |
+| goals | goal-kicking | +0.0009 ± 0.0005 | -0.0004 ± 0.0003 | yes |
+
+Adopted from the test above: for goals only, the player's range and his goal-kicking (shots and accuracy), both on the
+line. Range did nothing for the other stats (disposals and tackles slightly worse).
