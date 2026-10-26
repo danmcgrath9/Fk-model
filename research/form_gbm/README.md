@@ -1312,3 +1312,18 @@ Founder: "an analysis on the world tote prices versus the bookie SP ... versus B
   not down it: on the same runs the tote beats SP by ~7 points and BSP beats the tote by ~22 points gross, ~14 net.
 - The gap grows with the price: favourites under $2 pay about the same everywhere (tote 1.03x SP, BSP 1.09x); $21-$51
   tote 1.15x, BSP 1.53x; $51+ tote 1.04x, BSP 2.02x. On a roughie the tote is barely better than SP; Betfair is far better.
+
+## World Pool days (26 Oct 2026, scripts/world_pool_tote.py)
+Founder: "find out all the world pool days. Compare it to actual other tote days / and then bookie starting price and
+Betfair sp". 39 Australian World Pool days 2023-2026 listed from HKJC / TDN reports (some marked likely, not confirmed;
+several days commingled only some races). Our stored past runs touch 17 of them: 375 runs, mostly 2026 (Memsie, Sir
+Rupert Clarke, Turnbull, Australian Guineas, Golden Slipper). Medians, same runs per row:
+| | tote/SP | BSP/SP | tote/BSP |
+|---|---|---|---|
+| World Pool days (confirmed, 349 runs) | 1.045 | 1.270 | 0.822 |
+| Other metro Saturdays (1,971) | 1.051 | 1.250 | 0.852 |
+| All other meetings (10,181) | 1.100 | 1.292 | 0.865 |
+The World Pool tote is not better than an ordinary metro Saturday tote; it sits further behind Betfair (0.82 v 0.85),
+and on World Pool favourites (SP under $5) the tote paid LESS than bookie SP (0.97x, metro Saturdays 1.03x). The tote
+beats SP most at the smaller meetings (1.10x). Small sample, day-level labels, and the TAB-tote-equals-World-Pool
+assumption is unverified, so this is indicative.
