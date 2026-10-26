@@ -1459,3 +1459,16 @@ Open bets under the live rule on the v10 holdout (3 Jun-13 Oct): 1,421 bets, +32
   (consistent with the drifter study: the market's extra information sits in thin-form horses). Any blend change after
   the open should be by horse type, not one weight for all.
 - Barrier trials are the big one; the founder is thinking about it.
+
+## Trials from data we already hold (27 Oct 2026, t_trial_jockey.py)
+
+Stored trials carry finish, field, distance, half the margins, barrier half the time, and the jockey; no times or
+sectionals. 2,334 first-up / first-starter runners on the holdout with a stored trial.
+- Trial jockey: the MARKET reads it, we mostly price it. Top-fifth jockey (12.9%+ wins) on the trial: median BSP/open
+  1.22 and 49% big drifters, against 1.69 / 63% for other rated jockeys and 1.74 / 66% for unrated trial riders. A/E vs
+  our price 1.06 / 1.03 by half (we under-rate them by a few per cent; BSP has them at 1.00).
+- WON THE TRIAL: A/E vs our price 1.10 / 1.16 by half (100 winners from 89 expected): we under-rate trial winners.
+- LAST TRIAL MORE THAN 21 DAYS BACK: A/E vs our price 0.71 / 0.88 by half (27 winners from 34): we over-rate them.
+- Candidate inputs for the retrain: last-trial finish (won / placed / unplaced), days since the last trial, the trial
+  jockey's strength. Cheap, already in our pulls. Bought timed trials (Punting Form, owned by BetMakers, sells
+  sectionals as a B2B product; coverage of trials and price unknown) only if these do not close the gap.
