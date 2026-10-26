@@ -29,6 +29,20 @@ def game_info(cache):
     return g, c
 
 
+def game_time(m, cache):
+    """night / twilight / weekday from the fixtured start time. A live row brings its own start time (start_time,
+    HHMM local, from the pasted team sheet); without one the game time is unknown, which the model allows."""
+    g, _ = game_info(cache)
+    m = m.merge(g[['game', 'Local.start.time']], on='game', how='left')
+    t = m['Local.start.time']
+    if 'start_time' in m:
+        t = t.combine_first(pd.to_numeric(m.start_time, errors='coerce'))
+    m['night'] = (t >= 1800).astype(float).where(t.notna())
+    m['twilight'] = ((t >= 1600) & (t < 1800)).astype(float).where(t.notna())
+    m['weekday'] = m.dt.dt.weekday.astype(float)
+    return m.drop(columns=['Local.start.time']), ['night', 'twilight', 'weekday']
+
+
 def add(m, cache, stat):
     m = m.copy()
     g, c = game_info(cache)

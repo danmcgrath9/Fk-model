@@ -92,6 +92,8 @@ def future_rows(n, history):
     })
     if 'named_pos' in n:          # the position on a pasted team sheet (afl/live/team_sheet.py)
         rows['named_pos'] = n.named_pos.to_numpy()
+    if 'start_time' in n:         # local start, HHMM (marks use night or day)
+        rows['start_time'] = pd.to_numeric(n.start_time, errors='coerce').to_numpy()
     # age on the day: his age at his last game plus the days since (unknown for a debutant, who is not priced anyway)
     last_age, last_dt = rows.player_id.map(ref.age), rows.player_id.map(ref.dt)
     rows['age'] = last_age + (rows.dt - last_dt).dt.days / 365.25

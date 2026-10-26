@@ -2,7 +2,7 @@
 
 Any source's team sheet can be pasted in the newspaper layout clubs and media use, one game per block:
 
-    Game: Adelaide v Fremantle, Adelaide Oval, 2027-03-20, round 2
+    Game: Adelaide v Fremantle, Adelaide Oval, 2027-03-20 19:40, round 2     (local start time optional)
     Adelaide
     B: Name, Name, Name
     HB: Name, Name, Name
@@ -32,7 +32,7 @@ LINES = {'B': 'back', 'FB': 'back', 'HB': 'halfback', 'HBF': 'halfback', 'C': 'c
          'FOLLOWERS': 'followers', 'R': 'followers', 'I/C': 'bench', 'IC': 'bench', 'INT': 'bench',
          'INTERCHANGE': 'bench', 'SUB': 'sub', 'SUBSTITUTE': 'sub', 'EMG': None, 'EMERG': None, 'EMERGENCIES': None,
          'IN': None, 'OUT': None, 'INS': None, 'OUTS': None}
-GAME = re.compile(r'^\s*game\s*:\s*(?P<home>.+?)\s+v(?:s\.?)?\s+(?P<away>.+?)\s*,\s*(?P<venue>.+?)\s*,\s*(?P<date>\d{4}-\d{2}-\d{2})'
+GAME = re.compile(r'^\s*game\s*:\s*(?P<home>.+?)\s+v(?:s\.?)?\s+(?P<away>.+?)\s*,\s*(?P<venue>.+?)\s*,\s*(?P<date>\d{4}-\d{2}-\d{2})(?:\s+(?P<time>\d{1,2}[:.]?\d{2}))?'
                   r'\s*,\s*round\s+(?P<round>\w+)\s*$', re.I)
 LABEL = re.compile(r'^\s*(?P<label>[A-Za-z/]+)\s*:\s*(?P<names>.*)$')
 
@@ -70,7 +70,8 @@ def parse(text, season=None):
             for i, name in enumerate(names):
                 rows.append(dict(season=season or int(game['date'][:4]), round=game['round'], date=game['date'], venue=game['venue'],
                                  home_team=game['home'], away_team=game['away'], team=team, player=name,
-                                 sub=1 if kind == 'sub' else '', named_pos=named_pos(kind, i)))
+                                 sub=1 if kind == 'sub' else '', named_pos=named_pos(kind, i),
+                                 start_time=int(re.sub(r'\D', '', game['time'])) if game.get('time') else None))
             continue
         if game is None:
             errors.append(f'line {n}: "{line[:40]}" is not a Game: line')

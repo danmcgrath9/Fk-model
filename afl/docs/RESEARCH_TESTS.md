@@ -149,3 +149,17 @@ Average per game of the stat over the league's last 36 games (before this one), 
 
 Adopted from the test above: the league level for marks and tackles (`LEAGUE_STATS` in afl/model/walkforward.py).
 Disposals already had it (league_game_D); goals gained nothing.
+## Game context: time, umpires, coach, ruck matchup, opposition style
+
+Each group added on its own to the current model. Fitted 2013-2023, tuned 2024, scored 2025-2026.
+
+| stat | game time | umpire crew | coach | ruck matchup | opposition style |
+|---|---|---|---|---|---|
+| disposals | -0.0002 ± 0.0003 | -0.0010 ± 0.0003 | -0.0006 ± 0.0003 | +0.0004 ± 0.0003 | -0.0004 ± 0.0003 |
+| marks | +0.0008 ± 0.0003 **kept** | -0.0001 ± 0.0002 | -0.0003 ± 0.0002 | +0.0001 ± 0.0002 | -0.0000 ± 0.0002 |
+| tackles | -0.0003 ± 0.0002 | -0.0002 ± 0.0002 | -0.0001 ± 0.0002 | -0.0002 ± 0.0002 | -0.0005 ± 0.0003 |
+| goals | +0.0003 ± 0.0002 | +0.0001 ± 0.0002 | +0.0000 ± 0.0002 | +0.0002 ± 0.0002 | -0.0001 ± 0.0002 |
+
+Adopted from the test above: game time for marks only (`GAME_TIME_STATS`): fewer marks at night, as dew would
+suggest. Umpire crew, coach changes, ruck matchup and opposition style earned nothing for any stat. For live rounds the
+start time goes on the team sheet's Game: line (optional; without it the game time is treated as unknown).

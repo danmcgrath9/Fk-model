@@ -20,6 +20,7 @@ from afl.model import extra as X
 from afl.model import named_position as NP
 from afl.model import redistribution as R
 from afl.model import grounds as GR
+from afl.model import context as CX
 from afl.model import props as P
 from afl.model.disposals import PARAMS, fit_dispersion
 from afl.model.frame import FEATURES
@@ -40,6 +41,8 @@ REDIST_STATS = {'T'}
 GROUND_STATS = {'M'}
 # the league's level of the stat in recent games (props.league_level): better on 2025-2026, most of all in 2026
 LEAGUE_STATS = {'M', 'T'}
+# game time (night, twilight, weekday; afl/model/context.py): better on 2025-2026 for marks only (dew at night)
+GAME_TIME_STATS = {'M'}
 KEPT = os.path.join(os.path.dirname(__file__), 'kept_inputs.json')   # written by afl/model/extra_test.py
 
 
@@ -72,6 +75,9 @@ def prepare(base, cache, stat):
         feats += R.columns(stat)
     if stat in LEAGUE_STATS:
         m, cols = P.league_level(m, stat)
+        feats += cols
+    if stat in GAME_TIME_STATS:
+        m, cols = CX.game_time(m, cache)
         feats += cols
     if stat in GROUND_STATS:
         m = GR.add(m, stat)
