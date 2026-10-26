@@ -10,13 +10,13 @@ Any source's team sheet can be pasted in the newspaper layout clubs and media us
     HF: Name, Name, Name
     F: Name, Name, Name
     FOL: Name, Name, Name
-    I/C: Name, Name, Name, Name
-    SUB: Name
+    I/C: Name, Name, Name, Name, Name
     EMG: Name, Name          (emergencies: not playing, ignored)
     Fremantle
     B: ...
 
-Lines can also be labelled INT, INTERCHANGE, FOLL, FOLLOWERS, R (ruck line) or EMERG; labels are not case sensitive and
+There is no substitute from 2026 and the bench is five, so a side is 23 (18 on the ground, five on the bench); a SUB:
+line is still read for older sheets. Lines can also be labelled INT, INTERCHANGE, FOLL, FOLLOWERS, R (ruck line) or EMERG; labels are not case sensitive and
 a missing line is fine. IN:/OUT: lines are ignored. The position each player is named in is kept (named_pos) because
 starting in the centre square is a role signal (afl/model/named_position.py).
 
@@ -81,8 +81,10 @@ def parse(text, season=None):
     df = pd.DataFrame(rows)
     # once a sub is named everyone else is known not to be the sub
     if len(df):
-        has_sub = df.groupby(['date', 'team']).sub.transform(lambda s: (s == 1).any())
-        df.loc[has_sub & (df['sub'] != 1), 'sub'] = 0
+        df['sub'] = df['sub'].astype(object)
+        has_sub = df.groupby(['date', 'team'])['sub'].transform(lambda s: (s == 1).any()).astype(bool)
+        if has_sub.any():
+            df.loc[has_sub & (df['sub'] != 1), 'sub'] = 0
     return df
 
 
@@ -90,8 +92,8 @@ def check(df):
     """Problems a person should look at before pricing: a side without 22-23 players, a team not in its game."""
     out = []
     for (date, team), g in df.groupby(['date', 'team']):
-        if not 22 <= len(g) <= 23:
-            out.append(f'{team} on {date}: {len(g)} players named (expected 22, or 23 with the sub)')
+        if len(g) != 23:
+            out.append(f'{team} on {date}: {len(g)} players named (expected 23: 18 on the ground and five on the bench from 2026)')
         if not ((g.team == g.home_team) | (g.team == g.away_team)).all():
             out.append(f'{team} on {date} is not one of the two sides in its Game: line')
     return out

@@ -61,6 +61,17 @@ def stat_features(m, stat):
     return m, feats
 
 
+def league_level(m, stat):
+    """The league's level of a stat: average per game over its last 36 and last 9 games, before this one. Lets a
+    rule change that moves the stat reach the projection within a few rounds (docs/RESEARCH_TESTS.md). An unplayed
+    game (live pricing) has no total, so it never enters a later game's average."""
+    gt = m.groupby(['game', 'dt'], as_index=False)[stat].sum(min_count=1).sort_values('dt')
+    gt[f'league_{stat}_36'] = gt[stat].shift(1).rolling(36, min_periods=9).mean()
+    gt[f'league_{stat}_9'] = gt[stat].shift(1).rolling(9, min_periods=5).mean()
+    cols = [f'league_{stat}_36', f'league_{stat}_9']
+    return m.merge(gt[['game'] + cols], on='game', how='left'), cols
+
+
 def team_expected_score(m):
     """Each team's expected score, from its recent scoring and the opponent's recent conceding (pre-game)."""
     tg = m.groupby(['game', 'dt', 'team', 'opp'], as_index=False).agg(sf=('score_for', 'first'), sa=('score_against', 'first')).sort_values('dt')

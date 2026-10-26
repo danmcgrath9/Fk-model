@@ -107,7 +107,7 @@ in the layout described in `afl/live/team_sheet.py`, and the workflow does the r
 |---|---|---|
 | Thursday, teams named | the team sheet is pasted into `afl/live/named/<season>_R<round>.txt` | the founder |
 | straight after | `afl round` prices every player and commits `afl/docs/LIVE_<season>_R<round>.md`; with the odds key it also snapshots the books and logs paper bets where our chance x the best price clears 5% (quarter Kelly on a notional 10,000 bank, shrunk for correlated bets) | automatic |
-| game day, sub named | paste again with the sub filled in; the sheet is repriced, bets already logged stay as they were | the founder, optional |
+| game day, late changes | paste again with the final 23; the sheet is repriced, bets already logged stay as they were | the founder, optional |
 | the last hour before each bounce | `afl live` records each logged bet's book's closing price: closing-line value | automatic (every 30 minutes on game days) |
 | Tuesday morning | `afl live` settles the round from the latest stats and writes the ledger summary | automatic |
 
@@ -130,7 +130,8 @@ python -m pytest afl/tests                                # leakage tests (need 
   worth only what can be staked.
 - **Late outs and subs.** A player who does not take the field usually voids the bet; one subbed
   off injured usually does not, and loses the over. Each book's rule needs checking. In 2021-25
-  the named sub was known before the bounce (excluded here); the 2026 data carries no sub flag.
+  the named sub was known before the bounce (excluded here). There is no substitute from 2026 and the bench is five (the data agrees: 2026
+  carries no sub flag and most sides have 23 players), so a 2027 side is 23 and every one of them is priced.
 - **2026 rule changes** (ball toss-up instead of the bounce, ruck changes) moved the league's
   disposal levels; the model sees this through the league average of recent games, but it has
   only one season of the new rules.

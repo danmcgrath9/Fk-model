@@ -2,8 +2,8 @@
 
 Input: a CSV of the named teams (template: afl/live/teams_template.csv), one row per named player:
     season, round, date (YYYY-MM-DD), venue, home_team, away_team, team, player, sub
-`sub` is 1 for the named substitute and 0 for everyone else once the sub is announced (about an hour before the
-bounce); leave it blank until then, which the models read as unknown, as they read 2026 (which carries no sub flag). `player_id`
+`sub` is optional and left blank: there is no substitute from 2026 (the data agrees: 2026 carries no sub flag), and
+blank is how the models read 2026. It stays only so a past season with subs can be priced the same way. `player_id`
 may be added as a column to settle a name the matcher cannot. Team and venue names are AFL Tables names (as in
 afl/cache/frame.parquet); anything unknown is refused with the list of known names, never guessed.
 
@@ -13,7 +13,7 @@ totals are NaN, never zero (afl/model/frame.py `unplayed`). afl/tests/test_live.
 way gets the same features as the history has for it. Models: afl/live/train_final.py.
 
 Output: afl/docs/LIVE_<season>_R<round>.md and afl/cache/live_<season>_R<round>.csv. Players with under five games on
-record, and the named sub, are listed as not priced (books price them, we have too little to go on).
+record are listed as not priced (books price them, we have too little to go on).
 
 Usage: python -m afl.live.price_round afl/cache named_teams.csv   (or a pasted team sheet, .txt)
 """
@@ -29,7 +29,7 @@ from afl.model import props as P
 from afl.model.walkforward import STATS, prepare
 from afl.sheet import MILESTONES, fair, median_line, nb_cdf, px
 
-COLUMNS = ['season', 'round', 'date', 'venue', 'home_team', 'away_team', 'team', 'player', 'sub']
+COLUMNS = ['season', 'round', 'date', 'venue', 'home_team', 'away_team', 'team', 'player']
 
 
 def load_named(n, history):
@@ -86,7 +86,9 @@ def future_rows(n, history):
         'finals': ~n['round'].astype(str).str.fullmatch(r'\d+'), 'date': dt.dt.strftime('%Y-%m-%d'), 'dt': dt,
         'game': dt.dt.strftime('%Y-%m-%d') + '|' + n.home_team + '|' + n.away_team, 'venue': n.venue, 'team': n.team,
         'opp': np.where(is_home, n.away_team, n.home_team), 'is_home': is_home.astype(float),
-        'player_id': n.player_id, 'Player': n.player, 'named_sub': pd.to_numeric(n['sub'], errors='coerce'),   # blank = not known yet
+        'player_id': n.player_id, 'Player': n.player,
+        # no substitute from 2026: blank, as the 2026 history reads; a value is used only if a sheet gives one
+        'named_sub': pd.to_numeric(n['sub'], errors='coerce') if 'sub' in n else np.nan,
     })
     if 'named_pos' in n:          # the position on a pasted team sheet (afl/live/team_sheet.py)
         rows['named_pos'] = n.named_pos.to_numpy()
@@ -162,7 +164,7 @@ def to_markdown(r, named, problems, season, rnd):
         priced = set(p.Player)
         unpriced = named[(named.home_team == home) & (named.away_team == away) & ~named.player.isin(priced)].player.tolist()
         if unpriced:
-            out += ['', 'Named, not priced (under five games on record, or the named sub): ' + ', '.join(unpriced)]
+            out += ['', 'Named, not priced (under five games on record): ' + ', '.join(unpriced)]
         out.append('')
     return '\n'.join(out) + '\n'
 

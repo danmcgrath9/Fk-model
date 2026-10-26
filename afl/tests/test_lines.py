@@ -71,3 +71,21 @@ def test_market_consensus_removes_margin_and_takes_the_median():
     assert len(mc) == 1 and mc.books.iloc[0] == 3
     assert mc.p_mkt.iloc[0] == pytest.approx(0.5)
     assert mc.p_ours.iloc[0] == 0.55
+
+
+def test_benter_blend_finds_information_in_both():
+    # truth is known; the market and our model each see it with independent noise, so together they beat either
+    rng = np.random.default_rng(3)
+    n = 20000
+    z = rng.normal(0, 1, n)
+    y = (rng.random(n) < 1 / (1 + np.exp(-z))).astype(float)
+    sig = lambda x: 1 / (1 + np.exp(-x))
+    mc = pd.DataFrame({'p_mkt': sig(z + rng.normal(0, 0.8, n)), 'p_ours': sig(z + rng.normal(0, 0.8, n)), 'won': y,
+                       'season': np.where(np.arange(n) < n // 2, 2024, 2025)})
+    r = backtest.benter(mc, [2024], [2025])
+    assert r['w'][1] > 0.2 and r['w'][2] > 0.2           # both carry weight
+    assert r['blend_vs_market'] < -2 * r['se']            # the blend beats the market alone
+    # a model that is pure noise gets no weight and the blend does no better than the market
+    mc['p_ours'] = sig(rng.normal(0, 1, n))
+    r = backtest.benter(mc, [2024], [2025])
+    assert abs(r['w'][1]) < 0.05 and r['blend_vs_market'] > -2 * r['se']
