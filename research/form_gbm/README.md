@@ -1413,3 +1413,18 @@ new horses 1.08x BSP vs 1.25x. Kept: the live 0.82/0.22 value test for the 30-90
 the few horses where our price is far from the market, not in the field as a whole. 294 races; refit at the retrain.
 PARKED, NOT REJECTED (founder 27 Oct: "Small sample, let's not use it, but don't completely write it off"): rerun
 t_blend_time.py at the retrain and again once the per-book watcher has logged about 1,000 races after the open.
+
+## Can the 30-90 min rule be sharpened? (27 Oct 2026, founder: "reckon we can get it any sharper?")
+
+Knobs on the new-horse rule, design (to 13 Oct) / check (14-26 Oct), average price, 294 races. The steady read is beat-BSP
+and price/BSP; P/L is a few dozen winners a cell.
+- Drift cut-off: tighter is cleaner but thinner (skip any drift 80%/70% beat, 55/30 bets; skip 20%+ 74%/67%, 108/58;
+  no rule 68%/65%, 144/97). Monotonic in both halves. A quality/volume dial, not a free gain.
+- Edge: same shape (1.2: 71%/60%, 1.41x/1.28x; 1.3: 74%/67%, 1.48x/1.42x; 1.5: 85%/70%, 1.67x/1.58x). 1.2 falls over on
+  the check half, so 1.3 is the floor; higher is cleaner and thinner.
+- FIRST LOOK AT 15 MIN instead of 30: better on both halves and more bets (123/64 bets, 76%/66% beat, 1.54x/1.46x,
+  +39%/+35% vs 108/58, 74%/67%, 1.48x/1.42x, +32%/+14%). Matches the decay curve (a fifth of the edge goes in the first
+  15 min). The one change worth making; fewer books are up at 15 min, so the best-book spread is thinner there.
+- Our price band, field size: flip sign between halves. Noise. Not used.
+- Flat 1u vs the blend stake: mixed (design +35% vs +32%, check +55% vs +14%); the stake rule leans on short prices, which
+  lost on the check half. Watch, do not change.
