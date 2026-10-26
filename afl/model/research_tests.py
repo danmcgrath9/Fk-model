@@ -382,6 +382,33 @@ def shape_test(cache, out_md):
     print('\n'.join(rep))
 
 
+def more_test(cache, out_md):
+    """Supply, tackle chances, momentum, travel load (afl/model/more.py), each group on its own."""
+    from afl.model import more as MO
+    from afl.model.walkforward import prepare
+    base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
+    rep = ['## Supply, tackle chances, momentum, travel load', '',
+           'Each group added on its own to the current model. Fitted 2013-2023, tuned 2024, scored 2025-2026.', '',
+           '| stat | ' + ' | '.join(MO.groups()) + ' |', '|---|' + '---|' * len(MO.groups())]
+    for stat, label in STATS.items():
+        m, feats, _ = prepare(base, cache, stat)
+        m = MO.add(m)
+        m = P.eligible(m)
+        m = m[m[f'{stat}_l10'].notna()]
+        tr, tu, te = m[m.season.between(2013, 2023)], m[m.season == 2024], m[m.season.isin([2025, 2026])]
+        ll0, _ = score(tr, tu, te, feats, stat)
+        cells = []
+        for g, cols in MO.groups().items():
+            ll, _ = score(tr, tu, te, feats + cols, stat)
+            d = ll - ll0
+            se = d.std() / np.sqrt(len(d))
+            cells.append(f'{d.mean():+.4f} ± {se:.4f}{" **kept**" if d.mean() > 2 * se else ""}')
+            print(stat, g, f'{d.mean():+.4f} ± {se:.4f}', flush=True)
+        rep.append(f'| {label} | ' + ' | '.join(cells) + ' |')
+    open(out_md, 'a').write('\n'.join(rep) + '\n\n')
+    print('\n'.join(rep))
+
+
 def run(cache, out_md):
     base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
     rep = ['# Research ideas, tested without bookmaker lines', '',
@@ -400,6 +427,9 @@ def run(cache, out_md):
 if __name__ == '__main__':
     if len(sys.argv) > 3 and sys.argv[3] == 'positions':
         position_test(sys.argv[1], sys.argv[2])
+        sys.exit()
+    if len(sys.argv) > 3 and sys.argv[3] == 'more':
+        more_test(sys.argv[1], sys.argv[2])
         sys.exit()
     if len(sys.argv) > 3 and sys.argv[3] == 'shape':
         shape_test(sys.argv[1], sys.argv[2])
