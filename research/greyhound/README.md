@@ -511,7 +511,7 @@ disagree with BSP, BSP is usually right; the A/E of every "value" selection is b
 they are at best level, and after 8% they lose. (2) The lays that pass are the favourite-longshot bias, which Test 1
 already showed (BSP over $51 wins 5% less than it says): real, but the return on the money at risk is 0.00% to 0.04%,
 because laying a $200 shot risks $199 to win 92c. Not worth a bank. The weak-box-8 longshot lay (+0.17% / +0.33% on
-risk) rests on about 15 and 30 winners a half against roughly 25 and 60 expected; it is one cell among 31 tried, and
+risk) rests on few winners (1,749 and 3,055 bets at over $51, where a $51 shot wins about one race in fifty, so a few dozen expected winners a half; the run does not print the counts); it is one cell among 31 tried, and
 the box-8-under-$51 cells beside it fail, so it is noise until a third period says otherwise. (3) BetMatic sends to
 the TAB, which takes back bets only, so no lay angle could go on a slip anyway. **For BetMatic slips, the only
 possible edge left is the price itself: a TAB open above the dog's fair price.** That is the horse approach (a minimum
