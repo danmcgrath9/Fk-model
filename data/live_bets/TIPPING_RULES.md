@@ -83,3 +83,10 @@ same 32 horses and 7 winners.
 Race pages and cards carry the prices, the bets and the tables, nothing else: no paragraphs explaining how BetMatic,
 deductions, take-at prices, staking or the shadow book work, and no "BetMatic" labels on the page. market_sheet.py and
 betmatic_html.py no longer write them. Explanations go in chat only if the founder asks.
+
+**The Twitter record is the card the founder posted (27 Oct 2026, founder: "how'd you get that wrong?").** Bendigo Wed 28
+had two cards on file: card_wed28.json (value at the Form King open, model stakes halved, with Imperial Award) and the one
+he posted (the BetMatic open fills halved, six horses, no Imperial Award). Claude quoted the first as the tweeted card and
+gave a race number from memory. From now on: the moment a card is posted, its horses, races, prices, rated prices and units
+go into betmatic-book.md marked "Tweeted Twitter card"; anything quoted later as what we tipped comes from that entry
+(or the posted image), never from a working card file, and race numbers come from the order file, never from memory.
