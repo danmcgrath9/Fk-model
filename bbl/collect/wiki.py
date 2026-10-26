@@ -66,7 +66,19 @@ def fetch_pages(titles, dest):
             print(f'{page["title"]}: {"missing" if page.get("missing") else "held"}')
 
 
+def current_titles(today=None):
+    """The BBL and WBBL season pages for the season under way (July onwards belongs to the season starting then)."""
+    import datetime as dt
+    d = today or dt.date.today()
+    y = d.year if d.month >= 7 else d.year - 1
+    s = f'{y}\u2013{(y + 1) % 100:02d}'
+    return [f'{s} Big Bash League season', f"{s} Women's Big Bash League season"]
+
+
 def main(out, matches):
+    if matches == '--current':      # in season: the two current pages again (start times move, finals fill in)
+        fetch_pages(current_titles(), os.path.join(out, 'pages'))
+        return
     if matches == '--squads':
         fetch_pages(squad_titles(), os.path.join(out, 'squads'))
         return

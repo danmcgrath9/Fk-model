@@ -1,0 +1,96 @@
+name: bbl price
+
+# The paper season (bbl/README.md, step 7). Every morning: add Cricsheet's recently added matches to the held
+# tables (the small recent zip, never the full archive), re-read the two current Wikipedia season pages (start
+# times move, finals fill in, squads change), price every game in the next three days, append the prices to the
+# prediction log on the bbl-history release, and score the log against results. Paper only: nothing is sent to
+# BetMatic or any bookmaker, and no odds are read. Separate from every fk-*, nba-* and afl-* workflow.
+
+# NOTE: GitHub runs a schedule (and the Run workflow button) only from the default branch. On bbl-model this
+# workflow runs on a push to bbl/live/** or this file; the daily schedule needs this one file on main.
+on:
+  schedule:
+    - cron: '0 20 * * *'      # 7am Sydney in daylight time, before the day's games
+  push:
+    branches: [bbl-model]
+    paths:
+      - 'bbl/live/**'
+      - '.github/workflows/bbl-price.yml'
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'days ahead to price'
+        default: '3'
+
+concurrency:
+  group: bbl-price
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  price:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      DAYS: ${{ github.event.inputs.days || '3' }}
+      UA: 'fk-model-bbl/0.1 (github.com/danmcgrath9/Fk-model; research)'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: bbl-model
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r bbl/requirements.txt
+
+      - name: Held tables and the log
+        run: |
+          mkdir -p bbl/cache/parquet bbl/cache/collect/wiki/pages bbl/cache/log
+          for f in t20_matches t20_players t20_innings t20_deliveries t20_powerplays t20_replacements people; do
+            gh release download bbl-history --dir bbl/cache/parquet --pattern "$f.parquet" --clobber
+          done
+          gh release download bbl-history --dir bbl/cache/log --pattern 'prediction_log_*.parquet' --clobber || echo "no log yet"
+
+      - name: Cricsheet recently added matches
+        run: |
+          set -e
+          curl -sfL -m 60 -A "$UA" -o downloads.html https://cricsheet.org/downloads/
+          url=$(python -m bbl.data.refresh --pick downloads.html)
+          echo "fetching $url"
+          curl -sfL -m 300 -A "$UA" -o recent.zip "$url"
+          python -m bbl.data.refresh downloads.html recent.zip bbl/cache/parquet | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ -s bbl/cache/parquet/new_match_ids.txt ]; then
+            for f in t20_matches t20_players t20_innings t20_deliveries t20_powerplays t20_replacements; do
+              gh release upload bbl-history "bbl/cache/parquet/$f.parquet" --clobber
+            done
+          fi
+
+      - name: Current season pages, fixtures and squads
+        run: |
+          set -e
+          python -m bbl.collect.wiki bbl/cache/collect/wiki --current | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m bbl.collect.parse_wiki bbl/cache/collect/wiki bbl/cache/collect/current_fixtures.csv | head -1
+          python -m bbl.collect.fixtures_join bbl/cache/collect/current_fixtures.csv bbl/cache/parquet bbl/cache/collect | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m bbl.collect.parse_squads bbl/cache/collect bbl/cache/collect/current_squads.csv | head -1 | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Price the next days and log
+        run: |
+          set -o pipefail
+          fx=$(ls bbl/cache/collect/fixtures_*.csv | tail -1)
+          python -m bbl.live.log bbl/cache/parquet "$fx" bbl/cache/collect/current_squads.csv bbl/cache/log "$DAYS" | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m bbl.live.score bbl/cache/parquet bbl/cache/log | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload the log and the score
+        run: |
+          for f in bbl/cache/log/prediction_log_games.parquet bbl/cache/log/prediction_log_players.parquet bbl/cache/log/PAPER_SCORE.md; do
+            [ -e "$f" ] || continue
+            ok=no
+            for i in 1 2 3; do gh release upload bbl-history "$f" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
+            [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }
+          done
+          gh release upload bbl-history bbl/cache/collect/fixtures_*.csv bbl/cache/collect/current_squads.csv --clobber
