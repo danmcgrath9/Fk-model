@@ -40,6 +40,10 @@ No peer-reviewed NRL betting-market efficiency study turned up; the favourite-lo
 | Rain and humidity shrinking the margin (expected margin x rain, x dew point) | DEV 0.1573 -> 0.1539 bits, CONFIRM 0.0893 -> 0.0798 | rejected: rain lowers totals, not margins |
 | **One name per club** (bug fix): RLP records each season's name, and every rename restarted a club at average (Bulldogs 2000 and 2010, Sharks 2000 and 2003, Warriors 2001 and 2002, Roosters 2000) | the Warriors' 2002 restart: +13.5 actual against +3.3 predicted over 8 games. DEV/CONFIRM barely move (last rename 2010): teams named 0.1597 -> 0.1595, 0.0926 -> 0.0927 | **fixed** |
 | **Expansion clubs start 4 points below average** (Titans 2007 tuned, Dolphins 2023 checked; mergers excluded) | Titans miss 12.31 -> 11.87; Dolphins miss 12.96 -> 12.96, bias -3.5 -> -0.9 | **adopted**: the Perth Bears start there in 2027 |
+| State of Origin back-ups (players who played Origin in the last 3 or 7 days, home minus away; RLP Origin ids match NRL ids) | teams named DEV 0.1589 -> 0.1582, CONFIRM 0.0930 -> 0.0928; open likewise | rejected: no fatigue effect (back-up players are stars the ratings already count) |
+| Two-stage try model (players rescaled to a team-level try model) | the players' own sum is the better team total (Poisson deviance DEV -1.2576 v -1.2384); full rescale DEV 0.42286 -> 0.42401 | rejected |
+| **Refit before each season on every completed season** (live policy; backtests keep the frozen 2003-2018 fit) | on 2023-24 with a fit through 2022: try model 0.4372 -> 0.43635 (tries per team-game predicted 3.78 -> 3.90, actual 4.00), team model 0.0930 -> 0.0979 bits | **adopted** for the price card |
+| Running league-level try correction | DEV unchanged, CONFIRM 0.4372 -> 0.43697 | not needed once the models are refitted each season |
 | Edge defence for try scorers (tries the opponent concedes to each jersey number) | DEV 0.42294 -> 0.42293, CONFIRM 0.43725 -> 0.43729 | rejected: the position-group feature already holds it |
 
 ## What the evidence says about where "best in the world" comes from

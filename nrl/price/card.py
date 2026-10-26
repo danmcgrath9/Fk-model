@@ -128,6 +128,7 @@ def main(cache, games_csv, teams_csv=None):
     pd.DataFrame(rows).to_parquet(f'{cache}/matches_upcoming.parquet', index=False)
     pu[pm.columns].to_parquet(f'{cache}/player_matches_upcoming.parquet', index=False)
 
+    os.environ['LIVE'] = '1'   # live models: refitted on every completed season (nrl/docs/RESEARCH_LOG.md)
     with contextlib.redirect_stdout(io.StringIO()):
         player_ratings.main(cache)
         team_frame.main(cache)
@@ -135,7 +136,7 @@ def main(cache, games_csv, teams_csv=None):
         tries.main(cache)
     tf = pd.read_parquet(f'{cache}/team_frame.parquet')
     g_all = team.games(tf)
-    _, models = team.evaluate(g_all, [], '')
+    models, fitg = team.live_models(g_all)
     up = g_all[g_all.match_id.isin(games.match_id)].set_index('match_id').loc[games.match_id]
     named_teams = set(named.team)
     out = ['# Price card', '', f'Built {pd.Timestamp.now(tz="Australia/Sydney"):%Y-%m-%d %H:%M} Sydney. '
@@ -144,7 +145,6 @@ def main(cache, games_csv, teams_csv=None):
            'our total | total line | P(over) |', '|---|---|---|---|---|---|---|---|---|---|---|']
     bands = ['', '## Margin bands (key-number weighted)', '', '| game | home 1-12 | home 13+ | draw | away 1-12 | away 13+ |',
              '|---|---|---|---|---|---|']
-    fitg = g_all[g_all.season.isin(team.FIT)]
     for g, (mid, r) in zip(games.itertuples(), up.iterrows()):
         # at the open, ratings only: the open line-up features helped on one season set only and were dropped
         # (nrl/docs/RESULTS_2026-10-21.md)

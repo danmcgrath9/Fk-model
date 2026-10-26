@@ -142,6 +142,18 @@ def evaluate(g, seasons, label):
     return out, models
 
 
+def live_models(g):
+    """For live prices: margin and total models refitted on EVERY completed season (2003 on). On 2023-24 a fit
+    through 2022 beat the frozen 2003-2018 fit (0.0979 v 0.0930 bits); backtests keep the frozen fit."""
+    done = g[g.margin.notna() & (g.season >= 2003)]
+    models = {}
+    for name, feats in (('ratings only', ['exp_margin']), ('open', FEATURES_OPEN), ('teams named', FEATURES_NAMED)):
+        mm = LinearT().fit(done[feats].to_numpy(), done.margin.to_numpy())
+        tm = LinearT().fit(done[TOTAL_FEATURES].to_numpy(), done.total.to_numpy())
+        models[name] = (feats, mm, tm)
+    return models, done
+
+
 def table(df):
     lines = ['| season | model | bits/game | log loss | Brier | tips right | margin miss | total miss |',
              '|---|---|---|---|---|---|---|---|']

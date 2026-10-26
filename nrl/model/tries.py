@@ -69,6 +69,21 @@ def logloss(prob, y):
 
 
 def fit(p):
+    if os.environ.get('LIVE') == '1':
+        # live pricing: trees counted on the last two completed seasons, then refit on every completed season.
+        # Refitting before the season beat the frozen 2003-2018 fit on 2023-24 (0.43635 v 0.4372): scoring rose
+        # and a frozen model lags it (nrl/docs/RESEARCH_LOG.md)
+        done = sorted(p.season[p.tries.notna() & ~p.get('upcoming', pd.Series(False, index=p.index)).astype(bool)].unique())
+        last2 = done[-2:]
+        tr, dv = p[p.season.isin(done) & ~p.season.isin(last2)], p[p.season.isin(last2)]
+        d = lgb.Dataset(tr[FEATURES], tr.tries, categorical_feature=['position_code'])
+        m = lgb.train(PARAMS, d, 3000, valid_sets=[lgb.Dataset(dv[FEATURES], dv.tries, reference=d)],
+                      callbacks=[lgb.early_stopping(100, verbose=False)])
+        alln = p[p.season.isin(done) & p.season.ge(2003)]
+        live = lgb.train(PARAMS, lgb.Dataset(alln[FEATURES], alln.tries, categorical_feature=['position_code']),
+                         m.best_iteration)
+        live.best_iteration = m.best_iteration
+        return live
     tr, dv = p[p.season.isin(FIT)], p[p.season.isin(DEV)]
     dtr = lgb.Dataset(tr[FEATURES], tr.tries, categorical_feature=['position_code'])
     ddv = lgb.Dataset(dv[FEATURES], dv.tries, reference=dtr)
