@@ -224,6 +224,35 @@ def ensemble_test(cache, out_md, seeds=(7, 11, 23, 41, 59)):
     print('\n'.join(rep))
 
 
+def movers_test(cache, out_md):
+    """Players who changed clubs (afl/model/movers.py). Appends to the report, with how many mover rows were scored."""
+    from afl.model import movers as MV
+    from afl.model.walkforward import prepare
+    base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
+    rep = ['## Players who changed clubs', '',
+           'Games at his current club, a new-club flag (first 16 games after 20+ elsewhere), playing his former club, and '
+           'how far his output at the new club has moved from what he brought. Fitted 2013-2023, tuned 2024, scored '
+           '2025-2026; also scored on the mover rows alone, where any effect would show.', '',
+           '| stat | log-lik change (all) | on new-club rows | on former-club games | kept |', '|---|---|---|---|---|']
+    for stat, label in STATS.items():
+        m, feats, _ = prepare(base, cache, stat)
+        m = MV.add(m, stat)
+        m = P.eligible(m)
+        m = m[m[f'{stat}_l10'].notna()]
+        tr, tu, te = m[m.season.between(2013, 2023)], m[m.season == 2024], m[m.season.isin([2025, 2026])]
+        ll0, _ = score(tr, tu, te, feats, stat)
+        ll, _ = score(tr, tu, te, feats + MV.columns(stat), stat)
+        d = ll - ll0
+        se = d.std() / np.sqrt(len(d))
+        nc, vf = (te.new_club == 1).to_numpy(), (te.vs_former_club == 1).to_numpy()
+        part = lambda k: f'{d[k].mean():+.4f} ± {d[k].std() / np.sqrt(k.sum()):.4f} ({k.sum():,})'
+        ok = d.mean() > 2 * se
+        rep.append(f'| {label} | {d.mean():+.4f} ± {se:.4f} | {part(nc)} | {part(vf)} | {"yes" if ok else "no"} |')
+        print(stat, 'movers', f'{d.mean():+.4f} ± {se:.4f}', flush=True)
+    open(out_md, 'a').write('\n'.join(rep) + '\n\n')
+    print('\n'.join(rep))
+
+
 def run(cache, out_md):
     base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
     rep = ['# Research ideas, tested without bookmaker lines', '',
@@ -242,6 +271,9 @@ def run(cache, out_md):
 if __name__ == '__main__':
     if len(sys.argv) > 3 and sys.argv[3] == 'positions':
         position_test(sys.argv[1], sys.argv[2])
+        sys.exit()
+    if len(sys.argv) > 3 and sys.argv[3] == 'movers':
+        movers_test(sys.argv[1], sys.argv[2])
         sys.exit()
     if len(sys.argv) > 3 and sys.argv[3] == 'ensemble':
         ensemble_test(sys.argv[1], sys.argv[2])
