@@ -38,6 +38,8 @@ POSITION_STATS = {'D', 'T', 'G'}
 REDIST_STATS = {'T'}
 # ground shape and size, measured per stat and position (afl/model/grounds.py): better on 2025-2026 for marks only
 GROUND_STATS = {'M'}
+# the league's level of the stat in recent games (props.league_level): better on 2025-2026, most of all in 2026
+LEAGUE_STATS = {'M', 'T'}
 KEPT = os.path.join(os.path.dirname(__file__), 'kept_inputs.json')   # written by afl/model/extra_test.py
 
 
@@ -68,6 +70,9 @@ def prepare(base, cache, stat):
     if stat in REDIST_STATS:
         m = R.add(m, stat)
         feats += R.columns(stat)
+    if stat in LEAGUE_STATS:
+        m, cols = P.league_level(m, stat)
+        feats += cols
     if stat in GROUND_STATS:
         m = GR.add(m, stat)
         feats += GR.columns(stat)

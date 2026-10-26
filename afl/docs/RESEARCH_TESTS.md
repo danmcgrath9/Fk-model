@@ -136,3 +136,16 @@ What each ground has done lately to each stat, overall and for each position gro
 
 Adopted from the test above: ground shape and size for marks only (`GROUND_STATS` in afl/model/walkforward.py), on
 the line (+0.0010 ± 0.0005). The overall disposal level of each ground was already in the model (venue_rel).
+## The league level of each stat
+
+Average per game of the stat over the league's last 36 games (before this one), and the same over the last 9. Fitted 2013-2023, tuned 2024, scored 2025-2026, and on 2026 alone (the year the game changed most).
+
+| stat | log-lik change (2025-26) | on 2026 | kept |
+|---|---|---|---|
+| disposals | -0.0000 ± 0.0003 | +0.0008 ± 0.0004 | no |
+| marks | +0.0010 ± 0.0003 | +0.0022 ± 0.0004 | yes |
+| tackles | +0.0006 ± 0.0003 | +0.0009 ± 0.0004 | yes |
+| goals | -0.0000 ± 0.0002 | -0.0000 ± 0.0003 | no |
+
+Adopted from the test above: the league level for marks and tackles (`LEAGUE_STATS` in afl/model/walkforward.py).
+Disposals already had it (league_game_D); goals gained nothing.

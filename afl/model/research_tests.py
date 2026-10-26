@@ -283,6 +283,37 @@ def grounds_test(cache, out_md):
     print('\n'.join(rep))
 
 
+def league_level_test(cache, out_md):
+    """The league's level of each stat in recent games (the model already has it for disposals: league_game_D), so a
+    rule change that moves marks, tackles or goals reaches the projection within a few rounds. Appends to the report."""
+    from afl.model.walkforward import prepare
+    base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
+    rep = ['## The league level of each stat', '',
+           'Average per game of the stat over the league\'s last 36 games (before this one), and the same over the last 9. '
+           'Fitted 2013-2023, tuned 2024, scored 2025-2026, and on 2026 alone (the year the game changed most).', '',
+           '| stat | log-lik change (2025-26) | on 2026 | kept |', '|---|---|---|---|']
+    for stat, label in STATS.items():
+        m, feats, _ = prepare(base, cache, stat)
+        gt = m.groupby(['game', 'dt'], as_index=False)[stat].sum(min_count=1).sort_values('dt')
+        gt[f'league_{stat}_36'] = gt[stat].shift(1).rolling(36, min_periods=9).mean()
+        gt[f'league_{stat}_9'] = gt[stat].shift(1).rolling(9, min_periods=5).mean()
+        m = m.merge(gt[['game', f'league_{stat}_36', f'league_{stat}_9']], on='game', how='left')
+        cols = [f'league_{stat}_36', f'league_{stat}_9']
+        m = P.eligible(m)
+        m = m[m[f'{stat}_l10'].notna()]
+        tr, tu, te = m[m.season.between(2013, 2023)], m[m.season == 2024], m[m.season.isin([2025, 2026])]
+        ll0, _ = score(tr, tu, te, feats, stat)
+        ll, _ = score(tr, tu, te, [f for f in feats if f not in cols] + cols, stat)
+        d = ll - ll0
+        se = d.std() / np.sqrt(len(d))
+        k = (te.season == 2026).to_numpy()
+        ok = d.mean() > 2 * se
+        rep.append(f'| {label} | {d.mean():+.4f} ± {se:.4f} | {d[k].mean():+.4f} ± {d[k].std() / np.sqrt(k.sum()):.4f} | {"yes" if ok else "no"} |')
+        print(stat, 'league level', f'{d.mean():+.4f} ± {se:.4f}', flush=True)
+    open(out_md, 'a').write('\n'.join(rep) + '\n\n')
+    print('\n'.join(rep))
+
+
 def run(cache, out_md):
     base = P.team_expected_score(pd.read_parquet(f'{cache}/frame.parquet'))
     rep = ['# Research ideas, tested without bookmaker lines', '',
@@ -301,6 +332,9 @@ def run(cache, out_md):
 if __name__ == '__main__':
     if len(sys.argv) > 3 and sys.argv[3] == 'positions':
         position_test(sys.argv[1], sys.argv[2])
+        sys.exit()
+    if len(sys.argv) > 3 and sys.argv[3] == 'league':
+        league_level_test(sys.argv[1], sys.argv[2])
         sys.exit()
     if len(sys.argv) > 3 and sys.argv[3] == 'grounds':
         grounds_test(sys.argv[1], sys.argv[2])
