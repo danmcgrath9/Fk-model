@@ -2,27 +2,27 @@
 
 45,266 player-matches with minutes on the pitch, seasons 2017-2027; a named player who never came on is left out (a void bet at most books). Every rate from earlier matches only. Log loss, lower is better; differences with 90% intervals resampling weeks.
 
-## anytime scorer (happened in 9.1% of player-matches)
+## anytime scorer, teams named (happened in 9.1% of player-matches)
 
 | season | rows | model | raw rate | flat rate |
 |---|---|---|---|---|
 | 2016-17 | 3,817 | 0.2645 | 0.2688 | 0.3081 |
 | 2017-18 | 3,773 | 0.2632 | 0.2654 | 0.3040 |
 | 2018-19 | 3,812 | 0.2805 | 0.2854 | 0.3228 |
-| 2019-20 | 4,101 | 0.2568 | 0.2606 | 0.2908 |
+| 2019-20 | 4,101 | 0.2567 | 0.2606 | 0.2908 |
 | 2020-21 | 4,683 | 0.2576 | 0.2607 | 0.2939 |
 | 2021-22 | 4,796 | 0.2577 | 0.2617 | 0.2855 |
 | 2022-23 | 4,891 | 0.2640 | 0.2689 | 0.2967 |
-| 2023-24 | 5,032 | 0.2748 | 0.2772 | 0.3041 |
-| 2024-25 | 5,330 | 0.2759 | 0.2805 | 0.3001 |
+| 2023-24 | 5,032 | 0.2747 | 0.2772 | 0.3041 |
+| 2024-25 | 5,330 | 0.2761 | 0.2805 | 0.3001 |
 | 2025-26 | 4,878 | 0.2730 | 0.2767 | 0.2892 |
-| 2026-27 | 153 | 0.2505 | 0.2562 | 0.2657 |
+| 2026-27 | 153 | 0.2506 | 0.2562 | 0.2657 |
 
-settings chosen on, 2016-17 to 2020-21: model minus raw rate -0.0037 (-0.0047 to -0.0025); model better.
+settings chosen on, 2016-17 to 2020-21: model minus raw rate -0.0037 (-0.0047 to -0.0026); model better.
 
-settings chosen on, 2016-17 to 2020-21: model minus flat rate -0.0392 (-0.0426 to -0.0358); model better.
+settings chosen on, 2016-17 to 2020-21: model minus flat rate -0.0392 (-0.0426 to -0.0359); model better.
 
-untouched test, 2021-22 on: model minus raw rate -0.0039 (-0.0049 to -0.0029); model better.
+untouched test, 2021-22 on: model minus raw rate -0.0039 (-0.0048 to -0.0029); model better.
 
 untouched test, 2021-22 on: model minus flat rate -0.0260 (-0.0288 to -0.0234); model better.
 
@@ -30,13 +30,49 @@ Calibration, test seasons:
 
 | predicted band | rows | average predicted | happened |
 |---|---|---|---|
-| (0.0, 0.05] | 10,467 | 0.027 | 0.033 |
-| (0.05, 0.1] | 7,572 | 0.072 | 0.076 |
-| (0.1, 0.15] | 3,170 | 0.121 | 0.115 |
-| (0.15, 0.2] | 1,586 | 0.173 | 0.183 |
-| (0.2, 0.3] | 1,611 | 0.242 | 0.271 |
-| (0.3, 0.4] | 521 | 0.339 | 0.315 |
-| (0.4, 0.6] | 153 | 0.461 | 0.458 |
+| (0.0, 0.05] | 10,461 | 0.027 | 0.033 |
+| (0.05, 0.1] | 7,595 | 0.072 | 0.076 |
+| (0.1, 0.15] | 3,148 | 0.121 | 0.116 |
+| (0.15, 0.2] | 1,592 | 0.173 | 0.181 |
+| (0.2, 0.3] | 1,607 | 0.242 | 0.273 |
+| (0.3, 0.4] | 523 | 0.338 | 0.312 |
+| (0.4, 0.6] | 154 | 0.460 | 0.455 |
+
+## anytime scorer, at the open (before teams are named) (happened in 9.1% of player-matches)
+
+| season | rows | model | raw rate | flat rate |
+|---|---|---|---|---|
+| 2016-17 | 3,817 | 0.2672 | 0.2688 | 0.3081 |
+| 2017-18 | 3,773 | 0.2647 | 0.2654 | 0.3040 |
+| 2018-19 | 3,812 | 0.2840 | 0.2854 | 0.3228 |
+| 2019-20 | 4,101 | 0.2591 | 0.2606 | 0.2908 |
+| 2020-21 | 4,683 | 0.2595 | 0.2607 | 0.2939 |
+| 2021-22 | 4,796 | 0.2608 | 0.2617 | 0.2855 |
+| 2022-23 | 4,891 | 0.2672 | 0.2689 | 0.2967 |
+| 2023-24 | 5,032 | 0.2754 | 0.2772 | 0.3041 |
+| 2024-25 | 5,330 | 0.2791 | 0.2805 | 0.3001 |
+| 2025-26 | 4,878 | 0.2755 | 0.2767 | 0.2892 |
+| 2026-27 | 153 | 0.2492 | 0.2562 | 0.2657 |
+
+settings chosen on, 2016-17 to 2020-21: model minus raw rate -0.0013 (-0.0019 to -0.0007); model better.
+
+settings chosen on, 2016-17 to 2020-21: model minus flat rate -0.0369 (-0.0404 to -0.0333); model better.
+
+untouched test, 2021-22 on: model minus raw rate -0.0015 (-0.0019 to -0.0010); model better.
+
+untouched test, 2021-22 on: model minus flat rate -0.0235 (-0.0267 to -0.0207); model better.
+
+Calibration, test seasons:
+
+| predicted band | rows | average predicted | happened |
+|---|---|---|---|
+| (0.0, 0.05] | 9,651 | 0.028 | 0.033 |
+| (0.05, 0.1] | 8,220 | 0.072 | 0.075 |
+| (0.1, 0.15] | 3,279 | 0.122 | 0.116 |
+| (0.15, 0.2] | 1,762 | 0.172 | 0.192 |
+| (0.2, 0.3] | 1,595 | 0.240 | 0.246 |
+| (0.3, 0.4] | 443 | 0.338 | 0.330 |
+| (0.4, 0.6] | 130 | 0.458 | 0.423 |
 
 ## player carded (yellow or red) (happened in 13.8% of player-matches)
 
@@ -77,12 +113,15 @@ Calibration, test seasons:
 
 Settings were chosen on 2016-17 to 2020-21 and scored on 2021-22 onwards.
 
-- **Anytime scorer:** beats a player's raw goals-per-appearance rate in every test season (-0.0039 log
-  loss, interval clear of zero) and is well calibrated across the range.
+- **Anytime scorer, teams named:** beats a player's raw goals-per-appearance rate in every test season
+  (-0.0039 log loss, interval clear of zero) and is well calibrated across the range.
+- **Anytime scorer, at the open** (before teams are named, minutes from the player's recent role): still
+  better than the raw rate (-0.0015) but keeps only about a third of the edge. **When to bet scorer props:
+  after teams are named** (about an hour before kick-off in the A-League), which is also when books have
+  the least time to react.
 - **Player carded (yellow or red):** the first version beat the raw rate (-0.0043) but was too spread
   (low-risk players 3.3% predicted, 6.2% happened). A Platt rescaling fitted on the selection seasons only
-  (a -0.30, b 0.75: it pulls the probabilities together) took the test-season gain to -0.0080 and fixed
-  most of the calibration. The fix was found after the test seasons had been looked at once, so its
-  clean check is 2026-27 as it is played.
+  (a -0.30, b 0.75) took the test-season gain to -0.0080 and fixed most of the calibration. It was found
+  after the test seasons had been looked at once, so its clean check is 2026-27 as it is played.
 - No referee factor: it did not help at any shrinkage on the selection seasons.
 - These are probabilities, not profit: whether they beat a book's prices needs recorded odds.

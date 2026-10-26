@@ -148,6 +148,20 @@ def main(tables, report):
     def blend(a, b, w):
         return np.exp(w * np.log(np.clip(a, EPS, 1)) + (1 - w) * np.log(np.clip(b, EPS, 1)))
     pg['p_goal'] = blend(pg.p_goal_model, pg.p_goal_raw, 0.5)
+    # at the open (before teams are named): minutes from the player's recent role, not the confirmed XI
+    pg = pg.sort_values(['player_id', 'date', 'match_id']).reset_index(drop=True)
+    dd = 0.5 ** (1 / 3)
+    ps, acc_s, acc_n, last = np.zeros(len(pg)), 0.0, 0.0, None
+    for i, (pid, st) in enumerate(zip(pg.player_id.to_numpy(), pg.starter.to_numpy())):
+        if pid != last:
+            acc_s = acc_n = 0.0; last = pid
+        ps[i] = (acc_s + 0.5) / (acc_n + 1.0)   # share of his recent squads he started, half-life 3 matches
+        acc_s = acc_s * dd + st; acc_n = acc_n * dd + 1
+    st_o = (pg.h_start_min + 75 * 3) / (pg.h_starts + 3)
+    bn_o = np.maximum((pg.h_bench_min + 15 * 3) / (pg.h_benches + 3), 20)  # given he comes on
+    pg['exp_min_open'] = ps * st_o + (1 - ps) * bn_o
+    lam_open = pg.rate90_goal * pg.exp_min_open / 90 * pg.team_xg / pg.team_avg_xg
+    pg['p_goal_open'] = blend(np.where(pg.gk, 0.002, 1 - np.exp(-lam_open)), pg.p_goal_raw, 0.5)
     pg['p_card'] = blend(pg.p_card_model, pg.p_card_raw, 0.7)
     # cards come out too spread (low-risk players carded more often than predicted, high-risk less):
     # Platt scaling fitted on the selection seasons only, then applied everywhere (docs/PROPS_STEP1.md)
@@ -167,7 +181,9 @@ def main(tables, report):
              f'{len(played):,} player-matches with minutes on the pitch, seasons {played.season.min()}-{played.season.max()}; '
              'a named player who never came on is left out (a void bet at most books). Every rate from earlier '
              'matches only. Log loss, lower is better; differences with 90% intervals resampling weeks.', '']
-    for market, hit, cols in (('anytime scorer', played.goal > 0, ('p_goal', 'p_goal_raw', 'p_goal_flat')),
+    for market, hit, cols in (('anytime scorer, teams named', played.goal > 0, ('p_goal', 'p_goal_raw', 'p_goal_flat')),
+                              ('anytime scorer, at the open (before teams are named)', played.goal > 0,
+                               ('p_goal_open', 'p_goal_raw', 'p_goal_flat')),
                               ('player carded (yellow or red)', played.carded > 0, ('p_card', 'p_card_raw', 'p_card_flat'))):
         y = hit.to_numpy()
         ll = {c: -np.where(y, np.log(np.clip(played[c], EPS, 1)), np.log(np.clip(1 - played[c], EPS, 1))) for c in cols}
