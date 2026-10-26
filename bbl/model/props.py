@@ -75,10 +75,27 @@ LEAGUE_BAT = ['lf_bat_runs', 'lf_bat_outs']      # this game's league factors, w
 LEAGUE_BOWL = ['lf_bowl_runs', 'lf_bowl_wkts']
 
 
+MATCH_CTX = ['night', 'dew_gap_end']   # used only when PROPS_CONTEXT=1 (bbl/docs/RESEARCH.md section 8)
+
+
 def feature_sets(x):
-    bf = BAT + CTX + [c for c in LEAGUE_BAT if c in x]
-    wf = BOWL + CTX + [c for c in LEAGUE_BOWL if c in x]
+    bf = BAT + CTX + [c for c in LEAGUE_BAT if c in x] + [c for c in MATCH_CTX if c in x]
+    wf = BOWL + CTX + [c for c in LEAGUE_BOWL if c in x] + [c for c in MATCH_CTX if c in x]
     return bf, wf
+
+
+def add_match_context(g, d):
+    """Night game and the dew-point gap at the end, from the collected tables (blank where unknown)."""
+    c = os.path.join(d, 'match_context.parquet')
+    w = os.path.join(d, 'match_weather.parquet')
+    if os.path.exists(c):
+        ctx = pd.read_parquet(c, columns=['match_id', 'start_hour'])
+        g = g.merge(ctx, on='match_id', how='left')
+        g['night'] = (g.start_hour >= 17.5).astype(float).where(g.start_hour.notna())
+        g = g.drop(columns='start_hour')
+    if os.path.exists(w):
+        g = g.merge(pd.read_parquet(w, columns=['match_id', 'dew_gap_end']), on='match_id', how='left')
+    return g
 
 
 def fit_models(train):
@@ -144,6 +161,8 @@ def predict_all(d):
     g = pd.read_parquet(os.path.join(d, 'player_frame.parquet'))
     tt = pd.read_parquet(os.path.join(d, 't20_matches.parquet'), columns=['match_id', 'team_type'])
     g = g.merge(tt, on='match_id')
+    if os.environ.get('PROPS_CONTEXT') == '1':
+        g = add_match_context(g, d)
     seasons = EVAL_SEASONS if os.environ.get('FINAL') == '1' else [s for s in EVAL_SEASONS if s not in FINAL]
     parts = [predict_season(g, gender, comp, s) for gender, comp in (('male', 'BBL'), ('female', 'WBBL')) for s in seasons]
     return recalibrate(pd.concat([p for p in parts if p is not None], ignore_index=True))

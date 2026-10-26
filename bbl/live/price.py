@@ -117,6 +117,7 @@ def future_rows(m, pl, fixtures, xis, squads=None):
 
 
 def win_chances(x, fut_ids):
+    # before the toss: who chases is unknown, so never the 'after_toss' inputs here
     feats = team.win_features('named')
     rows = []
     for gender, g in x[x.match_id.isin(fut_ids)].groupby('gender'):

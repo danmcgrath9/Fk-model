@@ -38,6 +38,9 @@ FINAL = ['2025/26']
 SIDE_OPEN = ['elo_pre', 'venue_share']
 SIDE_NAMED = ['elo_pre', 'venue_share']
 WIN_EXTRA_NAMED = []
+# After the toss (bbl/docs/RESEARCH.md section 8): who chases, and chasing at night, chosen on 2022/23-2023/24
+# for BBL (0.0615 -> 0.0695 bits; 2024/25 -0.020 -> +0.009). Not for WBBL, where both made it worse.
+WIN_AFTER_TOSS = {'BBL': ['chase', 'chase_night'], 'WBBL': []}
 WIN_C = 0.1
 # every side feature the win and totals models can use, carried for the opponent too
 PAIR_COLS = ['elo_pre', 'venue_share', 'n_outs', 'outs_runs', 'n_ins', 'ins_runs'] + [
@@ -59,9 +62,26 @@ def pairs(t):
     return x
 
 
-def win_features(version):
+def add_toss_context(x, d):
+    """Who chases (+0.5) or sets (-0.5), and chasing at night (start 5:30pm or later, from match_context.parquet).
+    Only for the 'after the toss' price: before it, nobody knows who chases."""
+    path = os.path.join(d, 'match_context.parquet')
+    ctx = pd.read_parquet(path, columns=['match_id', 'start_hour']) if os.path.exists(path) else pd.DataFrame(columns=['match_id', 'start_hour'])
+    x = x.drop(columns=[c for c in ('start_hour',) if c in x]).merge(ctx, on='match_id', how='left')
+    x['chase'] = 0.5 - x.batted_first
+    night = (x.start_hour >= 17.5).astype(float).where(x.start_hour.notna())
+    x['chase_night'] = x.chase * night.fillna(night.mean() if night.notna().any() else 0.5)
+    return x
+
+
+def win_features(version, comp=None):
     side = SIDE_OPEN if version == 'open' else SIDE_NAMED
-    return ['d_' + c for c in side] + ([] if version == 'open' else WIN_EXTRA_NAMED)
+    feats = ['d_' + c for c in side]
+    if version == 'named':
+        feats += WIN_EXTRA_NAMED
+    if version == 'after_toss':
+        feats += WIN_AFTER_TOSS.get(comp, [])
+    return feats
 
 
 def season_start(t, season, comps=('BBL', 'WBBL'), gender=None):
@@ -77,10 +97,10 @@ def _fill(X, med):
 
 def fit_predict_win(x, version, kind='logit'):
     """Walk-forward win chances for every BBL/WBBL team-game in EVAL_SEASONS."""
-    feats = win_features(version)
     club = x[(x.team_type == 'club') & x.won.isin([0.0, 1.0])] if 'team_type' in x else x[x.won.isin([0.0, 1.0])]
     out = []
     for gender, comp in (('male', 'BBL'), ('female', 'WBBL')):
+        feats = win_features(version, comp)
         for season in EVAL_SEASONS:
             test = x[(x.comp == comp) & (x.season == season)]
             if test.empty:
@@ -221,7 +241,7 @@ def report(d):
     t = pd.read_parquet(os.path.join(d, 'team_frame.parquet'))
     m = pd.read_parquet(os.path.join(d, 't20_matches.parquet'), columns=['match_id', 'team_type'])
     t = t.merge(m, on='match_id')
-    x = pairs(t)
+    x = add_toss_context(pairs(t), d)
     lines = ['# BBL team model', '',
              'Walk-forward: each season predicted by a model fitted on club T20 games of the same gender that started '
              'before it. Choices made on 2022/23 and 2023/24 only; 2024/25 confirms; 2025/26 '
@@ -231,7 +251,7 @@ def report(d):
         lines += [f'## {comp}: head-to-head', '', 'bits: 1 + log2(chance given to the winner), averaged; 0 is a coin flip, higher is better.', '']
         rows = []
         for name, kind, version in (('rating only (Elo)', 'elo', 'open'), ('at the open', 'logit', 'open'),
-                                    ('teams named', 'logit', 'named')):
+                                    ('teams named', 'logit', 'named'), ('after the toss', 'logit', 'after_toss')):
             r = fit_predict_win(x, version, kind)
             r = r[r.comp == comp]
             if kind == 'logit':
