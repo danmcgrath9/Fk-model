@@ -30,7 +30,9 @@ import lightgbm as lgb
 from scipy.optimize import minimize
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from t_box_bias import point_in_time_ratio                                    # noqa: E402
+from greyhound.ratings import elo                                             # noqa: E402
 
 
 def read_all(d, pattern):
@@ -118,6 +120,11 @@ def iggy_speed(d):
 def build(d):
     runs = load(d)
     hist = dog_history(runs)
+    # who beat whom, from the only finishing information these files hold: the winner first, placegetters tied
+    # second, everyone else tied behind (greyhound/ratings.py; ratings as at the start of the race day)
+    canon = pd.DataFrame({"race_id": runs.WIN_MARKET_ID, "date": runs.date, "dog": runs.dog, "is_trial": False,
+                          "finish": np.where(runs.won == 1, 1, np.where(runs.placed == 1, 2, 4))}, index=runs.index)
+    runs = runs.assign(elo=elo(canon))                    # carried on to the race rows below with the rest of runs
     df = runs[runs.WIN_BSP > 1]
     g = df.groupby("WIN_MARKET_ID")
     df = df[(g.won.transform("sum") == 1) & (g.WIN_BSP.transform("size") >= 4)].copy()
@@ -150,9 +157,9 @@ def build(d):
 
 NUM = ["box", "field", "DISTANCE", "box_ratio", "runs", "wins", "win_rate", "place_rate", "prev_won", "prev_placed",
        "won_s5", "placed_s5", "prev_lbsp", "lbsp_m5", "lbsp_min5", "surprise_s5", "days_since", "prev_TAB_NUMBER",
-       "dist_change", "same_track"]
+       "dist_change", "same_track", "elo"]
 IGGY = ["early_speed", "es_rank", "es_in", "es_out"]
-REL = ["box_ratio", "win_rate", "place_rate", "prev_lbsp", "lbsp_m5", "lbsp_min5", "surprise_s5", "days_since",
+REL = ["elo", "box_ratio", "win_rate", "place_rate", "prev_lbsp", "lbsp_m5", "lbsp_min5", "surprise_s5", "days_since",
        "early_speed"]
 CAT = ["TRACK", "STATE_CODE", "grade"]
 
