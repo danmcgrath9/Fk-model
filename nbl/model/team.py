@@ -36,11 +36,11 @@ def games_table(tg):
     tg['net_ew'] = tg.ortg_ew - tg.drtg_ew
     side = ['game', 'season', 'tip', 'finals', 'venue', 'team', 'score', 'poss_ew', 'ortg_ew', 'drtg_ew', 'net_ew', 'margin_ew',
             'days_rest', 'b2b', 'travel_km', 'named_val', 'open_val', 'named_rapm', 'open_rapm', 'games_prior', 'elo_margin',
-            'league_poss', 'league_pts', 'ot']
+            'league_poss', 'league_pts', 'ot', 'bu_pts_pace']
     h = tg[tg.is_home == 1][side]
     a = tg[tg.is_home == 0][side]
     g = h.merge(a[['game', 'team', 'score', 'poss_ew', 'ortg_ew', 'drtg_ew', 'net_ew', 'margin_ew', 'days_rest', 'b2b', 'travel_km',
-                   'named_val', 'open_val', 'named_rapm', 'open_rapm', 'games_prior']], on='game', suffixes=('_h', '_a'))
+                   'named_val', 'open_val', 'named_rapm', 'open_rapm', 'games_prior', 'bu_pts_pace']], on='game', suffixes=('_h', '_a'))
     g = g.rename(columns={'team_h': 'home', 'team_a': 'away'})
     g['home_margin'] = g.score_h - g.score_a
     g['total'] = g.score_h + g.score_a
@@ -50,6 +50,11 @@ def games_table(tg):
     # expected total: both teams' scoring per 100 against the other's defence, at their combined pace
     g['exp_poss'] = (g.poss_ew_h + g.poss_ew_a) / 2
     g['exp_total'] = g.exp_poss * ((g.ortg_ew_h + g.drtg_ew_a) / 2 + (g.ortg_ew_a + g.drtg_ew_h) / 2) / 100
+    # bottom-up total (frame.bottom_up), relative to the league's recent level: the average bottom-up total of the 60
+    # games before, against the league's actual recent points (absolute levels carry last season's scoring over)
+    g = g.sort_values('tip')
+    bu = g.bu_pts_pace_h + g.bu_pts_pace_a
+    g['bu_rel'] = bu / bu.shift(1).rolling(60, min_periods=15).mean() * g.league_pts
     g['sum_val_named'] = g.named_val_h + g.named_val_a
     g['sum_val_open'] = g.open_val_h + g.open_val_a
     return g.sort_values('tip').reset_index(drop=True)
@@ -61,8 +66,8 @@ MARGIN = {
     'named': ['elo_margin', 'd_net_ew', 'd_margin_ew', 'd_named_val', 'd_named_rapm', 'd_days_rest', 'd_b2b', 'd_travel_km'],
 }
 TOTAL = {
-    'open': ['exp_total', 'exp_poss', 'league_pts', 'sum_val_open', 'finals'],
-    'named': ['exp_total', 'exp_poss', 'league_pts', 'sum_val_named', 'finals'],
+    'open': ['exp_total', 'exp_poss', 'league_pts', 'sum_val_open', 'finals', 'bu_rel'],
+    'named': ['exp_total', 'exp_poss', 'league_pts', 'sum_val_named', 'finals', 'bu_rel'],
 }
 
 
@@ -146,7 +151,7 @@ def with_rapm(tg, cache):
     path = f'{cache}/lineup_rapm.parquet'
     if os.path.exists(path):
         tg = tg.drop(columns=['named_rapm', 'open_rapm'], errors='ignore').merge(pd.read_parquet(path), on=['game', 'team'], how='left')
-    for c in ('named_rapm', 'open_rapm'):
+    for c in ('named_rapm', 'open_rapm', 'bu_pts_pace'):
         if c not in tg:
             tg[c] = np.nan
     return tg
@@ -192,7 +197,8 @@ def run(cache, out_md):
       '(Elo K 0.06, penalty chosen on 2022-23 alone). The Elo settings and the penalty method were then changed, both '
       'chosen on 2016-17 to 2022-23 only, and everything was scored again; then squad on-court ratings from the '
       'play-by-play (nbl/model/onoff.py, settings chosen on 2016-17 to 2022-23 only) were added and it was scored a third '
-      'time. So this is a third look, not a clean one. No version beat the results-only rating on 2025-26.')
+      'time; then the bottom-up total (chosen on 2016-17 to 2022-23) was added and it was scored a fourth time. So '
+      'this is a fourth look, not a clean one. No version beat the results-only rating on 2025-26 for margins.')
     W('')
     W(f'Win chance = normal around the predicted margin, spread {sd_m:.1f} points; total spread {sd_t:.1f} points (training seasons).')
     W('')

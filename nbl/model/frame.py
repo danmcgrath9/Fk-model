@@ -476,6 +476,17 @@ PLAYER_FEATURES = ['r_pts', 'r_reb', 'r_ast', 'r_fg3m', 'r_fg3a', 'r_fga', 'r_ft
                    'days_rest', 'b2b', 'travel_km', 'finals']
 
 
+def bottom_up(p):
+    """Per team-game: the squad's expected points built from its players (Ewing-lite). Each dressed player's
+    per-minute scoring rate x his share of the team's 200 minutes, scaled by the game's expected pace against the
+    league. Pre-game only. The team model uses it relative to the league's recent level (team.games_table),
+    because the absolute level carries last season's scoring into this one (nbl/docs/RESEARCH.md)."""
+    q = p.assign(bu=p.r_pts * p.min_scaled.fillna(0))
+    sq = q.groupby(['game', 'team'], as_index=False).agg(bu_pts=('bu', 'sum'), pace=('pace_rel', 'first'))
+    sq['bu_pts_pace'] = sq.bu_pts * sq.pace.fillna(1.0)
+    return sq[['game', 'team', 'bu_pts_pace']]
+
+
 def build(cache):
     results = pd.read_parquet(f'{cache}/results.parquet')
     box = pd.read_parquet(f'{cache}/box_player.parquet')
@@ -484,6 +495,7 @@ def build(cache):
     tg = team_features(team_box(players, games), games)
     p = add_player_features(players, tg)
     tg = tg.merge(lineup_values(p, league_rates(players)), on=['game', 'team'], how='left')
+    tg = tg.merge(bottom_up(p), on=['game', 'team'], how='left')
     return games, p, tg
 
 

@@ -38,6 +38,7 @@ def build(cache, days):
     tg = frame.team_features(frame.team_box(allp, games), games)
     p = frame.add_player_features(allp, tg)
     tg = tg.merge(frame.lineup_values(p, frame.league_rates(players)), on=['game', 'team'], how='left')
+    tg = tg.merge(frame.bottom_up(p), on=['game', 'team'], how='left')
     rpath = f'{cache}/ratings.parquet'
     if os.path.exists(rpath):              # squad on-court ratings (onoff.py), refreshed by the workflow before pricing
         tg = tg.merge(onoff.lineup_ratings(p, pd.read_parquet(rpath)), on=['game', 'team'], how='left')

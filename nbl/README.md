@@ -39,7 +39,7 @@ Scored on seasons it never saw (squads named; log loss, lower is better, a coin 
 help are on-court plus/minus from the play-by-play (`model/onoff.py`: 54,655 stints rebuilt from 1,587
 games), which beat box-score efficiency for valuing a squad. With them the named squad beats the open
 squad slightly, most where team news moved our number (2 to 4 points: miss 9.5 against 10.4, but only 7
-games). Totals beat the league average by 1 to 3.5 points a game. The final-check seasons have been
+games). Totals, now built partly bottom-up from the players, beat the league average by 1 to 4 points a game. The final-check seasons have been
 looked at three times while the model was built (`docs/TEAM_STEP1.md` says how); every setting was chosen
 on 2016-17 to 2022-23 only. Early season is the weak spot: a third of last season's regulars are gone.
 

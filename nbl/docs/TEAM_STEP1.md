@@ -2,9 +2,9 @@
 
 Fitted on 2016-17 to 2022-23 (965 games); the penalty was chosen by predicting each season from 2018-19 on from the seasons before it. Each later season is scored once. 2026-27 is this season to 18 Oct 2026, 36 games. No public NBL model with an archive of predictions was found to compare against, and no betting lines are held yet, so the benchmarks are a results-only rating and always picking the home team. **The test that matters, against the market, waits for recorded lines.**
 
-**Honesty note.** The final-check seasons (2025-26, 2026-27) were scored once with a first version of this model (Elo K 0.06, penalty chosen on 2022-23 alone). The Elo settings and the penalty method were then changed, both chosen on 2016-17 to 2022-23 only, and everything was scored again; then squad on-court ratings from the play-by-play (nbl/model/onoff.py, settings chosen on 2016-17 to 2022-23 only) were added and it was scored a third time. So this is a third look, not a clean one. No version beat the results-only rating on 2025-26.
+**Honesty note.** The final-check seasons (2025-26, 2026-27) were scored once with a first version of this model (Elo K 0.06, penalty chosen on 2022-23 alone). The Elo settings and the penalty method were then changed, both chosen on 2016-17 to 2022-23 only, and everything was scored again; then squad on-court ratings from the play-by-play (nbl/model/onoff.py, settings chosen on 2016-17 to 2022-23 only) were added and it was scored a third time; then the bottom-up total (chosen on 2016-17 to 2022-23) was added and it was scored a fourth time. So this is a fourth look, not a clean one. No version beat the results-only rating on 2025-26 for margins.
 
-Win chance = normal around the predicted margin, spread 13.0 points; total spread 16.9 points (training seasons).
+Win chance = normal around the predicted margin, spread 13.0 points; total spread 16.7 points (training seasons).
 
 ## 2023-24 (confirmation season)
 
@@ -37,10 +37,10 @@ Win chance = normal around the predicted margin, spread 13.0 points; total sprea
 
 | model | games | winner picked | margin miss (pts) | Brier | log loss |
 |---|---|---|---|---|---|
-| home team, at the training home-win rate | 36 | 61.1% | 10.7 | 0.239 | 0.672 |
-| ours, squads named | 36 | 44.4% | 11.0 | 0.271 | 0.735 |
-| ours, at the open (no team news) | 36 | 44.4% | 11.0 | 0.274 | 0.742 |
-| results-only rating (Elo) | 36 | 44.4% | 10.9 | 0.275 | 0.745 |
+| home team, at the training home-win rate | 40 | 60.0% | 11.3 | 0.241 | 0.675 |
+| ours, squads named | 40 | 47.5% | 11.5 | 0.268 | 0.729 |
+| results-only rating (Elo) | 40 | 47.5% | 11.3 | 0.269 | 0.731 |
+| ours, at the open (no team news) | 40 | 47.5% | 11.4 | 0.271 | 0.735 |
 
 Lower is better for margin miss, Brier and log loss. A coin flip scores Brier 0.250 and log loss 0.693.
 
@@ -50,17 +50,17 @@ Lower is better for margin miss, Brier and log loss. A coin flip scores Brier 0.
 |---|---|---|
 | 0% to 20% | 4 | 0% |
 | 20% to 35% | 35 | 23% |
-| 35% to 50% | 121 | 49% |
-| 50% to 65% | 204 | 56% |
-| 65% to 80% | 136 | 68% |
+| 35% to 50% | 122 | 48% |
+| 50% to 65% | 205 | 57% |
+| 65% to 80% | 138 | 68% |
 | 80% to 100% | 28 | 82% |
 
 ## Team news: how much the named squad moves the prediction (all test seasons)
 
 | change in our margin, open to named | games | open margin miss | named margin miss |
 |---|---|---|---|
-| 0 to 1 pts | 481 | 11.4 | 11.4 |
-| 1 to 2 pts | 37 | 13.1 | 12.8 |
+| 0 to 1 pts | 484 | 11.4 | 11.4 |
+| 1 to 2 pts | 38 | 13.4 | 13.2 |
 | 2 to 4 pts | 8 | 11.9 | 10.2 |
 | 4 to more pts | 2 | 14.8 | 19.0 |
 
@@ -68,10 +68,10 @@ Lower is better for margin miss, Brier and log loss. A coin flip scores Brier 0.
 
 | season | games | total miss, ours named (pts) | ours open | always the training average |
 |---|---|---|---|---|
-| 2023-24 | 154 | 14.0 | 14.1 | 15.1 |
-| 2024-25 | 159 | 15.7 | 15.8 | 19.1 |
-| 2025-26 | 179 | 15.1 | 15.2 | 16.9 |
-| 2026-27 | 36 | 15.9 | 16.3 | 19.4 |
+| 2023-24 | 154 | 14.1 | 14.1 | 15.1 |
+| 2024-25 | 159 | 15.2 | 15.2 | 19.1 |
+| 2025-26 | 179 | 14.8 | 14.9 | 16.9 |
+| 2026-27 | 40 | 15.3 | 15.5 | 19.2 |
 
 Scores include overtime, as head-to-head, line and total bets settle.
 

@@ -47,6 +47,9 @@ def test_a_games_own_stats_never_reach_its_features(base):
     tf = ['poss_ew', 'ortg_ew', 'drtg_ew', 'margin_ew', 'elo_margin', 'league_poss', 'league_pts']
     pd.testing.assert_frame_equal(tb[tb.game == target].sort_values('team')[tf].reset_index(drop=True),
                                   ta[ta.game == target].sort_values('team')[tf].reset_index(drop=True))
+    bb, ba = frame.bottom_up(before), frame.bottom_up(after)
+    pd.testing.assert_frame_equal(bb[bb.game == target].sort_values('team').reset_index(drop=True),
+                                  ba[ba.game == target].sort_values('team').reset_index(drop=True))
     # and the tamper did reach later games, so the test would notice a broken shift
     later = before[before.tip > before[before.game == target].tip.iloc[0]].game.unique()[:40]
     bl = before[before.game.isin(later)].sort_values(['game', 'team', 'key'])

@@ -149,6 +149,13 @@ below; the details are second-hand.
   2023-25 0.6775 to 0.6740. Rebound and assist spread inside the simulation chosen on 2022-23 (Poisson beat
   gamma-mixed shapes 3, 8, 20). A spread fitted to the lines instead did less (0.6760 on 2023-25).
 
+- **Bottom-up team total (Ewing-lite): adopted.** `research/bottom_up.py`. Each squad's expected points from its
+  players (per-minute scoring rate x share of the team's 200 minutes x expected pace), used RELATIVE to the league's
+  recent level: the absolute version won 5 of 7 rolling seasons but missed 2020-21 (the hub season) by 18.1 points,
+  carrying the previous season's scoring over. Relative version: total miss rolling 14.45 to 14.24, 2023-25 14.92
+  to 14.61, better in 6 of 7 rolling seasons. In the team report: 2024-25 15.6 to 15.2, 2025-26 15.1 to 14.8, this
+  season 15.9 to 15.3 (a fourth look at those seasons; the choice was made on 2016-22). Margin: no gain.
+
 ## Next, in order
 1. Recorded lines, half lines included: the only test that matters. Then blend our number with the market's and measure closing line value.
 2. Starting fives at tip, if a source exists: the largest measured gain.
