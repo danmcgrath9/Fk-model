@@ -15,6 +15,7 @@ import io, os, zipfile
 import numpy as np, pandas as pd
 
 NUM = ["WIN_BSP", "PLACE_BSP", "WIN_PREPLAY_WEIGHTED_AVERAGE_PRICE_TAKEN", "WIN_INPLAY_MIN_PRICE_TAKEN",
+       "WIN_INPLAY_MAX_PRICE_TAKEN",
        "WIN_BSP_VOLUME", "DISTANCE", "TAB_NUMBER", "BEST_AVAIL_BACK_AT_SCHEDULED_OFF"]
 
 
@@ -91,6 +92,7 @@ def history(df):
     df["log_vol_prev"] = np.log1p(g["race_vol"].transform(lambda s: s.shift(1).rolling(5, min_periods=1).mean()))
     df["tab_rel"] = df.TAB_NUMBER / df.field.where(df.field > 0)
     df = add_v2(df, g)
+    df = add_v3(df)
     return df.sort_values(["start", "race", "TAB_NUMBER"]).reset_index(drop=True)
 
 
@@ -135,8 +137,37 @@ FEATURES = ["DISTANCE", "trot", "TAB_NUMBER", "tab_rel", "field", "n_prev", "day
             "last_placed", "last_inplay_min", "last_close_lost", "last_bsp_rank", "dist_change", "same_track",
             "gait_change", "last_tab", "last_field", "log_vol_prev"]
 CATS = ["STATE_CODE", "TRACK", "name_tag"]
+def add_v3(df):
+    """v3 inputs (26 Oct 2026), earlier races only:
+    - the place market: each run's place chance from the place BSP (1/place BSP, renormalised to the places paid: 2 for
+      7 or fewer starters, 3 for 8+), placed minus that chance, smoothed: a horse that keeps placing beyond its price;
+    - the in-running high last start (log of the highest in-play price): how far it dropped out;
+    - class move: today's rivals' rating against the rivals it met last start;
+    - the horse at this track and at this distance band: smoothed rating there, and runs there."""
+    df = df.sort_values(["horse", "start", "race"]).copy()
+    pb = df.PLACE_BSP.where(np.isfinite(df.PLACE_BSP) & (df.PLACE_BSP > 1) & (df.PLACE_BSP <= 1000))
+    places = np.where(df.field <= 7, 2, 3)
+    inv = 1 / pb
+    df["p_place"] = (inv / inv.groupby(df.race).transform("sum") * places).clip(upper=0.99)
+    df["place_perf"] = df.placed - df.p_place
+    g = df.groupby("horse", sort=False)
+    sm = lambda gr, c: gr[c].transform(lambda x: x.shift(1).ewm(alpha=0.3, ignore_na=True).mean())
+    df["place_perf_ewm"] = sm(g, "place_perf")
+    df["p_place_ewm"] = sm(g, "p_place")
+    df["last_inplay_max"] = np.log(g["WIN_INPLAY_MAX_PRICE_TAKEN"].shift(1))
+    df["class_move"] = df.rivals_mr - g["rivals_mr"].shift(1)
+    df["dist_band"] = pd.cut(df.DISTANCE, [0, 1800, 2200, 2700, 9999], labels=False)
+    gt = df.groupby(["horse", "TRACK"], sort=False)
+    df["track_mr"], df["track_runs"] = sm(gt, "mr"), gt.cumcount()
+    gd = df.groupby(["horse", "dist_band"], sort=False)
+    df["dist_mr"], df["dist_runs"] = sm(gd, "mr"), gd.cumcount()
+    return df
+
+
 FEATURES_V2 = FEATURES + ["mr_ewm", "mr_best5", "mr_trend", "perf_ewm", "close_ewm", "rivals_mr", "mr_vs_rivals",
                           "mr_rank", "draw_win_rate", "draw_ae", "draw_runs"]
+FEATURES_V3 = FEATURES_V2 + ["place_perf_ewm", "p_place_ewm", "last_inplay_max", "class_move", "dist_band",
+                             "track_mr", "track_runs", "dist_mr", "dist_runs"]
 
 
 def renorm(p, race):

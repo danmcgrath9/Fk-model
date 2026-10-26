@@ -24,7 +24,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from hx_data import load, history, FEATURES, FEATURES_V2, CATS, renorm
+from hx_data import load, history, FEATURES, FEATURES_V2, FEATURES_V3, CATS, renorm
 
 TRAIN_END, VALID_END = "2024-07-01", "2025-01-01"
 
@@ -64,6 +64,33 @@ def fit(tr, va, ho, feats):
     return va, ho, m, best
 
 
+def softmax_race(score, race, t):
+    e = pd.Series(np.exp(t * (np.asarray(score) - pd.Series(score).groupby(np.asarray(race)).transform("max").to_numpy())))
+    return (e / e.groupby(np.asarray(race)).transform("sum")).to_numpy()
+
+
+def fit_rank(tr, va, ho, feats):
+    """A ranking model per race (LightGBM lambdarank; winner 2, placed 1, the rest 0), turned into chances with a
+    per-race softmax whose temperature is fitted on validation log loss. Uses the place result the win model ignores."""
+    X = feats + CATS
+    rel = lambda d: (d.won + d.placed).clip(upper=2).astype(int)
+    grp = lambda d: d.groupby("race", sort=False).size().to_numpy()
+    m = lgb.LGBMRanker(objective="lambdarank", n_estimators=3000, learning_rate=0.03, num_leaves=63,
+                       min_child_samples=200, subsample=0.8, subsample_freq=1, colsample_bytree=0.8, verbose=-1)
+    m.fit(tr[X], rel(tr), group=grp(tr), eval_set=[(va[X], rel(va))], eval_group=[grp(va)], eval_at=[1, 3],
+          callbacks=[lgb.early_stopping(100, verbose=False)])
+    out = []
+    for part in (va, ho):
+        part = part.copy(); part["score"] = m.predict(part[X], num_iteration=m.best_iteration_); out.append(part)
+    va, ho = out
+    t = min(np.arange(0.2, 5.01, 0.1), key=lambda t: winner_ll(softmax_race(va.score, va.race, t), va.won, va.race))
+    for part in (va, ho):
+        part["p_model"] = softmax_race(part.score, part.race, t); part["p_equal"] = 1 / part.field
+        part["p_tree"] = part.p_model; part["p_lr"] = part.p_model
+    print(f"{len(feats)} inputs, ranking: {m.best_iteration_} rounds, softmax temperature {t:.1f}")
+    return va, ho, m, t
+
+
 def main(d, label):
     df = history(load(d))
     df = df[df.STATE_CODE != "NZ"]
@@ -77,10 +104,11 @@ def main(d, label):
     print(f"races: train {tr.race.nunique():,} (to {TRAIN_END}), validation {va.race.nunique():,}, "
           f"holdout {ho.race.nunique():,} ({ho.date.min():%Y-%m-%d} to {ho.date.max():%Y-%m-%d})")
     results = {}
-    for name, feats in (("v1", FEATURES), ("v2", FEATURES_V2)):
+    for name, feats in (("v1", FEATURES), ("v2", FEATURES_V2), ("v3", FEATURES_V3)):
         results[name] = fit(tr, va, ho, feats)
+    results["v3, ranking"] = fit_rank(tr, va, ho, FEATURES_V3)
     dates = np.sort(ho.date.unique()); cut = dates[len(dates) // 2]
-    print(f"\n## v1 v v2 on the holdout, split at {pd.Timestamp(cut):%Y-%m-%d}\n")
+    print(f"\n## v1, v2, v3 on the holdout, split at {pd.Timestamp(cut):%Y-%m-%d}\n")
     print("| inputs | LL 1st half | LL 2nd half | KL to BSP 1st half | KL 2nd half | gap closed, all holdout |\n"
           "|---|---|---|---|---|---|")
     for name, (_, h, _, _) in results.items():
@@ -89,9 +117,10 @@ def main(d, label):
         print(f"| {name} | {winner_ll(h1.p_model, h1.won, h1.race):.4f} | {winner_ll(h2.p_model, h2.won, h2.race):.4f} | "
               f"{kl_to_bsp(h1.p_model, h1.p_bsp, h1.race):.4f} | {kl_to_bsp(h2.p_model, h2.p_bsp, h2.race):.4f} | "
               f"{(le - lm) / (le - lb):.1%} |")
-    va, ho, m, best = results["v2"]
-    X = FEATURES_V2 + CATS
-    print("\nDetail below is v2.\n")
+    pick = min(results, key=lambda k: winner_ll(results[k][0].p_model, results[k][0].won, results[k][0].race))
+    va, ho, m, best = results[pick]
+    X = (FEATURES_V3 if pick.startswith("v3") else FEATURES_V2 if pick == "v2" else FEATURES) + CATS
+    print(f"\nDetail below is {pick}, the best on VALIDATION log loss (chosen before the holdout is looked at).\n")
     ho = ho.copy()
     ho["p_wap"] = ho.p_wap.where(ho.p_wap.notna().groupby(ho.race).transform("all"))
     ho["half"] = np.where(ho.date < cut, "first half", "second half")

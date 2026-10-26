@@ -13,6 +13,8 @@ def races(rows):
     df["date"] = df.start
     df["won"] = df.pop("w"); df["placed"] = df.won
     df["WIN_INPLAY_MIN_PRICE_TAKEN"] = np.where(df.won == 1, 1.1, 5.0)
+    df["WIN_INPLAY_MAX_PRICE_TAKEN"] = 20.0
+    df["PLACE_BSP"] = 1.5
     df["field"] = df.groupby("race").horse.transform("size")
     df["p_bsp"] = df.p
     df["bsp_rank"] = df.groupby("race").p.rank(ascending=False)
@@ -36,3 +38,15 @@ def test_history_uses_earlier_races_only():
     assert h.loc[(0, 1), "draw_runs"] == 0
     assert h.loc[(1, 1), "draw_runs"] == 1 and np.isclose(h.loc[(1, 1), "draw_win_rate"], (1 + 1) / (1 + 10))
     assert np.isclose(h.loc[(2, 1), "draw_win_rate"], (1 + 1) / (2 + 10))
+
+
+def test_v3_inputs_use_earlier_races_only():
+    rows = []
+    for i, (d, p1, w1) in enumerate((("2024-01-01", 0.5, 1), ("2024-01-08", 0.25, 0), ("2024-01-15", 0.4, 0))):
+        rows += [dict(race=i, date=d, horse=1, TAB_NUMBER=1, p=p1, w=w1),
+                 dict(race=i, date=d, horse=100 + i, TAB_NUMBER=2, p=1 - p1, w=1 - w1)]
+    h = hx_data.history(races(rows)).set_index(["race", "horse"])
+    assert np.isnan(h.loc[(0, 1), "track_mr"]) and h.loc[(0, 1), "track_runs"] == 0
+    assert h.loc[(1, 1), "track_mr"] == 0 and h.loc[(2, 1), "track_runs"] == 2   # same track every time
+    # place chance in a field of two (2 places paid): both runners at place BSP 1.5 -> 1 each, capped at 0.99
+    assert np.isclose(h.loc[(1, 1), "p_place_ewm"], 0.99)
