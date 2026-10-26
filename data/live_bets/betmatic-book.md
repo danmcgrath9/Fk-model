@@ -420,6 +420,9 @@ Value at the open (paper_open, Form King open), the Twitter card (card_wed28.jso
 
 The pre-open order sheet at the same opens fills 21.08u: Purple Streak 5.32u, Yahoo Bar 3.90u, Jenni You Think 4.80u,
 Lawborough 3.36u, Litzdeel 1.48u, See That Storm 2.22u (Imperial Award's orders start at $12.58, so none fill at $11).
+Tweeted Twitter card (founder, 27 Oct, the open fills halved): R3 Purple Streak $8 2.66u (rated $4.36), R4 Yahoo Bar $7 1.95u
+($4.87), R5 Jenni You Think $7 2.40u ($4.61), R6 Lawborough $4.40 1.68u ($3.22), R8 Litzdeel $8.50 0.74u ($5.73), R8 See That
+Storm $16 1.11u ($8.40): 10.54u. This card, not card_wed28.json, is the Twitter record for Bendigo.
 
 ## Monday 26 Oct Wangaratta settled (results pulled Mon 26 Oct 6:20pm)
 Positivo (R7) WON: SP $3.70, BSP $3.77, tipped $8.50. Vaderlee 2nd, Strummer 3rd, Blue Moon Summit 3rd, Phantom's Chase 4th,
