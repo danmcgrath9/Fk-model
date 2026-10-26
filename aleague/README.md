@@ -21,7 +21,8 @@ Paper only until the founder says otherwise.
 | 4. Props | anytime scorer and player carded, teams named | done (`docs/PROPS_STEP1.md`): both beat a raw per-appearance rate in every untouched season 2021-22 to 2025-26; cards need a calibration fix |
 | 5. Backtest | probabilities against base rates and Elo, out of sample; goals-only improvements from the literature (`docs/RESEARCH.md`, `docs/TEAM_STEP2.md`) | done; against real lines once odds arrive |
 | 6. Team-news test | needs recorded prices | after odds |
-| 7. Paper season | `price_round` prints our prices for the coming week | first record: `docs/prices_2026-10-21.md` (round 2, before kick-off); needs a book's prices to compare |
+| 7. Paper season | each round's team and prop prices committed to `paper/` before kick-off; `paper_score` keeps the running record | rounds 2 and 3 recorded; a book's prices to compare once odds arrive |
+| Stage two (Benter) | blend our probabilities with the de-vigged market by season, fractional Kelly | built and tested on synthetic data (`model/benter.py`); waits on odds |
 
 ## Data (all on the `aleague-history` release)
 
@@ -45,6 +46,11 @@ shared on the same terms if ever published. Every pull identifies itself with th
 ## Running it
 
 ```
+# each week, before kick-off (after refreshing: edit aleague/data/refresh.txt and push)
+python -m aleague.model.price_round aleague/cache/tables aleague/paper/<date>_round<N>_team.md
+python -m aleague.model.price_props aleague/cache/tables aleague/paper/<date>_round<N>_props.md
+python -m aleague.model.paper_score aleague/cache/tables
+
 pip install -r aleague/requirements.txt
 gh release download aleague-history --pattern '*.parquet' --dir aleague/cache/tables
 python -m pytest -q aleague/tests                                     # pricing, props and leakage tests
