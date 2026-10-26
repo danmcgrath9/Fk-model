@@ -31,8 +31,11 @@ from features import DATA, FEATURES_MIN, FEATURES_RATE
 TRAIN = [2020, 2021, 2022, 2023]
 TEST = [2024, 2025]
 TARGETS = ["pts", "reb", "ast", "fg3m"]
-PARAMS = dict(objective="regression", learning_rate=0.03, num_leaves=31, min_child_samples=200,
-              subsample=0.8, subsample_freq=1, colsample_bytree=0.8, n_estimators=600, verbose=-1)
+# Chosen on 2023/24 only (tune_blend.py, 24-setting grid; trained on 2020/21-2022/23), then
+# judged on 2024/25 and 2025/26: every stat a little better in both (points 5.107 -> 5.095,
+# 5.053 -> 5.051), with fewer trees. The first settings were lr 0.03, 600 trees, 200 per leaf.
+PARAMS = dict(objective="regression", learning_rate=0.02, num_leaves=31, min_child_samples=400,
+              subsample=0.8, subsample_freq=1, colsample_bytree=0.8, n_estimators=400, verbose=-1)
 
 
 def propable(df: pd.DataFrame) -> pd.Series:

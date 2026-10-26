@@ -271,3 +271,18 @@ same data have stopped paying; the next answers need more lines.
 - **Threes test, queued:** `requests_pending/dunkapi_threes.json`, 44 high-volume shooters'
   threes lines (names from the official injury reports). Move it into `requests/` when the
   free credits reset.
+
+## Improvement round, 26 Oct 2026
+
+| Test | Result |
+|---|---|
+| Pair-by-pair minutes absorption (who takes a missing teammate's minutes) | No gain (`minutes_pairs.py`) |
+| League scoring level as an input | Fixed one season's points bias, broke the other's; not adopted (`league_level.py`) |
+| Where minutes error comes from | Ordinary nights 65% (MAE 3.7), blowouts 20%, overtime 8%, short nights (injury, fouls) 8%; about a third is unknowable before tip |
+| Calibration by game context (favourite, underdog, close) | Within 1-2 points everywhere |
+| Points over-rates drift | Overs landed 2-4 points more than we said in 2024/25-2025/26 (shape drift, not bias). A rolling 30-day logit shift closes it exactly and improves log loss; built into the live run (`live/calibration.json`, used once 500+ player-games are scored) |
+| Streaky players | Far lines crossed ~2 points more than said; small, not yet modelled |
+| Early season | Research model beats a naive average early (4.39 vs 5.63 minutes, games 1-5); the live gap was a pipeline bug |
+| **Live pipeline ghosts (fixed)** | Replay of 2025/26 days (`live/replay.py`): stale rosters and healthy sitters made minutes 2 low. Now: latest game sheet only once a team has played, players the report lists as likely to play added back, others weighted by recent appearances. Minutes miss 5.11 -> 4.68 (naive 5.14), bias -2.03 -> +0.18. Opening night stays weak (no free preseason rosters) |
+| **Tuned settings (adopted)** | Picked on 2023/24 only; every stat slightly better in both test seasons; fewer trees. Against the lines at 7pm: 2.840 -> 2.836 (line 2.779) |
+| Direct-stat model blended in | +0.005 on points only; not adopted |
