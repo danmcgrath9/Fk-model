@@ -384,8 +384,8 @@ Town Planner $4.60). Two fills at Form King's open:
 
 | Race | Horse | FK open | Ours | Stake | Twitter (halved) | Deduction (est.) | Price after |
 |---|---|---|---|---|---|---|---|
-| R7 | Habitual | $6 | $3.25 | 11.78u | 5u (cap) | 0c | $6.00 |
-| R8 | Mr Butt's Boats | $21 | $8.23 | 3.60u | 1.80u | 10c | $19.08 |
+| R7 | Habitual | $6 | $3.25 | 11.78u | 5u (cap) | 16c (TAB actual) | $5.20 |
+| R8 | Mr Butt's Boats | $21 | $8.23 | 3.60u | 1.80u | 12c (TAB actual) | $18.60 |
 
 Nineteen others opened under their minimums; the market opened short on most of our book (Killiana $2.30 v ours
 $2.67, Neziha $2.80 v $4.92, Switch Hit $3.80 v $6.76). Flash Inquiry (R1, $18 open, 3.08u) would have filled on
