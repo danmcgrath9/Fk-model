@@ -9,12 +9,12 @@ under his price, top bookie price, dry run first, sent only on the founder's OK)
 
 | Posted | Meeting | Race | Selection | Bet | His price | Units | Staked ($50/u) | Copied? (our price) | Result | P/L (u) | P/L ($) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Wed 21 Oct | Eagle Farm (Wed 21) | R4 | Wootten Hyde | Win | $2.50 | 6u | $300 | Ordered, nothing matched (TAB empty) | | | |
-| Fri 23 Oct | Scone R5 + Sunshine Coast Poly R2 (Fri 23) | double | Tennessee River ($1.70) / Tilly's Last Wish ($2.60) | Win double | $4.42 TAB | 6u | $300 | No | | | |
-| Sat 24 Oct 8:30am | Eagle Farm (Sat 24) | R7 | Cool Gent | Each way | $11 win / $2.70 place | 2u EW | $200 | No (paper) | | | |
-| Sat 24 Oct 12:05pm | Randwick (Sat 24) | R1 | Royal Accord | Win (late bet) | $2.50 | 5u | $250 | No (paper) | | | |
-| Sat 24 Oct 1:38pm (edited) | Randwick (Sat 24), The Invitation | R8 | Perfumist | Each way | $7.50 win / $2.40 place | 2u EW | $200 | No (paper) | | | |
+| Wed 21 Oct | Eagle Farm (Wed 21) | R4 | Wootten Hyde | Win | $2.50 | 6u | $300 | Ordered, nothing matched (TAB empty) | Lost | -6.00 | -$300 |
+| Fri 23 Oct | Scone R5 + Sunshine Coast Poly R2 (Fri 23) | double | Tennessee River ($1.70) / Tilly's Last Wish ($2.60) | Win double | $4.42 TAB | 6u | $300 | No | Lost | -6.00 | -$300 |
+| Sat 24 Oct 8:30am | Eagle Farm (Sat 24) | R7 | Cool Gent | Each way | $11 win / $2.70 place | 2u EW | $200 | No (paper) | Unplaced | -4.00 | -$200 |
+| Sat 24 Oct 12:05pm | Randwick (Sat 24) | R1 | Royal Accord | Win (late bet) | $2.50 | 5u | $250 | No (paper) | Lost | -5.00 | -$250 |
+| Sat 24 Oct 1:38pm (edited) | Randwick (Sat 24), The Invitation | R8 | Perfumist | Each way | $7.50 win / $2.40 place | 2u EW | $200 | No (paper) | Unplaced | -4.00 | -$200 |
 
-Running total: settle each row with the result, then: tips, winners, units staked, units profit, ROI.
+Running total (to Sat 24 Oct, results from the founder, 26 Oct: "All lost"): 5 tips, 0 winners, 25u staked ($1,250), -25u (-$1,250), ROI -100%.
 Results for non-Victorian races are not in our Form King plan (Single State Pro, VIC); they come from the founder or a
 results page he sends.
