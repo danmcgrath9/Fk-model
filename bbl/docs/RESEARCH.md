@@ -147,3 +147,29 @@ Both confirm intervals now include zero. Still an upper bound against a stand-in
 - **Home side (BBL):** won 52.6% of 435 games where the page marks it; venue_share (our home proxy) averages
   0.38 for those sides against 0.19 for all, so the proxy tracks it.
 - **Weather and scoring:** no link between weather and first-innings runs above the ground's average (all |r| < 0.1).
+
+## 8. Improvements while waiting for odds (26 Oct)
+
+Each judged on 2022/23-2023/24 and then checked on 2024/25; anything that worked in only one of the two was dropped.
+
+| change | choose seasons | 2024/25 | decision |
+|---|---|---|---|
+| **After-the-toss win price, BBL** (who chases, chasing at night) | 0.062 -> 0.069 bits | -0.020 -> +0.009 bits | **adopted** for the after-toss price only; the pre-toss price never sees it |
+| same for WBBL | 0.036 -> 0.024 | | not adopted |
+| dew-point gap in the win price | no gain beyond night | | not adopted (only BBL/WBBL games have weather to train on) |
+| night and dew as prop inputs | runs WBBL -0.003 (interval excludes 0) | | not adopted (`PROPS_CONTEXT=1` to compare) |
+| **phase skills, chance to bat** (powerplay and death shares, strike rates, dot rate) | WBBL +0.0063 per player-game (97% likely positive), BBL -0.0004 | WBBL +0.0021, BBL +0.0010 | **adopted** for the chance-to-bat model only |
+| phase skills, wickets (death and powerplay economy, death share) | BBL +0.0035, WBBL +0.0024 | BBL -0.0011, WBBL -0.0063 | dropped: one period only |
+| phase skills, runs and sixes | no gain | | not adopted |
+| spread recalibration for sixes and wickets | WBBL sixes -0.640 -> -0.672 on the real run | | rejected: the prototype's gain came from where its grid stopped (overfitting); sixes stays flagged |
+
+**Benter's second stage, built and tested, waiting on prices** (`bbl/model/benter.py`): our chance and the market's
+(margin removed by the power method) blended as p proportional to exp(alpha log p_model + beta log p_market), alpha and beta fitted
+walk-forward by season. On made-up markets it gives equal sources equal weight and beats both, and gives a model
+that adds nothing no weight at all, which is the property that keeps us off bets the market already prices. The
+paper comparer labels every edge UNBLENDED until real weights exist.
+
+**Paper record started** (`bbl-price` workflow): every game in the next three days priced and logged before it is
+played, with time and code version, and scored once Cricsheet has the result. The first log holds WBBL|12's two
+openers (29 Oct). The daily schedule needs the workflow file on `main` (GitHub runs schedules only from the
+default branch); until then it runs on a push.

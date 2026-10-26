@@ -28,6 +28,8 @@ BBL = 'Big Bash League'
 WBBL = "Women's Big Bash League"
 # a season is chosen and tested in order: fit on the oldest, choose on the next, confirm, then one final look
 SPLIT = [('fit', '2021/22'), ('choose', '2023/24'), ('confirm', '2024/25'), ('final', '2025/26')]
+POWERPLAY_LAST_OVER = 5     # overs are 0-based in Cricsheet: overs 1-6
+DEATH_FIRST_OVER = 16       # overs 17-20
 BOWLER_WICKETS = {'bowled', 'caught', 'lbw', 'stumped', 'caught and bowled', 'hit wicket'}
 NOT_DISMISSALS = {'retired hurt', 'retired not out'}
 HALFLIFE = 8           # games: a player's form weights his last 8 games as much as everything before them
@@ -75,8 +77,13 @@ def batting(dl):
     faced = d.wides == 0
     d['four'] = (d.runs_batter == 4) & ~d.non_boundary
     d['six'] = (d.runs_batter == 6) & ~d.non_boundary
-    b = (d.assign(faced=faced).groupby(['match_id', 'innings', 'batter'], sort=False)
-         .agg(bat_runs=('runs_batter', 'sum'), bat_balls=('faced', 'sum'), bat_4s=('four', 'sum'), bat_6s=('six', 'sum'))
+    pp, death = d.over <= POWERPLAY_LAST_OVER, d.over >= DEATH_FIRST_OVER
+    b = (d.assign(faced=faced, pp_b=faced & pp, pp_r=d.runs_batter.where(pp, 0), de_b=faced & death,
+                  de_r=d.runs_batter.where(death, 0), dot=faced & (d.runs_batter == 0))
+         .groupby(['match_id', 'innings', 'batter'], sort=False)
+         .agg(bat_runs=('runs_batter', 'sum'), bat_balls=('faced', 'sum'), bat_4s=('four', 'sum'), bat_6s=('six', 'sum'),
+              bat_pp_balls=('pp_b', 'sum'), bat_pp_runs=('pp_r', 'sum'), bat_death_balls=('de_b', 'sum'),
+              bat_death_runs=('de_r', 'sum'), bat_dots=('dot', 'sum'))
          .reset_index().rename(columns={'batter': 'player'}))
     # position: the order each player first appears at either end; on the same ball the striker comes first
     ends = pd.concat([d[['match_id', 'innings', 'batter']].rename(columns={'batter': 'player'}).assign(order=d.ball_idx * 2),
@@ -90,7 +97,8 @@ def batting(dl):
     outs = outs[~outs.wicket_kind.isin(NOT_DISMISSALS)].drop_duplicates(['match_id', 'innings', 'player_out'])
     outs = outs.rename(columns={'player_out': 'player', 'wicket_kind': 'how_out'})
     b = first[['match_id', 'innings', 'player', 'bat_pos']].merge(b, on=['match_id', 'innings', 'player'], how='left')
-    b[['bat_runs', 'bat_balls', 'bat_4s', 'bat_6s']] = b[['bat_runs', 'bat_balls', 'bat_4s', 'bat_6s']].fillna(0)
+    cnt = ['bat_runs', 'bat_balls', 'bat_4s', 'bat_6s', 'bat_pp_balls', 'bat_pp_runs', 'bat_death_balls', 'bat_death_runs', 'bat_dots']
+    b[cnt] = b[cnt].fillna(0)
     b = b.merge(outs, on=['match_id', 'innings', 'player'], how='left')
     b['bat_out'] = b.how_out.notna().astype(int)
     return b
@@ -101,10 +109,15 @@ def bowling(dl):
     d = dl[~dl.super_over]
     w1 = d.wicket_kind.isin(BOWLER_WICKETS).astype(int)
     w2 = d.wicket_kind_2.isin(BOWLER_WICKETS).astype(int)
-    return (d.assign(conceded=d.runs_batter + d.wides + d.noballs, wk=w1 + w2,
-                     dot=(d.legal & (d.runs_total == 0)).astype(int), lg=d.legal.astype(int))
+    conc = d.runs_batter + d.wides + d.noballs
+    pp, death = d.over <= POWERPLAY_LAST_OVER, d.over >= DEATH_FIRST_OVER
+    lg = d.legal.astype(int)
+    return (d.assign(conceded=conc, wk=w1 + w2, dot=(d.legal & (d.runs_total == 0)).astype(int), lg=lg,
+                     pp_b=lg.where(pp, 0), pp_c=conc.where(pp, 0), de_b=lg.where(death, 0), de_c=conc.where(death, 0))
             .groupby(['match_id', 'bowler'], sort=False)
-            .agg(bowl_balls=('lg', 'sum'), bowl_runs=('conceded', 'sum'), bowl_wkts=('wk', 'sum'), bowl_dots=('dot', 'sum'))
+            .agg(bowl_balls=('lg', 'sum'), bowl_runs=('conceded', 'sum'), bowl_wkts=('wk', 'sum'), bowl_dots=('dot', 'sum'),
+                 bowl_pp_balls=('pp_b', 'sum'), bowl_pp_runs=('pp_c', 'sum'), bowl_death_balls=('de_b', 'sum'),
+                 bowl_death_runs=('de_c', 'sum'))
             .reset_index().rename(columns={'bowler': 'player'}))
 
 
@@ -139,11 +152,13 @@ def player_games(m, pl, dl):
     g = g.merge(bat, on=['match_id', 'team', 'player'], how='left')
     g = g.merge(bowling(dl), on=['match_id', 'player'], how='left').merge(catches(dl), on=['match_id', 'player'], how='left')
     g['did_bat'] = g.bat_pos.notna().astype(int)
-    for c in ['bowl_balls', 'bowl_runs', 'bowl_wkts', 'bowl_dots', 'catches']:
+    for c in ['bowl_balls', 'bowl_runs', 'bowl_wkts', 'bowl_dots', 'bowl_pp_balls', 'bowl_pp_runs', 'bowl_death_balls',
+              'bowl_death_runs', 'catches']:
         g[c] = g[c].fillna(0)
     g['did_bowl'] = (g.bowl_balls > 0).astype(int)
     fut = g.future.fillna(False).astype(bool)
-    g.loc[fut, ['did_bat', 'did_bowl', 'bowl_balls', 'bowl_runs', 'bowl_wkts', 'bowl_dots', 'catches']] = np.nan
+    g.loc[fut, ['did_bat', 'did_bowl', 'bowl_balls', 'bowl_runs', 'bowl_wkts', 'bowl_dots', 'bowl_pp_balls', 'bowl_pp_runs',
+                'bowl_death_balls', 'bowl_death_runs', 'catches']] = np.nan
     g['pid'] = g.player_id.fillna('name:' + g.player)
     g['team_key'] = g.team + '|' + g.gender
     g['opp_key'] = g.opp + '|' + g.gender
@@ -152,6 +167,7 @@ def player_games(m, pl, dl):
 
 # ---------------------------------------------------------------- pre-game features
 
+PHASE_STATE = ['pp_sr', 'death_sr', 'pp_share', 'death_share', 'dot_rate', 'bowl_pp_econ', 'bowl_death_econ', 'bowl_death_share']
 PLAYER_STATE = ['runs_pg', 'balls_pg', 'sixes_pg', 'fours_pg', 'bat_rate', 'pos_ewm', 'sr', 'out_per_ball',
                 'bowl_balls_pg', 'bowl_rate', 'econ', 'wkts_per_ball', 'catches_pg']
 
@@ -182,8 +198,13 @@ def player_state(g):
                    _br=g.adj_bowl_runs if adj else g.bowl_runs, _bw=g.adj_bowl_wkts if adj else g.bowl_wkts)
     # a game not yet played is not an observation: blank every outcome so the weighted averages skip it
     future = g.future.fillna(False).astype(bool) if 'future' in g else pd.Series(False, index=g.index)
+    for c in ('bat_pp_balls', 'bat_pp_runs', 'bat_death_balls', 'bat_death_runs', 'bat_dots'):
+        tmp['_' + c] = g[c].where(batted) if c in g else np.nan
+    for c in ('bowl_pp_balls', 'bowl_pp_runs', 'bowl_death_balls', 'bowl_death_runs'):
+        tmp['_' + c] = g[c] if c in g else np.nan
     obs = ['_runs0', '_balls0', '_6', '_4', '_rb', '_bb', '_ob', '_pos', 'did_bat', 'did_bowl', 'bowl_balls', '_br',
-           '_bw', 'catches']
+           '_bw', 'catches', '_bat_pp_balls', '_bat_pp_runs', '_bat_death_balls', '_bat_death_runs', '_bat_dots',
+           '_bowl_pp_balls', '_bowl_pp_runs', '_bowl_death_balls', '_bowl_death_runs']
     tmp[obs] = tmp[obs].astype(float).where(~future)
     p = tmp.groupby('pid', sort=False)
 
@@ -203,14 +224,28 @@ def player_state(g):
     s['econ'] = ewm('_br') / ewm('bowl_balls').replace(0, np.nan)
     s['wkts_per_ball'] = ewm('_bw') / ewm('bowl_balls').replace(0, np.nan)
     s['catches_pg'] = ewm('catches')
+    # phase skills: strike rate in the powerplay (overs 1-6) and at the death (17-20), the share of his balls faced
+    # in each (a role signal: openers live in the powerplay, finishers at the death), dot-ball rate; for bowlers,
+    # economy in each phase and how much of his bowling comes at the death
+    bb = ewm('_bb').replace(0, np.nan)
+    s['pp_sr'] = ewm('_bat_pp_runs') / ewm('_bat_pp_balls').replace(0, np.nan)
+    s['death_sr'] = ewm('_bat_death_runs') / ewm('_bat_death_balls').replace(0, np.nan)
+    s['pp_share'] = ewm('_bat_pp_balls') / bb
+    s['death_share'] = ewm('_bat_death_balls') / bb
+    s['dot_rate'] = ewm('_bat_dots') / bb
+    wb = ewm('bowl_balls').replace(0, np.nan)
+    s['bowl_pp_econ'] = ewm('_bowl_pp_runs') / ewm('_bowl_pp_balls').replace(0, np.nan)
+    s['bowl_death_econ'] = ewm('_bowl_death_runs') / ewm('_bowl_death_balls').replace(0, np.nan)
+    s['bowl_death_share'] = ewm('_bowl_death_balls') / wb
     s['games'] = p.cumcount() + 1
     return s
 
 
 def add_player_features(g, state):
     g = g.sort_values(['dt', 'match_id']).copy()
-    prev = state.groupby('pid', sort=False)[PLAYER_STATE + ['games', 'dt']].shift(1)
-    for c in PLAYER_STATE:
+    cols = PLAYER_STATE + [c for c in PHASE_STATE if c in state]
+    prev = state.groupby('pid', sort=False)[cols + ['games', 'dt']].shift(1)
+    for c in cols:
         g[f'pre_{c}'] = prev[c]
     g['pre_games'] = prev.games.fillna(0)
     # expected batting position: his usual position ranked within this XI, from past games only. NOT Cricsheet's
@@ -408,7 +443,7 @@ TEAM_OPEN = ['elo_pre', 'opp_elo_pre', 'venue_first_runs', 'venue_games', 'venue
 TEAM_NAMED = TEAM_OPEN + ['won_toss', 'batted_first', 'xi_runs_named', 'xi_sixes_named', 'xi_econ_named', 'xi_wkts_named',
                           'xi_debutants_named', 'opp_xi_runs_named', 'opp_xi_sixes_named', 'opp_xi_econ_named',
                           'opp_xi_wkts_named', 'n_outs', 'outs_runs', 'outs_bowl_balls', 'n_ins', 'ins_runs']
-PLAYER = ['pre_' + c for c in PLAYER_STATE] + ['pre_games', 'days_rest', 'pre_comp_games', 'pre_comp_runs_pg', 'exp_pos']
+PLAYER = ['pre_' + c for c in PLAYER_STATE + PHASE_STATE] + ['pre_games', 'days_rest', 'pre_comp_games', 'pre_comp_runs_pg', 'exp_pos']
 # Cricsheet's list order is the actual batting order of the game: never a feature (tests/test_frame.py checks)
 NEVER_FEATURES = ['list_order']
 # the game's own facts: never features

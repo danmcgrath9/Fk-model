@@ -32,8 +32,8 @@ orders. Paper only until the founder says otherwise.
 | 3. Team model | head-to-head near a coin flip (BBL 0.06 bits on the choose seasons, below zero on 2024/25); totals from the ground's average (BBL) or a model (WBBL) | done |
 | 4. Props | runs, sixes, wickets; beats the last-10 average everywhere; sixes run high; league-adjusted form | done |
 | 5. Backtest | runs vs STAND-IN line, leak-free: BBL 2024/25 +12.6% (-1.8% to +21.8%), WBBL +9.6% (-1.8% to +25.3%); an upper bound | done; real lines need odds |
-| Research | literature against our data, league strength, ball-by-ball simulator (v2, not yet better than v1) | `docs/RESEARCH.md` |
+| Research | literature against our data, league strength, simulator (v2, not yet better than v1), after-toss price, phase skills | `docs/RESEARCH.md` |
 | 6. Team news | repricing after team announcements | needs recorded prices |
-| 7. Paper season | pricer, name matcher, paper comparer built | needs odds; WBBL 2026/27 could be first |
+| 7. Paper season | daily price log (`bbl-price`) running: WBBL|12 openers logged; Benter blend built for when odds arrive | schedule needs the workflow on `main` |
 | Odds probe | free calls, then up to 300 credits on your OK | blocked: `ODDS_API_KEY` secret not set in Fk-model |
 | Final score | 2025/26 held back | when every choice is frozen |

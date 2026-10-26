@@ -78,10 +78,21 @@ LEAGUE_BOWL = ['lf_bowl_runs', 'lf_bowl_wkts']
 MATCH_CTX = ['night', 'dew_gap_end']   # used only when PROPS_CONTEXT=1 (bbl/docs/RESEARCH.md section 8)
 
 
+# Phase skills (frame.PHASE_STATE; bbl/docs/RESEARCH.md section 8). The batting ones improve the chance to bat
+# (choose seasons WBBL +0.0063 per player-game, 2024/25 +0.0021 WBBL and +0.0010 BBL), so that model gets them.
+# The bowling ones improved wickets on 2022/23-2023/24 and made them worse on 2024/25 (WBBL -0.0063): dropped,
+# since what only works in one period does not count. Neither helped runs or sixes. PROPS_PHASE=0 turns them off.
+PHASE_BAT = ['pre_pp_sr', 'pre_death_sr', 'pre_pp_share', 'pre_death_share', 'pre_dot_rate']
+PHASE_BOWL = ['pre_bowl_pp_econ', 'pre_bowl_death_econ', 'pre_bowl_death_share']
+USE_PHASE = os.environ.get('PROPS_PHASE', '1') == '1'
+
+
 def feature_sets(x):
+    """(runs and sixes, chance to bat, bowling) feature lists."""
+    phase_b = [c for c in PHASE_BAT if c in x] if USE_PHASE else []
     bf = BAT + CTX + [c for c in LEAGUE_BAT if c in x] + [c for c in MATCH_CTX if c in x]
     wf = BOWL + CTX + [c for c in LEAGUE_BOWL if c in x] + [c for c in MATCH_CTX if c in x]
-    return bf, wf
+    return bf, bf + phase_b, wf
 
 
 def add_match_context(g, d):
@@ -100,10 +111,10 @@ def add_match_context(g, d):
 
 def fit_models(train):
     """Every prop model, fitted on the given player-games (club T20, one gender, all before the games to price)."""
-    bf, wf = feature_sets(train)
+    bf, pf, wf = feature_sets(train)
     tb = train[train.did_bat == 1]
     tw = train[train.did_bowl == 1]
-    m = dict(bat=_fit_cls(train, bf, train.did_bat), runs=_fit_reg(tb, bf, tb.bat_runs), six=_fit_reg(tb, bf, tb.bat_6s),
+    m = dict(bat=_fit_cls(train, pf, train.did_bat), runs=_fit_reg(tb, bf, tb.bat_runs), six=_fit_reg(tb, bf, tb.bat_6s),
              bowl=_fit_cls(train, wf, train.did_bowl), wkts=_fit_reg(tw, wf, tw.bowl_wkts))
     tb_mu, tb_band = m['runs'].predict(tb[bf]), band(tb.pre_pos_ewm)
     m['r_runs'] = {k: fit_r(tb.bat_runs[tb_band == k], tb_mu[tb_band == k]) for k in range(len(POS_BANDS))}
@@ -113,9 +124,9 @@ def fit_models(train):
 
 
 def apply_models(m, test):
-    bf, wf = feature_sets(test)
+    bf, pf, wf = feature_sets(test)
     out = test[[c for c in OUT_COLS if c in test]].copy()
-    out['p_bat'] = m['bat'].predict_proba(test[bf])[:, 1]
+    out['p_bat'] = m['bat'].predict_proba(test[pf])[:, 1]
     out['mu_runs'] = m['runs'].predict(test[bf])
     out['r_runs'] = [m['r_runs'][k] for k in band(test.pre_pos_ewm)]
     out['mu_6s'] = m['six'].predict(test[bf])
