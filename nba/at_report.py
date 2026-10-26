@@ -42,9 +42,13 @@ def report_status() -> pd.DataFrame:
         ["date", "personId", "report_time"])
 
 
-def availability_at(df: pd.DataFrame, status: pd.DataFrame, report_time: str, day_offset: int) -> pd.DataFrame:
+def availability_at(df: pd.DataFrame, status: pd.DataFrame, report_time: str, day_offset: int,
+                    prior: dict | None = None) -> pd.DataFrame:
     """Availability inputs for every player-game, as known at `report_time` on each game day
-    (HH:MM, US Eastern) shifted by `day_offset` days (-1 = the day before)."""
+    (HH:MM, US Eastern) shifted by `day_offset` days (-1 = the day before). `prior` (optional,
+    personId -> 0..1) is the chance a player NOT on the report plays, e.g. his share of the
+    team's recent games; without it, everyone not on the report counts as playing."""
+    prior = prior or {}
     games = (df[["gameId", "teamId", "date"]].drop_duplicates()
              .sort_values(["teamId", "date", "gameId"]).reset_index(drop=True))
     games["k"] = games.groupby("teamId").cumcount()
@@ -70,7 +74,7 @@ def availability_at(df: pd.DataFrame, status: pd.DataFrame, report_time: str, da
             pre = dict(zip(tonight.personId, tonight.min_ewm5.fillna(0)))
             for p, v in pre.items():
                 cand[p] = v                      # tonight's players carry their pre-game average
-            w = {p: WEIGHT.get(lookup.get(f"{date_s}|{p}|{when}"), 1.0) for p in cand}
+            w = {p: WEIGHT.get(lookup.get(f"{date_s}|{p}|{when}"), prior.get(p, 1.0)) for p in cand}
             rot = {p: v for p, v in cand.items() if v >= ROTATION_MIN}
             present = sum(v * w[p] for p, v in rot.items())
             n_present = sum(w[p] for p in rot)

@@ -83,35 +83,81 @@ def slate(sched: pd.DataFrame, day: str) -> pd.DataFrame:
     return s[["game_id", "start_date", "home_id", "away_id", "home_abbreviation", "away_abbreviation"]]
 
 
-def placeholders(box: pd.DataFrame, games: pd.DataFrame, day: str, raw: pd.DataFrame) -> pd.DataFrame:
-    """Tonight's rows. A team's candidates: everyone on its most recent game sheet this season
-    (played or not, so new signings and benched players are there), plus players whose latest
-    appearance was for that team within 200 days and who are not on another team's latest
-    sheet (an offseason move would otherwise leave a player on his old team). Stats blank;
-    every feature comes from earlier games."""
+def placeholders(box: pd.DataFrame, games: pd.DataFrame, day: str, raw: pd.DataFrame,
+                 rep: pd.DataFrame | None = None) -> pd.DataFrame:
+    """Tonight's rows, one per candidate player; stats blank, every feature from earlier games.
+
+    A team that has played this season: everyone on its most recent game sheet (played or
+    not), plus anyone tonight's injury report lists for it as Available, Probable or
+    Questionable (a player back from injury is not on the last sheet).
+    A team's first game of the season: last season's players whose latest appearance was for
+    it within 200 days and who are not on another team's sheet this season. This is the weak
+    spot: SportsDataVerse publishes no preseason sheets, so an offseason departure who has not
+    played elsewhere yet still looks like a member (replay of opening night 2025: 42 of 180
+    projected players did not play)."""
     season = int(box.season.max()) + 1                      # SportsDataVerse naming
-    r = raw[(raw.season == season) & (pd.to_datetime(raw.game_date).dt.strftime("%Y-%m-%d") < day)]
+    r = raw[(raw.season == season) & raw.season_type.isin([2, 3])
+            & (pd.to_datetime(raw.game_date).dt.strftime("%Y-%m-%d") < day)]
     last_game = r.sort_values("game_date").groupby("team_id").game_id.last()
     sheet = r[r.game_id.isin(last_game.values)][["team_id", "athlete_id", "athlete_display_name", "team_abbreviation"]]
+    sheet = sheet.dropna(subset=["team_id", "athlete_id"])          # a few sheet rows carry no player id
     on_sheet = dict(zip(sheet.athlete_id.astype(int), sheet.team_id.astype(int)))
     last = box.sort_values("date").groupby("personId").tail(1)
     recent = last[pd.to_datetime(last.date) >= pd.to_datetime(day) - timedelta(days=200)]
+    # tonight's report: players listed as likely to play, by full name, to any player we know
+    back = {}
+    if rep is not None and not rep.empty:
+        rr = rep.dropna(subset=["Player Name", "Current Status"])
+        rr = rr[rr["Current Status"].isin(["Available", "Probable", "Questionable"])].copy()
+        parts = rr["Player Name"].str.split(",", n=1, expand=True)
+        rr["full"] = (parts[1].fillna("") + parts[0]).map(ic.norm)
+        rr["team"] = rr["Team"].map(ic.TEAMS)
+        known = last.assign(full=last.name.map(ic.norm)).drop_duplicates("full", keep=False)
+        hit = rr.merge(known[["full", "personId", "name"]], on="full")
+        back = {(t, int(p)): n for t, p, n in zip(hit.team, hit.personId, hit.name)}
     rows = []
     for g in games.itertuples():
         for team, opp, home in [(g.home_id, g.away_id, True), (g.away_id, g.home_id, False)]:
             team = int(team)
-            cand = {pid: (nm, ESPN_TO_NBA.get(ab, ab)) for pid, nm, ab in
-                    sheet[sheet.team_id == team][["athlete_id", "athlete_display_name", "team_abbreviation"]]
-                    .itertuples(index=False)}
-            for pl in recent[recent.teamId == team].itertuples():
-                if on_sheet.get(pl.personId, team) == team:
-                    cand.setdefault(pl.personId, (pl.name, pl.team))
-            for pid, (nm, ab) in cand.items():
+            mine = sheet[sheet.team_id == team]
+            cand = {int(pid): (nm, ESPN_TO_NBA.get(ab, ab)) for pid, nm, ab in
+                    mine[["athlete_id", "athlete_display_name", "team_abbreviation"]].itertuples(index=False)}
+            ab = next(iter(cand.values()))[1] if cand else None
+            if not cand:                                   # first game of the season
+                for pl in recent[recent.teamId == team].itertuples():
+                    if on_sheet.get(pl.personId, team) == team:
+                        cand.setdefault(pl.personId, (pl.name, pl.team))
+                ab = next(iter(cand.values()))[1] if cand else None
+            for (t, pid), nm in back.items():
+                if t == ab:
+                    cand.setdefault(pid, (nm, ab))
+            for pid, (nm, abb) in cand.items():
                 rows.append({"gameId": int(g.game_id), "personId": int(pid), "teamId": team,
-                             "opp_teamId": int(opp), "date": day, "home": home, "team": ab, "name": nm,
+                             "opp_teamId": int(opp), "date": day, "home": home, "team": abb, "name": nm,
                              "season": int(box.season.max()), "game_ok": True, "game_minutes": 48,
                              "starter": np.nan, "tip": g.start_date})
     return pd.DataFrame(rows)
+
+
+def appear_rate(box: pd.DataFrame, tonight: pd.DataFrame, n: int = 5) -> dict:
+    """Share of his team's last n games THIS season each candidate actually played in (no
+    current-season game yet: everyone counts as playing). A sheet carries healthy players who
+    sit; counting them as certain to play crowds the rotation and pulled every projection down
+    (replay of 2025/26: bias -2.0 minutes). Last season's games are left out: they made every
+    new signing look like a player who never plays (bias +2.5)."""
+    out = {}
+    season = int(tonight.season.max())
+    for team, g in tonight.groupby("teamId"):
+        tg = box[(box.teamId == team) & (box.season == season)]
+        last = tg.drop_duplicates("gameId").sort_values("date").gameId.tail(n)
+        if last.empty:
+            continue
+        played = tg[tg.gameId.isin(last)].groupby("personId").gameId.nunique() / len(last)
+        for p in g.personId:
+            # softened: halfway between "certain" and the recent rate (the raw rate overshot,
+            # +2.9 minutes on a mid-season replay day, as returning players read as sitters)
+            out[int(p)] = 0.5 + 0.5 * float(played.get(p, 0.0))
+    return out
 
 
 def latest_report(now_et: datetime):
@@ -225,14 +271,14 @@ def main(argv: list[str]) -> int:
         print(f"{day}: no NBA games left to tip off.")
         return 0
     box = box[box.date < day]
-    tonight = placeholders(box, games, day, raw)
-    df = F.build(pd.concat([box, tonight.drop(columns=["tip"])], ignore_index=True))
     when, rep = latest_report(now) if not argv else (None, None)
+    tonight = placeholders(box, games, day, raw, rep)
+    df = F.build(pd.concat([box, tonight.drop(columns=["tip"])], ignore_index=True))
     label = when.strftime("%H:%M") if when else "none"
     status = report_status(rep, tonight, day, label)
     train = df[(df.date < pd.Timestamp(day)) & df.min_ewm5.notna() & df["min"].notna()]
     test = df[df.date == pd.Timestamp(day)].copy()
-    av = ar.availability_at(test, status, label, 0)
+    av = ar.availability_at(test, status, label, 0, prior=appear_rate(box, tonight))
     x = test.drop(columns=ar.AVAIL).merge(av, on=["gameId", "teamId", "personId"], how="left")
     m_min = lgb.LGBMRegressor(**pr.PARAMS, random_state=1).fit(train[F.FEATURES_MIN], train["min"])
     tr = train[train["min"] >= 1]
