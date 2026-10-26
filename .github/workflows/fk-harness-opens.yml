@@ -8,12 +8,11 @@ name: fk harness opens
 # markets open after 1am on race day. Races more than 6 hours from the start are asked every 10 minutes, nearer ones
 # every 2, to keep the reads through our TAB and Sportsbet sessions down. Free while the repository is public.
 
+# SCHEDULE PAUSED 26 Oct 2026 (founder: "don't get my TAB limited"): every request is read by our bot through the
+# logged-in TAB and Sportsbet sessions. Manual runs only until BetMatic confirms this rate of odds reads is safe for
+# the accounts, or the opens come from a source that does not touch them. To restore, put back:
+#   schedule: cron '0 18 * * *', '30 23 * * *', '0 5 * * *', '30 10 * * *'
 on:
-  schedule:
-    - cron: '0 18 * * *'
-    - cron: '30 23 * * *'
-    - cron: '0 5 * * *'
-    - cron: '30 10 * * *'
   workflow_dispatch:
     inputs:
       minutes:
