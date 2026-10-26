@@ -1411,3 +1411,5 @@ races the market alone predicts winners better than any blend from 30 minutes on
 refit weights did NOT help: all bets +21% vs +28% with the live weights (check half -2% vs +11%), price/BSP 1.35 vs 1.42;
 new horses 1.08x BSP vs 1.25x. Kept: the live 0.82/0.22 value test for the 30-90 min check. The edge after the open is in
 the few horses where our price is far from the market, not in the field as a whole. 294 races; refit at the retrain.
+PARKED, NOT REJECTED (founder 27 Oct: "Small sample, let's not use it, but don't completely write it off"): rerun
+t_blend_time.py at the retrain and again once the per-book watcher has logged about 1,000 races after the open.
