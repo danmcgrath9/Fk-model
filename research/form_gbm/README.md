@@ -1301,3 +1301,14 @@ runners, 18 race days split alternately into two halves. The 9:30 price is Form 
 ## First starters: a market weight and debut records (26 Oct 2026, t_fs_weight.py, t_fs_feats.py)
 Neither helps out of sample; the race rule stands. Numbers and reasons in FIRST_STARTERS_RESEARCH_2026-10-26.md. Queued
 for the national archive: retest trainer_fs on the deeper history (median 11 debutants per trainer here is too thin).
+
+## Tote v bookie SP v Betfair SP (26 Oct 2026, scripts/tote_vs_sp.py, scripts/tote_vs_sp_past.py)
+Founder: "an analysis on the world tote prices versus the bookie SP ... versus BSP". The tote is Form King's bestToteWin
+(best of the three TAB totes); toteWin is empty in our stored results.
+- Complete Victorian races in the DB (325 races, 3,309 runners, true returns, $1 on every runner): SP -31.7%, tote
+  -28.1%, BSP -8.6% (-15.1% after 8% commission). Winners paid most at BSP 61% of the time, tote 25%, SP 13%.
+- Every stored past run (12,527 runs, 1,532 winners, mostly VIC): tote/SP median 1.09, BSP/SP 1.29. The returns there
+  are biased upward (past runs of horses still racing, incomplete fields: overround 76-90%), so read across the row,
+  not down it: on the same runs the tote beats SP by ~7 points and BSP beats the tote by ~22 points gross, ~14 net.
+- The gap grows with the price: favourites under $2 pay about the same everywhere (tote 1.03x SP, BSP 1.09x); $21-$51
+  tote 1.15x, BSP 1.53x; $51+ tote 1.04x, BSP 2.02x. On a roughie the tote is barely better than SP; Betfair is far better.
