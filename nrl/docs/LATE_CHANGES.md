@@ -4,9 +4,9 @@
 
 | line-up fed in | bits/game | log loss | margin miss |
 |---|---|---|---|
-| last game's 17 (open) | 0.042 | 0.6641 | 13.62 |
+| last game's 17 (open) | 0.041 | 0.6646 | 13.63 |
 | Tuesday's 1-17 | 0.050 | 0.6587 | 13.46 |
 | who took the field | 0.051 | 0.6578 | 13.44 |
 
 Named 1-17 who did not take the field: 6.1% of players; per team-game 1.02 on average, none in 35%, three or more in 7%.
-Late changes moved our predicted margin by 0.67 points on average, by 2+ points in 6% of games.
+Late changes moved our predicted margin by 0.67 points on average, by 2+ points in 7% of games.

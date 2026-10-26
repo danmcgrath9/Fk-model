@@ -57,7 +57,9 @@ def main(cache):
     by_match = {k: v for k, v in pm.groupby('match_id')}
     try:
         nt = pd.read_parquet(f'{cache}/named_teams.parquet')
-        nt = nt[(nt.kind == 'named') & (nt.jersey <= 17)]
+        nt = nt[(nt.kind == 'named') & (nt.jersey <= 17)].copy()
+        from nrl.data.teams import canonical
+        nt['team'] = nt.team.map(canonical(cache))
         tuesday = {k: list(zip(v.player_id, np.where(v.jersey <= 13, 1.0, BENCH_WEIGHT)))
                    for k, v in nt.groupby(['match_id', 'team'])}
     except FileNotFoundError:

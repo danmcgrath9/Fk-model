@@ -65,7 +65,7 @@ def test_player_ratings_fit_only_on_earlier_games(data, tmp_path):
     m, pm = data
     # the ratings for a round must not move when that round's results change
     import shutil
-    for f in ('matches.parquet', 'player_matches.parquet'):
+    for f in ('matches.parquet', 'player_matches.parquet', 'teams.parquet'):
         shutil.copy(os.path.join(CACHE, f), tmp_path / f)
     player_ratings.main(str(tmp_path))
     before = pd.read_parquet(tmp_path / 'player_strength.parquet')

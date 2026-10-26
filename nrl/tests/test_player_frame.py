@@ -18,7 +18,7 @@ HISTORY = [f for f in player_frame.FEATURES if f not in ('position_code', 'jerse
 
 
 def test_a_games_own_tries_never_reach_its_features(tmp_path):
-    for f in ('team_frame.parquet', 'player_matches.parquet', 'matches.parquet'):
+    for f in ('team_frame.parquet', 'player_matches.parquet', 'matches.parquet', 'teams.parquet'):
         shutil.copy(os.path.join(CACHE, f), tmp_path / f)
     before = player_frame.build(str(tmp_path))
     target = before[before.season == 2022].match_id.unique()[50]

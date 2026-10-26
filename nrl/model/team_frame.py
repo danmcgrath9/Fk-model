@@ -59,6 +59,15 @@ def history(cache):
         pm = pd.concat([pm, pu[pm.columns]], ignore_index=True)
     except FileNotFoundError:
         pass
+    # one name per club, whatever it was called that season (nrl/data/teams.py)
+    from nrl.data.teams import canonical
+    canon = canonical(cache)
+    m = m.copy()
+    pm = pm.copy()
+    for c in ('home_team', 'away_team'):
+        m[c] = m[c].map(canon)
+    for c in ('team', 'opposition_team'):
+        pm[c] = pm[c].map(canon)
     return m, pm
 
 

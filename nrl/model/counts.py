@@ -39,6 +39,9 @@ PARAMS = dict(objective='regression', learning_rate=0.03, num_leaves=31, min_dat
 def frame(cache, stat):
     cp = pd.read_parquet(f'{cache}/cd_player_games.parquet')
     cp = cp[cp.took_field].copy()
+    from nrl.data.teams import canonical
+    canon = canonical(cache)
+    cp['team'], cp['opp'] = cp.team.map(canon), cp.opp.map(canon)
     cp['kick_off'] = pd.to_datetime(cp.utc_start, utc=True)
     cp = cp.sort_values(['kick_off', 'cd_match_id', 'squad_id', 'jumperNumber']).reset_index(drop=True)
     pos = cp.position.map(POSITION)

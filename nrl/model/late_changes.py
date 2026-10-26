@@ -33,7 +33,7 @@ def main(cache, out=None):
         r = score(win_prob(mm, X), t.margin.to_numpy())
         lines.append(f'| {lab} | {r["bits"]:.3f} | {r["logloss"]:.4f} | {np.abs(mm.mean(X) - t.margin).mean():.2f} |')
     nt = pd.read_parquet(f'{cache}/named_teams.parquet')
-    nt = nt[(nt.kind == 'named') & (nt.jersey <= 17)]
+    nt = nt[(nt.kind == 'named') & (nt.jersey <= 17)]   # played/not is by player id: no team names needed
     per = nt.groupby(['match_id', 'team']).played.apply(lambda s: (~s).sum())
     shift = (t.strength_diff_named - t.strength_diff_tuesday).abs() * mm.coef[2]
     lines += ['', f'Named 1-17 who did not take the field: {(~nt.played).mean():.1%} of players; per team-game '
