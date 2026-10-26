@@ -71,6 +71,22 @@ def decayed_history(pg, cols):
     return pg
 
 
+def logit(p):
+    p = np.clip(p, 1e-6, 1 - 1e-6)
+    return np.log(p / (1 - p))
+
+
+def platt(p, y):
+    """(a, b) maximising the likelihood of y under sigmoid(a + b logit(p))."""
+    from scipy.optimize import minimize
+    x = logit(p)
+
+    def nll(t):
+        z = t[0] + t[1] * x
+        return np.mean(np.where(y, np.log1p(np.exp(-z)), np.log1p(np.exp(z))))
+    return minimize(nll, np.array([0.0, 1.0])).x
+
+
 def referee_factor(pg):
     """Each referee's earlier yellow cards per match over the league's, shrunk to 1."""
     per = pg.groupby(['match_id', 'date', 'referee']).yellow.sum().reset_index().sort_values('date')
@@ -133,6 +149,12 @@ def main(tables, report):
         return np.exp(w * np.log(np.clip(a, EPS, 1)) + (1 - w) * np.log(np.clip(b, EPS, 1)))
     pg['p_goal'] = blend(pg.p_goal_model, pg.p_goal_raw, 0.5)
     pg['p_card'] = blend(pg.p_card_model, pg.p_card_raw, 0.7)
+    # cards come out too spread (low-risk players carded more often than predicted, high-risk less):
+    # Platt scaling fitted on the selection seasons only, then applied everywhere (docs/PROPS_STEP1.md)
+    a, b = platt(pg.loc[pg.season.isin(DEV) & (pg.minutes > 0), 'p_card'].to_numpy(),
+                 (pg.loc[pg.season.isin(DEV) & (pg.minutes > 0), 'yellow'] + pg.loc[pg.season.isin(DEV) & (pg.minutes > 0), 'red'] > 0).to_numpy())
+    pg['p_card'] = 1 / (1 + np.exp(-(a + b * logit(pg.p_card.to_numpy()))))
+    print(f'card calibration (Platt, selection seasons): a {a:.3f}, b {b:.3f}')
     pg['carded'] = ((pg.yellow > 0) | (pg.red > 0)).astype(int)
     role = pg.groupby(['season', 'starter']).agg(gr=('goal', lambda x: (x > 0).mean()), yr=('carded', 'mean'))
     role = role.groupby(level='starter').shift(1).reset_index()  # the previous season's rate for the role
