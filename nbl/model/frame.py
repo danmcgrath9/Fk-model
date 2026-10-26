@@ -27,7 +27,7 @@ import pandas as pd
 FIRST_SEASON = 2015          # box scores start in 2015-16
 STATS = ['pts', 'reb', 'ast', 'fg3m', 'fg3a', 'fga', 'fgm', 'fta', 'ftm', 'oreb', 'tov', 'stl', 'blk', 'pf']
 PROPS = ['pts', 'reb', 'ast', 'fg3m', 'pra']
-RATE_COLS = ['pts', 'reb', 'ast', 'fg3m', 'fg3a', 'fga', 'fgm', 'fta', 'ftm', 'oreb', 'tov', 'stl', 'blk', 'eff']
+RATE_COLS = ['pts', 'reb', 'ast', 'fg3m', 'fg3a', 'fga', 'fgm', 'fta', 'ftm', 'oreb', 'tov', 'stl', 'blk', 'eff', 'pf']
 DECAY = 0.92                 # weight kept per later game played, in a player's rate and minutes history
 PRIOR_MIN = 60.0             # minutes of league-average play mixed into a rate with no tuned setting
 # Per-stat memory (DARKO-style): weight kept per later game and minutes of league-average prior, each chosen
@@ -35,7 +35,8 @@ PRIOR_MIN = 60.0             # minutes of league-average play mixed into a rate 
 # 2023-24 and 2024-25 improved 0 to 2% on error). Decaying by days instead of games did no better.
 RATE_MEMORY = {'pts': (0.95, 60), 'reb': (0.95, 15), 'ast': (0.95, 30), 'fg3m': (0.97, 60), 'fg3a': (0.92, 15),
                'fga': (0.92, 30), 'fta': (0.95, 60), 'oreb': (0.95, 15), 'tov': (0.97, 120), 'stl': (0.985, 240),
-               'blk': (0.95, 60), 'eff': (0.97, 60), 'fgm': (0.92, 30), 'ftm': (0.95, 60)}   # makes follow attempts
+               'blk': (0.95, 60), 'eff': (0.97, 60), 'fgm': (0.92, 30), 'ftm': (0.95, 60),   # makes follow attempts
+               'pf': (0.95, 60)}
 TEAM_DECAY = 0.90            # weight kept per later game, in team pace and defence
 ELO_K, ELO_HCA, ELO_CARRY, ELO_CAP = 0.04, 3.0, 0.6, 30.0   # per point of error, home court, share kept over summer, error cap
 # (chosen on 2016-17 to 2022-23 by margin miss; nbl/docs/TEAM_STEP1.md)
@@ -437,6 +438,13 @@ def add_player_features(players, tg):
     p = player_history(players, lr)
     p = p.merge(squad_context(p), on=['game', 'team'], how='left')
     p = p.merge(redistribution(p), on=['game', 'team', 'key'], how='left')
+    # rotation: how many of this squad usually play 10+ minutes, and where this player ranks by usual minutes
+    # (with foul rate and role change: tried as minutes features, no gain; kept as columns, nbl/docs/RESEARCH.md)
+    g = p.groupby(['game', 'team'])
+    p['rotation_size'] = g.min_ew.transform(lambda x: (x.fillna(0) >= 10).sum())
+    p['min_rank'] = g.min_ew.rank(ascending=False, method='min')
+    p['min_trend'] = p.min_l3 - p.min_ew                     # recent minutes against usual: a role on the move
+    p['start_change'] = p.start_last - p.start_ew
     # the player's share of his squad's usual minutes, scaled to the 200 a team plays
     p['min_share'] = p.min_ew / p.squad_min_pool.replace(0, np.nan)
     p['min_scaled'] = 200.0 * p.min_share

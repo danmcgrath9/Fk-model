@@ -141,9 +141,10 @@ def p_over(mu, line, a):
 
 
 SHOT_DRAWS = 3000
+SIMULATED = ('pts', 'pra')        # markets that may be priced by simulation (chosen per market on the tuning season)
 
 
-def shot_draws(d, mu, min_sd, seed=12345):
+def shot_draws(d, mu, min_sd, seed=12345, market='pts'):
     """Points as shots: minutes ~ normal(min_hat, min_sd), two-point, three-point and free-throw attempts
     Poisson from the player's per-minute rates, makes binomial at his shrunk percentages; then rescaled so
     the draws' mean is the projection (the model owns the mean, the shots own the shape). One row per player."""
@@ -158,6 +159,9 @@ def shot_draws(d, mu, min_sd, seed=12345):
     pctft = np.clip(d.r_ftm.to_numpy(float) / np.clip(d.r_fta.to_numpy(float), 1e-4, None), 0.3, 0.98)[:, None]
     pts = (2 * rng.binomial(rng.poisson(fga2 * m), pct2) + 3 * rng.binomial(rng.poisson(fg3a * m), pct3)
            + rng.binomial(2 * rng.poisson(fta * m / 2), pctft)).astype(float)
+    if market == 'pra':
+        # rebounds and assists Poisson at the player's rates over the SAME minutes, so all three move together
+        pts = pts + rng.poisson(d.r_reb.to_numpy(float)[:, None] * m) + rng.poisson(d.r_ast.to_numpy(float)[:, None] * m)
     scale = np.asarray(mu, float) / np.clip(pts.mean(1), 0.1, None)
     return np.rint(pts * scale[:, None])
 
@@ -166,8 +170,8 @@ def chance_over(mk, d, mu, line, c):
     """Our chance of finishing above a .5 line: shot simulation for points when chosen on the tuning season
     (c['shots']), else the negative binomial with the projection-dependent spread."""
     mu, line = np.asarray(mu, float), np.asarray(line, float)
-    if mk == 'pts' and c.get('shots'):
-        draws = shot_draws(d, mu, c['min_sd'])
+    if mk in SIMULATED and c.get('shots'):
+        draws = shot_draws(d, mu, c['min_sd'], market=mk)
         return (draws > line[:, None]).mean(1)
     return p_over(mu, line, spread(c, mu))
 
@@ -273,16 +277,18 @@ def project(p, fit_range=FIT, tune_season=TUNE):
         choice[mk] = dict(pick=pick, dev=dev, a=a, a0=a0, k=k, min_sd=float(np.std(tu['min'] - tu.min_hat)), coef=dict(zip(['const'] + list(X_f.columns), np.round(b, 3))),
                           mae={k: float(np.abs(tu[mk] - tu[f'{mk}_{k}']).mean()) for k in ('struct', 'direct', 'blend')},
                           mae_l10=float(np.abs(tu[mk] - tu[f'{mk}_l10']).mean()))
-    # points: shots or negative binomial, whichever prices three lines around the projection better on the tuning season
-    c, tu = choice['pts'], e[done & (e.season == tune_season)]
-    mu = tu.pts_hat.to_numpy()
-    lls = {}
-    for shots in (False, True):
-        c['shots'] = shots
-        lls[shots] = np.mean([line_logloss(tu.pts, chance_over('pts', tu, mu, np.floor(mu) + off, c), np.floor(mu) + off)
-                              for off in (-1.5, 0.5, 2.5)])
-    c['shots'] = lls[True] < lls[False]
-    c['line_logloss'] = lls
+    # points and PRA: simulation or negative binomial, whichever prices three lines around the projection better on
+    # the tuning season (nbl/docs/RESEARCH.md: points 0.6709 to 0.6678, PRA 0.6791 to 0.6774 on 2022-23)
+    tu = e[done & (e.season == tune_season)]
+    for mk in SIMULATED:
+        c, mu = choice[mk], tu[f'{mk}_hat'].to_numpy()
+        lls = {}
+        for shots in (False, True):
+            c['shots'] = shots
+            lls[shots] = np.mean([line_logloss(tu[mk], chance_over(mk, tu, mu, np.floor(mu) + off, c), np.floor(mu) + off)
+                                  for off in (-1.5, 0.5, 2.5)])
+        c['shots'] = lls[True] < lls[False]
+        c['line_logloss'] = lls
     return e, choice, info
 
 

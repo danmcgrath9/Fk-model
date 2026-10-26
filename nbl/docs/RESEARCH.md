@@ -135,6 +135,20 @@ below; the details are second-hand.
   fitted by maximum likelihood), quarter Kelly on the combined chance, shrunk for correlated bets, capped at 2% a bet
   and 15% a round. Benter's own finding is the reason: his model alone did not beat the public, the combination did.
 
+### 11. Session of 26 Oct 2026, second round
+- **Team memory (TEAM_DECAY): kept at 0.90.** `research/team_memory.py`, 0.80 to 0.97: 0.90 is best on the rolling
+  seasons for totals (14.45 points miss) and level for margins; longer memory looked better on 2023-25 totals only.
+- **Minutes features: rejected.** Foul rate, rotation size and rank, recent role change: minutes miss 4.246 to
+  4.249-4.256, log scores unchanged in the fourth decimal. With pre-game information minutes look saturated; only
+  knowing the starters moved them (experiment 5).
+- **Recalibrating the over chance** (a logistic layer fitted on 2022-23): helped PRA a lot (line log loss 0.6775 to
+  0.6725 on 2023-25), points a little, nothing else; its PRA coefficients said the distribution's shape was wrong,
+  so the cause was fixed instead:
+- **PRA simulated from its parts: adopted.** Shot-by-shot points plus rebounds and assists, Poisson at the player's
+  rates over the same simulated minutes, rescaled to the projection. Line log loss 2022-23 0.6791 to 0.6775,
+  2023-25 0.6775 to 0.6740. Rebound and assist spread inside the simulation chosen on 2022-23 (Poisson beat
+  gamma-mixed shapes 3, 8, 20). A spread fitted to the lines instead did less (0.6760 on 2023-25).
+
 ## Next, in order
 1. Recorded lines, half lines included: the only test that matters. Then blend our number with the market's and measure closing line value.
 2. Starting fives at tip, if a source exists: the largest measured gain.

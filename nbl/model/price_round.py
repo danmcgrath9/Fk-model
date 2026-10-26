@@ -50,8 +50,8 @@ def fair_line(mk, row, mu, c):
     """The .5 line closest to an even chance, our chance of the over there, and a function giving our
     chance at any line (shot simulation for points when chosen, else the negative binomial)."""
     lines = np.arange(0.5, max(60.5, mu * 3), 1.0)
-    if mk == 'pts' and c.get('shots'):
-        draws = props.shot_draws(row, np.array([mu]), c['min_sd'])[0]
+    if mk in props.SIMULATED and c.get('shots'):
+        draws = props.shot_draws(row, np.array([mu]), c['min_sd'], market=mk)[0]
         chance = lambda L: float((draws > L).mean())
     else:
         chance = lambda L: float(props.p_over(np.array([mu]), np.array([L]), props.spread(c, mu))[0])
