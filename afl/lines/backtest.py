@@ -81,6 +81,49 @@ def market_compare(ev):
     return cons.merge(ours, on=keys, how='inner')
 
 
+def _logit(p):
+    p = np.clip(np.asarray(p, float), 1e-4, 1 - 1e-4)
+    return np.log(p / (1 - p))
+
+
+def benter_fit(p_ours, p_mkt, y):
+    """Benter's second stage: chance = logistic(a + b x logit(ours) + c x logit(market)), fitted by maximum likelihood.
+    b and c say how much weight the data gives our model next to the market (Benter, "Computer based horse race
+    handicapping and wagering systems", 1994: the public's odds carry information a fundamental model lacks, and the
+    two together beat either alone)."""
+    from scipy import optimize
+    X = np.column_stack([np.ones(len(y)), _logit(p_ours), _logit(p_mkt)])
+    y = np.asarray(y, float)
+
+    def nll(w):
+        z = X @ w
+        return np.sum(np.logaddexp(0, z) - y * z)
+    return optimize.minimize(nll, x0=[0.0, 0.5, 0.5], method='BFGS').x
+
+
+def benter_apply(w, p_ours, p_mkt):
+    z = w[0] + w[1] * _logit(p_ours) + w[2] * _logit(p_mkt)
+    return 1 / (1 + np.exp(-z))
+
+
+def benter(mc, fit_seasons, test_seasons):
+    """Fit the blend on earlier seasons, score it on later ones against the market alone and our model alone."""
+    f, t = mc[mc.season.isin(fit_seasons)], mc[mc.season.isin(test_seasons)]
+    if len(f) < 200 or len(t) < 200:
+        return None
+    w = benter_fit(f.p_ours, f.p_mkt, f.won.astype(float))
+    # the fair comparison: the market's chance refitted on its own (a books' price can be miscalibrated, and refitting
+    # alone would improve on it); only what the blend adds beyond that is ours
+    wm = benter_fit(np.full(len(f), 0.5), f.p_mkt, f.won.astype(float))
+    y = t.won.astype(float).to_numpy()
+    pb = benter_apply(w, t.p_ours, t.p_mkt)
+    pm = benter_apply(wm, np.full(len(t), 0.5), t.p_mkt)
+    ll = {k: log_loss(np.asarray(v), y) for k, v in (('market', t.p_mkt), ('market_refit', pm), ('ours', t.p_ours), ('blend', pb))}
+    d = ll['blend'] - ll['market_refit']
+    return dict(w=w, lines=len(t), market=ll['market'].mean(), market_refit=ll['market_refit'].mean(), ours=ll['ours'].mean(),
+                blend=ll['blend'].mean(), blend_vs_market=d.mean(), se=d.std() / np.sqrt(len(d)), p_blend=pb, rows=t)
+
+
 def log_loss(p, y):
     p = np.clip(p, 1e-4, 1 - 1e-4)
     return -(y * np.log(p) + (1 - y) * np.log(1 - p))
@@ -129,6 +172,19 @@ def report(ev):
             d = log_loss(g.p_ours.to_numpy(), y) - log_loss(g.p_mkt.to_numpy(), y)
             out.append(f'| {mkt} | {season} | {len(g):,} | {g.books.median():.0f} | {log_loss(g.p_ours.to_numpy(), y).mean():.4f} | '
                        f'{log_loss(g.p_mkt.to_numpy(), y).mean():.4f} | {d.mean():+.4f} | {d.std() / np.sqrt(len(d)):.4f} |')
+        seasons = sorted(mc.season.unique())
+        if len(seasons) >= 2:
+            out += ['', '## Benter blend: our chance and the market\'s, together', '',
+                    'chance = logistic(a + b x logit(ours) + c x logit(market)), fitted on the earlier seasons and scored on the '
+                    'last. If the blend beats the market (refitted on its own, so a miscalibrated price is not credited to us), our model carries information the market does not, and '
+                    'the blend (not our raw chance) is what bets should be judged on.', '',
+                    '| market | fitted on | scored on | lines | weight on ours (b) | weight on market (c) | log loss: market | market refitted | ours | blend | blend minus refitted market | ± |',
+                    '|---|---|---|---|---|---|---|---|---|---|---|---|']
+            for mkt, g in mc.groupby('market_stat'):
+                r = benter(g, seasons[:-1], seasons[-1:])
+                if r:
+                    out.append(f'| {mkt} | {seasons[0]}-{seasons[-2]} | {seasons[-1]} | {r["lines"]:,} | {r["w"][1]:+.2f} | {r["w"][2]:+.2f} | '
+                               f'{r["market"]:.4f} | {r["market_refit"]:.4f} | {r["ours"]:.4f} | {r["blend"]:.4f} | {r["blend_vs_market"]:+.4f} | {r["se"]:.4f} |')
         b = ev[ev.ev_open > 0.05].merge(mc[['game', 'player_id', 'market_stat', 'point', 'p_mkt']],
                                          on=['game', 'player_id', 'market_stat', 'point'], how='inner')
         if len(b):
