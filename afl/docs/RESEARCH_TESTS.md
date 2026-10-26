@@ -149,3 +149,53 @@ Average per game of the stat over the league's last 36 games (before this one), 
 
 Adopted from the test above: the league level for marks and tackles (`LEAGUE_STATS` in afl/model/walkforward.py).
 Disposals already had it (league_game_D); goals gained nothing.
+## Game context: time, umpires, coach, ruck matchup, opposition style
+
+Each group added on its own to the current model. Fitted 2013-2023, tuned 2024, scored 2025-2026.
+
+| stat | game time | umpire crew | coach | ruck matchup | opposition style |
+|---|---|---|---|---|---|
+| disposals | -0.0002 ± 0.0003 | -0.0010 ± 0.0003 | -0.0006 ± 0.0003 | +0.0004 ± 0.0003 | -0.0004 ± 0.0003 |
+| marks | +0.0008 ± 0.0003 **kept** | -0.0001 ± 0.0002 | -0.0003 ± 0.0002 | +0.0001 ± 0.0002 | -0.0000 ± 0.0002 |
+| tackles | -0.0003 ± 0.0002 | -0.0002 ± 0.0002 | -0.0001 ± 0.0002 | -0.0002 ± 0.0002 | -0.0005 ± 0.0003 |
+| goals | +0.0003 ± 0.0002 | +0.0001 ± 0.0002 | +0.0000 ± 0.0002 | +0.0002 ± 0.0002 | -0.0001 ± 0.0002 |
+
+Adopted from the test above: game time for marks only (`GAME_TIME_STATS`): fewer marks at night, as dew would
+suggest. Umpire crew, coach changes, ruck matchup and opposition style earned nothing for any stat. For live rounds the
+start time goes on the team sheet's Game: line (optional; without it the game time is treated as unknown).
+## Range and goal-kicking
+
+Fitted 2013-2023, tuned 2024, scored 2025-2026. Milestone column: change in log loss of the milestone chance (negative is better).
+
+| stat | added | log-lik change | milestone log loss change | kept |
+|---|---|---|---|---|
+| disposals | range | -0.0004 ± 0.0002 | +0.0002 ± 0.0001 | no |
+| marks | range | +0.0002 ± 0.0002 | +0.0000 ± 0.0002 | no |
+| tackles | range | -0.0003 ± 0.0002 | +0.0003 ± 0.0001 | no |
+| goals | range | +0.0005 ± 0.0002 | -0.0004 ± 0.0002 | yes |
+| goals | goal-kicking | +0.0009 ± 0.0005 | -0.0004 ± 0.0003 | yes |
+
+Adopted from the test above: for goals only, the player's range and his goal-kicking (shots and accuracy), both on the
+line. Range did nothing for the other stats (disposals and tackles slightly worse).
+## Supply, tackle chances, momentum, travel load
+
+Each group added on its own to the current model. Fitted 2013-2023, tuned 2024, scored 2025-2026.
+
+| stat | supply | tackle chances | momentum | travel load |
+|---|---|---|---|---|
+| disposals | +0.0001 ± 0.0003 | +0.0000 ± 0.0003 | +0.0004 ± 0.0003 | -0.0004 ± 0.0002 |
+| marks | +0.0003 ± 0.0003 | -0.0002 ± 0.0002 | +0.0002 ± 0.0003 | +0.0001 ± 0.0002 |
+| tackles | +0.0002 ± 0.0002 | -0.0000 ± 0.0002 | -0.0002 ± 0.0002 | -0.0000 ± 0.0002 |
+| goals | +0.0003 ± 0.0002 | +0.0003 ± 0.0003 | +0.0004 ± 0.0002 **kept** | +0.0003 ± 0.0003 |
+
+Not adopted from the test above: momentum for goals passed at exactly two standard errors, one result in sixteen tried
+in this batch. With this many tests, a couple of two-standard-error passes are expected by chance alone, so a lone
+borderline pass is not taken. Supply, tackle chances and travel load earned nothing.
+
+## A caution on how many ideas have now been tried
+
+Roughly 70 input groups have been tested on the same 2025-2026 seasons. At a two-standard-error bar, about one or two
+of them would pass by luck. The adoptions that cleared it comfortably (form memories, team-sheet position, opponent by
+position, league level for 2026) are safe; the ones that only just cleared (ground shape and game time for marks,
+range and goal-kicking for goals) each add very little and are the first to drop if 2027 or real lines say so. The
+fresh test is 2027 itself and the bookmakers' lines, not more slicing of 2025-2026.

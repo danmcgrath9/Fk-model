@@ -43,6 +43,12 @@ def test_season_comes_from_the_game_date_not_other_text():
     assert set(df.season) == {2027}
 
 
+def test_start_time_is_read_when_given():
+    df = TS.parse(SHEET.replace('2027-03-20, round 2', '2027-03-20 19:40, round 2'))
+    assert set(df.start_time) == {1940}
+    assert TS.parse(SHEET).start_time.isna().all()
+
+
 def test_refuses_lines_before_a_game():
     with pytest.raises(ValueError):
         TS.parse('B: X, Y\n', 2027)
