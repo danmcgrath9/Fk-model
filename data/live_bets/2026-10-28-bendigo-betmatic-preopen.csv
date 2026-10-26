@@ -1,12 +1,4 @@
 date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
-2026-10-28,Bendigo,1,,,Magnusaurus Rex,WIN,17.68,36.40,0.34,17,1 of 2,0.34u,12.13,forecast x0.5/firm/firm by step
-2026-10-28,Bendigo,1,,,Magnusaurus Rex,WIN,22.10,36.40,1.38,69,2 of 2,1.72u,12.13,forecast x0.5/firm/firm by step
-2026-10-28,Bendigo,1,,,Resonant,WIN,2.83,3.99,1.74,87,1 of 2,1.74u,2.71,EARLY: $8 or shorter only; opens under $4: edge 1.15; forecast x0.5/middle/firm by step
-2026-10-28,Bendigo,1,,,Resonant,WIN,3.54,3.99,3.24,162,2 of 2,4.98u,2.71,EARLY: $8 or shorter only; opens under $4: edge 1.15; forecast x0.5/middle/firm by step
-2026-10-28,Bendigo,1,,,Resonant,WIN,4.00,8.00,4.49,224,1 of 2,4.49u,2.71,EARLY: $8 or shorter only; forecast middle/firm/firm by step
-2026-10-28,Bendigo,1,,,Resonant,WIN,4.00,8.00,5.51,276,2 of 2,10.00u,2.71,EARLY: $8 or shorter only; forecast middle/firm/firm by step
-2026-10-28,Bendigo,1,,,Scoville,WIN,6.09,8.00,0.92,46,1 of 2,0.92u,4.64,EARLY: $8 or shorter only; forecast x0.5/firm by step
-2026-10-28,Bendigo,1,,,Scoville,WIN,7.61,8.00,2.76,138,2 of 2,3.68u,4.64,EARLY: $8 or shorter only; forecast x0.5/firm by step
 2026-10-28,Bendigo,2,,,Centenary Florin,WIN,4.34,9.83,1.50,75,1 of 2,1.50u,3.28,forecast x0.5/firm/firm by step
 2026-10-28,Bendigo,2,,,Centenary Florin,WIN,5.42,9.83,6.52,326,2 of 2,8.02u,3.28,forecast x0.5/firm/firm by step
 2026-10-28,Bendigo,2,,,Hydro Rush,WIN,12.42,28.35,0.53,26,1 of 2,0.53u,9.45,forecast x0.5/firm/firm by step
