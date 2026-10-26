@@ -397,3 +397,127 @@ Blends with the market: + WAP 1.4700 (+0.0003), + BSP 1.4653 (+0.0001). Early sp
 1.6542, both halves) but v0 still trails Iggy in all 9 months and adds nothing to the market. Conclusion unchanged:
 the free files cannot build a model worth betting; the next model waits on Topaz (founder, 25 Oct 2026: "V0 has no
 data hahaha, let's wait for data").
+
+## Test 5: the ratings engine, and v0 with a who-beat-whom rating (26 Oct 2026, runs 40262271801 and 40262278279)
+
+**The engine** (`greyhound/ratings.py`, ready for Topaz; only `topaz_to_runs()`, the column mapping, waits for the
+probe): point-in-time pars per track and distance (median winning time and first split of earlier races), a meeting
+going variant (that meeting's winners against par, shrunk 2 pseudo-races toward 0), time and first-split ratings in
+lengths (0.07 s a length), an Elo over finishing order (every pair a match; a day's changes land when the day ends),
+and each dog's form as it stood at the end of the previous day, trials included. 9 tests in
+`tests/test_greyhound_ratings.py`, hand-checked pieces plus a simulation where every dog's true speed is known: the
+time ratings recover it at r > 0.85, the going variant beats no variant, split ratings recover early speed at r > 0.85,
+and form and Elo rank dogs at r > 0.7 out of sample. That simulation caught a same-day leak (a dog racing twice in a
+day saw its first run) in both the form and the Elo; both now use earlier days only.
+
+**v0 + Elo**: the Elo built from the only finishing order the free files hold (winner first, placegetters tied second,
+the rest tied behind), added to v0 and relative to the field.
+
+| last quarter | races | v0 before (Test 4/4b) | v0 + Elo | Iggy | pre-play WAP | BSP |
+|---|---|---|---|---|---|---|
+| 2020-2026 window, scored from Jan 2025 | 68,174 | 1.6743 | **1.6419** | 1.6460 | 1.4848 | 1.4818 |
+| first half / second half | | 1.6868 / 1.6619 | 1.6554 / 1.6285 | 1.6585 / 1.6338 | | 1.4975 / 1.4664 |
+| 2024-2026 window, with early speed, scored from Jan 2026 | 26,702 | 1.6542 | **1.6228** | 1.6346 | 1.4703 | 1.4654 |
+| first half / second half | | 1.6612 / 1.6472 | 1.6305 / 1.6152 | 1.6405 / 1.6287 | | 1.4717 / 1.4593 |
+
+v0 + Elo now beats Iggy in both windows and both halves: by 0.004 over 2025-26 (ahead in 16 of 21 months, behind in
+Jan-Mar and Oct-Nov 2025) and by 0.012 in 2026 with early speed (ahead in all 9 months). Blended with the
+market it still adds nothing: + WAP +0.0003, + BSP +0.0001, our weight slightly negative. **What it means**: the first
+real step beyond Iggy came from the strength rating, from finishing order alone; the market still prices everything v0
+knows. The same Elo on Topaz's full finishing order and margins is the next step.
+
+## Test 6: Benter's two stages on the free files (26 Oct 2026, `research/greyhound/gbm_benter.py`, runs 40262967267 and 40262973312)
+
+Stage 1 is the fundamental model: form only (box, field, distance, the box rate, runs, win and place rates, last
+start, last five, days since, distance change, same track, Elo), trained on WHO WON, no price of any kind. Beside it, a
+model of the dog's market history alone (its past BSPs and how it ran against them) and, as a check, the gallops
+recipe (everything, trained on BSP chances). Stage 2 is Benter's second logit: chance proportional to each input's
+chance raised to a weight, weights fitted on the middle quarter, scored once on the last quarter.
+
+**Stage 1 alone, winner log loss, last quarter:**
+
+| | 2020-2026, 68,174 races from Jan 2025 (halves) | 2024-2026, 26,702 races from Jan 2026 (halves) |
+|---|---|---|
+| stage 1: form only | 1.6855 (1.6992 / 1.6721) | 1.6765 (1.6837 / 1.6693) |
+| stage 1: form + early speed | not in this window | 1.6723 (1.6784 / 1.6663) |
+| market history only | 1.7606 (1.7713 / 1.7500) | 1.7531 (1.7596 / 1.7467) |
+| copy of BSP (check) | 1.6409 (1.6545 / 1.6276) | 1.6276 (1.6357 / 1.6196) |
+| Iggy | 1.6460 (1.6585 / 1.6338) | 1.6346 (1.6405 / 1.6287) |
+| pre-play WAP | 1.4848 | 1.4703 |
+| BSP | 1.4818 | 1.4654 |
+
+**Stage 2, gain over the market alone (positive = better):**
+
+| blend | 2020-2026 + WAP / + BSP | 2024-2026 + WAP / + BSP |
+|---|---|---|
+| stage 1 + market | −0.0000 / −0.0002 | +0.0001 / −0.0000 |
+| market history + market | +0.0003 / +0.0001 | +0.0004 / +0.0002 |
+| stage 1 + market history + market | +0.0001 / −0.0001 | +0.0004 / +0.0002 |
+
+The weights tell the same story: the market's weight is 1.01 to 1.07 and every model's is near zero or negative
+(−0.075 at most), so the fitted blend sharpens the market slightly and gives our models nothing.
+
+**What it means.** (1) Trained on winners, stage 1 is 0.045 worse than the same inputs trained on BSP chances
+(1.6855 against 1.6409): with only win/place in the free files, the market's chances are a far less noisy label than
+one winner per race, so the copy recipe is the better way to learn from this data, as it was for the gallops.
+(2) Stage 2 finds nothing: the market already prices everything the free files hold, form, Elo and the dog's own price
+history. Benter's edge came from fundamentals the public was underweighting; on win/place and box alone there is no
+such gap at BSP. (3) The structure is right and stays: when Topaz's times, splits and full finishing order arrive,
+stage 1 gets the inputs Benter's had, and when recorded opens exist the opening price replaces WAP/BSP as the
+market in stage 2, which is the price BetMatic would actually take.
+
+## Test 7: betting angles at BSP (26 Oct 2026, `research/greyhound/t_angles.py`, runs 40264014700 and 40264692031)
+
+Founder: "find betting angles like our horse bets where we can send pre market slips to betmatic and get the best
+odds". No greyhound opening-price history exists (TAB's or anyone's), so every angle is tested at BSP, the sharpest
+price there is (Test 1): an angle that holds at BSP is a candidate for the open; one that fails at BSP needs a softer
+open to work, and that test waits for recorded opens. Rules: positive after 8% commission in BOTH date halves, A/E
+beside ROI, every angle printed. Structural angles over the whole period, 305,093 races, halves at the median date.
+Model angles on the last quarter (77,200 races from 25 Jan 2025), models fitted before the median date. Lays are
+given two ways: ROI per unit of backer's stake, and the return on the money actually at risk (the liability, BSP − 1).
+
+**Structural angles:**
+
+| angle | side | bets 1st / 2nd half | A/E | ROI after commission | return on money at risk | both halves |
+|---|---|---|---|---|---|---|
+| every runner | back | 1,101,282 / 1,101,582 | 0.996 / 0.997 | −8.3% / −9.0% | | no |
+| favourites (BSP rank 1) | back | 153,121 / 153,025 | 0.998 / 1.003 | −4.9% / −4.1% | | no |
+| box 1, strong box-1 track and distance (box rate ≥ 1.5×) | back | 23,955 / 29,081 | 0.993 / 1.016 | −7.5% / −6.9% | | no |
+| top Elo in the race, BSP rank 3+ | back | 42,346 / 46,658 | 0.962 / 0.945 | −11.8% / −13.8% | | no |
+| the same, under $11 | back | 27,307 / 28,457 | 0.969 / 0.958 | −10.4% / −10.8% | | no |
+| first-up after 28+ days, under $6 | back | 23,440 / 24,624 | 1.020 / 0.990 | −3.4% / −6.5% | | no |
+| distance up 100m+ | back | 63,822 / 57,730 | 1.014 / 1.005 | −6.9% / −10.0% | | no |
+| distance down 100m+ | back | 66,238 / 61,224 | 1.011 / 0.990 | −6.7% / −7.2% | | no |
+| first start in the files, under $6 | back | 13,306 / 8,512 | 0.988 / 0.992 | −6.7% / −7.1% | | no |
+| lay every runner over $101 | lay | 84,266 / 100,026 | 0.872 / 0.881 | +7.6% / +10.1% | +0.04% / +0.00% | yes, worth nothing |
+| lay every runner over $51 | lay | 168,290 / 180,173 | 0.953 / 0.950 | +0.9% / +2.9% | +0.01% / +0.00% | yes, worth nothing |
+| lay $31-$51 | lay | 93,695 / 94,960 | 0.995 / 0.962 | −7.2% / −3.7% | −0.18% / −0.10% | no |
+| lay $21-$31 | lay | 91,967 / 93,460 | 0.990 / 1.006 | −6.9% / −8.2% | −0.28% / −0.33% | no |
+| lay box 8 at a weak box-8 track and distance (box rate ≤ 0.8×) | lay | 9,748 / 16,023 | 0.965 / 0.907 | +2.2% / +14.7% | +0.06% / +0.35% | yes, see below |
+| the same, under $11 | lay | 4,073 / 6,444 | 0.974 / 0.934 | −3.7% / +0.6% | −0.79% / +0.13% | no |
+| the same, $11-$51 | lay | 3,926 / 6,524 | 0.949 / 0.827 | −0.3% / +10.5% | −0.01% / +0.45% | no |
+| the same, over $51 | lay | 1,749 / 3,055 | 0.713 / 0.483 | +21.6% / +53.3% | +0.17% / +0.33% | yes |
+| box 8 anywhere, over $51 | lay | 20,573 / 22,645 | 0.958 / 0.891 | +2.2% / +9.6% | +0.02% / +0.00% | yes, worth nothing |
+| lay the BSP favourite when its Elo ranks 5th or worse | lay | 13,383 / 14,235 | 0.992 / 1.025 | −4.5% / −8.1% | −2.03% / −3.78% | no |
+| lay first-up after 28+ days, under $4 | lay | 13,513 / 14,523 | 1.018 / 0.992 | −6.7% / −4.0% | −3.77% / −2.29% | no |
+
+**Model angles** (back where our chance × BSP is 1.2 or 1.5 and up, lay where it is 0.6 or 0.5 and down, in price
+bands): all sixteen lose in both halves, for v0 + Elo and for stage 1 form only. The best back is form only, $2-$8,
+edge ≥ 1.2: 18,129 / 18,169 bets, A/E 1.001 / 0.985, −6.7% / −8.1%. The best lay is form only, under $6, ≤ 0.6:
+A/E 0.984 / 1.000, −3.4% / −5.5% per stake. Our models are 0.16 worse than BSP on log loss (Tests 5-6), so where they
+disagree with BSP, BSP is usually right; the A/E of every "value" selection is below 1.
+
+**What it means.** (1) Nothing backs at BSP: every back angle has A/E between 0.94 and 1.02, so before commission
+they are at best level, and after 8% they lose. (2) The lays that pass are the favourite-longshot bias, which Test 1
+already showed (BSP over $51 wins 5% less than it says): real, but the return on the money at risk is 0.00% to 0.04%,
+because laying a $200 shot risks $199 to win 92c. Not worth a bank. The weak-box-8 longshot lay (+0.17% / +0.33% on
+risk) rests on few winners (1,749 and 3,055 bets at over $51, where a $51 shot wins about one race in fifty, so a few dozen expected winners a half; the run does not print the counts); it is one cell among 31 tried, and
+the box-8-under-$51 cells beside it fail, so it is noise until a third period says otherwise. (3) BetMatic sends to
+the TAB, which takes back bets only, so no lay angle could go on a slip anyway. **For BetMatic slips, the only
+possible edge left is the price itself: a TAB open above the dog's fair price.** That is the horse approach (a minimum
+price on every slip), and it needs two things we do not have yet: recorded TAB opens to measure how often an open
+beats BSP, and by how much, and a fair price good enough to trust when it disagrees with the open. On the second,
+BSP is the fair price after the fact; the question for the open is whether a TAB open above our pre-race estimate of
+BSP (the copy recipe, 1.6409, the best pre-race estimate we have) wins more than its price says. That test is
+`t_angles.py`'s model section rerun at the recorded open, and it is the first thing to run once a few weeks of opens
+exist.
