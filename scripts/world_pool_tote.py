@@ -48,7 +48,9 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
 mel = ZoneInfo("Australia/Melbourne")
 def day(d):
     if d is None: return ""
-    if re.fullmatch(r"\d+(\.\d+)?", str(d)): return dt.datetime.fromtimestamp(float(d), mel).date().isoformat()
+    if re.fullmatch(r"\d+(\.\d+)?", str(d)):
+        v = float(d); v = v / 1000 if v > 1e11 else v   # seconds or milliseconds
+        return dt.datetime.fromtimestamp(v, mel).date().isoformat()
     return str(d)[:10]
 seen, R = set(), []
 for rid, hid, d, trk, stt, fin, sp, bsp, tote, trial in rows:
