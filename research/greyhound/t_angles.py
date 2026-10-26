@@ -1,7 +1,8 @@
 """Greyhound betting angles at BSP, every one in two date halves and after commission (26 Oct 2026, founder: "find
 betting angles like our horse bets where we can send pre market slips to betmatic").
 
-    python research/greyhound/t_angles.py DIR LABEL        (DIR: the ANZ_Greyhounds files and the Iggy files)
+    python research/greyhound/t_angles.py DIR LABEL        (DIR: the ANZ_Greyhounds files and the Iggy files;
+                                                            a LABEL containing "structural" skips the model angles)
 
 WHY BSP: no history of TAB's greyhound opening price exists, and the angles that go to BetMatic fire at the open. BSP is
 the sharpest price there is (Test 1), so an angle that holds at BSP is a candidate for the open; one that fails at BSP
@@ -11,7 +12,8 @@ THE RULES (the brief's): an angle is believed only if it is positive after commi
 beside ROI; every angle tried is printed, including the ones that fail, because this file tests many and a few will
 look good by chance. Backs: flat 1 unit at BSP, commission COMM on each winning bet's profit. Lays: 1 unit of the
 backer's stake at BSP, commission on each winning lay's 1-unit profit; ROI is per unit of backer's stake (liability is
-BSP - 1 per bet, so a lay ROI is not comparable to a back ROI one for one).
+BSP - 1 per bet, so a lay ROI is not comparable to a back ROI one for one); "return on money at risk" divides by the
+liability instead, which is what a lay bank actually earns.
 
 MODEL ANGLES use v0 + Elo (the best model so far, Test 5) and the stage-1 form-only model (Test 6), fitted before the
 50th percentile date, scored on the last quarter only, halves inside it. STRUCTURAL ANGLES need no fitting (the box
@@ -39,21 +41,24 @@ def lay(x):
 
 def table(title, angles, df, half_col):
     print(f"\n## {title}\n")
-    print("| angle | side | bets 1st / 2nd half | A/E 1st / 2nd | ROI after commission 1st / 2nd | holds both halves |")
-    print("|---|---|---|---|---|---|")
+    print("| angle | side | bets 1st / 2nd half | A/E 1st / 2nd | ROI after commission 1st / 2nd | "
+          "return on money at risk 1st / 2nd | holds both halves |")
+    print("|---|---|---|---|---|---|---|")
     for name, side, mask in angles:
         x = df[mask]
         cells, rois = [], []
         for h in (True, False):
             y = x[x[half_col] == h]
             if len(y) == 0:
-                cells.append((0, np.nan, np.nan)); rois.append(np.nan); continue
+                cells.append((0, np.nan, np.nan, np.nan)); rois.append(np.nan); continue
             ae = y.won.sum() / (1 / y.WIN_BSP).sum()
-            r = (back(y) if side == "back" else lay(y)).mean()
-            cells.append((len(y), ae, r)); rois.append(r)
+            pl = back(y) if side == "back" else lay(y)
+            risk = len(y) if side == "back" else (y.WIN_BSP - 1).sum()     # a lay risks BSP - 1 per unit
+            cells.append((len(y), ae, pl.mean(), pl.sum() / risk)); rois.append(pl.mean())
         holds = all(r > 0 for r in rois if not np.isnan(r)) and not any(np.isnan(rois))
         print(f"| {name} | {side} | {cells[0][0]:,} / {cells[1][0]:,} | {cells[0][1]:.3f} / {cells[1][1]:.3f} | "
-              f"{cells[0][2]:+.1%} / {cells[1][2]:+.1%} | {'YES' if holds else 'no'} |")
+              f"{cells[0][2]:+.1%} / {cells[1][2]:+.1%} | {cells[0][3]:+.2%} / {cells[1][3]:+.2%} | "
+              f"{'YES' if holds else 'no'} |")
 
 
 def main(d, label):
@@ -74,6 +79,11 @@ def main(d, label):
         ("back favourites (BSP rank 1)", "back", df.bsp_rank == 1),
         ("box 1, strong-box track/distance (box rate >= 1.5x)", "back", (df.box == 1) & strong_b1),
         ("lay box 8 at a weak-box-8 track/distance (box rate <= 0.8x)", "lay", (df.box == 8) & (df.box_ratio <= 0.8)),
+        ("  the same, BSP under $11", "lay", (df.box == 8) & (df.box_ratio <= 0.8) & (b < 11)),
+        ("  the same, BSP $11-$51", "lay", (df.box == 8) & (df.box_ratio <= 0.8) & (b >= 11) & (b <= 51)),
+        ("  the same, BSP over $51", "lay", (df.box == 8) & (df.box_ratio <= 0.8) & (b > 51)),
+        ("lay box 8 anywhere, BSP over $51 (the longshot effect alone)", "lay", (df.box == 8) & (b > 51)),
+        ("lay every runner over $101", "lay", b > 101),
         ("top Elo in the race, BSP rank 3+", "back", (df.elo_rank == 1) & (df.bsp_rank >= 3) & (df.runs >= 5)),
         ("top Elo, BSP rank 3+, under $11", "back", (df.elo_rank == 1) & (df.bsp_rank >= 3) & (b < 11) & (df.runs >= 5)),
         ("lay BSP favourite with Elo rank 5+", "lay", (df.bsp_rank == 1) & (df.elo_rank >= 5) & (df.runs >= 5)),
@@ -84,6 +94,8 @@ def main(d, label):
         ("first start in the files (no history), under $6", "back", (df.runs == 0) & (b < 6)),
     ]
     table("Structural angles, whole period", structural, df, "first_half")
+    if "structural" in label:                         # a LABEL containing "structural" skips the model angles
+        return
 
     # model angles: fit as in Tests 5 and 6, score the last quarter
     q50, q75 = df.date.quantile(0.5), df.date.quantile(0.75)
