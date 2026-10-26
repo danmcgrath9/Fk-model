@@ -1,1 +1,1 @@
-{"half_life": 180.0, "carry": 0.5, "reg": 4.0, "rho": -0.07, "home_half_life": 240.0}
+{"half_life": 180.0, "carry": 0.5, "reg": 4.0, "rho": -0.07, "home_half_life": 240.0, "early_alpha": 0.5, "early_tau": 3.0}

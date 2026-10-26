@@ -42,9 +42,10 @@ class Fit:
         self.att = dict(zip(teams, att))
         self.dfn = dict(zip(teams, dfn))
 
-    def rates(self, home, away, neutral=False):
-        ah, dh = self.att.get(home, 0.0), self.dfn.get(home, 0.0)
-        aa, da = self.att.get(away, 0.0), self.dfn.get(away, 0.0)
+    def rates(self, home, away, neutral=False, k_home=1.0, k_away=1.0):
+        """Expected goals; k_home/k_away scale each club's strengths towards average (early season)."""
+        ah, dh = self.att.get(home, 0.0) * k_home, self.dfn.get(home, 0.0) * k_home
+        aa, da = self.att.get(away, 0.0) * k_away, self.dfn.get(away, 0.0) * k_away
         hadv = 0.0 if neutral else self.home
         return float(np.exp(self.mu + ah + da + hadv)), float(np.exp(self.mu + aa + dh))
 
@@ -112,8 +113,26 @@ def refit_level_and_home(f, rows, w2):
     return f
 
 
+def early_shrink(n, alpha, tau):
+    """How much of a club's fitted strength to use after n league matches this season: early in a
+    season, with heavy squad turnover, last season's strength is pulled towards average
+    (docs/TEAM_EARLY.md: alpha 0.5, tau 3 chosen on 2015-16 to 2019-20)."""
+    return 1 - alpha * np.exp(-n / tau) if alpha else 1.0
+
+
+def season_counts(matches, before):
+    """{(season, club): league matches played before `before`}."""
+    p = matches[(matches.date < before) & matches.home_goals_90.notna()]
+    c = {}
+    for col in ('home', 'away'):
+        for k, v in p.groupby(['season', col]).size().items():
+            c[k] = c.get(k, 0) + v
+    return c
+
+
 def rolling_predictions(matches, seasons, half_life=DEFAULTS['half_life'], carry=DEFAULTS['carry'],
-                        reg=DEFAULTS['reg'], rho=DEFAULTS['rho'], include_unplayed=False, home_half_life=None):
+                        reg=DEFAULTS['reg'], rho=DEFAULTS['rho'], include_unplayed=False, home_half_life=None,
+                        early_alpha=0.0, early_tau=3.0):
     """One row per match in `seasons`: expected goals and market probabilities from a fit on
     earlier days only. home_half_life (days): re-estimate the league level and home edge with their own,
     usually faster, decay (refit_level_and_home); None keeps them from the main fit."""
@@ -133,8 +152,11 @@ def rolling_predictions(matches, seasons, half_life=DEFAULTS['half_life'], carry
             age = np.array([(day - d).days for d in rows.date], dtype=float)
             cur = refit_level_and_home(Fit(prev.teams, prev.mu, prev.home, list(prev.att.values()), list(prev.dfn.values())),
                                        rows, 0.5 ** (age / home_half_life))
+        counts = season_counts(matches, day) if early_alpha else {}
         for _, g in games.iterrows():
-            lh, la = cur.rates(g.home, g.away, bool(g.neutral))
+            kh = early_shrink(counts.get((g.season, g.home), 0), early_alpha, early_tau)
+            ka = early_shrink(counts.get((g.season, g.away), 0), early_alpha, early_tau)
+            lh, la = cur.rates(g.home, g.away, bool(g.neutral), kh, ka)
             m = score_matrix(lh, la, rho)
             p = h2h(m)
             out.append(dict(match_id=g.match_id, season=g.season, date=g.date, home=g.home, away=g.away,
