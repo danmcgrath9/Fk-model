@@ -13,7 +13,7 @@ def ms(v):
     try: return datetime.fromisoformat(str(v).replace("Z", "+00:00")).replace(tzinfo=timezone.utc).timestamp() * 1000
     except Exception: return None
 MINS = (30, 40, 45, 50, 60, 90)
-print("CSV-BEGIN"); print("race,race_id,horse_id,name,scratched,race_open_ms,last_ms,open," + ",".join(f"m{m}" for m in MINS) + ",avg_now,best_now,best_bookies")
+print("CSV-BEGIN"); print("race,race_id,horse_id,number,name,scratched,race_open_ms,last_ms,open," + ",".join(f"m{m}" for m in MINS) + ",avg_now,best_now,best_bookies")
 with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
     for mid in sys.argv[1:]:
         races = {}
@@ -31,7 +31,7 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
                 a = [upto(t0 + m * 60e3) if t0 and fl and t0 + m * 60e3 <= fl[-1][0] else "" for m in MINS]
                 nm = str(raw.get("name") or (raw.get("horse") or {}).get("name") or "").replace(",", " ")
                 bb = " ".join(str(b).replace(",", " ") for b in (o.get("bestBookies") or []))
-                print(f"{rn},{rid},{F.horse_id(raw)},{nm},{int(bool(F.entry_scratched(raw)))},{int(t0) if t0 else ''},"
+                print(f"{rn},{rid},{F.horse_id(raw)},{F.entry_number(raw) or ''},{nm},{int(bool(F.entry_scratched(raw)))},{int(t0) if t0 else ''},"
                       f"{int(fl[-1][0]) if fl else ''},{fl[0][1] if fl else ''},{','.join(str(x) for x in a)},"
                       f"{o.get('avgNow') or ''},{o.get('bestNow') or ''},{bb}")
 print("CSV-END")

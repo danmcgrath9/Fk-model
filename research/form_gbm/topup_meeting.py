@@ -1,15 +1,27 @@
-"""30-90 min after-open top-ups for one meeting from fluc_meeting.py output + the meeting's v6 json.
-python3.13 topup_meeting.py CSV V6JSON FIRST_STARTERS_JSON 'held horse;held horse'"""
+"""The 30-90 min after-open check for one meeting (27 Oct 2026), from scripts/fluc_meeting.py output + the meeting's v6
+json. Judged on the AVERAGE price at each check point (30/40/45/50/60/90 min after the race's open); the best book is
+shown beside it, never used to qualify.
+  (A) horses we hold: still clear the live minimum (edge 1.15 under $4, else 1.2), not 20%+ out from the open:
+      top up the shortfall (target at this price minus what filled at the open). Paper.
+  (B) new horses: edge 1.3, not 20%+ out, ours $1.60-$15, under 3x ours, not in a first-starter race. Real bets.
+Twitter units = half the rule stake at that price, max 5u. Prints the tweet draft in the founder's format (27 Oct:
+"the book (if it's multiple say multiple), the race - number - horse name - units").
+    python3.13 topup_meeting.py FLUC_CSV V6_JSON FIRST_STARTERS_JSON ["Horse=filled_units;Horse=..."] [--upto m60]"""
 import sys, csv, json, collections, stake_rule
-L = open(sys.argv[1]).read().split("CSV-BEGIN")[1].split("CSV-END")[0].strip().splitlines()
-R = list(csv.DictReader(L)); V = {(x["race_id"], x["horse_id"]): x for x in json.load(open(sys.argv[2]))}
-FS = json.load(open(sys.argv[3])); held = {h.strip().lower() for h in sys.argv[4].split(";") if h.strip()}
-print("first starters file:", str(FS)[:300])
-byr = collections.defaultdict(list)
-for r in R:
-    if r["scratched"] == "0" and (r["race_id"], r["horse_id"]) in V: byr[r["race"]].append(r)
-TIERS = (1.0, 1.25, 1.5); W = ("m30", "m40", "m45", "m50", "m60", "m90")
-def stake(p, t0, E=1.3):
+args = [a for a in sys.argv[1:] if not a.startswith("--")]
+upto = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--upto=")), "m90")
+L = open(args[0]).read().split("CSV-BEGIN")[1].split("CSV-END")[0].strip().splitlines()
+R = list(csv.DictReader(L)); V = {(x["race_id"], x["horse_id"]): x for x in json.load(open(args[1]))}
+FSR = {int(s.split("|")[0]) for s in json.load(open(args[2]))}
+held = {}
+for h in (args[3].split(";") if len(args) > 3 else []):
+    if h.strip(): n, _, u = h.partition("="); held[n.strip().lower()] = float(u or 0)
+W = [c for c in ("m30", "m40", "m45", "m50", "m60", "m90") if c <= upto or upto == "m90"]
+BOOK = {"tab": "TAB", "tabtouch": "TABtouch", "sportsbet": "Sportsbet", "ladbrokes": "Ladbrokes", "neds": "Neds",
+        "pointsbet": "PointsBet", "betr": "Betr", "unibet": "Unibet", "bet365": "Bet365", "betright": "BetRight",
+        "elitebet": "Elitebet", "palmerbet": "Palmerbet", "picnicbet": "Picnicbet", "betdeluxe": "BetDeluxe"}
+TIERS = (1.0, 1.25, 1.5)
+def target(p, t0, E):
     q = 1 / p
     if not (1.6 <= q <= 15) or t0 >= 3 * q: return 0.0, None
     mo = 0.95 * (E / p ** 0.82) ** (1 / 0.78)
@@ -20,19 +32,35 @@ def stake(p, t0, E=1.3):
         s_ = stake_rule.stake(p ** 0.82 * tp ** -0.22, tp); add = max(0.0, s_ - prev); prev = max(prev, s_)
         if t0 >= t: tot += add
     return tot, mo
-print("\n| race | horse | ours | open | first time it fired | avg then | best est. | min (take if still) | book units | Twitter | best books now | avg now |")
-print("|---|---|---|---|---|---|---|---|---|---|---|---|")
-for rn in sorted(byr, key=int):
+byr = collections.defaultdict(list)
+for r in R:
+    if r["scratched"] == "0" and (r["race_id"], r["horse_id"]) in V: byr[int(r["race"])].append(r)
+A, B = [], []
+for rn in sorted(byr):
     xs = byr[rn]; s = sum(float(V[(x["race_id"], x["horse_id"])]["p_model"]) for x in xs)
     for x in xs:
-        p = float(V[(x["race_id"], x["horse_id"])]["p_model"]) / s
-        if x["name"].strip().lower() in held or not x["open"]: continue
-        op = float(x["open"]); ratio = (float(x["best_now"]) / float(x["avg_now"])) if x["best_now"] and x["avg_now"] else 1.0
+        if not x["open"]: continue
+        p = float(V[(x["race_id"], x["horse_id"])]["p_model"]) / s; op = float(x["open"]); nm = x["name"].strip()
+        mine = nm.lower() in held
+        if not mine and rn in FSR: continue
         for c in W:
-            if not x[c]: continue
-            t = float(x[c])
-            if t / op >= 1.2: continue
-            st, mo = stake(p, t * ratio)
+            if not x[c] or float(x[c]) / op >= 1.2: continue
+            t = float(x[c]); st, mo = target(p, t, (1.15 if t < 4 else 1.2) if mine else 1.3)
+            if mine: st = max(0.0, st - held[nm.lower()])
             if st > 0:
-                print(f"| R{rn} | {x['name']} | ${1/p:.2f} | ${op:g} | {c[1:]} min | ${t:g} | ${t*ratio:.2f} | ${mo:.2f} | {st:.2f}u | {min(5, st/2):.2f}u | {x['best_bookies'][:40]} ${x['best_now']} | ${x['avg_now']} |")
+                bb = [b for b in x["best_bookies"].split() if b]
+                book = "Multiple" if len(bb) > 1 else (BOOK.get(bb[0], bb[0].title()) if bb else "?")
+                (A if mine else B).append(dict(race=rn, num=x["number"], horse=nm, ours=1 / p, open=op, when=c[1:], avg=t,
+                                               best=x["best_now"], books=" ".join(BOOK.get(b, b) for b in bb), book=book,
+                                               mo=mo, units=round(st, 2), tw=round(min(5.0, st / 2), 2)))
                 break
+for lab, L_ in (("(A) TOP-UP, horses we hold (paper)", A), ("(B) NEW HORSES (real bets, your OK)", B)):
+    print(f"\n## {lab}\n")
+    if not L_: print("none"); continue
+    print("| race | no. | horse | ours | open | fired | avg | best now (books) | take if still | units | Twitter |\n|---|---|---|---|---|---|---|---|---|---|---|")
+    for b in L_:
+        print(f"| R{b['race']} | {b['num']} | {b['horse']} | ${b['ours']:.2f} | ${b['open']:g} | {b['when']} min | ${b['avg']:g} | "
+              f"${b['best']} ({b['books'][:60]}) | ${b['mo']:.2f} | {b['units']:.2f}u | {b['tw']:.2f}u |")
+tips = sorted(A + B, key=lambda b: (b["race"], b["num"]))
+print("\n## Tweet draft\n")
+print("\n".join(f"{b['book']} - R{b['race']} - {b['num']} - {b['horse']} - {b['tw']:g}u" for b in tips) + "\n\nWin bets." if tips else "(no tips)")
