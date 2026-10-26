@@ -18,6 +18,15 @@ import sys
 import numpy as np
 import pandas as pd
 
+from bbl.model import benter
+
+COEFS = os.path.join(os.path.dirname(__file__), 'benter_coefs.json')
+
+
+def load_coefs():
+    """Benter weights fitted walk-forward on recorded prices; None until that fit has been run."""
+    return json.load(open(COEFS)) if os.path.exists(COEFS) else None
+
 EDGE = 0.05
 SYDNEY = 'Australia/Sydney'
 # The Odds API market key -> our quantity. h2h is a featured market on every sport. Nothing else is listed
@@ -79,8 +88,23 @@ def compare(d, snapshot):
     unmatched = o[o.match_id.isna()][['home', 'away', 'date']].drop_duplicates()
     o = o[o.market.isin(MARKETS) & o.match_id.notna()].copy()
     o['our_p'] = our_chance(o)
-    o['fair'] = 1 / o.our_p
-    o['edge'] = o.our_p * o.price - 1
+    # Benter's second stage (bbl/model/benter.py): the market's chance with the margin out, per event and book,
+    # blended with ours by weights fitted out of sample. Until the weights exist the edge is the unblended one.
+    o['market_p'] = np.nan
+    for _, g in o[o.our_p.notna()].groupby(['event_id', 'book', 'market']):
+        if len(g) == 2:
+            o.loc[g.index, 'market_p'] = benter.devig(g.price.to_numpy())
+    coefs = load_coefs()
+    if coefs and o.market_p.notna().any():
+        for _, g in o[o.market_p.notna()].groupby(['event_id', 'book', 'market']):
+            o.loc[g.index, 'blend_p'] = benter.blend(g.our_p.to_numpy(), g.market_p.to_numpy(), coefs['alpha'], coefs['beta'])
+        o['basis'] = f"blended (alpha {coefs['alpha']:.2f}, beta {coefs['beta']:.2f})"
+        p_bet = o.blend_p
+    else:
+        o['basis'] = 'UNBLENDED: Benter weights not fitted yet'
+        p_bet = o.our_p
+    o['fair'] = 1 / p_bet
+    o['edge'] = p_bet * o.price - 1
     paper = o[o.edge >= EDGE].sort_values('edge', ascending=False)
     return o, paper, unmapped, unmatched
 
@@ -92,7 +116,8 @@ def main(d, snapshot):
     stem = os.path.splitext(os.path.basename(snapshot))[0]
     o.to_csv(os.path.join(out, f'{stem}_all.csv'), index=False)
     paper.to_csv(os.path.join(out, f'{stem}_paper.csv'), index=False)
-    print(f'PAPER ONLY. {len(o)} priced outcomes, {len(paper)} at an edge of {EDGE:.0%} or more.')
+    print(f'PAPER ONLY. {len(o)} priced outcomes, {len(paper)} at an edge of {EDGE:.0%} or more. '
+          f'Basis: {o.basis.iloc[0] if len(o) else "n/a"}.')
     if len(paper):
         print(paper[['date', 'home', 'away', 'book', 'market', 'name', 'price', 'fair', 'edge']].to_string(index=False))
     if unmapped:
