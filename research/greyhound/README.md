@@ -397,3 +397,31 @@ Blends with the market: + WAP 1.4700 (+0.0003), + BSP 1.4653 (+0.0001). Early sp
 1.6542, both halves) but v0 still trails Iggy in all 9 months and adds nothing to the market. Conclusion unchanged:
 the free files cannot build a model worth betting; the next model waits on Topaz (founder, 25 Oct 2026: "V0 has no
 data hahaha, let's wait for data").
+
+## Test 5: the ratings engine, and v0 with a who-beat-whom rating (26 Oct 2026, runs 40262271801 and 40262278279)
+
+**The engine** (`greyhound/ratings.py`, ready for Topaz; only `topaz_to_runs()`, the column mapping, waits for the
+probe): point-in-time pars per track and distance (median winning time and first split of earlier races), a meeting
+going variant (that meeting's winners against par, shrunk 2 pseudo-races toward 0), time and first-split ratings in
+lengths (0.07 s a length), an Elo over finishing order (every pair a match; a day's changes land when the day ends),
+and each dog's form as it stood at the end of the previous day, trials included. 9 tests in
+`tests/test_greyhound_ratings.py`, hand-checked pieces plus a simulation where every dog's true speed is known: the
+time ratings recover it at r > 0.85, the going variant beats no variant, split ratings recover early speed at r > 0.85,
+and form and Elo rank dogs at r > 0.7 out of sample. That simulation caught a same-day leak (a dog racing twice in a
+day saw its first run) in both the form and the Elo; both now use earlier days only.
+
+**v0 + Elo**: the Elo built from the only finishing order the free files hold (winner first, placegetters tied second,
+the rest tied behind), added to v0 and relative to the field.
+
+| last quarter | races | v0 before (Test 4/4b) | v0 + Elo | Iggy | pre-play WAP | BSP |
+|---|---|---|---|---|---|---|
+| 2020-2026 window, scored from Jan 2025 | 68,174 | 1.6743 | **1.6419** | 1.6460 | 1.4848 | 1.4818 |
+| first half / second half | | 1.6868 / 1.6619 | 1.6554 / 1.6285 | 1.6585 / 1.6338 | | 1.4975 / 1.4664 |
+| 2024-2026 window, with early speed, scored from Jan 2026 | 26,702 | 1.6542 | **1.6228** | 1.6346 | 1.4703 | 1.4654 |
+| first half / second half | | 1.6612 / 1.6472 | 1.6305 / 1.6152 | 1.6405 / 1.6287 | | 1.4717 / 1.4593 |
+
+v0 + Elo now beats Iggy in both windows and both halves: by 0.004 over 2025-26 (ahead in 13 of 21 months, level or
+behind in the 8 from Jan to Nov 2025) and by 0.012 in 2026 with early speed (ahead in all 9 months). Blended with the
+market it still adds nothing: + WAP +0.0003, + BSP +0.0001, our weight slightly negative. **What it means**: the first
+real step beyond Iggy came from the strength rating, from finishing order alone; the market still prices everything v0
+knows. The same Elo on Topaz's full finishing order and margins is the next step.
