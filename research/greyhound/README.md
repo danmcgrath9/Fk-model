@@ -425,3 +425,43 @@ Jan-Mar and Oct-Nov 2025) and by 0.012 in 2026 with early speed (ahead in all 9 
 market it still adds nothing: + WAP +0.0003, + BSP +0.0001, our weight slightly negative. **What it means**: the first
 real step beyond Iggy came from the strength rating, from finishing order alone; the market still prices everything v0
 knows. The same Elo on Topaz's full finishing order and margins is the next step.
+
+## Test 6: Benter's two stages on the free files (26 Oct 2026, `research/greyhound/gbm_benter.py`, runs 40262967267 and 40262973312)
+
+Stage 1 is the fundamental model: form only (box, field, distance, the box rate, runs, win and place rates, last
+start, last five, days since, distance change, same track, Elo), trained on WHO WON, no price of any kind. Beside it, a
+model of the dog's market history alone (its past BSPs and how it ran against them) and, as a check, the gallops
+recipe (everything, trained on BSP chances). Stage 2 is Benter's second logit: chance proportional to each input's
+chance raised to a weight, weights fitted on the middle quarter, scored once on the last quarter.
+
+**Stage 1 alone, winner log loss, last quarter:**
+
+| | 2020-2026, 68,174 races from Jan 2025 (halves) | 2024-2026, 26,702 races from Jan 2026 (halves) |
+|---|---|---|
+| stage 1: form only | 1.6855 (1.6992 / 1.6721) | 1.6765 (1.6837 / 1.6693) |
+| stage 1: form + early speed | not in this window | 1.6723 (1.6784 / 1.6663) |
+| market history only | 1.7606 (1.7713 / 1.7500) | 1.7531 (1.7596 / 1.7467) |
+| copy of BSP (check) | 1.6409 (1.6545 / 1.6276) | 1.6276 (1.6357 / 1.6196) |
+| Iggy | 1.6460 (1.6585 / 1.6338) | 1.6346 (1.6405 / 1.6287) |
+| pre-play WAP | 1.4848 | 1.4703 |
+| BSP | 1.4818 | 1.4654 |
+
+**Stage 2, gain over the market alone (positive = better):**
+
+| blend | 2020-2026 + WAP / + BSP | 2024-2026 + WAP / + BSP |
+|---|---|---|
+| stage 1 + market | −0.0000 / −0.0002 | +0.0001 / −0.0000 |
+| market history + market | +0.0003 / +0.0001 | +0.0004 / +0.0002 |
+| stage 1 + market history + market | +0.0001 / −0.0001 | +0.0004 / +0.0002 |
+
+The weights tell the same story: the market's weight is 1.01 to 1.07 and every model's is near zero or negative
+(−0.075 at most), so the fitted blend sharpens the market slightly and gives our models nothing.
+
+**What it means.** (1) Trained on winners, stage 1 is 0.045 worse than the same inputs trained on BSP chances
+(1.6855 against 1.6409): with only win/place in the free files, the market's chances are a far less noisy label than
+one winner per race, so the copy recipe is the better way to learn from this data, as it was for the gallops.
+(2) Stage 2 finds nothing: the market already prices everything the free files hold, form, Elo and the dog's own price
+history. Benter's edge came from fundamentals the public was underweighting; on win/place and box alone there is no
+such gap at BSP. (3) The structure is right and stays: when Topaz's times, splits and full finishing order arrive,
+stage 1 gets the inputs Benter's had, and when recorded opens exist the opening price replaces WAP/BSP as the
+market in stage 2, which is the price BetMatic would actually take.
