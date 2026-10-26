@@ -36,5 +36,5 @@ Kilmore 13 Oct (open book): 4 bets, 1 winner (Celestial Splendor $19), 4.24u sta
 | 2026-10-24 Flemington (G4) | R8 | Blind Raise | $13.2 | - | $10.04 | 0.94u | | | |
 | 2026-10-24 Flemington (G4) | R9 | Shockletz | $12.67 | - | $8.10 | 1.68u | | | |
 | 2026-10-24 Flemington (G4) | R9 | Classic Gem | $13.5 | - | $7.33 | 2.23u | | | |
-| 2026-10-25 Sale (GD) | R2 | Rough Enuff | $7 | - | $5.39 | 1.82u | | | |
-| 2026-10-25 Sale (GD) | R5 | Superstock | $9 | - | $7.23 | 1.13u | | | |
+| 2026-10-25 Sale (GD) | R2 | Rough Enuff | $7 | - | $5.39 | 1.82u | WON (11c deduction: 1.82 x 6 x 0.89) | SP $3.50, BSP $4.42 | +9.72 |
+| 2026-10-25 Sale (GD) | R5 | Superstock | $9 | - | $7.23 | 1.13u | SCRATCHED, void | - | 0.00 |

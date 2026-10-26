@@ -397,3 +397,9 @@ Mistress 4.22u at $3.60, Princess Geisha 0.73u at $14, Somethingintheair 0.91u a
 rest under take-at now. Of the six paper opens, Strummer is the only one still over our price ($23 v ours $13.44, already at
 full stake); the market has come for the other five (Positivo $8.50 to $4.40, Vaderlee $11 to $4.20, Blue Moon Summit $21 to
 $7.50, Three Musketeers $41 to $13, Phantom's Chase $18.50 to $12).
+
+## Sunday 25 Oct Sale settled (results pulled Mon 26 Oct)
+Rough Enuff (R2) WON: SP $3.50, BSP $4.42, against $6.34 after the 11c deduction ($7 open). Superstock (R5) scratched: void.
+Tweeted card (Twitter units, after deductions): 1 bet, 1.12u at $6.34, +5.98u, ROI +534%.
+Paper at the open (model stakes, 11c deduction): Rough Enuff 2.24u at $6.34, +11.96u; Superstock void. No real money (the
+market was open before any orders were built). Open book (GD stake 1.82u): +9.72u.
