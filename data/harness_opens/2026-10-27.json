@@ -1,4 +1,920 @@
 {
+ "ALBION PARK|R1": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6"
+  ],
+  "first_poll_at": "2026-10-25T23:39:18Z",
+  "last_empty_at": "2026-10-26T03:02:09Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 16,
+  "race": 1,
+  "runners": {},
+  "start_time": "2026-10-27T13:42:00+11:00",
+  "venue": "ALBION PARK"
+ },
+ "ALBION PARK|R2": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "first_poll_at": "2026-10-25T23:39:21Z",
+  "last_empty_at": "2026-10-26T03:02:39Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 14,
+  "race": 2,
+  "runners": {},
+  "start_time": "2026-10-27T14:17:00+11:00",
+  "venue": "ALBION PARK"
+ },
+ "ALBION PARK|R3": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "first_poll_at": "2026-10-25T23:39:24Z",
+  "last_empty_at": "2026-10-26T03:03:24Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 16,
+  "race": 3,
+  "runners": {},
+  "start_time": "2026-10-27T14:52:00+11:00",
+  "venue": "ALBION PARK"
+ },
+ "ALBION PARK|R4": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "first_poll_at": "2026-10-25T23:39:27Z",
+  "last_empty_at": "2026-10-26T03:04:09Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 15,
+  "race": 4,
+  "runners": {},
+  "start_time": "2026-10-27T15:33:00+11:00",
+  "venue": "ALBION PARK"
+ },
+ "ALBION PARK|R5": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:39:30Z",
+  "last_empty_at": "2026-10-26T03:04:55Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 15,
+  "race": 5,
+  "runners": {},
+  "start_time": "2026-10-27T16:12:00+11:00",
+  "venue": "ALBION PARK"
+ },
+ "ALBION PARK|R6": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "first_poll_at": "2026-10-25T23:39:33Z",
+  "last_empty_at": "2026-10-26T03:05:39Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 14,
+  "race": 6,
+  "runners": {},
+  "start_time": "2026-10-27T16:47:00+11:00",
+  "venue": "ALBION PARK"
+ },
+ "ALBION PARK|R7": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:39:36Z",
+  "last_empty_at": "2026-10-26T03:06:09Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 12,
+  "race": 7,
+  "runners": {},
+  "start_time": "2026-10-27T17:22:00+11:00",
+  "venue": "ALBION PARK"
+ },
+ "ALBION PARK|R8": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "first_poll_at": "2026-10-25T23:39:38Z",
+  "last_empty_at": "2026-10-26T03:06:54Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 15,
+  "race": 8,
+  "runners": {
+   "2": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T23:39:38Z",
+     "scratched": true
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-26T00:52:53Z",
+     "scratched": true
+    }
+   }
+  },
+  "start_time": "2026-10-27T18:00:00+11:00",
+  "venue": "ALBION PARK"
+ },
+ "ALBION PARK|R9": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:50:30Z",
+  "last_empty_at": "2026-10-26T03:07:54Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 12,
+  "race": 9,
+  "runners": {},
+  "start_time": "2026-10-27T18:32:00+11:00",
+  "venue": "ALBION PARK"
+ },
+ "GLOUCESTER PARK|R1": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "first_poll_at": "2026-10-25T23:40:28Z",
+  "last_empty_at": "2026-10-26T02:58:47Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 14,
+  "race": 1,
+  "runners": {},
+  "start_time": "2026-10-27T19:21:00+11:00",
+  "venue": "GLOUCESTER PARK"
+ },
+ "GLOUCESTER PARK|R2": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "first_poll_at": "2026-10-25T23:40:33Z",
+  "last_empty_at": "2026-10-26T02:58:52Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 16,
+  "race": 2,
+  "runners": {},
+  "start_time": "2026-10-27T19:55:00+11:00",
+  "venue": "GLOUCESTER PARK"
+ },
+ "GLOUCESTER PARK|R3": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "first_poll_at": "2026-10-25T23:40:39Z",
+  "last_empty_at": "2026-10-26T02:58:57Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 16,
+  "race": 3,
+  "runners": {},
+  "start_time": "2026-10-27T20:25:00+11:00",
+  "venue": "GLOUCESTER PARK"
+ },
+ "GLOUCESTER PARK|R4": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "first_poll_at": "2026-10-25T23:40:44Z",
+  "last_empty_at": "2026-10-26T02:59:02Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 14,
+  "race": 4,
+  "runners": {
+   "8": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T23:40:44Z",
+     "scratched": true
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T23:40:44Z",
+     "scratched": true
+    }
+   }
+  },
+  "start_time": "2026-10-27T20:55:00+11:00",
+  "venue": "GLOUCESTER PARK"
+ },
+ "GLOUCESTER PARK|R5": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "first_poll_at": "2026-10-25T23:51:34Z",
+  "last_empty_at": "2026-10-26T02:59:06Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 14,
+  "race": 5,
+  "runners": {},
+  "start_time": "2026-10-27T21:25:00+11:00",
+  "venue": "GLOUCESTER PARK"
+ },
+ "GLOUCESTER PARK|R6": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "first_poll_at": "2026-10-25T23:41:30Z",
+  "last_empty_at": "2026-10-26T02:59:41Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 16,
+  "race": 6,
+  "runners": {},
+  "start_time": "2026-10-27T21:55:00+11:00",
+  "venue": "GLOUCESTER PARK"
+ },
+ "GLOUCESTER PARK|R7": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "first_poll_at": "2026-10-25T23:41:33Z",
+  "last_empty_at": "2026-10-26T03:00:09Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 16,
+  "race": 7,
+  "runners": {},
+  "start_time": "2026-10-27T22:24:00+11:00",
+  "venue": "GLOUCESTER PARK"
+ },
+ "GLOUCESTER PARK|R8": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "first_poll_at": "2026-10-26T00:08:26Z",
+  "last_empty_at": "2026-10-26T03:00:54Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 14,
+  "race": 8,
+  "runners": {},
+  "start_time": "2026-10-27T22:59:00+11:00",
+  "venue": "GLOUCESTER PARK"
+ },
+ "KILMORE|R1": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11"
+  ],
+  "first_poll_at": "2026-10-25T23:39:41Z",
+  "last_empty_at": "2026-10-26T03:07:39Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 15,
+  "race": 1,
+  "runners": {
+   "1": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T23:39:41Z",
+     "scratched": true
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T23:39:41Z",
+     "scratched": true
+    }
+   }
+  },
+  "start_time": "2026-10-27T18:18:00+11:00",
+  "venue": "KILMORE"
+ },
+ "KILMORE|R2": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:40:25Z",
+  "last_empty_at": "2026-10-26T02:58:38Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 15,
+  "race": 2,
+  "runners": {},
+  "start_time": "2026-10-27T18:58:00+11:00",
+  "venue": "KILMORE"
+ },
+ "KILMORE|R3": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:40:30Z",
+  "last_empty_at": "2026-10-26T02:58:49Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 16,
+  "race": 3,
+  "runners": {},
+  "start_time": "2026-10-27T19:35:00+11:00",
+  "venue": "KILMORE"
+ },
+ "KILMORE|R4": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "first_poll_at": "2026-10-25T23:40:35Z",
+  "last_empty_at": "2026-10-26T02:58:54Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 15,
+  "race": 4,
+  "runners": {},
+  "start_time": "2026-10-27T20:05:00+11:00",
+  "venue": "KILMORE"
+ },
+ "KILMORE|R5": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "first_poll_at": "2026-10-25T23:40:40Z",
+  "last_empty_at": "2026-10-26T02:58:59Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 15,
+  "race": 5,
+  "runners": {},
+  "start_time": "2026-10-27T20:35:00+11:00",
+  "venue": "KILMORE"
+ },
+ "KILMORE|R6": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "first_poll_at": "2026-10-25T23:40:45Z",
+  "last_empty_at": "2026-10-26T02:59:04Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 16,
+  "race": 6,
+  "runners": {},
+  "start_time": "2026-10-27T21:05:00+11:00",
+  "venue": "KILMORE"
+ },
+ "KILMORE|R7": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "first_poll_at": "2026-10-25T23:51:35Z",
+  "last_empty_at": "2026-10-26T02:59:08Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 14,
+  "race": 7,
+  "runners": {},
+  "start_time": "2026-10-27T21:35:00+11:00",
+  "venue": "KILMORE"
+ },
+ "KILMORE|R8": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "first_poll_at": "2026-10-25T23:41:32Z",
+  "last_empty_at": "2026-10-26T02:59:55Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 16,
+  "race": 8,
+  "runners": {
+   "5": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-26T02:35:07Z",
+     "scratched": true
+    }
+   }
+  },
+  "start_time": "2026-10-27T22:05:00+11:00",
+  "venue": "KILMORE"
+ },
+ "KILMORE|R9": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "first_poll_at": "2026-10-25T23:41:35Z",
+  "last_empty_at": "2026-10-26T03:00:40Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 16,
+  "race": 9,
+  "runners": {},
+  "start_time": "2026-10-27T22:34:00+11:00",
+  "venue": "KILMORE"
+ },
  "LE CROISE LAROC|R1": {
   "field": [
    "1",
@@ -352,6 +1268,323 @@
   "runners": {},
   "start_time": "2026-10-27T06:31:00+11:00",
   "venue": "LE CROISE LAROC"
+ },
+ "MENANGLE|R1": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13"
+  ],
+  "first_poll_at": "2026-10-25T23:39:15Z",
+  "last_empty_at": "2026-10-26T03:01:24Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 15,
+  "race": 1,
+  "runners": {},
+  "start_time": "2026-10-27T12:44:00+11:00",
+  "venue": "MENANGLE"
+ },
+ "MENANGLE|R2": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "first_poll_at": "2026-10-25T23:39:16Z",
+  "last_empty_at": "2026-10-26T03:01:40Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 13,
+  "race": 2,
+  "runners": {},
+  "start_time": "2026-10-27T13:22:00+11:00",
+  "venue": "MENANGLE"
+ },
+ "MENANGLE|R3": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "first_poll_at": "2026-10-25T23:39:19Z",
+  "last_empty_at": "2026-10-26T03:02:24Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 17,
+  "race": 3,
+  "runners": {},
+  "start_time": "2026-10-27T14:03:00+11:00",
+  "venue": "MENANGLE"
+ },
+ "MENANGLE|R4": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:39:23Z",
+  "last_empty_at": "2026-10-26T03:03:09Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 14,
+  "race": 4,
+  "runners": {},
+  "start_time": "2026-10-27T14:37:00+11:00",
+  "venue": "MENANGLE"
+ },
+ "MENANGLE|R5": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:39:25Z",
+  "last_empty_at": "2026-10-26T03:03:54Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 14,
+  "race": 5,
+  "runners": {},
+  "start_time": "2026-10-27T15:17:00+11:00",
+  "venue": "MENANGLE"
+ },
+ "MENANGLE|R6": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:39:28Z",
+  "last_empty_at": "2026-10-26T03:04:24Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 15,
+  "race": 6,
+  "runners": {},
+  "start_time": "2026-10-27T15:52:00+11:00",
+  "venue": "MENANGLE"
+ },
+ "MENANGLE|R7": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:39:31Z",
+  "last_empty_at": "2026-10-26T03:05:09Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 15,
+  "race": 7,
+  "runners": {},
+  "start_time": "2026-10-27T16:33:00+11:00",
+  "venue": "MENANGLE"
+ },
+ "MENANGLE|R8": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:39:34Z",
+  "last_empty_at": "2026-10-26T03:05:54Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 12,
+  "race": 8,
+  "runners": {},
+  "start_time": "2026-10-27T17:07:00+11:00",
+  "venue": "MENANGLE"
+ },
+ "MENANGLE|R9": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:39:37Z",
+  "last_empty_at": "2026-10-26T03:06:39Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 14,
+  "race": 9,
+  "runners": {},
+  "start_time": "2026-10-27T17:43:00+11:00",
+  "venue": "MENANGLE"
  },
  "WOODBINE|R1": {
   "field": [
@@ -895,5 +2128,267 @@
   "runners": {},
   "start_time": "2026-10-27T12:25:00+11:00",
   "venue": "YONKERS"
+ },
+ "YOUNG|R1": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:39:40Z",
+  "last_empty_at": "2026-10-26T03:07:24Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 16,
+  "race": 1,
+  "runners": {},
+  "start_time": "2026-10-27T18:07:00+11:00",
+  "venue": "YOUNG"
+ },
+ "YOUNG|R2": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "first_poll_at": "2026-10-25T23:50:32Z",
+  "last_empty_at": "2026-10-26T02:33:14Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 14,
+  "race": 2,
+  "runners": {},
+  "start_time": "2026-10-27T18:39:00+11:00",
+  "venue": "YOUNG"
+ },
+ "YOUNG|R3": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:40:27Z",
+  "last_empty_at": "2026-10-26T02:58:46Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 13,
+  "race": 3,
+  "runners": {},
+  "start_time": "2026-10-27T19:11:00+11:00",
+  "venue": "YOUNG"
+ },
+ "YOUNG|R4": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "first_poll_at": "2026-10-25T23:40:32Z",
+  "last_empty_at": "2026-10-26T02:58:51Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 17,
+  "race": 4,
+  "runners": {},
+  "start_time": "2026-10-27T19:45:00+11:00",
+  "venue": "YOUNG"
+ },
+ "YOUNG|R5": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11"
+  ],
+  "first_poll_at": "2026-10-25T23:40:37Z",
+  "last_empty_at": "2026-10-26T02:58:56Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 16,
+  "race": 5,
+  "runners": {},
+  "start_time": "2026-10-27T20:15:00+11:00",
+  "venue": "YOUNG"
+ },
+ "YOUNG|R6": {
+  "field": [
+   "1",
+   "2",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "11"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "11"
+  ],
+  "first_poll_at": "2026-10-25T23:40:43Z",
+  "last_empty_at": "2026-10-26T02:59:01Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 13,
+  "race": 6,
+  "runners": {
+   "10": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T23:40:43Z",
+     "scratched": true
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T23:40:43Z",
+     "scratched": true
+    }
+   },
+   "3": {
+    "Sportsbet": {
+     "first_seen_at": "2026-10-25T23:40:43Z",
+     "scratched": true
+    },
+    "TAB": {
+     "first_seen_at": "2026-10-25T23:40:43Z",
+     "scratched": true
+    }
+   }
+  },
+  "start_time": "2026-10-27T20:45:00+11:00",
+  "venue": "YOUNG"
+ },
+ "YOUNG|R7": {
+  "field": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "field_at_first_look": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "first_poll_at": "2026-10-25T23:40:47Z",
+  "last_empty_at": "2026-10-26T02:59:05Z",
+  "open_seen_on_first_poll": null,
+  "opened_at": null,
+  "polls": 16,
+  "race": 7,
+  "runners": {},
+  "start_time": "2026-10-27T21:15:00+11:00",
+  "venue": "YOUNG"
  }
 }
