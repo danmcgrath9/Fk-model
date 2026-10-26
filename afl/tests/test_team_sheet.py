@@ -32,7 +32,7 @@ def test_parse_positions_and_sub():
     f = df[df.team == 'Fremantle']
     assert (f['sub'] == '').all()                                 # no sub named yet: unknown, left blank
     assert set(df.home_team) == {'Adelaide'} and set(df.venue) == {'Adelaide Oval'} and set(df['round']) == {'2'}
-    assert TS.check(df) == ['Fremantle on 2027-03-20: 4 players named (expected 22, or 23 with the sub)']
+    assert TS.check(df) == ['Fremantle on 2027-03-20: 4 players named (expected 22; 23 only in a season with a substitute)']
 
 
 def test_season_comes_from_the_game_date_not_other_text():

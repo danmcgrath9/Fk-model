@@ -11,12 +11,12 @@ Any source's team sheet can be pasted in the newspaper layout clubs and media us
     F: Name, Name, Name
     FOL: Name, Name, Name
     I/C: Name, Name, Name, Name
-    SUB: Name
     EMG: Name, Name          (emergencies: not playing, ignored)
     Fremantle
     B: ...
 
-Lines can also be labelled INT, INTERCHANGE, FOLL, FOLLOWERS, R (ruck line) or EMERG; labels are not case sensitive and
+There is no substitute from 2026, so a side is 22 (18 on the ground, four on the bench); a SUB: line is still read for
+older sheets. Lines can also be labelled INT, INTERCHANGE, FOLL, FOLLOWERS, R (ruck line) or EMERG; labels are not case sensitive and
 a missing line is fine. IN:/OUT: lines are ignored. The position each player is named in is kept (named_pos) because
 starting in the centre square is a role signal (afl/model/named_position.py).
 
@@ -91,7 +91,7 @@ def check(df):
     out = []
     for (date, team), g in df.groupby(['date', 'team']):
         if not 22 <= len(g) <= 23:
-            out.append(f'{team} on {date}: {len(g)} players named (expected 22, or 23 with the sub)')
+            out.append(f'{team} on {date}: {len(g)} players named (expected 22; 23 only in a season with a substitute)')
         if not ((g.team == g.home_team) | (g.team == g.away_team)).all():
             out.append(f'{team} on {date} is not one of the two sides in its Game: line')
     return out
