@@ -1482,3 +1482,7 @@ Open bets: half 1 +25% -> +18% (price/BSP 1.58 -> 1.48), half 2 +40% -> +41%. It
 1.52x BSP for 196 that made +14u at 1.13x. One input at a time is no better (each helps one half and hurts the other).
 The A/E gaps in the table above were real in the aggregate but too unstable to fit on 2,800 trialled runners. Not
 adopted. Re-test at the retrain, when the full archive gives several times the trialled runners.
+
+### Race-review comments (27 Oct 2026)
+Form King's past-run videoComment (flags in scripts/wide_table.py) stays OUT of the model. Founder: "Don't trust it,
+would rather do it myself." Trip notes, if any, come from the founder's own replay watching.
