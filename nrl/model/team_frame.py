@@ -33,6 +33,11 @@ K_HOME = 0.005
 K_TEAM_HOME = 0.0       # if > 0, each club learns its own home bonus on top of the league's (slowly, so it shrinks)
 EARLY_BOOST = 1.0       # update-rate multiplier for a team's first EARLY_GAMES games of a season
 EARLY_GAMES = 6
+# An EXPANSION club starts NEW_TEAM_PRIOR points below average (tuned on the Titans 2007: miss 12.31 -> 11.87,
+# bias -4.9 -> -2.3; checked on the Dolphins 2023: miss unchanged at 12.96, bias -3.5 -> -0.9). Mergers (St George
+# Illawarra 1999, Wests Tigers 2000, Northern Eagles 2000) start at average: they inherit two clubs' players.
+NEW_TEAM_PRIOR = 4.0
+EXPANSION = {'Gold Coast Titans', 'Dolphins', 'Perth Bears'}
 DAMP = None             # if set, each side's surprise is squashed to DAMP * tanh(surprise / DAMP) before updating
 
 
@@ -89,6 +94,7 @@ def ratings(m):
     home_adv = HOME_START
     team_home = {}
     played = {}
+    first_season = int(m.season.min())
     season = None
     out = np.zeros((len(m), 5))
     for i, g in enumerate(m.itertuples(index=False)):
@@ -98,6 +104,9 @@ def ratings(m):
             att = {t: v * SEASON_CARRY for t, v in att.items()}
             dfn = {t: v * SEASON_CARRY for t, v in dfn.items()}
         h, a = g.home_team, g.away_team
+        for t in (h, a):   # a new club (Titans 2007, Dolphins 2023, Perth Bears 2027): below average to start
+            if t not in att and g.season > first_season and t in EXPANSION:
+                att[t], dfn[t] = -NEW_TEAM_PRIOR / 2, NEW_TEAM_PRIOR / 2
         ah, aa, dh, da = att.get(h, 0.0), att.get(a, 0.0), dfn.get(h, 0.0), dfn.get(a, 0.0)
         hb = team_home.get(h, 0.0)
         exp_h = league / 2 + ah + da + (home_adv + hb) / 2
