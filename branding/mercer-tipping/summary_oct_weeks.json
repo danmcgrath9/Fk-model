@@ -1,0 +1,69 @@
+{
+ "title": "October",
+ "sub": "Scoreboard to 26 Oct",
+ "big": [
+  {
+   "v": "+203u",
+   "k": "Overall profit"
+  },
+  {
+   "v": "+175%",
+   "k": "Return on 116u"
+  },
+  {
+   "v": "+57%",
+   "k": "At Betfair SP"
+  }
+ ],
+ "cols": [
+  "Week · 1u a tip",
+  "Bets",
+  "Won",
+  "Strike",
+  "Our price",
+  "Betfair SP"
+ ],
+ "rows": [
+  {
+   "day": "5–11 Oct",
+   "bets": 28,
+   "won": 6,
+   "staked": "21%",
+   "profit": "+5.1u",
+   "bsp": "-7.6u"
+  },
+  {
+   "day": "12–18 Oct",
+   "bets": 33,
+   "won": 8,
+   "staked": "24%",
+   "profit": "+55.9u",
+   "bsp": "+35.5u"
+  },
+  {
+   "day": "19–25 Oct",
+   "bets": 21,
+   "won": 8,
+   "staked": "38%",
+   "profit": "+54.7u",
+   "bsp": "+24.3u"
+  },
+  {
+   "day": "26 Oct",
+   "bets": 6,
+   "won": 1,
+   "staked": "17%",
+   "profit": "+2.5u",
+   "bsp": "-2.2u"
+  },
+  {
+   "day": "Total",
+   "bets": 88,
+   "won": 23,
+   "staked": "26%",
+   "profit": "+118.2u",
+   "bsp": "+49.9u",
+   "total": true
+  }
+ ]
+}
