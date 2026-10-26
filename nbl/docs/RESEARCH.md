@@ -118,10 +118,27 @@ below; the details are second-hand.
 - "Ewing" (simulate a game lineup by lineup from projected minutes and on-court ratings): the ingredients exist
   (`model/onoff.py`, the minutes model); not built.
 
+### 10. Session of 26 Oct 2026
+- **Points priced shot by shot: adopted.** Attempts and makes simulated from the player's rates (`props.shot_draws`),
+  rescaled to the projection. Line log loss for points: 2022-23 0.6709 to 0.6678 (where it is chosen, automatically,
+  inside `props.project`), 2023-24 to 2024-25 0.6678 to 0.6643. The price sheet uses it.
+- **Threes as attempts x makes: rejected.** 0.4539 to 0.4544 (2022-23), 0.4520 to 0.4527 (confirm).
+- **Each player's own minutes spread in the simulation: rejected.** 2022-23 0.6678 to 0.6675, confirm 0.6643 to 0.6646.
+- **Offence and defence on-court ratings (O/D-RAPM): inconclusive, not adopted.** `research/od_ratings.py`. Totals:
+  rolling 14.45 to 14.79 points miss (worse), confirm 14.92 to 14.61 (better); margin log loss 0.6564 to 0.6562
+  rolling, 0.6600 to 0.6586 confirm. Choices are made on the rolling seasons, which said no.
+- **How prop bets move together** (standardised misses, 2023-24 and 2024-25): same player points-PRA 0.915,
+  points-threes 0.648, rebounds-PRA 0.575; teammates slightly negative (points -0.059: they share the ball);
+  opponents about zero. Used by the staking.
+- **Benter's second stage, built** (`betting/market.py`, `betting/staking.py`): margin stripped from book prices,
+  our chance combined with the market's in a logit (the racing rule, half each, until 400 recorded results; then
+  fitted by maximum likelihood), quarter Kelly on the combined chance, shrunk for correlated bets, capped at 2% a bet
+  and 15% a round. Benter's own finding is the reason: his model alone did not beat the public, the combination did.
+
 ## Next, in order
 1. Recorded lines, half lines included: the only test that matters. Then blend our number with the market's and measure closing line value.
 2. Starting fives at tip, if a source exists: the largest measured gain.
-3. Points by simulation of shots, in the pricing.
+3. Fit Benter's combination on recorded lines (400+ results), then paper bets with the staking.
 4. Tried and set aside: Kalman rates, usage redistribution, adjusted efficiency, early-season weights.
 
 ## Sources

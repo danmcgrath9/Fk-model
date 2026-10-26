@@ -20,6 +20,7 @@ NBA and AFL code: everything lives in `nbl/` and the `nbl-*` workflows, with its
 | 6. Team-news angle | do books reprice after outs? | needs recorded prices |
 | Research | Voulgaris angles: NBL first halves outscore second halves every season (50.8% of points), team tendencies do not last, first-half pace does not predict the second half; half totals now priced, graded and recorded; per-stat memory and projection-dependent spreads adopted; redistribution, adjusted efficiency, early-season weights rejected; starters the biggest gain found | `docs/RESEARCH.md`, `research/` |
 | 7. Paper season | our prices for the next 8 days, kept on the release, and graded against results every run | `model/price_round.py`, `model/grade.py`, `nbl prices` workflow (`paper_scorecard.md` on the release) |
+| Benter stage 2 and staking | market chance from book prices, combined with ours (racing's 50/50 rule until 400 results, then fitted), quarter Kelly shrunk for correlated bets | `betting/`; waits for recorded lines |
 | Line recorder | books' prices from open to close, capped per run and per season (60,000 credits), ledger on the release | `lines/record.py`, `nbl record lines` workflow; idle until `ODDS_API_KEY` exists |
 | Book rules | void rules for a player who does not play | `docs/BOOK_RULES.md` (TAB not found) |
 
