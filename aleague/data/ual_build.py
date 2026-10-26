@@ -73,7 +73,27 @@ def link(um, ours):
     return ids, agree
 
 
-def build(src, tables):
+def fill_scores(tables, um, ev):
+    """Write Ultimate A-League scores into matches.parquet where it has none (the season in play, while
+    Wikipedia lags). 90-minute goals come from the timeline (goals after minute 90 of a final are extra
+    time). Returns the number filled; each filled row is marked source 'ultimatealeague'."""
+    path = os.path.join(tables, 'matches.parquet')
+    m = pd.read_parquet(path)
+    need = um[um.match_id.isin(m.match_id[m.home_goals.isna()])]
+    g = ev[ev.event.isin(['Goal', 'Penalty', 'Own Goal'])]
+    for _, r in need.iterrows():
+        i = m.index[m.match_id == r.match_id][0]
+        e = g[(g.ual_match_id == r.ual_match_id) & (g.minute.fillna(0) <= 90)]
+        m.loc[i, ['home_goals', 'away_goals']] = [r.home_goals, r.away_goals]
+        m.loc[i, 'home_goals_90'] = float((e.side == 'home').sum()) if r.stage == 'Finals' else float(r.home_goals)
+        m.loc[i, 'away_goals_90'] = float((e.side == 'away').sum()) if r.stage == 'Finals' else float(r.away_goals)
+        m.loc[i, 'played'] = True
+        m.loc[i, 'source'] = 'ultimatealeague'
+    m.to_parquet(path, index=False)
+    return len(need)
+
+
+def build(src, tables, fill=False):
     um, ev, pl, bad = read_tars(src)
     um['home_c'], um['away_c'] = um.home.map(club), um.away.map(club)
     um['date'] = um.when_local.map(local_date)
@@ -138,4 +158,7 @@ def build(src, tables):
 
 
 if __name__ == '__main__':
-    build(sys.argv[1], sys.argv[2])
+    um_, _, ev_ = build(sys.argv[1], sys.argv[2])
+    if '--fill-scores' in sys.argv:
+        n = fill_scores(sys.argv[2], um_, ev_)
+        print(f'scores filled from Ultimate A-League where matches.parquet had none: {n}')

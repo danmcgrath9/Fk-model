@@ -5,6 +5,9 @@ name: aleague lineups
 # the aleague-history release as soon as it is finished, and a season the release holds is never pulled
 # again. About 2,100 pages in all, roughly three hours, run once. Separate from every fk-*, nba-*, afl-*
 # workflow: its own concurrency group, no keys, no BetMatic.
+#
+# In season: edit aleague/data/refresh.txt and push (or Run workflow once merged) to top up this season's
+# line-ups and results and rebuild every table.
 
 on:
   workflow_dispatch:
@@ -17,6 +20,13 @@ on:
     paths:
       - 'aleague/data/ual_pull.py'
       - '.github/workflows/aleague-lineups.yml'
+      - 'aleague/data/refresh.txt'
+      - 'aleague/data/rebuild.sh'
+      - 'aleague/data/build.py'
+      - 'aleague/data/wiki_parse.py'
+      - 'aleague/data/ual_parse.py'
+      - 'aleague/data/ual_build.py'
+      - 'aleague/data/team_games.py'
 
 concurrency:
   group: aleague-lineups
@@ -41,17 +51,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install requests
-      - name: Probe first (one season list, three match pages, timed), saved to the release
-        run: |
-          set -o pipefail
-          python aleague/data/ual_pull.py --out aleague/cache/ual --seasons 2013-14 --probe | tee ual_probe.txt
-          cp aleague/cache/ual/probe_season_2013-14.html ual_probe_season.html
-          gh release upload aleague-history ual_probe.txt ual_probe_season.html --clobber
-
+      - run: pip install -r aleague/requirements.txt
       - name: Pull what the release does not hold
+        env:
+          REFRESH: ${{ github.event.inputs.refresh }}
         run: |
+          # the season in play is always topped up: only its pages not yet marked Completed are fetched again
+          CURRENT=$(python -c "import datetime as d; t=d.date.today(); y=t.year if t.month>=7 else t.year-1; print(f'{y}-{str(y+1)[2:]}')")
           gh release view aleague-history --json assets --jq '.assets[].name' > held.txt
           seasons=$(python -c "print(','.join(f'{y}-{str(y+1)[2:]}' for y in range(2013, 2027)))")
           python aleague/data/ual_pull.py --out aleague/cache/ual --seasons "$seasons" --held held.txt \
-            --refresh "${{ github.event.inputs.refresh }}" --upload aleague-history | tee -a "$GITHUB_STEP_SUMMARY"
+            --refresh "${REFRESH:-$CURRENT}" --upload aleague-history | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Rebuild every table from the release (this season's Wikipedia pages refreshed)
+        run: bash aleague/data/rebuild.sh refresh | tee -a "$GITHUB_STEP_SUMMARY"

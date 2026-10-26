@@ -113,6 +113,16 @@ def main():
             gh('release', 'download', args.upload, '--pattern', partial, '--dir', args.out, '--clobber')
             with tarfile.open(os.path.join(args.out, partial)) as tar:
                 tar.extractall(folder, filter='data')
+        if season == args.refresh and final in held and args.upload:
+            # the season in play: start from what is held and fetch only matches not yet completed there
+            gh('release', 'download', args.upload, '--pattern', final, '--dir', args.out, '--clobber')
+            with tarfile.open(os.path.join(args.out, final)) as tar:
+                tar.extractall(folder, filter='data')
+            for f in os.listdir(os.path.join(folder, season)):
+                if f[0].isdigit():
+                    page = gzip.decompress(open(os.path.join(folder, season, f), 'rb').read())
+                    if b'Completed' not in page[:200000]:
+                        os.remove(os.path.join(folder, season, f))
         r = g.get(f'/matches/?show=season&season={season}')
         if r is None or r.status_code != 200:
             log.append(f'{season}: season list HTTP {getattr(r, "status_code", "none")}'); continue
