@@ -1,0 +1,6 @@
+# Bendigo Wed 28 Oct: race, cents deducted (TAB, from the founder, Wed 28 Oct)
+3, 3
+4, 6
+5, 10
+6, 5
+8, 0
