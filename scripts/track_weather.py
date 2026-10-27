@@ -10,7 +10,9 @@ Sources:
 - Rain by day: Open-Meteo archive (ERA5 reanalysis, daily precipitation_sum and FAO evapotranspiration at the track),
   race day and each of the three days before. Reanalysis rain is a grid estimate, not the course gauge.
 
-    python scripts/track_weather.py [TRACK ...]      (default: Flemington Caulfield "Moonee Valley" Sandown)
+    python scripts/track_weather.py [VIC|ALL|TRACK ...]   (default VIC: every Victorian track in the past runs)
+Tracks without a fixed course location are found with Open-Meteo's geocoder (the town, filtered to the state), and the
+coordinates used are printed so a wrong match can be seen.
 """
 from __future__ import annotations
 
@@ -21,6 +23,7 @@ import os
 import re
 import statistics
 import sys
+import urllib.parse
 import urllib.request
 from zoneinfo import ZoneInfo
 
@@ -30,7 +33,11 @@ COORDS = {  # course centres
     "flemington": (-37.7895, 144.9120), "caulfield": (-37.8810, 145.0390),
     "moonee valley": (-37.7660, 144.9300), "sandown": (-37.9480, 145.1700),
 }
-TRACKS = [t.lower() for t in (sys.argv[1:] or ["Flemington", "Caulfield", "Moonee Valley", "Sandown"])]
+ARGS = sys.argv[1:] or ["VIC"]
+STATE = ARGS[0].upper() if ARGS[0].upper() in ("VIC", "NSW", "QLD", "SA", "WA", "TAS", "ACT", "NT", "ALL") else None
+TRACKS: list[str] = [] if STATE else [t.lower() for t in ARGS]
+STATE_NAME = {"VIC": "Victoria", "NSW": "New South Wales", "QLD": "Queensland", "SA": "South Australia",
+              "WA": "Western Australia", "TAS": "Tasmania", "ACT": "Australian Capital Territory", "NT": "Northern Territory"}
 MEL = ZoneInfo("Australia/Melbourne")
 
 
@@ -55,8 +62,23 @@ def going_num(g: str | None) -> int | None:
 
 
 def which_track(name: str | None) -> str | None:
-    n = (name or "").lower()
+    n = (name or "").lower().strip()
+    if STATE:
+        return n or None
     return next((t for t in TRACKS if t in n), None)
+
+
+def geocode(track: str, state: str | None) -> tuple[float, float] | None:
+    name = re.sub(r"\b(synthetic|poly|hillside|lakeside|racecourse|turf club|park)\b", "", track, flags=re.I).strip() or track
+    url = "https://geocoding-api.open-meteo.com/v1/search?count=10&country=AU&name=" + urllib.parse.quote(name)
+    try:
+        with urllib.request.urlopen(url, timeout=60) as r:
+            res = json.load(r).get("results") or []
+    except Exception:
+        return None
+    want = STATE_NAME.get(state or "", "")
+    res = [x for x in res if not want or x.get("admin1") == want] or ([] if want else res)
+    return (res[0]["latitude"], res[0]["longitude"]) if res else None
 
 
 def mm(text: str | None, which: str) -> float | None:
@@ -73,7 +95,7 @@ def mm(text: str | None, which: str) -> float | None:
 
 
 q_runs = """select distinct p->>'raceId', p->>'date', coalesce(p->'track'->>'name', p->>'track'), p->>'going',
-                   p->>'raceNumber', p->>'startTime', coalesce((p->>'trial')::boolean, false)
+                   p->>'raceNumber', p->>'startTime', coalesce((p->>'trial')::boolean, false), p->>'state'
             from fk.entries e, jsonb_array_elements(coalesce(e.raw->'pastEvents', '[]'::jsonb)) p"""
 q_meet = "select meeting_date, track, raw from fk.meetings"
 with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
@@ -83,10 +105,14 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
 # meetings from past runs: date, track -> {race key: going}
 M: dict[tuple[str, str], dict[str, tuple]] = collections.defaultdict(dict)
 have_rn = have_st = 0
-for rid, d, trk, g, rn, st, trial in runs:
+TSTATE: dict[str, str] = {}
+for rid, d, trk, g, rn, st, trial, stt in runs:
     t = which_track(trk)
     if not t or trial or not g:
         continue
+    if STATE and STATE != "ALL" and (stt or "").upper() != STATE:
+        continue
+    TSTATE[t] = (stt or "").upper()
     have_rn += rn is not None; have_st += st is not None
     order = float(rn) if rn and re.fullmatch(r"\d+", str(rn)) else (float(st) if st and re.fullmatch(r"\d+(\.\d+)?", str(st)) else None)
     M[(day(d), t)][rid] = (order, g)
@@ -109,15 +135,23 @@ if not dates:
 lo = (dt.date.fromisoformat(dates[0]) - dt.timedelta(days=4)).isoformat()
 hi = min(dates[-1], (dt.date.today() - dt.timedelta(days=6)).isoformat())
 W: dict[str, dict[str, tuple]] = {}
+if STATE:
+    TRACKS = sorted({t for _, t in M})
 for t in TRACKS:
-    la, lo_ = COORDS[t]
+    if t in COORDS:
+        la, lo_ = COORDS[t]
+    else:
+        g = geocode(t, TSTATE.get(t))
+        if not g:
+            print(f"weather {t}: no location found"); W[t] = {}; continue
+        la, lo_ = g; COORDS[t] = g
     url = (f"https://archive-api.open-meteo.com/v1/archive?latitude={la}&longitude={lo_}&start_date={lo}&end_date={hi}"
            "&daily=precipitation_sum,et0_fao_evapotranspiration,temperature_2m_max&timezone=Australia%2FMelbourne")
     try:
         with urllib.request.urlopen(url, timeout=120) as r:
             d = json.load(r)["daily"]
         W[t] = {k: (p, e, tx) for k, p, e, tx in zip(d["time"], d["precipitation_sum"], d["et0_fao_evapotranspiration"], d["temperature_2m_max"])}
-        print(f"weather {t}: {len(W[t])} days {lo} to {hi}")
+        print(f"weather {t}: {la:.3f},{lo_:.3f}, {len(W[t])} days")
     except Exception as ex:  # a weather failure leaves the ratings and watering table intact
         print(f"weather {t}: FAILED {ex}"); W[t] = {}
 
@@ -151,16 +185,17 @@ for r in rows:
     print(",".join("" if r.get(k) is None else str(r.get(k)).replace(",", ";") for k in cols))
 print("CSV-END\n")
 
-# summary: race-day rating (wettest race) by rain over the three days before plus race day, per track
+# summary per track: the first race's rating by the rain over the three days before plus race day
 def band(x):
-    return "0-2mm" if x < 2 else "2-10mm" if x < 10 else "10-25mm" if x < 25 else "25mm+"
-print("| track | rain 3 days before + race day | meetings | ratings seen (wettest race) | median |\n|---|---|---|---|---|")
+    return "<2" if x < 2 else "2-10" if x < 10 else "10-20" if x < 20 else "20+"
+print("| track | meetings | under 2mm: usual start | 2-10mm | 10-20mm | 20mm+ | upgraded / downgraded in the day |\n|---|---|---|---|---|---|---|")
 for t in TRACKS:
-    g = collections.defaultdict(list)
-    for r in rows:
-        if r["track"] == t and r["rain_3d"] is not None and r["rain_day"] is not None:
-            g[band(r["rain_3d"] + r["rain_day"])].append(r["wettest"])
-    for b in ("0-2mm", "2-10mm", "10-25mm", "25mm+"):
-        if g[b]:
-            cnt = collections.Counter(g[b])
-            print(f"| {t} | {b} | {len(g[b])} | {', '.join(f'{k}: {cnt[k]}' for k in sorted(cnt))} | {statistics.median(g[b])} |")
+    rs = [r for r in rows if r["track"] == t and r["rain_3d"] is not None and r["rain_day"] is not None and r["first"] is not None]
+    if len(rs) < 5:
+        continue
+    cell = []
+    for b in ("<2", "2-10", "10-20", "20+"):
+        g = [r["first"] for r in rs if band(r["rain_3d"] + r["rain_day"]) == b]
+        cell.append(f"{statistics.median(g):g} (n={len(g)}, {min(g)}-{max(g)})" if g else "-")
+    up = sum(r["last"] < r["first"] for r in rs); dn = sum(r["last"] > r["first"] for r in rs)
+    print(f"| {t} | {len(rs)} | " + " | ".join(cell) + f" | {up} / {dn} |")
