@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'send or collect'
+        description: 'send, collect or diagnose (read-only: why a row is still pending)'
         default: 'send'
       session:
         description: 'numeric TAB session id; blank = the BETMATIC_TAB_SESSION secret'
@@ -81,6 +81,11 @@ jobs:
         if: github.event.inputs.action == 'collect'
         run: |
           python betmatic/greyhound_open_probe.py --dir "$D" collect | tee -a "$GITHUB_STEP_SUMMARY"
+          exit ${PIPESTATUS[0]}
+      - name: Diagnose
+        if: github.event.inputs.action == 'diagnose'
+        run: |
+          python betmatic/greyhound_open_probe.py --dir "$D" diagnose | tee -a "$GITHUB_STEP_SUMMARY"
           exit ${PIPESTATUS[0]}
       - name: Ledger back to the release
         if: always()

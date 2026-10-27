@@ -8,6 +8,9 @@ never fill (rules and safety in greyhound/open_probe.py). DRY RUN is the default
 send:    one instruction per runner in every upcoming race not already in the ledger (data/greyhound/probe/ledger.csv);
          --limit N sends only the first N (the first live test is one race). Refuses without a connected bot machine or
          a running numeric session, and stops at the first refusal from BetMatic so a bad field cannot repeat 400 times.
+diagnose: read-only, for every ledger row still pending: is it in BetMatic's scheduled list, the instruction as
+         BetMatic stores it and the race it linked it to, and the bot's own log (added 27 Oct 2026: Geelong R1's eight
+         left no record at all after the race ran).
 collect: reads BetMatic's records for every ledger row not yet settled into opens.csv (one row per runner: TAB's
          price when BetMatic fired, when, and whether that can count as an open). Stops loudly on any STAKED row.
 """
@@ -16,7 +19,7 @@ from datetime import datetime, timedelta, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE); sys.path.insert(0, os.path.dirname(HERE))
-from betmatic_send import BM, bookie_id, readiness, results, sessions                        # noqa: E402
+from betmatic_send import BM, bookie_id, bot_logs, readiness, results, sessions              # noqa: E402
 from greyhound.open_probe import DERIVED_FIELDS, derive, payload, plan                      # noqa: E402
 
 LEDGER_FIELDS = ["label", "date", "venue", "race", "number", "runner", "start_time", "sent_at", "notification_id",
@@ -115,10 +118,45 @@ def collect(a, ledger, out):
     return 0
 
 
+def diagnose(a, ledger, out):
+    """Why a row is still pending after its race: never registered, cancelled, linked to the wrong race, or never seen
+    by the bot. Reads only (GET /notification/scheduled/, /notification/?label=, /notification/{id}/race/detail/,
+    /bot/logs/{id}/); sends nothing."""
+    bm = BM()
+    settled = {r["label"] for r in read_csv(out) if r.get("status") in ("refused", "other", "STAKED")}
+    got = bm.get("/notification/scheduled/"); got = got if isinstance(got, list) else results(got)
+    live = {str(n.get("id")): n for n in got if isinstance(n, dict)}
+    print(f"{len(live)} notifications on BetMatic's scheduled list (last 24 hours)")
+    for r in read_csv(ledger):
+        if not r.get("notification_id") or r["label"] in settled:
+            continue
+        for i in r["notification_id"].split("&"):
+            n = live.get(i)
+            print(f"\n{r['label']} #{i} ({r['venue']} R{r['race']} no. {r['number']}, start {r['start_time']}, sent "
+                  f"{r['sent_at']}): {'on the scheduled list' if n else 'NOT on the scheduled list'}")
+            if not n:
+                stored = bm.get("/notification/", label=r["label"])
+                stored = [x for x in (stored if isinstance(stored, list) else results(stored))
+                          if isinstance(x, dict) and x.get("label") == r["label"]]
+                n = stored[0] if stored else {}
+            keep = {k: n.get(k) for k in ("is_market_open", "is_draft", "is_canceled", "is_triggered", "status",
+                                          "created_at", "scheduled_time", "market_open_time", "triggered_at") if k in n}
+            tip = n.get("tip") or {}
+            print(f"    stored: {keep}; tip {json.dumps({k: tip.get(k) for k in ('competition', 'event_number', 'selection', 'start_time', 'event_time') if k in tip}, default=str)}")
+            try:
+                print("    race detail:", json.dumps(bm.get(f"/notification/{i}/race/detail/"), default=str)[:500])
+            except Exception as e:                               # noqa: BLE001 - a diagnosis prints what it cannot read
+                print(f"    race detail: unavailable ({e})")
+            bot_logs(bm, i)
+            time.sleep(0.1)
+    return 0
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--dir", default="data/greyhound/probe")
     sp = ap.add_subparsers(dest="cmd", required=True)
+    sp.add_parser("diagnose")
     s = sp.add_parser("send"); s.add_argument("--session", required=True); s.add_argument("--days", type=float, default=3)
     s.add_argument("--limit", type=int, default=0); s.add_argument("--state", default="VIC")
     s.add_argument("--day", default="", help="only races on this Sydney day, YYYY-MM-DD")
@@ -127,4 +165,4 @@ if __name__ == "__main__":
     sp.add_parser("collect")
     a = ap.parse_args()
     led, opens = os.path.join(a.dir, "ledger.csv"), os.path.join(a.dir, "opens.csv")
-    sys.exit(send(a, led) if a.cmd == "send" else collect(a, led, opens))
+    sys.exit(send(a, led) if a.cmd == "send" else diagnose(a, led, opens) if a.cmd == "diagnose" else collect(a, led, opens))
