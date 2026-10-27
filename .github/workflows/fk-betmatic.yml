@@ -18,8 +18,8 @@ on:
         description: 'send: the order file (data/live_bets/DAYPREFIX-betmatic-preopen.csv); cancel/status/pending/summary: its -ledger.csv (summary also takes a bare YYYY-MM-DD)'
         default: ''
       unit:
-        description: 'send: dollars a unit (founder, 21 Oct 2026: $50 a unit moving forward; was $25 for the Fri 23 / Sat 24 sends of 21 Oct)'
-        default: '50'
+        description: 'send: dollars a unit (founder, 28 Oct 2026: $37.50 a unit, sized so a $3,000 bank covers what is out at once; was $50 from 21 Oct)'
+        default: '37.5'
       race:
         description: 'cancel: only this race (blank = every bet in the ledger)'
         default: ''
