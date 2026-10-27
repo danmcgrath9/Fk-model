@@ -1,0 +1,13 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,BDGO_281026_1,Resonant,top_pick,2.9,2.9,2.55,2.55,,2.47,0.032,; EARLY ONLY: bet near the open,1.0,no,,
+2,BDGO_281026_2,Centenary Florin,top_pick,6.5,6.5,3.7,3.7,,3.42,0.082,Above the field in all three sections,1.0,no,,
+3,BDGO_281026_3,Purple Streak,value_20c,5.75,5.75,8.0,8.0,,4.71,0.7,,1.73,no,,
+3,BDGO_281026_3,Purple Streak,top_pick,5.75,5.75,8.0,8.0,,4.71,0.7,,1.0,no,,
+3,BDGO_281026_3,Sea Poem,value_20c,15.0,15.0,15.0,15.0,,12.36,0.213,,0.57,no,,
+4,BDGO_281026_4,Melek,top_pick,2.4,2.4,3.6,3.6,,3.33,0.08,,1.0,no,,
+4,BDGO_281026_4,Yahoo Bar,value_20c,7.0,7.0,7.0,7.0,,4.66,0.503,,2.94,no,,
+5,BDGO_281026_5,Jenni You Think,top_pick,4.0,4.0,7.0,7.0,,5.16,0.355,,1.0,no,,
+6,BDGO_281026_6,Yes Yoshi,top_pick,2.45,2.45,3.5,3.5,,3.22,0.085,Back in trip after being handy; Proven wet on a wet track,1.0,no,,
+7,BDGO_281026_7,Dirty Look,top_pick,1.75,1.75,2.5,2.5,,2.41,0.036,Late 600 beyond the tempo,1.0,no,,
+8,BDGO_281026_8,Kings Valley,top_pick,3.0,3.0,4.6,4.6,,5.53,-0.169,,1.0,no,,
+9,BDGO_281026_9,Bel Mezyaan,top_pick,2.8,2.8,3.5,3.5,,3.35,0.044,,1.0,no,,
