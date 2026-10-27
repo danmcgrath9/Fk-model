@@ -112,10 +112,10 @@ scratchings). The backtest says the top-up slice loses (t_topup.py: -7.6% holdou
 | 2026-10-21 Geelong | R6 | Stay Humble | $5.50 | $5.50 | $3.96 | 0.00u | 3.11u | 3rd, SP $3.60, BSP $4.04 | -3.11 |
 | 2026-10-21 Geelong | R7 | Litzdeel (Geelong Cup: internationals in the field, flagged) | $6.00 | $6.00 | $4.88 | 0.00u | 1.71u | 5th, SP $5.50, BSP $7 | -1.71 |
 | 2026-10-21 Geelong | R8 | Keep Your Cool | $7.50 | $7.00 | $5.81 | 0.00u | 1.27u | 3rd, SP $8.50, BSP $11.88 | -1.27 |
-| 2026-10-26 Wangaratta | R1 | Kinky Mistress | $5.00 | $3.60 | $2.77 | 0.00u | 4.22u | | |
-| 2026-10-26 Wangaratta | R3 | Princess Geisha | $15.50 | $14.00 | $11.15 | 0.00u | 0.73u | | |
-| 2026-10-26 Wangaratta | R3 | Somethingintheair | $13.50 | $15.00 | $11.09 | 0.00u | 0.91u | | |
-| 2026-10-26 Wangaratta | R3 | Brilliant Bull Ant | $13.50 | $16.00 | $10.34 | 0.00u | 1.27u | | |
+| 2026-10-26 Wangaratta | R1 | Kinky Mistress | $5.00 | $3.60 | $2.77 | 0.00u | 4.22u | 2nd, SP $3.80, BSP $4.67 | -4.22 |
+| 2026-10-26 Wangaratta | R3 | Princess Geisha | $15.50 | $14.00 | $11.15 | 0.00u | 0.73u | WON (SP $9.50, BSP $11.72) | +9.49 |
+| 2026-10-26 Wangaratta | R3 | Somethingintheair | $13.50 | $15.00 | $11.09 | 0.00u | 0.91u | 3rd, SP $11, BSP $14.50 | -0.91 |
+| 2026-10-26 Wangaratta | R3 | Brilliant Bull Ant | $13.50 | $16.00 | $10.34 | 0.00u | 1.27u | 6th, SP $9, BSP $12.50 | -1.27 |
 | 2026-10-27 Swan Hill | R2 | Magna Sententia (R2 has first starters) | $4.00 | $3.50 | $2.90 | 0.00u | 3.09u | | |
 | 2026-10-27 Swan Hill | R7 | His Finest Hour | $6.50 | $7.00 | $5.20 | 0.00u | 2.08u | | |
 | 2026-10-27 Swan Hill | R8 | Baganov | $10.00 | $10.00 | $7.90 | 0.00u | 1.08u | | |
@@ -442,3 +442,11 @@ Swan Hill Tue 27 Oct (re-priced 9:50am Tue on the final field: 30 out): 11 value
 Swan Hill Tue 27 Twitter (founder, Mon 26 Oct evening: "This is just for Twitter"): tweeted at BSP with our rated prices,
 Habitual 5u (rated $3.25) and Mr Butt's Boats 1.80u (rated $8.23); settled on Twitter at Betfair SP. The book's paper fills
 stay at the open ($6 and $21, R8 deduction est. 17c on the Mon 9:05pm scratchings).
+
+Wangaratta Mon 26 Oct top-ups settled (paper, results pulled Wed 28 Oct 7:13am): 4 bets, 7.13u, +3.09u. Princess Geisha WON
+at $14 (0.73u, +9.49u; SP $9.50, BSP $11.72); Kinky Mistress 2nd, Somethingintheair 3rd, Brilliant Bull Ant 6th.
+
+Warrnambool Thu 29 Oct orders: none placed (R5/R6 skipped for balance at 3:49pm Tue; R1/R2/R7/R8 fired at the open but the bot
+had lost its connection, per BetMatic support). Cancel run Wed 28 Oct 7:13am: all 49 notifications already triggered, nothing
+left live. At Form King's open the orders would have filled 24.16u (Ned Kelly, Both Sides Now, Hoodys Horse, Ballynacally,
+Icy Pole, Francine, Gunado, Super Snitch); cards sent to the founder Tue evening at current prices and at the open (Twitter units).
