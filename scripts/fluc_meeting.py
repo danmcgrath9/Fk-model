@@ -16,10 +16,18 @@ MINS = (30, 40, 45, 50, 60, 90)
 print("CSV-BEGIN"); print("race,race_id,horse_id,number,name,scratched,race_open_ms,last_ms,open," + ",".join(f"m{m}" for m in MINS) + ",avg_now,best_now,best_bookies")
 with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
     for mid in sys.argv[1:]:
+        # the latest odds snapshot per runner (odds-only pulls write fk.odds_snapshots, not fk.entries: 27 Oct 2026,
+        # the entries copy of Warrnambool's odds was the 11:31am fields pull and read "no market" all afternoon)
+        snap = {}
+        for rid_, hid_, raw_ in c.execute("""select distinct on (s.race_id, s.horse_id) s.race_id, s.horse_id, s.raw
+                                              from fk.odds_snapshots s join fk.races r using (race_id)
+                                              where r.meeting_id = %s and s.kind = 'current'
+                                              order by s.race_id, s.horse_id, s.fetched_at desc""", (mid,)).fetchall():
+            snap[(rid_, hid_)] = raw_ or {}
         races = {}
         for rn, rid, raw in c.execute("""select r.race_number, r.race_id, e.raw from fk.entries e join fk.races r using (race_id)
                                          where r.meeting_id = %s order by r.race_number""", (mid,)).fetchall():
-            o = raw.get("odds") or {}
+            o = snap.get((rid, F.horse_id(raw))) or raw.get("odds") or {}
             fl = sorted((t, float(p)) for t, p in ((ms(f.get("time")), f.get("price")) for f in (o.get("flucs") or [])) if t and p)
             races.setdefault((rn, rid), []).append((raw, o, fl))
         for (rn, rid), ents in sorted(races.items()):
