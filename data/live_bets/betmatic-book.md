@@ -294,7 +294,10 @@ Twitter card (Fri) re-issued at the after-deduction prices with the two scratchi
 ## Paper lay book, from Wed 28 Oct 2026 (founder, 23 Oct: "Let do it starting next Wednesday")
 The rule is fixed before the first race (research/form_gbm/README.md, 23 Oct; t_lay_halves.py). Paper only, four weeks, then judged.
 - Each race morning, after scratchings, every runner on the final field with our price (the live shaded model) gets a trigger:
-  lay it if Betfair SP is between $15 and $30 AND at least 1.6 x our price. The morning list names each horse with its trigger.
+  lay it if Betfair SP is between $15 and $40 AND at least 1.6 x our price. The morning list names each horse with its trigger.
+  BAND WIDENED $30 -> $40 on day one, before any race (founder, 28 Oct: "lets get more profit, $15 to $40"). Backtest 3 Jun-13 Oct,
+  1u lays: $15-$30 562 lays +295u (+52%, 2.5% of liability, biggest loss 27u); $15-$40 841 lays +425u (+50%, 2.0% of liability,
+  biggest loss 32u), no losing month either way; the $30-$40 slice alone is 4 winners, A/E 0.75 / 0.24 by half.
 - Paper stake 1u lay at Betfair SP: a loser pays +0.92u (8% commission; NSW/ACT tracks 10%, +0.90u), a winner costs (BSP - 1)u.
 - Settled from Form King's results (betfairStartingPrice). A horse whose BSP misses the band or the trigger is no bet.
 - Backtest to beat: holdout $15-$30 band, 562 lays, 10 winners against 27 expected; +45% / +60% on the lay stake by half.
@@ -306,6 +309,7 @@ The rule is fixed before the first race (research/form_gbm/README.md, 23 Oct; t_
 | 2026-10-28 | Bendigo | R1 | Resonant | $2.53 | $15.00 | | | |
 | 2026-10-28 | Bendigo | R1 | Running Rich | $5.15 | $15.00 | | | |
 | 2026-10-28 | Bendigo | R1 | Scoville | $4.00 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R1 | Vixen Vibes | $22.11 | $35.37 | | | |
 | 2026-10-28 | Bendigo | R2 | Centenary Florin | $2.85 | $15.00 | | | |
 | 2026-10-28 | Bendigo | R2 | Hydro Rush | $6.98 | $15.00 | | | |
 | 2026-10-28 | Bendigo | R2 | Nickibi | $9.50 | $15.20 | | | |
@@ -316,17 +320,25 @@ The rule is fixed before the first race (research/form_gbm/README.md, 23 Oct; t_
 | 2026-10-28 | Bendigo | R3 | Romantic Miss | $10.19 | $16.31 | | | |
 | 2026-10-28 | Bendigo | R3 | Savoyard | $11.75 | $18.80 | | | |
 | 2026-10-28 | Bendigo | R3 | Sea Poem | $11.01 | $17.62 | | | |
+| 2026-10-28 | Bendigo | R3 | Star Of Omaha | $23.56 | $37.69 | | | |
 | 2026-10-28 | Bendigo | R3 | Yukaina | $5.44 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R4 | Amawasha | $20.35 | $32.56 | | | |
 | 2026-10-28 | Bendigo | R4 | Celtic Park | $10.70 | $17.13 | | | |
+| 2026-10-28 | Bendigo | R4 | Hollandia | $20.47 | $32.75 | | | |
 | 2026-10-28 | Bendigo | R4 | Melek | $3.24 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R4 | No Rumours | $19.28 | $30.84 | | | |
 | 2026-10-28 | Bendigo | R4 | Pee Bee Noir | $17.17 | $27.48 | | | |
 | 2026-10-28 | Bendigo | R4 | Salsita | $18.02 | $28.83 | | | |
 | 2026-10-28 | Bendigo | R4 | Yahoo Bar | $4.09 | $15.00 | | | |
 | 2026-10-28 | Bendigo | R5 | Cushioned | $5.59 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R5 | Itsukushima | $23.26 | $37.22 | | | |
 | 2026-10-28 | Bendigo | R5 | Jenni You Think | $4.30 | $15.00 | | | |
 | 2026-10-28 | Bendigo | R5 | Kiwi Jenni | $16.56 | $26.49 | | | |
+| 2026-10-28 | Bendigo | R5 | Mr Independent | $20.51 | $32.81 | | | |
 | 2026-10-28 | Bendigo | R5 | Savannah Chill | $15.30 | $24.47 | | | |
 | 2026-10-28 | Bendigo | R5 | The Muffin Man | $4.75 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R6 | Fission | $24.28 | $38.84 | | | |
+| 2026-10-28 | Bendigo | R6 | Ka Ying Cheer | $22.17 | $35.48 | | | |
 | 2026-10-28 | Bendigo | R6 | Lawborough | $3.20 | $15.00 | | | |
 | 2026-10-28 | Bendigo | R6 | Weapon Clear | $16.86 | $26.98 | | | |
 | 2026-10-28 | Bendigo | R6 | Wingsandpropellers | $18.16 | $29.06 | | | |
@@ -335,13 +347,18 @@ The rule is fixed before the first race (research/form_gbm/README.md, 23 Oct; t_
 | 2026-10-28 | Bendigo | R7 | Alero | $6.90 | $15.00 | | | |
 | 2026-10-28 | Bendigo | R7 | Dirty Look | $2.40 | $15.00 | | | |
 | 2026-10-28 | Bendigo | R7 | Flying Embers | $8.05 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R7 | Jamesjohno | $22.90 | $36.63 | | | |
 | 2026-10-28 | Bendigo | R7 | Legacy Bay | $9.75 | $15.60 | | | |
+| 2026-10-28 | Bendigo | R7 | Wolf Twenty One | $22.76 | $36.42 | | | |
+| 2026-10-28 | Bendigo | R7 | Zourain | $22.73 | $36.37 | | | |
+| 2026-10-28 | Bendigo | R8 | Berkeley Square | $19.87 | $31.79 | | | |
 | 2026-10-28 | Bendigo | R8 | Grand Pierro | $16.76 | $26.81 | | | |
 | 2026-10-28 | Bendigo | R8 | Kings Valley | $5.65 | $15.00 | | | |
 | 2026-10-28 | Bendigo | R8 | Litzdeel | $5.70 | $15.00 | | | |
 | 2026-10-28 | Bendigo | R8 | Machine Gun Gracie | $16.41 | $26.26 | | | |
 | 2026-10-28 | Bendigo | R8 | See That Storm | $8.66 | $15.00 | | | |
 | 2026-10-28 | Bendigo | R8 | So You Are | $8.61 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R8 | Starford | $22.80 | $36.48 | | | |
 | 2026-10-28 | Bendigo | R8 | Suntora | $15.14 | $24.22 | | | |
 | 2026-10-28 | Bendigo | R8 | The Euphrates | $12.99 | $20.79 | | | |
 | 2026-10-28 | Bendigo | R9 | Bel Mezyaan | $4.42 | $15.00 | | | |
@@ -349,8 +366,9 @@ The rule is fixed before the first race (research/form_gbm/README.md, 23 Oct; t_
 | 2026-10-28 | Bendigo | R9 | Hiyaam Proud | $16.12 | $25.80 | | | |
 | 2026-10-28 | Bendigo | R9 | Rosa Aotearoa | $10.10 | $16.17 | | | |
 | 2026-10-28 | Bendigo | R9 | Silver Bullet | $12.46 | $19.93 | | | |
+| 2026-10-28 | Bendigo | R9 | Spirited Defence | $22.18 | $35.49 | | | |
 
-Bendigo Wed 28 Oct (9:30am final field, our price = live shaded model before the open blend): 47 runners can trigger; a lay only if BSP lands $15-$30 and at least the trigger.
+Bendigo Wed 28 Oct (9:30am final field, our price = live shaded model before the open blend): 62 runners can trigger; a lay only if BSP lands $15-$40 and at least the trigger.
 
 ## Sat 24 Oct: Yarra Valley and St Arnaud at the open (paper; no bets struck)
 Yarra Valley's orders triggered Fri 10:24am with TAB at $0.19 (no records). St Arnaud's fired Sat 8:07-8:09am and BetMatic
