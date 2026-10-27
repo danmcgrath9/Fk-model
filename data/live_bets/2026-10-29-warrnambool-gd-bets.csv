@@ -1,0 +1,8 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,WNBL_291026_1,Ned Kelly,top_pick,0.0,0.0,0.0,,,2.69,-1.0,Class drop (rating),1.0,no,,
+2,WNBL_291026_2,Both Sides Now,top_pick,0.0,0.0,0.0,,,4.49,-1.0,,1.0,no,,
+3,WNBL_291026_3,Tuscan Rose,top_pick,0.0,0.0,0.0,,,3.47,-1.0,,1.0,no,,
+5,WNBL_291026_5,Leona,top_pick,0.0,0.0,0.0,,,3.12,-1.0,Beaten by the pace last start; Late 600 beyond the tempo; EARLY ONLY: bet near the open,1.0,no,,
+6,WNBL_291026_6,Ballynacally,top_pick,0.0,0.0,0.0,,,4.85,-1.0,,1.0,no,,
+7,WNBL_291026_7,Du Clisson,top_pick,0.0,0.0,0.0,,,3.62,-1.0,,1.0,no,,
+8,WNBL_291026_8,Invisible Magic,top_pick,0.0,0.0,0.0,,,4.91,-1.0,Already run to today's class; Proven wet on a wet track; Above the field in all three sections,1.0,no,,
