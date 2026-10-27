@@ -116,9 +116,9 @@ scratchings). The backtest says the top-up slice loses (t_topup.py: -7.6% holdou
 | 2026-10-26 Wangaratta | R3 | Princess Geisha | $15.50 | $14.00 | $11.15 | 0.00u | 0.73u | WON (SP $9.50, BSP $11.72) | +9.49 |
 | 2026-10-26 Wangaratta | R3 | Somethingintheair | $13.50 | $15.00 | $11.09 | 0.00u | 0.91u | 3rd, SP $11, BSP $14.50 | -0.91 |
 | 2026-10-26 Wangaratta | R3 | Brilliant Bull Ant | $13.50 | $16.00 | $10.34 | 0.00u | 1.27u | 6th, SP $9, BSP $12.50 | -1.27 |
-| 2026-10-27 Swan Hill | R2 | Magna Sententia (R2 has first starters) | $4.00 | $3.50 | $2.90 | 0.00u | 3.09u | | |
-| 2026-10-27 Swan Hill | R7 | His Finest Hour | $6.50 | $7.00 | $5.20 | 0.00u | 2.08u | | |
-| 2026-10-27 Swan Hill | R8 | Baganov | $10.00 | $10.00 | $7.90 | 0.00u | 1.08u | | |
+| 2026-10-27 Swan Hill | R2 | Magna Sententia (R2 has first starters) | $4.00 | $3.50 | $2.90 | 0.00u | 3.09u | 3rd, SP $2.70, BSP $3.04 | -3.09 |
+| 2026-10-27 Swan Hill | R7 | His Finest Hour | $6.50 | $7.00 | $5.20 | 0.00u | 2.08u | 7th, SP $4.60, BSP $5.98 | -2.08 |
+| 2026-10-27 Swan Hill | R8 | Baganov | $10.00 | $10.00 | $7.90 | 0.00u | 1.08u | 10th, SP $10, BSP $12.50 | -1.08 |
 
 Warrnambool 15 Oct (re-priced 9:34am Thursday, 11 scratched, jockeys and gear in): 6 value-at-open runners on the final field, 1 top-up, Who I Think I Am 0.40u at $4.60; the rest are under take-at now.
 Caulfield 14 Oct (re-priced 8:45am): 5 value-at-open runners on the final field, all under take-at at race-morning prices, so no top-ups.
@@ -450,3 +450,9 @@ Warrnambool Thu 29 Oct orders: none placed (R5/R6 skipped for balance at 3:49pm 
 had lost its connection, per BetMatic support). Cancel run Wed 28 Oct 7:13am: all 49 notifications already triggered, nothing
 left live. At Form King's open the orders would have filled 24.16u (Ned Kelly, Both Sides Now, Hoodys Horse, Ballynacally,
 Icy Pole, Francine, Gunado, Super Snitch); cards sent to the founder Tue evening at current prices and at the open (Twitter units).
+
+## Tuesday 27 Oct Swan Hill settled (results pulled Wed 28 Oct 8:07am)
+Habitual (R7) WON: SP $2.60, BSP $2.96, taken $5.20 after the 16c deduction ($6 open). Mr Butt's Boats (R8) 8th (SP $6.50, BSP $8.68).
+Paper at the open (model stakes, after deductions): 2 bets, 15.38u, +45.88u (Habitual 11.78u x 4.20 = +49.48u).
+Twitter card at BSP: 2 bets, 6.80u, +8.00u (Habitual 5u x 1.96 = +9.80u), before Betfair commission.
+Paper top-ups (9:50am reprice): 3 bets, 6.25u, -6.25u (Magna Sententia 3rd, His Finest Hour 7th, Baganov 10th).
