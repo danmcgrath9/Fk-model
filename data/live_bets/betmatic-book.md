@@ -119,6 +119,8 @@ scratchings). The backtest says the top-up slice loses (t_topup.py: -7.6% holdou
 | 2026-10-27 Swan Hill | R2 | Magna Sententia (R2 has first starters) | $4.00 | $3.50 | $2.90 | 0.00u | 3.09u | 3rd, SP $2.70, BSP $3.04 | -3.09 |
 | 2026-10-27 Swan Hill | R7 | His Finest Hour | $6.50 | $7.00 | $5.20 | 0.00u | 2.08u | 7th, SP $4.60, BSP $5.98 | -2.08 |
 | 2026-10-27 Swan Hill | R8 | Baganov | $10.00 | $10.00 | $7.90 | 0.00u | 1.08u | 10th, SP $10, BSP $12.50 | -1.08 |
+| 2026-10-28 Bendigo | R2 | Centenary Florin | $3.70 | $4.40 | $2.94 | 0.00u | 5.11u | | |
+| 2026-10-28 Bendigo | R8 | Litzdeel | $8.50 | $8.50 | $6.24 | 1.48u | 0.26u | | |
 
 Warrnambool 15 Oct (re-priced 9:34am Thursday, 11 scratched, jockeys and gear in): 6 value-at-open runners on the final field, 1 top-up, Who I Think I Am 0.40u at $4.60; the rest are under take-at now.
 Caulfield 14 Oct (re-priced 8:45am): 5 value-at-open runners on the final field, all under take-at at race-morning prices, so no top-ups.
@@ -300,6 +302,55 @@ The rule is fixed before the first race (research/form_gbm/README.md, 23 Oct; t_
 
 | Date | Meeting | Race | Horse | Ours | Trigger (BSP at least) | BSP | Result | P/L (u) |
 |---|---|---|---|---|---|---|---|---|
+| 2026-10-28 | Bendigo | R1 | Magnusaurus Rex | $10.63 | $17.00 | | | |
+| 2026-10-28 | Bendigo | R1 | Resonant | $2.53 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R1 | Running Rich | $5.15 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R1 | Scoville | $4.00 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R2 | Centenary Florin | $2.85 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R2 | Hydro Rush | $6.98 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R2 | Nickibi | $9.50 | $15.20 | | | |
+| 2026-10-28 | Bendigo | R2 | Purgatorio | $4.09 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R2 | Sound Byte | $6.43 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R3 | Prestige Lucky | $6.28 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R3 | Purple Streak | $4.10 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R3 | Romantic Miss | $10.19 | $16.31 | | | |
+| 2026-10-28 | Bendigo | R3 | Savoyard | $11.75 | $18.80 | | | |
+| 2026-10-28 | Bendigo | R3 | Sea Poem | $11.01 | $17.62 | | | |
+| 2026-10-28 | Bendigo | R3 | Yukaina | $5.44 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R4 | Celtic Park | $10.70 | $17.13 | | | |
+| 2026-10-28 | Bendigo | R4 | Melek | $3.24 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R4 | Pee Bee Noir | $17.17 | $27.48 | | | |
+| 2026-10-28 | Bendigo | R4 | Salsita | $18.02 | $28.83 | | | |
+| 2026-10-28 | Bendigo | R4 | Yahoo Bar | $4.09 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R5 | Cushioned | $5.59 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R5 | Jenni You Think | $4.30 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R5 | Kiwi Jenni | $16.56 | $26.49 | | | |
+| 2026-10-28 | Bendigo | R5 | Savannah Chill | $15.30 | $24.47 | | | |
+| 2026-10-28 | Bendigo | R5 | The Muffin Man | $4.75 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R6 | Lawborough | $3.20 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R6 | Weapon Clear | $16.86 | $26.98 | | | |
+| 2026-10-28 | Bendigo | R6 | Wingsandpropellers | $18.16 | $29.06 | | | |
+| 2026-10-28 | Bendigo | R6 | Yes Yoshi | $3.15 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R6 | Yolo | $15.35 | $24.57 | | | |
+| 2026-10-28 | Bendigo | R7 | Alero | $6.90 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R7 | Dirty Look | $2.40 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R7 | Flying Embers | $8.05 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R7 | Legacy Bay | $9.75 | $15.60 | | | |
+| 2026-10-28 | Bendigo | R8 | Grand Pierro | $16.76 | $26.81 | | | |
+| 2026-10-28 | Bendigo | R8 | Kings Valley | $5.65 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R8 | Litzdeel | $5.70 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R8 | Machine Gun Gracie | $16.41 | $26.26 | | | |
+| 2026-10-28 | Bendigo | R8 | See That Storm | $8.66 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R8 | So You Are | $8.61 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R8 | Suntora | $15.14 | $24.22 | | | |
+| 2026-10-28 | Bendigo | R8 | The Euphrates | $12.99 | $20.79 | | | |
+| 2026-10-28 | Bendigo | R9 | Bel Mezyaan | $4.42 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R9 | Col Klink | $3.09 | $15.00 | | | |
+| 2026-10-28 | Bendigo | R9 | Hiyaam Proud | $16.12 | $25.80 | | | |
+| 2026-10-28 | Bendigo | R9 | Rosa Aotearoa | $10.10 | $16.17 | | | |
+| 2026-10-28 | Bendigo | R9 | Silver Bullet | $12.46 | $19.93 | | | |
+
+Bendigo Wed 28 Oct (9:30am final field, our price = live shaded model before the open blend): 47 runners can trigger; a lay only if BSP lands $15-$30 and at least the trigger.
 
 ## Sat 24 Oct: Yarra Valley and St Arnaud at the open (paper; no bets struck)
 Yarra Valley's orders triggered Fri 10:24am with TAB at $0.19 (no records). St Arnaud's fired Sat 8:07-8:09am and BetMatic
@@ -458,3 +509,5 @@ Habitual (R7) WON: SP $2.60, BSP $2.96, taken $5.20 after the 16c deduction ($6 
 Paper at the open (model stakes, after deductions): 2 bets, 15.38u, +45.88u (Habitual 11.78u x 4.20 = +49.48u).
 Twitter card at BSP: 2 bets, 6.80u, +8.00u (Habitual 5u x 1.96 = +9.80u), before Betfair commission.
 Paper top-ups (9:50am reprice): 3 bets, 6.25u, -6.25u (Magna Sententia 3rd, His Finest Hour 7th, Baganov 10th).
+
+Bendigo Wed 28 Oct (re-priced 9:30am Wed on the final field, 25 out): 11 value-at-open runners, 2 paper top-ups (5.37u: Centenary Florin 5.11u at $4.40, Litzdeel 0.26u at $8.50), the rest under take-at or already at full stake. R1 Resonant ours $2.53 after Hot Samba, $2.90 best at 9:20am, take-at $2.94: no bet.
