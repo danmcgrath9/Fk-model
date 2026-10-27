@@ -32,6 +32,15 @@ import psycopg
 COORDS = {  # course centres
     "flemington": (-37.7895, 144.9120), "caulfield": (-37.8810, 145.0390),
     "moonee valley": (-37.7660, 144.9300), "sandown": (-37.9480, 145.1700),
+    # Victorian country courses, by hand: the geocoder timed out on these or matched the wrong place (28 Oct 2026)
+    "avoca": (-37.09, 143.47), "bairnsdale": (-37.83, 147.63), "benalla": (-36.55, 145.98), "camperdown": (-38.23, 143.15),
+    "caulfield heath": (-37.881, 145.039), "coleraine": (-37.60, 141.69), "drouin": (-38.14, 145.86),
+    "geelong": (-38.17, 144.37), "hamilton": (-37.74, 142.02), "hanging rock": (-37.33, 144.59),
+    "healesville": (-37.65, 145.52), "kyneton": (-37.25, 144.45), "mansfield": (-37.05, 146.08), "moe": (-38.17, 146.26),
+    "nhill": (-36.33, 141.65), "sale": (-38.10, 147.07), "seymour": (-37.03, 145.14), "swan hill": (-35.34, 143.55),
+    "towong": (-36.13, 147.98), "warrnambool": (-38.38, 142.48), "wycheproof": (-36.08, 143.23),
+    "yarra valley": (-37.66, 145.37), "pakenham": (-38.09, 145.62), "pakenham synthetic": (-38.09, 145.62),
+    "woolamai": (-38.54, 145.53),
 }
 ARGS = sys.argv[1:] or ["VIC"]
 STATE = ARGS[0].upper() if ARGS[0].upper() in ("VIC", "NSW", "QLD", "SA", "WA", "TAS", "ACT", "NT", "ALL") else None
@@ -148,8 +157,15 @@ for t in TRACKS:
     url = (f"https://archive-api.open-meteo.com/v1/archive?latitude={la}&longitude={lo_}&start_date={lo}&end_date={hi}"
            "&daily=precipitation_sum,et0_fao_evapotranspiration,temperature_2m_max&timezone=Australia%2FMelbourne")
     try:
-        with urllib.request.urlopen(url, timeout=120) as r:
-            d = json.load(r)["daily"]
+        for attempt in range(4):
+            try:
+                with urllib.request.urlopen(url, timeout=120) as r:
+                    d = json.load(r)["daily"]
+                break
+            except Exception:
+                if attempt == 3:
+                    raise
+                import time; time.sleep(5 * (attempt + 1))
         W[t] = {k: (p, e, tx) for k, p, e, tx in zip(d["time"], d["precipitation_sum"], d["et0_fao_evapotranspiration"], d["temperature_2m_max"])}
         print(f"weather {t}: {la:.3f},{lo_:.3f}, {len(W[t])} days")
     except Exception as ex:  # a weather failure leaves the ratings and watering table intact
