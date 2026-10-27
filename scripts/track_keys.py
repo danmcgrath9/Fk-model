@@ -48,6 +48,7 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
 
 files = sorted(glob.glob("history/*.jsonl.gz"))
 print(f"\n## history files: {len(files)}")
+done = False
 for f in files[-40:]:
     with gzip.open(f, "rt") as fh:
         for line in fh:
@@ -62,7 +63,7 @@ for f in files[-40:]:
                     continue
                 seen.add(key)
                 print(f"- {p} = {v}")
+            done = True
             break
-    else:
-        continue
-    break
+    if done:
+        break
