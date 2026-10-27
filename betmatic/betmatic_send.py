@@ -291,8 +291,15 @@ def bot_logs(bm, nid):
         got = bm.get(f"/bot/logs/{nid}/")
     except requests.HTTPError as e:
         print(f"    bot logs: unavailable ({e})"); return
-    lines = [f"{g.get('bot_instance')}: {l.get('log')}" for g in (got if isinstance(got, list) else []) for l in g.get("logs") or []]
+    lines = [f"{g.get('bot_instance')}: {redact_account(l.get('log'))}" for g in (got if isinstance(got, list) else [])
+             for l in g.get("logs") or []]
     print("    bot logs: " + (" | ".join(lines[-6:]) if lines else "none (the bot never received this bet)"))
+
+
+def redact_account(line):
+    """The bot names the bookmaker account holder ("TAB, <full name> : Skipped ..."); Actions logs on this repo are
+    public, so the name is replaced before printing (27 Oct 2026: a diagnose run printed it)."""
+    return re.sub(r"\b([A-Za-z0-9 ]{2,20}), [^:|]{2,60} :", r"\1, [account holder] :", str(line))
 
 
 def summary(a):

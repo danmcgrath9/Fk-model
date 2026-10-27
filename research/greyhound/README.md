@@ -542,3 +542,30 @@ Emailed api@betwatch.com from the founder's Gmail, 26 Oct 2026 (founder: "Yep so
 back greyhound flucs go (TAB especially), what a key costs and its limits, and whether modelling for his own betting
 is fine under the commercial-use clause. If the history goes back a few years, it replaces both BetMatic's $3,000
 history and weeks of recording our own opens, and Test 7's model angles are rerun at the TAB open.
+
+## The first open probe: Geelong R1, Tuesday 27 Oct 2026 (runs 40452957805 collect, 40453167880 diagnose)
+
+Eight instructions, one per runner in Geelong R1 (2:42pm AEDT), sent 25 Oct 08:36-08:37 UTC, each min $1,000 /
+max stake $1.01, $1, TAB, one attempt, so that BetMatic would refuse it at TAB's open and keep the price and time.
+
+**What happened:**
+
+- **BetMatic did fire at the open.** Every instruction carries `triggered_at` 2026-10-27 07:22:34-35 AEDT, about
+  7h20m before the race and two days after it was sent (25 Oct 19:36 AEDT), so this is a genuine market-open trigger
+  rather than a fire on sending. TAB opened Geelong R1's market on race morning around 7:22am.
+- **The bot then skipped every one before reaching TAB.** The bot's log for each, at 07:22:40-41: "Skipped - Account
+  balance is below Min Stake ($) (1)", then "Checked availability — no sessions available for this notification".
+  The TAB account held less than $1, so the bot dropped the instruction before checking the price. That is why
+  there is no refusal record, no TAB price and no time of fire in the bet records: `collect` reads 8 pending,
+  0 usable as an open.
+- **Nothing was staked.** No bet record exists for any of the eight.
+- Runner 2 was scratched (the race's runner list is 1, 3-8). Result 1/4/3/6. BetMatic's stored race carries the
+  Betfair SP of every runner and the tote, but no TAB fixed price.
+
+**What it means.** The mechanism works up to the bot: BetMatic linked all eight to the right race and fired them at
+TAB's open. The probe cannot record a price while the TAB account is below the $1 minimum stake, because the bot
+filters on balance first. The account needs at least $1 in it, which is the founder's call because it is the same
+account the gallops bets use, and the bot's TAB session must be running at the open (about 7:20am on race day for
+Victorian dogs). The safety does not change: the instruction still cannot fill (min $1,000, max $1.01). The bot's
+log line names the TAB account holder and this repository's Actions logs are public, so `bot_logs` now redacts the
+name before printing (`redact_account`, tests in `tests/test_betmatic_redact.py`).
