@@ -543,3 +543,9 @@ Tweeted Twitter card, Flemington Sat 31 Oct (posted Wed 28 Oct by the founder, o
 Flemington paper at the open, every race open by 2:41pm Wed (R2 2:19pm, R4 2:41pm): 7 fills, 14.97u. Icelady $3.50 3.54u,
 Hankee Alpha $6.50 2.22u (R4), Persian Spirit $9.50 1.27u, War Machine $16 1.24u, True Rebel $8 1.84u, Sass Appeal $11 1.70u,
 Bridal Waltz $5 3.16u. Nothing in R1, R2 or R6. Plain card (no Mercer, Twitter units) sent to the founder.
+
+## Pakenham Fri 30 Oct (paper: the BetMatic bot was off at the open)
+Priced Wed 28 Oct on Good 4; R2-R4 off (first starters, founder). TAB opened Wed 3:20-4:09pm. At Form King's open the sheet
+fills 6 bets, 11.47u: R1 Via Theresa $26 0.77u, R1 Viking Kid $4.60 4.68u, R5 In A Tizzy $4.40 3.22u, R7 Garnacho $11.50
+1.05u, R7 Glenfinnan $18.50 0.73u, R8 Empressive Enuff $12 1.02u. By Thu 9:30am five of the six had firmed (Viking Kid $2.40,
+Via Theresa $9, Glenfinnan $8, Garnacho $6.50, In A Tizzy $3.70); Empressive Enuff $10. Kilmore: no prices in Form King yet.
