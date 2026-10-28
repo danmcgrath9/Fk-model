@@ -537,3 +537,6 @@ R9, 52.27u, $1,962 at $37.50) was refused: "session is not running (bot_running 
 Paper test." The sheet is settled on paper at Form King's opening prices once Form King has them.
 Founder's tip checks on TAB prices (after-open rule needs edge 1.3): R7 True Rebel $7 (ours $5.07; open rule from $6.61, after-open
 rule $7.33), R8 Sass Appeal $12 (ours $6.47; clears both, 1.6u full, 0.80u Twitter). Recorded as Twitter tips only if posted.
+Tweeted Twitter card, Flemington Sat 31 Oct (posted Wed 28 Oct by the founder, one tweet each): R5 War Machine $17 TABtouch
+0.59u (rated $8.59), R6 Natural Fling $7 TABtouch 0.75u ($4.71), R7 True Rebel $7 TAB 0.64u ($5.07), R8 Sass Appeal $12 TAB
+0.80u ($6.47), R9 Bridal Waltz $5 all books 1.46u ($3.29): 5 tips, 4.24u. This, not the order sheet, is the Twitter record.
