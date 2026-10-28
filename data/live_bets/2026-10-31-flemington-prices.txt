@@ -1,0 +1,147 @@
+# Flemington Sat 31 Oct, Derby Day (going Good 4, founder 28 Oct: lean drier for the carnival; band Good): final fields pulled Wed 28 Oct 11:53am Melbourne; no market priced in Form King yet. Emergencies as SCR until they gain a start.
+1, Glenorchy, 0, 0
+1, Strong Tempo, 0, 0
+1, Cab Franc, 0, 0
+1, Tuzemak, 0, 0
+1, High Falls, 0, 0
+1, Fast Freddie, 0, 0
+1, Unhinged, 0, 0
+1, Mister Whiskers, 0, 0
+1, The Roaring Sun, 0, 0
+1, Zoehrer, 0, 0
+1, Conquer The World, 0, 0
+1, Star Of Macedon, 0, 0
+2, Youmzaa, 0, 0
+2, Beautiful You, 0, 0
+2, Affari, 0, 0
+2, Consulate, 0, 0
+2, Miss Dividend, 0, 0
+2, Full Confidence, 0, 0
+2, I Am Aria, 0, 0
+2, Blue Dream, 0, 0
+2, Regal Ambition, 0, 0
+2, Divine Eruption, 0, 0
+2, Pin Up Sheila, 0, 0
+2, Shintono, 0, 0
+2, Autumn Lover, 0, 0
+3, De Armas, 0, 0
+3, Endless Fury, 0, 0
+3, Churchill Rose, 0, 0
+3, Sumac, 0, 0
+3, Fringilla, 0, 0
+3, Quynh, 0, 0
+3, Chocolate Freckles, SCR
+3, Girl With A Pearl, SCR
+3, Your Colour, 0, 0
+3, Icelady, 0, 0
+3, Adakite, 0, 0
+3, Voynichese, 0, 0
+3, A Rus In Grinzing, SCR
+3, Shameful Impulse, 0, 0
+3, So Royal, 0, 0
+3, Tharwa, 0, 0
+3, Nikitria, 0, 0
+3, Autumn In Grinzing, 0, 0
+3, Autumn Deel, 0, 0
+3, Grinzinger Heart, 0, 0
+3, Anglais, 0, 0
+4, Celsius Star, 0, 0
+4, Meridius, 0, 0
+4, Grand Impact, 0, 0
+4, Klabel, 0, 0
+4, Hedged, 0, 0
+4, King Zephyr, 0, 0
+4, Watchme Win, 0, 0
+4, Sweynesday, 0, 0
+4, Disneck, 0, 0
+4, Verdoux, 0, 0
+4, Grand Larceny, 0, 0
+4, De Bergerac, 0, 0
+4, The Cosmic One, 0, 0
+4, Ndola, 0, 0
+4, Hankee Alpha, 0, 0
+4, Golden Straand, 0, 0
+4, Jenni The Fox, 0, 0
+4, Gallant Son, 0, 0
+4, Jimmy Recard, 0, 0
+4, Napoleonic, 0, 0
+5, Private Eye, 0, 0
+5, Here To Shock, 0, 0
+5, Holymanz, 0, 0
+5, Amenable, 0, 0
+5, Desert Lightning, 0, 0
+5, Hughes, 0, 0
+5, Welwal, 0, 0
+5, Pericles, 0, 0
+5, Zou Sensation, 0, 0
+5, Steparty, 0, 0
+5, Persian Spirit, 0, 0
+5, King Zephyr, SCR
+5, War Machine, 0, 0
+5, Cafe Millenium, 0, 0
+5, Scheelite, SCR
+5, Recon, 0, 0
+5, Warnie, 0, 0
+5, Cote Atlantique, 0, 0
+5, Estremo, SCR
+6, Alibaba, 0, 0
+6, Doubt Time, 0, 0
+6, Paradoxium, 0, 0
+6, Marffiano, 0, 0
+6, Natural Fling, 0, 0
+6, Steel Will, 0, 0
+6, Pembrey, 0, 0
+6, Mbube, 0, 0
+6, Satono Glow, 0, 0
+6, The Next Episode, 0, 0
+6, St Gotthard, 0, 0
+6, The Machine Gun, 0, 0
+6, Under Focus, 0, 0
+6, Stretan Ruler, 0, 0
+7, King Winston, 0, 0
+7, Hierarchy, 0, 0
+7, True Tone, 0, 0
+7, Skua, 0, 0
+7, Quick Finish, 0, 0
+7, Cormier, 0, 0
+7, Murshidi, 0, 0
+7, Vallice, 0, 0
+7, Icy You, 0, 0
+7, True Rebel, 0, 0
+7, Meet The Prince, SCR
+7, Russian Rock, 0, 0
+7, Locked In, SCR
+7, King Snitz, 0, 0
+7, Cignetti, 0, 0
+7, Cold Shower, 0, 0
+7, Stormy Marco, 0, 0
+7, Written Empire, 0, 0
+8, Pondalowie, 0, 0
+8, Jenni Multabella, 0, 0
+8, Unleeshing, 0, 0
+8, Idle Flyer, 0, 0
+8, Lady Shenandoah, 0, 0
+8, Surfin' Bird, 0, 0
+8, Cilacap, 0, 0
+8, Concord Connie, 0, 0
+8, Sass Appeal, 0, 0
+8, Salty Pearl, 0, 0
+8, Pillow Fight, 0, 0
+9, Precious Charm, 0, 0
+9, Generosity, 0, 0
+9, Hearcomesthestar, 0, 0
+9, Gentle Steel, 0, 0
+9, Eagle Express, 0, 0
+9, Photograph, 0, 0
+9, Bridal Waltz, 0, 0
+9, Flying For Fun, 0, 0
+9, Xarpo, 0, 0
+9, Geegees Mistruth, 0, 0
+9, Silver Wedding, 0, 0
+9, Tres Magnifique, 0, 0
+9, Naifah, 0, 0
+9, Inkaruna, 0, 0
+9, Nepo Baby, 0, 0
+9, Swift Force, 0, 0
+9, Thanks Gorgeous, 0, 0
+9, Agarwood, 0, 0

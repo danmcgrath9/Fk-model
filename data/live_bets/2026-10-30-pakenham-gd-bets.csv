@@ -1,0 +1,7 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,PAKM_301026_1,Viking Kid,top_pick,0.0,0.0,0.0,,,2.8,-1.0,Already run to today's class; Class drop (rating); EARLY ONLY: bet near the open,1.0,no,,
+4,PAKM_301026_4,Voltrix,top_pick,0.0,0.0,0.0,,,3.8,-1.0,; EARLY ONLY: bet near the open,1.0,no,,
+5,PAKM_301026_5,In A Tizzy,top_pick,0.0,0.0,0.0,,,3.24,-1.0,Above the field in all three sections; EARLY ONLY: bet near the open,1.0,no,,
+6,PAKM_301026_6,Les Braves,top_pick,0.0,0.0,0.0,,,4.55,-1.0,; EARLY ONLY: bet near the open,1.0,no,,
+7,PAKM_301026_7,Galant Knight,top_pick,0.0,0.0,0.0,,,6.98,-1.0,; EARLY ONLY: bet near the open,1.0,no,,
+8,PAKM_301026_8,Shidan,top_pick,0.0,0.0,0.0,,,5.28,-1.0,,1.0,no,,

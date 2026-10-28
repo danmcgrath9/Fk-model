@@ -1,0 +1,94 @@
+# Kilmore Fri 30 Oct (going Good 4, founder 28 Oct; band Good): final fields pulled Wed 28 Oct 11:47am Melbourne; no market yet. Emergencies as SCR until they gain a start.
+1, Wavelets, 0, 0
+1, Akari Spirit, 0, 0
+1, Ghaluge, 0, 0
+1, Hansard, 0, 0
+1, Latassa, 0, 0
+1, Rat Pack, 0, 0
+1, Hot Pot Dot, 0, 0
+1, Enticement, 0, 0
+1, Blue Gamble, 0, 0
+1, Raisonic, 0, 0
+1, Southpole, 0, 0
+2, Shades Of Sheriff, SCR
+2, Money Wheel, SCR
+2, Mystic Rapture, 0, 0
+2, Couldbetracy, SCR
+2, Gypsy Moon, SCR
+2, Dempsey, 0, 0
+2, Sir Riverance, 0, 0
+2, Diamond Virtue, 0, 0
+2, Lady Blanc, 0, 0
+2, Specific Outcome, 0, 0
+2, Stash Royale, 0, 0
+2, Perfect Riposte, 0, 0
+2, Savfield, 0, 0
+2, Terracotta Warrior, 0, 0
+3, Dagger One, 0, 0
+3, Angel Don't Cry, SCR
+3, Wunderlust, SCR
+3, Pretty Stylish, SCR
+3, Youmanetic, 0, 0
+3, Bold Amore, 0, 0
+3, Riverlea Royal, 0, 0
+3, She Got Me Again, 0, 0
+3, Swiss Impact, 0, 0
+3, Kirkstone, 0, 0
+3, Rwanda, 0, 0
+3, Saint Willo, 0, 0
+3, Gold Bijoux, SCR
+3, Lonnegan, 0, 0
+3, All Eyes On Erin, 0, 0
+4, Golden Age, 0, 0
+4, Sistine Tunnel, 0, 0
+4, True Prophet, 0, 0
+4, Hells Son, 0, 0
+4, Manchego, 0, 0
+4, Rock The Bar, 0, 0
+4, Lagunanini, 0, 0
+4, Japanese Moka, 0, 0
+4, Golden Pulse, 0, 0
+5, Helluva Barty, 0, 0
+5, Turnaquid, 0, 0
+5, Snow On Her, 0, 0
+5, Strike Gold, 0, 0
+5, Elena Montero, 0, 0
+5, Heidi Dancer, 0, 0
+5, Smoke Screen, 0, 0
+5, Siriusly Bright, 0, 0
+5, Divine Empress, 0, 0
+5, Adieu Grasse, 0, 0
+5, Astari, 0, 0
+6, Superstock, 0, 0
+6, Love Sparkles, SCR
+6, Nicoffhome, 0, 0
+6, Mozu Marcassin, 0, 0
+6, State Of Affairs, 0, 0
+6, Tierra, 0, 0
+6, Olney, 0, 0
+6, She's Stargazing, 0, 0
+6, Stuntman, 0, 0
+6, Vespasian, 0, 0
+6, Earthly Crown, SCR
+6, Precambrian, 0, 0
+7, Titan Of Choice, 0, 0
+7, Testing The Cugat, 0, 0
+7, Queen Of Tuscany, 0, 0
+7, First Tosen, 0, 0
+7, Savethebesttillast, 0, 0
+7, Crimson Miss, 0, 0
+7, Smash Blue, 0, 0
+7, Ostrica, 0, 0
+7, Darating, 0, 0
+7, Royal Heritage, 0, 0
+8, Cable De Vega, 0, 0
+8, Toronova, 0, 0
+8, Monsun's Pride, 0, 0
+8, Share The Stars, 0, 0
+8, Pro Velocity, 0, 0
+8, Cheron Finale, 0, 0
+8, Mahmudah, 0, 0
+8, Left Hook, 0, 0
+8, Dance Lady, 0, 0
+8, Pomah, 0, 0
+8, Olympiad, 0, 0

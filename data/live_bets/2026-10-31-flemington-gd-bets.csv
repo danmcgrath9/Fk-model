@@ -1,0 +1,10 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,FLEM_311026_1,High Falls,top_pick,0.0,0.0,0.0,,,5.15,-1.0,"New career-best last start; Third-up, improving; Well backed before a bad last run; Above the field in all three sections",1.0,no,,
+2,FLEM_311026_2,Regal Ambition,top_pick,0.0,0.0,0.0,,,3.0,-1.0,Already run to today's class,1.0,no,,
+3,FLEM_311026_3,Icelady,top_pick,0.0,0.0,0.0,,,2.82,-1.0,Already run to today's class; Class drop (rating),1.0,no,,
+4,FLEM_311026_4,Hankee Alpha,top_pick,0.0,0.0,0.0,,,4.35,-1.0,; EARLY ONLY: bet near the open,1.0,no,,
+5,FLEM_311026_5,Private Eye,top_pick,0.0,0.0,0.0,,,6.68,-1.0,,1.0,no,,
+6,FLEM_311026_6,The Next Episode,top_pick,0.0,0.0,0.0,,,4.33,-1.0,; EARLY ONLY: bet near the open,1.0,no,,
+7,FLEM_311026_7,True Rebel,top_pick,0.0,0.0,0.0,,,5.07,-1.0,,1.0,no,,
+8,FLEM_311026_8,Surfin' Bird,top_pick,0.0,0.0,0.0,,,3.0,-1.0,,1.0,no,,
+9,FLEM_311026_9,Bridal Waltz,top_pick,0.0,0.0,0.0,,,3.29,-1.0,Beaten by the pace last start; Already run to today's class,1.0,no,,
