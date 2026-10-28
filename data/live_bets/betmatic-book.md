@@ -529,3 +529,11 @@ Twitter card at BSP: 2 bets, 6.80u, +8.00u (Habitual 5u x 1.96 = +9.80u), before
 Paper top-ups (9:50am reprice): 3 bets, 6.25u, -6.25u (Magna Sententia 3rd, His Finest Hour 7th, Baganov 10th).
 
 Bendigo Wed 28 Oct (re-priced 9:30am Wed on the final field, 25 out): 11 value-at-open runners, 2 paper top-ups (5.37u: Centenary Florin 5.11u at $4.40, Litzdeel 0.26u at $8.50), the rest under take-at or already at full stake. R1 Resonant ours $2.53 after Hot Samba, $2.90 best at 9:20am, take-at $2.94: no bet.
+
+## Flemington Sat 31 Oct, Derby Day (paper: the BetMatic bot was off when the market opened)
+Priced Wed 28 Oct on the final field at Good 4 (founder: lean drier for the carnival). TAB opened the market from about
+12:15pm Wed; R6 and R7 were open before the send and came off the sheet. The live send (50 orders, 24 runners, R1-R5, R8,
+R9, 52.27u, $1,962 at $37.50) was refused: "session is not running (bot_running false)". Founder, 28 Oct: "Bots off fuck me.
+Paper test." The sheet is settled on paper at Form King's opening prices once Form King has them.
+Founder's tip checks on TAB prices (after-open rule needs edge 1.3): R7 True Rebel $7 (ours $5.07; open rule from $6.61, after-open
+rule $7.33), R8 Sass Appeal $12 (ours $6.47; clears both, 1.6u full, 0.80u Twitter). Recorded as Twitter tips only if posted.
