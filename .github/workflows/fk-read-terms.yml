@@ -56,4 +56,12 @@ jobs:
               print(f"\n----- links on {url}:")
               for h in p.links:
                   if re.search(r"(term|condition|licen|legal|privacy|\.csv|\.zip|\.bz2|\.tar)", h, re.I): print(h)
+              # contact addresses: mailto links, and Cloudflare's hidden ones (data-cfemail / email-protection#hex:
+              # the first byte is the key, every later byte XOR the key is a character)
+              def cf(hexs):
+                  b = bytes.fromhex(hexs); return "".join(chr(c ^ b[0]) for c in b[1:])
+              found = {h[7:].split("?")[0] for h in p.links if h.lower().startswith("mailto:")}
+              found |= {cf(x) for x in re.findall(r'(?:data-cfemail="|email-protection#)([0-9a-fA-F]{4,})', body)}
+              found |= set(re.findall(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}", text))
+              print(f"----- email addresses on {url}: " + (", ".join(sorted(found)) or "none"))
           PY
