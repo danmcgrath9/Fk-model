@@ -540,3 +540,6 @@ rule $7.33), R8 Sass Appeal $12 (ours $6.47; clears both, 1.6u full, 0.80u Twitt
 Tweeted Twitter card, Flemington Sat 31 Oct (posted Wed 28 Oct by the founder, one tweet each): R5 War Machine $17 TABtouch
 0.59u (rated $8.59), R6 Natural Fling $7 TABtouch 0.75u ($4.71), R7 True Rebel $7 TAB 0.64u ($5.07), R8 Sass Appeal $12 TAB
 0.80u ($6.47), R9 Bridal Waltz $5 all books 1.46u ($3.29): 5 tips, 4.24u. This, not the order sheet, is the Twitter record.
+Flemington paper at the open, every race open by 2:41pm Wed (R2 2:19pm, R4 2:41pm): 7 fills, 14.97u. Icelady $3.50 3.54u,
+Hankee Alpha $6.50 2.22u (R4), Persian Spirit $9.50 1.27u, War Machine $16 1.24u, True Rebel $8 1.84u, Sass Appeal $11 1.70u,
+Bridal Waltz $5 3.16u. Nothing in R1, R2 or R6. Plain card (no Mercer, Twitter units) sent to the founder.
