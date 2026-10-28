@@ -367,8 +367,57 @@ The rule is fixed before the first race (research/form_gbm/README.md, 23 Oct; t_
 | 2026-10-28 | Bendigo | R9 | Rosa Aotearoa | $10.10 | $16.17 | | | |
 | 2026-10-28 | Bendigo | R9 | Silver Bullet | $12.46 | $19.93 | | | |
 | 2026-10-28 | Bendigo | R9 | Spirited Defence | $22.18 | $35.49 | | | |
+| 2026-10-29 | Warrnambool | R1 | Alltogethernow | $18.40 | $29.43 | | | |
+| 2026-10-29 | Warrnambool | R1 | Lord Timo | $16.13 | $25.80 | | | |
+| 2026-10-29 | Warrnambool | R1 | Ned Kelly | $2.67 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R1 | Paramount War | $3.19 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R1 | Rang A Round Up | $9.30 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R1 | Rollin'ontheriver | $22.67 | $36.27 | | | |
+| 2026-10-29 | Warrnambool | R2 | Both Sides Now | $4.63 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R2 | Crossoverkid | $6.33 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R2 | Heed The Omens | $10.71 | $17.13 | | | |
+| 2026-10-29 | Warrnambool | R2 | Hoodys Horse | $12.40 | $19.83 | | | |
+| 2026-10-29 | Warrnambool | R2 | Newcombe | $12.55 | $20.09 | | | |
+| 2026-10-29 | Warrnambool | R2 | Parkrun | $24.17 | $38.67 | | | |
+| 2026-10-29 | Warrnambool | R2 | Share The Stars | $7.53 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R2 | The Daily Planet | $9.35 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R3 | Grandpa Neil | $10.03 | $16.04 | | | |
+| 2026-10-29 | Warrnambool | R3 | Nick Knockdown | $9.38 | $15.01 | | | |
+| 2026-10-29 | Warrnambool | R3 | Tuscan Rose | $3.47 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R4 | Hughie's Spirit | $19.59 | $31.35 | | | |
+| 2026-10-29 | Warrnambool | R4 | Mamzelle Raine | $23.51 | $37.61 | | | |
+| 2026-10-29 | Warrnambool | R5 | Big Vee | $7.60 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R5 | Celestaria | $10.13 | $16.21 | | | |
+| 2026-10-29 | Warrnambool | R5 | Circus Circus | $12.45 | $19.91 | | | |
+| 2026-10-29 | Warrnambool | R5 | Leona | $2.93 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R5 | Piklemegranmother | $23.41 | $37.46 | | | |
+| 2026-10-29 | Warrnambool | R5 | Semper Augustus | $20.72 | $33.15 | | | |
+| 2026-10-29 | Warrnambool | R5 | Zercardy | $5.98 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R6 | Ballynacally | $4.33 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R6 | Bancoora | $15.23 | $24.37 | | | |
+| 2026-10-29 | Warrnambool | R6 | Icy Pole | $7.89 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R6 | King West | $4.43 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R6 | Pastoral King | $5.05 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R6 | Secret Crossing | $12.11 | $19.37 | | | |
+| 2026-10-29 | Warrnambool | R7 | Crickwood | $3.36 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R7 | Du Clisson | $3.21 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R7 | Francine | $10.43 | $16.68 | | | |
+| 2026-10-29 | Warrnambool | R7 | Leantothemoon | $15.06 | $24.10 | | | |
+| 2026-10-29 | Warrnambool | R7 | Meisho | $20.98 | $33.57 | | | |
+| 2026-10-29 | Warrnambool | R7 | Torlaah | $19.49 | $31.18 | | | |
+| 2026-10-29 | Warrnambool | R7 | Twister | $8.87 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R8 | Asal | $9.67 | $15.47 | | | |
+| 2026-10-29 | Warrnambool | R8 | Boggy Creek Boys | $20.39 | $32.63 | | | |
+| 2026-10-29 | Warrnambool | R8 | Cachink | $11.24 | $17.99 | | | |
+| 2026-10-29 | Warrnambool | R8 | Charming Deel | $4.18 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R8 | Dealer Sing | $19.17 | $30.68 | | | |
+| 2026-10-29 | Warrnambool | R8 | Designs Of Eight | $24.01 | $38.42 | | | |
+| 2026-10-29 | Warrnambool | R8 | Gunado | $14.14 | $22.63 | | | |
+| 2026-10-29 | Warrnambool | R8 | Invisible Magic | $5.96 | $15.00 | | | |
+| 2026-10-29 | Warrnambool | R8 | Sotomayor | $13.48 | $21.57 | | | |
+| 2026-10-29 | Warrnambool | R8 | Super Snitch | $18.16 | $29.05 | | | |
 
-Bendigo Wed 28 Oct (9:30am final field, our price = live shaded model before the open blend): 62 runners can trigger; a lay only if BSP lands $15-$40 and at least the trigger.
+Warrnambool Thu 29 Oct (9:30am final field): 49 runners can trigger. Bendigo Wed 28 Oct (9:30am final field, our price = live shaded model before the open blend): 62 runners can trigger; a lay only if BSP lands $15-$40 and at least the trigger.
 
 ## Sat 24 Oct: Yarra Valley and St Arnaud at the open (paper; no bets struck)
 Yarra Valley's orders triggered Fri 10:24am with TAB at $0.19 (no records). St Arnaud's fired Sat 8:07-8:09am and BetMatic

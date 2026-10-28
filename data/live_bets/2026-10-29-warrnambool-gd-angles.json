@@ -28,8 +28,7 @@
 "Class drop (rating)"
 ],
 "2|The Daily Planet": [
-"Class drop (rating)",
-"Late 600 beyond the tempo"
+"Class drop (rating)"
 ],
 "2|Kilna": [
 "Class drop (rating)"
@@ -47,7 +46,7 @@
 "Late 600 beyond the tempo"
 ],
 "2|Crossoverkid": [],
-"2|Reel Hot": [],
+"2|Duhlata": [],
 "2|Newcombe": [],
 "3|Circles Of Life": [],
 "3|Grandpa Neil": [
@@ -122,21 +121,11 @@
 "Beaten by the pace last start",
 "Late 600 beyond the tempo"
 ],
-"5|Blues Jazz": [
-"Proven wet on a wet track"
-],
-"5|Perfect Dismount": [
-"Beaten by the pace last start",
-"Already run to today's class",
-"Third-up, improving",
-"Proven wet on a wet track"
-],
 "5|Semper Augustus": [
 "Proven wet on a wet track"
 ],
 "5|Hiney's Bar": [],
 "5|Celestaria": [],
-"6|Accuser": [],
 "6|Port Louis": [],
 "6|King West": [],
 "6|Suspect": [
@@ -146,14 +135,16 @@
 "Above the field in all three sections"
 ],
 "6|Ballynacally": [],
-"6|Smoke Screen": [],
 "6|Battle Of The Ice": [
 "Declining deep in prep",
 "Proven wet on a wet track"
 ],
 "6|Secret Crossing": [],
 "6|Icy Pole": [],
-"6|Bancoora": [],
+"6|Bancoora": [
+"Proven wet on a wet track",
+"Late 600 beyond the tempo"
+],
 "7|Wild Roses Grow": [],
 "7|Shooting For Stars": [
 "Proven wet on a wet track"
@@ -176,10 +167,6 @@
 "7|Meisho": [
 "Proven wet on a wet track",
 "Class drop (rating)"
-],
-"7|Nordic Strike": [
-"Already run to today's class",
-"Well backed before a bad last run"
 ],
 "8|Vizie": [],
 "8|Dealer Sing": [
@@ -205,13 +192,12 @@
 "Proven wet on a wet track"
 ],
 "8|Jet Jitsu": [],
-"8|Black Aces": [],
 "8|Tauri": [
 "Proven wet on a wet track"
 ],
-"8|Asal": [],
-"8|Shades Of Stardom": [
-"Proven wet on a wet track",
-"Class drop (rating)"
-]
+"8|Sotomayor": [],
+"8|Charming Deel": [
+"Beaten by the pace last start"
+],
+"8|Asal": []
 }

@@ -1,96 +1,96 @@
-# Warrnambool Thu 29 Oct (official going, band Good): final fields pulled Tue 27 Oct 11:31am Melbourne; no market yet. Emergencies as SCR until they gain a start.
-1, Rang A Round Up, 0, 0
-1, Alltogethernow, 0, 0
-1, Helichrysum, 0, 0
-1, Paramount War, 0, 0
-1, Rollin'ontheriver, 0, 0
-1, Lord Timo, 0, 0
-1, Ideas Galore, 0, 0
-1, Ned Kelly, 0, 0
-1, Verry Zeductive, 0, 0
-2, Duhlata, SCR
-2, Hoodys Horse, 0, 0
-2, Rippa Buddy, 0, 0
-2, Whistler Girl, 0, 0
-2, Crossoverkid, 0, 0
-2, Heed The Omens, 0, 0
-2, Both Sides Now, 0, 0
-2, Kilna, 0, 0
-2, Reel Hot, 0, 0
-2, Parkrun, 0, 0
-2, Share The Stars, 0, 0
-2, The Daily Planet, 0, 0
-2, Newcombe, 0, 0
-3, Sophia's Legacy, 0, 0
-3, Grandpa Neil, 0, 0
-3, Bogey Free, 0, 0
-3, Normandy Peace, 0, 0
-3, Nick Knockdown, 0, 0
-3, Run Forrest Run, 0, 0
-3, Trigger Warning, 0, 0
-3, Circles Of Life, 0, 0
-3, Star Kells, 0, 0
-3, Tuscan Rose, 0, 0
-4, Triple Match, 0, 0
-4, Hughie's Spirit, 0, 0
-4, Mamzelle Raine, 0, 0
-4, Tycoonette, 0, 0
-4, Oh La Belle, 0, 0
-4, Sloane Raider, 0, 0
-4, A Little Reward, 0, 0
-4, Chardy Lass, 0, 0
-4, Empire Fella, 0, 0
-4, Fammi, 0, 0
-4, Little Gangster, 0, 0
-5, Blues Jazz, 0, 0
-5, Leona, 0, 0
-5, Listen Up, 0, 0
-5, Piklemegranmother, 0, 0
-5, Big Vee, 0, 0
-5, Niccotein, 0, 0
-5, Semper Augustus, 0, 0
-5, Zercardy, 0, 0
-5, Circus Circus, 0, 0
-5, Enniscrone, 0, 0
-5, Lange Nelle, 0, 0
-5, Hiney's Bar, 0, 0
-5, Perfect Dismount, 0, 0
-5, Celestaria, 0, 0
-6, Port Louis, 0, 0
-6, Bancoora, 0, 0
-6, Suspect, 0, 0
-6, Ballynacally, 0, 0
-6, Icy Pole, 0, 0
-6, King West, 0, 0
-6, Battle Of The Ice, 0, 0
-6, Smoke Screen, 0, 0
-6, Pastoral King, 0, 0
-6, Accuser, 0, 0
-6, Secret Crossing, 0, 0
-7, Francine, 0, 0
-7, Shooting For Stars, 0, 0
-7, Leantothemoon, 0, 0
-7, Torlaah, 0, 0
-7, Du Clisson, 0, 0
-7, Nordic Strike, 0, 0
-7, Wild Roses Grow, 0, 0
-7, Twister, 0, 0
-7, Meisho, 0, 0
-7, Crickwood, 0, 0
-8, Jet Jitsu, 0, 0
-8, Super Snitch, 0, 0
-8, Charming Deel, SCR
-8, Vizie, 0, 0
-8, Designs Of Eight, 0, 0
-8, Tauri, 0, 0
-8, Gunado, 0, 0
-8, Frosty Night, 0, 0
-8, Sotomayor, SCR
+# Warrnambool Thu 29 Oct 2026: race-morning prices after scratchings, Form King pulled Thu 29 Oct 9:32am Melbourne
+1, Rang A Round Up, 9.50, 9.50, fk_open 5.25
+1, Alltogethernow, 17.00, 17.00, fk_open 23.50
+1, Helichrysum, 61.00, 61.00, fk_open 91.00
+1, Paramount War, 2.80, 2.80, fk_open 2.05
+1, Rollin'ontheriver, 11.00, 11.00, fk_open 6.75
+1, Lord Timo, 14.00, 14.00, fk_open 14.00
+1, Ideas Galore, 51.00, 51.00, fk_open 23.50
+1, Ned Kelly, 1.95, 1.95, fk_open 3.50
+1, Verry Zeductive, 151.00, 151.00, fk_open 46.00
+2, Duhlata, 151.00, 151.00, fk_open 81.00
+2, Hoodys Horse, 12.00, 12.00, fk_open 17.00
+2, Rippa Buddy, 71.00, 71.00, fk_open 41.00
+2, Whistler Girl, 23.00, 23.00, fk_open 17.00
+2, Crossoverkid, 5.50, 5.50, fk_open 8.00
+2, Heed The Omens, 6.00, 6.00, fk_open 4.00
+2, Both Sides Now, 4.60, 4.60, fk_open 8.00
+2, Kilna, 16.00, 16.00, fk_open 7.00
+2, Reel Hot, SCR, last 151.00, fk_open 126.00
+2, Parkrun, 21.00, 21.00, fk_open 15.00
+2, Share The Stars, 4.80, 4.80, fk_open 4.00
+2, The Daily Planet, 8.50, 8.50, fk_open 9.00
+2, Newcombe, 13.00, 13.00, fk_open 10.00
+3, Sophia's Legacy, 26.00, 26.00, fk_open 14.50
+3, Grandpa Neil, 5.50, 5.50, fk_open 3.15
+3, Bogey Free, 2.50, 2.50, fk_open 3.75
+3, Normandy Peace, 15.00, 15.00, fk_open 7.75
+3, Nick Knockdown, 7.50, 7.50, fk_open 8.75
+3, Run Forrest Run, 126.00, 126.00, fk_open 138.50
+3, Trigger Warning, 81.00, 81.00, fk_open 37.50
+3, Circles Of Life, 11.00, 11.00, fk_open 10.50
+3, Star Kells, 41.00, 41.00, fk_open 20.00
+3, Tuscan Rose, 3.20, 3.20, fk_open 4.30
+4, Triple Match, 151.00, 151.00, fk_open 51.00
+4, Hughie's Spirit, 6.50, 6.50, fk_open 2.60
+4, Mamzelle Raine, 41.00, 41.00, fk_open 51.00
+4, Tycoonette, 12.00, 12.00, fk_open 5.50
+4, Oh La Belle, 151.00, 151.00, fk_open 101.00
+4, Sloane Raider, 41.00, 41.00, fk_open 26.00
+4, A Little Reward, 151.00, 151.00, fk_open 101.00
+4, Chardy Lass, 12.00, 12.00, fk_open 7.50
+4, Empire Fella, 9.50, 9.50, fk_open 6.50
+4, Fammi, 1.50, 1.50, fk_open 3.30
+4, Little Gangster, 10.00, 10.00, fk_open 15.00
+5, Blues Jazz, SCR, last 151.00, fk_open 126.00
+5, Leona, 2.35, 2.35, fk_open 4.00
+5, Listen Up, 151.00, 151.00, fk_open 151.00
+5, Piklemegranmother, 14.00, 14.00, fk_open 8.00
+5, Big Vee, 7.50, 7.50, fk_open 10.00
+5, Niccotein, 26.00, 26.00, fk_open 19.00
+5, Semper Augustus, 19.00, 19.00, fk_open 15.00
+5, Zercardy, 6.00, 6.00, fk_open 8.00
+5, Circus Circus, 15.00, 15.00, fk_open 10.00
+5, Enniscrone, 101.00, 101.00, fk_open 71.00
+5, Lange Nelle, 15.00, 15.00, fk_open 9.50
+5, Hiney's Bar, 41.00, 41.00, fk_open 41.00
+5, Perfect Dismount, SCR, last 6.00, fk_open 5.00
+5, Celestaria, 5.50, 5.50, fk_open 6.50
+6, Port Louis, 51.00, 51.00, fk_open 66.00
+6, Bancoora, 15.00, 15.00, fk_open 13.50
+6, Suspect, 31.00, 31.00, fk_open 32.50
+6, Ballynacally, 5.50, 5.50, fk_open 10.25
+6, Icy Pole, 6.25, 6.25, fk_open 13.50
+6, King West, 4.20, 4.20, fk_open 3.70
+6, Battle Of The Ice, 21.00, 21.00, fk_open 22.00
+6, Smoke Screen, SCR, last 26.00, fk_open 32.50
+6, Pastoral King, 3.80, 3.80, fk_open 2.65
+6, Accuser, SCR, last 7.50, fk_open 5.00
+6, Secret Crossing, 4.60, 4.60, fk_open 10.50
+7, Francine, 14.00, 14.00, fk_open 30.00
+7, Shooting For Stars, 151.00, 151.00, fk_open 126.00
+7, Leantothemoon, 8.00, 8.00, fk_open 5.25
+7, Torlaah, 20.00, 20.00, fk_open 13.50
+7, Du Clisson, 2.25, 2.25, fk_open 2.22
+7, Nordic Strike, SCR, last 5.50, fk_open 4.20
+7, Wild Roses Grow, 126.00, 126.00, fk_open 126.00
+7, Twister, 11.00, 11.00, fk_open 11.00
+7, Meisho, 19.00, 19.00, fk_open 30.00
+7, Crickwood, 2.50, 2.50, fk_open 5.75
+8, Jet Jitsu, 61.00, 61.00, fk_open 18.00
+8, Super Snitch, 21.00, 21.00, fk_open 19.00
+8, Charming Deel, 4.60, 4.60, fk_open 3.50
+8, Vizie, 61.00, 61.00, fk_open 26.00
+8, Designs Of Eight, 23.00, 23.00, fk_open 14.00
+8, Tauri, 101.00, 101.00, fk_open 41.00
+8, Gunado, 9.00, 9.00, fk_open 23.00
+8, Frosty Night, 51.00, 51.00, fk_open 23.00
+8, Sotomayor, 12.00, 12.00, fk_open 10.00
 8, Immortal Justice, SCR
-8, Invisible Magic, 0, 0
-8, Asal, 0, 0
-8, Cachink, 0, 0
-8, Black Aces, 0, 0
-8, Dealer Sing, 0, 0
-8, Boggy Creek Boys, 0, 0
-8, Shades Of Stardom, 0, 0
+8, Invisible Magic, 5.00, 5.00, fk_open 2.25
+8, Asal, 10.00, 10.00, fk_open 23.00
+8, Cachink, 5.00, 5.00, fk_open 14.00
+8, Black Aces, SCR, last 18.00, fk_open 18.00
+8, Dealer Sing, 9.50, 9.50, fk_open 6.50
+8, Boggy Creek Boys, 21.00, 21.00, fk_open 8.00
+8, Shades Of Stardom, SCR
