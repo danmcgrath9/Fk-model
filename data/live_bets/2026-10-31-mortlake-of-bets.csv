@@ -1,0 +1,7 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,MORT_311026_1,Pneuma,top_pick,0.0,0.0,0.0,,,3.05,-1.0,Already run to today's class; Proven wet on a wet track; Above the field in all three sections,1.0,no,,
+3,MORT_311026_3,Villa Grande,top_pick,0.0,0.0,0.0,,,2.28,-1.0,"Beaten by the pace last start; Already run to today's class; Third-up, improving; Above the field in all three sections; Blinkers first time",1.0,no,,
+4,MORT_311026_4,Money Honey,top_pick,0.0,0.0,0.0,,,3.6,-1.0,Beaten by the pace last start,1.0,no,,
+5,MORT_311026_5,Steely Hustler,top_pick,0.0,0.0,0.0,,,3.39,-1.0,,1.0,no,,
+6,MORT_311026_6,Omnic,top_pick,0.0,0.0,0.0,,,4.96,-1.0,,1.0,no,,
+7,MORT_311026_7,Kingsford,top_pick,0.0,0.0,0.0,,,4.74,-1.0,,1.0,no,,

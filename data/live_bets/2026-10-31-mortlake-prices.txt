@@ -1,0 +1,94 @@
+# Mortlake Sat 31 Oct (official going, Form King; priced Thu 29 Oct pre-market)
+1, Yankee Street Rain, 0, 0
+1, Champagne Sabre, 0, 0
+1, Bologna Baby, 0, 0
+1, Trust My, SCR
+1, Almorina, 0, 0
+1, Cocoa Charm, SCR
+1, Jack Will, SCR
+1, Sheistheboss, 0, 0
+1, Aitana, 0, 0
+1, Fantasy Reel, 0, 0
+1, Pneuma, 0, 0
+1, Imminent Touch, 0, 0
+1, Cashemcowboy, 0, 0
+1, Chilly Sav, SCR
+2, Whata Stretch, 0, 0
+2, Wallace And Gromit, SCR
+2, Keepy Uppy, 0, 0
+2, Back Up Barbie, 0, 0
+2, Tycoon Iggy, 0, 0
+2, Hellica, SCR
+2, Piccadilly Thunder, SCR
+2, Iron Stupa, 0, 0
+2, Native Dance, 0, 0
+2, Cape Radstock, 0, 0
+2, Prince Iadora, 0, 0
+2, Peace Seeker, 0, 0
+2, Queen Of The Top, 0, 0
+2, Neonova, SCR
+3, Brazen Martini, 0, 0
+3, Ta Ta Tango, SCR
+3, Classy Sassy, 0, 0
+3, Hopkins Star, SCR
+3, Ramelle, 0, 0
+3, Zephyr's Reward, 0, 0
+3, Billy Be Good, 0, 0
+3, Hannan Street, 0, 0
+3, Starseatic, 0, 0
+3, Luna Doro, 0, 0
+3, Villa Grande, 0, 0
+3, Assisi, 0, 0
+4, Galaxy Turf, SCR
+4, Thunder Park, 0, 0
+4, First Division, 0, 0
+4, Handsome Devil, SCR
+4, Lord Porchester, 0, 0
+4, Frose, 0, 0
+4, Imacreedytwo, 0, 0
+4, Shyleah, 0, 0
+4, Becauseyou're Mine, 0, 0
+4, Flying Straz, 0, 0
+4, Les Vosges, SCR
+4, Abby's Crossword, 0, 0
+4, Money Honey, 0, 0
+5, They Call Me Dusty, SCR
+5, Full Of Dash, SCR
+5, Dangerous Secret, 0, 0
+5, Gargantuan, 0, 0
+5, Barclaps, SCR
+5, Everett, 0, 0
+5, Chica Con Suerte, 0, 0
+5, Steely Hustler, 0, 0
+5, Bare To Witness, 0, 0
+5, Pure Rain, SCR
+5, Knock Of Beers, 0, 0
+5, Night Colours, 0, 0
+5, Runway Ruler, 0, 0
+5, Triomphe, 0, 0
+6, Cable Dancer, 0, 0
+6, Tikemyson, 0, 0
+6, Lightning Express, 0, 0
+6, Unseen Ruler, 0, 0
+6, Aftermath, 0, 0
+6, Pianta, SCR
+6, Budjik Boy, 0, 0
+6, Mozu Marcassin, SCR
+6, Verona Rupes, 0, 0
+6, Kiss My Rock, 0, 0
+6, Breathless Spirit, 0, 0
+6, Omnic, 0, 0
+7, Unamerican, 0, 0
+7, I Could Do Better, SCR
+7, Spanish Snitzel, SCR
+7, Bell's Bighouse, 0, 0
+7, Final Impact, SCR
+7, Semper Fortis, 0, 0
+7, Amphactor, 0, 0
+7, Last Raider, 0, 0
+7, Kingsford, 0, 0
+7, Idling Behind, SCR
+7, Black Rutile, 0, 0
+7, La Reel Deal, 0, 0
+7, Princess Sakiko, 0, 0
+7, Julep, 0, 0

@@ -1,0 +1,7 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,HEAL_311026_1,Desert Boots,top_pick,0.0,0.0,0.0,,,1.99,-1.0,Already run to today's class; Class drop (rating); Blinkers first time,1.0,no,,
+2,HEAL_311026_2,Eidfjord,top_pick,0.0,0.0,0.0,,,2.31,-1.0,,1.0,no,,
+3,HEAL_311026_3,Crying Cougar,top_pick,0.0,0.0,0.0,,,3.2,-1.0,Proven wet on a wet track; Class drop (rating),1.0,no,,
+4,HEAL_311026_4,Maristela,top_pick,0.0,0.0,0.0,,,2.82,-1.0,Already run to today's class; Class drop (rating),1.0,no,,
+5,HEAL_311026_5,Springer Time,top_pick,0.0,0.0,0.0,,,2.95,-1.0,,1.0,no,,
+6,HEAL_311026_6,Scandoval,top_pick,0.0,0.0,0.0,,,3.43,-1.0,,1.0,no,,
