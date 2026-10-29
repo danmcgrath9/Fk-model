@@ -7,7 +7,6 @@
 "1|Rat Pack": [
 "Class drop (rating)"
 ],
-"1|Blue Gamble": [],
 "1|Latassa": [
 "Third-up, improving"
 ],
@@ -29,7 +28,7 @@
 ],
 "2|Perfect Riposte": [],
 "2|Savfield": [],
-"2|Diamond Virtue": [],
+"2|Money Wheel": [],
 "2|Specific Outcome": [
 "Class drop (rating)"
 ],
@@ -42,22 +41,27 @@
 ],
 "2|Sir Riverance": [],
 "2|Lady Blanc": [],
+"3|Angel Don't Cry": [
+"Class drop (rating)"
+],
 "3|Rwanda": [],
 "3|Kirkstone": [],
 "3|Dagger One": [],
+"3|Wunderlust": [],
 "3|All Eyes On Erin": [
 "Beaten by the pace last start",
 "Already run to today's class",
 "New career-best last start",
 "Class drop (rating)"
 ],
-"3|Lonnegan": [
+"3|Gold Bijoux": [
 "Class drop (rating)"
 ],
 "3|Youmanetic": [],
-"3|She Got Me Again": [],
-"3|Bold Amore": [],
-"3|Swiss Impact": [],
+"3|Pretty Stylish": [
+"New career-best last start",
+"Class drop (rating)"
+],
 "3|Saint Willo": [],
 "3|Riverlea Royal": [],
 "4|Rock The Bar": [
@@ -83,7 +87,6 @@
 "4|Lagunanini": [
 "Class drop (rating)"
 ],
-"5|Turnaquid": [],
 "5|Heidi Dancer": [
 "Class drop (rating)"
 ],
@@ -96,10 +99,6 @@
 "5|Elena Montero": [
 "Already run to today's class"
 ],
-"5|Divine Empress": [
-"Beaten by the pace last start",
-"Third-up, improving"
-],
 "5|Helluva Barty": [
 "Declining deep in prep"
 ],
@@ -107,14 +106,11 @@
 "5|Siriusly Bright": [
 "Above the field in all three sections"
 ],
-"5|Astari": [],
 "5|Adieu Grasse": [],
 "6|Stuntman": [
 "Beaten by the pace last start"
 ],
-"6|Nicoffhome": [
-"Declining deep in prep"
-],
+"6|Love Sparkles": [],
 "6|Olney": [
 "Already run to today's class"
 ],
@@ -162,7 +158,6 @@
 "8|Monsun's Pride": [
 "Third-up, improving"
 ],
-"8|Share The Stars": [],
 "8|Toronova": [],
 "8|Pro Velocity": [
 "Declining deep in prep",

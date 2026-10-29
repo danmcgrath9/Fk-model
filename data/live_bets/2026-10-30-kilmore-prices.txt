@@ -1,94 +1,94 @@
-# Kilmore Fri 30 Oct (going Good 4, founder 28 Oct; band Good): final fields pulled Wed 28 Oct 11:47am Melbourne; no market yet. Emergencies as SCR until they gain a start.
-1, Wavelets, 0, 0
-1, Akari Spirit, 0, 0
-1, Ghaluge, 0, 0
-1, Hansard, 0, 0
-1, Latassa, 0, 0
-1, Rat Pack, 0, 0
-1, Hot Pot Dot, 0, 0
-1, Enticement, 0, 0
-1, Blue Gamble, 0, 0
-1, Raisonic, 0, 0
-1, Southpole, 0, 0
-2, Shades Of Sheriff, SCR
-2, Money Wheel, SCR
-2, Mystic Rapture, 0, 0
-2, Couldbetracy, SCR
-2, Gypsy Moon, SCR
-2, Dempsey, 0, 0
-2, Sir Riverance, 0, 0
-2, Diamond Virtue, 0, 0
-2, Lady Blanc, 0, 0
-2, Specific Outcome, 0, 0
-2, Stash Royale, 0, 0
-2, Perfect Riposte, 0, 0
-2, Savfield, 0, 0
-2, Terracotta Warrior, 0, 0
-3, Dagger One, 0, 0
-3, Angel Don't Cry, SCR
-3, Wunderlust, SCR
-3, Pretty Stylish, SCR
-3, Youmanetic, 0, 0
-3, Bold Amore, 0, 0
-3, Riverlea Royal, 0, 0
-3, She Got Me Again, 0, 0
-3, Swiss Impact, 0, 0
-3, Kirkstone, 0, 0
-3, Rwanda, 0, 0
-3, Saint Willo, 0, 0
-3, Gold Bijoux, SCR
-3, Lonnegan, 0, 0
-3, All Eyes On Erin, 0, 0
-4, Golden Age, 0, 0
-4, Sistine Tunnel, 0, 0
-4, True Prophet, 0, 0
-4, Hells Son, 0, 0
-4, Manchego, 0, 0
-4, Rock The Bar, 0, 0
-4, Lagunanini, 0, 0
-4, Japanese Moka, 0, 0
-4, Golden Pulse, 0, 0
-5, Helluva Barty, 0, 0
-5, Turnaquid, 0, 0
-5, Snow On Her, 0, 0
-5, Strike Gold, 0, 0
-5, Elena Montero, 0, 0
-5, Heidi Dancer, 0, 0
-5, Smoke Screen, 0, 0
-5, Siriusly Bright, 0, 0
-5, Divine Empress, 0, 0
-5, Adieu Grasse, 0, 0
-5, Astari, 0, 0
-6, Superstock, 0, 0
-6, Love Sparkles, SCR
-6, Nicoffhome, 0, 0
-6, Mozu Marcassin, 0, 0
-6, State Of Affairs, 0, 0
-6, Tierra, 0, 0
-6, Olney, 0, 0
-6, She's Stargazing, 0, 0
-6, Stuntman, 0, 0
-6, Vespasian, 0, 0
-6, Earthly Crown, SCR
-6, Precambrian, 0, 0
-7, Titan Of Choice, 0, 0
-7, Testing The Cugat, 0, 0
-7, Queen Of Tuscany, 0, 0
-7, First Tosen, 0, 0
-7, Savethebesttillast, 0, 0
-7, Crimson Miss, 0, 0
-7, Smash Blue, 0, 0
-7, Ostrica, 0, 0
-7, Darating, 0, 0
-7, Royal Heritage, 0, 0
-8, Cable De Vega, 0, 0
-8, Toronova, 0, 0
-8, Monsun's Pride, 0, 0
-8, Share The Stars, 0, 0
-8, Pro Velocity, 0, 0
-8, Cheron Finale, 0, 0
-8, Mahmudah, 0, 0
-8, Left Hook, 0, 0
-8, Dance Lady, 0, 0
-8, Pomah, 0, 0
-8, Olympiad, 0, 0
+# Kilmore Fri 30 Oct, re-priced 9:30am Fri on the final field after scratchings (going Good 4)
+1, Wavelets, 5.50, 5.50, fk_open 9.00
+1, Akari Spirit, 3.90, 3.90, fk_open 4.65
+1, Ghaluge, 51.00, 51.00, fk_open 51.00
+1, Hansard, 101.00, 101.00, fk_open 138.50
+1, Latassa, 2.60, 2.60, fk_open 2.65
+1, Rat Pack, 23.00, 23.00, fk_open 24.50
+1, Hot Pot Dot, 81.00, 81.00, fk_open 101.00
+1, Enticement, 5.00, 5.00, fk_open 6.50
+1, Blue Gamble, SCR, last 4.80, fk_open 4.80
+1, Raisonic, 19.00, 19.00, fk_open 18.00
+1, Southpole, 9.00, 9.00, fk_open 10.00
+2, Shades Of Sheriff, SCR, last 41.00, fk_open 56.00
+2, Money Wheel, 41.00, 41.00, fk_open 28.50
+2, Mystic Rapture, 8.50, 8.50, fk_open 14.00
+2, Couldbetracy, SCR, last 126.00, fk_open 113.50
+2, Gypsy Moon, SCR, last 126.00, fk_open 101.00
+2, Dempsey, 21.00, 21.00, fk_open 14.50
+2, Sir Riverance, 14.00, 14.00, fk_open 14.00
+2, Diamond Virtue, SCR
+2, Lady Blanc, 26.00, 26.00, fk_open 26.50
+2, Specific Outcome, 81.00, 81.00, fk_open 56.00
+2, Stash Royale, 23.00, 23.00, fk_open 18.00
+2, Perfect Riposte, 4.60, 4.60, fk_open 4.05
+2, Savfield, 6.00, 6.00, fk_open 5.75
+2, Terracotta Warrior, 1.95, 1.95, fk_open 2.95
+3, Dagger One, 34.00, 34.00, fk_open 23.50
+3, Angel Don't Cry, 31.00, 31.00, fk_open 28.50
+3, Wunderlust, 61.00, 61.00, fk_open 56.00
+3, Pretty Stylish, 26.00, 26.00, fk_open 22.00
+3, Youmanetic, 13.00, 13.00, fk_open 7.50
+3, Bold Amore, SCR
+3, Riverlea Royal, 151.00, 151.00, fk_open 86.00
+3, She Got Me Again, SCR, last 12.00, fk_open 6.75
+3, Swiss Impact, SCR
+3, Kirkstone, 3.50, 3.50, fk_open 6.00
+3, Rwanda, 3.00, 3.00, fk_open 7.50
+3, Saint Willo, 5.00, 5.00, fk_open 4.00
+3, Gold Bijoux, 34.00, 34.00, fk_open 22.00
+3, Lonnegan, SCR, last 5.00, fk_open 5.25
+3, All Eyes On Erin, 5.00, 5.00, fk_open 5.50
+4, Golden Age, 61.00, 61.00, fk_open 41.00
+4, Sistine Tunnel, 6.25, 6.25, fk_open 9.00
+4, True Prophet, 15.00, 15.00, fk_open 13.00
+4, Hells Son, 41.00, 41.00, fk_open 41.00
+4, Manchego, 3.20, 3.20, fk_open 3.90
+4, Rock The Bar, 16.00, 16.00, fk_open 23.00
+4, Lagunanini, 5.00, 5.00, fk_open 4.40
+4, Japanese Moka, 3.10, 3.10, fk_open 2.40
+4, Golden Pulse, 13.00, 13.00, fk_open 7.00
+5, Helluva Barty, 11.00, 11.00, fk_open 5.50
+5, Turnaquid, SCR, last 14.00, fk_open 18.00
+5, Snow On Her, 81.00, 81.00, fk_open 71.00
+5, Strike Gold, 10.00, 10.00, fk_open 11.00
+5, Elena Montero, 6.00, 6.00, fk_open 7.50
+5, Heidi Dancer, 7.50, 7.50, fk_open 8.50
+5, Smoke Screen, 6.75, 6.75, fk_open 7.50
+5, Siriusly Bright, 4.00, 4.00, fk_open 3.10
+5, Divine Empress, SCR
+5, Adieu Grasse, 3.10, 3.10, fk_open 7.00
+5, Astari, SCR
+6, Superstock, 3.20, 3.20, fk_open 4.40
+6, Love Sparkles, 21.00, 21.00, fk_open 12.00
+6, Nicoffhome, SCR
+6, Mozu Marcassin, 17.00, 17.00, fk_open 13.50
+6, State Of Affairs, 19.00, 19.00, fk_open 12.00
+6, Tierra, 5.00, 5.00, fk_open 8.75
+6, Olney, 12.00, 12.00, fk_open 8.75
+6, She's Stargazing, 14.00, 14.00, fk_open 11.50
+6, Stuntman, 4.60, 4.60, fk_open 3.75
+6, Vespasian, 8.50, 8.50, fk_open 4.80
+6, Earthly Crown, SCR, last 34.00, fk_open 41.00
+6, Precambrian, 61.00, 61.00, fk_open 22.00
+7, Titan Of Choice, 7.00, 7.00, fk_open 6.00
+7, Testing The Cugat, 12.00, 12.00, fk_open 8.00
+7, Queen Of Tuscany, 5.75, 5.75, fk_open 5.00
+7, First Tosen, 61.00, 61.00, fk_open 61.00
+7, Savethebesttillast, 13.00, 13.00, fk_open 13.00
+7, Crimson Miss, 4.60, 4.60, fk_open 4.80
+7, Smash Blue, 6.00, 6.00, fk_open 7.00
+7, Ostrica, 8.50, 8.50, fk_open 7.00
+7, Darating, 8.50, 8.50, fk_open 11.00
+7, Royal Heritage, 8.50, 8.50, fk_open 7.00
+8, Cable De Vega, 13.00, 13.00, fk_open 13.50
+8, Toronova, 41.00, 41.00, fk_open 37.50
+8, Monsun's Pride, 10.00, 10.00, fk_open 11.00
+8, Share The Stars, SCR
+8, Pro Velocity, 31.00, 31.00, fk_open 25.00
+8, Cheron Finale, 10.00, 10.00, fk_open 14.50
+8, Mahmudah, 5.00, 5.00, fk_open 5.15
+8, Left Hook, 4.20, 4.20, fk_open 5.25
+8, Dance Lady, 7.50, 7.50, fk_open 9.75
+8, Pomah, 4.60, 4.60, fk_open 5.50
+8, Olympiad, 8.50, 8.50, fk_open 10.25

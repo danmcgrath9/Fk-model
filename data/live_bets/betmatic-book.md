@@ -119,8 +119,9 @@ scratchings). The backtest says the top-up slice loses (t_topup.py: -7.6% holdou
 | 2026-10-27 Swan Hill | R2 | Magna Sententia (R2 has first starters) | $4.00 | $3.50 | $2.90 | 0.00u | 3.09u | 3rd, SP $2.70, BSP $3.04 | -3.09 |
 | 2026-10-27 Swan Hill | R7 | His Finest Hour | $6.50 | $7.00 | $5.20 | 0.00u | 2.08u | 7th, SP $4.60, BSP $5.98 | -2.08 |
 | 2026-10-27 Swan Hill | R8 | Baganov | $10.00 | $10.00 | $7.90 | 0.00u | 1.08u | 10th, SP $10, BSP $12.50 | -1.08 |
-| 2026-10-28 Bendigo | R2 | Centenary Florin | $3.70 | $4.40 | $2.94 | 0.00u | 5.11u | | |
-| 2026-10-28 Bendigo | R8 | Litzdeel | $8.50 | $8.50 | $6.24 | 1.48u | 0.26u | | |
+| 2026-10-28 Bendigo | R2 | Centenary Florin | $3.70 | $4.40 | $2.94 | 0.00u | 5.11u | 4th, SP $4.20, BSP $5.12 | -5.11 |
+| 2026-10-28 Bendigo | R8 | Litzdeel | $8.50 | $8.50 | $6.24 | 1.48u | 0.26u | 3rd, SP $9, BSP $10 | -0.26 |
+| 2026-10-30 Pakenham | R8 | Shidan | $19.00 | $8.00 | $6.64 | 0.00u (opened over the $15.84 max) | 1.09u | | |
 
 Warrnambool 15 Oct (re-priced 9:34am Thursday, 11 scratched, jockeys and gear in): 6 value-at-open runners on the final field, 1 top-up, Who I Think I Am 0.40u at $4.60; the rest are under take-at now.
 Caulfield 14 Oct (re-priced 8:45am): 5 value-at-open runners on the final field, all under take-at at race-morning prices, so no top-ups.
@@ -614,3 +615,10 @@ Lay book to date: 14 lays, 0 winners, +12.88u.
 Week Mon 26 - Thu 29 Oct, paper at the open (model stakes; Wangaratta = the halved card doubled): 4 meetings, 22 bets,
 4 won, 79.86u, +56.63u, ROI +71% (Wangaratta +35.34, Swan Hill +45.88, Bendigo -6.87, Warrnambool -17.72).
 Twitter cards: 39.04u, +13.38u, ROI +34% (Swan Hill at BSP). Top-ups: 9 bets, 18.75u, -8.53u. Real money: none this week (bot).
+
+Kilmore and Pakenham Fri 30 Oct, 9:30am (re-priced 8:35am Fri on the final field). Kilmore: 4 value-at-open runners, no top-ups
+(Wavelets, Manchego, Adieu Grasse and Cable De Vega all under take-at now). Pakenham: R1 lost SIX runners overnight (Cowboykickedfive,
+Marco Polo, Tempered Edge, Whitebait, Ambition In Bloom, Seven Sons), so Viking Kid and Via Theresa carry a big R1 deduction; one top-up,
+Shidan (R8) 1.09u at $8 (opened $19, over the order's $15.84 max, so BetMatic took nothing). Voltrix (R4, $6 now, ours $3.88) is value
+but R4 is off (first starters, founder) and is not topped up. topup.py fixed the same morning: it counted an order as filled
+whenever the open cleared min_odds, ignoring max_odds (Shidan and Viking Kid's under-$4 tier were both mis-counted).

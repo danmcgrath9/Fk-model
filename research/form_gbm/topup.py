@@ -32,7 +32,9 @@ def main():
     if os.path.exists(orders):
         for o in csv.DictReader(open(orders)):
             k = (int(o["race"]), norm(o["horse"]))
-            if k in px and px[k][1] and px[k][1] >= float(o["min_odds"]):
+            # an order fills only inside its band: a price over max_odds (the 3x ceiling, or the next tier's floor) took nothing
+            # (30 Oct 2026: Shidan opened $19 over a $15.84 max and was counted as filled, so its top-up was missed)
+            if k in px and px[k][1] and float(o["min_odds"]) <= px[k][1] <= float(o.get("max_odds") or "inf"):
                 got[k] = got.get(k, 0.0) + float(o["stake_units"])
     v = json.load(open(f"{L}/{a.prefix}-{a.gtag}-v6.json"))
     field = {}

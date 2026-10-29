@@ -1,110 +1,110 @@
-# Pakenham Fri 30 Oct (going Good 4, founder 28 Oct; band Good): final fields pulled Wed 28 Oct 11:51am Melbourne; no market yet. Emergencies as SCR until they gain a start.
-1, Cowboykickedfive, 0, 0
-1, Marco Polo, 0, 0
-1, Tempered Edge, 0, 0
-1, Pierrobid, 0, 0
-1, Whitebait, 0, 0
-1, Ambition In Bloom, 0, 0
-1, Fine And Sunny, 0, 0
-1, Endemic, 0, 0
-1, Your It, 0, 0
-1, Seven Sons, 0, 0
-1, Viking Kid, 0, 0
-1, Via Theresa, 0, 0
-2, Immortal Diva, 0, 0
-2, Moonlight Romance, SCR
-2, Fierce Ruby, 0, 0
-2, Galway Gal, 0, 0
-2, Plucky Enuff, 0, 0
-2, Celestial Ruler, 0, 0
-2, Shields, 0, 0
-2, Helizangel, 0, 0
-2, Capital Affair, 0, 0
-2, Briagolong, 0, 0
-2, Zapatch, 0, 0
-2, Shemesh, 0, 0
-2, Call Me Later, 0, 0
-3, Powershare, 0, 0
-3, Zwasp, 0, 0
-3, Capital Charlie, 0, 0
-3, Hill Of Olives, 0, 0
-3, Frandema, 0, 0
-3, Wyandra, 0, 0
-3, Shipping Steel, 0, 0
-3, Celestial Blue, 0, 0
-3, Celestial Magnate, 0, 0
-3, Jewel City, 0, 0
-3, Chantess, 0, 0
-3, Diamond Heist, 0, 0
-4, Ace Strike, 0, 0
-4, Storm Bella, 0, 0
-4, Iron Eagle, 0, 0
-4, Whiskey Blu, 0, 0
-4, Gwen In Rome, 0, 0
-4, Mongolian Hero, SCR
-4, Berardo, 0, 0
-4, Lomu, 0, 0
-4, Optimus, SCR
-4, Percipient, 0, 0
-4, Charmingly, 0, 0
-4, Slugger, 0, 0
-4, Red Tide, SCR
-4, Engulf, SCR
-4, Voltrix, 0, 0
-4, Pocket Watch, 0, 0
-5, Smart Little Miss, 0, 0
-5, Trak Chiller, 0, 0
-5, Illuminance, 0, 0
-5, Pocket Size, 0, 0
-5, Lots Of Time, 0, 0
-5, Efferato, 0, 0
-5, Bardia's Dream, 0, 0
-5, Rapid Cheval, 0, 0
-5, Bee Admired, SCR
-5, Mykindakandy, SCR
-5, Outer Banks, SCR
-5, Lightwatch, SCR
-5, Kippis, 0, 0
-5, Befuddle, 0, 0
-5, Cattle Camp, 0, 0
-5, In A Tizzy, 0, 0
-6, Bifrost, 0, 0
-6, Mafee, 0, 0
-6, Abovethefrostline, 0, 0
-6, Heartattack Jack, 0, 0
-6, Eureka Rose, 0, 0
-6, Les Braves, 0, 0
-6, Sharing Moments, 0, 0
-6, Nordic Strike, SCR
-6, Ain't A Bad Day, 0, 0
-6, Bel Lupa, 0, 0
-6, Watten Assett, 0, 0
-6, Simply Steffi, 0, 0
-6, Nitro Sonic, 0, 0
-7, Korobeiniki, 0, 0
-7, Glenfinnan, 0, 0
-7, Garnacho, 0, 0
-7, En Flique, 0, 0
-7, Two Sigma, 0, 0
-7, Galant Knight, 0, 0
-7, Venetian Choice, 0, 0
-7, Handsome Missile, 0, 0
-7, Kakkoii, 0, 0
-7, Little Richo, 0, 0
-7, Island Boy, 0, 0
-8, Dollar Chaser, 0, 0
-8, Empressive Enuff, 0, 0
-8, British Columbia, 0, 0
-8, Count Of Toulouse, SCR
-8, Russian Front, SCR
-8, Jewel Bay, 0, 0
-8, Nearing Liberty, 0, 0
-8, Dundonald, 0, 0
-8, Blue Bandit, 0, 0
-8, Shidan, 0, 0
-8, Zourain, 0, 0
-8, Panda's Spectrum, 0, 0
-8, Cool Savanna, SCR
-8, Jenni Poppins, SCR
-8, Discover Lupino, 0, 0
-8, The Flying Popov, 0, 0
+# Pakenham Fri 30 Oct, re-priced 9:30am Fri on the final field after scratchings (going Good 4)
+1, Cowboykickedfive, SCR, last 14.00, fk_open 7.00
+1, Marco Polo, SCR, last 10.00, fk_open 9.00
+1, Tempered Edge, SCR, last 14.00, fk_open 6.00
+1, Pierrobid, 19.00, 19.00, fk_open 17.00
+1, Whitebait, SCR, last 19.00, fk_open 16.00
+1, Ambition In Bloom, SCR, last 9.00, fk_open 8.00
+1, Fine And Sunny, 8.00, 8.00, fk_open 17.00
+1, Endemic, 2.50, 2.50, fk_open 3.40
+1, Your It, 71.00, 71.00, fk_open 81.00
+1, Seven Sons, SCR, last 101.00, fk_open 61.00
+1, Viking Kid, 1.95, 1.95, fk_open 4.60
+1, Via Theresa, 9.00, 9.00, fk_open 26.00
+2, Immortal Diva, 151.00, 151.00, fk_open 51.00
+2, Moonlight Romance, 126.00, 126.00, fk_open 61.00
+2, Fierce Ruby, 51.00, 51.00, fk_open 51.00
+2, Galway Gal, 9.00, 9.00, fk_open 6.00
+2, Plucky Enuff, 7.00, 7.00, fk_open 5.00
+2, Celestial Ruler, 19.00, 19.00, fk_open 9.25
+2, Shields, SCR, last 18.00, fk_open 9.75
+2, Helizangel, 5.50, 5.50, fk_open 3.65
+2, Capital Affair, 23.00, 23.00, fk_open 22.00
+2, Briagolong, 151.00, 151.00, fk_open 101.00
+2, Zapatch, 126.00, 126.00, fk_open 32.50
+2, Shemesh, 1.90, 1.90, fk_open 3.90
+2, Call Me Later, 7.00, 7.00, fk_open 14.00
+3, Powershare, 151.00, 151.00, fk_open 151.00
+3, Zwasp, 101.00, 101.00, fk_open 61.00
+3, Capital Charlie, 14.00, 14.00, fk_open 11.50
+3, Hill Of Olives, 29.00, 29.00, fk_open 22.50
+3, Frandema, 4.00, 4.00, fk_open 5.50
+3, Wyandra, 5.25, 5.25, fk_open 5.00
+3, Shipping Steel, 81.00, 81.00, fk_open 32.50
+3, Celestial Blue, 2.80, 2.80, fk_open 4.30
+3, Celestial Magnate, 14.00, 14.00, fk_open 8.00
+3, Jewel City, 23.00, 23.00, fk_open 22.00
+3, Chantess, 4.60, 4.60, fk_open 4.20
+3, Diamond Heist, SCR, last 13.00, fk_open 9.25
+4, Ace Strike, 10.00, 10.00, fk_open 9.75
+4, Storm Bella, SCR, last 51.00, fk_open 41.00
+4, Iron Eagle, 34.00, 34.00, fk_open 24.50
+4, Whiskey Blu, 151.00, 151.00, fk_open 91.00
+4, Gwen In Rome, SCR, last 5.50, fk_open 7.25
+4, Mongolian Hero, 4.40, 4.40, fk_open 10.00
+4, Berardo, 7.50, 7.50, fk_open 6.25
+4, Lomu, 3.00, 3.00, fk_open 4.90
+4, Optimus, SCR, last 14.00, fk_open 15.00
+4, Percipient, SCR, last 8.50, fk_open 7.25
+4, Charmingly, 26.00, 26.00, fk_open 17.00
+4, Slugger, 11.00, 11.00, fk_open 8.25
+4, Red Tide, 18.00, 18.00, fk_open 15.00
+4, Engulf, 13.00, 13.00, fk_open 11.00
+4, Voltrix, 6.00, 6.00, fk_open 4.90
+4, Pocket Watch, SCR, last 12.00, fk_open 9.75
+5, Smart Little Miss, 19.00, 19.00, fk_open 26.00
+5, Trak Chiller, 34.00, 34.00, fk_open 31.00
+5, Illuminance, 10.00, 10.00, fk_open 8.00
+5, Pocket Size, 12.00, 12.00, fk_open 10.00
+5, Lots Of Time, 26.00, 26.00, fk_open 15.00
+5, Efferato, 7.00, 7.00, fk_open 5.00
+5, Bardia's Dream, 11.00, 11.00, fk_open 10.00
+5, Rapid Cheval, 34.00, 34.00, fk_open 34.00
+5, Bee Admired, SCR, last 10.00, fk_open 13.00
+5, Mykindakandy, SCR, last 12.00, fk_open 17.00
+5, Outer Banks, SCR, last 23.00, fk_open 26.00
+5, Lightwatch, SCR, last 20.00, fk_open 26.00
+5, Kippis, 10.00, 10.00, fk_open 9.00
+5, Befuddle, 6.50, 6.50, fk_open 6.00
+5, Cattle Camp, 8.00, 8.00, fk_open 9.00
+5, In A Tizzy, 3.50, 3.50, fk_open 4.40
+6, Bifrost, 11.00, 11.00, fk_open 9.50
+6, Mafee, 13.00, 13.00, fk_open 11.00
+6, Abovethefrostline, 34.00, 34.00, fk_open 18.00
+6, Heartattack Jack, 101.00, 101.00, fk_open 71.00
+6, Eureka Rose, 29.00, 29.00, fk_open 18.00
+6, Les Braves, 6.50, 6.50, fk_open 4.20
+6, Sharing Moments, 4.00, 4.00, fk_open 7.00
+6, Nordic Strike, SCR, last 5.50, fk_open 5.00
+6, Ain't A Bad Day, 51.00, 51.00, fk_open 34.00
+6, Bel Lupa, 4.80, 4.80, fk_open 6.50
+6, Watten Assett, 8.50, 8.50, fk_open 7.50
+6, Simply Steffi, 7.50, 7.50, fk_open 6.00
+6, Nitro Sonic, 10.00, 10.00, fk_open 7.00
+7, Korobeiniki, 16.00, 16.00, fk_open 11.00
+7, Glenfinnan, 10.00, 10.00, fk_open 18.50
+7, Garnacho, 7.00, 7.00, fk_open 11.50
+7, En Flique, 13.00, 13.00, fk_open 11.00
+7, Two Sigma, 10.00, 10.00, fk_open 6.50
+7, Galant Knight, 5.75, 5.75, fk_open 5.00
+7, Venetian Choice, 12.00, 12.00, fk_open 9.00
+7, Handsome Missile, 14.00, 14.00, fk_open 15.50
+7, Kakkoii, 13.00, 13.00, fk_open 6.00
+7, Little Richo, 4.60, 4.60, fk_open 8.00
+7, Island Boy, 7.50, 7.50, fk_open 6.00
+8, Dollar Chaser, 11.00, 11.00, fk_open 13.00
+8, Empressive Enuff, 12.00, 12.00, fk_open 12.00
+8, British Columbia, 41.00, 41.00, fk_open 41.00
+8, Count Of Toulouse, SCR, last 34.00, fk_open 81.00
+8, Russian Front, 12.00, 12.00, fk_open 11.00
+8, Jewel Bay, 17.00, 17.00, fk_open 16.00
+8, Nearing Liberty, 9.00, 9.00, fk_open 4.00
+8, Dundonald, 26.00, 26.00, fk_open 71.00
+8, Blue Bandit, 10.00, 10.00, fk_open 13.00
+8, Shidan, 8.00, 8.00, fk_open 19.00
+8, Zourain, 8.50, 8.50, fk_open 12.00
+8, Panda's Spectrum, 10.00, 10.00, fk_open 5.00
+8, Cool Savanna, SCR, last 13.00, fk_open 10.00
+8, Jenni Poppins, SCR, last 8.50, fk_open 8.00
+8, Discover Lupino, SCR, last 13.00, fk_open 12.00
+8, The Flying Popov, 3.40, 3.40, fk_open 3.20
