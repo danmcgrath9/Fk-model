@@ -1,0 +1,68 @@
+# Wycheproof Sat 31 Oct (official going, Form King; priced Thu 29 Oct pre-market)
+1, Ask The Captain, 0, 0
+1, Dukey, 0, 0
+1, Eminent Ella, 0, 0
+1, Path To Victory, 0, 0
+1, Khan Capital, 0, 0
+1, An Poitin Still, 0, 0
+1, Norfolk Victory, 0, 0
+1, Ruthless Soul, 0, 0
+2, Roughnut, 0, 0
+2, Aki, SCR
+2, I Am Vengeance, SCR
+2, Shaykhlislamova, 0, 0
+2, More Give It, 0, 0
+2, Presno, 0, 0
+2, Water Mill, 0, 0
+2, Rapid Fury, 0, 0
+2, Scorching Beauty, 0, 0
+3, Captivating Storm, SCR
+3, Saraya, 0, 0
+3, Manhattan Darling, 0, 0
+3, Norenson, 0, 0
+3, True Spirit, 0, 0
+3, Noddy's Girl, 0, 0
+3, Chasing Atlantis, 0, 0
+3, Love Runs Deep, 0, 0
+3, Coco La Boss, 0, 0
+4, Raging Monkey, 0, 0
+4, Wind Dreamer, 0, 0
+4, Airclash, 0, 0
+4, Dougie's Dream, 0, 0
+4, Bokeem, 0, 0
+4, Deep Core, SCR
+4, Derelict, 0, 0
+4, Minesite, 0, 0
+4, Showtime Kistena, SCR
+4, Highland George, SCR
+4, Grumpyoldcol, 0, 0
+5, Bannerton, 0, 0
+5, Winds Of March, 0, 0
+5, Dusty's Deel, 0, 0
+5, Dubai Legend, 0, 0
+5, Discobay, 0, 0
+5, Pendante, SCR
+5, Marbastion, 0, 0
+5, Reward With A Rose, SCR
+5, Danzagrunt, 0, 0
+5, Reel Hot, 0, 0
+5, Kamarooka, SCR
+6, Mangione, 0, 0
+6, Gift Of Oratory, 0, 0
+6, Scalextrics, 0, 0
+6, Switch Hit, 0, 0
+6, Space Age, 0, 0
+6, Paltinian, 0, 0
+6, Sea Strike, 0, 0
+6, Isalot, 0, 0
+7, Billie Bronx, 0, 0
+7, Saint Lazare, 0, 0
+7, Chosen Venture, SCR
+7, Hellberg, 0, 0
+7, Immortal Justice, SCR
+7, Vivid Blooms, SCR
+7, Flying Jude, 0, 0
+7, French Reign, 0, 0
+7, Nostro Roccia, 0, 0
+7, Luminary Miss, 0, 0
+7, Snakeinthegrass, 0, 0

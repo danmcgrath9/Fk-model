@@ -1,0 +1,102 @@
+# Traralgon Sat 31 Oct (official going, Form King; priced Thu 29 Oct pre-market)
+1, Style Guide, 0, 0
+1, Chronic, 0, 0
+1, Coteau, SCR
+1, Castelli In Aria, 0, 0
+1, Pipe Hitter, SCR
+1, Laundering, SCR
+1, Expanding Power, 0, 0
+1, Full Zoom, 0, 0
+1, Aces Full, 0, 0
+1, Barossa Bourbon, 0, 0
+1, Hammer Head, 0, 0
+1, Mo, SCR
+1, Pinazaki, 0, 0
+1, Our Brud, 0, 0
+2, Reelness, 0, 0
+2, Jupiter's Girl, SCR
+2, Dun Gracefully, 0, 0
+2, Inner Thoughts, SCR
+2, Blue Parrot, 0, 0
+2, Doubt It's Love, 0, 0
+2, Miss Belajo, 0, 0
+2, He's Fierce, 0, 0
+2, Zouie, 0, 0
+2, Johnny Tightlips, 0, 0
+2, Pasatiempo, SCR
+2, Prestige Hellbent, 0, 0
+2, Irish Eclipse, 0, 0
+2, Opunake, SCR
+2, The Destroyer, 0, 0
+2, Satoshi, 0, 0
+3, Mwamba, SCR
+3, Rico, 0, 0
+3, Maharani Miss, SCR
+3, Vadar, 0, 0
+3, Top Liner, 0, 0
+3, Baldoni, 0, 0
+3, Tennessee Link, 0, 0
+3, Guthrie, 0, 0
+3, The White Bull, 0, 0
+3, Shuwaib, 0, 0
+3, Lacessit, 0, 0
+3, Amsterdam Nights, 0, 0
+3, Girl With A Pearl, 0, 0
+3, Kermalina, 0, 0
+4, Redwood Shadow, SCR
+4, Mac Kalhoun, 0, 0
+4, Spirit Angel, 0, 0
+4, Golden Hips, 0, 0
+4, Eight Shout's, 0, 0
+4, Avonview, 0, 0
+4, In Your Hands, SCR
+4, Blanche Bass, 0, 0
+4, Mannerheim, 0, 0
+4, Up And Under, 0, 0
+4, Preservator, SCR
+4, Kiwiesque, 0, 0
+4, Tassadar, 0, 0
+4, Riozino, 0, 0
+4, King Of Savoy, 0, 0
+5, Anything But, SCR
+5, I'm Dynamite, 0, 0
+5, Epicus, 0, 0
+5, Headstock, 0, 0
+5, Ze Bee Nine, 0, 0
+5, Mont Saint Michel, 0, 0
+5, Frederick, 0, 0
+5, Aussieaussieaussie, 0, 0
+5, Neck High, SCR
+5, Grand Sage, SCR
+5, Cuban Dawn, SCR
+5, Clinger, 0, 0
+5, Nikephoros, 0, 0
+5, It's Gnarly, 0, 0
+6, Satin Image, SCR
+6, Night Eruption, SCR
+6, Kulina, SCR
+6, Ocean's Jen, 0, 0
+6, Lulu Darling, 0, 0
+6, Aria Electra, 0, 0
+6, Alpinova, 0, 0
+6, Nicking Gracie, SCR
+6, Tarakash, 0, 0
+6, Trinity's D'oro, 0, 0
+6, She Nailed It, 0, 0
+6, Kaddari, 0, 0
+6, So You Excel, 0, 0
+6, Regal Visions, 0, 0
+7, Moonlight Rustler, SCR
+7, The Cruiser, SCR
+7, Kyokushin, 0, 0
+7, Irresistible Sir, 0, 0
+7, Unriddle, 0, 0
+7, Flying Mean, 0, 0
+7, Bring The Thunder, 0, 0
+7, Bleak Mid Winter, 0, 0
+7, Diamond Mila, 0, 0
+7, Oriental Dane, 0, 0
+7, O'mosa, 0, 0
+7, Stewart, 0, 0
+7, Rock Glory, 0, 0
+7, Beau Strada, 0, 0
