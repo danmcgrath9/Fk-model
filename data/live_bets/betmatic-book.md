@@ -305,117 +305,117 @@ The rule is fixed before the first race (research/form_gbm/README.md, 23 Oct; t_
 
 | Date | Meeting | Race | Horse | Ours | Trigger (BSP at least) | BSP | Result | P/L (u) |
 |---|---|---|---|---|---|---|---|---|
-| 2026-10-28 | Bendigo | R1 | Magnusaurus Rex | $10.63 | $17.00 | | | |
-| 2026-10-28 | Bendigo | R1 | Resonant | $2.53 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R1 | Running Rich | $5.15 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R1 | Scoville | $4.00 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R1 | Vixen Vibes | $22.11 | $35.37 | | | |
-| 2026-10-28 | Bendigo | R2 | Centenary Florin | $2.85 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R2 | Hydro Rush | $6.98 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R2 | Nickibi | $9.50 | $15.20 | | | |
-| 2026-10-28 | Bendigo | R2 | Purgatorio | $4.09 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R2 | Sound Byte | $6.43 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R3 | Prestige Lucky | $6.28 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R3 | Purple Streak | $4.10 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R3 | Romantic Miss | $10.19 | $16.31 | | | |
-| 2026-10-28 | Bendigo | R3 | Savoyard | $11.75 | $18.80 | | | |
-| 2026-10-28 | Bendigo | R3 | Sea Poem | $11.01 | $17.62 | | | |
-| 2026-10-28 | Bendigo | R3 | Star Of Omaha | $23.56 | $37.69 | | | |
-| 2026-10-28 | Bendigo | R3 | Yukaina | $5.44 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R4 | Amawasha | $20.35 | $32.56 | | | |
-| 2026-10-28 | Bendigo | R4 | Celtic Park | $10.70 | $17.13 | | | |
-| 2026-10-28 | Bendigo | R4 | Hollandia | $20.47 | $32.75 | | | |
-| 2026-10-28 | Bendigo | R4 | Melek | $3.24 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R4 | No Rumours | $19.28 | $30.84 | | | |
-| 2026-10-28 | Bendigo | R4 | Pee Bee Noir | $17.17 | $27.48 | | | |
-| 2026-10-28 | Bendigo | R4 | Salsita | $18.02 | $28.83 | | | |
-| 2026-10-28 | Bendigo | R4 | Yahoo Bar | $4.09 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R5 | Cushioned | $5.59 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R5 | Itsukushima | $23.26 | $37.22 | | | |
-| 2026-10-28 | Bendigo | R5 | Jenni You Think | $4.30 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R5 | Kiwi Jenni | $16.56 | $26.49 | | | |
-| 2026-10-28 | Bendigo | R5 | Mr Independent | $20.51 | $32.81 | | | |
-| 2026-10-28 | Bendigo | R5 | Savannah Chill | $15.30 | $24.47 | | | |
-| 2026-10-28 | Bendigo | R5 | The Muffin Man | $4.75 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R6 | Fission | $24.28 | $38.84 | | | |
-| 2026-10-28 | Bendigo | R6 | Ka Ying Cheer | $22.17 | $35.48 | | | |
-| 2026-10-28 | Bendigo | R6 | Lawborough | $3.20 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R6 | Weapon Clear | $16.86 | $26.98 | | | |
-| 2026-10-28 | Bendigo | R6 | Wingsandpropellers | $18.16 | $29.06 | | | |
-| 2026-10-28 | Bendigo | R6 | Yes Yoshi | $3.15 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R6 | Yolo | $15.35 | $24.57 | | | |
-| 2026-10-28 | Bendigo | R7 | Alero | $6.90 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R7 | Dirty Look | $2.40 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R7 | Flying Embers | $8.05 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R7 | Jamesjohno | $22.90 | $36.63 | | | |
-| 2026-10-28 | Bendigo | R7 | Legacy Bay | $9.75 | $15.60 | | | |
-| 2026-10-28 | Bendigo | R7 | Wolf Twenty One | $22.76 | $36.42 | | | |
-| 2026-10-28 | Bendigo | R7 | Zourain | $22.73 | $36.37 | | | |
-| 2026-10-28 | Bendigo | R8 | Berkeley Square | $19.87 | $31.79 | | | |
-| 2026-10-28 | Bendigo | R8 | Grand Pierro | $16.76 | $26.81 | | | |
-| 2026-10-28 | Bendigo | R8 | Kings Valley | $5.65 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R8 | Litzdeel | $5.70 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R8 | Machine Gun Gracie | $16.41 | $26.26 | | | |
-| 2026-10-28 | Bendigo | R8 | See That Storm | $8.66 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R8 | So You Are | $8.61 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R8 | Starford | $22.80 | $36.48 | | | |
-| 2026-10-28 | Bendigo | R8 | Suntora | $15.14 | $24.22 | | | |
-| 2026-10-28 | Bendigo | R8 | The Euphrates | $12.99 | $20.79 | | | |
-| 2026-10-28 | Bendigo | R9 | Bel Mezyaan | $4.42 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R9 | Col Klink | $3.09 | $15.00 | | | |
-| 2026-10-28 | Bendigo | R9 | Hiyaam Proud | $16.12 | $25.80 | | | |
-| 2026-10-28 | Bendigo | R9 | Rosa Aotearoa | $10.10 | $16.17 | | | |
-| 2026-10-28 | Bendigo | R9 | Silver Bullet | $12.46 | $19.93 | | | |
-| 2026-10-28 | Bendigo | R9 | Spirited Defence | $22.18 | $35.49 | | | |
-| 2026-10-29 | Warrnambool | R1 | Alltogethernow | $18.40 | $29.43 | | | |
-| 2026-10-29 | Warrnambool | R1 | Lord Timo | $16.13 | $25.80 | | | |
-| 2026-10-29 | Warrnambool | R1 | Ned Kelly | $2.67 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R1 | Paramount War | $3.19 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R1 | Rang A Round Up | $9.30 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R1 | Rollin'ontheriver | $22.67 | $36.27 | | | |
-| 2026-10-29 | Warrnambool | R2 | Both Sides Now | $4.63 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R2 | Crossoverkid | $6.33 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R2 | Heed The Omens | $10.71 | $17.13 | | | |
-| 2026-10-29 | Warrnambool | R2 | Hoodys Horse | $12.40 | $19.83 | | | |
-| 2026-10-29 | Warrnambool | R2 | Newcombe | $12.55 | $20.09 | | | |
-| 2026-10-29 | Warrnambool | R2 | Parkrun | $24.17 | $38.67 | | | |
-| 2026-10-29 | Warrnambool | R2 | Share The Stars | $7.53 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R2 | The Daily Planet | $9.35 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R3 | Grandpa Neil | $10.03 | $16.04 | | | |
-| 2026-10-29 | Warrnambool | R3 | Nick Knockdown | $9.38 | $15.01 | | | |
-| 2026-10-29 | Warrnambool | R3 | Tuscan Rose | $3.47 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R4 | Hughie's Spirit | $19.59 | $31.35 | | | |
-| 2026-10-29 | Warrnambool | R4 | Mamzelle Raine | $23.51 | $37.61 | | | |
-| 2026-10-29 | Warrnambool | R5 | Big Vee | $7.60 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R5 | Celestaria | $10.13 | $16.21 | | | |
-| 2026-10-29 | Warrnambool | R5 | Circus Circus | $12.45 | $19.91 | | | |
-| 2026-10-29 | Warrnambool | R5 | Leona | $2.93 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R5 | Piklemegranmother | $23.41 | $37.46 | | | |
-| 2026-10-29 | Warrnambool | R5 | Semper Augustus | $20.72 | $33.15 | | | |
-| 2026-10-29 | Warrnambool | R5 | Zercardy | $5.98 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R6 | Ballynacally | $4.33 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R6 | Bancoora | $15.23 | $24.37 | | | |
-| 2026-10-29 | Warrnambool | R6 | Icy Pole | $7.89 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R6 | King West | $4.43 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R6 | Pastoral King | $5.05 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R6 | Secret Crossing | $12.11 | $19.37 | | | |
-| 2026-10-29 | Warrnambool | R7 | Crickwood | $3.36 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R7 | Du Clisson | $3.21 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R7 | Francine | $10.43 | $16.68 | | | |
-| 2026-10-29 | Warrnambool | R7 | Leantothemoon | $15.06 | $24.10 | | | |
-| 2026-10-29 | Warrnambool | R7 | Meisho | $20.98 | $33.57 | | | |
-| 2026-10-29 | Warrnambool | R7 | Torlaah | $19.49 | $31.18 | | | |
-| 2026-10-29 | Warrnambool | R7 | Twister | $8.87 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R8 | Asal | $9.67 | $15.47 | | | |
-| 2026-10-29 | Warrnambool | R8 | Boggy Creek Boys | $20.39 | $32.63 | | | |
-| 2026-10-29 | Warrnambool | R8 | Cachink | $11.24 | $17.99 | | | |
-| 2026-10-29 | Warrnambool | R8 | Charming Deel | $4.18 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R8 | Dealer Sing | $19.17 | $30.68 | | | |
-| 2026-10-29 | Warrnambool | R8 | Designs Of Eight | $24.01 | $38.42 | | | |
-| 2026-10-29 | Warrnambool | R8 | Gunado | $14.14 | $22.63 | | | |
-| 2026-10-29 | Warrnambool | R8 | Invisible Magic | $5.96 | $15.00 | | | |
-| 2026-10-29 | Warrnambool | R8 | Sotomayor | $13.48 | $21.57 | | | |
-| 2026-10-29 | Warrnambool | R8 | Super Snitch | $18.16 | $29.05 | | | |
+| 2026-10-28 | Bendigo | R1 | Magnusaurus Rex | $10.63 | $17.00 | $12.08 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R1 | Resonant | $2.53 | $15.00 | $3.3 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R1 | Running Rich | $5.15 | $15.00 | $5.47 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R1 | Scoville | $4.00 | $15.00 | $2.9 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R1 | Vixen Vibes | $22.11 | $35.37 | $35.96 | lost (finished 4), lay won | +0.92 |
+| 2026-10-28 | Bendigo | R2 | Centenary Florin | $2.85 | $15.00 | $5.12 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R2 | Hydro Rush | $6.98 | $15.00 | $5.58 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R2 | Nickibi | $9.50 | $15.20 | $16.5 | lost (finished 5), lay won | +0.92 |
+| 2026-10-28 | Bendigo | R2 | Purgatorio | $4.09 | $15.00 | $3.7 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R2 | Sound Byte | $6.43 | $15.00 | $3.2 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R3 | Prestige Lucky | $6.28 | $15.00 | $6.2 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R3 | Purple Streak | $4.10 | $15.00 | $4.13 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R3 | Romantic Miss | $10.19 | $16.31 | $10.5 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R3 | Savoyard | $11.75 | $18.80 | $10 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R3 | Sea Poem | $11.01 | $17.62 | $18 | lost (finished 2), lay won | +0.92 |
+| 2026-10-28 | Bendigo | R3 | Star Of Omaha | $23.56 | $37.69 | $6 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R3 | Yukaina | $5.44 | $15.00 | $9.35 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R4 | Amawasha | $20.35 | $32.56 | $28.14 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R4 | Celtic Park | $10.70 | $17.13 | $10.8 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R4 | Hollandia | $20.47 | $32.75 | $25.72 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R4 | Melek | $3.24 | $15.00 | $2.09 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R4 | No Rumours | $19.28 | $30.84 | $20 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R4 | Pee Bee Noir | $17.17 | $27.48 | $55 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R4 | Salsita | $18.02 | $28.83 | $23.62 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R4 | Yahoo Bar | $4.09 | $15.00 | $6.2 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R5 | Cushioned | $5.59 | $15.00 | $5.8 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R5 | Itsukushima | $23.26 | $37.22 | $9.2 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R5 | Jenni You Think | $4.30 | $15.00 | $4.3 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R5 | Kiwi Jenni | $16.56 | $26.49 | $9.02 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R5 | Mr Independent | $20.51 | $32.81 | $14.92 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R5 | Savannah Chill | $15.30 | $24.47 | | no result | 0 |
+| 2026-10-28 | Bendigo | R5 | The Muffin Man | $4.75 | $15.00 | $7.8 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R6 | Fission | $24.28 | $38.84 | $70 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R6 | Ka Ying Cheer | $22.17 | $35.48 | | no result | 0 |
+| 2026-10-28 | Bendigo | R6 | Lawborough | $3.20 | $15.00 | $3.16 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R6 | Weapon Clear | $16.86 | $26.98 | | no result | 0 |
+| 2026-10-28 | Bendigo | R6 | Wingsandpropellers | $18.16 | $29.06 | $7.72 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R6 | Yes Yoshi | $3.15 | $15.00 | $2.73 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R6 | Yolo | $15.35 | $24.57 | $12 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R7 | Alero | $6.90 | $15.00 | $5 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R7 | Dirty Look | $2.40 | $15.00 | $1.9 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R7 | Flying Embers | $8.05 | $15.00 | $21.48 | lost (finished 8), lay won | +0.92 |
+| 2026-10-28 | Bendigo | R7 | Jamesjohno | $22.90 | $36.63 | $16 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R7 | Legacy Bay | $9.75 | $15.60 | $17.5 | lost (finished 5), lay won | +0.92 |
+| 2026-10-28 | Bendigo | R7 | Wolf Twenty One | $22.76 | $36.42 | $33.05 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R7 | Zourain | $22.73 | $36.37 | | no result | 0 |
+| 2026-10-28 | Bendigo | R8 | Berkeley Square | $19.87 | $31.79 | $39.7 | lost (finished 2), lay won | +0.92 |
+| 2026-10-28 | Bendigo | R8 | Grand Pierro | $16.76 | $26.81 | $58.29 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R8 | Kings Valley | $5.65 | $15.00 | $4.6 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R8 | Litzdeel | $5.70 | $15.00 | $10 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R8 | Machine Gun Gracie | $16.41 | $26.26 | $16.43 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R8 | See That Storm | $8.66 | $15.00 | $17 | lost (finished 11), lay won | +0.92 |
+| 2026-10-28 | Bendigo | R8 | So You Are | $8.61 | $15.00 | $4.58 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R8 | Starford | $22.80 | $36.48 | $17.5 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R8 | Suntora | $15.14 | $24.22 | $14.37 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R8 | The Euphrates | $12.99 | $20.79 | $13 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R9 | Bel Mezyaan | $4.42 | $15.00 | $3.64 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R9 | Col Klink | $3.09 | $15.00 | $4.58 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R9 | Hiyaam Proud | $16.12 | $25.80 | $17 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R9 | Rosa Aotearoa | $10.10 | $16.17 | $4.33 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-28 | Bendigo | R9 | Silver Bullet | $12.46 | $19.93 | $30 | lost (finished 9), lay won | +0.92 |
+| 2026-10-28 | Bendigo | R9 | Spirited Defence | $22.18 | $35.49 | $25 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R1 | Alltogethernow | $18.40 | $29.43 | $16.32 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R1 | Lord Timo | $16.13 | $25.80 | $19.5 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R1 | Ned Kelly | $2.67 | $15.00 | $2.32 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R1 | Paramount War | $3.19 | $15.00 | $3.27 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R1 | Rang A Round Up | $9.30 | $15.00 | $16.02 | lost (finished 5), lay won | +0.92 |
+| 2026-10-29 | Warrnambool | R1 | Rollin'ontheriver | $22.67 | $36.27 | $22 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R2 | Both Sides Now | $4.63 | $15.00 | $5.46 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R2 | Crossoverkid | $6.33 | $15.00 | $5.96 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R2 | Heed The Omens | $10.71 | $17.13 | $9.6 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R2 | Hoodys Horse | $12.40 | $19.83 | $15 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R2 | Newcombe | $12.55 | $20.09 | $23 | lost (finished 4), lay won | +0.92 |
+| 2026-10-29 | Warrnambool | R2 | Parkrun | $24.17 | $38.67 | $26 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R2 | Share The Stars | $7.53 | $15.00 | $4.23 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R2 | The Daily Planet | $9.35 | $15.00 | $9.78 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R3 | Grandpa Neil | $10.03 | $16.04 | $9.55 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R3 | Nick Knockdown | $9.38 | $15.01 | $13.17 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R3 | Tuscan Rose | $3.47 | $15.00 | $2.7 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R4 | Hughie's Spirit | $19.59 | $31.35 | $15.5 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R4 | Mamzelle Raine | $23.51 | $37.61 | $48.49 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R5 | Big Vee | $7.60 | $15.00 | $6.8 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R5 | Celestaria | $10.13 | $16.21 | $6.92 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R5 | Circus Circus | $12.45 | $19.91 | $24 | lost (finished 11), lay won | +0.92 |
+| 2026-10-29 | Warrnambool | R5 | Leona | $2.93 | $15.00 | $2.9 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R5 | Piklemegranmother | $23.41 | $37.46 | $38 | lost (finished 4), lay won | +0.92 |
+| 2026-10-29 | Warrnambool | R5 | Semper Augustus | $20.72 | $33.15 | $21 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R5 | Zercardy | $5.98 | $15.00 | $7.75 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R6 | Ballynacally | $4.33 | $15.00 | $7.8 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R6 | Bancoora | $15.23 | $24.37 | $12.8 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R6 | Icy Pole | $7.89 | $15.00 | $8.21 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R6 | King West | $4.43 | $15.00 | $3.66 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R6 | Pastoral King | $5.05 | $15.00 | $5.24 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R6 | Secret Crossing | $12.11 | $19.37 | $10.26 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R7 | Crickwood | $3.36 | $15.00 | $2.39 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R7 | Du Clisson | $3.21 | $15.00 | $2.82 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R7 | Francine | $10.43 | $16.68 | $28.63 | lost (finished 6), lay won | +0.92 |
+| 2026-10-29 | Warrnambool | R7 | Leantothemoon | $15.06 | $24.10 | $14.25 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R7 | Meisho | $20.98 | $33.57 | $18.05 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R7 | Torlaah | $19.49 | $31.18 | | no result | 0 |
+| 2026-10-29 | Warrnambool | R7 | Twister | $8.87 | $15.00 | $17.57 | lost (finished 5), lay won | +0.92 |
+| 2026-10-29 | Warrnambool | R8 | Asal | $9.67 | $15.47 | $8.8 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R8 | Boggy Creek Boys | $20.39 | $32.63 | $49.75 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R8 | Cachink | $11.24 | $17.99 | $7.92 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R8 | Charming Deel | $4.18 | $15.00 | $3.71 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R8 | Dealer Sing | $19.17 | $30.68 | $15.5 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R8 | Designs Of Eight | $24.01 | $38.42 | $18.66 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R8 | Gunado | $14.14 | $22.63 | $12.9 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R8 | Invisible Magic | $5.96 | $15.00 | $10.12 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R8 | Sotomayor | $13.48 | $21.57 | $10.5 | no bet (BSP outside band/trigger) | 0 |
+| 2026-10-29 | Warrnambool | R8 | Super Snitch | $18.16 | $29.05 | $29 | no bet (BSP outside band/trigger) | 0 |
 
 Warrnambool Thu 29 Oct (9:30am final field): 49 runners can trigger. Bendigo Wed 28 Oct (9:30am final field, our price = live shaded model before the open blend): 62 runners can trigger; a lay only if BSP lands $15-$40 and at least the trigger.
 
@@ -598,3 +598,19 @@ Priced Wed 28 Oct on Good 4; R2-R4 off (first starters, founder). TAB opened Wed
 fills 6 bets, 11.47u: R1 Via Theresa $26 0.77u, R1 Viking Kid $4.60 4.68u, R5 In A Tizzy $4.40 3.22u, R7 Garnacho $11.50
 1.05u, R7 Glenfinnan $18.50 0.73u, R8 Empressive Enuff $12 1.02u. By Thu 9:30am five of the six had firmed (Viking Kid $2.40,
 Via Theresa $9, Glenfinnan $8, Garnacho $6.50, In A Tizzy $3.70); Empressive Enuff $10. Kilmore: no prices in Form King yet.
+
+## Wednesday 28 Oct Bendigo and Thursday 29 Oct Warrnambool settled (results pulled Fri 30 Oct 8:55am)
+Bendigo (paper, nothing placed): Lawborough (R6) WON, SP $3.20 / BSP $3.16, taken $4.23 after the 5c deduction. Purple Streak 3rd,
+Yahoo Bar 2nd, Jenni You Think 2nd, Litzdeel 3rd, See That Storm 11th.
+- Tweeted card (Twitter units, after deductions): 6 bets, 1 won, 10.54u, -3.43u, ROI -33%.
+- Paper at the open (model stakes, after deductions): 6 bets, 1 won, 21.08u, -6.87u, ROI -33%.
+- Top-ups (9:30am reprice): 2 bets, 5.37u, -5.37u (Centenary Florin 4th, Litzdeel 3rd).
+Warrnambool (paper, nothing placed): Ned Kelly (R1) WON, SP/BSP $2.32, opened $3.50. Both Sides Now 12th, Hoodys Horse 6th,
+Ballynacally 3rd, Icy Pole 8th, Francine 6th, Gunado 3rd, Super Snitch 10th. No TAB deductions recorded yet (settled at the open).
+- Open card (Twitter units): 8 bets, 1 won, 12.08u, -8.86u, ROI -73%.
+- Paper at the open (model stakes): 8 bets, 1 won, 24.16u, -17.72u, ROI -73%.
+Lay book (1u at BSP, $15-$40 and the trigger): Bendigo 8 lays, 0 winners, +7.36u; Warrnambool 6 lays, 0 winners, +5.52u.
+Lay book to date: 14 lays, 0 winners, +12.88u.
+Week Mon 26 - Thu 29 Oct, paper at the open (model stakes; Wangaratta = the halved card doubled): 4 meetings, 22 bets,
+5 won, 79.86u, +56.63u, ROI +71% (Wangaratta +35.34, Swan Hill +45.88, Bendigo -6.87, Warrnambool -17.72).
+Twitter cards: 39.04u, +13.38u, ROI +34% (Swan Hill at BSP). Top-ups: 9 bets, 18.75u, -8.53u. Real money: none this week (bot).
