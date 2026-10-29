@@ -612,5 +612,5 @@ Ballynacally 3rd, Icy Pole 8th, Francine 6th, Gunado 3rd, Super Snitch 10th. No 
 Lay book (1u at BSP, $15-$40 and the trigger): Bendigo 8 lays, 0 winners, +7.36u; Warrnambool 6 lays, 0 winners, +5.52u.
 Lay book to date: 14 lays, 0 winners, +12.88u.
 Week Mon 26 - Thu 29 Oct, paper at the open (model stakes; Wangaratta = the halved card doubled): 4 meetings, 22 bets,
-5 won, 79.86u, +56.63u, ROI +71% (Wangaratta +35.34, Swan Hill +45.88, Bendigo -6.87, Warrnambool -17.72).
+4 won, 79.86u, +56.63u, ROI +71% (Wangaratta +35.34, Swan Hill +45.88, Bendigo -6.87, Warrnambool -17.72).
 Twitter cards: 39.04u, +13.38u, ROI +34% (Swan Hill at BSP). Top-ups: 9 bets, 18.75u, -8.53u. Real money: none this week (bot).
