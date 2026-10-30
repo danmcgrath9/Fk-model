@@ -1,0 +1,175 @@
+# Flemington Tue 3 Nov, Melbourne Cup Day (going GOOD 4, founder 30 Oct: Tuesday onwards good; priced Fri 30 Oct pre-market)
+1, Royal Press, 0, 0
+1, Amsterdam, 0, 0
+1, Jetsetter, 0, 0
+1, Funded, 0, 0
+1, Amelia's Affair, 0, 0
+1, Speedboatconfesion, 0, 0
+1, La La Lilly, 0, 0
+1, Lumineux, 0, 0
+1, Rain Bender, 0, 0
+2, Ninyo, SCR
+2, Shaiyhar, 0, 0
+2, Charisse, 0, 0
+2, Foujita San, 0, 0
+2, Unseen Ruler, 0, 0
+2, Flying Valley, 0, 0
+2, Federer, 0, 0
+2, Pariah Pearl, SCR
+2, Savatoff, SCR
+2, Mr O'reilly, 0, 0
+2, Politely Dun, 0, 0
+2, Military Academy, 0, 0
+2, Dubai Watch, 0, 0
+2, Terrortorian, 0, 0
+2, Interjection, 0, 0
+2, Johnich, 0, 0
+2, Ichnusa, 0, 0
+2, Lunar Force, SCR
+2, Caelius, 0, 0
+2, Chispa, 0, 0
+2, Yauson, 0, 0
+2, Dad And Dave, 0, 0
+3, Billycart, 0, 0
+3, True Tone, 0, 0
+3, Gilgeous, 0, 0
+3, Cab Franc, 0, 0
+3, Fringilla, 0, 0
+3, Waiheke Rose, 0, 0
+3, Star Je Taime, 0, 0
+3, Mister Whiskers, 0, 0
+3, Katoto, 0, 0
+3, Star Of Macedon, 0, 0
+3, Tanabata, 0, 0
+4, Southern Sway, 0, 0
+4, Parcae, 0, 0
+4, Gas Station Rose, 0, 0
+4, Sanctuary, 0, 0
+4, Semantics, 0, 0
+4, Fovea, 0, 0
+4, Big Wigs, 0, 0
+4, The Speed Machine, 0, 0
+4, Splendacious, 0, 0
+4, Gin Twist, 0, 0
+4, Ole Go, 0, 0
+4, Jadzia, 0, 0
+4, Aston, 0, 0
+4, Strike Package, 0, 0
+4, Peyton, 0, 0
+5, Wuddzz, SCR
+5, Taramansour, 0, 0
+5, Farag, 0, 0
+5, Black Peppermint, 0, 0
+5, Tempesti, 0, 0
+5, Athabascan, 0, 0
+5, Newfoundland, 0, 0
+5, Grand Pierro, 0, 0
+5, Jennivamoose, 0, 0
+5, Beach Pad, 0, 0
+5, Zarir, 0, 0
+5, Suffolk Star, SCR
+5, Sir Chartwell, 0, 0
+5, Leonchroi, SCR
+5, Sam Hawkens, 0, 0
+5, Highland Bling, 0, 0
+5, Newlook, 0, 0
+5, Bur Dubai, SCR
+5, Vegas Jack, 0, 0
+5, Autumnheat, 0, 0
+5, After Summer, 0, 0
+5, Autumn Mystery, 0, 0
+6, St Lawrence, 0, 0
+6, Magnaspin, 0, 0
+6, New York Hurricane, 0, 0
+6, Tavi Time, 0, 0
+6, Al Duca, 0, 0
+6, Ambassadorial, 0, 0
+6, Wymark, 0, 0
+6, Immediacy, 0, 0
+6, Relentless Voyager, 0, 0
+6, Sabaj, 0, 0
+6, Darkbonee, 0, 0
+6, Augustus, 0, 0
+6, Real Class, 0, 0
+6, Different Gravy, 0, 0
+7, Pounding, 0, 0
+7, St Lawrence, 0, 0
+7, Wealdstone, 0, 0
+7, Magnaspin, 0, 0
+7, New York Hurricane, 0, 0
+7, Foujita San, 0, 0
+7, Von Hauke, 0, 0
+7, Another Wil, 0, 0
+7, Tavi Time, 0, 0
+7, Al Duca, 0, 0
+7, Ambassadorial, 0, 0
+7, Goldenstatewarrior, 0, 0
+7, Haaracaine, 0, 0
+7, Wymark, 0, 0
+7, Medatsu, 0, 0
+7, Immediacy, 0, 0
+7, Perfect Ten, 0, 0
+7, Relentless Voyager, 0, 0
+7, Jenni's Meadow, 0, 0
+7, Sun God, 0, 0
+7, Sabaj, 0, 0
+7, Darkbonee, 0, 0
+7, Augustus, 0, 0
+7, Feroce, 0, 0
+7, Prince Eric, 0, 0
+7, All Business, 0, 0
+7, Real Class, 0, 0
+7, Nobler, 0, 0
+7, Single Choice, 0, 0
+7, Fireball Miss, 0, 0
+7, Johnich, 0, 0
+7, Different Gravy, 0, 0
+7, Buccleuch, 0, 0
+8, Tolaga Bay, 0, 0
+8, Milsons Point, 0, 0
+8, Boy From Zadar, 0, 0
+8, The Thorncaster, 0, 0
+8, Beautiful You, 0, 0
+8, Shooting Brake, 0, 0
+8, Barracks, 0, 0
+8, Ranarsson, 0, 0
+8, Mr Natural, 0, 0
+8, High Falls, 0, 0
+8, Our Emperor, 0, 0
+8, Harry Lime, 0, 0
+8, Autumn Lover, 0, 0
+8, Obambulate, 0, 0
+8, Merry Chase, 0, 0
+9, Oh Too Good, 0, 0
+9, So You Pence, 0, 0
+9, Bon Mistress, 0, 0
+9, Stylish, 0, 0
+9, Betwitchery, 0, 0
+9, Butternut Princess, 0, 0
+9, Dance To The Boom, 0, 0
+9, Stealth Of Night, 0, 0
+9, Gold Medallist, 0, 0
+9, Shadhavar, 0, 0
+9, Terilee, 0, 0
+9, Cooly, SCR
+9, Milos Filos, 0, 0
+9, You Sexy Thing, 0, 0
+9, Karren, SCR
+9, Ruska Roma, 0, 0
+9, Miss Freelove, 0, 0
+9, Tomato Toastie, 0, 0
+10, He'll Rip, 0, 0
+10, Keep Your Cool, 0, 0
+10, No Fuss, 0, 0
+10, Quiseen, 0, 0
+10, Porter, 0, 0
+10, Everain, 0, 0
+10, Man Of Worth, 0, 0
+10, Cash, 0, 0
+10, Ferivia, 0, 0
+10, Jett Smash, 0, 0
+10, Fundamental Nature, 0, 0
+10, Surf's Up, 0, 0
+10, Buccleuch, 0, 0
+10, Itazura, 0, 0
+10, Space Rider, 0, 0

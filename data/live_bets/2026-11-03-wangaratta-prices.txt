@@ -1,0 +1,71 @@
+# Wangaratta Tue 3 Nov (going GOOD 4, founder 30 Oct; official Dead 4; priced Fri 30 Oct pre-market)
+1, Frosted Amber, 0, 0
+1, Aloof, 0, 0
+1, Sweet Champagne, SCR
+1, Brilliant Bull Ant, 0, 0
+1, Magic Royale, SCR
+1, Royal Overture, SCR
+1, Acroman, 0, 0
+1, Prestige Valley, 0, 0
+1, Naval Command, 0, 0
+1, Astatine, 0, 0
+1, Tallingas Diamond, SCR
+1, Graceful Dance, 0, 0
+2, Shades Of Sheriff, SCR
+2, Style Guide, 0, 0
+2, Ashen Knight, 0, 0
+2, Woah Shamrock, SCR
+2, Titan's Soul, 0, 0
+2, Tromso, 0, 0
+2, Flashman, 0, 0
+2, Mirraway, 0, 0
+2, Riverlea Prince, 0, 0
+2, Amarillo Sky, 0, 0
+2, Hellbent Halo, SCR
+2, Briar Island, SCR
+3, Dejavast, 0, 0
+3, All Too Swift, 0, 0
+3, Spin Class, 0, 0
+3, Jakbe Nimble, SCR
+3, Startin'sumthin', 0, 0
+3, Just Basil, 0, 0
+3, Creusa, 0, 0
+3, Lady Of Alsace, SCR
+3, Vidaloa, 0, 0
+3, Girl With A Pearl, 0, 0
+4, I Could Do Better, 0, 0
+4, Warrandyte Road, 0, 0
+4, Blonde Suspect, SCR
+4, Dashing Donkey, 0, 0
+4, Whisper The Wind, SCR
+4, Opus, 0, 0
+4, Brookers Turbo, SCR
+4, Give Some Lip, 0, 0
+4, Brassi Road, SCR
+4, Moral Turpitude, 0, 0
+4, Captain Barbossa, 0, 0
+4, Prestige Geoffrey, 0, 0
+5, Danerich Dan, SCR
+5, American Russ, 0, 0
+5, Apollo Sun, 0, 0
+5, Gargantuan, SCR
+5, Cumbrian Queen, 0, 0
+5, Nicking Gracie, SCR
+5, It'swhatyoumakeit, 0, 0
+5, Sacred Ingot, 0, 0
+5, Winning Witness, SCR
+5, Barrett Reef, 0, 0
+5, Darken, 0, 0
+5, Prince Rupert, 0, 0
+6, Wannabeapoodle, 0, 0
+6, Tasman Park, 0, 0
+6, Belmasai, 0, 0
+6, Count Of Anjou, SCR
+6, Proprietary, 0, 0
+6, Hillbily Kynection, SCR
+6, Densetsu, 0, 0
+6, Flying D'amore, SCR
+6, Montrock, 0, 0
+6, Enigmatise, 0, 0
+6, Deep Joy, SCR
+6, Zamora, 0, 0

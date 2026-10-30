@@ -1,0 +1,58 @@
+# Mildura Tue 3 Nov (going GOOD 4, founder 30 Oct; official Dead 5; priced Fri 30 Oct pre-market)
+1, Fabulous One, 0, 0
+1, Titus Augustus, 0, 0
+1, Pipoli Diva, 0, 0
+1, Bold Starlet, 0, 0
+1, Gamadale Possum, 0, 0
+1, Don't Say Do, 0, 0
+1, Sammie Ellen Boy, 0, 0
+2, Airclash, 0, 0
+2, Dougie's Dream, 0, 0
+2, Charming Di, 0, 0
+2, Alvin, 0, 0
+2, Capitalex, 0, 0
+2, Melodee Rose, 0, 0
+2, Foxiet, 0, 0
+3, Regal Time, 0, 0
+3, Saraya, 0, 0
+3, Highlight Reel, 0, 0
+3, Message Bank, 0, 0
+3, Ole Dansker, 0, 0
+3, Gus The Shark, 0, 0
+3, Wombat, 0, 0
+3, Sweet But Sassy, 0, 0
+3, Grandstraz, SCR
+4, Hampton Belle, 0, 0
+4, Longwarry, 0, 0
+4, Sports Choice, 0, 0
+4, La Cache A Vin, 0, 0
+4, Owl Witness, 0, 0
+4, Saint Lazare, SCR
+4, Asawin, 0, 0
+4, Attain, SCR
+4, Highland George, 0, 0
+4, Popthebubbly, SCR
+4, Scartaka, 0, 0
+5, Blakmax, 0, 0
+5, Bellakai, 0, 0
+5, Lysander, 0, 0
+5, Yongtai, 0, 0
+5, Squagaga, 0, 0
+5, Chosen Venture, SCR
+5, Solar Mist, 0, 0
+5, Blackhill Boy, 0, 0
+5, Immortal Justice, SCR
+5, Costae, SCR
+5, Backflips, 0, 0
+6, Bannerton, 0, 0
+6, Baby Rider, SCR
+6, Winds Of March, 0, 0
+6, Papal Wars, 0, 0
+6, Detoron, 0, 0
+6, Circa, 0, 0
+6, Pendante, SCR
+6, Final Quarter, SCR
+6, Conaltri, 0, 0
+6, Kiwiesque, SCR
+6, Aberlutely, 0, 0
+6, Kamarooka, 0, 0

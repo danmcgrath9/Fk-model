@@ -1,4 +1,4 @@
-# Mornington Sun 1 Nov (official going Dead 5, Form King; priced Fri 30 Oct pre-market)
+# Mornington Sun 1 Nov (going SOFT 7, founder 30 Oct; official Dead 5; priced Fri 30 Oct pre-market)
 1, Kuheylan, 6.50, 6.50, fk_open 6.25
 1, Galway Gal, 8.50, 8.50, fk_open 8.25
 1, Flying Riches, 61.00, 61.00, fk_open 56.00

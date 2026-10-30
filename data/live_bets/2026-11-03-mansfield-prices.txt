@@ -1,0 +1,92 @@
+# Mansfield Tue 3 Nov (going GOOD 4, founder 30 Oct; Form King shows 'Synthetic 0', no real rating yet; priced Fri 30 Oct pre-market)
+1, Builtthiscity, 0, 0
+1, Excelaot, 0, 0
+1, Pipe Hitter, 0, 0
+1, Wallace And Gromit, 0, 0
+1, Bambu Babe, 0, 0
+1, Zouthila, 0, 0
+1, Pipoli Diva, 0, 0
+1, Love Dad, 0, 0
+1, Fervi, 0, 0
+1, Dunnenkate Bro, 0, 0
+1, Dama Royale, 0, 0
+1, Opinion Leader, 0, 0
+2, Mwamba, 0, 0
+2, Cowboykickedfive, 0, 0
+2, Si Si Sir, 0, 0
+2, Highly Regarded, 0, 0
+2, Lilt, 0, 0
+2, Prized Magic, 0, 0
+2, Zouthila, 0, 0
+2, Jenni Bam Bam, 0, 0
+2, Numbersneverseen, 0, 0
+2, Last Summer, 0, 0
+3, Understated, 0, 0
+3, Mr Zigmund, 0, 0
+3, Some Eclipse, 0, 0
+3, Lika Mosh, 0, 0
+3, Annoy'en One, 0, 0
+3, Persuasive Star, 0, 0
+3, Nasrin, 0, 0
+3, Sierra Sun, 0, 0
+3, Flower Gallery, 0, 0
+3, Enough War, 0, 0
+3, The Village Fox, 0, 0
+3, Tartan Queen, 0, 0
+3, Maristela, 0, 0
+3, Cavascot, 0, 0
+3, Duel Missile, 0, 0
+3, Dunnenkate Bro, 0, 0
+4, Apollo Sun, 0, 0
+4, Machinegun Krelley, 0, 0
+4, Dissalto, 0, 0
+4, Gamadale Indi, 0, 0
+4, High Country Star, 0, 0
+4, Librarchy's Dancer, 0, 0
+4, Jura Vaudois, 0, 0
+4, Royal Summer, 0, 0
+4, Crying Cougar, 0, 0
+4, Tartan Queen, 0, 0
+4, Elite Pete, 0, 0
+4, Oriental Dane, 0, 0
+4, Duel Missile, 0, 0
+4, Safe And Warm, 0, 0
+4, Dunnenkate Bro, 0, 0
+4, Slippery Thinker, 0, 0
+5, Librarchy's Dancer, 0, 0
+5, Mallee Maid, 0, 0
+5, Sir Lazarus, 0, 0
+5, Rapido River, 0, 0
+5, Lord Chapel, 0, 0
+5, Ain't Tellin, 0, 0
+5, Springer Time, 0, 0
+5, Prized Magic, 0, 0
+5, These Boots, 0, 0
+5, Stella Cantante, 0, 0
+6, Understated, 0, 0
+6, Mr Zigmund, 0, 0
+6, Foxwell, 0, 0
+6, Lika Mosh, 0, 0
+6, Red Stiletto, 0, 0
+6, Annoy'en One, 0, 0
+6, Monsoon Reins, 0, 0
+6, Elly Dee, 0, 0
+6, Midivani, 0, 0
+6, Kyokushin, 0, 0
+6, Italian Informant, 0, 0
+6, Persuasive Star, 0, 0
+6, Machinegun Krelley, 0, 0
+6, Wagunda, 0, 0
+6, Wilma Wombat, 0, 0
+6, Epicus, 0, 0
+6, Dissalto, 0, 0
+6, Nasrin, 0, 0
+6, Bokeem, 0, 0
+6, King's Taj, 0, 0
+6, Enough War, 0, 0
+6, The Cuban, 0, 0
+6, Littlebirdie, 0, 0
+6, Tomanado, 0, 0
+6, Tartan Queen, 0, 0
+6, Springer Time, 0, 0
+6, Duel Missile, 0, 0

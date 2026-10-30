@@ -1,0 +1,110 @@
+# Echuca Tue 3 Nov (going GOOD 4, founder 30 Oct; official Dead 4; priced Fri 30 Oct pre-market)
+1, Graham, 0, 0
+1, Mutsuhito, 0, 0
+1, Grunnettan, 0, 0
+1, Serin, 0, 0
+1, Frozen Tide, 0, 0
+1, Crackerjack Hatch, 0, 0
+1, Burning Sensation, 0, 0
+1, Salina Special, 0, 0
+1, Earthly Crown, 0, 0
+2, The Cunning Fox, 0, 0
+2, Benbulben, 0, 0
+2, Roaring Engine, 0, 0
+2, Smokin' Rohie, 0, 0
+2, Call Me Francis, 0, 0
+2, Larryoctane, 0, 0
+2, Tempest Moon, 0, 0
+2, Black Rutile, 0, 0
+2, Devoted To You, 0, 0
+2, Phoenician, 0, 0
+3, See No City, 0, 0
+3, Bambu Babe, 0, 0
+3, Salarae, 0, 0
+3, Bon Over, 0, 0
+3, Iron Stupa, 0, 0
+3, The Old Man, 0, 0
+3, Scusies, SCR
+3, Ninetyfiveinafifty, 0, 0
+3, Lady Courrege, SCR
+3, Charleanor, 0, 0
+3, Peace Seeker, 0, 0
+3, Accolades, 0, 0
+3, Miss Verona, 0, 0
+3, Frewdamoss, 0, 0
+3, Boots Off, 0, 0
+3, Teddy's Trotter, SCR
+3, Inside Word, 0, 0
+3, Gangland, SCR
+4, Wayne's Dream, 0, 0
+4, Gravitational Girl, 0, 0
+4, Time Tells All, 0, 0
+4, He's Fierce, 0, 0
+4, Oriane, SCR
+4, Immortal Truth, 0, 0
+4, Inspiring, 0, 0
+4, Join In The Dance, 0, 0
+4, Russian Tide, SCR
+4, Dark Galaxy, 0, 0
+4, Hegely, 0, 0
+4, Bold Amore, 0, 0
+4, Thundering Shadow, SCR
+4, Kiss Me In Paris, 0, 0
+4, Xtra Black, 0, 0
+4, Pragmatic Lady, 0, 0
+4, Duchess Xenia, SCR
+4, Mighty Ruler, 0, 0
+5, Celestial Option, 0, 0
+5, Back Up Barbie, 0, 0
+5, Money Bags, SCR
+5, Some Chance, 0, 0
+5, Apple Eyes, 0, 0
+5, Orthotropic, 0, 0
+5, Beast Fighter, 0, 0
+5, Coil, 0, 0
+5, Tallingas Petey, 0, 0
+5, Storming Camelot, 0, 0
+5, Honeyplotkin, SCR
+5, Casamar, SCR
+5, Amelloides, 0, 0
+5, Snow Party, SCR
+5, Edge Of Wonder, 0, 0
+5, Crimson Flame, 0, 0
+5, Our Brud, 0, 0
+5, Poetic Passage, 0, 0
+6, Count Of Toulouse, 0, 0
+6, Bow Ribbon, SCR
+6, Elle Mcfearsome, 0, 0
+6, San Marco, 0, 0
+6, Here Comes Wozza, 0, 0
+6, Black Adam, 0, 0
+6, Lika Wreckin' Ball, 0, 0
+6, Bakersbend, SCR
+6, Reel Latino, 0, 0
+6, Flying Jude, 0, 0
+6, Shipstern Bluff, 0, 0
+6, Bucks Night, SCR
+6, Sir Basil, 0, 0
+6, Ice Quake, 0, 0
+6, Hellish Lee, SCR
+6, Hexed, 0, 0
+6, Stepify, 0, 0
+6, Don'tpushsend, 0, 0
+7, Sheila, SCR
+7, Bridgeitall, 0, 0
+7, Laura's Gold, SCR
+7, Lady Maestro, 0, 0
+7, Altruist, SCR
+7, Blue Moon Summit, 0, 0
+7, Just Remember It, 0, 0
+7, Prandium Tempus, 0, 0
+7, She's Elusive, 0, 0
+7, Magnea, SCR
+7, Shelly's Legacy, 0, 0
+7, Bronco Revolution, 0, 0
+7, Miss Toronado, 0, 0
+7, Ottalaus, 0, 0
+7, Postwar, 0, 0
+7, Winter Hail, 0, 0
+7, Astari, 0, 0
+7, Tallingas Chief, 0, 0
