@@ -1,0 +1,41 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-11-03-wangaratta-r2-n-s1,2,1,Amarillo Sky,6.02,13.91,102,14024505,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s2,2,1,Amarillo Sky,7.52,13.91,23,14024509,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s3,2,2,Ashen Knight,9.16,20.74,64,14024513,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s4,2,2,Ashen Knight,11.45,20.74,15,14024516,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s5,2,4,Riverlea Prince,7.02,16.10,86,14024521,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s6,2,4,Riverlea Prince,8.77,16.10,20,14024525,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s7,2,7,Style Guide,9.29,21.01,63,14024528,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s8,2,7,Style Guide,11.61,21.01,15,14024532,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s1,4,1,Captain Barbossa,20.40,44.41,28,14024536,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s2,4,1,Captain Barbossa,25.50,44.41,6,14024539,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s3,4,6,Dashing Donkey,16.27,35.81,34,14024543,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s4,4,6,Dashing Donkey,20.34,35.81,8,14024548,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s5,4,3,Give Some Lip,5.20,12.11,122,14024552,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s6,4,3,Give Some Lip,6.50,12.11,26,14024556,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s7,4,7,I Could Do Better,19.43,42.40,29,14024561,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s8,4,7,I Could Do Better,24.29,42.40,7,14024564,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s9,4,4,Moral Turpitude,14.73,32.58,38,14024568,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s10,4,4,Moral Turpitude,18.41,32.58,9,14024571,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s11,4,5,Opus,13.99,31.02,40,14024574,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s12,4,5,Opus,17.49,31.02,10,14024577,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s13,4,2,Prestige Geoffrey,4.58,10.72,142,14024580,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s14,4,2,Prestige Geoffrey,5.72,10.72,30,14024583,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s1,5,2,American Russ,9.13,20.67,64,14024586,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s2,5,2,American Russ,11.41,20.67,15,14024589,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s3,5,1,Barrett Reef,7.07,16.21,86,14024592,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s4,5,1,Barrett Reef,8.84,16.21,20,14024595,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s5,5,8,Cumbrian Queen,5.83,13.50,106,14024598,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s6,5,8,Cumbrian Queen,7.29,13.50,24,14024601,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s7,5,7,It'swhatyoumakeit,16.72,36.75,34,14024604,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s8,5,7,It'swhatyoumakeit,20.90,36.75,8,14024608,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s9,5,4,Prince Rupert,14.17,31.39,40,14024611,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s10,5,4,Prince Rupert,17.71,31.39,10,14024614,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s11,5,5,Sacred Ingot,7.15,16.38,84,14024616,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s12,5,5,Sacred Ingot,8.94,16.38,19,14024618,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r6-n-s1,6,5,Belmasai,10.84,24.34,54,14024620,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r6-n-s2,6,5,Belmasai,13.55,24.34,12,14024622,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r6-n-s3,6,6,Densetsu,5.57,12.93,112,14024624,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r6-n-s4,6,6,Densetsu,6.96,12.93,24,14024626,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r6-n-s5,6,4,Zamora,4.52,10.59,144,14024628,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r6-n-s6,6,4,Zamora,5.65,10.59,30,14024630,Notification has been scheduled.
