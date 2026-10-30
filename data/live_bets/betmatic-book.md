@@ -636,3 +636,10 @@ R6 Lulu Darling $10 1.31u ($6.79), R6 Trinity's D'oro $11 1.21u ($7.25): 6.43u.
 Mortlake R6 (open 7:13am Fri): no fills. Total 15 bets, 27.15u (13.58u Twitter).
 Still to send once the bot shows running: Healesville, Mortlake (R1, R4, R5, R7), Wycheproof (Sat); Ballarat (Mon);
 Flemington R7-R10, Echuca, Mildura, Wangaratta (Tue). Mansfield (Tue) not priced (14% of runners without speed ratings).
+
+## Sat 31 Oct morning: unit back to $50 for the next sends (founder, 31 Oct: "Make it $50 units as well please")
+Ballarat (Mon 2 Nov) and Echuca, Mildura, Wangaratta (Tue 3 Nov) go at $50 a unit (unit=50 on the fk-betmatic send), once the bot
+shows running ("TAB will be funded and bot on"). Dry run Sat 7:26am: "bot_running false". At 7:30am Sat these were still unopened:
+Healesville, Mortlake (bar R6), Wycheproof (Sat), Ballarat (Mon), Echuca, Mildura, Wangaratta (Tue). Flemington Sat (all open from
+Wed) and Traralgon (Fri 2:36pm) are paper: Flemington 7 fills 14.97u (Star Of Macedon scratched), Traralgon 4 fills 6.43u.
+Saturday open card (no Mercer, Twitter units) sent to the founder 7:40am Sat.
