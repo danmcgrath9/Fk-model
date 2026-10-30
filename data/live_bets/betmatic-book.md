@@ -622,3 +622,17 @@ Marco Polo, Tempered Edge, Whitebait, Ambition In Bloom, Seven Sons), so Viking 
 Shidan (R8) 1.09u at $8 (opened $19, over the order's $15.84 max, so BetMatic took nothing). Voltrix (R4, $6 now, ours $3.88) is value
 but R4 is off (first starters, founder) and is not topped up. topup.py fixed the same morning: it counted an order as filled
 whenever the open cleared min_odds, ignoring max_odds (Shidan and Viking Kid's under-$4 tier were both mis-counted).
+
+## Missed at the open, Fri 30 Oct (paper; founder: "Nah all paper")
+The BetMatic bot reported bot_running false at 2:41pm, 3:08pm and 3:27pm Fri, so nothing was sent. Fills at Form King's
+open on the sheets as priced (first-starter races off), prices at 3:20pm Fri. Twitter units are half.
+Mornington Sun 1 Nov (Soft 7; every race open from 9:42am Fri): R5 Miss Cotoletta $5.50 2.81u (ours $3.60), R7 Eye For An Eye
+$15 1.33u ($8.04), R7 Fam Gorman $15 1.46u ($7.43), R9 Kokako $5 2.65u ($3.77), R9 Master Of The Air $15 1.28u ($8.32): 9.53u.
+Flemington Tue 3 Nov (Good 4; R2-R6 open 1:31-2:39pm Fri): R2 Yauson $4.80 4.55u (ours $2.86), R3 Star Of Macedon $6 2.43u
+($4.04), R4 Gin Twist $17 0.80u ($10.52), R5 Grand Pierro $13 1.65u ($6.63), R5 Autumn Mystery $17 1.05u ($9.95), R5 Vegas Jack
+$17 0.71u ($11.71): 11.19u. Nothing in R6.
+Traralgon Sat 31 Oct (all races open 2:36-2:51pm Fri): R5 It's Gnarly $6 2.10u (ours $4.56), R5 Ze Bee Nine $7.75 1.81u ($5.15),
+R6 Lulu Darling $10 1.31u ($6.79), R6 Trinity's D'oro $11 1.21u ($7.25): 6.43u.
+Mortlake R6 (open 7:13am Fri): no fills. Total 15 bets, 27.15u (13.58u Twitter).
+Still to send once the bot shows running: Healesville, Mortlake (R1, R4, R5, R7), Wycheproof (Sat); Ballarat (Mon);
+Flemington R7-R10, Echuca, Mildura, Wangaratta (Tue). Mansfield (Tue) not priced (14% of runners without speed ratings).
