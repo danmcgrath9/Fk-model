@@ -1,0 +1,12 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,MORN_011126_1,Adakite,top_pick,1.95,1.95,1.92,1.92,,2.53,-0.241,Already run to today's class; Class drop (rating); Blinkers first time,1.0,no,,
+1,MORN_011126_1,Star Je Taime,value_20c,5.0,5.0,5.5,5.5,,3.27,0.684,,4.63,no,,
+2,MORN_011126_2,Oceans Blue,top_pick,0.0,0.0,0.0,,,2.69,-1.0,Already run to today's class; Class drop (rating); Above the field in all three sections; EARLY ONLY: bet near the open,1.0,no,,
+3,MORN_011126_3,Big Kapow,top_pick,0.0,0.0,0.0,,,4.53,-1.0,Already run to today's class,1.0,no,,
+5,MORN_011126_5,Miss Cotoletta,top_pick,0.0,0.0,0.0,,,3.71,-1.0,Declining deep in prep; Class drop (rating),1.0,no,,
+6,MORN_011126_6,Lim's Saltoro,top_pick,0.0,0.0,0.0,,,3.07,-1.0,,1.0,no,,
+7,MORN_011126_7,Fam Gorman,value_20c,15.0,15.0,15.0,15.0,,8.8,0.705,,1.71,no,,
+7,MORN_011126_7,Eye For An Eye,value_20c,15.0,15.0,15.0,15.0,,9.47,0.583,,1.44,no,,
+7,MORN_011126_7,Mickio,top_pick,3.4,3.4,3.4,3.4,,6.77,-0.497,,1.0,no,,
+8,MORN_011126_8,Sixty Grand,top_pick,4.2,4.2,4.2,4.2,,5.13,-0.181,,1.0,no,,
+9,MORN_011126_9,Kokako,top_pick,0.0,0.0,0.0,,,3.64,-1.0,,1.0,no,,
