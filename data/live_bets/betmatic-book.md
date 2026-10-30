@@ -643,3 +643,13 @@ shows running ("TAB will be funded and bot on"). Dry run Sat 7:26am: "bot_runnin
 Healesville, Mortlake (bar R6), Wycheproof (Sat), Ballarat (Mon), Echuca, Mildura, Wangaratta (Tue). Flemington Sat (all open from
 Wed) and Traralgon (Fri 2:36pm) are paper: Flemington 7 fills 14.97u (Star Of Macedon scratched), Traralgon 4 fills 6.43u.
 Saturday open card (no Mercer, Twitter units) sent to the founder 7:40am Sat.
+
+## Sent live Sat 31 Oct 10:47am ($50 a unit, TAB, Market Open; founder: "re do it and let's go")
+The bot dropped in and out: dry runs passed at 10:25am, live sends refused at 10:35 and 10:42 ("bot_running false"), the check at
+10:46 showed the TAB session running ($1,500.17) and all four sends went through. BetMatic also flags the bot as outdated
+(latest 1.2.70-beta04).
+- Ballarat Mon 2 Nov (Soft 7): R6, R8 only, 17 orders, $727 if all fire. TAB had R6 and R8 up already (notifications "sent", not
+  "scheduled"); status 10:51am: nothing placed (prices under the minimums). R4, R5, R7 opened 10:08am Sat, before the send.
+- Echuca Tue 3 Nov (Soft 7): 38 orders, $1,888, scheduled.
+- Mildura Tue 3 Nov (Good 4): 54 orders, $3,655, scheduled.
+- Wangaratta Tue 3 Nov (Soft 6): 40 orders, $1,803, scheduled.
