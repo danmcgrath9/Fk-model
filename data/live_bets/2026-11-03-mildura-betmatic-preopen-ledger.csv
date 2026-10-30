@@ -1,0 +1,55 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-11-03-mildura-r1-n-s1,1,4,Don't Say Do,7.41,16.95,81,14024495,Notification has been scheduled.
+fk-2026-11-03-mildura-r1-n-s2,1,4,Don't Say Do,9.26,16.95,18,14024498,Notification has been scheduled.
+fk-2026-11-03-mildura-r1-n-s3,1,6,Gamadale Possum,3.00,3.99,208,14024501,Notification has been scheduled.
+fk-2026-11-03-mildura-r1-n-s4,1,6,Gamadale Possum,3.75,3.99,50,14024504,Notification has been scheduled.
+fk-2026-11-03-mildura-r1-n-s5,1,6,Gamadale Possum,4.00,7.56,226,14024508,Notification has been scheduled.
+fk-2026-11-03-mildura-r1-n-s6,1,6,Gamadale Possum,4.00,7.56,42,14024511,Notification has been scheduled.
+fk-2026-11-03-mildura-r1-n-s7,1,7,Pipoli Diva,10.38,23.36,56,14024515,Notification has been scheduled.
+fk-2026-11-03-mildura-r1-n-s8,1,7,Pipoli Diva,12.98,23.36,13,14024519,Notification has been scheduled.
+fk-2026-11-03-mildura-r1-n-s9,1,2,Titus Augustus,7.37,16.85,82,14024524,Notification has been scheduled.
+fk-2026-11-03-mildura-r1-n-s10,1,2,Titus Augustus,9.21,16.85,18,14024529,Notification has been scheduled.
+fk-2026-11-03-mildura-r2-n-s1,2,4,Airclash,3.41,3.99,176,14024533,Notification has been scheduled.
+fk-2026-11-03-mildura-r2-n-s2,2,4,Airclash,4.00,8.00,192,14024537,Notification has been scheduled.
+fk-2026-11-03-mildura-r2-n-s3,2,4,Airclash,4.50,8.00,38,14024541,Notification has been scheduled.
+fk-2026-11-03-mildura-r2-n-s4,2,5,Alvin,19.24,42.00,29,14024544,Notification has been scheduled.
+fk-2026-11-03-mildura-r2-n-s5,2,5,Alvin,24.05,42.00,7,14024547,Notification has been scheduled.
+fk-2026-11-03-mildura-r2-n-s6,2,2,Capitalex,5.63,13.04,111,14024551,Notification has been scheduled.
+fk-2026-11-03-mildura-r2-n-s7,2,2,Capitalex,7.04,13.04,24,14024555,Notification has been scheduled.
+fk-2026-11-03-mildura-r2-n-s8,2,6,Dougie's Dream,15.92,35.07,36,14024559,Notification has been scheduled.
+fk-2026-11-03-mildura-r2-n-s9,2,6,Dougie's Dream,19.90,35.07,8,14024562,Notification has been scheduled.
+fk-2026-11-03-mildura-r2-n-s10,2,3,Foxiet,16.91,37.15,33,14024566,Notification has been scheduled.
+fk-2026-11-03-mildura-r2-n-s11,2,3,Foxiet,21.14,37.15,8,14024570,Notification has been scheduled.
+fk-2026-11-03-mildura-r2-n-s12,2,1,Melodee Rose,8.88,20.13,66,14024573,Notification has been scheduled.
+fk-2026-11-03-mildura-r2-n-s13,2,1,Melodee Rose,11.10,20.13,15,14024576,Notification has been scheduled.
+fk-2026-11-03-mildura-r4-n-s1,4,1,Asawin,2.80,3.99,229,14024579,Notification has been scheduled.
+fk-2026-11-03-mildura-r4-n-s2,4,1,Asawin,3.50,3.99,53,14024582,Notification has been scheduled.
+fk-2026-11-03-mildura-r4-n-s3,4,1,Asawin,4.00,7.08,248,14024585,Notification has been scheduled.
+fk-2026-11-03-mildura-r4-n-s4,4,1,Asawin,4.00,7.08,45,14024588,Notification has been scheduled.
+fk-2026-11-03-mildura-r4-n-s5,4,8,Highland George,11.00,24.68,52,14024591,Notification has been scheduled.
+fk-2026-11-03-mildura-r4-n-s6,4,8,Highland George,13.75,24.68,12,14024594,Notification has been scheduled.
+fk-2026-11-03-mildura-r4-n-s7,4,6,Longwarry,18.96,41.42,30,14024597,Notification has been scheduled.
+fk-2026-11-03-mildura-r4-n-s8,4,6,Longwarry,23.70,41.42,7,14024600,Notification has been scheduled.
+fk-2026-11-03-mildura-r4-n-s9,4,2,Owl Witness,10.03,22.61,58,14024603,Notification has been scheduled.
+fk-2026-11-03-mildura-r4-n-s10,4,2,Owl Witness,12.54,22.61,14,14024606,Notification has been scheduled.
+fk-2026-11-03-mildura-r4-n-s11,4,7,Sports Choice,9.39,21.24,62,14024609,Notification has been scheduled.
+fk-2026-11-03-mildura-r4-n-s12,4,7,Sports Choice,11.74,21.24,14,14024612,Notification has been scheduled.
+fk-2026-11-03-mildura-r5-n-s1,5,2,Blakmax,6.59,15.16,92,14024615,Notification has been scheduled.
+fk-2026-11-03-mildura-r5-n-s2,5,2,Blakmax,8.24,15.16,21,14024617,Notification has been scheduled.
+fk-2026-11-03-mildura-r5-n-s3,5,4,Lysander,4.26,10.01,154,14024619,Notification has been scheduled.
+fk-2026-11-03-mildura-r5-n-s4,5,4,Lysander,5.32,10.01,32,14024621,Notification has been scheduled.
+fk-2026-11-03-mildura-r5-n-s5,5,3,Solar Mist,4.55,10.66,143,14024623,Notification has been scheduled.
+fk-2026-11-03-mildura-r5-n-s6,5,3,Solar Mist,5.69,10.66,30,14024625,Notification has been scheduled.
+fk-2026-11-03-mildura-r5-n-s7,5,6,Squagaga,9.88,22.29,59,14024627,Notification has been scheduled.
+fk-2026-11-03-mildura-r5-n-s8,5,6,Squagaga,12.35,22.29,14,14024629,Notification has been scheduled.
+fk-2026-11-03-mildura-r6-n-s1,6,3,Aberlutely,3.30,3.99,182,14024631,Notification has been scheduled.
+fk-2026-11-03-mildura-r6-n-s2,6,3,Aberlutely,4.00,8.28,200,14024632,Notification has been scheduled.
+fk-2026-11-03-mildura-r6-n-s3,6,3,Aberlutely,4.36,8.28,38,14024633,Notification has been scheduled.
+fk-2026-11-03-mildura-r6-n-s4,6,6,Circa,19.78,43.13,28,14024634,Notification has been scheduled.
+fk-2026-11-03-mildura-r6-n-s5,6,6,Circa,24.73,43.13,7,14024635,Notification has been scheduled.
+fk-2026-11-03-mildura-r6-n-s6,6,7,Detoron,5.58,12.94,112,14024636,Notification has been scheduled.
+fk-2026-11-03-mildura-r6-n-s7,6,7,Detoron,6.97,12.94,24,14024637,Notification has been scheduled.
+fk-2026-11-03-mildura-r6-n-s8,6,8,Kamarooka,6.34,14.61,96,14024640,Notification has been scheduled.
+fk-2026-11-03-mildura-r6-n-s9,6,8,Kamarooka,7.92,14.61,22,14024644,Notification has been scheduled.
+fk-2026-11-03-mildura-r6-n-s10,6,5,Papal Wars,17.73,38.86,32,14024645,Notification has been scheduled.
+fk-2026-11-03-mildura-r6-n-s11,6,5,Papal Wars,22.16,38.86,8,14024646,Notification has been scheduled.
