@@ -1,8 +1,8 @@
 {
  "role": "challenger",
- "holdout_kl": 0.0799,
- "races": "5012 2026-10-27",
- "trained_through": "2026-10-27",
- "trained_utc": "2026-10-29T03:55Z",
+ "holdout_kl": 0.0796,
+ "races": "5029 2026-10-29",
+ "trained_through": "2026-10-29",
+ "trained_utc": "2026-10-30T04:06Z",
  "note": "holdout KL is a did-anything-break check, not a comparison with the live model"
 }
