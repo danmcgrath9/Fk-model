@@ -569,3 +569,22 @@ account the gallops bets use, and the bot's TAB session must be running at the o
 Victorian dogs). The safety does not change: the instruction still cannot fill (min $1,000, max $1.01). The bot's
 log line names the TAB account holder and this repository's Actions logs are public, so `bot_logs` now redacts the
 name before printing (`redact_account`, tests in `tests/test_betmatic_redact.py`).
+
+## GRV's answer on Topaz access (30 Oct 2026)
+
+GRV replied on 30 Oct from Jason Adams (Fan Development & Content Lead, Customer & Commercial Development) after a
+follow-up on 29 Oct to racedata@grv.org.au, with comments@grv.org.au (the Feedback Office) copied. racedata@ is the
+only address on grv.org.au/racedata, so the request went to the right place. His answers, against the four questions:
+
+1. **Terms:** "We have terms of use/agreements in development." Access is currently given to "personal users who bet
+   on Victorian greyhound races"; commercial users are "a completely different conversation".
+2. **Modelling now, own betting later:** "Yes, personal use for that purpose is fine."
+3. **Data:** "everything seen in our results/form guides", plus Isolynx tracking at the handful of tracks with it.
+4. **History and pace:** form "goes back a long way", Isolynx only recent years; rate limit "I believe ... 80 per minute".
+   `greyhound/pull.py` pauses 2 seconds between calls (30 a minute) by default.
+
+No key yet. The founder's reply (30 Oct) asks for a key, whether access covers other states, and whether a one-off
+history pull at under 80 a minute is fine. When the key comes: the founder adds it as the `TOPAZ_API_KEY` Actions
+secret (never in chat or a file), reads whatever terms exist and sets `TOPAZ_TERMS_READ=yes`. The data is personal use,
+so it cannot sit on this public repository's releases (the pull refuses while the repo is public); private storage
+(a separate private repository is the simplest) is the founder's call before the first pull.
