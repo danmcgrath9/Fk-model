@@ -39,7 +39,15 @@ UNIT_DOLLARS = 37.5   # founder, 28 Oct 2026: $37.50 a unit (was $50 from 21 Oct
 # no better), +1,037u against +801u (early, cross-fitted, P 0.01). --no-blend restores the 13 Oct rule.
 BLEND_W = 0.15
 GRID = [1.05 * (46.0 / 1.05) ** (k / 2999) for k in range(3000)]   # candidate prices for the blend's minimum odds
-SHORT_OPEN, SHORT_EDGE = 4.0, 1.15   # 14 Oct: 3 steps sized at the next step: same holdout profit as 8 (+801u), at most 3 bets a horse (t_monthly.py)
+SHORT_OPEN, SHORT_EDGE = 4.0, 1.15
+# METRO FIX (founder, 31 Oct 2026, after Derby Day: "Yes" to the fix at half stakes; t_metro_fix.py, t_metro_orders.py).
+# At Flemington, Caulfield, Moonee Valley and Sandown the model overrates its picks (holdout from 3 Jun: 37 winners where it
+# expected 53, +7% at the open). Our chance there leans 20% to the market before the live rule: at an open t it is
+# C x p^0.8 x t^-0.2 (C 0.986, the median renormalisation), then the usual p^0.82 t^-0.22 blend. Holdout, as an order
+# sheet: Jun-Jul +16% at the open (was +7%), Aug-Oct +26% (was +6%); still behind provincial and still loses at BSP,
+# so metro stakes are halved until about 50 live metro bets show it holds.
+METRO = {"flemington", "caulfield", "moonee valley", "sandown"}
+METRO_W, METRO_C, METRO_STAKE = 0.8, 0.986, 0.5   # 14 Oct: 3 steps sized at the next step: same holdout profit as 8 (+801u), at most 3 bets a horse (t_monthly.py)
 
 
 def tiers(min_odds, cap, chance_at, only_ride, field, mult_at=None):
@@ -78,6 +86,7 @@ def main():
     times = dict(x.split("=", 1) for x in a.times.split(",") if "=" in x)
     v = json.load(open(a.v6 or f"{B}-v6.json"))
     date, venue = a.prefix[:10], a.prefix[11:].replace("-", " ").title()
+    is_metro = venue.lower() in METRO   # metro fix: 20% market lean, half stakes (31 Oct 2026)
     import re
     nm = lambda x: re.sub(r"[^a-z0-9]", "", x.lower())
     nums_fn = a.numbers or (f"{L}/{a.prefix}-entry-numbers.txt" if os.path.exists(f"{L}/{a.prefix}-entry-numbers.txt") else None)
@@ -168,6 +177,8 @@ def main():
             ts = [(max(t, SHORT_OPEN), extra, total) for t, extra, total in ts]
         elif band == "under4":
             ts = [x for x in ts if x[0] < SHORT_OPEN]; hi = min(cap, SHORT_OPEN - 0.01)
+        if is_metro:
+            ts = [(t, round(extra * METRO_STAKE, 2), round(total * METRO_STAKE, 2)) for t, extra, total in ts]
         for k, (t, extra, total) in enumerate(ts, 1):
             rows.append(dict(date=date, venue=venue, race=rc, jump=times.get(str(rc), ""), number=numbers.get((rc, nm(r["horse"])), ""), horse=r["horse"], bet="WIN",
                              min_odds=f"{t:.2f}", max_odds=f"{hi:.2f}", stake_units=f"{extra:.2f}", stake_dollars=f"{extra * UNIT_DOLLARS:.0f}",
@@ -204,6 +215,12 @@ def main():
                 first = lambda E: round(SHADE * float(g[np.argmax(val >= E)]), 2) if (val >= E).any() else 1e9
                 min_odds, min_short = first(1.2), first(SHORT_EDGE)
                 ch = lambda t, pm=pm, xr=xr, f_=f_: float(pm ** BLEND_W * FC.qbsp(xr, pm, [t], f_)[0] ** (1 - BLEND_W))
+            elif is_metro:
+                k_ = METRO_C ** 0.82 * pm ** (0.82 * METRO_W); ex_ = 1 / (0.78 - 0.82 * (1 - METRO_W))
+                min_odds = round(SHADE * (1.2 / k_) ** ex_, 2)
+                min_short = round(SHADE * (SHORT_EDGE / k_) ** ex_, 2)
+                ch = lambda t, pm=pm: (METRO_C * pm ** METRO_W * t ** -(1 - METRO_W)) ** 0.82 * t ** -0.22
+                note = (note + "; " if note else "") + "metro fix, half stake"
             else:
                 min_odds = round(SHADE * (1.2 / pm ** 0.82) ** (1 / 0.78), 2)
                 min_short = round(SHADE * (SHORT_EDGE / pm ** 0.82) ** (1 / 0.78), 2)
