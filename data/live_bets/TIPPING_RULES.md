@@ -90,3 +90,8 @@ he posted (the BetMatic open fills halved, six horses, no Imperial Award). Claud
 gave a race number from memory. From now on: the moment a card is posted, its horses, races, prices, rated prices and units
 go into betmatic-book.md marked "Tweeted Twitter card"; anything quoted later as what we tipped comes from that entry
 (or the posted image), never from a working card file, and race numbers come from the order file, never from memory.
+
+**Metro (founder, 31 Oct 2026, after Derby Day 0 from 6: "Yes" to the fix at half stakes).** At Flemington, Caulfield, Moonee
+Valley and Sandown the order sheet leans our chance 20% to the market and halves every stake (betmatic_orders.py METRO;
+t_metro_fix.py). Cards for metro meetings carry the halved units. Back to full stakes only after about 50 live metro bets
+show the fix holds; until then metro results are reported on their own line.
