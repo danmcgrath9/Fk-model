@@ -16,6 +16,8 @@ under his price, top bookie price, dry run first, sent only on the founder's OK)
 | Sat 24 Oct 1:38pm (edited) | Randwick (Sat 24), The Invitation | R8 | Perfumist | Each way | $7.50 win / $2.40 place | 2u EW | $200 | No (paper) | Unplaced | -4.00 | -$200 |
 | Tue 27 Oct (seen 5:14) | Hawkesbury (Tue 27) | R1 | Water City | Win | $3.80 TAB / $3.60 others | 6u | $300 | No (paper) | 3rd | -6.00 | -$300 |
 | Tue 27 Oct | Eagle Farm (Wed 28) | R3 | Budda Bar | Win | $2.70 TAB / $2.45 Betr | 10u | $500 | No (paper) | | | |
+| Sat 31 Oct, about 9:20am | Doomben (Sat 31) | R6 | Vintage Vibes | Each way | $6.00 win / $2.10 place (Lads, Betr); $5.50 others | 2u EW | $200 | No (paper) | | | |
+| Sat 31 Oct 12:19pm | Newcastle (Sat 31) | R5 | Bundy Bell | Win | $3.80 TAB / $3.60 others | 4u | $200 | No (paper) | | | |
 
 Running total (to Sat 24 Oct, results from the founder, 26 Oct: "All lost"): 5 tips, 0 winners, 25u staked ($1,250), -25u (-$1,250), ROI -100%.
 Running total (to Tue 27 Oct; Water City 3rd, founder 28 Oct: "Blokes on a cold streak"): 6 tips, 0 winners, 31u staked ($1,550), -31u (-$1,550), ROI -100%. Budda Bar (Eagle Farm Wed 28) open.
