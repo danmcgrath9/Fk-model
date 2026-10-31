@@ -658,3 +658,13 @@ The bot dropped in and out: dry runs passed at 10:25am, live sends refused at 10
   $4.60 2.90u (passed after the open: Catwalk Icon $5 cleared the rule by 2c, Wintery in to $3.70).
 - Status 11:15am: BetMatic showed 0 bot machines and 0 sessions running while the founder's app said on; at 11:16am both
   registered and the bet went. The connection drops in and out (bot flagged outdated, latest 1.2.70-beta04).
+
+## Don copies, Sat 31 Oct (real money, $50 a unit; founder: "Mate just bet them at best odds all of them")
+| Race (jump) | Horse | Bet | Stake | Price taken | Don's price |
+|---|---|---|---|---|---|
+| Doomben R5 (3:32pm) | Kick Up Rocky | Win 5u | $250 | $3.20 (BetMatic bookie 63, High Odds First) | $3.30 SB / Lads |
+| Newcastle R5 (3:45pm) | Bundy Belle | Win 4u | $200 | $3.20 TAB | $3.80 TAB |
+| Doomben R6 (4:12pm) | Vintage Vibes | Win 2u | $100 | $4.80 TAB | $6 Lads / Betr |
+| Doomben R6 (4:12pm) | Vintage Vibes | Place 2u | $100 | $1.80 TAB | $2.10 |
+First send at 20c under his price filled only Kick Up Rocky (Bundy Belle $3.20 and Vintage Vibes $4.80 were under the floors);
+re-sent at best odds on the founder's word. Place bets now go through betmatic_send.py as PLACE rows (Fixed Place).
