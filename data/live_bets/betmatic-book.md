@@ -683,3 +683,5 @@ True Rebel 5th, Sass Appeal 4th: -10.57u; Bridal Waltz (3.16u) not resulted yet.
 Week Mon 26 - Sat 31 Oct, paper at the open (model stakes), Bridal Waltz open: 33 bets settled, 4 won, 109.04u, +27.45u, ROI +25%
 (Wangaratta +35.34, Swan Hill +45.88, Bendigo -6.87, Warrnambool -17.72, Kilmore -7.14, Pakenham -11.47, Flemington -10.57).
 Real money this week: Don copies +$810 on $650; Ballarat Mon R4 Best Terms $331 at $2.60 open.
+Flemington R9 Bridal Waltz lost (founder, 31 Oct): -3.16u at the open (tweeted 1.46u: -1.46u). Week Mon 26 - Sat 31 Oct, paper at
+the open: 34 bets, 4 won, 112.20u, +24.29u, ROI +22%. Flemington Derby Day: 0 from 6 (War Machine scratched), -13.73u.
