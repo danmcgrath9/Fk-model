@@ -119,7 +119,8 @@ def send(a):
             continue
         bets.append((label(o, step[k], getattr(a, "tag", "")), o, {
             "type": "Fixed Wager", "sports": "RACING", "competition": o["venue"].upper(), "code": "Galloping",
-            "event_number": int(o["race"]), "market": "Fixed Win", "selection": str(o["number"]), "stake": stake,
+            "event_number": int(o["race"]), "market": "Fixed Place" if str(o.get("bet", "WIN")).upper() == "PLACE" else "Fixed Win",  # PLACE rows: each-way copies (31 Oct 2026)
+            "selection": str(o["number"]), "stake": stake,
             "check_odds": True, "odds": float(o["min_odds"]),
             "check_max_odds": bool(o.get("max_odds")), **({"max_odds": float(o["max_odds"])} if o.get("max_odds") else {}),
             "is_market_open": not a.now, "max_attempts": a.attempts, "delay_between_attempts": 1,
