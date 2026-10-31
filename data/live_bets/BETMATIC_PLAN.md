@@ -183,3 +183,13 @@ Our chance at each order step price t is now p^0.15 x qBSP(t)^0.85, where qBSP(t
 **Max bet 10u from 20 Oct 2026 (founder: "fkn love it").** stake_rule.MAX_UNITS 5 -> 10 ($500 at $50 a unit). Holdout (t_cap.py): +1,989u (+46.0%) against +1,601u (+43.7%) at 5u, worst drawdown 68u against 54u; ROI rises with stake to the 7.5-10u band (+63%), the bets at the cap make +47%. TAB may not take $500 at an open; BetMatic's status shows any reduced fill, and the cap comes back down if TAB keeps cutting us. Also from 20 Oct: TAB account must be funded before the opens (Mornington 22 Oct: every order fired on time, all skipped for balance; missed Russian Benefits 5u at $14, which went $14 into $6 instantly).
 
 **Unit $37.50 from Wed 28 Oct (founder: "Yeah let's go $37.50").** The stake rule went up on 21 Oct and each meeting now asks 75-170u and fills about 20-25u at the open, over roughly nine Victorian meetings a week, so 90-130u is out at once. At $50 a unit that is $4,500-6,500 tied up and a $3,000 bank runs dry midweek (Warrnambool R5/R6 skipped for balance, 27 Oct). At $37.50 it is about $3,400-4,900 at the peak, so the bank will still be short at the busiest point of a week; orders that fire then are skipped. Victoria only; national data waits until after 15 Nov. Orders already sent at $50 (Warrnambool R1/R2/R7/R8) keep their stakes. The fk-betmatic unit default and UNIT_DOLLARS are 37.5.
+
+## Never again: the send gate (31 Oct 2026, founder: "This better not fucking happen again")
+From Fri 30 Oct afternoon to Sat 31 Oct 10:42am every send was refused with "bot_running false" while the bot was connected
+(BetMatic's own connect log: connected 6:08am and 8:21am Sat). The script gated on the session's bot_running field, a stored
+snapshot that can sit stale for hours. It cost the open at Mornington, Traralgon, Flemington R2-R6 and Ballarat R4/R5/R7.
+Rules from here:
+1. The send gates on GET /account/readiness/ (a bot machine connected AND a session running), never on the session snapshot.
+2. If a send is refused, run `check` straight away and read the connect log before telling the founder the bot is off.
+   Never ask the founder to restart a bot the connect log shows connected.
+3. A refusal is reported with what `check` shows (readiness, connect log, snapshot time), not the refusal message alone.
