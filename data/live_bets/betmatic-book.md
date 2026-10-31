@@ -668,3 +668,5 @@ The bot dropped in and out: dry runs passed at 10:25am, live sends refused at 10
 | Doomben R6 (4:12pm) | Vintage Vibes | Place 2u | $100 | $1.80 TAB | $2.10 |
 First send at 20c under his price filled only Kick Up Rocky (Bundy Belle $3.20 and Vintage Vibes $4.80 were under the floors);
 re-sent at best odds on the founder's word. Place bets now go through betmatic_send.py as PLACE rows (Fixed Place).
+Settled (BetMatic status, 5:50pm Sat): Kick Up Rocky WON +$550, Bundy Belle lost -$200, Vintage Vibes WON win +$380 and place
++$80. Don copies Sat 31 Oct: $650 staked, +$810.
