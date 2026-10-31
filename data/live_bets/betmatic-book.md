@@ -674,3 +674,12 @@ Settled (BetMatic status, 5:50pm Sat): Kick Up Rocky WON +$550, Bundy Belle lost
 ## Saturday 31 Oct: Traralgon ABANDONED (founder, 31 Oct). R5 and R6 tips (It's Gnarly, Ze Bee Nine, Lulu Darling, Trinity's D'oro)
 are void, paper and Twitter alike. Flemington tips to R8: no winner (Icelady 3rd, Sass Appeal 4th, True Rebel 5th); War Machine
 scratched (void); R9 Bridal Waltz to settle.
+
+## Friday 30 Oct and Saturday 31 Oct settled (results pulled Sat 6:27pm), paper at the open
+Kilmore (7.14u): Manchego 2nd, Adieu Grasse 6th: -7.14u. Pakenham (11.47u): Viking Kid 2nd, Via Theresa 5th, In A Tizzy 3rd,
+Garnacho 2nd, Glenfinnan 7th, Empressive Enuff 6th: -11.47u. Pakenham top-up Shidan 8th: -1.09u.
+Flemington (14.97u at the open): War Machine scratched (void, 1.24u back); Icelady 3rd, Hankee Alpha 10th, Persian Spirit 8th,
+True Rebel 5th, Sass Appeal 4th: -10.57u; Bridal Waltz (3.16u) not resulted yet. Traralgon abandoned (void).
+Week Mon 26 - Sat 31 Oct, paper at the open (model stakes), Bridal Waltz open: 33 bets settled, 4 won, 109.04u, +27.45u, ROI +25%
+(Wangaratta +35.34, Swan Hill +45.88, Bendigo -6.87, Warrnambool -17.72, Kilmore -7.14, Pakenham -11.47, Flemington -10.57).
+Real money this week: Don copies +$810 on $650; Ballarat Mon R4 Best Terms $331 at $2.60 open.
