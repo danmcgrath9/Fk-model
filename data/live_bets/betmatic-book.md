@@ -653,3 +653,8 @@ The bot dropped in and out: dry runs passed at 10:25am, live sends refused at 10
 - Echuca Tue 3 Nov (Soft 7): 38 orders, $1,888, scheduled.
 - Mildura Tue 3 Nov (Good 4): 54 orders, $3,655, scheduled.
 - Wangaratta Tue 3 Nov (Soft 6): 40 orders, $1,803, scheduled.
+- Ballarat Mon 2 Nov R4 Best Terms: PLACED 11:17am Sat 31 Oct, $331 (6.62u at $50) at $2.60 TAB (after-open rule needed $2.50;
+  ours $1.82 on Soft 7). Real money. The other open-time fills missed at Ballarat (paper): Wintery R6 $7 2.16u, Catwalk Icon R7
+  $4.60 2.90u (passed after the open: Catwalk Icon $5 cleared the rule by 2c, Wintery in to $3.70).
+- Status 11:15am: BetMatic showed 0 bot machines and 0 sessions running while the founder's app said on; at 11:16am both
+  registered and the bet went. The connection drops in and out (bot flagged outdated, latest 1.2.70-beta04).
