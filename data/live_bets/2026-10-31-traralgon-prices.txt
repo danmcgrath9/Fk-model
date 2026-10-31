@@ -1,102 +1,102 @@
-# Traralgon Sat 31 Oct (official going, Form King; priced Thu 29 Oct pre-market)
-1, Style Guide, 0, 0
-1, Chronic, 0, 0
-1, Coteau, SCR
-1, Castelli In Aria, 0, 0
-1, Pipe Hitter, SCR
-1, Laundering, SCR
-1, Expanding Power, 0, 0
-1, Full Zoom, 0, 0
-1, Aces Full, 0, 0
-1, Barossa Bourbon, 0, 0
-1, Hammer Head, 0, 0
-1, Mo, SCR
-1, Pinazaki, 0, 0
-1, Our Brud, 0, 0
-2, Reelness, 0, 0
-2, Jupiter's Girl, SCR
-2, Dun Gracefully, 0, 0
-2, Inner Thoughts, SCR
-2, Blue Parrot, 0, 0
-2, Doubt It's Love, 0, 0
-2, Miss Belajo, 0, 0
-2, He's Fierce, 0, 0
-2, Zouie, 0, 0
-2, Johnny Tightlips, 0, 0
-2, Pasatiempo, SCR
-2, Prestige Hellbent, 0, 0
-2, Irish Eclipse, 0, 0
-2, Opunake, SCR
-2, The Destroyer, 0, 0
-2, Satoshi, 0, 0
-3, Mwamba, SCR
-3, Rico, 0, 0
-3, Maharani Miss, SCR
-3, Vadar, 0, 0
-3, Top Liner, 0, 0
-3, Baldoni, 0, 0
-3, Tennessee Link, 0, 0
-3, Guthrie, 0, 0
-3, The White Bull, 0, 0
-3, Shuwaib, 0, 0
-3, Lacessit, 0, 0
-3, Amsterdam Nights, 0, 0
-3, Girl With A Pearl, 0, 0
-3, Kermalina, 0, 0
-4, Redwood Shadow, SCR
-4, Mac Kalhoun, 0, 0
-4, Spirit Angel, 0, 0
-4, Golden Hips, 0, 0
-4, Eight Shout's, 0, 0
-4, Avonview, 0, 0
-4, In Your Hands, SCR
-4, Blanche Bass, 0, 0
-4, Mannerheim, 0, 0
-4, Up And Under, 0, 0
-4, Preservator, SCR
-4, Kiwiesque, 0, 0
-4, Tassadar, 0, 0
-4, Riozino, 0, 0
-4, King Of Savoy, 0, 0
-5, Anything But, SCR
-5, I'm Dynamite, 0, 0
-5, Epicus, 0, 0
-5, Headstock, 0, 0
-5, Ze Bee Nine, 0, 0
-5, Mont Saint Michel, 0, 0
-5, Frederick, 0, 0
-5, Aussieaussieaussie, 0, 0
-5, Neck High, SCR
-5, Grand Sage, SCR
-5, Cuban Dawn, SCR
-5, Clinger, 0, 0
-5, Nikephoros, 0, 0
-5, It's Gnarly, 0, 0
-6, Satin Image, SCR
-6, Night Eruption, SCR
-6, Kulina, SCR
-6, Ocean's Jen, 0, 0
-6, Lulu Darling, 0, 0
-6, Aria Electra, 0, 0
-6, Alpinova, 0, 0
-6, Nicking Gracie, SCR
-6, Tarakash, 0, 0
-6, Trinity's D'oro, 0, 0
-6, She Nailed It, 0, 0
-6, Kaddari, 0, 0
-6, So You Excel, 0, 0
-6, Regal Visions, 0, 0
-7, Moonlight Rustler, SCR
-7, The Cruiser, SCR
-7, Kyokushin, 0, 0
-7, Irresistible Sir, 0, 0
-7, Unriddle, 0, 0
-7, Flying Mean, 0, 0
-7, Bring The Thunder, 0, 0
-7, Bleak Mid Winter, 0, 0
-7, Diamond Mila, 0, 0
-7, Oriental Dane, 0, 0
-7, O'mosa, 0, 0
-7, Stewart, 0, 0
-7, Rock Glory, 0, 0
-7, Beau Strada, 0, 0
+# traralgon Sat 31 Oct: final field and prices at 12:18pm Sat (scratchings.py), for deductions
+1, Style Guide, SCR
+1, Chronic, 31.00, 31.00, fk_open 41.00
+1, Coteau, 101.00, 101.00, fk_open 91.00
+1, Castelli In Aria, 2.80, 2.80, fk_open 2.70
+1, Pipe Hitter, 151.00, 151.00, fk_open 151.00
+1, Laundering, 101.00, 101.00, fk_open 81.00
+1, Expanding Power, 5.00, 5.00, fk_open 5.00
+1, Full Zoom, 27.00, 27.00, fk_open 23.00
+1, Aces Full, 81.00, 81.00, fk_open 51.00
+1, Barossa Bourbon, 126.00, 126.00, fk_open 91.00
+1, Hammer Head, 10.00, 10.00, fk_open 12.00
+1, Mo, 13.00, 13.00, fk_open 14.00
+1, Pinazaki, 2.25, 2.25, fk_open 2.20
+1, Our Brud, 10.00, 10.00, fk_open 11.00
+2, Reelness, 61.00, 61.00, fk_open 38.67
+2, Jupiter's Girl, 41.00, 41.00, fk_open 22.67
+2, Dun Gracefully, 41.00, 41.00, fk_open 26.33
+2, Inner Thoughts, 34.00, 34.00, fk_open 20.33
+2, Blue Parrot, 10.00, 10.00, fk_open 12.33
+2, Doubt It's Love, SCR, last 51.00, fk_open 32.00
+2, Miss Belajo, 26.00, 26.00, fk_open 19.67
+2, He's Fierce, 21.00, 21.00, fk_open 13.00
+2, Zouie, 5.25, 5.25, fk_open 4.73
+2, Johnny Tightlips, SCR
+2, Pasatiempo, 9.50, 9.50, fk_open 8.67
+2, Prestige Hellbent, 4.60, 4.60, fk_open 4.57
+2, Irish Eclipse, SCR
+2, Opunake, 10.00, 10.00, fk_open 7.50
+2, The Destroyer, 5.00, 5.00, fk_open 3.90
+2, Satoshi, 3.70, 3.70, fk_open 4.00
+3, Mwamba, 101.00, 101.00, fk_open 81.00
+3, Rico, 61.00, 61.00, fk_open 51.00
+3, Maharani Miss, 35.00, 35.00, fk_open 41.00
+3, Vadar, 9.00, 9.00, fk_open 19.00
+3, Top Liner, 3.50, 3.50, fk_open 6.00
+3, Baldoni, 10.00, 10.00, fk_open 10.00
+3, Tennessee Link, 71.00, 71.00, fk_open 61.00
+3, Guthrie, 35.00, 35.00, fk_open 31.00
+3, The White Bull, 14.00, 14.00, fk_open 21.00
+3, Shuwaib, 5.00, 5.00, fk_open 4.00
+3, Lacessit, 26.00, 26.00, fk_open 41.00
+3, Amsterdam Nights, 11.00, 11.00, fk_open 10.00
+3, Girl With A Pearl, 2.25, 2.25, fk_open 3.00
+3, Kermalina, 4.80, 4.80, fk_open 6.00
+4, Redwood Shadow, 31.00, 31.00, fk_open 32.50
+4, Mac Kalhoun, 34.00, 34.00, fk_open 26.50
+4, Spirit Angel, 4.80, 4.80, fk_open 4.60
+4, Golden Hips, 17.00, 17.00, fk_open 9.50
+4, Eight Shout's, 81.00, 81.00, fk_open 56.00
+4, Avonview, 7.50, 7.50, fk_open 9.50
+4, In Your Hands, 51.00, 51.00, fk_open 66.00
+4, Blanche Bass, 14.00, 14.00, fk_open 11.50
+4, Mannerheim, 4.20, 4.20, fk_open 6.25
+4, Up And Under, 3.80, 3.80, fk_open 3.70
+4, Preservator, 7.50, 7.50, fk_open 9.75
+4, Kiwiesque, 26.00, 26.00, fk_open 22.00
+4, Tassadar, 9.00, 9.00, fk_open 6.75
+4, Riozino, 41.00, 41.00, fk_open 23.00
+4, King Of Savoy, 23.00, 23.00, fk_open 13.50
+5, Anything But, 71.00, 71.00, fk_open 74.00
+5, I'm Dynamite, 15.00, 15.00, fk_open 10.50
+5, Epicus, 6.00, 6.00, fk_open 7.00
+5, Headstock, 6.00, 6.00, fk_open 5.75
+5, Ze Bee Nine, 6.00, 6.00, fk_open 7.75
+5, Mont Saint Michel, 10.00, 10.00, fk_open 8.75
+5, Frederick, 7.00, 7.00, fk_open 4.70
+5, Aussieaussieaussie, 26.00, 26.00, fk_open 19.00
+5, Neck High, 14.00, 14.00, fk_open 17.50
+5, Grand Sage, 9.00, 9.00, fk_open 9.00
+5, Cuban Dawn, 16.00, 16.00, fk_open 14.00
+5, Clinger, 8.00, 8.00, fk_open 7.50
+5, Nikephoros, 27.00, 27.00, fk_open 13.50
+5, It's Gnarly, 3.90, 3.90, fk_open 6.00
+6, Satin Image, 20.00, 20.00, fk_open 21.00
+6, Night Eruption, 23.00, 23.00, fk_open 41.00
+6, Kulina, 14.00, 14.00, fk_open 13.00
+6, Ocean's Jen, 6.50, 6.50, fk_open 3.30
+6, Lulu Darling, 7.50, 7.50, fk_open 10.00
+6, Aria Electra, 27.00, 27.00, fk_open 19.00
+6, Alpinova, 4.40, 4.40, fk_open 4.00
+6, Nicking Gracie, 9.50, 9.50, fk_open 9.00
+6, Tarakash, 9.00, 9.00, fk_open 9.50
+6, Trinity's D'oro, 5.00, 5.00, fk_open 11.00
+6, She Nailed It, 7.50, 7.50, fk_open 8.50
+6, Kaddari, 8.50, 8.50, fk_open 7.00
+6, So You Excel, 12.00, 12.00, fk_open 13.00
+6, Regal Visions, 26.00, 26.00, fk_open 13.00
+7, Moonlight Rustler, 21.00, 21.00, fk_open 20.50
+7, The Cruiser, 34.00, 34.00, fk_open 29.00
+7, Kyokushin, 41.00, 41.00, fk_open 29.00
+7, Irresistible Sir, 11.00, 11.00, fk_open 11.50
+7, Unriddle, 5.00, 5.00, fk_open 4.25
+7, Flying Mean, 10.00, 10.00, fk_open 9.00
+7, Bring The Thunder, 14.00, 14.00, fk_open 9.00
+7, Bleak Mid Winter, 8.50, 8.50, fk_open 9.25
+7, Diamond Mila, 26.00, 26.00, fk_open 28.50
+7, Oriental Dane, 71.00, 71.00, fk_open 51.00
+7, O'mosa, 6.25, 6.25, fk_open 12.00
+7, Stewart, 6.50, 6.50, fk_open 8.00
+7, Rock Glory, 19.00, 19.00, fk_open 18.50
+7, Beau Strada, 3.50, 3.50, fk_open 3.30

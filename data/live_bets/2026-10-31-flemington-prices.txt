@@ -1,147 +1,147 @@
-# Flemington Sat 31 Oct, Derby Day (going Good 4, founder 28 Oct: lean drier for the carnival; band Good): final fields pulled Wed 28 Oct 11:53am Melbourne; no market priced in Form King yet. Emergencies as SCR until they gain a start.
-1, Glenorchy, 0, 0
-1, Strong Tempo, 0, 0
-1, Cab Franc, 0, 0
-1, Tuzemak, 0, 0
-1, High Falls, 0, 0
-1, Fast Freddie, 0, 0
-1, Unhinged, 0, 0
-1, Mister Whiskers, 0, 0
-1, The Roaring Sun, 0, 0
-1, Zoehrer, 0, 0
-1, Conquer The World, 0, 0
-1, Star Of Macedon, 0, 0
-2, Youmzaa, 0, 0
-2, Beautiful You, 0, 0
-2, Affari, 0, 0
-2, Consulate, 0, 0
-2, Miss Dividend, 0, 0
-2, Full Confidence, 0, 0
-2, I Am Aria, 0, 0
-2, Blue Dream, 0, 0
-2, Regal Ambition, 0, 0
-2, Divine Eruption, 0, 0
-2, Pin Up Sheila, 0, 0
-2, Shintono, 0, 0
-2, Autumn Lover, 0, 0
-3, De Armas, 0, 0
-3, Endless Fury, 0, 0
-3, Churchill Rose, 0, 0
-3, Sumac, 0, 0
-3, Fringilla, 0, 0
-3, Quynh, 0, 0
+# flemington Sat 31 Oct: final field and prices at 12:18pm Sat (scratchings.py), for deductions
+1, Glenorchy, 8.00, 8.00, fk_open 11.00
+1, Strong Tempo, 21.00, 21.00, fk_open 13.00
+1, Cab Franc, SCR
+1, Tuzemak, 51.00, 51.00, fk_open 51.00
+1, High Falls, 4.80, 4.80, fk_open 6.00
+1, Fast Freddie, 18.00, 18.00, fk_open 15.00
+1, Unhinged, 3.20, 3.20, fk_open 3.80
+1, Mister Whiskers, SCR
+1, The Roaring Sun, 7.00, 7.00, fk_open 10.00
+1, Zoehrer, 61.00, 61.00, fk_open 41.00
+1, Conquer The World, 6.00, 6.00, fk_open 6.00
+1, Star Of Macedon, SCR
+2, Youmzaa, 18.00, 18.00, fk_open 9.50
+2, Beautiful You, 51.00, 51.00, fk_open 26.00
+2, Affari, 11.00, 11.00, fk_open 7.00
+2, Consulate, 101.00, 101.00, fk_open 34.00
+2, Miss Dividend, 61.00, 61.00, fk_open 51.00
+2, Full Confidence, 71.00, 71.00, fk_open 61.00
+2, I Am Aria, 9.00, 9.00, fk_open 11.00
+2, Blue Dream, 15.00, 15.00, fk_open 18.00
+2, Regal Ambition, 2.30, 2.30, fk_open 2.40
+2, Divine Eruption, 126.00, 126.00, fk_open 41.00
+2, Pin Up Sheila, 4.00, 4.00, fk_open 4.00
+2, Shintono, 71.00, 71.00, fk_open 31.00
+2, Autumn Lover, 26.00, 26.00, fk_open 34.00
+3, De Armas, 3.60, 3.60, fk_open 5.50
+3, Endless Fury, 101.00, 101.00, fk_open 101.00
+3, Churchill Rose, 26.00, 26.00, fk_open 21.00
+3, Sumac, 17.00, 17.00, fk_open 11.00
+3, Fringilla, SCR
+3, Quynh, 81.00, 81.00, fk_open 81.00
 3, Chocolate Freckles, SCR
-3, Girl With A Pearl, SCR
-3, Your Colour, 0, 0
-3, Icelady, 0, 0
-3, Adakite, 0, 0
-3, Voynichese, 0, 0
+3, Girl With A Pearl, 81.00, 81.00, fk_open 61.00
+3, Your Colour, 6.25, 6.25, fk_open 7.00
+3, Icelady, 3.10, 3.10, fk_open 3.50
+3, Adakite, 61.00, 61.00, fk_open 34.00
+3, Voynichese, 23.00, 23.00, fk_open 21.00
 3, A Rus In Grinzing, SCR
-3, Shameful Impulse, 0, 0
-3, So Royal, 0, 0
-3, Tharwa, 0, 0
-3, Nikitria, 0, 0
-3, Autumn In Grinzing, 0, 0
-3, Autumn Deel, 0, 0
-3, Grinzinger Heart, 0, 0
-3, Anglais, 0, 0
-4, Celsius Star, 0, 0
-4, Meridius, 0, 0
-4, Grand Impact, 0, 0
-4, Klabel, 0, 0
-4, Hedged, 0, 0
-4, King Zephyr, 0, 0
-4, Watchme Win, 0, 0
-4, Sweynesday, 0, 0
-4, Disneck, 0, 0
-4, Verdoux, 0, 0
-4, Grand Larceny, 0, 0
-4, De Bergerac, 0, 0
-4, The Cosmic One, 0, 0
-4, Ndola, 0, 0
-4, Hankee Alpha, 0, 0
-4, Golden Straand, 0, 0
-4, Jenni The Fox, 0, 0
-4, Gallant Son, 0, 0
-4, Jimmy Recard, 0, 0
-4, Napoleonic, 0, 0
-5, Private Eye, 0, 0
-5, Here To Shock, 0, 0
-5, Holymanz, 0, 0
-5, Amenable, 0, 0
-5, Desert Lightning, 0, 0
-5, Hughes, 0, 0
-5, Welwal, 0, 0
-5, Pericles, 0, 0
-5, Zou Sensation, 0, 0
-5, Steparty, 0, 0
-5, Persian Spirit, 0, 0
-5, King Zephyr, SCR
-5, War Machine, 0, 0
-5, Cafe Millenium, 0, 0
-5, Scheelite, SCR
-5, Recon, 0, 0
-5, Warnie, 0, 0
-5, Cote Atlantique, 0, 0
+3, Shameful Impulse, 151.00, 151.00, fk_open 61.00
+3, So Royal, 67.00, 67.00, fk_open 61.00
+3, Tharwa, 9.00, 9.00, fk_open 8.25
+3, Nikitria, 34.00, 34.00, fk_open 34.00
+3, Autumn In Grinzing, 51.00, 51.00, fk_open 26.00
+3, Autumn Deel, 151.00, 151.00, fk_open 61.00
+3, Grinzinger Heart, 91.00, 91.00, fk_open 31.00
+3, Anglais, SCR
+4, Celsius Star, 151.00, 151.00, fk_open 61.00
+4, Meridius, 18.00, 18.00, fk_open 15.00
+4, Grand Impact, 34.00, 34.00, fk_open 11.00
+4, Klabel, 101.00, 101.00, fk_open 61.00
+4, Hedged, 26.00, 26.00, fk_open 15.00
+4, King Zephyr, SCR
+4, Watchme Win, 101.00, 101.00, fk_open 26.00
+4, Sweynesday, 6.75, 6.75, fk_open 26.00
+4, Disneck, 26.00, 26.00, fk_open 15.00
+4, Verdoux, 81.00, 81.00, fk_open 34.00
+4, Grand Larceny, 29.00, 29.00, fk_open 13.00
+4, De Bergerac, 51.00, 51.00, fk_open 31.00
+4, The Cosmic One, 41.00, 41.00, fk_open 21.00
+4, Ndola, 15.00, 15.00, fk_open 13.00
+4, Hankee Alpha, 4.80, 4.80, fk_open 6.50
+4, Golden Straand, 8.50, 8.50, fk_open 10.00
+4, Jenni The Fox, 67.00, 67.00, fk_open 31.00
+4, Gallant Son, 13.00, 13.00, fk_open 18.00
+4, Jimmy Recard, 67.00, 67.00, fk_open 34.00
+4, Napoleonic, 5.50, 5.50, fk_open 7.50
+5, Private Eye, 8.00, 8.00, fk_open 6.00
+5, Here To Shock, 51.00, 51.00, fk_open 34.00
+5, Holymanz, 71.00, 71.00, fk_open 51.00
+5, Amenable, 17.00, 17.00, fk_open 14.00
+5, Desert Lightning, 31.00, 31.00, fk_open 34.00
+5, Hughes, 12.00, 12.00, fk_open 6.50
+5, Welwal, 41.00, 41.00, fk_open 16.00
+5, Pericles, SCR
+5, Zou Sensation, 18.00, 18.00, fk_open 23.00
+5, Steparty, 8.00, 8.00, fk_open 6.00
+5, Persian Spirit, 6.75, 6.75, fk_open 9.50
+5, King Zephyr, 8.50, 8.50, fk_open 13.00
+5, War Machine, SCR
+5, Cafe Millenium, 31.00, 31.00, fk_open 19.00
+5, Scheelite, 41.00, 41.00, fk_open 51.00
+5, Recon, 31.00, 31.00, fk_open 18.00
+5, Warnie, 4.80, 4.80, fk_open 7.00
+5, Cote Atlantique, 13.00, 13.00, fk_open 14.00
 5, Estremo, SCR
-6, Alibaba, 0, 0
-6, Doubt Time, 0, 0
-6, Paradoxium, 0, 0
-6, Marffiano, 0, 0
-6, Natural Fling, 0, 0
-6, Steel Will, 0, 0
-6, Pembrey, 0, 0
-6, Mbube, 0, 0
-6, Satono Glow, 0, 0
-6, The Next Episode, 0, 0
-6, St Gotthard, 0, 0
-6, The Machine Gun, 0, 0
-6, Under Focus, 0, 0
-6, Stretan Ruler, 0, 0
-7, King Winston, 0, 0
-7, Hierarchy, 0, 0
-7, True Tone, 0, 0
-7, Skua, 0, 0
-7, Quick Finish, 0, 0
-7, Cormier, 0, 0
-7, Murshidi, 0, 0
-7, Vallice, 0, 0
-7, Icy You, 0, 0
-7, True Rebel, 0, 0
-7, Meet The Prince, SCR
-7, Russian Rock, 0, 0
+6, Alibaba, 61.00, 61.00, fk_open 34.00
+6, Doubt Time, SCR
+6, Paradoxium, 17.00, 17.00, fk_open 15.00
+6, Marffiano, 67.00, 67.00, fk_open 81.00
+6, Natural Fling, 8.50, 8.50, fk_open 6.00
+6, Steel Will, 41.00, 41.00, fk_open 34.00
+6, Pembrey, 13.00, 13.00, fk_open 9.00
+6, Mbube, 29.00, 29.00, fk_open 26.00
+6, Satono Glow, 5.00, 5.00, fk_open 5.00
+6, The Next Episode, 3.70, 3.70, fk_open 3.40
+6, St Gotthard, 4.60, 4.60, fk_open 6.50
+6, The Machine Gun, 61.00, 61.00, fk_open 34.00
+6, Under Focus, 17.00, 17.00, fk_open 17.00
+6, Stretan Ruler, 126.00, 126.00, fk_open 51.00
+7, King Winston, 51.00, 51.00, fk_open 41.00
+7, Hierarchy, SCR
+7, True Tone, 23.00, 23.00, fk_open 21.00
+7, Skua, 13.00, 13.00, fk_open 15.00
+7, Quick Finish, 21.00, 21.00, fk_open 21.00
+7, Cormier, 6.00, 6.00, fk_open 7.00
+7, Murshidi, 11.00, 11.00, fk_open 13.00
+7, Vallice, 13.00, 13.00, fk_open 11.00
+7, Icy You, 13.00, 13.00, fk_open 18.00
+7, True Rebel, 10.00, 10.00, fk_open 8.00
+7, Meet The Prince, 251.00, 251.00, fk_open 126.00
+7, Russian Rock, 31.00, 31.00, fk_open 21.00
 7, Locked In, SCR
-7, King Snitz, 0, 0
-7, Cignetti, 0, 0
-7, Cold Shower, 0, 0
-7, Stormy Marco, 0, 0
-7, Written Empire, 0, 0
-8, Pondalowie, 0, 0
-8, Jenni Multabella, 0, 0
-8, Unleeshing, 0, 0
-8, Idle Flyer, 0, 0
-8, Lady Shenandoah, 0, 0
-8, Surfin' Bird, 0, 0
-8, Cilacap, 0, 0
-8, Concord Connie, 0, 0
-8, Sass Appeal, 0, 0
-8, Salty Pearl, 0, 0
-8, Pillow Fight, 0, 0
-9, Precious Charm, 0, 0
-9, Generosity, 0, 0
-9, Hearcomesthestar, 0, 0
-9, Gentle Steel, 0, 0
-9, Eagle Express, 0, 0
-9, Photograph, 0, 0
-9, Bridal Waltz, 0, 0
-9, Flying For Fun, 0, 0
-9, Xarpo, 0, 0
-9, Geegees Mistruth, 0, 0
-9, Silver Wedding, 0, 0
-9, Tres Magnifique, 0, 0
-9, Naifah, 0, 0
-9, Inkaruna, 0, 0
-9, Nepo Baby, 0, 0
-9, Swift Force, 0, 0
-9, Thanks Gorgeous, 0, 0
-9, Agarwood, 0, 0
+7, King Snitz, 11.00, 11.00, fk_open 10.00
+7, Cignetti, 12.00, 12.00, fk_open 15.00
+7, Cold Shower, 101.00, 101.00, fk_open 51.00
+7, Stormy Marco, 4.60, 4.60, fk_open 5.00
+7, Written Empire, 91.00, 91.00, fk_open 34.00
+8, Pondalowie, 67.00, 67.00, fk_open 51.00
+8, Jenni Multabella, 101.00, 101.00, fk_open 61.00
+8, Unleeshing, 9.50, 9.50, fk_open 11.00
+8, Idle Flyer, 12.00, 12.00, fk_open 8.00
+8, Lady Shenandoah, 2.30, 2.30, fk_open 2.60
+8, Surfin' Bird, 6.00, 6.00, fk_open 4.40
+8, Cilacap, 51.00, 51.00, fk_open 31.00
+8, Concord Connie, 6.50, 6.50, fk_open 8.00
+8, Sass Appeal, 18.00, 18.00, fk_open 11.00
+8, Salty Pearl, 26.00, 26.00, fk_open 13.00
+8, Pillow Fight, 67.00, 67.00, fk_open 31.00
+9, Precious Charm, 251.00, 251.00, fk_open 101.00
+9, Generosity, SCR
+9, Hearcomesthestar, 71.00, 71.00, fk_open 34.00
+9, Gentle Steel, 26.00, 26.00, fk_open 22.00
+9, Eagle Express, 34.00, 34.00, fk_open 26.00
+9, Photograph, 17.00, 17.00, fk_open 26.00
+9, Bridal Waltz, 6.00, 6.00, fk_open 5.00
+9, Flying For Fun, 2.60, 2.60, fk_open 3.35
+9, Xarpo, 201.00, 201.00, fk_open 76.00
+9, Geegees Mistruth, 10.00, 10.00, fk_open 10.50
+9, Silver Wedding, 41.00, 41.00, fk_open 24.50
+9, Tres Magnifique, SCR
+9, Naifah, 13.00, 13.00, fk_open 13.50
+9, Inkaruna, 11.00, 11.00, fk_open 7.75
+9, Nepo Baby, 18.00, 18.00, fk_open 15.50
+9, Swift Force, 17.00, 17.00, fk_open 15.50
+9, Thanks Gorgeous, 61.00, 61.00, fk_open 34.00
+9, Agarwood, 51.00, 51.00, fk_open 32.50
