@@ -45,3 +45,11 @@ expected wins (15+ expected): metro flagged on 5 Jul (11 won v 19 expected) and 
 Derby Day, and nothing else after July. Whole-race segments (metro, wet) are always calibrated across ALL runners
 because chances are normalised per race, so the check runs on the bets, where the question lives. Run it at each
 Sunday settle; a flagged segment goes to the founder that day with the figures.
+
+## Backed and failed last start (t_backed_failed.py, same holdout)
+
+Founder, 1 Nov, on forgiving a blocked run: "It would be taken into account of well supported and failed though?" Yes:
+beat_market_last carries it. Horses at BSP under $5 last start that finished 4th or worse won 43 next start against the
+model's 44.1 and the market's 44.3 (under $3: 9 v 9.3 v 9.2). Calibrated, and already in the price: the live rule's 40 bets
+on them made +4%. A forgive list would only add information for an unsupported horse that was blocked; not built
+(founder: "no all good").
