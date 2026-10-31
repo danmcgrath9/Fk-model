@@ -8,14 +8,17 @@ by segment, and (2) cutting stakes where the model is less sure. Script: `t_cali
 
 | Flag | Bets | Units | P/L open | ROI open | Won / model expected | Beat BSP |
 |---|---|---|---|---|---|---|
-| None of the flags | 284 | 500 | +372 | +74.3% | 54 / 48.4 (1.12) | 81% |
+| None of the flags | 243 | 462 | +249 | +53.9% | 42 / 44.3 (0.95) | 75% |
 | Metro | 268 | 556 | +38 | +6.8% | 37 / 52.6 (0.70) | 75% |
-| Wet (going band 3-4) | 744 | 1,530 | +634 | +41.4% | 130 / 142.5 (0.91) | 78% |
+| Wet (soft or heavy) | 974 | 2,003 | +820 | +40.9% | 171 / 187.2 (0.91) | 79% |
 | First up (90+ days) | 185 | 373 | +147 | +39.5% | 29 / 34.7 (0.84) | 76% |
 | Lightly raced (3 or fewer starts) | 426 | 957 | +410 | +42.9% | 77 / 88.0 (0.88) | 72% |
 | Thin speed data (2 or fewer ratings) | 397 | 875 | +394 | +45.0% | 73 / 80.7 (0.90) | 70% |
 
 The model overrates every flagged group a little on the horses we bet, and metro a lot.
+
+Corrected the same day: the first run took going bands 3-4 as wet, which is heavy and synthetic (export_dataset.py
+GOING_CODE: good 1, soft 2, heavy 3, synthetic 4). Wet is soft or heavy (2-3). The decision did not change.
 
 ## Stake cuts tested
 
@@ -23,12 +26,12 @@ The model overrates every flagged group a little on the horses we bet, and metro
 |---|---|---|---|---|---|
 | Live | 2,923 | +1,271 | +43.5% | 61 | +88 |
 | Half when metro | 2,645 | +1,252 | +47.3% | 55 | +88 |
-| Half when wet | 2,158 | +954 | +44.2% | 55 | +69 |
+| Half when wet | 1,921 | +861 | +44.8% | 54 | +83 |
 | Half when first up | 2,736 | +1,197 | +43.8% | 58 | +78 |
 | Half when lightly raced | 2,444 | +1,066 | +43.6% | 48 | +62 |
 | Half when thin speed data | 2,485 | +1,074 | +43.2% | 52 | +62 |
-| Half on any non-metro flag | 1,826 | +858 | +47.0% | 40 | +51 |
-| x0.75 per flag | 2,112 | +939 | +44.4% | 44 | +56 |
+| Half on any non-metro flag | 1,703 | +761 | +44.7% | 40 | +53 |
+| x0.75 per flag | 2,016 | +891 | +44.2% | 44 | +59 |
 
 **Decision: only metro earns the cut** (already live since 31 Oct, with the metro price fix). It gives up 19u of 1,271
 and takes 6u off the worst drawdown. Every other cut gives up profit in proportion to the stake it removes: those bets

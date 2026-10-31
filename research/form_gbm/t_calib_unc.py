@@ -1,6 +1,6 @@
 """Calibration by segment and uncertainty-scaled stakes (1 Nov 2026, founder: "Yeah nice" to a weekly calibration check and
 cutting stakes where the model is less sure). Holdout from 3 Jun 2026 (v10 never trained on it), the live open rule as in
-t_track_profit.py. Flags: metro, wet (going band 3-4), first up (90+ days), lightly raced (<=3 starts), thin speed data."""
+t_track_profit.py. Flags: metro, wet (soft or heavy: going band 2-3; 1 good, 4 synthetic), first up (90+ days), lightly raced (<=3 starts), thin speed data."""
 import numpy as np, collections, json, stake_rule
 z = np.load("ds/model_ds_v10.npz", allow_pickle=True)
 ri = z["race_idx"]; nR = int(ri.max()) + 1
@@ -22,7 +22,7 @@ clean = lambda t: [t := t.replace(x, "") for x in (" Synthetic", " Hillside", " 
 metro = {"Flemington", "Caulfield", "Moonee Valley", "Sandown"}
 is_metro = np.array([clean(trk[r]) in metro for r in ri])
 print("raw_starts sample", np.nanpercentile(starts[m], [5, 25, 50, 75]), "days", np.nanpercentile(days[m], [5, 50, 95]), "n_spd", np.bincount(n_spd[m]))
-FL = {"metro": is_metro, "wet": going[ri] >= 3, "first_up": days >= 90, "light": starts <= 3, "thin_speed": n_spd <= 2}
+FL = {"metro": is_metro, "wet": np.isin(going[ri], (2.0, 3.0)), "first_up": days >= 90, "light": starts <= 3, "thin_speed": n_spd <= 2}
 # ---- calibration, every holdout runner ----
 def cal(mask):
     w = won[mask].sum(); e = pm[mask].sum(); eb = pb[mask].sum(); n = mask.sum()
@@ -35,7 +35,7 @@ print("\nby our price band (all / metro / wet)")
 for lo, hi in bands:
     q = 1 / np.where(m, pm, np.nan); b = m & (q >= lo) & (q < hi)
     row = []
-    for seg in (b, b & is_metro, b & (going[ri] >= 3)):
+    for seg in (b, b & is_metro, b & np.isin(going[ri], (2.0, 3.0))):
         n, w, e, eb = cal(seg); row.append(f"{w:4d}/{e:6.1f} ({w/e if e else 0:4.2f})")
     print(f"${lo:>4}-{hi if hi < 1e8 else 'up':<4}", "  ".join(row))
 # ---- bets under the live rule ----
