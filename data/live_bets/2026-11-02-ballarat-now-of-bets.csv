@@ -1,0 +1,13 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,BRAT_021126_1,Star Je Taime,top_pick,2.23,2.4,3.0,3.0,,2.2,0.365,,1.0,no,,
+2,BRAT_021126_2,Chandler,top_pick,1.7,1.75,1.6,1.6,,1.93,-0.17,Already run to today's class; Class drop (rating); EARLY ONLY: bet near the open,1.0,no,,
+3,BRAT_021126_3,Bella Blaze,top_pick,4.4,6.0,6.0,6.0,,5.86,0.023,Class drop (rating); EARLY ONLY: bet near the open,1.0,no,,
+4,BRAT_021126_4,Best Terms,EDGE,2.6,2.6,2.5,2.5,,1.93,0.297,Already run to today's class; Well backed before a bad last run; Proven wet on a wet track; EARLY ONLY: bet near the open,7.88,no,,
+4,BRAT_021126_4,Best Terms,value_20c,2.6,2.6,2.5,2.5,,1.93,0.297,Already run to today's class; Well backed before a bad last run; Proven wet on a wet track; EARLY ONLY: bet near the open,7.88,no,,
+4,BRAT_021126_4,Best Terms,top_pick,2.6,2.6,2.5,2.5,,1.93,0.297,Already run to today's class; Well backed before a bad last run; Proven wet on a wet track; EARLY ONLY: bet near the open,1.0,no,,
+5,BRAT_021126_5,Savannah Chill,top_pick,4.8,5.0,4.4,4.4,,5.17,-0.148,Proven wet on a wet track,1.0,no,,
+6,BRAT_021126_6,Skjaldmo,top_pick,4.8,5.0,4.5,4.5,,4.86,-0.074,; EARLY ONLY: bet near the open,1.0,no,,
+7,BRAT_021126_7,Catwalk Icon,EDGE,5.0,5.0,4.6,4.6,,3.59,0.283,Already run to today's class; Above the field in all three sections,3.53,no,,
+7,BRAT_021126_7,Catwalk Icon,value_20c,5.0,5.0,4.6,4.6,,3.59,0.283,Already run to today's class; Above the field in all three sections,3.53,no,,
+7,BRAT_021126_7,Catwalk Icon,top_pick,5.0,5.0,4.6,4.6,,3.59,0.283,Already run to today's class; Above the field in all three sections,1.0,no,,
+8,BRAT_021126_8,M'lady Rose,top_pick,7.0,7.0,8.0,8.0,,4.94,0.62,Proven wet on a wet track; Above the field in all three sections,1.0,no,,
