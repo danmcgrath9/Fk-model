@@ -670,3 +670,7 @@ First send at 20c under his price filled only Kick Up Rocky (Bundy Belle $3.20 a
 re-sent at best odds on the founder's word. Place bets now go through betmatic_send.py as PLACE rows (Fixed Place).
 Settled (BetMatic status, 5:50pm Sat): Kick Up Rocky WON +$550, Bundy Belle lost -$200, Vintage Vibes WON win +$380 and place
 +$80. Don copies Sat 31 Oct: $650 staked, +$810.
+
+## Saturday 31 Oct: Traralgon ABANDONED (founder, 31 Oct). R5 and R6 tips (It's Gnarly, Ze Bee Nine, Lulu Darling, Trinity's D'oro)
+are void, paper and Twitter alike. Flemington tips to R8: no winner (Icelady 3rd, Sass Appeal 4th, True Rebel 5th); War Machine
+scratched (void); R9 Bridal Waltz to settle.
