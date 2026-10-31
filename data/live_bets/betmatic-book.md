@@ -685,3 +685,9 @@ Week Mon 26 - Sat 31 Oct, paper at the open (model stakes), Bridal Waltz open: 3
 Real money this week: Don copies +$810 on $650; Ballarat Mon R4 Best Terms $331 at $2.60 open.
 Flemington R9 Bridal Waltz lost (founder, 31 Oct): -3.16u at the open (tweeted 1.46u: -1.46u). Week Mon 26 - Sat 31 Oct, paper at
 the open: 34 bets, 4 won, 112.20u, +24.29u, ROI +22%. Flemington Derby Day: 0 from 6 (War Machine scratched), -13.73u.
+
+Mornington Sun 1 Nov (re-priced 9:32am Sun on the final field, Soft 7, 29 out incl. Galway Gal, Bel Lupa, Superstock, Presscode): 10
+value-at-open runners, 2 paper top-ups (1.09u: Fam Gorman R7 0.48u at $18, Warrior Within R9 0.61u at $19), the rest under take-at
+now. Open fills (paper, market open before the send): Miss Cotoletta $5.50 now $3.30, Eye For An Eye $15 now $5.75, Fam Gorman $15
+now $18, Kokako $5 now $2.70, Master Of The Air $15 now $5. Deduction in R5 (Bel Lupa, Pocket Size, Simply Steffi, Heidi Dancer out)
+and R9 (Presscode, Sub Gauge, Rapid Cheval out) to settle at TAB's figures.

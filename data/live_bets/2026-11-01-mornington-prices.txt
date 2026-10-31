@@ -1,102 +1,106 @@
-# Mornington Sun 1 Nov (going SOFT 7, founder 30 Oct; official Dead 5; priced Fri 30 Oct pre-market)
-1, Kuheylan, 6.50, 6.50, fk_open 6.25
-1, Galway Gal, 8.50, 8.50, fk_open 8.25
-1, Flying Riches, 61.00, 61.00, fk_open 56.00
-1, Who'llstoplorraine, 61.00, 61.00, fk_open 56.00
-1, Lady Blanc, 61.00, 61.00, fk_open 56.00
-1, Enticement, 8.50, 8.50, fk_open 8.25
-1, Ambition In Bloom, 9.00, 9.00, fk_open 10.00
-1, Hellbent Halo, 151.00, 151.00, fk_open 151.00
-1, Adakite, 1.95, 1.95, fk_open 1.92
-1, Pandie Pandie, 21.00, 21.00, fk_open 20.00
-1, Star Je Taime, 5.00, 5.00, fk_open 5.50
-2, Storm Bella, 0, 0
-2, Belle Fille, 0, 0
-2, Oceans Blue, 0, 0
-2, Setfortakeoff, 0, 0
-2, Celestique, 0, 0
-2, Flare Of Grace, 0, 0
-2, Oaks Daze, 0, 0
-2, Charmingly, 0, 0
-2, Savanina, 0, 0
-2, Cirque De Coco, 0, 0
-2, Neonova, 0, 0
-3, Graceful Mist, 0, 0
-3, San Pueblo, 0, 0
-3, Duke Of Oman, 0, 0
-3, Think Sassy, 0, 0
-3, Big Kapow, 0, 0
-3, Buffalo Milk, 0, 0
-3, He's A Dandy, SCR
-3, Lady Of Lubeck, 0, 0
-3, Weasel Sea, 0, 0
-3, Life's Uncertainty, 0, 0
-3, Lavancher, 0, 0
-3, Red Tide, 0, 0
-3, Saint Willo, 0, 0
-3, Lonnegan, 0, 0
-3, Subscription, 0, 0
-4, Rockbourg, 4.80, 4.80, fk_open 4.80
-4, Miss Belajo, SCR, fk_open 51.00
-4, Baltic, 101.00, 101.00, fk_open 101.00
-4, Immortal Truth, 11.00, 11.00, fk_open 11.00
-4, Spirit Of Omaha, 15.00, 15.00, fk_open 15.00
-4, Philly Idol, 15.00, 15.00, fk_open 15.00
-4, Imperial Meeting, SCR, fk_open 101.00
-4, Congress Of Vienna, SCR, fk_open 81.00
-4, Shalwedash, 4.80, 4.80, fk_open 4.80
-4, Sealand, 3.80, 3.80, fk_open 3.80
-4, Pragmatic Lady, 51.00, 51.00, fk_open 51.00
-4, Royal Tea, 3.40, 3.40, fk_open 3.40
-4, Exclusive Punt, 26.00, 26.00, fk_open 26.00
-4, Yes It's Time, 34.00, 34.00, fk_open 34.00
-5, Dominant Miss, 0, 0
-5, Ilovediamonds, 0, 0
-5, Pocket Size, 0, 0
-5, Miss Cotoletta, 0, 0
-5, Heidi Dancer, 0, 0
-5, Invincible Lover, 0, 0
-5, Catch It Kiss It, 0, 0
-5, Pure Silk, 0, 0
-5, Bel Lupa, 0, 0
-5, Simply Steffi, 0, 0
-6, Charterhouse, 0, 0
-6, Presser, 0, 0
-6, Reset The Jazz, 0, 0
-6, Lim's Saltoro, 0, 0
-6, Aztec Ruler, 0, 0
-6, Wonder Boy, 0, 0
-7, Fam Gorman, 15.00, 15.00, fk_open 15.00
-7, Trump Card, 17.00, 17.00, fk_open 17.00
-7, Mickio, 3.40, 3.40, fk_open 3.40
-7, Hawk Power, 6.50, 6.50, fk_open 6.50
-7, Jonquil, 21.00, 21.00, fk_open 21.00
-7, Eye For An Eye, 15.00, 15.00, fk_open 15.00
-7, Power Pivot, 6.50, 6.50, fk_open 6.50
-7, Stole Him, 11.00, 11.00, fk_open 11.00
-7, Churchill Lane, 4.80, 4.80, fk_open 4.80
-7, Crown Of Russia, 8.00, 8.00, fk_open 8.00
-7, Precambrian, 19.00, 19.00, fk_open 19.00
-8, Port Philip, 41.00, 41.00, fk_open 41.00
-8, Cable Dancer, 10.00, 10.00, fk_open 10.00
-8, Superstock, 5.50, 5.50, fk_open 5.50
+# Mornington Sun 1 Nov (going SOFT 7, founder 30 Oct), 9:30am re-price on the final field, prices 9:32am Sun
+1, Kuheylan, 4.60, 4.60, fk_open 6.25
+1, Galway Gal, SCR, last 11.00, fk_open 8.25
+1, Flying Riches, 11.00, 11.00, fk_open 56.00
+1, Who'llstoplorraine, 27.00, 27.00, fk_open 56.00
+1, Lady Blanc, SCR, last 71.00, fk_open 56.00
+1, Enticement, SCR, last 11.00, fk_open 8.25
+1, Ambition In Bloom, 5.75, 5.75, fk_open 10.00
+1, Hellbent Halo, 101.00, 101.00, fk_open 151.00
+1, Adakite, SCR, last 2.10, fk_open 1.92
+1, Pandie Pandie, 9.00, 9.00, fk_open 20.00
+1, Star Je Taime, 1.75, 1.75, fk_open 5.50
+2, Storm Bella, SCR, last 26.00, fk_open 26.00
+2, Belle Fille, 18.00, 18.00, fk_open 34.00
+2, Oceans Blue, 1.70, 1.70, fk_open 2.00
+2, Sabrina, SCR
+2, Setfortakeoff, 41.00, 41.00, fk_open 34.00
+2, Celestique, 26.00, 26.00, fk_open 26.00
+2, Flare Of Grace, 5.00, 5.00, fk_open 4.40
+2, Oaks Daze, 81.00, 81.00, fk_open 71.00
+2, Ole Affair, SCR
+2, Charmingly, SCR, last 16.00, fk_open 19.00
+2, Savanina, 8.00, 8.00, fk_open 9.00
+2, Miss Home Body, SCR
+2, Cirque De Coco, 5.50, 5.50, fk_open 3.90
+2, Neonova, 41.00, 41.00, fk_open 71.00
+3, Graceful Mist, 151.00, 151.00, fk_open 151.00
+3, San Pueblo, 34.00, 34.00, fk_open 101.00
+3, Duke Of Oman, 81.00, 81.00, fk_open 71.00
+3, Think Sassy, 151.00, 151.00, fk_open 151.00
+3, Big Kapow, 4.00, 4.00, fk_open 7.50
+3, Buffalo Milk, 51.00, 51.00, fk_open 41.00
+3, He's A Dandy, SCR, last 34.00, fk_open 41.00
+3, Lady Of Lubeck, 5.50, 5.50, fk_open 7.50
+3, Weasel Sea, 5.50, 5.50, fk_open 5.50
+3, Life's Uncertainty, 2.90, 2.90, fk_open 3.90
+3, Lavancher, 7.00, 7.00, fk_open 41.00
+3, Red Tide, SCR, last 17.00, fk_open 41.00
+3, Saint Willo, SCR, last 4.20, fk_open 3.30
+3, Lonnegan, SCR, last 7.50, fk_open 7.50
+3, Subscription, 12.00, 12.00, fk_open 14.00
+4, Rockbourg, 6.50, 6.50, fk_open 4.80
+4, Miss Belajo, SCR, last 41.00, fk_open 51.00
+4, Baltic, SCR, last 101.00, fk_open 101.00
+4, Immortal Truth, SCR, last 15.00, fk_open 11.00
+4, Spirit Of Omaha, 19.00, 19.00, fk_open 15.00
+4, Philly Idol, 41.00, 41.00, fk_open 15.00
+4, Imperial Meeting, 151.00, 151.00, fk_open 101.00
+4, Congress Of Vienna, 21.00, 21.00, fk_open 81.00
+4, Shalwedash, 10.00, 10.00, fk_open 4.80
+4, Sealand, 3.60, 3.60, fk_open 3.80
+4, Pragmatic Lady, SCR, last 34.00, fk_open 51.00
+4, Royal Tea, 2.50, 2.50, fk_open 3.40
+4, Duchess Xenia, SCR
+4, Exclusive Punt, 15.00, 15.00, fk_open 26.00
+4, Yes It's Time, 9.00, 9.00, fk_open 34.00
+5, Dominant Miss, 126.00, 126.00, fk_open 101.00
+5, Ilovediamonds, 3.30, 3.30, fk_open 8.00
+5, Pocket Size, SCR, last 9.00, fk_open 7.00
+5, Miss Cotoletta, 3.30, 3.30, fk_open 5.50
+5, Heidi Dancer, SCR, last 51.00, fk_open 34.00
+5, Invincible Lover, 2.70, 2.70, fk_open 3.20
+5, Catch It Kiss It, 6.75, 6.75, fk_open 5.00
+5, Pure Silk, 14.00, 14.00, fk_open 19.00
+5, Bel Lupa, SCR, last 6.00, fk_open 9.00
+5, Simply Steffi, SCR, last 6.50, fk_open 6.00
+6, Charterhouse, 23.00, 23.00, fk_open 51.00
+6, Presser, 4.60, 4.60, fk_open 5.50
+6, Reset The Jazz, 6.25, 6.25, fk_open 4.40
+6, Lim's Saltoro, 3.20, 3.20, fk_open 2.25
+6, Aztec Ruler, 4.80, 4.80, fk_open 7.50
+6, Wonder Boy, 4.00, 4.00, fk_open 3.90
+7, Fam Gorman, 18.00, 18.00, fk_open 15.00
+7, Trump Card, SCR, last 23.00, fk_open 17.00
+7, Mickio, 5.50, 5.50, fk_open 3.40
+7, Hawk Power, 7.00, 7.00, fk_open 6.50
+7, Jonquil, 19.00, 19.00, fk_open 21.00
+7, Eye For An Eye, 5.75, 5.75, fk_open 15.00
+7, Power Pivot, 5.00, 5.00, fk_open 6.50
+7, Stole Him, 9.50, 9.50, fk_open 11.00
+7, Churchill Lane, 6.50, 6.50, fk_open 4.80
+7, Crown Of Russia, 5.75, 5.75, fk_open 8.00
+7, Precambrian, SCR, last 46.00, fk_open 19.00
+8, Port Philip, 19.00, 19.00, fk_open 41.00
+8, Cable Dancer, 7.00, 7.00, fk_open 10.00
+8, Superstock, SCR, last 5.50, fk_open 5.50
 8, Pure Grunt, 19.00, 19.00, fk_open 19.00
-8, Foix, 7.50, 7.50, fk_open 7.50
-8, Nothingelsematters, 6.50, 6.50, fk_open 6.50
-8, Notre Citrouille, 51.00, 51.00, fk_open 51.00
-8, Best Time, 5.00, 5.00, fk_open 5.00
-8, Mickidabeel, 23.00, 23.00, fk_open 23.00
-8, Octane Reign, 12.00, 12.00, fk_open 12.00
-8, Ardashir, 8.50, 8.50, fk_open 8.50
-8, Sixty Grand, 4.20, 4.20, fk_open 4.20
-9, Sub Gauge, 0, 0
-9, Unriddle, 0, 0
-9, Artistic Genius, 0, 0
-9, Turned Down, 0, 0
-9, Kokako, 0, 0
-9, Presscode, 0, 0
-9, Warrior Within, 0, 0
-9, Rapid Cheval, 0, 0
-9, Master Of The Air, 0, 0
-9, Sun Devil, 0, 0
-9, Ektifire, 0, 0
+8, Foix, 6.50, 6.50, fk_open 7.50
+8, Nothingelsematters, 5.25, 5.25, fk_open 6.50
+8, Notre Citrouille, 34.00, 34.00, fk_open 51.00
+8, Best Time, SCR, last 6.00, fk_open 5.00
+8, Mickidabeel, 10.00, 10.00, fk_open 23.00
+8, Octane Reign, 8.50, 8.50, fk_open 12.00
+8, Ardashir, 5.75, 5.75, fk_open 8.50
+8, Sixty Grand, 4.60, 4.60, fk_open 4.20
+9, Sub Gauge, SCR, last 21.00, fk_open 8.00
+9, Unriddle, 21.00, 21.00, fk_open 15.00
+9, Artistic Genius, 5.50, 5.50, fk_open 6.00
+9, Turned Down, 21.00, 21.00, fk_open 26.00
+9, Kokako, 2.70, 2.70, fk_open 5.00
+9, Presscode, SCR, last 5.75, fk_open 4.00
+9, Warrior Within, 19.00, 19.00, fk_open 26.00
+9, Rapid Cheval, SCR, last 26.00, fk_open 19.00
+9, Master Of The Air, 5.00, 5.00, fk_open 15.00
+9, Sun Devil, 16.00, 16.00, fk_open 19.00
+9, Ektifire, 4.00, 4.00, fk_open 4.00
