@@ -137,10 +137,23 @@ def send(a):
         sys.exit("--session must be the numeric session ID from 'check': BetMatic ignores a non-numeric target_session "
                  "and sends the bet to EVERY session (API reference, Create a Bet)")
     bm = BM()
-    live = [s for s in sessions(bm) if str(s.get("id")) == str(a.session) and s.get("bot_running")]
-    if not live:
-        sys.exit(f"session {a.session} is not running (bot_running false): start the bot and the session first")
-    if not int(readiness(bm).get("bot_session_running") or 0):
+    mine = [s for s in sessions(bm) if str(s.get("id")) == str(a.session)]
+    if not mine:
+        sys.exit(f"session {a.session} not found on this account (run 'check')")
+    rd = readiness(bm)
+    # The session's bot_running is a SNAPSHOT (as at its update_time) and can read false for hours while the bot is up:
+    # on 30-31 Oct 2026 it blocked every send from Friday 2:41pm to Saturday 10:42am while the founder's bot was running
+    # the whole time, and missed Mornington, Traralgon, Flemington R2-R6 and Ballarat R4/R5/R7 at the open. The live
+    # signals are readiness (bot machines connected, sessions running), so the snapshot is only a warning now.
+    if not mine[0].get("bot_running"):
+        print(f"WARNING: session {a.session} snapshot says bot_running false (as at {mine[0].get('update_time')}); "
+              f"readiness says {rd.get('bot_session_running')} bot machine(s) connected, {rd.get('accounts_running')} "
+              f"session(s) running", flush=True)
+        if not int(rd.get("accounts_running") or 0):
+            sys.exit(f"session {a.session} is not running (snapshot false and readiness shows no session running): "
+                     "start the bot and the session first")
+    live = mine
+    if not int(rd.get("bot_session_running") or 0):
         sys.exit("no bot machine is connected (GET /account/readiness/): the bets would queue and never place. "
                  "Start the BetMatic bot on the always-on machine first")
     # balance is the session's real-money balance (bonus is not used: use_bonus is off). A Market Open bet that finds
