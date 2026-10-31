@@ -1,0 +1,43 @@
+{
+ "title": "Staking",
+ "sub": "Mon 26 – Sat 31 Oct",
+ "sections": [
+  {
+   "h": "Same 34 tips, two ways to bet",
+   "lo": -16, "hi": 16,
+   "zbars": [
+    {"k": "Our units (52.0u)", "v": 0.41, "label": "+0.4u"},
+    {"k": "1u every tip (34u)", "v": -14.81, "label": "-14.8u"}
+   ],
+   "lines": ["Same horses, same prices. Staking alone is a <b>15.2u</b> swing."]
+  },
+  {
+   "h": "The bigger stakes went on the winners",
+   "head": ["Winner", "Price", "Units", "Ours", "At 1u"],
+   "gold": 3,
+   "table": [
+    ["Positivo", "$8.50", "3.21u", "+24.1u", "+7.5u"],
+    ["Habitual", "$2.96", "5u", "+9.8u", "+2.0u"],
+    ["Lawborough", "$4.23", "1.68u", "+5.4u", "+3.2u"],
+    ["Ned Kelly", "$3.50", "0.92u", "+2.3u", "+2.5u"]
+   ],
+   "lines": ["Winners averaged <b>2.7u</b>. Losers averaged <b>1.4u</b>."]
+  },
+  {
+   "h": "Day by day",
+   "cls": "c3",
+   "head": ["Day", "Ours", "At 1u"],
+   "gold": 1,
+   "table": [
+    ["Mon  Wangaratta", "+17.7u", "+2.5u"],
+    ["Tue  Swan Hill", "+8.0u", "+1.0u"],
+    ["Wed  Bendigo", "-3.4u", "-1.8u"],
+    ["Thu  Warrnambool", "-8.9u", "-4.5u"],
+    ["Fri  Kilmore, Pakenham", "-9.3u", "-8.0u"],
+    ["Sat  Flemington", "-3.7u", "-4.0u"]
+   ]
+  }
+ ],
+ "end": "Bet more where the edge is biggest. <span>A tough week still finished in front.</span>",
+ "footer": "Posted cards, win bets."
+}
