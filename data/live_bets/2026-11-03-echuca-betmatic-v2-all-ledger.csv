@@ -1,0 +1,67 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-11-03-echuca-r1-n-s1-echa03v2,1,4,Burning Sensation,14.86,15.01,21,14030156,Notification has been scheduled.
+fk-2026-11-03-echuca-r1-n-s2-echa03v2,1,8,Crackerjack Hatch,8.58,19.48,69,14030157,Notification has been scheduled.
+fk-2026-11-03-echuca-r1-n-s3-echa03v2,1,8,Crackerjack Hatch,10.72,19.48,16,14030159,Notification has been scheduled.
+fk-2026-11-03-echuca-r1-n-s4-echa03v2,1,5,Frozen Tide,3.75,3.99,156,14030164,Notification has been scheduled.
+fk-2026-11-03-echuca-r1-n-s5-echa03v2,1,5,Frozen Tide,4.00,9.33,170,14030167,Notification has been scheduled.
+fk-2026-11-03-echuca-r1-n-s6-echa03v2,1,5,Frozen Tide,4.95,9.33,34,14030170,Notification has been scheduled.
+fk-2026-11-03-echuca-r1-n-s7-echa03v2,1,1,Graham,11.11,24.92,52,14030173,Notification has been scheduled.
+fk-2026-11-03-echuca-r1-n-s8-echa03v2,1,1,Graham,13.89,24.92,12,14030176,Notification has been scheduled.
+fk-2026-11-03-echuca-r1-n-s9-echa03v2,1,6,Mutsuhito,8.69,19.71,68,14030179,Notification has been scheduled.
+fk-2026-11-03-echuca-r1-n-s10-echa03v2,1,6,Mutsuhito,10.86,19.71,16,14030182,Notification has been scheduled.
+fk-2026-11-03-echuca-r1-n-s11-echa03v2,1,3,Salina Special,15.29,33.76,37,14030185,Notification has been scheduled.
+fk-2026-11-03-echuca-r1-n-s12-echa03v2,1,3,Salina Special,19.11,33.76,9,14030188,Notification has been scheduled.
+fk-2026-11-03-echuca-r2-n-s1-echa03v2,2,6,Black Rutile,16.39,36.05,34,14030191,Notification has been scheduled.
+fk-2026-11-03-echuca-r2-n-s2-echa03v2,2,6,Black Rutile,20.49,36.05,8,14030193,Notification has been scheduled.
+fk-2026-11-03-echuca-r2-n-s3-echa03v2,2,8,Larryoctane,17.18,37.71,32,14030196,Notification has been scheduled.
+fk-2026-11-03-echuca-r2-n-s4-echa03v2,2,8,Larryoctane,21.48,37.71,8,14030199,Notification has been scheduled.
+fk-2026-11-03-echuca-r2-n-s5-echa03v2,2,2,Roaring Engine,5.88,13.60,106,14030202,Notification has been scheduled.
+fk-2026-11-03-echuca-r2-n-s6-echa03v2,2,2,Roaring Engine,7.35,13.60,24,14030206,Notification has been scheduled.
+fk-2026-11-03-echuca-r2-n-s7-echa03v2,2,4,Smokin' Rohie,16.02,35.28,35,14030209,Notification has been scheduled.
+fk-2026-11-03-echuca-r2-n-s8-echa03v2,2,4,Smokin' Rohie,20.02,35.28,8,14030212,Notification has been scheduled.
+fk-2026-11-03-echuca-r2-n-s9-echa03v2,2,3,Tempest Moon,13.13,29.22,44,14030215,Notification has been scheduled.
+fk-2026-11-03-echuca-r2-n-s10-echa03v2,2,3,Tempest Moon,16.41,29.22,10,14030218,Notification has been scheduled.
+fk-2026-11-03-echuca-r2-n-s11-echa03v2,2,1,The Cunning Fox,3.29,3.99,184,14030221,Notification has been scheduled.
+fk-2026-11-03-echuca-r2-n-s12-echa03v2,2,1,The Cunning Fox,4.00,8.24,201,14030224,Notification has been scheduled.
+fk-2026-11-03-echuca-r2-n-s13-echa03v2,2,1,The Cunning Fox,4.34,8.24,38,14030226,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s1-echa03v2,3,13,Frewdamoss,14.75,32.62,38,14030229,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s2-echa03v2,3,13,Frewdamoss,18.44,32.62,9,14030233,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s3-echa03v2,3,2,Iron Stupa,13.28,29.52,43,14030236,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s4-echa03v2,3,2,Iron Stupa,16.60,29.52,10,14030239,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s5-echa03v2,3,14,Miss Verona,7.87,17.95,76,14030242,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s6-echa03v2,3,14,Miss Verona,9.84,17.95,18,14030245,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s7-echa03v2,3,10,Ninetyfiveinafifty,7.58,15.01,79,14030248,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s8-echa03v2,3,10,Ninetyfiveinafifty,9.47,15.01,18,14030251,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s9-echa03v2,3,12,Salarae,17.83,39.08,32,14030254,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s10-echa03v2,3,12,Salarae,22.29,39.08,8,14030257,Notification has been scheduled.
+fk-2026-11-03-echuca-r4-n-s1-echa03v2,4,9,Hegely,16.55,36.40,34,14030260,Notification has been scheduled.
+fk-2026-11-03-echuca-r4-n-s2-echa03v2,4,9,Hegely,20.69,36.40,8,14030264,Notification has been scheduled.
+fk-2026-11-03-echuca-r4-n-s3-echa03v2,4,10,Immortal Truth,15.21,33.58,37,14030267,Notification has been scheduled.
+fk-2026-11-03-echuca-r4-n-s4-echa03v2,4,10,Immortal Truth,19.01,33.58,9,14030270,Notification has been scheduled.
+fk-2026-11-03-echuca-r4-n-s5-echa03v2,4,4,Inspiring,10.52,23.65,55,14030273,Notification has been scheduled.
+fk-2026-11-03-echuca-r4-n-s6-echa03v2,4,4,Inspiring,13.15,23.65,13,14030276,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s1-echa03v2,5,1,Beast Fighter,5.97,13.80,103,14030279,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s2-echa03v2,5,1,Beast Fighter,7.46,13.80,23,14030282,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s3-echa03v2,5,2,Celestial Option,11.96,26.73,48,14030285,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s4-echa03v2,5,2,Celestial Option,14.95,26.73,12,14030288,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s5-echa03v2,5,7,Our Brud,12.98,28.90,44,14030291,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s6-echa03v2,5,7,Our Brud,16.23,28.90,10,14030294,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s7-echa03v2,5,13,Some Chance,17.55,38.49,32,14030297,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s8-echa03v2,5,13,Some Chance,21.94,38.49,8,14030300,Notification has been scheduled.
+fk-2026-11-03-echuca-r6-n-s1-echa03v2,6,5,Black Adam,18.66,40.79,30,14030303,Notification has been scheduled.
+fk-2026-11-03-echuca-r6-n-s2-echa03v2,6,5,Black Adam,23.32,40.79,8,14030306,Notification has been scheduled.
+fk-2026-11-03-echuca-r6-n-s3-echa03v2,6,6,Don'tpushsend,14.48,15.01,22,14030309,Notification has been scheduled.
+fk-2026-11-03-echuca-r6-n-s4-echa03v2,6,13,Flying Jude,11.98,26.77,48,14030312,Notification has been scheduled.
+fk-2026-11-03-echuca-r6-n-s5-echa03v2,6,13,Flying Jude,14.98,26.77,12,14030315,Notification has been scheduled.
+fk-2026-11-03-echuca-r6-n-s6-echa03v2,6,7,Here Comes Wozza,10.09,22.73,57,14030318,Notification has been scheduled.
+fk-2026-11-03-echuca-r6-n-s7-echa03v2,6,7,Here Comes Wozza,12.61,22.73,14,14030320,Notification has been scheduled.
+fk-2026-11-03-echuca-r6-n-s8-echa03v2,6,14,Ice Quake,4.31,10.13,152,14030322,Notification has been scheduled.
+fk-2026-11-03-echuca-r6-n-s9-echa03v2,6,14,Ice Quake,5.39,10.13,32,14030324,Notification has been scheduled.
+fk-2026-11-03-echuca-r7-n-s1-echa03v2,7,1,Astari,11.74,26.25,49,14030325,Notification has been scheduled.
+fk-2026-11-03-echuca-r7-n-s2-echa03v2,7,1,Astari,14.68,26.25,12,14030326,Notification has been scheduled.
+fk-2026-11-03-echuca-r7-n-s3-echa03v2,7,2,Just Remember It,13.57,30.14,42,14030327,Notification has been scheduled.
+fk-2026-11-03-echuca-r7-n-s4-echa03v2,7,2,Just Remember It,16.96,30.14,10,14030328,Notification has been scheduled.
+fk-2026-11-03-echuca-r7-n-s5-echa03v2,7,13,Lady Maestro,7.41,16.95,81,14030329,Notification has been scheduled.
+fk-2026-11-03-echuca-r7-n-s6-echa03v2,7,13,Lady Maestro,9.26,16.95,18,14030330,Notification has been scheduled.
+fk-2026-11-03-echuca-r7-n-s7-echa03v2,7,5,Shelly's Legacy,20.44,44.49,28,14030331,Notification has been scheduled.
+fk-2026-11-03-echuca-r7-n-s8-echa03v2,7,5,Shelly's Legacy,25.55,44.49,6,14030332,Notification has been scheduled.
