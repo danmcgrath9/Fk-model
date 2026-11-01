@@ -1,0 +1,59 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-11-03-wangaratta-r1-n-s1-wang03v2,1,1,Brilliant Bull Ant,9.10,20.61,64,14030158,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r1-n-s2-wang03v2,1,1,Brilliant Bull Ant,11.38,20.61,15,14030161,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r1-n-s3-wang03v2,1,4,Naval Command,3.02,3.99,206,14030163,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r1-n-s4-wang03v2,1,4,Naval Command,3.77,3.99,50,14030166,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r1-n-s5-wang03v2,1,4,Naval Command,4.00,7.61,224,14030169,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r1-n-s6-wang03v2,1,4,Naval Command,4.00,7.61,42,14030171,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s1-wang03v2,2,1,Amarillo Sky,6.07,14.02,101,14030174,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s2-wang03v2,2,1,Amarillo Sky,7.59,14.02,23,14030177,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s3-wang03v2,2,2,Ashen Knight,9.68,21.86,60,14030180,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s4-wang03v2,2,2,Ashen Knight,12.10,21.86,14,14030183,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s5-wang03v2,2,4,Riverlea Prince,6.55,15.08,93,14030186,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s6-wang03v2,2,4,Riverlea Prince,8.19,15.08,21,14030189,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s7-wang03v2,2,7,Style Guide,9.95,22.44,58,14030192,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r2-n-s8-wang03v2,2,7,Style Guide,12.44,22.44,14,14030195,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s1-wang03v2,3,3,Creusa,3.26,3.99,186,14030198,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s2-wang03v2,3,3,Creusa,4.00,8.17,203,14030201,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s3-wang03v2,3,3,Creusa,4.30,8.17,39,14030204,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s4-wang03v2,3,4,Dejavast,18.67,40.82,30,14030207,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s5-wang03v2,3,4,Dejavast,23.34,40.82,8,14030210,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s6-wang03v2,3,2,Just Basil,5.39,12.53,116,14030213,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s7-wang03v2,3,2,Just Basil,6.74,12.53,26,14030216,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s8-wang03v2,3,5,Spin Class,11.05,24.78,52,14030219,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s9-wang03v2,3,5,Spin Class,13.81,24.78,12,14030222,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s10-wang03v2,3,6,Startin'sumthin',15.70,34.62,36,14030225,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s11-wang03v2,3,6,Startin'sumthin',19.62,34.62,8,14030228,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s1-wang03v2,4,1,Captain Barbossa,18.25,39.95,30,14030231,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s2-wang03v2,4,1,Captain Barbossa,22.81,39.95,8,14030234,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s3-wang03v2,4,6,Dashing Donkey,17.64,38.67,32,14030237,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s4-wang03v2,4,6,Dashing Donkey,22.05,38.67,8,14030240,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s5-wang03v2,4,3,Give Some Lip,4.82,11.25,134,14030243,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s6-wang03v2,4,3,Give Some Lip,6.03,11.25,28,14030246,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s7-wang03v2,4,4,Moral Turpitude,11.98,26.76,48,14030249,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s8-wang03v2,4,4,Moral Turpitude,14.98,26.76,12,14030252,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s9-wang03v2,4,5,Opus,15.48,34.15,36,14030255,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s10-wang03v2,4,5,Opus,19.35,34.15,9,14030258,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s11-wang03v2,4,2,Prestige Geoffrey,5.11,11.91,124,14030261,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r4-n-s12-wang03v2,4,2,Prestige Geoffrey,6.39,11.91,27,14030263,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s1-wang03v2,5,2,American Russ,10.53,23.67,55,14030266,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s2-wang03v2,5,2,American Russ,13.16,23.67,13,14030269,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s3-wang03v2,5,1,Barrett Reef,7.51,17.17,80,14030272,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s4-wang03v2,5,1,Barrett Reef,9.39,17.17,18,14030275,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s5-wang03v2,5,8,Cumbrian Queen,5.93,13.71,104,14030278,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s6-wang03v2,5,8,Cumbrian Queen,7.41,13.71,23,14030281,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s7-wang03v2,5,6,Darken,18.19,39.83,31,14030284,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s8-wang03v2,5,6,Darken,22.74,39.83,8,14030287,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s9-wang03v2,5,7,It'swhatyoumakeit,14.26,31.58,40,14030290,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s10-wang03v2,5,7,It'swhatyoumakeit,17.82,31.58,10,14030293,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s11-wang03v2,5,4,Prince Rupert,12.41,27.68,46,14030296,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s12-wang03v2,5,4,Prince Rupert,15.51,27.68,11,14030299,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s13-wang03v2,5,5,Sacred Ingot,7.43,17.00,81,14030302,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r5-n-s14-wang03v2,5,5,Sacred Ingot,9.29,17.00,18,14030305,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r6-n-s1-wang03v2,6,5,Belmasai,11.67,26.10,50,14030308,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r6-n-s2-wang03v2,6,5,Belmasai,14.59,26.10,12,14030311,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r6-n-s3-wang03v2,6,6,Densetsu,5.01,11.67,127,14030314,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r6-n-s4-wang03v2,6,6,Densetsu,6.26,11.67,27,14030317,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r6-n-s5-wang03v2,6,7,Enigmatise,11.35,15.01,51,14030319,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r6-n-s6-wang03v2,6,4,Zamora,4.76,11.12,136,14030321,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r6-n-s7-wang03v2,6,4,Zamora,5.95,11.12,28,14030323,Notification has been scheduled.
