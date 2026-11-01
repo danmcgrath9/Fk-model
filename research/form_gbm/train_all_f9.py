@@ -1,8 +1,8 @@
 import numpy as np, bench as b, lab, lightgbm as lgb, time
 D = lab.D; F = np.load("F9.npy"); names = open("F9_names.txt").read().split("\n"); ri = lab.ri0; nR = D["n_races"]
-allr = np.arange(nR); prm = dict(feature_fraction=0.2, extra_trees=True)
+allr = np.arange(nR); prm = dict(feature_fraction=0.2, extra_trees=True, learning_rate=0.03, min_data_in_leaf=50)   # 1 Nov 2026 campaign: lr 0.06 -> 0.03, min leaf 100 -> 50 (lab TE KL 0.0987 -> 0.0973 / 0.0979; combined 0.0955); rounds scaled with the slower rate
 for seed in range(5):
-    t0 = time.time(); bst, _ = lab.train(F, names, allr, D["q"], params=prm, seed=seed, fixed_rounds=4400); bst.save_model(f"all9_sm{seed}.txt"); print("sm", seed, f"{time.time()-t0:.0f}s", flush=True)
+    t0 = time.time(); bst, _ = lab.train(F, names, allr, D["q"], params=prm, seed=seed, fixed_rounds=6500); bst.save_model(f"all9_sm{seed}.txt"); print("sm", seed, f"{time.time()-t0:.0f}s", flush=True)
 lq = np.log(D["q"]); mean = np.bincount(ri, weights=lq, minlength=nR) / np.bincount(ri, minlength=nR); y = lq - mean[ri]
 for seed in range(5):
     t0 = time.time(); Fa = lab.augmented(F, names, seed=seed + 30)

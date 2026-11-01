@@ -4,10 +4,10 @@ D = lab.D; ri = lab.ri0; nR = D["n_races"]
 F = np.load("F9.npy"); names = open("F9_names.txt").read().split("\n")
 order = np.argsort(D["date"], kind="stable"); blocks = np.array_split(order, 5)
 lq = np.log(D["q"]); mean = np.bincount(ri, weights=lq, minlength=nR) / np.bincount(ri, minlength=nR); y = lq - mean[ri]
-oof = np.zeros(len(ri)); prm = dict(feature_fraction=0.2, extra_trees=True)
+oof = np.zeros(len(ri)); prm = dict(feature_fraction=0.2, extra_trees=True, learning_rate=0.03, min_data_in_leaf=50)   # 1 Nov 2026 campaign: lr 0.06 -> 0.03, min leaf 100 -> 50 (lab TE KL 0.0987 -> 0.0973 / 0.0979; combined 0.0955); rounds scaled with the slower rate
 for k, blk in enumerate(blocks):
     t0 = time.time(); train = np.sort(np.concatenate([bb for j, bb in enumerate(blocks) if j != k]))
-    sm, _ = lab.train(F, names, train, D["q"], params=prm, seed=k, fixed_rounds=4000)
+    sm, _ = lab.train(F, names, train, D["q"], params=prm, seed=k, fixed_rounds=6000)
     Fa = lab.augmented(F, names, seed=k + 20); mt = np.isin(ri, train)
     rp = dict(objective="l2", learning_rate=0.05, num_leaves=31, min_data_in_leaf=100, feature_fraction=0.2, extra_trees=True,
               bagging_fraction=0.8, bagging_freq=1, lambda_l2=10, verbose=-1, num_threads=4, seed=k)
