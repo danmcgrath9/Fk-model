@@ -1,10 +1,10 @@
 date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
 2026-11-03,Wangaratta,1,,,Brilliant Bull Ant,WIN,9.10,20.61,1.29,48,1 of 2,1.29u,6.87,
 2026-11-03,Wangaratta,1,,,Brilliant Bull Ant,WIN,11.38,20.61,0.30,11,2 of 2,1.59u,6.87,
-2026-11-03,Wangaratta,1,,,Naval Command,WIN,3.02,3.99,4.11,154,1 of 2,4.11u,2.54,EARLY: $8 or shorter only; opens under $4: edge 1.15
-2026-11-03,Wangaratta,1,,,Naval Command,WIN,3.77,3.99,1.00,38,2 of 2,5.11u,2.54,EARLY: $8 or shorter only; opens under $4: edge 1.15
-2026-11-03,Wangaratta,1,,,Naval Command,WIN,4.00,7.61,4.48,168,1 of 2,4.48u,2.54,EARLY: $8 or shorter only
-2026-11-03,Wangaratta,1,,,Naval Command,WIN,4.00,7.61,0.84,32,2 of 2,5.32u,2.54,EARLY: $8 or shorter only
+2026-11-03,Wangaratta,1,,,Naval Command,WIN,3.02,3.99,4.11,154,1 of 2,4.11u,2.54,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-03,Wangaratta,1,,,Naval Command,WIN,3.77,3.99,1.00,38,2 of 2,5.11u,2.54,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-03,Wangaratta,1,,,Naval Command,WIN,4.00,7.61,4.48,168,1 of 2,4.48u,2.54,EARLY: $15 or shorter only
+2026-11-03,Wangaratta,1,,,Naval Command,WIN,4.00,7.61,0.84,32,2 of 2,5.32u,2.54,EARLY: $15 or shorter only
 2026-11-03,Wangaratta,2,,,Amarillo Sky,WIN,6.07,14.02,2.03,76,1 of 2,2.03u,4.67,
 2026-11-03,Wangaratta,2,,,Amarillo Sky,WIN,7.59,14.02,0.46,17,2 of 2,2.49u,4.67,
 2026-11-03,Wangaratta,2,,,Ashen Knight,WIN,9.68,21.86,1.21,45,1 of 2,1.21u,7.29,
@@ -54,5 +54,6 @@ date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollar
 2026-11-03,Wangaratta,6,,,Belmasai,WIN,14.59,26.10,0.23,9,2 of 2,1.22u,8.70,
 2026-11-03,Wangaratta,6,,,Densetsu,WIN,5.01,11.67,2.55,96,1 of 2,2.55u,3.89,
 2026-11-03,Wangaratta,6,,,Densetsu,WIN,6.26,11.67,0.54,20,2 of 2,3.09u,3.89,
+2026-11-03,Wangaratta,6,,,Enigmatise,WIN,11.35,15.01,1.02,38,1 of 1,1.02u,8.48,EARLY: $15 or shorter only
 2026-11-03,Wangaratta,6,,,Zamora,WIN,4.76,11.12,2.71,102,1 of 2,2.71u,3.71,
 2026-11-03,Wangaratta,6,,,Zamora,WIN,5.95,11.12,0.57,21,2 of 2,3.28u,3.71,

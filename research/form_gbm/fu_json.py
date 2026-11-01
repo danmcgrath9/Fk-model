@@ -27,7 +27,7 @@ for k in range(len(ri)):
     # second-up after a good first-up: EARLY-ONLY, not a block (4 Oct 2026, t_secup_open.py). The open under-rates them
     # (14% implied vs 19.5% winners) and they firm 21% to the jump: +17% at the open, -32% at BSP. Allowed at $8 or
     # shorter at the open (short ones +79%/+36%), blocked above $8 (-10% at the open, -58% at BSP). Bet at the open or not at all.
-    if prep[k,j]==1 and (fin[k,j]<=3 or (np.isfinite(mg[k,j]) and mg[k,j]<=2)): early.append(f"second-up after a good first-up ({int(fin[k,j])}th, {mg[k,j]:.1f}L): firms about 20% to the jump, bet at the open or not at all; no bet over $8".replace("1th","1st").replace("2th","2nd").replace("3th","3rd"))
+    if prep[k,j]==1 and (fin[k,j]<=3 or (np.isfinite(mg[k,j]) and mg[k,j]<=2)): early.append(f"second-up after a good first-up ({int(fin[k,j])}th, {mg[k,j]:.1f}L): firms about 20% to the jump, bet at the open or not at all; no bet over $15".replace("1th","1st").replace("2th","2nd").replace("3th","3rd"))
     w=float(U["X"][k,cols["weight"]])-wt[k,j]
     # weight-down rule REMOVED 7 Oct 2026 (t_weightdrop.py): it did not replicate before the holdout, and dropping it
     # adds profit at the open in both samples

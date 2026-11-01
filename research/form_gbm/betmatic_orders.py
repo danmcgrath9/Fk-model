@@ -206,8 +206,8 @@ def main():
             if k in fs or (blk and not blk.startswith("EARLY")) or not 1.6 <= ours <= 15:
                 continue
             # Flemington straight forward runners: no ban; their chance is x0.7 in shade_back.py (1 Nov 2026, founder: ROI, not a ban)
-            cap = min(3 * ours, 8.0 if blk.startswith("EARLY") else 1e9)
-            note = "EARLY: $8 or shorter only" if blk else ""
+            cap = min(3 * ours, 15.01 if blk.startswith("EARLY") else 1e9)   # EARLY cap $8 -> $15 (1 Nov 2026, founder; t_secup_cap.py: $8-12 +89%, $12-15 +42%, $15+ -24%)
+            note = "EARLY: $15 or shorter only" if blk else ""
             if FC is not None and not a.no_blend:
                 import numpy as np
                 xr = XR.get((int(r["race"]), nm(r["horse"])))
