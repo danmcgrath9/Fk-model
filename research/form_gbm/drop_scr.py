@@ -25,4 +25,15 @@ U["field"]=cnt.astype(U["field"].dtype)
 cols=list(U["cols"])
 for c in ("numRunners","field_size","runners","starters"):
     if c in cols: U["X"][:,cols.index(c)]=cnt[U["race_idx"]]
+# Undeclared riders (1 Nov 2026): before riders are declared Form King gives an empty jockey and every jockey input is 0,
+# which the model (never trained on a missing rider) reads as a jockey who never wins: St Gotthard (Flemington 31 Oct) carried
+# "jockey -41%". An undeclared rider gets the median of the declared riders at the meeting, column by column: an average
+# rider, until the real one is declared and the meeting is re-priced.
+import re as _re
+jk = U["jockey"].astype(str); und = np.array([j.strip() == "" for j in jk])
+if und.any() and (~und).any():
+    jcols = [i for i, n in enumerate(cols) if _re.search(r"(jockey|^jt_|^j_|apprentice)", str(n), _re.I)]
+    for i in jcols: U["X"][und, i] = np.nanmedian(U["X"][~und, i])
+    rn2 = U["race_number"][U["race_idx"]]
+    print("undeclared riders given the meeting's median jockey:", int(und.sum()), "runners, races", sorted({int(r) for r in rn2[und]}))
 np.savez(out,**U); print("fields now",dict(zip(U["race_number"].tolist(),cnt.tolist())))

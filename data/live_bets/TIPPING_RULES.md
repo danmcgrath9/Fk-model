@@ -119,3 +119,11 @@ go into betmatic-book.md marked "Tweeted Twitter card"; anything quoted later as
 Valley and Sandown the order sheet leans our chance 20% to the market and halves every stake (betmatic_orders.py METRO;
 t_metro_fix.py). Cards for metro meetings carry the halved units. Back to full stakes only after about 50 live metro bets
 show the fix holds; until then metro results are reported on their own line.
+
+## Undeclared riders (1 Nov 2026, found from St Gotthard "jockey -41%", Flemington 31 Oct)
+Priced before riders are declared, Form King gives an empty jockey and every jockey input came through as 0, which the model
+(never trained on a missing rider) read as a jockey who never wins: 5-25 runners a meeting for weeks (Flemington 31 Oct 22 of 138,
+Mildura 3 Nov 13 of 46). From 1 Nov drop_scr.py gives an undeclared rider the median of the meeting's declared riders, input
+by input, and a meeting priced before riders are declared is re-priced once they are (riders declared: compare and replace
+the orders, on the founder's word). Flemington 31 Oct with the fix: The Roaring Sun $50 -> $29 (won $6.50), Unhinged $13.60 ->
+$8.34 (2nd, SP $2.90); the bets barely moved (9.79u v 11.88u, the same horses less Persian Spirit).
