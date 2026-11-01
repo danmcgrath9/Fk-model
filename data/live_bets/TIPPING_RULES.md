@@ -51,7 +51,13 @@ Order files now carry max_odds (3x our price, $8 for EARLY runners): a minimum-o
 far past our price, which the rules would not bet. Whether BetMatic can carry a maximum price is a question for them;
 the forward test reports the result both ways.
 
-## Deductions: TAB's actual figure wins (14 Oct 2026)
+## Deductions: scrapped (1 Nov 2026)
+Founder, 1 Nov 2026: "Just completely scrap the deduction pay". From Sun 1 Nov no deductions are estimated, printed on a card
+or applied to a paper or Twitter settlement: a bet settles at the price taken. Real bets settle at what TAB actually paid
+(BetMatic reports the return), so any deduction shows up there and nowhere else. Settlements before 1 Nov keep the
+deductions they were recorded with. The sections below on deductions are history.
+
+## Deductions: TAB's actual figure wins (14 Oct 2026) (superseded 1 Nov 2026)
 Founder: "This is deductions from TAB at opening". For every meeting bet, record the deductions TAB applied on the bets
 struck at its opening price in data/live_bets/DAYPREFIX-deductions-actual.txt ("race, cents  # horse"); deductions.py
 uses them in place of the estimate (betmatic_fills.py, betmatic_html.py, fwd_betmatic.py all read through it). The

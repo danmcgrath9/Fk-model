@@ -691,3 +691,15 @@ value-at-open runners, 2 paper top-ups (1.09u: Fam Gorman R7 0.48u at $18, Warri
 now. Open fills (paper, market open before the send): Miss Cotoletta $5.50 now $3.30, Eye For An Eye $15 now $5.75, Fam Gorman $15
 now $18, Kokako $5 now $2.70, Master Of The Air $15 now $5. Deduction in R5 (Bel Lupa, Pocket Size, Simply Steffi, Heidi Dancer out)
 and R9 (Presscode, Sub Gauge, Rapid Cheval out) to settle at TAB's figures.
+
+## Flemington Tue 3 Nov re-priced on Soft 6 (founder, 1 Nov: "Flemington will be a S5 - S6"), paper, not sent
+Full re-pull Sun 11:34am (the odds-only pull had left the Cup with 68 entries and no benchmarks), metro fix and half stakes,
+R1 off (8 first starters). Filled at Form King's open: R2 Yauson $4.80 1.35u (ours $3.12), R3 Katoto $13 0.83u ($5.26), R3 Star
+Of Macedon $6 0.94u ($4.19), R4 Gin Twist $17 0.30u ($10.90), R5 Autumn Mystery $17 0.46u ($8.81), R5 Vegas Jack $17 0.30u
+($10.92), R7 Enfjaar $21 0.29u ($11.55), R7 Juja Kibo $13 0.42u ($8.29), R8 Mr Natural $17 0.47u ($8.72), R8 Ranarsson $4 1.62u
+($2.73): 10 bets, 6.98u ($349 at $50). Orders: 2026-11-03-flemington-s6-metrofix-orders-all.csv.
+
+## Mornington Sun 1 Nov R1: Star Je Taime was off the sheet (founder, 1 Nov)
+R1 came off on Fri 30 Oct under the first-starter rule because Galway Gal (first starter, opened $8.25) was in it. Galway Gal
+was scratched Sun morning, but the 9:30am re-price only reads the order sheet, so R1 never came back. At Form King's open
+($5.50, ours $2.80 then) the three orders would have filled 4.66u. Paper either way: the bot was off when the market opened.
