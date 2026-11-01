@@ -53,3 +53,19 @@ beat_market_last carries it. Horses at BSP under $5 last start that finished 4th
 model's 44.1 and the market's 44.3 (under $3: 9 v 9.3 v 9.2). Calibrated, and already in the price: the live rule's 40 bets
 on them made +4%. A forgive list would only add information for an unsupported horse that was blocked; not built
 (founder: "no all good").
+
+## Input audit and stage 3 (1 Nov 2026 evening, founder: "keep doing tests on all inputs and make sure they make sense...
+get closer to BSP and winning ROI")
+t_input_calib.py (193 continuous inputs, full history out of fold, five bands each): no input where the model's expected
+winners drift from the actual across the input's range in both date halves, and no band outside 0.80-1.20 with 40+ expected
+winners. t_flag_calib.py (binary flags): winkers on for the first time 0.81 (97 expected, 0.84 / 0.78 by half) and
+emergency runners 1.13 (166) are the only ones off, both small. The inputs make sense; the one real defect was the
+undeclared-rider zeros, fixed in drop_scr.py. Straight-course model input (t_straight_feat.py, 4-fold cross-fit, 74
+straight races): worse (log loss 2.108 -> 2.143), trees use it 0.0-0.04%; the x0.7 direct markdown stays instead.
+t_stage3.py (a logistic layer over the out-of-fold log-odds plus metro, straight, style, prep, first starters, field,
+distance, going, and the model-v-open gap; fitted on one date half, scored on the other): with the market gap, KL to BSP
+0.0884 -> 0.0824 and ROI +47.7% -> +51.1%, but 1,300 fewer bets and 860u less profit; without market inputs, no gain
+(KL 0.0898, +4,726u v +4,716u). Getting closer to BSP means leaning on the market, which is what the metro fix does
+where the model is wrong and costs profit where it is right. Not adopted beyond metro. Its fitted weights agree with
+the live rules' direction: straight forward -0.51 log-odds (we use x0.7 = -0.36), metro lean, back-settlers -0.16
+(the old shade, which ROI rejected: calibration and profit pull apart there).
