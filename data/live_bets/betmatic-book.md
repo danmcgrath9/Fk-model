@@ -720,3 +720,10 @@ Metro $12 cap and full stakes, first-starter races on. Flemington (Good 4 sheet)
 1.96u 10th, Persian Spirit $9.50 1.25u 8th, True Rebel $8 1.54u 5th, Sass Appeal $11 1.11u 4th, Bridal Waltz $5 2.72u 16th:
 -11.88u. Mortlake: Becauseyou're Mine $8 1.50u WON +10.50u, Semper Fortis $10 1.38u 3rd: +9.12u. Wycheproof: An Poitin Still
 $6.70 1.91u 2nd: -1.91u. Healesville: no fills. Traralgon abandoned (4 void). Day: 16.67u, -4.67u.
+
+## Week Mon 26 Oct - Sun 1 Nov re-run under the 1 Nov rules (founder: "re run this week with new rules"), paper
+Each meeting's pre-market order sheet (the -all file: first-starter races on, first starters never bet), Flemington rebuilt with
+the metro $12 cap at full stakes, every horse capped at 10u (Habitual 11.78u -> 8.66u), filled at Form King's open, no
+deductions. Wangaratta +35.33, Swan Hill +36.62, Bendigo -6.30, Warrnambool -17.72, Kilmore -7.14, Pakenham -15.64, Flemington
+-11.88, Mortlake +9.12, Wycheproof -1.91, Healesville no fills, Traralgon void, Mornington R1 Star Je Taime -4.66 (R3-R9 to run).
+Settled: 43 bets, 5 won, 123.93u, +15.82u (+12.8%). research/form_gbm/settle_week_20261101.py.
