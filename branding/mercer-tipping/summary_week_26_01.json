@@ -1,0 +1,93 @@
+{
+ "title": "One week",
+ "sub": "Mon 26 Oct \u2013 Sun 1 Nov",
+ "big": [
+  {
+   "v": "+1.7u",
+   "k": "Profit on 56.8u"
+  },
+  {
+   "v": "5 / 39",
+   "k": "Winners"
+  },
+  {
+   "v": "25 / 37",
+   "k": "Beat BSP"
+  }
+ ],
+ "rows": [
+  {
+   "day": "Mon",
+   "where": "Wangaratta",
+   "bets": 6,
+   "won": 1,
+   "staked": "9.6u",
+   "profit": "+17.7u",
+   "bsp": "4 / 6"
+  },
+  {
+   "day": "Tue",
+   "where": "Swan Hill (BSP)",
+   "bets": 2,
+   "won": 1,
+   "staked": "6.8u",
+   "profit": "+8.0u",
+   "bsp": "at BSP"
+  },
+  {
+   "day": "Wed",
+   "where": "Bendigo",
+   "bets": 6,
+   "won": 1,
+   "staked": "10.5u",
+   "profit": "-3.4u",
+   "bsp": "4 / 6"
+  },
+  {
+   "day": "Thu",
+   "where": "Warrnambool",
+   "bets": 8,
+   "won": 1,
+   "staked": "12.1u",
+   "profit": "-8.9u",
+   "bsp": "7 / 8"
+  },
+  {
+   "day": "Fri",
+   "where": "Kilmore \u00b7 Pakenham",
+   "bets": 8,
+   "won": 0,
+   "staked": "9.3u",
+   "profit": "-9.3u",
+   "bsp": "7 / 8"
+  },
+  {
+   "day": "Sat",
+   "where": "Flemington",
+   "bets": 4,
+   "won": 0,
+   "staked": "3.6u",
+   "profit": "-3.6u",
+   "bsp": "0 / 4"
+  },
+  {
+   "day": "Sun",
+   "where": "Mornington",
+   "bets": 5,
+   "won": 1,
+   "staked": "4.8u",
+   "profit": "+1.3u",
+   "bsp": "3 / 5"
+  },
+  {
+   "day": "Total",
+   "where": "",
+   "bets": 39,
+   "won": 5,
+   "staked": "56.8u",
+   "profit": "+1.7u",
+   "bsp": "25 / 37",
+   "total": true
+  }
+ ]
+}
