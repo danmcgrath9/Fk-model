@@ -1,0 +1,2 @@
+3, 23  # Big Kapow, TAB (founder, 1 Nov)
+9, 11  # Kokako, TAB (founder, 1 Nov)

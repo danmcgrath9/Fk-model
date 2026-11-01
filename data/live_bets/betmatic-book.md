@@ -741,12 +741,14 @@ Marco Polo BSP for Mercer"): settle him on Twitter at Betfair SP. The rest at th
 You $14, Wintery $3.10, Catwalk Icon $5. Plain card at the opens ($2.50, $26, $26, $7, $4.60). Twitter units 3.15 / 0.49 /
 0.36 / 1.67 / 1.45. card_mon02.json, card_mon02_plain.json.
 
-## Sunday 1 Nov Mornington settled (results pulled Sun 7pm), paper at the open, no deductions, the 1 Nov-rules sheet
-Big Kapow (R3) WON at $7.50 (SP $3.80, BSP $3.87), 2.05u +13.33u. Kokako (R9) WON at $5 (SP $2.25, BSP $2.32), 2.63u +10.52u.
-Star Je Taime 2nd (SP $1.65), Miss Cotoletta 2nd, Fam Gorman 2nd at $15, Eye For An Eye 6th, Master Of The Air 4th.
-7 bets, 2 won, 15.64u, +12.89u (+82%). Big Kapow was in a first-starter race the pre-1 Nov rule had off the sheet. Both
-winners beat BSP by a street ($7.50 v $3.87, $5 v $2.32). Top-ups (paper): Fam Gorman 0.48u at $18 2nd, Warrior Within 0.61u
-at $19 7th: -1.09u. Sunday's cards (Twitter units, opens): Miss Cotoletta 1.41u, Eye For An Eye 0.67u, Fam Gorman 0.73u,
-Kokako 1.33u (+5.32u), Master Of The Air 0.64u: 4.78u, +1.87u if posted as sent.
-Week Mon 26 Oct - Sun 1 Nov under the 1 Nov rules, paper at the open: 50 bets, 7 won, 139.57u, +28.71u (+21%).
+## Sunday 1 Nov Mornington settled (results pulled Sun 7pm), paper at the open, TAB's actual deductions (founder, Sun 8pm)
+Big Kapow (R3) WON: $7.50 open, 23c deduction, paid $6.01 (SP $3.80, BSP $3.87), 2.05u +10.26u. Kokako (R9) WON: $5 open,
+11c deduction, paid $4.56 (SP $2.25, BSP $2.32), 2.63u +9.36u. Star Je Taime 2nd (SP $1.65), Miss Cotoletta 2nd, Fam Gorman
+2nd at $15, Eye For An Eye 6th, Master Of The Air 4th. 7 bets, 2 won, 15.64u, +8.66u (+55%). Big Kapow was in a
+first-starter race the pre-1 Nov rule had off the sheet; both winners beat BSP by a street. Top-ups (paper): Fam Gorman
+0.48u at $18 2nd, Warrior Within 0.61u at $19 7th: -1.09u. Sunday's cards (Twitter units, opens): Miss Cotoletta 1.41u, Eye
+For An Eye 0.67u, Fam Gorman 0.73u, Kokako 1.33u (+4.73u at $4.56), Master Of The Air 0.64u: 4.78u, +1.28u if posted as sent.
+Week Mon 26 Oct - Sun 1 Nov under the 1 Nov rules, paper at the open: 50 bets, 7 won, 139.57u, +24.48u (+18%).
+RULE (clarified 1 Nov evening): no deductions are ESTIMATED any more; TAB's actual deduction, when the founder reports it, is
+applied to the winnings (1 + (price - 1) x (1 - d)), as it always was for real bets.
 Real money this week: Don copies +$810 on $650; Best Terms $331 at $2.60 runs Monday.

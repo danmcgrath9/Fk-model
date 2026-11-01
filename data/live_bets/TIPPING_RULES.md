@@ -70,8 +70,9 @@ check (BETMATIC_PLAN.md), the 26 Oct $6 race rule and the 30 Oct "skip first sta
 watches the group.
 
 ## Deductions: scrapped (1 Nov 2026)
-Founder, 1 Nov 2026: "Just completely scrap the deduction pay". From Sun 1 Nov no deductions are estimated, printed on a card
-or applied to a paper or Twitter settlement: a bet settles at the price taken. Real bets settle at what TAB actually paid
+Founder, 1 Nov 2026: "Just completely scrap the deduction pay". From Sun 1 Nov no deductions are ESTIMATED, printed on a card or applied to a paper or Twitter settlement by guess: a bet
+settles at the price taken, unless the founder reports TAB's actual deduction for the race (as on 1 Nov: Mornington R3 23c,
+R9 11c), which is then applied to the winnings, 1 + (price - 1) x (1 - d), paper and Twitter alike. Real bets settle at what TAB actually paid
 (BetMatic reports the return), so any deduction shows up there and nowhere else. Settlements before 1 Nov keep the
 deductions they were recorded with. The sections below on deductions are history.
 
