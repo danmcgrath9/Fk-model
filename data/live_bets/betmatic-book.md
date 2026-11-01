@@ -122,6 +122,7 @@ scratchings). The backtest says the top-up slice loses (t_topup.py: -7.6% holdou
 | 2026-10-28 Bendigo | R2 | Centenary Florin | $3.70 | $4.40 | $2.94 | 0.00u | 5.11u | 4th, SP $4.20, BSP $5.12 | -5.11 |
 | 2026-10-28 Bendigo | R8 | Litzdeel | $8.50 | $8.50 | $6.24 | 1.48u | 0.26u | 3rd, SP $9, BSP $10 | -0.26 |
 | 2026-10-30 Pakenham | R8 | Shidan | $19.00 | $8.00 | $6.64 | 0.00u (opened over the $15.84 max) | 1.09u | | |
+| 2026-11-02 Ballarat | R4 | Best Terms (real bet 6.62u at $2.60 already on) | $2.50 | $2.90 | $1.92 | 6.62u (real, $2.60) | 2.74u | | |
 
 Warrnambool 15 Oct (re-priced 9:34am Thursday, 11 scratched, jockeys and gear in): 6 value-at-open runners on the final field, 1 top-up, Who I Think I Am 0.40u at $4.60; the rest are under take-at now.
 Caulfield 14 Oct (re-priced 8:45am): 5 value-at-open runners on the final field, all under take-at at race-morning prices, so no top-ups.
@@ -685,6 +686,13 @@ Week Mon 26 - Sat 31 Oct, paper at the open (model stakes), Bridal Waltz open: 3
 Real money this week: Don copies +$810 on $650; Ballarat Mon R4 Best Terms $331 at $2.60 open.
 Flemington R9 Bridal Waltz lost (founder, 31 Oct): -3.16u at the open (tweeted 1.46u: -1.46u). Week Mon 26 - Sat 31 Oct, paper at
 the open: 34 bets, 4 won, 112.20u, +24.29u, ROI +22%. Flemington Derby Day: 0 from 6 (War Machine scratched), -13.73u.
+
+Ballarat Mon 2 Nov (re-priced 9:40am Mon on a fresh export of the final field, Soft 7; 29 more out since Sunday incl. Star Je
+Taime R1, Jack Will R4, Layla R7; emergencies Hola Amigos and Le Notre (R7), Cool Savanna and Lika Wreckin' Ball (R8) in): 9
+value-at-open runners, 1 paper top-up, Best Terms R4 2.74u at $2.90 (full stake 9.36u at $2.90, less the real 6.62u at $2.60;
+topup.py counts the sheet's 6.30u at the $2.50 open, so it says 3.06u). $2.90 also clears the after-open rule ($2.64): a real
+top-up only on the founder's word. Everything else under take-at now: Marco Polo $26 -> $6, Wintery $7 -> $2.80, Catwalk Icon
+$4.60 -> $2.30. TAB deductions (founder, Mon morning): R5 2c, R6 3c, R7 25c; R4 left for BetMatic to report at settlement.
 
 Mornington Sun 1 Nov (re-priced 9:32am Sun on the final field, Soft 7, 29 out incl. Galway Gal, Bel Lupa, Superstock, Presscode): 10
 value-at-open runners, 2 paper top-ups (1.09u: Fam Gorman R7 0.48u at $18, Warrior Within R9 0.61u at $19), the rest under take-at
