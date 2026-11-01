@@ -371,7 +371,10 @@ def status(a):
     if deds:
         # DAYPREFIX-deductions-actual.txt is what deductions.py, betmatic_fills.py and the forward test settle with. A race
         # already in the file (typed by the founder from his account) is left as he wrote it.
-        m = re.match(r"^(\d{4}-\d{2}-\d{2}-[a-z0-9-]+?)-(?:betmatic|test)", os.path.basename(a.ledger))
+        # The meeting is the ledger name up to -betmatic, -test or a single-race "-rN-" (an after-open "now" or top-up
+        # ledger, e.g. 2026-11-02-ballarat-r4-now: until 1 Nov 2026 those never filed, so Best Terms' R4 would have been
+        # missed). Copies across several meetings (don-copy) still file nothing: no single meeting to file them under.
+        m = re.match(r"^(\d{4}-\d{2}-\d{2}-[a-z0-9-]+?)-(?:betmatic|test|r\d+-)", os.path.basename(a.ledger))
         if not m:
             print("deductions not filed: cannot read the meeting from", a.ledger); return
         fn = os.path.join(os.path.dirname(a.ledger), m.group(1) + "-deductions-actual.txt")
