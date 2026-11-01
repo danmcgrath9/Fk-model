@@ -6,7 +6,11 @@ python shade_back.py V6_JSON DAY_NPZ   (rewrites V6_JSON; the unshaded chance st
 import json, sys
 import numpy as np
 
-SHADE, CUT = 0.85, 0.65
+# OFF from 1 Nov 2026 (founder: "Yep turn the shade off"; t_shade_live.py, t_backmarkers.py): under the 1 Nov rules the
+# shade loses on the v10 holdout (+1,090u at +45.8% with it, +1,237u at +52.7% without, worse in both halves) and on the
+# full out-of-fold history (+4,604u v +4,720u). Sprint back-settlers are the best group of bets (+68%). The script still
+# runs so the files keep p_unshaded; at 1.0 nothing changes. Back to 0.85 to restore.
+SHADE, CUT = 1.0, 0.65
 mj, npz = sys.argv[1:3]
 U = np.load(npz, allow_pickle=True)
 c = {str(x): i for i, x in enumerate(U["cols"])}

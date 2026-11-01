@@ -127,3 +127,13 @@ Mildura 3 Nov 13 of 46). From 1 Nov drop_scr.py gives an undeclared rider the me
 by input, and a meeting priced before riders are declared is re-priced once they are (riders declared: compare and replace
 the orders, on the founder's word). Flemington 31 Oct with the fix: The Roaring Sun $50 -> $29 (won $6.50), Unhinged $13.60 ->
 $8.34 (2nd, SP $2.90); the bets barely moved (9.79u v 11.88u, the same horses less Persian Spirit).
+
+## Back-settler shade off (1 Nov 2026)
+Founder, 1 Nov 2026: "Yep turn the shade off". shade_back.py now multiplies by 1.0. Under the 1 Nov rules the x0.85 shade
+lost on the v10 holdout (+1,090u at +45.8% with it, +1,237u at +52.7% without, worse in both halves) and on the full
+out-of-fold history (+4,604u v +4,720u). By distance (t_backmarkers.py, our bets, out of fold): sprint back-settlers around
+a bend are the best group (+68%, wins/expected 0.96); beyond 1200m back-settlers run 0.83-0.88, the reason the shade
+existed, but the opening-price edge still pays them (+41% to +49%). Note: the backtests quoted to the founder on 1 Nov
+(+1,237u) were run without the shade while the live sheets carried it; switching it off makes the two match.
+Flemington straight (t_straight_oof.py, 74 races): the model is calibrated there overall; our FORWARD bets on the straight
+won 2 against 6.5 expected (-72%, 37 bets), too few for a rule: every straight-course bet is flagged and tracked.
