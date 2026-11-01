@@ -703,3 +703,9 @@ Of Macedon $6 0.94u ($4.19), R4 Gin Twist $17 0.30u ($10.90), R5 Autumn Mystery 
 R1 came off on Fri 30 Oct under the first-starter rule because Galway Gal (first starter, opened $8.25) was in it. Galway Gal
 was scratched Sun morning, but the 9:30am re-price only reads the order sheet, so R1 never came back. At Form King's open
 ($5.50, ours $2.80 then) the three orders would have filled 4.66u. Paper either way: the bot was off when the market opened.
+
+## Sent live Sun 1 Nov 12:10pm: Tuesday's first-starter races ($50 a unit, TAB, Market Open; founder: "Yeah thats fine")
+The race rule was scrapped the same morning, so the races it had held back went in: Echuca R3-R5 (19 orders, 10 horses),
+Mildura R3 (4 orders, 2 horses), Wangaratta R1 and R3 (14 orders, 5 horses), every order scheduled (-fs-ledger.csv). TAB
+balance $0.65 at the dry run: nothing places unless the account is funded before the markets open. Ballarat R1-R3: all
+opened Sat before the send, none clears the after-open rule now; Star Je Taime opened $3 there (paper fill 7.05u).
