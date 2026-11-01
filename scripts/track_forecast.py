@@ -9,7 +9,7 @@ import datetime as dt, json, sys, time, urllib.request
 
 COORDS = {"echuca": (-36.13, 144.75), "mildura": (-34.21, 142.13), "wangaratta": (-36.36, 146.31),
           "ballarat": (-37.56, 143.85), "flemington": (-37.7895, 144.9120), "mansfield": (-37.05, 146.08),
-          "mornington": (-38.23, 145.06)}
+          "mornington": (-38.23, 145.06), "kyneton": (-37.25, 144.46)}
 race = dt.date.fromisoformat(sys.argv[1])
 for t in sys.argv[2:]:
     la, lo = COORDS[t.lower()]
