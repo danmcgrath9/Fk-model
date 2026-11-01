@@ -19,6 +19,12 @@ orc = c.get("jockeysOnlyRideAtMeeting")
 onr = {(str(U["race_id"][U["race_idx"][i]]), str(U["horse_id"][i])): (orc is not None and float(U["X"][i, orc]) == 1) for i in range(len(U["name"]))}
 # race distance on every runner (1 Nov 2026): betmatic_orders.py needs it for the Flemington straight rule
 dist = {str(U["race_id"][j]): float(U["distance"][j]) for j in range(len(U["race_id"]))}
+# Flemington straight (1 Nov 2026, founder: "only drop them if it makes sense... it has to make sense from an ROI point of view";
+# t_straight_mult.py, out of fold, 74 straight races): at Flemington, 1200m or less, a runner that usually settles forward
+# (settle share under 0.3) has its chance x0.7 and the race is renormalised, so the field that settles midfield and back
+# picks it up. Straight bets: -9% as priced, +16% at x0.7 (lower multipliers paid more, but 74 races; 0.7 is the shrunk pick).
+STRAIGHT_FWD, STRAIGHT_CUT = 0.7, 0.3
+straight = {str(U["race_id"][j]) for j in range(len(U["race_id"])) if str(U["track"][j]).startswith("Flemington") and float(U["distance"][j]) <= 1200}
 rows = json.load(open(mj)); k = 0
 for r in rows:
     r["distance"] = dist.get(r["race_id"])
@@ -29,6 +35,8 @@ for r in rows:
     r["p_unshaded"] = r["p"]; r["settle_share"] = None if not np.isfinite(s) else round(s, 3)
     if np.isfinite(s) and s >= CUT:
         r["p"] = r["p"] * SHADE; r["back_shaded"] = True; k += 1
+    if r["race_id"] in straight and np.isfinite(s) and s < STRAIGHT_CUT:
+        r["p"] = r["p"] * STRAIGHT_FWD; r["straight_forward"] = True; k += 1
 tot = {}
 for r in rows:
     tot[r["race_id"]] = tot.get(r["race_id"], 0.0) + r["p"]

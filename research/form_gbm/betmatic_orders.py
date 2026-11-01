@@ -205,14 +205,7 @@ def main():
             k = f"{int(r['race'])}|{r['horse']}"; pm = r["p_model"]; ours = 1 / pm; blk = fu.get(k, "")
             if k in fs or (blk and not blk.startswith("EARLY")) or not 1.6 <= ours <= 15:
                 continue
-            # Flemington straight (1 Nov 2026, founder: "hate being on leaders like yesterday with Natural Fling"; t_backmarkers.py):
-            # on the straight six (Flemington, 1200m or less) our bets on runners that usually settle forward (settle share under
-            # 0.3) won 2 where the model expected 6.5 (-72% at the open, 37 bets, out of fold). No bet on them there.
-            if is_metro and venue.lower() == "flemington":
-                if r.get("distance") is None:
-                    sys.exit(f"STOP: no race distance in the v6 file for R{r['race']}: re-run shade_back.py on it (1 Nov 2026 rule)")
-                if r["distance"] <= 1200 and r.get("settle_share") is not None and r["settle_share"] < 0.3:
-                    continue
+            # Flemington straight forward runners: no ban; their chance is x0.7 in shade_back.py (1 Nov 2026, founder: ROI, not a ban)
             cap = min(3 * ours, 8.0 if blk.startswith("EARLY") else 1e9)
             note = "EARLY: $8 or shorter only" if blk else ""
             if FC is not None and not a.no_blend:
