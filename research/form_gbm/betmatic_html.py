@@ -32,7 +32,7 @@ def main():
         for l in open(a.results):
             m = re.match(r"R(\d+) (.+?)\s+finish (\S+)", l)
             if m: won[(int(m[1]), norm(m[2]))] = m[3] == "1"
-    ded = race_deductions(a.prefix)[0]
+    ded = {}   # deductions scrapped (founder, 1 Nov 2026: "Just completely scrap the deduction pay"): settle at the price taken
     by = collections.OrderedDict(); counts = collections.Counter()
     for o in csv.DictReader(open(a.orders)):
         k = (int(o["race"]), norm(o["horse"])); counts[k] += 1
@@ -51,10 +51,10 @@ def main():
             p = b["stake"] * (eff - 1) if won[k] else -b["stake"]; pl += p
             res = f"{'WON' if won[k] else 'lost'} {p:+.2f}u"
         rows.append(f"<tr><td><a href='#r{b['race']}'>R{b['race']}</a></td><td>{html.escape(b['horse'])}</td><td>{b['n']} of {counts[k]}</td>"
-                    f"<td>${b['open']:.2f}</td><td>{b['stake']:.2f}u</td><td>{round(d * 100)}c</td><td>${eff:.2f}</td>"
+                    f"<td>${b['open']:.2f}</td><td>{b['stake']:.2f}u</td>"
                     f"<td>{'$%.2f' % b['now'] if b['now'] else 'SCR'}</td><td>{res}</td></tr>")
-    body = ("<table><tr><th>Race</th><th>Horse</th><th>Orders filled</th><th>Got on at</th><th>Stake</th><th>Deduction</th>"
-            "<th>After deduction</th><th>Now</th><th>Result</th></tr>" + "".join(rows) + "</table>") if rows else "<div>None.</div>"
+    body = ("<table><tr><th>Race</th><th>Horse</th><th>Orders filled</th><th>Got on at</th><th>Stake</th>"
+            "<th>Now</th><th>Result</th></tr>" + "".join(rows) + "</table>") if rows else "<div>None.</div>"
     n_orders = sum(counts.values())
     sec = (f"{START}<h2>Filled at the open ({len(rows)})</h2><div class='tw'>{body}</div>"
            f"<div style='height:14px'></div>{END}")  # no notes on the page (founder, 24 Oct 2026)

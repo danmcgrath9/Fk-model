@@ -51,6 +51,14 @@ Order files now carry max_odds (3x our price, $8 for EARLY runners): a minimum-o
 far past our price, which the rules would not bet. Whether BetMatic can carry a maximum price is a question for them;
 the forward test reports the result both ways.
 
+## Metro: no bets at $12+, full stakes (1 Nov 2026)
+Founder, 1 Nov 2026: "we go back to normal stakes but we cap at $12". Flemington, Caulfield, Moonee Valley and Sandown,
+every day of the week. The metro fix (20% lean to the market) stays; orders carry a $12 maximum and full stakes (the 31 Oct
+half stakes are off). research/form_gbm/t_price_bands.py, v10 holdout from 3 Jun: metro fix bets at $12+ won 4 where 9
+were expected (-24u); under $12 they won 23 against 24.5, as calibrated as provincial (196 v 197). Capped, full stakes:
++86u at +35.6% (halves +32% / +42%), worst drawdown 31u; uncapped: +62u at +19.6%. Country/provincial are NOT capped:
+$8-12 made +77% and $20+ +74% there. Twitter units are half, so metro on Twitter tops out at 5u like everywhere else.
+
 ## First starters: the race rule is scrapped (1 Nov 2026)
 Founder, 1 Nov 2026: "Yeah switch it, lets go". First starters themselves are never bet (betmatic_orders.py filters them),
 but a race holding one is bet like any other: no race is dropped from an order sheet for a first starter, at any price.

@@ -709,3 +709,8 @@ The race rule was scrapped the same morning, so the races it had held back went 
 Mildura R3 (4 orders, 2 horses), Wangaratta R1 and R3 (14 orders, 5 horses), every order scheduled (-fs-ledger.csv). TAB
 balance $0.65 at the dry run: nothing places unless the account is funded before the markets open. Ballarat R1-R3: all
 opened Sat before the send, none clears the after-open rule now; Star Je Taime opened $3 there (paper fill 7.05u).
+
+## Flemington Tue 3 Nov under the $12 metro cap, full stakes (founder, 1 Nov), paper, not sent
+Supersedes the half-stake list above. Filled at Form King's open: R2 Yauson $4.80 2.71u, R3 Star Of Macedon $6 1.87u, R8 Ranarsson
+$4 3.25u: 3 bets, 7.83u ($392 at $50). The seven at $13+ are gone (Katoto $13, Gin Twist, Autumn Mystery, Vegas Jack, Mr Natural
+$17, Juja Kibo $13, Enfjaar $21). Orders: 2026-11-03-flemington-s6-cap12-orders-all.csv. Deductions no longer shown on pages.

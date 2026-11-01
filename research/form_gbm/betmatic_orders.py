@@ -47,7 +47,12 @@ SHORT_OPEN, SHORT_EDGE = 4.0, 1.15
 # sheet: Jun-Jul +16% at the open (was +7%), Aug-Oct +26% (was +6%); still behind provincial and still loses at BSP,
 # so metro stakes are halved until about 50 live metro bets show it holds.
 METRO = {"flemington", "caulfield", "moonee valley", "sandown"}
-METRO_W, METRO_C, METRO_STAKE = 0.8, 0.986, 0.5   # 14 Oct: 3 steps sized at the next step: same holdout profit as 8 (+801u), at most 3 bets a horse (t_monthly.py)
+# 1 Nov 2026 (founder: "we go back to normal stakes but we cap at $12"; t_price_bands.py): the overrating was the long
+# prices. Metro fix bets at $12+ won 4 where the fix expected 9 (-24u); under $12 they won 23 against 24.5, as calibrated as
+# provincial (196 v 197). Capped at $12 and back to full stakes: holdout +86u at +35.6% (halves +32% / +42%), worst
+# drawdown 31u, against +62u at +19.6% uncapped.
+METRO_MAX_OPEN = 12.0
+METRO_W, METRO_C, METRO_STAKE = 0.8, 0.986, 1.0   # 14 Oct: 3 steps sized at the next step: same holdout profit as 8 (+801u), at most 3 bets a horse (t_monthly.py)
 
 
 def tiers(min_odds, cap, chance_at, only_ride, field, mult_at=None):
@@ -86,7 +91,7 @@ def main():
     times = dict(x.split("=", 1) for x in a.times.split(",") if "=" in x)
     v = json.load(open(a.v6 or f"{B}-v6.json"))
     date, venue = a.prefix[:10], a.prefix[11:].replace("-", " ").title()
-    is_metro = venue.lower() in METRO   # metro fix: 20% market lean, half stakes (31 Oct 2026)
+    is_metro = venue.lower() in METRO   # metro fix: 20% market lean (31 Oct 2026), $12 cap and full stakes (1 Nov 2026)
     import re
     nm = lambda x: re.sub(r"[^a-z0-9]", "", x.lower())
     nums_fn = a.numbers or (f"{L}/{a.prefix}-entry-numbers.txt" if os.path.exists(f"{L}/{a.prefix}-entry-numbers.txt") else None)
@@ -216,11 +221,12 @@ def main():
                 min_odds, min_short = first(1.2), first(SHORT_EDGE)
                 ch = lambda t, pm=pm, xr=xr, f_=f_: float(pm ** BLEND_W * FC.qbsp(xr, pm, [t], f_)[0] ** (1 - BLEND_W))
             elif is_metro:
+                cap = min(cap, METRO_MAX_OPEN)
                 k_ = METRO_C ** 0.82 * pm ** (0.82 * METRO_W); ex_ = 1 / (0.78 - 0.82 * (1 - METRO_W))
                 min_odds = round(SHADE * (1.2 / k_) ** ex_, 2)
                 min_short = round(SHADE * (SHORT_EDGE / k_) ** ex_, 2)
                 ch = lambda t, pm=pm: (METRO_C * pm ** METRO_W * t ** -(1 - METRO_W)) ** 0.82 * t ** -0.22
-                note = (note + "; " if note else "") + "metro fix, half stake"
+                note = (note + "; " if note else "") + "metro fix, no bet at $12+"
             else:
                 min_odds = round(SHADE * (1.2 / pm ** 0.82) ** (1 / 0.78), 2)
                 min_short = round(SHADE * (SHORT_EDGE / pm ** 0.82) ** (1 / 0.78), 2)
