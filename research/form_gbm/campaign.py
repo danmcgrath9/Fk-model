@@ -8,6 +8,7 @@ D = b.D; ri = D["race_idx"]; nR = D["n_races"]; q = D["q"]
 F = np.load("F9.npy"); names = open("F9_names.txt").read().split("\n"); assert F.shape[1] == len(names), (F.shape, len(names))
 z = np.load("ds/model_ds.npz", allow_pickle=True); o = z["open"].astype(float); bs = z["bsp"].astype(float); won = D["won"]
 BASE = dict(feature_fraction=0.2, extra_trees=True)
+ROUNDS = 5000
 LOG = "campaign.md"
 def plan(p, races):
     m = b.runner_mask(races) & np.isfinite(o) & (o > 1); ours = 1 / np.maximum(p, 1e-12)
@@ -24,11 +25,14 @@ def fit(params, seed=0, Fm=None, races=None, aug=True, share=0.8):
     orig = lab.augmented
     if share != 0.8: lab.augmented = lambda Fx, nx, share_=share, seed=1: orig(Fx, nx, share_, seed)
     try:
-        bst, it = lab.train(Fm, names if Fm is F else [f"c{i}" for i in range(Fm.shape[1])], races, q, params={**BASE, **params}, valid_races=lab.VALID, seed=seed, aug=aug, rounds=5000)
+        bst, it = lab.train(Fm, names if Fm is F else [f"c{i}" for i in range(Fm.shape[1])], races, q, params={**BASE, **params}, valid_races=lab.VALID, seed=seed, aug=aug, rounds=ROUNDS)
     finally:
         lab.augmented = orig
     return bst, it
 def run(name, params={}, seeds=(0,), Fm=None, races=None, aug=True, share=0.8, note=""):
+    import os
+    if os.path.exists(LOG) and f"| {name} |" in open(LOG).read() and os.path.exists(f"camp_{name}.npy"):
+        print("skip (done)", name, flush=True); return np.load(f"camp_{name}.npy"), None   # idempotent: the process has been killed mid-run twice
     t0 = time.time(); logs = []; its = []
     for s in seeds:
         bst, it = fit(params, s, Fm, races, aug, share); its.append(it)
@@ -54,6 +58,7 @@ if "dart" in todo:
     except Exception as e: open(LOG, "a").write(f"| dart | failed: {e} |\n")
 if "prune" in todo:
     if B0 is None: P0, B0 = run("base")
+    if B0 is None: B0, _ = fit({}, 0)
     g = B0.feature_importance("gain"); keep = np.argsort(-g)[: len(g) // 2]; keep.sort()
     run("prune_top50", Fm=F[:, keep], note=f"{len(keep)} of {len(g)} inputs by gain")
     keep = np.argsort(-g)[: len(g) // 4]; keep.sort(); run("prune_top25", Fm=F[:, keep], note=f"{len(keep)} inputs")
@@ -77,4 +82,8 @@ if "prep" in todo:
     Fp = prep_feats.build(D["P"], list(D["past_fields"]), D["X"][:, D["colidx"]["raw_run_in_prep"]].astype(float))
     F2 = np.hstack([F] + [v[:, None].astype(np.float32) for v in Fp.values()]); F2[~np.isfinite(F2)] = np.nan
     run("prep_inputs", Fm=F2, note="came back better/worse, prep trend, runs since best, prev prep rise")
+if "combo" in todo:
+    ROUNDS = 9000
+    run("lr0.03_r9000", dict(learning_rate=0.03), note="lr 0.03 with the round cap lifted (it hit 5000)")
+    run("combo_lr0.03_md50_bag3", dict(learning_rate=0.03, min_data_in_leaf=50), seeds=(0, 1, 2), note="the winners together: lr 0.03, min leaf 50, 3 seeds")
 print("CAMPAIGN DONE", flush=True)

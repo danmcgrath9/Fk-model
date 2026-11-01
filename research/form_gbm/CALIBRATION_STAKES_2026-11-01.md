@@ -69,3 +69,22 @@ distance, going, and the model-v-open gap; fitted on one date half, scored on th
 where the model is wrong and costs profit where it is right. Not adopted beyond metro. Its fitted weights agree with
 the live rules' direction: straight forward -0.51 log-odds (we use x0.7 = -0.36), metro lean, back-settlers -0.16
 (the old shade, which ROI rejected: calibration and profit pull apart there).
+
+## BSP campaign (1 Nov 2026 evening, founder: "find a way for us to get closer to BSP. I have so much time, just run")
+campaign.py, full table in campaign_2026-11-01.md. Stage-1 trees member on the lab split (fit on the oldest 56% of races,
+stopped on the next 14%, scored on the newest 30% from 12 May, which no decision touched). 22 experiments. KL to BSP on the
+unseen 30%, live settings 0.0987. HELPS: 3 seeds averaged 0.0966; learning rate 0.03 (was 0.06) 0.0973 and the plan's ROI
++30.3% -> +34.4%; min leaf 50 (was 100) 0.0979. COMBINED (lr 0.03, min leaf 50, 3 seeds, 9,000-round cap): 0.0955, the best
+of the campaign, plan +31.5%. NOTHING: L2, leaves, feature fraction, extra-trees off (0.1007), the blanking augmentation off
+(0.1003: it earns its place) or at 50%, DART (0.1153), pruning inputs (top 50% 0.1015, top 25% 0.1060), the prep-pattern
+inputs (0.1010), a ridge conditional logit alone (0.1255) or blended (KL 0.0979 but the plan falls to +27.6%).
+THE DATA CURVE: trained on the newest 50% of the training races 0.1060, 75% 0.1018, 100% 0.0987: about 0.003 of KL per
+added quarter and not flattening. More races is the biggest lever found; the Form King national archive is the way to get
+them.
+IN PLAIN TERMS, on the horses we bet (rated $1.60-$15), unseen races: the opening market's typical miss against BSP is 40%
+(28% of horses within 20% of BSP); the live settings 34.9% (32%); the combined settings 34.0% (33%); we are closer to BSP
+than the open on 54-55 of every 100 such horses, 57 of 100 under $5. The settings gain is small in these terms; the edge is
+being closer than the open on the horses we pick and getting on before the market moves.
+NOT PORTED YET: the winners go into oof_trees.py and train_all_f9.py (lr 0.03, min_data_in_leaf 50, 3 seeds averaged in log
+space) on the founder's word; 3 seeds roughly triples stage-1 training time in retrain.sh; the deploy gate (holdout KL,
+t_b9_s2) decides, and the daily retrain only ever saves a challenger.
