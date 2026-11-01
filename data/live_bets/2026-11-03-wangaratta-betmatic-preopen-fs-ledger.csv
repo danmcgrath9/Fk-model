@@ -1,0 +1,15 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-11-03-wangaratta-r1-n-s1-wang03fs,1,1,Brilliant Bull Ant,10.30,23.18,56,14029663,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r1-n-s2-wang03fs,1,1,Brilliant Bull Ant,12.88,23.18,13,14029664,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r1-n-s3-wang03fs,1,4,Naval Command,2.89,3.99,218,14029667,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r1-n-s4-wang03fs,1,4,Naval Command,3.61,3.99,52,14029670,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r1-n-s5-wang03fs,1,4,Naval Command,4.00,7.30,238,14029673,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r1-n-s6-wang03fs,1,4,Naval Command,4.00,7.30,42,14029676,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s1-wang03fs,3,3,Creusa,7.27,16.65,82,14029678,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s2-wang03fs,3,3,Creusa,9.09,16.65,19,14029680,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s3-wang03fs,3,8,Girl With A Pearl,2.15,3.99,340,14029682,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s4-wang03fs,3,8,Girl With A Pearl,2.69,3.99,66,14029684,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s5-wang03fs,3,8,Girl With A Pearl,4.00,5.50,364,14029686,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s6-wang03fs,3,8,Girl With A Pearl,4.00,5.50,54,14029687,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s7-wang03fs,3,2,Just Basil,12.58,28.03,46,14029689,Notification has been scheduled.
+fk-2026-11-03-wangaratta-r3-n-s8-wang03fs,3,2,Just Basil,15.72,28.03,11,14029691,Notification has been scheduled.
