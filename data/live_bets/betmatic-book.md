@@ -727,3 +727,10 @@ the metro $12 cap at full stakes, every horse capped at 10u (Habitual 11.78u -> 
 deductions. Wangaratta +35.33, Swan Hill +36.62, Bendigo -6.30, Warrnambool -17.72, Kilmore -7.14, Pakenham -15.64, Flemington
 -11.88, Mortlake +9.12, Wycheproof -1.91, Healesville no fills, Traralgon void, Mornington R1 Star Je Taime -4.66 (R3-R9 to run).
 Settled: 43 bets, 5 won, 123.93u, +15.82u (+12.8%). research/form_gbm/settle_week_20261101.py.
+
+## Tuesday 3 Nov replaced (founder, Sun 1 Nov: "Yep move it to $15, then send Tuesday")
+Cancelled every earlier Tuesday order (preopen and -fs ledgers, Echuca, Mildura, Wangaratta: all 200 OK) and sent the v2
+sheets, re-priced Sun afternoon on declared riders with every 1 Nov rule (rider fix, shade off, first-starter races on,
+EARLY cap $15), $50 a unit, Market Open, TAB: Echuca 66 orders on 33 horses, Mildura 53 on 24, Wangaratta 58 on 28, all
+scheduled (-v2-all-ledger.csv). Girl With A Pearl (Wangaratta R3, 8.37u) scratched; Airclash (Mildura R2) bounce-blocked.
+TAB balance $0.65 at the 3:45pm check.
