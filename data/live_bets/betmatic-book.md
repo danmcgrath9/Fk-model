@@ -714,3 +714,9 @@ opened Sat before the send, none clears the after-open rule now; Star Je Taime o
 Supersedes the half-stake list above. Filled at Form King's open: R2 Yauson $4.80 2.71u, R3 Star Of Macedon $6 1.87u, R8 Ranarsson
 $4 3.25u: 3 bets, 7.83u ($392 at $50). The seven at $13+ are gone (Katoto $13, Gin Twist, Autumn Mystery, Vegas Jack, Mr Natural
 $17, Juja Kibo $13, Enfjaar $21). Orders: 2026-11-03-flemington-s6-cap12-orders-all.csv. Deductions no longer shown on pages.
+
+## Sat 31 Oct under the 1 Nov rules (founder: "what we would of had yesterday"), paper, at Form King's open, no deductions
+Metro $12 cap and full stakes, first-starter races on. Flemington (Good 4 sheet): Icelady $3.50 3.30u 3rd, Hankee Alpha $6.50
+1.96u 10th, Persian Spirit $9.50 1.25u 8th, True Rebel $8 1.54u 5th, Sass Appeal $11 1.11u 4th, Bridal Waltz $5 2.72u 16th:
+-11.88u. Mortlake: Becauseyou're Mine $8 1.50u WON +10.50u, Semper Fortis $10 1.38u 3rd: +9.12u. Wycheproof: An Poitin Still
+$6.70 1.91u 2nd: -1.91u. Healesville: no fills. Traralgon abandoned (4 void). Day: 16.67u, -4.67u.
