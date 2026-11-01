@@ -1,0 +1,5 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-11-03-mildura-r3-n-s1-mild03fs,3,4,Message Bank,14.02,31.09,40,14029666,Notification has been scheduled.
+fk-2026-11-03-mildura-r3-n-s2-mild03fs,3,4,Message Bank,17.52,31.09,10,14029669,Notification has been scheduled.
+fk-2026-11-03-mildura-r3-n-s3-mild03fs,3,8,Sweet But Sassy,10.00,22.53,58,14029672,Notification has been scheduled.
+fk-2026-11-03-mildura-r3-n-s4-mild03fs,3,8,Sweet But Sassy,12.50,22.53,14,14029675,Notification has been scheduled.
