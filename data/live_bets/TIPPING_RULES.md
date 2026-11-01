@@ -144,3 +144,14 @@ At Flemington, 1200m or less (the straight six), no bet on a runner that usually
 Our forward bets there won 2 where 6.5 were expected (-72% at the open, 37 bets, out of fold, t_backmarkers.py).
 betmatic_orders.py stops if a Flemington v6 file has no race distance (shade_back.py now writes it). On 31 Oct the rule
 takes Bridal Waltz (R9, 1100m, 16th) off. A straight-course model input is under test (t_straight_feat.py).
+
+## Input audit (1 Nov 2026, founder: "Can we test all inputs and make sure they make sense?")
+t_input_audit.py compares every model input on the live day files with the training data. Everything lines up except four
+inputs that arrive EMPTY when a meeting is priced before declarations, and are read as zero:
+- jockey stats (15-28% of runners early, 1% in training) and the jockey's riding weight (19-31% v 7%): drop_scr.py gives
+  an undeclared rider the meeting's median jockey, riding weight included;
+- gear changes (none at all early, 24% of runners carry one in training): cannot be filled; known once declared;
+- barrier and speed map (20% missing on the first Flemington Tuesday export): gone on the re-export.
+Re-exported after declarations, every meeting matches training (Mornington, Flemington Tue, Echuca s7, Wangaratta s6: 2-6%).
+RULE: a meeting priced before riders are declared is re-priced once they are, and the orders are compared and replaced
+(founder's word) before the market opens where it has not; the 9:30am race-day re-price is always on declared fields.

@@ -32,7 +32,8 @@ for c in ("numRunners","field_size","runners","starters"):
 import re as _re
 jk = U["jockey"].astype(str); und = np.array([j.strip() == "" for j in jk])
 if und.any() and (~und).any():
-    jcols = [i for i, n in enumerate(cols) if _re.search(r"(jockey|^jt_|^j_|apprentice)", str(n), _re.I)]
+    # ridingWeight is the jockey's own weight, 0 when undeclared (input audit, 1 Nov 2026)
+    jcols = [i for i, n in enumerate(cols) if _re.search(r"(jockey|^jt_|^j_|apprentice|ridingweight)", str(n), _re.I)]
     for i in jcols: U["X"][und, i] = np.nanmedian(U["X"][~und, i])
     rn2 = U["race_number"][U["race_idx"]]
     print("undeclared riders given the meeting's median jockey:", int(und.sum()), "runners, races", sorted({int(r) for r in rn2[und]}))
