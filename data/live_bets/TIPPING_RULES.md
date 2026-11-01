@@ -32,7 +32,7 @@ Every meeting is now run and recorded as if the bets went through BetMatic at th
    Those fills are the BetMatic bets, logged in `data/live_bets/betmatic-book.md`.
 3. **After the races**: the same script with `--results` settles them (scratching deductions applied); the book carries
    each meeting's P/L beside the open book and the tips.
-4. The race-level first-starter rule needs the market, so it is checked once the market is up; a filled order in such a
+4. (Scrapped 1 Nov 2026, see below.) The race-level first-starter rule needed the market, so it is checked once the market is up; a filled order in such a
    race is marked, not deleted (taken is taken).
 Until BetMatic is live these are paper bets; what the founder actually takes stays in live-record.md.
 5. **9:30am top-up check (from 14 Oct 2026, paper):** on race day at 9:30am, after scratchings, refresh prices, re-price
@@ -50,6 +50,16 @@ are in. The old sheet forward test (forward-test.md) is retired.
 Order files now carry max_odds (3x our price, $8 for EARLY runners): a minimum-odds order alone also fills at an open
 far past our price, which the rules would not bet. Whether BetMatic can carry a maximum price is a question for them;
 the forward test reports the result both ways.
+
+## First starters: the race rule is scrapped (1 Nov 2026)
+Founder, 1 Nov 2026: "Yeah switch it, lets go". First starters themselves are never bet (betmatic_orders.py filters them),
+but a race holding one is bet like any other: no race is dropped from an order sheet for a first starter, at any price.
+The test (research/form_gbm/t_fs_half.py, v10 holdout from 3 Jun, at the open less 7%): bets on raced horses in races
+with first starters made +232u on 597u (+38.9%) against +53.8% in races without; skipping them (the 30 Oct rule) gave up
+314u against no rule. By count of first starters (1 / 2 / 3 / 4+: +19% / +60% / +18% / +58%) there is no pattern. At BSP
+those bets are -16% against -0.3%: the edge is in getting the open. Supersedes the 20 Oct "flag every first-starter race"
+check (BETMATIC_PLAN.md), the 26 Oct $6 race rule and the 30 Oct "skip first starters" rule. The weekly calibration check
+watches the group.
 
 ## Deductions: scrapped (1 Nov 2026)
 Founder, 1 Nov 2026: "Just completely scrap the deduction pay". From Sun 1 Nov no deductions are estimated, printed on a card

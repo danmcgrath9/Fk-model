@@ -11,8 +11,8 @@ formula misses without letting weak ones in) and a stake in up to eight price st
 price the market opens at: each step its own order carrying the extra stake the live stake rule (stake_rule.py)
 gives at the next step's price, with our chance at that open taken from the same blend.
 Filters: our price $1.60-$15, no first starters, no first-up/bounce blocks, EARLY-only runners only at $8 or shorter,
-and nothing at 3x our price or more. The race-level first-starter rule (no bets in a race where a first starter opens
-$6 or shorter) needs the market, so it cannot be in a pre-open order: check it when the market is up.
+and nothing at 3x our price or more. The race-level first-starter rule is SCRAPPED
+(1 Nov 2026, founder: "switch it, lets go"; t_fs_half.py): races holding first starters are bet like any other.
 
 AFTER THE OPEN (--after-open): only the bets that were value at the opening price on the sheet's exact blend
 (DAYPREFIX-GTAG-open-bets.csv, from open_book.py), with the sheet's take-at as the minimum and the same tiers. A horse
