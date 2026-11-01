@@ -1,4 +1,4 @@
-# Echuca Tue 3 Nov (going SOFT 7, founder 31 Oct after the forecast: 26.9mm Sat-Mon; official Dead 4; priced Sat 31 Oct pre-market)
+# Echuca Tue 3 Nov (going SOFT 7, founder), re-priced Sun 1 Nov with all 1 Nov rules; no odds yet
 1, Graham, 0, 0
 1, Mutsuhito, 0, 0
 1, Grunnettan, 0, 0
@@ -17,7 +17,6 @@
 2, Tempest Moon, 0, 0
 2, Black Rutile, 0, 0
 2, Devoted To You, 0, 0
-2, Phoenician, 0, 0
 3, See No City, 0, 0
 3, Bambu Babe, 0, 0
 3, Salarae, 0, 0
@@ -32,14 +31,12 @@
 3, Accolades, 0, 0
 3, Miss Verona, 0, 0
 3, Frewdamoss, 0, 0
-3, Boots Off, 0, 0
 3, Teddy's Trotter, SCR
 3, Inside Word, 0, 0
 3, Gangland, SCR
 4, Wayne's Dream, 0, 0
 4, Gravitational Girl, 0, 0
 4, Time Tells All, 0, 0
-4, He's Fierce, 0, 0
 4, Oriane, SCR
 4, Immortal Truth, 0, 0
 4, Inspiring, 0, 0
@@ -55,10 +52,8 @@
 4, Duchess Xenia, SCR
 4, Mighty Ruler, 0, 0
 5, Celestial Option, 0, 0
-5, Back Up Barbie, 0, 0
 5, Money Bags, SCR
 5, Some Chance, 0, 0
-5, Apple Eyes, 0, 0
 5, Orthotropic, 0, 0
 5, Beast Fighter, 0, 0
 5, Coil, 0, 0
@@ -78,7 +73,6 @@
 6, San Marco, 0, 0
 6, Here Comes Wozza, 0, 0
 6, Black Adam, 0, 0
-6, Lika Wreckin' Ball, 0, 0
 6, Bakersbend, SCR
 6, Reel Latino, 0, 0
 6, Flying Jude, 0, 0
@@ -98,13 +92,11 @@
 7, Blue Moon Summit, 0, 0
 7, Just Remember It, 0, 0
 7, Prandium Tempus, 0, 0
-7, She's Elusive, 0, 0
 7, Magnea, SCR
 7, Shelly's Legacy, 0, 0
 7, Bronco Revolution, 0, 0
 7, Miss Toronado, 0, 0
 7, Ottalaus, 0, 0
 7, Postwar, 0, 0
-7, Winter Hail, 0, 0
 7, Astari, 0, 0
 7, Tallingas Chief, 0, 0

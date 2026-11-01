@@ -1,0 +1,99 @@
+# Ballarat Mon 2 Nov (official going Slow 7, Form King; priced Fri 30 Oct pre-market on the accepted field)
+1, Whitebait, 0, 0
+1, Chilly Sav, 0, 0
+1, Noble Fox, 0, 0
+1, Franked Up, 0, 0
+1, Bella Athena, 0, 0
+1, Trigger Warning, 0, 0
+1, Star Je Taime, 0, 0
+1, Shape The World, 0, 0
+1, Miss Capri, 0, 0
+2, He's A Dandy, 0, 0
+2, Chandler, 0, 0
+2, She Got Me Again, 0, 0
+2, Locard, 0, 0
+2, Swiss Impact, 0, 0
+2, Smik Nicci, 0, 0
+2, Weeping Wonder, 0, 0
+2, Capital Storm, 0, 0
+3, Charming Chords, 0, 0
+3, Diamond Virtue, 0, 0
+3, Fire Type, 0, 0
+3, Gypsy Storm, 0, 0
+3, Overcast, 0, 0
+3, Perfect Dismount, 0, 0
+3, Front Page Edition, 0, 0
+3, Sabrina, 0, 0
+3, Prestige Valour, 0, 0
+3, Hells Gates, 0, 0
+3, Vellure, 0, 0
+3, Eleven Aye, 0, 0
+3, Bella Blaze, 0, 0
+3, Meritorious, 0, 0
+4, Marco Polo, 0, 0
+4, Mark's Magus, 0, 0
+4, Roll With It, 0, 0
+4, Tempered Edge, 0, 0
+4, Jack Will, 0, 0
+4, Pneuma, 0, 0
+4, Best Terms, 0, 0
+4, Belle Flamme, 0, 0
+4, Katiya, 0, 0
+4, Urban Creed, 0, 0
+4, Whiskey And War, 0, 0
+5, Into You, 0, 0
+5, Cliste, 0, 0
+5, Diamond Eye, 0, 0
+5, Lady Thinkabell, 0, 0
+5, Torn, 0, 0
+5, Celestial Splendor, 0, 0
+5, Iron Legacy, 0, 0
+5, Mr Margolin, 0, 0
+5, Savannah Chill, 0, 0
+5, Royal Emblem, 0, 0
+6, El Salto, 0, 0
+6, Divine Vicky, 0, 0
+6, Brummagen, 0, 0
+6, Elena Montero, 0, 0
+6, Mystic Reign, 0, 0
+6, Nordic Strike, 0, 0
+6, Skjaldmo, 0, 0
+6, Kooralbyn, 0, 0
+6, Wintery, 0, 0
+6, Gunz, 0, 0
+6, Daynes Dahwun, 0, 0
+7, Hola Amigos, SCR
+7, Zane Zena, 0, 0
+7, Sugar Schnapps, 0, 0
+7, Thinking Sensation, 0, 0
+7, Il Cielo, 0, 0
+7, Bee Admired, 0, 0
+7, Mykindakandy, 0, 0
+7, Outer Banks, 0, 0
+7, Azzacool, 0, 0
+7, Dirty Diana, 0, 0
+7, Blaze Away, SCR
+7, Layla, 0, 0
+7, Catwalk Icon, 0, 0
+7, Le Notre, SCR
+7, Chapados, SCR
+7, Home Tomurra, 0, 0
+7, Sayalero, 0, 0
+8, Lygon Street Luigi, 0, 0
+8, Swycho, 0, 0
+8, Lika Wreckin' Ball, SCR
+8, Belcony, 0, 0
+8, Bit Of Shoosh, 0, 0
+8, Antalian, 0, 0
+8, M'lady Rose, 0, 0
+8, Blue Valentine, 0, 0
+8, Black Aces, 0, 0
+8, Farside, SCR
+8, Cool Savanna, SCR
+8, Till Queen, 0, 0
+8, Jenni Poppins, 0, 0
+8, Discover Lupino, 0, 0
+8, Russian Duchess, 0, 0
+8, Sabeeria, SCR
+8, Vim Vitae, 0, 0
+8, Harry Lime, 0, 0

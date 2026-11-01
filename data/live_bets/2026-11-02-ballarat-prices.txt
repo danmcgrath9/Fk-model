@@ -1,99 +1,92 @@
-# Ballarat Mon 2 Nov (official going Slow 7, Form King; priced Fri 30 Oct pre-market on the accepted field)
-1, Whitebait, 0, 0
-1, Chilly Sav, 0, 0
-1, Noble Fox, 0, 0
-1, Franked Up, 0, 0
-1, Bella Athena, 0, 0
-1, Trigger Warning, 0, 0
-1, Star Je Taime, 0, 0
-1, Shape The World, 0, 0
-1, Miss Capri, 0, 0
-2, He's A Dandy, 0, 0
-2, Chandler, 0, 0
-2, She Got Me Again, 0, 0
-2, Locard, 0, 0
-2, Swiss Impact, 0, 0
-2, Smik Nicci, 0, 0
-2, Weeping Wonder, 0, 0
-2, Capital Storm, 0, 0
-3, Charming Chords, 0, 0
-3, Diamond Virtue, 0, 0
-3, Fire Type, 0, 0
-3, Gypsy Storm, 0, 0
-3, Overcast, 0, 0
-3, Perfect Dismount, 0, 0
-3, Front Page Edition, 0, 0
-3, Sabrina, 0, 0
-3, Prestige Valour, 0, 0
-3, Hells Gates, 0, 0
-3, Vellure, 0, 0
-3, Eleven Aye, 0, 0
-3, Bella Blaze, 0, 0
-3, Meritorious, 0, 0
-4, Marco Polo, 0, 0
-4, Mark's Magus, 0, 0
-4, Roll With It, 0, 0
-4, Tempered Edge, 0, 0
-4, Jack Will, 0, 0
-4, Pneuma, 0, 0
-4, Best Terms, 0, 0
-4, Belle Flamme, 0, 0
-4, Katiya, 0, 0
-4, Urban Creed, 0, 0
-4, Whiskey And War, 0, 0
-5, Into You, 0, 0
-5, Cliste, 0, 0
-5, Diamond Eye, 0, 0
-5, Lady Thinkabell, 0, 0
-5, Torn, 0, 0
-5, Celestial Splendor, 0, 0
-5, Iron Legacy, 0, 0
-5, Mr Margolin, 0, 0
-5, Savannah Chill, 0, 0
-5, Royal Emblem, 0, 0
-6, El Salto, 0, 0
-6, Divine Vicky, 0, 0
-6, Brummagen, 0, 0
-6, Elena Montero, 0, 0
-6, Mystic Reign, 0, 0
-6, Nordic Strike, 0, 0
-6, Skjaldmo, 0, 0
-6, Kooralbyn, 0, 0
-6, Wintery, 0, 0
-6, Gunz, 0, 0
-6, Daynes Dahwun, 0, 0
-7, Hola Amigos, SCR
-7, Zane Zena, 0, 0
-7, Sugar Schnapps, 0, 0
-7, Thinking Sensation, 0, 0
-7, Il Cielo, 0, 0
-7, Bee Admired, 0, 0
-7, Mykindakandy, 0, 0
-7, Outer Banks, 0, 0
-7, Azzacool, 0, 0
-7, Dirty Diana, 0, 0
-7, Blaze Away, SCR
-7, Layla, 0, 0
-7, Catwalk Icon, 0, 0
-7, Le Notre, SCR
-7, Chapados, SCR
-7, Home Tomurra, 0, 0
-7, Sayalero, 0, 0
-8, Lygon Street Luigi, 0, 0
-8, Swycho, 0, 0
-8, Lika Wreckin' Ball, SCR
-8, Belcony, 0, 0
-8, Bit Of Shoosh, 0, 0
-8, Antalian, 0, 0
-8, M'lady Rose, 0, 0
-8, Blue Valentine, 0, 0
-8, Black Aces, 0, 0
-8, Farside, SCR
-8, Cool Savanna, SCR
-8, Till Queen, 0, 0
-8, Jenni Poppins, 0, 0
-8, Discover Lupino, 0, 0
-8, Russian Duchess, 0, 0
-8, Sabeeria, SCR
-8, Vim Vitae, 0, 0
-8, Harry Lime, 0, 0
+# Ballarat Mon 2 Nov (going SOFT 7, founder), re-priced Sun 1 Nov 3:40pm with all 1 Nov rules; prices 3:25pm Sun
+1, Whitebait, 12.00, 12.00, fk_open 11.00
+1, Chilly Sav, 151.00, 151.00, fk_open 101.00
+1, Noble Fox, 21.00, 21.00, fk_open 15.00
+1, Franked Up, 3.20, 3.20, fk_open 3.00
+1, Bella Athena, 7.00, 7.00, fk_open 6.00
+1, Trigger Warning, 19.00, 19.00, fk_open 15.00
+1, Star Je Taime, 2.45, 2.45, fk_open 3.00
+1, Shape The World, 151.00, 151.00, fk_open 101.00
+1, Miss Capri, 4.80, 4.80, fk_open 4.40
+2, He's A Dandy, 21.00, 21.00, fk_open 26.00
+2, Chandler, 1.55, 1.55, fk_open 1.60
+2, She Got Me Again, 15.00, 15.00, fk_open 26.00
+2, Locard, 26.00, 26.00, fk_open 19.00
+2, Swiss Impact, 4.80, 4.80, fk_open 8.00
+2, Smik Nicci, 51.00, 51.00, fk_open 51.00
+2, Weeping Wonder, 4.20, 4.20, fk_open 4.00
+3, Charming Chords, 51.00, 51.00, fk_open 26.00
+3, Diamond Virtue, 21.00, 21.00, fk_open 11.00
+3, Fire Type, 31.00, 31.00, fk_open 15.00
+3, Overcast, 6.50, 6.50, fk_open 8.00
+3, Perfect Dismount, 9.50, 9.50, fk_open 6.00
+3, Front Page Edition, 21.00, 21.00, fk_open 11.00
+3, Sabrina, 11.00, 11.00, fk_open 26.00
+3, Prestige Valour, 51.00, 51.00, fk_open 26.00
+3, Hells Gates, 5.00, 5.00, fk_open 6.00
+3, Vellure, 23.00, 23.00, fk_open 15.00
+3, Eleven Aye, 5.50, 5.50, fk_open 8.00
+3, Bella Blaze, 4.40, 4.40, fk_open 6.00
+3, Meritorious, 11.00, 11.00, fk_open 8.00
+4, Marco Polo, 6.50, 6.50, fk_open 26.00
+4, Mark's Magus, 101.00, 101.00, fk_open 101.00
+4, Roll With It, 51.00, 51.00, fk_open 26.00
+4, Tempered Edge, 13.00, 13.00, fk_open 8.00
+4, Pneuma, 7.50, 7.50, fk_open 4.60
+4, Best Terms, 2.50, 2.50, fk_open 2.50
+4, Belle Flamme, 7.00, 7.00, fk_open 8.00
+4, Katiya, 151.00, 151.00, fk_open 101.00
+4, Urban Creed, 7.50, 7.50, fk_open 6.00
+4, Whiskey And War, 5.50, 5.50, fk_open 15.00
+5, Into You, 14.00, 14.00, fk_open 26.00
+5, Cliste, 34.00, 34.00, fk_open 26.00
+5, Diamond Eye, 5.00, 5.00, fk_open 4.40
+5, Lady Thinkabell, 6.50, 6.50, fk_open 8.00
+5, Torn, 10.00, 10.00, fk_open 11.00
+5, Celestial Splendor, 3.80, 3.80, fk_open 4.40
+5, Iron Legacy, 11.00, 11.00, fk_open 6.00
+5, Savannah Chill, 4.80, 4.80, fk_open 4.40
+5, Royal Emblem, 7.50, 7.50, fk_open 8.00
+6, El Salto, 71.00, 71.00, fk_open 51.00
+6, Divine Vicky, 18.00, 18.00, fk_open 15.50
+6, Brummagen, 51.00, 51.00, fk_open 26.00
+6, Elena Montero, 19.00, 19.00, fk_open 11.50
+6, Mystic Reign, 8.00, 8.00, fk_open 6.00
+6, Nordic Strike, 7.50, 7.50, fk_open 4.50
+6, Skjaldmo, 5.00, 5.00, fk_open 4.50
+6, Kooralbyn, 16.00, 16.00, fk_open 15.50
+6, Wintery, 3.10, 3.10, fk_open 7.00
+6, Gunz, 5.00, 5.00, fk_open 4.50
+6, Daynes Dahwun, 18.00, 18.00, fk_open 15.50
+7, Hola Amigos, SCR, fk_open 51.00
+7, Zane Zena, 21.00, 21.00, fk_open 15.00
+7, Sugar Schnapps, 9.50, 9.50, fk_open 8.00
+7, Thinking Sensation, 21.00, 21.00, fk_open 15.00
+7, Il Cielo, 41.00, 41.00, fk_open 26.00
+7, Mykindakandy, 10.00, 10.00, fk_open 11.00
+7, Outer Banks, 20.00, 20.00, fk_open 15.00
+7, Azzacool, 7.00, 7.00, fk_open 15.00
+7, Dirty Diana, 10.00, 10.00, fk_open 8.00
+7, Layla, 4.20, 4.20, fk_open 3.50
+7, Catwalk Icon, 5.00, 5.00, fk_open 4.60
+7, Le Notre, SCR, fk_open 51.00
+7, Chapados, SCR, fk_open 26.00
+7, Home Tomurra, 14.00, 14.00, fk_open 26.00
+7, Sayalero, 16.00, 16.00, fk_open 11.00
+8, Lygon Street Luigi, 12.00, 12.00, fk_open 15.00
+8, Swycho, 51.00, 51.00, fk_open 26.00
+8, Lika Wreckin' Ball, SCR, fk_open 26.00
+8, Belcony, 4.20, 4.20, fk_open 6.00
+8, Bit Of Shoosh, 14.00, 14.00, fk_open 8.00
+8, Antalian, 12.00, 12.00, fk_open 11.00
+8, M'lady Rose, 7.50, 7.50, fk_open 8.00
+8, Blue Valentine, 12.00, 12.00, fk_open 15.00
+8, Black Aces, 18.00, 18.00, fk_open 15.00
+8, Farside, SCR, fk_open 51.00
+8, Cool Savanna, SCR, fk_open 15.00
+8, Till Queen, 10.00, 10.00, fk_open 8.00
+8, Jenni Poppins, 18.00, 18.00, fk_open 11.00
+8, Discover Lupino, 21.00, 21.00, fk_open 15.00
+8, Russian Duchess, 9.00, 9.00, fk_open 8.00
+8, Sabeeria, SCR, fk_open 15.00
+8, Vim Vitae, 6.00, 6.00, fk_open 8.00

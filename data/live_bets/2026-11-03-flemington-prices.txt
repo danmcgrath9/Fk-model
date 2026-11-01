@@ -1,7 +1,7 @@
-# Flemington Tue 3 Nov, Cup Day (going SOFT 6, founder 1 Nov; S5-S6 price the same), prices 11:04am Sun
+# Flemington Tue 3 Nov, Cup Day (going SOFT 6, founder), re-priced Sun 1 Nov 4:20pm with all 1 Nov rules; prices 3:28pm Sun
 1, Royal Press, 3.30, 3.30, fk_open 3.00
 1, Amsterdam, 4.00, 4.00, fk_open 9.00
-1, Jetsetter, 17.00, 17.00, fk_open 11.00
+1, Jetsetter, 16.00, 16.00, fk_open 11.00
 1, Funded, 5.50, 5.50, fk_open 7.50
 1, Amelia's Affair, 6.50, 6.50, fk_open 6.00
 1, Speedboatconfesion, 16.00, 16.00, fk_open 11.00
@@ -12,7 +12,7 @@
 2, Shaiyhar, 151.00, 151.00, fk_open 101.00
 2, Charisse, 51.00, 51.00, fk_open 34.00
 2, Foujita San, 19.00, 19.00, fk_open 17.00
-2, Unseen Ruler, 81.00, 81.00, fk_open 51.00
+2, Unseen Ruler, 71.00, 71.00, fk_open 51.00
 2, Flying Valley, 21.00, 21.00, fk_open 15.00
 2, Federer, 18.00, 18.00, fk_open 11.00
 2, Pariah Pearl, SCR, fk_open 26.00
@@ -21,40 +21,39 @@
 2, Politely Dun, 11.00, 11.00, fk_open 7.50
 2, Military Academy, 27.00, 27.00, fk_open 15.00
 2, Dubai Watch, 35.00, 35.00, fk_open 26.00
-2, Terrortorian, 17.00, 17.00, fk_open 17.00
+2, Terrortorian, 18.00, 18.00, fk_open 17.00
 2, Interjection, 71.00, 71.00, fk_open 51.00
 2, Johnich, 14.00, 14.00, fk_open 7.50
 2, Ichnusa, 10.00, 10.00, fk_open 11.00
 2, Lunar Force, SCR, fk_open 26.00
 2, Caelius, 34.00, 34.00, fk_open 34.00
 2, Chispa, 7.00, 7.00, fk_open 7.50
-2, Yauson, 3.00, 3.00, fk_open 4.80
+2, Yauson, 2.90, 2.90, fk_open 4.80
 2, Dad And Dave, 35.00, 35.00, fk_open 51.00
-3, Billycart, 14.00, 14.00, fk_open 15.00
-3, True Tone, SCR
-3, Gilgeous, 19.00, 19.00, fk_open 11.00
-3, Cab Franc, 19.00, 19.00, fk_open 26.00
-3, Fringilla, 6.25, 6.25, fk_open 4.60
-3, Waiheke Rose, 4.40, 4.40, fk_open 7.50
-3, Star Je Taime, 67.00, 67.00, fk_open 51.00
-3, Mister Whiskers, 7.00, 7.00, fk_open 4.60
-3, Katoto, 6.50, 6.50, fk_open 13.00
+3, Billycart, 16.00, 16.00, fk_open 15.00
+3, Gilgeous, 23.00, 23.00, fk_open 11.00
+3, Cab Franc, 21.00, 21.00, fk_open 26.00
+3, Fringilla, 5.50, 5.50, fk_open 4.60
+3, Waiheke Rose, 4.60, 4.60, fk_open 7.50
+3, Star Je Taime, 81.00, 81.00, fk_open 51.00
+3, Mister Whiskers, 8.50, 8.50, fk_open 4.60
+3, Katoto, 5.50, 5.50, fk_open 13.00
 3, Star Of Macedon, 3.80, 3.80, fk_open 6.00
-3, Tanabata, 21.00, 21.00, fk_open 17.00
-4, Southern Sway, 67.00, 67.00, fk_open 34.00
-4, Parcae, 10.00, 10.00, fk_open 11.00
-4, Gas Station Rose, 41.00, 41.00, fk_open 26.00
+3, Tanabata, 23.00, 23.00, fk_open 17.00
+4, Southern Sway, 71.00, 71.00, fk_open 34.00
+4, Parcae, 11.00, 11.00, fk_open 11.00
+4, Gas Station Rose, 34.00, 34.00, fk_open 26.00
 4, Sanctuary, 12.00, 12.00, fk_open 13.00
 4, Semantics, 8.50, 8.50, fk_open 11.00
 4, Fovea, 5.75, 5.75, fk_open 9.00
-4, Big Wigs, 20.00, 20.00, fk_open 11.00
+4, Big Wigs, 21.00, 21.00, fk_open 11.00
 4, The Speed Machine, 11.00, 11.00, fk_open 4.60
-4, Splendacious, 23.00, 23.00, fk_open 15.00
-4, Gin Twist, 17.00, 17.00, fk_open 17.00
-4, Ole Go, 5.50, 5.50, fk_open 7.50
-4, Jadzia, 15.00, 15.00, fk_open 15.00
+4, Splendacious, 26.00, 26.00, fk_open 15.00
+4, Gin Twist, 12.00, 12.00, fk_open 17.00
+4, Ole Go, 6.00, 6.00, fk_open 7.50
+4, Jadzia, 16.00, 16.00, fk_open 15.00
 4, Aston, 41.00, 41.00, fk_open 17.00
-4, Strike Package, 27.00, 27.00, fk_open 17.00
+4, Strike Package, 31.00, 31.00, fk_open 17.00
 4, Peyton, 8.00, 8.00, fk_open 13.00
 5, Wuddzz, SCR, fk_open 51.00
 5, Taramansour, 71.00, 71.00, fk_open 51.00
@@ -78,89 +77,86 @@
 5, Autumnheat, 9.00, 9.00, fk_open 6.00
 5, After Summer, 12.00, 12.00, fk_open 17.00
 5, Autumn Mystery, 12.00, 12.00, fk_open 17.00
-6, St Lawrence, 5.50, 5.50, fk_open 6.00
-6, Magnaspin, 26.00, 26.00, fk_open 26.00
-6, New York Hurricane, 61.00, 61.00, fk_open 51.00
-6, Tavi Time, 10.00, 10.00, fk_open 7.50
-6, Al Duca, 9.00, 9.00, fk_open 7.50
+6, St Lawrence, 6.00, 6.00, fk_open 6.00
+6, Magnaspin, 34.00, 34.00, fk_open 26.00
+6, New York Hurricane, 81.00, 81.00, fk_open 51.00
+6, Tavi Time, 11.00, 11.00, fk_open 7.50
+6, Al Duca, 9.50, 9.50, fk_open 7.50
 6, Ambassadorial, 27.00, 27.00, fk_open 17.00
-6, Wymark, 14.00, 14.00, fk_open 9.00
-6, Immediacy, 26.00, 26.00, fk_open 34.00
-6, Relentless Voyager, 31.00, 31.00, fk_open 26.00
-6, Sabaj, 3.20, 3.20, fk_open 4.00
-6, Darkbonee, 5.50, 5.50, fk_open 4.60
-6, Augustus, 31.00, 31.00, fk_open 26.00
+6, Wymark, 16.00, 16.00, fk_open 9.00
+6, Immediacy, 31.00, 31.00, fk_open 34.00
+6, Relentless Voyager, 34.00, 34.00, fk_open 26.00
+6, Sabaj, 2.60, 2.60, fk_open 4.00
+6, Darkbonee, 6.00, 6.00, fk_open 4.60
+6, Augustus, 29.00, 29.00, fk_open 26.00
 6, Real Class, 151.00, 151.00, fk_open 101.00
-6, Different Gravy, 31.00, 31.00, fk_open 51.00
+6, Different Gravy, 26.00, 26.00, fk_open 51.00
 7, Onesmoothoperator, 101.00, 101.00, fk_open 101.00
 7, Vauban, 71.00, 71.00, fk_open 51.00
 7, Future History, 81.00, 81.00, fk_open 51.00
-7, Asterix, 91.00, 91.00, fk_open 101.00
-7, Knight's Choice, 41.00, 41.00, fk_open 34.00
-7, Goodie Two Shoes, 31.00, 31.00, fk_open 26.00
-7, Trustyourinstinct, 8.50, 8.50, fk_open 7.00
+7, Asterix, 81.00, 81.00, fk_open 101.00
+7, Knight's Choice, 51.00, 51.00, fk_open 34.00
+7, Goodie Two Shoes, 26.00, 26.00, fk_open 26.00
+7, Trustyourinstinct, 9.00, 9.00, fk_open 7.00
 7, Zakouma, 31.00, 31.00, fk_open 34.00
 7, Enfjaar, 23.00, 23.00, fk_open 21.00
-7, Middle Earth, 14.00, 14.00, fk_open 15.00
-7, Juja Kibo, 11.00, 11.00, fk_open 13.00
-7, Royal Supremacy, 61.00, 61.00, fk_open 51.00
+7, Middle Earth, 15.00, 15.00, fk_open 15.00
+7, Juja Kibo, 12.00, 12.00, fk_open 13.00
+7, Royal Supremacy, 71.00, 71.00, fk_open 51.00
 7, Soul Of Spain, 41.00, 41.00, fk_open 51.00
-7, Shockletz, 12.00, 12.00, fk_open 11.00
-7, So You Are, 17.00, 17.00, fk_open 21.00
+7, Shockletz, 11.00, 11.00, fk_open 11.00
+7, So You Are, 14.00, 14.00, fk_open 21.00
 7, Sons And Lovers, 23.00, 23.00, fk_open 21.00
-7, Mr Monaco, 26.00, 26.00, fk_open 26.00
+7, Mr Monaco, 23.00, 23.00, fk_open 26.00
 7, Strictly Business, 101.00, 101.00, fk_open 101.00
-7, Kizlyar, 51.00, 51.00, fk_open 34.00
-7, Hopewell Rock, 11.00, 11.00, fk_open 9.00
+7, Kizlyar, 41.00, 41.00, fk_open 34.00
+7, Hopewell Rock, 13.00, 13.00, fk_open 9.00
 7, Zahrann, 29.00, 29.00, fk_open 26.00
-7, Wine Dark Sea, 61.00, 61.00, fk_open 51.00
+7, Wine Dark Sea, 71.00, 71.00, fk_open 51.00
 7, Point Of Law, 7.00, 7.00, fk_open 6.00
-7, James J Braddock, 17.00, 17.00, fk_open 11.00
-8, Tolaga Bay, 26.00, 26.00, fk_open 15.00
+7, James J Braddock, 19.00, 19.00, fk_open 11.00
+8, Tolaga Bay, 27.00, 27.00, fk_open 15.00
 8, Milsons Point, 23.00, 23.00, fk_open 13.00
 8, Boy From Zadar, 151.00, 151.00, fk_open 101.00
-8, The Thorncaster, 34.00, 34.00, fk_open 26.00
-8, Beautiful You, 23.00, 23.00, fk_open 17.00
-8, Shooting Brake, 20.00, 20.00, fk_open 13.00
-8, Barracks, 8.00, 8.00, fk_open 7.50
-8, Ranarsson, 2.35, 2.35, fk_open 4.00
+8, The Thorncaster, 35.00, 35.00, fk_open 26.00
+8, Beautiful You, 26.00, 26.00, fk_open 17.00
+8, Shooting Brake, 21.00, 21.00, fk_open 13.00
+8, Barracks, 8.50, 8.50, fk_open 7.50
+8, Ranarsson, 2.40, 2.40, fk_open 4.00
 8, Mr Natural, 6.00, 6.00, fk_open 17.00
-8, High Falls, SCR
 8, Our Emperor, 14.00, 14.00, fk_open 13.00
-8, Harry Lime, 16.00, 16.00, fk_open 13.00
-8, Autumn Lover, 21.00, 21.00, fk_open 26.00
-8, Obambulate, 71.00, 71.00, fk_open 51.00
-8, Merry Chase, 16.00, 16.00, fk_open 15.00
+8, Harry Lime, 12.00, 12.00, fk_open 13.00
+8, Autumn Lover, 23.00, 23.00, fk_open 26.00
+8, Obambulate, 81.00, 81.00, fk_open 51.00
+8, Merry Chase, 17.00, 17.00, fk_open 15.00
 9, Oh Too Good, 34.00, 34.00, fk_open 26.00
 9, So You Pence, 5.50, 5.50, fk_open 6.00
-9, Bon Mistress, 126.00, 126.00, fk_open 101.00
-9, Stylish, 14.00, 14.00, fk_open 11.00
+9, Bon Mistress, 101.00, 101.00, fk_open 101.00
+9, Stylish, 15.00, 15.00, fk_open 11.00
 9, Betwitchery, 71.00, 71.00, fk_open 51.00
-9, Butternut Princess, 15.00, 15.00, fk_open 26.00
-9, Dance To The Boom, 9.00, 9.00, fk_open 9.00
-9, Stealth Of Night, 21.00, 21.00, fk_open 26.00
+9, Butternut Princess, 13.00, 13.00, fk_open 26.00
+9, Dance To The Boom, 9.50, 9.50, fk_open 9.00
+9, Stealth Of Night, 19.00, 19.00, fk_open 26.00
 9, Gold Medallist, 10.00, 10.00, fk_open 11.00
-9, Shadhavar, 3.60, 3.60, fk_open 2.70
+9, Shadhavar, 3.70, 3.70, fk_open 2.70
 9, Terilee, 7.00, 7.00, fk_open 7.50
-9, Cooly, 81.00, 81.00, fk_open 101.00
-9, Milos Filos, 51.00, 51.00, fk_open 51.00
-9, You Sexy Thing, SCR
+9, Cooly, SCR, fk_open 101.00
+9, Milos Filos, 41.00, 41.00, fk_open 51.00
 9, Karren, SCR, fk_open 17.00
-9, Ruska Roma, 41.00, 41.00, fk_open 51.00
+9, Ruska Roma, 31.00, 31.00, fk_open 51.00
 9, Miss Freelove, 18.00, 18.00, fk_open 17.00
 9, Tomato Toastie, 26.00, 26.00, fk_open 26.00
 10, He'll Rip, 21.00, 21.00, fk_open 15.50
 10, Keep Your Cool, 20.00, 20.00, fk_open 13.50
-10, No Fuss, 19.00, 19.00, fk_open 17.50
+10, No Fuss, 20.00, 20.00, fk_open 17.50
 10, Quiseen, 41.00, 41.00, fk_open 34.00
 10, Porter, 11.00, 11.00, fk_open 7.75
-10, Everain, 7.50, 7.50, fk_open 13.00
-10, Man Of Worth, SCR
+10, Everain, 8.00, 8.00, fk_open 13.00
 10, Cash, 26.00, 26.00, fk_open 17.50
 10, Ferivia, 41.00, 41.00, fk_open 34.00
 10, Jett Smash, 8.50, 8.50, fk_open 7.75
 10, Fundamental Nature, 10.00, 10.00, fk_open 13.50
 10, Surf's Up, 8.00, 8.00, fk_open 8.50
 10, Buccleuch, 4.40, 4.40, fk_open 4.50
-10, Itazura, 29.00, 29.00, fk_open 24.50
+10, Itazura, 21.00, 21.00, fk_open 24.50
 10, Space Rider, 10.00, 10.00, fk_open 10.00

@@ -1,4 +1,4 @@
-# Mildura Tue 3 Nov (going GOOD 4, founder 30 Oct; official Dead 5; priced Fri 30 Oct pre-market)
+# Mildura Tue 3 Nov (Good 4), re-priced Sun 1 Nov with all 1 Nov rules; no odds yet
 1, Fabulous One, 0, 0
 1, Titus Augustus, 0, 0
 1, Pipoli Diva, 0, 0
@@ -47,7 +47,6 @@
 6, Bannerton, 0, 0
 6, Baby Rider, SCR
 6, Winds Of March, 0, 0
-6, Papal Wars, 0, 0
 6, Detoron, 0, 0
 6, Circa, 0, 0
 6, Pendante, SCR

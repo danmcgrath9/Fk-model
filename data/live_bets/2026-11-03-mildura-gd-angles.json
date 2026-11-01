@@ -8,9 +8,7 @@
 "1|Titus Augustus": [
 "Declining deep in prep"
 ],
-"1|Gamadale Possum": [
-"Above the field in all three sections"
-],
+"1|Gamadale Possum": [],
 "1|Fabulous One": [],
 "1|Don't Say Do": [
 "Class drop (rating)"
@@ -19,18 +17,22 @@
 "2|Melodee Rose": [
 "Well backed before a bad last run"
 ],
-"2|Capitalex": [],
+"2|Capitalex": [
+"Blinkers first time"
+],
 "2|Alvin": [],
 "2|Dougie's Dream": [
-"Third-up, improving"
+"Class drop (rating)"
 ],
-"2|Airclash": [],
+"2|Airclash": [
+"Already run to today's class",
+"New career-best last start",
+"Class drop (rating)"
+],
 "2|Foxiet": [
 "Already run to today's class"
 ],
-"2|Charming Di": [
-"Class drop (rating)"
-],
+"2|Charming Di": [],
 "3|Highlight Reel": [
 "Beaten by the pace last start",
 "New career-best last start",
@@ -44,7 +46,9 @@
 "Class drop (rating)"
 ],
 "3|Gus The Shark": [],
-"3|Saraya": [],
+"3|Saraya": [
+"Declining deep in prep"
+],
 "3|Ole Dansker": [],
 "3|Wombat": [],
 "3|Regal Time": [
@@ -68,9 +72,7 @@
 "4|Owl Witness": [
 "Class drop (rating)"
 ],
-"5|Blackhill Boy": [
-"Already run to today's class"
-],
+"5|Blackhill Boy": [],
 "5|Lysander": [
 "Class drop (rating)"
 ],
@@ -80,7 +82,6 @@
 "Above the field in all three sections"
 ],
 "5|Solar Mist": [
-"Already run to today's class",
 "Class drop (rating)"
 ],
 "5|Yongtai": [
@@ -100,9 +101,6 @@
 "6|Kamarooka": [],
 "6|Circa": [
 "Declining deep in prep",
-"Class drop (rating)"
-],
-"6|Papal Wars": [
 "Class drop (rating)"
 ],
 "6|Winds Of March": []

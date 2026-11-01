@@ -35,8 +35,9 @@
 ],
 "2|Call Me Francis": [],
 "2|Black Rutile": [],
-"2|Phoenician": [],
-"2|Benbulben": [],
+"2|Benbulben": [
+"Beaten by the pace last start"
+],
 "2|Devoted To You": [],
 "2|Larryoctane": [],
 "3|Iron Stupa": [
@@ -64,10 +65,7 @@
 "3|Accolades": [],
 "3|The Old Man": [],
 "3|See No City": [],
-"3|Boots Off": [],
-"3|Peace Seeker": [
-"Declining deep in prep"
-],
+"3|Peace Seeker": [],
 "4|Wayne's Dream": [],
 "4|Mighty Ruler": [],
 "4|Time Tells All": [
@@ -95,6 +93,7 @@
 "5|Coil": [],
 "5|Tallingas Petey": [],
 "5|Storming Camelot": [
+"Already run to today's class",
 "Proven wet on a wet track"
 ],
 "5|Beast Fighter": [
@@ -103,9 +102,6 @@
 ],
 "5|Amelloides": [],
 "5|Celestial Option": [],
-"5|Back Up Barbie": [
-"Above the field in all three sections"
-],
 "5|Some Chance": [
 "Already run to today's class",
 "Class drop (rating)"
@@ -119,9 +115,8 @@
 ],
 "5|Edge Of Wonder": [],
 "5|Our Brud": [
-"Blinkers first time"
+"Class drop (rating)"
 ],
-"5|Apple Eyes": [],
 "5|Crimson Flame": [
 "Blinkers first time"
 ],
@@ -165,6 +160,7 @@
 "7|Miss Toronado": [
 "Already run to today's class",
 "New career-best last start",
+"Class drop (rating)",
 "Above the field in all three sections"
 ],
 "7|Tallingas Chief": [
@@ -177,7 +173,5 @@
 "Class drop (rating)"
 ],
 "7|Prandium Tempus": [],
-"7|Winter Hail": [],
-"7|Lady Maestro": [],
-"7|She's Elusive": []
+"7|Lady Maestro": []
 }
