@@ -1,0 +1,20 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-11-03-echuca-r3-n-s1-echa03fs,3,13,Frewdamoss,17.58,38.56,32,14029665,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s2-echa03fs,3,13,Frewdamoss,21.97,38.56,8,14029668,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s3-echa03fs,3,14,Miss Verona,7.77,17.74,76,14029671,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s4-echa03fs,3,14,Miss Verona,9.71,17.74,18,14029674,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s5-echa03fs,3,10,Ninetyfiveinafifty,7.89,8.00,42,14029677,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s6-echa03fs,3,11,Peace Seeker,19.60,42.74,28,14029679,Notification has been scheduled.
+fk-2026-11-03-echuca-r3-n-s7-echa03fs,3,11,Peace Seeker,24.50,42.74,7,14029681,Notification has been scheduled.
+fk-2026-11-03-echuca-r4-n-s1-echa03fs,4,9,Hegely,16.11,35.48,35,14029683,Notification has been scheduled.
+fk-2026-11-03-echuca-r4-n-s2-echa03fs,4,9,Hegely,20.14,35.48,8,14029685,Notification has been scheduled.
+fk-2026-11-03-echuca-r4-n-s3-echa03fs,4,10,Immortal Truth,15.11,33.37,38,14029688,Notification has been scheduled.
+fk-2026-11-03-echuca-r4-n-s4-echa03fs,4,10,Immortal Truth,18.89,33.37,9,14029690,Notification has been scheduled.
+fk-2026-11-03-echuca-r4-n-s5-echa03fs,4,4,Inspiring,10.36,23.32,56,14029692,Notification has been scheduled.
+fk-2026-11-03-echuca-r4-n-s6-echa03fs,4,4,Inspiring,12.95,23.32,13,14029693,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s1-echa03fs,5,11,Back Up Barbie,8.97,20.33,66,14029694,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s2-echa03fs,5,11,Back Up Barbie,11.21,20.33,16,14029695,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s3-echa03fs,5,1,Beast Fighter,8.02,18.28,74,14029696,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s4-echa03fs,5,1,Beast Fighter,10.02,18.28,17,14029697,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s5-echa03fs,5,2,Celestial Option,11.84,26.46,48,14029698,Notification has been scheduled.
+fk-2026-11-03-echuca-r5-n-s6-echa03fs,5,2,Celestial Option,14.80,26.46,12,14029699,Notification has been scheduled.
