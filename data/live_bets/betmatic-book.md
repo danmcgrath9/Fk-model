@@ -734,3 +734,9 @@ sheets, re-priced Sun afternoon on declared riders with every 1 Nov rule (rider 
 EARLY cap $15), $50 a unit, Market Open, TAB: Echuca 66 orders on 33 horses, Mildura 53 on 24, Wangaratta 58 on 28, all
 scheduled (-v2-all-ledger.csv). Girl With A Pearl (Wangaratta R3, 8.37u) scratched; Airclash (Mildura R2) bounce-blocked.
 TAB balance $0.65 at the 3:45pm check.
+
+## Ballarat Mon 2 Nov cards (founder, Sun 1 Nov evening)
+Mercer card at the 3:25pm Sunday prices, Marco Polo (R4, rated $10.69, opened $26, $6.50 Sunday) shown at BSP (founder: "Do
+Marco Polo BSP for Mercer"): settle him on Twitter at Betfair SP. The rest at the prices on the card: Best Terms $2.50, Into
+You $14, Wintery $3.10, Catwalk Icon $5. Plain card at the opens ($2.50, $26, $26, $7, $4.60). Twitter units 3.15 / 0.49 /
+0.36 / 1.67 / 1.45. card_mon02.json, card_mon02_plain.json.

@@ -8,7 +8,7 @@
    "note": "Soft 7",
    "bets": [
     {"race": 4, "time": "3:00PM", "horse": "Best Terms", "price": "$2.50", "rated": "$1.92", "units": "3.15u"},
-    {"race": 4, "time": "3:00PM", "horse": "Marco Polo", "price": "$6.50", "rated": "$10.69", "units": "0.49u"},
+    {"race": 4, "time": "3:00PM", "horse": "Marco Polo", "price": "BSP", "rated": "$10.69", "units": "0.49u"},
     {"race": 5, "time": "3:30PM", "horse": "Into You", "price": "$14", "rated": "$14.08", "units": "0.36u"},
     {"race": 6, "time": "4:00PM", "horse": "Wintery", "price": "$3.10", "rated": "$3.66", "units": "1.67u"},
     {"race": 7, "time": "4:30PM", "horse": "Catwalk Icon", "price": "$5", "rated": "$3.51", "units": "1.45u"}
