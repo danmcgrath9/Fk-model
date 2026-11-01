@@ -137,6 +137,7 @@ races_with_bets = {b_[0] for b_ in BETS} | {b_[0] for b_ in OPEN_BETS}
 HB, EDGE_T, EARLY_T = " class='hb'", " <span class='tag edge'>EDGE</span>", " <span class='tag early'>early only</span>"
 nav = "<nav class='nav'><a href='#bets' class='hb'>Bets</a>" + "".join(f"<a href='#r{rc}'{HB if rc in races_with_bets else ''}>R{rc}</a>" for rc in sorted(races)) + "</nav>"
 top = [NAV_CSS, nav, "<div class='bets' id='bets'>"]
+_n0 = len(top)
 if taken_md:
     try:
         tl = []
@@ -150,23 +151,10 @@ if taken_md:
                        + "".join("<tr>" + "".join(f"<td>{html.escape(c)}</td>" for c in row) + "</tr>" for row in body) + "</table></div><div style='height:14px'></div>")
     except OSError:
         pass
-if OPEN_BETS:
-    m_ = lambda v: "$%.2f" % v if v else "-"
-    def now_cell(n_, ours_):
-        if not n_: return "no price"
-        return m_(n_) + ("" if n_ >= ours_ * (1 + THR) else " <span class='gone'>gone</span>")
-    top.append(f"<h2>Bets at the opening price ({len(OPEN_BETS)})</h2><div class='tw'><table><tr><th>Race</th><th>Horse</th><th>FK open</th><th>TAB open</th><th>Ours</th><th>Stake</th><th>Now</th></tr>"
-               + "".join(f"<tr><td><a href='#r{rc}'>R{rc}</a></td><td>{html.escape(h)}{EDGE_T if ed else ''}</td><td>{m_(fk_)}</td><td>{m_(tb_)}</td>"
-                         f"<td>${ours_:,.2f}</td><td>{st:.1f}u</td><td>{now_cell(n_, ours_)}</td></tr>" for rc, h, fk_, tb_, n_, ours_, st, ed in OPEN_BETS)
-               + "</table></div><div style='height:14px'></div>")
-if BETS:
-    top.append(f"<h2>Still on at the current price ({len(BETS)})</h2><div class='tw'><table><tr><th>Race</th><th>Horse</th><th>FK open</th><th>TAB open</th><th>Now</th><th>Ours</th><th>Stake</th><th>Take at</th></tr>"
-               + "".join(f"<tr><td><a href='#r{rc}'>R{rc}</a></td><td>{html.escape(h)}{EDGE_T if ed else ''}{EARLY_T if ea else ''}</td>"
-                         f"<td>{'$%.2f' % op_ if op_ else '-'}</td><td>{'$%.2f' % tb_ if tb_ else '-'}</td><td>${n_:,.2f}</td><td>${o_:,.2f}</td><td>{st:.1f}u</td><td>${o_ * (1 + THR):,.2f}+</td></tr>" for rc, h, n_, o_, st, ed, ea, op_, tb_ in BETS)
-               + "</table></div>")
-else:
-    # No explanatory notes on the page (founder, 24 Oct 2026: "get rid of all the notes ... moving forward")
-    top.append("<h2>Bets at these prices</h2><div>None.</div>")
+# One bets box only (1 Nov 2026, founder: "just have one with filled at open, because that's all we are betting right now"):
+# the order sheet's "Filled at the open" box (betmatic_html.py) is the bets. The sheet's own "Bets at the opening price" and
+# "Still on at the current price" boxes sized stakes their own way and disagreed with it, so they are no longer drawn.
 top.append("</div>")
+if len(top) == _n0 + 1: top = top[:_n0 - 1]   # nothing in the box (no taken table): no empty frame; betmatic_html adds its own
 H[1:1] = top
 open(out, "w").write("\n".join(H)); print("ok", out)
