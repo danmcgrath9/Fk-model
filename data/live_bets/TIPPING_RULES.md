@@ -137,3 +137,10 @@ existed, but the opening-price edge still pays them (+41% to +49%). Note: the ba
 (+1,237u) were run without the shade while the live sheets carried it; switching it off makes the two match.
 Flemington straight (t_straight_oof.py, 74 races): the model is calibrated there overall; our FORWARD bets on the straight
 won 2 against 6.5 expected (-72%, 37 bets), too few for a rule: every straight-course bet is flagged and tracked.
+
+## Flemington straight: no bets on forward runners (1 Nov 2026)
+Founder, 1 Nov 2026: "just leave it for the straight races, because hate being on leaders like yesterday with Natural Fling".
+At Flemington, 1200m or less (the straight six), no bet on a runner that usually settles forward (settle share under 0.3).
+Our forward bets there won 2 where 6.5 were expected (-72% at the open, 37 bets, out of fold, t_backmarkers.py).
+betmatic_orders.py stops if a Flemington v6 file has no race distance (shade_back.py now writes it). On 31 Oct the rule
+takes Bridal Waltz (R9, 1100m, 16th) off. A straight-course model input is under test (t_straight_feat.py).

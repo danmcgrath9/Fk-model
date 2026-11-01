@@ -17,8 +17,11 @@ c = {str(x): i for i, x in enumerate(U["cols"])}
 ss = {(str(U["race_id"][U["race_idx"][i]]), str(U["horse_id"][i])): float(U["X"][i, c["raw_settle_share"]]) for i in range(len(U["name"]))}
 orc = c.get("jockeysOnlyRideAtMeeting")
 onr = {(str(U["race_id"][U["race_idx"][i]]), str(U["horse_id"][i])): (orc is not None and float(U["X"][i, orc]) == 1) for i in range(len(U["name"]))}
+# race distance on every runner (1 Nov 2026): betmatic_orders.py needs it for the Flemington straight rule
+dist = {str(U["race_id"][j]): float(U["distance"][j]) for j in range(len(U["race_id"]))}
 rows = json.load(open(mj)); k = 0
 for r in rows:
+    r["distance"] = dist.get(r["race_id"])
     r["only_ride"] = bool(onr.get((r["race_id"], r["horse_id"]), False))   # jockey's only ride at the meeting (stake_rule.py)
     if "p_unshaded" in r:
         continue
