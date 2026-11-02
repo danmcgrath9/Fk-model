@@ -1515,3 +1515,21 @@ blend pulls our chance down as the price drifts, so the most a horse can get is 
   0.90-1.63. Winners: 22 against 24.9 by our price and 21.8 by BSP, so we run about 12% hot here, all of it in the
   $4-$8 group (9 won v 13.3 ours v 11.5 BSP; under $4: 13 v 11.6 v 10.3). Where BSP finished 1.5x+ ours (33 bets) one
   won; where it finished at ours or shorter (45 bets) 13 won.
+
+## Where do we beat BSP? (3 Nov 2026, founder: "Is there anywhere / price band or situation that we are better than BSP?
+## Like when a horse stays similar price within 15% and we have it shorter?")
+t_bsp_where.py, v10 holdout 3 Jun - 13 Oct, BSP less 8%. A/E against BSP over 1.00 = more winners than BSP expected = we beat it.
+- Broadly no. The live book is -2% at BSP (A/E v BSP 1.05, which 8% commission eats); backing every runner we rate value at
+  BSP (BSP >= 1.2x ours, $1.60-$15) is -20% over 2,190 bets, and it gets worse the bigger the BSP overlay (1.5x+ -26%).
+- THE ASKED-FOR SLICE IS THE WORST ONE. Live-book bets whose price HELD within 15% of the open while we had them shorter:
+  179 bets, 22 won where our price expected 34 (A/E 0.64) and BSP expected 23; -9% at the open, -15% at BSP. Drifters are
+  worse still (A/E 0.48). When the market keeps its price and disagrees with us, the market is right. Our profit at the open
+  is entirely the horses that FIRM (BSP under 0.85x open: +113% / +43% at the open), and at BSP those are only -4% / +2%.
+- Price band: $5-$8 is where we are worst against BSP (-28% live book, -36% pure BSP rule, A/E v BSP 0.72-0.91). $8-$15
+  read +27% at BSP but it is one half (+61% Jun-Jul, -9% Aug-Oct, 37 winners): noise.
+- Metro is -16% / -42% at BSP; country -0% / +12%. "Value at the open and at BSP, country" is +12% overall but +54% then
+  -29% by half, carried by 22 winners at $8-$15: not reliable.
+- THE ONE SLICE THAT HOLDS IN BOTH HALVES: our TOP PICK in the race (shortest by our price) backed at BSP with a floor of
+  our price (BSP >= ours): 666 bets, 176 winners, +8.0% (+53u); Jun-Jul +3.9%, Aug-Oct +12.9%; A/E v BSP 1.08 / 1.19.
+  Works at $1.60-$3 (+6%, 69 winners) and $3-$5 (+12%, 83 winners), fails at $5-$8 (-17%). Executable as a Betfair SP
+  back with a minimum price. Found by slicing, so expect less; a paper track before any money.
