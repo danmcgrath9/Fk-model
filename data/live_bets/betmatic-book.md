@@ -790,3 +790,10 @@ The 31 Oct change to $50 a unit reached the sends (Sun 1 Nov was sent at $50) bu
 UNIT_DOLLARS, betmatic_html.py and the fk-betmatic workflow's default unit still said $37.50, so every dollar figure quoted
 on Mon 2 Nov was at $37.50. All three now default to $50. Kyneton Wed and Flemington Thu sheets rebuilt (orders unchanged,
 dollar column now at $50: $6,191 and $3,804 if every order fired). Ballarat Mon open bets +29.54u = +$1,477 at $50.
+
+## Kyneton Wed 4 Nov and Flemington Thu 5 Nov at the open (paper: markets opened Mon 2 Nov before any send; bot off, TAB unfunded)
+Sheets as rebuilt Mon (big-overlay doubling, saddlecloth numbers), Form King's open, prices at Mon 7:40pm.
+Kyneton: R1 Sabrina $11 1.19u; R2 Mongol Heer $9.50 2.63u (2.13x our $4.46, 31c short of the $9.81 doubling line);
+R3 Emanating $15 1.40u; R6 Gregolimo $19.50 0.90u; R6 His Finest Hour $11 1.05u; R8 Foujita San $11 1.07u; R8 Placo $8
+1.50u; R9 Blaze Away $26 0.71u. 8 bets, 10.45u ($522 at $50). None doubled.
+Flemington Thu: R4 Sass Appeal $2.50 4.92u; R8 De Armas $4.60 2.68u; R9 Ice Kool $7.50 1.52u. 3 bets, 9.12u ($456). None doubled.
