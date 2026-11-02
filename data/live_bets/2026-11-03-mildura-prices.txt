@@ -1,8 +1,8 @@
-# Mildura Tue 3 Nov (Good 4), re-priced Sun 1 Nov with all 1 Nov rules; no odds yet
+# Mildura Tue 3 Nov (Good 4), re-priced Tue 9:30am on the final field with all 1 Nov rules; prices 9:33am Tue
 1, Fabulous One, 0, 0
 1, Titus Augustus, 0, 0
 1, Pipoli Diva, 0, 0
-1, Bold Starlet, 0, 0
+1, Bold Starlet, SCR
 1, Gamadale Possum, 0, 0
 1, Don't Say Do, 0, 0
 1, Sammie Ellen Boy, 0, 0
@@ -37,8 +37,8 @@
 5, Bellakai, 0, 0
 5, Lysander, 0, 0
 5, Yongtai, 0, 0
-5, Squagaga, 0, 0
-5, Chosen Venture, SCR
+5, Squagaga, SCR
+5, Chosen Venture, 0, 0
 5, Solar Mist, 0, 0
 5, Blackhill Boy, 0, 0
 5, Immortal Justice, SCR
@@ -47,10 +47,11 @@
 6, Bannerton, 0, 0
 6, Baby Rider, SCR
 6, Winds Of March, 0, 0
+6, Papal Wars, SCR
 6, Detoron, 0, 0
-6, Circa, 0, 0
-6, Pendante, SCR
-6, Final Quarter, SCR
+6, Circa, SCR
+6, Pendante, 0, 0
+6, Final Quarter, 0, 0
 6, Conaltri, 0, 0
 6, Kiwiesque, SCR
 6, Aberlutely, 0, 0

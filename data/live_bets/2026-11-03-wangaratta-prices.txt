@@ -1,69 +1,71 @@
-# Wangaratta Tue 3 Nov (going SOFT 6, founder), re-priced Sun 1 Nov with all 1 Nov rules; no odds yet
-1, Frosted Amber, 0, 0
-1, Aloof, 0, 0
-1, Sweet Champagne, SCR
-1, Brilliant Bull Ant, 0, 0
-1, Magic Royale, SCR
-1, Royal Overture, SCR
-1, Acroman, 0, 0
-1, Prestige Valley, 0, 0
-1, Naval Command, 0, 0
-1, Astatine, 0, 0
-1, Tallingas Diamond, SCR
-1, Graceful Dance, 0, 0
-2, Shades Of Sheriff, SCR
-2, Style Guide, 0, 0
-2, Ashen Knight, 0, 0
-2, Woah Shamrock, SCR
-2, Titan's Soul, 0, 0
-2, Tromso, 0, 0
-2, Flashman, 0, 0
-2, Mirraway, 0, 0
-2, Riverlea Prince, 0, 0
-2, Amarillo Sky, 0, 0
+# Wangaratta Tue 3 Nov (going SOFT 6, founder), re-priced Tue 9:30am on the final field with all 1 Nov rules; prices 9:33am Tue
+1, Frosted Amber, 16.00, 16.00, fk_open 19.00
+1, Aloof, 81.00, 81.00, fk_open 31.00
+1, Sweet Champagne, SCR, last 23.00, fk_open 21.00
+1, Brilliant Bull Ant, 4.00, 4.00, fk_open 5.00
+1, Magic Royale, SCR, last 6.00, fk_open 6.50
+1, Royal Overture, 9.00, 9.00, fk_open 8.50
+1, Acroman, 71.00, 71.00, fk_open 26.00
+1, Prestige Valley, SCR, last 41.00, fk_open 31.00
+1, Naval Command, 1.65, 1.65, fk_open 1.45
+1, Astatine, 41.00, 41.00, fk_open 19.00
+1, Tallingas Diamond, SCR, last 4.40, fk_open 15.00
+1, Graceful Dance, 6.00, 6.00, fk_open 4.60
+2, Shades Of Sheriff, SCR, last 41.00, fk_open 66.00
+2, Style Guide, 9.00, 9.00, fk_open 6.25
+2, Ashen Knight, SCR, last 4.60, fk_open 4.90
+2, Woah Shamrock, 12.00, 12.00, fk_open 58.50
+2, Titan's Soul, 12.00, 12.00, fk_open 8.75
+2, Tromso, 31.00, 31.00, fk_open 29.00
+2, Flashman, SCR, last 15.00, fk_open 11.50
+2, Mirraway, 3.50, 3.50, fk_open 6.25
+2, Riverlea Prince, 3.50, 3.50, fk_open 3.50
+2, Amarillo Sky, 4.40, 4.40, fk_open 3.75
 2, Hellbent Halo, SCR
-2, Briar Island, SCR
-3, Dejavast, 0, 0
-3, All Too Swift, 0, 0
-3, Spin Class, 0, 0
-3, Jakbe Nimble, SCR
-3, Startin'sumthin', 0, 0
-3, Just Basil, 0, 0
-3, Creusa, 0, 0
-3, Lady Of Alsace, SCR
-3, Vidaloa, 0, 0
-4, I Could Do Better, 0, 0
-4, Warrandyte Road, 0, 0
-4, Blonde Suspect, SCR
-4, Dashing Donkey, 0, 0
-4, Whisper The Wind, SCR
-4, Opus, 0, 0
-4, Brookers Turbo, SCR
-4, Give Some Lip, 0, 0
-4, Brassi Road, SCR
-4, Moral Turpitude, 0, 0
-4, Captain Barbossa, 0, 0
-4, Prestige Geoffrey, 0, 0
-5, Danerich Dan, SCR
-5, American Russ, 0, 0
-5, Apollo Sun, 0, 0
-5, Cumbrian Queen, 0, 0
-5, Nicking Gracie, SCR
-5, It'swhatyoumakeit, 0, 0
-5, Sacred Ingot, 0, 0
-5, Winning Witness, SCR
-5, Barrett Reef, 0, 0
-5, Darken, 0, 0
-5, Prince Rupert, 0, 0
-6, Wannabeapoodle, 0, 0
-6, Tasman Park, 0, 0
-6, Belmasai, 0, 0
-6, Count Of Anjou, SCR
-6, Proprietary, 0, 0
-6, Hillbily Kynection, SCR
-6, Densetsu, 0, 0
-6, Flying D'amore, SCR
-6, Montrock, 0, 0
-6, Enigmatise, 0, 0
-6, Deep Joy, SCR
-6, Zamora, 0, 0
+2, Briar Island, 9.50, 9.50, fk_open 11.00
+3, Dejavast, 15.00, 15.00, fk_open 8.00
+3, All Too Swift, 31.00, 31.00, fk_open 16.00
+3, Spin Class, 5.50, 5.50, fk_open 7.00
+3, Jakbe Nimble, 16.00, 16.00, fk_open 10.00
+3, Startin'sumthin', 17.00, 17.00, fk_open 21.00
+3, Just Basil, 5.00, 5.00, fk_open 6.00
+3, Creusa, 3.00, 3.00, fk_open 2.70
+3, Lady Of Alsace, SCR, last 10.00, fk_open 13.00
+3, Vidaloa, 4.40, 4.40, fk_open 3.30
+3, Girl With A Pearl, SCR
+4, I Could Do Better, SCR
+4, Warrandyte Road, 9.50, 9.50, fk_open 12.50
+4, Blonde Suspect, SCR, last 41.00, fk_open 41.00
+4, Dashing Donkey, 6.25, 6.25, fk_open 10.50
+4, Whisper The Wind, 9.50, 9.50, fk_open 10.50
+4, Opus, 14.00, 14.00, fk_open 9.50
+4, Brookers Turbo, SCR, last 15.00, fk_open 21.00
+4, Give Some Lip, 3.40, 3.40, fk_open 2.60
+4, Brassi Road, SCR, last 14.00, fk_open 20.00
+4, Moral Turpitude, 8.00, 8.00, fk_open 5.25
+4, Captain Barbossa, 11.00, 11.00, fk_open 7.50
+4, Prestige Geoffrey, 3.80, 3.80, fk_open 4.45
+5, Danerich Dan, SCR, last 7.50, fk_open 15.00
+5, American Russ, 7.00, 7.00, fk_open 4.80
+5, Apollo Sun, 34.00, 34.00, fk_open 19.00
+5, Gargantuan, SCR
+5, Cumbrian Queen, 5.00, 5.00, fk_open 3.10
+5, Nicking Gracie, SCR, last 8.00, fk_open 11.00
+5, It'swhatyoumakeit, 6.00, 6.00, fk_open 12.00
+5, Sacred Ingot, 3.40, 3.40, fk_open 4.00
+5, Winning Witness, SCR, last 18.00, fk_open 26.00
+5, Barrett Reef, 5.50, 5.50, fk_open 7.00
+5, Darken, 11.00, 11.00, fk_open 10.00
+5, Prince Rupert, 10.00, 10.00, fk_open 7.00
+6, Wannabeapoodle, 11.00, 11.00, fk_open 8.50
+6, Tasman Park, 10.00, 10.00, fk_open 10.00
+6, Belmasai, 7.50, 7.50, fk_open 6.50
+6, Count Of Anjou, SCR, last 41.00, fk_open 51.00
+6, Proprietary, 12.00, 12.00, fk_open 14.00
+6, Hillbily Kynection, SCR, last 15.00, fk_open 41.00
+6, Densetsu, 3.50, 3.50, fk_open 3.10
+6, Flying D'amore, SCR, last 14.00, fk_open 21.00
+6, Montrock, 21.00, 21.00, fk_open 21.00
+6, Enigmatise, 7.00, 7.00, fk_open 8.50
+6, Deep Joy, SCR, last 11.00, fk_open 21.00
+6, Zamora, 2.80, 2.80, fk_open 2.60

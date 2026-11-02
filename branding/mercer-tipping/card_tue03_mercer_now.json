@@ -60,7 +60,8 @@
      "time": "4:54PM",
      "horse": "Flying Jude",
      "price": "$5.50",
-     "units": "0.48u"
+     "units": "0.48u",
+     "scr": true
     }
    ]
   },

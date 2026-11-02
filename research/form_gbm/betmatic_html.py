@@ -122,6 +122,10 @@ def main():
     sec = (f"{START}<style>.bets.ob td,.bets.ob th{{padding:6px 4px}}</style><div class='bets ob'><h2>Our bets at the open ({nbet})</h2><div class='tw'>{body}</div></div>{END}")  # no notes on the page (founder, 24 Oct 2026)
     page = open(a.page).read()
     page = re.sub(re.escape(START) + ".*?" + re.escape(END), "", page, flags=re.S)
+    # the top bar's "Bets" button jumps to #bets; a page with no opening-price bets section has no such element, so this
+    # box takes the id (2 Nov 2026, founder: "the bets tab isn't linked")
+    if "id='bets'" not in page:
+        sec = sec.replace("<div class='bets ob'>", "<div class='bets ob' id='bets' style='scroll-margin-top:64px'>", 1)
     i = page.find("<h2>Bets at the opening price")
     page = page[:i] + sec + page[i:] if i >= 0 else page.replace("</h1>", "</h1>" + sec, 1)
     open(a.page, "w").write(page)
