@@ -1486,3 +1486,18 @@ adopted. Re-test at the retrain, when the full archive gives several times the t
 ### Race-review comments (27 Oct 2026)
 Form King's past-run videoComment (flags in scripts/wide_table.py) stays OUT of the model. Founder: "Don't trust it,
 would rather do it myself." Trip notes, if any, come from the founder's own replay watching.
+
+## Staking shape and big overlays (2 Nov 2026, founder: "So how could we ever get a 10u bet")
+t_stake_shape.py / t_stake_edge.py, every live rule on the v10 holdout (3 Jun - 13 Oct, open less 7%), only the stake
+changed. The live stake (Kelly on our chance blended with the price, x125 x5/8, cap 10u) almost never reaches 10u: the
+blend pulls our chance down as the price drifts, so the most a horse can get is ~10u if we rate it $1.60 or shorter,
+7u at $2, 4u at $3, 2u at $5. Six bets of 7.5u+ in the whole holdout.
+- Changing the SHAPE everywhere does nothing risk-adjusted: more weight on our price, a steeper Kelly, a bigger
+  multiplier all land at +52.6-53.4% and profit / worst drawdown 23-24 (the same money, spread differently).
+- The overlay at the open is where it is: the live rule stakes ~2u in every edge band, yet bets that OPEN at 2.2x+ our
+  price made +99% (170 bets: Jun-Jul +87%, Aug-Oct +115%; BSP/open 0.43-0.53, they halve in price), against +36%/+53%
+  for the rest. Strongest under $4 (+173%, 36 bets) and $4-$8 (+60%); $8+ only +22%.
+- Doubling the stake when the open is 2.2x+ our price and we rate it under $8 (113 bets, ~6 a week; 10u cap kept):
+  +1,556u (+59.4%) v +1,236u (+52.6%), worst drawdown 58u v 52u, profit / drawdown 26.8 v 23.8, both halves up
+  (+52%/+67% v +44%/+61%). 2.0x or 1.8x thresholds add drawdown faster than profit. Thresholds were chosen on this
+  holdout: take some off. As orders it is one extra order per horse from 2.2x our price to the ceiling.
