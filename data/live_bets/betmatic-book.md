@@ -782,8 +782,10 @@ Deductions: R4 4c, R5 2c, R6 19c (includes Mystic Reign's late scratching), R7 4
 - Real money: Best Terms $331 at $2.60, placed after the open (R4 "now" test bet), 5th: -$331.
 - Twitter card (half units, posted prices after deductions): Best Terms $2.44 -3.15u; Marco Polo BSP $6.48 (founder's figure;
   Form King had no BSP yet) +2.69u; Into You $13.74 -0.36u; Wintery $2.70 +2.84u; Catwalk Icon $3.32 -1.45u. +0.57u.
-- Lay book (1u at BSP, $15-$40 and the trigger), 43 runners: R1-R3 settled, one lay, Meritorious (lay at $21.70, BSP
-  $24.82, 9th) +0.92u. R4-R8: Form King holds no BSP yet (0.0), so 32 runners wait for it; settled when it lands.
+- Lay book (1u at BSP, $15-$40 and the trigger), 43 runners, BSPs in at 9:55pm: 3 lays, 0 winners, +2.76u (+$138 at $50):
+  R3 Meritorious (lay at $21.70, BSP $24.82, 9th) +0.92u; R4 Urban Creed ($18.81, BSP $19.50, 3rd) +0.92u; R4 Pneuma
+  ($24.81, BSP $29, 6th) +0.92u. Void, no result in Form King (late scratchings): Celestial Splendor R5, Skjaldmo R6,
+  Azzacool and Hola Amigos R7, Till Queen R8. Marco Polo (lay at $17.53) won at BSP $6.48: not a lay.
 
 ## The unit is $50 (founder, Mon 2 Nov: "$50 a unit duck")
 The 31 Oct change to $50 a unit reached the sends (Sun 1 Nov was sent at $50) but not the code: betmatic_orders.py's
