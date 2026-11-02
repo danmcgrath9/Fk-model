@@ -72,13 +72,16 @@ if page:
            "padding:6px 8px;border:0}.lb tr.rh a{color:#fff;text-decoration:none}.lb tr.rh span{font-weight:400;opacity:.85;"
            "margin-left:6px;font-size:12.5px}@media(prefers-color-scheme:dark){.lb{border-color:#ba68c8}.lb .rule,.lb th{color:#aaa}"
            ".lb td{border-color:#333}.lb tr.z td{background:#1e1a22}.lb td.lay{color:#ce93d8}.lb tr.rh td{background:#4a148c}}</style>")
-    sec = (f"{START}{css}<div class='lb'><h2>Lay book: {len(out)} runners</h2>"
+    sec = (f"{START}{css}<div class='lb' id='lays' style='scroll-margin-top:64px'><h2>Lay book: {len(out)} runners</h2>"
            f"<div class='rule'>Paper, 1u at Betfair SP. Lay a horse if its Betfair SP finishes at its <b>lay if SP</b> "
            f"price or higher, up to ${LAY_MAX:.0f}. That price is $15, or 1.6x our price if higher. Now is the bookies' price.</div>"
            f"<div class='tw'><table><tr><th>No.</th><th>Horse</th><th>Ours</th><th>Lay if SP</th><th>Now</th></tr>"
            f"{''.join(trs)}</table></div></div>{END}") if out else f"{START}<h2>Lay book: none</h2>{END}"
     pg = open(page).read()
     pg = re.sub(re.escape(START) + ".*?" + re.escape(END), "", pg, flags=re.S)
+    # a "Lays" button beside Bets at the start of the page's top bar (on a phone the end of the bar is off screen), so the book is one tap away (founder, 2 Nov 2026)
+    if "href='#lays'" not in pg and "Bets</a>" in pg:
+        pg = pg.replace("Bets</a>", "Bets</a><a href='#lays' style='background:#6a1b9a;color:#fff'>Lays</a>", 1)
     i = pg.rfind("</body>")
     pg = pg[:i] + sec + pg[i:] if i >= 0 else pg + sec
     open(page, "w").write(pg)
