@@ -42,6 +42,8 @@ def main():
     B = f"{L}/{a.prefix}-{a.gtag}"
     fs = set(json.load(open(f"{B}-first-starters.json"))) if os.path.exists(f"{B}-first-starters.json") else set()
     fu = json.load(open(f"{B}-first-up-blocks.json")) if os.path.exists(f"{B}-first-up-blocks.json") else {}
+    from betmatic_orders import METRO, METRO_MAX_OPEN
+    metro = a.prefix[11:].replace("-", " ") in METRO
     rows = []
     for r in v:
         k = (int(r["race"]), norm(r["horse"])); hk = f"{int(r['race'])}|{r['horse']}"
@@ -49,6 +51,9 @@ def main():
         if hk in fs or (fu.get(hk) and not fu[hk].startswith("EARLY")): continue   # the sheet's own blocks
         now, op = px[k]; ours = 1 / r["p"]; take = 1.2 * ours
         if not (1.6 <= ours <= 15 and op >= take and op < 3 * ours): continue
+        # metro: no bet at $12+ (1 Nov 2026, betmatic_orders.py METRO_MAX_OPEN), at the open or at the top-up price
+        # (3 Nov 2026: Cup Day offered top-ups at $14-$26 that the sheet's own rule would never bet)
+        if metro and (op >= METRO_MAX_OPEN or now >= METRO_MAX_OPEN): continue
         s0 = got.get(k, 0.0)
         full = stake_rule.stake(r["p"], now, r.get("only_ride", False), field[k[0]]) if now >= take else 0.0
         top = round(max(0.0, full - s0), 2)
