@@ -1,0 +1,10 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,KYNE_041126_1,Jackpot Park,top_pick,0.0,0.0,0.0,,,4.29,-1.0,,1.0,no,,
+2,KYNE_041126_2,Mongol Heer,top_pick,0.0,0.0,0.0,,,4.46,-1.0,,1.0,no,,
+3,KYNE_041126_3,Silky Seth,top_pick,0.0,0.0,0.0,,,3.15,-1.0,,1.0,no,,
+4,KYNE_041126_4,Job Done,top_pick,0.0,0.0,0.0,,,2.67,-1.0,,1.0,no,,
+5,KYNE_041126_5,Mystic Reign,top_pick,0.0,0.0,0.0,,,4.9,-1.0,Already run to today's class; Class drop (rating),1.0,no,,
+6,KYNE_041126_6,Lunar Force,top_pick,0.0,0.0,0.0,,,5.6,-1.0,,1.0,no,,
+7,KYNE_041126_7,Regal Tycoon,top_pick,0.0,0.0,0.0,,,3.72,-1.0,,1.0,no,,
+8,KYNE_041126_8,Placo,top_pick,0.0,0.0,0.0,,,6.02,-1.0,Already run to today's class,1.0,no,,
+9,KYNE_041126_9,Chasing Rainbows,top_pick,0.0,0.0,0.0,,,3.13,-1.0,,1.0,no,,
