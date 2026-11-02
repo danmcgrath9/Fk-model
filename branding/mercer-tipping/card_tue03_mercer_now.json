@@ -12,7 +12,6 @@
      "time": "11:20AM",
      "horse": "Yauson",
      "price": "$2.90",
-     "rated": "$3.12",
      "units": "1.35u"
     },
     {
@@ -20,7 +19,6 @@
      "time": "12:00PM",
      "horse": "Star Of Macedon",
      "price": "$3.90",
-     "rated": "$4.19",
      "units": "0.94u"
     },
     {
@@ -28,7 +26,6 @@
      "time": "3:50PM",
      "horse": "Ranarsson",
      "price": "$2.15",
-     "rated": "$2.73",
      "units": "1.63u"
     }
    ]
@@ -42,7 +39,6 @@
      "time": "1:00PM",
      "horse": "Frozen Tide",
      "price": "$2.90",
-     "rated": "$3.11",
      "units": "1.70u"
     },
     {
@@ -50,7 +46,6 @@
      "time": "2:12PM",
      "horse": "Frewdamoss",
      "price": "BSP",
-     "rated": "$10.87",
      "units": "0.39u"
     },
     {
@@ -58,7 +53,6 @@
      "time": "4:06PM",
      "horse": "Celestial Option",
      "price": "BSP",
-     "rated": "$8.91",
      "units": "0.48u"
     },
     {
@@ -66,7 +60,6 @@
      "time": "4:54PM",
      "horse": "Flying Jude",
      "price": "$5.50",
-     "rated": "$8.92",
      "units": "0.48u"
     }
    ]
@@ -80,7 +73,6 @@
      "time": "1:26PM",
      "horse": "Just Basil",
      "price": "$5",
-     "rated": "$4.18",
      "units": "1.17u"
     },
     {
@@ -88,7 +80,6 @@
      "time": "1:26PM",
      "horse": "Startin'sumthin'",
      "price": "$19",
-     "rated": "$11.54",
      "units": "0.45u"
     }
    ]
