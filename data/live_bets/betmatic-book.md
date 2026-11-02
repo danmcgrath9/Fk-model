@@ -760,3 +760,9 @@ Week Mon 26 Oct - Sun 1 Nov under the 1 Nov rules, paper at the open: 50 bets, 7
 RULE (clarified 1 Nov evening): no deductions are ESTIMATED any more; TAB's actual deduction, when the founder reports it, is
 applied to the winnings (1 + (price - 1) x (1 - d)), as it always was for real bets.
 Real money this week: Don copies +$810 on $650; Best Terms $331 at $2.60 runs Monday.
+
+## Tuesday 3 Nov at the open (paper: TAB unfunded, BetMatic placed nothing; founder, Mon 2 Nov midday)
+Flemington (opened Fri, metro $12 cap, full stakes): R2 Yauson $4.80 2.71u, R3 Star Of Macedon $6 1.87u, R8 Ranarsson $4 3.25u.
+Echuca (R1-R6 opened Mon 11:44-11:50am): R1 Frozen Tide $4.40 3.39u, R3 Frewdamoss $16 0.77u, R5 Celestial Option $13
+0.96u, R6 Flying Jude $13 0.96u. Mildura, Wangaratta and Echuca R7 not open at 12:05pm Mon. Mercer card at the opens
+(Twitter units, half): card_tue03.json.
