@@ -766,3 +766,10 @@ Flemington (opened Fri, metro $12 cap, full stakes): R2 Yauson $4.80 2.71u, R3 S
 Echuca (R1-R6 opened Mon 11:44-11:50am): R1 Frozen Tide $4.40 3.39u, R3 Frewdamoss $16 0.77u, R5 Celestial Option $13
 0.96u, R6 Flying Jude $13 0.96u. Mildura, Wangaratta and Echuca R7 not open at 12:05pm Mon. Mercer card at the opens
 (Twitter units, half): card_tue03.json.
+
+## Lay book gap and fix (Mon 2 Nov, founder: "why aren't the lay bets just part of this artifact always down the bottom?")
+No lay list was made for any meeting from Fri 30 Oct to Sun 1 Nov: the book above stops at Warrnambool Thu 29 Oct. That was
+a miss, not a decision; the four-week paper trial is short those days. lay_sheet.py also still carried the old $30 band (the
+rule went to $40 on 28 Oct) and now uses $40. From today the lay book is the last section of every meeting page
+(meeting.sh runs lay_sheet.py --html after the market sheet). Ballarat Mon 2 Nov, on the 1:20pm re-price after the late
+scratchings: 43 runners can trigger (2026-11-02-ballarat-s7n-lays.csv), settled at BSP with the day's results.

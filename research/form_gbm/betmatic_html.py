@@ -11,8 +11,9 @@ price, the stake, the race's scratching deduction (deductions.py) and the price 
 2 Nov 2026 (founder: "up the top of our artifact, have it as what our bets are at open, deductions, our price now and
 then what it is"): the box also carries the REAL bets BetMatic placed (every *-placed.jsonl for the day, amount and
 price), TAB's deduction per race as the founder reported it (DAYPREFIX-deductions-actual.txt, "race, cents") and the
-price after it, "not reported" for a race holding a scratching with no figure, and with --ours V6.json our price now
-from a re-price on the current field. Settlement (--results) is unchanged: at the price taken.
+price after it (our price with deductions; founder, 2 Nov: "not our rated price but our price with deductions"),
+"not reported" for a race holding a scratching with no figure, and the price now. Settlement (--results) is unchanged:
+at the price taken.
 """
 import argparse, csv, glob, html, json, os, re, sys, collections
 here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, here)
@@ -25,7 +26,6 @@ START, END = "<!-- betmatic -->", "<!-- /betmatic -->"
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("orders"); ap.add_argument("prefix"); ap.add_argument("page"); ap.add_argument("--results")
-    ap.add_argument("--ours", help="v6 json re-priced on the current field: our price now")
     ap.add_argument("--since", help="an earlier prices file: a race with a scratching since it says so beside its deduction")
     ap.add_argument("--unit", type=float, default=37.5, help="dollars a unit, to show real bets in units")
     a = ap.parse_args()
@@ -69,11 +69,6 @@ def main():
             if len(pa) >= 3 and pa[0].isdigit() and pa[2].upper().startswith("SCR"):
                 before.add((int(pa[0]), norm(pa[1])))
         late = {k[0] for k, (_, _, sc) in px.items() if sc and k not in before}
-    ours = {}
-    if a.ours:
-        v = json.load(open(a.ours)); tot_ = collections.Counter()
-        for r in v: tot_[int(r["race"])] += r["p"]
-        ours = {(int(r["race"]), norm(r["horse"])): tot_[int(r["race"])] / r["p"] for r in v if r["p"] > 0}
     # real bets: every placement BetMatic reports for the day (one row per bet, de-duplicated by its id)
     real, seen = [], set()
     for f in sorted(glob.glob(f"{L}/{a.prefix}*-placed.jsonl")):
@@ -106,12 +101,12 @@ def main():
         if k in won:
             p = st * (price - 1) if won[k] else -st; pl += p
             res = f"{'WON' if won[k] else 'lost'} {p:+.2f}u"
-        now = px.get(k, (None, None, True))[0]; on = ours.get(k)
+        now = px.get(k, (None, None, True))[0]
         rows.append(f"<tr><td><a href='#r{rc}'>R{rc}</a></td><td>{html.escape(hz)}</td><td>{kind}</td>"
                     f"<td>${price:.2f}</td><td>{st_txt}</td><td>{dtxt}</td><td>${eff:.2f}</td>"
-                    f"<td>{'$%.2f' % on if on else '-'}</td><td>{'$%.2f' % now if now else 'SCR'}</td><td>{res}</td></tr>")
+                    f"<td>{'$%.2f' % now if now else 'SCR'}</td><td>{res}</td></tr>")
     body = ("<table><tr><th>Race</th><th>Horse</th><th>Bet</th><th>Got on at</th><th>Stake</th><th>Deduction</th>"
-            "<th>After deduction</th><th>Our price now</th><th>Price now</th><th>Result</th></tr>" + "".join(rows) + "</table>") if rows else "<div>None.</div>"
+            "<th>Our price with deductions</th><th>Price now</th><th>Result</th></tr>" + "".join(rows) + "</table>") if rows else "<div>None.</div>"
     n_orders = sum(counts.values())
     sec = (f"{START}<h2>Our bets ({len(rows)})</h2><div class='tw'>{body}</div>"
            f"<div style='height:14px'></div>{END}")  # no notes on the page (founder, 24 Oct 2026)
