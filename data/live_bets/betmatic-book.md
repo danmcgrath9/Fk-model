@@ -799,3 +799,12 @@ Kyneton: R1 Sabrina $11 1.19u; R2 Mongol Heer $9.50 2.63u (2.13x our $4.46, 31c 
 R3 Emanating $15 1.40u; R6 Gregolimo $19.50 0.90u; R6 His Finest Hour $11 1.05u; R8 Foujita San $11 1.07u; R8 Placo $8
 1.50u; R9 Blaze Away $26 0.71u. 8 bets, 10.45u ($522 at $50). None doubled.
 Flemington Thu: R4 Sass Appeal $2.50 4.92u; R8 De Armas $4.60 2.68u; R9 Ice Kool $7.50 1.52u. 3 bets, 9.12u ($456). None doubled.
+
+## Tuesday 3 Nov 9:30am re-price and top-ups (paper)
+Final fields at 9:33am, all 1 Nov rules. Scratched since the sheets: Echuca R6 Flying Jude (on the card: refund).
+- Flemington (s6t): top-up R6 Al Duca 2.35u at $9 (topup.py now keeps the metro $12 cap; before the fix it also offered
+  Autumn Mystery $17, Vegas Jack $17, Enfjaar $26 and Juja Kibo $14, none of which the sheet's rule would bet).
+- Echuca (s7t): top-ups R1 Mutsuhito 2.44u at $7.50, R5 Snow Party 0.88u at $21, R6 Ice Quake 4.99u at $4.40, R6 Here
+  Comes Wozza 1.56u at $8.50. 9.87u.
+- Mildura (gdt): none. Form King holds no opening price for Mildura, so the open fills cannot be checked.
+- Wangaratta (s6t): none.
