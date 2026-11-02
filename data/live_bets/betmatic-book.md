@@ -773,3 +773,14 @@ a miss, not a decision; the four-week paper trial is short those days. lay_sheet
 rule went to $40 on 28 Oct) and now uses $40. From today the lay book is the last section of every meeting page
 (meeting.sh runs lay_sheet.py --html after the market sheet). Ballarat Mon 2 Nov, on the 1:20pm re-price after the late
 scratchings: 43 runners can trigger (2026-11-02-ballarat-s7n-lays.csv), settled at BSP with the day's results.
+
+## Ballarat Mon 2 Nov settled (results pulled Mon 6:16pm, forced re-fetch), TAB's actual deductions (founder)
+Deductions: R4 4c, R5 2c, R6 19c (includes Mystic Reign's late scratching), R7 42c.
+- Bets at the open, PAPER (BetMatic placed none of them), at the price after deductions: Best Terms 6.30u $2.50 -> $2.44
+  5th -6.30u; Marco Polo 0.97u $26 -> $25 WON +23.28u; Into You 0.72u $26 -> $25.50 7th -0.72u; Wintery 3.33u $7 -> $5.86
+  WON +16.18u; Catwalk Icon 2.90u $4.60 -> $3.09 3rd -2.90u. Total 14.22u, +29.54u (+$1,108 at $37.50).
+- Real money: Best Terms $331 at $2.60, placed after the open (R4 "now" test bet), 5th: -$331.
+- Twitter card (half units, posted prices after deductions): Best Terms $2.44 -3.15u; Marco Polo BSP $6.48 (founder's figure;
+  Form King had no BSP yet) +2.69u; Into You $13.74 -0.36u; Wintery $2.70 +2.84u; Catwalk Icon $3.32 -1.45u. +0.57u.
+- Lay book (1u at BSP, $15-$40 and the trigger), 43 runners: R1-R3 settled, one lay, Meritorious (lay at $21.70, BSP
+  $24.82, 9th) +0.92u. R4-R8: Form King holds no BSP yet (0.0), so 32 runners wait for it; settled when it lands.
