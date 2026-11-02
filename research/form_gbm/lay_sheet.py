@@ -42,14 +42,35 @@ for rid, rs in sorted(by.items(), key=lambda t: t[1][0]["race"]):
         if not note:
             out.append((r["race"], nums.get((r["race"], k), ""), r["horse"], ours, trig, now))
 if page:
-    START, END = "<!-- lays -->", "<!-- /lays -->"
-    trs = "".join(f"<tr><td><a href='#r{rc}'>R{rc}</a></td><td>{n}</td><td>{html.escape(h)}</td><td>${o:.2f}</td>"
-                  f"<td>${t:.2f} to ${LAY_MAX:.0f}</td><td>{'$' + now if now and now != '0' else '-'}</td></tr>"
-                  for rc, n, h, o, t, now in out)
-    sec = (f"{START}<h2>Lay book ({len(out)})</h2><div>Paper. Lay 1u at Betfair SP when the SP lands in the range: "
-           f"at least ${LAY_MIN:.0f} and at least {LAY_X:g}x our price, up to ${LAY_MAX:.0f}.</div><div class='tw'><table>"
-           f"<tr><th>Race</th><th>No.</th><th>Horse</th><th>Our price</th><th>Lay if Betfair SP is</th><th>Price now</th></tr>"
-           f"{trs}</table></div>{END}") if out else f"{START}<h2>Lay book (0)</h2><div>None.</div>{END}"
+    # Made easy to follow (founder, 2 Nov 2026: "can you make the lay bets easier to follow? Thats fkn impossible"): the
+    # runners whose price now is within a 1.5x drift of their lay-at price come first, each with a plain status; the
+    # rest, which need a big drift, are folded away underneath. Betfair SP on a roughie usually sits above the bookies'
+    # price, so 1.5x is the "could still happen" line, not a forecast.
+    START, END, CLOSE = "<!-- lays -->", "<!-- /lays -->", 1.5
+    def pnow(x):
+        try: return float(x)
+        except (TypeError, ValueError): return None
+    near, far = [], []
+    for rc, n, h, o, t, now in out:
+        x = pnow(now)
+        (near if x is None or x * CLOSE >= t else far).append((rc, n, h, o, t, x))
+    def status(t, x):
+        if x is None: return "no price yet"
+        if x > LAY_MAX: return f"over ${LAY_MAX:.0f}: no lay"
+        if x >= t: return "<b>IN RANGE</b>"
+        return f"drift {t / x:.1f}x"
+    nm_ = lambda n, h: f"{html.escape(h)}" + (f" <span style='color:#777'>({n})</span>" if n else "")
+    trs = "".join(f"<tr><td><a href='#r{rc}'>R{rc}</a></td><td>{nm_(n, h)}</td><td>${t:.2f}</td>"
+                  f"<td>{'$%.2f' % x if x else '-'}</td><td>{status(t, x)}</td></tr>" for rc, n, h, o, t, x in near)
+    farl = " · ".join(f"R{rc} {html.escape(h)} (lay at ${t:.2f}, now {'$%.2f' % x if x else '-'})" for rc, n, h, o, t, x in far)
+    sec = (f"{START}<div class='bets'><h2>Lay book ({len(near)} to watch)</h2>"
+           f"<div class='note'>Paper, 1u at Betfair SP. A horse is a lay only if its Betfair SP finishes at its "
+           f"\"lay at\" price or higher, up to ${LAY_MAX:.0f}. Price now is the bookies' price.</div>"
+           + (f"<div class='tw'><table><tr><th>Race</th><th>Horse (no.)</th><th>Lay at SP of</th><th>Price now</th>"
+              f"<th>Status</th></tr>{trs}</table></div>" if near else "<div>None close to their lay price.</div>")
+           + (f"<details style='margin-top:8px'><summary>{len(far)} more need a big drift</summary>"
+              f"<div class='note'>{farl}</div></details>" if far else "")
+           + f"</div>{END}")
     pg = open(page).read()
     pg = re.sub(re.escape(START) + ".*?" + re.escape(END), "", pg, flags=re.S)
     i = pg.rfind("</body>")

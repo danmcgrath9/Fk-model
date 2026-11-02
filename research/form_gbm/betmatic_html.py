@@ -84,17 +84,17 @@ def main():
     for f in glob.glob(f"{L}/{a.prefix}*-ledger.csv"):
         for r in csv.DictReader(open(f)):
             lg[r["label"]] = (int(r["race"]), r["horse"])
-    lines = [(b["race"], b["horse"], "paper, at the open", b["open"], b["stake"], f"{b['stake']:.2f}u", k) for k, b in by.items()]
+    lines = [(b["race"], b["horse"], "paper", b["open"], b["stake"], f"{b['stake']:.2f}u", k) for k, b in by.items()]
     for r in real:
         rc, hz = lg.get(r["label"], (r["race"], "?"))
         u = r["amount"] / a.unit
-        lines.append((rc, hz, "REAL", r["price"], u, f"${r['amount']:,.0f} ({u:.2f}u)", (rc, norm(hz))))
+        lines.append((rc, hz, "REAL", r["price"], u, f"${r['amount']:,.0f}", (rc, norm(hz))))
     rows, tot, pl = [], 0.0, 0.0
     for rc, hz, kind, price, st, st_txt, k in sorted(lines, key=lambda x: (x[0] or 0, x[1], x[2] != "REAL")):
         d = rep.get(rc)
-        dtxt = f"{100 * d:g}c" if d is not None else ("not reported" if rc in scr_races else "none")
+        dtxt = f"{100 * d:g}c" if d is not None else ("not in yet" if rc in scr_races else "none")
         if rc in late:
-            dtxt += (" + a late scratching, not reported" if d is not None else ", late scratching")
+            dtxt += (" + more to come" if d is not None else "")
         eff = 1 + (price - 1) * (1 - d) if d else price
         if kind != "REAL": tot += st
         res = ""
@@ -102,14 +102,16 @@ def main():
             p = st * (price - 1) if won[k] else -st; pl += p
             res = f"{'WON' if won[k] else 'lost'} {p:+.2f}u"
         now = px.get(k, (None, None, True))[0]
-        rows.append(f"<tr><td><a href='#r{rc}'>R{rc}</a></td><td>{html.escape(hz)}</td><td>{kind}</td>"
-                    f"<td>${price:.2f}</td><td>{st_txt}</td><td>{dtxt}</td><td>${eff:.2f}</td>"
-                    f"<td>{'$%.2f' % now if now else 'SCR'}</td><td>{res}</td></tr>")
-    body = ("<table><tr><th>Race</th><th>Horse</th><th>Bet</th><th>Got on at</th><th>Stake</th><th>Deduction</th>"
-            "<th>Our price with deductions</th><th>Price now</th><th>Result</th></tr>" + "".join(rows) + "</table>") if rows else "<div>None.</div>"
+        rows.append((f"<tr><td><a href='#r{rc}'>R{rc}</a> {html.escape(hz)}<br><span class='mk'>{kind} {st_txt}</span></td>"
+                     f"<td>${price:.2f}</td><td>{dtxt}</td><td><b>${eff:.2f}</b></td>"
+                     f"<td>{'$%.2f' % now if now else 'SCR'}</td>", res))
+    anyres = any(r for _, r in rows)
+    rows = [h + (f"<td>{r}</td>" if anyres else "") + "</tr>" for h, r in rows]
+    body = ("<table><tr><th>Horse</th><th>Got on</th><th>Deduction</th><th>Our price</th><th>Now</th>"
+            + ("<th>Result</th>" if anyres else "") + "</tr>" + "".join(rows) + "</table>"
+            "<div class='note'>Our price is what we got on at after TAB's deductions.</div>") if rows else "<div>None.</div>"
     n_orders = sum(counts.values())
-    sec = (f"{START}<h2>Our bets ({len(rows)})</h2><div class='tw'>{body}</div>"
-           f"<div style='height:14px'></div>{END}")  # no notes on the page (founder, 24 Oct 2026)
+    sec = (f"{START}<div class='bets'><h2>Our bets ({len(rows)})</h2><div class='tw'>{body}</div></div>{END}")  # no notes on the page (founder, 24 Oct 2026)
     page = open(a.page).read()
     page = re.sub(re.escape(START) + ".*?" + re.escape(END), "", page, flags=re.S)
     i = page.find("<h2>Bets at the opening price")
