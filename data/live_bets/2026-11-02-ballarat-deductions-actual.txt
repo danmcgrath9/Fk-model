@@ -1,3 +1,4 @@
+4, 5  # Marco Polo, TAB (founder, Mon 2 Nov after R4); BetMatic's own figure for the R4 bet is checked against it at settlement
 5, 2  # Into You, TAB (founder, Sun 1 Nov)
 6, 3  # Wintery, TAB (founder, Sun 1 Nov)
 7, 25  # Catwalk Icon, TAB (founder, Sun 1 Nov)

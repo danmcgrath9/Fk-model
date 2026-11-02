@@ -103,19 +103,19 @@ def main():
         res = ""
         if k in won:
             p = st * (eff - 1) if won[k] else -st; pl += p
-            res = f"{'WON' if won[k] else 'lost'} {p:+.2f}u"
+            res = f"<b style='color:{'#1b5e20' if won[k] else '#b71c1c'}'>{p:+.2f}u</b>"
         now = px.get(k, (None, None, True))[0]
         rows.append((f"<tr><td><a href='#r{rc}'>R{rc}</a> {html.escape(hz)}" + (" <span class='tag edge'>REAL</span>" if kind == "real" else "") +
                      f"</td><td><b>{st:.2f}u</b></td><td>{money(price)}</td><td>{dtxt}</td><td><b>{money(eff)}</b></td>"
-                     f"<td>{money(now) if now else 'SCR'}</td>", res))
+                     f"<td>{res or (money(now) if now else 'SCR')}</td>", res))
     anyres = any(r for _, r in rows)
-    rows = [h + (f"<td>{r}</td>" if anyres else "") + "</tr>" for h, r in rows]
+    rows = [h + "</tr>" for h, r in rows]   # a settled race shows its P/L in the last column instead of the price now
     nbet = len(rows)
     if rows:
-        rows.append(f"<tr><td><b>Total</b></td><td><b>{tot:.2f}u</b></td><td colspan='{4 + anyres}'>"
+        rows.append(f"<tr><td><b>Total</b></td><td><b>{tot:.2f}u</b></td><td colspan='3'></td><td>"
                     + (f"<b>{pl:+.2f}u</b>" if anyres else "") + "</td></tr>")
-    body = ("<table><tr><th>Horse</th><th>Units</th><th>Got on</th><th>Ded.</th><th>Our price</th><th>Now</th>"
-            + ("<th>Result</th>" if anyres else "") + "</tr>" + "".join(rows) + "</table>"
+    body = ("<table><tr><th>Horse</th><th>Units</th><th>Got on</th><th>Ded.</th><th>Our price</th>"
+            + ("<th>Now / P&amp;L</th>" if anyres else "<th>Now</th>") + "</tr>" + "".join(rows) + "</table>"
             "<div class='note'>Our price is what we got on at after TAB's deductions. ? = scratching in the race, TAB's deduction not in yet; "
             "+ = a later scratching, more to come.</div>") if rows else "<div>None.</div>"
     n_orders = sum(counts.values())
