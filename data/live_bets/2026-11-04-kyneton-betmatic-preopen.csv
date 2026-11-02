@@ -1,113 +1,113 @@
 date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
-2026-11-04,Kyneton,1,,,Diamond Heist,WIN,10.76,24.16,1.08,40,1 of 2,1.08u,8.05,
-2026-11-04,Kyneton,1,,,Diamond Heist,WIN,13.45,24.16,0.25,9,2 of 2,1.33u,8.05,
-2026-11-04,Kyneton,1,,,Johnny Tightlips,WIN,6.49,14.95,1.88,70,1 of 3,1.88u,4.98,
-2026-11-04,Kyneton,1,,,Johnny Tightlips,WIN,8.11,14.95,0.42,16,2 of 3,2.30u,4.98,
-2026-11-04,Kyneton,1,,,Johnny Tightlips,WIN,10.97,14.95,2.30,86,3 of 3,4.60u,4.98,opens $10.97+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,1,,,Lonnegan,WIN,11.56,15.01,1.00,38,1 of 1,1.00u,8.62,EARLY: $15 or shorter only
-2026-11-04,Kyneton,1,,,Sabrina,WIN,9.78,22.07,1.19,45,1 of 3,1.19u,7.36,
-2026-11-04,Kyneton,1,,,Sabrina,WIN,12.22,22.07,0.28,11,2 of 3,1.47u,7.36,
-2026-11-04,Kyneton,1,,,Sabrina,WIN,16.19,22.07,1.47,55,3 of 3,2.94u,7.36,opens $16.19+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,1,,,Valentina Girl,WIN,10.77,24.19,1.07,40,1 of 2,1.07u,8.06,
-2026-11-04,Kyneton,1,,,Valentina Girl,WIN,13.46,24.19,0.26,10,2 of 2,1.33u,8.06,
-2026-11-04,Kyneton,2,,,Bourne Legacy,WIN,7.79,15.01,1.53,57,1 of 3,1.53u,5.92,EARLY: $15 or shorter only
-2026-11-04,Kyneton,2,,,Bourne Legacy,WIN,9.74,15.01,0.36,14,2 of 3,1.89u,5.92,EARLY: $15 or shorter only
-2026-11-04,Kyneton,2,,,Bourne Legacy,WIN,13.04,15.01,1.89,71,3 of 3,3.78u,5.92,EARLY: $15 or shorter only; opens $13.04+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,2,,,Engulf,WIN,19.71,42.99,0.57,21,1 of 2,0.57u,14.33,
-2026-11-04,Kyneton,2,,,Engulf,WIN,24.64,42.99,0.13,5,2 of 2,0.70u,14.33,
-2026-11-04,Kyneton,2,,,Flyaway,WIN,10.90,24.48,1.06,40,1 of 2,1.06u,8.16,
-2026-11-04,Kyneton,2,,,Flyaway,WIN,13.62,24.48,0.25,9,2 of 2,1.31u,8.16,
-2026-11-04,Kyneton,2,,,Front Page Edition,WIN,12.51,15.01,0.50,19,1 of 1,0.50u,9.30,EARLY: $15 or shorter only
-2026-11-04,Kyneton,2,,,Mongol Heer,WIN,5.78,13.38,2.16,81,1 of 3,2.16u,4.46,
-2026-11-04,Kyneton,2,,,Mongol Heer,WIN,7.23,13.38,0.47,18,2 of 3,2.63u,4.46,
-2026-11-04,Kyneton,2,,,Mongol Heer,WIN,9.81,13.38,2.63,99,3 of 3,5.26u,4.46,opens $9.81+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,3,,,Emanating,WIN,10.28,23.15,1.13,42,1 of 3,1.13u,7.72,
-2026-11-04,Kyneton,3,,,Emanating,WIN,12.85,23.15,0.27,10,2 of 3,1.40u,7.72,
-2026-11-04,Kyneton,3,,,Emanating,WIN,16.98,23.15,1.40,52,3 of 3,2.80u,7.72,opens $16.98+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,3,,,Misneach,WIN,8.84,20.05,1.33,50,1 of 3,1.33u,6.68,
-2026-11-04,Kyneton,3,,,Misneach,WIN,11.05,20.05,0.31,12,2 of 3,1.64u,6.68,
-2026-11-04,Kyneton,3,,,Misneach,WIN,14.71,20.05,1.64,61,3 of 3,3.28u,6.68,opens $14.71+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,3,,,Platinum Rush,WIN,18.24,39.93,0.61,23,1 of 2,0.61u,13.31,
-2026-11-04,Kyneton,3,,,Platinum Rush,WIN,22.80,39.93,0.15,6,2 of 2,0.76u,13.31,
-2026-11-04,Kyneton,3,,,Silky Seth,WIN,3.80,3.99,3.06,115,1 of 1,3.06u,3.15,opens under $4: edge 1.15
-2026-11-04,Kyneton,3,,,Silky Seth,WIN,4.01,9.46,3.33,125,1 of 3,3.33u,3.15,
-2026-11-04,Kyneton,3,,,Silky Seth,WIN,5.01,9.46,0.68,26,2 of 3,4.01u,3.15,
-2026-11-04,Kyneton,3,,,Silky Seth,WIN,6.94,9.46,4.01,150,3 of 3,8.02u,3.15,opens $6.94+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,4,,,Attachments,WIN,12.79,28.49,0.89,33,1 of 2,0.89u,9.50,
-2026-11-04,Kyneton,4,,,Attachments,WIN,15.99,28.49,0.22,8,2 of 2,1.11u,9.50,
-2026-11-04,Kyneton,4,,,Bacash,WIN,4.95,11.55,2.58,97,1 of 3,2.58u,3.85,
-2026-11-04,Kyneton,4,,,Bacash,WIN,6.19,11.55,0.56,21,2 of 3,3.14u,3.85,
-2026-11-04,Kyneton,4,,,Bacash,WIN,8.47,11.55,3.14,118,3 of 3,6.28u,3.85,opens $8.47+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,4,,,Job Done,WIN,3.19,3.99,3.83,144,1 of 2,3.83u,2.67,opens under $4: edge 1.15
-2026-11-04,Kyneton,4,,,Job Done,WIN,3.99,3.99,0.94,35,2 of 2,4.77u,2.67,opens under $4: edge 1.15
-2026-11-04,Kyneton,4,,,Job Done,WIN,4.00,8.02,4.16,156,1 of 3,4.16u,2.67,
-2026-11-04,Kyneton,4,,,Job Done,WIN,4.21,8.02,0.79,30,2 of 3,4.95u,2.67,
-2026-11-04,Kyneton,4,,,Job Done,WIN,5.88,8.02,4.95,186,3 of 3,9.90u,2.67,opens $5.88+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,5,,,Bliss Bomb,WIN,6.60,15.17,1.85,69,1 of 3,1.85u,5.06,
-2026-11-04,Kyneton,5,,,Bliss Bomb,WIN,8.25,15.17,0.41,15,2 of 3,2.26u,5.06,
-2026-11-04,Kyneton,5,,,Bliss Bomb,WIN,11.13,15.17,2.26,85,3 of 3,4.52u,5.06,opens $11.13+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,5,,,Divine Empress,WIN,10.90,24.46,1.06,40,1 of 2,1.06u,8.15,
-2026-11-04,Kyneton,5,,,Divine Empress,WIN,13.62,24.46,0.25,9,2 of 2,1.31u,8.15,
-2026-11-04,Kyneton,5,,,Mystic Reign,WIN,6.39,14.71,1.92,72,1 of 3,1.92u,4.90,
-2026-11-04,Kyneton,5,,,Mystic Reign,WIN,7.99,14.71,0.43,16,2 of 3,2.35u,4.90,
-2026-11-04,Kyneton,5,,,Mystic Reign,WIN,10.79,14.71,2.35,88,3 of 3,4.70u,4.90,opens $10.79+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,5,,,Tapo,WIN,7.96,18.15,1.49,56,1 of 3,1.49u,6.05,
-2026-11-04,Kyneton,5,,,Tapo,WIN,9.95,18.15,0.35,13,2 of 3,1.84u,6.05,
-2026-11-04,Kyneton,5,,,Tapo,WIN,13.31,18.15,1.84,69,3 of 3,3.68u,6.05,opens $13.31+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,6,,,Durban Harbour,WIN,12.03,26.87,0.95,36,1 of 2,0.95u,8.96,
-2026-11-04,Kyneton,6,,,Durban Harbour,WIN,15.04,26.87,0.23,9,2 of 2,1.18u,8.96,
-2026-11-04,Kyneton,6,,,Governor King,WIN,17.54,38.47,0.64,24,1 of 2,0.64u,12.82,
-2026-11-04,Kyneton,6,,,Governor King,WIN,21.92,38.47,0.16,6,2 of 2,0.80u,12.82,
-2026-11-04,Kyneton,6,,,Gregolimo,WIN,15.56,34.33,0.73,27,1 of 2,0.73u,11.44,
-2026-11-04,Kyneton,6,,,Gregolimo,WIN,19.45,34.33,0.17,6,2 of 2,0.90u,11.44,
-2026-11-04,Kyneton,6,,,His Finest Hour,WIN,10.99,24.65,1.05,39,1 of 2,1.05u,8.22,
-2026-11-04,Kyneton,6,,,His Finest Hour,WIN,13.74,24.65,0.25,9,2 of 2,1.30u,8.22,
-2026-11-04,Kyneton,6,,,Lunar Force,WIN,7.35,16.81,1.64,61,1 of 3,1.64u,5.60,
-2026-11-04,Kyneton,6,,,Lunar Force,WIN,9.19,16.81,0.37,14,2 of 3,2.01u,5.60,
-2026-11-04,Kyneton,6,,,Lunar Force,WIN,12.34,16.81,2.01,75,3 of 3,4.02u,5.60,opens $12.34+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,6,,,Weather Delay,WIN,12.52,27.91,0.91,34,1 of 2,0.91u,9.30,
-2026-11-04,Kyneton,6,,,Weather Delay,WIN,15.65,27.91,0.22,8,2 of 2,1.13u,9.30,
-2026-11-04,Kyneton,6,,,Who I Think I Am,WIN,20.27,44.14,0.55,21,1 of 2,0.55u,14.71,
-2026-11-04,Kyneton,6,,,Who I Think I Am,WIN,25.34,44.14,0.13,5,2 of 2,0.68u,14.71,
-2026-11-04,Kyneton,6,,,Winter Nights,WIN,8.95,20.27,1.32,50,1 of 3,1.32u,6.76,
-2026-11-04,Kyneton,6,,,Winter Nights,WIN,11.19,20.27,0.30,11,2 of 3,1.62u,6.76,
-2026-11-04,Kyneton,6,,,Winter Nights,WIN,14.87,20.27,1.62,61,3 of 3,3.24u,6.76,opens $14.87+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,7,,,Cobblestone Way,WIN,14.45,31.99,0.78,29,1 of 2,0.78u,10.66,
-2026-11-04,Kyneton,7,,,Cobblestone Way,WIN,18.06,31.99,0.19,7,2 of 2,0.97u,10.66,
-2026-11-04,Kyneton,7,,,Coronationhercules,WIN,12.46,27.78,0.92,34,1 of 2,0.92u,9.26,
-2026-11-04,Kyneton,7,,,Coronationhercules,WIN,15.58,27.78,0.22,8,2 of 2,1.14u,9.26,
-2026-11-04,Kyneton,7,,,Delivering,WIN,9.96,22.46,1.17,44,1 of 3,1.17u,7.49,
-2026-11-04,Kyneton,7,,,Delivering,WIN,12.45,22.46,0.27,10,2 of 3,1.44u,7.49,
-2026-11-04,Kyneton,7,,,Delivering,WIN,16.47,22.46,1.44,54,3 of 3,2.88u,7.49,opens $16.47+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,7,,,Regal Tycoon,WIN,4.77,11.16,2.69,101,1 of 3,2.69u,3.72,
-2026-11-04,Kyneton,7,,,Regal Tycoon,WIN,5.96,11.16,0.57,21,2 of 3,3.26u,3.72,
-2026-11-04,Kyneton,7,,,Regal Tycoon,WIN,8.19,11.16,3.26,122,3 of 3,6.52u,3.72,opens $8.19+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,7,,,Seeyou Raider,WIN,14.29,31.66,0.79,30,1 of 2,0.79u,10.55,
-2026-11-04,Kyneton,7,,,Seeyou Raider,WIN,17.86,31.66,0.19,7,2 of 2,0.98u,10.55,
-2026-11-04,Kyneton,7,,,Sunlit Serenade,WIN,8.35,19.00,1.42,53,1 of 3,1.42u,6.33,
-2026-11-04,Kyneton,7,,,Sunlit Serenade,WIN,10.44,19.00,0.32,12,2 of 3,1.74u,6.33,
-2026-11-04,Kyneton,7,,,Sunlit Serenade,WIN,13.93,19.00,1.74,65,3 of 3,3.48u,6.33,opens $13.93+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,8,,,Bring Forth,WIN,17.67,38.75,0.63,24,1 of 2,0.63u,12.92,
-2026-11-04,Kyneton,8,,,Bring Forth,WIN,22.09,38.75,0.16,6,2 of 2,0.79u,12.92,
-2026-11-04,Kyneton,8,,,Foujita San,WIN,10.78,24.21,1.07,40,1 of 2,1.07u,8.07,
-2026-11-04,Kyneton,8,,,Foujita San,WIN,13.47,24.21,0.26,10,2 of 2,1.33u,8.07,
-2026-11-04,Kyneton,8,,,Placo,WIN,7.93,18.07,1.50,56,1 of 3,1.50u,6.02,
-2026-11-04,Kyneton,8,,,Placo,WIN,9.91,18.07,0.35,13,2 of 3,1.85u,6.02,
-2026-11-04,Kyneton,8,,,Placo,WIN,13.26,18.07,1.85,69,3 of 3,3.70u,6.02,opens $13.26+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,8,,,Prince Eric,WIN,11.99,26.79,0.96,36,1 of 2,0.96u,8.93,
-2026-11-04,Kyneton,8,,,Prince Eric,WIN,14.99,26.79,0.23,9,2 of 2,1.19u,8.93,
-2026-11-04,Kyneton,8,,,Sun Gift,WIN,8.51,19.32,1.39,52,1 of 3,1.39u,6.44,
-2026-11-04,Kyneton,8,,,Sun Gift,WIN,10.64,19.32,0.32,12,2 of 3,1.71u,6.44,
-2026-11-04,Kyneton,8,,,Sun Gift,WIN,14.18,19.32,1.71,64,3 of 3,3.42u,6.44,opens $14.18+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,8,,,The Pendragon,WIN,8.07,18.38,1.47,55,1 of 3,1.47u,6.13,
-2026-11-04,Kyneton,8,,,The Pendragon,WIN,10.09,18.38,0.34,13,2 of 3,1.81u,6.13,
-2026-11-04,Kyneton,8,,,The Pendragon,WIN,13.49,18.38,1.81,68,3 of 3,3.62u,6.13,opens $13.49+ (2.2x ours): stake doubled
-2026-11-04,Kyneton,8,,,Yahoo Bar,WIN,13.80,30.63,0.82,31,1 of 2,0.82u,10.21,
-2026-11-04,Kyneton,8,,,Yahoo Bar,WIN,17.25,30.63,0.20,8,2 of 2,1.02u,10.21,
-2026-11-04,Kyneton,9,,,Blaze Away,WIN,19.59,42.72,0.57,21,1 of 2,0.57u,14.24,
-2026-11-04,Kyneton,9,,,Blaze Away,WIN,24.49,42.72,0.14,5,2 of 2,0.71u,14.24,
-2026-11-04,Kyneton,9,,,Bold Bordeaux,WIN,18.21,39.87,0.61,23,1 of 2,0.61u,13.29,
-2026-11-04,Kyneton,9,,,Bold Bordeaux,WIN,22.76,39.87,0.15,6,2 of 2,0.76u,13.29,
-2026-11-04,Kyneton,9,,,Brutal World,WIN,20.46,44.54,0.54,20,1 of 2,0.54u,14.85,
-2026-11-04,Kyneton,9,,,Brutal World,WIN,25.58,44.54,0.14,5,2 of 2,0.68u,14.85,
-2026-11-04,Kyneton,9,,,Holding Captive,WIN,13.69,15.01,0.45,17,1 of 1,0.45u,10.13,EARLY: $15 or shorter only
+2026-11-04,Kyneton,1,,6,Diamond Heist,WIN,10.76,24.16,1.08,40,1 of 2,1.08u,8.05,
+2026-11-04,Kyneton,1,,6,Diamond Heist,WIN,13.45,24.16,0.25,9,2 of 2,1.33u,8.05,
+2026-11-04,Kyneton,1,,2,Johnny Tightlips,WIN,6.49,14.95,1.88,70,1 of 3,1.88u,4.98,
+2026-11-04,Kyneton,1,,2,Johnny Tightlips,WIN,8.11,14.95,0.42,16,2 of 3,2.30u,4.98,
+2026-11-04,Kyneton,1,,2,Johnny Tightlips,WIN,10.97,14.95,2.30,86,3 of 3,4.60u,4.98,opens $10.97+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,1,,4,Lonnegan,WIN,11.56,15.01,1.00,38,1 of 1,1.00u,8.62,EARLY: $15 or shorter only
+2026-11-04,Kyneton,1,,9,Sabrina,WIN,9.78,22.07,1.19,45,1 of 3,1.19u,7.36,
+2026-11-04,Kyneton,1,,9,Sabrina,WIN,12.22,22.07,0.28,11,2 of 3,1.47u,7.36,
+2026-11-04,Kyneton,1,,9,Sabrina,WIN,16.19,22.07,1.47,55,3 of 3,2.94u,7.36,opens $16.19+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,1,,10,Valentina Girl,WIN,10.77,24.19,1.07,40,1 of 2,1.07u,8.06,
+2026-11-04,Kyneton,1,,10,Valentina Girl,WIN,13.46,24.19,0.26,10,2 of 2,1.33u,8.06,
+2026-11-04,Kyneton,2,,2,Bourne Legacy,WIN,7.79,15.01,1.53,57,1 of 3,1.53u,5.92,EARLY: $15 or shorter only
+2026-11-04,Kyneton,2,,2,Bourne Legacy,WIN,9.74,15.01,0.36,14,2 of 3,1.89u,5.92,EARLY: $15 or shorter only
+2026-11-04,Kyneton,2,,2,Bourne Legacy,WIN,13.04,15.01,1.89,71,3 of 3,3.78u,5.92,EARLY: $15 or shorter only; opens $13.04+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,2,,10,Engulf,WIN,19.71,42.99,0.57,21,1 of 2,0.57u,14.33,
+2026-11-04,Kyneton,2,,10,Engulf,WIN,24.64,42.99,0.13,5,2 of 2,0.70u,14.33,
+2026-11-04,Kyneton,2,,4,Flyaway,WIN,10.90,24.48,1.06,40,1 of 2,1.06u,8.16,
+2026-11-04,Kyneton,2,,4,Flyaway,WIN,13.62,24.48,0.25,9,2 of 2,1.31u,8.16,
+2026-11-04,Kyneton,2,,11,Front Page Edition,WIN,12.51,15.01,0.50,19,1 of 1,0.50u,9.30,EARLY: $15 or shorter only
+2026-11-04,Kyneton,2,,6,Mongol Heer,WIN,5.78,13.38,2.16,81,1 of 3,2.16u,4.46,
+2026-11-04,Kyneton,2,,6,Mongol Heer,WIN,7.23,13.38,0.47,18,2 of 3,2.63u,4.46,
+2026-11-04,Kyneton,2,,6,Mongol Heer,WIN,9.81,13.38,2.63,99,3 of 3,5.26u,4.46,opens $9.81+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,3,,7,Emanating,WIN,10.28,23.15,1.13,42,1 of 3,1.13u,7.72,
+2026-11-04,Kyneton,3,,7,Emanating,WIN,12.85,23.15,0.27,10,2 of 3,1.40u,7.72,
+2026-11-04,Kyneton,3,,7,Emanating,WIN,16.98,23.15,1.40,52,3 of 3,2.80u,7.72,opens $16.98+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,3,,5,Misneach,WIN,8.84,20.05,1.33,50,1 of 3,1.33u,6.68,
+2026-11-04,Kyneton,3,,5,Misneach,WIN,11.05,20.05,0.31,12,2 of 3,1.64u,6.68,
+2026-11-04,Kyneton,3,,5,Misneach,WIN,14.71,20.05,1.64,61,3 of 3,3.28u,6.68,opens $14.71+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,3,,8,Platinum Rush,WIN,18.24,39.93,0.61,23,1 of 2,0.61u,13.31,
+2026-11-04,Kyneton,3,,8,Platinum Rush,WIN,22.80,39.93,0.15,6,2 of 2,0.76u,13.31,
+2026-11-04,Kyneton,3,,2,Silky Seth,WIN,3.80,3.99,3.06,115,1 of 1,3.06u,3.15,opens under $4: edge 1.15
+2026-11-04,Kyneton,3,,2,Silky Seth,WIN,4.01,9.46,3.33,125,1 of 3,3.33u,3.15,
+2026-11-04,Kyneton,3,,2,Silky Seth,WIN,5.01,9.46,0.68,26,2 of 3,4.01u,3.15,
+2026-11-04,Kyneton,3,,2,Silky Seth,WIN,6.94,9.46,4.01,150,3 of 3,8.02u,3.15,opens $6.94+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,4,,6,Attachments,WIN,12.79,28.49,0.89,33,1 of 2,0.89u,9.50,
+2026-11-04,Kyneton,4,,6,Attachments,WIN,15.99,28.49,0.22,8,2 of 2,1.11u,9.50,
+2026-11-04,Kyneton,4,,1,Bacash,WIN,4.95,11.55,2.58,97,1 of 3,2.58u,3.85,
+2026-11-04,Kyneton,4,,1,Bacash,WIN,6.19,11.55,0.56,21,2 of 3,3.14u,3.85,
+2026-11-04,Kyneton,4,,1,Bacash,WIN,8.47,11.55,3.14,118,3 of 3,6.28u,3.85,opens $8.47+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,4,,3,Job Done,WIN,3.19,3.99,3.83,144,1 of 2,3.83u,2.67,opens under $4: edge 1.15
+2026-11-04,Kyneton,4,,3,Job Done,WIN,3.99,3.99,0.94,35,2 of 2,4.77u,2.67,opens under $4: edge 1.15
+2026-11-04,Kyneton,4,,3,Job Done,WIN,4.00,8.02,4.16,156,1 of 3,4.16u,2.67,
+2026-11-04,Kyneton,4,,3,Job Done,WIN,4.21,8.02,0.79,30,2 of 3,4.95u,2.67,
+2026-11-04,Kyneton,4,,3,Job Done,WIN,5.88,8.02,4.95,186,3 of 3,9.90u,2.67,opens $5.88+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,5,,7,Bliss Bomb,WIN,6.60,15.17,1.85,69,1 of 3,1.85u,5.06,
+2026-11-04,Kyneton,5,,7,Bliss Bomb,WIN,8.25,15.17,0.41,15,2 of 3,2.26u,5.06,
+2026-11-04,Kyneton,5,,7,Bliss Bomb,WIN,11.13,15.17,2.26,85,3 of 3,4.52u,5.06,opens $11.13+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,5,,6,Divine Empress,WIN,10.90,24.46,1.06,40,1 of 2,1.06u,8.15,
+2026-11-04,Kyneton,5,,6,Divine Empress,WIN,13.62,24.46,0.25,9,2 of 2,1.31u,8.15,
+2026-11-04,Kyneton,5,,1,Mystic Reign,WIN,6.39,14.71,1.92,72,1 of 3,1.92u,4.90,
+2026-11-04,Kyneton,5,,1,Mystic Reign,WIN,7.99,14.71,0.43,16,2 of 3,2.35u,4.90,
+2026-11-04,Kyneton,5,,1,Mystic Reign,WIN,10.79,14.71,2.35,88,3 of 3,4.70u,4.90,opens $10.79+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,5,,3,Tapo,WIN,7.96,18.15,1.49,56,1 of 3,1.49u,6.05,
+2026-11-04,Kyneton,5,,3,Tapo,WIN,9.95,18.15,0.35,13,2 of 3,1.84u,6.05,
+2026-11-04,Kyneton,5,,3,Tapo,WIN,13.31,18.15,1.84,69,3 of 3,3.68u,6.05,opens $13.31+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,6,,3,Durban Harbour,WIN,12.03,26.87,0.95,36,1 of 2,0.95u,8.96,
+2026-11-04,Kyneton,6,,3,Durban Harbour,WIN,15.04,26.87,0.23,9,2 of 2,1.18u,8.96,
+2026-11-04,Kyneton,6,,7,Governor King,WIN,17.54,38.47,0.64,24,1 of 2,0.64u,12.82,
+2026-11-04,Kyneton,6,,7,Governor King,WIN,21.92,38.47,0.16,6,2 of 2,0.80u,12.82,
+2026-11-04,Kyneton,6,,1,Gregolimo,WIN,15.56,34.33,0.73,27,1 of 2,0.73u,11.44,
+2026-11-04,Kyneton,6,,1,Gregolimo,WIN,19.45,34.33,0.17,6,2 of 2,0.90u,11.44,
+2026-11-04,Kyneton,6,,4,His Finest Hour,WIN,10.99,24.65,1.05,39,1 of 2,1.05u,8.22,
+2026-11-04,Kyneton,6,,4,His Finest Hour,WIN,13.74,24.65,0.25,9,2 of 2,1.30u,8.22,
+2026-11-04,Kyneton,6,,5,Lunar Force,WIN,7.35,16.81,1.64,61,1 of 3,1.64u,5.60,
+2026-11-04,Kyneton,6,,5,Lunar Force,WIN,9.19,16.81,0.37,14,2 of 3,2.01u,5.60,
+2026-11-04,Kyneton,6,,5,Lunar Force,WIN,12.34,16.81,2.01,75,3 of 3,4.02u,5.60,opens $12.34+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,6,,6,Weather Delay,WIN,12.52,27.91,0.91,34,1 of 2,0.91u,9.30,
+2026-11-04,Kyneton,6,,6,Weather Delay,WIN,15.65,27.91,0.22,8,2 of 2,1.13u,9.30,
+2026-11-04,Kyneton,6,,11,Who I Think I Am,WIN,20.27,44.14,0.55,21,1 of 2,0.55u,14.71,
+2026-11-04,Kyneton,6,,11,Who I Think I Am,WIN,25.34,44.14,0.13,5,2 of 2,0.68u,14.71,
+2026-11-04,Kyneton,6,,9,Winter Nights,WIN,8.95,20.27,1.32,50,1 of 3,1.32u,6.76,
+2026-11-04,Kyneton,6,,9,Winter Nights,WIN,11.19,20.27,0.30,11,2 of 3,1.62u,6.76,
+2026-11-04,Kyneton,6,,9,Winter Nights,WIN,14.87,20.27,1.62,61,3 of 3,3.24u,6.76,opens $14.87+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,7,,3,Cobblestone Way,WIN,14.45,31.99,0.78,29,1 of 2,0.78u,10.66,
+2026-11-04,Kyneton,7,,3,Cobblestone Way,WIN,18.06,31.99,0.19,7,2 of 2,0.97u,10.66,
+2026-11-04,Kyneton,7,,7,Coronationhercules,WIN,12.46,27.78,0.92,34,1 of 2,0.92u,9.26,
+2026-11-04,Kyneton,7,,7,Coronationhercules,WIN,15.58,27.78,0.22,8,2 of 2,1.14u,9.26,
+2026-11-04,Kyneton,7,,1,Delivering,WIN,9.96,22.46,1.17,44,1 of 3,1.17u,7.49,
+2026-11-04,Kyneton,7,,1,Delivering,WIN,12.45,22.46,0.27,10,2 of 3,1.44u,7.49,
+2026-11-04,Kyneton,7,,1,Delivering,WIN,16.47,22.46,1.44,54,3 of 3,2.88u,7.49,opens $16.47+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,7,,2,Regal Tycoon,WIN,4.77,11.16,2.69,101,1 of 3,2.69u,3.72,
+2026-11-04,Kyneton,7,,2,Regal Tycoon,WIN,5.96,11.16,0.57,21,2 of 3,3.26u,3.72,
+2026-11-04,Kyneton,7,,2,Regal Tycoon,WIN,8.19,11.16,3.26,122,3 of 3,6.52u,3.72,opens $8.19+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,7,,5,Seeyou Raider,WIN,14.29,31.66,0.79,30,1 of 2,0.79u,10.55,
+2026-11-04,Kyneton,7,,5,Seeyou Raider,WIN,17.86,31.66,0.19,7,2 of 2,0.98u,10.55,
+2026-11-04,Kyneton,7,,9,Sunlit Serenade,WIN,8.35,19.00,1.42,53,1 of 3,1.42u,6.33,
+2026-11-04,Kyneton,7,,9,Sunlit Serenade,WIN,10.44,19.00,0.32,12,2 of 3,1.74u,6.33,
+2026-11-04,Kyneton,7,,9,Sunlit Serenade,WIN,13.93,19.00,1.74,65,3 of 3,3.48u,6.33,opens $13.93+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,8,,6,Bring Forth,WIN,17.67,38.75,0.63,24,1 of 2,0.63u,12.92,
+2026-11-04,Kyneton,8,,6,Bring Forth,WIN,22.09,38.75,0.16,6,2 of 2,0.79u,12.92,
+2026-11-04,Kyneton,8,,7,Foujita San,WIN,10.78,24.21,1.07,40,1 of 2,1.07u,8.07,
+2026-11-04,Kyneton,8,,7,Foujita San,WIN,13.47,24.21,0.26,10,2 of 2,1.33u,8.07,
+2026-11-04,Kyneton,8,,8,Placo,WIN,7.93,18.07,1.50,56,1 of 3,1.50u,6.02,
+2026-11-04,Kyneton,8,,8,Placo,WIN,9.91,18.07,0.35,13,2 of 3,1.85u,6.02,
+2026-11-04,Kyneton,8,,8,Placo,WIN,13.26,18.07,1.85,69,3 of 3,3.70u,6.02,opens $13.26+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,8,,2,Prince Eric,WIN,11.99,26.79,0.96,36,1 of 2,0.96u,8.93,
+2026-11-04,Kyneton,8,,2,Prince Eric,WIN,14.99,26.79,0.23,9,2 of 2,1.19u,8.93,
+2026-11-04,Kyneton,8,,4,Sun Gift,WIN,8.51,19.32,1.39,52,1 of 3,1.39u,6.44,
+2026-11-04,Kyneton,8,,4,Sun Gift,WIN,10.64,19.32,0.32,12,2 of 3,1.71u,6.44,
+2026-11-04,Kyneton,8,,4,Sun Gift,WIN,14.18,19.32,1.71,64,3 of 3,3.42u,6.44,opens $14.18+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,8,,1,The Pendragon,WIN,8.07,18.38,1.47,55,1 of 3,1.47u,6.13,
+2026-11-04,Kyneton,8,,1,The Pendragon,WIN,10.09,18.38,0.34,13,2 of 3,1.81u,6.13,
+2026-11-04,Kyneton,8,,1,The Pendragon,WIN,13.49,18.38,1.81,68,3 of 3,3.62u,6.13,opens $13.49+ (2.2x ours): stake doubled
+2026-11-04,Kyneton,8,,10,Yahoo Bar,WIN,13.80,30.63,0.82,31,1 of 2,0.82u,10.21,
+2026-11-04,Kyneton,8,,10,Yahoo Bar,WIN,17.25,30.63,0.20,8,2 of 2,1.02u,10.21,
+2026-11-04,Kyneton,9,,6,Blaze Away,WIN,19.59,42.72,0.57,21,1 of 2,0.57u,14.24,
+2026-11-04,Kyneton,9,,6,Blaze Away,WIN,24.49,42.72,0.14,5,2 of 2,0.71u,14.24,
+2026-11-04,Kyneton,9,,1,Bold Bordeaux,WIN,18.21,39.87,0.61,23,1 of 2,0.61u,13.29,
+2026-11-04,Kyneton,9,,1,Bold Bordeaux,WIN,22.76,39.87,0.15,6,2 of 2,0.76u,13.29,
+2026-11-04,Kyneton,9,,12,Brutal World,WIN,20.46,44.54,0.54,20,1 of 2,0.54u,14.85,
+2026-11-04,Kyneton,9,,12,Brutal World,WIN,25.58,44.54,0.14,5,2 of 2,0.68u,14.85,
+2026-11-04,Kyneton,9,,4,Holding Captive,WIN,13.69,15.01,0.45,17,1 of 1,0.45u,10.13,EARLY: $15 or shorter only
