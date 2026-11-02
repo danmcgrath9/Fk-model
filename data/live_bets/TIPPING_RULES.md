@@ -59,6 +59,17 @@ were expected (-24u); under $12 they won 23 against 24.5, as calibrated as provi
 +86u at +35.6% (halves +32% / +42%), worst drawdown 31u; uncapped: +62u at +19.6%. Country/provincial are NOT capped:
 $8-12 made +77% and $20+ +74% there. Twitter units are half, so metro on Twitter tops out at 5u like everywhere else.
 
+## Big overlays: double the stake at 2.2x our price (2 Nov 2026)
+Founder, 2 Nov 2026: "NIce fucking love it". When TAB opens a horse at 2.2x our price or more and we rate it under $8,
+the stake is doubled; the 10u cap stays. On the order sheet it is one extra order per horse, from 2.2x our price
+(rounded up to the cent) to the usual ceiling, carrying the stake again, and every step already above that line carries
+double its total (betmatic_orders.py BIG_OVERLAY; the order's note says "stake doubled"). Pre-open sheets only.
+research/form_gbm/t_stake_edge.py, v10 holdout from 3 Jun, every live rule, at the open less 7%: the live stake is about
+2u in every overlay band, yet bets opening at 2.2x+ our price made +99% (170 bets, both halves). Doubling those rated
+under $8 (113 bets, about 6 a week): +1,556u (+59.4%) against +1,236u (+52.6%), worst drawdown 58u against 52u, profit
+per unit of drawdown 26.8 against 23.8, both halves up. $8+ made only +22% there, so it stays at one stake. The 2.2x
+line and the $8 cut were chosen on that holdout, so expect less than the test. Twitter units stay half the model stake.
+
 ## First starters: the race rule is scrapped (1 Nov 2026)
 Founder, 1 Nov 2026: "Yeah switch it, lets go". First starters themselves are never bet (betmatic_orders.py filters them),
 but a race holding one is bet like any other: no race is dropped from an order sheet for a first starter, at any price.

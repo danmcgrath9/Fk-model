@@ -1501,3 +1501,6 @@ blend pulls our chance down as the price drifts, so the most a horse can get is 
   +1,556u (+59.4%) v +1,236u (+52.6%), worst drawdown 58u v 52u, profit / drawdown 26.8 v 23.8, both halves up
   (+52%/+67% v +44%/+61%). 2.0x or 1.8x thresholds add drawdown faster than profit. Thresholds were chosen on this
   holdout: take some off. As orders it is one extra order per horse from 2.2x our price to the ceiling.
+- LIVE from 2 Nov 2026 (founder: "NIce fucking love it"): betmatic_orders.py BIG_OVERLAY, pre-open sheets only. First
+  sheets on it: Kyneton Wed 4 Nov (92 orders 78.5u -> 112 orders 123.8u if every order fired; 20 horses doubled) and
+  Flemington Thu 5 Nov (33 orders 49.1u -> 43 orders 76.1u; 10 horses doubled). No existing order changed.

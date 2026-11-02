@@ -10,15 +10,16 @@ the edge (see BLEND_W below). The 13 Oct rule, kept behind --no-blend, was
 formula misses without letting weak ones in) and a stake in up to eight price steps (the minimum x1 to x2), so the stake grows with the
 price the market opens at: each step its own order carrying the extra stake the live stake rule (stake_rule.py)
 gives at the next step's price, with our chance at that open taken from the same blend.
-Filters: our price $1.60-$15, no first starters, no first-up/bounce blocks, EARLY-only runners only at $8 or shorter,
-and nothing at 3x our price or more. The race-level first-starter rule is SCRAPPED
+Filters: our price $1.60-$15, no first starters, no first-up/bounce blocks, EARLY-only runners only at $15 or shorter,
+and nothing at 3x our price or more. BIG OVERLAYS (2 Nov 2026, t_stake_edge.py): an open at 2.2x our price or more
+on a horse we rate under $8 carries double the stake (10u cap), one extra order from 2.2x our price to the ceiling. The race-level first-starter rule is SCRAPPED
 (1 Nov 2026, founder: "switch it, lets go"; t_fs_half.py): races holding first starters are bet like any other.
 
 AFTER THE OPEN (--after-open): only the bets that were value at the opening price on the sheet's exact blend
 (DAYPREFIX-GTAG-open-bets.csv, from open_book.py), with the sheet's take-at as the minimum and the same tiers. A horse
 that was not value at the open never gets an order, so drift-made value cannot fire one.
 """
-import argparse, csv, json, os, sys
+import argparse, csv, json, math, os, sys
 here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, here)
 import stake_rule
 L = os.path.join(here, "../../data/live_bets")
@@ -52,7 +53,15 @@ METRO = {"flemington", "caulfield", "moonee valley", "sandown"}
 # provincial (196 v 197). Capped at $12 and back to full stakes: holdout +86u at +35.6% (halves +32% / +42%), worst
 # drawdown 31u, against +62u at +19.6% uncapped.
 METRO_MAX_OPEN = 12.0
-METRO_W, METRO_C, METRO_STAKE = 0.8, 0.986, 1.0   # 14 Oct: 3 steps sized at the next step: same holdout profit as 8 (+801u), at most 3 bets a horse (t_monthly.py)
+METRO_W, METRO_C, METRO_STAKE = 0.8, 0.986, 1.0
+# BIG OVERLAYS (founder, 2 Nov 2026: "NIce fucking love it"; t_stake_edge.py). The live stake does not grow with the
+# overlay at the open (about 2u in every edge band), yet bets that OPEN at 2.2x our price or more made +99% on the
+# holdout. When the open is 2.2x our price or more and we rate the horse under $8, the stake is doubled, 10u cap kept.
+# Holdout 3 Jun - 13 Oct, every live rule: +1,556u (+59.4%) against +1,236u (+52.6%), worst drawdown 58u v 52u, profit /
+# drawdown 26.8 v 23.8, both halves up; about 6 bets a week. The thresholds were chosen on that holdout, so expect less.
+# As orders: every step at or above 2.2x our price carries double its total, and a step is added at 2.2x itself when
+# the ladder has none there. Pre-open sheets only: the test is at the open, not after it.
+BIG_OVERLAY, BIG_OVERLAY_UNDER, BIG_OVERLAY_MULT = 2.2, 8.0, 2.0   # 14 Oct: 3 steps sized at the next step: same holdout profit as 8 (+801u), at most 3 bets a horse (t_monthly.py)
 
 
 def tiers(min_odds, cap, chance_at, only_ride, field, mult_at=None):
@@ -72,6 +81,26 @@ def tiers(min_odds, cap, chance_at, only_ride, field, mult_at=None):
         if s - prev >= 0.01:
             out.append((t, round(s - prev, 2), s)); prev = s
     return out
+
+
+def big_overlay(ts, ours, lo):
+    """ts [(price, extra, total)] -> (ts with every step at or above the 2.2x-our-price line doubled (10u cap) and a step
+    added on the line when the ladder has none there, the line). lo: the band's lowest price (the "open4+" ladder fires
+    only at $4+, so its line is never under $4). Unchanged, with line None, when we rate it $8+ or the line is past the
+    ceiling the caller checks."""
+    if not ts or ours >= BIG_OVERLAY_UNDER:
+        return ts, None
+    line = max(lo, math.ceil(BIG_OVERLAY * ours * 100 - 1e-6) / 100)   # rounded UP: never fires under 2.2x
+    tot = [(t, total) for t, _, total in ts]
+    below = [total for t, total in tot if t <= line]
+    new = [(t, total if t < line else min(stake_rule.MAX_UNITS, BIG_OVERLAY_MULT * total)) for t, total in tot]
+    if below and not any(abs(t - line) < 0.005 for t, _ in tot):
+        new.append((line, min(stake_rule.MAX_UNITS, BIG_OVERLAY_MULT * below[-1])))
+    out, prev = [], 0.0
+    for t, total in sorted(new):
+        if total - prev >= 0.01:
+            out.append((t, round(total - prev, 2), round(total, 2))); prev = total
+    return out, line
 
 
 def main():
@@ -158,7 +187,7 @@ def main():
                f"orders priced on the forecast-BSP blend: chance = p^{BLEND_W:g} x forecast BSP chance^{1 - BLEND_W:g}"))
         print(f"firm/drift stakes: drift third x{drift_forecast.DRIFT_MULT:g}, firm third x{drift_forecast.FIRM_MULT:g} "
               f"(forecast thresholds {FC.t1:.3f} / {FC.t2:.3f})")
-    nodrift = []
+    nodrift, big = [], []
 
     def add(r, ours, min_odds, cap, chance_at, note, band=None):
         """band: None for one ladder; "open4+" lifts every step under SHORT_OPEN to it; "under4" keeps only the steps
@@ -184,10 +213,18 @@ def main():
             ts = [x for x in ts if x[0] < SHORT_OPEN]; hi = min(cap, SHORT_OPEN - 0.01)
         if is_metro:
             ts = [(t, round(extra * METRO_STAKE, 2), round(total * METRO_STAKE, 2)) for t, extra, total in ts]
+        line = None
+        if not a.after_open:   # big overlays: x2 at an open of 2.2x our price or more, rated under $8 (2 Nov 2026)
+            ts2, line = big_overlay(ts, ours, SHORT_OPEN if band == "open4+" else 0.0)
+            if line is not None and line < hi and ts2 != ts:
+                ts = ts2; big.append(f"R{rc} {r['horse']} (ours ${ours:.2f}): x2 from ${line:.2f}")
+            else:
+                line = None
         for k, (t, extra, total) in enumerate(ts, 1):
+            nt = note if line is None or t < line else (note + "; " if note else "") + f"opens ${line:.2f}+ (2.2x ours): stake doubled"
             rows.append(dict(date=date, venue=venue, race=rc, jump=times.get(str(rc), ""), number=numbers.get((rc, nm(r["horse"])), ""), horse=r["horse"], bet="WIN",
                              min_odds=f"{t:.2f}", max_odds=f"{hi:.2f}", stake_units=f"{extra:.2f}", stake_dollars=f"{extra * UNIT_DOLLARS:.0f}",
-                             order=f"{k} of {len(ts)}", total_if_all_fire=f"{total:.2f}u", our_price=f"{ours:.2f}", note=note))
+                             order=f"{k} of {len(ts)}", total_if_all_fire=f"{total:.2f}u", our_price=f"{ours:.2f}", note=nt))
 
     if a.after_open:
         by = {(int(r["race"]), r["horse"]): r for r in v}
@@ -240,6 +277,8 @@ def main():
     with open(a.out, "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0]) if rows else ["date"]); w.writeheader(); w.writerows(rows)
     print(f"{a.out}: {len(rows)} orders on {len({(x['race'], x['horse']) for x in rows})} runners")
+    if big:
+        print(f"big overlays, stake doubled at 2.2x our price (10u cap): {'; '.join(big)}")
     if FC is not None and nodrift:
         print(f"forecast to drift at every step, no order (ladder dropped): {', '.join(sorted(set(nodrift)))}")
 
