@@ -1504,3 +1504,9 @@ blend pulls our chance down as the price drifts, so the most a horse can get is 
 - LIVE from 2 Nov 2026 (founder: "NIce fucking love it"): betmatic_orders.py BIG_OVERLAY, pre-open sheets only. First
   sheets on it: Kyneton Wed 4 Nov (92 orders 78.5u -> 112 orders 123.8u if every order fired; 20 horses doubled) and
   Flemington Thu 5 Nov (33 orders 49.1u -> 43 orders 76.1u; 10 horses doubled). No existing order changed.
+- AT BSP (t_stake_edge_bsp.py: same bets and stakes, settled at BSP less 8% instead of the open less 7%): the whole live
+  book is -2.1% at BSP (+52.6% at the open) and the doubling takes it to -3.0%. The doubled bets alone are +114% at the
+  open and -12.7% at BSP, both halves alike: 93% of them shorten, median BSP 0.48x the open, landing near our own price
+  (median BSP 1.16x ours). The edge is the opening price, not the horse: the market agrees with us by the jump. Only the
+  under-$4 group holds at BSP (+26%, 36 bets). So the doubling is for bets struck at the open and only there: never
+  carry it to a late or BSP bet, and expect these to be the bets that get an account noticed.
