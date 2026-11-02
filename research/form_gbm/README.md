@@ -1510,3 +1510,8 @@ blend pulls our chance down as the price drifts, so the most a horse can get is 
   (median BSP 1.16x ours). The edge is the opening price, not the horse: the market agrees with us by the jump. Only the
   under-$4 group holds at BSP (+26%, 36 bets). So the doubling is for bets struck at the open and only there: never
   carry it to a late or BSP bet, and expect these to be the bets that get an account noticed.
+- OUR PRICE AGAINST BSP on the doubled bets (t_big_ours_v_bsp.py): median ours $5.19, open $13.00, BSP $5.40; BSP closes
+  88% of the open-to-ours gap (79% on the rest of the book). BSP within 20% of ours on 41%, BSP/ours middle half
+  0.90-1.63. Winners: 22 against 24.9 by our price and 21.8 by BSP, so we run about 12% hot here, all of it in the
+  $4-$8 group (9 won v 13.3 ours v 11.5 BSP; under $4: 13 v 11.6 v 10.3). Where BSP finished 1.5x+ ours (33 bets) one
+  won; where it finished at ours or shorter (45 bets) 13 won.
