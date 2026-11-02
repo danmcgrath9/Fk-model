@@ -42,35 +42,41 @@ for rid, rs in sorted(by.items(), key=lambda t: t[1][0]["race"]):
         if not note:
             out.append((r["race"], nums.get((r["race"], k), ""), r["horse"], ours, trig, now))
 if page:
-    # Made easy to follow (founder, 2 Nov 2026: "can you make the lay bets easier to follow? Thats fkn impossible"): the
-    # runners whose price now is within a 1.5x drift of their lay-at price come first, each with a plain status; the
-    # rest, which need a big drift, are folded away underneath. Betfair SP on a roughie usually sits above the bookies'
-    # price, so 1.5x is the "could still happen" line, not a forecast.
-    START, END, CLOSE = "<!-- lays -->", "<!-- /lays -->", 1.5
+    # Every runner the rule names, in one table grouped by race, nothing added to the rule (founder, 2 Nov 2026: "its not
+    # even our rules, just make it all a bit pretty table"). Columns: number, horse, our price, the Betfair SP range it is
+    # a lay in, and the bookies' price now.
+    START, END = "<!-- lays -->", "<!-- /lays -->"
+    def money(x):
+        return f"${x:.0f}" if abs(x - round(x)) < 0.005 else f"${x:.2f}"
     def pnow(x):
-        try: return float(x)
+        try: return float(x) or None
         except (TypeError, ValueError): return None
-    near, far = [], []
+    trs, last, k = [], None, 0
     for rc, n, h, o, t, now in out:
         x = pnow(now)
-        (near if x is None or x * CLOSE >= t else far).append((rc, n, h, o, t, x))
-    def status(t, x):
-        if x is None: return "no price yet"
-        if x > LAY_MAX: return f"over ${LAY_MAX:.0f}: no lay"
-        if x >= t: return "<b>IN RANGE</b>"
-        return f"drift {t / x:.1f}x"
-    nm_ = lambda n, h: f"{html.escape(h)}" + (f" <span style='color:#777'>({n})</span>" if n else "")
-    trs = "".join(f"<tr><td><a href='#r{rc}'>R{rc}</a></td><td>{nm_(n, h)}</td><td>${t:.2f}</td>"
-                  f"<td>{'$%.2f' % x if x else '-'}</td><td>{status(t, x)}</td></tr>" for rc, n, h, o, t, x in near)
-    farl = " · ".join(f"R{rc} {html.escape(h)} (lay at ${t:.2f}, now {'$%.2f' % x if x else '-'})" for rc, n, h, o, t, x in far)
-    sec = (f"{START}<div class='bets'><h2>Lay book ({len(near)} to watch)</h2>"
-           f"<div class='note'>Paper, 1u at Betfair SP. A horse is a lay only if its Betfair SP finishes at its "
-           f"\"lay at\" price or higher, up to ${LAY_MAX:.0f}. Price now is the bookies' price.</div>"
-           + (f"<div class='tw'><table><tr><th>Race</th><th>Horse (no.)</th><th>Lay at SP of</th><th>Price now</th>"
-              f"<th>Status</th></tr>{trs}</table></div>" if near else "<div>None close to their lay price.</div>")
-           + (f"<details style='margin-top:8px'><summary>{len(far)} more need a big drift</summary>"
-              f"<div class='note'>{farl}</div></details>" if far else "")
-           + f"</div>{END}")
+        if rc != last:
+            cnt = sum(1 for r in out if r[0] == rc)
+            trs.append(f"<tr class='rh'><td colspan='5'><a href='#r{rc}'>Race {rc}</a> <span>{cnt} runners</span></td></tr>")
+            last, k = rc, 0
+        k += 1
+        trs.append(f"<tr class='{'z' if k % 2 == 0 else ''}'><td class='cn'>{n}</td><td class='hn'>{html.escape(h)}</td>"
+                   f"<td>{money(o)}</td><td class='lay'>{money(t)}+</td><td>{money(x) if x else '-'}</td></tr>")
+    css = ("<style>.lb{border:2px solid #6a1b9a;border-radius:10px;padding:12px 12px 6px;margin:22px 0}"
+           ".lb h2{margin:0 0 4px;border:0;padding:0;font-size:18px}.lb .rule{font-size:13px;color:#555;margin-bottom:8px}"
+           ".lb table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}"
+           ".lb th{font-size:11.5px;color:#666;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:6px;"
+           "text-align:right;border-bottom:1px solid #ddd}.lb th:nth-child(-n+2){text-align:left}"
+           ".lb td{padding:7px 6px;text-align:right;border-bottom:1px solid #eee}.lb td.cn{text-align:left;color:#777;width:24px}"
+           ".lb td.hn{text-align:left;font-weight:600}.lb td.lay{font-weight:700;color:#6a1b9a;white-space:nowrap}"
+           ".lb tr.z td{background:#faf7fc}.lb tr.rh td{text-align:left;background:#6a1b9a;color:#fff;font-weight:700;"
+           "padding:6px 8px;border:0}.lb tr.rh a{color:#fff;text-decoration:none}.lb tr.rh span{font-weight:400;opacity:.85;"
+           "margin-left:6px;font-size:12.5px}@media(prefers-color-scheme:dark){.lb{border-color:#ba68c8}.lb .rule,.lb th{color:#aaa}"
+           ".lb td{border-color:#333}.lb tr.z td{background:#1e1a22}.lb td.lay{color:#ce93d8}.lb tr.rh td{background:#4a148c}}</style>")
+    sec = (f"{START}{css}<div class='lb'><h2>Lay book: {len(out)} runners</h2>"
+           f"<div class='rule'>Paper, 1u at Betfair SP. Lay a horse if its Betfair SP finishes at its <b>lay if SP</b> "
+           f"price or higher, up to ${LAY_MAX:.0f}. That price is $15, or 1.6x our price if higher. Now is the bookies' price.</div>"
+           f"<div class='tw'><table><tr><th>No.</th><th>Horse</th><th>Ours</th><th>Lay if SP</th><th>Now</th></tr>"
+           f"{''.join(trs)}</table></div></div>{END}") if out else f"{START}<h2>Lay book: none</h2>{END}"
     pg = open(page).read()
     pg = re.sub(re.escape(START) + ".*?" + re.escape(END), "", pg, flags=re.S)
     i = pg.rfind("</body>")
