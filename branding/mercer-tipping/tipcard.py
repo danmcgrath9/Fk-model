@@ -31,12 +31,12 @@ body{{width:1080px;height:1350px;background:{NAVY};color:{INK};font-family:BC;di
 """
 def card(d):
     n = sum(len(m["bets"]) for m in d["meetings"]); hs = 58 if n <= 6 else 48 if n <= 9 else 40
-    # ten or more rows: tighter rows and badges, or the last rows and the footer fall off the 1350px card (17 Oct 2026)
+    # nine or more rows (was ten; 2 Nov 2026, nine rated rows over three meetings ran off the card): tighter rows and badges, or the last rows and the footer fall off the 1350px card (17 Oct 2026)
     dense = (".row{padding:7px 0}.r{font-size:28px;padding:4px 0}.t{font-size:19px;margin-top:4px}.list{gap:22px}"
-             ".u{font-size:27px}") if n >= 10 else ""
+             ".u{font-size:27px}") if n >= 9 else ""
     # ten or more rows that also carry rated prices, over three meetings: the rated line and the third heading still
     # push the footer off the card (24 Oct 2026), so the rows and headings close up further
-    if n >= 10 and any(x.get("rated") for m in d["meetings"] for x in m["bets"]):
+    if n >= 9 and any(x.get("rated") for m in d["meetings"] for x in m["bets"]):
         dense += ".row{padding:3px 0}.list{gap:12px}.mtg h2{margin-bottom:2px}.top{padding-bottom:16px}"
     # optional (18 Oct 2026, founder): "prices": false drops the price column; "brand": false drops the Mercer mark;
     # "foot": false drops the notes line at the bottom (21 Oct 2026, founder), and a card without the brand has no notes
