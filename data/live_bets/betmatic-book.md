@@ -784,3 +784,9 @@ Deductions: R4 4c, R5 2c, R6 19c (includes Mystic Reign's late scratching), R7 4
   Form King had no BSP yet) +2.69u; Into You $13.74 -0.36u; Wintery $2.70 +2.84u; Catwalk Icon $3.32 -1.45u. +0.57u.
 - Lay book (1u at BSP, $15-$40 and the trigger), 43 runners: R1-R3 settled, one lay, Meritorious (lay at $21.70, BSP
   $24.82, 9th) +0.92u. R4-R8: Form King holds no BSP yet (0.0), so 32 runners wait for it; settled when it lands.
+
+## The unit is $50 (founder, Mon 2 Nov: "$50 a unit duck")
+The 31 Oct change to $50 a unit reached the sends (Sun 1 Nov was sent at $50) but not the code: betmatic_orders.py's
+UNIT_DOLLARS, betmatic_html.py and the fk-betmatic workflow's default unit still said $37.50, so every dollar figure quoted
+on Mon 2 Nov was at $37.50. All three now default to $50. Kyneton Wed and Flemington Thu sheets rebuilt (orders unchanged,
+dollar column now at $50: $6,191 and $3,804 if every order fired). Ballarat Mon open bets +29.54u = +$1,477 at $50.
