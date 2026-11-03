@@ -840,5 +840,5 @@ settle. Settled on Form King below; the bracketed figures are what the day read 
 Lay book at $200 a lay (holdout, $15-$40): +$4,900 a week, +$21,000 a month at the backtest's +49%, July -$2,200 on eight
 winners, worst drawdown $15,200, biggest single hit $6,480; plan on +$11,000 to $13,000 a month. Backs at $100: +$7,800 a
 week on the holdout with the new staking. Code and the send default moved to $100; Kyneton Wed and Flemington Thu sheets
-re-dollared at $100 (orders unchanged): Kyneton $12,382, Flemington $7,608 if every order fired. Lay trial so far at $200:
+re-dollared at $100 (orders unchanged): Kyneton $12,383, Flemington $7,611 if every order fired. Lay trial so far at $200:
 34 lays, 0 winners, +31.28u = +$6,256.
