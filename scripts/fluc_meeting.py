@@ -1,7 +1,7 @@
 """One stored meeting's runners with their average price at the race's open and 30/40/45/50/60/90 min after it, and the
 latest best/average and the bookmakers on the best (27 Oct 2026, for the 30-90 min after-open top-up on a meeting that
 has not run). DB only, no credits; the flucs are as of the last stored pull. CSV between CSV-BEGIN and CSV-END.
-    python scripts/fluc_meeting.py swan-hill-20261027"""
+    python scripts/fluc_meeting.py swan-hill-20261027 [mins=30,60,720,1440]"""
 import os, sys
 from datetime import datetime, timezone
 import psycopg
@@ -13,6 +13,11 @@ def ms(v):
     try: return datetime.fromisoformat(str(v).replace("Z", "+00:00")).replace(tzinfo=timezone.utc).timestamp() * 1000
     except Exception: return None
 MINS = (30, 40, 45, 50, 60, 90)
+# an argument mins=30,60,720,1440 picks the minutes after the open instead (3 Nov 2026: 12 and 24 hours after the open,
+# to see which bets the after-open rule would have taken on a meeting that opened days before it runs)
+for a_ in sys.argv[1:]:
+    if a_.startswith("mins="): MINS = tuple(int(x) for x in a_[5:].split(","))
+sys.argv = [a_ for a_ in sys.argv if not a_.startswith("mins=")]
 print("CSV-BEGIN"); print("race,race_id,horse_id,number,name,scratched,race_open_ms,last_ms,open," + ",".join(f"m{m}" for m in MINS) + ",avg_now,best_now,best_bookies")
 with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
     for mid in sys.argv[1:]:
