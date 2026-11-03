@@ -1,0 +1,77 @@
+{
+ "day": "Wednesday",
+ "date": "4 November",
+ "meetings": [
+  {
+   "name": "Kyneton",
+   "note": "Heavy 8",
+   "bets": [
+    {
+     "race": 1,
+     "time": "12:55PM",
+     "horse": "Sabrina",
+     "price": "$11",
+     "rated": "$7.36",
+     "units": "1.19u"
+    },
+    {
+     "race": 2,
+     "time": "1:25PM",
+     "horse": "Mongol Heer",
+     "price": "$9.50",
+     "rated": "$4.46",
+     "units": "2.63u"
+    },
+    {
+     "race": 3,
+     "time": "2:00PM",
+     "horse": "Emanating",
+     "price": "$15",
+     "rated": "$7.72",
+     "units": "1.40u"
+    },
+    {
+     "race": 6,
+     "time": "3:45PM",
+     "horse": "Gregolimo",
+     "price": "$19.50",
+     "rated": "$11.44",
+     "units": "0.90u"
+    },
+    {
+     "race": 6,
+     "time": "3:45PM",
+     "horse": "His Finest Hour",
+     "price": "$11",
+     "rated": "$8.22",
+     "units": "1.05u"
+    },
+    {
+     "race": 8,
+     "time": "4:55PM",
+     "horse": "Foujita San",
+     "price": "$11",
+     "rated": "$8.07",
+     "units": "1.07u"
+    },
+    {
+     "race": 8,
+     "time": "4:55PM",
+     "horse": "Placo",
+     "price": "$8",
+     "rated": "$6.02",
+     "units": "1.50u"
+    },
+    {
+     "race": 9,
+     "time": "5:30PM",
+     "horse": "Blaze Away",
+     "price": "$26",
+     "rated": "$14.24",
+     "units": "0.71u"
+    }
+   ]
+  }
+ ],
+ "brand": false
+}
