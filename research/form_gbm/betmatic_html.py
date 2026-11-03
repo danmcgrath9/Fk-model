@@ -115,11 +115,11 @@ def main():
         rows.append(f"<tr><td><b>Total</b></td><td><b>{tot:.2f}u</b></td><td colspan='3'></td><td>"
                     + (f"<b>{pl:+.2f}u</b>" if anyres else "") + "</td></tr>")
     body = ("<table><tr><th>Horse</th><th>Units</th><th>Got on</th><th>Ded.</th><th>Our price</th>"
-            + ("<th>Now / P&amp;L</th>" if anyres else "<th>Now</th>") + "</tr>" + "".join(rows) + "</table>"
+            + ("<th>P&amp;L</th>" if anyres else "<th>Now</th>") + "</tr>" + "".join(rows) + "</table>"   # "P&L" alone once settled: "Now / P&L" pushed the column off a 390px phone (3 Nov 2026)
             "<div class='note'>Our price is what we got on at after TAB's deductions. ? = scratching in the race, TAB's deduction not in yet; "
             "+ = a later scratching, more to come.</div>") if rows else "<div>None.</div>"
     n_orders = sum(counts.values())
-    sec = (f"{START}<style>.bets.ob td,.bets.ob th{{padding:6px 4px}}</style><div class='bets ob'><h2>Our bets at the open ({nbet})</h2><div class='tw'>{body}</div></div>{END}")  # no notes on the page (founder, 24 Oct 2026)
+    sec = (f"{START}<style>.bets.ob td,.bets.ob th{{padding:6px 3px}}</style><div class='bets ob'><h2>Our bets at the open ({nbet})</h2><div class='tw'>{body}</div></div>{END}")  # no notes on the page (founder, 24 Oct 2026)
     page = open(a.page).read()
     page = re.sub(re.escape(START) + ".*?" + re.escape(END), "", page, flags=re.S)
     # the top bar's "Bets" button jumps to #bets; a page with no opening-price bets section has no such element, so this
