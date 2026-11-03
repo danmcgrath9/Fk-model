@@ -871,3 +871,17 @@ stake; abandoned meetings void (Ballarat Fri 23 Oct after R2, Traralgon Sat 31 O
 At $50 a unit that is +$14,222 on $13,461 staked. Real money the model's bets actually took: Geelong Murshidi +$1,260,
 Cranbourne Fri 23 Oct -$193, Flemington Sat 24 Oct -$110, Ballarat Mon 2 Nov Best Terms -$331: +$626 on $760. Don copies
 (founder's call, Sat 31 Oct) +$810 on $650. Lay book, paper from 28 Oct: 34 lays, 0 winners, +31.28u (+$6,256 at $200).
+
+## The weekend's lays, back-filled (Fri 30 Oct to Sun 1 Nov; founder, 3 Nov: "Sunday and Saturday?")
+No lay list was made on these days (the 2 Nov gap entry). Built now from the morning model files as they stood (Kilmore
+and Pakenham gd, Flemington gd, Mortlake/Wycheproof/Healesville of, Mornington s7v2), the rule unchanged, settled at BSP from
+the Form King results; the sheets are DAYPREFIX-TAG-lays.csv. A back-fill, labelled as one: the rule is mechanical and was
+fixed on 23 Oct, so nothing was chosen after the results, but these days were not watched live.
+- Fri 30 Oct: Kilmore 6 lays, 0 winners, +5.52u; Pakenham 10 lays, 0 winners, +9.20u.
+- Sat 31 Oct: Flemington 7 lays, 0 winners, +6.44u (Sass Appeal, Idle Flyer, Youmzaa, Grand Larceny, Mbube, Naifah, Swift
+  Force); Mortlake 6 lays, GARGANTUAN WON at BSP $24 (lay at $20.11+), -18.40u; Wycheproof 3 lays, MORE GIVE IT WON at
+  BSP $18.50 (lay at $15+), -15.66u; Healesville no lay (Betfair SP on 13 of 29 runners only, R4-R6 void); Traralgon
+  abandoned.
+- Sun 1 Nov: Mornington 3 lays, 0 winners, +2.76u (Fam Gorman 2nd at $15.50, Master Of The Air, Warrior Within).
+Weekend: 35 lays, 2 winners, -10.14u (-$2,028 at $200). Both winners were $15-$25 lays at bush meetings with thin pools.
+TRIAL TO DATE (28 Oct to 3 Nov, 8 race days): 69 lays, 2 winners, +21.14u, +31% on the lay stake (+$4,228 at $200).
