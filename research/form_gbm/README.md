@@ -1604,3 +1604,23 @@ The 30-60 minute watcher on the same three meetings (fluc_meeting.py mins=30,45,
 live edge 16 bets, 1 winner (Salarae $15 at 30 min, BSP $9.02), -20.36u; the +68% variant (edge 1.3, skip horses 20%+
 out from the open) 6 bets, Salarae the winner, +0.86u. Both the open book and the 30-60 window stood on 150-300 bets with
 a few dozen winners in the research; one Tuesday of six bets settles nothing either way.
+
+## Back at the open, lay at BSP: the gap locked in (3 Nov 2026, founder: "ways at BSP to make money other than lays"; t_greenup.py)
+Every live-rule bet on the v10 holdout from 3 Jun (1,145 bets, 2,620u, the live staking), then a lay of stake x open / BSP
+on the same horse at Betfair SP (8% commission), which returns about stake x (open/BSP - 1) whether it wins or loses. BSP is
+under the open on 81% of the book, median open/BSP 1.46.
+| | P/L | ROI | worst drawdown | weeks up | worst week | sd per week |
+|---|---|---|---|---|---|---|
+| hold every bet (the book) | +1,556u | +59.4% | 58u | 16/20 | -31.6u | 59.5u |
+| lay every bet at BSP | +1,207u | +46.1% | 4u | 20/20 | +8.0u | 23.7u |
+| lay at BSP with the OPEN as the odds limit (matched only when BSP < open; the rest held) | +1,172u | +44.7% | 12u | 20/20 | +6.0u | 26.8u |
+| lay only where BSP < 0.8x open | +1,263u | +48.2% | 15u | 20/20 | +3.5u | 38.3u |
+| lay only where BSP < 0.6x open | +1,341u | +51.2% | 31u | 19/20 | -4.2u | 33.8u |
+It adds no edge (it gives some up: the book runs a little hot against BSP and the lay pays commission); what it buys is the
+variance. The worst week goes from -32u to +6u and the drawdown from 58u to 12u for a quarter of the profit. The lay leg
+is small (mean 4.4u lay stake, liability 17u, about the back stake x the open) and sits at $2-$10 where the SP pool is
+deep. Betfair does the selection for free: an SP lay with the opening price as its odds limit is matched only when the
+horse has firmed, and voids when it has drifted, which is the third row. The one condition is the same as the book's:
+TAB has to have taken the back bet at the open. NOT the same as the $15-$40 lay book, which is a separate edge on
+different horses. Elsewhere at BSP: the bucket table (t_lay_halves.out) flips sign between halves everywhere except
+ours/BSP >= 1.6, so there is no false-favourite lay and no back at BSP beyond the top pick with a floor (+8%, 3 Nov).
