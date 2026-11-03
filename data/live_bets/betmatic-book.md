@@ -892,3 +892,13 @@ price, the back candidates with their back-if-favourite range) and the lay and b
 top bar. The back rule is in TIPPING_RULES.md (paper from Thu 5 Nov; the Kyneton page carries it a day early, also paper).
 Had it run this week: Tue 3 Nov one back, Tempesti (Flemington R5, favourite at BSP $6.06, ours $15.54), 13th, -1u; Mon 2 Nov
 none. Settle each day: settle_lays.py and settle_backs.py over the meeting's results.
+
+## Kyneton Wed 4 Nov, 9:32am re-price (final field, Form King's rating Dead 5, not the Heavy 8 the Monday sheet was priced on)
+34 scratched since the sheet, among them three of the eight open-book horses (Foujita San and Placo R8, Blaze Away R9:
+refunds). Open book standing, Monday's sheet at Form King's open: Sabrina 1.19u $11, Mongol Heer 2.63u $9.50, Emanating
+1.40u $15, Gregolimo 0.90u $19.50, His Finest Hour 1.05u $11: 5 bets, 7.17u, paper (bot off). Top-ups (paper, tracked only):
+Tomanado R9 0.74u at $13 (ours $10.48, take $12.57); His Finest Hour already at full stake; the rest under take-at (Mongol
+Heer $3.30, Emanating $5.50, Extreme Turbo $3.40 have been backed in). The 9:32 sheet on Dead 5 (d5w: 111 orders, 39
+horses, 176.59u if every order fired) is kept as 2026-11-04-kyneton-d5w-orders*.csv for the record and is NOT the open
+book; the run overwrote the pre-open sheet and it was restored from git, and pricemtg.sh now writes a re-price under its
+own tag. Lay book 2026-11-04-kyneton-d5w-lays.csv and back book -backs.csv on the page, with Game day.
