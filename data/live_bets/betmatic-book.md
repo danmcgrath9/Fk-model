@@ -808,3 +808,27 @@ Final fields at 9:33am, all 1 Nov rules. Scratched since the sheets: Echuca R6 F
   Comes Wozza 1.56u at $8.50. 9.87u.
 - Mildura (gdt): none. Form King holds no opening price for Mildura, so the open fills cannot be checked.
 - Wangaratta (s6t): none.
+
+## Tuesday 3 Nov settled (results pulled Tue 6:30pm, forced re-fetch; Form King results and BSPs), paper at the open
+No TAB deductions applied: the founder was asked for Flemington R2, R8 and Echuca R1 and said "Nah all good", so every
+bet settles at the price taken. ONE DIFFERENCE FROM THE FOUNDER'S RESULTS ("Yauson, Ranarsson, Frozen Tide won rest lost"):
+Form King has Celestial Option (Echuca R5, opened $13) WINNING at SP $4.20, BSP $4.92, Casamar second. Flagged to the
+founder; settled on Form King below, with the founder's version in brackets until he confirms.
+- Bets at the open, PAPER (BetMatic placed none: Echuca asked $2,780, Mildura $3,284, Wangaratta $3,166 and TAB took $0
+  on each; Flemington was never sent, it opened Friday): Flemington (the $12-cap metro sheet, the one the Mon 2 Nov entry
+  above records) Yauson 2.71u $4.80 WON +10.30u; Star Of Macedon 1.87u $6 3rd -1.87u; Ranarsson 3.25u $4 WON +9.75u.
+  Echuca Frozen Tide 3.39u $4.40 WON +11.53u; Frewdamoss 0.77u $16 7th -0.77u; Celestial Option 0.96u $13 WON +11.52u;
+  Flying Jude scratched, refund. Wangaratta Just Basil 2.33u $6 7th -2.33u; Startin'sumthin' 0.89u $21 8th -0.89u.
+  Mildura: Form King holds no open, so no open fills. 8 bets, 4 won, 16.17u, +37.23u (+230%, +$1,862 at $50)
+  [founder's results: 3 won, +24.75u, +$1,238].
+- Twitter card (half units at the posted prices; Frewdamoss and Celestial Option posted at BSP): Yauson $2.90 1.35u +2.56u;
+  Star Of Macedon $3.90 0.94u -0.94u; Ranarsson $2.15 1.63u +1.87u; Frozen Tide $2.90 1.70u +3.23u; Frewdamoss BSP $16
+  0.39u -0.39u; Celestial Option BSP $4.92 0.48u +1.88u; Just Basil $5 1.17u -1.17u; Startin'sumthin' $19 0.45u -0.45u;
+  Flying Jude scratched, refund. 8.11u, +6.60u (+81%, +$330) [founder's results: +4.24u].
+- Real money: none (bot off, TAB $0.65).
+- Lay book (1u at BSP, $15-$40 and the trigger; research/form_gbm/settle_lays.py, which reproduces Ballarat's +2.76u):
+  Flemington 10 lays, 0 winners, +9.20u (Tanabata, Big Wigs, Gas Station Rose, Strike Package, Autumn Mystery, Magnaspin,
+  Enfjaar, Mr Monaco, No Fuss, Cash); Echuca 3 lays, 0 winners, +2.76u (Altruist 2nd at BSP $22, Bronco Revolution,
+  Laura's Gold); Mildura none in the band; Wangaratta 4 lays, 0 winners, +3.68u (Style Guide, Opus, American Russ,
+  Tasman Park). 17 lays, 0 winners, +15.64u (+$782 at $50). Lay trial since Thu 29 Oct: Ballarat +2.76u, Tuesday +15.64u.
+- Top-ups (tracked only, never bet): Al Duca 2.35u $9 7th -2.35u; Mutsuhito 2.44u $7.5 4th -2.44u; Snow Party 0.88u $21 4th -0.88u; Ice Quake 4.99u $4.4 7th -4.99u; Here Comes Wozza 1.56u $8.5 11th -1.56u. 12.22u, -12.22u.

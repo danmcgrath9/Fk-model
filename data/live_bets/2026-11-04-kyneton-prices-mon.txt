@@ -1,0 +1,103 @@
+# Kyneton Wed 4 Nov (going HEAVY 8, our call on the forecast and our rain history), priced Mon 2 Nov midday on final fields, all 1 Nov rules; no market yet
+1, Jackpot Park, 0, 0
+1, Western Edge, 0, 0
+1, Johnny Tightlips, 0, 0
+1, Sabrina, 0, 0
+1, Pasatiempo, 0, 0
+1, Irish Eclipse, 0, 0
+1, Valentina Girl, 0, 0
+1, Assisi, 0, 0
+1, Lonnegan, 0, 0
+1, Diamond Heist, 0, 0
+2, Storm Bella, 0, 0
+2, Front Page Edition, 0, 0
+2, Honeysuckle Hill, 0, 0
+2, See Three Pee Oh, 0, 0
+2, Flyaway, 0, 0
+2, Mongol Heer, 0, 0
+2, Bourne Legacy, 0, 0
+2, Avedis, 0, 0
+2, Shamrock Prince, 0, 0
+2, Exploit, 0, 0
+2, Gangland, 0, 0
+2, Engulf, 0, 0
+2, Hurricane Girl, 0, 0
+2, Run Run Win, 0, 0
+3, Emanating, 0, 0
+3, Irish Master, SCR
+3, Platinum Rush, 0, 0
+3, Mister Speaker, 0, 0
+3, Silky Seth, 0, 0
+3, Ciphered, 0, 0
+3, Gun City, 0, 0
+3, Stomping Ground, 0, 0
+3, Mo, SCR
+3, Ruby Empire, 0, 0
+3, Misneach, 0, 0
+3, Noir Velocity, SCR
+3, Swift Action, SCR
+4, Enna's Dream, 0, 0
+4, Arcandam, 0, 0
+4, Attachments, 0, 0
+4, Fluent, 0, 0
+4, Bacash, 0, 0
+4, Job Done, 0, 0
+4, White Hot Mama, 0, 0
+5, Tapo, 0, 0
+5, Brave Carol, 0, 0
+5, Lady Sadler, 0, 0
+5, Packers Journey, 0, 0
+5, Mystic Reign, 0, 0
+5, The Birthday Party, 0, 0
+5, Divine Empress, 0, 0
+5, Bliss Bomb, 0, 0
+6, Gregolimo, 0, 0
+6, Ninyo, 0, 0
+6, Durban Harbour, 0, 0
+6, Governor King, 0, 0
+6, Sound Of Jura, 0, 0
+6, Weather Delay, 0, 0
+6, His Finest Hour, 0, 0
+6, Hurco, 0, 0
+6, Lunar Force, 0, 0
+6, Who I Think I Am, 0, 0
+6, Winter Nights, 0, 0
+7, Lim's Ida, 0, 0
+7, Cobblestone Way, 0, 0
+7, Delivering, 0, 0
+7, Seeyou Raider, 0, 0
+7, Twilight Elegance, SCR
+7, Savilla, 0, 0
+7, Regal Tycoon, 0, 0
+7, Coronationhercules, 0, 0
+7, Couldthisbetheone, 0, 0
+7, Sunlit Serenade, 0, 0
+7, Vim Vitae, SCR
+8, Regal Lion, 0, 0
+8, Virtuous Circle, 0, 0
+8, Foujita San, 0, 0
+8, Sun Gift, 0, 0
+8, Yahoo Bar, 0, 0
+8, The Pendragon, 0, 0
+8, Placo, 0, 0
+8, Prince Eric, 0, 0
+8, Bring Forth, 0, 0
+8, Real Class, 0, 0
+8, Ragazzone, 0, 0
+9, Sub Gauge, 0, 0
+9, Tomanado, SCR
+9, Brutal World, 0, 0
+9, Ryanman, 0, 0
+9, Titan's Spirit, SCR
+9, Rattle'n'roll, 0, 0
+9, Thinking Sensation, 0, 0
+9, Colt Forty Five, SCR
+9, Please Me Do, SCR
+9, Bold Bordeaux, 0, 0
+9, Miss Ellaneous, 0, 0
+9, Blaze Away, 0, 0
+9, Chasing Rainbows, 0, 0
+9, Posh Diamante, 0, 0
+9, Holding Captive, 0, 0
+9, Sayalero, 0, 0
+9, Extreme Turbo, 0, 0

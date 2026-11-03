@@ -1,0 +1,48 @@
+R1 Naval Command            finish 1  SP 1.85  BSP 2.02
+R1 Frosted Amber            finish 2  SP 14.0  BSP 16.81
+R1 Royal Overture           finish 3  SP 6.5  BSP 9.11
+R1 Brilliant Bull Ant       finish 4  SP 3.8  BSP 5.1
+R1 Astatine                 finish 5  SP 31.0  BSP 61.48
+R1 Acroman                  finish 6  SP 81.0  BSP 122.07
+R1 Graceful Dance           finish 7  SP 6.5  BSP 9.0
+R1 Aloof                    finish 8  SP 101.0  BSP 249.37
+R2 Riverlea Prince          finish 1  SP 3.8  BSP 5.44
+R2 Woah Shamrock            finish 2  SP 8.0  BSP 11.14
+R2 Style Guide              finish 3  SP 11.0  BSP 16.9
+R2 Titan's Soul             finish 4  SP 17.0  BSP 25.0
+R2 Mirraway                 finish 5  SP 2.9  BSP 2.98
+R2 Briar Island             finish 6  SP 10.0  BSP 10.5
+R2 Amarillo Sky             finish 7  SP 4.8  BSP 4.9
+R2 Tromso                   finish 8  SP 61.0  BSP 115.54
+R3 Creusa                   finish 1  SP 2.6  BSP 2.84
+R3 Jakbe Nimble             finish 2  SP 7.5  BSP 11.95
+R3 Dejavast                 finish 3  SP 10.0  BSP 17.0
+R3 Vidaloa                  finish 4  SP 12.0  BSP 16.0
+R3 Spin Class               finish 5  SP 7.5  BSP 8.18
+R3 All Too Swift            finish 6  SP 26.0  BSP 40.0
+R3 Just Basil               finish 7  SP 4.2  BSP 5.6
+R3 Startin'sumthin'         finish 8  SP 8.0  BSP 10.05
+R4 Prestige Geoffrey        finish 1  SP 3.5  BSP 3.49
+R4 Warrandyte Road          finish 2  SP 8.0  BSP 8.6
+R4 Opus                     finish 3  SP 15.0  BSP 20.0
+R4 Give Some Lip            finish 4  SP 4.2  BSP 4.8
+R4 Whisper The Wind         finish 5  SP 7.5  BSP 11.16
+R4 Dashing Donkey           finish 6  SP 6.0  BSP 8.2
+R4 Captain Barbossa         finish 7  SP 12.0  BSP 17.0
+R4 Moral Turpitude          finish 8  SP 8.0  BSP 12.62
+R5 Cumbrian Queen           finish 1  SP 6.0  BSP 6.6
+R5 Darken                   finish 2  SP 8.0  BSP 9.09
+R5 It'swhatyoumakeit        finish 3  SP 5.0  BSP 5.69
+R5 Sacred Ingot             finish 4  SP 3.0  BSP 3.71
+R5 Barrett Reef             finish 5  SP 5.5  BSP 6.88
+R5 American Russ            finish 6  SP 13.0  BSP 20.0
+R5 Prince Rupert            finish 7  SP 9.0  BSP 12.22
+R5 Apollo Sun               finish 8  SP 61.0  BSP 110.0
+R6 Densetsu                 finish 1  SP 2.8  BSP 3.4
+R6 Enigmatise               finish 2  SP 7.5  BSP 9.87
+R6 Montrock                 finish 3  SP 17.0  BSP 20.04
+R6 Wannabeapoodle           finish 4  SP 11.0  BSP 16.31
+R6 Proprietary              finish 5  SP 12.0  BSP 19.0
+R6 Belmasai                 finish 6  SP 6.5  BSP 9.4
+R6 Zamora                   finish 7  SP 3.7  BSP 4.0
+R6 Tasman Park              finish 8  SP 13.0  BSP 17.35

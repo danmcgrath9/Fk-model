@@ -1,0 +1,71 @@
+R1 Frozen Tide              finish 1  SP 2.1  BSP 2.22
+R1 Earthly Crown            finish 2  SP 18.0  BSP 26.0
+R1 Salina Special           finish 3  SP 3.9  BSP 5.34
+R1 Mutsuhito                finish 4  SP 7.5  BSP 7.8
+R1 Grunnettan               finish 5  SP 13.0  BSP 20.0
+R1 Crackerjack Hatch        finish 6  SP 6.0  BSP 6.85
+R1 Serin                    finish 7  SP 31.0  BSP 66.49
+R2 The Cunning Fox          finish 1  SP 2.05  BSP 2.2
+R2 Tempest Moon             finish 2  SP 4.4  BSP 5.19
+R2 Roaring Engine           finish 3  SP 3.4  BSP 4.22
+R2 Devoted To You           finish 4  SP 31.0  BSP 70.69
+R2 Smokin' Rohie            finish 5  SP 8.5  BSP 12.8
+R2 Call Me Francis          finish 6  SP 31.0  BSP 100.0
+R2 Benbulben                finish 7  SP 31.0  BSP 85.0
+R3 Salarae                  finish 1  SP 9.0  BSP 9.02
+R3 The Old Man              finish 2  SP 3.3  BSP 3.8
+R3 Ninetyfiveinafifty       finish 3  SP 4.4  BSP 5.25
+R3 Scusies                  finish 4  SP 61.0  BSP 97.4
+R3 Miss Verona              finish 5  SP 5.5  BSP 6.0
+R3 Charleanor               finish 6  SP 51.0  BSP 98.3
+R3 Frewdamoss               finish 7  SP 13.0  BSP 16.0
+R3 Bon Over                 finish 8  SP 16.0  BSP 24.0
+R3 Lady Courrege            finish 9  SP 18.0  BSP 23.0
+R3 See No City              finish 10  SP 9.5  BSP 12.0
+R3 Bambu Babe               finish 11  SP 51.0  BSP 90.0
+R3 Teddy's Trotter          finish 12  SP 21.0  BSP 28.79
+R4 Hegely                   finish 1  SP 7.0  BSP 6.86
+R4 Duchess Xenia            finish 2  SP 6.5  BSP 7.6
+R4 Thundering Shadow        finish 3  SP 10.0  BSP 11.7
+R4 Xtra Black               finish 4  SP 4.4  BSP 5.23
+R4 Kiss Me In Paris         finish 5  SP 7.0  BSP 8.2
+R4 Dark Galaxy              finish 6  SP 3.9  BSP 4.4
+R4 Oriane                   finish 7  SP 71.0  BSP 110.0
+R4 Join In The Dance        finish 8  SP 91.0  BSP 172.73
+R4 Bold Amore               finish 9  SP 12.0  BSP 15.05
+R4 Mighty Ruler             finish 10  SP 21.0  BSP 32.0
+R4 Wayne's Dream            finish 11  SP 31.0  BSP 46.0
+R5 Celestial Option         finish 1  SP 4.2  BSP 4.92
+R5 Casamar                  finish 2  SP 2.9  BSP 3.75
+R5 Some Chance              finish 3  SP 11.0  BSP 11.17
+R5 Snow Party               finish 4  SP 10.0  BSP 15.0
+R5 Beast Fighter            finish 5  SP 7.5  BSP 7.57
+R5 Orthotropic              finish 6  SP 91.0  BSP 162.55
+R5 Honeyplotkin             finish 7  SP 9.0  BSP 10.5
+R5 Tallingas Petey          finish 8  SP 21.0  BSP 32.0
+R5 Coil                     finish 9  SP 11.0  BSP 16.11
+R5 Storming Camelot         finish 10  SP 31.0  BSP 55.0
+R5 Amelloides               finish 11  SP 31.0  BSP 49.94
+R6 Shipstern Bluff          finish 1  SP 10.0  BSP 14.0
+R6 Bow Ribbon               finish 2  SP 3.0  BSP 3.59
+R6 San Marco                finish 3  SP 51.0  BSP 65.0
+R6 Bakersbend               finish 4  SP 11.0  BSP 14.84
+R6 Stepify                  finish 5  SP 21.0  BSP 27.29
+R6 Hexed                    finish 6  SP 26.0  BSP 46.0
+R6 Ice Quake                finish 7  SP 4.4  BSP 5.8
+R6 Black Adam               finish 8  SP 8.5  BSP 11.5
+R6 Bucks Night              finish 9  SP 81.0  BSP 130.54
+R6 Reel Latino              finish 10  SP 9.0  BSP 12.79
+R6 Here Comes Wozza         finish 11  SP 7.5  BSP 8.0
+R7 Ottalaus                 finish 1  SP 6.5  BSP 7.2
+R7 Altruist                 finish 2  SP 17.0  BSP 22.0
+R7 Tallingas Chief          finish 3  SP 61.0  BSP 112.43
+R7 Lady Maestro             finish 4  SP 3.9  BSP 4.62
+R7 Astari                   finish 5  SP 6.0  BSP 7.2
+R7 Laura's Gold             finish 6  SP 15.0  BSP 23.65
+R7 Sheila                   finish 7  SP 51.0  BSP 86.4
+R7 Bronco Revolution        finish 8  SP 21.0  BSP 24.0
+R7 Blue Moon Summit         finish 9  SP 10.0  BSP 15.0
+R7 Shelly's Legacy          finish 10  SP 4.8  BSP 5.09
+R7 Bridgeitall              finish 11  SP 14.0  BSP 19.5
+R7 Postwar                  finish 12  SP 14.0  BSP 20.0
