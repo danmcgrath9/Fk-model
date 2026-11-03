@@ -1634,3 +1634,25 @@ the one asked about: $4-$7 FAVOURITES we rate 1.6x+ won 13 of 36 and 11 of 25 ag
 it wins MORE than its price, not less. The lay edge lives where our price is short and the market walks away ($15-$40);
 below $15 the same ratio points the other way. (The $4-$7 favourite cell reads as a BACK at BSP, +50-60% on 61 bets and 24
 winners; too few to be a rule, filed as a curiosity against the 3 Nov finding that backing at BSP broadly loses.)
+
+## The other way, and a scan of every BSP cell (3 Nov 2026, founder: "if it's such bad ROI, surely the other way is a bet"; t_back_short.py, t_bsp_scan.py)
+BACKING at BSP the favourites the market has made against our price, $4-$7 band, both halves: ours 1.3x+ BSP 75 / 45 bets,
+22 / 13 winners against 15.8 / 9.4 expected (A/E 1.39 / 1.38), +33% / +31%; ours 1.6x+ 36 / 25 bets, 13 / 11 winners
+(1.73 / 2.12), +62% / +103%; ours 2x+ 13 / 8 bets, +77% / +18%. The edge grows with the disagreement and holds in both
+halves, which is more than most cells manage, and it is specific: favourites under $4 we rate long are flat to -28%,
+non-favourites at $4-$7 are +4% / +24% at 1.6x, $7+ is negative, all favourites -2% / -1%, every runner the market has
+shorter than us -1% / -7%. The story is an open race ($4-$7 favourite) where the money has picked a horse our form read
+does not like; the money knows. 120 bets and 35 winners at 1.3x is a candidate, not a rule: about one and a half standard
+errors, and the first thing to check is the live weeks since 14 Oct. Stats in the next paragraph.
+  $4-$7 favourites we rate 1.3x+: 120 bets, 35 winners, +39.1u flat (+33%), 6.8 bets a week, +2.2u a week
+  firmed from the open (BSP < open): 78%; median open/BSP 1.40; median ours $7.73, BSP $4.72, open $6.71
+  same horses backed at the OPEN instead: +118%
+  field size median 12; our top pick in those races was the BSP favourite 8% of the time
+THE SCAN (t_bsp_scan.py: 7 BSP bands x 8 BSP/ours ratios x favourite/2nd/3rd+/any, back and lay, 448 cells, reported only
+if positive in BOTH halves with 60+ runners in each): 21 cells, which is about what luck hands you from 448. The ones with
+a story: the $20-$40 lays are positive at EVERY ratio where the market is at or longer than us (BSP/ours 1.0-1.2: 4 winners
+of 269 against 9.9; 1.6-2.5: 7 of 492 against 17.7), so part of the live lay edge is the plain favourite-longshot bias
+and part is our price; $7-$12 and $12-$20 lays at 1.6-2.5x are positive both halves too (+53% / +14%, +68% / +14%), weaker
+in the late half, a reason to look at $10 as the floor after the trial, not before. Backs: $12-$20 where the market is a
+little shorter than us (0.85-1.0) +14% / +31% on 23 winners; $20-$40 where the market is clearly shorter (0.7-0.85) +82% /
++67% on 13 winners. Everything else is noise or a $40+ lay whose one winner costs 60u.
