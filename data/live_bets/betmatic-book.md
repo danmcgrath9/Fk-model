@@ -842,3 +842,10 @@ winners, worst drawdown $15,200, biggest single hit $6,480; plan on +$11,000 to 
 week on the holdout with the new staking. Code and the send default moved to $100; Kyneton Wed and Flemington Thu sheets
 re-dollared at $100 (orders unchanged): Kyneton $12,383, Flemington $7,611 if every order fired. Lay trial so far at $200:
 34 lays, 0 winners, +31.28u = +$6,256.
+
+## Founder, 3 Nov 2026 evening: "I'm comfortable we are on with Betfair, let's see how long until we get limited on TAB"
+Betfair lays are the founder's to place by hand in the last two minutes (projected SP at or over the trigger, lay at SP
+with the $40 max, $200 a lay); the morning list on each page is the instruction. From the first real lay the book carries
+what actually matched, not the paper 1u, so a part-match settles as what went on. TAB: the backs run at $100 a unit until
+TAB cuts them; every send's status line (asked / took / reduced) is logged per meeting so the first reduced fill is dated.
+Nothing has been sent at $100 yet: the bot is off and TAB holds $0.65.
