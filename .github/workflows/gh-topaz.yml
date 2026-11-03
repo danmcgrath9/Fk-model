@@ -1,11 +1,15 @@
 name: gh topaz
 
 # Greyhound form and results from Topaz (research/greyhound/README.md). Manual only.
-# Two guards before any call: the TOPAZ_API_KEY secret (issued by Betfair AU's automation team) and the repository
-# variable TOPAZ_TERMS_READ=yes, set by the founder after reading the terms that come with the key.
+# Two guards before any call: the TOPAZ_API_KEY secret (issued by GRV, personal use) and the repository variable
+# TOPAZ_TERMS_READ=yes, set by the founder after reading GRV's terms (Jason Adams' emails of 30 Oct 2026 until the
+# formal terms exist).
 # mode=probe: health + one Victorian day's column list, nothing stored. Run this first with a new key.
-# mode=pull: bulk runs, one file per state and month, kept on the "greyhound-history" release; a month the release
-# already holds is not pulled again (except this month and last), so re-running only fills gaps.
+# mode=pull: bulk runs, one file per state and month, kept on the "topaz-history" release of the PRIVATE data
+# repository (variable GREYHOUND_DATA_REPO, default danmcgrath9/fk-greyhound-data), never on this public one: GRV's
+# data is personal use. Written with the GREYHOUND_DATA_TOKEN secret (a fine-grained token with Contents read and
+# write on that repository only). A month the release already holds is not pulled again (except this month and last),
+# so re-running only fills gaps.
 # Separate from every fk-* workflow: no Form King key, no BetMatic, no database.
 
 on:
@@ -35,7 +39,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: write   # to create and upload to the greyhound-history release
+  contents: read    # the data goes to the private data repository, written with GREYHOUND_DATA_TOKEN
 
 jobs:
   topaz:
@@ -43,8 +47,8 @@ jobs:
     timeout-minutes: 120
     env:
       PYTHONUNBUFFERED: '1'
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GH_REPO: ${{ github.repository }}
+      GH_TOKEN: ${{ secrets.GREYHOUND_DATA_TOKEN }}
+      GH_REPO: ${{ vars.GREYHOUND_DATA_REPO || 'danmcgrath9/fk-greyhound-data' }}
       TOPAZ_API_KEY: ${{ secrets.TOPAZ_API_KEY }}
       TOPAZ_TERMS_READ: ${{ vars.TOPAZ_TERMS_READ }}
     steps:
@@ -58,24 +62,33 @@ jobs:
         if: github.event.inputs.mode != 'pull'
         run: python -m greyhound.pull --probe | tee -a "$GITHUB_STEP_SUMMARY"
 
-      - name: Refuse to store Topaz data in a public repository
+      - name: Refuse to store Topaz data anywhere but a private repository
         if: github.event.inputs.mode == 'pull'
         run: |
           # GRV's API is "for personal use only". A release on a public repository can be downloaded by anyone, so
           # storing Topaz files there would publish GRV's data. The probe (column names and fill rates only) is allowed.
-          VIS=$(gh repo view "$GH_REPO" --json visibility -q .visibility)
-          if [ "$VIS" != "PRIVATE" ]; then
-            echo "Refused: this repository is $VIS. Topaz data must go to private storage first (research/greyhound/README.md)." | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ -z "$GH_TOKEN" ]; then
+            echo "Refused: the GREYHOUND_DATA_TOKEN secret is not set (research/greyhound/README.md, Topaz storage)." | tee -a "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
+          if [ "$GH_REPO" = "${{ github.repository }}" ]; then
+            echo "Refused: GREYHOUND_DATA_REPO points at this public repository." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          VIS=$(gh repo view "$GH_REPO" --json visibility -q .visibility) || { echo "Refused: cannot read $GH_REPO with GREYHOUND_DATA_TOKEN." | tee -a "$GITHUB_STEP_SUMMARY"; exit 1; }
+          if [ "$VIS" != "PRIVATE" ]; then
+            echo "Refused: $GH_REPO is $VIS. Topaz data must go to a private repository." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          echo "Topaz files go to the topaz-history release of $GH_REPO (private)."
 
       - name: Fetch what the release already holds
         if: github.event.inputs.mode == 'pull'
         run: |
-          gh release view greyhound-history >/dev/null 2>&1 || gh release create greyhound-history --target main --latest=false \
-            --title "Greyhound history" --notes "Topaz bulk runs, one gzipped JSON per state and month (research/greyhound/README.md). Written by the gh topaz workflow; do not delete."
+          gh release view topaz-history >/dev/null 2>&1 || gh release create topaz-history --latest=false \
+            --title "Topaz history" --notes "GRV Topaz bulk runs, personal use only, one gzipped JSON per state and month (Fk-model research/greyhound/README.md). Written by Fk-model's gh topaz workflow; do not delete or make public."
           mkdir -p greyhound/cache/topaz
-          gh release download greyhound-history --dir greyhound/cache/topaz --pattern 'runs_*.json.gz' --skip-existing || true
+          gh release download topaz-history --dir greyhound/cache/topaz --pattern 'runs_*.json.gz' --skip-existing || true
 
       - name: Pull
         if: github.event.inputs.mode == 'pull'
@@ -92,4 +105,4 @@ jobs:
           # only the files this run wrote; the held ones are already on the release
           NEW=$(find greyhound/cache/topaz -name 'runs_*.json.gz' -newer /tmp/before-pull)
           [ -n "$NEW" ] || { echo "nothing new to upload"; exit 0; }
-          gh release upload greyhound-history $NEW --clobber
+          gh release upload topaz-history $NEW --clobber
