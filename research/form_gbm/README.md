@@ -1587,3 +1587,16 @@ units on early." t_plunge.py, t_plunge2.py, v10 holdout. A plunge = BSP at or un
   What survives weakly: three or more negative themes win less than we rate them (13 won v 20.3, A/E 0.64, +11% at the
   open; 156 bets), the same "messy form" read as t_drifters.py. Not a rule on its own. LESSON: an attribution from
   trees that saw the race is not evidence about the race; the in-sample table would have sold a rule that is not there.
+
+## What the 12-hours-after rule would have bet on Tue 3 Nov (3 Nov 2026, founder: "we have the prices, so what would have our bets been today 12 hours after open?")
+
+Form King's fluc record (scripts/fluc_meeting.py mins=720,1440) for Flemington (opened Fri), Echuca and Wangaratta
+(opened Mon); Mildura holds no market history. The README's "12 hours after" row (+10%) is the open bets' OWN horses
+re-taken at the 12-hour price when it still clears the sheet's take-at. On Tuesday that is ONE bet: Startin'sumthin'
+$21 to $18 (take-at $15.70), 0.72u, lost. Every winner had firmed under its take-at within 12 hours: Yauson $4.80 to
+$2.80 (take-at $4.37), Ranarsson $4 to $2.50 ($3.53), Frozen Tide $4.40 to $2.76 ($3.75), Celestial Option $13 to $5
+($11.96); Star Of Macedon, Frewdamoss and Just Basil were under too. At 24 hours nothing clears. The open book was
++37.23u on the same horses. The wider reading (every runner clearing the live rule at the 12-hour price, drifters
+included) is 11 bets, 0 winners, -27.57u, and at edge 1.3 6 bets, -17.93u: the horses still over the line 12 hours
+after the open are the ones the market has walked away from. Same answer as Kyneton Wed (no bets at 12 or 24 hours).
+Scripts in the session scratchpad (after_open_tue.py, after_open_sheet_tue.py); the fluc export is not kept in the repo.
