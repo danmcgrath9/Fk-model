@@ -21,10 +21,10 @@ on:
         description: 'send: dollars a unit (founder, 3 Nov 2026 evening: "$50 a bet and $200 a lay"; $100 for an hour that evening, $50 from 31 Oct, $37.50 from 28 Oct)'
         default: '50'
       race:
-        description: 'cancel: only this race (blank = every bet in the ledger)'
+        description: 'cancel / send: only this race (blank = every row)'
         default: ''
       number:
-        description: 'cancel: only this saddlecloth number in that race'
+        description: 'cancel / send: only this saddlecloth number in that race (a game-day back: file = the -backs-betmatic.csv, when = best)'
         default: ''
       when:
         description: "send: 'open' = fire at the market's open (normal); 'now' = place straight away on a market already up (test bets); 'best' = now, High Odds First at the top bookie price"
@@ -79,7 +79,7 @@ jobs:
           case "$A" in
             check)  python betmatic/betmatic_send.py check ;;
             send)   NOW=""; [ "$WHEN" = "now" ] && NOW="--now"; [ "$WHEN" = "best" ] && NOW="--now --best-price"
-                    python betmatic/betmatic_send.py send "$FILE" --unit "$UNIT" --session "$SESSION" ${TAG:+--tag "$TAG"} $NOW $SEND ;;
+                    python betmatic/betmatic_send.py send "$FILE" --unit "$UNIT" --session "$SESSION" ${TAG:+--tag "$TAG"} ${RACE:+--race "$RACE"} ${NUM:+--number "$NUM"} $NOW $SEND ;;
             cancel) python betmatic/betmatic_send.py cancel "$FILE" ${RACE:+--race "$RACE"} ${NUM:+--number "$NUM"} $SEND ;;
             status) python betmatic/betmatic_send.py status "$FILE" ;;
             pending) python betmatic/betmatic_send.py pending "$FILE" ;;

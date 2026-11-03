@@ -108,6 +108,12 @@ def label(o, step, tag=""):
 
 def send(a):
     rows = list(csv.DictReader(open(a.orders)))
+    # one race or one horse from the file (3 Nov 2026, the game-day back: the founder watches Betfair's projected SP and,
+    # when the favourite is going to land in its range, fires that one row now at the top bookie price)
+    if getattr(a, "race", None): rows = [r for r in rows if r["race"] == str(a.race)]
+    if getattr(a, "number", None): rows = [r for r in rows if r["number"] == str(a.number)]
+    if not rows:
+        sys.exit("no rows match that race / number in the order file")
     bad = [r for r in rows if not r.get("number") and not r.get("horse")]
     if bad:
         sys.exit(f"{len(bad)} rows have no saddlecloth number and no horse (rebuild the order file with --numbers)")
@@ -402,6 +408,7 @@ if __name__ == "__main__":
     s.add_argument("--best-price", action="store_true", help="with --now: High Odds First across every running session (the top bookie price)")
     s.add_argument("--allow-short", action="store_true", help="send even if the TAB balance is below the total stake")
     s.add_argument("--tag", default="", help="suffix for every label, for a resend after the first set already fired (e.g. b)")
+    s.add_argument("--race", help="only this race's rows"); s.add_argument("--number", help="only this saddlecloth number (with --race)")
     s.add_argument("--send", action="store_true")
     c = sp.add_parser("cancel"); c.add_argument("ledger"); c.add_argument("--race"); c.add_argument("--number"); c.add_argument("--send", action="store_true")
     t = sp.add_parser("status"); t.add_argument("ledger")

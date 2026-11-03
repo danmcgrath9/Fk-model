@@ -194,3 +194,9 @@ not the second favourite at the same price, not a favourite under $4, not a favo
 only (flat out of sample). Settled from Form King's results with research/form_gbm/settle_backs.py. Paper, four weeks, then
 judged, like the lay book; the dollar size of a unit is not set until it goes real. Every meeting page carries the lay book,
 the back book and a Game day section (race by race, that race's lays and backs) from lay_sheet.py.
+GAME-DAY SEND (founder, 3 Nov: "follow Betfair but then can send out a betmatic note when we know it's going to land in there"):
+every build writes DAYPREFIX-GTAG-backs-betmatic.csv, one BetMatic row per back candidate (min $4, max its cap, 1u). The
+founder watches Betfair's projected SP; when the favourite is going to land in its range, the fk-betmatic workflow sends
+THAT ONE ROW (action send, file = the -backs-betmatic.csv, race and number, when = best, unit = the dollars, dry_run = no):
+a standard bet now, High Odds First at the top bookie price, so the bookies carry the back and Betfair only gives the
+signal. Allow about a minute from dispatch to placement: fire it three or four minutes out, not one.

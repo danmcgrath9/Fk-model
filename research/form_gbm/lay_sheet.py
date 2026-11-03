@@ -54,6 +54,11 @@ for rid, rs in sorted(by.items(), key=lambda t: t[1][0]["race"]):
         ours = s_ / r["p_model"]; cap = min(BACK_HI, ours / BACK_X); k = norm(r["horse"])
         if cap < BACK_LO or k in fsk or not held.get(k, True): continue
         backs.append((r["race"], nums.get((r["race"], k), ""), r["horse"], ours, cap, px.get((r["race"], k), "")))
+date_, venue_ = pre[:10], pre[11:].replace("-", " ").title()
+with open(f"{L}/{pre}-{g}-backs-betmatic.csv", "w") as fh:   # one BetMatic row per candidate: fired one at a time, now at the top price, when Betfair says it lands (3 Nov 2026)
+    fh.write("date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note\n")
+    for rc, n, h, o, cap, now in backs:
+        fh.write(f"{date_},{venue_},{rc},,{n},{h},WIN,{BACK_LO:.2f},{cap:.2f},1.00,,1 of 1,1.00u,{o:.2f},back only as the favourite at $4 to {cap:.2f} (Betfair projected SP)\n")
 with open(f"{L}/{pre}-{g}-backs.csv", "w") as fh:
     fh.write("race,horse,ours,back_if_favourite_bsp_at_least,back_if_favourite_bsp_at_most,price_now\n")
     for rc, n, h, o, cap, now in backs: fh.write(f"{rc},{h},{o:.2f},{BACK_LO:.2f},{cap:.2f},{now}\n")
