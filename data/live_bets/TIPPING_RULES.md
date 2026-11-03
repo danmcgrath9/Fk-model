@@ -184,3 +184,13 @@ $7,800 at the $40 max, $5,100 on the average lay; a loser pays +$184. Twitter un
 the bot is off and TAB holds $0.65; the lay trial runs to its four weeks before a real lay goes on.
 AMENDED the same evening (founder: "Do $50 a bet and $200 a lay"): a back unit is $50 (10u cap = $500 on one horse); a
 lay stays $200. The $100 back unit lasted an hour and was never sent on.
+
+## Paper back book at Betfair SP, from Thu 5 Nov 2026 (founder, 3 Nov: "a lay and back table down the bottom ... a game day tab")
+Rule fixed before the first race (research/form_gbm/README.md 3 Nov; t_fav47_months.py, t_fav47_live.py): back 1u at Betfair
+SP the horse that is the BSP FAVOURITE of its race when its BSP is $4 to $7 AND our price (the live shaded model) is at least
+1.6x the BSP, which on the page reads as "back if fav: $4 to $X" with X = ours / 1.6 capped at $7. Nothing else is a back:
+not the second favourite at the same price, not a favourite under $4, not a favourite we agree with. Backtest 3 Jun-13 Oct
+61 bets, 24 winners, +79%; the live weeks 14 Oct-3 Nov 17 bets, 6 winners, +53%; the 1.3x line is tracked in the research
+only (flat out of sample). Settled from Form King's results with research/form_gbm/settle_backs.py. Paper, four weeks, then
+judged, like the lay book; the dollar size of a unit is not set until it goes real. Every meeting page carries the lay book,
+the back book and a Game day section (race by race, that race's lays and backs) from lay_sheet.py.

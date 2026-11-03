@@ -885,3 +885,10 @@ fixed on 23 Oct, so nothing was chosen after the results, but these days were no
 - Sun 1 Nov: Mornington 3 lays, 0 winners, +2.76u (Fam Gorman 2nd at $15.50, Master Of The Air, Warrior Within).
 Weekend: 35 lays, 2 winners, -10.14u (-$2,028 at $200). Both winners were $15-$25 lays at bush meetings with thin pools.
 TRIAL TO DATE (28 Oct to 3 Nov, 8 race days): 69 lays, 2 winners, +21.14u, +31% on the lay stake (+$4,228 at $200).
+
+## Pages: lay and back book at the bottom, Game day race by race (founder, 3 Nov 2026)
+From Kyneton Wed 4 Nov every page has the open bets at the top, a Game day section (per race: the lays with their lay-if-SP
+price, the back candidates with their back-if-favourite range) and the lay and back books under it, Game day button in the
+top bar. The back rule is in TIPPING_RULES.md (paper from Thu 5 Nov; the Kyneton page carries it a day early, also paper).
+Had it run this week: Tue 3 Nov one back, Tempesti (Flemington R5, favourite at BSP $6.06, ours $15.54), 13th, -1u; Mon 2 Nov
+none. Settle each day: settle_lays.py and settle_backs.py over the meeting's results.
