@@ -1577,3 +1577,13 @@ units on early." t_plunge.py, t_plunge2.py, v10 holdout. A plunge = BSP at or un
   By 9:30am only 20% of the firmers firm further to BSP (41-50% in the first hour), so the move is over before race
   morning and the price is past our edge; every price band is negative at 9:30 ($5-$8: 2 of 41, -79%). Small sample,
   one direction. The edge is the opening price and nothing after it; Ranarsson at $2.05 at 9:30am was not a bet.
+- "IF THE WHY LINE IS ALL POSITIVES, IS IT A PLUNGE HORSE?" (founder, 3 Nov 2026; t_allpositive.py, t_allpositive_oos.py,
+  t_pre6_train.py). The page's Why themes recomputed for every holdout runner. With the LIVE trees (all9, trained on
+  every race, so in-sample) it looked like yes: sheet bets with no negative theme plunged 46% and made +65% at the open,
+  two-plus negatives 31% and +26%. OUT OF SAMPLE (trees trained on races before 3 Jun only, two seeds, 70 s each) it
+  goes away: no negative 35% plunge, A/E 0.98, +50%; one negative 40%, A/E 1.08, +75%; two-plus 38%, A/E 0.83, +29%;
+  the whole book 38% and +53%. Over every rated runner the no-negative group plunges 12% against 13% for all. A clean
+  Why line does not mark a plunge: the plunge rate is the overlay at the open (t_plunge.py), whatever the themes say.
+  What survives weakly: three or more negative themes win less than we rate them (13 won v 20.3, A/E 0.64, +11% at the
+  open; 156 bets), the same "messy form" read as t_drifters.py. Not a rule on its own. LESSON: an attribution from
+  trees that saw the race is not evidence about the race; the in-sample table would have sold a rule that is not there.
