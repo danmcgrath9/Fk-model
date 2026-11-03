@@ -1656,3 +1656,10 @@ and part is our price; $7-$12 and $12-$20 lays at 1.6-2.5x are positive both hal
 in the late half, a reason to look at $10 as the floor after the trial, not before. Backs: $12-$20 where the market is a
 little shorter than us (0.85-1.0) +14% / +31% on 23 winners; $20-$40 where the market is clearly shorter (0.7-0.85) +82% /
 +67% on 13 winners. Everything else is noise or a $40+ lay whose one winner costs 60u.
+BACKTEST, month by month (t_fav47_months.py, flat 1u at BSP, 8% commission). 1.3x line: 120 bets, 35 winners (29% strike
+against BSP's 21%), 120u staked, 159.14u returned, +39.14u (+33%); June +22%, July +46%, August +26%, September +62%,
+October (3 bets) -100%; worst drawdown 16u, longest losing run 11; 6.8 bets a week, +2.2u a week, about $11,600 a year at
+$100 flat. 1.6x line: 61 bets, 24 winners (39%), 61u staked, 109.06u returned, +48.06u (+79%); every full month +18% to
++155%; drawdown 7u, longest losing run 7; 3.5 bets a week, +2.7u a week, about $14,200 a year at $100. The 1.3x-1.6x slice
+on its own is 59 bets for -9u, so the edge sits at 1.6x and up; the 1.3x line is the wider, steadier version of the same
+thing. Candidate for a paper track beside the lay book; the live weeks since 14 Oct are the next check.
