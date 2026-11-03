@@ -1570,3 +1570,10 @@ units on early." t_plunge.py, t_plunge2.py, v10 holdout. A plunge = BSP at or un
   price (logit last BSP, or a flag) leaves log loss unchanged (0.2768 -> 0.2771) and makes the live book WORSE
   (+52.6% -> +47.3%, drawdown 52u -> 74u), because few of those horses open at 1.2x us; a plain x1.15 on the chance of
   "under $2.50 last start" is +1,289u v +1,236u (+53.4% v +52.6%), inside the noise. Nothing here is worth a rule.
+- CHASING THE FIRM AFTER THE OPEN (t_chase_firm.py): our sheet bets joined to Form King's price path for the meetings both
+  the holdout and fluc_after_open.md cover (184 bets, 32 winners, to 13 Oct). Bet the sheet's stake again at time T on
+  horses that have firmed to 0.7x the open or shorter: 15 min after the open +3% (54 bets), 1 h -12%, 3 h -12%, 6 h +5%,
+  12 h -2%, 9:30am race day -34% (143 bets), 1 h before -29%, last price -28%. The same horses at the open: +36% to +90%.
+  By 9:30am only 20% of the firmers firm further to BSP (41-50% in the first hour), so the move is over before race
+  morning and the price is past our edge; every price band is negative at 9:30 ($5-$8: 2 of 41, -79%). Small sample,
+  one direction. The edge is the opening price and nothing after it; Ranarsson at $2.05 at 9:30am was not a bet.
