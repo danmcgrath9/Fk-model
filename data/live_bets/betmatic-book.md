@@ -300,6 +300,8 @@ The rule is fixed before the first race (research/form_gbm/README.md, 23 Oct; t_
   BAND WIDENED $30 -> $40 on day one, before any race (founder, 28 Oct: "lets get more profit, $15 to $40"). Backtest 3 Jun-13 Oct,
   1u lays: $15-$30 562 lays +295u (+52%, 2.5% of liability, biggest loss 27u); $15-$40 841 lays +425u (+50%, 2.0% of liability,
   biggest loss 32u), no losing month either way; the $30-$40 slice alone is 4 winners, A/E 0.75 / 0.24 by half.
+  CORRECTION (3 Nov, t_lay_months.py on the refreshed holdout, 870 lays +427u): July IS a losing month, 8 winners from 226
+  lays, -11u ($15-$30: 6 of 161, -5.5u); the other four months +50u to +148u. 'No losing month' was wrong.
 - Paper stake 1u lay at Betfair SP: a loser pays +0.92u (8% commission; NSW/ACT tracks 10%, +0.90u), a winner costs (BSP - 1)u.
 - Settled from Form King's results (betfairStartingPrice). A horse whose BSP misses the band or the trigger is no bet.
 - Backtest to beat: holdout $15-$30 band, 562 lays, 10 winners against 27 expected; +45% / +60% on the lay stake by half.
