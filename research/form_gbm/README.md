@@ -1624,3 +1624,13 @@ horse has firmed, and voids when it has drifted, which is the third row. The one
 TAB has to have taken the back bet at the open. NOT the same as the $15-$40 lay book, which is a separate edge on
 different horses. Elsewhere at BSP: the bucket table (t_lay_halves.out) flips sign between halves everywhere except
 ours/BSP >= 1.6, so there is no false-favourite lay and no back at BSP beyond the top pick with a floor (+8%, 3 Nov).
+
+## Laying short ones we rate long (3 Nov 2026, founder: "our favourites that we have at like 2x the price? Or favourites we have between $4-$7 that are 1.6x the price?"; t_lay_favs.py)
+v10 holdout from 3 Jun, 1u lay at BSP, 8% commission, both halves. No. Every short cut loses or flips sign: BSP favourites we
+rate 2x+ win 1.12 / 0.81 of what BSP says (-31% / +13%); favourites we rate 1.6x+ 1.15 / 0.93 (-29% / -6%); any runner
+$4-$7 we rate 1.6x+ 1.19 / 1.30 (-20% / -36%); under $4 at 1.6x+ 1.07 / 0.74; $7-$15 at 1.6x+ 1.01 / 0.72. The worst cell is
+the one asked about: $4-$7 FAVOURITES we rate 1.6x+ won 13 of 36 and 11 of 25 against 7.5 and 5.2 expected (A/E 1.73 and
+2.12), -78% and -121% on the lay. A horse the money makes favourite against our price is the market knowing something, and
+it wins MORE than its price, not less. The lay edge lives where our price is short and the market walks away ($15-$40);
+below $15 the same ratio points the other way. (The $4-$7 favourite cell reads as a BACK at BSP, +50-60% on 61 bets and 24
+winners; too few to be a rule, filed as a curiosity against the 3 Nov finding that backing at BSP broadly loses.)
