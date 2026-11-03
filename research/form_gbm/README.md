@@ -1600,3 +1600,7 @@ $2.80 (take-at $4.37), Ranarsson $4 to $2.50 ($3.53), Frozen Tide $4.40 to $2.76
 included) is 11 bets, 0 winners, -27.57u, and at edge 1.3 6 bets, -17.93u: the horses still over the line 12 hours
 after the open are the ones the market has walked away from. Same answer as Kyneton Wed (no bets at 12 or 24 hours).
 Scripts in the session scratchpad (after_open_tue.py, after_open_sheet_tue.py); the fluc export is not kept in the repo.
+The 30-60 minute watcher on the same three meetings (fluc_meeting.py mins=30,45,60; watcher_tue.py in the scratchpad):
+live edge 16 bets, 1 winner (Salarae $15 at 30 min, BSP $9.02), -20.36u; the +68% variant (edge 1.3, skip horses 20%+
+out from the open) 6 bets, Salarae the winner, +0.86u. Both the open book and the 30-60 window stood on 150-300 bets with
+a few dozen winners in the research; one Tuesday of six bets settles nothing either way.
