@@ -1559,8 +1559,14 @@ units on early." t_plunge.py, t_plunge2.py, v10 holdout. A plunge = BSP at or un
 - RANARSSON (Flemington Cup Day R8, 3 Nov 2026: ours $2.56 model / $2.61 blended, opened $4, SP $1.85, won; t_plunge3.py).
   Two starts, two wins: a 7-length-above-class debut at BSP $13.70 with a 113 speed figure, then a win at BSP $1.52 18
   days earlier, Hayes stable, Melham. The model prices two runs as two runs; the market had already priced him at $1.50
-  once and extrapolated. The one profile the data supports: LIGHTLY RACED LAST-START WINNERS (1-3 starts), 261 rated
-  runners, 62 won where our price expected 54 (A/E 1.14), +12% even at BSP; under $4 it is 33 won v 28 (A/E 1.18). That
-  is a 15% uplift to the chance, about $2.56 -> $2.25, not $1.85. On the sheet bets the same profile under $4 is 22 bets,
-  10 won v 8.4, +123% at the open, 55% plunge. The model holds how a horse's price MOVED last start (fl_*) and a
-  market-class figure, not the plain level of its last-start BSP: worth testing as a stage-2 input.
+  once and extrapolated. CORRECTED THE SAME DAY (t_lastbsp2.py): the "lightly raced last-start winners are underrated
+  by 15%" line this entry first carried was a bug in t_plunge3.py, which took the most recent past run whether or not
+  it was a TRIAL. Trials skipped, the profile is 162 runners, 34 won v 33.7 expected: not underrated. (Trial winners
+  with 1-3 starts read A/E 1.37, but 1.00 / 1.96 by half: noise.)
+- THE MARKET'S PRICE FOR THE HORSE AT ITS LAST RACE (t_lastbsp.py, t_lastbsp2.py): horses it had under $2.50 last start
+  win more than we expect (234 rated runners, 71 won v 58.3, A/E 1.22, by half 1.27 / 1.16; under $2.50 AND ours under
+  $4: 50 v 38.8, A/E 1.29, both halves); $5+ last start we slightly overrate (A/E 0.95-0.96). Our ratings do not fully
+  carry the market's past opinion of a horse. BUT it does not pay in the book: a cross-fitted logistic on top of our
+  price (logit last BSP, or a flag) leaves log loss unchanged (0.2768 -> 0.2771) and makes the live book WORSE
+  (+52.6% -> +47.3%, drawdown 52u -> 74u), because few of those horses open at 1.2x us; a plain x1.15 on the chance of
+  "under $2.50 last start" is +1,289u v +1,236u (+53.4% v +52.6%), inside the noise. Nothing here is worth a rule.
