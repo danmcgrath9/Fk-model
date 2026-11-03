@@ -857,3 +857,17 @@ lays $200. The projection he asked for, every state at 40% under the Victorian b
 lays = $268k a year; all states about $1.07m a year, $89k a month ($511k backs, $561k lays). At the full backtest, all
 states, about $1.8m. Every non-Victorian figure assumes the edge travels, which the August week did not show on the
 back side (+13%, one standard error from zero) and has never been tested on the lay side.
+
+## The book since 9 Oct, as it happened (founder, 3 Nov: "What's our book been since we've been live October 9")
+Open book, model stakes at Form King's open, TAB's deductions where reported, paper plus the few real fills at their model
+stake; abandoned meetings void (Ballarat Fri 23 Oct after R2, Traralgon Sat 31 Oct). From this file's own settled entries:
+| Week | Bets | Won | Staked | P/L | ROI |
+|---|---|---|---|---|---|
+| Fri 9 - Sun 18 Oct (forward test) | 49 | 9 | 49.53u | +49.15u | +99% |
+| Mon 19 - Sun 25 Oct | 22 | 10 | 61.46u | +135.57u | +221% |
+| Mon 26 Oct - Sun 1 Nov | 41 | 6 | 127.84u | +32.95u | +26% |
+| Mon 2 - Tue 3 Nov | 13 | 6 | 30.39u | +66.77u | +220% |
+| **Total** | **125** | **31** | **269.22u** | **+284.44u** | **+106%** |
+At $50 a unit that is +$14,222 on $13,461 staked. Real money the model's bets actually took: Geelong Murshidi +$1,260,
+Cranbourne Fri 23 Oct -$193, Flemington Sat 24 Oct -$110, Ballarat Mon 2 Nov Best Terms -$331: +$626 on $760. Don copies
+(founder's call, Sat 31 Oct) +$810 on $650. Lay book, paper from 28 Oct: 34 lays, 0 winners, +31.28u (+$6,256 at $200).
