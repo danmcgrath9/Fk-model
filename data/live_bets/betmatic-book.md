@@ -849,3 +849,11 @@ with the $40 max, $200 a lay); the morning list on each page is the instruction.
 what actually matched, not the paper 1u, so a part-match settles as what went on. TAB: the backs run at $100 a unit until
 TAB cuts them; every send's status line (asked / took / reduced) is logged per meeting so the first reduced fill is dated.
 Nothing has been sent at $100 yet: the bot is off and TAB holds $0.65.
+
+## Units again, 3 Nov evening (founder: "take it down 40% from what we are predicting. Do $50 a bet and $200 a lay")
+Backs $50 a unit (code, send default, sheets re-dollared: Kyneton $6,191, Flemington Thu $3,804 if every order fired),
+lays $200. The projection he asked for, every state at 40% under the Victorian backtest (backs +59% -> +35%, lays +49%
+-> +29%; Victoria taken as a quarter of Australian racing, so all states = 4x Victoria): Victoria $128k backs + $140k
+lays = $268k a year; all states about $1.07m a year, $89k a month ($511k backs, $561k lays). At the full backtest, all
+states, about $1.8m. Every non-Victorian figure assumes the edge travels, which the August week did not show on the
+back side (+13%, one standard error from zero) and has never been tested on the lay side.

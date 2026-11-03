@@ -24,7 +24,7 @@ here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, here)
 import stake_rule
 L = os.path.join(here, "../../data/live_bets")
 SHADE, TIERS = 0.95, (1.0, 1.25, 1.5)
-UNIT_DOLLARS = 100.0   # founder, 3 Nov 2026: "Do the lays at $200 and backs at $100" (was $50 from 31 Oct; 31 Oct: "Make it $50 units" (was $37.50 from 28 Oct, $50 from 21 Oct, $25 before); sized so a $3,000 bank covers the bets out at once (the send workflow's unit input is what BetMatic gets)
+UNIT_DOLLARS = 50.0   # founder, 3 Nov 2026 evening: "Do $50 a bet and $200 a lay" (was $100 for an hour the same evening; before that (was $50 from 31 Oct; 31 Oct: "Make it $50 units" (was $37.50 from 28 Oct, $50 from 21 Oct, $25 before); sized so a $3,000 bank covers the bets out at once (the send workflow's unit input is what BetMatic gets)
 # Short opens (founder, 16 Oct 2026: "do it for Moe and moving forward"; t_short_edge.py): when the TAB opens a runner
 # under $4 the edge is 1.15, not 1.2. On the holdout the extra bets this lets in still beat the open like our normal ones
 # (77% shortened after the open, open 1.23x BSP, against 83% and 1.31x for the live under-$4 bets); 1.10 and below fell

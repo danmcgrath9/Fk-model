@@ -182,3 +182,5 @@ unit is $100 (betmatic_orders.py UNIT_DOLLARS, the send workflow's default, betm
 on one horse. A lay is 1u = $200 of backer's stake at Betfair SP (settle_lays.py), so the liability is $2,800 at $15 and
 $7,800 at the $40 max, $5,100 on the average lay; a loser pays +$184. Twitter units stay half the model stake. Still paper:
 the bot is off and TAB holds $0.65; the lay trial runs to its four weeks before a real lay goes on.
+AMENDED the same evening (founder: "Do $50 a bet and $200 a lay"): a back unit is $50 (10u cap = $500 on one horse); a
+lay stays $200. The $100 back unit lasted an hour and was never sent on.
