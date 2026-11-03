@@ -1556,3 +1556,11 @@ units on early." t_plunge.py, t_plunge2.py, v10 holdout. A plunge = BSP at or un
   prize money, neural rating, jockey and trainer win rates, barrier and distance. The 1 Nov rule rebuild (t_all_rules.py)
   does not model it either. FOUNDER'S CALL: put --drift back (with the 2 Nov doubling on top, or instead of it), or
   retire it on purpose.
+- RANARSSON (Flemington Cup Day R8, 3 Nov 2026: ours $2.56 model / $2.61 blended, opened $4, SP $1.85, won; t_plunge3.py).
+  Two starts, two wins: a 7-length-above-class debut at BSP $13.70 with a 113 speed figure, then a win at BSP $1.52 18
+  days earlier, Hayes stable, Melham. The model prices two runs as two runs; the market had already priced him at $1.50
+  once and extrapolated. The one profile the data supports: LIGHTLY RACED LAST-START WINNERS (1-3 starts), 261 rated
+  runners, 62 won where our price expected 54 (A/E 1.14), +12% even at BSP; under $4 it is 33 won v 28 (A/E 1.18). That
+  is a 15% uplift to the chance, about $2.56 -> $2.25, not $1.85. On the sheet bets the same profile under $4 is 22 bets,
+  10 won v 8.4, +123% at the open, 55% plunge. The model holds how a horse's price MOVED last start (fl_*) and a
+  market-class figure, not the plain level of its last-start BSP: worth testing as a stage-2 input.
