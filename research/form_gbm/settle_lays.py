@@ -1,4 +1,4 @@
-"""Settle a meeting's lay book at Betfair SP. python settle_lays.py LAYS.csv RESULTS.txt [--unit 50]
+"""Settle a meeting's lay book at Betfair SP. python settle_lays.py LAYS.csv RESULTS.txt [--unit 200]
 
 LAYS.csv is lay_sheet.py's output (race, horse, ours, lay_if_bsp_at_least, lay_if_bsp_at_most, price_now, note);
 RESULTS.txt is scripts/meeting_results.py's output ("R3 Horse Name   finish 1  SP 7.0  BSP 7.82"). The rule as
@@ -9,7 +9,7 @@ runner the sheet excluded (first starter, international) never lays. Prints one 
 import argparse, csv, re, sys
 COMM = 0.08
 norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower())
-ap = argparse.ArgumentParser(); ap.add_argument("lays"); ap.add_argument("results"); ap.add_argument("--unit", type=float, default=50.0)
+ap = argparse.ArgumentParser(); ap.add_argument("lays"); ap.add_argument("results"); ap.add_argument("--unit", type=float, default=200.0)   # a lay is $200 (founder, 3 Nov 2026: "lays at $200 and backs at $100")
 a = ap.parse_args()
 res = {}
 for line in open(a.results):

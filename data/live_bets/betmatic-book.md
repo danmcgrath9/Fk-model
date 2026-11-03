@@ -835,3 +835,10 @@ settle. Settled on Form King below; the bracketed figures are what the day read 
   Laura's Gold); Mildura none in the band; Wangaratta 4 lays, 0 winners, +3.68u (Style Guide, Opus, American Russ,
   Tasman Park). 17 lays, 0 winners, +15.64u (+$782 at $50). Lay trial since Thu 29 Oct: Ballarat +2.76u, Tuesday +15.64u.
 - Top-ups (tracked only, never bet): Al Duca 2.35u $9 7th -2.35u; Mutsuhito 2.44u $7.5 4th -2.44u; Snow Party 0.88u $21 4th -0.88u; Ice Quake 4.99u $4.4 7th -4.99u; Here Comes Wozza 1.56u $8.5 11th -1.56u. 12.22u, -12.22u.
+
+## Units: backs $100, lays $200 (founder, 3 Nov 2026: "Do the lays at $200 and backs at $100")
+Lay book at $200 a lay (holdout, $15-$40): +$4,900 a week, +$21,000 a month at the backtest's +49%, July -$2,200 on eight
+winners, worst drawdown $15,200, biggest single hit $6,480; plan on +$11,000 to $13,000 a month. Backs at $100: +$7,800 a
+week on the holdout with the new staking. Code and the send default moved to $100; Kyneton Wed and Flemington Thu sheets
+re-dollared at $100 (orders unchanged): Kyneton $12,382, Flemington $7,608 if every order fired. Lay trial so far at $200:
+34 lays, 0 winners, +31.28u = +$6,256.

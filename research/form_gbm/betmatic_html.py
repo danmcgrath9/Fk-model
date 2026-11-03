@@ -27,7 +27,7 @@ START, END = "<!-- betmatic -->", "<!-- /betmatic -->"
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("orders"); ap.add_argument("prefix"); ap.add_argument("page"); ap.add_argument("--results")
     ap.add_argument("--since", help="an earlier prices file: a race with a scratching since it says so beside its deduction")
-    ap.add_argument("--unit", type=float, default=50.0, help="dollars a unit, to show real bets in units")
+    ap.add_argument("--unit", type=float, default=100.0, help="dollars a unit, to show real bets in units (founder, 3 Nov 2026: backs $100)")
     a = ap.parse_args()
     px = {}
     for l in open(f"{L}/{a.prefix}-prices.txt"):

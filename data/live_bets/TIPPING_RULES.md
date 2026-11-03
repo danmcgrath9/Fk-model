@@ -175,3 +175,10 @@ Founder, 1 Nov 2026: "Yep move it to $15" (after Azzacool, Ballarat R7 2 Nov: ra
 cap). Second-up after a good first-up (placed or within 2L first-up): bet at the open or not at all, no bet over $15.
 t_secup_cap.py, full history out of fold, our bets on them by opening price: under $4 +59%, $4-8 +56%, $8-12 +89%
 (+105% / +74% by half), $12-15 +42%, $15+ -24% (both halves negative). Plan: cap $8 +4,537u, $12 +4,729u, $15 +4,743u.
+
+## Units: backs $100, lays $200 (3 Nov 2026)
+Founder, 3 Nov 2026, after the lay book's month-by-month at $100 and $200: "Do the lays at $200 and backs at $100". A back
+unit is $100 (betmatic_orders.py UNIT_DOLLARS, the send workflow's default, betmatic_html.py), so the 10u cap is $1,000
+on one horse. A lay is 1u = $200 of backer's stake at Betfair SP (settle_lays.py), so the liability is $2,800 at $15 and
+$7,800 at the $40 max, $5,100 on the average lay; a loser pays +$184. Twitter units stay half the model stake. Still paper:
+the bot is off and TAB holds $0.65; the lay trial runs to its four weeks before a real lay goes on.

@@ -73,7 +73,7 @@ if page:
            "margin-left:6px;font-size:12.5px}@media(prefers-color-scheme:dark){.lb{border-color:#ba68c8}.lb .rule,.lb th{color:#aaa}"
            ".lb td{border-color:#333}.lb tr.z td{background:#1e1a22}.lb td.lay{color:#ce93d8}.lb tr.rh td{background:#4a148c}}</style>")
     sec = (f"{START}{css}<div class='lb' id='lays' style='scroll-margin-top:64px'><h2>Lay book: {len(out)} runners</h2>"
-           f"<div class='rule'>Paper, 1u at Betfair SP. Lay a horse if its Betfair SP finishes at its <b>lay if SP</b> "
+           f"<div class='rule'>Paper, 1u = $200 laid at Betfair SP. Lay a horse if its Betfair SP finishes at its <b>lay if SP</b> "
            f"price or higher, up to ${LAY_MAX:.0f}. That price is $15, or 1.6x our price if higher. Now is the bookies' price.</div>"
            f"<div class='tw'><table><tr><th>No.</th><th>Horse</th><th>Ours</th><th>Lay if SP</th><th>Now</th></tr>"
            f"{''.join(trs)}</table></div></div>{END}") if out else f"{START}<h2>Lay book: none</h2>{END}"
