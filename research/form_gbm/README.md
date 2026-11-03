@@ -1663,3 +1663,11 @@ $100 flat. 1.6x line: 61 bets, 24 winners (39%), 61u staked, 109.06u returned, +
 +155%; drawdown 7u, longest losing run 7; 3.5 bets a week, +2.7u a week, about $14,200 a year at $100. The 1.3x-1.6x slice
 on its own is 59 bets for -9u, so the edge sits at 1.6x and up; the 1.3x line is the wider, steadier version of the same
 thing. Candidate for a paper track beside the lay book; the live weeks since 14 Oct are the next check.
+THE LIVE WEEKS, 14 Oct to 3 Nov (t_fav47_live.py: each meeting's own live model file as committed before race day, Form
+King results and BSPs from the experiments exports; 35 meetings, 2,549 runners, races the holdout never saw and the rule
+was not tuned on). 1.6x line: 17 bets, 6 winners against 3.7 expected, 17u staked, 25.99u returned, +8.99u (+53%):
+Shelly's Legacy, Salina Special, Immortal Star, So You Are, Sharing Moments, Stormy Marco. 1.3x line: 26 bets, 6 winners,
+-0.01u (0%), the 1.3x-1.6x slice 0 of 9, as in the holdout. Controls the same weeks: every $4-$7 favourite 52 bets, 10
+winners, -15%; the $4-$7 favourites we rate near or shorter than BSP 26 bets, 4 winners, -30%. So the split runs the same
+way out of sample: the favourite the market makes AGAINST our price wins, the one we agree with does not. Seventeen bets
+is a direction, not a number. Paper track at the 1.6x line from Thu 5 Nov beside the lay book; 1.3x shown for the record.
