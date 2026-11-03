@@ -1533,3 +1533,26 @@ t_bsp_where.py, v10 holdout 3 Jun - 13 Oct, BSP less 8%. A/E against BSP over 1.
   our price (BSP >= ours): 666 bets, 176 winners, +8.0% (+53u); Jun-Jul +3.9%, Aug-Oct +12.9%; A/E v BSP 1.08 / 1.19.
   Works at $1.60-$3 (+6%, 69 winners) and $3-$5 (+12%, 83 winners), fails at $5-$8 (-17%). Executable as a Betfair SP
   back with a minimum price. Found by slicing, so expect less; a paper track before any money.
+
+## Plunge horses: who we underrate, and the drift forecast that fell out of the pipeline (3 Nov 2026)
+Founder: "these horses that we underrate, what's the key types? How can we get better at these? Because we'd take more
+units on early." t_plunge.py, t_plunge2.py, v10 holdout. A plunge = BSP at or under 0.6x the open.
+- 38% of our sheet bets plunge; median BSP/open 0.68. The one strong predictor is the overlay at the open: open/ours
+  1.2-1.5x plunges 22%, 1.5-2x 37%, 2-2.5x 61%, 2.5x+ 70%. The market comes to us. But A/E against our price falls the
+  same way (1.12, 0.92, 0.83, 0.72): the big overlays land near our price and win a little LESS than we expect; the open
+  profit on them is the wrong first price, not us being right. Horse type barely moves the plunge rate (most cuts 33-44%).
+- WHERE WE UNDERRATE (sheet bets, A/E v ours over 1.10, all modest, 10-90 winners each): small overlays 1.2-1.5x (1.12,
+  92 won v 82), trainers with a 12-month win rate of 11% or under (1.13, 77 v 68, and the highest plunge rate 43%),
+  first-time gear (1.16, 43 v 37; blinkers first 1.14), the jockey's only ride at the meeting (1.16, 19 v 16), backing up
+  inside 14 days (1.10), 1-2 career starts (1.09), firmed last start (1.15, 52 v 45), dual acceptors (1.09; A/E v BSP
+  1.31). The common thread is stable intent the form does not show. WHERE WE OVERRATE: overlays of 2x+ (0.72-0.83),
+  ours $5-$8 (0.82), metro (0.80), mid-tier trainers (0.84).
+- THE DRIFT FORECAST (drift_forecast.py, live from 21 Oct, x2 on the forecast-to-firm third) WAS NOT IN ANY SHEET FROM
+  30 OCT: the pipeline moved from run_meeting.sh (which passes --drift) to pricemtg.sh/meeting.sh, which do not. Kilmore
+  and Pakenham 30 Oct onwards carry no "forecast" note; Geelong 21 Oct to Warrnambool 29 Oct do. Nobody decided this.
+  On the holdout sheet bets its thirds sort weakly (forecast v actual move r = 0.27): firm third plunges 45% v 36% for
+  the drift third, open ROI +56% / +54% / +46% (firm / middle / drift), but the firm third's A/E v ours is 0.88 and its
+  $5-$8 slice is -21%. It keys on our overlay at the open (650 splits, by far), the opening price (250), then class,
+  prize money, neural rating, jockey and trainer win rates, barrier and distance. The 1 Nov rule rebuild (t_all_rules.py)
+  does not model it either. FOUNDER'S CALL: put --drift back (with the 2 Nov doubling on top, or instead of it), or
+  retire it on purpose.
