@@ -588,3 +588,22 @@ history pull at under 80 a minute is fine. When the key comes: the founder adds 
 secret (never in chat or a file), reads whatever terms exist and sets `TOPAZ_TERMS_READ=yes`. The data is personal use,
 so it cannot sit on this public repository's releases (the pull refuses while the repo is public); private storage
 (a separate private repository is the simplest) is the founder's call before the first pull.
+
+## Topaz storage: a private data repository (founder, 3 Nov 2026: "We are keeping it public", then "go ahead with the private repo")
+
+Fk-model stays public: code, workflows and the write-ups (our own results, not GRV's data). The raw Topaz files go to
+a separate PRIVATE repository, **danmcgrath9/fk-greyhound-data**, on its `topaz-history` release, and nowhere else.
+Cost: nothing (unlimited free private repositories; no workflow runs inside it, so its Actions minutes are unused).
+
+`gh-topaz.yml` mode=pull writes there with the `GREYHOUND_DATA_TOKEN` secret and refuses unless the token is set,
+the target is not Fk-model itself, and GitHub reports the target as PRIVATE. The variable `GREYHOUND_DATA_REPO`
+overrides the default name. mode=probe (column names and fill rates only) needs none of this. The open-price files
+(our own recordings through BetMatic) stay on Fk-model's `greyhound-history` release.
+
+Founder setup, once (this session cannot create repositories: GitHub answered 403):
+1. Create the repository `fk-greyhound-data`, **Private**, ticking "Add a README file" (a release needs one commit).
+2. Create a fine-grained personal access token: Repository access "Only select repositories" = fk-greyhound-data;
+   Permissions: Contents read and write. Nothing else.
+3. Add it to Fk-model as the Actions secret `GREYHOUND_DATA_TOKEN`.
+4. With `TOPAZ_API_KEY` and the variable `TOPAZ_TERMS_READ=yes` also set: probe first, then pull VIC
+   (founder, 3 Nov: "I'm happy with Vic to just test for now").
