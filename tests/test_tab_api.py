@@ -6,7 +6,7 @@ from greyhound import tab_api as TA
 
 class Resp:
     def __init__(self, status, body):
-        self.status_code, self._body = status, body
+        self.status_code, self._body, self.headers, self.text = status, body, {"content-type": "application/json"}, ""
 
     def json(self):
         return self._body
@@ -62,3 +62,22 @@ def test_probe_prints_names_and_a_table(capsys):
     assert "1 Victorian greyhound meetings: SANDOWN PARK" in out
     assert "fixedOdds fields: bettingStatus, flucs, returnWin, returnWinOpen, returnWinOpenDaily" in out
     assert "| SANDOWN PARK | 1 | 1 | Open | 1.95 | 1.95 | 1.45 | 2 |" in out
+
+
+def test_a_non_json_answer_is_named_not_parsed():
+    class Html:
+        status_code, headers, text = 200, {"content-type": "text/html"}, "<html><body>Request blocked</body></html>"
+
+        def json(self):
+            raise ValueError("no json")
+
+    class S:
+        def get(self, url, params=None, timeout=None, headers=None):
+            assert "fk-model" in headers["user-agent"]
+            return Html()
+
+    try:
+        TA.TabClient(session=S()).meetings("2026-11-05")
+        assert False, "should have raised"
+    except RuntimeError as e:
+        assert "not JSON" in str(e) and "text/html" in str(e) and "Request blocked" in str(e)
