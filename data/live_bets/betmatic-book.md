@@ -967,3 +967,6 @@ Armas at BSP (founder: they will drift), Ice Kool $6.25. Lay and back books and 
 Cranbourne Fri, Soft 6 official (we priced Dead 5 Wed): re-priced (s6f). Ours: Speir $4.99 to $5.38, Power And The Beat
 $5.15 to $4.96; both taken at the open ($8 and $10) and stay. 57 lay candidates (was 58). Warrnambool Fri not in the
 screenshot; still on the Dead 4 Wed rating.
+Flemington Thu 9:30am routine: 9 more out after 8:38am (R3 Just Folk, Merrigold; R6 Surfy Pete, Hiyaam Proud, Untapped,
+Hedjet; R7 Southern Sway; R8 Chocolate Freckles; R9 Saluted), none of ours. Re-priced on that field (s5u): Sass Appeal
+$1.57, De Armas $3.07, Ice Kool $3.26 (now $1.70, $3.10, $6.50). R3 moved most (Feroce $6.31 to $4.86). 65 lay candidates.
