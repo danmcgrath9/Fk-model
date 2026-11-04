@@ -168,3 +168,41 @@ def test_load_topaz_reads_the_pulls_files(tmp_path):
         json.dump(rows, f)
     runs = R.load_topaz(tmp_path)
     assert list(runs.dog) == ["11", "12"] and runs.win_time.tolist() == [29.8, 29.8]
+
+
+def test_shrunk_form_pulls_a_short_record_toward_the_grade_prior():
+    # two Gr5 dogs: A ran +2 and +4 lengths on days 1 and 2, B +0 and +0; on day 3 the prior is the grade mean so far
+    df = pd.DataFrame([run(1, 1, "2025-01-01", "A", 1, win_time=29.86), run(1, 1, "2025-01-01", "B", 2, margin=2.0, win_time=29.86),
+                       run(2, 2, "2025-01-02", "A", 1, win_time=29.72), run(2, 2, "2025-01-02", "B", 2, margin=4.0, win_time=29.72),
+                       run(3, 3, "2025-01-03", "A", 1), run(3, 3, "2025-01-03", "B", 2)])
+    rated = pd.DataFrame({"time_rating": [2.0, 0.0, 4.0, 0.0, np.nan, np.nan]}, index=df.index)
+    sf = R.shrunk_form(df, rated, k=3.0)
+    # day 3: prior = mean of the four earlier ratings = 1.5; A's sum 6 over 2 runs -> (6 + 3 x 1.5) / (2 + 3) = 2.1
+    assert sf.grade_prior.iloc[4] == pytest.approx(1.5)
+    assert sf.time_rating_shrunk.iloc[4] == pytest.approx(2.1) and sf.rating_runs.iloc[4] == 2
+    assert sf.time_rating_shrunk.iloc[5] == pytest.approx((0 + 4.5) / 5)
+    assert sf.rating_runs.iloc[0] == 0 and sf.time_rating_shrunk.iloc[0] == 0.0     # first ever: the (empty) prior
+
+
+def test_context_form_is_the_dogs_mean_in_the_same_band_and_track():
+    df = pd.DataFrame([run(1, 1, "2025-01-01", "A", 1, track="T", dist=400), run(2, 2, "2025-01-02", "A", 1, track="U", dist=525),
+                       run(3, 3, "2025-01-03", "A", 1, track="T", dist=390), run(4, 4, "2025-01-04", "A", 1, track="T", dist=600)])
+    rated = pd.DataFrame({"time_rating": [1.0, 5.0, 3.0, np.nan]}, index=df.index)
+    cf = R.context_form(df, rated)
+    assert cf.time_rating_band.iloc[2] == pytest.approx(1.0) and cf.runs_band.iloc[2] == 1    # sprint: day 1 only
+    assert cf.time_rating_track.iloc[2] == pytest.approx(1.0)                              # track T: day 1 only
+    assert np.isnan(cf.time_rating_band.iloc[3]) and cf.runs_band.iloc[3] == 0              # never raced staying
+    assert cf.time_rating_track.iloc[3] == pytest.approx(2.0) and cf.runs_track.iloc[3] == 2  # T: days 1 and 3
+
+
+def test_margin_elo_gives_a_nose_defeat_nearly_half_and_a_rout_the_lot():
+    df = pd.DataFrame([run(1, 1, "2025-01-01", "A", 1), run(1, 1, "2025-01-01", "B", 2, margin=3.0),
+                       run(2, 2, "2025-01-02", "A", 1), run(2, 2, "2025-01-02", "B", 2, margin=0.1)])
+    e = R.margin_elo(df, k=24, scale=3.0)
+    gain = 24 * (0.5 + 0.5 * np.tanh(1.0) - 0.5)          # beaten by 3 lengths at scale 3: 0.88 of a win
+    assert e.iloc[2] == pytest.approx(1500 + gain) and e.iloc[3] == pytest.approx(1500 - gain)
+    assert e.iloc[2] + e.iloc[3] == pytest.approx(3000)
+    df2 = pd.DataFrame([run(1, 1, "2025-01-01", "A", 1), run(1, 1, "2025-01-01", "B", 2, margin=0.1),
+                        run(2, 2, "2025-01-02", "A", 1), run(2, 2, "2025-01-02", "B", 2)])
+    e2 = R.margin_elo(df2, k=24, scale=3.0)
+    assert 0 < e2.iloc[2] - 1500 < 1.0                      # a nose: almost nothing changes hands

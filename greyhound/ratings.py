@@ -235,3 +235,94 @@ def load_topaz(directory) -> pd.DataFrame:
     if not rows:
         raise FileNotFoundError(f"no runs_*.json.gz under {directory}")
     return topaz_to_runs(pd.DataFrame(rows))
+
+
+# ---- upgrades, 4 Nov 2026 (MODELS_RESEARCH.md, "Where the last 0.117 to BSP can come from", item 4) ----
+
+SHRINK_RUNS = 3.0          # pseudo-runs pulling a dog's form toward its grade's prior
+MARGIN_SCALE = 3.0         # lengths at which a beaten dog's result is 0.5 + 0.5 tanh(1) = 0.88 of a win for the winner
+
+
+def _band(distance: pd.Series) -> pd.Series:
+    """Sprint (to 400 m), middle (401-560), staying (over 560)."""
+    return pd.cut(distance, [0, 400, 560, 10_000], labels=["sprint", "middle", "staying"]).astype(str)
+
+
+def shrunk_form(runs: pd.DataFrame, rated: pd.DataFrame, k: float = SHRINK_RUNS, n: int = 5) -> pd.DataFrame:
+    """A dog's mean time rating over its last n runs, shrunk toward its grade's prior by k pseudo-runs, as at the
+    end of the previous day: a two-run dog is rated mostly by its grade, a thirty-run dog by itself. The prior is
+    the expanding mean of all time ratings in that grade on EARLIER days (grades differ in speed; pars do not know
+    grade). Columns: time_rating_shrunk, grade_prior, rating_runs (runs behind the mean)."""
+    df = pd.concat([runs[["dog", "date", "race_id", "grade", "is_trial"]], rated[["time_rating"]]], axis=1)
+    races = df[~df.is_trial & df.time_rating.notna()].sort_values(["date", "race_id"])
+    g = races.groupby("grade", sort=False)
+    races = races.assign(_pm=g.time_rating.transform(lambda s: s.expanding().mean()))
+    pday = races.groupby(["grade", "date"])._pm.last().reset_index()
+    out = pd.DataFrame(index=runs.index)
+    out["grade_prior"] = _asof(runs[["grade", "date"]], pday, ["grade"], "_pm").fillna(0.0)
+    dogs = races.sort_values(["dog", "date", "race_id"])
+    gd = dogs.groupby("dog", sort=False).time_rating
+    dogs = dogs.assign(_sum=gd.rolling(n, min_periods=1).sum().reset_index(level=0, drop=True),
+                       _cnt=gd.rolling(n, min_periods=1).count().reset_index(level=0, drop=True))
+    dday = dogs.groupby(["dog", "date"])[["_sum", "_cnt"]].last().reset_index()
+    s = _asof(runs[["dog", "date"]], dday, ["dog"], "_sum").fillna(0.0)
+    c = _asof(runs[["dog", "date"]], dday, ["dog"], "_cnt").fillna(0.0)
+    out["rating_runs"] = c
+    out["time_rating_shrunk"] = (s + k * out.grade_prior) / (c + k)
+    return out
+
+
+def context_form(runs: pd.DataFrame, rated: pd.DataFrame) -> pd.DataFrame:
+    """Ability in THIS race's context, as at the end of the previous day: the dog's mean time rating in the same
+    distance band (sprint, middle, staying) and at the same track, with the run counts behind each. NaN when it has
+    never raced in that band or at that track."""
+    df = pd.concat([runs[["dog", "date", "race_id", "track", "distance", "is_trial"]], rated[["time_rating"]]], axis=1)
+    df["band"] = _band(df.distance)
+    races = df[~df.is_trial & df.time_rating.notna()].sort_values(["date", "race_id"])
+    out = pd.DataFrame(index=runs.index)
+    for key, name in (("band", "band"), ("track", "track")):
+        g = races.groupby(["dog", key], sort=False).time_rating
+        r = races.assign(_m=g.transform(lambda s: s.expanding().mean()), _n=g.cumcount() + 1)
+        day = r.groupby(["dog", key, "date"])[["_m", "_n"]].last().reset_index()
+        left = runs[["dog", "date"]].assign(band=df.band) if key == "band" else runs[["dog", "date", "track"]]
+        out[f"time_rating_{name}"] = _asof(left, day, ["dog", key], "_m")
+        out[f"runs_{name}"] = _asof(left, day, ["dog", key], "_n").fillna(0.0)
+    return out
+
+
+def margin_elo(runs: pd.DataFrame, k: float = ELO_K, start: float = ELO_START, scale: float = MARGIN_SCALE) -> pd.Series:
+    """Elo over MARGINS, not just finishing order: the result of dog i against dog j is 0.5 + 0.5 tanh((margin_j -
+    margin_i) / scale), so a dog beaten by a nose takes nearly half the exchange and one beaten by ten lengths loses
+    it all. A non-finisher's margin is the field's worst plus 5 lengths. Same day-end updates and zero sum as elo()."""
+    order = runs[~runs.is_trial].sort_values(["date", "race_id"])
+    dogs_all = order.dog.values
+    marg = order.margin.values.astype(float)
+    fin = order.finish.values.astype(float)
+    keys, days = order.race_id.values, order.date.values
+    cuts = np.flatnonzero(keys[1:] != keys[:-1]) + 1
+    bounds = np.r_[0, cuts, len(order)]
+    pre_vals = np.full(len(order), np.nan)
+    r: dict = {}
+    pending: dict = {}
+    for a, b in zip(bounds[:-1], bounds[1:]):
+        if pending and days[a] != days[a - 1]:
+            for d, delta in pending.items():
+                r[d] = r.get(d, start) + delta
+            pending = {}
+        dogs = dogs_all[a:b]
+        cur = np.array([r.get(d, start) for d in dogs])
+        pre_vals[a:b] = cur
+        n = b - a
+        if n < 2:
+            continue
+        m = marg[a:b].copy()
+        f = fin[a:b]
+        worst = np.nanmax(np.where(np.isnan(f), np.nan, m)) if np.isfinite(m).any() else 0.0
+        m = np.where(np.isnan(f) | np.isnan(m), worst + 5.0, m)
+        exp = 1 / (1 + 10 ** ((cur[None, :] - cur[:, None]) / 400))
+        act = 0.5 + 0.5 * np.tanh((m[None, :] - m[:, None]) / scale)
+        np.fill_diagonal(exp, 0.0); np.fill_diagonal(act, 0.0)
+        delta = k / (n - 1) * (act - exp).sum(axis=1)
+        for d, v in zip(dogs, delta):
+            pending[d] = pending.get(d, 0.0) + v
+    return pd.Series(pre_vals, index=order.index).reindex(runs.index)
