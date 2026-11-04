@@ -133,8 +133,8 @@ def topaz_row(race, dog, box, place, time, margin, split=5.4, **kw):
 
 def test_topaz_mapping_from_the_published_fields():
     raw = pd.DataFrame([
-        topaz_row(1, 11, 1, 1, 29.80, 3.5),                      # winner: Topaz may give its margin over second
-        topaz_row(1, 12, 2, 2, 30.05, 3.5),
+        topaz_row(1, 11, 1, 1, 29.80, 0.25),                     # winner: Topaz gives its margin over second
+        topaz_row(1, 12, 2, 2, 30.05, 0.25),                     # resultMargin is seconds: 0.25 s = 3.571 lengths
         topaz_row(1, 13, 3, None, None, None, abnormalResult="FELL"),
         topaz_row(1, 14, 4, None, None, None, scratched=True),   # never ran: dropped
         topaz_row(2, 11, 5, 2, 30.10, 0.5, raceType="Trial", raceTypeCode="TRL"),
@@ -146,7 +146,8 @@ def test_topaz_mapping_from_the_published_fields():
     assert w.date == pd.Timestamp("2026-03-14") and w.track == "MEP" and w.distance == 525 and w.box == 1
     assert w.start_price == 4.2 and w.dog_name == "DOG 11" and not w.is_trial
     second = runs[(runs.race_id == 1) & (runs.dog == "12")].iloc[0]
-    assert second.margin == 3.5 and second.win_time == 29.80
+    assert second.margin == pytest.approx(0.25 / R.SEC_PER_LENGTH) and second.win_time == 29.80
+    assert R.dog_time(runs).iloc[1] == pytest.approx(30.05)    # own time kept; margin agrees with it
     fell = runs[runs.dog == "13"].iloc[0]
     assert np.isnan(fell.finish) and np.isnan(fell.time) and fell.abnormal == "FELL"
     assert runs[runs.race_id == 2].is_trial.all()
@@ -162,7 +163,7 @@ def test_topaz_mapping_names_a_missing_field():
 def test_load_topaz_reads_the_pulls_files(tmp_path):
     import gzip
     import json
-    rows = [topaz_row(1, 11, 1, 1, 29.8, 0.0), topaz_row(1, 12, 2, 2, 30.0, 2.9)]
+    rows = [topaz_row(1, 11, 1, 1, 29.8, 0.2), topaz_row(1, 12, 2, 2, 30.0, 0.2)]
     with gzip.open(tmp_path / "runs_VIC_2026-03.json.gz", "wt", encoding="utf-8") as f:
         json.dump(rows, f)
     runs = R.load_topaz(tmp_path)

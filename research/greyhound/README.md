@@ -630,3 +630,22 @@ lengths behind the winner (the winner's is set to 0 whatever it holds), resultTi
 the winner's), and a trial is a race whose raceType or raceTypeCode says "trial".
 
 The founder submitted the Topaz sign-up on 4 Nov with Jason's email thread attached. Support: topazhelpdesk@grv.org.au.
+
+## First Topaz probe with the founder's key (4 Nov 2026, runs 41758947572 and 41759363894)
+
+GRV approved VIC on 4 Nov (Available Data: VIC ticked) and the founder added `TOPAZ_API_KEY` and
+`TOPAZ_TERMS_READ=yes`. Health answered; VIC 28 Oct 2026 returned 372 runs in 51 races (353 ran, 19 scratched),
+with exactly the 70 BulkRunOutput fields. Fill: place, resultTime and resultMargin on 345 of 372 (every runner that
+finished), first split on 348, second split on 33, third on 3, fourth and startPaceCode on none, startPrice on all 372.
+
+The counts-only mapping check settled the three open meanings:
+
+| question | answer on 51 races | mapping |
+|---|---|---|
+| winner's resultMargin | 0 of 51 winners hold 0: it is the margin over second | winner's margin set to 0 |
+| resultTime | differs between runners in 51 of 51 races: each dog's own time; winner fastest in 51 of 51 | used as is |
+| resultMargin unit | r = 1.000 against the time gap, at 0.07 of its size in lengths: **seconds**, not lengths | divided by 0.07 into lengths |
+| trials | none of the 15 race types (Grade 5, Rank Limit, Maiden, Mixed, Restricted Win, Free For All, heats, finals) | the "trial" flag stays as a safety net |
+
+The third row was the one wrong assumption: the first cut of `topaz_to_runs` read the margin as lengths, so a dog
+0.25 s behind would have been 0.25 lengths behind instead of 3.6. It is fixed and the tests are in seconds now.
