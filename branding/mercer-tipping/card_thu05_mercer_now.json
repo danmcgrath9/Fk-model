@@ -1,0 +1,17 @@
+{
+ "day": "Thursday",
+ "date": "5 November",
+ "footer": "Win bets.",
+ "meetings": [
+  {
+   "name": "Flemington",
+   "note": "",
+   "bets": [
+    {"race": 4, "time": "2:45PM", "horse": "Sass Appeal", "price": "BSP", "units": "2.46u"},
+    {"race": 8, "time": "5:10PM", "horse": "De Armas", "price": "BSP", "units": "1.34u"},
+    {"race": 9, "time": "5:50PM", "horse": "Ice Kool", "price": "$6.25", "units": "0.76u"}
+   ]
+  }
+ ],
+ "brand": true
+}
