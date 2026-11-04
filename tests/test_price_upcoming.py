@@ -1,0 +1,52 @@
+"""research/greyhound/topaz_price_upcoming.py: the bet window, the input families and the sealed card's shape."""
+import os
+import sys
+
+import numpy as np
+import pandas as pd
+import pytest
+
+pytest.importorskip("lightgbm")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "research", "greyhound"))
+import topaz_price_upcoming as PU  # noqa: E402
+import topaz_v1 as V1              # noqa: E402
+
+
+def test_bet_window_is_the_test_12_rule():
+    assert PU.bet_window(0.25) == (8.0, 13.0)          # a 50% edge needs $6.00, so the band's floor rules
+    assert PU.bet_window(0.15) == (10.0, 13.0)          # 1.5 / 0.15 = $10
+    assert PU.bet_window(0.10) is None                  # needs $15, above the $13 band
+    assert PU.bet_window(1.5 / 13) == (13.0, 13.0)        # exactly $13 needed: a one-price window
+
+
+def test_every_model_input_has_a_family():
+    cols = V1.NUM + [f"{c}_rel" for c in V1.REL] + ["pv_DANGER", "pv_len", "tip_rank", "tip_top", "mkt_lsp_mean5"]
+    fams = {c: PU.family(c) for c in cols}
+    assert fams["elo_rel"] == "who beat whom (Elo)" and fams["margin_elo"] == "who beat whom (Elo)"
+    assert fams["pv_DANGER"] == "GRV's preview" and fams["tip_rank"] == "GRV's tips"
+    assert fams["box"] == "box and the draw" and fams["box_ratio"] == "box and the draw"
+    assert fams["time_rating_band_rel"] == "time and split ratings" and fams["mkt_lsp_mean5"] == "market history"
+    unplaced = sorted(c for c, f in fams.items() if f == "other")
+    assert len(unplaced) <= 6, unplaced
+
+
+def test_card_payload_keeps_the_asked_track_and_all_the_edges():
+    card = pd.DataFrame({"race_id": [1, 1, 1, 2, 2], "track_name": ["Sandown Park"] * 3 + ["Healesville"] * 2,
+                         "track": ["SAP"] * 3 + ["HVL"] * 2, "race_number": [1, 1, 1, 4, 4],
+                         "start_time": ["2026-11-05T19:00:00"] * 3 + ["2026-11-05T13:00:00"] * 2,
+                         "distance": [515] * 3 + [300] * 2, "grade": ["Mixed 4/5"] * 3 + ["5"] * 2,
+                         "box": [1, 2, 3, 1, 2], "dog_name": ["A", "B", "C", "D", "E"],
+                         "p_model": [0.6, 0.3, 0.1, 0.8, 0.2], "grv_price": [1.9, 3.0, 9.0, 1.3, 10.0],
+                         "topaz_rating": [98, 90, 80, 95, 85], "tip_rank": [1, 2, 0, 1, np.nan],
+                         "is_best_bet": [True, False, False, False, False], "last5": ["11211", "2", "x", "1", "3"]})
+    card["our_price"] = 1 / card.p_model
+    book = card.groupby("race_id").grv_price.transform(lambda s: (1 / s).sum())
+    contrib = np.array([[0.4, 0.1], [0.0, 0.1], [-0.4, -0.2], [0.3, 0.0], [-0.3, 0.0]])
+    out = PU.card_payload(card, contrib, ["who beat whom (Elo)", "box and the draw"], book, "2026-11-05", 1000, ["SANDOWN"])
+    assert out["tracks"] == ["Sandown Park"] and len(out["races"]) == 1 and out["races"][0]["d"] == 515
+    r = out["races"][0]["r"]
+    assert [x[1] for x in r] == ["A", "B", "C"] and r[0][5] == 1 and r[0][6] == 1 and r[1][5] == 2
+    elo = out["fam"].index("who beat whom (Elo)")
+    assert [elo, round(100 * (np.exp(0.4) - 1))] in r[0][8]
+    # E at Healesville: 20% at $10 is a 100% edge inside $8-$13, kept as a paper bet though the track is not shown
+    assert out["edges"] == [["Healesville", "4", "2", "E", 0.2, 10.0]]

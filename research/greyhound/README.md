@@ -1473,3 +1473,15 @@ does not resolve), and we do not dress a script up as a browser to get past that
 What this leaves: the recorder runs from Australia, where the founder is, as a one-line scheduled command on his
 machine each morning after 7:30am (TAB keeps the open all day, so one read catches every race's open), or the
 BetMatic routes in the sections above. The CSV it writes is the input `greyhound/opens_join.py` expects.
+
+## Tonight's card is sealed in the public log (5 Nov 2026)
+
+`topaz_price_upcoming.py` prices the day's VIC card before it runs. Its first run (41911162992) printed GRV's rating,
+pre-race price and tip for two races' runners into the Actions log and the report artifact, and both are public on
+this repository: the founder's rule is that Topaz data never sits anywhere public. The script now prints only counts,
+field names and ciphertext: the card is gzip'd, encrypted with a fresh AES-256 key, and that key is encrypted to
+`greyhound/keys/card_pub.pem` (`greyhound/sealed.py`, RSA-OAEP). The private key lives only where the card is read,
+never in the repository. Each base64 line carries a CRC32 so a copied line can be checked on its own. The unsealed
+card becomes the race page through `research/greyhound/card_page.py`, which is never committed and goes to a private
+artifact. The first run's log and its report artifact still hold those two races' GRV values; deleting them is the
+founder's call.
