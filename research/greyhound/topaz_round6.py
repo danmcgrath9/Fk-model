@@ -12,6 +12,9 @@ the scored quarter), scored on the same 22,841 races:
   D2  + Isolynx tracking ratings for the dog's earlier tracked runs, when ISOLYNX_DIR is set: its jump time, time to
         50 m and 100 m, last 100 m and average rail distance, each as a par-relative rating by track and distance
         (last run and mean of last 3), plus how many tracked runs it has
+  D3  + GRV's own `rating` for this race. It failed Test 9's leak check (its movement into a run tracked the result)
+        but a rating exists on every runner the evening before (Test 15); the preview compare of 5 Nov says whether
+        the number is the same after the race. Until it does, D3 is reported and NOT chosen.
 The best row is chosen on the early-stopping months and staked as Test 12 (rules chosen there, scored once).
 """
 import os
@@ -92,6 +95,10 @@ def main(d, label):
     rows = [("D0 B2 + preview, old ratings", old, old_rel), ("D1 + ratings upgrades", old + V1.NEW_RATINGS, old_rel + V1.NEW_REL)]
     if fiso:
         rows.append(("D2 + Isolynx ratings", old + V1.NEW_RATINGS + fiso, old_rel + V1.NEW_REL + [f for f in fiso if f.endswith("_m3")]))
+    if "topaz_rating" in df and df.topaz_rating.notna().mean() > 0.5:
+        df["grv_rating"] = df.topaz_rating.astype(float)
+        fp, es, te = (x.assign(grv_rating=df.grv_rating.loc[x.index]) for x in (fp, es, te))
+        rows.append(("D3 + GRV's rating (valid only if the compare clears it)", rows[-1][1] + ["grv_rating"], rows[-1][2] + ["grv_rating"]))
     best = None
     for name, cols, rl in rows:
         Xf, Xe, Xt = T.features(fp, cols, rl), T.features(es, cols, rl), T.features(te, cols, rl)
@@ -105,7 +112,7 @@ def main(d, label):
         new = imp[[c for c in imp.index if c.split("_rel")[0] in V1.NEW_RATINGS or c.startswith("iso_")]]
         if len(new):
             print(f"  new inputs' share {new.sum() / imp.sum():.1%}: " + ", ".join(f"{i} {v / imp.sum():.1%}" for i, v in new.head(8).items()))
-        if best is None or le < best[0]:
+        if not name.startswith("D3") and (best is None or le < best[0]):
             best = (le, name, pe, pt)
     _, name, pe, pt = best
     print(f"\nChosen on the early-stopping months: **{name}**")
