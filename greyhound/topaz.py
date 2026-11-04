@@ -24,15 +24,20 @@ class TopazError(RuntimeError):
     pass
 
 
+class TopazNoAccess(TopazError):
+    """The key does not cover that state or date (Topaz answers HTTP 400, "You do not have access to data before
+    1-Jan-2013 for VIC." on 4 Nov 2026). Never retried."""
+
+
 class TopazClient:
     def __init__(self, api_key: str | None = None, session=None, pause: float = 2.0, retries: int = 4,
-                 sleep=time.sleep):
+                 sleep=time.sleep, timeout: float = 120.0):
         key = api_key if api_key is not None else os.environ.get("TOPAZ_API_KEY", "")
         if not key.strip():
             raise TopazError("TOPAZ_API_KEY is not set (it lives in the repository's Actions secrets)")
         self._headers = {"accept": "application/json", "X-API-Key": key.strip()}
         self._s = session or requests.Session()
-        self.pause, self.retries, self._sleep = pause, retries, sleep
+        self.pause, self.retries, self._sleep, self.timeout = pause, retries, sleep, timeout
         self.calls = 0
 
     def __repr__(self) -> str:   # the key must never reach a log through a repr
@@ -47,7 +52,7 @@ class TopazClient:
                 self._sleep(self.pause)
             self.calls += 1
             try:
-                r = self._s.get(url, headers=self._headers, params=params, timeout=60)
+                r = self._s.get(url, headers=self._headers, params=params, timeout=self.timeout)
             except requests.RequestException as e:   # network blip: retry, and name the path, not the headers
                 if attempt == self.retries:
                     raise TopazError(f"{path}: {type(e).__name__} after {attempt + 1} tries") from None
@@ -66,6 +71,8 @@ class TopazClient:
                 wait = r.headers.get("Retry-After", "")
                 self._sleep(float(wait) if wait.replace(".", "", 1).isdigit() else 2 ** attempt * 10)
                 continue
+            if r.status_code == 400 and "do not have access" in r.text.lower():
+                raise TopazNoAccess(f"{path}: HTTP 400: {r.text[:300]}")
             raise TopazError(f"{path}: HTTP {r.status_code}: {r.text[:300]}")
         raise TopazError(f"{path}: gave up")   # unreachable; keeps the type checker honest
 
