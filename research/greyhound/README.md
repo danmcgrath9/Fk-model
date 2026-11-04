@@ -868,3 +868,29 @@ and tips on 50 of 50, and a `startPrice` on all 382 (run 41816219297). The previ
 about ten hours before the TAB opened the Geelong market (07:22 on race morning, 27 Oct), so it is available for an
 open-price bet. The `startPrice` existing the night before is itself a finding: tomorrow's compare says whether the
 bulk feed's `startPrice`, which Tests 12 and 13 bet against as the SP, is this early price or a price at the jump.
+
+## Test 16: the ratings engine upgrades, and GRV's rating (4 Nov 2026, gh topaz run 41820195552, `topaz_round6.py`)
+
+Three upgrades to `greyhound/ratings.py`, each as at the end of the previous day and hand-tested: **shrinkage** (a
+dog's mean time rating over its last 5 runs pulled toward its grade's prior by 3 pseudo-runs, so a two-run dog is
+rated mostly by its grade), **context ability** (its mean rating in this race's distance band, sprint / middle /
+staying, and at this track, with the run counts), and an **Elo over margins** (a nose defeat costs almost nothing, a
+ten-length one the lot). Added to round 3's B2 plus the preview (Test 15), on the same 22,841 scored races:
+
+| row | features | rounds | early-stopping log loss | scored log loss | gap to BSP | 1st half | 2nd half |
+|---|---|---|---|---|---|---|---|
+| D0 B2 + preview, old ratings | 169 | 2901 | 1.6066 | 1.6012 | +0.1174 | +0.1108 | +0.1232 |
+| D1 + ratings upgrades | 181 | 2997 | 1.6017 | 1.5923 | **+0.1085** | +0.1003 | +0.1158 |
+| D3 + GRV's rating (valid only if the compare clears it) | 183 | 2997 | 1.6000 | 1.5834 | +0.0996 | +0.0912 | +0.1071 |
+
+The upgrades are worth **0.009** against BSP, in both halves and on the early-stopping months, and take 30% of the
+model's splits: ability in the distance band 14%, the margin Elo 9%, shrinkage 2.6%, ability at the track 2.4%.
+GRV's own rating is worth another 0.009 on top, IF the 5 Nov compare shows the number unchanged after the race (it
+failed Test 9's leak check, which may have been reading its revision history; the snapshot shows a rating on every
+runner the evening before). The gap to BSP has gone 0.150 (Test 9) → 0.137 → 0.127 → 0.117 → **0.1085**, and would be
+0.0996 with GRV's rating.
+
+Staking D1 as Test 12 (rules chosen on the early-stopping months, scored once): **at GRV's SP**, one bet a race at
+$8-$13 with an edge of 50% or more (748 bets there, +31.6%) scored **+34.9% and +23.7%** (2,056 and 2,215 bets, A/E
+1.360 and 1.247, longest losing runs 34 and 58), against +24.7% / +14.0% for the Test 12 model. **At BSP** the chosen
+rule ($5-$8, 50%) lost -11.2% / -17.9%. Not run with Isolynx yet (the pull was in progress); D2 waits for it.
