@@ -169,18 +169,21 @@ TOPAZ_EXTRA = {"runId": "run_id", "dogName": "dog_name", "trackName": "track_nam
                "rating": "topaz_rating", "trainerId": "trainer_id", "sireId": "sire_id", "damId": "dam_id",
                "dateWhelped": "whelped", "boxDrawnOrder": "box_drawn", "rugNumber": "rug",
                "firstSplitPosition": "split_pos", "pir": "pir", "comment": "comment", "raceType": "race_type",
-               "raceTypeCode": "race_type_code", "abnormalResult": "abnormal", "isLateScratching": "late_scratching"}
+               "raceTypeCode": "race_type_code", "abnormalResult": "abnormal", "isLateScratching": "late_scratching",
+               "resultMarginLengths": "margin_lengths_text"}
 
 
 def topaz_to_runs(raw: pd.DataFrame) -> pd.DataFrame:
     """Topaz bulk runs (one row per BulkRunOutput) to the canonical runs table above, plus TOPAZ_EXTRA columns.
 
-    From the API's own field list, so the mapping is not a guess; three meanings the spec does not state are handled
-    defensively and are to be confirmed against the first probe:
-      - `resultMargin` is taken as lengths behind the winner, and the winner's margin is set to 0 whatever it holds
-        (some systems give the winner its margin over second);
-      - `resultTime` is taken as the dog's own run time, and a race's win_time is its winner's resultTime;
-      - a race is a trial when its raceType or raceTypeCode says "trial" (trials normally come from /trialresult).
+    From the API's own field list. Three meanings the spec does not state, settled by the probe of 4 Nov 2026 (VIC,
+    28 Oct, 51 races, research/greyhound/README.md):
+      - `resultMargin` is SECONDS behind the winner (r = 1.000 against the time gaps, at 0.07 of their size in
+        lengths), so it is divided by SEC_PER_LENGTH into the canonical lengths; every winner holds its margin over
+        second (51 of 51), so the winner's margin is set to 0;
+      - `resultTime` is the dog's own run time (51 of 51 races), and a race's win_time is its winner's resultTime;
+      - the bulk runs hold no trials (none of the 15 race types); a race is still marked a trial if its raceType or
+        raceTypeCode says "trial", as a safety net.
     Scratched dogs did not run and are dropped. A run with an abnormal result (fell, did not finish, ...) keeps its
     row with no finish and no time, which run_ratings already reads as "no run time"."""
     need = ["raceId", "meetingId", "meetingDate", "trackCode", "distanceInMetres", "incomingGrade", "dogId",
@@ -202,7 +205,7 @@ def topaz_to_runs(raw: pd.DataFrame) -> pd.DataFrame:
         "dog": df.dogId.astype("int64").astype(str),          # names repeat across dogs; the id does not
         "box": pd.to_numeric(df.boxNumber),
         "finish": pd.to_numeric(df.place).where(~abnormal),
-        "margin": pd.to_numeric(df.resultMargin),
+        "margin": pd.to_numeric(df.resultMargin) / SEC_PER_LENGTH,     # seconds behind the winner -> lengths
         "time": pd.to_numeric(df.resultTime).where(~abnormal),
         "split": pd.to_numeric(df.firstSplitTime),
         "is_trial": kind.str.contains("trial", case=False),
