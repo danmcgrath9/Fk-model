@@ -22,11 +22,14 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'probe, run (pull into this run only, then the script), pull (to the private data repo), preview (snapshot today''s pre-race comments) or preview-compare (against the bulk feed; set from=YYYY-MM-DD)'
+        description: 'probe, run (pull into this run only, then the script), pull (to the private data repo), preview, preview-compare (from=YYYY-MM-DD), or isolynx (tracking data, one call per dog, resumable; from=YYYY-MM-DD is the first date)'
         default: 'probe'
       script:
         description: 'mode=run: research scripts, space separated, each run as python SCRIPT greyhound/cache/topaz LABEL'
         default: 'research/greyhound/topaz_profile.py'
+      isolynx:
+        description: "mode=run: yes = restore the Isolynx pull beside the runs (ISOLYNX_DIR for the scripts)"
+        default: 'no'
       trials:
         description: 'mode=run: yes = also pull trial results (trials_<STATE>_<YYYY-MM>), cached beside the runs'
         default: 'no'
@@ -116,6 +119,37 @@ jobs:
           path: greyhound/cache/preview
           key: topaz-preview-${{ github.run_id }}
 
+      - name: Restore the Isolynx pull (Actions cache, this repository only)
+        if: github.event.inputs.mode == 'isolynx' || (github.event.inputs.mode == 'run' && github.event.inputs.isolynx == 'yes')
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/isolynx
+          key: topaz-isolynx-${{ github.run_id }}
+          restore-keys: topaz-isolynx-
+
+      - name: Restore the pulled months for the Isolynx dog list
+        if: github.event.inputs.mode == 'isolynx'
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/topaz
+          key: topaz-${{ github.event.inputs.states }}-${{ github.run_id }}
+          restore-keys: topaz-${{ github.event.inputs.states }}-
+
+      - name: Pull Isolynx tracking, one call per dog, resumable
+        if: github.event.inputs.mode == 'isolynx'
+        run: |
+          set -o pipefail
+          python -m greyhound.isolynx pull --runs greyhound/cache/topaz --out greyhound/cache/isolynx \
+            --since "${{ github.event.inputs.from }}" --max-minutes "${{ github.event.inputs.max_minutes }}" | tee -a "$GITHUB_STEP_SUMMARY" || true
+          python -m greyhound.isolynx table --out greyhound/cache/isolynx | head -40 | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Save the Isolynx pull (Actions cache)
+        if: always() && github.event.inputs.mode == 'isolynx'
+        uses: actions/cache/save@v4
+        with:
+          path: greyhound/cache/isolynx
+          key: topaz-isolynx-${{ github.run_id }}
+
       - name: Pull into this run only (day by day)
         id: pullrun
         if: github.event.inputs.mode == 'run'
@@ -170,6 +204,7 @@ jobs:
           pip install lightgbm scikit-learn scipy
           set -o pipefail
           [ -d bf ] && export BETFAIR_DIR="$PWD/bf"
+          [ -d greyhound/cache/isolynx ] && export ISOLYNX_DIR="$PWD/greyhound/cache/isolynx"
           for s in ${{ github.event.inputs.script }}; do
             python "$s" greyhound/cache/topaz "${{ github.event.inputs.label }}" | tee -a report.md | tee -a "$GITHUB_STEP_SUMMARY"
           done

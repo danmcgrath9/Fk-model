@@ -34,7 +34,7 @@ import lightgbm as lgb
 from scipy.optimize import minimize
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from greyhound.ratings import dog_form, elo, load_topaz, run_ratings   # noqa: E402
+from greyhound.ratings import context_form, dog_form, elo, load_topaz, margin_elo, run_ratings, shrunk_form   # noqa: E402
 
 CAT = ["track", "grade", "sex"]
 NUM = ["box", "field", "distance", "weight", "weight_change", "age_days", "trainer_rate", "trainer_runs", "box_ratio",
@@ -43,6 +43,13 @@ NUM = ["box", "field", "distance", "weight", "weight_change", "age_days", "train
        "split_rating_last", "split_rating_mean5", "split_rating_best5"]
 REL = ["elo", "time_rating_mean5", "time_rating_best5", "time_rating_last", "split_rating_mean5", "split_rating_best5",
        "finish_mean5", "trainer_rate", "box_ratio", "weight", "days_since"]
+# the ratings engine's 4 Nov upgrades (shrinkage toward the grade prior, ability by distance band and track, Elo over
+# margins); kept apart so a test can run with and without them
+NEW_RATINGS = ["time_rating_shrunk", "grade_prior", "rating_runs", "time_rating_band", "runs_band",
+               "time_rating_track", "runs_track", "margin_elo"]
+NEW_REL = ["time_rating_shrunk", "time_rating_band", "time_rating_track", "margin_elo"]
+NUM = NUM + NEW_RATINGS
+REL = REL + NEW_REL
 
 
 def prior_rate(df, keys, won):
@@ -64,6 +71,8 @@ def build(d):
     rated = run_ratings(runs)
     form = dog_form(runs, rated)
     runs["elo"] = elo(runs).values
+    runs["margin_elo"] = margin_elo(runs).values
+    form = pd.concat([form, shrunk_form(runs, rated), context_form(runs, rated)], axis=1)
     df = pd.concat([runs, form.drop(columns=[c for c in form.columns if c in runs.columns])], axis=1)
     df["won"] = (df.finish == 1).astype(int)
     df["field"] = df.groupby("race_id").dog.transform("size")
