@@ -16,6 +16,8 @@ Since Test 14 the model also carries the ratings upgrades (Test 16) and this rac
   WALK_GRV_RATING=yes GRV's own rating for this race (ONLY once the preview compare shows it unchanged after the race)
   WALK_REFIT_EVERY=k  refit every k months instead of every month (the 181-input model does not fit 36 refits in the
                       job's 350 minutes; between refits the last fitted pair prices the month)
+  WALK_ROUNDS_A=n     rounds for the BSP-chance model (3,000 by default; Test 19 found early stopping choosing 4,139
+                      once the cap was lifted, at about a third more time a refit)
 
 THE BETS are chosen the same way. For each month from the scored quarter on, the rule (signal: the model, the
 ensemble, or Benter's blend of the model with the market; one bet a race or every qualifier; price band; edge) is the
@@ -40,7 +42,8 @@ import topaz_round4 as R4    # noqa: E402
 import topaz_theories as T   # noqa: E402
 import topaz_v1 as V1        # noqa: E402
 
-ROUNDS_A, ROUNDS_B = 3000, 400          # what early stopping chose in Tests 10 and 11 (the cap, and 385)
+ROUNDS_A = int(os.environ.get("WALK_ROUNDS_A", "3000") or 3000)   # Tests 10 and 11 chose the 3,000 cap; Test 19 chose 4,139 at 6,000
+ROUNDS_B = 400                                                      # what early stopping chose for the winners twin (385)
 EDGES = [0.02, 0.05, 0.10, 0.20, 0.30, 0.50]
 TIME_GUARD_MIN = 285
 MIN_TRAIN_RACES = 1500                    # stop refitting past this and report what there is (the job dies at 350)
