@@ -12,6 +12,7 @@ frozen at Dec 2023 and lost in the latest months; Test 14 says a fresh model hol
 
 Since Test 14 the model also carries the ratings upgrades (Test 16) and this race's GRV preview (Test 15), and:
   ISOLYNX_DIR         when set, the Isolynx tracking ratings of each dog's earlier tracked runs (topaz_round6.py)
+  RACES_DIR           when set, GRV's tips for this race from the race records (greyhound/races.py, round 8)
   WALK_GRV_RATING=yes GRV's own rating for this race (ONLY once the preview compare shows it unchanged after the race)
   WALK_REFIT_EVERY=k  refit every k months instead of every month (the 181-input model does not fit 36 refits in the
                       job's 350 minutes; between refits the last fitted pair prices the month)
@@ -31,6 +32,7 @@ import pandas as pd
 import lightgbm as lgb
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 import topaz_preview_test as PT   # noqa: E402
 import topaz_round2 as R2    # noqa: E402
 import topaz_round3 as R3    # noqa: E402
@@ -96,6 +98,13 @@ def build_full(d):
         import topaz_round6 as R6      # here, not at the top: topaz_round6 imports this module
         df, fiso, iso_note = R6.isolynx_features(df, iso_dir)
         notes.append(iso_note)
+    ftip = []
+    races_dir = os.environ.get("RACES_DIR", "")
+    if races_dir and os.path.isdir(races_dir):
+        from greyhound.races import load_races, tip_features
+        races = load_races(races_dir)
+        df, ftip = tip_features(df, races)
+        notes.append(f"tips: {len(races):,} race records, a tips record for {df.tip_rank.notna().mean():.0%} of runners")
     fgrv = []
     if os.environ.get("WALK_GRV_RATING", "").strip().lower() == "yes":
         if "topaz_rating" in df and df.topaz_rating.notna().mean() > 0.5:
@@ -105,7 +114,7 @@ def build_full(d):
         else:
             notes.append("GRV's rating asked for but not filled; left out")
     df = df.copy()
-    num = list(dict.fromkeys(num + fpv + fiso + fgrv))
+    num = list(dict.fromkeys(num + fpv + fiso + ftip + fgrv))
     rel = rel + [f for f in fiso if f.endswith("_m3")] + fgrv
     return df, num, rel, "\n".join(notes)
 

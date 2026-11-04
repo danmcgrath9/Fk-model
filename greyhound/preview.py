@@ -132,7 +132,45 @@ def compare(client: TopazClient, out: Path, day: str) -> int:
               f"{_book_line(list(before.values()))}")
     print(f"  rating the same {rt}/{len(both)}; isBestBet the same {bb}/{len(both)}; pre-race startPrice equal to "
           f"the bulk startPrice {sp}/{len(both)} (if few, the bulk startPrice is the SP, not the price before the race)")
+    compare_races(client, snap, day, bulk)
     return 0
+
+
+def compare_races(client: TopazClient, snap: dict, day: str, bulk: list) -> None:
+    """The race-level fields (analystComment, tip1-4) from the snapshot against the day's race records afterwards
+    (GET /api/race?from=&to=), and what a tip IS: a box number, a dog id, or a name. Counts only."""
+    try:
+        races = client.races("VIC", day, day)
+    except TopazError as e:
+        print(f"  race records: not compared ({e})")
+        return
+    before = {r["raceId"]: r for r in snap.get("races", []) if r.get("raceId") is not None}
+    after = {r.get("raceId"): r for r in races if isinstance(r, dict)}
+    both = [k for k in before if k in after]
+    if not both:
+        print(f"  race records: {len(before)} in the snapshot, {len(after)} afterwards, none in both")
+        return
+    ac = sum(before[k]["analystComment"] == _h(after[k].get("analystComment")) for k in both)
+    tips_before = {k: [t for t in before[k].get("tips") or [] if t not in (None, "", 0)] for k in both}
+    tips_after = {k: [after[k].get(f"tip{i}") for i in range(1, 5)] for k in both}
+    tips_after = {k: [t for t in v if t not in (None, "", 0)] for k, v in tips_after.items()}
+    tipped = [k for k in both if tips_before[k]]
+    same = sum(tips_before[k] == tips_after[k] for k in tipped)
+    runners = {}
+    for u in bulk:
+        if isinstance(u, dict):
+            runners.setdefault(u.get("raceId"), []).append(u)
+    box = ids = names = 0
+    for k in tipped:
+        rs = runners.get(k, [])
+        for t in tips_before[k]:
+            box += any(str(t) == str(u.get("boxNumber")) for u in rs)
+            ids += any(str(t) == str(u.get("dogId")) for u in rs)
+            names += any(str(t).strip().upper() == str(u.get("dogName") or "").strip().upper() for u in rs)
+    n_tips = sum(len(tips_before[k]) for k in tipped)
+    print(f"  race records: {len(both)} races in both; analystComment the same {ac}/{len(both)}; tips filled before on "
+          f"{len(tipped)}/{len(both)}, the same after {same}/{len(tipped)}; of {n_tips} tip values, {box} match a box "
+          f"number, {ids} a dog id, {names} a dog name")
 
 
 def main(argv=None) -> int:

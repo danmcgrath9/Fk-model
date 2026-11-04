@@ -33,6 +33,9 @@ on:
       trials:
         description: 'mode=run: yes = also pull trial results (trials_<STATE>_<YYYY-MM>), cached beside the runs'
         default: 'no'
+      races:
+        description: "mode=run: yes = also pull the race records (races_<STATE>_<YYYY-MM>: GRV's tips and analyst comment), cached beside the runs (RACES_DIR for the scripts)"
+        default: 'no'
       betfair:
         description: "mode=run: yes = also download Betfair's free ANZ greyhound files (2020 on) for BSP, as BETFAIR_DIR"
         default: 'yes'
@@ -182,6 +185,19 @@ jobs:
           echo "complete=$([ "${LEFT:-0}" = "0" ] && [ "${FAILED:-0}" = "0" ] && echo yes || echo no)" >> "$GITHUB_OUTPUT"
           grep -E "failed|outside" trials-report.md | head -20 >> "$GITHUB_STEP_SUMMARY" || true
 
+      - name: Pull the race records into this run only (a month a call)
+        id: pullraces
+        if: github.event.inputs.mode == 'run' && github.event.inputs.races == 'yes'
+        run: |
+          set -o pipefail
+          python -m greyhound.pull --races --states "${{ github.event.inputs.states }}" --from "${{ github.event.inputs.from }}" \
+            --workers 8 --per-minute 72 --max-calls 100000 --max-minutes "${{ github.event.inputs.max_minutes }}" | tee races-report.md
+          tail -1 races-report.md >> "$GITHUB_STEP_SUMMARY"
+          LEFT=$(tail -1 races-report.md | sed -nE 's/.*; ([0-9]+) left for the next run.*/\1/p')
+          FAILED=$(tail -1 races-report.md | sed -nE 's/.*; ([0-9]+) failed;.*/\1/p')
+          echo "complete=$([ "${LEFT:-0}" = "0" ] && [ "${FAILED:-0}" = "0" ] && echo yes || echo no)" >> "$GITHUB_OUTPUT"
+          grep -E "failed|outside" races-report.md | head -20 >> "$GITHUB_STEP_SUMMARY" || true
+
       - name: Save the pulled months (Actions cache)
         if: always() && github.event.inputs.mode == 'run'
         uses: actions/cache/save@v4
@@ -190,11 +206,11 @@ jobs:
           key: topaz-${{ github.event.inputs.states }}-${{ github.run_id }}
 
       - name: Not every month is in yet
-        if: github.event.inputs.mode == 'run' && (steps.pullrun.outputs.complete != 'yes' || (github.event.inputs.trials == 'yes' && steps.pulltrials.outputs.complete != 'yes'))
+        if: github.event.inputs.mode == 'run' && (steps.pullrun.outputs.complete != 'yes' || (github.event.inputs.trials == 'yes' && steps.pulltrials.outputs.complete != 'yes') || (github.event.inputs.races == 'yes' && steps.pullraces.outputs.complete != 'yes'))
         run: echo "Months are still missing (see the pull report above); run mode=run again to continue." | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Betfair's free ANZ greyhound files (BSP; terms read 25 Oct 2026, research/greyhound/README.md)
-        if: github.event.inputs.mode == 'run' && github.event.inputs.betfair == 'yes' && steps.pullrun.outputs.complete == 'yes' && (github.event.inputs.trials != 'yes' || steps.pulltrials.outputs.complete == 'yes')
+        if: github.event.inputs.mode == 'run' && github.event.inputs.betfair == 'yes' && steps.pullrun.outputs.complete == 'yes' && (github.event.inputs.trials != 'yes' || steps.pulltrials.outputs.complete == 'yes') && (github.event.inputs.races != 'yes' || steps.pullraces.outputs.complete == 'yes')
         run: |
           mkdir -p bf
           for f in ANZ_Greyhounds_2020.zip ANZ_Greyhounds_2021.zip ANZ_Greyhounds_2022.zip ANZ_Greyhounds_2023.zip \
@@ -204,12 +220,13 @@ jobs:
           done
 
       - name: Run the scripts (results only; the data is not kept)
-        if: github.event.inputs.mode == 'run' && steps.pullrun.outputs.complete == 'yes' && (github.event.inputs.trials != 'yes' || steps.pulltrials.outputs.complete == 'yes')
+        if: github.event.inputs.mode == 'run' && steps.pullrun.outputs.complete == 'yes' && (github.event.inputs.trials != 'yes' || steps.pulltrials.outputs.complete == 'yes') && (github.event.inputs.races != 'yes' || steps.pullraces.outputs.complete == 'yes')
         run: |
           pip install lightgbm scikit-learn scipy
           set -o pipefail
           [ -d bf ] && export BETFAIR_DIR="$PWD/bf"
           [ -d greyhound/cache/isolynx ] && export ISOLYNX_DIR="$PWD/greyhound/cache/isolynx"
+          ls greyhound/cache/topaz/races_*.json.gz >/dev/null 2>&1 && export RACES_DIR="$PWD/greyhound/cache/topaz"
           for kv in ${{ github.event.inputs.env }}; do
             case "$kv" in [A-Z_]*=*) export "$kv" ;; *) echo "ignored env input: $kv" ;; esac
           done
