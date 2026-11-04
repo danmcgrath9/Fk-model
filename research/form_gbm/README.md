@@ -1671,3 +1671,22 @@ Shelly's Legacy, Salina Special, Immortal Star, So You Are, Sharing Moments, Sto
 winners, -15%; the $4-$7 favourites we rate near or shorter than BSP 26 bets, 4 winners, -30%. So the split runs the same
 way out of sample: the favourite the market makes AGAINST our price wins, the one we agree with does not. Seventeen bets
 is a direction, not a number. Paper track at the 1.6x line from Thu 5 Nov beside the lay book; 1.3x shown for the record.
+
+## The three books together, 3 Jun to 4 Nov 2026 (founder, 4 Nov: "the full 5 month back test for all 3 and total"; t_three_months.py, t_live_three.py)
+Units: open book $50, a lay $200, a favourite back $500. HOLDOUT 3 Jun - 8 Oct (v10, stopped the day before going live so no
+day counts twice; open book at the open less 7% with the live staking; lays and faves at BSP, 8% commission). LIVE 9 Oct -
+4 Nov: the open book as it happened (paper at Form King's open, TAB's deductions, the stakes of the day); lays 9-27 Oct
+computed from each meeting's own live model file and Form King's BSPs (136 lays, 6 winners, +12.24u; the same computation
+on 28 Oct-4 Nov gives 76 lays +27.58u against the 73 lays +24.82u the paper sheets settled, so it is within a few lays), 28
+Oct - 4 Nov as settled; faves computed the same way (21 bets, 7 won, +9.48u, +45%).
+| month | open $50 | lays $200 | faves $500 | total |
+|---|---|---|---|---|
+| June | +$9,729 | +$29,291 | +$1,452 | +$40,472 |
+| July | +$24,305 | -$2,196 | +$10,226 | +$32,335 |
+| August | +$25,826 | +$29,584 | +$9,470 | +$64,880 |
+| September | +$12,990 | +$18,864 | +$3,881 | +$35,735 |
+| October (1-8 holdout, 9-31 live) | +$15,775 | +$7,780 | +$5,240 | +$28,795 |
+| November 1-4 (live) | +$5,030 | +$4,968 | -$500 | +$9,498 |
+| 22 weeks | +$93,655 | +$88,291 | +$29,769 | +$211,715 |
+Live part alone (9 Oct - 4 Nov, under 4 weeks): open +$15,481 (130 bets, +309.61u), lays +$7,412 (209 lays, 8 winners,
++37.06u), faves +$4,740 (21 bets, 7 won): +$27,633. Real money in that time: +$626 on $760.
