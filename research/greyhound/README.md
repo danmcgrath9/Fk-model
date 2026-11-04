@@ -1037,6 +1037,29 @@ about ten hours before the TAB opened the Geelong market (07:22 on race morning,
 open-price bet. The `startPrice` existing the night before is itself a finding: tomorrow's compare says whether the
 bulk feed's `startPrice`, which Tests 12 and 13 bet against as the SP, is this early price or a price at the jump.
 
+**The 4 Nov compare** (run 41931171614, the next morning): the 56 runners snapshotted at 21:19 Sydney on 4 Nov, before
+their 8 races ran, against the bulk feed for that day:
+
+| field | the same after the race |
+|---|---|
+| comment | 56 of 56 (none changed, none filled late) |
+| GRV's rating | 56 of 56 |
+| isBestBet | 56 of 56 |
+| race analystComment | 8 of 8 |
+| tips (tip1-4) | 8 of 8; all 32 tip values are box numbers |
+| the pre-race `startPrice` against the bulk `startPrice` | **1 of 56**; correlation of log prices +0.775, median change 72%; the pre-race prices make a 123% book (8 races) |
+
+Two things settled. **GRV's preview, tips and rating are written before the race and not touched after**, so the
+preview (Test 15), the tips (Test 19) and **GRV's rating are legitimate inputs**: the rating is the D3 row of Test 16,
+worth another 0.009 against BSP, and it goes into the next walk-forward (`WALK_GRV_RATING=yes`). Test 9's leak check
+on the rating was reading something else (most likely the rating being set from the previous run's result, which is
+allowed). **The `startPrice` GRV shows before the race is not the SP**: it is a separate price, a 122-123% book, that
+moves to the bulk `startPrice` by a median 72%. Every staking test (12, 14, 16, 18, 20, 21) bet at the bulk
+`startPrice`, the SP at the jump, so none of them is a test of the evening price; tonight's paper bets, picked against
+it, are names to check at TAB's open, not bets the backtest stands behind. The 5 Nov snapshot (10:08 Sydney, run
+41931175896: 50 races, 382 runners, comment, rating and price on all 382, isBestBet on 13, a 122% book, tips on 50 of
+50, no results in) is compared tomorrow morning.
+
 ## Test 16: the ratings engine upgrades, and GRV's rating (4 Nov 2026, gh topaz run 41820195552, `topaz_round6.py`)
 
 Three upgrades to `greyhound/ratings.py`, each as at the end of the previous day and hand-tested: **shrinkage** (a
