@@ -39,10 +39,12 @@ def snapshot(client: TopazClient, out: Path, max_races: int, day: str | None = N
     races = client._get("race/upcoming", params={"from": frm}) or []
     races = [r for r in races if isinstance(r, dict)]
     print(f"{len(races)} VIC races to run from {frm} Sydney, asked at {now:%Y-%m-%d %H:%M} Sydney")
-    rows, race_rows = [], []
+    rows, race_rows, rows_raw = [], [], []
     for r in races[:max_races]:
         rid = r.get("raceId")
         runs = client._get(f"race/{rid}/runs/form") or []
+        if not rows_raw:
+            rows_raw = [u for u in runs if isinstance(u, dict)][:1]
         race_rows.append({"raceId": rid, "startTime": r.get("startTime"), "analystComment": _h(r.get("analystComment")),
                           "tips": [r.get(f"tip{i}") for i in range(1, 5)], "suggestedBet": r.get("suggestedBet"),
                           "resultEntered": r.get("isRaceResultEntered")})
@@ -53,6 +55,13 @@ def snapshot(client: TopazClient, out: Path, max_races: int, day: str | None = N
                          "comment_len": len(str(u.get("comment") or "").strip()), "rating": u.get("rating"),
                          "isBestBet": u.get("isBestBet"), "startPrice": u.get("startPrice"),
                          "startingPrice": u.get("startingPrice"), "scratched": u.get("scratched")})
+    # the field NAMES of a race record and a run from the form endpoint (never a value): the daily scorer has to map
+    # the pre-race shape onto the bulk feed's, and nothing else in the repo records what that shape is
+    if races:
+        print(f"  race fields: {', '.join(sorted(k for k in races[0] if not isinstance(races[0][k], (dict, list))))}")
+    first_run = next((u for u in rows_raw if isinstance(u, dict)), None) if rows else None
+    if first_run:
+        print(f"  run fields (from /race/{{id}}/runs/form): {', '.join(sorted(first_run))}")
     out.mkdir(parents=True, exist_ok=True)
     path = out / f"preview_{day or now.strftime('%Y-%m-%d')}.json"
     path.write_text(json.dumps({"taken": now.isoformat(), "races": race_rows, "runs": rows}))
