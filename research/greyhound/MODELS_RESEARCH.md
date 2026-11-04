@@ -117,3 +117,63 @@ price.
 **What this changes for us**: four feature groups from Betfair's tutorial we did not have (rolling windows,
 sire/dam/trainer form, vacant boxes, finishing movement), now in `topaz_theories.py` as T3 and T4 beside our own
 engine (T1), run style and the map (T2), GRV's own fields behind leak checks (T5) and the market's past view (T6).
+
+## Where the last 0.117 to BSP can come from (4 Nov 2026, founder: "research to get us closer")
+
+What fifteen tests on the full Victorian history have established, before any new idea:
+
+- **Features decide it, the learner does not.** A bigger model, ranks within the field and a mixed target gave
+  nothing (Test 10); Betfair's own tutorial found every competent learner within 0.004 of the others.
+- **Every gain so far was new information or more of it.** The training window 0.013; class, recent form, prize and
+  interactions 0.011; GRV's pre-race preview 0.009. Round style and the map 0.004 on the free files' map; comments
+  as last-run text, trials (thin feed) and 60-day box bias nothing.
+- **The ratings are the ceiling of the fundamentals.** The best pre-race time rating predicts the dog's own run at
+  r = 0.41 (Test 11). Greyhound runs are noisy: a dog's time varies run to run by more than the field spread, so
+  no rating built from past runs alone will get much past that, and the model's top inputs (Elo, past SPs, trainer
+  rate, time ratings) are already the ones that carry it.
+- **What BSP has that a morning model cannot**: money and news from the day (late scratchings, kennel knowledge,
+  the track running fast or slow in the early races, the public's read of the field at 3pm). Part of the 0.117 is
+  that, and it is unreachable before the open by construction. The right yardstick for a bet at the open is the
+  open; BSP is the sharpest reference, not the target to equal.
+
+Ranked by expected gain per unit of work, with the evidence for each:
+
+1. **The open price itself, as Benter's stage 2.** Blending our model with GRV's SP beat the SP by 0.022 (Test 9)
+   with the model's weight near 0.2: a price plus a model is sharper than either. The same blend with the TAB open,
+   fitted on recorded opens, is the one input certain to help AND legitimate for a bet placed at the open: the open
+   is known the moment it exists. Nothing in the repo can do this until opens are recorded (the BetMatic probe, $1
+   in the TAB account). This is the largest expected gain on the list and it costs no modelling.
+2. **GRV's own rating, if tomorrow's compare shows it unchanged after the race.** The `rating` field failed Test 9's
+   leak check (its movement INTO a run tracked that run's result), but the 4 Nov snapshot shows a rating on every
+   runner the evening before. If the compare finds the number the same before and after, it is a pre-race figure
+   and the leak check was reading its revision history, not a leak; GRV's rating is then the richest expert input
+   we have (the best-bet flag alone, a one-bit version of it, moved the gap 0.009). Expected gain 0.005-0.02.
+3. **Isolynx sectionals at The Meadows, Sandown, Healesville and Traralgon**: time to 50m and 300m, the last 100m,
+   speed at each point, average distance to the rail, for every runner (the bulk feed has only the first split, and
+   second splits on 9%). The run-home split is the measure punters say separates dogs that "run hot to the turn and
+   fade"; rail distance is run style measured rather than coded. One request per race, about 3 years at four tracks:
+   roughly 18,000 calls, four hours at our cap. GRV's own notes warn that jump/20m times differ by track and the
+   first-split par at The Meadows was 0.03s fast, so each measure needs a par per track and distance like our time
+   rating. Expected gain 0.005-0.015 at those tracks (about 40% of VIC races), nothing elsewhere.
+4. **Ratings methodology**, three upgrades the engine does not have: (a) shrinkage: a dog with two runs is rated as
+   if its two times were the truth, where a Bayesian rating pulls it toward the track-and-grade prior by run count
+   (the model partly corrects for this through `runs`, but the rating itself should); (b) ability by distance band
+   and by track (sprinters at 300m, stayers at 600m+, and the dog's record at THIS track: `bestTimeTrackDistance`
+   exists in the bulk feed and `same_track` is a flag, not a rating); (c) an Elo that uses margins, not just
+   finishing order (a dog beaten by half a length and one beaten by ten lengths lose the same today). Each is a
+   day's work and testable on the standard split; together perhaps 0.005-0.01.
+5. **Expert prices as inputs**: GRV's analyst tips (tip1-4, in the pre-race race record, not the bulk feed) and
+   Betfair's Iggy rated price (published on the hub the morning of the race, 2024 on). Both are opinions the open
+   may under-use; both are only usable if they exist before the open, which the tips do (snapshotted the evening
+   before) and Iggy's timing has to be checked. Expected gain small on top of the preview, since they overlap it.
+6. **The day's going, from the meeting's earlier races.** The going variant is the largest single adjustment in the
+   time rating, and for race 8 the day's first seven races measure it exactly; the model today sees only earlier
+   days. Legitimate for a bet placed after race 1, not at the open. Worth having for the second channel (bets near
+   the jump at TAB's price), not for open slips.
+
+Not worth pursuing, on the evidence: more learner capacity; the comment as last-run text; the 60-day box bias
+(the long-run rate already carries it); trials through `/trialresult` until GRV explains the thin feed; sire and dam
+windows beyond what T3 has (1-2% of splits).
+
+The order of work this implies: record opens (the founder's $1), then items 2 and 4 on the standard split while the
+opens accumulate, then Isolynx; and stage 2 with the open the moment a month of opens exists.
