@@ -43,3 +43,11 @@ If that isn't something you can agree to, could you tell me whether a licensed s
 
 Thanks,
 Dan
+
+## Log
+
+| date | who | what |
+|---|---|---|
+| 22 Oct 2026 | Champion Data | enquiry sent through the contact form (pricing for lineups and player statistics) |
+| 4 Nov 2026 | Champion Data | follow-up sent through the form (AFL Stat Inquiries, Data & Analytics); no reply to the first, not even an acknowledgement |
+| not sent | AFL / Telstra | consent request, held in case Champion Data is too dear or does not sell to individuals |
