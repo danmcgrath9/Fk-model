@@ -1,0 +1,55 @@
+"""greyhound/isolynx.py: the dog list from cached runs, the resumable group pull, and the flattening."""
+import gzip
+import json
+import os
+import sys
+
+from greyhound import isolynx as I
+from greyhound.topaz import TopazClient
+
+sys.path.insert(0, os.path.dirname(__file__))
+from test_topaz import Resp, Session  # noqa: E402
+
+
+def write_runs(d, name, rows):
+    with gzip.open(d / name, "wt", encoding="utf-8") as f:
+        json.dump(rows, f)
+
+
+def test_tracked_dogs_filters_by_track_and_date(tmp_path):
+    write_runs(tmp_path, "runs_VIC_2024-03.json.gz", [
+        {"dogId": 1, "trackName": "The Meadows", "meetingDate": "2024-03-02T00:00:00"},
+        {"dogId": 2, "trackName": "Geelong", "meetingDate": "2024-03-02T00:00:00"},
+        {"dogId": 3, "trackName": "Sandown Park", "meetingDate": "2024-03-01T00:00:00"}])
+    write_runs(tmp_path, "runs_VIC_2021-03.json.gz", [{"dogId": 4, "trackName": "Sandown Park", "meetingDate": "2021-03-02"}])
+    assert I.tracked_dogs(tmp_path, "2024-03-02") == [1]
+    assert I.tracked_dogs(tmp_path, "2021-01-01") == [1, 3, 4]
+
+
+def run_payload(race, dog, d):
+    return {"raceId": race, "dogId": dog, "raceDate": d, "venueCode": "MEP", "raceDistance": 525, "boxNumber": 1,
+            "place": 2, "resultTime": 30.1, "averageSpeed": 17.4, "maxSpeed": 18.9, "averageToRail": 1.2,
+            "jumpSplit": {"elapsedTime": 0.3, "splitSpeed": 5.0, "averageToRail": 0.9, "positionInRunning": 3},
+            "runnerSplitsFromStart50": [{"splitDistance": 50, "elapsedTime": 3.2, "splitSpeed": 15.6, "positionInRunning": 2},
+                                        {"splitDistance": 100, "elapsedTime": 6.0, "splitSpeed": 17.9, "positionInRunning": 2}],
+            "runnerSplitsToFinish50": [{"splitDistance": 100, "deltaTime": 2.9}, {"splitDistance": 50, "deltaTime": 3.0}],
+            "runnerSplitsTrackMarks": [{"elapsedTime": 5.1, "positionInRunning": 2}]}
+
+
+def test_pull_writes_groups_whole_skips_held_and_retries_failed(tmp_path, monkeypatch):
+    monkeypatch.setattr(I, "GROUP", 2)
+    s = Session(Resp(200, [run_payload(10, 1, "2024-03-02")]), Resp(200, []),       # group 0: dogs 1, 2
+                Resp(500), Resp(500), Resp(500), Resp(500), Resp(500))               # group 1: dog 3 fails every try
+    c = TopazClient("k", session=s, sleep=lambda _: None, max_per_minute=100000)
+    rep = I.pull(c, [1, 2, 3], tmp_path, workers=1, max_minutes=10)
+    assert rep["pulled"] == 1 and rep["failed"] == 1 and rep["runs"] == 1
+    assert I.group_file(tmp_path, 0).exists() and not I.group_file(tmp_path, 1).exists()
+    # a second run holds group 0 and retries group 1
+    s2 = Session(Resp(200, [run_payload(11, 3, "2024-03-03")]))
+    c2 = TopazClient("k", session=s2, sleep=lambda _: None, max_per_minute=100000)
+    rep2 = I.pull(c2, [1, 2, 3], tmp_path, workers=1, max_minutes=10)
+    assert rep2["held"] == 1 and rep2["pulled"] == 1 and len(s2.asked) == 1
+    t = I.table(tmp_path)
+    assert len(t) == 2 and set(t.race_id) == {10, 11}
+    r = t[t.race_id == 10].iloc[0]
+    assert (r.t50, r.v100, r.pos50, r.last100, r.last50, r.jump_pos, r.mark1_time) == (3.2, 17.9, 2, 5.9, 3.0, 3, 5.1)
