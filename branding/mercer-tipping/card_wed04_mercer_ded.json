@@ -1,0 +1,73 @@
+{
+ "day": "Wednesday",
+ "date": "4 November",
+ "footer": "Win bets.",
+ "meetings": [
+  {
+   "name": "Kyneton",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "12:55PM",
+     "horse": "Sabrina",
+     "price": "$4.79",
+     "units": "0.59u"
+    },
+    {
+     "race": 2,
+     "time": "1:25PM",
+     "horse": "Mongol Heer",
+     "price": "$4.36",
+     "units": "1.31u"
+    },
+    {
+     "race": 3,
+     "time": "2:00PM",
+     "horse": "Emanating",
+     "price": "$4.92",
+     "units": "0.70u"
+    },
+    {
+     "race": 6,
+     "time": "3:45PM",
+     "horse": "Gregolimo",
+     "price": "$9.58",
+     "units": "0.45u"
+    },
+    {
+     "race": 6,
+     "time": "3:45PM",
+     "horse": "His Finest Hour",
+     "price": "$8.80",
+     "units": "0.53u"
+    },
+    {
+     "race": 8,
+     "time": "4:55PM",
+     "horse": "Foujita San",
+     "price": "$5",
+     "units": "0.54u",
+     "scr": true
+    },
+    {
+     "race": 8,
+     "time": "4:55PM",
+     "horse": "Placo",
+     "price": "$8",
+     "units": "0.75u",
+     "scr": true
+    },
+    {
+     "race": 9,
+     "time": "5:30PM",
+     "horse": "Blaze Away",
+     "price": "$11",
+     "units": "0.35u",
+     "scr": true
+    }
+   ]
+  }
+ ],
+ "brand": true
+}
