@@ -118,6 +118,13 @@ class TopazClient:
         _check(authority)
         return self._get(f"bulk/runs/{authority}/{year}/{month}/{day}") or []
 
+    def trial_results(self, year: int, month: int, day: int) -> list[dict]:
+        """Every trial on one day that the key can see (GET /api/trialresult?from=&to=, TrialResultOutput rows:
+        dog, track, distance, box, winTime, margin, outcome, type, reason, out of box). Trials are not in the
+        bulk runs, and are the only form a first starter has."""
+        d = f"{year:04d}-{month:02d}-{day:02d}"
+        return self._get("trialresult", params={"from": d, "to": d}) or []
+
 
 def _check(authority: str) -> None:
     if authority not in AUTHORITIES:

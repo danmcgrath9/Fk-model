@@ -198,3 +198,11 @@ def test_workers_overlap_calls_keep_the_cap_and_return_days_in_order(tmp_path):
     assert time.monotonic() - t0 < 31 * 0.05                                  # quicker than one at a time
     with gzip.open(P.file_for(tmp_path, "VIC", 2014, 1), "rt") as f:
         assert [r["day"] for r in json.load(f)] == list(range(1, 32))
+
+
+def test_trials_pull_by_day_into_their_own_files(tmp_path):
+    c, s = client(*[Resp(200, [{"dogId": d}]) for d in range(1, 4)])
+    rep = P.pull(c, ["VIC"], [(2026, 11)], tmp_path, set(), date(2026, 11, 4), max_calls=100, kind="trials")
+    assert rep[0][2] == 3 and "trialresult" in s.asked[0][0]
+    assert P.file_for(tmp_path, "VIC", 2026, 11, "trials").exists()
+    assert not P.file_for(tmp_path, "VIC", 2026, 11).exists()
