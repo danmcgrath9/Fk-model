@@ -720,3 +720,48 @@ months it covers (Test 4b), so we are 0.03 closer than Betfair's model on the sa
 the way from a random pick to BSP. The rest has to come from new information, not tuning: better ratings (check the
 time rating against the dog's next run; track-specific seconds per length; a class and grade scale), interactions the
 map should carry (run style by box by track), and Isolynx at the four tracks that have it.
+
+## Test 11: round 3, closer to BSP, then staking and ROI (4 Nov 2026, gh topaz run 41783392368, `topaz_round3.py`)
+
+**Part 1, the ratings check** (later half, the correlation of each pre-race rating with the dog's own time rating in
+the race): recency-weighted time rating +0.413, mean of last 5 +0.408, best of last 5 +0.386, last run +0.310, Elo
++0.352, mean finish of last 5 -0.270 (lower is better, so the sign is right); first-split ratings only +0.12 to +0.15
+against the run time (they measure early pace, not the whole run). Seconds per length measured from Topaz's two
+margins: **0.0671 overall** (59 track-distances, 0.0609 to 0.0675), not the 0.07 assumed; re-scaling by track changed
+nothing (the correlation is unchanged because the scale is near constant within a track and distance).
+
+**Part 2** (the same 22,841 scored races Betfair fully priced, BSP 1.4839; chosen on 4,870 early-stopping races):
+
+| row | features | rounds | early-stopping log loss | scored log loss | gap to BSP | 1st half | 2nd half |
+|---|---|---|---|---|---|---|---|
+| B0 round 2's R1 | 90 | 3000 | 1.6383 | 1.6208 | +0.1370 | +0.1286 | +0.1444 |
+| B1 + track lengths, recent form, class, prize, interactions | 107 | 2997 | 1.6299 | 1.6122 | +0.1283 | +0.1208 | +0.1350 |
+| B2 B1 with recent years weighted more | 107 | 2970 | 1.6264 | 1.6105 | **+0.1267** | +0.1195 | +0.1331 |
+| B2w the same, trained on winners | 107 | 385 | 1.6411 | 1.6279 | +0.1441 | +0.1355 | +0.1517 |
+| B3 ensemble of B2 and B2w (0.63 / 0.46) | | | 1.6252 | 1.6112 | +0.1273 | +0.1194 | +0.1343 |
+
+The new information was worth 0.009 and recency 0.002, in both halves: **0.150 (Test 9) to 0.137 (Test 10) to 0.127**.
+B3 was chosen on the early-stopping months (1.6252, the lowest there) and is what the staking uses.
+
+**Part 3, staking the chosen model** on the scored races, odds to $21, flat 1 unit, both halves:
+
+| price | edge at least | bets 1st / 2nd | winners 1st / 2nd | A/E 1st / 2nd | flat ROI 1st / 2nd |
+|---|---|---|---|---|---|
+| BSP, 8% commission | 5% | 22,531 / 22,710 | 3,099 / 3,097 | 1.024 / 1.000 | -4.0% / -7.3% |
+| BSP, 8% commission | 10% | 20,360 / 20,584 | 2,644 / 2,718 | 1.009 / 1.010 | -5.3% / -6.7% |
+| BSP, 8% commission | 20% | 16,616 / 16,883 | 2,013 / 2,060 | 1.016 / 1.008 | -4.1% / -6.7% |
+| GRV SP, no commission | 5% | 22,142 / 22,396 | 3,507 / 3,387 | 1.080 / 1.029 | +5.9% / +1.2% |
+| GRV SP, no commission | 10% | 19,899 / 20,205 | 3,099 / 3,013 | 1.093 / 1.046 | +7.6% / +2.7% |
+| GRV SP, no commission | 20% | 16,116 / 16,441 | 2,466 / 2,356 | 1.139 / 1.071 | **+10.9% / +5.2%** |
+
+Quarter-Kelly on the model's own chances went to zero at BSP and swung wildly at the SP (drawdowns of 89-100%): with
+the model 0.127 behind BSP its chances are not calibrated enough to size bets, so the flat column is the measure.
+
+**What it means.** At BSP the model's selections win about as often as BSP says (A/E 1.00 to 1.02) and lose the 8%
+commission: BSP is not beaten. At GRV's SP, a bookmaker price 0.069 behind BSP, the same selections win 3 to 14% more
+than the price says and **profit in both halves at every edge**, most at the 20% edge (+10.9% and +5.2% on about
+16,000 bets a half; at an average price near $8 one half's standard error is about 2.3%, so both halves are clear of
+zero, the first by about 4.7 errors and the second by about 2.3). The second half is weaker than the first at every
+edge, which has to be watched. This is the founder's thesis in miniature: the model does not beat the sharpest price,
+it beats a weaker one, and the TAB open is weaker again. Both prices here are set at the jump, so these are not bets
+we could place; the bet we can place is at the open, which is the test the recorded opens are for.
