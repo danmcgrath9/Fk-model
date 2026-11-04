@@ -6,6 +6,9 @@ keeps the open and the price moves, and its app reads them from an API).
                                                                                    # then open / current per runner
     python -m greyhound.tab_api record --out DIR [--date YYYY-MM-DD]               # one CSV of the day's VIC greyhound
                                                                                    # opens, every runner
+    python -m greyhound.tab_api backfill --out DIR --from YYYY-MM-DD --to YYYY-MM-DD [--pause 1.0]
+                                         # one CSV a day, newest first, resumable (a day already on disk is skipped);
+                                         # stops on the first day TAB no longer holds, so its depth is measured
 
 The base URL and the first path are the public tab-info-service that TAB's own website calls
 (api.beta.tab.com.au/v1/tab-info-service/racing/dates/{date}/meetings?jurisdiction=VIC); every path after that is
@@ -172,6 +175,47 @@ def record(client: TabClient, day: str, jurisdiction: str, out: Path) -> int:
     return 0
 
 
+def backfill(client: TabClient, start: str, end: str, jurisdiction: str, out: Path, pause: float = 1.0,
+             sleep=None) -> dict:
+    """Past days newest first, one CSV each, `pause` seconds between calls. A day with meetings but no open on any
+    runner ends the run: that is where TAB's history of opens stops."""
+    import time as _t
+    sleep = sleep or _t.sleep
+    out.mkdir(parents=True, exist_ok=True)
+    rep = {"days": 0, "held": 0, "runners": 0, "with_open": 0, "stopped": ""}
+    day = datetime.fromisoformat(end).date()
+    first = datetime.fromisoformat(start).date()
+    base_get = client.get
+
+    def paced(url, params=None):
+        sleep(pause)
+        return base_get(url, params)
+    client.get = paced
+    while day >= first:
+        ds = day.isoformat()
+        path = out / f"tab-opens-{ds}.csv"
+        if path.exists():
+            rep["held"] += 1
+            day -= timedelta(days=1)
+            continue
+        rows, _, _, n_races = collect(client, ds, jurisdiction, "VIC")
+        opened = sum(1 for r in rows if r["open"])
+        if n_races and not opened:
+            rep["stopped"] = f"{ds}: {n_races} races and no open on any runner, so TAB's opens end after this day"
+            break
+        with open(path, "w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=ROW_FIELDS)
+            w.writeheader()
+            w.writerows(rows)
+        rep["days"] += 1
+        rep["runners"] += len(rows)
+        rep["with_open"] += opened
+        print(f"{ds}: {n_races} races, {len(rows)} runners, open on {opened}")
+        day -= timedelta(days=1)
+    client.get = base_get
+    return rep
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sp = ap.add_subparsers(dest="cmd", required=True)
@@ -181,9 +225,20 @@ def main(argv=None) -> int:
         p.add_argument("--jurisdiction", default="VIC")
         if name == "record":
             p.add_argument("--out", type=Path, required=True)
+    b = sp.add_parser("backfill")
+    b.add_argument("--out", type=Path, required=True)
+    b.add_argument("--from", dest="start", required=True)
+    b.add_argument("--to", dest="end", default=(datetime.now(SYDNEY) - timedelta(days=1)).strftime("%Y-%m-%d"))
+    b.add_argument("--jurisdiction", default="VIC")
+    b.add_argument("--pause", type=float, default=1.0)
     a = ap.parse_args(argv)
     client = TabClient()
     try:
+        if a.cmd == "backfill":
+            rep = backfill(client, a.start, a.end, a.jurisdiction, a.out, a.pause)
+            print(f"{rep['days']} days pulled, {rep['held']} already held, {rep['runners']:,} runners, "
+                  f"{rep['with_open']:,} with an open. {rep['stopped']}")
+            return 0
         return probe(client, a.date, a.jurisdiction) if a.cmd == "probe" else record(client, a.date, a.jurisdiction, a.out)
     except (RuntimeError, requests.RequestException, json.JSONDecodeError) as e:
         print(f"TAB refused or failed: {e}")
