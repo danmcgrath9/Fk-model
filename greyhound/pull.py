@@ -73,7 +73,38 @@ def probe(client: TopazClient, day: date) -> int:
         for c in cols:
             filled = sum(1 for r in rows if r.get(c) not in (None, ""))
             print(f"  {c:<40} filled on {filled}/{len(rows)}")
+        try:
+            mapping_check(rows)
+        except Exception as e:                       # noqa: BLE001 - the check informs, it never stops the probe
+            print(f"\nmapping check skipped: {type(e).__name__}: {e}")
     return 0
+
+
+def mapping_check(rows: list[dict]) -> None:
+    """The three meanings topaz_to_runs assumes, tested on the probe day. Prints counts only, never a row: the
+    winner's raw margin, whether each dog has its own time, whether margins match the time gaps, and race types."""
+    import numpy as np
+    import pandas as pd
+    from greyhound.ratings import SEC_PER_LENGTH, topaz_to_runs
+    raw = pd.DataFrame(rows)
+    ran = raw[~raw.scratched.fillna(False).astype(bool)]
+    won = ran[ran.place == 1]
+    print(f"\nmapping check on {raw.raceId.nunique()} races, {len(ran)} runners who ran, {len(raw) - len(ran)} scratched")
+    print(f"  winners per race: {won.groupby('raceId').size().value_counts().sort_index().to_dict()}")
+    print(f"  winners whose raw resultMargin is 0: {int((won.resultMargin == 0).sum())}/{len(won)}"
+          f" (the rest hold their margin over second, and the mapping sets them to 0)")
+    times = ran.dropna(subset=["resultTime"]).groupby("raceId").resultTime
+    print(f"  races where runners' resultTime differ (each dog's own time): {int((times.nunique() > 1).sum())}/{times.ngroups}")
+    runs = topaz_to_runs(raw)
+    ok = runs.dropna(subset=["time", "win_time", "margin"])
+    ok = ok[ok.finish > 1]
+    gap = (ok.time - ok.win_time) / SEC_PER_LENGTH
+    if len(ok) > 2:
+        r = np.corrcoef(gap, ok.margin)[0, 1]
+        print(f"  placegetters 2nd+: margin vs time gap in lengths, r = {r:.3f}, median ratio {np.median(ok.margin / gap.where(gap > 0)):.2f}")
+    print(f"  winner's time is the race's fastest: {int((runs[runs.finish == 1].time == runs.groupby('race_id').time.transform('min')[runs.finish == 1]).sum())}/{int((runs.finish == 1).sum())}")
+    print(f"  race types: {raw.drop_duplicates('raceId').raceType.value_counts().to_dict()}")
+    print(f"  marked as trials by the mapping: {int(runs.drop_duplicates('race_id').is_trial.sum())} races")
 
 
 def pull(client: TopazClient, states, span, out: Path, refresh: set[str], today: date, max_calls: int) -> list[tuple]:
