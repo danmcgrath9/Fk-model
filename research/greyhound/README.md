@@ -838,6 +838,174 @@ worst drawdown at 0.5% a bet 16% and 37%, 19 of 30 months in profit). **At BSP**
 12's rule Aug to Oct). A model trained to Dec 2023 is going stale, or the SP has changed; retraining as it goes
 (walk-forward) is the test that decides which.
 
+## Test 14: walk-forward, a fresh model every month (4 Nov 2026, gh topaz run 41812672532, `topaz_walk.py`)
+
+Founder: "Retrain every months, find a way to be profitable." Tests 11 to 13 priced every race from June 2024 with a
+model frozen at December 2023 and lost in the latest months. This run refits round 3's B2 (the ratings engine, run
+style and map, the dog/trainer/sire/dam windows, vacant boxes, last5, market history, class, recent form; recent years
+weighted more, half-life 3 years; 3,000 rounds on BSP chances and a twin of 400 rounds on winners, the counts early
+stopping chose in Tests 10 and 11) **every month from December 2023 to November 2026, on every race before that
+month**, so no race is priced by a model that has seen it or anything after it. 36 refits, 73,238 to 103,730 training
+races, 207 minutes. BSP matched on 482,662 runners, 65,285 races fully matched (94% of races since 2020). The preview
+(Test 15) and the ratings upgrades (Test 16) were built while this ran and are NOT in it.
+
+### Log loss by month, every race priced by a model refitted before that month
+
+| month | races | model | ensemble | GRV SP | BSP (races matched) | model gap to SP | gap to BSP |
+|---|---|---|---|---|---|---|---|
+| 2023-12 | 834 | 1.6500 | 1.6414 | 1.5940 | 1.5184 (754) | +0.0561 | +0.1133 |
+| 2024-01 | 835 | 1.6522 | 1.6383 | 1.6075 | 1.4931 (723) | +0.0447 | +0.1330 |
+| 2024-02 | 715 | 1.6625 | 1.6649 | 1.5765 | 1.5269 (664) | +0.0859 | +0.1258 |
+| 2024-03 | 810 | 1.6554 | 1.6432 | 1.6308 | 1.4925 (683) | +0.0246 | +0.1296 |
+| 2024-04 | 809 | 1.6737 | 1.6616 | 1.6111 | 1.4883 (705) | +0.0626 | +0.1525 |
+| 2024-05 | 882 | 1.6401 | 1.6249 | 1.6492 | 1.5002 (718) | -0.0091 | +0.0926 |
+| 2024-06 | 822 | 1.6904 | 1.6634 | 1.6596 | 1.5126 (640) | +0.0308 | +0.1216 |
+| 2024-07 | 881 | 1.6847 | 1.6670 | 1.6876 | 1.5288 (723) | -0.0029 | +0.1094 |
+| 2024-08 | 900 | 1.6844 | 1.6544 | 1.6499 | 1.4912 (705) | +0.0345 | +0.1232 |
+| 2024-09 | 817 | 1.6721 | 1.6549 | 1.6379 | 1.4997 (697) | +0.0342 | +0.1297 |
+| 2024-10 | 950 | 1.6342 | 1.6190 | 1.6172 | 1.4742 (835) | +0.0170 | +0.1224 |
+| 2024-11 | 876 | 1.6517 | 1.6361 | 1.6091 | 1.5103 (744) | +0.0426 | +0.1000 |
+| 2024-12 | 785 | 1.6936 | 1.6713 | 1.6790 | 1.5480 (616) | +0.0145 | +0.0816 |
+| 2025-01 | 928 | 1.6329 | 1.6237 | 1.6159 | 1.4845 (831) | +0.0171 | +0.1057 |
+| 2025-02 | 791 | 1.6652 | 1.6581 | 1.5999 | 1.5258 (749) | +0.0653 | +0.1213 |
+| 2025-03 | 907 | 1.6524 | 1.6462 | 1.5737 | 1.4971 (842) | +0.0787 | +0.1304 |
+| 2025-04 | 872 | 1.6418 | 1.6351 | 1.6231 | 1.4916 (774) | +0.0187 | +0.1172 |
+| 2025-05 | 942 | 1.6947 | 1.6765 | 1.6700 | 1.5526 (787) | +0.0247 | +0.0970 |
+| 2025-06 | 862 | 1.6129 | 1.5891 | 1.6204 | 1.4665 (747) | -0.0075 | +0.1059 |
+| 2025-07 | 922 | 1.6408 | 1.6319 | 1.6292 | 1.5074 (815) | +0.0116 | +0.0965 |
+| 2025-08 | 818 | 1.5710 | 1.5506 | 1.5227 | 1.4028 (723) | +0.0483 | +0.1297 |
+| 2025-09 | 834 | 1.6370 | 1.6227 | 1.5933 | 1.4865 (721) | +0.0437 | +0.1143 |
+| 2025-10 | 960 | 1.6396 | 1.6243 | 1.6347 | 1.4952 (821) | +0.0049 | +0.1130 |
+| 2025-11 | 753 | 1.6213 | 1.6065 | 1.5705 | 1.4634 (666) | +0.0508 | +0.1249 |
+| 2025-12 | 913 | 1.6060 | 1.5829 | 1.6146 | 1.4557 (786) | -0.0086 | +0.1057 |
+| 2026-01 | 913 | 1.6425 | 1.6285 | 1.6056 | 1.4824 (824) | +0.0369 | +0.1309 |
+| 2026-02 | 879 | 1.6251 | 1.6224 | 1.5675 | 1.4830 (828) | +0.0576 | +0.1186 |
+| 2026-03 | 990 | 1.5963 | 1.5986 | 1.5360 | 1.4493 (963) | +0.0603 | +0.1383 |
+| 2026-04 | 871 | 1.5650 | 1.5653 | 1.5089 | 1.4717 (860) | +0.0561 | +0.0931 |
+| 2026-05 | 908 | 1.6646 | 1.6587 | 1.6255 | 1.5155 (821) | +0.0391 | +0.1181 |
+| 2026-06 | 897 | 1.6388 | 1.6308 | 1.6411 | 1.4978 (814) | -0.0023 | +0.1169 |
+| 2026-07 | 957 | 1.6172 | 1.6094 | 1.5671 | 1.4622 (886) | +0.0501 | +0.1405 |
+| 2026-08 | 866 | 1.5999 | 1.6006 | 1.5156 | 1.4872 (856) | +0.0843 | +0.1101 |
+| 2026-09 | 901 | 1.5622 | 1.5679 | 1.4641 | 1.4283 (900) | +0.0981 | +0.1338 |
+| 2026-10 | 892 | 1.5353 | 1.5333 | 1.4322 | 1.4030 (892) | +0.1031 | +0.1323 |
+| 2026-11 | 69 | 1.6379 | 1.6637 | 1.5317 | none matched | +0.1062 | |
+
+Scored quarter as a whole (25,676 races, Jun 2024 to Nov 2026): model 1.6332, ensemble 1.6216, SP 1.5952; on the
+22,866 BSP-matched races: model 1.6009, BSP 1.4838, **gap +0.1171** against the frozen model's +0.1267 (Test 11).
+Refitting monthly is worth 0.010 against BSP on the same features. The gap to the SP is the number to watch: it was
+near zero through 2024 and 2025 (five months where the model beat the SP outright) and has **widened to +0.08 to
++0.10 from August 2026**, while the gap to BSP has not moved. The SP got sharper, not the model worse: a fresh model
+does not close it, so whatever the TAB changed in August it is in the SP and not in the form.
+
+### Bets at GRV's SP, no commission, the rule chosen each month on the six months before it
+
+The rule each month (the signal: the model, the ensemble of the two models, or Benter's blend of the model with the
+market price; one bet a race or every qualifier; a price band; an edge) is the one with the best flat ROI over the
+PREVIOUS six months of walk-forward predictions with at least 300 bets there. Chosen with nothing from the month it
+is then applied to:
+
+| month | rule chosen on the 6 months before (bets, ROI there) | bets | winners | A/E | flat ROI | cumulative units |
+|---|---|---|---|---|---|---|
+| 2024-06 | blend, one a race, $8-$13, 10% (307, +58%) | 57 | 7 | 1.163 | +8.8% | +5 |
+| 2024-07 | blend, all, $1.5-$21, 20% (678, +58%) | 131 | 31 | 1.303 | +55.3% | +78 |
+| 2024-08 | blend, one a race, $1.5-$21, 30% (382, +68%) | 67 | 12 | 1.092 | -1.0% | +77 |
+| 2024-09 | blend, all, $13-$21, 10% (315, +78%) | 54 | 8 | 2.301 | +117.6% | +140 |
+| 2024-10 | blend, one a race, $13-$21, 10% (309, +96%) | 56 | 1 | 0.291 | -73.2% | +99 |
+| 2024-11 | blend, one a race, $13-$21, 10% (365, +64%) | 72 | 4 | 0.877 | -15.7% | +88 |
+| 2024-12 | blend, one a race, $13-$21, 10% (304, +52%) | 44 | 2 | 0.741 | -30.2% | +75 |
+| 2025-01 | blend, one a race, $1.5-$21, 30% (556, +46%) | 138 | 39 | 1.502 | +52.5% | +147 |
+| 2025-02 | blend, one a race, $1.5-$21, 30% (526, +45%) | 90 | 16 | 1.113 | +40.1% | +183 |
+| 2025-03 | blend, all, $8-$13, 20% (304, +71%) | 33 | 8 | 2.412 | +153.6% | +234 |
+| 2025-04 | blend, one a race, $8-$13, 10% (453, +66%) | 77 | 17 | 2.108 | +119.0% | +326 |
+| 2025-05 | blend, one a race, $8-$13, 10% (447, +68%) | 75 | 21 | 2.724 | +178.5% | +459 |
+| 2025-06 | blend, one a race, $8-$13, 10% (502, +82%) | 88 | 14 | 1.523 | +48.6% | +502 |
+| 2025-07 | blend, one a race, $8-$13, 10% (525, +82%) | 87 | 16 | 1.824 | +91.4% | +582 |
+| 2025-08 | blend, one a race, $8-$13, 10% (512, +92%) | 63 | 9 | 1.422 | +34.0% | +603 |
+| 2025-09 | blend, one a race, $8-$13, 10% (487, +87%) | 75 | 8 | 1.032 | -4.5% | +600 |
+| 2025-10 | blend, one a race, $8-$13, 20% (303, +99%) | 44 | 6 | 1.318 | +30.9% | +613 |
+| 2025-11 | blend, all, $8-$13, 20% (321, +80%) | 55 | 12 | 2.152 | +116.0% | +677 |
+| 2025-12 | blend, one a race, $1.5-$21, 30% (507, +78%) | 98 | 38 | 2.300 | +150.2% | +824 |
+| 2026-01 | blend, one a race, $1.5-$21, 30% (511, +94%) | 93 | 26 | 1.633 | +61.2% | +881 |
+| 2026-02 | blend, one a race, $1.5-$21, 30% (431, +89%) | 60 | 15 | 1.646 | +47.7% | +910 |
+| 2026-03 | blend, one a race, $1.5-$21, 30% (399, +93%) | 86 | 19 | 1.277 | +32.0% | +937 |
+| 2026-04 | blend, one a race, $1.5-$21, 30% (375, +85%) | 47 | 8 | 1.136 | +4.3% | +939 |
+| 2026-05 | blend, one a race, $1.5-$21, 20% (559, +61%) | 106 | 23 | 1.338 | +47.2% | +989 |
+| 2026-06 | blend, one a race, $1.5-$21, 20% (621, +52%) | 117 | 41 | 1.907 | +84.6% | +1,088 |
+| 2026-07 | blend, all, $1.5-$21, 20% (654, +53%) | 108 | 23 | 1.318 | +20.8% | +1,111 |
+| 2026-08 | blend, all, $1.5-$21, 20% (603, +46%) | 65 | 10 | 0.999 | -12.8% | +1,102 |
+| 2026-09 | blend, all, $1.5-$21, 20% (459, +49%) | 59 | 9 | 1.098 | +41.7% | +1,127 |
+| 2026-10 | blend, all, $1.5-$21, 20% (309, +42%) | 36 | 3 | 0.639 | -53.1% | +1,108 |
+| 2026-11 | blend, all, $1.5-$21, 10% (686, +38%) | 6 | 1 | 1.169 | +66.7% | +1,112 |
+
+- **Sequential rule**, 1st half: 1,091 bets, A/E 1.479, flat ROI **+53.7%**, bank x15.66 at 0.5% a bet, worst
+  drawdown 36%, longest losing run 42. 2nd half: 1,096 bets, A/E 1.499, flat ROI **+48.0%**, bank x12.04, worst
+  drawdown 14%, longest losing run 23. All: 2,187 bets, A/E 1.490, +50.8%, bank x188.59, drawdown 36%. Months in
+  profit 23 of 30; the last six: Jun 2026 +85% (117 bets), Jul +21% (108), Aug -13% (65), Sep +42% (59), Oct -53%
+  (36), Nov +67% (6).
+- **Test 12's fixed rule** (all qualifiers, $8-$13, 50% edge): +29.7% and +19.0% (2,880 and 2,893 bets, A/E 1.302
+  and 1.202, worst drawdown 25% and 43%, longest losing runs 43 and 45; all 5,773 bets +24.3%); 24 of 30 months in
+  profit; last six +61%, +66%, -1%, +7%, -41%, +8%. The frozen model scored the same rule +24.7% and +14.0% (Test 16):
+  refitting is worth five points of ROI on each half.
+- **Test 13's fixed rule** (one a race, $5-$8, 50%): +20.7% and +14.3% (1,349 and 1,350 bets, A/E 1.217 and 1.144,
+  drawdown 18% and 40%, losing runs 32 and 39; all 2,699 bets +17.5%); 20 of 30 months; last six +58%, -26%, -28%,
+  -33%, +4%, -12%.
+
+The chooser picked Benter's blend with the SP in all 30 months, never the model alone, and the edge it wanted
+drifted from 10% to 30% and back to 20%. Two cautions before anyone reads +50% as the business. **The blend takes
+the SP as an input, so these are bets struck at the SP** (the price at the jump), not at the TAB open we plan to bet
+into; whether the open is better or worse than the SP for these dogs is exactly what the open recording (BetMatic
+probe, waiting on $1 in the account) will say. And the latest months are thin and mixed: 36 bets in October at
+-53%, and the SP itself has sharpened since August (the table above), so the edge against it is being measured on a
+market that is changing under us.
+
+### Bets at BSP, 8% commission on winnings, the rule chosen the same way
+
+| month | rule chosen on the 6 months before (bets, ROI there) | bets | winners | A/E | flat ROI | cumulative units |
+|---|---|---|---|---|---|---|
+| 2024-06 | blend, one a race, $8-$13, 30% (624, +20%) | 79 | 11 | 1.451 | +28.9% | +23 |
+| 2024-07 | blend, one a race, $8-$13, 30% (594, +16%) | 98 | 8 | 0.858 | -15.3% | +8 |
+| 2024-08 | blend, all, $1.5-$21, 50% (642, +21%) | 109 | 7 | 0.799 | -15.1% | -9 |
+| 2024-09 | blend, all, $13-$21, 50% (413, +20%) | 66 | 7 | 1.733 | +66.4% | +35 |
+| 2024-10 | blend, all, $13-$21, 50% (418, +27%) | 71 | 4 | 0.934 | -12.8% | +26 |
+| 2024-11 | blend, one a race, $13-$21, 50% (393, +42%) | 75 | 3 | 0.657 | -38.3% | -3 |
+| 2024-12 | blend, one a race, $13-$21, 50% (400, +14%) | 49 | 2 | 0.692 | -38.6% | -21 |
+| 2025-01 | blend, one a race, $1.5-$21, 50% (569, +9%) | 105 | 7 | 0.874 | -27.0% | -50 |
+| 2025-02 | model, one a race, $3-$5, 30% (327, +9%) | 78 | 15 | 0.788 | -25.2% | -69 |
+| 2025-03 | blend, all, $5-$8, 20% (500, +7%) | 90 | 13 | 0.917 | -12.4% | -81 |
+| 2025-04 | blend, one a race, $8-$13, 10% (1,509, +6%) | 261 | 19 | 0.739 | -32.7% | -166 |
+| 2025-05 | blend, one a race, $8-$13, 10% (1,479, +1%) | 236 | 30 | 1.291 | +23.7% | -110 |
+| 2025-06 | blend, one a race, $8-$13, 10% (1,448, +3%) | 244 | 18 | 0.752 | -30.5% | -185 |
+| 2025-07 | ensemble, one a race, $1.5-$3, 2% (461, +4%) | 61 | 26 | 1.030 | -1.5% | -185 |
+| 2025-08 | blend, all, $1.5-$21, 50% (719, +11%) | 91 | 8 | 1.151 | +13.0% | -174 |
+| 2025-09 | blend, one a race, $1.5-$21, 50% (652, +19%) | 90 | 0 | 0.000 | -100.0% | -264 |
+| 2025-10 | ensemble, one a race, $1.5-$3, 10% (319, +6%) | 60 | 25 | 0.975 | -2.8% | -265 |
+| 2025-11 | ensemble, one a race, $1.5-$3, 10% (324, +7%) | 45 | 19 | 1.016 | -4.3% | -267 |
+| 2025-12 | blend, one a race, $13-$21, 50% (396, +5%) | 60 | 4 | 1.116 | +0.3% | -267 |
+| 2026-01 | blend, one a race, $8-$13, 20% (949, +7%) | 160 | 18 | 1.157 | +8.1% | -254 |
+| 2026-02 | ensemble, one a race, $8-$13, 5% (2,047, +4%) | 333 | 39 | 1.196 | +10.6% | -219 |
+| 2026-03 | ensemble, one a race, $8-$13, 2% (2,148, +3%) | 399 | 39 | 1.002 | -5.6% | -241 |
+| 2026-04 | ensemble, one a race, $8-$13, 2% (2,194, +2%) | 358 | 40 | 1.138 | +8.3% | -211 |
+| 2026-05 | blend, all, $3-$5, 10% (585, +3%) | 88 | 20 | 0.897 | -16.5% | -226 |
+| 2026-06 | blend, one a race, $8-$13, 2% (2,021, +5%) | 349 | 37 | 1.079 | -0.9% | -229 |
+| 2026-07 | ensemble, one a race, $8-$13, 20% (1,840, +8%) | 353 | 34 | 0.982 | -11.3% | -269 |
+| 2026-08 | model, one a race, $1.5-$3, 5% (344, +7%) | 66 | 27 | 0.987 | -5.1% | -272 |
+| 2026-09 | model, one a race, $3-$5, 30% (430, +13%) | 72 | 20 | 1.117 | +12.8% | -263 |
+| 2026-10 | model, one a race, $3-$5, 30% (408, +18%) | 72 | 18 | 1.032 | +3.1% | -261 |
+
+- Sequential rule: 1st half 2,102 bets, A/E 0.948, **-11.6%**, worst drawdown 84%, longest losing run 99; 2nd half
+  2,116 bets, A/E 1.049, **-0.7%**, drawdown 50%, losing run 62; all 4,218 bets, A/E 0.999, -6.2%; 10 of 29 months
+  in profit; last six -16%, -1%, -11%, -5%, +13%, +3%.
+- Test 12's rule: -1.6% and -6.9% (2,694 and 2,701 bets, A/E 1.048 and 1.000; all 5,395 bets -4.2%); 13 of 29 months.
+- Test 13's rule: -7.9% and -20.4% (1,195 and 1,195 bets, A/E 0.992 and 0.846; all 2,390 bets -14.1%); 8 of 29 months.
+
+**Nothing works at BSP**, with the model fresh every month and the rule chosen every month: the best rule on any six
+months rarely cleared +10% there and never held. The whole edge of the SP rules is the SP's own 19% book and its
+longshot overpricing (Test 8); against the sharpest price the model's A/E is 1.00, which is exactly what a +0.117 gap
+says. What the walk-forward settles: **a fresh model holds the edge at the SP** (the frozen one was fading, Tests 12
+and 13), and it is the SP that moved in August, not the model. The next walk-forward carries the preview, the
+ratings upgrades and, when they exist, Isolynx and GRV's rating (Tests 15 and 16 took the frozen gap from 0.127 to
+0.1085), and the open prices decide whether a bet at the open keeps what a bet at the SP shows here.
+
 ## Test 15: GRV's pre-race preview of THIS race (4 Nov 2026, runs 41813400075 and 41813404980)
 
 The per-runner `comment` is GRV's form-guide preview (Test 13), filled on 100% of runners; `isBestBet` is true on
