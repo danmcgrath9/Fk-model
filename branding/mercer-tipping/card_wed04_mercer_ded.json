@@ -41,9 +41,34 @@
      "horse": "His Finest Hour",
      "price": "$8.80",
      "units": "0.53u"
+    },
+    {
+     "race": 8,
+     "time": "4:55PM",
+     "horse": "Foujita San",
+     "price": "$5",
+     "units": "0.54u",
+     "scr": true
+    },
+    {
+     "race": 8,
+     "time": "4:55PM",
+     "horse": "Placo",
+     "price": "$8",
+     "units": "0.75u",
+     "scr": true
+    },
+    {
+     "race": 9,
+     "time": "5:30PM",
+     "horse": "Blaze Away",
+     "price": "$11",
+     "units": "0.35u",
+     "scr": true
     }
    ]
   }
  ],
- "brand": true
+ "brand": true,
+ "refund": false
 }

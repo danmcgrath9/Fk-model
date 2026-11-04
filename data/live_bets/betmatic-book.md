@@ -902,3 +902,9 @@ Heer $3.30, Emanating $5.50, Extreme Turbo $3.40 have been backed in). The 9:32 
 horses, 176.59u if every order fired) is kept as 2026-11-04-kyneton-d5w-orders*.csv for the record and is NOT the open
 book; the run overwrote the pre-open sheet and it was restored from git, and pricemtg.sh now writes a re-price under its
 own tag. Lay book 2026-11-04-kyneton-d5w-lays.csv and back book -backs.csv on the page, with Game day.
+Kyneton 11:50am refresh (founder: "update artifact for me to follow today"): Johnny Tightlips R1 out (35 scratched now),
+page rebuilt on the 11:50 prices (d5m), open book unchanged at 5 bets 7.17u with TAB's deductions (R1 31c, R2 16c, R3 13c,
+R4 12c, R5 17c, R6 22c, R7 3c, R8 23c, R9 63c). CORRECTION to the 9:32 line: "His Finest Hour already at full stake" was
+read off the overwritten sheet; against the real pre-open stake (1.05u) the top-up rule offers 0.71u at $8.50 (paper,
+tracked only), on top of Tomanado 0.74u at $13 from 9:32. Mercer card update sent with deductions and the three
+scratchings shown as SCR (no refund word, founder's call).

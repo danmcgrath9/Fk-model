@@ -1,72 +1,72 @@
-# Kyneton Wed 4 Nov, Dead 5 (Form King's rating at 9:32am Wed), final field, prices 9:32am Wed
-1, Jackpot Park, 3.40, 3.40, fk_open 2.80
+# Kyneton Wed 4 Nov, Dead 5, final field, prices 11:50am Wed (Johnny Tightlips R1 out since 9:32)
+1, Jackpot Park, 2.35, 2.35, fk_open 2.80
 1, Western Edge, 151.00, 151.00, fk_open 101.00
-1, Johnny Tightlips, 3.70, 3.70, fk_open 3.65
-1, Sabrina, 4.40, 4.40, fk_open 11.00
-1, Pasatiempo, 13.00, 13.00, fk_open 8.25
-1, Irish Eclipse, 18.00, 18.00, fk_open 16.50
-1, Valentina Girl, 3.80, 3.80, fk_open 7.25
-1, Assisi, 41.00, 41.00, fk_open 26.00
+1, Johnny Tightlips, SCR, last 3.70, fk_open 3.65
+1, Sabrina, 3.20, 3.20, fk_open 11.00
+1, Pasatiempo, 7.50, 7.50, fk_open 8.25
+1, Irish Eclipse, 20.00, 20.00, fk_open 16.50
+1, Valentina Girl, 4.00, 4.00, fk_open 7.25
+1, Assisi, 21.00, 21.00, fk_open 26.00
 1, Lonnegan, SCR, last 10.00, fk_open 8.25
 1, Diamond Heist, SCR, last 5.00, fk_open 8.25
 2, Storm Bella, SCR, last 61.00, fk_open 34.00
-2, Front Page Edition, 10.00, 10.00, fk_open 12.00
-2, Honeysuckle Hill, 13.00, 13.00, fk_open 11.00
+2, Front Page Edition, 5.75, 5.75, fk_open 12.00
+2, Honeysuckle Hill, 29.00, 29.00, fk_open 11.00
 2, See Three Pee Oh, SCR, last 34.00, fk_open 26.00
-2, Flyaway, 3.20, 3.20, fk_open 4.40
-2, Mongol Heer, 3.30, 3.30, fk_open 9.50
-2, Bourne Legacy, 3.90, 3.90, fk_open 4.00
-2, Avedis, 34.00, 34.00, fk_open 41.00
-2, Shamrock Prince, 11.00, 11.00, fk_open 11.00
-2, Exploit, 19.00, 19.00, fk_open 19.50
+2, Flyaway, 3.10, 3.10, fk_open 4.40
+2, Mongol Heer, 4.20, 4.20, fk_open 9.50
+2, Bourne Legacy, 4.80, 4.80, fk_open 4.00
+2, Avedis, 20.00, 20.00, fk_open 41.00
+2, Shamrock Prince, 19.00, 19.00, fk_open 11.00
+2, Exploit, 13.00, 13.00, fk_open 19.50
 2, Gangland, SCR, last 10.00, fk_open 7.50
 2, Engulf, SCR, last 12.00, fk_open 8.25
-2, Hurricane Girl, 31.00, 31.00, fk_open 34.00
+2, Hurricane Girl, 27.00, 27.00, fk_open 34.00
 2, Run Run Win, SCR, last 10.00, fk_open 18.50
 3, Emanating, 5.50, 5.50, fk_open 15.00
-3, Irish Master, 19.00, 19.00, fk_open 15.00
+3, Irish Master, 13.00, 13.00, fk_open 15.00
 3, Platinum Rush, 10.00, 10.00, fk_open 11.00
-3, Mister Speaker, 18.00, 18.00, fk_open 15.00
+3, Mister Speaker, 23.00, 23.00, fk_open 15.00
 3, Silky Seth, 2.90, 2.90, fk_open 2.80
 3, Ciphered, SCR, last 5.50, fk_open 4.60
 3, Gun City, SCR, last 8.50, fk_open 6.00
 3, Stomping Ground, SCR
-3, Mo, 18.00, 18.00, fk_open 15.00
-3, Ruby Empire, 18.00, 18.00, fk_open 15.00
+3, Mo, 21.00, 21.00, fk_open 15.00
+3, Ruby Empire, 21.00, 21.00, fk_open 15.00
 3, Misneach, 2.70, 2.70, fk_open 4.60
-3, Noir Velocity, 26.00, 26.00, fk_open 26.00
+3, Noir Velocity, 31.00, 31.00, fk_open 26.00
 3, Swift Action, SCR, last 19.00, fk_open 26.00
-4, Enna's Dream, 8.50, 8.50, fk_open 12.00
-4, Arcandam, 6.75, 6.75, fk_open 4.80
+4, Enna's Dream, 8.00, 8.00, fk_open 12.00
+4, Arcandam, 7.50, 7.50, fk_open 4.80
 4, Attachments, 5.50, 5.50, fk_open 6.00
 4, Fluent, SCR, last 10.00, fk_open 23.00
 4, Bacash, 3.20, 3.20, fk_open 2.60
-4, Job Done, 2.40, 2.40, fk_open 3.10
+4, Job Done, 2.35, 2.35, fk_open 3.10
 4, White Hot Mama, SCR, last 14.00, fk_open 9.50
-5, Tapo, 3.60, 3.60, fk_open 4.60
+5, Tapo, 3.50, 3.50, fk_open 4.60
 5, Brave Carol, 15.00, 15.00, fk_open 26.00
-5, Lady Sadler, 2.90, 2.90, fk_open 3.60
-5, Packers Journey, 9.50, 9.50, fk_open 8.00
-5, Mystic Reign, 4.40, 4.40, fk_open 4.60
+5, Lady Sadler, 2.80, 2.80, fk_open 3.60
+5, Packers Journey, 10.00, 10.00, fk_open 8.00
+5, Mystic Reign, 5.00, 5.00, fk_open 4.60
 5, The Birthday Party, SCR, last 9.50, fk_open 10.50
-5, Divine Empress, 5.75, 5.75, fk_open 8.00
+5, Divine Empress, 5.00, 5.00, fk_open 8.00
 5, Bliss Bomb, SCR, last 5.50, fk_open 4.60
-6, Gregolimo, 10.00, 10.00, fk_open 19.50
-6, Ninyo, 23.00, 23.00, fk_open 51.00
-6, Durban Harbour, 3.70, 3.70, fk_open 7.00
-6, Governor King, 9.00, 9.00, fk_open 16.50
+6, Gregolimo, 13.00, 13.00, fk_open 19.50
+6, Ninyo, 26.00, 26.00, fk_open 51.00
+6, Durban Harbour, 3.60, 3.60, fk_open 7.00
+6, Governor King, 8.50, 8.50, fk_open 16.50
 6, Sound Of Jura, SCR, last 26.00, fk_open 26.00
-6, Weather Delay, 6.50, 6.50, fk_open 6.00
+6, Weather Delay, 7.00, 7.00, fk_open 6.00
 6, His Finest Hour, 8.50, 8.50, fk_open 11.00
-6, Hurco, 15.00, 15.00, fk_open 14.00
+6, Hurco, 10.00, 10.00, fk_open 14.00
 6, Lunar Force, SCR, last 2.70, fk_open 3.10
-6, Who I Think I Am, 9.00, 9.00, fk_open 8.50
-6, Winter Nights, 4.00, 4.00, fk_open 4.00
+6, Who I Think I Am, 8.50, 8.50, fk_open 8.50
+6, Winter Nights, 4.20, 4.20, fk_open 4.00
 7, Lim's Ida, 20.00, 20.00, fk_open 15.00
 7, Cobblestone Way, 10.00, 10.00, fk_open 8.00
 7, Delivering, 6.25, 6.25, fk_open 4.60
 7, Seeyou Raider, 10.00, 10.00, fk_open 11.00
-7, Twilight Elegance, 21.00, 21.00, fk_open 15.00
+7, Twilight Elegance, 23.00, 23.00, fk_open 15.00
 7, Savilla, SCR, last 34.00, fk_open 51.00
 7, Regal Tycoon, 2.70, 2.70, fk_open 2.80
 7, Coronationhercules, 4.20, 4.20, fk_open 8.00
@@ -74,25 +74,25 @@
 7, Sunlit Serenade, 5.75, 5.75, fk_open 4.60
 7, Vim Vitae, SCR, last 3.30, fk_open 15.00
 8, Regal Lion, SCR, last 15.00, fk_open 26.00
-8, Virtuous Circle, 13.00, 13.00, fk_open 13.00
+8, Virtuous Circle, 16.00, 16.00, fk_open 13.00
 8, Foujita San, SCR, last 5.00, fk_open 11.00
-8, Sun Gift, 3.60, 3.60, fk_open 4.60
-8, Yahoo Bar, 5.50, 5.50, fk_open 5.75
-8, The Pendragon, 3.80, 3.80, fk_open 3.00
+8, Sun Gift, 3.40, 3.40, fk_open 4.60
+8, Yahoo Bar, 6.00, 6.00, fk_open 5.75
+8, The Pendragon, 4.40, 4.40, fk_open 3.00
 8, Placo, SCR, last 8.00, fk_open 8.00
-8, Prince Eric, 5.00, 5.00, fk_open 7.00
-8, Bring Forth, 10.00, 10.00, fk_open 15.50
-8, Real Class, 17.00, 17.00, fk_open 21.00
-8, Ragazzone, 13.00, 13.00, fk_open 101.00
-9, Sub Gauge, 8.00, 8.00, fk_open 16.00
+8, Prince Eric, 4.20, 4.20, fk_open 7.00
+8, Bring Forth, 8.00, 8.00, fk_open 15.50
+8, Real Class, 31.00, 31.00, fk_open 21.00
+8, Ragazzone, 15.00, 15.00, fk_open 101.00
+9, Sub Gauge, 7.50, 7.50, fk_open 16.00
 9, Tomanado, 13.00, 13.00, fk_open 26.00
 9, Brutal World, SCR, last 10.00, fk_open 11.00
 9, Kings Commission, SCR
-9, Ryanman, 7.50, 7.50, fk_open 26.00
+9, Ryanman, 6.75, 6.75, fk_open 26.00
 9, Titan's Spirit, 5.50, 5.50, fk_open 26.00
 9, Rattle'n'roll, SCR, last 31.00, fk_open 16.00
 9, Thinking Sensation, SCR, last 16.00, fk_open 8.00
-9, Colt Forty Five, 6.50, 6.50, fk_open 26.00
+9, Colt Forty Five, 6.00, 6.00, fk_open 26.00
 9, Please Me Do, 4.80, 4.80, fk_open 26.00
 9, Bold Bordeaux, SCR, last 9.50, fk_open 8.00
 9, Miss Ellaneous, SCR, last 19.00, fk_open 51.00
@@ -101,4 +101,4 @@
 9, Posh Diamante, SCR, last 15.00, fk_open 8.00
 9, Holding Captive, SCR, last 7.50, fk_open 8.00
 9, Sayalero, SCR, last 23.00, fk_open 26.00
-9, Extreme Turbo, 3.40, 3.40, fk_open 6.00
+9, Extreme Turbo, 3.60, 3.60, fk_open 6.00

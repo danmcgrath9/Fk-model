@@ -51,7 +51,7 @@ def card(d):
     rows = []
     for m in d["meetings"]:
         b = "".join(f"<div class='row'><div><div class='r'>R{x['race']}</div>" + (f"<div class='t'>{html.escape(x['time'])}</div>" if x.get('time') else "") + f"</div><div class='h'>{html.escape(x['horse'])}</div>"
-                    + (f"<div class='p'>{'SCR' if x.get('scr') else html.escape(x['price'])}" + (f"<small class='rt'>rated {html.escape(x['rated'])}</small>" if x.get('rated') and not x.get('scr') else "") + "</div>" if show_p else "") + f"<div class='u'>{'REFUND' if x.get('scr') else html.escape(x['units']) + ' WIN'}</div></div>" for x in m["bets"])
+                    + (f"<div class='p'>{'SCR' if x.get('scr') else html.escape(x['price'])}" + (f"<small class='rt'>rated {html.escape(x['rated'])}</small>" if x.get('rated') and not x.get('scr') else "") + "</div>" if show_p else "") + f"<div class='u'>{('' if d.get('refund') is False else 'REFUND') if x.get('scr') else html.escape(x['units']) + ' WIN'}</div></div>" for x in m["bets"])   # "refund": false on the card leaves a scratched row as SCR alone (founder, 4 Nov 2026: "leave scratchings on, just the refund bit")
         rows.append(f"<div class='mtg'><h2>{html.escape(m['name'])}<small>{html.escape(m.get('note',''))}</small></h2>{b}</div>")
     return (f"<html><head><style>{CSS.replace('{hs}', str(hs))}{dense}</style></head><body>"
             f"<div class='top'><div class='lock'>" + ("<div class='mark'><span>M</span></div><div class='brand'>MERCER<span>TIPPING</span></div>" if brand else "") + f"</div><div class='when'>{html.escape(d['day'])}<span>{html.escape(d['date'])}</span></div></div>"
