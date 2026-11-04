@@ -958,3 +958,12 @@ and R9. Priced as if each got in (s6e, kept for the record): Hankee Alpha R4 our
 $2.90); Superfabulistic R5 $22.80 (opened $26), Classic Gem R5 $28.88 ($21), Lawborough R9 $12.73 ($15, past the metro $12
 cap), Brave Design R9 $15.19 ($13), Fission R9 $59.28 ($34), My Zephyr R9 $95.73 ($51). None would have been a bet at the
 open. Any that gets a start is priced in at the Saturday 9:30 re-price, when mkprices lets it in for its scratching.
+
+## Thu 5 Nov 9am: Flemington Thu and Cranbourne Fri re-priced (official ratings from RV Stewards, founder's screenshot)
+Flemington Thu, Soft 5 official (we priced Soft 5 Mon): re-priced on the final field (s5t), 25 out (scratchings and the
+emergencies with no start), none of ours. Open bets unchanged: Sass Appeal 4.92u $2.50 (now $1.70; ours $1.58 on the final
+field), De Armas 2.68u $4.60 (now $3.20), Ice Kool 1.52u $7.50 (now $6.25). Mercer card at 8:30am prices: Sass Appeal and De
+Armas at BSP (founder: they will drift), Ice Kool $6.25. Lay and back books and game day refreshed.
+Cranbourne Fri, Soft 6 official (we priced Dead 5 Wed): re-priced (s6f). Ours: Speir $4.99 to $5.38, Power And The Beat
+$5.15 to $4.96; both taken at the open ($8 and $10) and stay. 57 lay candidates (was 58). Warrnambool Fri not in the
+screenshot; still on the Dead 4 Wed rating.

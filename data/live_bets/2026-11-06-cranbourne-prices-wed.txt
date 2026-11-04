@@ -1,0 +1,90 @@
+# Cranbourne Fri 6 Nov, Dead 5 (Form King, Wed 12:20pm), final fields; no market yet
+1, Cowboykickedfive, 0, 0
+1, Whatwashethinking, 0, 0
+1, Immortal Diva, 0, 0
+1, Parera, 0, 0
+1, Dempsey, 0, 0
+1, Quemax, 0, 0
+1, The Long Mover, 0, 0
+1, Fram Strait, 0, 0
+1, Smashing Success, 0, 0
+1, Propellant, 0, 0
+1, Sondera, 0, 0
+2, Silver Lightning, 0, 0
+2, Native Spirit, 0, 0
+2, Faro Lady, 0, 0
+2, Fanfire, 0, 0
+2, Toy Maker, 0, 0
+2, Vespers, 0, 0
+2, Gangland, 0, 0
+2, Lonnegan, 0, 0
+2, Engulf, 0, 0
+2, Pocket Watch, 0, 0
+3, Action Point, 0, 0
+3, Blue And Gold, 0, 0
+3, Teen Torque, 0, 0
+3, Wollemi, 0, 0
+3, I'm A Believer, 0, 0
+3, Around The Marx, 0, 0
+3, Swift Action, 0, 0
+3, Activating, 0, 0
+3, Civic Square, 0, 0
+3, Poetic Passage, 0, 0
+4, Gypsy Moon, SCR
+4, Silver Snow, 0, 0
+4, Community Gaz, 0, 0
+4, Hellica, 0, 0
+4, Upcoming, 0, 0
+4, Sweet Champagne, 0, 0
+4, Seinfeld, 0, 0
+4, Royal Business, 0, 0
+4, Rock About, 0, 0
+4, Full Zoom, 0, 0
+4, Trentino, 0, 0
+4, Shields, 0, 0
+4, La Velocita, 0, 0
+5, Illuminance, 0, 0
+5, Claymore Mine, 0, 0
+5, Brutal World, 0, 0
+5, O'mosa, 0, 0
+5, Mykindakandy, 0, 0
+5, Layla, 0, 0
+5, Redders, 0, 0
+5, Marsept, 0, 0
+5, Sayalero, 0, 0
+6, Midnight Devil, SCR
+6, Highland Harley, SCR
+6, Mr Tickles, 0, 0
+6, Speir, 0, 0
+6, Pano's Pride, 0, 0
+6, Weapon Clear, 0, 0
+6, Room For Bingo, 0, 0
+6, Mainmankash, 0, 0
+6, Monix, 0, 0
+6, Magnabelle Royale, 0, 0
+7, Shaime, 0, 0
+7, She's Pretty Rich, 0, 0
+7, Jewel Bay, SCR
+7, Buzitup, 0, 0
+7, Regal Might, 0, 0
+7, Blue Bandit, SCR
+7, Waco Kid, 0, 0
+7, Untapped, 0, 0
+7, Sumo Sandy, 0, 0
+7, Bit Of Shoosh, SCR
+7, Kastun Star, 0, 0
+7, Zourain, 0, 0
+7, Onavuitton, 0, 0
+7, Couldthisbetheone, 0, 0
+7, Discover Lupino, SCR
+7, Lyrics 'n' Song, 0, 0
+8, Toronova, 0, 0
+8, Savvie Blanc, 0, 0
+8, Finance Shogun, 0, 0
+8, Ashau Valley, 0, 0
+8, Sinister Sauce, 0, 0
+8, Surperb Frost, 0, 0
+8, Rogan, 0, 0
+8, Power And The Beat, 0, 0
+8, Mount Sabyinyo, 0, 0
+8, Hedjet, 0, 0
