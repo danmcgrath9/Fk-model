@@ -1,0 +1,68 @@
+R1 Jackpot Park             finish 1  SP 2.6  BSP 2.6
+R1 Irish Eclipse            finish 2  SP 17.0  BSP 27.4
+R1 Valentina Girl           finish 3  SP 4.2  BSP 5.29
+R1 Sabrina                  finish 4  SP 2.8  BSP 3.4
+R1 Assisi                   finish 5  SP 21.0  BSP 44.17
+R1 Pasatiempo               finish 6  SP 9.5  BSP 16.0
+R1 Western Edge             finish 7  SP 151.0  BSP 525.82
+R2 Front Page Edition       finish 1  SP 6.5  BSP 8.85
+R2 Flyaway                  finish 2  SP 2.6  BSP 2.9
+R2 Avedis                   finish 3  SP 15.0  BSP 12.5
+R2 Bourne Legacy            finish 4  SP 7.0  BSP 9.0
+R2 Hurricane Girl           finish 5  SP 26.0  BSP 47.59
+R2 Mongol Heer              finish 6  SP 3.3  BSP 3.96
+R2 Honeysuckle Hill         finish 7  SP 31.0  BSP 60.0
+R2 Exploit                  finish 8  SP 13.0  BSP 18.25
+R2 Shamrock Prince          finish 9  SP 51.0  BSP 95.0
+R3 Emanating                finish 1  SP 4.6  BSP 5.5
+R3 Misneach                 finish 2  SP 2.5  BSP 2.82
+R3 Platinum Rush            finish 3  SP 14.0  BSP 22.0
+R3 Noir Velocity            finish 4  SP 31.0  BSP 44.0
+R3 Silky Seth               finish 5  SP 3.2  BSP 3.55
+R3 Irish Master             finish 6  SP 15.0  BSP 19.5
+R3 Ruby Empire              finish 7  SP 20.0  BSP 30.07
+R3 Mister Speaker           finish 8  SP 41.0  BSP 80.0
+R3 Mo                       finish 9  SP 26.0  BSP 48.0
+R4 Arcandam                 finish 1  SP 11.0  BSP 13.5
+R4 Bacash                   finish 2  SP 3.2  BSP 3.65
+R4 Job Done                 finish 3  SP 2.0  BSP 2.34
+R4 Enna's Dream             finish 4  SP 7.0  BSP 10.56
+R4 Attachments              finish 5  SP 7.5  BSP 8.0
+R5 Lady Sadler              finish 1  SP 2.6  BSP 3.13
+R5 Packers Journey          finish 2  SP 9.0  BSP 13.96
+R5 Divine Empress           finish 3  SP 4.4  BSP 4.39
+R5 Brave Carol              finish 4  SP 16.0  BSP 19.75
+R5 Tapo                     finish 5  SP 3.4  BSP 4.2
+R5 Mystic Reign             finish 6  SP 9.5  BSP 11.44
+R6 Gregolimo                finish 1  SP 12.0  BSP 15.78
+R6 Winter Nights            finish 2  SP 4.6  BSP 5.4
+R6 Hurco                    finish 3  SP 15.0  BSP 19.37
+R6 Durban Harbour           finish 4  SP 3.1  BSP 3.9
+R6 Ninyo                    finish 5  SP 18.0  BSP 24.1
+R6 Who I Think I Am         finish 6  SP 10.0  BSP 18.0
+R6 Governor King            finish 7  SP 6.0  BSP 6.53
+R6 His Finest Hour          finish 8  SP 8.5  BSP 8.57
+R6 Weather Delay            finish 9  SP 12.0  BSP 17.5
+R7 Coronationhercules       finish 1  SP 4.2  BSP 4.4
+R7 Regal Tycoon             finish 2  SP 3.4  BSP 3.8
+R7 Twilight Elegance        finish 3  SP 18.0  BSP 18.1
+R7 Seeyou Raider            finish 4  SP 8.0  BSP 10.35
+R7 Sunlit Serenade          finish 5  SP 9.0  BSP 14.5
+R7 Cobblestone Way          finish 6  SP 4.2  BSP 5.8
+R7 Delivering               finish 7  SP 8.5  BSP 11.0
+R7 Lim's Ida                finish 8  SP 41.0  BSP 70.0
+R8 Virtuous Circle          finish 1  SP 12.0  BSP 14.24
+R8 Prince Eric              finish 2  SP 3.1  BSP 3.85
+R8 Bring Forth              finish 3  SP 9.0  BSP 10.5
+R8 Yahoo Bar                finish 4  SP 5.5  BSP 6.65
+R8 Ragazzone                finish 5  SP 18.0  BSP 26.0
+R8 Sun Gift                 finish 6  SP 3.5  BSP 4.54
+R8 The Pendragon            finish 7  SP 7.0  BSP 9.25
+R8 Real Class               finish 8  SP 41.0  BSP 38.45
+R9 Ryanman                  finish 1  SP 10.0  BSP 12.5
+R9 Titan's Spirit           finish 2  SP 6.5  BSP 8.2
+R9 Colt Forty Five          finish 3  SP 3.9  BSP 4.3
+R9 Sub Gauge                finish 4  SP 12.0  BSP 11.38
+R9 Please Me Do             finish 5  SP 4.4  BSP 5.08
+R9 Tomanado                 finish 6  SP 5.5  BSP 6.6
+R9 Extreme Turbo            finish 7  SP 5.0  BSP 7.44

@@ -941,3 +941,10 @@ Cranbourne R6 Speir $8 1.88u (ours $4.99), R8 Power And The Beat $10 2.22u (ours
 (ours $5.15), R9 Salaria $11 0.63u (ours $7.21). 4 bets, 6.19u. None doubled (all under 2.2x). Prices at 7:07pm: Speir $4.80,
 Power And The Beat $4.40, Litzdeel $8.50, Salaria $11. Cards: card_frisat07_mercer_now.json (Mercer, live prices, Twitter
 units) and card_frisat07_plain_open.json (no Mercer, the open, full units, rated).
+Kyneton Wed confirmed by Form King's results (pulled 7:19pm): Emanating WON (SP $4.60, BSP $5.50; we had $13.18 after the
+deduction), Gregolimo WON (SP $12, BSP $15.78; we had $15.43), Sabrina 4th, Mongol Heer 6th, His Finest Hour 8th. The open
+book and the card stand as settled above. Top-up Tomanado R9 6th: -0.74u (top-ups for the day -1.45u).
+- Lay book (1u = $200 at BSP, d5m list): Exploit R2 (BSP $18.25, 8th), Platinum Rush R3 ($22, 3rd), Weather Delay R6 ($17.50,
+  9th), Who I Think I Am R6 ($18, 6th): 4 lays, 0 winners, +3.68u (+$736). Trial to date (28 Oct to 4 Nov, 9 race days):
+  73 lays, 2 winners, +24.82u, +34% on the lay stake (+$4,964 at $200).
+- Back book (favourite $4-$7 we rate 1.6x+, paper): none landed.
