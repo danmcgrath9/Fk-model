@@ -5,7 +5,8 @@ line and the reasons the model gives.
     python research/greyhound/card_page.py CARD.json OUT.html [OPENS.json]
 
 CARD.json is the payload topaz_price_upcoming.py seals, unsealed on the founder's side. OPENS.json (optional) maps
-"race|box" to [TAB open, TAB price when read] from the founder's own screenshots. The page holds GRV's values, so it
+"race|DOG NAME" to [TAB open, TAB price when read] from the founder's own screenshots (by name, because a late
+scratching moves a reserve into a box). Reserves (no box) leave the field and our chances are rescaled. The page holds GRV's values, so it
 is never committed: it goes to a private artifact.
 """
 import html
@@ -42,7 +43,23 @@ def window(p: float):
     return (lo, 13.0) if lo <= 13.0 else None
 
 
+def boxed(card: dict) -> dict:
+    """Reserves (no box) only run after a scratching, so they leave the field and our chances are rescaled over the
+    dogs with a box; GRV's book is recounted over the same dogs."""
+    for r in card["races"]:
+        kept = [x for x in r["r"] if str(x[0]).strip() not in ("", "nan")]
+        total = sum(x[2] for x in kept) or 1.0
+        for x in kept:
+            x[0] = str(int(float(x[0])))
+            x[2] = x[2] / total
+        r["reserves"] = [title_case(x[1]) for x in r["r"] if str(x[0]).strip() in ("", "nan")]
+        r["r"] = sorted(kept, key=lambda x: -x[2])
+        r["b"] = sum(1 / x[3] for x in kept if x[3] > 1)
+    return card
+
+
 def page(card: dict, opens: dict, made: str) -> str:
+    card = boxed(card)
     fam = card["fam"]
     races = card["races"]
     track = ", ".join(card["tracks"]) or "No track"
@@ -101,7 +118,7 @@ h2{font-size:18px;margin:26px 0 6px;border-bottom:2px solid var(--fg);padding-bo
     a("<div class='bets' id='bets'><h2>Paper bets at the open ({})</h2><div class='tw'><table>".format(len(paper)))
     a("<tr><th>Dog</th><th>Our price</th><th>Take at</th><th>GRV price</th><th>TAB open</th></tr>")
     for r, x, w in paper:
-        op = opens.get(f"{r['n']}|{x[0]}")
+        op = opens.get(f"{r['n']}|{x[1].upper()}")
         a(f"<tr><td><a href='#r{r['n']}'>R{r['n']}</a> {html.escape(title_case(x[1]))}</td><td><b>{money(1 / x[2])}</b></td>"
           f"<td>{money(w[0])}-$13</td><td>{money(x[3])}</td><td>{money(op[0]) if op else '-'}</td></tr>")
     if not paper:
@@ -118,8 +135,11 @@ h2{font-size:18px;margin:26px 0 6px;border-bottom:2px solid var(--fg);padding-bo
     a("<nav class='nav'><a href='#bets' class='hb'>Bets</a>" + "".join(
         f"<a href='#r{r['n']}'{' class=\"hb\"' if any(p[0] is r for p in paper) else ''}>R{r['n']}</a>" for r in races) + "</nav>")
     for r in races:
-        a(f"<h2 id='r{r['n']}'>Race {r['n']}</h2><div class='hd'>{when(r['s'])} · {r['d']}m · {html.escape(r['g'])} · "
-          f"our market adds to 100% · GRV's to {r['b']:.0%} · {len(r['r'])} runners</div>")
+        grade = f"Grade {r['g']}" if str(r["g"]).isdigit() else r["g"]
+        a(f"<h2 id='r{r['n']}'>Race {r['n']}</h2><div class='hd'>{when(r['s'])} · {r['d']}m · {html.escape(grade)} · "
+          f"our market adds to 100% · GRV's to {r['b']:.0%} · {len(r['r'])} runners"
+          + (f" · reserve{'s' if len(r['reserves']) > 1 else ''} {html.escape(', '.join(r['reserves']))} left out"
+             if r["reserves"] else "") + "</div>")
         for x in r["r"]:
             box, name, p, grv, rating, tip, bb, last5, fams = x
             w = window(p)
@@ -130,14 +150,14 @@ h2{font-size:18px;margin:26px 0 6px;border-bottom:2px solid var(--fg);padding-bo
                 tags += "<span class='tag no'>no bet</span>"
             if bb:
                 tags += "<span class='tag bb'>GRV best bet</span>"
-            op = opens.get(f"{r['n']}|{box}")
+            op = opens.get(f"{r['n']}|{name.upper()}")
             grv_bits = [f"GRV {money(grv)}"]
-            if rating:
-                grv_bits.append(f"rated {rating}")
+            if rating and float(rating) > 0:
+                grv_bits.append(f"rated {float(rating):g}")
             if tip:
                 grv_bits.append(f"tip #{tip}")
             mk = " · ".join([", ".join(grv_bits)] + ([f"TAB opened {money(op[0])}, {money(op[1])} at 7:47am"] if op else [])
-                            + ([f"take at {money(w[0])}-$13"] if w else []))
+                            + [f"take at {money(1.5 / p)} or better"])
             reason = ""
             if not w:
                 reason = (f"<b>No bet:</b> our price over $8.67, so a 50% edge needs more than $13, outside the band "
