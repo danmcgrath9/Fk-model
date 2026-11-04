@@ -11,6 +11,7 @@ travels in one header, and no error message or repr carries the headers.
 from __future__ import annotations
 
 import os
+import threading
 import time
 
 import requests
@@ -31,14 +32,45 @@ class TopazNoAccess(TopazError):
 
 class TopazClient:
     def __init__(self, api_key: str | None = None, session=None, pause: float = 2.0, retries: int = 4,
-                 sleep=time.sleep, timeout: float = 120.0):
+                 sleep=time.sleep, timeout: float = 120.0, max_per_minute: float | None = None):
+        """pause: seconds between calls, one at a time. max_per_minute: instead, a shared cap on how often calls may
+        START, so several threads can wait on Topaz at once (GRV's limit is about 80 a minute; 4 Nov 2026)."""
         key = api_key if api_key is not None else os.environ.get("TOPAZ_API_KEY", "")
         if not key.strip():
             raise TopazError("TOPAZ_API_KEY is not set (it lives in the repository's Actions secrets)")
         self._headers = {"accept": "application/json", "X-API-Key": key.strip()}
-        self._s = session or requests.Session()
+        self._given = session
+        self._local = threading.local()
         self.pause, self.retries, self._sleep, self.timeout = pause, retries, sleep, timeout
+        self.interval = 60.0 / max_per_minute if max_per_minute else None
+        self._lock, self._next = threading.Lock(), 0.0
         self.calls = 0
+
+    @property
+    def _s(self):
+        """The given session (tests), else one requests.Session per thread."""
+        if self._given is not None:
+            return self._given
+        if not hasattr(self._local, "s"):
+            self._local.s = requests.Session()
+        return self._local.s
+
+    def _wait_turn(self):
+        """Pace one call: the fixed pause between calls, or a slot under the shared per-minute cap."""
+        if self.interval is None:
+            with self._lock:
+                first = self.calls == 0
+                self.calls += 1
+            if not first:
+                self._sleep(self.pause)
+            return
+        with self._lock:
+            now = time.monotonic()
+            start = max(now, self._next)
+            self._next = start + self.interval
+            self.calls += 1
+        if start > now:
+            self._sleep(start - now)
 
     def __repr__(self) -> str:   # the key must never reach a log through a repr
         return f"TopazClient(calls={self.calls})"
@@ -48,9 +80,7 @@ class TopazClient:
         404 means "no data for that request" and returns None. 401/403 is a permission refusal, never retried."""
         url = f"{BASE_URL}/{path.lstrip('/')}"
         for attempt in range(self.retries + 1):
-            if self.calls:
-                self._sleep(self.pause)
-            self.calls += 1
+            self._wait_turn()
             try:
                 r = self._s.get(url, headers=self._headers, params=params, timeout=self.timeout)
             except requests.RequestException as e:   # network blip: retry, and name the path, not the headers
