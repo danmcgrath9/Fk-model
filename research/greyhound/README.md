@@ -696,3 +696,27 @@ is the suspicious part, and the next round looks at why before trusting it: the 
 goes to choosing rounds), the learner is set cautiously (min 300 rows a leaf, rounds in steps of 100), and the
 ratings are fed as values where a rank within the field may carry more. GRV's SP is beatable (the blend gains 0.022
 on it, and it is itself 0.069 behind BSP); BSP is not, yet.
+
+## Test 10: round 2 against BSP (4 Nov 2026, gh topaz run 41779996340, `topaz_round2.py`)
+
+Same features (T7) and the same scored races as Test 9: 22,841 races from 3 Jun 2024 that Betfair fully priced, BSP
+1.4839 (halves 1.5020 / 1.4677), GRV SP 1.5527. Test 9 fitted on 51,722 races to Oct 2021; R1 to R4 fit on 73,290
+races to 2 Dec 2023, rounds chosen by early stopping on 4,870 races to 2 Jun 2024.
+
+| row | features | learner | target | rounds | log loss | gap to BSP | 1st half | 2nd half | gap to GRV SP |
+|---|---|---|---|---|---|---|---|---|---|
+| R1 all history before the quarter | 90 | small | BSP chances | 3000 | 1.6208 | +0.1370 | +0.1286 | +0.1444 | +0.0682 |
+| R2 + ranks and gaps in the field | 120 | small | BSP chances | 2992 | 1.6213 | +0.1375 | +0.1304 | +0.1438 | +0.0687 |
+| R3 + a bigger learner | 120 | big | BSP chances | 3966 | 1.6214 | +0.1376 | +0.1299 | +0.1444 | +0.0688 |
+| R4 half BSP chance, half winner | 120 | big | mixed | 924 | 1.6257 | +0.1419 | +0.1346 | +0.1484 | +0.0731 |
+
+Blended with BSP (weights from the early-stopping months) R1 takes a weight of -0.034: it adds nothing to BSP. Top
+inputs: Elo, the dog's past SPs, best and mean time ratings, trainer strike rate.
+
+**What it means.** The longer training window was worth 0.013 (Test 9's +0.150 to +0.137), in both halves. Ranks in
+the field, a bigger learner and a mixed target gave nothing: the model is at the limit of what these features hold,
+and more capacity will not move it. For scale, Betfair's own published Iggy model is 0.169 behind BSP over the 2026
+months it covers (Test 4b), so we are 0.03 closer than Betfair's model on the same yardstick, and three quarters of
+the way from a random pick to BSP. The rest has to come from new information, not tuning: better ratings (check the
+time rating against the dog's next run; track-specific seconds per length; a class and grade scale), interactions the
+map should carry (run style by box by track), and Isolynx at the four tracks that have it.
