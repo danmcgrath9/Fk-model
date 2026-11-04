@@ -4,6 +4,7 @@ dog (4 Nov 2026, founder: "BUILD THE BEST MODEL IN THE WORLD"; MODELS_RESEARCH.m
     python -m greyhound.isolynx pull  --runs DIR --out DIR [--since 2022-01-01] [--workers 8] [--per-minute 72]
                                       [--max-minutes 280]
     python -m greyhound.isolynx table --out DIR          # prints the flattened table's shape and fill rates
+    python -m greyhound.isolynx probe --runs DIR [--since] # one tracked race: which Isolynx endpoints the key may call
 
 GET /api/isolynx/dog/{dogId}/splits returns, for one dog, every race the tracking system timed
 (IsoLynxSplitsRunnerWithRaceInfo: race id, date, venue, distance, box, place, result time, average and maximum
@@ -26,15 +27,15 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from greyhound.topaz import TopazClient, TopazError, TopazNoAccess
+from greyhound.topaz import TopazClient, TopazError, TopazForbidden, TopazNoAccess
 
 TRACKED = ("MEADOWS", "SANDOWN", "HEALESVILLE", "TRARALGON", "CRANBOURNE")
 GROUP = 200
 
 
-def tracked_dogs(runs_dir: Path, since: str) -> list[int]:
-    """Dog ids with at least one run at a tracked track on or after `since`, from the pull's runs_*.json.gz."""
-    dogs: set[int] = set()
+def tracked_runs(runs_dir: Path, since: str):
+    """(raceId, dogId, meetingDate) of every run at a tracked track on or after `since`, from the pull's
+    runs_*.json.gz, in file order."""
     for f in sorted(Path(runs_dir).glob("runs_*_*.json.gz")):
         ym = f.stem.split("_")[-1].replace(".json", "")
         if ym < since[:7]:
@@ -42,10 +43,52 @@ def tracked_dogs(runs_dir: Path, since: str) -> list[int]:
         with gzip.open(f, "rt", encoding="utf-8") as fh:
             for r in json.load(fh):
                 name = str(r.get("trackName") or "").upper()
-                if any(t in name for t in TRACKED) and str(r.get("meetingDate") or "")[:10] >= since \
-                        and r.get("dogId") is not None:
-                    dogs.add(int(r["dogId"]))
-    return sorted(dogs)
+                day = str(r.get("meetingDate") or "")[:10]
+                if any(t in name for t in TRACKED) and day >= since and r.get("dogId") is not None:
+                    yield r.get("raceId"), int(r["dogId"]), day
+
+
+def tracked_dogs(runs_dir: Path, since: str) -> list[int]:
+    """Dog ids with at least one run at a tracked track on or after `since`."""
+    return sorted({dog for _, dog, _ in tracked_runs(runs_dir, since)})
+
+
+def probe(client: TopazClient, runs_dir: Path, since: str) -> int:
+    """One tracked run, three calls: the per-race splits and positions the Topaz-api wrapper documents
+    (/isolynx/{raceId}/splits, /positions) and the per-dog splits this pull was built on. Prints, per endpoint,
+    whether the key is allowed it and the SHAPE of the answer (type, count, the first element's field names);
+    never a value. 4 Nov 2026: the per-dog pull answered 401 on every one of 14,129 dogs."""
+    latest = None
+    for race, dog, day in tracked_runs(runs_dir, since):
+        if race is not None and (latest is None or day > latest[2]):
+            latest = (race, dog, day)
+    if latest is None:
+        print(f"no run at a tracked track since {since} in {runs_dir}")
+        return 2
+    race, dog, day = latest
+    print(f"probing race {race} ({day}), dog {dog}")
+    ok = 0
+    for path in (f"isolynx/{race}/splits", f"isolynx/{race}/positions", f"isolynx/dog/{dog}/splits"):
+        try:
+            ans = client._get(path)
+        except TopazForbidden as e:
+            print(f"  {path}: NOT ALLOWED ({str(e).split(',')[0]})")
+            continue
+        except TopazNoAccess as e:
+            print(f"  {path}: no access ({e})")
+            continue
+        except TopazError as e:
+            print(f"  {path}: failed ({e})")
+            continue
+        ok += 1
+        if isinstance(ans, list):
+            first = next((x for x in ans if isinstance(x, dict)), None)
+            print(f"  {path}: ok, a list of {len(ans)}; fields: {', '.join(sorted(first)) if first else 'none'}")
+        elif isinstance(ans, dict):
+            print(f"  {path}: ok, an object; fields: {', '.join(sorted(ans))}")
+        else:
+            print(f"  {path}: ok, {type(ans).__name__}")
+    return 0 if ok else 1
 
 
 def group_file(out: Path, i: int) -> Path:
@@ -64,6 +107,8 @@ def pull(client: TopazClient, dogs: list[int], out: Path, workers: int, max_minu
             return dog, (rows if isinstance(rows, list) else []), None
         except TopazNoAccess:
             return dog, [], None
+        except TopazForbidden:
+            raise                        # the key is not allowed this endpoint: stop, do not try 14,000 more dogs
         except TopazError as e:
             return dog, None, str(e)
 
@@ -152,6 +197,7 @@ def main(argv=None) -> int:
     p.add_argument("--since", default="2022-01-01"); p.add_argument("--workers", type=int, default=8)
     p.add_argument("--per-minute", type=float, default=72); p.add_argument("--max-minutes", type=float, default=280)
     t = sp.add_parser("table"); t.add_argument("--out", type=Path, required=True)
+    pr = sp.add_parser("probe"); pr.add_argument("--runs", type=Path, required=True); pr.add_argument("--since", default="2022-01-01")
     a = ap.parse_args(argv)
     if a.cmd == "table":
         df = table(a.out)
@@ -164,6 +210,12 @@ def main(argv=None) -> int:
     if os.environ.get("TOPAZ_TERMS_READ", "").strip().lower() != "yes":
         print("Refused: TOPAZ_TERMS_READ is not 'yes'")
         return 2
+    if a.cmd == "probe":
+        try:
+            return probe(TopazClient(pause=1.0), a.runs, a.since)
+        except TopazError as e:
+            print(f"Topaz refused or failed: {e}")
+            return 1
     dogs = tracked_dogs(a.runs, a.since)
     print(f"{len(dogs):,} dogs raced at a tracked track since {a.since}: {-(-len(dogs) // GROUP)} groups of {GROUP}")
     try:

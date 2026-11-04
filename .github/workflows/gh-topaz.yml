@@ -22,7 +22,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'probe, run (pull into this run only, then the script), pull (to the private data repo), preview, preview-compare (from=YYYY-MM-DD), or isolynx (tracking data, one call per dog, resumable; from=YYYY-MM-DD is the first date)'
+        description: 'probe, run (pull into this run only, then the script), pull (to the private data repo), preview, preview-compare (from=YYYY-MM-DD), isolynx (tracking data, one call per dog, resumable; from=YYYY-MM-DD is the first date), or isolynx-probe (one race, which Isolynx endpoints the key may call)'
         default: 'probe'
       script:
         description: 'mode=run: research scripts, space separated, each run as python SCRIPT greyhound/cache/topaz LABEL'
@@ -136,12 +136,16 @@ jobs:
           restore-keys: topaz-isolynx-
 
       - name: Restore the pulled months for the Isolynx dog list
-        if: github.event.inputs.mode == 'isolynx'
+        if: github.event.inputs.mode == 'isolynx' || github.event.inputs.mode == 'isolynx-probe'
         uses: actions/cache/restore@v4
         with:
           path: greyhound/cache/topaz
           key: topaz-${{ github.event.inputs.states }}-${{ github.run_id }}
           restore-keys: topaz-${{ github.event.inputs.states }}-
+
+      - name: Probe the Isolynx endpoints on one tracked race (field names only)
+        if: github.event.inputs.mode == 'isolynx-probe'
+        run: python -m greyhound.isolynx probe --runs greyhound/cache/topaz --since "${{ github.event.inputs.from }}" | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Pull Isolynx tracking, one call per dog, resumable
         if: github.event.inputs.mode == 'isolynx'

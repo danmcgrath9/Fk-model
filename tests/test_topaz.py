@@ -220,3 +220,15 @@ def test_races_pull_takes_the_month_in_one_call_and_falls_back_to_days(tmp_path)
     rep2 = P.pull(c2, ["VIC"], [(2026, 11)], tmp_path, set(), date(2026, 11, 4), max_calls=100, kind="races")
     assert rep2[0][2] == 3 and "day by day" in rep2[0][3] and len(s2.asked) == 8
     assert s2.params[-1]["from"] == s2.params[-1]["to"] and sorted(p["from"] for p in s2.params[5:]) == ["2026-11-01", "2026-11-02", "2026-11-03"]
+
+
+def test_forbidden_stops_the_pull_dead(tmp_path):
+    from greyhound.topaz import TopazForbidden
+    c, s = client(Resp(401), Resp(200, [{"day": 2}]), Resp(200, [{"day": 3}]))
+    with pytest.raises(TopazForbidden):
+        P.pull(c, ["VIC"], [(2026, 11)], tmp_path, set(), date(2026, 11, 4), max_calls=100, by_day=True)
+    assert len(s.asked) == 1 and not P.file_for(tmp_path, "VIC", 2026, 11).exists()
+    c2, s2 = client(Resp(403))
+    with pytest.raises(TopazForbidden):
+        P.pull(c2, ["VIC"], [(2024, 3)], tmp_path, set(), date(2026, 11, 4), max_calls=100, kind="races")
+    assert len(s2.asked) == 1

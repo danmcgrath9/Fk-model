@@ -4,6 +4,8 @@ import json
 import os
 import sys
 
+import pytest
+
 from greyhound import isolynx as I
 from greyhound.topaz import TopazClient
 
@@ -53,3 +55,28 @@ def test_pull_writes_groups_whole_skips_held_and_retries_failed(tmp_path, monkey
     assert len(t) == 2 and set(t.race_id) == {10, 11}
     r = t[t.race_id == 10].iloc[0]
     assert (r.t50, r.v100, r.pos50, r.last100, r.last50, r.jump_pos, r.mark1_time) == (3.2, 17.9, 2, 5.9, 3.0, 3, 5.1)
+
+
+def test_forbidden_stops_the_isolynx_pull_dead(tmp_path):
+    from greyhound.topaz import TopazForbidden
+    s = Session(Resp(401), Resp(200, []), Resp(200, []))
+    c = TopazClient("k", session=s, sleep=lambda _: None, max_per_minute=100000)
+    with pytest.raises(TopazForbidden):
+        I.pull(c, [1, 2, 3], tmp_path, workers=1, max_minutes=10)
+    assert len(s.asked) == 1 and not I.group_file(tmp_path, 0).exists()
+
+
+def test_probe_reports_each_endpoint_by_shape_and_never_a_value(tmp_path, capsys):
+    write_runs(tmp_path, "runs_VIC_2024-03.json.gz", [
+        {"raceId": 500, "dogId": 1, "trackName": "The Meadows", "meetingDate": "2024-03-02T00:00:00"},
+        {"raceId": 501, "dogId": 2, "trackName": "Sandown Park", "meetingDate": "2024-03-09T00:00:00"}])
+    s = Session(Resp(200, [{"dogId": 2, "jumpSplit": {"elapsedTime": 0.31}, "resultTime": 29.87}]), Resp(401),
+                Resp(200, {"positions": [1, 2], "raceId": 501}))
+    c = TopazClient("k", session=s, sleep=lambda _: None)
+    assert I.probe(c, tmp_path, "2024-01-01") == 0
+    out = capsys.readouterr().out
+    assert "probing race 501 (2024-03-09), dog 2" in out
+    assert "isolynx/501/splits: ok, a list of 1; fields: dogId, jumpSplit, resultTime" in out
+    assert "isolynx/501/positions: NOT ALLOWED" in out
+    assert "isolynx/dog/2/splits: ok, an object; fields: positions, raceId" in out
+    assert "29.87" not in out and "0.31" not in out
