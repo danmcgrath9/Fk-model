@@ -607,3 +607,26 @@ Founder setup, once (this session cannot create repositories: GitHub answered 40
 3. Add it to Fk-model as the Actions secret `GREYHOUND_DATA_TOKEN`.
 4. With `TOPAZ_API_KEY` and the variable `TOPAZ_TERMS_READ=yes` also set: probe first, then pull VIC
    (founder, 3 Nov: "I'm happy with Vic to just test for now").
+
+## The Topaz mapping, written from GRV's published API description (4 Nov 2026)
+
+topaz.grv.org.au/docs/ is a Swagger page over a public description, `/docs/swagger.json` (Topaz API 1.8.1, 79
+endpoints, read through fk read terms, run 41746182491). What it settles:
+
+- Our client is already right: `GET /api/bulk/runs/{authority}/{year}/{month}` (and `/{day}`), key in `X-API-Key`.
+  Authorities: ACT, NSW, NT, QLD, SA, TAS, VIC, WA, NZ (VIC only for us so far). **Years from 2013**, so the history
+  is about 13 years, against six in Betfair's free files.
+- Each bulk row (`BulkRunOutput`, 70 fields) holds the race (raceId, meetingId, meetingDate, trackCode,
+  distanceInMetres, raceType, grades), the dog (dogId, dogName, sex, whelped, sire, dam, trainer, owner, weight), the
+  run (boxNumber, rugNumber, place, resultTime, resultMargin, first to fourth split times and positions, pir, jump and
+  run-line codes, comment, abnormalResult, scratched) and **startPrice**.
+- Also there: Isolynx splits and positions per race and per dog, trial results (`/trialresult`), fields with late
+  scratchings, records, and per-dog form.
+
+`greyhound/ratings.py` `topaz_to_runs()` now maps those fields to the canonical runs table and `load_topaz()` reads the
+pull's files; three tests in `tests/test_greyhound_ratings.py` replace the "waits for the probe" placeholder. Three
+meanings the spec does not state are handled defensively and are what the first probe has to confirm: resultMargin is
+lengths behind the winner (the winner's is set to 0 whatever it holds), resultTime is the dog's own time (win_time is
+the winner's), and a trial is a race whose raceType or raceTypeCode says "trial".
+
+The founder submitted the Topaz sign-up on 4 Nov with Jason's email thread attached. Support: topazhelpdesk@grv.org.au.

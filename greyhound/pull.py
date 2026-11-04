@@ -8,7 +8,8 @@ any bulk download, and the terms arrive with the key. The founder sets that repo
 
 A month already on disk is never pulled again, except the current and previous month (results and late corrections
 still land) and any month named in --refresh. Files are written to a temp name and renamed, so a killed run never
-leaves a half file that looks complete. The workflow keeps the files on the `greyhound-history` release, never in git.
+leaves a half file that looks complete. The workflow keeps the files on the `topaz-history` release of the private
+data repository (GRV's data is personal use), never in git and never on this public repository.
 """
 from __future__ import annotations
 

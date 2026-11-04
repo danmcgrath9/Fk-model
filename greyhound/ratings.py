@@ -1,6 +1,6 @@
 """Our own greyhound ratings: Form King's job for dogs (research/greyhound/README.md, "Plan: our own base ratings";
-MODELS_RESEARCH.md layers A to C). Built before Topaz arrives so that the day the key comes only the column mapping is
-left: topaz_to_runs() is the one function that knows Topaz's names, and it is filled in from the probe's column list.
+MODELS_RESEARCH.md layers A to C). topaz_to_runs() is the one function that knows Topaz's names, written from the API's
+published field list (BulkRunOutput, Topaz API 1.8.1); the first probe confirms the three meanings it assumes.
 
 Everything works on a CANONICAL RUNS TABLE, one row per dog per race:
     race_id, meeting_id, date (datetime64), track, distance (int metres), grade (str), dog (str), box (int),
@@ -162,7 +162,71 @@ def dog_form(runs: pd.DataFrame, rated: pd.DataFrame, n: int = 5) -> pd.DataFram
     return out.reindex(runs.index)
 
 
+# Topaz BulkRunOutput fields (GET /api/bulk/runs/{authority}/{year}/{month}, Topaz API 1.8.1, read from
+# topaz.grv.org.au/docs/swagger.json on 4 Nov 2026) that the ratings use, and a few kept beside them for features.
+TOPAZ_EXTRA = {"runId": "run_id", "dogName": "dog_name", "trackName": "track_name", "raceNumber": "race_number",
+               "raceStartTime": "start_time", "weightInKg": "weight", "startPrice": "start_price",
+               "rating": "topaz_rating", "trainerId": "trainer_id", "sireId": "sire_id", "damId": "dam_id",
+               "dateWhelped": "whelped", "boxDrawnOrder": "box_drawn", "rugNumber": "rug",
+               "firstSplitPosition": "split_pos", "pir": "pir", "comment": "comment", "raceType": "race_type",
+               "raceTypeCode": "race_type_code", "abnormalResult": "abnormal", "isLateScratching": "late_scratching"}
+
+
 def topaz_to_runs(raw: pd.DataFrame) -> pd.DataFrame:
-    """Topaz bulk runs to the canonical table. NOT WRITTEN YET, on purpose: the column names come from the first
-    `gh topaz` probe, and guessing them would build the ratings on a mapping nobody has checked."""
-    raise NotImplementedError("fill from the gh topaz probe's column list (research/greyhound/README.md)")
+    """Topaz bulk runs (one row per BulkRunOutput) to the canonical runs table above, plus TOPAZ_EXTRA columns.
+
+    From the API's own field list, so the mapping is not a guess; three meanings the spec does not state are handled
+    defensively and are to be confirmed against the first probe:
+      - `resultMargin` is taken as lengths behind the winner, and the winner's margin is set to 0 whatever it holds
+        (some systems give the winner its margin over second);
+      - `resultTime` is taken as the dog's own run time, and a race's win_time is its winner's resultTime;
+      - a race is a trial when its raceType or raceTypeCode says "trial" (trials normally come from /trialresult).
+    Scratched dogs did not run and are dropped. A run with an abnormal result (fell, did not finish, ...) keeps its
+    row with no finish and no time, which run_ratings already reads as "no run time"."""
+    need = ["raceId", "meetingId", "meetingDate", "trackCode", "distanceInMetres", "incomingGrade", "dogId",
+            "boxNumber", "place", "resultTime", "resultMargin", "firstSplitTime", "scratched"]
+    missing = [c for c in need if c not in raw.columns]
+    if missing:
+        raise ValueError(f"Topaz rows lack {missing}: the API has changed, re-read /docs/swagger.json")
+    df = raw[~raw.scratched.fillna(False).astype(bool)].copy()
+    kind = (df.get("raceType", pd.Series("", index=df.index)).fillna("").astype(str) + " "
+            + df.get("raceTypeCode", pd.Series("", index=df.index)).fillna("").astype(str))
+    abnormal = df.get("abnormalResult", pd.Series(None, index=df.index)).fillna("").astype(str).str.strip() != ""
+    out = pd.DataFrame({
+        "race_id": df.raceId.astype("int64"),
+        "meeting_id": df.meetingId.astype("int64"),
+        "date": pd.to_datetime(df.meetingDate.astype(str).str[:10]),
+        "track": df.trackCode.astype(str),
+        "distance": pd.to_numeric(df.distanceInMetres).astype("int64"),
+        "grade": df.incomingGrade.fillna("").astype(str),
+        "dog": df.dogId.astype("int64").astype(str),          # names repeat across dogs; the id does not
+        "box": pd.to_numeric(df.boxNumber),
+        "finish": pd.to_numeric(df.place).where(~abnormal),
+        "margin": pd.to_numeric(df.resultMargin),
+        "time": pd.to_numeric(df.resultTime).where(~abnormal),
+        "split": pd.to_numeric(df.firstSplitTime),
+        "is_trial": kind.str.contains("trial", case=False),
+    }, index=df.index)
+    out.loc[out.finish == 1, "margin"] = 0.0
+    wt = out[out.finish == 1].groupby("race_id").time.min()
+    out["win_time"] = out.race_id.map(wt)
+    for src, dst in TOPAZ_EXTRA.items():
+        if src in df.columns:
+            out[dst] = df[src]
+    cols = ["race_id", "meeting_id", "date", "track", "distance", "grade", "dog", "box", "finish", "margin", "time",
+            "win_time", "split", "is_trial"]
+    return out[cols + [c for c in out.columns if c not in cols]].sort_values(["date", "race_id", "box"]).reset_index(drop=True)
+
+
+def load_topaz(directory) -> pd.DataFrame:
+    """Every runs_<STATE>_<YYYY-MM>.json.gz the pull wrote under `directory`, as one canonical runs table."""
+    import gzip
+    import json
+    from pathlib import Path
+    rows = []
+    for f in sorted(Path(directory).glob("runs_*_*.json.gz")):
+        with gzip.open(f, "rt", encoding="utf-8") as fh:
+            rows.extend(json.load(fh))
+    if not rows:
+        raise FileNotFoundError(f"no runs_*.json.gz under {directory}")
+    return topaz_to_runs(pd.DataFrame(rows))
