@@ -23,7 +23,7 @@ import time
 from datetime import date, timedelta
 from pathlib import Path
 
-from greyhound.topaz import AUTHORITIES, TopazClient, TopazError, TopazNoAccess
+from greyhound.topaz import AUTHORITIES, TopazClient, TopazError, TopazForbidden, TopazNoAccess
 
 DEFAULT_OUT = Path(__file__).resolve().parent / "cache" / "topaz"
 VIC_FIRST = ("VIC",)
@@ -130,6 +130,8 @@ def month_by_days(client: TopazClient, state: str, y: int, m: int, today: date, 
             return "ok", client.bulk_runs_day(state, y, m, d)
         except TopazNoAccess:
             return "outside", None
+        except TopazForbidden:
+            raise                        # the key is not allowed this endpoint: no point asking for the next day
         except TopazError as e:
             return "failed", e
 
@@ -177,6 +179,8 @@ def pull(client: TopazClient, states, span, out: Path, refresh: set[str], today:
                     status = "pulled" if rows else "pulled, empty"
                 except TopazNoAccess as e:
                     rows, status = None, f"outside the key's access ({e})"
+                except TopazForbidden:
+                    raise
                 except TopazError:
                     rows, status = month_by_days(client, state, y, m, today, max_calls, deadline, workers, kind)
                     status += " (day by day: the month call failed)"
@@ -188,6 +192,8 @@ def pull(client: TopazClient, states, span, out: Path, refresh: set[str], today:
                     status = "pulled" if rows else "pulled, empty"
                 except TopazNoAccess as e:
                     rows, status = None, f"outside the key's access ({e})"
+                except TopazForbidden:
+                    raise
                 except TopazError as e:
                     rows, status = None, f"failed ({e})"
             if rows is not None:

@@ -30,6 +30,13 @@ class TopazNoAccess(TopazError):
     1-Jan-2013 for VIC." on 4 Nov 2026). Never retried."""
 
 
+class TopazForbidden(TopazError):
+    """HTTP 401 or 403: the key is not allowed this ENDPOINT (wrong key, lapsed access, or data the key was never
+    granted). Never retried, and a pull stops on the first one: on 4 Nov 2026 the Isolynx pull spent 14,129 calls
+    and three hours collecting 401s, one group of 200 dogs at a time, because each group was treated as a failure
+    to retry next run."""
+
+
 class TopazClient:
     def __init__(self, api_key: str | None = None, session=None, pause: float = 2.0, retries: int = 4,
                  sleep=time.sleep, timeout: float = 120.0, max_per_minute: float | None = None):
@@ -93,8 +100,8 @@ class TopazClient:
             if r.status_code == 404:
                 return None
             if r.status_code in (401, 403):
-                raise TopazError(f"{path}: HTTP {r.status_code}, the key is not allowed this data "
-                                 "(wrong key, lapsed access, or a state/date outside the key's permissions)")
+                raise TopazForbidden(f"{path}: HTTP {r.status_code}, the key is not allowed this data "
+                                     "(wrong key, lapsed access, or an endpoint the key was never granted)")
             if r.status_code == 429 or r.status_code >= 500:
                 if attempt == self.retries:
                     raise TopazError(f"{path}: HTTP {r.status_code} after {attempt + 1} tries")
