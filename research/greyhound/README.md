@@ -765,3 +765,45 @@ zero, the first by about 4.7 errors and the second by about 2.3). The second hal
 edge, which has to be watched. This is the founder's thesis in miniature: the model does not beat the sharpest price,
 it beats a weaker one, and the TAB open is weaker again. Both prices here are set at the jump, so these are not bets
 we could place; the bet we can place is at the open, which is the test the recorded opens are for.
+
+## Test 12: staking rules chosen out of sample (4 Nov 2026, gh topaz run 41790052101, `topaz_round4.py`)
+
+Model: round 3's B2 + B2w ensemble (scored log loss 1.6112, BSP 1.4839). The calibration power fitted on the
+early-stopping months was **1.00**: the model's chances are already calibrated, so Test 11's Kelly blow-ups came from
+sizing, not from miscalibration. Rules searched on the early-stopping months (Dec 2023 to Jun 2024, at least 300 bets):
+one bet a race or not, six price bands, edges of 10/20/30/50%; the best there was then scored once on Jun 2024 to Nov
+2026, in two halves.
+
+**At GRV's SP** the best rule on the early-stopping months was **every runner at $8-$13 with an edge of 50% or more**
+(+34.9% there on 1,127 bets; next best the same with one a race, +32.9%, then $5-$8 rules at +24-25%). Scored:
+
+| sizing | half | bets | winners | A/E | flat ROI | bank x | worst drawdown | longest losing run |
+|---|---|---|---|---|---|---|---|---|
+| 1% of bank | 1st | 3,124 | 389 | 1.243 | **+24.7%** | 419.76 | 56% | 39 |
+| 1% of bank | 2nd | 3,082 | 355 | 1.153 | **+14.0%** | 16.94 | 80% | 70 |
+| 0.1 Kelly | 1st | 3,124 | 389 | 1.243 | +24.7% | 15876.23 | 51% | 39 |
+| 0.1 Kelly | 2nd | 3,082 | 355 | 1.153 | +14.0% | 286.17 | 72% | 70 |
+| 0.25 Kelly | 1st | 3,124 | 389 | 1.243 | +24.7% | 12775.72 | 81% | 39 |
+| 0.25 Kelly | 2nd | 3,082 | 355 | 1.153 | +14.0% | 27.56 | 96% | 70 |
+
+22 of 30 months in profit (flat). By month: Jun 2024 +5%, Jul +36%, Aug -8%, Sep +7%, Oct +25%, Nov +18%, Dec +28%,
+Jan 2025 +19%, Feb +35%, Mar +32%, Apr +3%, May +62%, Jun +20%, Jul +34%, Aug +37%, Sep -4%, Oct -10%, Nov +39%, Dec
++34%, Jan 2026 +40%, Feb +28%, Mar +10%, Apr -15%, May +28%, Jun +51%, Jul +36%, **Aug -1%, Sep -19%, Oct -33%, Nov (16
+bets) -38%**.
+
+**At BSP** (8% commission) the same rule was best on the early-stopping months (+4.1%) and lost on the scored quarter:
+-7.4% / -4.9%, A/E 0.996 / 1.020, 12 of 29 months in profit.
+
+**What it means.**
+- At GRV's SP the edge is real by every test the brief asks for: the rule was chosen on months the scoring never saw,
+  it profits in both halves (+24.7% and +14.0%; at about $10 a bet one half's standard error is near 6%, so 4.2 and 2.4
+  errors clear of zero), A/E 1.24 and 1.15, 22 months of 30. It sits at $8-$13, where the SP alone runs slightly
+  short (Test 8: book-adjusted A/E 0.972), so this is the model picking the right $8-$13 dogs, not a price-band bias.
+- At BSP it does not exist: BSP prices those dogs correctly.
+- **The last three months lost** (Aug to Oct 2026). The model was trained to Dec 2023, so it is nearly three years
+  stale by then; the next test retrains as it goes (walk-forward) to see whether a fresh model holds the edge.
+- **Sizing**: even 1% of the bank a bet at $8-$13 drew down 56% and 80%, with losing runs of 39 and 70. A live stake
+  should be well under 1% (0.25-0.5%), and the Kelly columns are not usable at this price range.
+- **Placeable?** GRV's startPrice is the on-course bookmakers' SP. The TAB's own fixed price near the jump should sit
+  close to it, and BetMatic can bet the TAB near the jump with a minimum price; that link has to be measured before it
+  is relied on (the open-price probe records TAB's price at the moment it fires).
