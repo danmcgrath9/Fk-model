@@ -50,3 +50,26 @@ def test_card_payload_keeps_the_asked_track_and_all_the_edges():
     assert [elo, round(100 * (np.exp(0.4) - 1))] in r[0][8]
     # E at Healesville: 20% at $10 is a 100% edge inside $8-$13, kept as a paper bet though the track is not shown
     assert out["edges"] == [["Healesville", "4", "2", "E", 0.2, 10.0]]
+
+
+def test_saved_model_predicts_the_same_after_align(tmp_path, monkeypatch):
+    import topaz_walk as W
+    rng = np.random.default_rng(0)
+    n = 4000
+    X = pd.DataFrame({"a": rng.normal(size=n), "b": rng.normal(size=n),
+                      "track": pd.Categorical(rng.choice(["MEP", "SAP"], n)),
+                      "grade": pd.Categorical(rng.choice(["4", "5"], n)), "sex": pd.Categorical(rng.choice(["D", "B"], n))})
+    race = pd.Series(np.repeat(np.arange(n // 8), 8))
+    y = pd.Series(np.where(np.arange(n) % 8 == 0, 1.0, 0.0))
+    monkeypatch.setattr(W, "ROUNDS_A", 20)
+    bst = W.fit_fixed(X, y.values, race, np.ones(n), 20)
+    monkeypatch.setattr(PU, "MODEL_DIR", tmp_path)
+    bst.save_model(str(tmp_path / "model.txt"))
+    (tmp_path / "meta.json").write_text('{"cols": ["a", "b", "track", "grade", "sex"], "fit_races": 500, "last_day": "x", "trained": "y"}')
+    loaded, meta = PU.load_model()
+    # tonight's frame has its columns in another order, one extra input and the categories as plain text
+    tonight = X.assign(extra=1.0)[["extra", "sex", "b", "grade", "a", "track"]].astype({"track": str, "grade": str, "sex": str})
+    Xa = PU.align(tonight, meta["cols"])
+    assert list(Xa.columns) == meta["cols"]
+    assert np.allclose(loaded.predict(Xa, raw_score=True), bst.predict(X, raw_score=True))
+    assert loaded.predict(Xa, pred_contrib=True).shape == (n, 6)
