@@ -58,24 +58,7 @@ def boxed(card: dict) -> dict:
     return card
 
 
-def page(card: dict, opens: dict, made: str) -> str:
-    card = boxed(card)
-    fam = card["fam"]
-    races = card["races"]
-    track = ", ".join(card["tracks"]) or "No track"
-    day = datetime.fromisoformat(card["day"]).strftime("%a %-d %b")
-    paper = []
-    for r in races:
-        for x in r["r"]:
-            w = window(x[2])
-            if w and w[0] <= x[3] <= w[1]:
-                paper.append((r, x, w))
-    elsewhere = [e for e in card["edges"] if not any(t in e[0] for t in card["tracks"])]
-    out = []
-    a = out.append
-    a(f"<title>{html.escape(track)} {day}, prices {made}</title>")
-    a('<meta name="claude:viewport-fit-sides" content="cover">')
-    a("""<style>
+STYLE = """<style>
 /* layout: one reading column, races as sticky tabs, a row per dog with the price as the left column */
 :root{--bg:#fff;--fg:#1b1b1b;--mute:#5b5f58;--line:#e3e5e0;--chip:#eef0ec;--go:#1b5e20;--go2:#2e7d32;--no:#b71c1c;--warn:#e65100;--up:#1b5e20;--dn:#b71c1c;--paper:#37474f}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121412;--fg:#ececea;--mute:#a4a8a1;--line:#30332f;--chip:#262925;--go:#2e7d32;--go2:#43a047;--no:#e57373;--warn:#ffb74d;--up:#81c784;--dn:#ef9a9a;--paper:#90a4ae;color-scheme:dark}}
@@ -110,67 +93,118 @@ h2{font-size:18px;margin:26px 0 6px;border-bottom:2px solid var(--fg);padding-bo
 .bets th{font-size:12px;color:var(--mute);font-weight:600}
 .bets a{color:var(--fg)}
 .note{font-size:12.5px;color:var(--mute);margin-top:8px}
-</style>""")
-    a(f"<h1>{html.escape(track)} {day}, prices {made}</h1>")
+.mh{margin:34px 0 0;scroll-margin-top:64px}.mh h2{margin:0 0 6px;font-size:21px;border-bottom:3px solid var(--go)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 6px}.chips a{min-width:44px;text-align:center;padding:7px 9px;border-radius:6px;background:var(--chip);color:var(--fg);text-decoration:none;font-weight:600;font-size:13px}
+.chips a.hb{background:var(--go);color:#fff}
+h3{font-size:17px;margin:22px 0 4px;border-bottom:2px solid var(--fg);padding-bottom:3px;scroll-margin-top:64px}
+</style>"""
+
+
+def slug(t: str) -> str:
+    return "".join(ch for ch in t.lower() if ch.isalnum()) or "track"
+
+
+def short(t: str) -> str:
+    return t.replace(" Park", "").replace("The ", "")
+
+
+def anchor(r: dict) -> str:
+    return f"{slug(r['t'])}-r{r['n']}"
+
+
+def page(card: dict, opens: dict, made: str) -> str:
+    card = boxed(card)
+    fam = card["fam"]
+    races = card["races"]
+    tracks = card["tracks"]
+    single = len(tracks) == 1
+    name = tracks[0] if single else "Victorian dogs"
+    day = datetime.fromisoformat(card["day"]).strftime("%a %-d %b")
+
+    def op_for(r, dog):
+        return opens.get(f"{r['t']}|{r['n']}|{dog.upper()}") or (opens.get(f"{r['n']}|{dog.upper()}") if single else None)
+
+    paper = []
+    for r in races:
+        for x in r["r"]:
+            w = window(x[2])
+            if w and w[0] <= x[3] <= w[1]:
+                paper.append((r, x, w))
+    paper.sort(key=lambda t: t[0]["s"])
+    meetings = {}
+    for r in races:
+        meetings.setdefault(r["t"], []).append(r)
+    order = sorted(meetings, key=lambda t: min(r["s"] for r in meetings[t]))
+    with_bet = {p[0]["t"] for p in paper}
+    out = []
+    a = out.append
+    a(f"<title>{html.escape(name)} {day}, prices {made}</title>")
+    a('<meta name="claude:viewport-fit-sides" content="cover">')
+    a(STYLE)
+    a(f"<h1>{html.escape(name)} {day}, prices {made}</h1>")
     a(f"<div class='sub'>Our model: fitted this morning on {card['fit']:,} Victorian races, {card['rounds']:,} rounds, with "
-      "GRV's preview and tips and the ratings upgrades (Tests 15 to 20). Melbourne time. Nothing here has been bet.</div>")
-    # bets box
+      "GRV's preview, tips and rating and the ratings upgrades. "
+      + ("" if single else f"{len(order)} meetings, {len(races)} races, in TAB's order under each meeting. ")
+      + "Melbourne time. Nothing here has been bet.</div>")
     a("<div class='bets' id='bets'><h2>Paper bets at the open ({})</h2><div class='tw'><table>".format(len(paper)))
-    a("<tr><th>Dog</th><th>Our price</th><th>Take at</th><th>GRV price</th><th>TAB open</th></tr>")
+    a("<tr><th>Race</th><th>Jumps</th><th>Our price</th><th>Take at</th><th>GRV pre-race</th><th>TAB open</th></tr>")
     for r, x, w in paper:
-        op = opens.get(f"{r['n']}|{x[1].upper()}")
-        a(f"<tr><td><a href='#r{r['n']}'>R{r['n']}</a> {html.escape(title_case(x[1]))}</td><td><b>{money(1 / x[2])}</b></td>"
-          f"<td>{money(w[0])}-$13</td><td>{money(x[3])}</td><td>{money(op[0]) if op else '-'}</td></tr>")
+        op = op_for(r, x[1])
+        a(f"<tr><td><a href='#{anchor(r)}'>{html.escape(short(r['t']))} R{r['n']}</a> {html.escape(title_case(x[1]))}</td>"
+          f"<td>{when(r['s'])}</td><td><b>{money(1 / x[2])}</b></td><td>{money(w[0])}-$13</td><td>{money(x[3])}</td>"
+          f"<td>{money(op[0]) if op else '-'}</td></tr>")
     if not paper:
-        a("<tr><td colspan='5' style='text-align:left'>No dog at this meeting meets the rule tonight.</td></tr>")
+        a("<tr><td colspan='6' style='text-align:left'>No dog meets the rule today.</td></tr>")
     a("</table></div><div class='note'>The rule is Test 12's: a bet when the price is at least 50% over our price and "
       "between $8 and $13. It made money at GRV's SP in 26 of 30 months walk-forward and lost at Betfair's price. These "
-      "are paper: nothing goes to BetMatic without your OK, and the open price is the one that counts.</div>")
-    if elsewhere:
-        a("<div class='note'><b>Elsewhere on the card:</b> " + "; ".join(
-            f"{html.escape(e[0])} R{e[1]} {html.escape(title_case(e[3]))} (ours {money(1 / e[4])}, GRV {money(e[5])})"
-            for e in elsewhere) + ".</div>")
-    a("</div>")
-    # nav
+      "dogs are picked against GRV's pre-race price, and that is not the SP: last night's check matched it to the SP on "
+      "1 runner in 56. So treat them as names to check at TAB's open, where the real test is. These are paper: nothing "
+      "goes to BetMatic without your OK.</div></div>")
     a("<nav class='nav'><a href='#bets' class='hb'>Bets</a>" + "".join(
-        f"<a href='#r{r['n']}'{' class=\"hb\"' if any(p[0] is r for p in paper) else ''}>R{r['n']}</a>" for r in races) + "</nav>")
-    for r in races:
-        grade = f"Grade {r['g']}" if str(r["g"]).isdigit() else r["g"]
-        a(f"<h2 id='r{r['n']}'>Race {r['n']}</h2><div class='hd'>{when(r['s'])} · {r['d']}m · {html.escape(grade)} · "
-          f"our market adds to 100% · GRV's to {r['b']:.0%} · {len(r['r'])} runners"
-          + (f" · reserve{'s' if len(r['reserves']) > 1 else ''} {html.escape(', '.join(r['reserves']))} left out"
-             if r["reserves"] else "") + "</div>")
-        for x in r["r"]:
-            box, name, p, grv, rating, tip, bb, last5, fams = x
-            w = window(p)
-            tags = ""
-            if w and w[0] <= grv <= w[1]:
-                tags += "<span class='tag edge'>EDGE (paper)</span>"
-            elif not w:
-                tags += "<span class='tag no'>no bet</span>"
-            if bb:
-                tags += "<span class='tag bb'>GRV best bet</span>"
-            op = opens.get(f"{r['n']}|{name.upper()}")
-            grv_bits = [f"GRV {money(grv)}"]
-            if rating and float(rating) > 0:
-                grv_bits.append(f"rated {float(rating):g}")
-            if tip:
-                grv_bits.append(f"tip #{tip}")
-            mk = " · ".join([", ".join(grv_bits)] + ([f"TAB opened {money(op[0])}, {money(op[1])} at 7:47am"] if op else [])
-                            + [f"take at {money(1.5 / p)} or better"])
-            reason = ""
-            if not w:
-                reason = (f"<b>No bet:</b> our price over $8.67, so a 50% edge needs more than $13, outside the band "
-                          "the rule was tested on. ")
-            ups = [f"<span class='up'>{html.escape(fam[k])} +{v}%</span>" for k, v in fams if v > 0][:3]
-            dns = [f"<span class='dn'>{html.escape(fam[k])} {v}%</span>" for k, v in fams if v < 0][:3]
-            why = " · ".join(ups + dns)
-            fair = 1 / grv / r["b"]
-            a(f"<div class='r'><div class='px'>{money(1 / p)}<span class='pc'>{p:.0%}</span></div><div>"
-              f"<span class='nm'>{html.escape(box)}. {html.escape(title_case(name))}</span>{tags}"
-              f"<span class='mk'> · {mk}</span></div><div class='why'>{reason}"
-              f"{'<b>Why:</b> ' + why + '.' if why else ''}<br>"
-              f"last 5: {html.escape(last5) or '-'} · our chance {p:.1%} · GRV's {fair:.1%} with its book taken out</div></div>")
+        f"<a href='#m-{slug(t)}'{' class=\"hb\"' if t in with_bet else ''}>{html.escape(short(t))}</a>" for t in order)
+      + "</nav>")
+    for t in order:
+        rs = sorted(meetings[t], key=lambda r: int(r["n"]) if str(r["n"]).isdigit() else 0)
+        first = min(r["s"] for r in rs)
+        a(f"<div class='mh' id='m-{slug(t)}'><h2>{html.escape(t)}</h2><div class='hd'>{len(rs)} races from {when(first)}</div>"
+          "<div class='chips'>" + "".join(
+              f"<a href='#{anchor(r)}'{' class=\"hb\"' if any(p[0] is r for p in paper) else ''}>R{r['n']} {when(r['s'])}</a>"
+              for r in rs) + "</div></div>")
+        for r in rs:
+            grade = f"Grade {r['g']}" if str(r["g"]).isdigit() else r["g"]
+            a(f"<h3 id='{anchor(r)}'>{html.escape(short(t))} Race {r['n']}</h3><div class='hd'>{when(r['s'])} · {r['d']}m · "
+              f"{html.escape(grade)} · our market adds to 100% · GRV's to {r['b']:.0%} · {len(r['r'])} runners"
+              + (f" · reserve{'s' if len(r['reserves']) > 1 else ''} {html.escape(', '.join(r['reserves']))} left out"
+                 if r["reserves"] else "") + "</div>")
+            for x in r["r"]:
+                box, dog, p, grv, rating, tip, bb, last5, fams = x
+                w = window(p)
+                tags = ""
+                if w and w[0] <= grv <= w[1]:
+                    tags += "<span class='tag edge'>EDGE (paper)</span>"
+                elif not w:
+                    tags += "<span class='tag no'>no bet</span>"
+                if bb:
+                    tags += "<span class='tag bb'>GRV best bet</span>"
+                op = op_for(r, dog)
+                grv_bits = [f"GRV {money(grv)}"]
+                if rating and float(rating) > 0:
+                    grv_bits.append(f"rated {float(rating):g}")
+                if tip:
+                    grv_bits.append(f"tip #{tip}")
+                mk = " · ".join([", ".join(grv_bits)] + ([f"TAB opened {money(op[0])}, {money(op[1])} at 7:47am"] if op else [])
+                                + [f"take at {money(1.5 / p)} or better"])
+                reason = ("" if w else "<b>No bet:</b> our price over $8.67, so a 50% edge needs more than $13, outside the "
+                          "band the rule was tested on. ")
+                ups = [f"<span class='up'>{html.escape(fam[k])} +{v}%</span>" for k, v in fams if v > 0][:3]
+                dns = [f"<span class='dn'>{html.escape(fam[k])} {v}%</span>" for k, v in fams if v < 0][:3]
+                why = " · ".join(ups + dns)
+                fair = 1 / grv / r["b"]
+                a(f"<div class='r'><div class='px'>{money(1 / p)}<span class='pc'>{p:.0%}</span></div><div>"
+                  f"<span class='nm'>{html.escape(box)}. {html.escape(title_case(dog))}</span>{tags}"
+                  f"<span class='mk'> · {mk}</span></div><div class='why'>{reason}"
+                  f"{'<b>Why:</b> ' + why + '.' if why else ''}<br>"
+                  f"last 5: {html.escape(last5) or '-'} · our chance {p:.1%} · GRV's {fair:.1%} with its book taken out</div></div>")
     a("<div class='note'>The reasons are the model's own: each input's push on this dog against the rest of the field, "
       "added up by kind. GRV's values come from Topaz for personal use; this page is private.</div>")
     return "\n".join(out)
