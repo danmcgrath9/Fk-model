@@ -26,30 +26,47 @@ from pathlib import Path
 import requests
 
 BASE = "https://api.beta.tab.com.au/v1/tab-info-service"
+BASES = (BASE, "https://api.tab.com.au/v1/tab-info-service")
+# an honest client identity: if TAB chooses not to serve a script, the probe reports that and we stop
+HEADERS = {"accept": "application/json", "user-agent": "fk-model greyhound opens recorder (github.com/danmcgrath9/Fk-model)"}
 SYDNEY = timezone(timedelta(hours=11))
 OPEN_FIELDS = ("returnWinOpen", "returnWinOpenDaily", "returnWin", "returnPlace", "bettingStatus")
 
 
 class TabClient:
-    def __init__(self, session=None, timeout: float = 30.0):
+    def __init__(self, session=None, timeout: float = 30.0, base: str = BASE):
         self.s = session or requests.Session()
         self.timeout = timeout
+        self.base = base
         self.calls = 0
 
     def get(self, url: str, params: dict | None = None):
         self.calls += 1
-        r = self.s.get(url, params=params, timeout=self.timeout, headers={"accept": "application/json"})
+        r = self.s.get(url, params=params, timeout=self.timeout, headers=HEADERS)
+        short = url.split("/racing/")[-1]
         if r.status_code != 200:
-            raise RuntimeError(f"TAB {url.split('/racing/')[-1]}: HTTP {r.status_code}")
-        return r.json()
+            raise RuntimeError(f"TAB {short}: HTTP {r.status_code}, {_describe(r)}")
+        try:
+            return r.json()
+        except ValueError:
+            raise RuntimeError(f"TAB {short}: HTTP 200 but not JSON, {_describe(r)}") from None
 
     def meetings(self, day: str, jurisdiction: str = "VIC") -> list[dict]:
-        ans = self.get(f"{BASE}/racing/dates/{day}/meetings", params={"jurisdiction": jurisdiction})
+        ans = self.get(f"{self.base}/racing/dates/{day}/meetings", params={"jurisdiction": jurisdiction})
         return [m for m in (ans.get("meetings") or []) if isinstance(m, dict)]
 
     def race(self, race_link: str, jurisdiction: str = "VIC") -> dict:
-        url = race_link if race_link.startswith("http") else f"{BASE}{race_link}"
+        url = race_link if race_link.startswith("http") else f"{self.base}{race_link}"
         return self.get(url, params={"jurisdiction": jurisdiction} if "jurisdiction=" not in url else None)
+
+
+def _describe(r) -> str:
+    """What came back instead of the JSON: the content type and the first words of the body (an error page, never a
+    price), so a refusal can be read from the log and respected."""
+    ctype = str(getattr(r, "headers", {}).get("content-type", "") or "")
+    text = str(getattr(r, "text", "") or "")
+    body = " ".join(text.split())[:160]
+    return f"content-type {ctype or 'none'}, body starts: {body!r}"
 
 
 def greyhound_meetings(meetings: list[dict], location: str = "VIC") -> list[dict]:
@@ -112,7 +129,18 @@ def collect(client: TabClient, day: str, jurisdiction: str = "VIC", location: st
 
 
 def probe(client: TabClient, day: str, jurisdiction: str) -> int:
-    meetings = client.meetings(day, jurisdiction)
+    meetings, last = None, None
+    for base in BASES:
+        client.base = base
+        try:
+            meetings = client.meetings(day, jurisdiction)
+            print(f"{base}: answered")
+            break
+        except (RuntimeError, requests.RequestException) as e:
+            print(f"{base}: {e}")
+            last = e
+    if meetings is None:
+        raise RuntimeError(f"no host answered a plain client; last: {last}")
     dogs = greyhound_meetings(meetings, "VIC")
     print(f"{day}: {len(meetings)} meetings from TAB for jurisdiction {jurisdiction}; "
           f"{len(dogs)} Victorian greyhound meetings: {', '.join(str(m.get('meetingName')) for m in dogs)}")
