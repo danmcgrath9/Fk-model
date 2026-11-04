@@ -807,3 +807,33 @@ bets) -38%**.
 - **Placeable?** GRV's startPrice is the on-course bookmakers' SP. The TAB's own fixed price near the jump should sit
   close to it, and BetMatic can bet the TAB near the jump with a minimum price; that link has to be measured before it
   is relied on (the open-price probe records TAB's price at the moment it fires).
+
+## Test 13: comments, trials and recent box bias (4 Nov 2026, gh topaz run 41796342169, `topaz_round5.py`)
+
+The run pulled 13 years of VIC trials through `/api/trialresult` (79 minutes, every month, cached beside the runs).
+Same scored races as Tests 9-12 (22,841, BSP 1.4839):
+
+| row | features | rounds | early-stopping log loss | scored log loss | gap to BSP | 1st half | 2nd half |
+|---|---|---|---|---|---|---|---|
+| C0 round 3's B2 | 107 | 2970 | 1.6264 | 1.6105 | +0.1267 | +0.1195 | +0.1331 |
+| C1 + comments | 187 | 1781 | 1.6295 | 1.6119 | +0.1280 | +0.1198 | +0.1354 |
+| C2 + trials | 195 | 2907 | 1.6289 | 1.6101 | +0.1263 | +0.1183 | +0.1335 |
+| C3 + recent box bias | 197 | 2826 | 1.6271 | 1.6108 | +0.1269 | +0.1192 | +0.1339 |
+
+None helps; C0 is chosen on the early-stopping months. Two things the run found that matter more than the table:
+
+1. **The `comment` field is not the stewards' report.** Its commonest words are TO, HERE, CAN, PLACE, EARLY, DANGER,
+   DRAW, SAFE, KEEP, NEEDS, THREAT, SPEED, BEST, LUCK, PREFER, LEAD: it is GRV's form-guide preview of the race ("needs
+   luck from the draw", "place danger"), written BEFORE the race. As "the last run's comment" it carries nothing, as
+   the table shows. As THIS race's preview it is an expert's pre-race opinion, which is legitimate if it is written
+   before the race; that needs its own test, with a check that it is not updated afterwards.
+2. **The trials feed returned only 14,238 trial runs in 13 years** (a trial before the race for 12% of runners). VIC
+   runs thousands of trials a year, so `/trialresult` is giving a small part of them (by access, type or paging);
+   worth one question to GRV before building on it.
+
+Staking C0 as Test 12 (rules chosen on the early-stopping months): **at GRV's SP**, one bet a race at $5-$8 with an
+edge of 50% or more (552 bets there, +30.5%) scored **+21.7% and +17.7%** (1,373 and 1,490 bets, A/E 1.219 and 1.173,
+worst drawdown at 0.5% a bet 16% and 37%, 19 of 30 months in profit). **At BSP** the chosen rule ($8-$13, 50%) lost
+-7.0% and -2.8%. Both rules at the SP lose in the most recent months (here Jul to Oct 2026: -38%, -5%, -23%, -6%; Test
+12's rule Aug to Oct). A model trained to Dec 2023 is going stale, or the SP has changed; retraining as it goes
+(walk-forward) is the test that decides which.
