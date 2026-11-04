@@ -52,7 +52,8 @@ jobs:
                   print(f"FAILED: {e}"); continue
               p = Text(); p.feed(body)
               text = re.sub(r"\n\s*\n+", "\n\n", html.unescape("".join(p.out))).strip()
-              print(text[:60000])
+              # an API description (JSON) prints whole, so its endpoints at the end are not cut off
+              print(body if url.lower().endswith(".json") else text[:60000])
               print(f"\n----- links on {url}:")
               for h in p.links:
                   if re.search(r"(term|condition|licen|legal|privacy|\.csv|\.zip|\.bz2|\.tar)", h, re.I): print(h)
