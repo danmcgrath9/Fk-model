@@ -1,0 +1,89 @@
+1|1|Cowboykickedfive|False|False
+1|7|Whatwashethinking|False|False
+1|9|Immortal Diva|False|False
+1|4|Parera|False|False
+1|2|Dempsey|False|False
+1|5|Quemax|False|False
+1|6|The Long Mover|False|False
+1|3|Fram Strait|False|False
+1|10|Smashing Success|False|False
+1|8|Propellant|False|False
+1|11|Sondera|False|False
+2|2|Silver Lightning|False|False
+2|1|Native Spirit|False|False
+2|7|Faro Lady|False|False
+2|6|Fanfire|False|False
+2|8|Toy Maker|False|False
+2|9|Vespers|False|False
+2|3|Gangland|False|False
+2|4|Lonnegan|False|False
+2|10|Engulf|False|False
+2|5|Pocket Watch|False|False
+3|1|Action Point|False|False
+3|4|Blue And Gold|False|False
+3|10|Teen Torque|False|False
+3|7|Wollemi|False|False
+3|8|I'm A Believer|False|False
+3|3|Around The Marx|False|False
+3|9|Swift Action|False|False
+3|2|Activating|False|False
+3|5|Civic Square|False|False
+3|6|Poetic Passage|False|False
+4|13|Gypsy Moon|True|False
+4|6|Silver Snow|False|False
+4|1|Community Gaz|False|False
+4|9|Hellica|False|False
+4|8|Upcoming|False|False
+4|12|Sweet Champagne|False|False
+4|5|Seinfeld|False|False
+4|4|Royal Business|False|False
+4|3|Rock About|False|False
+4|2|Full Zoom|False|False
+4|7|Trentino|False|False
+4|11|Shields|False|False
+4|10|La Velocita|False|False
+5|5|Illuminance|False|False
+5|4|Claymore Mine|False|False
+5|7|Brutal World|False|False
+5|9|O'mosa|False|False
+5|3|Mykindakandy|False|False
+5|6|Layla|False|False
+5|1|Redders|False|False
+5|2|Marsept|False|False
+5|8|Sayalero|False|False
+6|10|Midnight Devil|True|False
+6|9|Highland Harley|True|False
+6|3|Mr Tickles|False|False
+6|2|Speir|False|False
+6|4|Pano's Pride|False|False
+6|5|Weapon Clear|False|False
+6|8|Room For Bingo|False|False
+6|1|Mainmankash|False|False
+6|7|Monix|False|False
+6|6|Magnabelle Royale|False|False
+7|4|Shaime|False|False
+7|12|She's Pretty Rich|False|False
+7|16|Jewel Bay|True|False
+7|6|Buzitup|False|False
+7|3|Regal Might|False|False
+7|13|Blue Bandit|True|False
+7|9|Waco Kid|False|False
+7|5|Untapped|False|False
+7|8|Sumo Sandy|False|False
+7|14|Bit Of Shoosh|True|False
+7|10|Kastun Star|False|False
+7|1|Zourain|False|False
+7|7|Onavuitton|False|False
+7|2|Couldthisbetheone|False|False
+7|15|Discover Lupino|True|False
+7|11|Lyrics 'n' Song|False|False
+8|10|Toronova|False|False
+8|3|Savvie Blanc|False|False
+8|7|Finance Shogun|False|False
+8|5|Ashau Valley|False|False
+8|9|Sinister Sauce|False|False
+8|6|Surperb Frost|False|False
+8|2|Rogan|False|False
+8|4|Power And The Beat|False|False
+8|1|Mount Sabyinyo|False|False
+8|8|Hedjet|False|False

@@ -1,51 +1,51 @@
 date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
-2026-11-06,Warrnambool,2,,,Racey Casey,WIN,3.79,3.99,3.06,153,1 of 1,3.06u,3.15,opens under $4: edge 1.15
-2026-11-06,Warrnambool,2,,,Racey Casey,WIN,4.01,9.45,3.34,167,1 of 3,3.34u,3.15,
-2026-11-06,Warrnambool,2,,,Racey Casey,WIN,5.01,9.45,0.68,34,2 of 3,4.02u,3.15,
-2026-11-06,Warrnambool,2,,,Racey Casey,WIN,6.93,9.45,4.02,201,3 of 3,8.04u,3.15,opens $6.93+ (2.2x ours): stake doubled
-2026-11-06,Warrnambool,2,,,Till Queen,WIN,4.40,10.33,2.97,148,1 of 3,2.97u,3.44,
-2026-11-06,Warrnambool,2,,,Till Queen,WIN,5.50,10.33,0.62,31,2 of 3,3.59u,3.44,
-2026-11-06,Warrnambool,2,,,Till Queen,WIN,7.58,10.33,3.59,180,3 of 3,7.18u,3.44,opens $7.58+ (2.2x ours): stake doubled
-2026-11-06,Warrnambool,3,,,Big Vee,WIN,2.64,3.99,4.96,248,1 of 2,4.96u,2.23,opens under $4: edge 1.15
-2026-11-06,Warrnambool,3,,,Big Vee,WIN,3.30,3.99,1.12,56,2 of 2,6.08u,2.23,opens under $4: edge 1.15
-2026-11-06,Warrnambool,3,,,Big Vee,WIN,4.00,6.70,5.37,268,1 of 3,5.37u,2.23,
-2026-11-06,Warrnambool,3,,,Big Vee,WIN,4.00,6.70,0.94,47,2 of 3,6.31u,2.23,
-2026-11-06,Warrnambool,3,,,Big Vee,WIN,4.92,6.70,3.69,184,3 of 3,10.00u,2.23,opens $4.92+ (2.2x ours): stake doubled
-2026-11-06,Warrnambool,3,,,Dramatic Dream,WIN,9.53,15.01,1.23,62,1 of 2,1.23u,7.18,EARLY: $15 or shorter only
-2026-11-06,Warrnambool,3,,,Dramatic Dream,WIN,11.91,15.01,0.28,14,2 of 2,1.51u,7.18,EARLY: $15 or shorter only
-2026-11-06,Warrnambool,4,,,Madame Petite,WIN,10.05,22.64,1.16,58,1 of 3,1.16u,7.55,
-2026-11-06,Warrnambool,4,,,Madame Petite,WIN,12.56,22.64,0.27,14,2 of 3,1.43u,7.55,
-2026-11-06,Warrnambool,4,,,Madame Petite,WIN,16.61,22.64,1.43,72,3 of 3,2.86u,7.55,opens $16.61+ (2.2x ours): stake doubled
-2026-11-06,Warrnambool,4,,,Mamzelle Raine,WIN,10.77,24.18,1.07,54,1 of 2,1.07u,8.06,
-2026-11-06,Warrnambool,4,,,Mamzelle Raine,WIN,13.46,24.18,0.26,13,2 of 2,1.33u,8.06,
-2026-11-06,Warrnambool,5,,,Francine,WIN,20.01,43.60,0.56,28,1 of 2,0.56u,14.53,
-2026-11-06,Warrnambool,5,,,Francine,WIN,25.01,43.60,0.13,6,2 of 2,0.69u,14.53,
-2026-11-06,Warrnambool,5,,,Just Bolts,WIN,8.56,19.44,1.38,69,1 of 3,1.38u,6.48,
-2026-11-06,Warrnambool,5,,,Just Bolts,WIN,10.70,19.44,0.32,16,2 of 3,1.70u,6.48,
-2026-11-06,Warrnambool,5,,,Just Bolts,WIN,14.26,19.44,1.70,85,3 of 3,3.40u,6.48,opens $14.26+ (2.2x ours): stake doubled
-2026-11-06,Warrnambool,5,,,What Once Was,WIN,14.39,31.86,0.79,40,1 of 2,0.79u,10.62,
-2026-11-06,Warrnambool,5,,,What Once Was,WIN,17.99,31.86,0.19,10,2 of 2,0.98u,10.62,
-2026-11-06,Warrnambool,6,,,Azzacool,WIN,11.76,15.01,0.98,49,1 of 1,0.98u,8.77,EARLY: $15 or shorter only
-2026-11-06,Warrnambool,6,,,Ballynacally,WIN,5.89,13.63,2.10,105,1 of 3,2.10u,4.54,
-2026-11-06,Warrnambool,6,,,Ballynacally,WIN,7.36,13.63,0.47,24,2 of 3,2.57u,4.54,
-2026-11-06,Warrnambool,6,,,Ballynacally,WIN,10.00,13.63,2.57,128,3 of 3,5.14u,4.54,opens $10.00+ (2.2x ours): stake doubled
-2026-11-06,Warrnambool,6,,,Danzsin,WIN,7.68,17.53,1.56,78,1 of 3,1.56u,5.84,
-2026-11-06,Warrnambool,6,,,Danzsin,WIN,9.60,17.53,0.36,18,2 of 3,1.92u,5.84,
-2026-11-06,Warrnambool,6,,,Danzsin,WIN,12.86,17.53,1.92,96,3 of 3,3.84u,5.84,opens $12.86+ (2.2x ours): stake doubled
-2026-11-06,Warrnambool,6,,,Thinking Sensation,WIN,17.98,39.39,0.62,31,1 of 2,0.62u,13.13,
-2026-11-06,Warrnambool,6,,,Thinking Sensation,WIN,22.48,39.39,0.16,8,2 of 2,0.78u,13.13,
-2026-11-06,Warrnambool,8,,,Carnival Riches,WIN,10.97,24.63,1.05,52,1 of 2,1.05u,8.21,
-2026-11-06,Warrnambool,8,,,Carnival Riches,WIN,13.71,24.63,0.25,12,2 of 2,1.30u,8.21,
-2026-11-06,Warrnambool,8,,,Catch The Moon,WIN,10.11,22.77,1.15,57,1 of 3,1.15u,7.59,
-2026-11-06,Warrnambool,8,,,Catch The Moon,WIN,12.64,22.77,0.27,14,2 of 3,1.42u,7.59,
-2026-11-06,Warrnambool,8,,,Catch The Moon,WIN,16.70,22.77,1.42,71,3 of 3,2.84u,7.59,opens $16.70+ (2.2x ours): stake doubled
-2026-11-06,Warrnambool,8,,,Charming Deel,WIN,3.38,3.99,3.54,177,1 of 1,3.54u,2.82,opens under $4: edge 1.15
-2026-11-06,Warrnambool,8,,,Charming Deel,WIN,4.00,8.47,3.86,193,1 of 3,3.86u,2.82,
-2026-11-06,Warrnambool,8,,,Charming Deel,WIN,4.46,8.47,0.76,38,2 of 3,4.62u,2.82,
-2026-11-06,Warrnambool,8,,,Charming Deel,WIN,6.21,8.47,4.62,231,3 of 3,9.24u,2.82,opens $6.21+ (2.2x ours): stake doubled
-2026-11-06,Warrnambool,8,,,Limosa,WIN,13.79,30.60,0.82,41,1 of 2,0.82u,10.20,
-2026-11-06,Warrnambool,8,,,Limosa,WIN,17.24,30.60,0.20,10,2 of 2,1.02u,10.20,
-2026-11-06,Warrnambool,8,,,Parkrun,WIN,17.73,38.86,0.63,32,1 of 2,0.63u,12.95,
-2026-11-06,Warrnambool,8,,,Parkrun,WIN,22.16,38.86,0.16,8,2 of 2,0.79u,12.95,
-2026-11-06,Warrnambool,8,,,Super Snitch,WIN,15.36,33.91,0.74,37,1 of 2,0.74u,11.30,
-2026-11-06,Warrnambool,8,,,Super Snitch,WIN,19.20,33.91,0.17,8,2 of 2,0.91u,11.30,
+2026-11-06,Warrnambool,2,,5,Racey Casey,WIN,3.79,3.99,3.06,153,1 of 1,3.06u,3.15,opens under $4: edge 1.15
+2026-11-06,Warrnambool,2,,5,Racey Casey,WIN,4.01,9.45,3.34,167,1 of 3,3.34u,3.15,
+2026-11-06,Warrnambool,2,,5,Racey Casey,WIN,5.01,9.45,0.68,34,2 of 3,4.02u,3.15,
+2026-11-06,Warrnambool,2,,5,Racey Casey,WIN,6.93,9.45,4.02,201,3 of 3,8.04u,3.15,opens $6.93+ (2.2x ours): stake doubled
+2026-11-06,Warrnambool,2,,3,Till Queen,WIN,4.40,10.33,2.97,148,1 of 3,2.97u,3.44,
+2026-11-06,Warrnambool,2,,3,Till Queen,WIN,5.50,10.33,0.62,31,2 of 3,3.59u,3.44,
+2026-11-06,Warrnambool,2,,3,Till Queen,WIN,7.58,10.33,3.59,180,3 of 3,7.18u,3.44,opens $7.58+ (2.2x ours): stake doubled
+2026-11-06,Warrnambool,3,,2,Big Vee,WIN,2.64,3.99,4.96,248,1 of 2,4.96u,2.23,opens under $4: edge 1.15
+2026-11-06,Warrnambool,3,,2,Big Vee,WIN,3.30,3.99,1.12,56,2 of 2,6.08u,2.23,opens under $4: edge 1.15
+2026-11-06,Warrnambool,3,,2,Big Vee,WIN,4.00,6.70,5.37,268,1 of 3,5.37u,2.23,
+2026-11-06,Warrnambool,3,,2,Big Vee,WIN,4.00,6.70,0.94,47,2 of 3,6.31u,2.23,
+2026-11-06,Warrnambool,3,,2,Big Vee,WIN,4.92,6.70,3.69,184,3 of 3,10.00u,2.23,opens $4.92+ (2.2x ours): stake doubled
+2026-11-06,Warrnambool,3,,3,Dramatic Dream,WIN,9.53,15.01,1.23,62,1 of 2,1.23u,7.18,EARLY: $15 or shorter only
+2026-11-06,Warrnambool,3,,3,Dramatic Dream,WIN,11.91,15.01,0.28,14,2 of 2,1.51u,7.18,EARLY: $15 or shorter only
+2026-11-06,Warrnambool,4,,8,Madame Petite,WIN,10.05,22.64,1.16,58,1 of 3,1.16u,7.55,
+2026-11-06,Warrnambool,4,,8,Madame Petite,WIN,12.56,22.64,0.27,14,2 of 3,1.43u,7.55,
+2026-11-06,Warrnambool,4,,8,Madame Petite,WIN,16.61,22.64,1.43,72,3 of 3,2.86u,7.55,opens $16.61+ (2.2x ours): stake doubled
+2026-11-06,Warrnambool,4,,5,Mamzelle Raine,WIN,10.77,24.18,1.07,54,1 of 2,1.07u,8.06,
+2026-11-06,Warrnambool,4,,5,Mamzelle Raine,WIN,13.46,24.18,0.26,13,2 of 2,1.33u,8.06,
+2026-11-06,Warrnambool,5,,8,Francine,WIN,20.01,43.60,0.56,28,1 of 2,0.56u,14.53,
+2026-11-06,Warrnambool,5,,8,Francine,WIN,25.01,43.60,0.13,6,2 of 2,0.69u,14.53,
+2026-11-06,Warrnambool,5,,1,Just Bolts,WIN,8.56,19.44,1.38,69,1 of 3,1.38u,6.48,
+2026-11-06,Warrnambool,5,,1,Just Bolts,WIN,10.70,19.44,0.32,16,2 of 3,1.70u,6.48,
+2026-11-06,Warrnambool,5,,1,Just Bolts,WIN,14.26,19.44,1.70,85,3 of 3,3.40u,6.48,opens $14.26+ (2.2x ours): stake doubled
+2026-11-06,Warrnambool,5,,9,What Once Was,WIN,14.39,31.86,0.79,40,1 of 2,0.79u,10.62,
+2026-11-06,Warrnambool,5,,9,What Once Was,WIN,17.99,31.86,0.19,10,2 of 2,0.98u,10.62,
+2026-11-06,Warrnambool,6,,7,Azzacool,WIN,11.76,15.01,0.98,49,1 of 1,0.98u,8.77,EARLY: $15 or shorter only
+2026-11-06,Warrnambool,6,,2,Ballynacally,WIN,5.89,13.63,2.10,105,1 of 3,2.10u,4.54,
+2026-11-06,Warrnambool,6,,2,Ballynacally,WIN,7.36,13.63,0.47,24,2 of 3,2.57u,4.54,
+2026-11-06,Warrnambool,6,,2,Ballynacally,WIN,10.00,13.63,2.57,128,3 of 3,5.14u,4.54,opens $10.00+ (2.2x ours): stake doubled
+2026-11-06,Warrnambool,6,,3,Danzsin,WIN,7.68,17.53,1.56,78,1 of 3,1.56u,5.84,
+2026-11-06,Warrnambool,6,,3,Danzsin,WIN,9.60,17.53,0.36,18,2 of 3,1.92u,5.84,
+2026-11-06,Warrnambool,6,,3,Danzsin,WIN,12.86,17.53,1.92,96,3 of 3,3.84u,5.84,opens $12.86+ (2.2x ours): stake doubled
+2026-11-06,Warrnambool,6,,4,Thinking Sensation,WIN,17.98,39.39,0.62,31,1 of 2,0.62u,13.13,
+2026-11-06,Warrnambool,6,,4,Thinking Sensation,WIN,22.48,39.39,0.16,8,2 of 2,0.78u,13.13,
+2026-11-06,Warrnambool,8,,6,Carnival Riches,WIN,10.97,24.63,1.05,52,1 of 2,1.05u,8.21,
+2026-11-06,Warrnambool,8,,6,Carnival Riches,WIN,13.71,24.63,0.25,12,2 of 2,1.30u,8.21,
+2026-11-06,Warrnambool,8,,3,Catch The Moon,WIN,10.11,22.77,1.15,57,1 of 3,1.15u,7.59,
+2026-11-06,Warrnambool,8,,3,Catch The Moon,WIN,12.64,22.77,0.27,14,2 of 3,1.42u,7.59,
+2026-11-06,Warrnambool,8,,3,Catch The Moon,WIN,16.70,22.77,1.42,71,3 of 3,2.84u,7.59,opens $16.70+ (2.2x ours): stake doubled
+2026-11-06,Warrnambool,8,,2,Charming Deel,WIN,3.38,3.99,3.54,177,1 of 1,3.54u,2.82,opens under $4: edge 1.15
+2026-11-06,Warrnambool,8,,2,Charming Deel,WIN,4.00,8.47,3.86,193,1 of 3,3.86u,2.82,
+2026-11-06,Warrnambool,8,,2,Charming Deel,WIN,4.46,8.47,0.76,38,2 of 3,4.62u,2.82,
+2026-11-06,Warrnambool,8,,2,Charming Deel,WIN,6.21,8.47,4.62,231,3 of 3,9.24u,2.82,opens $6.21+ (2.2x ours): stake doubled
+2026-11-06,Warrnambool,8,,7,Limosa,WIN,13.79,30.60,0.82,41,1 of 2,0.82u,10.20,
+2026-11-06,Warrnambool,8,,7,Limosa,WIN,17.24,30.60,0.20,10,2 of 2,1.02u,10.20,
+2026-11-06,Warrnambool,8,,5,Parkrun,WIN,17.73,38.86,0.63,32,1 of 2,0.63u,12.95,
+2026-11-06,Warrnambool,8,,5,Parkrun,WIN,22.16,38.86,0.16,8,2 of 2,0.79u,12.95,
+2026-11-06,Warrnambool,8,,1,Super Snitch,WIN,15.36,33.91,0.74,37,1 of 2,0.74u,11.30,
+2026-11-06,Warrnambool,8,,1,Super Snitch,WIN,19.20,33.91,0.17,8,2 of 2,0.91u,11.30,
