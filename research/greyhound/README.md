@@ -837,3 +837,26 @@ worst drawdown at 0.5% a bet 16% and 37%, 19 of 30 months in profit). **At BSP**
 -7.0% and -2.8%. Both rules at the SP lose in the most recent months (here Jul to Oct 2026: -38%, -5%, -23%, -6%; Test
 12's rule Aug to Oct). A model trained to Dec 2023 is going stale, or the SP has changed; retraining as it goes
 (walk-forward) is the test that decides which.
+
+## Test 15: GRV's pre-race preview of THIS race (4 Nov 2026, runs 41813400075 and 41813404980)
+
+The per-runner `comment` is GRV's form-guide preview (Test 13), filled on 100% of runners; `isBestBet` is true on
+2.8%. Added to round 3's B2 as this race's features (the 60 commonest comment words, the comment's length, isBestBet):
+
+| row | features | rounds | early-stopping log loss | scored log loss | gap to BSP | 1st half | 2nd half |
+|---|---|---|---|---|---|---|---|
+| P0 round 3's B2 | 107 | 2900 | 1.6269 | 1.6105 | +0.1266 | +0.1195 | +0.1329 |
+| P1 + this race's preview | 169 | 2768 | 1.6067 | 1.6011 | **+0.1172** | +0.1106 | +0.1231 |
+
+The preview is worth **0.009 against BSP**, in both halves and on the early-stopping months (0.020 there): the
+largest single gain since the training window (Test 10). It takes 16.5% of the model's splits (isBestBet 7.1%, then
+PLACE, DANGER, CLOSE, HARD, TESTED, LOOKS, PREFER, NEEDS). Against BSP alone it adds nothing (BSP-matched races,
+trained on winners: BSP alone 1.4883, BSP plus the preview 1.4907): the market already holds what the analyst knows,
+which is what a legitimate pre-race opinion looks like and not what a field written after the race would.
+
+**The leak check** (greyhound/preview.py): at 21:19 Sydney on 4 Nov, 8 VIC races were still to run; their 56 runners
+were snapshotted from `/race/upcoming` and `/race/{id}/runs/form` BEFORE they ran: comment filled on 56 of 56, rating
+on 56, isBestBet true on 1, startPrice on 56 of 56 (a price exists before the race), race analystComment and tips on
+8 of 8, results entered on none. The compare against the bulk feed runs the morning after (mode=preview-compare,
+from=2026-11-04), and a fuller snapshot of a whole day's racing is scheduled for 10am on 5 Nov. If the comments come
+back unchanged, the preview goes into the walk-forward model; the gain to BSP would then be 0.127 to 0.117.
