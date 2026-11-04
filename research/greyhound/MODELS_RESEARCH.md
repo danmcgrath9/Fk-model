@@ -85,3 +85,35 @@ bets into; Benter's own result says it will not beat the market alone, only add 
 2. **Box bias by track and distance** from the Betfair files (box, distance, result, 339,000 races): the first
    real feature, point-in-time.
 Neither needs Topaz, and neither is the model; both are measurements.
+
+## Greyhound-specific methods, read 4 Nov 2026 (founder: "look at the best racing models in the world and anything you can find on greyhounds")
+
+**Betfair's Data Scientists, "Greyhound Modelling in Python using the Topaz API"** (betfair-datascientists.github.io/
+modelling/topazTutorial, read through fk read terms, run 41771247854). The closest published work to ours, on the same
+data. Pipeline: Topaz bulk runs; drop fields added after the race; set the winner's resultMargin to 0 (it holds the
+margin over second, as our probe found). Features:
+- dog age, weight min-max scaled within the race, last5 split into win and place rates;
+- `finishingPlaceMovement` = second-last in-running position less the place (finishes strong or fades);
+- run time against the rolling 365-day median winning time at that track and distance (their speed index);
+- `hasAtLeast1VacantBox` (an empty box beside the dog), and the box's rolling 365-day win rate at that track and
+  distance GIVEN the vacancy;
+- rolling 28/91/365-day aggregates (min, max, mean, median, std) of normalised time, place, prize money, margin and
+  finishing movement, for the **dog, trainer, dam and sire**.
+Models: twelve sklearn-style classifiers on one year held out, probabilities normalised to 1 per race. Log loss 0.745
+to 0.756 for every competent learner (CatBoost, logistic regression, MLP, LightGBM, XGBoost within 0.004 of each
+other): the features decide it, not the learner. **They never compare against the starting price or the BSP**, which
+is the question that decides whether a model can bet. Topaz keys through Betfair go only to active Betfair Australia
+customers who have deposited, bet into at least 100 Betfair markets and intend to bet; access is for 3 months and
+continues only with ongoing wagering.
+
+**Timeform** ("Ratings and sectionals explained"): times adjusted by a going allowance for the meeting, a rating
+equivalent per track and distance, and sectional ratings, all feeding an expected sectional and final time for the
+next race. That is the design of `greyhound/ratings.py` (pars, meeting variant, time and split ratings in lengths).
+
+**Academic work** (from search, not read in full): Johansson and Sonstrod's neural networks at Gulf Greyhound Park
+(win accuracy and payout, no log loss), Schumaker's SVM regression for longshots. Neither measures against the market
+price.
+
+**What this changes for us**: four feature groups from Betfair's tutorial we did not have (rolling windows,
+sire/dam/trainer form, vacant boxes, finishing movement), now in `topaz_theories.py` as T3 and T4 beside our own
+engine (T1), run style and the map (T2), GRV's own fields behind leak checks (T5) and the market's past view (T6).
