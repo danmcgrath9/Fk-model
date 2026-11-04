@@ -103,6 +103,39 @@ def big_overlay(ts, ours, lo):
     return out, line
 
 
+def live_minimum(pm, blk, first_starter, is_metro):
+    """Every rule that decides whether a runner is bet at the open and at what price, for one runner on the final field:
+    pm = its model chance (re-spread over the final field), blk = its first-up block ("" if none), first_starter, and
+    is_metro. Returns skip (the reason it is never bet, or None) and, when it can be bet: cap (the highest open that is
+    still a bet), min_odds (the lowest open at the 1.2 edge, which an open of $4+ needs), min_short (the lowest open at
+    the 1.15 edge, which an open under $4 needs), note and chance_at. base_cap / base_note are the cap and note before
+    the metro fix, for the forecast-BSP blend (--drift), which prices its own minimum. The meeting page's "take at"
+    reads the order sheet these rules write (page_takeat.py, 5 Nov 2026, founder: "why isn't the take at with ALL the
+    rules"), so the page and the orders cannot disagree."""
+    ours = 1 / pm
+    if first_starter:
+        return dict(skip="first starter: never bet")
+    if blk and not blk.startswith("EARLY"):
+        return dict(skip=f"first-up rule: {blk}")
+    if not 1.6 <= ours <= 15:
+        return dict(skip=f"our price ${ours:.2f} is {'under $1.60' if ours < 1.6 else 'over $15'}")
+    # Flemington straight forward runners: no ban; their chance is x0.7 in shade_back.py (1 Nov 2026, founder: ROI, not a ban)
+    cap = min(3 * ours, 15.01 if blk.startswith("EARLY") else 1e9)   # EARLY cap $8 -> $15 (1 Nov 2026, founder; t_secup_cap.py: $8-12 +89%, $12-15 +42%, $15+ -24%)
+    note = "EARLY: $15 or shorter only" if blk else ""
+    out = dict(skip=None, base_cap=cap, base_note=note)
+    if is_metro:
+        k_ = METRO_C ** 0.82 * pm ** (0.82 * METRO_W); ex_ = 1 / (0.78 - 0.82 * (1 - METRO_W))
+        out.update(cap=min(cap, METRO_MAX_OPEN), min_odds=round(SHADE * (1.2 / k_) ** ex_, 2),
+                   min_short=round(SHADE * (SHORT_EDGE / k_) ** ex_, 2),
+                   chance_at=lambda t, pm=pm: (METRO_C * pm ** METRO_W * t ** -(1 - METRO_W)) ** 0.82 * t ** -0.22,
+                   note=(note + "; " if note else "") + "metro fix, no bet at $12+")
+    else:
+        out.update(cap=cap, min_odds=round(SHADE * (1.2 / pm ** 0.82) ** (1 / 0.78), 2),
+                   min_short=round(SHADE * (SHORT_EDGE / pm ** 0.82) ** (1 / 0.78), 2),
+                   chance_at=lambda t, pm=pm: pm ** 0.82 * t ** -0.22, note=note)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("prefix"); ap.add_argument("gtag"); ap.add_argument("out")
@@ -240,11 +273,10 @@ def main():
         fu = json.load(open(f"{B}-first-up-blocks.json"))
         for r in v:
             k = f"{int(r['race'])}|{r['horse']}"; pm = r["p_model"]; ours = 1 / pm; blk = fu.get(k, "")
-            if k in fs or (blk and not blk.startswith("EARLY")) or not 1.6 <= ours <= 15:
+            lm = live_minimum(pm, blk, k in fs, is_metro)
+            if lm["skip"]:
                 continue
-            # Flemington straight forward runners: no ban; their chance is x0.7 in shade_back.py (1 Nov 2026, founder: ROI, not a ban)
-            cap = min(3 * ours, 15.01 if blk.startswith("EARLY") else 1e9)   # EARLY cap $8 -> $15 (1 Nov 2026, founder; t_secup_cap.py: $8-12 +89%, $12-15 +42%, $15+ -24%)
-            note = "EARLY: $15 or shorter only" if blk else ""
+            cap, note = lm["base_cap"], lm["base_note"]
             if FC is not None and not a.no_blend:
                 import numpy as np
                 xr = XR.get((int(r["race"]), nm(r["horse"])))
@@ -258,17 +290,8 @@ def main():
                 first = lambda E: round(SHADE * float(g[np.argmax(val >= E)]), 2) if (val >= E).any() else 1e9
                 min_odds, min_short = first(1.2), first(SHORT_EDGE)
                 ch = lambda t, pm=pm, xr=xr, f_=f_: float(pm ** BLEND_W * FC.qbsp(xr, pm, [t], f_)[0] ** (1 - BLEND_W))
-            elif is_metro:
-                cap = min(cap, METRO_MAX_OPEN)
-                k_ = METRO_C ** 0.82 * pm ** (0.82 * METRO_W); ex_ = 1 / (0.78 - 0.82 * (1 - METRO_W))
-                min_odds = round(SHADE * (1.2 / k_) ** ex_, 2)
-                min_short = round(SHADE * (SHORT_EDGE / k_) ** ex_, 2)
-                ch = lambda t, pm=pm: (METRO_C * pm ** METRO_W * t ** -(1 - METRO_W)) ** 0.82 * t ** -0.22
-                note = (note + "; " if note else "") + "metro fix, no bet at $12+"
-            else:
-                min_odds = round(SHADE * (1.2 / pm ** 0.82) ** (1 / 0.78), 2)
-                min_short = round(SHADE * (SHORT_EDGE / pm ** 0.82) ** (1 / 0.78), 2)
-                ch = lambda t, pm=pm: pm ** 0.82 * t ** -0.22
+            else:   # the live rule (metro fix included): one definition, shared with the meeting page's "take at"
+                cap, note, min_odds, min_short, ch = lm["cap"], lm["note"], lm["min_odds"], lm["min_short"], lm["chance_at"]
             if min_odds < cap and SHORT_OPEN < cap:
                 add(r, ours, min_odds, cap, ch, note, "open4+")
             if min_short < min(cap, SHORT_OPEN):

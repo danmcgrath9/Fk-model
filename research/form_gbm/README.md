@@ -1690,3 +1690,14 @@ Oct - 4 Nov as settled; faves computed the same way (21 bets, 7 won, +9.48u, +45
 | 22 weeks | +$93,655 | +$88,291 | +$29,769 | +$211,715 |
 Live part alone (9 Oct - 4 Nov, under 4 weeks): open +$15,481 (130 bets, +309.61u), lays +$7,412 (209 lays, 8 winners,
 +37.06u), faves +$4,740 (21 bets, 7 won): +$27,633. Real money in that time: +$626 on $760.
+
+## The page's "take at" is the order sheet's minimum (5 Nov 2026, founder: "why isn't the take at with ALL the rules")
+Feroce's page line read "take at $5.96 or better" (our page price + 20%, a leftover from the first market sheet) while the
+order sheet needed $7.00: the live rule blends our chance with the market (p^0.82 x t^-0.22, $6.33 here) and the metro fix
+leans it 20% further to the market ($7.00, both shaded 5%). The rules now live in one function,
+betmatic_orders.live_minimum (skip reasons, caps, the 1.2 edge from $4, the 1.15 edge under $4, the metro fix); the order
+builder calls it (orders byte-identical before and after on Flemington Thu/Sat, Cranbourne, Warrnambool and Kyneton), and
+page_takeat.py writes every runner's line from the order sheet itself: "take at $7.00 to $12.00", "not a bet: our price
+$1.57 is under $1.60" (or first starter, first-up rule), "not a bet at any price (needs $X, the cap is $Y)", or for a horse
+the pre-open sheet already filled at the open "taken at the open, $2.50, 4.92u". Prices are before any scratching deduction.
+pricemtg.sh runs it after the orders.
