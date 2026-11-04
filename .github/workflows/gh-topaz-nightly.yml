@@ -1,0 +1,105 @@
+name: gh topaz nightly
+
+# Founder, 5 Nov 2026: "train it every week overnight", and price the next day's card the night before.
+#   Sunday 9:30pm Melbourne: train the model on every resulted VIC race and save it (Actions cache, readable only by
+#                            this repository's own runs).
+#   Every night 10pm Melbourne: load the saved model and price TOMORROW's VIC card (Topaz has it up by the evening),
+#                            sealed in the log (greyhound/sealed.py), because this repository's logs are public.
+# The crons are in UTC, set for AEDT (UTC+11); from April (AEST, UTC+10) they run an hour later in Melbourne.
+# Nothing is bet: the card is the founder's to read.
+
+on:
+  schedule:
+    - cron: '30 10 * * 0'
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'train (fit and save the model) or price (tomorrow, or the date below, with the saved model)'
+        default: 'price'
+      date:
+        description: 'mode=price: YYYY-MM-DD to price; blank = tomorrow in Melbourne'
+        default: ''
+      tracks:
+        description: 'mode=price: tracks to seal in full, comma separated (blank = every VIC track)'
+        default: ''
+
+concurrency:
+  group: gh-topaz-nightly
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  nightly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      PYTHONUNBUFFERED: '1'
+      TOPAZ_API_KEY: ${{ secrets.TOPAZ_API_KEY }}
+      TOPAZ_TERMS_READ: ${{ vars.TOPAZ_TERMS_READ }}
+      MODE: ${{ github.event.schedule == '30 10 * * 0' && 'train' || github.event.inputs.mode || 'price' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'requests>=2.31' pandas numpy lightgbm scikit-learn scipy
+
+      - name: Restore the pulled months (Actions cache, this repository only)
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/topaz
+          key: topaz-VIC-${{ github.run_id }}
+          restore-keys: topaz-VIC-
+
+      - name: Bring the runs and race records up to yesterday
+        run: |
+          set -o pipefail
+          python -m greyhound.pull --states VIC --from 2013-01 --by-day --workers 8 --per-minute 72 --max-calls 100000 --max-minutes 60 | tail -3
+          python -m greyhound.pull --races --states VIC --from 2013-01 --workers 8 --per-minute 72 --max-calls 100000 --max-minutes 30 | tail -3
+
+      - name: Save the pulled months (Actions cache)
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: greyhound/cache/topaz
+          key: topaz-VIC-${{ github.run_id }}
+
+      - name: Betfair's free ANZ greyhound files (BSP, the training label)
+        if: env.MODE == 'train'
+        run: |
+          mkdir -p bf
+          for f in ANZ_Greyhounds_2020.zip ANZ_Greyhounds_2021.zip ANZ_Greyhounds_2022.zip ANZ_Greyhounds_2023.zip \
+                   ANZ_Greyhounds_2024.zip ANZ_Greyhounds_2025.zip $(for m in 01 02 03 04 05 06 07 08 09 10 11 12; do echo ANZ_Greyhounds_2026_$m.csv; done); do
+            curl -fsSL --retry 3 -o "bf/$f" "https://betfair-datascientists.github.io/data/assets/$f" 2>/dev/null \
+              && echo "$f $(stat -c %s "bf/$f") bytes" || { rm -f "bf/$f"; echo "not published: $f"; }
+          done
+
+      - name: Restore the saved model (Actions cache)
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/model
+          key: topaz-model-${{ github.run_id }}
+          restore-keys: topaz-model-
+
+      - name: Train, or price tomorrow's card
+        run: |
+          set -o pipefail
+          [ -d bf ] && export BETFAIR_DIR="$PWD/bf"
+          export RACES_DIR="$PWD/greyhound/cache/topaz" WALK_GRV_RATING=yes WALK_ROUNDS_A=4000 MODEL_DIR="$PWD/greyhound/cache/model"
+          if [ "$MODE" = "train" ]; then
+            PRICE_MODE=train python research/greyhound/topaz_price_upcoming.py greyhound/cache/topaz "topaz VIC weekly train" | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            DAY="${{ github.event.inputs.date }}"; [ -n "$DAY" ] || DAY=$(TZ=Australia/Melbourne date -d tomorrow +%F)
+            PRICE_DAY="$DAY" PRICE_TRACK="${{ github.event.inputs.tracks }}" \
+              python research/greyhound/topaz_price_upcoming.py greyhound/cache/topaz "topaz VIC prices for $DAY"
+          fi
+
+      - name: Save the trained model (Actions cache)
+        if: env.MODE == 'train'
+        uses: actions/cache/save@v4
+        with:
+          path: greyhound/cache/model
+          key: topaz-model-${{ github.run_id }}

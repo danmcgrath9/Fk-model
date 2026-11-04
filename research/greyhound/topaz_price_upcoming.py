@@ -144,6 +144,8 @@ def fetch_day(client: TopazClient, day: str):
             runs = form
         for u in runs:
             names["run"].update(u.keys())
+            if u.get("boxNumber") in (None, "") or u.get("scratched") is True:
+                continue                            # a reserve (no box) or a scratching does not run
             f = by_run.get(u.get("runId")) or by_dog.get(u.get("dogId")) or {}
             names["form"].update(f.keys())
             row = dict(u)
@@ -176,7 +178,50 @@ def stage(cache: Path, rows, races, day: str) -> Path:
     return tmp
 
 
+MODEL_DIR = Path(os.environ.get("MODEL_DIR", "greyhound/cache/model"))
+
+
+def train(d, label) -> int:
+    """PRICE_MODE=train: fit the BSP-chance model on every resulted race and save it with the inputs it was fitted on,
+    so the nightly price run only builds and predicts (founder, 5 Nov 2026: "train it every week overnight")."""
+    import lightgbm as lgb  # noqa: F401  (the booster's save/load)
+    df, num, rel, note = W.build_full(d)
+    X = T.features(df, num, rel)
+    today = pd.Timestamp.now(tz=SYDNEY).normalize().tz_localize(None)
+    rec = 0.5 ** ((((today - df.date).dt.days) / 365.25).values / 3.0)
+    bst = W.fit_fixed(X, df.p_mkt.values.astype(float), df.race_id, rec, W.ROUNDS_A)
+    MODEL_DIR.mkdir(parents=True, exist_ok=True)
+    bst.save_model(str(MODEL_DIR / "model.txt"))
+    meta = {"cols": list(X.columns), "num": num, "rel": rel, "rounds": int(W.ROUNDS_A), "fit_races": int(df.race_id.nunique()),
+            "last_day": f"{df.date.max():%Y-%m-%d}", "trained": pd.Timestamp.now(tz=SYDNEY).isoformat(timespec="minutes")}
+    (MODEL_DIR / "meta.json").write_text(json.dumps(meta))
+    print(f"# {label}: trained\n\n{note}\nfitted on {meta['fit_races']:,} races to {meta['last_day']}, {meta['rounds']:,} rounds, "
+          f"{len(meta['cols'])} inputs; saved to {MODEL_DIR}")
+    return 0
+
+
+def load_model():
+    """The saved model and its meta, or (None, None)."""
+    mf, jf = MODEL_DIR / "model.txt", MODEL_DIR / "meta.json"
+    if not (mf.exists() and jf.exists()):
+        return None, None
+    import lightgbm as lgb
+    return lgb.Booster(model_file=str(mf)), json.loads(jf.read_text())
+
+
+def align(X: pd.DataFrame, cols: list) -> pd.DataFrame:
+    """Tonight's inputs in the saved model's order; an input tonight's build lacks (a preview word that fell out of
+    the top 60) is blank, one the model never saw is dropped; categories stay categories."""
+    out = X.reindex(columns=cols)
+    for c in V1.CAT:
+        if c in out:
+            out[c] = out[c].astype("category")
+    return out
+
+
 def main(d, label):
+    if os.environ.get("PRICE_MODE", "").strip().lower() == "train":
+        return train(d, label)
     day = os.environ.get("PRICE_DAY") or pd.Timestamp.now(tz=SYDNEY).strftime("%Y-%m-%d")
     client = TopazClient(pause=1.0)
     rows, races, names = fetch_day(client, day)
@@ -200,9 +245,16 @@ def main(d, label):
         return 1
     tr = (~today).values
     X = T.features(df, num, rel)
-    start = pd.Timestamp(day)
-    rec = 0.5 ** ((((start - df.date[tr]).dt.days) / 365.25).values / 3.0)
-    bst = W.fit_fixed(X[tr], df.p_mkt.values[tr].astype(float), df.race_id[tr], rec, W.ROUNDS_A)
+    bst, meta = load_model()
+    if bst is not None:
+        X = align(X, meta["cols"])
+        n_fit, how = meta["fit_races"], f"the saved model (trained {meta['trained']} on races to {meta['last_day']})"
+    else:
+        start = pd.Timestamp(day)
+        rec = 0.5 ** ((((start - df.date[tr]).dt.days) / 365.25).values / 3.0)
+        bst = W.fit_fixed(X[tr], df.p_mkt.values[tr].astype(float), df.race_id[tr], rec, W.ROUNDS_A)
+        n_fit, how = df.race_id[tr].nunique(), "a model fitted in this run (no saved model)"
+    print(f"priced with {how}")
     p = V1.race_softmax(bst.predict(X[today.values], raw_score=True), df.race_id.values[today.values])
     card = df[today].copy()
     card["p_model"] = p
@@ -215,9 +267,9 @@ def main(d, label):
     card["grv_fair"] = grv * book                       # GRV's price with its book taken out, so the two columns compare
     contrib = bst.predict(X[today.values], pred_contrib=True)[:, :-1]          # per input, on the race-softmax scale
     fam = [family(c) for c in X.columns]
-    print(f"fitted on {df.race_id[tr].nunique():,} races, {W.ROUNDS_A} rounds; the model's prices sum to 100% a race; "
+    print(f"fitted on {n_fit:,} races; the model's prices sum to 100% a race; "
           f"GRV's pre-race prices sum to {card.groupby('race_id').grv_pct.sum().median():.0%} a race (median book)")
-    payload = card_payload(card, contrib, fam, book, day, df.race_id[tr].nunique(),
+    payload = card_payload(card, contrib, fam, book, day, n_fit,
                            [t.strip().upper() for t in os.environ.get("PRICE_TRACK", "SANDOWN").split(",") if t.strip()])
     plain = json.dumps(payload, separators=(",", ":")).encode()
     lines, sha = seal(plain)
