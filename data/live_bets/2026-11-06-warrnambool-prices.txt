@@ -1,6 +1,81 @@
 # Warrnambool Fri 6 Nov, Dead 4 (Form King, Wed 12:30pm), final fields; no market yet
+1, No Need For Tears, 0, 0
+1, Wizardess, 0, 0
+1, Habondia, 0, 0
 1, Cee Rose, SCR
-7, Duhlata, SCR
-7, Phoenician, SCR
-7, Sanika, SCR
+1, Symphony Sista, 0, 0
+1, Queen Mileyva, 0, 0
+1, Catch A Princess, 0, 0
+1, Plucky Enuff, 0, 0
+1, Moab, 0, 0
+1, Vulcana, 0, 0
+1, Sophia's Legacy, 0, 0
+1, Vanara Princess, 0, 0
+2, Salsbury Hill, 0, 0
+2, Seethru, 0, 0
+2, Frosty Night, 0, 0
+2, Il Cielo, 0, 0
+2, Racey Casey, 0, 0
+2, Fully Justified, 0, 0
+2, Till Queen, 0, 0
+3, Turquoise Parrot, 0, 0
+3, Blues Jazz, 0, 0
+3, A Little Reward, 0, 0
+3, Dramatic Dream, 0, 0
+3, Big Vee, 0, 0
+3, Native Dance, 0, 0
+3, Flaws And Sins, 0, 0
+3, Bringbackthebiff, 0, 0
+3, Victimised, 0, 0
+4, Miss Lil, 0, 0
+4, Last Piece, 0, 0
+4, Mamzelle Raine, 0, 0
+4, Royal Vega, 0, 0
+4, Pee Plater, 0, 0
+4, Danseur Noble, 0, 0
+4, Madame Petite, 0, 0
+4, Gunnatippatinnie, 0, 0
+5, Francine, 0, 0
+5, Hay Joe, 0, 0
+5, Prince Sonic, 0, 0
+5, Time To Rumble, 0, 0
+5, Sioux Warrior, 0, 0
+5, Just Bolts, 0, 0
+5, Kid Dynamite, 0, 0
+5, Hellfire Jess, 0, 0
+5, What Once Was, 0, 0
+6, Dantooine, 0, 0
+6, Ballynacally, 0, 0
+6, Dobkins, 0, 0
+6, Thinking Sensation, 0, 0
+6, Corro, 0, 0
+6, Brazenga, 0, 0
+6, Azzacool, 0, 0
+6, Danzsin, 0, 0
+6, Zetheros, 0, 0
 7, Unamerican, SCR
+7, Duhlata, SCR
+7, Hula Beat, 0, 0
+7, Dandruff, 0, 0
+7, Jenny The Beaver, 0, 0
+7, First Innings, 0, 0
+7, Dschingis Prestige, 0, 0
+7, Callawadda, 0, 0
+7, Genrichero, 0, 0
+7, No Rumours, 0, 0
+7, Initial Moment, 0, 0
+7, Milady, 0, 0
+7, Sanika, SCR
+7, Phoenician, SCR
+7, Haiiro, 0, 0
+8, Spanish Snitzel, 0, 0
+8, Super Snitch, 0, 0
+8, Charming Deel, 0, 0
+8, Vizie, 0, 0
+8, Kiwiesque, 0, 0
+8, Reel Hot, 0, 0
+8, Parkrun, 0, 0
+8, The Daily Planet, 0, 0
+8, Limosa, 0, 0
+8, Catch The Moon, 0, 0
+8, Carnival Riches, 0, 0

@@ -911,7 +911,7 @@ scratchings shown as SCR (no refund word, founder's call).
 
 ## Friday 6 Nov priced Wed 4 Nov 12:30pm (final fields; no market open on either), Saturday 7 Nov Flemington pending
 Cranbourne Fri on the official Dead 5 (d5f): 73 orders on 30 horses, 88.51u if every order fired. Warrnambool Fri on the
-official Dead 4 (d4f): 50 orders on 19 horses, 75.51u. Rain (Open-Meteo through the fk-experiment runner, the sandbox cannot
+official Dead 4 (d4f): 50 orders on 19 horses, 75.51u. CORRECTED 1:50pm: that first run priced 53 of the 75 runners, because the two-meeting scratchings export (Warrnambool + Flemington Sat) was split at the meeting headings and its prices sections sit at the end of the file, so Warrnambool's went with Flemington's; drop_scr then dropped every runner the short prices file did not list and every price came out too short. Re-split by section and re-priced: 73 orders on 30 horses, 96.25u. Rain (Open-Meteo through the fk-experiment runner, the sandbox cannot
 reach it): Cranbourne 8.4mm Wed, 1.9 Thu, 0.4 Fri; Warrnambool 4.6 / 0.4 / 6.7; under the 15mm line, so the official
 rating stands for both. Flemington Sat 7 Nov: Form King has no rating yet; forecast 7.2mm Wed, dry Thu and Fri, 17.2mm
 ON Saturday (97%, max 13C), so the export is asked for SOFT 6 (founder to confirm); its export and the market-open check
@@ -919,3 +919,6 @@ failed on GitHub's API rate limit (fetch_history.sh pulls 430 release files thro
 morning's runs used the hour's quota) and are re-run once it clears. Sheets are -betmatic-preopen.csv (copied from the
 re-price tag files, since pricemtg.sh now writes under the tag). Pages published with the empty open-bets box, lay book,
 back book and game day. BetMatic check 10:48am: every bot session off, no bot machine connected, TAB $0.65.
+Flemington Sat 7 Nov (Stakes Day) priced Wed 1:50pm on SOFT 6 (our call: 17.2mm forecast on the day; Form King has no
+rating yet), final fields, 7 out: 32 orders on 16 horses, 43.70u if every order fired (metro $12 cap). The export ran on the
+new history cache (f1f631f) without touching the API limit.
