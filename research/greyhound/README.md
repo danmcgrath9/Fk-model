@@ -1485,3 +1485,70 @@ never in the repository. Each base64 line carries a CRC32 so a copied line can b
 card becomes the race page through `research/greyhound/card_page.py`, which is never committed and goes to a private
 artifact. The first run's log and its report artifact still hold those two races' GRV values; deleting them is the
 founder's call.
+
+## Test 21: the gallops value rule on the dogs, and early speed (5 Nov 2026, gh topaz run 41923647913, `topaz_round9.py`)
+
+Round 8's F2 model (D1 + preview + tips; early stopping chose 4,559 rounds), fitted once on the standard split and
+scored once on the races from 3 June 2024 (25,639 with GRV's SP, 22,841 with BSP on every runner).
+
+### Early speed (founder, on Sandown R1: "box 1, he just leads and the race is over, so the early split should matter")
+
+From each race's own in-running record, every race since 2013: **the dog first at the first point wins 52.7%**
+(103,716 runs), 52.3% from box 1 and 53.8% from boxes 7-8. Leading early decides half of all races. Knowing who will
+lead is the hard part: the fastest dog on the pre-race early-speed rating leads only 30.3% of the time (39.0% from
+box 1). Does the model price the early-speed dogs right? Actual wins against each price's expected wins:
+
+| dogs | runners | wins | win % | our model expected | A/E vs our model | A/E vs BSP | A/E vs GRV's SP |
+|---|---|---|---|---|---|---|---|
+| fastest early, clear of the next, box 1 | 1,545 | 399 | 25.8% | 412 | 0.969 | 0.999 | 1.040 |
+| fastest early, clear of the next, boxes 2-3 | 2,906 | 613 | 21.1% | 661 | 0.927 | 0.940 | 0.991 |
+| fastest early, box 1 | 3,065 | 727 | 23.7% | 767 | 0.948 | 0.975 | 1.008 |
+| fastest early, boxes 2-3 | 5,861 | 1,218 | 20.8% | 1,255 | 0.971 | 0.979 | 1.027 |
+| fastest early, boxes 4-6 | 7,753 | 1,504 | 19.4% | 1,528 | 0.984 | 0.979 | 1.024 |
+| fastest early, boxes 7-8 | 6,137 | 1,236 | 20.1% | 1,252 | 0.987 | 0.978 | 1.027 |
+| second fastest early, box 1-3 | 8,845 | 1,772 | 20.0% | 1,715 | 1.033 | 1.039 | 1.073 |
+| second fastest early, box 4-8 | 13,916 | 2,339 | 16.8% | 2,296 | 1.019 | 1.001 | 1.027 |
+| third or slower early, box 1 | 15,132 | 2,487 | 16.4% | 2,433 | 1.022 | 1.020 | 1.032 |
+| third or slower early, boxes 2-8 | 95,720 | 10,984 | 11.5% | 10,958 | 1.002 | 1.002 | 0.972 |
+
+**The model does not under-price the early-speed dogs; it slightly over-prices them** (A/E 0.93-0.99 against our
+model for every "fastest early" group, against BSP's 0.94-1.00), and the second-fastest early dogs drawn inside win a
+little more often than both our model and BSP expect (1.03-1.04). The fastest early dog on a past-splits rating wins
+20-26%, not the 52.7% a leader wins, because a third of the time it does not lead. The gain is in predicting the lead
+better, not in weighting it more: the held-out-last-start inputs (Test 22) are the first try at that.
+
+### The gallops value rule
+
+As research/form_gbm/README.md writes it: a logit blend of our chance with the market's (Benter's stage 2, weights
+fitted on the early-stopping months), a value bet when the market price is at least RATIO x the blended price, our
+price $2-$15 (and any), staked Kelly x75 units on the chance halfway between the blend and the market, capped at 4.
+1.3x is the founder's and the headline, decided before the run.
+
+At **GRV's SP**, no commission (blend weights: ours 0.49, the SP 0.69, against about 0.2 for the model in Test 9):
+
+| ratio | our price | half | bets | winners | A/E | flat ROI | Kelly x75 units staked | Kelly ROI | units won | worst drawdown (units) | longest losing run |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| **1.3x** | **$2-$15** | **1st** | **710** | **173** | **1.522** | **+55.3%** | **1,413 (avg 1.99)** | **+56.4%** | **+797** | **58** | **21** |
+| **1.3x** | **$2-$15** | **2nd** | **708** | **153** | **1.461** | **+47.6%** | **1,203 (avg 1.70)** | **+59.2%** | **+712** | **43** | **23** |
+| 1.3x | any | 1st | 884 | 197 | 1.484 | +35.8% | 1,600 (avg 1.81) | +54.0% | +864 | 59 | 25 |
+| 1.3x | any | 2nd | 903 | 187 | 1.532 | +65.4% | 1,378 (avg 1.53) | +62.5% | +861 | 41 | 25 |
+| 1.2x | $2-$15 | 1st | 1,676 | 405 | 1.375 | +36.7% | 2,333 (avg 1.39) | +46.2% | +1,077 | 66 | 22 |
+| 1.2x | $2-$15 | 2nd | 1,721 | 374 | 1.325 | +35.1% | 2,011 (avg 1.17) | +45.0% | +904 | 67 | 24 |
+| 1.2x | any | 1st | 2,045 | 463 | 1.353 | +25.9% | 2,671 (avg 1.31) | +44.0% | +1,177 | 72 | 28 |
+| 1.2x | any | 2nd | 2,162 | 433 | 1.336 | +36.1% | 2,300 (avg 1.06) | +46.1% | +1,060 | 65 | 23 |
+| 1.1x | $2-$15 | 1st | 2,574 | 611 | 1.277 | +31.6% | 2,719 (avg 1.06) | +41.3% | +1,122 | 67 | 26 |
+| 1.1x | $2-$15 | 2nd | 2,598 | 539 | 1.192 | +21.8% | 2,317 (avg 0.89) | +38.6% | +894 | 72 | 30 |
+| 1.1x | any | 1st | 3,100 | 696 | 1.255 | +22.2% | 3,144 (avg 1.01) | +39.5% | +1,242 | 70 | 29 |
+| 1.1x | any | 2nd | 3,232 | 630 | 1.213 | +28.2% | 2,655 (avg 0.82) | +40.2% | +1,067 | 69 | 32 |
+
+At **BSP**, 8% commission on winnings, the blend fitted on the early-stopping months puts **no weight on our model**
+(ours -0.04, BSP 1.03), so the rule finds almost nothing: 5 bets in the first half at 1.3x, none in the second; at 1.1x
+29 and 22 bets at -17.1% and -14.2% flat.
+
+**The founder's rule is the best staking rule found on the dogs.** At GRV's SP the 1.3x line on $2-$15 dogs makes
++55.3% and +47.6% flat (A/E 1.52 and 1.46) on about 700 bets a half, and +56% to +59% on turnover with Kelly x75,
+with worst drawdowns of 58 and 43 units. Test 12's fixed rule made +36% / +21% on the same kind of split. The wider
+ratios make more units on more bets at a lower rate. At BSP there is nothing to bet, because Betfair's price already
+holds everything our model knows. Both caveats from the gallops hold: these bets are struck at the SP, a 119% book that
+overprices longshots, and not at the TAB open; and the gallops found a back-filled open much softer than a live one
+(+41.9% against -11.6%). This is the rule the TAB opens will be scored on the day they exist.
