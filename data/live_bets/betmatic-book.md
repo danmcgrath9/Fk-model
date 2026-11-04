@@ -952,3 +952,9 @@ book and the card stand as settled above. Top-up Tomanado R9 6th: -0.74u (top-up
 ## Top-ups stopped (founder, Wed 4 Nov evening: "I think we can stop doing top up")
 No more 9:30am top-up checks or top-up lines from Thu 5 Nov. The 9:30 routine now re-prices, refreshes the lay book, back
 book and game day, and reports the open bets still running.
+Flemington Sat emergencies (founder, Wed evening: "why didn't you include emergencies Saturday"): the seven are out of the
+sheet because none has a start yet (no main-field scratching), and pricing them in would lengthen every price in R4, R5
+and R9. Priced as if each got in (s6e, kept for the record): Hankee Alpha R4 ours $5.91, opened $4.20 (under our price, now
+$2.90); Superfabulistic R5 $22.80 (opened $26), Classic Gem R5 $28.88 ($21), Lawborough R9 $12.73 ($15, past the metro $12
+cap), Brave Design R9 $15.19 ($13), Fission R9 $59.28 ($34), My Zephyr R9 $95.73 ($51). None would have been a bet at the
+open. Any that gets a start is priced in at the Saturday 9:30 re-price, when mkprices lets it in for its scratching.
