@@ -649,3 +649,50 @@ The counts-only mapping check settled the three open meanings:
 
 The third row was the one wrong assumption: the first cut of `topaz_to_runs` read the margin as lengths, so a dog
 0.25 s behind would have been 0.25 lengths behind instead of 3.6. It is fixed and the tests are in seconds now.
+
+## Test 8: the full Victorian history, profiled (4 Nov 2026, gh topaz run 41776231001)
+
+The pull (runs 41762509963 and 41776231001; day by day, 8 at a time under 72 a minute, cached in this repository's
+Actions cache, never published) holds **197,101 races and 1,616,034 runners, 52,183 dogs, 15 tracks, 2 Jan 2013 to
+3 Nov 2026**, about 1,200 meetings and 14,000 races a year. A runner's own time is filled on 86-93%, the first split
+on 81-94% and the starting price on 85-95% (rising year by year). Fields averaged 8.6-8.8 runners to 2018 and 7.7-8.1
+since.
+
+GRV's **startPrice is a bookmaker SP** with a median book of 1.187 (19% margin). On 103,799 races priced throughout
+with one winner its winner log loss is 1.5570. Book-adjusted it is close to calibrated to $13 (A/E 1.036 at $1-$2 to
+0.972 at $8-$13) and then overstates the longshots: A/E 0.908 at $13-$21, 0.697 at $21-$51, 0.489 above $51.
+
+Our point-in-time ratings, later half (102,710 races from Nov 2019; a random runner wins 12.8%): the runner ranked
+first by the mean time rating of its last 5 wins 25.4%, best of last 5 25.5%, the Elo 23.8%, the mean of last 5
+finishes 21.4%, the first-split rating 19.4%; the SP favourite wins 27.5%.
+
+## Test 9: the theories against GRV's SP and against BSP (4 Nov 2026, same run, `topaz_theories.py`)
+
+Fit before 3 Oct 2021, rounds and blends chosen to 3 Jun 2024, scored once on 25,639 races from 3 Jun 2024 (halves
+split 13 Aug 2025). BSP from Betfair's free files matched by date and dog name on 482,662 runners; 22,841 of the scored
+races fully matched. On those: **BSP 1.4839, GRV SP 1.5527**.
+
+| theory | features | trained on | log loss | gap to SP | 1st half | 2nd half | gap to BSP |
+|---|---|---|---|---|---|---|---|
+| T1 ratings engine + race card | 35 | SP chances | 1.6795 | +0.0843 | +0.0707 | +0.0973 | +0.1654 |
+| T2 + run style and map | 54 | SP chances | 1.6758 | +0.0805 | +0.0659 | +0.0946 | +0.1618 |
+| T3 + dog/trainer/sire/dam windows | 77 | SP chances | 1.6711 | +0.0759 | +0.0621 | +0.0891 | +0.1569 |
+| T4 + vacant boxes | 82 | SP chances | 1.6700 | +0.0747 | +0.0610 | +0.0879 | +0.1557 |
+| T5 + GRV fields that pass the leak check | 85 | SP chances | 1.6714 | +0.0762 | +0.0621 | +0.0897 | +0.1566 |
+| T6 + market history | 90 | SP chances | 1.6700 | +0.0747 | +0.0605 | +0.0883 | +0.1554 |
+| T7 the same, trained on BSP chances | 90 | BSP chances | 1.6640 | +0.0688 | +0.0544 | +0.0826 | +0.1497 |
+| T7 the same | 90 | winners | 1.6553 | +0.0600 | +0.0402 | +0.0790 | +0.1559 |
+
+Leak checks: GRV's `rating`, `totalFormCount` and `careerPrizeMoney` were NOT shown to be pre-race and were left out;
+`last5` was (its first digit is the previous run's place 61% of the time, this run's 15%) and was used.
+
+Benter stage 2: the best row blended with the SP (weights 0.224 / 0.904) beats the SP by 0.022 (halves 0.027 /
+0.017); blended with the **BSP** (0.036 / 0.967) it adds **nothing** (-0.0000). Top inputs: Elo, trainer strike rate,
+best time rating, track, mean time rating, the dog's past SPs.
+
+**What it means.** Every theory moved the right way and in both halves, 0.016 in all from T1 to T7, but the start is
+far off: +0.150 behind BSP at best, about where v0 sat on the free files (+0.160) with no times or splits at all. That
+is the suspicious part, and the next round looks at why before trusting it: the fit uses only 2013-2021 (2021-2024
+goes to choosing rounds), the learner is set cautiously (min 300 rows a leaf, rounds in steps of 100), and the
+ratings are fed as values where a rank within the field may carry more. GRV's SP is beatable (the blend gains 0.022
+on it, and it is itself 0.069 behind BSP); BSP is not, yet.
