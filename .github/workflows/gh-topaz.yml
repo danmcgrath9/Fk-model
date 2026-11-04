@@ -22,7 +22,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'probe, run (pull into this run only, then the script) or pull (to the private data repo)'
+        description: 'probe, run (pull into this run only, then the script), pull (to the private data repo), preview (snapshot today''s pre-race comments) or preview-compare (against the bulk feed; set from=YYYY-MM-DD)'
         default: 'probe'
       script:
         description: 'mode=run: research scripts, space separated, each run as python SCRIPT greyhound/cache/topaz LABEL'
@@ -56,7 +56,7 @@ on:
         default: '300'
 
 concurrency:
-  group: gh-topaz
+  group: gh-topaz-${{ github.event.inputs.mode }}
   cancel-in-progress: false
 
 permissions:
@@ -90,6 +90,29 @@ jobs:
           path: greyhound/cache/topaz
           key: topaz-${{ github.event.inputs.states }}-${{ github.run_id }}
           restore-keys: topaz-${{ github.event.inputs.states }}-
+
+      - name: Restore pre-race snapshots (Actions cache, this repository only)
+        if: startsWith(github.event.inputs.mode, 'preview')
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/preview
+          key: topaz-preview-${{ github.run_id }}
+          restore-keys: topaz-preview-
+
+      - name: Snapshot today's remaining VIC races before they run
+        if: github.event.inputs.mode == 'preview'
+        run: python -m greyhound.preview snapshot | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Compare a snapshot with the bulk feed the day after
+        if: github.event.inputs.mode == 'preview-compare'
+        run: python -m greyhound.preview compare "${{ github.event.inputs.from }}" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Save pre-race snapshots (Actions cache)
+        if: always() && startsWith(github.event.inputs.mode, 'preview')
+        uses: actions/cache/save@v4
+        with:
+          path: greyhound/cache/preview
+          key: topaz-preview-${{ github.run_id }}
 
       - name: Pull into this run only (day by day)
         id: pullrun
