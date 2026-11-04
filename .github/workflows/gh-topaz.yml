@@ -62,7 +62,9 @@ on:
         default: '300'
 
 concurrency:
-  group: gh-topaz-${{ github.event.inputs.mode }}
+  # one pull, preview or isolynx job at a time (they write a cache or the data release); run-mode jobs may overlap,
+  # because with the history cached their pull is the current month's few days and the client retries a 429
+  group: gh-topaz-${{ github.event.inputs.mode }}${{ github.event.inputs.mode == 'run' && format('-{0}', github.run_id) || '' }}
   cancel-in-progress: false
 
 permissions:
