@@ -130,3 +130,41 @@ def test_probe_prints_columns_not_contents(capsys):
     P.probe(c, date(2026, 10, 18))
     out = capsys.readouterr().out
     assert "boxNumber" in out and "filled on 1/2" in out and "SECRET DOG" not in out
+
+
+def test_no_access_is_its_own_error_and_not_retried():
+    from greyhound.topaz import TopazNoAccess
+    c, s = client(Resp(400, {"error": True, "message": "You do not have access to data before 1-Jan-2013 for VIC."}))
+    with pytest.raises(TopazNoAccess):
+        c.bulk_runs_day("VIC", 2013, 1, 1)
+    assert len(s.asked) == 1
+
+
+def test_by_day_builds_the_month_from_days_and_skips_days_outside_access(tmp_path):
+    no = Resp(400, {"error": True, "message": "You do not have access to data before 1-Jan-2013 for VIC."})
+    days = [no] + [Resp(200, [{"r": d}]) for d in range(2, 32)]             # Jan 2013: day 1 refused, 30 answer
+    c, s = client(*days)
+    rep = P.pull(c, ["VIC"], [(2013, 1)], tmp_path, set(), date(2026, 11, 4), max_calls=100, by_day=True)
+    assert rep[0][2] == 30 and rep[0][3] == "pulled, 1 days outside the key's access"
+    assert s.asked[0][0].endswith("/bulk/runs/VIC/2013/1/1") and s.asked[-1][0].endswith("/bulk/runs/VIC/2013/1/31")
+    with gzip.open(P.file_for(tmp_path, "VIC", 2013, 1), "rt") as f:
+        assert len(json.load(f)) == 30
+
+
+def test_by_day_stops_at_today_in_the_current_month(tmp_path):
+    c, s = client(*[Resp(200, []) for _ in range(4)])
+    rep = P.pull(c, ["VIC"], [(2026, 11)], tmp_path, set(), date(2026, 11, 4), max_calls=100, by_day=True)
+    assert len(s.asked) == 4 and rep[0][3] == "pulled, empty"
+
+
+def test_a_failed_or_unfinished_month_is_not_written_and_the_rest_carry_on(tmp_path):
+    bad = [Resp(500)] * 5                                                   # one day fails after every retry
+    c, _ = client(Resp(200, [{"r": 1}]), *bad, *[Resp(200, [{"r": 2}]) for _ in range(28)])
+    rep = P.pull(c, ["VIC"], [(2014, 1), (2014, 2)], tmp_path, set(), date(2026, 11, 4), max_calls=1000,
+                 by_day=True)
+    assert rep[0][3].startswith("failed") and rep[0][2] is None
+    assert not P.file_for(tmp_path, "VIC", 2014, 1).exists()
+    assert rep[1][3] == "pulled" and rep[1][2] == 28                        # February still pulled
+    c2, _ = client(*[Resp(200, [{"r": 1}]) for _ in range(5)])
+    rep2 = P.pull(c2, ["VIC"], [(2015, 3)], tmp_path, set(), date(2026, 11, 4), max_calls=5, by_day=True)
+    assert rep2[0][3] == "budget" and not P.file_for(tmp_path, "VIC", 2015, 3).exists()

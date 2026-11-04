@@ -14,14 +14,16 @@ data repository (GRV's data is personal use), never in git and never on this pub
 from __future__ import annotations
 
 import argparse
+import calendar
 import gzip
 import json
 import os
 import sys
+import time
 from datetime import date, timedelta
 from pathlib import Path
 
-from greyhound.topaz import AUTHORITIES, TopazClient, TopazError
+from greyhound.topaz import AUTHORITIES, TopazClient, TopazError, TopazNoAccess
 
 DEFAULT_OUT = Path(__file__).resolve().parent / "cache" / "topaz"
 VIC_FIRST = ("VIC",)
@@ -107,8 +109,31 @@ def mapping_check(rows: list[dict]) -> None:
     print(f"  marked as trials by the mapping: {int(runs.drop_duplicates('race_id').is_trial.sum())} races")
 
 
-def pull(client: TopazClient, states, span, out: Path, refresh: set[str], today: date, max_calls: int) -> list[tuple]:
-    """Returns one (state, 'YYYY-MM', rows or None, status) per month considered."""
+def month_by_days(client: TopazClient, state: str, y: int, m: int, today: date, max_calls: int,
+                  deadline: float) -> tuple[list[dict] | None, str]:
+    """One month as one request per day (a whole month of VIC is too big: on 4 Nov 2026 /2013/6 timed out five times
+    at 60 s, while one day answers in about 5 s). Returns (rows, status); rows is None when the month is unfinished
+    (budget or time ran out, or a day failed), so nothing is written and the next run tries it again."""
+    last = today.day if (y, m) == (today.year, today.month) else calendar.monthrange(y, m)[1]
+    rows, outside = [], 0
+    for d in range(1, last + 1):
+        if client.calls >= max_calls or time.monotonic() > deadline:
+            return None, "budget"
+        try:
+            rows.extend(client.bulk_runs_day(state, y, m, d))
+        except TopazNoAccess:
+            outside += 1
+        except TopazError as e:
+            return None, f"failed ({e})"
+    status = "pulled" if rows else "pulled, empty"
+    return rows, status + (f", {outside} days outside the key's access" if outside else "")
+
+
+def pull(client: TopazClient, states, span, out: Path, refresh: set[str], today: date, max_calls: int,
+         by_day: bool = False, max_minutes: float = 1e9) -> list[tuple]:
+    """Returns one (state, 'YYYY-MM', rows or None, status) per month considered. A month that fails or runs out of
+    budget is reported and left unwritten; the rest carry on."""
+    deadline = time.monotonic() + max_minutes * 60
     report = []
     for state in states:
         for y, m in span:
@@ -117,12 +142,22 @@ def pull(client: TopazClient, states, span, out: Path, refresh: set[str], today:
             if path.exists() and ym not in refresh and not still_moving(y, m, today):
                 report.append((state, ym, None, "held"))
                 continue
-            if client.calls >= max_calls:
+            if client.calls >= max_calls or time.monotonic() > deadline:
                 report.append((state, ym, None, "budget"))
                 continue
-            rows = client.bulk_runs_month(state, y, m)
-            write_atomic(path, rows)
-            report.append((state, ym, len(rows), "pulled" if rows else "pulled, empty"))
+            if by_day:
+                rows, status = month_by_days(client, state, y, m, today, max_calls, deadline)
+            else:
+                try:
+                    rows = client.bulk_runs_month(state, y, m)
+                    status = "pulled" if rows else "pulled, empty"
+                except TopazNoAccess as e:
+                    rows, status = None, f"outside the key's access ({e})"
+                except TopazError as e:
+                    rows, status = None, f"failed ({e})"
+            if rows is not None:
+                write_atomic(path, rows)
+            report.append((state, ym, None if rows is None else len(rows), status))
     return report
 
 
@@ -138,6 +173,8 @@ def main(argv=None) -> int:
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
     ap.add_argument("--max-calls", type=int, default=400, help="stop after this many API calls (resume next run)")
     ap.add_argument("--pause", type=float, default=2.0, help="seconds between calls")
+    ap.add_argument("--by-day", action="store_true", help="one request per day (a whole month can time out)")
+    ap.add_argument("--max-minutes", type=float, default=1e9, help="stop starting new requests after this long")
     a = ap.parse_args(argv)
 
     if not terms_read():
@@ -154,7 +191,8 @@ def main(argv=None) -> int:
         if a.probe:
             return probe(client, date.fromisoformat(a.probe_day))
         refresh = {x.strip() for x in a.refresh.split(",") if x.strip()}
-        report = pull(client, states, months(a.start, a.end), a.out, refresh, today, a.max_calls)
+        report = pull(client, states, months(a.start, a.end), a.out, refresh, today, a.max_calls,
+                      by_day=a.by_day, max_minutes=a.max_minutes)
     except TopazError as e:
         print(f"Topaz refused or failed: {e}")
         return 1
@@ -165,7 +203,9 @@ def main(argv=None) -> int:
             print(f"| {state} | {ym} | {'' if n is None else n} | {status} |")
     held = sum(1 for r in report if r[3] == "held")
     left = sum(1 for r in report if r[3] == "budget")
-    print(f"\n{client.calls} calls; {held} months already held; {left} left for the next run (call budget)")
+    failed = sum(1 for r in report if r[3].startswith("failed"))
+    print(f"\n{client.calls} calls; {held} months already held; {failed} failed; {left} left for the next run "
+          "(call budget)")
     return 0
 
 

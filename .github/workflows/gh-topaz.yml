@@ -5,9 +5,12 @@ name: gh topaz
 # TOPAZ_TERMS_READ=yes, set by the founder after reading GRV's terms (Jason Adams' emails of 30 Oct 2026 until the
 # formal terms exist).
 # mode=probe: health + one Victorian day's column list, nothing stored. Run this first with a new key.
-# mode=run: pull the months into this run's own disk, run a research script over them, and keep only the script's
-# printed results. The Topaz files are never uploaded anywhere and vanish with the runner, so this needs no private
-# storage (founder, 4 Nov 2026: "We don't need to do any of that, just pull it"). Each run pulls again.
+# mode=run: pull the months day by day into this run's disk, run a research script over them, and keep only the
+# script's printed results (founder, 4 Nov 2026: "We don't need to do any of that, just pull it"). The Topaz files are
+# never uploaded as a release or artifact: between runs they sit in this repository's Actions cache, which only this
+# repository's workflows can restore (not a public download). A whole month of VIC times out, and one day takes about
+# 5 s, so the first full history takes several runs: each pulls for up to max_minutes, saves the cache, and runs the
+# script only once every month is in.
 # mode=pull: bulk runs, one file per state and month, kept on the "topaz-history" release of the PRIVATE data
 # repository (variable GREYHOUND_DATA_REPO, default danmcgrath9/fk-greyhound-data), never on this public one: GRV's
 # data is personal use. Written with the GREYHOUND_DATA_TOKEN secret (a fine-grained token with Contents read and
@@ -42,6 +45,9 @@ on:
       max_calls:
         description: 'API calls this run (the rest resume next run)'
         default: '400'
+      max_minutes:
+        description: 'mode=run: minutes of pulling before the cache is saved (the rest resume next run)'
+        default: '300'
 
 concurrency:
   group: gh-topaz
@@ -53,7 +59,7 @@ permissions:
 jobs:
   topaz:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 350
     env:
       PYTHONUNBUFFERED: '1'
       GH_TOKEN: ${{ secrets.GREYHOUND_DATA_TOKEN }}
@@ -71,21 +77,41 @@ jobs:
         if: github.event.inputs.mode == 'probe'
         run: python -m greyhound.pull --probe | tee -a "$GITHUB_STEP_SUMMARY"
 
-      - name: Pull into this run only
+      - name: Restore the pulled months (Actions cache, this repository only)
+        if: github.event.inputs.mode == 'run'
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/topaz
+          key: topaz-${{ github.event.inputs.states }}-${{ github.run_id }}
+          restore-keys: topaz-${{ github.event.inputs.states }}-
+
+      - name: Pull into this run only (day by day)
+        id: pullrun
         if: github.event.inputs.mode == 'run'
         run: |
           TO_ARG=""; [ -n "${{ github.event.inputs.to }}" ] && TO_ARG="--to ${{ github.event.inputs.to }}"
+          set -o pipefail
           python -m greyhound.pull --states "${{ github.event.inputs.states }}" --from "${{ github.event.inputs.from }}" $TO_ARG \
-            --max-calls "${{ github.event.inputs.max_calls }}" | tee pull-report.md
-          [ "${PIPESTATUS[0]}" = "0" ] || exit 1
+            --by-day --pause 1 --max-calls 100000 --max-minutes "${{ github.event.inputs.max_minutes }}" | tee pull-report.md
           tail -1 pull-report.md >> "$GITHUB_STEP_SUMMARY"
           LEFT=$(tail -1 pull-report.md | sed -nE 's/.*; ([0-9]+) left for the next run.*/\1/p')
-          if [ "${LEFT:-0}" != "0" ]; then
-            echo "call budget ran out with $LEFT months unpulled: raise max_calls" | tee -a "$GITHUB_STEP_SUMMARY"; exit 1
-          fi
+          FAILED=$(tail -1 pull-report.md | sed -nE 's/.*; ([0-9]+) failed;.*/\1/p')
+          echo "complete=$([ "${LEFT:-0}" = "0" ] && [ "${FAILED:-0}" = "0" ] && echo yes || echo no)" >> "$GITHUB_OUTPUT"
+          grep -E "failed|outside" pull-report.md | head -20 >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Save the pulled months (Actions cache)
+        if: always() && github.event.inputs.mode == 'run'
+        uses: actions/cache/save@v4
+        with:
+          path: greyhound/cache/topaz
+          key: topaz-${{ github.event.inputs.states }}-${{ github.run_id }}
+
+      - name: Not every month is in yet
+        if: github.event.inputs.mode == 'run' && steps.pullrun.outputs.complete != 'yes'
+        run: echo "Months are still missing (see the pull report above); run mode=run again to continue." | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Run the script (results only; the data is not kept)
-        if: github.event.inputs.mode == 'run'
+        if: github.event.inputs.mode == 'run' && steps.pullrun.outputs.complete == 'yes'
         run: |
           pip install lightgbm scikit-learn
           set -o pipefail
