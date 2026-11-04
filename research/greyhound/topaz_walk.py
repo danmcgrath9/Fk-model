@@ -63,8 +63,8 @@ def fit_fixed(X, y, race, weight, rounds):
     return lgb.train(params, lgb.Dataset(X, y, categorical_feature=V1.CAT, free_raw_data=False), num_boost_round=rounds)
 
 
-def build(d):
-    df = V1.build(d)
+def build(d, keep_unresulted=False):
+    df = V1.build(d, keep_unresulted=keep_unresulted)
     for src, dst in (("rating", "topaz_rating"), ("totalFormCount", "total_form"), ("careerPrizeMoney", "career_prize"),
                      ("prizeMoney", "prize"), ("last5", "last5")):
         if dst not in df and src in df:
@@ -88,9 +88,9 @@ def build(d):
     return df, num, rel, bsp_note
 
 
-def build_full(d):
+def build_full(d, keep_unresulted=False):
     """build() plus this race's preview, and the Isolynx ratings and GRV's rating when switched on (see the docstring)."""
-    df, num, rel, bsp_note = build(d)
+    df, num, rel, bsp_note = build(d, keep_unresulted=keep_unresulted)
     if "is_best_bet" not in df and "isBestBet" in df:
         df["is_best_bet"] = df.isBestBet
     df, fpv, _ = PT.preview_features(df)
