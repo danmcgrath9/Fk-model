@@ -144,6 +144,11 @@ def main(d, label):
     m = re.search(r"since=(\d{4}-\d{2}-\d{2})", label)
     if m:
         df = df[df.date >= m.group(1)].reset_index(drop=True)
+    run_scored(df, label)
+
+
+def run_scored(df, label):
+    """Fit, score and print, on races already built (topaz_v2 calls this with extra features in NUM)."""
     q50, q75 = df.date.quantile(0.5), df.date.quantile(0.75)
     tr, va, te = (df[df.date < q50], df[(df.date >= q50) & (df.date < q75)].copy(), df[df.date >= q75].copy())
     mid = te.date.quantile(0.5)
