@@ -5,6 +5,9 @@ name: gh topaz
 # TOPAZ_TERMS_READ=yes, set by the founder after reading GRV's terms (Jason Adams' emails of 30 Oct 2026 until the
 # formal terms exist).
 # mode=probe: health + one Victorian day's column list, nothing stored. Run this first with a new key.
+# mode=run: pull the months into this run's own disk, run a research script over them, and keep only the script's
+# printed results. The Topaz files are never uploaded anywhere and vanish with the runner, so this needs no private
+# storage (founder, 4 Nov 2026: "We don't need to do any of that, just pull it"). Each run pulls again.
 # mode=pull: bulk runs, one file per state and month, kept on the "topaz-history" release of the PRIVATE data
 # repository (variable GREYHOUND_DATA_REPO, default danmcgrath9/fk-greyhound-data), never on this public one: GRV's
 # data is personal use. Written with the GREYHOUND_DATA_TOKEN secret (a fine-grained token with Contents read and
@@ -16,8 +19,14 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'probe or pull'
+        description: 'probe, run (pull into this run only, then the script) or pull (to the private data repo)'
         default: 'probe'
+      script:
+        description: 'mode=run: research script, run as python SCRIPT greyhound/cache/topaz LABEL'
+        default: 'research/greyhound/topaz_profile.py'
+      label:
+        description: 'mode=run: label for the report'
+        default: 'topaz VIC'
       states:
         description: 'comma separated: VIC,NSW,QLD,SA,WA,TAS,NT,NZ'
         default: 'VIC'
@@ -59,8 +68,35 @@ jobs:
       - run: pip install 'requests>=2.31' pandas numpy
 
       - name: Probe
-        if: github.event.inputs.mode != 'pull'
+        if: github.event.inputs.mode == 'probe'
         run: python -m greyhound.pull --probe | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Pull into this run only
+        if: github.event.inputs.mode == 'run'
+        run: |
+          TO_ARG=""; [ -n "${{ github.event.inputs.to }}" ] && TO_ARG="--to ${{ github.event.inputs.to }}"
+          python -m greyhound.pull --states "${{ github.event.inputs.states }}" --from "${{ github.event.inputs.from }}" $TO_ARG \
+            --max-calls "${{ github.event.inputs.max_calls }}" | tee pull-report.md
+          [ "${PIPESTATUS[0]}" = "0" ] || exit 1
+          tail -1 pull-report.md >> "$GITHUB_STEP_SUMMARY"
+          LEFT=$(tail -1 pull-report.md | sed -nE 's/.*; ([0-9]+) left for the next run.*/\1/p')
+          if [ "${LEFT:-0}" != "0" ]; then
+            echo "call budget ran out with $LEFT months unpulled: raise max_calls" | tee -a "$GITHUB_STEP_SUMMARY"; exit 1
+          fi
+
+      - name: Run the script (results only; the data is not kept)
+        if: github.event.inputs.mode == 'run'
+        run: |
+          pip install lightgbm scikit-learn
+          set -o pipefail
+          python "${{ github.event.inputs.script }}" greyhound/cache/topaz "${{ github.event.inputs.label }}" | tee report.md | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always() && github.event.inputs.mode == 'run'
+        with:
+          name: topaz-report-${{ github.run_id }}
+          path: report.md
+          if-no-files-found: ignore
 
       - name: Refuse to store Topaz data anywhere but a private repository
         if: github.event.inputs.mode == 'pull'
