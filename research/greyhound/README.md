@@ -1062,3 +1062,43 @@ Staking D1 as Test 12 (rules chosen on the early-stopping months, scored once): 
 $8-$13 with an edge of 50% or more (748 bets there, +31.6%) scored **+34.9% and +23.7%** (2,056 and 2,215 bets, A/E
 1.360 and 1.247, longest losing runs 34 and 58), against +24.7% / +14.0% for the Test 12 model. **At BSP** the chosen
 rule ($5-$8, 50%) lost -11.2% / -17.9%. Not run with Isolynx yet (the pull was in progress); D2 waits for it.
+
+## Test 17: the finishing order as the label (4 Nov 2026, gh topaz run 41843056879, `topaz_round7.py`)
+
+The model learns from one dog a race: the market's chance of each dog (BSP chances, every row since Test 10) or the
+winner. A race's finishing order holds more, in principle: second beat the six behind it. The exploded-logit
+(Plackett-Luce) likelihood reads an n-dog race as successive choices, each a softmax over the dogs still standing;
+truncated at K stages with stage weights, and a dog with no finish standing in every denominator and never chosen.
+Gradient and hessian are checked against finite differences in `tests/test_pl_objective.py`. Round 6's D1 inputs
+(B2 + preview + ratings upgrades), fitted on 73,290 races (fields 4 to 10, mean 7.1; a finish recorded on 98.2% of
+runners), each row early stopped on the win log loss of the six months before the scored quarter, same 22,841 races:
+
+| row | rounds | early-stopping log loss | scored log loss | gap to BSP | 1st half | 2nd half |
+|---|---|---|---|---|---|---|
+| E0 D1 on BSP chances | 2961 | 1.6044 | 1.5926 | **+0.1087** | +0.1007 | +0.1159 |
+| E1 Plackett-Luce depth 1 (the winner) | 417 | 1.6200 | 1.6096 | +0.1257 | +0.1175 | +0.1330 |
+| E2 depth 3, equal weights | 648 | 1.6345 | 1.6269 | +0.1430 | +0.1329 | +0.1521 |
+| E3 depth 3, weights 1, 0.5, 0.25 | 461 | 1.6195 | 1.6135 | +0.1296 | +0.1200 | +0.1382 |
+| E4 the whole order | 2979 | 1.6560 | 1.6448 | +0.1609 | +0.1505 | +0.1702 |
+
+| blend with E0 (weights fitted on the early-stopping months) | weights | early-stopping log loss | scored log loss | gap to BSP | 1st half | 2nd half |
+|---|---|---|---|---|---|---|
+| E0 + E1 | 0.63, 0.43 | 1.6037 | 1.5931 | +0.1092 | +0.1010 | +0.1165 |
+| E0 + E2 | 0.66, 0.51 | 1.6029 | 1.5929 | +0.1090 | +0.1001 | +0.1170 |
+| E0 + E3 | 0.57, 0.56 | 1.6024 | 1.5937 | +0.1099 | +0.1012 | +0.1176 |
+| E0 + E4 | 0.81, 0.33 | 1.6029 | 1.5915 | +0.1076 | +0.0987 | +0.1156 |
+
+**The finishing order does not help, and the deeper it is read the worse it gets.** Second to fourth as labels
+(E2) are 0.034 worse than the market's chances; the whole order (E4) 0.052 worse; even the winner alone (E1) is
+0.017 behind BSP chances, which is the whole gain of the soft label measured on its own. Blending a finishing-order
+model into E0 moves the gap by a thousandth either way (E0 + E4 at +0.1076 is within noise, and its early-stopping
+score did not pick it: the months chose E0 + E3, which scores 0.001 WORSE than E0 alone). The reading is the same
+as Test 10's: the learner is not where the gap is. Lower placings in a greyhound race are mostly interference and
+luck from the draw, and a label that says "fifth beat sixth" teaches the model that noise. BSP chances stay the
+label; the ensemble's winners twin stays as it is. Row C of MODELS_RESEARCH.md ("use the whole finishing order")
+is answered: margins are already in the Elo, and the order beyond the winner is not information at this level.
+
+Staking the chosen blend (E0 + E3) as Test 12 (rules chosen on the early-stopping months, scored once): **at GRV's
+SP**, every qualifier at $8-$13 with an edge of 50% or more (820 bets there, +46.1%) scored **+40.0% and +21.2%**
+(2,234 and 2,355 bets, A/E 1.406 and 1.227, longest losing runs 43 and 56); **at BSP** the chosen rule ($5-$8, 50%)
+lost -11.3% / -18.5%. Same picture as Tests 12 to 16: the SP pays, BSP does not.
