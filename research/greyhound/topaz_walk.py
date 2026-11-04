@@ -8,7 +8,13 @@ market history, class, recent form; recent years weighted more; trained on BSP c
 winners. For every month from six months before the scored quarter to now, both are refitted on EVERY race before
 that month and price that month's races, so no prediction comes from a model that has seen its race or anything
 after it. The month's log loss is reported against the SP and BSP (Tests 11-13 priced the same races with a model
-frozen at Dec 2023 and lost in the latest months; this says whether a fresh model holds).
+frozen at Dec 2023 and lost in the latest months; Test 14 says a fresh model holds).
+
+Since Test 14 the model also carries the ratings upgrades (Test 16) and this race's GRV preview (Test 15), and:
+  ISOLYNX_DIR         when set, the Isolynx tracking ratings of each dog's earlier tracked runs (topaz_round6.py)
+  WALK_GRV_RATING=yes GRV's own rating for this race (ONLY once the preview compare shows it unchanged after the race)
+  WALK_REFIT_EVERY=k  refit every k months instead of every month (the 181-input model does not fit 36 refits in the
+                      job's 350 minutes; between refits the last fitted pair prices the month)
 
 THE BETS are chosen the same way. For each month from the scored quarter on, the rule (signal: the model, the
 ensemble, or Benter's blend of the model with the market; one bet a race or every qualifier; price band; edge) is the
@@ -25,6 +31,7 @@ import pandas as pd
 import lightgbm as lgb
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import topaz_preview_test as PT   # noqa: E402
 import topaz_round2 as R2    # noqa: E402
 import topaz_round3 as R3    # noqa: E402
 import topaz_round4 as R4    # noqa: E402
@@ -76,32 +83,69 @@ def build(d):
     return df, num, rel, bsp_note
 
 
-def walk(df, num, rel, first_pred, t0):
-    """Out-of-sample p_a (BSP-chance model) and p_b (winners model) for every race from first_pred on."""
+def build_full(d):
+    """build() plus this race's preview, and the Isolynx ratings and GRV's rating when switched on (see the docstring)."""
+    df, num, rel, bsp_note = build(d)
+    if "is_best_bet" not in df and "isBestBet" in df:
+        df["is_best_bet"] = df.isBestBet
+    df, fpv, _ = PT.preview_features(df)
+    notes = [bsp_note, f"preview: {len(fpv)} inputs"]
+    iso_dir = os.environ.get("ISOLYNX_DIR", "")
+    fiso = []
+    if iso_dir and os.path.isdir(iso_dir):
+        import topaz_round6 as R6      # here, not at the top: topaz_round6 imports this module
+        df, fiso, iso_note = R6.isolynx_features(df, iso_dir)
+        notes.append(iso_note)
+    fgrv = []
+    if os.environ.get("WALK_GRV_RATING", "").strip().lower() == "yes":
+        if "topaz_rating" in df and df.topaz_rating.notna().mean() > 0.5:
+            df["grv_rating"] = df.topaz_rating.astype(float)
+            fgrv = ["grv_rating"]
+            notes.append("GRV's rating IN (valid only if the preview compare cleared it)")
+        else:
+            notes.append("GRV's rating asked for but not filled; left out")
+    df = df.copy()
+    num = list(dict.fromkeys(num + fpv + fiso + fgrv))
+    rel = rel + [f for f in fiso if f.endswith("_m3")] + fgrv
+    return df, num, rel, "\n".join(notes)
+
+
+def walk(df, num, rel, first_pred, t0, every=1, fit=None):
+    """Out-of-sample p_a (BSP-chance model) and p_b (winners model) for every race from first_pred on.
+
+    `every`: refit every that many months; in between, the pair fitted at the last refit prices the month (still on
+    nothing at or after the month, because the last refit saw only races before ITS month). `fit` is fit_fixed, or a
+    test's stand-in with the same signature."""
+    fit = fit or fit_fixed
     df["p_a"], df["p_b"] = np.nan, np.nan
     months = pd.period_range(first_pred, df.date.max().to_period("M"), freq="M")
     X_all = T.features(df, num, rel)
-    log = []
+    log, ba, bb, fitted = [], None, None, None
     for M in months:
-        if (time.monotonic() - t0) / 60 > TIME_GUARD_MIN:
-            log.append((str(M), "skipped: time guard"))
-            break
         start, end = M.start_time, (M + 1).start_time
-        tr = (df.date < start).values
         pr = ((df.date >= start) & (df.date < end)).values
         if pr.sum() == 0:
             continue
-        race_tr = df.race_id[tr]
-        if race_tr.nunique() < MIN_TRAIN_RACES:
-            log.append((str(M), f"skipped: only {race_tr.nunique():,} races before it"))
-            continue
-        rec = 0.5 ** ((((start - df.date[tr]).dt.days) / 365.25).values / 3.0)
-        ba = fit_fixed(X_all[tr], df.p_mkt.values[tr].astype(float), race_tr, rec, ROUNDS_A)
-        bb = fit_fixed(X_all[tr], df.won.values[tr].astype(float), race_tr, rec, ROUNDS_B)
+        due = ba is None or (M - fitted).n >= every
+        if due and (time.monotonic() - t0) / 60 > TIME_GUARD_MIN:
+            log.append((str(M), "skipped: time guard"))
+            break
+        if due:
+            tr = (df.date < start).values
+            race_tr = df.race_id[tr]
+            if race_tr.nunique() < MIN_TRAIN_RACES:
+                log.append((str(M), f"skipped: only {race_tr.nunique():,} races before it"))
+                continue
+            rec = 0.5 ** ((((start - df.date[tr]).dt.days) / 365.25).values / 3.0)
+            ba = fit(X_all[tr], df.p_mkt.values[tr].astype(float), race_tr, rec, ROUNDS_A)
+            bb = fit(X_all[tr], df.won.values[tr].astype(float), race_tr, rec, ROUNDS_B)
+            fitted = M
+            log.append((str(M), f"{df.race_id[pr].nunique():,} races, fit on {race_tr.nunique():,}, "
+                                f"{(time.monotonic() - t0) / 60:.0f} min in"))
+        else:
+            log.append((str(M), f"{df.race_id[pr].nunique():,} races, priced by the {fitted} fit"))
         df.loc[pr, "p_a"] = V1.race_softmax(ba.predict(X_all[pr], raw_score=True), df.race_id.values[pr])
         df.loc[pr, "p_b"] = V1.race_softmax(bb.predict(X_all[pr], raw_score=True), df.race_id.values[pr])
-        log.append((str(M), f"{df.race_id[pr].nunique():,} races, fit on {race_tr.nunique():,}, "
-                            f"{(time.monotonic() - t0) / 60:.0f} min in"))
     return df, log
 
 
@@ -213,14 +257,15 @@ def summarise(name, b, price_col):
 
 def main(d, label):
     t0 = time.monotonic()
-    df, num, rel, bsp_note = build(d)
+    df, num, rel, note = build_full(d)
+    every = max(1, int(os.environ.get("WALK_REFIT_EVERY", "1") or 1))
     q75 = df.date.quantile(0.75)
     first_bet = q75.to_period("M")
     first_pred = first_bet - 6
-    print(f"# {label}: walk-forward\n\n{bsp_note}\nrefit every month from {first_pred} (bets from {first_bet}); "
-          f"features {len(num)}; {ROUNDS_A} rounds on BSP chances and {ROUNDS_B} on winners, recent years weighted "
-          f"more (half-life 3 years)\n")
-    df, log = walk(df, num, rel, first_pred, t0)
+    print(f"# {label}: walk-forward\n\n{note}\nrefit every {every} month(s) from {first_pred} (bets from {first_bet}); "
+          f"inputs {len(num)} plus {len(rel)} within-race relatives; {ROUNDS_A} rounds on BSP chances and {ROUNDS_B} on "
+          f"winners, recent years weighted more (half-life 3 years)\n")
+    df, log = walk(df, num, rel, first_pred, t0, every)
     print("Refits: " + "; ".join(f"{m}: {s}" for m, s in log))
     df = df[df.p_a.notna()].copy()
     # a fixed-weight ensemble for the log-loss table (weights from the first six predicted months)
