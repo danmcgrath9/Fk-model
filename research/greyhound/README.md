@@ -1630,3 +1630,100 @@ over-pricing of early speed that Test 21 found. It suggests the model leans on t
 not suggest an input that is missing.
 
 These inputs stay out of the model.
+
+## Test 23: reliable beginners and box preference (5 Nov 2026, gh topaz run 41929274182, `topaz_round11.py`)
+
+The founder: "What about reliable beginners versus not? Because they won't do the same every time as they miss it
+sometimes ... and then what about like speed from certain boxes etc? Some dogs like being inside versus outside and vice
+versa". Eight new inputs, every one from runs on earlier days only. Box groups: inside = boxes 1-3, middle = 4-5,
+outside = 6-8.
+
+Reliable beginners:
+
+| input | what it measures | filled |
+|---|---|---|
+| split_sd10 | spread of its first-split rating over its last 10 runs (high = erratic) | 82% |
+| split_worst5 | its worst first-split rating in its last 5 | 87% |
+| missed_rate10 | share of its last 10 where it was 3+ places worse at the first point than its early-speed rank | 85% |
+| early_sd10 | spread of its position at the first point over its last 10 | 82% |
+
+Box preference:
+
+| input | what it measures | filled |
+|---|---|---|
+| box_pref_time | its time rating from today's kind of box minus its overall rating, shrunk to 0 by 3 runs | 92% |
+| box_pref_split | the same for its first-split rating | 92% |
+| box_runs_here | how many runs it has had from today's kind of box | 99% |
+| inside_vs_out | its shrunk inside rating minus its shrunk outside rating, signed by today's draw | 92% |
+
+The setup was the same standard split as Tests 21 and 22:
+- trained before 3 June 2024
+- scored on the 22,841 races after it with BSP on every runner
+- BSP's log loss on those races is 1.4839
+
+H0 is round 8's F2 again.
+
+| row | inputs | rounds | early-stopping log loss | scored log loss | gap to BSP | 1st half | 2nd half |
+|---|---|---|---|---|---|---|---|
+| H0 F2 (D1 + preview + tips) | 186 | 4,205 | 1.5985 | 1.5893 | +0.1054 | +0.0979 | +0.1121 |
+| H1 + reliable beginners | 192 | 5,173 | 1.5979 | 1.5883 | **+0.1044** | +0.0964 | +0.1116 |
+| H2 + box preference | 192 | 2,848 | 1.6004 | 1.5889 | +0.1050 | +0.0971 | +0.1121 |
+| H3 + both | 198 | 1,824 | 1.5991 | 1.5902 | +0.1063 | +0.0977 | +0.1140 |
+
+Share of the model's splits taken by the new inputs:
+
+| row | new inputs' share | largest |
+|---|---|---|
+| H1 | 1.0% | split_sd10, split_worst5, early_sd10, missed_rate10 relative to the race: 0.2% each |
+| H2 | 0.7% | box_runs_here 0.2% |
+| H3 | 1.2% | box_runs_here 0.2% |
+
+Actual wins against expected wins, on the scored races with BSP:
+
+| dogs | runners | wins | win % | H0 expected | A/E vs H0 | A/E vs H3 | A/E vs BSP | A/E vs GRV's SP |
+|---|---|---|---|---|---|---|---|---|
+| fastest early, reliable beginner (steadiest quarter on split_sd10) | 4,579 | 874 | 19.1% | 931 | 0.939 | 0.935 | 0.944 | 0.984 |
+| fastest early, erratic beginner (most erratic quarter) | 5,451 | 1,107 | 20.3% | 1,099 | 1.007 | 1.000 | 0.993 | 1.035 |
+| missed the start in 30%+ of its last 10 | 24,868 | 3,407 | 13.7% | 3,370 | 1.011 | 1.017 | 1.017 | 1.008 |
+| drawn in the kind of box it races best from (top quarter of box_pref_time) | 40,183 | 6,005 | 14.9% | 5,795 | 1.036 | 1.010 | 0.994 | 1.008 |
+| drawn in the kind of box it races worst from (bottom quarter) | 40,183 | 5,394 | 13.4% | 5,481 | 0.984 | 0.997 | 1.011 | 0.996 |
+| drawn on the side it races best from (top tenth of inside_vs_out) | 15,449 | 2,567 | 16.6% | 2,369 | 1.084 | 1.036 | 1.006 | 1.040 |
+| drawn on the side it races worst from (bottom tenth) | 15,449 | 2,178 | 14.1% | 2,192 | 0.994 | 1.009 | 1.016 | 1.006 |
+
+The test of whether an A/E is real is how far it sits from 1.000 in standard errors. One standard error is about
+1/sqrt(wins): 0.034 on 874 wins, 0.020 on 2,567, 0.013 on 6,005.
+
+**Reliable beginners: a 0.001 gain, at the edge of the noise.** H1 moves the gap from +0.1054 to +0.1044, and both
+halves improve (by 0.0015 and 0.0005). The size matches the run-to-run noise of this split: D1 scored +0.1085, +0.1087
+and +0.1072 on three fits.
+
+The founder's guess on direction was half right. The steadiest fast beginners win LESS than expected:
+- 19.1% from 4,579 runs
+- A/E 0.939 against our model and 0.944 against BSP, about 1.7 standard errors below 1
+
+So both the model and Betfair over-price them a little. The erratic fast beginners are priced right (1.007 and 0.993).
+The over-pricing of early speed in Tests 21 and 22 sits in the steady dogs, not the erratic ones. One reading: the
+market and the model both bank on a reliable dog leading, and when it does not, it has nothing else. At 1.7 standard
+errors this is a lead, not a finding. It is worth watching in the walk-forward as a lay angle at BSP, not betting on.
+
+**Box preference: our model was missing it, and Betfair was not.** A dog drawn on the side it races best from wins
+16.6%:
+- **A/E 1.084 against H0**, which is 4 standard errors and real
+- 1.006 against BSP, so Betfair prices it right
+- 1.040 against GRV's SP
+
+Adding the inputs (H3) takes the model to 1.036, and the box-preference top quarter from 1.036 to 1.010. But it does not
+move the log loss (H2 +0.1050). Those dogs are a tenth of the field, and the correction is a few per cent of their
+chance, so the gain is under a thousandth.
+
+H3 (both) is worse than either alone, +0.1063, with early stopping choosing only 1,824 rounds. That is the noise of
+this split showing itself, not a reason to believe the two cancel.
+
+**What goes forward.** The reliable-beginner inputs (H1) join the final walk-forward as a candidate. The walk-forward's
+30 months judge a 0.001 better than one split can. The box-preference inputs stay out: they fix a pricing error Betfair
+does not make and add nothing measurable.
+
+The gap to BSP is still about 0.104, which is where Tests 19 to 22 left it. Form inputs built from the dog's own
+history have stopped moving it. What remains is mostly:
+- the lead, which needs tracking data (Isolynx, still 401)
+- the market's own money, which needs the TAB opens
