@@ -1,0 +1,16 @@
+{
+ "day": "Thursday",
+ "date": "5 November",
+ "meetings": [
+  {
+   "name": "Flemington",
+   "note": "",
+   "bets": [
+    {"race": 4, "time": "2:45PM", "horse": "Sass Appeal", "price": "$2.50", "rated": "$1.94", "units": "4.92u"},
+    {"race": 8, "time": "5:10PM", "horse": "De Armas", "price": "$4.60", "rated": "$3.15", "units": "2.68u"},
+    {"race": 9, "time": "5:50PM", "horse": "Ice Kool", "price": "$7.50", "rated": "$4.97", "units": "1.52u"}
+   ]
+  }
+ ],
+ "brand": false
+}
