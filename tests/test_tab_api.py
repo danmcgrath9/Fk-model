@@ -81,3 +81,21 @@ def test_a_non_json_answer_is_named_not_parsed():
         assert False, "should have raised"
     except RuntimeError as e:
         assert "not JSON" in str(e) and "text/html" in str(e) and "Request blocked" in str(e)
+
+
+def test_backfill_goes_back_until_the_opens_stop(tmp_path):
+    def answers(day, has_open):
+        race = {"runners": [{"runnerNumber": 1, "runnerName": "X", "fixedOdds": dict(
+            {"returnWin": 2.0, "bettingStatus": "Closed"}, **({"returnWinOpen": 2.5} if has_open else {}))}]}
+        meet = {"meetings": [{"meetingName": "SANDOWN PARK", "location": "VIC", "raceType": "G",
+                              "races": [{"raceNumber": 1, "_links": {"self": f"/racing/dates/{day}/meetings/G/SAP/races/1"}}]}]}
+        return {f"{TA.BASE}/racing/dates/{day}/meetings": Resp(200, meet),
+                f"{TA.BASE}/racing/dates/{day}/meetings/G/SAP/races/1": Resp(200, race)}
+    a = {}
+    a.update(answers("2026-11-04", True)); a.update(answers("2026-11-03", True)); a.update(answers("2026-11-02", False))
+    waits = []
+    (tmp_path / "tab-opens-2026-11-03.csv").write_text("held")
+    rep = TA.backfill(TA.TabClient(session=Session(a)), "2026-10-01", "2026-11-04", "VIC", tmp_path, 1.0, waits.append)
+    assert rep["days"] == 1 and rep["held"] == 1 and rep["with_open"] == 1
+    assert rep["stopped"].startswith("2026-11-02: 1 races and no open") and len(waits) == 4
+    assert not (tmp_path / "tab-opens-2026-11-02.csv").exists()
