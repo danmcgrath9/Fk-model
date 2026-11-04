@@ -63,6 +63,44 @@ def summary(df, m, o, units, price):
                 avg=units[idx].mean())
 
 
+def early_speed_check(df, te):
+    """The founder, on Sandown R1 (5 Nov 2026): "box 1, he just leads and the race is over, so the early split should
+    matter". Two questions. How much does leading early decide a race (from each race's own in-running, so a result,
+    not an input)? And does the model price the early-speed dogs right, by their rank in the field on the pre-race
+    early-speed rating (map_speed_rank, from each dog's earlier first splits) and their box: actual wins against the
+    model's expected, BSP's and GRV's SP's. An A/E against the model well above 1 where BSP's is near 1 is a part of
+    early speed the model is missing."""
+    from topaz_v2 import pir_positions
+    first, _ = pir_positions(df.get("pir", pd.Series(np.nan, index=df.index)))
+    led = (first == 1) & first.notna()
+    print("### Leading early\n")
+    print(f"Every race since 2013 with an in-running record: the dog first at the first point wins {df.won[led].mean():.1%} "
+          f"({int(led.sum()):,} runs); from box 1 {df.won[led & (df.box == 1)].mean():.1%}, from boxes 7-8 "
+          f"{df.won[led & (df.box >= 7)].mean():.1%}. The fastest dog on the pre-race early-speed rating leads at the first "
+          f"point {led[df.map_speed_rank == 1].mean():.1%} of the time (from box 1 {led[(df.map_speed_rank == 1) & (df.box == 1)].mean():.1%}).\n")
+    t = te[te.p_bsp.notna()]
+    rk = t.map_speed_rank
+    gap = t.map_gap_to_next
+    clear = (rk == 1) & (gap >= gap[rk == 1].median())
+    groups = [("fastest early, clear of the next, box 1", clear & (t.box == 1)),
+              ("fastest early, clear of the next, boxes 2-3", clear & t.box.between(2, 3)),
+              ("fastest early, box 1", (rk == 1) & (t.box == 1)), ("fastest early, boxes 2-3", (rk == 1) & t.box.between(2, 3)),
+              ("fastest early, boxes 4-6", (rk == 1) & t.box.between(4, 6)), ("fastest early, boxes 7-8", (rk == 1) & (t.box >= 7)),
+              ("second fastest early, box 1-3", (rk == 2) & (t.box <= 3)), ("second fastest early, box 4-8", (rk == 2) & (t.box >= 4)),
+              ("third or slower early, box 1", (rk >= 3) & (t.box == 1)), ("third or slower early, boxes 2-8", (rk >= 3) & (t.box >= 2))]
+    print("Scored quarter, races with BSP on every runner:\n")
+    print("| dogs | runners | wins | win % | our model expected | A/E vs our model | A/E vs BSP | A/E vs GRV's SP |")
+    print("|---|---|---|---|---|---|---|---|")
+    for name, m in groups:
+        g = t[m]
+        if not len(g):
+            continue
+        w = g.won.sum()
+        print(f"| {name} | {len(g):,} | {int(w):,} | {w / len(g):.1%} | {g.p_a.sum():,.0f} | {w / g.p_a.sum():.3f} | "
+              f"{w / g.p_bsp.sum():.3f} | {w / g.p_sp.sum():.3f} |")
+    print()
+
+
 def main(d, label):
     df, num, rel, bsp_note = W.build(d)
     if "is_best_bet" not in df and "isBestBet" in df:
@@ -88,6 +126,7 @@ def main(d, label):
     h = (te.date < te.date.quantile(0.5)).values
     print(f"# {label}: round 9, the gallops value rule on the dogs\n\n{bsp_note}\nmodel: D1 + preview + tips, {k} rounds; "
           f"scored on {te.race_id.nunique():,} races from {te.date.min():%Y-%m-%d}\n")
+    early_speed_check(df, te)
     for pname, col, pcol, comm in (("GRV's SP, no commission", "start_price", "p_sp", 0.0),
                                    ("BSP, 8% commission on winnings", "bsp", "p_bsp", 0.08)):
         e_ok, t_ok = es[pcol].notna().values, te[pcol].notna().values
