@@ -1575,3 +1575,58 @@ ratios make more units on more bets at a lower rate. At BSP there is nothing to 
 holds everything our model knows. Both caveats from the gallops hold: these bets are struck at the SP, a 119% book that
 overprices longshots, and not at the TAB open; and the gallops found a back-filled open much softer than a live one
 (+41.9% against -11.6%). This is the rule the TAB opens will be scored on the day they exist.
+
+## Test 22: held out last start by a quicker leader, fastest early today (5 Nov 2026, gh topaz run 41928002206, `topaz_round10.py`)
+
+The founder's idea, on Sandown R1: "if it didn't lead or get held out because there was a faster leader in that race,
+but this race now he's the fastest". Eight new inputs, all built from the dog's previous start only:
+
+- whether it led at the first point
+- its split rank in that race
+- its gap to the leader's split
+- its pre-race speed rank there and here
+- whether its speed rank has gone up
+- a flag for "held out": it did not lead, a quicker beginner did, and today it is the fastest early dog in the field
+
+The flag is on for 4.4% of runners (32,715). The previous-start inputs are filled on 92%.
+
+The setup was the same standard split as Test 21:
+- trained before 3 June 2024
+- scored on the 22,841 races after it with BSP on every runner
+- BSP's log loss on those races is 1.4839
+
+G0 is round 8's F2 again; G1 adds the eight inputs.
+
+| row | inputs | rounds | early-stopping log loss | scored log loss | gap to BSP | 1st half | 2nd half |
+|---|---|---|---|---|---|---|---|
+| G0 F2 (D1 + preview + tips) | 186 | 4,205 | 1.5985 | 1.5893 | +0.1054 | +0.0979 | +0.1121 |
+| G1 + held out last start | 194 | 3,744 | 1.6000 | 1.5891 | +0.1052 | +0.0970 | +0.1126 |
+
+The new inputs take 0.5% of the model's splits. The largest is speed_rank_up relative to the race, at 0.2%. The
+held-out flag itself takes 0.0%.
+
+Are the held-out dogs under-priced? This compares actual wins against expected wins on the scored races with BSP:
+
+| dogs | runners | wins | win % | G0 expected | A/E vs G0 | A/E vs G1 | A/E vs BSP | A/E vs GRV's SP |
+|---|---|---|---|---|---|---|---|---|
+| held out last start, fastest early today | 7,378 | 1,510 | 20.5% | 1,519 | 0.994 | 0.990 | 0.987 | 1.031 |
+| ... and drawn box 1-2 | 2,025 | 454 | 22.4% | 480 | 0.945 | 0.940 | 0.964 | 1.002 |
+| fastest early today, led last start | 6,839 | 1,535 | 22.4% | 1,619 | 0.948 | 0.954 | 0.980 | 1.021 |
+| fastest early today, did not lead last start | 15,237 | 2,993 | 19.6% | 3,021 | 0.991 | 0.989 | 0.978 | 1.025 |
+| all other runners | 137,895 | 18,156 | 13.2% | 18,039 | 1.007 | 1.006 | 1.006 | 0.994 |
+
+**No gain.** The gap to BSP moves by 0.0002 (+0.1054 to +0.1052), which is noise; the first half got slightly worse
+and the second slightly better.
+
+The held-out dogs are not a hidden edge. They win 20.5%, against 20.6% expected by our model and 20.7% by BSP. The ones
+drawn inside win less than both expect (A/E 0.945 and 0.964).
+
+The model and Betfair already treat a dog that was beaten to the lead as a dog that may be beaten to it again. Only
+GRV's SP under-rates the fastest early dogs, by 2-3%, and that is the overround on the favourites rather than a fact
+about speed.
+
+The one group the model over-prices is the fastest early dog that led last start (A/E 0.948). This is the same
+over-pricing of early speed that Test 21 found. It suggests the model leans on the last lead a little too hard. It does
+not suggest an input that is missing.
+
+These inputs stay out of the model.
