@@ -922,3 +922,14 @@ back book and game day. BetMatic check 10:48am: every bot session off, no bot ma
 Flemington Sat 7 Nov (Stakes Day) priced Wed 1:50pm on SOFT 6 (our call: 17.2mm forecast on the day; Form King has no
 rating yet), final fields, 7 out: 32 orders on 16 horses, 43.70u if every order fired (metro $12 cap). The export ran on the
 new history cache (f1f631f) without touching the API limit.
+
+## Kyneton Wed 4 Nov settled on the founder's results (Wed afternoon: "Gregolimo and Emanating won. Rest have lost"), TAB's deductions
+- Bets at the open, PAPER (BetMatic placed none; bot off, TAB $0.65), price after TAB's deduction: Sabrina 1.19u $11 -> $7.90
+  lost -1.19u; Mongol Heer 2.63u $9.50 -> $8.14 lost -2.63u; Emanating 1.40u $15 -> $13.18 WON +17.05u; Gregolimo 0.90u
+  $19.50 -> $15.43 WON +12.99u; His Finest Hour 1.05u $11 -> $8.80 lost -1.05u. 5 bets, 2 won, 7.17u, +25.17u (+351%,
+  +$1,258 at $50). Foujita San, Placo, Blaze Away scratched.
+- Twitter card (half units, posted prices after deductions): Sabrina $4.79 -0.59u; Mongol Heer $4.36 -1.31u; Emanating
+  $4.92 +2.74u; Gregolimo $9.58 +3.86u; His Finest Hour $8.80 -0.53u. 3.58u, +4.17u (+117%, +$209 at $50).
+- Real money: none.
+- Top-ups (tracked only): His Finest Hour 0.71u at $8.50 lost -0.71u; Tomanado R9 0.74u at $13 to run.
+- Lay and back books settle at BSP once Form King has the results (7:15pm).
