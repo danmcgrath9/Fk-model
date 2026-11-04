@@ -908,3 +908,14 @@ R4 12c, R5 17c, R6 22c, R7 3c, R8 23c, R9 63c). CORRECTION to the 9:32 line: "Hi
 read off the overwritten sheet; against the real pre-open stake (1.05u) the top-up rule offers 0.71u at $8.50 (paper,
 tracked only), on top of Tomanado 0.74u at $13 from 9:32. Mercer card update sent with deductions and the three
 scratchings shown as SCR (no refund word, founder's call).
+
+## Friday 6 Nov priced Wed 4 Nov 12:30pm (final fields; no market open on either), Saturday 7 Nov Flemington pending
+Cranbourne Fri on the official Dead 5 (d5f): 73 orders on 30 horses, 88.51u if every order fired. Warrnambool Fri on the
+official Dead 4 (d4f): 50 orders on 19 horses, 75.51u. Rain (Open-Meteo through the fk-experiment runner, the sandbox cannot
+reach it): Cranbourne 8.4mm Wed, 1.9 Thu, 0.4 Fri; Warrnambool 4.6 / 0.4 / 6.7; under the 15mm line, so the official
+rating stands for both. Flemington Sat 7 Nov: Form King has no rating yet; forecast 7.2mm Wed, dry Thu and Fri, 17.2mm
+ON Saturday (97%, max 13C), so the export is asked for SOFT 6 (founder to confirm); its export and the market-open check
+failed on GitHub's API rate limit (fetch_history.sh pulls 430 release files through the API on every run and this
+morning's runs used the hour's quota) and are re-run once it clears. Sheets are -betmatic-preopen.csv (copied from the
+re-price tag files, since pricemtg.sh now writes under the tag). Pages published with the empty open-bets box, lay book,
+back book and game day. BetMatic check 10:48am: every bot session off, no bot machine connected, TAB $0.65.
