@@ -37,6 +37,23 @@ jobs:
           cache: pip
           cache-dependency-path: requirements.txt
       - run: pip install -r requirements.txt
+      - name: History cache key
+        # The 430 history files were downloaded through the API on every run (gh release download is one API call per
+        # asset) and the Actions token has 1,000 calls an hour, so three runs in an hour locked the fourth out
+        # (4 Nov 2026). The files are cached between runs and only re-downloaded when the release changes.
+        id: hist
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          N=$(gh release view history --json assets --jq '[.assets[] | select(.name | endswith(".jsonl.gz"))] | length' 2>/dev/null || echo 0)
+          T=$(gh release view history --json assets --jq '[.assets[].updatedAt] | max' 2>/dev/null | tr -dc '0-9' || echo 0)
+          echo "key=history-$N-$T" >> "$GITHUB_OUTPUT"
+      - name: History from the cache
+        uses: actions/cache@v4
+        with:
+          path: history
+          key: ${{ steps.hist.outputs.key }}
       - name: Fetch the history files
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
