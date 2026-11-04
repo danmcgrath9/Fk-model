@@ -40,7 +40,15 @@ RACE_ALIASES = {"meetingId": ["meetingId"], "meetingDate": ["meetingDate", "race
                 "trackCode": ["trackCode"], "trackName": ["trackName", "track"],
                 "distanceInMetres": ["distanceInMetres", "distance", "raceDistance"],
                 "incomingGrade": ["incomingGrade", "grade", "raceGrade", "gradeCode"],
-                "raceNumber": ["raceNumber", "number"], "raceStartTime": ["raceStartTime", "startTime"]}
+                "raceNumber": ["raceNumber", "number"], "raceStartTime": ["raceStartTime", "raceStart", "startTime"]}
+# the pre-race run rows (field names printed by the first run, 5 Nov 2026) use `track` for the name and `distance`
+# for the metres where the bulk feed uses trackName and distanceInMetres
+RUN_ALIASES = {"trackName": ["trackName", "track"], "distanceInMetres": ["distanceInMetres", "distance"]}
+
+
+def txt(v) -> str:
+    """A value for printing: NaN and None are blank (a NaN is truthy, so `x or y` does not do this)."""
+    return "" if v is None or (isinstance(v, float) and np.isnan(v)) else str(v)
 
 
 def pick(d: dict, names):
@@ -72,6 +80,9 @@ def fetch_day(client: TopazClient, day: str):
             for k, v in f.items():
                 if row.get(k) in (None, "") and v not in (None, ""):
                     row[k] = v
+            for k, aliases in RUN_ALIASES.items():
+                if row.get(k) in (None, ""):
+                    row[k] = pick(row, aliases)
             for k, aliases in RACE_ALIASES.items():
                 if row.get(k) in (None, ""):
                     row[k] = pick(r, aliases)
@@ -130,26 +141,32 @@ def main(d, label):
     card["grv_price"] = grv
     card["grv_pct"] = 1 / grv
     card["edge"] = card.p_model * grv - 1
+    book = card.groupby("race_id").grv_pct.transform("sum")
+    card["grv_fair"] = grv * book                       # GRV's price with its book taken out, so the two columns compare
     print(f"fitted on {df.race_id[tr].nunique():,} races, {W.ROUNDS_A} rounds; the model's prices sum to 100% a race; "
           f"GRV's pre-race prices sum to {card.groupby('race_id').grv_pct.sum().median():.0%} a race (median book)\n")
     order = ["start_time", "race_id"] if "start_time" in card else ["race_id"]
     for rid, g in card.sort_values(order).groupby("race_id", sort=False):
         g = g.sort_values("our_price")
         r0 = g.iloc[0]
-        print(f"## {r0.get('track_name') or r0.track} R{r0.get('race_number')} {str(r0.get('start_time') or '')[11:16]} "
-              f"{int(r0.distance)}m {r0.grade}\n")
-        print("| box | dog | our price | our % | GRV pre-race price | GRV rating | tip | best bet | Test 12 bet |")
-        print("|---|---|---|---|---|---|---|---|---|")
+        venue = txt(r0.get("track_name")) or txt(r0.track)
+        start = txt(r0.get("start_time"))
+        print(f"## {venue} R{txt(r0.get('race_number'))} {start[11:16] if len(start) >= 16 else start} "
+              f"{int(r0.distance)}m {txt(r0.grade)} (GRV's book {book.loc[g.index[0]]:.0%})\n")
+        print("| box | dog | our price | our % | GRV pre-race price | GRV price at a 100% book | GRV rating | tip | best bet | Test 12 bet |")
+        print("|---|---|---|---|---|---|---|---|---|---|")
         for _, x in g.iterrows():
             bet = "YES" if (x.edge >= 0.5 and 8 <= x.grv_price <= 13) else ""
             tip = "" if pd.isna(x.get("tip_rank", np.nan)) or x.get("tip_rank", 0) == 0 else f"#{int(x.tip_rank)}"
-            print(f"| {int(x.box)} | {x.get('dog_name')} | ${x.our_price:.2f} | {x.p_model:.1%} | ${x.grv_price:.2f} | "
-                  f"{x.get('topaz_rating')} | {tip} | {'yes' if x.get('is_best_bet') else ''} | {bet} |")
+            box = "" if pd.isna(x.box) else int(x.box)
+            print(f"| {box} | {txt(x.get('dog_name'))} | ${x.our_price:.2f} | {x.p_model:.1%} | ${x.grv_price:.2f} | "
+                  f"${x.grv_fair:.2f} | {txt(x.get('topaz_rating'))} | {tip} | {'yes' if x.get('is_best_bet') else ''} | {bet} |")
         print()
     picks = card[(card.edge >= 0.5) & (card.grv_price.between(8, 13))]
     print(f"Test 12's rule against GRV's pre-race price would take {len(picks)} runner(s) tonight: "
-          + ("; ".join(f"{x.get('track_name') or x.track} R{x.get('race_number')} box {int(x.box)} {x.get('dog_name')} "
-                       f"(ours ${x.our_price:.2f}, GRV ${x.grv_price:.2f})" for _, x in picks.iterrows()) or "none"))
+          + ("; ".join(f"{txt(x.get('track_name')) or txt(x.track)} R{txt(x.get('race_number'))} box {txt(x.box)} "
+                       f"{txt(x.get('dog_name'))} (ours ${x.our_price:.2f}, GRV ${x.grv_price:.2f})"
+                       for _, x in picks.iterrows()) or "none"))
     return 0
 
 
