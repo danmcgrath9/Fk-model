@@ -170,7 +170,8 @@ TOPAZ_EXTRA = {"runId": "run_id", "dogName": "dog_name", "trackName": "track_nam
                "dateWhelped": "whelped", "boxDrawnOrder": "box_drawn", "rugNumber": "rug",
                "firstSplitPosition": "split_pos", "pir": "pir", "comment": "comment", "raceType": "race_type",
                "raceTypeCode": "race_type_code", "abnormalResult": "abnormal", "isLateScratching": "late_scratching",
-               "resultMarginLengths": "margin_lengths_text"}
+               "resultMarginLengths": "margin_lengths_text", "runLineCode": "run_line", "jumpCode": "jump",
+               "sex": "sex"}
 
 
 def topaz_to_runs(raw: pd.DataFrame) -> pd.DataFrame:
