@@ -1063,6 +1063,14 @@ $8-$13 with an edge of 50% or more (748 bets there, +31.6%) scored **+34.9% and 
 1.360 and 1.247, longest losing runs 34 and 58), against +24.7% / +14.0% for the Test 12 model. **At BSP** the chosen
 rule ($5-$8, 50%) lost -11.2% / -17.9%. Not run with Isolynx yet (the pull was in progress); D2 waits for it.
 
+**Isolynx, later the same day: the key is not allowed it.** The pull (run 41820190239) answered HTTP 401 on every one
+of 14,129 dogs, and a one-race probe (run 41854102271, `greyhound.isolynx probe`) found all three shapes the API
+offers refused with the same key: per race `/isolynx/{raceId}/splits` and `/positions` (the Topaz-api wrapper's
+documented endpoints) and per dog `/isolynx/dog/{dogId}/splits`, while the bulk runs, the race records and the
+pre-race form all answer. Isolynx tracking needs access GRV has not granted the VIC key; the question to Jason is
+drafted in the founder's Gmail. D2 is off the table until it is. The pull itself now stops on the first 401 instead
+of spending three hours collecting them (`TopazForbidden`).
+
 ## Test 17: the finishing order as the label (4 Nov 2026, gh topaz run 41843056879, `topaz_round7.py`)
 
 The model learns from one dog a race: the market's chance of each dog (BSP chances, every row since Test 10) or the
@@ -1102,3 +1110,54 @@ Staking the chosen blend (E0 + E3) as Test 12 (rules chosen on the early-stoppin
 SP**, every qualifier at $8-$13 with an edge of 50% or more (820 bets there, +46.1%) scored **+40.0% and +21.2%**
 (2,234 and 2,355 bets, A/E 1.406 and 1.227, longest losing runs 43 and 56); **at BSP** the chosen rule ($5-$8, 50%)
 lost -11.3% / -18.5%. Same picture as Tests 12 to 16: the SP pays, BSP does not.
+
+## Test 19: GRV's tips for this race, and the round cap (4 Nov 2026, gh topaz run 41854109531, `topaz_round8.py`)
+
+GRV's analyst tips (tip1 to tip4) and the race's analyst comment live in the race record, not the bulk runs; the
+Topaz-api wrapper's `get_races` is `GET /api/race?from&to&owningauthoritycode`, which lists race records for a date
+range, and a month answers in one call: **199,205 VIC race records, 2013 to November 2026, pulled in five minutes**
+(`mode=run races=yes`, cached beside the runs). Every scored runner has a tips record; 54% of runners are tipped
+(up to four a race). Matched to runners by box number (what the compare of 5 Nov confirms; the loader also accepts
+a dog id or a name). The leak check first, because a tip written after the race would show up here:
+
+| year | races | with a tips record | runners tipped | tip 1 won | SP favourite won |
+|---|---|---|---|---|---|
+| 2013 | 3,507 | 100% | 51% | 34.2% (3,355) | 39.8% |
+| 2014 | 3,320 | 100% | 50% | 34.7% (3,200) | 40.8% |
+| 2015 | 5,733 | 100% | 49% | 33.6% (5,512) | 37.1% |
+| 2016 | 4,136 | 100% | 50% | 33.4% (3,963) | 37.4% |
+| 2017 | 4,536 | 100% | 52% | 35.8% (4,314) | 41.0% |
+| 2018 | 5,212 | 100% | 52% | 36.2% (4,992) | 41.8% |
+| 2019 | 8,250 | 100% | 55% | 37.1% (7,888) | 42.7% |
+| 2020 | 8,866 | 100% | 54% | 35.8% (8,444) | 41.9% |
+| 2021 | 10,742 | 100% | 56% | 36.6% (10,377) | 42.2% |
+| 2022 | 10,292 | 100% | 56% | 35.8% (9,991) | 41.8% |
+| 2023 | 9,478 | 100% | 56% | 34.7% (9,414) | 39.9% |
+| 2024 | 10,082 | 100% | 52% | 32.7% (10,001) | 38.0% |
+| 2025 | 10,502 | 100% | 54% | 33.7% (10,423) | 38.7% |
+| 2026 | 9,143 | 100% | 56% | 33.2% (9,076) | 40.4% |
+
+The first tip wins 33% to 37% of its races in every year, four to six points BELOW the SP favourite, with no year
+out of line: an honest pre-race opinion, weaker than the market, which is what a legitimate tip looks like. Then
+the model (round 6's D1 inputs, same fit and scoring as Tests 15 and 16, same 22,841 races):
+
+| row | features | rounds | early-stopping log loss | scored log loss | gap to BSP | 1st half | 2nd half |
+|---|---|---|---|---|---|---|---|
+| F0 D1 (B2 + preview + ratings upgrades) | 181 | 2883 | 1.6027 | 1.5911 | +0.1072 | +0.0989 | +0.1147 |
+| F1 + GRV's tips for this race | 186 | 2971 | 1.5991 | 1.5900 | +0.1062 | +0.0988 | +0.1128 |
+| F2 F1, round cap 6,000 | 186 | 4139 | 1.5985 | 1.5892 | **+0.1053** | +0.0981 | +0.1117 |
+
+**The tips are worth 0.001, and the cap another 0.001**, each within the run-to-run noise of this split (D1 has
+scored +0.1085, +0.1087 and +0.1072 on three fits today). The model takes to the tips hard, 45% of its splits
+(tip_rank 25%, tip_top 20%), and gains almost nothing from them, which says the analyst's view was already in the
+model through the preview's isBestBet and comment words (Test 15); the tips are the same opinion in another
+column. The cap was binding in Test 16 (2,997 of 3,000) and is not at 6,000 (4,139 chosen), so the walk-forward
+keeps its 3,000 for time and the standard split may use 6,000. Item 5 of MODELS_RESEARCH.md ("expert prices as
+inputs ... small on top of the preview, since they overlap it") is confirmed, small. Both go into the final
+walk-forward (`RACES_DIR` and the cap are switches on `topaz_walk.py`) because they are legitimate the evening
+before and cost nothing; the 5 Nov compare says whether the tips are unchanged after the race.
+
+Staking F2 as Test 12 (rules chosen on the early-stopping months, scored once): **at GRV's SP**, one bet a race at
+$8-$13 with an edge of 50% or more (705 bets there, +36.8%) scored **+36.1% and +21.4%** (1,941 and 2,096 bets, A/E
+1.376 and 1.229, longest losing runs 42 and 39). **At BSP** the chosen rule ($5-$8, 50%, every qualifier) lost
+-7.6% / -18.4%.
