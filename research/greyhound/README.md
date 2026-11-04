@@ -860,3 +860,11 @@ on 56, isBestBet true on 1, startPrice on 56 of 56 (a price exists before the ra
 8 of 8, results entered on none. The compare against the bulk feed runs the morning after (mode=preview-compare,
 from=2026-11-04), and a fuller snapshot of a whole day's racing is scheduled for 10am on 5 Nov. If the comments come
 back unchanged, the preview goes into the walk-forward model; the gain to BSP would then be 0.127 to 0.117.
+
+**The timing check that matters** (founder, 4 Nov: "we want to bet before the preview and odds come out"): at 21:45
+Sydney on 4 Nov, `/race/upcoming` for **5 Nov** already returned all 50 of the next day's VIC races and their 382
+runners with the comment, rating and isBestBet filled on every one (isBestBet true on 13), the race analystComment
+and tips on 50 of 50, and a `startPrice` on all 382 (run 41816219297). The preview is published the evening before,
+about ten hours before the TAB opened the Geelong market (07:22 on race morning, 27 Oct), so it is available for an
+open-price bet. The `startPrice` existing the night before is itself a finding: tomorrow's compare says whether the
+bulk feed's `startPrice`, which Tests 12 and 13 bet against as the SP, is this early price or a price at the jump.
