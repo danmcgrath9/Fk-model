@@ -200,3 +200,8 @@ founder watches Betfair's projected SP; when the favourite is going to land in i
 THAT ONE ROW (action send, file = the -backs-betmatic.csv, race and number, when = best, unit = the dollars, dry_run = no):
 a standard bet now, High Odds First at the top bookie price, so the bookies carry the back and Betfair only gives the
 signal. Allow about a minute from dispatch to placement: fire it three or four minutes out, not one.
+
+## Top-ups stopped (4 Nov 2026)
+Founder, 4 Nov 2026: "I think we can stop doing top up". The 9:30am re-price no longer runs topup.py or keeps a top-up
+table; it re-prices the final field, refreshes the lay book, back book and game day, and leaves the open book alone. The
+tracked record stays in betmatic-book.md as it was. research/form_gbm/topup.py stays in the repo, unused.

@@ -948,3 +948,7 @@ book and the card stand as settled above. Top-up Tomanado R9 6th: -0.74u (top-up
   9th), Who I Think I Am R6 ($18, 6th): 4 lays, 0 winners, +3.68u (+$736). Trial to date (28 Oct to 4 Nov, 9 race days):
   73 lays, 2 winners, +24.82u, +34% on the lay stake (+$4,964 at $200).
 - Back book (favourite $4-$7 we rate 1.6x+, paper): none landed.
+
+## Top-ups stopped (founder, Wed 4 Nov evening: "I think we can stop doing top up")
+No more 9:30am top-up checks or top-up lines from Thu 5 Nov. The 9:30 routine now re-prices, refreshes the lay book, back
+book and game day, and reports the open bets still running.
