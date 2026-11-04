@@ -152,9 +152,9 @@ def test_by_day_builds_the_month_from_days_and_skips_days_outside_access(tmp_pat
 
 
 def test_by_day_stops_at_today_in_the_current_month(tmp_path):
-    c, s = client(*[Resp(200, []) for _ in range(4)])
+    c, s = client(*[Resp(200, []) for _ in range(3)])                       # 1-3 Nov: Topaz serves to yesterday
     rep = P.pull(c, ["VIC"], [(2026, 11)], tmp_path, set(), date(2026, 11, 4), max_calls=100, by_day=True)
-    assert len(s.asked) == 4 and rep[0][3] == "pulled, empty"
+    assert len(s.asked) == 3 and rep[0][3] == "pulled, empty"
 
 
 def test_a_failed_or_unfinished_month_is_not_written_and_the_rest_carry_on(tmp_path):

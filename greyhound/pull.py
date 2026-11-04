@@ -116,7 +116,8 @@ def month_by_days(client: TopazClient, state: str, y: int, m: int, today: date, 
     the month is unfinished (budget or time ran out, or a day failed), so nothing is written and the next run tries
     it again. Days come back in date order whatever order they finish in."""
     from concurrent.futures import ThreadPoolExecutor
-    last = today.day if (y, m) == (today.year, today.month) else calendar.monthrange(y, m)[1]
+    # Topaz serves days up to YESTERDAY ("Days must be between 1-Jan-2013 and yesterday", 4 Nov 2026)
+    last = today.day - 1 if (y, m) == (today.year, today.month) else calendar.monthrange(y, m)[1]
 
     def one(d):
         if client.calls >= max_calls or time.monotonic() > deadline:

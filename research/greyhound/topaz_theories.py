@@ -13,7 +13,13 @@ trained on SP chances, rounds chosen on the middle quarter) and scored once on t
   T5  + GRV's own fields (rating, last5, totalFormCount, careerPrizeMoney), each only if a leak check here shows it
       was known before the race
   T6  + the market's past view of the dog: its previous SPs and how it ran against them (Benter's market history)
+  T7  the T6 features trained on BSP chances where Betfair has the race (SP chances where it does not)
 Then the last row trained on winners instead, and Benter's stage 2 blend of the best row with the SP.
+
+BSP (founder, 4 Nov: "BSP is the sharpest tool out there ... lets see how close we can get to BSP"): when the
+environment variable BETFAIR_DIR holds Betfair's free ANZ_Greyhounds files (2020 on), each Topaz runner is matched to
+Betfair by Sydney date and dog name (a dog runs at most once a day), and every row is also scored against BSP on the
+last-quarter races where every runner was matched.
 
 Every feature is from EARLIER days only. The gap to the SP is the number that matters: winner log loss of the
 model less the SP's, on the same races (negative = better than the SP).
@@ -145,6 +151,27 @@ def t6(df):
     return df.drop(columns=["_lsp", "_surprise"]), ["mkt_prev_lsp", "mkt_lsp_mean5", "mkt_surprise5"]
 
 
+def add_bsp(df):
+    """BSP from Betfair's free files by (date, normalised dog name); p_bsp on races where every runner matched."""
+    bdir = os.environ.get("BETFAIR_DIR", "")
+    if not bdir or not os.path.isdir(bdir):
+        return df, "no Betfair files given (BETFAIR_DIR): BSP comparison skipped"
+    import gbm_v0
+    bf = gbm_v0.load(bdir)
+    bf = bf[(bf.STATE_CODE == "VIC") & (bf.WIN_BSP > 1)][["date", "dog", "WIN_BSP"]]
+    bf = bf.drop_duplicates(["date", "dog"], keep=False)
+    df["_dn"] = gbm_v0.norm_name(df.dog_name)
+    df = df.merge(bf.rename(columns={"dog": "_dn", "WIN_BSP": "bsp"}), on=["date", "_dn"], how="left").drop(columns="_dn")
+    full = df.bsp.notna().groupby(df.race_id).transform("all")
+    inv = (1 / df.bsp).where(full)
+    df["p_bsp"] = inv / inv.groupby(df.race_id).transform("sum")
+    since = df[df.date >= bf.date.min()]
+    note = (f"BSP matched on {df.bsp.notna().sum():,} runners; {df[full].race_id.nunique():,} races fully matched "
+            f"({since[full.loc[since.index]].race_id.nunique() / max(since.race_id.nunique(), 1):.0%} of races since "
+            f"{bf.date.min():%Y-%m-%d})")
+    return df, note
+
+
 def features(df, num, rel):
     X = df[num].astype(float).copy()
     for c in rel:
@@ -171,7 +198,9 @@ def main(d, label):
     df, f4 = t4(df)
     df, f5, notes = t5(df, df.columns)
     df, f6 = t6(df)
+    df, bsp_note = add_bsp(df)
     df = df.sort_values(["date", "race_id", "box"]).reset_index(drop=True)
+    df["p_mkt"] = df.p_bsp.fillna(df.p_sp) if "p_bsp" in df else df.p_sp
 
     q50, q75 = df.date.quantile(0.5), df.date.quantile(0.75)
     tr, va, te = df[df.date < q50], df[(df.date >= q50) & (df.date < q75)].copy(), df[df.date >= q75].copy()
@@ -182,27 +211,38 @@ def main(d, label):
           f"{q50:%Y-%m-%d}, choose and blend to {q75:%Y-%m-%d}, score {te.race_id.nunique():,} races from "
           f"{q75:%Y-%m-%d} (halves split {mid:%Y-%m-%d})\n")
     print("Leak checks on GRV's own fields:\n" + "\n".join(f"- {n}" for n in notes) + "\n")
-    print(f"GRV starting price on the scored races: {sp_ll[0]:.4f} (halves {sp_ll[1]:.4f} / {sp_ll[2]:.4f})\n")
-    print("| theory | features | trained on | log loss | gap to SP (all) | gap 1st half | gap 2nd half |")
-    print("|---|---|---|---|---|---|---|")
+    print(f"GRV starting price on the scored races: {sp_ll[0]:.4f} (halves {sp_ll[1]:.4f} / {sp_ll[2]:.4f})")
+    print(bsp_note)
+    hb = te.p_bsp.notna().values if "p_bsp" in te else np.zeros(len(te), bool)
+    if hb.any():
+        bsp_ll = V1.ll(te.p_bsp[hb], te.won[hb])
+        print(f"On the {te[hb].race_id.nunique():,} scored races Betfair fully priced: BSP {bsp_ll:.4f}, "
+              f"GRV SP {V1.ll(te.p_sp[hb], te.won[hb]):.4f}")
+    print("\n| theory | features | trained on | log loss | gap to SP (all) | gap 1st half | gap 2nd half | gap to BSP |")
+    print("|---|---|---|---|---|---|---|---|")
 
     rel_extra = ["style_early", "style_led_rate", "style_gain", "dog_place_91D", "dog_won_91D", "trainer_id_won_91D",
                  "box_vacancy_ratio", "topaz_rating", "last5_mean", "mkt_lsp_mean5", "mkt_prev_lsp"]
     steps = [("T1 ratings engine + race card", []), ("T2 + run style and map", f2), ("T3 + dog/trainer/sire/dam windows", f3),
              ("T4 + vacant boxes", f4), ("T5 + GRV fields that pass the leak check", f5),
-             ("T6 + market history", f6)]
+             ("T6 + market history", f6), ("T7 the same, trained on BSP chances", [])]
     num, best = list(V1.NUM), None
     for name, add in steps:
         num += [f for f in add if f not in num]
         rel = V1.REL + [f for f in rel_extra if f in num]
         Xtr, Xva, Xte = features(tr, num, rel), features(va, num, rel), features(te, num, rel)
-        for target in (["p_sp"] if name != steps[-1][0] else ["p_sp", "won"]):
+        targets = (["p_mkt", "won"] if name.startswith("T7") else ["p_sp"])
+        if name.startswith("T7") and not hb.any():
+            continue
+        for target in targets:
             bst, k = V1.fit(Xtr, tr[target].values.astype(float), tr.race_id, Xva, va.won.values, va.race_id.values)
             pv = V1.race_softmax(bst.predict(Xva, num_iteration=k, raw_score=True), va.race_id.values)
             pt = V1.race_softmax(bst.predict(Xte, num_iteration=k, raw_score=True), te.race_id.values)
             l = (V1.ll(pt, te.won), V1.ll(pt[h], te.won.values[h]), V1.ll(pt[~h], te.won.values[~h]))
-            print(f"| {name} | {Xtr.shape[1]} | {'SP chances' if target == 'p_sp' else 'winners'} | {l[0]:.4f} | "
-                  f"{l[0] - sp_ll[0]:+.4f} | {l[1] - sp_ll[1]:+.4f} | {l[2] - sp_ll[2]:+.4f} |")
+            gb = f"{V1.ll(pt[hb], te.won.values[hb]) - bsp_ll:+.4f}" if hb.any() else ""
+            tname = {"p_sp": "SP chances", "p_mkt": "BSP chances", "won": "winners"}[target]
+            print(f"| {name} | {Xtr.shape[1]} | {tname} | {l[0]:.4f} | "
+                  f"{l[0] - sp_ll[0]:+.4f} | {l[1] - sp_ll[1]:+.4f} | {l[2] - sp_ll[2]:+.4f} | {gb} |")
             if best is None or l[0] < best[0]:
                 best = (l[0], name, target, pv, pt, bst, Xtr.columns)
     va["p_best"], te["p_best"] = best[3], best[4]
@@ -211,6 +251,12 @@ def main(d, label):
     l = (V1.ll(p, te.won), V1.ll(p[h], te.won.values[h]), V1.ll(p[~h], te.won.values[~h]))
     print(f"\nBenter stage 2, best row ({best[1]}, {best[2]}) blended with the SP, weights {w[0]:.3f} / {w[1]:.3f}: "
           f"{l[0]:.4f}, gap to SP {l[0] - sp_ll[0]:+.4f} (halves {l[1] - sp_ll[1]:+.4f} / {l[2] - sp_ll[2]:+.4f})")
+    if hb.any():
+        vb, tb = va[va.p_bsp.notna()].copy(), te[te.p_bsp.notna()].copy()
+        w, _ = V1.blend(["p_best", "p_bsp"], vb)
+        _, p = V1.blend(["p_best", "p_bsp"], tb, w)
+        print(f"Benter stage 2 with the BSP, weights {w[0]:.3f} / {w[1]:.3f}: {V1.ll(p, tb.won):.4f}, gap to BSP "
+              f"{V1.ll(p, tb.won) - bsp_ll:+.4f}")
     imp = pd.Series(best[5].feature_importance("gain"), index=best[6]).sort_values(ascending=False)
     print("\nBest row's top inputs: " + ", ".join(f"{i} {v / imp.sum():.0%}" for i, v in imp.head(12).items()))
 

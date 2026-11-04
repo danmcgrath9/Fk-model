@@ -25,8 +25,11 @@ on:
         description: 'probe, run (pull into this run only, then the script) or pull (to the private data repo)'
         default: 'probe'
       script:
-        description: 'mode=run: research script, run as python SCRIPT greyhound/cache/topaz LABEL'
+        description: 'mode=run: research scripts, space separated, each run as python SCRIPT greyhound/cache/topaz LABEL'
         default: 'research/greyhound/topaz_profile.py'
+      betfair:
+        description: "mode=run: yes = also download Betfair's free ANZ greyhound files (2020 on) for BSP, as BETFAIR_DIR"
+        default: 'yes'
       label:
         description: 'mode=run: label for the report'
         default: 'topaz VIC'
@@ -110,12 +113,25 @@ jobs:
         if: github.event.inputs.mode == 'run' && steps.pullrun.outputs.complete != 'yes'
         run: echo "Months are still missing (see the pull report above); run mode=run again to continue." | tee -a "$GITHUB_STEP_SUMMARY"
 
-      - name: Run the script (results only; the data is not kept)
+      - name: Betfair's free ANZ greyhound files (BSP; terms read 25 Oct 2026, research/greyhound/README.md)
+        if: github.event.inputs.mode == 'run' && github.event.inputs.betfair == 'yes' && steps.pullrun.outputs.complete == 'yes'
+        run: |
+          mkdir -p bf
+          for f in ANZ_Greyhounds_2020.zip ANZ_Greyhounds_2021.zip ANZ_Greyhounds_2022.zip ANZ_Greyhounds_2023.zip \
+                   ANZ_Greyhounds_2024.zip ANZ_Greyhounds_2025.zip $(for m in 01 02 03 04 05 06 07 08 09 10 11 12; do echo ANZ_Greyhounds_2026_$m.csv; done); do
+            curl -fsSL --retry 3 -o "bf/$f" "https://betfair-datascientists.github.io/data/assets/$f" 2>/dev/null \
+              && echo "$f $(stat -c %s "bf/$f") bytes" || { rm -f "bf/$f"; echo "not published: $f"; }
+          done
+
+      - name: Run the scripts (results only; the data is not kept)
         if: github.event.inputs.mode == 'run' && steps.pullrun.outputs.complete == 'yes'
         run: |
-          pip install lightgbm scikit-learn
+          pip install lightgbm scikit-learn scipy
           set -o pipefail
-          python "${{ github.event.inputs.script }}" greyhound/cache/topaz "${{ github.event.inputs.label }}" | tee report.md | tee -a "$GITHUB_STEP_SUMMARY"
+          [ -d bf ] && export BETFAIR_DIR="$PWD/bf"
+          for s in ${{ github.event.inputs.script }}; do
+            python "$s" greyhound/cache/topaz "${{ github.event.inputs.label }}" | tee -a report.md | tee -a "$GITHUB_STEP_SUMMARY"
+          done
 
       - uses: actions/upload-artifact@v4
         if: always() && github.event.inputs.mode == 'run'
