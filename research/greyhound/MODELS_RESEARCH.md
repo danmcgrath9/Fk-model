@@ -177,3 +177,20 @@ windows beyond what T3 has (1-2% of splits).
 
 The order of work this implies: record opens (the founder's $1), then items 2 and 4 on the standard split while the
 opens accumulate, then Isolynx; and stage 2 with the open the moment a month of opens exists.
+
+### Where the list stands (4 Nov 2026, evening)
+
+- Item 4 (ratings methodology) is BUILT and worth 0.009 (Test 16: 0.117 to 0.1085). Item 2 (GRV's rating) is worth
+  another 0.009 if the 5 Nov compare clears it (the number on every runner the evening before; whether it is the
+  same after the race is what the compare says). Item 3 (Isolynx): the pull ran all afternoon (run 41820190239),
+  the D2 row runs when it is in. Item 5 (expert prices): the race records carry GRV's tip1-4 and the analyst
+  comment, and `/api/race?from&to` lists them for any date range, so a pull exists (`mode=run races=yes`) and round 8
+  tests the tips with a strike-rate-by-year leak check. Item 1 (the open) still waits on $1 in the TAB account.
+- Beyond the list: the walk-forward (Test 14) says a FRESH model holds the edge at the SP that the frozen one was
+  losing (+53.7% / +48.0% with the rule chosen out of sample; nothing at BSP), and that the SP itself sharpened from
+  August 2026. The finishing order as the label (round 7, truncated Plackett-Luce, row C of the table above) is the
+  one learner-side idea with information behind it rather than capacity; it is running. The 3,000-round cap was the
+  binding stop in Test 16 (2,997), so round 8 lifts it to 6,000 as a row.
+- The next walk-forward carries everything that cleared: the preview, the ratings upgrades, Isolynx, the tips and,
+  if cleared, GRV's rating (`topaz_walk.py` has the switches; `WALK_REFIT_EVERY=2` because the 181-input model does
+  not fit 36 refits in a job).
