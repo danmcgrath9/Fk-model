@@ -64,10 +64,24 @@ def snapshot(client: TopazClient, out: Path, max_races: int, day: str | None = N
               f"{sum(1 for x in rows if x['isBestBet'])}/{n}; startPrice filled on "
               f"{sum(1 for x in rows if x['startPrice'] not in (None, '', 0))}/{n}; startingPrice filled on "
               f"{sum(1 for x in rows if x['startingPrice'] not in (None, '', 0))}/{n}")
+        print(f"  {_book_line(rows)}")
         print(f"  race analystComment filled on {sum(1 for x in race_rows if x['analystComment'])}/{len(race_rows)}; "
               f"tips filled on {sum(1 for x in race_rows if any(x['tips']))}/{len(race_rows)}; results already "
               f"entered on {sum(1 for x in race_rows if x['resultEntered'])}")
     return 0
+
+
+def _book_line(rows) -> str:
+    """The pre-race prices' book per race: an analyst's expected prices sum to about 100%, a bookmaker's to 115-120%."""
+    books = {}
+    for x in rows:
+        p = x.get("startPrice")
+        if isinstance(p, (int, float)) and p and p > 1 and not x.get("scratched"):
+            books[x["raceId"]] = books.get(x["raceId"], 0.0) + 1.0 / p
+    if not books:
+        return "pre-race startPrice book: no priced races"
+    b = sorted(books.values())
+    return f"pre-race startPrice book per race: median {b[len(b) // 2]:.3f} over {len(b)} races (1.000 = no margin)"
 
 
 def compare(client: TopazClient, out: Path, day: str) -> int:
@@ -103,6 +117,19 @@ def compare(client: TopazClient, out: Path, day: str) -> int:
         sp += (b.get("startPrice") == a.get("startPrice"))
         bb += (bool(b.get("isBestBet")) == bool(a.get("isBestBet")))
     print("  comment: " + ", ".join(f"{k} {v}" for k, v in c.items()))
+    import math
+    pairs = [(before[k]["startPrice"], after[k].get("startPrice")) for k in both
+             if isinstance(before[k].get("startPrice"), (int, float)) and isinstance(after[k].get("startPrice"), (int, float))
+             and before[k]["startPrice"] > 1 and after[k]["startPrice"] > 1]
+    if len(pairs) >= 5:
+        la = [math.log(a) for a, _ in pairs]; lb = [math.log(b) for _, b in pairs]
+        ma, mb = sum(la) / len(la), sum(lb) / len(lb)
+        cov = sum((x - ma) * (y - mb) for x, y in zip(la, lb))
+        var = (sum((x - ma) ** 2 for x in la) * sum((y - mb) ** 2 for y in lb)) ** 0.5
+        ratios = sorted(abs(x - y) for x, y in zip(la, lb))
+        print(f"  pre-race startPrice against the bulk startPrice on {len(pairs)} runners: correlation of log prices "
+              f"{cov / var if var else float('nan'):+.3f}, median change {100 * (math.exp(ratios[len(ratios) // 2]) - 1):.0f}%; "
+              f"{_book_line(list(before.values()))}")
     print(f"  rating the same {rt}/{len(both)}; isBestBet the same {bb}/{len(both)}; pre-race startPrice equal to "
           f"the bulk startPrice {sp}/{len(both)} (if few, the bulk startPrice is the SP, not the price before the race)")
     return 0
