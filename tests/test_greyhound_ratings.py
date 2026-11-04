@@ -120,6 +120,50 @@ def test_simulation_form_and_elo_rank_dogs_and_never_see_the_race_itself():
     assert form.loc[first, "time_rating_last"].isna().all() and (e[first] == R.ELO_START).all()
 
 
-def test_topaz_mapping_waits_for_the_probe():
-    with pytest.raises(NotImplementedError):
-        R.topaz_to_runs(pd.DataFrame())
+def topaz_row(race, dog, box, place, time, margin, split=5.4, **kw):
+    """One BulkRunOutput row with the fields the mapping reads (names from Topaz API 1.8.1's swagger.json)."""
+    r = dict(raceId=race, meetingId=900 + race, meetingDate="2026-03-14T00:00:00.000Z", trackCode="MEP",
+             trackName="The Meadows", distanceInMetres=525, incomingGrade="5", dogId=dog, dogName=f"DOG {dog}",
+             boxNumber=box, place=place, resultTime=time, resultMargin=margin, firstSplitTime=split,
+             scratched=False, abnormalResult=None, raceType="Grade 5", raceTypeCode="G5", startPrice=4.2,
+             weightInKg=31.5)
+    r.update(kw)
+    return r
+
+
+def test_topaz_mapping_from_the_published_fields():
+    raw = pd.DataFrame([
+        topaz_row(1, 11, 1, 1, 29.80, 3.5),                      # winner: Topaz may give its margin over second
+        topaz_row(1, 12, 2, 2, 30.05, 3.5),
+        topaz_row(1, 13, 3, None, None, None, abnormalResult="FELL"),
+        topaz_row(1, 14, 4, None, None, None, scratched=True),   # never ran: dropped
+        topaz_row(2, 11, 5, 2, 30.10, 0.5, raceType="Trial", raceTypeCode="TRL"),
+    ])
+    runs = R.topaz_to_runs(raw)
+    assert len(runs) == 4 and "14" not in set(runs.dog)
+    w = runs[(runs.race_id == 1) & (runs.dog == "11")].iloc[0]
+    assert (w.finish, w.margin, w.time, w.win_time, w.split) == (1, 0.0, 29.80, 29.80, 5.4)
+    assert w.date == pd.Timestamp("2026-03-14") and w.track == "MEP" and w.distance == 525 and w.box == 1
+    assert w.start_price == 4.2 and w.dog_name == "DOG 11" and not w.is_trial
+    second = runs[(runs.race_id == 1) & (runs.dog == "12")].iloc[0]
+    assert second.margin == 3.5 and second.win_time == 29.80
+    fell = runs[runs.dog == "13"].iloc[0]
+    assert np.isnan(fell.finish) and np.isnan(fell.time) and fell.abnormal == "FELL"
+    assert runs[runs.race_id == 2].is_trial.all()
+    # the canonical table feeds the engine as is
+    assert R.run_ratings(runs).shape[0] == 4 and R.elo(runs).notna().sum() == 3
+
+
+def test_topaz_mapping_names_a_missing_field():
+    with pytest.raises(ValueError, match="resultTime"):
+        R.topaz_to_runs(pd.DataFrame([topaz_row(1, 11, 1, 1, 29.8, 0)]).drop(columns="resultTime"))
+
+
+def test_load_topaz_reads_the_pulls_files(tmp_path):
+    import gzip
+    import json
+    rows = [topaz_row(1, 11, 1, 1, 29.8, 0.0), topaz_row(1, 12, 2, 2, 30.0, 2.9)]
+    with gzip.open(tmp_path / "runs_VIC_2026-03.json.gz", "wt", encoding="utf-8") as f:
+        json.dump(rows, f)
+    runs = R.load_topaz(tmp_path)
+    assert list(runs.dog) == ["11", "12"] and runs.win_time.tolist() == [29.8, 29.8]
