@@ -30,11 +30,15 @@ def _h(text) -> str:
     return hashlib.sha1(t.encode("utf-8")).hexdigest()[:10] if t else ""
 
 
-def snapshot(client: TopazClient, out: Path, max_races: int) -> int:
+def snapshot(client: TopazClient, out: Path, max_races: int, day: str | None = None) -> int:
+    """`day` (YYYY-MM-DD): that day's races instead of the rest of today, e.g. tomorrow's the evening before, which
+    is the test that matters: the TAB opens on race morning, so a preview is usable only if it is out the day before
+    (founder, 4 Nov 2026: "we want to bet before the preview and odds come out")."""
     now = datetime.now(SYDNEY)
-    races = client._get("race/upcoming", params={"from": now.strftime("%Y-%m-%d %H:%M")}) or []
+    frm = f"{day} 00:00" if day else now.strftime("%Y-%m-%d %H:%M")
+    races = client._get("race/upcoming", params={"from": frm}) or []
     races = [r for r in races if isinstance(r, dict)]
-    print(f"{len(races)} VIC races still to run after {now:%Y-%m-%d %H:%M} Sydney")
+    print(f"{len(races)} VIC races to run from {frm} Sydney, asked at {now:%Y-%m-%d %H:%M} Sydney")
     rows, race_rows = [], []
     for r in races[:max_races]:
         rid = r.get("raceId")
@@ -50,7 +54,7 @@ def snapshot(client: TopazClient, out: Path, max_races: int) -> int:
                          "isBestBet": u.get("isBestBet"), "startPrice": u.get("startPrice"),
                          "startingPrice": u.get("startingPrice"), "scratched": u.get("scratched")})
     out.mkdir(parents=True, exist_ok=True)
-    path = out / f"preview_{now:%Y-%m-%d}.json"
+    path = out / f"preview_{day or now.strftime('%Y-%m-%d')}.json"
     path.write_text(json.dumps({"taken": now.isoformat(), "races": race_rows, "runs": rows}))
     n = len(rows)
     print(f"snapshot of {len(race_rows)} races, {n} runners -> {path.name}")
@@ -109,6 +113,7 @@ def main(argv=None) -> int:
     ap.add_argument("--dir", type=Path, default=Path(__file__).resolve().parent / "cache" / "preview")
     sp = ap.add_subparsers(dest="cmd", required=True)
     s = sp.add_parser("snapshot"); s.add_argument("--max-races", type=int, default=60)
+    s.add_argument("--date", default="", help="YYYY-MM-DD: that day's races (tomorrow's, the evening before)")
     c = sp.add_parser("compare"); c.add_argument("day")
     a = ap.parse_args(argv)
     if os.environ.get("TOPAZ_TERMS_READ", "").strip().lower() != "yes":
@@ -116,7 +121,7 @@ def main(argv=None) -> int:
         return 2
     try:
         client = TopazClient(pause=1.0)
-        return snapshot(client, a.dir, a.max_races) if a.cmd == "snapshot" else compare(client, a.dir, a.day)
+        return snapshot(client, a.dir, a.max_races, a.date or None) if a.cmd == "snapshot" else compare(client, a.dir, a.day)
     except TopazError as e:
         print(f"Topaz refused or failed: {e}")
         return 1

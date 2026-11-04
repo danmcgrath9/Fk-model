@@ -101,7 +101,9 @@ jobs:
 
       - name: Snapshot today's remaining VIC races before they run
         if: github.event.inputs.mode == 'preview'
-        run: python -m greyhound.preview snapshot | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          D=""; [[ "${{ github.event.inputs.from }}" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] && D="--date ${{ github.event.inputs.from }}"
+          python -m greyhound.preview snapshot $D | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Compare a snapshot with the bulk feed the day after
         if: github.event.inputs.mode == 'preview-compare'
