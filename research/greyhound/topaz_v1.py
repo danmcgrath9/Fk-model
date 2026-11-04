@@ -62,7 +62,10 @@ def prior_rate(df, keys, won):
     return m.w.values, m.n.values
 
 
-def build(d):
+def build(d, keep_unresulted=False):
+    """`keep_unresulted`: also keep races with NO result at all (tonight's card, appended to the cache as
+    runs_<STATE>_upcoming.json.gz by topaz_price_upcoming.py), so they can be priced; every rating they carry is as
+    at the end of the previous day, and they never train anything (won is 0 and they have no p_mkt label)."""
     runs = load_topaz(d)
     runs = runs[~runs.is_trial].reset_index(drop=True)
     for c in ("weight", "trainer_id", "whelped", "sex", "start_price"):   # optional Topaz fields
@@ -88,7 +91,10 @@ def build(d):
     df["box_ratio"] = np.where(bn >= 50, bw / np.maximum(share, 1e-9), np.nan)
     # the races scored: one winner, 4+ runners, every runner priced
     g = df.groupby("race_id")
-    ok = (g.won.transform("sum") == 1) & (g.dog.transform("size") >= 4) & g.start_price.transform(lambda s: (s > 1).all())
+    resulted = g.won.transform("sum") == 1
+    if keep_unresulted:
+        resulted = resulted | g.finish.transform(lambda s: s.isna().all())
+    ok = resulted & (g.dog.transform("size") >= 4) & g.start_price.transform(lambda s: (s > 1).all())
     df = df[ok].reset_index(drop=True)
     sp = 1 / df.start_price
     df["p_sp"] = sp / sp.groupby(df.race_id).transform("sum")

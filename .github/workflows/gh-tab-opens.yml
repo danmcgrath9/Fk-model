@@ -1,0 +1,53 @@
+name: gh tab opens
+
+# TAB's own racing information service, read-only, no login: the OPENING fixed price of every Victorian greyhound runner
+# (5 Nov 2026). probe prints the field names TAB's answers carry and a sample; record writes one CSV for the day.
+# TAB's prices are public information (its app shows them to anyone), so the CSV may be kept as a run artifact.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'probe (field names and a sample) or record (the day, one CSV artifact)'
+        default: 'probe'
+      date:
+        description: 'YYYY-MM-DD, Sydney; blank = today'
+        default: ''
+      jurisdiction:
+        description: 'TAB jurisdiction for the request'
+        default: 'VIC'
+
+concurrency:
+  group: gh-tab-opens
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  tab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'requests>=2.31'
+      - name: Probe or record
+        run: |
+          set -o pipefail
+          DATE_ARG=""; [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
+          if [ "${{ github.event.inputs.mode }}" = "record" ]; then
+            python -m greyhound.tab_api record --out data/greyhound/tab_opens $DATE_ARG --jurisdiction "${{ github.event.inputs.jurisdiction }}" | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            python -m greyhound.tab_api probe $DATE_ARG --jurisdiction "${{ github.event.inputs.jurisdiction }}" | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: github.event.inputs.mode == 'record'
+        with:
+          name: tab-opens-${{ github.run_id }}
+          path: data/greyhound/tab_opens
+          if-no-files-found: ignore
