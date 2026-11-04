@@ -39,6 +39,9 @@ on:
       label:
         description: 'mode=run: label for the report'
         default: 'topaz VIC'
+      env:
+        description: 'mode=run: KEY=VALUE pairs, space separated, exported for the scripts (e.g. WALK_REFIT_EVERY=2 WALK_GRV_RATING=yes)'
+        default: ''
       states:
         description: 'comma separated: VIC,NSW,QLD,SA,WA,TAS,NT,NZ'
         default: 'VIC'
@@ -205,6 +208,9 @@ jobs:
           set -o pipefail
           [ -d bf ] && export BETFAIR_DIR="$PWD/bf"
           [ -d greyhound/cache/isolynx ] && export ISOLYNX_DIR="$PWD/greyhound/cache/isolynx"
+          for kv in ${{ github.event.inputs.env }}; do
+            case "$kv" in [A-Z_]*=*) export "$kv" ;; *) echo "ignored env input: $kv" ;; esac
+          done
           for s in ${{ github.event.inputs.script }}; do
             python "$s" greyhound/cache/topaz "${{ github.event.inputs.label }}" | tee -a report.md | tee -a "$GITHUB_STEP_SUMMARY"
           done
