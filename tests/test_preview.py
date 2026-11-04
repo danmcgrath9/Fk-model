@@ -25,8 +25,13 @@ def test_snapshot_hashes_comments_and_compare_counts_changes(tmp_path, capsys):
     day = snap["taken"][:10]
     bulk = Resp(200, [{"runId": 1, "comment": "Needs luck from the draw", "rating": 80, "isBestBet": True, "startPrice": 6.0},
                       {"runId": 2, "comment": "Was slow away", "rating": 70, "isBestBet": False, "startPrice": 9.0}])
-    c2 = TopazClient(KEY, session=Session(bulk), sleep=lambda _: None)
+    bulk = Resp(200, [dict(bulk._body[0], raceId=7, boxNumber=3, dogId=11, dogName="Fast Dog"),
+                      dict(bulk._body[1], raceId=7, boxNumber=4, dogId=12, dogName="Slow Dog")])
+    race_after = Resp(200, [{"raceId": 7, "analystComment": "Open race", "tip1": 3, "tip2": None}])
+    c2 = TopazClient(KEY, session=Session(bulk, race_after), sleep=lambda _: None)
     assert PV.compare(c2, tmp_path, day) == 0
     out = capsys.readouterr().out
     assert "same 1" in out and "empty before, filled after 1" in out and "rating the same 2/2" in out
     assert "startPrice 0/2" in out and "slow away" not in out
+    assert "analystComment the same 1/1" in out and "tips filled before on 1/1, the same after 1/1" in out
+    assert "of 1 tip values, 1 match a box number, 0 a dog id, 0 a dog name" in out and "Open race" not in out

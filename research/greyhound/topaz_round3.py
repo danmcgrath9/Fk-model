@@ -238,10 +238,10 @@ def main(d, label):
     stake(te, p, te.start_price.values, 0.0, (0.05, 0.10, 0.20), "Back at GRV's SP, no commission", h)
 
 
-def fit_weighted(Xtr, ytr, rtr, Xes, wes, res, weight):
-    """R2.fit_es with optional row weights applied inside the race-softmax objective."""
+def fit_weighted(Xtr, ytr, rtr, Xes, wes, res, weight, rounds=3000):
+    """R2.fit_es with optional row weights applied inside the race-softmax objective; `rounds` is the cap."""
     if weight is None:
-        return R2.fit_es(Xtr, ytr, rtr, Xes, wes, res, R2.SMALL, 3000)
+        return R2.fit_es(Xtr, ytr, rtr, Xes, wes, res, R2.SMALL, rounds)
     import lightgbm as lgb
     groups = rtr.groupby(rtr.values, sort=False).size().values
     starts = np.r_[0, np.cumsum(groups)[:-1]]
@@ -257,7 +257,7 @@ def fit_weighted(Xtr, ytr, rtr, Xes, wes, res, weight):
     won = np.asarray(wes)
     dtr = lgb.Dataset(Xtr, ytr, categorical_feature=V1.CAT, free_raw_data=False)
     des = lgb.Dataset(Xes, won.astype(float), reference=dtr, categorical_feature=V1.CAT, free_raw_data=False)
-    bst = lgb.train(params, dtr, num_boost_round=3000, valid_sets=[des],
+    bst = lgb.train(params, dtr, num_boost_round=rounds, valid_sets=[des],
                     feval=lambda pr, data: ("race_ll", score(pr, won), False),
                     callbacks=[lgb.early_stopping(300, verbose=False)])
     return bst, bst.best_iteration, bst.best_score["valid_0"]["race_ll"]

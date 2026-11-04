@@ -23,10 +23,11 @@ class Resp:
 class Session:
     """Answers each GET from a queue of responses and records what was asked."""
     def __init__(self, *responses):
-        self.queue, self.asked = list(responses), []
+        self.queue, self.asked, self.params = list(responses), [], []
 
     def get(self, url, headers=None, params=None, timeout=None):
         self.asked.append((url, dict(headers)))
+        self.params.append(dict(params or {}))
         return self.queue.pop(0)
 
 
@@ -206,3 +207,16 @@ def test_trials_pull_by_day_into_their_own_files(tmp_path):
     assert rep[0][2] == 3 and "trialresult" in s.asked[0][0]
     assert P.file_for(tmp_path, "VIC", 2026, 11, "trials").exists()
     assert not P.file_for(tmp_path, "VIC", 2026, 11).exists()
+
+
+def test_races_pull_takes_the_month_in_one_call_and_falls_back_to_days(tmp_path):
+    c, s = client(Resp(200, [{"raceId": 1, "tip1": 3}, {"raceId": 2}]))
+    rep = P.pull(c, ["VIC"], [(2024, 3)], tmp_path, set(), date(2026, 11, 4), max_calls=100, kind="races")
+    assert rep[0][2] == 2 and rep[0][3] == "pulled" and len(s.asked) == 1 and s.asked[0][0].endswith("/api/race")
+    assert s.params[0] == {"from": "2024-03-01", "to": "2024-03-31", "owningauthoritycode": "VIC"}
+    assert P.file_for(tmp_path, "VIC", 2024, 3, "races").exists()
+    # the month call fails every try: day by day instead (the current month stops at yesterday: 3 days)
+    c2, s2 = client(*([Resp(500)] * 5 + [Resp(200, [{"raceId": d}]) for d in range(1, 4)]))
+    rep2 = P.pull(c2, ["VIC"], [(2026, 11)], tmp_path, set(), date(2026, 11, 4), max_calls=100, kind="races")
+    assert rep2[0][2] == 3 and "day by day" in rep2[0][3] and len(s2.asked) == 8
+    assert s2.params[-1]["from"] == s2.params[-1]["to"] and sorted(p["from"] for p in s2.params[5:]) == ["2026-11-01", "2026-11-02", "2026-11-03"]

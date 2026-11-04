@@ -125,6 +125,13 @@ class TopazClient:
         d = f"{year:04d}-{month:02d}-{day:02d}"
         return self._get("trialresult", params={"from": d, "to": d}) or []
 
+    def races(self, authority: str, frm: str, to: str) -> list[dict]:
+        """The race records between two dates inclusive (GET /api/race?from=&to=&owningauthoritycode=): the race's
+        analystComment, tip1-tip4 and suggestedBet, which the bulk runs do not carry (research/greyhound/README.md,
+        Test 15). The Topaz-api wrapper's get_races; the same Race shape as /race/upcoming."""
+        _check(authority)
+        return self._get("race", params={"from": frm, "to": to, "owningauthoritycode": authority}) or []
+
 
 def _check(authority: str) -> None:
     if authority not in AUTHORITIES:

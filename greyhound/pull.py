@@ -125,6 +125,8 @@ def month_by_days(client: TopazClient, state: str, y: int, m: int, today: date, 
         try:
             if kind == "trials":
                 return "ok", client.trial_results(y, m, d)
+            if kind == "races":
+                return "ok", client.races(state, f"{y:04d}-{m:02d}-{d:02d}", f"{y:04d}-{m:02d}-{d:02d}")
             return "ok", client.bulk_runs_day(state, y, m, d)
         except TopazNoAccess:
             return "outside", None
@@ -167,7 +169,18 @@ def pull(client: TopazClient, states, span, out: Path, refresh: set[str], today:
             if client.calls >= max_calls or time.monotonic() > deadline:
                 report.append((state, ym, None, "budget"))
                 continue
-            if by_day or kind == "trials":
+            if kind == "races":
+                # race records are small: the month in one call, and day by day only if the month call fails
+                last = today.day - 1 if (y, m) == (today.year, today.month) else calendar.monthrange(y, m)[1]
+                try:
+                    rows = client.races(state, f"{ym}-01", f"{ym}-{last:02d}") if last >= 1 else []
+                    status = "pulled" if rows else "pulled, empty"
+                except TopazNoAccess as e:
+                    rows, status = None, f"outside the key's access ({e})"
+                except TopazError:
+                    rows, status = month_by_days(client, state, y, m, today, max_calls, deadline, workers, kind)
+                    status += " (day by day: the month call failed)"
+            elif by_day or kind == "trials":
                 rows, status = month_by_days(client, state, y, m, today, max_calls, deadline, workers, kind)
             else:
                 try:
@@ -199,6 +212,8 @@ def main(argv=None) -> int:
     ap.add_argument("--max-minutes", type=float, default=1e9, help="stop starting new requests after this long")
     ap.add_argument("--workers", type=int, default=1, help="with --by-day: days requested at once")
     ap.add_argument("--trials", action="store_true", help="pull trial results (trials_<STATE>_<YYYY-MM>) instead of runs")
+    ap.add_argument("--races", action="store_true",
+                    help="pull race records (races_<STATE>_<YYYY-MM>: the analyst comment, tips and suggested bet) instead")
     ap.add_argument("--per-minute", type=float, default=0,
                     help="cap on calls started a minute, shared by the workers (GRV's limit is about 80); 0 = --pause")
     a = ap.parse_args(argv)
@@ -219,7 +234,7 @@ def main(argv=None) -> int:
         refresh = {x.strip() for x in a.refresh.split(",") if x.strip()}
         report = pull(client, states, months(a.start, a.end), a.out, refresh, today, a.max_calls,
                       by_day=a.by_day, max_minutes=a.max_minutes, workers=a.workers,
-                      kind="trials" if a.trials else "runs")
+                      kind="trials" if a.trials else "races" if a.races else "runs")
     except TopazError as e:
         print(f"Topaz refused or failed: {e}")
         return 1
