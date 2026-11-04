@@ -1,0 +1,48 @@
+{
+ "day": "Fri & Sat",
+ "date": "6\u20137 November",
+ "meetings": [
+  {
+   "name": "Cranbourne",
+   "note": "Friday",
+   "bets": [
+    {
+     "race": 6,
+     "time": "8:45PM",
+     "horse": "Speir",
+     "price": "$4.80",
+     "units": "0.94u"
+    },
+    {
+     "race": 8,
+     "time": "9:45PM",
+     "horse": "Power And The Beat",
+     "price": "$4.40",
+     "units": "1.11u"
+    }
+   ]
+  },
+  {
+   "name": "Flemington",
+   "note": "Saturday",
+   "bets": [
+    {
+     "race": 3,
+     "time": "1:50PM",
+     "horse": "Litzdeel",
+     "price": "$8.50",
+     "units": "0.73u"
+    },
+    {
+     "race": 9,
+     "time": "5:50PM",
+     "horse": "Salaria",
+     "price": "$11",
+     "units": "0.32u"
+    }
+   ]
+  }
+ ],
+ "footer": "Win bets.",
+ "brand": true
+}

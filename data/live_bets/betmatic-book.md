@@ -933,3 +933,11 @@ new history cache (f1f631f) without touching the API limit.
 - Real money: none.
 - Top-ups (tracked only): His Finest Hour 0.71u at $8.50 lost -0.71u; Tomanado R9 0.74u at $13 to run.
 - Lay and back books settle at BSP once Form King has the results (7:15pm).
+
+## Friday 6 and Saturday 7 Nov at the open (paper: bot off, TAB $0.65), read Wed 7:10pm
+Flemington Sat opened Wed 12:33-2:56pm, before the 1:50pm "nothing open" check, which read odds stored at 12:01pm; Cranbourne
+Fri opened Wed 3:41-4:04pm; Warrnambool Fri not open. Fills at Form King's open on the pre-open sheets:
+Cranbourne R6 Speir $8 1.88u (ours $4.99), R8 Power And The Beat $10 2.22u (ours $5.15); Flemington Sat R3 Litzdeel $8.50 1.46u
+(ours $5.15), R9 Salaria $11 0.63u (ours $7.21). 4 bets, 6.19u. None doubled (all under 2.2x). Prices at 7:07pm: Speir $4.80,
+Power And The Beat $4.40, Litzdeel $8.50, Salaria $11. Cards: card_frisat07_mercer_now.json (Mercer, live prices, Twitter
+units) and card_frisat07_plain_open.json (no Mercer, the open, full units, rated).
