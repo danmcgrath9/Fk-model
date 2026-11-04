@@ -1618,7 +1618,7 @@ Are the held-out dogs under-priced? This compares actual wins against expected w
 **No gain.** The gap to BSP moves by 0.0002 (+0.1054 to +0.1052), which is noise; the first half got slightly worse
 and the second slightly better.
 
-The held-out dogs are not a hidden edge. They win 20.5%, against 20.4% expected by our model and 20.8% by BSP. The ones
+The held-out dogs are not a hidden edge. They win 20.5%, against 20.6% expected by our model and 20.7% by BSP. The ones
 drawn inside win less than both expect (A/E 0.945 and 0.964).
 
 The model and Betfair already treat a dog that was beaten to the lead as a dog that may be beaten to it again. Only
