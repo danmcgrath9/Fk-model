@@ -1317,3 +1317,159 @@ and does not hold the next month; the A/E against the sharpest price is 0.97. Th
 (Test 19, legitimate and worth 0.001) and lifts the BSP-chance rounds to 4,000 (`WALK_ROUNDS_A`, after Test 19's
 early stopping chose 4,139 with the cap lifted), and GRV's rating goes in the one after if the 5 Nov compare clears
 it. The open prices decide what any of this is worth at the price we can actually take.
+
+## Test 20: the walk-forward with GRV's tips and 4,000 rounds (4 Nov 2026, gh topaz run 41875722363, `topaz_walk.py`)
+
+Test 18's walk-forward (preview, ratings upgrades, refit every second month) plus GRV's tips for this race (Test 19,
+154 inputs plus 29 relatives) and the BSP-chance model at 4,000 rounds instead of 3,000 (`WALK_ROUNDS_A`). 18 refits,
+139 minutes (7.7 a refit, the same as Test 18's 3,000-round refits because the tips make the trees shallower).
+
+| month | races | model | ensemble | GRV SP | BSP (races matched) | model gap to SP | gap to BSP |
+|---|---|---|---|---|---|---|---|
+| 2023-12 | 834 | 1.6310 | 1.6259 | 1.5940 | 1.5184 (754) | +0.0371 | +0.0912 |
+| 2024-01 | 835 | 1.6283 | 1.6176 | 1.6075 | 1.4931 (723) | +0.0208 | +0.1109 |
+| 2024-02 | 715 | 1.6412 | 1.6436 | 1.5765 | 1.5269 (664) | +0.0646 | +0.1068 |
+| 2024-03 | 810 | 1.6251 | 1.6134 | 1.6308 | 1.4925 (683) | -0.0057 | +0.0977 |
+| 2024-04 | 809 | 1.6197 | 1.6027 | 1.6111 | 1.4883 (705) | +0.0086 | +0.0936 |
+| 2024-05 | 882 | 1.6287 | 1.6155 | 1.6492 | 1.5002 (718) | -0.0205 | +0.0814 |
+| 2024-06 | 822 | 1.6759 | 1.6509 | 1.6596 | 1.5126 (640) | +0.0163 | +0.0993 |
+| 2024-07 | 881 | 1.6645 | 1.6471 | 1.6876 | 1.5288 (723) | -0.0231 | +0.0866 |
+| 2024-08 | 900 | 1.6542 | 1.6264 | 1.6499 | 1.4912 (705) | +0.0043 | +0.0935 |
+| 2024-09 | 817 | 1.6468 | 1.6295 | 1.6379 | 1.4997 (697) | +0.0090 | +0.1090 |
+| 2024-10 | 950 | 1.6215 | 1.6066 | 1.6172 | 1.4742 (835) | +0.0043 | +0.1041 |
+| 2024-11 | 876 | 1.6234 | 1.6042 | 1.6091 | 1.5103 (744) | +0.0144 | +0.0733 |
+| 2024-12 | 785 | 1.6781 | 1.6536 | 1.6790 | 1.5480 (616) | -0.0009 | +0.0736 |
+| 2025-01 | 928 | 1.6212 | 1.6144 | 1.6159 | 1.4845 (831) | +0.0053 | +0.0961 |
+| 2025-02 | 791 | 1.6264 | 1.6172 | 1.5999 | 1.5258 (749) | +0.0265 | +0.0849 |
+| 2025-03 | 907 | 1.6333 | 1.6247 | 1.5737 | 1.4971 (842) | +0.0596 | +0.1126 |
+| 2025-04 | 872 | 1.6201 | 1.6117 | 1.6231 | 1.4916 (774) | -0.0030 | +0.0961 |
+| 2025-05 | 942 | 1.6656 | 1.6517 | 1.6700 | 1.5526 (787) | -0.0044 | +0.0669 |
+| 2025-06 | 862 | 1.5908 | 1.5658 | 1.6204 | 1.4665 (747) | -0.0296 | +0.0791 |
+| 2025-07 | 922 | 1.6193 | 1.6108 | 1.6292 | 1.5074 (815) | -0.0099 | +0.0790 |
+| 2025-08 | 818 | 1.5442 | 1.5251 | 1.5227 | 1.4028 (723) | +0.0215 | +0.1010 |
+| 2025-09 | 834 | 1.6001 | 1.5882 | 1.5933 | 1.4865 (721) | +0.0068 | +0.0785 |
+| 2025-10 | 960 | 1.6264 | 1.6080 | 1.6347 | 1.4952 (821) | -0.0083 | +0.0974 |
+| 2025-11 | 753 | 1.6011 | 1.5844 | 1.5705 | 1.4634 (666) | +0.0306 | +0.1050 |
+| 2025-12 | 913 | 1.5839 | 1.5588 | 1.6146 | 1.4557 (786) | -0.0307 | +0.0865 |
+| 2026-01 | 913 | 1.6241 | 1.6093 | 1.6056 | 1.4824 (824) | +0.0185 | +0.1113 |
+| 2026-02 | 879 | 1.6051 | 1.6003 | 1.5675 | 1.4830 (828) | +0.0376 | +0.0988 |
+| 2026-03 | 990 | 1.5806 | 1.5820 | 1.5360 | 1.4493 (963) | +0.0447 | +0.1214 |
+| 2026-04 | 871 | 1.5509 | 1.5506 | 1.5089 | 1.4717 (860) | +0.0420 | +0.0799 |
+| 2026-05 | 908 | 1.6371 | 1.6292 | 1.6255 | 1.5155 (821) | +0.0116 | +0.0905 |
+| 2026-06 | 897 | 1.6267 | 1.6208 | 1.6411 | 1.4978 (814) | -0.0145 | +0.1035 |
+| 2026-07 | 957 | 1.6085 | 1.6035 | 1.5671 | 1.4622 (886) | +0.0414 | +0.1299 |
+| 2026-08 | 866 | 1.5808 | 1.5830 | 1.5156 | 1.4872 (856) | +0.0652 | +0.0905 |
+| 2026-09 | 901 | 1.5323 | 1.5381 | 1.4641 | 1.4283 (900) | +0.0682 | +0.1031 |
+| 2026-10 | 892 | 1.5147 | 1.5185 | 1.4322 | 1.4030 (892) | +0.0826 | +0.1117 |
+| 2026-11 | 69 | 1.6178 | 1.6386 | 1.5317 | none matched | +0.0861 | |
+
+Scored quarter as a whole (25,676 races): model 1.6122, ensemble 1.6006, SP 1.5952; on the 22,866 BSP-matched races
+model 1.5797, BSP 1.4838, **gap +0.0959** against Test 18's +0.0987 and Test 14's +0.1171. The model beat the SP in
+twelve of 36 months and sits 0.017 behind it on the quarter. The tips and the extra rounds are worth 0.003
+walk-forward, the two 0.001s of Test 19 and a little more: real, small, and kept.
+
+### Bets at GRV's SP, no commission
+
+| month | rule chosen on the 6 months before (bets, ROI there) | bets | winners | A/E | flat ROI | cumulative units |
+|---|---|---|---|---|---|---|
+| 2024-06 | blend, all, $8-$13, 10% (309, +58%) | 61 | 5 | 0.808 | -27.0% | -16 |
+| 2024-07 | blend, one a race, $8-$13, 5% (485, +60%) | 84 | 16 | 1.801 | +92.0% | +61 |
+| 2024-08 | blend, one a race, $13-$21, 5% (356, +61%) | 75 | 8 | 1.712 | +58.3% | +104 |
+| 2024-09 | blend, one a race, $13-$21, 10% (314, +80%) | 58 | 5 | 1.334 | +28.1% | +121 |
+| 2024-10 | blend, one a race, $13-$21, 10% (315, +78%) | 68 | 1 | 0.233 | -77.9% | +68 |
+| 2024-11 | blend, all, $8-$13, 20% (307, +56%) | 49 | 4 | 0.798 | -15.1% | +60 |
+| 2024-12 | ensemble, all, $5-$8, 50% (540, +43%) | 83 | 20 | 1.501 | +47.8% | +100 |
+| 2025-01 | ensemble, one a race, $5-$8, 50% (528, +46%) | 97 | 18 | 1.163 | +17.1% | +117 |
+| 2025-02 | blend, one a race, $1.5-$21, 30% (454, +45%) | 63 | 16 | 1.493 | +55.2% | +152 |
+| 2025-03 | blend, one a race, $8-$13, 10% (467, +56%) | 75 | 15 | 1.958 | +106.9% | +232 |
+| 2025-04 | blend, one a race, $8-$13, 5% (561, +64%) | 94 | 15 | 1.572 | +57.3% | +286 |
+| 2025-05 | blend, one a race, $8-$13, 10% (414, +68%) | 63 | 12 | 1.899 | +91.9% | +344 |
+| 2025-06 | blend, one a race, $8-$13, 10% (482, +83%) | 76 | 12 | 1.502 | +45.7% | +378 |
+| 2025-07 | blend, one a race, $8-$13, 10% (501, +76%) | 84 | 20 | 2.390 | +140.2% | +496 |
+| 2025-08 | blend, one a race, $8-$13, 10% (524, +95%) | 83 | 15 | 1.781 | +72.3% | +556 |
+| 2025-09 | blend, all, $8-$13, 10% (519, +91%) | 69 | 9 | 1.288 | +25.2% | +573 |
+| 2025-10 | blend, all, $8-$13, 20% (333, +103%) | 53 | 10 | 1.850 | +76.4% | +614 |
+| 2025-11 | blend, all, $8-$13, 20% (323, +104%) | 47 | 15 | 3.111 | +207.9% | +712 |
+| 2025-12 | blend, one a race, $8-$13, 10% (458, +82%) | 87 | 14 | 1.553 | +52.3% | +757 |
+| 2026-01 | blend, one a race, $8-$13, 10% (475, +77%) | 101 | 16 | 1.535 | +48.1% | +806 |
+| 2026-02 | blend, one a race, $8-$13, 10% (407, +71%) | 74 | 12 | 1.566 | +48.9% | +842 |
+| 2026-03 | blend, one a race, $8-$13, 10% (422, +65%) | 94 | 7 | 0.734 | -26.3% | +817 |
+| 2026-04 | blend, one a race, $1.5-$21, 30% (302, +76%) | 41 | 6 | 1.043 | +57.8% | +841 |
+| 2026-05 | blend, one a race, $1.5-$21, 20% (449, +55%) | 90 | 20 | 1.295 | +36.8% | +874 |
+| 2026-06 | blend, one a race, $1.5-$21, 20% (584, +44%) | 111 | 33 | 1.575 | +61.0% | +942 |
+| 2026-07 | blend, one a race, $1.5-$21, 20% (500, +44%) | 82 | 15 | 1.073 | +1.1% | +943 |
+| 2026-08 | blend, all, $1.5-$21, 20% (452, +54%) | 54 | 10 | 1.258 | +16.3% | +951 |
+| 2026-09 | blend, all, $1.5-$21, 20% (341, +65%) | 45 | 5 | 0.835 | -24.7% | +940 |
+| 2026-10 | model, one a race, $8-$13, 50% (842, +28%) | 138 | 10 | 0.740 | -28.1% | +902 |
+| 2026-11 | blend, all, $1.5-$21, 10% (598, +28%) | 7 | 1 | 0.931 | +42.9% | +904 |
+
+- **Sequential rule**: 1st half 1,102 bets, A/E 1.507, **+49.7%**, bank x13.02 at 0.5% a bet, worst drawdown 36%,
+  longest losing run 48; 2nd half 1,104 bets, A/E 1.324, **+32.3%**, bank x5.13, drawdown 31%, losing run 33; all
+  2,206 bets, A/E 1.409, +41.0%, bank x66.78. Months in profit 24 of 30; last six +61% (111), +1% (82), +16% (54),
+  -25% (45), -28% (138), +43% (7).
+- **Test 12's rule**: +44.0% and +22.0% (2,004 and 2,007 bets, A/E 1.453 and 1.232, drawdown 24% and 43%, losing runs
+  42 and 45; all 4,011 bets +33.0%); 23 of 30 months; last six +56%, +61%, -10%, +15%, -31%, -23% (13).
+- **Test 13's rule**: +23.3% and +16.3% (1,034 and 1,034 bets, A/E 1.225 and 1.175, drawdown 15% and 32%, losing runs
+  17 and 28; all 2,068 bets +19.8%); 23 of 30 months; last six +23%, -52%, +2%, -2%, -17%, +23% (6).
+
+The same money as Test 18 (+41.0% against +39.8% over all bets, Test 12's rule +33.0% against +32.2%) arranged less
+evenly: 24 months in profit against 26, and September and October 2026 lost where Test 18's model made +2% and +15%.
+October is the month the chooser picked the model alone for the first time at the SP (the blend's six months before
+it had fallen to +28%), on 138 bets, and lost 28%. A gap 0.003 smaller did not buy a steadier bet.
+
+### Bets at BSP, 8% commission on winnings
+
+| month | rule chosen on the 6 months before (bets, ROI there) | bets | winners | A/E | flat ROI | cumulative units |
+|---|---|---|---|---|---|---|
+| 2024-06 | blend, one a race, $5-$8, 20% (380, +19%) | 45 | 7 | 0.962 | -14.5% | -7 |
+| 2024-07 | blend, one a race, $8-$13, 20% (762, +11%) | 141 | 13 | 0.962 | -5.7% | -14 |
+| 2024-08 | model, one a race, $5-$8, 50% (361, +8%) | 48 | 4 | 0.517 | -52.3% | -40 |
+| 2024-09 | blend, all, $1.5-$21, 50% (380, +19%) | 59 | 4 | 0.877 | -10.5% | -46 |
+| 2024-10 | blend, one a race, $1.5-$21, 50% (346, +29%) | 62 | 3 | 0.678 | -41.7% | -72 |
+| 2024-11 | blend, one a race, $1.5-$21, 50% (348, +35%) | 83 | 7 | 1.127 | +13.3% | -61 |
+| 2024-12 | blend, one a race, $8-$13, 30% (451, +22%) | 49 | 5 | 1.060 | -7.5% | -64 |
+| 2025-01 | blend, one a race, $8-$13, 30% (436, +18%) | 69 | 3 | 0.433 | -57.2% | -104 |
+| 2025-02 | blend, one a race, $8-$13, 30% (422, +7%) | 74 | 11 | 1.574 | +51.7% | -65 |
+| 2025-03 | blend, one a race, $8-$13, 30% (428, +12%) | 64 | 8 | 1.283 | +25.1% | -49 |
+| 2025-04 | blend, one a race, $8-$13, 30% (430, +12%) | 94 | 9 | 0.987 | -5.3% | -54 |
+| 2025-05 | blend, one a race, $8-$13, 30% (450, +14%) | 73 | 13 | 1.834 | +67.4% | -5 |
+| 2025-06 | blend, one a race, $8-$13, 30% (423, +13%) | 75 | 5 | 0.687 | -35.0% | -31 |
+| 2025-07 | blend, one a race, $8-$13, 30% (449, +7%) | 91 | 9 | 1.020 | -0.2% | -32 |
+| 2025-08 | blend, one a race, $8-$13, 30% (471, +15%) | 68 | 9 | 1.359 | +22.7% | -16 |
+| 2025-09 | blend, one a race, $1.5-$21, 50% (394, +19%) | 48 | 0 | 0.000 | -100.0% | -64 |
+| 2025-10 | blend, one a race, $1.5-$3, 2% (348, +10%) | 68 | 31 | 1.074 | +3.2% | -62 |
+| 2025-11 | blend, one a race, $1.5-$21, 50% (364, +16%) | 52 | 6 | 1.506 | +50.9% | -35 |
+| 2025-12 | blend, all, $1.5-$21, 50% (366, +29%) | 69 | 5 | 0.928 | -30.5% | -56 |
+| 2026-01 | blend, one a race, $1.5-$21, 50% (359, +17%) | 76 | 3 | 0.571 | -53.0% | -97 |
+| 2026-02 | model, one a race, $8-$13, 5% (2,001, +4%) | 326 | 37 | 1.159 | +7.9% | -71 |
+| 2026-03 | model, one a race, $8-$13, 5% (2,010, +3%) | 376 | 35 | 0.947 | -11.0% | -112 |
+| 2026-04 | blend, one a race, $8-$13, 2% (1,769, +3%) | 327 | 33 | 1.029 | -3.4% | -124 |
+| 2026-05 | blend, one a race, $8-$13, 2% (1,832, +1%) | 306 | 42 | 1.407 | +30.2% | -31 |
+| 2026-06 | blend, one a race, $8-$13, 30% (539, +5%) | 90 | 13 | 1.481 | +31.9% | -2 |
+| 2026-07 | blend, one a race, $8-$13, 30% (547, +15%) | 108 | 9 | 0.872 | -21.9% | -26 |
+| 2026-08 | blend, one a race, $8-$13, 30% (582, +11%) | 104 | 13 | 1.301 | +27.0% | +2 |
+| 2026-09 | blend, one a race, $8-$13, 30% (605, +16%) | 99 | 7 | 0.710 | -31.4% | -29 |
+| 2026-10 | blend, one a race, $8-$13, 30% (600, +14%) | 102 | 9 | 0.887 | -12.6% | -42 |
+
+- Sequential rule: 1st half 1,619 bets, A/E 1.042, **-2.7%**, worst drawdown 51%, longest losing run 73; 2nd half
+  1,627 bets, A/E 1.068, **+0.1%**, drawdown 53%, losing run 35; all 3,246 bets, A/E 1.054, -1.3%; 11 of 29 months;
+  last six +30% (306), +32% (90), -22% (108), +27% (104), -31% (99), -13% (102).
+- Test 12's rule: +4.2% and -7.6% (2,217 and 2,232 bets, A/E 1.116 and 0.993; all 4,449 bets -1.7%); 12 of 29 months.
+- Test 13's rule: -7.8% and -10.2% (1,006 and 1,006 bets, A/E 0.985 and 0.955; all 2,012 bets -9.0%); 9 of 29 months.
+
+At BSP this is the first walk-forward that does not lose outright: the sequential rule's A/E is 1.05 and its second
+half is level, and Test 12's rule shows a profit in its first half. It is still not a bet (a 51% drawdown for
+nothing), but the direction is the direction. Both switches stay on for the production model.
+
+## TAB's own racing feed (5 Nov 2026, run 41911907844)
+
+The TAB app shows an "Open" price beside the current price for every greyhound runner (the founder's screenshots of
+Sandown R1 at 7:47am: Kiwi Evoca open $1.95, $1.45 half an hour later; TAB opened the market between 6:45 and
+7:16am, as it opened Geelong at 7:22 on 27 Oct, and in the founder's experience TAB goes up first and Sportsbet
+copies). So TAB keeps the open and serves it to its app, and `greyhound/tab_api.py` reads the same public
+tab-info-service with an honest client identity (field names first, the open per runner if it is there). From a
+GitHub runner the service answers a plain script with an HTML page, not JSON (api.beta.tab.com.au; api.tab.com.au
+does not resolve), and we do not dress a script up as a browser to get past that. It is TAB's feed to serve or not.
+What this leaves: the recorder runs from Australia, where the founder is, as a one-line scheduled command on his
+machine each morning after 7:30am (TAB keeps the open all day, so one read catches every race's open), or the
+BetMatic routes in the sections above. The CSV it writes is the input `greyhound/opens_join.py` expects.
