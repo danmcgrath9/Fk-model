@@ -21,6 +21,8 @@ def test_snapshot_hashes_comments_and_compare_counts_changes(tmp_path, capsys):
     assert PV.snapshot(c, tmp_path, 10) == 0
     out = capsys.readouterr().out
     assert "Needs luck" not in out and "comment filled on 1/2" in out
+    assert "race fields: analystComment, isRaceResultEntered, raceId, startTime, tip1" in out
+    assert "run fields (from /race/{id}/runs/form): comment, dogId, isBestBet, rating, runId, startPrice" in out
     snap = json.loads(next(tmp_path.glob("preview_*.json")).read_text())
     day = snap["taken"][:10]
     bulk = Resp(200, [{"runId": 1, "comment": "Needs luck from the draw", "rating": 80, "isBestBet": True, "startPrice": 6.0},
