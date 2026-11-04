@@ -92,7 +92,7 @@ jobs:
           TO_ARG=""; [ -n "${{ github.event.inputs.to }}" ] && TO_ARG="--to ${{ github.event.inputs.to }}"
           set -o pipefail
           python -m greyhound.pull --states "${{ github.event.inputs.states }}" --from "${{ github.event.inputs.from }}" $TO_ARG \
-            --by-day --pause 1 --max-calls 100000 --max-minutes "${{ github.event.inputs.max_minutes }}" | tee pull-report.md
+            --by-day --workers 8 --per-minute 72 --max-calls 100000 --max-minutes "${{ github.event.inputs.max_minutes }}" | tee pull-report.md
           tail -1 pull-report.md >> "$GITHUB_STEP_SUMMARY"
           LEFT=$(tail -1 pull-report.md | sed -nE 's/.*; ([0-9]+) left for the next run.*/\1/p')
           FAILED=$(tail -1 pull-report.md | sed -nE 's/.*; ([0-9]+) failed;.*/\1/p')

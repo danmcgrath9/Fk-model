@@ -110,27 +110,46 @@ def mapping_check(rows: list[dict]) -> None:
 
 
 def month_by_days(client: TopazClient, state: str, y: int, m: int, today: date, max_calls: int,
-                  deadline: float) -> tuple[list[dict] | None, str]:
+                  deadline: float, workers: int = 1) -> tuple[list[dict] | None, str]:
     """One month as one request per day (a whole month of VIC is too big: on 4 Nov 2026 /2013/6 timed out five times
-    at 60 s, while one day answers in about 5 s). Returns (rows, status); rows is None when the month is unfinished
-    (budget or time ran out, or a day failed), so nothing is written and the next run tries it again."""
+    at 60 s, while one day answers in about 5 s), `workers` days at a time. Returns (rows, status); rows is None when
+    the month is unfinished (budget or time ran out, or a day failed), so nothing is written and the next run tries
+    it again. Days come back in date order whatever order they finish in."""
+    from concurrent.futures import ThreadPoolExecutor
     last = today.day if (y, m) == (today.year, today.month) else calendar.monthrange(y, m)[1]
-    rows, outside = [], 0
-    for d in range(1, last + 1):
+
+    def one(d):
         if client.calls >= max_calls or time.monotonic() > deadline:
-            return None, "budget"
+            return "budget", None
         try:
-            rows.extend(client.bulk_runs_day(state, y, m, d))
+            return "ok", client.bulk_runs_day(state, y, m, d)
         except TopazNoAccess:
-            outside += 1
+            return "outside", None
         except TopazError as e:
-            return None, f"failed ({e})"
+            return "failed", e
+
+    if workers > 1:
+        with ThreadPoolExecutor(max_workers=workers) as ex:
+            got = list(ex.map(one, range(1, last + 1)))
+    else:
+        got = []
+        for d in range(1, last + 1):
+            got.append(one(d))
+            if got[-1][0] in ("budget", "failed"):
+                break
+    for kind, val in got:
+        if kind == "failed":
+            return None, f"failed ({val})"
+    if any(kind == "budget" for kind, _ in got):
+        return None, "budget"
+    rows = [r for kind, val in got if kind == "ok" for r in val]
+    outside = sum(1 for kind, _ in got if kind == "outside")
     status = "pulled" if rows else "pulled, empty"
     return rows, status + (f", {outside} days outside the key's access" if outside else "")
 
 
 def pull(client: TopazClient, states, span, out: Path, refresh: set[str], today: date, max_calls: int,
-         by_day: bool = False, max_minutes: float = 1e9) -> list[tuple]:
+         by_day: bool = False, max_minutes: float = 1e9, workers: int = 1) -> list[tuple]:
     """Returns one (state, 'YYYY-MM', rows or None, status) per month considered. A month that fails or runs out of
     budget is reported and left unwritten; the rest carry on."""
     deadline = time.monotonic() + max_minutes * 60
@@ -146,7 +165,7 @@ def pull(client: TopazClient, states, span, out: Path, refresh: set[str], today:
                 report.append((state, ym, None, "budget"))
                 continue
             if by_day:
-                rows, status = month_by_days(client, state, y, m, today, max_calls, deadline)
+                rows, status = month_by_days(client, state, y, m, today, max_calls, deadline, workers)
             else:
                 try:
                     rows = client.bulk_runs_month(state, y, m)
@@ -175,6 +194,9 @@ def main(argv=None) -> int:
     ap.add_argument("--pause", type=float, default=2.0, help="seconds between calls")
     ap.add_argument("--by-day", action="store_true", help="one request per day (a whole month can time out)")
     ap.add_argument("--max-minutes", type=float, default=1e9, help="stop starting new requests after this long")
+    ap.add_argument("--workers", type=int, default=1, help="with --by-day: days requested at once")
+    ap.add_argument("--per-minute", type=float, default=0,
+                    help="cap on calls started a minute, shared by the workers (GRV's limit is about 80); 0 = --pause")
     a = ap.parse_args(argv)
 
     if not terms_read():
@@ -187,12 +209,12 @@ def main(argv=None) -> int:
         print(f"unknown states {bad}; use {', '.join(AUTHORITIES)}")
         return 2
     try:
-        client = TopazClient(pause=a.pause)
+        client = TopazClient(pause=a.pause, max_per_minute=a.per_minute or None)
         if a.probe:
             return probe(client, date.fromisoformat(a.probe_day))
         refresh = {x.strip() for x in a.refresh.split(",") if x.strip()}
         report = pull(client, states, months(a.start, a.end), a.out, refresh, today, a.max_calls,
-                      by_day=a.by_day, max_minutes=a.max_minutes)
+                      by_day=a.by_day, max_minutes=a.max_minutes, workers=a.workers)
     except TopazError as e:
         print(f"Topaz refused or failed: {e}")
         return 1

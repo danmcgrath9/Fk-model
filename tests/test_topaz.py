@@ -168,3 +168,33 @@ def test_a_failed_or_unfinished_month_is_not_written_and_the_rest_carry_on(tmp_p
     c2, _ = client(*[Resp(200, [{"r": 1}]) for _ in range(5)])
     rep2 = P.pull(c2, ["VIC"], [(2015, 3)], tmp_path, set(), date(2026, 11, 4), max_calls=5, by_day=True)
     assert rep2[0][3] == "budget" and not P.file_for(tmp_path, "VIC", 2015, 3).exists()
+
+
+class SlowDaySession:
+    """Answers any day after a short wait, from several threads at once; records when each call started."""
+    def __init__(self, wait=0.05):
+        import threading
+        self.wait, self.lock, self.asked, self.live, self.peak = wait, threading.Lock(), [], 0, 0
+
+    def get(self, url, headers=None, params=None, timeout=None):
+        import time
+        with self.lock:
+            self.asked.append((url, time.monotonic())); self.live += 1; self.peak = max(self.peak, self.live)
+        time.sleep(self.wait)
+        with self.lock:
+            self.live -= 1
+        return Resp(200, [{"day": int(url.rsplit("/", 1)[1])}])
+
+
+def test_workers_overlap_calls_keep_the_cap_and_return_days_in_order(tmp_path):
+    import time
+    s = SlowDaySession(wait=0.05)
+    c = TopazClient(KEY, session=s, max_per_minute=6000)                     # one start every 10 ms
+    t0 = time.monotonic()
+    rep = P.pull(c, ["VIC"], [(2014, 1)], tmp_path, set(), date(2026, 11, 4), max_calls=1000, by_day=True, workers=6)
+    assert rep[0][2] == 31 and rep[0][3] == "pulled" and s.peak > 1           # overlapped
+    starts = sorted(t for _, t in s.asked)
+    assert starts[-1] - starts[0] >= 30 * 0.01 * 0.9                         # 31 starts span 30 slots: the cap held
+    assert time.monotonic() - t0 < 31 * 0.05                                  # quicker than one at a time
+    with gzip.open(P.file_for(tmp_path, "VIC", 2014, 1), "rt") as f:
+        assert [r["day"] for r in json.load(f)] == list(range(1, 32))
