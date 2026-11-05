@@ -1932,3 +1932,118 @@ The Betfair files carry more columns than we use: the highest, lowest and last p
 volume, the best lay at the scheduled off, and the back and lay market percentages. The highest pre-play price matched
 is the nearest thing in free history to an early price, and is the next test of the founder's "TAB opens first" idea on
 Betfair's side.
+
+## Test 25: the drift (5 Nov 2026, gh topaz run 41941247168, `topaz_round13.py`)
+
+The founder, on Shepparton R2: "So Hot So Swifty $3.20 to $19 and runs last by 100 lengths ... our model is fkn no
+where". A dog whose price blows out before the off is the market saying something no form guide holds. Betfair's free
+files give, for every runner, the shortest and longest price matched before the off, so with BSP:
+- **drift** = BSP over the shortest price matched before the off (So Hot Swifty: $19 / $3.20 = 5.9x)
+- **firm** = the longest price matched over BSP
+
+The drift is measured to the off, so it is known only as the jump approaches. A guard built on it is a rule for bets
+struck late, or for a live price checked against its shortest; it is not available at the TAB open.
+
+### Part 1: no model, 65,060 races from 2020 with BSP and a pre-play price on every dog, halves split at 13 May 2023
+
+| BSP over the shortest price matched (drifted) | runners | win % | A/E at BSP (1st / 2nd) | flat ROI at BSP, 8% comm (1st / 2nd) | A/E at GRV's SP (1st / 2nd) |
+|---|---|---|---|---|---|
+| under 1.1x | 119,862 | 24.0% | 0.992 / 0.989 | -7.5% / -8.5% | 1.074 / 1.102 |
+| 1.1-1.3x | 144,643 | 16.1% | 1.008 / 1.013 | -5.8% / -7.0% | 1.017 / 1.020 |
+| 1.3-1.6x | 92,718 | 9.7% | 1.005 / 0.999 | -7.7% / -10.0% | 0.925 / 0.878 |
+| 1.6-2.2x | 59,024 | 5.4% | 0.999 / 1.011 | -13.2% / -7.2% | 0.805 / 0.715 |
+| 2.2-3.5x | 27,569 | 2.5% | 0.949 / 0.996 | -10.0% / -17.6% | 0.590 / 0.504 |
+| 3.5x+ | 10,574 | 1.2% | 1.355 / 0.872 | -2.9% / -39.5% | 0.544 / 0.257 |
+
+| the longest price matched over BSP (firmed) | runners | win % | A/E at BSP (1st / 2nd) | flat ROI at BSP, 8% comm (1st / 2nd) | A/E at GRV's SP (1st / 2nd) |
+|---|---|---|---|---|---|
+| under 1.1x | 121,549 | 14.8% | 1.004 / 1.013 | -6.3% / -7.3% | 0.941 / 0.975 |
+| 1.1-1.3x | 162,880 | 16.6% | 1.000 / 1.005 | -5.7% / -8.1% | 1.014 / 1.030 |
+| 1.3-1.6x | 102,216 | 13.8% | 0.996 / 0.978 | -9.1% / -10.4% | 1.032 / 1.001 |
+| 1.6-2.2x | 48,112 | 10.1% | 0.998 / 0.986 | -9.2% / -14.2% | 1.030 / 0.979 |
+| 2.2-3.5x | 15,333 | 6.0% | 1.018 / 0.978 | -19.3% / -14.7% | 1.008 / 0.873 |
+| 3.5x+ | 4,301 | 3.1% | 0.988 / 0.803 | -39.2% / -30.7% | 0.918 / 0.608 |
+
+### Part 2: our model (F2, 2,626 rounds), the 22,769 scored races with BSP from 5 June 2024
+
+One more day of results was in the cache than for Test 24, so the split and the fit moved slightly.
+
+| drift | runners | wins | A/E vs our model | A/E vs BSP | A/E vs GRV's SP |
+|---|---|---|---|---|---|
+| under 1.1x | 42,834 | 9,986 | **1.179** | 0.986 | 1.106 |
+| 1.1-1.3x | 52,447 | 8,463 | 1.024 | 1.016 | 1.026 |
+| 1.3-1.6x | 32,208 | 3,075 | 0.810 | 1.010 | 0.884 |
+| 1.6-2.2x | 19,527 | 986 | 0.613 | 1.001 | 0.697 |
+| 2.2-3.5x | 9,176 | 207 | **0.426** | 0.955 | 0.469 |
+| 3.5x+ | 3,913 | 33 | **0.264** | 0.848 | 0.242 |
+
+The 1.3x rule at GRV's SP (our price $2-$15, Kelly x75 cap 4; blend ours 0.49 / SP 0.70), split by the dog's drift on
+Betfair:
+
+| drift | half | bets | winners | A/E | flat ROI | Kelly ROI | units won |
+|---|---|---|---|---|---|---|---|
+| under 1.1x | 1st | 221 | 75 | 1.776 | +95.7% | +81.5% | +439 |
+| under 1.1x | 2nd | 150 | 57 | 2.134 | +168.8% | +156.3% | +505 |
+| 1.1-1.3x | 1st | 222 | 54 | 1.480 | +43.7% | +53.1% | +237 |
+| 1.1-1.3x | 2nd | 181 | 47 | 1.660 | +54.1% | +68.5% | +225 |
+| 1.3-1.6x | 1st | 114 | 12 | 0.742 | -17.0% | -21.1% | -39 |
+| 1.3-1.6x | 2nd | 153 | 19 | 0.883 | -13.9% | -6.5% | -15 |
+| 1.6-2.2x | 1st | 57 | 5 | 0.795 | -21.2% | -33.3% | -21 |
+| 1.6-2.2x | 2nd | 104 | 7 | 0.613 | -27.2% | -22.1% | -29 |
+| 2.2-3.5x | 1st | 18 | 2 | 1.098 | +23.3% | +26.6% | +7 |
+| 2.2-3.5x | 2nd | 40 | 3 | 0.748 | -26.8% | -40.6% | -20 |
+| 3.5x+ | 2nd | 6 | 1 | 1.830 | +70.0% | +70.1% | +4 |
+| no Betfair pre-play price | 1st | 6 | 1 | 1.355 | +66.7% | +186.1% | +26 |
+| no Betfair pre-play price | 2nd | 11 | 1 | 0.661 | -9.1% | -57.7% | -11 |
+| all bets | 1st | 638 | 149 | 1.437 | +44.7% | +50.9% | +649 |
+| all bets | 2nd | 645 | 135 | 1.436 | +45.6% | +60.3% | +659 |
+
+| guard: no bet when drift is at least | half | bets | winners | A/E | flat ROI | Kelly ROI | units won |
+|---|---|---|---|---|---|---|---|
+| **1.3x** | **1st** | **449** | **130** | **1.636** | **+69.6%** | **+70.3%** | **+702** |
+| **1.3x** | **2nd** | **342** | **105** | **1.857** | **+102.4%** | **+107.1%** | **+719** |
+| 1.6x | 1st | 563 | 142 | 1.485 | +52.1% | +55.9% | +663 |
+| 1.6x | 2nd | 495 | 124 | 1.589 | +66.4% | +77.7% | +704 |
+| 2.2x | 1st | 620 | 147 | 1.443 | +45.3% | +51.4% | +642 |
+| 2.2x | 2nd | 599 | 131 | 1.464 | +50.2% | +65.1% | +675 |
+| 3.5x | 1st | 638 | 149 | 1.437 | +44.7% | +50.9% | +649 |
+| 3.5x | 2nd | 639 | 134 | 1.433 | +45.4% | +60.3% | +655 |
+| no guard | 1st | 638 | 149 | 1.437 | +44.7% | +50.9% | +649 |
+| no guard | 2nd | 645 | 135 | 1.436 | +45.6% | +60.3% | +659 |
+
+### What it says
+
+**The drift is the biggest thing our model cannot see.** A dog that drifts to 2.2-3.5x its shortest price wins 43% of
+what our model expects (A/E 0.426), and 3.5x+ drifters win 26%. Dogs that never drift win 18% more than we expect
+(1.179). This is the SP-favourite gap of Test 24 (1.159) seen from the other side. The market's late money is most of
+the 0.10 between us and BSP.
+
+**BSP prices the drift:**
+- A/E is 0.95-1.01 in every band with real numbers
+- 3.5x+ in the first half is 1.355, on about 60 wins
+
+**GRV's SP does not price the drift.** GRV's SP is a bookmaker price that lags the money:
+- dogs that drift 2.2-3.5x on Betfair win half what GRV's SP says (0.590 / 0.504)
+- 3.5x+ drifters win a quarter to a half of it (0.544 / 0.257)
+- dogs that never drift win 7-10% more than it says (1.074 / 1.102)
+
+**The 1.3x rule's profit is all in dogs that did not drift.** Every drift band under 1.3x makes +44% to +169% in both
+halves. Every band from 1.3x to 2.2x loses in both halves (-14% to -27%). The rule was backing drifters: GRV's SP
+leaves them looking long against our price, and they are long for a reason.
+
+A guard of **no bet once the dog has drifted 1.3x from its shortest price**:
+- cuts the bets from about 640 to 450 and 340 a half
+- lifts flat ROI from +45% / +46% to **+70% / +102%**, and Kelly ROI from +51% / +60% to +70% / +107%
+- makes more units in both halves (+702 and +719, against +649 and +659)
+
+It is the best rule found on the dogs. It is chosen after seeing these numbers, so it needs the walk-forward before
+anything is staked on it.
+
+Two cautions:
+- The drift here runs to the off, which flatters it. A live guard sees the drift up to the moment of the bet, a minute
+  or two before the jump.
+- These are still GRV's SP prices, and a live bet takes TAB's or Betfair's price.
+
+The practical rule for the founder's TAB idea follows: take the open per the 1.3x rule, then **do not add to, or
+re-take, a dog that drifts 30% from its shortest price before the jump**. The opens history will say what a bet at the
+open does on dogs that later drift.
