@@ -70,6 +70,14 @@ def ladder(p: float, book: float = TAB_BOOK) -> list:
     return [(m, m / p, stake(p, m / p, book)) for m in LADDER]
 
 
+def box_txt(b) -> str:
+    """'2.0' -> '2' (the card carries boxes as the feed gives them)."""
+    try:
+        return str(int(float(b)))
+    except (TypeError, ValueError):
+        return str(b)
+
+
 def ordinal(n: int) -> str:
     n = int(n)
     return f"{n}{'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
@@ -207,7 +215,7 @@ def page(card: dict, opens: dict, made: str, now: datetime | None = None) -> str
             r = next((r for r in races if r["t"] == b[0] and r["n"] == b[1]), None)
             jumps = when(r["s"]) if r else ""
             link = f"<a href='#{anchor(r)}'>{html.escape(short(b[0]))} R{b[1]}</a>" if r else f"{html.escape(short(b[0]))} R{b[1]}"
-            a(f"<tr><td>{link} {jumps}<span class='dn'>{html.escape(b[2])}. {html.escape(title_case(b[3]))}</span></td>"
+            a(f"<tr><td>{link} {jumps}<span class='dn'>{html.escape(box_txt(b[2]))}. {html.escape(title_case(b[3]))}</span></td>"
               f"<td>{money(1 / b[4])}</td><td><b>{money(RATIO / b[5])}+</b></td><td>{money(b[6])}</td><td><b>{units(b[7])}</b></td></tr>")
         if not rule:
             a("<tr><td colspan='5' style='text-align:left'>No dog meets the rule today.</td></tr>")
