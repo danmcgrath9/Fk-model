@@ -1,17 +1,19 @@
 name: gh topaz nightly
 
 # Founder, 5 Nov 2026: "train it every week overnight", and price the next day's card the night before.
-#   Sunday 9:30pm Melbourne: train the model on every resulted VIC race and save it (Actions cache, readable only by
+#   Sunday 8:23pm Melbourne: train the model on every resulted VIC race and save it (Actions cache, readable only by
 #                            this repository's own runs).
-#   Every night 10pm Melbourne: load the saved model and price TOMORROW's VIC card (Topaz has it up by the evening),
+#   Every night 10:17pm Melbourne: load the saved model and price TOMORROW's VIC card (Topaz has it up by the evening),
 #                            sealed in the log (greyhound/sealed.py), because this repository's logs are public.
-# The crons are in UTC, set for AEDT (UTC+11); from April (AEST, UTC+10) they run an hour later in Melbourne.
+# The crons are in UTC, set for AEDT (UTC+11): the train Sunday 8:23pm, the price every night 10:17pm Melbourne; from
+# April (AEST, UTC+10) they run an hour earlier in Melbourne. Off the hour on purpose: the 5 Nov 10pm (minute 0) run
+# never started, and GitHub delays or drops scheduled runs at the top of the hour; the train ends well before the price.
 # Nothing is bet: the card is the founder's to read.
 
 on:
   schedule:
-    - cron: '30 10 * * 0'
-    - cron: '0 11 * * *'
+    - cron: '23 9 * * 0'
+    - cron: '17 11 * * *'
   workflow_dispatch:
     inputs:
       mode:
@@ -45,7 +47,7 @@ jobs:
       PYTHONUNBUFFERED: '1'
       TOPAZ_API_KEY: ${{ secrets.TOPAZ_API_KEY }}
       TOPAZ_TERMS_READ: ${{ vars.TOPAZ_TERMS_READ }}
-      MODE: ${{ github.event.schedule == '30 10 * * 0' && 'train' || github.event.inputs.mode || 'price' }}
+      MODE: ${{ github.event.schedule == '23 9 * * 0' && 'train' || github.event.inputs.mode || 'price' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
