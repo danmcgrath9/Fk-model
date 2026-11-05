@@ -22,8 +22,10 @@ Nothing is bet. The prices are the founder's to read.
 import gzip
 import json
 import os
+import re
 import sys
 import tempfile
+import time
 from pathlib import Path
 
 import numpy as np
@@ -166,10 +168,23 @@ def fetch_day(client: TopazClient, day: str):
     return rows, races, {k: sorted(v) for k, v in names.items()}
 
 
-def stage(cache: Path, rows, races, day: str) -> Path:
-    """A temp directory holding links to the cached files plus the day's rows, so load_topaz sees them together."""
+def history_files(cache: Path, since: str = "") -> list:
+    """The cached month files to build from: all of them, or those from month `since` (YYYY-MM) on. A file whose name
+    carries no month (an 'upcoming' file) is always kept."""
+    out = []
+    for f in sorted(cache.glob("*.json.gz")):
+        m = re.search(r"_(\d{4}-\d{2})\.json\.gz$", f.name)
+        if since and m and m.group(1) < since:
+            continue
+        out.append(f)
+    return out
+
+
+def stage(cache: Path, rows, races, day: str, since: str = "") -> Path:
+    """A temp directory holding links to the cached files (from month `since` on, when given) plus the day's rows, so
+    load_topaz sees them together."""
     tmp = Path(tempfile.mkdtemp(prefix="topaz_today_"))
-    for f in cache.glob("*.json.gz"):
+    for f in history_files(cache, since):
         (tmp / f.name).symlink_to(f.resolve())
     with gzip.open(tmp / "runs_VIC_upcoming.json.gz", "wt", encoding="utf-8") as fh:
         json.dump(rows, fh)
@@ -219,14 +234,37 @@ def align(X: pd.DataFrame, cols: list) -> pd.DataFrame:
     return out
 
 
+def build_day(cache: Path, rows, races, day: str, since: str = ""):
+    """build_full over the cached history (from `since` on) plus the day's rows; (df, num, rel, note, staged dir)."""
+    tmp = stage(cache, rows, races, day, since)
+    if os.environ.get("RACES_DIR"):
+        os.environ["RACES_DIR"] = str(tmp)        # today's records beside the history's
+    df, num, rel, note = W.build_full(str(tmp), keep_unresulted=True)
+    return df, num, rel, note, tmp
+
+
+def compare_prices(a: pd.DataFrame, b: pd.DataFrame) -> dict:
+    """Two builds' chances for the same card (race_id, dog, p_model each): how far apart, and do they pick the same dog."""
+    m = a[["race_id", "dog", "p_model"]].merge(b[["race_id", "dog", "p_model"]], on=["race_id", "dog"], suffixes=("_a", "_b"))
+    if m.empty:
+        return dict(n=0, races=0, mean_abs=np.nan, max_abs=np.nan, top_same=0, corr=np.nan)
+    d = (m.p_model_a - m.p_model_b).abs()
+    top = m.groupby("race_id").apply(lambda g: g.dog.values[g.p_model_a.values.argmax()] == g.dog.values[g.p_model_b.values.argmax()])
+    la, lb = np.log(m.p_model_a.clip(1e-9)), np.log(m.p_model_b.clip(1e-9))
+    return dict(n=len(m), races=int(m.race_id.nunique()), mean_abs=float(d.mean()), max_abs=float(d.max()),
+                top_same=int(top.sum()), corr=float(np.corrcoef(la, lb)[0, 1]) if len(m) > 1 else np.nan)
+
+
 def main(d, label):
     if os.environ.get("PRICE_MODE", "").strip().lower() == "train":
         return train(d, label)
     day = os.environ.get("PRICE_DAY") or pd.Timestamp.now(tz=SYDNEY).strftime("%Y-%m-%d")
     client = TopazClient(pause=1.0)
+    t_fetch = time.time()
     rows, races, names = fetch_day(client, day)
     print(f"# {label}: the model's prices for {day}\n")
-    print(f"{len(races)} VIC races on {day} from /race/upcoming, {len(rows)} runners, {client.calls} calls")
+    print(f"{len(races)} VIC races on {day} from /race/upcoming, {len(rows)} runners, {client.calls} calls in "
+          f"{time.time() - t_fetch:,.0f}s")
     for k in ("race", "run", "form"):
         print(f"  {k} fields: {', '.join(names[k])}")
     missing = [c for c in NEED if rows and c not in rows[0]]
@@ -234,18 +272,31 @@ def main(d, label):
         print(f"\nCannot price: {'no runners' if not rows else 'the run rows lack ' + ', '.join(missing)}")
         return 1
     cache = Path(d)
-    tmp = stage(cache, rows, races, day)
-    if os.environ.get("RACES_DIR"):
-        os.environ["RACES_DIR"] = str(tmp)        # today's records beside the history's
-    df, num, rel, note = W.build_full(str(tmp), keep_unresulted=True)
+    since = os.environ.get("PRICE_HISTORY_FROM", "").strip()
+    bst, meta = load_model()
+    t0 = time.time()
+    df, num, rel, note, tmp = build_day(cache, rows, races, day, since)
     today = df.date == pd.Timestamp(day)
-    print(f"\n{note}\nbuilt: {df.race_id.nunique():,} races; tonight's card after the build: {df[today].race_id.nunique()} races, "
+    print(f"\n{note}\nbuilt from {since or 'the first cached month'} in {time.time() - t0:,.0f}s: {df.race_id.nunique():,} races; "
+          f"tonight's card after the build: {df[today].race_id.nunique()} races, "
           f"{int(today.sum())} runners (a race drops out if a runner has no pre-race price or the field is under 4)\n")
     if not today.any():
         return 1
     tr = (~today).values
     X = T.features(df, num, rel)
-    bst, meta = load_model()
+    cmp_from = os.environ.get("PRICE_COMPARE_FROM", "").strip()
+    if cmp_from and bst is not None:
+        t1 = time.time()
+        d2, n2, r2, _, _ = build_day(cache, rows, races, day, cmp_from)
+        b2 = time.time() - t1
+        t2 = d2.date == pd.Timestamp(day)
+        pa = V1.race_softmax(bst.predict(align(X[today.values], meta["cols"]), raw_score=True), df.race_id.values[today.values])
+        X2 = align(T.features(d2[t2], n2, r2), meta["cols"])
+        pb = V1.race_softmax(bst.predict(X2, raw_score=True), d2.race_id.values[t2.values])
+        c = compare_prices(df[today].assign(p_model=pa), d2[t2].assign(p_model=pb))
+        print(f"history check: built from {cmp_from} in {b2:,.0f}s; {c['n']} runners in both builds; chance differs by "
+              f"{c['mean_abs']:.2%} on average, {c['max_abs']:.2%} at most; the same top pick in {c['top_same']} of {c['races']} "
+              f"races; correlation of log chances {c['corr']:.4f}\n")
     if bst is not None:
         X = align(X, meta["cols"])
         n_fit, how = meta["fit_races"], f"the saved model (trained {meta['trained']} on races to {meta['last_day']})"
@@ -275,7 +326,8 @@ def main(d, label):
     lines, sha = seal(plain)
     print(f"tonight's card is sealed (GRV's values are personal use and this log is public): {len(payload['races'])} races "
           f"at {', '.join(payload['tracks']) or 'no track'}, {sum(len(r['r']) for r in payload['races'])} runners, "
-          f"{len(payload['edges'])} paper bets across the card; {len(plain):,} bytes, sha256 {sha}")
+          f"{len(payload['edges'])} paper bets across the card; {len(plain):,} bytes, sha256 {sha}; "
+          f"{time.time() - t_fetch:,.0f}s from the first call")
     print("\n".join(lines))
     return 0
 

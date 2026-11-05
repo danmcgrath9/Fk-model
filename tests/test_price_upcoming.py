@@ -73,3 +73,23 @@ def test_saved_model_predicts_the_same_after_align(tmp_path, monkeypatch):
     assert list(Xa.columns) == meta["cols"]
     assert np.allclose(loaded.predict(Xa, raw_score=True), bst.predict(X, raw_score=True))
     assert loaded.predict(Xa, pred_contrib=True).shape == (n, 6)
+
+
+def test_history_files_start_at_the_given_month(tmp_path):
+    for n in ("runs_VIC_2019-12.json.gz", "runs_VIC_2020-01.json.gz", "races_VIC_2021-05.json.gz",
+              "runs_VIC_upcoming.json.gz", "notes.txt"):
+        (tmp_path / n).write_text("x")
+    names = lambda fs: [f.name for f in fs]                                          # noqa: E731
+    assert names(PU.history_files(tmp_path)) == ["races_VIC_2021-05.json.gz", "runs_VIC_2019-12.json.gz",
+                                                 "runs_VIC_2020-01.json.gz", "runs_VIC_upcoming.json.gz"]
+    assert names(PU.history_files(tmp_path, "2020-01")) == ["races_VIC_2021-05.json.gz", "runs_VIC_2020-01.json.gz",
+                                                            "runs_VIC_upcoming.json.gz"]
+
+
+def test_compare_prices_measures_two_builds_of_one_card():
+    a = pd.DataFrame({"race_id": [1, 1, 2, 2], "dog": [10, 11, 20, 21], "p_model": [0.6, 0.4, 0.3, 0.7]})
+    b = pd.DataFrame({"race_id": [1, 1, 2, 2], "dog": [10, 11, 20, 21], "p_model": [0.5, 0.5, 0.35, 0.65]})
+    c = PU.compare_prices(a, b)
+    # differences 0.1, 0.1, 0.05, 0.05; race 1's top pick ties in b (argmax takes the first, dog 10), race 2 agrees
+    assert c["n"] == 4 and c["races"] == 2 and abs(c["mean_abs"] - 0.075) < 1e-12 and abs(c["max_abs"] - 0.1) < 1e-12
+    assert c["top_same"] == 2 and c["corr"] > 0.9
