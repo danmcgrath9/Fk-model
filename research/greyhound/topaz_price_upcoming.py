@@ -122,6 +122,31 @@ def card_payload(card, contrib, fam, book, day, n_fit, tracks) -> dict:
             "races": races, "edges": edges}
 
 
+BLEND = (0.51, 0.66)      # Test 27: the blend refitted each month on the six before ran ours 0.38-0.64, SP 0.55-0.77
+
+
+def rule_bets(card: pd.DataFrame) -> tuple:
+    """Test 27's tested rule on the card, with GRV's pre-race price standing in for the SP: the blend of our chance
+    with GRV's (its book taken out), a bet when GRV's price is at least 1.3x the blended price with the blended price
+    $2-$15, Kelly x75 on the chance halfway between the blend and GRV's, cap 4. Returns ([[venue, race, box, dog,
+    our chance, blended chance, GRV's price, units], ...], the blend weights)."""
+    import topaz_round9 as R9
+    env = os.environ.get("PRICE_BLEND", "")
+    w = tuple(float(x) for x in env.split(",")) if env else BLEND
+    c = card[card.grv_price > 1].copy()
+    if c.empty:
+        return [], list(w)
+    c["p_grv"] = c.grv_pct / c.groupby("race_id").grv_pct.transform("sum")
+    score = w[0] * np.log(c.p_model.clip(1e-12)) + w[1] * np.log(c.p_grv.clip(1e-12))
+    c["p_blend"] = V1.race_softmax(score.values, c.race_id.values)
+    m, o, u = R9.horse_bets(c, c.p_blend.values, c.p_grv.values, c.grv_price.values.astype(float), 0.0, 1.3, (2, 15))
+    out = []
+    for (_, x), units in zip(c[m].iterrows(), u[m]):
+        out.append([txt(x.get("track_name")) or txt(x.track), txt(x.get("race_number")), txt(x.box), txt(x.dog_name),
+                    round(float(x.p_model), 4), round(float(x.p_blend), 4), float(x.grv_price), round(float(units), 2)])
+    return out, list(w)
+
+
 def num_or_none(v, nd: int = 0):
     """A number for the payload, or None when missing (JSON has no NaN)."""
     if v is None or (isinstance(v, float) and np.isnan(v)):
@@ -340,11 +365,12 @@ def main(d, label):
           f"GRV's pre-race prices sum to {card.groupby('race_id').grv_pct.sum().median():.0%} a race (median book)")
     payload = card_payload(card, contrib, fam, book, day, n_fit,
                            [t.strip().upper() for t in os.environ.get("PRICE_TRACK", "SANDOWN").split(",") if t.strip()])
+    payload["bets"], payload["blend"] = rule_bets(card)
     plain = json.dumps(payload, separators=(",", ":")).encode()
     lines, sha = seal(plain)
     print(f"tonight's card is sealed (GRV's values are personal use and this log is public): {len(payload['races'])} races "
           f"at {', '.join(payload['tracks']) or 'no track'}, {sum(len(r['r']) for r in payload['races'])} runners, "
-          f"{len(payload['edges'])} paper bets across the card; {len(plain):,} bytes, sha256 {sha}; "
+          f"{len(payload['bets'])} rule bets across the card; {len(plain):,} bytes, sha256 {sha}; "
           f"{time.time() - t_fetch:,.0f}s from the first call")
     print("\n".join(lines))
     return 0

@@ -125,3 +125,16 @@ def test_fetch_day_calls_every_race_at_once_and_keeps_the_card_order():
     assert [r["raceId"] for r in rows] == [3, 1, 2]                  # /race/upcoming's order, one runner each
     assert all(r["rating"] == 80 and r["startPrice"] == 3.0 for r in rows)      # the form row merged by run
     assert c.calls == 7 and len(s.seen) == 7                         # upcoming + two a race
+
+
+def test_rule_bets_blend_then_the_tested_rule(monkeypatch):
+    # one race, our chances 50/50; GRV $1.50 and $6.00 (66.7% + 16.7%, so 80/20 with the book out); blend weights 1, 0
+    monkeypatch.setenv("PRICE_BLEND", "1,0")
+    card = pd.DataFrame({"race_id": [1, 1], "p_model": [0.5, 0.5], "grv_price": [1.5, 6.0], "track_name": ["X", "X"],
+                         "track": ["X", "X"], "race_number": [1, 1], "box": [1, 2], "dog_name": ["A", "B"]})
+    card["grv_pct"] = 1 / card.grv_price
+    bets, w = PU.rule_bets(card)
+    # blended $2.00 each; B's $6 is 3x it, A's $1.50 is not 1.3x. Kelly on 0.5 x 0.5 + 0.5 x 0.2 = 0.35 at $6:
+    # (0.35 x 6 - 1) / 5 = 0.22, x75 = 16.5 units, capped at 4
+    assert w == [1.0, 0.0] and len(bets) == 1
+    assert bets[0][3] == "B" and bets[0][5] == 0.5 and bets[0][6] == 6.0 and bets[0][7] == 4.0

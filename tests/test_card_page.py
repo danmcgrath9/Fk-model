@@ -60,3 +60,15 @@ def test_speed_map_line_and_early_reasons_when_the_card_carries_them():
     assert "fastest early on past splits: 1. Leader" in out and "leads most often: 1. Leader (60% of its runs)" in out
     assert "led at the first point in 20% of its last 10" in out and "1 quicker beginner drawn inside it" in out
     assert "2nd fastest early on past splits" in out
+
+
+def test_rule_panel_lists_the_cards_bets_in_jump_order():
+    rows = [["1", "A DOG", 0.25, 6.5, "80", 2, 0, "2-3", []]]
+    races = [{"t": "Sandown Park", "n": n, "s": s, "d": 515, "g": "5", "b": 1.2, "r": [list(x) for x in rows]}
+             for n, s in (("2", "2026-11-05T09:00:00.000Z"), ("1", "2026-11-05T08:00:00.000Z"))]
+    card = {"day": "2026-11-05", "fit": 1, "rounds": 1, "fam": [], "tracks": ["Sandown Park"], "edges": [], "races": races,
+            "bets": [["Sandown Park", "2", "1", "A DOG", 0.25, 0.2, 6.5, 1.5], ["Sandown Park", "1", "1", "A DOG", 0.25, 0.2, 6.5, 2.0]],
+            "blend": [0.51, 0.66]}
+    out = CP.page(card, {}, "noon")
+    panel = out[out.index("The tested rule"):out.index("Check these at TAB")]
+    assert "(2, 4 units)" in panel and panel.index("R1</a>") < panel.index("R2</a>") and "2.0u" in panel and "$5.00" in panel
