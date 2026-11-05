@@ -36,3 +36,14 @@ def test_page_lists_the_watch_dogs_and_prices_a_known_open():
     # SHORT GRV (GRV 0.8x) are not
     assert "Long One" in head and "Outsider" in head and "Fast One" not in head and "Short Grv" not in head
     assert "TAB opened $7.00: 1.75x" in head
+
+
+def test_watch_list_leaves_out_races_already_run():
+    from datetime import datetime, timezone
+    rows = [["2", "LONG ONE", 0.25, 6.5, "80", 2, 0, "2-3", []], ["1", "FAV", 0.75, 1.3, "90", 1, 0, "1-1", []]]
+    races = [{"t": "Sandown Park", "n": n, "s": s, "d": 515, "g": "5", "b": 1.2, "r": [list(x) for x in rows]}
+             for n, s in (("1", "2026-11-05T08:00:00.000Z"), ("2", "2026-11-05T09:00:00.000Z"))]
+    card = {"day": "2026-11-05", "fit": 1, "rounds": 1, "fam": [], "tracks": ["Sandown Park"], "edges": [], "races": races}
+    out = CP.page(card, {}, "8:30pm", datetime(2026, 11, 5, 8, 30, tzinfo=timezone.utc))
+    head = out[out.index("Check these at TAB"):out.index("How to bet it")]
+    assert "(1)" in head and "1 more in races already run" in head and "R2" in head and "R1</a>" not in head
