@@ -148,7 +148,8 @@ def anchor(r: dict) -> str:
     return f"{slug(r['t'])}-r{r['n']}"
 
 
-def page(card: dict, opens: dict, made: str) -> str:
+def page(card: dict, opens: dict, made: str, now: datetime | None = None) -> str:
+    """The page; `now` (aware) leaves races already started out of the watch list, never out of the card."""
     card = boxed(card)
     fam = card["fam"]
     races = card["races"]
@@ -166,7 +167,15 @@ def page(card: dict, opens: dict, made: str) -> str:
         return sum(1 / o[0] for o in ops) if ops and all(o and o[0] > 1 for o in ops) else TAB_BOOK
 
     # the watch list: dogs GRV's pre-race price already has at 1.3x ours or more, the likeliest to open long on TAB
-    watch = [(r, x) for r in races for x in r["r"] if in_band(x[2]) and x[3] and x[3] >= RATIO / x[2]]
+    def started(r):
+        try:
+            return now is not None and datetime.fromisoformat(r["s"].replace("Z", "+00:00")) <= now
+        except (ValueError, AttributeError):
+            return False
+
+    watch_all = [(r, x) for r in races for x in r["r"] if in_band(x[2]) and x[3] and x[3] >= RATIO / x[2]]
+    watch = [w for w in watch_all if not started(w[0])]
+    gone = len(watch_all) - len(watch)
     watch.sort(key=lambda t: (t[0]["s"], -t[1][3] * t[1][2]))
     meetings = {}
     for r in races:
@@ -183,7 +192,8 @@ def page(card: dict, opens: dict, made: str) -> str:
       f"Victorian races, {card['rounds']:,} rounds, with GRV's preview, tips and rating). "
       + ("" if single else f"{len(order)} meetings, {len(races)} races, in TAB's order under each meeting. ")
       + "Melbourne time. Nothing here has been bet.</div>")
-    a("<div class='bets' id='bets'><h2>Check these at TAB's open ({})</h2><div class='tw'><table>".format(len(watch)))
+    a("<div class='bets' id='bets'><h2>Check these at TAB's open ({})</h2>".format(len(watch))
+      + (f"<div class='hd'>{gone} more in races already run, left out</div>" if gone else "") + "<div class='tw'><table>")
     a("<tr><th>Race</th><th>Ours</th>" + "".join(f"<th>TAB {m:g}x</th>" for m in LADDER[:3]) + "</tr>")
     for r, x in watch:
         op = op_for(r, x[1])
@@ -268,5 +278,5 @@ if __name__ == "__main__":
     card = json.load(open(sys.argv[1]))
     opens = json.load(open(sys.argv[3])) if len(sys.argv) > 3 else {}
     made = datetime.now(MEL).strftime("%-I:%M%p").lower()
-    open(sys.argv[2], "w").write(page(card, opens, made))
+    open(sys.argv[2], "w").write(page(card, opens, made, datetime.now(MEL)))
     print(f"wrote {sys.argv[2]}")
