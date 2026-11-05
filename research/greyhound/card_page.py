@@ -88,10 +88,12 @@ h2{font-size:18px;margin:26px 0 6px;border-bottom:2px solid var(--fg);padding-bo
 .bets h2{margin:0 0 8px;border:0;padding:0;font-size:17px}
 .tw{overflow-x:auto}
 .bets table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
-.bets td,.bets th{padding:6px 6px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
-.bets td:first-child,.bets th:first-child{text-align:left}
+.bets td,.bets th{padding:6px 4px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.bets td:first-child,.bets th:first-child{text-align:left;white-space:normal}
+.bets .dn{display:block;font-size:13px;color:var(--mute)}
+@media (max-width:430px){.bets{padding:10px 8px}.bets table{font-size:13px}.bets td,.bets th{padding:6px 3px}}
 .bets th{font-size:12px;color:var(--mute);font-weight:600}
-.bets a{color:var(--fg)}
+.bets a{color:var(--fg);white-space:nowrap}
 .note{font-size:12.5px;color:var(--mute);margin-top:8px}
 .mh{margin:34px 0 0;scroll-margin-top:64px}.mh h2{margin:0 0 6px;font-size:21px;border-bottom:3px solid var(--go)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 6px}.chips a{min-width:44px;text-align:center;padding:7px 9px;border-radius:6px;background:var(--chip);color:var(--fg);text-decoration:none;font-weight:600;font-size:13px}
@@ -147,16 +149,18 @@ def page(card: dict, opens: dict, made: str) -> str:
       + ("" if single else f"{len(order)} meetings, {len(races)} races, in TAB's order under each meeting. ")
       + "Melbourne time. Nothing here has been bet.</div>")
     a("<div class='bets' id='bets'><h2>Paper bets at the open ({})</h2><div class='tw'><table>".format(len(paper)))
-    a("<tr><th>Race</th><th>Jumps</th><th>Our price</th><th>Take at</th><th>GRV pre-race</th><th>TAB open</th></tr>")
+    # TAB's open only gets a column when one of the bets has one: six columns do not fit a phone
+    opens_any = any(op_for(r, x[1]) for r, x, _ in paper)
+    a("<tr><th>Race</th><th>Jumps</th><th>Ours</th><th>Take at</th><th>GRV</th>" + ("<th>TAB open</th>" if opens_any else "") + "</tr>")
     for r, x, w in paper:
         op = op_for(r, x[1])
-        a(f"<tr><td><a href='#{anchor(r)}'>{html.escape(short(r['t']))} R{r['n']}</a> {html.escape(title_case(x[1]))}</td>"
-          f"<td>{when(r['s'])}</td><td><b>{money(1 / x[2])}</b></td><td>{money(w[0])}-$13</td><td>{money(x[3])}</td>"
-          f"<td>{money(op[0]) if op else '-'}</td></tr>")
+        a(f"<tr><td><a href='#{anchor(r)}'>{html.escape(short(r['t']))} R{r['n']}</a><span class='dn'>{html.escape(title_case(x[1]))}</span></td>"
+          f"<td>{when(r['s'])}</td><td><b>{money(1 / x[2])}</b></td><td>{money(w[0])}+</td><td>{money(x[3])}</td>"
+          + (f"<td>{money(op[0]) if op else '-'}</td>" if opens_any else "") + "</tr>")
     if not paper:
         a("<tr><td colspan='6' style='text-align:left'>No dog meets the rule today.</td></tr>")
     a("</table></div><div class='note'>The rule is Test 12's: a bet when the price is at least 50% over our price and "
-      "between $8 and $13. It made money at GRV's SP in 26 of 30 months walk-forward and lost at Betfair's price. These "
+      "between $8 and $13 (take at: that price or better, up to $13). It made money at GRV's SP in 26 of 30 months walk-forward and lost at Betfair's price. These "
       "dogs are picked against GRV's pre-race price, and that is not the SP: last night's check matched it to the SP on "
       "1 runner in 56. So treat them as names to check at TAB's open, where the real test is. These are paper: nothing "
       "goes to BetMatic without your OK.</div></div>")
