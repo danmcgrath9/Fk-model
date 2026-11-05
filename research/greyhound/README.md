@@ -2346,3 +2346,112 @@ BSP after commission, and the 1.3x rule finds no bets there. The gap to BSP is s
 **What goes into production:** the reliable-beginner inputs and the lead chance join the weekly train (the lead model
 fitted and saved beside the win model), and the card prints each dog's chance of leading. The TAB opens are the test
 that remains.
+
+## Test 28: the ablation, GRV's rating alone (5 Nov 2026, gh topaz run 41992943091, `topaz_walk.py`)
+
+Test 27 added three inputs to the walk-forward at once. This run takes the same set-up, with the same months and the
+same refits, and adds only GRV's rating, without the reliable beginners or the lead chance: 155 inputs plus 30
+relatives. The drift guard is still on for the bets.
+
+| month | races | model | ensemble | GRV SP | BSP (races matched) | model gap to SP | gap to BSP |
+|---|---|---|---|---|---|---|---|
+| 2023-12 | 834 | 1.6260 | 1.6193 | 1.5940 | 1.5184 (754) | +0.0320 | +0.0866 |
+| 2024-01 | 835 | 1.6233 | 1.6133 | 1.6075 | 1.4931 (723) | +0.0158 | +0.1059 |
+| 2024-02 | 715 | 1.6408 | 1.6403 | 1.5765 | 1.5269 (664) | +0.0643 | +0.1061 |
+| 2024-03 | 810 | 1.6242 | 1.6078 | 1.6308 | 1.4925 (683) | -0.0067 | +0.0957 |
+| 2024-04 | 809 | 1.6154 | 1.5966 | 1.6111 | 1.4883 (705) | +0.0042 | +0.0889 |
+| 2024-05 | 882 | 1.6222 | 1.6092 | 1.6492 | 1.5002 (718) | -0.0270 | +0.0773 |
+| 2024-06 | 822 | 1.6653 | 1.6364 | 1.6596 | 1.5126 (640) | +0.0057 | +0.0861 |
+| 2024-07 | 881 | 1.6581 | 1.6359 | 1.6876 | 1.5288 (723) | -0.0295 | +0.0790 |
+| 2024-08 | 900 | 1.6477 | 1.6153 | 1.6499 | 1.4912 (705) | -0.0022 | +0.0883 |
+| 2024-09 | 817 | 1.6400 | 1.6223 | 1.6379 | 1.4997 (697) | +0.0022 | +0.1018 |
+| 2024-10 | 950 | 1.6152 | 1.5983 | 1.6172 | 1.4742 (835) | -0.0020 | +0.0985 |
+| 2024-11 | 876 | 1.6156 | 1.5962 | 1.6091 | 1.5103 (744) | +0.0066 | +0.0683 |
+| 2024-12 | 785 | 1.6689 | 1.6473 | 1.6790 | 1.5480 (616) | -0.0101 | +0.0658 |
+| 2025-01 | 928 | 1.6155 | 1.6083 | 1.6159 | 1.4845 (831) | -0.0004 | +0.0935 |
+| 2025-02 | 791 | 1.6273 | 1.6159 | 1.5999 | 1.5258 (749) | +0.0274 | +0.0853 |
+| 2025-03 | 907 | 1.6284 | 1.6204 | 1.5737 | 1.4971 (842) | +0.0547 | +0.1079 |
+| 2025-04 | 872 | 1.6058 | 1.5981 | 1.6231 | 1.4916 (774) | -0.0173 | +0.0814 |
+| 2025-05 | 942 | 1.6614 | 1.6445 | 1.6700 | 1.5526 (787) | -0.0086 | +0.0620 |
+| 2025-06 | 862 | 1.5840 | 1.5573 | 1.6204 | 1.4665 (747) | -0.0364 | +0.0715 |
+| 2025-07 | 922 | 1.6174 | 1.6130 | 1.6292 | 1.5074 (815) | -0.0118 | +0.0756 |
+| 2025-08 | 818 | 1.5345 | 1.5146 | 1.5227 | 1.4028 (723) | +0.0117 | +0.0919 |
+| 2025-09 | 834 | 1.5928 | 1.5829 | 1.5933 | 1.4865 (721) | -0.0005 | +0.0712 |
+| 2025-10 | 960 | 1.6162 | 1.5997 | 1.6347 | 1.4952 (821) | -0.0185 | +0.0855 |
+| 2025-11 | 753 | 1.5905 | 1.5688 | 1.5705 | 1.4634 (666) | +0.0200 | +0.0947 |
+| 2025-12 | 913 | 1.5805 | 1.5535 | 1.6146 | 1.4557 (786) | -0.0341 | +0.0806 |
+| 2026-01 | 913 | 1.6203 | 1.6031 | 1.6056 | 1.4824 (824) | +0.0148 | +0.1080 |
+| 2026-02 | 879 | 1.5996 | 1.5935 | 1.5675 | 1.4830 (828) | +0.0321 | +0.0932 |
+| 2026-03 | 990 | 1.5758 | 1.5749 | 1.5360 | 1.4493 (963) | +0.0398 | +0.1166 |
+| 2026-04 | 871 | 1.5454 | 1.5446 | 1.5089 | 1.4717 (860) | +0.0365 | +0.0743 |
+| 2026-05 | 908 | 1.6343 | 1.6231 | 1.6255 | 1.5155 (821) | +0.0088 | +0.0869 |
+| 2026-06 | 897 | 1.6182 | 1.6056 | 1.6411 | 1.4978 (814) | -0.0229 | +0.0941 |
+| 2026-07 | 957 | 1.5954 | 1.5874 | 1.5671 | 1.4622 (886) | +0.0283 | +0.1137 |
+| 2026-08 | 866 | 1.5752 | 1.5739 | 1.5156 | 1.4872 (856) | +0.0595 | +0.0857 |
+| 2026-09 | 901 | 1.5276 | 1.5331 | 1.4641 | 1.4283 (900) | +0.0635 | +0.0986 |
+| 2026-10 | 892 | 1.5066 | 1.5042 | 1.4322 | 1.4030 (892) | +0.0745 | +0.1036 |
+| 2026-11 | 113 | 1.6230 | 1.6378 | 1.5436 | nan (0) | +0.0793 | +nan |
+
+| walk-forward | gap to BSP |
+|---|---|
+| Test 20 (no GRV rating) | +0.0959 |
+| **Test 28 (+ GRV's rating)** | **+0.0891** |
+| Test 27 (+ GRV's rating, reliable beginners, the lead chance) | +0.0888 |
+
+The scored quarter as a whole (25,720 races): model 1.6056, ensemble 1.5924, GRV's SP 1.5952. On the 22,866
+BSP-matched races, model 1.5729 against BSP's 1.4838.
+
+**GRV's rating is 0.0068 of Test 27's 0.0071.** The reliable beginners and the lead chance add 0.0003 on top:
+- Test 27 is closer to BSP than Test 28 in 20 of the 35 months
+- by 0.0004 a month on average
+
+That is noise-sized. The lead model's 0.0019 on one split (Test 26) mostly does not survive the walk-forward, where GRV's
+rating already carries much of what it knew. GRV's rating is GRV's own pre-race view of the dog, and a dog that leads is
+part of what it rates.
+
+The bets, the same rules on both runs:
+
+| rule | Test 28 (GRV's rating) | Test 27 (+ reliable + lead) |
+|---|---|---|
+| 1.3x rule at GRV's SP, no guard | 2,257 bets, +59.0% flat, Kelly +63.3%, **+2,764** units, 25 of 29 months | 2,296 bets, +58.4% flat, Kelly +69.8%, **+3,080** units, 27 of 29 months |
+| 1.3x rule at GRV's SP, drift guard | 1,494 bets, +82.3% flat, Kelly +82.2%, **+2,639** units, 25 of 29 months | 1,529 bets, +84.1% flat, Kelly +90.7%, **+2,943** units, 26 of 29 months |
+| Sequential rule at GRV's SP | 2,126 bets, +41.9% flat, 24 of 30 months | 2,030 bets, +44.2% flat, 23 of 30 months |
+| Test 12 rule at GRV's SP | 3,826 bets, +32.8% flat, 23 of 30 months | 3,860 bets, +33.8% flat, 27 of 30 months |
+| Test 13 rule at GRV's SP | 1,998 bets, +20.4% flat, 25 of 30 months | 2,006 bets, +24.5% flat, 25 of 30 months |
+| Sequential rule at BSP | 3,517 bets, -3.2% flat | 2,869 bets, -4.5% flat |
+| 1.3x rule at BSP | 5 bets | 5 bets |
+
+The 1.3x rule at GRV's SP in Test 28, by half (blend weights ours 0.38 to 0.64, SP 0.55 to 0.77):
+
+| rule | half | bets | winners | A/E | flat ROI | units staked | Kelly ROI | units won | worst drawdown (units) | months in profit |
+|---|---|---|---|---|---|---|---|---|---|---|
+| no guard | 1st | 1,125 | 253 | 1.437 | +50.7% | 2,272 | +51.8% | +1,178 | 58 | 12 of 13 |
+| no guard | 2nd | 1,132 | 278 | 1.615 | +67.2% | 2,096 | +75.7% | +1,587 | 44 | 14 of 17 |
+| no guard | all | 2,257 | 531 | 1.525 | +59.0% | 4,368 | +63.3% | +2,764 | 58 | 25 of 29 |
+| drift guard 1.3x | 1st | 747 | 194 | 1.534 | +63.3% | 1,677 | +64.0% | +1,074 | 53 | 12 of 13 |
+| drift guard 1.3x | 2nd | 747 | 228 | 1.830 | +101.4% | 1,535 | +102.0% | +1,565 | 32 | 14 of 17 |
+| drift guard 1.3x | all | 1,494 | 422 | 1.681 | +82.3% | 3,212 | +82.2% | +2,639 | 53 | 25 of 29 |
+
+The other Test 28 summaries:
+
+| rule | 1st half | 2nd half | all |
+|---|---|---|---|
+| Sequential, GRV's SP | 1,062 bets, A/E 1.392, +39.4% | 1,064, 1.435, +44.4% | 2,126, 1.417, +41.9% (worst drawdown 36%) |
+| Test 12 rule, GRV's SP | 1,911, 1.384, +37.5% | 1,915, 1.292, +28.0% | 3,826, 1.338, +32.8% |
+| Test 13 rule, GRV's SP | 998, 1.284, +28.0% | 1,000, 1.144, +12.8% | 1,998, 1.214, +20.4% |
+| Sequential, BSP | 1,756, 0.967, -9.2% | 1,761, 1.122, +2.9% | 3,517, 1.034, -3.2% |
+| Test 12 rule, BSP | 2,098, 1.183, +10.4% | 2,103, 1.041, -2.8% | 4,201, 1.112, +3.8% |
+| Test 13 rule, BSP | 921, 0.952, -10.2% | 928, 0.938, -11.6% | 1,849, 0.945, -10.9% |
+
+**The log loss barely moves, but the betting does.** With the lead chance and the reliable beginners:
+- the 1.3x rule's Kelly ROI rises by 6.5 points (no guard) and 8.5 points (drift guard)
+- it makes about 300 more units either way
+- it has two more months in profit without the guard (27 against 25)
+- the Test 12 and 13 rules and the sequential rule also earn a little more at GRV's SP
+
+The gain lands where the rule bets, among dogs the blend and the SP disagree on. One walk-forward on one set of months
+cannot prove that, but every rule at GRV's SP points the same way, and none points the other.
+
+**Decision:** GRV's rating is already in the weekly train (`WALK_GRV_RATING=yes`). The reliable beginners and the lead
+chance go in too, on the betting evidence. The lead model is fitted in the weekly train and saved beside the win model,
+so the nightly price run loads it rather than fitting 27 lead models a night.
