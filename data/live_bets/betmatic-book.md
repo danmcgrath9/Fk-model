@@ -991,3 +991,7 @@ Flemington Thu settled R1-R8 on Form King's results (pulled 6:25pm; R9 not in ye
   winners, +6.44u (+$1,288). R9 waits.
 - Back book: none landed (no BSP favourite at $4-$7 that we rated 1.6x+).
 - Feroce (R3, not a bet) 4th at SP $4.60.
+Flemington Thu R9 in (pulled 6:40pm): Ice Kool 6th (SP $6, BSP $8.40), Rey Magnerio won. DAY SETTLED:
+- Open book 3 bets 9.12u, 0 winners, -9.12u (-$456 at $50). Twitter card 4.56u out, 0 in, -4.56u (-100%).
+- Lay book 7 lays, 0 winners, +6.44u (+$1,288 at $200); no R9 lay (none at BSP $15-$40 and 1.6x ours). Back book none.
+- Paper day: +$832 ($1,288 lays less $456 open book). Lay trial (28 Oct to 5 Nov): 80 lays, 2 winners, +31.26u.

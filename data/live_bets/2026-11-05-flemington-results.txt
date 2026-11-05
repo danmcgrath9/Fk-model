@@ -101,3 +101,14 @@ R8 Little Ally Bama         finish 13  SP 101.0  BSP 246.51
 R8 Quick Finish             finish 14  SP 9.0  BSP 15.0
 R8 Expensive Taste          finish 15  SP 101.0  BSP 239.97
 R8 Nikitria                 finish 16  SP 101.0  BSP 220.0
+R9 Rey Magnerio             finish 1  SP 3.1  BSP 3.55
+R9 Perilous Fighter         finish 2  SP 101.0  BSP 171.46
+R9 Bev's Nine               finish 3  SP 4.0  BSP 3.73
+R9 Don't Hope Do            finish 4  SP 14.0  BSP 15.5
+R9 I'm Foxing               finish 5  SP 7.5  BSP 8.0
+R9 Ice Kool                 finish 6  SP 6.0  BSP 8.4
+R9 Marble Nine              finish 7  SP 41.0  BSP 47.67
+R9 Philosopher              finish 8  SP 51.0  BSP 118.27
+R9 Always Enuff             finish 9  SP 101.0  BSP 266.25
+R9 Landmark                 finish 10  SP 11.0  BSP 12.42
+R9 Stokke                   finish 11  SP 12.0  BSP 17.29
