@@ -47,3 +47,16 @@ def test_watch_list_leaves_out_races_already_run():
     out = CP.page(card, {}, "8:30pm", datetime(2026, 11, 5, 8, 30, tzinfo=timezone.utc))
     head = out[out.index("Check these at TAB"):out.index("How to bet it")]
     assert "(1)" in head and "1 more in races already run" in head and "R2" in head and "R1</a>" not in head
+
+
+def test_speed_map_line_and_early_reasons_when_the_card_carries_them():
+    rows = [["1", "LEADER", 0.30, 3.6, "100", 1, 0, "3-2", [], 1, 0.6, 0],
+            ["2", "CHASER", 0.25, 4.0, "90", 2, 0, "2-2", [], 2, 0.2, 1],
+            ["3", "OLD CARD", 0.45, 2.0, "80", 0, 0, "1-1", []]]            # a card written before the map: no fields
+    card = {"day": "2026-11-05", "fit": 1, "rounds": 1, "fam": [], "tracks": ["Shepparton"], "edges": [],
+            "races": [{"t": "Shepparton", "n": "1", "s": "2026-11-04T23:40:00.000Z", "d": 390, "g": "Maiden", "b": 1.2,
+                       "r": rows}]}
+    out = CP.page(card, {}, "noon")
+    assert "fastest early on past splits: 1. Leader" in out and "leads most often: 1. Leader (60% of its runs)" in out
+    assert "led at the first point in 20% of its last 10" in out and "1 quicker beginner drawn inside it" in out
+    assert "2nd fastest early on past splits" in out

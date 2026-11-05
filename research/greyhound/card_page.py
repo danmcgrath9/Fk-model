@@ -70,6 +70,11 @@ def ladder(p: float, book: float = TAB_BOOK) -> list:
     return [(m, m / p, stake(p, m / p, book)) for m in LADDER]
 
 
+def ordinal(n: int) -> str:
+    n = int(n)
+    return f"{n}{'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
+
+
 def units(u: float) -> str:
     return f"{u:.1f}u" if u else "0u"
 
@@ -234,8 +239,18 @@ def page(card: dict, opens: dict, made: str, now: datetime | None = None) -> str
               f"{html.escape(grade)} · our market adds to 100% · GRV's to {r['b']:.0%} · {len(r['r'])} runners"
               + (f" · reserve{'s' if len(r['reserves']) > 1 else ''} {html.escape(', '.join(r['reserves']))} left out"
                  if r["reserves"] else "") + "</div>")
+            mapped = [x for x in r["r"] if len(x) > 9 and x[9] is not None]
+            if mapped:
+                fast = min(mapped, key=lambda x: x[9])
+                lead = max((x for x in mapped if len(x) > 10 and x[10] is not None), key=lambda x: x[10], default=None)
+                bits = [f"fastest early on past splits: {html.escape(fast[0])}. {html.escape(title_case(fast[1]))}"]
+                if lead is not None and lead[10] > 0:
+                    bits.append(f"leads most often: {html.escape(lead[0])}. {html.escape(title_case(lead[1]))} ({lead[10]:.0%} of its runs)")
+                a("<div class='hd'><b>Speed map:</b> " + " · ".join(bits) + ". The fastest early dog leads about 3 races "
+                  "in 10 (4 in 10 from box 1), and the leader wins about half (Test 21).</div>")
             for x in r["r"]:
-                box, dog, p, grv, rating, tip, bb, last5, fams = x
+                box, dog, p, grv, rating, tip, bb, last5, fams = x[:9]
+                rank, led, inside = (list(x[9:12]) + [None, None, None])[:3]
                 lad = ladder(p, race_book(r))
                 tags = ""
                 if lad and grv and grv >= RATIO / p:
@@ -264,6 +279,15 @@ def page(card: dict, opens: dict, made: str, now: datetime | None = None) -> str
                 dns = [f"<span class='dn'>{html.escape(fam[k])} {v}%</span>" for k, v in fams if v < 0][:3]
                 why = " · ".join(ups + dns)
                 fair = 1 / grv / r["b"]
+                early = []
+                if rank is not None:
+                    early.append("fastest early in the field on past splits" if rank == 1 else f"{ordinal(rank)} fastest early on past splits")
+                if led is not None:
+                    early.append(f"led at the first point in {led:.0%} of its last 10")
+                if inside:
+                    early.append(f"{inside} quicker beginner{'s' if inside > 1 else ''} drawn inside it")
+                if early:
+                    reason += "<b>Early:</b> " + " · ".join(early) + ".<br>"
                 a(f"<div class='r'><div class='px'>{money(1 / p)}<span class='pc'>{p:.0%}</span></div><div>"
                   f"<span class='nm'>{html.escape(box)}. {html.escape(title_case(dog))}</span>{tags}"
                   f"<span class='mk'> · {mk}</span></div><div class='why'>{reason}"

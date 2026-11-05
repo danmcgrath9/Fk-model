@@ -111,11 +111,22 @@ def card_payload(card, contrib, fam, book, day, n_fit, tracks) -> dict:
             tip = x.get("tip_rank", np.nan)
             rows.append([txt(x.box), txt(x.dog_name), round(float(x.p_model), 4), float(x.grv_price),
                          txt(x.get("topaz_rating")), 0 if pd.isna(tip) else int(tip), int(bool(x.get("is_best_bet"))),
-                         txt(x.get("last5")), [c for c in top if c[1] != 0]])
+                         txt(x.get("last5")), [c for c in top if c[1] != 0],
+                         # the speed map (founder, 5 Nov: "Was it always going to lead"): rank in the field on past
+                         # first splits, share of its last 10 runs it led at the first point, quicker beginners inside
+                         num_or_none(x.get("map_speed_rank")), num_or_none(x.get("style_led_rate"), 3),
+                         num_or_none(x.get("map_quicker_inside"))])
         races.append({"t": venue, "n": txt(r0.get("race_number")), "s": txt(r0.get("start_time")), "d": int(r0.distance),
                       "g": txt(r0.grade), "b": round(float(book.loc[g.index[0]]), 3), "r": rows})
     return {"day": day, "fit": int(n_fit), "rounds": int(W.ROUNDS_A), "fam": names, "tracks": sorted(seen),
             "races": races, "edges": edges}
+
+
+def num_or_none(v, nd: int = 0):
+    """A number for the payload, or None when missing (JSON has no NaN)."""
+    if v is None or (isinstance(v, float) and np.isnan(v)):
+        return None
+    return round(float(v), nd) if nd else int(round(float(v)))
 
 
 def txt(v) -> str:
