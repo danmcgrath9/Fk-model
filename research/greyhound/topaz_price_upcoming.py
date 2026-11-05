@@ -130,16 +130,22 @@ def pick(d: dict, names):
     return None
 
 
-def fetch_day(client: TopazClient, day: str):
+def fetch_day(client: TopazClient, day: str, workers: int = 8):
     """Tonight's runs in the bulk feed's shape, plus the race records, plus the field names seen."""
     races = [r for r in (client._get("race/upcoming", params={"from": f"{day} 00:00"}) or []) if isinstance(r, dict)]
     races = [r for r in races if str(pick(r, RACE_ALIASES["meetingDate"]) or day)[:10] == day]
     rows, names = [], {"race": set(), "run": set(), "form": set()}
+    # every race's two calls at once, under the client's shared per-minute cap (GRV allows about 80 a minute); the
+    # rows are still assembled in /race/upcoming's order
+    from concurrent.futures import ThreadPoolExecutor
+    paths = [p for r in races for p in (f"race/{r.get('raceId')}/runs", f"race/{r.get('raceId')}/runs/form")]
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        got = dict(zip(paths, ex.map(lambda p: client._get(p) or [], paths)))
     for r in races:
         rid = r.get("raceId")
         names["race"].update(r.keys())
-        runs = [u for u in (client._get(f"race/{rid}/runs") or []) if isinstance(u, dict)]
-        form = [u for u in (client._get(f"race/{rid}/runs/form") or []) if isinstance(u, dict)]
+        runs = [u for u in got[f"race/{rid}/runs"] if isinstance(u, dict)]
+        form = [u for u in got[f"race/{rid}/runs/form"] if isinstance(u, dict)]
         by_run = {u.get("runId"): u for u in form if u.get("runId") is not None}
         by_dog = {u.get("dogId"): u for u in form if u.get("dogId") is not None}
         if not runs:
@@ -259,7 +265,7 @@ def main(d, label):
     if os.environ.get("PRICE_MODE", "").strip().lower() == "train":
         return train(d, label)
     day = os.environ.get("PRICE_DAY") or pd.Timestamp.now(tz=SYDNEY).strftime("%Y-%m-%d")
-    client = TopazClient(pause=1.0)
+    client = TopazClient(max_per_minute=float(os.environ.get("TOPAZ_PER_MINUTE", "72") or 72))
     t_fetch = time.time()
     rows, races, names = fetch_day(client, day)
     print(f"# {label}: the model's prices for {day}\n")
@@ -273,6 +279,7 @@ def main(d, label):
         return 1
     cache = Path(d)
     since = os.environ.get("PRICE_HISTORY_FROM", "").strip()
+    since = "" if since.lower() == "all" else since      # "all": every cached month, 2013 on
     bst, meta = load_model()
     t0 = time.time()
     df, num, rel, note, tmp = build_day(cache, rows, races, day, since)

@@ -93,3 +93,35 @@ def test_compare_prices_measures_two_builds_of_one_card():
     # differences 0.1, 0.1, 0.05, 0.05; race 1's top pick ties in b (argmax takes the first, dog 10), race 2 agrees
     assert c["n"] == 4 and c["races"] == 2 and abs(c["mean_abs"] - 0.075) < 1e-12 and abs(c["max_abs"] - 0.1) < 1e-12
     assert c["top_same"] == 2 and c["corr"] > 0.9
+
+
+def test_fetch_day_calls_every_race_at_once_and_keeps_the_card_order():
+    import threading
+    from greyhound.topaz import TopazClient
+    sys.path.insert(0, os.path.dirname(__file__))
+    from test_topaz import Resp
+
+    races = [{"raceId": r, "meetingDate": "2026-11-06", "meetingId": 9, "trackCode": "SAN", "distance": 515,
+              "incomingGrade": "5", "raceStart": f"2026-11-06T0{r}:00:00Z"} for r in (3, 1, 2)]
+
+    class ByPath:                                   # answers by path, so thread order cannot matter
+        def __init__(self):
+            self.seen, self.lock = [], threading.Lock()
+
+        def get(self, url, headers=None, params=None, timeout=None):
+            with self.lock:
+                self.seen.append(url.split("/v1/", 1)[-1] if "/v1/" in url else url)
+            if url.endswith("race/upcoming"):
+                return Resp(200, races)
+            rid = int(url.rstrip("/").split("/race/")[1].split("/")[0])
+            if url.endswith("/runs/form"):
+                return Resp(200, [{"runId": rid * 10, "dogId": rid, "rating": 80, "startPrice": 3.0}])
+            return Resp(200, [{"runId": rid * 10, "dogId": rid, "boxNumber": 1, "dogName": f"D{rid}"},
+                              {"runId": rid * 10 + 1, "dogId": rid + 100, "boxNumber": None, "dogName": "reserve"}])
+
+    s = ByPath()
+    c = TopazClient("k", session=s, sleep=lambda _: None, max_per_minute=100000)
+    rows, got_races, names = PU.fetch_day(c, "2026-11-06", workers=4)
+    assert [r["raceId"] for r in rows] == [3, 1, 2]                  # /race/upcoming's order, one runner each
+    assert all(r["rating"] == 80 and r["startPrice"] == 3.0 for r in rows)      # the form row merged by run
+    assert c.calls == 7 and len(s.seen) == 7                         # upcoming + two a race
