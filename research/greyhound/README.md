@@ -1060,6 +1060,30 @@ it, are names to check at TAB's open, not bets the backtest stands behind. The 5
 41931175896: 50 races, 382 runners, comment, rating and price on all 382, isBestBet on 13, a 122% book, tips on 50 of
 50, no results in) is compared tomorrow morning.
 
+**The 5 Nov compare** (run 42127040392, 6 Nov): the snapshot of all 50 races and 382 runners, taken at 10:08 Sydney on
+race day, against the bulk feed for that day. One snapshot file is kept per day, and the 10:08 read replaced the 21:45
+read of the evening before.
+
+| field | the same after the race |
+|---|---|
+| comment | 380 of 382 (2 changed, none filled late) |
+| GRV's rating | 382 of 382 |
+| isBestBet | 382 of 382 |
+| race analystComment | 47 of 50 |
+| tips (tip1-4) | filled before on 50 of 50, the same after on 46 of 50; 197 of the 200 tip values are box numbers |
+| the pre-race `startPrice` against the bulk `startPrice` | **1 of 382**; correlation of log prices +0.685 on 347 runners, median change 76%; the pre-race prices make a 122% book (median of 50 races) |
+
+The second day confirms the first on the two things that matter:
+- **GRV's rating and isBestBet are never touched after the race** (382 of 382 each), so the rating in the weekly model
+  stands
+- **the bulk `startPrice` is the SP at the jump, not the price GRV shows beforehand** (1 of 382 equal), so every
+  staking test bet at the real SP
+
+The comments and tips are not quite frozen on a full day. Two runner comments, 3 race comments and the tips of 4 races
+in 50 changed between 10:08 and the bulk feed. The likeliest cause is late scratchings, after which GRV re-tips a race
+before it runs; nothing here can tell that from a post-race edit. At 4 races in 50 it cannot be most of what the tips
+are worth, but the tips' value (Test 19, 0.001) is small enough that this does not matter either way.
+
 ## Test 16: the ratings engine upgrades, and GRV's rating (4 Nov 2026, gh topaz run 41820195552, `topaz_round6.py`)
 
 Three upgrades to `greyhound/ratings.py`, each as at the end of the previous day and hand-tested: **shrinkage** (a
