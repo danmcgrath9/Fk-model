@@ -18,12 +18,22 @@ Since Test 14 the model also carries the ratings upgrades (Test 16) and this rac
                       job's 350 minutes; between refits the last fitted pair prices the month)
   WALK_ROUNDS_A=n     rounds for the BSP-chance model (3,000 by default; Test 19 found early stopping choosing 4,139
                       once the cap was lifted, at about a third more time a refit)
+  WALK_RELIABLE=yes   the reliable-beginner inputs (Test 23: split spread, worst split, missed-start rate, early spread)
+  WALK_LEAD=yes       the lead model's chance of leading at the first point (Test 26), FORWARD-CHAINED: each half-year
+                      of rows gets its chance from a lead model fitted only on races before that half-year (fixed
+                      LEAD_ROUNDS), so neither the win model's training rows nor its priced rows see their own result
+  WALK_DRIFT=yes      Betfair's shortest pre-play price, for the drift guard on the bets (Test 25); needs BETFAIR_DIR
 
 THE BETS are chosen the same way. For each month from the scored quarter on, the rule (signal: the model, the
 ensemble, or Benter's blend of the model with the market; one bet a race or every qualifier; price band; edge) is the
 one with the best flat ROI over the PREVIOUS six months of walk-forward predictions, with at least 300 bets there, and
 is then applied to the month. Two fixed rules from Tests 12 and 13 ride alongside. At GRV's SP (no commission) and at
 BSP (8% on winnings). Flat stakes; drawdown at 0.5% of the bank a bet.
+
+THE GALLOPS VALUE RULE (Test 21) rides alongside too, with its Benter blend refitted each month on the six months
+before: a bet when the price is at least 1.3x the blended price, our price $2-$15, Kelly x75 units on the chance halfway
+between the blend and the market, cap 4; and, with WALK_DRIFT, the same rule without the dogs that drifted 1.3x or more
+from their shortest Betfair price before the off (Test 25's guard, measured to the off).
 """
 import os
 import sys
@@ -46,6 +56,8 @@ ROUNDS_A = int(os.environ.get("WALK_ROUNDS_A", "3000") or 3000)   # Tests 10 and
 ROUNDS_B = 400                                                      # what early stopping chose for the winners twin (385)
 EDGES = [0.02, 0.05, 0.10, 0.20, 0.30, 0.50]
 TIME_GUARD_MIN = 285
+LEAD_ROUNDS = 300                          # what early stopping chose for the lead model in Test 26 (186-409 by fold)
+DRIFT_CAP = 1.3
 MIN_TRAIN_RACES = 1500                    # stop refitting past this and report what there is (the job dies at 350)
 
 
@@ -116,10 +128,55 @@ def build_full(d, keep_unresulted=False):
             notes.append("GRV's rating IN (valid only if the preview compare cleared it)")
         else:
             notes.append("GRV's rating asked for but not filled; left out")
+    frel, frel_rel = [], []
+    if os.environ.get("WALK_RELIABLE", "").strip().lower() == "yes":
+        import topaz_round11 as R11    # here: it imports this module
+        df = R11.reliable_features(df)
+        frel, frel_rel = list(R11.RELIABLE), ["split_sd10", "missed_rate10"]
+        notes.append("reliable-beginner inputs IN (Test 23)")
     df = df.copy()
-    num = list(dict.fromkeys(num + fpv + fiso + ftip + fgrv))
-    rel = rel + [f for f in fiso if f.endswith("_m3")] + fgrv
+    num = list(dict.fromkeys(num + fpv + fiso + ftip + fgrv + frel))
+    rel = rel + [f for f in fiso if f.endswith("_m3")] + fgrv + frel_rel
+    if os.environ.get("WALK_LEAD", "").strip().lower() == "yes":
+        df, n_fits = lead_forward(df, num, rel)
+        num, rel = num + ["p_lead", "lead_rank"], rel + ["p_lead"]
+        notes.append(f"lead chance IN (Test 26): forward-chained by half-year, {n_fits} lead fits of {LEAD_ROUNDS} rounds")
+    if os.environ.get("WALK_DRIFT", "").strip().lower() == "yes":
+        import topaz_round12 as R12
+        import topaz_round13 as R13
+        R12.EXTRA[:] = [R13.MIN, R13.MAX]
+        df, have = R12.add_betfair_extra(df)
+        if R13.MIN in have:
+            df = R13.drift_columns(df)
+            notes.append(f"drift IN (Test 25): filled on {df.drift[df.p_bsp.notna()].notna().mean():.0%} of BSP runners")
+        else:
+            notes.append("drift asked for but Betfair's files carry no pre-play min price; left out")
     return df, num, rel, "\n".join(notes)
+
+
+def lead_forward(df, num, rel, fit=None, rounds=None):
+    """p_lead and lead_rank for every row, each half-year from a lead model fitted only on the one-leader races before
+    that half-year began; rows with nothing before them stay NaN. Returns (df, number of fits)."""
+    import topaz_round14 as R14        # here: it imports this module
+    fit = fit or fit_fixed
+    rounds = rounds or LEAD_ROUNDS
+    df = R14.lead_label(df)
+    X = T.features(df, num, rel)
+    df["p_lead"] = np.nan
+    halves = df.date.dt.year * 2 + (df.date.dt.month > 6)
+    fits = 0
+    for hv in sorted(halves.unique()):
+        cur = (halves == hv).values
+        start = df.date[cur].min()
+        tr = ((df.date < start) & df.one_leader).values
+        if df.race_id[tr].nunique() < MIN_TRAIN_RACES:
+            continue
+        rec = 0.5 ** ((((start - df.date[tr]).dt.days) / 365.25).values / 3.0)
+        bst = fit(X[tr], df.led.values[tr].astype(float), df.race_id[tr], rec, rounds)
+        df.loc[cur, "p_lead"] = V1.race_softmax(bst.predict(X[cur], raw_score=True), df.race_id.values[cur])
+        fits += 1
+    df["lead_rank"] = df.p_lead.groupby(df.race_id.values).rank(ascending=False, method="min")
+    return df, fits
 
 
 def walk(df, num, rel, first_pred, t0, every=1, fit=None):
@@ -288,6 +345,54 @@ def main(d, label):
     sequential_bets(df, first_bet, "start_price", "p_sp", 0.0, "Bets at GRV's SP, no commission")
     if "bsp" in df:
         sequential_bets(df, first_bet, "bsp", "p_bsp", 0.08, "Bets at BSP, 8% commission on winnings")
+    horse_rule(df, first_bet, "start_price", "p_sp", 0.0, "The 1.3x rule at GRV's SP, no commission")
+    if "bsp" in df:
+        horse_rule(df, first_bet, "bsp", "p_bsp", 0.08, "The 1.3x rule at BSP, 8% commission on winnings")
+
+
+def horse_rule(df, first_bet, price_col, p_mkt_col, comm, title):
+    """Test 21's rule month by month, the Benter blend refitted on the six months before each month; with the drift
+    guard (Test 25) beside it when the drift column is there."""
+    import topaz_round9 as R9           # here: it imports this module
+    d = df[df.p_a.notna() & df[p_mkt_col].notna() & df[price_col].notna() & (df[price_col] > 1)]
+    months = pd.period_range(first_bet, d.date.max().to_period("M"), freq="M")
+    rows = {"no guard": [], f"drift guard {DRIFT_CAP:g}x": []} if "drift" in d else {"no guard": []}
+    weights = []
+    for M in months:
+        W = d[(d.date >= (M - 6).start_time) & (d.date < M.start_time)]
+        cur = d[(d.date >= M.start_time) & (d.date < (M + 1).start_time)]
+        if len(W) < 1000 or len(cur) == 0:
+            continue
+        wb, _ = V1.blend(["p_a", p_mkt_col], W)
+        weights.append(wb)
+        pb = V1.blend(["p_a", p_mkt_col], cur, wb)[1]
+        price = cur[price_col].astype(float).values
+        m, o, u = R9.horse_bets(cur, pb, cur[p_mkt_col].values, price, comm, 1.3, (2, 15))
+        for name in rows:
+            mm = m & ~(cur.drift >= DRIFT_CAP).values if name != "no guard" else m
+            if mm.any():
+                rows[name].append(cur[mm].assign(ret=np.where(cur.won.values[mm] == 1, o[mm] - 1, -1.0), units=u[mm],
+                                                  odds=o[mm]))
+    w = np.array(weights)
+    print(f"\n## {title}\n\nBlend weights (ours, market) refitted each month: ours {w[:, 0].min():.2f} to {w[:, 0].max():.2f}, "
+          f"market {w[:, 1].min():.2f} to {w[:, 1].max():.2f}\n" if len(w) else f"\n## {title}\n\nno months to bet\n")
+    print("| rule | half | bets | winners | A/E | flat ROI | units staked | Kelly ROI | units won | worst drawdown (units) | "
+          "months in profit |\n|---|---|---|---|---|---|---|---|---|---|---|")
+    for name, parts in rows.items():
+        if not parts:
+            print(f"| {name} | all | 0 | | | | | | | | |")
+            continue
+        b = pd.concat(parts).sort_values("date")
+        mid = b.date.quantile(0.5)
+        for hn, hm in (("1st", b.date < mid), ("2nd", b.date >= mid), ("all", b.date.notna())):
+            x = b[hm]
+            kret = x.units * x.ret
+            cum = np.r_[0, np.cumsum(kret.values)]
+            dd = float((np.maximum.accumulate(cum) - cum).max())
+            bym = kret.groupby(x.date.dt.to_period("M")).sum()
+            ae = x.won.sum() / (1 / x[price_col]).sum()
+            print(f"| {name} | {hn} | {len(x):,} | {int(x.won.sum()):,} | {ae:.3f} | {x.ret.mean():+.1%} | {x.units.sum():,.0f} | "
+                  f"{kret.sum() / x.units.sum():+.1%} | {kret.sum():+,.0f} | {dd:,.0f} | {(bym > 0).sum()} of {len(bym)} |")
 
 
 if __name__ == "__main__":
