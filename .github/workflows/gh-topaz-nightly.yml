@@ -23,6 +23,12 @@ on:
       tracks:
         description: 'mode=price: tracks to seal in full, comma separated (blank = every VIC track)'
         default: ''
+      history_from:
+        description: 'mode=price: build the form from this month on, YYYY-MM (blank = all cached history, 2013 on)'
+        default: ''
+      compare_from:
+        description: 'mode=price: also build from this month (YYYY-MM) and print how far the two builds price the card apart'
+        default: ''
 
 concurrency:
   group: gh-topaz-nightly
@@ -94,6 +100,7 @@ jobs:
           else
             DAY="${{ github.event.inputs.date }}"; [ -n "$DAY" ] || DAY=$(TZ=Australia/Melbourne date -d tomorrow +%F)
             PRICE_DAY="$DAY" PRICE_TRACK="${{ github.event.inputs.tracks }}" \
+              PRICE_HISTORY_FROM="${{ github.event.inputs.history_from }}" PRICE_COMPARE_FROM="${{ github.event.inputs.compare_from }}" \
               python research/greyhound/topaz_price_upcoming.py greyhound/cache/topaz "topaz VIC prices for $DAY"
           fi
 
