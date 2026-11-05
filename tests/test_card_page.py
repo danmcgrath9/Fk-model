@@ -71,4 +71,4 @@ def test_rule_panel_lists_the_cards_bets_in_jump_order():
             "blend": [0.51, 0.66]}
     out = CP.page(card, {}, "noon")
     panel = out[out.index("The tested rule"):out.index("Check these at TAB")]
-    assert "(2, 4 units)" in panel and panel.index("R1</a>") < panel.index("R2</a>") and "2.0u" in panel and "$5.00" in panel
+    assert "(2, 4 units)" in panel and panel.index("R1</a>") < panel.index("R2</a>") and "2.0u" in panel and "$6.50+" in panel

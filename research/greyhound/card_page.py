@@ -202,19 +202,20 @@ def page(card: dict, opens: dict, made: str, now: datetime | None = None) -> str
         bw = card.get("blend") or [0.51, 0.66]
         a("<div class='bets' id='rule'><h2>The tested rule's bets ({}, {:.0f} units)</h2><div class='tw'><table>".format(
             len(rule), sum(b[7] for b in rule)))
-        a("<tr><th>Race</th><th>Ours</th><th>Blend</th><th>GRV</th><th>Units</th></tr>")
+        a("<tr><th>Race</th><th>Ours</th><th>Bet at</th><th>GRV</th><th>Units</th></tr>")
         for b in rule:
             r = next((r for r in races if r["t"] == b[0] and r["n"] == b[1]), None)
             jumps = when(r["s"]) if r else ""
             link = f"<a href='#{anchor(r)}'>{html.escape(short(b[0]))} R{b[1]}</a>" if r else f"{html.escape(short(b[0]))} R{b[1]}"
             a(f"<tr><td>{link} {jumps}<span class='dn'>{html.escape(b[2])}. {html.escape(title_case(b[3]))}</span></td>"
-              f"<td>{money(1 / b[4])}</td><td><b>{money(1 / b[5])}</b></td><td>{money(b[6])}</td><td><b>{units(b[7])}</b></td></tr>")
+              f"<td>{money(1 / b[4])}</td><td><b>{money(RATIO / b[5])}+</b></td><td>{money(b[6])}</td><td><b>{units(b[7])}</b></td></tr>")
         if not rule:
             a("<tr><td colspan='5' style='text-align:left'>No dog meets the rule today.</td></tr>")
         a(f"</table></div><div class='note'>The rule as tested in Test 27's walk-forward (+58% flat, +70% Kelly at "
           f"GRV's SP over 29 months, 27 in profit): our chance blended with GRV's ({bw[0]:.2f} / {bw[1]:.2f}), a bet "
           "when GRV's price is at least 1.3x the blended price, the blended price $2-$15, Kelly x75 on the chance halfway "
-          "between the blend and GRV's, up to 4 units. GRV's pre-race price stands in for the SP here, and it is not the "
+          "between the blend and GRV's, up to 4 units. Bet at: 1.3x the blended price, so take any price at or above it "
+          "(TAB's open included). GRV's pre-race price stands in for the SP here, and it is not the "
           "SP; drop a dog that drifts 30% from its shortest price before the jump. Paper.</div></div>")
     a("<div class='bets' id='bets'><h2>Check these at TAB's open ({})</h2>".format(len(watch))
       + (f"<div class='hd'>{gone} more in races already run, left out</div>" if gone else "") + "<div class='tw'><table>")
