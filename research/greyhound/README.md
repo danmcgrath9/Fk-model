@@ -2047,3 +2047,79 @@ Two cautions:
 The practical rule for the founder's TAB idea follows: take the open per the 1.3x rule, then **do not add to, or
 re-take, a dog that drifts 30% from its shortest price before the jump**. The opens history will say what a bet at the
 open does on dogs that later drift.
+
+## Test 26: the lead model (5 Nov 2026, gh topaz run 41957830188, `topaz_round14.py`)
+
+The founder, on Lemonade Lass: "Was it always going to lead". Test 21 found the dog that leads at the first point wins
+52.7%, while the fastest early dog on our past splits leads only 30.3%.
+
+The lead model:
+- uses the same LightGBM race softmax and the same pre-race inputs as the win model
+- uses the label "led at the first point", from GRV's in-running, on races with exactly one leader (93% of races)
+- was fitted on 73,338 races to 5 Dec 2023, early-stopped to 5 June 2024 (300 rounds), and scored after
+
+On the scored quarter's 22,443 one-leader races its log loss is **1.5404**, against 1.9362 for an equal chance each.
+
+| rule | its pick leads | its pick wins |
+|---|---|---|
+| **the lead model's top pick** | **39.8%** of 22,443 races | **28.3%** |
+| fastest early on past splits | 31.2% of 22,436 races | 20.5% |
+| led most often (last 10) | 32.3% of 18,155 races | 20.8% |
+
+It is calibrated (actual leads against its expected, by its own chance):
+
+| lead chance | runners | led | lead model expected | won | win % |
+|---|---|---|---|---|---|
+| 0%-10% | 80,749 | 3,624 | 3,663 | 6,569 | 8.1% |
+| 10%-20% | 36,982 | 5,646 | 5,317 | 5,907 | 16.0% |
+| 20%-35% | 24,766 | 6,453 | 6,544 | 5,335 | 21.5% |
+| 35%-50% | 9,913 | 4,037 | 4,102 | 2,922 | 29.5% |
+| 50%-70% | 4,179 | 2,284 | 2,404 | 1,438 | 34.4% |
+| 70%-100% | 546 | 399 | 412 | 272 | 49.8% |
+
+Then the win model with the lead chance as an input. The training rows get it out of fold, from lead models fitted on
+the other two date blocks (409, 296 and 186 rounds); the early-stopping and scored rows get it from the full fit. That
+is the same standard split, the 22,769 scored races with BSP, where BSP's log loss is 1.4838.
+
+| row | inputs | rounds | early-stopping log loss | scored log loss | gap to BSP | 1st half | 2nd half |
+|---|---|---|---|---|---|---|---|
+| G0 F2 (D1 + preview + tips) | 186 | 2,626 | 1.5996 | 1.5901 | +0.1063 | +0.0992 | +0.1127 |
+| **G1 + the lead chance** | 189 | 4,716 | 1.5978 | 1.5882 | **+0.1044** | **+0.0969** | **+0.1110** |
+| G2 G1 + the trainer's runners | 192 | 3,707 | 1.5986 | 1.5889 | +0.1051 | +0.0980 | +0.1115 |
+
+The new inputs' share of the model's splits:
+- G1: 6.6% (p_lead relative to the race 4.9%, p_lead 1.3%, lead_rank 0.4%)
+- G2: 6.9% (p_lead 3.0%, p_lead relative 3.0%, lead_rank 0.9%; trainer_runners, trainer_rank and stable_elect 0.0% each)
+
+| dogs (scored quarter, races with BSP) | runners | wins | win % | A/E vs G0 | A/E vs G1 | A/E vs G2 | A/E vs BSP | A/E vs GRV's SP |
+|---|---|---|---|---|---|---|---|---|
+| lead chance 50%+ | 4,727 | 1,715 | 36.3% | 0.988 | 0.987 | 0.987 | 0.979 | 1.073 |
+| lead chance 35-50% | 10,029 | 2,951 | 29.4% | 1.036 | 1.032 | 1.031 | 1.017 | 1.101 |
+| lead chance 20-35% | 25,090 | 5,400 | 21.5% | 0.998 | 0.996 | 0.996 | 0.979 | 1.035 |
+| lead chance under 20% | 120,385 | 12,703 | 10.6% | 0.995 | 0.996 | 0.996 | 1.008 | 0.957 |
+| lead model's top pick, box 1 | 5,352 | 1,618 | 30.2% | 1.002 | 1.002 | 1.003 | 0.998 | 1.068 |
+| lead model's top pick, boxes 2-8 | 17,381 | 4,812 | 27.7% | 1.023 | 1.020 | 1.019 | 1.001 | 1.085 |
+| trainer's second runner or lower | 9,695 | 957 | 9.9% | 0.955 | 0.958 | 0.972 | 0.996 | 0.940 |
+| the stable's elect | 8,799 | 1,412 | 16.0% | 0.979 | 0.982 | 0.992 | 1.001 | 1.009 |
+
+**The lead model picks the leader 39.8% of the time**, against 31.2% for the fastest early dog: right 28% more often,
+in 8.6 more races in every hundred. Its top pick wins 28.3% against 20.5%. Its chances are honest: a dog it gives
+50-70% leads 55%, one it gives 70%+ leads 73%.
+
+**Feeding it in moves the win model 0.0019 closer to BSP** (+0.1063 to +0.1044), and **both halves improve**
+(by 0.0023 and 0.0017). This is the largest single gain since the ratings upgrades of Test 16; the last five ideas were
+worth 0.001 or less. The model leans on it, with 6.6% of its splits, the most any new input has taken since GRV's tips.
+Run-to-run noise on this split is about 0.0015, so the walk-forward decides.
+
+The trainer's runners add nothing (0.0% of splits; G2 is +0.1051, worse than G1). They do narrow the second runner's
+over-pricing from A/E 0.955 to 0.972.
+
+The market already prices the likely leader:
+- BSP's A/E is 0.979-1.017 in every lead band
+- our models' A/E is 0.987-1.036 in every lead band
+- GRV's SP under-rates the likely leaders by 7-10% (1.073 and 1.101), which is part of why the 1.3x rule earns
+  against it
+
+**What goes forward:** the lead chance (G1) joins the reliable-beginner inputs (Test 23) for the final walk-forward. If
+it holds there, the weekly train fits a lead model beside the win model, and the card prints each dog's chance of
+leading.
