@@ -7,7 +7,7 @@
 1|1|Catch A Princess|False|False
 1|5|Plucky Enuff|False|False
 1|3|Moab|False|False
-1|11|Vulcana|False|False
+1|11|Vulcana|False|True
 1|9|Sophia's Legacy|False|False
 1|10|Vanara Princess|False|False
 2|6|Salsbury Hill|False|False
@@ -52,8 +52,8 @@
 6|7|Azzacool|False|False
 6|3|Danzsin|False|False
 6|6|Zetheros|False|False
-7|12|Unamerican|True|False
-7|15|Duhlata|True|False
+7|12|Unamerican|True|True
+7|15|Duhlata|True|True
 7|9|Hula Beat|False|False
 7|6|Dandruff|False|False
 7|3|Jenny The Beaver|False|False
@@ -64,8 +64,8 @@
 7|4|No Rumours|False|False
 7|10|Initial Moment|False|False
 7|11|Milady|False|False
-7|13|Sanika|True|False
-7|14|Phoenician|True|False
+7|13|Sanika|True|True
+7|14|Phoenician|True|True
 7|8|Haiiro|False|False
 8|11|Spanish Snitzel|False|False
 8|1|Super Snitch|False|False

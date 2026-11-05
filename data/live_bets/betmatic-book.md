@@ -1001,3 +1001,8 @@ Warrnambool opened overnight (all 8 races at 9:20am Fri; scratched Vulcana R1, U
 none of ours): R3 Big Vee 4.94u at $2.73 (ours $2.24), R4 Mamzelle Raine 1.08u at $13 (ours $8.02). Cranbourne (opened
 Wed): R6 Speir 1.88u at $8, R8 Power And The Beat 2.22u at $10. Day 10.12u. Mercer card at 9:20am best prices (Big Vee
 $2.50, Mamzelle Raine $7.50, Speir $5, Power And The Beat $4.60; half units); no-Mercer card at the open.
+Fri 9:30am re-price on the final fields (Warrnambool d4g, Cranbourne s6g; Form King now Dead and Slow, same bands as
+priced): ours now Big Vee $2.38, Mamzelle Raine $10.27 (was $8.02: the model has gone off it as the market came in, $13 to
+$7.50), Speir $4.92, Power And The Beat $5.38. All four still running; no scratching among them. Lay candidates:
+Warrnambool 52, Cranbourne 53. The day on one page: research/form_gbm/day_page.py (founder, 5 Nov: "Create one artifact
+for all of today please").

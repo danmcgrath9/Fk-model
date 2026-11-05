@@ -1,0 +1,82 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-06,Cranbourne,1,,1,Cowboykickedfive,WIN,15.32,33.83,0.74,37,1 of 2,0.74u,11.28,
+2026-11-06,Cranbourne,1,,1,Cowboykickedfive,WIN,19.15,33.83,0.18,9,2 of 2,0.92u,11.28,
+2026-11-06,Cranbourne,1,,4,Parera,WIN,11.76,26.30,0.98,49,1 of 2,0.98u,8.77,
+2026-11-06,Cranbourne,1,,4,Parera,WIN,14.70,26.30,0.23,12,2 of 2,1.21u,8.77,
+2026-11-06,Cranbourne,1,,11,Sondera,WIN,3.99,3.99,2.89,144,1 of 1,2.89u,3.30,opens under $4: edge 1.15
+2026-11-06,Cranbourne,1,,11,Sondera,WIN,4.21,9.90,3.14,157,1 of 3,3.14u,3.30,
+2026-11-06,Cranbourne,1,,11,Sondera,WIN,5.26,9.90,0.65,32,2 of 3,3.79u,3.30,
+2026-11-06,Cranbourne,1,,11,Sondera,WIN,7.26,9.90,3.79,190,3 of 3,7.58u,3.30,opens $7.26+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,2,,10,Engulf,WIN,7.13,16.34,1.69,84,1 of 3,1.69u,5.45,
+2026-11-06,Cranbourne,2,,10,Engulf,WIN,8.91,16.34,0.39,20,2 of 3,2.08u,5.45,
+2026-11-06,Cranbourne,2,,10,Engulf,WIN,11.99,16.34,2.08,104,3 of 3,4.16u,5.45,opens $11.99+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,2,,4,Lonnegan,WIN,7.78,15.01,1.53,76,1 of 3,1.53u,5.92,EARLY: $15 or shorter only
+2026-11-06,Cranbourne,2,,4,Lonnegan,WIN,9.72,15.01,0.35,18,2 of 3,1.88u,5.92,EARLY: $15 or shorter only
+2026-11-06,Cranbourne,2,,4,Lonnegan,WIN,13.03,15.01,1.88,94,3 of 3,3.76u,5.92,EARLY: $15 or shorter only; opens $13.03+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,2,,2,Silver Lightning,WIN,17.95,39.32,0.62,31,1 of 2,0.62u,13.11,
+2026-11-06,Cranbourne,2,,2,Silver Lightning,WIN,22.44,39.32,0.16,8,2 of 2,0.78u,13.11,
+2026-11-06,Cranbourne,3,,1,Action Point,WIN,7.89,18.00,1.51,76,1 of 3,1.51u,6.00,
+2026-11-06,Cranbourne,3,,1,Action Point,WIN,9.86,18.00,0.35,18,2 of 3,1.86u,6.00,
+2026-11-06,Cranbourne,3,,1,Action Point,WIN,13.20,18.00,1.86,93,3 of 3,3.72u,6.00,opens $13.20+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,3,,4,Blue And Gold,WIN,10.61,23.84,1.09,55,1 of 3,1.09u,7.95,
+2026-11-06,Cranbourne,3,,4,Blue And Gold,WIN,13.26,23.84,0.26,13,2 of 3,1.35u,7.95,
+2026-11-06,Cranbourne,3,,4,Blue And Gold,WIN,17.48,23.84,1.35,68,3 of 3,2.70u,7.95,opens $17.48+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,3,,5,Civic Square,WIN,3.74,3.99,3.12,156,1 of 1,3.12u,3.11,opens under $4: edge 1.15
+2026-11-06,Cranbourne,3,,5,Civic Square,WIN,4.00,9.32,3.40,170,1 of 3,3.40u,3.11,
+2026-11-06,Cranbourne,3,,5,Civic Square,WIN,4.94,9.32,0.69,34,2 of 3,4.09u,3.11,
+2026-11-06,Cranbourne,3,,5,Civic Square,WIN,6.84,9.32,4.09,204,3 of 3,8.18u,3.11,opens $6.84+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,3,,10,Teen Torque,WIN,9.00,20.39,1.31,66,1 of 3,1.31u,6.80,
+2026-11-06,Cranbourne,3,,10,Teen Torque,WIN,11.25,20.39,0.30,15,2 of 3,1.61u,6.80,
+2026-11-06,Cranbourne,3,,10,Teen Torque,WIN,14.95,20.39,1.61,80,3 of 3,3.22u,6.80,opens $14.95+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,4,,10,La Velocita,WIN,10.88,24.42,1.06,53,1 of 2,1.06u,8.14,
+2026-11-06,Cranbourne,4,,10,La Velocita,WIN,13.60,24.42,0.25,12,2 of 2,1.31u,8.14,
+2026-11-06,Cranbourne,4,,3,Rock About,WIN,7.43,16.99,1.62,81,1 of 3,1.62u,5.66,
+2026-11-06,Cranbourne,4,,3,Rock About,WIN,9.29,16.99,0.37,18,2 of 3,1.99u,5.66,
+2026-11-06,Cranbourne,4,,3,Rock About,WIN,12.46,16.99,1.99,100,3 of 3,3.98u,5.66,opens $12.46+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,4,,7,Trentino,WIN,11.75,26.27,0.98,49,1 of 2,0.98u,8.76,
+2026-11-06,Cranbourne,4,,7,Trentino,WIN,14.69,26.27,0.23,12,2 of 2,1.21u,8.76,
+2026-11-06,Cranbourne,5,,6,Layla,WIN,3.29,3.99,3.68,184,1 of 1,3.68u,2.75,opens under $4: edge 1.15
+2026-11-06,Cranbourne,5,,6,Layla,WIN,4.00,8.24,4.00,200,1 of 3,4.00u,2.75,
+2026-11-06,Cranbourne,5,,6,Layla,WIN,4.34,8.24,0.78,39,2 of 3,4.78u,2.75,
+2026-11-06,Cranbourne,5,,6,Layla,WIN,6.05,8.24,4.78,239,3 of 3,9.56u,2.75,opens $6.05+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,6,,6,Magnabelle Royale,WIN,7.04,16.14,1.72,86,1 of 3,1.72u,5.38,
+2026-11-06,Cranbourne,6,,6,Magnabelle Royale,WIN,8.80,16.14,0.39,20,2 of 3,2.11u,5.38,
+2026-11-06,Cranbourne,6,,6,Magnabelle Royale,WIN,11.84,16.14,2.11,106,3 of 3,4.22u,5.38,opens $11.84+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,6,,1,Mainmankash,WIN,4.48,10.51,2.91,146,1 of 3,2.91u,3.50,
+2026-11-06,Cranbourne,6,,1,Mainmankash,WIN,5.60,10.51,0.61,30,2 of 3,3.52u,3.50,
+2026-11-06,Cranbourne,6,,1,Mainmankash,WIN,7.71,10.51,3.52,176,3 of 3,7.04u,3.50,opens $7.71+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,6,,4,Pano's Pride,WIN,11.77,26.31,0.98,49,1 of 2,0.98u,8.77,
+2026-11-06,Cranbourne,6,,4,Pano's Pride,WIN,14.71,26.31,0.23,12,2 of 2,1.21u,8.77,
+2026-11-06,Cranbourne,6,,2,Speir,WIN,6.01,13.89,2.06,103,1 of 3,2.06u,4.63,
+2026-11-06,Cranbourne,6,,2,Speir,WIN,7.51,13.89,0.45,22,2 of 3,2.51u,4.63,
+2026-11-06,Cranbourne,6,,2,Speir,WIN,10.19,13.89,2.51,125,3 of 3,5.02u,4.63,opens $10.19+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,6,,5,Weapon Clear,WIN,18.94,41.39,0.59,30,1 of 2,0.59u,13.80,
+2026-11-06,Cranbourne,6,,5,Weapon Clear,WIN,23.68,41.39,0.14,7,2 of 2,0.73u,13.80,
+2026-11-06,Cranbourne,7,,10,Kastun Star,WIN,9.50,21.48,1.23,62,1 of 3,1.23u,7.16,
+2026-11-06,Cranbourne,7,,10,Kastun Star,WIN,11.88,21.48,0.29,14,2 of 3,1.52u,7.16,
+2026-11-06,Cranbourne,7,,10,Kastun Star,WIN,15.75,21.48,1.52,76,3 of 3,3.04u,7.16,opens $15.75+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,7,,11,Lyrics 'n' Song,WIN,7.28,16.68,1.65,82,1 of 3,1.65u,5.56,
+2026-11-06,Cranbourne,7,,11,Lyrics 'n' Song,WIN,9.10,16.68,0.38,19,2 of 3,2.03u,5.56,
+2026-11-06,Cranbourne,7,,11,Lyrics 'n' Song,WIN,12.23,16.68,2.03,101,3 of 3,4.06u,5.56,opens $12.23+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,7,,7,Onavuitton,WIN,4.53,10.61,2.87,144,1 of 3,2.87u,3.54,
+2026-11-06,Cranbourne,7,,7,Onavuitton,WIN,5.66,10.61,0.60,30,2 of 3,3.47u,3.54,
+2026-11-06,Cranbourne,7,,7,Onavuitton,WIN,7.79,10.61,3.47,174,3 of 3,6.94u,3.54,opens $7.79+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,7,,3,Regal Might,WIN,7.18,16.46,1.67,84,1 of 3,1.67u,5.49,
+2026-11-06,Cranbourne,7,,3,Regal Might,WIN,8.97,16.46,0.39,20,2 of 3,2.06u,5.49,
+2026-11-06,Cranbourne,7,,3,Regal Might,WIN,12.07,16.46,2.06,103,3 of 3,4.12u,5.49,opens $12.07+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,7,,9,Waco Kid,WIN,18.15,39.75,0.62,31,1 of 2,0.62u,13.25,
+2026-11-06,Cranbourne,7,,9,Waco Kid,WIN,22.69,39.75,0.15,8,2 of 2,0.77u,13.25,
+2026-11-06,Cranbourne,8,,7,Finance Shogun,WIN,14.16,31.37,0.80,40,1 of 2,0.80u,10.46,
+2026-11-06,Cranbourne,8,,7,Finance Shogun,WIN,17.70,31.37,0.20,10,2 of 2,1.00u,10.46,
+2026-11-06,Cranbourne,8,,8,Hedjet,WIN,5.84,13.51,2.13,106,1 of 3,2.13u,4.50,
+2026-11-06,Cranbourne,8,,8,Hedjet,WIN,7.30,13.51,0.47,24,2 of 3,2.60u,4.50,
+2026-11-06,Cranbourne,8,,8,Hedjet,WIN,9.91,13.51,2.60,130,3 of 3,5.20u,4.50,opens $9.91+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,8,,1,Mount Sabyinyo,WIN,5.31,12.34,2.38,119,1 of 3,2.38u,4.11,
+2026-11-06,Cranbourne,8,,1,Mount Sabyinyo,WIN,6.64,12.34,0.51,26,2 of 3,2.89u,4.11,
+2026-11-06,Cranbourne,8,,1,Mount Sabyinyo,WIN,9.06,12.34,2.89,144,3 of 3,5.78u,4.11,opens $9.06+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,8,,4,Power And The Beat,WIN,7.04,16.15,1.71,86,1 of 3,1.71u,5.38,
+2026-11-06,Cranbourne,8,,4,Power And The Beat,WIN,8.80,16.15,0.39,20,2 of 3,2.10u,5.38,
+2026-11-06,Cranbourne,8,,4,Power And The Beat,WIN,11.85,16.15,2.10,105,3 of 3,4.20u,5.38,opens $11.85+ (2.2x ours): stake doubled
+2026-11-06,Cranbourne,8,,3,Savvie Blanc,WIN,16.13,35.52,0.70,35,1 of 2,0.70u,11.84,
+2026-11-06,Cranbourne,8,,3,Savvie Blanc,WIN,20.16,35.52,0.17,8,2 of 2,0.87u,11.84,
+2026-11-06,Cranbourne,8,,6,Surperb Frost,WIN,12.83,15.01,0.49,24,1 of 1,0.49u,9.53,EARLY: $15 or shorter only

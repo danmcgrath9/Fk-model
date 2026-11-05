@@ -1,90 +1,90 @@
-# Cranbourne Fri 6 Nov, Soft 6 (official, RV Stewards Thu morning; was Dead 5 Wed), final fields, re-priced Thu 9:10am
-1, Cowboykickedfive, 16.00, 16.00, fk_open 9.50
+# Cranbourne Fri 6 Nov, Slow (Form King Fri; Soft 6 RV Stewards Thu), final field after scratchings, re-priced Fri 9:50am
+1, Cowboykickedfive, 12.00, 12.00, fk_open 9.50
 1, Whatwashethinking, 41.00, 41.00, fk_open 51.00
 1, Immortal Diva, 101.00, 101.00, fk_open 101.00
-1, Parera, 10.00, 10.00, fk_open 7.00
-1, Dempsey, 51.00, 51.00, fk_open 51.00
-1, Quemax, 3.00, 3.00, fk_open 2.90
+1, Parera, 7.00, 7.00, fk_open 7.00
+1, Dempsey, SCR, last 41.00, fk_open 51.00
+1, Quemax, 2.80, 2.80, fk_open 2.90
 1, The Long Mover, 101.00, 101.00, fk_open 81.00
-1, Fram Strait, 17.00, 17.00, fk_open 10.00
-1, Smashing Success, 12.00, 12.00, fk_open 9.00
-1, Propellant, 8.50, 8.50, fk_open 6.50
-1, Sondera, 2.50, 2.50, fk_open 3.30
-2, Silver Lightning, 16.00, 16.00, fk_open 15.00
-2, Native Spirit, 46.00, 46.00, fk_open 21.00
-2, Faro Lady, 41.00, 41.00, fk_open 21.00
-2, Fanfire, 16.00, 16.00, fk_open 21.00
-2, Toy Maker, 41.00, 41.00, fk_open 21.00
-2, Vespers, 7.00, 7.00, fk_open 5.00
-2, Gangland, 4.80, 4.80, fk_open 4.00
-2, Lonnegan, 7.00, 7.00, fk_open 7.50
-2, Engulf, 5.00, 5.00, fk_open 3.80
-2, Pocket Watch, 3.00, 3.00, fk_open 5.00
-3, Action Point, 4.20, 4.20, fk_open 8.25
-3, Blue And Gold, 4.60, 4.60, fk_open 5.50
-3, Teen Torque, 5.50, 5.50, fk_open 4.30
-3, Wollemi, 5.50, 5.50, fk_open 4.50
-3, I'm A Believer, 27.00, 27.00, fk_open 15.50
-3, Around The Marx, 46.00, 46.00, fk_open 32.50
-3, Swift Action, 31.00, 31.00, fk_open 18.50
+1, Fram Strait, 13.00, 13.00, fk_open 10.00
+1, Smashing Success, SCR
+1, Propellant, 7.50, 7.50, fk_open 6.50
+1, Sondera, 2.45, 2.45, fk_open 3.30
+2, Silver Lightning, 5.50, 5.50, fk_open 15.00
+2, Native Spirit, 31.00, 31.00, fk_open 21.00
+2, Faro Lady, 8.50, 8.50, fk_open 21.00
+2, Fanfire, 14.00, 14.00, fk_open 21.00
+2, Toy Maker, 7.00, 7.00, fk_open 21.00
+2, Vespers, 5.00, 5.00, fk_open 5.00
+2, Gangland, SCR, last 4.80, fk_open 4.00
+2, Lonnegan, 5.50, 5.50, fk_open 7.50
+2, Engulf, 3.30, 3.30, fk_open 3.80
+2, Pocket Watch, SCR, last 3.10, fk_open 5.00
+3, Action Point, 2.60, 2.60, fk_open 8.25
+3, Blue And Gold, 4.80, 4.80, fk_open 5.50
+3, Teen Torque, 6.25, 6.25, fk_open 4.30
+3, Wollemi, 5.00, 5.00, fk_open 4.50
+3, I'm A Believer, SCR
+3, Around The Marx, 34.00, 34.00, fk_open 32.50
+3, Swift Action, 29.00, 29.00, fk_open 18.50
 3, Activating, 151.00, 151.00, fk_open 81.00
-3, Civic Square, 4.80, 4.80, fk_open 3.65
-3, Poetic Passage, 11.00, 11.00, fk_open 8.25
-4, Gypsy Moon, SCR, fk_open 101.00
-4, Silver Snow, 6.00, 6.00, fk_open 4.40
-4, Community Gaz, 71.00, 71.00, fk_open 34.00
-4, Hellica, 15.00, 15.00, fk_open 31.00
-4, Upcoming, 35.00, 35.00, fk_open 21.00
-4, Sweet Champagne, 34.00, 34.00, fk_open 31.00
+3, Civic Square, 5.00, 5.00, fk_open 3.65
+3, Poetic Passage, SCR, last 11.00, fk_open 8.25
+4, Gypsy Moon, SCR, last 81.00, fk_open 101.00
+4, Silver Snow, 7.00, 7.00, fk_open 4.40
+4, Community Gaz, 81.00, 81.00, fk_open 34.00
+4, Hellica, 9.50, 9.50, fk_open 31.00
+4, Upcoming, 41.00, 41.00, fk_open 21.00
+4, Sweet Champagne, 31.00, 31.00, fk_open 31.00
 4, Seinfeld, 3.60, 3.60, fk_open 3.65
-4, Royal Business, 27.00, 27.00, fk_open 17.50
-4, Rock About, 4.40, 4.40, fk_open 6.00
-4, Full Zoom, 13.00, 13.00, fk_open 51.00
-4, Trentino, 11.00, 11.00, fk_open 8.50
-4, Shields, 16.00, 16.00, fk_open 10.00
-4, La Velocita, 5.50, 5.50, fk_open 4.80
-5, Illuminance, 11.00, 11.00, fk_open 17.00
-5, Claymore Mine, 23.00, 23.00, fk_open 17.00
-5, Brutal World, 18.00, 18.00, fk_open 12.50
-5, O'mosa, 151.00, 151.00, fk_open 113.50
-5, Mykindakandy, 18.00, 18.00, fk_open 9.50
-5, Layla, 2.45, 2.45, fk_open 3.20
-5, Redders, 7.50, 7.50, fk_open 7.25
-5, Marsept, 2.45, 2.45, fk_open 1.98
-5, Sayalero, 41.00, 41.00, fk_open 20.00
-6, Midnight Devil, SCR, fk_open 7.00
-6, Highland Harley, SCR, fk_open 8.00
-6, Mr Tickles, 15.00, 15.00, fk_open 12.00
-6, Speir, 5.50, 5.50, fk_open 8.00
+4, Royal Business, 31.00, 31.00, fk_open 17.50
+4, Rock About, 3.80, 3.80, fk_open 6.00
+4, Full Zoom, 16.00, 16.00, fk_open 51.00
+4, Trentino, 13.00, 13.00, fk_open 8.50
+4, Shields, 18.00, 18.00, fk_open 10.00
+4, La Velocita, 6.00, 6.00, fk_open 4.80
+5, Illuminance, SCR, last 12.00, fk_open 17.00
+5, Claymore Mine, 16.00, 16.00, fk_open 17.00
+5, Brutal World, 13.00, 13.00, fk_open 12.50
+5, O'mosa, 101.00, 101.00, fk_open 113.50
+5, Mykindakandy, 12.00, 12.00, fk_open 9.50
+5, Layla, 2.15, 2.15, fk_open 3.20
+5, Redders, SCR
+5, Marsept, 1.85, 1.85, fk_open 1.98
+5, Sayalero, SCR, last 26.00, fk_open 20.00
+6, Midnight Devil, SCR, last 13.00, fk_open 7.00
+6, Highland Harley, 14.00, 14.00, fk_open 8.00
+6, Mr Tickles, SCR, last 14.00, fk_open 12.00
+6, Speir, 5.00, 5.00, fk_open 8.00
 6, Pano's Pride, 10.00, 10.00, fk_open 8.00
-6, Weapon Clear, 8.50, 8.50, fk_open 6.00
+6, Weapon Clear, 9.50, 9.50, fk_open 6.00
 6, Room For Bingo, 10.00, 10.00, fk_open 8.00
 6, Mainmankash, 2.60, 2.60, fk_open 2.15
-6, Monix, 27.00, 27.00, fk_open 17.00
+6, Monix, 29.00, 29.00, fk_open 17.00
 6, Magnabelle Royale, 4.20, 4.20, fk_open 6.00
-7, Shaime, 41.00, 41.00, fk_open 51.00
-7, She's Pretty Rich, 26.00, 26.00, fk_open 37.50
-7, Jewel Bay, SCR, fk_open 21.00
-7, Buzitup, 11.00, 11.00, fk_open 6.50
-7, Regal Might, 8.00, 8.00, fk_open 8.50
-7, Blue Bandit, SCR, fk_open 17.00
-7, Waco Kid, 23.00, 23.00, fk_open 19.00
-7, Untapped, 8.00, 8.00, fk_open 7.50
-7, Sumo Sandy, 5.00, 5.00, fk_open 4.10
-7, Bit Of Shoosh, SCR, fk_open 15.00
-7, Kastun Star, 18.00, 18.00, fk_open 17.00
-7, Zourain, 10.00, 10.00, fk_open 9.50
-7, Onavuitton, 5.50, 5.50, fk_open 8.00
-7, Couldthisbetheone, 16.00, 16.00, fk_open 14.00
-7, Discover Lupino, SCR, fk_open 17.00
-7, Lyrics 'n' Song, 5.50, 5.50, fk_open 4.60
+7, Shaime, SCR, last 34.00, fk_open 51.00
+7, She's Pretty Rich, 21.00, 21.00, fk_open 37.50
+7, Jewel Bay, 13.00, 13.00, fk_open 21.00
+7, Buzitup, SCR, last 12.00, fk_open 6.50
+7, Regal Might, 7.50, 7.50, fk_open 8.50
+7, Blue Bandit, 12.00, 12.00, fk_open 17.00
+7, Waco Kid, 18.00, 18.00, fk_open 19.00
+7, Untapped, SCR, last 7.00, fk_open 7.50
+7, Sumo Sandy, SCR, last 5.00, fk_open 4.10
+7, Bit Of Shoosh, 15.00, 15.00, fk_open 15.00
+7, Kastun Star, 12.00, 12.00, fk_open 17.00
+7, Zourain, SCR, last 10.00, fk_open 9.50
+7, Onavuitton, 4.20, 4.20, fk_open 8.00
+7, Couldthisbetheone, 11.00, 11.00, fk_open 14.00
+7, Discover Lupino, 6.50, 6.50, fk_open 17.00
+7, Lyrics 'n' Song, 5.00, 5.00, fk_open 4.60
 8, Toronova, 151.00, 151.00, fk_open 151.00
-8, Savvie Blanc, 17.00, 17.00, fk_open 13.00
-8, Finance Shogun, 7.50, 7.50, fk_open 10.00
-8, Ashau Valley, 71.00, 71.00, fk_open 51.00
-8, Sinister Sauce, 14.00, 14.00, fk_open 11.00
-8, Surperb Frost, 8.00, 8.00, fk_open 4.60
-8, Rogan, 14.00, 14.00, fk_open 11.00
-8, Power And The Beat, 4.40, 4.40, fk_open 10.00
-8, Mount Sabyinyo, 4.80, 4.80, fk_open 4.40
-8, Hedjet, 3.20, 3.20, fk_open 2.60
+8, Savvie Blanc, 14.00, 14.00, fk_open 13.00
+8, Finance Shogun, 7.00, 7.00, fk_open 10.00
+8, Ashau Valley, 51.00, 51.00, fk_open 51.00
+8, Sinister Sauce, 12.00, 12.00, fk_open 11.00
+8, Surperb Frost, 7.50, 7.50, fk_open 4.60
+8, Rogan, SCR, last 14.00, fk_open 11.00
+8, Power And The Beat, 4.60, 4.60, fk_open 10.00
+8, Mount Sabyinyo, 4.40, 4.40, fk_open 4.40
+8, Hedjet, 3.10, 3.10, fk_open 2.60
