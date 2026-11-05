@@ -1727,3 +1727,208 @@ The gap to BSP is still about 0.104, which is where Tests 19 to 22 left it. Form
 history have stopped moving it. What remains is mostly:
 - the lead, which needs tracking data (Isolynx, still 401)
 - the market's own money, which needs the TAB opens
+
+## Test 24: the old greyhound tales against Betfair, and where we are closest to BSP (5 Nov 2026, gh topaz run 41937604493, `topaz_round12.py`)
+
+The founder: "Keep testing things like I said, the ole greyhound tales on how to back them and how we can get the model
+closer, look for data things". Thirty tales a punter can apply before the race, each with:
+- A/E (actual wins against expected) at BSP and at GRV's SP, both renormalised to a 100% book
+- flat 1-unit ROI at BSP after 8% commission on winnings, and at GRV's SP as paid
+
+The tales are scored on every race since 2020 where Betfair priced every runner: 65,285 races, in halves split at
+9 May 2023. The favourite tales use GRV's SP favourite.
+
+### Part 1: the tales, no model
+
+| tale | runners | win % | A/E at BSP (1st / 2nd) | flat ROI at BSP, 8% comm (1st / 2nd) | A/E at GRV's SP (1st / 2nd) | flat ROI at GRV's SP (1st / 2nd) |
+|---|---|---|---|---|---|---|
+| box 1 | 62,326 | 18.4% | 1.006 / 1.003 | -6.8% / -9.5% | 0.992 / 1.021 | -22.6% / -19.8% |
+| box 2 | 61,869 | 16.0% | 1.006 / 1.006 | -5.9% / -6.1% | 1.022 / 1.024 | -18.9% / -17.4% |
+| box 8 | 61,397 | 14.5% | 0.971 / 0.982 | -10.8% / -8.9% | 0.968 / 0.996 | -25.7% / -22.6% |
+| SP favourite | 66,868 | 40.6% | 0.996 / 0.998 | -5.2% / -5.9% | 1.012 / 1.035 | -14.9% / -13.6% |
+| SP favourite in box 1 | 13,839 | 42.8% | 1.011 / 1.001 | -2.9% / -6.1% | 1.016 / 1.042 | -14.6% / -12.9% |
+| SP favourite in box 7-8 | 16,857 | 40.3% | 1.002 / 0.998 | -4.7% / -6.3% | 1.017 / 1.039 | -14.5% / -13.4% |
+| SP favourite, 6 or fewer runners | 19,117 | 45.0% | 0.980 / 0.977 | -7.1% / -7.6% | 1.000 / 1.015 | -16.7% / -14.4% |
+| won last start | 62,978 | 19.7% | 0.987 / 1.012 | -11.7% / -8.1% | 0.998 / 1.026 | -22.8% / -20.0% |
+| won its last two | 12,072 | 25.2% | 0.972 / 1.024 | -11.2% / -7.3% | 0.997 / 1.059 | -21.4% / -18.6% |
+| beaten favourite last start | 37,700 | 22.0% | 0.991 / 0.985 | -10.0% / -6.9% | 1.018 / 1.030 | -17.9% / -15.2% |
+| first up after 28+ days | 31,603 | 14.0% | 0.992 / 0.997 | -8.9% / -11.6% | 0.982 / 0.989 | -25.0% / -26.6% |
+| second up after a 28+ day spell | 25,413 | 15.1% | 0.990 / 0.986 | -7.9% / -0.2% | 1.000 / 0.990 | -24.0% / -21.6% |
+| **backing up within 4 days** | **77,416** | **13.7%** | **1.025 / 1.028** | **-6.6% / -5.9%** | **1.020 / 1.026** | **-22.2% / -20.6%** |
+| dropping in grade | 69,264 | 15.4% | 1.015 / 0.994 | -5.9% / -9.1% | 1.023 / 1.014 | -19.8% / -21.0% |
+| rising in grade | 92,872 | 14.2% | 0.986 / 1.016 | -12.6% / -6.0% | 0.981 / 1.003 | -26.5% / -24.3% |
+| up 50m+ in trip | 76,499 | 13.2% | 1.009 / 1.005 | -10.9% / -9.2% | 0.997 / 0.993 | -25.7% / -25.0% |
+| down 50m+ in trip | 63,989 | 14.8% | 1.015 / 1.001 | -4.6% / -9.0% | 1.021 / 1.017 | -20.3% / -22.7% |
+| debut | 12,728 | 15.1% | 0.961 / 0.981 | -14.9% / -11.2% | 0.959 / 0.965 | -26.1% / -24.7% |
+| first time at the track (not debut) | 85,410 | 16.7% | 1.014 / 1.009 | -4.9% / -5.5% | 1.023 / 1.030 | -19.1% / -19.2% |
+| vacant box beside it | 108,507 | 15.9% | 1.000 / 1.001 | -8.4% / -9.2% | 1.003 / 0.998 | -22.0% / -22.6% |
+| box 1, box 2 vacant | 3,253 | 20.8% | 0.995 / 0.991 | +2.7% / -14.2% | 0.965 / 0.975 | -19.8% / -24.8% |
+| weight up 1kg+ since last start | 3,407 | 12.5% | 1.015 / 0.936 | +0.7% / +3.4% | 1.001 / 0.931 | -24.7% / -25.5% |
+| weight down 1kg+ since last start | 2,684 | 11.3% | 0.948 / 0.962 | -5.1% / -9.8% | 0.931 / 0.920 | -22.5% / -25.9% |
+| trainer has 2+ in the race | 50,378 | 12.9% | 1.009 / 0.995 | -11.3% / -11.6% | 1.004 / 0.974 | -23.6% / -24.3% |
+| under 2 years old | 72,964 | 19.2% | 1.009 / 1.012 | -5.5% / -5.5% | 1.029 / 1.052 | -17.0% / -15.2% |
+| over 4 years old | 36,227 | 8.7% | 0.976 / 1.019 | -15.8% / -19.1% | 0.915 / 0.912 | -33.8% / -36.9% |
+| hot trainer (top tenth, 28-day strike rate) | 50,408 | 20.9% | 0.995 / 1.010 | -10.8% / -8.3% | 1.016 / 1.048 | -21.1% / -17.9% |
+| sex recorded as Dog | 260,066 | 15.3% | 1.000 / 1.000 | -7.6% / -9.4% | 1.007 / 1.010 | -21.0% / -22.5% |
+| sex recorded as Bitch | 195,932 | 13.0% | 1.000 / 0.999 | -8.1% / -9.4% | 0.989 / 0.986 | -24.0% / -24.0% |
+| maiden race | 69,295 | 14.3% | 1.000 / 0.997 | -3.6% / -6.4% | 0.998 / 0.996 | -21.7% / -23.4% |
+| night race (6pm on) | 84,824 | 14.2% | 1.000 / 1.000 | -8.1% / -9.4% | 1.000 / 1.000 | -24.3% / -23.9% |
+| day race (before 6pm) | 371,174 | 14.3% | 1.000 / 1.000 | -7.8% / -9.4% | 1.000 / 1.000 | -21.7% / -22.9% |
+| GRV's first tip | 63,948 | 34.9% | 0.980 / 0.974 | -8.0% / -9.8% | 1.019 / 1.037 | -14.6% / -14.3% |
+| GRV's best bet | 16,201 | 46.5% | 0.996 / 1.001 | -4.6% / -5.2% | 1.053 / 1.092 | -11.0% / -8.4% |
+
+The favourite-longshot question at BSP:
+
+| BSP | runners | win % | A/E at BSP (1st / 2nd) | flat ROI at BSP, 8% comm (1st / 2nd) |
+|---|---|---|---|---|
+| $1-$2 | 17,459 | 60.7% | 0.995 / 1.000 | -4.5% / -3.8% |
+| $2-$3 | 32,814 | 40.1% | 0.988 / 1.012 | -6.0% / -4.2% |
+| $3-$5 | 67,382 | 25.7% | 1.004 / 0.985 | -5.7% / -7.8% |
+| $5-$8 | 67,154 | 15.9% | 0.999 / 0.993 | -7.0% / -7.7% |
+| $8-$13 | 66,334 | 10.0% | 0.996 / 1.033 | -7.9% / -4.8% |
+| $13-$21 | 57,551 | 6.4% | 1.050 / 1.016 | -3.0% / -6.6% |
+| $21-$51 | 78,352 | 3.3% | 1.009 / 0.985 | -7.8% / -10.5% |
+| $51+ | 68,951 | 0.9% | 0.957 / 0.943 | -16.5% / -21.6% |
+
+**No tale beats BSP after commission in both halves.** Betfair's price is within 3% of the truth on all thirty, in both
+halves. Only two tales show a positive ROI at BSP, and neither holds up:
+- box 1 with box 2 vacant: +2.7% in the first half, then -14.2%
+- weight up 1kg+: +0.7% / +3.4% on 3,407 runners, from a few long-priced winners. Its second-half A/E is 0.936.
+
+The steadiest tale is **backing up within 4 days**. BSP under-rates those dogs by 2.5% and 2.8%, the same in both halves,
+on 77,416 runners. That is still -6% after the 8% commission. A market bias of 2-3% is smaller than the commission.
+The same holds the other way: GRV's first tip is over-bet at BSP (A/E 0.980 / 0.974), but laying it at BSP still loses
+after commission.
+
+BSP's favourite-longshot bias is small next to a bookmaker's:
+- $1 to $51 dogs are priced within 1-5%, and A/E is never consistently above 1
+- $51+ dogs win 4-6% less than BSP says
+
+**GRV's SP is where the tales live**, and it is a bookmaker price with a 19% margin:
+- it under-rates GRV's own best bets (A/E 1.053 / 1.092), young dogs (1.029 / 1.052), hot trainers (1.016 / 1.048) and
+  favourites (1.012 / 1.035)
+- it over-rates dogs over 4 (0.915 / 0.912), debutants and big weight changes
+
+Flat backing at the SP still loses 8-37% on every tale. The 1.3x rule earns at the SP (Test 21) because it bets only
+where our price and the SP disagree by 30% or more.
+
+### Part 2: our model (round 8's F2, 4,205 rounds), the 22,841 scored races with BSP from 3 June 2024
+
+Our log loss on these races is 1.5893, against BSP's 1.4839.
+
+| tale | runners | wins | A/E vs our model | A/E vs BSP | A/E vs GRV's SP |
+|---|---|---|---|---|---|
+| box 1 | 21,856 | 4,006 | 1.003 | 1.009 | 1.029 |
+| box 2 | 21,710 | 3,413 | 0.994 | 0.998 | 1.014 |
+| box 8 | 21,563 | 3,187 | 1.002 | 0.987 | 1.006 |
+| SP favourite | 23,466 | 9,302 | **1.159** | 0.998 | 1.036 |
+| SP favourite in box 1 | 4,727 | 2,007 | 1.146 | 1.009 | 1.055 |
+| SP favourite in box 7-8 | 5,956 | 2,382 | 1.207 | 1.005 | 1.053 |
+| SP favourite, 6 or fewer runners | 6,325 | 2,793 | 1.129 | 0.982 | 1.021 |
+| won last start | 21,669 | 4,204 | 0.981 | 1.011 | 1.025 |
+| won its last two | 4,046 | 1,006 | 0.995 | 1.035 | 1.069 |
+| beaten favourite last start | 13,404 | 2,874 | 1.006 | 0.993 | 1.041 |
+| first up after 28+ days | 10,504 | 1,394 | 0.999 | 0.963 | 0.955 |
+| second up after a 28+ day spell | 8,516 | 1,211 | 0.971 | 0.971 | 0.971 |
+| backing up within 4 days | 25,743 | 3,522 | 1.025 | 1.022 | 1.020 |
+| dropping in grade | 23,076 | 3,567 | 1.008 | 0.992 | 1.015 |
+| rising in grade | 31,000 | 4,352 | 1.003 | 1.011 | 0.998 |
+| up 50m+ in trip | 25,991 | 3,450 | 1.010 | 1.004 | 0.991 |
+| down 50m+ in trip | 20,475 | 2,978 | 1.012 | 0.990 | 1.006 |
+| **debut** | 3,796 | 562 | **0.929** | 0.969 | 0.955 |
+| first time at the track (not debut) | 25,940 | 4,283 | 1.011 | 1.007 | 1.030 |
+| vacant box beside it | 36,857 | 5,776 | 0.996 | 0.992 | 0.988 |
+| box 1, box 2 vacant | 1,082 | 218 | 0.964 | 0.968 | 0.956 |
+| weight up 1kg+ since last start | 1,156 | 127 | 0.934 | 0.881 | 0.879 |
+| weight down 1kg+ since last start | 848 | 90 | 0.928 | 0.928 | 0.882 |
+| **trainer has 2+ in the race** | 19,255 | 2,457 | **0.966** | 0.997 | 0.975 |
+| under 2 years old | 23,025 | 4,498 | 1.034 | 1.018 | 1.064 |
+| over 4 years old | 16,044 | 1,417 | 0.977 | 1.037 | 0.919 |
+| hot trainer (top tenth, 28-day strike rate) | 15,855 | 3,326 | 1.024 | 1.017 | 1.057 |
+| sex recorded as Dog | 90,684 | 13,628 | 1.000 | 0.997 | 1.006 |
+| sex recorded as Bitch | 70,047 | 9,213 | 1.000 | 1.005 | 0.991 |
+| maiden race | 22,148 | 3,129 | 0.995 | 0.996 | 0.994 |
+| night race (6pm on) | 27,542 | 3,834 | 1.000 | 1.000 | 1.000 |
+| day race (before 6pm) | 133,189 | 19,007 | 1.000 | 1.000 | 1.000 |
+| **GRV's first tip** | 22,668 | 7,609 | **0.964** | 0.970 | 1.035 |
+| GRV's best bet | 6,245 | 2,826 | 0.999 | 0.996 | 1.092 |
+
+The gap to BSP by kind of race (winner log loss, ours less BSP's):
+
+| Betfair BSP volume on the race (fifth boundaries 2,467 / 3,468 / 4,603 / 6,300) | races | our log loss | BSP | gap to BSP |
+|---|---|---|---|---|
+| thinnest fifth | 4,569 | 1.6243 | 1.5144 | +0.1100 |
+| second fifth | 4,568 | 1.5961 | 1.4866 | +0.1095 |
+| middle fifth | 4,568 | 1.6159 | 1.5027 | +0.1132 |
+| fourth fifth | 4,568 | 1.5800 | 1.4800 | +0.1000 |
+| deepest fifth | 4,568 | 1.5301 | 1.4357 | +0.0944 |
+
+| track | races | our log loss | BSP | gap to BSP |
+|---|---|---|---|---|
+| BAL | 2,293 | 1.5945 | 1.4849 | +0.1096 |
+| BEN | 2,159 | 1.6025 | 1.4869 | +0.1156 |
+| GEL | 2,366 | 1.5693 | 1.4680 | +0.1013 |
+| HOR | 1,321 | 1.5037 | 1.3991 | +0.1046 |
+| HVL | 1,818 | 1.5819 | 1.4431 | +0.1388 |
+| MEA | 844 | 1.6321 | 1.5686 | +0.0635 |
+| MEP | 1,216 | 1.5499 | 1.4506 | +0.0993 |
+| SAN | 1,041 | 1.5860 | 1.5135 | +0.0725 |
+| SAP | 1,101 | 1.4689 | 1.3887 | +0.0802 |
+| SHP | 1,962 | 1.6039 | 1.4992 | +0.1046 |
+| SLE | 1,755 | 1.6529 | 1.5486 | +0.1043 |
+| TRA | 426 | 1.6744 | 1.5625 | +0.1119 |
+| WBL | 2,185 | 1.6386 | 1.5150 | +0.1235 |
+| WGL | 2,354 | 1.5879 | 1.4889 | +0.0990 |
+
+| race | races | our log loss | BSP | gap to BSP |
+|---|---|---|---|---|
+| day | 19,007 | 1.5844 | 1.4824 | +0.1020 |
+| night (6pm on) | 3,834 | 1.6136 | 1.4910 | +0.1226 |
+| maiden | 3,397 | 1.5872 | 1.4668 | +0.1203 |
+| not maiden | 19,834 | 1.5896 | 1.4866 | +0.1031 |
+| 6 or fewer runners | 6,163 | 1.4125 | 1.3182 | +0.0943 |
+| 7 runners | 8,294 | 1.6008 | 1.4918 | +0.1091 |
+| 8+ runners | 8,384 | 1.7078 | 1.5978 | +0.1100 |
+
+The 1.3x rule (our price $2-$15, Kelly x75, cap 4, 8% commission) at three Betfair prices, each with its own Benter
+blend fitted on the early-stopping months:
+
+| price | blend weights (ours / market) | half | bets | winners | flat ROI |
+|---|---|---|---|---|---|
+| BSP | -0.04 / 1.03 | 1st / 2nd | 5 / 0 | 1 / 0 | +88.0% / none |
+| best back price at the scheduled off | -0.03 / 1.04 | 1st / 2nd | 5 / 1 | 1 / 1 | +260.4% / +515.2% |
+| pre-play weighted average price | -0.05 / 1.05 | 1st / 2nd | 0 / 0 | | |
+| BSP, thinnest fifth of markets | -0.04 / 1.03 | 1st / 2nd | 5 / 0 | 1 / 0 | +88.0% / none |
+
+### What it says
+
+**Betfair already knows the old tales.** At any Betfair price (BSP, the best back price at the scheduled off, or the
+pre-play average) the blend puts no weight on our model, so there is nothing to bet. The six bets above are
+noise.
+
+Our gap to BSP is not smaller in thin markets: the thinnest fifth is +0.1100 and the deepest +0.0944. It is smallest at
+MEA and SAN (+0.06 to +0.07) and in small fields, and largest at HVL (Healesville's straight, +0.139), at WBL, at night
+and in maidens.
+
+**The tales our model misses are fixes for the model, not bets:**
+
+| what the model gets wrong | A/E vs our model | A/E vs BSP |
+|---|---|---|
+| over-prices debutants | 0.929 | 0.969 |
+| over-prices a trainer's second runner in the race | 0.966 | 0.997 |
+| over-prices GRV's first tip | 0.964 | 0.970 |
+| under-prices dogs under 2 | 1.034 | 1.018 |
+| under-prices dogs backing up within 4 days | 1.025 | 1.022 |
+
+The trainer one is the cleanest. BSP prices it right while our model is 3.4% out, which says Betfair reads which of a
+trainer's dogs is the stable's elect and our model does not.
+
+**The SP favourite wins 16% more often than our model says** (A/E 1.159), against BSP's 0.998. That is not a tale but the
+size of what the market knows and we do not, concentrated where the money goes: on the dog it makes favourite. Only
+market information (the TAB opens, Betfair's early prices) or information the market uses (the lead, Isolynx) can close
+it.
+
+The Betfair files carry more columns than we use: the highest, lowest and last price matched before the off, pre-play
+volume, the best lay at the scheduled off, and the back and lay market percentages. The highest pre-play price matched
+is the nearest thing in free history to an early price, and is the next test of the founder's "TAB opens first" idea on
+Betfair's side.
