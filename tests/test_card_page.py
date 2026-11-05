@@ -1,0 +1,38 @@
+"""research/greyhound/card_page.py: the TAB-open stake ladder, by hand, and a page that renders it."""
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "research", "greyhound"))
+import card_page as CP  # noqa: E402
+
+
+def test_stake_grows_with_how_far_tab_is_over_our_price():
+    # ours $4 (25%), TAB's margin 25%: pk = 0.125 + 0.5 x (1/price) / 1.25
+    assert CP.stake(0.25, 5.0) == 0.0                                  # 1.25x: under the 1.3x line, no bet
+    assert abs(CP.stake(0.25, 5.2) - 75 * 0.05 / 4.2) < 1e-9            # 1.3x: pk x 5.2 = 1.05, 0.89 units
+    assert abs(CP.stake(0.25, 6.0) - 75 * 0.15 / 5.0) < 1e-9            # 1.5x: pk x 6 = 1.15, 2.25 units
+    assert CP.stake(0.25, 8.0) == 4.0                                  # 2x: 4.29 units, capped at 4
+    assert abs(CP.stake(0.25, 5.2, book=1.0) - 75 * 0.15 / 4.2) < 1e-9  # no margin taken out: 2.68 units
+
+
+def test_no_ladder_outside_the_two_to_fifteen_dollar_band():
+    assert CP.ladder(0.6) == [] and CP.stake(0.6, 10.0) == 0.0          # ours $1.67
+    assert CP.ladder(0.05) == [] and CP.stake(0.05, 40.0) == 0.0        # ours $20
+    lad = CP.ladder(0.25)
+    assert [m for m, _, _ in lad] == list(CP.LADDER) and [round(pr, 2) for _, pr, _ in lad] == [5.2, 6.0, 8.0, 12.0]
+    assert [u for _, _, u in lad] == sorted(u for _, _, u in lad)       # more units the more TAB is out
+
+
+def test_page_lists_the_watch_dogs_and_prices_a_known_open():
+    rows = [["1", "FAST ONE", 0.40, 2.2, "90", 1, 0, "1-1", []],
+            ["2", "LONG ONE", 0.25, 6.5, "80", 2, 0, "2-3", []],
+            ["3", "SHORT GRV", 0.20, 4.0, "70", 0, 0, "4-4", []],
+            ["4", "OUTSIDER", 0.15, 12.0, "60", 0, 0, "6-6", []]]
+    card = {"day": "2026-11-05", "fit": 100, "rounds": 10, "fam": [], "tracks": ["Sandown Park"], "edges": [],
+            "races": [{"t": "Sandown Park", "n": "1", "s": "2026-11-05T08:00:00.000Z", "d": 515, "g": "5", "b": 1.2, "r": rows}]}
+    out = CP.page(card, {"Sandown Park|1|LONG ONE": [7.0, 6.0]}, "noon")
+    head = out[out.index("Check these at TAB"):out.index("How to bet it")]
+    # LONG ONE ($4 ours, GRV $6.50 = 1.63x) and OUTSIDER ($6.67, GRV $12 = 1.8x) are watched; FAST ONE (GRV 0.88x) and
+    # SHORT GRV (GRV 0.8x) are not
+    assert "Long One" in head and "Outsider" in head and "Fast One" not in head and "Short Grv" not in head
+    assert "TAB opened $7.00: 1.75x" in head
