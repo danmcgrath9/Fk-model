@@ -1,0 +1,95 @@
+# Ararat Sun 8 Nov, Slow (Form King, Thu 12:30pm; 3mm forecast to race day, under the 15mm line), final fields; no market yet
+1, Matthew Mark, 0, 0
+1, Final Impact, 0, 0
+1, Semper Fortis, 0, 0
+1, Legend Beast, 0, 0
+1, Trump Card, 0, 0
+1, Topspin, 0, 0
+1, Kawhia, SCR
+1, I Love This Song, 0, 0
+1, Motiver, 0, 0
+1, Black Rutile, 0, 0
+1, Three Reel Roses, 0, 0
+1, Eye For An Eye, 0, 0
+1, Legs Power, 0, 0
+2, Daniel Boone, 0, 0
+2, Community Gaz, 0, 0
+2, Dimachaerus, 0, 0
+2, Incoherent, 0, 0
+2, Classical Power, 0, 0
+2, Fire Type, 0, 0
+2, Typhoon Bassett, 0, 0
+2, Mystery Pearl, 0, 0
+2, Minty, 0, 0
+2, Model Gigi, 0, 0
+2, Poetic Passage, 0, 0
+3, Hughie's Spirit, 0, 0
+3, Charlotte's Web, 0, 0
+3, General Blu, 0, 0
+3, Hellofacury, 0, 0
+3, Dream For Free, 0, 0
+3, Buchan Outkast, 0, 0
+3, Alpine Point, 0, 0
+3, Pray For Elegance, 0, 0
+3, Optimus, 0, 0
+3, Cast A Line, 0, 0
+4, Midnight Devil, 0, 0
+4, Masked Marauder, 0, 0
+4, Southern Crescent, 0, 0
+4, Edges Diamond, 0, 0
+4, Bold Bordeaux, 0, 0
+4, Brazenga, 0, 0
+4, Superliv, 0, 0
+4, Chasing Rainbows, 0, 0
+4, Restless Wind, 0, 0
+5, Power Of Hindsight, 0, 0
+5, All Chips In, 0, 0
+5, Roll With It, 0, 0
+5, Almorina, 0, 0
+5, Brighthill, 0, 0
+5, Helichrysum, 0, 0
+5, Pneuma, 0, 0
+5, Imminent Touch, 0, 0
+5, Paycheck, 0, 0
+5, Vulcana, 0, 0
+5, Trigger Warning, 0, 0
+5, Nialah, 0, 0
+5, High Yield, 0, 0
+5, Selita's Fury, 0, 0
+6, Raging Bull, 0, 0
+6, Affluential, 0, 0
+6, Cable Dancer, 0, 0
+6, Slane, 0, 0
+6, Tikemyson, 0, 0
+6, Male Model, 0, 0
+6, Unseen Ruler, 0, 0
+6, Any Luck, 0, 0
+6, Aftermath, 0, 0
+6, Saveadateforme, SCR
+6, Budjik Boy, 0, 0
+6, Nothingelsematters, 0, 0
+6, Thedoctoroflove, 0, 0
+7, Celsius Star, 0, 0
+7, Black Storm, 0, 0
+7, Precious Charm, 0, 0
+7, Stonecoat, 0, 0
+7, Tuff Tu Mus, 0, 0
+7, Buzitup, 0, 0
+7, Surprise Coming, 0, 0
+7, Fridge Monster, 0, 0
+7, Laa De Sha, 0, 0
+7, Rue De Royale, 0, 0
+7, Sergeant Major, 0, 0
+7, Miss Mahjong, 0, 0
+7, Princess Que, 0, 0
+8, Just Call Me Jonny, 0, 0
+8, Razzo Rosso, 0, 0
+8, Cat Noir, 0, 0
+8, Sound Of Jura, 0, 0
+8, Don Rubio, 0, 0
+8, Sinister Sauce, 0, 0
+8, Miss Castelvecchio, 0, 0
+8, My Uncle Did It, 0, 0
+8, Littlebitcheeky, 0, 0
+8, Bold Strike, 0, 0
+8, Carnival Riches, 0, 0

@@ -970,3 +970,15 @@ screenshot; still on the Dead 4 Wed rating.
 Flemington Thu 9:30am routine: 9 more out after 8:38am (R3 Just Folk, Merrigold; R6 Surfy Pete, Hiyaam Proud, Untapped,
 Hedjet; R7 Southern Sway; R8 Chocolate Freckles; R9 Saluted), none of ours. Re-priced on that field (s5u): Sass Appeal
 $1.57, De Armas $3.07, Ice Kool $3.26 (now $1.70, $3.10, $6.50). R3 moved most (Feroce $6.31 to $4.86). 65 lay candidates.
+
+## Sat 7 and Sun 8 Nov priced Thu 5 Nov 12:40pm (the new 12:17pm routine: fields 10:30-11am, riders at 12)
+Pulled Fri, Sat and Sun by date (force no): three new Victorian meetings. No market open on any of them.
+- Geelong Sat, Dead (Form King; 9.1mm forecast to race day, under the 15mm line): 85 orders on 35 horses, 84.37u if every
+  order fired (d5g). 4 riders still to come.
+- Ararat Sun, Slow (Form King; 3.4mm): 89 orders on 36 horses, 92.01u (s6a). PROVISIONAL: 13 of 92 runners have no rider
+  yet (Sunday's riders come Friday), so it is re-pulled (force yes) and re-priced Friday after 12 before anything is sent.
+- Balnarring Sat (picnic), Heavy 8 (RV Stewards): 70 orders on 24 horses (h8b). PAPER ONLY: the model's history holds no
+  Balnarring meeting and its picnic meetings (Hanging Rock, Towong, Great Western) all sit before the 3 Jun holdout, so
+  nothing on picnic racing has been tested out of sample.
+The first cut of all three sheets had no saddlecloth numbers (the entry-numbers file was not copied into data/live_bets);
+fixed, and pricemtg.sh now copies it on every run. TAB $0.65, bot not connected.

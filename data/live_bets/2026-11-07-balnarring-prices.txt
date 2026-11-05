@@ -1,0 +1,54 @@
+# Balnarring Sat 7 Nov (picnic), Heavy 8 (RV Stewards Thu morning), final fields; no market yet
+1, Powershare, 0, 0
+1, Excelaot, 0, 0
+1, Brazen Martini, 0, 0
+1, Galagacisco, 0, 0
+1, Station Road, 0, 0
+1, Russian Tide, 0, 0
+2, Mexican Fiddler, 0, 0
+2, Sierra Sun, 0, 0
+2, Second Guess, 0, 0
+2, Elite Pete, 0, 0
+2, Maristela, 0, 0
+2, Banjette, 0, 0
+3, Anything But, 0, 0
+3, Ocean's Jen, 0, 0
+3, I'm Dynamite, 0, 0
+3, Disclevaboy, 0, 0
+3, Wagunda, 0, 0
+3, Wilma Wombat, 0, 0
+3, Epicus, 0, 0
+3, Littlebirdie, 0, 0
+3, Juniors Queen, 0, 0
+3, Loveofmylife, 0, 0
+3, Crying Cougar, SCR
+4, Tofik Tok, 0, 0
+4, Dente's Inferno, 0, 0
+4, Shintaro Samurai, 0, 0
+4, Good Lordy Me, 0, 0
+4, Lilt, 0, 0
+4, Moonlight Romance, 0, 0
+4, Hansard, 0, 0
+4, Numbersneverseen, 0, 0
+5, Satin Image, 0, 0
+5, Redwood Shadow, 0, 0
+5, Testing The Cugat, 0, 0
+5, Popeye The Sailor, SCR
+5, Toronova, SCR
+5, Mrs Gossip, SCR
+5, Downtown Man, 0, 0
+5, Nic Says No, 0, 0
+5, Avonview, 0, 0
+5, Everett, 0, 0
+5, Marbastion, 0, 0
+5, Grand Sage, 0, 0
+5, Rule Of Salex, 0, 0
+6, I Could Do Better, 0, 0
+6, Little Richie Turf, 0, 0
+6, Mac Kalhoun, 0, 0
+6, Golden Hips, 0, 0
+6, Eight Shout's, 0, 0
+6, In Your Hands, 0, 0
+6, Discobay, 0, 0
+6, Rapido River, 0, 0
+6, Highly Regarded, 0, 0

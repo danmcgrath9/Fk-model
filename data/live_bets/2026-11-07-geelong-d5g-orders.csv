@@ -1,0 +1,86 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-07,Geelong,1,,1,Alpine Point,WIN,18.95,41.41,0.59,30,1 of 2,0.59u,13.80,
+2026-11-07,Geelong,1,,1,Alpine Point,WIN,23.69,41.41,0.14,7,2 of 2,0.73u,13.80,
+2026-11-07,Geelong,1,,2,Exacting Standard,WIN,14.00,15.01,0.44,22,1 of 1,0.44u,10.34,EARLY: $15 or shorter only
+2026-11-07,Geelong,1,,10,Mystic River Queen,WIN,3.99,3.99,2.87,144,1 of 1,2.87u,3.30,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-07,Geelong,1,,10,Mystic River Queen,WIN,4.22,9.91,3.14,157,1 of 3,3.14u,3.30,EARLY: $15 or shorter only
+2026-11-07,Geelong,1,,10,Mystic River Queen,WIN,5.27,9.91,0.64,32,2 of 3,3.78u,3.30,EARLY: $15 or shorter only
+2026-11-07,Geelong,1,,10,Mystic River Queen,WIN,7.27,9.91,3.78,189,3 of 3,7.56u,3.30,EARLY: $15 or shorter only; opens $7.27+ (2.2x ours): stake doubled
+2026-11-07,Geelong,1,,4,Optimus,WIN,9.46,21.38,1.24,62,1 of 3,1.24u,7.13,
+2026-11-07,Geelong,1,,4,Optimus,WIN,11.83,21.38,0.29,14,2 of 3,1.53u,7.13,
+2026-11-07,Geelong,1,,4,Optimus,WIN,15.69,21.38,1.53,76,3 of 3,3.06u,7.13,opens $15.69+ (2.2x ours): stake doubled
+2026-11-07,Geelong,1,,8,Truant,WIN,20.62,44.87,0.54,27,1 of 2,0.54u,14.96,
+2026-11-07,Geelong,1,,8,Truant,WIN,25.78,44.87,0.13,6,2 of 2,0.67u,14.96,
+2026-11-07,Geelong,2,,5,Magna Sententia,WIN,4.69,10.98,2.75,138,1 of 3,2.75u,3.66,
+2026-11-07,Geelong,2,,5,Magna Sententia,WIN,5.86,10.98,0.58,29,2 of 3,3.33u,3.66,
+2026-11-07,Geelong,2,,5,Magna Sententia,WIN,8.05,10.98,3.33,166,3 of 3,6.66u,3.66,opens $8.05+ (2.2x ours): stake doubled
+2026-11-07,Geelong,2,,12,Scoot,WIN,3.38,3.99,3.55,178,1 of 1,3.55u,2.82,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-07,Geelong,2,,12,Scoot,WIN,4.00,8.46,3.87,194,1 of 3,3.87u,2.82,EARLY: $15 or shorter only
+2026-11-07,Geelong,2,,12,Scoot,WIN,4.46,8.46,0.76,38,2 of 3,4.63u,2.82,EARLY: $15 or shorter only
+2026-11-07,Geelong,2,,12,Scoot,WIN,6.21,8.46,4.63,232,3 of 3,9.26u,2.82,EARLY: $15 or shorter only; opens $6.21+ (2.2x ours): stake doubled
+2026-11-07,Geelong,3,,2,Brutal Tempo,WIN,12.31,27.46,0.93,46,1 of 2,0.93u,9.15,
+2026-11-07,Geelong,3,,2,Brutal Tempo,WIN,15.39,27.46,0.22,11,2 of 2,1.15u,9.15,
+2026-11-07,Geelong,3,,12,Dame Of Dubai,WIN,8.91,15.01,1.32,66,1 of 3,1.32u,6.73,EARLY: $15 or shorter only
+2026-11-07,Geelong,3,,12,Dame Of Dubai,WIN,11.14,15.01,0.31,16,2 of 3,1.63u,6.73,EARLY: $15 or shorter only
+2026-11-07,Geelong,3,,12,Dame Of Dubai,WIN,14.81,15.01,1.63,82,3 of 3,3.26u,6.73,EARLY: $15 or shorter only; opens $14.81+ (2.2x ours): stake doubled
+2026-11-07,Geelong,3,,5,Love 'n' Glory,WIN,12.82,28.56,0.89,44,1 of 2,0.89u,9.52,
+2026-11-07,Geelong,3,,5,Love 'n' Glory,WIN,16.02,28.56,0.21,10,2 of 2,1.10u,9.52,
+2026-11-07,Geelong,3,,10,Written Velocity,WIN,13.97,30.97,0.81,40,1 of 2,0.81u,10.32,
+2026-11-07,Geelong,3,,10,Written Velocity,WIN,17.46,30.97,0.20,10,2 of 2,1.01u,10.32,
+2026-11-07,Geelong,4,,10,Just My Lot,WIN,7.57,17.30,1.58,79,1 of 3,1.58u,5.77,
+2026-11-07,Geelong,4,,10,Just My Lot,WIN,9.46,17.30,0.36,18,2 of 3,1.94u,5.77,
+2026-11-07,Geelong,4,,10,Just My Lot,WIN,12.69,17.30,1.94,97,3 of 3,3.88u,5.77,opens $12.69+ (2.2x ours): stake doubled
+2026-11-07,Geelong,4,,11,Koolatah Queen,WIN,16.60,36.51,0.68,34,1 of 2,0.68u,12.17,
+2026-11-07,Geelong,4,,11,Koolatah Queen,WIN,20.75,36.51,0.16,8,2 of 2,0.84u,12.17,
+2026-11-07,Geelong,4,,5,Perfect Night,WIN,4.28,10.06,3.07,154,1 of 3,3.07u,3.35,
+2026-11-07,Geelong,4,,5,Perfect Night,WIN,5.35,10.06,0.64,32,2 of 3,3.71u,3.35,
+2026-11-07,Geelong,4,,5,Perfect Night,WIN,7.38,10.06,3.71,186,3 of 3,7.42u,3.35,opens $7.38+ (2.2x ours): stake doubled
+2026-11-07,Geelong,4,,9,Skydream,WIN,7.26,16.62,1.66,83,1 of 3,1.66u,5.54,
+2026-11-07,Geelong,4,,9,Skydream,WIN,9.07,16.62,0.38,19,2 of 3,2.04u,5.54,
+2026-11-07,Geelong,4,,9,Skydream,WIN,12.19,16.62,2.04,102,3 of 3,4.08u,5.54,opens $12.19+ (2.2x ours): stake doubled
+2026-11-07,Geelong,4,,1,The Quiet Immortal,WIN,20.51,44.63,0.54,27,1 of 2,0.54u,14.88,
+2026-11-07,Geelong,4,,1,The Quiet Immortal,WIN,25.64,44.63,0.14,7,2 of 2,0.68u,14.88,
+2026-11-07,Geelong,5,,8,Devine Grunt,WIN,16.20,35.67,0.70,35,1 of 2,0.70u,11.89,
+2026-11-07,Geelong,5,,8,Devine Grunt,WIN,20.25,35.67,0.16,8,2 of 2,0.86u,11.89,
+2026-11-07,Geelong,5,,9,Epeiric,WIN,11.67,26.11,0.99,50,1 of 2,0.99u,8.70,
+2026-11-07,Geelong,5,,9,Epeiric,WIN,14.59,26.11,0.23,12,2 of 2,1.22u,8.70,
+2026-11-07,Geelong,5,,3,Gymkhana,WIN,19.11,41.73,0.59,30,1 of 2,0.59u,13.91,
+2026-11-07,Geelong,5,,3,Gymkhana,WIN,23.89,41.73,0.14,7,2 of 2,0.73u,13.91,
+2026-11-07,Geelong,5,,2,Mike's Hope,WIN,6.38,14.70,1.92,96,1 of 3,1.92u,4.90,
+2026-11-07,Geelong,5,,2,Mike's Hope,WIN,7.97,14.70,0.43,22,2 of 3,2.35u,4.90,
+2026-11-07,Geelong,5,,2,Mike's Hope,WIN,10.79,14.70,2.35,118,3 of 3,4.70u,4.90,opens $10.79+ (2.2x ours): stake doubled
+2026-11-07,Geelong,5,,7,So Long Ago,WIN,14.81,32.74,0.77,38,1 of 2,0.77u,10.91,
+2026-11-07,Geelong,5,,7,So Long Ago,WIN,18.51,32.74,0.18,9,2 of 2,0.95u,10.91,
+2026-11-07,Geelong,5,,12,Spirit Angel,WIN,16.16,35.59,0.70,35,1 of 2,0.70u,11.86,
+2026-11-07,Geelong,5,,12,Spirit Angel,WIN,20.20,35.59,0.17,8,2 of 2,0.87u,11.86,
+2026-11-07,Geelong,6,,10,Stein,WIN,19.38,42.30,0.58,29,1 of 2,0.58u,14.10,
+2026-11-07,Geelong,6,,10,Stein,WIN,24.22,42.30,0.14,7,2 of 2,0.72u,14.10,
+2026-11-07,Geelong,7,,11,Bold Strike,WIN,17.61,38.60,0.64,32,1 of 2,0.64u,12.87,
+2026-11-07,Geelong,7,,11,Bold Strike,WIN,22.01,38.60,0.15,8,2 of 2,0.79u,12.87,
+2026-11-07,Geelong,7,,7,Fridge Monster,WIN,10.29,23.17,1.13,56,1 of 3,1.13u,7.72,
+2026-11-07,Geelong,7,,7,Fridge Monster,WIN,12.86,23.17,0.26,13,2 of 3,1.39u,7.72,
+2026-11-07,Geelong,7,,7,Fridge Monster,WIN,16.99,23.17,1.39,70,3 of 3,2.78u,7.72,opens $16.99+ (2.2x ours): stake doubled
+2026-11-07,Geelong,7,,6,Lario,WIN,19.33,42.20,0.58,29,1 of 2,0.58u,14.07,
+2026-11-07,Geelong,7,,6,Lario,WIN,24.16,42.20,0.14,7,2 of 2,0.72u,14.07,
+2026-11-07,Geelong,7,,14,Miss Castelvecchio,WIN,12.26,27.37,0.93,46,1 of 2,0.93u,9.12,
+2026-11-07,Geelong,7,,14,Miss Castelvecchio,WIN,15.32,27.37,0.23,12,2 of 2,1.16u,9.12,
+2026-11-07,Geelong,7,,3,Romantic Encounter,WIN,9.12,20.64,1.29,64,1 of 3,1.29u,6.88,
+2026-11-07,Geelong,7,,3,Romantic Encounter,WIN,11.40,20.64,0.30,15,2 of 3,1.59u,6.88,
+2026-11-07,Geelong,7,,3,Romantic Encounter,WIN,15.14,20.64,1.59,80,3 of 3,3.18u,6.88,opens $15.14+ (2.2x ours): stake doubled
+2026-11-07,Geelong,7,,13,Shaalute,WIN,12.92,28.77,0.88,44,1 of 2,0.88u,9.59,
+2026-11-07,Geelong,7,,13,Shaalute,WIN,16.15,28.77,0.21,10,2 of 2,1.09u,9.59,
+2026-11-07,Geelong,7,,4,Taung,WIN,13.60,30.20,0.84,42,1 of 2,0.84u,10.07,
+2026-11-07,Geelong,7,,4,Taung,WIN,17.00,30.20,0.20,10,2 of 2,1.04u,10.07,
+2026-11-07,Geelong,8,,13,Brutify,WIN,13.43,29.84,0.85,42,1 of 2,0.85u,9.95,
+2026-11-07,Geelong,8,,13,Brutify,WIN,16.79,29.84,0.20,10,2 of 2,1.05u,9.95,
+2026-11-07,Geelong,8,,8,Cherry Hills,WIN,19.52,42.58,0.57,28,1 of 2,0.57u,14.19,
+2026-11-07,Geelong,8,,8,Cherry Hills,WIN,24.40,42.58,0.14,7,2 of 2,0.71u,14.19,
+2026-11-07,Geelong,8,,9,I Said So,WIN,10.17,22.91,1.14,57,1 of 3,1.14u,7.64,
+2026-11-07,Geelong,8,,9,I Said So,WIN,12.71,22.91,0.27,14,2 of 3,1.41u,7.64,
+2026-11-07,Geelong,8,,9,I Said So,WIN,16.80,22.91,1.41,70,3 of 3,2.82u,7.64,opens $16.80+ (2.2x ours): stake doubled
+2026-11-07,Geelong,8,,10,Miss Ellaneous,WIN,10.68,23.99,1.09,55,1 of 3,1.09u,8.00,
+2026-11-07,Geelong,8,,10,Miss Ellaneous,WIN,13.35,23.99,0.25,12,2 of 3,1.34u,8.00,
+2026-11-07,Geelong,8,,10,Miss Ellaneous,WIN,17.59,23.99,1.34,67,3 of 3,2.68u,8.00,opens $17.59+ (2.2x ours): stake doubled
+2026-11-07,Geelong,8,,1,Share The Music,WIN,6.63,15.26,1.84,92,1 of 3,1.84u,5.09,
+2026-11-07,Geelong,8,,1,Share The Music,WIN,8.29,15.26,0.41,20,2 of 3,2.25u,5.09,
+2026-11-07,Geelong,8,,1,Share The Music,WIN,11.19,15.26,2.25,112,3 of 3,4.50u,5.09,opens $11.19+ (2.2x ours): stake doubled
