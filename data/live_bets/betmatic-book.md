@@ -982,3 +982,12 @@ Pulled Fri, Sat and Sun by date (force no): three new Victorian meetings. No mar
   nothing on picnic racing has been tested out of sample.
 The first cut of all three sheets had no saddlecloth numbers (the entry-numbers file was not copied into data/live_bets);
 fixed, and pricemtg.sh now copies it on every run. TAB $0.65, bot not connected.
+Flemington Thu settled R1-R8 on Form King's results (pulled 6:25pm; R9 not in yet):
+- Open book: Sass Appeal R4 4.92u $2.50 (14c ded) 2nd (BSP $1.79) -4.92u; De Armas R8 2.68u $4.60 3rd (BSP $3.86) -2.68u;
+  Ice Kool R9 1.52u $7.50 (34c ded, pays $5.29) waits for R9. So far -7.60u.
+- Twitter card: Sass Appeal BSP 2.46u 2nd -2.46u; De Armas BSP 1.34u 3rd -1.34u; Ice Kool $6.25 (34c ded, $4.47) 0.76u waits.
+- Lay book ($200 at BSP, s5u list): Chakado R2 ($17, 12th), Didn't Miss Many R2 ($40, 6th), Different Gravy R5 ($28, 10th),
+  Single Choice R5 ($40, 12th), Placo R5 ($34, 2nd), Unwavering R7 ($34, 10th), Your Colour R8 ($40, 8th): 7 lays, 0
+  winners, +6.44u (+$1,288). R9 waits.
+- Back book: none landed (no BSP favourite at $4-$7 that we rated 1.6x+).
+- Feroce (R3, not a bet) 4th at SP $4.60.
