@@ -46,3 +46,22 @@ def test_walk_lead_forward_fits_each_half_year_on_earlier_races_only(monkeypatch
     # three half-years: the first has nothing before it, the second fits on race 1, the third on races 1 and 2
     assert n == 2 and seen == [(1, 7), (2, 7)]
     assert out.p_lead[:2].isna().all() and (out.p_lead[2:] == 0.5).all() and (out.lead_rank[2:] == 1).all()
+
+
+def test_saved_lead_model_round_trips_for_the_nightly(tmp_path):
+    import json
+    import topaz_walk as W
+    rng = np.random.default_rng(1)
+    n_r = 400                                                # enough rows for LightGBM's leaf minimum
+    df = pd.DataFrame({"race_id": np.repeat(np.arange(n_r), 4), "box": np.tile([1, 2, 3, 4], n_r),
+                       "date": np.repeat(pd.date_range("2025-01-01", periods=n_r), 4), "track": "X", "grade": "5",
+                       "sex": "D"})
+    df["pir"] = [("1" if b == w else "2") for b, w in zip(df.box, np.repeat(rng.integers(1, 5, n_r), 4))]
+    num, rel = ["box", "p_lead", "lead_rank"], ["p_lead"]
+    bst, cols = W.fit_lead_all(df, num, rel, rounds=5)
+    assert "box" in cols and not {"p_lead", "lead_rank", "p_lead_rel"} & set(cols)   # never the lead chance itself
+    path = str(tmp_path / "lead.txt")
+    bst.save_model(path)
+    json.dump({"cols": cols}, open(path + ".json", "w"))
+    out = W.lead_from_saved(df.drop(columns=["pir"]), num, rel, path)
+    assert np.allclose(out.groupby("race_id").p_lead.sum(), 1.0) and out.lead_rank.min() == 1
