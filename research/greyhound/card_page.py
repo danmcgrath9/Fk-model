@@ -1,6 +1,13 @@
 """Tonight's card as a race page, in the shape of the gallops pages (5 Nov 2026, founder: "send me an artifact like
-this", the Kyneton page): the paper bets on top, the races as tabs, one row per dog with our price, the market
-line and the reasons the model gives.
+this", the Kyneton page): our own market for every dog, judged against TAB's opening price (founder, 5 Nov: "We need to base
+them off TAB open ... create a market and then a kelly system of profit, more money the more the price is wrong ... at
+1.3x 1.5x so on"), the races as tabs, one row per dog with our price, its TAB stake ladder and the model's reasons.
+
+THE RULE (the gallops value rule of Test 21, at TAB's open): a bet when TAB opens the dog at 1.3x our price or more,
+our price $2-$15. The stake is Kelly on a chance halfway between ours and TAB's (TAB's margin taken out: the race's own
+book when every open is in, else TAB_BOOK), x75 units, at most 4. So the further TAB is out, the more units:
+    units = 75 x (pk x price - 1) / (price - 1),   pk = 0.5 x ours + 0.5 x (1 / price) / book
+1 unit is 1/75 of the betting bank.
 
     python research/greyhound/card_page.py CARD.json OUT.html [OPENS.json]
 
@@ -37,10 +44,34 @@ def title_case(name: str) -> str:
     return " ".join(w.capitalize() if not w.isupper() or len(w) > 2 else w.capitalize() for w in name.split())
 
 
-def window(p: float):
-    need = 1.5 / p
-    lo = max(8.0, need)
-    return (lo, 13.0) if lo <= 13.0 else None
+RATIO, BAND, KELLY_X, CAP = 1.3, (2.0, 15.0), 75.0, 4.0
+LADDER = (1.3, 1.5, 2.0, 3.0)
+TAB_BOOK = 1.25          # TAB's open margin when a race's opens are not all in (Sandown R1, 5 Nov: 131% over 7 dogs)
+
+
+def in_band(p: float) -> bool:
+    """Our price inside the band the rule was tested on."""
+    return p > 0 and BAND[0] <= 1 / p <= BAND[1]
+
+
+def stake(p: float, price: float, book: float = TAB_BOOK) -> float:
+    """Units to bet at `price` on a dog we give chance `p`: 0 unless price >= RATIO x ours and ours is in the band."""
+    if not in_band(p) or not price or price <= 1 or price < RATIO / p - 1e-9:
+        return 0.0
+    pk = 0.5 * p + 0.5 * (1 / price) / max(book, 1.0)
+    f = (pk * price - 1) / (price - 1)
+    return float(min(max(KELLY_X * f, 0.0), CAP))
+
+
+def ladder(p: float, book: float = TAB_BOOK) -> list:
+    """[(multiple of our price, TAB price, units)] for each step of LADDER; empty outside the band."""
+    if not in_band(p):
+        return []
+    return [(m, m / p, stake(p, m / p, book)) for m in LADDER]
+
+
+def units(u: float) -> str:
+    return f"{u:.1f}u" if u else "0u"
 
 
 def boxed(card: dict) -> dict:
@@ -91,6 +122,9 @@ h2{font-size:18px;margin:26px 0 6px;border-bottom:2px solid var(--fg);padding-bo
 .bets td,.bets th{padding:6px 4px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
 .bets td:first-child,.bets th:first-child{text-align:left;white-space:normal}
 .bets .dn{display:block;font-size:13px;color:var(--mute)}
+.bets .u{display:block;font-size:12px;color:var(--mute)}
+.lad{font-variant-numeric:tabular-nums}
+.lad b{color:var(--go)}
 @media (max-width:430px){.bets{padding:10px 8px}.bets table{font-size:13px}.bets td,.bets th{padding:6px 3px}}
 .bets th{font-size:12px;color:var(--mute);font-weight:600}
 .bets a{color:var(--fg);white-space:nowrap}
@@ -126,44 +160,54 @@ def page(card: dict, opens: dict, made: str) -> str:
     def op_for(r, dog):
         return opens.get(f"{r['t']}|{r['n']}|{dog.upper()}") or (opens.get(f"{r['n']}|{dog.upper()}") if single else None)
 
-    paper = []
-    for r in races:
-        for x in r["r"]:
-            w = window(x[2])
-            if w and w[0] <= x[3] <= w[1]:
-                paper.append((r, x, w))
-    paper.sort(key=lambda t: t[0]["s"])
+    def race_book(r):
+        """TAB's open book for the race when every dog's open is in, else TAB_BOOK."""
+        ops = [op_for(r, x[1]) for x in r["r"]]
+        return sum(1 / o[0] for o in ops) if ops and all(o and o[0] > 1 for o in ops) else TAB_BOOK
+
+    # the watch list: dogs GRV's pre-race price already has at 1.3x ours or more, the likeliest to open long on TAB
+    watch = [(r, x) for r in races for x in r["r"] if in_band(x[2]) and x[3] and x[3] >= RATIO / x[2]]
+    watch.sort(key=lambda t: (t[0]["s"], -t[1][3] * t[1][2]))
     meetings = {}
     for r in races:
         meetings.setdefault(r["t"], []).append(r)
     order = sorted(meetings, key=lambda t: min(r["s"] for r in meetings[t]))
-    with_bet = {p[0]["t"] for p in paper}
+    with_bet = {w[0]["t"] for w in watch}
     out = []
     a = out.append
     a(f"<title>{html.escape(name)} {day}, prices {made}</title>")
     a('<meta name="claude:viewport-fit-sides" content="cover">')
     a(STYLE)
     a(f"<h1>{html.escape(name)} {day}, prices {made}</h1>")
-    a(f"<div class='sub'>Our model: fitted this morning on {card['fit']:,} Victorian races, {card['rounds']:,} rounds, with "
-      "GRV's preview, tips and rating and the ratings upgrades. "
+    a(f"<div class='sub'>Our market: every dog priced by our model, adding to 100% a race (fitted on {card['fit']:,} "
+      f"Victorian races, {card['rounds']:,} rounds, with GRV's preview, tips and rating). "
       + ("" if single else f"{len(order)} meetings, {len(races)} races, in TAB's order under each meeting. ")
       + "Melbourne time. Nothing here has been bet.</div>")
-    a("<div class='bets' id='bets'><h2>Paper bets at the open ({})</h2><div class='tw'><table>".format(len(paper)))
-    # TAB's open only gets a column when one of the bets has one: six columns do not fit a phone
-    opens_any = any(op_for(r, x[1]) for r, x, _ in paper)
-    a("<tr><th>Race</th><th>Jumps</th><th>Ours</th><th>Take at</th><th>GRV</th>" + ("<th>TAB open</th>" if opens_any else "") + "</tr>")
-    for r, x, w in paper:
+    a("<div class='bets' id='bets'><h2>Check these at TAB's open ({})</h2><div class='tw'><table>".format(len(watch)))
+    a("<tr><th>Race</th><th>Ours</th>" + "".join(f"<th>TAB {m:g}x</th>" for m in LADDER[:3]) + "</tr>")
+    for r, x in watch:
         op = op_for(r, x[1])
-        a(f"<tr><td><a href='#{anchor(r)}'>{html.escape(short(r['t']))} R{r['n']}</a><span class='dn'>{html.escape(title_case(x[1]))}</span></td>"
-          f"<td>{when(r['s'])}</td><td><b>{money(1 / x[2])}</b></td><td>{money(w[0])}+</td><td>{money(x[3])}</td>"
-          + (f"<td>{money(op[0]) if op else '-'}</td>" if opens_any else "") + "</tr>")
-    if not paper:
-        a("<tr><td colspan='6' style='text-align:left'>No dog meets the rule today.</td></tr>")
-    a("</table></div><div class='note'>The rule is Test 12's: a bet when the price is at least 50% over our price and "
-      "between $8 and $13 (take at: that price or better, up to $13). It made money at GRV's SP in 26 of 30 months walk-forward and lost at Betfair's price. These "
-      "dogs are picked against GRV's pre-race price, and that is not the SP: last night's check matched it to the SP on "
-      "1 runner in 56. So treat them as names to check at TAB's open, where the real test is. These are paper: nothing "
-      "goes to BetMatic without your OK.</div></div>")
+        bk = race_book(r)
+        cells = "".join(f"<td>{money(pr)}<span class='u'>{units(u)}</span></td>" for m, pr, u in ladder(x[2], bk)[:3])
+        got = ""
+        if op:
+            u = stake(x[2], op[0], bk)
+            got = (f"<span class='dn'>TAB opened {money(op[0])}: {op[0] * x[2]:.2f}x, "
+                   + (f"<b>{units(u)}</b>" if u else "no bet") + "</span>")
+        a(f"<tr><td><a href='#{anchor(r)}'>{html.escape(short(r['t']))} R{r['n']}</a> {when(r['s'])}"
+          f"<span class='dn'>{html.escape(title_case(x[1]))} (GRV {money(x[3])})</span>{got}</td>"
+          f"<td><b>{money(1 / x[2])}</b></td>{cells}</tr>")
+    if not watch:
+        a("<tr><td colspan='5' style='text-align:left'>GRV's pre-race prices have no dog at 1.3x ours today: check "
+          "each race's ladder below against TAB's open.</td></tr>")
+    a("</table></div><div class='note'><b>How to bet it:</b> when TAB opens a dog at the price in a column or longer, "
+      "bet the units under it (1 unit = 1/75 of your bank: a $750 bank makes a unit $10). The further TAB is above "
+      "our price, the more units, up to 4. The stake is Kelly on a chance halfway between ours and TAB's, with TAB's "
+      "margin taken out, because our model alone is weaker than the market: 1.3x is a small bet, 2x a big one. "
+      "Every dog priced $2-$15 by us has its own ladder in its race below; these are the ones GRV's pre-race price "
+      "already has long, so look at them first. Don't add to or re-take a dog that drifts 30% from its shortest price "
+      "before the jump (Test 25). This rule made +55% / +48% at GRV's SP (Test 21) and has never been tested at TAB's "
+      "open: that needs the opens recorded. Paper: nothing goes to BetMatic without your OK.</div></div>")
     a("<nav class='nav'><a href='#bets' class='hb'>Bets</a>" + "".join(
         f"<a href='#m-{slug(t)}'{' class=\"hb\"' if t in with_bet else ''}>{html.escape(short(t))}</a>" for t in order)
       + "</nav>")
@@ -172,7 +216,7 @@ def page(card: dict, opens: dict, made: str) -> str:
         first = min(r["s"] for r in rs)
         a(f"<div class='mh' id='m-{slug(t)}'><h2>{html.escape(t)}</h2><div class='hd'>{len(rs)} races from {when(first)}</div>"
           "<div class='chips'>" + "".join(
-              f"<a href='#{anchor(r)}'{' class=\"hb\"' if any(p[0] is r for p in paper) else ''}>R{r['n']} {when(r['s'])}</a>"
+              f"<a href='#{anchor(r)}'{' class=\"hb\"' if any(w[0] is r for w in watch) else ''}>R{r['n']} {when(r['s'])}</a>"
               for r in rs) + "</div></div>")
         for r in rs:
             grade = f"Grade {r['g']}" if str(r["g"]).isdigit() else r["g"]
@@ -182,11 +226,11 @@ def page(card: dict, opens: dict, made: str) -> str:
                  if r["reserves"] else "") + "</div>")
             for x in r["r"]:
                 box, dog, p, grv, rating, tip, bb, last5, fams = x
-                w = window(p)
+                lad = ladder(p, race_book(r))
                 tags = ""
-                if w and w[0] <= grv <= w[1]:
-                    tags += "<span class='tag edge'>EDGE (paper)</span>"
-                elif not w:
+                if lad and grv and grv >= RATIO / p:
+                    tags += "<span class='tag edge'>check TAB</span>"
+                elif not lad:
                     tags += "<span class='tag no'>no bet</span>"
                 if bb:
                     tags += "<span class='tag bb'>GRV best bet</span>"
@@ -196,10 +240,16 @@ def page(card: dict, opens: dict, made: str) -> str:
                     grv_bits.append(f"rated {float(rating):g}")
                 if tip:
                     grv_bits.append(f"tip #{tip}")
-                mk = " · ".join([", ".join(grv_bits)] + ([f"TAB opened {money(op[0])}, {money(op[1])} at 7:47am"] if op else [])
-                                + [f"take at {money(1.5 / p)} or better"])
-                reason = ("" if w else "<b>No bet:</b> our price over $8.67, so a 50% edge needs more than $13, outside the "
-                          "band the rule was tested on. ")
+                mk = " · ".join([", ".join(grv_bits)] + ([f"TAB opened {money(op[0])}, {money(op[1])} later"] if op else []))
+                if lad:
+                    lad_txt = "TAB open: " + " · ".join(f"{money(pr)}+ <b>{units(u)}</b>" for m, pr, u in lad)
+                    if op:
+                        u = stake(p, op[0], race_book(r))
+                        lad_txt += (f" · <b>opened {money(op[0])} ({op[0] * p:.2f}x): "
+                                    + (f"{units(u)}</b>" if u else "no bet</b>"))
+                    reason = f"<span class='lad'>{lad_txt}</span><br>"
+                else:
+                    reason = (f"<b>No bet:</b> our price {money(1 / p)} is outside the $2-$15 band the rule was tested on. ")
                 ups = [f"<span class='up'>{html.escape(fam[k])} +{v}%</span>" for k, v in fams if v > 0][:3]
                 dns = [f"<span class='dn'>{html.escape(fam[k])} {v}%</span>" for k, v in fams if v < 0][:3]
                 why = " · ".join(ups + dns)
