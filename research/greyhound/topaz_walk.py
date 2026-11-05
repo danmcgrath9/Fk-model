@@ -138,9 +138,20 @@ def build_full(d, keep_unresulted=False):
     num = list(dict.fromkeys(num + fpv + fiso + ftip + fgrv + frel))
     rel = rel + [f for f in fiso if f.endswith("_m3")] + fgrv + frel_rel
     if os.environ.get("WALK_LEAD", "").strip().lower() == "yes":
-        df, n_fits = lead_forward(df, num, rel)
-        num, rel = num + ["p_lead", "lead_rank"], rel + ["p_lead"]
-        notes.append(f"lead chance IN (Test 26): forward-chained by half-year, {n_fits} lead fits of {LEAD_ROUNDS} rounds")
+        saved = os.environ.get("WALK_LEAD_MODEL", "").strip()
+        if saved:
+            # the nightly price run: a lead model saved by the weekly train, or no lead chance at all (never 27 fits a
+            # night); the weekly train itself never sets this, so its training rows are always forward-chained
+            if os.path.exists(saved):
+                df = lead_from_saved(df, num, rel, saved)
+                num, rel = num + ["p_lead", "lead_rank"], rel + ["p_lead"]
+                notes.append(f"lead chance IN from the saved lead model ({saved})")
+            else:
+                notes.append(f"lead chance asked for but no saved lead model at {saved}; left out")
+        else:
+            df, n_fits = lead_forward(df, num, rel)
+            num, rel = num + ["p_lead", "lead_rank"], rel + ["p_lead"]
+            notes.append(f"lead chance IN (Test 26): forward-chained by half-year, {n_fits} lead fits of {LEAD_ROUNDS} rounds")
     if os.environ.get("WALK_DRIFT", "").strip().lower() == "yes":
         import topaz_round12 as R12
         import topaz_round13 as R13
@@ -152,6 +163,40 @@ def build_full(d, keep_unresulted=False):
         else:
             notes.append("drift asked for but Betfair's files carry no pre-play min price; left out")
     return df, num, rel, "\n".join(notes)
+
+
+def lead_inputs(num, rel):
+    """The inputs the lead model is fitted on: the win model's, without the lead chance itself."""
+    return [c for c in num if c not in ("p_lead", "lead_rank")], [c for c in rel if c != "p_lead"]
+
+
+def fit_lead_all(df, num, rel, rounds=None):
+    """One lead model on every one-leader race (the weekly train's, saved for the nightly price run); (booster, cols)."""
+    import topaz_round14 as R14
+    if "led" not in df:
+        df = R14.lead_label(df)
+    n, r = lead_inputs(num, rel)
+    X = T.features(df, n, r)
+    m = df.one_leader.values & df.led.notna().values
+    today = df.date.max()
+    rec = 0.5 ** ((((today - df.date[m]).dt.days) / 365.25).values / 3.0)
+    bst = fit_fixed(X[m], df.led.values[m].astype(float), df.race_id[m], rec, rounds or LEAD_ROUNDS)
+    return bst, list(X.columns)
+
+
+def lead_from_saved(df, num, rel, path):
+    """p_lead and lead_rank for every row from a saved lead model (path, with its input list at path + '.json')."""
+    import json
+    bst = lgb.Booster(model_file=path)
+    cols = json.load(open(path + ".json"))["cols"]
+    n, r = lead_inputs(num, rel)
+    X = T.features(df, n, r).reindex(columns=cols)
+    for c in V1.CAT:
+        if c in X:
+            X[c] = X[c].astype("category")
+    df["p_lead"] = V1.race_softmax(bst.predict(X, raw_score=True), df.race_id.values)
+    df["lead_rank"] = df.p_lead.groupby(df.race_id.values).rank(ascending=False, method="min")
+    return df
 
 
 def lead_forward(df, num, rel, fit=None, rounds=None):

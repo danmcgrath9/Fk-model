@@ -242,6 +242,7 @@ def train(d, label) -> int:
     """PRICE_MODE=train: fit the BSP-chance model on every resulted race and save it with the inputs it was fitted on,
     so the nightly price run only builds and predicts (founder, 5 Nov 2026: "train it every week overnight")."""
     import lightgbm as lgb  # noqa: F401  (the booster's save/load)
+    os.environ.pop("WALK_LEAD_MODEL", None)     # the training rows' lead chance is always forward-chained, never in-sample
     df, num, rel, note = W.build_full(d)
     X = T.features(df, num, rel)
     today = pd.Timestamp.now(tz=SYDNEY).normalize().tz_localize(None)
@@ -252,6 +253,14 @@ def train(d, label) -> int:
     meta = {"cols": list(X.columns), "num": num, "rel": rel, "rounds": int(W.ROUNDS_A), "fit_races": int(df.race_id.nunique()),
             "last_day": f"{df.date.max():%Y-%m-%d}", "trained": pd.Timestamp.now(tz=SYDNEY).isoformat(timespec="minutes")}
     (MODEL_DIR / "meta.json").write_text(json.dumps(meta))
+    if "p_lead" in num:
+        lb, lcols = W.fit_lead_all(df, num, rel)
+        lb.save_model(str(MODEL_DIR / "lead.txt"))
+        (MODEL_DIR / "lead.txt.json").write_text(json.dumps({"cols": lcols}))
+        note += f"\nlead model saved: {len(lcols)} inputs, {W.LEAD_ROUNDS} rounds on every one-leader race"
+    else:
+        for f in ("lead.txt", "lead.txt.json"):
+            (MODEL_DIR / f).unlink(missing_ok=True)       # a stale lead model must not outlive the model it went with
     print(f"# {label}: trained\n\n{note}\nfitted on {meta['fit_races']:,} races to {meta['last_day']}, {meta['rounds']:,} rounds, "
           f"{len(meta['cols'])} inputs; saved to {MODEL_DIR}")
     return 0
