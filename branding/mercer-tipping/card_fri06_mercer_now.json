@@ -1,0 +1,24 @@
+{
+ "day": "Friday",
+ "date": "6 November",
+ "footer": "Win bets.",
+ "meetings": [
+  {
+   "name": "Warrnambool",
+   "note": "",
+   "bets": [
+    {"race": 3, "time": "3:00PM", "horse": "Big Vee", "price": "$2.50", "units": "2.47u"},
+    {"race": 4, "time": "3:30PM", "horse": "Mamzelle Raine", "price": "$7.50", "units": "0.54u"}
+   ]
+  },
+  {
+   "name": "Cranbourne",
+   "note": "",
+   "bets": [
+    {"race": 6, "time": "8:45PM", "horse": "Speir", "price": "$5", "units": "0.94u"},
+    {"race": 8, "time": "9:45PM", "horse": "Power And The Beat", "price": "$4.60", "units": "1.11u"}
+   ]
+  }
+ ],
+ "brand": true
+}
