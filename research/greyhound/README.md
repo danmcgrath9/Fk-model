@@ -2127,9 +2127,10 @@ leading.
 ## Test 27: the final walk-forward, everything that cleared (5 Nov 2026, gh topaz run 41967576028, `topaz_walk.py`)
 
 The founder: "Run the final walk-forward with everything that cleared". The run, against Test 20's set-up:
-- carried over: the preview, the ratings upgrades, GRV's tips, GRV's rating and 4,000 rounds, refitted every second
-  month on every race before that month
-- added: the reliable-beginner inputs (Test 23) and the lead chance (Test 26)
+- carried over: the preview, the ratings upgrades, GRV's tips and 4,000 rounds, refitted every second month on every
+  race before that month
+- added, three things at once: GRV's own rating (cleared by the 4 Nov compare; worth 0.009 on Test 16's one split, and
+  in no walk-forward before this one), the reliable-beginner inputs (Test 23) and the lead chance (Test 26)
 - the lead chance is forward-chained: 27 lead fits of 300 rounds, each half-year priced by a lead model that saw only
   earlier races
 - the drift guard (Test 25) on the bets, with the drift filled on 100% of BSP runners
@@ -2183,14 +2184,17 @@ The scored quarter as a whole (25,720 races):
 |---|---|
 | Test 14 (frozen inputs, fresh model monthly) | +0.1171 |
 | Test 18 (+ preview, ratings upgrades) | +0.0987 |
-| Test 20 (+ tips, GRV's rating, 4,000 rounds) | +0.0959 |
-| **Test 27 (+ reliable beginners, the lead chance)** | **+0.0888** |
+| Test 20 (+ tips, 4,000 rounds) | +0.0959 |
+| **Test 27 (+ GRV's rating, reliable beginners, the lead chance)** | **+0.0888** |
 
 **Closer to BSP than Test 20 in 33 of the same 35 months.** The two exceptions are 2025-02 (+0.0873 against +0.0849)
 and 2026-05 (+0.0920 against +0.0905). The 0.0071 gain is the largest of any walk-forward step since the preview and
-ratings upgrades. It is seven times what either input was worth on the one-split tests, because the walk-forward refits
-18 times and the gains repeat month after month instead of being one split's noise. The ensemble with the winners twin
-beats GRV's SP over the quarter (1.5927 against 1.5952).
+ratings upgrades.
+
+It belongs to three inputs added together, and this run cannot split it between them. On one split, GRV's rating was
+worth 0.009 (Test 16), the lead chance 0.0019 (Test 26) and the reliable beginners 0.001 (Test 23), so GRV's rating
+is probably most of it. A walk-forward with GRV's rating alone (`WALK_GRV_RATING=yes` and nothing else new) says how
+much the other two add. The ensemble with the winners twin beats GRV's SP over the quarter (1.5927 against 1.5952).
 
 ### Bets at GRV's SP, no commission
 
@@ -2318,7 +2322,7 @@ finds 5 bets in 29 months, and none with the guard.
 ### What it says
 
 **Everything together moved the model 0.0071 closer to BSP**, to +0.0888, and it was closer than Test 20 in 33 of 35
-months.
+months. GRV's rating is probably most of that; the ablation run will say.
 
 **The 1.3x rule holds when every month's model and blend are fitted only on the past.** Without the guard:
 - +50.5% and +66.3% flat, and +59.1% and +81.7% on Kelly
