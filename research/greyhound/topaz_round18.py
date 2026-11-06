@@ -13,6 +13,9 @@ The production inputs, the standard split, the lead chance forward-chained by ha
   F0  the production model, no Isolynx anywhere (the lead model without it too)
   F1  + Isolynx in the win model only
   F2  + Isolynx in the lead model as well
+  F3  F2 + the checks: whether the dog was checked in its last tracked run (a sudden dip in speed or places lost in one
+      50 m section, greyhound.isolynx.trouble), how deep the dip, how many places, and how often in its last 5
+Then the founder's question: does a dog checked last time win more than our price, BSP or GRV's SP says?
 Scored on the last quarter, both halves: the lead model's hit rate (its top pick led), log loss and gap to BSP
 (overall, at the tracked tracks and the rest), and the 1.3x rule at GRV's SP with the drift guard beside it.
 """
@@ -29,6 +32,7 @@ import topaz_round9 as R9         # noqa: E402
 import topaz_theories as T        # noqa: E402
 import topaz_v1 as V1             # noqa: E402
 import topaz_walk as W            # noqa: E402
+from greyhound.isolynx import CHECK_DIP, CHECK_LOST   # noqa: E402
 
 TRACKED = "MEADOWS|SANDOWN|HEALESVILLE|TRARALGON|CRANBOURNE"
 DRIFT_CAP = 1.3
@@ -38,6 +42,29 @@ def split_inputs(num, rel):
     """(inputs without Isolynx, with), each as (num, rel)."""
     iso = [c for c in num if c.startswith("iso_")]
     return ([c for c in num if c not in iso], [c for c in rel if not c.startswith("iso_")]), (list(num), list(rel)), iso
+
+
+CHECK_COLS = ["chk_last", "chk_dip_last", "chk_lost_last", "chk_rate5"]
+
+
+def check_features(df: pd.DataFrame, iso_dir: str):
+    """From each dog's EARLIER tracked runs (end of the previous day): was it checked in its last tracked run, how deep
+    the speed dip and how many places it lost there, and the share of its last 5 tracked runs with a check
+    (greyhound.isolynx.trouble). Returns (df, columns, share of tracked runs checked)."""
+    from greyhound.isolynx import table
+    from greyhound.ratings import _asof
+    t = table(iso_dir)
+    if t is None or not len(t) or "checked" not in t:
+        return df, [], np.nan
+    t = t.dropna(subset=["date"]).copy()
+    t["dog"] = t.dog.astype("Int64").astype(str)
+    t = t.sort_values(["dog", "date"])
+    t["checked"] = pd.to_numeric(t.checked, errors="coerce")
+    t["_rate5"] = t.groupby("dog").checked.rolling(5, min_periods=1).mean().reset_index(level=0, drop=True)
+    day = t.groupby(["dog", "date"])[["checked", "dip", "pos_lost", "_rate5"]].last().reset_index()
+    for src, dst in zip(["checked", "dip", "pos_lost", "_rate5"], CHECK_COLS):
+        df[dst] = _asof(df[["dog", "date"]], day.rename(columns={src: dst}), ["dog"], dst).astype(float)
+    return df, list(CHECK_COLS), float(t.checked.mean())
 
 
 def lead_hits(t: pd.DataFrame, rank_col: str) -> tuple[int, float]:
@@ -62,6 +89,11 @@ def main(d, label):
     df, n1 = W.lead_forward(df, num1, rel1)
     df["p_lead1"], df["lead_rank1"] = df.p_lead, df.lead_rank
     print(f"{len(iso)} Isolynx inputs; lead models: {n0} fits without Isolynx, {n1} with\n")
+    df, chk, chk_share = check_features(df, os.environ.get("ISOLYNX_DIR", ""))
+    print(f"Checks (a 50 m section {abs(CHECK_DIP):g} m/s slower than the two either side, or {CHECK_LOST}+ places lost "
+          f"in one, between the first and the last 100 m): {chk_share:.0%} of tracked "
+          f"runs; a checked-or-not last tracked run known for {df.chk_last.notna().mean():.0%} of runners\n" if chk else
+          "Checks: no split detail in the pull\n")
 
     q75 = df.date.quantile(0.75)
     es_start = q75 - min(pd.Timedelta(days=183), (q75 - df.date.min()) / 4)
@@ -92,6 +124,8 @@ def main(d, label):
     rows = (("F0 the production model, no Isolynx", num0, rel0, "0"),
             ("F1 + Isolynx in the win model", num1, rel1, "0"),
             ("F2 + Isolynx in the lead model too", num1, rel1, "1"))
+    if chk:
+        rows += (("F3 + the checks", num1 + chk, rel1, "1"),)
     for name, n_, r_, lead in rows:
         for x in (fp, es, te):
             x["p_lead"], x["lead_rank"] = x[f"p_lead{lead}"], x[f"lead_rank{lead}"]
@@ -107,6 +141,21 @@ def main(d, label):
                                                (hb & ~tracked, bo))]
         print(f"| {name} | {len(cols)} | {k} | {V1.ll(p[hb], w[hb]):.4f} | {g[0]:+.4f} | {g[1]:+.4f} | {g[2]:+.4f} | "
               f"{g[3]:+.4f} | {g[4]:+.4f} |")
+
+    if chk:
+        # the founder's question: is a dog checked in its last tracked run under-rated, by us or by the market?
+        t = te[hb]
+        print("\n| last tracked run | runners | wins | A/E vs F2 | A/E vs F3 | A/E vs BSP | A/E vs GRV's SP |\n"
+              "|---|---|---|---|---|---|---|")
+        for name, m in (("checked", (t.chk_last == 1).values), ("not checked", (t.chk_last == 0).values),
+                        ("checked, 3+ places lost", (t.chk_lost_last >= 3).values),
+                        ("no tracked run before", t.chk_last.isna().values)):
+            if m.sum() < 300:
+                continue
+            g = t[m]
+            wn = g.won.sum()
+            print(f"| {name} | {m.sum():,} | {int(wn):,} | {wn / g.p_F2.sum():.3f} | {wn / g.p_F3.sum():.3f} | "
+                  f"{wn / g.p_bsp.sum():.3f} | {wn / g.p_sp.sum():.3f} |")
 
     # the 1.3x rule at GRV's SP
     e_ok, t_ok = es.p_sp.notna().values, te.p_sp.notna().values

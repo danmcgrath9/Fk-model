@@ -145,6 +145,31 @@ def _by_distance(splits, dist):
     return None
 
 
+CHECK_DIP, CHECK_LOST = -1.0, 2      # a 50 m section 1 m/s slower than the two either side, or 2+ places lost in one
+
+
+def trouble(start: list, distance) -> dict:
+    """Signs of a check in the 50 m splits from the start, between the first 100 m (the jump and the rush to the first
+    bend are not checks) and the last 100 m (fading is not a check):
+      dip      the deepest dip in speed: a section's speed less the mean of the sections either side (m/s, < 0 a dip)
+      pos_lost the most places lost in one 50 m section
+      checked  1 when dip <= CHECK_DIP or pos_lost >= CHECK_LOST, 0 when neither, None with nothing to measure"""
+    s = sorted((x for x in start or [] if isinstance(x, dict) and x.get("splitDistance") is not None),
+               key=lambda x: x["splitDistance"])
+    end = (distance or 1e9) - 100
+    dist = [x["splitDistance"] for x in s]
+    v = [x.get("splitSpeed") for x in s]
+    pos = [x.get("positionInRunning") for x in s]
+    dips = [v[i] - (v[i - 1] + v[i + 1]) / 2 for i in range(1, len(s) - 1)
+            if 100 < dist[i] <= end and None not in (v[i - 1], v[i], v[i + 1])]
+    lost = [pos[i] - pos[i - 1] for i in range(1, len(s))
+            if 100 < dist[i] <= end and None not in (pos[i - 1], pos[i])]
+    dip, pl = (min(dips) if dips else None), (max(lost) if lost else None)
+    checked = None if dip is None and pl is None else int((dip is not None and dip <= CHECK_DIP) or
+                                                          (pl is not None and pl >= CHECK_LOST))
+    return {"dip": dip, "pos_lost": pl, "checked": checked}
+
+
 def flatten(run: dict) -> dict:
     """One tracked run to a flat row (times in seconds, speeds in m/s as Topaz gives them, rail in metres)."""
     j = run.get("jumpSplit") or {}
@@ -166,6 +191,7 @@ def flatten(run: dict) -> dict:
     fin = sorted(fin, key=lambda s: -(s.get("splitDistance") or 0))    # distance TO the finish: last = the finish
     row["last100"] = sum(s["deltaTime"] for s in fin[-2:]) if len(fin) >= 2 else None
     row["last50"] = fin[-1]["deltaTime"] if fin else None
+    row.update(trouble(start, run.get("raceDistance")))
     for k, s in enumerate(marks[:3]):
         if isinstance(s, dict):
             row[f"mark{k + 1}_time"] = s.get("elapsedTime")
