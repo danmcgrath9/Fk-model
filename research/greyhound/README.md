@@ -3279,3 +3279,69 @@ Over the whole span the ensemble also scores better than GRV's SP (1.5981 agains
 - What it needs: the weekly train fits and saves the winners twin beside the model, the nightly price run prices both,
   and the card's rule blends the ensemble with GRV's price.
 - The cost: about 65% more bets a night at TAB, so more account attention.
+
+## Test 38: the walk-forward, the half-weight label (6 Nov 2026, gh topaz run 42171022820, `topaz_walk.py`, `WALK_SP_WEIGHT=0.5`)
+
+Test 32's open item: on one split, training the BSP-chance model with the races that lack a BSP on every runner (whose
+label is GRV's SP chance in whole or part) at half weight beat the full label by 0.0026, in both halves. This is the
+same question month by month, with everything else as Test 37 (the production inputs, the ensemble rule switched on).
+
+The run stopped at the same place as Test 37 (the time guard, June 2026), so the two cover the same 25 months and
+compare like for like.
+
+| scored quarter | Test 37 (full weight) | half weight |
+|---|---|---|
+| all 21,991 races: the model | 1.6138 | **1.6111** |
+| all 21,991 races: the ensemble | 1.5981 | **1.5970** |
+| all 21,991 races: GRV's SP | 1.6118 | 1.6118 |
+| the 19,332 BSP-matched races: the model | 1.5771 | **1.5755** |
+| the 19,332 BSP-matched races: BSP | 1.4909 | 1.4909 |
+| **gap to BSP** | +0.0862 | **+0.0846** |
+
+Month by month, the half-weight gap is smaller in 21 of the 31 scored months. It is larger in 2023-12, 2024-05,
+2024-08, 2024-11, 2025-03, 2025-04, 2025-09, 2026-03, 2026-04 and 2026-05.
+
+With the half weight the model alone now scores better than GRV's SP on the whole span (1.6111 against 1.6118), which
+at full weight it did not.
+
+The 1.3x rule at GRV's SP (our price $2-$15, Kelly x75 cap 4, no commission), the model as the card uses it. Blend
+weights refitted each month: ours 0.49-0.65, the SP 0.53-0.67.
+
+| label | rule | half | bets | winners | A/E | flat ROI | units staked | Kelly ROI | units won | worst drawdown | months in profit |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| full (Test 37) | no guard | 1st | 1,100 | 244 | 1.404 | +46.8% | 2,229 | +54.6% | +1,216 | 59 | 12 of 13 |
+| full (Test 37) | no guard | 2nd | 1,103 | 286 | 1.695 | +72.7% | 2,052 | +83.8% | +1,720 | 38 | 13 of 13 |
+| full (Test 37) | no guard | all | 2,203 | 530 | 1.547 | +59.8% | 4,281 | +68.6% | +2,936 | 59 | 24 of 25 |
+| **half** | no guard | 1st | 1,208 | 272 | 1.445 | +50.7% | 2,401 | +55.4% | +1,329 | 64 | 13 of 13 |
+| **half** | no guard | 2nd | 1,211 | 310 | 1.675 | +72.9% | 2,290 | +86.6% | +1,982 | 45 | 13 of 13 |
+| **half** | no guard | all | 2,419 | 582 | 1.559 | +61.8% | 4,690 | +70.6% | +3,311 | 64 | 25 of 25 |
+| full (Test 37) | drift guard 1.3x | 1st | 738 | 194 | 1.528 | +64.2% | 1,649 | +70.4% | +1,161 | 42 | 13 of 13 |
+| full (Test 37) | drift guard 1.3x | 2nd | 738 | 235 | 1.921 | +106.6% | 1,499 | +113.1% | +1,695 | 26 | 13 of 13 |
+| full (Test 37) | drift guard 1.3x | all | 1,476 | 429 | 1.721 | +85.4% | 3,148 | +90.7% | +2,856 | 42 | 25 of 25 |
+| **half** | drift guard 1.3x | 1st | 816 | 216 | 1.551 | +66.2% | 1,798 | +68.1% | +1,224 | 60 | 12 of 13 |
+| **half** | drift guard 1.3x | 2nd | 818 | 255 | 1.885 | +107.6% | 1,675 | +113.7% | +1,905 | 51 | 13 of 13 |
+| **half** | drift guard 1.3x | all | 1,634 | 471 | 1.716 | +87.0% | 3,473 | +90.1% | +3,130 | 60 | 24 of 25 |
+
+With the drift guard (the card's rule), the half weight:
+- bets 11% more often (1,634 against 1,476)
+- wins 10% more units (+3,130 against +2,856), and more in both halves (+1,224 against +1,161, +1,905 against +1,695)
+- at the same edge: flat ROI +87.0% against +85.4%, Kelly ROI 90.1% against 90.7%, A/E 1.716 against 1.721
+- with a deeper worst drawdown (60 units against 42) and one losing month (24 of 25 in profit against 25 of 25)
+
+Without the guard it is better on every line except the drawdown (64 against 59).
+
+The sequential rule at GRV's SP (each month's rule chosen on the six months before) did +63.9% flat on 1,713 bets, A/E
+1.630, 24 of 25 months in profit (1st half +53.3%, 2nd +74.3%), against +49.0% at full weight.
+
+At BSP with 8% commission there is still nothing. The blend gives our model a weight of -0.09 to 0.08 against BSP's
+0.93 to 1.07, so the 1.3x rule at BSP made 5 bets in 25 months. The sequential rule at BSP lost 3.1% flat on 3,178 bets
+(A/E 1.016, 12 of 25 months in profit; 1st half -9.0%, 2nd +2.6%). Beating BSP is the job of rounds 23, 24 and 25
+(`topaz_round23.py` to `topaz_round25.py`), written up as they finish.
+
+**The walk-forward confirms Test 32.** The half weight is closer to BSP over the whole span and in two months out of
+three, and the card's rule bets a little more at the same edge. The deeper drawdown is the cost of the extra bets, and
+18 extra units of drawdown against 274 extra units won is a fair trade.
+
+**Decision:** in production. `WALK_SP_WEIGHT=0.5` goes into the weekly train (gh-topaz-nightly.yml). It takes effect at
+Sunday's train; the nightly cards until then use the model saved last Sunday. The price run exports it too, so its
+fallback fit (when no saved model is found) trains the same way.

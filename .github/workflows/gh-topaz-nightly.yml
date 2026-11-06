@@ -100,6 +100,8 @@ jobs:
           # Tests 27 and 28: the reliable-beginner inputs and the lead chance; the price run reads the weekly train's
           # saved lead model (the train itself forward-chains its own and ignores this)
           export WALK_RELIABLE=yes WALK_LEAD=yes WALK_LEAD_MODEL="$PWD/greyhound/cache/model/lead.txt"
+          # Tests 32 and 38: races without a BSP on every runner (label partly GRV's SP chance) at half weight
+          export WALK_SP_WEIGHT=0.5
           if [ "$MODE" = "train" ]; then
             PRICE_MODE=train python research/greyhound/topaz_price_upcoming.py greyhound/cache/topaz "topaz VIC weekly train" | tee -a "$GITHUB_STEP_SUMMARY"
           else
