@@ -64,10 +64,11 @@ def returns(bet: str, won, price, comm=COMM) -> np.ndarray:
     return np.where(won == 1, price - 1, -1.0)
 
 
-def segments(t: pd.DataFrame, vol_cuts=None, tracks=None) -> dict:
+def segments(t: pd.DataFrame, vol_cuts=None, tracks=None, pairs=False) -> dict:
     """name -> boolean mask, one value of one thing about the runner or the race; a thing the data lacks is skipped.
     `tracks`: the track codes to give a segment each, the same list in every period (a track that stopped racing, like
-    Cranbourne in 2022, still gets its segment, empty)."""
+    Cranbourne in 2022, still gets its segment, empty). `pairs`: also every box x early-speed rank, every box x a
+    quicker beginner drawn inside it or not, and every early-speed rank x track (BENCH_PAIRS=yes)."""
     out = {}
     box = pd.to_numeric(t.box, errors="coerce")
     for b in range(1, 9):
@@ -118,6 +119,25 @@ def segments(t: pd.DataFrame, vol_cuts=None, tracks=None) -> dict:
         out["firmed late (last 15%+ under the average)"] = (mv <= 1 / 1.15).values
         out["steady late"] = ((mv > 1 / 1.15) & (mv < 1.15)).values
         out["drifted late (last 15%+ over the average)"] = (mv >= 1.15).values
+    if "map_speed_rank" in t:
+        sr = t.map_speed_rank.astype(float)
+        speed = {"fastest early": (sr == 1).values, "2nd-3rd fastest early": ((sr >= 2) & (sr <= 3)).values,
+                 "4th+ fastest early": (sr >= 4).values}
+        out.update({f"{k} (past splits)": v for k, v in speed.items()})
+        if "style_led_rate" in t:
+            out["led early in half its last runs or more"] = (t.style_led_rate >= 0.5).values
+        if pairs:
+            for b in range(1, 9):
+                for k, v in speed.items():
+                    out[f"box {b}, {k}"] = (box == b).values & v
+                if "map_quicker_inside" in t:
+                    qi = t.map_quicker_inside.astype(float)
+                    out[f"box {b}, a quicker beginner drawn inside it"] = (box == b).values & (qi >= 1).values
+                    out[f"box {b}, no quicker beginner inside it"] = (box == b).values & (qi == 0).values
+            for trk in (tracks if tracks is not None else sorted(t.track.astype(str).unique())):
+                at = (t.track.astype(str) == trk).values
+                for k, v in speed.items():
+                    out[f"track {trk}, {k}"] = at & v
     if PVOL in t and vol_cuts is not None:
         v = t.groupby("race_id")[PVOL].transform("sum")
         out["thin market"] = (v < vol_cuts[0]).values
@@ -187,7 +207,10 @@ def main(d, label):
 
     # 1-2. chosen once, scored once
     tracks = sorted(t.track.astype(str).unique())
-    sc, st = segments(ch, vol_cuts, tracks), segments(te, vol_cuts, tracks)
+    pairs = os.environ.get("BENCH_PAIRS", "").strip().lower() == "yes"
+    sc, st = segments(ch, vol_cuts, tracks, pairs), segments(te, vol_cuts, tracks, pairs)
+    print(f"Segments: {len(st):,}" + (" (with box x early speed, box x a quicker beginner inside, early speed x track)"
+                                      if pairs else "") + "\n")
     h = (te.date < mid).values
     tried, chosen = 0, []
     test_rules = {k: (m, r) for k, m, r in all_rules(te, st)}
@@ -239,7 +262,7 @@ def main(d, label):
         cur = t[(t.date >= max(M.start_time, cut)) & (t.date < (M + 1).start_time)].reset_index(drop=True)
         if cur.empty or w.empty:
             continue
-        sw, sm = segments(w, vol_cuts, tracks), segments(cur, vol_cuts, tracks)
+        sw, sm = segments(w, vol_cuts, tracks, pairs), segments(cur, vol_cuts, tracks, pairs)
         cur_rules = {k: (m, r) for k, m, r in all_rules(cur, sm)}
         hit = {b: np.zeros(len(cur), bool) for b in BETS}
         n_rules = {b: 0 for b in BETS}
