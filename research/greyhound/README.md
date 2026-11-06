@@ -3922,3 +3922,135 @@ character. Nothing in `gh-topaz-nightly.yml` changes.
 
 **The next walk-forwards need fewer refits.** Each new input slows the monthly refits, and this run reached only
 December 2025. Refitting every second month (`WALK_REFIT_EVERY=2`, as Test 27 did) would cover the whole of 2026.
+
+## Test 45: lay the dogs the market dislikes, at BSP (7 Nov 2026, gh topaz run 42287437174, `topaz_round27.py`)
+
+The founder: "when we rate a horse between $7-$15 and it starts $15-$40 with a 1.5x bigger price than us. The market
+knows something we don't, it's right not us. So if we lay those horses we make money at bsp." Test 34 tried that rule
+on the dogs at BSP $15-$40, with BSP at least 1.6x our price: A/E 0.930, -2.5% after commission, a loss in both halves.
+This round looks for where the market's dislike is strongest:
+- **BSP bands:** $8-$15, $15-$40, $40-$100.
+- **How far BSP is above our price:** 1.6x, 2x, 2.5x, 3x.
+- **Groups:**
+  - all runners
+  - no tracked run, and a tracked run before
+  - not tipped by GRV
+  - boxes 7-8
+  - drifted 1.3x or more from its shortest pre-play price, and did not drift. Both are known only near the off.
+- **The lay:** 1 unit at BSP, 8% commission. A loser keeps 0.92 and a winner costs BSP - 1. No first starters.
+
+The model is the one from Tests 39 to 42, on the standard split: it prices the early-stopping months and the scored
+quarter from 6 Jun 2024. A rule is "chosen" if it made 200+ lays and a profit on the early-stopping months. A lay pays
+only when its A/E against BSP is under the break-even A/E, shown in brackets. Returns are per lay, per unit of the
+backer's stake. A $40-$100 lay risks $39 to $99 to win 92c.
+
+| lay at BSP | early-stopping: lays, A/E, return | 1st half: lays, A/E, return | 2nd half: lays, A/E, return | all: lays, winners, A/E (break-even), return, units |
+|---|---|---|---|---|
+| all runners, BSP $8-$15, BSP >= 1.6x ours | 1,155, 1.061, -13.8% | 2,999, 1.128, -20.4% | 3,372, 1.055, -14.8% | 6,371, 622, 1.089 (0.927), -17.5%, -1,112 |
+| all runners, BSP $8-$15, BSP >= 2x ours | 433, 0.944, -2.6% | 1,138, 1.178, -25.6% | 1,403, 0.986, -9.2% | 2,541, 239, 1.072 (0.927), -16.5%, -420 |
+| all runners, BSP $8-$15, BSP >= 2.5x ours | 129, 1.182, -24.5% | 317, 1.109, -18.7% | 467, 0.822, +10.6% | 784, 63, 0.937 (0.927), -1.3%, -10 |
+| all runners, BSP $8-$15, BSP >= 3x ours | 22, 1.645, -77.5% | 87, 0.831, +15.8% | 148, 0.869, +5.7% | 235, 17, 0.855 (0.926), +9.5%, +22 **both halves** |
+| all runners, BSP $15-$40, BSP >= 1.6x ours | 2,926, 0.952, -3.6% | 7,572, 0.949, -2.3% | 8,160, 0.973, -5.9% | 15,732, 635, 0.961 (0.923), -4.2%, -655 |
+| all runners, BSP $15-$40, BSP >= 2x ours | 1,610, 0.904, -1.9% | 4,299, 0.972, -3.3% | 4,919, 0.856, +4.7% | 9,218, 343, 0.910 (0.923), +0.9%, +87 |
+| all runners, BSP $15-$40, BSP >= 2.5x ours | 707, 0.925, -5.2% | 2,039, 1.037, -9.8% | 2,578, 1.025, -11.5% | 4,617, 187, 1.030 (0.923), -10.7%, -496 |
+| all runners, BSP $15-$40, BSP >= 3x ours | 303, 0.603, +32.7% | 908, 1.175, -28.1% | 1,319, 1.139, -25.1% | 2,227, 97, 1.154 (0.923), -26.4%, -587 **chosen** |
+| all runners, BSP $40-$100, BSP >= 1.6x ours | 2,046, 1.046, -11.1% | 5,692, 0.960, -4.8% | 6,715, 0.982, -7.6% | 12,407, 204, 0.972 (0.921), -6.3%, -784 |
+| all runners, BSP $40-$100, BSP >= 2x ours | 1,460, 1.288, -33.1% | 4,147, 0.880, +5.5% | 5,163, 0.965, -5.7% | 9,310, 144, 0.927 (0.921), -0.7%, -64 |
+| all runners, BSP $40-$100, BSP >= 2.5x ours | 903, 1.376, -40.8% | 2,719, 0.853, +8.9% | 3,516, 0.970, -4.9% | 6,235, 94, 0.919 (0.921), +1.2%, +72 |
+| all runners, BSP $40-$100, BSP >= 3x ours | 554, 1.496, -51.0% | 1,734, 0.791, +11.8% | 2,301, 0.803, +13.3% | 4,035, 52, 0.798 (0.921), +12.6%, +510 **both halves** |
+| no tracked run, BSP $8-$15, BSP >= 1.6x ours | 404, 1.004, -13.0% | 813, 1.159, -23.7% | 859, 1.003, -9.6% | 1,672, 161, 1.079 (0.927), -16.5%, -275 |
+| no tracked run, BSP $8-$15, BSP >= 2x ours | 138, 0.827, +10.6% | 258, 1.289, -37.9% | 335, 0.993, -10.1% | 593, 58, 1.122 (0.927), -22.2%, -131 |
+| no tracked run, BSP $8-$15, BSP >= 2.5x ours | 43, 1.644, -65.5% | 55, 1.477, -61.9% | 97, 1.098, -12.8% | 152, 16, 1.237 (0.927), -30.6%, -46 |
+| no tracked run, BSP $15-$40, BSP >= 1.6x ours | 1,137, 1.122, -20.4% | 2,253, 0.995, -7.5% | 2,190, 1.106, -24.7% | 4,443, 195, 1.049 (0.923), -15.9%, -708 |
+| no tracked run, BSP $15-$40, BSP >= 2x ours | 626, 1.203, -34.8% | 1,208, 0.908, +2.1% | 1,256, 0.973, -11.1% | 2,464, 94, 0.941 (0.923), -4.6%, -114 |
+| no tracked run, BSP $15-$40, BSP >= 2.5x ours | 269, 1.022, -11.1% | 553, 1.160, -26.3% | 647, 1.237, -30.4% | 1,200, 56, 1.201 (0.923), -28.5%, -342 |
+| no tracked run, BSP $15-$40, BSP >= 3x ours | 124, 0.630, +28.0% | 225, 1.317, -49.3% | 340, 1.587, -64.1% | 565, 31, 1.480 (0.923), -58.2%, -329 |
+| no tracked run, BSP $40-$100, BSP >= 1.6x ours | 849, 0.983, -10.4% | 1,771, 0.765, +14.1% | 1,809, 1.393, -54.7% | 3,580, 65, 1.080 (0.921), -20.7%, -740 |
+| no tracked run, BSP $40-$100, BSP >= 2x ours | 603, 1.111, -21.9% | 1,241, 0.679, +26.7% | 1,339, 1.497, -68.4% | 2,580, 47, 1.101 (0.921), -22.7%, -585 |
+| no tracked run, BSP $40-$100, BSP >= 2.5x ours | 360, 1.216, -34.2% | 749, 0.660, +31.6% | 905, 1.502, -63.1% | 1,654, 30, 1.121 (0.921), -20.2%, -335 |
+| no tracked run, BSP $40-$100, BSP >= 3x ours | 208, 1.547, -75.5% | 451, 0.425, +54.9% | 564, 1.114, -18.5% | 1,015, 13, 0.810 (0.921), +14.1%, +143 |
+| a tracked run before, BSP $8-$15, BSP >= 1.6x ours | 751, 1.091, -14.3% | 2,186, 1.116, -19.2% | 2,513, 1.072, -16.6% | 4,699, 461, 1.092 (0.927), -17.8%, -837 |
+| a tracked run before, BSP $8-$15, BSP >= 2x ours | 295, 0.999, -8.7% | 880, 1.146, -22.0% | 1,068, 0.983, -8.9% | 1,948, 181, 1.056 (0.927), -14.8%, -289 |
+| a tracked run before, BSP $8-$15, BSP >= 2.5x ours | 86, 0.952, -4.0% | 262, 1.031, -9.6% | 370, 0.751, +16.7% | 632, 47, 0.866 (0.927), +5.8%, +36 |
+| a tracked run before, BSP $8-$15, BSP >= 3x ours | 14, 0.851, +3.0% | 71, 0.683, +32.0% | 117, 0.789, +14.0% | 188, 12, 0.750 (0.926), +20.8%, +39 **both halves** |
+| a tracked run before, BSP $15-$40, BSP >= 1.6x ours | 1,789, 0.844, +7.0% | 5,319, 0.929, -0.1% | 5,970, 0.925, +1.0% | 11,289, 440, 0.927 (0.923), +0.5%, +53 **chosen** |
+| a tracked run before, BSP $15-$40, BSP >= 2x ours | 984, 0.714, +19.1% | 3,091, 0.997, -5.4% | 3,663, 0.816, +10.1% | 6,754, 249, 0.899 (0.923), +3.0%, +202 **chosen** |
+| a tracked run before, BSP $15-$40, BSP >= 2.5x ours | 438, 0.865, -1.6% | 1,486, 0.991, -3.6% | 1,931, 0.955, -5.2% | 3,417, 131, 0.971 (0.923), -4.5%, -154 |
+| a tracked run before, BSP $15-$40, BSP >= 3x ours | 179, 0.585, +36.0% | 683, 1.129, -21.2% | 979, 0.989, -11.6% | 1,662, 66, 1.046 (0.923), -15.5%, -258 |
+| a tracked run before, BSP $40-$100, BSP >= 1.6x ours | 1,197, 1.090, -11.6% | 3,921, 1.048, -13.3% | 4,906, 0.832, +9.7% | 8,827, 139, 0.929 (0.921), -0.5%, -45 |
+| a tracked run before, BSP $40-$100, BSP >= 2x ours | 857, 1.412, -41.0% | 2,906, 0.965, -3.5% | 3,824, 0.782, +16.3% | 6,730, 97, 0.861 (0.921), +7.7%, +521 |
+| a tracked run before, BSP $40-$100, BSP >= 2.5x ours | 543, 1.482, -45.2% | 1,970, 0.925, +0.3% | 2,611, 0.789, +15.3% | 4,581, 64, 0.847 (0.921), +8.9%, +407 **both halves** |
+| a tracked run before, BSP $40-$100, BSP >= 3x ours | 346, 1.466, -36.3% | 1,283, 0.915, -3.3% | 1,737, 0.705, +23.6% | 3,020, 39, 0.794 (0.921), +12.1%, +366 |
+| GRV did not tip it, BSP $8-$15, BSP >= 1.6x ours | 181, 0.663, +25.5% | 517, 1.366, -43.6% | 541, 1.055, -14.9% | 1,058, 109, 1.206 (0.927), -28.9%, -306 |
+| GRV did not tip it, BSP $8-$15, BSP >= 2x ours | 47, 0.256, +63.4% | 147, 1.476, -52.3% | 146, 0.896, -2.3% | 293, 29, 1.185 (0.926), -27.4%, -80 |
+| GRV did not tip it, BSP $15-$40, BSP >= 1.6x ours | 1,371, 0.961, -7.2% | 3,402, 0.991, -4.3% | 3,415, 1.142, -22.1% | 6,817, 285, 1.066 (0.923), -13.2%, -901 |
+| GRV did not tip it, BSP $15-$40, BSP >= 2x ours | 637, 0.950, -12.0% | 1,688, 1.001, -3.7% | 1,717, 1.114, -18.3% | 3,405, 136, 1.058 (0.923), -11.1%, -377 |
+| GRV did not tip it, BSP $15-$40, BSP >= 2.5x ours | 251, 1.089, -23.9% | 664, 1.129, -10.1% | 725, 1.458, -51.7% | 1,389, 65, 1.300 (0.923), -31.8%, -442 |
+| GRV did not tip it, BSP $15-$40, BSP >= 3x ours | 84, 1.065, -16.4% | 256, 1.377, -35.2% | 314, 1.577, -72.0% | 570, 29, 1.487 (0.923), -55.5%, -316 |
+| GRV did not tip it, BSP $40-$100, BSP >= 1.6x ours | 1,582, 1.035, -8.6% | 4,261, 0.972, -7.0% | 4,664, 0.956, -5.7% | 8,925, 142, 0.964 (0.921), -6.3%, -562 |
+| GRV did not tip it, BSP $40-$100, BSP >= 2x ours | 1,077, 1.326, -34.7% | 2,956, 0.832, +9.6% | 3,374, 0.922, -2.7% | 6,330, 90, 0.880 (0.921), +3.0%, +190 |
+| GRV did not tip it, BSP $40-$100, BSP >= 2.5x ours | 616, 1.452, -40.9% | 1,788, 0.779, +17.3% | 2,105, 0.877, +3.6% | 3,893, 51, 0.832 (0.921), +9.8%, +383 **both halves** |
+| GRV did not tip it, BSP $40-$100, BSP >= 3x ours | 348, 1.522, -51.9% | 1,063, 0.850, +7.4% | 1,262, 0.771, +22.0% | 2,325, 29, 0.807 (0.921), +15.3%, +357 **both halves** |
+| boxes 7-8, BSP $8-$15, BSP >= 1.6x ours | 299, 0.943, -6.9% | 687, 1.132, -22.3% | 878, 0.907, +1.3% | 1,565, 140, 1.006 (0.927), -9.0%, -141 |
+| boxes 7-8, BSP $8-$15, BSP >= 2x ours | 102, 0.682, +22.3% | 264, 1.311, -41.4% | 367, 0.900, -2.5% | 631, 59, 1.071 (0.927), -18.8%, -119 |
+| boxes 7-8, BSP $8-$15, BSP >= 2.5x ours | 26, 1.823, -99.7% | 63, 1.781, -91.9% | 120, 0.580, +29.1% | 183, 16, 1.003 (0.927), -12.6%, -23 |
+| boxes 7-8, BSP $15-$40, BSP >= 1.6x ours | 787, 1.062, -19.6% | 1,897, 1.018, -10.6% | 2,183, 1.060, -14.5% | 4,080, 177, 1.041 (0.923), -12.7%, -519 |
+| boxes 7-8, BSP $15-$40, BSP >= 2x ours | 422, 0.803, +1.1% | 1,044, 0.970, -4.9% | 1,303, 0.992, -11.7% | 2,347, 94, 0.982 (0.923), -8.7%, -204 **chosen** |
+| boxes 7-8, BSP $15-$40, BSP >= 2.5x ours | 190, 0.794, -1.3% | 500, 0.977, -4.1% | 677, 1.187, -30.7% | 1,177, 51, 1.099 (0.923), -19.4%, -228 |
+| boxes 7-8, BSP $15-$40, BSP >= 3x ours | 84, 0.642, +21.6% | 228, 1.288, -38.3% | 335, 1.532, -70.4% | 563, 31, 1.435 (0.923), -57.4%, -323 |
+| boxes 7-8, BSP $40-$100, BSP >= 1.6x ours | 485, 0.880, +4.9% | 1,444, 1.023, -5.1% | 1,841, 1.058, -13.1% | 3,285, 58, 1.043 (0.921), -9.6%, -316 **chosen** |
+| boxes 7-8, BSP $40-$100, BSP >= 2x ours | 341, 0.923, -3.8% | 1,034, 0.868, +10.9% | 1,400, 0.892, +5.0% | 2,434, 36, 0.882 (0.921), +7.5%, +183 **both halves** |
+| boxes 7-8, BSP $40-$100, BSP >= 2.5x ours | 210, 1.222, -32.8% | 676, 0.815, +19.8% | 956, 0.817, +5.2% | 1,632, 22, 0.816 (0.921), +11.3%, +184 **both halves** |
+| boxes 7-8, BSP $40-$100, BSP >= 3x ours | 134, 1.900, -103.5% | 437, 0.428, +49.1% | 606, 0.604, +31.2% | 1,043, 9, 0.532 (0.921), +38.7%, +404 **both halves** |
+| drifted 1.3x+ (near the off), BSP $8-$15, BSP >= 1.6x ours | 623, 1.023, -9.6% | 1,562, 1.147, -22.5% | 1,862, 1.127, -21.9% | 3,424, 348, 1.136 (0.927), -22.2%, -760 |
+| drifted 1.3x+ (near the off), BSP $8-$15, BSP >= 2x ours | 267, 1.025, -11.1% | 668, 1.322, -39.9% | 877, 1.010, -11.4% | 1,545, 155, 1.144 (0.927), -23.7%, -366 |
+| drifted 1.3x+ (near the off), BSP $8-$15, BSP >= 2.5x ours | 92, 1.157, -24.1% | 200, 1.182, -23.1% | 336, 0.903, +3.1% | 536, 46, 1.006 (0.927), -6.7%, -36 |
+| drifted 1.3x+ (near the off), BSP $8-$15, BSP >= 3x ours | 16, 2.277, -141.1% | 65, 1.109, -9.9% | 114, 1.044, -8.4% | 179, 16, 1.068 (0.926), -9.0%, -16 |
+| drifted 1.3x+ (near the off), BSP $15-$40, BSP >= 1.6x ours | 1,598, 0.845, +6.5% | 4,522, 0.992, -7.5% | 5,237, 0.916, -1.5% | 9,759, 382, 0.951 (0.923), -4.3%, -417 **chosen** |
+| drifted 1.3x+ (near the off), BSP $15-$40, BSP >= 2x ours | 944, 0.771, +12.6% | 2,751, 0.970, -4.4% | 3,406, 0.772, +13.5% | 6,157, 213, 0.860 (0.923), +5.5%, +338 **chosen** |
+| drifted 1.3x+ (near the off), BSP $15-$40, BSP >= 2.5x ours | 453, 0.826, +8.9% | 1,395, 1.022, -12.3% | 1,901, 0.930, -1.7% | 3,296, 124, 0.969 (0.923), -6.2%, -205 **chosen** |
+| drifted 1.3x+ (near the off), BSP $15-$40, BSP >= 3x ours | 204, 0.762, +19.6% | 660, 1.307, -42.9% | 1,010, 1.017, -13.1% | 1,670, 71, 1.130 (0.923), -24.9%, -416 **chosen** |
+| drifted 1.3x+ (near the off), BSP $40-$100, BSP >= 1.6x ours | 1,343, 1.253, -31.3% | 4,348, 1.011, -11.2% | 5,143, 0.986, -9.1% | 9,491, 159, 0.997 (0.921), -10.1%, -955 |
+| drifted 1.3x+ (near the off), BSP $40-$100, BSP >= 2x ours | 978, 1.440, -48.4% | 3,248, 0.893, +3.2% | 4,051, 0.968, -6.5% | 7,299, 113, 0.934 (0.921), -2.2%, -159 |
+| drifted 1.3x+ (near the off), BSP $40-$100, BSP >= 2.5x ours | 618, 1.627, -61.9% | 2,203, 0.866, +8.1% | 2,839, 1.075, -15.8% | 5,042, 81, 0.984 (0.921), -5.4%, -272 |
+| drifted 1.3x+ (near the off), BSP $40-$100, BSP >= 3x ours | 408, 1.566, -51.9% | 1,428, 0.748, +15.8% | 1,907, 0.907, +2.5% | 3,335, 45, 0.839 (0.921), +8.2%, +273 **both halves** |
+| did not drift 1.3x, BSP $8-$15, BSP >= 1.6x ours | 532, 1.105, -18.8% | 1,436, 1.107, -18.2% | 1,504, 0.970, -6.5% | 2,940, 274, 1.036 (0.927), -12.2%, -359 |
+| did not drift 1.3x, BSP $8-$15, BSP >= 2x ours | 166, 0.816, +11.2% | 469, 0.976, -5.5% | 523, 0.952, -6.1% | 992, 84, 0.963 (0.927), -5.9%, -58 |
+| did not drift 1.3x, BSP $8-$15, BSP >= 2.5x ours | 37, 1.241, -25.7% | 117, 0.988, -11.1% | 130, 0.622, +29.2% | 247, 17, 0.795 (0.927), +10.1%, +25 |
+| did not drift 1.3x, BSP $15-$40, BSP >= 1.6x ours | 1,328, 1.079, -15.8% | 3,043, 0.891, +5.2% | 2,920, 1.072, -13.9% | 5,963, 253, 0.979 (0.923), -4.2%, -248 |
+| did not drift 1.3x, BSP $15-$40, BSP >= 2x ours | 666, 1.092, -22.3% | 1,546, 0.977, -1.6% | 1,511, 1.038, -15.2% | 3,057, 130, 1.007 (0.923), -8.3%, -255 |
+| did not drift 1.3x, BSP $15-$40, BSP >= 2.5x ours | 254, 1.104, -30.4% | 644, 1.066, -4.3% | 676, 1.282, -39.1% | 1,320, 63, 1.176 (0.923), -22.1%, -292 |
+| did not drift 1.3x, BSP $15-$40, BSP >= 3x ours | 99, 0.268, +59.8% | 248, 0.838, +11.1% | 308, 1.543, -64.8% | 556, 26, 1.226 (0.923), -30.9%, -172 |
+| did not drift 1.3x, BSP $40-$100, BSP >= 1.6x ours | 702, 0.663, +27.4% | 1,341, 0.764, +20.3% | 1,572, 0.968, -2.9% | 2,913, 44, 0.873 (0.921), +7.8%, +226 **chosen** |
+| did not drift 1.3x, BSP $40-$100, BSP >= 2x ours | 481, 0.991, -2.2% | 897, 0.838, +13.6% | 1,112, 0.956, -2.6% | 2,009, 31, 0.902 (0.921), +4.6%, +93 |
+| did not drift 1.3x, BSP $40-$100, BSP >= 2.5x ours | 284, 0.856, +4.6% | 515, 0.804, +12.5% | 677, 0.533, +41.2% | 1,192, 13, 0.651 (0.921), +28.8%, +344 **chosen** **both halves** |
+| did not drift 1.3x, BSP $40-$100, BSP >= 3x ours | 145, 1.315, -49.6% | 305, 0.987, -7.3% | 394, 0.309, +65.4% | 699, 7, 0.607 (0.921), +33.7%, +235 |
+
+79 rules had 100+ lays in the scored quarter. 11 were chosen on the early-stopping months, and 1 of those made a profit
+in both scored halves: the did-not-drift lays at $40-$100, 2.5x our price, 1,192 lays, 13 winners. That is no better
+than luck. A $40-$100 lay rule turns on a handful of winners, so a zero-edge rule is in profit in both halves of a
+quarter about one time in five, and two of the 11 would get there by chance.
+
+**The horse rule does not pay on the dogs.**
+- **$15-$40 at 1.6x our price, the founder's rule:** A/E 0.961 against a break-even of 0.923. It loses -4.2% on
+  15,732 lays, in both halves (-2.3% and -5.9%). This is Test 34's answer again: these dogs do win less than BSP says,
+  just not enough to pay 8%.
+- **At 2x:** +0.9% on 9,218 lays. The 1st half lost (-3.3%) and the 2nd half won (+4.7%).
+- **Where the market's dislike should be strongest, the lays get no better:**
+  - **No tracked run or not tipped:** worse. At $15-$40 these dogs mostly win more than BSP says (A/E 0.94 to 1.49).
+  - **Drifted late:** +5.5% at 2x on 6,157 lays, but the 1st half lost.
+- **At $8-$15 it is the other way round.** The dogs BSP rates 1.6x or more longer than we do win more than BSP says,
+  at A/E 1.06-1.14. Laying them loses 12-22%.
+
+**The only lays that won are the very long ones, and they cannot be trusted:**
+- At $40-$100 with BSP 2x to 3x our price, nine rules made a profit in both scored halves, at A/E 0.53 to 0.88. All
+  runners at 3x made +12.6% on 4,035 lays: 52 winners against 65 BSP expected, about 1.6 standard errors.
+- **On the early-stopping months seven of the same nine lost heavily:** -33% to -104%, at A/E 1.22 to 1.90. Over both
+  periods together, the all-runners 3x lay has 65 winners against about 74 expected (A/E about 0.88), one standard
+  error.
+- **The risk is lopsided.** Each lay risks $39 to $99 to win 92c, so "+12.6% per lay" is about +0.2% on the money put
+  at risk. Test 1 found the same: BSP's longshot bias on the dogs is real but small, and "laying a $200 shot risks $199
+  to win 92c".
+
+**Decision:** no lay book at BSP for the dogs. The very long lays ($40-$100, BSP 3x our price) can be logged on paper
+at no cost. They would need a year of fresh months before they meant anything.
