@@ -3756,3 +3756,70 @@ This run gives the two rules no fresh evidence for or against. Over these 29 mon
 BSP, after 8% commission, the model has nothing to add. The two rules can be logged on paper from tonight at no cost
 (about 70 bets a month each), and a year of that is about 800 bets each, enough to see a +10% edge only roughly. The
 model's edge is at TAB before the late money arrives, and Test 41 says that late money is exactly where BSP beats us.
+
+## Test 43: the walk-forward, track character (6 Nov 2026, gh topaz run 42182824738, `topaz_walk.py`, `WALK_TRACK=yes`)
+
+Test 33's open item. On one split, track character and each dog's form at the same kind of track scored 1.5794, inside
+one seed's noise. This is the same question month by month, with the production inputs as Test 37.
+
+The added inputs:
+- the track and distance's leader-win, closer-win, winning-margin and inside-box shares, from earlier days
+- each dog's record against the market at speed tracks and at the rest, with a speed track fixed at the leader winning
+  50% or more
+
+The extra inputs slowed the refits, so the time guard stopped them after April 2026. The run scores 29 months (December
+2023 to April 2026) and bets 23 (June 2024 to April 2026), against Test 37's 31 and 25. The log-loss comparison below
+is over the months both runs have, which hold the same races and the same BSP-matched races month by month.
+
+| months both runs score | months | races | BSP-matched | model, Test 37 | model, track character | gap to BSP, Test 37 | gap to BSP, track character |
+|---|---|---|---|---|---|---|---|
+| all, Dec 2023 to Apr 2026 | 29 | 25,071 | 21,944 | 1.6150 | **1.6131** | +0.0869 | **+0.0853** |
+| 1st half, Dec 2023 to Jan 2025 | 14 | 11,844 | 10,038 | 1.6338 | **1.6326** | +0.0886 | **+0.0878** |
+| 2nd half, Feb 2025 to Apr 2026 | 15 | 13,227 | 11,906 | 1.5982 | **1.5956** | +0.0855 | **+0.0833** |
+| the bet months, Jun 2024 to Apr 2026 | 23 | 20,186 | 17,697 | 1.6126 | **1.6103** | +0.0856 | **+0.0836** |
+
+The gap is smaller in 21 of the 29 months, larger in 7 and equal in one:
+- larger: 2024-02, 2024-03, 2024-04, 2024-05, 2024-08, 2025-06 and 2026-04, each by 0.0002 to 0.0020
+- the biggest gains: 2025-02 (-0.0088), 2024-12 (-0.0076), 2025-11 and 2026-01 (-0.0054 each)
+
+Over its own scored span (20,186 races), the run scored model 1.6103, ensemble 1.5965 and GRV's SP 1.6099. On the 17,697
+BSP-matched races: model 1.5730, BSP 1.4894, gap +0.0836.
+
+The 1.3x rule at GRV's SP (our price $2-$15, Kelly x75 cap 4, no commission). Blend weights refitted each month: ours
+0.50-0.64, the SP 0.54-0.68. The comparison with Test 37 is not like for like: this run's 23 months against Test 37's
+25, which include May and June 2026.
+
+| run | rule | half | bets | winners | A/E | flat ROI | units staked | Kelly ROI | units won | worst drawdown | months in profit |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| track character (23 months) | no guard | 1st | 1,143 | 252 | 1.410 | +47.9% | 2,272 | +52.3% | +1,188 | 59 | 11 of 13 |
+| track character (23 months) | no guard | 2nd | 1,151 | 284 | 1.614 | +64.4% | 2,155 | +75.4% | +1,626 | 48 | 11 of 11 |
+| track character (23 months) | no guard | all | 2,294 | 536 | 1.511 | +56.2% | 4,427 | +63.6% | +2,813 | 59 | 22 of 23 |
+| track character (23 months) | drift guard 1.3x | 1st | 763 | 200 | 1.547 | +65.9% | 1,667 | +69.6% | +1,161 | 53 | 11 of 12 |
+| track character (23 months) | drift guard 1.3x | 2nd | 770 | 241 | 1.866 | +101.0% | 1,599 | +105.5% | +1,686 | 46 | 12 of 12 |
+| track character (23 months) | drift guard 1.3x | all | 1,533 | 441 | 1.707 | +83.6% | 3,266 | +87.2% | +2,847 | 53 | 22 of 23 |
+| Test 37 (25 months) | no guard | all | 2,203 | 530 | 1.547 | +59.8% | 4,281 | +68.6% | +2,936 | 59 | 24 of 25 |
+| Test 37 (25 months) | drift guard 1.3x | all | 1,476 | 429 | 1.721 | +85.4% | 3,148 | +90.7% | +2,856 | 42 | 25 of 25 |
+
+With the drift guard, track character made 67 bets a month (1,533 in 23 months) against Test 37's 59, and 124 units a
+month against 114. Its flat ROI is +83.6% against +85.4% and its Kelly ROI 87.2% against 90.7%. It is the same edge,
+bet a little more often.
+
+The other rules over the 23 months:
+- **sequential at GRV's SP:** +50.0% flat on 1,486 bets, A/E 1.480, 20 of 23 months in profit (1st half +35.3%, 2nd
+  +64.6%)
+- **Test 12's rule at the SP:** +41.1% on 2,948
+- **Test 13's rule at the SP:** +35.2% on 1,524
+- **at BSP with 8% commission:** still nothing. Our weight in the blend is -0.08 to 0.08, the 1.3x rule made 5 bets,
+  and the sequential rule lost 9.5% on 2,129 bets (7 of 23 months in profit)
+
+**The walk-forward confirms Test 33.** Track character is closer to BSP in both halves and in 21 of 29 months. The gain
+(0.0016 to 0.0020) is the same size as the half-weight label's (Test 38: 0.0016). Over its own span the model alone
+all but matches GRV's SP (1.6103 against 1.6099).
+
+**Decision:** in production. `WALK_TRACK=yes` goes into the weekly train and the nightly price run.
+- **Saturday's card is safe.** The price run's `align` drops any input the saved model never saw, so the old model
+  prices exactly as before until Sunday's train fits the new one.
+- **The price path is checked.** A smoke test built the inputs on a day with no results (synthetic data, the price
+  run's `keep_unresulted` path): every track column filled, with no errors.
+- **Not yet tested together.** The half weight (Test 38) and track character are separate changes, each walked forward
+  on its own. A walk-forward with both is running, to read before Sunday's train.

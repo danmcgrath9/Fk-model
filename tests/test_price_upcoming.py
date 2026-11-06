@@ -26,6 +26,8 @@ def test_every_model_input_has_a_family():
     assert fams["pv_DANGER"] == "GRV's preview" and fams["tip_rank"] == "GRV's tips"
     assert fams["box"] == "box and the draw" and fams["box_ratio"] == "box and the draw"
     assert fams["time_rating_band_rel"] == "time and split ratings" and fams["mkt_lsp_mean5"] == "market history"
+    assert PU.family("trk_inside") == "the track's character" and PU.family("dog_type_surprise_rel") == "the track's character"
+    assert PU.family("dog_won_91D") == "record and recent form"
     unplaced = sorted(c for c, f in fams.items() if f == "other")
     assert len(unplaced) <= 6, unplaced
 
