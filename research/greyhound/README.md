@@ -3345,3 +3345,126 @@ three, and the card's rule bets a little more at the same edge. The deeper drawd
 **Decision:** in production. `WALK_SP_WEIGHT=0.5` goes into the weekly train (gh-topaz-nightly.yml). It takes effect at
 Sunday's train; the nightly cards until then use the model saved last Sunday. The price run exports it too, so its
 fallback fit (when no saved model is found) trains the same way.
+
+## Test 39: can we beat BSP? The blend, with Isolynx and the checks (6 Nov 2026, gh topaz run 42200167984, `topaz_round23.py`)
+
+The founder asked: "It would be nice to beat BSP, do we have any edges with that?" In every blend of our price with BSP
+so far, ours has got a weight near zero, so once BSP is known the model adds nothing. Isolynx and the checks (Test 35)
+are the first inputs BSP might not fully hold, so this blends both models with BSP. The blend is fitted on the
+early-stopping months and scored on the last quarter's 22,747 races with a BSP on every runner. BSP alone scores 1.4839
+(1st half 1.4981, 2nd 1.4699).
+
+| model | rounds | weights (ours / BSP) | ours alone | blend with BSP | blend less BSP | 1st half | 2nd half |
+|---|---|---|---|---|---|---|---|
+| P the production model | 4,040 | -0.065 / 1.055 | 1.5809 | 1.4840 | +0.0001 | +0.0002 | -0.0001 |
+| I + Isolynx and the checks | 2,352 | -0.050 / 1.044 | 1.5795 | 1.4840 | +0.0001 | +0.0003 | -0.0001 |
+
+The rule at BSP (8% commission on winnings, our price $2-$15, Kelly x75 cap 4), back when BSP is at least r times the
+blended price:
+
+| model | r | half | bets | winners | A/E | flat ROI | units staked | Kelly ROI | units won |
+|---|---|---|---|---|---|---|---|---|---|
+| P | 1.1x | 1st | 42 | 9 | 1.349 | +16.4% | 47 | +70.1% | +33 |
+| P | 1.1x | 2nd | 77 | 14 | 1.040 | -9.7% | 26 | -7.2% | -2 |
+| P | 1.1x | all | 119 | 23 | 1.143 | -0.5% | 73 | +42.8% | +31 |
+| P | 1.2x | 1st | 8 | 2 | 2.197 | +70.7% | 21 | +145.5% | +30 |
+| P | 1.2x | 2nd | 1 | 0 | 0.000 | -100.0% | 1 | -100.0% | -1 |
+| P | 1.2x | all | 9 | 2 | 1.938 | +51.7% | 21 | +136.2% | +29 |
+| P | 1.3x | 1st | 4 | 1 | 3.041 | +135.0% | 12 | +189.8% | +22 |
+| P | 1.3x | 2nd | 0 | | | | | | |
+| P | 1.3x | all | 4 | 1 | 3.041 | +135.0% | 12 | +189.8% | +22 |
+| I | 1.1x | 1st | 33 | 6 | 1.138 | -17.1% | 48 | +61.3% | +29 |
+| I | 1.1x | 2nd | 35 | 6 | 1.141 | +1.4% | 12 | -8.3% | -1 |
+| I | 1.1x | all | 68 | 12 | 1.139 | -7.6% | 60 | +47.1% | +28 |
+| I | 1.2x | 1st | 9 | 2 | 1.648 | +51.7% | 25 | +109.0% | +27 |
+| I | 1.2x | 2nd | 0 | | | | | | |
+| I | 1.2x | all | 9 | 2 | 1.648 | +51.7% | 25 | +109.0% | +27 |
+| I | 1.3x | 1st | 5 | 1 | 1.583 | +88.0% | 16 | +119.0% | +19 |
+| I | 1.3x | 2nd | 0 | | | | | | |
+| I | 1.3x | all | 5 | 1 | 1.583 | +88.0% | 16 | +119.0% | +19 |
+
+**No.** Once BSP is in the blend, both models get a slightly negative weight, so BSP already holds everything they know,
+the tracking and the checks included. The blend is 0.0001 worse than BSP alone. The rule finds almost nothing to bet:
+119 bets in the quarter at 1.1x, and four at 1.3x, too few to read anything into.
+
+On its own, I is 0.0014 better than P (1.5795 against 1.5809). That is in Test 35's direction but smaller than its
+0.0039, and within one seed's noise (Test 36: 0.0017). On these races the gap to BSP is +0.0970 for P and +0.0956 for I.
+
+**Decision:** nothing to bet at BSP. The win model's job is still the TAB prices before the off, where Tests 27 and 38
+show the edge.
+
+## Test 40: a rule search at BSP, chosen on old months (6 Nov 2026, gh topaz run 42200450285, `topaz_round24.py`)
+
+The founder asked: "Surely we could find rules with our markets to beat BSP." Test 39 blended our price with BSP and
+found nothing. This test asks the narrower question: is there a kind of runner where BSP is reliably wrong, in the
+direction our model points?
+
+A rule is three choices:
+- a segment: all runners, backing up within 4 days, first time at the track, checked in the last tracked run, clean in
+  the last tracked run, boxes 1-2, boxes 7-8, or first starters
+- a BSP band: $1.50-$3, $3-$5, $5-$8, $8-$15 or $15-$30
+- a side and an edge: back at BSP when BSP is at least r times our price, or lay at BSP when BSP is at most our price
+  divided by r, with r = 1.1, 1.3 or 1.6
+
+Stakes are flat, 1 unit, with 8% commission on winnings. The model is I from Test 39 (2,352 rounds, 180 inputs). Its
+prices on the early-stopping months (6 Dec 2023 to 5 Jun 2024, never trained on) choose the rules. A rule is chosen
+when it had at least 200 bets and a profit there. The scored quarter then tests each chosen rule once, in both halves.
+
+137 rules had 200 or more bets on the early-stopping months, and 30 of them made a profit there. Those 30 on the scored
+quarter:
+
+| rule | early-stopping months: bets, ROI | 1st half: bets, ROI | 2nd half: bets, ROI | all: bets, winners, A/E vs BSP, ROI, units |
+|---|---|---|---|---|
+| back backing up within 4 days, BSP $15-$30, BSP >= 1.6x ours | 339, +41.7% | 850, +18.2% | 1,013, +4.5% | 1,863, 102, 1.145, +10.7%, +200 **both halves** |
+| back backing up within 4 days, BSP $15-$30, BSP >= 1.3x ours | 485, +36.2% | 1,282, +13.6% | 1,410, +1.0% | 2,692, 143, 1.102, +7.0%, +188 **both halves** |
+| back backing up within 4 days, BSP $15-$30, BSP >= 1.1x ours | 614, +26.0% | 1,634, +9.0% | 1,745, -4.6% | 3,379, 174, 1.059, +1.9%, +65 |
+| back boxes 1-2, BSP $15-$30, BSP >= 1.6x ours | 534, +20.5% | 1,488, -20.9% | 1,643, -5.6% | 3,131, 142, 0.940, -12.8%, -402 |
+| back checked last tracked run, BSP $5-$8, BSP >= 1.3x ours | 425, +17.9% | 758, -8.2% | 775, +4.6% | 1,533, 254, 1.054, -1.7%, -27 |
+| lay clean last tracked run, BSP $5-$8, BSP <= ours / 1.3 | 344, +16.6% | 1,236, -13.7% | 1,452, -1.3% | 2,688, 435, 1.002, -7.0%, -188 |
+| back boxes 1-2, BSP $15-$30, BSP >= 1.3x ours | 808, +16.4% | 2,158, -18.2% | 2,259, -11.4% | 4,417, 197, 0.916, -14.7%, -651 |
+| lay all runners, BSP $15-$30, BSP <= ours / 1.6 | 300, +15.0% | 834, -3.7% | 743, -16.2% | 1,577, 85, 1.045, -9.6%, -151 |
+| lay clean last tracked run, BSP $5-$8, BSP <= ours / 1.1 | 532, +14.6% | 1,934, -7.4% | 2,215, -5.4% | 4,149, 667, 0.995, -6.3%, -263 |
+| back all runners, BSP $5-$8, BSP >= 1.6x ours | 367, +12.7% | 921, +0.9% | 1,180, -17.5% | 2,101, 318, 0.969, -9.4%, -198 |
+| back boxes 7-8, BSP $15-$30, BSP >= 1.6x ours | 589, +10.7% | 1,376, +4.5% | 1,555, +3.6% | 2,931, 152, 1.092, +4.0%, +117 **both halves** |
+| back boxes 1-2, BSP $15-$30, BSP >= 1.1x ours | 995, +10.2% | 2,645, -18.7% | 2,667, -10.3% | 5,312, 240, 0.924, -14.5%, -769 |
+| back clean last tracked run, BSP $8-$15, BSP >= 1.6x ours | 274, +9.6% | 1,307, -10.8% | 1,589, -4.2% | 2,896, 257, 0.987, -7.2%, -208 |
+| back backing up within 4 days, BSP $8-$15, BSP >= 1.6x ours | 211, +8.5% | 467, +16.9% | 570, -5.3% | 1,037, 104, 1.116, +4.7%, +49 |
+| lay backing up within 4 days, BSP $1.5-$3, BSP <= ours / 1.1 | 347, +8.1% | 867, -4.2% | 925, -1.7% | 1,792, 803, 0.986, -2.9%, -52 |
+| back boxes 7-8, BSP $5-$8, BSP >= 1.3x ours | 240, +7.8% | 543, -18.2% | 705, -16.1% | 1,248, 176, 0.891, -17.1%, -213 |
+| back boxes 1-2, BSP $8-$15, BSP >= 1.6x ours | 386, +7.4% | 995, +5.6% | 1,095, +16.9% | 2,090, 225, 1.182, +11.5%, +241 **both halves** |
+| back clean last tracked run, BSP $5-$8, BSP >= 1.3x ours | 228, +6.8% | 1,063, -4.1% | 1,222, -13.2% | 2,285, 346, 0.963, -9.0%, -205 |
+| back boxes 7-8, BSP $15-$30, BSP >= 1.3x ours | 895, +6.1% | 2,091, +1.8% | 2,225, -2.1% | 4,316, 218, 1.051, -0.2%, -8 |
+| lay backing up within 4 days, BSP $1.5-$3, BSP <= ours / 1.3 | 230, +6.1% | 586, +0.1% | 635, +1.5% | 1,221, 526, 0.951, +0.8%, +10 **both halves** |
+| back checked last tracked run, BSP $5-$8, BSP >= 1.1x ours | 719, +5.9% | 1,337, -5.4% | 1,385, -3.2% | 2,722, 442, 1.023, -4.3%, -118 |
+| back boxes 1-2, BSP $5-$8, BSP >= 1.3x ours | 348, +5.8% | 921, -8.0% | 973, -3.3% | 1,894, 301, 1.008, -5.6%, -105 |
+| lay first time at the track, BSP $5-$8, BSP <= ours / 1.1 | 351, +5.7% | 732, -7.5% | 684, +4.6% | 1,416, 222, 0.969, -1.7%, -24 |
+| back all runners, BSP $5-$8, BSP >= 1.3x ours | 1,012, +4.2% | 2,595, -4.7% | 2,791, -8.2% | 5,386, 847, 0.999, -6.5%, -350 |
+| lay first time at the track, BSP $5-$8, BSP <= ours / 1.3 | 241, +3.1% | 503, -9.9% | 466, -1.2% | 969, 158, 1.007, -5.7%, -56 |
+| lay boxes 1-2, BSP $5-$8, BSP <= ours / 1.3 | 416, +1.8% | 1,036, -24.5% | 1,007, +14.3% | 2,043, 329, 0.993, -5.4%, -110 |
+| lay checked last tracked run, BSP $8-$15, BSP <= ours / 1.1 | 822, +1.5% | 1,942, -0.6% | 1,734, -22.3% | 3,676, 363, 1.039, -10.8%, -398 |
+| back boxes 7-8, BSP $5-$8, BSP >= 1.1x ours | 412, +0.8% | 1,006, -19.4% | 1,218, -18.1% | 2,224, 311, 0.880, -18.7%, -416 |
+| back backing up within 4 days, BSP $5-$8, BSP >= 1.1x ours | 261, +0.2% | 656, +1.7% | 765, -12.6% | 1,421, 227, 1.010, -6.0%, -85 |
+| back boxes 7-8, BSP $15-$30, BSP >= 1.1x ours | 1,120, +0.2% | 2,638, +2.4% | 2,748, -5.3% | 5,386, 272, 1.043, -1.5%, -83 |
+
+**5 of the 30 chosen rules made a profit in both halves of the scored quarter.** That is a little more than luck,
+not enough to call an edge:
+- Two of the five are the same rule at two edges (backing up within 4 days, $15-$30, at 1.6x and 1.3x), so there are
+  four distinct results, and one of them (the favourite lay) made +0.8%.
+- A rule with no edge before commission loses about 7% at BSP once commission is taken. At $15-$30, with about a
+  thousand bets a half, a half's ROI moves by about 14% either way by chance alone. So a zero-edge longshot rule is in
+  profit in both halves about one time in ten, and a $5-$8 rule about one time in 25. Ten of the 30 are $15-$30
+  rules, four are $8-$15 and 16 are $5-$8 or shorter, so luck alone gives about two.
+- The 30 as a whole lost: 23 of them lost over the quarter, some heavily. Back boxes 1-2 at $15-$30 lost 13% to 15%
+  at all three edges, after making 10% to 20% on the early-stopping months.
+
+Two rules are worth watching:
+- **Back boxes 1-2 at BSP $8-$15 when BSP is at least 1.6x our price:** 2,090 bets, 225 winners against 190 BSP
+  expected (A/E 1.182), +11.5% after commission, +241 units. The 1st half made +5.6% and the 2nd +16.9%. The winners
+  excess is about 2.5 standard errors. It is the strongest out-of-sample result in the table, but it was one of 30
+  scored, and its neighbour at $15-$30 lost in both halves.
+- **Back a dog backing up within 4 days at BSP $15-$30 when BSP is at least 1.6x our price:** 1,863 bets, 102 winners
+  against 89 expected (A/E 1.145), +10.7%, +200 units, but the 2nd half made only +4.5% (about 1.4 standard errors).
+
+**Decision:** nothing proven at BSP. Neither rule goes on the card. The next step is a walk-forward of this search
+(rules re-chosen each month on the months before, bet the month after), so the two rules have to survive being chosen
+fresh every month. Until then they are paper only.
