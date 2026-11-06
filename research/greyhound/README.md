@@ -3230,3 +3230,52 @@ The metro lean (five seeds):
   on the saved single model.
 - No metro lean.
 - Healesville goes to the walk-forward check.
+
+## Test 37: the walk-forward, the 1.3x rule on the ensemble (6 Nov 2026, gh topaz run 42164447871, `topaz_walk.py`, `WALK_RULE_ENSEMBLE=yes`)
+
+Test 31's open item: on the standard split, the ensemble (the BSP-chance model and its winners twin) made the 1.3x
+rule bet 80-90% more often at a lower ROI. This is the same question month by month, with the rule's blend refitted on
+the six months before each month, and the production inputs as Test 27.
+
+**The run is short.** Five jobs shared the runners, and the walk-forward's time guard stopped refitting after June
+2026. So it covers 25 months (June 2024 to June 2026), not Test 27's 29, and the four months the SP sharpened most
+(July to October 2026) are not in it. Over those 25 months, on the 19,332 BSP-matched races, the gap to BSP is
++0.0862. That is not comparable with Test 27's +0.0888 over a different span. The model and the ensemble below are
+scored over the same 25 months, so the comparison between them is fair.
+
+The 1.3x rule at GRV's SP (our price $2-$15, Kelly x75 cap 4, no commission):
+
+| ours | rule | half | bets | winners | A/E | flat ROI | units staked | Kelly ROI | units won | worst drawdown | months in profit |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| the model (the card) | no guard | 1st | 1,100 | 244 | 1.404 | +46.8% | 2,229 | +54.6% | +1,216 | 59 | 12 of 13 |
+| the model (the card) | no guard | 2nd | 1,103 | 286 | 1.695 | +72.7% | 2,052 | +83.8% | +1,720 | 38 | 13 of 13 |
+| the model (the card) | no guard | all | 2,203 | 530 | 1.547 | +59.8% | 4,281 | +68.6% | +2,936 | 59 | 24 of 25 |
+| the model (the card) | drift guard 1.3x | 1st | 738 | 194 | 1.528 | +64.2% | 1,649 | +70.4% | +1,161 | 42 | 13 of 13 |
+| the model (the card) | drift guard 1.3x | 2nd | 738 | 235 | 1.921 | +106.6% | 1,499 | +113.1% | +1,695 | 26 | 13 of 13 |
+| the model (the card) | drift guard 1.3x | all | 1,476 | 429 | 1.721 | +85.4% | 3,148 | +90.7% | +2,856 | 42 | 25 of 25 |
+| the ensemble | no guard | 1st | 1,867 | 392 | 1.428 | +49.0% | 3,481 | +54.4% | +1,894 | 65 | 12 of 12 |
+| the ensemble | no guard | 2nd | 1,874 | 419 | 1.525 | +54.9% | 3,406 | +66.2% | +2,254 | 63 | 13 of 14 |
+| the ensemble | no guard | all | 3,741 | 811 | 1.476 | +51.9% | 6,887 | +60.2% | +4,148 | 65 | 25 of 25 |
+| the ensemble | drift guard 1.3x | 1st | 1,215 | 307 | 1.573 | +69.7% | 2,474 | +69.5% | +1,720 | 51 | 12 of 12 |
+| the ensemble | drift guard 1.3x | 2nd | 1,217 | 343 | 1.766 | +86.8% | 2,396 | +95.2% | +2,281 | 42 | 13 of 14 |
+| the ensemble | drift guard 1.3x | all | 2,432 | 650 | 1.669 | +78.2% | 4,871 | +82.2% | +4,001 | 51 | 25 of 25 |
+
+Blend weights refitted each month: the model 0.48-0.64 with the SP 0.55-0.68; the ensemble 0.50-0.67 with the SP
+0.49-0.64. On the whole scored span, the model scored 1.6138, the ensemble 1.5981 and GRV's SP 1.6118.
+
+**The walk-forward confirms Test 31, month by month.** With the drift guard, the ensemble:
+- bets 65% more often (2,432 against 1,476)
+- wins 40% more units (+4,001 against +2,856)
+- wins more in both halves (+1,720 against +1,161, and +2,281 against +1,695)
+- is in profit in all 25 months
+- does it at a lower Kelly ROI (82.2% against 90.7%) and a deeper worst drawdown (51 units against 42)
+
+It is the same trade as before, more money at a slightly thinner edge, now holding in every month and both halves.
+Over the whole span the ensemble also scores better than GRV's SP (1.5981 against 1.6118); the model alone does not
+(1.6138).
+
+**Decision:** the founder's call.
+- The case for switching the card's rule to the ensemble is now as strong as the case for the drift guard was.
+- What it needs: the weekly train fits and saves the winners twin beside the model, the nightly price run prices both,
+  and the card's rule blends the ensemble with GRV's price.
+- The cost: about 65% more bets a night at TAB, so more account attention.
