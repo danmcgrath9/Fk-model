@@ -1015,3 +1015,10 @@ for all of today please").
 - Hamilton Mon, Slow (Form King; 1.2mm to race day): 75 orders on 30 horses, 80.78u if every order fired (s6h); 2 riders
   to come; no market yet.
 - Geelong Sat still not open. TAB $0.65, bot not connected (last connect 5:11am Thu): nothing sent.
+Warrnambool Fri settled (Form King results, 7:25pm):
+- Open book: Big Vee R3 4.94u $2.73 WON (SP $2.30, BSP $2.88) +8.55u; Mamzelle Raine R4 1.08u $13 7th (BSP $15.09) -1.08u.
+  +7.47u (+$374 at $50). No deduction reported (no scratching in R3 or R4).
+- Twitter card: Big Vee $2.50 2.47u won +3.71u; Mamzelle Raine $7.50 0.54u lost: 3.01u out, 6.18u in, +3.17u (+105%).
+- Lay book ($200, d4g): 7 lays, 1 winner, No Rumours R7 (BSP $17.18) -16.18u; Francine, Ballynacally, Dandruff, Carnival
+  Riches (2nd), The Daily Planet, Parkrun lost +0.92u each: -10.66u (-$2,132). Lay trial: 87 lays, 3 winners, +20.60u.
+- Back book: none qualified.
