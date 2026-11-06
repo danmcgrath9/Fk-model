@@ -2716,3 +2716,6 @@ and none of it happens without the founder's OK:
 
 The win market shows nothing like this: its book at BSP sits at 1.003 in the same races, and Test 28's 1.3x rule at
 BSP found 5 bets.
+
+**Parked** (founder, 6 Nov 2026: "park the Betfair place thing"). Nothing is built for it. If it is picked up, the
+first step is still a paper run on live place books.
