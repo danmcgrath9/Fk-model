@@ -24,6 +24,7 @@ Since Test 14 the model also carries the ratings upgrades (Test 16) and this rac
                       LEAD_ROUNDS), so neither the win model's training rows nor its priced rows see their own result
   WALK_DRIFT=yes      Betfair's shortest pre-play price, for the drift guard on the bets (Test 25); needs BETFAIR_DIR
   WALK_RULE_ENSEMBLE=yes  the 1.3x rule at GRV's SP a second time, with the ensemble as ours (Test 31)
+  WALK_SP_WEIGHT=w    the BSP-chance model's races without a BSP on every runner at weight w (Test 32; default 1)
 
 THE BETS are chosen the same way. For each month from the scored quarter on, the rule (signal: the model, the
 ensemble, or Benter's blend of the model with the market; one bet a race or every qualifier; price band; edge) is the
@@ -166,6 +167,16 @@ def build_full(d, keep_unresulted=False):
     return df, num, rel, "\n".join(notes)
 
 
+def label_weight(df) -> np.ndarray:
+    """Row weights for the BSP-chance model's label (Test 32): races without a BSP on every runner, whose label is
+    GRV's SP chance in whole or part, at WALK_SP_WEIGHT (1 = as before, the default)."""
+    w = float(os.environ.get("WALK_SP_WEIGHT", "1") or 1)
+    if w == 1.0 or "p_bsp" not in df:
+        return np.ones(len(df))
+    full = df.p_bsp.notna().groupby(df.race_id.values).transform("all").values
+    return np.where(full, 1.0, w)
+
+
 def lead_inputs(num, rel):
     """The inputs the lead model is fitted on: the win model's, without the lead chance itself."""
     return [c for c in num if c not in ("p_lead", "lead_rank")], [c for c in rel if c != "p_lead"]
@@ -252,7 +263,7 @@ def walk(df, num, rel, first_pred, t0, every=1, fit=None):
                 log.append((str(M), f"skipped: only {race_tr.nunique():,} races before it"))
                 continue
             rec = 0.5 ** ((((start - df.date[tr]).dt.days) / 365.25).values / 3.0)
-            ba = fit(X_all[tr], df.p_mkt.values[tr].astype(float), race_tr, rec, ROUNDS_A)
+            ba = fit(X_all[tr], df.p_mkt.values[tr].astype(float), race_tr, rec * label_weight(df[tr]), ROUNDS_A)
             bb = fit(X_all[tr], df.won.values[tr].astype(float), race_tr, rec, ROUNDS_B)
             fitted = M
             log.append((str(M), f"{df.race_id[pr].nunique():,} races, fit on {race_tr.nunique():,}, "

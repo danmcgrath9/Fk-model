@@ -83,3 +83,11 @@ def test_horse_rule_on_the_ensemble_is_the_same_rule_when_the_ensemble_is_the_mo
     W.horse_rule(df, first, "start_price", "p_sp", 0.0, "model", sig="p_ens")
     b = capsys.readouterr().out
     assert "| no guard | all |" in a and a == b
+
+
+def test_label_weight_halves_races_without_a_bsp_on_every_runner(monkeypatch):
+    df = pd.DataFrame({"race_id": [1, 1, 2, 2], "p_bsp": [0.6, 0.4, 0.7, np.nan]})
+    assert list(W.label_weight(df)) == [1, 1, 1, 1]            # the default changes nothing
+    monkeypatch.setenv("WALK_SP_WEIGHT", "0.5")
+    assert list(W.label_weight(df)) == [1, 1, 0.5, 0.5]
+    assert list(W.label_weight(df.drop(columns="p_bsp"))) == [1, 1, 1, 1]
