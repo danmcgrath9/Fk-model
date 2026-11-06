@@ -25,6 +25,7 @@ Since Test 14 the model also carries the ratings upgrades (Test 16) and this rac
   WALK_DRIFT=yes      Betfair's shortest pre-play price, for the drift guard on the bets (Test 25); needs BETFAIR_DIR
   WALK_RULE_ENSEMBLE=yes  the 1.3x rule at GRV's SP a second time, with the ensemble as ours (Test 31)
   WALK_SP_WEIGHT=w    the BSP-chance model's races without a BSP on every runner at weight w (Test 32; default 1)
+  WALK_TRACK=yes      track character and each dog's form at the same kind of track (Test 33)
 
 THE BETS are chosen the same way. For each month from the scored quarter on, the rule (signal: the model, the
 ensemble, or Benter's blend of the model with the market; one bet a race or every qualifier; price band; edge) is the
@@ -60,6 +61,7 @@ EDGES = [0.02, 0.05, 0.10, 0.20, 0.30, 0.50]
 TIME_GUARD_MIN = 285
 LEAD_ROUNDS = 300                          # what early stopping chose for the lead model in Test 26 (186-409 by fold)
 DRIFT_CAP = 1.3
+TRACK_SPEED_CUT = 0.5                     # Test 33: a speed track when the leader wins half its races (the median was 51%)
 MIN_TRAIN_RACES = 1500                    # stop refitting past this and report what there is (the job dies at 350)
 
 
@@ -136,9 +138,15 @@ def build_full(d, keep_unresulted=False):
         df = R11.reliable_features(df)
         frel, frel_rel = list(R11.RELIABLE), ["split_sd10", "missed_rate10"]
         notes.append("reliable-beginner inputs IN (Test 23)")
+    ftrk, ftrk_rel = [], []
+    if os.environ.get("WALK_TRACK", "").strip().lower() == "yes":
+        import topaz_round20 as R20    # here: it imports this module
+        df = R20.dog_type_form(R20.track_character(df), TRACK_SPEED_CUT)
+        ftrk, ftrk_rel = R20.TRACK_COLS + R20.DOG_COLS, ["dog_type_surprise"]
+        notes.append(f"track character IN (Test 33): a speed track when the leader wins {TRACK_SPEED_CUT:.0%} or more")
     df = df.copy()
-    num = list(dict.fromkeys(num + fpv + fiso + ftip + fgrv + frel))
-    rel = rel + [f for f in fiso if f.endswith("_m3")] + fgrv + frel_rel
+    num = list(dict.fromkeys(num + fpv + fiso + ftip + fgrv + frel + ftrk))
+    rel = rel + [f for f in fiso if f.endswith("_m3")] + fgrv + frel_rel + ftrk_rel
     if os.environ.get("WALK_LEAD", "").strip().lower() == "yes":
         saved = os.environ.get("WALK_LEAD_MODEL", "").strip()
         if saved:

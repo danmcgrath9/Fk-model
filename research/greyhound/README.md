@@ -2821,3 +2821,68 @@ SP to BSP (L3) helps less than simply weighting those races down. The SP favouri
 `WALK_SP_WEIGHT=0.5` now sets the weight in the walk-forward (`topaz_walk.py`) and in the weekly train
 (`topaz_price_upcoming.py`); the default of 1 leaves both as they were. A walk-forward with the weight at 0.5 goes
 next, against Test 27's +0.0888. The weekly train takes it only if the walk-forward agrees.
+
+## Test 33: track character (6 Nov 2026, gh topaz run 42177269716, `topaz_round20.py`)
+
+The founder asked about track dimensions, then settled on measuring each track from its own results ("1 is fine now,
+would just be a small amount of cases, a dog transferring for the first time"). Topaz carries no dimensions. Each
+track and distance is measured from its races on earlier days (at least 30):
+- the leader's win share
+- wins from 4th or worse at the first point
+- the mean winning margin
+- boxes 1-2 against boxes 7-8
+
+A **speed track** is one where the leader wins 51.2% or more (the training rows' median). Each dog then gets its
+average beat-the-market (won less its market chance) at today's kind of track and at the other kind.
+
+The leader's win share by track, latest distance: HVL 43%, BAL 44%, TRA 46%, SAP 46%, CRN 47%, HOR 47%, SAN 47%,
+MEP 47%, BEN 48%, WGL 48%, MEA 48%, GEL 51%, SHP 52%, SLE 56%, WBL 62%.
+
+The production inputs and the standard split. Scored: 22,747 races with BSP (BSP 1.4839). 22,794 runners were at the
+track for the first time (not debut), in 11,271 of those races.
+
+| row | inputs | rounds | log loss | gap to BSP | 1st half | 2nd half | gap, races with a first-timer |
+|---|---|---|---|---|---|---|---|
+| F0 the production model | 161 | 2185 | 1.5823 | +0.0984 | +0.0915 | +0.1046 | +0.0969 |
+| F1 + track character and form by kind of track | 168 | 5955 | 1.5794 | +0.0955 | +0.0888 | +0.1014 | +0.0948 |
+
+| runners (races with BSP) | runners | wins | A/E vs F0 | A/E vs F1 | A/E vs BSP | A/E vs GRV's SP |
+|---|---|---|---|---|---|---|
+| first time at the track | 19,524 | 3,182 | 1.010 | 1.011 | 1.013 | 1.031 |
+| first time, a speed track, form there good | 3,530 | 616 | 0.985 | 0.984 | 0.998 | 1.012 |
+| first time, form at this kind of track poor | 9,574 | 1,423 | 1.000 | 1.002 | 1.003 | 1.015 |
+| raced here before | 136,811 | 19,014 | 1.001 | 1.000 | 0.999 | 0.996 |
+
+The 1.3x rule at GRV's SP (our price $2-$15, Kelly x75 cap 4):
+
+| row | guard | half | bets | winners | A/E | flat ROI | units staked | Kelly ROI | units won |
+|---|---|---|---|---|---|---|---|---|---|
+| F0 | none | 1st | 693 | 188 | 1.649 | +70.2% | 1,418 | +69.1% | +980 |
+| F0 | none | 2nd | 691 | 162 | 1.538 | +63.8% | 1,202 | +72.5% | +871 |
+| F0 | none | all | 1,384 | 350 | 1.596 | +67.0% | 2,620 | +70.6% | +1,851 |
+| F0 | drift under 1.3x | 1st | 484 | 152 | 1.765 | +88.8% | 1,099 | +83.9% | +922 |
+| F0 | drift under 1.3x | 2nd | 401 | 126 | 1.818 | +106.4% | 800 | +105.1% | +842 |
+| F0 | drift under 1.3x | all | 885 | 278 | 1.789 | +96.8% | 1,899 | +92.9% | +1,764 |
+| F1 | none | 1st | 796 | 206 | 1.581 | +62.4% | 1,648 | +68.7% | +1,133 |
+| F1 | none | 2nd | 794 | 195 | 1.614 | +68.6% | 1,406 | +78.4% | +1,103 |
+| F1 | none | all | 1,590 | 401 | 1.597 | +65.5% | 3,054 | +73.2% | +2,236 |
+| F1 | drift under 1.3x | 1st | 561 | 170 | 1.716 | +80.9% | 1,282 | +82.6% | +1,059 |
+| F1 | drift under 1.3x | 2nd | 471 | 152 | 1.908 | +111.6% | 934 | +113.2% | +1,057 |
+| F1 | drift under 1.3x | all | 1,032 | 322 | 1.802 | +94.9% | 2,216 | +95.5% | +2,116 |
+
+**Dogs at a new track are not where the gap is.**
+- Our model already prices them about right: they win 1.0% more than F0 says and 1.3% more than BSP says.
+- GRV's SP is the price that under-rates them, by 3.1%.
+- Dogs with good form at today's kind of track win slightly less than F0 says (0.985).
+
+**Track character helps a little everywhere.**
+- 0.0029 closer to BSP overall, and closer in both halves (0.0027 and 0.0032).
+- With the drift guard, about 350 more units, more in both halves (+1,059 against +922, +1,057 against +842), at the
+  same Kelly ROI.
+- The gain is smaller on the races with a first-timer (0.0021), so it is not the first-timers that carry it.
+
+One caution: F0 stopped early at 2,185 rounds here. The same model at 2,878 rounds scored 1.5816 in rounds 15 and 17,
+and against that F1's gain is 0.0022. That is still about three times the noise (Test 32).
+
+**Decision:** a walk-forward before production. `WALK_TRACK=yes` puts the inputs into `build_full`, with a speed track
+fixed at the leader winning 50%, near the median, so no cut is fitted on the scored months.
