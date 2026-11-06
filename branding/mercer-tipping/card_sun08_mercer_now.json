@@ -1,0 +1,17 @@
+{
+ "day": "Sunday",
+ "date": "8 November",
+ "footer": "Win bets.",
+ "meetings": [
+  {
+   "name": "Ararat",
+   "note": "",
+   "bets": [
+    {"race": 2, "time": "2:00PM", "horse": "Model Gigi", "price": "$4.40", "units": "2.40u"},
+    {"race": 3, "time": "2:35PM", "horse": "Pray For Elegance", "price": "$7", "units": "0.75u"},
+    {"race": 5, "time": "3:45PM", "horse": "Selita's Fury", "price": "$6.50", "units": "0.87u"}
+   ]
+  }
+ ],
+ "brand": true
+}
