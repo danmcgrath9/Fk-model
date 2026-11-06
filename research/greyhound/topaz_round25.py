@@ -69,6 +69,14 @@ def main(d, label):
     df = R12.tale_columns(df)
     cols = num + chk
     print(f"# {label}: round 25, where is the gap to BSP?\n\n{note}\n")
+    if "start_time" in df:
+        # counts only: how the start times are written, and the races by Melbourne hour once read (Test 41)
+        st = df.drop_duplicates("race_id").start_time.astype("string")
+        zoned = st.str.contains(r"(?:Z|[+-]\d\d:?\d\d)$", regex=True).fillna(False).astype(bool)
+        hours = R12.melbourne_hour(st).value_counts().sort_index()
+        print(f"Start times: {int(zoned.sum()):,} races with a zone, {int((~zoned & st.notna()).sum()):,} without "
+              f"(read as Melbourne's clock). Races by Melbourne hour: "
+              + ", ".join(f"{int(h)}h {n:,}" for h, n in hours.items()) + "\n")
     q75 = df.date.quantile(0.75)
     es_start = q75 - min(pd.Timedelta(days=183), (q75 - df.date.min()) / 4)
     pre, te = df[df.date < q75], df[df.date >= q75].copy()

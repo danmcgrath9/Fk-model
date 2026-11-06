@@ -1934,6 +1934,10 @@ Our gap to BSP is not smaller in thin markets: the thinnest fifth is +0.1100 and
 MEA and SAN (+0.06 to +0.07) and in small fields, and largest at HVL (Healesville's straight, +0.139), at WBL, at night
 and in maidens.
 
+*Correction (6 Nov 2026, Test 41): the day and night rows in this test are wrong. The start time was read as UTC, and a
+Melbourne time with no zone came out 10 or 11 hours late, so "night (6pm on)" here is mostly late-morning races. The
+parse is fixed; the day/night split will be rerun.*
+
 **The tales our model misses are fixes for the model, not bets:**
 
 | what the model gets wrong | A/E vs our model | A/E vs BSP |
@@ -3468,3 +3472,287 @@ Two rules are worth watching:
 **Decision:** nothing proven at BSP. Neither rule goes on the card. The next step is a walk-forward of this search
 (rules re-chosen each month on the months before, bet the month after), so the two rules have to survive being chosen
 fresh every month. Until then they are paper only.
+
+## Test 41: where is the gap to BSP? (6 Nov 2026, gh topaz run 42205482534, `topaz_round25.py`)
+
+The founder asked: "Can we find all the ways to use the data to get closer to BSP, see where we differ most." The
+model is Test 39's I: the production inputs plus Isolynx and the checks, 2,352 rounds, 180 inputs, on the standard
+split. It is scored on 22,747 races from 6 Jun 2024 with a BSP on every runner. Our log loss is 1.5795 and BSP's
+1.4839, a **gap of +0.0956** (1st half +0.0881, 2nd +0.1031).
+
+For each race the gap is measured on its winner: the log of BSP's chance for the winner, less the log of ours. The
+mean over races is the gap above. Each slice reports its races, its mean gap, and its share of the whole gap. A slice
+whose share of the gap is bigger than its share of races is where we lose most to BSP.
+
+**How to read the price slices.** Slices cut by the winner's BSP, by our price or by the two together are cut on
+what BSP said, and BSP is the better forecaster. So they show where the gap lands, not what causes it. Test 29 found
+the model is not too flat (sharpening gained 0.0002). The slices cut on the race or the dog are the ones that point at
+something to fix.
+
+### The race
+
+| track | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| HVL | 1,818 | 8.0% | +0.1370 | 11.5% |
+| WBL | 2,170 | 9.5% | +0.1145 | 11.4% |
+| WGL | 2,350 | 10.3% | +0.0961 | 10.4% |
+| BAL | 2,293 | 10.1% | +0.0982 | 10.4% |
+| GEL | 2,354 | 10.3% | +0.0910 | 9.9% |
+| BEN | 2,154 | 9.5% | +0.0967 | 9.6% |
+| SHP | 1,951 | 8.6% | +0.0995 | 8.9% |
+| SLE | 1,751 | 7.7% | +0.0926 | 7.5% |
+| HOR | 1,310 | 5.8% | +0.0924 | 5.6% |
+| MEP | 1,206 | 5.3% | +0.0858 | 4.8% |
+| SAP | 1,091 | 4.8% | +0.0632 | 3.2% |
+| SAN | 1,041 | 4.6% | +0.0645 | 3.1% |
+| MEA | 844 | 3.7% | +0.0549 | 2.1% |
+| TRA | 414 | 1.8% | +0.0964 | 1.8% |
+
+| distance | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| 420-519 m | 9,604 | 42.2% | +0.0906 | 40.0% |
+| 350-419 m | 8,068 | 35.5% | +0.1010 | 37.5% |
+| under 350 m | 2,057 | 9.0% | +0.1331 | 12.6% |
+| 520-619 m | 2,646 | 11.6% | +0.0721 | 8.8% |
+| 620 m+ | 372 | 1.6% | +0.0659 | 1.1% |
+
+| grade | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| 5 | 11,635 | 51.1% | +0.1038 | 55.5% |
+| Maiden | 3,110 | 13.7% | +0.1121 | 16.0% |
+| 7 | 2,934 | 12.9% | +0.0866 | 11.7% |
+| 6 | 2,478 | 10.9% | +0.0874 | 10.0% |
+| 4 | 1,780 | 7.8% | +0.0560 | 4.6% |
+| 3 | 450 | 2.0% | +0.0467 | 1.0% |
+| 1 | 208 | 0.9% | +0.0767 | 0.7% |
+| 2 | 152 | 0.7% | +0.0696 | 0.5% |
+
+| field size | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| 7 | 8,251 | 36.3% | +0.1004 | 38.1% |
+| 8 | 8,075 | 35.5% | +0.1007 | 37.4% |
+| 6 | 4,600 | 20.2% | +0.0834 | 17.6% |
+| 5 | 1,355 | 6.0% | +0.0909 | 5.7% |
+| 9 | 216 | 0.9% | +0.1021 | 1.0% |
+| 4 | 183 | 0.8% | +0.0122 | 0.1% |
+
+**The start-time slice is wrong and is left out.** The run printed 18,924 races before 3pm, 408 from 6 to 9pm, 3,415
+from 9pm on, and none from 3 to 6pm. A Victorian racing day does not look like that. The code read every start time as
+UTC (`topaz_round12.tale_columns`). If Topaz writes Melbourne's clock with no zone, that puts each race 10 or 11 hours
+late, and the printed shape is what you would see. Test 24's day/night split used the same column and is wrong for the
+same reason (see the note there). The parse is fixed: a time without a zone is now read as Melbourne's clock. The next
+run prints how many start times carry a zone and the races by hour, so the fix can be checked before the slice is used.
+
+### The winner
+
+| the winner's BSP | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| $1-$2 | 3,644 | 16.0% | +0.2427 | 40.7% |
+| $2-$3 | 4,610 | 20.3% | +0.2339 | 49.6% |
+| $3-$5 | 6,051 | 26.6% | +0.1673 | 46.6% |
+| $5-$8 | 3,716 | 16.3% | +0.0660 | 11.3% |
+| $8-$15 | 2,860 | 12.6% | -0.1058 | -13.9% |
+| $15+ | 1,866 | 8.2% | -0.3984 | -34.2% |
+
+| the winner's price from us | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| $1-$2 | 2,185 | 9.6% | +0.0337 | 3.4% |
+| $2-$3 | 4,333 | 19.0% | +0.0464 | 9.2% |
+| $3-$5 | 6,286 | 27.6% | +0.0881 | 25.5% |
+| $5-$8 | 4,657 | 20.5% | +0.1153 | 24.7% |
+| $8-$15 | 3,518 | 15.5% | +0.1585 | 25.6% |
+| $15+ | 1,768 | 7.8% | +0.1422 | 11.6% |
+
+| the winner: BSP over our price | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| BSP under half our price | 1,544 | 6.8% | +0.9234 | 65.6% |
+| BSP 0.5-0.8x ours | 6,777 | 29.8% | +0.4102 | 127.9% |
+| within 25% | 10,027 | 44.1% | +0.0223 | 10.3% |
+| BSP 1.25-2x ours | 3,542 | 15.6% | -0.4024 | -65.6% |
+| BSP over 2x ours | 857 | 3.8% | -0.9682 | -38.2% |
+
+| the winner's starts before | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| debut | 551 | 2.4% | +0.1625 | 4.1% |
+| 1-3 starts | 1,850 | 8.1% | +0.1052 | 9.0% |
+| 4-10 | 4,155 | 18.3% | +0.0979 | 18.7% |
+| 11-30 | 7,536 | 33.1% | +0.0933 | 32.3% |
+| 31+ | 8,655 | 38.0% | +0.0901 | 35.9% |
+
+| days since the winner's last start | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| up to 4 days | 3,508 | 15.4% | +0.0980 | 15.8% |
+| 5-8 | 12,088 | 53.1% | +0.0906 | 50.4% |
+| 9-15 | 3,924 | 17.3% | +0.0885 | 16.0% |
+| 16-29 | 1,442 | 6.3% | +0.1044 | 6.9% |
+| 30-60 | 742 | 3.3% | +0.0975 | 3.3% |
+| 61+ | 492 | 2.2% | +0.1529 | 3.5% |
+
+| the winner's box | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| 8 | 3,173 | 13.9% | +0.1215 | 17.7% |
+| 7 | 2,732 | 12.0% | +0.1370 | 17.2% |
+| 1 | 3,992 | 17.5% | +0.0857 | 15.7% |
+| 6 | 2,297 | 10.1% | +0.1149 | 12.1% |
+| 4 | 2,850 | 12.5% | +0.0797 | 10.5% |
+| 2 | 3,394 | 14.9% | +0.0663 | 10.3% |
+| 3 | 2,462 | 10.8% | +0.0817 | 9.3% |
+| 5 | 1,847 | 8.1% | +0.0839 | 7.1% |
+
+| GRV's tip for the winner | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| not tipped | 4,581 | 20.1% | +0.1642 | 34.6% |
+| 4 | 2,582 | 11.4% | +0.1538 | 18.3% |
+| 1 | 7,576 | 33.3% | +0.0483 | 16.8% |
+| 3 | 3,448 | 15.2% | +0.1038 | 16.5% |
+| 2 | 4,560 | 20.0% | +0.0658 | 13.8% |
+
+| tracking | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| a tracked run before | 15,625 | 68.7% | +0.0787 | 56.5% |
+| no tracked run | 7,122 | 31.3% | +0.1326 | 43.5% |
+
+| the winner's last tracked run | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| no tracked run | 7,122 | 31.3% | +0.1326 | 43.5% |
+| checked last time | 7,363 | 32.4% | +0.0996 | 33.7% |
+| clean last time | 8,262 | 36.3% | +0.0600 | 22.8% |
+
+| the winner at this track | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| raced here before | 18,480 | 81.2% | +0.0973 | 82.7% |
+| first time here | 4,267 | 18.8% | +0.0881 | 17.3% |
+
+| how far the winner firmed before the off (longest price traded over BSP) | races | share of races | mean gap | share of the whole gap |
+|---|---|---|---|---|
+| firmed under 1.1x | 6,837 | 30.1% | -0.0065 | -2.1% |
+| 1.1-1.3x | 9,412 | 41.4% | +0.1116 | 48.3% |
+| 1.3-1.6x | 4,534 | 19.9% | +0.1724 | 36.0% |
+| 1.6-2.2x | 1,577 | 6.9% | +0.2038 | 14.8% |
+| firmed 2.2x+ | 368 | 1.6% | +0.1677 | 2.8% |
+
+### Runner by runner: when we differ from BSP, who is right?
+
+| runner: BSP over our price | runners | wins | A/E vs ours | A/E vs BSP |
+|---|---|---|---|---|
+| BSP under half our price | 7,017 | 1,544 | 2.513 | 1.020 |
+| BSP 0.5-0.8x ours | 29,743 | 6,777 | 1.490 | 0.999 |
+| within 25% | 52,910 | 10,027 | 1.008 | 0.994 |
+| BSP 1.25-2x ours | 39,805 | 3,542 | 0.673 | 1.014 |
+| BSP over 2x ours | 30,602 | 857 | 0.362 | 0.991 |
+
+When we differ from BSP, BSP is right every time. Its A/E is 0.991 to 1.020 in every band, while ours runs from 0.36
+to 2.51. This is Tests 39 and 40 again from the other side: there is no kind of runner where our price beats BSP's.
+
+### What the map says, biggest first
+
+Ranked by how far each slice's share of the gap runs above its share of races:
+
+1. **The late money.** The winners that firmed by 10% or more before the off are 69.8% of races and carry all of the
+   gap (101.9%). Where the winner did not firm (30.1% of races), we are level with BSP: -0.0065. The gap is not form
+   we read wrongly. It is information that reaches the market in the last part of the betting, and none of our inputs
+   carries it.
+2. **Winners GRV did not tip:** 34.6% of the gap on 20.1% of races (+0.1642, against +0.0483 when GRV tipped the
+   winner first). The market knows which untipped dogs are live, and we do not.
+3. **No tracked run:** 43.5% of the gap on 31.3% of races (+0.1326 against +0.0787 with one). The gap is about 40% smaller
+   where the winner had a tracked run (partly because tracking is at the bigger tracks).
+4. **Wide boxes 6 to 8:** 47.0% of the gap on 36.0% of races (+0.1149 to +0.1370, against +0.0663 to +0.0857 in boxes
+   1 to 5). The market knows more than we do about which wide dogs can win from there.
+5. **Grade 5 and maidens:** 71.5% of the gap on 64.8% of races. The metro tracks (SAN, SAP, MEA, MEP) are the
+   reverse: 13.2% of the gap on 18.4% of races.
+6. **Healesville and the sprints:** HVL alone is 11.5% of the gap on 8.0% of races (+0.1370), and races under 350 m are
+   12.6% on 9.0% (+0.1331). Healesville is a straight track. WBL is next (+0.1145).
+7. **Checked last time** (+0.0996) against clean (+0.0600) among winners with a tracked run: our check inputs (Test 35)
+   still under-credit a dog that was checked.
+8. **Small slices:** debutants (+0.1625, 4.1% of the gap on 2.4% of races), and a return after 61+ days (+0.1529, 3.5%
+   on 2.2%). First time at the track makes no difference (+0.0881 against +0.0973).
+
+### The plan, in the order the gap is
+
+1. **The late money is the gap, so the only cure is data that sees it before we bet.** Three sources:
+   - a market price at bet time as an input: the TAB open, or an early Betfair price. The history is waiting on
+     BetMatic, Betwatch or our own nightly snapshots.
+   - trial results, which is where kennels show what they know. The email to Jason is drafted.
+   - Isolynx in production (item 3).
+   This is the biggest lever, and the one we cannot pull from the data we hold.
+2. **The tip slice:** test whether the model leans on GRV's tips too hard. Refit without the tip inputs and compare the
+   gap on untipped winners.
+3. **Tracking:** Isolynx into the weekly train and the nightly card (already on the build list), and a count of which
+   tracks and months it misses.
+4. **Wide boxes, Healesville and the sprints:** box bias by track and distance from earlier days. Test 33's
+   `trk_inside` is in the walk-forward still running (WALK_TRACK, run 42182824738). A per-box win rate by track and
+   distance, and a straight-track input, come next.
+5. **Checks:** a time-lost-to-the-check input (the Isolynx dip and positions lost, as a size, not a yes/no).
+
+## Test 42: the rule search at BSP, re-chosen every month (6 Nov 2026, gh topaz run 42206655423, `topaz_round26.py`)
+
+Test 40's next step: re-choose the rule search every month, so the two paper rules only count if the search keeps
+finding them.
+- One model (I, 2,352 rounds, 180 inputs) is fitted on races before 6 Dec 2023 and never refitted.
+- For each month from June 2024 to October 2026 (29 months), the rules are chosen on the six months before it: Test
+  40's segments x BSP bands x back or lay x 1.1, 1.3 or 1.6, with 200+ bets and a profit there.
+- The month is then bet two ways. "Every chosen rule" bets each runner once per side, however many rules pick it.
+  "The best rule alone" bets only the rule with the highest ROI in the window.
+- Flat 1 unit at BSP, 8% commission on winnings (the founder's rate, confirmed 6 Nov).
+
+| month | rules chosen | best rule (bets, ROI on the 6 months) | every rule: bets, ROI | best rule: bets, ROI | cumulative units, every / best |
+|---|---|---|---|---|---|
+| 2024-06 | 30 | back backing up within 4 days, $15-$30, 1.6x (336, +38%) | 1,277, +11.6% | 39, +52.4% | +149 / +20 |
+| 2024-07 | 36 | back backing up within 4 days, $15-$30, 1.6x (337, +55%) | 1,762, -8.6% | 74, -42.4% | -4 / -11 |
+| 2024-08 | 40 | back backing up within 4 days, $8-$15, 1.6x (211, +50%) | 2,171, -4.7% | 32, +16.8% | -106 / -6 |
+| 2024-09 | 46 | back backing up within 4 days, $8-$15, 1.6x (200, +55%) | 2,205, -12.2% | 27, +11.3% | -374 / -2 |
+| 2024-10 | 46 | back backing up within 4 days, $8-$15, 1.6x (200, +65%) | 2,397, -2.9% | 32, -100.0% | -443 / -34 |
+| 2024-11 | 52 | back first time at the track, $15-$30, 1.6x (307, +31%) | 2,243, +13.4% | 59, -54.5% | -143 / -67 |
+| 2024-12 | 45 | back checked last tracked run, $8-$15, 1.6x (403, +34%) | 1,839, +5.1% | 56, -16.2% | -50 / -76 |
+| 2025-01 | 47 | lay checked last tracked run, $15-$30, 1.3x (269, +59%) | 2,233, +3.6% | 56, -10.1% | +31 / -81 |
+| 2025-02 | 51 | back backing up within 4 days, $15-$30, 1.6x (325, +49%) | 1,732, -1.8% | 62, +109.6% | +0 / -13 |
+| 2025-03 | 61 | back backing up within 4 days, $15-$30, 1.6x (322, +49%) | 2,618, -5.7% | 67, -7.0% | -150 / -18 |
+| 2025-04 | 57 | back checked last tracked run, $15-$30, 1.6x (619, +68%) | 2,386, -11.3% | 91, -57.8% | -419 / -71 |
+| 2025-05 | 56 | back checked last tracked run, $15-$30, 1.6x (615, +56%) | 2,496, -4.9% | 115, -70.3% | -541 / -152 |
+| 2025-06 | 50 | back backing up within 4 days, $15-$30, 1.6x (352, +41%) | 1,971, -6.0% | 68, -76.9% | -659 / -204 |
+| 2025-07 | 51 | lay clean last tracked run, $15-$30, 1.3x (250, +33%) | 2,331, -11.8% | 35, +42.1% | -936 / -189 |
+| 2025-08 | 46 | lay clean last tracked run, $15-$30, 1.3x (247, +32%) | 1,864, -11.8% | 24, +12.8% | -1,156 / -186 |
+| 2025-09 | 37 | back checked last tracked run, $8-$15, 1.6x (356, +35%) | 1,614, -10.5% | 50, +40.8% | -1,325 / -166 |
+| 2025-10 | 43 | back checked last tracked run, $8-$15, 1.6x (349, +49%) | 1,953, -7.9% | 59, -18.5% | -1,480 / -177 |
+| 2025-11 | 38 | back checked last tracked run, $8-$15, 1.6x (339, +39%) | 1,434, -10.1% | 35, -100.0% | -1,625 / -212 |
+| 2025-12 | 32 | lay checked last tracked run, $8-$15, 1.6x (239, +24%) | 1,454, -3.8% | 43, +8.9% | -1,680 / -208 |
+| 2026-01 | 32 | back backing up within 4 days, $15-$30, 1.6x (391, +46%) | 1,796, -17.1% | 62, +23.2% | -1,988 / -193 |
+| 2026-02 | 24 | back backing up within 4 days, $15-$30, 1.6x (385, +50%) | 1,027, -27.8% | 67, -62.9% | -2,273 / -236 |
+| 2026-03 | 21 | back backing up within 4 days, $15-$30, 1.6x (392, +38%) | 1,040, -10.9% | 66, -60.8% | -2,386 / -276 |
+| 2026-04 | 20 | back first time at the track, $15-$30, 1.6x (266, +38%) | 890, -3.0% | 37, -62.5% | -2,413 / -299 |
+| 2026-05 | 31 | lay boxes 7-8, $8-$15, 1.6x (201, +39%) | 1,477, -9.4% | 29, +29.0% | -2,551 / -290 |
+| 2026-06 | 36 | back first time at the track, $15-$30, 1.6x (292, +25%) | 1,685, +4.4% | 64, -20.6% | -2,476 / -304 |
+| 2026-07 | 39 | back boxes 1-2, $8-$15, 1.6x (471, +32%) | 2,025, -5.8% | 96, -5.0% | -2,594 / -308 |
+| 2026-08 | 42 | back boxes 1-2, $8-$15, 1.6x (493, +36%) | 1,912, -9.4% | 71, +47.4% | -2,774 / -275 |
+| 2026-09 | 44 | back boxes 1-2, $8-$15, 1.6x (489, +43%) | 2,100, -15.6% | 91, -12.6% | -3,101 / -286 |
+| 2026-10 | 44 | back checked last tracked run, $8-$15, 1.6x (420, +45%) | 2,067, -7.8% | 80, +18.9% | -3,262 / -271 |
+
+| bets | half | bets | back winners | A/E vs BSP (backs) | flat ROI | units | months in profit |
+|---|---|---|---|---|---|---|---|
+| every chosen rule | 1st | 26,905 (16,134 backs) | 1,596 | 1.043 | -2.2% | -601 | 4 of 13 |
+| every chosen rule | 2nd | 27,094 (13,512 backs) | 1,566 | 0.988 | -9.8% | -2,661 | 1 of 17 |
+| every chosen rule | all | 53,999 (29,646 backs) | 3,162 | 1.015 | -6.0% | -3,262 | 5 of 29 |
+| the best rule alone | 1st | 843 (728 backs) | 30 | 0.731 | -22.8% | -192 | 6 of 16 |
+| the best rule alone | 2nd | 844 (772 backs) | 56 | 0.967 | -9.4% | -79 | 6 of 14 |
+| the best rule alone | all | 1,687 (1,500 backs) | 86 | 0.869 | -16.1% | -271 | 12 of 29 |
+
+Test 40's two paper rules were among those chosen in most months: back boxes 1-2 at $8-$15 at 1.6x in 23 of 29, and
+back a dog backing up within 4 days at $15-$30 at 1.6x in 22 of 29.
+
+**The search loses when it is re-run every month.** Betting every rule it chooses lost 6.0% on 53,999 bets. It lost in
+both halves (-2.2% and -9.8%), and 24 of 29 months lost. Betting only the best rule lost 16.1%. The backs it chooses
+win about as often as BSP says (A/E 1.015), and commission takes the rest. In most months the best rule had made
++24% to +68% on the six months before, and it lost in 17 of the 29 months after.
+
+**The two paper rules do not survive as an edge.** The search keeps finding them, but each month it chooses 20 to 61
+rules, and most of the others that look as good lose. So "it made money on the months before" does not pick a winner. When the
+backing-up rule was the single best rule (8 months), it lost in 5 of them. When boxes 1-2 at $8-$15 was (3 months), it
+lost in 2.
+
+This run gives the two rules no fresh evidence for or against. Over these 29 months they made Test 40's +11.5% and
++10.7%, on the same model and the same months, so the only fresh test left is months that have not happened yet.
+
+**Decision:** stop searching for rules at BSP. Rounds 23, 24 and 26 (Tests 39, 40 and 42) all say the same thing: at
+BSP, after 8% commission, the model has nothing to add. The two rules can be logged on paper from tonight at no cost
+(about 70 bets a month each), and a year of that is about 800 bets each, enough to see a +10% edge only roughly. The
+model's edge is at TAB before the late money arrives, and Test 41 says that late money is exactly where BSP beats us.
