@@ -4037,15 +4037,15 @@ quarter about one time in five, and two of the 11 would get there by chance.
   just not enough to pay 8%.
 - **At 2x:** +0.9% on 9,218 lays. The 1st half lost (-3.3%) and the 2nd half won (+4.7%).
 - **Where the market's dislike should be strongest, the lays get no better:**
-  - **No tracked run or not tipped:** worse. These dogs win more than BSP says at $15-$40 (A/E 1.05-1.48).
+  - **No tracked run or not tipped:** worse. At $15-$40 these dogs mostly win more than BSP says (A/E 0.94 to 1.49).
   - **Drifted late:** +5.5% at 2x on 6,157 lays, but the 1st half lost.
 - **At $8-$15 it is the other way round.** The dogs BSP rates 1.6x or more longer than we do win more than BSP says,
   at A/E 1.06-1.14. Laying them loses 12-22%.
 
 **The only lays that won are the very long ones, and they cannot be trusted:**
-- At $40-$100 with BSP 2.5x to 3x our price, nine groups made a profit in both scored halves, at A/E 0.53 to 0.85. All
+- At $40-$100 with BSP 2x to 3x our price, nine rules made a profit in both scored halves, at A/E 0.53 to 0.88. All
   runners at 3x made +12.6% on 4,035 lays: 52 winners against 65 BSP expected, about 1.6 standard errors.
-- **On the early-stopping months the same rules lost heavily:** -40% to -104%, at A/E 1.22 to 1.90. Over both
+- **On the early-stopping months seven of the same nine lost heavily:** -33% to -104%, at A/E 1.22 to 1.90. Over both
   periods together, the all-runners 3x lay has 65 winners against about 74 expected (A/E about 0.88), one standard
   error.
 - **The risk is lopsided.** Each lay risks $39 to $99 to win 92c, so "+12.6% per lay" is about +0.2% on the money put
