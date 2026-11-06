@@ -1022,3 +1022,7 @@ Warrnambool Fri settled (Form King results, 7:25pm):
 - Lay book ($200, d4g): 7 lays, 1 winner, No Rumours R7 (BSP $17.18) -16.18u; Francine, Ballynacally, Dandruff, Carnival
   Riches (2nd), The Daily Planet, Parkrun lost +0.92u each: -10.66u (-$2,132). Lay trial: 87 lays, 3 winners, +20.60u.
 - Back book: none qualified.
+Cranbourne Fri (founder, 9:45pm): Speir R6 1.88u $8 lost -1.88u; Power And The Beat R8 SCRATCHED late, refunded (2.22u void;
+marked SCR in the prices file). Card: Speir 0.94u lost, Power And The Beat 1.11u refunded.
+FRIDAY OPEN BOOK: 3 bets settled, 1 winner (Big Vee), +5.59u (+$280). Card: 3.95u out, 6.18u in, +2.23u (+56%).
+Cranbourne lays wait for Form King's results.

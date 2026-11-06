@@ -85,6 +85,6 @@
 8, Sinister Sauce, 12.00, 12.00, fk_open 11.00
 8, Surperb Frost, 7.50, 7.50, fk_open 4.60
 8, Rogan, SCR, last 14.00, fk_open 11.00
-8, Power And The Beat, 4.60, 4.60, fk_open 10.00
+8, Power And The Beat, SCR, last 4.60, fk_open 10.00  # late scratching (founder, Fri 9:45pm)
 8, Mount Sabyinyo, 4.40, 4.40, fk_open 4.40
 8, Hedjet, 3.10, 3.10, fk_open 2.60
