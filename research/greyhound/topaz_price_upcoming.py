@@ -63,6 +63,8 @@ FAMILIES = [  # (label, test on the input's base name); first match wins, so the
     ("breeding", lambda c: c.startswith(("sire", "dam"))),
     ("market history", lambda c: c.startswith("mkt_")),
     ("class of the race", lambda c: "class" in c or c in ("race_prize_log", "grade", "prize", "career_prize")),
+    ("the track's character", lambda c: c.startswith("trk_") or c in ("dog_type_surprise", "dog_type_runs",
+                                                                     "dog_other_surprise")),
     ("record and recent form", lambda c: c.startswith(("dog_", "finish", "last5", "total_form")) or c == "runs"),
     ("fitness, age and weight", lambda c: c in ("days_since", "age_days", "weight", "weight_change", "dist_change")),
     ("track and trip", lambda c: c in ("track", "distance", "field", "same_track")),
