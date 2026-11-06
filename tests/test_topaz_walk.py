@@ -57,3 +57,29 @@ def test_every_month_refits_by_default(monkeypatch):
     df, log = W.walk(frame(4), ["f1"], [], pd.Period("2024-02", "M"), time.monotonic(),
                      fit=lambda X, y, r, w, k: (n.append(1), Flat(len(X)))[1])
     assert len(n) == 6 and all("fit on" in s for _, s in log)
+
+
+def _rule_frame(seed=0):
+    rng = np.random.default_rng(seed)
+    n_races, field = 2400, 5
+    race = np.repeat(np.arange(n_races), field)
+    date = pd.to_datetime("2025-01-01") + pd.to_timedelta(np.repeat(np.arange(n_races) // 7, field), unit="D")
+    raw = rng.normal(size=len(race))
+    p = pd.Series(np.exp(raw)).groupby(race).transform(lambda s: s / s.sum()).values
+    won = np.zeros(len(race))
+    for r in range(n_races):
+        i = np.flatnonzero(race == r)
+        won[rng.choice(i, p=p[i])] = 1
+    sp = pd.Series(p * np.exp(rng.normal(0, 0.4, len(race)))).groupby(race).transform(lambda s: s / s.sum()).values
+    return pd.DataFrame({"race_id": race, "date": date, "won": won, "p_a": p, "p_sp": sp, "start_price": 1.0 / sp})
+
+
+def test_horse_rule_on_the_ensemble_is_the_same_rule_when_the_ensemble_is_the_model(capsys):
+    df = _rule_frame()
+    df["p_ens"] = df.p_a
+    first = pd.Period("2025-08", freq="M")
+    W.horse_rule(df, first, "start_price", "p_sp", 0.0, "model")
+    a = capsys.readouterr().out
+    W.horse_rule(df, first, "start_price", "p_sp", 0.0, "model", sig="p_ens")
+    b = capsys.readouterr().out
+    assert "| no guard | all |" in a and a == b
