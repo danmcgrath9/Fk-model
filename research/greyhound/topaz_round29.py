@@ -64,13 +64,15 @@ def returns(bet: str, won, price, comm=COMM) -> np.ndarray:
     return np.where(won == 1, price - 1, -1.0)
 
 
-def segments(t: pd.DataFrame, vol_cuts=None) -> dict:
-    """name -> boolean mask, one value of one thing about the runner or the race; a thing the data lacks is skipped."""
+def segments(t: pd.DataFrame, vol_cuts=None, tracks=None) -> dict:
+    """name -> boolean mask, one value of one thing about the runner or the race; a thing the data lacks is skipped.
+    `tracks`: the track codes to give a segment each, the same list in every period (a track that stopped racing, like
+    Cranbourne in 2022, still gets its segment, empty)."""
     out = {}
     box = pd.to_numeric(t.box, errors="coerce")
     for b in range(1, 9):
         out[f"box {b}"] = (box == b).values
-    for trk in sorted(t.track.astype(str).unique()):
+    for trk in (tracks if tracks is not None else sorted(t.track.astype(str).unique())):
         out[f"track {trk}"] = (t.track.astype(str) == trk).values
     dist = t.distance.astype(float)
     for lo, hi, name in ((0, 350, "under 350 m"), (350, 420, "350-419 m"), (420, 520, "420-519 m"),
@@ -184,7 +186,8 @@ def main(d, label):
               + ", ".join(f"{int(k)}h {v:,}" for k, v in hrs.items()) + "\n")
 
     # 1-2. chosen once, scored once
-    sc, st = segments(ch, vol_cuts), segments(te, vol_cuts)
+    tracks = sorted(t.track.astype(str).unique())
+    sc, st = segments(ch, vol_cuts, tracks), segments(te, vol_cuts, tracks)
     h = (te.date < mid).values
     tried, chosen = 0, []
     test_rules = {k: (m, r) for k, m, r in all_rules(te, st)}
@@ -236,7 +239,7 @@ def main(d, label):
         cur = t[(t.date >= max(M.start_time, cut)) & (t.date < (M + 1).start_time)].reset_index(drop=True)
         if cur.empty or w.empty:
             continue
-        sw, sm = segments(w, vol_cuts), segments(cur, vol_cuts)
+        sw, sm = segments(w, vol_cuts, tracks), segments(cur, vol_cuts, tracks)
         cur_rules = {k: (m, r) for k, m, r in all_rules(cur, sm)}
         hit = {b: np.zeros(len(cur), bool) for b in BETS}
         n_rules = {b: 0 for b in BETS}

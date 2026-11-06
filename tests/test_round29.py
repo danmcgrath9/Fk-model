@@ -45,3 +45,10 @@ def test_segments_late_move_and_market_depth():
     assert list(s["steady late"]) == [False, False, True, True]
     # race 1 traded 30 (thin), race 2 traded 1,100 (deep)
     assert list(s["thin market"]) == [True, True, False, False] and list(s["deep market"]) == [False, False, True, True]
+
+
+def test_every_period_gets_the_same_track_segments():
+    t = pd.DataFrame({"race_id": [1], "box": [1], "track": ["SAN"], "distance": [515], "field": [1], "runs": [3],
+                      "days_since": [7]})
+    s = R29.segments(t, tracks=["CRN", "SAN"])
+    assert list(s["track CRN"]) == [False] and list(s["track SAN"]) == [True]
