@@ -3823,3 +3823,102 @@ all but matches GRV's SP (1.6103 against 1.6099).
   run's `keep_unresulted` path): every track column filled, with no errors.
 - **Not yet tested together.** The half weight (Test 38) and track character are separate changes, each walked forward
   on its own. A walk-forward with both is running, to read before Sunday's train.
+
+## Test 44: the walk-forward, the half weight and track character together (7 Nov 2026, gh topaz run 42220952771, `topaz_walk.py`, `WALK_SP_WEIGHT=0.5 WALK_TRACK=yes`)
+
+Tests 38 and 43 each walked one change forward on its own, and each moved the gap to BSP by about 0.0016. Both went
+into production on 6 Nov, for Sunday's train. This run checks the two together, with everything else as Test 37.
+
+It is the slowest run yet. The time guard stopped the refits after December 2025, so it scores 25 months (December 2023
+to December 2025) and bets 19 (June 2024 to December 2025). All four runs below score those 25 months, on the same
+races and the same BSP-matched races month by month. The comparison is over those months only.
+
+| window | months | races | BSP-matched | gap, Test 37 | gap, half weight | gap, track | gap, both | both less Test 37 | both less half weight | both less track |
+|---|---|---|---|---|---|---|---|---|---|---|
+| all | 25 | 21,418 | 18,469 | +0.0855 | +0.0841 | +0.0841 | **+0.0836** | -0.0019 | -0.0005 | -0.0005 |
+| 1st half, Dec 2023 to Dec 2024 | 13 | 10,916 | 9,207 | +0.0882 | +0.0874 | +0.0876 | **+0.0866** | -0.0016 | -0.0008 | -0.0010 |
+| 2nd half, Jan to Dec 2025 | 12 | 10,502 | 9,262 | +0.0829 | +0.0808 | +0.0806 | **+0.0806** | -0.0023 | -0.0002 | -0.0000 |
+| the bet months, Jun 2024 to Dec 2025 | 19 | 16,533 | 14,222 | +0.0835 | +0.0818 | +0.0816 | **+0.0809** | -0.0026 | -0.0010 | -0.0007 |
+
+| window | model, Test 37 | model, half weight | model, track | model, both | ensemble, Test 37 | ensemble, half weight | ensemble, track | ensemble, both |
+|---|---|---|---|---|---|---|---|---|
+| all 25 months | 1.6207 | 1.6183 | 1.6190 | **1.6176** | 1.6037 | **1.6027** | 1.6036 | 1.6032 |
+| 1st half | 1.6354 | 1.6336 | 1.6342 | **1.6323** | 1.6172 | **1.6166** | 1.6174 | 1.6167 |
+| 2nd half | 1.6055 | **1.6023** | 1.6032 | 1.6024 | 1.5897 | **1.5882** | 1.5893 | 1.5892 |
+| the bet months | 1.6195 | 1.6166 | 1.6174 | **1.6157** | 1.6009 | **1.5997** | 1.6007 | 1.6002 |
+
+Month by month, with both changes the gap is smaller than Test 37's in 18 of 25 months, than the half weight's in 16
+(one tie), and than track character's in 12:
+
+| month | Test 37 | half weight | track | both |
+|---|---|---|---|---|
+| 2023-12 | +0.0864 | +0.0873 | +0.0859 | +0.0870 |
+| 2024-01 | +0.1086 | +0.1055 | +0.1061 | +0.1050 |
+| 2024-02 | +0.1044 | +0.1038 | +0.1064 | +0.1068 |
+| 2024-03 | +0.0912 | +0.0907 | +0.0920 | +0.0931 |
+| 2024-04 | +0.0911 | +0.0883 | +0.0913 | +0.0919 |
+| 2024-05 | +0.0731 | +0.0755 | +0.0750 | +0.0740 |
+| 2024-06 | +0.0893 | +0.0874 | +0.0889 | +0.0874 |
+| 2024-07 | +0.0788 | +0.0779 | +0.0774 | +0.0741 |
+| 2024-08 | +0.0855 | +0.0879 | +0.0866 | +0.0798 |
+| 2024-09 | +0.1030 | +0.1023 | +0.1012 | +0.1018 |
+| 2024-10 | +0.1019 | +0.0988 | +0.1016 | +0.0984 |
+| 2024-11 | +0.0630 | +0.0653 | +0.0630 | +0.0636 |
+| 2024-12 | +0.0681 | +0.0632 | +0.0605 | +0.0609 |
+| 2025-01 | +0.0924 | +0.0898 | +0.0899 | +0.0913 |
+| 2025-02 | +0.0873 | +0.0852 | +0.0785 | +0.0813 |
+| 2025-03 | +0.1060 | +0.1072 | +0.1052 | +0.1054 |
+| 2025-04 | +0.0791 | +0.0793 | +0.0789 | +0.0763 |
+| 2025-05 | +0.0619 | +0.0577 | +0.0616 | +0.0580 |
+| 2025-06 | +0.0696 | +0.0690 | +0.0705 | +0.0684 |
+| 2025-07 | +0.0743 | +0.0682 | +0.0700 | +0.0752 |
+| 2025-08 | +0.0865 | +0.0841 | +0.0832 | +0.0851 |
+| 2025-09 | +0.0712 | +0.0717 | +0.0708 | +0.0693 |
+| 2025-10 | +0.0855 | +0.0831 | +0.0843 | +0.0828 |
+| 2025-11 | +0.0978 | +0.0926 | +0.0924 | +0.0934 |
+| 2025-12 | +0.0821 | +0.0805 | +0.0807 | +0.0793 |
+
+Over its own scored span (16,533 races, June 2024 to December 2025), the run scored model 1.6157, ensemble 1.6002 and
+GRV's SP 1.6221. On the 14,222 BSP-matched races: model 1.5749, BSP 1.4940, gap +0.0809.
+
+The 1.3x rule at GRV's SP over its 19 bet months (our price $2-$15, Kelly x75 cap 4, no commission). The other runs bet
+23 or 25 months that run into 2026, so this is not a like-for-like comparison of the rule.
+
+| ours | rule | half | bets | winners | A/E | flat ROI | units staked | Kelly ROI | units won | worst drawdown | months in profit |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| the model (0.50-0.65 / SP 0.54-0.67) | no guard | 1st | 978 | 200 | 1.325 | +36.8% | 1,954 | +47.0% | +919 | 62 | 9 of 9 |
+| the model | no guard | 2nd | 981 | 254 | 1.674 | +71.3% | 1,892 | +77.8% | +1,472 | 68 | 10 of 11 |
+| the model | no guard | all | 1,959 | 454 | 1.500 | +54.1% | 3,846 | +62.2% | +2,391 | 68 | 18 of 19 |
+| the model | drift guard 1.3x | 1st | 665 | 158 | 1.430 | +55.1% | 1,455 | +60.5% | +880 | 34 | 9 of 9 |
+| the model | drift guard 1.3x | 2nd | 670 | 207 | 1.857 | +102.0% | 1,407 | +99.5% | +1,400 | 52 | 10 of 11 |
+| the model | drift guard 1.3x | all | 1,335 | 365 | 1.645 | +78.6% | 2,862 | +79.7% | +2,280 | 52 | 18 of 19 |
+| the ensemble (0.52-0.67 / SP 0.49-0.63) | no guard | 1st | 1,504 | 302 | 1.360 | +41.8% | 2,888 | +45.5% | +1,313 | 63 | 9 of 9 |
+| the ensemble | no guard | 2nd | 1,507 | 357 | 1.610 | +67.5% | 2,744 | +74.5% | +2,043 | 40 | 11 of 11 |
+| the ensemble | no guard | all | 3,011 | 659 | 1.485 | +54.7% | 5,632 | +59.6% | +3,356 | 63 | 19 of 19 |
+| the ensemble | drift guard 1.3x | 1st | 1,008 | 235 | 1.447 | +56.4% | 2,117 | +55.9% | +1,183 | 45 | 9 of 9 |
+| the ensemble | drift guard 1.3x | 2nd | 1,009 | 286 | 1.799 | +98.7% | 1,953 | +99.1% | +1,935 | 41 | 11 of 11 |
+| the ensemble | drift guard 1.3x | all | 2,017 | 521 | 1.621 | +77.5% | 4,070 | +76.6% | +3,118 | 45 | 19 of 19 |
+
+The other rules over the 19 months:
+- **sequential at GRV's SP:** +50.1% flat on 1,397 bets, A/E 1.479, 18 of 19 months in profit (1st half +19.7%, 2nd
+  +80.4%)
+- **sequential at BSP with 8% commission:** +3.5% on 1,321 bets, A/E 1.090, 11 of 19 months (1st half -5.9%, 2nd
+  +12.8%). Tests 38, 42 and 43 all lost at BSP, so this is not an edge.
+- **the 1.3x rule at BSP:** 5 bets, with our weight in the blend at -0.07 to 0.08
+
+**Together is better than either alone, but only just.**
+- With both changes the gap is the smallest in every window: -0.0019 against Test 37 over the 25 months, -0.0026 over
+  the bet months.
+- Against each change alone, the pair gains only 0.0005. Two changes worth about 0.0014 each are worth 0.0019 together,
+  so they overlap.
+- Month by month the pair beats track character alone in only 12 of 25. Most of what it adds over track character
+  comes from four months: 2024-07, 2024-08, 2024-10 and 2025-05, worth 0.0026 to 0.0068 each.
+- Neither change hurts the other. On the gap to BSP, the pair is at least as good as each alone in every window, and it
+  ties track character in the 2nd half. On log loss, the half weight alone edges it in the 2nd half (1.6023 against
+  1.6024) and on the ensemble (1.6027 against 1.6032 over the 25 months), by less than one seed's noise.
+
+**Decision:** both stay in production as they are. Sunday's train fits the model with the half-weight label and track
+character. Nothing in `gh-topaz-nightly.yml` changes.
+
+**The next walk-forwards need fewer refits.** Each new input slows the monthly refits, and this run reached only
+December 2025. Refitting every second month (`WALK_REFIT_EVERY=2`, as Test 27 did) would cover the whole of 2026.
