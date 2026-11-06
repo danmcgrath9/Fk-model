@@ -3009,14 +3009,24 @@ add to 1 and each race has one winner, so it tells nothing. The order sheet's be
 | WBL | 17,250 | 399 | 109 | 1.309 |
 | WGL | 19,912 | 381 | 81 | 1.061 |
 
-**The metro fix may carry over.** The order sheet's bets at Sandown (A/E 0.836 on 102 bets) and The Meadows (1.028 on
-65) win far less than its bets elsewhere (1.2 to 1.6). Those are the two premier tracks, where the market is deepest.
-That is the same pattern as the horse book's metro overrating. The samples are small, so the next step is the 1.3x
-rule track by track over the walk-forward's 29 months, before any track gets the lean to the market.
+**The metro fix may carry over, but less than it first looked.** Corrected after the track codes were read (run
+42189617014): Sandown and The Meadows each race under two codes.
+- Sandown is SAN (Sandown Park, since 2013) and SAP (Sandown, since Aug 2014).
+- The Meadows is MEA (The Meadows) and MEP (Meadows).
+- Cranbourne (CRN) last raced in Jan 2022.
+
+The order sheet's bets by venue:
+- **Sandown:** SAN 0.836 on 102 bets, but SAP 1.409 on 125. Together that is about 1.14 (59 winners against about
+  52 expected).
+- **The Meadows:** MEA 1.028 on 65, MEP 1.175 on 144. Together about 1.13 (55 against about 49).
+- **The country tracks:** mostly 1.2 to 1.6, but Warragul is 1.061 and Healesville 1.171.
+
+So the two metro venues sit at the low end, not in a class of their own, and the samples are small. The next step is
+the 1.3x rule track by track over the walk-forward's 29 months, before any track gets the lean to the market.
 
 **Decision:** the card keeps the 1.3x rule and its x75 Kelly stake.
 - Not taken: the lay book, the back book and the 1.2 edge do not hold on the dogs.
-- Still to test: the metro lean at Sandown and The Meadows.
+- Still to test: the metro lean at Sandown and The Meadows (all four codes).
 - The founder's call: the stake size.
 
 ## Test 35: Isolynx tracking, and the checks (6 Nov 2026, gh topaz run 42181292510, `topaz_round18.py`)
