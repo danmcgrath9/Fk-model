@@ -76,7 +76,6 @@
 7|13|Buzitup|False|False
 7|10|Surprise Coming|False|False
 7|9|Fridge Monster|False|False
-7|6|Laa De Sha|False|False
 7|5|Rue De Royale|False|False
 7|7|Sergeant Major|False|False
 7|11|Miss Mahjong|False|False
@@ -87,7 +86,6 @@
 8|4|Sound Of Jura|False|False
 8|6|Don Rubio|False|False
 8|9|Sinister Sauce|False|False
-8|5|Miss Castelvecchio|False|False
 8|7|My Uncle Did It|False|False
 8|11|Littlebitcheeky|False|False
 8|1|Bold Strike|False|False

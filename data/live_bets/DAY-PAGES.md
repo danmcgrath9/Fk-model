@@ -13,4 +13,5 @@ re-price, settling). A meeting the rules keep on paper is named so, e.g. "Balnar
 |---|---|---|
 | Fri 6 Nov | https://claude.ai/artifact/6BKUvbtyb3tEdB1aaQRjSN | Warrnambool W3P9Kqos5UV9vUow9jcG9J, Cranbourne AvAe455u9EcuVh2auYMYYn |
 | Sat 7 Nov | https://claude.ai/artifact/6CRFcxkimi3VKvKTDnKfjJ | Flemington PmmAonDNth57w9t6WrLu14, Geelong KxfoC1egzmhSzboJsf7nq3, Balnarring (paper) TSQ99aFGvBQefyZjPV6tX2 |
-| Sun 8 Nov | https://claude.ai/artifact/3JXGEaqtWD6BWMHbTypi7p | Ararat TfZ5fyyi5WL5SEdhh2swQ6 (provisional until Friday's riders) |
+| Sun 8 Nov | https://claude.ai/artifact/3JXGEaqtWD6BWMHbTypi7p | Ararat TfZ5fyyi5WL5SEdhh2swQ6 |
+| Mon 9 Nov | https://claude.ai/artifact/Dq3vc1zPPma8nmtKnceYUu | Hamilton 46dj1Wf9Ff5Y31cdup9yRU |

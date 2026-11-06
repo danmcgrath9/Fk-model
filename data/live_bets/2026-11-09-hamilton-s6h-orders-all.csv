@@ -1,0 +1,76 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-09,Hamilton,1,,10,King Koruna,WIN,4.56,10.69,2.84,142,1 of 3,2.84u,3.56,
+2026-11-09,Hamilton,1,,10,King Koruna,WIN,5.70,10.69,0.60,30,2 of 3,3.44u,3.56,
+2026-11-09,Hamilton,1,,10,King Koruna,WIN,7.84,10.69,3.44,172,3 of 3,6.88u,3.56,opens $7.84+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,1,,14,Wanted Enuff,WIN,6.82,15.66,1.78,89,1 of 3,1.78u,5.22,
+2026-11-09,Hamilton,1,,14,Wanted Enuff,WIN,8.53,15.66,0.40,20,2 of 3,2.18u,5.22,
+2026-11-09,Hamilton,1,,14,Wanted Enuff,WIN,11.49,15.66,2.18,109,3 of 3,4.36u,5.22,opens $11.49+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,2,,1,Abydos,WIN,10.39,23.38,1.12,56,1 of 3,1.12u,7.79,
+2026-11-09,Hamilton,2,,1,Abydos,WIN,12.99,23.38,0.26,13,2 of 3,1.38u,7.79,
+2026-11-09,Hamilton,2,,1,Abydos,WIN,17.15,23.38,1.38,69,3 of 3,2.76u,7.79,opens $17.15+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,2,,2,Al's Diemen,WIN,14.04,31.12,0.81,40,1 of 2,0.81u,10.37,
+2026-11-09,Hamilton,2,,2,Al's Diemen,WIN,17.55,31.12,0.19,10,2 of 2,1.00u,10.37,
+2026-11-09,Hamilton,2,,5,Never Pegasus,WIN,9.62,21.72,1.21,60,1 of 3,1.21u,7.24,
+2026-11-09,Hamilton,2,,5,Never Pegasus,WIN,12.02,21.72,0.29,14,2 of 3,1.50u,7.24,
+2026-11-09,Hamilton,2,,5,Never Pegasus,WIN,15.93,21.72,1.50,75,3 of 3,3.00u,7.24,opens $15.93+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,2,,11,Piklemegranmother,WIN,6.81,15.64,1.78,89,1 of 3,1.78u,5.21,
+2026-11-09,Hamilton,2,,11,Piklemegranmother,WIN,8.51,15.64,0.40,20,2 of 3,2.18u,5.21,
+2026-11-09,Hamilton,2,,11,Piklemegranmother,WIN,11.47,15.64,2.18,109,3 of 3,4.36u,5.21,opens $11.47+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,3,,8,All Moonlite,WIN,12.72,28.34,0.90,45,1 of 2,0.90u,9.45,
+2026-11-09,Hamilton,3,,8,All Moonlite,WIN,15.90,28.34,0.21,10,2 of 2,1.11u,9.45,
+2026-11-09,Hamilton,3,,10,Empress Of China,WIN,10.79,24.22,1.07,54,1 of 2,1.07u,8.07,
+2026-11-09,Hamilton,3,,10,Empress Of China,WIN,13.49,24.22,0.26,13,2 of 2,1.33u,8.07,
+2026-11-09,Hamilton,3,,4,Lord Timo,WIN,10.63,23.88,1.09,55,1 of 3,1.09u,7.96,
+2026-11-09,Hamilton,3,,4,Lord Timo,WIN,13.29,23.88,0.26,13,2 of 3,1.35u,7.96,
+2026-11-09,Hamilton,3,,4,Lord Timo,WIN,17.52,23.88,1.35,68,3 of 3,2.70u,7.96,opens $17.52+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,4,,11,Apadana,WIN,10.05,22.64,1.16,58,1 of 3,1.16u,7.55,
+2026-11-09,Hamilton,4,,11,Apadana,WIN,12.56,22.64,0.27,14,2 of 3,1.43u,7.55,
+2026-11-09,Hamilton,4,,11,Apadana,WIN,16.61,22.64,1.43,72,3 of 3,2.86u,7.55,opens $16.61+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,4,,6,Chancellor,WIN,4.58,10.73,2.82,141,1 of 3,2.82u,3.58,
+2026-11-09,Hamilton,4,,6,Chancellor,WIN,5.72,10.73,0.60,30,2 of 3,3.42u,3.58,
+2026-11-09,Hamilton,4,,6,Chancellor,WIN,7.88,10.73,3.42,171,3 of 3,6.84u,3.58,opens $7.88+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,5,,4,Endean Ace,WIN,19.71,42.98,0.57,28,1 of 2,0.57u,14.33,
+2026-11-09,Hamilton,5,,4,Endean Ace,WIN,24.64,42.98,0.14,7,2 of 2,0.71u,14.33,
+2026-11-09,Hamilton,5,,9,Miss Trombari,WIN,13.81,30.64,0.82,41,1 of 2,0.82u,10.21,
+2026-11-09,Hamilton,5,,9,Miss Trombari,WIN,17.26,30.64,0.20,10,2 of 2,1.02u,10.21,
+2026-11-09,Hamilton,5,,3,Newcombe,WIN,18.50,40.47,0.60,30,1 of 2,0.60u,13.49,
+2026-11-09,Hamilton,5,,3,Newcombe,WIN,23.12,40.47,0.15,8,2 of 2,0.75u,13.49,
+2026-11-09,Hamilton,5,,2,Sotomayor,WIN,7.44,17.02,1.61,80,1 of 3,1.61u,5.67,
+2026-11-09,Hamilton,5,,2,Sotomayor,WIN,9.30,17.02,0.37,18,2 of 3,1.98u,5.67,
+2026-11-09,Hamilton,5,,2,Sotomayor,WIN,12.49,17.02,1.98,99,3 of 3,3.96u,5.67,opens $12.49+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,5,,10,Sweater Girl,WIN,13.13,29.20,0.87,44,1 of 2,0.87u,9.73,
+2026-11-09,Hamilton,5,,10,Sweater Girl,WIN,16.41,29.20,0.21,10,2 of 2,1.08u,9.73,
+2026-11-09,Hamilton,5,,7,Tudaya,WIN,10.86,24.37,1.07,54,1 of 2,1.07u,8.12,
+2026-11-09,Hamilton,5,,7,Tudaya,WIN,13.57,24.37,0.25,12,2 of 2,1.32u,8.12,
+2026-11-09,Hamilton,5,,13,Turned Loose,WIN,13.40,29.77,0.85,42,1 of 2,0.85u,9.92,
+2026-11-09,Hamilton,5,,13,Turned Loose,WIN,16.75,29.77,0.20,10,2 of 2,1.05u,9.92,
+2026-11-09,Hamilton,6,,9,All The Way Baby,WIN,14.68,32.47,0.77,38,1 of 2,0.77u,10.82,
+2026-11-09,Hamilton,6,,9,All The Way Baby,WIN,18.35,32.47,0.19,10,2 of 2,0.96u,10.82,
+2026-11-09,Hamilton,6,,7,Attain,WIN,8.87,20.12,1.33,66,1 of 3,1.33u,6.71,
+2026-11-09,Hamilton,6,,7,Attain,WIN,11.09,20.12,0.30,15,2 of 3,1.63u,6.71,
+2026-11-09,Hamilton,6,,7,Attain,WIN,14.76,20.12,1.63,82,3 of 3,3.26u,6.71,opens $14.76+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,6,,4,Becauseyou're Mine,WIN,5.16,12.01,2.46,123,1 of 3,2.46u,4.00,
+2026-11-09,Hamilton,6,,4,Becauseyou're Mine,WIN,6.45,12.01,0.53,26,2 of 3,2.99u,4.00,
+2026-11-09,Hamilton,6,,4,Becauseyou're Mine,WIN,8.82,12.01,2.99,150,3 of 3,5.98u,4.00,opens $8.82+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,6,,3,Nicaloha,WIN,8.30,18.88,1.43,72,1 of 3,1.43u,6.29,
+2026-11-09,Hamilton,6,,3,Nicaloha,WIN,10.38,18.88,0.33,16,2 of 3,1.76u,6.29,
+2026-11-09,Hamilton,6,,3,Nicaloha,WIN,13.85,18.88,1.76,88,3 of 3,3.52u,6.29,opens $13.85+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,6,,8,Ramelle,WIN,9.48,15.01,1.23,62,1 of 2,1.23u,7.14,EARLY: $15 or shorter only
+2026-11-09,Hamilton,6,,8,Ramelle,WIN,11.85,15.01,0.29,14,2 of 2,1.52u,7.14,EARLY: $15 or shorter only
+2026-11-09,Hamilton,7,,3,Imacreedytwo,WIN,14.92,32.98,0.76,38,1 of 2,0.76u,10.99,
+2026-11-09,Hamilton,7,,3,Imacreedytwo,WIN,18.65,32.98,0.18,9,2 of 2,0.94u,10.99,
+2026-11-09,Hamilton,7,,1,Imminent Storm,WIN,6.49,14.95,1.88,94,1 of 3,1.88u,4.98,
+2026-11-09,Hamilton,7,,1,Imminent Storm,WIN,8.11,14.95,0.42,21,2 of 3,2.30u,4.98,
+2026-11-09,Hamilton,7,,1,Imminent Storm,WIN,10.97,14.95,2.30,115,3 of 3,4.60u,4.98,opens $10.97+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,7,,5,Popthebubbly,WIN,6.75,15.51,1.80,90,1 of 3,1.80u,5.17,
+2026-11-09,Hamilton,7,,5,Popthebubbly,WIN,8.44,15.51,0.40,20,2 of 3,2.20u,5.17,
+2026-11-09,Hamilton,7,,5,Popthebubbly,WIN,11.38,15.51,2.20,110,3 of 3,4.40u,5.17,opens $11.38+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,7,,9,Sweet City Dancer,WIN,16.32,35.93,0.69,34,1 of 2,0.69u,11.98,
+2026-11-09,Hamilton,7,,9,Sweet City Dancer,WIN,20.40,35.93,0.17,8,2 of 2,0.86u,11.98,
+2026-11-09,Hamilton,8,,2,Frederick,WIN,17.38,38.13,0.65,32,1 of 2,0.65u,12.71,
+2026-11-09,Hamilton,8,,2,Frederick,WIN,21.72,38.13,0.15,8,2 of 2,0.80u,12.71,
+2026-11-09,Hamilton,8,,6,Hidden Witness,WIN,5.48,12.72,2.29,114,1 of 3,2.29u,4.24,
+2026-11-09,Hamilton,8,,6,Hidden Witness,WIN,6.85,12.72,0.50,25,2 of 3,2.79u,4.24,
+2026-11-09,Hamilton,8,,6,Hidden Witness,WIN,9.33,12.72,2.79,140,3 of 3,5.58u,4.24,opens $9.33+ (2.2x ours): stake doubled
+2026-11-09,Hamilton,8,,8,Steely Hustler,WIN,11.21,25.13,1.03,52,1 of 2,1.03u,8.38,
+2026-11-09,Hamilton,8,,8,Steely Hustler,WIN,14.01,25.13,0.24,12,2 of 2,1.27u,8.38,

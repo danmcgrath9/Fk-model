@@ -1006,3 +1006,12 @@ priced): ours now Big Vee $2.38, Mamzelle Raine $10.27 (was $8.02: the model has
 $7.50), Speir $4.92, Power And The Beat $5.38. All four still running; no scratching among them. Lay candidates:
 Warrnambool 52, Cranbourne 53. The day on one page: research/form_gbm/day_page.py (founder, 5 Nov: "Create one artifact
 for all of today please").
+
+## Fri 6 Nov 12:17pm run: Ararat re-pulled with riders, Hamilton Mon priced
+- Ararat Sun re-pulled (force yes) once Sunday's riders were in: 3 of 90 runners still riderless (was 13 of 92). Re-priced
+  (s6b): 83 orders on 33 horses. But Ararat's market OPENED Fri 10:41am, before the riders were in, so the open was met by
+  Thursday's sheet of record (s6a), which stays the record. Paper fills at the open: R2 Model Gigi 4.79u $4.40 (ours $2.75,
+  with riders $2.70), R3 Pray For Elegance 1.50u $9 ($6.02, $5.82), R5 Selita's Fury 1.73u $7.50 ($5.35, $7.15). 8.02u.
+- Hamilton Mon, Slow (Form King; 1.2mm to race day): 75 orders on 30 horses, 80.78u if every order fired (s6h); 2 riders
+  to come; no market yet.
+- Geelong Sat still not open. TAB $0.65, bot not connected (last connect 5:11am Thu): nothing sent.
