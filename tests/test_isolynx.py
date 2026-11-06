@@ -80,3 +80,21 @@ def test_probe_reports_each_endpoint_by_shape_and_never_a_value(tmp_path, capsys
     assert "isolynx/501/positions: NOT ALLOWED" in out
     assert "isolynx/dog/2/splits: ok, an object; fields: positions, raceId" in out
     assert "29.87" not in out and "0.31" not in out
+
+
+def test_trouble_finds_a_check_between_the_first_and_last_100_metres():
+    from greyhound.isolynx import trouble
+
+    def split(d, v, p):
+        return {"splitDistance": d, "splitSpeed": v, "positionInRunning": p}
+    # 400 m: steady 17 m/s, then at 250 m the speed dips to 15.4 and the dog drops from 2nd to 5th
+    s = [split(50, 14, 3), split(100, 16.5, 2), split(150, 17, 2), split(200, 17, 2), split(250, 15.4, 5),
+         split(300, 17, 5), split(350, 16.8, 4), split(400, 16.5, 4)]
+    t = trouble(s, 400)
+    assert abs(t["dip"] - (15.4 - 17.0)) < 1e-12 and t["pos_lost"] == 3 and t["checked"] == 1
+    # the same run without the check: a gentle fade, no places lost; the jump at 50-100 m and the last 100 m ignored
+    clean = [split(50, 14, 6), split(100, 16.5, 2), split(150, 17, 2), split(200, 17, 2), split(250, 16.9, 2),
+             split(300, 16.8, 2), split(350, 15.0, 5), split(400, 14.0, 6)]
+    t = trouble(clean, 400)
+    assert t["checked"] == 0 and t["pos_lost"] == 0 and abs(t["dip"] - (16.9 - 16.9)) < 1e-12
+    assert trouble([], 400) == {"dip": None, "pos_lost": None, "checked": None}
