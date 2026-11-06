@@ -43,6 +43,18 @@ EXTRA = ["WIN_BSP_VOLUME", "BEST_AVAIL_BACK_AT_SCHEDULED_OFF", "WIN_PREPLAY_WEIG
 BANDS = [(1, 2), (2, 3), (3, 5), (5, 8), (8, 13), (13, 21), (21, 51), (51, 1001)]
 
 
+def melbourne_hour(start) -> pd.Series:
+    """The Melbourne clock hour a race starts. A time with a zone (Z or +hh:mm) is converted; a time without one is
+    already Melbourne's clock. (Until 6 Nov 2026 every time was read as UTC, which put a zoneless Melbourne time 10 or
+    11 hours late: no race between 3pm and 6pm, thousands after 9pm. Tests 24 and 41.)"""
+    s = pd.Series(start).astype("string")
+    zoned = s.str.contains(r"(?:Z|[+-]\d\d:?\d\d)$", regex=True).fillna(False).astype(bool)
+    aware = pd.to_datetime(s.where(zoned), utc=True, errors="coerce", format="ISO8601")
+    aware = aware.dt.tz_convert("Australia/Melbourne").dt.hour
+    naive = pd.to_datetime(s.where(~zoned), errors="coerce", format="ISO8601").dt.hour
+    return aware.where(zoned, naive).astype(float)
+
+
 def tale_columns(df: pd.DataFrame) -> pd.DataFrame:
     """The helper columns the tales need, each known before the race (earlier days only, or the race card)."""
     sp = df.start_price.where(df.start_price > 1)
@@ -55,8 +67,7 @@ def tale_columns(df: pd.DataFrame) -> pd.DataFrame:
     df["track_runs"] = R11._prev_sum_count(df, ["dog", "track"], "_one")[1]
     tr = df.trainer_id if "trainer_id" in df else pd.Series(np.nan, index=df.index)
     df["trainer_runners"] = df.groupby([df.race_id, tr.fillna(-1)]).race_id.transform("size").where(tr.notna())
-    st = pd.to_datetime(df.start_time, utc=True, errors="coerce") if "start_time" in df else pd.Series(pd.NaT, index=df.index)
-    df["hour"] = st.dt.tz_convert("Australia/Melbourne").dt.hour if st.notna().any() else np.nan
+    df["hour"] = melbourne_hour(df.start_time) if "start_time" in df else np.nan
     g = df.grade.astype(str).str.upper() if "grade" in df else pd.Series("", index=df.index)
     df["maiden"] = g.str.contains("MAIDEN|MDN", regex=True).astype(float)
     return df.drop(columns="_one")

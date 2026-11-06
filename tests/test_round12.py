@@ -42,3 +42,13 @@ def test_flat_roi_takes_commission_off_winnings():
     # a $3 winner pays 2 x 0.92 = 1.84 at 8%, a loser costs 1: mean (1.84 - 1) / 2
     assert abs(R12.flat_roi([1, 0], [3.0, 5.0], 0.08) - 0.42) < 1e-12
     assert abs(R12.flat_roi([1, 0], [3.0, 5.0]) - 0.5) < 1e-12
+
+
+def test_melbourne_hour_reads_zoned_and_zoneless_times():
+    import topaz_round12 as R12
+    h = R12.melbourne_hour(["2026-11-06T08:22:00Z", "2026-11-06T19:22:00", "2026-07-06T09:22:00+00:00",
+                            "2026-07-06T19:05:00.000", None])
+    # 08:22 UTC in November is 7:22pm in Melbourne (daylight time, +11); a zoneless time is Melbourne's own clock;
+    # 09:22 UTC in July is 7:22pm (standard time, +10)
+    assert list(h[:4]) == [19.0, 19.0, 19.0, 19.0]
+    assert np.isnan(h[4])
