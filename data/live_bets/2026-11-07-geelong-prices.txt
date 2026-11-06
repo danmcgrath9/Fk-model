@@ -1,4 +1,4 @@
-# Geelong Sat 7 Nov, Dead (Form King, Thu 12:30pm; 9mm forecast to race day, under the 15mm line), final fields; no market yet
+# Geelong Sat 7 Nov, Dead (Form King, Thu 12:30pm; 9mm forecast to race day, under the 15mm line), final fields; no market yet; opening prices added Fri 10:20am
 1, Quarters, 0, 0
 1, Alpine Point, 0, 0
 1, Riveting, 0, 0
@@ -48,7 +48,7 @@
 4, Strike First, 0, 0
 4, Kaddari, 0, 0
 4, Sensational Ruler, 0, 0
-4, Skydream, 0, 0
+4, Skydream, SCR
 4, Koolatah Queen, 0, 0
 4, The Quiet Immortal, 0, 0
 4, Our Pierro, 0, 0

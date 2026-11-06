@@ -1,126 +1,126 @@
-# Flemington Sat 7 Nov, Stakes Day, Soft 6 (our call: 17mm forecast on the day), final fields, priced Wed 4 Nov 1:45pm
-1, Naughty May, 0, 0
-1, Steel Point, 0, 0
-1, She's Supreme, 0, 0
-1, Dark Sister, 0, 0
-1, Goddess Kay, 0, 0
-1, Palmilla, 0, 0
-1, Public Affairs, 0, 0
-1, Jacquets Off, 0, 0
-1, Natural Emotion, 0, 0
-1, Miss Ruthless, 0, 0
-1, The Chancer, 0, 0
-1, Rusty Pearl, 0, 0
-1, Soldi, 0, 0
-2, He'll Rip, 0, 0
-2, Fiorenot, 0, 0
-2, Nation's Call, 0, 0
-2, Hiyaam Proud, 0, 0
-2, Stage 'n' Screen, 0, 0
-2, Mount Bona, 0, 0
-2, Superfabulistic, 0, 0
-2, Test Of Love, 0, 0
-2, Roulette King, 0, 0
-2, Dirty Old Town, 0, 0
-2, Options, 0, 0
-2, Grand Omaha, 0, 0
-2, Silvasista, 0, 0
-3, Vauban, 0, 0
-3, Torranzino, 0, 0
-3, Berkeley Square, 0, 0
-3, House Of Lords, 0, 0
-3, Manzor Blue, 0, 0
-3, Valiant King, 0, 0
-3, Bella Montagna, 0, 0
-3, Litzdeel, 0, 0
-3, King Pedro, 0, 0
-3, Newlook, 0, 0
-3, Pinhole, 0, 0
-3, Defiantly, 0, 0
-4, Grand Impact, 0, 0
-4, Elouyou, 0, 0
-4, Tuff Tu Mus, 0, 0
-4, Piastri, 0, 0
-4, Arkansaw Kid, 0, 0
-4, Watchme Win, 0, 0
-4, Sir Sway, 0, 0
-4, Grand Larceny, 0, 0
-4, De Bergerac, 0, 0
-4, Photograph, 0, 0
-4, Immortal Star, 0, 0
-4, Cripps, 0, 0
-4, La Fracas, 0, 0
-4, Hankee Alpha, SCR
-4, Jimmy Recard, 0, 0
-4, Inkaruna, 0, 0
-4, Pallaton, 0, 0
-5, Vivy Air, 0, 0
-5, Sun Gift, 0, 0
-5, Perfect Ten, 0, 0
-5, Private Legacy, 0, 0
-5, Jenni's Meadow, 0, 0
-5, Machine Gun Gracie, 0, 0
-5, Sunset Park, 0, 0
-5, You Wahng, 0, 0
-5, Sun Worshipper, 0, 0
-5, Superfabulistic, SCR
-5, Too Darn Discreet, 0, 0
-5, Classic Gem, SCR
-5, Zuleika, 0, 0
-5, Samarelle, 0, 0
-5, Panova, 0, 0
-5, Soverato, 0, 0
-5, Ocean Bay, 0, 0
-5, Pillow Fight, 0, 0
-6, Mazu, 0, 0
-6, Headwall, 0, 0
-6, Rey Magnerio, 0, 0
-6, Giga Kick, 0, 0
-6, Skybird, 0, 0
-6, Caballus, 0, 0
-6, Charm Stone, 0, 0
-6, Joliestar, 0, 0
-6, Geegees Mistruth, 0, 0
-6, Point Barrow, 0, 0
-6, Tempted, 0, 0
-6, Plaintiff, 0, 0
-7, Pounding, 0, 0
-7, Buckaroo, 0, 0
-7, Lindermann, 0, 0
-7, Another Wil, 0, 0
-7, El Soleado, 0, 0
-7, Tom Kitten, 0, 0
-7, Sepals, 0, 0
-7, Autumn Glow, 0, 0
-7, Within The Law, 0, 0
-8, Attrition, 0, 0
-8, Light Infantry Man, 0, 0
-8, Von Hauke, 0, 0
-8, Land Legend, 0, 0
-8, Cosmic Crusader, 0, 0
-8, Treasurethe Moment, 0, 0
-8, Aeliana, 0, 0
-8, Sir Delius, 0, 0
-8, Birdman, 0, 0
-8, Sabaj, 0, 0
-8, Omni Man, 0, 0
-9, Fission, SCR
-9, Annie's Rose, 0, 0
-9, Verdoux, 0, 0
-9, King Tut, 0, 0
-9, Hustle In Heels, 0, 0
-9, Sergeant Major, 0, 0
+# Flemington Sat 7 Nov, Stakes Day, Soft 6 (our call: 17mm forecast on the day), final fields, priced Wed 4 Nov 1:45pm; opening prices added Fri 10:20am
+1, Naughty May, 81.00, 81.00, fk_open 61.00
+1, Steel Point, 51.00, 51.00, fk_open 31.00
+1, She's Supreme, 9.00, 9.00, fk_open 8.50
+1, Dark Sister, 31.00, 31.00, fk_open 81.00
+1, Goddess Kay, 5.00, 5.00, fk_open 5.50
+1, Palmilla, 31.00, 31.00, fk_open 17.00
+1, Public Affairs, 15.00, 15.00, fk_open 21.00
+1, Jacquets Off, 10.00, 10.00, fk_open 7.00
+1, Natural Emotion, 11.00, 11.00, fk_open 10.00
+1, Miss Ruthless, 20.00, 20.00, fk_open 11.00
+1, The Chancer, 9.50, 9.50, fk_open 9.00
+1, Rusty Pearl, 11.00, 11.00, fk_open 8.00
+1, Soldi, 3.10, 3.10, fk_open 3.90
+2, He'll Rip, 8.00, 8.00, fk_open 13.00
+2, Fiorenot, 3.20, 3.20, fk_open 3.40
+2, Nation's Call, 26.00, 26.00, fk_open 15.00
+2, Hiyaam Proud, 14.00, 14.00, fk_open 17.00
+2, Stage 'n' Screen, 29.00, 29.00, fk_open 15.00
+2, Mount Bona, 13.00, 13.00, fk_open 11.00
+2, Superfabulistic, 4.60, 4.60, fk_open 6.00
+2, Test Of Love, 12.00, 12.00, fk_open 13.00
+2, Roulette King, 10.00, 10.00, fk_open 11.00
+2, Dirty Old Town, 19.00, 19.00, fk_open 11.00
+2, Options, 51.00, 51.00, fk_open 21.00
+2, Grand Omaha, 19.00, 19.00, fk_open 10.00
+2, Silvasista, 41.00, 41.00, fk_open 18.00
+3, Vauban, 27.00, 27.00, fk_open 31.00
+3, Torranzino, 51.00, 51.00, fk_open 26.00
+3, Berkeley Square, 11.00, 11.00, fk_open 8.50
+3, House Of Lords, SCR
+3, Manzor Blue, 31.00, 31.00, fk_open 18.00
+3, Valiant King, 17.00, 17.00, fk_open 15.00
+3, Bella Montagna, 31.00, 31.00, fk_open 15.00
+3, Litzdeel, 6.50, 6.50, fk_open 8.50
+3, King Pedro, 4.60, 4.60, fk_open 4.60
+3, Newlook, 51.00, 51.00, fk_open 31.00
+3, Pinhole, 3.20, 3.20, fk_open 2.90
+3, Defiantly, 5.00, 5.00, fk_open 6.50
+4, Grand Impact, 12.00, 12.00, fk_open 16.00
+4, Elouyou, 31.00, 31.00, fk_open 24.50
+4, Tuff Tu Mus, 126.00, 126.00, fk_open 91.00
+4, Piastri, 31.00, 31.00, fk_open 24.50
+4, Arkansaw Kid, 13.00, 13.00, fk_open 9.83
+4, Watchme Win, 13.00, 13.00, fk_open 23.00
+4, Sir Sway, 101.00, 101.00, fk_open 56.00
+4, Grand Larceny, 15.00, 15.00, fk_open 12.50
+4, De Bergerac, 17.00, 17.00, fk_open 19.33
+4, Photograph, 8.00, 8.00, fk_open 6.50
+4, Immortal Star, 10.00, 10.00, fk_open 8.83
+4, Cripps, 14.00, 14.00, fk_open 6.50
+4, La Fracas, 34.00, 34.00, fk_open 46.00
+4, Hankee Alpha, SCR, fk_open 4.20
+4, Jimmy Recard, 16.00, 16.00, fk_open 20.00
+4, Inkaruna, 5.00, 5.00, fk_open 4.80
+4, Pallaton, 13.00, 13.00, fk_open 12.50
+5, Vivy Air, 4.00, 4.00, fk_open 4.80
+5, Sun Gift, 34.00, 34.00, fk_open 23.00
+5, Perfect Ten, 19.00, 19.00, fk_open 10.00
+5, Private Legacy, 29.00, 29.00, fk_open 23.00
+5, Jenni's Meadow, 20.00, 20.00, fk_open 15.00
+5, Machine Gun Gracie, 19.00, 19.00, fk_open 17.00
+5, Sunset Park, 35.00, 35.00, fk_open 19.00
+5, You Wahng, 31.00, 31.00, fk_open 26.00
+5, Sun Worshipper, 51.00, 51.00, fk_open 31.00
+5, Superfabulistic, SCR, fk_open 26.00
+5, Too Darn Discreet, 4.40, 4.40, fk_open 5.00
+5, Classic Gem, SCR, fk_open 21.00
+5, Zuleika, 18.00, 18.00, fk_open 19.00
+5, Samarelle, SCR
+5, Panova, 11.00, 11.00, fk_open 15.00
+5, Soverato, 6.75, 6.75, fk_open 7.00
+5, Ocean Bay, 23.00, 23.00, fk_open 15.00
+5, Pillow Fight, 20.00, 20.00, fk_open 19.00
+6, Mazu, 41.00, 41.00, fk_open 21.00
+6, Headwall, 8.50, 8.50, fk_open 8.00
+6, Rey Magnerio, 51.00, 51.00, fk_open 26.00
+6, Giga Kick, 41.00, 41.00, fk_open 21.00
+6, Skybird, 26.00, 26.00, fk_open 26.00
+6, Caballus, 11.00, 11.00, fk_open 15.00
+6, Charm Stone, 29.00, 29.00, fk_open 26.00
+6, Joliestar, 5.00, 5.00, fk_open 6.00
+6, Geegees Mistruth, 34.00, 34.00, fk_open 21.00
+6, Point Barrow, 26.00, 26.00, fk_open 15.00
+6, Tempted, 1.90, 1.90, fk_open 1.90
+6, Plaintiff, 201.00, 201.00, fk_open 81.00
+7, Pounding, 91.00, 91.00, fk_open 81.00
+7, Buckaroo, 14.00, 14.00, fk_open 14.00
+7, Lindermann, 15.00, 15.00, fk_open 10.00
+7, Another Wil, 26.00, 26.00, fk_open 26.00
+7, El Soleado, 201.00, 201.00, fk_open 151.00
+7, Tom Kitten, 14.00, 14.00, fk_open 10.00
+7, Sepals, 21.00, 21.00, fk_open 14.00
+7, Autumn Glow, 1.22, 1.22, fk_open 1.28
+7, Within The Law, 51.00, 51.00, fk_open 41.00
+8, Attrition, 126.00, 126.00, fk_open 41.00
+8, Light Infantry Man, 31.00, 31.00, fk_open 26.00
+8, Von Hauke, 151.00, 151.00, fk_open 81.00
+8, Land Legend, 71.00, 71.00, fk_open 41.00
+8, Cosmic Crusader, 3.30, 3.30, fk_open 3.70
+8, Treasurethe Moment, 26.00, 26.00, fk_open 15.00
+8, Aeliana, 2.70, 2.70, fk_open 3.10
+8, Sir Delius, 8.00, 8.00, fk_open 6.00
+8, Birdman, 6.50, 6.50, fk_open 5.00
+8, Sabaj, 41.00, 41.00, fk_open 26.00
+8, Omni Man, 13.00, 13.00, fk_open 18.00
+9, Fission, SCR, fk_open 34.00
+9, Annie's Rose, SCR
+9, Verdoux, 12.00, 12.00, fk_open 11.00
+9, King Tut, 18.00, 18.00, fk_open 13.00
+9, Hustle In Heels, SCR
+9, Sergeant Major, 34.00, 34.00, fk_open 26.00
 9, My Zephyr, SCR
-9, Electric Elvis, 0, 0
-9, It's A Yes, 0, 0
-9, Esmahli, 0, 0
-9, Salaria, 0, 0
-9, Brave Design, SCR
-9, Rohesia, 0, 0
-9, Saluted, 0, 0
-9, Tres Magnifique, 0, 0
-9, Prestige Lucky, 0, 0
-9, Lawborough, SCR
-9, Royal Rendezvous, 0, 0
-9, Torsheen, 0, 0
-9, Educated, 0, 0
+9, Electric Elvis, 11.00, 11.00, fk_open 15.00
+9, It's A Yes, 26.00, 26.00, fk_open 13.00
+9, Esmahli, 11.00, 11.00, fk_open 8.50
+9, Salaria, 11.00, 11.00, fk_open 11.00
+9, Brave Design, SCR, fk_open 13.00
+9, Rohesia, 34.00, 34.00, fk_open 18.00
+9, Saluted, 41.00, 41.00, fk_open 26.00
+9, Tres Magnifique, 9.50, 9.50, fk_open 9.50
+9, Prestige Lucky, 12.00, 12.00, fk_open 13.00
+9, Lawborough, SCR, fk_open 15.00
+9, Royal Rendezvous, 14.00, 14.00, fk_open 13.00
+9, Torsheen, 10.00, 10.00, fk_open 8.00
+9, Educated, 5.00, 5.00, fk_open 5.50

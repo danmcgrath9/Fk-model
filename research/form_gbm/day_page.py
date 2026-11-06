@@ -1,7 +1,8 @@
 """One page for a whole race day: every meeting's sheet page under one sticky meeting bar, with the day's bets taken at
 the open from every meeting in one box at the top (5 Nov 2026, founder: "Create one artifact for all of today please").
     python day_page.py OUT.html "TITLE" NAME=PAGE.html[@2:00pm,2:30pm,...] [NAME=PAGE.html[@TIMES] ...]
-The optional @TIMES is each race's jump time in race order (race_times.py): with it the day's game day runs race by race
+The optional @TIMES is each race's jump time in race order, or @FILE, race_times.py's saved output for the day (the
+meeting is found by its track name; a NAME like "Balnarring (paper)" uses the part before the bracket): with it the day's game day runs race by race
 across every meeting in jump order (founder, 6 Nov 2026: "Why isn't Game Day for both a tab like bets"); without it, by
 meeting then race.
 Each meeting page is the one meeting.sh / betmatic_html.py / page_takeat.py already built; it is taken as is, its ids and
@@ -18,7 +19,19 @@ for sp in specs:
     path, _, tl = path.partition("@")
     slug = re.sub(r"[^a-z0-9]", "", name.lower())
     mtgs.append((name, slug, open(path).read()))
-    times[slug] = [t.strip() for t in tl.split(",")] if tl else []
+    if tl and not re.match(r"\d", tl):   # @FILE: race_times.py's output, its "## <meeting-id>" section for this meeting
+        sec, tt = None, []
+        track = re.sub(r"[^a-z]", "", name.lower().split("(")[0])
+        for l in open(tl):
+            m = re.match(r"## ([a-z-]+)-\d{8}", l)
+            if m:
+                sec = re.sub(r"[^a-z]", "", m.group(1)); continue
+            r_ = re.match(r"R(\d+) .*?raw=(\S+)", l)
+            if sec == track and r_:
+                tt.append(r_.group(2))
+        times[slug] = tt
+    else:
+        times[slug] = [t.strip() for t in tl.split(",")] if tl else []
 
 
 def minutes(t):

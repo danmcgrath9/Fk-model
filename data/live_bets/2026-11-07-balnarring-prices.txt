@@ -1,4 +1,4 @@
-# Balnarring Sat 7 Nov (picnic), Heavy 8 (RV Stewards Thu morning), final fields; no market yet
+# Balnarring Sat 7 Nov (picnic), Heavy 8 (RV Stewards Thu morning), final fields; no market yet; opening prices added Fri 10:20am
 1, Powershare, 0, 0
 1, Excelaot, 0, 0
 1, Brazen Martini, 0, 0
@@ -15,7 +15,7 @@
 3, Ocean's Jen, 0, 0
 3, I'm Dynamite, 0, 0
 3, Disclevaboy, 0, 0
-3, Wagunda, 0, 0
+3, Wagunda, SCR
 3, Wilma Wombat, 0, 0
 3, Epicus, 0, 0
 3, Littlebirdie, 0, 0

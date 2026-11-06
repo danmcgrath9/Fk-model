@@ -205,3 +205,9 @@ signal. Allow about a minute from dispatch to placement: fire it three or four m
 Founder, 4 Nov 2026: "I think we can stop doing top up". The 9:30am re-price no longer runs topup.py or keeps a top-up
 table; it re-prices the final field, refreshes the lay book, back book and game day, and leaves the open book alone. The
 tracked record stays in betmatic-book.md as it was. research/form_gbm/topup.py stays in the repo, unused.
+
+## One page per race day (6 Nov 2026, founder: "lets do that for all days moving forward")
+Every race day has one artifact for the whole day: bets taken at the open from every meeting, a Game day tab across
+every meeting in jump order, then each meeting's sheet under its own tab (research/form_gbm/day_page.py). The day page
+is rebuilt and republished to the same URL whenever a meeting page changes; its link leads every message about that day.
+URLs are kept in data/live_bets/DAY-PAGES.md.
