@@ -3134,3 +3134,99 @@ ratings, and the tracking's jump and 50 m times add nothing to who leads.
 
 Until both are built and the walk-forward agrees, the card runs as it is. Next for the checks: a stricter threshold,
 and fitting only on 2022 on, where the checks exist.
+
+## Test 36: five seeds, and the 1.3x rule track by track (6 Nov 2026, gh topaz run 42184462496, `topaz_round22.py`)
+
+Two items from the founder's horse brief ("LightGBM, 5 seeds averaged"; "Metro fix"), on the production inputs and the
+standard split, scored on 22,747 races with BSP (BSP 1.4839).
+
+### 1. Five seeds (each early-stopped: 2,878, 3,396, 4,819, 4,804 and 5,058 rounds)
+
+| model | log loss | gap to BSP | 1st half | 2nd half |
+|---|---|---|---|---|
+| seed 1 alone (the weekly train's seed) | 1.5816 | +0.0977 | +0.0907 | +0.1039 |
+| seed 2 alone | 1.5803 | +0.0964 | +0.0902 | +0.1020 |
+| seed 3 alone | 1.5802 | +0.0963 | +0.0898 | +0.1022 |
+| seed 4 alone | 1.5800 | +0.0961 | +0.0889 | +0.1025 |
+| seed 5 alone | 1.5799 | +0.0960 | +0.0890 | +0.1023 |
+| **the five averaged** | **1.5791** | **+0.0952** | **+0.0884** | **+0.1013** |
+
+**Five seeds help, and the spread of single seeds measures the noise.**
+- The five averaged are 0.0013 better than a typical single seed (1.5804), and better in both halves.
+- Seed 1, the one every test so far has used, is the worst of the five: it stopped earliest, at 2,878 rounds.
+- So a single seed moves the score by up to 0.0017. That is the noise to hold every one-split result against.
+- The tests that cleared it:
+  - Isolynx's F1 (1.5777) beats the best single seed by 0.0022.
+  - Track character's F1 (1.5794, Test 33) and the half-weight label's L2 (1.5797, Test 32) sit within the seed
+    spread of the other seeds. Their gains over seed 1 may be partly seed luck.
+  - The walk-forwards running now decide those two.
+
+### 2. The 1.3x rule at GRV's SP (our price $2-$15, Kelly x75 cap 4)
+
+| rule | half | bets | winners | A/E | flat ROI | units staked | Kelly ROI | units won |
+|---|---|---|---|---|---|---|---|---|
+| one seed, every track (0.50 / 0.69) | 1st | 699 | 188 | 1.666 | +71.7% | 1,413 | +71.1% | +1,004 |
+| one seed, every track (0.50 / 0.69) | 2nd | 703 | 173 | 1.603 | +72.6% | 1,232 | +74.9% | +922 |
+| one seed, every track (0.50 / 0.69) | all | 1,402 | 361 | 1.635 | +72.1% | 2,645 | +72.8% | +1,927 |
+| five seeds, every track (0.51 / 0.68) | 1st | 754 | 197 | 1.597 | +64.6% | 1,558 | +69.0% | +1,075 |
+| five seeds, every track (0.51 / 0.68) | 2nd | 748 | 181 | 1.582 | +66.3% | 1,316 | +75.8% | +998 |
+| five seeds, every track (0.51 / 0.68) | all | 1,502 | 378 | 1.590 | +65.5% | 2,873 | +72.1% | +2,072 |
+| five seeds, SAN and MEA | 1st | 18 | 2 | 0.668 | -38.9% | 38 | -37.9% | -14 |
+| five seeds, SAN and MEA | 2nd | 22 | 7 | 1.753 | +93.6% | 40 | +69.2% | +27 |
+| five seeds, SAN and MEA | all | 40 | 9 | 1.288 | +34.0% | 77 | +16.8% | +13 |
+| five seeds, every other track | 1st | 736 | 195 | 1.620 | +67.2% | 1,520 | +71.6% | +1,089 |
+| five seeds, every other track | 2nd | 726 | 174 | 1.575 | +65.5% | 1,276 | +76.0% | +970 |
+| five seeds, every other track | all | 1,462 | 369 | 1.599 | +66.3% | 2,796 | +73.7% | +2,059 |
+
+This run's "metro" was SAN and MEA alone. It ran before the track codes showed that Sandown and The Meadows each race
+under two codes, so SAP and MEP sit in "every other track"; the table below has all four.
+
+| track (five seeds) | bets | winners | A/E | flat ROI | Kelly ROI | units won |
+|---|---|---|---|---|---|---|
+| GEL Geelong | 158 | 55 | 2.082 | +123.5% | +123.1% | +401 |
+| HOR Horsham | 95 | 28 | 1.831 | +90.1% | +123.4% | +238 |
+| BAL Ballarat | 194 | 53 | 1.736 | +84.2% | +94.2% | +367 |
+| SLE Sale | 130 | 36 | 1.709 | +71.8% | +72.6% | +189 |
+| BEN Bendigo | 144 | 36 | 1.704 | +91.0% | +74.0% | +187 |
+| SAP Sandown | 49 | 13 | 1.770 | +73.1% | +101.5% | +86 |
+| SHP Shepparton | 100 | 26 | 1.610 | +53.0% | +76.7% | +140 |
+| MEP Meadows | 53 | 13 | 1.567 | +36.2% | +74.7% | +68 |
+| WBL Warrnambool | 168 | 41 | 1.441 | +46.8% | +43.0% | +145 |
+| WGL Warragul | 162 | 32 | 1.307 | +61.7% | +48.2% | +151 |
+| TRA Traralgon | 35 | 6 | 1.291 | +37.7% | +14.3% | +8 |
+| **HVL Healesville** | **174** | **30** | **1.111** | **+1.0%** | **+25.2%** | **+77** |
+| SAN Sandown Park | 22 | 3 | 0.723 | -48.2% | -38.5% | -18 |
+| MEA The Meadows | 18 | 6 | (fewer than 20 bets, not listed) | | | |
+
+The metro lean (five seeds):
+
+| rule | half | bets | winners | A/E | flat ROI | units staked | Kelly ROI | units won |
+|---|---|---|---|---|---|---|---|---|
+| the blend refitted on SAN and MEA races (0.40 / 0.81) | 1st | 740 | 195 | 1.610 | +66.3% | 1,530 | +70.5% | +1,079 |
+| the blend refitted on SAN and MEA races (0.40 / 0.81) | 2nd | 729 | 175 | 1.575 | +65.3% | 1,281 | +75.9% | +973 |
+| the blend refitted on SAN and MEA races (0.40 / 0.81) | all | 1,469 | 370 | 1.593 | +65.8% | 2,811 | +73.0% | +2,052 |
+| SAN and MEA left out | 1st | 736 | 195 | 1.620 | +67.2% | 1,520 | +71.6% | +1,089 |
+| SAN and MEA left out | 2nd | 726 | 174 | 1.575 | +65.5% | 1,276 | +76.0% | +970 |
+| SAN and MEA left out | all | 1,462 | 369 | 1.599 | +66.3% | 2,796 | +73.7% | +2,059 |
+
+**The metro lean is not needed.**
+- The rule bets rarely at the metro tracks: 142 of 1,502 bets across all four codes.
+- The blend refitted on metro races does lean to the market (0.40 / 0.81 against 0.51 / 0.68), but it changes the
+  units by 20 either way.
+- Taken whole, Sandown (SAN and SAP: 71 bets, 16 winners) and The Meadows (MEA and MEP: 71 bets, 19 winners) both make
+  money. Only SAN on its own (22 bets) loses, and 22 bets is too few to call.
+
+**Healesville is the weak track.**
+- It carries the second-most bets (174), with the lowest A/E of any track with real numbers (1.111). Flat ROI is
+  +1.0% and Kelly ROI +25%, against 43-123% at the country tracks.
+- It is the one Victorian track Test 33 found the leader wins least at (43%), and the order sheet's bets were lower
+  there too (Test 34: 1.171).
+- The founder asked about straight tracks: Healesville is where the dogs' racing shape is most different, and where our
+  edge is thinnest.
+- One split is not a rule. The walk-forward's 29 months by track decide whether Healesville gets a lean or is left off.
+
+**Decision:**
+- Five seeds go into the weekly train once the code saves and loads five boosters. Not tonight: tonight's card stays
+  on the saved single model.
+- No metro lean.
+- Healesville goes to the walk-forward check.
