@@ -7,8 +7,40 @@
    "name": "Flemington",
    "note": "",
    "bets": [
-    {"race": 3, "time": "1:50PM", "horse": "Litzdeel", "price": "$7", "units": "0.73u"},
-    {"race": 9, "time": "5:50PM", "horse": "Salaria", "price": "$11", "units": "0.32u"}
+    {
+     "race": 3,
+     "time": "1:50PM",
+     "horse": "Litzdeel",
+     "price": "$7",
+     "units": "0.73u"
+    },
+    {
+     "race": 9,
+     "time": "5:50PM",
+     "horse": "Salaria",
+     "price": "$11",
+     "units": "0.32u"
+    }
+   ]
+  },
+  {
+   "name": "Geelong",
+   "note": "",
+   "bets": [
+    {
+     "race": 7,
+     "time": "4:46PM",
+     "horse": "Fridge Monster",
+     "price": "$11",
+     "units": "1.39u"
+    },
+    {
+     "race": 7,
+     "time": "4:46PM",
+     "horse": "Shaalute",
+     "price": "$8",
+     "units": "0.44u"
+    }
    ]
   }
  ],

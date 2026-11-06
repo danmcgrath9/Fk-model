@@ -1034,3 +1034,9 @@ Cranbourne Fri fully settled (Form King results Sat 7:05am): Speir 7th (SP $8.50
 Cranbourne lays 10, 0 winners, +9.20u (+$1,840); R7 winner She's Pretty Rich (BSP $37.56) was not on the lay list.
 FRIDAY FINAL (paper): open +5.59u (+$280); lays 17, 1 winner, -1.46u (-$292); backs none; day -$12. Card +2.23u (+56%).
 Lay trial (28 Oct to 6 Nov): 97 lays, 3 winners, +29.80u (+$5,960 at $200).
+
+## Saturday 7 Nov at the open (paper; bot off)
+Flemington (opened Wed): R3 Litzdeel 1.46u $8.50 (ours $5.15), R9 Salaria 0.63u $11 ($7.21). Geelong opened Sat 7:58am:
+R7 Fridge Monster 2.78u $22.67 (ours $7.72; 2.9x ours, so the big-overlay double fired), R7 Shaalute 0.88u $13 ($9.59).
+Balnarring (paper meeting) no market at 8:35am. Day 5.75u. Cards: Mercer at 8:35am prices (Litzdeel $7, Salaria $11,
+Fridge Monster $11, Shaalute $8; half units); no-Mercer at the open.
