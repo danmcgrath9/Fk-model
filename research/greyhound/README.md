@@ -4159,7 +4159,8 @@ A rule is "chosen" with 200+ lays and a profit on the early-stopping months. The
 | box 1, strong here (1.1 or over), market likes it less (BSP >= 1.3x ours), BSP $40-$100 | 233, 0.762, +25.6% | 683, 0.688, +20.7% | 905, 1.035, -14.4% | 1,588, 24, 0.886 (0.921), +0.7%, +11 **chosen** |
 
 78 rules had 100+ lays in the scored quarter. 9 were chosen on the early-stopping months, and none of the 9 made a
-profit in both scored halves. Luck alone would give about two.
+profit in both scored halves. Luck alone would give about one: most of the 9 are short-priced lays, which a
+zero-edge rule makes a profit on in both halves only a few times in a hundred.
 
 **Box 8 is no longer over-rated.** Over the five "anywhere, any view" bands, laid box 8 runners won at a lay-weighted
 A/E of 0.999 against BSP, and box 1's at 1.003 (21,376 and 21,898 lays). By band, box 8 ran:
