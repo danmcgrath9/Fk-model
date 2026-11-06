@@ -2572,3 +2572,147 @@ The run logged a divide warning on the Kelly stake. Runners whose stake came out
 are in no count above; the cause has not been checked.
 
 **Decision:** nothing from Part B goes to the card. Our model does not price the place market better than place BSP.
+
+## Test 30: the place book (6 Nov 2026, gh topaz runs 42144999948 and 42146524811, `topaz_round16.py`)
+
+Test 29's place rule made its money in races whose place BSPs added up to well under the places paid. This test needs
+no model, only Betfair's free files. It takes every race since 2020 with a place BSP on every runner that ran and 2 or
+3 places paid:
+  place book = (sum over the runners of 1 / place BSP) / places paid      (1 = fair; under 1 = under-round)
+
+### How often the place book settles under-round at BSP
+
+VIC: 95,811 races from 2 Jan 2020, with halves split at 19 Jul 2023 and 2 places paid in 41% of races. The place book
+at BSP has a median of 1.007, a 10th percentile of 0.987 and a 90th of 1.030. The win book in the same races has a
+median of 1.003.
+
+The table backs every runner at place BSP, with 8% commission:
+
+| place book at BSP | races | share | runners | placed | flat ROI (1st / 2nd) | median place BSP money per race | median win book |
+|---|---|---|---|---|---|---|---|
+| under 0.77 | 114 | 0.1% | 749 | 337 | +143.2% / +inf | $1,190 | 1.011 |
+| 0.77-0.85 | 28 | 0.0% | 197 | 74 | +30.0% / +307.2% | $134 | 0.999 |
+| 0.85-0.95 | 537 | 0.6% | 3,846 | 1,349 | +3.4% / +7.8% | $733 | 1.001 |
+| 0.95-1.05 | 92,714 | 96.8% | 678,818 | 240,273 | -7.7% / -6.6% | $2,350 | 1.003 |
+| 1.05 and over | 2,418 | 2.5% | 17,384 | 6,009 | -15.3% / -10.7% | $694 | 1.006 |
+
+All of Australia gives the same picture: 290,926 races, a median place book of 1.006, and under 0.77 in 362 races
+(0.1%).
+
+**Under-round place markets are rare:**
+- 0.7% of Victorian races settle under 0.95, and 0.1% under 0.77.
+- In 96.8% of races the book is within 5% of fair, and backing the whole field loses 7%.
+- The "+inf" means a runner that placed carries an infinite place BSP in Betfair's files, a glitch in the file. A
+  glitch like that also drops a race into the under-0.77 band, because 1 / infinity adds nothing to the book. So part
+  of that band is bad data, not a real price.
+
+### Do the prices traded before the off know the result?
+
+| place chance from (VIC) | races where every runner traded | binary log loss | the same runners at place BSP | A/E |
+|---|---|---|---|---|
+| last price traded | 82,948 | 0.5464 | 0.5458 | 1.000 |
+| weighted average traded | 82,948 | 0.5471 | 0.5458 | 1.000 |
+
+No. Both score just behind place BSP, which is how a price traded before the jump behaves. A price traded after the
+jump would score far below BSP. Greyhound place markets are not turned in-play, so the last price traded is a pre-off
+price. All of Australia agrees: 0.5441 and 0.5447 against 0.5435.
+
+The book from the last price traded tracks the book at BSP only loosely (correlation 0.58 in VIC, 0.53 for the
+weighted average). But 94% of the VIC races that settled under 0.77 at BSP were already under 0.85 on the last price
+traded (91% across Australia).
+
+### The bet anyone could make: back every runner at place BSP when the book before the off is under a cap
+
+The selection reads only prices traded before the off. The bet is struck at BSP, which nobody needs to know in
+advance. Commission is 8%.
+
+VIC, book on the last price traded:
+
+| under | half | races | bets | placed | flat ROI | median place BSP money per race |
+|---|---|---|---|---|---|---|
+| 0.80 | 1st | 44 | 280 | 131 | +51.5% | $3,897 |
+| 0.80 | 2nd | 39 | 258 | 115 | +50.3% | $897 |
+| 0.85 | 1st | 49 | 316 | 145 | +46.9% | $3,924 |
+| 0.85 | 2nd | 49 | 332 | 141 | +45.2% | $758 |
+| 0.90 | 1st | 82 | 540 | 225 | +21.9% | $3,412 |
+| 0.90 | 2nd | 87 | 615 | 244 | +22.6% | $461 |
+| 0.95 | 1st | 555 | 3,901 | 1,390 | -1.5% | $1,161 |
+| 0.95 | 2nd | 431 | 3,093 | 1,107 | +1.6% | $503 |
+
+VIC, book on the weighted average traded:
+
+| under | half | races | bets | placed | flat ROI | median place BSP money per race |
+|---|---|---|---|---|---|---|
+| 0.80 | 1st | 51 | 328 | 148 | +42.1% | $3,623 |
+| 0.80 | 2nd | 33 | 212 | 99 | +62.3% | $1,098 |
+| 0.85 | 1st | 54 | 346 | 156 | +39.2% | $3,616 |
+| 0.85 | 2nd | 38 | 249 | 112 | +54.7% | $947 |
+| 0.90 | 1st | 68 | 451 | 194 | +33.2% | $3,706 |
+| 0.90 | 2nd | 51 | 345 | 146 | +39.0% | $866 |
+| 0.95 | 1st | 293 | 2,078 | 763 | +1.4% | $4,607 |
+| 0.95 | 2nd | 316 | 2,281 | 837 | +0.8% | $1,308 |
+
+All of Australia, book on the last price traded:
+
+| under | half | races | bets | placed | flat ROI | median place BSP money per race |
+|---|---|---|---|---|---|---|
+| 0.80 | 1st | 120 | 762 | 358 | +58.2% | $3,795 |
+| 0.80 | 2nd | 150 | 1,007 | 428 | +43.1% | $541 |
+| 0.85 | 1st | 139 | 901 | 410 | +50.2% | $3,777 |
+| 0.85 | 2nd | 206 | 1,407 | 572 | +69.7% | $404 |
+| 0.90 | 1st | 247 | 1,657 | 679 | +26.0% | $3,074 |
+| 0.90 | 2nd | 364 | 2,544 | 977 | +37.4% | $336 |
+| 0.95 | 1st | 1,875 | 13,227 | 4,777 | +2.1% | $1,180 |
+| 0.95 | 2nd | 1,714 | 12,013 | 4,303 | +7.9% | $463 |
+
+(All of Australia, weighted average: under 0.85 made +48.5% on 136 races and +107.9% on 137; under 0.90, +32.8% on
+195 and +63.1% on 226.)
+
+### Is the rule carried by a few big prices? (run 42146524811)
+
+Book on the last price traded:
+
+| under | scope | bets | flat ROI | place BSP capped at $20 | without the 5 biggest returns | biggest place BSP that placed |
+|---|---|---|---|---|---|---|
+| 0.85 | VIC | 648 | +46.0% | +45.6% | +35.4% | $23.00 |
+| 0.90 | VIC | 1,155 | +22.3% | +22.0% | +16.2% | $23.00 |
+| 0.85 | all of Australia | 2,308 | +62.1% | +37.9% | +34.4% | $593.68 |
+| 0.90 | all of Australia | 4,201 | +32.9% | +19.4% | +17.6% | $593.68 |
+
+Year by year, book on the last price traded under 0.90:
+
+| year | VIC races | VIC bets | VIC flat ROI | VIC median place BSP money per race | Australia races | Australia flat ROI | Australia median money |
+|---|---|---|---|---|---|---|---|
+| 2020 | 35 | 232 | +5.0% | $553 | 115 | +13.7% | $650 |
+| 2021 | 24 | 155 | +19.0% | $3,986 | 64 | +19.5% | $3,934 |
+| 2022 | 15 | 97 | +44.2% | $4,325 | 48 | +45.7% | $4,097 |
+| 2023 | 13 | 86 | +59.0% | $4,967 | 40 | +45.8% | $5,320 |
+| 2024 | 13 | 86 | +44.6% | $1,198 | 42 | +74.5% | $1,043 |
+| 2025 | 49 | 359 | +3.6% | $305 | 217 | +39.5% | $223 |
+| 2026 (to October) | 20 | 140 | +51.1% | $588 | 85 | +19.0% | $348 |
+
+**The edge is real, small and thin.**
+- **Big prices do not carry it in Victoria.** Capping place BSP at $20 changes nothing, the biggest place BSP that
+  placed was $23, and taking out the five biggest returns still leaves +35% (under 0.85) and +16% (under 0.90). Across
+  Australia a few long prices do more of the work: +62% falls to +38% capped.
+- **It makes money in both halves and in every year**, in Victoria and across Australia.
+- **It is rare.** Victoria had 98 races under 0.85 in nearly seven years (about 14 a year), and 13 to 49 a year under
+  0.90. Across Australia: 345 races under 0.85, about 50 a year.
+- **The money is thin.** In 2025-26 the median place BSP money in these races was $223 to $588 a race, across the
+  whole field. A backer's own BSP stake is matched against the lay money at BSP, so in a market that size a stake of
+  $10 a runner moves the price it is paid at. These ROIs are what a bet too small to move the BSP would have made.
+- **"The last price traded" is the last trade before the market closed.** Anyone betting acts a little before that,
+  on a book that can still move.
+
+Rough size, before the stake moves the price: $10 a runner on about 7 runners is $70 a race. About 14 Victorian races
+a year at +46% is about $450 a year. About 50 Australian races a year at +60% is about $2,000 a year, at most.
+
+**Decision:** nothing goes to the card; the card is TAB win bets. A Betfair place sideline would need four things,
+and none of it happens without the founder's OK:
+- a Betfair API key to read the place books live
+- a watch a few minutes before each jump
+- a paper run first: record the live book, then compare it with the BSP and the result
+- a measure of how far our own stake moves the BSP in a market this thin
+
+The win market shows nothing like this: its book at BSP sits at 1.003 in the same races, and Test 28's 1.3x rule at
+BSP found 5 bets.
