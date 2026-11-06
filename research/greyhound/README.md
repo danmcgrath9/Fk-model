@@ -2719,3 +2719,74 @@ BSP found 5 bets.
 
 **Parked** (founder, 6 Nov 2026: "park the Betfair place thing"). Nothing is built for it. If it is picked up, the
 first step is still a paper run on live place books.
+
+## Test 31: the winners twin against BSP (6 Nov 2026, gh topaz run 42155433985, `topaz_round17.py`)
+
+Every walk-forward since Test 14 has scored an "ensemble" beside the card's model. In Test 28, for example, the model
+scored 1.6056, the ensemble 1.5924 and GRV's SP 1.5952. The two models:
+- **A**: fitted on the BSP's chances. This is the model the card prices with.
+- **B**: a twin fitted on the winners.
+
+The gap to BSP had only ever been measured on A. This run uses the production inputs (161, with the drift on for the
+guard) and the standard split:
+- A: early stopping took 2,878 rounds.
+- B: the same inputs and recency weights; early stopping took 319 rounds.
+- The ensemble: 0.50 x A plus 0.56 x B, fitted on the early-stopping months.
+
+Scored: 22,747 races with BSP (BSP 1.4839; 1st half 1.5010, 2nd 1.4686) and 25,630 races with GRV's SP (SP 1.5951).
+
+| price | log loss, BSP races | gap to BSP | 1st half | 2nd half | log loss, SP races | gap to GRV's SP |
+|---|---|---|---|---|---|---|
+| A, the BSP-chance model (the card) | 1.5816 | +0.0977 | +0.0907 | +0.1039 | 1.6095 | +0.0144 |
+| B, the winners twin | 1.5946 | +0.1107 | +0.1012 | +0.1192 | 1.6109 | +0.0157 |
+| the ensemble of A and B | 1.5831 | +0.0992 | +0.0908 | +0.1068 | 1.6017 | +0.0066 |
+
+| runners (scored races with BSP) | runners | wins | A/E vs A | A/E vs B | A/E vs the ensemble | A/E vs BSP |
+|---|---|---|---|---|---|---|
+| SP favourite | 23,368 | 9,255 | 1.149 | 1.156 | 1.115 | 0.997 |
+| A's price $1-$2 | 3,665 | 2,165 | 1.003 | 1.018 | 0.969 | 0.984 |
+| A's price $2-$3 | 10,789 | 4,339 | 1.006 | 1.018 | 0.974 | 1.001 |
+| A's price $3-$5 | 24,304 | 6,254 | 1.005 | 1.011 | 0.989 | 0.992 |
+| A's price $5-$10 | 42,889 | 6,314 | 1.024 | 1.022 | 1.039 | 1.009 |
+| A's price $10-$20 | 37,205 | 2,685 | 0.981 | 0.964 | 1.030 | 1.008 |
+| A's price $20-$1000 | 41,226 | 990 | 0.864 | 0.818 | 0.942 | 1.006 |
+
+The 1.3x rule at GRV's SP (our price $2-$15, Kelly x75 cap 4, no commission):
+
+| ours | blend weights (ours / SP) | guard | half | bets | winners | A/E | flat ROI | units staked | Kelly ROI | units won |
+|---|---|---|---|---|---|---|---|---|---|---|
+| A | 0.50 / 0.69 | none | 1st | 699 | 188 | 1.666 | +71.7% | 1,413 | +71.1% | +1,004 |
+| A | 0.50 / 0.69 | none | 2nd | 703 | 173 | 1.603 | +72.6% | 1,232 | +74.9% | +922 |
+| A | 0.50 / 0.69 | none | all | 1,402 | 361 | 1.635 | +72.1% | 2,645 | +72.8% | +1,927 |
+| A | 0.50 / 0.69 | drift under 1.3x | 1st | 481 | 152 | 1.808 | +91.1% | 1,084 | +87.5% | +949 |
+| A | 0.50 / 0.69 | drift under 1.3x | 2nd | 407 | 133 | 1.904 | +116.1% | 812 | +109.3% | +888 |
+| A | 0.50 / 0.69 | drift under 1.3x | all | 888 | 285 | 1.852 | +102.6% | 1,897 | +96.8% | +1,837 |
+| the ensemble | 0.52 / 0.63 | none | 1st | 1,305 | 337 | 1.598 | +66.8% | 2,575 | +62.3% | +1,604 |
+| the ensemble | 0.52 / 0.63 | none | 2nd | 1,310 | 260 | 1.342 | +36.1% | 2,274 | +51.0% | +1,159 |
+| the ensemble | 0.52 / 0.63 | none | all | 2,615 | 597 | 1.476 | +51.4% | 4,849 | +57.0% | +2,763 |
+| the ensemble | 0.52 / 0.63 | drift under 1.3x | 1st | 874 | 268 | 1.746 | +87.3% | 1,908 | +78.2% | +1,491 |
+| the ensemble | 0.52 / 0.63 | drift under 1.3x | 2nd | 746 | 199 | 1.615 | +72.1% | 1,431 | +86.5% | +1,237 |
+| the ensemble | 0.52 / 0.63 | drift under 1.3x | all | 1,620 | 467 | 1.688 | +80.3% | 3,338 | +81.7% | +2,728 |
+
+**The ensemble does not close the gap to BSP.**
+- On the races with BSP it is 0.0015 behind A (+0.0992 against +0.0977), level in the first half and behind in the
+  second.
+- It beats GRV's SP by more (+0.0066 against +0.0144), but the whole of that gain is in the races Betfair does not
+  cover, so it is not a race the card can check against BSP. On the 2,883 SP races without a BSP winner, A scores about
+  1.83 and the ensemble about 1.75 (worked from the totals above). A is trained on the BSP's chances where they exist
+  and GRV's SP where they do not, and B learns those races from the result.
+- The ensemble is the better-calibrated price on long dogs: A/E 0.942 over $20, against A's 0.864. But it gives some
+  of that back in the middle: the ensemble undercounts its $2-$3 dogs (0.974) where A is at 1.006.
+
+**In the 1.3x rule the ensemble bets more and earns less per bet.**
+- It finds about 80-90% more bets.
+- With the drift guard it wins more units in both halves: +1,491 against +949, and +1,237 against +888.
+- Its ROI is lower: Kelly +81.7% against +96.8% with the guard, and +57.0% against +72.8% without.
+- Without the guard its second half falls to +36.1% flat, against A's +72.6%.
+
+This is a trade between turnover and edge, not a better price. More bets at a lower edge also means more TAB
+accounts watched sooner.
+
+**Decision:** A stays on the card. Whether the extra units are worth the extra bets is the founder's call, and a
+walk-forward of the rule on the ensemble should come before any switch. The walk-forward's `horse_rule` uses A only
+today.
