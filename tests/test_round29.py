@@ -52,3 +52,17 @@ def test_every_period_gets_the_same_track_segments():
                       "days_since": [7]})
     s = R29.segments(t, tracks=["CRN", "SAN"])
     assert list(s["track CRN"]) == [False] and list(s["track SAN"]) == [True]
+
+
+def test_pairs_cross_box_with_early_speed_and_the_draw():
+    t = pd.DataFrame({"race_id": [1, 1, 1], "box": [1, 8, 8], "track": ["SAN"] * 3, "distance": [515] * 3,
+                      "field": [3] * 3, "runs": [3, 3, 3], "days_since": [7, 7, 7], "map_speed_rank": [2, 1, 3],
+                      "map_quicker_inside": [0, 0, 2], "style_led_rate": [0.2, 0.6, 0.0]})
+    s = R29.segments(t, tracks=["SAN"], pairs=True)
+    assert list(s["box 8, fastest early"]) == [False, True, False]
+    assert list(s["box 8, 2nd-3rd fastest early"]) == [False, False, True]
+    assert list(s["box 8, a quicker beginner drawn inside it"]) == [False, False, True]
+    assert list(s["box 1, no quicker beginner inside it"]) == [True, False, False]
+    assert list(s["track SAN, fastest early"]) == [False, True, False]
+    assert list(s["led early in half its last runs or more"]) == [False, True, False]
+    assert "box 8, fastest early" not in R29.segments(t, tracks=["SAN"])
