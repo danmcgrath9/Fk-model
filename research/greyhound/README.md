@@ -4054,3 +4054,134 @@ quarter about one time in five, and two of the 11 would get there by chance.
 
 **Decision:** no lay book at BSP for the dogs. The very long lays ($40-$100, BSP 3x our price) can be logged on paper
 at no cost. They would need a year of fresh months before they meant anything.
+
+
+## Test 46: does the market over-rate box 8? Lay it at BSP (7 Nov 2026, gh topaz run 42294768850, `topaz_round28.py`)
+
+The founder: "Maybe it's the other way that the market over rates from box 8 or something". The earlier evidence said
+yes, a little:
+- Test 2 (every Australian race) found box 8 the one box BSP over-rates: A/E 0.970, in both halves.
+- Test 24 found the same in Victoria from 2020: 0.971 / 0.982.
+
+A lay at BSP needs about 0.92 to 0.95 to pay 8% commission. This test is Victoria only, on the standard split, with
+the model from Tests 39 to 45 (2,352 rounds, 180 inputs), scored from 6 Jun 2024 to 31 Oct 2026 and split into halves
+at 16 Aug 2025.
+
+Each rule lays 1 unit at BSP and never a first starter. The rules cover:
+- box 8, with box 1 as the control
+- where that box is weak at this track and distance (`box_ratio`, its win rate over its field-size share from earlier
+  days, 0.8 or under), middling, or strong (1.1 or over), or anywhere
+- BSP $1.50-$4, $4-$8, $8-$15, $15-$40, $40-$100
+- our view: any, the market likes the dog more than we do (BSP at or under our price / 1.2), or less (BSP 1.3x ours or
+  more)
+
+A rule is "chosen" with 200+ lays and a profit on the early-stopping months. The break-even A/E is in brackets.
+
+| lay at BSP | early-stopping: lays, A/E, return | 1st half: lays, A/E, return | 2nd half: lays, A/E, return | all: lays, winners, A/E (break-even), return, units |
+|---|---|---|---|---|
+| box 8, anywhere, any view, BSP $1.5-$4 | 868, 0.960, -3.4% | 2,350, 0.946, +0.3% | 2,268, 0.988, -2.5% | 4,618, 1,703, 0.967 (0.951), -1.1%, -50 |
+| box 8, anywhere, any view, BSP $4-$8 | 978, 0.885, +5.3% | 2,512, 0.862, +7.6% | 2,568, 1.000, -6.4% | 5,080, 860, 0.932 (0.934), +0.6%, +28 **chosen** |
+| box 8, anywhere, any view, BSP $8-$15 | 857, 1.038, -11.0% | 2,115, 1.037, -10.5% | 2,117, 1.061, -12.5% | 4,232, 414, 1.049 (0.927), -11.5%, -486 |
+| box 8, anywhere, any view, BSP $15-$40 | 956, 1.323, -43.8% | 2,497, 0.932, -1.5% | 2,500, 1.004, -10.3% | 4,997, 215, 0.968 (0.924), -5.9%, -295 |
+| box 8, anywhere, any view, BSP $40-$100 | 396, 1.186, -12.1% | 1,115, 1.079, -9.1% | 1,334, 1.249, -33.7% | 2,449, 50, 1.171 (0.921), -22.5%, -552 |
+| box 8, anywhere, market likes it more (BSP <= ours / 1.2), BSP $1.5-$4 | 477, 1.029, -11.8% | 1,361, 0.946, +0.5% | 1,239, 0.986, -2.5% | 2,600, 981, 0.966 (0.952), -0.9%, -23 |
+| box 8, anywhere, market likes it more (BSP <= ours / 1.2), BSP $4-$8 | 422, 0.927, +1.7% | 1,073, 0.908, +3.6% | 991, 1.084, -15.7% | 2,064, 381, 0.993 (0.934), -5.7%, -117 **chosen** |
+| box 8, anywhere, market likes it more (BSP <= ours / 1.2), BSP $8-$15 | 201, 1.445, -45.3% | 587, 1.016, -5.6% | 522, 1.235, -28.4% | 1,109, 119, 1.119 (0.927), -16.3%, -181 |
+| box 8, anywhere, market likes it more (BSP <= ours / 1.2), BSP $15-$40 | 130, 1.651, -57.7% | 364, 0.943, +1.5% | 295, 1.124, -21.9% | 659, 32, 1.026 (0.924), -9.0%, -59 |
+| box 8, anywhere, market likes it more (BSP <= ours / 1.2), BSP $40-$100 | 28, 0.000, +92.0% | 74, 1.414, -63.2% | 74, 2.228, -139.1% | 148, 5, 1.811 (0.921), -101.1%, -150 |
+| box 8, anywhere, market likes it less (BSP >= 1.3x ours), BSP $1.5-$4 | 31, 0.749, +20.0% | 94, 0.755, +17.6% | 122, 1.086, -12.2% | 216, 63, 0.942 (0.944), +0.8%, +2 |
+| box 8, anywhere, market likes it less (BSP >= 1.3x ours), BSP $4-$8 | 153, 0.843, +3.4% | 397, 0.895, +5.3% | 507, 0.966, -1.4% | 904, 146, 0.935 (0.933), +1.5%, +14 |
+| box 8, anywhere, market likes it less (BSP >= 1.3x ours), BSP $8-$15 | 302, 0.990, -13.6% | 704, 1.004, -7.5% | 846, 1.065, -15.0% | 1,550, 146, 1.038 (0.927), -11.6%, -180 |
+| box 8, anywhere, market likes it less (BSP >= 1.3x ours), BSP $15-$40 | 551, 1.354, -53.7% | 1,365, 1.075, -19.0% | 1,535, 0.928, -3.0% | 2,900, 124, 0.997 (0.923), -10.5%, -306 |
+| box 8, anywhere, market likes it less (BSP >= 1.3x ours), BSP $40-$100 | 285, 1.254, -23.3% | 820, 0.927, +9.2% | 1,073, 1.301, -39.8% | 1,893, 37, 1.140 (0.921), -18.6%, -352 |
+| box 8, weak here (0.8 or under), any view, BSP $1.5-$4 | 36, 1.116, -15.5% | 115, 0.935, +7.7% | 84, 0.968, -8.0% | 199, 68, 0.949 (0.950), +1.1%, +2 |
+| box 8, weak here (0.8 or under), any view, BSP $4-$8 | 60, 1.026, -3.1% | 169, 1.066, -15.4% | 156, 1.047, -16.2% | 325, 61, 1.057 (0.934), -15.8%, -51 |
+| box 8, weak here (0.8 or under), any view, BSP $8-$15 | 63, 0.507, +35.8% | 181, 0.844, +12.0% | 142, 1.216, -30.4% | 323, 30, 1.008 (0.927), -6.6%, -21 |
+| box 8, weak here (0.8 or under), any view, BSP $15-$40 | 79, 2.198, -122.6% | 249, 0.632, +31.1% | 213, 1.262, -30.2% | 462, 19, 0.923 (0.924), +2.8%, +13 |
+| box 8, weak here (0.8 or under), any view, BSP $40-$100 | 47, 0.000, +92.0% | 105, 1.059, +8.4% | 139, 2.823, -219.2% | 244, 9, 2.061 (0.921), -121.2%, -296 |
+| box 8, weak here (0.8 or under), market likes it more (BSP <= ours / 1.2), BSP $4-$8 | 23, 1.198, -12.2% | 73, 0.766, +7.7% | 64, 0.931, -3.6% | 137, 21, 0.845 (0.934), +2.4%, +3 |
+| box 8, weak here (0.8 or under), market likes it less (BSP >= 1.3x ours), BSP $15-$40 | 34, 2.420, -176.3% | 115, 0.619, +25.3% | 123, 0.951, -3.7% | 238, 8, 0.792 (0.923), +10.3%, +24 |
+| box 8, weak here (0.8 or under), market likes it less (BSP >= 1.3x ours), BSP $40-$100 | 34, 0.000, +92.0% | 79, 1.400, -19.1% | 108, 3.172, -271.5% | 187, 8, 2.409 (0.921), -164.9%, -308 |
+| box 8, middling here, any view, BSP $1.5-$4 | 287, 1.053, -13.9% | 420, 0.896, +2.8% | 426, 0.982, -1.8% | 846, 302, 0.940 (0.951), +0.5%, +4 |
+| box 8, middling here, any view, BSP $4-$8 | 367, 0.978, -6.2% | 514, 0.932, -0.7% | 494, 1.127, -18.4% | 1,008, 187, 1.028 (0.934), -9.4%, -94 |
+| box 8, middling here, any view, BSP $8-$15 | 297, 1.013, -4.9% | 445, 1.186, -27.0% | 471, 1.048, -13.0% | 916, 96, 1.115 (0.927), -19.8%, -182 |
+| box 8, middling here, any view, BSP $15-$40 | 332, 1.425, -60.2% | 592, 0.834, +3.4% | 641, 1.163, -27.7% | 1,233, 55, 1.004 (0.924), -12.7%, -157 |
+| box 8, middling here, any view, BSP $40-$100 | 147, 0.794, +26.8% | 308, 0.758, +17.9% | 335, 0.852, +12.4% | 643, 9, 0.807 (0.921), +15.0%, +97 **both halves** |
+| box 8, middling here, market likes it more (BSP <= ours / 1.2), BSP $1.5-$4 | 163, 1.153, -24.0% | 221, 0.858, +7.4% | 217, 0.981, -1.3% | 438, 154, 0.919 (0.952), +3.1%, +14 |
+| box 8, middling here, market likes it more (BSP <= ours / 1.2), BSP $4-$8 | 163, 1.055, -16.5% | 230, 0.954, -1.1% | 185, 1.139, -20.2% | 415, 80, 1.039 (0.934), -9.6%, -40 |
+| box 8, middling here, market likes it more (BSP <= ours / 1.2), BSP $8-$15 | 79, 1.574, -53.0% | 130, 1.250, -25.0% | 108, 1.069, -18.6% | 238, 27, 1.170 (0.927), -22.1%, -53 |
+| box 8, middling here, market likes it more (BSP <= ours / 1.2), BSP $15-$40 | 43, 1.929, -94.8% | 101, 0.853, +22.4% | 86, 1.187, -28.2% | 187, 9, 1.011 (0.924), -0.9%, -2 |
+| box 8, middling here, market likes it less (BSP >= 1.3x ours), BSP $4-$8 | 54, 0.880, -2.6% | 81, 0.938, +0.5% | 87, 1.243, -24.5% | 168, 32, 1.098 (0.933), -12.5%, -21 |
+| box 8, middling here, market likes it less (BSP >= 1.3x ours), BSP $8-$15 | 93, 0.830, +8.0% | 128, 0.945, -6.4% | 190, 0.864, +2.8% | 318, 26, 0.897 (0.927), -0.9%, -3 |
+| box 8, middling here, market likes it less (BSP >= 1.3x ours), BSP $15-$40 | 201, 1.404, -66.8% | 307, 1.223, -40.4% | 378, 1.108, -27.9% | 685, 34, 1.160 (0.923), -33.5%, -230 |
+| box 8, middling here, market likes it less (BSP >= 1.3x ours), BSP $40-$100 | 102, 1.147, -1.9% | 209, 0.857, +13.5% | 269, 0.430, +60.1% | 478, 5, 0.613 (0.921), +39.7%, +190 **both halves** |
+| box 8, strong here (1.1 or over), any view, BSP $1.5-$4 | 543, 0.902, +3.1% | 1,812, 0.957, -0.6% | 1,751, 0.987, -2.0% | 3,563, 1,326, 0.972 (0.951), -1.3%, -46 **chosen** |
+| box 8, strong here (1.1 or over), any view, BSP $4-$8 | 549, 0.812, +13.6% | 1,829, 0.824, +12.1% | 1,908, 0.959, -2.1% | 3,737, 609, 0.893 (0.934), +4.9%, +182 **chosen** |
+| box 8, strong here (1.1 or over), any view, BSP $8-$15 | 495, 1.104, -18.8% | 1,487, 1.008, -7.5% | 1,493, 1.059, -11.4% | 2,980, 287, 1.033 (0.927), -9.5%, -283 |
+| box 8, strong here (1.1 or over), any view, BSP $15-$40 | 541, 1.154, -23.2% | 1,646, 1.005, -7.9% | 1,633, 0.887, +0.7% | 3,279, 138, 0.947 (0.924), -3.6%, -119 |
+| box 8, strong here (1.1 or over), any view, BSP $40-$100 | 200, 1.758, -66.3% | 702, 1.220, -23.6% | 854, 1.150, -22.5% | 1,556, 32, 1.182 (0.921), -23.0%, -358 |
+| box 8, strong here (1.1 or over), market likes it more (BSP <= ours / 1.2), BSP $1.5-$4 | 296, 0.952, -3.6% | 1,081, 0.969, -1.6% | 982, 0.986, -2.3% | 2,063, 794, 0.977 (0.952), -1.9%, -39 |
+| box 8, strong here (1.1 or over), market likes it more (BSP <= ours / 1.2), BSP $4-$8 | 235, 0.817, +15.3% | 770, 0.907, +4.6% | 738, 1.072, -14.5% | 1,508, 278, 0.988 (0.934), -4.7%, -71 **chosen** |
+| box 8, strong here (1.1 or over), market likes it more (BSP <= ours / 1.2), BSP $8-$15 | 99, 1.462, -47.3% | 393, 0.990, -2.4% | 378, 1.287, -31.2% | 771, 84, 1.137 (0.927), -16.5%, -127 |
+| box 8, strong here (1.1 or over), market likes it more (BSP <= ours / 1.2), BSP $15-$40 | 72, 1.210, -14.7% | 222, 0.964, -6.4% | 188, 1.109, -21.1% | 410, 20, 1.031 (0.924), -13.1%, -54 |
+| box 8, strong here (1.1 or over), market likes it less (BSP >= 1.3x ours), BSP $1.5-$4 | 19, 0.710, +26.4% | 69, 0.785, +14.8% | 97, 1.040, -7.3% | 166, 48, 0.933 (0.944), +1.9%, +3 |
+| box 8, strong here (1.1 or over), market likes it less (BSP >= 1.3x ours), BSP $4-$8 | 89, 0.852, +5.4% | 285, 0.921, +2.5% | 381, 0.860, +8.1% | 666, 102, 0.887 (0.933), +5.7%, +38 **both halves** |
+| box 8, strong here (1.1 or over), market likes it less (BSP >= 1.3x ours), BSP $8-$15 | 189, 1.116, -29.7% | 527, 0.965, -4.7% | 604, 1.057, -13.8% | 1,131, 104, 1.014 (0.927), -9.6%, -108 |
+| box 8, strong here (1.1 or over), market likes it less (BSP >= 1.3x ours), BSP $15-$40 | 314, 1.233, -33.0% | 940, 1.060, -16.1% | 1,025, 0.822, +9.1% | 1,965, 79, 0.936 (0.923), -3.0%, -58 |
+| box 8, strong here (1.1 or over), market likes it less (BSP >= 1.3x ours), BSP $40-$100 | 148, 1.618, -65.2% | 532, 0.880, +11.7% | 692, 1.352, -43.3% | 1,224, 24, 1.147 (0.921), -19.4%, -237 |
+| box 1, anywhere, any view, BSP $1.5-$4 | 1,122, 1.003, -5.2% | 2,869, 0.993, -3.9% | 2,980, 1.020, -6.8% | 5,849, 2,305, 1.007 (0.952), -5.4%, -316 |
+| box 1, anywhere, any view, BSP $4-$8 | 1,177, 1.025, -9.5% | 2,896, 0.989, -6.8% | 2,800, 1.026, -10.4% | 5,696, 1,046, 1.007 (0.934), -8.6%, -489 |
+| box 1, anywhere, any view, BSP $8-$15 | 783, 0.975, -4.1% | 2,048, 1.092, -16.3% | 2,076, 1.054, -14.4% | 4,124, 417, 1.073 (0.927), -15.3%, -632 |
+| box 1, anywhere, any view, BSP $15-$40 | 823, 1.091, -9.3% | 2,195, 0.909, +0.9% | 2,138, 0.945, -2.1% | 4,333, 179, 0.927 (0.924), -0.6%, -25 |
+| box 1, anywhere, any view, BSP $40-$100 | 306, 0.944, -5.9% | 840, 0.956, -0.1% | 1,056, 1.041, -10.8% | 1,896, 33, 1.003 (0.921), -6.1%, -115 |
+| box 1, anywhere, market likes it more (BSP <= ours / 1.2), BSP $1.5-$4 | 541, 0.988, -2.1% | 1,416, 0.994, -2.6% | 1,411, 1.024, -7.8% | 2,827, 1,147, 1.009 (0.953), -5.2%, -146 |
+| box 1, anywhere, market likes it more (BSP <= ours / 1.2), BSP $4-$8 | 405, 1.068, -13.7% | 987, 1.108, -18.9% | 964, 0.975, -4.1% | 1,951, 380, 1.042 (0.935), -11.6%, -226 |
+| box 1, anywhere, market likes it more (BSP <= ours / 1.2), BSP $8-$15 | 156, 1.145, -27.8% | 403, 1.040, -8.7% | 390, 1.357, -44.1% | 793, 91, 1.196 (0.927), -26.1%, -207 |
+| box 1, anywhere, market likes it more (BSP <= ours / 1.2), BSP $15-$40 | 94, 0.908, -14.7% | 242, 1.466, -63.1% | 199, 1.129, -20.5% | 441, 28, 1.312 (0.924), -43.9%, -193 |
+| box 1, anywhere, market likes it less (BSP >= 1.3x ours), BSP $1.5-$4 | 57, 0.944, -3.2% | 189, 0.967, -1.0% | 192, 1.045, -9.7% | 381, 121, 1.007 (0.945), -5.4%, -20 |
+| box 1, anywhere, market likes it less (BSP >= 1.3x ours), BSP $4-$8 | 266, 1.055, -18.4% | 647, 0.932, +0.8% | 695, 1.024, -9.4% | 1,342, 228, 0.979 (0.933), -4.5%, -60 |
+| box 1, anywhere, market likes it less (BSP >= 1.3x ours), BSP $8-$15 | 335, 0.805, +14.8% | 880, 1.141, -23.6% | 958, 0.993, -11.2% | 1,838, 180, 1.064 (0.927), -17.1%, -315 **chosen** |
+| box 1, anywhere, market likes it less (BSP >= 1.3x ours), BSP $15-$40 | 496, 1.301, -23.2% | 1,442, 0.829, +8.6% | 1,487, 0.903, +3.2% | 2,929, 110, 0.866 (0.923), +5.9%, +173 **both halves** |
+| box 1, anywhere, market likes it less (BSP >= 1.3x ours), BSP $40-$100 | 238, 0.747, +27.0% | 688, 0.683, +21.3% | 906, 1.035, -14.3% | 1,594, 24, 0.883 (0.921), +1.0%, +16 **chosen** |
+| box 1, strong here (1.1 or over), any view, BSP $1.5-$4 | 1,099, 1.000, -5.0% | 2,849, 0.992, -3.8% | 2,957, 1.020, -6.8% | 5,806, 2,285, 1.006 (0.952), -5.3%, -308 |
+| box 1, strong here (1.1 or over), any view, BSP $4-$8 | 1,156, 1.022, -8.8% | 2,880, 0.985, -6.3% | 2,781, 1.019, -9.7% | 5,661, 1,034, 1.002 (0.934), -8.0%, -451 |
+| box 1, strong here (1.1 or over), any view, BSP $8-$15 | 765, 0.971, -3.5% | 2,034, 1.089, -15.8% | 2,062, 1.056, -14.7% | 4,096, 414, 1.073 (0.927), -15.3%, -625 |
+| box 1, strong here (1.1 or over), any view, BSP $15-$40 | 793, 1.105, -11.1% | 2,185, 0.913, +0.5% | 2,128, 0.949, -2.5% | 4,313, 179, 0.931 (0.924), -1.0%, -43 |
+| box 1, strong here (1.1 or over), any view, BSP $40-$100 | 292, 0.996, -10.6% | 834, 0.962, -0.8% | 1,053, 1.044, -11.1% | 1,887, 33, 1.008 (0.921), -6.5%, -123 |
+| box 1, strong here (1.1 or over), market likes it more (BSP <= ours / 1.2), BSP $1.5-$4 | 524, 0.985, -1.9% | 1,409, 0.994, -2.5% | 1,395, 1.025, -7.9% | 2,804, 1,137, 1.009 (0.953), -5.2%, -146 |
+| box 1, strong here (1.1 or over), market likes it more (BSP <= ours / 1.2), BSP $4-$8 | 400, 1.083, -15.0% | 981, 1.103, -18.1% | 954, 0.969, -3.4% | 1,935, 375, 1.037 (0.935), -10.9%, -210 |
+| box 1, strong here (1.1 or over), market likes it more (BSP <= ours / 1.2), BSP $8-$15 | 149, 1.129, -24.1% | 397, 1.028, -6.7% | 386, 1.344, -43.4% | 783, 89, 1.184 (0.927), -24.8%, -194 |
+| box 1, strong here (1.1 or over), market likes it more (BSP <= ours / 1.2), BSP $15-$40 | 89, 0.953, -20.7% | 239, 1.484, -65.0% | 199, 1.129, -20.5% | 438, 28, 1.321 (0.924), -44.8%, -196 |
+| box 1, strong here (1.1 or over), market likes it less (BSP >= 1.3x ours), BSP $1.5-$4 | 55, 0.922, -1.5% | 186, 0.965, -0.8% | 192, 1.045, -9.7% | 378, 120, 1.006 (0.945), -5.3%, -20 |
+| box 1, strong here (1.1 or over), market likes it less (BSP >= 1.3x ours), BSP $4-$8 | 262, 1.050, -17.2% | 645, 0.935, +0.5% | 694, 1.017, -8.6% | 1,339, 227, 0.977 (0.933), -4.2%, -57 |
+| box 1, strong here (1.1 or over), market likes it less (BSP >= 1.3x ours), BSP $8-$15 | 333, 0.809, +14.4% | 874, 1.149, -24.4% | 953, 0.998, -11.8% | 1,827, 180, 1.070 (0.927), -17.8%, -325 **chosen** |
+| box 1, strong here (1.1 or over), market likes it less (BSP >= 1.3x ours), BSP $15-$40 | 480, 1.298, -23.7% | 1,439, 0.830, +8.5% | 1,482, 0.906, +2.9% | 2,921, 110, 0.869 (0.923), +5.7%, +166 **both halves** |
+| box 1, strong here (1.1 or over), market likes it less (BSP >= 1.3x ours), BSP $40-$100 | 233, 0.762, +25.6% | 683, 0.688, +20.7% | 905, 1.035, -14.4% | 1,588, 24, 0.886 (0.921), +0.7%, +11 **chosen** |
+
+78 rules had 100+ lays in the scored quarter. 9 were chosen on the early-stopping months, and none of the 9 made a
+profit in both scored halves. Luck alone would give about one: most of the 9 are short-priced lays, which a
+zero-edge rule makes a profit on in both halves only a few times in a hundred.
+
+**Box 8 is no longer over-rated.** Over the five "anywhere, any view" bands, laid box 8 runners won at a lay-weighted
+A/E of 0.999 against BSP, and box 1's at 1.003 (21,376 and 21,898 lays). By band, box 8 ran:
+
+| BSP band | A/E | break-even | return per lay |
+|---|---|---|---|
+| $1.50-$4 | 0.967 | 0.951 | -1.1% |
+| $4-$8 | 0.932 | 0.934 | +0.6% |
+| $8-$15 | 1.049 | 0.927 | -11.5% |
+| $15-$40 | 0.968 | 0.924 | -5.9% |
+| $40-$100 | 1.171 | 0.921 | -22.5% |
+
+The 2020-2023 lean against box 8 (Tests 2 and 24) is gone or nearly gone in the scored years.
+
+**Where box 8 is strong at the track, at $4-$8, it came closest:** A/E 0.893, +4.9% on 3,737 lays, chosen.
+- It made +12.1% in the 1st half and lost 2.1% in the 2nd.
+- The market-likes-it-less slice of the same cell made +5.7% in both halves, but on only 666 lays, and it had too few
+  lays on the early-stopping months (89) to be chosen.
+
+The other "both halves" rows are longshots with 5 to 9 winners, or box 1 rules that lost 23% on the early-stopping
+months.
+
+**Decision:** no box 8 lay at BSP. The box is priced right now, and every cell that looks good either failed a half or
+rests on a handful of winners.
