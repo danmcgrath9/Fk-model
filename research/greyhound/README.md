@@ -2790,3 +2790,34 @@ accounts watched sooner.
 **Decision:** A stays on the card. Whether the extra units are worth the extra bets is the founder's call, and a
 walk-forward of the rule on the ensemble should come before any switch. The walk-forward's `horse_rule` uses A only
 today.
+
+## Test 32: the label (6 Nov 2026, gh topaz run 42164443982, `topaz_round19.py`)
+
+The card's model learns the market's chances. It uses BSP's chance where Betfair's files have the dog (2020 on) and
+GRV's SP where they do not: every race before 2020, plus the runners Betfair's files miss since. GRV's SP is a
+bookmaker's price with a 19% margin and its own tilts (Test 24). The training rows were tried four ways, on the
+production inputs and the standard split:
+- 73,369 training races, 38,303 of them with a BSP on every runner (from 1 Jan 2020).
+- GRV's SP corrected to BSP takes a power of 1.065: on the races with both, BSP is a little sharper than the SP.
+- Scored: 22,747 races with BSP (BSP 1.4839) and 25,630 with GRV's SP (SP 1.5951).
+
+| training label | races | rounds | log loss | gap to BSP | 1st half | 2nd half | gap to GRV's SP | SP favourite A/E |
+|---|---|---|---|---|---|---|---|---|
+| L0 BSP's chance, else GRV's SP's (the weekly train) | 73,369 | 2185 | 1.5823 | +0.0984 | +0.0915 | +0.1046 | +0.0149 | 1.151 |
+| L1 only races with a BSP on every runner | 38,303 | 4529 | 1.5805 | +0.0966 | +0.0904 | +0.1021 | +0.0126 | 1.131 |
+| **L2 the rest at half weight** | 73,369 | 4750 | **1.5797** | **+0.0958** | **+0.0890** | **+0.1019** | **+0.0121** | 1.142 |
+| L3 the rest on GRV's SP corrected to BSP (power 1.06) | 73,369 | 4930 | 1.5809 | +0.0970 | +0.0901 | +0.1032 | +0.0134 | 1.139 |
+
+**How big is the noise?** L0 is the same model as rounds 15 and 17. There it scored 1.5816 on 2,878 rounds; here it
+scored 1.5823 on 2,185. The early stopping landed differently, and the run-to-run noise is about 0.0007.
+
+**Every change to the label beats L0, and L2 beats it most.** Against this run's L0, L2 is 0.0026 better. Against the
+same model in round 17 (+0.0977, halves +0.0907 / +0.1039), it is 0.0019 better, and better in both halves. Even L1,
+on half the races, beats L0. So the SP-labelled races are not doing much for the model at full weight. Correcting the
+SP to BSP (L3) helps less than simply weighting those races down. The SP favourite's A/E moves only a little (1.151 to
+1.131-1.142). The favourite gap is not the label's doing either.
+
+**Decision:** not yet in production. The gain is about three times the noise and in both halves, but it is one split.
+`WALK_SP_WEIGHT=0.5` now sets the weight in the walk-forward (`topaz_walk.py`) and in the weekly train
+(`topaz_price_upcoming.py`); the default of 1 leaves both as they were. A walk-forward with the weight at 0.5 goes
+next, against Test 27's +0.0888. The weekly train takes it only if the walk-forward agrees.

@@ -247,7 +247,7 @@ def train(d, label) -> int:
     X = T.features(df, num, rel)
     today = pd.Timestamp.now(tz=SYDNEY).normalize().tz_localize(None)
     rec = 0.5 ** ((((today - df.date).dt.days) / 365.25).values / 3.0)
-    bst = W.fit_fixed(X, df.p_mkt.values.astype(float), df.race_id, rec, W.ROUNDS_A)
+    bst = W.fit_fixed(X, df.p_mkt.values.astype(float), df.race_id, rec * W.label_weight(df), W.ROUNDS_A)
     MODEL_DIR.mkdir(parents=True, exist_ok=True)
     bst.save_model(str(MODEL_DIR / "model.txt"))
     meta = {"cols": list(X.columns), "num": num, "rel": rel, "rounds": int(W.ROUNDS_A), "fit_races": int(df.race_id.nunique()),
@@ -355,7 +355,7 @@ def main(d, label):
     else:
         start = pd.Timestamp(day)
         rec = 0.5 ** ((((start - df.date[tr]).dt.days) / 365.25).values / 3.0)
-        bst = W.fit_fixed(X[tr], df.p_mkt.values[tr].astype(float), df.race_id[tr], rec, W.ROUNDS_A)
+        bst = W.fit_fixed(X[tr], df.p_mkt.values[tr].astype(float), df.race_id[tr], rec * W.label_weight(df[tr]), W.ROUNDS_A)
         n_fit, how = df.race_id[tr].nunique(), "a model fitted in this run (no saved model)"
     print(f"priced with {how}")
     p = V1.race_softmax(bst.predict(X[today.values], raw_score=True), df.race_id.values[today.values])
