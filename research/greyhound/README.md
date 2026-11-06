@@ -4185,3 +4185,140 @@ months.
 
 **Decision:** no box 8 lay at BSP. The box is priced right now, and every cell that looks good either failed a half or
 rests on a handful of winners.
+
+
+## Test 47: the bench, market angles one at a time (7 Nov 2026, gh topaz run 42299569375, `topaz_round29.py`)
+
+The founder: "There would be lots of different things you could test". The bench uses no model: the market against
+itself, on every Victorian race since 2020 that has a BSP on every runner. A rule is one segment, in one price band
+($1.50-$3, $3-$5, $5-$8, $8-$15, $15-$40, $40-$100), with one bet: back at BSP, lay at BSP (8% commission), or back at
+GRV's SP. The segments are:
+- the race: box (each of 1 to 8), track, distance, grade, field size, Betfair's scheduled start (before or after 6pm)
+- the dog's form: starts before, days since the last start, won last start, SP favourite last start, first time at
+  the track
+- outside information: GRV's tip, tracking and checks, the trainer's second runner in the race
+- the market: the late move (Betfair's last pre-play price against its pre-play average) and how much money traded
+
+The price band for a BSP bet is set by Betfair's last pre-play price, which is known before the off, unlike BSP itself.
+For an SP bet it is set by GRV's SP. A rule is:
+- chosen on the first 60% of race days (300+ bets and a profit)
+- scored once on the last 40%, split into halves, with z = return over its standard error. With no edge, about 2.3%
+  of chosen rules reach z >= 2 by luck.
+- re-chosen every month on the 12 months before, then bet (a runner once per bet, however many rules pick it), as
+  Test 42 did
+
+65,285 races, 455,998 runners with a BSP on every runner and GRV's SP: choosing on 2020-01-01 to 2024-02-05 (39,749 races), scored once on 2024-02-06 to 2026-10-31 (25,536 races), halves split at 2025-07-11. Betfair's pre-play prices on 100% of runners.
+
+Races by Betfair's scheduled hour (a check that it is Melbourne's clock): 8h 90, 9h 315, 10h 481, 11h 1,733, 12h 2,208, 13h 2,195, 14h 2,730, 15h 3,010, 16h 2,975, 17h 3,294, 18h 3,409, 19h 3,826, 20h 3,748, 21h 3,110, 22h 1,999, 23h 19
+
+| bet | rules with 300+ bets on the choosing years | chosen (a profit there) | chosen, profit in the scored years | chosen, profit in both halves | chosen, z >= 2 on the scored years | z >= 2 expected by luck |
+|---|---|---|---|---|---|---|
+| back at BSP | 393 | 20 | 4 | 1 | 0 | 0.5 |
+| lay at BSP | 393 | 39 | 9 | 4 | 0 | 0.9 |
+| back at GRV's SP | 389 | 0 | 0 | 0 | 0 | 0.0 |
+
+All bets: 1,175 rules tried, 59 chosen.
+
+Every chosen rule with z >= 1.5 on the scored years, best first:
+
+| rule | choosing years: bets, return, z | scored 1st half: bets, return | 2nd half: bets, return | scored: bets, A/E vs the price paid, return, z |
+|---|---|---|---|---|
+| lay at BSP: grade 4, $40-$100 | 2,503, +19.8%, +1.5 | 750, +17.3% | 927, +36.7% | 1,677, 0.617, +28.0%, +1.7 **both halves** |
+
+### Re-chosen every month on the 12 months before (150+ bets and a profit there), then bet
+
+| bet | rules chosen a month | half | bets | winners | A/E vs the price paid | return | units | months in profit |
+|---|---|---|---|---|---|---|---|---|
+| back at BSP | 50-89 | 1st | 51,466 | 6,043 | 1.000 | -7.1% | -3,664 | 2 of 18 |
+| back at BSP | 50-89 | 2nd | 50,352 | 5,617 | 1.015 | -7.3% | -3,657 | 4 of 16 |
+| back at BSP | 50-89 | all | 101,818 | 11,660 | 1.007 | -7.2% | -7,321 | 5 of 33 |
+| lay at BSP | 57-96 | 1st | 57,911 | 7,615 | 0.991 | -6.5% | -3,752 | 2 of 18 |
+| lay at BSP | 57-96 | 2nd | 54,833 | 7,100 | 0.989 | -5.3% | -2,912 | 4 of 16 |
+| lay at BSP | 57-96 | all | 112,744 | 14,715 | 0.990 | -5.9% | -6,664 | 6 of 33 |
+| back at GRV's SP | 2-10 | 1st | 3,060 | 314 | 0.892 | -16.0% | -489 | 4 of 18 |
+| back at GRV's SP | 2-10 | 2nd | 3,399 | 318 | 0.808 | -25.1% | -852 | 3 of 16 |
+| back at GRV's SP | 2-10 | all | 6,459 | 632 | 0.847 | -20.8% | -1,341 | 7 of 33 |
+
+**Nothing beats luck.**
+- 1,175 rules were tried and 59 chosen. None reached z >= 2 on the scored years, where luck alone would give 1.4. The
+  best was a lay of grade 4 runners at $40-$100: +28.0% on 1,677 lays, z 1.7.
+- Re-chosen every month, every bet loses:
+  - **back at BSP:** -7.2% on 101,818 bets, A/E 1.007
+  - **lay at BSP:** -5.9% on 112,744, A/E 0.990
+  - **back at GRV's SP:** -20.8% on 6,459, A/E 0.847
+- What the market's prices say on their own: at BSP every slice of the market is priced to within a percent or two,
+  and commission takes the rest. GRV's SP is a much worse price, at A/E about 0.85.
+
+**Betfair's own start times read as Melbourne's clock.** Races run from 8am to 11pm and peak at 7-8pm. That confirms
+Test 41's finding that the Topaz start times had been read 10 or 11 hours late.
+
+## Test 48: the bench, box x early speed and the draw (7 Nov 2026, gh topaz run 42301552708, `topaz_round29.py`, `BENCH_PAIRS=yes`)
+
+The founder: "we know there are more boxes than 1 and 8 and then there's dogs that are fast and not fast". Test 47's
+bench, plus:
+- early speed on its own (fastest, 2nd-3rd or 4th+ in the field on past splits, and led early in half its runs)
+- every box x early-speed rank
+- every box x whether a quicker beginner is drawn inside it
+- every early-speed rank x track
+
+65,285 races, 455,998 runners with a BSP on every runner and GRV's SP: choosing on 2020-01-01 to 2024-02-05 (39,749 races), scored once on 2024-02-06 to 2026-10-31 (25,536 races), halves split at 2025-07-11. Betfair's pre-play prices on 100% of runners.
+
+Races by Betfair's scheduled hour (a check that it is Melbourne's clock): 8h 90, 9h 315, 10h 481, 11h 1,733, 12h 2,208, 13h 2,195, 14h 2,730, 15h 3,010, 16h 2,975, 17h 3,294, 18h 3,409, 19h 3,826, 20h 3,748, 21h 3,110, 22h 1,999, 23h 19
+
+Segments: 155 (with box x early speed, box x a quicker beginner inside, early speed x track)
+
+| bet | rules with 300+ bets on the choosing years | chosen (a profit there) | chosen, profit in the scored years | chosen, profit in both halves | chosen, z >= 2 on the scored years | z >= 2 expected by luck |
+|---|---|---|---|---|---|---|
+| back at BSP | 877 | 108 | 28 | 9 | 0 | 2.5 |
+| lay at BSP | 877 | 137 | 38 | 16 | 1 | 3.2 |
+| back at GRV's SP | 867 | 10 | 2 | 0 | 0 | 0.2 |
+
+All bets: 2,621 rules tried, 255 chosen.
+
+Every chosen rule with z >= 1.5 on the scored years, best first:
+
+| rule | choosing years: bets, return, z | scored 1st half: bets, return | 2nd half: bets, return | scored: bets, A/E vs the price paid, return, z |
+|---|---|---|---|---|
+| lay at BSP: box 4, no quicker beginner inside it, $40-$100 | 714, +1.9%, +0.1 | 231, +53.9% | 234, +75.8% | 465, 0.357, +64.9%, +4.1 **both halves** |
+| back at BSP: box 5, a quicker beginner drawn inside it, $8-$15 | 3,478, +0.8%, +0.2 | 1,202, +16.5% | 1,096, +8.4% | 2,298, 1.227, +12.7%, +1.9 **both halves** |
+| lay at BSP: grade 4, $40-$100 | 2,503, +19.8%, +1.5 | 750, +17.3% | 927, +36.7% | 1,677, 0.617, +28.0%, +1.7 **both halves** |
+| lay at BSP: track GEL, fastest early, $8-$15 | 678, +11.1%, +1.0 | 195, +23.1% | 212, +20.0% | 407, 0.756, +21.5%, +1.7 **both halves** |
+| back at BSP: box 2, 4th+ fastest early, $8-$15 | 3,743, +2.0%, +0.4 | 1,248, +6.9% | 1,249, +13.5% | 2,497, 1.184, +10.2%, +1.6 **both halves** |
+
+### Re-chosen every month on the 12 months before (150+ bets and a profit there), then bet
+
+| bet | rules chosen a month | half | bets | winners | A/E vs the price paid | return | units | months in profit |
+|---|---|---|---|---|---|---|---|---|
+| back at BSP | 151-199 | 1st | 61,758 | 8,010 | 1.001 | -7.0% | -4,310 | 2 of 18 |
+| back at BSP | 151-199 | 2nd | 60,725 | 7,892 | 1.008 | -7.5% | -4,553 | 3 of 16 |
+| back at BSP | 151-199 | all | 122,483 | 15,902 | 1.004 | -7.2% | -8,863 | 4 of 33 |
+| lay at BSP | 190-223 | 1st | 66,621 | 9,347 | 0.995 | -6.5% | -4,355 | 1 of 18 |
+| lay at BSP | 190-223 | 2nd | 64,479 | 8,958 | 0.991 | -5.8% | -3,760 | 3 of 16 |
+| lay at BSP | 190-223 | all | 131,100 | 18,305 | 0.993 | -6.2% | -8,116 | 4 of 33 |
+| back at GRV's SP | 22-43 | 1st | 12,108 | 1,504 | 0.840 | -19.2% | -2,322 | 0 of 18 |
+| back at GRV's SP | 22-43 | 2nd | 10,499 | 1,262 | 0.815 | -25.6% | -2,687 | 1 of 16 |
+| back at GRV's SP | 22-43 | all | 22,607 | 2,766 | 0.828 | -22.2% | -5,009 | 1 of 33 |
+
+**Nothing beats luck here either.**
+- 2,621 rules were tried and 255 chosen. One reached z >= 2, where luck alone would give 5.9.
+  - The one is a lay of box 4 runners with no quicker beginner inside them, at $40-$100: 465 lays, +64.9%, z 4.1.
+  - On the choosing years the same lay made +1.9% (z 0.1), and with about three winners in the scored years its z is
+    far less than it looks. A lay that rarely loses has a small spread until the loss comes.
+- The five rules with z >= 1.5 all made a profit in both halves. Two of them are backs at BSP $8-$15 about the draw
+  and early speed, the kind of thing a price might miss:
+  - **box 5 with a quicker beginner drawn inside it:** 2,298 bets, A/E 1.227, +12.7%. That is +16.5% in the 1st half
+    and +8.4% in the 2nd, after +0.8% on the choosing years.
+  - **box 2 and 4th+ fastest early:** 2,497 bets, A/E 1.184, +10.2%. That is +6.9% and +13.5%, after +2.0%.
+- Luck alone would put about 17 of the 255 at z >= 1.5 (6.7%), and here there are 5, so even these two are inside what
+  luck makes.
+- Re-chosen every month, every bet loses:
+  - **back at BSP:** -7.2% on 122,483 bets
+  - **lay at BSP:** -6.2% on 131,100
+  - **back at GRV's SP:** -22.2% on 22,607
+
+**Decision:** no market-only rule at BSP or GRV's SP. The two $8-$15 backs (box 5 with a quicker beginner inside it,
+box 2 when slow away) can be logged on paper at no cost.
+
+Across Tests 39 to 48, everything at BSP gives the same answer. The market alone does not pay: BSP is priced right in
+every slice we can cut, and GRV's SP is far worse. The edge the card has, the 1.3x rule at GRV's SP (Tests 27, 37, 38,
+43, 44), comes from the model's price, and the price it is bet at matters as much as the model. Hence the TAB opens.
