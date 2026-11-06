@@ -1,0 +1,15 @@
+{
+ "day": "Saturday",
+ "date": "7 November",
+ "meetings": [
+  {
+   "name": "Flemington",
+   "note": "",
+   "bets": [
+    {"race": 3, "time": "1:50PM", "horse": "Litzdeel", "price": "$8.50", "rated": "$5.15", "units": "1.46u"},
+    {"race": 9, "time": "5:50PM", "horse": "Salaria", "price": "$11", "rated": "$7.21", "units": "0.63u"}
+   ]
+  }
+ ],
+ "brand": false
+}

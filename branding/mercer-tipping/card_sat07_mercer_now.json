@@ -1,0 +1,16 @@
+{
+ "day": "Saturday",
+ "date": "7 November",
+ "footer": "Win bets.",
+ "meetings": [
+  {
+   "name": "Flemington",
+   "note": "",
+   "bets": [
+    {"race": 3, "time": "1:50PM", "horse": "Litzdeel", "price": "$7", "units": "0.73u"},
+    {"race": 9, "time": "5:50PM", "horse": "Salaria", "price": "$11", "units": "0.32u"}
+   ]
+  }
+ ],
+ "brand": true
+}
