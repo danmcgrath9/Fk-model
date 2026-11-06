@@ -3018,3 +3018,109 @@ rule track by track over the walk-forward's 29 months, before any track gets the
 - Not taken: the lay book, the back book and the 1.2 edge do not hold on the dogs.
 - Still to test: the metro lean at Sandown and The Meadows.
 - The founder's call: the stake size.
+
+## Test 35: Isolynx tracking, and the checks (6 Nov 2026, gh topaz run 42181292510, `topaz_round18.py`)
+
+GRV switched the key on for Isolynx at 2:25pm on 6 Nov. The pull (run 42158318067) asked for 14,140 dogs and got
+96,877 tracked runs of 9,787 dogs, from 20 Oct 2022 to 6 Nov 2026, with no failures. The tracked tracks are The
+Meadows, Sandown, Healesville, Traralgon and Cranbourne.
+
+The inputs come from each dog's earlier tracked runs, par-relative by track and distance (`topaz_round6.isolynx_features`,
+15 inputs):
+- the jump, 50 m, 100 m and last 100 m times
+- rail distance, speed at 100 m and top speed
+
+A tracked run before the race exists for 23% of all runners since 2013, and for 68% in the scored quarter.
+
+**A check** (`greyhound.isolynx.trouble`) is a 50 m section 1 m/s slower than the two either side, or 2+ places lost
+in one section, between the first and the last 100 m. The check inputs: checked in its last tracked run, the dip,
+places lost, and the share checked in its last 5. 53% of tracked runs count as checked, so the threshold is loose
+(see below).
+
+The production inputs and the standard split; 22,747 scored races with BSP (BSP 1.4839).
+
+| lead model | one-leader races | its top pick led | 1st half | 2nd half |
+|---|---|---|---|---|
+| without Isolynx | 22,463 | 40.4% | 40.1% | 40.7% |
+| with Isolynx | 22,463 | 40.3% | 39.9% | 40.5% |
+
+| row | inputs | rounds | log loss | gap to BSP | 1st half | 2nd half |
+|---|---|---|---|---|---|---|
+| F0 the production model, no Isolynx | 161 | 2878 | 1.5816 | +0.0977 | +0.0907 | +0.1039 |
+| **F1 + Isolynx in the win model** | 176 | 5499 | **1.5777** | **+0.0938** | **+0.0860** | **+0.1007** |
+| F2 + Isolynx in the lead model too | 176 | 4040 | 1.5788 | +0.0949 | +0.0874 | +0.1016 |
+| **F3 F2 + the checks** | 180 | 5984 | **1.5775** | **+0.0936** | **+0.0865** | **+0.1000** |
+
+(The split by tracked and other tracks failed: the script matched track names against track codes. It is fixed for
+the next run.)
+
+| last tracked run | runners | wins | A/E vs F2 | A/E vs F3 | A/E vs BSP | A/E vs GRV's SP |
+|---|---|---|---|---|---|---|
+| checked | 50,749 | 7,363 | 1.027 | 1.023 | 1.008 | 1.016 |
+| not checked | 58,963 | 8,262 | 0.959 | 0.961 | 1.000 | 0.997 |
+| checked, 3+ places lost | 3,303 | 492 | 1.009 | 1.004 | 0.992 | 1.016 |
+| no tracked run before | 50,366 | 7,122 | 1.023 | 1.025 | 0.993 | 0.988 |
+
+The 1.3x rule at GRV's SP (our price $2-$15, Kelly x75 cap 4):
+
+| row | guard | half | bets | winners | A/E | flat ROI | units staked | Kelly ROI | units won |
+|---|---|---|---|---|---|---|---|---|---|
+| F0 | none | 1st | 699 | 188 | 1.666 | +71.7% | 1,413 | +71.1% | +1,004 |
+| F0 | none | 2nd | 703 | 173 | 1.603 | +72.6% | 1,232 | +74.9% | +922 |
+| F0 | none | all | 1,402 | 361 | 1.635 | +72.1% | 2,645 | +72.8% | +1,927 |
+| F0 | drift under 1.3x | 1st | 481 | 152 | 1.808 | +91.1% | 1,084 | +87.5% | +949 |
+| F0 | drift under 1.3x | 2nd | 407 | 133 | 1.904 | +116.1% | 812 | +109.3% | +888 |
+| F0 | drift under 1.3x | all | 888 | 285 | 1.852 | +102.6% | 1,897 | +96.8% | +1,837 |
+| F1 | none | 1st | 984 | 247 | 1.573 | +63.3% | 1,963 | +66.6% | +1,307 |
+| F1 | none | 2nd | 1,040 | 225 | 1.440 | +51.2% | 1,801 | +59.7% | +1,074 |
+| F1 | none | all | 2,024 | 472 | 1.507 | +57.1% | 3,764 | +63.3% | +2,381 |
+| F1 | drift under 1.3x | 1st | 680 | 205 | 1.760 | +88.4% | 1,489 | +84.6% | +1,259 |
+| F1 | drift under 1.3x | 2nd | 620 | 172 | 1.656 | +88.1% | 1,195 | +85.3% | +1,019 |
+| F1 | drift under 1.3x | all | 1,300 | 377 | 1.711 | +88.3% | 2,684 | +84.9% | +2,278 |
+| F2 | none | 1st | 976 | 239 | 1.527 | +59.8% | 1,934 | +60.9% | +1,178 |
+| F2 | none | 2nd | 1,027 | 216 | 1.411 | +48.6% | 1,769 | +59.3% | +1,049 |
+| F2 | none | all | 2,003 | 455 | 1.469 | +54.0% | 3,703 | +60.1% | +2,227 |
+| F2 | drift under 1.3x | 1st | 680 | 200 | 1.717 | +86.5% | 1,479 | +81.5% | +1,205 |
+| F2 | drift under 1.3x | 2nd | 600 | 168 | 1.689 | +92.9% | 1,164 | +89.4% | +1,040 |
+| F2 | drift under 1.3x | all | 1,280 | 368 | 1.704 | +89.5% | 2,643 | +85.0% | +2,246 |
+| F3 | none | 1st | 1,028 | 261 | 1.597 | +66.6% | 2,013 | +68.0% | +1,368 |
+| F3 | none | 2nd | 1,048 | 227 | 1.443 | +51.2% | 1,834 | +62.4% | +1,144 |
+| F3 | none | all | 2,076 | 488 | 1.521 | +58.8% | 3,847 | +65.3% | +2,512 |
+| F3 | drift under 1.3x | 1st | 717 | 216 | 1.751 | +90.2% | 1,542 | +84.5% | +1,304 |
+| F3 | drift under 1.3x | 2nd | 626 | 175 | 1.681 | +88.1% | 1,219 | +90.9% | +1,108 |
+| F3 | drift under 1.3x | all | 1,343 | 391 | 1.719 | +89.2% | 2,762 | +87.3% | +2,412 |
+
+**Isolynx in the win model is the biggest single step since GRV's rating.**
+- F1 is 0.0039 closer to BSP (+0.0938 against +0.0977), and closer in both halves (0.0047 and 0.0032). The F0 here
+  is the same 2,878-round fit as rounds 15 and 17, so the comparison is clean, and the gain is about five times the
+  noise.
+- For scale, GRV's rating was worth 0.0068 in the walk-forward (Test 28).
+- This is with tracking for only 23% of the training rows: tracking starts in Oct 2022 and the fit runs from 2013.
+
+**Isolynx does not help the lead model.** Its top pick led 40.3% of the time, against 40.4% without, and putting
+tracking into the lead model (F2) is worse than leaving it out (F1). The lead model already has the first-split
+ratings, and the tracking's jump and 50 m times add nothing to who leads.
+
+**The checks add a little more** (F3, 0.0013 on F2). They also show something the market prices and we did not:
+- Dogs checked in their last tracked run win 2.7% more than our model says, and dogs with a clean last run win 4.1%
+  less.
+- BSP has both right (1.008 and 1.000).
+- So the market knows a dog had trouble last start, and our model did not.
+- F3 barely moves the A/E (1.023 / 0.961), most likely because the checks exist only from Oct 2022 and most of the fit
+  is older.
+- The threshold is too loose to be a "check" in the founder's sense: 53% of runs pass it, and the tighter "3+ places
+  lost" group is close to right already (1.009). The A/E split is real either way.
+
+**In the 1.3x rule, Isolynx brings more bets at a lower edge, and more units in both halves.**
+- With the drift guard: F1 +1,259 and +1,019 against F0's +949 and +888, at a Kelly ROI of 84.9% against 96.8%.
+- F3 makes the most: +2,412 units at 87.3%.
+- This is the Test 31 pattern again: every gain in the price brings more disagreements with the SP, each a little
+  smaller.
+
+**Decision:** Isolynx goes into the win model and the checks with it (F3), not into the lead model. That needs:
+1. a walk-forward with it, against Test 27's +0.0888
+2. the nightly price run pulling each card dog's tracking first. That is a day's runners, about 600 calls at 72 a
+   minute, about 9 minutes, and the weekly train re-pulling the dogs that ran that week.
+
+Until both are built and the walk-forward agrees, the card runs as it is. Next for the checks: a stricter threshold,
+and fitting only on 2022 on, where the checks exist.
