@@ -23,6 +23,7 @@ Since Test 14 the model also carries the ratings upgrades (Test 16) and this rac
                       of rows gets its chance from a lead model fitted only on races before that half-year (fixed
                       LEAD_ROUNDS), so neither the win model's training rows nor its priced rows see their own result
   WALK_DRIFT=yes      Betfair's shortest pre-play price, for the drift guard on the bets (Test 25); needs BETFAIR_DIR
+  WALK_RULE_ENSEMBLE=yes  the 1.3x rule at GRV's SP a second time, with the ensemble as ours (Test 31)
 
 THE BETS are chosen the same way. For each month from the scored quarter on, the rule (signal: the model, the
 ensemble, or Benter's blend of the model with the market; one bet a race or every qualifier; price band; edge) is the
@@ -391,15 +392,20 @@ def main(d, label):
     if "bsp" in df:
         sequential_bets(df, first_bet, "bsp", "p_bsp", 0.08, "Bets at BSP, 8% commission on winnings")
     horse_rule(df, first_bet, "start_price", "p_sp", 0.0, "The 1.3x rule at GRV's SP, no commission")
+    if os.environ.get("WALK_RULE_ENSEMBLE", "").strip().lower() == "yes":
+        # Test 31: the same rule with the ensemble (the model and its winners twin) as ours
+        horse_rule(df, first_bet, "start_price", "p_sp", 0.0,
+                   "The 1.3x rule at GRV's SP on the ensemble (the model and its winners twin), no commission", sig="p_ens")
     if "bsp" in df:
         horse_rule(df, first_bet, "bsp", "p_bsp", 0.08, "The 1.3x rule at BSP, 8% commission on winnings")
 
 
-def horse_rule(df, first_bet, price_col, p_mkt_col, comm, title):
-    """Test 21's rule month by month, the Benter blend refitted on the six months before each month; with the drift
-    guard (Test 25) beside it when the drift column is there."""
+def horse_rule(df, first_bet, price_col, p_mkt_col, comm, title, sig="p_a"):
+    """Test 21's rule month by month, the Benter blend of `sig` (ours: the model p_a, or the ensemble p_ens) with the
+    market refitted on the six months before each month; with the drift guard (Test 25) beside it when the drift column
+    is there."""
     import topaz_round9 as R9           # here: it imports this module
-    d = df[df.p_a.notna() & df[p_mkt_col].notna() & df[price_col].notna() & (df[price_col] > 1)]
+    d = df[df[sig].notna() & df[p_mkt_col].notna() & df[price_col].notna() & (df[price_col] > 1)]
     months = pd.period_range(first_bet, d.date.max().to_period("M"), freq="M")
     rows = {"no guard": [], f"drift guard {DRIFT_CAP:g}x": []} if "drift" in d else {"no guard": []}
     weights = []
@@ -408,9 +414,9 @@ def horse_rule(df, first_bet, price_col, p_mkt_col, comm, title):
         cur = d[(d.date >= M.start_time) & (d.date < (M + 1).start_time)]
         if len(W) < 1000 or len(cur) == 0:
             continue
-        wb, _ = V1.blend(["p_a", p_mkt_col], W)
+        wb, _ = V1.blend([sig, p_mkt_col], W)
         weights.append(wb)
-        pb = V1.blend(["p_a", p_mkt_col], cur, wb)[1]
+        pb = V1.blend([sig, p_mkt_col], cur, wb)[1]
         price = cur[price_col].astype(float).values
         m, o, u = R9.horse_bets(cur, pb, cur[p_mkt_col].values, price, comm, 1.3, (2, 15))
         for name in rows:
