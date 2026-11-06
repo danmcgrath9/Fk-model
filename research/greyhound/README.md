@@ -2479,3 +2479,96 @@ cannot prove that, but every rule at GRV's SP points the same way, and none poin
 **Decision:** GRV's rating is already in the weekly train (`WALK_GRV_RATING=yes`). The reliable beginners and the lead
 chance go in too, on the betting evidence. The lead model is fitted in the weekly train and saved beside the win model,
 so the nightly price run loads it rather than fitting 27 lead models a night.
+
+## Test 29: sharpen the price, and the place market (6 Nov 2026, gh topaz run 42139071416, `topaz_round15.py`)
+
+**Set-up.**
+- The production inputs, the weekly train's:
+  - 161 inputs with GRV's rating, the reliable beginners and the lead chance
+  - the lead chance forward-chained by half-year, 27 lead fits
+- The standard split: early stopping took 2,878 rounds, and the last quarter is scored.
+- Scored: 22,747 races with BSP; BSP's log loss on them is 1.4839.
+
+### Part A: is the model too flat?
+
+Test 24 found the SP favourite wins 16% more than our model says. If the whole price were too flat (favourites too
+long, outsiders too short), a power on the race softmax would fix it: p ~ p_model ^ a, with a > 1 sharpening. The
+power was chosen on the early-stopping months, from 0.80 to 1.60 in steps of 0.02.
+
+The early-stopping months chose a = **1.02**. Their log loss was 1.5955 at 1.00 and 1.5953 at 1.02.
+
+| price | log loss | gap to BSP | 1st half | 2nd half | SP favourite A/E |
+|---|---|---|---|---|---|
+| the model as fitted | 1.5816 | +0.0977 | +0.0907 | +0.1039 | 1.149 |
+| sharpened, power 1.02 | 1.5814 | +0.0975 | +0.0905 | +0.1037 | 1.136 |
+
+**The model is not too flat.** Sharpening gains 0.0002 and brings the favourite's A/E from 1.149 to 1.136. A power big
+enough to close the favourite's gap would cost more on every other dog than it gains on the favourite, which is why the
+early-stopping months stopped at 1.02. The favourite is a bias of its own, not a scale on the whole price.
+**Decision:** no change to production.
+
+### Part B: the place market
+
+Betfair's place result sets each race's places: 2 in 61% of the 22,492 scored races with a place BSP on every runner,
+3 in the rest. The three place chances compared:
+- **ours**: Harville's, from our win chances
+- **the market's**: 1 / place BSP, rescaled so the race adds to the places paid
+- **the blend**: a logit blend of the two, fitted on the early-stopping months
+
+The fitted blend is logit(blend) = **-0.02** x ours + **1.03** x market + 0.01.
+
+| place chance | binary log loss | 1st half | 2nd half | A/E |
+|---|---|---|---|---|
+| ours (Harville from our win chances) | 0.5608 | 0.5618 | 0.5598 | 1.000 |
+| place BSP | 0.5290 | 0.5304 | 0.5276 | 1.000 |
+| the blend | 0.5288 | 0.5303 | 0.5274 | 1.000 |
+
+| our place price | runners | placed | A/E vs ours | A/E vs place BSP |
+|---|---|---|---|---|
+| $1-$1.5 | 18,367 | 12,584 | 0.869 | 0.994 |
+| $1.5-$2 | 20,974 | 11,093 | 0.916 | 0.999 |
+| $2-$3 | 30,071 | 12,446 | 1.005 | 1.003 |
+| $3-$5 | 33,215 | 9,790 | 1.117 | 1.003 |
+| $5-$10 | 30,689 | 5,871 | 1.282 | 1.009 |
+| $10-$1000 | 25,174 | 2,029 | 1.357 | 0.984 |
+
+**Our place price adds nothing to place BSP.**
+- Place BSP beats ours in both halves.
+- The blend's weight on ours is nil (-0.02).
+- Ours shows Harville's known bias:
+  - our shortest dogs placed 13% less often than ours said
+  - dogs over $10 placed 36% more often
+- Place BSP is within 2% of the truth in every band.
+
+Harville gives a favourite too much chance of filling second and third. Changing that would be a better place
+formula, not a better model, and against place BSP there is no room for it.
+
+The value rule at place BSP (8% commission, our place price $1.20-$10, Kelly x75 on halfway between the blend and the
+market, cap 4):
+
+| rule | half | bets | placed | flat ROI | units staked | Kelly ROI | units won |
+|---|---|---|---|---|---|---|---|
+| 1.1x | 1st | 163 | 64 | +41.7% | 530 | +40.6% | +215 |
+| 1.1x | 2nd | 327 | 131 | +30.5% | 1,021 | +38.4% | +392 |
+| 1.2x | 1st | 102 | 40 | +49.9% | 382 | +50.5% | +193 |
+| 1.2x | 2nd | 137 | 59 | +75.5% | 512 | +75.6% | +387 |
+| 1.3x | 1st | 83 | 34 | +65.0% | 315 | +64.0% | +202 |
+| 1.3x | 2nd | 96 | 43 | +92.0% | 374 | +90.4% | +338 |
+
+**These profits are not a bet anyone can make, and they are not our model's.**
+- The blend is the market (weights -0.02 / 1.03 / +0.01), so "place BSP at least 1.3 times the blended price" reads,
+  near enough, as "place BSP at least 1.3 times the market's own rescaled price". That happens only in races whose
+  place BSPs add up to well under the places paid: the places divided by the sum of 1 / place BSP is at least 1.3, so
+  the place book is under about 77% of fair.
+- This is inferred from the blend's weights. The run did not print each bet's place book; round 16 measures it.
+- The condition reads every runner's final place BSP, which nobody knows until the off.
+
+What it does say is that some Victorian place markets settle under-round at BSP, by enough to have paid +30% to +92% in
+both halves. Whether that is any use depends on two things round 16 checks:
+- Can it be seen before the off, from the last place price traded?
+- Does the money in those markets carry a stake? In a thin market, a backer's own BSP stake pulls the BSP in.
+
+The run logged a divide warning on the Kelly stake. Runners whose stake came out undefined fail the stake test, so they
+are in no count above; the cause has not been checked.
+
+**Decision:** nothing from Part B goes to the card. Our model does not price the place market better than place BSP.
