@@ -1026,3 +1026,6 @@ Cranbourne Fri (founder, 9:45pm): Speir R6 1.88u $8 lost -1.88u; Power And The B
 marked SCR in the prices file). Card: Speir 0.94u lost, Power And The Beat 1.11u refunded.
 FRIDAY OPEN BOOK: 3 bets settled, 1 winner (Big Vee), +5.59u (+$280). Card: 3.95u out, 6.18u in, +2.23u (+56%).
 Cranbourne lays wait for Form King's results.
+Cranbourne Fri lays R1-R5 (Form King results, 9:55pm; R6-R8 not posted yet): Cowboykickedfive R1 ($24, 7th), Trentino R4
+($16.46, 3rd), Mykindakandy R5 ($28, 5th), Brutal World R5 ($31.78, 3rd), Claymore Mine R5 ($32, 4th): 5 lays, 0 winners,
++4.60u (+$920). R6-R8 lays settle when the results post.

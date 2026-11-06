@@ -1,0 +1,71 @@
+## cranbourne-20261106: 70 entries
+R1 Quemax                   finish 1  SP 2.7  BSP 2.82
+R1 Sondera                  finish 2  SP 2.15  BSP 2.64
+R1 Parera                   finish 3  SP 6.5  BSP 9.03
+R1 The Long Mover           finish 4  SP 101.0  BSP 370.0
+R1 Fram Strait              finish 5  SP 26.0  BSP 34.0
+R1 Whatwashethinking        finish 6  SP 41.0  BSP 75.0
+R1 Cowboykickedfive         finish 7  SP 17.0  BSP 24.0
+R1 Immortal Diva            finish 8  SP 101.0  BSP 340.0
+R1 Propellant               finish 9  SP 13.0  BSP 20.0
+R2 Engulf                   finish 1  SP 3.4  BSP 4.8
+R2 Vespers                  finish 2  SP 3.7  BSP 3.49
+R2 Silver Lightning         finish 3  SP 7.0  BSP 10.0
+R2 Native Spirit            finish 4  SP 71.0  BSP 130.45
+R2 Toy Maker                finish 5  SP 8.5  BSP 8.6
+R2 Faro Lady                finish 6  SP 11.0  BSP 16.5
+R2 Fanfire                  finish 7  SP 14.0  BSP 22.53
+R2 Lonnegan                 finish 8  SP 4.6  BSP 5.5
+R3 Civic Square             finish 1  SP 3.2  BSP 3.39
+R3 Action Point             finish 2  SP 2.4  BSP 2.85
+R3 Teen Torque              finish 3  SP 10.0  BSP 12.86
+R3 Wollemi                  finish 4  SP 6.0  BSP 9.0
+R3 Swift Action             finish 5  SP 31.0  BSP 55.0
+R3 Around The Marx          finish 6  SP 21.0  BSP 17.59
+R3 Blue And Gold            finish 7  SP 7.0  BSP 10.51
+R4 Silver Snow              finish 1  SP 11.0  BSP 14.5
+R4 Shields                  finish 2  SP 26.0  BSP 36.0
+R4 Trentino                 finish 3  SP 11.0  BSP 16.46
+R4 Rock About               finish 4  SP 4.0  BSP 4.76
+R4 Royal Business           finish 5  SP 41.0  BSP 65.0
+R4 Upcoming                 finish 6  SP 26.0  BSP 36.0
+R4 La Velocita              finish 7  SP 6.5  BSP 6.2
+R4 Sweet Champagne          finish 8  SP 41.0  BSP 60.0
+R4 Hellica                  finish 9  SP 10.0  BSP 9.01
+R4 Community Gaz            finish 10  SP 101.0  BSP 266.46
+R4 Full Zoom                finish 11  SP 12.0  BSP 19.5
+R4 Seinfeld                 finish 12  SP 3.1  BSP 4.32
+R5 Marsept                  finish 1  SP 1.7  BSP 2.0
+R5 Layla                    finish 2  SP 2.4  BSP 2.84
+R5 Brutal World             finish 3  SP 16.0  BSP 31.78
+R5 Claymore Mine            finish 4  SP 17.0  BSP 32.0
+R5 Mykindakandy             finish 5  SP 19.0  BSP 28.0
+R5 O'mosa                   finish 6  SP 91.0  BSP 290.0
+R6 Mainmankash              finish None  SP None  BSP None
+R6 Monix                    finish None  SP None  BSP None
+R6 Magnabelle Royale        finish None  SP None  BSP None
+R6 Highland Harley          finish None  SP None  BSP None
+R6 Speir                    finish None  SP None  BSP None
+R6 Pano's Pride             finish None  SP None  BSP None
+R6 Weapon Clear             finish None  SP None  BSP None
+R6 Room For Bingo           finish None  SP None  BSP None
+R7 Blue Bandit              finish None  SP None  BSP None
+R7 She's Pretty Rich        finish None  SP None  BSP None
+R7 Jewel Bay                finish None  SP None  BSP None
+R7 Regal Might              finish None  SP None  BSP None
+R7 Waco Kid                 finish None  SP None  BSP None
+R7 Bit Of Shoosh            finish None  SP None  BSP None
+R7 Kastun Star              finish None  SP None  BSP None
+R7 Onavuitton               finish None  SP None  BSP None
+R7 Couldthisbetheone        finish None  SP None  BSP None
+R7 Discover Lupino          finish None  SP None  BSP None
+R7 Lyrics 'n' Song          finish None  SP None  BSP None
+R8 Toronova                 finish None  SP None  BSP None
+R8 Savvie Blanc             finish None  SP None  BSP None
+R8 Finance Shogun           finish None  SP None  BSP None
+R8 Ashau Valley             finish None  SP None  BSP None
+R8 Sinister Sauce           finish None  SP None  BSP None
+R8 Surperb Frost            finish None  SP None  BSP None
+R8 Power And The Beat       finish None  SP None  BSP None
+R8 Mount Sabyinyo           finish None  SP None  BSP None
+R8 Hedjet                   finish None  SP None  BSP None
