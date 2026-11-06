@@ -1,4 +1,4 @@
-## cranbourne-20261106: 70 entries
+## cranbourne-20261106: 67 entries
 R1 Quemax                   finish 1  SP 2.7  BSP 2.82
 R1 Sondera                  finish 2  SP 2.15  BSP 2.64
 R1 Parera                   finish 3  SP 6.5  BSP 9.03
@@ -41,31 +41,28 @@ R5 Brutal World             finish 3  SP 16.0  BSP 31.78
 R5 Claymore Mine            finish 4  SP 17.0  BSP 32.0
 R5 Mykindakandy             finish 5  SP 19.0  BSP 28.0
 R5 O'mosa                   finish 6  SP 91.0  BSP 290.0
-R6 Mainmankash              finish None  SP None  BSP None
-R6 Monix                    finish None  SP None  BSP None
-R6 Magnabelle Royale        finish None  SP None  BSP None
-R6 Highland Harley          finish None  SP None  BSP None
-R6 Speir                    finish None  SP None  BSP None
-R6 Pano's Pride             finish None  SP None  BSP None
-R6 Weapon Clear             finish None  SP None  BSP None
-R6 Room For Bingo           finish None  SP None  BSP None
-R7 Blue Bandit              finish None  SP None  BSP None
-R7 She's Pretty Rich        finish None  SP None  BSP None
-R7 Jewel Bay                finish None  SP None  BSP None
-R7 Regal Might              finish None  SP None  BSP None
-R7 Waco Kid                 finish None  SP None  BSP None
-R7 Bit Of Shoosh            finish None  SP None  BSP None
-R7 Kastun Star              finish None  SP None  BSP None
-R7 Onavuitton               finish None  SP None  BSP None
-R7 Couldthisbetheone        finish None  SP None  BSP None
-R7 Discover Lupino          finish None  SP None  BSP None
-R7 Lyrics 'n' Song          finish None  SP None  BSP None
-R8 Toronova                 finish None  SP None  BSP None
-R8 Savvie Blanc             finish None  SP None  BSP None
-R8 Finance Shogun           finish None  SP None  BSP None
-R8 Ashau Valley             finish None  SP None  BSP None
-R8 Sinister Sauce           finish None  SP None  BSP None
-R8 Surperb Frost            finish None  SP None  BSP None
-R8 Power And The Beat       finish None  SP None  BSP None
-R8 Mount Sabyinyo           finish None  SP None  BSP None
-R8 Hedjet                   finish None  SP None  BSP None
+R6 Mainmankash              finish 1  SP 2.2  BSP 2.11
+R6 Highland Harley          finish 2  SP 10.0  BSP 12.5
+R6 Magnabelle Royale        finish 3  SP 3.2  BSP 3.95
+R6 Weapon Clear             finish 4  SP 21.0  BSP 34.46
+R6 Monix                    finish 5  SP 41.0  BSP 70.0
+R6 Room For Bingo           finish 6  SP 21.0  BSP 30.0
+R6 Speir                    finish 7  SP 8.5  BSP 13.5
+R6 Pano's Pride             finish 8  SP 8.5  BSP 12.52
+R7 She's Pretty Rich        finish 1  SP 21.0  BSP 37.56
+R7 Onavuitton               finish 2  SP 3.0  BSP 2.94
+R7 Discover Lupino          finish 3  SP 8.0  BSP 9.85
+R7 Regal Might              finish 4  SP 3.9  BSP 5.4
+R7 Kastun Star              finish 5  SP 11.0  BSP 17.5
+R7 Bit Of Shoosh            finish 6  SP 26.0  BSP 40.0
+R7 Waco Kid                 finish 7  SP 17.0  BSP 20.0
+R7 Lyrics 'n' Song          finish 8  SP 4.2  BSP 4.55
+R7 Couldthisbetheone        finish 9  SP 19.0  BSP 30.0
+R8 Hedjet                   finish 1  SP 2.1  BSP 2.4
+R8 Mount Sabyinyo           finish 2  SP 4.4  BSP 4.62
+R8 Savvie Blanc             finish 3  SP 9.0  BSP 12.07
+R8 Surperb Frost            finish 4  SP 7.0  BSP 9.09
+R8 Sinister Sauce           finish 5  SP 12.0  BSP 16.0
+R8 Finance Shogun           finish 6  SP 9.0  BSP 13.0
+R8 Ashau Valley             finish 7  SP 26.0  BSP 36.0
+R8 Toronova                 finish 8  SP 71.0  BSP 180.0

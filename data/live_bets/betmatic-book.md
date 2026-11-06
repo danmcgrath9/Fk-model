@@ -1029,3 +1029,8 @@ Cranbourne lays wait for Form King's results.
 Cranbourne Fri lays R1-R5 (Form King results, 9:55pm; R6-R8 not posted yet): Cowboykickedfive R1 ($24, 7th), Trentino R4
 ($16.46, 3rd), Mykindakandy R5 ($28, 5th), Brutal World R5 ($31.78, 3rd), Claymore Mine R5 ($32, 4th): 5 lays, 0 winners,
 +4.60u (+$920). R6-R8 lays settle when the results post.
+Cranbourne Fri fully settled (Form King results Sat 7:05am): Speir 7th (SP $8.50, BSP $13.50). Lays R6-R8: Room For Bingo
+($30, 6th), Weapon Clear ($34.46, 4th), Kastun Star ($17.50, 5th), Couldthisbetheone ($30, 9th), Bit Of Shoosh ($40, 6th).
+Cranbourne lays 10, 0 winners, +9.20u (+$1,840); R7 winner She's Pretty Rich (BSP $37.56) was not on the lay list.
+FRIDAY FINAL (paper): open +5.59u (+$280); lays 17, 1 winner, -1.46u (-$292); backs none; day -$12. Card +2.23u (+56%).
+Lay trial (28 Oct to 6 Nov): 97 lays, 3 winners, +29.80u (+$5,960 at $200).
