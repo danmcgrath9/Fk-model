@@ -1040,3 +1040,6 @@ Flemington (opened Wed): R3 Litzdeel 1.46u $8.50 (ours $5.15), R9 Salaria 0.63u 
 R7 Fridge Monster 2.78u $22.67 (ours $7.72; 2.9x ours, so the big-overlay double fired), R7 Shaalute 0.88u $13 ($9.59).
 Balnarring (paper meeting) no market at 8:35am. Day 5.75u. Cards: Mercer at 8:35am prices (Litzdeel $7, Salaria $11,
 Fridge Monster $11, Shaalute $8; half units); no-Mercer at the open.
+Sat 9:30am re-price on the final fields (Flemington s6t Soft 6, our call; Geelong d5h Dead; Balnarring h8c Heavy 8, paper):
+20 scratchings at Flemington, 30 at Geelong, 11 at Balnarring, none of ours. Ours now: Litzdeel $4.91, Salaria $7.92,
+Fridge Monster $6.93, Shaalute $9.83. Lay candidates: Flemington 72, Geelong 54. Balnarring's market still not up.

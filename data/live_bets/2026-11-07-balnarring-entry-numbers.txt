@@ -1,7 +1,7 @@
 1|4|Powershare|False|False
 1|2|Excelaot|False|False
 1|1|Brazen Martini|False|False
-1|3|Galagacisco|False|False
+1|3|Galagacisco|False|True
 1|5|Station Road|False|False
 1|6|Russian Tide|False|False
 2|3|Mexican Fiddler|False|False
@@ -9,32 +9,32 @@
 2|4|Second Guess|False|False
 2|1|Elite Pete|False|False
 2|6|Maristela|False|False
-2|5|Banjette|False|False
+2|5|Banjette|False|True
 3|7|Anything But|False|False
 3|2|Ocean's Jen|False|False
-3|4|I'm Dynamite|False|False
+3|4|I'm Dynamite|False|True
 3|5|Disclevaboy|False|False
-3|3|Wagunda|False|False
+3|3|Wagunda|False|True
 3|6|Wilma Wombat|False|False
 3|1|Epicus|False|False
 3|10|Littlebirdie|False|False
-3|9|Juniors Queen|False|False
+3|9|Juniors Queen|False|True
 3|8|Loveofmylife|False|False
-3|11|Crying Cougar|True|False
+3|11|Crying Cougar|True|True
 4|8|Tofik Tok|False|False
 4|2|Dente's Inferno|False|False
 4|5|Shintaro Samurai|False|False
-4|1|Good Lordy Me|False|False
+4|1|Good Lordy Me|False|True
 4|6|Lilt|False|False
-4|7|Moonlight Romance|False|False
+4|7|Moonlight Romance|False|True
 4|3|Hansard|False|False
 4|4|Numbersneverseen|False|False
 5|10|Satin Image|False|False
 5|6|Redwood Shadow|False|False
 5|8|Testing The Cugat|False|False
-5|12|Popeye The Sailor|True|False
-5|13|Toronova|True|False
-5|11|Mrs Gossip|True|False
+5|12|Popeye The Sailor|True|True
+5|13|Toronova|True|True
+5|11|Mrs Gossip|True|True
 5|4|Downtown Man|False|False
 5|5|Nic Says No|False|False
 5|2|Avonview|False|False

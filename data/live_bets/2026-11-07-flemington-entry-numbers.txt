@@ -1,9 +1,9 @@
 1|11|Naughty May|False|False
 1|2|Steel Point|False|False
 1|5|She's Supreme|False|False
-1|6|Dark Sister|False|False
+1|6|Dark Sister|False|True
 1|7|Goddess Kay|False|False
-1|12|Palmilla|False|False
+1|12|Palmilla|False|True
 1|1|Public Affairs|False|False
 1|8|Jacquets Off|False|False
 1|10|Natural Emotion|False|False
@@ -15,7 +15,7 @@
 2|2|Fiorenot|False|False
 2|3|Nation's Call|False|False
 2|10|Hiyaam Proud|False|False
-2|12|Stage 'n' Screen|False|False
+2|12|Stage 'n' Screen|False|True
 2|11|Mount Bona|False|False
 2|13|Superfabulistic|False|False
 2|5|Test Of Love|False|False
@@ -24,10 +24,10 @@
 2|7|Options|False|False
 2|9|Grand Omaha|False|False
 2|8|Silvasista|False|False
-3|2|Vauban|False|False
+3|2|Vauban|False|True
 3|6|Torranzino|False|False
 3|3|Berkeley Square|False|False
-3|12|House Of Lords|False|False
+3|12|House Of Lords|False|True
 3|9|Manzor Blue|False|False
 3|7|Valiant King|False|False
 3|11|Bella Montagna|False|False
@@ -37,8 +37,8 @@
 3|4|Pinhole|False|False
 3|1|Defiantly|False|False
 4|8|Grand Impact|False|False
-4|16|Elouyou|False|False
-4|13|Tuff Tu Mus|False|False
+4|16|Elouyou|False|True
+4|13|Tuff Tu Mus|False|True
 4|15|Piastri|False|False
 4|1|Arkansaw Kid|False|False
 4|4|Watchme Win|False|False
@@ -50,7 +50,7 @@
 4|12|Cripps|False|False
 4|10|La Fracas|False|False
 4|17|Hankee Alpha|True|False
-4|14|Jimmy Recard|False|False
+4|14|Jimmy Recard|False|True
 4|6|Inkaruna|False|False
 4|5|Pallaton|False|False
 5|8|Vivy Air|False|False
@@ -62,19 +62,19 @@
 5|2|Sunset Park|False|False
 5|9|You Wahng|False|False
 5|11|Sun Worshipper|False|False
-5|18|Superfabulistic|True|False
+5|18|Superfabulistic|True|True
 5|5|Too Darn Discreet|False|False
 5|17|Classic Gem|True|False
 5|7|Zuleika|False|False
-5|16|Samarelle|False|False
+5|16|Samarelle|False|True
 5|1|Panova|False|False
 5|4|Soverato|False|False
 5|15|Ocean Bay|False|False
 5|14|Pillow Fight|False|False
 6|2|Mazu|False|False
 6|3|Headwall|False|False
-6|5|Rey Magnerio|False|False
-6|1|Giga Kick|False|False
+6|5|Rey Magnerio|False|True
+6|1|Giga Kick|False|True
 6|9|Skybird|False|False
 6|4|Caballus|False|False
 6|8|Charm Stone|False|False
@@ -86,7 +86,7 @@
 7|5|Pounding|False|False
 7|3|Buckaroo|False|False
 7|2|Lindermann|False|False
-7|6|Another Wil|False|False
+7|6|Another Wil|False|True
 7|7|El Soleado|False|False
 7|1|Tom Kitten|False|False
 7|4|Sepals|False|False
@@ -101,24 +101,24 @@
 8|10|Aeliana|False|False
 8|3|Sir Delius|False|False
 8|5|Birdman|False|False
-8|8|Sabaj|False|False
+8|8|Sabaj|False|True
 8|9|Omni Man|False|False
 9|17|Fission|True|False
-9|3|Annie's Rose|False|False
+9|3|Annie's Rose|False|True
 9|1|Verdoux|False|False
 9|9|King Tut|False|False
-9|15|Hustle In Heels|False|False
-9|4|Sergeant Major|False|False
-9|20|My Zephyr|True|False
+9|15|Hustle In Heels|False|True
+9|4|Sergeant Major|False|True
+9|20|My Zephyr|True|True
 9|8|Electric Elvis|False|False
 9|12|It's A Yes|False|False
 9|2|Esmahli|False|False
 9|16|Salaria|False|False
 9|18|Brave Design|True|False
 9|7|Rohesia|False|False
-9|11|Saluted|False|False
+9|11|Saluted|False|True
 9|10|Tres Magnifique|False|False
-9|13|Prestige Lucky|False|False
+9|13|Prestige Lucky|False|True
 9|19|Lawborough|True|False
 9|14|Royal Rendezvous|False|False
 9|5|Torsheen|False|False

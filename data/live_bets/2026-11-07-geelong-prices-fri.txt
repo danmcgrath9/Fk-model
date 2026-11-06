@@ -1,0 +1,122 @@
+# Geelong Sat 7 Nov, Dead (Form King, Thu 12:30pm; 9mm forecast to race day, under the 15mm line), final fields; no market yet; opening prices added Fri 10:20am
+1, Quarters, 0, 0
+1, Alpine Point, 0, 0
+1, Riveting, 0, 0
+1, Hollywood Hustler, 0, 0
+1, Brookelinda, 0, 0
+1, Optimus, 0, 0
+1, Exacting Standard, 0, 0
+1, Truant, 0, 0
+1, Rubicube, 0, 0
+1, Superwill, 0, 0
+1, Mystic River Queen, 0, 0
+2, Welcometodetroit, 0, 0
+2, Unannounced, 0, 0
+2, Rock About, 0, 0
+2, Lei, 0, 0
+2, Gypsy Storm, 0, 0
+2, Bundedo, 0, 0
+2, Storm Bella, 0, 0
+2, Velocite Belle, 0, 0
+2, De Niro, 0, 0
+2, Prestige Blackjack, 0, 0
+2, I'm A Believer, 0, 0
+2, Scoot, 0, 0
+2, Run Run Win, 0, 0
+2, Magna Sententia, 0, 0
+3, Couldbetracy, SCR
+3, Zwasp, 0, 0
+3, Brutal Tempo, 0, 0
+3, Love 'n' Glory, 0, 0
+3, Jezebel Jenni, 0, 0
+3, Awaywiththepixies, 0, 0
+3, Deal Done Fast, 0, 0
+3, Fantasy Reel, 0, 0
+3, Dame Of Dubai, 0, 0
+3, Flying Riches, 0, 0
+3, Tecknoking, 0, 0
+3, Seven Sons, 0, 0
+3, Written Velocity, 0, 0
+3, Zametovka, 0, 0
+3, Bronx Brawler, 0, 0
+4, Lucky Compass, SCR
+4, Ti Tree Lad, 0, 0
+4, First Tosen, SCR
+4, Savethebesttillast, 0, 0
+4, Trinity's D'oro, 0, 0
+4, Last Bus Home, SCR
+4, Strike First, 0, 0
+4, Kaddari, 0, 0
+4, Sensational Ruler, 0, 0
+4, Skydream, SCR
+4, Koolatah Queen, 0, 0
+4, The Quiet Immortal, 0, 0
+4, Our Pierro, 0, 0
+4, Birdie Time, 0, 0
+4, Just My Lot, 0, 0
+4, Perfect Night, 0, 0
+4, Shades Of Stardom, 0, 0
+5, Spirit Angel, 0, 0
+5, Gymkhana, 0, 0
+5, Tosen Glory, SCR
+5, A Blue Star, SCR
+5, I'mfallinforyou, 0, 0
+5, Cuban Dawn, 0, 0
+5, Devine Grunt, 0, 0
+5, Pro Velocity, 0, 0
+5, Wondering Spirit, 0, 0
+5, So Long Ago, 0, 0
+5, Sakakibara, 0, 0
+5, Mike's Hope, 0, 0
+5, Ballistic Romeo, 0, 0
+5, Mr Margolin, 0, 0
+5, Epeiric, 0, 0
+5, Caledonian Summer, 0, 0
+6, Raven's Silver, 0, 0
+6, Mont Saint Michel, SCR
+6, Our Little Star, 0, 0
+6, I'm Da Boss, 0, 0
+6, Edges Diamond, 0, 0
+6, Zane Zena, 0, 0
+6, Master Jack, 0, 0
+6, Glisk, 0, 0
+6, Olatunde, 0, 0
+6, Chasing Rainbows, 0, 0
+6, Posh Diamante, 0, 0
+6, Stein, 0, 0
+6, Fox Phire, 0, 0
+6, Strength Within, 0, 0
+6, Crank, 0, 0
+7, Bullets High, 0, 0
+7, Just Berrilliant, 0, 0
+7, Fridge Monster, 0, 0
+7, Desert Anthem, SCR
+7, Coco Jen, 0, 0
+7, Miss Castelvecchio, 0, 0
+7, World's My Oyster, 0, 0
+7, Lario, 0, 0
+7, Geffina, 0, 0
+7, Shaalute, 0, 0
+7, Bold Strike, 0, 0
+7, Taung, 0, 0
+7, Romantic Encounter, 0, 0
+7, Jareth, 0, 0
+7, Kurakka, 0, 0
+8, High Altitude, SCR
+8, Lika Wreckin' Ball, 0, 0
+8, Brutify, 0, 0
+8, Sara's Rocket, 0, 0
+8, I Said So, 0, 0
+8, Manhattan Empire, 0, 0
+8, Swing Your Magic, 0, 0
+8, You Said What, 0, 0
+8, Tipsy Gypsy, SCR
+8, Bee Admired, 0, 0
+8, Miss Ellaneous, 0, 0
+8, Farside, 0, 0
+8, Succaforyou, SCR
+8, Share The Music, 0, 0
+8, Cherry Hills, 0, 0
+8, Somebody Told Me, 0, 0
+8, Aurora Storm, 0, 0
+8, Zetheros, SCR

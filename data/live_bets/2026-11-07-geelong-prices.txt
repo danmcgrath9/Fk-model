@@ -1,122 +1,122 @@
-# Geelong Sat 7 Nov, Dead (Form King, Thu 12:30pm; 9mm forecast to race day, under the 15mm line), final fields; no market yet; opening prices added Fri 10:20am
-1, Quarters, 0, 0
-1, Alpine Point, 0, 0
-1, Riveting, 0, 0
-1, Hollywood Hustler, 0, 0
-1, Brookelinda, 0, 0
-1, Optimus, 0, 0
-1, Exacting Standard, 0, 0
-1, Truant, 0, 0
-1, Rubicube, 0, 0
-1, Superwill, 0, 0
-1, Mystic River Queen, 0, 0
-2, Welcometodetroit, 0, 0
-2, Unannounced, 0, 0
-2, Rock About, 0, 0
-2, Lei, 0, 0
-2, Gypsy Storm, 0, 0
-2, Bundedo, 0, 0
-2, Storm Bella, 0, 0
-2, Velocite Belle, 0, 0
-2, De Niro, 0, 0
-2, Prestige Blackjack, 0, 0
-2, I'm A Believer, 0, 0
-2, Scoot, 0, 0
-2, Run Run Win, 0, 0
-2, Magna Sententia, 0, 0
-3, Couldbetracy, SCR
-3, Zwasp, 0, 0
-3, Brutal Tempo, 0, 0
-3, Love 'n' Glory, 0, 0
-3, Jezebel Jenni, 0, 0
-3, Awaywiththepixies, 0, 0
-3, Deal Done Fast, 0, 0
-3, Fantasy Reel, 0, 0
-3, Dame Of Dubai, 0, 0
-3, Flying Riches, 0, 0
-3, Tecknoking, 0, 0
-3, Seven Sons, 0, 0
-3, Written Velocity, 0, 0
-3, Zametovka, 0, 0
-3, Bronx Brawler, 0, 0
-4, Lucky Compass, SCR
-4, Ti Tree Lad, 0, 0
-4, First Tosen, SCR
-4, Savethebesttillast, 0, 0
-4, Trinity's D'oro, 0, 0
-4, Last Bus Home, SCR
-4, Strike First, 0, 0
-4, Kaddari, 0, 0
-4, Sensational Ruler, 0, 0
+# Geelong Sat 7 Nov, Dead (Form King), final field after scratchings, re-priced Sat 10am
+1, Quarters, 29.00, 29.00, fk_open 15.60
+1, Alpine Point, 4.80, 4.80, fk_open 4.00
+1, Riveting, SCR
+1, Hollywood Hustler, 51.00, 51.00, fk_open 26.20
+1, Brookelinda, 5.50, 5.50, fk_open 8.00
+1, Optimus, SCR
+1, Exacting Standard, 5.50, 5.50, fk_open 3.92
+1, Truant, 7.50, 7.50, fk_open 6.50
+1, Rubicube, 31.00, 31.00, fk_open 19.40
+1, Superwill, SCR
+1, Mystic River Queen, 2.20, 2.20, fk_open 2.78
+2, Welcometodetroit, 67.00, 67.00, fk_open 21.00
+2, Unannounced, 41.00, 41.00, fk_open 16.00
+2, Rock About, SCR
+2, Lei, 15.00, 15.00, fk_open 8.50
+2, Gypsy Storm, 41.00, 41.00, fk_open 21.00
+2, Bundedo, 101.00, 101.00, fk_open 41.00
+2, Storm Bella, SCR
+2, Velocite Belle, SCR
+2, De Niro, SCR
+2, Prestige Blackjack, 31.00, 31.00, fk_open 13.00
+2, I'm A Believer, 23.00, 23.00, fk_open 11.00
+2, Scoot, 2.30, 2.30, fk_open 2.30
+2, Run Run Win, 7.00, 7.00, fk_open 13.00
+2, Magna Sententia, 2.20, 2.20, fk_open 3.00
+3, Couldbetracy, 151.00, 151.00, fk_open 101.00
+3, Zwasp, 61.00, 61.00, fk_open 51.00
+3, Brutal Tempo, 5.50, 5.50, fk_open 6.50
+3, Love 'n' Glory, 8.50, 8.50, fk_open 5.00
+3, Jezebel Jenni, 29.00, 29.00, fk_open 17.00
+3, Awaywiththepixies, 71.00, 71.00, fk_open 23.00
+3, Deal Done Fast, 2.35, 2.35, fk_open 2.90
+3, Fantasy Reel, 151.00, 151.00, fk_open 101.00
+3, Dame Of Dubai, 4.40, 4.40, fk_open 5.00
+3, Flying Riches, 51.00, 51.00, fk_open 23.00
+3, Tecknoking, SCR
+3, Seven Sons, SCR
+3, Written Velocity, 16.00, 16.00, fk_open 10.00
+3, Zametovka, 9.00, 9.00, fk_open 7.50
+3, Bronx Brawler, 101.00, 101.00, fk_open 51.00
+4, Lucky Compass, 34.00, 34.00, fk_open 31.00
+4, Ti Tree Lad, 26.00, 26.00, fk_open 26.00
+4, First Tosen, 151.00, 151.00, fk_open 81.00
+4, Savethebesttillast, 19.00, 19.00, fk_open 14.00
+4, Trinity's D'oro, 26.00, 26.00, fk_open 31.00
+4, Last Bus Home, 91.00, 91.00, fk_open 81.00
+4, Strike First, SCR
+4, Kaddari, 51.00, 51.00, fk_open 31.00
+4, Sensational Ruler, SCR
 4, Skydream, SCR
-4, Koolatah Queen, 0, 0
-4, The Quiet Immortal, 0, 0
-4, Our Pierro, 0, 0
-4, Birdie Time, 0, 0
-4, Just My Lot, 0, 0
-4, Perfect Night, 0, 0
-4, Shades Of Stardom, 0, 0
-5, Spirit Angel, 0, 0
-5, Gymkhana, 0, 0
+4, Koolatah Queen, SCR
+4, The Quiet Immortal, 5.50, 5.50, fk_open 3.80
+4, Our Pierro, SCR
+4, Birdie Time, 21.00, 21.00, fk_open 19.00
+4, Just My Lot, 3.70, 3.70, fk_open 2.70
+4, Perfect Night, 2.35, 2.35, fk_open 3.80
+4, Shades Of Stardom, 9.50, 9.50, fk_open 7.50
+5, Spirit Angel, 6.50, 6.50, fk_open 5.33
+5, Gymkhana, 8.50, 8.50, fk_open 8.25
 5, Tosen Glory, SCR
-5, A Blue Star, SCR
-5, I'mfallinforyou, 0, 0
-5, Cuban Dawn, 0, 0
-5, Devine Grunt, 0, 0
-5, Pro Velocity, 0, 0
-5, Wondering Spirit, 0, 0
-5, So Long Ago, 0, 0
-5, Sakakibara, 0, 0
-5, Mike's Hope, 0, 0
-5, Ballistic Romeo, 0, 0
-5, Mr Margolin, 0, 0
-5, Epeiric, 0, 0
-5, Caledonian Summer, 0, 0
-6, Raven's Silver, 0, 0
-6, Mont Saint Michel, SCR
-6, Our Little Star, 0, 0
-6, I'm Da Boss, 0, 0
-6, Edges Diamond, 0, 0
-6, Zane Zena, 0, 0
-6, Master Jack, 0, 0
-6, Glisk, 0, 0
-6, Olatunde, 0, 0
-6, Chasing Rainbows, 0, 0
-6, Posh Diamante, 0, 0
-6, Stein, 0, 0
-6, Fox Phire, 0, 0
-6, Strength Within, 0, 0
-6, Crank, 0, 0
-7, Bullets High, 0, 0
-7, Just Berrilliant, 0, 0
-7, Fridge Monster, 0, 0
-7, Desert Anthem, SCR
-7, Coco Jen, 0, 0
-7, Miss Castelvecchio, 0, 0
-7, World's My Oyster, 0, 0
-7, Lario, 0, 0
-7, Geffina, 0, 0
-7, Shaalute, 0, 0
-7, Bold Strike, 0, 0
-7, Taung, 0, 0
-7, Romantic Encounter, 0, 0
-7, Jareth, 0, 0
-7, Kurakka, 0, 0
+5, A Blue Star, 51.00, 51.00, fk_open 33.25
+5, I'mfallinforyou, 17.00, 17.00, fk_open 10.75
+5, Cuban Dawn, 29.00, 29.00, fk_open 20.50
+5, Devine Grunt, 7.00, 7.00, fk_open 5.88
+5, Pro Velocity, 51.00, 51.00, fk_open 33.25
+5, Wondering Spirit, SCR
+5, So Long Ago, 5.75, 5.75, fk_open 7.25
+5, Sakakibara, 9.00, 9.00, fk_open 8.25
+5, Mike's Hope, SCR
+5, Ballistic Romeo, 8.50, 8.50, fk_open 9.75
+5, Mr Margolin, SCR
+5, Epeiric, 4.80, 4.80, fk_open 4.28
+5, Caledonian Summer, 11.00, 11.00, fk_open 11.75
+6, Raven's Silver, 15.00, 15.00, fk_open 13.00
+6, Mont Saint Michel, 41.00, 41.00, fk_open 23.00
+6, Our Little Star, 15.00, 15.00, fk_open 16.00
+6, I'm Da Boss, 14.00, 14.00, fk_open 8.00
+6, Edges Diamond, SCR
+6, Zane Zena, SCR
+6, Master Jack, 35.00, 35.00, fk_open 19.00
+6, Glisk, SCR
+6, Olatunde, 5.50, 5.50, fk_open 8.00
+6, Chasing Rainbows, 2.10, 2.10, fk_open 2.10
+6, Posh Diamante, 5.00, 5.00, fk_open 4.80
+6, Stein, SCR
+6, Fox Phire, SCR
+6, Strength Within, SCR
+6, Crank, 8.50, 8.50, fk_open 6.50
+7, Bullets High, 51.00, 51.00, fk_open 23.50
+7, Just Berrilliant, 81.00, 81.00, fk_open 34.17
+7, Fridge Monster, 10.00, 10.00, fk_open 22.67
+7, Desert Anthem, 10.00, 10.00, fk_open 22.17
+7, Coco Jen, SCR
+7, Miss Castelvecchio, 6.00, 6.00, fk_open 7.42
+7, World's My Oyster, 29.00, 29.00, fk_open 13.50
+7, Lario, 12.00, 12.00, fk_open 8.67
+7, Geffina, 34.00, 34.00, fk_open 23.00
+7, Shaalute, 7.50, 7.50, fk_open 13.00
+7, Bold Strike, SCR
+7, Taung, 9.50, 9.50, fk_open 4.33
+7, Romantic Encounter, 5.00, 5.00, fk_open 6.00
+7, Jareth, 8.00, 8.00, fk_open 7.25
+7, Kurakka, 7.50, 7.50, fk_open 6.17
 8, High Altitude, SCR
-8, Lika Wreckin' Ball, 0, 0
-8, Brutify, 0, 0
-8, Sara's Rocket, 0, 0
-8, I Said So, 0, 0
-8, Manhattan Empire, 0, 0
-8, Swing Your Magic, 0, 0
-8, You Said What, 0, 0
-8, Tipsy Gypsy, SCR
-8, Bee Admired, 0, 0
-8, Miss Ellaneous, 0, 0
-8, Farside, 0, 0
-8, Succaforyou, SCR
-8, Share The Music, 0, 0
-8, Cherry Hills, 0, 0
-8, Somebody Told Me, 0, 0
-8, Aurora Storm, 0, 0
+8, Lika Wreckin' Ball, 51.00, 51.00, fk_open 31.00
+8, Brutify, 9.00, 9.00, fk_open 12.00
+8, Sara's Rocket, 31.00, 31.00, fk_open 16.00
+8, I Said So, 7.50, 7.50, fk_open 6.50
+8, Manhattan Empire, 51.00, 51.00, fk_open 31.00
+8, Swing Your Magic, SCR
+8, You Said What, 41.00, 41.00, fk_open 18.00
+8, Tipsy Gypsy, 21.00, 21.00, fk_open 16.00
+8, Bee Admired, 3.90, 3.90, fk_open 5.50
+8, Miss Ellaneous, 9.00, 9.00, fk_open 4.80
+8, Farside, 21.00, 21.00, fk_open 16.00
+8, Succaforyou, 10.00, 10.00, fk_open 8.00
+8, Share The Music, 4.00, 4.00, fk_open 2.80
+8, Cherry Hills, SCR
+8, Somebody Told Me, 23.00, 23.00, fk_open 16.00
+8, Aurora Storm, 51.00, 51.00, fk_open 41.00
 8, Zetheros, SCR

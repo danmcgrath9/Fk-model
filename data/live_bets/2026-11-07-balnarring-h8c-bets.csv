@@ -1,0 +1,7 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,BALN_071126_1,Russian Tide,top_pick,0.0,0.0,0.0,,,2.34,-1.0,Class drop (rating); Blinkers first time,1.0,no,,
+2,BALN_071126_2,Elite Pete,top_pick,0.0,0.0,0.0,,,2.16,-1.0,; EARLY ONLY: bet near the open,1.0,no,,
+3,BALN_071126_3,Epicus,top_pick,0.0,0.0,0.0,,,2.97,-1.0,,1.0,no,,
+4,BALN_071126_4,Numbersneverseen,top_pick,0.0,0.0,0.0,,,4.0,-1.0,Declining deep in prep; Proven wet on a wet track; Class drop (rating),1.0,no,,
+5,BALN_071126_5,Testing The Cugat,top_pick,0.0,0.0,0.0,,,5.01,-1.0,,1.0,no,,
+6,BALN_071126_6,Discobay,top_pick,0.0,0.0,0.0,,,3.21,-1.0,,1.0,no,,

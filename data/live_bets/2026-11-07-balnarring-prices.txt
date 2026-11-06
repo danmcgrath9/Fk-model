@@ -1,8 +1,8 @@
-# Balnarring Sat 7 Nov (picnic), Heavy 8 (RV Stewards Thu morning), final fields; no market yet; opening prices added Fri 10:20am
+# Balnarring Sat 7 Nov (picnic, PAPER ONLY), Heavy 8, final field after scratchings, re-priced Sat 10:05am
 1, Powershare, 0, 0
 1, Excelaot, 0, 0
 1, Brazen Martini, 0, 0
-1, Galagacisco, 0, 0
+1, Galagacisco, SCR
 1, Station Road, 0, 0
 1, Russian Tide, 0, 0
 2, Mexican Fiddler, 0, 0
@@ -10,24 +10,24 @@
 2, Second Guess, 0, 0
 2, Elite Pete, 0, 0
 2, Maristela, 0, 0
-2, Banjette, 0, 0
+2, Banjette, SCR
 3, Anything But, 0, 0
 3, Ocean's Jen, 0, 0
-3, I'm Dynamite, 0, 0
+3, I'm Dynamite, SCR
 3, Disclevaboy, 0, 0
 3, Wagunda, SCR
 3, Wilma Wombat, 0, 0
 3, Epicus, 0, 0
 3, Littlebirdie, 0, 0
-3, Juniors Queen, 0, 0
+3, Juniors Queen, SCR
 3, Loveofmylife, 0, 0
 3, Crying Cougar, SCR
 4, Tofik Tok, 0, 0
 4, Dente's Inferno, 0, 0
 4, Shintaro Samurai, 0, 0
-4, Good Lordy Me, 0, 0
+4, Good Lordy Me, SCR
 4, Lilt, 0, 0
-4, Moonlight Romance, 0, 0
+4, Moonlight Romance, SCR
 4, Hansard, 0, 0
 4, Numbersneverseen, 0, 0
 5, Satin Image, 0, 0

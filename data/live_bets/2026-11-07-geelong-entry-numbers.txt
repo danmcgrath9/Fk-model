@@ -1,23 +1,23 @@
 1|5|Quarters|False|False
 1|1|Alpine Point|False|False
-1|6|Riveting|False|False
+1|6|Riveting|False|True
 1|3|Hollywood Hustler|False|False
 1|9|Brookelinda|False|False
-1|4|Optimus|False|False
+1|4|Optimus|False|True
 1|2|Exacting Standard|False|False
 1|8|Truant|False|False
 1|11|Rubicube|False|False
-1|7|Superwill|False|False
+1|7|Superwill|False|True
 1|10|Mystic River Queen|False|False
 2|3|Welcometodetroit|False|False
 2|10|Unannounced|False|False
-2|2|Rock About|False|False
+2|2|Rock About|False|True
 2|9|Lei|False|False
 2|8|Gypsy Storm|False|False
 2|1|Bundedo|False|False
-2|13|Storm Bella|False|False
-2|14|Velocite Belle|False|False
-2|4|De Niro|False|False
+2|13|Storm Bella|False|True
+2|14|Velocite Belle|False|True
+2|4|De Niro|False|True
 2|6|Prestige Blackjack|False|False
 2|11|I'm A Believer|False|False
 2|12|Scoot|False|False
@@ -33,8 +33,8 @@
 3|4|Fantasy Reel|False|False
 3|12|Dame Of Dubai|False|False
 3|13|Flying Riches|False|False
-3|6|Tecknoking|False|False
-3|9|Seven Sons|False|False
+3|6|Tecknoking|False|True
+3|9|Seven Sons|False|True
 3|10|Written Velocity|False|False
 3|11|Zametovka|False|False
 3|8|Bronx Brawler|False|False
@@ -44,70 +44,70 @@
 4|13|Savethebesttillast|False|False
 4|14|Trinity's D'oro|False|False
 4|16|Last Bus Home|True|False
-4|8|Strike First|False|False
+4|8|Strike First|False|True
 4|12|Kaddari|False|False
-4|2|Sensational Ruler|False|False
-4|9|Skydream|False|False
-4|11|Koolatah Queen|False|False
+4|2|Sensational Ruler|False|True
+4|9|Skydream|False|True
+4|11|Koolatah Queen|False|True
 4|1|The Quiet Immortal|False|False
-4|4|Our Pierro|False|False
+4|4|Our Pierro|False|True
 4|7|Birdie Time|False|False
 4|10|Just My Lot|False|False
 4|5|Perfect Night|False|False
 4|6|Shades Of Stardom|False|False
 5|12|Spirit Angel|False|False
 5|3|Gymkhana|False|False
-5|15|Tosen Glory|True|False
+5|15|Tosen Glory|True|True
 5|16|A Blue Star|True|False
 5|11|I'mfallinforyou|False|False
 5|13|Cuban Dawn|False|False
 5|8|Devine Grunt|False|False
 5|14|Pro Velocity|False|False
-5|5|Wondering Spirit|False|False
+5|5|Wondering Spirit|False|True
 5|7|So Long Ago|False|False
 5|10|Sakakibara|False|False
-5|2|Mike's Hope|False|False
+5|2|Mike's Hope|False|True
 5|6|Ballistic Romeo|False|False
-5|4|Mr Margolin|False|False
+5|4|Mr Margolin|False|True
 5|9|Epeiric|False|False
 5|1|Caledonian Summer|False|False
 6|9|Raven's Silver|False|False
 6|15|Mont Saint Michel|True|False
 6|12|Our Little Star|False|False
 6|2|I'm Da Boss|False|False
-6|1|Edges Diamond|False|False
-6|11|Zane Zena|False|False
+6|1|Edges Diamond|False|True
+6|11|Zane Zena|False|True
 6|4|Master Jack|False|False
-6|7|Glisk|False|False
+6|7|Glisk|False|True
 6|3|Olatunde|False|False
 6|5|Chasing Rainbows|False|False
 6|8|Posh Diamante|False|False
-6|10|Stein|False|False
-6|14|Fox Phire|False|False
-6|13|Strength Within|False|False
+6|10|Stein|False|True
+6|14|Fox Phire|False|True
+6|13|Strength Within|False|True
 6|6|Crank|False|False
 7|1|Bullets High|False|False
 7|8|Just Berrilliant|False|False
 7|7|Fridge Monster|False|False
 7|15|Desert Anthem|True|False
-7|12|Coco Jen|False|False
+7|12|Coco Jen|False|True
 7|14|Miss Castelvecchio|False|False
 7|2|World's My Oyster|False|False
 7|6|Lario|False|False
 7|10|Geffina|False|False
 7|13|Shaalute|False|False
-7|11|Bold Strike|False|False
+7|11|Bold Strike|False|True
 7|4|Taung|False|False
 7|3|Romantic Encounter|False|False
 7|5|Jareth|False|False
 7|9|Kurakka|False|False
-8|17|High Altitude|True|False
+8|17|High Altitude|True|True
 8|3|Lika Wreckin' Ball|False|False
 8|13|Brutify|False|False
 8|12|Sara's Rocket|False|False
 8|9|I Said So|False|False
 8|4|Manhattan Empire|False|False
-8|6|Swing Your Magic|False|False
+8|6|Swing Your Magic|False|True
 8|14|You Said What|False|False
 8|15|Tipsy Gypsy|True|False
 8|11|Bee Admired|False|False
@@ -115,7 +115,7 @@
 8|5|Farside|False|False
 8|16|Succaforyou|True|False
 8|1|Share The Music|False|False
-8|8|Cherry Hills|False|False
+8|8|Cherry Hills|False|True
 8|2|Somebody Told Me|False|False
 8|7|Aurora Storm|False|False
-8|18|Zetheros|True|False
+8|18|Zetheros|True|True
