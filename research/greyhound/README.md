@@ -2886,3 +2886,135 @@ and against that F1's gain is 0.0022. That is still about three times the noise 
 
 **Decision:** a walk-forward before production. `WALK_TRACK=yes` puts the inputs into `build_full`, with a speed track
 fixed at the leader winning 50%, near the median, so no cut is fitted on the scored months.
+
+## Test 34: the horse book's rules on the dogs (6 Nov 2026, gh topaz run 42180541333, `topaz_round21.py`)
+
+The founder's brief for the horse book ("build a model and betting system like the Fk-model horse book"), tried rule
+by rule on the dogs. Set-up: the production model (2,878 rounds) and the standard split, scored on the last quarter.
+The dogs have no history of TAB's opens, so GRV's SP stands in for the open, which is the price the horse book bets.
+
+### 1. Distance from BSP (KL divergence; 22,747 races with BSP and GRV's SP on every runner)
+
+| price | KL from BSP | 1st half | 2nd half |
+|---|---|---|---|
+| our model | 0.0944 | 0.0900 | 0.0987 |
+| GRV's SP | 0.0690 | 0.0744 | 0.0637 |
+
+GRV's SP sits closer to BSP than our model does, and has moved closer in the second half (Test 14's August 2026
+sharpening). Our model never sees a price, so this is the expected order.
+
+### 2. The lay book at BSP (lay 1 unit; a loser +0.92, a winner -(BSP - 1); no first starters)
+
+| rule | half | lays | winners | A/E vs BSP | return per lay | units laid | units won |
+|---|---|---|---|---|---|---|---|
+| BSP $15-$40, BSP 1.6x our price (the horse rule) | 1st | 7,965 | 306 | 0.923 | -1.1% | 7,965 | -88.8 |
+| BSP $15-$40, BSP 1.6x our price (the horse rule) | 2nd | 8,513 | 331 | 0.936 | -3.8% | 8,513 | -321.0 |
+| BSP $15-$40, BSP 1.6x our price (the horse rule) | all | 16,478 | 637 | 0.930 | -2.5% | 16,478 | -409.8 |
+| BSP $15-$40, BSP 1.3x our price | 1st | 11,481 | 473 | 0.970 | -4.3% | 11,481 | -498.5 |
+| BSP $15-$40, BSP 1.3x our price | 2nd | 11,779 | 475 | 0.953 | -4.6% | 11,779 | -543.6 |
+| BSP $15-$40, BSP 1.3x our price | all | 23,260 | 948 | 0.961 | -4.5% | 23,260 | -1,042.1 |
+| BSP $15-$40, BSP 2x our price | 1st | 4,530 | 161 | 0.882 | +2.6% | 4,530 | +115.8 |
+| BSP $15-$40, BSP 2x our price | 2nd | 5,174 | 189 | 0.912 | -0.7% | 5,174 | -37.9 |
+| BSP $15-$40, BSP 2x our price | all | 9,704 | 350 | 0.898 | +0.8% | 9,704 | +77.9 |
+| BSP $8-$15, BSP 1.6x our price | 1st | 3,108 | 308 | 1.120 | -19.4% | 3,108 | -603.9 |
+| BSP $8-$15, BSP 1.6x our price | 2nd | 3,519 | 319 | 1.019 | -9.4% | 3,519 | -331.6 |
+| BSP $8-$15, BSP 1.6x our price | all | 6,627 | 627 | 1.066 | -14.1% | 6,627 | -935.6 |
+| BSP $8-$15, BSP 1.3x our price | 1st | 5,948 | 582 | 1.088 | -17.0% | 5,948 | -1,009.8 |
+| BSP $8-$15, BSP 1.3x our price | 2nd | 6,230 | 581 | 1.035 | -11.0% | 6,230 | -682.7 |
+| BSP $8-$15, BSP 1.3x our price | all | 12,178 | 1,163 | 1.061 | -13.9% | 12,178 | -1,692.5 |
+
+**The lay book does not carry over.**
+- The long dogs we rate 1.6x longer than BSP do win less than BSP says (A/E 0.930), but not by enough to pay the
+  commission: -2.5%, and a loss in both halves.
+- At 2x it is break-even (+0.8%, and the second half loses).
+- At $8-$15 the dogs we dislike win MORE than BSP says (1.066), so laying them loses 14%.
+- BSP's favourite-longshot bias is small on the dogs (Test 24), and the horse lay book lives on that bias.
+
+### 3. The back book at BSP (1 unit on the BSP favourite, 8% commission)
+
+| rule | half | bets | winners | A/E vs BSP | flat ROI | units staked | units won |
+|---|---|---|---|---|---|---|---|
+| BSP favourite $4-$7, our price 1.6x BSP (the horse rule) | 1st | 193 | 52 | 1.183 | +11.2% | 193 | +21.6 |
+| BSP favourite $4-$7, our price 1.6x BSP (the horse rule) | 2nd | 190 | 36 | 0.827 | -21.1% | 190 | -40.2 |
+| BSP favourite $4-$7, our price 1.6x BSP (the horse rule) | all | 383 | 88 | 1.006 | -4.9% | 383 | -18.6 |
+| BSP favourite $4-$7, our price 1.3x BSP | 1st | 334 | 87 | 1.140 | +7.4% | 334 | +24.6 |
+| BSP favourite $4-$7, our price 1.3x BSP | 2nd | 317 | 64 | 0.882 | -16.1% | 317 | -50.9 |
+| BSP favourite $4-$7, our price 1.3x BSP | all | 651 | 151 | 1.014 | -4.0% | 651 | -26.3 |
+| BSP favourite $2-$4, our price 1.6x BSP | 1st | 2,163 | 803 | 1.016 | -4.4% | 2,163 | -96.1 |
+| BSP favourite $2-$4, our price 1.6x BSP | 2nd | 2,108 | 816 | 1.053 | -0.5% | 2,108 | -11.5 |
+| BSP favourite $2-$4, our price 1.6x BSP | all | 4,271 | 1,619 | 1.034 | -2.5% | 4,271 | -107.6 |
+| BSP favourite $2-$4, our price 1.3x BSP | 1st | 4,009 | 1,479 | 1.003 | -5.4% | 4,009 | -215.5 |
+| BSP favourite $2-$4, our price 1.3x BSP | 2nd | 3,942 | 1,541 | 1.055 | +0.0% | 3,942 | +1.5 |
+| BSP favourite $2-$4, our price 1.3x BSP | all | 7,951 | 3,020 | 1.029 | -2.7% | 7,951 | -214.0 |
+| BSP favourite $1-$2, our price 1.3x BSP | 1st | 1,376 | 808 | 0.992 | -3.8% | 1,376 | -52.9 |
+| BSP favourite $1-$2, our price 1.3x BSP | 2nd | 1,614 | 950 | 0.970 | -6.1% | 1,614 | -98.1 |
+| BSP favourite $1-$2, our price 1.3x BSP | all | 2,990 | 1,758 | 0.980 | -5.1% | 2,990 | -151.0 |
+
+**The back book does not carry over either.**
+- The $4-$7 favourites are rare on the dogs (383 in 20 months), and the rule's +11.2% first half turns into -21.1%.
+- The $2-$4 favourites we rate 1.6x longer than BSP do win 3.4% more than BSP says. That is the same favourite
+  under-rating Test 24 found (A/E 1.15 against our model). But 3% is smaller than the commission.
+
+### 4. The order sheet at GRV's SP (blend 0.50 x ours, 0.69 x GRV's, fitted on the early-stopping months)
+
+| rule | half | bets | winners | A/E vs the price | flat ROI | units staked | units won |
+|---|---|---|---|---|---|---|---|
+| the horse book's order sheet and stake | 1st | 1,889 | 547 | 1.357 | +45.6% | 12,572 | +6,158.3 |
+| the horse book's order sheet and stake | 2nd | 1,857 | 460 | 1.227 | +19.1% | 12,791 | +3,359.5 |
+| the horse book's order sheet and stake | all | 3,746 | 1,007 | 1.295 | +32.5% | 25,363 | +9,517.7 |
+| Test 27's 1.3x rule (x75 Kelly, cap 4) | 1st | 699 | 188 | 1.666 | +71.7% | 1,413 | +1,004.4 |
+| Test 27's 1.3x rule (x75 Kelly, cap 4) | 2nd | 703 | 173 | 1.603 | +72.6% | 1,232 | +922.3 |
+| Test 27's 1.3x rule (x75 Kelly, cap 4) | all | 1,402 | 361 | 1.635 | +72.1% | 2,645 | +1,926.7 |
+| the order sheet, Test 27's stake | 1st | 1,889 | 547 | 1.357 | +45.6% | 2,436 | +1,273.5 |
+| the order sheet, Test 27's stake | 2nd | 1,857 | 460 | 1.227 | +19.1% | 1,915 | +834.0 |
+| the order sheet, Test 27's stake | all | 3,746 | 1,007 | 1.295 | +32.5% | 4,351 | +2,107.5 |
+| Test 27's bets, the horse book's stake | 1st | 699 | 188 | 1.666 | +71.7% | 5,804 | +4,196.9 |
+| Test 27's bets, the horse book's stake | 2nd | 703 | 173 | 1.603 | +72.6% | 6,095 | +4,581.2 |
+| Test 27's bets, the horse book's stake | all | 1,402 | 361 | 1.635 | +72.1% | 11,898 | +8,778.0 |
+| the order sheet, drift guard 1.3x | 1st | 1,393 | 449 | 1.421 | +51.5% | 9,252 | +5,246.6 |
+| the order sheet, drift guard 1.3x | 2nd | 1,170 | 368 | 1.397 | +46.0% | 8,064 | +4,461.2 |
+| the order sheet, drift guard 1.3x | all | 2,563 | 817 | 1.410 | +49.0% | 17,316 | +9,707.9 |
+
+**The order sheet's selection is looser than the dogs' rule.**
+- The horse sheet bets when the blended chance x the price is at least 1.2 (1.15 under $4). The dogs' rule needs 1.3.
+- So the sheet finds 2.7x the bets at half the edge: +32.5% flat, against +72.1%.
+- Its second half drops to +19.1%; the 1.3x rule holds at +72.6%.
+- With the drift guard the sheet holds better (+51.5% and +46.0%).
+
+**The horse stake is the dogs' Kelly at a bigger size.**
+- On the 1.3x rule's own bets it returns 73.8% on units staked, against 72.8% for the dogs' x75 Kelly.
+- It stakes 4.5x as much (up to 10 units a bet against 4), and wins 4.5x as many units, +4,197 and +4,581 in the two
+  halves.
+- So the formula is not better or worse, only bigger. How big to bet is a bankroll decision, and it is the founder's.
+
+### 5. Calibration by track (the brief's metro fix)
+
+Our model's A/E over all runners at a track is 1.000 at every track. That is true by construction: each race's chances
+add to 1 and each race has one winner, so it tells nothing. The order sheet's bets, track by track, do tell something:
+
+| track | runners | order-sheet bets | their winners | their A/E vs GRV's SP |
+|---|---|---|---|---|
+| BAL | 19,953 | 422 | 127 | 1.477 |
+| BEN | 17,935 | 374 | 107 | 1.451 |
+| GEL | 19,055 | 399 | 119 | 1.412 |
+| HOR | 9,934 | 241 | 84 | 1.484 |
+| HVL | 16,513 | 408 | 90 | 1.171 |
+| MEA | 6,697 | 65 | 16 | 1.028 |
+| MEP | 8,602 | 144 | 39 | 1.175 |
+| SAN | 7,546 | 102 | 20 | 0.836 |
+| SAP | 7,624 | 125 | 39 | 1.409 |
+| SHP | 18,135 | 324 | 85 | 1.236 |
+| SLE | 14,303 | 289 | 70 | 1.198 |
+| TRA | 3,438 | 73 | 21 | 1.602 |
+| WBL | 17,250 | 399 | 109 | 1.309 |
+| WGL | 19,912 | 381 | 81 | 1.061 |
+
+**The metro fix may carry over.** The order sheet's bets at Sandown (A/E 0.836 on 102 bets) and The Meadows (1.028 on
+65) win far less than its bets elsewhere (1.2 to 1.6). Those are the two premier tracks, where the market is deepest.
+That is the same pattern as the horse book's metro overrating. The samples are small, so the next step is the 1.3x
+rule track by track over the walk-forward's 29 months, before any track gets the lean to the market.
+
+**Decision:** the card keeps the 1.3x rule and its x75 Kelly stake.
+- Not taken: the lay book, the back book and the 1.2 edge do not hold on the dogs.
+- Still to test: the metro lean at Sandown and The Meadows.
+- The founder's call: the stake size.
