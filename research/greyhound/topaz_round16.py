@@ -159,7 +159,32 @@ def main(_d, label):
                     print(f"| {cap:.2f} | {hn} | {s.WIN_MARKET_ID.nunique():,} | {len(s):,} | {int(s.placed.sum()):,} | "
                           f"{flat_roi(s.placed, s.PLACE_BSP):+.1%} | ${vol:,.0f} |")
             print()
+        if usable:
+            robust(t, "book_" + usable[0][0], usable[0][1])
     return 0
+
+
+def robust(t: pd.DataFrame, bc: str, what: str):
+    """Is the pre-off rule carried by a few big prices? Flat ROI with place BSP capped at $20 and without the five
+    biggest returns, and the rule year by year."""
+    print(f"| book on the {what} under | bets | flat ROI | place BSP capped at $20 | without the 5 biggest returns | "
+          "biggest place BSP that placed |\n|---|---|---|---|---|---|")
+    for cap in (0.85, 0.90):
+        s = t[t[bc] < cap]
+        if s.empty:
+            continue
+        ret = np.where(s.placed == 1, (s.PLACE_BSP - 1) * (1 - COMM), -1.0)
+        capped = np.where(s.placed == 1, (np.minimum(s.PLACE_BSP, 20) - 1) * (1 - COMM), -1.0)
+        trimmed = np.sort(ret)[:-5] if len(ret) > 5 else ret
+        print(f"| {cap:.2f} | {len(s):,} | {ret.mean():+.1%} | {capped.mean():+.1%} | {trimmed.mean():+.1%} | "
+              f"${s.PLACE_BSP[s.placed == 1].max():,.2f} |")
+    print(f"\n| year, book on the {what} under 0.90 | races | bets | flat ROI | median place BSP money per race |\n"
+          "|---|---|---|---|---|")
+    s = t[t[bc] < 0.90]
+    for y, g in s.groupby(s.date.dt.year):
+        print(f"| {y} | {g.WIN_MARKET_ID.nunique():,} | {len(g):,} | {flat_roi(g.placed, g.PLACE_BSP):+.1%} | "
+              f"${g.groupby('WIN_MARKET_ID').PLACE_BSP_VOLUME.sum().median():,.0f} |")
+    print()
 
 
 if __name__ == "__main__":
