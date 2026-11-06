@@ -153,7 +153,7 @@ jobs:
           set -o pipefail
           python -m greyhound.isolynx pull --runs greyhound/cache/topaz --out greyhound/cache/isolynx \
             --since "${{ github.event.inputs.from }}" --max-minutes "${{ github.event.inputs.max_minutes }}" | tee -a "$GITHUB_STEP_SUMMARY" || true
-          python -m greyhound.isolynx table --out greyhound/cache/isolynx | head -40 | tee -a "$GITHUB_STEP_SUMMARY"
+          python -m greyhound.isolynx table --out greyhound/cache/isolynx | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Save the Isolynx pull (Actions cache)
         if: always() && github.event.inputs.mode == 'isolynx'
