@@ -34,7 +34,8 @@ import topaz_v1 as V1             # noqa: E402
 import topaz_walk as W            # noqa: E402
 from greyhound.isolynx import CHECK_DIP, CHECK_LOST   # noqa: E402
 
-TRACKED = "MEADOWS|SANDOWN|HEALESVILLE|TRARALGON|CRANBOURNE"
+TRACKED = ("MEA", "MEP", "SAN", "SAP", "HVL", "TRA", "CRN")    # Topaz's codes (run 42189617014): the Meadows and Sandown race
+                                                               # under two codes each; Cranbourne last raced in Jan 2022
 DRIFT_CAP = 1.3
 
 
@@ -101,7 +102,7 @@ def main(d, label):
     fp, es = pre[pre.date < es_start].copy(), pre[pre.date >= es_start].copy()
     recency = 0.5 ** (((es_start - fp.date).dt.days / 365.25).values / 3.0)
     h = (te.date < te.date.quantile(0.5)).values
-    tracked = te.track.astype(str).str.upper().str.contains(TRACKED).values
+    tracked = te.track.astype(str).str.upper().isin(TRACKED).values
     print(f"Scored quarter: {te.race_id.nunique():,} races from {te.date.min():%Y-%m-%d}, "
           f"{te.race_id[tracked].nunique():,} at the tracked tracks; a tracked run before the race for "
           f"{(te.iso_runs > 0).mean():.0%} of runners ({(te.iso_runs[tracked] > 0).mean():.0%} at the tracked tracks)\n")

@@ -26,7 +26,7 @@ import topaz_theories as T        # noqa: E402
 import topaz_v1 as V1             # noqa: E402
 import topaz_walk as W            # noqa: E402
 
-METRO = ("SAN", "MEA")
+METRO = ("SAN", "SAP", "MEA", "MEP")    # Sandown and The Meadows, each under two codes (run 42189617014)
 SEEDS = (1, 2, 3, 4, 5)
 
 
