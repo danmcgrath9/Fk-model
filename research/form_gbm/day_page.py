@@ -57,7 +57,7 @@ def prefix(s, p):
 
 
 # the day's bets taken at the open: each page's own box, rows copied, a Meeting cell in front
-rows, head, total_u, nbets = [], None, 0.0, 0
+rows, head, total_u, nbets, total_pl, settled = [], None, 0.0, 0, 0.0, 0
 for name, slug, s in mtgs:
     box = s[s.find("<!-- betmatic -->"):s.find("<!-- /betmatic -->")]
     trs = re.findall(r"<tr[^>]*>(.*?)</tr>", box, re.S)
@@ -72,6 +72,11 @@ for name, slug, s in mtgs:
             continue
         u = re.search(r"([\d.]+)u", tr)
         total_u += float(u.group(1)) if u else 0.0
+        # once the meeting page carries results (betmatic_html.py --results) its last column is the P&L: the day's
+        # total carries it too (7 Nov 2026, the first day settled on one page)
+        pl = re.search(r"([+-][\d.]+)u", re.sub(r"<[^>]+>", "", cells[-1]))
+        if pl:
+            total_pl += float(pl.group(1)); settled += 1
         mine.append(f"<tr>{prefix(''.join(cells), slug)}</tr>")
     # a heading row per meeting instead of a Meeting column: the six columns of the meeting pages fit a 390px phone,
     # a seventh pushed the prices off the side (5 Nov 2026, screenshot)
@@ -116,7 +121,9 @@ H.append(f"<div class='bets ob'><h2>Our bets at the open, every meeting ({nbets}
 if nbets:
     hc = re.findall(r"<th[^>]*>.*?</th>", head or "", re.S)
     H.append("<div class='tw'><table><tr>" + "".join(hc) + "</tr>" + "".join(rows)
-             + f"<tr><td><b>Total</b></td><td><b>{total_u:.2f}u</b></td><td colspan='4'></td></tr></table></div>")
+             + f"<tr><td><b>Total</b></td><td><b>{total_u:.2f}u</b></td>"
+             + (f"<td colspan='3'></td><td><b>{total_pl:+.2f}u</b></td>" if settled else "<td colspan='4'></td>")
+             + "</tr></table></div>")
 else:
     H.append("<div class='note'>Nothing taken at the open yet.</div>")
 H.append("<div class='note'>Each meeting below has its own race bar, game day, lay book and back book.</div></div>")

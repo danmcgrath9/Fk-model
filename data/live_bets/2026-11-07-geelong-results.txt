@@ -1,0 +1,91 @@
+## geelong-20261107: 90 entries
+R1 Mystic River Queen       finish 1  SP 1.85  BSP 1.85
+R1 Truant                   finish 2  SP 13.0  BSP 11.35
+R1 Alpine Point             finish 3  SP 6.0  BSP 8.0
+R1 Quarters                 finish 4  SP 31.0  BSP 60.0
+R1 Brookelinda              finish 5  SP 6.5  BSP 8.6
+R1 Rubicube                 finish 6  SP 20.0  BSP 28.0
+R1 Hollywood Hustler        finish 7  SP 31.0  BSP 65.83
+R1 Exacting Standard        finish 8  SP 6.5  BSP 6.2
+R2 Magna Sententia          finish 1  SP 2.35  BSP 2.44
+R2 Gypsy Storm              finish 2  SP 81.0  BSP 220.0
+R2 Unannounced              finish 3  SP 31.0  BSP 65.0
+R2 Scoot                    finish 4  SP 2.05  BSP 2.39
+R2 Bundedo                  finish 5  SP 71.0  BSP 190.0
+R2 Prestige Blackjack       finish 6  SP 31.0  BSP 46.82
+R2 Run Run Win              finish 7  SP 7.0  BSP 7.4
+R2 I'm A Believer           finish 8  SP 31.0  BSP 100.0
+R2 Lei                      finish 9  SP 21.0  BSP 40.0
+R2 Welcometodetroit         finish 10  SP 91.0  BSP 320.0
+R3 Dame Of Dubai            finish 1  SP 5.0  BSP 4.55
+R3 Deal Done Fast           finish 2  SP 2.2  BSP 2.36
+R3 Zwasp                    finish 3  SP 101.0  BSP 227.6
+R3 Jezebel Jenni            finish 4  SP 26.0  BSP 39.51
+R3 Flying Riches            finish 5  SP 19.0  BSP 28.73
+R3 Brutal Tempo             finish 6  SP 5.5  BSP 7.06
+R3 Zametovka                finish 7  SP 11.0  BSP 14.0
+R3 Bronx Brawler            finish 8  SP 51.0  BSP 89.5
+R3 Love 'n' Glory           finish 9  SP 16.0  BSP 25.0
+R3 Fantasy Reel             finish 10  SP 91.0  BSP 235.6
+R3 Awaywiththepixies        finish 11  SP 101.0  BSP 320.0
+R3 Couldbetracy             finish 12  SP 201.0  BSP 493.51
+R3 Written Velocity         finish 13  SP 11.0  BSP 13.67
+R4 Just My Lot              finish 1  SP 3.9  BSP 4.27
+R4 The Quiet Immortal       finish 2  SP 6.0  BSP 9.6
+R4 Trinity's D'oro          finish 3  SP 26.0  BSP 42.0
+R4 Perfect Night            finish 4  SP 2.15  BSP 2.22
+R4 Savethebesttillast       finish 5  SP 26.0  BSP 32.0
+R4 Shades Of Stardom        finish 6  SP 10.0  BSP 16.5
+R4 Kaddari                  finish 7  SP 91.0  BSP 349.75
+R4 Birdie Time              finish 8  SP 21.0  BSP 32.0
+R4 First Tosen              finish 9  SP 151.0  BSP 639.12
+R4 Ti Tree Lad              finish 10  SP 21.0  BSP 25.0
+R4 Lucky Compass            finish 11  SP 31.0  BSP 50.0
+R4 Last Bus Home            finish 12  SP 101.0  BSP 618.62
+R5 Spirit Angel             finish 1  SP 9.5  BSP 10.89
+R5 Devine Grunt             finish 2  SP 10.0  BSP 8.8
+R5 Ballistic Romeo          finish 3  SP 11.0  BSP 14.22
+R5 Gymkhana                 finish 4  SP 12.0  BSP 15.82
+R5 Cuban Dawn               finish 5  SP 17.0  BSP 17.88
+R5 I'mfallinforyou          finish 6  SP 21.0  BSP 38.0
+R5 Epeiric                  finish 7  SP 4.2  BSP 5.28
+R5 So Long Ago              finish 8  SP 3.5  BSP 3.5
+R5 Sakakibara               finish 9  SP 11.0  BSP 14.67
+R5 Caledonian Summer        finish 10  SP 10.0  BSP 14.5
+R5 Pro Velocity             finish 11  SP 101.0  BSP 154.99
+R5 A Blue Star              finish 12  SP 101.0  BSP 183.91
+R6 Crank                    finish 1  SP 13.0  BSP 22.0
+R6 I'm Da Boss              finish 2  SP 11.0  BSP 14.0
+R6 Our Little Star          finish 3  SP 14.0  BSP 14.5
+R6 Olatunde                 finish 4  SP 4.0  BSP 4.2
+R6 Raven's Silver           finish 5  SP 14.0  BSP 23.44
+R6 Posh Diamante            finish 6  SP 6.5  BSP 9.8
+R6 Chasing Rainbows         finish 7  SP 2.2  BSP 2.74
+R6 Master Jack              finish 8  SP 31.0  BSP 63.65
+R6 Mont Saint Michel        finish 9  SP 61.0  BSP 160.0
+R7 Shaalute                 finish 1  SP 10.0  BSP 11.7
+R7 Desert Anthem            finish 2  SP 6.5  BSP 6.21
+R7 Bullets High             finish 3  SP 31.0  BSP 42.86
+R7 Lario                    finish 4  SP 18.0  BSP 13.95
+R7 Taung                    finish 5  SP 12.0  BSP 16.0
+R7 Geffina                  finish 6  SP 41.0  BSP 71.83
+R7 Jareth                   finish 7  SP 10.0  BSP 10.5
+R7 World's My Oyster        finish 8  SP 41.0  BSP 70.0
+R7 Romantic Encounter       finish 9  SP 4.0  BSP 5.48
+R7 Kurakka                  finish 10  SP 20.0  BSP 30.56
+R7 Fridge Monster           finish 11  SP 8.5  BSP 8.25
+R7 Just Berrilliant         finish 12  SP 81.0  BSP 125.93
+R7 Miss Castelvecchio       finish 13  SP 4.6  BSP 4.65
+R8 Miss Ellaneous           finish 1  SP 6.0  BSP 7.59
+R8 Share The Music          finish 2  SP 4.8  BSP 5.7
+R8 Manhattan Empire         finish 3  SP 81.0  BSP 140.0
+R8 I Said So                finish 4  SP 9.0  BSP 8.3
+R8 You Said What            finish 5  SP 51.0  BSP 64.52
+R8 Brutify                  finish 6  SP 9.0  BSP 12.38
+R8 Tipsy Gypsy              finish 7  SP 19.0  BSP 30.0
+R8 Bee Admired              finish 8  SP 3.2  BSP 3.21
+R8 Succaforyou              finish 9  SP 12.0  BSP 14.5
+R8 Lika Wreckin' Ball       finish 10  SP 101.0  BSP 240.0
+R8 Sara's Rocket            finish 11  SP 26.0  BSP 36.0
+R8 Farside                  finish 12  SP 18.0  BSP 26.0
+R8 Aurora Storm             finish 13  SP 21.0  BSP 36.0

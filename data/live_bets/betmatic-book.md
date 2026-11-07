@@ -1054,3 +1054,16 @@ Fridge Monster $6.93, Shaalute $9.83. Lay candidates: Flemington 72, Geelong 54.
   (2026-11-10-mornington-missed.csv). TIMING: TAB opened Mornington about 30 minutes after its fields came out, an hour
   before riders, so a 12:17pm pull cannot catch that kind of open. Put to the founder.
 - TAB $0.65, bot not connected.
+
+## Saturday 7 Nov settled (Form King results, 11:55pm; paper, bot off)
+- Open book: Litzdeel R3 1.46u $8.50 5th (SP $8.50, BSP $8.84) -1.46u; Salaria R9 0.63u $11 8th (BSP $14.47) -0.63u; Fridge
+  Monster R7 2.78u $22.67 11th (SP $8.50, BSP $8.25) -2.78u; Shaalute R7 0.88u $13 WON (SP $10, BSP $11.70) +10.56u.
+  4 bets, 1 winner, +5.69u (+$284.50 at $50). No deduction reported.
+- Twitter card (half units, Mercer prices): Litzdeel $7 0.73u, Salaria $11 0.32u, Fridge Monster $11 1.39u lost; Shaalute $8
+  0.44u won +3.08u: 2.88u out, 3.52u in, +0.64u (+22%).
+- Lay book ($200): Flemington (s6t) 11 lays, 1 winner, Lawborough R9 (BSP $19.06) -18.06u: -8.86u (-$1,772). Geelong (d5h)
+  8 lays, 1 winner, Crank R6 (BSP $22) -21.00u: -14.56u (-$2,912); Somebody Told Me R8 void (scratched late, not in the
+  results). Balnarring no lays (no Betfair prices). Day lays 19, 2 winners, -23.42u (-$4,684).
+- Back book ($500): Geelong R7 Miss Castelvecchio (BSP fav $4.65) 13th -1u (-$500).
+SATURDAY FINAL (paper): open +$284.50; lays -$4,684; back -$500; day -$4,899.50. Card +0.64u (+22%).
+Lay trial (28 Oct to 7 Nov): 116 lays, 5 winners, +6.38u (+$1,276 at $200).

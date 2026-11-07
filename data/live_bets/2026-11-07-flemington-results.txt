@@ -1,0 +1,106 @@
+## flemington-20261107: 105 entries
+R1 Soldi                    finish 1  SP 3.3  BSP 4.0
+R1 Goddess Kay              finish 2  SP 6.0  BSP 6.2
+R1 She's Supreme            finish 3  SP 9.0  BSP 11.5
+R1 Miss Ruthless            finish 4  SP 26.0  BSP 31.53
+R1 Natural Emotion          finish 5  SP 8.5  BSP 11.5
+R1 Naughty May              finish 6  SP 61.0  BSP 85.16
+R1 Steel Point              finish 7  SP 18.0  BSP 25.42
+R1 Public Affairs           finish 8  SP 13.0  BSP 17.69
+R1 The Chancer              finish 9  SP 7.0  BSP 7.4
+R1 Rusty Pearl              finish 10  SP 11.0  BSP 14.8
+R1 Jacquets Off             finish 11  SP 13.0  BSP 18.82
+R2 Superfabulistic          finish 1  SP 3.6  BSP 4.18
+R2 He'll Rip                finish 2  SP 7.5  BSP 8.4
+R2 Options                  finish 3  SP 51.0  BSP 91.86
+R2 Test Of Love             finish 4  SP 14.0  BSP 15.27
+R2 Roulette King            finish 5  SP 12.0  BSP 16.0
+R2 Fiorenot                 finish 6  SP 2.6  BSP 2.97
+R2 Grand Omaha              finish 7  SP 19.0  BSP 27.0
+R2 Dirty Old Town           finish 8  SP 31.0  BSP 44.0
+R2 Silvasista               finish 9  SP 51.0  BSP 72.38
+R2 Hiyaam Proud             finish 10  SP 26.0  BSP 30.0
+R2 Mount Bona               finish 11  SP 15.0  BSP 23.0
+R2 Nation's Call            finish 12  SP 21.0  BSP 30.0
+R3 Pinhole                  finish 1  SP 2.6  BSP 3.11
+R3 Manzor Blue              finish 2  SP 41.0  BSP 65.0
+R3 Torranzino               finish 3  SP 26.0  BSP 30.27
+R3 Defiantly                finish 4  SP 4.2  BSP 4.2
+R3 Litzdeel                 finish 5  SP 8.5  BSP 8.84
+R3 Berkeley Square          finish 6  SP 11.0  BSP 17.0
+R3 King Pedro               finish 7  SP 5.0  BSP 6.99
+R3 Valiant King             finish 8  SP 19.0  BSP 29.54
+R3 Newlook                  finish 9  SP 71.0  BSP 140.0
+R3 Bella Montagna           finish 10  SP 31.0  BSP 39.05
+R4 Watchme Win              finish 1  SP 18.0  BSP 15.29
+R4 Inkaruna                 finish 2  SP 5.0  BSP 5.0
+R4 Photograph               finish 3  SP 8.0  BSP 11.65
+R4 Arkansaw Kid             finish 4  SP 13.0  BSP 15.0
+R4 Grand Larceny            finish 5  SP 21.0  BSP 27.0
+R4 De Bergerac              finish 6  SP 12.0  BSP 15.91
+R4 Hankee Alpha             finish 7  SP 3.4  BSP 4.48
+R4 Immortal Star            finish 8  SP 14.0  BSP 17.5
+R4 Cripps                   finish 9  SP 13.0  BSP 15.5
+R4 Piastri                  finish 10  SP 71.0  BSP 110.0
+R4 La Fracas                finish 11  SP 101.0  BSP 160.0
+R4 Pallaton                 finish 12  SP 13.0  BSP 16.5
+R4 Grand Impact             finish 13  SP 14.0  BSP 15.77
+R4 Sir Sway                 finish 14  SP 101.0  BSP 187.44
+R5 Sun Gift                 finish 1  SP 51.0  BSP 65.0
+R5 Too Darn Discreet        finish 2  SP 3.3  BSP 3.53
+R5 Perfect Ten              finish 3  SP 20.0  BSP 24.0
+R5 Classic Gem              finish 4  SP 61.0  BSP 85.0
+R5 Jenni's Meadow           finish 5  SP 21.0  BSP 28.0
+R5 Private Legacy           finish 6  SP 31.0  BSP 49.54
+R5 You Wahng                finish 7  SP 31.0  BSP 38.0
+R5 Zuleika                  finish 8  SP 15.0  BSP 19.5
+R5 Machine Gun Gracie       finish 9  SP 14.0  BSP 19.5
+R5 Pillow Fight             finish 10  SP 15.0  BSP 17.5
+R5 Panova                   finish 11  SP 12.0  BSP 16.5
+R5 Ocean Bay                finish 12  SP 21.0  BSP 27.0
+R5 Sun Worshipper           finish 13  SP 51.0  BSP 97.7
+R5 Sunset Park              finish 14  SP 51.0  BSP 85.0
+R5 Vivy Air                 finish 15  SP 4.6  BSP 5.48
+R5 Soverato                 finish 16  SP 7.5  BSP 10.5
+R6 Point Barrow             finish 1  SP 18.0  BSP 21.0
+R6 Plaintiff                finish 2  SP 101.0  BSP 149.45
+R6 Skybird                  finish 3  SP 31.0  BSP 80.0
+R6 Headwall                 finish 4  SP 11.0  BSP 12.0
+R6 Tempted                  finish 5  SP 1.7  BSP 1.76
+R6 Joliestar                finish 6  SP 4.4  BSP 4.94
+R6 Charm Stone              finish 7  SP 31.0  BSP 44.0
+R6 Geegees Mistruth         finish 8  SP 31.0  BSP 74.91
+R6 Mazu                     finish 9  SP 31.0  BSP 50.64
+R6 Caballus                 finish 10  SP 13.0  BSP 16.5
+R7 Autumn Glow              finish 1  SP 1.18  BSP 1.22
+R7 Lindermann               finish 2  SP 16.0  BSP 24.07
+R7 Buckaroo                 finish 3  SP 14.0  BSP 27.54
+R7 Tom Kitten               finish 4  SP 12.0  BSP 16.0
+R7 Sepals                   finish 5  SP 21.0  BSP 37.9
+R7 Within The Law           finish 6  SP 41.0  BSP 75.14
+R7 Pounding                 finish 7  SP 61.0  BSP 220.0
+R7 El Soleado               finish 8  SP 101.0  BSP 606.6
+R8 Birdman                  finish 1  SP 5.0  BSP 6.0
+R8 Cosmic Crusader          finish 2  SP 3.3  BSP 3.8
+R8 Sir Delius               finish 3  SP 5.0  BSP 5.88
+R8 Aeliana                  finish 4  SP 3.8  BSP 4.1
+R8 Treasurethe Moment       finish 5  SP 26.0  BSP 42.0
+R8 Attrition                finish 6  SP 81.0  BSP 180.0
+R8 Land Legend              finish 7  SP 31.0  BSP 38.25
+R8 Light Infantry Man       finish 8  SP 21.0  BSP 23.76
+R8 Von Hauke                finish 9  SP 91.0  BSP 150.0
+R8 Omni Man                 finish 10  SP 13.0  BSP 16.0
+R9 Lawborough               finish 1  SP 17.0  BSP 19.06
+R9 Tres Magnifique          finish 2  SP 13.0  BSP 14.63
+R9 Esmahli                  finish 3  SP 13.0  BSP 15.0
+R9 Royal Rendezvous         finish 4  SP 19.0  BSP 22.07
+R9 Verdoux                  finish 5  SP 17.0  BSP 21.0
+R9 Torsheen                 finish 6  SP 4.2  BSP 4.4
+R9 Rohesia                  finish 7  SP 51.0  BSP 77.76
+R9 Salaria                  finish 8  SP 11.0  BSP 14.47
+R9 Fission                  finish 9  SP 21.0  BSP 29.36
+R9 It's A Yes               finish 10  SP 31.0  BSP 62.76
+R9 Educated                 finish 11  SP 3.8  BSP 3.92
+R9 King Tut                 finish 12  SP 16.0  BSP 21.12
+R9 Brave Design             finish 13  SP 15.0  BSP 19.0
+R9 Electric Elvis           finish 14  SP 14.0  BSP 19.8
