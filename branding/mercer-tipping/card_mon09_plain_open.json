@@ -1,0 +1,15 @@
+{
+ "day": "Monday",
+ "date": "9 November",
+ "meetings": [
+  {
+   "name": "Hamilton",
+   "note": "",
+   "bets": [
+    {"race": 2, "time": "2:00PM", "horse": "Al's Diemen", "price": "$17", "rated": "$10.37", "units": "0.81u"},
+    {"race": 7, "time": "4:30PM", "horse": "Sweet City Dancer", "price": "$17.50", "rated": "$11.98", "units": "0.69u"}
+   ]
+  }
+ ],
+ "brand": false
+}
