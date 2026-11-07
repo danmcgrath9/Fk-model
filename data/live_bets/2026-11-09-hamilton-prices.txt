@@ -1,123 +1,123 @@
-# Hamilton Mon 9 Nov, Slow (Form King Fri; 1mm forecast to race day, under the 15mm line), final fields; no market yet
-1, Graceful Mist, 0, 0
-1, Don't Say No Mikki, 0, 0
-1, Xiguous Equus, 0, 0
-1, Oh La Belle, 0, 0
-1, Saraya, 0, 0
-1, Smart And Mighty, 0, 0
-1, Calm The Press, 0, 0
-1, Arizona Wildfire, 0, 0
-1, Hellofacury, 0, 0
-1, Wanted Enuff, 0, 0
-1, Invisible Caravan, 0, 0
-1, Billy Be Good, 0, 0
-1, Inside Word, 0, 0
-1, King Koruna, 0, 0
-2, Tarin's Rock, 0, 0
-2, Sloane Raider, 0, 0
-2, Better Shape Up, 0, 0
-2, Al's Diemen, 0, 0
-2, Abydos, 0, 0
-2, Freshwater Fox, 0, 0
-2, Wunderlust, 0, 0
-2, Piklemegranmother, 0, 0
-2, Tell Me Why, 0, 0
-2, Balgownie Lad, 0, 0
-2, Never Pegasus, 0, 0
-2, Harder Than All, 0, 0
-2, Rentier, 0, 0
-2, Vaulted, 0, 0
-3, All Moonlite, 0, 0
-3, Conjurer, 0, 0
-3, Eminent Ella, 0, 0
-3, Heidi High, 0, 0
-3, Alltogethernow, 0, 0
-3, Trust My, 0, 0
-3, Empress Of China, 0, 0
-3, Jakbe Nimble, 0, 0
-3, Studio Artist, SCR
-3, Rollin'ontheriver, 0, 0
-3, Lord Timo, 0, 0
-3, Ideas Galore, SCR
-3, Princess Chic, 0, 0
-3, Gradivus, SCR
-3, Mossquillo, 0, 0
-3, Dance Day, 0, 0
-3, Musical Journey, 0, 0
-4, Money Wheel, SCR
-4, Bologna Baby, SCR
-4, Welkin Star, 0, 0
-4, Somethingintheair, 0, 0
-4, Dukey, SCR
-4, Lord Lonny, 0, 0
-4, Shaykhlislamova, 0, 0
-4, The Toronado Kid, SCR
-4, Cocoa Charm, 0, 0
-4, Iskadeel, 0, 0
-4, Prince Iadora, 0, 0
-4, Apadana, 0, 0
-4, I'mnodrummerboy, 0, 0
-4, Specific Outcome, 0, 0
-4, Chancellor, 0, 0
-4, Hannan Street, 0, 0
-4, Normandy Peace, 0, 0
-4, King Leonidas, 0, 0
-5, Bell's Bighouse, 0, 0
-5, Drink Then Kiss, 0, 0
-5, Tarakash, 0, 0
-5, Endean Ace, 0, 0
-5, A Blue Star, SCR
-5, Rebel's Idol, 0, 0
-5, Turned Loose, 0, 0
-5, Knock Of Beers, 0, 0
-5, Battle Point, 0, 0
-5, Conaltri, SCR
-5, Ain't Tellin, SCR
-5, Miss Trombari, 0, 0
-5, Sotomayor, 0, 0
-5, Scandoval, 0, 0
-5, Newcombe, 0, 0
-5, Sweater Girl, 0, 0
-5, Tudaya, 0, 0
-6, Drover's Yarn, 0, 0
-6, Saint Lazare, 0, 0
-6, Infer, 0, 0
-6, Attain, 0, 0
-6, All The Way Baby, 0, 0
-6, Dazzling Sky, 0, 0
-6, French Navy, 0, 0
-6, Becauseyou're Mine, 0, 0
-6, Nicaloha, 0, 0
-6, Costae, 0, 0
-6, The Birthday Party, 0, 0
-6, Ramelle, 0, 0
-7, Our Ellie Rose, 0, 0
-7, Galaxy Turf, 0, 0
-7, Ask For More, 0, 0
-7, Padstow Polly, 0, 0
-7, Alpinova, 0, 0
-7, Imminent Storm, 0, 0
-7, Imacreedytwo, 0, 0
-7, Count Of Anjou, 0, 0
-7, Royal Inference, 0, 0
-7, News Travels Fast, 0, 0
-7, Highland George, 0, 0
-7, Sweet City Dancer, 0, 0
-7, Popthebubbly, 0, 0
-7, Star Fortian, 0, 0
-8, Adki, 0, 0
-8, They Call Me Dusty, 0, 0
-8, Dangerous Secret, 0, 0
-8, Barclaps, 0, 0
-8, Nicking Gracie, 0, 0
-8, Hidden Witness, 0, 0
-8, Simply Excels, SCR
-8, Frederick, 0, 0
-8, Steely Hustler, 0, 0
-8, Juniors Queen, 0, 0
-8, Misty Emotions, 0, 0
-8, Triomphe, 0, 0
-8, Les Vosges, 0, 0
-8, Youarenotalone, 0, 0
-8, Hellish Lee, SCR
-8, Sweet But Sassy, 0, 0
+# Hamilton Mon 9 Nov, Slow (Form King Fri; 1mm forecast to race day, under the 15mm line), final fields; no market yet; opening prices added Sat 12:50pm
+1, Graceful Mist, 31.00, 31.00, fk_open 17.00
+1, Don't Say No Mikki, 11.00, 11.00, fk_open 7.50
+1, Xiguous Equus, 151.00, 151.00, fk_open 101.00
+1, Oh La Belle, 151.00, 151.00, fk_open 101.00
+1, Saraya, 46.00, 46.00, fk_open 26.00
+1, Smart And Mighty, 34.00, 34.00, fk_open 51.00
+1, Calm The Press, 21.00, 21.00, fk_open 11.00
+1, Arizona Wildfire, 31.00, 31.00, fk_open 17.00
+1, Hellofacury, 3.80, 3.80, fk_open 2.70
+1, Wanted Enuff, 5.00, 5.00, fk_open 5.50
+1, Invisible Caravan, 46.00, 46.00, fk_open 26.00
+1, Billy Be Good, 51.00, 51.00, fk_open 101.00
+1, Inside Word, 23.00, 23.00, fk_open 17.00
+1, King Koruna, 2.30, 2.30, fk_open 4.20
+2, Tarin's Rock, 101.00, 101.00, fk_open 101.00
+2, Sloane Raider, 51.00, 51.00, fk_open 51.00
+2, Better Shape Up, 14.00, 14.00, fk_open 10.00
+2, Al's Diemen, 9.00, 9.00, fk_open 17.00
+2, Abydos, 8.00, 8.00, fk_open 8.50
+2, Freshwater Fox, 35.00, 35.00, fk_open 26.00
+2, Wunderlust, 101.00, 101.00, fk_open 101.00
+2, Piklemegranmother, 7.00, 7.00, fk_open 5.50
+2, Tell Me Why, 26.00, 26.00, fk_open 26.00
+2, Balgownie Lad, 101.00, 101.00, fk_open 101.00
+2, Never Pegasus, 4.20, 4.20, fk_open 3.80
+2, Harder Than All, 126.00, 126.00, fk_open 101.00
+2, Rentier, 2.50, 2.50, fk_open 2.60
+2, Vaulted, 13.00, 13.00, fk_open 13.00
+3, All Moonlite, 5.00, 5.00, fk_open 4.40
+3, Conjurer, 15.00, 15.00, fk_open 10.00
+3, Eminent Ella, 35.00, 35.00, fk_open 26.00
+3, Heidi High, 18.00, 18.00, fk_open 17.00
+3, Alltogethernow, 9.00, 9.00, fk_open 5.50
+3, Trust My, 126.00, 126.00, fk_open 101.00
+3, Empress Of China, 16.00, 16.00, fk_open 10.00
+3, Jakbe Nimble, 9.00, 9.00, fk_open 5.50
+3, Studio Artist, SCR, fk_open 101.00
+3, Rollin'ontheriver, 7.00, 7.00, fk_open 8.50
+3, Lord Timo, 13.00, 13.00, fk_open 26.00
+3, Ideas Galore, SCR, fk_open 101.00
+3, Princess Chic, 101.00, 101.00, fk_open 101.00
+3, Gradivus, SCR, fk_open 6.00
+3, Mossquillo, 5.00, 5.00, fk_open 7.00
+3, Dance Day, 8.00, 8.00, fk_open 12.00
+3, Musical Journey, 19.00, 19.00, fk_open 17.00
+4, Money Wheel, SCR, fk_open 51.00
+4, Bologna Baby, SCR, fk_open 101.00
+4, Welkin Star, 21.00, 21.00, fk_open 17.00
+4, Somethingintheair, 4.20, 4.20, fk_open 3.90
+4, Dukey, SCR, fk_open 101.00
+4, Lord Lonny, 18.00, 18.00, fk_open 13.00
+4, Shaykhlislamova, 35.00, 35.00, fk_open 26.00
+4, The Toronado Kid, SCR, fk_open 51.00
+4, Cocoa Charm, 81.00, 81.00, fk_open 101.00
+4, Iskadeel, 71.00, 71.00, fk_open 51.00
+4, Prince Iadora, 21.00, 21.00, fk_open 17.00
+4, Apadana, 8.50, 8.50, fk_open 7.00
+4, I'mnodrummerboy, 10.00, 10.00, fk_open 11.00
+4, Specific Outcome, 151.00, 151.00, fk_open 101.00
+4, Chancellor, 3.40, 3.40, fk_open 4.10
+4, Hannan Street, 126.00, 126.00, fk_open 101.00
+4, Normandy Peace, 3.50, 3.50, fk_open 3.40
+4, King Leonidas, 151.00, 151.00, fk_open 101.00
+5, Bell's Bighouse, 10.00, 10.00, fk_open 11.00
+5, Drink Then Kiss, 21.00, 21.00, fk_open 23.00
+5, Tarakash, 15.00, 15.00, fk_open 18.00
+5, Endean Ace, 9.00, 9.00, fk_open 7.50
+5, A Blue Star, SCR, fk_open 41.00
+5, Rebel's Idol, 35.00, 35.00, fk_open 19.00
+5, Turned Loose, 8.50, 8.50, fk_open 9.00
+5, Knock Of Beers, 34.00, 34.00, fk_open 23.00
+5, Battle Point, 26.00, 26.00, fk_open 19.00
+5, Conaltri, SCR, fk_open 81.00
+5, Ain't Tellin, SCR, fk_open 101.00
+5, Miss Trombari, 12.00, 12.00, fk_open 8.00
+5, Sotomayor, 4.80, 4.80, fk_open 4.20
+5, Scandoval, 26.00, 26.00, fk_open 21.00
+5, Newcombe, 9.00, 9.00, fk_open 9.00
+5, Sweater Girl, 5.00, 5.00, fk_open 11.00
+5, Tudaya, 10.00, 10.00, fk_open 7.50
+6, Drover's Yarn, 151.00, 151.00, fk_open 151.00
+6, Saint Lazare, 46.00, 46.00, fk_open 26.00
+6, Infer, 81.00, 81.00, fk_open 51.00
+6, Attain, 4.80, 4.80, fk_open 5.50
+6, All The Way Baby, 9.00, 9.00, fk_open 14.00
+6, Dazzling Sky, 26.00, 26.00, fk_open 31.00
+6, French Navy, 12.00, 12.00, fk_open 8.00
+6, Becauseyou're Mine, 4.00, 4.00, fk_open 4.00
+6, Nicaloha, 8.50, 8.50, fk_open 7.50
+6, Costae, 34.00, 34.00, fk_open 23.00
+6, The Birthday Party, 5.50, 5.50, fk_open 4.00
+6, Ramelle, 5.00, 5.00, fk_open 6.50
+7, Our Ellie Rose, 71.00, 71.00, fk_open 41.00
+7, Galaxy Turf, 81.00, 81.00, fk_open 71.00
+7, Ask For More, 151.00, 151.00, fk_open 151.00
+7, Padstow Polly, 151.00, 151.00, fk_open 151.00
+7, Alpinova, 7.00, 7.00, fk_open 6.50
+7, Imminent Storm, 3.70, 3.70, fk_open 2.75
+7, Imacreedytwo, 7.50, 7.50, fk_open 10.00
+7, Count Of Anjou, 101.00, 101.00, fk_open 71.00
+7, Royal Inference, 7.00, 7.00, fk_open 7.25
+7, News Travels Fast, 23.00, 23.00, fk_open 14.50
+7, Highland George, 46.00, 46.00, fk_open 28.50
+7, Sweet City Dancer, 15.00, 15.00, fk_open 17.50
+7, Popthebubbly, 3.40, 3.40, fk_open 4.40
+7, Star Fortian, 12.00, 12.00, fk_open 9.00
+8, Adki, 12.00, 12.00, fk_open 11.00
+8, They Call Me Dusty, 27.00, 27.00, fk_open 26.00
+8, Dangerous Secret, 41.00, 41.00, fk_open 41.00
+8, Barclaps, 101.00, 101.00, fk_open 81.00
+8, Nicking Gracie, 18.00, 18.00, fk_open 14.00
+8, Hidden Witness, 3.90, 3.90, fk_open 5.00
+8, Simply Excels, SCR, fk_open 34.00
+8, Frederick, 7.50, 7.50, fk_open 6.00
+8, Steely Hustler, 8.50, 8.50, fk_open 7.50
+8, Juniors Queen, 81.00, 81.00, fk_open 81.00
+8, Misty Emotions, 6.50, 6.50, fk_open 5.50
+8, Triomphe, 8.00, 8.00, fk_open 11.00
+8, Les Vosges, 41.00, 41.00, fk_open 51.00
+8, Youarenotalone, 4.40, 4.40, fk_open 4.00
+8, Hellish Lee, SCR, fk_open 12.00
+8, Sweet But Sassy, 27.00, 27.00, fk_open 26.00

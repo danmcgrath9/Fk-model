@@ -1043,3 +1043,14 @@ Fridge Monster $11, Shaalute $8; half units); no-Mercer at the open.
 Sat 9:30am re-price on the final fields (Flemington s6t Soft 6, our call; Geelong d5h Dead; Balnarring h8c Heavy 8, paper):
 20 scratchings at Flemington, 30 at Geelong, 11 at Balnarring, none of ours. Ours now: Litzdeel $4.91, Salaria $7.92,
 Fridge Monster $6.93, Shaalute $9.83. Lay candidates: Flemington 72, Geelong 54. Balnarring's market still not up.
+
+## Sat 7 Nov 12:17pm run: Mornington Tue priced, Hamilton Mon opened
+- Hamilton Mon opened Sat 10:14-10:43am on Friday's sheet: paper fills R2 Al's Diemen 0.81u $17 (ours $10.37), R7 Sweet City
+  Dancer 0.69u $17.50 ($11.98). 1.50u.
+- Mornington Tue, Dead (Form King; no rain to race day): 78 orders on 31 horses (d5m). Its market OPENED Sat 11:02-11:14am,
+  before this run pulled the meeting (fields out about 10:30, riders at 12), so the whole meeting is MISSED and its sheet
+  of record is empty. Would have filled: R4 Marilyn's Edge $9.50 2.14u (ours $5.30), R5 Nightowl $8.50 1.46u ($6.16), R5
+  Tassadar $34 0.67u ($14.94), R8 Express Guard $19 0.97u ($10.67), R8 It's Gnarly $19 1.08u ($9.74): 6.32u
+  (2026-11-10-mornington-missed.csv). TIMING: TAB opened Mornington about 30 minutes after its fields came out, an hour
+  before riders, so a 12:17pm pull cannot catch that kind of open. Put to the founder.
+- TAB $0.65, bot not connected.

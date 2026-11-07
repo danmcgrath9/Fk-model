@@ -1,0 +1,108 @@
+1|3|Grinding Away|False|False
+1|1|Clydebank Robber|False|False
+1|5|Marquisard|False|False
+1|10|Dejavast|False|False
+1|2|Fantastic Beast|False|False
+1|13|Startin'sumthin'|True|False
+1|12|Tennessee Link|False|False
+1|4|Guthrie|False|False
+1|14|Lady Of Alsace|True|False
+1|6|Molesworth|False|False
+1|11|Kissattack|False|False
+1|7|Verry Zeductive|False|False
+1|8|Diamond Burglar|False|False
+1|9|Sentaloa|False|False
+2|2|Angel In A Dress|False|False
+2|7|Pragmatic Lady|False|False
+2|3|Burning Rubies|False|False
+2|10|Spellbinding|False|False
+2|8|Queen's English|False|False
+2|5|Goddess Storm|False|False
+2|1|Amber Queen|False|False
+2|9|Roar Talent|False|False
+2|6|Hot Samba|False|False
+2|11|Wolfmaama|False|False
+2|4|Diamond Heist|False|False
+3|14|Baltic|True|False
+3|13|Russian Tide|True|False
+3|1|Russian Into It|False|False
+3|10|Isabellas|False|False
+3|9|Exegesis|False|False
+3|11|Thatswotitzalabout|False|False
+3|3|Aerial Pursuit|False|False
+3|8|Pinamilloy|False|False
+3|2|A Stern Angel|False|False
+3|12|Kensington|False|False
+3|6|Exacting Standard|False|False
+3|7|Little Gangster|False|False
+3|4|Ballsintheair|False|False
+3|5|Capital Storm|False|False
+4|2|Cudmore Street|False|False
+4|6|Power Cable|False|False
+4|13|Smashing Ruby|True|False
+4|11|Sistine Tunnel|False|False
+4|14|Dominant Miss|True|False
+4|5|Grouse Mountain|False|False
+4|1|Marilyn's Edge|False|False
+4|7|Fearless Monarch|False|False
+4|8|Arabian Myth|False|False
+4|4|Glisk|False|False
+4|12|Regal Visions|False|False
+4|3|Cherry Hills|False|False
+4|9|Bliss Bomb|False|False
+4|10|Sayalero|False|False
+5|17|I Could Do Better|True|False
+5|11|The Kings Gospel|False|False
+5|15|Mac Kalhoun|True|False
+5|3|Frank Express|False|False
+5|5|Hollandia|False|False
+5|12|Love Sparkles|False|False
+5|14|Hard To Go Wrong|True|False
+5|10|Up And Under|False|False
+5|2|Nicoffhome|False|False
+5|16|Ginger Sweet|True|False
+5|8|Nightowl|False|False
+5|13|Tassadar|False|False
+5|9|Riozino|False|False
+5|4|Just Dance|False|False
+5|1|Mike's Hope|False|False
+5|6|Crown Of Russia|False|False
+5|7|Wolves' Den|False|False
+6|6|Bangholme|False|False
+6|4|Bella Cinque|False|False
+6|9|Irresistible Sir|False|False
+6|1|Ilovediamonds|False|False
+6|14|Deep Joy|True|False
+6|2|Just Remember It|False|False
+6|8|Podargoni|False|False
+6|11|Nuggies|False|False
+6|12|Tipping Rain|False|False
+6|10|Mordialloc Beach|False|False
+6|7|Miss Toronado|False|False
+6|3|Triple Salute|False|False
+7|11|Phoenix Flyer|False|False
+7|6|Diamanda|False|False
+7|12|Shout Out Girl|False|False
+7|13|Mrs Gossip|False|False
+7|7|Real Alliance|False|False
+7|8|Russian Roni|False|False
+7|5|Fearless Writer|False|False
+7|3|Sensational Ruler|False|False
+7|9|Nikephoros|False|False
+7|10|So You Excel|False|False
+7|2|Pol Rogeur|False|False
+7|1|Rough Enuff|False|False
+7|4|Two To Tango|False|False
+8|13|Night Eruption|False|False
+8|11|I'm Dynamite|False|False
+8|1|British Columbia|False|False
+8|3|Count Of Toulouse|False|False
+8|8|Russian Benefits|False|False
+8|5|Chambers Bay|False|False
+8|7|Express Guard|False|False
+8|12|She Nailed It|False|False
+8|10|Flying Jude|False|False
+8|2|Alexander Thegreat|False|False
+8|6|Jenni Poppins|False|False
+8|4|Our Pierro|False|False
+8|9|It's Gnarly|False|False
