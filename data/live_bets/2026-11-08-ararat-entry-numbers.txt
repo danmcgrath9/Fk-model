@@ -6,13 +6,13 @@
 1|9|Topspin|False|False
 1|13|Kawhia|True|False
 1|4|I Love This Song|False|False
-1|5|Motiver|False|False
+1|5|Motiver|False|True
 1|10|Black Rutile|False|False
 1|8|Three Reel Roses|False|False
 1|2|Eye For An Eye|False|False
 1|11|Legs Power|False|False
 2|3|Daniel Boone|False|False
-2|2|Community Gaz|False|False
+2|2|Community Gaz|False|True
 2|4|Dimachaerus|False|False
 2|8|Incoherent|False|False
 2|1|Classical Power|False|False
@@ -28,24 +28,24 @@
 3|3|Hellofacury|False|False
 3|1|Dream For Free|False|False
 3|9|Buchan Outkast|False|False
-3|5|Alpine Point|False|False
+3|5|Alpine Point|False|True
 3|8|Pray For Elegance|False|False
 3|7|Optimus|False|False
 3|6|Cast A Line|False|False
 4|4|Midnight Devil|False|False
 4|2|Masked Marauder|False|False
 4|3|Southern Crescent|False|False
-4|6|Edges Diamond|False|False
+4|6|Edges Diamond|False|True
 4|1|Bold Bordeaux|False|False
-4|8|Brazenga|False|False
+4|8|Brazenga|False|True
 4|7|Superliv|False|False
-4|9|Chasing Rainbows|False|False
+4|9|Chasing Rainbows|False|True
 4|5|Restless Wind|False|False
 5|4|Power Of Hindsight|False|False
 5|1|All Chips In|False|False
 5|11|Roll With It|False|False
 5|7|Almorina|False|False
-5|2|Brighthill|False|False
+5|2|Brighthill|False|True
 5|8|Helichrysum|False|False
 5|3|Pneuma|False|False
 5|9|Imminent Touch|False|False
@@ -53,7 +53,7 @@
 5|14|Vulcana|False|False
 5|6|Trigger Warning|False|False
 5|13|Nialah|False|False
-5|12|High Yield|False|False
+5|12|High Yield|False|True
 5|5|Selita's Fury|False|False
 6|4|Raging Bull|False|False
 6|5|Affluential|False|False
@@ -62,7 +62,7 @@
 6|6|Tikemyson|False|False
 6|8|Male Model|False|False
 6|7|Unseen Ruler|False|False
-6|3|Any Luck|False|False
+6|3|Any Luck|False|True
 6|1|Aftermath|False|False
 6|13|Saveadateforme|True|False
 6|12|Budjik Boy|False|False
@@ -75,7 +75,8 @@
 7|2|Tuff Tu Mus|False|False
 7|13|Buzitup|False|False
 7|10|Surprise Coming|False|False
-7|9|Fridge Monster|False|False
+7|9|Fridge Monster|False|True
+7|6|Laa De Sha|False|True
 7|5|Rue De Royale|False|False
 7|7|Sergeant Major|False|False
 7|11|Miss Mahjong|False|False
@@ -85,8 +86,9 @@
 8|8|Cat Noir|False|False
 8|4|Sound Of Jura|False|False
 8|6|Don Rubio|False|False
-8|9|Sinister Sauce|False|False
+8|9|Sinister Sauce|False|True
+8|5|Miss Castelvecchio|False|True
 8|7|My Uncle Did It|False|False
 8|11|Littlebitcheeky|False|False
 8|1|Bold Strike|False|False
-8|10|Carnival Riches|False|False
+8|10|Carnival Riches|False|True

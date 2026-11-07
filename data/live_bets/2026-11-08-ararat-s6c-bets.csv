@@ -1,0 +1,9 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,ARAT_081126_1,Legend Beast,top_pick,3.9,3.9,3.4,3.4,,4.3,-0.209,,1.0,no,,
+2,ARAT_081126_2,Model Gigi,top_pick,5.5,5.5,4.4,4.4,,3.18,0.382,Already run to today's class; Class drop (rating),1.0,no,,
+3,ARAT_081126_3,General Blu,top_pick,1.55,1.55,2.4,2.4,,2.13,0.124,Already run to today's class,1.0,no,,
+4,ARAT_081126_4,Restless Wind,top_pick,2.7,2.7,3.2,3.2,,2.75,0.164,Class drop (rating); Late 600 beyond the tempo,1.0,no,,
+5,ARAT_081126_5,Nialah,top_pick,3.2,3.2,3.9,3.9,,3.63,0.074,,1.0,no,,
+6,ARAT_081126_6,Aftermath,top_pick,3.6,3.6,2.5,2.5,,4.51,-0.445,New career-best last start; Above the field in all three sections,1.0,no,,
+7,ARAT_081126_7,Rue De Royale,top_pick,4.0,4.0,3.8,3.8,,3.75,0.014,"Already run to today's class; Third-up, improving",1.0,no,,
+8,ARAT_081126_8,Bold Strike,top_pick,3.3,3.3,3.6,3.6,,3.96,-0.09,Already run to today's class; Class drop (rating),1.0,no,,

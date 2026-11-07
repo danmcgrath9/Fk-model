@@ -1,0 +1,83 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-08,Ararat,1,,2,Eye For An Eye,WIN,6.45,14.86,1.89,94,1 of 3,1.89u,4.95,
+2026-11-08,Ararat,1,,2,Eye For An Eye,WIN,8.06,14.86,0.43,22,2 of 3,2.32u,4.95,
+2026-11-08,Ararat,1,,2,Eye For An Eye,WIN,10.90,14.86,2.32,116,3 of 3,4.64u,4.95,opens $10.90+ (2.2x ours): stake doubled
+2026-11-08,Ararat,1,,4,I Love This Song,WIN,17.81,39.02,0.63,32,1 of 2,0.63u,13.01,
+2026-11-08,Ararat,1,,4,I Love This Song,WIN,22.26,39.02,0.15,8,2 of 2,0.78u,13.01,
+2026-11-08,Ararat,1,,1,Legend Beast,WIN,5.82,13.47,2.13,106,1 of 3,2.13u,4.49,
+2026-11-08,Ararat,1,,1,Legend Beast,WIN,7.28,13.47,0.47,24,2 of 3,2.60u,4.49,
+2026-11-08,Ararat,1,,1,Legend Beast,WIN,9.88,13.47,2.60,130,3 of 3,5.20u,4.49,opens $9.88+ (2.2x ours): stake doubled
+2026-11-08,Ararat,1,,7,Semper Fortis,WIN,13.25,29.47,0.86,43,1 of 2,0.86u,9.82,
+2026-11-08,Ararat,1,,7,Semper Fortis,WIN,16.56,29.47,0.21,10,2 of 2,1.07u,9.82,
+2026-11-08,Ararat,1,,8,Three Reel Roses,WIN,12.12,27.06,0.95,48,1 of 2,0.95u,9.02,
+2026-11-08,Ararat,1,,8,Three Reel Roses,WIN,15.15,27.06,0.22,11,2 of 2,1.17u,9.02,
+2026-11-08,Ararat,1,,6,Trump Card,WIN,16.95,37.24,0.66,33,1 of 2,0.66u,12.41,
+2026-11-08,Ararat,1,,6,Trump Card,WIN,21.19,37.24,0.16,8,2 of 2,0.82u,12.41,
+2026-11-08,Ararat,2,,8,Incoherent,WIN,13.37,29.70,0.85,42,1 of 2,0.85u,9.90,
+2026-11-08,Ararat,2,,8,Incoherent,WIN,16.71,29.70,0.21,10,2 of 2,1.06u,9.90,
+2026-11-08,Ararat,2,,10,Model Gigi,WIN,3.50,3.99,3.40,170,1 of 1,3.40u,2.92,opens under $4: edge 1.15
+2026-11-08,Ararat,2,,10,Model Gigi,WIN,4.00,8.75,3.69,184,1 of 3,3.69u,2.92,
+2026-11-08,Ararat,2,,10,Model Gigi,WIN,4.62,8.75,0.74,37,2 of 3,4.43u,2.92,
+2026-11-08,Ararat,2,,10,Model Gigi,WIN,6.42,8.75,4.43,222,3 of 3,8.86u,2.92,opens $6.42+ (2.2x ours): stake doubled
+2026-11-08,Ararat,3,,2,General Blu,WIN,2.50,3.99,5.38,269,1 of 2,5.38u,2.12,opens under $4: edge 1.15
+2026-11-08,Ararat,3,,2,General Blu,WIN,3.12,3.99,1.18,59,2 of 2,6.56u,2.12,opens under $4: edge 1.15
+2026-11-08,Ararat,3,,2,General Blu,WIN,4.00,6.35,5.82,291,1 of 3,5.82u,2.12,
+2026-11-08,Ararat,3,,2,General Blu,WIN,4.00,6.35,0.98,49,2 of 3,6.80u,2.12,
+2026-11-08,Ararat,3,,2,General Blu,WIN,4.66,6.35,3.20,160,3 of 3,10.00u,2.12,opens $4.66+ (2.2x ours): stake doubled
+2026-11-08,Ararat,3,,7,Optimus,WIN,16.58,36.47,0.68,34,1 of 2,0.68u,12.16,
+2026-11-08,Ararat,3,,7,Optimus,WIN,20.72,36.47,0.16,8,2 of 2,0.84u,12.16,
+2026-11-08,Ararat,3,,8,Pray For Elegance,WIN,7.52,17.19,1.59,80,1 of 3,1.59u,5.73,
+2026-11-08,Ararat,3,,8,Pray For Elegance,WIN,9.40,17.19,0.37,18,2 of 3,1.96u,5.73,
+2026-11-08,Ararat,3,,8,Pray For Elegance,WIN,12.61,17.19,1.96,98,3 of 3,3.92u,5.73,opens $12.61+ (2.2x ours): stake doubled
+2026-11-08,Ararat,4,,1,Bold Bordeaux,WIN,10.23,23.04,1.14,57,1 of 3,1.14u,7.68,
+2026-11-08,Ararat,4,,1,Bold Bordeaux,WIN,12.79,23.04,0.26,13,2 of 3,1.40u,7.68,
+2026-11-08,Ararat,4,,1,Bold Bordeaux,WIN,16.90,23.04,1.40,70,3 of 3,2.80u,7.68,opens $16.90+ (2.2x ours): stake doubled
+2026-11-08,Ararat,4,,2,Masked Marauder,WIN,19.98,43.53,0.56,28,1 of 2,0.56u,14.51,
+2026-11-08,Ararat,4,,2,Masked Marauder,WIN,24.98,43.53,0.14,7,2 of 2,0.70u,14.51,
+2026-11-08,Ararat,4,,5,Restless Wind,WIN,3.33,3.99,3.63,182,1 of 1,3.63u,2.78,opens under $4: edge 1.15
+2026-11-08,Ararat,4,,5,Restless Wind,WIN,4.00,8.34,3.94,197,1 of 3,3.94u,2.78,
+2026-11-08,Ararat,4,,5,Restless Wind,WIN,4.39,8.34,0.77,38,2 of 3,4.71u,2.78,
+2026-11-08,Ararat,4,,5,Restless Wind,WIN,6.12,8.34,4.71,236,3 of 3,9.42u,2.78,opens $6.12+ (2.2x ours): stake doubled
+2026-11-08,Ararat,4,,3,Southern Crescent,WIN,8.20,15.01,1.45,72,1 of 3,1.45u,6.22,EARLY: $15 or shorter only
+2026-11-08,Ararat,4,,3,Southern Crescent,WIN,10.25,15.01,0.33,16,2 of 3,1.78u,6.22,EARLY: $15 or shorter only
+2026-11-08,Ararat,4,,3,Southern Crescent,WIN,13.69,15.01,1.78,89,3 of 3,3.56u,6.22,EARLY: $15 or shorter only; opens $13.69+ (2.2x ours): stake doubled
+2026-11-08,Ararat,4,,7,Superliv,WIN,8.11,18.46,1.47,74,1 of 3,1.47u,6.15,
+2026-11-08,Ararat,4,,7,Superliv,WIN,10.14,18.46,0.33,16,2 of 3,1.80u,6.15,
+2026-11-08,Ararat,4,,7,Superliv,WIN,13.54,18.46,1.80,90,3 of 3,3.60u,6.15,opens $13.54+ (2.2x ours): stake doubled
+2026-11-08,Ararat,5,,13,Nialah,WIN,4.59,10.74,2.83,142,1 of 3,2.83u,3.58,
+2026-11-08,Ararat,5,,13,Nialah,WIN,5.74,10.74,0.59,30,2 of 3,3.42u,3.58,
+2026-11-08,Ararat,5,,13,Nialah,WIN,7.88,10.74,3.42,171,3 of 3,6.84u,3.58,opens $7.88+ (2.2x ours): stake doubled
+2026-11-08,Ararat,5,,5,Selita's Fury,WIN,8.08,15.01,1.47,74,1 of 3,1.47u,6.14,EARLY: $15 or shorter only
+2026-11-08,Ararat,5,,5,Selita's Fury,WIN,10.10,15.01,0.34,17,2 of 3,1.81u,6.14,EARLY: $15 or shorter only
+2026-11-08,Ararat,5,,5,Selita's Fury,WIN,13.50,15.01,1.81,90,3 of 3,3.62u,6.14,EARLY: $15 or shorter only; opens $13.50+ (2.2x ours): stake doubled
+2026-11-08,Ararat,5,,14,Vulcana,WIN,6.58,15.13,1.86,93,1 of 3,1.86u,5.04,
+2026-11-08,Ararat,5,,14,Vulcana,WIN,8.22,15.13,0.41,20,2 of 3,2.27u,5.04,
+2026-11-08,Ararat,5,,14,Vulcana,WIN,11.10,15.13,2.27,114,3 of 3,4.54u,5.04,opens $11.10+ (2.2x ours): stake doubled
+2026-11-08,Ararat,6,,10,Cable Dancer,WIN,10.35,23.29,1.12,56,1 of 3,1.12u,7.76,
+2026-11-08,Ararat,6,,10,Cable Dancer,WIN,12.94,23.29,0.27,14,2 of 3,1.39u,7.76,
+2026-11-08,Ararat,6,,10,Cable Dancer,WIN,17.09,23.29,1.39,70,3 of 3,2.78u,7.76,opens $17.09+ (2.2x ours): stake doubled
+2026-11-08,Ararat,6,,9,Nothingelsematters,WIN,13.12,29.19,0.87,44,1 of 2,0.87u,9.73,
+2026-11-08,Ararat,6,,9,Nothingelsematters,WIN,16.40,29.19,0.21,10,2 of 2,1.08u,9.73,
+2026-11-08,Ararat,6,,4,Raging Bull,WIN,13.28,29.53,0.86,43,1 of 2,0.86u,9.84,
+2026-11-08,Ararat,6,,4,Raging Bull,WIN,16.60,29.53,0.20,10,2 of 2,1.06u,9.84,
+2026-11-08,Ararat,6,,2,Thedoctoroflove,WIN,13.97,30.97,0.81,40,1 of 2,0.81u,10.32,
+2026-11-08,Ararat,6,,2,Thedoctoroflove,WIN,17.46,30.97,0.20,10,2 of 2,1.01u,10.32,
+2026-11-08,Ararat,6,,7,Unseen Ruler,WIN,14.19,31.45,0.80,40,1 of 2,0.80u,10.48,
+2026-11-08,Ararat,6,,7,Unseen Ruler,WIN,17.74,31.45,0.19,10,2 of 2,0.99u,10.48,
+2026-11-08,Ararat,7,,4,Black Storm,WIN,8.77,19.90,1.34,67,1 of 3,1.34u,6.63,
+2026-11-08,Ararat,7,,4,Black Storm,WIN,10.96,19.90,0.31,16,2 of 3,1.65u,6.63,
+2026-11-08,Ararat,7,,4,Black Storm,WIN,14.60,19.90,1.65,82,3 of 3,3.30u,6.63,opens $14.60+ (2.2x ours): stake doubled
+2026-11-08,Ararat,7,,3,Celsius Star,WIN,9.44,21.34,1.24,62,1 of 3,1.24u,7.11,
+2026-11-08,Ararat,7,,3,Celsius Star,WIN,11.80,21.34,0.29,14,2 of 3,1.53u,7.11,
+2026-11-08,Ararat,7,,3,Celsius Star,WIN,15.66,21.34,1.53,76,3 of 3,3.06u,7.11,opens $15.66+ (2.2x ours): stake doubled
+2026-11-08,Ararat,7,,8,Princess Que,WIN,13.81,30.65,0.82,41,1 of 2,0.82u,10.22,
+2026-11-08,Ararat,7,,8,Princess Que,WIN,17.26,30.65,0.20,10,2 of 2,1.02u,10.22,
+2026-11-08,Ararat,7,,5,Rue De Royale,WIN,4.74,11.08,2.72,136,1 of 3,2.72u,3.69,
+2026-11-08,Ararat,7,,5,Rue De Royale,WIN,5.93,11.08,0.58,29,2 of 3,3.30u,3.69,
+2026-11-08,Ararat,7,,5,Rue De Royale,WIN,8.13,11.08,3.30,165,3 of 3,6.60u,3.69,opens $8.13+ (2.2x ours): stake doubled
+2026-11-08,Ararat,8,,1,Bold Strike,WIN,5.53,12.83,2.26,113,1 of 3,2.26u,4.28,
+2026-11-08,Ararat,8,,1,Bold Strike,WIN,6.91,12.83,0.50,25,2 of 3,2.76u,4.28,
+2026-11-08,Ararat,8,,1,Bold Strike,WIN,9.41,12.83,2.76,138,3 of 3,5.52u,4.28,opens $9.41+ (2.2x ours): stake doubled
+2026-11-08,Ararat,8,,8,Cat Noir,WIN,4.80,11.21,2.68,134,1 of 3,2.68u,3.74,
+2026-11-08,Ararat,8,,8,Cat Noir,WIN,6.00,11.21,0.57,28,2 of 3,3.25u,3.74,
+2026-11-08,Ararat,8,,8,Cat Noir,WIN,8.23,11.21,3.25,162,3 of 3,6.50u,3.74,opens $8.23+ (2.2x ours): stake doubled

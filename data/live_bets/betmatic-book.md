@@ -1067,3 +1067,11 @@ Fridge Monster $6.93, Shaalute $9.83. Lay candidates: Flemington 72, Geelong 54.
 - Back book ($500): Geelong R7 Miss Castelvecchio (BSP fav $4.65) 13th -1u (-$500).
 SATURDAY FINAL (paper): open +$284.50; lays -$4,684; back -$500; day -$4,899.50. Card +0.64u (+22%).
 Lay trial (28 Oct to 7 Nov): 116 lays, 5 winners, +6.38u (+$1,276 at $200).
+
+## Sun 8 Nov 9:30am re-price (paper; bot off)
+- Ararat: Form King now Dead (priced Slow Thu/Fri, so the band changed: re-exported on Dead), 14 scratchings, none of ours.
+  Re-priced s6c. Ours now: Model Gigi R2 $2.92 (open $4.40, now $5.50), Pray For Elegance R3 $5.73 ($9, now $6), Selita's
+  Fury R5 $6.14 ($7.50, now $6.50). All three running, 8.02u. Deductions to come: R2, R3 and R5 each had a scratching.
+- Hamilton Mon (founder: "Hamilton as well"): still Slow, no scratchings yet (Monday morning). Page refreshed at Sun 9:45am
+  prices (s6i, same model prices as s6h). Al's Diemen R2 0.81u $17 (ours $10.37, now $9), Sweet City Dancer R7 0.69u $17.50
+  ($11.98, now $14). Both running.
