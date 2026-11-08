@@ -1,0 +1,69 @@
+PART 1: flat 1u, every country runner by open price and edge at the open (live needs 1.2; 1.15 under $4)
+
+opens $1.6-$4
+  edge 0.90-1.00     89   27 won  open-7%  -18.9%  BSP  -13.1%   (Jun-Jul 47 bets  -33.7%, Aug-Oct  +10.0%)
+  edge 1.00-1.05     57   23 won  open-7%   +6.1%  BSP   +9.5%   (Jun-Jul 29 bets  +11.9%, Aug-Oct   +7.0%)
+  edge 1.05-1.10     34   14 won  open-7%  +20.5%  BSP  +20.3%   (Jun-Jul 17 bets  -10.5%, Aug-Oct  +51.2%)
+  edge 1.10-1.15     28   10 won  open-7%  -11.7%  BSP   -8.4%   (Jun-Jul 12 bets  -24.4%, Aug-Oct   +3.6%)
+  edge 1.15-1.20     13    7 won  open-7%  +62.7%  BSP  +35.2%   (Jun-Jul 2 bets +118.2%, Aug-Oct  +20.1%)
+  edge 1.20-1.30     30   14 won  open-7%  +40.3%  BSP  +10.0%   (Jun-Jul 13 bets  +10.5%, Aug-Oct   +9.6%)
+  edge 1.30-1.50     25   11 won  open-7%  +49.6%  BSP  +12.8%   (Jun-Jul 14 bets  -39.9%, Aug-Oct  +79.8%)
+  edge 1.50-9.00      4    1 won  open-7%  -14.5%  BSP  -54.5%   (Jun-Jul 1 bets -100.0%, Aug-Oct  -39.4%)
+
+opens $4-$6
+  edge 0.90-1.00    131   20 won  open-7%  -34.6%  BSP  -28.6%   (Jun-Jul 62 bets  -40.9%, Aug-Oct  -17.5%)
+  edge 1.00-1.05     48   12 won  open-7%   +8.3%  BSP   +5.8%   (Jun-Jul 25 bets  +38.6%, Aug-Oct  -29.8%)
+  edge 1.05-1.10     32    4 won  open-7%  -42.7%  BSP  -59.6%   (Jun-Jul 11 bets  -26.9%, Aug-Oct  -76.7%)
+  edge 1.10-1.15     32    5 won  open-7%  -31.5%  BSP  -32.8%   (Jun-Jul 12 bets  -22.2%, Aug-Oct  -39.2%)
+  edge 1.15-1.20     23    5 won  open-7%   +0.1%  BSP  -13.0%   (Jun-Jul 14 bets   -5.4%, Aug-Oct  -24.9%)
+  edge 1.20-1.30     40   11 won  open-7%  +17.2%  BSP   -8.8%   (Jun-Jul 24 bets   +6.3%, Aug-Oct  -31.5%)
+  edge 1.30-1.50     49   19 won  open-7%  +72.4%  BSP  +21.0%   (Jun-Jul 22 bets   +2.0%, Aug-Oct  +36.4%)
+  edge 1.50-9.00     23    5 won  open-7%   -9.5%  BSP  -48.1%   (Jun-Jul 5 bets  -62.9%, Aug-Oct  -44.0%)
+
+opens $6-$10
+  edge 0.90-1.00    197   24 won  open-7%  -17.3%  BSP  -23.6%   (Jun-Jul 106 bets  -38.4%, Aug-Oct   -6.4%)
+  edge 1.00-1.05     76   14 won  open-7%  +26.7%  BSP   +3.9%   (Jun-Jul 39 bets  -11.6%, Aug-Oct  +20.2%)
+  edge 1.05-1.10     67   10 won  open-7%   +2.7%  BSP  -18.7%   (Jun-Jul 38 bets  -15.8%, Aug-Oct  -22.5%)
+  edge 1.10-1.15     55    6 won  open-7%  -24.8%  BSP  -21.2%   (Jun-Jul 29 bets  -30.6%, Aug-Oct  -10.8%)
+  edge 1.15-1.20     53    5 won  open-7%  -32.0%  BSP  -36.2%   (Jun-Jul 25 bets   -0.5%, Aug-Oct  -68.0%)
+  edge 1.20-1.30     74   17 won  open-7%  +69.3%  BSP  +15.9%   (Jun-Jul 41 bets  +38.5%, Aug-Oct  -12.2%)
+  edge 1.30-1.50     98   23 won  open-7%  +67.5%  BSP   +7.8%   (Jun-Jul 52 bets  -22.1%, Aug-Oct  +41.5%)
+  edge 1.50-9.00     70   20 won  open-7% +100.0%  BSP   +3.6%   (Jun-Jul 33 bets   -9.8%, Aug-Oct  +15.6%)
+
+opens $10-$45
+  edge 0.90-1.00    150   12 won  open-7%  -10.2%  BSP  -21.4%   (Jun-Jul 74 bets  -15.8%, Aug-Oct  -26.9%)
+  edge 1.00-1.05     72    6 won  open-7%   -1.2%  BSP  -31.3%   (Jun-Jul 42 bets  -34.2%, Aug-Oct  -27.2%)
+  edge 1.05-1.10     81    5 won  open-7%  -22.6%  BSP  +13.0%   (Jun-Jul 45 bets  +49.9%, Aug-Oct  -33.2%)
+  edge 1.10-1.15     79    9 won  open-7%  +48.5%  BSP  +14.5%   (Jun-Jul 35 bets  +55.7%, Aug-Oct  -18.3%)
+  edge 1.15-1.20     69    4 won  open-7%  -27.5%  BSP  -27.1%   (Jun-Jul 36 bets  +11.3%, Aug-Oct  -68.9%)
+  edge 1.20-1.30    119   19 won  open-7%  +99.8%  BSP  +90.7%   (Jun-Jul 60 bets +139.4%, Aug-Oct  +41.1%)
+  edge 1.30-1.50    186   15 won  open-7%  +23.6%  BSP  -18.7%   (Jun-Jul 93 bets   +7.8%, Aug-Oct  -45.2%)
+  edge 1.50-9.00    304   30 won  open-7%  +59.8%  BSP  -12.0%   (Jun-Jul 156 bets   -0.6%, Aug-Oct  -24.0%)
+
+PART 2: the live staking, edge under $6 lowered (everything else as live)
+
+live (1.2; 1.15 under $4)        1035 bets  192 won  2090.5u  open-7% +1161.3u (+55.5%)  BSP   -13.0u ( -0.6%)
+
+under $6 at 1.15                1058 bets  197 won  2131.3u  open-7% +1165.2u (+54.7%)  BSP   -12.5u ( -0.6%)
+  the bets it ADDS                 23 bets    5 won    55.5u  open-7%    -2.1u ( -3.8%)  BSP    -9.6u (-17.2%)
+    Jun-Jul                        14 bets    3 won    33.2u  open-7%    -1.0u ( -2.9%)  BSP    -3.0u ( -9.2%)
+    Aug-Oct                         9 bets    2 won    22.3u  open-7%    -1.1u ( -5.1%)  BSP    -6.5u (-29.3%)
+  opens under $4 only               0 bets
+  opens $4-$6 only                 23 bets    5 won    55.5u  open-7%    -2.1u ( -3.8%)  BSP    -9.6u (-17.2%)
+
+under $6 at 1.10                1118 bets  212 won  2277.1u  open-7% +1125.1u (+49.4%)  BSP   -41.5u ( -1.8%)
+  the bets it ADDS                 83 bets   20 won   234.9u  open-7%   -29.0u (-12.3%)  BSP   -37.4u (-15.9%)
+    Jun-Jul                        38 bets    9 won   105.8u  open-7%   -12.0u (-11.3%)  BSP   -12.3u (-11.7%)
+    Aug-Oct                        45 bets   11 won   129.1u  open-7%   -17.0u (-13.2%)  BSP   -25.0u (-19.4%)
+  opens under $4 only              28 bets   10 won   120.2u  open-7%    -6.9u ( -5.8%)  BSP    -7.8u ( -6.5%)
+  opens $4-$6 only                 55 bets   10 won   114.7u  open-7%   -22.0u (-19.2%)  BSP   -29.5u (-25.7%)
+
+under $6 at 1.05                1184 bets  230 won  2369.0u  open-7% +1110.5u (+46.9%)  BSP   -54.3u ( -2.3%)
+  the bets it ADDS                149 bets   38 won   354.2u  open-7%   -32.8u ( -9.3%)  BSP   -50.6u (-14.3%)
+    Jun-Jul                        66 bets   16 won   153.8u  open-7%   -19.6u (-12.7%)  BSP   -23.3u (-15.1%)
+    Aug-Oct                        83 bets   22 won   200.4u  open-7%   -13.2u ( -6.6%)  BSP   -27.4u (-13.7%)
+  opens under $4 only              62 bets   24 won   207.9u  open-7%    +6.7u ( +3.2%)  BSP    +4.0u ( +1.9%)
+  opens $4-$6 only                 87 bets   14 won   146.3u  open-7%   -39.5u (-27.0%)  BSP   -54.6u (-37.3%)
+
+live bets that open under $6:     184 bets   68 won   788.2u  open-7%  +307.9u (+39.1%)  BSP    +2.6u ( +0.3%)
+live bets that open $6+:          851 bets  124 won  1302.3u  open-7%  +853.3u (+65.5%)  BSP   -15.7u ( -1.2%)

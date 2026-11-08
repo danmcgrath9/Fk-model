@@ -1,42 +1,62 @@
-"""A smaller edge on short-priced horses (16 Oct 2026, founder: "why do we never bet sub $4 horses ... backtest a small
-value on those horses and see if its a positive ROI"). Same holdout, model (v10 stage-1 trees, v10_profit_preds.npz from
-t_v10_profit.py) and BetMatic rules as t_v10_profit.py (3 steps sized at the next step, 5%-shaded minimum, 3x ceiling,
-$1.60-$15, 16c deduction, filled at Form King's opening price); the only change is the edge in the minimum odds for
-runners we price under $4: 0.95 x (EDGE / p^0.82)^(1/0.78), live EDGE 1.2.
-python3.13 t_short_edge.py MODEL_DIR   (the folder holding ds/model_ds_v10.npz and v10_profit_preds.npz)"""
-import numpy as np, collections, os, sys
-M = sys.argv[1]; sys.path.insert(0, M); os.chdir(M)
-import bench as b, stake_rule
-D = b.load("ds/model_ds_v10.npz"); R = np.load("v10_profit_preds.npz"); P = R["p10"]; hm = R["hold"]
-ri = D["race_idx"]; nR = D["n_races"]
-o = np.asarray(D["open"], float); bs = np.asarray(D["bsp"], float); won = np.asarray(D["finish"], float) == 1
-okp = np.isfinite(o) & (o > 1); fld = np.bincount(ri, minlength=nR)[ri]; race_ok = np.bincount(ri, weights=~okp, minlength=nR) == 0
-meet = np.char.add(D["track"][ri].astype(str), np.char.add("|", D["date"][ri].astype(str))); jk = D["jockey"].astype(str)
-cnt = collections.Counter(zip(meet, jk)); only = np.array([cnt[(m, x)] == 1 for m, x in zip(meet, jk)])
-DED = 0.16; TIERS = (1.0, 1.25, 1.5)
-def run(pm, short_edge, cut=4.0):
-    base = hm & race_ok[ri] & np.isfinite(bs) & (pm > 0); qq = 1 / np.maximum(pm, 1e-9)
-    edge = np.where(qq < cut, short_edge, 1.2)
-    mo = 0.95 * (edge / np.maximum(pm, 1e-9) ** 0.82) ** (1 / 0.78)
-    out = collections.defaultdict(lambda: [0, 0, 0.0, 0.0])
-    for i in np.where(base & (qq >= 1.6) & (qq <= 15) & (o >= mo) & (o < 3 * qq))[0]:
-        ch = lambda t: pm[i] ** 0.82 * t ** -0.22
-        ts = [mo[i] * s for s in TIERS if mo[i] * s < 3 * qq[i]]; tot = prev = 0.0
-        for k, t in enumerate(ts):
-            tp = ts[k + 1] if k + 1 < len(ts) else t
-            s_ = stake_rule.stake(ch(tp), tp, only[i], fld[i]); add = max(0.0, s_ - prev); prev = max(prev, s_)
-            if o[i] >= t: tot += add
-        if tot > 0:
-            band = "under $3" if qq[i] < 3 else ("$3-$4" if qq[i] < 4 else "$4 and over")
-            pl = tot * (o[i] - 1) * (1 - DED) if won[i] else -tot
-            for key in (band, "all"):
-                r = out[key]; r[0] += 1; r[1] += won[i]; r[2] += tot; r[3] += pl
+"""Should the edge be lower for horses that OPEN under $6? (8 Nov 2026, founder: "For horses that open less than $6, do you
+think we should make our value slightly less? Does that make sense from an ROI point of view")
+v10 holdout (3 Jun on, trees trained before), country/provincial (the metro fix is its own rule), first starters out,
+ours $1.60-$15, nothing at 3x ours. The edge an order needs at the open price o: e = p^0.82 x (o/0.95)^0.78 (the live
+minimum, 0.95 x (E/p^0.82)^(1/0.78), solved for E). Live: E 1.2, 1.15 under $4. Part 1 flat 1u by open band and edge;
+part 2 the live staking with a lower E under $6, the bets it ADDS and what they made. Settled at the open less 7%
+(TAB's average deduction on an open bet), and at BSP less 8%."""
+import numpy as np, collections, stake_rule
+exec(open("t_metro_fix.py").read().split("H1 = ")[0])
+cols = list(z["cols"]); fs = z["X"][:, cols.index("firstStarter")] == 1
+pm = pm0; ours = 1 / pm
+base_ok = m & ~metro & ~fs & (ours >= 1.6) & (ours <= 15) & (o < 3 * ours)
+e = pm ** 0.82 * (o / 0.95) ** 0.78
+H1 = dd < "2026-08-01"
+def roi(sel, st=None):
+    idx = np.where(sel)[0]
+    if len(idx) == 0: return "    0"
+    s = np.ones(len(idx)) if st is None else st
+    p7 = np.where(won[idx], s * (o[idx] - 1) * 0.93, -s).sum(); pb = np.where(won[idx], s * (bs[idx] - 1) * 0.92, -s).sum()
+    return f"{len(idx):5d} {won[idx].sum():4d} won  open-7% {100*p7/s.sum():+6.1f}%  BSP {100*pb/s.sum():+6.1f}%"
+print("PART 1: flat 1u, every country runner by open price and edge at the open (live needs 1.2; 1.15 under $4)\n")
+bands = ((1.6, 4), (4, 6), (6, 10), (10, 45))
+bins = ((0.90, 1.00), (1.00, 1.05), (1.05, 1.10), (1.10, 1.15), (1.15, 1.20), (1.20, 1.30), (1.30, 1.50), (1.50, 9))
+for lo, hi in bands:
+    print(f"opens ${lo:g}-${hi:g}")
+    for a, b in bins:
+        sel = base_ok & (o >= lo) & (o < hi) & (e >= a) & (e < b)
+        print(f"  edge {a:.2f}-{b:.2f}  {roi(sel)}   (Jun-Jul {roi(sel & H1)[:5].strip()} bets {roi(sel & H1)[-7:]}, Aug-Oct {roi(sel & ~H1)[-7:]})")
+    print()
+def run(Eshort, under=6.0):
+    out = {}
+    for i in np.where(base_ok)[0]:
+        qq = ours[i]
+        E = Eshort if o[i] < under else 1.2
+        if o[i] < 4: E = min(E, 1.15)
+        mo = 0.95 * (E / pm[i] ** 0.82) ** (1 / 0.78)
+        if o[i] < mo: continue
+        tiers = [mo * x for x in (1.0, 1.25, 1.5) if mo * x < 3 * qq]; tot = prev = 0.0
+        for k, tt in enumerate(tiers):
+            tp = tiers[k + 1] if k + 1 < len(tiers) else tt
+            s_ = stake_rule.stake(pm[i] ** 0.82 * tp ** -0.22, tp, False, fld[i]); add = max(0.0, s_ - prev); prev = max(prev, s_)
+            if o[i] >= tt: tot += add
+        if tot > 0: out[i] = tot
     return out
-print(f"holdout races: {len(np.unique(ri[hm]))} (from {sorted(set(D['date'][ri[hm]].tolist()))[0]})\n")
-print("| edge for horses we price under $4 | band | bets | winners | staked | profit | ROI |\n|---|---|---|---|---|---|---|")
-for e in (1.2, 1.15, 1.10, 1.05, 1.0):
-    out = run(P, e)
-    for band in ("under $3", "$3-$4", "$4 and over", "all"):
-        n, w, st, pl = out.get(band, [0, 0, 0.0, 0.0])
-        lab_ = f"{e:.2f}" + (" (live)" if e == 1.2 else "")
-        print(f"| {lab_} | {band} | {n} | {int(w)} | {st:.1f}u | {pl:+.1f}u | {(pl/st if st else 0):+.1%} |")
+def line(d, sel=None):
+    idx = np.array([i for i in d if sel is None or sel[i]]); st = np.array([d[i] for i in idx]) if len(idx) else np.array([])
+    if len(idx) == 0: return "    0 bets"
+    p7 = np.where(won[idx], st * (o[idx] - 1) * 0.93, -st).sum(); pb = np.where(won[idx], st * (bs[idx] - 1) * 0.92, -st).sum()
+    return f"{len(idx):5d} bets {won[idx].sum():4d} won {st.sum():7.1f}u  open-7% {p7:+7.1f}u ({100*p7/st.sum():+5.1f}%)  BSP {pb:+7.1f}u ({100*pb/st.sum():+5.1f}%)"
+print("PART 2: the live staking, edge under $6 lowered (everything else as live)\n")
+live = run(1.2)
+print(f"live (1.2; 1.15 under $4)       {line(live)}")
+for E in (1.15, 1.10, 1.05):
+    d = run(E); add = {i: d[i] for i in d if i not in live}; ch = {i: d[i] for i in d}
+    print(f"\nunder $6 at {E:.2f}               {line(d)}")
+    print(f"  the bets it ADDS              {line(add)}")
+    print(f"    Jun-Jul                     {line(add, H1)}")
+    print(f"    Aug-Oct                     {line(add, ~H1)}")
+    print(f"  opens under $4 only           {line(add, o < 4)}")
+    print(f"  opens $4-$6 only              {line(add, (o >= 4) & (o < 6))}")
+print(f"\nlive bets that open under $6:   {line(live, o < 6)}")
+print(f"live bets that open $6+:        {line(live, o >= 6)}")
