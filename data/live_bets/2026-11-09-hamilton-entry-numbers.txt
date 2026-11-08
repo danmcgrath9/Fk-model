@@ -6,10 +6,10 @@
 1|7|Smart And Mighty|False|False
 1|3|Calm The Press|False|False
 1|1|Arizona Wildfire|False|False
-1|5|Hellofacury|False|False
+1|5|Hellofacury|False|True
 1|14|Wanted Enuff|False|False
 1|6|Invisible Caravan|False|False
-1|2|Billy Be Good|False|False
+1|2|Billy Be Good|False|True
 1|9|Inside Word|False|False
 1|10|King Koruna|False|False
 2|6|Tarin's Rock|False|False
@@ -17,7 +17,7 @@
 2|4|Better Shape Up|False|False
 2|2|Al's Diemen|False|False
 2|1|Abydos|False|False
-2|10|Freshwater Fox|False|False
+2|10|Freshwater Fox|False|True
 2|14|Wunderlust|False|False
 2|11|Piklemegranmother|False|False
 2|13|Tell Me Why|False|False
@@ -33,7 +33,7 @@
 3|1|Alltogethernow|False|False
 3|14|Trust My|False|False
 3|10|Empress Of China|False|False
-3|3|Jakbe Nimble|False|False
+3|3|Jakbe Nimble|False|True
 3|16|Studio Artist|True|False
 3|13|Rollin'ontheriver|False|False
 3|4|Lord Timo|False|False
@@ -65,14 +65,14 @@
 5|14|Drink Then Kiss|False|False
 5|11|Tarakash|False|False
 5|4|Endean Ace|False|False
-5|17|A Blue Star|True|False
+5|17|A Blue Star|True|True
 5|1|Rebel's Idol|False|False
 5|13|Turned Loose|False|False
-5|12|Knock Of Beers|False|False
+5|12|Knock Of Beers|False|True
 5|8|Battle Point|False|False
 5|15|Conaltri|True|False
 5|16|Ain't Tellin|True|False
-5|9|Miss Trombari|False|False
+5|9|Miss Trombari|False|True
 5|2|Sotomayor|False|False
 5|6|Scandoval|False|False
 5|3|Newcombe|False|False
@@ -81,7 +81,7 @@
 6|12|Drover's Yarn|False|False
 6|2|Saint Lazare|False|False
 6|11|Infer|False|False
-6|7|Attain|False|False
+6|7|Attain|False|True
 6|9|All The Way Baby|False|False
 6|1|Dazzling Sky|False|False
 6|5|French Navy|False|False
@@ -104,7 +104,7 @@
 7|9|Sweet City Dancer|False|False
 7|5|Popthebubbly|False|False
 7|6|Star Fortian|False|False
-8|9|Adki|False|False
+8|9|Adki|False|True
 8|14|They Call Me Dusty|False|False
 8|10|Dangerous Secret|False|False
 8|12|Barclaps|False|False
@@ -119,4 +119,4 @@
 8|13|Les Vosges|False|False
 8|1|Youarenotalone|False|False
 8|15|Hellish Lee|True|False
-8|4|Sweet But Sassy|False|False
+8|4|Sweet But Sassy|False|True

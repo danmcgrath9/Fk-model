@@ -1127,3 +1127,8 @@ Each meeting's own live model file and Form King's results/BSPs (research/form_g
 (BSP said 13.2), +48.38u (+$9,676 at $200, +$2,419 at $50). Lays $8-$12 at 1.6x: 49 lays, 4 won (5.0), +6.31u (+$1,262 /
 +$316). BSP favourite backs: 23, 7 won (5.0), +7.48u (+$3,739 at $500, +$374 at $50). Total +$30,994 at $200 lays and $500
 backs; +$19,426 at Friday's $50 lays and $50 backs.
+
+## Mon 9 Nov 9:30am re-price (paper; bot off)
+Hamilton still Slow (Form King), 10 scratchings, none of ours; re-priced s6j on the final field. Ours now: Al's Diemen R2
+$10.26 (open $17, now $9), Sweet City Dancer R7 $12.17 ($17.50, now $14). Both running, 1.50u. Lay book on the new rules
+($8-$12 at 1.6x, $15-$40 at 1.5x). Betfair manifest written (the runner is not live until Friday).
