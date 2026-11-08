@@ -1100,3 +1100,8 @@ Card: branding/mercer-tipping/summary_week_02_08.json. RUNNING TOTAL from the po
 17-24 Oct 45 tips 14 won 62.5u +141.9u; Sun 25 Oct 1 tip 1 won 1.12u +5.98u; 26 Oct-1 Nov 39 tips 5 won 56.8u +1.7u; 2-8 Nov
 31 tips 11 won 35.47u +17.58u: 116 tips, 31 winners, 155.9u staked, +167.2u (+107%). Thu 15 and Fri 16 Oct are not in it
 (full-stake public record, before the half-unit rule of 20 Oct).
+- Ararat back book so far (Form King results R1-R4, 4:20pm): Daniel Boone R2 was the BSP favourite at $4.45, ours $14.36,
+  a back (the founder's late Twitter tip was the same horse), 3rd: -1u (-$500). No lays qualified R1-R4. R5-R8 to settle.
+WEEK Mon 2 - Sun 8 Nov (paper; Sunday's R5-R8 lays and backs to come): open book 30 bets, 11 won, 66.85u, +108.66u (+163%,
++$5,433); lays 67, 3 won, +3.64u (+$728); BSP favourite backs 2, 0 won, -$1,000; total +$5,161. Twitter +17.58u (+50%).
+Real money: Best Terms -$331 (Mon).
