@@ -1,0 +1,15 @@
+{
+ "day": "Tuesday",
+ "date": "10 November",
+ "meetings": [
+  {
+   "name": "Mornington",
+   "note": "",
+   "bets": [
+    {"race": 5, "time": "3:30PM", "horse": "Tassadar", "price": "$34", "rated": "$14.94", "units": "0.67u"},
+    {"race": 8, "time": "5:00PM", "horse": "It's Gnarly", "price": "$15", "rated": "$9.74", "units": "0.87u"}
+   ]
+  }
+ ],
+ "brand": false
+}

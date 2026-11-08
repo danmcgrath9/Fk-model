@@ -1075,3 +1075,7 @@ Lay trial (28 Oct to 7 Nov): 116 lays, 5 winners, +6.38u (+$1,276 at $200).
 - Hamilton Mon (founder: "Hamilton as well"): still Slow, no scratchings yet (Monday morning). Page refreshed at Sun 9:45am
   prices (s6i, same model prices as s6h). Al's Diemen R2 0.81u $17 (ours $10.37, now $9), Sweet City Dancer R7 0.69u $17.50
   ($11.98, now $14). Both running.
+- Mornington Tue cards (founder, Sun 8 Nov: "Mornington card, Mercer and not Mercer"): the open was missed, so both cards
+  are at Sun 1:10pm TAB prices against the d5m sheet. Qualifying now: R5 Tassadar $34 0.67u (ours $14.94), R8 It's Gnarly
+  $15 0.87u ($9.74; the second order needs $16.66+). The other three missed horses have firmed under their minimum (Marilyn's
+  Edge $6.50 vs $6.93, Nightowl $5.50 vs $8.12, Express Guard $11 vs $14.46). Exacting Standard R3 scratched.
