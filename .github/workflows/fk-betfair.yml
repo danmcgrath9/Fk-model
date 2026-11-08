@@ -1,0 +1,67 @@
+name: fk betfair
+
+# Game-day lays and favourite backs at Betfair SP (scripts/betfair_runner.py; 8 Nov 2026, founder: "We are going live
+# Friday with this all", "$50 a lay works"). Runs on a SELF-HOSTED runner in Australia: Betfair blocks API logins from
+# the United States, where GitHub's own runners are. The job runs in the "betfair" environment, which holds the Betfair
+# app key and login as environment secrets and needs the founder's approval in GitHub before it starts: that approval is
+# the day's send. paper = decide and log only; live = place the orders. The log is committed to data/live_bets.
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'race day, YYYY-MM-DD (Melbourne)'
+        required: true
+      mode:
+        description: 'paper = log only, live = place the orders'
+        type: choice
+        options: [paper, live]
+        default: 'paper'
+      lay_unit:
+        description: 'dollars a lay, the backer stake (founder, 8 Nov 2026: $50)'
+        default: '50'
+      back_unit:
+        description: 'dollars a favourite back'
+        default: '50'
+      race_cap:
+        description: 'most liability in one race, dollars'
+        default: '3000'
+      day_cap:
+        description: 'most liability placed in the day, dollars'
+        default: '40000'
+
+concurrency:
+  group: fk-betfair
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  gameday:
+    runs-on: [self-hosted, betfair-au]
+    environment: betfair
+    timeout-minutes: 660
+    env:
+      BETFAIR_APP_KEY: ${{ secrets.BETFAIR_APP_KEY }}
+      BETFAIR_USERNAME: ${{ secrets.BETFAIR_USERNAME }}
+      BETFAIR_PASSWORD: ${{ secrets.BETFAIR_PASSWORD }}
+      BETFAIR_LOGIN_URL: ${{ vars.BETFAIR_LOGIN_URL }}
+      BETFAIR_API_URL: ${{ vars.BETFAIR_API_URL }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m pip install --quiet requests
+      - name: Game day
+        run: >
+          python scripts/betfair_runner.py --date ${{ github.event.inputs.date }}
+          --manifest data/live_bets/${{ github.event.inputs.date }}-betfair-manifest.txt
+          --mode ${{ github.event.inputs.mode }} --lay-unit ${{ github.event.inputs.lay_unit }}
+          --back-unit ${{ github.event.inputs.back_unit }} --race-cap ${{ github.event.inputs.race_cap }}
+          --day-cap ${{ github.event.inputs.day_cap }}
+      - name: Keep the log
+        if: always()
+        run: |
+          git config user.name "fk betfair" && git config user.email "actions@users.noreply.github.com"
+          git add data/live_bets/*-betfair-*-log.csv && git commit -q -m "Betfair ${{ github.event.inputs.mode }} log ${{ github.event.inputs.date }}" || true
+          for i in 1 2 3 4; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep $((2**i)); done

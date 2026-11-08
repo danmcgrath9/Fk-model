@@ -236,3 +236,15 @@ The $15-$40 band lays when BSP is at least 1.5x our price (was 1.6x); the $8-$12
 expected, +80u (backtest +45.7u, Jun-Jul -6.8u / Aug-Oct +52.4u; live 37 lays, no winner, +34u); since June the band at 1.5x
 is +$88,800 against +$72,800 at 1.6x. Going lower is not worth it: 1.4-1.5x won exactly what BSP said (10 v 10.2) and
 below 1.4x the extra lays lose. About 8 more lays a week, so a little more liability on the day.
+
+## Going live on Betfair, Friday 13 Nov 2026 (founder, 8 Nov: "We are going live Friday with this all", "$50 a lay works")
+- Lays live at $50 a lay (the backer's stake; liability = $50 x (BSP - 1)), both bands; favourite backs $50 until the
+  founder sets otherwise. Open bets through BetMatic as before, which needs TAB funded and the bot running by Wednesday,
+  because Friday's markets open Wednesday or Thursday.
+- scripts/betfair_runner.py and .github/workflows/fk-betfair.yml: 90 s before each jump it reads Betfair's projected SP and
+  fires the lay and back rules as SP (limit-on-close) orders; caps $3,000 liability a race, $40,000 a day; paper mode logs
+  only. Betfair blocks API logins from the US, where GitHub's runners are, so it runs on a self-hosted runner in Australia
+  (label betfair-au). The "betfair" environment holds the key and login and needs the founder's approval to start: that
+  approval is the day's send. Each race day needs data/live_bets/DATE-betfair-manifest.txt (DAYPREFIX GTAG per meeting),
+  written by the 9:30am re-price. The key arrives later in the week (Betfair needs the account funded first); the first
+  paper run with it checks the login and API addresses.
