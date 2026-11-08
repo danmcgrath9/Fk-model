@@ -1091,3 +1091,12 @@ Lay trial (28 Oct to 7 Nov): 116 lays, 5 winners, +6.38u (+$1,276 at $200).
   Selita's Fury $6.50 0.87u lost -0.87u. PLUS the founder's own late tip, Daniel Boone (R2) 2u, lost -2.00u (ours $14.36:
   not a model bet; ran in Model Gigi's race). Card 5.27u out, 13.20u back, +7.93u (+150%); the model's three alone +9.93u.
 - Lays and backs settle on Form King's results after R8.
+
+## Twitter record, week Mon 2 - Sun 8 Nov (founder, Sun 8 Nov: "What's our total for Twitter now" / "Make a card and tweet")
+From the tweeted cards as settled above (half units, posted prices; BSP-posted tips not counted in "beat BSP"; Daniel Boone
+the founder's own tip included): 31 tips, 11 winners, 35.47u, +17.58u (+50%); posted price beat BSP 12 of 24.
+Mon +0.57 (7.12u), Tue +6.60 (8.11u), Wed +4.17 (3.58u), Thu -4.56 (4.56u), Fri +2.23 (3.95u), Sat +0.64 (2.88u), Sun +7.93 (5.27u).
+Card: branding/mercer-tipping/summary_week_02_08.json. RUNNING TOTAL from the posted week cards, Sat 17 Oct - Sun 8 Nov:
+17-24 Oct 45 tips 14 won 62.5u +141.9u; Sun 25 Oct 1 tip 1 won 1.12u +5.98u; 26 Oct-1 Nov 39 tips 5 won 56.8u +1.7u; 2-8 Nov
+31 tips 11 won 35.47u +17.58u: 116 tips, 31 winners, 155.9u staked, +167.2u (+107%). Thu 15 and Fri 16 Oct are not in it
+(full-stake public record, before the half-unit rule of 20 Oct).

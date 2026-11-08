@@ -1,0 +1,93 @@
+{
+ "title": "One week",
+ "sub": "Mon 2 \u2013 Sun 8 Nov",
+ "big": [
+  {
+   "v": "+17.6u",
+   "k": "Profit on 35.5u"
+  },
+  {
+   "v": "11 / 31",
+   "k": "Winners"
+  },
+  {
+   "v": "12 / 24",
+   "k": "Beat BSP"
+  }
+ ],
+ "rows": [
+  {
+   "day": "Mon",
+   "where": "Ballarat",
+   "bets": 5,
+   "won": 2,
+   "staked": "7.1u",
+   "profit": "+0.6u",
+   "bsp": "3 / 4"
+  },
+  {
+   "day": "Tue",
+   "where": "Flemington \u00b7 Echuca \u00b7 Wangaratta",
+   "bets": 8,
+   "won": 4,
+   "staked": "8.1u",
+   "profit": "+6.6u",
+   "bsp": "4 / 6"
+  },
+  {
+   "day": "Wed",
+   "where": "Kyneton",
+   "bets": 5,
+   "won": 2,
+   "staked": "3.6u",
+   "profit": "+4.2u",
+   "bsp": "3 / 5"
+  },
+  {
+   "day": "Thu",
+   "where": "Flemington",
+   "bets": 3,
+   "won": 0,
+   "staked": "4.6u",
+   "profit": "-4.6u",
+   "bsp": "0 / 1"
+  },
+  {
+   "day": "Fri",
+   "where": "Warrnambool \u00b7 Cranbourne",
+   "bets": 3,
+   "won": 1,
+   "staked": "4.0u",
+   "profit": "+2.2u",
+   "bsp": "0 / 3"
+  },
+  {
+   "day": "Sat",
+   "where": "Flemington \u00b7 Geelong",
+   "bets": 4,
+   "won": 1,
+   "staked": "2.9u",
+   "profit": "+0.6u",
+   "bsp": "1 / 4"
+  },
+  {
+   "day": "Sun",
+   "where": "Ararat",
+   "bets": 3,
+   "won": 1,
+   "staked": "5.3u",
+   "profit": "+7.9u",
+   "bsp": "1 / 1"
+  },
+  {
+   "day": "Total",
+   "where": "",
+   "bets": 31,
+   "won": 11,
+   "staked": "35.5u",
+   "profit": "+17.6u",
+   "bsp": "12 / 24",
+   "total": true
+  }
+ ]
+}
