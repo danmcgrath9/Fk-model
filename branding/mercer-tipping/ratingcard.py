@@ -31,7 +31,7 @@ def chart(d, W=936, H=900):
                      f"<circle cx='{x(b):.1f}' cy='{cy:.1f}' r='13' fill='{NAVY}' stroke='{col}' stroke-width='4'/>")
         g.append(f"<circle cx='{x(l_):.1f}' cy='{cy:.1f}' r='15' fill='{col}'/>"
                  f"<text x='{x(max(l_, b or l_)) + 26:.1f}' y='{cy+11:.1f}' font-size='32' font-weight='800' fill='{col}'>{r.get('label', format(l_, '.1f'))}"
-                 + (f"<tspan font-size='22' font-weight='600' fill='{PALE}' dx='8'>best {b:.1f}</tspan>" if b is not None and abs(b - l_) >= 0.3 else "") + "</text>")
+                 + (f"<tspan font-size='22' font-weight='600' fill='{PALE}' dx='8'>{r.get('sub') or 'best ' + format(b, '.1f')}</tspan>" if b is not None and abs(b - l_) >= 0.3 else "") + "</text>")
     return f"<svg width='{W}' height='{H}' viewBox='0 0 {W} {H}'>{''.join(g)}</svg>"
 def card(d):
     key = (f"<div class='key'><span><i style='background:{GOLD}'></i>Last start</span>"
