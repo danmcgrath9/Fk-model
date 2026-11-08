@@ -1,0 +1,61 @@
+{
+ "title": "The record",
+ "sub": "Every tip since 17 Oct",
+ "big": [
+  {
+   "v": "+167.2u",
+   "k": "Profit on 155.9u"
+  },
+  {
+   "v": "31 / 116",
+   "k": "Winners"
+  },
+  {
+   "v": "+107%",
+   "k": "Return"
+  }
+ ],
+ "cols": [
+  "Week",
+  "Tips",
+  "Won",
+  "Staked",
+  "Profit",
+  "Return"
+ ],
+ "rows": [
+  {
+   "day": "17\u201325 Oct",
+   "bets": 46,
+   "won": 15,
+   "staked": "63.6u",
+   "profit": "+147.9u",
+   "bsp": "+232%"
+  },
+  {
+   "day": "26 Oct \u2013 1 Nov",
+   "bets": 39,
+   "won": 5,
+   "staked": "56.8u",
+   "profit": "+1.7u",
+   "bsp": "+3%"
+  },
+  {
+   "day": "2 \u2013 8 Nov",
+   "bets": 31,
+   "won": 11,
+   "staked": "35.5u",
+   "profit": "+17.6u",
+   "bsp": "+50%"
+  },
+  {
+   "day": "Total",
+   "bets": 116,
+   "won": 31,
+   "staked": "155.9u",
+   "profit": "+167.2u",
+   "bsp": "+107%",
+   "total": true
+  }
+ ]
+}
