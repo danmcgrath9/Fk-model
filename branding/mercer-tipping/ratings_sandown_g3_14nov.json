@@ -1,0 +1,53 @@
+{
+ "title": "G3 Sandown",
+ "sub": "Thoroughbred Club \u00b7 WFA ratings",
+ "lo": 80,
+ "hi": 100,
+ "rows": [
+  {
+   "horse": "Sequinned",
+   "last": 95.9,
+   "best": 95.9,
+   "line": "2nd Flemington 1100m \u00b7 5 Nov \u00b7 $1.90"
+  },
+  {
+   "horse": "Aroused",
+   "last": 94.5,
+   "best": 94.5,
+   "line": "2nd Flemington 1200m \u00b7 24 Oct \u00b7 $4.40"
+  },
+  {
+   "horse": "Chayan",
+   "last": 94.5,
+   "best": 95.9,
+   "line": "3rd Flemington 1200m \u00b7 24 Oct \u00b7 $3.50"
+  },
+  {
+   "horse": "Caddington",
+   "last": 94.4,
+   "best": 94.4,
+   "line": "1st Flemington 1200m \u00b7 24 Oct \u00b7 $12"
+  },
+  {
+   "horse": "Affari",
+   "last": 92.2,
+   "best": 92.7,
+   "line": "3rd Flemington 1400m \u00b7 31 Oct \u00b7 $9"
+  },
+  {
+   "horse": "Angels Fury",
+   "last": 89.5,
+   "best": 89.5,
+   "line": "6th Flemington 1200m \u00b7 24 Oct \u00b7 $2.45"
+  },
+  {
+   "horse": "Cavill Avenue",
+   "last": 85.0,
+   "best": null,
+   "line": "3rd Ballarat 1200m \u00b7 30 Sep \u00b7 rated 82.6",
+   "mark": true,
+   "label": "85"
+  }
+ ],
+ "foot": "Win bets."
+}
