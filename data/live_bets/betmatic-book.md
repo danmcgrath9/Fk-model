@@ -1083,3 +1083,11 @@ Lay trial (28 Oct to 7 Nov): 116 lays, 5 winners, +6.38u (+$1,276 at $200).
   cards at the Sat 11:02am open, the five would-be fills of 2026-11-10-mornington-missed.csv. Mercer half units: Marilyn's
   Edge $9.50 1.07u, Nightowl $8.50 0.73u, Tassadar $34 0.34u, Express Guard $19 0.49u, It's Gnarly $19 0.54u (3.17u).
   No-Mercer full units with rated: 2.14u, 1.46u, 0.67u, 0.97u, 1.08u (6.32u). Settle Mornington on these.
+
+## Sunday 8 Nov Ararat, our three on the founder's results (Sun afternoon: "Win, scratched, loss")
+- Open book (paper, no deduction reported yet): Model Gigi R2 4.79u $4.40 WON +16.29u; Pray For Elegance R3 1.50u SCRATCHED
+  late, refunded; Selita's Fury R5 1.73u $7.50 lost -1.73u. 6.52u settled, +14.56u (+$728 at $50).
+- Twitter card (Mercer, 9:45am prices, half units): Model Gigi $5.50 2.40u won +10.80u; Pray For Elegance 0.75u refunded;
+  Selita's Fury $6.50 0.87u lost -0.87u. PLUS the founder's own late tip, Daniel Boone (R2) 2u, lost -2.00u (ours $14.36:
+  not a model bet; ran in Model Gigi's race). Card 5.27u out, 13.20u back, +7.93u (+150%); the model's three alone +9.93u.
+- Lays and backs settle on Form King's results after R8.
