@@ -211,3 +211,10 @@ Every race day has one artifact for the whole day: bets taken at the open from e
 every meeting in jump order, then each meeting's sheet under its own tab (research/form_gbm/day_page.py). The day page
 is rebuilt and republished to the same URL whenever a meeting page changes; its link leads every message about that day.
 URLs are kept in data/live_bets/DAY-PAGES.md.
+
+## Form adjustments (founder's calls, applied every time the horse is priced)
+Kept in data/live_bets/form-adjustments.json and applied before pricing any meeting the horse is in, with the price shown
+both ways on the first run so the effect is visible.
+- Cavill Avenue (8 Nov 2026, founder: "remember when price Cavill, we have +4 lengths"): its 30 Sep Ballarat run (3rd,
+  beaten 0.75L, Form King WFA 82.6) is rated 4 lengths better, +7.9 points (1.98 a length, Form King's own conversion in
+  that race): WFA 90.5. Down for the G3 Thoroughbred Club Stakes, Sandown Sat 14 Nov.

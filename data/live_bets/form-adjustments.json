@@ -1,0 +1,6 @@
+[
+ {"horse": "Cavill Avenue", "run": "2026-09-30 Ballarat 1200m (3rd, beaten 0.75L)", "lengths": 4,
+  "points": 7.9, "from_wfa": 82.6, "to_wfa": 90.5,
+  "how": "add 7.9 to that run's Form King ratings (weightForAgeRating, wfaRat, atWeights) before features are built; 1.98 points a length = Form King's own conversion in that race",
+  "set": "2026-11-08", "by": "founder: \"remember when price Cavill, we have +4 lengths\""}
+]
