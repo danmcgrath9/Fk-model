@@ -1,0 +1,16 @@
+{
+ "day": "Monday",
+ "date": "9 November",
+ "footer": "Win bets.",
+ "meetings": [
+  {
+   "name": "Hamilton",
+   "note": "",
+   "bets": [
+    {"race": 2, "time": "2:00PM", "horse": "Al's Diemen", "price": "$17", "units": "0.41u"},
+    {"race": 7, "time": "4:30PM", "horse": "Sweet City Dancer", "price": "$17.50", "units": "0.35u"}
+   ]
+  }
+ ],
+ "brand": true
+}
