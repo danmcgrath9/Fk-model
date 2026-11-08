@@ -3,6 +3,9 @@ lay at Betfair SP if BSP is $15-$40 AND at least 1.6x our price (band widened $3
 first race; this script still said $30 until 2 Nov). Our price = the live shaded model (p_model: stage 2,
 back-settler shade, before the blend with the open). First starters and runners with no Australian form held
 (internationals) are excluded. Only runners whose trigger is $40 or under can qualify (ours $25 or shorter).
+8 Nov 2026 (founder: "Yes add it in"): a second lay band, BSP $8-$12 at 1.6x our price or more (t_bsp_candidates_live.py:
+holdout +69% / +30% by half, live 14 Oct - 8 Nov 43 lays, 3 won against 4.4, +27%). A runner can carry both windows,
+one CSV row each, with a band column; $12-$15 stays out (it failed both ways).
 python lay_sheet.py DAYPREFIX GTAG NPZ [--html PAGE.html]  (prints one CSV row per runner with a trigger; --html also
 writes the list as a "Lay book" section at the bottom of the meeting page, 2 Nov 2026, founder: "why aren't the lay bets
 just part of this artifact always down the bottom?")
@@ -15,6 +18,7 @@ import html, json, os, re, sys, numpy as np
 L = "/home/user/fk-model/data/live_bets"; pre, g, npz = sys.argv[1:4]
 page = sys.argv[sys.argv.index("--html") + 1] if "--html" in sys.argv else None
 LAY_MIN, LAY_MAX, LAY_X = 15.0, 40.0, 1.6
+BANDS = ((8.0, 12.0), (LAY_MIN, LAY_MAX))   # the $8-$12 band added 8 Nov 2026
 norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower())
 rows = json.load(open(f"{L}/{pre}-{g}-v6.json")); fs = json.load(open(f"{L}/{pre}-{g}-first-starters.json"))
 fsk = {norm(x.split("|")[-1]) if isinstance(x, str) else norm(str(x)) for x in (fs if isinstance(fs, list) else fs.keys())}
@@ -32,20 +36,22 @@ if os.path.exists(f"{L}/{pre}-entry-numbers.txt"):
     for l in open(f"{L}/{pre}-entry-numbers.txt"):
         pa = l.strip().split("|")
         if len(pa) == 5 and pa[0].isdigit(): nums[(int(pa[0]), norm(pa[2]))] = pa[1]
-print("race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note")
-out = []
+print("race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band")
+out = []   # (race, number, horse, ours, lay from, now, lay to)
 for rid, rs in sorted(by.items(), key=lambda t: t[1][0]["race"]):
     s = sum(r["p_model"] for r in rs)
     for r in sorted(rs, key=lambda r: -r["p_model"]):
-        ours = s / r["p_model"]; trig = max(LAY_MIN, LAY_X * ours)
-        if trig > LAY_MAX: continue
+        ours = s / r["p_model"]
         k = norm(r["horse"]); note = ""
         if k in fsk: note = "first starter: excluded"
         elif not held.get(k, True): note = "no Australian form held (international): excluded"
         now = px.get((r["race"], k), "")
-        print(f'{r["race"]},{r["horse"]},{ours:.2f},{trig:.2f},{LAY_MAX:g},{now},{note}')
-        if not note:
-            out.append((r["race"], nums.get((r["race"], k), ""), r["horse"], ours, trig, now))
+        for lo, hi in BANDS:
+            trig = max(lo, LAY_X * ours)
+            if trig > hi: continue
+            print(f'{r["race"]},{r["horse"]},{ours:.2f},{trig:.2f},{hi:g},{now},{note},{lo:g}-{hi:g}')
+            if not note:
+                out.append((r["race"], nums.get((r["race"], k), ""), r["horse"], ours, trig, now, hi))
 BACK_LO, BACK_HI, BACK_X = 4.0, 7.0, 1.6
 backs = []   # (race, number, horse, ours, back_up_to, now): back at SP only if it is the favourite and its BSP is $4 to back_up_to
 for rid, rs in sorted(by.items(), key=lambda t: t[1][0]["race"]):
@@ -73,7 +79,15 @@ if page:
         try: return float(x) or None
         except (TypeError, ValueError): return None
     trs, last, k = [], None, 0
-    for rc, n, h, o, t, now in out:
+    def window(t, hi):
+        return f"{money(t)}+" if hi >= LAY_MAX else f"{money(t)} to {money(hi)}"
+    # one row per horse on the page, its windows stacked in one cell ($8 to $12 over $15+); the CSV keeps one row per window
+    merged = {}
+    for rc, n, h, o, t, now, hi in out:
+        merged.setdefault((rc, n, h), [o, [], now])[1].append(window(t, hi))
+    out = [(rc, n, h, v[0], "<br>".join(v[1]), v[2], None) for (rc, n, h), v in merged.items()]
+    window = lambda t, hi: t
+    for rc, n, h, o, t, now, hi in out:
         x = pnow(now)
         if rc != last:
             cnt = sum(1 for r in out if r[0] == rc)
@@ -81,7 +95,7 @@ if page:
             last, k = rc, 0
         k += 1
         trs.append(f"<tr class='{'z' if k % 2 == 0 else ''}'><td class='cn'>{n}</td><td class='hn'>{html.escape(h)}</td>"
-                   f"<td>{money(o)}</td><td class='lay'>{money(t)}+</td><td>{money(x) if x else '-'}</td></tr>")
+                   f"<td>{money(o)}</td><td class='lay'>{window(t, hi)}</td><td>{money(x) if x else '-'}</td></tr>")
     css = ("<style>.lb{border:2px solid #6a1b9a;border-radius:10px;padding:12px 12px 6px;margin:22px 0}"
            ".lb h2{margin:0 0 4px;border:0;padding:0;font-size:18px}.lb .rule{font-size:13px;color:#555;margin-bottom:8px}"
            ".lb table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}"
@@ -125,21 +139,22 @@ if page:
     for rc in races:
         ls = [r for r in out if r[0] == rc]; bs_ = [r for r in shown if r[0] == rc]
         rows_ = []
-        for _, n, h, o, t, now in ls:
+        for _, n, h, o, t, now, hi in ls:
             x = pnow(now)
-            rows_.append(f"<tr><td class='cn'>{n}</td><td class='hn'>{html.escape(h)}</td><td>LAY</td><td class='lay'>{money(t)}+</td><td>{money(x) if x else '-'}</td></tr>")
+            rows_.append(f"<tr><td class='cn'>{n}</td><td class='hn'>{html.escape(h)}</td><td>LAY</td><td class='lay'>{window(t, hi)}</td><td>{money(x) if x else '-'}</td></tr>")
         for _, n, h, o, cap, now in bs_:
             x = pnow(now)
             rows_.append(f"<tr><td class='cn'>{n}</td><td class='hn'>{html.escape(h)}</td><td>BACK fav</td><td class='bk'>$4 to {money(cap)}</td><td>{money(x) if x else '-'}</td></tr>")
         gd.append(f"<div class='gdr'><h3><a href='#r{rc}'>Race {rc}</a> <span>{len(ls)} lays, {len(bs_)} backs</span></h3>"
                   f"<div class='tw'><table><tr><th>No.</th><th>Horse</th><th>Side</th><th>SP</th><th>Now</th></tr>{''.join(rows_)}</table></div></div>")
     gd_sec = (f"<div class='lb gd' id='gameday' style='scroll-margin-top:64px'><h2>Game day</h2>"
-              f"<div class='rule'>Race by race, in the last two minutes: a LAY goes on at Betfair SP (max $40) if the projected SP is at or over "
-              f"its price; a BACK goes on at Betfair SP only if the horse is the favourite and the projected SP is inside its range. "
+              f"<div class='rule'>Race by race, in the last two minutes: a LAY goes on at Betfair SP if the projected SP is inside its range "
+              f"(at or over its price, up to $12 or $40); a BACK goes on at Betfair SP only if the horse is the favourite and the projected SP is inside its range. "
               f"Under the price, or not the favourite: nothing.</div>{''.join(gd)}</div>") if races else "<div class='lb gd' id='gameday'><h2>Game day: nothing to do</h2></div>"
     sec = (f"{START}{css}<div class='lb' id='lays' style='scroll-margin-top:64px'><h2>Lay book: {len(out)} runners</h2>"
            f"<div class='rule'>Paper, 1u = $200 laid at Betfair SP. Lay a horse if its Betfair SP finishes at its <b>lay if SP</b> "
-           f"price or higher, up to ${LAY_MAX:.0f}. That price is $15, or 1.6x our price if higher. Now is the bookies' price.</div>"
+           f"price or higher, up to ${LAY_MAX:.0f}; a row ending at $12 is the $8-$12 band. The price is the band's floor ($8 or $15), "
+           f"or 1.6x our price if higher. Now is the bookies' price.</div>"
            f"<div class='tw'><table><tr><th>No.</th><th>Horse</th><th>Ours</th><th>Lay if SP</th><th>Now</th></tr>"
            f"{''.join(trs)}</table></div></div>") if out else "<div class='lb' id='lays'><h2>Lay book: none</h2></div>"
     sec = f"{START}{css}{gd_sec}{sec}{back_sec}{END}"

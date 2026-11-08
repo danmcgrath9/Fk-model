@@ -27,12 +27,17 @@ for r in csv.DictReader(open(a.lays)):
     lo, hi = float(r["lay_if_bsp_at_least"]), float(r["lay_if_bsp_at_most"])
     fin, sp, bsp = res.get((rn, norm(r["horse"])), (None, None, None))
     if fin is None or bsp is None:
-        void.append(f"R{rn} {r['horse']}" + ("" if (rn, norm(r["horse"])) in res else " (not in results)")); continue
+        v_ = f"R{rn} {r['horse']}" + ("" if (rn, norm(r["horse"])) in res else " (not in results)")
+        if v_ not in void: void.append(v_)
+        continue
     if not (lo <= bsp <= hi): continue
     won = fin in ("1", "1.0")
     pl = -(bsp - 1) if won else 1 - COMM
-    lays.append((rn, r["horse"], lo, bsp, fin, pl))
-for rn, h, lo, bsp, fin, pl in lays:
-    print(f"R{rn} {h:<22} lay at ${lo:.2f}+  BSP ${bsp:.2f}  finish {fin:>3}  {pl:+.2f}u")
+    lays.append((rn, r["horse"], lo, bsp, fin, pl, (r.get("band") or "15-40").strip()))
+for rn, h, lo, bsp, fin, pl, band in lays:
+    print(f"R{rn} {h:<22} lay at ${lo:.2f}+  BSP ${bsp:.2f}  finish {fin:>3}  {pl:+.2f}u  (${band})")
+for b in sorted({x[6] for x in lays}, key=lambda b: float(b.split("-")[0])):   # each band on its own line (the $8-$12 band from 8 Nov 2026)
+    g = [x for x in lays if x[6] == b]
+    print(f"  band ${b}: {len(g)} lays, {sum(1 for x in g if x[5] < 0)} winners, {sum(x[5] for x in g):+.2f}u")
 n, w, tot = len(lays), sum(1 for x in lays if x[5] < 0), sum(x[5] for x in lays)
 print(f"{n} lays, {w} winners, {tot:+.2f}u (${tot*a.unit:+,.0f} at ${a.unit:g}); excluded by the sheet {skipped}; void {len(void)}: {', '.join(void) or 'none'}")

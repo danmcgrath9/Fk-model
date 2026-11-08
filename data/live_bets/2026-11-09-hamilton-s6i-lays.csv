@@ -1,61 +1,81 @@
-race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note
-1,King Koruna,3.56,15.00,40,2.30,
-1,Hellofacury,3.94,15.00,40,3.70,
-1,Wanted Enuff,5.22,15.00,40,5.50,
-1,Don't Say No Mikki,13.46,21.54,40,10.00,
-1,Inside Word,23.27,37.24,40,23.00,
-1,Calm The Press,24.70,39.52,40,21.00,
-2,Rentier,2.81,15.00,40,2.60,
-2,Piklemegranmother,5.21,15.00,40,7.00,
-2,Never Pegasus,7.24,15.00,40,4.20,
-2,Abydos,7.79,15.00,40,8.00,
-2,Al's Diemen,10.37,16.60,40,9.00,
-3,Alltogethernow,6.22,15.00,40,8.00,
-3,Mossquillo,7.74,15.00,40,5.00,
-3,Lord Timo,7.96,15.00,40,14.00,
-3,Empress Of China,8.07,15.00,40,14.00,
-3,Rollin'ontheriver,9.22,15.00,40,8.50,
-3,All Moonlite,9.45,15.11,40,5.00,
-3,Dance Day,15.19,24.30,40,8.50,
-3,Jakbe Nimble,20.91,33.46,40,8.50,
-3,Musical Journey,22.13,35.41,40,18.00,
-4,Chancellor,3.58,15.00,40,3.40,
-4,Somethingintheair,6.11,15.00,40,4.20,
-4,Normandy Peace,6.92,15.00,40,3.40,
-4,Apadana,7.55,15.00,40,8.50,
-4,Lord Lonny,12.81,20.50,40,18.00,
-4,I'mnodrummerboy,16.49,26.38,40,10.00,
-4,Prince Iadora,17.89,28.63,40,21.00,
-5,Sotomayor,5.67,15.00,40,5.00,
-5,Tudaya,8.12,15.00,40,10.00,
-5,Sweater Girl,9.73,15.57,40,5.00,
-5,Turned Loose,9.92,15.88,40,8.50,
-5,Miss Trombari,10.21,16.34,40,12.00,
-5,Newcombe,13.49,21.58,40,9.00,
-5,Endean Ace,14.33,22.92,40,9.00,
-5,Bell's Bighouse,18.28,29.25,40,10.00,
-5,Tarakash,18.87,30.19,40,15.00,
-5,Drink Then Kiss,18.92,30.28,40,21.00,
-6,Becauseyou're Mine,4.00,15.00,40,3.90,
-6,Nicaloha,6.29,15.00,40,9.00,
-6,Attain,6.71,15.00,40,4.80,
-6,Ramelle,7.14,15.00,40,5.00,
-6,The Birthday Party,10.76,17.22,40,5.50,
-6,All The Way Baby,10.82,17.32,40,9.00,
-6,French Navy,16.84,26.94,40,12.00,
-7,Imminent Storm,4.98,15.00,40,3.50,
-7,Popthebubbly,5.17,15.00,40,3.70,
-7,Royal Inference,7.40,15.00,40,7.00,
-7,Alpinova,10.00,16.00,40,6.50,
-7,Imacreedytwo,10.99,17.59,40,7.50,
-7,Sweet City Dancer,11.98,19.16,40,14.00,
-7,News Travels Fast,14.47,23.16,40,21.00,
-7,Highland George,21.28,34.05,40,41.00,
-7,Star Fortian,21.87,35.00,40,12.00,
-8,Youarenotalone,3.38,15.00,40,4.50,
-8,Hidden Witness,4.24,15.00,40,3.90,
-8,Steely Hustler,8.38,15.00,40,8.50,
-8,Frederick,12.71,20.34,40,7.50,
-8,Misty Emotions,14.83,23.72,40,6.50,
-8,Triomphe,15.44,24.70,40,8.00,
-8,Adki,19.43,31.09,40,12.00,
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,King Koruna,3.56,8.00,12,2.30,,8-12
+1,King Koruna,3.56,15.00,40,2.30,,15-40
+1,Hellofacury,3.94,8.00,12,3.70,,8-12
+1,Hellofacury,3.94,15.00,40,3.70,,15-40
+1,Wanted Enuff,5.22,8.35,12,5.50,,8-12
+1,Wanted Enuff,5.22,15.00,40,5.50,,15-40
+1,Don't Say No Mikki,13.46,21.54,40,10.00,,15-40
+1,Inside Word,23.27,37.24,40,23.00,,15-40
+1,Calm The Press,24.70,39.52,40,21.00,,15-40
+2,Rentier,2.81,8.00,12,2.60,,8-12
+2,Rentier,2.81,15.00,40,2.60,,15-40
+2,Piklemegranmother,5.21,8.34,12,7.00,,8-12
+2,Piklemegranmother,5.21,15.00,40,7.00,,15-40
+2,Never Pegasus,7.24,11.58,12,4.20,,8-12
+2,Never Pegasus,7.24,15.00,40,4.20,,15-40
+2,Abydos,7.79,15.00,40,8.00,,15-40
+2,Al's Diemen,10.37,16.60,40,9.00,,15-40
+3,Alltogethernow,6.22,9.95,12,8.00,,8-12
+3,Alltogethernow,6.22,15.00,40,8.00,,15-40
+3,Mossquillo,7.74,15.00,40,5.00,,15-40
+3,Lord Timo,7.96,15.00,40,14.00,,15-40
+3,Empress Of China,8.07,15.00,40,14.00,,15-40
+3,Rollin'ontheriver,9.22,15.00,40,8.50,,15-40
+3,All Moonlite,9.45,15.11,40,5.00,,15-40
+3,Dance Day,15.19,24.30,40,8.50,,15-40
+3,Jakbe Nimble,20.91,33.46,40,8.50,,15-40
+3,Musical Journey,22.13,35.41,40,18.00,,15-40
+4,Chancellor,3.58,8.00,12,3.40,,8-12
+4,Chancellor,3.58,15.00,40,3.40,,15-40
+4,Somethingintheair,6.11,9.78,12,4.20,,8-12
+4,Somethingintheair,6.11,15.00,40,4.20,,15-40
+4,Normandy Peace,6.92,11.07,12,3.40,,8-12
+4,Normandy Peace,6.92,15.00,40,3.40,,15-40
+4,Apadana,7.55,15.00,40,8.50,,15-40
+4,Lord Lonny,12.81,20.50,40,18.00,,15-40
+4,I'mnodrummerboy,16.49,26.38,40,10.00,,15-40
+4,Prince Iadora,17.89,28.63,40,21.00,,15-40
+5,Sotomayor,5.67,9.08,12,5.00,,8-12
+5,Sotomayor,5.67,15.00,40,5.00,,15-40
+5,Tudaya,8.12,15.00,40,10.00,,15-40
+5,Sweater Girl,9.73,15.57,40,5.00,,15-40
+5,Turned Loose,9.92,15.88,40,8.50,,15-40
+5,Miss Trombari,10.21,16.34,40,12.00,,15-40
+5,Newcombe,13.49,21.58,40,9.00,,15-40
+5,Endean Ace,14.33,22.92,40,9.00,,15-40
+5,Bell's Bighouse,18.28,29.25,40,10.00,,15-40
+5,Tarakash,18.87,30.19,40,15.00,,15-40
+5,Drink Then Kiss,18.92,30.28,40,21.00,,15-40
+6,Becauseyou're Mine,4.00,8.00,12,3.90,,8-12
+6,Becauseyou're Mine,4.00,15.00,40,3.90,,15-40
+6,Nicaloha,6.29,10.07,12,9.00,,8-12
+6,Nicaloha,6.29,15.00,40,9.00,,15-40
+6,Attain,6.71,10.73,12,4.80,,8-12
+6,Attain,6.71,15.00,40,4.80,,15-40
+6,Ramelle,7.14,11.43,12,5.00,,8-12
+6,Ramelle,7.14,15.00,40,5.00,,15-40
+6,The Birthday Party,10.76,17.22,40,5.50,,15-40
+6,All The Way Baby,10.82,17.32,40,9.00,,15-40
+6,French Navy,16.84,26.94,40,12.00,,15-40
+7,Imminent Storm,4.98,8.00,12,3.50,,8-12
+7,Imminent Storm,4.98,15.00,40,3.50,,15-40
+7,Popthebubbly,5.17,8.27,12,3.70,,8-12
+7,Popthebubbly,5.17,15.00,40,3.70,,15-40
+7,Royal Inference,7.40,11.83,12,7.00,,8-12
+7,Royal Inference,7.40,15.00,40,7.00,,15-40
+7,Alpinova,10.00,16.00,40,6.50,,15-40
+7,Imacreedytwo,10.99,17.59,40,7.50,,15-40
+7,Sweet City Dancer,11.98,19.16,40,14.00,,15-40
+7,News Travels Fast,14.47,23.16,40,21.00,,15-40
+7,Highland George,21.28,34.05,40,41.00,,15-40
+7,Star Fortian,21.87,35.00,40,12.00,,15-40
+8,Youarenotalone,3.38,8.00,12,4.50,,8-12
+8,Youarenotalone,3.38,15.00,40,4.50,,15-40
+8,Hidden Witness,4.24,8.00,12,3.90,,8-12
+8,Hidden Witness,4.24,15.00,40,3.90,,15-40
+8,Steely Hustler,8.38,15.00,40,8.50,,15-40
+8,Frederick,12.71,20.34,40,7.50,,15-40
+8,Misty Emotions,14.83,23.72,40,6.50,,15-40
+8,Triomphe,15.44,24.70,40,8.00,,15-40
+8,Adki,19.43,31.09,40,12.00,,15-40

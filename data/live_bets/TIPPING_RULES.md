@@ -222,3 +222,10 @@ both ways on the first run so the effect is visible.
 ## No locking in (8 Nov 2026, founder: "1 - never")
 Backing at the open and laying the same horse at BSP to lock in the price move (t_greenup.py, backtest +46%, every week up)
 is NOT to be used or proposed again. The open book stays unhedged.
+
+## Paper lay book, second band $8-$12 (from Mon 9 Nov 2026; founder, 8 Nov: "Yes add it in")
+Lay 1u ($200) at Betfair SP if BSP is $8 to $12 AND at least 1.6x our price, beside the $15-$40 band (unchanged). $12-$15
+stays out: it lost in the backtest and live. Evidence: holdout +69% / +30% by half; live 14 Oct - 8 Nov 43 lays, 3 winners
+against 4.4 expected, +27% (research/form_gbm/t_bsp_candidates_live.py). lay_sheet.py writes one CSV row per window with a
+band column and shows a horse's windows stacked in one cell; settle_lays.py totals each band on its own line. Judge both
+bands, and the favourite backs, at the end of November.

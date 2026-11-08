@@ -1105,3 +1105,7 @@ Card: branding/mercer-tipping/summary_week_02_08.json. RUNNING TOTAL from the po
 WEEK Mon 2 - Sun 8 Nov (paper; Sunday's R5-R8 lays and backs to come): open book 30 bets, 11 won, 66.85u, +108.66u (+163%,
 +$5,433); lays 67, 3 won, +3.64u (+$728); BSP favourite backs 2, 0 won, -$1,000; total +$5,161. Twitter +17.58u (+50%).
 Real money: Best Terms -$331 (Mon).
+
+## $8-$12 lay band added (founder, Sun 8 Nov: "Yes add it in"), paper from Mon 9 Nov
+Hamilton Mon (s6i) and Mornington Tue (d5m) lay books rebuilt with both bands and republished. Sunday's Ararat would have
+had 2 lays in the band to R6, both losers (+1.84u): not counted, the band starts Monday.
