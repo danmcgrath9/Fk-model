@@ -5,17 +5,17 @@ race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
 1,Kissattack,3.37,15.00,40,3.20,,15-40
 1,Molesworth,7.11,11.37,12,5.00,,8-12
 1,Molesworth,7.11,15.00,40,5.00,,15-40
-1,Grinding Away,12.34,19.75,40,10.00,,15-40
-1,Fantastic Beast,15.28,24.45,40,12.00,,15-40
+1,Grinding Away,12.34,18.51,40,10.00,,15-40
+1,Fantastic Beast,15.28,22.92,40,12.00,,15-40
 2,Hot Samba,3.69,8.00,12,3.40,first starter: excluded,8-12
 2,Hot Samba,3.69,15.00,40,3.40,first starter: excluded,15-40
 2,Queen's English,4.32,8.00,12,5.00,,8-12
 2,Queen's English,4.32,15.00,40,5.00,,15-40
 2,Amber Queen,5.93,9.49,12,4.20,first starter: excluded,8-12
 2,Amber Queen,5.93,15.00,40,4.20,first starter: excluded,15-40
-2,Roar Talent,11.91,19.06,40,5.00,,15-40
-2,Diamond Heist,12.41,19.85,40,6.50,,15-40
-2,Burning Rubies,16.94,27.10,40,11.00,first starter: excluded,15-40
+2,Roar Talent,11.91,17.87,40,5.00,,15-40
+2,Diamond Heist,12.41,18.61,40,6.50,,15-40
+2,Burning Rubies,16.94,25.40,40,11.00,first starter: excluded,15-40
 3,Pinamilloy,4.69,8.00,12,3.30,,8-12
 3,Pinamilloy,4.69,15.00,40,3.30,,15-40
 3,Capital Storm,5.56,8.90,12,5.50,,8-12
@@ -25,8 +25,8 @@ race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
 3,Exacting Standard,7.45,11.92,12,4.60,,8-12
 3,Exacting Standard,7.45,15.00,40,4.60,,15-40
 3,Ballsintheair,8.86,15.00,40,11.00,first starter: excluded,15-40
-3,Kensington,12.38,19.81,40,8.00,first starter: excluded,15-40
-3,Thatswotitzalabout,20.25,32.39,40,15.00,first starter: excluded,15-40
+3,Kensington,12.38,18.57,40,8.00,first starter: excluded,15-40
+3,Thatswotitzalabout,20.25,30.37,40,15.00,first starter: excluded,15-40
 4,Bliss Bomb,4.53,8.00,12,4.00,,8-12
 4,Bliss Bomb,4.53,15.00,40,4.00,,15-40
 4,Marilyn's Edge,5.30,8.48,12,6.50,,8-12
@@ -36,19 +36,19 @@ race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
 4,Cherry Hills,7.17,11.48,12,4.40,,8-12
 4,Cherry Hills,7.17,15.00,40,4.40,,15-40
 4,Sistine Tunnel,9.20,15.00,40,5.00,,15-40
-4,Arabian Myth,18.74,29.98,40,12.00,,15-40
+4,Arabian Myth,18.74,28.10,40,12.00,,15-40
 5,Nightowl,6.16,9.86,12,5.50,,8-12
 5,Nightowl,6.16,15.00,40,5.50,,15-40
 5,Up And Under,6.38,10.21,12,8.00,,8-12
 5,Up And Under,6.38,15.00,40,8.00,,15-40
 5,Mike's Hope,7.93,15.00,40,3.20,,15-40
-5,Crown Of Russia,9.64,15.42,40,6.00,,15-40
-5,Nicoffhome,10.58,16.93,40,7.00,,15-40
-5,Hollandia,14.48,23.17,40,11.00,,15-40
-5,Tassadar,14.94,23.91,40,41.00,,15-40
-5,Love Sparkles,16.58,26.53,40,11.00,,15-40
-5,Wolves' Den,20.79,33.27,40,17.00,,15-40
-5,Frank Express,21.90,35.04,40,26.00,,15-40
+5,Crown Of Russia,9.64,15.00,40,6.00,,15-40
+5,Nicoffhome,10.58,15.87,40,7.00,,15-40
+5,Hollandia,14.48,21.72,40,11.00,,15-40
+5,Tassadar,14.94,22.41,40,41.00,,15-40
+5,Love Sparkles,16.58,24.87,40,11.00,,15-40
+5,Wolves' Den,20.79,31.19,40,17.00,,15-40
+5,Frank Express,21.90,32.85,40,26.00,,15-40
 6,Ilovediamonds,4.35,8.00,12,2.60,,8-12
 6,Ilovediamonds,4.35,15.00,40,2.60,,15-40
 6,Miss Toronado,4.62,8.00,12,3.60,,8-12
@@ -56,24 +56,24 @@ race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
 6,Bella Cinque,6.45,10.33,12,6.00,,8-12
 6,Bella Cinque,6.45,15.00,40,6.00,,15-40
 6,Podargoni,7.84,15.00,40,10.00,,15-40
-6,Triple Salute,11.38,18.22,40,11.00,,15-40
-6,Just Remember It,12.78,20.44,40,9.50,,15-40
-6,Tipping Rain,22.89,36.63,40,18.00,,15-40
+6,Triple Salute,11.38,17.08,40,11.00,,15-40
+6,Just Remember It,12.78,19.17,40,9.50,,15-40
+6,Tipping Rain,22.89,34.34,40,18.00,,15-40
 7,Rough Enuff,2.86,8.00,12,2.30,,8-12
 7,Rough Enuff,2.86,15.00,40,2.30,,15-40
 7,Fearless Writer,4.48,8.00,12,3.50,,8-12
 7,Fearless Writer,4.48,15.00,40,3.50,,15-40
 7,Two To Tango,5.59,8.95,12,4.80,,8-12
 7,Two To Tango,5.59,15.00,40,4.80,,15-40
-7,Pol Rogeur,12.35,19.76,40,9.00,,15-40
-7,Sensational Ruler,19.09,30.55,40,17.00,,15-40
+7,Pol Rogeur,12.35,18.53,40,9.00,,15-40
+7,Sensational Ruler,19.09,28.64,40,17.00,,15-40
 8,Jenni Poppins,4.41,8.00,12,5.50,,8-12
 8,Jenni Poppins,4.41,15.00,40,5.50,,15-40
 8,Alexander Thegreat,7.73,15.00,40,8.00,,15-40
 8,Our Pierro,8.60,15.00,40,2.90,,15-40
-8,It's Gnarly,9.74,15.59,40,15.00,,15-40
-8,Express Guard,10.67,17.08,40,11.00,,15-40
-8,Flying Jude,11.53,18.45,40,4.80,,15-40
-8,Russian Benefits,12.15,19.45,40,9.50,,15-40
-8,She Nailed It,21.03,33.64,40,23.00,,15-40
-8,Count Of Toulouse,22.95,36.72,40,19.00,,15-40
+8,It's Gnarly,9.74,15.00,40,15.00,,15-40
+8,Express Guard,10.67,16.01,40,11.00,,15-40
+8,Flying Jude,11.53,17.30,40,4.80,,15-40
+8,Russian Benefits,12.15,18.23,40,9.50,,15-40
+8,She Nailed It,21.03,31.54,40,23.00,,15-40
+8,Count Of Toulouse,22.95,34.43,40,19.00,,15-40

@@ -229,3 +229,10 @@ stays out: it lost in the backtest and live. Evidence: holdout +69% / +30% by ha
 against 4.4 expected, +27% (research/form_gbm/t_bsp_candidates_live.py). lay_sheet.py writes one CSV row per window with a
 band column and shows a horse's windows stacked in one cell; settle_lays.py totals each band on its own line. Judge both
 bands, and the favourite backs, at the end of November.
+
+## $15-$40 lay trigger 1.6x -> 1.5x (from Mon 9 Nov 2026; founder, 8 Nov: "Yeah do that")
+The $15-$40 band lays when BSP is at least 1.5x our price (was 1.6x); the $8-$12 band stays at 1.6x. Evidence
+(research/form_gbm/t_lay_trigger.py and the live sweep): the 1.5-1.6x slice was 174 lays, 4 winners against 7.8 BSP
+expected, +80u (backtest +45.7u, Jun-Jul -6.8u / Aug-Oct +52.4u; live 37 lays, no winner, +34u); since June the band at 1.5x
+is +$88,800 against +$72,800 at 1.6x. Going lower is not worth it: 1.4-1.5x won exactly what BSP said (10 v 10.2) and
+below 1.4x the extra lays lose. About 8 more lays a week, so a little more liability on the day.

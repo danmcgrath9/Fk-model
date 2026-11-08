@@ -18,7 +18,8 @@ import html, json, os, re, sys, numpy as np
 L = "/home/user/fk-model/data/live_bets"; pre, g, npz = sys.argv[1:4]
 page = sys.argv[sys.argv.index("--html") + 1] if "--html" in sys.argv else None
 LAY_MIN, LAY_MAX, LAY_X = 15.0, 40.0, 1.6
-BANDS = ((8.0, 12.0), (LAY_MIN, LAY_MAX))   # the $8-$12 band added 8 Nov 2026
+BANDS = ((8.0, 12.0, 1.6), (LAY_MIN, LAY_MAX, 1.5))   # (floor, top, trigger x ours): $8-$12 added 8 Nov 2026; $15-$40 trigger 1.6 -> 1.5 the same day
+# (founder, 8 Nov: "Yeah do that"; t_lay_trigger.py: 1.5 made the most since June once the break-even 1.4-1.5 slice is left out)
 norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower())
 rows = json.load(open(f"{L}/{pre}-{g}-v6.json")); fs = json.load(open(f"{L}/{pre}-{g}-first-starters.json"))
 fsk = {norm(x.split("|")[-1]) if isinstance(x, str) else norm(str(x)) for x in (fs if isinstance(fs, list) else fs.keys())}
@@ -46,8 +47,8 @@ for rid, rs in sorted(by.items(), key=lambda t: t[1][0]["race"]):
         if k in fsk: note = "first starter: excluded"
         elif not held.get(k, True): note = "no Australian form held (international): excluded"
         now = px.get((r["race"], k), "")
-        for lo, hi in BANDS:
-            trig = max(lo, LAY_X * ours)
+        for lo, hi, bx in BANDS:
+            trig = max(lo, bx * ours)
             if trig > hi: continue
             print(f'{r["race"]},{r["horse"]},{ours:.2f},{trig:.2f},{hi:g},{now},{note},{lo:g}-{hi:g}')
             if not note:
@@ -154,7 +155,7 @@ if page:
     sec = (f"{START}{css}<div class='lb' id='lays' style='scroll-margin-top:64px'><h2>Lay book: {len(out)} runners</h2>"
            f"<div class='rule'>Paper, 1u = $200 laid at Betfair SP. Lay a horse if its Betfair SP finishes at its <b>lay if SP</b> "
            f"price or higher, up to ${LAY_MAX:.0f}; a row ending at $12 is the $8-$12 band. The price is the band's floor ($8 or $15), "
-           f"or 1.6x our price if higher. Now is the bookies' price.</div>"
+           f"or our price times 1.6 ($8-$12) or 1.5 ($15-$40) if higher. Now is the bookies' price.</div>"
            f"<div class='tw'><table><tr><th>No.</th><th>Horse</th><th>Ours</th><th>Lay if SP</th><th>Now</th></tr>"
            f"{''.join(trs)}</table></div></div>") if out else "<div class='lb' id='lays'><h2>Lay book: none</h2></div>"
     sec = f"{START}{css}{gd_sec}{sec}{back_sec}{END}"
