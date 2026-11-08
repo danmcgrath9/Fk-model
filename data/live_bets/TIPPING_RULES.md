@@ -218,3 +218,7 @@ both ways on the first run so the effect is visible.
 - Cavill Avenue (8 Nov 2026, founder: "remember when price Cavill, we have +4 lengths"): its 30 Sep Ballarat run (3rd,
   beaten 0.75L, Form King WFA 82.6) is rated 4 lengths better, +7.9 points (1.98 a length, Form King's own conversion in
   that race): WFA 90.5. Down for the G3 Thoroughbred Club Stakes, Sandown Sat 14 Nov.
+
+## No locking in (8 Nov 2026, founder: "1 - never")
+Backing at the open and laying the same horse at BSP to lock in the price move (t_greenup.py, backtest +46%, every week up)
+is NOT to be used or proposed again. The open book stays unhedged.
