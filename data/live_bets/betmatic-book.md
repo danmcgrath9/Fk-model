@@ -1120,3 +1120,10 @@ SUNDAY FINAL (paper): +$1,332. Twitter card +7.93u.
 WEEK Mon 2 - Sun 8 Nov FINAL (paper; one real bet, Best Terms -$331): open book 30 bets, 11 won, +108.66u on 66.85u (+163%,
 +$5,433); lays 73, 3 won, +9.16u (+$1,832); BSP favourite backs 2, 0 won (-$1,000); total +$6,265. Twitter +17.58u (+50%).
 Lay trial (28 Oct to 8 Nov): 122 lays, 5 winners, +11.90u (+$2,380 at $200).
+
+## Since live, 9 Oct - 8 Nov, every strategy on the same footing (founder, 8 Nov: "Why can't you just look at results from 9 October")
+Each meeting's own live model file and Form King's results/BSPs (research/form_gbm/t_since_live.py, 48 meetings; Yarra Valley
+24 Oct has no results export). Open book as it happened (+326.33u = +$16,317 at $50). Lays $15-$40 at 1.5x: 306 lays, 12 won
+(BSP said 13.2), +48.38u (+$9,676 at $200, +$2,419 at $50). Lays $8-$12 at 1.6x: 49 lays, 4 won (5.0), +6.31u (+$1,262 /
++$316). BSP favourite backs: 23, 7 won (5.0), +7.48u (+$3,739 at $500, +$374 at $50). Total +$30,994 at $200 lays and $500
+backs; +$19,426 at Friday's $50 lays and $50 backs.

@@ -1,0 +1,26 @@
+no results for yarra-valley-20261024
+no results for bendigo-r1scr-20261028
+no results for flemington-now-20261031
+no results for ballarat-now-20261102
+48 meetings, 3640 runners with a result and BSP, 356 winners
+
+LAYS at BSP, BSP >= 1.6x ours, first starters out (1u, 8% commission)
+  $8-$12     48 lays   4 won (BSP said   4.9)    +5.39u  (+11% on stake)  $+1,078 at $200
+  $12-$15     32 lays   3 won (BSP said   2.4)   -11.16u  (-35% on stake)  $-2,232 at $200
+  $15-$40    252 lays  11 won (BSP said  10.9)   +18.62u  (+7% on stake)  $+3,724 at $200
+  $40-$50     52 lays   0 won (BSP said   1.2)   +47.84u  (+92% on stake)  $+9,568 at $200
+  $50-$100   138 lays   4 won (BSP said   2.0)  -145.29u  (-105% on stake)  $-29,058 at $200
+  $8-$50    384 lays  18 won (BSP said  19.4)   +60.69u  (+16% on stake)  $+12,138 at $200
+  (the same bands with NO model, every runner: the plain longshot bias)
+  $8-$15    672 lays  63 won (BSP said  62.5)   -70.47u  (-10% on stake)  $-14,094 at $200
+  $15-$40    987 lays  42 won (BSP said  44.5)   +39.94u  (+4% on stake)  $+7,988 at $200
+
+BACKS at BSP
+  our top pick, BSP >= our price           199 backs  41 won (BSP said  46.2)   -16.72u  (-8%)
+     top pick, ours $1.6-$3                    67 backs  17 won (BSP said  21.7)   -13.08u  (-20%)
+     top pick, ours $3-$5                   109 backs  17 won (BSP said  21.5)   -36.53u  (-34%)
+     top pick, ours $5-$8                    23 backs   7 won (BSP said   3.0)   +32.90u  (+143%)
+  $4-$7 favourite, ours >= 1.6x (live rule)   23 backs   7 won (BSP said   5.0)    +7.48u  (+33%)
+  $4-$7 favourite, ours >= 1.3x              36 backs   7 won (BSP said   7.7)    -5.52u  (-15%)
+
+model files used: 2026-10-09-ballarat g4; 2026-10-09-cranbourne g4; 2026-10-10-caulfield g4; 2026-10-11-seymour g4; 2026-10-13-kilmore s5; 2026-10-14-caulfield g4; 2026-10-15-warrnambool g4; 2026-10-16-cranbourne g4; 2026-10-17-avoca g4; 2026-10-17-bendigo g4; 2026-10-17-caulfield g4; 2026-10-17-wodonga g4; 2026-10-18-horsham g4; 2026-10-18-moe g4; 2026-10-19-echuca g4; 2026-10-20-kyneton g35; 2026-10-21-geelong g3; 2026-10-22-mornington gd; 2026-10-23-ballarat g4; 2026-10-23-cranbourne g4; 2026-10-24-flemington g4; 2026-10-24-st-arnaud gd; 2026-10-25-sale gd; 2026-10-26-wangaratta gd; 2026-10-27-swan-hill gd; 2026-10-28-bendigo gd; 2026-10-29-warrnambool gd; 2026-10-30-kilmore gd; 2026-10-30-pakenham gd; 2026-10-31-flemington gd; 2026-10-31-healesville of; 2026-10-31-mortlake of; 2026-10-31-traralgon of; 2026-10-31-wycheproof of; 2026-11-01-mornington s7v2; 2026-11-02-ballarat s7n; 2026-11-03-echuca s7t; 2026-11-03-flemington s6t; 2026-11-03-mildura gdt; 2026-11-03-wangaratta s6t; 2026-11-04-kyneton d5m; 2026-11-05-flemington s5u; 2026-11-06-cranbourne s6g; 2026-11-06-warrnambool d4g; 2026-11-07-balnarring h8c; 2026-11-07-flemington s6t; 2026-11-07-geelong d5h; 2026-11-08-ararat s6c
