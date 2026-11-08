@@ -1109,3 +1109,14 @@ Real money: Best Terms -$331 (Mon).
 ## $8-$12 lay band added (founder, Sun 8 Nov: "Yes add it in"), paper from Mon 9 Nov
 Hamilton Mon (s6i) and Mornington Tue (d5m) lay books rebuilt with both bands and republished. Sunday's Ararat would have
 had 2 lays in the band to R6, both losers (+1.84u): not counted, the band starts Monday.
+
+## Sunday 8 Nov Ararat settled (Form King results and BSPs, 7:10pm)
+- Open book: Model Gigi R2 4.79u $4.40 WON +16.29u; Pray For Elegance R3 scratched; Selita's Fury R5 1.73u $7.50 8th -1.73u:
+  +14.56u (+$728). No deduction reported.
+- Lays ($15-$40 at 1.6x, the rule of the day): 6 lays, 0 winners, +5.52u (+$1,104): Masked Marauder R4, Selita's Fury R5
+  (also our open bet), Trigger Warning R5, Thedoctoroflove R6, Unseen Ruler R6 (2nd), Tikemyson R6. Nothing in R7-R8.
+- Back: Daniel Boone R2 (BSP fav $4.45, ours $14.36) 3rd -1u (-$500).
+SUNDAY FINAL (paper): +$1,332. Twitter card +7.93u.
+WEEK Mon 2 - Sun 8 Nov FINAL (paper; one real bet, Best Terms -$331): open book 30 bets, 11 won, +108.66u on 66.85u (+163%,
++$5,433); lays 73, 3 won, +9.16u (+$1,832); BSP favourite backs 2, 0 won (-$1,000); total +$6,265. Twitter +17.58u (+50%).
+Lay trial (28 Oct to 8 Nov): 122 lays, 5 winners, +11.90u (+$2,380 at $200).
