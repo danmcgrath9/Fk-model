@@ -34,13 +34,17 @@ def chart(d, W=936, H=900):
                  + (f"<tspan font-size='22' font-weight='600' fill='{PALE}' dx='8'>{r.get('sub') or 'best ' + format(b, '.1f')}</tspan>" if b is not None and abs(b - l_) >= 0.3 else "") + "</text>")
     return f"<svg width='{W}' height='{H}' viewBox='0 0 {W} {H}'>{''.join(g)}</svg>"
 def card(d):
+    # "brand": false drops the Mercer mark and the footer, as tipcard.py's plain cards do (8 Nov 2026, founder: "Get rid of Mercer")
+    brand = d.get("brand", True)
     key = (f"<div class='key'><span><i style='background:{GOLD}'></i>Last start</span>"
            f"<span><i style='border:4px solid {GOLD};box-sizing:border-box'></i>Best recent run</span></div>")
-    return (f"<html><head><style>{CSS}</style></head><body>"
-            f"<div class='top'><div class='lock'><div class='mark'><span>M</span></div><div class='brand'>MERCER<span>TIPPING</span></div></div>"
+    lock = "<div class='mark'><span>M</span></div><div class='brand'>MERCER<span>TIPPING</span></div>" if brand else ""
+    extra = "" if brand else ".top{justify-content:flex-start}.when{text-align:left}"
+    foot = (f"<div class='foot'><span>{html.escape(d.get('foot', ''))}</span><span>18+ · Gamble responsibly</span></div>" if brand else "")
+    return (f"<html><head><style>{CSS}{extra}</style></head><body>"
+            f"<div class='top'><div class='lock'>{lock}</div>"
             f"<div class='when'>{html.escape(d['title'])}<span>{html.escape(d['sub'])}</span></div></div>"
-            f"{key}{chart(d)}<div style='flex:1'></div>"
-            f"<div class='foot'><span>{html.escape(d.get('foot', ''))}</span><span>18+ · Gamble responsibly</span></div></body></html>")
+            f"{key}{chart(d)}<div style='flex:1'></div>{foot}</body></html>")
 async def main(src, out):
     from playwright.async_api import async_playwright
     exe = glob.glob("/opt/pw-browsers/chromium-*/chrome-linux*/chrome")[0]
