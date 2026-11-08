@@ -1079,3 +1079,7 @@ Lay trial (28 Oct to 7 Nov): 116 lays, 5 winners, +6.38u (+$1,276 at $200).
   are at Sun 1:10pm TAB prices against the d5m sheet. Qualifying now: R5 Tassadar $34 0.67u (ours $14.94), R8 It's Gnarly
   $15 0.87u ($9.74; the second order needs $16.66+). The other three missed horses have firmed under their minimum (Marilyn's
   Edge $6.50 vs $6.93, Nightowl $5.50 vs $8.12, Express Guard $11 vs $14.46). Exacting Standard R3 scratched.
+- Mornington Tue cards REPLACED (founder: "No I wanted what we would of had at the open, a Mercer and non Mercer card"): both
+  cards at the Sat 11:02am open, the five would-be fills of 2026-11-10-mornington-missed.csv. Mercer half units: Marilyn's
+  Edge $9.50 1.07u, Nightowl $8.50 0.73u, Tassadar $34 0.34u, Express Guard $19 0.49u, It's Gnarly $19 0.54u (3.17u).
+  No-Mercer full units with rated: 2.14u, 1.46u, 0.67u, 0.97u, 1.08u (6.32u). Settle Mornington on these.

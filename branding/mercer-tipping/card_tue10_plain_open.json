@@ -1,0 +1,18 @@
+{
+ "day": "Tuesday",
+ "date": "10 November",
+ "meetings": [
+  {
+   "name": "Mornington",
+   "note": "",
+   "bets": [
+    {"race": 4, "time": "3:00PM", "horse": "Marilyn's Edge", "price": "$9.50", "rated": "$5.30", "units": "2.14u"},
+    {"race": 5, "time": "3:30PM", "horse": "Nightowl", "price": "$8.50", "rated": "$6.16", "units": "1.46u"},
+    {"race": 5, "time": "3:30PM", "horse": "Tassadar", "price": "$34", "rated": "$14.94", "units": "0.67u"},
+    {"race": 8, "time": "5:00PM", "horse": "Express Guard", "price": "$19", "rated": "$10.67", "units": "0.97u"},
+    {"race": 8, "time": "5:00PM", "horse": "It's Gnarly", "price": "$19", "rated": "$9.74", "units": "1.08u"}
+   ]
+  }
+ ],
+ "brand": false
+}
