@@ -3,6 +3,7 @@ lookup writes there; fk.horses.raw is only the last Get Horse Form snapshot). DB
 
     python scripts/horse_ratings.py --file data/nominations/X.txt [--runs 8]
     python scripts/horse_ratings.py "Cavill Avenue" Caddington
+    python scripts/horse_ratings.py Always_Free   (underscore for a space: fk-experiment splits its args on spaces)
 
 Rating = Form King's weight-for-age rating for the run (wfaRat, else weightForAgeRating); at weights beside it."""
 from __future__ import annotations
@@ -23,7 +24,7 @@ ap.add_argument("names", nargs="*")
 ap.add_argument("--file")
 ap.add_argument("--runs", type=int, default=8)
 a = ap.parse_args()
-names = list(a.names) + ([ln.strip() for ln in Path(a.file).read_text().splitlines() if ln.strip()] if a.file else [])
+names = [n.replace("_", " ") for n in a.names] + ([ln.strip() for ln in Path(a.file).read_text().splitlines() if ln.strip()] if a.file else [])
 out = []
 with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
     for n in names:
