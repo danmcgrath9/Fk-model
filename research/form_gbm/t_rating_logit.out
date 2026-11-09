@@ -1,0 +1,4 @@
+all   last        races 3341  coef/pt [0.1058]  se [0.0036]  loglik -2.1329 vs uniform -2.2832
+all   last+best5  races 3341  coef/pt [0.0831 0.0554]  se [0.004  0.0051]  loglik -2.1155 vs uniform -2.2832
+metro last        races  786  coef/pt [0.1389]  se [0.0092]  loglik -2.1155 vs uniform -2.2875
+metro last+best5  races  786  coef/pt [0.1167 0.0504]  se [0.0106 0.0135]  loglik -2.1070 vs uniform -2.2875
