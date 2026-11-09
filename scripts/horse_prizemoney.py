@@ -11,9 +11,9 @@ a = ap.parse_args()
 names = list(a.names) + ([l.strip() for l in Path(a.file).read_text().splitlines() if l.strip()] if a.file else [])
 with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
     for n in names:
-        row = c.execute("""select r.race_id, r.raw->>'date', e.raw from fk.entries e join fk.races r using (race_id)
-                           join fk.horses h using (horse_id) where lower(h.name) = lower(%s)
-                           order by r.race_id desc limit 1""", (n,)).fetchone()
+        row = c.execute("""select r.race_id, m.meeting_date::text || ' ' || m.track, e.raw from fk.entries e join fk.races r using (race_id)
+                           join fk.meetings m using (meeting_id) join fk.horses h using (horse_id)
+                           where lower(h.name) = lower(%s) order by m.meeting_date desc limit 1""", (n,)).fetchone()
         if not row:
             print(f"{n}: no stored entry"); continue
         rid, d, raw = row
