@@ -1132,3 +1132,11 @@ backs; +$19,426 at Friday's $50 lays and $50 backs.
 Hamilton still Slow (Form King), 10 scratchings, none of ours; re-priced s6j on the final field. Ours now: Al's Diemen R2
 $10.26 (open $17, now $9), Sweet City Dancer R7 $12.17 ($17.50, now $14). Both running, 1.50u. Lay book on the new rules
 ($8-$12 at 1.6x, $15-$40 at 1.5x). Betfair manifest written (the runner is not live until Friday).
+
+## Monday 9 Nov Hamilton settled (Form King results, Tue 9:50am; paper, bot off)
+- Open book: Al's Diemen R2 0.81u $17, 7th (SP $13, BSP $19.56) -0.81u; Sweet City Dancer R7 0.69u $17.50, 6th (SP $16,
+  BSP $24) -0.69u. -1.50u (-$75).
+- Twitter (Mercer card at current prices): Al's Diemen 0.41u $9 lost, Sweet City Dancer 0.35u $14 lost: -0.76u.
+- Lay book (s6j, $200 a lay): 13 lays, 2 winners, -49.29u (-$9,858; -$2,465 at Friday's $50). $8-$12: 2 lays, 0 won, +1.84u.
+  $15-$40: 11 lays, 2 won (R1 Invisible Caravan BSP $37.41, R6 French Navy BSP $24), -51.13u. Void 5 (late scratchings).
+- Back book: no BSP favourite inside its range. 0 backs.
