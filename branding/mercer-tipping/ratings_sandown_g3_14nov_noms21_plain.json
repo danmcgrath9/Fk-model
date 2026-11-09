@@ -1,0 +1,140 @@
+{
+ "title": "G3 Sandown",
+ "sub": "Thoroughbred Club \u00b7 WFA ratings \u00b7 21 nominated",
+ "lo": 80,
+ "hi": 100,
+ "rows": [
+  {
+   "horse": "Sequinned",
+   "last": 95.9,
+   "best": 95.9,
+   "line": "2nd Flemington 1100m \u00b7 5 Nov \u00b7 $1.90"
+  },
+  {
+   "horse": "Semantics",
+   "last": 95.6,
+   "best": 95.6,
+   "line": "3rd Flemington 1100m \u00b7 5 Nov \u00b7 $8"
+  },
+  {
+   "horse": "Lady Catalina",
+   "last": 94.8,
+   "best": 94.8,
+   "line": "1st Flemington 1100m \u00b7 5 Nov \u00b7 $20"
+  },
+  {
+   "horse": "Aroused",
+   "last": 94.5,
+   "best": 94.5,
+   "line": "2nd Flemington 1200m \u00b7 24 Oct \u00b7 $4.40"
+  },
+  {
+   "horse": "Chayan",
+   "last": 94.5,
+   "best": 95.9,
+   "line": "3rd Flemington 1200m \u00b7 24 Oct \u00b7 $3.50"
+  },
+  {
+   "horse": "Caddington",
+   "last": 94.4,
+   "best": 94.4,
+   "line": "1st Flemington 1200m \u00b7 24 Oct \u00b7 $12"
+  },
+  {
+   "horse": "Nishioka",
+   "last": 94.0,
+   "best": 94.0,
+   "line": "4th Flemington 1100m \u00b7 5 Nov \u00b7 $11"
+  },
+  {
+   "horse": "Natural Fling",
+   "last": 93.4,
+   "best": 99.1,
+   "line": "9th Flemington 1200m \u00b7 31 Oct \u00b7 $7"
+  },
+  {
+   "horse": "Affari",
+   "last": 92.2,
+   "best": 92.7,
+   "line": "3rd Flemington 1400m \u00b7 31 Oct \u00b7 $9"
+  },
+  {
+   "horse": "Cavill Avenue",
+   "last": 90.5,
+   "best": 82.6,
+   "line": "3rd Ballarat 1200m \u00b7 30 Sep \u00b7 82.6, +4 lengths",
+   "mark": true,
+   "label": "90.5",
+   "sub": "82.6 + 4L"
+  },
+  {
+   "horse": "Ciaron's Star",
+   "last": 89.8,
+   "best": 95.0,
+   "line": "4th Randwick 1200m \u00b7 24 Oct \u00b7 $2.05"
+  },
+  {
+   "horse": "Angels Fury",
+   "last": 89.5,
+   "best": 89.5,
+   "line": "6th Flemington 1200m \u00b7 24 Oct \u00b7 $2.45"
+  },
+  {
+   "horse": "Calamari Ring",
+   "last": 89.4,
+   "best": 93.1,
+   "line": "6th Randwick 1400m \u00b7 17 Oct \u00b7 $4.20"
+  },
+  {
+   "horse": "Rubi's Choice",
+   "last": 89.0,
+   "best": 94.1,
+   "line": "8th Caulfield 1600m \u00b7 17 Oct \u00b7 $61"
+  },
+  {
+   "horse": "Unkechaug",
+   "last": 87.9,
+   "best": 91.0,
+   "line": "7th Flemington 1100m \u00b7 5 Nov \u00b7 $61"
+  },
+  {
+   "horse": "Oceans Blue",
+   "last": 86.6,
+   "best": 86.6,
+   "line": "1st Mornington 1200m \u00b7 1 Nov \u00b7 $1.55"
+  },
+  {
+   "horse": "Sound Byte",
+   "last": 85.4,
+   "best": 85.4,
+   "line": "3rd Bendigo 1300m \u00b7 28 Oct \u00b7 $3.20"
+  },
+  {
+   "horse": "Vixen Vibes",
+   "last": 84.6,
+   "best": 84.6,
+   "line": "4th Bendigo 1000m \u00b7 28 Oct \u00b7 $21"
+  },
+  {
+   "horse": "Almost An Angel",
+   "last": 82.6,
+   "best": 89.5,
+   "line": "10th Flemington 1200m \u00b7 24 Oct \u00b7 $19"
+  },
+  {
+   "horse": "Autumn Rainbow",
+   "last": 82.3,
+   "best": 87.7,
+   "line": "6th Morphettville 1800m \u00b7 17 Oct \u00b7 $1.60"
+  },
+  {
+   "horse": "Simply Steffi",
+   "last": 80.9,
+   "best": 88.8,
+   "line": "5th Pakenham 1000m \u00b7 30 Oct \u00b7 $5.50"
+  }
+ ],
+ "foot": "",
+ "brand": false,
+ "height": 2110
+}
