@@ -1,0 +1,86 @@
+# Ballarat Wed 11 Nov, Slow (Form King Mon), final fields, no market yet
+1, Release The Fox, 0, 0
+1, Royal Maximus, 0, 0
+1, Iron Stupa, 0, 0
+1, Goodness, 0, 0
+1, Ciphered, 0, 0
+1, Dorchester, 0, 0
+1, Gun City, 0, 0
+1, Stomping Ground, 0, 0
+1, Bogey Free, 0, 0
+1, Loyalty, 0, 0
+2, Villa Capitalista, 0, 0
+2, Ville De Lumiere, 0, 0
+2, Dame I Am, 0, 0
+2, Regina Dei Re, 0, 0
+2, Makarim, 0, 0
+2, Skjaldmo, 0, 0
+2, Dynamite Dancer, 0, 0
+2, Farmelia, 0, 0
+2, Lucifer's Girl, 0, 0
+3, Southern Sway, 0, 0
+3, Lady Of Pompeii, 0, 0
+3, Daynes Dahwun, 0, 0
+3, Pretty Panther, 0, 0
+3, Pocketfullofcash, 0, 0
+3, Running Rich, 0, 0
+3, Strength Within, 0, 0
+3, Mountjoy, 0, 0
+3, Harry Met Sally, 0, 0
+4, Tauri, 0, 0
+4, Rapid Cheval, 0, 0
+4, Farakta, 0, 0
+4, Koolatah Queen, 0, 0
+4, Set Me Free, 0, 0
+4, She's A Jett, 0, 0
+4, Ladhar, 0, 0
+4, Centenary Florin, 0, 0
+5, Soundwave, 0, 0
+5, Hard Hitter, 0, 0
+5, Fear The Impact, 0, 0
+5, Brilliant Bull Ant, 0, 0
+5, Enniscrone, SCR
+5, My Infinity, SCR
+5, Fort Of Dreams, 0, 0
+5, Gamadale Paddy, 0, 0
+5, Lavancher, 0, 0
+5, De Niro, 0, 0
+5, Piperine, 0, 0
+5, Celestaria, 0, 0
+5, Blackbelt, 0, 0
+6, Empressive Enuff, 0, 0
+6, Bancoora, 0, 0
+6, Mickidamuzz, 0, 0
+6, Sacramental, 0, 0
+6, Patsy's Star, 0, 0
+6, Trebilco, 0, 0
+6, Untapped, 0, 0
+6, Wolf Twenty One, 0, 0
+6, Lunaman, 0, 0
+6, Hiney's Bar, 0, 0
+6, Grifter, 0, 0
+7, Our Smokeshow, 0, 0
+7, Sensational Ruler, SCR
+7, Rogan, 0, 0
+7, Antalian, 0, 0
+7, Celestial Splendor, 0, 0
+7, Blindato, 0, 0
+7, Cushioned, 0, 0
+7, Tempt The Gods, 0, 0
+7, Which Floor, 0, 0
+7, Mister Martini, 0, 0
+7, Aubaine, 0, 0
+7, The Flying Popov, 0, 0
+8, El Salto, 0, 0
+8, Illuminance, 0, 0
+8, Deadly Force, 0, 0
+8, Les Braves, 0, 0
+8, Sistine Express, 0, 0
+8, Hook 'n' Spur, 0, 0
+8, Strong Box, 0, 0
+8, Lucky Single, 0, 0
+8, Strangethingdesire, 0, 0
+8, Cherry Hills, SCR
+8, Onlooker, 0, 0
+8, Our Yonglee, 0, 0
+8, Sayalero, SCR
