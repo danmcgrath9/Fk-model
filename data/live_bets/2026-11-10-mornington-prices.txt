@@ -1,109 +1,112 @@
-# Mornington Tue 10 Nov, Dead (Form King Sat; no rain forecast to race day), final fields; no market yet
-1, Grinding Away, 10.00, 10.00, fk_open 9.00
-1, Clydebank Robber, 17.00, 17.00, fk_open 15.00
-1, Marquisard, 126.00, 126.00, fk_open 101.00
-1, Dejavast, 21.00, 21.00, fk_open 19.00
-1, Fantastic Beast, 12.00, 12.00, fk_open 11.00
-1, Startin'sumthin', SCR, fk_open 51.00
-1, Tennessee Link, 61.00, 61.00, fk_open 51.00
+# Mornington Tue 10 Nov, Dead (Form King Tue 9:30am), final fields after scratchings
+1, Grinding Away, 13.00, 13.00, fk_open 9.00
+1, Clydebank Robber, 21.00, 21.00, fk_open 15.00
+1, Marquisard, 151.00, 151.00, fk_open 101.00
+1, Dejavast, 26.00, 26.00, fk_open 19.00
+1, Fantastic Beast, 16.00, 16.00, fk_open 11.00
+1, Startin'sumthin', SCR, last 51.00, fk_open 51.00
+1, Tennessee Link, 101.00, 101.00, fk_open 51.00
 1, Guthrie, 61.00, 61.00, fk_open 51.00
-1, Lady Of Alsace, SCR, fk_open 34.00
-1, Molesworth, 5.00, 5.00, fk_open 5.00
-1, Kissattack, 3.20, 3.20, fk_open 4.00
-1, Verry Zeductive, 126.00, 126.00, fk_open 101.00
-1, Diamond Burglar, 41.00, 41.00, fk_open 34.00
-1, Sentaloa, 2.25, 2.25, fk_open 2.20
-2, Angel In A Dress, 41.00, 41.00, fk_open 34.00
-2, Pragmatic Lady, 126.00, 126.00, fk_open 101.00
-2, Burning Rubies, 11.00, 11.00, fk_open 11.00
-2, Spellbinding, 21.00, 21.00, fk_open 19.00
-2, Queen's English, 5.00, 5.00, fk_open 4.60
-2, Goddess Storm, 61.00, 61.00, fk_open 51.00
-2, Amber Queen, 4.20, 4.20, fk_open 4.00
-2, Roar Talent, 5.00, 5.00, fk_open 5.00
-2, Hot Samba, 3.40, 3.40, fk_open 3.30
-2, Wolfmaama, 19.00, 19.00, fk_open 26.00
-2, Diamond Heist, 6.50, 6.50, fk_open 8.50
-3, Baltic, SCR, fk_open 81.00
-3, Russian Tide, SCR, fk_open 126.00
-3, Russian Into It, 26.00, 26.00, fk_open 23.00
-3, Isabellas, 31.00, 31.00, fk_open 26.00
-3, Exegesis, 101.00, 101.00, fk_open 71.00
-3, Thatswotitzalabout, 15.00, 15.00, fk_open 17.00
-3, Aerial Pursuit, 15.00, 15.00, fk_open 13.00
-3, Pinamilloy, 3.30, 3.30, fk_open 4.20
-3, A Stern Angel, 6.00, 6.00, fk_open 7.00
-3, Kensington, 8.00, 8.00, fk_open 7.00
-3, Exacting Standard, 4.60, 4.60, fk_open 4.20
-3, Little Gangster, 51.00, 51.00, fk_open 41.00
-3, Ballsintheair, 11.00, 11.00, fk_open 9.50
-3, Capital Storm, 5.50, 5.50, fk_open 5.00
-4, Cudmore Street, 34.00, 34.00, fk_open 34.00
-4, Power Cable, 34.00, 34.00, fk_open 34.00
-4, Smashing Ruby, SCR, fk_open 41.00
-4, Sistine Tunnel, 5.00, 5.00, fk_open 5.00
-4, Dominant Miss, SCR, fk_open 126.00
-4, Grouse Mountain, 61.00, 61.00, fk_open 51.00
-4, Marilyn's Edge, 6.50, 6.50, fk_open 9.50
-4, Fearless Monarch, 9.00, 9.00, fk_open 8.75
-4, Arabian Myth, 12.00, 12.00, fk_open 11.00
-4, Glisk, 34.00, 34.00, fk_open 34.00
-4, Regal Visions, 61.00, 61.00, fk_open 51.00
-4, Cherry Hills, 4.40, 4.40, fk_open 4.30
-4, Bliss Bomb, 4.00, 4.00, fk_open 3.85
-4, Sayalero, 5.00, 5.00, fk_open 5.00
-5, I Could Do Better, SCR, fk_open 51.00
-5, The Kings Gospel, 21.00, 21.00, fk_open 19.00
-5, Mac Kalhoun, SCR, fk_open 71.00
-5, Frank Express, 26.00, 26.00, fk_open 23.00
-5, Hollandia, 11.00, 11.00, fk_open 10.00
-5, Love Sparkles, 11.00, 11.00, fk_open 10.00
-5, Hard To Go Wrong, SCR, fk_open 71.00
-5, Up And Under, 8.00, 8.00, fk_open 7.50
-5, Nicoffhome, 7.00, 7.00, fk_open 7.50
-5, Ginger Sweet, SCR, fk_open 11.00
-5, Nightowl, 5.50, 5.50, fk_open 8.50
-5, Tassadar, 41.00, 41.00, fk_open 34.00
-5, Riozino, 101.00, 101.00, fk_open 81.00
-5, Just Dance, 31.00, 31.00, fk_open 26.00
-5, Mike's Hope, 3.20, 3.20, fk_open 3.00
-5, Crown Of Russia, 6.00, 6.00, fk_open 5.50
-5, Wolves' Den, 17.00, 17.00, fk_open 15.00
-6, Bangholme, 21.00, 21.00, fk_open 19.00
-6, Bella Cinque, 6.00, 6.00, fk_open 5.50
-6, Irresistible Sir, 21.00, 21.00, fk_open 19.00
-6, Ilovediamonds, 2.60, 2.60, fk_open 2.70
-6, Deep Joy, SCR, fk_open 81.00
-6, Just Remember It, 9.50, 9.50, fk_open 8.50
-6, Podargoni, 10.00, 10.00, fk_open 14.00
-6, Nuggies, 126.00, 126.00, fk_open 101.00
-6, Tipping Rain, 18.00, 18.00, fk_open 23.00
-6, Mordialloc Beach, 61.00, 61.00, fk_open 51.00
-6, Miss Toronado, 3.60, 3.60, fk_open 3.40
-6, Triple Salute, 11.00, 11.00, fk_open 10.00
-7, Phoenix Flyer, 151.00, 151.00, fk_open 151.00
+1, Lady Of Alsace, SCR, last 34.00, fk_open 34.00
+1, Molesworth, 7.50, 7.50, fk_open 5.00
+1, Kissattack, 2.40, 2.40, fk_open 4.00
+1, Verry Zeductive, 151.00, 151.00, fk_open 101.00
+1, Diamond Burglar, 34.00, 34.00, fk_open 34.00
+1, Sentaloa, 2.50, 2.50, fk_open 2.20
+2, Angel In A Dress, 21.00, 21.00, fk_open 34.00
+2, Pragmatic Lady, 34.00, 34.00, fk_open 101.00
+2, Burning Rubies, 5.00, 5.00, fk_open 11.00
+2, Spellbinding, 17.00, 17.00, fk_open 19.00
+2, Queen's English, SCR, last 4.80, fk_open 4.60
+2, Goddess Storm, 35.00, 35.00, fk_open 51.00
+2, Amber Queen, SCR, last 4.40, fk_open 4.00
+2, Roar Talent, SCR, last 5.50, fk_open 5.00
+2, Hot Samba, 1.85, 1.85, fk_open 3.30
+2, Wolfmaama, SCR, last 21.00, fk_open 26.00
+2, Diamond Heist, 3.30, 3.30, fk_open 8.50
+3, Baltic, SCR, last 126.00, fk_open 81.00
+3, Russian Tide, SCR
+3, Russian Into It, 15.00, 15.00, fk_open 23.00
+3, Isabellas, 23.00, 23.00, fk_open 26.00
+3, Exegesis, 51.00, 51.00, fk_open 71.00
+3, Thatswotitzalabout, 12.00, 12.00, fk_open 17.00
+3, Aerial Pursuit, SCR, last 12.00, fk_open 13.00
+3, Pinamilloy, 2.90, 2.90, fk_open 4.20
+3, A Stern Angel, 6.50, 6.50, fk_open 7.00
+3, Kensington, 5.50, 5.50, fk_open 7.00
+3, Exacting Standard, SCR
+3, Little Gangster, 34.00, 34.00, fk_open 41.00
+3, Ballsintheair, SCR, last 9.00, fk_open 9.50
+3, Capital Storm, 3.20, 3.20, fk_open 5.00
+4, Cudmore Street, 15.00, 15.00, fk_open 34.00
+4, Power Cable, 15.00, 15.00, fk_open 34.00
+4, Smashing Ruby, 23.00, 23.00, fk_open 41.00
+4, Sistine Tunnel, 4.20, 4.20, fk_open 5.00
+4, Dominant Miss, 71.00, 71.00, fk_open 126.00
+4, Juniors Queen, SCR
+4, Grouse Mountain, 34.00, 34.00, fk_open 51.00
+4, Marilyn's Edge, 3.50, 3.50, fk_open 9.50
+4, Fearless Monarch, 12.00, 12.00, fk_open 8.75
+4, Arabian Myth, 13.00, 13.00, fk_open 11.00
+4, Glisk, 21.00, 21.00, fk_open 34.00
+4, Regal Visions, 81.00, 81.00, fk_open 51.00
+4, Cherry Hills, SCR, last 3.90, fk_open 4.30
+4, Bliss Bomb, 3.70, 3.70, fk_open 3.85
+4, Sayalero, SCR, last 6.00, fk_open 5.00
+5, I Could Do Better, SCR, last 51.00, fk_open 51.00
+5, The Kings Gospel, 12.00, 12.00, fk_open 19.00
+5, Mac Kalhoun, SCR, last 71.00, fk_open 71.00
+5, Frank Express, 17.00, 17.00, fk_open 23.00
+5, Hollandia, 9.00, 9.00, fk_open 10.00
+5, Love Sparkles, 10.00, 10.00, fk_open 10.00
+5, Hard To Go Wrong, 31.00, 31.00, fk_open 71.00
+5, Up And Under, 5.50, 5.50, fk_open 7.50
+5, Nicoffhome, 5.50, 5.50, fk_open 7.50
+5, Ginger Sweet, SCR, last 6.00, fk_open 11.00
+5, Nightowl, 4.80, 4.80, fk_open 8.50
+5, Tassadar, 18.00, 18.00, fk_open 34.00
+5, Riozino, 61.00, 61.00, fk_open 81.00
+5, Just Dance, 21.00, 21.00, fk_open 26.00
+5, Mike's Hope, SCR, last 3.30, fk_open 3.00
+5, Crown Of Russia, 5.50, 5.50, fk_open 5.50
+5, Wolves' Den, SCR, last 17.00, fk_open 15.00
+6, Bangholme, SCR, last 23.00, fk_open 19.00
+6, Bella Cinque, 8.50, 8.50, fk_open 5.50
+6, Sleeping Tiger, SCR
+6, Irresistible Sir, 31.00, 31.00, fk_open 19.00
+6, Ilovediamonds, 3.20, 3.20, fk_open 2.70
+6, Deep Joy, 81.00, 81.00, fk_open 81.00
+6, Just Remember It, 10.00, 10.00, fk_open 8.50
+6, Podargoni, 6.50, 6.50, fk_open 14.00
+6, Nuggies, 151.00, 151.00, fk_open 101.00
+6, Tipping Rain, 19.00, 19.00, fk_open 23.00
+6, Mordialloc Beach, SCR, last 71.00, fk_open 51.00
+6, Miss Toronado, 2.80, 2.80, fk_open 3.40
+6, Affirmative Lad, SCR
+6, Triple Salute, 13.00, 13.00, fk_open 10.00
+7, Phoenix Flyer, 126.00, 126.00, fk_open 151.00
 7, Diamanda, 12.00, 12.00, fk_open 11.00
-7, Shout Out Girl, 151.00, 151.00, fk_open 151.00
-7, Mrs Gossip, 151.00, 151.00, fk_open 126.00
-7, Real Alliance, 23.00, 23.00, fk_open 19.00
-7, Russian Roni, 41.00, 41.00, fk_open 34.00
-7, Fearless Writer, 3.50, 3.50, fk_open 5.00
-7, Sensational Ruler, 17.00, 17.00, fk_open 15.00
-7, Nikephoros, 31.00, 31.00, fk_open 26.00
-7, So You Excel, 51.00, 51.00, fk_open 51.00
-7, Pol Rogeur, 9.00, 9.00, fk_open 8.00
-7, Rough Enuff, 2.30, 2.30, fk_open 2.25
-7, Two To Tango, 4.80, 4.80, fk_open 4.40
-8, Night Eruption, 101.00, 101.00, fk_open 71.00
-8, I'm Dynamite, 34.00, 34.00, fk_open 26.00
-8, British Columbia, 34.00, 34.00, fk_open 26.00
+7, Shout Out Girl, 71.00, 71.00, fk_open 151.00
+7, Mrs Gossip, 71.00, 71.00, fk_open 126.00
+7, Real Alliance, SCR, last 19.00, fk_open 19.00
+7, Russian Roni, 34.00, 34.00, fk_open 34.00
+7, Fearless Writer, 2.50, 2.50, fk_open 5.00
+7, Sensational Ruler, SCR, last 15.00, fk_open 15.00
+7, Nikephoros, 61.00, 61.00, fk_open 26.00
+7, So You Excel, 20.00, 20.00, fk_open 51.00
+7, Pol Rogeur, SCR
+7, Rough Enuff, 3.20, 3.20, fk_open 2.25
+7, Two To Tango, 3.30, 3.30, fk_open 4.40
+8, Night Eruption, 126.00, 126.00, fk_open 71.00
+8, I'm Dynamite, 41.00, 41.00, fk_open 26.00
+8, British Columbia, SCR, last 34.00, fk_open 26.00
 8, Count Of Toulouse, 19.00, 19.00, fk_open 15.00
-8, Russian Benefits, 9.50, 9.50, fk_open 8.00
+8, Russian Benefits, 10.00, 10.00, fk_open 8.00
 8, Chambers Bay, 34.00, 34.00, fk_open 26.00
-8, Express Guard, 11.00, 11.00, fk_open 19.00
-8, She Nailed It, 23.00, 23.00, fk_open 41.00
-8, Flying Jude, 4.80, 4.80, fk_open 6.00
-8, Alexander Thegreat, 8.00, 8.00, fk_open 8.00
-8, Jenni Poppins, 5.50, 5.50, fk_open 5.00
-8, Our Pierro, 2.90, 2.90, fk_open 2.70
-8, It's Gnarly, 15.00, 15.00, fk_open 19.00
+8, Express Guard, 8.00, 8.00, fk_open 19.00
+8, She Nailed It, 21.00, 21.00, fk_open 41.00
+8, Flying Jude, 9.50, 9.50, fk_open 6.00
+8, Alexander Thegreat, 5.50, 5.50, fk_open 8.00
+8, Jenni Poppins, 3.90, 3.90, fk_open 5.00
+8, Our Pierro, 5.00, 5.00, fk_open 2.70
+8, It's Gnarly, 17.00, 17.00, fk_open 19.00

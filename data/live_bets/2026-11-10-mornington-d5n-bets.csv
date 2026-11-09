@@ -1,0 +1,10 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,MORN_101126_1,Sentaloa,top_pick,2.5,2.5,2.2,2.2,,3.03,-0.275,Already run to today's class,1.0,no,,
+3,MORN_101126_3,Pinamilloy,top_pick,2.9,2.9,4.2,4.2,,3.86,0.089,Already run to today's class; Back in trip after being handy; Class drop (rating); Above the field in all three sections,1.0,no,,
+4,MORN_101126_4,Bliss Bomb,top_pick,3.7,3.7,3.85,3.85,,3.4,0.131,Above the field in all three sections,1.0,no,,
+5,MORN_101126_5,Nightowl,top_pick,4.8,4.8,8.5,8.5,,5.07,0.677,,1.0,no,,
+6,MORN_101126_6,Ilovediamonds,top_pick,3.2,3.2,2.7,2.7,,3.87,-0.302,Already run to today's class; Above the field in all three sections,1.0,no,,
+7,MORN_101126_7,Rough Enuff,top_pick,3.2,3.2,2.25,2.25,,2.48,-0.091,"New career-best last start; Third-up, improving; Above the field in all three sections",1.0,no,,
+8,MORN_101126_8,It's Gnarly,EDGE,17.0,17.0,19.0,19.0,,11.21,0.694,Beaten by the pace last start,1.13,no,,
+8,MORN_101126_8,It's Gnarly,value_20c,17.0,17.0,19.0,19.0,,11.21,0.694,Beaten by the pace last start,1.13,no,,
+8,MORN_101126_8,Jenni Poppins,top_pick,3.9,3.9,5.0,5.0,,4.51,0.108,Well backed before a bad last run; Class drop (rating),1.0,no,,
