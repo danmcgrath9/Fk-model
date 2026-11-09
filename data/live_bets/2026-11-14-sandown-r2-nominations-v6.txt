@@ -1,0 +1,25 @@
+# Sandown Hillside R2 Sat 14 Nov (G3, 3yo fillies, 1200m): v6 on all 21 nominations, priced Mon 9 Nov
+# Soft 6 (the rating at nominations); no barriers, riders or weights yet (blank for every runner). Re-price after acceptances.
+# Cavill Avenue: as raced; +4L = the house adjustment (form-adjustments.json); +6L = stewards' ~5L slow away + 1L for three checks (what-if)
+horse                     as raced        Cavill +4L        Cavill +6L
+Natural Fling        21.4% $   4.68     21.3% $   4.70     21.0% $   4.76
+Sequinned            12.2% $   8.20     12.2% $   8.20     12.2% $   8.18
+Aroused              11.5% $   8.68     11.4% $   8.75     11.2% $   8.92
+Semantics             8.0% $  12.45      7.9% $  12.71      7.8% $  12.88
+Chayan                7.5% $  13.35      7.4% $  13.44      7.4% $  13.59
+Caddington            6.3% $  15.82      6.1% $  16.33      6.0% $  16.60
+Angels Fury           5.5% $  18.13      5.4% $  18.57      5.3% $  18.76
+Affari                4.4% $  22.61      4.4% $  22.88      4.3% $  23.38
+Ciaron's Star         4.4% $  22.89      4.3% $  23.23      4.3% $  23.50
+Lady Catalina         4.2% $  23.84      4.2% $  24.09      4.1% $  24.26
+Nishioka              4.1% $  24.24      4.0% $  24.78      4.0% $  25.15
+Calamari Ring         2.7% $  36.53      2.7% $  37.04      2.6% $  38.06
+Cavill Avenue         1.3% $  75.72      2.5% $  40.58      3.7% $  27.35
+Rubi's Choice         2.2% $  45.65      2.1% $  46.57      2.1% $  47.16
+Oceans Blue           1.3% $  77.81      1.3% $  79.79      1.2% $  80.23
+Unkechaug             0.9% $ 106.64      0.9% $ 108.89      0.9% $ 109.91
+Sound Byte            0.7% $ 150.75      0.6% $ 154.72      0.6% $ 155.10
+Autumn Rainbow        0.5% $ 183.26      0.5% $ 190.10      0.5% $ 190.50
+Simply Steffi         0.4% $ 257.62      0.4% $ 259.19      0.4% $ 258.98
+Almost An Angel       0.2% $ 447.83      0.2% $ 455.61      0.2% $ 457.83
+Vixen Vibes           0.1% $ 711.92      0.1% $ 718.32      0.1% $ 719.68
