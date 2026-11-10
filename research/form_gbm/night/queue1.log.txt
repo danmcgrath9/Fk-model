@@ -40,3 +40,9 @@
 13:31 drop_fk_jockey_trainer       B  KL 0.0975  LL 1.8354  bets 1731  profit +1303.1u  | B1 0.0978/1.8315/+795u  B2 0.0972/1.8390/+508u
 13:41 drop_past_market             A  KL 0.0930  LL 1.9053  bets 1774  profit +1414.2u  | A1 0.0914/1.9088/+1071u  A2 0.0986/1.8930/+343u
 13:44 drop_past_market             B  KL 0.0977  LL 1.8357  bets 1773  profit +1401.5u  | B1 0.0975/1.8310/+859u  B2 0.0979/1.8401/+542u
+13:50 drop_field_relative          A  KL 0.0936  LL 1.9017  bets 1781  profit +1359.7u  | A1 0.0919/1.9039/+992u  A2 0.0999/1.8936/+368u
+13:53 drop_field_relative          B  KL 0.0984  LL 1.8322  bets 1750  profit +1442.9u  | B1 0.0980/1.8268/+707u  B2 0.0989/1.8373/+736u
+13:56 drop_fk_form_records         A  KL 0.0945  LL 1.9073  bets 1762  profit +1273.6u  | A1 0.0929/1.9105/+951u  A2 0.1004/1.8960/+323u
+13:58 drop_fk_form_records         B  KL 0.0977  LL 1.8348  bets 1754  profit +1371.3u  | B1 0.0984/1.8296/+873u  B2 0.0971/1.8396/+499u
+14:01 drop_neural                  A  KL 0.0935  LL 1.9074  bets 1768  profit +1293.3u  | A1 0.0923/1.9094/+967u  A2 0.0980/1.9004/+326u
+14:03 drop_neural                  B  KL 0.0982  LL 1.8349  bets 1733  profit +1456.1u  | B1 0.0977/1.8308/+891u  B2 0.0986/1.8387/+565u
