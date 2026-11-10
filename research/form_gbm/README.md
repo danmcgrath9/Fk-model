@@ -1701,3 +1701,26 @@ page_takeat.py writes every runner's line from the order sheet itself: "take at 
 $1.57 is under $1.60" (or first starter, first-up rule), "not a bet at any price (needs $X, the cap is $Y)", or for a horse
 the pre-open sheet already filled at the open "taken at the open, $2.50, 4.92u". Prices are before any scratching deduction.
 pricemtg.sh runs it after the orders.
+
+## Form lines: how the horses from a runner's last races went next time (10 Nov 2026, t_formlines_ab.py)
+Phil M's "subsequent runs from each race" (Form King Slack), founder: "Yes but no columns" (a model test, nothing on the
+page). scripts/form_lines_rows.py lists every stored run since 2023 with the horse's next run (76,701 runs, 5,541 horses);
+for a runner on race day D only race-mates whose next run was BEFORE D count. Seven inputs: last start race-mates with a
+known next run, their winners, log((winners+1)/(SP-expected winners+1)) for all of them, for the ones it beat and for the
+ones that beat it, and the last three races pooled. Same test as the track bias (3 seeds, 4000 rounds, trained before
+3 Jun, the 809 v10 inputs):
+| period | inputs | KL to BSP | log loss | bets | winners | staked | profit | ROI |
+|---|---|---|---|---|---|---|---|---|
+| 3 Jun - 8 Oct | current | 0.0916 | 1.9087 | 1418 | 231 | 2861.2u | +890.7u | +31.1% |
+| 3 Jun - 8 Oct | + form lines | 0.0910 | 1.9075 | 1433 | 241 | 2917.2u | +939.2u | +32.2% |
+| 9 Oct - 9 Nov (live) | current | 0.0992 | 1.8931 | 353 | 65 | 730.3u | +347.1u | +47.5% |
+| 9 Oct - 9 Nov (live) | + form lines | 0.0992 | 1.9021 | 360 | 62 | 761.0u | +281.0u | +36.9% |
+| all | current | 0.0932 | 1.9053 | 1771 | 296 | 3591.5u | +1237.8u | +34.5% |
+| all | + form lines | 0.0928 | 1.9063 | 1793 | 303 | 3678.2u | +1220.2u | +33.2% |
+NO GAIN: a hair closer to BSP, worse log loss, -17.6u, and the two periods disagree (+48.5u, then -66.1u). The seven
+inputs take 0.6% of the trees' gain. On its own the figure says almost nothing: in the training races, runners whose
+last-start race-mates beat their SP by the most won at A/E 0.81 against SP, the ones whose race-mates did worst 0.78.
+The market already prices it, and so do the ratings (a race whose horses go on and win shows up in their later ratings,
+which the model reads directly). LIMIT: we only hold the past runs of horses we have pulled, so a race has on average
+2.3 race-mates with a known next run (65-73% of runners have at least one); Form King's own form lines use the whole field.
+A fuller test needs every runner's history, which costs credits. Not added.

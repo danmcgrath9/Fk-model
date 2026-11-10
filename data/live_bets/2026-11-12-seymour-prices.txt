@@ -3,10 +3,10 @@
 1, Vadar, 18.00, 18.00, fk_open 9.75
 1, Bling Baby, 23.00, 23.00, fk_open 16.50
 1, Windsor Chariot, 10.00, 10.00, fk_open 7.00
-1, Rein Me In, 81.00, 81.00, fk_open 81.00
+1, Rein Me In, SCR, fk_open 81.00
 1, Princess Of Sol, 10.00, 10.00, fk_open 13.50
-1, Rat Pack, 41.00, 41.00, fk_open 81.00
-1, Lady Of Alsace, 81.00, 81.00, fk_open 81.00
+1, Rat Pack, SCR, fk_open 81.00
+1, Lady Of Alsace, SCR, fk_open 81.00
 1, My Rosalie, 9.00, 9.00, fk_open 11.00
 1, Zverev, 6.00, 6.00, fk_open 13.50
 1, Dun Dirt Sweet, 81.00, 81.00, fk_open 61.00
@@ -92,12 +92,12 @@
 8, Ulfberht, 13.00, 13.00, fk_open 13.00
 8, Outer Banks, 11.00, 11.00, fk_open 21.00
 8, She Won't Fold, 19.00, 19.00, fk_open 26.00
-8, Blaze Away, 9.00, 9.00, fk_open 51.00
-8, Celestra, 8.50, 8.50, fk_open 7.00
+8, Blaze Away, SCR, fk_open 51.00
+8, Celestra, SCR, fk_open 7.00
 8, Ole Daze, 4.80, 4.80, fk_open 3.00
 8, Deliberate Ploy, 8.00, 8.00, fk_open 19.00
 8, Sir Loyne, 13.00, 13.00, fk_open 11.00
 8, Cherry Hills, 8.50, 8.50, fk_open 5.00
-8, Luminary Miss, 61.00, 61.00, fk_open 51.00
+8, Luminary Miss, SCR, fk_open 51.00
 8, Super Scholar, 31.00, 31.00, fk_open 51.00
 8, Sayalero, 18.00, 18.00, fk_open 13.00
