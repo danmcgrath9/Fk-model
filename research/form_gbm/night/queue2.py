@@ -15,13 +15,19 @@ EXP = [("gap2", (np.hstack([F, G2]), NM + g2n), {}, f"+ margin over the best oth
        ("gap2_close", (np.hstack([F, G2, CC]), NM + g2n + ccn), {}, "+ margin and rivals-close counts"),
        ("apt", (np.hstack([F, AP]), NM + apn), {}, "+ sire / dam sire on today's going and distance band, jockey at the track, trainer in the band"),
        ("gap2_apt", (np.hstack([F, G2, AP]), NM + g2n + apn), {}, "+ both")]
+# pricing before riders are declared (replay_noriders.py: the live model with riders blanked is 29% further from BSP):
+# the same trees trained WITHOUT any rider input, so nothing is missing when the riders are
+import re
+RID = [j for j, n in enumerate(NM) if re.search(r"(jockey|^jt_|^j_|apprentice|ridingweight)", n, re.I)]
+keep = [j for j in range(len(NM)) if j not in set(RID)]
+EXP.insert(0, ("no_rider_model", (F[:, keep], [NM[j] for j in keep]), {}, f"trained without the {len(RID)} rider inputs (the price before riders are declared)"))
 only = set(sys.argv[1:])
 for name, (FF, names), kw, note in EXP:
     if only and name not in only: continue
     for fold in ("A", "B"):
         if nl.done(name, fold): continue
         p, bst = nl.fit(FF, names, fold, **kw)
-        imp = bst.feature_importance("gain"); new = imp[len(NM):].sum() / imp.sum()
+        imp = bst.feature_importance("gain"); new = imp[len(NM):].sum() / imp.sum() if len(names) > len(NM) else 0.0
         top = sorted(zip(imp[len(NM):], names[len(NM):]), reverse=True)[:6]
         nl.record(name, fold, p, note, dict(inputs=FF.shape[1], new_gain_share=float(new), top_new=[(n, float(g / imp.sum())) for g, n in top]))
 # the learning curve, fold A: the same holdout, less history

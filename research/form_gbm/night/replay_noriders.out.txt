@@ -1,0 +1,13 @@
+294 races, 15 Oct - 9 Nov
+| price | KL to BSP | winner log loss |
+|---|---|---|
+| stage 1, riders in | 0.0953 | 1.8944 |
+| stage 1, NO riders | 0.1202 | 1.9326 |
+| stage 2, riders in | 0.0924 | 1.8981 |
+| stage 2, NO riders | 0.1189 | 1.9356 |
+
+runner by runner the no-rider price is a median 19.2% from the price with riders (90th pct 50%, over 10%: 75%)
+
+The live edge rule at Form King's open on the same 15 Oct - 9 Nov races (16c deduction, first starters out):
+  priced with riders in                            306 bets, 62 won, 685u staked, +319.4u (+47%), beat BSP 73%
+  priced with NO riders (live model, median rider) 312 bets, 52 won, 575u staked, +211.1u (+37%), beat BSP 67%

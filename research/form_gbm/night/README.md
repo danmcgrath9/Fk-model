@@ -257,3 +257,14 @@ and about +0.5u a bet, 67 races is roughly 20-25u a month ($1,000-$1,250 at $50)
    first), with the list sent to the founder at the same time. Without it the early run only produces a sheet in time.
 5. Keep TAB funded and the bot running through Saturday morning and Wednesday midday: those are the two windows where
    most of the week's races open.
+
+### 4.4 The price before riders are declared (replay_noriders.py)
+The catch in an earlier pricing run: 15 Oct - 9 Nov, frozen live models, the same races with NO rider on any runner
+(name blank, every rider input at the median rider, as the 1 Nov rider fix does): stage 2 KL to BSP 0.1189 against
+0.0924 with riders in, winner log loss 1.936 against 1.898; three quarters of runners move by more than 10%. Still well
+ahead of the open (0.154), but a fifth of the way back to it. The live model leans on the rider a great deal, and a
+median rider is not what it was trained to see. queue2's no_rider_model arm trains the same trees with no rider input at
+all, which is the price an early run should use for runners with no rider yet (result in Part 2).
+In money: the live edge rule at the open on those four weeks, 306 bets +319.4u (+47%, 73% beat BSP) priced with riders;
+312 bets +211.1u (+37%, 67% beat BSP) priced with NO riders on the live model. A price made before riders keeps about
+two thirds of the profit; a missed open keeps none. So: price as soon as the fields land, re-price when riders do.
