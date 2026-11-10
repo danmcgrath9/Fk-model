@@ -11,3 +11,10 @@ gap2 111 inputs, gap2+z 222, close 14, aptitude 12
   jockey_track_n     finite 1.00 mean +2.029 sd 1.372
   trainer_dband_ae   finite 1.00 mean -0.012 sd 0.172
   trainer_dband_n    finite 1.00 mean +3.324 sd 1.549
+15:48 no_rider_model               A  KL 0.1046  LL 1.9210  bets 1738  profit +829.0u  | A1 0.1021/1.9219/+594u  A2 0.1134/1.9177/+235u
+15:49 no_rider_model               B  KL 0.1078  LL 1.8452  bets 1695  profit +1248.6u  | B1 0.1101/1.8445/+743u  B2 0.1057/1.8459/+505u
+15:53 gap2                         A  KL 0.0931  LL 1.9056  bets 1782  profit +1226.0u  | A1 0.0914/1.9067/+941u  A2 0.0988/1.9018/+285u
+15:55 gap2                         B  KL 0.0968  LL 1.8340  bets 1746  profit +1389.0u  | B1 0.0969/1.8296/+869u  B2 0.0968/1.8381/+520u
+15:58 gap2_head                    A  KL 0.0926  LL 1.9052  bets 1776  profit +1314.8u  | A1 0.0909/1.9077/+949u  A2 0.0986/1.8965/+365u
+16:01 gap2_head                    B  KL 0.0966  LL 1.8342  bets 1734  profit +1470.2u  | B1 0.0971/1.8290/+976u  B2 0.0962/1.8391/+494u
+16:05 gap2_z                       A  KL 0.0928  LL 1.9060  bets 1739  profit +1298.4u  | A1 0.0914/1.9090/+933u  A2 0.0981/1.8949/+365u
