@@ -1,0 +1,76 @@
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,Goodness,1.65,8.00,12,2.30,,8-12
+1,Goodness,1.65,15.00,40,2.30,,15-40
+1,Royal Maximus,5.68,9.09,12,2.70,,8-12
+1,Royal Maximus,5.68,15.00,40,2.70,,15-40
+1,Gun City,13.13,19.69,40,6.00,,15-40
+1,Dorchester,18.36,27.55,40,13.00,first starter: excluded,15-40
+1,Loyalty,18.57,27.85,40,15.00,first starter: excluded,15-40
+2,Farmelia,2.97,8.00,12,3.00,,8-12
+2,Farmelia,2.97,15.00,40,3.00,,15-40
+2,Dynamite Dancer,4.23,8.00,12,4.20,,8-12
+2,Dynamite Dancer,4.23,15.00,40,4.20,,15-40
+2,Lucifer's Girl,5.04,8.06,12,3.40,,8-12
+2,Lucifer's Girl,5.04,15.00,40,3.40,,15-40
+2,Villa Capitalista,12.06,18.09,40,13.00,,15-40
+2,Regina Dei Re,12.63,18.95,40,5.50,,15-40
+2,Makarim,23.76,35.65,40,17.00,,15-40
+3,Pocketfullofcash,4.01,8.00,12,1.95,,8-12
+3,Pocketfullofcash,4.01,15.00,40,1.95,,15-40
+3,Running Rich,4.83,8.00,12,12.00,,8-12
+3,Running Rich,4.83,15.00,40,12.00,,15-40
+3,Strength Within,8.00,15.00,40,5.00,,15-40
+3,Mountjoy,9.08,15.00,40,9.50,,15-40
+3,Lady Of Pompeii,9.32,15.00,40,11.00,,15-40
+3,Harry Met Sally,11.10,16.65,40,11.00,,15-40
+3,Southern Sway,14.92,22.38,40,13.00,,15-40
+4,Ladhar,3.18,8.00,12,4.20,,8-12
+4,Ladhar,3.18,15.00,40,4.20,,15-40
+4,Centenary Florin,4.54,8.00,12,3.80,,8-12
+4,Centenary Florin,4.54,15.00,40,3.80,,15-40
+4,Farakta,4.94,8.00,12,3.60,,8-12
+4,Farakta,4.94,15.00,40,3.60,,15-40
+4,Set Me Free,10.77,16.15,40,8.00,,15-40
+4,Rapid Cheval,16.22,24.33,40,8.00,,15-40
+4,Koolatah Queen,17.76,26.63,40,11.00,,15-40
+5,Lavancher,5.22,8.35,12,8.00,,8-12
+5,Lavancher,5.22,15.00,40,8.00,,15-40
+5,Blackbelt,5.37,8.59,12,6.00,first starter: excluded,8-12
+5,Blackbelt,5.37,15.00,40,6.00,first starter: excluded,15-40
+5,De Niro,5.43,8.69,12,2.45,first starter: excluded,8-12
+5,De Niro,5.43,15.00,40,2.45,first starter: excluded,15-40
+5,Gamadale Paddy,5.92,9.48,12,4.60,,8-12
+5,Gamadale Paddy,5.92,15.00,40,4.60,,15-40
+5,Fort Of Dreams,7.49,11.98,12,6.50,,8-12
+5,Fort Of Dreams,7.49,15.00,40,6.50,,15-40
+5,Soundwave,13.90,20.84,40,11.00,,15-40
+6,Grifter,4.73,8.00,12,4.20,,8-12
+6,Grifter,4.73,15.00,40,4.20,,15-40
+6,Untapped,5.28,8.45,12,4.20,,8-12
+6,Untapped,5.28,15.00,40,4.20,,15-40
+6,Trebilco,5.44,8.70,12,7.00,,8-12
+6,Trebilco,5.44,15.00,40,7.00,,15-40
+6,Lunaman,8.36,15.00,40,6.50,,15-40
+6,Empressive Enuff,9.90,15.00,40,6.00,,15-40
+6,Wolf Twenty One,11.12,16.68,40,7.50,,15-40
+7,The Flying Popov,3.20,8.00,12,2.80,,8-12
+7,The Flying Popov,3.20,15.00,40,2.80,,15-40
+7,Mister Martini,5.98,9.57,12,4.60,,8-12
+7,Mister Martini,5.98,15.00,40,4.60,,15-40
+7,Aubaine,6.30,10.09,12,5.00,,8-12
+7,Aubaine,6.30,15.00,40,5.00,,15-40
+7,Tempt The Gods,7.04,11.26,12,11.00,,8-12
+7,Tempt The Gods,7.04,15.00,40,11.00,,15-40
+7,Celestial Splendor,12.21,18.32,40,7.00,,15-40
+7,Blindato,21.94,32.91,40,19.00,,15-40
+8,Deadly Force,3.42,8.00,12,3.20,,8-12
+8,Deadly Force,3.42,15.00,40,3.20,,15-40
+8,Lucky Single,4.85,8.00,12,3.50,,8-12
+8,Lucky Single,4.85,15.00,40,3.50,,15-40
+8,Hook 'n' Spur,9.37,15.00,40,7.50,,15-40
+8,Les Braves,11.81,17.71,40,14.00,,15-40
+8,Sistine Express,12.85,19.28,40,11.00,,15-40
+8,Strong Box,15.81,23.72,40,12.00,,15-40
+8,Strangethingdesire,18.92,28.39,40,19.00,,15-40
+8,Illuminance,22.20,33.30,40,11.00,,15-40
+8,Our Yonglee,24.55,36.82,40,19.00,,15-40

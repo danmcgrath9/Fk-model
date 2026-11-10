@@ -1,19 +1,19 @@
 1|2|Release The Fox|False|False
 1|3|Royal Maximus|False|False
-1|1|Iron Stupa|False|False
+1|1|Iron Stupa|False|True
 1|8|Goodness|False|False
-1|5|Ciphered|False|False
+1|5|Ciphered|False|True
 1|9|Dorchester|False|False
 1|6|Gun City|False|False
 1|7|Stomping Ground|False|False
-1|4|Bogey Free|False|False
+1|4|Bogey Free|False|True
 1|10|Loyalty|False|False
 2|1|Villa Capitalista|False|False
 2|9|Ville De Lumiere|False|False
 2|8|Dame I Am|False|False
 2|3|Regina Dei Re|False|False
 2|4|Makarim|False|False
-2|5|Skjaldmo|False|False
+2|5|Skjaldmo|False|True
 2|2|Dynamite Dancer|False|False
 2|6|Farmelia|False|False
 2|7|Lucifer's Girl|False|False
@@ -36,7 +36,7 @@
 4|4|Centenary Florin|False|False
 5|5|Soundwave|False|False
 5|4|Hard Hitter|False|False
-5|2|Fear The Impact|False|False
+5|2|Fear The Impact|False|True
 5|1|Brilliant Bull Ant|False|False
 5|12|Enniscrone|True|False
 5|13|My Infinity|True|False
@@ -44,12 +44,12 @@
 5|8|Gamadale Paddy|False|False
 5|9|Lavancher|False|False
 5|7|De Niro|False|False
-5|10|Piperine|False|False
-5|11|Celestaria|False|False
+5|10|Piperine|False|True
+5|11|Celestaria|False|True
 5|6|Blackbelt|False|False
 6|8|Empressive Enuff|False|False
 6|6|Bancoora|False|False
-6|11|Mickidamuzz|False|False
+6|11|Mickidamuzz|False|True
 6|1|Sacramental|False|False
 6|4|Patsy's Star|False|False
 6|5|Trebilco|False|False
@@ -61,10 +61,10 @@
 7|3|Our Smokeshow|False|False
 7|12|Sensational Ruler|True|False
 7|1|Rogan|False|False
-7|4|Antalian|False|False
+7|4|Antalian|False|True
 7|10|Celestial Splendor|False|False
 7|6|Blindato|False|False
-7|11|Cushioned|False|False
+7|11|Cushioned|False|True
 7|2|Tempt The Gods|False|False
 7|9|Which Floor|False|False
 7|8|Mister Martini|False|False
@@ -79,7 +79,7 @@
 8|6|Strong Box|False|False
 8|8|Lucky Single|False|False
 8|5|Strangethingdesire|False|False
-8|13|Cherry Hills|True|False
+8|13|Cherry Hills|True|True
 8|4|Onlooker|False|False
 8|9|Our Yonglee|False|False
-8|12|Sayalero|True|False
+8|12|Sayalero|True|True

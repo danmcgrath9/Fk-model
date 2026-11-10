@@ -1,0 +1,86 @@
+# Ballarat Wed 11 Nov, Slow, final fields; TAB opened Tue about 9:35-10:05am
+1, Release The Fox, 67.00, 67.00, fk_open 51.00
+1, Royal Maximus, 3.10, 3.10, fk_open 3.70
+1, Iron Stupa, 26.00, 26.00, fk_open 31.00
+1, Goodness, 2.80, 2.80, fk_open 3.90
+1, Ciphered, 7.50, 7.50, fk_open 11.00
+1, Dorchester, 16.00, 16.00, fk_open 13.00
+1, Gun City, 5.50, 5.50, fk_open 10.00
+1, Stomping Ground, 46.00, 46.00, fk_open 51.00
+1, Bogey Free, SCR
+1, Loyalty, 17.00, 17.00, fk_open 15.00
+2, Villa Capitalista, 16.00, 16.00, fk_open 15.00
+2, Ville De Lumiere, 101.00, 101.00, fk_open 41.00
+2, Dame I Am, 151.00, 151.00, fk_open 151.00
+2, Regina Dei Re, 6.50, 6.50, fk_open 4.40
+2, Makarim, 46.00, 46.00, fk_open 41.00
+2, Skjaldmo, 7.00, 7.00, fk_open 4.80
+2, Dynamite Dancer, 3.90, 3.90, fk_open 6.00
+2, Farmelia, 3.50, 3.50, fk_open 3.20
+2, Lucifer's Girl, 3.60, 3.60, fk_open 3.80
+3, Southern Sway, 10.00, 10.00, fk_open 7.50
+3, Lady Of Pompeii, 7.50, 7.50, fk_open 4.80
+3, Daynes Dahwun, 35.00, 35.00, fk_open 21.00
+3, Pretty Panther, 31.00, 31.00, fk_open 21.00
+3, Pocketfullofcash, 2.50, 2.50, fk_open 3.10
+3, Running Rich, 9.50, 9.50, fk_open 5.50
+3, Strength Within, 5.00, 5.00, fk_open 9.00
+3, Mountjoy, 10.00, 10.00, fk_open 10.00
+3, Harry Met Sally, 10.00, 10.00, fk_open 5.50
+4, Tauri, 26.00, 26.00, fk_open 26.00
+4, Rapid Cheval, 12.00, 12.00, fk_open 9.00
+4, Farakta, 3.60, 3.60, fk_open 3.40
+4, Koolatah Queen, 10.00, 10.00, fk_open 8.00
+4, Set Me Free, 9.00, 9.00, fk_open 5.50
+4, She's A Jett, 21.00, 21.00, fk_open 17.00
+4, Ladhar, 3.80, 3.80, fk_open 4.60
+4, Centenary Florin, 3.40, 3.40, fk_open 3.40
+5, Soundwave, 15.00, 15.00, fk_open 17.50
+5, Hard Hitter, 41.00, 41.00, fk_open 61.00
+5, Fear The Impact, 19.00, 19.00, fk_open 15.50
+5, Brilliant Bull Ant, 23.00, 23.00, fk_open 22.00
+5, Enniscrone, SCR, fk_open 81.00
+5, My Infinity, SCR, fk_open 81.00
+5, Fort Of Dreams, 5.50, 5.50, fk_open 7.50
+5, Gamadale Paddy, 6.00, 6.00, fk_open 6.00
+5, Lavancher, 5.50, 5.50, fk_open 6.00
+5, De Niro, 3.60, 3.60, fk_open 6.00
+5, Piperine, SCR
+5, Celestaria, 8.00, 8.00, fk_open 11.00
+5, Blackbelt, 10.00, 10.00, fk_open 22.00
+6, Empressive Enuff, 6.00, 6.00, fk_open 11.00
+6, Bancoora, 21.00, 21.00, fk_open 13.50
+6, Mickidamuzz, 151.00, 151.00, fk_open 81.00
+6, Sacramental, 26.00, 26.00, fk_open 22.00
+6, Patsy's Star, 51.00, 51.00, fk_open 26.00
+6, Trebilco, 6.50, 6.50, fk_open 4.10
+6, Untapped, 5.00, 5.00, fk_open 6.00
+6, Wolf Twenty One, 7.50, 7.50, fk_open 7.25
+6, Lunaman, 6.00, 6.00, fk_open 6.00
+6, Hiney's Bar, 26.00, 26.00, fk_open 20.00
+6, Grifter, 4.00, 4.00, fk_open 3.35
+7, Our Smokeshow, 46.00, 46.00, fk_open 26.00
+7, Sensational Ruler, SCR, fk_open 34.00
+7, Rogan, 12.00, 12.00, fk_open 7.00
+7, Antalian, 15.00, 15.00, fk_open 13.00
+7, Celestial Splendor, 7.50, 7.50, fk_open 6.50
+7, Blindato, 26.00, 26.00, fk_open 21.00
+7, Cushioned, 6.00, 6.00, fk_open 7.25
+7, Tempt The Gods, 12.00, 12.00, fk_open 13.00
+7, Which Floor, 26.00, 26.00, fk_open 17.50
+7, Mister Martini, 9.50, 9.50, fk_open 6.00
+7, Aubaine, 5.00, 5.00, fk_open 9.00
+7, The Flying Popov, 3.30, 3.30, fk_open 3.35
+8, El Salto, 51.00, 51.00, fk_open 34.00
+8, Illuminance, 9.50, 9.50, fk_open 10.00
+8, Deadly Force, 3.40, 3.40, fk_open 4.20
+8, Les Braves, 13.00, 13.00, fk_open 10.00
+8, Sistine Express, 10.00, 10.00, fk_open 12.00
+8, Hook 'n' Spur, 7.00, 7.00, fk_open 5.00
+8, Strong Box, 10.00, 10.00, fk_open 7.00
+8, Lucky Single, 4.00, 4.00, fk_open 4.40
+8, Strangethingdesire, 18.00, 18.00, fk_open 10.00
+8, Cherry Hills, SCR, fk_open 15.00
+8, Onlooker, 35.00, 35.00, fk_open 19.00
+8, Our Yonglee, 17.00, 17.00, fk_open 16.00
+8, Sayalero, SCR, fk_open 13.00

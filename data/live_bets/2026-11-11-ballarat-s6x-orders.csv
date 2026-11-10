@@ -1,0 +1,62 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-11,Ballarat,1,,8,Goodness,WIN,1.93,3.99,8.17,408,1 of 3,8.17u,1.65,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-11,Ballarat,1,,8,Goodness,WIN,2.41,3.99,1.42,71,2 of 3,9.59u,1.65,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-11,Ballarat,1,,8,Goodness,WIN,3.64,3.99,0.41,20,3 of 3,10.00u,1.65,EARLY: $15 or shorter only; opens under $4: edge 1.15; opens $3.64+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,1,,8,Goodness,WIN,4.00,4.95,10.00,500,1 of 1,10.00u,1.65,EARLY: $15 or shorter only; opens $4.00+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,2,,2,Dynamite Dancer,WIN,5.47,12.70,2.29,114,1 of 3,2.29u,4.23,
+2026-11-11,Ballarat,2,,2,Dynamite Dancer,WIN,6.84,12.70,0.50,25,2 of 3,2.79u,4.23,
+2026-11-11,Ballarat,2,,2,Dynamite Dancer,WIN,9.32,12.70,2.79,140,3 of 3,5.58u,4.23,opens $9.32+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,2,,7,Lucifer's Girl,WIN,6.57,15.01,1.86,93,1 of 3,1.86u,5.04,EARLY: $15 or shorter only
+2026-11-11,Ballarat,2,,7,Lucifer's Girl,WIN,8.21,15.01,0.42,21,2 of 3,2.28u,5.04,EARLY: $15 or shorter only
+2026-11-11,Ballarat,2,,7,Lucifer's Girl,WIN,11.08,15.01,2.28,114,3 of 3,4.56u,5.04,EARLY: $15 or shorter only; opens $11.08+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,2,,1,Villa Capitalista,WIN,16.44,36.17,0.68,34,1 of 2,0.68u,12.06,
+2026-11-11,Ballarat,2,,1,Villa Capitalista,WIN,20.55,36.17,0.17,8,2 of 2,0.85u,12.06,
+2026-11-11,Ballarat,3,,7,Lady Of Pompeii,WIN,12.54,27.97,0.91,46,1 of 2,0.91u,9.32,
+2026-11-11,Ballarat,3,,7,Lady Of Pompeii,WIN,15.67,27.97,0.22,11,2 of 2,1.13u,9.32,
+2026-11-11,Ballarat,3,,3,Pocketfullofcash,WIN,5.16,12.02,2.45,123,1 of 3,2.45u,4.01,
+2026-11-11,Ballarat,3,,3,Pocketfullofcash,WIN,6.45,12.02,0.53,26,2 of 3,2.98u,4.01,
+2026-11-11,Ballarat,3,,3,Pocketfullofcash,WIN,8.82,12.02,2.98,149,3 of 3,5.96u,4.01,opens $8.82+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,3,,4,Running Rich,WIN,6.28,14.48,1.95,98,1 of 3,1.95u,4.83,EARLY: $15 or shorter only
+2026-11-11,Ballarat,3,,4,Running Rich,WIN,7.85,14.48,0.44,22,2 of 3,2.39u,4.83,EARLY: $15 or shorter only
+2026-11-11,Ballarat,3,,4,Running Rich,WIN,10.62,14.48,2.39,120,3 of 3,4.78u,4.83,EARLY: $15 or shorter only; opens $10.62+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,4,,4,Centenary Florin,WIN,5.89,13.62,2.10,105,1 of 3,2.10u,4.54,EARLY: $15 or shorter only
+2026-11-11,Ballarat,4,,4,Centenary Florin,WIN,7.36,13.62,0.47,24,2 of 3,2.57u,4.54,EARLY: $15 or shorter only
+2026-11-11,Ballarat,4,,4,Centenary Florin,WIN,9.99,13.62,2.57,128,3 of 3,5.14u,4.54,EARLY: $15 or shorter only; opens $9.99+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,4,,6,Farakta,WIN,6.43,14.81,1.90,95,1 of 3,1.90u,4.94,
+2026-11-11,Ballarat,4,,6,Farakta,WIN,8.04,14.81,0.43,22,2 of 3,2.33u,4.94,
+2026-11-11,Ballarat,4,,6,Farakta,WIN,10.86,14.81,2.33,116,3 of 3,4.66u,4.94,opens $10.86+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,4,,2,Ladhar,WIN,3.84,3.99,3.03,152,1 of 1,3.03u,3.18,opens under $4: edge 1.15
+2026-11-11,Ballarat,4,,2,Ladhar,WIN,4.05,9.54,3.29,164,1 of 3,3.29u,3.18,
+2026-11-11,Ballarat,4,,2,Ladhar,WIN,5.06,9.54,0.67,34,2 of 3,3.96u,3.18,
+2026-11-11,Ballarat,4,,2,Ladhar,WIN,7.00,9.54,3.96,198,3 of 3,7.92u,3.18,opens $7.00+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,5,,3,Fort Of Dreams,WIN,9.87,22.27,1.18,59,1 of 3,1.18u,7.42,
+2026-11-11,Ballarat,5,,3,Fort Of Dreams,WIN,12.34,22.27,0.28,14,2 of 3,1.46u,7.42,
+2026-11-11,Ballarat,5,,3,Fort Of Dreams,WIN,16.33,22.27,1.46,73,3 of 3,2.92u,7.42,opens $16.33+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,6,,8,Empressive Enuff,WIN,13.36,29.69,0.85,42,1 of 2,0.85u,9.90,
+2026-11-11,Ballarat,6,,8,Empressive Enuff,WIN,16.70,29.69,0.21,10,2 of 2,1.06u,9.90,
+2026-11-11,Ballarat,6,,10,Grifter,WIN,6.14,14.18,2.00,100,1 of 3,2.00u,4.73,
+2026-11-11,Ballarat,6,,10,Grifter,WIN,7.67,14.18,0.45,22,2 of 3,2.45u,4.73,
+2026-11-11,Ballarat,6,,10,Grifter,WIN,10.40,14.18,2.45,123,3 of 3,4.90u,4.73,opens $10.40+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,6,,2,Untapped,WIN,6.90,15.85,1.75,88,1 of 3,1.75u,5.28,
+2026-11-11,Ballarat,6,,2,Untapped,WIN,8.62,15.85,0.40,20,2 of 3,2.15u,5.28,
+2026-11-11,Ballarat,6,,2,Untapped,WIN,11.62,15.85,2.15,108,3 of 3,4.30u,5.28,opens $11.62+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,6,,3,Wolf Twenty One,WIN,15.10,33.36,0.75,38,1 of 2,0.75u,11.12,
+2026-11-11,Ballarat,6,,3,Wolf Twenty One,WIN,18.88,33.36,0.18,9,2 of 2,0.93u,11.12,
+2026-11-11,Ballarat,7,,7,Aubaine,WIN,8.06,18.35,1.48,74,1 of 3,1.48u,6.12,
+2026-11-11,Ballarat,7,,7,Aubaine,WIN,10.08,18.35,0.34,17,2 of 3,1.82u,6.12,
+2026-11-11,Ballarat,7,,7,Aubaine,WIN,13.46,18.35,1.82,91,3 of 3,3.64u,6.12,opens $13.46+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,7,,8,Mister Martini,WIN,7.63,17.42,1.57,78,1 of 3,1.57u,5.81,
+2026-11-11,Ballarat,7,,8,Mister Martini,WIN,9.54,17.42,0.36,18,2 of 3,1.93u,5.81,
+2026-11-11,Ballarat,7,,8,Mister Martini,WIN,12.78,17.42,1.93,96,3 of 3,3.86u,5.81,opens $12.78+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,7,,2,Tempt The Gods,WIN,9.05,20.50,1.30,65,1 of 3,1.30u,6.83,
+2026-11-11,Ballarat,7,,2,Tempt The Gods,WIN,11.31,20.50,0.30,15,2 of 3,1.60u,6.83,
+2026-11-11,Ballarat,7,,2,Tempt The Gods,WIN,15.04,20.50,1.60,80,3 of 3,3.20u,6.83,opens $15.04+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,7,,5,The Flying Popov,WIN,3.74,3.99,3.12,156,1 of 1,3.12u,3.11,opens under $4: edge 1.15
+2026-11-11,Ballarat,7,,5,The Flying Popov,WIN,4.00,9.32,3.40,170,1 of 3,3.40u,3.11,
+2026-11-11,Ballarat,7,,5,The Flying Popov,WIN,4.94,9.32,0.69,34,2 of 3,4.09u,3.11,
+2026-11-11,Ballarat,7,,5,The Flying Popov,WIN,6.84,9.32,4.09,204,3 of 3,8.18u,3.11,opens $6.84+ (2.2x ours): stake doubled
+2026-11-11,Ballarat,8,,1,Les Braves,WIN,16.08,35.42,0.70,35,1 of 2,0.70u,11.81,
+2026-11-11,Ballarat,8,,1,Les Braves,WIN,20.10,35.42,0.17,8,2 of 2,0.87u,11.81,
+2026-11-11,Ballarat,8,,8,Lucky Single,WIN,6.31,14.55,1.94,97,1 of 3,1.94u,4.85,
+2026-11-11,Ballarat,8,,8,Lucky Single,WIN,7.89,14.55,0.44,22,2 of 3,2.38u,4.85,
+2026-11-11,Ballarat,8,,8,Lucky Single,WIN,10.68,14.55,2.38,119,3 of 3,4.76u,4.85,opens $10.68+ (2.2x ours): stake doubled
