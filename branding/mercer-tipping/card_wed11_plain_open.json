@@ -1,0 +1,16 @@
+{
+ "day": "Wednesday",
+ "date": "11 November",
+ "meetings": [
+  {
+   "name": "Ballarat",
+   "note": "",
+   "bets": [
+    {"race": 1, "time": "3:40PM", "horse": "Goodness", "price": "$3.90", "rated": "$2.74", "units": "3.69u"},
+    {"race": 4, "time": "5:25PM", "horse": "Ladhar", "price": "$4.60", "rated": "$3.16", "units": "3.32u"},
+    {"race": 7, "time": "7:00PM", "horse": "Tempt The Gods", "price": "$13", "rated": "$8.55", "units": "1.01u"}
+   ]
+  }
+ ],
+ "brand": false
+}
