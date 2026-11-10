@@ -21,3 +21,10 @@
 12:38 drop_gear_detail             A  KL 0.0929  LL 1.9056  bets 1759  profit +1171.5u  | A1 0.0912/1.9064/+898u  A2 0.0989/1.9027/+274u
 12:40 drop_gear_detail             B  KL 0.0980  LL 1.8373  bets 1730  profit +1461.9u  | B1 0.0986/1.8318/+872u  B2 0.0974/1.8424/+590u
 12:43 drop_price_moves             A  KL 0.0937  LL 1.9072  bets 1777  profit +1229.9u  | A1 0.0918/1.9090/+976u  A2 0.1004/1.9011/+254u
+12:46 drop_price_moves             B  KL 0.0971  LL 1.8338  bets 1726  profit +1538.6u  | B1 0.0968/1.8291/+948u  B2 0.0975/1.8381/+590u
+12:49 drop_bias                    A  KL 0.0927  LL 1.9064  bets 1770  profit +1372.9u  | A1 0.0910/1.9079/+1023u  A2 0.0986/1.9011/+350u
+12:52 drop_bias                    B  KL 0.0974  LL 1.8377  bets 1749  profit +1433.2u  | B1 0.0975/1.8323/+875u  B2 0.0973/1.8426/+558u
+12:55 drop_track_surface_going     A  KL 0.0928  LL 1.9050  bets 1780  profit +1235.0u  | A1 0.0908/1.9068/+925u  A2 0.0997/1.8984/+310u
+12:58 drop_track_surface_going     B  KL 0.0977  LL 1.8335  bets 1745  profit +1508.8u  | B1 0.0979/1.8290/+910u  B2 0.0975/1.8377/+599u
+13:01 drop_sire                    A  KL 0.0937  LL 1.9058  bets 1755  profit +1232.8u  | A1 0.0921/1.9078/+893u  A2 0.0996/1.8989/+340u
+13:04 drop_sire                    B  KL 0.0964  LL 1.8335  bets 1738  profit +1479.3u  | B1 0.0969/1.8317/+828u  B2 0.0958/1.8351/+651u
