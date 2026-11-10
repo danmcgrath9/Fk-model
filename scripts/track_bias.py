@@ -2,6 +2,7 @@
 (fk.past_events; each horse's run once, trials out). DB only, no credits. (10 Nov 2026, founder: "What's the ROI for
 1200m sandown lakeside with position in run / barriers".)
     python scripts/track_bias.py Sandown_Lakeside 1200 [--tol 0] [--since 2024-01-01]
+    python scripts/track_bias.py ALL 1200 --since 2025-01-01      (every track: the baseline)
 Underscores stand for spaces. ROI is 1u level stakes at the bookmaker SP, and at Betfair SP where Form King has one
 (8% commission on winnings). Position in the run is where the horse settled (Form King's first position call), known
 only after the race: it says which running style the track rewards, the speedmap says who will run that way."""
@@ -24,8 +25,9 @@ ap.add_argument("track"); ap.add_argument("distance", type=int)
 ap.add_argument("--tol", type=int, default=0, help="metres either side of the distance")
 ap.add_argument("--since", default="2023-01-01")
 a = ap.parse_args()
+ALL = a.track.upper() == "ALL"    # every track: the baseline to compare one track against
 want = re.sub(r"[^a-z]", "", a.track.replace("_", " ").lower())
-words = [w for w in a.track.replace("_", " ").split() if w]
+words = [] if ALL else [w for w in a.track.replace("_", " ").split() if w]
 
 num = lambda v: (float(v) if v not in (None, "") else None) if not isinstance(v, (int, float)) else float(v)
 runs, seen = [], set()
@@ -34,7 +36,7 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
         " and raw::text ilike %s" for _ in words)
     for hid, d, raw in c.execute(q, (a.since, *[f"%{w}%" for w in words])):
         r = F.run_ratings(raw)
-        if r.get("trial") or re.sub(r"[^a-z]", "", (r.get("track") or "").lower()) != want: continue
+        if r.get("trial") or (not ALL and re.sub(r"[^a-z]", "", (r.get("track") or "").lower()) != want): continue
         dist = r.get("distance")
         if dist is None or abs(float(dist) - a.distance) > a.tol: continue
         if (hid, str(d)) in seen: continue
