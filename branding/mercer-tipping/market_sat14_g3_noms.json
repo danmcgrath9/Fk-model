@@ -1,0 +1,95 @@
+{
+ "day": "Saturday",
+ "date": "14 November",
+ "race": "G3 Thoroughbred Club",
+ "note": "Sandown Lakeside \u00b7 1200m",
+ "runners": [
+  {
+   "horse": "Natural Fling",
+   "ours": "$4.70"
+  },
+  {
+   "horse": "Sequinned",
+   "ours": "$8.20"
+  },
+  {
+   "horse": "Aroused",
+   "ours": "$8.75"
+  },
+  {
+   "horse": "Semantics",
+   "ours": "$12.71"
+  },
+  {
+   "horse": "Chayan",
+   "ours": "$13.44"
+  },
+  {
+   "horse": "Caddington",
+   "ours": "$16.33"
+  },
+  {
+   "horse": "Angels Fury",
+   "ours": "$18.57"
+  },
+  {
+   "horse": "Affari",
+   "ours": "$22.88"
+  },
+  {
+   "horse": "Ciaron's Star",
+   "ours": "$23.23"
+  },
+  {
+   "horse": "Lady Catalina",
+   "ours": "$24.09"
+  },
+  {
+   "horse": "Nishioka",
+   "ours": "$24.78"
+  },
+  {
+   "horse": "Calamari Ring",
+   "ours": "$37.04"
+  },
+  {
+   "horse": "Cavill Avenue",
+   "ours": "$40.58"
+  },
+  {
+   "horse": "Rubi's Choice",
+   "ours": "$46.57"
+  },
+  {
+   "horse": "Oceans Blue",
+   "ours": "$79.79"
+  },
+  {
+   "horse": "Unkechaug",
+   "ours": "$109"
+  },
+  {
+   "horse": "Sound Byte",
+   "ours": "$155"
+  },
+  {
+   "horse": "Autumn Rainbow",
+   "ours": "$190"
+  },
+  {
+   "horse": "Simply Steffi",
+   "ours": "$259"
+  },
+  {
+   "horse": "Almost An Angel",
+   "ours": "$456"
+  },
+  {
+   "horse": "Vixen Vibes",
+   "ours": "$718"
+  }
+ ],
+ "show_market": false,
+ "first_col": "",
+ "footer": "Our rated prices on all 21 nominations, before acceptances."
+}

@@ -1,0 +1,18 @@
+{
+ "day": "Thursday",
+ "date": "12 November",
+ "meetings": [
+  {
+   "name": "Seymour",
+   "note": "",
+   "bets": [
+    {"race": 1, "time": "3:00PM", "horse": "Princess Of Sol", "price": "$13.50", "rated": "$9.62", "units": "0.88u"},
+    {"race": 1, "time": "3:00PM", "horse": "Zverev", "price": "$13.50", "rated": "$8.93", "units": "0.96u"},
+    {"race": 3, "time": "4:00PM", "horse": "Tale Of Genji", "price": "$5.50", "rated": "$3.90", "units": "2.54u"},
+    {"race": 7, "time": "6:00PM", "horse": "Soju", "price": "$26", "rated": "$11.69", "units": "0.88u"},
+    {"race": 8, "time": "6:30PM", "horse": "Ulfberht", "price": "$13", "rated": "$7.80", "units": "1.38u"}
+   ]
+  }
+ ],
+ "brand": false
+}
