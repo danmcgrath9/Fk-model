@@ -177,3 +177,10 @@ typically 50u ($2.5k). With the 6x ceiling at 70% volume: +281u ($14.0k).
 - By how much of the market was scratched after the open (the opening book): under 90% +25% on stakes and fading
   (+72%, +18%, +12%, -3%); 90-100% +58%; 110-125% +51%; 125%+ +56%. The heavily scratched races are the weak ones once
   the deduction is charged properly, and nothing known at the open says which races they will be.
+
+### 1.9 Blend weights by race type (blend_segments.py)
+Walk-forward trees with the open, 3,146 races, weights fitted per group on one half-year and scored on the other: one
+pair for every race KL 0.0866; by first starters in the race 0.0862; metro / not 0.0864; field size 0.0864; distance
+0.0867; a 2yo in the race 0.0865. The fitted weights do lean to the open where we are weakest (2+ first starters
+0.66 / 0.48, metro 0.62 / 0.52, as the metro fix already does), but the whole-market gain is under half a percent.
+Leave the blend as it is.

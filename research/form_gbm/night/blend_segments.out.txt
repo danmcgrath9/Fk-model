@@ -1,0 +1,10 @@
+3146 races; ours alone KL 0.0945, the open alone 0.1353, live 0.82/0.22 0.0870
+
+| weights by | KL to BSP, fitted on the other half | weights fitted on the whole year |
+|---|---|---|
+| one pair for every race | 0.0866 | 0.74/0.32 (3146) |
+| first starters in the race: 0 / 1 / 2+ | 0.0862 | 0.74/0.32 (2313); 0.74/0.36 (273); 0.66/0.48 (560) |
+| metro / not | 0.0864 | 0.74/0.32 (2554); 0.62/0.52 (592) |
+| field: up to 8 / 9-12 / 13+ | 0.0864 | 0.66/0.40 (909); 0.78/0.32 (1905); 0.78/0.36 (332) |
+| distance: to 1200 / to 1600 / longer | 0.0867 | 0.70/0.40 (1206); 0.78/0.32 (1243); 0.74/0.32 (697) |
+| a 2yo in the race / not | 0.0865 | 0.74/0.32 (2954); 0.62/0.52 (192) |
