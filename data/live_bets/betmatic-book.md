@@ -1140,3 +1140,7 @@ $10.26 (open $17, now $9), Sweet City Dancer R7 $12.17 ($17.50, now $14). Both r
 - Lay book (s6j, $200 a lay): 13 lays, 2 winners, -49.29u (-$9,858; -$2,465 at Friday's $50). $8-$12: 2 lays, 0 won, +1.84u.
   $15-$40: 11 lays, 2 won (R1 Invisible Caravan BSP $37.41, R6 French Navy BSP $24), -51.13u. Void 5 (late scratchings).
 - Back book: no BSP favourite inside its range. 0 backs.
+
+## Twitter units doubled from Wed 11 Nov (founder, Tue 10 Nov: "We are doubling Twitter units")
+Posted units are now the full model stake, the same as the open bets (they were half since 20 Oct). Wednesday's Ballarat
+Mercer card re-rendered: Goodness 3.69u, Ladhar 3.32u, Tempt The Gods 1.01u. Everything posted before 11 Nov stays at half.
