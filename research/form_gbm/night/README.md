@@ -336,3 +336,9 @@ The same trees trained with no rider input at all (47 inputs out): KL 0.1046 / 0
 12% further from BSP; at the open under the live rules +829u against +1,238u (fold A) and +1,249u against +1,414u
 (fold B). Blanking the riders on the LIVE model instead costs 29% (4.4). So the early price should come from a model
 trained without riders, kept beside the live one, and be replaced by the live price when the riders land.
+
+### 3.11 The chance the stake is sized on is honest (blend_calib_bets.out.txt)
+The sheet's 3,484 walk-forward bets (6x ceiling) by open / our price, winners against the blended chance the Kelly stake
+uses: 1.2-1.4x 173 won v 173.3 expected; 1.4-1.7x 232 v 228.9; 1.7-2.2x 154 v 150.6; 2.2-3x 58 v 62.2; 3-4x 17 v 15.4;
+4-6x 9 v 7.3; all 643 v 637.7 (our price alone expected 688.6, BSP 617.0). The blend is calibrated on its own bets at
+every overlay, the big ones included, so the stake needs no haircut there.
