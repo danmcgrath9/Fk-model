@@ -34,8 +34,8 @@ Nothing live was changed. Every item marked CALL is the founder's decision.
 8. THE BOUNCE BLOCK (3.9) stops bets that made +22% to +24% at the open over 16 months, but nothing since June. CALL.
 9. TRAINING IS AT ITS CEILING (Part 2). 49 retrains, 20 network seeds, 3 CatBoost seeds, mixed recipes: the best is half
    a percent on the trees alone and nothing inside the full blend (the live recipe 0.0891 / 0.0942; everything doubled
-   0.0892 / 0.0941). The blend and its weights are right. No leaks. The only lever left on the price is more history
-   (each doubling 4-6%).
+   0.0892 / 0.0941). The second stage is worth 6-7% and is at its ceiling too (2.10). The blend and its weights are
+   right. No leaks. The only lever left on the price is more history (each doubling 4-6%).
 10. LEFT ALONE, CHECKED: the 1.20 edge, the $1.60-$15 range, the three steps, the 10u cap, the flat 16c deduction, the
     blend with the open, the first-up and second-up blocks, the stake's calibration (3.2, 3.6, 3.9, 3.11, 1.6, 1.9).
 
@@ -455,6 +455,30 @@ Every arm of queues 1-2 that kept all 809 inputs is a different set of trees. Av
   different races and about one bet in fourteen will come or go between the first price and a re-price for no reason
   but the seed. They are the marginal bets and worth little either way; a taken bet is never dropped, so no rule is
   needed. Ten network seeds at pricing time would halve it for about a minute more per meeting. Optional.
+
+### 2.10 The second stage on two folds (s2_check.py)
+Stage 2 v6 rebuilt on the 9 Nov dataset from the cross-fitted three-model stage-1 price, trained inside each fold as
+live trains it (400 rounds, 7 leaves, learning rate 0.03, 3 seeds), scored on the fold's unseen races:
+| price | fold A: KL / log loss | fold B: KL / log loss |
+|---|---|---|
+| stage 1 alone | 0.0873 / 1.8993 | 0.0848 / 1.8164 |
+| + stage 2, live settings | 0.0813 / 1.8913 | 0.0798 / 1.8083 |
+| the same on two other seed sets | 0.0813, 0.0812 | 0.0798, 0.0797 |
+- STAGE 2 IS WORTH 6-7% OF THE DISTANCE TO BSP (6.9% and 5.9%) and improves winner log loss in both folds. It is the
+  largest single step in the price after the blend.
+- IT IS AT ITS CEILING. 10 seeds, 200 rounds, learning rate 0.015 or 0.06, 3 leaves, min leaf 100 or 400, feature
+  share 0.4 or 1.0, lambda 1 or 50: every one within 0.0001 of the live settings in both folds, which is the seed
+  noise. More rounds and bigger trees are worse (800 rounds +0.0004 / +0.0005; 1,600 +0.0010 / +0.0017; 15 leaves
+  +0.0003 / +0.0004; 31 leaves +0.0007 / +0.0009).
+- What it stands on (each block removed, KL change A / B): the market-gap encodings (how BSP rated this horse,
+  trainer, jockey, sire, trainer-at-track against our price in earlier races) +0.0016 / +0.0016; the horse's earlier
+  gaps +0.0003 / +0.0002; travel +0.0003 / +0.0002; collateral form +0.0002 / +0.0005; jockey switch +0.0002 /
+  +0.0002; stablemates +0.0002 / +0.0001. The first version's inputs alone: +0.0009 / +0.0013, so versions 2 to 6
+  together added 1.1-1.6%.
+- The sections and trials blocks now add nothing in stage 2 (-0.0001 / +0.0001 and +0.0001 / -0.0002): both went into
+  the stage-1 inputs in October and the trees already use them. Harmless; not worth a retrain to remove.
+- The market-gap encodings are exactly what the frozen history starves (1.3): a horse that has run since 14 Oct is
+  priced on the gap from the run before. The refresh is the one thing that helps this stage.
 
 ### 3.11 The chance the stake is sized on is honest (blend_calib_bets.out.txt)
 The sheet's 3,484 walk-forward bets (6x ceiling) by open / our price, winners against the blended chance the Kelly stake
