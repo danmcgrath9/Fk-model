@@ -1,0 +1,29 @@
+
+OUR BETS IN THE SAME RACE
+| group | Jan-17Mar | 18Mar-2Jun | 3Jun-8Oct | 9Oct-9Nov | all: bets, staked, profit, ROI, flat ROI |
+|---|---|---|---|---|---|
+| the only bet in its race | 324 +416u +47% | 313 +338u +41% | 474 +505u +42% | 136 +234u +68% | 1247, 3274u, +1493u, +46%, +43% |
+| one of two | 218 +332u +63% | 304 +57u +8% | 452 +315u +34% | 122 +88u +35% | 1096, 2416u, +792u, +33%, +33% |
+| one of three | 171 +321u +85% | 174 +139u +35% | 297 +266u +41% | 66 +41u +32% | 708, 1539u, +767u, +50%, +29% |
+| one of four or more | 55 +53u +52% | 87 -7u -4% | 111 +15u +7% | 12 -4u -15% | 265, 500u, +58u, +12%, -1% |
+
+RACE NUMBER ON THE CARD
+| group | Jan-17Mar | 18Mar-2Jun | 3Jun-8Oct | 9Oct-9Nov | all: bets, staked, profit, ROI, flat ROI |
+|---|---|---|---|---|---|
+| races 1-2 | 154 +338u +79% | 160 +98u +23% | 280 +144u +21% | 75 +72u +36% | 669, 1750u, +652u, +37%, +28% |
+| races 3-4 | 191 +296u +57% | 197 +151u +28% | 299 +432u +60% | 82 +83u +46% | 769, 1947u, +961u, +49%, +47% |
+| races 5-6 | 193 +154u +35% | 225 +98u +19% | 358 +263u +34% | 84 +83u +46% | 860, 1902u, +598u, +31%, +33% |
+| races 7-8 | 198 +301u +68% | 249 +142u +27% | 332 +298u +43% | 77 +74u +49% | 856, 1814u, +815u, +45%, +26% |
+| race 9+ | 32 +33u +51% | 47 +39u +47% | 65 -36u -27% | 18 +47u +121% | 162, 316u, +83u, +26%, +33% |
+
+OPENING BOOK OF THE RACE (under 100% = a fifth or more of the market scratched after the open)
+| group | Jan-17Mar | 18Mar-2Jun | 3Jun-8Oct | 9Oct-9Nov | all: bets, staked, profit, ROI, flat ROI |
+|---|---|---|---|---|---|
+| under 90% | 196 +374u +72% | 291 +142u +18% | 405 +123u +12% | 73 -5u -3% | 965, 2531u, +634u, +25%, +10% |
+| 90-100% | 99 +171u +64% | 111 +121u +51% | 206 +251u +54% | 41 +79u +74% | 457, 1074u, +623u, +58%, +38% |
+| 100-110% | 106 +62u +24% | 136 +41u +13% | 167 +13u +4% | 63 +105u +73% | 472, 1062u, +220u, +21%, +29% |
+| 110-125% | 172 +292u +69% | 175 +139u +37% | 288 +313u +52% | 70 +54u +35% | 705, 1561u, +798u, +51%, +41% |
+| 125%+ | 195 +224u +53% | 165 +85u +22% | 268 +401u +76% | 89 +126u +80% | 717, 1502u, +836u, +56%, +57% |
+races with 1 bet: 1247 races, +1493u, +1.20u a race, profitable races 21%
+races with 2 bets: 548 races, +792u, +1.45u a race, profitable races 34%
+races with 3+ bets: 299 races, +825u, +2.76u a race, profitable races 54%

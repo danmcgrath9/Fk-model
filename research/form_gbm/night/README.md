@@ -168,3 +168,12 @@ The live sheet's walk-forward bets re-drawn by whole race days into 10,000 thirt
 at the backtest's volume the median month is +297u ($14.8k), one month in twenty is under +101u, 0.5% lose; at 70% of
 the volume (what live has fired) +207u ($10.3k), one in twenty under +41u, 1.8% lose, the worst run inside a month is
 typically 50u ($2.5k). With the 6x ceiling at 70% volume: +281u ($14.0k).
+
+### 3.8 More cuts, with the deduction fitted by race (strat4.py)
+- Our bets in the same race: the only bet +46% on stakes (1,247 bets); one of two +33%; one of three +50%; ONE OF FOUR
+  OR MORE +12% (265 bets, flat -1%; +52%, -4%, +7%, -15% by period). When the sheet wants four horses in a race there is
+  little in it, but 265 bets in 11 months and one good period: noted, no rule.
+- Race number on the card: nothing (races 1-2 +37%, 3-4 +49%, 5-6 +31%, 7-8 +45%).
+- By how much of the market was scratched after the open (the opening book): under 90% +25% on stakes and fading
+  (+72%, +18%, +12%, -3%); 90-100% +58%; 110-125% +51%; 125%+ +56%. The heavily scratched races are the weak ones once
+  the deduction is charged properly, and nothing known at the open says which races they will be.
