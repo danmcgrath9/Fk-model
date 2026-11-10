@@ -1144,3 +1144,8 @@ $10.26 (open $17, now $9), Sweet City Dancer R7 $12.17 ($17.50, now $14). Both r
 ## Twitter units doubled from Thu 12 Nov (founder, Tue 10 Nov: "We are doubling Twitter units", "From Thursday onwards")
 Posted units become the full model stake, the same as the open bets (half since 20 Oct). Wednesday's Ballarat card stays
 at half (Goodness 1.85u, Ladhar 1.66u, Tempt The Gods 0.51u); Thursday's Seymour card is the first at full units.
+
+## Track bias: tested and left out (founder, Tue 10 Nov: "Yeah good - don't put it in")
+Track-bias inputs for every track (research/form_gbm/t_trackbias_ab.py) did not improve the model on 3 Jun - 9 Nov
+(open-bet profit +1,165.6u v +1,237.8u for the current inputs). The model stays as it is, and the Sandown Lakeside G3 on
+Sat 14 Nov is priced by the model with no hand shade for the leader bias.
