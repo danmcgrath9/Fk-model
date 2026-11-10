@@ -1,0 +1,13 @@
+gap2 111 inputs, gap2+z 222, close 14, aptitude 12
+  sire_going_ae      finite 1.00 mean -0.013 sd 0.182
+  sire_going_n       finite 1.00 mean +3.801 sd 1.466
+  sire_dband_ae      finite 1.00 mean -0.013 sd 0.183
+  sire_dband_n       finite 1.00 mean +3.437 sd 1.385
+  damsire_going_ae   finite 1.00 mean -0.016 sd 0.177
+  damsire_going_n    finite 1.00 mean +3.730 sd 1.695
+  damsire_dband_ae   finite 1.00 mean -0.015 sd 0.186
+  damsire_dband_n    finite 1.00 mean +3.308 sd 1.579
+  jockey_track_ae    finite 1.00 mean -0.006 sd 0.148
+  jockey_track_n     finite 1.00 mean +2.029 sd 1.372
+  trainer_dband_ae   finite 1.00 mean -0.012 sd 0.172
+  trainer_dband_n    finite 1.00 mean +3.324 sd 1.549
