@@ -144,3 +144,27 @@ Zverev $8.93 -> $10.24, Who'llstoplorraine $47.52 -> $28.28). Trees and CatBoost
 re-trained on the history every time a day is priced, moves 7.5%; the second stage (the market's memory of each horse)
 does the rest. FOUNDER'S CALL: run refresh_history.sh on the live folder each morning before pricing (one line in the
 9:30 and 12:17 routines), from the next meeting priced; bets and tips already out stay as they are.
+
+### 3.6 The opening book, scratchings and the deduction (open_book_check.py, open_book_months.py, deduction_model.py)
+In 22% of races the opening prices of the runners that RAN add up to under 100% (median 1.20, 5th percentile 0.75):
+every month since Jul 2025 (13-32%), live-pulled races included. That is not a broken record. It is scratchings after
+the market opened: the opens were real, the horses that came out took their share of the book with them, and TAB's
+deduction follows the shortfall. TAB's actual deductions (50 races from the founder's reports with every open):
+opening book under 0.9: 28.7c average; 0.9-1.0: 18.6c; 1.0-1.1: 11.6c; 1.1-1.2: 5.9c; 1.2+: 3.4c.
+Fit: DEDUCTION = 0.62 x max(0, 1.24 - opening book), correlation with the actual 0.87 (mean 12.4c fitted, 13.1c actual).
+- The backtest's bets lean into those races (2.3 bets a race where the book is under 0.9, 0.55 where it is 1.3+), so a
+  flat 16c could have been far too little. It is not: settled with the fitted deduction race by race the live sheet
+  makes +3,110u against +3,139u at the flat 16c (walk-forward), +4,285u against +4,517u (blend). The stake-weighted
+  deduction on our winners is 16-17c. THE FLAT 16c WAS RIGHT.
+- The 6x ceiling under the fitted deduction: +4,136u against +3,110u (walk-forward, all four periods), +5,904u against
+  +4,285u (blend, all six). At 1.5x the fitted deduction: +3,070u against +2,254u. Two thirds of the extra bets sit in
+  races that lost a fifth of their market, and they still pay after the deduction those races carry. In races with an
+  ordinary opening book only (110-135%): 42 extra bets, 7 won, +378u, all four periods.
+- Use the fit for settling paper bets when TAB's figure has not been reported: it is closer than the 0.95 / price
+  schedule (which ran 2.5x too high at Caulfield 14 Oct) and needs only the prices we already store.
+
+### 3.7 What a month looks like (risk_months.py)
+The live sheet's walk-forward bets re-drawn by whole race days into 10,000 thirty-day months, $50 a unit:
+at the backtest's volume the median month is +297u ($14.8k), one month in twenty is under +101u, 0.5% lose; at 70% of
+the volume (what live has fired) +207u ($10.3k), one in twenty under +41u, 1.8% lose, the worst run inside a month is
+typically 50u ($2.5k). With the 6x ceiling at 70% volume: +281u ($14.0k).

@@ -1,0 +1,31 @@
+TAB's actual deductions matched to a race with every open: 50 races, mean 13.1c, median 12c, none in 16%
+| opening book of the runners that ran | races | mean actual deduction | median | largest |
+|---|---|---|---|---|
+| 0.0-0.9 | 11 | 28.7c | 27c | 63c |
+| 0.9-1.0 | 5 | 18.6c | 20c | 22c |
+| 1.0-1.1 | 14 | 11.6c | 12c | 23c |
+| 1.1-1.2 | 7 | 5.9c | 4c | 13c |
+| 1.2-9.0 | 13 | 3.4c | 0c | 26c |
+
+fit: deduction = 0.62 x max(0, 1.24 - opening book); correlation with the actual 0.87; mean fitted 12.4c against actual 13.1c
+fitted deduction over all 5157 races with every open: mean 8.4c, median 4c, 30c+ in 5% of races
+
+WALK-FORWARD TREES, 1 Jan - 9 Nov 2026: the live sheet, settled three ways
+| ceiling | deduction | Jan-17Mar | 18Mar-2Jun | 3Jun-8Oct | 9Oct-9Nov | all | ROI | mean deduction on our winners |
+|---|---|---|---|---|---|---|---|---|
+| 3x (live) | flat 16c (the backtest) | +1133u | +571u | +1107u | +328u | +3139u | +41% | 16c |
+| 3x (live) | fitted to the race | +1122u | +528u | +1101u | +359u | +3110u | +40% | 16c |
+| 3x (live) | fitted x 1.5 (harsh) | +885u | +303u | +777u | +289u | +2254u | +29% | 24c |
+| 6x | flat 16c (the backtest) | +1367u | +784u | +1621u | +512u | +4283u | +52% | 16c |
+| 6x | fitted to the race | +1366u | +686u | +1533u | +552u | +4136u | +50% | 17c |
+| 6x | fitted x 1.5 (harsh) | +1104u | +399u | +1101u | +465u | +3070u | +37% | 26c |
+
+CROSS-FITTED THREE-MODEL BLEND, 1 Jul 2025 - 9 Nov 2026: the live sheet, settled three ways
+| ceiling | deduction | Jul-Sep25 | Oct-Dec25 | Jan-Mar26 | Apr-Jun26 | Jul-Sep26 | Oct-9Nov26 | all | ROI | mean deduction on our winners |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 3x (live) | flat 16c (the backtest) | +568u | +671u | +1264u | +847u | +795u | +372u | +4517u | +37% | 16c |
+| 3x (live) | fitted to the race | +549u | +484u | +1249u | +800u | +798u | +405u | +4285u | +36% | 17c |
+| 3x (live) | fitted x 1.5 (harsh) | +329u | +138u | +981u | +526u | +580u | +328u | +2882u | +24% | 26c |
+| 6x | flat 16c (the backtest) | +761u | +1143u | +1703u | +975u | +1305u | +592u | +6479u | +50% | 16c |
+| 6x | fitted to the race | +729u | +770u | +1672u | +872u | +1230u | +632u | +5904u | +46% | 19c |
+| 6x | fitted x 1.5 (harsh) | +468u | +274u | +1347u | +545u | +912u | +532u | +4077u | +32% | 28c |

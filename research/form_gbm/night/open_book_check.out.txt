@@ -1,0 +1,15 @@
+opening book (sum of 1/open) over the OOS races: median 1.199, 5th pct 0.752, 1st pct 0.559; under 100%: 21.7% of races, under 105%: 27.5%
+
+the 168 bets the 6x ceiling adds: opening book of their race median 0.801 (5th pct 0.416); share in a race with a book under 100%: 67%, under 105%: 70%, under 110%: 74%
+  runners in the race sharing the same opening price as the bet: median 1; 4 or more share it: 4% (all bets: 2%)
+
+| races kept | 3x ceiling | 6x ceiling | gain | extra bets | their winners |
+|---|---|---|---|---|---|
+| all | +3139u on 3316 bets | +4283u on 3484 | +1144u | 168 | 26 |
+| opening book 100%+ | +1249u on 1894 bets | +1678u on 1950 | +429u | 56 | 8 |
+| 105%+ | +1146u on 1662 bets | +1503u on 1713 | +357u | 51 | 7 |
+| 110%+ | +1077u on 1422 bets | +1448u on 1466 | +370u | 44 | 7 |
+| 110-135% (an ordinary book) | +1088u on 1367 bets | +1465u on 1409 | +378u | 42 | 7 |
+
+and with the extra bets required to be the ONLY runner at that opening price in the race (no flat placeholder line):
+  45 bets, 7 won, +368u on 132u; by period: +144u, +34u, +116u, +74u
