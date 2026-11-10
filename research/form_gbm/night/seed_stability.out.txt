@@ -1,0 +1,28 @@
+
+TWO DRAWS OF 5 NETWORK SEEDS (trees 5 seeds, CatBoost 1 seed, live weights)
+fold A: the two prices are a median 1.8% apart (90th pct 4.9%); 1645 bets in both lists, 74 only in the first, 45 only in the second (93% shared); shared bets' stakes differ by a median 2%
+  in both lists (first draw's stakes): 1645 bets, staked 3295u, +1192u (+36%)
+  in one list only: 119 bets, staked 196u, +37u (+19%)
+  first draw, all: 1719 bets, staked 3428u, +1248u (+36%)   |   second draw, all: 1690 bets, staked 3357u, +1183u (+35%)
+fold B: the two prices are a median 1.7% apart (90th pct 4.4%); 1641 bets in both lists, 69 only in the first, 61 only in the second (93% shared); shared bets' stakes differ by a median 2%
+  in both lists (first draw's stakes): 1641 bets, staked 3581u, +1469u (+41%)
+  in one list only: 130 bets, staked 209u, +19u (+9%)
+  first draw, all: 1710 bets, staked 3697u, +1476u (+40%)   |   second draw, all: 1702 bets, staked 3688u, +1482u (+40%)
+
+TWO DRAWS OF 10 NETWORK SEEDS (trees 5 seeds, CatBoost 1 seed, live weights)
+fold A: the two prices are a median 1.2% apart (90th pct 3.0%); 1675 bets in both lists, 30 only in the first, 43 only in the second (96% shared); shared bets' stakes differ by a median 1%
+  in both lists (first draw's stakes): 1675 bets, staked 3353u, +1211u (+36%)
+  in one list only: 73 bets, staked 111u, +55u (+49%)
+  first draw, all: 1705 bets, staked 3397u, +1222u (+36%)   |   second draw, all: 1718 bets, staked 3420u, +1256u (+37%)
+fold B: the two prices are a median 1.2% apart (90th pct 3.1%); 1667 bets in both lists, 35 only in the first, 52 only in the second (95% shared); shared bets' stakes differ by a median 1%
+  in both lists (first draw's stakes): 1667 bets, staked 3614u, +1536u (+43%)
+  in one list only: 87 bets, staked 144u, -50u (-35%)
+  first draw, all: 1702 bets, staked 3683u, +1525u (+41%)   |   second draw, all: 1719 bets, staked 3691u, +1489u (+40%)
+
+For scale: the same lists from two 3-seed sets of the TREES (network 3 seeds, CatBoost 1)
+fold A: prices a median 1.9% apart; 1663 bets in both, 128 in one only (93% shared)
+  in both: 1663 bets, staked 3319u, +1156u (+35%)
+  in one only: 128 bets, staked 204u, +11u (+5%)
+fold B: prices a median 2.0% apart; 1643 bets in both, 124 in one only (93% shared)
+  in both: 1643 bets, staked 3605u, +1527u (+42%)
+  in one only: 124 bets, staked 201u, -28u (-14%)

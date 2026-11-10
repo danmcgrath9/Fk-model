@@ -33,8 +33,9 @@ Nothing live was changed. Every item marked CALL is the founder's decision.
    for the drift third, or retire it.
 8. THE BOUNCE BLOCK (3.9) stops bets that made +22% to +24% at the open over 16 months, but nothing since June. CALL.
 9. TRAINING IS AT ITS CEILING (Part 2). 49 retrains, 20 network seeds, 3 CatBoost seeds, mixed recipes: the best is half
-   a percent on the trees alone and 0.2% inside the full blend. The blend and its weights are right. No leaks. The only
-   lever left on the price is more history (each doubling 4-6%).
+   a percent on the trees alone and nothing inside the full blend (the live recipe 0.0891 / 0.0942; everything doubled
+   0.0892 / 0.0941). The blend and its weights are right. No leaks. The only lever left on the price is more history
+   (each doubling 4-6%).
 10. LEFT ALONE, CHECKED: the 1.20 edge, the $1.60-$15 range, the three steps, the 10u cap, the flat 16c deduction, the
     blend with the open, the first-up and second-up blocks, the stake's calibration (3.2, 3.6, 3.9, 3.11, 1.6, 1.9).
 
@@ -426,8 +427,34 @@ Every arm of queues 1-2 that kept all 809 inputs is a different set of trees. Av
 - INSIDE THE FULL BLEND THE GAIN SHRINKS TO 0.2%: live blend with the 3-seed trees 0.0893 / 0.0945; with 10 seeds
   0.0891 / 0.0943; with the slow trees 0.0891 / 0.0944; with all 42 models 0.0891 / 0.0943. The network and CatBoost
   already average away most of what extra trees would.
-- Verdict on the training side: nothing to change. Ten seeds instead of five costs nothing at pricing time and is the
-  only one worth taking at the next retrain, for 0.2%.
+- Verdict on the training side: nothing to change. With the network on 5 seeds, as live has it, even the 0.2% goes
+  (2.9).
+
+### 2.9 Seeds for the network and CatBoost, and everything together (queue5.py, seed_stability.py)
+20 network seeds and 3 CatBoost seeds per fold. Live averages 5 network seeds and uses 1 CatBoost model.
+| network seeds | network alone: fold A / fold B KL | the live blend: fold A / fold B KL |
+|---|---|---|
+| 1 | 0.1054 / 0.1107 | 0.0900 / 0.0948 |
+| 3 | 0.1000 / 0.1055 | 0.0895 / 0.0943 |
+| 5 (live) | 0.0992 / 0.1044 | 0.0894 / 0.0942 |
+| 10 | 0.0985 / 0.1036 | 0.0894 / 0.0942 |
+| 20 | 0.0981 / 0.1033 | 0.0893 / 0.0941 |
+- The network alone gains 7% from 1 seed to 20; inside the blend 5 seeds already have it (0.0894 against 0.0893).
+  CatBoost alone gains 3.5% from 1 seed to 3 (0.0965 to 0.0932 on fold A, 0.1043 to 0.1004 on fold B); inside the
+  blend 0.0001 to 0.0002.
+- EVERYTHING TOGETHER CHANGES NOTHING. The live recipe (trees 5 seeds, network 5, CatBoost 1): 0.0891 / 1.9031 on fold
+  A, 0.0942 / 1.8332 on fold B. Trees 10 seeds, network 20, CatBoost 3: 0.0892 / 1.9029 and 0.0941 / 1.8326. Slow trees
+  with the same: 0.0892 / 1.9032 and 0.0941 / 1.8321. THE LIVE STAGE-1 RECIPE IS AT ITS CEILING ON THIS HISTORY: every
+  gain found on a single member is already averaged away by the other two.
+- How much of the bet list is the network's seed: the blended price on two different draws of 5 network seeds is a
+  median 1.8% apart runner by runner (90th percentile 4.9%); 93% of the bets are in both lists, with stakes within 2%.
+  The 7% that are in one list only are the small ones at the margin (1.6u a bet against 2.0-2.2u) and they are the weak
+  ones: +19% and +9% on stakes against +36% and +41% for the bets in both lists. Two 3-seed sets of the TREES do the
+  same (93% shared; the one-list bets +5% and -14%). With 10 network seeds 95-96% are shared.
+- What that means for live: once the history is refreshed each morning (1.3) the network is re-trained on slightly
+  different races and about one bet in fourteen will come or go between the first price and a re-price for no reason
+  but the seed. They are the marginal bets and worth little either way; a taken bet is never dropped, so no rule is
+  needed. Ten network seeds at pricing time would halve it for about a minute more per meeting. Optional.
 
 ### 3.11 The chance the stake is sized on is honest (blend_calib_bets.out.txt)
 The sheet's 3,484 walk-forward bets (6x ceiling) by open / our price, winners against the blended chance the Kelly stake

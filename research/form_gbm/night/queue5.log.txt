@@ -1,0 +1,55 @@
+nn x20 A 247s
+cb seed 1 A 566s
+cb seed 2 A 570s
+nn x20 B 154s
+cb seed 1 B 343s
+cb seed 2 B 331s
+
+NETWORK SEEDS (mean over disjoint groups of seeds; trees 5 seeds, CatBoost 1)
+| network seeds | alone, fold A: KL / log loss / profit | alone, fold B |
+|---|---|---|
+| 1 | 0.1054 / 1.9169 / +1108u | 0.1107 / 1.8489 / +1261u |
+| 3 | 0.1000 / 1.9112 / +1205u | 0.1055 / 1.8435 / +1300u |
+| 5 | 0.0992 / 1.9107 / +1183u | 0.1044 / 1.8426 / +1326u |
+| 10 | 0.0985 / 1.9099 / +1231u | 0.1036 / 1.8418 / +1317u |
+| 20 | 0.0981 / 1.9096 / +1266u | 0.1033 / 1.8414 / +1378u |
+
+| network seeds | LIVE blend, fold A: KL / log loss / profit | LIVE blend, fold B |
+|---|---|---|
+| 1 | 0.0900 / 1.9039 / +1259u | 0.0948 / 1.8334 / +1480u |
+| 3 | 0.0895 / 1.9033 / +1267u | 0.0943 / 1.8329 / +1491u |
+| 5 | 0.0894 / 1.9033 / +1250u | 0.0942 / 1.8329 / +1491u |
+| 10 | 0.0894 / 1.9032 / +1239u | 0.0942 / 1.8328 / +1507u |
+| 20 | 0.0893 / 1.9032 / +1241u | 0.0941 / 1.8328 / +1508u |
+fold A: the blend's spread across four 5-seed network draws: KL 0.0891 to 0.0897, profit +1183u to +1301u
+fold A: two 5-seed networks are a median 6.0% apart runner by runner, two 10-seed networks 3.9%; the BLENDED price on two 5-seed draws 1.8% (90th pct 4.9%)
+fold B: the blend's spread across four 5-seed network draws: KL 0.0939 to 0.0944, profit +1476u to +1529u
+fold B: two 5-seed networks are a median 5.7% apart runner by runner, two 10-seed networks 4.1%; the BLENDED price on two 5-seed draws 1.7% (90th pct 4.4%)
+
+CATBOOST SEEDS (trees 5 seeds, network 5 seeds)
+| CatBoost | fold A: KL / log loss / profit | fold B |
+|---|---|---|
+| alone, 1 seed (mean of 3) | 0.0965 / 1.9134 / +1125u | 0.1043 / 1.8424 / +1418u |
+| alone, 3 seeds | 0.0932 / 1.9101 / +1142u | 0.1004 / 1.8384 / +1431u |
+| live blend, 1 seed (mean of 3) | 0.0892 / 1.9029 / +1243u | 0.0944 / 1.8330 / +1478u |
+| live blend, 3 seeds | 0.0891 / 1.9028 / +1254u | 0.0942 / 1.8328 / +1436u |
+
+THE TREES RECIPE INSIDE THE FULL BLEND (network 5 seeds, CatBoost 1; the regression trees are 3 seeds throughout)
+| softmax trees | fold A: KL / log loss / profit | fold B |
+|---|---|---|
+| 3 seeds | 0.0893 / 1.9032 / +1246u | 0.0944 / 1.8332 / +1538u |
+| 5 seeds | 0.0891 / 1.9031 / +1248u | 0.0942 / 1.8332 / +1476u |
+| slow, 5 seeds | 0.0890 / 1.9034 / +1246u | 0.0942 / 1.8328 / +1476u |
+| 10 seeds | 0.0890 / 1.9031 / +1251u | 0.0942 / 1.8333 / +1477u |
+
+TOGETHER
+| blend | fold A: KL / log loss / profit | fold B |
+|---|---|---|
+| the live recipe: trees 5 seeds, network 5, CatBoost 1 | 0.0891 / 1.9031 / +1248u | 0.0942 / 1.8332 / +1476u |
+| trees 10 seeds, network 20, CatBoost 3 | 0.0892 / 1.9029 / +1281u | 0.0941 / 1.8326 / +1428u |
+| slow trees 5 seeds, network 20, CatBoost 3 | 0.0892 / 1.9032 / +1266u | 0.0941 / 1.8321 / +1506u |
+18:30 blend_live_recipe            A  KL 0.0891  LL 1.9031  bets 1719  profit +1247.9u  | A1 0.0872/1.9060/+900u  A2 0.0961/1.8924/+348u
+18:30 blend_more_seeds             A  KL 0.0892  LL 1.9029  bets 1713  profit +1280.6u  | A1 0.0873/1.9057/+946u  A2 0.0963/1.8929/+334u
+18:30 blend_live_recipe            B  KL 0.0942  LL 1.8332  bets 1710  profit +1475.6u  | B1 0.0946/1.8299/+879u  B2 0.0939/1.8362/+596u
+18:30 blend_more_seeds             B  KL 0.0941  LL 1.8326  bets 1711  profit +1428.2u  | B1 0.0942/1.8290/+890u  B2 0.0939/1.8359/+539u
+queue 5 done
