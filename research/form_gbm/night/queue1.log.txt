@@ -36,3 +36,7 @@
 13:20 drop_trials_sections         B  KL 0.1011  LL 1.8390  bets 1746  profit +1377.8u  | B1 0.1004/1.8360/+862u  B2 0.1018/1.8418/+516u
 13:23 drop_our_encodings           A  KL 0.0962  LL 1.9133  bets 1724  profit +1040.4u  | A1 0.0943/1.9147/+747u  A2 0.1031/1.9085/+293u
 13:25 drop_our_encodings           B  KL 0.0994  LL 1.8400  bets 1747  profit +1225.6u  | B1 0.1005/1.8376/+785u  B2 0.0984/1.8422/+440u
+13:29 drop_fk_jockey_trainer       A  KL 0.0938  LL 1.9110  bets 1782  profit +1314.8u  | A1 0.0921/1.9125/+992u  A2 0.0999/1.9055/+322u
+13:31 drop_fk_jockey_trainer       B  KL 0.0975  LL 1.8354  bets 1731  profit +1303.1u  | B1 0.0978/1.8315/+795u  B2 0.0972/1.8390/+508u
+13:41 drop_past_market             A  KL 0.0930  LL 1.9053  bets 1774  profit +1414.2u  | A1 0.0914/1.9088/+1071u  A2 0.0986/1.8930/+343u
+13:44 drop_past_market             B  KL 0.0977  LL 1.8357  bets 1773  profit +1401.5u  | B1 0.0975/1.8310/+859u  B2 0.0979/1.8401/+542u
