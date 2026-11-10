@@ -1,5 +1,5 @@
 ## mornington-20261110: 82 entries
-R1 Molesworth               finish 1  SP 10.0  BSP 11.5
+R1 Molesworth               finish 1  SP 10.0  BSP 12.5   (Betfair SP $12.50 as the founder saw it; Form King had 11.5)
 R1 Fantastic Beast          finish 2  SP 21.0  BSP 30.02
 R1 Kissattack               finish 3  SP 2.45  BSP 2.63
 R1 Guthrie                  finish 4  SP 41.0  BSP 55.0
