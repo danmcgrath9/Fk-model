@@ -1,0 +1,23 @@
+51298 runners, 5178 races; per period: P1 19861, P2 15682, P3 12296, LIVE 3459
+
+BACK EVERY RUNNER at OPEN (the luck baseline):
+  $2-$4   P1 A/E 0.92 -7% | P2 A/E 0.88 -12% | P3 A/E 0.90 -10% | LIVE A/E 0.93 -5%
+  $4-$7   P1 A/E 0.88 -11% | P2 A/E 0.86 -13% | P3 A/E 0.83 -17% | LIVE A/E 0.85 -13%
+  $7-$12  P1 A/E 0.92 -9% | P2 A/E 0.92 -8% | P3 A/E 0.88 -12% | LIVE A/E 0.83 -19%
+  $12-$25  P1 A/E 0.90 -7% | P2 A/E 0.84 -18% | P3 A/E 0.90 -8% | LIVE A/E 0.96 -7%
+
+BACK EVERY RUNNER at BSP (the luck baseline):
+  $2-$4   P1 A/E 0.98 -6% | P2 A/E 1.02 -3% | P3 A/E 0.97 -8% | LIVE A/E 1.04 -2%
+  $4-$7   P1 A/E 1.01 -6% | P2 A/E 1.05 -3% | P3 A/E 1.09 +1% | LIVE A/E 1.08 +2%
+  $7-$12  P1 A/E 1.02 -4% | P2 A/E 0.89 -18% | P3 A/E 0.91 -16% | LIVE A/E 0.89 -17%
+  $12-$25  P1 A/E 0.96 -16% | P2 A/E 1.03 -2% | P3 A/E 0.90 -17% | LIVE A/E 1.11 +3%
+
+365 type x band rules with 25+ bets in every period; 3 made money in all four. By luck alone: 2.7 (90% of draws 0-6)
+
+p = chance a no-skill draw does as well in all four periods (smaller is better)
+0.000006 BACK at BSP  $7-$12  beat its price last start | country/provincial
+          P1  268  35 ( 30.1)   +9.4u | P2  206  26 ( 22.7)  +19.3u | P3  169  23 ( 18.7)  +34.1u | LIVE   42  10 (  4.7)  +39.6u | all 685 bets 94 won (76.2) +102.4u (+15%)
+0.000733 BACK at BSP  $4-$7   won last start
+          P1  375  82 ( 71.0)  +25.9u | P2  351  81 ( 67.6)  +32.1u | P3  245  54 ( 47.5)  +20.8u | LIVE   57  14 ( 10.8)  +14.2u | all 1028 bets 231 won (196.9) +93.0u (+9%)
+0.001935 BACK at BSP  $4-$7   won last start | country/provincial
+          P1  212  48 ( 40.2)  +19.7u | P2  225  50 ( 43.5)  +10.4u | P3  150  36 ( 29.1)  +27.5u | LIVE   34   8 (  6.3)   +6.3u | all 621 bets 142 won (119.0) +63.9u (+10%)

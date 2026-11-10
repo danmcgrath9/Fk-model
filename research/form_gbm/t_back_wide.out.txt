@@ -1,0 +1,59 @@
+backtest 11847 runners (H1 6433, H2 5414); live 3733 runners in 364 races; live distance known on 32%, open on 97%
+1760 rules in the grid, 521 with 25+ bets in every period; 22 made money in all three. By luck alone: 30 (90% of draws 22-38)
+
+p = chance a no-skill draw beats it in all three periods at once (smaller is better; with this many rules, under 0.001 is worth a look)
+BAND BASELINES, back every runner in the band (the no-skill rate the luck test uses):
+  $1.5-$2    H1   46 A/E 1.11    +3.3u (+7%) | H2   60 A/E 1.16    +7.2u (+12%) | LIVE   28 A/E 0.82    -6.2u (-22%)
+  $2-$3    H1  191 A/E 0.99    -9.9u (-5%) | H2  178 A/E 0.93   -19.1u (-11%) | LIVE  134 A/E 0.96   -12.6u (-9%)
+  $3-$4    H1  242 A/E 1.07    +3.6u (+1%) | H2  249 A/E 0.91   -36.1u (-15%) | LIVE  166 A/E 1.14   +11.8u (+7%)
+  $4-$5    H1  296 A/E 1.04    -6.3u (-2%) | H2  248 A/E 1.20   +33.2u (+13%) | LIVE  158 A/E 1.04    -2.2u (-1%)
+  $5-$7    H1  575 A/E 1.04   -16.6u (-3%) | H2  473 A/E 1.15   +28.1u (+6%) | LIVE  300 A/E 1.05    -3.4u (-1%)
+  $7-$10   H1  731 A/E 0.93  -103.5u (-14%) | H2  551 A/E 0.82  -133.2u (-24%) | LIVE  357 A/E 0.98   -28.3u (-8%)
+  $10-$15   H1  805 A/E 0.94  -100.7u (-13%) | H2  653 A/E 0.97   -68.1u (-10%) | LIVE  444 A/E 1.01   -15.2u (-3%)
+  $15-$25   H1  918 A/E 0.67  -347.1u (-38%) | H2  730 A/E 1.03   -37.4u (-5%) | LIVE  611 A/E 1.11   +25.6u (+4%)
+
+p      side band     rule | H1: bets won (BSP said) units | H2 | LIVE | all
+0.00028 BACK $4-$5   model strongly against (BSP<=ours/1.6) | country/provincial
+           35  12 (  7.7)  +16.79u |   36  12 (  8.0)  +14.85u |   30  11 (  6.8)  +16.22u | 101 bets 35 won (22.5) +47.86u
+0.00032 BACK $5-$7   model likes it (BSP>=1.3x ours) | country/provincial
+           49  10 (  8.2)  +10.22u |   56  18 (  9.5)  +40.89u |   35   8 (  5.9)  +11.02u | 140 bets 36 won (23.7) +62.13u
+0.00036 BACK $4-$5   model strongly against (BSP<=ours/1.6)
+           46  15 ( 10.2)  +18.01u |   44  15 (  9.8)  +18.68u |   40  14 (  9.0)  +19.62u | 130 bets 44 won (28.9) +56.32u
+0.00132 BACK $7-$10  open shorter than ours (open<=ours/1.3) | mid field (9-12)
+          182  26 ( 21.5)  +26.32u |  126  17 ( 15.1)   +5.08u |   90  13 ( 10.8)  +14.43u | 398 bets 56 won (47.4) +45.83u
+0.00241 BACK $2-$3   model against (BSP<=ours/1.3) | inside barrier (1-4)
+           28  16 ( 11.4)  +10.87u |   33  14 ( 13.4)   +0.84u |   33  14 ( 12.7)   +2.07u | 94 bets 44 won (37.5) +13.78u
+0.00245 BACK $10-$15  drifted 2x | country/provincial
+          104   9 (  8.5)   +3.23u |   85   9 (  7.0)  +15.95u |   62   8 (  5.0)  +31.62u | 251 bets 26 won (20.5) +50.80u
+0.00404 BACK $4-$5   model strongly against (BSP<=ours/1.6) | mid field (9-12)
+           30   8 (  6.6)   +4.36u |   30  10 (  6.8)  +11.17u |   27   9 (  6.1)  +10.99u | 87 bets 27 won (19.5) +26.52u
+0.00431 BACK $4-$5   firmed 1.5x | mid field (9-12)
+           57  16 ( 12.8)  +10.26u |   44  14 (  9.9)  +14.43u |   33  10 (  7.5)   +9.43u | 134 bets 40 won (30.2) +34.12u
+0.00633 BACK $10-$15  any | 1700m+
+          172  18 ( 14.2)  +36.66u |  148  14 ( 12.3)   +2.51u |   43   4 (  3.6)   +3.74u | 363 bets 36 won (30.1) +42.92u
+0.00658 BACK $4-$5   firmed 1.5x | country/provincial
+           63  18 ( 14.2)  +12.63u |   59  18 ( 13.1)  +17.36u |   40  11 (  9.0)   +6.23u | 162 bets 47 won (36.3) +36.21u
+0.00749 BACK $10-$15  our bottom half | inside barrier (1-4)
+           75   7 (  6.1)   +5.70u |   87   8 (  7.2)   +2.32u |   64   8 (  5.2)  +26.84u | 226 bets 23 won (18.5) +34.85u
+0.00777 BACK $3-$4   any | metro
+           47  14 ( 13.3)   +0.15u |   37  14 ( 10.5)   +9.69u |   32  12 (  9.2)   +7.64u | 116 bets 40 won (33.0) +17.48u
+0.00808 BACK $3-$4   our top 3 | metro
+           47  14 ( 13.3)   +0.15u |   37  14 ( 10.5)   +9.69u |   32  12 (  9.2)   +7.64u | 116 bets 40 won (33.0) +17.48u
+0.00819 BACK $10-$15  drifted 1.25x | inside barrier (1-4)
+          130  12 ( 10.7)   +6.00u |   93  11 (  7.8)  +27.72u |   76   7 (  6.3)   +5.95u | 299 bets 30 won (24.8) +39.67u
+0.00819 BACK $10-$15  open shorter than ours (open<=ours/1.3) | inside barrier (1-4)
+           92  10 (  7.6)  +24.06u |   73   8 (  6.2)  +11.52u |   60   6 (  5.0)   +9.87u | 225 bets 24 won (18.7) +45.44u
+0.01307 BACK $5-$7   BSP 2nd-3rd pick | country/provincial
+          375  68 ( 63.7)   +0.93u |  319  74 ( 55.0)  +77.71u |  212  39 ( 36.1)   +2.98u | 906 bets 181 won (154.8) +81.63u
+0.01333 BACK $4-$5   firmed 1.5x
+           82  22 ( 18.4)  +10.51u |   68  21 ( 15.1)  +20.41u |   47  12 ( 10.6)   +3.81u | 197 bets 55 won (44.1) +34.73u
+0.01987 BACK $5-$7   open shorter than ours (open<=ours/1.3)
+          187  39 ( 31.8)  +21.74u |  151  31 ( 25.8)  +16.86u |  101  18 ( 17.0)   +1.40u | 439 bets 88 won (74.6) +40.00u
+0.02617 BACK $4-$5   BSP favourite + model against (BSP<=ours/1.3)
+           46  12 ( 10.5)   +3.03u |   28   9 (  6.3)   +9.53u |   27   7 (  6.1)   +3.48u | 101 bets 28 won (22.9) +16.04u
+0.03078 BACK $10-$15  firmed 1.25x | mid field (9-12)
+          139  13 ( 11.6)   +8.91u |   98   9 (  8.1)   +5.30u |   43   4 (  3.6)   +2.00u | 280 bets 26 won (23.4) +16.20u
+0.04130 BACK $5-$7   model likes it (BSP>=1.3x ours) | mid field (9-12)
+           49  10 (  8.2)   +9.90u |   36   8 (  6.1)   +6.29u |   27   5 (  4.6)   +0.11u | 112 bets 23 won (18.9) +16.29u
+0.06984 BACK $4-$5   BSP 2nd-3rd pick | small field (<=8)
+           49  12 ( 11.0)   +0.98u |   69  17 ( 15.4)   +2.19u |   32   9 (  7.3)   +5.50u | 150 bets 38 won (33.7) +8.67u
