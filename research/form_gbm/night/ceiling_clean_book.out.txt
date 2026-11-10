@@ -1,0 +1,10 @@
+
+walk-forward trees, 1 Jan - 9 Nov 2026, races with an opening book of 110-135% (1968 races)
+  ceiling 3x: 1031 bets, 2337u, +1614u (+69%); by period +529u, +267u, +681u, +138u
+  ceiling 6x: 1063 bets, 2439u, +2018u (+83%); by period +708u, +322u, +754u, +234u
+  the extra bets (open 3x-6x ours): 32, 6 won (BSP expected 3.7), +404u on 102u; by period +179u, +55u, +73u, +97u; median open $26, BSP/open 0.41
+
+cross-fitted blend, 1 Jul 2025 - 9 Nov 2026, races with an opening book of 110-135% (3097 races)
+  ceiling 3x: 1538 bets, 3307u, +2063u (+62%); by period +256u, +106u, +587u, +452u, +430u, +233u
+  ceiling 6x: 1573 bets, 3416u, +2584u (+76%); by period +370u, +120u, +801u, +433u, +529u, +331u
+  the extra bets (open 3x-6x ours): 35, 8 won (BSP expected 4.1), +521u on 109u; by period +113u, +15u, +214u, -18u, +99u, +98u; median open $26, BSP/open 0.40

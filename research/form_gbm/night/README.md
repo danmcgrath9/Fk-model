@@ -386,3 +386,12 @@ steady 0.97; firmed a little 0.98; firmed 1.25-1.5x 0.98; firmed 1.5-2x 1.00; fi
 BSP has the move priced. Inside the big firmers only $3-$5 stands out, in all three eras (A/E 1.10 / 1.21 / 1.10,
 1,322 runners, +7.5% backed at BSP after commission), and its neighbours do not ($1-$3 0.99, $5-$7 0.91, $7-$10 0.87):
 an island in a grid of twelve cells, already in the tracker, not a book. There is no BSP-side edge in the prices alone.
+
+### 3.14 The ceiling in races whose opening market stayed intact (ceiling_clean_book.out.txt)
+Opening book 110-135% (nothing much scratched after the open, so the price on the final field is the price we could
+have had), every live block on, deduction by race: walk-forward 3x +1,614u, 6x +2,018u (+25%; +708 v +529, +322 v +267,
++754 v +681, +234 v +138); blend 3x +2,063u, 6x +2,584u (+25%, five of six periods). The extra bets are FEW: 32 and 35
+(about three a month), 6 and 8 winners where BSP's chances said 3.7 and 4.1, median open $26, BSP 0.4x the open. The
+gain does not need those winners to have been lucky: a horse that opens at 2.5x where the market ends up is a bet at
+BSP's own strike rate. So the honest size of the change is about three more bets a month in clean races plus the
+scratching-affected ones (which pay less after deductions), for roughly a quarter more profit.
