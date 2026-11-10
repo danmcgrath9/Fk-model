@@ -1157,9 +1157,9 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
   Nightowl 8th, Tassadar 12th, Express Guard 12th, It's Gnarly 9th. Would have been +11.28u on 6.32u.
 - Twitter (Mercer card, current prices with deductions, half units): Marilyn's Edge 1.07u $6.50 -> $5.67 won +5.00u;
   Nightowl 0.73u, Tassadar 0.34u, Express Guard 0.49u, It's Gnarly 0.54u lost. 3.17u, +2.90u.
-- Lay book (d5n, $200 a lay): 6 lays, 0 winners, +5.52u (+$1,104; +$276 at Friday's $50), all $15-$40 (Fantastic Beast
-  2nd at $30.02). R1 Molesworth (won) is NOT a lay: Betfair SP $12.50 (founder; Form King's results say $11.50, overridden
-  in the results file) sits between its windows, $11.31-$12 and $15-$40.
+- Lay book (d5n, $200 a lay): 7 lays, 1 winner, -4.98u (-$996; -$249 at Friday's $50). $8-$12: R1 Molesworth BSP $11.50
+  WON, -10.50u (its window $11.31-$12; the founder confirmed $11.50, Form King's figure: the $12.50 said at midday was wrong,
+  and so was "no lay"). $15-$40: 6 lays, 0 won, +5.52u (Fantastic Beast 2nd at $30.02).
 - Back book: no BSP favourite inside its range. 0 backs.
-- Rule tracker (research/form_gbm/track_rules.py, 47 meetings): the ten paper rules +260.74u since 9 Oct; Mornington alone
-  -13.72u (at $12.50 Molesworth is a hit for the paper "Lay $12-$15, drifted 1.25x from open" rule, opened $5).
+- Rule tracker (research/form_gbm/track_rules.py, 47 meetings): the ten paper rules +261.74u since 9 Oct; Mornington alone
+  -12.72u (Molesworth hit both the $8-$12 lay rules; the $12-$15 drift lay -11.66u).
