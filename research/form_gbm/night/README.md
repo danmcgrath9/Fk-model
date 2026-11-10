@@ -342,3 +342,39 @@ The sheet's 3,484 walk-forward bets (6x ceiling) by open / our price, winners ag
 uses: 1.2-1.4x 173 won v 173.3 expected; 1.4-1.7x 232 v 228.9; 1.7-2.2x 154 v 150.6; 2.2-3x 58 v 62.2; 3-4x 17 v 15.4;
 4-6x 9 v 7.3; all 643 v 637.7 (our price alone expected 688.6, BSP 617.0). The blend is calibrated on its own bets at
 every overlay, the big ones included, so the stake needs no haircut there.
+
+### 3.12 THE BETFAIR SP RULES ON MONTHS THAT NEVER CHOSE THEM (bsp_rules_oos.py)
+The ten tracked rules were picked on 10 Nov from June-July, August-8 Oct and the live weeks. Jul 2025 - 2 Jun 2026 was
+never looked at: four untouched periods, 2,900 races. Rules that read only the open and BSP are exact there; rules that
+read our price use the walk-forward trees (2026) and the cross-fitted blend (2025), stage 1, a little blunter than live.
+1u at BSP, 8% commission, first starters out. Bets, winners (BSP expected), units:
+
+| rule | the four untouched periods | by period | 3 Jun - 8 Oct (chosen on) | 9 Oct - 9 Nov | verdict |
+|---|---|---|---|---|---|
+| Lay $8-$12, BSP >= 1.6x ours (CURRENT) | 502, 51 (50.6), -34.1u | -8.6, -34.0, -3.2, +11.8 | 149, 6 (15.0), +75.8u | -0.3u | FAILS |
+| Lay $15-$40, BSP >= 1.5x ours (CURRENT) | 2,765, 126 (117.4), -457.2u | -255.6, +87.3, -211.1, -77.8 | 908, 21 (37.9), +335.4u | -68.2u | FAILS |
+| Lay $25-$40, drifted 2x from open | 1,218, 39 (39.0), -89.9u | -180.6, -21.6, -20.1, +132.4 | 471, 11 (15.1), +119.8u | +144.4u | FAILS |
+| Lay $8-$12, firmed 1.5x from open | 595, 66 (62.4), -85.2u | -24.8, -111.8, +56.0, -4.6 | +28.8u | +27.4u | FAILS |
+| Lay $12-$15, drifted 1.25x from open | 1,294, 96 (97.2), -80.7u | -183.4, +37.1, +56.5, +9.0 | +33.5u | -4.6u | FAILS |
+| Back $4-$7, firmed 1.5x from open | 968, 177 (186.8), -132.8u | -90.1, -36.1, +10.9, -17.4 | +23.7u | +39.6u | FAILS |
+| Back BSP fav $4-$7, ours >= 1.6x BSP (CURRENT) | 189, 41 (40.9), -13.9u | -18.1, +10.3, +1.5, -7.6 | +25.6u | +0.4u | FAILS |
+| Lay $25-$40, BSP <= ours/1.6 | 271, 6 (8.9), +77.1u | +19.7, +64.4, -11.4, +4.4 | +48.3u | +18.4u | holds 3 of 4 |
+| Back $3-$5, firmed 1.5x from open | 774, 228 (199.1), +58.5u | -3.6, +11.7, +28.8, +21.6 | +16.5u | +3.2u | holds 3 of 4 |
+| Back $4-$7, ours >= 1.6x BSP (any runner) | 851, 188 (164.8), +47.4u | -0.2, +9.6, +3.3, +34.7 | +10.0u | -0.0u | holds 3 of 4 |
+
+- THE LAY EDGE EXISTS ONLY IN THE PERIOD THE RULES WERE CHOSEN ON. The $15-$40 lay: 21 winners against 37.9 expected
+  from June to 8 Oct; 126 against 117.4 in the eleven months before; 17 against 14.0 in the live weeks. The $8-$12 lay:
+  6 against 15.0, then 51 against 50.6. Outside June-October these runners win exactly as often as BSP says, and a lay
+  at BSP then loses the commission.
+- The tracker's best rule (lay $25-$40 drifted 2x from the open, +122u live on 167 lays, 1 winner against 5.3) is dead
+  even on 1,218 untouched lays: 39 winners against 39.0. The live month was the lucky tail of a fair bet.
+- What survives is small and on the BACK side: firmers at $3-$5 (228 won against 199.1 by BSP, +58u, and positive in
+  the chosen and live periods too: six periods, five positive, +78u on 1,171 bets), and $4-$7 runners the market has far
+  shorter than we do (188 against 164.8, +47u). The first reads only prices; the second agrees with the live scorecard
+  (where BSP is 1.5x+ shorter than us the horse wins more than even BSP says). The same firmers at $4-$7 fail, so even
+  these are weak: z about 2.4 and 2.1 before allowing for ten rules.
+- This is the same conclusion as 1.1 from the other side: BSP is efficient against everything we hold. The model's
+  value is at the open.
+FOUNDER'S CALL before Friday 13 Nov: the paper lay book and the live $50 lays rest on rules that do not survive eleven
+untouched months. Keep them on paper (the tracker costs nothing), and do not put real money behind the two current lay
+rules on this evidence.
