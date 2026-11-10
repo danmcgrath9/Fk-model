@@ -1,0 +1,51 @@
+NOISE FLOOR (the base arm on three seed sets): mean and sd
+  fold A: KL 0.0929 +/- 0.0003   log loss 1.9058 +/- 0.0004   profit +1246u +/- 20u
+  fold B: KL 0.0969 +/- 0.0001   log loss 1.8354 +/- 0.0014   profit +1360u +/- 47u
+
+| arm | what | fold A: KL / log loss / profit v base | fold B: KL / log loss / profit v base | verdict |
+|---|---|---|---|---|
+| seeds8 | 8 seeds averaged (live 5, tests 3) | -0.0012 / -0.0011 / -47u | -0.0011 / -0.0001 / +44u | BETTER in both folds |
+| lr03_r8000 | learning rate 0.03, 8000 rounds | -0.0011 / +0.0004 / +8u | -0.0009 / -0.0025 / +62u | BETTER in both folds |
+| gap2_head | + the margin for the 12 headline ratings only | -0.0007 / -0.0001 / +77u | -0.0004 / -0.0006 / +56u | BETTER in both folds |
+| r6000 | 6000 rounds | -0.0006 / -0.0005 / +111u | -0.0003 / -0.0010 / +16u | better in both, inside the noise |
+| w_book | races weighted by how close the BSP book is to 100% (thin markets count less) | -0.0006 / +0.0009 / +57u | -0.0003 / -0.0006 / +104u | better in both, inside the noise |
+| aug_40 | blanked copy on 40% of runners, not 80% | -0.0007 / +0.0007 / -27u | -0.0001 / -0.0007 / +87u | better in both, inside the noise |
+| ff35 | feature_fraction 0.35 | -0.0006 / +0.0024 / +13u | -0.0001 / +0.0005 / +73u | better in both, inside the noise |
+| apt | + sire / dam sire on today's going and distance band, jockey at the track, trainer in the band | -0.0005 / -0.0013 / +101u | -0.0000 / -0.0006 / +141u | better in both, inside the noise |
+| md50 | min_data_in_leaf 50 (live 100) | -0.0004 / -0.0009 / +32u | -0.0000 / +0.0014 / -66u | better in both, inside the noise |
+| md200 | min_data_in_leaf 200 (live 100) | -0.0003 / +0.0018 / -25u | -0.0001 / -0.0017 / +121u | better in both, inside the noise |
+| gap2 | + margin over the best other runner, 111 inputs | -0.0002 / +0.0003 / -12u | -0.0002 / -0.0008 / -25u | better in both, inside the noise |
+| md400 | min_data_in_leaf 400 (live 100) | -0.0000 / +0.0020 / +96u | -0.0003 / -0.0013 / +28u | better in both, inside the noise |
+| drop_speedmap | without the speedmap inputs | +0.0001 / -0.0007 / +4u | -0.0003 / -0.0032 / +96u | no gain |
+| gap2_close | + margin and rivals-close counts | -0.0000 / +0.0025 / -11u | -0.0002 / +0.0007 / +12u | better in both, inside the noise |
+| drop_sire | without the sire inputs | +0.0005 / +0.0005 / -5u | -0.0007 / -0.0013 / +65u | no gain |
+| drop_bias | without the bias inputs | -0.0005 / +0.0011 / +135u | +0.0004 / +0.0029 / +19u | no gain |
+| ff10 | feature_fraction 0.1 (live 0.2) | +0.0001 / +0.0002 / -131u | -0.0002 / -0.0011 / +71u | no gain |
+| nl31 | num_leaves 31 | -0.0007 / +0.0010 / +55u | +0.0007 / -0.0001 / -16u | no gain |
+| l2_1 | lambda_l2 1 (live 10) | +0.0000 / +0.0008 / +69u | +0.0001 / +0.0002 / -11u | no gain |
+| bag60 | bagging 0.6 (live 0.8) | -0.0000 / +0.0021 / +84u | +0.0002 / -0.0020 / -66u | no gain |
+| drop_track_surface_going | without the track_surface_going inputs | -0.0005 / -0.0004 / -3u | +0.0006 / -0.0013 / +95u | no gain |
+| gap2_z | + margin and race z-score | -0.0004 / +0.0006 / +61u | +0.0006 / +0.0013 / +105u | no gain |
+| drop_past_market | without the past_market inputs | -0.0003 / +0.0000 / +176u | +0.0007 / +0.0009 / -12u | no gain |
+| drop_head_to_head | without the head_to_head inputs | -0.0002 / +0.0000 / -45u | +0.0006 / -0.0003 / +87u | no gain |
+| drop_price_moves | without the price_moves inputs | +0.0005 / +0.0019 / -8u | +0.0001 / -0.0010 / +125u | no gain |
+| gap2_apt | + both | +0.0003 / +0.0027 / +74u | +0.0002 / -0.0000 / +18u | no gain |
+| drop_gear_detail | without the gear_detail inputs | -0.0003 / +0.0003 / -66u | +0.0009 / +0.0025 / +48u | no gain |
+| drop_fk_jockey_trainer | without the fk_jockey_trainer inputs | +0.0005 / +0.0057 / +77u | +0.0004 / +0.0006 / -111u | no gain |
+| aug_none | no blanked copy | +0.0011 / +0.0044 / +22u | +0.0000 / +0.0026 / +32u | no gain |
+| l2_50 | lambda_l2 50 | +0.0005 / +0.0025 / +60u | +0.0006 / +0.0011 / +101u | no gain |
+| drop_neural | without the neural inputs | +0.0003 / +0.0021 / +55u | +0.0011 / +0.0001 / +42u | no gain |
+| drop_field_relative | without the field_relative inputs | +0.0004 / -0.0036 / +122u | +0.0014 / -0.0026 / +29u | no gain |
+| drop_fk_form_records | without the fk_form_records inputs | +0.0013 / +0.0020 / +36u | +0.0007 / -0.0000 / -43u | worse in both |
+| nl7 | num_leaves 7 (live 15) | +0.0016 / +0.0022 / -146u | +0.0007 / +0.0011 / -24u | worse in both |
+| no_extra | extra_trees off | +0.0002 / +0.0040 / -77u | +0.0026 / +0.0015 / -20u | no gain |
+| lc_from_oct25 | trained only on races from 2025-10-01 to 2 Jun 2026 | +0.0018 / -0.0000 / +47u | - | fold A only |
+| r2000 | 2000 rounds (live 4000) | +0.0020 / +0.0017 / -34u | +0.0015 / +0.0026 / +62u | worse in both |
+| drop_speed_sectionals | without the speed_sectionals inputs | +0.0011 / +0.0017 / -82u | +0.0027 / +0.0028 / +13u | worse in both |
+| drop_our_encodings | without the our_encodings inputs | +0.0030 / +0.0080 / -197u | +0.0023 / +0.0052 / -188u | worse in both |
+| top400 | only the 400 inputs with the most gain in the base model of the same fold | +0.0033 / +0.0033 / -70u | +0.0034 / +0.0042 / -79u | worse in both |
+| drop_trials_sections | without the trials_sections inputs | +0.0037 / +0.0052 / -148u | +0.0041 / +0.0042 / -36u | worse in both |
+| lc_from_jan26 | trained only on races from 2026-01-01 to 2 Jun 2026 | +0.0060 / +0.0063 / -41u | - | fold A only |
+| top200 | only the 200 inputs with the most gain in the base model of the same fold | +0.0061 / +0.0062 / -123u | +0.0093 / +0.0122 / -93u | worse in both |
+| lc_from_mar26 | trained only on races from 2026-03-01 to 2 Jun 2026 | +0.0095 / +0.0104 / -182u | - | fold A only |
+| no_rider_model | trained without the 47 rider inputs (the price before riders are declared) | +0.0113 / +0.0157 / -409u | +0.0108 / +0.0104 / -165u | worse in both |

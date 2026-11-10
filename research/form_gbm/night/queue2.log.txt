@@ -25,3 +25,7 @@ gap2 111 inputs, gap2+z 222, close 14, aptitude 12
 16:19 apt                          B  KL 0.0970  LL 1.8342  bets 1751  profit +1554.7u  | B1 0.0968/1.8278/+1023u  B2 0.0972/1.8403/+532u
 16:22 gap2_apt                     A  KL 0.0936  LL 1.9081  bets 1761  profit +1311.4u  | A1 0.0917/1.9096/+1050u  A2 0.1001/1.9026/+262u
 16:24 gap2_apt                     B  KL 0.0973  LL 1.8348  bets 1729  profit +1432.2u  | B1 0.0970/1.8293/+949u  B2 0.0976/1.8399/+483u
+16:27 lc_from_oct25                A  KL 0.0950  LL 1.9053  bets 1742  profit +1284.9u  | A1 0.0935/1.9071/+976u  A2 0.1004/1.8989/+309u
+16:29 lc_from_jan26                A  KL 0.0992  LL 1.9116  bets 1773  profit +1196.7u  | A1 0.0967/1.9107/+910u  A2 0.1083/1.9149/+286u
+16:30 lc_from_mar26                A  KL 0.1028  LL 1.9157  bets 1808  profit +1055.4u  | A1 0.0996/1.9146/+840u  A2 0.1143/1.9196/+216u
+queue 2 done

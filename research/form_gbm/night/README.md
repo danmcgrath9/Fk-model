@@ -285,3 +285,54 @@ won, +313.1u (+47%); the same on fresh history +309.1u (+47%). Both halves alike
   there the 6x ceiling still adds +378u on 42 extra bets, all four periods (3.6), and the committed live files, priced
   before the late scratchings, show the same thing on a small sample (17 runners, +24.5u). The direction is safe; expect
   less than the headline +27% to +35%.
+
+## Part 2. Closer to BSP: 45 retrains of the stage-1 trees (queue1.py, queue2.py, report.py -> queues_report.out.txt)
+Noise floor, the live settings on three seed sets: fold A KL 0.0929 +/- 0.0003, log loss 1.9058 +/- 0.0004, profit
++1,246u +/- 20u; fold B 0.0969 +/- 0.0001, 1.8354 +/- 0.0014, +1,360u +/- 47u. (Today's form-line and track-bias results,
+-0.0004 and -0.0007 on fold A alone, sit inside it.) Fold B is new: trees trained only on Jul-Dec 2025 made +1,414u on
+Jan-May 2026 at the open under the live rules, races never used as a test before.
+
+### 2.1 What beat the live recipe in BOTH folds
+| change | fold A: KL / log loss | fold B: KL / log loss | note |
+|---|---|---|---|
+| 8 seeds averaged (tests use 3, live 5) | -0.0012 / -0.0011 | -0.0011 / -0.0001 | free at training time |
+| learning rate 0.03 with 8,000 rounds (live 0.06 / 4,000) | -0.0011 / +0.0004 | -0.0009 / -0.0025 | October's tuning tried 0.03 without the extra rounds and called it worse |
+| + margin over the best other runner, 12 headline ratings | -0.0007 / -0.0001 | -0.0004 / -0.0006 | every rating reaches the trees as "minus the best in the race", 0 for the top horse; this adds the top horse's margin over the second. The full 111-input version, the z-scores and the rivals-close counts add nothing |
+Each is about 1% of the distance to BSP. queue4.py checks them together at the live seed count (2.5).
+
+### 2.2 What did not
+- The blanked copy stays: without it KL +0.0011 / +0.0000 and log loss worse in both folds. On 40% of runners instead
+  of 80%: no different.
+- min_data_in_leaf 50 / 200 / 400, lambda_l2 1 / 50, feature_fraction 0.1 / 0.35, bagging 0.6, num_leaves 31, weighting
+  races by how complete the BSP book is: all inside the noise. num_leaves 7, 2,000 rounds and extra_trees off: worse.
+- PRUNING IS WORSE: the 400 inputs with the most gain +0.0033 / +0.0034, the top 200 +0.0061 / +0.0093. The long tail
+  of small inputs earns its place.
+- New inputs: sire and dam sire on today's going class and distance band, jockey at the track, trainer in the distance
+  band (rolling, earlier races only): KL -0.0005 / -0.0000, inside the noise.
+
+### 2.3 What the model stands on (each family removed, KL change fold A / fold B)
+Trial form and section splits +0.0037 / +0.0041; our rolling trainer / jockey / stable records +0.0030 / +0.0023 (and
+-197u / -188u of profit, the biggest money effect of any family); speed and sectional figures +0.0011 / +0.0027; Form
+King's form records +0.0013 / +0.0007. Removed with no measurable loss on its own: gear detail, past price moves, bias,
+speedmap, sire, head-to-head, past market, track-surface-going, the neural rating, Form King's jockey and trainer
+percentages (log loss worse on fold A), the field-relative copies (KL a little worse, winner log loss a little BETTER
+in both folds: they help us follow the market more than they help find winners).
+
+### 2.4 The learning curve: history is still the biggest lever
+Fold A's holdout (3 Jun - 9 Nov), trees trained on less history ending 2 Jun:
+| trained from | training races | KL to BSP | winner log loss |
+|---|---|---|---|
+| 1 Mar 2026 | 1,041 | 0.1028 | 1.9157 |
+| 1 Jan 2026 | 1,652 | 0.0992 | 1.9116 |
+| 1 Oct 2025 | 2,682 | 0.0950 | 1.9053 |
+| 1 Jul 2025 (all) | 3,636 | 0.0932 | 1.9053 |
+Each doubling of the history has been worth about 0.004-0.006 of KL, 4-6% of the distance to BSP, and the last 36%
+still bought 0.0018. Nothing else tested tonight is worth more than 0.0012. Form King's own history starts 1 Jul 2025,
+so more Victorian history only comes with time (the model gains about 1% every two months by being retrained); the
+national archive is the only way to buy a doubling, and other states' races will not transfer in full.
+
+### 2.5 A model for the price before riders are declared (no_rider_model)
+The same trees trained with no rider input at all (47 inputs out): KL 0.1046 / 0.1078 against 0.0932 / 0.0970, about
+12% further from BSP; at the open under the live rules +829u against +1,238u (fold A) and +1,249u against +1,414u
+(fold B). Blanking the riders on the LIVE model instead costs 29% (4.4). So the early price should come from a model
+trained without riders, kept beside the live one, and be replaced by the live price when the riders land.
