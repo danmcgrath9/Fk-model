@@ -37,11 +37,12 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
                 r = F.run_ratings(raw)
                 runs.append({"date": str(d), "track": r["track"], "dist": r["distance"], "fin": r["finish"], "of": r["runners"],
                              "margin": F.past_event_margin(raw), "sp": raw.get("startingPrice"),
-                             "wfa": r["wfaRat"] or r["wfa"], "atWeights": r["atWeights"], "raceRating": r["raceRating"]})
+                             "wfa": r["wfaRat"] or r["wfa"], "atWeights": r["atWeights"], "raceRating": r["raceRating"],
+                             "settled": (r.get("positions") or [None])[0], "barrier": raw.get("barrier")})
         runs = sorted(runs, key=lambda x: x["date"], reverse=True)[: a.runs]
         out.append({"horse": n, "runs": runs})
         print(f"\n{n}" + ("" if hs else ": not held"))
         for x in runs:
             print(f"  {x['date']} {x['track'] or '?':18} {x['dist']}m {x['fin']}/{x['of']} {x['margin']}L ${x['sp']}  "
-                  f"WFA {x['wfa']}  at weights {x['atWeights']}  race {x['raceRating']}")
+                  f"WFA {x['wfa']}  at weights {x['atWeights']}  race {x['raceRating']}  settled {x['settled']}/{x['of']} from barrier {x['barrier']}")
 print("\nJSON " + json.dumps(out, default=str))
