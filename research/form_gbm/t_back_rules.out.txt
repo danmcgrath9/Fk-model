@@ -1,0 +1,7 @@
+backtest: 11847 runners in 1173 races (H1 6433, H2 5414); live: 3740 runners, opening price on 97%
+
+49 rules with 25+ bets in every period; 2 made money in all three (luck alone: about 6)
+
+side  band      rule                       | H1: bets won (BSP said) units | H2: ... | LIVE: ...
+BACK  $4-$7     firmed 1.5x from open      |  194  41 ( 37.5)   +0.45u |  182  43 ( 34.8)  +26.27u |  109  29 ( 21.3)  +35.32u
+BACK  $4-$7     BSP <= ours/1.6            |  152  33 ( 28.2)   +7.07u |  141  37 ( 26.4)  +41.77u |   92  23 ( 17.9)  +18.69u

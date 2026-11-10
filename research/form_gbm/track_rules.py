@@ -27,6 +27,9 @@ RULES = [
     ("B35firm", "BACK", "Back $3-$5, firmed 1.5x from open", lambda r: 3 <= r["bsp"] < 5 and r["open"] and r["bsp"] * 1.5 <= r["open"]),
     ("L1540x15", "LAY", "Lay $15-$40, BSP >= 1.5x ours (current, failing live)", lambda r: 15 <= r["bsp"] <= 40 and r["bsp"] >= 1.5 * r["ours"]),
     ("BfavX16", "BACK", "Back BSP fav $4-$7, ours >= 1.6x BSP (current)", lambda r: r["fav"] and 4 <= r["bsp"] < 7 and r["ours"] >= 1.6 * r["bsp"]),
+    # added 10 Nov 2026 from t_back_rules.py (founder: "Are there any backing strategies"): the two back rules of 49 that held
+    ("B47firm", "BACK", "Back $4-$7, firmed 1.5x from open", lambda r: 4 <= r["bsp"] < 7 and r["open"] and r["bsp"] * 1.5 <= r["open"]),
+    ("B47x16", "BACK", "Back $4-$7, ours >= 1.6x BSP (any runner)", lambda r: 4 <= r["bsp"] < 7 and r["ours"] >= 1.6 * r["bsp"]),
 ]
 
 

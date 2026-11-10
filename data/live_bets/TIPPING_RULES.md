@@ -259,4 +259,6 @@ data/live_bets/rule-tracker.csv), reported in the 9:30am settle message, and jud
 2. Lay $25-$40 drifted 2x from Form King's open.        6. Back $3-$5 firmed 1.5x from the open.
 3. Lay $25-$40 when BSP <= ours / 1.6.                 7. Lay $15-$40 when BSP >= 1.5x ours (current, failing live).
 4. Lay $8-$12 firmed 1.5x from the open.                8. Back the BSP favourite $4-$7 when ours >= 1.6x BSP (current).
+Added 10 Nov (research/form_gbm/t_back_rules.py: 49 back rules, 2 held, about 6 by luck): 9. Back $4-$7 firmed 1.5x from the
+open. 10. Back any $4-$7 runner when ours >= 1.6x BSP (the favourite rule widened).
 Which of these go live on Betfair from Fri 13 Nov is the founder's call.

@@ -3,10 +3,14 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-09,ballarat,L812x16,LAY,1,Alltogethernow,6.41,15.57,10.5,0,0.92
 2026-10-09,ballarat,L1540x15,LAY,10,Ardashir,10.03,4.8,16.0,0,0.92
 2026-10-09,ballarat,B35firm,BACK,10,The Muffin Man,6.53,11.5,4.0,0,-1.0
+2026-10-09,ballarat,B47firm,BACK,10,The Muffin Man,6.53,11.5,4.0,0,-1.0
+2026-10-09,ballarat,B47x16,BACK,10,The Muffin Man,6.53,11.5,4.0,0,-1.0
 2026-10-09,ballarat,B35firm,BACK,10,Soldier Boi,3.55,8.25,3.55,0,-1.0
 2026-10-09,ballarat,L2540drift2,LAY,10,Durban Harbour,31.01,13.0,34.0,0,0.92
 2026-10-09,ballarat,L2540drift2,LAY,10,So Brave,27.87,15.0,34.0,0,0.92
+2026-10-09,ballarat,B47x16,BACK,2,Endemic,10.68,4.8,6.6,0,-1.0
 2026-10-09,ballarat,B35firm,BACK,2,Top Rich,6.01,15.11,4.45,0,-1.0
+2026-10-09,ballarat,B47firm,BACK,2,Top Rich,6.01,15.11,4.45,0,-1.0
 2026-10-09,ballarat,L1215drift,LAY,2,Whitebait,7.9,9.0,13.34,0,0.92
 2026-10-09,ballarat,L812firm,LAY,2,Open Fire,18.21,15.11,9.92,0,0.92
 2026-10-09,ballarat,L1540x15,LAY,2,Millsy's Award,12.51,7.83,20.0,1,-19.0
@@ -19,9 +23,14 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-09,ballarat,L1215drift,LAY,6,Russian Sky,7.55,5.5,14.5,0,0.92
 2026-10-09,ballarat,L1215drift,LAY,7,Imperial Award,5.3,4.7,13.0,1,-12.0
 2026-10-09,ballarat,L1540x15,LAY,8,Kakkoii,6.85,8.5,21.0,0,0.92
+2026-10-09,ballarat,B47firm,BACK,8,Russian Duchess,11.3,9.5,6.2,0,-1.0
+2026-10-09,ballarat,B47x16,BACK,8,Russian Duchess,11.3,9.5,6.2,0,-1.0
 2026-10-09,ballarat,L1540x15,LAY,9,Aka Daka,8.2,7.75,18.0,0,0.92
 2026-10-09,ballarat,L1540x15,LAY,9,Durham,9.16,6.92,15.51,0,0.92
 2026-10-09,ballarat,BfavX16,BACK,9,Cute Girl,9.16,4.35,5.06,0,-1.0
+2026-10-09,ballarat,B47x16,BACK,9,Cute Girl,9.16,4.35,5.06,0,-1.0
+2026-10-09,ballarat,B47firm,BACK,9,His Finest Hour,13.87,13.0,5.77,0,-1.0
+2026-10-09,ballarat,B47x16,BACK,9,His Finest Hour,13.87,13.0,5.77,0,-1.0
 2026-10-09,cranbourne,L1215drift,LAY,2,She's Loaded,9.58,9.0,12.0,0,0.92
 2026-10-09,cranbourne,L2540worse,LAY,3,Nic Says No,55.86,21.0,27.06,0,0.92
 2026-10-09,cranbourne,L1540x15,LAY,3,Lika Mosh,15.19,31.0,23.6,0,0.92
@@ -42,6 +51,7 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-09,cranbourne,L1215drift,LAY,9,Too Tough,8.4,6.0,14.0,0,0.92
 2026-10-09,cranbourne,L1215drift,LAY,9,Jenni Poppins,15.54,8.5,13.5,0,0.92
 2026-10-09,cranbourne,L1540x15,LAY,9,Small Town Hero,9.84,10.0,17.0,0,0.92
+2026-10-10,caulfield,B47x16,BACK,1,In'kantosstar,8.6,5.5,4.6,1,3.312
 2026-10-10,caulfield,L2540worse,LAY,1,Regal Lion,176.87,34.0,37.11,0,0.92
 2026-10-10,caulfield,B35firm,BACK,1,Just Desserts,4.99,6.5,3.61,0,-1.0
 2026-10-10,caulfield,L1540x15,LAY,1,Classic Gem,8.25,7.5,19.02,0,0.92
@@ -50,22 +60,30 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-10,caulfield,L2540drift2,LAY,10,Lord Of Biscay,19.49,15.0,33.5,0,0.92
 2026-10-10,caulfield,L1540x15,LAY,10,Lord Of Biscay,19.49,15.0,33.5,0,0.92
 2026-10-10,caulfield,L2540drift2,LAY,10,Pinstriped,25.34,13.0,26.0,0,0.92
+2026-10-10,caulfield,B47x16,BACK,2,Fiery Fun,9.28,6.0,4.85,0,-1.0
 2026-10-10,caulfield,L2540drift2,LAY,3,Moonlight Circus,21.12,8.0,28.88,0,0.92
+2026-10-10,caulfield,B47firm,BACK,3,Astral Flame,10.41,10.33,6.06,0,-1.0
+2026-10-10,caulfield,B47x16,BACK,3,Astral Flame,10.41,10.33,6.06,0,-1.0
 2026-10-10,caulfield,L1540x15,LAY,4,Suntora,19.27,19.33,36.71,0,0.92
 2026-10-10,caulfield,BfavX16,BACK,4,Pinhole,15.13,5.75,4.79,1,3.4868
+2026-10-10,caulfield,B47x16,BACK,4,Pinhole,15.13,5.75,4.79,1,3.4868
 2026-10-10,caulfield,L1540x15,LAY,4,Onesmoothoperator,20.83,26.0,32.0,0,0.92
 2026-10-10,caulfield,L1540x15,LAY,4,Campaldino,8.46,18.0,33.98,0,0.92
 2026-10-10,caulfield,L1215drift,LAY,4,Machine Gun Gracie,8.53,9.75,13.78,0,0.92
 2026-10-10,caulfield,L2540drift2,LAY,5,Tomato Toastie,16.58,13.0,29.0,0,0.92
 2026-10-10,caulfield,L1540x15,LAY,5,Tomato Toastie,16.58,13.0,29.0,0,0.92
 2026-10-10,caulfield,L1215drift,LAY,5,Naifah,12.62,10.0,13.72,0,0.92
+2026-10-10,caulfield,B47x16,BACK,6,Flying For Fun,10.28,5.0,5.7,0,-1.0
 2026-10-10,caulfield,L1540x15,LAY,6,Grand Larceny,10.04,13.0,22.8,0,0.92
 2026-10-10,caulfield,L2540drift2,LAY,8,Wolf Gap,39.79,15.67,35.63,0,0.92
 2026-10-10,caulfield,L1215drift,LAY,8,Tron Bolt,12.81,8.75,12.0,0,0.92
 2026-10-10,caulfield,L1215drift,LAY,9,Evaporate,9.37,8.25,13.0,0,0.92
 2026-10-10,caulfield,L812x16,LAY,9,Changing Colours,6.13,7.25,10.0,0,0.92
+2026-10-10,caulfield,B47x16,BACK,9,Lady Shenandoah,12.25,6.25,6.1,1,4.692
 2026-10-10,caulfield,L2540drift2,LAY,9,Panova,45.25,17.5,38.29,0,0.92
 2026-10-10,caulfield,L1540x15,LAY,9,Feroce,13.72,18.5,23.0,0,0.92
+2026-10-11,seymour,B47firm,BACK,1,Circus Moon,9.49,12.0,5.7,0,-1.0
+2026-10-11,seymour,B47x16,BACK,1,Circus Moon,9.49,12.0,5.7,0,-1.0
 2026-10-11,seymour,L1215drift,LAY,1,Brilliant Bull Ant,11.65,6.5,14.0,0,0.92
 2026-10-11,seymour,L812firm,LAY,1,Levent,13.63,17.0,11.17,0,0.92
 2026-10-11,seymour,L2540drift2,LAY,10,Flying Mikki,26.71,13.0,37.19,0,0.92
@@ -81,25 +99,38 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-11,seymour,L1540x15,LAY,5,Frostration,16.06,12.0,26.08,0,0.92
 2026-10-11,seymour,B35firm,BACK,5,Navy Heart,12.27,7.5,4.79,0,-1.0
 2026-10-11,seymour,BfavX16,BACK,5,Navy Heart,12.27,7.5,4.79,0,-1.0
+2026-10-11,seymour,B47firm,BACK,5,Navy Heart,12.27,7.5,4.79,0,-1.0
+2026-10-11,seymour,B47x16,BACK,5,Navy Heart,12.27,7.5,4.79,0,-1.0
 2026-10-11,seymour,L2540drift2,LAY,6,Salamanca Six,54.47,7.5,38.35,0,0.92
+2026-10-11,seymour,B47firm,BACK,6,Bel Lupa,5.07,19.0,5.2,0,-1.0
 2026-10-11,seymour,L2540drift2,LAY,6,Ulfberht,7.94,13.0,26.0,0,0.92
 2026-10-11,seymour,L1540x15,LAY,6,Ulfberht,7.94,13.0,26.0,0,0.92
 2026-10-11,seymour,L1540x15,LAY,7,Sister Shay,14.79,51.0,28.59,0,0.92
 2026-10-11,seymour,L1540x15,LAY,7,Lathlain,8.59,6.5,23.0,0,0.92
 2026-10-11,seymour,L1540x15,LAY,7,Princess Que,10.57,11.0,18.98,0,0.92
+2026-10-11,seymour,B47firm,BACK,7,Legacy Bay,12.41,16.0,5.6,0,-1.0
+2026-10-11,seymour,B47x16,BACK,7,Legacy Bay,12.41,16.0,5.6,0,-1.0
 2026-10-11,seymour,L2540drift2,LAY,7,Russian Choice,16.38,15.0,37.65,0,0.92
 2026-10-11,seymour,L1540x15,LAY,7,Russian Choice,16.38,15.0,37.65,0,0.92
 2026-10-11,seymour,L1215drift,LAY,8,Interest Point,20.76,7.5,14.5,0,0.92
 2026-10-11,seymour,L2540drift2,LAY,8,Fluent,21.61,12.0,29.59,0,0.92
 2026-10-11,seymour,L1215drift,LAY,8,Electric Elvis,18.87,8.0,12.71,0,0.92
+2026-10-11,seymour,B47firm,BACK,9,Immediacy,11.12,16.0,6.79,0,-1.0
+2026-10-11,seymour,B47x16,BACK,9,Immediacy,11.12,16.0,6.79,0,-1.0
 2026-10-11,seymour,BfavX16,BACK,9,Detonator Jack,12.13,9.0,5.6,0,-1.0
+2026-10-11,seymour,B47firm,BACK,9,Detonator Jack,12.13,9.0,5.6,0,-1.0
+2026-10-11,seymour,B47x16,BACK,9,Detonator Jack,12.13,9.0,5.6,0,-1.0
 2026-10-11,seymour,L1540x15,LAY,9,Justadeel,9.15,11.0,18.3,0,0.92
 2026-10-13,kilmore,L1540x15,LAY,1,Theatrical Queen,10.87,4.2,19.0,0,0.92
 2026-10-13,kilmore,L2540drift2,LAY,1,Forward Ho,15.64,8.5,33.03,0,0.92
 2026-10-13,kilmore,L1540x15,LAY,1,Forward Ho,15.64,8.5,33.03,0,0.92
 2026-10-13,kilmore,B35firm,BACK,2,Sound Byte,5.88,8.0,3.75,1,2.53
+2026-10-13,kilmore,B47x16,BACK,3,Bliss Bomb,8.27,6.0,4.01,0,-1.0
+2026-10-13,kilmore,B47firm,BACK,4,Royal Heritage,9.33,14.0,6.95,0,-1.0
 2026-10-13,kilmore,L1540x15,LAY,4,Black Adam,7.02,7.0,24.0,0,0.92
+2026-10-13,kilmore,B47firm,BACK,4,Seeyou Raider,6.84,10.0,5.41,1,4.0572
 2026-10-13,kilmore,L1540x15,LAY,4,Flux,10.44,5.5,17.0,0,0.92
+2026-10-13,kilmore,B47firm,BACK,5,Knock Of Beers,5.55,21.0,5.77,0,-1.0
 2026-10-13,kilmore,L2540drift2,LAY,5,Sacred Ingot,16.21,9.0,29.0,0,0.92
 2026-10-13,kilmore,L1540x15,LAY,5,Sacred Ingot,16.21,9.0,29.0,0,0.92
 2026-10-13,kilmore,L2540drift2,LAY,6,Mahmudah,11.5,9.0,26.0,0,0.92
@@ -108,10 +139,13 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-13,kilmore,L2540drift2,LAY,6,Hustle,12.8,6.5,30.0,0,0.92
 2026-10-13,kilmore,L1540x15,LAY,6,Hustle,12.8,6.5,30.0,0,0.92
 2026-10-13,kilmore,L1540x15,LAY,7,Winter Nights,8.8,16.0,16.44,0,0.92
+2026-10-14,caulfield,B47firm,BACK,2,Mister Whiskers,10.48,15.0,6.8,1,5.336
 2026-10-14,caulfield,B35firm,BACK,2,True Rebel,3.47,8.0,3.1,0,-1.0
 2026-10-14,caulfield,L1540x15,LAY,2,So Royal,15.13,19.0,27.29,0,0.92
 2026-10-14,caulfield,B35firm,BACK,4,Autumnheat,7.29,9.0,4.9,1,3.588
+2026-10-14,caulfield,B47firm,BACK,4,Autumnheat,7.29,9.0,4.9,1,3.588
 2026-10-14,caulfield,L1215drift,LAY,4,Beach Pad,8.54,8.0,12.5,0,0.92
+2026-10-14,caulfield,B47firm,BACK,4,Savisanta,5.55,10.0,5.78,0,-1.0
 2026-10-14,caulfield,L1540x15,LAY,4,Shultzy,21.13,23.0,40.0,0,0.92
 2026-10-14,caulfield,L1540x15,LAY,5,Fiorenot,6.84,7.0,23.0,0,0.92
 2026-10-14,caulfield,L1540x15,LAY,6,Johnich,10.94,6.0,17.84,1,-16.84
@@ -125,6 +159,7 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-14,caulfield,L1540x15,LAY,8,Wingsandpropellers,20.01,26.0,36.0,0,0.92
 2026-10-15,warrnambool,L1540x15,LAY,1,Acharnee,9.81,4.6,16.0,0,0.92
 2026-10-15,warrnambool,L2540drift2,LAY,2,Stomping Ground,24.48,11.0,28.6,0,0.92
+2026-10-15,warrnambool,B47firm,BACK,2,Black Aces,8.63,11.0,6.25,1,4.83
 2026-10-15,warrnambool,L1540x15,LAY,2,Ocean Surge,12.43,11.5,22.06,0,0.92
 2026-10-15,warrnambool,L1215drift,LAY,2,Prince Iadora,10.68,11.0,14.5,0,0.92
 2026-10-15,warrnambool,L2540drift2,LAY,3,Miss Delightful,17.19,8.0,32.24,0,0.92
@@ -145,10 +180,16 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-15,warrnambool,L812firm,LAY,7,Both Sides Now,8.66,15.0,9.2,0,0.92
 2026-10-15,warrnambool,L1540x15,LAY,7,Garnacho,11.69,11.0,18.34,0,0.92
 2026-10-15,warrnambool,L1540x15,LAY,8,Midnight Devil,9.01,4.6,15.5,0,0.92
+2026-10-15,warrnambool,B47firm,BACK,8,Kid Dynamite,8.96,15.0,5.64,0,-1.0
 2026-10-16,cranbourne,L1540x15,LAY,1,Capital Affair,13.56,15.0,27.46,0,0.92
 2026-10-16,cranbourne,L2540drift2,LAY,1,Locard,4.56,7.5,27.57,0,0.92
 2026-10-16,cranbourne,L1540x15,LAY,1,Locard,4.56,7.5,27.57,0,0.92
+2026-10-16,cranbourne,B47x16,BACK,2,Ottalaus,11.53,7.0,4.96,1,3.6432
 2026-10-16,cranbourne,B35firm,BACK,2,Naked Light,6.84,11.0,4.62,0,-1.0
+2026-10-16,cranbourne,B47firm,BACK,2,Naked Light,6.84,11.0,4.62,0,-1.0
+2026-10-16,cranbourne,B47x16,BACK,3,Celestra,16.2,5.5,6.4,1,4.968
+2026-10-16,cranbourne,B47firm,BACK,3,Fort Of Dreams,8.89,11.0,5.13,0,-1.0
+2026-10-16,cranbourne,B47x16,BACK,3,Fort Of Dreams,8.89,11.0,5.13,0,-1.0
 2026-10-16,cranbourne,L1540x15,LAY,4,Jourama,12.7,7.5,19.07,0,0.92
 2026-10-16,cranbourne,L2540drift2,LAY,5,Empressive Enuff,29.91,12.0,38.0,0,0.92
 2026-10-16,cranbourne,L1540x15,LAY,5,Lygon Street Luigi,20.92,17.0,40.0,0,0.92
@@ -157,11 +198,16 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-16,cranbourne,L1540x15,LAY,6,Wolves' Den,14.41,19.0,33.85,0,0.92
 2026-10-16,cranbourne,L812firm,LAY,6,Kazungula,13.04,18.0,11.86,0,0.92
 2026-10-16,cranbourne,L1540x15,LAY,7,Venetian Choice,9.07,17.0,19.0,0,0.92
+2026-10-16,cranbourne,B47x16,BACK,8,Iced Poppy,8.33,6.0,5.1,0,-1.0
 2026-10-16,cranbourne,L812firm,LAY,8,Oceanella,16.75,17.0,9.01,0,0.92
+2026-10-16,cranbourne,B47firm,BACK,8,Holding Captive,20.38,17.0,6.46,0,-1.0
+2026-10-16,cranbourne,B47x16,BACK,8,Holding Captive,20.38,17.0,6.46,0,-1.0
 2026-10-16,cranbourne,B35firm,BACK,8,Hustle In Heels,3.68,5.5,3.54,1,2.3368
 2026-10-16,cranbourne,L1540x15,LAY,8,Arlington Row,8.37,8.0,16.5,0,0.92
 2026-10-16,cranbourne,L1215drift,LAY,8,Cattle Camp,8.03,5.0,12.8,0,0.92
 2026-10-17,avoca,L1540x15,LAY,1,Khan Capital,9.66,9.0,16.5,0,0.92
+2026-10-17,avoca,B47firm,BACK,2,Celestial Option,15.43,15.87,6.14,0,-1.0
+2026-10-17,avoca,B47x16,BACK,2,Celestial Option,15.43,15.87,6.14,0,-1.0
 2026-10-17,avoca,L1540x15,LAY,2,Cosmic Command,7.97,7.89,15.02,0,0.92
 2026-10-17,avoca,L1540x15,LAY,3,Inside Word,15.82,19.0,37.83,0,0.92
 2026-10-17,avoca,L2540drift2,LAY,3,Jool Of The Bool,19.45,11.5,28.85,0,0.92
@@ -174,10 +220,14 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-17,bendigo,L1215drift,LAY,1,Quynh,11.75,4.6,12.59,1,-11.59
 2026-10-17,bendigo,L1215drift,LAY,2,Mehsun,13.5,7.5,13.88,0,0.92
 2026-10-17,bendigo,B35firm,BACK,2,Genomic,2.98,11.0,4.81,0,-1.0
+2026-10-17,bendigo,B47firm,BACK,2,Genomic,2.98,11.0,4.81,0,-1.0
 2026-10-17,bendigo,B35firm,BACK,3,Verismo,6.27,7.0,4.4,0,-1.0
+2026-10-17,bendigo,B47firm,BACK,3,Verismo,6.27,7.0,4.4,0,-1.0
 2026-10-17,bendigo,L2540worse,LAY,3,See No City,73.43,74.0,28.3,0,0.92
 2026-10-17,bendigo,B35firm,BACK,4,Shelly's Legacy,10.3,12.5,4.81,1,3.5052
 2026-10-17,bendigo,BfavX16,BACK,4,Shelly's Legacy,10.3,12.5,4.81,1,3.5052
+2026-10-17,bendigo,B47firm,BACK,4,Shelly's Legacy,10.3,12.5,4.81,1,3.5052
+2026-10-17,bendigo,B47x16,BACK,4,Shelly's Legacy,10.3,12.5,4.81,1,3.5052
 2026-10-17,bendigo,L1540x15,LAY,4,Bring The Thunder,12.08,9.75,24.4,0,0.92
 2026-10-17,bendigo,L2540drift2,LAY,4,Brummagen,10.75,5.75,36.0,0,0.92
 2026-10-17,bendigo,L1540x15,LAY,4,Brummagen,10.75,5.75,36.0,0,0.92
@@ -185,6 +235,7 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-17,bendigo,B35firm,BACK,5,Vim Vitae,6.99,19.0,3.95,0,-1.0
 2026-10-17,bendigo,B35firm,BACK,5,Gazerati,3.01,7.5,3.92,0,-1.0
 2026-10-17,bendigo,L812firm,LAY,6,Lulu Darling,16.87,13.0,8.62,0,0.92
+2026-10-17,bendigo,B47firm,BACK,6,It's Gnarly,7.65,13.0,5.6,0,-1.0
 2026-10-17,bendigo,L2540drift2,LAY,6,Bakersbend,21.21,9.5,29.02,0,0.92
 2026-10-17,bendigo,L2540drift2,LAY,6,Savethebesttillast,12.36,14.0,32.54,0,0.92
 2026-10-17,bendigo,L1540x15,LAY,6,Savethebesttillast,12.36,14.0,32.54,0,0.92
@@ -195,8 +246,11 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-17,bendigo,L1540x15,LAY,7,Newcombe,11.89,5.0,27.19,0,0.92
 2026-10-17,bendigo,B35firm,BACK,7,Forest Jim,7.66,8.0,4.37,0,-1.0
 2026-10-17,bendigo,BfavX16,BACK,7,Forest Jim,7.66,8.0,4.37,0,-1.0
+2026-10-17,bendigo,B47firm,BACK,7,Forest Jim,7.66,8.0,4.37,0,-1.0
+2026-10-17,bendigo,B47x16,BACK,7,Forest Jim,7.66,8.0,4.37,0,-1.0
 2026-10-17,bendigo,L2540drift2,LAY,7,Determinato,32.44,8.5,26.89,0,0.92
 2026-10-17,bendigo,B35firm,BACK,7,Positivo,6.94,9.0,4.52,0,-1.0
+2026-10-17,bendigo,B47firm,BACK,7,Positivo,6.94,9.0,4.52,0,-1.0
 2026-10-17,bendigo,L2540drift2,LAY,7,Makusha,8.29,6.0,30.82,0,0.92
 2026-10-17,bendigo,L1540x15,LAY,7,Makusha,8.29,6.0,30.82,0,0.92
 2026-10-17,caulfield,B35firm,BACK,1,Russian Rock,6.7,5.5,3.5,0,-1.0
@@ -207,6 +261,8 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-17,caulfield,L1215drift,LAY,3,Eagle Express,8.58,7.5,12.0,0,0.92
 2026-10-17,caulfield,L1540x15,LAY,4,Kotahitanga,9.42,15.0,17.5,0,0.92
 2026-10-17,caulfield,BfavX16,BACK,4,I Am Aria,6.75,4.8,4.0,0,-1.0
+2026-10-17,caulfield,B47x16,BACK,4,I Am Aria,6.75,4.8,4.0,0,-1.0
+2026-10-17,caulfield,B47firm,BACK,4,Star Of Macedon,8.19,13.0,5.63,0,-1.0
 2026-10-17,caulfield,L2540drift2,LAY,4,Ektifire,24.78,15.0,36.0,0,0.92
 2026-10-17,caulfield,L1540x15,LAY,4,Zoehrer,15.64,17.0,26.0,0,0.92
 2026-10-17,caulfield,L1540x15,LAY,4,Yourworstnightmare,22.5,31.0,36.0,0,0.92
@@ -217,12 +273,16 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-17,caulfield,L1540x15,LAY,8,Organised Crime,11.85,9.0,18.08,0,0.92
 2026-10-17,caulfield,L812firm,LAY,8,Barracks,18.3,15.0,8.93,0,0.92
 2026-10-17,caulfield,B35firm,BACK,8,Threads,10.53,15.0,4.03,0,-1.0
+2026-10-17,caulfield,B47firm,BACK,8,Threads,10.53,15.0,4.03,0,-1.0
+2026-10-17,caulfield,B47x16,BACK,8,Threads,10.53,15.0,4.03,0,-1.0
 2026-10-17,caulfield,L812x16,LAY,8,Doubt Time,5.51,5.5,9.2,0,0.92
 2026-10-17,caulfield,L1540x15,LAY,9,Treasurethe Moment,18.61,30.33,31.21,0,0.92
 2026-10-17,caulfield,L2540worse,LAY,9,Kings Valley,99.84,26.0,34.99,0,0.92
 2026-10-17,caulfield,L1540x15,LAY,9,Kingswood,9.58,25.0,28.12,1,-27.12
 2026-10-17,wodonga,L2540worse,LAY,1,Community Gaz,68.32,81.0,29.47,0,0.92
 2026-10-17,wodonga,B35firm,BACK,1,Magic Royale,10.14,8.0,4.33,0,-1.0
+2026-10-17,wodonga,B47firm,BACK,1,Magic Royale,10.14,8.0,4.33,0,-1.0
+2026-10-17,wodonga,B47x16,BACK,1,Magic Royale,10.14,8.0,4.33,0,-1.0
 2026-10-17,wodonga,L812x16,LAY,1,Pure Warrior,4.42,5.0,8.53,0,0.92
 2026-10-17,wodonga,L2540worse,LAY,1,Tallingas Diamond,61.09,71.0,28.25,0,0.92
 2026-10-17,wodonga,L1540x15,LAY,2,Lull Us Away,8.88,4.8,20.0,0,0.92
@@ -232,6 +292,8 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-17,wodonga,L1215drift,LAY,3,I've Forgotten,13.63,3.9,12.49,0,0.92
 2026-10-17,wodonga,B35firm,BACK,3,Salina Special,9.39,6.75,4.2,1,2.944
 2026-10-17,wodonga,BfavX16,BACK,3,Salina Special,9.39,6.75,4.2,1,2.944
+2026-10-17,wodonga,B47firm,BACK,3,Salina Special,9.39,6.75,4.2,1,2.944
+2026-10-17,wodonga,B47x16,BACK,3,Salina Special,9.39,6.75,4.2,1,2.944
 2026-10-17,wodonga,L1540x15,LAY,3,Imposing Tallulah,10.85,8.75,16.32,0,0.92
 2026-10-17,wodonga,B35firm,BACK,4,Rivazza,12.79,6.0,3.45,0,-1.0
 2026-10-17,wodonga,L2540drift2,LAY,4,Cinephile,13.87,8.5,25.34,0,0.92
@@ -253,11 +315,13 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-18,horsham,L1540x15,LAY,4,Min Kiata,17.2,17.0,31.1,0,0.92
 2026-10-18,horsham,L1215drift,LAY,5,What A Ripper,8.9,4.6,13.84,0,0.92
 2026-10-18,horsham,L1540x15,LAY,5,Makarim,10.37,16.0,23.75,0,0.92
+2026-10-18,horsham,B47firm,BACK,6,Endless Summer,8.13,8.5,5.61,0,-1.0
 2026-10-18,horsham,L1215drift,LAY,6,Coronationhercules,19.22,8.5,12.46,0,0.92
 2026-10-18,horsham,L2540drift2,LAY,6,Stargust,18.21,10.0,32.89,0,0.92
 2026-10-18,horsham,L1540x15,LAY,6,Stargust,18.21,10.0,32.89,0,0.92
 2026-10-18,horsham,L1540x15,LAY,6,Cat Noir,10.42,13.0,19.5,0,0.92
 2026-10-18,horsham,BfavX16,BACK,6,Spex,8.57,6.0,4.8,0,-1.0
+2026-10-18,horsham,B47x16,BACK,6,Spex,8.57,6.0,4.8,0,-1.0
 2026-10-18,horsham,L1540x15,LAY,6,Mr Independent,14.86,18.0,23.0,0,0.92
 2026-10-18,horsham,B35firm,BACK,7,Aftermath,3.53,7.5,3.28,0,-1.0
 2026-10-18,horsham,L812firm,LAY,7,Takemetothemoon,19.89,17.0,8.8,0,0.92
@@ -265,19 +329,26 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-18,horsham,L1540x15,LAY,7,Any Luck,18.15,15.0,34.0,0,0.92
 2026-10-18,horsham,L1540x15,LAY,7,Miracle Spin,9.14,4.6,15.14,0,0.92
 2026-10-18,horsham,L1540x15,LAY,7,Budjik Boy,11.1,11.0,16.8,0,0.92
+2026-10-18,horsham,B47firm,BACK,8,Octane Reign,12.26,9.0,6.0,1,4.6
+2026-10-18,horsham,B47x16,BACK,8,Octane Reign,12.26,9.0,6.0,1,4.6
 2026-10-18,horsham,L2540drift2,LAY,8,Pianta,31.4,8.0,27.0,0,0.92
 2026-10-18,horsham,L2540drift2,LAY,8,Kilna,23.32,8.0,28.0,0,0.92
 2026-10-18,horsham,B35firm,BACK,8,Surfy Pete,4.28,9.0,4.35,0,-1.0
+2026-10-18,horsham,B47firm,BACK,8,Surfy Pete,4.28,9.0,4.35,0,-1.0
 2026-10-18,horsham,L1215drift,LAY,8,Weather Delay,5.27,7.0,12.04,0,0.92
 2026-10-18,moe,L812firm,LAY,1,Genki Girl,22.3,19.0,11.68,0,0.92
 2026-10-18,moe,L1540x15,LAY,1,Bohemian Blitz,9.24,4.8,22.0,0,0.92
 2026-10-18,moe,L1215drift,LAY,2,Dama Royale,12.96,7.0,14.0,0,0.92
 2026-10-18,moe,L1215drift,LAY,3,Style Guide,13.73,8.0,12.0,0,0.92
+2026-10-18,moe,B47x16,BACK,4,Aseventy Seven,10.74,7.5,6.12,0,-1.0
 2026-10-18,moe,L812firm,LAY,4,Frank Express,11.95,16.75,10.5,1,-9.5
 2026-10-18,moe,L1215drift,LAY,4,African Grey,10.42,7.5,14.0,0,0.92
 2026-10-18,moe,L1540x15,LAY,4,Larryoctane,11.66,8.17,24.0,0,0.92
 2026-10-18,moe,BfavX16,BACK,5,Bleak Mid Winter,7.46,5.05,4.13,0,-1.0
+2026-10-18,moe,B47x16,BACK,5,Bleak Mid Winter,7.46,5.05,4.13,0,-1.0
 2026-10-18,moe,L1215drift,LAY,5,Sleeping Tiger,5.56,9.5,12.0,0,0.92
+2026-10-18,moe,B47firm,BACK,5,Squazeemoto,10.26,9.25,6.0,1,4.6
+2026-10-18,moe,B47x16,BACK,5,Squazeemoto,10.26,9.25,6.0,1,4.6
 2026-10-18,moe,L1215drift,LAY,5,Laura's Gold,9.74,6.0,12.5,0,0.92
 2026-10-18,moe,L812x16,LAY,6,Gatsby Crown,6.54,8.5,11.98,0,0.92
 2026-10-18,moe,L2540worse,LAY,6,Night Eruption,49.45,48.5,28.0,0,0.92
@@ -290,14 +361,21 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-18,moe,L1215drift,LAY,7,Cable De Vega,11.4,9.75,14.48,1,-13.48
 2026-10-18,moe,B35firm,BACK,7,Delightful Journey,5.97,8.17,3.07,0,-1.0
 2026-10-19,echuca,L2540worse,LAY,1,Who'llstoplorraine,143.69,51.0,27.73,0,0.92
+2026-10-19,echuca,B47firm,BACK,1,Interrogate,8.17,10.0,5.5,0,-1.0
 2026-10-19,echuca,L1540x15,LAY,1,Challenging,6.11,12.0,23.09,0,0.92
 2026-10-19,echuca,L1540x15,LAY,1,Prestige Fantastic,12.63,26.0,23.0,0,0.92
 2026-10-19,echuca,B35firm,BACK,2,Plinian,11.73,11.0,4.39,0,-1.0
+2026-10-19,echuca,B47firm,BACK,2,Plinian,11.73,11.0,4.39,0,-1.0
+2026-10-19,echuca,B47x16,BACK,2,Plinian,11.73,11.0,4.39,0,-1.0
+2026-10-19,echuca,B47firm,BACK,4,Notre Citrouille,7.46,11.0,6.71,1,5.2532
 2026-10-19,echuca,BfavX16,BACK,4,Musical Journey,7.86,5.0,4.72,0,-1.0
+2026-10-19,echuca,B47x16,BACK,4,Musical Journey,7.86,5.0,4.72,0,-1.0
 2026-10-19,echuca,B35firm,BACK,5,Mickio,3.46,7.5,3.0,1,1.84
 2026-10-19,echuca,L1540x15,LAY,5,Phoenician,10.01,7.5,20.0,0,0.92
 2026-10-19,echuca,BfavX16,BACK,7,Sacred Chord,7.1,6.5,4.34,0,-1.0
+2026-10-19,echuca,B47x16,BACK,7,Sacred Chord,7.1,6.5,4.34,0,-1.0
 2026-10-19,echuca,B35firm,BACK,7,Here Comes Wozza,4.61,11.0,4.93,0,-1.0
+2026-10-19,echuca,B47firm,BACK,7,Here Comes Wozza,4.61,11.0,4.93,0,-1.0
 2026-10-19,echuca,L1540x15,LAY,7,Strike Gold,12.65,34.0,20.44,0,0.92
 2026-10-19,echuca,L812firm,LAY,7,Tallingas Indirose,30.23,41.0,11.5,0,0.92
 2026-10-19,echuca,L1540x15,LAY,7,True Prophet,13.56,15.0,25.59,0,0.92
@@ -306,9 +384,12 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-19,echuca,L1540x15,LAY,8,Silver Top Ridge,14.82,15.0,34.0,0,0.92
 2026-10-19,echuca,L812x16,LAY,8,Adieu Grasse,5.61,5.0,9.12,0,0.92
 2026-10-19,echuca,B35firm,BACK,8,She's Elusive,8.94,11.0,4.83,0,-1.0
+2026-10-19,echuca,B47firm,BACK,8,She's Elusive,8.94,11.0,4.83,0,-1.0
+2026-10-19,echuca,B47x16,BACK,8,She's Elusive,8.94,11.0,4.83,0,-1.0
 2026-10-20,kyneton,L1215drift,LAY,1,Canticle,23.72,6.0,14.0,0,0.92
 2026-10-20,kyneton,L1215drift,LAY,3,Count Chevalier,14.97,11.0,14.02,0,0.92
 2026-10-20,kyneton,B35firm,BACK,4,Kamezali,2.87,6.0,3.74,0,-1.0
+2026-10-20,kyneton,B47x16,BACK,5,Onlooker,12.29,4.4,6.0,0,-1.0
 2026-10-20,kyneton,L812x16,LAY,6,Tempt The Gods,4.83,7.5,11.26,0,0.92
 2026-10-20,kyneton,L812x16,LAY,6,Our Pierro,6.69,4.2,11.0,0,0.92
 2026-10-20,kyneton,L812x16,LAY,6,Savvie Blanc,5.68,7.5,10.98,0,0.92
@@ -322,6 +403,7 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-21,geelong,L2540drift2,LAY,4,Catch The Moon,22.41,14.0,34.64,0,0.92
 2026-10-21,geelong,L1540x15,LAY,4,Catch The Moon,22.41,14.0,34.64,0,0.92
 2026-10-21,geelong,B35firm,BACK,4,Brass In Pocket,5.86,9.0,3.5,0,-1.0
+2026-10-21,geelong,B47firm,BACK,4,Power And The Beat,7.02,14.0,6.02,0,-1.0
 2026-10-21,geelong,L1540x15,LAY,4,Castellito,12.83,10.0,20.0,0,0.92
 2026-10-21,geelong,L1215drift,LAY,4,Express Class,12.82,11.0,14.0,0,0.92
 2026-10-21,geelong,L1540x15,LAY,5,Meness,7.87,9.0,21.62,0,0.92
@@ -331,17 +413,24 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-21,geelong,L1540x15,LAY,6,Kazaru,18.69,21.0,28.21,0,0.92
 2026-10-21,geelong,L812firm,LAY,7,Soulcombe,34.08,16.0,9.6,0,0.92
 2026-10-21,geelong,L2540drift2,LAY,7,Vauban,21.94,11.0,27.0,0,0.92
+2026-10-21,geelong,B47x16,BACK,7,Small Fry,40.78,6.0,6.8,0,-1.0
 2026-10-21,geelong,B35firm,BACK,8,Immortal Star,9.35,7.5,4.65,1,3.358
 2026-10-21,geelong,BfavX16,BACK,8,Immortal Star,9.35,7.5,4.65,1,3.358
+2026-10-21,geelong,B47firm,BACK,8,Immortal Star,9.35,7.5,4.65,1,3.358
+2026-10-21,geelong,B47x16,BACK,8,Immortal Star,9.35,7.5,4.65,1,3.358
 2026-10-21,geelong,B35firm,BACK,8,Celsius Star,5.22,12.0,4.7,0,-1.0
+2026-10-21,geelong,B47firm,BACK,8,Celsius Star,5.22,12.0,4.7,0,-1.0
 2026-10-21,geelong,L2540drift2,LAY,8,World's My Oyster,17.7,10.0,36.0,0,0.92
 2026-10-21,geelong,L1540x15,LAY,8,World's My Oyster,17.7,10.0,36.0,0,0.92
 2026-10-21,geelong,L812x16,LAY,8,Keep Your Cool,5.57,7.5,11.88,0,0.92
 2026-10-21,geelong,L2540drift2,LAY,9,Different Gravy,21.43,8.0,28.0,0,0.92
 2026-10-22,mornington,L1540x15,LAY,2,Fullproof,14.64,16.5,22.0,0,0.92
+2026-10-22,mornington,B47firm,BACK,3,Grinding Away,8.58,21.0,5.7,0,-1.0
 2026-10-22,mornington,L2540drift2,LAY,3,Clydebank Robber,30.59,5.5,25.88,0,0.92
 2026-10-22,mornington,L1540x15,LAY,3,Aurelio,7.81,10.0,16.11,0,0.92
 2026-10-22,mornington,B35firm,BACK,4,Boy From Zadar,8.71,12.0,4.6,0,-1.0
+2026-10-22,mornington,B47firm,BACK,4,Boy From Zadar,8.71,12.0,4.6,0,-1.0
+2026-10-22,mornington,B47x16,BACK,4,Boy From Zadar,8.71,12.0,4.6,0,-1.0
 2026-10-22,mornington,L1540x15,LAY,4,Model Gigi,4.04,5.5,16.0,0,0.92
 2026-10-22,mornington,L1540x15,LAY,4,Iftihar,9.78,10.0,16.5,0,0.92
 2026-10-22,mornington,L2540worse,LAY,5,Chocolate Freckles,69.53,101.0,27.99,0,0.92
@@ -350,34 +439,49 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-22,mornington,L2540drift2,LAY,6,Ballistic Romeo,16.53,14.0,36.52,0,0.92
 2026-10-22,mornington,L1540x15,LAY,6,Ballistic Romeo,16.53,14.0,36.52,0,0.92
 2026-10-22,mornington,B35firm,BACK,6,Surperb Frost,11.04,7.5,4.0,1,2.76
+2026-10-22,mornington,B47firm,BACK,6,Surperb Frost,11.04,7.5,4.0,1,2.76
+2026-10-22,mornington,B47x16,BACK,6,Surperb Frost,11.04,7.5,4.0,1,2.76
+2026-10-22,mornington,B47firm,BACK,6,Lope De Lardo,6.95,10.0,5.4,0,-1.0
 2026-10-22,mornington,L1215drift,LAY,6,Fearless Writer,5.47,5.5,12.5,0,0.92
 2026-10-22,mornington,B35firm,BACK,7,Light Moves,10.95,7.0,4.0,0,-1.0
+2026-10-22,mornington,B47firm,BACK,7,Light Moves,10.95,7.0,4.0,0,-1.0
+2026-10-22,mornington,B47x16,BACK,7,Light Moves,10.95,7.0,4.0,0,-1.0
 2026-10-22,mornington,L2540drift2,LAY,7,Alexander Thegreat,17.19,13.0,33.27,0,0.92
 2026-10-22,mornington,L1540x15,LAY,7,Alexander Thegreat,17.19,13.0,33.27,0,0.92
+2026-10-22,mornington,B47firm,BACK,7,Cresta Crystal,5.8,17.0,5.1,1,3.772
 2026-10-22,mornington,L2540drift2,LAY,7,Pol Rogeur,14.74,15.0,38.0,0,0.92
 2026-10-22,mornington,L1540x15,LAY,7,Pol Rogeur,14.74,15.0,38.0,0,0.92
 2026-10-22,mornington,L1215drift,LAY,8,Every Little Thing,7.52,8.0,13.58,0,0.92
 2026-10-22,mornington,B35firm,BACK,8,Russian Benefits,4.93,14.0,4.6,0,-1.0
+2026-10-22,mornington,B47firm,BACK,8,Russian Benefits,4.93,14.0,4.6,0,-1.0
 2026-10-22,mornington,L1215drift,LAY,8,Diamanda,13.61,6.5,14.5,0,0.92
 2026-10-23,ballarat,L1215drift,LAY,1,Kokeshi,7.99,9.25,13.5,0,0.92
 2026-10-23,ballarat,L2540drift2,LAY,2,Renaissance Girl,21.07,15.0,39.43220481,0,0.92
 2026-10-23,ballarat,L1540x15,LAY,2,Renaissance Girl,21.07,15.0,39.43220481,0,0.92
+2026-10-23,cranbourne,B47firm,BACK,1,Handee,6.55,9.0,5.75349782,1,4.3732
 2026-10-23,cranbourne,L1215drift,LAY,1,Senza Nome,4.45,10.0,12.5,0,0.92
 2026-10-23,cranbourne,B35firm,BACK,1,Myhro's Ruler,5.6,8.0,4.3,0,-1.0
+2026-10-23,cranbourne,B47firm,BACK,1,Myhro's Ruler,5.6,8.0,4.3,0,-1.0
 2026-10-23,cranbourne,L812x16,LAY,2,Pariah Pearl,5.71,7.25,10.5,0,0.92
+2026-10-23,cranbourne,B47x16,BACK,2,Sarapo,11.18,9.25,6.4,0,-1.0
 2026-10-23,cranbourne,L1540x15,LAY,2,Eye For An Eye,11.73,22.0,31.00453488,0,0.92
 2026-10-23,cranbourne,L2540drift2,LAY,2,Flag Flyer,25.8,15.5,32.0,0,0.92
 2026-10-23,cranbourne,L812firm,LAY,2,Superstock,9.68,17.5,11.5,0,0.92
+2026-10-23,cranbourne,B47x16,BACK,3,Bajaria,11.72,5.25,4.71823901,1,3.4208
 2026-10-23,cranbourne,L1540x15,LAY,3,Shystar,14.01,14.0,21.87490294,0,0.92
 2026-10-23,cranbourne,L1540x15,LAY,3,Lathlain,24.39,14.0,40.0,0,0.92
 2026-10-23,cranbourne,L2540drift2,LAY,3,Escarpa,9.85,9.5,25.20972992,0,0.92
 2026-10-23,cranbourne,L1540x15,LAY,3,Escarpa,9.85,9.5,25.20972992,0,0.92
+2026-10-23,cranbourne,B47firm,BACK,7,Nation State,11.15,17.5,5.41521662,0,-1.0
+2026-10-23,cranbourne,B47x16,BACK,7,Nation State,11.15,17.5,5.41521662,0,-1.0
 2026-10-23,cranbourne,L812x16,LAY,7,Onavuitton,4.37,4.9,11.0,0,0.92
 2026-10-23,cranbourne,L2540drift2,LAY,8,Glenfinnan,49.82,1.01,27.68473632,0,0.92
 2026-10-23,cranbourne,L2540worse,LAY,8,Glenfinnan,49.82,1.01,27.68473632,0,0.92
 2026-10-23,cranbourne,L1540x15,LAY,8,Nation's Call,9.63,1.01,17.0,1,-16.0
+2026-10-24,flemington,B47x16,BACK,1,Point And Shoot,18.79,5.0,6.6,0,-1.0
 2026-10-24,flemington,L2540worse,LAY,1,Perilous Fighter,80.94,31.0,36.0,0,0.92
 2026-10-24,flemington,B35firm,BACK,2,Half Pipe,5.53,7.5,4.1,0,-1.0
+2026-10-24,flemington,B47firm,BACK,2,Half Pipe,5.53,7.5,4.1,0,-1.0
 2026-10-24,flemington,L1540x15,LAY,2,Turbo Saint,7.45,17.0,15.5,0,0.92
 2026-10-24,flemington,L812x16,LAY,2,The Speed Machine,5.19,10.0,11.5,0,0.92
 2026-10-24,flemington,L812x16,LAY,3,Written Empire,5.29,12.0,9.14,0,0.92
@@ -389,11 +493,17 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-24,flemington,L2540worse,LAY,4,Almost An Angel,53.42,26.0,27.3,0,0.92
 2026-10-24,flemington,B35firm,BACK,7,Kizlyar,18.85,14.0,4.47,0,-1.0
 2026-10-24,flemington,BfavX16,BACK,7,Kizlyar,18.85,14.0,4.47,0,-1.0
+2026-10-24,flemington,B47firm,BACK,7,Kizlyar,18.85,14.0,4.47,0,-1.0
+2026-10-24,flemington,B47x16,BACK,7,Kizlyar,18.85,14.0,4.47,0,-1.0
 2026-10-24,flemington,L1540x15,LAY,8,Saint George,16.23,25.4,25.32,0,0.92
 2026-10-24,flemington,L812x16,LAY,8,Cosmic Crusader,5.65,9.0,9.96,1,-8.96
+2026-10-24,flemington,B47firm,BACK,9,Soverato,6.42,9.0,5.0,1,3.68
+2026-10-24,flemington,B47x16,BACK,9,Too Darn Discreet,10.89,8.5,5.89,0,-1.0
 2026-10-24,flemington,L2540drift2,LAY,9,Sun Gift,25.39,9.5,34.8,0,0.92
+2026-10-24,st-arnaud,B47x16,BACK,1,Conjurer,9.68,3.87,6.04,0,-1.0
 2026-10-24,st-arnaud,L812firm,LAY,1,Norfolk Victory,10.03,39.0,10.39,0,0.92
 2026-10-24,st-arnaud,L1215drift,LAY,1,Dun Dirt Sweet,15.64,9.5,12.13,0,0.92
+2026-10-24,st-arnaud,B47x16,BACK,1,All Moonlite,9.15,5.5,5.71,0,-1.0
 2026-10-24,st-arnaud,L2540drift2,LAY,2,Lord Lonny,18.04,14.0,36.0,0,0.92
 2026-10-24,st-arnaud,L1540x15,LAY,2,Lord Lonny,18.04,14.0,36.0,0,0.92
 2026-10-24,st-arnaud,L812x16,LAY,2,Intervened,4.9,3.38,8.4,0,0.92
@@ -401,7 +511,9 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-24,st-arnaud,L1215drift,LAY,4,Krasnoludek,10.13,6.75,14.37,0,0.92
 2026-10-24,st-arnaud,L1540x15,LAY,4,Simply Excels,16.1,13.5,26.09,0,0.92
 2026-10-24,st-arnaud,BfavX16,BACK,5,Zamora,7.05,5.0,4.03,0,-1.0
+2026-10-24,st-arnaud,B47x16,BACK,5,Zamora,7.05,5.0,4.03,0,-1.0
 2026-10-24,st-arnaud,L1215drift,LAY,5,Triomphe,10.53,6.0,14.0,0,0.92
+2026-10-24,st-arnaud,B47firm,BACK,5,Spinhof,5.93,23.0,6.4,1,4.968
 2026-10-24,st-arnaud,L2540drift2,LAY,5,Whiskey And Beer,15.69,8.0,27.0,0,0.92
 2026-10-24,st-arnaud,L1540x15,LAY,5,Whiskey And Beer,15.69,8.0,27.0,0,0.92
 2026-10-24,st-arnaud,L2540drift2,LAY,5,El Salto,8.89,8.0,31.96,0,0.92
@@ -409,7 +521,9 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-24,st-arnaud,L1215drift,LAY,6,Saveadateforme,8.35,5.0,12.79,0,0.92
 2026-10-24,st-arnaud,L2540worse,LAY,7,Little Richie Turf,54.7,38.83,34.0,0,0.92
 2026-10-25,sale,L1215drift,LAY,1,Armorware,5.25,6.5,14.0,1,-13.0
+2026-10-25,sale,B47x16,BACK,1,Big Kapow,13.45,6.5,5.0,0,-1.0
 2026-10-25,sale,B35firm,BACK,2,Rough Enuff,3.74,7.0,4.42,1,3.1464
+2026-10-25,sale,B47firm,BACK,2,Rough Enuff,3.74,7.0,4.42,1,3.1464
 2026-10-25,sale,L1540x15,LAY,2,Egyptian Thorn,8.15,8.5,15.53,0,0.92
 2026-10-25,sale,L1540x15,LAY,3,Written Velocity,14.02,26.0,27.0,0,0.92
 2026-10-25,sale,L1540x15,LAY,3,Cab Franc,6.8,8.5,16.38,0,0.92
@@ -417,9 +531,11 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-25,sale,L2540drift2,LAY,4,Epeiric,90.23,14.0,30.0,0,0.92
 2026-10-25,sale,L2540worse,LAY,4,Epeiric,90.23,14.0,30.0,0,0.92
 2026-10-25,sale,BfavX16,BACK,4,Belcony,9.54,5.5,5.5,0,-1.0
+2026-10-25,sale,B47x16,BACK,4,Belcony,9.54,5.5,5.5,0,-1.0
 2026-10-25,sale,B35firm,BACK,5,Tishman,11.18,9.5,3.75,1,2.53
 2026-10-25,sale,L812firm,LAY,5,Chocolate Royal,9.65,26.0,10.0,0,0.92
 2026-10-25,sale,L1540x15,LAY,5,Jean Georges,11.18,19.0,32.0,0,0.92
+2026-10-25,sale,B47x16,BACK,6,Mckeyla,11.98,10.0,6.88,0,-1.0
 2026-10-25,sale,L2540drift2,LAY,6,Mr Tickles,28.1,16.0,32.0,1,-31.0
 2026-10-25,sale,L1540x15,LAY,6,Crank,14.86,6.0,24.0,0,0.92
 2026-10-25,sale,B35firm,BACK,7,El Rocko,6.2,7.75,3.9,0,-1.0
@@ -431,8 +547,11 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-26,wangaratta,L812x16,LAY,1,Valour Vino,6.69,9.0,11.5,0,0.92
 2026-10-26,wangaratta,B35firm,BACK,1,Super Scholar,6.83,6.5,3.86,1,2.6312
 2026-10-26,wangaratta,B35firm,BACK,2,I'm Da Boss,6.03,9.0,4.78,1,3.4776
+2026-10-26,wangaratta,B47firm,BACK,2,I'm Da Boss,6.03,9.0,4.78,1,3.4776
 2026-10-26,wangaratta,L1540x15,LAY,2,Scorpion,8.67,14.0,16.01,0,0.92
+2026-10-26,wangaratta,B47firm,BACK,2,Do The Dirty,8.22,10.0,5.4,0,-1.0
 2026-10-26,wangaratta,B35firm,BACK,3,Foxtrot Charlie,5.82,10.0,4.15,0,-1.0
+2026-10-26,wangaratta,B47firm,BACK,3,Foxtrot Charlie,5.82,10.0,4.15,0,-1.0
 2026-10-26,wangaratta,L1540x15,LAY,3,Jezebel Jenni,8.51,15.5,17.5,0,0.92
 2026-10-26,wangaratta,L2540drift2,LAY,4,Ashen Knight,24.62,16.0,32.0,0,0.92
 2026-10-26,wangaratta,L1540x15,LAY,5,Hold This,11.01,10.0,20.0,0,0.92
@@ -444,11 +563,18 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-26,wangaratta,B35firm,BACK,7,Positivo,4.01,8.5,3.77,1,2.5484
 2026-10-26,wangaratta,L2540drift2,LAY,7,Sensational Ruler,23.19,14.0,31.45,0,0.92
 2026-10-26,wangaratta,L1540x15,LAY,8,Hollerasaurous,10.7,5.0,16.86,0,0.92
+2026-10-26,wangaratta,B47firm,BACK,8,Vaderlee,6.44,11.0,5.29,0,-1.0
 2026-10-26,wangaratta,L2540worse,LAY,9,Swift Hit,47.29,71.0,28.0,0,0.92
 2026-10-26,wangaratta,L1540x15,LAY,9,Densetsu,9.73,41.0,17.59,0,0.92
+2026-10-26,wangaratta,B47firm,BACK,9,Three Musketeers,13.15,41.0,6.4,0,-1.0
+2026-10-26,wangaratta,B47x16,BACK,9,Three Musketeers,13.15,41.0,6.4,0,-1.0
+2026-10-27,swan-hill,B47firm,BACK,1,Flash Inquiry,6.72,18.0,6.23,0,-1.0
 2026-10-27,swan-hill,B35firm,BACK,2,Carnevale,4.42,8.0,4.0,0,-1.0
+2026-10-27,swan-hill,B47firm,BACK,2,Carnevale,4.42,8.0,4.0,0,-1.0
 2026-10-27,swan-hill,L1540x15,LAY,3,Vanara Princess,18.17,26.0,36.0,0,0.92
 2026-10-27,swan-hill,B35firm,BACK,3,Gamadale Paddy,3.57,7.0,4.2,0,-1.0
+2026-10-27,swan-hill,B47firm,BACK,3,Gamadale Paddy,3.57,7.0,4.2,0,-1.0
+2026-10-27,swan-hill,B47x16,BACK,4,Ted Percy,8.95,8.0,5.46,0,-1.0
 2026-10-27,swan-hill,L2540worse,LAY,4,High Performance,65.72,26.0,25.76,0,0.92
 2026-10-27,swan-hill,L812firm,LAY,6,Milady,13.51,15.0,8.71,0,0.92
 2026-10-27,swan-hill,L2540drift2,LAY,6,Larryoctane,11.55,13.0,26.0,0,0.92
@@ -465,18 +591,24 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-28,bendigo,L1540x15,LAY,1,Vixen Vibes,22.11,16.0,35.96,0,0.92
 2026-10-28,bendigo,B35firm,BACK,2,Sound Byte,6.43,6.0,3.2,0,-1.0
 2026-10-28,bendigo,L1540x15,LAY,2,Nickibi,9.5,8.5,16.5,0,0.92
+2026-10-28,bendigo,B47firm,BACK,3,Star Of Omaha,23.56,15.0,6.0,0,-1.0
+2026-10-28,bendigo,B47x16,BACK,3,Star Of Omaha,23.56,15.0,6.0,0,-1.0
 2026-10-28,bendigo,B35firm,BACK,3,Purple Streak,4.1,8.0,4.13,0,-1.0
+2026-10-28,bendigo,B47firm,BACK,3,Purple Streak,4.1,8.0,4.13,0,-1.0
 2026-10-28,bendigo,L812x16,LAY,3,Yukaina,5.44,4.4,9.35,0,0.92
 2026-10-28,bendigo,L1540x15,LAY,3,Sea Poem,11.01,15.0,18.0,0,0.92
 2026-10-28,bendigo,L2540drift2,LAY,4,Amawasha,20.35,6.25,28.14,0,0.92
 2026-10-28,bendigo,L2540drift2,LAY,5,Chantra,30.08,16.5,38.92,0,0.92
 2026-10-28,bendigo,B35firm,BACK,5,Jenni You Think,4.02,7.0,4.3,0,-1.0
+2026-10-28,bendigo,B47firm,BACK,5,Jenni You Think,4.02,7.0,4.3,0,-1.0
 2026-10-28,bendigo,L2540drift2,LAY,5,Highly Intrigued,29.44,16.5,37.22,0,0.92
 2026-10-28,bendigo,L2540drift2,LAY,6,Interest Point,24.17,11.0,32.0,0,0.92
+2026-10-28,bendigo,B47firm,BACK,7,Alero,6.59,11.0,5.0,1,3.68
 2026-10-28,bendigo,L1540x15,LAY,7,Wolf Twenty One,21.76,26.0,33.05,0,0.92
 2026-10-28,bendigo,L1540x15,LAY,7,Legacy Bay,9.32,11.0,17.5,0,0.92
 2026-10-28,bendigo,L1540x15,LAY,7,Flying Embers,7.69,11.0,21.48,0,0.92
 2026-10-28,bendigo,BfavX16,BACK,8,So You Are,8.61,3.7,4.58,1,3.2936
+2026-10-28,bendigo,B47x16,BACK,8,So You Are,8.61,3.7,4.58,1,3.2936
 2026-10-28,bendigo,L1215drift,LAY,8,The Euphrates,12.99,6.0,13.0,0,0.92
 2026-10-28,bendigo,L1540x15,LAY,8,See That Storm,8.66,16.0,17.0,0,0.92
 2026-10-28,bendigo,L812x16,LAY,8,Litzdeel,5.7,8.5,10.0,0,0.92
@@ -487,8 +619,10 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-28,bendigo,L2540drift2,LAY,9,Spirited Defence,22.18,8.0,25.0,0,0.92
 2026-10-28,bendigo,L2540drift2,LAY,9,Silver Bullet,12.46,8.0,30.0,0,0.92
 2026-10-28,bendigo,L1540x15,LAY,9,Silver Bullet,12.46,8.0,30.0,0,0.92
+2026-10-28,bendigo,B47x16,BACK,9,Rosa Aotearoa,10.1,6.0,4.33,0,-1.0
 2026-10-29,warrnambool,L1540x15,LAY,1,Rang A Round Up,9.3,5.25,16.02,0,0.92
 2026-10-29,warrnambool,BfavX16,BACK,2,Share The Stars,7.53,4.0,4.23,0,-1.0
+2026-10-29,warrnambool,B47x16,BACK,2,Share The Stars,7.53,4.0,4.23,0,-1.0
 2026-10-29,warrnambool,L2540drift2,LAY,2,Kilna,42.05,7.0,38.0,0,0.92
 2026-10-29,warrnambool,L1540x15,LAY,2,Newcombe,12.55,10.0,23.0,0,0.92
 2026-10-29,warrnambool,L1215drift,LAY,3,Nick Knockdown,9.38,8.75,13.17,0,0.92
@@ -507,14 +641,18 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-30,kilmore,L1540x15,LAY,2,Lady Blanc,18.73,26.5,38.54,0,0.92
 2026-10-30,kilmore,L2540worse,LAY,3,Dagger One,61.42,23.5,35.48,0,0.92
 2026-10-30,kilmore,L812x16,LAY,3,Saint Willo,4.63,4.0,8.23,0,0.92
+2026-10-30,kilmore,B47firm,BACK,5,Heidi Dancer,9.53,8.5,5.22,0,-1.0
+2026-10-30,kilmore,B47x16,BACK,5,Heidi Dancer,9.53,8.5,5.22,0,-1.0
 2026-10-30,kilmore,L2540drift2,LAY,5,Helluva Barty,13.89,5.5,25.0,0,0.92
 2026-10-30,kilmore,L1540x15,LAY,5,Helluva Barty,13.89,5.5,25.0,0,0.92
 2026-10-30,kilmore,L812x16,LAY,5,Siriusly Bright,5.05,3.1,8.53,1,-7.53
 2026-10-30,kilmore,L2540drift2,LAY,6,Love Sparkles,27.73,12.0,36.0,0,0.92
 2026-10-30,kilmore,L1540x15,LAY,6,Olney,10.59,8.75,18.0,0,0.92
+2026-10-30,kilmore,B47firm,BACK,6,Tierra,8.92,8.75,5.58,0,-1.0
 2026-10-30,kilmore,L2540drift2,LAY,6,State Of Affairs,17.89,12.0,32.0,0,0.92
 2026-10-30,kilmore,L1540x15,LAY,6,State Of Affairs,17.89,12.0,32.0,0,0.92
 2026-10-30,kilmore,L1215drift,LAY,7,Ostrica,11.32,7.0,14.89,0,0.92
+2026-10-30,kilmore,B47x16,BACK,7,Smash Blue,11.38,7.0,6.0,0,-1.0
 2026-10-30,kilmore,L2540drift2,LAY,7,Savethebesttillast,21.5,13.0,30.0,0,0.92
 2026-10-30,kilmore,L2540drift2,LAY,8,Cheron Finale,15.02,14.5,32.0,0,0.92
 2026-10-30,kilmore,L1540x15,LAY,8,Cheron Finale,15.02,14.5,32.0,0,0.92
@@ -540,6 +678,8 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-30,pakenham,L1215drift,LAY,6,Mafee,11.77,11.0,14.37,0,0.92
 2026-10-30,pakenham,B35firm,BACK,6,Sharing Moments,14.29,7.0,4.57,1,3.2844
 2026-10-30,pakenham,BfavX16,BACK,6,Sharing Moments,14.29,7.0,4.57,1,3.2844
+2026-10-30,pakenham,B47firm,BACK,6,Sharing Moments,14.29,7.0,4.57,1,3.2844
+2026-10-30,pakenham,B47x16,BACK,6,Sharing Moments,14.29,7.0,4.57,1,3.2844
 2026-10-30,pakenham,L1540x15,LAY,6,Nitro Sonic,9.01,7.0,16.5,0,0.92
 2026-10-30,pakenham,L1215drift,LAY,6,Watten Assett,10.0,7.5,14.16,0,0.92
 2026-10-30,pakenham,L2540drift2,LAY,7,Kakkoii,26.16,6.0,34.0,0,0.92
@@ -547,6 +687,7 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-30,pakenham,L1540x15,LAY,7,Handsome Missile,12.2,15.5,19.97,0,0.92
 2026-10-30,pakenham,L1540x15,LAY,7,Venetian Choice,12.48,9.0,24.0,0,0.92
 2026-10-30,pakenham,L1540x15,LAY,7,Two Sigma,13.92,6.5,24.0,0,0.92
+2026-10-30,pakenham,B47firm,BACK,7,Garnacho,8.17,11.5,6.83,0,-1.0
 2026-10-30,pakenham,L1540x15,LAY,7,Island Boy,7.26,6.0,22.62,0,0.92
 2026-10-30,pakenham,L812x16,LAY,8,Shidan,5.09,19.0,9.2,0,0.92
 2026-10-30,pakenham,L812firm,LAY,8,Shidan,5.09,19.0,9.2,0,0.92
@@ -557,17 +698,21 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-31,flemington,L1540x15,LAY,1,Fast Freddie,9.54,15.0,18.0,0,0.92
 2026-10-31,flemington,L1540x15,LAY,2,Youmzaa,13.09,9.5,23.46,0,0.92
 2026-10-31,flemington,L1215drift,LAY,3,Tharwa,24.19,8.25,12.0,0,0.92
+2026-10-31,flemington,B47x16,BACK,3,Your Colour,16.44,7.0,6.85,0,-1.0
 2026-10-31,flemington,L2540drift2,LAY,4,Grand Larceny,15.19,13.0,34.0,0,0.92
 2026-10-31,flemington,L1540x15,LAY,4,Grand Larceny,15.19,13.0,34.0,0,0.92
 2026-10-31,flemington,L812firm,LAY,4,Sweynesday,38.99,26.0,10.0,0,0.92
 2026-10-31,flemington,L2540worse,LAY,4,Disneck,66.54,15.0,29.0,0,0.92
+2026-10-31,flemington,B47firm,BACK,4,Golden Straand,7.9,10.0,6.4,0,-1.0
 2026-10-31,flemington,L2540drift2,LAY,4,Grand Impact,36.78,11.0,29.43,0,0.92
 2026-10-31,flemington,L812x16,LAY,5,Private Eye,5.59,6.0,9.6,1,-8.6
+2026-10-31,flemington,B47x16,BACK,6,St Gotthard,7.99,6.5,4.7,0,-1.0
 2026-10-31,flemington,L1540x15,LAY,6,Mbube,21.98,26.0,39.59,0,0.92
 2026-10-31,flemington,L812x16,LAY,6,Natural Fling,4.65,6.0,10.0,0,0.92
 2026-10-31,flemington,L1215drift,LAY,7,King Snitz,9.71,10.0,13.42,0,0.92
 2026-10-31,flemington,L812firm,LAY,7,Cignetti,15.08,15.0,9.4,0,0.92
 2026-10-31,flemington,BfavX16,BACK,7,Stormy Marco,14.25,5.0,4.92,1,3.6064
+2026-10-31,flemington,B47x16,BACK,7,Stormy Marco,14.25,5.0,4.92,1,3.6064
 2026-10-31,flemington,L812x16,LAY,7,True Rebel,4.91,8.0,10.54,0,0.92
 2026-10-31,flemington,L1540x15,LAY,7,Murshidi,10.51,13.0,16.0,0,0.92
 2026-10-31,flemington,L1540x15,LAY,8,Sass Appeal,6.39,11.0,21.0,0,0.92
@@ -579,32 +724,39 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-10-31,mortlake,L1540x15,LAY,1,Yankee Street Rain,4.75,,21.09,0,0.92
 2026-10-31,mortlake,L1540x15,LAY,2,Prince Iadora,6.45,,15.59,0,0.92
 2026-10-31,mortlake,L1540x15,LAY,2,Whata Stretch,16.98,,37.18,0,0.92
+2026-10-31,mortlake,B47x16,BACK,4,Abby's Crossword,12.57,,4.95,0,-1.0
 2026-10-31,mortlake,L1540x15,LAY,5,Gargantuan,10.38,,24.0,1,-23.0
 2026-10-31,mortlake,L1540x15,LAY,6,Tikemyson,9.22,,19.0,0,0.92
 2026-10-31,mortlake,L1540x15,LAY,7,Black Rutile,5.43,,16.24,0,0.92
 2026-10-31,traralgon,L2540drift2,LAY,2,He's Fierce,25.67,13.0,38.0,0,0.92
+2026-10-31,traralgon,B47x16,BACK,2,Zouie,9.12,4.73,5.6,0,-1.0
 2026-10-31,traralgon,L812firm,LAY,3,The White Bull,18.56,21.0,11.44,0,0.92
 2026-10-31,traralgon,L812x16,LAY,3,Shuwaib,3.74,4.0,8.0,0,0.92
 2026-10-31,traralgon,L812firm,LAY,3,Vadar,19.1,19.0,10.71,0,0.92
 2026-10-31,traralgon,B35firm,BACK,3,Top Liner,4.65,6.0,3.9,1,2.668
+2026-10-31,wycheproof,B47x16,BACK,1,Ruthless Soul,7.85,,4.39,1,3.1188
 2026-10-31,wycheproof,L1540x15,LAY,1,An Poitin Still,4.93,,16.5,0,0.92
 2026-10-31,wycheproof,L1540x15,LAY,2,More Give It,6.21,,18.5,1,-17.5
+2026-10-31,wycheproof,B47x16,BACK,2,Presno,9.33,,5.12,0,-1.0
 2026-10-31,wycheproof,L1540x15,LAY,4,Derelict,11.7,,18.51,0,0.92
 2026-10-31,wycheproof,L1540x15,LAY,7,Nostro Roccia,8.29,,38.13,0,0.92
 2026-10-31,wycheproof,L812x16,LAY,7,Snakeinthegrass,4.66,,8.25,0,0.92
 2026-11-01,mornington,B35firm,BACK,1,Ambition In Bloom,7.03,10.0,4.5,0,-1.0
+2026-11-01,mornington,B47firm,BACK,1,Ambition In Bloom,7.03,10.0,4.5,0,-1.0
 2026-11-01,mornington,L1215drift,LAY,1,Kuheylan,16.36,6.25,14.93,0,0.92
 2026-11-01,mornington,L812firm,LAY,3,Lavancher,11.36,41.0,8.2,0,0.92
 2026-11-01,mornington,B35firm,BACK,3,Big Kapow,3.32,7.5,3.87,1,2.6404
 2026-11-01,mornington,L812x16,LAY,4,Rockbourg,6.0,4.8,9.72,0,0.92
 2026-11-01,mornington,L812firm,LAY,4,Spirit Of Omaha,25.57,15.0,9.0,0,0.92
 2026-11-01,mornington,B35firm,BACK,5,Ilovediamonds,4.48,8.0,4.54,1,3.2568
+2026-11-01,mornington,B47firm,BACK,5,Ilovediamonds,4.48,8.0,4.54,1,3.2568
 2026-11-01,mornington,L1540x15,LAY,7,Stole Him,10.69,11.0,16.5,0,0.92
 2026-11-01,mornington,L1540x15,LAY,7,Fam Gorman,7.35,15.0,15.5,0,0.92
 2026-11-01,mornington,L812firm,LAY,7,Eye For An Eye,7.95,15.0,8.2,0,0.92
 2026-11-01,mornington,L812firm,LAY,8,Mickidabeel,13.73,23.0,10.5,0,0.92
 2026-11-01,mornington,L1540x15,LAY,9,Master Of The Air,6.43,15.0,16.37,0,0.92
 2026-11-01,mornington,L1540x15,LAY,9,Warrior Within,12.15,26.0,27.0,0,0.92
+2026-11-01,mornington,B47x16,BACK,9,Artistic Genius,8.75,6.0,5.3,0,-1.0
 2026-11-02,ballarat,L1215drift,LAY,1,Whitebait,7.21,11.0,14.0,0,0.92
 2026-11-02,ballarat,L1540x15,LAY,1,Trigger Warning,13.42,15.0,21.0,0,0.92
 2026-11-02,ballarat,L1540x15,LAY,3,Perfect Dismount,12.15,6.0,18.5,0,0.92
@@ -613,6 +765,8 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-02,ballarat,L1540x15,LAY,3,Meritorious,13.56,8.0,24.82,0,0.92
 2026-11-02,ballarat,L1215drift,LAY,4,Belle Flamme,9.89,8.0,13.5,0,0.92
 2026-11-02,ballarat,B35firm,BACK,4,Whiskey And War,13.1,15.0,3.35,0,-1.0
+2026-11-02,ballarat,B47firm,BACK,4,Marco Polo,10.95,26.0,6.48,1,5.0416
+2026-11-02,ballarat,B47x16,BACK,4,Marco Polo,10.95,26.0,6.48,1,5.0416
 2026-11-02,ballarat,L2540drift2,LAY,4,Pneuma,15.51,4.6,29.0,0,0.92
 2026-11-02,ballarat,L1540x15,LAY,4,Pneuma,15.51,4.6,29.0,0,0.92
 2026-11-02,ballarat,L1540x15,LAY,4,Urban Creed,11.76,6.0,19.5,0,0.92
@@ -621,22 +775,29 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-02,ballarat,L2540worse,LAY,6,El Salto,93.0,51.0,27.48,0,0.92
 2026-11-02,ballarat,B35firm,BACK,7,Dirty Diana,9.95,8.0,3.85,0,-1.0
 2026-11-02,ballarat,L2540worse,LAY,7,Le Notre,54.94,51.0,25.47,0,0.92
+2026-11-02,ballarat,B47firm,BACK,7,Home Tomurra,8.3,26.0,5.47,0,-1.0
 2026-11-02,ballarat,B35firm,BACK,8,Belcony,3.48,6.0,3.6,0,-1.0
 2026-11-02,ballarat,L812firm,LAY,8,Cool Savanna,14.17,15.0,9.97,0,0.92
 2026-11-02,ballarat,L812firm,LAY,8,Lygon Street Luigi,5.57,15.0,8.66,0,0.92
+2026-11-03,echuca,B47x16,BACK,1,Salina Special,10.42,4.0,5.34,0,-1.0
 2026-11-03,echuca,L2540drift2,LAY,1,Earthly Crown,34.41,13.0,26.0,0,0.92
+2026-11-03,echuca,B47firm,BACK,2,Tempest Moon,8.11,9.0,5.19,0,-1.0
 2026-11-03,echuca,L1540x15,LAY,3,Frewdamoss,10.43,16.0,16.0,0,0.92
 2026-11-03,echuca,L1540x15,LAY,3,Lady Courrege,15.03,17.0,23.0,0,0.92
 2026-11-03,echuca,B35firm,BACK,3,The Old Man,16.08,16.0,3.8,0,-1.0
 2026-11-03,echuca,B35firm,BACK,4,Dark Galaxy,5.74,14.0,4.4,0,-1.0
+2026-11-03,echuca,B47firm,BACK,4,Dark Galaxy,5.74,14.0,4.4,0,-1.0
 2026-11-03,echuca,L812firm,LAY,4,Thundering Shadow,27.91,76.0,11.7,0,0.92
 2026-11-03,echuca,B35firm,BACK,5,Casamar,6.37,13.13,3.75,0,-1.0
 2026-11-03,echuca,L812firm,LAY,5,Honeyplotkin,21.34,52.67,10.5,0,0.92
 2026-11-03,echuca,L2540worse,LAY,5,Tallingas Petey,61.17,32.5,32.0,0,0.92
 2026-11-03,echuca,B35firm,BACK,5,Celestial Option,6.43,13.0,4.92,1,3.6064
+2026-11-03,echuca,B47firm,BACK,5,Celestial Option,6.43,13.0,4.92,1,3.6064
 2026-11-03,echuca,B35firm,BACK,6,Bow Ribbon,7.46,5.5,3.59,0,-1.0
 2026-11-03,echuca,L2540drift2,LAY,6,Stepify,44.07,9.0,27.29,0,0.92
 2026-11-03,echuca,L2540worse,LAY,6,Stepify,44.07,9.0,27.29,0,0.92
+2026-11-03,echuca,B47firm,BACK,7,Shelly's Legacy,13.9,13.0,5.09,0,-1.0
+2026-11-03,echuca,B47x16,BACK,7,Shelly's Legacy,13.9,13.0,5.09,0,-1.0
 2026-11-03,echuca,L1540x15,LAY,7,Bridgeitall,12.91,13.0,19.5,0,0.92
 2026-11-03,echuca,L1540x15,LAY,7,Bronco Revolution,13.73,17.0,24.0,0,0.92
 2026-11-03,echuca,L1540x15,LAY,7,Laura's Gold,14.29,11.0,23.65,0,0.92
@@ -646,9 +807,11 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-03,flemington,L1540x15,LAY,10,No Fuss,15.39,17.5,25.34,0,0.92
 2026-11-03,flemington,L2540drift2,LAY,2,Flying Valley,28.92,15.0,31.95,0,0.92
 2026-11-03,flemington,L1215drift,LAY,2,Politely Dun,10.58,7.5,14.5,0,0.92
+2026-11-03,flemington,B47firm,BACK,2,Ichnusa,9.33,11.0,6.2,0,-1.0
 2026-11-03,flemington,L1540x15,LAY,3,Tanabata,16.7,17.0,33.67,0,0.92
 2026-11-03,flemington,B35firm,BACK,3,Star Of Macedon,4.04,6.0,3.64,0,-1.0
 2026-11-03,flemington,L2540drift2,LAY,3,Gilgeous,21.13,11.0,26.82,0,0.92
+2026-11-03,flemington,B47firm,BACK,3,Katoto,5.34,13.0,5.48,0,-1.0
 2026-11-03,flemington,L2540drift2,LAY,4,Strike Package,19.4,17.0,34.0,0,0.92
 2026-11-03,flemington,L1540x15,LAY,4,Strike Package,19.4,17.0,34.0,0,0.92
 2026-11-03,flemington,L1540x15,LAY,4,Big Wigs,10.15,11.0,22.76,0,0.92
@@ -656,9 +819,13 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-03,flemington,L1215drift,LAY,4,The Speed Machine,8.67,4.6,12.65,0,0.92
 2026-11-03,flemington,L2540drift2,LAY,4,Jadzia,21.25,15.0,30.58,0,0.92
 2026-11-03,flemington,B35firm,BACK,4,Ole Go,6.47,7.5,4.89,0,-1.0
+2026-11-03,flemington,B47firm,BACK,4,Ole Go,6.47,7.5,4.89,0,-1.0
+2026-11-03,flemington,B47firm,BACK,4,Peyton,12.23,13.0,5.8,1,4.416
+2026-11-03,flemington,B47x16,BACK,4,Peyton,12.23,13.0,5.8,1,4.416
 2026-11-03,flemington,L2540drift2,LAY,5,After Summer,30.07,17.0,34.14,0,0.92
 2026-11-03,flemington,L812x16,LAY,5,Autumnheat,6.94,6.0,11.69,0,0.92
 2026-11-03,flemington,BfavX16,BACK,5,Tempesti,15.54,6.0,6.06,0,-1.0
+2026-11-03,flemington,B47x16,BACK,5,Tempesti,15.54,6.0,6.06,0,-1.0
 2026-11-03,flemington,L1540x15,LAY,5,Autumn Mystery,9.85,17.0,21.81,0,0.92
 2026-11-03,flemington,L812x16,LAY,6,Al Duca,5.49,7.5,11.0,0,0.92
 2026-11-03,flemington,L2540drift2,LAY,6,Ambassadorial,32.0,17.0,36.0,0,0.92
@@ -670,6 +837,7 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-03,flemington,L2540drift2,LAY,8,Shooting Brake,23.71,13.0,29.23,0,0.92
 2026-11-03,flemington,L1215drift,LAY,8,Barracks,9.56,7.5,13.58,0,0.92
 2026-11-03,flemington,L1215drift,LAY,9,Dance To The Boom,18.4,9.0,13.5,0,0.92
+2026-11-03,flemington,B47x16,BACK,9,Terilee,11.41,7.5,5.93,0,-1.0
 2026-11-03,wangaratta,L2540drift2,LAY,2,Titan's Soul,19.51,8.75,25.0,0,0.92
 2026-11-03,wangaratta,L1540x15,LAY,2,Style Guide,6.64,6.25,16.9,0,0.92
 2026-11-03,wangaratta,L812firm,LAY,2,Woah Shamrock,26.81,58.5,11.14,0,0.92
@@ -677,6 +845,8 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-03,wangaratta,L1215drift,LAY,4,Moral Turpitude,8.36,5.25,12.62,0,0.92
 2026-11-03,wangaratta,L1540x15,LAY,4,Opus,11.49,9.5,20.0,0,0.92
 2026-11-03,wangaratta,L1540x15,LAY,5,American Russ,8.45,4.8,20.0,0,0.92
+2026-11-03,wangaratta,B47firm,BACK,5,It'swhatyoumakeit,9.83,12.0,5.69,0,-1.0
+2026-11-03,wangaratta,B47x16,BACK,5,It'swhatyoumakeit,9.83,12.0,5.69,0,-1.0
 2026-11-03,wangaratta,L1215drift,LAY,5,Prince Rupert,9.34,7.0,12.22,0,0.92
 2026-11-03,wangaratta,L1540x15,LAY,6,Tasman Park,10.07,10.0,17.35,0,0.92
 2026-11-04,kyneton,B35firm,BACK,1,Sabrina,4.18,11.0,3.4,0,-1.0
@@ -684,21 +854,31 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-04,kyneton,B35firm,BACK,2,Mongol Heer,4.87,9.5,3.96,0,-1.0
 2026-11-04,kyneton,L812x16,LAY,2,Bourne Legacy,5.59,4.0,9.0,0,0.92
 2026-11-04,kyneton,L1540x15,LAY,3,Platinum Rush,10.81,11.0,22.0,0,0.92
+2026-11-04,kyneton,B47firm,BACK,3,Emanating,7.41,15.0,5.5,1,4.14
 2026-11-04,kyneton,L1215drift,LAY,4,Arcandam,11.09,4.8,13.5,1,-12.5
 2026-11-04,kyneton,L1215drift,LAY,5,Packers Journey,11.01,8.0,13.96,0,0.92
 2026-11-04,kyneton,B35firm,BACK,5,Divine Empress,5.63,8.0,4.39,0,-1.0
+2026-11-04,kyneton,B47firm,BACK,5,Divine Empress,5.63,8.0,4.39,0,-1.0
 2026-11-04,kyneton,L812x16,LAY,5,Mystic Reign,4.07,4.6,11.44,0,0.92
 2026-11-04,kyneton,L1540x15,LAY,6,Weather Delay,7.45,6.0,17.5,0,0.92
 2026-11-04,kyneton,L1540x15,LAY,6,Who I Think I Am,10.69,8.5,18.0,0,0.92
+2026-11-04,kyneton,B47firm,BACK,6,Governor King,10.35,16.5,6.53,0,-1.0
 2026-11-04,kyneton,B35firm,BACK,6,Durban Harbour,6.68,7.0,3.9,0,-1.0
 2026-11-04,kyneton,L1215drift,LAY,7,Sunlit Serenade,6.86,4.6,14.5,0,0.92
 2026-11-04,kyneton,B35firm,BACK,7,Coronationhercules,9.53,8.0,4.4,1,3.128
+2026-11-04,kyneton,B47firm,BACK,7,Coronationhercules,9.53,8.0,4.4,1,3.128
+2026-11-04,kyneton,B47x16,BACK,7,Coronationhercules,9.53,8.0,4.4,1,3.128
+2026-11-04,kyneton,B47x16,BACK,7,Cobblestone Way,9.59,8.0,5.8,0,-1.0
 2026-11-04,kyneton,B35firm,BACK,8,Prince Eric,5.58,7.0,3.85,0,-1.0
 2026-11-04,kyneton,L812x16,LAY,8,The Pendragon,4.32,3.0,9.25,0,0.92
 2026-11-04,kyneton,L2540worse,LAY,8,Ragazzone,62.84,101.0,26.0,0,0.92
 2026-11-04,kyneton,L812firm,LAY,9,Titan's Spirit,6.41,26.0,8.2,0,0.92
 2026-11-04,kyneton,L812x16,LAY,9,Sub Gauge,4.67,16.0,11.38,0,0.92
+2026-11-04,kyneton,B47firm,BACK,9,Please Me Do,6.7,26.0,5.08,0,-1.0
+2026-11-04,kyneton,B47firm,BACK,9,Tomanado,11.38,26.0,6.6,0,-1.0
+2026-11-04,kyneton,B47x16,BACK,9,Tomanado,11.38,26.0,6.6,0,-1.0
 2026-11-04,kyneton,B35firm,BACK,9,Colt Forty Five,6.36,26.0,4.3,0,-1.0
+2026-11-04,kyneton,B47firm,BACK,9,Colt Forty Five,6.36,26.0,4.3,0,-1.0
 2026-11-05,flemington,L1215drift,LAY,1,She's Got The Cash,14.95,8.0,14.0,0,0.92
 2026-11-05,flemington,L2540worse,LAY,1,En Flique,47.54,15.0,25.69,0,0.92
 2026-11-05,flemington,L2540drift2,LAY,1,Certainly Quiet,24.08,9.0,34.0,0,0.92
@@ -746,6 +926,7 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-06,cranbourne,L2540drift2,LAY,6,Weapon Clear,14.66,6.0,34.46,0,0.92
 2026-11-06,cranbourne,L1540x15,LAY,6,Weapon Clear,14.66,6.0,34.46,0,0.92
 2026-11-06,cranbourne,L812firm,LAY,7,Discover Lupino,11.34,17.0,9.85,0,0.92
+2026-11-06,cranbourne,B47firm,BACK,7,Regal Might,6.44,8.5,5.4,0,-1.0
 2026-11-06,cranbourne,L2540drift2,LAY,7,Couldthisbetheone,12.15,14.0,30.0,0,0.92
 2026-11-06,cranbourne,L1540x15,LAY,7,Couldthisbetheone,12.15,14.0,30.0,0,0.92
 2026-11-06,cranbourne,L1540x15,LAY,7,Kastun Star,8.41,17.0,17.5,0,0.92
@@ -759,6 +940,7 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-06,warrnambool,L1540x15,LAY,5,Francine,19.64,17.0,36.97,0,0.92
 2026-11-06,warrnambool,L2540drift2,LAY,6,Zetheros,30.01,14.5,32.48,0,0.92
 2026-11-06,warrnambool,L1540x15,LAY,6,Dobkins,13.34,7.25,20.22,0,0.92
+2026-11-06,warrnambool,B47firm,BACK,6,Azzacool,10.2,9.75,6.4,0,-1.0
 2026-11-06,warrnambool,L1540x15,LAY,6,Ballynacally,4.8,5.25,17.0,0,0.92
 2026-11-06,warrnambool,L2540drift2,LAY,7,Dschingis Prestige,24.79,12.0,38.0,0,0.92
 2026-11-06,warrnambool,L1540x15,LAY,7,Dschingis Prestige,24.79,12.0,38.0,0,0.92
@@ -777,6 +959,8 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-07,flemington,L1540x15,LAY,3,Valiant King,10.62,15.0,29.54,0,0.92
 2026-11-07,flemington,L812x16,LAY,3,Litzdeel,4.91,8.5,8.84,0,0.92
 2026-11-07,flemington,B35firm,BACK,3,Defiantly,18.47,6.5,4.2,0,-1.0
+2026-11-07,flemington,B47firm,BACK,3,Defiantly,18.47,6.5,4.2,0,-1.0
+2026-11-07,flemington,B47x16,BACK,3,Defiantly,18.47,6.5,4.2,0,-1.0
 2026-11-07,flemington,L2540drift2,LAY,3,Bella Montagna,18.78,15.0,39.05,0,0.92
 2026-11-07,flemington,L1540x15,LAY,3,Bella Montagna,18.78,15.0,39.05,0,0.92
 2026-11-07,flemington,L2540drift2,LAY,4,Grand Larceny,24.66,12.5,27.0,0,0.92
@@ -790,6 +974,8 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-07,flemington,L1540x15,LAY,7,Buckaroo,13.7,14.0,27.54,0,0.92
 2026-11-07,flemington,L2540worse,LAY,8,Land Legend,113.12,41.0,38.25,0,0.92
 2026-11-07,flemington,B35firm,BACK,9,Torsheen,12.8,8.0,4.4,0,-1.0
+2026-11-07,flemington,B47firm,BACK,9,Torsheen,12.8,8.0,4.4,0,-1.0
+2026-11-07,flemington,B47x16,BACK,9,Torsheen,12.8,8.0,4.4,0,-1.0
 2026-11-07,flemington,L1215drift,LAY,9,Salaria,7.92,11.0,14.47,0,0.92
 2026-11-07,flemington,L1540x15,LAY,9,Lawborough,11.86,15.0,19.06,1,-18.06
 2026-11-07,flemington,L1540x15,LAY,9,Electric Elvis,11.77,15.0,19.8,0,0.92
@@ -812,11 +998,16 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-07,geelong,L2540drift2,LAY,5,I'mfallinforyou,14.06,10.75,38.0,0,0.92
 2026-11-07,geelong,L1540x15,LAY,5,I'mfallinforyou,14.06,10.75,38.0,0,0.92
 2026-11-07,geelong,B35firm,BACK,6,Olatunde,4.2,8.0,4.2,0,-1.0
+2026-11-07,geelong,B47firm,BACK,6,Olatunde,4.2,8.0,4.2,0,-1.0
 2026-11-07,geelong,L1215drift,LAY,6,I'm Da Boss,14.06,8.0,14.0,0,0.92
 2026-11-07,geelong,L812x16,LAY,6,Posh Diamante,5.73,4.8,9.8,0,0.92
 2026-11-07,geelong,L1540x15,LAY,6,Crank,11.33,6.5,22.0,1,-21.0
+2026-11-07,geelong,B47firm,BACK,7,Desert Anthem,13.75,22.17,6.21,0,-1.0
+2026-11-07,geelong,B47x16,BACK,7,Desert Anthem,13.75,22.17,6.21,0,-1.0
 2026-11-07,geelong,B35firm,BACK,7,Miss Castelvecchio,8.14,7.42,4.65,0,-1.0
 2026-11-07,geelong,BfavX16,BACK,7,Miss Castelvecchio,8.14,7.42,4.65,0,-1.0
+2026-11-07,geelong,B47firm,BACK,7,Miss Castelvecchio,8.14,7.42,4.65,0,-1.0
+2026-11-07,geelong,B47x16,BACK,7,Miss Castelvecchio,8.14,7.42,4.65,0,-1.0
 2026-11-07,geelong,L1540x15,LAY,7,Taung,10.09,4.33,16.0,0,0.92
 2026-11-07,geelong,L1215drift,LAY,7,Lario,13.17,8.67,13.95,0,0.92
 2026-11-07,geelong,L2540drift2,LAY,7,Kurakka,13.12,6.17,30.56,0,0.92
@@ -829,8 +1020,11 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-07,geelong,L2540worse,LAY,8,Aurora Storm,84.0,41.0,36.0,0,0.92
 2026-11-08,ararat,L812x16,LAY,1,Eye For An Eye,5.03,4.4,9.6,0,0.92
 2026-11-08,ararat,L2540drift2,LAY,1,Topspin,30.81,17.0,38.0,0,0.92
+2026-11-08,ararat,B47firm,BACK,1,Three Reel Roses,9.17,13.0,5.2,1,3.864
+2026-11-08,ararat,B47x16,BACK,1,Three Reel Roses,9.17,13.0,5.2,1,3.864
 2026-11-08,ararat,L2540drift2,LAY,2,Typhoon Bassett,38.51,13.0,32.43,0,0.92
 2026-11-08,ararat,BfavX16,BACK,2,Daniel Boone,14.36,5.5,4.45,0,-1.0
+2026-11-08,ararat,B47x16,BACK,2,Daniel Boone,14.36,5.5,4.45,0,-1.0
 2026-11-08,ararat,L1215drift,LAY,3,Hellofacury,8.51,4.4,12.78,0,0.92
 2026-11-08,ararat,L2540worse,LAY,3,Charlotte's Web,117.63,51.0,35.0,0,0.92
 2026-11-08,ararat,L2540drift2,LAY,4,Masked Marauder,14.51,10.0,31.96,0,0.92
@@ -840,12 +1034,17 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-08,ararat,L1215drift,LAY,5,Pneuma,15.5,11.0,14.69,0,0.92
 2026-11-08,ararat,L812x16,LAY,5,Almorina,5.12,7.5,9.79,0,0.92
 2026-11-08,ararat,B35firm,BACK,6,Cable Dancer,8.31,10.0,4.0,1,2.76
+2026-11-08,ararat,B47firm,BACK,6,Cable Dancer,8.31,10.0,4.0,1,2.76
+2026-11-08,ararat,B47x16,BACK,6,Cable Dancer,8.31,10.0,4.0,1,2.76
 2026-11-08,ararat,L1215drift,LAY,6,Nothingelsematters,10.41,6.5,12.0,0,0.92
 2026-11-08,ararat,L2540drift2,LAY,6,Tikemyson,17.69,13.0,36.0,0,0.92
 2026-11-08,ararat,L1540x15,LAY,6,Tikemyson,17.69,13.0,36.0,0,0.92
 2026-11-08,ararat,L1540x15,LAY,6,Unseen Ruler,11.22,11.0,18.23,0,0.92
 2026-11-08,ararat,L1215drift,LAY,6,Raging Bull,10.54,6.0,12.0,0,0.92
 2026-11-08,ararat,L1540x15,LAY,6,Thedoctoroflove,11.05,15.0,29.27,0,0.92
+2026-11-08,ararat,B47firm,BACK,7,Princess Que,10.22,9.5,6.2,1,4.784
+2026-11-08,ararat,B47x16,BACK,7,Princess Que,10.22,9.5,6.2,1,4.784
+2026-11-08,ararat,B47firm,BACK,8,My Uncle Did It,7.05,8.5,5.6,0,-1.0
 2026-11-08,ararat,L2540drift2,LAY,8,Sound Of Jura,25.62,8.0,28.0,0,0.92
 2026-11-08,ararat,B35firm,BACK,8,Cat Noir,3.74,6.5,3.5,1,2.3
 2026-11-08,ararat,L1215drift,LAY,8,Just Call Me Jonny,4.67,9.0,12.27,0,0.92
@@ -865,6 +1064,8 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units
 2026-11-09,hamilton,L812firm,LAY,5,Tarakash,15.38,18.0,11.0,1,-10.0
 2026-11-09,hamilton,L2540worse,LAY,6,Saint Lazare,51.36,26.0,30.0,0,0.92
 2026-11-09,hamilton,L1540x15,LAY,6,French Navy,9.83,8.0,24.0,1,-23.0
+2026-11-09,hamilton,B47firm,BACK,7,News Travels Fast,12.6,14.5,6.55,1,5.106
+2026-11-09,hamilton,B47x16,BACK,7,News Travels Fast,12.6,14.5,6.55,1,5.106
 2026-11-09,hamilton,L2540drift2,LAY,7,Star Fortian,19.65,9.0,34.83,0,0.92
 2026-11-09,hamilton,L1540x15,LAY,7,Star Fortian,19.65,9.0,34.83,0,0.92
 2026-11-09,hamilton,L812x16,LAY,7,Imminent Storm,4.47,2.75,8.4,0,0.92
