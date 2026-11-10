@@ -184,3 +184,21 @@ pair for every race KL 0.0866; by first starters in the race 0.0862; metro / not
 0.0867; a 2yo in the race 0.0865. The fitted weights do lean to the open where we are weakest (2+ first starters
 0.66 / 0.48, metro 0.62 / 0.52, as the metro fix already does), but the whole-market gain is under half a percent.
 Leave the blend as it is.
+
+### 3.9 Audit of the order sheet's blocks (strat5.py, strat5_blend.out.txt)
+Every bet the edge rule would strike with the blocks off (first starters still out), deduction fitted by race; the
+bets each block STOPS, at the open: walk-forward trees (11 months, four periods) / cross-fitted blend (16 months, six).
+
+| block | walk-forward: bets, profit, ROI, periods | blend: bets, profit, ROI, periods | flat at BSP | verdict |
+|---|---|---|---|---|
+| resuming 60+ days, 200m+ short of last start | 247, -161u, -27%, lost in 4 of 4 | 370, -22u, -3%, lost in 3 of 6 | -66% / -43% | KEEP |
+| resuming off a bottom-half trial | 68, -12u, -9% | 77, -37u, -25%, lost in 5 of 6 | -31% / -44% | keep |
+| second-up after a good first-up, open over $15 | 44, -32u, -61% | 69, -11u, -14%, lost in 4 of 6 | -50% / -44% | KEEP the $15 cap ($8-$15: +49% / +61%, the 1 Nov change was right) |
+| BOUNCE: last start a new peak by 3+ | 307, +177u, +22% (+55%, +43%, +2%, -7%) | 457, +299u, +24%, won in 4 of 6 | -32% / -19% | QUESTIONABLE |
+| metro, open $12+ (plain rule, without the metro lean) | 274, +100u, +33%, won in 2 of 4 | 424, +128u, +26%, won in 5 of 6 | -4% / -19% | inconclusive |
+
+The bounce block was built on BSP returns (-40% at BSP in October's test, still -19% to -32% here) and the bets it stops
+do lose at BSP; but we strike them at the open, where they made +22% to +24% on 16 months, about +180u to +300u given
+up. All of the walk-forward gain is in January to May; from June the stopped bets broke even, which is what the 20 Oct
+audit saw (0% at the open on the June holdout). FOUNDER'S CALL: keep it (nothing lost since June) or drop it (16 months
+say the bets pay at the open). The first-up-short-of-trip block and the $15 second-up cap both hold on the longer sample.

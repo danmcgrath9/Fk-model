@@ -1,0 +1,20 @@
+  best = np.nanmax(rat[k, idx[1:]])
+flags over 51298 runners: bounce 0.067, first-up short of trip 0.079, first-up off a poor trial 0.025, second-up after a good first-up 0.070, metro 0.203
+
+| bets | Jan-17Mar | 18Mar-2Jun | 3Jun-8Oct | 9Oct-9Nov | all: bets, profit, ROI at the open | flat at BSP | BSP/open |
+|---|---|---|---|---|---|---|---|
+| every bet the edge rule strikes (no blocks) | 768 +1122u +59% | 878 +528u +25% | 1334 +1101u +37% | 336 +359u +48% | 3316, +3110u, +40% | -7% | 0.72 |
+| clear of the three blocks | 646 +1062u +67% | 727 +518u +31% | 1091 +1072u +45% | 281 +367u +59% | 2745, +3019u, +48% | +1% | 0.72 |
+| BLOCKED: bounce (last start a new peak by 3+) | 61 +100u +55% | 63 +77u +43% | 150 +6u +2% | 33 -6u -7% | 307, +177u, +22% | -32% | 0.73 |
+| BLOCKED: resuming 60+ days, 200m+ short of last start | 60 -45u -32% | 75 -74u -37% | 90 -25u -12% | 22 -16u -31% | 247, -161u, -27% | -66% | 0.75 |
+| BLOCKED: resuming 60+ days off a bottom-half trial | 8 -11u -100% | 33 -31u -44% | 24 +27u +64% | 3 +3u +35% | 68, -12u, -9% | -31% | 0.83 |
+| any of the three blocks | 122 +60u +19% | 151 +10u +3% | 243 +30u +5% | 55 -9u -6% | 571, +92u, +6% | -41% | 0.75 |
+| | | | | | | | |
+| second-up after a good first-up (EARLY), open to $8 | 59 +128u +53% | 54 +24u +10% | 65 +86u +30% | 12 -2u -4% | 190, +236u, +29% | -4% | 0.72 |
+| EARLY, open $8-$15 (allowed since 1 Nov) | 34 -13u -18% | 34 +38u +50% | 57 +102u +81% | 12 +15u +79% | 137, +142u, +49% | -27% | 0.74 |
+| EARLY, open over $15 (CAPPED OUT) | 11 -13u -100% | 11 -12u -100% | 17 -13u -58% | 5 +6u +116% | 44, -32u, -61% | -50% | 0.70 |
+| not EARLY, open over $15 (allowed) | 138 +68u +49% | 170 +93u +56% | 296 +164u +53% | 71 +97u +133% | 675, +422u, +62% | +11% | 0.69 |
+| | | | | | | | |
+| metro, open under $12 | 89 +223u +85% | 90 -72u -27% | 110 +63u +18% | 25 +27u +37% | 314, +240u, +25% | -12% | 0.74 |
+| metro, open $12+ (CAPPED OUT) | 74 -19u -22% | 81 +100u +104% | 98 -19u -19% | 21 +37u +164% | 274, +100u, +33% | -4% | 0.82 |
+| not metro, open $12+ | 168 +82u +40% | 201 +99u +44% | 417 +331u +59% | 90 +103u +92% | 876, +615u, +55% | +8% | 0.65 |
