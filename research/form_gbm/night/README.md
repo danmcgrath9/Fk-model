@@ -404,8 +404,9 @@ on out-of-fold prices. Each member trained inside each fold, exactly as live tra
   further from BSP). It is useful because it is different: the 3-seed network sits a median 15-16% from the trees
   runner by runner.
 - It is also the noisiest: two network seeds are a median 13.6% apart on the same runner (90th percentile 36%). Live
-  re-trains five seeds every time a day is priced, which is why the same field re-priced an hour apart moves a few
-  percent with no news. queue5.py measures what more seeds buy (2.8).
+  re-trains five seeds every time a day is priced. On the frozen history that gives the same five networks every
+  time; once the history is refreshed each morning (1.3) the network third will move from one day to the next on
+  noise alone (at Seymour it moved 7.5% on the refresh, 1.8). queue5.py measures what more seeds buy (2.9).
 - Profit does not follow KL here (the live blend makes the least on fold A and the most on fold B): 1,700 bets a fold
   is too few to rank prices that are 2-4% apart by money. KL to BSP on 1,500+ races is the measure that can.
 
@@ -486,3 +487,16 @@ have had), every live block on, deduction by race: walk-forward 3x +1,614u, 6x +
 gain does not need those winners to have been lucky: a horse that opens at 2.5x where the market ends up is a bet at
 BSP's own strike rate. So the honest size of the change is about three more bets a month in clean races plus the
 scratching-affected ones (which pay less after deductions), for roughly a quarter more profit.
+
+### 3.15 The ceiling on a third price (ceiling_third_price.py)
+Queue 3 produced a price neither ceiling test had: the walk-forward THREE-MODEL blend, every member trained inside the
+fold, live weights, the closest thing here to the live stage 1. Plain live rules at the open (first starters in, no
+blocks, flat 16c), 1 Jan - 9 Nov:
+| ceiling | 1 Jan - 17 Mar | 18 Mar - 2 Jun | 3 Jun - 8 Oct | 9 Oct - 9 Nov | all four |
+|---|---|---|---|---|---|
+| 3x | +891u | +632u | +854u | +303u | +2,680u on 3,418 bets (+38%) |
+| 4x | +951u | +722u | +1,115u | +315u | +3,103u (+42%) |
+| 6x | +1,024u | +737u | +1,275u | +390u | +3,427u on 3,621 bets (+46%) |
+| none | +1,024u | +732u | +1,249u | +389u | +3,394u (+45%) |
+6x against 3x: 203 more bets, 30 more winners, +747u (+28%), better in all four periods; nothing above 6x. Three prices
+(walk-forward trees, the cross-fitted blend, the walk-forward blend), fourteen periods between them, the same answer.

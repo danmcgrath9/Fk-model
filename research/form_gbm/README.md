@@ -1724,3 +1724,15 @@ The market already prices it, and so do the ratings (a race whose horses go on a
 which the model reads directly). LIMIT: we only hold the past runs of horses we have pulled, so a race has on average
 2.3 race-mates with a known next run (65-73% of runners have at least one); Form King's own form lines use the whole field.
 A fuller test needs every runner's history, which costs credits. Not added.
+
+## The night of 10-11 Nov 2026: every check, closer to BSP, betting strategies (night/README.md)
+Founder: "Do every check of our model ANYTHING you can think of, research to get our model closer to bsp and any betting
+strategies. You have all night". The full write-up, every script and every output is in night/ (README.md there starts
+with the findings in order of money). In one paragraph: no leaks; the live price ran 10% further from BSP than the
+backtest because riders were undeclared when files were priced (fixed 1 Nov) and because of late scratchings, and the
+history the live pricer reads has been frozen since 14 Oct (pipeline/refresh_history.sh fixes it); 49 retrains, 20
+network seeds and mixed recipes move the stage-1 price by half a percent at most, the blend and its weights are right,
+and more history is the only lever left; on the betting side the 3x ceiling costs a quarter of the profit (6x holds in
+every period on two prices), the edge, range, steps, cap and the 16c deduction are right, both current Betfair lay
+rules fail on eleven untouched months, and 21% of races open on TAB before our order sheet exists. Nothing live was
+changed that night: each change is listed there as the founder's call.
