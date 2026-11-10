@@ -1,0 +1,12 @@
+15 Oct - 9 Nov
+  committed live files         293 bets, 51 won, 654u, +180.9u (+28%), beat BSP 73%
+  replay, history to 14 Oct    298 bets, 60 won, 668u, +313.1u (+47%), beat BSP 73%
+  replay, fresh history        293 bets, 59 won, 662u, +309.1u (+47%), beat BSP 74%
+15-28 Oct
+  committed live files         150 bets, 27 won, 328u, +116.5u (+35%), beat BSP 75%
+  replay, history to 14 Oct    146 bets, 31 won, 332u, +183.7u (+55%), beat BSP 79%
+  replay, fresh history        141 bets, 30 won, 324u, +170.3u (+53%), beat BSP 79%
+29 Oct - 9 Nov
+  committed live files         143 bets, 24 won, 326u, +64.4u (+20%), beat BSP 71%
+  replay, history to 14 Oct    152 bets, 29 won, 336u, +129.3u (+38%), beat BSP 68%
+  replay, fresh history        152 bets, 29 won, 338u, +138.7u (+41%), beat BSP 69%

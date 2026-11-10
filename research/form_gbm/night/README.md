@@ -268,3 +268,20 @@ all, which is the price an early run should use for runners with no rider yet (r
 In money: the live edge rule at the open on those four weeks, 306 bets +319.4u (+47%, 73% beat BSP) priced with riders;
 312 bets +211.1u (+37%, 67% beat BSP) priced with NO riders on the live model. A price made before riders keeps about
 two thirds of the profit; a missed open keeps none. So: price as soon as the fields land, re-price when riders do.
+
+### 1.10 The same four weeks in money: live files against the backtest's inputs (replay_bets.out.txt)
+The live edge rule at Form King's open, 15 Oct - 9 Nov, first starters out, 16c deduction, the same races:
+committed live files 293 bets, 51 won, +180.9u (+28%); replay on the rebuilt inputs, history to 14 Oct, 298 bets, 60
+won, +313.1u (+47%); the same on fresh history +309.1u (+47%). Both halves alike (15-28 Oct +116u against +184u;
+29 Oct - 9 Nov +64u against +129u).
+- THE BACKTEST KNOWS THE FINAL FIELD AND THE RIDERS; A PRICE MADE FOR THE OPEN KNOWS NEITHER. On these weeks that is
+  the difference between +47% and +28% on stakes. Plan live at about 60% of any backtest profit figure in this file
+  (the 14 Oct study said 60-80% from volume alone; this is the same answer from the price side).
+- Fresh history is worth 2-3% of the distance to BSP but nothing measurable in four weeks of bets (+309u against +313u).
+  It is a correctness fix, not a profit lever.
+- What this does to the ceiling result (3.1): a race that loses runners after the open makes every survivor's opening
+  price look long against a price computed on the final field, so some of the backtest's "3x-6x" opens would have been
+  2x-3x against a price made before the scratchings. The clean test is races whose opening book is intact (110-135%):
+  there the 6x ceiling still adds +378u on 42 extra bets, all four periods (3.6), and the committed live files, priced
+  before the late scratchings, show the same thing on a small sample (17 runners, +24.5u). The direction is safe; expect
+  less than the headline +27% to +35%.
