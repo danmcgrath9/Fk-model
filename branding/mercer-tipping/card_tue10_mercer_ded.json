@@ -1,0 +1,19 @@
+{
+ "day": "Tuesday",
+ "date": "10 November",
+ "footer": "Win bets.",
+ "meetings": [
+  {
+   "name": "Mornington",
+   "note": "",
+   "bets": [
+    {"race": 4, "time": "3:00PM", "horse": "Marilyn's Edge", "price": "$5.67", "units": "1.07u"},
+    {"race": 5, "time": "3:30PM", "horse": "Nightowl", "price": "$4.78", "units": "0.73u"},
+    {"race": 5, "time": "3:30PM", "horse": "Tassadar", "price": "$28.72", "units": "0.34u"},
+    {"race": 8, "time": "5:00PM", "horse": "Express Guard", "price": "$11", "units": "0.49u"},
+    {"race": 8, "time": "5:00PM", "horse": "It's Gnarly", "price": "$15", "units": "0.54u"}
+   ]
+  }
+ ],
+ "brand": true
+}
