@@ -1,0 +1,36 @@
+pre_jump races in the dataset: 127 of 5178 ; from 15 Oct: 32 of 302
+live trees v stale-replay trees (same model, same history), by what changed between pricing and the race:
+  all                                                         2908 runners  median  4.5%  90th  19.1%  over 10%:  27%
+  race had late scratchings after the file was made            524 runners  median  7.8%  90th  37.4%  over 10%:  43%
+  no late scratching                                          2384 runners  median  4.0%  90th  15.9%  over 10%:  23%
+  no late scratching, a jockey changed in the race             796 runners  median  7.4%  90th  34.4%  over 10%:  40%
+  no late scratching, a barrier differs in the race              0 runners
+  no late scratching, no jockey or barrier change in the race  1588 runners  median  3.1%  90th  11.4%  over 10%:  14%
+  runners whose own jockey changed: 205  own barrier differs: 0
+  file committed on race day (the 9:30 re-price)               244 runners  median  4.9%  90th  21.1%  over 10%:  27%
+  file committed before race day                              2664 runners  median  4.5%  90th  19.0%  over 10%:  27%
+
+| races | n | live file trees KL | rebuilt-input trees KL | live log loss | rebuilt log loss | paired diff (SE) |
+|---|---|---|---|---|---|---|
+| all | 275 | 0.1078 | 0.0962 | 1.9409 | 1.9136 | +0.0274 (0.0104) |
+| late scratching after pricing | 51 | 0.1158 | 0.0898 | 1.9071 | 1.8342 | +0.0730 (0.0315) |
+| no late scratching, a jockey changed | 71 | 0.1318 | 0.1036 | 2.0730 | 2.0211 | +0.0519 (0.0313) |
+| clean: same field, same jockeys | 153 | 0.0941 | 0.0949 | 1.8909 | 1.8901 | +0.0008 (0.0045) |
+
+stage 2 (our price before the open blend), the same groups:
+| all | 275 | 0.1016 | 0.0922 | 1.9378 | 1.9158 | +0.0221 (0.0102) |
+| late scratching after pricing | 51 | 0.1078 | 0.0840 | 1.9162 | 1.8568 | +0.0594 (0.0309) |
+| no late scratching, a jockey changed | 71 | 0.1209 | 0.1001 | 2.0691 | 2.0201 | +0.0490 (0.0285) |
+| clean: same field, same jockeys | 153 | 0.0906 | 0.0912 | 1.8841 | 1.8870 | -0.0029 (0.0073) |
+
+runners whose jockey differs from the file: 205; of those, no rider declared when priced: 172
+
+Before and after the 1 Nov rider fix (stage 2, live file v rebuilt inputs):
+  15-31 Oct all                    172 races  live 0.1023  rebuilt-stale 0.0874  rebuilt-fresh 0.0870   log loss 1.9768 / 1.9492 / 1.9446
+  15-31 Oct late scratching         28 races  live 0.1191  rebuilt-stale 0.0849  rebuilt-fresh 0.0855   log loss 1.9232 / 1.8554 / 1.8425
+  15-31 Oct rider missing/changed   64 races  live 0.1185  rebuilt-stale 0.0951  rebuilt-fresh 0.0950   log loss 2.0667 / 2.0147 / 2.0109
+  15-31 Oct clean                   80 races  live 0.0834  rebuilt-stale 0.0821  rebuilt-fresh 0.0812   log loss 1.9237 / 1.9296 / 1.9272
+  1-9 Nov all                    103 races  live 0.1004  rebuilt-stale 0.1002  rebuilt-fresh 0.0980   log loss 1.8727 / 1.8599 / 1.8542
+  1-9 Nov late scratching         23 races  live 0.0940  rebuilt-stale 0.0829  rebuilt-fresh 0.0833   log loss 1.9076 / 1.8585 / 1.8521
+  1-9 Nov rider missing/changed    7 races  live 0.1423  rebuilt-stale 0.1462  rebuilt-fresh 0.1382   log loss 2.0907 / 2.0692 / 2.0523
+  1-9 Nov clean                   73 races  live 0.0984  rebuilt-stale 0.1013  rebuilt-fresh 0.0987   log loss 1.8408 / 1.8403 / 1.8359

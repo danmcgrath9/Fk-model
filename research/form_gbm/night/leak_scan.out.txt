@@ -1,0 +1,36 @@
+5136 races with a full BSP book and one winner; 809 inputs
+largest |z|: all 2.70; inputs with |z| > 3.2: 0; > 4: 0; > 5: 0
+
+The 30 inputs with the most win information beyond BSP (z all races | before Mar 2026 | from Mar 2026):
+  h_meet__rank                                  +2.70 |  +1.33 |  +2.48
+  f_goingForm_slow_w                            +2.42 |  +2.93 |  +0.50
+  x_pastp_rw__vmean                             +2.36 |  +1.77 |  +1.57
+  x_pastp_rw                                    +2.36 |  +1.77 |  +1.57
+  x_pastp_rw__vmax                              +2.36 |  +1.77 |  +1.57
+  x_pastp_rw__rank                              -2.36 |  -1.77 |  -1.57
+  sec_8                                         +2.33 |  +1.47 |  +1.83
+  sec_11                                        +2.33 |  +1.47 |  +1.83
+  e_fin_share_rw__rank                          +2.31 |  +1.49 |  +1.78
+  days_log                                      -2.28 |  -2.19 |  -1.04
+  e_fin_share_rw__vmax                          -2.26 |  -1.43 |  -1.77
+  e_fin_share_rw__vmean                         -2.26 |  -1.43 |  -1.77
+  e_fin_share_rw                                -2.26 |  -1.43 |  -1.77
+  h_net_rw__rank                                +2.25 |  +1.60 |  +1.58
+  tsg_slow_s                                    +2.20 |  +1.27 |  +1.85
+  raw_jockey_horse_win                          +2.20 |  +0.91 |  +2.21
+  jockey_horse_win                              +2.20 |  +0.91 |  +2.21
+  e_days_any__vmean                             -2.19 |  -1.54 |  -1.56
+  e_days_any                                    -2.19 |  -1.54 |  -1.56
+  e_days_any__vmax                              -2.19 |  -1.54 |  -1.56
+  f_goingForm_slow_s                            +2.15 |  +2.00 |  +1.03
+  h_net__rank                                   +2.13 |  +1.73 |  +1.27
+  raw_days_since_win_log                        -2.02 |  -1.35 |  -1.51
+  daysSinceLastWin                              -2.02 |  -1.35 |  -1.51
+  days_since_win_log                            -2.02 |  -1.35 |  -1.51
+  x_fin_share_mean3__rank                       +1.97 |  +1.35 |  +1.44
+  raw_days_log                                  -1.95 |  -1.72 |  -1.03
+  raw_mkt_class__vmean                          +1.95 |  +1.71 |  +1.04
+  raw_mkt_class__vmax                           +1.95 |  +1.71 |  +1.04
+  raw_mkt_class                                 +1.95 |  +1.71 |  +1.04
+
+inputs over 3.2 overall AND over 2 with the same sign in both halves: 0

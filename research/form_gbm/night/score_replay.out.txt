@@ -1,0 +1,35 @@
+races 15 Oct - 9 Nov with both arms: 302; runners 3112
+
+| price (frozen live v10 models, no-network blend) | KL to BSP | winner log loss | races |
+|---|---|---|---|
+| stage 1, STALE history (to 14 Oct) | 0.0953 | 1.8944 | 294 |
+| stage 1, FRESH history | 0.0951 | 1.8940 | 294 |
+| stage 2, STALE history (what live does) | 0.0924 | 1.8981 | 294 |
+| stage 2, FRESH history | 0.0908 | 1.8934 | 294 |
+| the opening market (races with every open) | 0.1542 | 1.9549 | 294 |
+| BSP itself | 0.0000 | 1.7971 | 294 |
+
+By week (stage 2 KL to BSP: stale / fresh, and stage 1):
+  2026-10-15..2026-10-22:  81 races  stage 2 0.0957 / 0.0955 (-0.2%)  log loss 2.0780 / 2.0776   stage 1 0.0984 / 0.0981
+  2026-10-22..2026-10-29:  58 races  stage 2 0.0763 / 0.0761 (-0.3%)  log loss 1.6516 / 1.6459   stage 1 0.0816 / 0.0820
+  2026-10-29..2026-11-05:  97 races  stage 2 0.0901 / 0.0874 (-3.0%)  log loss 1.8791 / 1.8675   stage 1 0.0918 / 0.0910
+  2026-11-05..2026-11-10:  58 races  stage 2 0.1080 / 0.1048 (-3.0%)  log loss 1.9252 / 1.9268   stage 1 0.1103 / 0.1107
+
+fresh v stale stage-2 price, runner by runner: median 2.1% apart, 90th pct 9.6%, over 10% apart 10% of runners, over 20% 2%
+where they are 10%+ apart (309 runners): fresh is nearer BSP 53% of the time (median distance to BSP: fresh 33%, stale 33%)
+
+COMMITTED LIVE FILES (50 meetings' files from 15 Oct): races where every runner that ran is in the file: 283
+| price | KL to BSP | winner log loss | races |
+|---|---|---|---|
+| live file: trees (pre-race inputs, stale history) | 0.1078 | 1.9409 | 275 |
+| replay: trees, stale history (rebuilt inputs) | 0.0962 | 1.9136 | 275 |
+| replay: trees, fresh history (rebuilt inputs) | 0.0960 | 1.9124 | 275 |
+| live file: stage 1 three-way (with the network) | 0.1063 | 1.9376 | 275 |
+| replay: stage 1 no-network, stale | 0.0956 | 1.9127 | 275 |
+| live file: stage 2 = our price before the open blend | 0.1016 | 1.9378 | 275 |
+| replay: stage 2, stale | 0.0922 | 1.9158 | 275 |
+| replay: stage 2, fresh | 0.0911 | 1.9107 | 275 |
+| live file: blended with the open (the betting price) | 0.0958 | 1.9261 | 275 |
+| opening market | 0.1565 | 1.9662 | 275 |
+
+live trees v the stale replay's trees (same model, same stale history; only the inputs differ), 2908 runners: median 4.5% apart, 90th pct 19.1%, over 10% apart 27%

@@ -1,0 +1,31 @@
+275 live races 15 Oct - 9 Nov where every runner that ran is in the committed file
+
+| week | races | our price KL | blended with open KL | open KL | log loss: ours | blended | open | BSP |
+|---|---|---|---|---|---|---|---|---|
+| 10-15 to 10-22 | 78 | 0.1094 | 0.1014 | 0.1545 | 2.0952 | 2.0838 | 2.1032 | 1.9560 |
+| 10-22 to 10-29 | 58 | 0.0895 | 0.0878 | 0.1639 | 1.6984 | 1.6938 | 1.7971 | 1.6022 |
+| 10-29 to 11-05 | 82 | 0.1014 | 0.0963 | 0.1604 | 1.9699 | 1.9481 | 1.9533 | 1.7829 |
+| 11-05 to 11-10 | 57 | 0.1034 | 0.0954 | 0.1462 | 1.9201 | 1.9150 | 1.9691 | 1.8434 |
+| 10-15 to 11-10 | 275 | 0.1016 | 0.0958 | 0.1565 | 1.9378 | 1.9261 | 1.9662 | 1.8064 |
+
+Calibration of the live betting price (blended), by its own price band: winners against the chance it gave
+| our price | runners | expected winners | actual | A/E | BSP expected |
+|---|---|---|---|---|---|
+| $1-$2.5 | 49 | 23.7 | 20 | 0.84 | 23.2 |
+| $2.5-$4 | 171 | 52.4 | 53 | 1.01 | 51.2 |
+| $4-$6 | 274 | 55.7 | 58 | 1.04 | 55.9 |
+| $6-$9 | 375 | 51.0 | 47 | 0.92 | 53.2 |
+| $9-$15 | 552 | 48.6 | 51 | 1.05 | 47.3 |
+| $15-$30 | 624 | 30.8 | 36 | 1.17 | 30.9 |
+| $30-up | 789 | 12.8 | 10 | 0.78 | 13.3 |
+
+Where we disagree with BSP (our price before the blend / BSP): who was right?
+| ours v BSP | runners | we expected | BSP expected | actual winners | A/E v ours | A/E v BSP |
+|---|---|---|---|---|---|---|
+| we are 1.5x+ longer than BSP | 441 | 31.5 | 61.3 | 68 | 2.16 | 1.11 |
+| 1.2-1.5x longer | 357 | 38.0 | 50.2 | 45 | 1.18 | 0.90 |
+| within 20% | 825 | 99.8 | 100.0 | 105 | 1.05 | 1.05 |
+| 1.2-1.5x shorter | 420 | 43.4 | 32.6 | 33 | 0.76 | 1.01 |
+| we are 1.5x+ shorter than BSP | 791 | 62.3 | 30.8 | 24 | 0.39 | 0.78 |
+
+Runners the live blended price rated value at Form King's open (open >= 1.2x ours, ours $1.60-$15, under 3x): 354; won 59 (we expected 68.2, BSP 65.4); flat 1u at the open +191.8u (+54%); beat BSP 71%, median open/BSP 1.34
