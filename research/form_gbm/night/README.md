@@ -202,3 +202,15 @@ do lose at BSP; but we strike them at the open, where they made +22% to +24% on 
 up. All of the walk-forward gain is in January to May; from June the stopped bets broke even, which is what the 20 Oct
 audit saw (0% at the open on the June holdout). FOUNDER'S CALL: keep it (nothing lost since June) or drop it (16 months
 say the bets pay at the open). The first-up-short-of-trip block and the $15 second-up cap both hold on the longer sample.
+
+### 3.10 The sheet as it is against the two changes (strat6.py)
+Every live rule this backtest can apply (first starters out, both first-up blocks, the bounce block, the second-up $15
+cap, the metro $12 cap, 1.15 under $4, three steps, the 2.2x doubling), deduction fitted by race:
+
+| sheet | walk-forward trees, 11 months | every period? | three-model blend, 16 months | every period? | worst drawdown |
+|---|---|---|---|---|---|
+| A today: 3x ceiling, bounce block | +2,936u on 2,442 bets (+49%) | | +3,818u on 4,034 bets (+40%) | | 65u / 104u |
+| B ceiling 6x | +3,724u (+27%) | 4 of 4 better | +5,166u (+35%) | 6 of 6 better | 84u / 85u |
+| C ceiling 6x, no bounce block | +4,024u (+37%) | 3 of 4 better than B | +5,664u (+48%) | 5 of 6 better than B | 89u / 98u |
+
+About 12 more bets a month for B, 36 for C.

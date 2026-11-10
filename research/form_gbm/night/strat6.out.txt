@@ -1,0 +1,16 @@
+
+WALK-FORWARD TREES, 1 Jan - 9 Nov 2026
+| sheet | Jan-17Mar | 18Mar-2Jun | 3Jun-8Oct | 9Oct-9Nov | all: bets, staked, profit, ROI | worst drawdown | bets a month |
+|---|---|---|---|---|---|---|---|
+| A today: 3x ceiling, bounce block | +1086u | +425u | +1101u | +325u | 2442, 5953u, +2936u (+0% v today), +49% | 65u | 222 |
+| B ceiling 6x | +1297u | +620u | +1277u | +530u | 2570, 6370u, +3724u (+27% v today), +58% | 84u | 234 |
+| C ceiling 6x, no bounce block | +1414u | +704u | +1388u | +519u | 2834, 7137u, +4024u (+37% v today), +56% | 89u | 258 |
+| (3x ceiling, no bounce block) | +1204u | +515u | +1132u | +326u | 2692, 6681u, +3177u (+8% v today), +48% | 71u | 245 |
+
+CROSS-FITTED THREE-MODEL BLEND, 1 Jul 2025 - 9 Nov 2026
+| sheet | Jul-Sep25 | Oct-Dec25 | Jan-Mar26 | Apr-Jun26 | Jul-Sep26 | Oct-9Nov26 | all: bets, staked, profit, ROI | worst drawdown | bets a month |
+|---|---|---|---|---|---|---|---|---|---|
+| A today: 3x ceiling, bounce block | +377u | +473u | +1202u | +693u | +683u | +392u | 4034, 9446u, +3818u (+0% v today), +40% | 104u | 237 |
+| B ceiling 6x | +614u | +743u | +1518u | +804u | +857u | +631u | 4232, 10096u, +5166u (+35% v today), +51% | 85u | 249 |
+| C ceiling 6x, no bounce block | +736u | +779u | +1616u | +921u | +986u | +626u | 4643, 11297u, +5664u (+48% v today), +50% | 98u | 273 |
+| (3x ceiling, no bounce block) | +517u | +466u | +1262u | +816u | +730u | +399u | 4421, 10564u, +4191u (+10% v today), +40% | 99u | 260 |
