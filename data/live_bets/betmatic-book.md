@@ -1150,12 +1150,11 @@ Track-bias inputs for every track (research/form_gbm/t_trackbias_ab.py) did not 
 (open-bet profit +1,165.6u v +1,237.8u for the current inputs). The model stays as it is, and the Sandown Lakeside G3 on
 Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 
-## Tuesday 10 Nov Mornington settled (Form King results, Tue 7:40pm; paper, the bot was off at Saturday's open)
-- Open book (paper at the Sat 11:02am open, 2026-11-10-mornington-missed.csv, TAB's deductions R4 15c, R5 16c, R8 none):
-  Marilyn's Edge R4 2.14u $9.50 WON, paid $8.23 after 15c (SP $4.20, BSP $5.70) +15.46u; Nightowl R5 1.46u $8.50 8th
-  (BSP $5.23); Tassadar R5 0.67u $34 12th (BSP $36); Express Guard R8 0.97u $19 12th (BSP $16); It's Gnarly R8 1.08u $19
-  9th (BSP $23). 5 bets, 1 won, 6.32u, +11.28u (+178%; +$564 at $50). The no-Mercer card (same horses, units and opens)
-  settles the same: +11.28u.
+## Tuesday 10 Nov Mornington settled (Form King results, Tue 7:40pm; the open was missed, so no open bets count)
+- Open book: NOT COUNTED. TAB opened Mornington Sat 11:02am, before we priced it, so the meeting was missed and its sheet
+  of record is empty (Sat 7 Nov entry). For the record only, the five would-be fills (2026-11-10-mornington-missed.csv,
+  TAB's deductions R4 15c, R5 16c): Marilyn's Edge R4 2.14u $9.50 WON (paid $8.23 after 15c; SP $4.20, BSP $5.70);
+  Nightowl 8th, Tassadar 12th, Express Guard 12th, It's Gnarly 9th. Would have been +11.28u on 6.32u.
 - Twitter (Mercer card, current prices with deductions, half units): Marilyn's Edge 1.07u $6.50 -> $5.67 won +5.00u;
   Nightowl 0.73u, Tassadar 0.34u, Express Guard 0.49u, It's Gnarly 0.54u lost. 3.17u, +2.90u.
 - Lay book (d5n, $200 a lay): 7 lays, 1 winner, -4.98u (-$996; -$249 at Friday's $50). $8-$12: R1 Molesworth BSP $11.50
