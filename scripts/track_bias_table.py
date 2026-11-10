@@ -21,6 +21,8 @@ from fk import fields as F  # noqa: E402
 ap = argparse.ArgumentParser()
 ap.add_argument("--before", default="2025-07-01")
 ap.add_argument("--since", default="2015-01-01")
+ap.add_argument("--rows", action="store_true", help="one line per run (date,track,band,settle,barrier,win,1/SP) instead of the table, "
+                "so the model can count only runs before each race's own date")
 a = ap.parse_args()
 
 
@@ -36,7 +38,8 @@ def bgroup(b):
     return "1-3" if b <= 3 else "4-6" if b <= 6 else "7-9" if b <= 9 else "10+"
 
 
-cells = collections.defaultdict(lambda: [0, 0, 0.0])   # (track, band, kind, group) -> runs, wins, expected
+cells = collections.defaultdict(lambda: [0, 0, 0.0])
+ROWS = []   # (track, band, kind, group) -> runs, wins, expected
 seen, n_runs = set(), 0
 with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
     cur = c.cursor(name="tb")   # server-side cursor: the table is large
@@ -55,6 +58,14 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
         if not trk or sp <= 1 or (hid, str(d)) in seen: continue
         seen.add((hid, str(d))); n_runs += 1
         bd, w = band(dist), int(fin == 1)
+        if a.rows:
+            pos = r.get("positions") or []
+            try: sg = sgroup(int(float(pos[0]))) if int(float(pos[0])) >= 1 else ""
+            except (TypeError, ValueError, IndexError): sg = ""
+            try: bg = bgroup(int(float(raw.get("barrier")))) if int(float(raw.get("barrier"))) >= 1 else ""
+            except (TypeError, ValueError): bg = ""
+            ROWS.append(f"{d},{trk},{bd},{sg},{bg},{w},{1/sp:.4f}")
+            continue
         keys = [(trk, bd, "all", "all")]
         pos = r.get("positions") or []
         try:
@@ -69,6 +80,10 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
             pass
         for k in keys:
             x = cells[k]; x[0] += 1; x[1] += w; x[2] += 1 / sp
+if a.rows:
+    print(f"{n_runs} runs before {a.before} (since {a.since})")
+    print("CSV-BEGIN"); print("date,track,band,settle,barrier,win,inv_sp"); print("\n".join(sorted(ROWS))); print("CSV-END")
+    sys.exit(0)
 print(f"{n_runs} runs before {a.before} (since {a.since}), {len({k[0] for k in cells})} tracks, {len(cells)} cells")
 print("CSV-BEGIN")
 print("track,band,kind,group,runs,wins,expected")
