@@ -1149,3 +1149,17 @@ at half (Goodness 1.85u, Ladhar 1.66u, Tempt The Gods 0.51u); Thursday's Seymour
 Track-bias inputs for every track (research/form_gbm/t_trackbias_ab.py) did not improve the model on 3 Jun - 9 Nov
 (open-bet profit +1,165.6u v +1,237.8u for the current inputs). The model stays as it is, and the Sandown Lakeside G3 on
 Sat 14 Nov is priced by the model with no hand shade for the leader bias.
+
+## Tuesday 10 Nov Mornington settled (Form King results, Tue 7:40pm; paper, the bot was off at Saturday's open)
+- Open book (paper at the Sat 11:02am open, 2026-11-10-mornington-missed.csv, TAB's deductions R4 15c, R5 16c, R8 none):
+  Marilyn's Edge R4 2.14u $9.50 WON, paid $8.23 after 15c (SP $4.20, BSP $5.70) +15.46u; Nightowl R5 1.46u $8.50 8th
+  (BSP $5.23); Tassadar R5 0.67u $34 12th (BSP $36); Express Guard R8 0.97u $19 12th (BSP $16); It's Gnarly R8 1.08u $19
+  9th (BSP $23). 5 bets, 1 won, 6.32u, +11.28u (+178%; +$564 at $50). The no-Mercer card (same horses, units and opens)
+  settles the same: +11.28u.
+- Twitter (Mercer card, current prices with deductions, half units): Marilyn's Edge 1.07u $6.50 -> $5.67 won +5.00u;
+  Nightowl 0.73u, Tassadar 0.34u, Express Guard 0.49u, It's Gnarly 0.54u lost. 3.17u, +2.90u.
+- Lay book (d5n, $200 a lay): 7 lays, 1 winner, -4.98u (-$996; -$249 at Friday's $50). $8-$12: R1 Molesworth BSP $11.50
+  WON, -10.50u. $15-$40: 6 lays, 0 won, +5.52u (Fantastic Beast 2nd at $30.02).
+- Back book: no BSP favourite inside its range. 0 backs.
+- Rule tracker (research/form_gbm/track_rules.py, 47 meetings): the ten paper rules +261.74u since 9 Oct; Mornington alone
+  -12.72u (Molesworth hit both the $8-$12 lay rules; the $12-$15 drift lay -11.66u).
