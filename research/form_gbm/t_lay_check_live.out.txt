@@ -1,0 +1,21 @@
+$15-$40 at 1.5x   LIVE 317 lays, 14 won, BSP said 13.6, A/E 1.03, -2.75u (-1% on stake)
+                BACKTEST 933 lays, 19 won, BSP said 38.9, A/E 0.49, +405.01u (+43%)
+                if the backtest edge were real, live winners expected 6.6; P(14 or more) = 0.008
+                break-even A/E at these prices 0.92
+
+$8-$12 at 1.6x   LIVE 52 lays, 4 won, BSP said 5.3, A/E 0.76, +9.07u (+17% on stake)
+                BACKTEST 164 lays, 8 won, BSP said 16.3, A/E 0.49, +72.46u (+44%)
+                if the backtest edge were real, live winners expected 2.6; P(4 or more) = 0.263
+                break-even A/E at these prices 0.93
+
+By trigger slice, LIVE ($15-$40):
+  1.2-1.3    75 lays   1 won (BSP said   3.3)  A/E 0.31   +53.83u
+  1.3-1.4    63 lays   7 won (BSP said   2.9)  A/E 2.44   -94.42u
+  1.4-1.5    57 lays   2 won (BSP said   2.6)  A/E 0.78   +12.82u
+  1.5-1.6    44 lays   1 won (BSP said   2.0)  A/E 0.50   +20.56u
+  1.6-1.7    42 lays   3 won (BSP said   1.9)  A/E 1.54   -15.96u
+  1.7-1.8    33 lays   3 won (BSP said   1.6)  A/E 1.92   -19.34u
+  1.8-2.0    59 lays   1 won (BSP said   2.4)  A/E 0.41   +32.36u
+  2.0-2.5    89 lays   4 won (BSP said   3.6)  A/E 1.10   -19.91u
+  2.5-+    50 lays   2 won (BSP said   2.0)  A/E 1.00    -0.46u
+  every runner $15-$40 (no model): 1031 lays 44 won (BSP said 46.0) A/E 0.96 +19.17u
