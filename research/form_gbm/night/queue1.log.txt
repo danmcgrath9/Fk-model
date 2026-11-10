@@ -28,3 +28,11 @@
 12:58 drop_track_surface_going     B  KL 0.0977  LL 1.8335  bets 1745  profit +1508.8u  | B1 0.0979/1.8290/+910u  B2 0.0975/1.8377/+599u
 13:01 drop_sire                    A  KL 0.0937  LL 1.9058  bets 1755  profit +1232.8u  | A1 0.0921/1.9078/+893u  A2 0.0996/1.8989/+340u
 13:04 drop_sire                    B  KL 0.0964  LL 1.8335  bets 1738  profit +1479.3u  | B1 0.0969/1.8317/+828u  B2 0.0958/1.8351/+651u
+13:07 drop_head_to_head            A  KL 0.0930  LL 1.9053  bets 1767  profit +1192.8u  | A1 0.0917/1.9074/+889u  A2 0.0978/1.8981/+304u
+13:09 drop_head_to_head            B  KL 0.0977  LL 1.8345  bets 1763  profit +1500.8u  | B1 0.0978/1.8276/+940u  B2 0.0975/1.8410/+561u
+13:12 drop_speedmap                A  KL 0.0933  LL 1.9047  bets 1757  profit +1242.2u  | A1 0.0915/1.9068/+967u  A2 0.0997/1.8972/+276u
+13:14 drop_speedmap                B  KL 0.0967  LL 1.8316  bets 1734  profit +1510.2u  | B1 0.0970/1.8276/+950u  B2 0.0964/1.8353/+561u
+13:18 drop_trials_sections         A  KL 0.0970  LL 1.9106  bets 1788  profit +1090.2u  | A1 0.0954/1.9143/+800u  A2 0.1027/1.8972/+290u
+13:20 drop_trials_sections         B  KL 0.1011  LL 1.8390  bets 1746  profit +1377.8u  | B1 0.1004/1.8360/+862u  B2 0.1018/1.8418/+516u
+13:23 drop_our_encodings           A  KL 0.0962  LL 1.9133  bets 1724  profit +1040.4u  | A1 0.0943/1.9147/+747u  A2 0.1031/1.9085/+293u
+13:25 drop_our_encodings           B  KL 0.0994  LL 1.8400  bets 1747  profit +1225.6u  | B1 0.1005/1.8376/+785u  B2 0.0984/1.8422/+440u
