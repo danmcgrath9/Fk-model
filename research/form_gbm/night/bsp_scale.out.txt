@@ -1,0 +1,12 @@
+back $3-$5, firmed 1.5x+ from the open: 1171 bets, 72 a month, median BSP $4
+   winners 338 v 300.2 by BSP, A/E 1.13 (2 SD: 1.03 to 1.23); it pays only if A/E is above 1.06
+   return a bet +6.7% as it happened; at the 2-SD ends -3.4% to +15.2%
+   to make $10,350 a month: $2,157 a bet; at that stake a month is median $+9,315, one month in five under $-16,203, 38% of months lose, worst 5% $-40,226
+lay $20-$40, BSP 0.6x ours or less: 510 bets, 31 a month, median BSP $26
+   winners 11 v 19.4 by BSP, A/E 0.57 (2 SD: 0.12 to 1.01); it pays only if A/E is below 0.92
+   return a bet +40.7% as it happened; at the 2-SD ends +79.9% to -8.7%
+   to make $10,350 a month: $813 a bet (liability about $20,329 a lay); at that stake a month is median $+15,710, one month in five under $-1,301, 22% of months lose, worst 5% $-21,028
+back $20-$40, firmed 1.25x+, we 10%+ shorter: 139 bets, 9 a month, median BSP $28
+   winners 12 v 5.0 by BSP, A/E 2.39 (2 SD: 1.52 to 3.27); it pays only if A/E is above 1.08
+   return a bet +117.8% as it happened; at the 2-SD ends +39.8% to +201.5%
+   to make $10,350 a month: $1,030 a bet; at that stake a month is median $+8,655, one month in five under $-8,243, 48% of months lose, worst 5% $-11,334

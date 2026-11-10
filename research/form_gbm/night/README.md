@@ -594,3 +594,19 @@ the same open blend (Jul-Dec 2025). Six periods, 1u at BSP, 8% commission, first
   rate 10%+ shorter than BSP, 139 bets (9 a month), 12 won against 5.0, +164u, five of six periods, found by splitting
   a wider cell after the fact ($8-$20 on the same rule: 30 won against 28.8, -15u), so it is a paper rule at most.
   Together, if all three held, about +25u a month at 1u a bet against a median +207u a month at the open.
+
+### 3.18 Liquidity at BSP (bsp_scale.py, open_bets_at_bsp.py; founder, 11 Nov: "Yeah but more liquidity at bsp")
+More liquidity multiplies an edge; it does not make one.
+- THE OPEN BOOK'S OWN BETS STRUCK AT BSP INSTEAD: 3,621 bets, +41% flat at the open, -4.7% at BSP (1 of 4 periods
+  pays). The 3x-6x bets: +165% at the open, -4.0% at BSP. Every band loses at BSP. The edge is the opening price, not
+  the horse.
+- THE THREE BSP SURVIVORS SCALED TO THE OPEN BOOK'S MEDIAN MONTH ($10,350):
+  back $3-$5 firmed 1.5x+: $2,157 a bet, 72 a month; A/E 1.13 but 2 SD either side is 1.03 to 1.23 and it pays only
+  above 1.06, so the edge could be -3.4% a bet; at that stake 38% of months lose, one in five worse than -$16,200.
+  lay $20-$40 where BSP is 0.6x ours or less: $813 a lay, about $20,300 liability each, 31 a month; 11 winners against
+  19.4, but 2 SD reaches A/E 1.01 against a break-even of 0.92; 22% of months lose, the worst 5% under -$21,000.
+  back $20-$40 firmed and rated shorter: $1,030 a bet, 9 a month; 48% of months lose; found after the fact (3.17).
+  The open book at $50 a unit loses in about 2% of months (3.7).
+- We hold no Betfair volumes, so the BSP pools for a Victorian country race are not measured here. A large SP back
+  order shortens the BSP it is settled at and a large SP lay lengthens it, so the stakes above would also eat into
+  their own edge. Betfair's own data (the planned API key) is the way to measure it.
