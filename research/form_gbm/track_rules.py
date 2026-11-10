@@ -99,9 +99,11 @@ def main():
         rr, op = res[mid], opens(pre)
         try: fs = {str(x) for x in json.load(open(f.replace("-v6.json", "-first-starters.json")))}
         except Exception: fs = set()
-        by = collections.defaultdict(list)
+        by = collections.defaultdict(list); in_file = collections.Counter(); ran = collections.Counter()
+        for (rc_, _), (fin_, _) in rr.items():
+            if fin_ is not None: ran[rc_] += 1
         for r in json.load(open(f)):
-            k = (int(r["race"]), nm(r["horse"]))
+            k = (int(r["race"]), nm(r["horse"])); in_file[int(r["race"])] += 1
             if k in rr and rr[k][0] is not None and rr[k][1] and rr[k][1] > 1: by[int(r["race"])].append((r, rr[k]))
         for rc, ents in by.items():
             tot = sum(r.get("p_model", r["p"]) for r, _ in ents)
@@ -115,7 +117,8 @@ def main():
                     w = fin == "1"
                     pl = (-(bsp - 1) if w else 0.92) if side == "LAY" else ((bsp - 1) * 0.92 if w else -1.0)
                     bets.append(dict(date=pre[:10], meeting=pre[11:], rule=key, side=side, race=rc, horse=r["horse"],
-                                     ours=round(x["ours"], 2), open=x["open"] or "", bsp=bsp, won=int(w), units=round(pl, 4)))
+                                     ours=round(x["ours"], 2), open=x["open"] or "", bsp=bsp, won=int(w), units=round(pl, 4),
+                                     late_scr=int(in_file[rc] > ran[rc])))   # a runner in our file did not run: scratched after we priced (11 Nov 2026)
     with open(f"{L}/rule-tracker.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(bets[0]) if bets else ["date"]); w.writeheader(); w.writerows(bets)
     print(f"{len({b['date'] + b['meeting'] for b in bets})} meetings settled, {len(bets)} bets -> data/live_bets/rule-tracker.csv"
@@ -128,6 +131,15 @@ def main():
             n, wn = len(g), sum(b["won"] for b in g); e = sum(1 / b["bsp"] for b in g); u = sum(b["units"] for b in g)
             cells.append(f"{n:4d} {wn:3d} won ({e:5.1f}) {u:+8.2f}u ${u*UNIT:+8,.0f}")
         print(f"{desc:52} | {cells[0]} | {cells[1]}")
+    # 11 Nov 2026 (night research, lay_late.py): the $15-$40 lays lost in races that had a late scratching and won in the
+    # rest, on four weeks. Not a rule: a split to watch before the Betfair book goes live.
+    print("\nBy late scratching (a runner in our price file did not run), live since " + START + ":")
+    for key, side, desc, _ in RULES:
+        cells = []
+        for flag, lab in ((1, "late scratching"), (0, "none")):
+            g = [b for b in bets if b["rule"] == key and b["late_scr"] == flag]
+            cells.append(f"{lab}: {len(g):3d} bets {sum(b['won'] for b in g):2d} won ({sum(1 / b['bsp'] for b in g):4.1f}) {sum(b['units'] for b in g):+7.2f}u")
+        print(f"  {desc:52} | " + " | ".join(cells))
 
 
 if __name__ == "__main__":
