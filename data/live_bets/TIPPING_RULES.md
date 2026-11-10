@@ -248,3 +248,15 @@ below 1.4x the extra lays lose. About 8 more lays a week, so a little more liabi
   approval is the day's send. Each race day needs data/live_bets/DATE-betfair-manifest.txt (DAYPREFIX GTAG per meeting),
   written by the 9:30am re-price. The key arrives later in the week (Betfair needs the account funded first); the first
   paper run with it checks the login and API addresses.
+
+## Betfair SP rules under watch (founder, 10 Nov 2026: "Track all of those")
+The live weeks showed the $15-$40 lay at 1.5x ours winning as often as BSP said (317 lays, 14 won v 13.6; the backtest
+had 19 v 38.9), so the rules were re-searched for ones that make money in the backtest's two halves AND live
+(research/form_gbm/t_both_samples.py: 77 rules, 6 held; about 10 would by luck, so none is proven). All eight below
+are tracked on paper by research/form_gbm/track_rules.py (rebuilt from every settled meeting since 9 Oct into
+data/live_bets/rule-tracker.csv), reported in the 9:30am settle message, and judged again at the end of November:
+1. Lay $8-$12 when BSP >= 1.6x ours (current).        5. Lay $12-$15 drifted 1.25x from the open.
+2. Lay $25-$40 drifted 2x from Form King's open.        6. Back $3-$5 firmed 1.5x from the open.
+3. Lay $25-$40 when BSP <= ours / 1.6.                 7. Lay $15-$40 when BSP >= 1.5x ours (current, failing live).
+4. Lay $8-$12 firmed 1.5x from the open.                8. Back the BSP favourite $4-$7 when ours >= 1.6x BSP (current).
+Which of these go live on Betfair from Fri 13 Nov is the founder's call.
