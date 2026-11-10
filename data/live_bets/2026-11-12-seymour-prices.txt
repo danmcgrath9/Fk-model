@@ -1,0 +1,101 @@
+# Seymour Thu 12 Nov, Dead (Form King Tue; dry to race day), final fields; no market yet
+1, Grey Sabre, 0, 0
+1, Vadar, 0, 0
+1, Bling Baby, 0, 0
+1, Windsor Chariot, 0, 0
+1, Rein Me In, SCR
+1, Princess Of Sol, 0, 0
+1, Rat Pack, SCR
+1, Lady Of Alsace, SCR
+1, My Rosalie, 0, 0
+1, Zverev, 0, 0
+1, Dun Dirt Sweet, 0, 0
+1, Fiorente Charm, 0, 0
+1, Soaring Legend, 0, 0
+1, High Performance, 0, 0
+1, Chocolate Freckles, 0, 0
+1, Musical Journey, 0, 0
+1, A Rus In Grinzing, 0, 0
+2, Satellite Chester, 0, 0
+2, Immortal Truth, 0, 0
+2, Cherridene, 0, 0
+2, Antigua, 0, 0
+2, Flamingo Flyer, 0, 0
+2, Gattino Veloce, 0, 0
+2, Magnusaurus Rex, 0, 0
+2, Duchess Xenia, 0, 0
+2, Queen's English, 0, 0
+2, Palmento, 0, 0
+2, Amber Queen, 0, 0
+2, Roar Talent, 0, 0
+2, Wolfmaama, 0, 0
+3, Ciphered, 0, 0
+3, Belle Fille, 0, 0
+3, Five Roses, 0, 0
+3, Tale Of Genji, 0, 0
+3, Stormin' Angel, 0, 0
+3, Loyalty, 0, 0
+3, Aquafy, 0, 0
+3, Carnevale, 0, 0
+3, Power Of The Moon, 0, 0
+3, Nerves Of Steel, 0, 0
+3, Little Gangster, 0, 0
+3, Exultant, 0, 0
+4, Money Wheel, 0, 0
+4, Tempered Edge, 0, 0
+4, Ardesha, 0, 0
+4, Brighthill, 0, 0
+4, Sarazain, 0, 0
+4, Te Taniwha, 0, 0
+4, Poorlittlerichkid, 0, 0
+4, Who'llstoplorraine, 0, 0
+4, Chip In, 0, 0
+4, Ruby From Zadar, 0, 0
+4, The Underquoter, 0, 0
+5, Almago, 0, 0
+5, Diamond Eye, 0, 0
+5, Mahmudah, 0, 0
+5, Tipsy Gypsy, 0, 0
+5, Antalian, 0, 0
+5, Cushioned, 0, 0
+5, Zovozo, 0, 0
+5, Fine And Sunny, 0, 0
+6, Dundonald, 0, 0
+6, Garnacho, 0, 0
+6, Our Paramour, 0, 0
+6, Fiery Deal, 0, 0
+6, Kiss My Rock, 0, 0
+6, Lady Thinkabell, 0, 0
+6, Wolfess, 0, 0
+6, Catalona, 0, 0
+6, Sarapo, 0, 0
+6, Earthly Crown, 0, 0
+6, Helioson, 0, 0
+7, Cumboogle, 0, 0
+7, Commands Success, 0, 0
+7, Maximillius, 0, 0
+7, Soju, 0, 0
+7, Shyleah, 0, 0
+7, Mordialloc Beach, 0, 0
+7, Killiana, 0, 0
+7, Skjaldmo, 0, 0
+7, Hey Kleine Maus, 0, 0
+7, Flying Awasita, 0, 0
+7, Gunz, 0, 0
+8, Magic Drum, 0, 0
+8, Hola Amigos, 0, 0
+8, Stolen Art, 0, 0
+8, Zane Zena, 0, 0
+8, Oceanella, 0, 0
+8, Ulfberht, 0, 0
+8, Outer Banks, 0, 0
+8, She Won't Fold, 0, 0
+8, Blaze Away, SCR
+8, Celestra, SCR
+8, Ole Daze, 0, 0
+8, Deliberate Ploy, 0, 0
+8, Sir Loyne, 0, 0
+8, Cherry Hills, 0, 0
+8, Luminary Miss, SCR
+8, Super Scholar, 0, 0
+8, Sayalero, 0, 0

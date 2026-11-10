@@ -1,0 +1,84 @@
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,Soaring Legend,4.62,8.00,12,0,,8-12
+1,Soaring Legend,4.62,15.00,40,0,,15-40
+1,Fiorente Charm,6.73,10.77,12,0,,8-12
+1,Fiorente Charm,6.73,15.00,40,0,,15-40
+1,Windsor Chariot,6.89,11.02,12,0,,8-12
+1,Windsor Chariot,6.89,15.00,40,0,,15-40
+1,Zverev,8.93,15.00,40,0,,15-40
+1,Princess Of Sol,9.62,15.00,40,0,,15-40
+1,My Rosalie,10.56,15.83,40,0,,15-40
+1,Chocolate Freckles,14.48,21.72,40,0,,15-40
+2,Queen's English,5.40,8.64,12,0,,8-12
+2,Queen's English,5.40,15.00,40,0,,15-40
+2,Amber Queen,5.78,9.25,12,0,first starter: excluded,8-12
+2,Amber Queen,5.78,15.00,40,0,first starter: excluded,15-40
+2,Gattino Veloce,6.97,11.15,12,0,,8-12
+2,Gattino Veloce,6.97,15.00,40,0,,15-40
+2,Magnusaurus Rex,7.14,11.42,12,0,,8-12
+2,Magnusaurus Rex,7.14,15.00,40,0,,15-40
+2,Antigua,9.24,15.00,40,0,first starter: excluded,15-40
+2,Palmento,14.26,21.39,40,0,,15-40
+2,Roar Talent,19.68,29.53,40,0,,15-40
+2,Duchess Xenia,21.92,32.87,40,0,,15-40
+3,Carnevale,2.51,8.00,12,0,,8-12
+3,Carnevale,2.51,15.00,40,0,,15-40
+3,Tale Of Genji,3.90,8.00,12,0,,8-12
+3,Tale Of Genji,3.90,15.00,40,0,,15-40
+3,Ciphered,12.79,19.19,40,0,,15-40
+3,Exultant,15.76,23.63,40,0,first starter: excluded,15-40
+3,Loyalty,17.96,26.93,40,0,first starter: excluded,15-40
+3,Power Of The Moon,21.87,32.81,40,0,first starter: excluded,15-40
+3,Five Roses,23.24,34.85,40,0,first starter: excluded,15-40
+4,Chip In,2.79,8.00,12,0,,8-12
+4,Chip In,2.79,15.00,40,0,,15-40
+4,The Underquoter,4.33,8.00,12,0,,8-12
+4,The Underquoter,4.33,15.00,40,0,,15-40
+4,Te Taniwha,8.66,15.00,40,0,,15-40
+4,Tempered Edge,10.59,15.89,40,0,,15-40
+4,Poorlittlerichkid,12.68,19.02,40,0,,15-40
+4,Brighthill,13.62,20.43,40,0,,15-40
+5,Diamond Eye,3.78,8.00,12,0,,8-12
+5,Diamond Eye,3.78,15.00,40,0,,15-40
+5,Cushioned,4.96,8.00,12,0,,8-12
+5,Cushioned,4.96,15.00,40,0,,15-40
+5,Mahmudah,7.08,11.34,12,0,,8-12
+5,Mahmudah,7.08,15.00,40,0,,15-40
+5,Zovozo,8.95,15.00,40,0,,15-40
+5,Almago,11.22,16.83,40,0,,15-40
+5,Fine And Sunny,11.65,17.47,40,0,,15-40
+5,Antalian,14.22,21.34,40,0,,15-40
+6,Sarapo,3.96,8.00,12,0,,8-12
+6,Sarapo,3.96,15.00,40,0,,15-40
+6,Garnacho,5.08,8.13,12,0,,8-12
+6,Garnacho,5.08,15.00,40,0,,15-40
+6,Wolfess,8.56,15.00,40,0,,15-40
+6,Lady Thinkabell,9.28,15.00,40,0,,15-40
+6,Fiery Deal,11.96,17.95,40,0,,15-40
+6,Catalona,12.25,18.38,40,0,,15-40
+6,Kiss My Rock,14.53,21.80,40,0,,15-40
+6,Dundonald,24.88,37.32,40,0,,15-40
+7,Killiana,4.80,8.00,12,0,,8-12
+7,Killiana,4.80,15.00,40,0,,15-40
+7,Gunz,4.97,8.00,12,0,,8-12
+7,Gunz,4.97,15.00,40,0,,15-40
+7,Hey Kleine Maus,5.85,9.35,12,0,,8-12
+7,Hey Kleine Maus,5.85,15.00,40,0,,15-40
+7,Skjaldmo,7.33,11.74,12,0,,8-12
+7,Skjaldmo,7.33,15.00,40,0,,15-40
+7,Flying Awasita,11.64,17.46,40,0,,15-40
+7,Soju,11.69,17.53,40,0,,15-40
+7,Commands Success,23.57,35.35,40,0,,15-40
+8,Deliberate Ploy,5.17,8.28,12,0,,8-12
+8,Deliberate Ploy,5.17,15.00,40,0,,15-40
+8,Ulfberht,7.80,15.00,40,0,,15-40
+8,Ole Daze,9.91,15.00,40,0,,15-40
+8,Cherry Hills,11.67,17.51,40,0,,15-40
+8,Outer Banks,15.29,22.94,40,0,,15-40
+8,Sayalero,15.57,23.35,40,0,,15-40
+8,Oceanella,16.45,24.68,40,0,,15-40
+8,She Won't Fold,16.68,25.02,40,0,,15-40
+8,Sir Loyne,17.94,26.90,40,0,,15-40
+8,Hola Amigos,18.88,28.32,40,0,,15-40
+8,Zane Zena,21.96,32.93,40,0,,15-40
+8,Stolen Art,22.25,33.37,40,0,,15-40
