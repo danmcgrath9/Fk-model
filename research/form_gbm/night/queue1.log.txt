@@ -46,3 +46,7 @@
 13:58 drop_fk_form_records         B  KL 0.0977  LL 1.8348  bets 1754  profit +1371.3u  | B1 0.0984/1.8296/+873u  B2 0.0971/1.8396/+499u
 14:01 drop_neural                  A  KL 0.0935  LL 1.9074  bets 1768  profit +1293.3u  | A1 0.0923/1.9094/+967u  A2 0.0980/1.9004/+326u
 14:03 drop_neural                  B  KL 0.0982  LL 1.8349  bets 1733  profit +1456.1u  | B1 0.0977/1.8308/+891u  B2 0.0986/1.8387/+565u
+14:12 drop_speed_sectionals        A  KL 0.0943  LL 1.9070  bets 1778  profit +1155.9u  | A1 0.0926/1.9090/+844u  A2 0.1007/1.8998/+312u
+14:17 drop_speed_sectionals        B  KL 0.0998  LL 1.8376  bets 1732  profit +1426.7u  | B1 0.1003/1.8332/+949u  B2 0.0992/1.8417/+477u
+14:20 l2_1                         A  KL 0.0932  LL 1.9061  bets 1758  profit +1307.0u  | A1 0.0914/1.9077/+1028u  A2 0.0997/1.9005/+280u
+14:22 l2_1                         B  KL 0.0971  LL 1.8350  bets 1760  profit +1402.4u  | B1 0.0973/1.8323/+767u  B2 0.0969/1.8376/+636u
