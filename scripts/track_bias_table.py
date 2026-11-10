@@ -55,7 +55,7 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
             sp = float(raw.get("startingPrice"))
         except (TypeError, ValueError):
             continue
-        if not trk or sp <= 1 or (hid, str(d)) in seen: continue
+        if not trk or not (sp > 1) or sp == float('inf') or (hid, str(d)) in seen: continue   # a blank SP is NaN, and NaN <= 1 is False
         seen.add((hid, str(d))); n_runs += 1
         bd, w = band(dist), int(fin == 1)
         if a.rows:
