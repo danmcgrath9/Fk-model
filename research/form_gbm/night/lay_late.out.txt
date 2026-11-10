@@ -1,0 +1,15 @@
+LIVE committed price (re-spread over the runners that ran):
+  lay $8-$12 at 1.6x ours    late scratching in the race     6 lays,  0 won (BSP expected  0.6),   +5.52u
+  lay $8-$12 at 1.6x ours    no late scratching             33 lays,  1 won (BSP expected  3.4),  +21.91u
+  lay $15-$40 at 1.5x ours   late scratching in the race    46 lays,  3 won (BSP expected  2.0),  -42.85u
+  lay $15-$40 at 1.5x ours   no late scratching            211 lays,  6 won (BSP expected  8.9),  +73.30u
+the same races re-priced on the final field (replay, stale history):
+  lay $8-$12 at 1.6x ours    late scratching in the race     6 lays,  0 won (BSP expected  0.6),   +5.52u
+  lay $8-$12 at 1.6x ours    no late scratching             38 lays,  2 won (BSP expected  3.9),  +14.18u
+  lay $15-$40 at 1.5x ours   late scratching in the race    45 lays,  4 won (BSP expected  1.9),  -67.50u
+  lay $15-$40 at 1.5x ours   no late scratching            209 lays,  4 won (BSP expected  8.9), +106.80u
+re-priced on the final field with fresh history:
+  lay $8-$12 at 1.6x ours    late scratching in the race     6 lays,  0 won (BSP expected  0.6),   +5.52u
+  lay $8-$12 at 1.6x ours    no late scratching             38 lays,  2 won (BSP expected  3.9),  +14.18u
+  lay $15-$40 at 1.5x ours   late scratching in the race    45 lays,  4 won (BSP expected  1.9),  -67.50u
+  lay $15-$40 at 1.5x ours   no late scratching            203 lays,  4 won (BSP expected  8.6), +101.28u

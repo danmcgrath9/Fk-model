@@ -1,0 +1,14 @@
+live value bets 15 Oct - 9 Nov (committed prices, Form King's open, not first starters): 286; cut points +0.211 / +0.318
+
+| forecast third | bets | won | flat 1u at the open | live stakes (first step) | median BSP/open | firmed |
+|---|---|---|---|---|---|---|
+| forecast to DRIFT | 117 | 18 | +3.2u (+3%) | +3.4u on 140u (+2%) | 0.74 | 72% |
+| middle | 97 | 19 | +57.7u (+59%) | +38.0u on 118u (+32%) | 0.79 | 69% |
+| forecast to FIRM | 72 | 12 | +18.5u (+26%) | +38.6u on 64u (+60%) | 0.64 | 83% |
+| all | 286 | 49 | +79.3u (+28%) | +80.0u on 322u (+25%) | 0.72 | 74% |
+
+forecast v the actual move (log open/BSP): correlation +0.08 on 286 bets (holdout, in-sample cross-fit: 0.27)
+  15-28 Oct: drift 55 bets -1.7u; middle 49 bets +61.6u; firm 43 bets +3.9u
+  29 Oct - 9 Nov: drift 62 bets +5.0u; middle 48 bets -3.9u; firm 29 bets +14.6u
+
+live stakes as they are: +80.0u on 322u; with x2 firm third and x0.5 drift third: +116.9u on 316u

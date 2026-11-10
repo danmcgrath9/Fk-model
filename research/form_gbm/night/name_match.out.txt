@@ -1,0 +1,8 @@
+Seymour export: 100 runners, 9 first starters, 100 with a past run
+  jockey             blank   5; names not in the history at all: 1 ['Changgyun Ma']; runners whose name has under 5 history rows: 3
+  trainer            blank   0; names not in the history at all: 0 []; runners whose name has under 5 history rows: 0
+  sire               blank   0; names not in the history at all: 0 []; runners whose name has under 5 history rows: 0
+  dam_sire           blank   0; names not in the history at all: 0 []; runners whose name has under 5 history rows: 2
+  training_location  blank   0; names not in the history at all: 0 []; runners whose name has under 5 history rows: 0
+  horse_id: 91 of 100 raced runners are in the history under the same id; raced but never in our history: 9 (interstate or pre-July-2025 form only)
+  last start in the history as a race we hold: 62 of 100; last start within 27 days (after 14 Oct, invisible to the stale history): 94 of 100 (94%)

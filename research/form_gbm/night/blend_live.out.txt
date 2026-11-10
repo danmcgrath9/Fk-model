@@ -1,0 +1,9 @@
+LIVE committed price: 275 races
+  ours alone KL 0.1016 log loss 1.9378 | open alone 0.1565 / 1.9662 | 0.82/0.22 blend 0.0953 / 1.9259
+  best weights: first half 0.76/0.24, second half 0.76/0.32, all 0.76/0.28 (KL 0.0949); fitted on one half and scored on the other: KL 0.0960
+replay, stale history: 294 races
+  ours alone KL 0.0924 log loss 1.8981 | open alone 0.1542 / 1.9549 | 0.82/0.22 blend 0.0876 / 1.8911
+  best weights: first half 0.82/0.18, second half 0.78/0.32, all 0.80/0.26 (KL 0.0875); fitted on one half and scored on the other: KL 0.0892
+replay, FRESH history: 294 races
+  ours alone KL 0.0908 log loss 1.8934 | open alone 0.1542 / 1.9549 | 0.82/0.22 blend 0.0863 / 1.8874
+  best weights: first half 0.82/0.18, second half 0.80/0.30, all 0.80/0.26 (KL 0.0863); fitted on one half and scored on the other: KL 0.0879
