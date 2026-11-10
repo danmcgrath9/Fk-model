@@ -1,0 +1,61 @@
+A/E = winners / BSP-expected (95% band); a lay needs A/E under about 0.92, a back over about 1.08, to beat commission
+
+LAY every runner $15-$60 (the longshot bias)
+  H1    1967 bets   67 won (  78.8)  A/E 0.85 [0.63-1.07]     +27.4u (+1%)
+  H2    1594 bets   57 won (  63.3)  A/E 0.90 [0.66-1.14]     +64.1u (+4%)
+  LIVE  1234 bets   46 won (  50.2)  A/E 0.92 [0.65-1.19]    +101.1u (+8%)
+
+LAY every runner $8-$15
+  H1    1276 bets  112 won ( 118.8)  A/E 0.94 [0.77-1.11]     -21.1u (-2%)
+  H2    1021 bets   84 won (  95.3)  A/E 0.88 [0.69-1.07]     +28.5u (+3%)
+  LIVE   685 bets   64 won (  63.9)  A/E 1.00 [0.77-1.24]     -69.4u (-10%)
+
+LAY drifted 1.5x from open, $8-$60
+  H1    1418 bets   59 won (  71.9)  A/E 0.82 [0.60-1.04]     -19.9u (-1%)
+  H2    1193 bets   54 won (  60.7)  A/E 0.89 [0.65-1.13]      +0.8u (+0%)
+  LIVE   924 bets   49 won (  46.6)  A/E 1.05 [0.77-1.33]      +6.3u (+1%)
+
+LAY firmed 1.5x from open, $8-$60
+  H1     374 bets   28 won (  27.0)  A/E 1.04 [0.68-1.40]     -70.2u (-19%)
+  H2     282 bets   20 won (  21.0)  A/E 0.95 [0.54-1.36]      -5.2u (-2%)
+  LIVE   164 bets    7 won (  11.5)  A/E 0.61 [0.06-1.16]     +47.6u (+29%)
+
+LAY model likes it (BSP >= 1.5x ours), $8-$60
+  H1     796 bets   29 won (  38.4)  A/E 0.76 [0.45-1.06]     +17.7u (+2%)
+  H2     772 bets   20 won (  37.2)  A/E 0.54 [0.23-0.85]    +355.2u (+46%)
+  LIVE   521 bets   28 won (  26.1)  A/E 1.07 [0.70-1.44]      -9.5u (-2%)
+
+LAY model against (BSP <= ours/1.5), $8-$60
+  H1     398 bets   30 won (  27.4)  A/E 1.10 [0.74-1.45]     -67.7u (-17%)
+  H2     276 bets   16 won (  19.1)  A/E 0.84 [0.41-1.27]     +26.4u (+10%)
+  LIVE   240 bets    9 won (  15.2)  A/E 0.59 [0.11-1.08]    +116.5u (+49%)
+
+BACK every runner $1.5-$8
+  H1    1610 bets  379 won ( 369.5)  A/E 1.03 [0.94-1.11]     -70.7u (-4%)
+  H2    1391 bets  351 won ( 337.0)  A/E 1.04 [0.95-1.13]     -17.9u (-1%)
+  LIVE   902 bets  224 won ( 218.5)  A/E 1.03 [0.91-1.14]     -24.6u (-3%)
+
+BACK firmed 1.5x from open, $1.5-$8
+  H1     381 bets   94 won (  92.3)  A/E 1.02 [0.85-1.19]     -24.1u (-6%)
+  H2     389 bets   98 won (  99.4)  A/E 0.99 [0.82-1.15]     -30.7u (-8%)
+  LIVE   230 bets   70 won (  60.1)  A/E 1.17 [0.96-1.38]     +37.6u (+16%)
+
+BACK drifted 1.5x from open, $1.5-$8
+  H1     181 bets   33 won (  33.4)  A/E 0.99 [0.69-1.29]     -12.0u (-7%)
+  H2     149 bets   35 won (  27.2)  A/E 1.29 [0.95-1.62]     +36.7u (+25%)
+  LIVE    81 bets   13 won (  14.0)  A/E 0.93 [0.45-1.40]     -10.8u (-13%)
+
+BACK model likes it (BSP >= 1.3x ours), $1.5-$8
+  H1     167 bets   26 won (  31.7)  A/E 0.82 [0.51-1.13]     -36.5u (-22%)
+  H2     157 bets   39 won (  29.7)  A/E 1.31 [0.99-1.63]     +33.3u (+21%)
+  LIVE    97 bets   13 won (  19.2)  A/E 0.68 [0.28-1.07]     -30.8u (-32%)
+
+BACK model against (BSP <= ours/1.3), $1.5-$8
+  H1     570 bets  142 won ( 132.2)  A/E 1.07 [0.93-1.22]      +3.4u (+1%)
+  H2     532 bets  121 won ( 135.5)  A/E 0.89 [0.75-1.03]     -85.2u (-16%)
+  LIVE   346 bets   86 won (  86.3)  A/E 1.00 [0.82-1.17]     -22.1u (-6%)
+
+BACK our top pick, $1.5-$8
+  H1     543 bets  168 won ( 164.0)  A/E 1.02 [0.90-1.15]     -27.4u (-5%)
+  H2     484 bets  163 won ( 153.5)  A/E 1.06 [0.94-1.19]     +17.2u (+4%)
+  LIVE   315 bets   92 won (  97.3)  A/E 0.95 [0.79-1.10]     -28.5u (-9%)
