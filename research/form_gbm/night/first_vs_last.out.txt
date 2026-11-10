@@ -1,0 +1,5 @@
+13 meetings with a first price and a later re-price 6+ hours apart (median 68 hours); 67 races priced by both
+  first price:  KL to BSP 0.1037, winner log loss 1.7995
+  last price:   KL to BSP 0.0930, winner log loss 1.7633
+  runner by runner the two are a median 6.1% apart; over 10% apart 36%
+  paired gain of the re-price: +0.0108 a race (SE 0.0042); closer in 60% of races

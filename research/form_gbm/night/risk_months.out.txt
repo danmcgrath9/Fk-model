@@ -1,0 +1,8 @@
+292 race days, 1 Jan - 9 Nov 2026 (28.0 race days a 30-day month)
+
+| ceiling | volume | bets a month | median month | 1 month in 20 is worse than | 1 in 20 better than | losing months | median worst run in a month | $ median at $50 |
+|---|---|---|---|---|---|---|---|---|
+| 3x (live) | 100% | 318 | +297u | +101u | +511u | 0.5% | 56u | $14,848 |
+| 3x (live) | 70% | 222 | +207u | +41u | +386u | 1.8% | 51u | $10,326 |
+| 6x | 100% | 334 | +406u | +162u | +679u | 0.2% | 57u | $20,278 |
+| 6x | 70% | 234 | +281u | +74u | +521u | 1.1% | 53u | $14,049 |

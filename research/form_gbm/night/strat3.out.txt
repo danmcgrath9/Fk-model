@@ -1,0 +1,18 @@
+
+WALK-FORWARD TREES, 1 Jan - 9 Nov 2026
+| ceiling | Jan-17Mar | 18Mar-2Jun | 3Jun-8Oct | 9Oct-9Nov | all: bets, staked, profit, ROI | worst drawdown | profit / drawdown |
+|---|---|---|---|---|---|---|---|
+| 3x (live) | +1133u | +571u | +1107u | +328u | 3316 bets, 7730u, +3139u, +41% | 68u | 46.0 |
+| 4x | +1289u | +728u | +1398u | +356u | 3426 bets, 8104u, +3770u, +47% | 81u | 46.6 |
+| 6x | +1367u | +784u | +1621u | +512u | 3484 bets, 8285u, +4283u, +52% | 74u | 58.2 |
+| 6x, doubling stops at 3x | +1272u | +686u | +1426u | +415u | 3484 bets, 8045u, +3800u, +47% | 66u | 57.4 |
+| no ceiling | +1365u | +776u | +1583u | +508u | 3501 bets, 8337u, +4232u, +51% | 76u | 56.0 |
+
+CROSS-FITTED THREE-MODEL BLEND, 1 Jul 2025 - 9 Nov 2026
+| ceiling | Jul-Sep25 | Oct-Dec25 | Jan-Mar26 | Apr-Jun26 | Jul-Sep26 | Oct-9Nov26 | all: bets, staked, profit, ROI | worst drawdown | profit / drawdown |
+|---|---|---|---|---|---|---|---|---|---|
+| 3x (live) | +568u | +671u | +1264u | +847u | +795u | +372u | 5346 bets, 12048u, +4517u, +37% | 103u | 43.8 |
+| 4x | +620u | +774u | +1511u | +807u | +1190u | +522u | 5522 bets, 12672u, +5423u, +43% | 93u | 58.2 |
+| 6x | +761u | +1143u | +1703u | +975u | +1305u | +592u | 5613 bets, 12938u, +6479u, +50% | 93u | 69.5 |
+| 6x, doubling stops at 3x | +697u | +951u | +1495u | +956u | +1069u | +478u | 5613 bets, 12553u, +5645u, +45% | 81u | 69.8 |
+| no ceiling | +803u | +1272u | +1701u | +959u | +1413u | +589u | 5639 bets, 13018u, +6737u, +52% | 103u | 65.7 |

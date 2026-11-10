@@ -1,0 +1,18 @@
+Seymour Thu 12 Nov re-priced in a COPY of the model folder after pipeline/refresh_history.sh (history to 9 Nov instead of 14 Oct; live model files unchanged), against the committed s6k prices:
+p_net     stale v fresh: median 7.5% apart, 90th pct 17.5%, over 10%: 35 of 94
+p_cb      stale v fresh: median 2.1% apart, 90th pct 6.8%, over 10%: 3 of 94
+p_stage1  stale v fresh: median 2.4% apart, 90th pct 7.2%, over 10%: 4 of 94
+p         stale v fresh: median 5.3% apart, 90th pct 13.6%, over 10%: 24 of 94
+biggest moves in our price (stale -> fresh history):
+  R4 Who'llstoplorraine     $  47.52 -> $  28.28
+  R1 Vadar                  $  53.50 -> $  39.39
+  R6 Our Paramour           $  91.05 -> $  69.66
+  R5 Mahmudah               $   7.08 -> $   5.80
+  R6 Dundonald              $  24.88 -> $  30.11
+  R6 Lady Thinkabell        $   9.28 -> $  11.20
+  R6 Kiss My Rock           $  14.53 -> $  12.14
+  R5 Fine And Sunny         $  11.65 -> $  10.00
+  R1 Zverev                 $   8.93 -> $  10.24
+  R5 Cushioned              $   4.96 -> $   5.68
+
+[exited with code 0]

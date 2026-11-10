@@ -69,3 +69,78 @@ is new to us; 91 of 100 raced runners are in the history under the same horse id
 ### 1.6 The blend with the open (blend_live.py)
 Best weights on the live weeks 0.76 ours / 0.28 open against the live 0.82 / 0.22: KL 0.0949 against 0.0953, and worse
 when fitted on one half and scored on the other (0.0960). Leave it.
+
+### 1.7 The race-morning re-price against the first price (first_vs_last.py)
+13 meetings with both files committed 6+ hours apart (median 68 hours), 67 races: first price KL to BSP 0.1037, the
+re-price 0.0930 (paired +0.0108 a race, SE 0.0042), winner log loss 1.800 -> 1.763. A third of runners move 10%+.
+The 9:30 re-price (final field, riders in) is worth about 10% of the distance to BSP; anything decided after the open
+should use it, and does.
+
+## Part 3. Betting strategies (strat1.py, strat2.py, strat3.py, strat_ceiling.py, drift_live.py)
+Two prices, so a rule has to hold on both: the stage-1 trees walk-forward (1 Jan - 9 Nov 2026, 3,194 races, four
+periods), and the 10 Nov challenger's out-of-fold three-model blend (1 Jul 2025 - 9 Nov 2026, 5,178 races, six periods;
+cross-fitted, so a second opinion). Live BetMatic rules at Form King's open, 16c deduction.
+
+### 3.1 THE 3x CEILING COSTS A QUARTER TO A THIRD OF THE PROFIT
+The order sheet stops at 3x our price (max_odds, added 14 Oct after three losing fills in the first forward test, when
+the files were still priced before final fields). With the full live sheet (first starters out, 1.15 under $4, the 2 Nov
+doubling from 2.2x):
+
+| ceiling | walk-forward trees, 11 months | worst drawdown | three-model blend, 16 months | worst drawdown |
+|---|---|---|---|---|
+| 3x (live) | +3,139u on 3,316 bets (+41%) | 68u | +4,517u on 5,346 bets (+37%) | 103u |
+| 4x | +3,770u | 81u | +5,423u | 93u |
+| 6x | +4,283u on 3,484 bets (+52%) | 74u | +6,479u on 5,613 bets (+50%) | 93u |
+| none | +4,232u | 76u | +6,737u | 103u |
+
+6x beats 3x in ALL FOUR walk-forward periods (+1,367 v +1,133, +784 v +571, +1,621 v +1,107, +512 v +328) and ALL SIX
+cross-fit periods. The bets it adds (not first starters, open 3x-6x ours): 168 in 11 months, about 15 a month, median
+open $26, 26 winners where BSP's chances said 21.8; BSP lands at a third of the open. Above 6x: 17 bets, none won
+(walk-forward) and 3 of 6 periods (blend): stop at 6x. On the committed LIVE files, 15 Oct - 9 Nov: 17 such runners, 2 won
+(Lim's Ida $26, Spinhof $23), flat +24.5u. The whole book has the same shape: return on stakes by open / our price is
++7% at 1.2-1.4x, +25% at 1.4-1.7x, +50% at 1.7-2.2x, +75% at 2.2-3x, +180% at 3-6x; the live files show it too
+(+6%, +13%, +81%, +64%, +219%). Caveats: Form King's open is an average and a $26 open may not take a full stake; these
+are the bets that get an account noticed; the two prices are stage 1, not the live stage-2 price.
+FOUNDER'S CALL: lift max_odds from 3x to 6x our price (one constant in betmatic_orders.py).
+
+### 3.2 The edge: leave it at 1.20
+Walk-forward: total profit is flat from 1.10 to 1.30 (+2,611u to +2,739u; live 1.20 +2,652u), ROI rises with the edge.
+Three-model blend: 1.20 is the profit maximum (+3,893u; 1.25 +3,786u, 1.30 +3,544u). The live sheet's 1.15 under $4
+is +88u better than a flat 1.20 walk-forward. No change. Price range $1.60-$15, three steps and the 10u cap: all at or
+within noise of the best in their grids.
+
+### 3.3 Segments of the live rule's bets (walk-forward, four periods, against random draws from the same period)
+Of 78 segments luck would flag about 1.3. Flagged WEAK in all four: open 1.2-1.4x our price (621 bets, +7%).
+STRONG in all four: horses aged 5+ (+49%), a drop in class of 25%+ by prize money (+41%), "beat its price last start"
+(349 bets, +63%; the same type was the only runner type to survive the BSP test earlier the same day). Near misses:
+jockey's only ride at the meeting (+75%, top quarter in three periods), metro (+17% against +40% elsewhere, weak in
+three). No rule proposed from these: the stake already follows the overlay, and the ceiling is the structural finding.
+
+### 3.4 The firm/drift forecast on races it never saw (drift_live.py)
+Model trained on races to 9 Oct; the committed live prices 15 Oct - 9 Nov; 286 value bets at the open:
+
+| forecast third | bets | won | flat at the open | BSP/open | firmed |
+|---|---|---|---|---|---|
+| to drift | 117 | 18 | +3% | 0.74 | 72% |
+| middle | 97 | 19 | +59% | 0.79 | 69% |
+| to firm | 72 | 12 | +26% | 0.64 | 83% |
+
+The drift third is the weak one out of sample, as in the backtest; the firm third firms most but does not out-earn the
+middle at flat stakes. x2 firm / x0.5 drift on the live stakes: +116.9u against +80.0u on the same turnover. The
+forecast itself is weak out of sample (correlation with the actual move 0.08, 0.27 in its backtest). Reading: the half
+stake on the forecast-to-drift third is supported; the doubling of the firm third is not proven on four weeks.
+FOUNDER'S CALL (open since 3 Nov): put --drift back for the drift third, or retire it.
+
+### 3.5 The lay rules and late scratchings (lay_late.py)
+Live files, 15 Oct - 9 Nov, lay $15-$40 at 1.5x ours: races WITH a late scratching 46 lays, 3 won (BSP expected 2.0),
+-42.9u; races without 211 lays, 6 won (8.9 expected), +73.3u. Re-pricing those races on the final field does not rescue
+them (45 lays, 4 won, -67.5u), so it is not our stale price. Four winners against two expected is not a finding on its
+own (about one chance in eight). Worth a column in the rule tracker before the Betfair book goes live, not a rule yet.
+
+### 1.8 What the refresh does to a meeting already priced (seymour_fresh_history.out.txt)
+Seymour Thu 12 Nov re-priced in a copy of the model folder after refresh_history.sh (the live folder untouched): our
+price moves a median 5.3%, 24 of 94 runners by more than 10% (Mahmudah $7.08 -> $5.80, Cushioned $4.96 -> $5.68,
+Zverev $8.93 -> $10.24, Who'llstoplorraine $47.52 -> $28.28). Trees and CatBoost move 2%; the network third, which is
+re-trained on the history every time a day is priced, moves 7.5%; the second stage (the market's memory of each horse)
+does the rest. FOUNDER'S CALL: run refresh_history.sh on the live folder each morning before pricing (one line in the
+9:30 and 12:17 routines), from the next meeting priced; bets and tips already out stay as they are.
