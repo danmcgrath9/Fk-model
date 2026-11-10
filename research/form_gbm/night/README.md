@@ -9,6 +9,35 @@ How results are judged (nl.py): two walk-forward folds, so a change has to hold 
 a test set before), three seeds, and the same model on three seed sets for the noise floor. Betting rules are judged on
 four separate periods (and six on the 16-month cross-check); a rule counts only if it points the same way in all.
 
+## What the night found, in order of money
+Nothing live was changed. Every item marked CALL is the founder's decision.
+1. THE OPENS WE MISS (Part 4). 21% of races in the last four weeks opened on TAB before our order sheet existed (67 of
+   317; Tuesday meetings 23 of 45), before counting the wait for "send" and the days the bot was off. TAB opens Tuesday
+   meetings on Saturday morning and Saturday metro on Wednesday from 11:50am; the 12:17pm run is too late for both.
+   Roughly 20-25u a month from scheduling alone. CALL: earlier pricing runs (4.3).
+2. THE 3x CEILING (3.1, 3.6, 3.10, 3.14). Lifting max_odds to 6x our price adds a quarter to a third to the backtest
+   profit on both prices and in every period; in races whose opening market stayed intact it is +25% from about three
+   extra bets a month. Above 6x there is nothing. CALL: one constant in betmatic_orders.py.
+3. THE BETFAIR LAY RULES DO NOT SURVIVE UNTOUCHED MONTHS (3.12, 3.13). Seven of the ten tracked rules fail on Jul 2025 -
+   2 Jun 2026, both current lay rules among them; the lay edge exists only in the months the rules were chosen on. CALL
+   before Fri 13 Nov: keep the lays on paper.
+4. THE LIVE PRICE RAN 10% FURTHER FROM BSP THAN THE BACKTEST, AND WHY (1.2, 1.10). Clean races match the backtest. The
+   gap was riders not declared when the file was priced (fixed 1 Nov, gap closed since) and late scratchings. In money
+   the same four weeks made +28% on stakes live against +47% on the backtest's inputs: plan live at about 60% of any
+   backtest figure.
+5. THE HISTORY THE LIVE PRICER READS IS FROZEN AT 14 OCT (1.3, 1.8). It costs 3% of the distance to BSP by weeks 3-4 and
+   grows daily. CALL: run pipeline/refresh_history.sh each morning (the live models do not change).
+6. A PRICE MADE BEFORE RIDERS ARE DECLARED (4.4, 2.5). Blanking riders on the live model costs 29% of the distance to
+   BSP and a third of the profit; a model trained without riders costs 12%. Earlier runs (item 1) should use one.
+7. THE DRIFT HALF-STAKE (3.4) holds on four weeks it never saw (+117u against +80u on 286 bets). CALL: put --drift back
+   for the drift third, or retire it.
+8. THE BOUNCE BLOCK (3.9) stops bets that made +22% to +24% at the open over 16 months, but nothing since June. CALL.
+9. TRAINING IS AT ITS CEILING (Part 2). 49 retrains, 20 network seeds, 3 CatBoost seeds, mixed recipes: the best is half
+   a percent on the trees alone and 0.2% inside the full blend. The blend and its weights are right. No leaks. The only
+   lever left on the price is more history (each doubling 4-6%).
+10. LEFT ALONE, CHECKED: the 1.20 edge, the $1.60-$15 range, the three steps, the 10u cap, the flat 16c deduction, the
+    blend with the open, the first-up and second-up blocks, the stake's calibration (3.2, 3.6, 3.9, 3.11, 1.6, 1.9).
+
 ## Part 1. Checks of the live model
 
 ### 1.1 No leaks (leak_scan.py)
@@ -286,7 +315,7 @@ won, +313.1u (+47%); the same on fresh history +309.1u (+47%). Both halves alike
   before the late scratchings, show the same thing on a small sample (17 runners, +24.5u). The direction is safe; expect
   less than the headline +27% to +35%.
 
-## Part 2. Closer to BSP: 45 retrains of the stage-1 trees (queue1.py, queue2.py, report.py -> queues_report.out.txt)
+## Part 2. Closer to BSP: 49 retrains of the stage-1 trees and the blend's members (queue1.py to queue5.py, report.py -> queues_report.out.txt)
 Noise floor, the live settings on three seed sets: fold A KL 0.0929 +/- 0.0003, log loss 1.9058 +/- 0.0004, profit
 +1,246u +/- 20u; fold B 0.0969 +/- 0.0001, 1.8354 +/- 0.0014, +1,360u +/- 47u. (Today's form-line and track-bias results,
 -0.0004 and -0.0007 on fold A alone, sit inside it.) Fold B is new: trees trained only on Jul-Dec 2025 made +1,414u on
@@ -298,7 +327,8 @@ Jan-May 2026 at the open under the live rules, races never used as a test before
 | 8 seeds averaged (tests use 3, live 5) | -0.0012 / -0.0011 | -0.0011 / -0.0001 | free at training time |
 | learning rate 0.03 with 8,000 rounds (live 0.06 / 4,000) | -0.0011 / +0.0004 | -0.0009 / -0.0025 | October's tuning tried 0.03 without the extra rounds and called it worse |
 | + margin over the best other runner, 12 headline ratings | -0.0007 / -0.0001 | -0.0004 / -0.0006 | every rating reaches the trees as "minus the best in the race", 0 for the top horse; this adds the top horse's margin over the second. The full 111-input version, the z-scores and the rivals-close counts add nothing |
-Each is about 1% of the distance to BSP. queue4.py checks them together at the live seed count (2.5).
+Each is about 1% of the distance to BSP at three seeds. queue4.py checks them together at the live seed count (2.6):
+about half of each survives, and the margin input does not.
 
 ### 2.2 What did not
 - The blanked copy stays: without it KL +0.0011 / +0.0000 and log loss worse in both folds. On 40% of runners instead
@@ -336,6 +366,67 @@ The same trees trained with no rider input at all (47 inputs out): KL 0.1046 / 0
 12% further from BSP; at the open under the live rules +829u against +1,238u (fold A) and +1,249u against +1,414u
 (fold B). Blanking the riders on the LIVE model instead costs 29% (4.4). So the early price should come from a model
 trained without riders, kept beside the live one, and be replaced by the live price when the riders land.
+
+### 2.6 The three small gains together, at the live seed count (queue4.py)
+Queues 1 and 2 ran on three seeds; live averages five. The same arms on five:
+| softmax trees | fold A: KL / log loss / profit | fold B: KL / log loss / profit |
+|---|---|---|
+| live settings, 5 seeds | 0.0924 / 1.9044 / +1,186u | 0.0963 / 1.8344 / +1,530u |
+| learning rate 0.03, 8,000 rounds, 5 seeds | 0.0919 / 1.9051 / +1,253u | 0.0959 / 1.8330 / +1,470u |
+| the same + the 12 headline margins | 0.0921 / 1.9066 / +1,230u | 0.0960 / 1.8335 / +1,461u |
+| live settings, 10 seeds | 0.0919 / 1.9042 / +1,252u | 0.0959 / 1.8345 / +1,476u |
+- Going from three seeds to five already took half of what the extra seeds had to give (0.0932 to 0.0924 on fold A).
+- Slower learning and ten seeds are each worth 0.0004-0.0005 on top, about half a percent of the distance to BSP, in
+  both folds. Winner log loss and profit do not move outside the noise (+/-20u to +/-47u).
+- THE MARGIN INPUT ADDS NOTHING once the trees are slow and on five seeds (0.0921 v 0.0919, log loss worse in both
+  folds). It is not worth a new input family. Dropped.
+- So the stage-1 trees are at their ceiling for this recipe and this history. The honest size of everything the night
+  found on the training side is half a percent. More history (2.4) is worth ten times that.
+
+### 2.7 The blend's members and weights, walk-forward (queue3.py)
+The live stage 1 is trees 0.5 (softmax 0.7 + regression 0.3), network 0.3, CatBoost 0.2, weights fitted in September
+on out-of-fold prices. Each member trained inside each fold, exactly as live trains it:
+| price | fold A: KL / log loss / profit | fold B: KL / log loss / profit |
+|---|---|---|
+| softmax trees alone | 0.0932 / 1.9053 / +1,238u | 0.0970 / 1.8348 / +1,414u |
+| regression trees alone | 0.0963 / 1.9133 / +1,289u | 0.1014 / 1.8409 / +1,285u |
+| network alone (3 seeds) | 0.0987 / 1.9120 / +1,047u | 0.1053 / 1.8448 / +1,287u |
+| CatBoost alone | 0.0959 / 1.9142 / +1,214u | 0.1032 / 1.8429 / +1,449u |
+| trees: 0.7 softmax + 0.3 regression | 0.0924 / 1.9059 / +1,307u | 0.0965 / 1.8348 / +1,433u |
+| no-network blend: trees 0.7 + CatBoost 0.3 | 0.0913 / 1.9063 / +1,215u | 0.0963 / 1.8350 / +1,460u |
+| LIVE blend: trees 0.5, network 0.3, CatBoost 0.2 | 0.0893 / 1.9038 / +1,157u | 0.0945 / 1.8334 / +1,523u |
+- THE BLEND IS THE BIGGEST SINGLE THING IN STAGE 1: 4.2% closer to BSP than the best member on fold A, 2.6% on fold B,
+  and better on winner log loss in both. No retrain of the trees comes near it.
+- THE LIVE WEIGHTS ARE RIGHT. The best weights found on fold B (0.6 / 0.3 / 0.1) score 0.0896 on fold A against the
+  live weights' 0.0893; the best on fold A (0.4 / 0.3 / 0.3) score 0.0947 on fold B against 0.0945. The regression
+  share of the trees is flat from 0 to 0.5. Leave all of it.
+- THE NETWORK IS THE WEAKEST MEMBER ALONE AND THE MOST USEFUL IN THE BLEND (the no-network blend is 2.2% and 1.9%
+  further from BSP). It is useful because it is different: the 3-seed network sits a median 15-16% from the trees
+  runner by runner.
+- It is also the noisiest: two network seeds are a median 13.6% apart on the same runner (90th percentile 36%). Live
+  re-trains five seeds every time a day is priced, which is why the same field re-priced an hour apart moves a few
+  percent with no news. queue5.py measures what more seeds buy (2.8).
+- Profit does not follow KL here (the live blend makes the least on fold A and the most on fold B): 1,700 bets a fold
+  is too few to rank prices that are 2-4% apart by money. KL to BSP on 1,500+ races is the measure that can.
+
+### 2.8 Mixing recipes against adding seeds (recipe_mix.py)
+Every arm of queues 1-2 that kept all 809 inputs is a different set of trees. Averaged, from the saved prices:
+| softmax trees | fold A: KL / log loss | fold B: KL / log loss |
+|---|---|---|
+| live settings, 3 seeds | 0.0932 / 1.9053 | 0.0970 / 1.8348 |
+| live settings, 9 seeds | 0.0921 / 1.9049 | 0.0960 / 1.8345 |
+| live settings, 10 seeds | 0.0919 / 1.9042 | 0.0959 / 1.8345 |
+| 3 recipes x 3 seeds (live, slow, 31 leaves) | 0.0918 / 1.9050 | 0.0961 / 1.8331 |
+| all 14 full-input recipes x 3 seeds (42 models) | 0.0917 / 1.9050 | 0.0957 / 1.8329 |
+| slow 5 seeds + live 10 seeds | 0.0917 / 1.9045 | 0.0957 / 1.8336 |
+- A different recipe is no more different than a different seed: two 3-seed sets of the live settings sit a median
+  5.4% apart runner by runner; live against slow 4.4%, against 31 leaves 5.9%, against a feature share of 0.1 5.6%.
+  So 42 models of 14 recipes land where 10 seeds of one recipe do. The trees stop improving at about 0.0917 / 0.0957.
+- INSIDE THE FULL BLEND THE GAIN SHRINKS TO 0.2%: live blend with the 3-seed trees 0.0893 / 0.0945; with 10 seeds
+  0.0891 / 0.0943; with the slow trees 0.0891 / 0.0944; with all 42 models 0.0891 / 0.0943. The network and CatBoost
+  already average away most of what extra trees would.
+- Verdict on the training side: nothing to change. Ten seeds instead of five costs nothing at pricing time and is the
+  only one worth taking at the next retrain, for 0.2%.
 
 ### 3.11 The chance the stake is sized on is honest (blend_calib_bets.out.txt)
 The sheet's 3,484 walk-forward bets (6x ceiling) by open / our price, winners against the blended chance the Kelly stake
