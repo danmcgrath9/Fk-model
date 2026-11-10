@@ -378,3 +378,11 @@ read our price use the walk-forward trees (2026) and the cross-fitted blend (202
 FOUNDER'S CALL before Friday 13 Nov: the paper lay book and the live $50 lays rest on rules that do not survive eleven
 untouched months. Keep them on paper (the tracker costs nothing), and do not put real money behind the two current lay
 rules on this evidence.
+
+### 3.13 Does BSP under-react to its own move? (bsp_move.py, no model, 50,700 runners, three eras)
+Winners against BSP's expected winners by how far the price moved from the open: drifted 2x+ 0.95 (0.94 / 0.96 / 0.96
+by era, 15,038 runners, most of them $40+, so the lay is all liability); drifted 1.5-2x 1.02; drifted a little 1.03;
+steady 0.97; firmed a little 0.98; firmed 1.25-1.5x 0.98; firmed 1.5-2x 1.00; firmed 2x+ 1.05 (1.00 / 1.17 / 1.00).
+BSP has the move priced. Inside the big firmers only $3-$5 stands out, in all three eras (A/E 1.10 / 1.21 / 1.10,
+1,322 runners, +7.5% backed at BSP after commission), and its neighbours do not ($1-$3 0.99, $5-$7 0.91, $7-$10 0.87):
+an island in a grid of twelve cells, already in the tracker, not a book. There is no BSP-side edge in the prices alone.
