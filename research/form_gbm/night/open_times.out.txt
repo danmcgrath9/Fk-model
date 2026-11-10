@@ -1,0 +1,89 @@
+67 meetings with timed opening markets, 2026-09-01 to 2026-11-10
+
+| race day | track | races | market opened | days before | first race opened | last race opened | minutes first to last |
+|---|---|---|---|---|---|---|---|
+| Tue 09-01 | Wodonga | 8 | Sat | 3 | 09:59 | Sat 10:01 | 2 |
+| Wed 09-02 | Sandown Hillside | 8 | Mon | 2 | 15:00 | Mon 15:20 | 20 |
+| Thu 09-03 | Warrnambool | 8 | Tue | 2 | 16:08 | Tue 16:14 | 6 |
+| Fri 09-04 | Mornington | 9 | Wed | 2 | 15:39 | Wed 16:52 | 73 |
+| Sat 09-05 | Mildura | 7 | Sat | 0 | 08:08 | Sat 08:15 | 7 |
+| Sat 09-05 | Sandown Hillside | 8 | Wed | 3 | 12:58 | Wed 15:01 | 123 |
+| Sun 09-06 | Bendigo | 10 | Fri | 2 | 10:45 | Fri 10:58 | 13 |
+| Mon 09-07 | Tatura | 8 | Sat | 2 | 10:10 | Sat 10:15 | 5 |
+| Tue 09-08 | Moe | 7 | Sat | 3 | 10:22 | Sat 10:24 | 2 |
+| Wed 09-09 | Sandown Hillside | 9 | Mon | 2 | 11:44 | Mon 16:51 | 307 |
+| Thu 09-10 | Seymour | 8 | Tue | 2 | 15:58 | Tue 16:04 | 6 |
+| Fri 09-11 | Geelong | 9 | Wed | 2 | 15:28 | Wed 16:25 | 57 |
+| Thu 10-01 | Warrnambool | 8 | Tue | 2 | 16:00 | Tue 16:14 | 14 |
+| Fri 10-02 | Pakenham Synthetic | 4 | Fri | 0 | 09:24 | Fri 11:23 | 119 |
+| Sat 10-03 | Flemington | 10 | Wed | 3 | 11:55 | Wed 14:56 | 181 |
+| Mon 10-05 | Pakenham Synthetic | 9 | Fri | 3 | 15:30 | Fri 15:56 | 26 |
+| Tue 10-06 | Mildura | 7 | Sat | 3 | 10:17 | Sat 10:22 | 5 |
+| Wed 10-07 | Geelong | 8 | Mon | 2 | 14:50 | Mon 15:23 | 33 |
+| Thu 10-08 | Kyneton | 9 | Tue | 2 | 16:06 | Tue 16:20 | 14 |
+| Fri 10-09 | Ballarat | 10 | Fri | 0 | 08:42 | Fri 08:58 | 16 |
+| Fri 10-09 | Cranbourne | 9 | Wed | 2 | 11:14 | Wed 16:29 | 315 |
+| Sat 10-10 | Caulfield | 10 | Wed | 3 | 11:53 | Wed 14:30 | 157 |
+| Sun 10-11 | Seymour | 10 | Thu | 3 | 14:01 | Thu 16:29 | 148 |
+| Tue 10-13 | Kilmore | 7 | Sat | 3 | 11:55 | Sat 12:00 | 5 |
+| Wed 10-14 | Caulfield | 8 | Mon | 2 | 12:42 | Mon 15:11 | 149 |
+| Thu 10-15 | Warrnambool | 8 | Tue | 2 | 15:50 | Tue 16:08 | 18 |
+| Fri 10-16 | Cranbourne | 8 | Wed | 2 | 15:37 | Wed 16:00 | 23 |
+| Sat 10-17 | Avoca | 7 | Sat | 0 | 07:57 | Sat 08:01 | 4 |
+| Sat 10-17 | Bendigo | 7 | Fri | 1 | 10:20 | Fri 10:38 | 18 |
+| Sat 10-17 | Caulfield | 10 | Wed | 3 | 11:51 | Wed 15:05 | 194 |
+| Sat 10-17 | Wodonga | 6 | Fri | 1 | 11:26 | Fri 11:36 | 10 |
+| Sun 10-18 | Horsham | 8 | Thu | 3 | 15:38 | Fri 09:35 | 1077 |
+| Sun 10-18 | Moe | 7 | Sun | 0 | 08:02 | Sun 08:13 | 11 |
+| Mon 10-19 | Echuca | 8 | Sat | 2 | 09:13 | Sat 09:18 | 5 |
+| Tue 10-20 | Kyneton | 6 | Sat | 3 | 09:46 | Sat 09:58 | 12 |
+| Wed 10-21 | Geelong | 9 | Mon | 2 | 11:20 | Mon 16:01 | 281 |
+| Thu 10-22 | Mornington | 8 | Tue | 2 | 16:07 | Tue 16:20 | 13 |
+| Fri 10-23 | Ballarat | 2 | Thu | 1 | 09:24 | Thu 09:25 | 1 |
+| Fri 10-23 | Cranbourne | 8 | Wed | 2 | 14:56 | Wed 15:30 | 34 |
+| Sat 10-24 | Flemington | 9 | Wed | 3 | 12:00 | Wed 14:39 | 159 |
+| Sat 10-24 | St Arnaud | 7 | Sat | 0 | 08:03 | Sat 08:10 | 7 |
+| Sat 10-24 | Yarra Valley | 7 | Fri | 1 | 10:20 | Fri 10:25 | 5 |
+| Sun 10-25 | Sale | 9 | Thu | 3 | 14:03 | Fri 09:47 | 1184 |
+| Mon 10-26 | Wangaratta | 9 | Sat | 2 | 09:50 | Sat 10:22 | 32 |
+| Tue 10-27 | Swan Hill | 8 | Sat | 3 | 09:56 | Sat 10:02 | 6 |
+| Wed 10-28 | Bendigo | 9 | Mon | 2 | 14:44 | Mon 15:49 | 65 |
+| Thu 10-29 | Warrnambool | 8 | Tue | 2 | 15:42 | Tue 15:55 | 13 |
+| Fri 10-30 | Kilmore | 8 | Thu | 1 | 13:19 | Thu 13:24 | 5 |
+| Fri 10-30 | Pakenham Park | 8 | Wed | 2 | 15:20 | Wed 16:09 | 49 |
+| Sat 10-31 | Flemington | 9 | Wed | 3 | 12:01 | Wed 14:41 | 160 |
+| Sat 10-31 | Mortlake | 7 | Fri | 1 | 07:13 | Sat 08:03 | 1490 |
+| Sat 10-31 | Traralgon | 4 | Fri | 1 | 14:36 | Fri 14:51 | 15 |
+| Sat 10-31 | Wycheproof | 7 | Sat | 0 | 08:08 | Sat 08:12 | 4 |
+| Sun 11-01 | Mornington | 9 | Fri | 2 | 09:42 | Fri 09:48 | 6 |
+| Mon 11-02 | Ballarat | 8 | Sat | 2 | 09:58 | Sat 10:13 | 15 |
+| Tue 11-03 | Echuca | 7 | Mon | 1 | 11:44 | Mon 11:52 | 8 |
+| Tue 11-03 | Flemington | 10 | Fri | 4 | 12:32 | Sat 18:11 | 1779 |
+| Tue 11-03 | Wangaratta | 6 | Mon | 1 | 12:02 | Mon 12:09 | 7 |
+| Wed 11-04 | Kyneton | 9 | Mon | 2 | 16:28 | Mon 17:15 | 47 |
+| Thu 11-05 | Flemington | 9 | Mon | 3 | 12:25 | Mon 15:44 | 199 |
+| Fri 11-06 | Cranbourne | 8 | Wed | 2 | 15:41 | Wed 16:04 | 23 |
+| Fri 11-06 | Warrnambool | 8 | Fri | 0 | 08:36 | Fri 08:59 | 23 |
+| Sat 11-07 | Flemington | 9 | Wed | 3 | 12:33 | Wed 14:56 | 143 |
+| Sat 11-07 | Geelong | 8 | Sat | 0 | 07:58 | Sat 08:01 | 3 |
+| Sun 11-08 | Ararat | 8 | Fri | 2 | 10:41 | Fri 10:58 | 17 |
+| Mon 11-09 | Hamilton | 8 | Sat | 2 | 10:14 | Sat 10:43 | 29 |
+| Tue 11-10 | Mornington | 8 | Sat | 3 | 11:02 | Sat 11:14 | 12 |
+
+CLOCK TIME OF THE FIRST RACE'S OPEN (Melbourne), all meetings:
+  before 9:00    9 meetings (13%)
+  9:00-10:00     9 meetings (13%)
+  10:00-11:00    8 meetings (12%)
+  11:00-12:17   13 meetings (19%)
+  12:17-14:00    6 meetings (9%)
+  14:00-17:00   22 meetings (33%)
+  after 17:00    0 meetings (0%)
+
+DAYS BEFORE THE RACE DAY that the market opened, by race day of the week:
+  Mon: 2 days before: 5, 3 days before: 1
+  Tue: 1 days before: 2, 3 days before: 7, 4 days before: 1
+  Wed: 2 days before: 7
+  Thu: 2 days before: 7, 3 days before: 1
+  Fri: 0 days before: 3, 1 days before: 2, 2 days before: 7
+  Sat: 0 days before: 5, 1 days before: 5, 3 days before: 7
+  Sun: 0 days before: 1, 2 days before: 3, 3 days before: 3

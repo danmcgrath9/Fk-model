@@ -214,3 +214,46 @@ cap, the metro $12 cap, 1.15 under $4, three steps, the 2.2x doubling), deductio
 | C ceiling 6x, no bounce block | +4,024u (+37%) | 3 of 4 better than B | +5,664u (+48%) | 5 of 6 better than B | 89u / 98u |
 
 About 12 more bets a month for B, 36 for C.
+
+## Part 4. Operations: the opens we miss (scripts/open_times.py, open_times_report.py, sheet_vs_open.py)
+The open is where the money is (3.x), and a race that opens before our orders are in is gone. Two things are separate:
+the bot being off (known), and the sheet not existing yet when TAB opens (measured here for the first time).
+
+### 4.1 When TAB opens, by race day (67 meetings with timed opening markets, 1 Sep - 10 Nov)
+| race day | the market opens | examples |
+|---|---|---|
+| Monday | SATURDAY 9:15-10:45am | Echuca 9:13, Wangaratta 9:50, Ballarat 9:58, Hamilton 10:14 |
+| Tuesday | SATURDAY 9:45am-12:00 | Kyneton 9:46, Swan Hill 9:56, Mildura 10:17, Moe 10:22, Mornington 11:02, Kilmore 11:55 |
+| Wednesday | Monday: metro from 11:20-12:45, provincial 2:45-4:30pm | Geelong 11:20, Sandown 11:44, Caulfield 12:42; Bendigo 2:44pm, Kyneton 4:28pm |
+| Thursday | Tuesday 3:40-4:10pm | Warrnambool 3:42 / 3:50 / 4:00, Seymour 3:58, Mornington 4:07 |
+| Friday | Wednesday 3:00-3:45pm (one at 11:14am); extra meetings on the day 8:40-9:25am | Cranbourne 3:37 / 2:56 / 3:41 |
+| Saturday metro | WEDNESDAY from 11:51am to 12:33pm, then race by race until about 3pm | Caulfield 11:51 / 11:53, Flemington 11:55 / 12:00 / 12:01 / 12:33 |
+| Saturday country | Friday 10:20-11:30am, or Saturday 8:00am | Bendigo, Yarra Valley 10:20; Wodonga 11:26; Avoca, St Arnaud, Geelong 8:00 |
+| Sunday | Thursday 2:00-3:40pm or Friday 9:40-10:45am | Seymour, Sale 2:01; Horsham 3:38; Mornington Fri 9:42; Ararat Fri 10:41 |
+58% of meetings opened before 12:17pm on the day they opened; none after 5pm.
+
+### 4.2 Was the sheet there? (41 live meetings, 14 Oct - 10 Nov)
+First commit of each meeting's order sheet against each race's opening time: 67 of 317 races (21%) OPENED BEFORE THE
+SHEET EXISTED, in 11 of 41 meetings, 7 of them missed whole. By race day: Tuesday 23 of 45 races, Monday 9 of 33,
+Wednesday 9 of 35, Thursday 8 of 33, Sunday 9 of 32, Saturday 9 of 97, Friday 0 of 42.
+- Tuesday meetings: Kyneton 20 Oct, Swan Hill 27 Oct and Mornington 10 Nov all opened Saturday 9:46-11:14am; their
+  sheets were committed Saturday 12:40pm or on Sunday.
+- Saturday metro: Flemington 7 Nov opened Wednesday 12:33pm onward; the sheet was committed at 1:51pm, after 7 of the 9
+  races had opened. Flemington 31 Oct: 2 of 9. The 12:17pm run takes 30-90 minutes to produce a sheet, and then waits for
+  "send".
+- Sunday Mornington 1 Nov opened Friday 9:42am; the sheet came Friday 11:41am.
+This is before counting the wait for the founder's "send" and the days the bot was off. At the backtest's 0.7 bets a race
+and about +0.5u a bet, 67 races is roughly 20-25u a month ($1,000-$1,250 at $50) from scheduling alone.
+
+### 4.3 What would fix it (founder's calls)
+1. A SATURDAY 9:00am pricing run, repeated at 10:00 and 11:00 until Tuesday's fields are in (Monday's come out Friday and
+   are already caught). Tuesday meetings open 30-60 minutes after their fields: pricing has to start when the fields land,
+   not at 12:17.
+2. A WEDNESDAY 11:00am run for the Saturday metro meeting and a MONDAY 11:00am run for the Wednesday metro meeting: both
+   start opening before noon. A FRIDAY 9:00am check for Sunday meetings not priced on Thursday.
+3. Price before riders are declared when the open will not wait: the median-rider fill (1 Nov) costs far less than the
+   open. Re-price when riders land if the race has not opened.
+4. The "send" gate: for a meeting that opens within the hour, a standing approval to place the sheet as priced (dry run
+   first), with the list sent to the founder at the same time. Without it the early run only produces a sheet in time.
+5. Keep TAB funded and the bot running through Saturday morning and Wednesday midday: those are the two windows where
+   most of the week's races open.
