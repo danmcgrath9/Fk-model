@@ -3,3 +3,25 @@ nn A 37s
 cb A 559s
 rg B 120s
 nn B 28s
+cb B 333s
+
+| price | fold A: KL / log loss / profit | fold B: KL / log loss / profit |
+|---|---|---|
+| softmax trees alone (the queue's base arm) | 0.0932 / 1.9053 / +1238u | 0.0970 / 1.8348 / +1414u |
+| regression trees alone | 0.0963 / 1.9133 / +1289u | 0.1014 / 1.8409 / +1285u |
+| network alone (3 seeds) | 0.0987 / 1.9120 / +1047u | 0.1053 / 1.8448 / +1287u |
+| CatBoost alone | 0.0959 / 1.9142 / +1214u | 0.1032 / 1.8429 / +1449u |
+| trees: 0.7 softmax + 0.3 regression | 0.0924 / 1.9059 / +1307u | 0.0965 / 1.8348 / +1433u |
+| no-network blend: trees 0.7 + CatBoost 0.3 | 0.0913 / 1.9063 / +1215u | 0.0963 / 1.8350 / +1460u |
+| LIVE blend: trees 0.5, network 0.3, CatBoost 0.2 | 0.0893 / 1.9038 / +1157u | 0.0945 / 1.8334 / +1523u |
+best weights on fold B: trees 0.6 / network 0.3 / CatBoost 0.1 -> scored on fold A: KL 0.0896 (live weights 0.0893)
+best weights on fold A: trees 0.4 / network 0.3 / CatBoost 0.3 -> scored on fold B: KL 0.0947 (live weights 0.0945)
+regression share of the trees 0.00: KL A 0.0896  B 0.0946
+regression share of the trees 0.15: KL A 0.0894  B 0.0945
+regression share of the trees 0.30: KL A 0.0893  B 0.0945
+regression share of the trees 0.50: KL A 0.0893  B 0.0947
+fold A: two network seeds are a median 13.6% apart runner by runner (90th pct 36%); the 3-seed network v the trees 15.4%
+fold B: two network seeds are a median 13.4% apart runner by runner (90th pct 34%); the 3-seed network v the trees 16.3%
+16:51 m_live_blend                 A  KL 0.0893  LL 1.9038  bets 1719  profit +1157.1u  | A1 0.0874/1.9069/+854u  A2 0.0962/1.8925/+303u
+16:51 m_live_blend                 B  KL 0.0945  LL 1.8334  bets 1699  profit +1523.0u  | B1 0.0947/1.8297/+891u  B2 0.0943/1.8369/+632u
+queue 3 done
