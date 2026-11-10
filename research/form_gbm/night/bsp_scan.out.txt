@@ -1,0 +1,61 @@
+1. WHEN WE DISAGREE WITH BSP, WHO IS RIGHT? every runner $1.50-$40 at BSP, by BSP / our price (over 1 = we rate it shorter than the market does)
+| BSP / ours | runners | won | BSP expected | we expected | A/E v BSP | back at BSP | lay at BSP | periods back pays | periods lay pays |
+|---|---|---|---|---|---|---|---|---|---|
+| under 0.5 (market has it half our price) | 1523 | 218 | 218 | 91 | 1.00 | -15.8% | +2.9% a lay | 0 of 6 | 4 of 6 |
+| 0.5-0.67 | 3684 | 586 | 606 | 362 | 0.97 | -4.3% | -9.4% a lay | 2 of 6 | 2 of 6 |
+| 0.67-0.8 | 4265 | 763 | 737 | 545 | 1.03 | -5.5% | -7.8% a lay | 2 of 6 | 3 of 6 |
+| 0.8-0.95 | 5769 | 933 | 956 | 836 | 0.98 | -10.4% | -2.7% a lay | 1 of 6 | 3 of 6 |
+| agree | 3666 | 541 | 539 | 538 | 1.00 | -10.3% | -3.1% a lay | 0 of 6 | 2 of 6 |
+| 1.05-1.25 | 5955 | 747 | 733 | 837 | 1.02 | -7.1% | -6.9% a lay | 1 of 6 | 1 of 6 |
+| 1.25-1.5 | 4560 | 456 | 445 | 604 | 1.02 | -7.0% | -7.4% a lay | 2 of 6 | 1 of 6 |
+| 1.5-2 | 4060 | 287 | 299 | 503 | 0.96 | -12.3% | -2.1% a lay | 0 of 6 | 2 of 6 |
+| 2+ (we have it half the market's price) | 1679 | 80 | 88 | 210 | 0.91 | -14.1% | -0.5% a lay | 2 of 6 | 3 of 6 |
+
+2. THE GRID: BSP band x BSP / ours. Each cell: bets, A/E v BSP, back % a bet (periods it pays) / lay % a lay (periods it pays)
+| BSP | BSP/ours 0-0.6 | BSP/ours 0.6-0.8 | BSP/ours 0.8-1 | BSP/ours 1-1.25 | BSP/ours 1.25-1.6 | BSP/ours 1.6+ |
+|---|---|---|---|---|---|---|
+| $1.5-$3 | 283, 0.97, back -8% (3) / lay -1% (3) | 705, 0.92, back -12% (0) / lay +3% (3) | 745, 0.98, back -7% (1) / lay -2% (2) | 364, 1.04, back -0% (3) / lay -9% (2) | 57, 0.88, back -16% (3) / lay +6% (3) | 3, 0.85, back -16% (1) / lay +6% (2) |
+| $3-$5 | 616, 1.07, back +2% (4) / lay -15% (0) | 1251, 1.07, back +0% (2) / lay -12% (1) | 1458, 1.04, back -3% (3) / lay -9% (1) | 1018, 0.97, back -9% (1) / lay -3% (3) | 398, 1.18, back +11% (4) / lay -23% (1) | 62, 0.84, back -20% (2) / lay +8% (3) |
+| $5-$8 | 728, 1.02, back -5% (2) / lay -8% (1) | 1302, 0.97, back -12% (2) / lay -1% (4) | 1571, 0.95, back -12% (1) / lay -1% (3) | 1531, 1.09, back +1% (4) / lay -14% (0) | 860, 1.03, back -5% (1) / lay -9% (2) | 297, 1.01, back -8% (2) / lay -5% (3) |
+| $8-$12 | 565, 0.82, back -23% (1) / lay +9% (5) | 961, 1.03, back -3% (1) / lay -11% (3) | 1362, 1.02, back -6% (2) / lay -9% (3) | 1534, 0.94, back -14% (0) / lay +0% (2) | 1160, 0.95, back -12% (1) / lay -2% (3) | 596, 0.89, back -18% (2) / lay +4% (3) |
+| $12-$20 | 676, 1.26, back +12% (4) / lay -29% (2) | 1021, 1.12, back +6% (4) / lay -21% (1) | 1409, 0.99, back -8% (1) / lay -7% (3) | 1838, 0.96, back -13% (2) / lay -2% (3) | 1655, 0.91, back -16% (3) / lay +2% (2) | 1329, 0.95, back -12% (2) / lay -2% (3) |
+| $20-$40 | 510, 0.57, back -52% (0) / lay +41% (5) | 815, 0.93, back -8% (3) / lay -8% (3) | 1014, 0.93, back -15% (0) / lay -0% (3) | 1493, 0.93, back -13% (2) / lay -2% (4) | 1607, 1.02, back -6% (3) / lay -10% (1) | 2161, 1.02, back -7% (2) / lay -8% (2) |
+
+cells that pay in 5+ of 6 periods on 150+ bets (72 tried; about 4 expected by luck if every bet were fair before commission, fewer after it):
+  LAY $8-$12, BSP/ours 0-0.6: 565 bets, 48 won (58.7 expected, z -1.5), +53.3u (+9.4% a bet), by period +1, +10, +39, -24, +8, +19
+  LAY $20-$40, BSP/ours 0-0.6: 510 bets, 11 won (19.4 expected, z -2.0), +207.5u (+40.7% a bet), by period +46, +81, +52, +1, -4, +31
+
+3. NO MODEL AT ALL: every runner by BSP band (is there a favourite or longshot lean at BSP?)
+| BSP | runners | won | expected | A/E | back at BSP | periods back pays | lay | periods lay pays |
+|---|---|---|---|---|---|---|---|---|
+| $1-$2 | 564 | 335 | 331 | 1.01 | -2.4% | 2 of 6 | -4.2% | 3 of 6 |
+| $2-$3 | 1678 | 630 | 666 | 0.95 | -9.6% | 0 of 6 | +0.0% | 2 of 6 |
+| $3-$5 | 4803 | 1282 | 1226 | 1.05 | -1.7% | 2 of 6 | -10.4% | 0 of 6 |
+| $5-$8 | 6289 | 1017 | 1007 | 1.01 | -6.9% | 0 of 6 | -6.5% | 1 of 6 |
+| $8-$12 | 6178 | 611 | 639 | 0.96 | -11.5% | 1 of 6 | -2.6% | 4 of 6 |
+| $12-$20 | 7928 | 524 | 525 | 1.00 | -8.1% | 1 of 6 | -6.8% | 2 of 6 |
+| $20-$40 | 7600 | 268 | 282 | 0.95 | -12.1% | 1 of 6 | -3.0% | 3 of 6 |
+| $40-$100 | 5992 | 113 | 105 | 1.08 | +3.3% | 3 of 6 | -19.9% | 2 of 6 |
+| $100-$1001 | 6327 | 22 | 30 | 0.74 | -43.9% | 0 of 6 | +31.0% | 6 of 6 |
+
+4. OUR TOP PICK and the favourite
+  our top pick, any price: 4910 bets, 1572 won (1543.0 expected, A/E 1.02), back -87.3u (-1.8%, pays in 2 of 6), lay -9.4% (0 of 6)
+  our top pick and the BSP favourite: 3288 bets, 1224 won (1227.6 expected, A/E 1.00), back -166.1u (-5.1%, pays in 1 of 6), lay -5.0% (2 of 6)
+  our top pick, NOT the BSP favourite: 1622 bets, 348 won (315.4 expected, A/E 1.10), back +78.8u (+4.9%, pays in 2 of 6), lay -18.4% (0 of 6)
+  the BSP favourite, not our top pick: 1541 bets, 437 won (430.7 expected, A/E 1.01), back -47.3u (-3.1%, pays in 3 of 6), lay -8.6% (1 of 6)
+  our top pick at BSP $3-$8: 2846 bets, 716 won (674.5 expected, A/E 1.06), back -22.0u (-0.8%, pays in 3 of 6), lay -11.7% (1 of 6)
+  our top pick, we have it 1.25x+ shorter than BSP: 1160 bets, 248 won (226.2 expected, A/E 1.10), back +45.5u (+3.9%, pays in 3 of 6), lay -17.4% (0 of 6)
+  our top pick, BSP shorter than ours: 2450 bets, 927 won (936.2 expected, A/E 0.99), back -131.3u (-5.4%, pays in 1 of 6), lay -4.6% (2 of 6)
+
+5. THE MOVE AND OUR PRICE TOGETHER (open / BSP over 1 = firmed)
+  firmed 1.25x+ AND we rate it shorter than BSP $1.50-$8: 340 bets, 76 won (72.7, A/E 1.04), back -5.9% (2 of 6), lay -6.6% (4 of 6)
+  firmed 1.25x+ AND we rate it shorter than BSP $8-$40: 474 bets, 42 won (33.8, A/E 1.24), back +31.3% (5 of 6), lay -49.2% (1 of 6)
+  firmed 1.25x+ AND we rate it longer than BSP $1.50-$8: 3809 bets, 1007 won (1008.7, A/E 1.00), back -5.0% (2 of 6), lay -6.8% (1 of 6)
+  firmed 1.25x+ AND we rate it longer than BSP $8-$40: 2517 bets, 191 won (188.4, A/E 1.01), back -4.4% (3 of 6), lay -10.6% (2 of 6)
+  drifted 1.25x+ AND we rate it shorter than BSP $1.50-$8: 1650 bets, 323 won (307.2, A/E 1.05), back -3.0% (2 of 6), lay -10.2% (2 of 6)
+  drifted 1.25x+ AND we rate it shorter than BSP $8-$40: 8950 bets, 511 won (530.8, A/E 0.96), back -11.4% (1 of 6), lay -3.3% (1 of 6)
+  drifted 1.25x+ AND we rate it longer than BSP $1.50-$8: 510 bets, 92 won (100.9, A/E 0.91), back -15.5% (1 of 6), lay +3.1% (5 of 6)
+  drifted 1.25x+ AND we rate it longer than BSP $8-$40: 1553 bets, 89 won (98.1, A/E 0.91), back -19.8% (1 of 6), lay +5.8% (3 of 6)
+  firmed 1.5x+ at BSP $3-$5 (the tracked island) : 1171 bets, 338 won (300.2, A/E 1.13), back +6.7% (5 of 6), lay -19.1% (0 of 6)
+  firmed 1.5x+ at BSP $3-$5 AND we rate it $6 or shorter : 643 bets, 195 won (172.6, A/E 1.13), back +6.8% (5 of 6), lay -19.0% (1 of 6)
+  firmed 1.5x+ at BSP $3-$5 AND we rate it over $6 : 528 bets, 143 won (127.6, A/E 1.12), back +6.6% (4 of 6), lay -19.3% (0 of 6)

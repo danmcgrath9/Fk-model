@@ -1,0 +1,30 @@
+CURRENT lay $8-$12, BSP >= 1.6x ours
+   596 bets (37 a month), 53 won v 59.8 by BSP (z -0.9), +26.4u at 1u (+4.4% a bet; +1.6u a month), +0.49% of the liability, median BSP $10.1
+   by period: 125: 11 v 12.6, +10u | 108: 13 v 10.8, -33u | 121: 15 v 12.1, -35u | 76: 8 v 7.5, -9u | 121: 6 v 12.1, +52u | 45: 0 v 4.7, +41u
+CURRENT lay $15-$40, BSP >= 1.5x ours
+   3648 bets (224 a month), 143 won v 153.2 by BSP (z -0.8), -22.1u at 1u (-0.6% a bet; -1.4u a month), -0.02% of the liability, median BSP $25.0
+   by period: 723: 34 v 31.1, -147u | 775: 26 v 32.0, +8u | 628: 29 v 26.6, -43u | 426: 18 v 17.8, -25u | 798: 20 v 33.1, +256u | 298: 16 v 12.7, -71u
+back $3-$5, firmed 1.5x+ from the open
+   1171 bets (72 a month), 338 won v 300.2 by BSP (z +2.5), +78.2u at 1u (+6.7% a bet; +4.8u a month), median BSP $4.0
+   by period: 202: 54 v 51.3, -4u | 224: 66 v 57.7, +12u | 202: 63 v 52.8, +29u | 146: 45 v 37.3, +22u | 308: 86 v 78.5, +16u | 89: 24 v 22.6, +3u
+lay $20-$40, BSP 0.6x ours or less
+   510 bets (31 a month), 11 won v 19.4 by BSP (z -2.0), +207.5u at 1u (+40.7% a bet; +12.7u a month), +1.55% of the liability, median BSP $26.0
+   by period: 104: 2 v 3.9, +46u | 88: 0 v 3.3, +81u | 78: 1 v 3.0, +52u | 78: 3 v 3.0, +1u | 128: 5 v 4.9, -4u | 34: 0 v 1.3, +31u
+back $8-$40, firmed 1.25x+ and we rate it 10%+ shorter than BSP
+   474 bets (29 a month), 42 won v 33.8 by BSP (z +1.5), +148.4u at 1u (+31.3% a bet; +9.1u a month), median BSP $14.4
+   by period: 90: 8 v 6.3, +38u | 126: 9 v 8.4, +2u | 59: 8 v 4.4, +65u | 53: 8 v 3.8, +66u | 125: 6 v 9.3, -34u | 21: 3 v 1.6, +11u
+back $8-$20, same
+   335 bets (21 a month), 30 won v 28.8 by BSP (z +0.2), -15.4u at 1u (-4.6% a bet; -0.9u a month), median BSP $11.5
+   by period: 63: 5 v 5.4, -6u | 78: 7 v 6.7, -9u | 45: 5 v 3.9, +2u | 37: 6 v 3.2, +29u | 96: 4 v 8.2, -48u | 16: 3 v 1.4, +16u
+back $20-$40, same
+   139 bets (9 a month), 12 won v 5.0 by BSP (z +3.2), +163.7u at 1u (+117.8% a bet; +10.0u a month), median BSP $28.0
+   by period: 27: 3 v 1.0, +44u | 48: 2 v 1.8, +11u | 14: 3 v 0.5, +62u | 16: 2 v 0.6, +37u | 29: 2 v 1.0, +14u | 5: 0 v 0.2, -5u
+back $8-$40, firmed 1.5x+ and we rate it 10%+ shorter
+   236 bets (14 a month), 24 won v 17.0 by BSP (z +1.8), +109.3u at 1u (+46.3% a bet; +6.7u a month), median BSP $14.6
+   by period: 46: 7 v 3.2, +60u | 62: 5 v 4.3, -15u | 31: 3 v 2.3, +31u | 33: 6 v 2.4, +65u | 55: 2 v 4.1, -35u | 9: 1 v 0.6, +4u
+back $8-$40, firmed 1.25x+ and we rate it 25%+ shorter
+   242 bets (15 a month), 23 won v 16.2 by BSP (z +1.8), +143.3u at 1u (+59.2% a bet; +8.8u a month), median BSP $15.6
+   by period: 44: 4 v 3.0, +22u | 75: 6 v 4.7, +28u | 29: 6 v 2.0, +77u | 20: 4 v 1.3, +56u | 64: 1 v 4.6, -51u | 10: 2 v 0.7, +11u
+back $8-$40, firmed 1.25x+ (no model)
+   3591 bets (220 a month), 276 won v 269.4 by BSP (z +0.4), -105.4u at 1u (-2.9% a bet; -6.5u a month), median BSP $13.4
+   by period: 676: 64 v 50.2, +147u | 722: 62 v 53.3, +9u | 494: 28 v 37.9, -121u | 482: 35 v 36.0, -31u | 1000: 75 v 75.7, -22u | 217: 12 v 16.3, -88u

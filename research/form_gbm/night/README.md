@@ -551,3 +551,46 @@ blocks, flat 16c), 1 Jan - 9 Nov:
 | none | +1,024u | +732u | +1,249u | +389u | +3,394u (+45%) |
 6x against 3x: 203 more bets, 30 more winners, +747u (+28%), better in all four periods; nothing above 6x. Three prices
 (walk-forward trees, the cross-fitted blend, the walk-forward blend), fourteen periods between them, the same answer.
+
+### 3.16 The ceiling, band by band (ceiling_bands.py; founder, 11 Nov: "show me the stats on the price increase")
+Walk-forward three-model blend, 1 Jan - 9 Nov 2026, plain live rules at the open with no ceiling, every bet sorted by
+how far the open was above our price:
+| open / our price | bets | a month | won | BSP expected | median open | median BSP | staked | profit | on stakes | periods in profit |
+|---|---|---|---|---|---|---|---|---|---|---|
+| under 1.4x | 572 | 56 | 132 | 132.6 | $6.00 | $5.10 | 1,444u | +178u | +12% | 4 of 4 |
+| 1.4x-1.7x | 1,377 | 134 | 243 | 228.7 | $9.80 | $7.40 | 2,606u | +768u | +29% | 4 of 4 |
+| 1.7x-2.2x | 1,028 | 100 | 171 | 161.4 | $13 | $8.30 | 2,162u | +1,144u | +53% | 4 of 4 |
+| 2.2x-3x | 441 | 43 | 59 | 67.3 | $17 | $8.00 | 909u | +590u | +65% | 4 of 4 |
+| 3x-4x | 128 | 12 | 20 | 17.3 | $26 | $9.20 | 241u | +423u | +175% | 4 of 4 |
+| 4x-6x | 75 | 7 | 10 | 8.6 | $34 | $11 | 142u | +324u | +228% | 4 of 4 |
+| 6x and over | 15 | 1 | 0 | 1.7 | $61 | $12.40 | 33u | -33u | -100% | 0 of 4 |
+The 203 bets between 3x and 6x: 30 winners where BSP's chances said 25.9, +747u on 383u staked, 94% of them opened
+above BSP and BSP lands at 0.39 of the open. Without the three biggest winners +588u; the longest losing run is 18
+bets; the biggest single win +56u. The winners opened $8 to $51 (median $19). These counts are with first starters in
+and no blocks; with the live blocks on it is about 12 a month (3.10).
+
+### 3.17 Anything else at Betfair SP? A full sweep on the live-style price (bsp_scan.py, bsp_scan2.py)
+The price: stage 2 trained inside each fold and blended with the open as live does (2026), the cross-fitted blend with
+the same open blend (Jul-Dec 2025). Six periods, 1u at BSP, 8% commission, first starters out.
+- WHEN WE DISAGREE WITH BSP, BSP IS RIGHT, at every size of disagreement. Where the market has a runner at half our
+  price or less (1,523 runners): we expected 91 winners, BSP 218, and 218 won. Where we have it at half the market's
+  price (1,679): we expected 210, BSP 88, and 80 won. Winners against BSP's expected sit between 0.91 and 1.03 in all
+  nine bands and no band pays a back or a lay in more than four of the six periods.
+- THE TWO CURRENT LAY RULES ON THIS SHARPER PRICE: lay $8-$12 where BSP is 1.6x ours, 596 lays, 53 won against 59.8;
+  by period +10u, -33u, -35u, -9u, +52u (the months it was chosen on), +41u. Lay $15-$40 where BSP is 1.5x ours, 3,648
+  lays, 143 won against 153.2, -22u; by period -147u, +8u, -43u, -25u, +256u (chosen on), -71u. Same answer as 3.12:
+  the edge is the June-October sample.
+- THE GRID (six BSP bands by six bands of BSP / our price, backs and lays, 72 cells): two pay in five of six periods,
+  about what luck gives. Lay $20-$40 where BSP is 0.6x ours or less (510 lays, 11 won against 19.4, +207u, 1.55% of the
+  liability; already tracked as the $25-$40 rule) and lay $8-$12 in the same band (565, 48 against 58.7, +53u). The cell
+  between them ($12-$20, same band) runs the other way (A/E 1.26), so this is not a pattern.
+- NO MODEL: winners against BSP by price band are 0.95 to 1.05 from $1 to $40. Only $100+ is off (22 won against 30,
+  the lay pays in all six periods), which is a hundred units of liability to win one: not a book.
+- OUR TOP PICK at BSP: 4,910 bets, 1,572 won against 1,543, -1.8% after commission. Top pick that is not the BSP
+  favourite: A/E 1.10, +4.9%, but two periods of six.
+- WHAT SURVIVES, all small: (1) back $3-$5 runners that firmed 1.5x+ from the open, 1,171 bets (72 a month), 338 won
+  against 300.2 (z 2.5), +6.7% a bet, five of six periods (-4, +12, +29, +22, +16, +3), no model needed and our price
+  adds nothing to it; (2) the $20-$40 lay above; (3) back $20-$40 runners that firmed 1.25x+ from the open AND that we
+  rate 10%+ shorter than BSP, 139 bets (9 a month), 12 won against 5.0, +164u, five of six periods, found by splitting
+  a wider cell after the fact ($8-$20 on the same rule: 30 won against 28.8, -15u), so it is a paper rule at most.
+  Together, if all three held, about +25u a month at 1u a bet against a median +207u a month at the open.
