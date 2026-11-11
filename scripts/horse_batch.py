@@ -73,15 +73,25 @@ def main() -> None:
         batch = run_batch(plans, lambda item: client.execute(item[1]), workers=4, per_second=1.0, budget_seconds=time_budget_seconds())
     finally:
         client.allow_live = False
-    events = 0
+    # One horse, one commit. A race-mate seen only in the history files has no fk.horses row, and past_events
+    # references it: the first batch (11 Nov, 290 horses, 580 credits) wrote everything in one commit, met one such
+    # horse and stored nothing. Each horse now gets its name row first (insert only; an existing row is left exactly
+    # as it was), and a failure costs that horse alone.
+    events = stored = 0
     for (h, _), payload in batch.done:
         ev = F.horse_form_past_events(payload)
-        store_past_events(db, h, ev, datetime.now(timezone.utc))
-        events += len(ev)
-    db.commit()
+        try:
+            db.conn.execute("insert into fk.horses (horse_id, name) values (%s, %s) on conflict (horse_id) do nothing",
+                            (h, F.horse_form_name(payload) or h))
+            store_past_events(db, h, ev, datetime.now(timezone.utc))
+            db.commit()
+            events += len(ev); stored += 1
+        except Exception as e:  # noqa: BLE001 - report and carry on with the next horse
+            db.rollback()
+            print(f"NOT STORED {h}: {str(e)[:160]}")
     for (h, p), e in batch.failed:
         print(f"FAILED {h}: {getattr(e, 'status', '')} {str(e)[:120]}")
-    print(f"fetched {len(batch.done)}, failed {len(batch.failed)}, left for the next run {len(batch.skipped)}; "
+    print(f"fetched {len(batch.done)}, stored {stored}, failed {len(batch.failed)}, left for the next run {len(batch.skipped)}; "
           f"{events} past events stored")
     print(f"ledger balance {ledger.balance()}")
 
