@@ -1,0 +1,103 @@
+# Pakenham Fri 13 Nov, official going, final fields Wed 11:35am, no market yet; PROVISIONAL: 20 of 102 riders to come, re-price at 12:30
+1, Helizangel, 0, 0
+1, Open Fire, 0, 0
+1, Via Theresa, 0, 0
+1, Fulham Fox, 0, 0
+1, Queen Of The Top, 0, 0
+1, Roll With It, 0, 0
+1, Kuheylan, 0, 0
+1, Star Je Taime, 0, 0
+1, Oda Mae, 0, 0
+1, Lady Of Alsace, 0, 0
+1, Ambition In Bloom, 0, 0
+1, Zapatch, 0, 0
+2, King Campania, 0, 0
+2, Barossa Bourbon, 0, 0
+2, Capital Affair, 0, 0
+2, Galivad, 0, 0
+2, Royal Canvas, 0, 0
+2, Dempsey, 0, 0
+2, Dextrose, 0, 0
+2, Mongolian Hero, 0, 0
+2, Symphony Royale, SCR
+2, Blue And Gold, 0, 0
+2, Asparagus, 0, 0
+2, Foxalation, SCR
+2, Shamakita, 0, 0
+2, Tecknoking, 0, 0
+3, Smart Step, 0, 0
+3, Percipient, 0, 0
+3, Amber Smile, SCR
+3, Hill Of Olives, 0, 0
+3, Iftihar, 0, 0
+3, Slugger, 0, 0
+3, Activating, SCR
+3, Reelness, 0, 0
+3, Cruise On Bye, 0, 0
+3, Scentrique, SCR
+3, Miss Home Body, 0, 0
+3, Heavy Is The Head, 0, 0
+3, Shipping Steel, 0, 0
+3, Kokeshi, 0, 0
+3, Snow Cabin, 0, 0
+3, Calexpo, SCR
+4, Verifier, 0, 0
+4, So Brave, 0, 0
+4, Celtic Park, 0, 0
+4, Melek, 0, 0
+4, Port Philip, 0, 0
+4, Superstock, 0, 0
+4, Chocolate Royal, 0, 0
+4, Corona Lad, 0, 0
+4, Opus, 0, 0
+4, Amawasha, 0, 0
+4, Foix, 0, 0
+5, Cool Savanna, 0, 0
+5, Autumn Rainbow, 0, 0
+5, Lomu, 0, 0
+5, Brass In Pocket, 0, 0
+5, In A Tizzy, 0, 0
+5, King Maywin, 0, 0
+5, Balance, 0, 0
+5, Gazerati, 0, 0
+5, Jarbardar, 0, 0
+5, Diggers Aim, 0, 0
+6, Favour The Bold, 0, 0
+6, Bifrost, 0, 0
+6, Eureka Rose, 0, 0
+6, Inside Man, 0, 0
+6, Mad About Magnus, 0, 0
+6, Affirmative Lad, 0, 0
+6, Free To Play, 0, 0
+6, Bel Lupa, 0, 0
+6, Laura's Gold, 0, 0
+6, Mr Tickles, 0, 0
+6, Abovethefrostline, 0, 0
+6, Hello Romeo, 0, 0
+7, Sussex Duchess, 0, 0
+7, Fatty Finn, SCR
+7, Deliberate Ploy, SCR
+7, Blankfield, 0, 0
+7, Some People Callme, 0, 0
+7, Yum, 0, 0
+7, Efferato, 0, 0
+7, Ten Warriors, 0, 0
+7, King West, 0, 0
+7, Blondeau, 0, 0
+7, Cattle Camp, 0, 0
+7, Bardia's Dream, 0, 0
+7, Overactive, 0, 0
+8, Lots Of Time, 0, 0
+8, Little Richo, 0, 0
+8, Blue Bandit, 0, 0
+8, Orovero, 0, 0
+8, Hey Bella, 0, 0
+8, Jewel Bay, SCR
+8, Zourain, 0, 0
+8, Let It Beel, 0, 0
+8, Sumo Sandy, 0, 0
+8, Ruakaka Raider, 0, 0
+8, Light Moves, 0, 0
+8, Warchime, 0, 0
+8, Katsumi Orochi, 0, 0
+8, Russian Front, SCR
