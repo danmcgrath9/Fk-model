@@ -1,0 +1,12 @@
+runners whose last start is in the dataset: 27810 of 51298; of them last start in first-time blinkers 989, any first-time gear 2657
+
+| last start | runners | won | we expected | BSP expected | won / ours | won / BSP | BSP rates them vs us (geo mean) | by era: won v ours / BSP |
+|---|---|---|---|---|---|---|---|---|
+| every runner with a known last start | 27507 | 2986 | 2961.7 | 2966.8 | 1.01 | 1.01 | 0.89x | 1123 v 1119.4 ours / 1112.8 BSP | 1010 v 995.8 ours / 997.0 BSP | 853 v 846.5 ours / 856.9 BSP |
+| first-time blinkers, any rating | 978 | 82 | 103.1 | 101.4 | 0.80 | 0.81 | 0.87x | 34 v 38.3 ours / 38.1 BSP | 29 v 38.4 ours / 38.0 BSP | 19 v 26.4 ours / 25.3 BSP |
+| first-time blinkers, new peak by 3+ | 163 | 16 | 19.5 | 20.0 | 0.82 | 0.80 | 0.89x | 7 v 5.5 ours / 6.0 BSP | 4 v 8.7 ours / 8.8 BSP | 5 v 5.3 ours / 5.2 BSP |
+| first-time blinkers, new peak by 6+ | 72 | 7 | 8.4 | 9.0 | 0.83 | 0.77 | 0.91x | 3 v 2.9 ours / 3.1 BSP | 1 v 2.6 ours / 3.1 BSP | 3 v 2.9 ours / 2.9 BSP |
+| any first-time gear, new peak by 6+ | 179 | 16 | 22.0 | 23.1 | 0.73 | 0.69 | 0.92x | 7 v 8.6 ours / 8.9 BSP | 4 v 6.9 ours / 7.7 BSP | 5 v 6.5 ours / 6.5 BSP |
+| NO gear change, new peak by 6+ | 1171 | 155 | 154.0 | 157.1 | 1.01 | 0.99 | 0.92x | 45 v 49.3 ours / 51.3 BSP | 43 v 41.8 ours / 42.7 BSP | 67 v 62.9 ours / 63.2 BSP |
+| NO gear change, new peak by 3+ | 3061 | 397 | 396.0 | 401.9 | 1.00 | 0.99 | 0.92x | 114 v 123.7 ours / 126.2 BSP | 140 v 124.8 ours / 128.1 BSP | 143 v 147.6 ours / 147.5 BSP |
+| first-time blinkers, no new peak | 489 | 33 | 47.0 | 45.3 | 0.70 | 0.73 | 0.88x | 13 v 17.3 ours / 17.0 BSP | 14 v 17.6 ours / 17.1 BSP | 6 v 12.0 ours / 11.1 BSP |

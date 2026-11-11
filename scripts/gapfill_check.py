@@ -24,13 +24,15 @@ with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
         print(f"| {d} | {', '.join(f'{t} ({s})' for t, s, _, _ in rows) or 'none'} | {sum(r[2] for r in rows)} | {sum(r[3] for r in rows)} |")
     print("\nlive credits charged since", a.since_ts)
     tot = 0
-    for op, n, cr in c.execute("""select operation, count(*), sum(credits) from fk.credit_ledger
-                                  where key_kind = 'live' and ts >= %s group by operation order by 3 desc""", (a.since_ts,)):
-        print(f"  {op}: {n} calls, {cr} credits"); tot += cr
+    for op, nb, n, cr in c.execute("""select operation, params->>'numBenchmarks', count(*), sum(credits) from fk.credit_ledger
+                                      where key_kind = 'live' and ts >= %s group by 1, 2 order by 4 desc""", (a.since_ts,)):
+        print(f"  {op}{f' at numBenchmarks={nb}' if nb else ''}: {n} calls, {cr} credits"); tot += cr
     print(f"  total {tot}")
     for m, cr in c.execute("""select month, sum(credits) from fk.credit_ledger where key_kind in ('live','adjust')
                               group by month order by month desc limit 2"""):
         print(f"month {m}: {cr} credits")
+    if not a.dates:
+        raise SystemExit
     held = {r[0] for r in c.execute("select distinct meeting_date from fk.meetings where state = 'VIC' and meeting_date >= '2025-07-01'")}
     d, end, miss = date(2025, 7, 1), date.today(), []
     while d < end:
