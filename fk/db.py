@@ -88,9 +88,11 @@ class Db:
         return {r[0]: int(r[1]) for r in rows}
 
     def meetings_on(self, meeting_date: str, state: str) -> list[dict[str, Any]]:
+        """`state` is one state or a comma-separated list (fk/states.py), so one results run can cover several."""
         rows = self.conn.execute(
-            "select meeting_id, track, raw from fk.meetings where meeting_date = %s and state = %s order by track",
-            (meeting_date, state),
+            "select meeting_id, track, raw from fk.meetings where meeting_date = %s"
+            " and (%s::text[] is null or state = any(%s::text[])) order by track",
+            (meeting_date, S.sql_param(state), S.sql_param(state)),
         ).fetchall()
         return [{"meeting_id": r[0], "track": r[1], "raw": r[2]} for r in rows]
 
