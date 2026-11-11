@@ -5,26 +5,27 @@
 1|15|Rein Me In|True|False
 1|12|Princess Of Sol|False|False
 1|16|Rat Pack|True|False
-1|17|Lady Of Alsace|True|False
+1|17|Lady Of Alsace|True|True
 1|11|My Rosalie|False|False
 1|4|Zverev|False|False
 1|5|Dun Dirt Sweet|False|False
-1|6|Fiorente Charm|False|False
+1|6|Fiorente Charm|False|True
 1|9|Soaring Legend|False|False
 1|7|High Performance|False|False
 1|14|Chocolate Freckles|False|False
 1|8|Musical Journey|False|False
-1|13|A Rus In Grinzing|False|False
+1|13|A Rus In Grinzing|False|True
 2|2|Satellite Chester|False|False
 2|8|Immortal Truth|False|False
 2|6|Cherridene|False|False
 2|5|Antigua|False|False
 2|1|Flamingo Flyer|False|False
+2|9|Our Alexa|False|True
 2|7|Gattino Veloce|False|False
 2|3|Magnusaurus Rex|False|False
 2|11|Duchess Xenia|False|False
 2|12|Queen's English|False|False
-2|4|Palmento|False|False
+2|4|Palmento|False|True
 2|10|Amber Queen|False|False
 2|13|Roar Talent|False|False
 2|14|Wolfmaama|False|False
@@ -33,7 +34,7 @@
 3|8|Five Roses|False|False
 3|12|Tale Of Genji|False|False
 3|11|Stormin' Angel|False|False
-3|9|Loyalty|False|False
+3|9|Loyalty|False|True
 3|1|Aquafy|False|False
 3|2|Carnevale|False|False
 3|6|Power Of The Moon|False|False
@@ -42,7 +43,7 @@
 3|4|Exultant|False|False
 4|2|Money Wheel|False|False
 4|5|Tempered Edge|False|False
-4|8|Ardesha|False|False
+4|8|Ardesha|False|True
 4|1|Brighthill|False|False
 4|9|Sarazain|False|False
 4|4|Te Taniwha|False|False
@@ -54,7 +55,7 @@
 5|6|Almago|False|False
 5|2|Diamond Eye|False|False
 5|3|Mahmudah|False|False
-5|8|Tipsy Gypsy|False|False
+5|8|Tipsy Gypsy|False|True
 5|1|Antalian|False|False
 5|4|Cushioned|False|False
 5|5|Zovozo|False|False
@@ -69,7 +70,7 @@
 6|10|Catalona|False|False
 6|4|Sarapo|False|False
 6|9|Earthly Crown|False|False
-6|5|Helioson|False|False
+6|5|Helioson|False|True
 7|5|Cumboogle|False|False
 7|4|Commands Success|False|False
 7|2|Maximillius|False|False
@@ -82,19 +83,20 @@
 7|6|Flying Awasita|False|False
 7|3|Gunz|False|False
 8|1|Magic Drum|False|False
+8|18|Divine Vicky|True|True
 8|6|Hola Amigos|False|False
 8|4|Stolen Art|False|False
 8|13|Zane Zena|False|False
 8|10|Oceanella|False|False
 8|8|Ulfberht|False|False
 8|7|Outer Banks|False|False
-8|11|She Won't Fold|False|False
+8|11|She Won't Fold|False|True
 8|15|Blaze Away|True|False
 8|16|Celestra|True|False
 8|2|Ole Daze|False|False
 8|5|Deliberate Ploy|False|False
-8|3|Sir Loyne|False|False
+8|3|Sir Loyne|False|True
 8|9|Cherry Hills|False|False
-8|17|Luminary Miss|True|False
-8|12|Super Scholar|False|False
+8|17|Luminary Miss|True|True
+8|12|Super Scholar|False|True
 8|14|Sayalero|False|False
