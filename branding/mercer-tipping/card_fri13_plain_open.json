@@ -1,0 +1,37 @@
+{
+ "day": "Friday",
+ "date": "13 November",
+ "meetings": [
+  {
+   "name": "Pakenham",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "6:15PM",
+     "horse": "Helizangel",
+     "price": "$13",
+     "rated": "$9.07",
+     "units": "0.94u"
+    },
+    {
+     "race": 2,
+     "time": "6:45PM",
+     "horse": "Mongolian Hero",
+     "price": "$3.05",
+     "rated": "$2.21",
+     "units": "5.04u"
+    },
+    {
+     "race": 4,
+     "time": "7:45PM",
+     "horse": "Melek",
+     "price": "$2.90",
+     "rated": "$2.11",
+     "units": "5.43u"
+    }
+   ]
+  }
+ ],
+ "brand": false
+}
