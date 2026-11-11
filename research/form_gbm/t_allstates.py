@@ -7,6 +7,10 @@ Same stage-1 trees as t_formlines_ab.py (3 seeds, 4000 rounds, blanked copy), th
   VIC       trained on Victorian races only, inputs built over the Victorian dataset (today's live situation)
   ALL       trained on every state's races, inputs built over the all-states dataset
   ALL+ST    ALL, plus the race's state as inputs (one 0/1 column a state), so the trees can tell the states apart
+  OWN       each state on its own: a separate model per state, trained only on that state's races with its inputs built
+            over that state's own dataset, like the Victorian model is (founder, 11 Nov: "they're all separate and
+            train on their own states ... because different states might have different rules"). For Victoria, OWN
+            is the VIC arm. A state with fewer than 300 training races gets no OWN model and says so.
 Scored on the races after the fold's cut that none of them saw: Victoria (KL to BSP, winners' log loss, and the live
 open-price rule's profit) and each other state on its own, where the VIC arm's trees also price the other states'
 runners (inputs built over the all-states dataset, columns matched by name), which is what pricing another state with
@@ -133,13 +137,40 @@ for pname, lo, hi in PERIODS:
         n, w, st, pl = runA(pp, hm)
         print(f"| {pname} | {lab_} | {klA(pp, hm):.4f} | {llA(pp, hm):.4f} | {n} | {int(w)} | {st:.1f}u | {pl:+.1f}u | {pl/max(st,1e-9):+.1%} |")
 
+# ---- each state on its own ---------------------------------------------------------------------------------------
+RAW = dict(np.load(sys.argv[2])); nRun, nRace = len(RAW["race_idx"]), len(RAW["race_id"])
+POWN = np.full(len(kA), np.nan)
+for s in STATES:
+    if s == "VIC": continue
+    races = np.where(np.asarray(RAW["state"]).astype(str) == s)[0]
+    ntrain = int((np.asarray(RAW["date"]).astype(str)[races] < CUT).sum())
+    if ntrain < 300:
+        print(f"OWN {s}: {ntrain} training races before {CUT}, too few for a model of its own", flush=True); continue
+    keep_r = np.zeros(nRace, bool); keep_r[races] = True; keep_u = keep_r[RAW["race_idx"]]
+    new_idx = np.cumsum(keep_r) - 1
+    sub = {}
+    for k, v in RAW.items():
+        v = np.asarray(v)
+        if k == "race_idx": sub[k] = new_idx[v[keep_u]].astype(np.int32)
+        elif v.ndim and v.shape[0] == nRun: sub[k] = v[keep_u]
+        elif v.ndim and v.shape[0] == nRace: sub[k] = v[keep_r]
+        else: sub[k] = v
+    path = f"_own_{s}.npz"; np.savez(path, **sub)
+    DO, FO, nmO, _ = build(path)
+    PO, _ = fit(DO, FO, nmO, f"OWN {s}")
+    po = {k: p for k, p in zip(key(DO), PO)}
+    POWN = np.where(np.isnan(POWN), np.array([po.get(k, np.nan) for k in kA]), POWN)
+    os.remove(path)
+
 print(f"\n### Other states, {CUT} to {END} (races none of the models trained on)\n| state | races | model | KL to BSP | log loss (winners) | bets | profit at open | ROI |\n|---|---|---|---|---|---|---|---|")
 for s in STATES:
     if s == "VIC": continue
     hm = (dateA >= CUT) & (dateA < END) & (rstA == s)
     if not hm.any(): continue
     nr = len(np.unique(DA["race_idx"][hm]))
-    for lab_, p in (("VIC trees", PVX), ("ALL", PA), ("ALL+ST", PS)):
+    arms = [("VIC trees", PVX), ("ALL", PA), ("ALL+ST", PS)]
+    if np.isfinite(POWN[hm]).all(): arms.append(("OWN", POWN))
+    for lab_, p in arms:
         n, w, st, pl = runA(p, hm)
         print(f"| {s} | {nr} | {lab_} | {klA(p, hm):.4f} | {llA(p, hm):.4f} | {n} | {pl:+.1f}u on {st:.0f}u | {pl/max(st,1e-9):+.1%} |")
-np.savez(f"allstates_preds_{FOLD}.npz", pv=PVA, pvx=PVX, pa=PA, ps=PS)
+np.savez(f"allstates_preds_{FOLD}.npz", pv=PVA, pvx=PVX, pa=PA, ps=PS, pown=POWN)

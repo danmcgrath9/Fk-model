@@ -32,8 +32,11 @@ and froze the data from 1 Jul 2025 for point-in-time use (lws and exp pre-race s
    states' day files. (If the national zip is too big for one runner, it can be run a few states at a time with
    `--states`.)
 2. **fk export** with state `ALL`, branch `datasets-allstates`: the all-states training set.
-3. `t_allstates.py DS_VIC.npz DS_ALL.npz A`, then `B`. Three models: Victoria only (today), all states, all states
-   told the state. Scored on Victorian races none of them saw, in both halves, and on every other state.
+3. `t_allstates.py DS_VIC.npz DS_ALL.npz A`, then `B`. Four ways: Victoria only (today), one model on all states, the
+   same told the state, and a separate model for each state trained on that state alone (founder: "different
+   states might have different rules"). Scored on Victorian races none of them saw, in both halves, and on every
+   other state, so each state can end up with whichever wins there. Betting rules are scored with Victoria's open
+   rule everywhere; each state's own betting rules are set from its own results, on paper first.
 4. Goes live only if the all-states model is closer to Betfair SP on Victoria in both halves, and on the founder's
    word. Then the nightly retrain runs with state ALL, the live pricer's history becomes the all-states dataset, and
    the daily pull for the other states is switched on.
