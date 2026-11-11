@@ -1,4 +1,11 @@
-# All states: one model, trained on every state (built 11 Nov 2026, dormant until the archive)
+# All states: one model per state, never mixed (built 11 Nov 2026, dormant until the archive)
+
+**Founder decision, 11 Nov 2026: "they're all separate and train on their own states ... because different states
+might have different rules", then "can't mix the states up".** Every state gets its own model, trained only on its
+own races, with its inputs built over its own races only, the way the Victorian model already is. Victoria's model is
+unchanged. No model is ever trained on more than one state, and each state's betting rules are set from its own
+results, on paper first. (The pooled arms in t_allstates.py were written before this decision and are a record
+only; fk retrain refuses a state list.)
 
 Founder, 11 Nov 2026: "I want the training for other states as well ... I want the same model", "I'm buying the
 history ... that history saves us doing a full pull", and "we want to do a pull every morning of all states". Order
@@ -21,8 +28,8 @@ and froze the data from 1 Jul 2025 for point-in-time use (lws and exp pre-race s
 | `scripts/archive_to_history.py` | archive -> history day files, other states only by default, into `history_states` | Victoria's `history` release untouched |
 | `fk archive` workflow | uploads `history_states` to its own release, `history-states` | |
 | `fk export` workflow | `state` and `branch` inputs (defaults VIC, datasets) | unchanged by default |
-| `fk retrain` workflow | `state` input; anything but VIC saves to `challenger-allstates`, never live | the nightly run is VIC |
-| `research/form_gbm/t_allstates.py` | the test (below) | |
+| `fk retrain` workflow | `state` input, ONE state only (a list or ALL is refused); another state saves to `challenger-STATE`, never live | the nightly run is VIC |
+| `research/form_gbm/t_ownstate.py` | the test: each state's own model on its own races (below) | Victoria is the reference row |
 | `fk all states` workflow | the other states' morning pull and next-morning results, run by hand only | no schedule |
 | `scripts/history_pull.py --count-only`, `fk state count` | prices a range at 1 credit a day before paying | |
 
@@ -31,15 +38,14 @@ and froze the data from 1 Jul 2025 for point-in-time use (lws and exp pre-race s
    (typed into the workflow form, never into chat), script `archive_to_history.py`. It writes and uploads the other
    states' day files. (If the national zip is too big for one runner, it can be run a few states at a time with
    `--states`.)
-2. **fk export** with state `ALL`, branch `datasets-allstates`: the all-states training set.
-3. `t_allstates.py DS_VIC.npz DS_ALL.npz A`, then `B`. Four ways: Victoria only (today), one model on all states, the
-   same told the state, and a separate model for each state trained on that state alone (founder: "different
-   states might have different rules"). Scored on Victorian races none of them saw, in both halves, and on every
-   other state, so each state can end up with whichever wins there. Betting rules are scored with Victoria's open
-   rule everywhere; each state's own betting rules are set from its own results, on paper first.
-4. Goes live only if the all-states model is closer to Betfair SP on Victoria in both halves, and on the founder's
-   word. Then the nightly retrain runs with state ALL, the live pricer's history becomes the all-states dataset, and
-   the daily pull for the other states is switched on.
+2. **fk export** with state `ALL`, branch `datasets-allstates`: every state's races in one file, used only as a
+   container; t_ownstate.py cuts each state out on its own before anything is built.
+3. `t_ownstate.py DS_ALL.npz A`, then `B`: each state's own model, trained before the fold's cut on its own races and
+   scored on its own races after it, with Victoria as the reference row. A state with fewer than 300 training races
+   is named and gets no model yet. Profit is Victoria's open rule everywhere, as a common yardstick only.
+4. A state is priced (on paper first) only on the founder's word, with its own model, its own history dataset for
+   the pricer, and its own betting rules from its own results. Then the daily pull for the other states is switched
+   on. Victoria carries on exactly as it is.
 
 ## Before the daily all-states pull is switched on
 - Credits: one pull a race (2), speedmaps (5 a meeting), the list (1 a day) and results (5 a meeting) for the other
@@ -49,7 +55,8 @@ and froze the data from 1 Jul 2025 for point-in-time use (lws and exp pre-race s
 - Database: it is 1.24 GB and race cards are most of it (9,103 runner rows, 308 MB). The other states would add about
   20 MB a day, so old races have to move to the history files on a schedule (scripts/db_to_history.py, fk db to
   history: copy, verify from a fresh download, then delete). That schedule is a founder decision; it is not on.
-- Pricing time: the live pricer fits its network part on the whole history at price time (price_day3.py), so a
-  history 4.6 times larger makes each meeting slower to price. Measure it on the first all-states price run.
+- Pricing time: the live pricer fits its network part on the state's history at price time (price_day3.py), so a
+  state's meetings price in about the time its history size says (NSW and QLD near Victoria's, the small states
+  faster). Measure it on each state's first price run.
 - Gap: the archive ends the day before it is produced, so the sooner the daily pull starts after it, the smaller the
   gap. A gap is filled with fk backtest (state input) at about 2 credits a race.

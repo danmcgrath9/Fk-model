@@ -21,7 +21,7 @@ on:
         description: 'yes = make this retrain the LIVE model (only after it has won a forward test)'
         default: 'no'
       state:
-        description: 'states to train on: VIC (the live model) or e.g. ALL, which also reads the history-states release and saves to challenger-allstates (never live)'
+        description: 'ONE state: VIC (the live model) or another state, trained on its own races only and saved to challenger-STATE (never live). States are never mixed'
         default: 'VIC'
 
 concurrency:
@@ -56,8 +56,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
         run: |
+          # one model per state, never mixed (founder, 11 Nov 2026: "can't mix the states up")
+          ST="${{ github.event.inputs.state || 'VIC' }}"
+          case "$ST" in *,*|ALL|all) echo "one state per model: '$ST' would mix states"; exit 1;; esac
           scripts/fetch_history.sh
-          if [ "${{ github.event.inputs.state || 'VIC' }}" != "VIC" ]; then scripts/fetch_history.sh history-states history_states; fi
+          if [ "$ST" != "VIC" ]; then scripts/fetch_history.sh history-states history_states; fi
       - name: Export the training set
         run: |
           mkdir -p research/form_gbm/ds
@@ -84,8 +87,9 @@ jobs:
           RACES=$(python3 -c "import numpy as np; z=np.load('ds/model_ds.npz',allow_pickle=True); print(len(z['race_id']), max(z['date']))")
           LAST=$(python3 -c "import numpy as np; z=np.load('ds/model_ds.npz',allow_pickle=True); print(max(z['date']))")
           if [ "${PROMOTE:-no}" = "yes" ]; then DEST=/tmp/models; ROLE=live; else DEST=/tmp/models/challenger; ROLE=challenger; fi
-          # 11 Nov 2026: a retrain on other states is a challenger of its own and is never promoted from here
-          if [ "${{ github.event.inputs.state || 'VIC' }}" != "VIC" ]; then DEST=/tmp/models/challenger-allstates; ROLE=challenger-allstates; fi
+          # 11 Nov 2026: another state's model is a challenger of its own, kept apart, and never promoted from here
+          ST="${{ github.event.inputs.state || 'VIC' }}"
+          if [ "$ST" != "VIC" ]; then DEST=/tmp/models/challenger-$ST; ROLE=challenger-$ST; fi
           mkdir -p "$DEST"
           for f in all9_sm*.txt all9_rg*.txt S_hist.npy; do gzip -c "$f" > "$DEST/$f.gz"; done
           cp cb_all9.cbm p_oof_blend9.npy S_fields.npy stage2e_*.txt stage2f_*.txt "$DEST/"
