@@ -5,6 +5,7 @@ form-line test can be redone properly). Shared by racemate_gaps.py (the free cov
 
 Every run we hold, from three places, deduplicated by (horse, race):
   fk.results          every runner of every race the live pipeline stored, with finish and SP
+  fk.entries          a race pulled after it ran, whose result rides on each entry (horseResult)
   the history files   every runner of every back-test race, plus each runner's own past events on its race card
   fk.past_events      the runs listed on every Get Horse Form and race-form entry we have stored
 
@@ -102,6 +103,23 @@ def load(history_dir: str | None = "history", since: str = SINCE, log=print):
                 if st == "VIC" and d >= since:
                     runners.append((h, rid, d)); k += 1
         log(f"fk.results: {k} more VIC runners since {since}")
+        # a race pulled AFTER it ran carries its result inside each entry (horseResult), not in fk.results
+        # (Db.resulted_races reads both; the first cut of this file read only fk.results and missed the 11 Nov gap fill)
+        k = 0
+        for rid, d, st, h, fin, sp in c.execute(
+                """select e.race_id, m.meeting_date::text, m.state, e.horse_id,
+                          (e.raw->'horseResult'->>'finishPosition')::int, e.raw->'horseResult'->>'startingPrice'
+                   from fk.entries e join fk.races r using (race_id) join fk.meetings m using (meeting_id)
+                   where (e.raw->'horseResult'->>'finishPosition') ~ '^[0-9]+$'
+                     and (e.raw->'horseResult'->>'finishPosition')::int > 0"""):
+            reach(h, d)
+            if rid not in runs[h]:
+                run(h, d, rid, int(fin), _f(sp))
+            if h not in fields[rid]:
+                fields[rid].add(h)
+                if st == "VIC" and d >= since:
+                    runners.append((h, rid, d)); k += 1
+        log(f"entries with horseResult: {k} more VIC runners since {since}")
         # race cards the pipeline stored but has no result for yet still date what we know of the horse
         for h, d in c.execute("""select e.horse_id, max(m.meeting_date)::text from fk.entries e
                                  join fk.races r using (race_id) join fk.meetings m using (meeting_id) group by e.horse_id"""):
