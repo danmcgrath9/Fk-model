@@ -1,0 +1,16 @@
+{
+ "day": "Saturday",
+ "date": "14 November",
+ "meetings": [
+  {
+   "name": "Sandown",
+   "note": "",
+   "bets": [
+    {"race": 1, "time": "12:20PM", "horse": "Mr O'Reilly", "price": "$7.50", "rated": "$4.20", "units": "1.86u"},
+    {"race": 5, "time": "2:35PM", "horse": "Magna Sententia", "price": "$7.17", "rated": "$4.53", "units": "1.70u"},
+    {"race": 9, "time": "5:05PM", "horse": "Juja Kibo", "price": "$6", "rated": "$3.87", "units": "2.06u"}
+   ]
+  }
+ ],
+ "brand": false
+}
