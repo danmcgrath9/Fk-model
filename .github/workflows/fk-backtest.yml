@@ -38,6 +38,9 @@ on:
       store:
         description: 'files = compressed day files on the history release (no database space); database = the old way'
         default: 'files'
+      state:
+        description: 'files store only: Form King states, comma separated (VIC NSW QLD SA WA TAS ACT NT); each race keeps its own state'
+        default: 'VIC'
 
 concurrency:
   group: fk-daily-pull
@@ -119,7 +122,7 @@ jobs:
               python scripts/daily_pull.py --key live --yes --no-profiles --skip-held --no-past-events --date "$d" $TRACK_ARG ${{ github.event.inputs.track && format('"{0}"', github.event.inputs.track) || '' }} || echo "day $d failed; continuing"
             else
               BEFORE=$(md5sum "history/$d.jsonl.gz" 2>/dev/null | cut -d' ' -f1)
-              python scripts/history_pull.py --key live --yes --out history --date "$d" $TRACK_ARG ${{ github.event.inputs.track && format('"{0}"', github.event.inputs.track) || '' }} || echo "day $d failed; continuing"
+              python scripts/history_pull.py --key live --yes --out history --state "${{ github.event.inputs.state || 'VIC' }}" --date "$d" $TRACK_ARG ${{ github.event.inputs.track && format('"{0}"', github.event.inputs.track) || '' }} || echo "day $d failed; continuing"
               # Upload the day straight away: a paid-for day that only lives on this runner is
               # lost when the job ends. If it will not upload, stop spending.
               AFTER=$(md5sum "history/$d.jsonl.gz" 2>/dev/null | cut -d' ' -f1)

@@ -1,6 +1,10 @@
 """Pull one past day for the back-test into a compressed file, not the database.
 
   python scripts/history_pull.py --key live --yes --date 2026-04-12 --out history
+  python scripts/history_pull.py --key live --yes --date 2026-04-12 --state NSW,QLD --count-only   (1 credit: what it would cost)
+
+--state takes Form King's comma-separated list (VIC NSW QLD SA WA TAS ACT NT); each race keeps its own meeting's
+state in the day file, so the Victorian export (--state VIC) reads exactly what it read before.
 
 Flow, the same calls the back-test pull has always made: Get Meetings By Date (1 credit)
 -> per meeting Get Meeting Speedmaps (5) and per race Get Race Form at numBenchmarks=5
@@ -35,6 +39,8 @@ def main() -> None:
     ap.add_argument("--out", default="history", help="directory of day files")
     ap.add_argument("--track", help="only these tracks, comma separated prefixes")
     ap.add_argument("--yes", action="store_true", help="unattended: the credit cap and balance floor decide")
+    ap.add_argument("--count-only", action="store_true",
+                    help="make only the 1-credit meetings call, print what the day would cost, fetch nothing")
     a = ap.parse_args()
 
     target = date.fromisoformat(a.date)
@@ -86,6 +92,13 @@ def main() -> None:
     est = estimate([p for *_, p in planned])
     print(f"\n{len(meetings)} {a.state} meeting(s) on {target}: " + ", ".join(f"{F.meeting_track(m)} ({len(F.meeting_races(m))} races)" for m in meetings))
     print(est.render(ledger.balance() if live else None))
+    if a.count_only:
+        by_state = {}
+        for m in meetings:
+            by_state.setdefault(F.meeting_state(m) or "?", []).append(len(F.meeting_races(m)))
+        print("COUNT " + target.isoformat() + " " + " ".join(f"{st}:{len(v)}m/{sum(v)}r" for st, v in sorted(by_state.items()))
+              + f" credits:{est.total}")
+        return
     if not confirm("Proceed?", a.yes, estimated=est.total, balance=ledger.balance(), live=live):
         sys.exit("stopped")
 
