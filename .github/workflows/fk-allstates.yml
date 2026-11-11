@@ -1,13 +1,20 @@
 name: fk all states
 
-# The daily pull for the states other than Victoria (11 Nov 2026, founder: "we want to do a pull every morning of all
-# states", once the national archive is in and an all-states model has been tested). DORMANT: no schedule, run by
-# hand only, until the founder switches it on; Victoria's own pull, results and pricing are untouched by it.
+# The daily pull for the states other than Victoria. Switched ON 12 Nov 2026 (founder: "pull the data for today, friday
+# and saturday for all other states so we can keep data", ahead of going live with the other states on Fri 20 Nov and
+# the national archive arriving Fri 13 Nov, which ends the day before Dave produces it). Victoria's own pull, results
+# and pricing are untouched by it.
+#   11:15am Melbourne  that day's races for every other state (founder, 12 Nov: "start the pulls later, lets say
+#                      11:15am", so the riders are in), speedmaps once per meeting at this pull
+#   3:30am Melbourne   the previous day's results for the same states, one meeting summary each (after fk results)
 #   pull     every state's race fields for the day (2 credits a race, 5 a meeting for speedmaps, 1 for the list), with
 #            no horse profiles and no separate past-event copies (the model reads each runner's form from its entry)
 #   results  the next morning's results for the same states (5 credits a meeting)
 
 on:
+  schedule:
+    - cron: '15 0 * * *'    # 11:15 Melbourne in daylight saving (10:15 in standard time): the pull
+    - cron: '30 16 * * *'   # 03:30 Melbourne in daylight saving (02:30 in standard time): the results
   workflow_dispatch:
     inputs:
       mode:
@@ -39,7 +46,8 @@ jobs:
       FK_LEDGER: postgres
       PYTHONUNBUFFERED: '1'
       DATABASE_URL: ${{ secrets.FK_DATABASE_URL }}
-      FK_MAX_CREDITS_PER_RUN: ${{ vars.FK_MAX_CREDITS_PER_RUN || '600' }}
+      # a big Saturday across seven states is about 150 races (300 credits) and 25 meetings (125): room above that
+      FK_MAX_CREDITS_PER_RUN: '900'
       FK_MIN_BALANCE: ${{ vars.FK_MIN_BALANCE || '1000' }}
       FK_API_KEY: ${{ secrets.FK_API_KEY }}
     steps:
@@ -54,11 +62,15 @@ jobs:
         run: |
           LIVE_FLAG="$(echo "${{ vars.FK_LIVE }}" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
           [ "$LIVE_FLAG" = "true" ] || { echo "FK_LIVE is not true"; exit 1; }
+          STATES="${{ github.event.inputs.states || 'NSW,QLD,SA,WA,TAS,ACT,NT' }}"
+          MODE="${{ github.event.inputs.mode || 'pull' }}"
+          [ "${{ github.event.schedule }}" = "30 16 * * *" ] && MODE=results
           DATE_ARG=""; [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
-          if [ "${{ github.event.inputs.mode }}" = "results" ]; then
-            python scripts/fetch_results.py --key live --yes --state "${{ github.event.inputs.states }}" $DATE_ARG | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "mode $MODE, states $STATES" | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ "$MODE" = "results" ]; then
+            python scripts/fetch_results.py --key live --yes --state "$STATES" $DATE_ARG | tee -a "$GITHUB_STEP_SUMMARY" || true
           else
             DRY=""; [ "${{ github.event.inputs.dry_run }}" = "yes" ] && DRY="--dry-run"
-            python scripts/daily_pull.py --key live --yes --state "${{ github.event.inputs.states }}" --no-profiles --no-past-events $DATE_ARG $DRY | tee -a "$GITHUB_STEP_SUMMARY"
+            python scripts/daily_pull.py --key live --yes --state "$STATES" --no-profiles --no-past-events $DATE_ARG $DRY | tee -a "$GITHUB_STEP_SUMMARY"
           fi
           python scripts/db_size.py | tail -3 | tee -a "$GITHUB_STEP_SUMMARY"
