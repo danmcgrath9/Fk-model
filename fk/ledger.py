@@ -11,9 +11,10 @@ reconciliation adjustments), never stored as a mutable counter, so it cannot dri
 the rows that explain it. Test-key calls are recorded but never charged: key_kind='test'.
 
 The allowance resets on the subscription's billing day, not the 1st (FK_PERIOD_START_DAY,
-the day of the month the invoice was paid; 11 for this account). Spend is summed over the
-period by timestamp, so rows written when the ledger assumed calendar months still land in
-the right period. A period is keyed by the month it starts in: "2026-09" is 11 Sep to 10 Oct.
+the day of the month the invoice was paid; 12 for this account, per Form King's account page on
+11 Nov 2026). Spend is summed over the period by timestamp, so rows written when the ledger
+assumed calendar months still land in the right period. A period is keyed by the month it starts
+in: "2026-11" is 12 Nov to 11 Dec.
 """
 from __future__ import annotations
 

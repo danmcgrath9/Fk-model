@@ -53,9 +53,12 @@ def load_settings(env_file: str | os.PathLike | None = None) -> Settings:
         base_url=env("FK_BASE_URL") or None,
         database_url=env("DATABASE_URL") or None,
         ledger_path=path("FK_LEDGER_PATH", "credits.sqlite"),
-        monthly_credits=int(env("FK_MONTHLY_CREDITS", "20000")),
-        # The allowance resets on the day of the month the subscription invoice was paid
-        # (11 Sep 2026 for this account), not on the 1st.
-        period_start_day=int(env("FK_PERIOD_START_DAY", "11")),
+        # Pro from 12 Nov 2026: 30,000 bundled credits a month, forfeited at the reset (a monthly plan carries
+        # nothing forward). The 5,000 top-up credits never expire and are spent only once the bundle is gone; the
+        # ledger leaves them out on purpose, so the balance floor stops unattended runs before they reach them.
+        monthly_credits=int(env("FK_MONTHLY_CREDITS", "30000")),
+        # The allowance resets on the subscription's billing day, not on the 1st. Form King's account page
+        # (11 Nov 2026) puts it on the 12th; the 11 used before was a day early.
+        period_start_day=int(env("FK_PERIOD_START_DAY", "12")),
         credits_overrides_path=path("FK_CREDITS_PATH", "credits.yaml"),
     )
