@@ -19,7 +19,9 @@ for line in open(a.results):
     def num(x):
         try: return float(x)
         except ValueError: return None
-    res[(int(rn), norm(name))] = (fin if fin != "None" else None, num(sp), num(bsp))
+    b = num(bsp)
+    b = b if b is not None and b > 1 else None   # Form King writes a missing Betfair SP as 0.0 (Ballarat R6-R8, 11 Nov 2026): void, not "outside the band"
+    res[(int(rn), norm(name))] = (fin if fin != "None" else None, num(sp), b)
 lays, void, skipped = [], [], 0
 for r in csv.DictReader(open(a.lays)):
     rn = int(r["race"]); note = (r.get("note") or "").strip()

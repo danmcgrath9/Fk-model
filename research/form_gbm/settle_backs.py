@@ -6,13 +6,15 @@ import argparse, csv, re
 norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower()); COMM = 0.08
 ap = argparse.ArgumentParser(); ap.add_argument("backs"); ap.add_argument("results"); ap.add_argument("--unit", type=float, default=100.0)
 a = ap.parse_args()
-res, favbsp = {}, {}
+res, favbsp, nobsp = {}, {}, set()
 for line in open(a.results):
     m = re.match(r"R(\d+)\s+(.+?)\s+finish\s+(\S+)\s+SP\s+(\S+)\s+BSP\s+(\S+)", line.strip())
     if not m: continue
     rn, name, fin, _, bsp = m.groups()
     try: bsp = float(bsp)
     except ValueError: continue
+    if not bsp > 1:   # a missing Betfair SP reads 0.0 (Ballarat R6-R8, 11 Nov 2026): no favourite can be named from it
+        nobsp.add(int(rn)); continue
     res[(int(rn), norm(name))] = (fin if fin != "None" else None, bsp)
     if fin is not None and fin != "None": favbsp[int(rn)] = min(favbsp.get(int(rn), 1e9), bsp)
 bets = []
@@ -28,4 +30,5 @@ for r in csv.DictReader(open(a.backs)):
 for rn, h, o, hi, bsp, fin, pl in bets:
     print(f"R{rn} {h:<22} ours ${o:5.2f}  back if fav $4 to ${hi:.2f}  BSP ${bsp:.2f}  finish {fin:>3}  {pl:+.2f}u")
 n = len(bets); w = sum(1 for b in bets if b[6] > 0); tot = sum(b[6] for b in bets)
-print(f"{n} backs, {w} winners, {tot:+.2f}u (${tot*a.unit:+,.0f} at ${a.unit:g} a unit)")
+print(f"{n} backs, {w} winners, {tot:+.2f}u (${tot*a.unit:+,.0f} at ${a.unit:g} a unit)"
+      + (f"; races with no Betfair SP, not settled: {', '.join(f'R{r}' for r in sorted(nobsp))}" if nobsp else ""))

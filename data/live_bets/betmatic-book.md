@@ -1163,3 +1163,16 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - Back book: no BSP favourite inside its range. 0 backs.
 - Rule tracker (research/form_gbm/track_rules.py, 47 meetings): the ten paper rules +261.74u since 9 Oct; Mornington alone
   -12.72u (Molesworth hit both the $8-$12 lay rules; the $12-$15 drift lay -11.66u).
+
+## Wednesday 11 Nov Ballarat settled (Form King results, Thu 9:50am; paper, bot off)
+- Open book: Goodness R1 3.69u $3.90, TAB's 33c deduction -> $2.94, WON (SP $2.05, BSP $2.24) +7.17u; Ladhar R4 3.32u
+  $4.60, 4th (SP $5.50, BSP $7) -3.32u; Tempt The Gods R7 1.01u $13, 9th (SP $9.50; R7's deduction not reported) -1.01u.
+  +2.84u (+$142).
+- Twitter (Mercer card, current prices with deductions, half units): Goodness 1.85u $2.80 -> $2.21 won +2.23u; Ladhar
+  1.66u, Tempt The Gods 0.51u lost. 4.02u, +0.06u.
+- Lay book (s6x, $200 a lay): races 1-5, 5 lays, 0 winners, +4.60u (+$920; +$230 at Friday's $50). Races 6-8 NOT SETTLED:
+  Form King has no Betfair SP for them (written as 0.0, still missing after a re-pull at 9:45am Thu). settle_lays.py and
+  settle_backs.py now treat a missing BSP as void, not as "outside the band", which is how a 0.0 would have read.
+- Back book: no BSP favourite inside its range in races 1-5; races 6-8 not settled (no BSP).
+- Rule tracker (research/form_gbm/track_rules.py, 48 meetings): +269.02u since 9 Oct; Ballarat races 1-5 +7.28u (10 bets,
+  all lost by the horse, one $4-$7 firm back lost); since 10 Nov 31 bets -5.44u.
