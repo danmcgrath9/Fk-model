@@ -12,12 +12,19 @@ For a runner on race day D, only race-mates whose next run was BEFORE D count, s
   fl1_ahead_ae         the same, only the horses that beat it (it lost to good horses)
   fl1_wins             race-mates that won next time
   fl3_n, fl3_ae        the last three races pooled
-    python3.13 t_formlines_ab.py DATASET.npz FLROWS.md"""
+    python3.13 t_formlines_ab.py DATASET.npz FLROWS.md [B]
+B (11 Nov 2026) is the night's second fold: trained on Jul-Dec 2025, scored on 1 Jan - 2 Jun 2026."""
 import collections, hashlib, math, sys, time
 import numpy as np
 import lab, bench as b, price_day as pdm, stage2, stake_rule
 
 D = b.load(sys.argv[1]); ri = D["race_idx"]; nR = D["n_races"]
+FOLD = sys.argv[3] if len(sys.argv) > 3 else "A"
+CUT = {"A": "2026-06-03", "B": "2026-01-01"}[FOLD]
+PERIODS = {"A": (("3 Jun - 8 Oct", "2026-06-03", "2026-10-09"), ("9 Oct - 9 Nov (live weeks)", "2026-10-09", "2027-01-01"),
+                 ("all 3 Jun - 9 Nov", "2026-06-03", "2027-01-01")),
+           "B": (("1 Jan - 17 Mar", "2026-01-01", "2026-03-18"), ("18 Mar - 2 Jun", "2026-03-18", "2026-06-03"),
+                 ("all 1 Jan - 2 Jun", "2026-01-01", "2026-06-03"))}[FOLD]
 F, nm = pdm.inputs()
 TR = stage2.trials(D["P"], D["past_fields"], ri); SEC = stage2.sections(D["S"], D["sec_fields"], D["P"], D["past_fields"], ri, nR)
 F = np.hstack([F, TR, SEC]).astype(np.float32); F[~np.isfinite(F)] = np.nan
@@ -73,7 +80,7 @@ for lo, hi in (("2025-07-01", "2026-01-01"), ("2026-01-01", "2026-06-03"), ("202
 
 # does the raw figure say anything on its own? win rate against SP in the training races, by fl1_ae band
 won = np.asarray(D["finish"], float) == 1; sp = np.asarray(D["sp"], float)
-okm = np.isfinite(sp) & (sp > 1) & (date < "2026-06-03") & (FL[:, 0] >= 3)
+okm = np.isfinite(sp) & (sp > 1) & (date < CUT) & (FL[:, 0] >= 3)
 print("\nTraining races, runners with 3+ race-mates known: winners against SP expected, by last-start form line")
 for lo, hi in ((-9, -0.3), (-0.3, -0.1), (-0.1, 0.1), (0.1, 0.3), (0.3, 9)):
     m = okm & (FL[:, 1] >= lo) & (FL[:, 1] < hi)
@@ -82,7 +89,7 @@ for lo, hi in ((-9, -0.3), (-0.3, -0.1), (-0.1, 0.1), (0.1, 0.3), (0.3, 9)):
 
 # ---- train both arms, score the holdout ----------------------------------------------------------------------------
 lab.D = D; lab.ri0 = ri
-races = np.arange(nR); train = races[rdate < "2026-06-03"]; q = D["q"]
+races = np.arange(nR); train = races[rdate < CUT]; q = D["q"]
 
 
 def fit(FF, NN, label, seeds=3):
@@ -95,7 +102,7 @@ def fit(FF, NN, label, seeds=3):
 
 P0, _ = fit(F, nm, "base")
 F1 = np.hstack([F, FL]); P1, bst1 = fit(F1, nm + fln, "+form lines")
-np.savez("formlines_ab_preds.npz", p0=P0, p1=P1)
+np.savez(f"formlines_ab_preds_{FOLD}.npz", p0=P0, p1=P1)
 imp = bst1.feature_importance("gain"); tot = imp.sum()
 print("form-line share of the model's gain:", ", ".join(f"{n} {100*imp[len(nm)+k]/tot:.2f}%" for k, n in enumerate(fln)))
 
@@ -133,8 +140,8 @@ def ll(p, hm):
 
 
 print("\n| period | inputs | KL to BSP | log loss (winners) | bets | winners | staked | profit | ROI |\n|---|---|---|---|---|---|---|---|---|")
-for pname, hm in (("3 Jun - 8 Oct", (date >= "2026-06-03") & (date < "2026-10-09")), ("9 Oct - 9 Nov (live weeks)", date >= "2026-10-09"),
-                  ("all 3 Jun - 9 Nov", date >= "2026-06-03")):
+for pname, lo, hi in PERIODS:
+    hm = (date >= lo) & (date < hi)
     for k, p in (("current inputs", P0), ("+ form lines", P1)):
         n, w, st, pl = run(p, hm)
         print(f"| {pname} | {k} | {kl(p, hm):.4f} | {ll(p, hm):.4f} | {n} | {int(w)} | {st:.1f}u | {pl:+.1f}u | {pl/max(st,1e-9):+.1%} |")

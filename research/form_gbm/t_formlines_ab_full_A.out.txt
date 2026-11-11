@@ -1,0 +1,36 @@
+51298 runners, 5178 races, 809 inputs
+105670 stored runs in 21078 races
+  fl1_n          finite 0.93  mean +3.596  sd 2.974
+  fl1_ae         finite 0.76  mean -0.117  sd 0.354
+  fl1_behind_ae  finite 0.56  mean -0.076  sd 0.271
+  fl1_ahead_ae   finite 0.56  mean -0.102  sd 0.339
+  fl1_wins       finite 0.76  mean +0.489  sd 0.724
+  fl3_n          finite 0.93  mean +14.822  sd 6.600
+  fl3_ae         finite 0.91  mean -0.195  sd 0.440
+  2025-07-01..2026-01-01: runners 19861, with 1+ race-mate known 0.76, mean race-mates 3.50, last-3 pooled 14.20
+  2026-01-01..2026-06-03: runners 15771, with 1+ race-mate known 0.76, mean race-mates 3.65, last-3 pooled 15.08
+  2026-06-03..2026-10-09: runners 12207, with 1+ race-mate known 0.75, mean race-mates 3.67, last-3 pooled 15.39
+  2026-10-09..2027-01-01: runners 3459, with 1+ race-mate known 0.75, mean race-mates 3.63, last-3 pooled 15.23
+
+Training races, runners with 3+ race-mates known: winners against SP expected, by last-start form line
+  fl1_ae -9.0..-0.3:  7507 runners,  697 won, expected  903.9, A/E 0.77
+  fl1_ae -0.3..-0.1:  3325 runners,  338 won, expected  405.4, A/E 0.83
+  fl1_ae -0.1..+0.1:  2357 runners,  252 won, expected  291.4, A/E 0.86
+  fl1_ae +0.1..+0.3:  2896 runners,  300 won, expected  376.3, A/E 0.80
+  fl1_ae +0.3..+9.0:  2826 runners,  305 won, expected  352.1, A/E 0.87
+base seed 0 76s
+base seed 1 75s
+base seed 2 80s
++form lines seed 0 68s
++form lines seed 1 72s
++form lines seed 2 72s
+form-line share of the model's gain: fl1_n 0.04%, fl1_ae 0.08%, fl1_behind_ae 0.05%, fl1_ahead_ae 0.08%, fl1_wins 0.18%, fl3_n 0.12%, fl3_ae 0.04%
+
+| period | inputs | KL to BSP | log loss (winners) | bets | winners | staked | profit | ROI |
+|---|---|---|---|---|---|---|---|---|
+| 3 Jun - 8 Oct | current inputs | 0.0916 | 1.9087 | 1418 | 231 | 2861.2u | +890.7u | +31.1% |
+| 3 Jun - 8 Oct | + form lines | 0.0912 | 1.9070 | 1419 | 239 | 2854.2u | +981.8u | +34.4% |
+| 9 Oct - 9 Nov (live weeks) | current inputs | 0.0992 | 1.8931 | 353 | 65 | 730.3u | +347.1u | +47.5% |
+| 9 Oct - 9 Nov (live weeks) | + form lines | 0.0978 | 1.8995 | 353 | 62 | 737.2u | +318.9u | +43.3% |
+| all 3 Jun - 9 Nov | current inputs | 0.0932 | 1.9053 | 1771 | 296 | 3591.5u | +1237.8u | +34.5% |
+| all 3 Jun - 9 Nov | + form lines | 0.0927 | 1.9053 | 1772 | 301 | 3591.5u | +1300.7u | +36.2% |

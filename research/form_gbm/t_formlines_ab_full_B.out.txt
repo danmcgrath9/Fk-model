@@ -1,0 +1,36 @@
+51298 runners, 5178 races, 809 inputs
+105670 stored runs in 21078 races
+  fl1_n          finite 0.93  mean +3.596  sd 2.974
+  fl1_ae         finite 0.76  mean -0.117  sd 0.354
+  fl1_behind_ae  finite 0.56  mean -0.076  sd 0.271
+  fl1_ahead_ae   finite 0.56  mean -0.102  sd 0.339
+  fl1_wins       finite 0.76  mean +0.489  sd 0.724
+  fl3_n          finite 0.93  mean +14.822  sd 6.600
+  fl3_ae         finite 0.91  mean -0.195  sd 0.440
+  2025-07-01..2026-01-01: runners 19861, with 1+ race-mate known 0.76, mean race-mates 3.50, last-3 pooled 14.20
+  2026-01-01..2026-06-03: runners 15771, with 1+ race-mate known 0.76, mean race-mates 3.65, last-3 pooled 15.08
+  2026-06-03..2026-10-09: runners 12207, with 1+ race-mate known 0.75, mean race-mates 3.67, last-3 pooled 15.39
+  2026-10-09..2027-01-01: runners 3459, with 1+ race-mate known 0.75, mean race-mates 3.63, last-3 pooled 15.23
+
+Training races, runners with 3+ race-mates known: winners against SP expected, by last-start form line
+  fl1_ae -9.0..-0.3:  4158 runners,  373 won, expected  482.8, A/E 0.77
+  fl1_ae -0.3..-0.1:  1908 runners,  186 won, expected  224.3, A/E 0.83
+  fl1_ae -0.1..+0.1:  1287 runners,  142 won, expected  158.0, A/E 0.90
+  fl1_ae +0.1..+0.3:  1590 runners,  170 won, expected  203.5, A/E 0.84
+  fl1_ae +0.3..+9.0:  1536 runners,  157 won, expected  189.6, A/E 0.83
+base seed 0 48s
+base seed 1 45s
+base seed 2 45s
++form lines seed 0 45s
++form lines seed 1 44s
++form lines seed 2 44s
+form-line share of the model's gain: fl1_n 0.03%, fl1_ae 0.06%, fl1_behind_ae 0.06%, fl1_ahead_ae 0.09%, fl1_wins 0.22%, fl3_n 0.11%, fl3_ae 0.05%
+
+| period | inputs | KL to BSP | log loss (winners) | bets | winners | staked | profit | ROI |
+|---|---|---|---|---|---|---|---|---|
+| 1 Jan - 17 Mar | current inputs | 0.0971 | 1.8307 | 822 | 165 | 1791.4u | +941.4u | +52.5% |
+| 1 Jan - 17 Mar | + form lines | 0.0973 | 1.8311 | 823 | 163 | 1748.8u | +911.5u | +52.1% |
+| 18 Mar - 2 Jun | current inputs | 0.0969 | 1.8386 | 945 | 155 | 2054.3u | +472.5u | +23.0% |
+| 18 Mar - 2 Jun | + form lines | 0.0963 | 1.8419 | 919 | 157 | 2011.0u | +585.2u | +29.1% |
+| all 1 Jan - 2 Jun | current inputs | 0.0970 | 1.8348 | 1767 | 320 | 3845.7u | +1413.8u | +36.8% |
+| all 1 Jan - 2 Jun | + form lines | 0.0968 | 1.8367 | 1742 | 320 | 3759.8u | +1496.7u | +39.8% |
