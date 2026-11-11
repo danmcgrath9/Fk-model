@@ -1,126 +1,125 @@
-# Sandown Sat 14 Nov (Hillside, R7 on Lakeside), official going, final fields Wed 11:31am, no market yet; PROVISIONAL: 21 of 125 riders to come, re-price at 12:30
+# Sandown Sat 14 Nov (R7 on Lakeside), Dead, final fields, riders in (Wed 5:40pm re-price)
+1, Affluential, 0, 0
+1, Bur Dubai, 0, 0
+1, Cable Dancer, 0, 0
+1, Dad And Dave, 0, 0
+1, Federer, 0, 0
+1, Fiorowngood, 0, 0
 1, House Of Lords, 0, 0
+1, Ichnusa, 0, 0
+1, Johnich, 0, 0
 1, Mr O'reilly, 0, 0
 1, Shaiyhar, 0, 0
-1, Ichnusa, 0, 0
-1, Affluential, 0, 0
-1, Federer, 0, 0
-1, Cable Dancer, 0, 0
-1, Bur Dubai, 0, 0
-1, Fiorowngood, 0, 0
-1, Johnich, 0, 0
-1, Dad And Dave, 0, 0
 1, Suffolk Star, 0, 0
-2, Nation State, 0, 0
-2, Suspect, 0, 0
-2, Befuddle, 0, 0
-2, Karren, 0, 0
-2, Skippers Canyon, 0, 0
-2, Chicago Blues, 0, 0
-2, Parvenu, 0, 0
-2, Ruska Roma, 0, 0
-2, Mometz, 0, 0
-2, Fluent, 0, 0
-2, Just A Journey, 0, 0
-2, Charming Nic, 0, 0
 2, Alero, 0, 0
 2, Bacash, 0, 0
-3, Porter, 0, 0
-3, Impulsive Reaction, 0, 0
+2, Befuddle, 0, 0
+2, Charming Nic, 0, 0
+2, Chicago Blues, 0, 0
+2, Fluent, 0, 0
+2, Just A Journey, 0, 0
+2, Karren, 0, 0
+2, Mometz, 0, 0
+2, Nation State, 0, 0
+2, Parvenu, 0, 0
+2, Ruska Roma, 0, 0
+2, Skippers Canyon, 0, 0
+3, Currawood, 0, 0
+3, El Rocko, 0, 0
+3, Ferivia, 0, 0
 3, Fundamental Nature, 0, 0
 3, Grid Girl, 0, 0
-3, Ferivia, 0, 0
-3, El Rocko, 0, 0
+3, Impulsive Reaction, 0, 0
 3, Oak Beach, 0, 0
+3, Porter, 0, 0
 3, Roadcone, 0, 0
-3, Currawood, 0, 0
-4, Nearing Liberty, 0, 0
-4, The Muffin Man, SCR
-4, Two Wolves, 0, 0
-4, Rick's Cafe, 0, 0
-4, Terrortorian, 0, 0
-4, Jackknife, 0, 0
-4, Revolver, 0, 0
-4, Killenaule, 0, 0
-4, Flag Flyer, 0, 0
+4, Brave Danza, 0, 0
+4, Coco Jen, 0, 0
+4, Dragoon, 0, 0
+4, Durban Harbour, 0, 0
 4, Falls Of Acharn, 0, 0
+4, Flag Flyer, 0, 0
 4, Geneva, 0, 0
+4, Jackknife, 0, 0
+4, Killenaule, 0, 0
+4, Nearing Liberty, 0, 0
 4, Oceana Dream, 0, 0
 4, Politely Dun, 0, 0
-4, Coco Jen, 0, 0
-4, Durban Harbour, 0, 0
-4, Dragoon, 0, 0
-4, Brave Danza, 0, 0
+4, Revolver, 0, 0
+4, Rick's Cafe, 0, 0
+4, Terrortorian, 0, 0
+4, The Muffin Man, SCR
+4, Two Wolves, 0, 0
+5, Anglais, 0, 0
 5, Consulate, 0, 0
+5, Fast Freddie, 0, 0
+5, Harry Lime, 0, 0
+5, Hydro Rush, 0, 0
 5, Katoto, 0, 0
 5, Magna Sententia, 0, 0
-5, Anglais, 0, 0
-5, Viking Kid, 0, 0
-5, Harry Lime, 0, 0
-5, Fast Freddie, 0, 0
+5, Meness, 0, 0
+5, Milsons Point, 0, 0
 5, Star Of Macedon, 0, 0
 5, Strong Tempo, 0, 0
-5, Milsons Point, 0, 0
-5, Hydro Rush, 0, 0
-5, Meness, 0, 0
-6, Tennessee Spirit, 0, 0
-6, Pallaton, 0, 0
+5, Viking Kid, 0, 0
 6, Bred 'em All, 0, 0
-6, Lake Forest, 0, 0
-6, Thanks Gorgeous, 0, 0
-6, Oak Hill, 0, 0
-6, Saluted, 0, 0
-6, Unflinching, 0, 0
-6, Philosopher, 0, 0
-6, Mcgaw, 0, 0
 6, Don't Hope Do, 0, 0
-7, Nishioka, 0, 0
-7, Rubi's Choice, 0, 0
-7, Calamari Ring, 0, 0
-7, Lady Catalina, 0, 0
-7, Natural Fling, 0, 0
-7, Sequinned, 0, 0
-7, Semantics, 0, 0
-7, Angels Fury, 0, 0
+6, Lake Forest, 0, 0
+6, Mcgaw, 0, 0
+6, Oak Hill, 0, 0
+6, Pallaton, 0, 0
+6, Philosopher, 0, 0
+6, Saluted, 0, 0
+6, Tennessee Spirit, 0, 0
+6, Thanks Gorgeous, 0, 0
+6, Unflinching, 0, 0
 7, Affari, 0, 0
 7, Almost An Angel, 0, 0
+7, Angels Fury, 0, 0
 7, Aroused, 0, 0
-7, Ciaron's Star, 0, 0
-7, Chayan, 0, 0
 7, Caddington, 0, 0
+7, Calamari Ring, 0, 0
 7, Cavill Avenue, 0, 0
-8, Desert Lightning, 0, 0
+7, Chayan, 0, 0
+7, Ciaron's Star, 0, 0
+7, Lady Catalina, 0, 0
+7, Natural Fling, 0, 0
+7, Nishioka, 0, 0
+7, Rubi's Choice, 0, 0
+7, Semantics, 0, 0
+7, Sequinned, 0, 0
 8, Angel Capital, 0, 0
-8, Jimmysstar, 0, 0
 8, Beiwacht, 0, 0
+8, Desert Lightning, 0, 0
+8, Jimmysstar, 0, 0
 8, Pericles, 0, 0
-8, Splash Back, 0, 0
 8, Shadhavar, 0, 0
+8, Splash Back, 0, 0
 8, War Machine, 0, 0
-9, Juja Kibo, 0, 0
-9, Vauban, 0, 0
-9, Smokin' Romans, 0, 0
-9, She's A Hustler, 0, 0
-9, Middle Earth, 0, 0
-9, Torranzino, 0, 0
-9, Darkbonee, 0, 0
-9, Kingswood, 0, 0
 9, Asterix, 0, 0
-9, Small Fry, 0, 0
-9, Strictly Business, 0, 0
+9, Darkbonee, 0, 0
+9, Juja Kibo, 0, 0
+9, Kingswood, 0, 0
 9, Knight's Choice, 0, 0
+9, Middle Earth, 0, 0
+9, She's A Hustler, 0, 0
+9, Small Fry, 0, 0
+9, Smokin' Romans, 0, 0
+9, Strictly Business, 0, 0
+9, Torranzino, 0, 0
 9, Travolta, 0, 0
+9, Vauban, 0, 0
+10, Astral Flame, 0, 0
+10, Betwitchery, 0, 0
+10, Bossy Benita, 0, 0
+10, Cilacap, 0, 0
+10, Concord Connie, 0, 0
+10, Davida, 0, 0
+10, Merrigold, 0, 0
+10, Naraghi, 0, 0
+10, On Display, 0, 0
+10, Russian Choice, 0, 0
 10, Savitri, 0, 0
 10, Superfabulistic, 0, 0
-10, Davida, 0, 0
-10, Concord Connie, 0, 0
-10, Bossy Benita, 0, 0
-10, Merrigold, 0, 0
-10, On Display, 0, 0
 10, Terilee, 0, 0
-10, Russian Choice, 0, 0
 10, Tomato Toastie, 0, 0
-10, Cilacap, 0, 0
-10, Naraghi, 0, 0
-10, Betwitchery, 0, 0
-10, Astral Flame, 0, 0
