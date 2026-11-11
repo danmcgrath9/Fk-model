@@ -262,3 +262,6 @@ data/live_bets/rule-tracker.csv), reported in the 9:30am settle message, and jud
 Added 10 Nov (research/form_gbm/t_back_rules.py: 49 back rules, 2 held, about 6 by luck): 9. Back $4-$7 firmed 1.5x from the
 open. 10. Back any $4-$7 runner when ours >= 1.6x BSP (the favourite rule widened).
 Which of these go live on Betfair from Fri 13 Nov is the founder's call.
+
+## Bounce block OFF (11 Nov 2026)
+Founder, on the night audit (research/form_gbm/night/README.md 3.9: the bets the bounce block stops made +22% at the open on 11 walk-forward months and +24% on the 16-month blend; they lose only at BSP): "lol what the fuck then we should be betting them". research/form_gbm/fu_json.py BOUNCE_BLOCK = False from the Sandown, Pakenham and Geelong sheets of 11 Nov. Flat since June (+2%, -7%), so watch it live.

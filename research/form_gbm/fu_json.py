@@ -2,12 +2,13 @@
 short of that start's trip, or whose trial since it finished in the bottom half of the field. Value bets on them lost
 25.6% at BSP (198 holdout bets) against -3.2% for the rest. Writes {"race|horse": reason}.
 Also (4 Oct 2026, t_pros.py, round-2 pro ideas), each a no-bet rule for value bets:
-  bounce (Ragozin/Thoro-Graph): last start a new career-best rating by 3+ points (190 bets, -40% at BSP); removed 13 Oct, restored 20 Oct 2026 to match live
+  bounce (Ragozin/Thoro-Graph): last start a new career-best rating by 3+ points (190 bets, -40% at BSP); removed 13 Oct, restored 20 Oct, OFF again 11 Nov 2026 (founder)
   second-up after a first-up run that placed or was within 2L: EARLY-ONLY tag, see below (not a block)
   (down 2kg+ in weight: removed 7 Oct 2026, did not replicate out of sample, t_weightdrop.py)
 Value bets clear of all three made +8.2% at BSP (1,500 bets; +8.5% older half, +7.8% newer).
 python fu_json.py UP_NPZ OUT_JSON"""
 import numpy as np, json, sys
+BOUNCE_BLOCK = False   # 11 Nov 2026, founder: bet them (see below)
 U=np.load(sys.argv[1],allow_pickle=True); cols={str(x):i for i,x in enumerate(U["cols"])}; P=U["P"].astype(float); f={str(n):i for i,n in enumerate(U["past_fields"])}; ri=U["race_idx"]
 tr=P[:,:,f["trial"]]==1; fin=P[:,:,f["finish"]]; days=P[:,:,f["days_before"]]; run=P[:,:,f["runners"]]; dist=P[:,:,f["distance"]]; rat=P[:,:,f["rating"]]; wt=P[:,:,f["weight"]]; mg=P[:,:,f["margin"]]; prep=P[:,:,f["prep"]]
 real=~tr&np.isfinite(fin)&(fin>0)
@@ -23,7 +24,10 @@ for k in range(len(ri)):
         # the live order rule) found the bets it stops make 0% at the open (-0.3u on 278u) and -20% at BSP, with no
         # better split: under 5 career starts 0% / -23% BSP, 5+ starts back within 21 days +14% / -5% BSP. Restored so
         # the repo matches what has been betting.
-        if np.isfinite(best) and rat[k,j]>=best+3: reasons.append(f"bounce: last start a new peak ({rat[k,j]:.1f} vs best {best:.1f})")
+        # BOUNCE BLOCK OFF (11 Nov 2026, founder, on the night audit night/strat5.py: the bets it stops made +22% at the open
+        # on 11 walk-forward months and +24% on the 16-month blend, losing only at BSP): "lol ... we should be betting them".
+        # Flat since June (+2%, -7%), so watch the live results. To restore, set BOUNCE_BLOCK = True.
+        if BOUNCE_BLOCK and np.isfinite(best) and rat[k,j]>=best+3: reasons.append(f"bounce: last start a new peak ({rat[k,j]:.1f} vs best {best:.1f})")
     # second-up after a good first-up: EARLY-ONLY, not a block (4 Oct 2026, t_secup_open.py). The open under-rates them
     # (14% implied vs 19.5% winners) and they firm 21% to the jump: +17% at the open, -32% at BSP. Allowed at $8 or
     # shorter at the open (short ones +79%/+36%), blocked above $8 (-10% at the open, -58% at BSP). Bet at the open or not at all.

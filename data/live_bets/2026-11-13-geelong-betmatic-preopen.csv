@@ -16,6 +16,11 @@ date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollar
 2026-11-13,Geelong,2,,5,Resonant,WIN,6.04,13.96,2.04,102,1 of 3,2.04u,4.65,
 2026-11-13,Geelong,2,,5,Resonant,WIN,7.55,13.96,0.45,22,2 of 3,2.49u,4.65,
 2026-11-13,Geelong,2,,5,Resonant,WIN,10.24,13.96,2.49,125,3 of 3,4.98u,4.65,opens $10.24+ (2.2x ours): stake doubled
+2026-11-13,Geelong,2,,10,Voltrix,WIN,3.09,3.99,4.02,201,1 of 2,4.02u,2.59,opens under $4: edge 1.15
+2026-11-13,Geelong,2,,10,Voltrix,WIN,3.86,3.99,0.96,48,2 of 2,4.98u,2.59,opens under $4: edge 1.15
+2026-11-13,Geelong,2,,10,Voltrix,WIN,4.00,7.76,4.35,217,1 of 3,4.35u,2.59,
+2026-11-13,Geelong,2,,10,Voltrix,WIN,4.07,7.76,0.83,42,2 of 3,5.18u,2.59,
+2026-11-13,Geelong,2,,10,Voltrix,WIN,5.69,7.76,4.82,241,3 of 3,10.00u,2.59,opens $5.69+ (2.2x ours): stake doubled
 2026-11-13,Geelong,3,,2,Chantess,WIN,20.22,44.05,0.55,28,1 of 2,0.55u,14.68,
 2026-11-13,Geelong,3,,2,Chantess,WIN,25.27,44.05,0.14,7,2 of 2,0.69u,14.68,
 2026-11-13,Geelong,3,,3,Contarini,WIN,19.52,42.59,0.57,28,1 of 2,0.57u,14.20,
@@ -61,8 +66,14 @@ date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollar
 2026-11-13,Geelong,7,,9,Carriedo,WIN,4.00,7.97,4.19,210,1 of 3,4.19u,2.66,
 2026-11-13,Geelong,7,,9,Carriedo,WIN,4.19,7.97,0.80,40,2 of 3,4.99u,2.66,
 2026-11-13,Geelong,7,,9,Carriedo,WIN,5.85,7.97,4.99,250,3 of 3,9.98u,2.66,opens $5.85+ (2.2x ours): stake doubled
+2026-11-13,Geelong,7,,6,Neziha,WIN,6.14,14.18,2.00,100,1 of 3,2.00u,4.73,
+2026-11-13,Geelong,7,,6,Neziha,WIN,7.67,14.18,0.45,22,2 of 3,2.45u,4.73,
+2026-11-13,Geelong,7,,6,Neziha,WIN,10.40,14.18,2.45,123,3 of 3,4.90u,4.73,opens $10.40+ (2.2x ours): stake doubled
 2026-11-13,Geelong,7,,3,Ole Royale,WIN,12.18,27.19,0.94,47,1 of 2,0.94u,9.06,
 2026-11-13,Geelong,7,,3,Ole Royale,WIN,15.22,27.19,0.23,12,2 of 2,1.17u,9.06,
+2026-11-13,Geelong,8,,2,Jackpot Park,WIN,4.57,10.70,2.84,142,1 of 3,2.84u,3.57,EARLY: $15 or shorter only
+2026-11-13,Geelong,8,,2,Jackpot Park,WIN,5.71,10.70,0.60,30,2 of 3,3.44u,3.57,EARLY: $15 or shorter only
+2026-11-13,Geelong,8,,2,Jackpot Park,WIN,7.85,10.70,3.44,172,3 of 3,6.88u,3.57,EARLY: $15 or shorter only; opens $7.85+ (2.2x ours): stake doubled
 2026-11-13,Geelong,8,,5,Jetsetter Jack,WIN,12.11,27.05,0.95,48,1 of 2,0.95u,9.02,
 2026-11-13,Geelong,8,,5,Jetsetter Jack,WIN,15.14,27.05,0.22,11,2 of 2,1.17u,9.02,
 2026-11-13,Geelong,8,,1,Whiskey Joe,WIN,4.55,10.65,2.86,143,1 of 3,2.86u,3.55,
