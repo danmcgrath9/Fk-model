@@ -26,6 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _common import load_settings  # noqa: E402
 from fk import backtest as B  # noqa: E402
 from fk import fields as F  # noqa: E402
+from fk import states as ST  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 N_PAST = 10
@@ -272,17 +273,18 @@ def upcoming_rows(db, day: str, track: str | None, state: str) -> list[dict]:
     races = db.conn.execute(
         """select r.race_id, m.meeting_date, m.track, r.distance_m, (r.raw->>'lws')::numeric,
                   sm.runners, sm.raw->'expectedTempo',
-                  nullif(trim(concat(r.raw->>'going', ' ', r.raw->>'goingNumber')), ''), r.race_number
+                  nullif(trim(concat(r.raw->>'going', ' ', r.raw->>'goingNumber')), ''), r.race_number, m.state
            from fk.races r join fk.meetings m using (meeting_id)
                 left join fk.speedmaps sm on sm.race_id = r.race_id
-           where m.meeting_date = %s and m.state = %s and (%s::text is null or m.track ilike %s)
-           order by r.race_number""", (day, state, track, track)).fetchall()
+           where m.meeting_date = %s and (%s::text[] is null or m.state = any(%s::text[]))
+             and (%s::text is null or m.track ilike %s)
+           order by m.track, r.race_number""", (day, ST.sql_param(state), ST.sql_param(state), track, track)).fetchall()
     out = []
     for r in races:
         ents = [x[0] for x in db.conn.execute("select e.raw from fk.entries e where e.race_id = %s order by e.barrier nulls last", (r[0],))]
         out.append({"race_id": r[0], "date": str(r[1]), "track": r[2], "distance_m": r[3],
                     "lws": float(r[4]) if r[4] is not None else None, "entries": ents, "speedmap": r[5], "tempo": r[6],
-                    "going": r[7], "race_number": r[8]})
+                    "going": r[7], "race_number": r[8], "state": r[9]})
     return out
 
 
@@ -309,8 +311,10 @@ def override_going(rows: list[dict], going: str) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--state", default="VIC")
-    ap.add_argument("--history", default=str(ROOT / "history"))
+    ap.add_argument("--state", default="VIC",
+                    help="state(s), comma separated as Form King writes them, or ALL for the Australian states (11 Nov 2026)")
+    ap.add_argument("--history", default=str(ROOT / "history"),
+                    help="history folder(s), comma separated: e.g. history,history_states (other states from the archive)")
     ap.add_argument("--out", default=str(ROOT / "data" / "model_ds.npz"))
     ap.add_argument("--date", help="export the races on this day instead (not yet run), for pricing")
     ap.add_argument("--track", help="with --date: only this track")
@@ -319,6 +323,8 @@ def main() -> None:
     a = ap.parse_args()
     from backtest import races_from_rows
     from fk import history as H
+    hist_dirs = [Path(x.strip()) for x in a.history.split(",") if x.strip()]
+    print(f"states: {ST.label(a.state)}; history: {', '.join(map(str, hist_dirs))}", flush=True)
     from fk.db import Db
     db = Db(load_settings().database_url)
     if a.date:
@@ -327,11 +333,16 @@ def main() -> None:
             override_going(rows, a.going)
     else:
         rows = list(db.resulted_races(a.state))
-        in_db = {r["race_id"] for r in rows}
-        rows += list(H.resulted_races(Path(a.history), a.state, skip=in_db))
+        held = {r["race_id"] for r in rows}
+        for hdir in hist_dirs:   # the first folder that holds a race wins; the database before any of them
+            more = list(H.resulted_races(hdir, a.state, skip=held))
+            held |= {r["race_id"] for r in more}
+            rows += more
         B.fill_going(rows)
     try:
-        pre = H.pulled_before_jump(db, Path(a.history), a.state)
+        pre = set(db.races_pulled_before_the_jump(a.state))
+        for hdir in hist_dirs:
+            pre |= H.pulled_before_jump_ids(hdir, a.state)
     except Exception as ex:  # noqa: BLE001
         print(f"pulled-before-the-jump flag unavailable: {ex}")
         pre = set()
@@ -375,7 +386,7 @@ def main() -> None:
             locs.append(str(h.get("trainingLocation") or ""))
         meta.append((race.race_id, str(race.date)[:10], race.track or "", float(getattr(race, "distance_m", None) or np.nan),
                      num(getattr(race, "lws", None)) or np.nan, GOING_CODE.get(B.going_band(row.get("going"))) or np.nan,
-                     len(race.runners)))
+                     len(race.runners), str(row.get("state") or "")))
     barred = {"open_logit", "market_prob", "market_x_neural", "first_starter_x_market", "exp_rel", "raw_open", "raw_exp"}
     xcols = sorted(k for k in xkeys if k not in barred and not k.startswith("collateral"))
     ecols = sorted(k for k in extra_keys if k not in barred and "collateral" not in k)
@@ -403,6 +414,8 @@ def main() -> None:
         race_id=np.array([m[0] for m in meta]), date=np.array([m[1] for m in meta]), track=np.array([m[2] for m in meta]),
         distance=np.array([m[3] for m in meta]), lws=np.array([m[4] for m in meta]), going=np.array([m[5] for m in meta]),
         field=np.array([m[6] for m in meta], dtype=np.int32),
+        # 11 Nov 2026: each race's state. Readers that pick named keys (price_day.combined) never see it.
+        state=np.array([m[7] for m in meta]),
         pre_jump=np.array([(m[0] in pre) or bool(a.date) for m in meta]),
         race_number=np.array([by_id[m[0]].get("race_number") or 0 for m in meta], dtype=np.int32),
         past_race_ids=np.array(past_race_ids), past_jockeys=np.array(past_jockeys),

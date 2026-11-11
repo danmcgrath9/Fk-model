@@ -8,6 +8,7 @@ from typing import Any, Iterable
 
 from psycopg.types.json import Jsonb
 
+from . import states as S
 from .pg import connect
 
 
@@ -166,13 +167,13 @@ class Db:
                           < (m.meeting_date::timestamp at time zone 'UTC')
                from fk.races r join fk.meetings m using (meeting_id)
                     left join fk.speedmaps sm on sm.race_id = r.race_id
-               where (%s::text is null or m.state = %s)
+               where (%s::text[] is null or m.state = any(%s::text[]))
                  and (%s::date is null or m.meeting_date < %s::date)
                  and exists (select 1 from fk.entries e where e.race_id = r.race_id)
                  and (exists (select 1 from fk.results res where res.race_id = r.race_id and res.finish_position is not null)
                       or exists (select 1 from fk.entries e where e.race_id = r.race_id and e.raw ? 'horseResult'))
                order by m.meeting_date, m.track, r.race_id""",
-            (state, state, before, before),
+            (S.sql_param(state), S.sql_param(state), before, before),
         ).fetchall()
         out = []
         for i in range(0, len(races), RESULTED_BATCH):
@@ -370,10 +371,10 @@ class Db:
         rows = self.conn.execute(
             """select e.race_id
                from fk.entries e join fk.races r using (race_id) join fk.meetings m using (meeting_id)
-               where (%s::text is null or m.state = %s)
+               where (%s::text[] is null or m.state = any(%s::text[]))
                group by e.race_id, m.meeting_date
                having min(e.fetched_at) < (m.meeting_date::timestamp at time zone 'UTC')""",
-            (state, state),
+            (S.sql_param(state), S.sql_param(state)),
         ).fetchall()
         return {r[0] for r in rows}
 

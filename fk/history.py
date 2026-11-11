@@ -18,6 +18,8 @@ import json
 from pathlib import Path
 from typing import Any, Iterable, Iterator
 
+from . import states as S
+
 from . import fields as F
 
 SUFFIX = ".jsonl.gz"
@@ -104,14 +106,15 @@ def held_race_ids(directory: Path | None) -> set[str]:
 
 
 def resulted_races(directory: Path | None, state: str | None = "VIC", skip: set[str] | None = None) -> Iterator[dict]:
-    """Every resulted race in the files, oldest day first, for the given state (None =
-    every state), leaving out the race ids in `skip` (the ones the database already holds)."""
+    """Every resulted race in the files, oldest day first, for the given state(s) (comma separated, "ALL" for the
+    Australian states, None = every state), leaving out the race ids in `skip` (the ones already held elsewhere)."""
     skip = skip or set()
+    want = S.parse(state)
     for p in files(directory):
         for b in read_file(p):
             if b["race_id"] in skip or not is_resulted(b):
                 continue
-            if state is not None and b.get("state") != state:
+            if not S.matches(b.get("state"), want):
                 continue
             yield b
 
@@ -121,8 +124,9 @@ def pulled_before_jump_ids(directory: Path | None, state: str | None = "VIC") ->
     Db.races_pulled_before_the_jump. Only races moved out of the database by
     scripts/db_to_history.py carry the flag; a back-test day file was pulled after its races
     ran, so it has none and reads as False, which is what it is."""
+    want = S.parse(state)
     return {b["race_id"] for p in files(directory) for b in read_file(p)
-            if b.get("pulled_before_jump") and (state is None or b.get("state") == state)}
+            if b.get("pulled_before_jump") and S.matches(b.get("state"), want)}
 
 
 def pulled_before_jump(db: Any, directory: Path | None, state: str | None = "VIC") -> set[str]:

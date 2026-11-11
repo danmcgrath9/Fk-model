@@ -16,6 +16,12 @@ on:
       going:
         description: "with a date: price as if the track were this, e.g. 'Heavy 8' (the official rating is stale after rain)"
         default: ''
+      state:
+        description: 'state(s), comma separated, or ALL for the Australian states (11 Nov 2026); VIC is what the live model reads'
+        default: 'VIC'
+      branch:
+        description: 'blank date only: the branch the dataset goes to (datasets is the one the live work reads; use another for trials)'
+        default: 'datasets'
 
 permissions:
   contents: write
@@ -58,17 +64,24 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
-        run: scripts/fetch_history.sh
+        run: |
+          scripts/fetch_history.sh
+          # the other states (history-states release, from the archive) only when asked for: Victoria alone never
+          # downloads them, so the Victorian export is exactly what it was
+          if [ "${{ github.event.inputs.state || 'VIC' }}" != "VIC" ]; then scripts/fetch_history.sh history-states history_states; fi
       - name: Export
         if: github.event.inputs.date == ''
-        run: python scripts/export_dataset.py --out /tmp/ds/model_ds.npz | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          HIST=history
+          [ -d history_states ] && HIST=history,history_states
+          python scripts/export_dataset.py --state "${{ github.event.inputs.state || 'VIC' }}" --history "$HIST" --out /tmp/ds/model_ds.npz | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Export a day's races
         if: github.event.inputs.date != ''
         run: |
           TRACK_ARG=""
           [ -n "${{ github.event.inputs.track }}" ] && TRACK_ARG="--track '${{ github.event.inputs.track }}'"
           [ -n "${{ github.event.inputs.going }}" ] && TRACK_ARG="$TRACK_ARG --going '${{ github.event.inputs.going }}'"
-          eval python scripts/export_dataset.py --date "${{ github.event.inputs.date }}" $TRACK_ARG --out /tmp/up/upcoming.npz | tee -a "$GITHUB_STEP_SUMMARY"
+          eval python scripts/export_dataset.py --date "${{ github.event.inputs.date }}" --state "'${{ github.event.inputs.state || 'VIC' }}'" $TRACK_ARG --out /tmp/up/upcoming.npz | tee -a "$GITHUB_STEP_SUMMARY"
           REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           cd /tmp/up && git init -q -b upcoming && git config user.name "fk export" && git config user.email "actions@users.noreply.github.com"
           git add -A && git commit -q -m "upcoming ${{ github.event.inputs.date }} ${{ github.event.inputs.track }}" && git push -q -f "$REMOTE" upcoming
@@ -80,5 +93,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          cd /tmp/ds && git init -q -b datasets && git config user.name "fk export" && git config user.email "actions@users.noreply.github.com"
-          git add -A && git commit -q -m "dataset $(date -u +%Y-%m-%dT%H:%MZ)" && git push -q -f "$REMOTE" datasets
+          BR="${{ github.event.inputs.branch || 'datasets' }}"
+          cd /tmp/ds && git init -q -b "$BR" && git config user.name "fk export" && git config user.email "actions@users.noreply.github.com"
+          git add -A && git commit -q -m "dataset ${{ github.event.inputs.state || 'VIC' }} $(date -u +%Y-%m-%dT%H:%MZ)" && git push -q -f "$REMOTE" "$BR"

@@ -3,7 +3,8 @@ name: fk archive
 # Form King historical archive (Dave's export): download from a Google Drive link, unzip (AES zip, password as an
 # input that is masked in the log), and run a script against it. The archive is kept as a private run artifact for
 # 7 days so later runs can reuse it without downloading again. Nothing from the archive is committed except the
-# script's own output on the `experiments` branch.
+# script's own output on the `experiments` branch, and (scripts/archive_to_history.py) the other states' day files on
+# the history-states release.
 
 on:
   workflow_dispatch:
@@ -65,6 +66,25 @@ jobs:
           python "scripts/${{ github.event.inputs.script }}" archive ${{ github.event.inputs.args }} >> out.md 2>&1
           echo "status=$?" >> "$GITHUB_OUTPUT"
           cat out.md | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Upload other-state day files
+        # scripts/archive_to_history.py writes ./history_states (11 Nov 2026): the other states' races as history day
+        # files, kept on their own release so Victoria's "history" release, and so the live export, is untouched.
+        if: steps.run.outputs.status == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          [ -d history_states ] || { echo "no history_states folder; nothing to upload"; exit 0; }
+          gh release view history-states >/dev/null 2>&1 || gh release create history-states --target main --latest=false \
+            --title "Race history, other states" --notes "Other states' past days from Form King's archive, one compressed file per day (scripts/archive_to_history.py). Victoria stays on the history release. Do not delete."
+          n=0
+          for f in history_states/*.jsonl.gz; do
+            ok=no
+            for i in 1 2 3; do gh release upload history-states "$f" --clobber && { ok=yes; break; }; sleep $((i * 5)); done
+            [ "$ok" = yes ] || { echo "could not upload $f"; exit 1; }
+            n=$((n + 1))
+          done
+          echo "uploaded $n day files to history-states" | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Keep the output
         if: always()
         env:
