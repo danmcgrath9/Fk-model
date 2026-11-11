@@ -1736,3 +1736,37 @@ and more history is the only lever left; on the betting side the 3x ceiling cost
 every period on two prices), the edge, range, steps, cap and the 16c deduction are right, both current Betfair lay
 rules fail on eleven untouched months, and 21% of races open on TAB before our order sheet exists. Nothing live was
 changed that night: each change is listed there as the founder's call.
+
+## Form lines redone, and the credits spent on it (11 Nov 2026)
+Founder, on the spare November credits: "Everything except the field watcher": fill the Victorian gaps since Jul 2025,
+and pull full histories for every last-start race-mate so the form-line test could be redone properly.
+
+**The gap fill (1,997 credits).** 30 dates pulled one at a time. 12 meetings with results added (119 races, Flemington
+12 Sep and 3 Oct and Caulfield 10 Oct among them); 7 meetings Form King marks ABANDONED (Cranbourne 5 Aug, Echuca 2 Jun,
+Hamilton 9 Dec, Ballarat 10 Jul, Sale 3 Jul, Gunbower and Murtoa 3 Oct); 17 dates had no Victorian racing. Most of the
+cost was first-sight profiles for horses new to us (414 at numBenchmarks=10, 1,508 credits). scripts/gapfill_check.py.
+
+**Who the race-mates are (free).** scripts/racemates.py reads every run we hold: every runner of every stored race
+(fk.results, and entries carrying horseResult), every back-test race in the history files with each runner's own past
+events, and fk.past_events. The 10 Nov test read fk.past_events alone and saw 2.3 race-mates a runner whose next run
+counted (after the last start, before race day). Every run we hold gives 3.58, with 0.72 a runner OPEN (no counting run
+known, and what we know of the horse stops before race day). racemate_gaps_after_gapfill.out.txt.
+
+**The test on the fuller data (free), both folds** (t_formlines_ab_full_A/B.out.txt, 3 seeds a side):
+| fold | inputs | KL to BSP | log loss | profit |
+|---|---|---|---|---|
+| A, 3 Jun - 9 Nov | current | 0.0932 | 1.9053 | +1,237.8u |
+| A, 3 Jun - 9 Nov | + form lines | 0.0927 | 1.9053 | +1,300.7u |
+| B, 1 Jan - 2 Jun | current | 0.0970 | 1.8348 | +1,413.8u |
+| B, 1 Jan - 2 Jun | + form lines | 0.0968 | 1.8367 | +1,496.7u |
+Profit up in both folds (+63u, +83u, against seed noise of about 20u and 47u), KL a touch better, log loss no better
+and worse in fold B, 0.6% of the model's gain, and no pattern on its own (last-start form line bands win at 0.77 to 0.87
+of SP's expectation with no order). A faint lean, not an edge. Nothing changed in the live model.
+
+**The paid race-mate fetch (1,200 credits), stopped.** scripts/horse_batch.py, fk-horse-batch.yml. The first 290-horse
+batch (580 credits) fetched everything and STORED NOTHING: a race-mate held only in the history files had no fk.horses row,
+the past_events foreign key refused it, and the batch wrote in one commit. Fixed (name row first, one commit per horse)
+and proved on 20 horses (40 credits). The next 290 (580 credits) closed 3,343 open slots and only about 15% of them
+became counting runs: counting 3.58 -> 3.59 a runner. The rest are horses that did not run again before the runner's
+next start. At that yield the remaining 3,000 credits would buy about +0.05 a runner, which cannot move the test, so the
+fetch stopped. racemate_gaps_after_batch1.out.txt.
