@@ -1,0 +1,18 @@
+{
+ "day": "Saturday",
+ "date": "14 November",
+ "race": "CF Orr Stakes",
+ "sub": "Sandown R8 · 1400m",
+ "rows": [
+  {"number": 5, "horse": "Beiwacht", "rated": "$3.42"},
+  {"number": 1, "horse": "Jimmysstar", "rated": "$4.87"},
+  {"number": 8, "horse": "Shadhavar", "rated": "$6.76"},
+  {"number": 2, "horse": "Pericles", "rated": "$8.04"},
+  {"number": 3, "horse": "Angel Capital", "rated": "$9.62"},
+  {"number": 4, "horse": "War Machine", "rated": "$15.83"},
+  {"number": 7, "horse": "Splash Back", "rated": "$19.32"},
+  {"number": 6, "horse": "Desert Lightning", "rated": "$91.70"}
+ ],
+ "brand": true,
+ "footer": "Rated prices."
+}
