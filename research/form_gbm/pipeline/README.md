@@ -20,3 +20,13 @@ Check after any rebuild: re-price a meeting already priced on the live model (me
 compare the v5s1/v6 files; on 10 Nov every price matched Seymour s6k exactly. Delete the throwaway files after.
 F9_names_live.txt is the live model's input list (809, the same as research/form_gbm/F9_names.txt today); meeting.sh copies
 it into the model folder every run so a change to the repo list cannot reach the live pricer by accident.
+
+## The fast pricing run (12 Nov 2026, founder: "the run takes an hour? Thats way to fkn long")
+`python3.13 price_run.py` does the morning in one command: one GitHub run (fk price run: pulls, every input script,
+one export per date, about 2 minutes), then one price_day3 call for every new meeting together (its five networks
+train on the whole history, about 2.5 minutes, so once a run instead of once a meeting), then the rest of each meeting
+side by side (about 15 seconds each). Measured on Dunkeld, Yea, Donald and Moe: 2.7 minutes locally, about 5 minutes
+in all, against about an hour by hand. Running the meetings side by side with one thread each was SLOWER (26 minutes
+and not finished): price_day3 needs every core. Pricing the meetings together against pricing Moe alone on the same
+inputs: median price change 0.2%, the largest 3.5% (the network's share), less than a rider change moves a price.
+`--test` writes everything under <prefix>-test and never touches a real sheet or day page.

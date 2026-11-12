@@ -176,23 +176,58 @@ def main():
             log(f"{mid}: {rain}mm in the 3 days before: needs a Soft export (fk-export going) before pricing; NOT priced here")
             continue
         jobs.append((mid, P, adj, md / "scratchings.md", md / "entry_numbers.md", head, title))
-    # the model folder's scripts once, so the meetings can run side by side without copying over each other
+    # the model folder's scripts once
     subprocess.run(f"cd {S}/model && for f in {R}/*.py; do cp -u \"$f\" . ; done; "
                    f"cmp -s {R}/pipeline/F9_names_live.txt F9_names.txt || cp {R}/pipeline/F9_names_live.txt F9_names.txt", shell=True)
-    threads = str(max(1, (os.cpu_count() or 4) // max(1, len(jobs))))
-    env = dict(os.environ, OMP_NUM_THREADS=threads, MKL_NUM_THREADS=threads, OPENBLAS_NUM_THREADS=threads)
-
-    def price(j):
-        mid, P, npz, scr, nums, head, title = j
+    t_model = time.time(); res = []
+    # A. each meeting: entry numbers, prices file (mkprices), scratched runners dropped (drop_scr) -> model/<TAG>-scr.npz
+    ready = []
+    for mid, P, npz, scr, nums, head, title in jobs:
+        TAG = P.replace("-", ""); SN = S / "model" / f"{TAG}-scr.npz"
+        subprocess.run(["cp", str(nums), str(L / f"{P}-entry-numbers.txt")], check=True)
+        mk = subprocess.run([sys.executable, str(S / "mkprices.py"), str(scr), str(nums), str(L / f"{P}-prices.txt"), head],
+                            capture_output=True, text=True)
+        ds = subprocess.run([sys.executable, "drop_scr.py", str(npz), str(L / f"{P}-prices.txt"), str(SN)], cwd=S / "model",
+                            capture_output=True, text=True)
+        if mk.returncode or ds.returncode:
+            log(f"STOP {mid}: {(mk.stdout + mk.stderr + ds.stdout + ds.stderr)[-300:]}"); res.append((mid, False, 0, W / f"{mid}-price.log")); continue
+        info[mid]["mk"] = mk.stdout.strip(); ready.append((mid, P, npz, scr, nums, head, title, SN))
+    # B. ONE price_day3 for every meeting: its networks train on the whole history (about 3 minutes), so once a run
+    if ready:
+        Z = [dict(np.load(r[7], allow_pickle=True)) for r in ready]
+        comb, off = {}, 0
+        for z in Z:
+            nrun, nrace = len(z["race_idx"]), len(z["race_id"])
+            for k, v in z.items():
+                if k in ("cols", "past_fields", "sec_fields") or v.ndim == 0 or v.shape[:1] not in ((nrun,), (nrace,)):
+                    comb.setdefault(k, v); continue
+                comb.setdefault(k, []).append(v + off if k == "race_idx" else v)
+            off += nrace
+        for k, v in list(comb.items()):
+            if isinstance(v, list): comb[k] = np.concatenate(v)
+        CS = S / "model" / f"run-{G}-scr.npz"; CJ = S / "model" / f"run-{G}-v5s1.json"
+        np.savez(CS, **comb)
+        log(f"one model run for {len(ready)} meetings ({int(comb['race_idx'].max()) + 1} races, {len(comb['race_idx'])} runners)")
+        pdr = subprocess.run([sys.executable, "price_day3.py", str(CS), str(CJ)], cwd=S / "model", capture_output=True, text=True)
+        log(f"model run done in {round(time.time() - t_model)}s: {pdr.stdout.strip().splitlines()[-1] if pdr.stdout.strip() else ''}")
+        if pdr.returncode:
+            sys.exit(f"STOP: price_day3 {pdr.stdout[-400:]} {pdr.stderr[-400:]}")
+        allrows = json.load(open(CJ))
+        for mid, P, npz, scr, nums, head, title, SN in ready:
+            ids = set(map(str, np.load(SN, allow_pickle=True)["race_id"]))
+            mine = [r for r in allrows if r["race_id"] in ids]
+            json.dump(mine, open(L / f"{P}-{G}-v5s1.json", "w"), indent=1)
+    # C. the rest of each meeting (stage 2, blend, angles, sheet, orders, take-at: about 20 seconds each), side by side
+    def finish(r):
+        mid, P, npz, scr, nums, head, title, SN = r
         t = time.time(); lg = W / f"{mid}-price.log"
         with open(lg, "w") as fh:
             rc = subprocess.run(["bash", str(S / "pricemtg.sh"), P, G, str(npz), str(scr), str(nums), head, title],
-                                stdout=fh, stderr=subprocess.STDOUT, cwd=S, env=env).returncode
+                                stdout=fh, stderr=subprocess.STDOUT, cwd=S, env=dict(os.environ, V5S1_DONE="1")).returncode
         ok = (L / f"{P}-{G}-orders.csv").exists() and "meeting done" in lg.read_text()
         return mid, ok, round(time.time() - t), lg
-    log(f"pricing {len(jobs)} meetings side by side ({threads} threads each), tag {G}")
-    with cf.ThreadPoolExecutor(max_workers=len(jobs) or 1) as ex:
-        res = list(ex.map(price, jobs))
+    with cf.ThreadPoolExecutor(max_workers=max(1, len(ready))) as ex:
+        res += list(ex.map(finish, ready))
     for mid, ok, secs, lg in res:
         log(f"{mid}: {'ok' if ok else 'FAILED, see ' + str(lg)} in {secs}s")
     out = [f"# Price run {run_id}, tag {G}, {round((time.time() - t_start) / 60, 1)} minutes"]
@@ -243,7 +278,7 @@ def main():
         for f in sorted(S.glob("times_*.md")): fh.write(f.read_text() + "\n")
     for d in sorted({info[mid]["m"]["date"] for mid in info}):
         parts, names = [], []
-        for m in (x for x in idx if x["date"] == d):
+        for m in (x for x in idx if x["date"] == d and (not a.test or x["prefix"].endswith("-test"))):
             P = m["prefix"]; page = S / "pages" / f"{P.replace('-', '')}-market.html"
             if not page.exists() or not (L / f"{P}-betmatic-preopen.csv").exists():
                 continue
@@ -254,7 +289,7 @@ def main():
                 base = m["track"].split(" ")[0] if m["track"].startswith("Sandown") else m["track"]
                 nm = base + (" (paper)" if "PAPER" in hd else " (provisional)" if "PROVISIONAL" in hd else "")
             names.append(nm); parts.append(f"{nm}={page}@{times}")
-        out_page = S / "pages" / f"{d.replace('-', '')}-day.html"
+        out_page = S / "pages" / f"{d.replace('-', '')}-day{'-test' if a.test else ''}.html"   # a test never touches the real day page
         ttl = f"{dt.date.fromisoformat(d).strftime('%A %-d %b')}: {', '.join(names)}"
         subprocess.run([sys.executable, "day_page.py", str(out_page), ttl, *parts], cwd=R, capture_output=True)
         out.append(f"\nDAY PAGE {d}: {out_page} ({ttl})")

@@ -16,8 +16,15 @@ for f in "$R"/*.py; do cp -u "$f" . ; done   # the model folder runs the repo's 
 # the live pricer by accident; price_day3 stops if the day's inputs do not match it. The model folder must be the
 # live v10 one (rebuild_model.sh), not the models branch root (v9).
 cmp -s "$R/pipeline/F9_names_live.txt" F9_names.txt || cp "$R/pipeline/F9_names_live.txt" F9_names.txt   # cmp first: meetings now price side by side (12 Nov)
+# V5S1_DONE=1: price_run.py has already dropped the scratched runners into $SN and priced every meeting of the run in
+# ONE price_day3 call (its networks train on the whole history, about 3 minutes, so once a run instead of once a
+# meeting; 12 Nov 2026), and written this meeting's $B-v5s1.json.
+if [ -z "$V5S1_DONE" ]; then
 python3.13 drop_scr.py $NPZ $PR $SN || { echo "STOP: drop_scr"; exit 1; }
 python3.13 price_day3.py $SN $B-v5s1.json || { echo "STOP: price_day3"; exit 1; }
+else
+[ -f "$SN" ] && [ -f "$B-v5s1.json" ] || { echo "STOP: V5S1_DONE but no $SN or $B-v5s1.json"; exit 1; }
+fi
 python3.13 apply_stage2f.py $B-v5s1.json $SN $B-v6.json p_oof_blend9.npy && echo "v6 ok" || { echo "STOP: stage 2f"; exit 1; }
 python3.13 shade_back.py $B-v6.json $SN
 python3.13 blend_open.py $B-v6.json $PR
