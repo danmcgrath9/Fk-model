@@ -4,6 +4,26 @@
  "footer": "Win bets.",
  "meetings": [
   {
+   "name": "Geelong",
+   "note": "",
+   "bets": [
+    {
+     "race": 4,
+     "time": "2:20PM",
+     "horse": "Baccano",
+     "price": "$5",
+     "units": "2.61u"
+    },
+    {
+     "race": 9,
+     "time": "5:30PM",
+     "horse": "Smarticon",
+     "price": "$21",
+     "units": "0.63u"
+    }
+   ]
+  },
+  {
    "name": "Pakenham",
    "note": "",
    "bets": [
