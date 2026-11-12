@@ -55,11 +55,15 @@ def dispatch_and_wait(inputs) -> str:
                 if dt.datetime.fromisoformat(x["created_at"].replace("Z", "+00:00")) >= t0:
                     run = x["id"]; log(f"run {run}"); break
             continue
+        # The pricing files are pushed before the form reports are built, so stop waiting as soon as the branch
+        # carries this run (the reports can take minutes and the pricing does not need them).
+        subprocess.run(["git", "-C", str(FK), "fetch", "-q", "origin", "pricing"], check=False)
+        rid = subprocess.run(["git", "-C", str(FK), "show", "origin/pricing:RUN_ID"], capture_output=True, text=True).stdout.strip()
+        if rid == str(run):
+            log("pricing files are up"); return str(run)
         r = gh(f"/actions/runs/{run}")
         if r["status"] == "completed":
-            if r["conclusion"] != "success":
-                sys.exit(f"STOP: fk price run {run} {r['conclusion']}")
-            return str(run)
+            sys.exit(f"STOP: fk price run {run} {r['conclusion']} without pushing its pricing files")
 
 
 def fetch(run_id: str) -> Path:
