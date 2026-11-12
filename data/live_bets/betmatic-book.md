@@ -1182,3 +1182,6 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
   0.63u at $19 (ours $12.92), 3.24u. Everything else opened under its minimum.
 - Missed open: the same two bets sent as 2026-11-13-geelong-late.csv, any price, best bookie price now (when=best),
   inside 2 hours of the open. Nothing on the Geelong 9am list.
+- 9:26am send (fk-betmatic when=best, run 43319913632) REFUSED: no bot machine connected, no session running; a check at
+  9:27am read the same (every session bot_running false, last states from 31 Oct to 2 Nov). Left with the founder to place
+  by hand inside the window: Baccano R4 #1 $130, Smarticon R9 #4 $32.
