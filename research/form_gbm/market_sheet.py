@@ -101,10 +101,10 @@ for race in sorted(races):
         pp = r["p"] / tot; ours = 1 / pp; now = pr.get(k); hk = f"{race}|{r['horse']}"; isfs = hk in fs; fuv = fu.get(hk, "")
         o_ = opn.get(k)   # 12 Oct 2026: value judged at the open, and still takeable now. 13 Oct 2026: no open recorded = no bet
         # (it used to fall back to the price now, which let a drift-made 'value' bet through: those lost 13% on 1,902 holdout bets)
-        early = fuv.startswith("EARLY:"); blocked = (fuv and not early) or isfs or fsb or (early and (now or 0) > 8) or ours > 15 or ours < 1.6 or o_ is None or o_ >= 3 * ours   # bets only at our price $1.60-$15 (floor $2 until 8 Oct 2026, t_under2.py)
+        early = fuv.startswith("EARLY:"); blocked = (fuv and not early) or isfs or fsb or (early and (now or 0) > 8) or ours > 15 or ours < 1.6 or o_ is None or o_ >= 6 * ours   # bets only at our price $1.60-$15 (floor $2 until 8 Oct 2026, t_under2.py)
         a = ang.get(hk, []); tags = []
         if k in opn:   # 12 Oct 2026: the bets struck at the opening price, recorded on the sheet whatever the price did after
-            ob = opn[k]; blocked_o = (fuv and not early) or isfs or fsb or (early and ob > 8) or ours > 15 or ours < 1.6 or ob >= 3 * ours
+            ob = opn[k]; blocked_o = (fuv and not early) or isfs or fsb or (early and ob > 8) or ours > 15 or ours < 1.6 or ob >= 6 * ours
             if not blocked_o and pp * ob - 1 >= THR:
                 OPEN_BETS.append((race, r["horse"], fko.get(k), tabo.get(k), now, ours, stake_rule.stake(pp, ob, r.get("only_ride", False), len(rs)), bool(a)))
         if blocked: tags.append("<span class='tag no'>no bet</span>")

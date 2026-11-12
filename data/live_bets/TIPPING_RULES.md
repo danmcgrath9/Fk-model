@@ -47,7 +47,7 @@ from research/form_gbm/fwd_betmatic.py: every meeting the founder bets, the pre-
 FIRST price for the meeting (git history, never re-made after the race), filled at the opening price, 8 steps,
 first-starter race rule, scratched runners void, deductions. Add each meeting to MEETINGS and re-run it when its results
 are in. The old sheet forward test (forward-test.md) is retired.
-Order files now carry max_odds (3x our price, $8 for EARLY runners): a minimum-odds order alone also fills at an open
+Order files now carry max_odds (6x our price from 12 Nov 2026, founder: "Put the 3x ceiling up to 6x"; 3x before; $15 for EARLY runners): a minimum-odds order alone also fills at an open
 far past our price, which the rules would not bet. Whether BetMatic can carry a maximum price is a question for them;
 the forward test reports the result both ways.
 

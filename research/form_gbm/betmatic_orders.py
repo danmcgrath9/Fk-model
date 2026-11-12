@@ -20,6 +20,11 @@ AFTER THE OPEN (--after-open): only the bets that were value at the opening pric
 that was not value at the open never gets an order, so drift-made value cannot fire one.
 """
 import argparse, csv, json, math, os, sys
+
+# THE CEILING (12 Nov 2026, founder: "Put the 3x ceiling up to 6x"): an open above CEILING x our price is not a bet. It was
+# 3x from 14 Oct; the night research (research/form_gbm/night/README.md 3.1, 3.6, 3.10, 3.14) found 6x adds a quarter to a
+# third to the backtest profit on both prices and in every period, and nothing above 6x.
+CEILING = 6.0
 here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, here)
 import stake_rule
 L = os.path.join(here, "../../data/live_bets")
@@ -120,7 +125,7 @@ def live_minimum(pm, blk, first_starter, is_metro):
     if not 1.6 <= ours <= 15:
         return dict(skip=f"our price ${ours:.2f} is {'under $1.60' if ours < 1.6 else 'over $15'}")
     # Flemington straight forward runners: no ban; their chance is x0.7 in shade_back.py (1 Nov 2026, founder: ROI, not a ban)
-    cap = min(3 * ours, 15.01 if blk.startswith("EARLY") else 1e9)   # EARLY cap $8 -> $15 (1 Nov 2026, founder; t_secup_cap.py: $8-12 +89%, $12-15 +42%, $15+ -24%)
+    cap = min(CEILING * ours, 15.01 if blk.startswith("EARLY") else 1e9)   # EARLY cap $8 -> $15 (1 Nov 2026, founder; t_secup_cap.py: $8-12 +89%, $12-15 +42%, $15+ -24%)
     note = "EARLY: $15 or shorter only" if blk else ""
     out = dict(skip=None, base_cap=cap, base_note=note)
     if is_metro:
@@ -225,7 +230,7 @@ def main():
     def add(r, ours, min_odds, cap, chance_at, note, band=None):
         """band: None for one ladder; "open4+" lifts every step under SHORT_OPEN to it; "under4" keeps only the steps
         under SHORT_OPEN and caps them there. Steps are sized on the full ladder first, so the stakes match the backtest."""
-        rc = int(r["race"])   # max_odds: the 3x-our-price (or EARLY $8) ceiling; an open above it is not a bet (14 Oct 2026)
+        rc = int(r["race"])   # max_odds: the CEILING x our price (6x from 12 Nov, 3x before; EARLY $15) ceiling; an open above it is not a bet (14 Oct 2026)
         mult_at = None
         if FC is not None:
             xr = XR.get((rc, nm(r["horse"])))
@@ -267,7 +272,7 @@ def main():
             if b["plan"] == "top_pick" or k in seen or k not in by:
                 continue
             seen.add(k); ours = float(b["model_price"]); pb = 1 / ours
-            add(by[k], ours, round(1.2 * ours + 0.004, 2), 3 * ours, lambda t, pb=pb: pb, f"value at the open (${b['fk_open'] or b['open']})")
+            add(by[k], ours, round(1.2 * ours + 0.004, 2), CEILING * ours, lambda t, pb=pb: pb, f"value at the open (${b['fk_open'] or b['open']})")
     else:
         fs = set(json.load(open(f"{B}-first-starters.json")))
         fu = json.load(open(f"{B}-first-up-blocks.json"))

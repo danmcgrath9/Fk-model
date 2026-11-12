@@ -43,9 +43,9 @@ for k in sorted(by):
         # must still be takeable now (current price at or over the take-at). No drift tag: the founder dropped it the same
         # day because a mid-market drift cannot be back-tested on the holdout (only last week's races carry the path).
         o_=opn.get(key,op); val=pp*o_-1; still=pp*op-1>=THR
-        # same caps as the race page (market_tpl.html): our price under $50 and the open under 3x our price
+        # same caps as the race page (market_tpl.html): our price under $50 and the open under 6x our price (3x until 12 Nov 2026)
         hk=f"{k}|{norm(r['horse'])}"; is_early=hk in early
-        bet_ok=not isfs(r) and not fs_backed and hk not in fu and 1.6<=1/pp<=15 and o_<3/pp and not (is_early and op>8) and still   # our price $1.60-$15 (floor $2 until 8 Oct 2026, t_under2.py)
+        bet_ok=not isfs(r) and not fs_backed and hk not in fu and 1.6<=1/pp<=15 and o_<6/pp and not (is_early and op>8) and still   # our price $1.60-$15 (floor $2 until 8 Oct 2026, t_under2.py)
         tags=(["EDGE"] if bet_ok and val>=THR and a else [])+(["value_20c"] if bet_ok and val>=THR else [])+(["top_pick"] if r is top and not isfs(r) else [])
         for t in tags:
             rows.append(dict(race=k,race_id=r["race_id"],horse=r["horse"],plan=t,price=op,price_now=cur,open=o_,fk_open=fko.get(key) or "",tab_open=tabo.get(key) or "",model_price=round(1/pp,2),value=round(val,3),
