@@ -23,7 +23,14 @@ txt = open(scr_fn).read()
 m = re.search(r"## prices file: (\S+)\n(.*?)(?:\n\s*\n|\Z)", txt, re.S)
 if not m:
     sys.exit(f"STOP: no '## prices file' section in {scr_fn}")
-mid, body = m.group(1), [l for l in m.group(2).split("\n") if l.strip() and l[0].isdigit()]
+# Before any market is up Form King writes every runner as "# 1, Name, NOPRICE". Those lines were dropped as comments, so
+# the prices file came out with no runners and nothing was scratched: Dunkeld 14 Nov was first priced with its 17
+# emergencies still in (12 Nov 2026). A NOPRICE runner is a runner with no price yet: "1, Name, 0, 0".
+nopr = re.compile(r"#\s*(\d+),\s*(.*?),\s*NOPRICE\s*$")
+lines = [nopr.sub(lambda g: f"{g.group(1)}, {g.group(2)}, 0, 0", l) for l in m.group(2).split("\n")]
+mid, body = m.group(1), [l for l in lines if l.strip() and l[0].isdigit()]
+if not body:
+    sys.exit(f"STOP: the '## prices file' section in {scr_fn} holds no runners")
 md = re.search(r"(\d{8})$", mid)
 today = dt.datetime.now(ZoneInfo("Australia/Melbourne")).strftime("%Y%m%d")
 race_morning = ("--race-morning" in flags) or (md is not None and md.group(1) == today and "--not-race-morning" not in flags)

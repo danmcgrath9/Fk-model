@@ -122,6 +122,27 @@ the exact bets (meeting, race, horse, number, minimum and maximum odds, stake in
 after the founder approves that exact list. Any change to the list after approval is shown again. Dry run first,
 every time. TAB session: 636816 (BETMATIC_TAB_SESSION); the Sportsbet session is set up as a spare and is never sent to.
 
+## Standing approval to send (12 Nov 2026, founder: "I'm also comfortable now that you can send the sheets yourself")
+Replaces the chat approval above for the model's own order sheets. Once a meeting is priced, Claude sends its pre-open
+sheet to BetMatic without asking first: fk-betmatic check (TAB balance, bot running), the live send (a dry run only when
+liquidity is in doubt, founder 3 Nov), confirm every order is scheduled, then tell the founder exactly what went (the
+list, the sheet and the day page) in the same message as the prices. Never sent: a paper-only meeting (picnic, or a
+meeting type with no holdout), or anything while TAB is unfunded or the bot is off (it stays paper and the message says
+so). A provisional sheet (riders missing) is sent when the open will not wait for the riders: a price made before riders
+keeps about two thirds of the profit and a missed open keeps none (night research, Part 4.4); when the riders land, every
+race not yet open is re-priced and its orders replaced (cancel that race, send its new orders). Still on the founder's
+word: tweets and cards, copied tips, any message or email, and any change to a rule or the model. First money in:
+Fri 13 Nov (founder, 12 Nov: "its paper only until money goes in account tomorrow").
+
+## Pricing earlier (12 Nov 2026, founder: "lesson learnt today? The time needs to be earlier")
+Moe R8 (Sun 15 Nov) opened on TAB at 12:17pm Thursday, the minute the pricing run started, and its sheet was ready at
+1:15pm. Night research Part 4.1: 58% of meetings open before 12:17pm on their opening day (Tuesday meetings on Saturday
+9:45am-12, Saturday metro on Wednesday from 11:51am, Sunday on Friday 9:40-10:45am), and 21% of races opened before the
+sheet existed. So the pricing routine runs every hour from 9:17am to 12:17pm Melbourne: each run pulls the next three
+days and prices any meeting whose fields are final and which has no sheet, riders or not (riders missing = provisional),
+and the 12:17pm run re-pulls (force) and re-prices the provisional meetings whose riders are now declared. Cost: about
+9 credits a day for the extra meeting lists and 2 a race for the rider re-pulls, roughly 500 a month in all.
+
 ## Lessons from the first live day (15 Oct 2026)
 - GitHub keeps one waiting run per concurrency group and cancels the older one when another is queued: Wodonga's live
   send was cancelled behind Horsham's and had to be resent. The group is removed; runs may overlap and the ledger push
