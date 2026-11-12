@@ -1185,3 +1185,5 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - 9:26am send (fk-betmatic when=best, run 43319913632) REFUSED: no bot machine connected, no session running; a check at
   9:27am read the same (every session bot_running false, last states from 31 Oct to 2 Nov). Left with the founder to place
   by hand inside the window: Baccano R4 #1 $130, Smarticon R9 #4 $32.
+- Friday Mercer card (founder, 9:45am): Melek R4 10.43u at $2.60, the open's 5.43u plus 5u for the 9am fill (9am list
+  $2.70 or better); Geelong Baccano 2.61u $5 and Smarticon 0.63u $21 at the 8:32am best prices; Helizangel SCR.
