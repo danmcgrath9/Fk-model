@@ -147,6 +147,15 @@ rider re-pulls, roughly 200-300 a month.
 And it has to be quick (founder, 12 Nov: "the run takes an hour? Thats way to fkn long"): one GitHub run does the
 pulls, every input script and the exports (fk price run), and the meetings are priced side by side.
 
+## A missed open: the same bets, within 2 hours, every bookmaker (12 Nov 2026, founder: "clearly we stick with same",
+## "I also LOVE the two hours, can get on like every bookmaker")
+research/form_gbm/night/t_minutes.py, 1,515 timed races (Jul-Oct 2025, Sep-Nov 2026): the bets that were value at the
+open, struck at the price later, beat a sheet built at the later price on ROI at every minute to 2 hours (+59% at the
+open, +41% at 5 minutes, +31% at 30, +24% at 2 hours). So when a race opens before its sheet is in, the horses whose
+orders would have filled at the open are backed for that stake at any price now, within 2 hours of the open, at the best
+price across every bookmaker session (fk-betmatic when=best): price_run.py writes them to <prefix>-late.csv and the run
+sends it straight away. After 2 hours, nothing.
+
 ## Lessons from the first live day (15 Oct 2026)
 - GitHub keeps one waiting run per concurrency group and cancels the older one when another is queued: Wodonga's live
   send was cancelled behind Horsham's and had to be resent. The group is removed; runs may overlap and the ledger push

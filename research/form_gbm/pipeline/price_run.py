@@ -271,6 +271,27 @@ def main():
             out.append(f"| R{rc} | {n} | {nm} | ${h['our']:.2f} | ${h['min']:.2f} | {h['most']:.2f}u |")
         for (rc, nm, our, o), st in sorted(missed.items()):
             out.append(f"MISSED R{rc} {nm}: opened ${float(o):.2f} against ours ${float(our):.2f}" + (f", would have filled {sum(st):.2f}u" if sum(st) else ", under its minimum") if o else f"MISSED R{rc} {nm}: no open price")
+        # THE SAME BETS AFTER A MISSED OPEN (founder, 12 Nov 2026: "clearly we stick with same", "I also LOVE the two
+        # hours, can get on like every bookmaker"; night/t_minutes.py: the bets that were value at the open, struck at
+        # the price now, beat a sheet placed late at every minute to 2 hours, +59% at the open to +24% at 2 hours).
+        # Each horse whose orders would have filled at the open is backed for that stake at any price now, while the
+        # race is within 2 hours of its open: -late.csv, sent with when=best (best price across every bookmaker session).
+        ropen = {}
+        for r in I["fl"]:
+            if r.get("race_open_ms"): ropen[r["race"]] = float(r["race_open_ms"])
+        now_ms = time.time() * 1000; late = []
+        for (rc, nm, our, o), st in sorted(missed.items()):
+            if o and sum(st) > 0 and rc in ropen and now_ms - ropen[rc] <= 2 * 3600e3:
+                r0 = next(r for r in rows if r["race"] == rc and r["horse"] == nm)
+                late.append(dict(r0, min_odds="1.01", max_odds="1000.00", stake_units=f"{sum(st):.2f}",
+                                 stake_dollars=f"{sum(st) * 50:.0f}", order="1 of 1", total_if_all_fire=f"{sum(st):.2f}u",
+                                 note=f"late: the same bet as at the open (${float(o):.2f}), struck at the best price now, "
+                                      f"{round((now_ms - ropen[rc]) / 60e3)} min after the open"))
+        if late:
+            with open(L / f"{P}-late.csv", "w", newline="") as fh:
+                w = csv.DictWriter(fh, fieldnames=list(late[0].keys())); w.writeheader(); w.writerows(late)
+            out.append(f"LATE SHEET {L / f'{P}-late.csv'}: " + "; ".join(f"R{x['race']} {x['horse']} {x['stake_units']}u" for x in late)
+                       + " (send now with when=best)")
     # day pages: every meeting of each date that has a page in the scratch folder
     times = W / "race_times_all.md"
     with open(times, "w") as fh:
