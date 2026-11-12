@@ -24,6 +24,9 @@ on:
       all:
         description: 'yes = read every meeting on the dates, not only those with no order sheet yet'
         default: 'no'
+      odds:
+        description: 'yes = refresh the prices first (race morning: one meeting summary a meeting, 5 credits each)'
+        default: 'no'
 
 concurrency:
   group: fk-daily-pull
@@ -91,6 +94,14 @@ jobs:
             else
               python scripts/daily_pull.py --key live --yes --date "$D" $EXTRA | tee -a "$GITHUB_STEP_SUMMARY"
             fi
+          done
+      - name: Odds refresh
+        if: github.event.inputs.odds == 'yes'
+        env:
+          FK_API_KEY: ${{ secrets.FK_API_KEY }}
+        run: |
+          for D in $(echo "${{ steps.d.outputs.dates }}" | tr ',' ' '); do
+            python scripts/morning_odds.py --key live --yes --date "$D" | tee -a "$GITHUB_STEP_SUMMARY"
           done
       - name: Pricing inputs
         run: |

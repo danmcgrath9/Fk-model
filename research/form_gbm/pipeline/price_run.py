@@ -115,14 +115,21 @@ def main():
     ap.add_argument("--force", action="store_true"); ap.add_argument("--track", default="")
     ap.add_argument("--all", action="store_true"); ap.add_argument("--inputs-run"); ap.add_argument("--replace", action="store_true")
     ap.add_argument("--only", default="", help="meeting ids, comma separated")
+    ap.add_argument("--odds", action="store_true", help="refresh the prices first (race morning)")
+    ap.add_argument("--drop", default="", help="race ids to leave out, comma separated (Form King's stale weights-stage copies of a race)")
+    ap.add_argument("--morning", action="store_true", help="race-morning re-price (founder, 12 Nov: 8:30am, ready to bet at 9): "
+                    "--odds --all, today's meetings, the sheet of record never touched, the open-bets box and the 9am list per meeting")
     ap.add_argument("--test", action="store_true", help="files under <prefix>-test, no commit (a timing test on meetings already priced)")
     a = ap.parse_args()
+    if a.morning:
+        a.odds = a.all = True; a.no_pull = True
+        a.dates = a.dates or dt.datetime.now(MEL).strftime("%Y-%m-%d")
     t_start = time.time()
     if a.inputs_run:
         run_id = a.inputs_run
     else:
         run_id = dispatch_and_wait({"dates": a.dates, "pull": "no" if a.no_pull else "yes", "force": "yes" if a.force else "no",
-                                    "track": a.track, "all": "yes" if a.all else "no"})
+                                    "track": a.track, "all": "yes" if a.all else "no", "odds": "yes" if a.odds else "no"})
     W = fetch(run_id); log(f"inputs in {W}")
     idx = list(csv.DictReader(open(W / "index.tsv"), delimiter="\t"))
     new = [m for m in idx if m["new"] == "1" and int(m["races"]) > 0 and (not a.only or m["meeting_id"] in a.only.split(","))]
@@ -137,7 +144,7 @@ def main():
     for m in new:
         mid, d, P = m["meeting_id"], m["date"], m["prefix"]; md = W / mid
         fl = fluc_rows(md / "fluc.md")
-        ids = sorted({r["race_id"] for r in fl})
+        ids = sorted({r["race_id"] for r in fl} - set(a.drop.split(",")))
         if not ids:
             log(f"STOP {mid}: no race ids in its fluc output"); continue
         up = W / f"upcoming-{d}.npz"
@@ -185,6 +192,9 @@ def main():
     for mid, P, npz, scr, nums, head, title in jobs:
         TAG = P.replace("-", ""); SN = S / "model" / f"{TAG}-scr.npz"
         subprocess.run(["cp", str(nums), str(L / f"{P}-entry-numbers.txt")], check=True)
+        if a.morning and (L / f"{P}-prices.txt").exists():   # the previous prices kept, as the 9:30 re-price always did
+            snap = L / f"{P}-prices-{dt.datetime.now(MEL):%H%M}.txt"; subprocess.run(["cp", str(L / f"{P}-prices.txt"), str(snap)])
+            info[mid]["snap"] = snap
         mk = subprocess.run([sys.executable, str(S / "mkprices.py"), str(scr), str(nums), str(L / f"{P}-prices.txt"), head],
                             capture_output=True, text=True)
         ds = subprocess.run([sys.executable, "drop_scr.py", str(npz), str(L / f"{P}-prices.txt"), str(SN)], cwd=S / "model",
@@ -245,9 +255,20 @@ def main():
                 o = openp.get((r["race"], norm(r["horse"])))
                 fill = o and float(o) >= float(r["min_odds"]) and float(o) <= float(r["max_odds"])
                 missed[(r["race"], r["horse"], r["our_price"], o)].append(float(r["stake_units"]) if fill else 0.0)
-        exists = (L / f"{P}-betmatic-preopen.csv").exists()
+        RP = P[:-5] if P.endswith("-test") else P   # a test still reads the real sheet of record
+        exists = (L / f"{RP}-betmatic-preopen.csv").exists()
         if exists and not a.replace:
-            out.append(f"\n## {I['title']}: already has a pre-open sheet, left alone (priced as {G} for comparison)")
+            if a.morning:
+                page = S / "pages" / f"{P.replace('-', '')}-market.html"
+                cmd = [sys.executable, "betmatic_html.py", str(L / f"{RP}-betmatic-preopen.csv"), P, str(page)]
+                if I.get("snap"): cmd += ["--since", str(I["snap"])]
+                bx = subprocess.run(cmd, cwd=R, capture_output=True, text=True).stdout.strip().splitlines()
+                nine = subprocess.run([sys.executable, "blend_9am.py", P, G], cwd=R, capture_output=True, text=True).stdout.strip()
+                out.append(f"\n## {I['title']}: re-priced {G}; sheet of record unchanged; {bx[-1] if bx else ''}")
+                out.append(f"page {page}")
+                out.append("9AM LIST: " + nine)
+            else:
+                out.append(f"\n## {I['title']}: already has a pre-open sheet, left alone (priced as {G} for comparison)")
             continue
         for src, dst in ((rows, f"{P}-betmatic-preopen.csv"), (allrows, f"{P}-betmatic-preopen-all.csv")):
             keep = [r for r in src if r["race"] not in opened]
