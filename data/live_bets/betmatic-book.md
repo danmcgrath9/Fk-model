@@ -1177,8 +1177,8 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - Rule tracker (research/form_gbm/track_rules.py, 48 meetings): +269.02u since 9 Oct; Ballarat races 1-5 +7.28u (10 bets,
   all lost by the horse, one $4-$7 firm back lost); since 10 Nov 31 bets -5.44u.
 
-## Friday 13 Nov Geelong: the whole meeting out (founder, Fri 8:45am: "All Geelong is out")
-- Open book void: Baccano R4 2.61u at $4.90 and Smarticon R9 0.63u at $19 (3.24u) refunded; no other Geelong order
-  filled at the open. Nothing on the 9am list at Geelong. No Geelong cards, no Geelong settle, no lay or back book.
-- Friday is Pakenham only: Mongolian Hero R2 5.04u $3.05, Melek R4 5.43u $2.90 (Helizangel R1 scratched, 0.94u
-  refunded); 9am list Melek R4 to win $1,000 a bookie at $2.70 or better.
+## Friday 13 Nov Geelong: opened 8:05-8:08am Fri, the sheet never sent (BetMatic down Wed; only checks since)
+- At Form King's open the sheet would have filled two horses: Baccano R4 2.61u at $4.90 (ours $3.81) and Smarticon R9
+  0.63u at $19 (ours $12.92), 3.24u. Everything else opened under its minimum.
+- Missed open: the same two bets sent as 2026-11-13-geelong-late.csv, any price, best bookie price now (when=best),
+  inside 2 hours of the open. Nothing on the Geelong 9am list.
