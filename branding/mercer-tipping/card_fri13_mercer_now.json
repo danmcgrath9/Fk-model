@@ -12,7 +12,8 @@
      "time": "6:15PM",
      "horse": "Helizangel",
      "price": "$14",
-     "units": "0.94u"
+     "units": "0.94u",
+     "scr": true
     },
     {
      "race": 2,

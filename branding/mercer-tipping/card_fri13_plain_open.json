@@ -3,6 +3,28 @@
  "date": "13 November",
  "meetings": [
   {
+   "name": "Geelong",
+   "note": "",
+   "bets": [
+    {
+     "race": 4,
+     "time": "2:20PM",
+     "horse": "Baccano",
+     "price": "$4.90",
+     "rated": "$3.81",
+     "units": "2.61u"
+    },
+    {
+     "race": 9,
+     "time": "5:30PM",
+     "horse": "Smarticon",
+     "price": "$19",
+     "rated": "$12.92",
+     "units": "0.63u"
+    }
+   ]
+  },
+  {
    "name": "Pakenham",
    "note": "",
    "bets": [
@@ -12,7 +34,8 @@
      "horse": "Helizangel",
      "price": "$13",
      "rated": "$9.07",
-     "units": "0.94u"
+     "units": "0.94u",
+     "scr": true
     },
     {
      "race": 2,
