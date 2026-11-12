@@ -66,6 +66,9 @@ jobs:
           MODE="${{ github.event.inputs.mode || 'pull' }}"
           [ "${{ github.event.schedule }}" = "30 16 * * *" ] && MODE=results
           DATE_ARG=""; [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
+          # A scheduled pull is always that day's races, even when GitHub fires it late (12 Nov: the first 11:15 run
+          # never fired, and a late run after noon would otherwise default to tomorrow, before its riders are in)
+          [ "${{ github.event.schedule }}" = "15 0 * * *" ] && DATE_ARG="--date $(TZ=Australia/Melbourne date +%F)"
           echo "mode $MODE, states $STATES" | tee -a "$GITHUB_STEP_SUMMARY"
           if [ "$MODE" = "results" ]; then
             python scripts/fetch_results.py --key live --yes --state "$STATES" $DATE_ARG | tee -a "$GITHUB_STEP_SUMMARY" || true
