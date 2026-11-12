@@ -1,65 +1,69 @@
-date,meeting_id,race,horse,our_price,our_rank,barrier,price_9am,ratio,finish,pl,types
-2026-10-14,caulfield-20261014,5,Fiorenot,7.26,3,10,10.0,1.38,2,-1.00,our 2nd-3rd
-2026-10-14,caulfield-20261014,6,Lincoln Rocks,13.61,7,11,20.0,1.47,10,-1.00,
-2026-10-16,cranbourne-20261016,1,Locard,4.62,2,5,7.0,1.52,7,-1.00,our 2nd-3rd; barrier 4-8
-2026-10-16,cranbourne-20261016,6,Princess Painton,9.72,4,5,13.0,1.34,6,-1.00,barrier 4-8
-2026-10-17,caulfield-20261017,1,King Snitz,12.65,5,4,18.0,1.42,1,+17.00,barrier 4-8
-2026-10-17,caulfield-20261017,2,Voynichese,7.35,3,5,10.0,1.36,7,-1.00,our 2nd-3rd; barrier 4-8
-2026-10-17,caulfield-20261017,4,Boys Bounce,14.06,6,3,20.0,1.42,7,-1.00,
-2026-10-17,caulfield-20261017,9,Cosmic Crusader,3.84,1,17,5.47,1.42,4,-1.00,
-2026-10-17,caulfield-20261017,9,Kingswood,13.03,4,20,23.0,1.76,1,+22.00,
-2026-10-17,wodonga-20261017,2,Dingle,5.60,2,12,7.63,1.36,3,-1.00,our 2nd-3rd
-2026-10-18,moe-20261018,1,Bohemian Blitz,8.44,4,10,12.13,1.44,7,-1.00,
-2026-10-18,moe-20261018,3,Hirarkee,13.30,6,11,18.0,1.35,7,-1.00,
-2026-10-19,echuca-20261019,1,Challenging,7.05,2,5,9.75,1.38,4,-1.00,our 2nd-3rd; barrier 4-8
-2026-10-20,kyneton-20261020,6,Tempt The Gods,5.85,2,3,7.83,1.34,3,-1.00,our 2nd-3rd
-2026-10-21,geelong-20261021,2,Superliv,12.14,5,11,16.0,1.32,3,-1.00,
-2026-10-21,geelong-20261021,5,Meness,8.13,3,1,12.5,1.54,4,-1.00,our 2nd-3rd
-2026-10-21,geelong-20261021,7,Vegas Jack,10.97,4,11,32.5,2.96,8,-1.00,
-2026-10-22,mornington-20261022,4,Model Gigi,4.07,2,8,6.5,1.60,5,-1.00,our 2nd-3rd; barrier 4-8
-2026-10-22,mornington-20261022,6,Fearless Writer,5.66,2,11,9.17,1.62,2,-1.00,our 2nd-3rd
-2026-10-24,flemington-20261024,2,The Speed Machine,5.35,4,8,7.0,1.31,2,-1.00,barrier 4-8
-2026-10-24,flemington-20261024,2,Turbo Saint,8.09,5,5,11.0,1.36,6,-1.00,barrier 4-8
-2026-10-24,flemington-20261024,6,Feroce,9.02,2,14,15.0,1.66,9,-1.00,our 2nd-3rd
-2026-10-24,flemington-20261024,7,Aethelwulf,3.51,1,19,4.8,1.37,6,-1.00,
-2026-10-26,wangaratta-20261026,3,Jezebel Jenni,9.28,3,14,14.75,1.59,5,-1.00,our 2nd-3rd
-2026-10-26,wangaratta-20261026,3,Brilliant Bull Ant,10.34,4,15,13.5,1.31,6,-1.00,
-2026-10-26,wangaratta-20261026,7,Strummer,13.44,6,6,19.25,1.43,3,-1.00,barrier 4-8
-2026-10-26,wangaratta-20261026,9,Densetsu,13.38,5,3,17.75,1.33,9,-1.00,
-2026-10-28,bendigo-20261028,2,Centenary Florin,2.94,1,6,3.83,1.30,4,-1.00,barrier 4-8
-2026-10-28,bendigo-20261028,4,Yahoo Bar,4.55,2,16,6.17,1.36,2,-1.00,our 2nd-3rd
-2026-10-28,bendigo-20261028,5,The Muffin Man,4.70,1,11,6.5,1.38,3,-1.00,
-2026-10-28,bendigo-20261028,9,Silver Bullet,12.00,4,8,16.25,1.35,9,-1.00,barrier 4-8
-2026-10-30,pakenham-20261030,4,Voltrix,3.88,1,7,5.33,1.38,2,-1.00,barrier 4-8
-2026-10-31,flemington-20261031,6,Natural Fling,4.71,2,8,7.5,1.59,9,-1.00,our 2nd-3rd; barrier 4-8
-2026-10-31,flemington-20261031,7,True Rebel,5.07,1,17,9.0,1.77,5,-1.00,
-2026-10-31,flemington-20261031,7,Vallice,8.46,3,14,12.0,1.42,10,-1.00,our 2nd-3rd
-2026-10-31,flemington-20261031,8,Surfin' Bird,3.00,1,9,4.8,1.60,5,-1.00,
-2026-10-31,flemington-20261031,8,Sass Appeal,6.47,3,5,14.4,2.23,4,-1.00,our 2nd-3rd; barrier 4-8
-2026-10-31,flemington-20261031,9,Bridal Waltz,3.29,1,3,4.6,1.40,16,-1.00,
-2026-10-31,flemington-20261031,9,Swift Force,12.62,5,9,20.0,1.58,3,-1.00,
-2026-11-01,mornington-20261101,7,Fam Gorman,9.34,5,5,14.0,1.50,2,-1.00,barrier 4-8
-2026-11-02,ballarat-20261102,4,Best Terms,1.92,1,5,2.54,1.32,5,-1.00,barrier 4-8
-2026-11-03,echuca-20261103,5,Snow Party,13.98,6,5,18.25,1.31,4,-1.00,barrier 4-8
-2026-11-03,flemington-20261103,6,Al Duca,5.84,3,2,8.0,1.37,7,-1.00,our 2nd-3rd
-2026-11-03,flemington-20261103,7,Point Of Law,5.87,1,9,9.0,1.53,1,+8.00,
-2026-11-03,flemington-20261103,7,Juja Kibo,9.19,2,14,13.5,1.47,3,-1.00,our 2nd-3rd
-2026-11-03,flemington-20261103,7,Enfjaar,13.29,3,8,23.0,1.73,15,-1.00,our 2nd-3rd; barrier 4-8
-2026-11-03,flemington-20261103,7,Mr Monaco,14.99,4,16,26.0,1.73,17,-1.00,
-2026-11-03,wangaratta-20261103,3,Jakbe Nimble,10.16,4,7,13.5,1.33,2,-1.00,barrier 4-8
-2026-11-04,kyneton-20261104,1,Jackpot Park,2.32,1,7,3.13,1.35,1,+2.13,barrier 4-8
-2026-11-04,kyneton-20261104,2,Exploit,11.79,5,1,15.75,1.34,8,-1.00,
-2026-11-04,kyneton-20261104,9,Sub Gauge,4.87,2,4,6.92,1.42,4,-1.00,our 2nd-3rd; barrier 4-8
-2026-11-05,flemington-20261105,2,Bustling,8.35,3,10,11.0,1.32,4,-1.00,our 2nd-3rd
-2026-11-05,flemington-20261105,2,Chakado,10.04,4,8,15.0,1.49,12,-1.00,barrier 4-8
-2026-11-05,flemington-20261105,5,Different Gravy,12.68,4,17,19.67,1.55,10,-1.00,
-2026-11-05,flemington-20261105,9,Ice Kool,3.55,1,4,6.0,1.69,6,-1.00,barrier 4-8
-2026-11-06,cranbourne-20261106,2,Vespers,3.18,1,2,4.5,1.42,2,-1.00,
-2026-11-06,cranbourne-20261106,3,Civic Square,3.20,1,7,4.8,1.50,1,+3.80,barrier 4-8
-2026-11-06,warrnambool-20261106,1,Catch A Princess,5.52,2,10,16.44,2.98,2,-1.00,our 2nd-3rd
-2026-11-07,flemington-20261107,5,Machine Gun Gracie,11.96,5,9,18.0,1.50,9,-1.00,
-2026-11-07,flemington-20261107,9,Salaria,8.68,2,7,11.5,1.33,8,-1.00,our 2nd-3rd; barrier 4-8
-2026-11-08,ararat-20261108,2,Model Gigi,3.18,1,7,4.55,1.43,1,+3.55,barrier 4-8
-2026-11-08,ararat-20261108,6,Thedoctoroflove,12.58,6,13,16.5,1.31,12,-1.00,
-2026-11-09,hamilton-20261109,3,Alltogethernow,5.71,1,13,7.75,1.36,8,-1.00,
-2026-11-11,ballarat-20261111,3,Running Rich,5.15,2,9,9.13,1.77,3,-1.00,our 2nd-3rd
+date,meeting_id,race,horse,our_price,our_rank,barrier,price_9am,ratio,finish,pl,blend_price,mbl_pl,types
+2026-10-14,caulfield-20261014,5,Fiorenot,7.26,3,10,10.0,1.38,2,-1.00,13.01,,overs 1.3x; our 2nd-3rd
+2026-10-14,caulfield-20261014,6,Lincoln Rocks,13.61,7,11,20.0,1.47,10,-1.00,29.21,,overs 1.3x
+2026-10-16,cranbourne-20261016,1,Locard,4.62,2,5,7.0,1.52,7,-1.00,8.77,,overs 1.3x; our 2nd-3rd; barrier 4-8
+2026-10-16,cranbourne-20261016,6,Princess Painton,9.72,4,5,13.0,1.34,6,-1.00,17.99,,overs 1.3x; barrier 4-8
+2026-10-17,caulfield-20261017,1,King Snitz,12.65,5,4,18.0,1.42,1,+17.00,25.47,,overs 1.3x; barrier 4-8
+2026-10-17,caulfield-20261017,2,Voynichese,7.35,3,5,10.0,1.36,7,-1.00,12.63,,overs 1.3x; our 2nd-3rd; barrier 4-8
+2026-10-17,caulfield-20261017,4,Boys Bounce,14.06,6,3,20.0,1.42,7,-1.00,27.35,,overs 1.3x
+2026-10-17,caulfield-20261017,9,Cosmic Crusader,3.84,1,17,5.47,1.42,4,-1.00,5.25,,overs 1.3x
+2026-10-17,caulfield-20261017,9,Kingswood,13.03,4,20,23.0,1.76,1,+22.00,28.19,,overs 1.3x
+2026-10-17,wodonga-20261017,2,Dingle,5.60,2,12,7.63,1.36,3,-1.00,10.84,,overs 1.3x; our 2nd-3rd
+2026-10-18,moe-20261018,1,Bohemian Blitz,8.44,4,10,12.13,1.44,7,-1.00,16.96,,overs 1.3x
+2026-10-18,moe-20261018,3,Hirarkee,13.30,6,11,18.0,1.35,7,-1.00,27.92,,overs 1.3x
+2026-10-19,echuca-20261019,1,Challenging,7.05,2,5,9.75,1.38,4,-1.00,13.89,,overs 1.3x; our 2nd-3rd; barrier 4-8
+2026-10-20,kyneton-20261020,6,Tempt The Gods,5.85,2,3,7.83,1.34,3,-1.00,9.06,,overs 1.3x; our 2nd-3rd
+2026-10-21,geelong-20261021,2,Superliv,12.14,5,11,16.0,1.32,3,-1.00,22.64,,overs 1.3x
+2026-10-21,geelong-20261021,5,Meness,8.13,3,1,12.5,1.54,4,-1.00,16.67,,overs 1.3x; our 2nd-3rd
+2026-10-21,geelong-20261021,7,Vegas Jack,10.97,4,11,32.5,2.96,8,-1.00,44.72,,overs 1.3x
+2026-10-22,mornington-20261022,4,Model Gigi,4.07,2,8,6.5,1.60,5,-1.00,8.28,,overs 1.3x; our 2nd-3rd; barrier 4-8
+2026-10-22,mornington-20261022,6,Fearless Writer,5.66,2,11,9.17,1.62,2,-1.00,11.77,,overs 1.3x; our 2nd-3rd
+2026-10-24,flemington-20261024,2,The Speed Machine,5.35,4,8,7.0,1.31,2,-1.00,8.83,,overs 1.3x; barrier 4-8
+2026-10-24,flemington-20261024,2,Turbo Saint,8.09,5,5,11.0,1.36,6,-1.00,15.07,,overs 1.3x; barrier 4-8
+2026-10-24,flemington-20261024,6,Feroce,9.02,2,14,15.0,1.66,9,-1.00,20.36,,overs 1.3x; our 2nd-3rd
+2026-10-24,flemington-20261024,7,Aethelwulf,3.51,1,19,4.8,1.37,6,-1.00,4.97,,overs 1.3x
+2026-10-26,wangaratta-20261026,3,Jezebel Jenni,9.28,3,14,14.75,1.59,5,-1.00,20.84,,overs 1.3x; our 2nd-3rd
+2026-10-26,wangaratta-20261026,3,Brilliant Bull Ant,10.34,4,15,13.5,1.31,6,-1.00,19.49,,overs 1.3x
+2026-10-26,wangaratta-20261026,7,Strummer,13.44,6,6,19.25,1.43,3,-1.00,28.64,,overs 1.3x; barrier 4-8
+2026-10-26,wangaratta-20261026,9,Densetsu,13.38,5,3,17.75,1.33,9,-1.00,27.14,,overs 1.3x
+2026-10-28,bendigo-20261028,2,Centenary Florin,2.94,1,6,3.83,1.30,4,-1.00,4.55,,overs 1.3x; barrier 4-8
+2026-10-28,bendigo-20261028,4,Yahoo Bar,4.55,2,16,6.17,1.36,2,-1.00,7.50,,overs 1.3x; our 2nd-3rd
+2026-10-28,bendigo-20261028,5,The Muffin Man,4.70,1,11,6.5,1.38,3,-1.00,7.68,,overs 1.3x
+2026-10-28,bendigo-20261028,9,Silver Bullet,12.00,4,8,16.25,1.35,9,-1.00,24.87,,overs 1.3x; barrier 4-8
+2026-10-30,pakenham-20261030,4,Voltrix,3.88,1,7,5.33,1.38,2,-1.00,6.02,,overs 1.3x; barrier 4-8
+2026-10-31,flemington-20261031,6,Natural Fling,4.71,2,8,7.5,1.59,9,-1.00,8.21,,overs 1.3x; our 2nd-3rd; barrier 4-8
+2026-10-31,flemington-20261031,7,True Rebel,5.07,1,17,9.0,1.77,5,-1.00,9.91,,overs 1.3x
+2026-10-31,flemington-20261031,7,Vallice,8.46,3,14,12.0,1.42,10,-1.00,14.63,,overs 1.3x; our 2nd-3rd
+2026-10-31,flemington-20261031,8,Surfin' Bird,3.00,1,9,4.8,1.60,5,-1.00,4.98,,overs 1.3x
+2026-10-31,flemington-20261031,8,Sass Appeal,6.47,3,5,14.4,2.23,4,-1.00,17.44,,overs 1.3x; our 2nd-3rd; barrier 4-8
+2026-10-31,flemington-20261031,9,Bridal Waltz,3.29,1,3,4.6,1.40,16,-1.00,4.78,,overs 1.3x
+2026-10-31,flemington-20261031,9,Swift Force,12.62,5,9,20.0,1.58,3,-1.00,27.18,,overs 1.3x
+2026-11-01,mornington-20261101,7,Fam Gorman,9.34,5,5,14.0,1.50,2,-1.00,20.06,,overs 1.3x; barrier 4-8
+2026-11-02,ballarat-20261102,4,Best Terms,1.92,1,5,2.54,1.32,5,-1.00,2.72,,overs 1.3x; barrier 4-8
+2026-11-02,ballarat-20261102,6,Wintery,3.54,1,5,2.52,0.71,1,+1.52,2.32,+1000,blend 9am
+2026-11-02,ballarat-20261102,7,Catwalk Icon,2.23,1,2,2.11,0.95,3,-1.00,1.86,-901,blend 9am
+2026-11-02,ballarat-20261102,8,M'lady Rose,4.04,1,13,3.9,0.97,2,-1.00,3.60,-345,blend 9am
+2026-11-03,echuca-20261103,5,Snow Party,13.98,6,5,18.25,1.31,4,-1.00,28.37,,overs 1.3x; barrier 4-8
+2026-11-03,flemington-20261103,6,Al Duca,5.84,3,2,8.0,1.37,7,-1.00,9.62,,overs 1.3x; our 2nd-3rd
+2026-11-03,flemington-20261103,7,Point Of Law,5.87,1,9,9.0,1.53,1,+8.00,8.16,+2000,overs 1.3x; blend 9am
+2026-11-03,flemington-20261103,7,Juja Kibo,9.19,2,14,13.5,1.47,3,-1.00,13.39,,overs 1.3x; our 2nd-3rd
+2026-11-03,flemington-20261103,7,Enfjaar,13.29,3,8,23.0,1.73,15,-1.00,24.55,,overs 1.3x; our 2nd-3rd; barrier 4-8
+2026-11-03,flemington-20261103,7,Mr Monaco,14.99,4,16,26.0,1.73,17,-1.00,28.43,,overs 1.3x
+2026-11-03,wangaratta-20261103,3,Jakbe Nimble,10.16,4,7,13.5,1.33,2,-1.00,20.63,,overs 1.3x; barrier 4-8
+2026-11-04,kyneton-20261104,1,Jackpot Park,2.32,1,7,3.13,1.35,1,+2.13,2.90,+1000,overs 1.3x; barrier 4-8; blend 9am
+2026-11-04,kyneton-20261104,2,Exploit,11.79,5,1,15.75,1.34,8,-1.00,24.60,,overs 1.3x
+2026-11-04,kyneton-20261104,9,Sub Gauge,4.87,2,4,6.92,1.42,4,-1.00,8.85,,overs 1.3x; our 2nd-3rd; barrier 4-8
+2026-11-05,flemington-20261105,2,Bustling,8.35,3,10,11.0,1.32,4,-1.00,13.63,,overs 1.3x; our 2nd-3rd
+2026-11-05,flemington-20261105,2,Chakado,10.04,4,8,15.0,1.49,12,-1.00,19.29,,overs 1.3x; barrier 4-8
+2026-11-05,flemington-20261105,5,Different Gravy,12.68,4,17,19.67,1.55,10,-1.00,29.17,,overs 1.3x
+2026-11-05,flemington-20261105,9,Ice Kool,3.55,1,4,6.0,1.69,6,-1.00,6.45,,overs 1.3x; barrier 4-8
+2026-11-06,cranbourne-20261106,2,Vespers,3.18,1,2,4.5,1.42,2,-1.00,5.31,,overs 1.3x
+2026-11-06,cranbourne-20261106,3,Civic Square,3.20,1,7,4.8,1.50,1,+3.80,5.74,,overs 1.3x; barrier 4-8
+2026-11-06,warrnambool-20261106,1,Catch A Princess,5.52,2,10,16.44,2.98,2,-1.00,21.02,,overs 1.3x; our 2nd-3rd
+2026-11-07,flemington-20261107,5,Machine Gun Gracie,11.96,5,9,18.0,1.50,9,-1.00,23.44,,overs 1.3x
+2026-11-07,flemington-20261107,9,Salaria,8.68,2,7,11.5,1.33,8,-1.00,14.10,,overs 1.3x; our 2nd-3rd; barrier 4-8
+2026-11-08,ararat-20261108,2,Model Gigi,3.18,1,7,4.55,1.43,1,+3.55,5.29,,overs 1.3x; barrier 4-8
+2026-11-08,ararat-20261108,6,Thedoctoroflove,12.58,6,13,16.5,1.31,12,-1.00,24.55,,overs 1.3x
+2026-11-09,hamilton-20261109,3,Alltogethernow,5.71,1,13,7.75,1.36,8,-1.00,9.59,,overs 1.3x
+2026-11-09,hamilton-20261109,6,Becauseyou're Mine,3.55,1,11,3.0,0.85,3,-1.00,2.64,-500,blend 9am
+2026-11-11,ballarat-20261111,3,Running Rich,5.15,2,9,9.13,1.77,3,-1.00,12.23,,overs 1.3x; our 2nd-3rd

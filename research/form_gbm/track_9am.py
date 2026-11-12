@@ -7,7 +7,12 @@ settled live meeting, 1u flat at the 9am price, no deduction, first starters out
 Rebuilds data/live_bets/9am-tracker.csv from every file given plus the rows already in it (a meeting's rows are replaced
 when it is given again), and prints the totals by type. Our price and rank come from each meeting's live -v6.json (the
 newest committed on or before race day, as track_rules.py picks it), the barrier from its -v5s1.json, the result from its
-results file. The senior-rider type needs the apprentice flag, which the live files do not carry, so it is not tracked."""
+results file. The senior-rider type needs the apprentice flag, which the live files do not carry, so it is not tracked.
+ALSO THE 9AM BLEND (12 Nov 2026, founder: "you realise we can get on for $1,000 - $2,000 win with all bookies if we do
+that"; night/t_blend_bsp.py): our price mixed with the 9am market, log p = 0.20 log(ours) + 1.00 log(1/9am price),
+renormalised per race; a runner whose 9am price is at least 1.05x the blend's price is a "blend 9am" bet. Settled to win
+$1,000 per bookie ($2,000 at the metro tracks), the minimum bet limit, as mbl_pl."""
+import math
 import collections, csv, io, json, os, sys
 here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, here)
 import track_rules as T
@@ -39,25 +44,38 @@ for mid, px in flu.items():
         for r in json.load(open(f5)): bar[(int(r["race"]), nm(r["horse"]))] = r.get("barrier")
     by = collections.defaultdict(list)
     for r in v6: by[int(r["race"])].append(r)
+    lim = 2000.0 if any(pre[11:].startswith(m) for m in ("flemington", "caulfield", "moonee-valley", "sandown")) else 1000.0
     for rc, rs in by.items():
         tot = sum(x["p"] for x in rs); rs = sorted(rs, key=lambda x: -x["p"])
+        priced = [x for x in rs if x["p"] > 0 and px.get((rc, nm(x["horse"])))]
+        blend = {}
+        if len(priced) >= 4:   # the runners with a 9am price (a scratched runner has none), as night/t_blend_bsp.py
+            tp = sum(x["p"] for x in priced)
+            w = {nm(x["horse"]): math.exp(0.20 * math.log(x["p"] / tp) + 1.00 * math.log(1 / px[(rc, nm(x["horse"]))])) for x in priced}
+            sw = sum(w.values()); blend = {h: sw / v for h, v in w.items()}
         for rank, r in enumerate(rs, 1):
             k = (rc, nm(r["horse"])); p9 = px.get(k); ours = tot / r["p"] if r["p"] > 0 else None
-            if not p9 or not ours or not (1.6 <= ours <= 15) or k[1] in fs or p9 < 1.3 * ours: continue
+            ob = blend.get(k[1]); is_blend = bool(ob and p9 and 1.6 <= ob <= 15 and p9 >= 1.05 * ob)
+            over = bool(p9 and ours and 1.6 <= ours <= 15 and p9 >= 1.3 * ours)
+            if not p9 or k[1] in fs or not (over or is_blend): continue
             fin, bsp = R.get(k, (None, None))
             if fin is None and bsp is None: continue
             won = fin == "1"; b = bar.get(k)
-            types = [t for t, ok in (("our 2nd-3rd", 2 <= rank <= 3), ("barrier 4-8", b is not None and 4 <= int(b) <= 8)) if ok]
-            rows.append(dict(date=pre[:10], meeting_id=mid, race=rc, horse=r["horse"], our_price=f"{ours:.2f}", our_rank=rank,
+            types = [t for t, ok in (("overs 1.3x", over), ("our 2nd-3rd", over and 2 <= rank <= 3),
+                                     ("barrier 4-8", over and b is not None and 4 <= int(b) <= 8), ("blend 9am", is_blend)) if ok]
+            rows.append(dict(date=pre[:10], meeting_id=mid, race=rc, horse=r["horse"], our_price=f"{ours:.2f}" if ours else "", our_rank=rank,
                              barrier="" if b is None else b, price_9am=p9, ratio=f"{p9 / ours:.2f}", finish=fin or "",
-                             pl=f"{(p9 - 1) if won else -1.0:+.2f}", types="; ".join(types)))
+                             pl=f"{(p9 - 1) if won else -1.0:+.2f}", blend_price=f"{ob:.2f}" if ob else "",
+                             mbl_pl=f"{lim if won else -lim / (p9 - 1):+.0f}" if is_blend else "", types="; ".join(types)))
 rows.sort(key=lambda r: (r["date"], r["meeting_id"], int(r["race"])))
-F = ["date", "meeting_id", "race", "horse", "our_price", "our_rank", "barrier", "price_9am", "ratio", "finish", "pl", "types"]
+F = ["date", "meeting_id", "race", "horse", "our_price", "our_rank", "barrier", "price_9am", "ratio", "finish", "pl", "blend_price", "mbl_pl", "types"]
 with open(OUT, "w", newline="") as fh:
     w = csv.DictWriter(fh, fieldnames=F); w.writeheader(); w.writerows(rows)
 print(f"{OUT}: {len(rows)} runners overs at 9am, {len({r['meeting_id'] for r in rows})} meetings")
 print("| type | bets | won | profit (1u at 9am) | ROI |\n|---|---|---|---|---|")
-for t in ("all overs at 9am", "our 2nd-3rd", "barrier 4-8"):
-    xs = [r for r in rows if t == "all overs at 9am" or t in r["types"]]
+rows_old = rows
+for t in ("overs 1.3x", "our 2nd-3rd", "barrier 4-8", "blend 9am"):
+    xs = [r for r in rows if t in r["types"]]
     pl = sum(float(r["pl"]) for r in xs)
-    print(f"| {t} | {len(xs)} | {sum(r['finish'] == '1' for r in xs)} | {pl:+.1f}u | {pl / max(len(xs), 1):+.0%} |")
+    mbl = sum(float(r["mbl_pl"]) for r in xs if r.get("mbl_pl"))
+    print(f"| {t} | {len(xs)} | {sum(r['finish'] == '1' for r in xs)} | {pl:+.1f}u | {pl / max(len(xs), 1):+.0%} |" + (f" ${mbl:+,.0f} a bookie at the limits" if t == "blend 9am" else ""))
