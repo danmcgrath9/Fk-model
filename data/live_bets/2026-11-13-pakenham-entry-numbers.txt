@@ -1,18 +1,18 @@
 1|2|Kuheylan|False|False
 1|6|Roll With It|False|False
 1|1|Fulham Fox|False|False
-1|4|Oda Mae|False|False
-1|5|Open Fire|False|False
+1|4|Oda Mae|False|True
+1|5|Open Fire|False|True
 1|3|Lady Of Alsace|False|False
-1|9|Queen Of The Top|False|False
+1|9|Queen Of The Top|False|True
 1|7|Ambition In Bloom|False|False
-1|8|Helizangel|False|False
+1|8|Helizangel|False|True
 1|10|Star Je Taime|False|False
 1|12|Zapatch|False|False
 1|11|Via Theresa|False|False
 2|3|Dempsey|False|False
 2|14|Foxalation|True|False
-2|11|Dextrose|False|False
+2|11|Dextrose|False|True
 2|1|Asparagus|False|False
 2|13|Symphony Royale|True|False
 2|4|Galivad|False|False
@@ -22,7 +22,7 @@
 2|8|Mongolian Hero|False|False
 2|12|Capital Affair|False|False
 2|9|Royal Canvas|False|False
-2|7|King Campania|False|False
+2|7|King Campania|False|True
 2|10|Shamakita|False|False
 3|10|Reelness|False|False
 3|7|Hill Of Olives|False|False
@@ -35,10 +35,10 @@
 3|13|Calexpo|True|False
 3|2|Percipient|False|False
 3|4|Smart Step|False|False
-3|3|Slugger|False|False
+3|3|Slugger|False|True
 3|11|Cruise On Bye|False|False
 3|12|Miss Home Body|False|False
-3|14|Activating|True|False
+3|14|Activating|True|True
 3|5|Snow Cabin|False|False
 4|8|Corona Lad|False|False
 4|4|Port Philip|False|False
@@ -62,7 +62,7 @@
 5|10|Autumn Rainbow|False|False
 5|1|Jarbardar|False|False
 6|5|Bifrost|False|False
-6|12|Free To Play|False|False
+6|12|Free To Play|False|True
 6|1|Mr Tickles|False|False
 6|7|Abovethefrostline|False|False
 6|11|Laura's Gold|False|False
@@ -74,6 +74,7 @@
 6|6|Mad About Magnus|False|False
 6|10|Bel Lupa|False|False
 7|12|Blondeau|False|False
+7|1|Nation State|False|True
 7|2|Overactive|False|False
 7|3|Some People Callme|False|False
 7|5|Ten Warriors|False|False

@@ -1,7 +1,7 @@
 1|1|Farag|False|False
 1|4|The Cunning Fox|False|False
 1|10|Benbulben|False|False
-1|6|Roaring Engine|False|False
+1|6|Roaring Engine|False|True
 1|3|Federer|False|False
 1|9|Topspin|False|False
 1|7|Genrichero|False|False
@@ -10,8 +10,8 @@
 1|11|Phoenician|False|False
 1|8|Haiiro|False|False
 2|2|Celestial Blue|False|False
-2|1|Boots Off|False|False
-2|6|Rumours Fly|False|False
+2|1|Boots Off|False|True
+2|6|Rumours Fly|False|True
 2|4|Pride In Motion|False|False
 2|7|Stilts|False|False
 2|5|Resonant|False|False
@@ -19,15 +19,15 @@
 2|10|Voltrix|False|False
 2|9|Tiz The Tycoon|False|False
 2|3|Pocket Watch|False|False
-3|7|Mistressof Mayfair|False|False
-3|15|Queens Code|True|False
+3|7|Mistressof Mayfair|False|True
+3|15|Queens Code|True|True
 3|5|Lafarna|False|False
 3|11|Vixen Vibes|False|False
 3|10|Velocite Belle|False|False
 3|12|Nothin' Surer|True|False
 3|2|Chantess|False|False
-3|6|Media Darling|False|False
-3|3|Contarini|False|False
+3|6|Media Darling|False|True
+3|3|Contarini|False|True
 3|8|Ocean Mirage|False|False
 3|4|Finest Blend|False|False
 3|9|Taema|False|False
@@ -39,7 +39,7 @@
 4|5|Freshwater Fox|False|False
 4|6|Hopkins Star|False|False
 4|9|Sihaya|False|False
-4|10|Symphony Royale|False|False
+4|10|Symphony Royale|False|True
 4|2|Hannan Street|False|False
 4|1|Baccano|False|False
 4|3|Red Tide|False|False
@@ -49,7 +49,7 @@
 5|4|Wondering Spirit|False|False
 5|1|Earl Of Gloucester|False|False
 5|8|So Long Ago|False|False
-5|5|Olney|False|False
+5|5|Olney|False|True
 5|11|African Grey|False|False
 5|10|Forest Jim|False|False
 5|2|Akari Spirit|False|False
@@ -57,7 +57,7 @@
 5|7|Princess Sakiko|False|False
 6|4|Albanian I Am|False|False
 6|2|Lygon Street Luigi|False|False
-6|1|Habitual|False|False
+6|1|Habitual|False|True
 6|9|Frosty Night|False|False
 6|6|Burning Sensation|False|False
 6|10|Tipsy Gypsy|False|False
@@ -67,11 +67,11 @@
 6|5|Grandpa Neil|False|False
 7|2|Port Louis|False|False
 7|7|Small Town Hero|False|False
-7|5|Shaime|False|False
+7|5|Shaime|False|True
 7|8|Suspect|False|False
 7|4|Royal Infantry|False|False
 7|10|Sacro Catino|False|False
-7|1|Paparazzo|False|False
+7|1|Paparazzo|False|True
 7|9|Carriedo|False|False
 7|3|Ole Royale|False|False
 7|6|Neziha|False|False
@@ -79,11 +79,11 @@
 8|4|Kings Commission|False|False
 8|10|Fenestella|False|False
 8|7|She Won't Fold|False|False
-8|3|Lightwatch|False|False
+8|3|Lightwatch|False|True
 8|2|Jackpot Park|False|False
 8|5|Jetsetter Jack|False|False
 8|1|Whiskey Joe|False|False
-8|9|Luminary Miss|False|False
+8|9|Luminary Miss|False|True
 8|8|Stein|False|False
 8|6|Nickibi|False|False
 9|7|Egerton|False|False

@@ -1,0 +1,101 @@
+# Geelong Fri 13 Nov, official going, final fields, riders in (2:30pm re-price), no market yet
+1, Farag, 0, 0
+1, Haiiro, 0, 0
+1, The Cunning Fox, 0, 0
+1, Phoenician, 0, 0
+1, Genrichero, 0, 0
+1, Benbulben, 0, 0
+1, Diwali, 0, 0
+1, Topspin, 0, 0
+1, Roaring Engine, 0, 0
+1, Federer, 0, 0
+1, Eye For An Eye, 0, 0
+2, Pocket Watch, 0, 0
+2, Stilts, 0, 0
+2, Tiz The Tycoon, 0, 0
+2, Boots Off, 0, 0
+2, Voltrix, 0, 0
+2, Pride In Motion, 0, 0
+2, Rumours Fly, 0, 0
+2, Celestial Blue, 0, 0
+2, Resonant, 0, 0
+2, Superwill, 0, 0
+3, Finest Blend, 0, 0
+3, Seagoe, SCR
+3, Queens Code, SCR
+3, Nothin' Surer, SCR
+3, Lafarna, 0, 0
+3, Taema, 0, 0
+3, Chantess, 0, 0
+3, Sisterly, SCR
+3, Media Darling, 0, 0
+3, Contarini, 0, 0
+3, Vixen Vibes, 0, 0
+3, Velocite Belle, 0, 0
+3, Celestaria, 0, 0
+3, Ocean Mirage, 0, 0
+3, Mistressof Mayfair, 0, 0
+4, Sihaya, 0, 0
+4, Sheltered, 0, 0
+4, Miss Xtravaganza, 0, 0
+4, Symphony Royale, 0, 0
+4, Freshwater Fox, 0, 0
+4, Mystic Rapture, 0, 0
+4, Hopkins Star, 0, 0
+4, Baccano, 0, 0
+4, Hannan Street, 0, 0
+4, Red Tide, 0, 0
+5, Akari Spirit, 0, 0
+5, So Long Ago, 0, 0
+5, Dane On Tour, 0, 0
+5, African Grey, 0, 0
+5, Wondering Spirit, 0, 0
+5, Egerton Reef, 0, 0
+5, Princess Sakiko, 0, 0
+5, Olney, 0, 0
+5, Forest Jim, 0, 0
+5, Boggy Creek Boys, 0, 0
+5, Earl Of Gloucester, 0, 0
+6, Grandpa Neil, 0, 0
+6, Albanian I Am, 0, 0
+6, Burning Sensation, 0, 0
+6, Positivo, 0, 0
+6, Tipsy Gypsy, 0, 0
+6, Habitual, 0, 0
+6, Frosty Night, 0, 0
+6, Lygon Street Luigi, 0, 0
+6, Skydream, 0, 0
+6, Who I Think I Am, 0, 0
+7, Neziha, 0, 0
+7, Small Town Hero, 0, 0
+7, Suspect, 0, 0
+7, Ole Royale, 0, 0
+7, Shaime, 0, 0
+7, Carriedo, 0, 0
+7, Paparazzo, 0, 0
+7, Port Louis, 0, 0
+7, Royal Infantry, 0, 0
+7, Sacro Catino, 0, 0
+8, Whiskey Joe, 0, 0
+8, Jackpot Park, 0, 0
+8, Fenestella, 0, 0
+8, Lightwatch, 0, 0
+8, Nickibi, 0, 0
+8, Luminary Miss, 0, 0
+8, She Won't Fold, 0, 0
+8, Stein, 0, 0
+8, Pure Rain, 0, 0
+8, Kings Commission, 0, 0
+8, Jetsetter Jack, 0, 0
+9, Bleak Mid Winter, 0, 0
+9, Edges Diamond, 0, 0
+9, Ole Daze, SCR
+9, Mr Assertive, 0, 0
+9, Hey Jessie, 0, 0
+9, Recycle King, 0, 0
+9, Gold Bijoux, 0, 0
+9, Redders, 0, 0
+9, Smarticon, 0, 0
+9, Egerton, 0, 0
+9, Du Clisson, 0, 0
+9, Sea Poem, 0, 0

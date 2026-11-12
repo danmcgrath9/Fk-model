@@ -1,0 +1,9 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,GEEL_131126_1,Federer,top_pick,2.25,2.25,2.49,2.49,,3.11,-0.2,,1.0,no,,
+2,GEEL_131126_2,Voltrix,top_pick,0.0,0.0,0.0,,,2.85,-1.0,"Already run to today's class; New career-best last start; Third-up, improving; Blinkers first time",1.0,no,,
+4,GEEL_131126_4,Baccano,top_pick,5.0,5.0,4.9,4.9,,3.97,0.235,Class drop (rating),1.0,no,,
+5,GEEL_131126_5,Akari Spirit,top_pick,3.9,3.9,3.5,3.5,,3.3,0.061,,1.0,no,,
+6,GEEL_131126_6,Skydream,top_pick,3.8,3.8,3.71,3.71,,3.19,0.162,Already run to today's class,1.0,no,,
+7,GEEL_131126_7,Carriedo,top_pick,2.2,2.2,2.58,2.58,,2.63,-0.02,"Already run to today's class; Third-up, improving; Well backed before a bad last run",1.0,no,,
+8,GEEL_131126_8,Whiskey Joe,top_pick,2.2,2.2,1.9,1.9,,3.06,-0.379,Already run to today's class,1.0,no,,
+9,GEEL_131126_9,Redders,top_pick,3.1,3.1,2.9,2.9,,4.26,-0.319,Already run to today's class,1.0,no,,
