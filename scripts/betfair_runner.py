@@ -18,6 +18,8 @@ Betfair blocks API logins from the United States, where GitHub's own runners are
 runner in Australia. The login and API addresses are settings (BETFAIR_LOGIN_URL, BETFAIR_API_URL) because they have not
 been exercised yet: the first paper run with the real key is the check that they are right.
 Secrets (environment only, never in the repo): BETFAIR_APP_KEY, BETFAIR_USERNAME, BETFAIR_PASSWORD.
+LIVE LAYS ARE OFF (founder, 13 Nov 2026: "Stop the live lays, track the ours/1.6 rule"): LIVE_LAYS below is False, so a
+live run never places a lay; the lay rules stay on paper in research/form_gbm/track_rules.py.
 
     python scripts/betfair_runner.py --date 2026-11-13 --manifest data/live_bets/2026-11-13-betfair-manifest.txt
     python scripts/betfair_runner.py --date 2026-11-13 --manifest M --mock tests/betfair_mock.json   (offline test)
@@ -36,7 +38,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 L = Path(__file__).resolve().parents[1] / "data" / "live_bets"
-norm = lambda s: re.sub(r"[^a-z0-9]", "", re.sub(r"^\s*\d+\.\s*", "", str(s)).lower())
+LIVE_LAYS = False   # founder, 13 Nov 2026: "Stop the live lays". Only the founder's word turns this back on.
+norm =lambda s: re.sub(r"[^a-z0-9]", "", re.sub(r"^\s*\d+\.\s*", "", str(s)).lower())
 venue_key = lambda s: re.sub(r"[^a-z]", "", re.sub(r"(hillside|lakeside|synthetic|poly|heath)", "", str(s).lower()))
 
 
@@ -198,6 +201,10 @@ def main():
         placed, race_liab = {}, 0.0
         keep = []
         for o in orders:
+            # LIVE LAYS STOPPED (founder, 13 Nov 2026: "Stop the live lays"): on the months that never chose them every lay rule
+            # lost (night/bsp_rules_oos.py), so a live run places backs only and logs each lay it would have made.
+            if o["side"] == "LAY" and not LIVE_LAYS:
+                placed[o["_horse"]] = "not placed: live lays stopped (13 Nov)"; continue
             if race_liab + o["_liab"] > a.race_cap or day_liab + o["_liab"] > a.day_cap:
                 placed[o["_horse"]] = "skipped: over the race or day cap"; continue
             race_liab += o["_liab"]; day_liab += o["_liab"]; keep.append(o)

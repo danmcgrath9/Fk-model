@@ -249,6 +249,16 @@ below 1.4x the extra lays lose. About 8 more lays a week, so a little more liabi
   written by the 9:30am re-price. The key arrives later in the week (Betfair needs the account funded first); the first
   paper run with it checks the login and API addresses.
 
+## LIVE LAYS STOPPED; the ours/1.6 lay is the one tracked (founder, Fri 13 Nov 2026: "Stop the live lays, track the ours/1.6 rule")
+On the four periods that never chose them (Jul 2025 - 2 Jun 2026, research/form_gbm/night/bsp_rules_oos.py) every lay rule
+lost except one: the current $15-$40 at 1.5x ours -457.2u on 2,765 lays (-16.5%), $8-$12 at 1.6x -34.1u, and the "drifted
+2x" rule the live weeks flattered -89.9u on 1,218 lays (39 winners against 39.0 expected: BSP was right). The one that held
+is "Lay $25-$40 when BSP <= ours / 1.6": 271 lays, 6 won against 8.9 expected, +77.1u (+28%), 3 of 4 periods.
+- No lay is placed live: scripts/betfair_runner.py LIVE_LAYS = False (a live run places favourite backs only and logs each
+  lay it would have made). The $50 live lays planned for Fri 13 Nov never fired (no manifest, no Betfair run).
+- The ours/1.6 rule is tracked on paper by track_rules.py (rule 3 below) and reported in the settle message, since 9 Oct and
+  from 13 Nov; the old lay book is no longer settled in dollars. It goes live only on the founder's word.
+
 ## Betfair SP rules under watch (founder, 10 Nov 2026: "Track all of those")
 The live weeks showed the $15-$40 lay at 1.5x ours winning as often as BSP said (317 lays, 14 won v 13.6; the backtest
 had 19 v 38.9), so the rules were re-searched for ones that make money in the backtest's two halves AND live
