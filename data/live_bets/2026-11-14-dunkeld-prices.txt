@@ -1,0 +1,95 @@
+# Dunkeld Sat 14 Nov, Dead (official), final fields, no market yet; PAPER ONLY (no holdout: one Dunkeld meeting in the model's history, Nov 2025)
+1, Love Runs Deep, 0, 0
+1, Red Mink, 0, 0
+1, Flash Inquiry, 0, 0
+1, Starseatic, 0, 0
+1, Tricky Miss, 0, 0
+1, Boridi, 0, 0
+1, On A Profit, 0, 0
+1, Gunnah's Conker, 0, 0
+1, Balgownie Miss, 0, 0
+1, Ricky Stanicky, 0, 0
+2, Floyd's Prediction, SCR
+2, Te Awam Utu, 0, 0
+2, Something White, 0, 0
+2, Malawi Man, 0, 0
+2, Inner Thoughts, 0, 0
+2, Cracked It, 0, 0
+2, He's Fierce, 0, 0
+2, Baltic, SCR
+2, Holler's Vision, SCR
+2, Parak, 0, 0
+2, Proud Witness, 0, 0
+2, Light Filled, 0, 0
+2, Magica, 0, 0
+2, Sammie Ellen Boy, SCR
+3, Frosted Amber, 0, 0
+3, Highlight Reel, SCR
+3, Balsino Prince, 0, 0
+3, Classy Sassy, 0, 0
+3, Love Dad, SCR
+3, Five Landings, 0, 0
+3, Ninetyfiveinafifty, 0, 0
+3, Zephyr's Reward, 0, 0
+3, Inthepink, 0, 0
+3, Overthinker, 0, 0
+3, Crimson Storm, 0, 0
+4, Squazeemoto, 0, 0
+4, Nudge 'em Along, SCR
+4, Monsoon Reins, 0, 0
+4, Mr Time, 0, 0
+4, Frose, 0, 0
+4, Bokeem, 0, 0
+4, Bare To Witness, 0, 0
+4, Point Of Ecstasy, 0, 0
+4, Fox Man, 0, 0
+4, Beau Strada, 0, 0
+4, Caribbean Villa, 0, 0
+5, Take The Prize, 0, 0
+5, Golden Age, SCR
+5, Iliad, 0, 0
+5, Hidden Comfort, 0, 0
+5, Simply Excels, SCR
+5, Flux, SCR
+5, Drunken Sailor, 0, 0
+5, Ponte Arcobaleno, 0, 0
+5, Immortal Justice, 0, 0
+5, I Am Vengeance, 0, 0
+5, Abby's Crossword, 0, 0
+5, Wild Roses Grow, SCR
+5, Krasnoludek, 0, 0
+5, Sweet But Sassy, 0, 0
+6, Diamond War, 0, 0
+6, Tango Jewel, 0, 0
+6, Yoomee Wonder, 0, 0
+6, Synchro, 0, 0
+6, Iced Poppy, 0, 0
+6, Packers Journey, 0, 0
+6, Tennessee Song, 0, 0
+6, Eeteedee, 0, 0
+6, Bazzar, 0, 0
+7, Flying Basil, 0, 0
+7, Gregolimo, 0, 0
+7, New York Hurricane, 0, 0
+7, Foujita San, 0, 0
+7, Any Luck, 0, 0
+7, Scalextrics, SCR
+7, Switch Hit, SCR
+7, Navy King, 0, 0
+7, Stay Humble, 0, 0
+7, Dubai Watch, 0, 0
+7, Overpriced, 0, 0
+8, Dusty's Deel, SCR
+8, Bellakai, SCR
+8, Dubai Legend, SCR
+8, Peyton Jane, 0, 0
+8, Rippa Buddy, 0, 0
+8, Whistler Girl, 0, 0
+8, Mannerheim, 0, 0
+8, Monsun's Pride, 0, 0
+8, Paltinian, 0, 0
+8, Idling Behind, 0, 0
+8, Chateau Dancer, 0, 0
+8, Dirty Robber, 0, 0
+8, Scandoval, SCR
+8, Tassadar, 0, 0

@@ -1,0 +1,11 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,MOE_151126_1,Marbles,top_pick,0.0,0.0,0.0,,,4.8,-1.0,Class drop (rating),1.0,no,,
+2,MOE_151126_2,Blue Light Disco,top_pick,0.0,0.0,0.0,,,3.36,-1.0,Beaten by the pace last start; Back in trip after being handy,1.0,no,,
+3,MOE_151126_3,Zeffirelli,top_pick,0.0,0.0,0.0,,,3.19,-1.0,Already run to today's class; Class drop (rating),1.0,no,,
+4,MOE_151126_4,Hedjet,top_pick,0.0,0.0,0.0,,,2.98,-1.0,Above the field in all three sections,1.0,no,,
+5,MOE_151126_5,Yes Yoshi,top_pick,0.0,0.0,0.0,,,1.91,-1.0,Already run to today's class; Class drop (rating); EARLY ONLY: bet near the open,1.0,no,,
+6,MOE_151126_6,Purple Streak,top_pick,0.0,0.0,0.0,,,3.78,-1.0,Beaten by the pace last start; Already run to today's class; EARLY ONLY: bet near the open,1.0,no,,
+7,MOE_151126_7,Girt By Sea,top_pick,0.0,0.0,0.0,,,4.49,-1.0,,1.0,no,,
+8,MOE_151126_8,Makdane,top_pick,5.0,5.0,5.0,5.0,,5.83,-0.142,,1.0,no,,
+8,MOE_151126_8,Bring Forth,value_20c,11.0,11.0,13.0,13.0,,8.17,0.591,,1.25,no,,
+9,MOE_151126_9,Mickidabeel,top_pick,0.0,0.0,0.0,,,4.58,-1.0,,1.0,no,,

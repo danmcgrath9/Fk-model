@@ -1,0 +1,90 @@
+1|16|Mark's Magus|True|False
+1|9|The Contender|False|False
+1|15|Slick Vixen|True|False
+1|13|Lady Of Lubeck|False|False
+1|6|Iron Stupa|False|False
+1|7|Sibun|False|False
+1|3|Desmond William|False|False
+1|1|Beast Fighter|False|False
+1|11|Cape Radstock|False|False
+1|12|Lady Courrege|False|False
+1|8|Ted Percy|False|False
+1|2|Chauhan|False|False
+1|14|Thankful Smile|False|False
+1|5|Interrogate|False|False
+1|4|Genomic|False|False
+2|2|Royal Infantry|False|False
+2|3|Turned Down|False|False
+2|1|Paparazzo|False|False
+2|4|Princess Toro|False|False
+2|7|Boulderoo|False|False
+2|5|Black Aces|False|False
+2|6|Russian Duchess|False|False
+3|9|All Moonlite|False|False
+3|5|Rockin' Dee Fox|False|False
+3|14|Dukey|True|False
+3|11|Eminent Ella|False|False
+3|1|Alltogethernow|False|False
+3|12|Empress Of China|False|False
+3|8|Aitana|False|False
+3|4|Lord Timo|False|False
+3|3|Efreeti|False|False
+3|2|Ateyate|False|False
+3|10|Ashina|False|False
+3|13|Hot Spirit|False|False
+3|6|Gradivus|False|False
+3|7|Shape The World|False|False
+4|3|Lightning Express|False|False
+4|2|Catani Gardens|False|False
+4|9|Circa|False|False
+4|7|Mozu Marcassin|False|False
+4|5|Kilna|False|False
+4|4|Mickio|False|False
+4|1|Interjection|False|False
+4|6|She's Stargazing|False|False
+4|8|Julep|False|False
+5|2|Boots Off|False|False
+5|10|Flare Of Grace|False|False
+5|8|Bubble Art|False|False
+5|4|Move It|False|False
+5|9|Capital Affair|False|False
+5|1|Baccano|False|False
+5|5|Pinazaki|False|False
+5|11|Masbah|False|False
+5|6|Saint Willo|False|False
+5|7|All Eyes On Erin|False|False
+5|13|Star Kells|False|False
+5|3|Boutin|False|False
+5|12|Neonova|False|False
+6|7|Van Roy|False|False
+6|2|El Rocko|False|False
+6|8|Fox Appeal|False|False
+6|11|Albanian I Am|False|False
+6|9|Scalextrics|False|False
+6|5|Bullets High|False|False
+6|1|Quietness|False|False
+6|6|El James|False|False
+6|4|Somewhere|False|False
+6|10|The Muffin Man|False|False
+6|3|Grecian Destiny|False|False
+7|3|Jet Jitsu|False|False
+7|1|Brung King|False|False
+7|2|Alternate|False|False
+7|12|Solar Mist|False|False
+7|6|Switch Hit|False|False
+7|11|Designs Of Eight|False|False
+7|7|Second Fix|False|False
+7|4|Sound Of Jura|False|False
+7|9|Chantra|False|False
+7|5|Panda's Spectrum|False|False
+7|10|Stepify|False|False
+7|8|Town Planner|False|False
+8|5|Flashing Steel|False|False
+8|6|Turn Up The Night|False|False
+8|3|Shalailed|False|False
+8|2|Greatham Boy|False|False
+8|8|Melodee Rose|False|False
+8|9|Racey Casey|False|False
+8|7|Tennessee Song|False|False
+8|4|Catwalk Icon|False|False
+8|1|Bazzar|False|False

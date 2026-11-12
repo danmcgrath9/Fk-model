@@ -1,0 +1,84 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-15,Moe,1,,3,Boridi,WIN,19.37,42.27,0.58,29,1 of 2,0.58u,14.09,
+2026-11-15,Moe,1,,3,Boridi,WIN,24.21,42.27,0.14,7,2 of 2,0.72u,14.09,
+2026-11-15,Moe,1,,7,Chantess,WIN,19.18,41.87,0.58,29,1 of 2,0.58u,13.96,
+2026-11-15,Moe,1,,7,Chantess,WIN,23.98,41.87,0.15,8,2 of 2,0.73u,13.96,
+2026-11-15,Moe,1,,10,Marbles,WIN,6.24,14.39,1.97,98,1 of 3,1.97u,4.80,
+2026-11-15,Moe,1,,10,Marbles,WIN,7.80,14.39,0.44,22,2 of 3,2.41u,4.80,
+2026-11-15,Moe,1,,10,Marbles,WIN,10.56,14.39,2.41,120,3 of 3,4.82u,4.80,opens $10.56+ (2.2x ours): stake doubled
+2026-11-15,Moe,1,,13,Nautique,WIN,13.83,30.69,0.82,41,1 of 2,0.82u,10.23,
+2026-11-15,Moe,1,,13,Nautique,WIN,17.29,30.69,0.20,10,2 of 2,1.02u,10.23,
+2026-11-15,Moe,2,,2,Bemm River,WIN,6.13,14.16,2.01,100,1 of 3,2.01u,4.72,
+2026-11-15,Moe,2,,2,Bemm River,WIN,7.66,14.16,0.45,22,2 of 3,2.46u,4.72,
+2026-11-15,Moe,2,,2,Bemm River,WIN,10.39,14.16,2.46,123,3 of 3,4.92u,4.72,opens $10.39+ (2.2x ours): stake doubled
+2026-11-15,Moe,2,,4,Boss Bundle,WIN,14.53,32.16,0.78,39,1 of 2,0.78u,10.72,
+2026-11-15,Moe,2,,4,Boss Bundle,WIN,18.16,32.16,0.19,10,2 of 2,0.97u,10.72,
+2026-11-15,Moe,2,,7,Weasel Sea,WIN,8.92,20.22,1.32,66,1 of 3,1.32u,6.74,
+2026-11-15,Moe,2,,7,Weasel Sea,WIN,11.15,20.22,0.31,16,2 of 3,1.63u,6.74,
+2026-11-15,Moe,2,,7,Weasel Sea,WIN,14.83,20.22,1.63,82,3 of 3,3.26u,6.74,opens $14.83+ (2.2x ours): stake doubled
+2026-11-15,Moe,3,,9,Levent,WIN,10.11,22.77,1.15,57,1 of 3,1.15u,7.59,
+2026-11-15,Moe,3,,9,Levent,WIN,12.64,22.77,0.27,14,2 of 3,1.42u,7.59,
+2026-11-15,Moe,3,,9,Levent,WIN,16.70,22.77,1.42,71,3 of 3,2.84u,7.59,opens $16.70+ (2.2x ours): stake doubled
+2026-11-15,Moe,3,,14,Open Fire,WIN,4.72,11.03,2.74,137,1 of 3,2.74u,3.68,
+2026-11-15,Moe,3,,14,Open Fire,WIN,5.90,11.03,0.58,29,2 of 3,3.32u,3.68,
+2026-11-15,Moe,3,,14,Open Fire,WIN,8.09,11.03,3.32,166,3 of 3,6.64u,3.68,opens $8.09+ (2.2x ours): stake doubled
+2026-11-15,Moe,3,,8,Zeffirelli,WIN,3.84,3.99,3.00,150,1 of 1,3.00u,3.19,opens under $4: edge 1.15
+2026-11-15,Moe,3,,8,Zeffirelli,WIN,4.06,9.56,3.28,164,1 of 3,3.28u,3.19,
+2026-11-15,Moe,3,,8,Zeffirelli,WIN,5.07,9.56,0.67,34,2 of 3,3.95u,3.19,
+2026-11-15,Moe,3,,8,Zeffirelli,WIN,7.02,9.56,3.95,198,3 of 3,7.90u,3.19,opens $7.02+ (2.2x ours): stake doubled
+2026-11-15,Moe,4,,6,Chest Of Gold,WIN,19.97,43.51,0.56,28,1 of 2,0.56u,14.50,
+2026-11-15,Moe,4,,6,Chest Of Gold,WIN,24.96,43.51,0.14,7,2 of 2,0.70u,14.50,
+2026-11-15,Moe,4,,8,Feeling Dusty,WIN,13.23,29.41,0.86,43,1 of 2,0.86u,9.80,
+2026-11-15,Moe,4,,8,Feeling Dusty,WIN,16.54,29.41,0.21,10,2 of 2,1.07u,9.80,
+2026-11-15,Moe,4,,2,Fridge Monster,WIN,7.00,16.05,1.73,86,1 of 3,1.73u,5.35,
+2026-11-15,Moe,4,,2,Fridge Monster,WIN,8.75,16.05,0.39,20,2 of 3,2.12u,5.35,
+2026-11-15,Moe,4,,2,Fridge Monster,WIN,11.77,16.05,2.12,106,3 of 3,4.24u,5.35,opens $11.77+ (2.2x ours): stake doubled
+2026-11-15,Moe,4,,9,Hedjet,WIN,3.58,3.99,3.29,164,1 of 1,3.29u,2.98,opens under $4: edge 1.15
+2026-11-15,Moe,4,,9,Hedjet,WIN,4.00,8.94,3.59,180,1 of 3,3.59u,2.98,
+2026-11-15,Moe,4,,9,Hedjet,WIN,4.72,8.94,0.72,36,2 of 3,4.31u,2.98,
+2026-11-15,Moe,4,,9,Hedjet,WIN,6.56,8.94,4.31,215,3 of 3,8.62u,2.98,opens $6.56+ (2.2x ours): stake doubled
+2026-11-15,Moe,4,,3,Houdini,WIN,12.02,15.01,0.52,26,1 of 1,0.52u,8.95,EARLY: $15 or shorter only
+2026-11-15,Moe,4,,5,Overpriced,WIN,11.88,26.56,0.97,48,1 of 2,0.97u,8.85,
+2026-11-15,Moe,4,,5,Overpriced,WIN,14.85,26.56,0.23,12,2 of 2,1.20u,8.85,
+2026-11-15,Moe,5,,2,Albany Road,WIN,14.06,31.18,0.81,40,1 of 2,0.81u,10.39,
+2026-11-15,Moe,5,,2,Albany Road,WIN,17.57,31.18,0.19,10,2 of 2,1.00u,10.39,
+2026-11-15,Moe,5,,7,Hustle In Heels,WIN,12.51,15.01,0.50,25,1 of 1,0.50u,9.30,EARLY: $15 or shorter only
+2026-11-15,Moe,5,,4,King West,WIN,14.41,31.90,0.79,40,1 of 2,0.79u,10.63,
+2026-11-15,Moe,5,,4,King West,WIN,18.01,31.90,0.19,10,2 of 2,0.98u,10.63,
+2026-11-15,Moe,5,,3,Yes Yoshi,WIN,2.24,3.99,6.35,318,1 of 2,6.35u,1.91,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-15,Moe,5,,3,Yes Yoshi,WIN,2.80,3.99,1.29,64,2 of 2,7.64u,1.91,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-15,Moe,5,,3,Yes Yoshi,WIN,4.00,5.72,6.84,342,1 of 3,6.84u,1.91,EARLY: $15 or shorter only
+2026-11-15,Moe,5,,3,Yes Yoshi,WIN,4.00,5.72,1.06,53,2 of 3,7.90u,1.91,EARLY: $15 or shorter only
+2026-11-15,Moe,5,,3,Yes Yoshi,WIN,4.20,5.72,2.10,105,3 of 3,10.00u,1.91,EARLY: $15 or shorter only; opens $4.20+ (2.2x ours): stake doubled
+2026-11-15,Moe,6,,4,Purple Streak,WIN,4.85,11.33,2.64,132,1 of 3,2.64u,3.78,EARLY: $15 or shorter only
+2026-11-15,Moe,6,,4,Purple Streak,WIN,6.06,11.33,0.57,28,2 of 3,3.21u,3.78,EARLY: $15 or shorter only
+2026-11-15,Moe,6,,4,Purple Streak,WIN,8.31,11.33,3.21,160,3 of 3,6.42u,3.78,EARLY: $15 or shorter only; opens $8.31+ (2.2x ours): stake doubled
+2026-11-15,Moe,6,,1,Weapon Clear,WIN,13.62,30.24,0.84,42,1 of 2,0.84u,10.08,
+2026-11-15,Moe,6,,1,Weapon Clear,WIN,17.02,30.24,0.20,10,2 of 2,1.04u,10.08,
+2026-11-15,Moe,7,,2,Aseventy Seven,WIN,9.55,21.58,1.22,61,1 of 3,1.22u,7.19,
+2026-11-15,Moe,7,,2,Aseventy Seven,WIN,11.94,21.58,0.29,14,2 of 3,1.51u,7.19,
+2026-11-15,Moe,7,,2,Aseventy Seven,WIN,15.83,21.58,1.51,76,3 of 3,3.02u,7.19,opens $15.83+ (2.2x ours): stake doubled
+2026-11-15,Moe,7,,4,Celestial Option,WIN,8.61,19.55,1.37,68,1 of 3,1.37u,6.52,
+2026-11-15,Moe,7,,4,Celestial Option,WIN,10.76,19.55,0.32,16,2 of 3,1.69u,6.52,
+2026-11-15,Moe,7,,4,Celestial Option,WIN,14.35,19.55,1.69,84,3 of 3,3.38u,6.52,opens $14.35+ (2.2x ours): stake doubled
+2026-11-15,Moe,7,,6,Girt By Sea,WIN,5.81,13.46,2.13,106,1 of 3,2.13u,4.49,
+2026-11-15,Moe,7,,6,Girt By Sea,WIN,7.26,13.46,0.48,24,2 of 3,2.61u,4.49,
+2026-11-15,Moe,7,,6,Girt By Sea,WIN,9.87,13.46,2.61,130,3 of 3,5.22u,4.49,opens $9.87+ (2.2x ours): stake doubled
+2026-11-15,Moe,7,,11,Preservator,WIN,15.95,35.14,0.71,36,1 of 2,0.71u,11.71,
+2026-11-15,Moe,7,,11,Preservator,WIN,19.94,35.14,0.17,8,2 of 2,0.88u,11.71,
+2026-11-15,Moe,7,,9,Who I Think I Am,WIN,8.93,20.24,1.32,66,1 of 3,1.32u,6.75,
+2026-11-15,Moe,7,,9,Who I Think I Am,WIN,11.16,20.24,0.30,15,2 of 3,1.62u,6.75,
+2026-11-15,Moe,7,,9,Who I Think I Am,WIN,14.85,20.24,1.62,81,3 of 3,3.24u,6.75,opens $14.85+ (2.2x ours): stake doubled
+2026-11-15,Moe,9,,2,Aka Daka,WIN,7.42,16.97,1.62,81,1 of 3,1.62u,5.66,
+2026-11-15,Moe,9,,2,Aka Daka,WIN,9.28,16.97,0.37,18,2 of 3,1.99u,5.66,
+2026-11-15,Moe,9,,2,Aka Daka,WIN,12.45,16.97,1.99,100,3 of 3,3.98u,5.66,opens $12.45+ (2.2x ours): stake doubled
+2026-11-15,Moe,9,,5,Lunar Force,WIN,12.42,27.70,0.92,46,1 of 2,0.92u,9.23,
+2026-11-15,Moe,9,,5,Lunar Force,WIN,15.53,27.70,0.22,11,2 of 2,1.14u,9.23,
+2026-11-15,Moe,9,,4,Mickidabeel,WIN,5.94,13.73,2.09,104,1 of 3,2.09u,4.58,
+2026-11-15,Moe,9,,4,Mickidabeel,WIN,7.43,13.73,0.46,23,2 of 3,2.55u,4.58,
+2026-11-15,Moe,9,,4,Mickidabeel,WIN,10.07,13.73,2.55,127,3 of 3,5.10u,4.58,opens $10.07+ (2.2x ours): stake doubled
+2026-11-15,Moe,9,,1,Mr Independent,WIN,7.96,18.13,1.50,75,1 of 3,1.50u,6.04,
+2026-11-15,Moe,9,,1,Mr Independent,WIN,9.95,18.13,0.34,17,2 of 3,1.84u,6.04,
+2026-11-15,Moe,9,,1,Mr Independent,WIN,13.30,18.13,1.84,92,3 of 3,3.68u,6.04,opens $13.30+ (2.2x ours): stake doubled
+2026-11-15,Moe,9,,8,Stole Him,WIN,15.43,34.04,0.73,36,1 of 2,0.73u,11.35,
+2026-11-15,Moe,9,,8,Stole Him,WIN,19.29,34.04,0.18,9,2 of 2,0.91u,11.35,

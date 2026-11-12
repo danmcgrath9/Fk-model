@@ -1,0 +1,91 @@
+# Donald Sun 15 Nov, Dead (official), final fields, no market yet; PROVISIONAL: riders not all declared (Sunday's come Friday), re-priced once they are
+1, Mark's Magus, SCR
+1, The Contender, 0, 0
+1, Slick Vixen, SCR
+1, Lady Of Lubeck, 0, 0
+1, Iron Stupa, 0, 0
+1, Sibun, 0, 0
+1, Desmond William, 0, 0
+1, Beast Fighter, 0, 0
+1, Cape Radstock, 0, 0
+1, Lady Courrege, 0, 0
+1, Ted Percy, 0, 0
+1, Chauhan, 0, 0
+1, Thankful Smile, 0, 0
+1, Interrogate, 0, 0
+1, Genomic, 0, 0
+2, Royal Infantry, 0, 0
+2, Turned Down, 0, 0
+2, Paparazzo, 0, 0
+2, Princess Toro, 0, 0
+2, Boulderoo, 0, 0
+2, Black Aces, 0, 0
+2, Russian Duchess, 0, 0
+3, All Moonlite, 0, 0
+3, Rockin' Dee Fox, 0, 0
+3, Dukey, SCR
+3, Eminent Ella, 0, 0
+3, Alltogethernow, 0, 0
+3, Empress Of China, 0, 0
+3, Aitana, 0, 0
+3, Lord Timo, 0, 0
+3, Efreeti, 0, 0
+3, Ateyate, 0, 0
+3, Ashina, 0, 0
+3, Hot Spirit, 0, 0
+3, Gradivus, 0, 0
+3, Shape The World, 0, 0
+4, Lightning Express, 0, 0
+4, Catani Gardens, 0, 0
+4, Circa, 0, 0
+4, Mozu Marcassin, 0, 0
+4, Kilna, 0, 0
+4, Mickio, 0, 0
+4, Interjection, 0, 0
+4, She's Stargazing, 0, 0
+4, Julep, 0, 0
+5, Boots Off, 0, 0
+5, Flare Of Grace, 0, 0
+5, Bubble Art, 0, 0
+5, Move It, 0, 0
+5, Capital Affair, 0, 0
+5, Baccano, 0, 0
+5, Pinazaki, 0, 0
+5, Masbah, 0, 0
+5, Saint Willo, 0, 0
+5, All Eyes On Erin, 0, 0
+5, Star Kells, 0, 0
+5, Boutin, 0, 0
+5, Neonova, 0, 0
+6, Van Roy, 0, 0
+6, El Rocko, 0, 0
+6, Fox Appeal, 0, 0
+6, Albanian I Am, 0, 0
+6, Scalextrics, 0, 0
+6, Bullets High, 0, 0
+6, Quietness, 0, 0
+6, El James, 0, 0
+6, Somewhere, 0, 0
+6, The Muffin Man, 0, 0
+6, Grecian Destiny, 0, 0
+7, Jet Jitsu, 0, 0
+7, Brung King, 0, 0
+7, Alternate, 0, 0
+7, Solar Mist, 0, 0
+7, Switch Hit, 0, 0
+7, Designs Of Eight, 0, 0
+7, Second Fix, 0, 0
+7, Sound Of Jura, 0, 0
+7, Chantra, 0, 0
+7, Panda's Spectrum, 0, 0
+7, Stepify, 0, 0
+7, Town Planner, 0, 0
+8, Flashing Steel, 0, 0
+8, Turn Up The Night, 0, 0
+8, Shalailed, 0, 0
+8, Greatham Boy, 0, 0
+8, Melodee Rose, 0, 0
+8, Racey Casey, 0, 0
+8, Tennessee Song, 0, 0
+8, Catwalk Icon, 0, 0
+8, Bazzar, 0, 0

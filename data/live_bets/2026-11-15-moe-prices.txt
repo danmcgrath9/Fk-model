@@ -1,0 +1,112 @@
+# Moe Sun 15 Nov, Dead (official), final fields, R8 market open; PROVISIONAL: riders not all declared (Sunday's come Friday), re-priced once they are
+1, Amber Smile, 0, 0
+1, Prestige Valley, 0, 0
+1, Verismo, 0, 0
+1, Mistressof Mayfair, 0, 0
+1, Doolin, 0, 0
+1, Boridi, 0, 0
+1, Chantess, 0, 0
+1, Marbles, 0, 0
+1, Crimson Storm, 0, 0
+1, Miss Home Body, 0, 0
+1, Nautique, 0, 0
+1, Ballsintheair, 0, 0
+1, Kejayaan, 0, 0
+2, Just Alf, SCR
+2, Blue Light Disco, 0, 0
+2, Galagacisco, 0, 0
+2, Jupiter's Girl, 0, 0
+2, Rockbourg, 0, 0
+2, Boss Bundle, 0, 0
+2, Admire Mercury, 0, 0
+2, Oak Park Mia, 0, 0
+2, Miss Belajo, SCR
+2, Fear The Impact, 0, 0
+2, Zouie, 0, 0
+2, Wyandra, 0, 0
+2, Imperial Meeting, 0, 0
+2, Weasel Sea, 0, 0
+2, Bemm River, 0, 0
+2, Torzannie, SCR
+2, The Sheriff, SCR
+3, Builtthiscity, SCR
+3, Gypsy Moon, 0, 0
+3, Chronic, 0, 0
+3, Maharani Miss, SCR
+3, Always Shining, 0, 0
+3, Hansard, SCR
+3, Chiquitipapa, 0, 0
+3, Sir Riverance, 0, 0
+3, Pierrobid, 0, 0
+3, Zeffirelli, 0, 0
+3, Open Fire, 0, 0
+3, Aces Full, 0, 0
+3, Motherduck, 0, 0
+3, Mr Myrtlevale, 0, 0
+3, Lacessit, 0, 0
+3, Levent, 0, 0
+3, The Turk, 0, 0
+4, Red On Red, 0, 0
+4, Space Age, 0, 0
+4, Fridge Monster, 0, 0
+4, Feeling Dusty, 0, 0
+4, Chest Of Gold, 0, 0
+4, Houdini, 0, 0
+4, Octane Reign, 0, 0
+4, Overpriced, 0, 0
+4, Hedjet, 0, 0
+5, Vail Mountain, 0, 0
+5, Umgawa, 0, 0
+5, Cardi Bee, 0, 0
+5, Hustle In Heels, 0, 0
+5, King West, 0, 0
+5, Siriusly Bright, 0, 0
+5, Albany Road, 0, 0
+5, Yes Yoshi, 0, 0
+6, Moonlight Rustler, 0, 0
+6, Do It Now, 0, 0
+6, Weapon Clear, 0, 0
+6, Just Bolts, 0, 0
+6, Diamond Mila, 0, 0
+6, Mckeyla, 0, 0
+6, Miss Ole, 0, 0
+6, Meisho, 0, 0
+6, Teine Aulelei, 0, 0
+6, Best Of The Best, 0, 0
+6, Freshen, 0, 0
+6, Purple Streak, 0, 0
+7, Anything But, 0, 0
+7, Satin Image, 0, 0
+7, Aseventy Seven, 0, 0
+7, Real Alliance, 0, 0
+7, Ashau Valley, 0, 0
+7, Preservator, 0, 0
+7, Grand Sage, 0, 0
+7, Pensatore, 0, 0
+7, Duke Of Clarence, 0, 0
+7, Sensational Ruler, 0, 0
+7, Celestial Option, 0, 0
+7, King Of Savoy, 0, 0
+7, Girt By Sea, 0, 0
+7, Who I Think I Am, 0, 0
+8, Smokin' Romans, 15.00, 15.00, fk_open 15.00
+8, Regal Lion, 7.00, 7.00, fk_open 7.00
+8, My Brothers Keeper, 21.00, 21.00, fk_open 21.00
+8, Magnaspin, 3.90, 3.90, fk_open 3.80
+8, Grand Pierro, 9.00, 9.00, fk_open 9.00
+8, Flying Valley, 6.00, 6.00, fk_open 6.00
+8, Makdane, 5.00, 5.00, fk_open 5.00
+8, The Pendragon, 10.00, 10.00, fk_open 10.00
+8, Statuario, 10.00, 10.00, fk_open 10.00
+8, Bring Forth, 11.00, 11.00, fk_open 13.00
+9, Korobeiniki, 0, 0
+9, Avonview, 0, 0
+9, Pure Grunt, 0, 0
+9, Larryoctane, 0, 0
+9, Ginger Sweet, 0, 0
+9, Aka Daka, 0, 0
+9, Mickidabeel, 0, 0
+9, Stole Him, 0, 0
+9, Mr Independent, 0, 0
+9, Lunar Force, 0, 0
+9, Epeiric, 0, 0

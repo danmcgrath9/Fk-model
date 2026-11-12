@@ -1,0 +1,58 @@
+# Yea Sat 14 Nov, Dead (official), final fields, no market yet; PAPER ONLY (no holdout: no Yea meeting in the model's history)
+1, Couldbetracy, 0, 0
+1, Wallace And Gromit, 0, 0
+1, Haunted Kynexion, 0, 0
+1, Prized Magic, 0, 0
+1, Jirachi, 0, 0
+1, Moonlight Romance, 0, 0
+1, Jenni Bam Bam, 0, 0
+1, Eidfjord, 0, 0
+1, Western Edge, 0, 0
+1, Opinion Leader, 0, 0
+2, Dissalto, 0, 0
+2, Snow On Her, 0, 0
+2, First Tosen, 0, 0
+2, Kilmister, 0, 0
+2, Royal Summer, 0, 0
+2, Flying D'amore, 0, 0
+2, Crying Cougar, 0, 0
+2, Tartan Queen, 0, 0
+2, Oriental Dane, 0, 0
+2, Duel Missile, 0, 0
+3, Warrandyte Road, 0, 0
+3, Mac Kalhoun, 0, 0
+3, Eight Shout's, 0, 0
+3, Rapido River, 0, 0
+3, Highly Regarded, 0, 0
+3, Pro Velocity, 0, 0
+3, Startin'sumthin', 0, 0
+4, Lika Mosh, 0, 0
+4, Sacra, 0, 0
+4, Annoy'en One, 0, 0
+4, Midivani, 0, 0
+4, Kyokushin, 0, 0
+4, Shahin, 0, 0
+4, Proprietary, 0, 0
+4, Hillbily Kynection, 0, 0
+4, Enough War, SCR
+4, The Cuban, 0, 0
+4, Littlebirdie, SCR
+4, The Village Fox, SCR
+4, Runway Ruler, 0, 0
+5, Understated, 0, 0
+5, Redwood Shadow, 0, 0
+5, Testing The Cugat, 0, 0
+5, Blonde Suspect, 0, 0
+5, Dreamstone, 0, 0
+5, In Your Hands, 0, 0
+5, Eight Under, 0, 0
+5, Lord Chapel, 0, 0
+5, Scandoval, 0, 0
+6, Librarchy's Dancer, 0, 0
+6, Mallee Maid, 0, 0
+6, Second Guess, 0, 0
+6, Barrett Reef, 0, 0
+6, These Boots, 0, 0
+6, Stella Cantante, 0, 0
+6, Zephartie, 0, 0
+6, Slippery Thinker, 0, 0
