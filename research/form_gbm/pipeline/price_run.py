@@ -102,11 +102,18 @@ def rain_before(path: Path, race_day: str):
     return (round(tot, 1), round(day, 1)) if seen else (None, None)
 
 
+def venue(track: str) -> str:
+    """The venue a track belongs to: 'Pakenham Park' and 'Pakenham Synthetic' are both Pakenham (12 Nov 2026: the turf had
+    no race after 3 Jun because winter racing was on the synthetic, and the meeting was wrongly marked paper only)."""
+    return track.split(" ")[0].lower()
+
+
 def model_history():
+    """(races since the holdout, races in all) by venue, from the live model's dataset."""
     import numpy as np
     z = np.load(S / "model" / "ds" / "model_ds.npz", allow_pickle=True)
     t = np.asarray(z["track"]).astype(str); d = np.asarray(z["date"]).astype(str)
-    return collections.Counter(x for x, y in zip(t, d) if y >= HOLDOUT)
+    return (collections.Counter(venue(x) for x, y in zip(t, d) if y >= HOLDOUT), collections.Counter(venue(x) for x in t))
 
 
 def main():
@@ -164,8 +171,10 @@ def main():
         no_rider = sum(1 for j, nm, r_ in zip(z["jockey"].astype(str), z["name"].astype(str), rn)
                        if not j.strip() and not em.get((int(r_), norm(nm)), False))
         rain, rday = rain_before(md / "forecast.md", d)
-        hist_n = sum(hist[t] for t in tracks)
-        paper = hist_n == 0
+        # PAPER ONLY: a meeting type the model has no holdout for (picnic clubs, a one-a-year cup meeting): its venue has
+        # fewer than 20 races in the model's history, or none since the 3 Jun holdout began
+        vs = {venue(t) for t in tracks}; hist_n = sum(hist[0][v] for v in vs); all_n = sum(hist[1][v] for v in vs)
+        paper = hist_n == 0 or all_n < 20
         going_word = "Soft (15mm+ rain)" if (rain or 0) >= 15 else "official going"
         opened = sorted({int(r["race"]) for r in fl if r.get("open") or r.get("race_open_ms")})
         dow = dt.date.fromisoformat(d).strftime("%a %-d %b")
@@ -173,7 +182,7 @@ def main():
         if not opened: flags.append("no market yet")
         else: flags.append(f"market open in R{','.join(map(str, opened))}")
         if no_rider: flags.append(f"PROVISIONAL: {no_rider} runners without a rider")
-        if paper: flags.append("PAPER ONLY (no race at this track since the 3 Jun holdout)")
+        if paper: flags.append(f"PAPER ONLY (the model has {all_n} races at this venue, {hist_n} since the 3 Jun holdout)")
         head = f"# {track} {dow}, {going_word}, final fields; " + "; ".join(flags)
         name = track.split(" ")[0] if track.startswith("Sandown") else track
         title = f"{name} {dow}" + (" (paper)" if paper else " (provisional)" if no_rider else "")
