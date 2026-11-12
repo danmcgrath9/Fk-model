@@ -4,7 +4,7 @@ name: fk all states
 # and saturday for all other states so we can keep data", ahead of going live with the other states on Fri 20 Nov and
 # the national archive arriving Fri 13 Nov, which ends the day before Dave produces it). Victoria's own pull, results
 # and pricing are untouched by it.
-#   11:15am Melbourne  that day's races for every other state (founder, 12 Nov: "start the pulls later, lets say
+#   11:45am Melbourne  that day's races for every other state (founder, 12 Nov: "start the pulls later, lets say
 #                      11:15am", so the riders are in), speedmaps once per meeting at this pull
 #   3:30am Melbourne   the previous day's results for the same states, one meeting summary each (after fk results)
 #   pull     every state's race fields for the day (2 credits a race, 5 a meeting for speedmaps, 1 for the list), with
@@ -13,7 +13,7 @@ name: fk all states
 
 on:
   schedule:
-    - cron: '15 0 * * *'    # 11:15 Melbourne in daylight saving (10:15 in standard time): the pull
+    - cron: '45 0 * * *'    # 11:45 Melbourne in daylight saving (10:45 in standard time): the pull, after the 11:15 Victorian price run (same queue)
     - cron: '30 16 * * *'   # 03:30 Melbourne in daylight saving (02:30 in standard time): the results
   workflow_dispatch:
     inputs:
@@ -68,7 +68,7 @@ jobs:
           DATE_ARG=""; [ -n "${{ github.event.inputs.date }}" ] && DATE_ARG="--date ${{ github.event.inputs.date }}"
           # A scheduled pull is always that day's races, even when GitHub fires it late (12 Nov: the first 11:15 run
           # never fired, and a late run after noon would otherwise default to tomorrow, before its riders are in)
-          [ "${{ github.event.schedule }}" = "15 0 * * *" ] && DATE_ARG="--date $(TZ=Australia/Melbourne date +%F)"
+          [ "${{ github.event.schedule }}" = "45 0 * * *" ] && DATE_ARG="--date $(TZ=Australia/Melbourne date +%F)"
           echo "mode $MODE, states $STATES" | tee -a "$GITHUB_STEP_SUMMARY"
           if [ "$MODE" = "results" ]; then
             python scripts/fetch_results.py --key live --yes --state "$STATES" $DATE_ARG | tee -a "$GITHUB_STEP_SUMMARY" || true
