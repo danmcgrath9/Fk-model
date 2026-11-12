@@ -4,7 +4,7 @@ log p = a log(ours) + b log(market), renormalised per race. Weights are fitted o
 (2025 <-> 2026), never on the races they are scored on. Two questions:
   1. Is the blend a better price than BSP? Winner log loss (lower is better) against BSP's own (1/BSP renormalised).
   2. Does it find bets at BSP? Back every runner whose BSP is at least k x the blend's price; 1u at BSP, 8% commission.
-Markets: the open (every race, 16 months) and the last price before the jump (timed races only: fluc_minutes.py).
+Markets: the open (every race, 16 months), 9am race morning and the last price before the jump (timed races only: fluc_minutes.py).
     python3.13 t_blend_bsp.py FLUC_MINUTES.md   (night folder)"""
 import csv, io, sys
 import numpy as np
@@ -13,7 +13,8 @@ ri = z["race_idx"]; nR = len(z["race_id"]); date = z["date"].astype(str)[ri]; ri
 won = np.asarray(z["finish"], float) == 1; o = np.asarray(z["open"], float); bs = np.asarray(z["bsp"], float)
 s = open(sys.argv[1]).read(); a = s.find("CSV-BEGIN") + 9; b = s.find("CSV-END")
 key = {(r["race_id"], r["horse_id"]): r for r in csv.DictReader(io.StringIO(s[a:b].strip()))}
-jp = np.array([float(key[(rid[i], hid[i])]["jump"]) if (rid[i], hid[i]) in key and key[(rid[i], hid[i])]["jump"] else np.nan for i in range(len(ri))])
+col = lambda c: np.array([float(key[(rid[i], hid[i])][c]) if (rid[i], hid[i]) in key and key[(rid[i], hid[i])][c] else np.nan for i in range(len(ri))])
+jp = col("jump"); p9 = col("c0900")
 def norm(x, m):
     out = np.full(len(x), np.nan); s_ = np.bincount(ri[m], weights=x[m], minlength=nR); out[m] = x[m] / s_[ri[m]]; return out
 def good(mk):   # races where every runner has a positive model price, a BSP, a winner and the market price
@@ -24,7 +25,7 @@ def ll(p, m): return -np.mean(np.log(np.maximum(p[m & won], 1e-12)))
 def blend(wa, wb, mk, m):
     x = np.where(m, np.exp(wa * np.log(np.maximum(P, 1e-12)) + wb * np.log(1 / mk)), 0.0); return norm(x, m)
 H1 = date < "2026-01-01"
-for name, mk in (("the open", o), ("the last price before the jump", jp)):
+for name, mk in (("the open", o), ("9am race morning", p9), ("the last price before the jump", jp)):
     m = good(mk); pb = norm(1 / bs, m); pm = norm(1 / mk, m); po = norm(P, m)
     print(f"\n## Market = {name}: {len(set(ri[m]))} races")
     grid = [(wa, wb) for wa in np.arange(0, 1.51, 0.05) for wb in np.arange(0, 1.51, 0.05) if wa + wb > 0]
