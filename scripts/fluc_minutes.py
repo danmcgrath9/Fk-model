@@ -7,6 +7,8 @@ then is left blank: it was not yet priced); after the jump the last price stands
 import os, sys
 from pathlib import Path
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
+MEL = ZoneInfo("Australia/Melbourne")
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from _common import load_settings
 from fk import history as H
@@ -29,7 +31,8 @@ def ms(v):
     except Exception: return None
 
 
-print("CSV-BEGIN"); print("race_id,horse_id,name,open,jump," + ",".join(f"m{m}" for m in MINS))
+CLOCK = ("09:00", "12:00")   # clock prices on race day, Melbourne (founder, 12 Nov: "Are there any type of bets that we win 9am")
+print("CSV-BEGIN"); print("race_id,horse_id,name,open,jump," + ",".join(f"m{m}" for m in MINS) + "," + ",".join("c" + c.replace(":", "") for c in CLOCK))
 n = 0
 for r in rows:
     ents = []
@@ -42,6 +45,11 @@ for r in rows:
         cells = []
         for m in MINS:
             p = [x for t, x in fl if t <= t0 + m * 60e3]
+            cells.append(f"{p[-1]:g}" if p else "")
+        d = datetime.fromisoformat(str(r["date"])[:10])
+        for c in CLOCK:
+            hh, mi = map(int, c.split(":")); cut = datetime(d.year, d.month, d.day, hh, mi, tzinfo=MEL).timestamp() * 1000
+            p = [x for t, x in fl if t <= cut]
             cells.append(f"{p[-1]:g}" if p else "")
         nm = str(e.get("name") or (e.get("horse") or {}).get("name") or "").replace(",", " ")
         print(f"{r['race_id']},{F.horse_id(e)},{nm},{fl[0][1]:g},{fl[-1][1]:g}," + ",".join(cells))
