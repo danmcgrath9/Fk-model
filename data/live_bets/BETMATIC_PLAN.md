@@ -124,11 +124,12 @@ every time. TAB session: 636816 (BETMATIC_TAB_SESSION); the Sportsbet session is
 
 ## Standing approval to send (12 Nov 2026, founder: "I'm also comfortable now that you can send the sheets yourself")
 Replaces the chat approval above for the model's own order sheets. Once a meeting is priced, Claude sends its pre-open
-sheet to BetMatic without asking first: fk-betmatic check (TAB balance, bot running), the live send (a dry run only when
-liquidity is in doubt, founder 3 Nov), confirm every order is scheduled, then tell the founder exactly what went (the
+sheet to BetMatic without asking first and without checking the TAB balance (founder, 12 Nov: "Don't check balance of
+TAB, just send"): the live send (a dry run only when liquidity is in doubt, founder 3 Nov), confirm every order is
+scheduled, then tell the founder exactly what went (the
 list, the sheet and the day page) in the same message as the prices. Never sent: a paper-only meeting (picnic, or a
-meeting type with no holdout), or anything while TAB is unfunded or the bot is off (it stays paper and the message says
-so). A provisional sheet (riders missing) is sent when the open will not wait for the riders: a price made before riders
+meeting type with no holdout). If BetMatic refuses a send, run check and read the connect log before saying the bot is
+off. A provisional sheet (riders missing) is sent when the open will not wait for the riders: a price made before riders
 keeps about two thirds of the profit and a missed open keeps none (night research, Part 4.4); when the riders land, every
 race not yet open is re-priced and its orders replaced (cancel that race, send its new orders). Still on the founder's
 word: tweets and cards, copied tips, any message or email, and any change to a rule or the model. First money in:
@@ -138,10 +139,13 @@ Fri 13 Nov (founder, 12 Nov: "its paper only until money goes in account tomorro
 Moe R8 (Sun 15 Nov) opened on TAB at 12:17pm Thursday, the minute the pricing run started, and its sheet was ready at
 1:15pm. Night research Part 4.1: 58% of meetings open before 12:17pm on their opening day (Tuesday meetings on Saturday
 9:45am-12, Saturday metro on Wednesday from 11:51am, Sunday on Friday 9:40-10:45am), and 21% of races opened before the
-sheet existed. So the pricing routine runs every hour from 9:17am to 12:17pm Melbourne: each run pulls the next three
-days and prices any meeting whose fields are final and which has no sheet, riders or not (riders missing = provisional),
-and the 12:17pm run re-pulls (force) and re-prices the provisional meetings whose riders are now declared. Cost: about
-9 credits a day for the extra meeting lists and 2 a race for the rider re-pulls, roughly 500 a month in all.
+sheet existed. The founder's time (12 Nov: "the pricing should be done around 11:15 like I said"; fields are not out
+at 9am): the pricing routine runs at 11:15am Melbourne and prices every meeting whose fields are final and which has no
+sheet, riders or not (riders missing = provisional); a 12:15pm run re-pulls (force) and re-prices the provisional
+meetings once their riders are declared, replacing the orders of each race not yet open. Cost: 2 credits a race for the
+rider re-pulls, roughly 200-300 a month.
+And it has to be quick (founder, 12 Nov: "the run takes an hour? Thats way to fkn long"): one GitHub run does the
+pulls, every input script and the exports (fk price run), and the meetings are priced side by side.
 
 ## Lessons from the first live day (15 Oct 2026)
 - GitHub keeps one waiting run per concurrency group and cancels the older one when another is queued: Wodonga's live

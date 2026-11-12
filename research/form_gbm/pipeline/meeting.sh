@@ -15,7 +15,7 @@ for f in "$R"/*.py; do cp -u "$f" . ; done   # the model folder runs the repo's 
 # The live model's input list (v10, 809 names), pinned here so a change to research/form_gbm/F9_names.txt cannot reach
 # the live pricer by accident; price_day3 stops if the day's inputs do not match it. The model folder must be the
 # live v10 one (rebuild_model.sh), not the models branch root (v9).
-cp "$R/pipeline/F9_names_live.txt" F9_names.txt
+cmp -s "$R/pipeline/F9_names_live.txt" F9_names.txt || cp "$R/pipeline/F9_names_live.txt" F9_names.txt   # cmp first: meetings now price side by side (12 Nov)
 python3.13 drop_scr.py $NPZ $PR $SN || { echo "STOP: drop_scr"; exit 1; }
 python3.13 price_day3.py $SN $B-v5s1.json || { echo "STOP: price_day3"; exit 1; }
 python3.13 apply_stage2f.py $B-v5s1.json $SN $B-v6.json p_oof_blend9.npy && echo "v6 ok" || { echo "STOP: stage 2f"; exit 1; }
