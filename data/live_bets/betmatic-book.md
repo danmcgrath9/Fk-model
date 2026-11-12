@@ -1189,3 +1189,14 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
   $2.70 or better); Geelong Baccano 2.61u $5 and Smarticon 0.63u $21 at the 8:32am best prices; Helizangel SCR.
 - Friday no-Mercer card: Melek R4 10.43u at $2.80, the blend of 5.43u at $2.90 (open) and 5u at $2.70 (9am):
   5.43 x 2.90 + 5 x 2.70 = 29.25 returned on 10.43u, $2.804.
+
+## Thursday 12 Nov Seymour settled (Form King results, Fri 10:05am)
+- Open book (no-Mercer card, the open, full units): Tale Of Genji R3 2.54u $5.50 WON (SP $5.50, BSP $6.20) +11.43u;
+  Zverev R1 0.96u $13.50 2nd, Princess Of Sol R1 0.88u $13.50 4th, Soju R7 0.88u $26 4th, Ulfberht R8 1.38u $13 13th
+  -4.10u. +7.33u on 6.64u (+$367 at $50), ROI +110%. No TAB deductions reported.
+- Mercer card (current prices, full units): Tale Of Genji 2.54u $3.80 won +7.11u, the rest -4.10u: +3.01u on 6.64u.
+- Lay book (s6l, $200 a lay): 7 lays, 2 winners (Commands Success R7 BSP $36.57 -35.57u, Deliberate Ploy R8 BSP $10.04
+  -9.04u), -40.01u (-$8,002 at $200); void 1 (Kiss My Rock R6). Lays live at $50 from Fri 13 Nov.
+- Back book: no BSP favourite in range. 9am list: none (started Fri 13 Nov); no 9am-tracker rows at Seymour.
+- Rule tracker (49 meetings): Lay $25-$40 drifted 2x +125.40u since 9 Oct; current lay $15-$40 rule -22.68u since 9 Oct,
+  -20.85u since 10 Nov (17 lays, 1 winner).
