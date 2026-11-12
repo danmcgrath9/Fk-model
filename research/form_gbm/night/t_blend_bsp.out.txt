@@ -1,0 +1,34 @@
+
+## Market = the open: 5120 races
+weights fitted on the other half: 2026: ours 0.60, market 0.50, 2025: ours 0.85, market 0.25
+| price | winner log loss (lower is better) |
+|---|---|
+| BSP | 1.7836 |
+| the market alone | 1.9175 |
+| our model alone | 1.8745 |
+| the blend | 1.8706 |
+
+| back when BSP >= k x the blend | bets | won | BSP expected | at BSP ROI | 2025 | 2026 |
+|---|---|---|---|---|---|---|
+| 1.1 | 25873 | 1563 | 1566 | -14.8% | -14.2% | -15.2% |
+| 1.2 | 22216 | 1172 | 1173 | -15.3% | -14.6% | -15.8% |
+| 1.3 | 19082 | 888 | 888 | -15.7% | -16.9% | -14.9% |
+| 1.5 | 14267 | 512 | 523 | -20.3% | -23.0% | -18.8% |
+| 2 | 7197 | 149 | 151 | -27.4% | -27.7% | -27.3% |
+
+## Market = the last price before the jump: 1503 races
+weights fitted on the other half: 2026: ours 0.10, market 1.00, 2025: ours 0.05, market 1.20
+| price | winner log loss (lower is better) |
+|---|---|
+| BSP | 1.8039 |
+| the market alone | 1.8137 |
+| our model alone | 1.8893 |
+| the blend | 1.8126 |
+
+| back when BSP >= k x the blend | bets | won | BSP expected | at BSP ROI | 2025 | 2026 |
+|---|---|---|---|---|---|---|
+| 1.1 | 2970 | 298 | 287 | -21.7% | -19.3% | -22.9% |
+| 1.2 | 1552 | 79 | 73 | -27.4% | -36.2% | -25.5% |
+| 1.3 | 1061 | 37 | 31 | -42.8% | -69.4% | -39.1% |
+| 1.5 | 619 | 12 | 11 | -65.0% | -76.0% | -64.0% |
+| 2 | 237 | 5 | 2 | -63.4% | - | -66.5% |
