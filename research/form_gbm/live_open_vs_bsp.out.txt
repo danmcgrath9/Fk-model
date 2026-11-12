@@ -1,0 +1,15 @@
+
+## The open book, every live meeting (1u = $50)
+
+| period | meetings | bets | won | staked | at the open | ROI | same bets at BSP | ROI | bets with no BSP |
+|---|---|---|---|---|---|---|---|---|---|
+| week of 12 Oct | 8 | 30 | 7 | 31.5u | +49.3u | +156% | +25.2u | +80% | 0 |
+| week of 19 Oct | 7 | 18 | 6 | 53.3u | +121.5u | +228% | +19.2u | +36% | 0 |
+| week of 26 Oct | 8 | 40 | 5 | 116.8u | +24.2u | +21% | -49.7u | -43% | 0 |
+| week of 02 Nov | 11 | 29 | 10 | 63.7u | +112.5u | +176% | +33.5u | +53% | 0 |
+| week of 09 Nov | 2 | 4 | 1 | 8.5u | +5.9u | +69% | -0.6u | -7% | 1 |
+| ALL | 36 | 121 | 29 | 273.8u | +313.3u | +114% | +27.6u | +10% | 1 |
+
+The open beat BSP on 89 of 121 bets (74%); median open/BSP 1.44.
+First meeting 2026-10-14, last 2026-11-11.
+No results file for: 2026-10-24-yarra-valley
