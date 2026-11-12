@@ -10,8 +10,29 @@
 1|3|Johnich|False|False
 1|12|Ichnusa|False|False
 1|9|Dad And Dave|False|False
+2|140|Oceans Blue|False|False
+2|200|Unkechaug|False|False
+2|60|Caddington|False|False
+2|160|Semantics|False|False
+2|80|Cavill Avenue|False|False
+2|130|Nishioka|False|False
+2|210|Vixen Vibes|False|False
+2|180|Simply Steffi|False|False
+2|30|Angels Fury|False|False
+2|10|Affari|False|False
+2|120|Natural Fling|False|False
+2|100|Ciaron's Star|False|False
+2|90|Chayan|False|False
+2|190|Sound Byte|False|False
+2|170|Sequinned|False|False
+2|150|Rubi's Choice|False|False
+2|40|Aroused|False|False
+2|20|Almost An Angel|False|False
+2|70|Calamari Ring|False|False
+2|50|Autumn Rainbow|False|False
+2|110|Lady Catalina|False|False
 2|8|Nation State|False|False
-2|14|Suspect|False|False
+2|14|Suspect|False|True
 2|2|Skippers Canyon|False|False
 2|7|Charming Nic|False|False
 2|4|Mometz|False|False
@@ -33,7 +54,7 @@
 3|7|Ferivia|False|False
 3|4|Fundamental Nature|False|False
 3|6|Impulsive Reaction|False|False
-4|16|Rick's Cafe|False|False
+4|16|Rick's Cafe|False|True
 4|10|Flag Flyer|False|False
 4|15|Durban Harbour|False|False
 4|5|Dragoon|False|False
@@ -73,6 +94,22 @@
 6|8|Bred 'em All|False|False
 6|7|Thanks Gorgeous|False|False
 6|2|Pallaton|False|False
+7|160|Unflinching|False|False
+7|110|Philosopher|False|False
+7|80|Oak Hill|False|False
+7|40|Don't Hope Do|False|False
+7|100|Perilous Fighter|False|False
+7|10|Always Enuff|False|False
+7|60|Lake Forest|False|False
+7|30|Choir Point|False|False
+7|140|Tennessee Spirit|False|False
+7|70|Mcgaw|False|False
+7|120|Saluted|False|False
+7|50|Jimmy Recard|False|False
+7|130|Swift Force|False|False
+7|20|Bred 'em All|False|False
+7|150|Thanks Gorgeous|False|False
+7|90|Pallaton|False|False
 7|6|Caddington|False|False
 7|12|Semantics|False|False
 7|15|Cavill Avenue|False|False
@@ -81,7 +118,7 @@
 7|9|Affari|False|False
 7|2|Natural Fling|False|False
 7|7|Ciaron's Star|False|False
-7|1|Chayan|False|False
+7|1|Chayan|False|True
 7|8|Sequinned|False|False
 7|4|Rubi's Choice|False|False
 7|13|Aroused|False|False
@@ -117,7 +154,7 @@
 10|12|Superfabulistic|False|False
 10|7|Terilee|False|False
 10|1|Cilacap|False|False
-10|9|Davida|False|False
+10|9|Davida|False|True
 10|4|Concord Connie|False|False
 10|13|Naraghi|False|False
 10|14|Russian Choice|False|False

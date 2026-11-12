@@ -1,0 +1,13 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,SANH_141126_1,Ichnusa,top_pick,3.0,3.0,3.0,3.0,,3.16,-0.049,,1.0,no,,
+2,SANH_141126_2,Karren,top_pick,3.0,3.0,3.3,3.3,,3.32,-0.006,Already run to today's class,1.0,no,,
+3,SANH_141126_3,Fundamental Nature,top_pick,2.3,2.3,2.73,2.73,,2.72,0.002,Beaten by the pace last start,1.0,no,,
+4,SANH_141126_4,Brave Danza,top_pick,9.5,9.5,5.5,5.5,,5.32,0.034,,1.0,no,,
+5,SANH_141126_5,Milsons Point,EDGE,10.0,10.0,9.17,9.17,,7.02,0.305,Above the field in all three sections,1.68,no,,
+5,SANH_141126_5,Milsons Point,value_20c,10.0,10.0,9.17,9.17,,7.02,0.305,Above the field in all three sections,1.68,no,,
+5,SANH_141126_5,Magna Sententia,top_pick,4.2,4.2,7.17,7.17,,6.02,0.19,,1.0,no,,
+6,SANH_141126_6,Bred 'em All,top_pick,3.2,3.2,2.75,2.75,,3.26,-0.156,Above the field in all three sections,1.0,no,,
+7,SANL_141126_7,Natural Fling,top_pick,4.0,4.0,3.2,3.2,,4.41,-0.274,Already run to today's class; Well backed before a bad last run; Class drop (rating),1.0,no,,
+8,SANH_141126_8,Beiwacht,top_pick,3.2,3.2,4.23,4.23,,3.42,0.237,Beaten by the pace last start; Already run to today's class,1.0,no,,
+9,SANH_141126_9,Kingswood,top_pick,3.9,3.9,3.6,3.6,,3.74,-0.038,Already run to today's class; Class drop (rating); Late 600 beyond the tempo,1.0,no,,
+10,SANH_141126_10,Concord Connie,top_pick,1.75,1.75,2.1,2.1,,1.93,0.088,Already run to today's class; Class drop (rating),1.0,no,,
