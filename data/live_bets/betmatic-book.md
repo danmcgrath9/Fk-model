@@ -1187,3 +1187,5 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
   by hand inside the window: Baccano R4 #1 $130, Smarticon R9 #4 $32.
 - Friday Mercer card (founder, 9:45am): Melek R4 10.43u at $2.60, the open's 5.43u plus 5u for the 9am fill (9am list
   $2.70 or better); Geelong Baccano 2.61u $5 and Smarticon 0.63u $21 at the 8:32am best prices; Helizangel SCR.
+- Friday no-Mercer card: Melek R4 10.43u at $2.80, the blend of 5.43u at $2.90 (open) and 5u at $2.70 (9am):
+  5.43 x 2.90 + 5 x 2.70 = 29.25 returned on 10.43u, $2.804.
