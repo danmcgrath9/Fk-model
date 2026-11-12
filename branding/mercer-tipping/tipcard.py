@@ -43,6 +43,9 @@ def card(d):
     # line unless "foot": true (22 Oct 2026, founder: "get rid of the bottom notes when I ask for no Mercer or just a
     # card"); the Twitter footer is "Win bets." (22 Oct 2026, founder); a bet's optional "rated" prints our price
     # under the taken price (22 Oct 2026, founder: "put rated prices next to them"); "scr": true shows a scratched bet as SCR / REFUND
+    # a double-figure stake ("10.43u WIN") wraps in the 150px units column (13 Nov 2026): widen it when one is on the card
+    if any(len(x.get("units", "")) > 5 for m in d["meetings"] for x in m["bets"]):
+        dense += ".row{grid-template-columns:96px 1fr auto 190px}"
     show_p, brand = d.get("prices", True), d.get("brand", True)
     if not show_p:
         dense += ".row{grid-template-columns:96px 1fr 150px}.u{border-left:0;padding-left:0}"
