@@ -543,6 +543,22 @@ back greyhound flucs go (TAB especially), what a key costs and its limits, and w
 is fine under the commercial-use clause. If the history goes back a few years, it replaces both BetMatic's $3,000
 history and weeks of recording our own opens, and Test 7's model angles are rerun at the TAB open.
 
+**Betwatch's answer (Jamie Watts, founder, 13 Nov 2026), and the key is on.** Price history for thoroughbreds,
+greyhounds and harness goes back to November 2022 on the current API. Each bookmaker's flucs come with timestamps up
+to the jump, TAB included. The first price held is the first one Betwatch picked up that day, "usually close to the
+open but can miss sharp early moves", so it is not a guaranteed opening price. $99 a month after a free trial, one key
+for all three codes. Rate limits are dynamic, so big pulls need pacing. "Using the data for your own models, not
+shared or resold, is fine." A beta platform (free, better opening prices) has no history yet.
+
+The founder added the key as the Actions secret `BETWATCH_API_KEY`. `greyhound/betwatch.py` with the `gh betwatch`
+workflow:
+- **probe** prints counts only for sample days: races, runners, TAB coverage, flucs per runner, and how long before
+  the jump TAB's first price lands.
+- **pull** writes month files of every Victorian greyhound race with TAB, Sportsbet and Ladbrokes flucs (the last
+  price only for other bookmakers) into the repository's Actions cache, paced at a call a second. It is resumable.
+
+Nothing is printed but counts, and nothing is stored anywhere public.
+
 ## The first open probe: Geelong R1, Tuesday 27 Oct 2026 (runs 40452957805 collect, 40453167880 diagnose)
 
 Eight instructions, one per runner in Geelong R1 (2:42pm AEDT), sent 25 Oct 08:36-08:37 UTC, each min $1,000 /
