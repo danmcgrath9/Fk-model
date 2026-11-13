@@ -29,7 +29,7 @@ for f in sys.argv[1:]:
         bw[(r["date"], int(r["race"]), norm(r["name"]))] = float(r["tab_0900"])
 p9 = np.array([bw.get((date[i], rno[i], norm(name[i])), np.nan) for i in range(len(ri))])
 print(f"{len(bw)} Betwatch runners with a 9am TAB price; matched {int(np.isfinite(p9).sum())} of {len(ri)} dataset runners "
-      f"({date.min()} to {date.max()})")
+      f"({min(date)} to {max(date)})")
 
 # the blend, per race, over the runners with a 9am price
 ok = np.isfinite(p9) & (p9 > 1) & (P > 0)
