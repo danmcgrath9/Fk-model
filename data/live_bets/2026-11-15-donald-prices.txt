@@ -1,4 +1,4 @@
-# Donald Sun 15 Nov, Dead (official), final fields, no market yet; PROVISIONAL: riders not all declared (Sunday's come Friday), re-priced once they are
+# Donald Sun 15 Nov, official going, final fields; market open in R6; PROVISIONAL: 5 runners without a rider
 1, Mark's Magus, SCR
 1, The Contender, 0, 0
 1, Slick Vixen, SCR
@@ -8,7 +8,6 @@
 1, Desmond William, 0, 0
 1, Beast Fighter, 0, 0
 1, Cape Radstock, 0, 0
-1, Lady Courrege, 0, 0
 1, Ted Percy, 0, 0
 1, Chauhan, 0, 0
 1, Thankful Smile, 0, 0
@@ -57,17 +56,17 @@
 5, Star Kells, 0, 0
 5, Boutin, 0, 0
 5, Neonova, 0, 0
-6, Van Roy, 0, 0
-6, El Rocko, 0, 0
-6, Fox Appeal, 0, 0
-6, Albanian I Am, 0, 0
-6, Scalextrics, 0, 0
-6, Bullets High, 0, 0
-6, Quietness, 0, 0
-6, El James, 0, 0
-6, Somewhere, 0, 0
-6, The Muffin Man, 0, 0
-6, Grecian Destiny, 0, 0
+6, Van Roy, 51.00, 51.00, fk_open 34.00
+6, El Rocko, 4.40, 4.40, fk_open 7.50
+6, Fox Appeal, 31.00, 31.00, fk_open 19.00
+6, Albanian I Am, 51.00, 51.00, fk_open 31.00
+6, Scalextrics, 12.00, 12.00, fk_open 10.00
+6, Bullets High, 7.00, 7.00, fk_open 5.50
+6, Quietness, 8.50, 8.50, fk_open 8.00
+6, El James, 13.00, 13.00, fk_open 12.00
+6, Somewhere, 2.80, 2.80, fk_open 2.30
+6, The Muffin Man, 10.00, 10.00, fk_open 9.50
+6, Grecian Destiny, 19.00, 19.00, fk_open 18.00
 7, Jet Jitsu, 0, 0
 7, Brung King, 0, 0
 7, Alternate, 0, 0
@@ -86,6 +85,4 @@
 8, Greatham Boy, 0, 0
 8, Melodee Rose, 0, 0
 8, Racey Casey, 0, 0
-8, Tennessee Song, 0, 0
 8, Catwalk Icon, 0, 0
-8, Bazzar, 0, 0

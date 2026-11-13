@@ -18,7 +18,6 @@
 2|12|Rockbourg|False|False
 2|4|Boss Bundle|False|False
 2|1|Admire Mercury|False|False
-2|11|Oak Park Mia|False|False
 2|14|Miss Belajo|True|False
 2|5|Fear The Impact|False|False
 2|13|Zouie|False|False
@@ -29,7 +28,6 @@
 2|16|Torzannie|True|False
 2|15|The Sheriff|True|False
 3|17|Builtthiscity|True|False
-3|11|Gypsy Moon|False|False
 3|4|Chronic|False|False
 3|16|Maharani Miss|True|False
 3|2|Always Shining|False|False
@@ -66,7 +64,6 @@
 6|7|Do It Now|False|False
 6|1|Weapon Clear|False|False
 6|6|Just Bolts|False|False
-6|11|Diamond Mila|False|False
 6|5|Mckeyla|False|False
 6|3|Miss Ole|False|False
 6|10|Meisho|False|False

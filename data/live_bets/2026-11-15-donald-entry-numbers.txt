@@ -7,7 +7,6 @@
 1|3|Desmond William|False|False
 1|1|Beast Fighter|False|False
 1|11|Cape Radstock|False|False
-1|12|Lady Courrege|False|False
 1|8|Ted Percy|False|False
 1|2|Chauhan|False|False
 1|14|Thankful Smile|False|False
@@ -85,6 +84,4 @@
 8|2|Greatham Boy|False|False
 8|8|Melodee Rose|False|False
 8|9|Racey Casey|False|False
-8|7|Tennessee Song|False|False
 8|4|Catwalk Icon|False|False
-8|1|Bazzar|False|False
