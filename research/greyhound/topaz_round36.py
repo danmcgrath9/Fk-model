@@ -139,19 +139,14 @@ def bsp_table(t: pd.DataFrame) -> None:
               f"{t.won.values[x].sum() / t.p_bsp.values[x].sum():.3f} |")
 
 
-def main(d, label):
-    os.environ.pop("WALK_LEAD_MODEL", None)
-    t0 = time.monotonic()
-    bdir = os.environ.get("BETWATCH_DIR", "")
-    print(f"# {label}: round 36, the card's rule at TAB's open by month and by Betwatch period\n")
-    if not bdir or not os.path.isdir(bdir):
-        print("No Betwatch files (BETWATCH_DIR): nothing to test")
-        return 1
+def field_at_open(d: str, bdir: str, t0: float):
+    """Ours walked forward (or read from the saved walk), each race rebuilt as it stood at TAB's first price, with the
+    best first price of three, the blend refitted monthly (pb) and held at Test 51's weights (pb_fixed). Returns the
+    whole field at the bet (dogs scratched later included) and the monthly weights; prints the notes."""
     fr = R33.load(bdir, times=(0,))
     bw = R30.load_betwatch(bdir)
     if fr.empty or bw.empty:
-        print("No Betwatch races: nothing to test")
-        return 1
+        return None, None
     df, num, rel, note = W.build_full(d)
     df, _, _ = R18.check_features(df, os.environ.get("ISOLYNX_DIR", ""))
     df = R12.tale_columns(df)
@@ -178,9 +173,29 @@ def main(d, label):
     months = pd.period_range(first_pred + BLEND_MONTHS, x.date.max().to_period("M"), freq="M")
     x["pb"], ws = monthly_blend(x, months)
     x["pb_fixed"] = fixed_blend(x)
+    return x, ws
+
+
+def ran_rows(x: pd.DataFrame) -> pd.DataFrame:
+    """The runners that ran, in races where every dog in the field at the bet has a blend and a TAB price."""
     ok = pd.Series((x.pb.notna() & (x.price > 1)).values)
     whole = ok.groupby(x.race_id.values).transform("all").values
-    t = x[whole & x.is_ran.values].reset_index(drop=True)
+    return x[whole & x.is_ran.values].reset_index(drop=True)
+
+
+def main(d, label):
+    os.environ.pop("WALK_LEAD_MODEL", None)
+    t0 = time.monotonic()
+    bdir = os.environ.get("BETWATCH_DIR", "")
+    print(f"# {label}: round 36, the card's rule at TAB's open by month and by Betwatch period\n")
+    if not bdir or not os.path.isdir(bdir):
+        print("No Betwatch files (BETWATCH_DIR): nothing to test")
+        return 1
+    x, ws = field_at_open(d, bdir, t0)
+    if x is None:
+        print("No Betwatch races: nothing to test")
+        return 1
+    t = ran_rows(x)
     print(f"Field at the bet: {t.race_id.nunique():,} races, {len(t):,} runners that ran, {t.date.min():%Y-%m-%d} to "
           f"{t.date.max():%Y-%m-%d}. {(time.monotonic() - t0) / 60:.0f} minutes in.\n")
     print("## 1. Month by month (TAB's first price)\n")
