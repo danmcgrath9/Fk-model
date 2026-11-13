@@ -1208,3 +1208,13 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
   2 Nov, and by the re-price the two-hour missed-open window had closed.
 - Donald: R6 opened Thu 2:30pm with no fill; its Wednesday rows stay on the sheet, the other seven races take the new
   prices (37 horses, up to 113.68u). Send refused: bot not connected.
+
+## Fri 13 Nov evening: $37.50 a unit; Dunkeld sent on the founder's word; every send waits for the bot
+- Units $37.50 (founder: "Can you do units at 37.50"): the send default, the order builder and the pricer; the Dunkeld,
+  Donald, Wangaratta and Kyneton sheets re-dollared.
+- Dunkeld Sat 14 Nov is PAPER ONLY by the pricer's rule (8 races at the venue, 0 since the 3 Jun holdout); founder: "Yep
+  send". Re-priced with riders at 10:34pm (tag r11132234; 3 runners still without a rider): 37 horses, 142.43u
+  ($5,344) if every order fired. R7 opened Thu 3:55pm (its seven missed opens were all under their minimum).
+- The $50 sends of Donald (1:23pm), Wangaratta and Kyneton were refused: no bot machine connected. 10:29pm and 10:39pm
+  checks: still none. A watcher in the session checks every 10 minutes and sends Dunkeld, Donald, Wangaratta and Kyneton at
+  $37.50 (Market Open) the moment a machine connects. Opened races (Dunkeld R7, Donald R6) stay on the sheets and do not fire.
