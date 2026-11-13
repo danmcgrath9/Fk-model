@@ -26,6 +26,8 @@ Since Test 14 the model also carries the ratings upgrades (Test 16) and this rac
   WALK_RULE_ENSEMBLE=yes  the 1.3x rule at GRV's SP a second time, with the ensemble as ours (Test 31)
   WALK_SP_WEIGHT=w    the BSP-chance model's races without a BSP on every runner at weight w (Test 32; default 1)
   WALK_TRACK=yes      track character and each dog's form at the same kind of track (Test 33)
+  BETWATCH_DIR        when set, the 1.3x rule also at TAB's first price of the day and at TAB's last price before the
+                      jump, from Betwatch's month files (topaz_round30.py), each with its own blend refitted monthly
 
 THE BETS are chosen the same way. For each month from the scored quarter on, the rule (signal: the model, the
 ensemble, or Benter's blend of the model with the market; one bet a race or every qualifier; price band; edge) is the
@@ -417,6 +419,30 @@ def main(d, label):
                    "The 1.3x rule at GRV's SP on the ensemble (the model and its winners twin), no commission", sig="p_ens")
     if "bsp" in df:
         horse_rule(df, first_bet, "bsp", "p_bsp", 0.08, "The 1.3x rule at BSP, 8% commission on winnings")
+    betwatch_rules(df, first_bet)
+
+
+def betwatch_rules(df, first_bet):
+    """The 1.3x rule at TAB's own prices (Betwatch, from Nov 2022): the first recorded price of the day, then the last
+    before the jump. Each price's chances are its own book normalised per race, on races where every runner has it."""
+    bdir = os.environ.get("BETWATCH_DIR", "")
+    if not bdir or not os.path.isdir(bdir):
+        return
+    import topaz_round30 as R30        # here: it imports this module
+    bw = R30.load_betwatch(bdir)
+    if bw.empty:
+        print("\nBETWATCH_DIR holds no month files: no rule at TAB's prices")
+        return
+    df = R30.join_betwatch(df, bw)
+    df["p_tab_first"] = R30.book_chance(df, "tab_first")
+    df["p_tab_last"] = R30.book_chance(df, "tab_last")
+    on = df[df.date >= first_bet.start_time]
+    print(f"\nBetwatch: TAB's first price on {on.tab_first.notna().mean():.1%} of the bet months' runners, every runner "
+          f"of {on[on.p_tab_first.notna()].race_id.nunique():,} of {on.race_id.nunique():,} races")
+    horse_rule(df, first_bet, "tab_first", "p_tab_first", 0.0,
+               "The 1.3x rule at TAB's first price of the day (Betwatch), no commission")
+    horse_rule(df, first_bet, "tab_last", "p_tab_last", 0.0,
+               "The 1.3x rule at TAB's last price before the jump (Betwatch), no commission")
 
 
 def horse_rule(df, first_bet, price_col, p_mkt_col, comm, title, sig="p_a"):
