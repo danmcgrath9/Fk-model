@@ -304,8 +304,16 @@ def main():
             continue
         for src, dst in ((rows, f"{P}-betmatic-preopen.csv"), (allrows, f"{P}-betmatic-preopen-all.csv")):
             keep = [r for r in src if r["race"] not in opened]
+            # A RACE THAT HAS OPENED KEEPS ITS OLD ROWS (13 Nov 2026: the riders re-price of Moe, every race already open,
+            # wrote an empty sheet over the one the open was judged against). On --replace the previous sheet's rows for
+            # opened races stay: they are the record of what the sheet would have taken at the open.
+            old = []
+            if exists and (L / dst).exists():
+                old = [r for r in csv.DictReader(open(L / dst)) if r["race"] in opened]
+            flds = list(src[0].keys()) if src else (list(old[0].keys()) if old else ["race"])
+            keep = sorted(old + keep, key=lambda r: int(r["race"]))
             with open(L / dst, "w", newline="") as fh:
-                w = csv.DictWriter(fh, fieldnames=list(src[0].keys()) if src else ["race"]); w.writeheader(); w.writerows(keep)
+                w = csv.DictWriter(fh, fieldnames=flds, extrasaction="ignore"); w.writeheader(); w.writerows(keep)
         page = S / "pages" / f"{P.replace('-', '')}-market.html"
         subprocess.run([sys.executable, "betmatic_html.py", str(L / f"{P}-betmatic-preopen.csv"), P, str(page)], cwd=R,
                        capture_output=True)
