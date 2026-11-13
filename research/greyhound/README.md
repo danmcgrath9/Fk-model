@@ -4343,6 +4343,12 @@ every slice we can cut, and GRV's SP is far worse. The edge the card has, the 1.
 
 Founder, 13 Nov 2026: "we will win long term on opening ... Just have to get that data and then get a strategy".
 
+> **Correction, the same night (Test 50).** The +44.7% below is not an edge at the open. 88% of the bets (930 of
+> 1,051) were in races where a dog was scratched after TAB's market opened, against 27.5% of all races. Our model
+> priced the field that ran, so it saw value in every dog left in once a strong one came out. TAB takes that back as
+> a deduction, and after the deduction the rule LOST 10.5% flat (-335 Kelly units, 13 of 30 months in profit). The
+> 78% of bets that shortened by BSP is mostly the same thing: a scratching shortens every dog left in.
+
 **The data.** The `gh betwatch` pull (run 43380037426, 132 minutes) fetched every Victorian greyhound race from November
 2022 to 12 November 2026. It holds 49 month files, all complete. A month is about 1,200-1,300 races and 8,500-9,600
 runners, and TAB has price changes on 99-100% of runners in every month. Joined by date and dog name, round 30 reads
@@ -4412,3 +4418,72 @@ price is as sharp as BSP, where our weight was -0.10 to 0.08 (Test 27) and -0.07
    can test that.
 
 Round 32 tests the first two.
+
+## Test 50: can TAB's first price be had? Scratchings and deductions (13 Nov 2026, gh topaz runs 43405429255 and 43414156636, `topaz_round32.py`)
+
+Founder, the same night: "Did you apply 6c to every bet?" Test 49 had taken nothing off.
+
+This uses Test 49's model and rule. The rule's 1,051 bets at TAB's first price were checked three ways.
+
+**Scratchings.** In 27.5% of the scored races a runner was scratched after TAB's market opened. Every one of those
+scratched dogs had a TAB price to deduct by.
+
+**1. How long the first price stood**, for the 1,051 bets (minutes to TAB's next change of price):
+
+| under 1 | under 5 | under 30 | under 60 | median | next change shorter |
+|---|---|---|---|---|---|
+| 4.9% | 21.8% | 43.7% | 50.3% | 59 min | 76.7% |
+
+**2. Scratchings after the bet, and the deductions.** All bets are at TAB's first price, with Kelly stakes as struck.
+
+TAB's deduction is read off the founder's own TAB records (data/live_bets). It is 100c over the scratched dog's price
+at the scratching, rounded down, and at most 75c a race. That rule matches five of the six records ($12 8c, $14 7c,
+$16 6c, $26 3c, $34 2c). It gives $17 5c where the record says 6c.
+
+| bets | half | bets | winners | A/E vs the price | flat ROI | units staked | Kelly ROI | units won | months in profit |
+|---|---|---|---|---|---|---|---|---|---|
+| Test 49 as it was, nothing off | all | 1,051 | 269 | 1.449 | +44.7% | 3,285 | +54.3% | +1,784 | 28 of 30 |
+| races with no runner scratched after the open | 1st | 65 | 15 | 1.266 | +5.8% | 70 | +47.5% | +33 | 7 of 15 |
+| races with no runner scratched after the open | 2nd | 56 | 17 | 1.777 | +63.8% | 67 | +51.4% | +35 | 9 of 15 |
+| races with no runner scratched after the open | all | 121 | 32 | 1.494 | +32.6% | 138 | +49.4% | +68 | 16 of 30 |
+| races with one or more scratched after the open | all | 930 | 237 | 1.443 | +46.2% | 3,148 | +54.5% | +1,716 | 27 of 30 |
+| 6c in the dollar off every bet's winnings | 1st | 386 | 103 | 1.498 | +45.6% | 1,142 | +63.0% | +720 | 13 of 15 |
+| 6c in the dollar off every bet's winnings | 2nd | 665 | 166 | 1.420 | +32.8% | 2,143 | +38.0% | +815 | 13 of 16 |
+| 6c in the dollar off every bet's winnings | all | 1,051 | 269 | 1.449 | +37.5% | 3,285 | +46.7% | +1,535 | 26 of 30 |
+| the scratched dogs' share of TAB's opening book off the winnings | all | 1,051 | 269 | 1.449 | +1.8% | 3,285 | +4.0% | +131 | 17 of 30 |
+| **TAB's deduction (100c over the scratched dog's price)** | 1st | 386 | 103 | 1.498 | -3.6% | 1,142 | +1.6% | +18 | 11 of 15 |
+| **TAB's deduction** | 2nd | 665 | 166 | 1.420 | -14.5% | 2,143 | -16.5% | -353 | 3 of 16 |
+| **TAB's deduction** | all | 1,051 | 269 | 1.449 | **-10.5%** | 3,285 | **-10.2%** | **-335** | 13 of 30 |
+
+**3. Did BSP come in under the price?** BSP is compared with the price taken and with the price paid after TAB's
+deduction:
+
+| races | half | bets with a BSP | BSP under the price taken | BSP under the price paid | mean log(price taken / BSP) | mean log(price paid / BSP) | A/E vs BSP |
+|---|---|---|---|---|---|---|---|
+| every race | all | 1,026 | 801 (78.1%) | 339 (33.0%) | +0.304 | -0.181 | 1.014 |
+| no scratching after the open | 1st | 65 | 42 (64.6%) | 42 (64.6%) | +0.220 | +0.220 | 0.927 |
+| no scratching after the open | 2nd | 55 | 31 (56.4%) | 31 (56.4%) | +0.100 | +0.100 | 1.385 |
+| no scratching after the open | all | 120 | 73 (60.8%) | 73 (60.8%) | +0.165 | +0.165 | 1.117 |
+| a scratching after the open | all | 906 | 728 (80.4%) | 266 (29.4%) | +0.322 | -0.227 | 1.001 |
+
+**What it means.**
+- **The bets cluster where TAB's market changed.** The rule put 88% of its bets into races where a dog was scratched
+  after the open, against 27.5% of races overall. Our model prices the field that ran. When a strong dog is scratched,
+  every dog left in looks overpriced at TAB's opening price.
+- **TAB's deduction takes it back, and more.** Paid as TAB pays, the rule lost 10.5% flat and 335 Kelly units, with
+  the second half at -14.5%. A flat 6c on every bet (+37.5%) understates the deductions badly. These bets sit in races
+  where a favourite came out, and that is where the deductions are biggest.
+- **Most of the 78% is the scratching too.** Against the price paid, BSP came in under it on only 33% of bets.
+- **What is left is too small to call.** In races with no scratching after the open, 121 bets made +32.6% flat, with
+  A/E vs BSP 1.117 and BSP under the price on 61% of them. But only 16 of 30 months were in profit, and the first half
+  was +5.8%.
+- **About the first price itself.** It stood a median of 59 minutes. On 22% of bets it changed within 5 minutes, and
+  when it changed it shortened three times in four.
+
+**What next.** Round 33 rebuilds each race as it stood at the bet:
+- each dog scratched later goes back in at TAB's chance for it;
+- our chances for the rest are scaled to make room;
+- every bet is paid after TAB's deduction.
+
+That is what the live card already does, because it prices the declared field the night before. Round 31 (every
+rule at TAB's prices) was re-run with TAB's deduction on every return.
