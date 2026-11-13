@@ -30,6 +30,9 @@ on:
       isolynx:
         description: "mode=run: yes = restore the Isolynx pull beside the runs (ISOLYNX_DIR for the scripts)"
         default: 'no'
+      betwatch:
+        description: "mode=run: yes = restore the Betwatch price history (gh betwatch pull) as BETWATCH_DIR for the scripts"
+        default: 'no'
       trials:
         description: 'mode=run: yes = also pull trial results (trials_<STATE>_<YYYY-MM>), cached beside the runs'
         default: 'no'
@@ -126,6 +129,14 @@ jobs:
         with:
           path: greyhound/cache/preview
           key: topaz-preview-${{ github.run_id }}
+
+      - name: Restore the Betwatch price history (Actions cache, this repository only)
+        if: github.event.inputs.mode == 'run' && github.event.inputs.betwatch == 'yes'
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/betwatch
+          key: betwatch-VIC-G-${{ github.run_id }}
+          restore-keys: betwatch-VIC-G-
 
       - name: Restore the Isolynx pull (Actions cache, this repository only)
         if: github.event.inputs.mode == 'isolynx' || (github.event.inputs.mode == 'run' && github.event.inputs.isolynx == 'yes')
@@ -230,6 +241,7 @@ jobs:
           set -o pipefail
           [ -d bf ] && export BETFAIR_DIR="$PWD/bf"
           [ -d greyhound/cache/isolynx ] && export ISOLYNX_DIR="$PWD/greyhound/cache/isolynx"
+          [ -d greyhound/cache/betwatch ] && export BETWATCH_DIR="$PWD/greyhound/cache/betwatch"
           ls greyhound/cache/topaz/races_*.json.gz >/dev/null 2>&1 && export RACES_DIR="$PWD/greyhound/cache/topaz"
           for kv in ${{ github.event.inputs.env }}; do
             case "$kv" in [A-Z_]*=*) export "$kv" ;; *) echo "ignored env input: $kv" ;; esac
