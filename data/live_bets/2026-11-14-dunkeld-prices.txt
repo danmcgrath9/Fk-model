@@ -1,4 +1,4 @@
-# Dunkeld Sat 14 Nov, Dead (official), final fields, no market yet; PAPER ONLY (no holdout: one Dunkeld meeting in the model's history, Nov 2025)
+# Dunkeld Sat 14 Nov, official going, final fields; market open in R7; PROVISIONAL: 3 runners without a rider; PAPER ONLY (the model has 8 races at this venue, 0 since the 3 Jun holdout)
 1, Love Runs Deep, 0, 0
 1, Red Mink, 0, 0
 1, Flash Inquiry, 0, 0
@@ -21,7 +21,6 @@
 2, Parak, 0, 0
 2, Proud Witness, 0, 0
 2, Light Filled, 0, 0
-2, Magica, 0, 0
 2, Sammie Ellen Boy, SCR
 3, Frosted Amber, 0, 0
 3, Highlight Reel, SCR
@@ -29,7 +28,6 @@
 3, Classy Sassy, 0, 0
 3, Love Dad, SCR
 3, Five Landings, 0, 0
-3, Ninetyfiveinafifty, 0, 0
 3, Zephyr's Reward, 0, 0
 3, Inthepink, 0, 0
 3, Overthinker, 0, 0
@@ -60,25 +58,23 @@
 5, Krasnoludek, 0, 0
 5, Sweet But Sassy, 0, 0
 6, Diamond War, 0, 0
-6, Tango Jewel, 0, 0
 6, Yoomee Wonder, 0, 0
 6, Synchro, 0, 0
 6, Iced Poppy, 0, 0
-6, Packers Journey, 0, 0
 6, Tennessee Song, 0, 0
 6, Eeteedee, 0, 0
 6, Bazzar, 0, 0
-7, Flying Basil, 0, 0
-7, Gregolimo, 0, 0
-7, New York Hurricane, 0, 0
-7, Foujita San, 0, 0
-7, Any Luck, 0, 0
-7, Scalextrics, SCR
-7, Switch Hit, SCR
-7, Navy King, 0, 0
-7, Stay Humble, 0, 0
-7, Dubai Watch, 0, 0
-7, Overpriced, 0, 0
+7, Flying Basil, 71.00, 71.00, fk_open 51.00
+7, Gregolimo, 9.00, 9.00, fk_open 6.50
+7, New York Hurricane, 7.50, 7.50, fk_open 8.50
+7, Foujita San, 5.00, 5.00, fk_open 4.20
+7, Any Luck, 35.00, 35.00, fk_open 26.00
+7, Scalextrics, SCR, fk_open 9.00
+7, Switch Hit, SCR, fk_open 8.50
+7, Navy King, 6.25, 6.25, fk_open 9.50
+7, Stay Humble, 5.00, 5.00, fk_open 3.50
+7, Dubai Watch, 5.00, 5.00, fk_open 8.50
+7, Overpriced, 9.50, 9.50, fk_open 7.50
 8, Dusty's Deel, SCR
 8, Bellakai, SCR
 8, Dubai Legend, SCR

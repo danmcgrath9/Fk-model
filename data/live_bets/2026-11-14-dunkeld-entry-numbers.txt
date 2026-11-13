@@ -20,7 +20,6 @@
 2|3|Parak|False|False
 2|8|Proud Witness|False|False
 2|6|Light Filled|False|False
-2|7|Magica|False|False
 2|12|Sammie Ellen Boy|True|False
 3|7|Frosted Amber|False|False
 3|11|Highlight Reel|True|False
@@ -28,7 +27,6 @@
 3|6|Classy Sassy|False|False
 3|12|Love Dad|True|False
 3|3|Five Landings|False|False
-3|8|Ninetyfiveinafifty|False|False
 3|5|Zephyr's Reward|False|False
 3|4|Inthepink|False|False
 3|10|Overthinker|False|False
@@ -59,11 +57,9 @@
 5|2|Krasnoludek|False|False
 5|7|Sweet But Sassy|False|False
 6|6|Diamond War|False|False
-6|4|Tango Jewel|False|False
 6|5|Yoomee Wonder|False|False
 6|1|Synchro|False|False
 6|3|Iced Poppy|False|False
-6|7|Packers Journey|False|False
 6|8|Tennessee Song|False|False
 6|9|Eeteedee|False|False
 6|2|Bazzar|False|False

@@ -1,64 +1,69 @@
 date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
-2026-11-14,Dunkeld,1,,1,Boridi,WIN,3.19,3.99,3.86,145,1 of 2,3.86u,2.67,opens under $4: edge 1.15
-2026-11-14,Dunkeld,1,,1,Boridi,WIN,3.99,3.99,0.93,35,2 of 2,4.79u,2.67,opens under $4: edge 1.15
-2026-11-14,Dunkeld,1,,1,Boridi,WIN,4.00,15.99,4.17,156,1 of 3,4.17u,2.67,
-2026-11-14,Dunkeld,1,,1,Boridi,WIN,4.20,15.99,0.80,30,2 of 3,4.97u,2.67,
-2026-11-14,Dunkeld,1,,1,Boridi,WIN,5.87,15.99,4.97,186,3 of 3,9.94u,2.67,opens $5.87+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,1,,4,Flash Inquiry,WIN,11.80,15.01,0.97,36,1 of 1,0.97u,8.79,EARLY: $15 or shorter only
-2026-11-14,Dunkeld,1,,8,Red Mink,WIN,14.26,63.20,0.79,30,1 of 2,0.79u,10.53,
-2026-11-14,Dunkeld,1,,8,Red Mink,WIN,17.82,63.20,0.20,8,2 of 2,0.99u,10.53,
-2026-11-14,Dunkeld,2,,4,Cracked It,WIN,3.45,3.99,3.47,130,1 of 1,3.47u,2.87,opens under $4: edge 1.15
-2026-11-14,Dunkeld,2,,4,Cracked It,WIN,4.00,17.23,3.77,141,1 of 3,3.77u,2.87,
-2026-11-14,Dunkeld,2,,4,Cracked It,WIN,4.55,17.23,0.75,28,2 of 3,4.52u,2.87,
-2026-11-14,Dunkeld,2,,4,Cracked It,WIN,6.32,17.23,4.52,169,3 of 3,9.04u,2.87,opens $6.32+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,2,,6,Light Filled,WIN,8.96,40.63,1.31,49,1 of 3,1.31u,6.77,
-2026-11-14,Dunkeld,2,,6,Light Filled,WIN,11.20,40.63,0.31,12,2 of 3,1.62u,6.77,
-2026-11-14,Dunkeld,2,,6,Light Filled,WIN,14.90,40.63,1.62,61,3 of 3,3.24u,6.77,opens $14.90+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,3,,6,Classy Sassy,WIN,9.35,15.01,1.25,47,1 of 2,1.25u,7.05,EARLY: $15 or shorter only
-2026-11-14,Dunkeld,3,,6,Classy Sassy,WIN,11.69,15.01,0.30,11,2 of 2,1.55u,7.05,EARLY: $15 or shorter only
-2026-11-14,Dunkeld,3,,7,Frosted Amber,WIN,11.49,51.47,1.00,38,1 of 2,1.00u,8.58,
-2026-11-14,Dunkeld,3,,7,Frosted Amber,WIN,14.36,51.47,0.24,9,2 of 2,1.24u,8.58,
-2026-11-14,Dunkeld,3,,8,Ninetyfiveinafifty,WIN,4.44,20.81,2.95,111,1 of 3,2.95u,3.47,
-2026-11-14,Dunkeld,3,,8,Ninetyfiveinafifty,WIN,5.55,20.81,0.61,23,2 of 3,3.56u,3.47,
-2026-11-14,Dunkeld,3,,8,Ninetyfiveinafifty,WIN,7.64,20.81,3.56,134,3 of 3,7.12u,3.47,opens $7.64+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,4,,3,Beau Strada,WIN,5.92,27.40,2.09,78,1 of 3,2.09u,4.57,
-2026-11-14,Dunkeld,4,,3,Beau Strada,WIN,7.40,27.40,0.46,17,2 of 3,2.55u,4.57,
-2026-11-14,Dunkeld,4,,3,Beau Strada,WIN,10.05,27.40,2.55,96,3 of 3,5.10u,4.57,opens $10.05+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,4,,2,Caribbean Villa,WIN,5.17,24.09,2.44,92,1 of 3,2.44u,4.01,
-2026-11-14,Dunkeld,4,,2,Caribbean Villa,WIN,6.46,24.09,0.53,20,2 of 3,2.97u,4.01,
-2026-11-14,Dunkeld,4,,2,Caribbean Villa,WIN,8.84,24.09,2.97,111,3 of 3,5.94u,4.01,opens $8.84+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,4,,1,Fox Man,WIN,6.25,28.83,1.96,74,1 of 3,1.96u,4.81,
-2026-11-14,Dunkeld,4,,1,Fox Man,WIN,7.81,28.83,0.44,16,2 of 3,2.40u,4.81,
-2026-11-14,Dunkeld,4,,1,Fox Man,WIN,10.58,28.83,2.40,90,3 of 3,4.80u,4.81,opens $10.58+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,5,,5,Abby's Crossword,WIN,4.67,15.01,2.78,104,1 of 3,2.78u,3.64,EARLY: $15 or shorter only
-2026-11-14,Dunkeld,5,,5,Abby's Crossword,WIN,5.84,15.01,0.58,22,2 of 3,3.36u,3.64,EARLY: $15 or shorter only
-2026-11-14,Dunkeld,5,,5,Abby's Crossword,WIN,8.01,15.01,3.36,126,3 of 3,6.72u,3.64,EARLY: $15 or shorter only; opens $8.01+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,5,,3,Drunken Sailor,WIN,13.87,61.52,0.82,31,1 of 2,0.82u,10.25,
-2026-11-14,Dunkeld,5,,3,Drunken Sailor,WIN,17.34,61.52,0.20,8,2 of 2,1.02u,10.25,
-2026-11-14,Dunkeld,5,,10,Iliad,WIN,9.37,42.36,1.25,47,1 of 3,1.25u,7.06,
-2026-11-14,Dunkeld,5,,10,Iliad,WIN,11.71,42.36,0.29,11,2 of 3,1.54u,7.06,
-2026-11-14,Dunkeld,5,,10,Iliad,WIN,15.54,42.36,1.54,58,3 of 3,3.08u,7.06,opens $15.54+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,5,,8,Immortal Justice,WIN,18.61,81.39,0.60,22,1 of 2,0.60u,13.56,
-2026-11-14,Dunkeld,5,,8,Immortal Justice,WIN,23.26,81.39,0.15,6,2 of 2,0.75u,13.56,
-2026-11-14,Dunkeld,5,,2,Krasnoludek,WIN,13.39,59.49,0.85,32,1 of 2,0.85u,9.92,
-2026-11-14,Dunkeld,5,,2,Krasnoludek,WIN,16.74,59.49,0.21,8,2 of 2,1.06u,9.92,
-2026-11-14,Dunkeld,5,,4,Ponte Arcobaleno,WIN,10.49,47.16,1.11,42,1 of 3,1.11u,7.86,
-2026-11-14,Dunkeld,5,,4,Ponte Arcobaleno,WIN,13.11,47.16,0.26,10,2 of 3,1.37u,7.86,
-2026-11-14,Dunkeld,5,,4,Ponte Arcobaleno,WIN,17.30,47.16,1.37,51,3 of 3,2.74u,7.86,opens $17.30+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,6,,2,Bazzar,WIN,4.65,15.01,2.78,104,1 of 3,2.78u,3.63,EARLY: $15 or shorter only
-2026-11-14,Dunkeld,6,,2,Bazzar,WIN,5.81,15.01,0.59,22,2 of 3,3.37u,3.63,EARLY: $15 or shorter only
-2026-11-14,Dunkeld,6,,2,Bazzar,WIN,7.98,15.01,3.37,126,3 of 3,6.74u,3.63,EARLY: $15 or shorter only; opens $7.98+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,6,,3,Iced Poppy,WIN,12.53,55.85,0.91,34,1 of 2,0.91u,9.31,
-2026-11-14,Dunkeld,6,,3,Iced Poppy,WIN,15.66,55.85,0.22,8,2 of 2,1.13u,9.31,
-2026-11-14,Dunkeld,6,,7,Packers Journey,WIN,19.99,87.12,0.56,21,1 of 2,0.56u,14.52,
-2026-11-14,Dunkeld,6,,7,Packers Journey,WIN,24.99,87.12,0.13,5,2 of 2,0.69u,14.52,
-2026-11-14,Dunkeld,6,,1,Synchro,WIN,16.27,71.65,0.69,26,1 of 2,0.69u,11.94,
-2026-11-14,Dunkeld,6,,1,Synchro,WIN,20.34,71.65,0.17,6,2 of 2,0.86u,11.94,
-2026-11-14,Dunkeld,6,,4,Tango Jewel,WIN,17.04,74.86,0.66,25,1 of 2,0.66u,12.48,
-2026-11-14,Dunkeld,6,,4,Tango Jewel,WIN,21.30,74.86,0.16,6,2 of 2,0.82u,12.48,
-2026-11-14,Dunkeld,6,,8,Tennessee Song,WIN,4.30,20.19,3.07,115,1 of 3,3.07u,3.37,
-2026-11-14,Dunkeld,6,,8,Tennessee Song,WIN,5.38,20.19,0.63,24,2 of 3,3.70u,3.37,
-2026-11-14,Dunkeld,6,,8,Tennessee Song,WIN,7.41,20.19,3.70,139,3 of 3,7.40u,3.37,opens $7.41+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,1,,1,Boridi,WIN,2.86,3.99,4.42,166,1 of 2,4.42u,2.41,opens under $4: edge 1.15
+2026-11-14,Dunkeld,1,,1,Boridi,WIN,3.57,3.99,1.05,39,2 of 2,5.47u,2.41,opens under $4: edge 1.15
+2026-11-14,Dunkeld,1,,1,Boridi,WIN,4.00,14.46,4.83,181,1 of 3,4.83u,2.41,
+2026-11-14,Dunkeld,1,,1,Boridi,WIN,4.00,14.46,0.86,32,2 of 3,5.69u,2.41,
+2026-11-14,Dunkeld,1,,1,Boridi,WIN,5.31,14.46,4.31,162,3 of 3,10.00u,2.41,opens $5.31+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,1,,4,Flash Inquiry,WIN,13.64,15.01,0.46,17,1 of 1,0.46u,10.09,EARLY: $15 or shorter only
+2026-11-14,Dunkeld,1,,8,Red Mink,WIN,14.38,63.68,0.79,30,1 of 2,0.79u,10.61,
+2026-11-14,Dunkeld,1,,8,Red Mink,WIN,17.98,63.68,0.19,7,2 of 2,0.98u,10.61,
+2026-11-14,Dunkeld,2,,4,Cracked It,WIN,2.61,3.99,5.05,189,1 of 2,5.05u,2.21,opens under $4: edge 1.15
+2026-11-14,Dunkeld,2,,4,Cracked It,WIN,3.26,3.99,1.15,43,2 of 2,6.20u,2.21,opens under $4: edge 1.15
+2026-11-14,Dunkeld,2,,4,Cracked It,WIN,4.00,13.24,5.48,206,1 of 3,5.48u,2.21,
+2026-11-14,Dunkeld,2,,4,Cracked It,WIN,4.00,13.24,0.94,35,2 of 3,6.42u,2.21,
+2026-11-14,Dunkeld,2,,4,Cracked It,WIN,4.86,13.24,3.58,134,3 of 3,10.00u,2.21,opens $4.86+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,2,,1,He's Fierce,WIN,15.43,68.10,0.73,27,1 of 2,0.73u,11.35,
+2026-11-14,Dunkeld,2,,1,He's Fierce,WIN,19.29,68.10,0.18,7,2 of 2,0.91u,11.35,
+2026-11-14,Dunkeld,2,,6,Light Filled,WIN,6.44,29.68,1.90,71,1 of 3,1.90u,4.95,
+2026-11-14,Dunkeld,2,,6,Light Filled,WIN,8.05,29.68,0.42,16,2 of 3,2.32u,4.95,
+2026-11-14,Dunkeld,2,,6,Light Filled,WIN,10.89,29.68,2.32,87,3 of 3,4.64u,4.95,opens $10.89+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,2,,3,Parak,WIN,17.89,78.38,0.63,24,1 of 2,0.63u,13.06,
+2026-11-14,Dunkeld,2,,3,Parak,WIN,22.36,78.38,0.15,6,2 of 2,0.78u,13.06,
+2026-11-14,Dunkeld,3,,6,Classy Sassy,WIN,6.53,15.01,1.87,70,1 of 3,1.87u,5.01,EARLY: $15 or shorter only
+2026-11-14,Dunkeld,3,,6,Classy Sassy,WIN,8.16,15.01,0.42,16,2 of 3,2.29u,5.01,EARLY: $15 or shorter only
+2026-11-14,Dunkeld,3,,6,Classy Sassy,WIN,11.03,15.01,2.29,86,3 of 3,4.58u,5.01,EARLY: $15 or shorter only; opens $11.03+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,3,,7,Frosted Amber,WIN,6.55,30.15,1.86,70,1 of 3,1.86u,5.02,
+2026-11-14,Dunkeld,3,,7,Frosted Amber,WIN,8.19,30.15,0.42,16,2 of 3,2.28u,5.02,
+2026-11-14,Dunkeld,3,,7,Frosted Amber,WIN,11.06,30.15,2.28,85,3 of 3,4.56u,5.02,opens $11.06+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,3,,5,Zephyr's Reward,WIN,15.78,69.59,0.71,27,1 of 2,0.71u,11.60,
+2026-11-14,Dunkeld,3,,5,Zephyr's Reward,WIN,19.72,69.59,0.18,7,2 of 2,0.89u,11.60,
+2026-11-14,Dunkeld,4,,3,Beau Strada,WIN,5.53,25.66,2.26,85,1 of 3,2.26u,4.28,
+2026-11-14,Dunkeld,4,,3,Beau Strada,WIN,6.91,25.66,0.50,19,2 of 3,2.76u,4.28,
+2026-11-14,Dunkeld,4,,3,Beau Strada,WIN,9.41,25.66,2.76,103,3 of 3,5.52u,4.28,opens $9.41+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,4,,2,Caribbean Villa,WIN,4.93,23.01,2.59,97,1 of 3,2.59u,3.83,
+2026-11-14,Dunkeld,4,,2,Caribbean Villa,WIN,6.16,23.01,0.56,21,2 of 3,3.15u,3.83,
+2026-11-14,Dunkeld,4,,2,Caribbean Villa,WIN,8.44,23.01,3.15,118,3 of 3,6.30u,3.83,opens $8.44+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,4,,1,Fox Man,WIN,6.96,31.92,1.74,65,1 of 3,1.74u,5.32,
+2026-11-14,Dunkeld,4,,1,Fox Man,WIN,8.70,31.92,0.39,15,2 of 3,2.13u,5.32,
+2026-11-14,Dunkeld,4,,1,Fox Man,WIN,11.71,31.92,2.13,80,3 of 3,4.26u,5.32,opens $11.71+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,5,,5,Abby's Crossword,WIN,4.47,15.01,2.92,110,1 of 3,2.92u,3.49,EARLY: $15 or shorter only
+2026-11-14,Dunkeld,5,,5,Abby's Crossword,WIN,5.59,15.01,0.61,23,2 of 3,3.53u,3.49,EARLY: $15 or shorter only
+2026-11-14,Dunkeld,5,,5,Abby's Crossword,WIN,7.69,15.01,3.53,132,3 of 3,7.06u,3.49,EARLY: $15 or shorter only; opens $7.69+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,5,,3,Drunken Sailor,WIN,16.37,72.05,0.69,26,1 of 2,0.69u,12.01,
+2026-11-14,Dunkeld,5,,3,Drunken Sailor,WIN,20.46,72.05,0.16,6,2 of 2,0.85u,12.01,
+2026-11-14,Dunkeld,5,,10,Iliad,WIN,9.26,41.90,1.27,48,1 of 3,1.27u,6.98,
+2026-11-14,Dunkeld,5,,10,Iliad,WIN,11.57,41.90,0.29,11,2 of 3,1.56u,6.98,
+2026-11-14,Dunkeld,5,,10,Iliad,WIN,15.37,41.90,1.56,58,3 of 3,3.12u,6.98,opens $15.37+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,5,,8,Immortal Justice,WIN,17.69,77.55,0.63,24,1 of 2,0.63u,12.92,
+2026-11-14,Dunkeld,5,,8,Immortal Justice,WIN,22.11,77.55,0.16,6,2 of 2,0.79u,12.92,
+2026-11-14,Dunkeld,5,,2,Krasnoludek,WIN,13.67,60.71,0.83,31,1 of 2,0.83u,10.12,
+2026-11-14,Dunkeld,5,,2,Krasnoludek,WIN,17.09,60.71,0.20,8,2 of 2,1.03u,10.12,
+2026-11-14,Dunkeld,5,,4,Ponte Arcobaleno,WIN,9.94,44.83,1.17,44,1 of 3,1.17u,7.47,
+2026-11-14,Dunkeld,5,,4,Ponte Arcobaleno,WIN,12.42,44.83,0.28,11,2 of 3,1.45u,7.47,
+2026-11-14,Dunkeld,5,,4,Ponte Arcobaleno,WIN,16.44,44.83,1.45,54,3 of 3,2.90u,7.47,opens $16.44+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,6,,2,Bazzar,WIN,3.90,3.99,2.97,111,1 of 1,2.97u,3.23,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-14,Dunkeld,6,,2,Bazzar,WIN,4.11,15.01,3.23,121,1 of 3,3.23u,3.23,EARLY: $15 or shorter only
+2026-11-14,Dunkeld,6,,2,Bazzar,WIN,5.14,15.01,0.66,25,2 of 3,3.89u,3.23,EARLY: $15 or shorter only
+2026-11-14,Dunkeld,6,,2,Bazzar,WIN,7.11,15.01,3.89,146,3 of 3,7.78u,3.23,EARLY: $15 or shorter only; opens $7.11+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,6,,3,Iced Poppy,WIN,10.34,46.55,1.12,42,1 of 3,1.12u,7.76,
+2026-11-14,Dunkeld,6,,3,Iced Poppy,WIN,12.93,46.55,0.27,10,2 of 3,1.39u,7.76,
+2026-11-14,Dunkeld,6,,3,Iced Poppy,WIN,17.08,46.55,1.39,52,3 of 3,2.78u,7.76,opens $17.08+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,6,,1,Synchro,WIN,12.71,56.62,0.90,34,1 of 2,0.90u,9.44,
+2026-11-14,Dunkeld,6,,1,Synchro,WIN,15.89,56.62,0.22,8,2 of 2,1.12u,9.44,
+2026-11-14,Dunkeld,6,,8,Tennessee Song,WIN,3.41,3.99,3.52,132,1 of 1,3.52u,2.84,opens under $4: edge 1.15
+2026-11-14,Dunkeld,6,,8,Tennessee Song,WIN,4.00,17.04,3.84,144,1 of 3,3.84u,2.84,
+2026-11-14,Dunkeld,6,,8,Tennessee Song,WIN,4.50,17.04,0.74,28,2 of 3,4.58u,2.84,
+2026-11-14,Dunkeld,6,,8,Tennessee Song,WIN,6.25,17.04,4.58,172,3 of 3,9.16u,2.84,opens $6.25+ (2.2x ours): stake doubled
 2026-11-14,Dunkeld,7,,8,Dubai Watch,WIN,15.67,69.12,0.72,27,1 of 2,0.72u,11.52,
 2026-11-14,Dunkeld,7,,8,Dubai Watch,WIN,19.59,69.12,0.17,6,2 of 2,0.89u,11.52,
 2026-11-14,Dunkeld,7,,2,Foujita San,WIN,7.20,32.97,1.68,63,1 of 3,1.68u,5.49,
@@ -76,20 +81,20 @@ date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollar
 2026-11-14,Dunkeld,7,,7,Stay Humble,WIN,4.94,23.05,2.59,97,1 of 3,2.59u,3.84,
 2026-11-14,Dunkeld,7,,7,Stay Humble,WIN,6.18,23.05,0.55,21,2 of 3,3.14u,3.84,
 2026-11-14,Dunkeld,7,,7,Stay Humble,WIN,8.46,23.05,3.14,118,3 of 3,6.28u,3.84,opens $8.46+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,8,,9,Chateau Dancer,WIN,15.04,66.48,0.75,28,1 of 2,0.75u,11.08,
-2026-11-14,Dunkeld,8,,9,Chateau Dancer,WIN,18.80,66.48,0.18,7,2 of 2,0.93u,11.08,
-2026-11-14,Dunkeld,8,,8,Idling Behind,WIN,16.39,72.14,0.69,26,1 of 2,0.69u,12.02,
-2026-11-14,Dunkeld,8,,8,Idling Behind,WIN,20.49,72.14,0.16,6,2 of 2,0.85u,12.02,
-2026-11-14,Dunkeld,8,,2,Mannerheim,WIN,10.65,47.85,1.09,41,1 of 3,1.09u,7.98,
-2026-11-14,Dunkeld,8,,2,Mannerheim,WIN,13.31,47.85,0.26,10,2 of 3,1.35u,7.98,
-2026-11-14,Dunkeld,8,,2,Mannerheim,WIN,17.55,47.85,1.35,51,3 of 3,2.70u,7.98,opens $17.55+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,8,,3,Monsun's Pride,WIN,6.12,28.26,2.01,75,1 of 3,2.01u,4.71,
-2026-11-14,Dunkeld,8,,3,Monsun's Pride,WIN,7.65,28.26,0.45,17,2 of 3,2.46u,4.71,
-2026-11-14,Dunkeld,8,,3,Monsun's Pride,WIN,10.37,28.26,2.46,92,3 of 3,4.92u,4.71,opens $10.37+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,8,,4,Paltinian,WIN,6.24,28.77,1.97,74,1 of 3,1.97u,4.80,
-2026-11-14,Dunkeld,8,,4,Paltinian,WIN,7.80,28.77,0.44,16,2 of 3,2.41u,4.80,
-2026-11-14,Dunkeld,8,,4,Paltinian,WIN,10.55,28.77,2.41,90,3 of 3,4.82u,4.80,opens $10.55+ (2.2x ours): stake doubled
-2026-11-14,Dunkeld,8,,7,Rippa Buddy,WIN,15.28,67.48,0.74,28,1 of 2,0.74u,11.25,
-2026-11-14,Dunkeld,8,,7,Rippa Buddy,WIN,19.10,67.48,0.18,7,2 of 2,0.92u,11.25,
-2026-11-14,Dunkeld,8,,5,Tassadar,WIN,11.96,53.43,0.96,36,1 of 2,0.96u,8.91,
-2026-11-14,Dunkeld,8,,5,Tassadar,WIN,14.95,53.43,0.23,9,2 of 2,1.19u,8.91,
+2026-11-14,Dunkeld,8,,9,Chateau Dancer,WIN,13.28,59.05,0.86,32,1 of 2,0.86u,9.84,
+2026-11-14,Dunkeld,8,,9,Chateau Dancer,WIN,16.60,59.05,0.20,8,2 of 2,1.06u,9.84,
+2026-11-14,Dunkeld,8,,8,Idling Behind,WIN,16.63,73.15,0.68,26,1 of 2,0.68u,12.19,
+2026-11-14,Dunkeld,8,,8,Idling Behind,WIN,20.79,73.15,0.16,6,2 of 2,0.84u,12.19,
+2026-11-14,Dunkeld,8,,2,Mannerheim,WIN,9.61,43.43,1.21,45,1 of 3,1.21u,7.24,
+2026-11-14,Dunkeld,8,,2,Mannerheim,WIN,12.01,43.43,0.29,11,2 of 3,1.50u,7.24,
+2026-11-14,Dunkeld,8,,2,Mannerheim,WIN,15.93,43.43,1.50,56,3 of 3,3.00u,7.24,opens $15.93+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,8,,3,Monsun's Pride,WIN,6.67,30.67,1.83,69,1 of 3,1.83u,5.11,
+2026-11-14,Dunkeld,8,,3,Monsun's Pride,WIN,8.34,30.67,0.40,15,2 of 3,2.23u,5.11,
+2026-11-14,Dunkeld,8,,3,Monsun's Pride,WIN,11.25,30.67,2.23,84,3 of 3,4.46u,5.11,opens $11.25+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,8,,4,Paltinian,WIN,5.95,27.50,2.08,78,1 of 3,2.08u,4.58,
+2026-11-14,Dunkeld,8,,4,Paltinian,WIN,7.44,27.50,0.46,17,2 of 3,2.54u,4.58,
+2026-11-14,Dunkeld,8,,4,Paltinian,WIN,10.09,27.50,2.54,95,3 of 3,5.08u,4.58,opens $10.09+ (2.2x ours): stake doubled
+2026-11-14,Dunkeld,8,,7,Rippa Buddy,WIN,17.64,77.35,0.64,24,1 of 2,0.64u,12.89,
+2026-11-14,Dunkeld,8,,7,Rippa Buddy,WIN,22.05,77.35,0.15,6,2 of 2,0.79u,12.89,
+2026-11-14,Dunkeld,8,,5,Tassadar,WIN,11.95,53.40,0.96,36,1 of 2,0.96u,8.90,
+2026-11-14,Dunkeld,8,,5,Tassadar,WIN,14.94,53.40,0.23,9,2 of 2,1.19u,8.90,
