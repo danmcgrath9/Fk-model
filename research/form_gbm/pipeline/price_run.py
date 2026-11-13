@@ -89,6 +89,23 @@ def fluc_rows(path: Path):
     return list(csv.DictReader(io.StringIO(s[a + 9:(b if b > 0 else len(s))].strip())))
 
 
+def refetch_weather(path: Path, race_day: str, track: str, mid: str):
+    """track_forecast.py again, through fk-experiment (this session cannot reach the weather hosts), into path."""
+    sys.path.insert(0, str(FK / "scripts"))
+    keys = set(re.findall(r'"([a-z ]+)": \(', (FK / "scripts" / "track_forecast.py").read_text()))
+    slug = re.sub(r"-\d{8}$", "", mid).replace("-", " ")
+    name = next((k for k in (track.lower(), slug, re.sub(r" (hillside|lakeside|park)$", "", slug), slug.split(" ")[0]) if k in keys), "")
+    if not name:
+        log(f"{mid}: no coordinates for {track}: RAIN UNKNOWN"); return None, None
+    log(f"{mid}: weather missing, fetching it again ({name})")
+    gh("/actions/workflows/fk-experiment.yml/dispatches",
+       {"ref": "main", "inputs": {"script": "track_forecast.py", "args": f"{race_day} {name}"}})
+    subprocess.run(["bash", str(Path(__file__).resolve().parent / "waitexp.sh"), str(path)], capture_output=True, text=True)
+    rain, rday = rain_before(path, race_day)
+    log(f"{mid}: weather {'read: ' + str(rain) + 'mm in the 3 days before' if rain is not None else 'STILL MISSING: RAIN UNKNOWN'}")
+    return rain, rday
+
+
 def rain_before(path: Path, race_day: str):
     """mm of rain on the three days before race day (actual or forecast), and race day itself."""
     if not path.exists():
@@ -171,11 +188,17 @@ def main():
         no_rider = sum(1 for j, nm, r_ in zip(z["jockey"].astype(str), z["name"].astype(str), rn)
                        if not j.strip() and not em.get((int(r_), norm(nm)), False))
         rain, rday = rain_before(md / "forecast.md", d)
+        if rain is None:
+            # THE WEATHER MAY NOT BE MISSING (13 Nov 2026, founder: "Weather should never time out"; Kyneton was priced
+            # with "Rain Nonemm" after the runner's four tries all timed out). Fetch it again through fk-experiment
+            # (track_forecast.py now falls back to a second pair of hosts); if even that fails the header says so.
+            rain, rday = refetch_weather(md / "forecast.md", d, m["track"], mid)
         # PAPER ONLY: a meeting type the model has no holdout for (picnic clubs, a one-a-year cup meeting): its venue has
         # fewer than 20 races in the model's history, or none since the 3 Jun holdout began
         vs = {venue(t) for t in tracks}; hist_n = sum(hist[0][v] for v in vs); all_n = sum(hist[1][v] for v in vs)
         paper = hist_n == 0 or all_n < 20
-        going_word = "Soft (15mm+ rain)" if (rain or 0) >= 15 else "official going"
+        going_word = ("Soft (15mm+ rain)" if (rain or 0) >= 15 else "official going"
+                      + (" (RAIN UNKNOWN: every weather source failed)" if rain is None else ""))
         opened = sorted({int(r["race"]) for r in fl if r.get("open") or r.get("race_open_ms")})
         dow = dt.date.fromisoformat(d).strftime("%a %-d %b")
         flags = []
@@ -293,7 +316,8 @@ def main():
         blank = sum(1 for r in rows if not r["number"].strip())
         out.append(f"\n## {I['title']}: {len(H)} horses, up to {sum(h['most'] for h in H.values()):.2f}u"
                    f"{'' if not blank else f', {blank} ORDERS WITHOUT A NUMBER'}")
-        out.append(f"{I['head'][2:]}. Rain {I['rain']}mm in the 3 days before, {I['rday']}mm on the day. "
+        out.append(f"{I['head'][2:]}. " + (f"Rain {I['rain']}mm in the 3 days before, {I['rday']}mm on the day. "
+                   if I['rain'] is not None else "RAIN UNKNOWN: every weather source failed twice. ") +
                    f"Model races here since the holdout: {I['hist']}." + (f" Form adjustments: {I['adj']}" if I['adj'] else ""))
         out.append(f"page {page}")
         out.append("| Race | # | Horse | Ours | Min | Most |\n|---|---|---|---|---|---|")
