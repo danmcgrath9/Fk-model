@@ -4,7 +4,7 @@ bookmaker's flucs look like, and whether TAB's flucs reach back to the timed-pri
 Key from BETWATCH_API_KEY, never printed.    python scripts/betwatch_hist_test.py [YYYY-MM-DD] (default 2026-03-14)"""
 import json, os, subprocess, sys, inspect
 
-subprocess.run([sys.executable, "-m", "pip", "install", "-q", "betwatch"], check=False)
+subprocess.run([sys.executable, "-m", "pip", "install", "-q", "betwatch", "backoff", "gql[all]", "pydantic"], check=False)
 import betwatch
 KEY = os.environ["BETWATCH_API_KEY"].strip()
 day = sys.argv[1] if len(sys.argv) > 1 else "2026-03-14"
