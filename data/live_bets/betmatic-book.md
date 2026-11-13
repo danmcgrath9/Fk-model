@@ -1200,3 +1200,11 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - Back book: no BSP favourite in range. 9am list: none (started Fri 13 Nov); no 9am-tracker rows at Seymour.
 - Rule tracker (49 meetings): Lay $25-$40 drifted 2x +125.40u since 9 Oct; current lay $15-$40 rule -22.68u since 9 Oct,
   -20.85u since 10 Nov (17 lays, 1 winner).
+
+## Sunday 15 Nov Donald and Moe re-priced with riders (Fri 1:20pm, tag r11131319; Donald 5 and Moe 3 riders still to come)
+- Moe opened Fri 10:12-10:18am (R8 Thu 12:17pm), before the re-price, so its sheet of record stays the Wednesday sheet
+  (restored after --replace emptied it). At the open it would have filled: Fridge Monster R4 4.24u $14 (ours $5.35), Yes
+  Yoshi R5 6.35u $2.60 ($1.91), Stole Him R9 0.73u $18.50 ($11.35): 11.32u. Not placed: BetMatic's bot has been off since
+  2 Nov, and by the re-price the two-hour missed-open window had closed.
+- Donald: R6 opened Thu 2:30pm with no fill; its Wednesday rows stay on the sheet, the other seven races take the new
+  prices (37 horses, up to 113.68u). Send refused: bot not connected.
