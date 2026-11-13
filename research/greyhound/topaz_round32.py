@@ -95,7 +95,8 @@ def race_rows(r: dict) -> list:
             p = fl[0][0] if fl and np.isnan(p) else p
             priced = bool(p) and not np.isnan(p)
             scr.append((st, (1 / p) / book if priced else 0.0, priced, table_cents(p) if priced else 0))
-    bet_times = {"open": open_t, **{f"{k}m": open_t + 60 * k for k in LATER}}
+    last_t = max((fl[-1][1] for ru, fl in runners if fl and not ru.get("scratched")), default=open_t)
+    bet_times = {"open": open_t, **{f"{k}m": open_t + 60 * k for k in LATER}, "last": last_t}
     race = {}
     for name, bt in bet_times.items():
         after = [(q, pr, c) for s, q, pr, c in scr if s > bt]
