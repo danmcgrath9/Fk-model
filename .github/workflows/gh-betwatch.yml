@@ -1,0 +1,73 @@
+name: gh betwatch
+
+# Betwatch price history for Victorian greyhounds (founder, 13 Nov 2026: "We have betwatch"). Every bookmaker's
+# price changes with timestamps back to November 2022, TAB included (Betwatch, 13 Nov 2026). The data is for our own
+# models only, never shared: logs print counts only, and the pull lives in this repository's Actions cache.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'probe (counts only, sample days) or pull (month files into the Actions cache, resumable)'
+        default: 'probe'
+      days:
+        description: 'mode=probe: days to sample, comma separated YYYY-MM-DD (blank = five from Nov 2022 to now)'
+        default: ''
+      from:
+        description: 'mode=pull: first month YYYY-MM'
+        default: '2022-11'
+      to:
+        description: 'mode=pull: last month YYYY-MM (blank = this month)'
+        default: ''
+      max_minutes:
+        description: 'mode=pull: minutes of pulling before the cache is saved (the rest resumes next run)'
+        default: '300'
+
+concurrency:
+  group: gh-betwatch-${{ github.event.inputs.mode }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  betwatch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      PYTHONUNBUFFERED: '1'
+      BETWATCH_API_KEY: ${{ secrets.BETWATCH_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'requests>=2.31'
+
+      - name: Probe (counts only)
+        if: github.event.inputs.mode == 'probe'
+        run: |
+          D="${{ github.event.inputs.days }}"
+          python -m greyhound.betwatch probe ${D:+--days "$D"} | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Restore the pulled months (Actions cache, this repository only)
+        if: github.event.inputs.mode == 'pull'
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/betwatch
+          key: betwatch-VIC-G-${{ github.run_id }}
+          restore-keys: betwatch-VIC-G-
+
+      - name: Pull (counts only)
+        if: github.event.inputs.mode == 'pull'
+        run: |
+          T="${{ github.event.inputs.to }}"
+          python -m greyhound.betwatch pull --from "${{ github.event.inputs.from }}" ${T:+--to "$T"} \
+            --dir greyhound/cache/betwatch --max-minutes "${{ github.event.inputs.max_minutes }}" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Save the pulled months (Actions cache)
+        if: always() && github.event.inputs.mode == 'pull'
+        uses: actions/cache/save@v4
+        with:
+          path: greyhound/cache/betwatch
+          key: betwatch-VIC-G-${{ github.run_id }}
