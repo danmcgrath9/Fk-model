@@ -1,16 +1,59 @@
 {
  "day": "Saturday",
  "date": "14 November",
+ "brand": false,
  "meetings": [
   {
    "name": "Sandown",
    "note": "",
    "bets": [
-    {"race": 1, "time": "12:20PM", "horse": "Mr O'Reilly", "price": "$7.50", "rated": "$4.20", "units": "1.86u"},
-    {"race": 5, "time": "2:35PM", "horse": "Magna Sententia", "price": "$7.17", "rated": "$4.53", "units": "1.70u"},
-    {"race": 9, "time": "5:05PM", "horse": "Juja Kibo", "price": "$6", "rated": "$3.87", "units": "2.06u"}
+    {
+     "race": 1,
+     "time": "12:20PM",
+     "horse": "Mr O'Reilly",
+     "price": "$7.50",
+     "rated": "$4.20",
+     "units": "1.86u"
+    },
+    {
+     "race": 5,
+     "time": "2:35PM",
+     "horse": "Magna Sententia",
+     "price": "$7.17",
+     "rated": "$4.53",
+     "units": "1.70u"
+    },
+    {
+     "race": 9,
+     "time": "5:05PM",
+     "horse": "Juja Kibo",
+     "price": "$6",
+     "rated": "$3.87",
+     "units": "2.06u"
+    }
+   ]
+  },
+  {
+   "name": "Dunkeld",
+   "note": "",
+   "bets": [
+    {
+     "race": 2,
+     "time": "1:41PM",
+     "horse": "Cracked It",
+     "price": "$2.80",
+     "rated": "$2.21",
+     "units": "5.05u"
+    },
+    {
+     "race": 8,
+     "time": "5:24PM",
+     "horse": "Rippa Buddy",
+     "price": "$18",
+     "rated": "$12.89",
+     "units": "0.64u"
+    }
    ]
   }
- ],
- "brand": false
+ ]
 }
