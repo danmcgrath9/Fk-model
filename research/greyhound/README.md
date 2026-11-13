@@ -4594,7 +4594,7 @@ which flatters it):
 
 **Every runner, $1.50-$100, by bet** (returns after TAB's deduction):
 
-| price | bet | choosing: bets, return | scored 1st half: bets, return | 2nd half: bets, return | scored: bets, A/E vs the price paid, return, z |
+| price | bet | choosing: bets, return | scored 1st half: bets, return | 2nd half: bets, return | scored: bets, A/E vs the price taken, return, z |
 |---|---|---|---|---|---|
 | TAB's first price | every runner | 132,886, -34.0% | 48,076, -36.8% | 48,229, -37.4% | 96,305, 0.770, -37.1%, -54.2 |
 | TAB's first price | our top pick | 17,908, -9.4% | 6,563, -12.2% | 6,665, -12.4% | 13,228, 0.916, -12.3%, -12.3 |
@@ -4630,7 +4630,7 @@ the choosing years:
 
 **Re-chosen every month** on the 12 months before (150 or more bets and a profit there), then bet:
 
-| price | rules chosen a month | half | bets | winners | A/E vs the price paid | return | units | months in profit |
+| price | rules chosen a month | half | bets | winners | A/E vs the price taken | return | units | months in profit |
 |---|---|---|---|---|---|---|---|---|
 | TAB's first price | 22-69 | 1st | 3,214 | 1,055 | 0.999 | -15.7% | -505 | 1 of 10 |
 | TAB's first price | 22-69 | 2nd | 2,698 | 979 | 1.022 | -6.7% | -181 | 2 of 9 |

@@ -144,7 +144,7 @@ def bench(t, ch, te, cut, mid, prices=None, deduction=None) -> None:
 
     # the market alone and the model alone: every runner, any price
     print("Every runner, $1.50-$100, by bet:\n\n| price | bet | choosing: bets, return | scored 1st half: bets, "
-          "return | 2nd half: bets, return | scored: bets, A/E vs the price paid, return, z |\n|---|---|---|---|---|---|")
+          "return | 2nd half: bets, return | scored: bets, A/E vs the price taken, return, z |\n|---|---|---|---|---|---|")
     for pname, (pcol, _) in prices.items():
         for sname in SIGNALS:
             k = (pname, sname, 1.5, 100)
@@ -187,7 +187,7 @@ def bench(t, ch, te, cut, mid, prices=None, deduction=None) -> None:
               f"{sum(r[6] >= 2 for r in rr):,} | {0.023 * len(rr):.1f} |")
     print("\nChosen rules with z >= 2 on the scored years, best first (at most 40):\n")
     print("| rule | choosing years: bets, return, z | scored 1st half: bets, return | 2nd half: bets, return | "
-          "scored: bets, A/E vs the price paid, return, z |\n|---|---|---|---|---|")
+          "scored: bets, A/E vs the price taken, return, z |\n|---|---|---|---|---|")
     for i, (key, n_c, roi_c, z_c, n, roi, z, r1, r2, ae) in enumerate(sorted(rows, key=lambda r: -r[6])):
         if z < 2 or i >= 40:
             break
@@ -221,7 +221,7 @@ def bench(t, ch, te, cut, mid, prices=None, deduction=None) -> None:
             bets[pname].append(cur[hm].assign(ret=rcur[pname][hm], price=cur[pcol].values[hm]))
             picked[pname].append(n_rules[pname])
     print(f"\n## Re-chosen every month on the {WINDOW} months before ({MIN_MONTHLY}+ bets and a profit there), then bet\n")
-    print("| price | rules chosen a month | half | bets | winners | A/E vs the price paid | return | units | months in "
+    print("| price | rules chosen a month | half | bets | winners | A/E vs the price taken | return | units | months in "
           "profit |\n|---|---|---|---|---|---|---|---|---|")
     for pname in prices:
         allb = pd.concat(bets[pname]) if bets[pname] else pd.DataFrame()
