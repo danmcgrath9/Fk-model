@@ -90,15 +90,19 @@ def bench_segments(t: pd.DataFrame, tracks, pairs) -> dict:
     return {"every runner": np.ones(len(t), bool), **seg}
 
 
-def bases(t: pd.DataFrame):
-    """(price, bet, lo, hi) -> mask, and price -> flat returns. The band is on the price taken."""
+def bases(t: pd.DataFrame, prices=None, deduction=None):
+    """(price, bet, lo, hi) -> mask, and price -> flat returns after the deduction. The band is on the price taken.
+    `prices`: name -> (price column, our blended chance column); `deduction`: price column -> deduction column."""
+    prices, deduction = prices or PRICES, deduction or DEDUCTION
     masks, rets = {}, {}
     race = t.race_id.values
-    for pname, (pcol, bcol) in PRICES.items():
+    for pname, (pcol, bcol) in prices.items():
         price, pb = t[pcol].values.astype(float), t[bcol].values.astype(float)
-        ded = t[DEDUCTION[pcol]].fillna(0).values if DEDUCTION[pcol] in t else np.zeros(len(t))
+        dcol = deduction.get(pcol)
+        ded = t[dcol].fillna(0).values if dcol in t else np.zeros(len(t))
         rets[pname] = np.where(t.won.values == 1, (price - 1) * (1 - ded), -1.0)
-        top = pd.Series(pb).groupby(race).rank(ascending=False, method="first").values == 1
+        top = (t.top_pick.values.astype(bool) if "top_pick" in t   # set by a caller who knows the whole field
+               else pd.Series(pb).groupby(race).rank(ascending=False, method="first").values == 1)
         sig = {"every runner": np.ones(len(t), bool), "our top pick": top}
         for r in RATIOS:
             sig[f"price {r:g}x ours or more"] = price * pb >= r
@@ -124,6 +128,114 @@ def log_loss_table(t: pd.DataFrame) -> None:
         ll = float(-np.log(w[c].clip(1e-9)).mean())
         print(f"| {n} | {ll:.4f} | {ll - base:+.4f} |")
     print()
+
+
+def bench(t, ch, te, cut, mid, prices=None, deduction=None) -> None:
+    """Every rule on the bench frame t (choosing ch, scored te from `cut`, halves at `mid`): the every-runner table,
+    chosen once and scored once with the luck count, and re-chosen every month."""
+    prices, deduction = prices or PRICES, deduction or DEDUCTION
+    tracks = sorted(t.track.astype(str).unique())
+    pairs = os.environ.get("BENCH_PAIRS", "").strip().lower() == "yes"
+    sc, st = bench_segments(ch, tracks, pairs), bench_segments(te, tracks, pairs)
+    bc, rc = bases(ch, prices, deduction)
+    bt, rt = bases(te, prices, deduction)
+    h = (te.date < mid).values
+    print(f"Segments: {len(st):,}; rules: {len(st) * len(bt):,}\n")
+
+    # the market alone and the model alone: every runner, any price
+    print("Every runner, $1.50-$100, by bet:\n\n| price | bet | choosing: bets, return | scored 1st half: bets, "
+          "return | 2nd half: bets, return | scored: bets, A/E vs the price paid, return, z |\n|---|---|---|---|---|---|")
+    for pname, (pcol, _) in prices.items():
+        for sname in SIGNALS:
+            k = (pname, sname, 1.5, 100)
+            mc, mt = bc[k], bt[k]
+            n_c, roi_c, _ = R29.stats(rc[pname][mc])
+            n, roi, z = R29.stats(rt[pname][mt])
+            r1, r2 = R29.stats(rt[pname][mt & h]), R29.stats(rt[pname][mt & ~h])
+            ae = te.won.values[mt].sum() / (1 / te[pcol].values[mt]).sum() if mt.any() else np.nan
+            print(f"| {pname} | {sname} | {n_c:,}, {roi_c:+.1%} | {r1[0]:,}, {r1[1]:+.1%} | {r2[0]:,}, {r2[1]:+.1%} | "
+                  f"{n:,}, {ae:.3f}, {roi:+.1%}, {z:+.1f} |")
+
+    # 1. chosen once, scored once
+    rows, tried_by = [], {p: 0 for p in prices}
+    for bk, bm in bc.items():
+        pname = bk[0]
+        r = rc[pname]
+        for sname, sm in sc.items():
+            m = bm & sm
+            n = int(np.count_nonzero(m))
+            if n < MIN_CHOOSE:
+                continue
+            tried_by[pname] += 1
+            n_c, roi_c, z_c = R29.stats(r[m])
+            if roi_c <= 0:
+                continue
+            mt = bt[bk] & st[sname]
+            ret = rt[pname][mt]
+            n_t, roi_t, z_t = R29.stats(ret)
+            r1, r2 = R29.stats(rt[pname][mt & h]), R29.stats(rt[pname][mt & ~h])
+            pcol = prices[pname][0]
+            ae = te.won.values[mt].sum() / (1 / te[pcol].values[mt]).sum() if mt.any() else np.nan
+            rows.append(((sname,) + bk, n_c, roi_c, z_c, n_t, roi_t, z_t, r1, r2, ae))
+    print("\n| price | rules with 300+ bets on the choosing years | chosen (a profit there) | chosen, profit in the "
+          "scored years | chosen, profit in both halves | chosen, z >= 2 on the scored years | z >= 2 expected by luck |"
+          "\n|---|---|---|---|---|---|---|")
+    for pname in prices:
+        rr = [r for r in rows if r[0][1] == pname]
+        print(f"| {pname} | {tried_by[pname]:,} | {len(rr):,} | {sum(r[5] > 0 for r in rr if r[4]):,} | "
+              f"{sum(1 for r in rr if r[7][0] and r[8][0] and r[7][1] > 0 and r[8][1] > 0):,} | "
+              f"{sum(r[6] >= 2 for r in rr):,} | {0.023 * len(rr):.1f} |")
+    print("\nChosen rules with z >= 2 on the scored years, best first (at most 40):\n")
+    print("| rule | choosing years: bets, return, z | scored 1st half: bets, return | 2nd half: bets, return | "
+          "scored: bets, A/E vs the price paid, return, z |\n|---|---|---|---|---|")
+    for i, (key, n_c, roi_c, z_c, n, roi, z, r1, r2, ae) in enumerate(sorted(rows, key=lambda r: -r[6])):
+        if z < 2 or i >= 40:
+            break
+        seg, pname, sname, lo, hi = key
+        both = r1[0] and r2[0] and r1[1] > 0 and r2[1] > 0
+        print(f"| {pname}, {sname}: {seg}, ${lo:g}-${hi:g} | {n_c:,}, {roi_c:+.1%}, {z_c:+.1f} | {r1[0]:,}, "
+              f"{r1[1]:+.1%} | {r2[0]:,}, {r2[1]:+.1%} | {n:,}, {ae:.3f}, {roi:+.1%}, {z:+.1f}"
+              f"{' **both halves**' if both else ''} |")
+
+    # 2. re-chosen every month
+    bet_months = pd.period_range(cut.to_period("M"), t.date.max().to_period("M"), freq="M")
+    bets, picked = {p: [] for p in prices}, {p: [] for p in prices}
+    for M in bet_months:
+        w = t[(t.date >= (M - WINDOW).start_time) & (t.date < M.start_time)].reset_index(drop=True)
+        cur = t[(t.date >= max(M.start_time, cut)) & (t.date < (M + 1).start_time)].reset_index(drop=True)
+        if cur.empty or w.empty:
+            continue
+        sw, sm_ = bench_segments(w, tracks, pairs), bench_segments(cur, tracks, pairs)
+        bw_, rw = bases(w, prices, deduction)
+        bcur, rcur = bases(cur, prices, deduction)
+        hit = {p: np.zeros(len(cur), bool) for p in prices}
+        n_rules = {p: 0 for p in prices}
+        for bk, bm in bw_.items():
+            for sname, sm in sw.items():
+                m = bm & sm
+                if np.count_nonzero(m) >= MIN_MONTHLY and rw[bk[0]][m].mean() > 0:
+                    hit[bk[0]] |= bcur[bk] & sm_[sname]
+                    n_rules[bk[0]] += 1
+        for pname, (pcol, _) in prices.items():
+            hm = hit[pname]
+            bets[pname].append(cur[hm].assign(ret=rcur[pname][hm], price=cur[pcol].values[hm]))
+            picked[pname].append(n_rules[pname])
+    print(f"\n## Re-chosen every month on the {WINDOW} months before ({MIN_MONTHLY}+ bets and a profit there), then bet\n")
+    print("| price | rules chosen a month | half | bets | winners | A/E vs the price paid | return | units | months in "
+          "profit |\n|---|---|---|---|---|---|---|---|---|")
+    for pname in prices:
+        allb = pd.concat(bets[pname]) if bets[pname] else pd.DataFrame()
+        if allb.empty:
+            print(f"| {pname} | {min(picked[pname], default=0)}-{max(picked[pname], default=0)} | all | 0 | | | | | |")
+            continue
+        for hn, hm in (("1st", allb.date < mid), ("2nd", allb.date >= mid), ("all", allb.date.notna())):
+            x = allb[hm]
+            if x.empty:
+                continue
+            bym = x.groupby(x.date.dt.to_period("M")).ret.sum()
+            print(f"| {pname} | {min(picked[pname])}-{max(picked[pname])} | {hn} | {len(x):,} | {int(x.won.sum()):,} | "
+                  f"{x.won.sum() / (1 / x.price).sum():.3f} | {x.ret.mean():+.1%} | {x.ret.sum():+,.0f} | "
+                  f"{(bym > 0).sum()} of {len(bym)} |")
 
 
 def main(d, label):
@@ -169,108 +281,7 @@ def main(d, label):
           f"split at {mid:%Y-%m-%d}. {(time.monotonic() - t0) / 60:.0f} minutes in.\n")
     log_loss_table(t)
 
-    tracks = sorted(t.track.astype(str).unique())
-    pairs = os.environ.get("BENCH_PAIRS", "").strip().lower() == "yes"
-    sc, st = bench_segments(ch, tracks, pairs), bench_segments(te, tracks, pairs)
-    bc, rc = bases(ch)
-    bt, rt = bases(te)
-    h = (te.date < mid).values
-    print(f"Segments: {len(st):,}; rules: {len(st) * len(bt):,}\n")
-
-    # the market alone and the model alone: every runner, any price
-    print("Every runner, $1.50-$100, by bet:\n\n| price | bet | choosing: bets, return | scored 1st half: bets, "
-          "return | 2nd half: bets, return | scored: bets, A/E vs the price paid, return, z |\n|---|---|---|---|---|---|")
-    for pname, (pcol, _) in PRICES.items():
-        for sname in SIGNALS:
-            k = (pname, sname, 1.5, 100)
-            mc, mt = bc[k], bt[k]
-            n_c, roi_c, _ = R29.stats(rc[pname][mc])
-            n, roi, z = R29.stats(rt[pname][mt])
-            r1, r2 = R29.stats(rt[pname][mt & h]), R29.stats(rt[pname][mt & ~h])
-            ae = te.won.values[mt].sum() / (1 / te[pcol].values[mt]).sum() if mt.any() else np.nan
-            print(f"| {pname} | {sname} | {n_c:,}, {roi_c:+.1%} | {r1[0]:,}, {r1[1]:+.1%} | {r2[0]:,}, {r2[1]:+.1%} | "
-                  f"{n:,}, {ae:.3f}, {roi:+.1%}, {z:+.1f} |")
-
-    # 1. chosen once, scored once
-    rows, tried_by = [], {p: 0 for p in PRICES}
-    for bk, bm in bc.items():
-        pname = bk[0]
-        r = rc[pname]
-        for sname, sm in sc.items():
-            m = bm & sm
-            n = int(np.count_nonzero(m))
-            if n < MIN_CHOOSE:
-                continue
-            tried_by[pname] += 1
-            n_c, roi_c, z_c = R29.stats(r[m])
-            if roi_c <= 0:
-                continue
-            mt = bt[bk] & st[sname]
-            ret = rt[pname][mt]
-            n_t, roi_t, z_t = R29.stats(ret)
-            r1, r2 = R29.stats(rt[pname][mt & h]), R29.stats(rt[pname][mt & ~h])
-            pcol = PRICES[pname][0]
-            ae = te.won.values[mt].sum() / (1 / te[pcol].values[mt]).sum() if mt.any() else np.nan
-            rows.append(((sname,) + bk, n_c, roi_c, z_c, n_t, roi_t, z_t, r1, r2, ae))
-    print("\n| price | rules with 300+ bets on the choosing years | chosen (a profit there) | chosen, profit in the "
-          "scored years | chosen, profit in both halves | chosen, z >= 2 on the scored years | z >= 2 expected by luck |"
-          "\n|---|---|---|---|---|---|---|")
-    for pname in PRICES:
-        rr = [r for r in rows if r[0][1] == pname]
-        print(f"| {pname} | {tried_by[pname]:,} | {len(rr):,} | {sum(r[5] > 0 for r in rr if r[4]):,} | "
-              f"{sum(1 for r in rr if r[7][0] and r[8][0] and r[7][1] > 0 and r[8][1] > 0):,} | "
-              f"{sum(r[6] >= 2 for r in rr):,} | {0.023 * len(rr):.1f} |")
-    print("\nChosen rules with z >= 2 on the scored years, best first (at most 40):\n")
-    print("| rule | choosing years: bets, return, z | scored 1st half: bets, return | 2nd half: bets, return | "
-          "scored: bets, A/E vs the price paid, return, z |\n|---|---|---|---|---|")
-    for i, (key, n_c, roi_c, z_c, n, roi, z, r1, r2, ae) in enumerate(sorted(rows, key=lambda r: -r[6])):
-        if z < 2 or i >= 40:
-            break
-        seg, pname, sname, lo, hi = key
-        both = r1[0] and r2[0] and r1[1] > 0 and r2[1] > 0
-        print(f"| {pname}, {sname}: {seg}, ${lo:g}-${hi:g} | {n_c:,}, {roi_c:+.1%}, {z_c:+.1f} | {r1[0]:,}, "
-              f"{r1[1]:+.1%} | {r2[0]:,}, {r2[1]:+.1%} | {n:,}, {ae:.3f}, {roi:+.1%}, {z:+.1f}"
-              f"{' **both halves**' if both else ''} |")
-
-    # 2. re-chosen every month
-    bet_months = pd.period_range(cut.to_period("M"), t.date.max().to_period("M"), freq="M")
-    bets, picked = {p: [] for p in PRICES}, {p: [] for p in PRICES}
-    for M in bet_months:
-        w = t[(t.date >= (M - WINDOW).start_time) & (t.date < M.start_time)].reset_index(drop=True)
-        cur = t[(t.date >= max(M.start_time, cut)) & (t.date < (M + 1).start_time)].reset_index(drop=True)
-        if cur.empty or w.empty:
-            continue
-        sw, sm_ = bench_segments(w, tracks, pairs), bench_segments(cur, tracks, pairs)
-        bw_, rw = bases(w)
-        bcur, rcur = bases(cur)
-        hit = {p: np.zeros(len(cur), bool) for p in PRICES}
-        n_rules = {p: 0 for p in PRICES}
-        for bk, bm in bw_.items():
-            for sname, sm in sw.items():
-                m = bm & sm
-                if np.count_nonzero(m) >= MIN_MONTHLY and rw[bk[0]][m].mean() > 0:
-                    hit[bk[0]] |= bcur[bk] & sm_[sname]
-                    n_rules[bk[0]] += 1
-        for pname, (pcol, _) in PRICES.items():
-            hm = hit[pname]
-            bets[pname].append(cur[hm].assign(ret=rcur[pname][hm], price=cur[pcol].values[hm]))
-            picked[pname].append(n_rules[pname])
-    print(f"\n## Re-chosen every month on the {WINDOW} months before ({MIN_MONTHLY}+ bets and a profit there), then bet\n")
-    print("| price | rules chosen a month | half | bets | winners | A/E vs the price paid | return | units | months in "
-          "profit |\n|---|---|---|---|---|---|---|---|---|")
-    for pname in PRICES:
-        allb = pd.concat(bets[pname]) if bets[pname] else pd.DataFrame()
-        if allb.empty:
-            print(f"| {pname} | {min(picked[pname], default=0)}-{max(picked[pname], default=0)} | all | 0 | | | | | |")
-            continue
-        for hn, hm in (("1st", allb.date < mid), ("2nd", allb.date >= mid), ("all", allb.date.notna())):
-            x = allb[hm]
-            if x.empty:
-                continue
-            bym = x.groupby(x.date.dt.to_period("M")).ret.sum()
-            print(f"| {pname} | {min(picked[pname])}-{max(picked[pname])} | {hn} | {len(x):,} | {int(x.won.sum()):,} | "
-                  f"{x.won.sum() / (1 / x.price).sum():.3f} | {x.ret.mean():+.1%} | {x.ret.sum():+,.0f} | "
-                  f"{(bym > 0).sum()} of {len(bym)} |")
+    bench(t, ch, te, cut, mid)
     print(f"\n{(time.monotonic() - t0) / 60:.0f} minutes")
     return 0
 
