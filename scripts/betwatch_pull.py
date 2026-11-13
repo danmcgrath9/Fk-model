@@ -1,4 +1,4 @@
-"""TAB's fixed win prices for every Victorian thoroughbred runner, from Betwatch's current API (13 Nov 2026; founder's
+"""Every bookmaker's fixed win prices for every Victorian thoroughbred runner, from Betwatch's current API (13 Nov 2026; founder's
 trial key to 20 Nov). For the 9am rule's backtest: Form King's stored flucs miss Nov 2025 - Aug 2026, Betwatch holds
 TAB's flucs with timestamps back to Nov 2022 (Jamie Watts, Betwatch, 13 Nov: "Each bookie's flucs come through with
 timestamps up to the jump, TAB included. The first price we have ... is usually close to the open but can miss sharp
@@ -29,6 +29,10 @@ client = betwatch.connect(api_key=KEY)
 # all bookmakers over time (best_path: "minutes after best_first_mel:price:bookie;..." at each change of the best price)
 # and each bookmaker's price at 9am race day (bk_0900: "bookie:price;...").
 proj = RaceProjection(markets=True, flucs=True)
+# The best price across the MAJOR bookmakers only (maj_path, same format as best_path): Betwatch carries about 40
+# bookmakers and many of the small ones (Rob Waterhouse, BetChamps, BetLegends...) hold the best price most often but
+# will not take a $1,000 bet, so a best-of-all overstates what can be got on.
+MAJORS = {"tab", "sportsbet", "ladbrokes", "neds", "pointsbet", "unibet", "betr"}
 
 
 def ts(x):
@@ -47,7 +51,7 @@ def g(o, *names):
 w = csv.writer(sys.stdout)
 print("CSV-BEGIN")
 w.writerow(["date", "track", "race", "number", "name", "scratched", "tab_first", "tab_first_mel", "tab_0900", "tab_0900_mel",
-            "tab_last", "tab_last_mel", "flucs", "jump_mel", "path", "best_first_mel", "best_path", "bk_0900"])
+            "tab_last", "tab_last_mel", "flucs", "jump_mel", "path", "best_first_mel", "best_path", "bk_0900", "maj_first_mel", "maj_path"])
 days, races_n, rows_n, fails = 0, 0, 0, []
 d = d0
 while d <= d1:
@@ -78,12 +82,17 @@ while d <= d1:
                 if b9: at9bk[bk] = b9[1]
                 if bk == "tab":
                     fl = bfl; last = (ts(g(fw, "_last_updated", "last_updated")), g(fw, "price"))
-            events.sort(key=lambda x: x[0]); cur, best_pts, prev = {}, [], None
-            for t, bk, pr in events:
-                cur[bk] = pr; bb = max(cur, key=cur.get)
-                if prev is None or cur[bb] != prev[1]:
-                    best_pts.append((t, cur[bb], bb)); prev = (t, cur[bb])
-            b0 = best_pts[0][0] if best_pts else None
+            events.sort(key=lambda x: x[0])
+
+            def best_moves(evs):
+                cur, pts, prev = {}, [], None
+                for t, bk, pr in evs:
+                    cur[bk] = pr; bb = max(cur, key=cur.get)
+                    if prev is None or cur[bb] != prev[1]:
+                        pts.append((t, cur[bb], bb)); prev = (t, cur[bb])
+                return pts
+            best_pts = best_moves(events); maj_pts = best_moves([e for e in events if e[1] in MAJORS])
+            b0 = best_pts[0][0] if best_pts else None; j0 = maj_pts[0][0] if maj_pts else None
             first = fl[0] if fl else None
             at9 = next((f for f in reversed(fl) if f[0] <= nine), None)
             if last is None and fl: last = fl[-1]
@@ -93,7 +102,8 @@ while d <= d1:
                         last[1] if last else "", m(last[0]) if last and last[0] else "", len(fl), m(jump) if jump else "",
                         ";".join(f"{(t - first[0]).total_seconds() / 60:.2f}:{pr:g}" for t, pr in fl) if first else "",
                         m(b0) if b0 else "", ";".join(f"{(t - b0).total_seconds() / 60:.2f}:{pr:g}:{bk}" for t, pr, bk in best_pts),
-                        ";".join(f"{bk}:{pr:g}" for bk, pr in sorted(at9bk.items()))])
+                        ";".join(f"{bk}:{pr:g}" for bk, pr in sorted(at9bk.items())),
+                        m(j0) if j0 else "", ";".join(f"{(t - j0).total_seconds() / 60:.2f}:{pr:g}:{bk}" for t, pr, bk in maj_pts)])
             rows_n += 1
     days += 1
     d += dt.timedelta(days=1)

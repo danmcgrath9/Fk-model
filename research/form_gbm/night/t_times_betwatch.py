@@ -9,7 +9,9 @@ before it (blank before its first). Times: minutes after the race's open, 9am Me
 jump, and the last price.
   A. THE SAME BETS: decided at TAB's open, struck at the price at that time (the cost of being late).
   B. THE SHEET PLACED THEN: decided and struck at the price at that time.
-    python3.13 t_times_betwatch.py BW1.md [BW2.md ...]   (night folder)"""
+    python3.13 t_times_betwatch.py [--best] BW1.md [BW2.md ...]   (night folder)
+--best: the best price across every bookmaker (--maj: across the major bookmakers only, maj_path) at each moment (best_path) instead of TAB's own path (13 Nov 2026,
+founder: "I think it gives more than tab?"); the open is then the first price from any bookmaker."""
 import bisect, collections, csv, datetime as dt, io, re, sys
 import numpy as np
 import stake_rule
@@ -23,13 +25,15 @@ qq = 1 / np.maximum(P, 1e-9); mo = 0.95 * (1.2 / np.maximum(P, 1e-9) ** 0.82) **
 CEIL, TIERS = 6.0, (1.0, 1.25, 1.5)
 T = lambda s: dt.datetime.strptime(s, "%Y-%m-%d %H:%M")
 
+BEST = "--best" in sys.argv or "--maj" in sys.argv
+PC, FC = ("maj_path", "maj_first_mel") if "--maj" in sys.argv else ("best_path", "best_first_mel") if BEST else ("path", "tab_first_mel")
 paths, race_open, jump = {}, {}, {}
-for f in sys.argv[1:]:
+for f in [a for a in sys.argv[1:] if not a.startswith("--")]:
     s = open(f).read(); a = s.find("CSV-BEGIN") + 9; b = s.find("CSV-END")
     for r in csv.DictReader(io.StringIO(s[a:b].strip())):
-        if r["scratched"] == "1" or not r["path"]: continue
-        t0 = T(r["tab_first_mel"])
-        pts = [(t0 + dt.timedelta(minutes=float(x.split(":")[0])), float(x.split(":")[1])) for x in r["path"].split(";")]
+        if r["scratched"] == "1" or not r.get(PC): continue
+        t0 = T(r[FC])
+        pts = [(t0 + dt.timedelta(minutes=float(x.split(":")[0])), float(x.split(":")[1])) for x in r[PC].split(";")]
         k = (r["date"], int(r["race"]), norm(r["name"])); paths[k] = pts
         rk = (r["date"], int(r["race"]))
         race_open[rk] = min(race_open.get(rk, t0), t0)
@@ -48,7 +52,7 @@ rk_of = [(date[i], rno[i]) for i in range(len(ri))]
 race_has = collections.Counter(ri[have]); race_size = np.bincount(ri, minlength=nR)
 full = np.array([race_has.get(r, 0) >= 0.8 * race_size[r] for r in range(nR)])   # races where we matched most runners
 base = have & full[ri] & ~fsr & (P > 0) & (qq >= 1.6) & (qq <= 15)
-print(f"{len(paths)} TAB price paths; dataset runners matched {int(have.sum())} of {len(ri)}; "
+print(f"{len(paths)} {PC} price paths; dataset runners matched {int(have.sum())} of {len(ri)}; "
       f"races used {int(full.sum())} of {nR}; {min(date[base]) if base.any() else "-"} to {max(date[base]) if base.any() else "-"}")
 
 
