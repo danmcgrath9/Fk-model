@@ -127,3 +127,39 @@ def test_betwatch_rules_do_nothing_without_the_files(tmp_path, monkeypatch, caps
     monkeypatch.setenv("BETWATCH_DIR", str(tmp_path))
     W.betwatch_rules(_rule_frame(), pd.Period("2025-08", freq="M"))
     assert "no month files" in capsys.readouterr().out
+
+
+def _dog_frame(months=7):
+    df = frame(months)
+    df["dog"] = (df.race_id * 10 + df.box).astype(str)
+    return df
+
+
+def test_walk_cached_saves_a_finished_walk_and_reads_it_back(monkeypatch, tmp_path):
+    monkeypatch.setattr(W, "MIN_TRAIN_RACES", 1)
+    calls = []
+
+    def fit(X, y, race, weight, rounds):
+        calls.append(len(X))
+        return Flat(len(X))
+
+    first = pd.Period("2024-02", "M")
+    df1, log1 = W.walk_cached(_dog_frame(), ["f1"], [], first, time.monotonic(), 2, fit, cache_dir=str(tmp_path))
+    assert len(calls) == 6 and log1[-1][0] == "cache" and "saved" in log1[-1][1]
+    df2, log2 = W.walk_cached(_dog_frame(), ["f1"], [], first, time.monotonic(), 2, fit, cache_dir=str(tmp_path))
+    assert len(calls) == 6 and "read" in log2[-1][1] and log2[:-1] == log1[:-1]   # no refit, the same log
+    assert np.allclose(df2.p_a.fillna(-1), df1.p_a.fillna(-1)) and np.allclose(df2.p_b.fillna(-1), df1.p_b.fillna(-1))
+    changed = _dog_frame()
+    changed["f1"] = changed.f1 + 1.0                       # different inputs: a different walk, so it refits
+    W.walk_cached(changed, ["f1"], [], first, time.monotonic(), 2, fit, cache_dir=str(tmp_path))
+    assert len(calls) == 12
+    W.walk_cached(_dog_frame(), ["f1"], [], first, time.monotonic(), 1, fit, cache_dir=str(tmp_path))
+    assert len(calls) == 24                                # a different refit plan refits too
+
+
+def test_walk_cached_without_a_directory_is_walk(monkeypatch):
+    monkeypatch.setattr(W, "MIN_TRAIN_RACES", 1)
+    monkeypatch.delenv("WALK_CACHE_DIR", raising=False)
+    df, log = W.walk_cached(_dog_frame(4), ["f1"], [], pd.Period("2024-02", "M"), time.monotonic(),
+                            fit=lambda X, y, r, w, k: Flat(len(X)))
+    assert all(m != "cache" for m, _ in log)
