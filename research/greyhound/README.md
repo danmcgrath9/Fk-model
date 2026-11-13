@@ -4657,3 +4657,108 @@ the choosing years:
 - **On log loss ours beat TAB's opening book, but only just.** Ours scored 1.5761 against 1.5797, and that is with ours
   knowing the final field. Blended, the two scored 1.5496, about level with GRV's SP (1.5493). BSP (1.4868) and TAB's
   last book (1.5014) are well ahead of both. The market learns a lot between the morning and the jump.
+
+## Test 53: every rule on the field at the bet, and the shape of Betwatch's open (13 Nov 2026, gh topaz runs 43422534285 and 43447282313, `topaz_round34.py` and `topaz_round35.py`)
+
+Founder: "Well keep testing and get better".
+
+**The test (round 34).** This is Test 52's walk-forward, refitted every 6 months from November 2022. Each race is rebuilt
+as it stood at TAB's first price, the way Test 51's version C does it:
+- each dog scratched later goes back in at TAB's chance for it, and ours for the rest is scaled to make room;
+- the blend with TAB's book is refitted each month on the 6 months before, on races with nothing scratched after the
+  open;
+- every return is after TAB's deduction.
+
+That covers 32,548 races from 1 May 2023 to 12 Nov 2026. In 21.7% of them a dog was scratched after the open, and the
+deduction there was a median 13c.
+
+**Log loss on the 25,130 races with nothing scratched after the open** (there the field at the bet is the field that
+ran):
+
+| book | log loss | less TAB's first book |
+|---|---|---|
+| ours | 1.5985 | -0.0030 |
+| ours blended with TAB's first book | 1.5719 | -0.0296 |
+| TAB's first book | 1.6016 | 0 |
+| GRV's SP | 1.5671 | -0.0345 |
+| BSP | 1.5061 | -0.0954 |
+
+**The card's rule** (1.3x, our blended price $2-$15, Kelly x75 cap 4), after TAB's deduction. The halves split at 3 Mar
+2025:
+
+| price | half | bets | winners | A/E vs the price taken | flat ROI | units staked | Kelly ROI | units won | months in profit |
+|---|---|---|---|---|---|---|---|---|---|
+| TAB's first price | 1st | 723 | 137 | 1.310 | +53.0% | 944 | +69.9% | +659 | 13 of 19 |
+| TAB's first price | 2nd | 10 | 3 | 1.580 | +15.1% | 15 | +67.5% | +10 | 3 of 9 |
+| TAB's first price | all | 733 | 140 | 1.314 | +52.5% | 959 | +69.8% | +669 | 16 of 28 |
+| best first price of TAB, Sportsbet and Ladbrokes | 1st | 1,269 | 246 | 1.349 | +52.4% | 2,528 | +63.6% | +1,608 | 20 of 22 |
+| best first price of TAB, Sportsbet and Ladbrokes | 2nd | 158 | 20 | 1.026 | +10.9% | 502 | +13.4% | +67 | 9 of 20 |
+| best first price of TAB, Sportsbet and Ladbrokes | all | 1,427 | 266 | 1.318 | +47.8% | 3,031 | +55.3% | +1,675 | 29 of 42 |
+
+**Every rule, on the field at the bet.** Rules were chosen on 1 May 2023 to 12 Jun 2025 (18,719 races) and scored once
+on 13 Jun 2025 to 12 Nov 2026 (13,829 races), with the halves split at 12 Mar 2026. All returns are after TAB's
+deduction:
+
+| price | bet | choosing: bets, return | scored 1st half: bets, return | 2nd half: bets, return | scored: bets, A/E vs the price taken, return, z |
+|---|---|---|---|---|---|
+| TAB's first price | every runner | 130,601, -33.9% | 47,052, -36.6% | 47,714, -37.4% | 94,766, 0.771, -37.0%, -53.8 |
+| TAB's first price | our top pick | 17,396, -9.2% | 6,247, -12.2% | 6,396, -12.2% | 12,643, 0.908, -12.2%, -12.0 |
+| TAB's first price | price 1x ours or more | 8,862, +12.0% | 907, +1.1% | 457, +11.7% | 1,364, 1.054, +4.7%, +1.1 |
+| TAB's first price | price 1.1x ours or more | 3,800, +30.4% | 148, -24.2% | 37, +90.7% | 185, 1.019, -1.2%, -0.1 |
+| TAB's first price | price 1.2x ours or more | 1,793, +40.4% | 24, +14.4% | 8, -6.2% | 32, 1.158, +9.2%, +0.3 |
+| TAB's first price | price 1.3x ours or more | 883, +61.3% | 3, +26.9% | 4, -12.5% | 7, 1.302, +4.4%, +0.1 |
+| TAB's first price | price 1.5x ours or more | 277, +134.5% | 1, -100.0% | 1, -100.0% | 2, 0.000, -100.0%, 0.0 |
+| best first price of the three | every runner | 130,661, -30.1% | 47,003, -33.9% | 47,672, -34.7% | 94,675, 0.802, -34.3%, -47.0 |
+| best first price of the three | our top pick | 17,635, -4.9% | 6,308, -9.7% | 6,454, -9.7% | 12,762, 0.936, -9.7%, -9.3 |
+| best first price of the three | price 1x ours or more | 14,116, +4.4% | 1,818, -4.4% | 1,310, -3.7% | 3,128, 0.992, -4.1%, -0.8 |
+| best first price of the three | price 1.1x ours or more | 6,638, +17.6% | 467, -4.8% | 354, +17.9% | 821, 0.962, +5.0%, +0.3 |
+| best first price of the three | price 1.2x ours or more | 3,195, +31.7% | 165, -30.6% | 164, +10.5% | 329, 0.869, -10.1%, -0.4 |
+| best first price of the three | price 1.3x ours or more | 1,664, +51.2% | 72, -12.9% | 100, -12.5% | 172, 1.020, -12.6%, -0.5 |
+| best first price of the three | price 1.5x ours or more | 584, +88.9% | 27, +21.2% | 38, +15.8% | 65, 1.478, +18.0%, +0.4 |
+| best first price of the three | price 2x ours or more | 94, +242.5% | 6, -100.0% | 7, +171.4% | 13, 1.977, +46.2%, +0.3 |
+
+| price | rules with 300+ bets | chosen | chosen, profit in the scored years | chosen, profit in both halves | chosen, z >= 2 in the scored years | z >= 2 expected by luck |
+|---|---|---|---|---|---|---|
+| TAB's first price | 1,446 | 288 | 148 | 74 | 2 | 6.6 |
+| best first price of the three | 1,670 | 466 | 131 | 40 | 0 | 10.7 |
+
+The two that reached z 2 are both at TAB's first price at 1x ours: grade 5 at $5-$8 (73 bets, +72.6%, z 2.4) and GRV's
+top tip at $3-$5 (361 bets, +18.2%, z 2.0). Two against 6.6 by luck is noise.
+
+Re-chosen every month on the 12 months before, the rules lost at both prices:
+- TAB's first price: 3,842 bets, A/E 0.955, -7.2%, 5 of 18 months in profit.
+- Best of the three: 9,586 bets, A/E 0.931, -12.4%, 1 of 18 months in profit.
+
+**Why the bets stopped: Betwatch's open has three shapes (round 35).** Round 35 is a model-free audit. It checks every
+runner in the field at TAB's first price, month by month, against Topaz's record of who ran:
+
+| period | months | races | TAB's first price, hours before the jump (median) | runners with a TAB price | races with a scratching after the open | deduction there (median) | TAB's opening book (median) | runners at the open with no scratching time that did not run |
+|---|---|---|---|---|---|---|---|---|
+| Nov 2022 to Aug 2023 | 10 | 12,475 | 22.1 | 95.0% | 40.9% | 16c | 131.9% | 0.17 a race (6.6% of the book) |
+| Sep 2023 to Jan 2025 | 17 | 21,076 | 9.3 | 88.8% | 9.3% | 12c | 134.2% | 0.13 a race (6.3% of the book) |
+| Feb 2025 on | 22 | 26,234 | 10.5 | 97.2% | 44.7% | 13c | 135.3% | 0.10 a race (5.6% of the book) |
+
+- **Uncounted non-runners were the first suspect, and they are not the cause.** A dog in TAB's opening book with no
+  scratching time that did not run steals a share of the book and brings no deduction. It happens in 6-10% of races,
+  takes about 6% of the book, and is steady across all three periods. Of the field-at-open runners with no scratching
+  time, 97-99% ran in every year.
+- **What changes is when Betwatch first sees TAB's price.**
+  - **Sep 2023 to Jan 2025:** the first price comes about 9 hours out, after most scratchings. Only 9.3% of races have
+    one later, and 11% of listed runners have no TAB price at all (the dogs already scratched). The field at the open is
+    nearly the field that ran.
+  - **Since Feb 2025:** TAB's first price is captured before the scratchings, with 44.7% of races having one later and
+    97% of runners priced.
+  - **Emergencies:** none appear before January 2024; since then about 0.7 a race.
+- **The bets follow the periods.** Round 34's first half (May 2023 to Mar 2025) is mostly the 9-hour period. Its second
+  half is the period since February 2025, in which the rule made 10 bets at TAB's first price in 20 months.
+
+**What it means.**
+- **At TAB's open now, the 1.3x rule almost never fires.** On the field as it stands at the bet, since February 2025, it
+  made 10 bets at TAB's first price and 158 at the best of three (+10.9% flat, 9 of 20 months in profit).
+- **The +53% in the first half is not yet an edge.** Most of it sits in a period when Betwatch's first price was
+  struck after the scratchings. Either the market then really was that loose, or the shape of the data flatters it.
+- **No other rule survives at the open either.** Two chosen rules reached z 2 against 6.6 by luck, and re-choosing
+  every month lost at both prices.
+- **Next: round 36.** It splits the card's rule by the three periods and prints each month's blend weights. It also
+  holds the weights at Test 51's 0.54 / 0.67, which separates "TAB's opening prices moved" from "the monthly blend
+  stopped trusting ours".
