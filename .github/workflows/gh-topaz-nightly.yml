@@ -92,6 +92,14 @@ jobs:
           key: topaz-model-${{ github.run_id }}
           restore-keys: topaz-model-
 
+      - name: Restore the kept cards (Actions cache, this repository only; for gh topaz track)
+        if: env.MODE != 'train'
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/cards
+          key: topaz-cards-${{ github.run_id }}
+          restore-keys: topaz-cards-
+
       - name: Train, or price tomorrow's card
         run: |
           set -o pipefail
@@ -107,10 +115,18 @@ jobs:
             PRICE_MODE=train python research/greyhound/topaz_price_upcoming.py greyhound/cache/topaz "topaz VIC weekly train" | tee -a "$GITHUB_STEP_SUMMARY"
           else
             DAY="${{ github.event.inputs.date }}"; [ -n "$DAY" ] || DAY=$(TZ=Australia/Melbourne date -d tomorrow +%F)
-            PRICE_DAY="$DAY" PRICE_TRACK="${{ github.event.inputs.tracks }}" \
+            # the card is also kept (race, dog, our chance, GRV's price) for the live tracker, gh topaz track
+            PRICE_CARD_DIR="$PWD/greyhound/cache/cards" PRICE_DAY="$DAY" PRICE_TRACK="${{ github.event.inputs.tracks }}" \
               PRICE_HISTORY_FROM="${{ github.event.inputs.history_from || '2020-01' }}" PRICE_COMPARE_FROM="${{ github.event.inputs.compare_from }}" \
               python research/greyhound/topaz_price_upcoming.py greyhound/cache/topaz "topaz VIC prices for $DAY"
           fi
+
+      - name: Keep the card (Actions cache; race, dog, our chance and GRV's price only)
+        if: env.MODE != 'train' && hashFiles('greyhound/cache/cards/*') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: greyhound/cache/cards
+          key: topaz-cards-${{ github.run_id }}
 
       - name: Save the trained model (Actions cache)
         if: env.MODE == 'train'

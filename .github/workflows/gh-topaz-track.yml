@@ -1,0 +1,106 @@
+name: gh topaz track
+
+# What the card would have taken live (founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can
+# you track what we would of taken the model live"). Every morning: bring the results (Topaz) and every bookmaker's
+# price history (Betwatch) up to yesterday, and settle every card gh topaz nightly kept, as if bet at TAB's first price
+# (research/greyhound/topaz_track.py). This log is public: it carries counts and units only, and the bets themselves
+# (dogs, prices) are sealed, as the card is. Nothing is bet.
+# 9:41am Melbourne (AEDT, UTC+11), off the hour; from April (AEST) an hour earlier. GitHub often starts scheduled runs
+# hours late, which only delays the settling.
+
+on:
+  schedule:
+    - cron: '41 22 * * *'
+  workflow_dispatch:
+    inputs:
+      track_from:
+        description: 'first card day to settle, YYYY-MM-DD (blank = every kept card)'
+        default: ''
+      facts_from:
+        description: 'also seal the market facts from this day, YYYY-MM-DD, for days with no kept card (blank = none)'
+        default: ''
+      facts_to:
+        description: 'last day of market facts, YYYY-MM-DD (blank = yesterday)'
+        default: ''
+
+concurrency:
+  group: gh-topaz-track
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUNBUFFERED: '1'
+      TOPAZ_API_KEY: ${{ secrets.TOPAZ_API_KEY }}
+      TOPAZ_TERMS_READ: ${{ vars.TOPAZ_TERMS_READ }}
+      BETWATCH_API_KEY: ${{ secrets.BETWATCH_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'requests>=2.31' pandas numpy lightgbm scikit-learn scipy
+
+      - name: Restore the pulled Topaz months (Actions cache, this repository only)
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/topaz
+          key: topaz-VIC-${{ github.run_id }}
+          restore-keys: topaz-VIC-
+
+      - name: Bring the results up to yesterday (counts only)
+        run: |
+          set -o pipefail
+          FROM=$(TZ=Australia/Melbourne date -d '-35 days' +%Y-%m)
+          python -m greyhound.pull --states VIC --from "$FROM" --by-day --workers 8 --per-minute 72 --max-calls 5000 --max-minutes 30 | tail -3
+
+      - name: Restore the Betwatch price history (Actions cache, this repository only)
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/betwatch
+          key: betwatch-VIC-G-${{ github.run_id }}
+          restore-keys: betwatch-VIC-G-
+
+      - name: Bring the Betwatch price history up to yesterday (counts only)
+        run: |
+          set -o pipefail
+          FROM=$(TZ=Australia/Melbourne date -d '-35 days' +%Y-%m)
+          python -m greyhound.betwatch pull --from "$FROM" --dir greyhound/cache/betwatch --max-minutes 30 | tail -6
+
+      - name: Save the Betwatch price history (Actions cache)
+        if: always() && hashFiles('greyhound/cache/betwatch/*') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: greyhound/cache/betwatch
+          key: betwatch-VIC-G-${{ github.run_id }}
+
+      - name: Betfair's free ANZ greyhound files, this month and last (BSP, when published)
+        run: |
+          mkdir -p bf
+          for m in $(TZ=Australia/Melbourne date -d '-35 days' +%Y_%m) $(TZ=Australia/Melbourne date +%Y_%m); do
+            f="ANZ_Greyhounds_$m.csv"
+            curl -fsSL --retry 3 -o "bf/$f" "https://betfair-datascientists.github.io/data/assets/$f" 2>/dev/null \
+              && echo "$f $(stat -c %s "bf/$f") bytes" || { rm -f "bf/$f"; echo "not published: $f"; }
+          done
+
+      - name: Restore the kept cards (Actions cache, this repository only)
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/cards
+          key: topaz-cards-${{ github.run_id }}
+          restore-keys: topaz-cards-
+
+      - name: Settle the cards at TAB's first price (counts and units; the bets sealed)
+        run: |
+          set -o pipefail
+          export CARDS_DIR="$PWD/greyhound/cache/cards" BETWATCH_DIR="$PWD/greyhound/cache/betwatch"
+          [ -n "$(ls bf 2>/dev/null)" ] && export BETFAIR_DIR="$PWD/bf"
+          export TRACK_FROM="${{ github.event.inputs.track_from }}" FACTS_FROM="${{ github.event.inputs.facts_from }}" \
+                 FACTS_TO="${{ github.event.inputs.facts_to }}"
+          python research/greyhound/topaz_track.py greyhound/cache/topaz "topaz live track" | tee track.out
+          grep -v '^SEALED' track.out >> "$GITHUB_STEP_SUMMARY"
