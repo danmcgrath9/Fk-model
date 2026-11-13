@@ -1,0 +1,72 @@
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,Voltrix,2.84,8.00,12,0,,8-12
+1,Voltrix,2.84,15.00,40,0,,15-40
+1,Cosmic Voyage,5.01,8.01,12,0,,8-12
+1,Cosmic Voyage,5.01,15.00,40,0,,15-40
+1,Tufflee,11.29,16.94,40,0,first starter: excluded,15-40
+1,Rentier,13.81,20.71,40,0,,15-40
+1,Slugger,16.49,24.73,40,0,,15-40
+1,Kirkstone,17.63,26.44,40,0,,15-40
+1,Contarini,20.78,31.17,40,0,,15-40
+2,Sisterly,2.82,8.00,12,0,,8-12
+2,Sisterly,2.82,15.00,40,0,,15-40
+2,Ravens Glow,6.38,10.21,12,0,,8-12
+2,Ravens Glow,6.38,15.00,40,0,,15-40
+2,Madame Petite,6.71,10.74,12,0,,8-12
+2,Madame Petite,6.71,15.00,40,0,,15-40
+2,Cirque,10.77,16.15,40,0,first starter: excluded,15-40
+2,Charlotte's Web,12.17,18.26,40,0,,15-40
+3,Mistressof Mayfair,2.76,8.00,12,0,first starter: excluded,8-12
+3,Mistressof Mayfair,2.76,15.00,40,0,first starter: excluded,15-40
+3,Lunetta,5.25,8.39,12,0,first starter: excluded,8-12
+3,Lunetta,5.25,15.00,40,0,first starter: excluded,15-40
+3,Victimised,7.91,15.00,40,0,,15-40
+3,Blue Light Disco,8.50,15.00,40,0,,15-40
+3,The Sheriff,13.26,19.89,40,0,,15-40
+3,Wyandra,22.56,33.84,40,0,,15-40
+4,Thankful Smile,3.49,8.00,12,0,,8-12
+4,Thankful Smile,3.49,15.00,40,0,,15-40
+4,Pinazaki,3.65,8.00,12,0,,8-12
+4,Pinazaki,3.65,15.00,40,0,,15-40
+4,Silky Seth,7.23,11.57,12,0,,8-12
+4,Silky Seth,7.23,15.00,40,0,,15-40
+4,Saint Willo,10.28,15.42,40,0,,15-40
+4,Beast Fighter,12.57,18.85,40,0,,15-40
+4,Platinum Rush,26.04,39.07,40,0,,15-40
+5,Emanating,2.80,8.00,12,0,,8-12
+5,Emanating,2.80,15.00,40,0,,15-40
+5,Bow Ribbon,6.47,10.36,12,0,,8-12
+5,Bow Ribbon,6.47,15.00,40,0,,15-40
+5,Winning Toast,7.79,15.00,40,0,,15-40
+5,Into You,11.86,17.79,40,0,,15-40
+5,Smash Blue,12.66,19.00,40,0,,15-40
+5,Hollerasaurous,14.05,21.07,40,0,,15-40
+5,Swycho,19.27,28.90,40,0,,15-40
+5,Sensational Ruler,20.72,31.08,40,0,,15-40
+6,Winter Nights,2.69,8.00,12,0,,8-12
+6,Winter Nights,2.69,15.00,40,0,,15-40
+6,Share The Stars,8.54,15.00,40,0,,15-40
+6,Surely Special,11.52,17.27,40,0,,15-40
+6,Cliste,12.66,18.99,40,0,,15-40
+6,Olympiad,15.28,22.92,40,0,,15-40
+6,Crossoverkid,15.82,23.74,40,0,,15-40
+6,Reel Latino,23.44,35.16,40,0,,15-40
+6,Nightynight,24.35,36.52,40,0,,15-40
+6,Women In Uniform,24.51,36.76,40,0,,15-40
+7,Manchego,3.76,8.00,12,0,,8-12
+7,Manchego,3.76,15.00,40,0,,15-40
+7,Hotspur Reale,5.41,8.65,12,0,,8-12
+7,Hotspur Reale,5.41,15.00,40,0,,15-40
+7,Marlion's Dream,8.95,15.00,40,0,,15-40
+7,Rattle'n'roll,13.52,20.28,40,0,,15-40
+7,Adieu Grasse,14.50,21.74,40,0,,15-40
+7,Eeteedee,16.68,25.02,40,0,,15-40
+7,Romuald,19.22,28.83,40,0,,15-40
+7,Divine Vicky,21.94,32.91,40,0,,15-40
+8,Bliss Bomb,1.84,8.00,12,0,,8-12
+8,Bliss Bomb,1.84,15.00,40,0,,15-40
+8,Our Little Star,8.57,15.00,40,0,,15-40
+8,Showtime Kistena,15.28,22.92,40,0,,15-40
+8,Smoke Screen,15.55,23.33,40,0,,15-40
+8,Enigmatise,17.25,25.87,40,0,,15-40
+8,Brave Carol,23.40,35.09,40,0,,15-40

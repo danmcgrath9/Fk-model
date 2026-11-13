@@ -1,0 +1,113 @@
+1|14|Tandarra|True|False
+1|7|Tufflee|False|False
+1|5|Rentier|False|False
+1|1|Berardo|False|False
+1|3|Doolin|False|False
+1|13|Magna Peak|False|False
+1|11|Kirkstone|False|False
+1|6|Slugger|False|False
+1|4|Gordacious|False|False
+1|9|Contarini|False|False
+1|2|Cosmic Voyage|False|False
+1|10|Crimson Storm|False|False
+1|8|Voltrix|False|False
+1|12|Lilac Storm|False|False
+2|1|Charlotte's Web|False|False
+2|5|La Shadow|False|False
+2|14|Angel Don't Cry|True|False
+2|8|Ravens Glow|False|False
+2|6|Oak Park Mia|False|False
+2|3|Dear Heart|False|False
+2|7|Pretty Stylish|False|False
+2|11|Spirit Of Omaha|False|False
+2|2|Cirque|False|False
+2|4|Janie's Got A Gun|False|False
+2|10|Shalwedash|False|False
+2|9|Scentrique|False|False
+2|12|Madame Petite|False|False
+2|13|Sisterly|False|False
+3|9|Tycoonette|False|False
+3|1|Blue Light Disco|False|False
+3|7|Rockbourg|False|False
+3|6|Precious Alicia|False|False
+3|4|Wyandra|False|False
+3|2|Costly Exercise|False|False
+3|8|Thundering Shadow|False|False
+3|3|The Sheriff|False|False
+3|12|Pray For Elegance|True|False
+3|10|Mistressof Mayfair|False|False
+3|5|Lunetta|False|False
+3|11|Victimised|False|False
+3|13|Snowy Mountains|True|False
+4|13|Gypsy Moon|True|False
+4|8|Platinum Rush|False|False
+4|11|Ghaluge|True|False
+4|12|Royal Business|True|False
+4|7|Crush Puppy|False|False
+4|1|Beast Fighter|False|False
+4|2|Silky Seth|False|False
+4|9|Thankful Smile|False|False
+4|3|Edge Of Wonder|False|False
+4|5|Pinazaki|False|False
+4|6|Saint Willo|False|False
+4|10|Lipstick Legal|True|False
+4|4|Exploit|False|False
+5|12|Hell's Itch|True|False
+5|5|Bow Ribbon|False|False
+5|9|Swycho|False|False
+5|10|Strike First|True|False
+5|6|Into You|False|False
+5|13|Knock Of Beers|True|False
+5|7|Smash Blue|False|False
+5|3|Winning Toast|False|False
+5|2|Sensational Ruler|False|False
+5|1|Black Aces|False|False
+5|8|Emanating|False|False
+5|11|Royal Heritage|True|False
+5|4|Hollerasaurous|False|False
+6|5|Surely Special|False|False
+6|3|Baby Rider|False|False
+6|16|Blonde Suspect|True|False
+6|9|Nightynight|False|False
+6|13|Women In Uniform|False|False
+6|12|Crossoverkid|False|False
+6|1|Our Smokeshow|False|False
+6|14|Grunnettan|True|False
+6|15|Brassi Road|True|False
+6|7|Reel Latino|False|False
+6|10|Share The Stars|False|False
+6|8|Cheron Finale|False|False
+6|6|Cliste|False|False
+6|11|Soul Mistress|False|False
+6|2|Winter Nights|False|False
+6|4|Olympiad|False|False
+7|10|Marlion's Dream|False|False
+7|9|Fashion Fighter|False|False
+7|17|Spinhof|True|False
+7|11|Divine Vicky|False|False
+7|8|Asawin|False|False
+7|7|Strike Gold|False|False
+7|16|Mickidamuzz|True|False
+7|4|Manchego|False|False
+7|14|Pull My Finger|True|False
+7|5|Nicaloha|False|False
+7|6|Romuald|False|False
+7|1|Rattle'n'roll|False|False
+7|15|O'mosa|True|False
+7|12|Back Up Barbie|False|False
+7|3|Hotspur Reale|False|False
+7|2|Adieu Grasse|False|False
+7|13|Eeteedee|False|False
+8|10|Adki|False|False
+8|2|Turnaquid|False|False
+8|12|Snow On Her|True|False
+8|1|Our Little Star|False|False
+8|4|Showtime Kistena|False|False
+8|9|Enigmatise|False|False
+8|5|Brave Carol|False|False
+8|11|Deep Joy|False|False
+8|7|Costae|False|False
+8|6|Flying Straz|False|False
+8|8|Smoke Screen|False|False
+8|13|True Spirit|True|False
+8|3|Bliss Bomb|False|False
