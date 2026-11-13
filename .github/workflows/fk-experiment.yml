@@ -25,6 +25,9 @@ jobs:
       FK_LEDGER: postgres
       PYTHONUNBUFFERED: '1'
       DATABASE_URL: ${{ secrets.FK_DATABASE_URL }}
+      # Betwatch price history (13 Nov 2026): the beta platform's key, and the current API's key once the trial starts
+      BETWATCH_BETA_API_KEY: ${{ secrets.BETWATCH_BETA_API_KEY }}
+      BETWATCH_API_KEY: ${{ secrets.BETWATCH_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
