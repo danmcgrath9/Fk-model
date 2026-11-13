@@ -44,3 +44,10 @@ def test_price_at_and_ts():
     fl = [(5.0, 100.0), (4.0, 200.0)]
     assert np.isnan(R32.price_at(fl, 99)) and R32.price_at(fl, 100) == 5.0 and R32.price_at(fl, 250) == 4.0
     assert R32.ts("2026-11-10T08:00:00Z") == R32.ts("2026-11-10T19:00:00+11:00") and np.isnan(R32.ts(None))
+
+
+def test_tab_deduction_reads_the_founders_records():
+    assert [R32.table_cents(p) for p in (12, 14, 16, 26, 34)] == [8, 7, 6, 3, 2]
+    assert R32.table_cents(17) == 5                                  # the record says 6c: the one it misses
+    a = R32.race_rows(_race())[0]
+    assert a["dedt_open"] == 0.12                                    # Dog C at $8 when scratched: 12c
