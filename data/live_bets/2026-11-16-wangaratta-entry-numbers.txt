@@ -1,0 +1,133 @@
+1|3|See No City|False|False
+1|4|Summoned Lou|False|False
+1|15|Contemplate Kate|True|False
+1|2|Dagger One|False|False
+1|11|Swift Rosette|False|False
+1|1|Bokka Bokka|False|False
+1|10|Muddy|False|False
+1|5|Aerial Pursuit|False|False
+1|6|Cavallo Corsa|False|False
+1|9|Pray For Elegance|False|False
+1|12|Coco La Boss|False|False
+1|14|Swiss Impact|False|False
+1|13|Relax The Spirit|False|False
+1|8|Palmento|False|False
+1|7|Mighty Ruler|False|False
+2|1|Phenomenorm|False|False
+2|9|Princess Prussia|False|False
+2|18|Cortisol|True|False
+2|17|Asami|True|False
+2|7|Kinky Mistress|False|False
+2|6|Join In The Dance|False|False
+2|11|Veloce|False|False
+2|8|Ninetyfiveinafifty|False|False
+2|10|Ubique|False|False
+2|5|Fully Funded|False|False
+2|16|Our Alexa|True|False
+2|12|Melbourne Miss|False|False
+2|14|Tasman's Jewel|False|False
+2|3|Plinian|False|False
+2|15|Prolific Angel|True|False
+2|2|Inner Light|False|False
+2|13|Snowy Mountains|False|False
+2|4|Weeping Wonder|False|False
+3|8|Estival|False|False
+3|1|Jirachi|False|False
+3|5|Betty's Rubble|False|False
+3|10|Money Bags|False|False
+3|9|Fiore Darancio|False|False
+3|7|Divine Vixen|False|False
+3|2|Western Edge|False|False
+3|6|Dextrose|False|False
+3|11|Scusies|False|False
+3|17|Beast Fighter|True|False
+3|18|Lady Courrege|True|False
+3|15|Thankful Smile|True|False
+3|3|Acroman|False|False
+3|12|Crimson Flame|False|False
+3|14|Regal Banter|False|False
+3|4|Astatine|False|False
+3|13|Kayla Marie|False|False
+3|16|Saint Willo|True|False
+4|2|Shades Of Sheriff|False|False
+4|9|Dela Bella|False|False
+4|3|Si Si Sir|False|False
+4|10|Doppio|False|False
+4|5|Titan's Soul|False|False
+4|8|Apple Eyes|False|False
+4|1|Orthotropic|False|False
+4|4|Sir Riverance|False|False
+4|12|Valiant Dreamer|False|False
+4|11|Mirraway|False|False
+4|6|Fullboardsupport|False|False
+4|7|Volestain|False|False
+5|4|Graham|False|False
+5|9|Sheer Lunacy|False|False
+5|2|Star Buyer|False|False
+5|3|Cryptic Clue|False|False
+5|13|Under The Hat|False|False
+5|14|Imposing Tallulah|False|False
+5|6|Late Harvest|False|False
+5|8|Rock The Bar|False|False
+5|17|Strummer|True|False
+5|16|Without Fail|True|False
+5|5|Murgasty|False|False
+5|12|Cool Star|False|False
+5|1|Sheanadh|False|False
+5|15|Salina Special|True|False
+5|7|Bottas|False|False
+5|11|Snakeinthegrass|False|False
+5|18|Riverlea Prince|True|False
+5|10|The Cellist|False|False
+6|16|Dashing Donkey|True|False
+6|1|Star Blazer|False|False
+6|13|Brookers Turbo|True|False
+6|12|Chateau Dancer|False|False
+6|15|Darken|True|False
+6|5|Notre Citrouille|False|False
+6|14|Captain Barbossa|True|False
+6|9|Top Liner|False|False
+6|6|Churchill Lane|False|False
+6|10|Off'n'gawn|False|False
+6|7|Dance Lady|False|False
+6|2|Iron Legacy|False|False
+6|8|King Kauffo|False|False
+6|3|Cashemcowboy|False|False
+6|4|Helioson|False|False
+6|11|Ruthless Soul|False|False
+7|3|Bangholme|False|False
+7|8|Epic Centre|False|False
+7|12|Cilento|False|False
+7|11|Three Musketeers|False|False
+7|6|Moonbird|False|False
+7|13|Jumpin' Jewellette|False|False
+7|5|Elena Montero|False|False
+7|1|Prandium Tempus|False|False
+7|14|She's Elusive|False|False
+7|4|Magna Mak|False|False
+7|17|Queue Jumper|True|False
+7|2|Shelly's Legacy|False|False
+7|16|Bronco Revolution|True|False
+7|9|Please Me Do|False|False
+7|7|True Spirit|False|False
+7|18|Dunnenkate Bro|True|False
+7|15|Too Much Too Soon|True|False
+7|10|Royal Turf|False|False
+8|2|Isdell|False|False
+8|17|Lord Domino|True|False
+8|7|Titan Of Choice|False|False
+8|12|Elle Mcfearsome|False|False
+8|16|Wambeen|True|False
+8|18|King's Taj|True|False
+8|4|San Marco|False|False
+8|10|Black Adam|False|False
+8|5|Forrest Gump|False|False
+8|14|Clarapatra|False|False
+8|13|Ostrica|False|False
+8|6|Hellberg|False|False
+8|8|Wings Of Carmen|False|False
+8|9|Vaderlee|False|False
+8|15|Clinger|True|False
+8|1|Sir Basil|False|False
+8|3|Palladium|False|False
+8|11|Princess Geisha|False|False

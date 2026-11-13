@@ -1,0 +1,134 @@
+# Wangaratta Mon 16 Nov, official going, final fields; no market yet; PROVISIONAL: 16 runners without a rider
+1, See No City, 0, 0
+1, Summoned Lou, 0, 0
+1, Contemplate Kate, SCR
+1, Dagger One, 0, 0
+1, Swift Rosette, 0, 0
+1, Bokka Bokka, 0, 0
+1, Muddy, 0, 0
+1, Aerial Pursuit, 0, 0
+1, Cavallo Corsa, 0, 0
+1, Pray For Elegance, 0, 0
+1, Coco La Boss, 0, 0
+1, Swiss Impact, 0, 0
+1, Relax The Spirit, 0, 0
+1, Palmento, 0, 0
+1, Mighty Ruler, 0, 0
+2, Phenomenorm, 0, 0
+2, Princess Prussia, 0, 0
+2, Cortisol, SCR
+2, Asami, SCR
+2, Kinky Mistress, 0, 0
+2, Join In The Dance, 0, 0
+2, Veloce, 0, 0
+2, Ninetyfiveinafifty, 0, 0
+2, Ubique, 0, 0
+2, Fully Funded, 0, 0
+2, Our Alexa, SCR
+2, Melbourne Miss, 0, 0
+2, Tasman's Jewel, 0, 0
+2, Plinian, 0, 0
+2, Prolific Angel, SCR
+2, Inner Light, 0, 0
+2, Snowy Mountains, 0, 0
+2, Weeping Wonder, 0, 0
+3, Estival, 0, 0
+3, Jirachi, 0, 0
+3, Betty's Rubble, 0, 0
+3, Money Bags, 0, 0
+3, Fiore Darancio, 0, 0
+3, Divine Vixen, 0, 0
+3, Western Edge, 0, 0
+3, Dextrose, 0, 0
+3, Scusies, 0, 0
+3, Beast Fighter, SCR
+3, Lady Courrege, SCR
+3, Thankful Smile, SCR
+3, Acroman, 0, 0
+3, Crimson Flame, 0, 0
+3, Regal Banter, 0, 0
+3, Astatine, 0, 0
+3, Kayla Marie, 0, 0
+3, Saint Willo, SCR
+4, Shades Of Sheriff, 0, 0
+4, Dela Bella, 0, 0
+4, Si Si Sir, 0, 0
+4, Doppio, 0, 0
+4, Titan's Soul, 0, 0
+4, Apple Eyes, 0, 0
+4, Orthotropic, 0, 0
+4, Sir Riverance, 0, 0
+4, Valiant Dreamer, 0, 0
+4, Mirraway, 0, 0
+4, Fullboardsupport, 0, 0
+4, Volestain, 0, 0
+5, Graham, 0, 0
+5, Sheer Lunacy, 0, 0
+5, Star Buyer, 0, 0
+5, Cryptic Clue, 0, 0
+5, Under The Hat, 0, 0
+5, Imposing Tallulah, 0, 0
+5, Late Harvest, 0, 0
+5, Rock The Bar, 0, 0
+5, Strummer, SCR
+5, Without Fail, SCR
+5, Murgasty, 0, 0
+5, Cool Star, 0, 0
+5, Sheanadh, 0, 0
+5, Salina Special, SCR
+5, Bottas, 0, 0
+5, Snakeinthegrass, 0, 0
+5, Riverlea Prince, SCR
+5, The Cellist, 0, 0
+6, Dashing Donkey, SCR
+6, Star Blazer, 0, 0
+6, Brookers Turbo, SCR
+6, Chateau Dancer, 0, 0
+6, Darken, SCR
+6, Notre Citrouille, 0, 0
+6, Captain Barbossa, SCR
+6, Top Liner, 0, 0
+6, Churchill Lane, 0, 0
+6, Off'n'gawn, 0, 0
+6, Dance Lady, 0, 0
+6, Iron Legacy, 0, 0
+6, King Kauffo, 0, 0
+6, Cashemcowboy, 0, 0
+6, Helioson, 0, 0
+6, Ruthless Soul, 0, 0
+7, Bangholme, 0, 0
+7, Epic Centre, 0, 0
+7, Cilento, 0, 0
+7, Three Musketeers, 0, 0
+7, Moonbird, 0, 0
+7, Jumpin' Jewellette, 0, 0
+7, Elena Montero, 0, 0
+7, Prandium Tempus, 0, 0
+7, She's Elusive, 0, 0
+7, Magna Mak, 0, 0
+7, Queue Jumper, SCR
+7, Shelly's Legacy, 0, 0
+7, Bronco Revolution, SCR
+7, Please Me Do, 0, 0
+7, True Spirit, 0, 0
+7, Dunnenkate Bro, SCR
+7, Too Much Too Soon, SCR
+7, Royal Turf, 0, 0
+8, Isdell, 0, 0
+8, Lord Domino, SCR
+8, Titan Of Choice, 0, 0
+8, Elle Mcfearsome, 0, 0
+8, Wambeen, SCR
+8, King's Taj, SCR
+8, San Marco, 0, 0
+8, Black Adam, 0, 0
+8, Forrest Gump, 0, 0
+8, Clarapatra, 0, 0
+8, Ostrica, 0, 0
+8, Hellberg, 0, 0
+8, Wings Of Carmen, 0, 0
+8, Vaderlee, 0, 0
+8, Clinger, SCR
+8, Sir Basil, 0, 0
+8, Palladium, 0, 0
+8, Princess Geisha, 0, 0
