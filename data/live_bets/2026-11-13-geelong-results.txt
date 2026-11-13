@@ -1,0 +1,79 @@
+## geelong-20261113: 78 entries
+R1 Diwali                   finish 1  SP 6.0  BSP 6.6
+R1 The Cunning Fox          finish 2  SP 2.4  BSP 2.52
+R1 Genrichero               finish 3  SP 8.5  BSP 11.93
+R1 Federer                  finish 4  SP 3.7  BSP 4.7
+R1 Farag                    finish 5  SP 12.0  BSP 17.5
+R1 Phoenician               finish 6  SP 101.0  BSP 360.0
+R1 Haiiro                   finish 7  SP 26.0  BSP 46.0
+R1 Topspin                  finish 8  SP 21.0  BSP 34.04
+R1 Eye For An Eye           finish 9  SP 17.0  BSP 24.0
+R1 Benbulben                finish 10  SP 151.0  BSP 1000.0
+R2 Resonant                 finish 1  SP 2.6  BSP 3.1
+R2 Celestial Blue           finish 2  SP 3.5  BSP 4.61
+R2 Superwill                finish 3  SP 7.0  BSP 8.2
+R2 Tiz The Tycoon           finish 4  SP 6.5  BSP 7.0
+R2 Stilts                   finish 5  SP 10.0  BSP 11.5
+R2 Pocket Watch             finish 6  SP 8.5  BSP 10.87
+R2 Pride In Motion          finish 7  SP 151.0  BSP 450.34
+R3 Lafarna                  finish 1  SP 1.75  BSP 1.93
+R3 Seagoe                   finish 2  SP 18.0  BSP 27.0
+R3 Ocean Mirage             finish 3  SP 31.0  BSP 67.19
+R3 Sisterly                 finish 4  SP 5.5  BSP 6.4
+R3 Nothin' Surer            finish 5  SP 61.0  BSP 167.76
+R3 Celestaria               finish 6  SP 20.0  BSP 32.68
+R3 Velocite Belle           finish 7  SP 14.0  BSP 19.0
+R3 Vixen Vibes              finish 8  SP 12.0  BSP 15.25
+R3 Finest Blend             finish 9  SP 8.0  BSP 9.41
+R3 Taema                    finish 10  SP 41.0  BSP 85.0
+R4 Mystic Rapture           finish 1  SP 7.0  BSP 5.92
+R4 Sihaya                   finish 2  SP 3.2  BSP 3.66
+R4 Red Tide                 finish 3  SP 3.6  BSP 4.24
+R4 Baccano                  finish 4  SP 4.8  BSP 5.5
+R4 Freshwater Fox           finish 5  SP 26.0  BSP 50.0
+R4 Sheltered                finish 6  SP 4.8  BSP 7.0
+R4 Miss Xtravaganza         finish 7  SP 41.0  BSP 80.0
+R4 Hopkins Star             finish 8  SP 151.0  BSP 910.0
+R4 Hannan Street            finish 9  SP 151.0  BSP 420.0
+R5 Forest Jim               finish 1  SP 4.6  BSP 5.14
+R5 Boggy Creek Boys         finish 2  SP 21.0  BSP 36.0
+R5 African Grey             finish 3  SP 26.0  BSP 34.0
+R5 Earl Of Gloucester       finish 4  SP 26.0  BSP 45.67
+R5 Wondering Spirit         finish 5  SP 5.5  BSP 6.37
+R5 So Long Ago              finish 6  SP 5.5  BSP 6.98
+R5 Egerton Reef             finish 7  SP 15.0  BSP 13.01
+R5 Princess Sakiko          finish 8  SP 9.0  BSP 12.0
+R5 Dane On Tour             finish 9  SP 26.0  BSP 28.16
+R5 Akari Spirit             finish 10  SP 3.3  BSP 4.69
+R6 Albanian I Am            finish 1  SP 6.0  BSP 6.03
+R6 Tipsy Gypsy              finish 2  SP 14.0  BSP 19.5
+R6 Lygon Street Luigi       finish 3  SP 4.8  BSP 5.66
+R6 Positivo                 finish 4  SP 5.0  BSP 6.04
+R6 Skydream                 finish 5  SP 2.8  BSP 2.9
+R6 Burning Sensation        finish 6  SP 31.0  BSP 60.0
+R6 Grandpa Neil             finish 7  SP 8.5  BSP 13.5
+R6 Frosty Night             finish 8  SP 26.0  BSP 34.0
+R7 Carriedo                 finish 1  SP 1.75  BSP 1.84
+R7 Suspect                  finish 2  SP 10.0  BSP 11.5
+R7 Small Town Hero          finish 3  SP 7.0  BSP 8.6
+R7 Neziha                   finish 4  SP 3.4  BSP 4.7
+R7 Sacro Catino             finish 5  SP 13.0  BSP 18.44
+R7 Port Louis               finish 6  SP 41.0  BSP 75.0
+R8 Jackpot Park             finish 1  SP 3.0  BSP 3.48
+R8 Whiskey Joe              finish 2  SP 2.9  BSP 3.19
+R8 Fenestella               finish 3  SP 11.0  BSP 13.05
+R8 Jetsetter Jack           finish 4  SP 4.0  BSP 4.26
+R8 Nickibi                  finish 5  SP 26.0  BSP 35.18
+R8 Stein                    finish 6  SP 14.0  BSP 23.0
+R8 She Won't Fold           finish 7  SP 16.0  BSP 17.0
+R8 Pure Rain                finish 8  SP 91.0  BSP 179.17
+R9 Sea Poem                 finish 1  SP 6.0  BSP 8.4
+R9 Recycle King             finish 2  SP 31.0  BSP 42.0
+R9 Gold Bijoux              finish 3  SP 17.0  BSP 18.5
+R9 Du Clisson               finish 4  SP 4.4  BSP 4.1
+R9 Edges Diamond            finish 5  SP 13.0  BSP 15.84
+R9 Hey Jessie               finish 6  SP 13.0  BSP 15.65
+R9 Smarticon                finish 7  SP 20.0  BSP 26.86
+R9 Redders                  finish 8  SP 2.6  BSP 3.0
+R9 Mr Assertive             finish 9  SP 8.0  BSP 10.22
+R9 Bleak Mid Winter         finish 10  SP 61.0  BSP 110.0

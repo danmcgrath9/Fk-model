@@ -1218,3 +1218,15 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - The $50 sends of Donald (1:23pm), Wangaratta and Kyneton were refused: no bot machine connected. 10:29pm and 10:39pm
   checks: still none. A watcher in the session checks every 10 minutes and sends Dunkeld, Donald, Wangaratta and Kyneton at
   $37.50 (Market Open) the moment a machine connects. Opened races (Dunkeld R7, Donald R6) stay on the sheets and do not fire.
+
+## Friday 13 Nov Geelong and Pakenham settled (Form King results, Sat 4:05am; the 3am results job had not run, so both meetings re-pulled by date)
+- No-Mercer card (the open, full units): Mongolian Hero Pakenham R2 5.04u $3.05 WON (SP $1.30, BSP $1.57) +10.33u;
+  Baccano Geelong R4 2.61u $4.90 4th, Smarticon Geelong R9 0.63u $19 7th, Melek Pakenham R4 10.43u at the blended $2.80
+  7th -13.67u; Helizangel R1 scratched. -3.34u on 18.71u (-$167 at $50), ROI -18%. No TAB deductions reported.
+- Mercer card (current prices): Mongolian Hero 5.04u $2.20 won +6.05u, Baccano $5, Smarticon $21, Melek 10.43u $2.60 lost
+  -13.67u: -7.62u (-$381 at $50).
+- 9am list: Melek R4 to win $1,000 a bookie at $2.70 (stake $588), 7th: -$588 a bookie.
+- Ours/1.6 lay rule (tracked, no lays placed): 6 lays, 1 winner (Zapatch Pakenham R1, BSP $26, ours $45.38) -20.40u
+  (-$1,020 at $50); since 9 Oct 48 lays, 1 winner, +18.24u; from 13 Nov -20.40u.
+- Back book ($500 a unit): Jarbardar Pakenham R5 BSP $4.69 9th -1.00u (-$500); Geelong none.
+- 9am tracker (27 meetings): blend 9am 6 bets, 3 won, +8.7u. None of Friday's bets went through BetMatic (no bot machine).

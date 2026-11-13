@@ -1125,3 +1125,55 @@ date,meeting,rule,side,race,horse,ours,open,bsp,won,units,late_scr
 2026-11-12,seymour,L1540x15,LAY,8,Hola Amigos,17.81,51.0,34.0,0,0.92,0
 2026-11-12,seymour,L2540worse,LAY,8,Magic Drum,74.97,21.0,28.89,0,0.92,0
 2026-11-12,seymour,L812firm,LAY,8,Blaze Away,10.53,51.0,9.33,0,0.92,0
+2026-11-13,geelong,L812x16,LAY,1,Genrichero,7.0,6.17,11.93,0,0.92,0
+2026-11-13,geelong,L1540x15,LAY,3,Vixen Vibes,9.18,7.5,15.25,0,0.92,1
+2026-11-13,geelong,L1540x15,LAY,3,Velocite Belle,7.07,5.07,19.0,0,0.92,1
+2026-11-13,geelong,L1540x15,LAY,3,Seagoe,11.59,19.57,27.0,0,0.92,1
+2026-11-13,geelong,L2540drift2,LAY,3,Celestaria,13.38,7.36,32.68,0,0.92,1
+2026-11-13,geelong,L1540x15,LAY,3,Celestaria,13.38,7.36,32.68,0,0.92,1
+2026-11-13,geelong,L2540drift2,LAY,5,Dane On Tour,29.3,8.14,28.16,0,0.92,0
+2026-11-13,geelong,L2540drift2,LAY,5,Boggy Creek Boys,18.16,8.0,36.0,0,0.92,0
+2026-11-13,geelong,L1540x15,LAY,5,Boggy Creek Boys,18.16,8.0,36.0,0,0.92,0
+2026-11-13,geelong,L1540x15,LAY,5,African Grey,15.78,20.57,34.0,0,0.92,0
+2026-11-13,geelong,L1215drift,LAY,5,Princess Sakiko,10.11,7.0,12.0,0,0.92,0
+2026-11-13,geelong,L1215drift,LAY,5,Egerton Reef,17.33,9.36,13.01,0,0.92,0
+2026-11-13,geelong,L1215drift,LAY,6,Grandpa Neil,13.18,3.76,13.5,0,0.92,1
+2026-11-13,geelong,L2540drift2,LAY,6,Frosty Night,32.08,12.4,34.0,0,0.92,1
+2026-11-13,geelong,L2540drift2,LAY,8,Nickibi,67.65,14.25,35.18,0,0.92,1
+2026-11-13,geelong,L2540worse,LAY,8,Nickibi,67.65,14.25,35.18,0,0.92,1
+2026-11-13,geelong,B35firm,BACK,8,Jetsetter Jack,8.36,7.63,4.26,0,-1.0,1
+2026-11-13,geelong,B47firm,BACK,8,Jetsetter Jack,8.36,7.63,4.26,0,-1.0,1
+2026-11-13,geelong,B47x16,BACK,8,Jetsetter Jack,8.36,7.63,4.26,0,-1.0,1
+2026-11-13,geelong,L1540x15,LAY,8,Stein,14.55,7.63,23.0,0,0.92,1
+2026-11-13,geelong,L1540x15,LAY,9,Smarticon,12.41,19.0,26.86,0,0.92,1
+2026-11-13,pakenham,L2540worse,LAY,1,Zapatch,45.38,41.0,26.0,1,-25.0,0
+2026-11-13,pakenham,L1215drift,LAY,1,Kuheylan,14.93,9.0,13.5,0,0.92,0
+2026-11-13,pakenham,L2540drift2,LAY,2,Galivad,23.76,4.9,34.0,0,0.92,0
+2026-11-13,pakenham,L2540drift2,LAY,2,Tecknoking,32.95,10.0,29.39,0,0.92,0
+2026-11-13,pakenham,L1540x15,LAY,2,Shamakita,15.77,21.0,24.0,0,0.92,0
+2026-11-13,pakenham,L1540x15,LAY,2,Blue And Gold,8.57,10.0,21.0,0,0.92,0
+2026-11-13,pakenham,L1215drift,LAY,2,Capital Affair,10.24,5.5,13.5,0,0.92,0
+2026-11-13,pakenham,L1540x15,LAY,3,Smart Step,7.84,7.5,20.0,0,0.92,1
+2026-11-13,pakenham,L2540worse,LAY,3,Hill Of Olives,193.19,76.0,34.0,0,0.92,1
+2026-11-13,pakenham,L1215drift,LAY,4,So Brave,13.5,10.0,13.5,0,0.92,0
+2026-11-13,pakenham,L2540drift2,LAY,4,Amawasha,50.7,11.0,32.0,1,-31.0,0
+2026-11-13,pakenham,L2540worse,LAY,4,Port Philip,87.0,34.0,38.13,0,0.92,0
+2026-11-13,pakenham,L2540drift2,LAY,4,Corona Lad,30.12,10.0,36.0,0,0.92,0
+2026-11-13,pakenham,L1215drift,LAY,4,Verifier,11.15,9.0,12.93,0,0.92,0
+2026-11-13,pakenham,L1215drift,LAY,4,Celtic Park,11.47,4.4,14.1,0,0.92,0
+2026-11-13,pakenham,B35firm,BACK,4,Superstock,12.53,7.0,4.4,0,-1.0,0
+2026-11-13,pakenham,B47firm,BACK,4,Superstock,12.53,7.0,4.4,0,-1.0,0
+2026-11-13,pakenham,B47x16,BACK,4,Superstock,12.53,7.0,4.4,0,-1.0,0
+2026-11-13,pakenham,L2540worse,LAY,5,Cool Savanna,85.64,31.0,38.46,0,0.92,0
+2026-11-13,pakenham,BfavX16,BACK,5,Jarbardar,7.63,5.5,4.69,0,-1.0,0
+2026-11-13,pakenham,B47x16,BACK,5,Jarbardar,7.63,5.5,4.69,0,-1.0,0
+2026-11-13,pakenham,L1540x15,LAY,6,Bifrost,10.33,7.0,16.82,0,0.92,1
+2026-11-13,pakenham,L2540worse,LAY,7,Blondeau,53.05,20.0,29.81,0,0.92,1
+2026-11-13,pakenham,L812x16,LAY,7,Blankfield,5.72,7.25,9.2,0,0.92,1
+2026-11-13,pakenham,L1215drift,LAY,7,Yum,12.17,8.25,12.0,0,0.92,1
+2026-11-13,pakenham,L1540x15,LAY,8,Ruakaka Raider,16.83,17.0,32.0,0,0.92,1
+2026-11-13,pakenham,L1215drift,LAY,8,Let It Beel,9.42,10.0,12.5,0,0.92,1
+2026-11-13,pakenham,L812firm,LAY,8,Blue Bandit,12.78,15.0,9.4,0,0.92,1
+2026-11-13,pakenham,L812x16,LAY,8,Light Moves,5.73,4.8,10.0,1,-9.0,1
+2026-11-13,pakenham,L1540x15,LAY,8,Katsumi Orochi,7.6,9.0,22.78,0,0.92,1
+2026-11-13,pakenham,B35firm,BACK,8,Little Richo,7.34,6.0,3.6,0,-1.0,1
