@@ -8,7 +8,10 @@ early moves").
 
 One row per runner, between CSV-BEGIN and CSV-END: date, track, race, number, name, scratched, tab_first, tab_first_mel,
 tab_0900 (TAB's last price at or before 9:00am Melbourne on race day, blank if none yet), tab_0900_mel, tab_last,
-tab_last_mel, flucs (count). Key from BETWATCH_API_KEY, never printed. Used for our own model only, not shared or resold
+tab_last_mel, flucs (count), jump_mel (the race's actual start, else its scheduled start), path (EVERY TAB price
+move from the first: "minutes after tab_first_mel:price;..." to two decimals of a minute, so any time from the open to
+the jump can be read off: 13 Nov 2026, founder: "we can more properly do all the times up to race start? From odds
+opening?"). Key from BETWATCH_API_KEY, never printed. Used for our own model only, not shared or resold
 (Betwatch's terms, confirmed by email 13 Nov)."""
 import csv, datetime as dt, os, subprocess, sys, time
 from zoneinfo import ZoneInfo
@@ -40,7 +43,7 @@ def g(o, *names):
 w = csv.writer(sys.stdout)
 print("CSV-BEGIN")
 w.writerow(["date", "track", "race", "number", "name", "scratched", "tab_first", "tab_first_mel", "tab_0900", "tab_0900_mel",
-            "tab_last", "tab_last_mel", "flucs"])
+            "tab_last", "tab_last_mel", "flucs", "jump_mel", "path"])
 days, races_n, rows_n, fails = 0, 0, 0, []
 d = d0
 while d <= d1:
@@ -57,6 +60,7 @@ while d <= d1:
     for r in got or []:
         races_n += 1
         meet = g(r, "meeting"); track = g(meet, "track") or ""; num = g(r, "number")
+        jump = ts(g(r, "actual_start_time", "_actual_start_time") or g(r, "start_time", "_start_time"))
         for ru in g(r, "runners") or []:
             fl, last = [], None
             for bm in g(ru, "bookmaker_markets") or []:
@@ -72,7 +76,8 @@ while d <= d1:
             m = lambda x: x.astimezone(MEL).strftime("%Y-%m-%d %H:%M") if x else ""
             w.writerow([d, track, num, g(ru, "number"), g(ru, "name"), 1 if g(ru, "scratched_time", "_scratched_time") else 0,
                         first[1] if first else "", m(first[0]) if first else "", at9[1] if at9 else "", m(at9[0]) if at9 else "",
-                        last[1] if last else "", m(last[0]) if last and last[0] else "", len(fl)])
+                        last[1] if last else "", m(last[0]) if last and last[0] else "", len(fl), m(jump) if jump else "",
+                        ";".join(f"{(t - first[0]).total_seconds() / 60:.2f}:{pr:g}" for t, pr in fl) if first else ""])
             rows_n += 1
     days += 1
     d += dt.timedelta(days=1)
