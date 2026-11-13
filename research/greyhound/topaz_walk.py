@@ -285,6 +285,51 @@ def walk(df, num, rel, first_pred, t0, every=1, fit=None):
     return df, log
 
 
+def walk_signature(df, num, rel, first_pred, every) -> str:
+    """What decides walk()'s prices: the WALK_* settings, the refit plan, the rounds, the inputs and their values, the
+    labels and the code that fits them. A change to any of them is a different walk."""
+    import hashlib
+    import json
+    here = os.path.dirname(os.path.abspath(__file__))
+    code = "".join(open(os.path.join(here, f), encoding="utf-8").read() for f in ("topaz_walk.py", "topaz_v1.py"))
+    cols = [c for c in dict.fromkeys(list(num) + ["race_id", "won", "p_mkt"]) if c in df]
+    vals = int(pd.util.hash_pandas_object(df[cols], index=False).sum() % (1 << 61))
+    env = {k: v for k, v in sorted(os.environ.items()) if k.startswith("WALK_") and k not in ("WALK_CACHE_DIR", "WALK_TO")}
+    key = json.dumps({"env": env, "every": every, "first": str(first_pred), "ra": ROUNDS_A, "rb": ROUNDS_B,
+                      "num": list(num), "rel": list(rel), "n": len(df), "vals": vals,
+                      "code": hashlib.sha1(code.encode()).hexdigest()}, sort_keys=True)
+    return hashlib.sha1(key.encode()).hexdigest()[:16]
+
+
+def walk_cached(df, num, rel, first_pred, t0, every=1, fit=None, cache_dir=None):
+    """walk(), but read from WALK_CACHE_DIR when a walk with the same signature was saved there, and saved there when
+    it ran to the end (not stopped by the time guard). The cache holds race, dog and the two prices only; on GitHub it
+    is the repository's Actions cache, which only this repository's workflows can restore (Topaz data stays private)."""
+    import json
+    from pathlib import Path
+    d = os.environ.get("WALK_CACHE_DIR", "") if cache_dir is None else cache_dir
+    if not d:
+        return walk(df, num, rel, first_pred, t0, every, fit)
+    sig = walk_signature(df, num, rel, first_pred, every)
+    f, flog = Path(d) / f"walk_{sig}.csv.gz", Path(d) / f"walk_{sig}.json"
+    if f.exists() and flog.exists():
+        c = pd.read_csv(f, dtype={"race_id": "int64", "dog": str})
+        k = pd.DataFrame({"race_id": df.race_id.astype("int64").values, "dog": df.dog.astype(str).values})
+        m = k.merge(c, on=["race_id", "dog"], how="left")
+        if len(m) == len(df) and m.p_a.notna().sum() == c.p_a.notna().sum():
+            df["p_a"], df["p_b"] = m.p_a.values, m.p_b.values
+            log = [tuple(x) for x in json.loads(flog.read_text())]
+            return df, log + [("cache", f"prices read from the saved walk {sig}")]
+    df, log = walk(df, num, rel, first_pred, t0, every, fit)
+    if not any("time guard" in s for _, s in log):
+        Path(d).mkdir(parents=True, exist_ok=True)
+        out = df.loc[df.p_a.notna() | df.p_b.notna(), ["race_id", "dog", "p_a", "p_b"]]
+        out.to_csv(f, index=False, float_format="%.9g")
+        flog.write_text(json.dumps(log))
+        log = log + [("cache", f"walk saved as {sig}")]
+    return df, log
+
+
 def month_table(df, first_bet):
     print("\n## Walk-forward log loss by month (every race priced by a model refitted before that month)\n")
     print("| month | races | model | ensemble | GRV SP | BSP (races matched) | model gap to SP | gap to BSP |")

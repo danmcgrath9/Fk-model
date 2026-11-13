@@ -234,6 +234,14 @@ jobs:
               && echo "$f $(stat -c %s "bf/$f") bytes" || { rm -f "bf/$f"; echo "not published: $f"; }
           done
 
+      - name: Restore the saved walk-forward prices (Actions cache, this repository only)
+        if: github.event.inputs.mode == 'run'
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/walk
+          key: walk-${{ github.run_id }}
+          restore-keys: walk-
+
       - name: Run the scripts (results only; the data is not kept)
         if: github.event.inputs.mode == 'run' && steps.pullrun.outputs.complete == 'yes' && (github.event.inputs.trials != 'yes' || steps.pulltrials.outputs.complete == 'yes') && (github.event.inputs.races != 'yes' || steps.pullraces.outputs.complete == 'yes')
         run: |
@@ -242,6 +250,7 @@ jobs:
           [ -d bf ] && export BETFAIR_DIR="$PWD/bf"
           [ -d greyhound/cache/isolynx ] && export ISOLYNX_DIR="$PWD/greyhound/cache/isolynx"
           [ -d greyhound/cache/betwatch ] && export BETWATCH_DIR="$PWD/greyhound/cache/betwatch"
+          export WALK_CACHE_DIR="$PWD/greyhound/cache/walk"
           ls greyhound/cache/topaz/races_*.json.gz >/dev/null 2>&1 && export RACES_DIR="$PWD/greyhound/cache/topaz"
           for kv in ${{ github.event.inputs.env }}; do
             case "$kv" in [A-Z_]*=*) export "$kv" ;; *) echo "ignored env input: $kv" ;; esac
@@ -249,6 +258,13 @@ jobs:
           for s in ${{ github.event.inputs.script }}; do
             python "$s" greyhound/cache/topaz "${{ github.event.inputs.label }}" | tee -a report.md | tee -a "$GITHUB_STEP_SUMMARY"
           done
+
+      - name: Save the walk-forward prices (Actions cache; race, dog and our two prices only)
+        if: always() && github.event.inputs.mode == 'run' && hashFiles('greyhound/cache/walk/*') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: greyhound/cache/walk
+          key: walk-${{ github.run_id }}
 
       - uses: actions/upload-artifact@v4
         if: always() && github.event.inputs.mode == 'run'
