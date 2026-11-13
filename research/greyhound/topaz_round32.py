@@ -14,7 +14,8 @@ blend of ours with that price's own book, our blended price $2-$15, Kelly x75 ca
      more, and with an APPROXIMATE fixed-odds deduction taken off the winnings: the scratched runners' share of TAB's
      opening book (the bookmakers' deduction table is not in the data, and it is built from the same chance). Kelly
      stakes stay as struck, because the bettor cannot see the scratching coming. In a race with no scratching after the
-     bet, the field the model priced is the field that was bet into.
+     bet, the field the model priced is the field that was bet into. Beside it, a flat DEDUCT_CENTS (6 by default) in
+     the dollar off every bet's winnings, as TAB takes a deduction ($21 at 6c pays $19.80), and the larger of the two.
 """
 import gzip
 import json
@@ -38,6 +39,7 @@ import topaz_v1 as V1             # noqa: E402
 import topaz_walk as W            # noqa: E402
 
 RATIO, BAND = 1.3, (2, 15)
+FLAT_CENTS = float(os.environ.get("DEDUCT_CENTS", "6") or 6)   # founder, 13 Nov 2026: "Did you apply 6c to every bet?"
 LATER = (5, 30, 60, 120)         # minutes after the market opened
 
 
@@ -212,6 +214,10 @@ def main(d, label):
     line("races with one or more scratched after the open", t2, m & ~clean, o, u, price, h_cut)
     o_ded = 1 + (o - 1) * (1 - t2.ded_open.fillna(0).values)
     line("every race, approximate deduction off the winnings", t2, m, o_ded, u, price, h_cut)
+    o_flat = 1 + (o - 1) * (1 - FLAT_CENTS / 100)
+    line(f"every bet, {FLAT_CENTS:g}c in the dollar off the winnings", t2, m, o_flat, u, price, h_cut)
+    o_both = 1 + (o - 1) * (1 - np.maximum(FLAT_CENTS / 100, t2.ded_open.fillna(0).values))
+    line(f"every bet, the larger of {FLAT_CENTS:g}c and the race's own deduction", t2, m, o_both, u, price, h_cut)
     return 0
 
 
