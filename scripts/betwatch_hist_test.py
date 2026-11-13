@@ -12,19 +12,16 @@ print("betwatch version:", getattr(betwatch, "__version__", "?"))
 print("module members:", [m for m in dir(betwatch) if not m.startswith("_")][:60])
 client = betwatch.connect(api_key=KEY) if hasattr(betwatch, "connect") else betwatch.BetwatchClient(api_key=KEY)
 print("client methods:", [m for m in dir(client) if not m.startswith("_")])
-gr = getattr(client, "get_races")
-print("get_races signature:", inspect.signature(gr))
-try:
-    from betwatch.types import RaceProjection, RacesFilter, MeetingType
-    proj = RaceProjection(markets=True, flucs=True)
-    flt = RacesFilter(meeting_types=[MeetingType.THOROUGHBRED], locations=["VIC"])
-    races = client.get_races(day, day, proj, flt)
-except Exception as ex:
-    print("typed call failed:", type(ex).__name__, str(ex).replace(KEY, "<KEY>")[:400])
-    races = client.get_races(day, day)
+from betwatch.types import RaceProjection, RacesFilter
+print("get_races_between_dates:", inspect.signature(client.get_races_between_dates))
+print("RacesFilter fields:", list(getattr(RacesFilter, "model_fields", getattr(RacesFilter, "__dataclass_fields__", {})).keys()) or inspect.signature(RacesFilter))
+print("RaceProjection fields:", list(getattr(RaceProjection, "model_fields", getattr(RaceProjection, "__dataclass_fields__", {})).keys()) or inspect.signature(RaceProjection))
+proj = RaceProjection(markets=True, flucs=True)
+races = client.get_races_between_dates(day, day, projection=proj)
 print(f"{len(races)} races on {day}")
-r = races[0]
-d = r.model_dump() if hasattr(r, "model_dump") else (r.dict() if hasattr(r, "dict") else r.__dict__)
-txt = json.dumps(d, default=str)
+vic = [r for r in races if "VIC" in json.dumps(r.model_dump() if hasattr(r, "model_dump") else r, default=str)[:3000]]
+print(f"{len(vic)} with VIC in them")
+r = (vic or races)[0]
+d = r.model_dump() if hasattr(r, "model_dump") else r
 print("race keys:", list(d.keys()))
-print(txt[:4000].replace(KEY, "<KEY>"))
+print(json.dumps(d, default=str)[:5000].replace(KEY, "<KEY>"))
