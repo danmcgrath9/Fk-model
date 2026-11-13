@@ -1,0 +1,35 @@
+{
+ "day": "Sunday",
+ "date": "15 November",
+ "footer": "Win bets.",
+ "meetings": [
+  {
+   "name": "Moe",
+   "note": "",
+   "bets": [
+    {
+     "race": 4,
+     "time": "2:15PM",
+     "horse": "Fridge Monster",
+     "price": "$5",
+     "units": "4.24u"
+    },
+    {
+     "race": 5,
+     "time": "2:50PM",
+     "horse": "Yes Yoshi",
+     "price": "$2",
+     "units": "6.35u"
+    },
+    {
+     "race": 9,
+     "time": "5:20PM",
+     "horse": "Stole Him",
+     "price": "$15",
+     "units": "0.73u"
+    }
+   ]
+  }
+ ],
+ "brand": true
+}
