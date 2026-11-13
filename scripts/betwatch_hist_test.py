@@ -16,12 +16,19 @@ from betwatch.types import RaceProjection, RacesFilter
 print("get_races_between_dates:", inspect.signature(client.get_races_between_dates))
 print("RacesFilter fields:", list(getattr(RacesFilter, "model_fields", getattr(RacesFilter, "__dataclass_fields__", {})).keys()) or inspect.signature(RacesFilter))
 print("RaceProjection fields:", list(getattr(RaceProjection, "model_fields", getattr(RaceProjection, "__dataclass_fields__", {})).keys()) or inspect.signature(RaceProjection))
-proj = RaceProjection(markets=True, flucs=True)
-races = client.get_races_between_dates(day, day, projection=proj)
-print(f"{len(races)} races on {day}")
-vic = [r for r in races if "VIC" in json.dumps(r.model_dump() if hasattr(r, "model_dump") else r, default=str)[:3000]]
-print(f"{len(vic)} with VIC in them")
-r = (vic or races)[0]
-d = r.model_dump() if hasattr(r, "model_dump") else r
+proj = RaceProjection(markets=True, flucs=True, betfair=True)
+flt = RacesFilter(locations=["VIC"], types=["Thoroughbred"], limit=100)
+races = client.get_races_between_dates(day, day, projection=proj, filter=flt)
+print(f"{len(races)} VIC thoroughbred races on {day}")
+enc = lambda o: getattr(o, "__dict__", None) or (o.isoformat() if hasattr(o, "isoformat") else str(o))
+r = races[0]
+d = json.loads(json.dumps(r, default=enc))
 print("race keys:", list(d.keys()))
-print(json.dumps(d, default=str)[:5000].replace(KEY, "<KEY>"))
+print(json.dumps({k: v for k, v in d.items() if k != "runners"}, default=str)[:1500])
+run = (d.get("runners") or [{}])[0]
+print("runner keys:", list(run.keys()))
+for bm in (run.get("bookmaker_markets") or run.get("bookmakerMarkets") or [])[:40]:
+    b = json.dumps(bm, default=str)
+    if "tab" in b.lower()[:200]:
+        print("TAB market:", b[:2500])
+print("first market:", json.dumps((run.get("bookmaker_markets") or [None])[0], default=str)[:2000])
