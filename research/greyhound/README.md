@@ -4487,3 +4487,66 @@ deduction:
 
 That is what the live card already does, because it prices the declared field the night before. Round 31 (every
 rule at TAB's prices) was re-run with TAB's deduction on every return.
+
+## Test 51: the rule on the field as it stood when the bet was struck (13 Nov 2026, gh topaz run 43416687768, `topaz_round33.py`)
+
+Founder: "Well keep testing and get better".
+
+The model prices the field that ran. A bettor at TAB's open bets into the field in the market then, which includes dogs
+scratched later. That bettor is paid after TAB's deduction for them. Three versions of the 1.3x rule run side by side,
+on Test 49's model and split:
+- **A:** the field that ran, nothing deducted (Test 49 as it was).
+- **B:** the field that ran, paid after TAB's deduction (Test 50's table).
+- **C:** the field at the bet, paid after TAB's deduction:
+  - each dog scratched later goes back in at TAB's chance for it;
+  - ours for the dogs that ran is scaled by (1 - that chance);
+  - the blend is fitted on early-stopping races with no scratching after the bet, then applied over the whole field at
+    the bet.
+
+C assumes we would have rated a scratched dog as TAB did, since we have no price of our own for a dog that did not run.
+
+| bet time | version | half | bets | winners | A/E vs the price | flat ROI | units staked | Kelly ROI | units won | months in profit |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TAB's first price | A (0.54 / 0.66) | all | 1,047 | 266 | 1.454 | +44.4% | 3,263 | +53.9% | +1,760 | 28 of 30 |
+| TAB's first price | B | all | 1,047 | 266 | 1.454 | -10.7% | 3,263 | -10.4% | -340 | 13 of 30 |
+| TAB's first price | **C (0.54 / 0.67)** | 1st | 65 | 16 | 1.356 | +9.6% | 72 | +49.8% | +36 | 6 of 14 |
+| TAB's first price | **C** | 2nd | 66 | 17 | 1.560 | +36.1% | 74 | +43.6% | +32 | 9 of 15 |
+| TAB's first price | **C** | all | 131 | 33 | 1.454 | **+23.0%** | 146 | +46.6% | **+68** | 15 of 29 |
+| TAB's first price | C, no scratching after the bet | all | 110 | 29 | 1.529 | +33.6% | 123 | +49.7% | +61 | 15 of 29 |
+| TAB's first price | C, a scratching after the bet | all | 21 | 4 | 1.074 | -33.0% | 23 | +30.3% | +7 | 4 of 11 |
+| TAB's first price | C at 1.1x | all | 241 | 62 | 1.326 | +21.7% | 186 | +44.0% | +82 | 17 of 30 |
+| TAB's first price | C at 1.2x | all | 239 | 62 | 1.333 | +22.8% | 183 | +45.9% | +84 | 17 of 30 |
+| TAB's first price | C at 1.5x | all | 14 | 3 | 1.442 | +42.9% | 33 | +38.5% | +13 | 3 of 10 |
+| 30 minutes after the open | A (0.29 / 0.97) | all | 493 | 149 | 1.599 | +71.4% | 1,891 | +68.1% | +1,288 | 23 of 28 |
+| 30 minutes after the open | B | all | 493 | 149 | 1.599 | -12.9% | 1,891 | -14.3% | -271 | 8 of 28 |
+| 30 minutes after the open | C (0.28 / 0.99) | all | 4 | 3 | 3.166 | +175.0% | 15 | +185.7% | +29 | 3 of 3 |
+| 60 minutes after the open | A (0.27 / 1.00) | all | 445 | 137 | 1.625 | +76.8% | 1,712 | +73.3% | +1,254 | 23 of 28 |
+| 60 minutes after the open | B | all | 445 | 137 | 1.625 | -5.2% | 1,712 | -6.3% | -109 | 11 of 28 |
+| 60 minutes after the open | C (0.25 / 1.02) | all | 30 | 11 | 1.980 | +95.7% | 118 | +99.7% | +117 | 10 of 10 |
+
+In version C at 1.3x, BSP is compared with the price paid after TAB's deduction:
+
+| bet time | half | bets with a BSP | BSP under the price paid | mean log(price paid / BSP) | A/E vs BSP |
+|---|---|---|---|---|---|
+| TAB's first price | 1st | 65 | 43 (66.2%) | +0.272 | 0.915 |
+| TAB's first price | 2nd | 65 | 37 (56.9%) | +0.092 | 1.163 |
+| TAB's first price | all | 130 | 80 (61.5%) | +0.182 | 1.024 |
+| 60 minutes after the open | all | 28 | 24 (85.7%) | +0.321 | 1.286 |
+
+**What it means.**
+- **Priced as a bettor at the open would have priced it, the rule still profits, but on few bets.** It made 131 bets in
+  30 months (about four a month), at +23.0% flat. The Kelly stakes are small, so +46.6% Kelly is only +68 units. Only
+  15 of 29 months were in profit, and the first half was +9.6%. At about one standard error from zero, that is not
+  enough to call an edge.
+- **Nearly all of Test 49 came from the field changing after the open.** A made 1,047 bets and C made 131. TAB's
+  opening book runs at about 133%. Once the field is priced as it stood, TAB rarely opens a dog at 1.3x our price.
+- **The bets C makes do beat BSP.** BSP was under the price paid on 61.5% of them, and the price paid averaged about
+  20% above BSP (exp 0.182).
+- **Waiting does not help.** By 30 to 60 minutes after the open, ours has a blend weight of only 0.25-0.28, and C makes
+  4 and 30 bets. That is too few to read.
+- **Next.**
+  - **The live card** already prices the declared field the night before, so its bets at TAB's open are the honest
+    test going forward.
+  - **More prices at the open.** One bookmaker at a 133% book rarely leaves 1.3x. Round 31 (every rule at TAB's,
+    Sportsbet's and Ladbrokes' first prices, after deductions) prices the field that ran. Its market-only rules are
+    fair as they stand, and its model rules need the field at the bet (round 34).
