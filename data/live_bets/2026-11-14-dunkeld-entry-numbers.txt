@@ -3,7 +3,7 @@
 1|4|Flash Inquiry|False|False
 1|9|Starseatic|False|False
 1|10|Tricky Miss|False|False
-1|1|Boridi|False|False
+1|1|Boridi|False|True
 1|7|On A Profit|False|False
 1|5|Gunnah's Conker|False|False
 1|3|Balgownie Miss|False|False
@@ -20,13 +20,16 @@
 2|3|Parak|False|False
 2|8|Proud Witness|False|False
 2|6|Light Filled|False|False
+2|7|Magica|False|True
 2|12|Sammie Ellen Boy|True|False
 3|7|Frosted Amber|False|False
 3|11|Highlight Reel|True|False
+3|2|Buffo|False|True
 3|1|Balsino Prince|False|False
 3|6|Classy Sassy|False|False
 3|12|Love Dad|True|False
 3|3|Five Landings|False|False
+3|8|Ninetyfiveinafifty|False|True
 3|5|Zephyr's Reward|False|False
 3|4|Inthepink|False|False
 3|10|Overthinker|False|False
@@ -40,7 +43,7 @@
 4|4|Bare To Witness|False|False
 4|7|Point Of Ecstasy|False|False
 4|1|Fox Man|False|False
-4|3|Beau Strada|False|False
+4|3|Beau Strada|False|True
 4|2|Caribbean Villa|False|False
 5|9|Take The Prize|False|False
 5|13|Golden Age|True|False
@@ -57,19 +60,22 @@
 5|2|Krasnoludek|False|False
 5|7|Sweet But Sassy|False|False
 6|6|Diamond War|False|False
+6|4|Tango Jewel|False|True
 6|5|Yoomee Wonder|False|False
 6|1|Synchro|False|False
 6|3|Iced Poppy|False|False
+6|7|Packers Journey|False|True
 6|8|Tennessee Song|False|False
-6|9|Eeteedee|False|False
-6|2|Bazzar|False|False
+6|9|Eeteedee|False|True
+6|2|Bazzar|False|True
 7|9|Flying Basil|False|False
 7|5|Gregolimo|False|False
 7|3|New York Hurricane|False|False
-7|2|Foujita San|False|False
+7|2|Foujita San|False|True
 7|1|Any Luck|False|False
 7|11|Scalextrics|True|False
 7|12|Switch Hit|True|False
+7|4|Age Of Kings|False|True
 7|6|Navy King|False|False
 7|7|Stay Humble|False|False
 7|8|Dubai Watch|False|False
@@ -83,7 +89,7 @@
 8|2|Mannerheim|False|False
 8|3|Monsun's Pride|False|False
 8|4|Paltinian|False|False
-8|8|Idling Behind|False|False
+8|8|Idling Behind|False|True
 8|9|Chateau Dancer|False|False
 8|1|Dirty Robber|False|False
 8|12|Scandoval|True|False

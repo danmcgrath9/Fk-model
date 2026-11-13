@@ -1,91 +1,97 @@
-# Dunkeld Sat 14 Nov, official going, final fields; market open in R7; PROVISIONAL: 3 runners without a rider; PAPER ONLY (the model has 8 races at this venue, 0 since the 3 Jun holdout)
-1, Love Runs Deep, 0, 0
-1, Red Mink, 0, 0
-1, Flash Inquiry, 0, 0
-1, Starseatic, 0, 0
-1, Tricky Miss, 0, 0
-1, Boridi, 0, 0
+# Dunkeld Sat 14 Nov, official going, final fields; market open in R1,2,3,4,5,6,7,8; PROVISIONAL: 2 runners without a rider; PAPER ONLY (the model has 8 races at this venue, 0 since the 3 Jun holdout)
+1, Love Runs Deep, 81.00, 81.00, fk_open 51.00
+1, Red Mink, 3.40, 3.40, fk_open 3.00
+1, Flash Inquiry, 3.10, 3.10, fk_open 2.70
+1, Starseatic, 5.75, 5.75, fk_open 6.50
+1, Tricky Miss, 5.50, 5.50, fk_open 4.40
+1, Boridi, SCR
 1, On A Profit, 0, 0
-1, Gunnah's Conker, 0, 0
-1, Balgownie Miss, 0, 0
-1, Ricky Stanicky, 0, 0
-2, Floyd's Prediction, SCR
-2, Te Awam Utu, 0, 0
-2, Something White, 0, 0
-2, Malawi Man, 0, 0
-2, Inner Thoughts, 0, 0
-2, Cracked It, 0, 0
-2, He's Fierce, 0, 0
-2, Baltic, SCR
-2, Holler's Vision, SCR
-2, Parak, 0, 0
-2, Proud Witness, 0, 0
-2, Light Filled, 0, 0
-2, Sammie Ellen Boy, SCR
-3, Frosted Amber, 0, 0
-3, Highlight Reel, SCR
-3, Balsino Prince, 0, 0
-3, Classy Sassy, 0, 0
-3, Love Dad, SCR
-3, Five Landings, 0, 0
-3, Zephyr's Reward, 0, 0
-3, Inthepink, 0, 0
-3, Overthinker, 0, 0
+1, Gunnah's Conker, 7.00, 7.00, fk_open 9.50
+1, Balgownie Miss, 13.00, 13.00, fk_open 9.50
+1, Ricky Stanicky, 101.00, 101.00, fk_open 51.00
+2, Floyd's Prediction, 126.00, 126.00, fk_open 44.33
+2, Te Awam Utu, 67.00, 67.00, fk_open 20.33
+2, Something White, 101.00, 101.00, fk_open 44.33
+2, Malawi Man, 81.00, 81.00, fk_open 33.00
+2, Inner Thoughts, 10.00, 10.00, fk_open 16.67
+2, Cracked It, 4.20, 4.20, fk_open 2.80
+2, He's Fierce, 7.50, 7.50, fk_open 13.33
+2, Baltic, 0, 0
+2, Holler's Vision, 0, 0
+2, Parak, 4.60, 4.60, fk_open 5.03
+2, Proud Witness, 61.00, 61.00, fk_open 25.00
+2, Light Filled, 2.05, 2.05, fk_open 1.88
+2, Magica, SCR
+2, Sammie Ellen Boy, 0, 0
+3, Frosted Amber, 3.20, 3.20, fk_open 2.30
+3, Highlight Reel, 41.00, 41.00, fk_open 19.00
+3, Buffo, SCR
+3, Balsino Prince, 41.00, 41.00, fk_open 26.00
+3, Classy Sassy, 3.90, 3.90, fk_open 3.60
+3, Love Dad, 0, 0
+3, Five Landings, 13.00, 13.00, fk_open 12.00
+3, Ninetyfiveinafifty, SCR
+3, Zephyr's Reward, 6.75, 6.75, fk_open 8.50
+3, Inthepink, 21.00, 21.00, fk_open 12.00
+3, Overthinker, 3.10, 3.10, fk_open 4.00
 3, Crimson Storm, 0, 0
-4, Squazeemoto, 0, 0
-4, Nudge 'em Along, SCR
-4, Monsoon Reins, 0, 0
-4, Mr Time, 0, 0
-4, Frose, 0, 0
-4, Bokeem, 0, 0
-4, Bare To Witness, 0, 0
-4, Point Of Ecstasy, 0, 0
-4, Fox Man, 0, 0
-4, Beau Strada, 0, 0
-4, Caribbean Villa, 0, 0
-5, Take The Prize, 0, 0
-5, Golden Age, SCR
-5, Iliad, 0, 0
-5, Hidden Comfort, 0, 0
-5, Simply Excels, SCR
-5, Flux, SCR
-5, Drunken Sailor, 0, 0
+4, Squazeemoto, 7.00, 7.00, fk_open 6.25
+4, Nudge 'em Along, 15.00, 15.00, fk_open 10.50
+4, Monsoon Reins, 19.00, 19.00, fk_open 17.00
+4, Mr Time, 31.00, 31.00, fk_open 20.00
+4, Frose, 9.50, 9.50, fk_open 5.75
+4, Bokeem, 15.00, 15.00, fk_open 16.00
+4, Bare To Witness, 34.00, 34.00, fk_open 26.00
+4, Point Of Ecstasy, 5.50, 5.50, fk_open 6.00
+4, Fox Man, 5.00, 5.00, fk_open 5.37
+4, Beau Strada, SCR
+4, Caribbean Villa, 2.80, 2.80, fk_open 2.85
+5, Take The Prize, 19.00, 19.00, fk_open 15.67
+5, Golden Age, 0, 0
+5, Iliad, 8.00, 8.00, fk_open 4.97
+5, Hidden Comfort, 13.00, 13.00, fk_open 15.67
+5, Simply Excels, 9.50, 9.50, fk_open 8.33
+5, Flux, 0, 0
+5, Drunken Sailor, 13.00, 13.00, fk_open 11.00
 5, Ponte Arcobaleno, 0, 0
-5, Immortal Justice, 0, 0
-5, I Am Vengeance, 0, 0
-5, Abby's Crossword, 0, 0
-5, Wild Roses Grow, SCR
-5, Krasnoludek, 0, 0
-5, Sweet But Sassy, 0, 0
-6, Diamond War, 0, 0
-6, Yoomee Wonder, 0, 0
-6, Synchro, 0, 0
-6, Iced Poppy, 0, 0
-6, Tennessee Song, 0, 0
-6, Eeteedee, 0, 0
-6, Bazzar, 0, 0
-7, Flying Basil, 71.00, 71.00, fk_open 51.00
+5, Immortal Justice, 9.00, 9.00, fk_open 6.75
+5, I Am Vengeance, 34.00, 34.00, fk_open 32.50
+5, Abby's Crossword, 2.20, 2.20, fk_open 2.33
+5, Wild Roses Grow, 0, 0
+5, Krasnoludek, 7.50, 7.50, fk_open 5.50
+5, Sweet But Sassy, 19.00, 19.00, fk_open 17.67
+6, Diamond War, 61.00, 61.00, fk_open 23.50
+6, Tango Jewel, SCR
+6, Yoomee Wonder, 8.50, 8.50, fk_open 6.00
+6, Synchro, 4.60, 4.60, fk_open 2.90
+6, Iced Poppy, 3.00, 3.00, fk_open 2.35
+6, Packers Journey, SCR
+6, Tennessee Song, 2.35, 2.35, fk_open 2.73
+6, Eeteedee, SCR
+6, Bazzar, SCR
+7, Flying Basil, 51.00, 51.00, fk_open 51.00
 7, Gregolimo, 9.00, 9.00, fk_open 6.50
 7, New York Hurricane, 7.50, 7.50, fk_open 8.50
-7, Foujita San, 5.00, 5.00, fk_open 4.20
+7, Foujita San, SCR, last 5.00, fk_open 4.20
 7, Any Luck, 35.00, 35.00, fk_open 26.00
-7, Scalextrics, SCR, fk_open 9.00
-7, Switch Hit, SCR, fk_open 8.50
-7, Navy King, 6.25, 6.25, fk_open 9.50
+7, Scalextrics, 11.00, 11.00, fk_open 9.00
+7, Switch Hit, 7.50, 7.50, fk_open 8.50
+7, Age Of Kings, SCR
+7, Navy King, 6.00, 6.00, fk_open 9.50
 7, Stay Humble, 5.00, 5.00, fk_open 3.50
 7, Dubai Watch, 5.00, 5.00, fk_open 8.50
-7, Overpriced, 9.50, 9.50, fk_open 7.50
-8, Dusty's Deel, SCR
-8, Bellakai, SCR
-8, Dubai Legend, SCR
-8, Peyton Jane, 0, 0
-8, Rippa Buddy, 0, 0
+7, Overpriced, 9.00, 9.00, fk_open 7.50
+8, Dusty's Deel, 8.00, 8.00, fk_open 6.00
+8, Bellakai, 0, 0
+8, Dubai Legend, 15.00, 15.00, fk_open 12.00
+8, Peyton Jane, 31.00, 31.00, fk_open 17.00
+8, Rippa Buddy, 7.00, 7.00, fk_open 18.00
 8, Whistler Girl, 0, 0
-8, Mannerheim, 0, 0
+8, Mannerheim, 6.00, 6.00, fk_open 8.50
 8, Monsun's Pride, 0, 0
-8, Paltinian, 0, 0
-8, Idling Behind, 0, 0
-8, Chateau Dancer, 0, 0
-8, Dirty Robber, 0, 0
-8, Scandoval, SCR
-8, Tassadar, 0, 0
+8, Paltinian, 4.20, 4.20, fk_open 2.40
+8, Idling Behind, SCR
+8, Chateau Dancer, 9.00, 9.00, fk_open 9.50
+8, Dirty Robber, 7.00, 7.00, fk_open 6.00
+8, Scandoval, 41.00, 41.00, fk_open 26.00
+8, Tassadar, 6.00, 6.00, fk_open 7.00

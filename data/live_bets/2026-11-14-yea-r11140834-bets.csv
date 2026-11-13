@@ -1,0 +1,7 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,YEA_141126_1,Moonlight Romance,top_pick,0.0,0.0,0.0,,,1.94,-1.0,Class drop (rating),1.0,no,,
+2,YEA_141126_2,Crying Cougar,top_pick,0.0,0.0,0.0,,,4.46,-1.0,Class drop (rating); EARLY ONLY: bet near the open,1.0,no,,
+3,YEA_141126_3,Warrandyte Road,top_pick,0.0,0.0,0.0,,,3.28,-1.0,Already run to today's class; Class drop (rating); EARLY ONLY: bet near the open,1.0,no,,
+4,YEA_141126_4,Runway Ruler,top_pick,0.0,0.0,0.0,,,3.47,-1.0,,1.0,no,,
+5,YEA_141126_5,Testing The Cugat,top_pick,0.0,0.0,0.0,,,3.8,-1.0,Class drop (rating),1.0,no,,
+6,YEA_141126_6,Slippery Thinker,top_pick,0.0,0.0,0.0,,,4.37,-1.0,Class drop (rating),1.0,no,,

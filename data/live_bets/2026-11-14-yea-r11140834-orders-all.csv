@@ -1,0 +1,87 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-14,Yea,1,,1,Eidfjord,WIN,6.93,31.79,1.75,88,1 of 3,1.75u,5.30,
+2026-11-14,Yea,1,,1,Eidfjord,WIN,8.66,31.79,0.39,20,2 of 3,2.14u,5.30,
+2026-11-14,Yea,1,,1,Eidfjord,WIN,11.66,31.79,2.14,107,3 of 3,4.28u,5.30,opens $11.66+ (2.2x ours): stake doubled
+2026-11-14,Yea,1,,8,Jenni Bam Bam,WIN,15.38,67.88,0.74,37,1 of 2,0.74u,11.31,
+2026-11-14,Yea,1,,8,Jenni Bam Bam,WIN,19.23,67.88,0.17,8,2 of 2,0.91u,11.31,
+2026-11-14,Yea,1,,9,Moonlight Romance,WIN,2.28,3.99,6.21,310,1 of 2,6.21u,1.94,opens under $4: edge 1.15
+2026-11-14,Yea,1,,9,Moonlight Romance,WIN,2.85,3.99,1.27,64,2 of 2,7.48u,1.94,opens under $4: edge 1.15
+2026-11-14,Yea,1,,9,Moonlight Romance,WIN,4.00,11.63,6.67,334,1 of 3,6.67u,1.94,
+2026-11-14,Yea,1,,9,Moonlight Romance,WIN,4.00,11.63,1.06,53,2 of 3,7.73u,1.94,
+2026-11-14,Yea,1,,9,Moonlight Romance,WIN,4.27,11.63,2.27,114,3 of 3,10.00u,1.94,opens $4.27+ (2.2x ours): stake doubled
+2026-11-14,Yea,1,,3,Opinion Leader,WIN,15.41,68.02,0.73,36,1 of 2,0.73u,11.34,
+2026-11-14,Yea,1,,3,Opinion Leader,WIN,19.26,68.02,0.18,9,2 of 2,0.91u,11.34,
+2026-11-14,Yea,2,,4,Crying Cougar,WIN,5.79,15.01,2.15,108,1 of 3,2.15u,4.46,EARLY: $15 or shorter only
+2026-11-14,Yea,2,,4,Crying Cougar,WIN,7.24,15.01,0.47,24,2 of 3,2.62u,4.46,EARLY: $15 or shorter only
+2026-11-14,Yea,2,,4,Crying Cougar,WIN,9.83,15.01,2.62,131,3 of 3,5.24u,4.46,EARLY: $15 or shorter only; opens $9.83+ (2.2x ours): stake doubled
+2026-11-14,Yea,2,,1,Dissalto,WIN,8.08,36.82,1.47,74,1 of 3,1.47u,6.14,
+2026-11-14,Yea,2,,1,Dissalto,WIN,10.10,36.82,0.34,17,2 of 3,1.81u,6.14,
+2026-11-14,Yea,2,,1,Dissalto,WIN,13.51,36.82,1.81,90,3 of 3,3.62u,6.14,opens $13.51+ (2.2x ours): stake doubled
+2026-11-14,Yea,2,,6,Duel Missile,WIN,6.84,31.39,1.78,89,1 of 3,1.78u,5.23,
+2026-11-14,Yea,2,,6,Duel Missile,WIN,8.55,31.39,0.40,20,2 of 3,2.18u,5.23,
+2026-11-14,Yea,2,,6,Duel Missile,WIN,11.52,31.39,2.18,109,3 of 3,4.36u,5.23,opens $11.52+ (2.2x ours): stake doubled
+2026-11-14,Yea,2,,5,First Tosen,WIN,13.90,61.68,0.82,41,1 of 2,0.82u,10.28,
+2026-11-14,Yea,2,,5,First Tosen,WIN,17.38,61.68,0.19,10,2 of 2,1.01u,10.28,
+2026-11-14,Yea,2,,3,Oriental Dane,WIN,15.28,67.47,0.74,37,1 of 2,0.74u,11.25,
+2026-11-14,Yea,2,,3,Oriental Dane,WIN,19.10,67.47,0.18,9,2 of 2,0.92u,11.25,
+2026-11-14,Yea,2,,8,Tartan Queen,WIN,19.51,85.12,0.57,28,1 of 2,0.57u,14.19,
+2026-11-14,Yea,2,,8,Tartan Queen,WIN,24.39,85.12,0.14,7,2 of 2,0.71u,14.19,
+2026-11-14,Yea,3,,3,Eight Shout's,WIN,8.53,38.76,1.38,69,1 of 3,1.38u,6.46,
+2026-11-14,Yea,3,,3,Eight Shout's,WIN,10.66,38.76,0.33,16,2 of 3,1.71u,6.46,
+2026-11-14,Yea,3,,3,Eight Shout's,WIN,14.22,38.76,1.71,86,3 of 3,3.42u,6.46,opens $14.22+ (2.2x ours): stake doubled
+2026-11-14,Yea,3,,1,Mac Kalhoun,WIN,5.81,26.88,2.14,107,1 of 3,2.14u,4.48,
+2026-11-14,Yea,3,,1,Mac Kalhoun,WIN,7.26,26.88,0.47,24,2 of 3,2.61u,4.48,
+2026-11-14,Yea,3,,1,Mac Kalhoun,WIN,9.86,26.88,2.61,130,3 of 3,5.22u,4.48,opens $9.86+ (2.2x ours): stake doubled
+2026-11-14,Yea,3,,4,Pro Velocity,WIN,10.49,47.16,1.11,56,1 of 3,1.11u,7.86,
+2026-11-14,Yea,3,,4,Pro Velocity,WIN,13.11,47.16,0.26,13,2 of 3,1.37u,7.86,
+2026-11-14,Yea,3,,4,Pro Velocity,WIN,17.30,47.16,1.37,68,3 of 3,2.74u,7.86,opens $17.30+ (2.2x ours): stake doubled
+2026-11-14,Yea,3,,7,Startin'sumthin',WIN,10.47,47.08,1.11,56,1 of 3,1.11u,7.85,
+2026-11-14,Yea,3,,7,Startin'sumthin',WIN,13.09,47.08,0.26,13,2 of 3,1.37u,7.85,
+2026-11-14,Yea,3,,7,Startin'sumthin',WIN,17.27,47.08,1.37,68,3 of 3,2.74u,7.85,opens $17.27+ (2.2x ours): stake doubled
+2026-11-14,Yea,3,,2,Warrandyte Road,WIN,3.96,3.99,2.90,145,1 of 1,2.90u,3.28,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-14,Yea,3,,2,Warrandyte Road,WIN,4.18,15.01,3.16,158,1 of 3,3.16u,3.28,EARLY: $15 or shorter only
+2026-11-14,Yea,3,,2,Warrandyte Road,WIN,5.22,15.01,0.65,32,2 of 3,3.81u,3.28,EARLY: $15 or shorter only
+2026-11-14,Yea,3,,2,Warrandyte Road,WIN,7.22,15.01,3.81,190,3 of 3,7.62u,3.28,EARLY: $15 or shorter only; opens $7.22+ (2.2x ours): stake doubled
+2026-11-14,Yea,4,,6,Kyokushin,WIN,14.84,65.64,0.76,38,1 of 2,0.76u,10.94,
+2026-11-14,Yea,4,,6,Kyokushin,WIN,18.55,65.64,0.19,10,2 of 2,0.95u,10.94,
+2026-11-14,Yea,4,,7,Proprietary,WIN,12.47,55.63,0.92,46,1 of 2,0.92u,9.27,
+2026-11-14,Yea,4,,7,Proprietary,WIN,15.59,55.63,0.22,11,2 of 2,1.14u,9.27,
+2026-11-14,Yea,4,,8,Runway Ruler,WIN,3.50,3.99,3.41,170,1 of 1,3.41u,2.91,opens under $4: edge 1.15
+2026-11-14,Yea,4,,8,Runway Ruler,WIN,4.00,17.48,3.70,185,1 of 3,3.70u,2.91,
+2026-11-14,Yea,4,,8,Runway Ruler,WIN,4.61,17.48,0.74,37,2 of 3,4.44u,2.91,
+2026-11-14,Yea,4,,8,Runway Ruler,WIN,6.41,17.48,4.44,222,3 of 3,8.88u,2.91,opens $6.41+ (2.2x ours): stake doubled
+2026-11-14,Yea,4,,1,The Cuban,WIN,5.96,27.54,2.08,104,1 of 3,2.08u,4.59,
+2026-11-14,Yea,4,,1,The Cuban,WIN,7.45,27.54,0.46,23,2 of 3,2.54u,4.59,
+2026-11-14,Yea,4,,1,The Cuban,WIN,10.10,27.54,2.54,127,3 of 3,5.08u,4.59,opens $10.10+ (2.2x ours): stake doubled
+2026-11-14,Yea,5,,7,Dreamstone,WIN,6.62,30.47,1.84,92,1 of 3,1.84u,5.08,
+2026-11-14,Yea,5,,7,Dreamstone,WIN,8.28,30.47,0.41,20,2 of 3,2.25u,5.08,
+2026-11-14,Yea,5,,7,Dreamstone,WIN,11.18,30.47,2.25,112,3 of 3,4.50u,5.08,opens $11.18+ (2.2x ours): stake doubled
+2026-11-14,Yea,5,,1,Eight Under,WIN,8.45,38.39,1.40,70,1 of 3,1.40u,6.40,
+2026-11-14,Yea,5,,1,Eight Under,WIN,10.56,38.39,0.33,16,2 of 3,1.73u,6.40,
+2026-11-14,Yea,5,,1,Eight Under,WIN,14.08,38.39,1.73,86,3 of 3,3.46u,6.40,opens $14.08+ (2.2x ours): stake doubled
+2026-11-14,Yea,5,,3,Redwood Shadow,WIN,15.22,67.22,0.74,37,1 of 2,0.74u,11.20,
+2026-11-14,Yea,5,,3,Redwood Shadow,WIN,19.03,67.22,0.18,9,2 of 2,0.92u,11.20,
+2026-11-14,Yea,5,,4,Scandoval,WIN,10.35,46.57,1.12,56,1 of 3,1.12u,7.76,
+2026-11-14,Yea,5,,4,Scandoval,WIN,12.94,46.57,0.27,14,2 of 3,1.39u,7.76,
+2026-11-14,Yea,5,,4,Scandoval,WIN,17.08,46.57,1.39,70,3 of 3,2.78u,7.76,opens $17.08+ (2.2x ours): stake doubled
+2026-11-14,Yea,5,,5,Testing The Cugat,WIN,4.88,22.80,2.62,131,1 of 3,2.62u,3.80,
+2026-11-14,Yea,5,,5,Testing The Cugat,WIN,6.10,22.80,0.56,28,2 of 3,3.18u,3.80,
+2026-11-14,Yea,5,,5,Testing The Cugat,WIN,8.37,22.80,3.18,159,3 of 3,6.36u,3.80,opens $8.37+ (2.2x ours): stake doubled
+2026-11-14,Yea,5,,2,Understated,WIN,20.68,89.97,0.54,27,1 of 2,0.54u,14.99,
+2026-11-14,Yea,5,,2,Understated,WIN,25.85,89.97,0.13,6,2 of 2,0.67u,14.99,
+2026-11-14,Yea,6,,1,Barrett Reef,WIN,7.04,32.30,1.71,86,1 of 3,1.71u,5.38,
+2026-11-14,Yea,6,,1,Barrett Reef,WIN,8.80,32.30,0.39,20,2 of 3,2.10u,5.38,
+2026-11-14,Yea,6,,1,Barrett Reef,WIN,11.85,32.30,2.10,105,3 of 3,4.20u,5.38,opens $11.85+ (2.2x ours): stake doubled
+2026-11-14,Yea,6,,5,Mallee Maid,WIN,12.32,55.00,0.93,46,1 of 2,0.93u,9.17,
+2026-11-14,Yea,6,,5,Mallee Maid,WIN,15.40,55.00,0.22,11,2 of 2,1.15u,9.17,
+2026-11-14,Yea,6,,3,Slippery Thinker,WIN,5.65,26.21,2.20,110,1 of 3,2.20u,4.37,
+2026-11-14,Yea,6,,3,Slippery Thinker,WIN,7.06,26.21,0.49,24,2 of 3,2.69u,4.37,
+2026-11-14,Yea,6,,3,Slippery Thinker,WIN,9.62,26.21,2.69,134,3 of 3,5.38u,4.37,opens $9.62+ (2.2x ours): stake doubled
+2026-11-14,Yea,6,,2,Stella Cantante,WIN,8.85,40.12,1.33,66,1 of 3,1.33u,6.69,
+2026-11-14,Yea,6,,2,Stella Cantante,WIN,11.06,40.12,0.31,16,2 of 3,1.64u,6.69,
+2026-11-14,Yea,6,,2,Stella Cantante,WIN,14.72,40.12,1.64,82,3 of 3,3.28u,6.69,opens $14.72+ (2.2x ours): stake doubled
+2026-11-14,Yea,6,,4,These Boots,WIN,7.65,34.92,1.57,78,1 of 3,1.57u,5.82,
+2026-11-14,Yea,6,,4,These Boots,WIN,9.56,34.92,0.35,18,2 of 3,1.92u,5.82,
+2026-11-14,Yea,6,,4,These Boots,WIN,12.81,34.92,1.92,96,3 of 3,3.84u,5.82,opens $12.81+ (2.2x ours): stake doubled
+2026-11-14,Yea,6,,8,Zephartie,WIN,14.83,65.58,0.76,38,1 of 2,0.76u,10.93,
+2026-11-14,Yea,6,,8,Zephartie,WIN,18.54,65.58,0.19,10,2 of 2,0.95u,10.93,

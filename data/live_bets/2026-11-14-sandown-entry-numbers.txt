@@ -2,7 +2,7 @@
 1|2|Cable Dancer|False|False
 1|1|Shaiyhar|False|False
 1|10|House Of Lords|False|False
-1|6|Federer|False|False
+1|6|Federer|False|True
 1|4|Suffolk Star|False|False
 1|11|Mr O'reilly|False|False
 1|8|Fiorowngood|False|False
@@ -62,7 +62,7 @@
 4|14|Revolver|False|False
 4|9|Coco Jen|False|False
 4|3|Two Wolves|False|False
-4|2|Politely Dun|False|False
+4|2|Politely Dun|False|True
 4|1|Oceana Dream|False|False
 4|13|Terrortorian|False|False
 4|17|The Muffin Man|True|False
@@ -79,7 +79,7 @@
 5|5|Fast Freddie|False|False
 5|4|Harry Lime|False|False
 5|9|Viking Kid|False|False
-5|10|Katoto|False|False
+5|10|Katoto|False|True
 5|7|Magna Sententia|False|False
 5|12|Anglais|False|False
 5|2|Star Of Macedon|False|False
@@ -153,7 +153,7 @@
 10|2|Bossy Benita|False|False
 10|12|Superfabulistic|False|False
 10|7|Terilee|False|False
-10|1|Cilacap|False|False
+10|1|Cilacap|False|True
 10|9|Davida|False|True
 10|4|Concord Connie|False|False
 10|13|Naraghi|False|False

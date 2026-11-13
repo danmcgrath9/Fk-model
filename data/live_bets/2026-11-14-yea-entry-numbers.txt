@@ -2,7 +2,7 @@
 1|4|Wallace And Gromit|False|False
 1|7|Haunted Kynexion|False|False
 1|10|Prized Magic|False|False
-1|2|Jirachi|False|False
+1|2|Jirachi|False|True
 1|9|Moonlight Romance|False|False
 1|8|Jenni Bam Bam|False|False
 1|1|Eidfjord|False|False
@@ -30,6 +30,7 @@
 4|2|Annoy'en One|False|False
 4|9|Midivani|False|False
 4|6|Kyokushin|False|False
+4|11|Belmasai|True|True
 4|4|Shahin|False|False
 4|7|Proprietary|False|False
 4|5|Hillbily Kynection|False|False

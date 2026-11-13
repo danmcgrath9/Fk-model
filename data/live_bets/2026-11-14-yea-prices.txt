@@ -1,9 +1,9 @@
-# Yea Sat 14 Nov, Dead (official), final fields, no market yet; PAPER ONLY (no holdout: no Yea meeting in the model's history)
+# Yea Sat 14 Nov, official going, final fields; no market yet; PAPER ONLY (the model has 0 races at this venue, 0 since the 3 Jun holdout)
 1, Couldbetracy, 0, 0
 1, Wallace And Gromit, 0, 0
 1, Haunted Kynexion, 0, 0
 1, Prized Magic, 0, 0
-1, Jirachi, 0, 0
+1, Jirachi, SCR
 1, Moonlight Romance, 0, 0
 1, Jenni Bam Bam, 0, 0
 1, Eidfjord, 0, 0
@@ -31,13 +31,14 @@
 4, Annoy'en One, 0, 0
 4, Midivani, 0, 0
 4, Kyokushin, 0, 0
+4, Belmasai, SCR
 4, Shahin, 0, 0
 4, Proprietary, 0, 0
 4, Hillbily Kynection, 0, 0
-4, Enough War, SCR
+4, Enough War, 0, 0
 4, The Cuban, 0, 0
-4, Littlebirdie, SCR
-4, The Village Fox, SCR
+4, Littlebirdie, 0, 0
+4, The Village Fox, 0, 0
 4, Runway Ruler, 0, 0
 5, Understated, 0, 0
 5, Redwood Shadow, 0, 0

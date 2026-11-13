@@ -1,0 +1,91 @@
+# Dunkeld Sat 14 Nov, official going, final fields; market open in R7; PROVISIONAL: 3 runners without a rider; PAPER ONLY (the model has 8 races at this venue, 0 since the 3 Jun holdout)
+1, Love Runs Deep, 0, 0
+1, Red Mink, 0, 0
+1, Flash Inquiry, 0, 0
+1, Starseatic, 0, 0
+1, Tricky Miss, 0, 0
+1, Boridi, 0, 0
+1, On A Profit, 0, 0
+1, Gunnah's Conker, 0, 0
+1, Balgownie Miss, 0, 0
+1, Ricky Stanicky, 0, 0
+2, Floyd's Prediction, SCR
+2, Te Awam Utu, 0, 0
+2, Something White, 0, 0
+2, Malawi Man, 0, 0
+2, Inner Thoughts, 0, 0
+2, Cracked It, 0, 0
+2, He's Fierce, 0, 0
+2, Baltic, SCR
+2, Holler's Vision, SCR
+2, Parak, 0, 0
+2, Proud Witness, 0, 0
+2, Light Filled, 0, 0
+2, Sammie Ellen Boy, SCR
+3, Frosted Amber, 0, 0
+3, Highlight Reel, SCR
+3, Balsino Prince, 0, 0
+3, Classy Sassy, 0, 0
+3, Love Dad, SCR
+3, Five Landings, 0, 0
+3, Zephyr's Reward, 0, 0
+3, Inthepink, 0, 0
+3, Overthinker, 0, 0
+3, Crimson Storm, 0, 0
+4, Squazeemoto, 0, 0
+4, Nudge 'em Along, SCR
+4, Monsoon Reins, 0, 0
+4, Mr Time, 0, 0
+4, Frose, 0, 0
+4, Bokeem, 0, 0
+4, Bare To Witness, 0, 0
+4, Point Of Ecstasy, 0, 0
+4, Fox Man, 0, 0
+4, Beau Strada, 0, 0
+4, Caribbean Villa, 0, 0
+5, Take The Prize, 0, 0
+5, Golden Age, SCR
+5, Iliad, 0, 0
+5, Hidden Comfort, 0, 0
+5, Simply Excels, SCR
+5, Flux, SCR
+5, Drunken Sailor, 0, 0
+5, Ponte Arcobaleno, 0, 0
+5, Immortal Justice, 0, 0
+5, I Am Vengeance, 0, 0
+5, Abby's Crossword, 0, 0
+5, Wild Roses Grow, SCR
+5, Krasnoludek, 0, 0
+5, Sweet But Sassy, 0, 0
+6, Diamond War, 0, 0
+6, Yoomee Wonder, 0, 0
+6, Synchro, 0, 0
+6, Iced Poppy, 0, 0
+6, Tennessee Song, 0, 0
+6, Eeteedee, 0, 0
+6, Bazzar, 0, 0
+7, Flying Basil, 71.00, 71.00, fk_open 51.00
+7, Gregolimo, 9.00, 9.00, fk_open 6.50
+7, New York Hurricane, 7.50, 7.50, fk_open 8.50
+7, Foujita San, 5.00, 5.00, fk_open 4.20
+7, Any Luck, 35.00, 35.00, fk_open 26.00
+7, Scalextrics, SCR, fk_open 9.00
+7, Switch Hit, SCR, fk_open 8.50
+7, Navy King, 6.25, 6.25, fk_open 9.50
+7, Stay Humble, 5.00, 5.00, fk_open 3.50
+7, Dubai Watch, 5.00, 5.00, fk_open 8.50
+7, Overpriced, 9.50, 9.50, fk_open 7.50
+8, Dusty's Deel, SCR
+8, Bellakai, SCR
+8, Dubai Legend, SCR
+8, Peyton Jane, 0, 0
+8, Rippa Buddy, 0, 0
+8, Whistler Girl, 0, 0
+8, Mannerheim, 0, 0
+8, Monsun's Pride, 0, 0
+8, Paltinian, 0, 0
+8, Idling Behind, 0, 0
+8, Chateau Dancer, 0, 0
+8, Dirty Robber, 0, 0
+8, Scandoval, SCR
+8, Tassadar, 0, 0

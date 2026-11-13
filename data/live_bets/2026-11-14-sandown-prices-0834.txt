@@ -1,0 +1,163 @@
+# Sandown Hillside Sat 14 Nov, official going, final fields; market open in R1,2,3,4,5,6,7,8,9,10
+1, Affluential, 151.00, 151.00, fk_open 81.00
+1, Cable Dancer, 21.00, 21.00, fk_open 17.00
+1, Shaiyhar, 51.00, 51.00, fk_open 41.00
+1, House Of Lords, 17.00, 17.00, fk_open 7.00
+1, Federer, 8.50, 8.50, fk_open 8.50
+1, Suffolk Star, 71.00, 71.00, fk_open 41.00
+1, Mr O'reilly, 6.00, 6.00, fk_open 7.50
+1, Fiorowngood, 7.00, 7.00, fk_open 8.50
+1, Bur Dubai, 11.00, 11.00, fk_open 12.00
+1, Johnich, 12.00, 12.00, fk_open 7.00
+1, Ichnusa, 3.00, 3.00, fk_open 3.00
+1, Dad And Dave, 11.00, 11.00, fk_open 9.50
+2, Oceans Blue, 0, 0
+2, Unkechaug, 0, 0
+2, Caddington, 0, 0
+2, Semantics, 0, 0
+2, Cavill Avenue, 0, 0
+2, Nishioka, 0, 0
+2, Vixen Vibes, 0, 0
+2, Simply Steffi, 0, 0
+2, Angels Fury, 0, 0
+2, Affari, 0, 0
+2, Natural Fling, 0, 0
+2, Ciaron's Star, 0, 0
+2, Chayan, 0, 0
+2, Sound Byte, 0, 0
+2, Sequinned, 0, 0
+2, Rubi's Choice, 0, 0
+2, Aroused, 0, 0
+2, Almost An Angel, 0, 0
+2, Calamari Ring, 0, 0
+2, Autumn Rainbow, 0, 0
+2, Lady Catalina, 0, 0
+2, Nation State, 23.00, 23.00, fk_open 11.00
+2, Suspect, SCR
+2, Skippers Canyon, 13.00, 13.00, fk_open 15.00
+2, Charming Nic, 46.00, 46.00, fk_open 61.00
+2, Mometz, 31.00, 31.00, fk_open 18.00
+2, Fluent, 35.00, 35.00, fk_open 21.00
+2, Alero, 7.00, 7.00, fk_open 17.00
+2, Parvenu, 8.00, 8.00, fk_open 6.00
+2, Chicago Blues, 27.00, 27.00, fk_open 17.00
+2, Bacash, 7.50, 7.50, fk_open 8.00
+2, Befuddle, 11.00, 11.00, fk_open 10.00
+2, Just A Journey, 21.00, 21.00, fk_open 13.00
+2, Karren, 3.00, 3.00, fk_open 3.30
+2, Ruska Roma, 13.00, 13.00, fk_open 11.00
+3, El Rocko, 23.00, 23.00, fk_open 18.00
+3, Roadcone, 16.00, 16.00, fk_open 10.50
+3, Porter, 3.50, 3.50, fk_open 3.10
+3, Grid Girl, 10.00, 10.00, fk_open 6.25
+3, Oak Beach, 13.00, 13.00, fk_open 12.00
+3, Currawood, 35.00, 35.00, fk_open 34.00
+3, Ferivia, 10.00, 10.00, fk_open 13.50
+3, Fundamental Nature, 2.30, 2.30, fk_open 2.73
+3, Impulsive Reaction, 20.00, 20.00, fk_open 15.50
+4, Rick's Cafe, SCR
+4, Flag Flyer, 71.00, 71.00, fk_open 31.00
+4, Durban Harbour, 81.00, 81.00, fk_open 23.00
+4, Dragoon, 41.00, 41.00, fk_open 26.00
+4, Nearing Liberty, 23.00, 23.00, fk_open 19.00
+4, Revolver, 21.00, 21.00, fk_open 12.00
+4, Coco Jen, 81.00, 81.00, fk_open 51.00
+4, Two Wolves, 21.00, 21.00, fk_open 9.50
+4, Politely Dun, 10.00, 10.00, fk_open 12.00
+4, Oceana Dream, 9.00, 9.00, fk_open 5.50
+4, Terrortorian, 11.00, 11.00, fk_open 14.00
+4, The Muffin Man, SCR, fk_open 17.00
+4, Brave Danza, 9.50, 9.50, fk_open 5.50
+4, Jackknife, 71.00, 71.00, fk_open 34.00
+4, Killenaule, 5.50, 5.50, fk_open 5.00
+4, Falls Of Acharn, 13.00, 13.00, fk_open 19.00
+4, Geneva, 5.00, 5.00, fk_open 7.50
+5, Milsons Point, 10.00, 10.00, fk_open 9.17
+5, Strong Tempo, 9.00, 9.00, fk_open 5.25
+5, Meness, 46.00, 46.00, fk_open 28.50
+5, Hydro Rush, 12.00, 12.00, fk_open 13.00
+5, Consulate, 6.50, 6.50, fk_open 5.27
+5, Fast Freddie, 13.00, 13.00, fk_open 18.00
+5, Harry Lime, 7.50, 7.50, fk_open 7.25
+5, Viking Kid, 91.00, 91.00, fk_open 63.50
+5, Katoto, 0, 0
+5, Magna Sententia, 4.20, 4.20, fk_open 7.17
+5, Anglais, 13.00, 13.00, fk_open 16.50
+5, Star Of Macedon, 6.00, 6.00, fk_open 6.50
+6, Unflinching, 81.00, 81.00, fk_open 56.00
+6, Philosopher, 12.00, 12.00, fk_open 10.50
+6, Oak Hill, 7.00, 7.00, fk_open 8.75
+6, Don't Hope Do, 6.00, 6.00, fk_open 4.90
+6, Lake Forest, 8.00, 8.00, fk_open 10.83
+6, Tennessee Spirit, 11.00, 11.00, fk_open 12.50
+6, Mcgaw, 23.00, 23.00, fk_open 17.50
+6, Saluted, 16.00, 16.00, fk_open 14.50
+6, Bred 'em All, 3.20, 3.20, fk_open 2.75
+6, Thanks Gorgeous, 26.00, 26.00, fk_open 17.50
+6, Pallaton, 9.00, 9.00, fk_open 9.25
+7, Unflinching, 0, 0
+7, Philosopher, 0, 0
+7, Oak Hill, 0, 0
+7, Don't Hope Do, 0, 0
+7, Perilous Fighter, 0, 0
+7, Always Enuff, 0, 0
+7, Lake Forest, 0, 0
+7, Choir Point, 0, 0
+7, Tennessee Spirit, 0, 0
+7, Mcgaw, 0, 0
+7, Saluted, 0, 0
+7, Jimmy Recard, 0, 0
+7, Swift Force, 0, 0
+7, Bred 'em All, 0, 0
+7, Thanks Gorgeous, 0, 0
+7, Pallaton, 0, 0
+7, Caddington, 11.00, 11.00, fk_open 11.00
+7, Semantics, 14.00, 14.00, fk_open 15.50
+7, Cavill Avenue, 51.00, 51.00, fk_open 51.00
+7, Nishioka, 17.00, 17.00, fk_open 17.50
+7, Angels Fury, 17.00, 17.00, fk_open 17.50
+7, Affari, 6.50, 6.50, fk_open 6.25
+7, Natural Fling, 4.00, 4.00, fk_open 3.20
+7, Ciaron's Star, 8.50, 8.50, fk_open 9.75
+7, Chayan, SCR
+7, Sequinned, 7.00, 7.00, fk_open 8.00
+7, Rubi's Choice, 67.00, 67.00, fk_open 61.00
+7, Aroused, 7.50, 7.50, fk_open 8.75
+7, Almost An Angel, 101.00, 101.00, fk_open 101.00
+7, Calamari Ring, 21.00, 21.00, fk_open 34.00
+7, Lady Catalina, 41.00, 41.00, fk_open 34.00
+8, Jimmysstar, 4.80, 4.80, fk_open 4.47
+8, Desert Lightning, 101.00, 101.00, fk_open 54.33
+8, Pericles, 7.00, 7.00, fk_open 6.50
+8, War Machine, 26.00, 26.00, fk_open 12.33
+8, Splash Back, 20.00, 20.00, fk_open 11.00
+8, Angel Capital, 5.25, 5.25, fk_open 4.20
+8, Shadhavar, 4.80, 4.80, fk_open 7.00
+8, Beiwacht, 3.20, 3.20, fk_open 4.23
+9, Smokin' Romans, 201.00, 201.00, fk_open 101.00
+9, Vauban, 51.00, 51.00, fk_open 41.00
+9, Asterix, 41.00, 41.00, fk_open 34.00
+9, Knight's Choice, 61.00, 61.00, fk_open 26.00
+9, Torranzino, 51.00, 51.00, fk_open 41.00
+9, She's A Hustler, 17.00, 17.00, fk_open 10.00
+9, Kingswood, 3.90, 3.90, fk_open 3.60
+9, Middle Earth, 34.00, 34.00, fk_open 26.00
+9, Juja Kibo, 5.00, 5.00, fk_open 6.00
+9, Small Fry, 2.90, 2.90, fk_open 2.80
+9, Travolta, 7.50, 7.50, fk_open 8.50
+9, Darkbonee, 21.00, 21.00, fk_open 11.00
+9, Strictly Business, 151.00, 151.00, fk_open 101.00
+10, Merrigold, 18.00, 18.00, fk_open 17.00
+10, Betwitchery, 151.00, 151.00, fk_open 91.00
+10, On Display, 23.00, 23.00, fk_open 13.00
+10, Astral Flame, 34.00, 34.00, fk_open 17.00
+10, Bossy Benita, 41.00, 41.00, fk_open 61.00
+10, Superfabulistic, 6.50, 6.50, fk_open 6.50
+10, Terilee, 16.00, 16.00, fk_open 15.00
+10, Cilacap, 27.00, 27.00, fk_open 21.00
+10, Davida, SCR
+10, Concord Connie, 1.75, 1.75, fk_open 2.10
+10, Naraghi, 151.00, 151.00, fk_open 101.00
+10, Russian Choice, 151.00, 151.00, fk_open 101.00
+10, Savitri, 8.00, 8.00, fk_open 5.50
+10, Tomato Toastie, 12.00, 12.00, fk_open 15.00
