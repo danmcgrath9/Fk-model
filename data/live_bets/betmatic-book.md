@@ -1236,3 +1236,8 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
   and Kyneton sheets re-dollared: Dunkeld 142.43u $7,123, Donald 135.80u $6,790, Wangaratta 106.79u $5,341, Kyneton
   128.75u $6,441 if every order fired. The overnight check-ins (every 30 minutes) send all four at $50, Market Open, when a
   bot machine connects; checks to 4:49am found none.
+
+## Sat 14 Nov 7am: Dunkeld at $25 a unit, nowhere else
+- Founder: "$25 units for just dunkeld, no where else". The Dunkeld sheet re-dollared: 142.43u $3,563 if every order
+  fired; it is sent with unit 25. Donald, Wangaratta, Kyneton and every other meeting stay $50 (the send default, the
+  order builder and the pricer are unchanged at $50). Checks to 6:57am: no bot machine connected, nothing sent.
