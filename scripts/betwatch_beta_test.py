@@ -44,8 +44,8 @@ st, ev, lim = api("/events", sport="thoroughbred", country="AU", startFrom=f"{to
 print("\n==== /events today", st, lim)
 evs = ev.get("items", []) if isinstance(ev, dict) else []
 if not evs: print(show(ev, 1500))
-print("first event:", show(evs[0], 1500) if evs else None)
-pick = next((e for e in evs if venue_word in json.dumps(e).lower() and str(e.get("number", e.get("raceNumber", ""))) == str(race_no)), None)
+pick = next((e for e in evs if e.get("name", "").lower().startswith(venue_word) and (e.get("racing") or {}).get("raceNumber") == race_no), None)
+print("venues today:", sorted({e.get("name", "").rsplit(" R", 1)[0] for e in evs}))
 print("\npicked:", show(pick, 800))
 if pick:
     st, od, lim = api("/odds", event=pick["id"], key="win", include="history", limit=200)
@@ -53,3 +53,5 @@ if pick:
     rows = od.get("items", []) if isinstance(od, dict) else []
     print(f"{len(rows)} price rows; sources: {sorted({str(r.get('source', {}).get('id') if isinstance(r.get('source'), dict) else r.get('source')) for r in rows})[:40]}")
     print(show(rows[:2], 3500))
+    tab=[r for r in rows if "tab" in str((r.get("source") or {}).get("id", "")).lower()]
+    print(f"TAB rows: {len(tab)}"); print(show(tab[:1], 3000))
