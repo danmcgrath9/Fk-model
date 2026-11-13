@@ -4884,7 +4884,7 @@ live". Every backtest above reads history; this reads the cards as they were sen
 
 - **Each night** gh topaz nightly prices tomorrow's card as before, and also keeps it in this repository's Actions cache
   (`topaz-cards-`): race, dog, our chance and GRV's pre-race price for every runner (`topaz_price_upcoming.save_card`).
-- **Each morning** (9:41am Melbourne, gh topaz track) the job brings the results (Topaz) and every bookmaker's price
+- **Each afternoon** (2:41pm Melbourne, gh topaz track, once Topaz has yesterday's results) the job brings the results (Topaz) and every bookmaker's price
   history (Betwatch, `BETWATCH_API_KEY`) up to yesterday, and settles every kept card three ways, all at TAB's first
   price:
   1. the card as sent: the bets the card listed, at the card's units;
@@ -4902,5 +4902,47 @@ live". Every backtest above reads history; this reads the cards as they were sen
   is: GRV's values are personal use and Betwatch's are for our own models. Nothing is bet.
 - **The nights before the cards were kept** (6 to 14 Nov) are settled the same way from the sealed cards: the job seals
   that span's market facts (`facts_from`), and `topaz_track.py --local` settles them on a private copy.
+
+### The first eight nights, 6 to 13 Nov (gh topaz track run 43494513933, settled from the sealed cards)
+
+The cards before 14 Nov were never kept in the cache, so the run sealed that span's market facts (`facts_from`:
+329 races, 2,589 runners in TAB's field at its open) and the cards were settled against them on a private copy
+(`topaz_track.py --local`). The 5 Nov card is left out: it predates the rule. Every card race was found in TAB's market
+and the join was checked: venue the same on every race, race number the same on 97% of runners (the rest are the
+"Extra" meetings, numbered apart). The 13 Nov card's five bets wait for Topaz's 13 Nov results. Betfair had not yet
+published November, so there is no BSP yet.
+
+| way of betting | bets | refunded | unsettled | settled | winners | expected at the price taken | A/E | units staked | units won | Kelly ROI | flat ROI | units won at the best first of three |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1. the card as sent, at TAB's first price | 55 | 1 | 5 | 49 | 21 | 19.95 | 1.05 | 121.41 | -19.99 | -16.5% | -4.3% | -18.28 |
+| 2. the card's bets still 1.3x at TAB's first price | 2 | 0 | 0 | 2 | 0 | 0.30 | 0.00 | 8.00 | -8.00 | -100.0% | -100.0% | -8.00 |
+| 3. the rule at TAB's open, blend held 0.54 / 0.67 | 0 | | | | | | | | | | | |
+
+| day | card bets | settled | winners | units won at TAB's first price |
+|---|---|---|---|---|
+| 6 Nov | 10 | 9 | 7 | +7.82 |
+| 7 Nov | 2 | 2 | 1 | +1.14 |
+| 8 Nov | 2 | 2 | 1 | -0.56 |
+| 9 Nov | 11 | 11 | 5 | -4.22 |
+| 10 Nov | 9 | 9 | 2 | -12.94 |
+| 11 Nov | 9 | 9 | 2 | -9.19 |
+| 12 Nov | 7 | 7 | 3 | -2.05 |
+| 13 Nov | 5 | 0 | | |
+
+What it shows:
+
+- **TAB opened every one of the card's 55 bets shorter than GRV's evening price**: median $2.50 against GRV's $6.50,
+  TAB at 45% of GRV's price. Only 7 of the 55 opened at or above even the card's own blended price. The 4 Nov compare
+  (above) found GRV's evening `startPrice` is not the SP but a separate early price that moves a median 72% by the
+  jump; the card picks the dogs that price says are long, and TAB's market does not agree. Over every runner on these
+  cards, log GRV's evening price correlates 0.71 with log TAB's first price; ours, 0.89.
+- **At TAB's first price the bets are about fair, and the stakes are not**: 21 winners against 19.95 expected (A/E
+  1.05), -4.3% flat, but -16.5% at the card's Kelly units, which were sized against GRV's longer price.
+- **Ours held its own against TAB's opening book** on the 291 races where all three priced every runner and the result
+  is in: log loss 1.585 ours (over the card's field), 1.592 TAB's first book, 1.717 GRV's evening price. Eight nights
+  is a small sample; it is the first out-of-sample read of the live model against TAB's open.
+- **The rule at TAB's open made no bet** in the 222 races where every dog in TAB's field at its open was on the card.
+  Test 54's held blend made 99 bets in 22 months since February 2025, about one a week, so none in eight nights is
+  what the backtest expects; it will take months to say anything.
 
 Results go here as they come in.
