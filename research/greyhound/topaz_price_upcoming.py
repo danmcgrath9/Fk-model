@@ -149,6 +149,23 @@ def rule_bets(card: pd.DataFrame) -> tuple:
     return out, list(w)
 
 
+def save_card(card: pd.DataFrame, day: str, w, out_dir: Path) -> Path:
+    """Keep tonight's card for the live tracker (research/greyhound/topaz_track.py): race, dog, our chance and GRV's
+    pre-race price, in the shape topaz_track.cards_from_payload reads from a sealed card. Written to the Actions
+    cache only (GRV's values are personal use; this repository is public)."""
+    rows = []
+    for _, x in card.iterrows():
+        venue, rn = txt(x.get("track_name")) or txt(x.track), txt(x.get("race_number"))
+        rows.append({"day": day, "race_key": f"{day}|{venue}|{rn}", "venue": venue, "race_no": rn,
+                     "start": txt(x.get("start_time")), "box": txt(x.box), "dog_name": txt(x.dog_name),
+                     "p_model": round(float(x.p_model), 6), "grv_price": float(x.grv_price), "w_ours": w[0],
+                     "w_grv": w[1], "race_id": x.race_id})
+    out_dir.mkdir(parents=True, exist_ok=True)
+    f = out_dir / f"card_{day}.csv.gz"
+    pd.DataFrame(rows).to_csv(f, index=False, compression="gzip")
+    return f
+
+
 def num_or_none(v, nd: int = 0):
     """A number for the payload, or None when missing (JSON has no NaN)."""
     if v is None or (isinstance(v, float) and np.isnan(v)):
@@ -377,6 +394,10 @@ def main(d, label):
     payload = card_payload(card, contrib, fam, book, day, n_fit,
                            [t.strip().upper() for t in os.environ.get("PRICE_TRACK", "SANDOWN").split(",") if t.strip()])
     payload["bets"], payload["blend"] = rule_bets(card)
+    keep = os.environ.get("PRICE_CARD_DIR", "").strip()
+    if keep:
+        f = save_card(card, day, payload["blend"], Path(keep))
+        print(f"tonight's card kept for the live tracker (Actions cache only): {f.name}, {len(card)} runners")
     plain = json.dumps(payload, separators=(",", ":")).encode()
     lines, sha = seal(plain)
     print(f"tonight's card is sealed (GRV's values are personal use and this log is public): {len(payload['races'])} races "

@@ -4876,3 +4876,31 @@ refitting for two hours.
   - the ratio from 1.1 to 1.5 at both blends (a real edge should grow with the ratio);
   - closing-line value at the held blend;
   - how sensitive the result is to the two weights.
+
+## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
+
+Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
+live". Every backtest above reads history; this reads the cards as they were sent.
+
+- **Each night** gh topaz nightly prices tomorrow's card as before, and also keeps it in this repository's Actions cache
+  (`topaz-cards-`): race, dog, our chance and GRV's pre-race price for every runner (`topaz_price_upcoming.save_card`).
+- **Each morning** (9:41am Melbourne, gh topaz track) the job brings the results (Topaz) and every bookmaker's price
+  history (Betwatch, `BETWATCH_API_KEY`) up to yesterday, and settles every kept card three ways, all at TAB's first
+  price:
+  1. the card as sent: the bets the card listed, at the card's units;
+  2. the same bets, only where TAB's first price was still at least 1.3x the card's blended price;
+  3. the rule at TAB's open (Tests 51 and 54): ours over the field at TAB's first price, blended with TAB's book there,
+     held at 0.54 ours / 0.67 TAB; a bet at 1.3x, $2 to $15, Kelly units. A race counts only when every dog in TAB's
+     field at its open is on the card.
+- **Settling** is the backtests' rule: TAB's first price less TAB's deduction for the dogs scratched after it
+  (`topaz_round33.field_rows`). A bet on a dog scratched after the bet is a refund; a card bet on a dog scratched before
+  TAB opened is void. A race with a winner settles every dog in it (a dog that fell lost). The best first price of
+  three and Betfair's BSP (once Betfair publishes the month) ride along: BSP under the price paid means the bet beat
+  the closing market.
+- **What is public.** The run's summary carries counts and units only: bets, voids, refunds, winners against the winners
+  the prices taken expected, units staked and won, by day. The bets themselves (dogs, prices) are sealed, as the card
+  is: GRV's values are personal use and Betwatch's are for our own models. Nothing is bet.
+- **The nights before the cards were kept** (6 to 14 Nov) are settled the same way from the sealed cards: the job seals
+  that span's market facts (`facts_from`), and `topaz_track.py --local` settles them on a private copy.
+
+Results go here as they come in.
