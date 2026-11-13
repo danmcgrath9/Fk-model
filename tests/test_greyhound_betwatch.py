@@ -73,3 +73,33 @@ def test_post_raises_on_a_graphql_error_rather_than_returning_no_races():
             return R()
     with pytest.raises(B.BetwatchError, match="GraphQL"):
         B._post(S(), {})
+
+
+def test_compact_keeps_betfair_ids_trainer_and_driver():
+    r = _race()
+    r["betfairMapping"] = {"win": "1.250", "place": "1.251"}
+    r["runners"][0].update({"betfairId": "777", "trainerName": "A Trainer", "riderName": "A Driver"})
+    c = B.compact(r)
+    assert (c["betfair_win"], c["betfair_place"], c["type"]) == ("1.250", "1.251", "Greyhound")
+    ru = c["runners"][0]
+    assert (ru["betfair_id"], ru["trainer"], ru["rider"]) == ("777", "A Trainer", "A Driver")
+    assert c["runners"][1]["rider"] is None                    # missing fields stay None, never guessed
+
+
+def test_tags_and_locations():
+    assert B.tag(["Greyhound"], ["VIC"]) == "VIC_G"            # the original greyhound files keep their name
+    assert B.tag(["Harness"], B.locations_arg("Australia")) == "AU_H"
+    assert B.locations_arg("vic, nsw") == ["VIC", "NSW"]
+
+
+def test_fetch_day_sends_the_type_and_states(monkeypatch):
+    seen = {}
+
+    def fake_post(session, variables, tries=6):
+        seen.update(variables)
+        return []
+    monkeypatch.setattr(B, "_post", fake_post)
+    B.fetch_day(None, "2026-11-10", ["Harness"], B.AU_STATES)
+    assert seen["types"] == ["Harness"] and seen["locations"] == B.AU_STATES and seen["dateFrom"] == "2026-11-10"
+    B.fetch_day(None, "2026-11-10")
+    assert seen["types"] == ["Greyhound"] and seen["locations"] == ["VIC"]

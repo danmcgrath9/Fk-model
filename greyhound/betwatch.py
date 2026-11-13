@@ -13,6 +13,13 @@ Betwatch (Jamie Watts, founder, email of 13 Nov 2026):
     python -m greyhound.betwatch pull --from 2022-11 --to 2026-11 --dir greyhound/cache/betwatch [--max-minutes N]
         a month file at a time (betwatch_VIC_G_YYYY-MM.json.gz), resumable; a month is redone only if not complete
 
+Harness and thoroughbreds (13 Nov 2026, founder: harness first; Betwatch covers all three codes on one key):
+    python -m greyhound.betwatch probe --type Harness --locations Australia
+    python -m greyhound.betwatch pull --type Harness --locations Australia --dir harness/cache/betwatch ...
+        month files betwatch_AU_H_YYYY-MM.json.gz. Greyhounds stay the default (Victoria), unchanged.
+Each runner also keeps its Betfair selection id, trainer and driver/jockey, and each race its Betfair win and place
+market ids, so a Betwatch race joins straight onto Betfair's files.
+
 Nothing here prints a price, a dog or a time: the Actions log is public. The data lives in this repository's Actions
 cache. Key: BETWATCH_API_KEY (an Actions secret), sent as the X-Api-Key header with an honest client name.
 """
@@ -40,9 +47,10 @@ QUERY = """
 query GetRaces($limit: Int, $offset: Int, $types: [RaceType!], $locations: [String!], $dateFrom: String!, $dateTo: String!) {
   races(limit: $limit, offset: $offset, types: $types, locations: $locations, dateFrom: $dateFrom, dateTo: $dateTo) {
     id name number status startTime actualStartTime results distance classConditions trackCondition
+    betfairMapping { win place }
     meeting { id location track type date }
     runners {
-      id name number barrier scratchedTime emergency
+      id name number barrier scratchedTime emergency betfairId trainerName riderName
       bookmakerMarkets(bookmakers: [""], bookmakersWithFlucs: %s) {
         bookmaker fixedWin { price lastUpdated flucs { price lastUpdated } }
       }
@@ -50,6 +58,20 @@ query GetRaces($limit: Int, $offset: Int, $types: [RaceType!], $locations: [Stri
   }
 }
 """ % json.dumps(list(FLUC_BOOKIES))
+
+
+AU_STATES = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]
+
+
+def locations_arg(s: str) -> list[str]:
+    """'Australia' is every state (as Betwatch's own SDK expands it); otherwise a comma-separated list."""
+    return AU_STATES if s.strip().lower() == "australia" else [x.strip().upper() for x in s.split(",") if x.strip()]
+
+
+def tag(types: list[str], locations: list[str]) -> str:
+    """File tag: VIC_G for Victorian greyhounds (the original files), AU_H for every state's harness, and so on."""
+    where = "AU" if sorted(locations) == sorted(AU_STATES) else "-".join(locations)
+    return f"{where}_{''.join(t[0].upper() for t in types)}"
 
 
 class BetwatchError(RuntimeError):
@@ -89,11 +111,11 @@ def _post(session: requests.Session, variables: dict, tries: int = 6) -> list:
     raise BetwatchError(f"gave up after {tries} tries: {err}")
 
 
-def fetch_day(session: requests.Session, day: str) -> list[dict]:
-    """Every Victorian greyhound race on `day` (YYYY-MM-DD), paged."""
+def fetch_day(session: requests.Session, day: str, types=("Greyhound",), locations=("VIC",)) -> list[dict]:
+    """Every race of these types in these states on `day` (YYYY-MM-DD), paged. Default: Victorian greyhounds."""
     races, offset = [], 0
     while True:
-        page = _post(session, {"limit": PAGE, "offset": offset, "types": ["Greyhound"], "locations": ["VIC"],
+        page = _post(session, {"limit": PAGE, "offset": offset, "types": list(types), "locations": list(locations),
                                "dateFrom": day, "dateTo": day})
         races.extend(page)
         if len(page) < PAGE:
@@ -116,7 +138,9 @@ def compact(race: dict) -> dict:
     """The race in the shape we keep: race fields, and per runner each bookmaker's flucs as [price, time] pairs in
     time order (TAB, Sportsbet, Ladbrokes) or its last price only (the rest)."""
     m = race.get("meeting") or {}
+    bf = race.get("betfairMapping") or {}
     out = {"id": race.get("id"), "date": m.get("date"), "track": m.get("track"), "location": m.get("location"),
+           "type": m.get("type"), "betfair_win": bf.get("win"), "betfair_place": bf.get("place"),
            "number": race.get("number"), "name": race.get("name"), "status": race.get("status"),
            "start": race.get("startTime"), "actual_start": race.get("actualStartTime"),
            "distance": race.get("distance"), "results": race.get("results"), "runners": []}
@@ -129,6 +153,8 @@ def compact(race: dict) -> dict:
             books[bm.get("bookmaker")] = {"last": [fw.get("price"), fw.get("lastUpdated")], "flucs": fl}
         out["runners"].append({"id": ru.get("id"), "number": ru.get("number"), "barrier": ru.get("barrier"),
                                "name": ru.get("name"), "scratched": ru.get("scratchedTime"),
+                               "betfair_id": ru.get("betfairId"), "trainer": ru.get("trainerName"),
+                               "rider": ru.get("riderName"),
                                "emergency": ru.get("emergency"), "books": books})
     return out
 
@@ -199,16 +225,16 @@ def _session() -> requests.Session:
     return s
 
 
-def probe(days: list[str]) -> int:
+def probe(days: list[str], types=("Greyhound",), locations=("VIC",)) -> int:
     s = _session()
-    print("# Betwatch probe: Victorian greyhounds, counts only\n")
+    print(f"# Betwatch probe: {', '.join(types)} in {tag(list(types), list(locations))}, counts only\n")
     print("| day | races | tracks | runners | with TAB flucs | TAB flucs a runner (median) | hours from TAB's first "
           "price to the jump (p10 / median / p90) | first TAB price after the jump | bookmakers on 10%+ of runners |\n"
           "|---|---|---|---|---|---|---|---|---|")
     keys_shown = False
     for d in days:
         try:
-            races = fetch_day(s, d)
+            races = fetch_day(s, d, types, locations)
         except BetwatchError as e:
             print(f"| {d} | refused: {str(e)[:150]} | | | | | | | |")
             continue
@@ -218,6 +244,12 @@ def probe(days: list[str]) -> int:
         print(f"| {d} | {c['races']} | {c['tracks']} | {c['runners']} | {c['with_tab_flucs']} | {c['tab_flucs_median']} | "
               f"{hs} | {c['first_tab_after_jump']} | "
               f"{', '.join(c['bookmakers_on_10pct_of_runners'])} |")
+        rs = [compact(r) for r in races]
+        rn = [ru for r in rs for ru in r["runners"] if not ru.get("scratched")]
+        print(f"|  | with a Betfair market id: {sum(1 for r in rs if r.get('betfair_win'))} of {len(rs)} races; "
+              f"runners with a trainer {sum(1 for ru in rn if ru.get('trainer'))}, with a driver/jockey "
+              f"{sum(1 for ru in rn if ru.get('rider'))}, with a Betfair id {sum(1 for ru in rn if ru.get('betfair_id'))}"
+              f" | | | | | | | |")
         if races and not keys_shown:
             ru = (races[0].get("runners") or [{}])[0]
             print(f"\nfield names: race {sorted(races[0])}; runner {sorted(ru)}; market "
@@ -227,15 +259,16 @@ def probe(days: list[str]) -> int:
     return 0
 
 
-def pull(a: str, b: str, out_dir: Path, max_minutes: float) -> int:
+def pull(a: str, b: str, out_dir: Path, max_minutes: float, types=("Greyhound",), locations=("VIC",)) -> int:
     s = _session()
     out_dir.mkdir(parents=True, exist_ok=True)
     t0 = time.monotonic()
     today = datetime.now(ZoneInfo("Australia/Melbourne")).date()
-    print(f"# Betwatch pull {a} to {b}: Victorian greyhounds, counts only\n")
+    tg = tag(list(types), list(locations))
+    print(f"# Betwatch pull {a} to {b}: {', '.join(types)} in {tg}, counts only\n")
     print("| month | days | races | runners | with TAB flucs | status |\n|---|---|---|---|---|---|")
     for mo in months(a, b):
-        f = out_dir / f"betwatch_VIC_G_{mo}.json.gz"
+        f = out_dir / f"betwatch_{tg}_{mo}.json.gz"
         days = month_days(mo, today)
         prior = {}
         if f.exists():
@@ -251,7 +284,7 @@ def pull(a: str, b: str, out_dir: Path, max_minutes: float) -> int:
                 status = "partial: time budget"
                 break
             try:
-                races.extend(compact(r) for r in fetch_day(s, d))
+                races.extend(compact(r) for r in fetch_day(s, d, types, locations))
             except BetwatchError as e:
                 status = f"partial: {str(e)[:120]}"
                 break
@@ -276,10 +309,13 @@ def main(argv=None) -> int:
     p.add_argument("--to", dest="b", default=datetime.now().strftime("%Y-%m"))
     p.add_argument("--dir", default="greyhound/cache/betwatch")
     p.add_argument("--max-minutes", type=float, default=300)
+    p.add_argument("--type", default="Greyhound", help="Greyhound, Harness or Thoroughbred (comma separated for more)")
+    p.add_argument("--locations", default="VIC", help="'Australia' for every state, or e.g. VIC,NSW")
     a = p.parse_args(argv)
+    types, locs = [t.strip() for t in a.type.split(",") if t.strip()], locations_arg(a.locations)
     if a.mode == "probe":
-        return probe(a.days.split(","))
-    return pull(a.a, a.b, Path(a.dir), a.max_minutes)
+        return probe(a.days.split(","), types, locs)
+    return pull(a.a, a.b, Path(a.dir), a.max_minutes, types, locs)
 
 
 if __name__ == "__main__":
