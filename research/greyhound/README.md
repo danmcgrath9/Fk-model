@@ -4877,6 +4877,102 @@ refitting for two hours.
   - closing-line value at the held blend;
   - how sensitive the result is to the two weights.
 
+## Test 55: are the held blend's bets at TAB's open real? (13 Nov 2026, gh topaz run 43471804382, `topaz_round37.py`)
+
+Test 54 found the card's rule, with the blend held at Test 51's weights (0.54 ours, 0.67 TAB), still bets at TAB's first
+price since February 2025 and won; refitted each month the blend moved to about 0.35 ours / 0.88 TAB and stopped
+betting. Five checks on the same field at the bet (32,548 races, 228,695 runners that ran, May 2023 to 12 Nov 2026).
+The saved walk was not read: the data hash had changed since round 36 (a late correction to a day before `WALK_TO`
+changes it), so the walk was refitted (161 minutes) and saved again as `47fecb2b5fac8c3c`. Its bets differ from Test 54's
+by one (98 since February 2025, against 99).
+
+**1. Log loss**, races with nothing scratched after the open where every book prices every runner (lower is better):
+
+| period | races | ours alone | TAB's first book | blend refitted monthly | blend held at 0.54 / 0.67 | BSP |
+|---|---|---|---|---|---|---|
+| to Aug 2023 (open ~22 h out) | 2,386 | 1.5897 | 1.6154 | 1.5729 | 1.5701 | 1.4934 |
+| Sep 2023 to Jan 2025 (open ~9 h out) | 11,151 | 1.5996 | 1.6093 | 1.5762 | 1.5763 | 1.5085 |
+| Feb 2025 on (open ~10.5 h out) | 11,593 | 1.5992 | 1.5913 | 1.5676 | 1.5686 | 1.5065 |
+
+**2. The card's bets (1.3x, TAB's first price): winners against each book's expected winners** (the sum of its chances
+for those dogs; BSP's on the bets that have one):
+
+| period | blend | bets | winners | the price taken | TAB's first book | ours alone | blend refitted | blend held | BSP |
+|---|---|---|---|---|---|---|---|---|---|
+| to Aug 2023 | refitted | 424 | 80 | 56.8 | 43.3 | 110.1 | 83.2 | 69.2 | 87.3 |
+| to Aug 2023 | held | 86 | 21 | 14.6 | 11.1 | 31.3 | 23.6 | 20.0 | 24.8 |
+| Sep 2023 to Jan 2025 | refitted | 292 | 51 | 45.3 | 34.7 | 93.5 | 64.5 | 59.2 | 67.5 (on 290) |
+| Sep 2023 to Jan 2025 | held | 142 | 32 | 24.3 | 19.1 | 53.1 | 35.6 | 33.8 | 38.6 |
+| Feb 2025 on | refitted | 10 | 3 | 1.9 | 1.5 | 4.9 | 2.7 | 3.1 | 3.6 (on 9) |
+| Feb 2025 on | held | 98 | 32 | 19.2 | 14.5 | 41.3 | 23.0 | 26.7 | 27.2 (on 96) |
+
+**3. The ratio, at TAB's first price after TAB's deduction, every race** (the clean-race table is in the run log and
+reads the same way):
+
+| period | blend | ratio | bets | winners | A/E vs the price taken | z | flat ROI | Kelly ROI | units won | months in profit | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| to Aug 2023 | held | 1.1 | 150 | 35 | 1.229 | +1.4 | +55.8% | +84.4% | +97 | 4 of 4 | 86.7% | +0.425 |
+| to Aug 2023 | held | 1.2 | 149 | 35 | 1.247 | +1.5 | +56.8% | +85.2% | +98 | 4 of 4 | 86.6% | +0.427 |
+| to Aug 2023 | held | 1.3 | 86 | 21 | 1.440 | +1.9 | +104.0% | +106.3% | +101 | 4 of 4 | 91.9% | +0.495 |
+| to Aug 2023 | held | 1.5 | 10 | 4 | 4.243 | +3.4 | +634.3% | +477.9% | +72 | 3 of 3 | 90.0% | +0.732 |
+| Sep 2023 to Jan 2025 | held | 1.1 | 246 | 58 | 1.236 | +1.8 | +39.3% | +61.4% | +124 | 11 of 17 | 83.2% | +0.369 |
+| Sep 2023 to Jan 2025 | held | 1.2 | 242 | 57 | 1.235 | +1.8 | +38.5% | +57.3% | +113 | 11 of 17 | 83.3% | +0.372 |
+| Sep 2023 to Jan 2025 | held | 1.3 | 142 | 32 | 1.316 | +1.7 | +40.0% | +64.6% | +111 | 10 of 17 | 85.9% | +0.441 |
+| Sep 2023 to Jan 2025 | held | 1.5 | 17 | 5 | 2.555 | +2.4 | +208.8% | +199.6% | +86 | 5 of 8 | 100.0% | +0.952 |
+| Feb 2025 on | held | 1.1 | 178 | 44 | 1.192 | +1.3 | +4.6% | +43.9% | +67 | 14 of 22 | 58.3% | +0.135 |
+| Feb 2025 on | held | 1.2 | 176 | 44 | 1.205 | +1.4 | +5.8% | +45.2% | +69 | 14 of 22 | 58.6% | +0.137 |
+| Feb 2025 on | held | 1.3 | 98 | 32 | 1.670 | +3.3 | +47.1% | +64.0% | +83 | 16 of 22 | 67.7% | +0.255 |
+| Feb 2025 on | held | 1.5 | 14 | 2 | 0.969 | -0.0 | -12.1% | -21.8% | -7 | 2 of 10 | 78.6% | +0.555 |
+| to Aug 2023 | refitted | 1.3 | 424 | 80 | 1.409 | +3.4 | +64.1% | +78.2% | +445 | 4 of 4 | 76.9% | +0.333 |
+| Sep 2023 to Jan 2025 | refitted | 1.3 | 292 | 51 | 1.126 | +0.9 | +27.3% | +54.8% | +200 | 9 of 15 | 82.8% | +0.359 |
+| Feb 2025 on | refitted | 1.3 | 10 | 3 | 1.580 | +0.9 | +15.1% | +68.2% | +10 | 3 of 9 | 88.9% | +0.760 |
+
+**4. Since February 2025, the held blend's bets (1.3x) month by month**: 98 bets, 32 winners against 19.2 expected at
+the price taken, +47.1% flat, +82.6 Kelly units. Kelly units won by month, Feb 2025 to Nov 2026: +12.0, +2.6, +21.9,
++0.9, -1.8, +5.3, -4.9, +0.5, +6.1, -2.6, +5.6, -2.0, -5.7, +5.2, +15.4, +0.2, +0.7, +3.5, +10.4, +3.2, -7.5, +13.8
+(16 of 22 in profit; the best month, April 2025, is 21.9 of the 82.6). Three to nine bets a month.
+
+**5. Since February 2025, the rule over the two weights** (bets, A/E vs the price taken, flat ROI after the deduction;
+a sensitivity, not a choice):
+
+| ours \ TAB | 0.53 | 0.60 | 0.67 | 0.74 | 0.81 |
+|---|---|---|---|---|---|
+| 0.40 | 119, 1.11, +15% | 40, 0.99, -30% | 20, 1.40, +19% | 13, 1.41, +22% | 8, 1.26, -9% |
+| 0.47 | 147, 1.35, +41% | 70, 1.09, -20% | 42, 1.72, +50% | 32, 1.72, +67% | 27, 1.83, +80% |
+| 0.54 | 225, 1.39, +29% | 135, 1.45, +8% | 98, 1.67, +47% | 89, 1.69, +65% | 85, 1.88, +85% |
+| 0.61 | 314, 1.23, +21% | 238, 1.23, +5% | 197, 1.36, +21% | 198, 1.42, +33% | 208, 1.39, +36% |
+| 0.68 | 473, 1.17, +12% | 412, 1.18, +10% | 367, 1.15, +4% | 363, 1.15, +10% | 386, 1.11, +10% |
+
+What it shows:
+
+- **Neither blend is the better forecaster.** Since February 2025 the refitted blend's log loss is 1.5676 and the held
+  blend's 1.5686; before that they tie or the held one is ahead. So the refit did not stop betting because the held
+  weights forecast worse: both forecast about equally well over the whole field, and the refit's weight on TAB simply
+  leaves no dog 1.3x long. (TAB's first book now beats ours alone, 1.5913 against 1.5992; in both earlier periods ours
+  alone was ahead. Blended, both beat the better of the two alone by 0.017 to 0.024.)
+- **The closing market agrees with the held bets.** On the 96 held bets since February 2025 with a BSP, BSP's own
+  chances add to 27.2 winners where the prices taken add to 19.2: by the closing price these dogs were about 40% likelier
+  to win than TAB's open said. 32 won. The same holds earlier, more strongly (BSP 38.6 against 24.3 taken; 24.8 against
+  14.6), though there fewer won than BSP expected (32 of 38.6, 21 of 24.8). The held blend's own chances (26.7, 33.8,
+  20.0) sit close to BSP's in every period, while ours alone runs far too high on the dogs it picks (41.3, 53.1, 31.3):
+  the blend, not ours alone, is what is calibrated here.
+- **The edge grows with the ratio where the luck cannot reach it.** BSP's lead over the price paid rises with the
+  ratio in every period and at both blends (Feb 2025 on, held: mean log(price paid / BSP) +0.135, +0.137, +0.255,
+  +0.555; BSP under the price paid on 58%, 59%, 68%, 79%). Winners rise with the ratio in both earlier periods; since
+  February 2025 the 1.5x step (14 bets, 2 winners) does not, which 14 bets cannot settle.
+- **It is not one month and not one pair of weights.** 16 of 22 months in profit, the best month a quarter of the total.
+  24 of the 25 weight pairs beat the price taken (A/E 0.99 to 1.88) and 22 are in profit; the weak column is TAB at
+  0.60, and the strongest results sit at ours 0.47 to 0.54 with TAB at 0.67 or more. The refit's own weights (about
+  0.35 / 0.88) sit beyond the grid's corner at ours 0.40 / TAB 0.81, where the bets run out (8).
+
+What it means: the held blend's bets at TAB's open since February 2025 look real by the measure that does not depend
+on who won: the closing market priced them about 40% likelier than the price taken, and that gap widens with the
+ratio. The winners came in above even BSP's expectation since February 2025 (32 against 27.2) and below it before,
+so the profit to expect is the price gap, not the 47% that the last 22 months returned. It bets about once a week.
+The live tracker (below) now records it against TAB's open every day. Next: hold `WALK_TO` a week back so a late
+correction to recent days does not throw the saved walk away; and the card's own list, which is picked against GRV's
+evening price, should give way to a TAB-open threshold for each dog (the tracker's first eight nights, below).
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
