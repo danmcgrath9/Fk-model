@@ -346,7 +346,7 @@ def main():
             if o and sum(st) > 0 and rc in ropen and now_ms - ropen[rc] <= 2 * 3600e3:
                 r0 = next(r for r in rows if r["race"] == rc and r["horse"] == nm)
                 late.append(dict(r0, min_odds="1.01", max_odds="1000.00", stake_units=f"{sum(st):.2f}",
-                                 stake_dollars=f"{sum(st) * 50:.0f}", order="1 of 1", total_if_all_fire=f"{sum(st):.2f}u",
+                                 stake_dollars=f"{sum(st) * 37.5:.0f}", order="1 of 1", total_if_all_fire=f"{sum(st):.2f}u",
                                  note=f"late: the same bet as at the open (${float(o):.2f}), struck at the best price now, "
                                       f"{round((now_ms - ropen[rc]) / 60e3)} min after the open"))
         if late:
