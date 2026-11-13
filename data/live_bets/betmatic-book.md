@@ -1241,3 +1241,13 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - Founder: "$25 units for just dunkeld, no where else". The Dunkeld sheet re-dollared: 142.43u $3,563 if every order
   fired; it is sent with unit 25. Donald, Wangaratta, Kyneton and every other meeting stay $50 (the send default, the
   order builder and the pricer are unchanged at $50). Checks to 6:57am: no bot machine connected, nothing sent.
+
+## Sat 14 Nov Dunkeld in BetMatic ($25 a unit; Donald, Wangaratta and Kyneton removed by the founder)
+- Sent 8:08am (run 43508014313, when=open): 99 orders, $3,563 if all fired. R7 and R8 were already open, so their orders
+  went straight to TAB at 8:11-8:15am and every one was under its minimum (e.g. Rippa Buddy R8 $8.50 against $17.64; Stay
+  Humble R7 $4.40 against $4.94; Foujita San scratched). R1-R6 opened about 8:25am; Boridi R1 scratched (5 orders failed).
+- BetMatic holds 2 bets for the day: Cracked It R2 $126 at TAB $3.30 (min $2.61; status read), and very likely its second
+  order $29 (min $3.26). Everything else opened under its minimum; nothing is still waiting.
+- The page's "bets at the open" box counts Form King's opening price, not TAB's: it showed Rippa Buddy at $18 (BetRight
+  and UpYaGo only); TAB never offered that.
+- The 11:15 pricing routine is on a send hold (founder: "$25 units for just dunkeld, no where else").
