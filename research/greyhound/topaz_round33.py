@@ -92,12 +92,12 @@ def field_rows(r: dict, times=TIMES) -> list:
     return rows
 
 
-def load(d: str) -> pd.DataFrame:
+def load(d: str, times=TIMES) -> pd.DataFrame:
     rows = []
     for f in sorted(Path(d).glob("betwatch_VIC_G_*.json.gz")):
         with gzip.open(f, "rt", encoding="utf-8") as fh:
             for r in json.load(fh).get("races", []):
-                rows.extend(field_rows(r))
+                rows.extend(field_rows(r, times))
     fr = pd.DataFrame(rows)
     if fr.empty:
         return fr
