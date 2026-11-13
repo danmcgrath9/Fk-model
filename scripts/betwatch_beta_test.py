@@ -33,18 +33,16 @@ def show(x, n=1500):
     return json.dumps(x, indent=1)[:n] if not isinstance(x, str) else x[:n]
 
 
-for p in ("limits", "prices"):
-    print(f"==== docs/{p} ====\n" + doc(f"https://beta.betwatch.com/docs/api/{p}/index.md")[:3500] + "\n")
 
 st, src, lim = api("/sources", limit=100)
 print("==== /sources", st, lim)
-items = src.get("data", src) if isinstance(src, dict) else src
-print(show(items, 2500))
+items = src.get("items", []) if isinstance(src, dict) else []
+print("source ids:", ", ".join(f"{x['id']}({x['kind']})" for x in items))
 
 mel = ZoneInfo("Australia/Melbourne"); today = dt.datetime.now(mel).date()
-st, ev, lim = api("/events", sport="horse", country="AU", startFrom=f"{today}T00:00:00+11:00", startTo=f"{today}T23:59:00+11:00", limit=100)
+st, ev, lim = api("/events", sport="thoroughbred", country="AU", startFrom=f"{today}T00:00:00+11:00", startTo=f"{today}T23:59:00+11:00", limit=100)
 print("\n==== /events today", st, lim)
-evs = ev.get("data", []) if isinstance(ev, dict) else []
+evs = ev.get("items", []) if isinstance(ev, dict) else []
 if not evs: print(show(ev, 1500))
 print("first event:", show(evs[0], 1500) if evs else None)
 pick = next((e for e in evs if venue_word in json.dumps(e).lower() and str(e.get("number", e.get("raceNumber", ""))) == str(race_no)), None)
@@ -52,6 +50,6 @@ print("\npicked:", show(pick, 800))
 if pick:
     st, od, lim = api("/odds", event=pick["id"], key="win", include="history", limit=200)
     print("\n==== /odds win with history", st, lim)
-    rows = od.get("data", []) if isinstance(od, dict) else []
-    print(f"{len(rows)} price rows; sources: {sorted({str(r.get('source', r.get('sourceId'))) for r in rows})[:40]}")
+    rows = od.get("items", []) if isinstance(od, dict) else []
+    print(f"{len(rows)} price rows; sources: {sorted({str(r.get('source', {}).get('id') if isinstance(r.get('source'), dict) else r.get('source')) for r in rows})[:40]}")
     print(show(rows[:2], 3500))
