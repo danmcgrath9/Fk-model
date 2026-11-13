@@ -5,12 +5,13 @@ name: gh topaz track
 # price history (Betwatch) up to yesterday, and settle every card gh topaz nightly kept, as if bet at TAB's first price
 # (research/greyhound/topaz_track.py). This log is public: it carries counts and units only, and the bets themselves
 # (dogs, prices) are sealed, as the card is. Nothing is bet.
-# 9:41am Melbourne (AEDT, UTC+11), off the hour; from April (AEST) an hour earlier. GitHub often starts scheduled runs
-# hours late, which only delays the settling.
+# 2:41pm Melbourne (AEDT, UTC+11), off the hour; from April (AEST) an hour earlier. Not the morning: the Topaz pull
+# serves days up to yesterday by the runner's UTC date, so yesterday's Melbourne results are only there once UTC has
+# reached today (11am Melbourne in AEDT). GitHub often starts scheduled runs hours late, which only delays the settling.
 
 on:
   schedule:
-    - cron: '41 22 * * *'
+    - cron: '41 3 * * *'
   workflow_dispatch:
     inputs:
       track_from:
