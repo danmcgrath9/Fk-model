@@ -4550,3 +4550,110 @@ In version C at 1.3x, BSP is compared with the price paid after TAB's deduction:
   - **More prices at the open.** One bookmaker at a 133% book rarely leaves 1.3x. Round 31 (every rule at TAB's,
     Sportsbet's and Ladbrokes' first prices, after deductions) prices the field that ran. Its market-only rules are
     fair as they stand, and its model rules need the field at the bet (round 34).
+
+## Test 52: every rule at TAB's prices, paid after TAB's deduction (13 Nov 2026, gh topaz run 43414576249, `topaz_round31.py`)
+
+Founder: "Well try all rules", then "Did you apply 6c to every bet?"
+
+**The test.**
+- **The model:** the production model, refitted every 6 months from November 2022 on every race before. Every price is
+  out of sample: nine refits, the last fitted on 103,730 races.
+- **The bench:** 32,981 races with TAB's first and last price on every runner.
+  - Rules are chosen on 1 May 2023 to 12 Jun 2025 (18,979 races).
+  - They are scored once on 13 Jun 2025 to 12 Nov 2026 (14,002 races), with the halves split at 11 Mar 2026.
+- **The prices:** three, all paid after TAB's deduction for the dogs scratched after the price was struck (Test 50's
+  table):
+  - TAB's first price;
+  - TAB's last price before the jump;
+  - the best first price of TAB, Sportsbet and Ladbrokes.
+- **The rules:** 143 segments x price bands x bets, 24,024 rules in all.
+  - The bets are every runner, our top pick, and the price at 1.0, 1.1, 1.2, 1.3, 1.5 or 2.0 times our blended price.
+  - Our blended price is ours blended each month with that price's own book, fitted on the 6 months before.
+
+**What is fair here and what is not.**
+- **The every-runner rules are fair.** They use no model, so the field does not matter.
+- **The rules that use ours are not fair.** Ours priced the field that ran, not the field at the bet. Test 51 shows how
+  far that moves the 1.3x rule: 1,047 bets at -10.7% on the field that ran, against 131 bets at +23.0% on the field at
+  the bet. Round 34 re-runs every rule on the field at the bet.
+
+In 22.1% of bench races a runner was scratched after TAB's open. TAB's deduction in those races was a median 13c in the
+dollar.
+
+**Log loss on the 32,452 bench races where every book prices every runner** (lower is better; ours knew the final field,
+which flatters it):
+
+| book | log loss | less TAB's first book |
+|---|---|---|
+| ours | 1.5761 | -0.0037 |
+| ours blended with TAB's first book | 1.5496 | -0.0302 |
+| ours blended with TAB's last book | 1.4973 | -0.0824 |
+| TAB's first book | 1.5797 | 0 |
+| TAB's last book | 1.5014 | -0.0784 |
+| GRV's SP | 1.5493 | -0.0304 |
+| BSP | 1.4868 | -0.0930 |
+
+**Every runner, $1.50-$100, by bet** (returns after TAB's deduction):
+
+| price | bet | choosing: bets, return | scored 1st half: bets, return | 2nd half: bets, return | scored: bets, A/E vs the price paid, return, z |
+|---|---|---|---|---|---|
+| TAB's first price | every runner | 132,886, -34.0% | 48,076, -36.8% | 48,229, -37.4% | 96,305, 0.770, -37.1%, -54.2 |
+| TAB's first price | our top pick | 17,908, -9.4% | 6,563, -12.2% | 6,665, -12.4% | 13,228, 0.916, -12.3%, -12.3 |
+| TAB's first price | price 1x ours or more | 11,332, +6.3% | 2,603, -12.4% | 2,213, -8.7% | 4,816, 1.109, -10.7%, -5.0 |
+| TAB's first price | price 1.1x ours or more | 5,398, +18.0% | 1,171, -17.8% | 948, -11.9% | 2,119, 1.217, -15.1%, -4.8 |
+| TAB's first price | price 1.2x ours or more | 2,710, +26.9% | 606, -14.1% | 513, -16.7% | 1,119, 1.337, -15.3%, -3.5 |
+| TAB's first price | price 1.3x ours or more | 1,459, +36.5% | 350, -16.9% | 295, -18.5% | 645, 1.479, -17.6%, -3.3 |
+| TAB's first price | price 1.5x ours or more | 519, +62.6% | 138, -8.5% | 114, -38.8% | 252, 1.584, -22.2%, -2.8 |
+| TAB's first price | price 2x ours or more | 69, +149.6% | 22, -16.9% | 14, +22.5% | 36, 2.469, -1.6%, -0.1 |
+| TAB's last price before the jump | every runner | 130,153, -27.3% | 47,159, -28.0% | 47,377, -29.4% | 94,536, 0.802, -28.7%, -31.3 |
+| TAB's last price before the jump | our top pick | 16,970, -14.3% | 6,097, -13.7% | 6,186, -13.3% | 12,283, 0.870, -13.5%, -13.4 |
+| TAB's last price before the jump | price 1x ours or more | 3, +76.2% | 0 | 0 | 0 |
+| best first price of the three | every runner | 132,941, -30.3% | 48,025, -34.2% | 48,185, -34.7% | 96,210, 0.801, -34.5%, -47.4 |
+| best first price of the three | our top pick | 18,147, -5.2% | 6,625, -9.7% | 6,723, -10.0% | 13,348, 0.944, -9.8%, -9.6 |
+| best first price of the three | price 1x ours or more | 16,990, +0.8% | 3,660, -11.6% | 3,262, -11.4% | 6,922, 1.052, -11.6%, -4.2 |
+| best first price of the three | price 1.1x ours or more | 8,643, +10.7% | 1,606, -12.9% | 1,356, -8.0% | 2,962, 1.155, -10.7%, -2.0 |
+| best first price of the three | price 1.2x ours or more | 4,454, +22.2% | 816, -19.3% | 711, -8.4% | 1,527, 1.263, -14.2%, -2.3 |
+| best first price of the three | price 1.3x ours or more | 2,454, +34.6% | 460, -16.7% | 411, -5.2% | 871, 1.402, -11.3%, -1.2 |
+| best first price of the three | price 1.5x ours or more | 924, +53.1% | 182, +6.5% | 154, -22.1% | 336, 1.646, -6.6%, -0.5 |
+| best first price of the three | price 2x ours or more | 159, +155.6% | 34, +5.7% | 23, +57.2% | 57, 2.528, +26.5%, +0.6 |
+
+At TAB's last price the 1.1x to 2x rules made no bets at all, in any year. By the jump our blend is TAB's book, so
+TAB's price is never above our price.
+
+**Chosen on the first years, scored once on the rest.** A rule is chosen when it had 300 or more bets and a profit in
+the choosing years:
+
+| price | rules with 300+ bets | chosen | chosen, profit in the scored years | chosen, profit in both halves | chosen, z >= 2 in the scored years | z >= 2 expected by luck |
+|---|---|---|---|---|---|---|
+| TAB's first price | 1,579 | 353 | 36 | 11 | 0 | 8.1 |
+| TAB's last price before the jump | 1,162 | 1 | 0 | 0 | 0 | 0.0 |
+| best first price of the three | 1,810 | 496 | 64 | 19 | 0 | 11.4 |
+
+**Re-chosen every month** on the 12 months before (150 or more bets and a profit there), then bet:
+
+| price | rules chosen a month | half | bets | winners | A/E vs the price paid | return | units | months in profit |
+|---|---|---|---|---|---|---|---|---|
+| TAB's first price | 22-69 | 1st | 3,214 | 1,055 | 0.999 | -15.7% | -505 | 1 of 10 |
+| TAB's first price | 22-69 | 2nd | 2,698 | 979 | 1.022 | -6.7% | -181 | 2 of 9 |
+| TAB's first price | 22-69 | all | 5,912 | 2,034 | 1.010 | -11.6% | -686 | 3 of 18 |
+| TAB's last price before the jump | 10-22 | all | 4,531 | 884 | 0.855 | -27.1% | -1,227 | 1 of 18 |
+| best first price of the three | 62-206 | 1st | 6,444 | 1,999 | 0.969 | -13.5% | -871 | 1 of 10 |
+| best first price of the three | 62-206 | 2nd | 5,161 | 1,605 | 0.944 | -15.2% | -786 | 0 of 9 |
+| best first price of the three | 62-206 | all | 11,605 | 3,604 | 0.958 | -14.3% | -1,657 | 1 of 18 |
+
+**What it means.**
+- **Backing at the open costs about 35c in the dollar.** Every runner at TAB's first price returned -37.1% after the
+  deduction, and the best of three bookmakers -34.5%. TAB's last price costs less, at -28.7%. That is the price of
+  betting blind at the open, and every rule has to beat it.
+- **No rule survives choosing and scoring.** Of the 849 rules chosen at the open (353 at TAB's first price, 496 at the
+  best of three), none reached z 2 in the scored years. Luck alone would give about 19, so the profits in the choosing
+  years were noise.
+- **Re-choosing every month loses too.** It lost 11.6% at TAB's first price and 14.3% at the best of three, with 3 and
+  1 of 18 months in profit.
+- **The model rules here lose, but they are not the honest test.** At 1.3x the choosing years made +36.5% and the
+  scored years -17.6%. These bets sit in races where a dog came out later (Test 50). Round 34 prices the field as it
+  stood at the bet.
+- **A/E above 1 with a loss is the deduction.** The 1.3x rule's winners came in 48% more often than TAB's first price
+  said (A/E 1.479). TAB's deduction then took more than that edge back.
+- **On log loss ours beat TAB's opening book, but only just.** Ours scored 1.5761 against 1.5797, and that is with ours
+  knowing the final field. Blended, the two scored 1.5496, about level with GRV's SP (1.5493). BSP (1.4868) and TAB's
+  last book (1.5014) are well ahead of both. The market learns a lot between the morning and the jump.
