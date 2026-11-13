@@ -16,6 +16,10 @@ THE PRICES, all known when the bet is struck, no commission (a bookmaker's price
   TAB's last price before the jump
   the best first price of TAB, Sportsbet and Ladbrokes (valued against the blend with TAB's first book)
 
+Every return is after TAB's deduction for dogs scratched after the bet (topaz_round32.table_cents: 100c over the
+scratched dog's price then, rounded down, 75c at most), because Test 50 found the rule's value at the open sat mostly in
+races with a scratching after it. The model still prices the field that ran, which a bettor at the open cannot see.
+
 A RULE is a segment x a band of the price taken ($1.50-$3, $3-$5, $5-$8, $8-$15, $15-$40, $40-$100, and $1.50-$100) x a
 bet: every runner (the market alone), our top pick in the race, or the price at least r times ours (r = 1.0, 1.1, 1.2,
 1.3, 1.5, 2.0). The segments are round 29's (box, track, distance, grade, field, Betfair's scheduled start, starts,
@@ -41,12 +45,17 @@ import topaz_round12 as R12       # noqa: E402
 import topaz_round18 as R18       # noqa: E402
 import topaz_round29 as R29       # noqa: E402
 import topaz_round30 as R30       # noqa: E402
+import topaz_round32 as R32       # noqa: E402
+import gbm_v0                     # noqa: E402
 import topaz_v1 as V1             # noqa: E402
 import topaz_walk as W            # noqa: E402
 
 PRICES = {"TAB's first price": ("tab_first", "pb_first"),
           "TAB's last price before the jump": ("tab_last", "pb_last"),
           "best first price of TAB, Sportsbet and Ladbrokes": ("best_first", "pb_first")}
+# TAB's deduction off each price's winnings (topaz_round32: 100c over each dog scratched after the bet, at its price
+# then, 75c at most): scratchings after the market opened for the first prices, after TAB's last change for the last
+DEDUCTION = {"tab_first": "dedt_open", "tab_last": "dedt_last", "best_first": "dedt_open"}
 RATIOS = (1.0, 1.1, 1.2, 1.3, 1.5, 2.0)
 SIGNALS = ("every runner", "our top pick") + tuple(f"price {r:g}x ours or more" for r in RATIOS)
 BANDS = R29.BANDS + [(1.5, 100)]
@@ -87,7 +96,8 @@ def bases(t: pd.DataFrame):
     race = t.race_id.values
     for pname, (pcol, bcol) in PRICES.items():
         price, pb = t[pcol].values.astype(float), t[bcol].values.astype(float)
-        rets[pname] = np.where(t.won.values == 1, price - 1, -1.0)
+        ded = t[DEDUCTION[pcol]].fillna(0).values if DEDUCTION[pcol] in t else np.zeros(len(t))
+        rets[pname] = np.where(t.won.values == 1, (price - 1) * (1 - ded), -1.0)
         top = pd.Series(pb).groupby(race).rank(ascending=False, method="first").values == 1
         sig = {"every runner": np.ones(len(t), bool), "our top pick": top}
         for r in RATIOS:
@@ -138,6 +148,8 @@ def main(d, label):
     df, log = W.walk(df, num, rel, first_pred, t0, every)
     print("Refits: " + "; ".join(f"{m}: {s}" for m, s in log if "priced by" not in s) + "\n")
     df = R30.join_betwatch(df[df.p_a.notna()].copy(), bw)
+    ded = R32.load(bdir)[["date", "_dn", "dedt_open", "dedt_last", "scr_after_open"]]
+    df = df.assign(_dn=gbm_v0.norm_name(df.dog_name)).merge(ded, on=["date", "_dn"], how="left").drop(columns="_dn")
     df["best_first"] = best_first(df)
     df["p_tab_first"], df["p_tab_last"] = R30.book_chance(df, "tab_first"), R30.book_chance(df, "tab_last")
     months = pd.period_range(first_pred + BLEND_MONTHS, df.date.max().to_period("M"), freq="M")
@@ -148,6 +160,9 @@ def main(d, label):
     cut = pd.Timestamp(days[int(len(days) * 0.6)])
     ch, te = t[t.date < cut].reset_index(drop=True), t[t.date >= cut].reset_index(drop=True)
     mid = te.date.quantile(0.5)
+    sc_r = t.drop_duplicates("race_id").scr_after_open
+    print(f"TAB's deductions taken off the winnings: {sc_r.gt(0).mean():.1%} of bench races had a runner scratched "
+          f"after the open; deduction there {t.dedt_open[t.scr_after_open > 0].median():.0%} (median).\n")
     print(f"Bench: {t.race_id.nunique():,} races, {len(t):,} runners with TAB's first and last price on every runner: "
           f"choosing on {ch.date.min():%Y-%m-%d} to {ch.date.max():%Y-%m-%d} ({ch.race_id.nunique():,} races), scored "
           f"once on {te.date.min():%Y-%m-%d} to {te.date.max():%Y-%m-%d} ({te.race_id.nunique():,} races), halves "
