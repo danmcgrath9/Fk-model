@@ -91,3 +91,39 @@ def test_label_weight_halves_races_without_a_bsp_on_every_runner(monkeypatch):
     monkeypatch.setenv("WALK_SP_WEIGHT", "0.5")
     assert list(W.label_weight(df)) == [1, 1, 0.5, 0.5]
     assert list(W.label_weight(df.drop(columns="p_bsp"))) == [1, 1, 1, 1]
+
+
+def test_betwatch_rules_at_tab_prices_equal_to_the_sp_are_the_sp_rule(tmp_path, monkeypatch, capsys):
+    """TAB's first and last prices set to GRV's SP: each Betwatch rule must bet exactly as the rule at the SP."""
+    import gzip
+    import json
+    df = _rule_frame()
+    df["dog_name"] = [f"Dog {r} {i}" for r, i in zip(df.race_id, df.groupby("race_id").cumcount())]
+    first = pd.Period("2025-08", freq="M")
+    W.horse_rule(df, first, "start_price", "p_sp", 0.0, "rule")
+    sp_rows = [ln for ln in capsys.readouterr().out.splitlines() if ln.startswith("| no guard |")]
+    by_month = {}
+    for (dt, rid), g in df.groupby(["date", "race_id"]):
+        start = (dt + pd.Timedelta(hours=8)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        seen = (dt - pd.Timedelta(hours=4)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        by_month.setdefault(dt.strftime("%Y-%m"), []).append({"date": dt.strftime("%Y-%m-%d"), "start": start, "runners": [
+            {"name": n, "scratched": None, "books": {"Tab": {"flucs": [[float(p), seen]]}}}
+            for n, p in zip(g.dog_name, g.start_price)]})
+    for mo, races in by_month.items():
+        with gzip.open(tmp_path / f"betwatch_VIC_G_{mo}.json.gz", "wt") as fh:
+            json.dump({"month": mo, "complete": True, "races": races}, fh)
+    monkeypatch.setenv("BETWATCH_DIR", str(tmp_path))
+    W.betwatch_rules(df, first)
+    out = capsys.readouterr().out
+    assert "TAB's first price on 100.0%" in out
+    tab_rows = [ln for ln in out.splitlines() if ln.startswith("| no guard |")]
+    assert len(tab_rows) == 6 and tab_rows[:3] == sp_rows and tab_rows[3:] == sp_rows
+
+
+def test_betwatch_rules_do_nothing_without_the_files(tmp_path, monkeypatch, capsys):
+    monkeypatch.delenv("BETWATCH_DIR", raising=False)
+    W.betwatch_rules(_rule_frame(), pd.Period("2025-08", freq="M"))
+    assert capsys.readouterr().out == ""
+    monkeypatch.setenv("BETWATCH_DIR", str(tmp_path))
+    W.betwatch_rules(_rule_frame(), pd.Period("2025-08", freq="M"))
+    assert "no month files" in capsys.readouterr().out
