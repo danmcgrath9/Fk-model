@@ -15,7 +15,10 @@ blend of ours with that price's own book, our blended price $2-$15, Kelly x75 ca
      opening book (the bookmakers' deduction table is not in the data, and it is built from the same chance). Kelly
      stakes stay as struck, because the bettor cannot see the scratching coming. In a race with no scratching after the
      bet, the field the model priced is the field that was bet into. Beside it, a flat DEDUCT_CENTS (6 by default) in
-     the dollar off every bet's winnings, as TAB takes a deduction ($21 at 6c pays $19.80), and the larger of the two.
+     the dollar off every bet's winnings, as TAB takes a deduction ($21 at 6c pays $19.80), and the larger of the two;
+     and TAB's own deduction as the founder's records show it (100c over the scratched dog's price, rounded down)
+  4. BSP AGAINST THE PRICE TAKEN and against the price paid after that deduction, by races with and without a
+     scratching after the open (a scratching shortens every dog left in, whoever is right about them)
 """
 import gzip
 import json
@@ -40,6 +43,14 @@ import topaz_walk as W            # noqa: E402
 
 RATIO, BAND = 1.3, (2, 15)
 FLAT_CENTS = float(os.environ.get("DEDUCT_CENTS", "6") or 6)   # founder, 13 Nov 2026: "Did you apply 6c to every bet?"
+MAX_CENTS = 75                    # the most a race's deductions take off the winnings
+
+
+def table_cents(p: float) -> int:
+    """A scratched runner's deduction in cents: 100 / its price at the scratching, rounded down. It matches five of the
+    six TAB deductions in the founder's records (data/live_bets: $12 8c, $14 7c, $16 6c, $26 3c, $34 2c) and gives $17
+    5c where the record says 6c (those records carry the card's price, not the price at the scratching)."""
+    return int(100 // p) if p and p > 1 else 0
 LATER = (5, 30, 60, 120)         # minutes after the market opened
 
 
@@ -83,14 +94,15 @@ def race_rows(r: dict) -> list:
             p = price_at(fl, st) if fl else np.nan
             p = fl[0][0] if fl and np.isnan(p) else p
             priced = bool(p) and not np.isnan(p)
-            scr.append((st, (1 / p) / book if priced else 0.0, priced))
+            scr.append((st, (1 / p) / book if priced else 0.0, priced, table_cents(p) if priced else 0))
     bet_times = {"open": open_t, **{f"{k}m": open_t + 60 * k for k in LATER}}
     race = {}
     for name, bt in bet_times.items():
-        after = [(q, pr) for s, q, pr in scr if s > bt]
+        after = [(q, pr, c) for s, q, pr, c in scr if s > bt]
         race[f"scr_after_{name}"] = len(after)
-        race[f"scr_priced_{name}"] = sum(pr for _, pr in after)
-        race[f"ded_{name}"] = float(sum(q for q, _ in after))
+        race[f"scr_priced_{name}"] = sum(pr for _, pr, _ in after)
+        race[f"ded_{name}"] = float(sum(q for q, _, _ in after))
+        race[f"dedt_{name}"] = min(MAX_CENTS, sum(c for _, _, c in after)) / 100
     rows = []
     for ru, fl in runners:
         if ru.get("scratched"):
@@ -218,6 +230,26 @@ def main(d, label):
     line(f"every bet, {FLAT_CENTS:g}c in the dollar off the winnings", t2, m, o_flat, u, price, h_cut)
     o_both = 1 + (o - 1) * (1 - np.maximum(FLAT_CENTS / 100, t2.ded_open.fillna(0).values))
     line(f"every bet, the larger of {FLAT_CENTS:g}c and the race's own deduction", t2, m, o_both, u, price, h_cut)
+    o_tab = 1 + (o - 1) * (1 - t2.dedt_open.fillna(0).values)
+    line("every race, TAB's deduction (100c / the scratched dog's price, rounded down; 75c at most)", t2, m, o_tab, u,
+         price, h_cut)
+
+    print("\n## 4. Did BSP come in under the price taken? For the rule's bets at TAB's first price\n\n"
+          "| races | half | bets with a BSP | BSP under the price taken | BSP under the price paid after TAB's deduction | "
+          "mean log(price taken / BSP) | mean log(price paid / BSP) | A/E vs BSP |\n|---|---|---|---|---|---|---|---|")
+    paid = 1 + (price - 1) * (1 - t2.dedt_open.fillna(0).values)
+    hb = (t2.date < h_cut).values
+    has = (t2.bsp > 1).values if "bsp" in t2 else np.zeros(len(t2), bool)
+    for rn, rm in (("every race", np.ones(len(t2), bool)), ("no scratching after the open", clean),
+                   ("a scratching after the open", ~clean)):
+        for hn, hm in (("1st", hb), ("2nd", ~hb), ("all", np.ones(len(t2), bool))):
+            x = m & rm & hm & has
+            if not x.any():
+                continue
+            b = t2.bsp.values[x]
+            print(f"| {rn} | {hn} | {x.sum():,} | {(b < price[x]).sum():,} ({(b < price[x]).mean():.1%}) | "
+                  f"{(b < paid[x]).sum():,} ({(b < paid[x]).mean():.1%}) | {np.log(price[x] / b).mean():+.3f} | "
+                  f"{np.log(paid[x] / b).mean():+.3f} | {t2.won.values[x].sum() / (1 / b).sum():.3f} |")
     return 0
 
 
