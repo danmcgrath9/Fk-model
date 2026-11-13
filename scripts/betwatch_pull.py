@@ -24,7 +24,11 @@ KEY = os.environ["BETWATCH_API_KEY"].strip()
 MEL, UTC = ZoneInfo("Australia/Melbourne"), dt.timezone.utc
 d0, d1 = dt.date.fromisoformat(sys.argv[1]), dt.date.fromisoformat(sys.argv[2])
 client = betwatch.connect(api_key=KEY)
-proj = RaceProjection(markets=True, flucs=True, bookmakers=["Tab"])
+# EVERY BOOKMAKER (13 Nov 2026, founder: "I think it gives more than tab?"): the 9am list is bet with every bookie and a
+# missed open is backed at the best price across them, so besides TAB's path each runner carries the best price across
+# all bookmakers over time (best_path: "minutes after best_first_mel:price:bookie;..." at each change of the best price)
+# and each bookmaker's price at 9am race day (bk_0900: "bookie:price;...").
+proj = RaceProjection(markets=True, flucs=True)
 
 
 def ts(x):
@@ -43,7 +47,7 @@ def g(o, *names):
 w = csv.writer(sys.stdout)
 print("CSV-BEGIN")
 w.writerow(["date", "track", "race", "number", "name", "scratched", "tab_first", "tab_first_mel", "tab_0900", "tab_0900_mel",
-            "tab_last", "tab_last_mel", "flucs", "jump_mel", "path"])
+            "tab_last", "tab_last_mel", "flucs", "jump_mel", "path", "best_first_mel", "best_path", "bk_0900"])
 days, races_n, rows_n, fails = 0, 0, 0, []
 d = d0
 while d <= d1:
@@ -62,14 +66,24 @@ while d <= d1:
         meet = g(r, "meeting"); track = g(meet, "track") or ""; num = g(r, "number")
         jump = ts(g(r, "actual_start_time", "_actual_start_time") or g(r, "start_time", "_start_time"))
         for ru in g(r, "runners") or []:
-            fl, last = [], None
+            fl, last, events, at9bk = [], None, [], {}
             for bm in g(ru, "bookmaker_markets") or []:
-                if str(g(bm, "_bookmaker", "bookmaker") or "").lower() != "tab": continue
+                bk = str(g(bm, "_bookmaker", "bookmaker") or "").lower()
                 fw = g(bm, "_fixed_win", "fixed_win")
                 if not fw: continue
-                fl = sorted(((ts(g(f, "_last_updated", "last_updated")), g(f, "price")) for f in (g(fw, "flucs") or [])
-                             if g(f, "price")), key=lambda x: x[0])
-                last = (ts(g(fw, "_last_updated", "last_updated")), g(fw, "price"))
+                bfl = sorted(((ts(g(f, "_last_updated", "last_updated")), g(f, "price")) for f in (g(fw, "flucs") or [])
+                              if g(f, "price") and g(f, "price") > 1), key=lambda x: x[0])
+                events += [(t, bk, pr) for t, pr in bfl]
+                b9 = next((f for f in reversed(bfl) if f[0] <= nine), None)
+                if b9: at9bk[bk] = b9[1]
+                if bk == "tab":
+                    fl = bfl; last = (ts(g(fw, "_last_updated", "last_updated")), g(fw, "price"))
+            events.sort(key=lambda x: x[0]); cur, best_pts, prev = {}, [], None
+            for t, bk, pr in events:
+                cur[bk] = pr; bb = max(cur, key=cur.get)
+                if prev is None or cur[bb] != prev[1]:
+                    best_pts.append((t, cur[bb], bb)); prev = (t, cur[bb])
+            b0 = best_pts[0][0] if best_pts else None
             first = fl[0] if fl else None
             at9 = next((f for f in reversed(fl) if f[0] <= nine), None)
             if last is None and fl: last = fl[-1]
@@ -77,7 +91,9 @@ while d <= d1:
             w.writerow([d, track, num, g(ru, "number"), g(ru, "name"), 1 if g(ru, "scratched_time", "_scratched_time") else 0,
                         first[1] if first else "", m(first[0]) if first else "", at9[1] if at9 else "", m(at9[0]) if at9 else "",
                         last[1] if last else "", m(last[0]) if last and last[0] else "", len(fl), m(jump) if jump else "",
-                        ";".join(f"{(t - first[0]).total_seconds() / 60:.2f}:{pr:g}" for t, pr in fl) if first else ""])
+                        ";".join(f"{(t - first[0]).total_seconds() / 60:.2f}:{pr:g}" for t, pr in fl) if first else "",
+                        m(b0) if b0 else "", ";".join(f"{(t - b0).total_seconds() / 60:.2f}:{pr:g}:{bk}" for t, pr, bk in best_pts),
+                        ";".join(f"{bk}:{pr:g}" for bk, pr in sorted(at9bk.items()))])
             rows_n += 1
     days += 1
     d += dt.timedelta(days=1)
