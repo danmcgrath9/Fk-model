@@ -4762,3 +4762,117 @@ runner in the field at TAB's first price, month by month, against Topaz's record
 - **Next: round 36.** It splits the card's rule by the three periods and prints each month's blend weights. It also
   holds the weights at Test 51's 0.54 / 0.67, which separates "TAB's opening prices moved" from "the monthly blend
   stopped trusting ours".
+
+## Test 54: the card's rule at TAB's open by period, with the blend refitted and held (13 Nov 2026, gh topaz run 43448927681, `topaz_round36.py`)
+
+Founder: "Well keep testing and get better".
+
+**The question.** Round 34 made 723 of the card's bets at TAB's first price from May 2023 to March 2025 and 10 in the
+20 months since. Round 35 found that Betwatch's open has three shapes. Did the bets stop because TAB's opening prices
+moved, or because the blend, refitted each month, stopped trusting ours?
+
+**The test.** This is round 34's walk-forward and field at the bet (32,548 races, 1 May 2023 to 12 Nov 2026, every
+return after TAB's deduction). The card's rule runs two ways:
+- **refitted monthly:** the blend with TAB's book is fitted each month on the 6 months before, as round 34 did;
+- **held:** the blend is held at Test 51's weights, 0.54 ours and 0.67 TAB. Test 51 fitted them on Dec 2023 to Jun
+  2024, so they are out of sample for the period since February 2025 and partly in sample before it. The live card's
+  weights (0.51 / 0.66 with GRV's pre-race price, Test 27) are close to them.
+
+This run also saved the walk-forward prices to the repository's Actions cache, so the next round reads them instead of
+refitting for two hours.
+
+**Month by month, at TAB's first price.** One month in each quarter is shown here; the run log has every month.
+
+| month | races with a scratching after the open | blend weights refitted (ours / TAB) | TAB's first price 1.3x ours alone | 1.3x the refitted blend | card's bets |
+|---|---|---|---|---|---|
+| 2023-05 | 27.0% | 0.68 / 0.37 | 7.78% | 2.59% | 110 |
+| 2023-08 | 25.9% | 0.69 / 0.43 | 7.75% | 1.82% | 89 |
+| 2023-11 | 8.1% | 0.63 / 0.54 | 6.73% | 0.76% | 33 |
+| 2024-02 | 6.0% | 0.62 / 0.53 | 8.10% | 0.71% | 27 |
+| 2024-05 | 6.7% | 0.54 / 0.65 | 8.82% | 0.41% | 16 |
+| 2024-08 | 5.4% | 0.51 / 0.72 | 4.32% | 0.06% | 3 |
+| 2024-11 | 6.8% | 0.48 / 0.78 | 5.05% | 0.00% | 0 |
+| 2025-02 | 24.4% | 0.46 / 0.78 | 4.78% | 0.02% | 1 |
+| 2025-05 | 28.7% | 0.43 / 0.79 | 5.02% | 0.00% | 0 |
+| 2025-08 | 32.2% | 0.39 / 0.83 | 4.42% | 0.00% | 0 |
+| 2025-11 | 34.0% | 0.45 / 0.79 | 5.38% | 0.00% | 0 |
+| 2026-02 | 36.2% | 0.41 / 0.85 | 4.71% | 0.00% | 0 |
+| 2026-05 | 28.6% | 0.34 / 0.90 | 4.90% | 0.02% | 1 |
+| 2026-08 | 26.2% | 0.34 / 0.88 | 5.17% | 0.00% | 0 |
+| 2026-10 | 27.8% | 0.42 / 0.80 | 4.09% | 0.02% | 1 |
+
+**The card's rule by period, after TAB's deduction, on every race:**
+
+| period | price | blend | bets | winners | A/E vs the price taken | flat ROI | Kelly ROI | units won | months in profit |
+|---|---|---|---|---|---|---|---|---|---|
+| to Aug 2023 (open ~22 h out) | TAB's first price | refitted monthly | 446 | 78 | 1.280 | +48.6% | +73.6% | +433 | 4 of 4 |
+| to Aug 2023 (open ~22 h out) | TAB's first price | held at 0.54 / 0.67 | 78 | 17 | 1.250 | +59.9% | +57.3% | +53 | 4 of 4 |
+| to Aug 2023 (open ~22 h out) | best first price of three | refitted monthly | 628 | 107 | 1.288 | +46.3% | +61.6% | +657 | 4 of 4 |
+| to Aug 2023 (open ~22 h out) | best first price of three | held at 0.54 / 0.67 | 184 | 42 | 1.393 | +68.5% | +85.3% | +344 | 3 of 4 |
+| Sep 2023 to Jan 2025 (open ~9 h out) | TAB's first price | refitted monthly | 284 | 54 | 1.214 | +35.4% | +58.3% | +211 | 9 of 15 |
+| Sep 2023 to Jan 2025 (open ~9 h out) | TAB's first price | held at 0.54 / 0.67 | 133 | 30 | 1.332 | +45.2% | +69.7% | +117 | 10 of 17 |
+| Sep 2023 to Jan 2025 (open ~9 h out) | best first price of three | refitted monthly | 622 | 125 | 1.306 | +43.7% | +60.5% | +844 | 15 of 17 |
+| Sep 2023 to Jan 2025 (open ~9 h out) | best first price of three | held at 0.54 / 0.67 | 423 | 94 | 1.409 | +59.0% | +64.6% | +697 | 14 of 17 |
+| Feb 2025 on (open ~10.5 h out) | TAB's first price | refitted monthly | 13 | 5 | 1.910 | +79.9% | +89.6% | +14 | 5 of 10 |
+| Feb 2025 on (open ~10.5 h out) | TAB's first price | held at 0.54 / 0.67 | 99 | 31 | 1.609 | +40.9% | +63.1% | +84 | 16 of 22 |
+| Feb 2025 on (open ~10.5 h out) | best first price of three | refitted monthly | 176 | 23 | 1.022 | +16.1% | +14.9% | +84 | 10 of 21 |
+| Feb 2025 on (open ~10.5 h out) | best first price of three | held at 0.54 / 0.67 | 331 | 62 | 1.208 | +11.8% | +15.0% | +125 | 11 of 22 |
+
+**The same on races with nothing scratched after the open** (there the field at the bet is the field that ran):
+
+| period | price | blend | bets | winners | A/E vs the price taken | flat ROI | Kelly ROI | units won | months in profit |
+|---|---|---|---|---|---|---|---|---|---|
+| to Aug 2023 | TAB's first price | refitted monthly | 360 | 61 | 1.221 | +55.0% | +77.7% | +374 | 4 of 4 |
+| to Aug 2023 | TAB's first price | held | 65 | 12 | 1.012 | +46.6% | +48.7% | +37 | 3 of 4 |
+| to Aug 2023 | best of three | refitted monthly | 510 | 85 | 1.248 | +55.4% | +67.6% | +593 | 4 of 4 |
+| to Aug 2023 | best of three | held | 149 | 30 | 1.199 | +56.9% | +71.5% | +230 | 3 of 4 |
+| Sep 2023 to Jan 2025 | TAB's first price | refitted monthly | 259 | 48 | 1.191 | +36.6% | +63.4% | +208 | 9 of 15 |
+| Sep 2023 to Jan 2025 | TAB's first price | held | 124 | 29 | 1.372 | +50.3% | +76.6% | +122 | 10 of 17 |
+| Sep 2023 to Jan 2025 | best of three | refitted monthly | 570 | 112 | 1.274 | +43.6% | +63.1% | +808 | 14 of 17 |
+| Sep 2023 to Jan 2025 | best of three | held | 393 | 88 | 1.406 | +60.3% | +66.7% | +668 | 14 of 17 |
+| Feb 2025 on | TAB's first price | refitted monthly | 10 | 3 | 1.431 | +62.0% | +62.9% | +8 | 3 of 9 |
+| Feb 2025 on | TAB's first price | held | 79 | 24 | 1.554 | +44.2% | +65.1% | +67 | 13 of 22 |
+| Feb 2025 on | best of three | refitted monthly | 147 | 15 | 0.799 | -8.0% | -6.6% | -31 | 7 of 21 |
+| Feb 2025 on | best of three | held | 272 | 45 | 1.080 | -2.6% | -2.0% | -14 | 8 of 22 |
+
+**BSP against the price paid after TAB's deduction** (the card's rule at TAB's first price, blend refitted monthly):
+
+| period | bets with a BSP | BSP under the price paid | mean log(price paid / BSP) | A/E vs BSP |
+|---|---|---|---|---|
+| to Aug 2023 | 446 | 344 (77.1%) | +0.335 | 0.835 |
+| Sep 2023 to Jan 2025 | 282 | 234 (83.0%) | +0.368 | 0.810 |
+| Feb 2025 on | 12 | 9 (75.0%) | +0.623 | 0.854 |
+
+**What it shows.**
+- **The bets stopped mostly because the blend moved, not the prices.** Refitted each month, the blend's weight on ours
+  fell from 0.68 to about 0.35 and its weight on TAB's opening book rose from 0.37 to about 0.88. TAB's first price
+  sits 1.3x ours alone about a third less often than in 2023 (about 5% of runners against about 7.8%). It sits 1.3x
+  the refitted blend about a hundred times less often (0.02% against 2.6%).
+- **Held at the card's weights, the rule still bets at TAB's open since February 2025, and won.** At TAB's first
+  price it made 99 bets in 22 months, 31 winners against 19.3 expected at the prices taken (A/E 1.61). That is about 3
+  standard deviations, +40.9% flat and +63.1% Kelly after the deduction, with 16 of 22 months in profit. On races with
+  nothing scratched after the open it is 79 bets, A/E 1.55 and +44.2%, so the field-at-bet construction is not what
+  makes it.
+- **This is the honest test for the live card.** The card holds its weights (0.51 / 0.66) and does not refit them
+  monthly. Round 34's "10 bets in 20 months" was the refitted blend, not the card.
+- **The extra bets at the best of three lost.** When the weights are held, the best of three adds 232 bets that only
+  Sportsbet or Ladbrokes priced at 1.3x. Those bets won 31 times and came out about break-even at best (the best-of-three
+  bets include TAB's). A long opening price at TAB carried information that a long opening price at the other two did
+  not.
+- **The prices taken beat BSP by a wide margin.** BSP came in under the price paid on 75-83% of bets, by a mean of 0.34
+  to 0.62 in log terms (prices about 40-85% longer than BSP). That is the closing-line value the opening strategy
+  needs.
+
+**What it means.**
+- **Which blend to trust is now the question.** The refitted blend is the better forecaster over the whole field: it is
+  fitted to log loss, and it says TAB's opening book has become more informative than ours. The held blend's bets are
+  the dogs where ours disagrees with TAB, and they won at A/E 1.6. Both can be true: ours may be worse on average and
+  better on the dogs where the two disagree most. It may also be luck, since 99 bets is a small sample.
+- **Not yet a basis for a stake change.** This is one cell of twelve, picked because it answered the question. It is
+  about 3 standard deviations, on 99 bets.
+- **Next: round 37.** It checks whether the held blend's bets are real, reading the saved walk:
+  - which blend has the lower log loss since February 2025;
+  - what each book said those dogs' chances were against how often they won;
+  - the ratio from 1.1 to 1.5 at both blends (a real edge should grow with the ratio);
+  - closing-line value at the held blend;
+  - how sensitive the result is to the two weights.
