@@ -1230,3 +1230,9 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
   (-$1,020 at $50); since 9 Oct 48 lays, 1 winner, +18.24u; from 13 Nov -20.40u.
 - Back book ($500 a unit): Jarbardar Pakenham R5 BSP $4.69 9th -1.00u (-$500); Geelong none.
 - 9am tracker (27 meetings): blend 9am 6 bets, 3 won, +8.7u. None of Friday's bets went through BetMatic (no bot machine).
+
+## Sat 14 Nov 5am: back to $50 a unit
+- Founder: "$50 units". The send default, the order builder and the pricer are $50 again; the Dunkeld, Donald, Wangaratta
+  and Kyneton sheets re-dollared: Dunkeld 142.43u $7,123, Donald 135.80u $6,790, Wangaratta 106.79u $5,341, Kyneton
+  128.75u $6,441 if every order fired. The overnight check-ins (every 30 minutes) send all four at $50, Market Open, when a
+  bot machine connects; checks to 4:49am found none.
