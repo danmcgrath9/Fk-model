@@ -1,0 +1,100 @@
+label,race,number,horse,min_odds,max_odds,stake,notification_ids,message
+fk-2026-11-14-dunkeld-r1-n1-s1,1,1,Boridi,2.86,3.99,110,14102299,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r1-n1-s2,1,1,Boridi,3.57,3.99,26,14102300,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r1-n1-s3,1,1,Boridi,4.00,14.46,121,14102301,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r1-n1-s4,1,1,Boridi,4.00,14.46,22,14102302,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r1-n1-s5,1,1,Boridi,5.31,14.46,108,14102303,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r1-n4-s1,1,4,Flash Inquiry,13.64,15.01,12,14102304,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r1-n8-s1,1,8,Red Mink,14.38,63.68,20,14102305,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r1-n8-s2,1,8,Red Mink,17.98,63.68,5,14102306,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r2-n4-s1,2,4,Cracked It,2.61,3.99,126,14102307,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r2-n4-s2,2,4,Cracked It,3.26,3.99,29,14102308,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r2-n4-s3,2,4,Cracked It,4.00,13.24,137,14102309,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r2-n4-s4,2,4,Cracked It,4.00,13.24,24,14102310,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r2-n4-s5,2,4,Cracked It,4.86,13.24,90,14102311,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r2-n1-s1,2,1,He's Fierce,15.43,68.10,18,14102312,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r2-n1-s2,2,1,He's Fierce,19.29,68.10,4,14102313,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r2-n6-s1,2,6,Light Filled,6.44,29.68,48,14102314,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r2-n6-s2,2,6,Light Filled,8.05,29.68,10,14102315,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r2-n6-s3,2,6,Light Filled,10.89,29.68,58,14102316,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r2-n3-s1,2,3,Parak,17.89,78.38,16,14102317,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r2-n3-s2,2,3,Parak,22.36,78.38,4,14102318,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r3-n6-s1,3,6,Classy Sassy,6.53,15.01,47,14102319,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r3-n6-s2,3,6,Classy Sassy,8.16,15.01,10,14102320,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r3-n6-s3,3,6,Classy Sassy,11.03,15.01,57,14102321,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r3-n7-s1,3,7,Frosted Amber,6.55,30.15,46,14102322,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r3-n7-s2,3,7,Frosted Amber,8.19,30.15,10,14102323,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r3-n7-s3,3,7,Frosted Amber,11.06,30.15,57,14102324,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r3-n5-s1,3,5,Zephyr's Reward,15.78,69.59,18,14102325,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r3-n5-s2,3,5,Zephyr's Reward,19.72,69.59,4,14102326,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r4-n3-s1,4,3,Beau Strada,5.53,25.66,56,14102327,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r4-n3-s2,4,3,Beau Strada,6.91,25.66,12,14102328,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r4-n3-s3,4,3,Beau Strada,9.41,25.66,69,14102329,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r4-n2-s1,4,2,Caribbean Villa,4.93,23.01,65,14102330,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r4-n2-s2,4,2,Caribbean Villa,6.16,23.01,14,14102331,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r4-n2-s3,4,2,Caribbean Villa,8.44,23.01,79,14102332,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r4-n1-s1,4,1,Fox Man,6.96,31.92,44,14102333,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r4-n1-s2,4,1,Fox Man,8.70,31.92,10,14102334,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r4-n1-s3,4,1,Fox Man,11.71,31.92,53,14102335,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n5-s1,5,5,Abby's Crossword,4.47,15.01,73,14102336,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n5-s2,5,5,Abby's Crossword,5.59,15.01,15,14102337,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n5-s3,5,5,Abby's Crossword,7.69,15.01,88,14102338,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n3-s1,5,3,Drunken Sailor,16.37,72.05,17,14102339,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n3-s2,5,3,Drunken Sailor,20.46,72.05,4,14102340,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n10-s1,5,10,Iliad,9.26,41.90,32,14102341,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n10-s2,5,10,Iliad,11.57,41.90,7,14102342,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n10-s3,5,10,Iliad,15.37,41.90,39,14102343,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n8-s1,5,8,Immortal Justice,17.69,77.55,16,14102344,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n8-s2,5,8,Immortal Justice,22.11,77.55,4,14102345,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n2-s1,5,2,Krasnoludek,13.67,60.71,21,14102346,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n2-s2,5,2,Krasnoludek,17.09,60.71,5,14102347,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n4-s1,5,4,Ponte Arcobaleno,9.94,44.83,29,14102348,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n4-s2,5,4,Ponte Arcobaleno,12.42,44.83,7,14102349,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r5-n4-s3,5,4,Ponte Arcobaleno,16.44,44.83,36,14102350,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r6-n2-s1,6,2,Bazzar,3.90,3.99,74,14102351,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r6-n2-s2,6,2,Bazzar,4.11,15.01,81,14102352,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r6-n2-s3,6,2,Bazzar,5.14,15.01,16,14102353,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r6-n2-s4,6,2,Bazzar,7.11,15.01,97,14102354,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r6-n3-s1,6,3,Iced Poppy,10.34,46.55,28,14102355,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r6-n3-s2,6,3,Iced Poppy,12.93,46.55,7,14102356,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r6-n3-s3,6,3,Iced Poppy,17.08,46.55,35,14102357,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r6-n1-s1,6,1,Synchro,12.71,56.62,22,14102358,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r6-n1-s2,6,1,Synchro,15.89,56.62,6,14102359,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r6-n8-s1,6,8,Tennessee Song,3.41,3.99,88,14102360,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r6-n8-s2,6,8,Tennessee Song,4.00,17.04,96,14102361,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r6-n8-s3,6,8,Tennessee Song,4.50,17.04,18,14102362,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r6-n8-s4,6,8,Tennessee Song,6.25,17.04,114,14102363,Notification has been scheduled.
+fk-2026-11-14-dunkeld-r7-n8-s1,7,8,Dubai Watch,15.67,69.12,18,14102364,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n8-s2,7,8,Dubai Watch,19.59,69.12,4,14102365,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n2-s1,7,2,Foujita San,7.20,32.97,42,14102366,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n2-s2,7,2,Foujita San,9.00,32.97,10,14102367,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n2-s3,7,2,Foujita San,12.09,32.97,52,14102368,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n5-s1,7,5,Gregolimo,11.93,53.32,24,14102369,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n5-s2,7,5,Gregolimo,14.91,53.32,6,14102370,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n6-s1,7,6,Navy King,13.24,58.87,22,14102371,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n6-s2,7,6,Navy King,16.55,58.87,5,14102372,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n3-s1,7,3,New York Hurricane,16.80,73.83,17,14102373,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n3-s2,7,3,New York Hurricane,21.00,73.83,4,14102374,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n10-s1,7,10,Overpriced,9.62,43.46,30,14102375,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n10-s2,7,10,Overpriced,12.02,43.46,7,14102376,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n10-s3,7,10,Overpriced,15.94,43.46,38,14102377,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n7-s1,7,7,Stay Humble,4.94,23.05,65,14102378,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n7-s2,7,7,Stay Humble,6.18,23.05,14,14102379,Notification has been sent.
+fk-2026-11-14-dunkeld-r7-n7-s3,7,7,Stay Humble,8.46,23.05,78,14102380,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n9-s1,8,9,Chateau Dancer,13.28,59.05,22,14102381,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n9-s2,8,9,Chateau Dancer,16.60,59.05,5,14102382,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n8-s1,8,8,Idling Behind,16.63,73.15,17,14102383,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n8-s2,8,8,Idling Behind,20.79,73.15,4,14102384,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n2-s1,8,2,Mannerheim,9.61,43.43,30,14102385,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n2-s2,8,2,Mannerheim,12.01,43.43,7,14102386,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n2-s3,8,2,Mannerheim,15.93,43.43,38,14102387,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n3-s1,8,3,Monsun's Pride,6.67,30.67,46,14102388,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n3-s2,8,3,Monsun's Pride,8.34,30.67,10,14102389,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n3-s3,8,3,Monsun's Pride,11.25,30.67,56,14102390,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n4-s1,8,4,Paltinian,5.95,27.50,52,14102391,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n4-s2,8,4,Paltinian,7.44,27.50,12,14102392,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n4-s3,8,4,Paltinian,10.09,27.50,64,14102393,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n7-s1,8,7,Rippa Buddy,17.64,77.35,16,14102394,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n7-s2,8,7,Rippa Buddy,22.05,77.35,4,14102395,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n5-s1,8,5,Tassadar,11.95,53.40,24,14102396,Notification has been sent.
+fk-2026-11-14-dunkeld-r8-n5-s2,8,5,Tassadar,14.94,53.40,6,14102397,Notification has been sent.
