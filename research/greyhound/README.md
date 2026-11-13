@@ -4338,3 +4338,77 @@ box 2 when slow away) can be logged on paper at no cost.
 Across Tests 39 to 48, everything at BSP gives the same answer. The market alone does not pay: BSP is priced right in
 every slice we can cut, and GRV's SP is far worse. The edge the card has, the 1.3x rule at GRV's SP (Tests 27, 37, 38,
 43, 44), comes from the model's price, and the price it is bet at matters as much as the model. Hence the TAB opens.
+
+## Test 49: the 1.3x rule at TAB's own prices, from Betwatch (13 Nov 2026, gh topaz run 43396526317, `topaz_round30.py`)
+
+Founder, 13 Nov 2026: "we will win long term on opening ... Just have to get that data and then get a strategy".
+
+**The data.** The `gh betwatch` pull (run 43380037426, 132 minutes) fetched every Victorian greyhound race from November
+2022 to 12 November 2026. It holds 49 month files, all complete. A month is about 1,200-1,300 races and 8,500-9,600
+runners, and TAB has price changes on 99-100% of runners in every month. Joined by date and dog name, round 30 reads
+437,489 runners from 7 Nov 2022 to 12 Nov 2026.
+
+**The test.** This is the production model (the weekly train's inputs, the half-weight label, 3,784 rounds by early
+stopping, 168 inputs) on the standard split, scored on the last quarter. The 1.3x rule runs at three prices:
+- GRV's SP, as before;
+- TAB's first recorded price of the day;
+- TAB's last recorded price before the jump.
+
+For each price:
+- **Blend:** ours is blended with that price's own book (normalised per race), fitted on the early-stopping months.
+- **When it bets:** when the price is at least 1.3 times the blended price, with our blended price $2-$15.
+- **Staking:** Kelly x75 on the chance halfway between the blend and that price's chance, cap 4, no commission.
+
+| scored quarter | runners | races | TAB's first price on | races with it on every runner | hours from TAB's first price to the jump (median) | TAB's first book (median) | GRV's SP book (median) |
+|---|---|---|---|---|---|---|---|
+| 10 Jun 2024 to 12 Nov 2026 | 187,531 | 25,731 | 97.6% | 23,072 | 10.0 | 133% | 119% |
+
+The first TAB price is a morning price: about 10 hours before a typical race. The book at that hour is loose, at 133%.
+
+| price (blend: ours / that book) | half | bets | winners | A/E vs that price | flat ROI | units staked | Kelly ROI | units won | worst drawdown | months in profit |
+|---|---|---|---|---|---|---|---|---|---|---|
+| GRV's SP (0.50 / 0.68) | 1st | 785 | 205 | 1.575 | +63.4% | 1,617 | +63.6% | +1,029 | 49 | 15 of 15 |
+| GRV's SP (0.50 / 0.68) | 2nd | 774 | 189 | 1.646 | +72.8% | 1,326 | +80.9% | +1,072 | 37 | 14 of 16 |
+| GRV's SP (0.50 / 0.68) | all | 1,559 | 394 | 1.608 | +68.1% | 2,944 | +71.4% | **+2,101** | 49 | 28 of 30 |
+| TAB's first price (0.55 / 0.67) | 1st | 386 | 103 | 1.498 | +53.2% | 1,142 | +71.5% | +816 | 53 | 13 of 15 |
+| TAB's first price (0.55 / 0.67) | 2nd | 665 | 166 | 1.420 | +39.7% | 2,143 | +45.1% | +967 | 54 | 15 of 16 |
+| TAB's first price (0.55 / 0.67) | all | 1,051 | 269 | 1.449 | **+44.7%** | 3,285 | +54.3% | **+1,784** | 54 | 28 of 30 |
+| TAB's last price before the jump (0.01 / 1.12) | all | 0 | | | | | | | | |
+
+With the drift guard (no dog that drifted 1.3x or more from its shortest Betfair price before the off):
+- **GRV's SP:** 1,001 bets, A/E 1.811, +99.6% flat, +2,005 units.
+- **TAB's first price:** 808 bets, A/E 1.568, +59.3% flat, +1,731 units, 26 of 30 months in profit.
+
+**The guard cannot be used at the open.** It reads the dog's drift up to the off, which is many hours after a bet at
+TAB's first price.
+
+At TAB's last price the blend gives ours a weight of 0.01 against TAB's 1.12, so the rule never bets. By the jump TAB's
+price is as sharp as BSP, where our weight was -0.10 to 0.08 (Test 27) and -0.07 to 0.08 (Test 44).
+
+**Closing-line value.** For the rule's bets, BSP is compared with the price taken:
+
+| bets at | half | bets with a BSP | BSP shorter than the price taken | mean log(price taken / BSP) | A/E vs BSP |
+|---|---|---|---|---|---|
+| GRV's SP | 1st | 782 | 73.3% | +0.390 | 0.963 |
+| GRV's SP | 2nd | 745 | 58.8% | +0.242 | 1.113 |
+| GRV's SP | all | 1,527 | 66.2% | +0.318 | 1.029 |
+| TAB's first price | 1st | 386 | 78.2% | +0.325 | 1.030 |
+| TAB's first price | 2nd | 640 | 78.0% | +0.290 | 1.004 |
+| TAB's first price | all | 1,026 | 78.1% | +0.304 | 1.014 |
+
+**What it means.**
+- **The rule pays at TAB's first price in both halves, on a price that could be bet.** The return is +44.7% flat on
+  1,051 bets and +1,784 Kelly units over 30 months, 28 of them in profit.
+- **The market comes to us.** Four bets in five shorten by the jump, and the price taken is on average about 35% above
+  BSP (exp 0.304). At BSP the same dogs are about fair (A/E 1.014).
+- **This fits Test 41.** The gap between our price and BSP is the late money, and at the open we are ahead of it.
+
+**Not yet known, and each could shrink it:**
+1. **Scratchings after the bet.** At 10 hours out the field is not final. A dog scratched later brings a fixed-odds
+   deduction. Our model also priced the race knowing who actually ran and which boxes were vacant.
+2. **Whether the first price stood.** Betwatch's first price is the first it saw, and TAB may have corrected it within
+   minutes.
+3. **TAB's limits.** Early fixed-odds markets carry small limits, and winning accounts are restricted. No data here
+   can test that.
+
+Round 32 tests the first two.
