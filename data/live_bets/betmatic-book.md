@@ -1251,3 +1251,13 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - The page's "bets at the open" box counts Form King's opening price, not TAB's: it showed Rippa Buddy at $18 (BetRight
   and UpYaGo only); TAB never offered that.
 - The 11:15 pricing routine is on a send hold (founder: "$25 units for just dunkeld, no where else").
+
+## Saturday 14 Nov Dunkeld, Sandown and Yea settled (Form King results, Sun 8:45am)
+- Every bet lost. No-Mercer card (the open, full units): Mr O'Reilly R1 1.86u $7.50 7th, Magna Sententia R5 1.70u $7.17 2nd,
+  Juja Kibo R9 2.06u $6 2nd (Sandown); Cracked It R2 5.05u $2.80 9th, Rippa Buddy R8 0.64u $18 6th (Dunkeld): -11.31u
+  (-$566 at $50). Mercer card (10:10am best prices, same units): -11.31u (-$566 at $50).
+- BetMatic, the real money ($25 a unit): Cracked It R2 $126 and $29 at TAB $3.30, 9th: -$155. Nothing else placed.
+- 9am list (Sandown): Ichnusa R1 $2.40 2nd -$1,429 a bookie; Bred 'em All R6 $3.20 2nd -$909 a bookie: -$2,338 a bookie.
+- Ours/1.6 lay rule: no lay on Saturday (Yea has no Betfair SP); since 9 Oct 48 lays, 1 winner, +18.24u; from 13 Nov -20.40u.
+- Back book ($500 a unit): Geneva Sandown R4 BSP $4.60 3rd -1.00u (-$500); Dunkeld and Yea none.
+- The Dunkeld page's open book shows the two real BetMatic fills (marked REAL) beside the paper rows, sized at $50 a unit.

@@ -1,0 +1,97 @@
+## dunkeld-20261114: 96 entries
+R1 Starseatic               finish 1  SP 6  BSP 8.6
+R1 Flash Inquiry            finish 2  SP 2.25  BSP 2.92
+R1 Gunnah's Conker          finish 3  SP 8.5  BSP 9.55
+R1 Balgownie Miss           finish 4  SP 13  BSP 18.0
+R1 Tricky Miss              finish 5  SP 9.5  BSP 13.63
+R1 Red Mink                 finish 6  SP 3.6  BSP 3.6
+R1 Love Runs Deep           finish 7  SP 61  BSP 120.0
+R1 Ricky Stanicky           finish 8  SP 51  BSP 90.0
+R1 On A Profit              finish None  SP None  BSP None
+R1 Boridi                   finish None  SP None  BSP None
+R2 Light Filled             finish 1  SP 3.3  BSP 3.85
+R2 He's Fierce              finish 2  SP 7  BSP 8.65
+R2 Parak                    finish 3  SP 5.5  BSP 5.9
+R2 Proud Witness            finish 4  SP 26  BSP 48.67
+R2 Inner Thoughts           finish 5  SP 11  BSP 15.0
+R2 Something White          finish 6  SP 51  BSP 91.6
+R2 Te Awam Utu              finish 7  SP 26  BSP 43.01
+R2 Malawi Man               finish 8  SP 61  BSP 113.71
+R2 Cracked It               finish 9  SP 2.6  BSP 2.96
+R2 Floyd's Prediction       finish 10  SP 81  BSP 498.92
+R2 Holler's Vision          finish None  SP None  BSP None
+R2 Baltic                   finish None  SP None  BSP None
+R2 Magica                   finish None  SP None  BSP None
+R2 Sammie Ellen Boy         finish None  SP None  BSP None
+R3 Classy Sassy             finish 1  SP 3.2  BSP 3.61
+R3 Frosted Amber            finish 2  SP 4  BSP 4.4
+R3 Zephyr's Reward          finish 3  SP 8.5  BSP 11.01
+R3 Balsino Prince           finish 4  SP 21  BSP 31.81
+R3 Overthinker              finish 5  SP 3.3  BSP 4.01
+R3 Inthepink                finish 6  SP 16  BSP 25.0
+R3 Highlight Reel           finish 7  SP 17  BSP 22.0
+R3 Five Landings            finish 8  SP 16  BSP 25.0
+R3 Ninetyfiveinafifty       finish None  SP None  BSP None
+R3 Love Dad                 finish None  SP None  BSP None
+R3 Buffo                    finish None  SP None  BSP None
+R3 Crimson Storm            finish None  SP None  BSP None
+R4 Caribbean Villa          finish 1  SP 3  BSP 3.7
+R4 Squazeemoto              finish 2  SP 5  BSP 5.1
+R4 Frose                    finish 3  SP 10  BSP 11.5
+R4 Nudge 'em Along          finish 4  SP 26  BSP 48.0
+R4 Bare To Witness          finish 5  SP 21  BSP 38.0
+R4 Point Of Ecstasy         finish 6  SP 8.5  BSP 12.5
+R4 Fox Man                  finish 7  SP 3.2  BSP 3.45
+R4 Mr Time                  finish 8  SP 41  BSP 90.0
+R4 Monsoon Reins            finish 9  SP 41  BSP 93.16
+R4 Bokeem                   finish 10  SP 19  BSP 30.0
+R4 Beau Strada              finish None  SP None  BSP None
+R5 Abby's Crossword         finish 1  SP 1.75  BSP 1.71
+R5 Sweet But Sassy          finish 2  SP 11  BSP 17.0
+R5 Immortal Justice         finish 3  SP 12  BSP 18.0
+R5 Drunken Sailor           finish 4  SP 11  BSP 17.5
+R5 Simply Excels            finish 5  SP 16  BSP 24.04
+R5 Krasnoludek              finish 6  SP 11  BSP 17.18
+R5 Hidden Comfort           finish 7  SP 13  BSP 21.92
+R5 Iliad                    finish 8  SP 13  BSP 17.5
+R5 I Am Vengeance           finish 9  SP 21  BSP 30.0
+R5 Take The Prize           finish 10  SP 31  BSP 61.59
+R5 Flux                     finish None  SP None  BSP None
+R5 Wild Roses Grow          finish None  SP None  BSP None
+R5 Ponte Arcobaleno         finish None  SP None  BSP None
+R5 Golden Age               finish None  SP None  BSP None
+R6 Iced Poppy               finish 1  SP 3.2  BSP 4.2
+R6 Synchro                  finish 2  SP 7  BSP 9.6
+R6 Tennessee Song           finish 3  SP 1.7  BSP 1.71
+R6 Yoomee Wonder            finish 4  SP 10  BSP 13.42
+R6 Diamond War              finish 5  SP 51  BSP 160.0
+R6 Tango Jewel              finish None  SP None  BSP None
+R6 Packers Journey          finish None  SP None  BSP None
+R6 Eeteedee                 finish None  SP None  BSP None
+R6 Bazzar                   finish None  SP None  BSP None
+R7 Gregolimo                finish 1  SP 9  BSP 9.36
+R7 Switch Hit               finish 2  SP 14  BSP 19.88
+R7 Stay Humble              finish 3  SP 3.7  BSP 4.28
+R7 Dubai Watch              finish 4  SP 6.5  BSP 8.8
+R7 New York Hurricane       finish 5  SP 6.5  BSP 6.6
+R7 Any Luck                 finish 6  SP 21  BSP 42.0
+R7 Flying Basil             finish 7  SP 41  BSP 46.0
+R7 Overpriced               finish 8  SP 10  BSP 14.49
+R7 Scalextrics              finish 9  SP 13  BSP 21.85
+R7 Navy King                finish 10  SP 5  BSP 5.94
+R7 Age Of Kings             finish None  SP None  BSP None
+R7 Foujita San              finish None  SP None  BSP None
+R8 Peyton Jane              finish 1  SP 41  BSP 90.0
+R8 Paltinian                finish 2  SP 3.8  BSP 4.39
+R8 Tassadar                 finish 3  SP 5.5  BSP 6.2
+R8 Chateau Dancer           finish 4  SP 6.5  BSP 7.2
+R8 Mannerheim               finish 5  SP 7.5  BSP 10.6
+R8 Rippa Buddy              finish 6  SP 6.5  BSP 8.8
+R8 Dubai Legend             finish 7  SP 18  BSP 24.0
+R8 Scandoval                finish 8  SP 41  BSP 65.0
+R8 Dirty Robber             finish 9  SP 6.5  BSP 8.2
+R8 Dusty's Deel             finish 10  SP 10  BSP 12.0
+R8 Idling Behind            finish None  SP None  BSP None
+R8 Bellakai                 finish None  SP None  BSP None
+R8 Monsun's Pride           finish None  SP None  BSP None
+R8 Whistler Girl            finish None  SP None  BSP None

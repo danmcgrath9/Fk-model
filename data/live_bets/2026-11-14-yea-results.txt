@@ -1,0 +1,59 @@
+## yea-20261114: 58 entries
+R1 Moonlight Romance        finish 1  SP 3  BSP 0.0
+R1 Eidfjord                 finish 2  SP 4.6  BSP 0.0
+R1 Couldbetracy             finish 3  SP 16  BSP 0.0
+R1 Wallace And Gromit       finish 4  SP 13  BSP 0.0
+R1 Prized Magic             finish 5  SP 9  BSP 0.0
+R1 Opinion Leader           finish 6  SP 9  BSP 0.0
+R1 Western Edge             finish 7  SP 15  BSP 0.0
+R1 Jenni Bam Bam            finish 8  SP 7  BSP 0.0
+R1 Haunted Kynexion         finish 9  SP 21  BSP 0.0
+R1 Jirachi                  finish None  SP None  BSP None
+R2 Crying Cougar            finish 1  SP 3  BSP 0.0
+R2 Duel Missile             finish 2  SP 4.8  BSP 0.0
+R2 Flying D'amore           finish 3  SP 13  BSP 0.0
+R2 Oriental Dane            finish 4  SP 5.5  BSP 0.0
+R2 Tartan Queen             finish 5  SP 8.5  BSP 0.0
+R2 Dissalto                 finish 6  SP 5  BSP 0.0
+R2 Royal Summer             finish 7  SP 21  BSP 0.0
+R2 Kilmister                finish 8  SP 15  BSP 0.0
+R2 First Tosen              finish 9  SP 21  BSP 0.0
+R2 Snow On Her              finish 10  SP 15  BSP 0.0
+R3 Warrandyte Road          finish 1  SP 2  BSP 0.0
+R3 Startin'sumthin'         finish 2  SP 7  BSP 0.0
+R3 Pro Velocity             finish 3  SP 11  BSP 0.0
+R3 Mac Kalhoun              finish 4  SP 4.6  BSP 0.0
+R3 Eight Shout's            finish 5  SP 6.5  BSP 0.0
+R3 Rapido River             finish 6  SP 15  BSP 0.0
+R3 Highly Regarded          finish 7  SP 15  BSP 0.0
+R4 Littlebirdie             finish 1  SP 15  BSP 0.0
+R4 Sacra                    finish 2  SP 21  BSP 0.0
+R4 Midivani                 finish 3  SP 8  BSP 0.0
+R4 Kyokushin                finish 4  SP 8  BSP 0.0
+R4 The Cuban                finish 5  SP 2.5  BSP 0.0
+R4 Annoy'en One             finish 6  SP 6.5  BSP 0.0
+R4 Lika Mosh                finish 7  SP 13  BSP 0.0
+R4 Runway Ruler             finish 8  SP 5  BSP 0.0
+R4 Hillbily Kynection       finish 9  SP 10  BSP 0.0
+R4 Enough War               finish None  SP None  BSP None
+R4 Proprietary              finish None  SP None  BSP None
+R4 Shahin                   finish None  SP None  BSP None
+R4 The Village Fox          finish None  SP None  BSP None
+R4 Belmasai                 finish None  SP None  BSP None
+R5 Redwood Shadow           finish 1  SP 7.5  BSP 0.0
+R5 In Your Hands            finish 2  SP 8.5  BSP 0.0
+R5 Testing The Cugat        finish 3  SP 4  BSP 0.0
+R5 Understated              finish 4  SP 6.5  BSP 0.0
+R5 Eight Under              finish 5  SP 2.8  BSP 0.0
+R5 Blonde Suspect           finish 6  SP 14  BSP 0.0
+R5 Dreamstone               finish 7  SP 8  BSP 0.0
+R5 Lord Chapel              finish 8  SP 21  BSP 0.0
+R5 Scandoval                finish None  SP None  BSP None
+R6 Zephartie                finish 1  SP 4.8  BSP 0.0
+R6 Slippery Thinker         finish 2  SP 4.2  BSP 0.0
+R6 Mallee Maid              finish 3  SP 8  BSP 0.0
+R6 Stella Cantante          finish 4  SP 5.5  BSP 0.0
+R6 Librarchy's Dancer       finish 5  SP 8.5  BSP 0.0
+R6 Second Guess             finish 6  SP 15  BSP 0.0
+R6 These Boots              finish 7  SP 6  BSP 0.0
+R6 Barrett Reef             finish 8  SP 5.5  BSP 0.0
