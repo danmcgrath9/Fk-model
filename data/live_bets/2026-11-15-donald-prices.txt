@@ -1,88 +1,92 @@
-# Donald Sun 15 Nov, official going, final fields; market open in R6; PROVISIONAL: 5 runners without a rider
-1, Mark's Magus, SCR
-1, The Contender, 0, 0
-1, Slick Vixen, SCR
-1, Lady Of Lubeck, 0, 0
-1, Iron Stupa, 0, 0
-1, Sibun, 0, 0
-1, Desmond William, 0, 0
-1, Beast Fighter, 0, 0
-1, Cape Radstock, 0, 0
-1, Ted Percy, 0, 0
-1, Chauhan, 0, 0
-1, Thankful Smile, 0, 0
-1, Interrogate, 0, 0
-1, Genomic, 0, 0
-2, Royal Infantry, 0, 0
-2, Turned Down, 0, 0
-2, Paparazzo, 0, 0
-2, Princess Toro, 0, 0
-2, Boulderoo, 0, 0
-2, Black Aces, 0, 0
-2, Russian Duchess, 0, 0
-3, All Moonlite, 0, 0
-3, Rockin' Dee Fox, 0, 0
-3, Dukey, SCR
-3, Eminent Ella, 0, 0
-3, Alltogethernow, 0, 0
-3, Empress Of China, 0, 0
-3, Aitana, 0, 0
-3, Lord Timo, 0, 0
-3, Efreeti, 0, 0
-3, Ateyate, 0, 0
-3, Ashina, 0, 0
-3, Hot Spirit, 0, 0
-3, Gradivus, 0, 0
-3, Shape The World, 0, 0
-4, Lightning Express, 0, 0
-4, Catani Gardens, 0, 0
-4, Circa, 0, 0
-4, Mozu Marcassin, 0, 0
-4, Kilna, 0, 0
-4, Mickio, 0, 0
-4, Interjection, 0, 0
-4, She's Stargazing, 0, 0
-4, Julep, 0, 0
-5, Boots Off, 0, 0
-5, Flare Of Grace, 0, 0
-5, Bubble Art, 0, 0
-5, Move It, 0, 0
-5, Capital Affair, 0, 0
-5, Baccano, 0, 0
-5, Pinazaki, 0, 0
-5, Masbah, 0, 0
-5, Saint Willo, 0, 0
-5, All Eyes On Erin, 0, 0
-5, Star Kells, 0, 0
-5, Boutin, 0, 0
-5, Neonova, 0, 0
-6, Van Roy, 51.00, 51.00, fk_open 34.00
-6, El Rocko, 4.40, 4.40, fk_open 7.50
-6, Fox Appeal, 31.00, 31.00, fk_open 19.00
-6, Albanian I Am, 51.00, 51.00, fk_open 31.00
-6, Scalextrics, 12.00, 12.00, fk_open 10.00
-6, Bullets High, 7.00, 7.00, fk_open 5.50
-6, Quietness, 8.50, 8.50, fk_open 8.00
-6, El James, 13.00, 13.00, fk_open 12.00
-6, Somewhere, 2.80, 2.80, fk_open 2.30
-6, The Muffin Man, 10.00, 10.00, fk_open 9.50
-6, Grecian Destiny, 19.00, 19.00, fk_open 18.00
-7, Jet Jitsu, 0, 0
-7, Brung King, 0, 0
-7, Alternate, 0, 0
-7, Solar Mist, 0, 0
-7, Switch Hit, 0, 0
-7, Designs Of Eight, 0, 0
-7, Second Fix, 0, 0
-7, Sound Of Jura, 0, 0
-7, Chantra, 0, 0
-7, Panda's Spectrum, 0, 0
-7, Stepify, 0, 0
-7, Town Planner, 0, 0
-8, Flashing Steel, 0, 0
-8, Turn Up The Night, 0, 0
-8, Shalailed, 0, 0
-8, Greatham Boy, 0, 0
-8, Melodee Rose, 0, 0
-8, Racey Casey, 0, 0
-8, Catwalk Icon, 0, 0
+# Donald Sun 15 Nov, official going, final fields; market open in R1,2,3,4,5,6,7,8; PROVISIONAL: 1 runners without a rider
+1, Mark's Magus, 101.00, 101.00, fk_open 100.00
+1, The Contender, 11.00, 11.00, fk_open 13.50
+1, Slick Vixen, 101.00, 101.00, fk_open 100.00
+1, Lady Of Lubeck, 3.20, 3.20, fk_open 6.40
+1, Iron Stupa, 14.00, 14.00, fk_open 16.80
+1, Sibun, 10.00, 10.00, fk_open 10.80
+1, Desmond William, 9.50, 9.50, fk_open 10.80
+1, Beast Fighter, 13.00, 13.00, fk_open 10.80
+1, Cape Radstock, 21.00, 21.00, fk_open 25.70
+1, Lady Courrege, SCR
+1, Ted Percy, 10.00, 10.00, fk_open 11.80
+1, Chauhan, SCR, last 19.00, fk_open 16.80
+1, Todays Edition, SCR
+1, Thankful Smile, 3.20, 3.20, fk_open 3.38
+1, Interrogate, 4.60, 4.60, fk_open 5.90
+1, Genomic, 5.50, 5.50, fk_open 10.80
+2, Royal Infantry, 4.80, 4.80, fk_open 4.00
+2, Turned Down, 8.00, 8.00, fk_open 6.00
+2, Paparazzo, 7.00, 7.00, fk_open 4.00
+2, Princess Toro, 3.80, 3.80, fk_open 6.50
+2, Boulderoo, 7.50, 7.50, fk_open 7.00
+2, Black Aces, 23.00, 23.00, fk_open 13.00
+2, Russian Duchess, 3.50, 3.50, fk_open 3.70
+3, All Moonlite, 5.00, 5.00, fk_open 4.58
+3, Rockin' Dee Fox, 81.00, 81.00, fk_open 83.00
+3, Dukey, 91.00, 91.00, fk_open 82.00
+3, Eminent Ella, 81.00, 81.00, fk_open 62.00
+3, Alltogethernow, 9.00, 9.00, fk_open 8.55
+3, Empress Of China, 31.00, 31.00, fk_open 25.50
+3, Aitana, 61.00, 61.00, fk_open 53.00
+3, Lord Timo, 71.00, 71.00, fk_open 51.00
+3, Efreeti, 5.75, 5.75, fk_open 5.80
+3, Ateyate, 10.00, 10.00, fk_open 9.05
+3, Ashina, 3.70, 3.70, fk_open 3.33
+3, Hot Spirit, 18.00, 18.00, fk_open 17.30
+3, Gradivus, 4.40, 4.40, fk_open 4.00
+3, Shape The World, 91.00, 91.00, fk_open 136.00
+4, Lightning Express, 4.80, 4.80, fk_open 5.00
+4, Catani Gardens, 15.00, 15.00, fk_open 9.00
+4, Circa, 71.00, 71.00, fk_open 41.00
+4, Mozu Marcassin, 9.00, 9.00, fk_open 9.50
+4, Kilna, 15.00, 15.00, fk_open 14.00
+4, Mickio, 4.20, 4.20, fk_open 4.20
+4, Interjection, 6.00, 6.00, fk_open 5.00
+4, She's Stargazing, 4.00, 4.00, fk_open 4.40
+4, Julep, 8.00, 8.00, fk_open 7.00
+5, Boots Off, 6.00, 6.00, fk_open 6.50
+5, Flare Of Grace, 2.90, 2.90, fk_open 2.90
+5, Bubble Art, 34.00, 34.00, fk_open 23.00
+5, Move It, 12.00, 12.00, fk_open 23.00
+5, Capital Affair, SCR
+5, Baccano, SCR
+5, Pinazaki, 2.90, 2.90, fk_open 3.90
+5, Masbah, 19.00, 19.00, fk_open 13.00
+5, Saint Willo, 11.00, 11.00, fk_open 6.50
+5, All Eyes On Erin, 14.00, 14.00, fk_open 13.00
+5, Star Kells, SCR, last 18.00, fk_open 13.00
+5, Boutin, 14.00, 14.00, fk_open 23.00
+5, Neonova, 29.00, 29.00, fk_open 23.00
+6, Van Roy, 23.00, 23.00, fk_open 34.00
+6, El Rocko, SCR, last 4.20, fk_open 7.50
+6, Fox Appeal, 17.00, 17.00, fk_open 19.00
+6, Albanian I Am, SCR, last 41.00, fk_open 31.00
+6, Scalextrics, SCR, last 10.00, fk_open 10.00
+6, Bullets High, 4.60, 4.60, fk_open 5.50
+6, Quietness, 5.50, 5.50, fk_open 8.00
+6, El James, 8.50, 8.50, fk_open 12.00
+6, Somewhere, 2.00, 2.00, fk_open 2.30
+6, The Muffin Man, SCR
+6, Grecian Destiny, 11.00, 11.00, fk_open 18.00
+7, Jet Jitsu, 19.00, 19.00, fk_open 18.90
+7, Brung King, 9.00, 9.00, fk_open 8.15
+7, Alternate, 17.00, 17.00, fk_open 22.40
+7, Solar Mist, 61.00, 61.00, fk_open 78.50
+7, Switch Hit, 5.00, 5.00, fk_open 4.07
+7, Designs Of Eight, 7.50, 7.50, fk_open 6.75
+7, Second Fix, 8.50, 8.50, fk_open 10.50
+7, Sound Of Jura, 13.00, 13.00, fk_open 12.30
+7, Chantra, 9.50, 9.50, fk_open 12.90
+7, Panda's Spectrum, 5.00, 5.00, fk_open 5.70
+7, Stepify, 27.00, 27.00, fk_open 23.80
+7, Town Planner, 3.10, 3.10, fk_open 3.83
+8, Flashing Steel, SCR, last 10.00, fk_open 11.50
+8, Turn Up The Night, 9.50, 9.50, fk_open 17.75
+8, Shalailed, 5.50, 5.50, fk_open 4.80
+8, Greatham Boy, 7.00, 7.00, fk_open 5.45
+8, Melodee Rose, 21.00, 21.00, fk_open 16.75
+8, Racey Casey, 3.40, 3.40, fk_open 3.30
+8, Tennessee Song, SCR
+8, Catwalk Icon, 2.40, 2.40, fk_open 2.49
+8, Bazzar, SCR

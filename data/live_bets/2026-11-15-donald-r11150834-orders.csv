@@ -1,0 +1,114 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-15,Donald,1,,4,Genomic,WIN,9.18,41.56,1.28,64,1 of 3,1.28u,6.93,
+2026-11-15,Donald,1,,4,Genomic,WIN,11.47,41.56,0.30,15,2 of 3,1.58u,6.93,
+2026-11-15,Donald,1,,4,Genomic,WIN,15.24,41.56,1.58,79,3 of 3,3.16u,6.93,opens $15.24+ (2.2x ours): stake doubled
+2026-11-15,Donald,1,,5,Interrogate,WIN,9.18,41.57,1.28,64,1 of 3,1.28u,6.93,
+2026-11-15,Donald,1,,5,Interrogate,WIN,11.47,41.57,0.30,15,2 of 3,1.58u,6.93,
+2026-11-15,Donald,1,,5,Interrogate,WIN,15.25,41.57,1.58,79,3 of 3,3.16u,6.93,opens $15.25+ (2.2x ours): stake doubled
+2026-11-15,Donald,1,,13,Lady Of Lubeck,WIN,8.55,15.01,1.38,69,1 of 3,1.38u,6.48,EARLY: $15 or shorter only
+2026-11-15,Donald,1,,13,Lady Of Lubeck,WIN,10.69,15.01,0.32,16,2 of 3,1.70u,6.48,EARLY: $15 or shorter only
+2026-11-15,Donald,1,,13,Lady Of Lubeck,WIN,14.25,15.01,1.70,85,3 of 3,3.40u,6.48,EARLY: $15 or shorter only; opens $14.25+ (2.2x ours): stake doubled
+2026-11-15,Donald,1,,14,Thankful Smile,WIN,5.01,23.34,2.55,127,1 of 3,2.55u,3.89,
+2026-11-15,Donald,1,,14,Thankful Smile,WIN,6.26,23.34,0.54,27,2 of 3,3.09u,3.89,
+2026-11-15,Donald,1,,14,Thankful Smile,WIN,8.56,23.34,3.09,154,3 of 3,6.18u,3.89,opens $8.56+ (2.2x ours): stake doubled
+2026-11-15,Donald,2,,7,Boulderoo,WIN,7.09,32.49,1.70,85,1 of 3,1.70u,5.41,
+2026-11-15,Donald,2,,7,Boulderoo,WIN,8.86,32.49,0.39,20,2 of 3,2.09u,5.41,
+2026-11-15,Donald,2,,7,Boulderoo,WIN,11.92,32.49,2.09,104,3 of 3,4.18u,5.41,opens $11.92+ (2.2x ours): stake doubled
+2026-11-15,Donald,2,,1,Paparazzo,WIN,8.85,40.15,1.33,66,1 of 3,1.33u,6.69,
+2026-11-15,Donald,2,,1,Paparazzo,WIN,11.06,40.15,0.31,16,2 of 3,1.64u,6.69,
+2026-11-15,Donald,2,,1,Paparazzo,WIN,14.73,40.15,1.64,82,3 of 3,3.28u,6.69,opens $14.73+ (2.2x ours): stake doubled
+2026-11-15,Donald,2,,4,Princess Toro,WIN,7.61,34.79,1.57,78,1 of 3,1.57u,5.80,
+2026-11-15,Donald,2,,4,Princess Toro,WIN,9.51,34.79,0.36,18,2 of 3,1.93u,5.80,
+2026-11-15,Donald,2,,4,Princess Toro,WIN,12.76,34.79,1.93,96,3 of 3,3.86u,5.80,opens $12.76+ (2.2x ours): stake doubled
+2026-11-15,Donald,2,,2,Royal Infantry,WIN,10.32,46.46,1.12,56,1 of 3,1.12u,7.74,
+2026-11-15,Donald,2,,2,Royal Infantry,WIN,12.90,46.46,0.27,14,2 of 3,1.39u,7.74,
+2026-11-15,Donald,2,,2,Royal Infantry,WIN,17.04,46.46,1.39,70,3 of 3,2.78u,7.74,opens $17.04+ (2.2x ours): stake doubled
+2026-11-15,Donald,2,,6,Russian Duchess,WIN,5.65,26.19,2.21,110,1 of 3,2.21u,4.36,
+2026-11-15,Donald,2,,6,Russian Duchess,WIN,7.06,26.19,0.48,24,2 of 3,2.69u,4.36,
+2026-11-15,Donald,2,,6,Russian Duchess,WIN,9.61,26.19,2.69,134,3 of 3,5.38u,4.36,opens $9.61+ (2.2x ours): stake doubled
+2026-11-15,Donald,2,,3,Turned Down,WIN,12.87,57.32,0.89,44,1 of 2,0.89u,9.55,
+2026-11-15,Donald,2,,3,Turned Down,WIN,16.09,57.32,0.21,10,2 of 2,1.10u,9.55,
+2026-11-15,Donald,3,,9,All Moonlite,WIN,9.85,44.42,1.18,59,1 of 3,1.18u,7.40,
+2026-11-15,Donald,3,,9,All Moonlite,WIN,12.31,44.42,0.28,14,2 of 3,1.46u,7.40,
+2026-11-15,Donald,3,,9,All Moonlite,WIN,16.29,44.42,1.46,73,3 of 3,2.92u,7.40,opens $16.29+ (2.2x ours): stake doubled
+2026-11-15,Donald,3,,1,Alltogethernow,WIN,16.24,71.48,0.69,34,1 of 2,0.69u,11.91,
+2026-11-15,Donald,3,,1,Alltogethernow,WIN,20.30,71.48,0.17,8,2 of 2,0.86u,11.91,
+2026-11-15,Donald,3,,10,Ashina,WIN,10.68,47.98,1.08,54,1 of 3,1.08u,8.00,
+2026-11-15,Donald,3,,10,Ashina,WIN,13.35,47.98,0.26,13,2 of 3,1.34u,8.00,
+2026-11-15,Donald,3,,10,Ashina,WIN,17.60,47.98,1.34,67,3 of 3,2.68u,8.00,opens $17.60+ (2.2x ours): stake doubled
+2026-11-15,Donald,3,,2,Ateyate,WIN,15.45,68.18,0.73,36,1 of 2,0.73u,11.36,
+2026-11-15,Donald,3,,2,Ateyate,WIN,19.31,68.18,0.18,9,2 of 2,0.91u,11.36,
+2026-11-15,Donald,3,,3,Efreeti,WIN,5.30,24.65,2.38,119,1 of 3,2.38u,4.11,
+2026-11-15,Donald,3,,3,Efreeti,WIN,6.62,24.65,0.51,26,2 of 3,2.89u,4.11,
+2026-11-15,Donald,3,,3,Efreeti,WIN,9.04,24.65,2.89,144,3 of 3,5.78u,4.11,opens $9.04+ (2.2x ours): stake doubled
+2026-11-15,Donald,3,,12,Empress Of China,WIN,19.90,86.73,0.56,28,1 of 2,0.56u,14.46,
+2026-11-15,Donald,3,,12,Empress Of China,WIN,24.88,86.73,0.14,7,2 of 2,0.70u,14.46,
+2026-11-15,Donald,3,,6,Gradivus,WIN,11.66,52.19,0.98,49,1 of 2,0.98u,8.70,
+2026-11-15,Donald,3,,6,Gradivus,WIN,14.57,52.19,0.24,12,2 of 2,1.22u,8.70,
+2026-11-15,Donald,4,,2,Catani Gardens,WIN,19.74,86.09,0.57,28,1 of 2,0.57u,14.35,
+2026-11-15,Donald,4,,2,Catani Gardens,WIN,24.67,86.09,0.13,6,2 of 2,0.70u,14.35,
+2026-11-15,Donald,4,,1,Interjection,WIN,10.30,46.37,1.13,56,1 of 3,1.13u,7.73,
+2026-11-15,Donald,4,,1,Interjection,WIN,12.88,46.37,0.26,13,2 of 3,1.39u,7.73,
+2026-11-15,Donald,4,,1,Interjection,WIN,17.01,46.37,1.39,70,3 of 3,2.78u,7.73,opens $17.01+ (2.2x ours): stake doubled
+2026-11-15,Donald,4,,8,Julep,WIN,15.16,66.97,0.75,38,1 of 2,0.75u,11.16,
+2026-11-15,Donald,4,,8,Julep,WIN,18.95,66.97,0.18,9,2 of 2,0.93u,11.16,
+2026-11-15,Donald,4,,5,Kilna,WIN,17.90,78.44,0.63,32,1 of 2,0.63u,13.07,
+2026-11-15,Donald,4,,5,Kilna,WIN,22.38,78.44,0.15,8,2 of 2,0.78u,13.07,
+2026-11-15,Donald,4,,3,Lightning Express,WIN,12.33,55.01,0.93,46,1 of 2,0.93u,9.17,
+2026-11-15,Donald,4,,3,Lightning Express,WIN,15.41,55.01,0.22,11,2 of 2,1.15u,9.17,
+2026-11-15,Donald,4,,4,Mickio,WIN,6.36,29.32,1.92,96,1 of 3,1.92u,4.89,
+2026-11-15,Donald,4,,4,Mickio,WIN,7.95,29.32,0.44,22,2 of 3,2.36u,4.89,
+2026-11-15,Donald,4,,4,Mickio,WIN,10.76,29.32,2.36,118,3 of 3,4.72u,4.89,opens $10.76+ (2.2x ours): stake doubled
+2026-11-15,Donald,4,,7,Mozu Marcassin,WIN,13.93,61.78,0.82,41,1 of 2,0.82u,10.30,
+2026-11-15,Donald,4,,7,Mozu Marcassin,WIN,17.41,61.78,0.19,10,2 of 2,1.01u,10.30,
+2026-11-15,Donald,4,,6,She's Stargazing,WIN,6.15,28.38,2.01,100,1 of 3,2.01u,4.73,
+2026-11-15,Donald,4,,6,She's Stargazing,WIN,7.69,28.38,0.44,22,2 of 3,2.45u,4.73,
+2026-11-15,Donald,4,,6,She's Stargazing,WIN,10.41,28.38,2.45,123,3 of 3,4.90u,4.73,opens $10.41+ (2.2x ours): stake doubled
+2026-11-15,Donald,5,,3,Boutin,WIN,16.30,71.75,0.69,34,1 of 2,0.69u,11.96,
+2026-11-15,Donald,5,,3,Boutin,WIN,20.38,71.75,0.17,8,2 of 2,0.86u,11.96,
+2026-11-15,Donald,5,,10,Flare Of Grace,WIN,4.90,15.01,2.61,130,1 of 3,2.61u,3.81,EARLY: $15 or shorter only
+2026-11-15,Donald,5,,10,Flare Of Grace,WIN,6.12,15.01,0.56,28,2 of 3,3.17u,3.81,EARLY: $15 or shorter only
+2026-11-15,Donald,5,,10,Flare Of Grace,WIN,8.39,15.01,3.17,158,3 of 3,6.34u,3.81,EARLY: $15 or shorter only; opens $8.39+ (2.2x ours): stake doubled
+2026-11-15,Donald,5,,5,Pinazaki,WIN,3.58,3.99,3.30,165,1 of 1,3.30u,2.98,opens under $4: edge 1.15
+2026-11-15,Donald,5,,5,Pinazaki,WIN,4.00,17.86,3.59,180,1 of 3,3.59u,2.98,
+2026-11-15,Donald,5,,5,Pinazaki,WIN,4.72,17.86,0.72,36,2 of 3,4.31u,2.98,
+2026-11-15,Donald,5,,5,Pinazaki,WIN,6.56,17.86,4.31,215,3 of 3,8.62u,2.98,opens $6.56+ (2.2x ours): stake doubled
+2026-11-15,Donald,5,,6,Saint Willo,WIN,19.03,83.15,0.59,30,1 of 2,0.59u,13.86,
+2026-11-15,Donald,5,,6,Saint Willo,WIN,23.79,83.15,0.14,7,2 of 2,0.73u,13.86,
+2026-11-15,Donald,6,,5,Bullets High,WIN,6.81,31.28,1.78,89,1 of 3,1.78u,5.21,
+2026-11-15,Donald,6,,5,Bullets High,WIN,8.51,31.28,0.40,20,2 of 3,2.18u,5.21,
+2026-11-15,Donald,6,,5,Bullets High,WIN,11.47,31.28,2.18,109,3 of 3,4.36u,5.21,opens $11.47+ (2.2x ours): stake doubled
+2026-11-15,Donald,6,,4,Somewhere,WIN,2.45,3.99,5.52,276,1 of 2,5.52u,2.08,opens under $4: edge 1.15
+2026-11-15,Donald,6,,4,Somewhere,WIN,3.06,3.99,1.21,60,2 of 2,6.73u,2.08,opens under $4: edge 1.15
+2026-11-15,Donald,6,,4,Somewhere,WIN,4.00,12.48,5.97,298,1 of 3,5.97u,2.08,
+2026-11-15,Donald,6,,4,Somewhere,WIN,4.00,12.48,0.99,50,2 of 3,6.96u,2.08,
+2026-11-15,Donald,6,,4,Somewhere,WIN,4.58,12.48,3.04,152,3 of 3,10.00u,2.08,opens $4.58+ (2.2x ours): stake doubled
+2026-11-15,Donald,7,,1,Brung King,WIN,14.35,63.56,0.79,40,1 of 2,0.79u,10.59,
+2026-11-15,Donald,7,,1,Brung King,WIN,17.94,63.56,0.19,10,2 of 2,0.98u,10.59,
+2026-11-15,Donald,7,,9,Chantra,WIN,20.29,88.38,0.55,28,1 of 2,0.55u,14.73,
+2026-11-15,Donald,7,,9,Chantra,WIN,25.36,88.38,0.13,6,2 of 2,0.68u,14.73,
+2026-11-15,Donald,7,,11,Designs Of Eight,WIN,19.71,85.98,0.57,28,1 of 2,0.57u,14.33,
+2026-11-15,Donald,7,,11,Designs Of Eight,WIN,24.64,85.98,0.13,6,2 of 2,0.70u,14.33,
+2026-11-15,Donald,7,,5,Panda's Spectrum,WIN,19.06,83.27,0.59,30,1 of 2,0.59u,13.88,
+2026-11-15,Donald,7,,5,Panda's Spectrum,WIN,23.82,83.27,0.14,7,2 of 2,0.73u,13.88,
+2026-11-15,Donald,7,,7,Second Fix,WIN,14.86,65.72,0.76,38,1 of 2,0.76u,10.95,
+2026-11-15,Donald,7,,7,Second Fix,WIN,18.57,65.72,0.19,10,2 of 2,0.95u,10.95,
+2026-11-15,Donald,7,,6,Switch Hit,WIN,6.46,29.73,1.89,94,1 of 3,1.89u,4.95,
+2026-11-15,Donald,7,,6,Switch Hit,WIN,8.07,29.73,0.43,22,2 of 3,2.32u,4.95,
+2026-11-15,Donald,7,,6,Switch Hit,WIN,10.91,29.73,2.32,116,3 of 3,4.64u,4.95,opens $10.91+ (2.2x ours): stake doubled
+2026-11-15,Donald,7,,8,Town Planner,WIN,5.65,15.01,2.21,110,1 of 3,2.21u,4.36,EARLY: $15 or shorter only
+2026-11-15,Donald,7,,8,Town Planner,WIN,7.06,15.01,0.48,24,2 of 3,2.69u,4.36,EARLY: $15 or shorter only
+2026-11-15,Donald,7,,8,Town Planner,WIN,9.61,15.01,2.69,134,3 of 3,5.38u,4.36,EARLY: $15 or shorter only; opens $9.61+ (2.2x ours): stake doubled
+2026-11-15,Donald,8,,4,Catwalk Icon,WIN,3.64,3.99,3.22,161,1 of 1,3.22u,3.03,opens under $4: edge 1.15
+2026-11-15,Donald,8,,4,Catwalk Icon,WIN,4.00,18.18,3.51,176,1 of 3,3.51u,3.03,
+2026-11-15,Donald,8,,4,Catwalk Icon,WIN,4.81,18.18,0.71,36,2 of 3,4.22u,3.03,
+2026-11-15,Donald,8,,4,Catwalk Icon,WIN,6.67,18.18,4.22,211,3 of 3,8.44u,3.03,opens $6.67+ (2.2x ours): stake doubled
+2026-11-15,Donald,8,,2,Greatham Boy,WIN,7.65,34.94,1.56,78,1 of 3,1.56u,5.82,
+2026-11-15,Donald,8,,2,Greatham Boy,WIN,9.56,34.94,0.36,18,2 of 3,1.92u,5.82,
+2026-11-15,Donald,8,,2,Greatham Boy,WIN,12.82,34.94,1.92,96,3 of 3,3.84u,5.82,opens $12.82+ (2.2x ours): stake doubled
+2026-11-15,Donald,8,,9,Racey Casey,WIN,3.73,3.99,3.13,156,1 of 1,3.13u,3.10,opens under $4: edge 1.15
+2026-11-15,Donald,8,,9,Racey Casey,WIN,4.00,18.57,3.41,170,1 of 3,3.41u,3.10,
+2026-11-15,Donald,8,,9,Racey Casey,WIN,4.92,18.57,0.70,35,2 of 3,4.11u,3.10,
+2026-11-15,Donald,8,,9,Racey Casey,WIN,6.82,18.57,4.11,206,3 of 3,8.22u,3.10,opens $6.82+ (2.2x ours): stake doubled
+2026-11-15,Donald,8,,3,Shalailed,WIN,17.94,78.62,0.62,31,1 of 2,0.62u,13.10,
+2026-11-15,Donald,8,,3,Shalailed,WIN,22.43,78.62,0.16,8,2 of 2,0.78u,13.10,
