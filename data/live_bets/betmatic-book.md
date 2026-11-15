@@ -1261,3 +1261,12 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - Ours/1.6 lay rule: no lay on Saturday (Yea has no Betfair SP); since 9 Oct 48 lays, 1 winner, +18.24u; from 13 Nov -20.40u.
 - Back book ($500 a unit): Geneva Sandown R4 BSP $4.60 3rd -1.00u (-$500); Dunkeld and Yea none.
 - The Dunkeld page's open book shows the two real BetMatic fills (marked REAL) beside the paper rows, sized at $50 a unit.
+
+## Sunday 15 Nov Donald and Moe settled (Form King results, Mon 8:45am)
+- Every bet lost. No-Mercer card (the open, full units): Genomic Donald R1 1.79u $10.80 7th, Efreeti Donald R3 2.16u $5.80
+  8th, Fridge Monster Moe R4 4.24u $14 4th, Yes Yoshi Moe R5 6.35u $2.60 2nd, Stole Him Moe R9 0.73u $18.50 8th: -15.27u
+  (-$764 at $50). Mercer card (12:35pm best prices; founder dropped Genomic and Fridge Monster): Efreeti $4.40, Yes Yoshi
+  $1.80, Stole Him $12: -9.24u (-$462 at $50).
+- BetMatic: nothing sent (send hold). No 9am list.
+- Ours/1.6 lay rule: no lay on Sunday; since 9 Oct 48 lays, 1 winner, +18.24u; from 13 Nov 6 lays -20.40u.
+- Back book ($500 a unit): Panda's Spectrum Donald R7 BSP $5.53 4th, Nautique Moe R1 BSP $4.18 4th: -2.00u (-$1,000).

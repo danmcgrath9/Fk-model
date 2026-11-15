@@ -1,0 +1,92 @@
+## donald-20261115: 91 entries
+R1 Lady Of Lubeck           finish 1  SP 3.5  BSP 4.4
+R1 Interrogate              finish 2  SP 3.6  BSP 4.4
+R1 Mark's Magus             finish 3  SP 151  BSP 637.97
+R1 Desmond William          finish 4  SP 14  BSP 14.73
+R1 Sibun                    finish 5  SP 5.5  BSP 6.8
+R1 The Contender            finish 6  SP 21  BSP 33.96
+R1 Genomic                  finish 7  SP 6.5  BSP 7.8
+R1 Cape Radstock            finish 8  SP 19  BSP 34.0
+R1 Iron Stupa               finish 9  SP 16  BSP 17.41
+R1 Ted Percy                finish 10  SP 12  BSP 14.5
+R1 Lady Courrege            finish None  SP None  BSP None
+R1 Slick Vixen              finish None  SP None  BSP None
+R1 Beast Fighter            finish None  SP None  BSP None
+R1 Chauhan                  finish None  SP None  BSP None
+R1 Todays Edition           finish None  SP None  BSP None
+R1 Thankful Smile           finish None  SP None  BSP None
+R2 Russian Duchess          finish 1  SP 4.6  BSP 5.04
+R2 Princess Toro            finish 2  SP 2.7  BSP 3.95
+R2 Turned Down              finish 3  SP 5.5  BSP 5.93
+R2 Paparazzo                finish 4  SP 10  BSP 13.28
+R2 Royal Infantry           finish 5  SP 5.5  BSP 7.4
+R2 Boulderoo                finish 6  SP 8.5  BSP 9.2
+R2 Black Aces               finish 7  SP 15  BSP 21.0
+R3 Eminent Ella             finish 1  SP 51  BSP 73.52
+R3 Rockin' Dee Fox          finish 2  SP 101  BSP 220.0
+R3 All Moonlite             finish 3  SP 5  BSP 5.7
+R3 Lord Timo                finish 4  SP 26  BSP 38.0
+R3 Ateyate                  finish 5  SP 11  BSP 14.0
+R3 Gradivus                 finish 6  SP 6  BSP 5.9
+R3 Aitana                   finish 7  SP 31  BSP 46.0
+R3 Efreeti                  finish 8  SP 4.4  BSP 5.56
+R3 Ashina                   finish 9  SP 4.4  BSP 6.0
+R3 Empress Of China         finish 10  SP 19  BSP 27.0
+R3 Alltogethernow           finish 11  SP 13  BSP 18.35
+R3 Hot Spirit               finish 12  SP 12  BSP 13.19
+R3 Shape The World          finish 13  SP 101  BSP 530.0
+R3 Dukey                    finish None  SP None  BSP None
+R4 Interjection             finish 1  SP 8.5  BSP 12.5
+R4 Mickio                   finish 2  SP 4.2  BSP 4.9
+R4 Lightning Express        finish 3  SP 6  BSP 6.0
+R4 Circa                    finish 4  SP 101  BSP 226.43
+R4 Mozu Marcassin           finish 5  SP 7.5  BSP 8.63
+R4 Catani Gardens           finish 6  SP 12  BSP 16.12
+R4 Julep                    finish 7  SP 6  BSP 8.14
+R4 Kilna                    finish 8  SP 18  BSP 25.0
+R4 She's Stargazing         finish 9  SP 3.8  BSP 4.89
+R5 Move It                  finish 1  SP 15  BSP 19.5
+R5 Pinazaki                 finish 1  SP 2.4  BSP 2.71
+R5 Boots Off                finish 3  SP 9.5  BSP 11.81
+R5 Flare Of Grace           finish 4  SP 2.45  BSP 2.94
+R5 All Eyes On Erin         finish 5  SP 9  BSP 11.5
+R5 Masbah                   finish 6  SP 26  BSP 56.27
+R5 Neonova                  finish 7  SP 31  BSP 80.0
+R5 Bubble Art               finish 8  SP 21  BSP 42.0
+R5 Saint Willo              finish None  SP None  BSP None
+R5 Baccano                  finish None  SP None  BSP None
+R5 Star Kells               finish None  SP None  BSP None
+R5 Boutin                   finish None  SP None  BSP None
+R5 Capital Affair           finish None  SP None  BSP None
+R6 Bullets High             finish 1  SP 6  BSP 6.8
+R6 Somewhere                finish 2  SP 1.4  BSP 1.52
+R6 Quietness                finish 3  SP 10  BSP 16.0
+R6 Grecian Destiny          finish 4  SP 16  BSP 27.05
+R6 El James                 finish 5  SP 13  BSP 21.0
+R6 Fox Appeal               finish 6  SP 26  BSP 60.0
+R6 Van Roy                  finish 7  SP 26  BSP 45.17
+R6 Albanian I Am            finish None  SP None  BSP None
+R6 Scalextrics              finish None  SP None  BSP None
+R6 El Rocko                 finish None  SP None  BSP None
+R6 The Muffin Man           finish None  SP None  BSP None
+R7 Brung King               finish 1  SP 5  BSP 5.61
+R7 Town Planner             finish 2  SP 4.6  BSP 6.95
+R7 Designs Of Eight         finish 3  SP 12  BSP 16.5
+R7 Panda's Spectrum         finish 4  SP 5.5  BSP 5.53
+R7 Second Fix               finish 5  SP 8  BSP 10.5
+R7 Chantra                  finish 6  SP 6.5  BSP 7.38
+R7 Sound Of Jura            finish 7  SP 13  BSP 17.95
+R7 Alternate                finish 8  SP 12  BSP 14.88
+R7 Stepify                  finish 9  SP 21  BSP 34.0
+R7 Jet Jitsu                finish 10  SP 19  BSP 33.27
+R7 Solar Mist               finish 11  SP 71  BSP 144.35
+R7 Switch Hit               finish None  SP None  BSP None
+R8 Catwalk Icon             finish 1  SP 1.9  BSP 1.92
+R8 Turn Up The Night        finish 2  SP 10  BSP 14.5
+R8 Racey Casey              finish 3  SP 4  BSP 7.02
+R8 Melodee Rose             finish 4  SP 41  BSP 85.0
+R8 Greatham Boy             finish 5  SP 6.5  BSP 8.21
+R8 Shalailed                finish 6  SP 7  BSP 9.08
+R8 Tennessee Song           finish None  SP None  BSP None
+R8 Flashing Steel           finish None  SP None  BSP None
+R8 Bazzar                   finish None  SP None  BSP None

@@ -1,0 +1,112 @@
+## moe-20261115: 111 entries
+R1 Chantess                 finish 1  SP 4  BSP 4.8
+R1 Verismo                  finish 2  SP 12  BSP 15.5
+R1 Amber Smile              finish 3  SP 11  BSP 13.0
+R1 Nautique                 finish 4  SP 3.4  BSP 4.18
+R1 Doolin                   finish 5  SP 26  BSP 29.18
+R1 Marbles                  finish 6  SP 3.7  BSP 4.5
+R1 Kejayaan                 finish 7  SP 15  BSP 15.0
+R1 Prestige Valley          finish 8  SP 151  BSP 596.71
+R1 Ballsintheair            finish 9  SP 8  BSP 11.5
+R1 Crimson Storm            finish None  SP None  BSP None
+R1 Mistressof Mayfair       finish None  SP None  BSP None
+R1 Boridi                   finish None  SP None  BSP None
+R1 Miss Home Body           finish None  SP None  BSP None
+R2 The Sheriff              finish 1  SP 5.5  BSP 5.3
+R2 Bemm River               finish 2  SP 3  BSP 3.98
+R2 Torzannie                finish 3  SP 151  BSP 323.98
+R2 Zouie                    finish 4  SP 11  BSP 13.0
+R2 Weasel Sea               finish 5  SP 4.8  BSP 5.34
+R2 Wyandra                  finish 6  SP 11  BSP 12.0
+R2 Admire Mercury           finish 7  SP 26  BSP 26.0
+R2 Boss Bundle              finish 8  SP 20  BSP 29.81
+R2 Just Alf                 finish 9  SP 101  BSP 754.53
+R2 Jupiter's Girl           finish 10  SP 151  BSP 241.75
+R2 Fear The Impact          finish 11  SP 5.5  BSP 7.0
+R2 Galagacisco              finish 12  SP 151  BSP 610.0
+R2 Miss Belajo              finish 13  SP 151  BSP 431.12
+R2 Rockbourg                finish None  SP None  BSP None
+R2 Oak Park Mia             finish None  SP None  BSP None
+R2 Imperial Meeting         finish None  SP None  BSP None
+R2 Blue Light Disco         finish None  SP None  BSP None
+R3 Open Fire                finish 1  SP 2.7  BSP 3.2
+R3 Chronic                  finish 2  SP 7  BSP 7.85
+R3 Zeffirelli               finish 3  SP 3.2  BSP 2.96
+R3 Pierrobid                finish 4  SP 8.5  BSP 12.0
+R3 Chiquitipapa             finish 5  SP 15  BSP 23.0
+R3 Levent                   finish 6  SP 11  BSP 14.0
+R3 Always Shining           finish 7  SP 21  BSP 34.0
+R3 Hansard                  finish 8  SP 81  BSP 210.0
+R3 Lacessit                 finish 9  SP 101  BSP 253.37
+R3 The Turk                 finish 10  SP 101  BSP 280.5
+R3 Aces Full                finish 11  SP 151  BSP 682.66
+R3 Mr Myrtlevale            finish 12  SP 51  BSP 85.0
+R3 Motherduck               finish 13  SP 51  BSP 74.36
+R3 Maharani Miss            finish 14  SP 151  BSP 580.0
+R3 Builtthiscity            finish None  SP None  BSP None
+R3 Sir Riverance            finish None  SP None  BSP None
+R3 Gypsy Moon               finish None  SP None  BSP None
+R4 Houdini                  finish 1  SP 7  BSP 8.83
+R4 Feeling Dusty            finish 2  SP 10  BSP 12.63
+R4 Octane Reign             finish 3  SP 16  BSP 19.5
+R4 Fridge Monster           finish 4  SP 4.8  BSP 5.85
+R4 Hedjet                   finish 5  SP 1.7  BSP 1.92
+R4 Red On Red               finish 6  SP 17  BSP 27.0
+R4 Chest Of Gold            finish 7  SP 26  BSP 47.61
+R4 Space Age                finish 8  SP 151  BSP 616.42
+R4 Overpriced               finish None  SP None  BSP None
+R5 Cardi Bee                finish 1  SP 15  BSP 24.0
+R5 Yes Yoshi                finish 2  SP 1.8  BSP 1.88
+R5 Siriusly Bright          finish 3  SP 17  BSP 32.33
+R5 Vail Mountain            finish 4  SP 81  BSP 265.52
+R5 Albany Road              finish 5  SP 4.6  BSP 5.7
+R5 Umgawa                   finish 6  SP 101  BSP 246.44
+R5 Hustle In Heels          finish 7  SP 5.5  BSP 6.4
+R5 King West                finish 8  SP 10  BSP 14.83
+R6 Mckeyla                  finish 1  SP 6  BSP 8.0
+R6 Purple Streak            finish 2  SP 2.3  BSP 2.37
+R6 Teine Aulelei            finish 3  SP 4  BSP 5.61
+R6 Best Of The Best         finish 4  SP 19  BSP 26.07
+R6 Meisho                   finish 5  SP 31  BSP 38.0
+R6 Just Bolts               finish 6  SP 26  BSP 28.07
+R6 Weapon Clear             finish 7  SP 11  BSP 11.16
+R6 Do It Now                finish 8  SP 71  BSP 151.29
+R6 Miss Ole                 finish 9  SP 8  BSP 11.0
+R6 Moonlight Rustler        finish 10  SP 151  BSP 930.0
+R6 Freshen                  finish None  SP None  BSP None
+R6 Diamond Mila             finish None  SP None  BSP None
+R7 Who I Think I Am         finish 1  SP 5.5  BSP 7.9
+R7 Girt By Sea              finish 2  SP 2.9  BSP 3.37
+R7 Pensatore                finish 3  SP 51  BSP 100.0
+R7 Duke Of Clarence         finish 4  SP 16  BSP 20.0
+R7 Aseventy Seven           finish 5  SP 5.5  BSP 5.53
+R7 Real Alliance            finish 6  SP 5.5  BSP 7.0
+R7 Preservator              finish 7  SP 21  BSP 26.0
+R7 Satin Image              finish 8  SP 13  BSP 17.0
+R7 Grand Sage               finish 9  SP 20  BSP 27.0
+R7 Sensational Ruler        finish 10  SP 19  BSP 28.0
+R7 King Of Savoy            finish 11  SP 51  BSP 120.0
+R7 Anything But             finish 12  SP 151  BSP 670.0
+R7 Celestial Option         finish None  SP None  BSP None
+R7 Ashau Valley             finish None  SP None  BSP None
+R8 Bring Forth              finish 1  SP 8.5  BSP 11.0
+R8 Smokin' Romans           finish 2  SP 8.5  BSP 14.4
+R8 Flying Valley            finish 3  SP 7  BSP 8.4
+R8 Statuario                finish 4  SP 15  BSP 16.0
+R8 Makdane                  finish 5  SP 6  BSP 7.6
+R8 My Brothers Keeper       finish 6  SP 6.5  BSP 7.0
+R8 Regal Lion               finish 7  SP 12  BSP 13.5
+R8 Magnaspin                finish 8  SP 2.7  BSP 2.94
+R8 The Pendragon            finish None  SP None  BSP None
+R8 Grand Pierro             finish None  SP None  BSP None
+R9 Mickidabeel              finish 1  SP 3.1  BSP 4.54
+R9 Epeiric                  finish 2  SP 21  BSP 36.56
+R9 Larryoctane              finish 3  SP 19  BSP 32.0
+R9 Lunar Force              finish 4  SP 3.1  BSP 3.03
+R9 Ginger Sweet             finish 5  SP 8  BSP 10.0
+R9 Korobeiniki              finish 6  SP 21  BSP 39.34
+R9 Mr Independent           finish 7  SP 10  BSP 11.0
+R9 Stole Him                finish 8  SP 11  BSP 15.0
+R9 Avonview                 finish 9  SP 71  BSP 96.58
+R9 Aka Daka                 finish 10  SP 8.5  BSP 11.11
+R9 Pure Grunt               finish None  SP None  BSP None
