@@ -1,0 +1,61 @@
+{
+ "day": "Monday",
+ "date": "16 November",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Wangaratta",
+   "note": "",
+   "bets": [
+    {
+     "race": 5,
+     "time": "3:30PM",
+     "horse": "Snakeinthegrass",
+     "price": "$15",
+     "rated": "$7.63",
+     "units": "1.41u"
+    },
+    {
+     "race": 5,
+     "time": "3:30PM",
+     "horse": "The Cellist",
+     "price": "$8",
+     "rated": "$5.98",
+     "units": "1.52u"
+    },
+    {
+     "race": 6,
+     "time": "4:00PM",
+     "horse": "Cashemcowboy",
+     "price": "$11",
+     "rated": "$4.72",
+     "units": "4.92u"
+    },
+    {
+     "race": 6,
+     "time": "4:00PM",
+     "horse": "Dance Lady",
+     "price": "$15",
+     "rated": "$10.15",
+     "units": "0.83u"
+    },
+    {
+     "race": 7,
+     "time": "4:30PM",
+     "horse": "Epic Centre",
+     "price": "$26",
+     "rated": "$13.60",
+     "units": "0.75u"
+    },
+    {
+     "race": 8,
+     "time": "5:00PM",
+     "horse": "Vaderlee",
+     "price": "$8",
+     "rated": "$5.41",
+     "units": "1.71u"
+    }
+   ]
+  }
+ ]
+}
