@@ -9,13 +9,6 @@
    "note": "",
    "bets": [
     {
-     "race": 1,
-     "time": "1:25PM",
-     "horse": "Genomic",
-     "price": "$5.50",
-     "units": "1.79u"
-    },
-    {
      "race": 3,
      "time": "2:35PM",
      "horse": "Efreeti",
@@ -28,13 +21,6 @@
    "name": "Moe",
    "note": "",
    "bets": [
-    {
-     "race": 4,
-     "time": "2:15PM",
-     "horse": "Fridge Monster",
-     "price": "$3.70",
-     "units": "4.24u"
-    },
     {
      "race": 5,
      "time": "2:50PM",
