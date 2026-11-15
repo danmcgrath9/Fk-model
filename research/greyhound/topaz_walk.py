@@ -294,7 +294,8 @@ def walk_signature(df, num, rel, first_pred, every) -> str:
     code = "".join(open(os.path.join(here, f), encoding="utf-8").read() for f in ("topaz_walk.py", "topaz_v1.py"))
     cols = [c for c in dict.fromkeys(list(num) + ["race_id", "won", "p_mkt"]) if c in df]
     vals = int(pd.util.hash_pandas_object(df[cols], index=False).sum() % (1 << 61))
-    env = {k: v for k, v in sorted(os.environ.items()) if k.startswith("WALK_") and k not in ("WALK_CACHE_DIR", "WALK_TO")}
+    env = {k: v for k, v in sorted(os.environ.items())
+           if k.startswith("WALK_") and k not in ("WALK_CACHE_DIR", "WALK_TO", "WALK_CACHE_USE")}
     key = json.dumps({"env": env, "every": every, "first": str(first_pred), "ra": ROUNDS_A, "rb": ROUNDS_B,
                       "num": list(num), "rel": list(rel), "n": len(df), "vals": vals,
                       "code": hashlib.sha1(code.encode()).hexdigest()}, sort_keys=True)
@@ -310,6 +311,22 @@ def walk_cached(df, num, rel, first_pred, t0, every=1, fit=None, cache_dir=None)
     d = os.environ.get("WALK_CACHE_DIR", "") if cache_dir is None else cache_dir
     if not d:
         return walk(df, num, rel, first_pred, t0, every, fit)
+    use = os.environ.get("WALK_CACHE_USE", "").strip()
+    if use:
+        # A research run naming a saved walk outright (13 Nov 2026: a late correction to one day's data changes the
+        # signature and costs a 2.5-hour refit). The settings are the caller's to match; rows the saved walk does not
+        # hold get no price, and the coverage is reported.
+        f, flog = Path(d) / f"walk_{use}.csv.gz", Path(d) / f"walk_{use}.json"
+        if not (f.exists() and flog.exists()):
+            raise FileNotFoundError(f"WALK_CACHE_USE={use}: no saved walk walk_{use} in {d}")
+        c = pd.read_csv(f, dtype={"race_id": "int64", "dog": str})
+        k = pd.DataFrame({"race_id": df.race_id.astype("int64").values, "dog": df.dog.astype(str).values})
+        m = k.merge(c.drop_duplicates(["race_id", "dog"]), on=["race_id", "dog"], how="left")
+        df["p_a"], df["p_b"] = m.p_a.values, m.p_b.values
+        due = (df.date >= first_pred.start_time).values
+        log = [tuple(x) for x in json.loads(flog.read_text())]
+        return df, log + [("cache", f"prices read from the named walk {use}: {int(df.p_a.notna().sum()):,} of "
+                                    f"{int(due.sum()):,} runners from {first_pred} priced")]
     sig = walk_signature(df, num, rel, first_pred, every)
     f, flog = Path(d) / f"walk_{sig}.csv.gz", Path(d) / f"walk_{sig}.json"
     if f.exists() and flog.exists():
