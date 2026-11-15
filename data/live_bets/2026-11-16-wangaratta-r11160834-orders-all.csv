@@ -1,0 +1,87 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-16,Wangaratta,1,,8,Palmento,WIN,13.02,57.96,0.88,44,1 of 2,0.88u,9.66,
+2026-11-16,Wangaratta,1,,8,Palmento,WIN,16.27,57.96,0.21,10,2 of 2,1.09u,9.66,
+2026-11-16,Wangaratta,2,,5,Fully Funded,WIN,5.91,27.35,2.09,104,1 of 3,2.09u,4.56,
+2026-11-16,Wangaratta,2,,5,Fully Funded,WIN,7.39,27.35,0.47,24,2 of 3,2.56u,4.56,
+2026-11-16,Wangaratta,2,,5,Fully Funded,WIN,10.03,27.35,2.56,128,3 of 3,5.12u,4.56,opens $10.03+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,2,,7,Kinky Mistress,WIN,3.59,3.99,3.28,164,1 of 1,3.28u,2.99,opens under $4: edge 1.15
+2026-11-16,Wangaratta,2,,7,Kinky Mistress,WIN,4.00,17.93,3.58,179,1 of 3,3.58u,2.99,
+2026-11-16,Wangaratta,2,,7,Kinky Mistress,WIN,4.74,17.93,0.71,36,2 of 3,4.29u,2.99,
+2026-11-16,Wangaratta,2,,7,Kinky Mistress,WIN,6.58,17.93,4.29,214,3 of 3,8.58u,2.99,opens $6.58+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,2,,8,Ninetyfiveinafifty,WIN,5.26,24.46,2.40,120,1 of 3,2.40u,4.08,
+2026-11-16,Wangaratta,2,,8,Ninetyfiveinafifty,WIN,6.57,24.46,0.52,26,2 of 3,2.92u,4.08,
+2026-11-16,Wangaratta,2,,8,Ninetyfiveinafifty,WIN,8.97,24.46,2.92,146,3 of 3,5.84u,4.08,opens $8.97+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,2,,13,Snowy Mountains,WIN,20.09,87.53,0.56,28,1 of 2,0.56u,14.59,
+2026-11-16,Wangaratta,2,,13,Snowy Mountains,WIN,25.11,87.53,0.13,6,2 of 2,0.69u,14.59,
+2026-11-16,Wangaratta,3,,6,Dextrose,WIN,5.73,26.56,2.17,108,1 of 3,2.17u,4.43,
+2026-11-16,Wangaratta,3,,6,Dextrose,WIN,7.16,26.56,0.48,24,2 of 3,2.65u,4.43,
+2026-11-16,Wangaratta,3,,6,Dextrose,WIN,9.75,26.56,2.65,132,3 of 3,5.30u,4.43,opens $9.75+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,3,,8,Estival,WIN,14.01,62.15,0.81,40,1 of 2,0.81u,10.36,
+2026-11-16,Wangaratta,3,,8,Estival,WIN,17.51,62.15,0.20,10,2 of 2,1.01u,10.36,
+2026-11-16,Wangaratta,3,,14,Regal Banter,WIN,19.33,84.38,0.58,29,1 of 2,0.58u,14.06,
+2026-11-16,Wangaratta,3,,14,Regal Banter,WIN,24.16,84.38,0.14,7,2 of 2,0.72u,14.06,
+2026-11-16,Wangaratta,3,,11,Scusies,WIN,13.04,58.03,0.88,44,1 of 2,0.88u,9.67,
+2026-11-16,Wangaratta,3,,11,Scusies,WIN,16.30,58.03,0.20,10,2 of 2,1.08u,9.67,
+2026-11-16,Wangaratta,4,,9,Dela Bella,WIN,6.03,27.85,2.05,102,1 of 3,2.05u,4.64,
+2026-11-16,Wangaratta,4,,9,Dela Bella,WIN,7.54,27.85,0.45,22,2 of 3,2.50u,4.64,
+2026-11-16,Wangaratta,4,,9,Dela Bella,WIN,10.22,27.85,2.50,125,3 of 3,5.00u,4.64,opens $10.22+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,4,,6,Fullboardsupport,WIN,5.39,25.06,2.33,116,1 of 3,2.33u,4.18,
+2026-11-16,Wangaratta,4,,6,Fullboardsupport,WIN,6.74,25.06,0.51,26,2 of 3,2.84u,4.18,
+2026-11-16,Wangaratta,4,,6,Fullboardsupport,WIN,9.19,25.06,2.84,142,3 of 3,5.68u,4.18,opens $9.19+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,4,,7,Volestain,WIN,3.22,3.99,3.81,190,1 of 1,3.81u,2.69,opens under $4: edge 1.15
+2026-11-16,Wangaratta,4,,7,Volestain,WIN,4.00,16.15,4.13,206,1 of 3,4.13u,2.69,
+2026-11-16,Wangaratta,4,,7,Volestain,WIN,4.25,16.15,0.79,40,2 of 3,4.92u,2.69,
+2026-11-16,Wangaratta,4,,7,Volestain,WIN,5.93,16.15,4.92,246,3 of 3,9.84u,2.69,opens $5.93+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,5,,7,Bottas,WIN,8.63,39.20,1.37,68,1 of 3,1.37u,6.53,
+2026-11-16,Wangaratta,5,,7,Bottas,WIN,10.79,39.20,0.31,16,2 of 3,1.68u,6.53,
+2026-11-16,Wangaratta,5,,7,Bottas,WIN,14.38,39.20,1.68,84,3 of 3,3.36u,6.53,opens $14.38+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,5,,6,Late Harvest,WIN,11.47,51.37,1.00,50,1 of 2,1.00u,8.56,
+2026-11-16,Wangaratta,5,,6,Late Harvest,WIN,14.34,51.37,0.24,12,2 of 2,1.24u,8.56,
+2026-11-16,Wangaratta,5,,1,Sheanadh,WIN,8.68,39.38,1.36,68,1 of 3,1.36u,6.56,
+2026-11-16,Wangaratta,5,,1,Sheanadh,WIN,10.85,39.38,0.32,16,2 of 3,1.68u,6.56,
+2026-11-16,Wangaratta,5,,1,Sheanadh,WIN,14.44,39.38,1.68,84,3 of 3,3.36u,6.56,opens $14.44+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,5,,11,Snakeinthegrass,WIN,10.29,46.30,1.13,56,1 of 3,1.13u,7.72,
+2026-11-16,Wangaratta,5,,11,Snakeinthegrass,WIN,12.86,46.30,0.27,14,2 of 3,1.40u,7.72,
+2026-11-16,Wangaratta,5,,11,Snakeinthegrass,WIN,16.98,46.30,1.40,70,3 of 3,2.80u,7.72,opens $16.98+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,5,,10,The Cellist,WIN,6.98,32.03,1.73,86,1 of 3,1.73u,5.34,
+2026-11-16,Wangaratta,5,,10,The Cellist,WIN,8.73,32.03,0.39,20,2 of 3,2.12u,5.34,
+2026-11-16,Wangaratta,5,,10,The Cellist,WIN,11.75,32.03,2.12,106,3 of 3,4.24u,5.34,opens $11.75+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,6,,3,Cashemcowboy,WIN,5.48,15.01,2.29,114,1 of 3,2.29u,4.24,EARLY: $15 or shorter only
+2026-11-16,Wangaratta,6,,3,Cashemcowboy,WIN,6.85,15.01,0.50,25,2 of 3,2.79u,4.24,EARLY: $15 or shorter only
+2026-11-16,Wangaratta,6,,3,Cashemcowboy,WIN,9.33,15.01,2.79,140,3 of 3,5.58u,4.24,EARLY: $15 or shorter only; opens $9.33+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,6,,7,Dance Lady,WIN,12.78,56.91,0.89,44,1 of 2,0.89u,9.49,
+2026-11-16,Wangaratta,6,,7,Dance Lady,WIN,15.97,56.91,0.22,11,2 of 2,1.11u,9.49,
+2026-11-16,Wangaratta,6,,4,Helioson,WIN,15.80,69.64,0.71,36,1 of 2,0.71u,11.61,
+2026-11-16,Wangaratta,6,,4,Helioson,WIN,19.75,69.64,0.18,9,2 of 2,0.89u,11.61,
+2026-11-16,Wangaratta,6,,8,King Kauffo,WIN,20.01,87.19,0.56,28,1 of 2,0.56u,14.53,
+2026-11-16,Wangaratta,6,,8,King Kauffo,WIN,25.01,87.19,0.13,6,2 of 2,0.69u,14.53,
+2026-11-16,Wangaratta,6,,10,Off'n'gawn,WIN,7.38,33.76,1.63,82,1 of 3,1.63u,5.63,
+2026-11-16,Wangaratta,6,,10,Off'n'gawn,WIN,9.22,33.76,0.37,18,2 of 3,2.00u,5.63,
+2026-11-16,Wangaratta,6,,10,Off'n'gawn,WIN,12.38,33.76,2.00,100,3 of 3,4.00u,5.63,opens $12.38+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,6,,9,Top Liner,WIN,12.97,57.72,0.88,44,1 of 2,0.88u,9.62,
+2026-11-16,Wangaratta,6,,9,Top Liner,WIN,16.21,57.72,0.21,10,2 of 2,1.09u,9.62,
+2026-11-16,Wangaratta,7,,5,Elena Montero,WIN,13.19,58.65,0.87,44,1 of 2,0.87u,9.77,
+2026-11-16,Wangaratta,7,,5,Elena Montero,WIN,16.49,58.65,0.20,10,2 of 2,1.07u,9.77,
+2026-11-16,Wangaratta,7,,8,Epic Centre,WIN,16.46,72.43,0.68,34,1 of 2,0.68u,12.07,
+2026-11-16,Wangaratta,7,,8,Epic Centre,WIN,20.58,72.43,0.17,8,2 of 2,0.85u,12.07,
+2026-11-16,Wangaratta,7,,10,Royal Turf,WIN,5.30,24.67,2.37,118,1 of 3,2.37u,4.11,
+2026-11-16,Wangaratta,7,,10,Royal Turf,WIN,6.62,24.67,0.52,26,2 of 3,2.89u,4.11,
+2026-11-16,Wangaratta,7,,10,Royal Turf,WIN,9.05,24.67,2.89,144,3 of 3,5.78u,4.11,opens $9.05+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,7,,14,She's Elusive,WIN,14.35,63.55,0.79,40,1 of 2,0.79u,10.59,
+2026-11-16,Wangaratta,7,,14,She's Elusive,WIN,17.94,63.55,0.19,10,2 of 2,0.98u,10.59,
+2026-11-16,Wangaratta,7,,2,Shelly's Legacy,WIN,15.26,67.39,0.74,37,1 of 2,0.74u,11.23,
+2026-11-16,Wangaratta,7,,2,Shelly's Legacy,WIN,19.07,67.39,0.18,9,2 of 2,0.92u,11.23,
+2026-11-16,Wangaratta,7,,11,Three Musketeers,WIN,11.20,50.23,1.03,52,1 of 2,1.03u,8.37,
+2026-11-16,Wangaratta,7,,11,Three Musketeers,WIN,14.00,50.23,0.24,12,2 of 2,1.27u,8.37,
+2026-11-16,Wangaratta,8,,6,Hellberg,WIN,10.25,46.16,1.13,56,1 of 3,1.13u,7.69,
+2026-11-16,Wangaratta,8,,6,Hellberg,WIN,12.81,46.16,0.27,14,2 of 3,1.40u,7.69,
+2026-11-16,Wangaratta,8,,6,Hellberg,WIN,16.93,46.16,1.40,70,3 of 3,2.80u,7.69,opens $16.93+ (2.2x ours): stake doubled
+2026-11-16,Wangaratta,8,,2,Isdell,WIN,18.16,79.54,0.62,31,1 of 2,0.62u,13.26,
+2026-11-16,Wangaratta,8,,2,Isdell,WIN,22.70,79.54,0.15,8,2 of 2,0.77u,13.26,
+2026-11-16,Wangaratta,8,,13,Ostrica,WIN,19.91,86.80,0.56,28,1 of 2,0.56u,14.47,
+2026-11-16,Wangaratta,8,,13,Ostrica,WIN,24.89,86.80,0.14,7,2 of 2,0.70u,14.47,
+2026-11-16,Wangaratta,8,,11,Princess Geisha,WIN,11.54,51.67,1.00,50,1 of 2,1.00u,8.61,
+2026-11-16,Wangaratta,8,,11,Princess Geisha,WIN,14.42,51.67,0.23,12,2 of 2,1.23u,8.61,
+2026-11-16,Wangaratta,8,,9,Vaderlee,WIN,7.24,33.15,1.66,83,1 of 3,1.66u,5.52,
+2026-11-16,Wangaratta,8,,9,Vaderlee,WIN,9.05,33.15,0.38,19,2 of 3,2.04u,5.52,
+2026-11-16,Wangaratta,8,,9,Vaderlee,WIN,12.16,33.15,2.04,102,3 of 3,4.08u,5.52,opens $12.16+ (2.2x ours): stake doubled
