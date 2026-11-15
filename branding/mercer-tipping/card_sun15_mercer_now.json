@@ -2,7 +2,28 @@
  "day": "Sunday",
  "date": "15 November",
  "footer": "Win bets.",
+ "brand": true,
  "meetings": [
+  {
+   "name": "Donald",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "1:25PM",
+     "horse": "Genomic",
+     "price": "$5.50",
+     "units": "1.79u"
+    },
+    {
+     "race": 3,
+     "time": "2:35PM",
+     "horse": "Efreeti",
+     "price": "$4.40",
+     "units": "2.16u"
+    }
+   ]
+  },
   {
    "name": "Moe",
    "note": "",
@@ -11,25 +32,24 @@
      "race": 4,
      "time": "2:15PM",
      "horse": "Fridge Monster",
-     "price": "$5",
+     "price": "$3.70",
      "units": "4.24u"
     },
     {
      "race": 5,
      "time": "2:50PM",
      "horse": "Yes Yoshi",
-     "price": "$2",
+     "price": "$1.80",
      "units": "6.35u"
     },
     {
      "race": 9,
      "time": "5:20PM",
      "horse": "Stole Him",
-     "price": "$15",
+     "price": "$12",
      "units": "0.73u"
     }
    ]
   }
- ],
- "brand": true
+ ]
 }

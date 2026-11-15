@@ -1,7 +1,30 @@
 {
  "day": "Sunday",
  "date": "15 November",
+ "brand": false,
  "meetings": [
+  {
+   "name": "Donald",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "1:25PM",
+     "horse": "Genomic",
+     "price": "$10.80",
+     "rated": "$6.18",
+     "units": "1.79u"
+    },
+    {
+     "race": 3,
+     "time": "2:35PM",
+     "horse": "Efreeti",
+     "price": "$5.80",
+     "rated": "$4.44",
+     "units": "2.16u"
+    }
+   ]
+  },
   {
    "name": "Moe",
    "note": "",
@@ -32,6 +55,5 @@
     }
    ]
   }
- ],
- "brand": false
+ ]
 }
