@@ -163,3 +163,27 @@ def test_walk_cached_without_a_directory_is_walk(monkeypatch):
     df, log = W.walk_cached(_dog_frame(4), ["f1"], [], pd.Period("2024-02", "M"), time.monotonic(),
                             fit=lambda X, y, r, w, k: Flat(len(X)))
     assert all(m != "cache" for m, _ in log)
+
+
+def test_walk_cache_use_reads_a_named_walk_even_when_the_data_moved(monkeypatch, tmp_path):
+    monkeypatch.setattr(W, "MIN_TRAIN_RACES", 1)
+    calls = []
+
+    def fit(X, y, race, weight, rounds):
+        calls.append(len(X))
+        return Flat(len(X))
+
+    first = pd.Period("2024-02", "M")
+    df1, log1 = W.walk_cached(_dog_frame(), ["f1"], [], first, time.monotonic(), 2, fit, cache_dir=str(tmp_path))
+    sig = log1[-1][1].split()[-1]
+    changed = _dog_frame()
+    changed["f1"] = changed.f1 + 1.0                       # a late correction: the signature no longer matches
+    monkeypatch.setenv("WALK_CACHE_USE", sig)
+    n = len(calls)
+    df2, log2 = W.walk_cached(changed, ["f1"], [], first, time.monotonic(), 2, fit, cache_dir=str(tmp_path))
+    assert len(calls) == n and "named walk" in log2[-1][1]    # no refit: the named walk's prices
+    assert np.allclose(df2.p_a.fillna(-1), df1.p_a.fillna(-1))
+    monkeypatch.setenv("WALK_CACHE_USE", "0000000000000000")
+    import pytest
+    with pytest.raises(FileNotFoundError):
+        W.walk_cached(changed, ["f1"], [], first, time.monotonic(), 2, fit, cache_dir=str(tmp_path))
