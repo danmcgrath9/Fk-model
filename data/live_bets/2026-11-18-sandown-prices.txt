@@ -1,4 +1,4 @@
-# Sandown Lakeside Wed 18 Nov, official going, final fields; no market yet; PROVISIONAL: 18 runners without a rider
+# Sandown Lakeside Wed 18 Nov, official going, final fields; no market yet; PROVISIONAL: 16 runners without a rider
 1, Cahaba Lad, 0, 0
 1, Jetsetter, 0, 0
 1, La La Lilly, 0, 0
@@ -6,7 +6,6 @@
 1, Anori Dancer, 0, 0
 1, Munger, 0, 0
 2, Table Twentyeight, 0, 0
-2, Oh La Belle, 0, 0
 2, Blue Parrot, 0, 0
 2, Royal Maximus, 0, 0
 2, Montostratus, 0, 0

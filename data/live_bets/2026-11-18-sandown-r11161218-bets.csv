@@ -1,0 +1,8 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+2,SANL_181126_2,Cirque De Coco,top_pick,0.0,0.0,0.0,,,3.14,-1.0,; EARLY ONLY: bet near the open,1.0,no,,
+3,SANL_181126_3,Fammi,top_pick,0.0,0.0,0.0,,,2.85,-1.0,Above the field in all three sections; EARLY ONLY: bet near the open,1.0,no,,
+4,SANL_181126_4,Navy Heart,top_pick,0.0,0.0,0.0,,,3.67,-1.0,,1.0,no,,
+5,SANL_181126_5,Breathless Spirit,top_pick,0.0,0.0,0.0,,,3.29,-1.0,,1.0,no,,
+6,SANL_181126_6,Flying Mikki,top_pick,0.0,0.0,0.0,,,3.89,-1.0,Beaten by the pace last start; Already run to today's class; Class drop (rating),1.0,no,,
+7,SANL_181126_7,Onavuitton,top_pick,0.0,0.0,0.0,,,5.49,-1.0,New career-best last start; Late 600 beyond the tempo,1.0,no,,
+8,SANL_181126_8,Befuddle,top_pick,0.0,0.0,0.0,,,3.96,-1.0,Beaten by the pace last start,1.0,no,,
