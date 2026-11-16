@@ -5422,6 +5422,130 @@ result. Next: the rule at 1.1x, 1.2x and 1.3x by period for the held blend and t
 months in profit and the worst drawdown. Then the one pre-stated fix for the overclaiming: the BSP correction shrunk
 halfway back to the held blend.
 
+## Test 61: the rule at 1.1x, 1.2x and 1.3x, and the BSP correction shrunk halfway (16 Nov 2026, gh topaz run 43813987482, `topaz_round43.py`)
+
+Test 60 found the card's +47% sitting on one lucky rung, and a lead: from an edge of 1.1 up, flat, both the held blend
+and the BSP correction make as many units as the card from twelve to fourteen times the bets. 1.1 was read off that
+ladder. Stated before this run, on every race from February 2025 at TAB's first price after TAB's deduction (17,205
+races, 119,763 runners that ran; corrections read back from the walk cache, 17 minutes):
+
+- **A.** the card's rule as it is (our odds 2 to 15, Kelly on half the model's chance and half TAB's book) at 1.1x,
+  1.2x and 1.3x, by period, with the worst drawdown and the longest losing run
+- **B.** flat, one unit on every candidate in the band whose edge (TAB's first price x the model's chance) is at the
+  ratio or over
+- **C.** the one fix for the correction overclaiming its biggest edges, stated before the run: the BSP correction
+  shrunk halfway back to the held blend (the geometric mean of the two over the runners that ran, a dog scratched
+  after the open keeping the blend's chance), with its edge ladder
+
+A. The card's rule:
+
+| period | model | ratio | bets | winners | A/E vs the price taken | z | flat ROI | Kelly ROI | Kelly units | months in profit | worst drawdown, Kelly units | longest losing run | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 to Jan 2026 | blend, held | 1.1x | 97 | 22 | 1.051 | +0.3 | -8.7% | +38.8% | +33 | 7 of 12 | 11 | 14 | 59.8% | +0.187 |
+| Feb 2025 to Jan 2026 | blend, held | 1.2x | 97 | 22 | 1.051 | +0.3 | -8.7% | +38.8% | +33 | 7 of 12 | 11 | 14 | 59.8% | +0.187 |
+| Feb 2025 to Jan 2026 | blend, held | 1.3x | 57 | 18 | 1.620 | +2.4 | +33.5% | +62.0% | +44 | 8 of 12 | 9 | 7 | 68.4% | +0.322 |
+| Feb 2025 to Jan 2026 | correction on BSP | 1.1x | 240 | 38 | 0.997 | -0.0 | -7.5% | +8.3% | +19 | 6 of 12 | 45 | 20 | 55.0% | +0.065 |
+| Feb 2025 to Jan 2026 | correction on BSP | 1.2x | 240 | 38 | 0.997 | -0.0 | -7.5% | +8.3% | +19 | 6 of 12 | 45 | 20 | 55.0% | +0.065 |
+| Feb 2025 to Jan 2026 | correction on BSP | 1.3x | 169 | 30 | 1.232 | +1.3 | +7.6% | +14.0% | +29 | 6 of 12 | 41 | 19 | 60.1% | +0.111 |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway to the held blend | 1.1x | 134 | 25 | 1.021 | +0.1 | -15.2% | +15.5% | +21 | 5 of 12 | 28 | 13 | 61.7% | +0.179 |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway to the held blend | 1.2x | 134 | 25 | 1.021 | +0.1 | -15.2% | +15.5% | +21 | 5 of 12 | 28 | 13 | 61.7% | +0.179 |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway to the held blend | 1.3x | 89 | 19 | 1.263 | +1.1 | -2.9% | +24.9% | +29 | 5 of 12 | 27 | 13 | 65.2% | +0.245 |
+| Feb 2026 on | blend, held | 1.1x | 81 | 22 | 1.377 | +1.7 | +20.5% | +50.4% | +34 | 7 of 10 | 13 | 10 | 56.4% | +0.070 |
+| Feb 2026 on | blend, held | 1.2x | 79 | 22 | 1.411 | +1.8 | +23.6% | +53.4% | +36 | 7 of 10 | 13 | 10 | 57.1% | +0.074 |
+| Feb 2026 on | blend, held | 1.3x | 41 | 14 | 1.740 | +2.4 | +65.9% | +66.3% | +39 | 8 of 10 | 12 | 6 | 66.7% | +0.157 |
+| Feb 2026 on | correction on BSP | 1.1x | 156 | 31 | 1.240 | +1.3 | +10.6% | +2.4% | +4 | 5 of 10 | 34 | 16 | 60.7% | +0.106 |
+| Feb 2026 on | correction on BSP | 1.2x | 156 | 31 | 1.240 | +1.3 | +10.6% | +2.4% | +4 | 5 of 10 | 34 | 16 | 60.7% | +0.106 |
+| Feb 2026 on | correction on BSP | 1.3x | 109 | 19 | 1.192 | +0.8 | +8.6% | +1.0% | +1 | 4 of 10 | 33 | 14 | 61.9% | +0.143 |
+| Feb 2026 on | correction on BSP, halfway to the held blend | 1.1x | 99 | 19 | 1.145 | +0.7 | +0.0% | +21.1% | +19 | 5 of 10 | 18 | 15 | 64.6% | +0.136 |
+| Feb 2026 on | correction on BSP, halfway to the held blend | 1.2x | 99 | 19 | 1.145 | +0.7 | +0.0% | +21.1% | +19 | 5 of 10 | 18 | 15 | 64.6% | +0.136 |
+| Feb 2026 on | correction on BSP, halfway to the held blend | 1.3x | 64 | 14 | 1.325 | +1.2 | +6.9% | +24.1% | +20 | 6 of 10 | 18 | 10 | 63.9% | +0.165 |
+| Feb 2025 on | blend, held | 1.1x | 178 | 44 | 1.192 | +1.3 | +4.6% | +43.9% | +67 | 14 of 22 | 14 | 16 | 58.3% | +0.135 |
+| Feb 2025 on | blend, held | 1.2x | 176 | 44 | 1.205 | +1.4 | +5.8% | +45.2% | +69 | 14 of 22 | 14 | 16 | 58.6% | +0.137 |
+| Feb 2025 on | blend, held | 1.3x | 98 | 32 | 1.670 | +3.3 | +47.1% | +64.0% | +83 | 16 of 22 | 12 | 7 | 67.7% | +0.255 |
+| Feb 2025 on | correction on BSP | 1.1x | 396 | 69 | 1.093 | +0.8 | -0.4% | +5.9% | +22 | 11 of 22 | 56 | 20 | 57.2% | +0.081 |
+| Feb 2025 on | correction on BSP | 1.2x | 396 | 69 | 1.093 | +0.8 | -0.4% | +5.9% | +22 | 11 of 22 | 56 | 20 | 57.2% | +0.081 |
+| Feb 2025 on | correction on BSP | 1.3x | 278 | 49 | 1.216 | +1.5 | +8.0% | +8.8% | +30 | 10 of 22 | 47 | 19 | 60.8% | +0.123 |
+| Feb 2025 on | correction on BSP, halfway to the held blend | 1.1x | 233 | 44 | 1.071 | +0.5 | -8.8% | +17.8% | +40 | 10 of 22 | 37 | 20 | 62.9% | +0.161 |
+| Feb 2025 on | correction on BSP, halfway to the held blend | 1.2x | 233 | 44 | 1.071 | +0.5 | -8.8% | +17.8% | +40 | 10 of 22 | 37 | 20 | 62.9% | +0.161 |
+| Feb 2025 on | correction on BSP, halfway to the held blend | 1.3x | 153 | 33 | 1.289 | +1.6 | +1.2% | +24.6% | +49 | 11 of 22 | 32 | 13 | 64.7% | +0.212 |
+
+B. Flat, every candidate in the band with an edge at the ratio or over:
+
+| period | model | ratio | bets | winners | A/E vs the price taken | z | flat ROI | flat units | months in profit | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 to Jan 2026 | blend, held | 1.1x | 629 | 161 | 1.072 | +1.0 | +2.6% | +16 | 7 of 12 | 52.2% | +0.039 |
+| Feb 2025 to Jan 2026 | blend, held | 1.2x | 178 | 42 | 1.070 | +0.5 | +2.8% | +5 | 5 of 12 | 59.7% | +0.146 |
+| Feb 2025 to Jan 2026 | blend, held | 1.3x | 57 | 18 | 1.620 | +2.4 | +33.5% | +19 | 7 of 12 | 68.4% | +0.322 |
+| Feb 2025 to Jan 2026 | correction on BSP | 1.1x | 811 | 184 | 1.084 | +1.3 | +1.6% | +13 | 6 of 12 | 54.2% | +0.040 |
+| Feb 2025 to Jan 2026 | correction on BSP | 1.2x | 358 | 68 | 1.077 | +0.7 | +0.5% | +2 | 5 of 12 | 55.1% | +0.056 |
+| Feb 2025 to Jan 2026 | correction on BSP | 1.3x | 171 | 30 | 1.216 | +1.2 | +6.4% | +11 | 7 of 12 | 60.6% | +0.116 |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway to the held blend | 1.1x | 698 | 175 | 1.121 | +1.8 | +7.8% | +54 | 8 of 12 | 56.1% | +0.060 |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway to the held blend | 1.2x | 229 | 44 | 0.999 | -0.0 | -5.7% | -13 | 5 of 12 | 58.2% | +0.113 |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway to the held blend | 1.3x | 90 | 20 | 1.320 | +1.4 | +0.9% | +1 | 4 of 12 | 64.4% | +0.240 |
+| Feb 2026 on | blend, held | 1.1x | 515 | 141 | 1.173 | +2.2 | +13.5% | +70 | 8 of 10 | 50.7% | -0.010 |
+| Feb 2026 on | blend, held | 1.2x | 139 | 39 | 1.357 | +2.2 | +18.3% | +25 | 6 of 10 | 60.7% | +0.086 |
+| Feb 2026 on | blend, held | 1.3x | 41 | 14 | 1.740 | +2.4 | +65.9% | +27 | 8 of 10 | 66.7% | +0.157 |
+| Feb 2026 on | correction on BSP | 1.1x | 583 | 134 | 1.164 | +2.0 | +12.6% | +73 | 7 of 10 | 57.4% | +0.053 |
+| Feb 2026 on | correction on BSP | 1.2x | 249 | 49 | 1.232 | +1.6 | +12.0% | +30 | 5 of 10 | 61.1% | +0.100 |
+| Feb 2026 on | correction on BSP | 1.3x | 110 | 19 | 1.186 | +0.8 | +7.7% | +8 | 5 of 10 | 62.3% | +0.142 |
+| Feb 2026 on | correction on BSP, halfway to the held blend | 1.1x | 521 | 136 | 1.216 | +2.7 | +16.9% | +88 | 7 of 10 | 55.0% | +0.036 |
+| Feb 2026 on | correction on BSP, halfway to the held blend | 1.2x | 160 | 34 | 1.179 | +1.1 | -2.7% | -4 | 5 of 10 | 61.0% | +0.089 |
+| Feb 2026 on | correction on BSP, halfway to the held blend | 1.3x | 64 | 14 | 1.325 | +1.2 | +6.9% | +4 | 6 of 10 | 63.9% | +0.165 |
+| Feb 2025 on | blend, held | 1.1x | 1,144 | 302 | 1.117 | +2.3 | +7.5% | +86 | 15 of 22 | 51.5% | +0.017 |
+| Feb 2025 on | blend, held | 1.2x | 317 | 81 | 1.192 | +1.8 | +9.6% | +30 | 11 of 22 | 60.1% | +0.120 |
+| Feb 2025 on | blend, held | 1.3x | 98 | 32 | 1.670 | +3.3 | +47.1% | +46 | 15 of 22 | 67.7% | +0.255 |
+| Feb 2025 on | correction on BSP | 1.1x | 1,394 | 318 | 1.116 | +2.3 | +6.2% | +87 | 13 of 22 | 55.6% | +0.045 |
+| Feb 2025 on | correction on BSP | 1.2x | 607 | 117 | 1.137 | +1.6 | +5.2% | +31 | 10 of 22 | 57.5% | +0.074 |
+| Feb 2025 on | correction on BSP | 1.3x | 281 | 49 | 1.204 | +1.4 | +6.9% | +19 | 12 of 22 | 61.2% | +0.126 |
+| Feb 2025 on | correction on BSP, halfway to the held blend | 1.1x | 1,219 | 311 | 1.161 | +3.1 | +11.7% | +142 | 15 of 22 | 55.7% | +0.050 |
+| Feb 2025 on | correction on BSP, halfway to the held blend | 1.2x | 389 | 78 | 1.070 | +0.7 | -4.4% | -17 | 10 of 22 | 59.4% | +0.103 |
+| Feb 2025 on | correction on BSP, halfway to the held blend | 1.3x | 154 | 34 | 1.322 | +1.8 | +3.4% | +5 | 10 of 22 | 64.2% | +0.209 |
+
+C. The edge ladder for the BSP correction shrunk halfway, February 2025 on:
+
+| model | edge (TAB's first price x its chance) | bets | winners | A/E it claims | A/E it got | z | flat ROI | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|
+| correction on BSP, halfway to the held blend | under 0.9 | 58,397 | 10,665 | 0.721 | 0.766 | -32.8 | -28.4% | 13.4% | -0.424 |
+| correction on BSP, halfway to the held blend | 0.9 to 1.0 | 7,469 | 2,110 | 0.943 | 0.952 | -2.8 | -8.7% | 32.9% | -0.139 |
+| correction on BSP, halfway to the held blend | 1.0 to 1.1 | 2,473 | 676 | 1.039 | 1.010 | +0.3 | -4.2% | 43.8% | -0.061 |
+| correction on BSP, halfway to the held blend | 1.1 to 1.2 | 830 | 233 | 1.140 | 1.195 | +3.2 | +19.2% | 53.9% | +0.025 |
+| correction on BSP, halfway to the held blend | 1.2 to 1.3 | 235 | 44 | 1.241 | 0.933 | -0.5 | -9.6% | 56.1% | +0.032 |
+| correction on BSP, halfway to the held blend | 1.3 to 1.5 | 119 | 29 | 1.371 | 1.417 | +2.1 | +9.9% | 60.3% | +0.119 |
+| correction on BSP, halfway to the held blend | 1.5 and over | 35 | 5 | 1.623 | 0.953 | -0.1 | -18.6% | 77.1% | +0.510 |
+
+What it shows:
+
+- **The card's own stake already sets a floor near 1.2x, so lowering its ratio changes little and costs a little.**
+  Kelly on half the model and half TAB's book is zero for most dogs under about 1.2x after the deduction, so the
+  card's rule at 1.1x and at 1.2x is the same 176 to 178 bets. Those are the 98 at 1.3x plus about 80 more, and the 80
+  lose Kelly units. Since February 2025 the card at 1.1x makes +43.9% Kelly and +67 units in 14 of 22 months, with a
+  longest losing run of 16. At 1.3x it makes +64.0% and +83 units in 16 of 22, with a longest losing run of 7. On the
+  card's own staking, 1.3x stays the best of the three for the held blend, and the held blend stays ahead of both
+  corrections.
+- **Flat on every candidate from 1.1 up, all three models make money in both halves, and the shrunk correction makes
+  the most.** The held blend makes +7.5% over 1,144 bets (+2.6% to January 2026, +13.5% since). The BSP correction
+  makes +6.2% over 1,394 (+1.6%, +12.6%). The shrunk correction makes +11.7% over 1,219 (+7.8%, +16.9%), which is
+  +142 flat units at z +3.1, in profit in 15 of 22 months. The shrink was stated before the run; the 1.1 line came
+  from Test 60's ladder of the other two models.
+- **But no model's ladder rises smoothly, so the realised results cannot rank them.** The shrunk correction's profit
+  at 1.1x sits in its 1.1 to 1.2 rung (+19.2% on 830 bets). Its next rung loses (-9.6% on 235), and above 1.2 it is
+  about breakeven or worse (-4.4% flat from 1.2x, +3.4% from 1.3x). Every model shows swings like this from rung to
+  rung. At these prices the flat ROI of a rung of 830 bets has a standard error of roughly 7 points, a rung of 235
+  roughly 13 and a rung of 84 roughly 26 (worked from each rung's winners and prices), so swings this size are what
+  noise looks like at this sample size. 22 months of results cannot tell a +5% model from a +12% one.
+- **The closing line is the one smooth signal.** In every ladder, every model's mean log(price paid / BSP) rises rung
+  by rung, with no exception: below zero under 1.1, about -0.03 to +0.06 at 1.1 to 1.3, +0.04 to +0.20 at 1.3 to
+  1.5, and +0.29 to +0.56 above (Tests 60 and 61).
+  BSP is the best forecaster in every test (log loss 1.5065 since February 2025, against the held blend's 1.5686). So
+  the price paid against BSP's chance is a far less noisy measure of each bet's worth than whether it won.
+
+What it means: the card stays as it is. Lowering its ratio would add bets that lose on its own staking, and nothing
+here beats the held blend at 1.3x on the card's terms. The shrunk correction at 1.1x flat is the best lead so far,
+but the per-rung swings say not to trust a realised figure at this sample size. Next: judge every model, rung and
+rule by the return BSP's chance implies, price paid x BSP's chance - 1. That has a fraction of the noise of the
+results. First check that BSP is a fair judge out here, with its expected winners against the actual winners in each
+rung.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
