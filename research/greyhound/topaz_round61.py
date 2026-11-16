@@ -152,7 +152,7 @@ def report(res: pd.DataFrame, models: dict) -> None:
 
 def field(d: str, t0: float):
     """Round 57's field with the walk's input list; clean races only, with TAB after its bias and BSP corrected."""
-    df, num = R51.named_walks(d, t0, with_inputs=True)
+    df, num, _ = R51.named_walks(d, t0, with_inputs=True)
     fr = R33.load(os.environ["BETWATCH_DIR"], times=(0,))
     x = R33.at_time(df, fr, 0)
     ran = x.is_ran.astype(bool).values
