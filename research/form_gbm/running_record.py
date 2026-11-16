@@ -12,7 +12,7 @@ THE 9AM LIST: every horse in a <prefix>-9am.csv, settled at the price it was lis
 minus stake_a_bookie. The founder bets it himself, so this assumes every listed horse was bet; a day he did not bet is
 named in NOT_BET below and counted as no bet.
 """
-import collections, csv, glob, os, re, sys
+import collections, csv, glob, math, os, re, sys
 
 here = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, here)
@@ -125,6 +125,28 @@ def main():
             "| Date | Meeting | Race | Horse | Units | Open | Result | P/L |", "|---|---|---|---|---|---|---|---|"]
     out += [f"| {r['date']} | {r['meeting']} | R{r['race']} | {r['horse']} | {r['units']:.2f}u | ${r['open']:g} | {r['result']} | "
             f"{r['pl']:+.2f}u |" for r in reversed(ob)]
+    # Price taken against Betfair SP (founder, 16 Nov 2026: "Still beating open towards bsp though"): how many open
+    # prices beat BSP, the stake-weighted ratio, and winners against those expected at BSP (1/BSP each).
+    bsp = {}
+    for res in glob.glob(f"{L}/2026-*-results.txt"):
+        P = os.path.basename(res)[:-len("-results.txt")]
+        for l in open(res):
+            m = re.match(r"R(\d+) (.+?)\s+finish \S+\s+SP \S+\s+BSP (\S+)", l)
+            if m and m[3] not in ("None", "0.0", "0"):
+                bsp[(P[:10], P[11:], int(m[1]), norm(m[2]))] = float(m[3])
+
+    def clv(sel, label):
+        s = [(r, bsp.get((r["date"], r["meeting"], r["race"], norm(r["horse"])))) for r in live if sel(r)]
+        s = [(r, b) for r, b in s if b]
+        if not s:
+            return f"| {label} | 0 | - | - | - |"
+        wl = sum(r["units"] * math.log(r["open"] / b) for r, b in s) / sum(r["units"] for r, b in s)
+        return (f"| {label} | {len(s)} | {sum(1 for r, b in s if r['open'] > b)} | {math.exp(wl):.2f}x | "
+                f"{sum(1 for r, b in s if r['result'] == 'WON')} won, {sum(1 / b for r, b in s):.1f} expected at BSP |")
+    out += ["", "## Price taken against Betfair SP", "",
+            "| Period | Bets with a BSP | Open beat BSP | Open / BSP (stake-weighted) | Winners |", "|---|---|---|---|---|",
+            clv(lambda r: True, "All settled"), clv(lambda r: r["date"] >= "2026-11-12", "Since 12 Nov"),
+            clv(lambda r: r["date"] in last7, "Last 7 race days")]
     bet = [r for r in nm if r["result"] not in ("void", "not bet")]
     tot = sum(r["pl"] for r in bet); w = sum(1 for r in bet if r["result"] == "WON")
     staked = sum(r["stake"] for r in bet)

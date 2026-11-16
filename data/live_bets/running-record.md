@@ -92,6 +92,14 @@ Running total by day: 11-02 +34.3u, 11-03 +64.4u, 11-04 +95.7u, 11-05 +86.6u, 11
 | 2026-11-02 | ballarat | R4 | Marco Polo | 0.97u | $26 | WON | +24.25u |
 | 2026-11-02 | ballarat | R4 | Best Terms | 6.30u | $2.5 | 5th | -6.30u |
 
+## Price taken against Betfair SP
+
+| Period | Bets with a BSP | Open beat BSP | Open / BSP (stake-weighted) | Winners |
+|---|---|---|---|---|
+| All settled | 57 | 36 | 1.32x | 13 won, 11.3 expected at BSP |
+| Since 12 Nov | 24 | 16 | 1.28x | 2 won, 4.6 expected at BSP |
+| Last 7 race days | 28 | 17 | 1.25x | 3 won, 5.3 expected at BSP |
+
 ## The 9am list (the founder's bets, per bookie)
 
 3 bets, 0 won, staked $2,926 a bookie, P/L $-2,926 a bookie (-100%).
