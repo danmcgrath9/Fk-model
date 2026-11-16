@@ -4973,6 +4973,68 @@ The live tracker (below) now records it against TAB's open every day. Next: hold
 correction to recent days does not throw the saved walk away; and the card's own list, which is picked against GRV's
 evening price, should give way to a TAB-open threshold for each dog (the tracker's first eight nights, below).
 
+## Test 56: can the blend at TAB's open get better? The other books (15 Nov 2026, gh topaz run 43774607199, `topaz_round38.py`)
+
+Founder, 15 Nov: "Well keep testing and lets get a fucking good model". Test 55's blend uses two inputs, ours and TAB's
+first book. This gives it everything the field at the bet holds: the walk's winners twin (fitted on wins), and
+Sportsbet's and Ladbrokes' first books (97% and 98% of the runners). Every blend is fitted on Test 51's window (Dec 2023
+to Jun 2024, races with nothing scratched after the open) and held, so February 2025 on is out of sample; and the
+two-input blend is also refitted each month on up to 6, 12 and 24 months. The walk was read from round 37's saved walk
+(`WALK_CACHE_USE=47fecb2b5fac8c3c`, 297,345 of 297,345 runners), so the round took 29 minutes.
+
+| blend | weights, fitted on Dec 2023 to Jun 2024 and held |
+|---|---|
+| A. ours + TAB | ours 0.55, TAB 0.65 |
+| B. ours + twin + TAB | ours 0.41, twin 0.14, TAB 0.65 |
+| C. ours + TAB + Sportsbet + Ladbrokes | ours 0.44, TAB -0.47, Sportsbet -0.14, Ladbrokes 1.39 |
+| D. all five | ours 0.31, twin 0.14, TAB -0.47, Sportsbet -0.14, Ladbrokes 1.39 |
+
+Log loss, races with nothing scratched after the open (lower is better):
+
+| period | races | A | B | C | D | A refitted, 6 months | 12 months | 24 months | BSP |
+|---|---|---|---|---|---|---|---|---|---|
+| to Aug 2023 | 2,386 | 1.5700 | 1.5694 | 1.5494 | 1.5489 | 1.5729 | 1.5727 | 1.5727 | 1.4934 |
+| Sep 2023 to Jan 2025 | 11,151 | 1.5763 | 1.5759 | 1.5682 | 1.5677 | 1.5762 | 1.5765 | 1.5773 | 1.5085 |
+| Feb 2025 on | 11,593 | 1.5688 | 1.5691 | 1.5595 | 1.5596 | 1.5676 | 1.5674 | 1.5678 | 1.5065 |
+
+The card's rule at 1.3x at TAB's first price after TAB's deduction, every race (the clean-race table is in the log):
+
+| period | blend | bets | winners | A/E vs the price taken | z | flat ROI | Kelly ROI | units won | months in profit | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| to Aug 2023 | A | 95 | 22 | 1.422 | +1.9 | +89.5% | +106.8% | +113 | 4 of 4 | 91.6% | +0.513 |
+| to Aug 2023 | B | 109 | 22 | 1.262 | +1.2 | +92.9% | +81.3% | +97 | 4 of 4 | 89.9% | +0.497 |
+| to Aug 2023 | C | 1,014 | 224 | 1.457 | +6.3 | +58.6% | +67.7% | +1,473 | 4 of 4 | 89.1% | +0.404 |
+| to Aug 2023 | D | 1,021 | 228 | 1.491 | +6.8 | +60.5% | +67.9% | +1,479 | 4 of 4 | 88.5% | +0.398 |
+| to Aug 2023 | A refitted, 6 / 12 / 24 months | 424 / 411 / 411 | 80 / 79 / 79 | 1.409 / 1.439 / 1.439 | | +64.1% / +67.3% / +67.3% | | | | | |
+| Sep 2023 to Jan 2025 | A | 157 | 36 | 1.373 | +2.1 | +51.2% | +64.9% | +125 | 10 of 17 | 86.5% | +0.443 |
+| Sep 2023 to Jan 2025 | B | 174 | 40 | 1.343 | +2.1 | +43.0% | +69.3% | +145 | 12 of 17 | 85.5% | +0.422 |
+| Sep 2023 to Jan 2025 | C | 1,250 | 259 | 1.408 | +6.2 | +45.4% | +58.4% | +1,280 | 15 of 17 | 84.2% | +0.332 |
+| Sep 2023 to Jan 2025 | D | 1,257 | 260 | 1.396 | +6.0 | +43.5% | +61.2% | +1,351 | 15 of 17 | 84.5% | +0.331 |
+| Sep 2023 to Jan 2025 | A refitted, 6 / 12 / 24 months | 292 / 406 / 484 | 51 / 67 / 81 | 1.126 / 1.116 / 1.147 | | +27.3% / +27.6% / +26.6% | | | | | |
+| Feb 2025 on | A | 116 | 32 | 1.455 | +2.4 | +24.2% | +55.4% | +81 | 16 of 22 | 66.7% | +0.217 |
+| Feb 2025 on | B | 120 | 34 | 1.514 | +2.8 | +36.6% | +64.6% | +97 | 16 of 22 | 61.9% | +0.190 |
+| Feb 2025 on | C | 1,022 | 244 | 1.436 | +6.4 | +36.0% | +51.0% | +951 | 16 of 22 | 77.1% | +0.242 |
+| Feb 2025 on | D | 1,024 | 241 | 1.409 | +6.0 | +34.0% | +53.5% | +999 | 18 of 22 | 76.2% | +0.233 |
+| Feb 2025 on | A refitted, 6 / 12 / 24 months | 10 / 19 / 52 | 3 / 7 / 16 | 1.580 / 1.876 / 1.567 | | +15.1% / +65.2% / +28.3% | | | | | |
+
+What it shows:
+
+- **The winners twin adds almost nothing** (log loss 0.0004 better at best, worse since February 2025).
+- **The other books look like a big step**: C's log loss is 0.009 to 0.021 better than A's in every period, and at
+  1.3x it bets about ten times as often (1,022 bets since February 2025) at much the same A/E (1.44), z +6.4, 16 of 22
+  months in profit, BSP under the price paid on 77%.
+- **But its weights say what it is reading**: Ladbrokes +1.39, TAB -0.47, Sportsbet -0.14. That is "bet where Ladbrokes
+  rates a dog above TAB's opening price", which is exactly what a blend would learn if Ladbrokes' first price comes
+  later and knows more. Round 38 took each book's first price whenever Betwatch recorded it, not the price standing
+  when TAB's first price was there to take. Until that is checked, **C and D are not a result**: round 39 measures when
+  each book opens against TAB, and refits C with only the prices standing at TAB's first price, and at the moment all
+  three are open.
+- **A longer refit window keeps more bets but not the edge**: refitted monthly on up to 24 months the two-input blend made
+  52 bets since February 2025 (A/E 1.57) against the held weights' 116; in September 2023 to January 2025 the refits'
+  A/E was 1.12 to 1.15 against 1.37 held. Held weights stay the better choice.
+- A's weights refitted on the window came out 0.55 / 0.65 (Test 51: 0.54 / 0.67, on slightly different data) and make
+  116 bets since February 2025 against Test 55's 98: the result is sensitive to the TAB weight, as Test 55's grid showed.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
