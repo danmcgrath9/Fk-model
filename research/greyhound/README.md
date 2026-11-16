@@ -6338,6 +6338,150 @@ value of each. Comparing blends by the bets each makes at 1.3x mixes that trade-
 
 The card does not change.
 
+## Test 70: the blends at the same number of bets, and where Isolynx's gain lands (16 Nov 2026, gh topaz run 43896513552, `topaz_round52.py`)
+
+Test 69 showed that comparing blends by the bets each makes at 1.3x mixes two things: how many bets a blend makes, and
+how good its model is. Here the four blends of Test 69 are compared at the same number of bets.
+
+**The test, stated before the run.** The prices are round 50's, from both saved walks read by name, on 32,548 races
+and 228,695 runners that ran from May 2023, in 17 minutes. 9,997 of the races are at a track Isolynx covers. A runner
+has a tracked run before its race 64% of the time (85% at a tracked track).
+
+- **The ranking.** For each blend, take every candidate in the card's band (our odds 2 to 15) that has a BSP, rank them
+  by edge (TAB's first price x the blend's chance), and judge the best 50 to 1,600 since February 2025 by BSP, flat,
+  after TAB's deduction.
+- **The breakdowns.** The same in each half at half the counts, and split by the race and by the runner at 25 to 400.
+- **The forecasts.** Log loss split the same two ways.
+- **The caveat.** The counts are set over the whole period, which is a look ahead, but it is the same look ahead for
+  every blend.
+
+The tables give BSP's return per bet (price paid x BSP's chance - 1). The run log has the winners, BSP's expected
+winners, z and the realised flat ROI for every row.
+
+Since February 2025:
+
+| best | edge of the last one in, the card | the card | with Isolynx, 0.54 / 0.67 | no Isolynx, refitted | with Isolynx, refitted | standard error |
+|---|---|---|---|---|---|---|
+| 50 | 1.37 | +61.5% | +51.5% | +59.8% | +71.2% | 10.2% to 15.0% |
+| 100 | 1.30 | +46.8% | +46.8% | +43.7% | +46.4% | 8.5% to 8.6% |
+| 200 | 1.24 | +29.5% | +28.8% | +30.8% | +30.5% | 5.0% to 5.3% |
+| 400 | 1.18 | +21.4% | +21.1% | +20.4% | +20.1% | 2.9% to 3.0% |
+| 800 | 1.13 | +13.4% | +15.0% | +12.4% | +14.9% | 1.7% to 1.8% |
+| 1,600 | 1.07 | +7.2% | +8.4% | +6.8% | +8.7% | 1.1% |
+
+In each half, at half the counts:
+
+| best, Feb 2025 to Jan 2026 | edge of the last one in, the card | the card | with Isolynx, 0.54 / 0.67 | no Isolynx, refitted | with Isolynx, refitted | standard error |
+|---|---|---|---|---|---|---|
+| 25 | 1.38 | +88.2% | +72.3% | +91.1% | +100.9% | 15.6% to 26.6% |
+| 50 | 1.31 | +66.1% | +64.8% | +65.6% | +64.1% | 14.7% to 15.0% |
+| 100 | 1.25 | +38.5% | +36.3% | +39.6% | +38.9% | 8.4% to 8.5% |
+| 200 | 1.19 | +26.1% | +26.4% | +24.6% | +24.0% | 4.7% to 4.8% |
+| 400 | 1.14 | +16.0% | +18.9% | +15.7% | +17.4% | 2.7% to 2.8% |
+| 800 | 1.08 | +10.4% | +10.5% | +10.4% | +10.5% | 1.6% to 1.7% |
+
+| best, Feb 2026 on | edge of the last one in, the card | the card | with Isolynx, 0.54 / 0.67 | no Isolynx, refitted | with Isolynx, refitted | standard error |
+|---|---|---|---|---|---|---|
+| 25 | 1.34 | +30.3% | +32.7% | +35.3% | +37.8% | 11.2% to 12.5% |
+| 50 | 1.29 | +24.6% | +29.6% | +24.0% | +27.9% | 7.6% to 8.1% |
+| 100 | 1.23 | +22.6% | +22.9% | +22.1% | +22.2% | 5.7% to 6.0% |
+| 200 | 1.17 | +17.3% | +16.0% | +15.9% | +16.7% | 3.4% to 3.6% |
+| 400 | 1.12 | +10.1% | +11.1% | +10.0% | +11.4% | 2.2% to 2.3% |
+| 800 | 1.06 | +3.7% | +6.1% | +3.8% | +6.7% | 1.4% to 1.5% |
+
+Since February 2025, by the race:
+
+| best, at a tracked track | edge of the last one in, the card | the card | with Isolynx, 0.54 / 0.67 | no Isolynx, refitted | with Isolynx, refitted | standard error |
+|---|---|---|---|---|---|---|
+| 25 | 1.33 | +73.4% | +69.4% | +72.8% | +64.7% | 25.6% to 26.3% |
+| 50 | 1.27 | +40.4% | +47.0% | +40.8% | +49.3% | 14.1% to 15.2% |
+| 100 | 1.20 | +31.1% | +31.3% | +30.8% | +31.1% | 8.3% to 8.4% |
+| 200 | 1.15 | +19.1% | +21.0% | +17.5% | +18.5% | 4.6% to 4.8% |
+| 400 | 1.09 | +9.4% | +11.1% | +8.9% | +11.6% | 2.7% to 2.8% |
+
+| best, at the other tracks | edge of the last one in, the card | the card | with Isolynx, 0.54 / 0.67 | no Isolynx, refitted | with Isolynx, refitted | standard error |
+|---|---|---|---|---|---|---|
+| 25 | 1.38 | +49.7% | +61.0% | +55.0% | +67.5% | 14.8% to 15.6% |
+| 50 | 1.31 | +44.1% | +43.1% | +45.5% | +48.1% | 9.8% to 10.1% |
+| 100 | 1.26 | +28.2% | +28.4% | +28.2% | +29.4% | 5.9% to 6.2% |
+| 200 | 1.21 | +20.2% | +20.4% | +19.2% | +19.5% | 3.7% |
+| 400 | 1.15 | +14.6% | +15.6% | +14.1% | +15.4% | 2.3% |
+
+Since February 2025, by the runner:
+
+| best, runner with a tracked run before | edge of the last one in, the card | the card | with Isolynx, 0.54 / 0.67 | no Isolynx, refitted | with Isolynx, refitted | standard error |
+|---|---|---|---|---|---|---|
+| 25 | 1.39 | +70.7% | +45.3% | +79.4% | +68.0% | 13.8% to 26.7% |
+| 50 | 1.32 | +46.6% | +50.5% | +46.6% | +49.1% | 14.4% to 14.7% |
+| 100 | 1.26 | +28.4% | +31.4% | +27.2% | +32.2% | 7.9% to 8.5% |
+| 200 | 1.20 | +19.1% | +20.2% | +17.6% | +20.5% | 4.6% to 4.8% |
+| 400 | 1.15 | +12.9% | +15.2% | +12.0% | +14.8% | 2.7% |
+
+| best, runner with none | edge of the last one in, the card | the card | with Isolynx, 0.54 / 0.67 | no Isolynx, refitted | with Isolynx, refitted | standard error |
+|---|---|---|---|---|---|---|
+| 25 | 1.32 | +68.9% | +60.9% | +67.0% | +66.0% | 14.5% to 15.1% |
+| 50 | 1.27 | +38.8% | +43.3% | +42.9% | +43.6% | 9.1% to 9.9% |
+| 100 | 1.20 | +35.3% | +32.5% | +36.8% | +31.0% | 5.8% to 6.0% |
+| 200 | 1.14 | +21.7% | +22.7% | +21.5% | +21.1% | 3.7% to 3.8% |
+| 400 | 1.09 | +12.0% | +13.2% | +13.0% | +14.2% | 2.3% to 2.5% |
+
+Log loss on the winners, split by the group the winner is in (lower is better):
+
+| period | group | winners | TAB's first book | ours, no Isolynx | ours, with Isolynx | no Isolynx, 0.54 / 0.67 (the card) | with Isolynx, 0.54 / 0.67 | no Isolynx, refitted | with Isolynx, refitted | BSP |
+| May 2023 to Jan 2025 | at a tracked track | 4,571 | 1.5905 | 1.5817 | 1.5787 | 1.5576 | 1.5559 | 1.5576 | 1.5560 | 1.4930 |
+| May 2023 to Jan 2025 | at the other tracks | 8,966 | 1.6205 | 1.6061 | 1.6021 | 1.5841 | 1.5819 | 1.5841 | 1.5818 | 1.5124 |
+| May 2023 to Jan 2025 | runner with a tracked run before | 8,093 | 1.5994 | 1.5921 | 1.5625 | 1.5684 | 1.5526 | 1.5684 | 1.5519 | 1.4926 |
+| May 2023 to Jan 2025 | runner with none | 5,444 | 1.6266 | 1.6064 | 1.6413 | 1.5853 | 1.6037 | 1.5853 | 1.6047 | 1.5257 |
+| Feb 2025 on | at a tracked track | 3,469 | 1.5635 | 1.5772 | 1.5688 | 1.5437 | 1.5396 | 1.5439 | 1.5402 | 1.4779 |
+| Feb 2025 on | at the other tracks | 8,124 | 1.6032 | 1.6086 | 1.6040 | 1.5792 | 1.5772 | 1.5795 | 1.5778 | 1.5186 |
+| Feb 2025 on | runner with a tracked run before | 8,147 | 1.5870 | 1.6002 | 1.5842 | 1.5668 | 1.5588 | 1.5671 | 1.5592 | 1.4985 |
+| Feb 2025 on | runner with none | 3,446 | 1.6013 | 1.5970 | 1.6155 | 1.5728 | 1.5829 | 1.5730 | 1.5839 | 1.5252 |
+
+What it shows:
+
+- **Where the card bets, the four blends' bets are worth the same.** The card bets from an edge of 1.3, which since
+  February 2025 is about the best 100 candidates. There each blend's best 100 are worth +43.7% to +46.8% a bet by BSP,
+  with standard errors of 8.5 to 8.6 points. The best 200 and 400 agree within two points. Isolynx and the refit
+  change which dogs are picked (Test 69), not how good the picks are.
+- **Isolynx shows only further down, where the edges are thin.**
+  - At the best 800, with edges down to about 1.13: +15.0% and +14.9% a bet with Isolynx, against +13.4% and +12.4%
+    without, with a standard error of 1.7 to 1.8.
+  - At the best 1,600, with edges down to 1.07: +8.4% and +8.7%, against +7.2% and +6.8% (standard error 1.1).
+  - Most of it is since February 2026: +6.1% and +6.7% against +3.7% and +3.8% at the best 800. In the year before,
+    the best 800 are level at about +10.5%.
+  - The same small lead shows at both kinds of track and for runners with and without a tracked run. At the best 400,
+    Isolynx at 0.54 / 0.67 leads the card by 1.0 to 2.3 points, against standard errors of 2.3 to 2.8.
+  - These are overlapping sets of bets, so the gaps are not independent. The script printed no paired error, so read
+    them as a lean, not a finding.
+- **The forecasting gain is concentrated, and partly paid back.**
+  - When the winner had a tracked run before the race, ours with Isolynx gives it a much better chance: 0.0296 better
+    from May 2023 to January 2025 and 0.0160 since.
+  - When the winner had none, ours with Isolynx is worse: by 0.0349 and 0.0185. The blend follows at about half the
+    size.
+  - The net is Test 68's gain, because about 70% of the winners since February 2025 had a tracked run (8,147 of
+    11,593).
+  - By the race, the gain since February 2025 is 0.0084 at the tracked tracks and 0.0046 at the rest. Even with
+    Isolynx, ours is still behind TAB's first book at the tracked tracks (1.5688 against 1.5635) and level at the rest
+    (1.6040 against 1.6032).
+- **The split by the winner's group cannot say whether the model is wrong about untracked runners.** A model that
+  learns more about the tracked dogs moves chance toward the good ones and away from everyone else. That makes it look
+  worse whenever an untracked dog wins, even if it is right on average. But if it has learned to mark a dog down just
+  for having no tracking history, that is a fault, and a fixable one. The way to tell the two apart is calibration:
+  winners against the chances given, for the runners with and without a tracked run.
+- **One cell worth watching, not reading into.** Among runners with no tracked run, the best 400 by the Isolynx blend at
+  0.54 / 0.67 won 96 races against BSP's 112.6 expected (z -2.0). The card's best 400 there won 102 against 106.7. This
+  is one cell of many, so it may be chance.
+
+What it means: at the card's line, nothing tested since Test 68 makes the card's bets better. Isolynx makes ours a
+better forecaster, and the gain shows as a small lead in the thinner-edged bets below the card's line. Those are worth
++7% to +15% a bet by BSP. Whether to bet lower is the founder's threshold question (Tests 63 and 64). Ours still trails
+TAB's first book at the very tracks Isolynx covers, so there is more to get from the tracking.
+
+**Next:** calibration of ours with and without Isolynx. For each, winners against the chances given, for runners with
+and without a tracked run before the race, by our-odds band. And log loss by race make-up: every runner tracked, some
+tracked, none tracked. If ours with Isolynx marks dogs down just for having no tracking history, the fix (a correction
+for that group, fitted on the early months and held) is walked forward next. The card does not change.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
