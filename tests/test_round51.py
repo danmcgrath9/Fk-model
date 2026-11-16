@@ -55,3 +55,12 @@ def test_nothing_runs_without_betwatch_or_both_named_walks(tmp_path, monkeypatch
 def test_the_windows():
     assert R51.FIT == ("2023-12-01", "2024-07-01") and R51.RECENT_FIT == ("2025-02-01", "2026-02-01")
     assert R51.RECENT == [("Feb 2026 on", "2026-02-01", None)]
+
+
+def test_the_log_loss_table_reads_only_whole_races(capsys):
+    t = pd.DataFrame({"race_id": [1, 1, 2, 2], "won": [1, 0, 1, 0], "n_later": [0, 0, 0, 0],
+                      "date": pd.to_datetime(["2025-03-01"] * 4), "p_book": [0.5, 0.5, 0.25, 0.75],
+                      "p_bsp": [0.5, 0.5, 0.5, np.nan], "m": [0.8, 0.2, 0.5, 0.5]})
+    R51.ll_table(t, {"model": "m"}, [("all", None, None)])
+    out = capsys.readouterr().out
+    assert "| all | 1 | 0.6931 | 0.2231 | 0.6931 |" in out    # race 2 has no BSP on every runner: left out
