@@ -6833,6 +6833,123 @@ its favourite-longshot bias. That last is TAB's chances alone, refitted with one
 covers runner-level groups only, adds the weight change and early-speed order within the race, and uses the two-halves
 rule on each forecast. A group the card's blend gets wrong in both halves, and BSP does not, is a lean the card can use.
 
+## Test 74: what does the card's blend get wrong? The calibration scan, both halves (16 Nov 2026, gh topaz run 43917692305, `topaz_round56.py`)
+
+Test 73 judged TAB's first book before its favourite-longshot bias was removed, and most of what it found was that
+bias. This round judges five forecasts against the bias-free versions of each other.
+
+**The test, stated before the run.** Round 50's prices, on 25,130 races and 180,489 runners with nothing scratched
+after the open and a BSP on every runner, from May 2023, in 26 minutes.
+
+- **The five forecasts.**
+  - TAB's first book after its favourite-longshot bias: its chances to the power 1.226, renormalised, fitted on
+    December 2023 to June 2024 and held.
+  - The card's blend, and the blend with Isolynx, both at 0.54 / 0.67.
+  - Ours with Isolynx.
+  - BSP.
+- **The groups.** Runner-level only. The weight change and the early-speed order within the race are new here.
+- **The rule.** A lean counts only with |z| of 2 or more in both halves (May 2023 to January 2025, and since February
+  2025) and the same sign.
+
+"Days since, unknown" is the same runners as "first start" and is left out (the run log has it).
+
+Winners against the chances given, A/E (z), May 2023 to January 2025 / since February 2025:
+
+| group | value | runners | winners | TAB after its favourite bias | the card's blend | blend with Isolynx | ours with Isolynx | BSP | leans in both halves |
+|---|---|---|---|---|---|---|---|---|---|
+| GRV's tip | first tip | 25,089 | 8,297 | 1.031 (+2.7) / 1.066 (+5.0) | 0.943 (-5.2) / 0.962 (-3.1) | 0.944 (-5.1) / 0.961 (-3.2) | 0.963 (-3.3) / 0.957 (-3.5) | 0.965 (-3.2) / 0.963 (-3.1) | TAB after its favourite bias, the card's blend, blend with Isolynx, ours with Isolynx, BSP |
+| GRV's tip | second to fourth tip | 74,956 | 11,721 | 1.013 (+1.2) / 1.005 (+0.4) | 1.023 (+2.1) / 1.015 (+1.2) | 1.024 (+2.1) / 1.016 (+1.3) | 1.020 (+1.8) / 1.016 (+1.3) | 1.024 (+2.2) / 1.020 (+1.7) |  |
+| GRV's tip | not tipped | 80,444 | 5,112 | 0.924 (-4.4) / 0.904 (-5.4) | 1.050 (+2.7) / 1.030 (+1.5) | 1.048 (+2.6) / 1.030 (+1.6) | 1.019 (+1.0) / 1.037 (+1.9) | 1.005 (+0.3) / 1.016 (+0.8) | TAB after its favourite bias |
+| GRV's best bet | best bet | 6,987 | 3,098 | 1.079 (+4.3) / 1.096 (+4.7) | 0.973 (-1.6) / 0.975 (-1.3) | 0.974 (-1.6) / 0.974 (-1.4) | 1.000 (-0.0) / 0.977 (-1.3) | 1.001 (+0.1) / 0.975 (-1.4) | TAB after its favourite bias |
+| GRV's best bet | not | 173,502 | 22,032 | 0.990 (-1.3) / 0.988 (-1.4) | 1.004 (+0.5) / 1.004 (+0.4) | 1.004 (+0.5) / 1.004 (+0.4) | 1.000 (+0.0) / 1.003 (+0.4) | 1.000 (-0.0) / 1.004 (+0.4) |  |
+| box | 1 | 24,585 | 4,373 | 0.964 (-2.1) / 0.938 (-3.5) | 0.955 (-2.7) / 0.959 (-2.3) | 0.954 (-2.8) / 0.960 (-2.3) | 0.977 (-1.3) / 1.017 (+0.9) | 0.979 (-1.2) / 1.020 (+1.1) | TAB after its favourite bias, the card's blend, blend with Isolynx |
+| box | 2 | 24,448 | 3,810 | 1.074 (+3.8) / 0.959 (-2.0) | 1.057 (+3.0) / 0.962 (-1.9) | 1.056 (+2.9) / 0.964 (-1.8) | 1.049 (+2.5) / 0.981 (-0.9) | 1.045 (+2.4) / 0.983 (-0.8) |  |
+| box | 3 | 21,025 | 2,616 | 0.964 (-1.6) / 1.000 (+0.0) | 0.970 (-1.3) / 1.007 (+0.3) | 0.969 (-1.4) / 1.007 (+0.3) | 0.964 (-1.6) / 1.003 (+0.1) | 0.976 (-1.1) / 1.002 (+0.1) |  |
+| box | 4 | 24,299 | 3,197 | 1.003 (+0.1) / 1.056 (+2.4) | 1.003 (+0.2) / 1.038 (+1.7) | 1.003 (+0.1) / 1.038 (+1.7) | 0.992 (-0.4) / 1.006 (+0.3) | 0.997 (-0.1) / 1.012 (+0.5) |  |
+| box | 5 | 16,432 | 2,043 | 1.006 (+0.2) / 1.099 (+3.3) | 1.013 (+0.5) / 1.090 (+3.0) | 1.014 (+0.5) / 1.089 (+3.0) | 1.002 (+0.1) / 1.057 (+1.9) | 1.013 (+0.5) / 1.065 (+2.2) |  |
+| box | 6 | 21,429 | 2,550 | 1.004 (+0.2) / 0.980 (-0.8) | 1.013 (+0.6) / 0.963 (-1.5) | 1.016 (+0.7) / 0.961 (-1.5) | 1.006 (+0.2) / 0.928 (-2.9) | 1.008 (+0.4) / 0.939 (-2.4) |  |
+| box | 7 | 23,901 | 3,018 | 1.006 (+0.3) / 1.032 (+1.4) | 1.021 (+1.0) / 1.037 (+1.6) | 1.023 (+1.0) / 1.038 (+1.6) | 1.021 (+1.0) / 1.024 (+1.0) | 1.013 (+0.6) / 1.007 (+0.3) |  |
+| box | 8 | 24,370 | 3,523 | 0.983 (-0.8) / 1.015 (+0.7) | 0.982 (-0.9) / 1.004 (+0.2) | 0.983 (-0.8) / 1.003 (+0.1) | 0.990 (-0.5) / 0.993 (-0.3) | 0.974 (-1.3) / 0.985 (-0.7) |  |
+| starts before the race | first start | 4,465 | 631 | 0.867 (-3.1) / 0.984 (-0.3) | 0.908 (-2.1) / 0.969 (-0.6) | 0.915 (-2.0) / 0.970 (-0.6) | 0.966 (-0.7) / 0.948 (-1.0) | 0.987 (-0.3) / 0.936 (-1.3) |  |
+| starts before the race | 1 to 3 | 12,151 | 2,122 | 1.015 (+0.7) / 1.018 (+0.6) | 0.994 (-0.3) / 0.994 (-0.2) | 0.999 (-0.0) / 0.997 (-0.1) | 1.011 (+0.4) / 0.998 (-0.1) | 0.977 (-1.0) / 0.984 (-0.6) |  |
+| starts before the race | 4 to 10 | 25,903 | 4,771 | 1.053 (+3.2) / 1.045 (+2.4) | 1.031 (+1.9) / 1.019 (+1.0) | 1.034 (+2.1) / 1.019 (+1.0) | 1.045 (+2.7) / 1.024 (+1.3) | 1.037 (+2.3) / 1.021 (+1.1) | TAB after its favourite bias |
+| starts before the race | 11 or more | 137,970 | 17,606 | 0.989 (-1.2) / 0.988 (-1.2) | 0.996 (-0.4) / 0.997 (-0.3) | 0.994 (-0.6) / 0.997 (-0.3) | 0.987 (-1.4) / 0.996 (-0.4) | 0.993 (-0.8) / 0.999 (-0.1) |  |
+| days since the last run | under 8 | 110,533 | 15,436 | 1.016 (+1.6) / 1.003 (+0.3) | 1.008 (+0.8) / 1.004 (+0.4) | 1.008 (+0.8) / 1.004 (+0.4) | 0.999 (-0.1) / 1.006 (+0.6) | 1.001 (+0.1) / 1.005 (+0.5) |  |
+| days since the last run | 8 to 14 | 40,435 | 5,680 | 1.000 (+0.0) / 1.007 (+0.4) | 0.999 (-0.1) / 1.002 (+0.1) | 0.999 (-0.1) / 1.003 (+0.2) | 0.999 (-0.1) / 1.001 (+0.0) | 1.000 (-0.0) / 1.002 (+0.1) |  |
+| days since the last run | 15 to 28 | 13,985 | 1,870 | 0.936 (-2.5) / 0.978 (-0.7) | 0.950 (-1.9) / 0.985 (-0.5) | 0.951 (-1.9) / 0.983 (-0.6) | 0.966 (-1.3) / 0.987 (-0.5) | 0.958 (-1.7) / 0.991 (-0.3) |  |
+| days since the last run | 29 to 60 | 6,698 | 927 | 1.003 (+0.1) / 0.966 (-0.8) | 1.036 (+1.0) / 0.982 (-0.4) | 1.032 (+0.9) / 0.979 (-0.5) | 1.062 (+1.6) / 0.984 (-0.4) | 1.048 (+1.3) / 0.995 (-0.1) |  |
+| days since the last run | 61 or more | 4,373 | 586 | 0.993 (-0.1) / 0.990 (-0.2) | 1.045 (+0.9) / 0.984 (-0.3) | 1.044 (+0.9) / 0.977 (-0.4) | 1.089 (+1.8) / 0.952 (-0.9) | 1.051 (+1.1) / 0.930 (-1.4) |  |
+| class step | dropping in class | 25,853 | 3,925 | 1.024 (+1.3) / 1.012 (+0.6) | 1.010 (+0.5) / 1.001 (+0.1) | 1.009 (+0.5) / 1.000 (+0.0) | 1.002 (+0.1) / 1.000 (-0.0) | 0.996 (-0.2) / 0.997 (-0.1) |  |
+| class step | same class | 100,815 | 13,347 | 1.005 (+0.5) / 0.975 (-2.3) | 1.006 (+0.6) / 0.982 (-1.7) | 1.006 (+0.5) / 0.982 (-1.7) | 1.001 (+0.1) / 0.985 (-1.4) | 1.003 (+0.3) / 0.987 (-1.3) |  |
+| class step | rising in class | 35,803 | 4,989 | 0.983 (-1.0) / 1.045 (+2.4) | 0.992 (-0.5) / 1.042 (+2.3) | 0.993 (-0.4) / 1.042 (+2.3) | 1.001 (+0.1) / 1.035 (+1.9) | 1.008 (+0.5) / 1.035 (+2.0) |  |
+| class step | unknown | 18,018 | 2,869 | 0.978 (-1.1) / 1.037 (+1.4) | 0.976 (-1.2) / 1.022 (+0.9) | 0.978 (-1.1) / 1.022 (+0.9) | 0.992 (-0.4) / 1.018 (+0.7) | 0.982 (-0.9) / 1.011 (+0.4) |  |
+| the trainer's runs | under 50 | 3,914 | 477 | 0.952 (-1.0) / 0.933 (-1.1) | 0.967 (-0.7) / 0.927 (-1.2) | 0.968 (-0.6) / 0.926 (-1.2) | 0.966 (-0.7) / 0.907 (-1.5) | 0.966 (-0.7) / 0.894 (-1.8) |  |
+| the trainer's runs | 50 to 299 | 21,227 | 2,709 | 0.959 (-1.9) / 1.016 (+0.6) | 0.972 (-1.3) / 1.027 (+1.0) | 0.970 (-1.4) / 1.024 (+0.9) | 0.967 (-1.6) / 1.024 (+0.9) | 0.968 (-1.5) / 1.016 (+0.6) |  |
+| the trainer's runs | 300 to 999 | 55,585 | 7,263 | 0.987 (-1.0) / 0.986 (-0.9) | 0.993 (-0.6) / 0.993 (-0.4) | 0.992 (-0.6) / 0.992 (-0.5) | 0.990 (-0.7) / 0.990 (-0.6) | 0.991 (-0.7) / 0.990 (-0.6) |  |
+| the trainer's runs | 1,000 or more | 99,763 | 14,681 | 1.020 (+1.9) / 1.005 (+0.5) | 1.012 (+1.2) / 1.001 (+0.1) | 1.013 (+1.3) / 1.002 (+0.2) | 1.015 (+1.5) / 1.003 (+0.3) | 1.014 (+1.5) / 1.005 (+0.5) |  |
+| age | under 2 years | 25,909 | 4,912 | 1.040 (+2.5) / 1.044 (+2.4) | 1.011 (+0.7) / 1.020 (+1.1) | 1.014 (+0.9) / 1.021 (+1.2) | 1.019 (+1.2) / 1.031 (+1.7) | 1.009 (+0.6) / 1.021 (+1.2) | TAB after its favourite bias |
+| age | 2 to 3 | 87,793 | 13,260 | 1.016 (+1.6) / 0.991 (-0.8) | 1.006 (+0.6) / 0.990 (-0.9) | 1.005 (+0.5) / 0.990 (-0.9) | 1.001 (+0.1) / 0.999 (-0.1) | 1.000 (-0.0) / 0.996 (-0.4) |  |
+| age | 3 to 4 | 49,885 | 5,498 | 0.957 (-2.6) / 0.962 (-2.3) | 0.991 (-0.5) / 0.978 (-1.4) | 0.990 (-0.6) / 0.977 (-1.4) | 0.991 (-0.6) / 0.968 (-1.9) | 0.999 (-0.1) / 0.973 (-1.7) | TAB after its favourite bias |
+| age | 4 and over | 16,902 | 1,460 | 0.858 (-4.2) / 1.088 (+2.7) | 0.929 (-2.0) / 1.107 (+3.3) | 0.929 (-2.0) / 1.103 (+3.2) | 0.946 (-1.5) / 1.041 (+1.3) | 0.970 (-0.8) / 1.074 (+2.3) |  |
+| TAB's order | favourite | 25,130 | 9,797 | 1.016 (+1.5) / 1.027 (+2.4) | 0.992 (-0.8) / 1.013 (+1.1) | 0.990 (-0.9) / 1.008 (+0.8) | 1.090 (+8.1) / 1.115 (+9.6) | 0.998 (-0.2) / 1.003 (+0.3) | ours with Isolynx |
+| TAB's order | second | 25,130 | 5,411 | 0.995 (-0.3) / 0.968 (-1.8) | 0.998 (-0.1) / 0.972 (-1.6) | 0.997 (-0.2) / 0.972 (-1.6) | 1.025 (+1.5) / 0.999 (-0.1) | 0.987 (-0.9) / 0.957 (-2.6) |  |
+| TAB's order | third | 25,130 | 3,686 | 1.009 (+0.5) / 0.980 (-0.9) | 1.026 (+1.2) / 0.987 (-0.6) | 1.027 (+1.3) / 0.988 (-0.5) | 1.002 (+0.1) / 0.955 (-2.1) | 1.028 (+1.4) / 0.990 (-0.5) |  |
+| TAB's order | fourth and longer | 105,099 | 6,236 | 0.975 (-1.5) / 0.998 (-0.1) | 0.999 (-0.0) / 1.013 (+0.7) | 1.002 (+0.1) / 1.019 (+1.1) | 0.870 (-8.6) / 0.879 (-7.3) | 0.999 (-0.1) / 1.042 (+2.3) | ours with Isolynx |
+| the weight change | down 0.5 kg or more | 11,460 | 1,486 | 0.991 (-0.3) / 1.018 (+0.5) | 1.010 (+0.3) / 1.034 (+1.0) | 1.009 (+0.3) / 1.032 (+0.9) | 1.015 (+0.5) / 1.032 (+0.9) | 1.011 (+0.3) / 1.034 (+1.0) |  |
+| the weight change | within 0.5 kg | 141,106 | 20,053 | 1.008 (+1.0) / 1.008 (+0.9) | 1.003 (+0.4) / 1.006 (+0.7) | 1.003 (+0.3) / 1.006 (+0.7) | 1.000 (+0.0) / 1.007 (+0.7) | 1.001 (+0.1) / 1.009 (+1.0) |  |
+| the weight change | up 0.5 kg or more | 12,793 | 1,634 | 0.940 (-2.1) / 0.906 (-3.1) | 0.946 (-2.0) / 0.910 (-3.0) | 0.947 (-1.9) / 0.908 (-3.0) | 0.950 (-1.8) / 0.908 (-3.0) | 0.950 (-1.8) / 0.907 (-3.1) | TAB after its favourite bias |
+| the weight change | unknown | 15,130 | 1,957 | 0.980 (-0.8) / 0.988 (-0.4) | 1.011 (+0.4) / 0.994 (-0.2) | 1.012 (+0.5) / 0.995 (-0.2) | 1.030 (+1.2) / 0.988 (-0.4) | 1.027 (+1.1) / 0.965 (-1.2) |  |
+| the early-speed order | most early speed | 25,106 | 5,313 | 1.073 (+4.6) / 1.017 (+1.0) | 1.029 (+1.9) / 0.980 (-1.2) | 1.030 (+2.0) / 0.980 (-1.2) | 1.040 (+2.6) / 0.986 (-0.8) | 1.037 (+2.5) / 0.992 (-0.5) |  |
+| the early-speed order | second | 25,000 | 4,203 | 0.989 (-0.6) / 1.001 (+0.0) | 0.969 (-1.8) / 0.988 (-0.6) | 0.969 (-1.8) / 0.988 (-0.6) | 0.969 (-1.7) / 0.997 (-0.1) | 0.967 (-1.9) / 0.988 (-0.7) |  |
+| the early-speed order | third | 24,787 | 3,683 | 1.008 (+0.4) / 0.983 (-0.8) | 1.004 (+0.2) / 0.978 (-1.1) | 1.004 (+0.2) / 0.979 (-1.0) | 1.001 (+0.1) / 0.983 (-0.8) | 0.996 (-0.2) / 0.978 (-1.1) |  |
+| the early-speed order | fourth and later | 98,444 | 10,868 | 0.977 (-1.9) / 0.997 (-0.3) | 1.005 (+0.4) / 1.022 (+1.8) | 1.004 (+0.3) / 1.022 (+1.7) | 0.997 (-0.3) / 1.015 (+1.2) | 1.001 (+0.1) / 1.019 (+1.5) |  |
+| the early-speed order | unknown | 7,152 | 1,063 | 0.917 (-2.5) / 1.015 (+0.4) | 0.930 (-2.1) / 0.999 (-0.0) | 0.937 (-1.9) / 1.001 (+0.0) | 0.960 (-1.2) / 0.985 (-0.4) | 0.960 (-1.2) / 0.975 (-0.6) |  |
+
+What it shows:
+
+- **Once its favourite-longshot bias is removed, TAB's first book still leans in eight places in both halves.**
+  - Wins more than TAB says:
+    - GRV's first tip: 1.031 and 1.066.
+    - GRV's best bet: 1.079 and 1.096.
+    - Dogs with 4 to 10 starts: 1.053 and 1.045.
+    - Dogs under two years old: 1.040 and 1.044.
+  - Wins less than TAB says:
+    - Untipped dogs: 0.924 and 0.904.
+    - Box 1: 0.964 and 0.938.
+    - Dogs 3 to 4 years old: 0.957 and 0.962.
+    - Dogs up 0.5 kg or more: 0.940 and 0.906.
+  - TAB's opening price follows the form a little less than it should, and it does not follow GRV's tips enough.
+  - Ours, which reads the form and the tips, takes out most of this. The card's blend has none of these leans in both
+    halves except two.
+- **The card's blend has two leans in both halves.**
+  - **GRV's first tip wins less than the blend says**: 0.943 (z -5.2) and 0.962 (z -3.1).
+    - Ours with Isolynx shares it (0.963, 0.957), and so does BSP (0.965, 0.963, z -3.2 and -3.1).
+    - TAB's first price is on the other side, slightly long on the first tip.
+    - So the market over-bets GRV's first tip by the jump, ours over-rates it, and the blend over-rates it most.
+    - Where the card bets a first tip because TAB is long on it, part of the edge is not there. BSP cannot show that,
+      because BSP leans the same way, so BSP's verdict on those bets is a few points too kind. Only the results can
+      judge them.
+  - **Box 1 wins less than the blend says**: 0.955 (z -2.7) and 0.959 (z -2.3).
+    - The blend with Isolynx shares it and TAB's first book has it (0.964, 0.938).
+    - Ours with Isolynx does not (0.977, 1.017), and neither does BSP (0.979, 1.020).
+    - The blend takes this lean from TAB's opening price, and BSP is fair on box 1. That is the kind of lean the card
+      can use: a box-1 dog the card bets is a little less likely than it thinks, and BSP's verdict can see it.
+- **Ours with Isolynx alone is too flat**: its favourites win 1.090 and 1.115 times what it says, and its fourth and
+  longer 0.870 and 0.879. This is why the blend's two weights add to more than one (0.54 + 0.67). Nothing new.
+- **Some single-half leans are shared by every forecast, BSP included.** Dogs up 0.5 kg or more win 0.906 to 0.910
+  times what every forecast says since February 2025 (BSP z -3.1), and 0.940 to 0.950 before. Box 5 is at 1.057 to
+  1.099 since February 2025 and level before. A lean the market's closing price shares can only be judged by the
+  results.
+
+What it means: two leans in the card's blend hold in both halves. The first tip is over-rated by the blend and by BSP.
+Box 1 is over-rated by the blend, taken from TAB, and not by BSP. Both are small, 4 to 6%. Test 72 showed a lean of
+that size moves few dogs across 1.3x. Both are worth checking on the card's bets directly before any change.
+
+**Next:** the card's bets split by the leans:
+- **The split.** First tip or not, box 1 or not, and up 0.5 kg or more or not.
+- **The judges.** Realised results and BSP's verdict, in each half.
+- **The fix.** The blend with a term for each lean, fitted on Test 51's window and held, judged as Test 72 was.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
