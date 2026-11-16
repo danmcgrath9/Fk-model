@@ -77,7 +77,8 @@ def prepare(d: str, t0: float) -> pd.DataFrame:
     return t[full].reset_index(drop=True)
 
 
-def calibration(t: pd.DataFrame, mk: pd.Series) -> None:
+def calibration(t: pd.DataFrame, mk: pd.Series, models: dict = None) -> None:
+    models = MODELS if models is None else models
     tracked = (t.iso_runs.fillna(0) > 0).values
     cells = [("every runner tracked", "all", None), ("some tracked", "a tracked run before", True),
              ("some tracked", "none", False), ("none tracked", "all", None)]
@@ -89,7 +90,7 @@ def calibration(t: pd.DataFrame, mk: pd.Series) -> None:
             g = p & (mk == race).values & (np.ones(len(t), bool) if flag is None else tracked == flag)
             if not g.any():
                 continue
-            for name, col in MODELS.items():
+            for name, col in models.items():
                 s = ae(t.won.values[g], t[col].values[g])
                 print(f"| {pname} | {race} | {rname} | {name} | {s['n']:,} | {s['w']:,} | {s['e']:,.1f} | "
                       f"{s['ae']:.3f} | {s['z']:+.1f} |")
@@ -114,16 +115,17 @@ def by_band(t: pd.DataFrame, mk: pd.Series) -> None:
                           f"{s['ae']:.3f} | {s['z']:+.1f} |")
 
 
-def ll_make_up(t: pd.DataFrame, mk: pd.Series) -> None:
+def ll_make_up(t: pd.DataFrame, mk: pd.Series, models: dict = None) -> None:
+    models = MODELS if models is None else models
     w = (t.won == 1).values
-    print("| period | race make-up | races | " + " | ".join(MODELS) + " |\n|" + "---|" * (len(MODELS) + 3))
+    print("| period | race make-up | races | " + " | ".join(models) + " |\n|" + "---|" * (len(models) + 3))
     for pname, lo, hi in PERIODS:
         p = R36.in_period(t, lo, hi) & w
         for race in ("every runner tracked", "some tracked", "none tracked"):
             g = t[p & (mk == race).values]
             if len(g):
                 print(f"| {pname} | {race} | {g.race_id.nunique():,} | "
-                      + " | ".join(f"{R50.ll(g, c):.4f}" for c in MODELS.values()) + " |")
+                      + " | ".join(f"{R50.ll(g, c):.4f}" for c in models.values()) + " |")
 
 
 def main(d, label):
