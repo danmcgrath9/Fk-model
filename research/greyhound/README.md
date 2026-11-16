@@ -7294,6 +7294,103 @@ What it means for the founder's two decisions:
   model at the same multiplier is not safe at that bank size.
 - **These are recommendations; the decisions are the founder's.** The card does not change.
 
+## Test 78: where does the first-tip edge live? Mapped by the corrected BSP (16 Nov 2026, gh topaz run 43937688156, `topaz_round60.py`)
+
+Tests 75 to 77 found that the card's edge since February 2025 is GRV's first tip priced long at TAB's open, and that
+the fair judge of those bets is BSP corrected for its first-tip lean. This round maps that edge.
+
+**The test, stated before the run.** The card's blend's 1,932 first-tip candidates from 1.1x, in the card's band, flat
+at TAB's first price after TAB's deduction, on round 58's field, in 21 minutes.
+
+- **The judge.** The corrected BSP's return per bet with its standard error in each half, beside the realised flat
+  ROI.
+- **The slices.** GRV's best bet, TAB's order, our odds, the edge, TAB's book, the hours from TAB's first price to the
+  jump, track, box, grade, the field and the dog's starts.
+- **The rule.** A slice is strong or weak only if it is two standard errors from all first-tip candidates in both
+  halves. It is a map, not a rule.
+
+| slice | value | candidates | corrected BSP per bet, to Jan 2025 | since Feb 2025 | realised flat ROI, to Jan 2025 | since Feb 2025 | the card's bets since Feb 2025 | verdict |
+|---|---|---|---|---|---|---|---|---|
+| all first tips | | 1,932 | +14.9% (1.5%) | +6.0% (1.6%) | +2.5% | +7.9% | 85 | |
+| GRV's best bet | best bet | 668 | +9.5% (1.7%) | +7.0% (2.8%) | +11.3% | +15.8% | 40 |  |
+| GRV's best bet | not | 1,264 | +17.4% (2.1%) | +5.5% (1.9%) | -1.6% | +3.2% | 45 |  |
+| TAB's order | favourite | 614 | +14.3% (1.6%) | +8.0% (2.3%) | +25.2% | +4.4% | 9 |  |
+| TAB's order | second | 554 | +11.5% (1.9%) | +7.0% (2.3%) | -9.7% | +15.0% | 18 |  |
+| TAB's order | third or longer | 764 | +18.3% (3.8%) | +4.3% (2.9%) | -12.1% | +5.3% | 58 |  |
+| our odds | 2 to 3 | 869 | +13.9% (1.4%) | +7.7% (1.8%) | +17.9% | +13.6% | 29 |  |
+| our odds | 3 to 5 | 785 | +10.4% (1.7%) | +5.6% (2.4%) | -12.1% | +13.3% | 39 |  |
+| our odds | 5 to 8 | 204 | +38.3% (13.3%) | +3.8% (7.0%) | +18.3% | -21.6% | 13 |  |
+| our odds | 8 to 15 | 74 | +26.2% (13.6%) | +1.8% (9.7%) | -100.0% | -2.3% | 4 |  |
+| the edge | 1.1 to 1.2 | 1,332 | +7.0% (1.2%) | +0.7% (1.5%) | -0.5% | +8.6% | 0 | weak |
+| the edge | 1.2 to 1.3 | 401 | +21.1% (2.5%) | +7.7% (3.2%) | +6.5% | -12.4% | 0 |  |
+| the edge | 1.3 to 1.5 | 173 | +35.4% (4.8%) | +28.5% (7.2%) | +7.9% | +53.1% | 72 | strong |
+| the edge | 1.5 and over | 26 | +190.3% (76.8%) | +107.4% (46.2%) | +61.5% | -5.3% | 13 | strong |
+| TAB's book at its first price | under 125% | 201 | +29.3% (6.2%) | +15.1% (5.3%) | +23.9% | +3.9% | 19 |  |
+| TAB's book at its first price | 125 to 135% | 1,325 | +15.0% (1.8%) | +5.9% (2.1%) | -1.5% | +11.8% | 45 |  |
+| TAB's book at its first price | 135 to 145% | 402 | +7.4% (2.8%) | +1.9% (2.7%) | +10.2% | +1.3% | 21 |  |
+| TAB's book at its first price | 145% and over | 4 | -12.9% (19.2%) | -2.9% | -23.3% | -100.0% | 0 |  |
+| hours from TAB's first price to the jump | under 6 | 270 | +9.6% (3.5%) | +2.5% (3.5%) | +7.8% | +4.3% | 10 |  |
+| hours from TAB's first price to the jump | 6 to 12 | 916 | +12.6% (2.8%) | +5.6% (2.6%) | +4.8% | +12.1% | 50 |  |
+| hours from TAB's first price to the jump | 12 to 24 | 589 | +16.9% (2.2%) | +4.1% (2.2%) | -7.2% | +5.1% | 20 |  |
+| hours from TAB's first price to the jump | 24 and over | 157 | +25.4% (3.3%) | +39.3% (9.7%) | +11.9% | -8.5% | 5 | strong |
+| track | GEL | 186 | +14.0% (3.1%) | +4.0% (4.1%) | -7.5% | +7.2% | 5 |  |
+| track | WGL | 177 | +17.6% (3.7%) | +5.6% (5.1%) | +25.1% | -16.3% | 8 |  |
+| track | WBL | 231 | +14.2% (2.8%) | +4.0% (3.4%) | +15.9% | +31.0% | 7 |  |
+| track | BAL | 185 | +11.9% (3.6%) | +5.4% (5.1%) | -6.4% | +22.5% | 9 |  |
+| track | BEN | 185 | +19.6% (4.5%) | +4.8% (4.2%) | +6.4% | +2.3% | 4 |  |
+| track | HVL | 202 | +9.6% (3.5%) | +4.5% (4.4%) | -15.8% | +18.9% | 14 |  |
+| track | SHP | 115 | +36.9% (21.2%) | +9.2% (6.3%) | -5.5% | +6.4% | 4 |  |
+| track | SLE | 122 | -1.5% (3.2%) | +1.8% (5.8%) | -37.5% | -3.7% | 6 |  |
+| track | HOR | 107 | +20.9% (4.3%) | +2.7% (6.0%) | +29.7% | +13.1% | 8 |  |
+| track | MEP | 107 | +12.4% (7.7%) | +15.2% (11.6%) | +3.8% | -15.6% | 6 |  |
+| track | other tracks | 315 | +14.7% (2.7%) | +8.6% (4.2%) | +6.0% | +9.4% | 14 |  |
+| box | 1 | 319 | +12.6% (2.6%) | +7.2% (6.8%) | -7.3% | +11.8% | 9 |  |
+| box | 2 | 293 | +18.4% (3.2%) | -0.4% (3.4%) | +18.6% | +32.7% | 15 |  |
+| box | 3 | 171 | +24.7% (10.7%) | +1.6% (5.1%) | +0.1% | -2.8% | 7 |  |
+| box | 4 | 255 | +9.8% (2.6%) | +5.3% (4.0%) | -2.7% | -24.6% | 9 |  |
+| box | 5 | 167 | +12.6% (6.1%) | +11.4% (4.9%) | +10.3% | +8.3% | 10 |  |
+| box | 6 | 208 | +16.4% (4.2%) | +6.3% (3.9%) | -7.8% | -19.5% | 8 |  |
+| box | 7 | 219 | +14.3% (3.2%) | +10.5% (4.4%) | +18.2% | +29.6% | 11 |  |
+| box | 8 | 300 | +13.0% (3.3%) | +6.4% (3.7%) | -3.4% | +18.6% | 16 |  |
+| grade | grade 4 or better | 267 | +9.9% (3.1%) | +6.8% (3.5%) | -7.7% | -4.4% | 18 |  |
+| grade | grade 5 | 924 | +13.7% (1.7%) | -1.4% (1.7%) | -2.9% | +11.0% | 32 |  |
+| grade | grade 6, 7, novice | 375 | +10.9% (2.3%) | +4.1% (3.2%) | -0.9% | +23.1% | 19 |  |
+| grade | maiden | 281 | +23.7% (6.5%) | +32.5% (8.8%) | +26.5% | -5.3% | 11 |  |
+| grade | unknown | 85 | +26.4% (7.5%) | +23.6% (8.0%) | +10.8% | -1.7% | 5 |  |
+| the field at the bet | 6 or fewer | 461 | +23.7% (5.4%) | +16.0% (3.9%) | +1.0% | +23.6% | 22 |  |
+| the field at the bet | 7 | 711 | +10.8% (1.7%) | +1.0% (2.2%) | +2.5% | -1.2% | 32 | weak |
+| the field at the bet | 8 | 760 | +14.0% (1.9%) | +3.6% (2.4%) | +3.3% | +5.7% | 31 |  |
+| starts before the race | under 4 | 270 | +24.3% (7.9%) | +31.3% (7.4%) | +17.3% | +25.6% | 24 |  |
+| starts before the race | 4 to 10 | 435 | +10.0% (2.1%) | +7.3% (2.9%) | +15.8% | -1.0% | 27 |  |
+| starts before the race | 11 to 30 | 661 | +14.9% (2.1%) | +0.5% (2.2%) | -1.2% | +9.9% | 18 |  |
+| starts before the race | 31 or more | 566 | +13.9% (2.0%) | -0.6% (2.2%) | -9.7% | +5.0% | 16 |  |
+
+What it shows:
+
+- **The only strong features in both halves are the edge itself and the races priced a day ahead.**
+  - **The edge.** From 1.3 to 1.5 the first tips are worth +35.4% and +28.5% a bet by the corrected judge, and from 1.5
+    up +190% and +107% (on 26 candidates). From 1.1 to 1.2 they are worth +7.0% and +0.7%, which is weak.
+  - **Races priced a day ahead.** Races TAB first priced 24 hours or more before the jump are strong: +25.4% and
+    +39.3% a bet. But they are 157 candidates in three and a half years and 5 of the card's bets since February 2025.
+    Realised, they are +11.9% and -8.5%.
+  - Both confirm what is known. The card's 1.3x line is where the first-tip value starts (Test 77), and the night-before
+    market was the softest (Test 67), though it has almost gone.
+- **One weak slice, probably chance.** First tips in a field of 7 are weak in both halves: +10.8% and +1.0%, against
+  +14.9% and +6.0% for all. With about 50 slices in two halves, one weak pair by chance is no surprise. Fields of 6 or
+  fewer lean the other way (+23.7% and +16.0%) without passing the rule.
+- **Two leads that pass in one half only: young dogs and maidens.**
+  - First tips with fewer than 4 starts are worth +24.3% and +31.3% a bet, and won +17.3% and +25.6% realised.
+  - Maidens are worth +23.7% and +32.5%.
+  - Both are strong since February 2025 and short of the bar before 2025. They are 24 and 11 of the card's bets since
+    February 2025, so the card already takes them.
+  - Test 74 points the same way: TAB's first book under-rates dogs with 4 to 10 starts and dogs under two years old.
+- **Nothing else separates.** GRV's best bet or not, TAB's order, our odds, TAB's book, the track and the box are all
+  within the noise in at least one half.
+
+What it means: the card's first-tip bets are not hiding a sub-rule that does better. Their value rises with the edge,
+and the card's 1.3x line already cuts at the right place. The young-dog and maiden lead is the one to watch on the
+tracker, not one to bet on. The card does not change.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
