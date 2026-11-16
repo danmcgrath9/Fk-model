@@ -6235,6 +6235,109 @@ February 2025, and judge the card's rule and BSP's verdict again on the same rac
 Isolynx on the nightly card would also need a nightly Isolynx pull for the day's dogs, and that is the founder's call
 once the bets show the gain.
 
+## Test 69: the blend refitted for ours with Isolynx (16 Nov 2026, gh topaz run 43892090235, `topaz_round51.py`)
+
+Test 68 found that Isolynx makes ours a better forecaster, but the card's bets came out the same by BSP. Those bets used
+the held weights, 0.54 ours and 0.67 TAB, which Test 51 fitted for ours without Isolynx. The idea was that a better ours
+deserves more weight. This round refits the weights.
+
+**The test, stated before the run.** Both of round 50's saved walks were read by name, so the prices are round 50's
+exactly: 32,548 races and 228,695 runners that ran from May 2023, in 17 minutes. Each version of ours was blended with
+TAB's first book at weights fitted on Test 51's window, December 2023 to June 2024, on races with nothing scratched
+after the open. The judges are the ones Test 68 used. The refit without Isolynx checks that the fit is the one Test 51
+made. As a second test, the weights were fitted on February 2025 to January 2026 and judged on February 2026 on only.
+
+The first attempt, run 43887079972, stopped at the log-loss table. Under pandas copy-on-write the mask was a read-only
+array. The weights had already been fitted, and they match this run's.
+
+The weights:
+
+| blend | fitted on | ours | TAB |
+|---|---|---|---|
+| both | Test 51, held | 0.54 | 0.67 |
+| no Isolynx | Dec 2023 to Jun 2024 | 0.55 | 0.65 |
+| with Isolynx | Dec 2023 to Jun 2024 | 0.57 | 0.62 |
+| no Isolynx | Feb 2025 to Jan 2026 | 0.40 | 0.84 |
+| with Isolynx | Feb 2025 to Jan 2026 | 0.44 | 0.79 |
+
+Log loss on winners, in races with nothing scratched after the open and a BSP on every runner (lower is better):
+
+| period | races | TAB's first book | no Isolynx, 0.54 / 0.67 | with Isolynx, 0.54 / 0.67 | no Isolynx, refitted | with Isolynx, refitted | BSP |
+|---|---|---|---|---|---|---|---|
+| May 2023 to Jan 2025 | 13,537 | 1.6104 | 1.5752 | 1.5731 | 1.5752 | 1.5731 | 1.5059 |
+| Feb 2025 to Jan 2026 | 6,083 | 1.5901 | 1.5666 | 1.5636 | 1.5669 | 1.5641 | 1.5108 |
+| Feb 2026 on | 5,510 | 1.5926 | 1.5708 | 1.5686 | 1.5710 | 1.5692 | 1.5017 |
+| Feb 2025 on | 11,593 | 1.5913 | 1.5686 | 1.5659 | 1.5688 | 1.5665 | 1.5065 |
+
+The card's rule at 1.3x since February 2025, at TAB's first price after TAB's deduction (the run log has each period):
+
+| blend | bets | winners | A/E vs the price taken | z | flat ROI | Kelly ROI | units won | months in profit |
+|---|---|---|---|---|---|---|---|---|
+| no Isolynx, 0.54 / 0.67 (the card) | 98 | 32 | 1.670 | +3.3 | +47.1% | +64.0% | +83 | 16 of 22 |
+| with Isolynx, 0.54 / 0.67 | 92 | 31 | 1.721 | +3.5 | +63.3% | +78.0% | +97 | 14 of 22 |
+| no Isolynx, refitted | 116 | 32 | 1.455 | +2.4 | +24.2% | +55.4% | +81 | 16 of 22 |
+| with Isolynx, refitted | 148 | 39 | 1.424 | +2.5 | +24.6% | +63.5% | +119 | 14 of 22 |
+
+BSP's verdict since February 2025 (price paid x BSP's chance - 1):
+
+| blend | flat from 1.1x: bets | BSP's return per bet | its standard error | units | flat from 1.3x: bets | BSP's return per bet | its standard error | units | card's Kelly stakes: units staked | BSP's units | per unit staked |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| no Isolynx, 0.54 / 0.67 (the card) | 1,120 | +9.7% | 1.4% | +108.3 | 96 | +46.1% | 8.8% | +44.3 | 124 | +71.2 | +57.5% |
+| with Isolynx, 0.54 / 0.67 | 1,140 | +11.1% | 1.4% | +126.3 | 89 | +48.8% | 9.3% | +43.4 | 117 | +62.3 | +53.1% |
+| no Isolynx, refitted | 1,197 | +9.1% | 1.4% | +108.8 | 114 | +41.3% | 7.8% | +47.0 | 141 | +77.6 | +55.1% |
+| with Isolynx, refitted | 1,453 | +9.2% | 1.2% | +134.2 | 143 | +36.5% | 6.8% | +52.2 | 179 | +83.6 | +46.8% |
+
+The second fit, February 2025 to January 2026, judged on February 2026 on (5,510 races in the log loss):
+
+| blend | log loss | 1.3x: bets | winners | realised flat ROI | BSP's return per bet | from 1.1x: bets with a BSP | BSP's return per bet | its standard error | BSP's units |
+|---|---|---|---|---|---|---|---|---|---|
+| no Isolynx, 0.54 / 0.67 | 1.5708 | 41 | 14 | +65.9% | +27.4% | 503 | +7.1% | 2.0% | +35.5 |
+| with Isolynx, 0.54 / 0.67 | 1.5686 | 47 | 17 | +90.4% | +27.6% | 539 | +9.4% | 1.8% | +50.7 |
+| no Isolynx, fitted Feb 2025 to Jan 2026 | 1.5692 | 5 | 1 | -30.0% | +72.3% | 94 | +18.5% | 4.1% | +17.4 |
+| with Isolynx, fitted Feb 2025 to Jan 2026 | 1.5676 | 10 | 5 | +190.0% | +64.5% | 181 | +17.9% | 3.6% | +32.4 |
+
+(In the 1.3x columns, BSP's return per bet is over the bets with a BSP: 39, 44, 4 and 9.)
+
+What it shows:
+
+- **The idea was wrong. A better ours does not earn much more weight.** Refitted on Test 51's window, ours with Isolynx
+  gets 0.57 and TAB 0.62, against the held 0.54 and 0.67. The refit without Isolynx comes back at 0.55 and 0.65, close
+  to Test 51's, so the fit is the same one.
+- **The refit forecasts no better than the held weights.** Out of sample, from February 2025, it is 0.0006 worse with
+  Isolynx (1.5665 against 1.5659) and 0.0002 worse without. Before 2025 the two are equal, as expected, because the fit
+  window is inside that period.
+- **The refit makes more bets, each worth less.** With Isolynx, refitted, the card's rule makes 148 bets since February
+  2025 against the card's 98, with 73 dogs in common.
+  - By BSP, on the card's own stakes, they are worth 83.6 units on 179 staked, against 71.2 on 124. That is more in
+    total, but +46.8% a unit staked against +57.5%. Flat at 1.3x it is +36.5% a bet against +46.1%.
+  - Realised, it won +119 Kelly units against +83, at an A/E of 1.424 against 1.670.
+  - This is the stake-and-threshold question of Tests 63 and 64 again, not a better model. More weight on ours means
+    more disagreement with TAB, so more dogs clear 1.3x.
+- **The weights that forecast best are not the ones that bet best.** The fit on the last year puts much more weight on
+  TAB: 0.79 to 0.84 against 0.67. It forecasts February 2026 on better than the held weights: 0.0016 better without
+  Isolynx, 0.0010 better with. That is Test 67's sharper TAB showing up in the weights.
+  - At the card's 1.3x, those weights make 5 and 10 bets in nine and a half months. The held weights make 41 and 47.
+  - By BSP, the few bets are worth more each (+64% to +72%, on 4 and 9 bets) and less in total.
+  - From 1.1x it is the same picture: 181 bets at +17.9% each with Isolynx (+32.4 units), against 539 at +9.4% at the
+    held weights (+50.7 units).
+- **Every blend's bets at 1.3x are still worth a lot by BSP**, +36% to +49% a bet flat since February 2025. Nothing here
+  says the card is wrong. What it does not show is a way to make the card's bets better, rather than just more or
+  fewer of them.
+
+What it means: Test 68 still stands. Isolynx makes ours a better forecaster, and the held weights already suit it. No
+refit helps. Each weighting and threshold picks a different point on one trade-off between the number of bets and the
+value of each. Comparing blends by the bets each makes at 1.3x mixes that trade-off with how good the model is.
+
+**Next:**
+- Compare the blends at the same number of bets. For each, rank its candidates in the card's odds band by edge, and
+  judge the best 50, 100, 200, 400 and 800 since February 2025 by BSP. A better model gives better bets at every count.
+  The counts are set over the whole period, which looks ahead, but they are the same for every blend, so the comparison
+  is fair.
+- Split the same comparison by whether the race is at one of the five tracks Isolynx covers. The gain should be where
+  the tracking is.
+
+The card does not change.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
