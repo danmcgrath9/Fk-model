@@ -5772,6 +5772,71 @@ needs the drawdown first. Next: the stake sizes at 1.3x on the held blend, with 
 worst. That is the card's stake, Kelly on the model, the same at half size, and one unit flat. The measures are the
 worst drawdown as a share of a 75-unit bank, the longest losing run, months in profit and the worst month.
 
+## Test 64: what each stake would have cost at its worst (16 Nov 2026, gh topaz run 43823743198, `topaz_round46.py`)
+
+Test 63: at the card's 1.3x, Kelly on the held blend's own chance stakes three times the card's units on the same 98
+bets and makes about two and a half times the units. How much to stake is the founder's call on risk. These are the
+risks, on the held blend at 1.3x, every race from February 2025 at TAB's first price after TAB's deduction (17,205
+races; 25 minutes), for three stakes:
+
+- **the card's stake**: Kelly on half the model's chance and half TAB's book, x75, capped at 4 units
+- **Kelly on the model's own chance**: x75, capped at 4
+- **one unit flat**
+
+The "x75" makes a unit 1/75 of the bank, so the card's stake is full Kelly on the shrunk chance and the 4-unit cap is
+5.3% of the bank. Half of any stake halves every unit figure here. The units in section 1 count all 98 bets. Test 63
+counted the 96 with a BSP, which is why the card reads +82.6 here against +68.9 there: the two bets with no BSP won
+13.7 units.
+
+1. As it happened:
+
+| period | stake | bets | units staked | biggest stake | units won | per unit staked | BSP's units | worst drawdown, units | as a share of a 75-unit bank | longest losing run | months in profit | worst month, units |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 to Jan 2026 | the card's stake | 57 | 70 | 3.6 | +43.6 | +62.0% | +48.8 | 8.6 | 11% | 7 | 8 of 12 | -4.9 |
+| Feb 2025 to Jan 2026 | Kelly on the model | 57 | 219 | 4.0 | +85.8 | +39.2% | +127.8 | 38.5 | 51% | 7 | 7 of 12 | -16.0 |
+| Feb 2025 to Jan 2026 | one unit flat | 57 | 57 | 1.0 | +19.1 | +33.5% | +33.6 | 10.3 | 14% | 7 | 7 of 12 | -4.0 |
+| Feb 2026 on | the card's stake | 41 | 59 | 4.0 | +39.1 | +66.3% | +22.4 | 11.7 | 16% | 6 | 8 of 10 | -7.5 |
+| Feb 2026 on | Kelly on the model | 41 | 154 | 4.0 | +117.6 | +76.2% | +38.6 | 21.3 | 28% | 6 | 8 of 10 | -13.8 |
+| Feb 2026 on | one unit flat | 41 | 41 | 1.0 | +27.0 | +65.9% | +10.7 | 6.0 | 8% | 6 | 8 of 10 | -4.0 |
+| Feb 2025 on | the card's stake | 98 | 129 | 4.0 | +82.6 | +64.0% | +71.2 | 11.7 | 16% | 7 | 16 of 22 | -7.5 |
+| Feb 2025 on | Kelly on the model | 98 | 373 | 4.0 | +203.4 | +54.5% | +166.4 | 42.7 | 57% | 7 | 15 of 22 | -16.0 |
+| Feb 2025 on | one unit flat | 98 | 98 | 1.0 | +46.1 | +47.1% | +44.3 | 11.7 | 16% | 7 | 15 of 22 | -4.0 |
+
+2. What BSP says could have happened: 10,000 replays of the same 96 bets with a BSP, at the same prices and stakes,
+each dog winning with BSP's chance (Test 62: BSP is fair to the held blend's bets from 1.1 to 1.5, though too generous
+above 1.5):
+
+| stake | bets with a BSP | median units won | 5th percentile | 95th percentile | chance of being behind | median worst drawdown | 95th percentile worst drawdown | as a share of a 75-unit bank |
+|---|---|---|---|---|---|---|---|---|
+| the card's stake | 96 | +71.2 | +16.7 | +128.6 | 1.6% | 16.7 | 32.8 | 44% |
+| Kelly on the model | 96 | +166.2 | +22.4 | +318.3 | 2.7% | 50.6 | 97.5 | 130% |
+| one unit flat | 96 | +43.7 | +4.6 | +86.3 | 3.2% | 13.6 | 25.9 | 35% |
+
+What it shows:
+
+- **The card's stake is the best of the three for the risk it takes.** In the replays its median is +71.2 units with
+  a 95th-percentile worst drawdown of 32.8, which is 2.2 units of profit for every unit of bad-case drawdown. Kelly on
+  the model makes +166.2 for 97.5 (1.7), and one unit flat +43.7 for 25.9 (1.7). The card's stake is shrunk halfway
+  to TAB's book, so it puts its money where the edge is surest and less on the biggest claimed edges.
+- **Kelly on the model's own chance is too big for a 75-unit bank.** Its 95th-percentile worst drawdown is 97.5
+  units, 130% of the bank. Staked this way on fixed units, a bad 22 months goes through the whole bank. As it
+  happened its worst drawdown was 42.7 units (57%) against the card's 11.7 (16%), and its worst month was -16.0 units
+  against -7.5. At half size (half of every figure) it would make a median +83 units for a bad-case drawdown of
+  49 (65% of the bank). That is 17% more than the card's +71 for half as much drawdown again (the card's is 33,
+  44%). The card's own stake made more for less.
+- **Every stake is very likely ahead after 22 months, if BSP's chances are right.** The chance of being behind is
+  1.6% for the card's stake, 2.7% for Kelly on the model and 3.2% flat. The card's 5th percentile is +16.7 units.
+  These replays take BSP as the truth, and above an edge of 1.5 BSP has been too generous (Test 62). Kelly on the
+  model stakes its most there, so its replays flatter it most.
+- **Even the card's stake is full Kelly, and full Kelly is a rough ride.** Its 95th-percentile worst drawdown is 44%
+  of a 75-unit bank and its median 22% (16.7 units). As it happened it was 16%. A unit of 1/150 of the bank (half
+  Kelly) halves those to 22% and 11% for half the profit.
+
+What it means: no change to the shape of the card's stake. It is the most efficient of the three, and Kelly on the
+model's own chance is not worth its drawdowns. How big a unit is against the bank is the founder's call: at 1/75 of
+the bank the card has a 1-in-20 chance of a drawdown of more than 44% over 22 months, and at 1/150 the same chance of
+more than 22%.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
