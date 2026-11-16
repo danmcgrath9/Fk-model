@@ -6614,6 +6614,133 @@ group, by the card's rule at 1.3x, by BSP's verdict, and at the same numbers of 
 same way slightly, BSP's verdict may under-credit the tracked dogs a little, so the realised results sit beside it. The
 card does not change.
 
+## Test 72: the blend with a term for the tracked dogs (16 Nov 2026, gh topaz run 43906295854, `topaz_round54.py`)
+
+Test 71 found that in a mixed race TAB's first price under-rates the dogs with a tracked run, and the card's blend
+shares the lean. This round adds a third input to the blend: 1 for a runner with a tracked run before the race, 0
+without.
+
+**The test, stated before the run.** The term only moves chance between the tracked and untracked dogs within a mixed
+race; it changes nothing where every runner is tracked, or none is.
+
+- **The fit.** The term is fitted with the other two weights on Test 51's window (December 2023 to June 2024) and held,
+  for ours without and with Isolynx.
+- **The prices.** Round 50's, on 32,548 races at TAB's first price, in 17 minutes.
+- **The judges.** The same as Tests 69 to 71.
+
+The weights:
+
+| ours | blend | ours | TAB | the term | a tracked dog's chance in a mixed race, times |
+|---|---|---|---|---|---|
+| no Isolynx | refitted | 0.55 | 0.65 | | |
+| no Isolynx | refitted with the term | 0.55 | 0.65 | +0.080 | 1.084 |
+| with Isolynx | refitted | 0.57 | 0.62 | | |
+| with Isolynx | refitted with the term | 0.57 | 0.62 | +0.003 | 1.003 |
+
+Log loss on the winners, races with nothing scratched after the open and a BSP on every runner (lower is better):
+
+| period | races | TAB's first book | no Isolynx, 0.54 / 0.67 (the card) | with Isolynx, 0.54 / 0.67 | no Isolynx, refitted | with Isolynx, refitted | no Isolynx, refitted with the term | with Isolynx, refitted with the term | BSP |
+|---|---|---|---|---|---|---|---|---|---|
+| May 2023 to Jan 2025 | 13,537 | 1.6104 | 1.5752 | 1.5731 | 1.5752 | 1.5731 | 1.5744 | 1.5731 | 1.5059 |
+| Feb 2025 to Jan 2026 | 6,083 | 1.5901 | 1.5666 | 1.5636 | 1.5669 | 1.5641 | 1.5662 | 1.5641 | 1.5108 |
+| Feb 2026 on | 5,510 | 1.5926 | 1.5708 | 1.5686 | 1.5710 | 1.5692 | 1.5709 | 1.5692 | 1.5017 |
+| Feb 2025 on | 11,593 | 1.5913 | 1.5686 | 1.5659 | 1.5688 | 1.5665 | 1.5684 | 1.5665 | 1.5065 |
+
+Winners against the chances given, in the mixed races (the run log has every blend):
+
+| period | race make-up | runners | model | runners | winners | expected | A/E | z |
+|---|---|---|---|---|---|---|---|---|
+| May 2023 to Jan 2025 | some tracked | a tracked run before | no Isolynx, 0.54 / 0.67 (the card) | 33,382 | 4,772 | 4,585.3 | 1.041 | +3.2 |
+| May 2023 to Jan 2025 | some tracked | a tracked run before | no Isolynx, refitted | 33,382 | 4,772 | 4,585.3 | 1.041 | +3.2 |
+| May 2023 to Jan 2025 | some tracked | a tracked run before | with Isolynx, refitted | 33,382 | 4,772 | 4,692.2 | 1.017 | +1.4 |
+| May 2023 to Jan 2025 | some tracked | a tracked run before | no Isolynx, refitted with the term | 33,382 | 4,772 | 4,700.8 | 1.015 | +1.2 |
+| May 2023 to Jan 2025 | some tracked | a tracked run before | with Isolynx, refitted with the term | 33,382 | 4,772 | 4,695.9 | 1.016 | +1.3 |
+| May 2023 to Jan 2025 | some tracked | none | no Isolynx, 0.54 / 0.67 (the card) | 32,133 | 4,240 | 4,426.7 | 0.958 | -3.3 |
+| May 2023 to Jan 2025 | some tracked | none | no Isolynx, refitted | 32,133 | 4,240 | 4,426.7 | 0.958 | -3.3 |
+| May 2023 to Jan 2025 | some tracked | none | with Isolynx, refitted | 32,133 | 4,240 | 4,319.8 | 0.982 | -1.4 |
+| May 2023 to Jan 2025 | some tracked | none | no Isolynx, refitted with the term | 32,133 | 4,240 | 4,311.2 | 0.983 | -1.3 |
+| May 2023 to Jan 2025 | some tracked | none | with Isolynx, refitted with the term | 32,133 | 4,240 | 4,316.1 | 0.982 | -1.3 |
+| Feb 2025 on | some tracked | a tracked run before | no Isolynx, 0.54 / 0.67 (the card) | 33,642 | 4,663 | 4,554.2 | 1.024 | +1.9 |
+| Feb 2025 on | some tracked | a tracked run before | no Isolynx, refitted | 33,642 | 4,663 | 4,554.1 | 1.024 | +1.9 |
+| Feb 2025 on | some tracked | a tracked run before | with Isolynx, refitted | 33,642 | 4,663 | 4,594.0 | 1.015 | +1.2 |
+| Feb 2025 on | some tracked | a tracked run before | no Isolynx, refitted with the term | 33,642 | 4,663 | 4,653.7 | 1.002 | +0.2 |
+| Feb 2025 on | some tracked | a tracked run before | with Isolynx, refitted with the term | 33,642 | 4,663 | 4,597.3 | 1.014 | +1.1 |
+| Feb 2025 on | some tracked | none | no Isolynx, 0.54 / 0.67 (the card) | 22,558 | 3,099 | 3,207.8 | 0.966 | -2.2 |
+| Feb 2025 on | some tracked | none | no Isolynx, refitted | 22,558 | 3,099 | 3,207.9 | 0.966 | -2.2 |
+| Feb 2025 on | some tracked | none | with Isolynx, refitted | 22,558 | 3,099 | 3,168.0 | 0.978 | -1.4 |
+| Feb 2025 on | some tracked | none | no Isolynx, refitted with the term | 22,558 | 3,099 | 3,108.3 | 0.997 | -0.2 |
+| Feb 2025 on | some tracked | none | with Isolynx, refitted with the term | 22,558 | 3,099 | 3,164.7 | 0.979 | -1.4 |
+
+The card's rule at 1.3x since February 2025, at TAB's first price after TAB's deduction:
+
+| period | blend | bets | winners | A/E vs the price taken | z | flat ROI | Kelly ROI | units won | months in profit | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 on | no Isolynx, 0.54 / 0.67 (the card) | 98 | 32 | 1.670 | +3.3 | +47.1% | +64.0% | +83 | 16 of 22 | 67.7% | +0.255 |
+| Feb 2025 on | no Isolynx, refitted | 116 | 32 | 1.455 | +2.4 | +24.2% | +55.4% | +81 | 16 of 22 | 66.7% | +0.217 |
+| Feb 2025 on | with Isolynx, refitted | 148 | 39 | 1.424 | +2.5 | +24.6% | +63.5% | +119 | 14 of 22 | 63.6% | +0.181 |
+| Feb 2025 on | no Isolynx, refitted with the term | 123 | 30 | 1.315 | +1.7 | +9.8% | +45.4% | +70 | 13 of 22 | 63.6% | +0.168 |
+| Feb 2025 on | with Isolynx, refitted with the term | 149 | 39 | 1.418 | +2.5 | +23.8% | +63.2% | +119 | 14 of 22 | 63.9% | +0.185 |
+
+The same rule on the card's own Kelly stakes, by BSP, since February 2025:
+
+| period | model | bets with a BSP | Kelly units staked | realised Kelly units | BSP's return, Kelly units | BSP's return per unit staked |
+|---|---|---|---|---|---|---|
+| Feb 2025 on | no Isolynx, 0.54 / 0.67 (the card) | 96 | 124 | +68.9 | +71.2 | +57.5% |
+| Feb 2025 on | no Isolynx, refitted | 114 | 141 | +66.8 | +77.6 | +55.1% |
+| Feb 2025 on | with Isolynx, refitted | 143 | 179 | +96.5 | +83.6 | +46.8% |
+| Feb 2025 on | no Isolynx, refitted with the term | 121 | 148 | +54.2 | +76.6 | +51.8% |
+| Feb 2025 on | with Isolynx, refitted with the term | 144 | 179 | +96.0 | +83.7 | +46.8% |
+
+The best N candidates by edge since February 2025, BSP's return per bet, flat (the run log has the halves):
+
+| best | the card | no Isolynx, refitted | no Isolynx, with the term | with Isolynx, refitted | with Isolynx, with the term | standard error |
+|---|---|---|---|---|---|---|
+| 50 | +61.5% | +59.8% | +63.0% | +71.2% | +71.2% | 14.8% to 15.2% |
+| 100 | +46.8% | +43.7% | +45.0% | +46.4% | +46.4% | 8.5% to 8.8% |
+| 200 | +29.5% | +30.8% | +25.9% | +30.5% | +30.6% | 5.0% to 5.3% |
+| 400 | +21.4% | +20.4% | +20.5% | +20.1% | +20.2% | 3.0% |
+| 800 | +13.4% | +12.4% | +14.4% | +14.9% | +14.7% | 1.8% |
+| 1,600 | +7.2% | +6.8% | +7.3% | +8.7% | +8.9% | 1.1% |
+
+What it shows:
+
+- **For ours with Isolynx, the fit wants no term**: +0.003, a tracked dog's chance times 1.003. Its blend's lean was
+  small on the fit window (1.018 and 0.980 across the whole of May 2023 to January 2025), and the term does not change
+  any number in the tables beyond rounding.
+- **For ours without Isolynx, the term does what it was built to do.** It is fitted at +0.080, a tracked dog's chance
+  in a mixed race times 1.084.
+  - It takes the blend's calibration since February 2025 from 1.024 and 0.966 to 1.002 and 0.997, which is closer to 1
+    than BSP's 1.008 and 0.989.
+  - Log loss improves by 0.0004 since February 2025 against the same blend without the term (1.5684 against 1.5688),
+    and by 0.0002 against the card. That is still 0.0019 to 0.0025 behind the blends with Isolynx.
+  - The term needs only whether a dog has a tracked run, which is close to whether it has raced at a tracked track
+    since October 2022. That can be read from the race history, without a nightly Isolynx pull.
+- **It does not make the card's bets better.**
+  - At the card's 1.3x since February 2025 it makes 123 bets, against the card's 98, with an A/E of 1.315 and +70 Kelly
+    units, against 1.670 and +83.
+  - By BSP it is worth +36.3% a bet flat and 76.6 units on the card's stakes, against +46.1% and 71.2.
+  - At the same number of bets it is level with the blend without the term, within a standard error, at every count:
+    +45.0% against +43.7% at the best 100, +25.9% against +30.8% at the best 200, +14.4% against +12.4% at the best
+    800.
+  - A shift of a few per cent in the chance of whole groups moves few dogs across an edge of 1.3.
+
+What it means: the lean is real and the term removes it, but the card's bets do not live there. Tests 68 to 72 close
+the Isolynx question:
+
+- **Isolynx makes ours a better forecaster.** It is closer to BSP in every period, level with TAB's first book, and
+  calibrated across tracked and untracked dogs.
+- **No version of it changes the value of the bets at the card's line.** Its lead is a small one in the thinner-edged
+  bets below the card's line.
+- **The card stays as it is.** Putting Isolynx on the nightly card would make the card's prices better without making
+  its bets better. That is the founder's call, and it needs a nightly Isolynx pull.
+
+**Next:** Test 71's method, turned on TAB's opening price itself. The tracked-dog lean was found by checking TAB's
+calibration across a group. The same check across other groups is a direct search for where TAB's opening price is
+wrong, which is where an edge at the open has to come from.
+- **The groups.** Tips, box, first starters, class steps, days since the last run, and the trainer.
+- **The rule, stated before the run.** A lean counts only if both halves (May 2023 to January 2025, and since
+  February 2025) agree with |z| of 2 or more.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
