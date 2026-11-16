@@ -9,14 +9,6 @@
    "note": "",
    "bets": [
     {
-     "race": 3,
-     "time": "2:30PM",
-     "horse": "The Sheriff",
-     "price": "$34",
-     "units": "0.77u",
-     "scr": true
-    },
-    {
      "race": 5,
      "time": "3:30PM",
      "horse": "Hollerasaurous",
