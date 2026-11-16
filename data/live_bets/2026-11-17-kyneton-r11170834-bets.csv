@@ -1,0 +1,9 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,KYNE_171126_1,Voltrix,top_pick,1.55,1.55,2.7,2.7,,2.2,0.225,"Already run to today's class; New career-best last start; Third-up, improving; Proven wet on a wet track; Late 600 beyond the tempo; Blinkers first time",1.0,no,,
+2,KYNE_171126_2,Ravens Glow,top_pick,3.2,3.2,2.4,2.4,,4.14,-0.42,; EARLY ONLY: bet near the open,1.0,no,,
+4,KYNE_171126_4,Beast Fighter,top_pick,4.2,4.2,12.0,12.0,,3.64,2.295,Blinkers first time,1.0,no,,
+5,KYNE_171126_5,Bow Ribbon,top_pick,3.7,3.7,5.0,5.0,,3.95,0.265,,1.0,no,,
+5,KYNE_171126_5,Hollerasaurous,value_20c,19.0,19.0,26.0,26.0,,14.79,0.758,,0.58,no,,
+6,KYNE_171126_6,Winter Nights,top_pick,1.95,1.95,2.5,2.5,,2.77,-0.096,Class drop (rating),1.0,no,,
+7,KYNE_171126_7,Hotspur Reale,top_pick,3.8,3.8,7.5,7.5,,5.04,0.488,,1.0,no,,
+8,KYNE_171126_8,Bliss Bomb,top_pick,2.6,2.6,2.6,2.6,,2.42,0.073,,1.0,no,,

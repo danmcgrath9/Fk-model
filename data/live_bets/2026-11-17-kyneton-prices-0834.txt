@@ -1,0 +1,114 @@
+# Kyneton Tue 17 Nov, official going, final fields; no market yet; PROVISIONAL: 22 runners without a rider
+1, Tandarra, SCR
+1, Tufflee, 0, 0
+1, Rentier, 0, 0
+1, Berardo, 0, 0
+1, Doolin, 0, 0
+1, Magna Peak, 0, 0
+1, Kirkstone, 0, 0
+1, Slugger, 0, 0
+1, Gordacious, 0, 0
+1, Contarini, 0, 0
+1, Cosmic Voyage, 0, 0
+1, Crimson Storm, 0, 0
+1, Voltrix, 0, 0
+1, Lilac Storm, 0, 0
+2, Charlotte's Web, 0, 0
+2, La Shadow, 0, 0
+2, Angel Don't Cry, SCR
+2, Ravens Glow, 0, 0
+2, Oak Park Mia, 0, 0
+2, Dear Heart, 0, 0
+2, Pretty Stylish, 0, 0
+2, Spirit Of Omaha, 0, 0
+2, Cirque, 0, 0
+2, Janie's Got A Gun, 0, 0
+2, Shalwedash, 0, 0
+2, Scentrique, 0, 0
+2, Madame Petite, 0, 0
+2, Sisterly, 0, 0
+3, Tycoonette, 0, 0
+3, Blue Light Disco, 0, 0
+3, Rockbourg, 0, 0
+3, Precious Alicia, 0, 0
+3, Wyandra, 0, 0
+3, Costly Exercise, 0, 0
+3, Thundering Shadow, 0, 0
+3, The Sheriff, 0, 0
+3, Pray For Elegance, SCR
+3, Mistressof Mayfair, 0, 0
+3, Lunetta, 0, 0
+3, Victimised, 0, 0
+3, Snowy Mountains, SCR
+4, Gypsy Moon, SCR
+4, Platinum Rush, 0, 0
+4, Ghaluge, SCR
+4, Royal Business, SCR
+4, Crush Puppy, 0, 0
+4, Beast Fighter, 0, 0
+4, Silky Seth, 0, 0
+4, Thankful Smile, 0, 0
+4, Edge Of Wonder, 0, 0
+4, Pinazaki, 0, 0
+4, Saint Willo, 0, 0
+4, Lipstick Legal, SCR
+4, Exploit, 0, 0
+5, Hell's Itch, SCR
+5, Bow Ribbon, 0, 0
+5, Swycho, 0, 0
+5, Strike First, SCR
+5, Into You, 0, 0
+5, Knock Of Beers, SCR
+5, Smash Blue, 0, 0
+5, Winning Toast, 0, 0
+5, Sensational Ruler, 0, 0
+5, Black Aces, 0, 0
+5, Emanating, 0, 0
+5, Royal Heritage, SCR
+5, Hollerasaurous, 0, 0
+6, Surely Special, 0, 0
+6, Baby Rider, 0, 0
+6, Blonde Suspect, SCR
+6, Nightynight, 0, 0
+6, Women In Uniform, 0, 0
+6, Crossoverkid, 0, 0
+6, Our Smokeshow, 0, 0
+6, Grunnettan, SCR
+6, Brassi Road, SCR
+6, Reel Latino, 0, 0
+6, Share The Stars, 0, 0
+6, Cheron Finale, 0, 0
+6, Cliste, 0, 0
+6, Soul Mistress, 0, 0
+6, Winter Nights, 0, 0
+6, Olympiad, 0, 0
+7, Marlion's Dream, 0, 0
+7, Fashion Fighter, 0, 0
+7, Spinhof, SCR
+7, Divine Vicky, 0, 0
+7, Asawin, 0, 0
+7, Strike Gold, 0, 0
+7, Mickidamuzz, SCR
+7, Manchego, 0, 0
+7, Pull My Finger, SCR
+7, Nicaloha, 0, 0
+7, Romuald, 0, 0
+7, Rattle'n'roll, 0, 0
+7, O'mosa, SCR
+7, Back Up Barbie, 0, 0
+7, Hotspur Reale, 0, 0
+7, Adieu Grasse, 0, 0
+7, Eeteedee, 0, 0
+8, Adki, 0, 0
+8, Turnaquid, 0, 0
+8, Snow On Her, SCR
+8, Our Little Star, 0, 0
+8, Showtime Kistena, 0, 0
+8, Enigmatise, 0, 0
+8, Brave Carol, 0, 0
+8, Deep Joy, 0, 0
+8, Costae, 0, 0
+8, Flying Straz, 0, 0
+8, Smoke Screen, 0, 0
+8, True Spirit, SCR
+8, Bliss Bomb, 0, 0

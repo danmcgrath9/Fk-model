@@ -1,19 +1,19 @@
 1|14|Tandarra|True|False
-1|7|Tufflee|False|False
+1|7|Tufflee|False|True
 1|5|Rentier|False|False
 1|1|Berardo|False|False
-1|3|Doolin|False|False
-1|13|Magna Peak|False|False
+1|3|Doolin|False|True
+1|13|Magna Peak|False|True
 1|11|Kirkstone|False|False
 1|6|Slugger|False|False
-1|4|Gordacious|False|False
+1|4|Gordacious|False|True
 1|9|Contarini|False|False
-1|2|Cosmic Voyage|False|False
+1|2|Cosmic Voyage|False|True
 1|10|Crimson Storm|False|False
 1|8|Voltrix|False|False
 1|12|Lilac Storm|False|False
 2|1|Charlotte's Web|False|False
-2|5|La Shadow|False|False
+2|5|La Shadow|False|True
 2|14|Angel Don't Cry|True|False
 2|8|Ravens Glow|False|False
 2|6|Oak Park Mia|False|False
@@ -25,31 +25,31 @@
 2|10|Shalwedash|False|False
 2|9|Scentrique|False|False
 2|12|Madame Petite|False|False
-2|13|Sisterly|False|False
+2|13|Sisterly|False|True
 3|9|Tycoonette|False|False
 3|1|Blue Light Disco|False|False
 3|7|Rockbourg|False|False
 3|6|Precious Alicia|False|False
-3|4|Wyandra|False|False
+3|4|Wyandra|False|True
 3|2|Costly Exercise|False|False
 3|8|Thundering Shadow|False|False
-3|3|The Sheriff|False|False
-3|12|Pray For Elegance|True|False
+3|3|The Sheriff|False|True
+3|12|Pray For Elegance|True|True
 3|10|Mistressof Mayfair|False|False
 3|5|Lunetta|False|False
 3|11|Victimised|False|False
-3|13|Snowy Mountains|True|False
+3|13|Snowy Mountains|True|True
 4|13|Gypsy Moon|True|False
 4|8|Platinum Rush|False|False
 4|11|Ghaluge|True|False
 4|12|Royal Business|True|False
 4|7|Crush Puppy|False|False
 4|1|Beast Fighter|False|False
-4|2|Silky Seth|False|False
-4|9|Thankful Smile|False|False
+4|2|Silky Seth|False|True
+4|9|Thankful Smile|False|True
 4|3|Edge Of Wonder|False|False
-4|5|Pinazaki|False|False
-4|6|Saint Willo|False|False
+4|5|Pinazaki|False|True
+4|6|Saint Willo|False|True
 4|10|Lipstick Legal|True|False
 4|4|Exploit|False|False
 5|12|Hell's Itch|True|False
@@ -58,11 +58,11 @@
 5|10|Strike First|True|False
 5|6|Into You|False|False
 5|13|Knock Of Beers|True|False
-5|7|Smash Blue|False|False
+5|7|Smash Blue|False|True
 5|3|Winning Toast|False|False
 5|2|Sensational Ruler|False|False
-5|1|Black Aces|False|False
-5|8|Emanating|False|False
+5|1|Black Aces|False|True
+5|8|Emanating|False|True
 5|11|Royal Heritage|True|False
 5|4|Hollerasaurous|False|False
 6|5|Surely Special|False|False
@@ -74,9 +74,9 @@
 6|1|Our Smokeshow|False|False
 6|14|Grunnettan|True|False
 6|15|Brassi Road|True|False
-6|7|Reel Latino|False|False
+6|7|Reel Latino|False|True
 6|10|Share The Stars|False|False
-6|8|Cheron Finale|False|False
+6|8|Cheron Finale|False|True
 6|6|Cliste|False|False
 6|11|Soul Mistress|False|False
 6|2|Winter Nights|False|False
@@ -86,10 +86,10 @@
 7|17|Spinhof|True|False
 7|11|Divine Vicky|False|False
 7|8|Asawin|False|False
-7|7|Strike Gold|False|False
+7|7|Strike Gold|False|True
 7|16|Mickidamuzz|True|False
-7|4|Manchego|False|False
-7|14|Pull My Finger|True|False
+7|4|Manchego|False|True
+7|14|Pull My Finger|True|True
 7|5|Nicaloha|False|False
 7|6|Romuald|False|False
 7|1|Rattle'n'roll|False|False
