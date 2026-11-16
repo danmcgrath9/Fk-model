@@ -108,14 +108,15 @@ def fmt(s: dict, key: str = "bsp") -> str:
     return "" if not s.get("n") else f"{s[key]:+.1%}"
 
 
-def table(t: pd.DataFrame) -> None:
+def table(t: pd.DataFrame, split: str = SPLIT, halves=("to Jan 2026", "since Feb 2026"), cuts: dict = None) -> None:
+    """One row per slice value (cuts: {name: (labels, order)}; default every slice), BSP's verdict and the result."""
     m11, paid, _ = R43.flat_candidates(t, "pb6", 1.1)
     m13 = R43.flat_candidates(t, "pb6", 1.3)[0]
-    early = (t.date < SPLIT).values
-    print("| slice | value | edge 1.1+: bets with a BSP | BSP's return per bet | its standard error | to Jan 2026 "
-          "| since Feb 2026 | realised flat ROI | winners | BSP's expected winners | edge 1.3+: bets with a BSP "
-          "| BSP's return per bet | realised flat ROI |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|")
-    for name, (lab, order) in slices(t).items():
+    early = (t.date < split).values
+    print("| slice | value | edge 1.1+: bets with a BSP | BSP's return per bet | its standard error | "
+          f"{halves[0]} | {halves[1]} | realised flat ROI | winners | BSP's expected winners | edge 1.3+: bets with a "
+          "BSP | BSP's return per bet | realised flat ROI |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|")
+    for name, (lab, order) in (slices(t) if cuts is None else cuts).items():
         for v in order:
             g = (lab == v).values
             a = R44.judged(t, m11 & g, paid)
@@ -137,6 +138,18 @@ def main(d, label):
     if not bdir or not os.path.isdir(bdir):
         print("No Betwatch files (BETWATCH_DIR): nothing to test")
         return 1
+    x = field(d, bdir, t0)
+    t = x[x.is_ran.astype(bool).values & (x.date >= R42.SINCE).values].reset_index(drop=True)
+    print(f"Every race from February 2025 at TAB's first price: {t.race_id.nunique():,} races, {len(t):,} runners "
+          f"that ran; TAB's first price time known for {t.open_t.notna().mean():.1%}. "
+          f"{(time.monotonic() - t0) / 60:.0f} minutes in.\n")
+    table(t)
+    print(f"\n{(time.monotonic() - t0) / 60:.0f} minutes")
+    return 0
+
+
+def field(d: str, bdir: str, t0: float) -> pd.DataFrame:
+    """The field at TAB's first price with the held blend, TAB's book, the field size and the open and start times."""
     a, _ = R41.ours(d, t0)
     fr = R33.load(bdir, times=(0,))
     x = R33.at_time(a, fr, 0)
@@ -149,13 +162,7 @@ def main(d, label):
     x = x.merge(ot, on="bw_race", how="left")
     x["to_jump"] = (x.start_t - x.open_t) / 3600
     x["open_hour"], x["start_hour"] = mel_hour(x.open_t), mel_hour(x.start_t)
-    t = x[x.is_ran.astype(bool).values & (x.date >= R42.SINCE).values].reset_index(drop=True)
-    print(f"Every race from February 2025 at TAB's first price: {t.race_id.nunique():,} races, {len(t):,} runners "
-          f"that ran; TAB's first price time known for {t.open_t.notna().mean():.1%}. "
-          f"{(time.monotonic() - t0) / 60:.0f} minutes in.\n")
-    table(t)
-    print(f"\n{(time.monotonic() - t0) / 60:.0f} minutes")
-    return 0
+    return x
 
 
 if __name__ == "__main__":
