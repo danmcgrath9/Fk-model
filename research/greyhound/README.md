@@ -5178,6 +5178,143 @@ rule needs no change for it. The rest of the gap to TAB's first book is in what 
 Next: what does TAB's opening book get wrong that ours could learn, fitted with TAB's opening book as its starting
 point?
 
+## Test 59: a correction fitted on top of the held blend (16 Nov 2026, gh topaz run 43801600977, `topaz_round41.py`)
+
+Test 58 left the gap to TAB's first book in what ours knows. Every blend so far is two numbers, a weight on ours and a
+weight on TAB's first book, the same in every race. Here a second model starts FROM the held blend (ours 0.54, TAB's
+first book 0.67) and learns only where the blend is wrong. It is a gradient-boosted race softmax with the blend as its
+starting point, over every input ours has plus ours and TAB's first book themselves, the gap between them, TAB's
+opening book (its overround), the share of the field scratched after the open and the field size at the bet. It was
+fitted twice, on two labels:
+
+- **on the winners**: where the blend is wrong about who wins
+- **on BSP**: where the market closes against the blend (races with a BSP on every runner that ran)
+
+Walked forward, refitted every two months from November 2024 on the races at TAB's first price before the refit month
+(Betwatch from April 2023). The number of rounds is chosen on the three months before each refit: the correction is
+fitted on the months before those and scored on the winners' log loss there, with zero rounds, which is the blend
+itself, if nothing beats it. It is then refitted on every race before the refit month with that many rounds, so
+nothing it prices has been seen. It moves only the share of the runners that ran, so a dog scratched after the open
+keeps the blend's chance. 19,371 races and 135,124 runners that ran from November 2024; 61 minutes.
+
+The refits (rounds chosen, then the winners' log loss in the three months before: the blend, then the correction):
+
+| refit | on the winners: rounds | blend to correction | on BSP: rounds | blend to correction | races fitted on |
+|---|---|---|---|---|---|
+| 2024-11 | 175 | 1.5497 to 1.5485 | 1,150 | 1.5497 to 1.5458 | 13,914 |
+| 2025-01 | 125 | 1.5455 to 1.5418 | 725 | 1.5455 to 1.5406 | 15,260 |
+| 2025-03 | 100 | 1.5719 to 1.5692 | 1,000 | 1.5719 to 1.5656 | 16,810 |
+| 2025-05 | 100 | 1.5621 to 1.5589 | 1,200 | 1.5621 to 1.5572 | 18,398 |
+| 2025-07 | 350 | 1.5492 to 1.5429 | 1,200 | 1.5492 to 1.5434 | 19,897 |
+| 2025-09 | 250 | 1.5000 to 1.4983 | 1,200 | 1.5000 to 1.4972 | 21,412 |
+| 2025-11 | 50 | 1.5106 to 1.5101 | 1,200 | 1.5106 to 1.5047 | 22,937 |
+| 2026-01 | 325 | 1.5232 to 1.5212 | 1,200 | 1.5232 to 1.5159 | 24,368 |
+| 2026-03 | 400 | 1.5215 to 1.5185 | 1,200 | 1.5215 to 1.5169 | 25,976 |
+| 2026-05 | 450 | 1.5277 to 1.5241 | 1,200 | 1.5277 to 1.5236 | 27,777 |
+| 2026-07 | 750 | 1.5483 to 1.5423 | 1,200 | 1.5483 to 1.5421 | 29,391 |
+| 2026-09 | 275 | 1.5481 to 1.5441 | 1,200 | 1.5481 to 1.5416 | 31,131 |
+| 2026-11 | 425 | 1.5111 to 1.5035 | 1,150 | 1.5111 to 1.5022 | 32,923 |
+
+(The BSP correction fits on slightly fewer races than the winners' correction, 13,825 to 32,759, because it needs a
+BSP on every runner. The races fitted on are the winners' correction's.)
+
+What each correction leans on, by mean share of its gain over the refits (the top twelve; the rest is spread thin):
+
+- **on the winners**: `track` 5%, `mkt_lsp_mean5_rel` 3%, ours 3%, `mkt_lsp_mean5` 2%, `map_left_speed` 2%,
+  `last5_mean_rel` 2%, `weight_change` 2%, `mkt_prev_lsp_rel` 2%, `finish_mean5_rel` 2%, `style_gain_rel` 2%,
+  `age_days` 2%, `dam_id_place_365D` 1%
+- **on BSP**: the gap between ours and TAB's first book 6%, ours 6%, `track` 4%, `last5_mean_rel` 4%, `grade_prior` 4%,
+  TAB's first book 3%, `mkt_lsp_mean5_rel` 3%, `box` 3%, `tip_rank` 3%, `trainer_rate` 2%, `mkt_prev_lsp_rel` 2%,
+  `age_days` 2%
+
+(`mkt_lsp_mean5` and `mkt_prev_lsp` are built from the dog's starting prices in its earlier runs; `_rel` is against
+the field.)
+
+Log loss on races with nothing scratched after the open, winners only, races with a BSP on every runner (lower is
+better):
+
+| period | races | TAB's first book | blend, held | correction on the winners | correction on BSP | BSP |
+|---|---|---|---|---|---|---|
+| Nov 2024 to Jan 2025 | 2,002 | 1.5958 | 1.5665 | 1.5641 | 1.5618 | 1.5120 |
+| Feb 2025 to Jan 2026 | 6,083 | 1.5901 | 1.5666 | 1.5648 | 1.5617 | 1.5108 |
+| Feb 2026 on | 5,510 | 1.5926 | 1.5708 | 1.5667 | 1.5643 | 1.5017 |
+| Feb 2025 on | 11,593 | 1.5913 | 1.5686 | 1.5657 | 1.5629 | 1.5065 |
+
+The card's rule at 1.3x, TAB's first price, after TAB's deduction, every race:
+
+| period | blend | bets | winners | A/E vs the price taken | z | flat ROI | Kelly ROI | units won | months in profit | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Nov 2024 to Jan 2025 | blend, held | 9 | 1 | 0.871 | -0.1 | -27.8% | -54.2% | -4 | 0 of 3 | 66.7% | +0.252 |
+| Nov 2024 to Jan 2025 | correction on the winners | 30 | 7 | 1.607 | +1.4 | +56.1% | +72.1% | +26 | 3 of 3 | 66.7% | +0.205 |
+| Nov 2024 to Jan 2025 | correction on BSP | 48 | 9 | 1.606 | +1.6 | +17.4% | +22.6% | +14 | 2 of 3 | 79.2% | +0.305 |
+| Feb 2025 to Jan 2026 | blend, held | 57 | 18 | 1.620 | +2.4 | +33.5% | +62.0% | +44 | 8 of 12 | 68.4% | +0.322 |
+| Feb 2025 to Jan 2026 | correction on the winners | 106 | 19 | 1.051 | +0.2 | -2.3% | +1.7% | +2 | 5 of 12 | 57.5% | +0.114 |
+| Feb 2025 to Jan 2026 | correction on BSP | 169 | 30 | 1.232 | +1.3 | +7.6% | +14.0% | +29 | 6 of 12 | 60.1% | +0.111 |
+| Feb 2026 on | blend, held | 41 | 14 | 1.740 | +2.4 | +65.9% | +66.3% | +39 | 8 of 10 | 66.7% | +0.157 |
+| Feb 2026 on | correction on the winners | 95 | 21 | 1.423 | +1.8 | +20.7% | +20.9% | +21 | 6 of 10 | 61.1% | +0.101 |
+| Feb 2026 on | correction on BSP | 109 | 19 | 1.192 | +0.8 | +8.6% | +1.0% | +1 | 4 of 10 | 61.9% | +0.143 |
+| Feb 2025 on | blend, held | 98 | 32 | 1.670 | +3.3 | +47.1% | +64.0% | +83 | 16 of 22 | 67.7% | +0.255 |
+| Feb 2025 on | correction on the winners | 201 | 40 | 1.218 | +1.4 | +8.5% | +10.5% | +23 | 11 of 22 | 59.2% | +0.108 |
+| Feb 2025 on | correction on BSP | 278 | 49 | 1.216 | +1.5 | +8.0% | +8.8% | +30 | 10 of 22 | 60.8% | +0.123 |
+
+Races with nothing scratched after the open:
+
+| period | blend | bets | winners | A/E vs the price taken | z | flat ROI | Kelly ROI | units won | months in profit | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Nov 2024 to Jan 2025 | blend, held | 9 | 1 | 0.871 | -0.1 | -27.8% | -54.2% | -4 | 0 of 3 | 66.7% | +0.252 |
+| Nov 2024 to Jan 2025 | correction on the winners | 29 | 6 | 1.424 | +1.0 | +41.7% | +59.4% | +21 | 3 of 3 | 69.0% | +0.223 |
+| Nov 2024 to Jan 2025 | correction on BSP | 42 | 7 | 1.359 | +0.9 | -3.3% | +4.2% | +2 | 2 of 3 | 78.6% | +0.255 |
+| Feb 2025 to Jan 2026 | blend, held | 43 | 13 | 1.554 | +1.8 | +36.5% | +60.8% | +31 | 7 of 12 | 65.1% | +0.245 |
+| Feb 2025 to Jan 2026 | correction on the winners | 85 | 15 | 1.019 | +0.1 | +3.6% | +1.3% | +1 | 5 of 12 | 56.5% | +0.062 |
+| Feb 2025 to Jan 2026 | correction on BSP | 122 | 22 | 1.258 | +1.2 | +23.1% | +22.8% | +34 | 5 of 12 | 61.5% | +0.087 |
+| Feb 2026 on | blend, held | 35 | 12 | 1.759 | +2.2 | +70.9% | +69.6% | +33 | 8 of 10 | 63.6% | +0.156 |
+| Feb 2026 on | correction on the winners | 75 | 17 | 1.440 | +1.7 | +26.7% | +24.9% | +20 | 5 of 10 | 60.0% | +0.108 |
+| Feb 2026 on | correction on BSP | 82 | 14 | 1.147 | +0.6 | +19.6% | +0.6% | +1 | 4 of 10 | 60.8% | +0.124 |
+| Feb 2025 on | blend, held | 78 | 25 | 1.646 | +2.9 | +51.9% | +65.1% | +65 | 15 of 22 | 64.5% | +0.207 |
+| Feb 2025 on | correction on the winners | 160 | 32 | 1.206 | +1.2 | +14.4% | +12.3% | +21 | 10 of 22 | 58.1% | +0.083 |
+| Feb 2025 on | correction on BSP | 204 | 36 | 1.212 | +1.3 | +21.7% | +13.4% | +34 | 9 of 22 | 61.2% | +0.101 |
+
+Since February 2025 the held blend makes 98 bets. The correction on the winners makes 201, 64 of them the same dog (34
+bets only the held blend makes, 137 only the correction makes). The correction on BSP makes 278, 83 of them the same
+dog (15 only the held blend, 195 only the correction).
+
+What it shows:
+
+- **Both corrections forecast better than the held blend in every period, and the one fitted on BSP is the better of
+  the two.** Since February 2025 the blend's 1.5686 goes to 1.5657 on the winners and 1.5629 on BSP. The BSP
+  correction's gain, 0.0057, is about four times what refitting every two months bought in Test 58 (0.0013), and
+  about a quarter more on top of what the blend itself gained over TAB's first book (1.5913 to 1.5686, 0.0227). It
+  closes about a tenth of the blend's gap to BSP (0.0621). The table above is the honest measure, because every race
+  in it was priced before the correction saw it. All 13 refits' three-month checks show a gain as well, between 0.0005
+  and 0.0076 on the winners and between 0.0028 and 0.0089 on BSP. Those checks are the ones the rounds were chosen on,
+  so they flatter, but they point the same way in every refit.
+- **What it learns is not one thing.** The top twelve inputs carry about 28% of the winners' correction's gain and
+  about 42% of the BSP correction's, so the rest is spread thinly over the other inputs. The BSP correction's biggest
+  inputs are the disagreement itself (the gap between ours and TAB's first book, and each of them), which suggests the
+  fixed weights are wrong by different amounts in different races. Track sits near the top of both, which suggests
+  the right mix differs by track.
+- **The BSP correction was still improving when it stopped.** It ran to the 1,200-round cap in 9 of 13 refits, so a
+  higher cap may gain a little more. The winners' correction chose 50 to 750 rounds and never reached the cap.
+- **But both make the card's rule worse, not better.** At 1.3x they make two to three times the bets (201 and 278
+  since February 2025, against 98) at a much lower A/E (1.218 and 1.216, against 1.670), and they win fewer units
+  (+23 and +30 Kelly units, against +83) in fewer months (11 and 10 of 22, against 16). The closing market agrees: it
+  shortens below the price paid on 59 to 61% of their bets, against 68% of the held blend's, and the mean
+  log(price paid / BSP) roughly halves (+0.108 and +0.123, against +0.255). A correction that lowers the log loss
+  over 135,000 runners also finds many more dogs 30% over TAB's first price, and taken together those bets are far
+  weaker. The one period the corrections win is the first three months (30 and 48 bets at +56.1% and +17.4% flat,
+  against the held blend's 9 at -27.8%), which is the smallest period and too few bets to count.
+- **A better log loss over the field is again not better bets at 1.3x.** This is the second test running where a
+  better forecaster bets worse or no better. The 1.3x threshold was set long before either correction existed, and
+  the 0.54 / 0.67 weights were fitted for the held blend. A correction that spreads its chances differently is not
+  being met at its own threshold, so this does not yet say whether its best bets are better or worse than the held
+  blend's.
+
+What it means: the card stays on the held blend. The correction is the best forecaster we have at TAB's open, and the
+rule is the bottleneck. Next: rank each model's candidate bets by how far TAB's first price sits over its chance, and
+check whether the profit rises with that edge. That tells us whether a model knows where its edge is, without choosing
+a threshold for it. Also split the bets the held blend and the BSP correction share from the ones only one of them
+makes.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
