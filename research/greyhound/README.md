@@ -6950,6 +6950,141 @@ that size moves few dogs across 1.3x. Both are worth checking on the card's bets
 - **The judges.** Realised results and BSP's verdict, in each half.
 - **The fix.** The blend with a term for each lean, fitted on Test 51's window and held, judged as Test 72 was.
 
+## Test 75: the card's bets by the blend's leans, and the blend with terms for them (16 Nov 2026, gh topaz run 43923568893, `topaz_round57.py`)
+
+Test 74 found two leans in the card's blend that hold in both halves. GRV's first tip wins less than the blend says,
+and so does box 1. A third lean, dogs up 0.5 kg or more, is shared by every forecast since February 2025.
+
+**The test, stated before the run.** Round 50's prices, on 32,548 races at TAB's first price, in 17 minutes.
+
+- **The split.** The card's bets at 1.3x and the candidates from 1.1x, split by each lean, realised and by BSP, in each
+  half.
+- **The fix.** The blend with a term for each lean, fitted with the two weights on Test 51's window and held, judged as
+  Test 72 was.
+- **The caveat.** BSP shares the first-tip lean, so its verdict on first tips is a few points too kind.
+
+The weights, each term as the factor on a dog's chance:
+
+| ours | blend | ours | TAB | first tip | box 1 | up 0.5 kg or more |
+|---|---|---|---|---|---|---|
+| no Isolynx | refitted | 0.55 | 0.65 | | | |
+| no Isolynx | refitted with the terms | 0.58 | 0.66 | x0.907 | x0.987 | x0.936 |
+| with Isolynx | refitted | 0.57 | 0.62 | | | |
+| with Isolynx | refitted with the terms | 0.60 | 0.64 | x0.904 | x0.983 | x0.938 |
+
+The card's bets (held blend, no Isolynx), split by first tip and by box 1 (the run log has the weight split):
+
+| period | rule | group | in it | bets | bets with a BSP | winners | BSP's expected winners | z | realised flat ROI | BSP's return per bet | its standard error | BSP's return, units |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| May 2023 to Jan 2025 | 1.3x, the card's rule | first tip | yes | 114 | 114 | 29 | 35.8 | -1.4 | +14.0% | +59.8% | 10.8% | +68.1 |
+| May 2023 to Jan 2025 | 1.3x, the card's rule | first tip | no | 114 | 114 | 24 | 27.7 | -0.8 | +114.3% | +100.3% | 11.3% | +114.3 |
+| May 2023 to Jan 2025 | 1.3x, the card's rule | box 1 | yes | 43 | 43 | 8 | 13.9 | -2.0 | -12.9% | +67.6% | 9.3% | +29.1 |
+| May 2023 to Jan 2025 | 1.3x, the card's rule | box 1 | no | 185 | 185 | 45 | 49.5 | -0.8 | +82.1% | +82.9% | 9.5% | +153.4 |
+| May 2023 to Jan 2025 | flat from 1.1x | first tip | yes | 1,078 | 1,074 | 322 | 353.4 | -2.1 | +2.5% | +20.1% | 1.6% | +216.2 |
+| May 2023 to Jan 2025 | flat from 1.1x | first tip | no | 829 | 826 | 195 | 198.1 | -0.3 | +44.8% | +41.8% | 2.6% | +345.7 |
+| May 2023 to Jan 2025 | flat from 1.1x | box 1 | yes | 343 | 343 | 97 | 104.3 | -0.9 | +9.0% | +24.3% | 2.7% | +83.4 |
+| May 2023 to Jan 2025 | flat from 1.1x | box 1 | no | 1,564 | 1,557 | 420 | 447.3 | -1.6 | +23.6% | +30.7% | 1.7% | +478.5 |
+| Feb 2025 on | 1.3x, the card's rule | first tip | yes | 85 | 83 | 27 | 24.9 | +0.5 | +44.0% | +47.6% | 9.9% | +39.5 |
+| Feb 2025 on | 1.3x, the card's rule | first tip | no | 13 | 13 | 3 | 2.3 | +0.5 | +31.5% | +37.0% | 17.9% | +4.8 |
+| Feb 2025 on | 1.3x, the card's rule | box 1 | yes | 11 | 11 | 4 | 3.7 | +0.2 | +55.5% | +131.0% | 51.0% | +14.4 |
+| Feb 2025 on | 1.3x, the card's rule | box 1 | no | 87 | 85 | 26 | 23.5 | +0.7 | +40.6% | +35.1% | 6.9% | +29.9 |
+| Feb 2025 on | flat from 1.1x | first tip | yes | 854 | 839 | 243 | 243.4 | -0.0 | +7.9% | +11.8% | 1.6% | +99.1 |
+| Feb 2025 on | flat from 1.1x | first tip | no | 290 | 281 | 52 | 53.5 | -0.2 | +3.7% | +3.3% | 2.7% | +9.2 |
+| Feb 2025 on | flat from 1.1x | box 1 | yes | 129 | 127 | 36 | 37.3 | -0.3 | +2.9% | +11.7% | 6.1% | +14.9 |
+| Feb 2025 on | flat from 1.1x | box 1 | no | 1,015 | 993 | 259 | 259.7 | -0.0 | +7.4% | +9.4% | 1.4% | +93.5 |
+
+Log loss on the winners (lower is better):
+
+| period | races | TAB's first book | no Isolynx, 0.54 / 0.67 (the card) | no Isolynx, refitted | no Isolynx, refitted with the terms | with Isolynx, 0.54 / 0.67 | with Isolynx, refitted | with Isolynx, refitted with the terms | BSP |
+|---|---|---|---|---|---|---|---|---|---|
+| May 2023 to Jan 2025 | 13,537 | 1.6104 | 1.5752 | 1.5752 | 1.5737 | 1.5731 | 1.5731 | 1.5715 | 1.5059 |
+| Feb 2025 to Jan 2026 | 6,083 | 1.5901 | 1.5666 | 1.5669 | 1.5664 | 1.5636 | 1.5641 | 1.5635 | 1.5108 |
+| Feb 2026 on | 5,510 | 1.5926 | 1.5708 | 1.5710 | 1.5700 | 1.5686 | 1.5692 | 1.5681 | 1.5017 |
+| Feb 2025 on | 11,593 | 1.5913 | 1.5686 | 1.5688 | 1.5681 | 1.5659 | 1.5665 | 1.5657 | 1.5065 |
+
+Calibration by the three leans, A/E (z), May 2023 to January 2025 / since February 2025:
+
+| group | value | runners | winners | no Isolynx, 0.54 / 0.67 (the card) | no Isolynx, refitted | no Isolynx, refitted with the terms | with Isolynx, 0.54 / 0.67 | with Isolynx, refitted | with Isolynx, refitted with the terms | BSP | leans in both halves |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| GRV's tip | first tip | 25,089 | 8,297 | 0.943 (-5.2) / 0.962 (-3.1) | 0.947 (-4.8) / 0.966 (-2.8) | 0.983 (-1.5) / 1.004 (+0.3) | 0.944 (-5.1) / 0.961 (-3.2) | 0.946 (-4.9) / 0.962 (-3.1) | 0.983 (-1.5) / 1.001 (+0.1) | 0.965 (-3.2) / 0.963 (-3.1) | no Isolynx, 0.54 / 0.67 (the card), no Isolynx, refitted, with Isolynx, 0.54 / 0.67, with Isolynx, refitted, BSP |
+| box | 1 | 24,585 | 4,373 | 0.955 (-2.7) / 0.959 (-2.3) | 0.957 (-2.5) / 0.961 (-2.2) | 0.964 (-2.1) / 0.968 (-1.8) | 0.954 (-2.8) / 0.960 (-2.3) | 0.955 (-2.6) / 0.964 (-2.0) | 0.965 (-2.0) / 0.974 (-1.5) | 0.979 (-1.2) / 1.020 (+1.1) | no Isolynx, 0.54 / 0.67 (the card), no Isolynx, refitted, with Isolynx, 0.54 / 0.67, with Isolynx, refitted |
+| the weight change | up 0.5 kg or more | 12,793 | 1,634 | 0.946 (-2.0) / 0.910 (-3.0) | 0.946 (-2.0) / 0.910 (-3.0) | 0.989 (-0.4) / 0.952 (-1.5) | 0.947 (-1.9) / 0.908 (-3.0) | 0.947 (-1.9) / 0.908 (-3.0) | 0.989 (-0.4) / 0.950 (-1.6) | 0.950 (-1.8) / 0.907 (-3.1) |  |
+
+The card's rule at 1.3x since February 2025, at TAB's first price after TAB's deduction:
+
+| period | blend | bets | winners | A/E vs the price taken | z | flat ROI | Kelly ROI | units won | months in profit | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 on | no Isolynx, 0.54 / 0.67 (the card) | 98 | 32 | 1.670 | +3.3 | +47.1% | +64.0% | +83 | 16 of 22 | 67.7% | +0.255 |
+| Feb 2025 on | no Isolynx, refitted | 116 | 32 | 1.455 | +2.4 | +24.2% | +55.4% | +81 | 16 of 22 | 66.7% | +0.217 |
+| Feb 2025 on | no Isolynx, refitted with the terms | 91 | 28 | 1.683 | +3.1 | +42.1% | +50.4% | +56 | 12 of 21 | 63.6% | +0.243 |
+| Feb 2025 on | with Isolynx, 0.54 / 0.67 | 92 | 31 | 1.721 | +3.5 | +63.3% | +78.0% | +97 | 14 of 22 | 67.4% | +0.272 |
+| Feb 2025 on | with Isolynx, refitted | 148 | 39 | 1.424 | +2.5 | +24.6% | +63.5% | +119 | 14 of 22 | 63.6% | +0.181 |
+| Feb 2025 on | with Isolynx, refitted with the terms | 127 | 38 | 1.666 | +3.6 | +64.3% | +68.5% | +104 | 15 of 22 | 62.3% | +0.154 |
+
+The card's rule on its own Kelly stakes, by BSP, since February 2025:
+
+| period | model | bets with a BSP | Kelly units staked | realised Kelly units | BSP's return, Kelly units | BSP's return per unit staked |
+|---|---|---|---|---|---|---|
+| Feb 2025 on | no Isolynx, 0.54 / 0.67 (the card) | 96 | 124 | +68.9 | +71.2 | +57.5% |
+| Feb 2025 on | no Isolynx, refitted | 114 | 141 | +66.8 | +77.6 | +55.1% |
+| Feb 2025 on | no Isolynx, refitted with the terms | 88 | 107 | +42.5 | +57.8 | +54.2% |
+| Feb 2025 on | with Isolynx, 0.54 / 0.67 | 89 | 117 | +79.1 | +62.3 | +53.1% |
+| Feb 2025 on | with Isolynx, refitted | 143 | 179 | +96.5 | +83.6 | +46.8% |
+| Feb 2025 on | with Isolynx, refitted with the terms | 122 | 144 | +84.0 | +60.0 | +41.6% |
+
+The best N candidates by edge since February 2025, flat (BSP's return per bet / realised flat ROI):
+
+| best | the card: by BSP / realised | no Isolynx, with the terms: by BSP / realised | with Isolynx, 0.54 / 0.67: by BSP / realised | with Isolynx, with the terms: by BSP / realised | standard error by BSP |
+|---|---|---|---|---|---|
+| 50 | +61.5% / +71.4% | +62.8% / +32.0% | +51.5% / +52.2% | +46.9% / +102.8% | 10.2% to 14.9% |
+| 100 | +46.8% / +36.6% | +42.9% / +33.2% | +46.8% / +59.3% | +32.4% / +45.2% | 7.0% to 8.7% |
+| 200 | +29.5% / +1.3% | +30.1% / +27.4% | +28.8% / +25.0% | +28.4% / +43.0% | 5.0% to 5.1% |
+| 400 | +21.4% / +9.4% | +18.3% / +15.1% | +21.1% / +13.0% | +17.9% / +16.6% | 2.9% to 3.0% |
+| 800 | +13.4% / +6.6% | +10.0% / +4.0% | +15.0% / +4.7% | +10.4% / +13.6% | 1.7% to 1.8% |
+| 1,600 | +7.2% / +6.8% | +5.6% / +1.1% | +8.4% / +6.0% | +5.3% / +7.0% | 1.1% to 1.1% |
+
+What it shows:
+
+- **The card's edge is GRV's first tip, priced long at TAB's open.**
+  - Since February 2025, 85 of the card's 98 bets were GRV's first tip, and 854 of the 1,144 candidates from 1.1x.
+  - Before 2025 it was half: 114 of 228.
+  - Test 74 found that TAB's first book under-rates the first tip even after its favourite-longshot bias (1.031, then
+    1.066). The card is buying the dog GRV tips when TAB opens it long.
+  - Since February 2025 those bets have worked: 27 winners against BSP's 24.9, +44.0% realised and +47.6% by BSP.
+- **Before 2025 the first tips the card bet did worse than BSP said, and the rest did better.**
+  - First tips: 29 winners against 35.8 at 1.3x (+14.0% realised against +59.8% by BSP). From 1.1x, 322 against 353.4
+    (z -2.1), +2.5% realised against +20.1% by BSP.
+  - The others: +114.3% realised at 1.3x and +44.8% from 1.1x, in line with BSP.
+  - Since February 2025, the first tips the card bets win what BSP says (243 against 243.4 from 1.1x).
+- **Box 1 matters little to the card.** Since February 2025 it is 11 of the 98 bets. Its term barely moves (x0.987 and
+  x0.983) and leaves most of the lean in place (0.964, then 0.968).
+- **The terms make the forecast better and the bets worse by BSP.**
+  - The first-tip term comes out at x0.907 and x0.904 and the weight term at x0.936 and x0.938. Both remove their
+    leans: the first tip goes to 0.983 and 1.004, and the weight to 0.989 and 0.952.
+  - With Isolynx, the blend with the terms has the best log loss of any blend so far: 1.5657 since February 2025,
+    against 1.5659 for the blend with Isolynx at 0.54 / 0.67 and 1.5686 for the card.
+  - At the same number of bets, BSP rates the blend with Isolynx and the terms lower than the same blend without them
+    at every count. The best 100 are worth +32.4% a bet against +46.8%, and the best 800 +10.4% against +15.0%.
+  - Realised, they are better at most counts: +45.2% against +59.3% at the best 100, but +43.0% against +25.0% at 200,
+    +16.6% against +13.0% at 400, and +13.6% against +4.7% at 800.
+  - At the card's 1.3x they make 127 bets: +104 Kelly units against +97, with an A/E of 1.666 against 1.721.
+- **The two judges disagree, and BSP is the one with a known bias here.** The terms move bets away from GRV's first tips,
+  and BSP over-rates first tips (0.965, then 0.963). That alone makes BSP's verdict a few points kinder to the bets the
+  terms drop. It cannot explain the whole gap at the best 100 (14 points), but it explains part of it. The realised
+  results lean the other way, and two years of them carry the noise Test 62 measured.
+
+What it means:
+
+- **Where the card's edge comes from.** Since TAB sharpened in mid-2024 (Test 67), the edge has been GRV's first tip at
+  TAB's open.
+- **The fix is real, but its value to the bets is unproven.** Correcting the blend's over-rating of the first tip
+  improves the forecast. Whether it improves the bets depends on a judge BSP cannot be for this group.
+- **The card does not change.**
+
+**Next:** a judge without the lean. BSP's chances corrected for its own first-tip lean, by a factor fitted on one half
+and applied to the other, used to re-judge the card and the blends with the terms at 1.3x and at the same numbers of
+bets.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
