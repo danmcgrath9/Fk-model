@@ -5110,6 +5110,74 @@ What it means: Test 56's C and D are withdrawn. The blend to improve is ours + T
 since February 2025 TAB's first book beats ours alone (Test 55: 1.5913 against 1.5992). Next: does refitting ours more
 often help (the live model retrains weekly; every walk so far refits every six months)?
 
+## Test 58: does refitting ours more often help at TAB's open? (16 Nov 2026, gh topaz run 43780552370, `topaz_round40.py`)
+
+Every walk so far refits ours every six months; the live model retrains every week. Two walks over the same races from
+November 2024: ours refitted every six months (the saved walk 47fecb2b5fac8c3c, refits at 2024-11, 2025-05, 2025-11,
+2026-05) and ours refitted every two months (13 refits, 2024-11 to 2026-11, each fitted on every race before it; saved
+as walk 4b3fdaa839bc5953). Each is blended with TAB's first book at Test 51's held weights (0.54 ours, 0.67 TAB), and the
+card's rule at 1.3x is run at TAB's first price after TAB's deduction. 19,371 races and 135,124 runners that ran, from
+November 2024; 202 minutes. The six-month rows reproduce Test 55 to the bet (98 bets, 32 winners, A/E 1.670) and to the
+fourth decimal of log loss, so the two columns are the same races and the same rule.
+
+Log loss on races with nothing scratched after the open (lower is better):
+
+| period | races | ours, every six months | ours, every two months | TAB's first book | blend, six | blend, two | BSP |
+|---|---|---|---|---|---|---|---|
+| Nov 2024 to Jan 2025 | 2,002 | 1.5897 | 1.5881 | 1.5958 | 1.5665 | 1.5659 | 1.5120 |
+| Feb 2025 to Jan 2026 | 6,083 | 1.5975 | 1.5943 | 1.5901 | 1.5666 | 1.5652 | 1.5108 |
+| Feb 2026 on | 5,510 | 1.6011 | 1.5988 | 1.5926 | 1.5708 | 1.5698 | 1.5017 |
+| Feb 2025 on | 11,593 | 1.5992 | 1.5964 | 1.5913 | 1.5686 | 1.5673 | 1.5065 |
+
+The card's rule at 1.3x, TAB's first price, after TAB's deduction, every race:
+
+| period | blend | bets | winners | A/E vs the price taken | z | flat ROI | Kelly ROI | units won | months in profit | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Nov 2024 to Jan 2025 | ours every six months | 9 | 1 | 0.871 | -0.1 | -27.8% | -54.2% | -4 | 0 of 3 | 66.7% | +0.252 |
+| Nov 2024 to Jan 2025 | ours every two months | 9 | 1 | 0.825 | -0.2 | -48.9% | -33.1% | -3 | 1 of 3 | 66.7% | +0.358 |
+| Feb 2025 to Jan 2026 | ours every six months | 57 | 18 | 1.620 | +2.4 | +33.5% | +62.0% | +44 | 8 of 12 | 68.4% | +0.322 |
+| Feb 2025 to Jan 2026 | ours every two months | 56 | 17 | 1.564 | +2.1 | +28.5% | +65.2% | +49 | 7 of 12 | 66.1% | +0.327 |
+| Feb 2026 on | ours every six months | 41 | 14 | 1.740 | +2.4 | +65.9% | +66.3% | +39 | 8 of 10 | 66.7% | +0.157 |
+| Feb 2026 on | ours every two months | 47 | 13 | 1.466 | +1.6 | +38.6% | +42.6% | +23 | 5 of 10 | 64.4% | +0.175 |
+| Feb 2025 on | ours every six months | 98 | 32 | 1.670 | +3.3 | +47.1% | +64.0% | +83 | 16 of 22 | 67.7% | +0.255 |
+| Feb 2025 on | ours every two months | 103 | 30 | 1.520 | +2.6 | +33.1% | +55.8% | +72 | 12 of 22 | 65.3% | +0.259 |
+
+Races with nothing scratched after the open:
+
+| period | blend | bets | winners | A/E vs the price taken | z | flat ROI | Kelly ROI | units won | months in profit | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Nov 2024 to Jan 2025 | ours every six months | 9 | 1 | 0.871 | -0.1 | -27.8% | -54.2% | -4 | 0 of 3 | 66.7% | +0.252 |
+| Nov 2024 to Jan 2025 | ours every two months | 9 | 1 | 0.825 | -0.2 | -48.9% | -33.1% | -3 | 1 of 3 | 66.7% | +0.358 |
+| Feb 2025 to Jan 2026 | ours every six months | 43 | 13 | 1.554 | +1.8 | +36.5% | +60.8% | +31 | 7 of 12 | 65.1% | +0.245 |
+| Feb 2025 to Jan 2026 | ours every two months | 42 | 13 | 1.586 | +1.9 | +39.8% | +63.9% | +34 | 6 of 12 | 61.9% | +0.236 |
+| Feb 2026 on | ours every six months | 35 | 12 | 1.759 | +2.2 | +70.9% | +69.6% | +33 | 8 of 10 | 63.6% | +0.156 |
+| Feb 2026 on | ours every two months | 42 | 12 | 1.528 | +1.7 | +46.4% | +56.9% | +26 | 6 of 10 | 62.5% | +0.179 |
+| Feb 2025 on | ours every six months | 78 | 25 | 1.646 | +2.9 | +51.9% | +65.1% | +65 | 15 of 22 | 64.5% | +0.207 |
+| Feb 2025 on | ours every two months | 84 | 25 | 1.558 | +2.5 | +43.1% | +60.7% | +60 | 12 of 22 | 62.2% | +0.208 |
+
+Since February 2025 the two make 98 and 103 bets, 82 of them the same dog: 16 bets only the six-month blend makes and
+21 only the two-month blend makes.
+
+What it shows:
+
+- **Refitting more often makes ours a better forecaster, in every period.** Since February 2025 ours alone goes from
+  1.5992 to 1.5964 and the blend from 1.5686 to 1.5673. That is about a third of the gap to TAB's first book (0.0079
+  down to 0.0051), so ours still does not beat TAB's first book alone, and two thirds of the gap is not staleness.
+- **The bets barely move, and the rule does not get better.** 82 of about 100 bets are the same dog. The two-month
+  blend makes 103 bets at A/E 1.52 (+33.1% flat, +55.8% Kelly, +72 units, 12 of 22 months) against the six-month
+  blend's 98 at A/E 1.67 (+47.1%, +64.0%, +83 units, 16 of 22 months). The whole difference sits in the 16 and 21 bets
+  the two do not share, which is about two winners; that is well inside chance for bets at these prices, so this does
+  not say the six-month model bets better either. The closing market agrees with both about equally (BSP under the
+  price paid on 67.7% and 65.3% of bets; mean log(price paid / BSP) +0.255 and +0.259).
+- **A better forecast over the whole field is not the same as better bets at 1.3x.** The rule fires on about 100 races
+  in 22 months, where ours disagrees with TAB most; a small gain in log loss spread over 135,000 runners can leave those
+  extremes unchanged, and here it did.
+
+What it means: the live model retrains weekly, so it already has the small forecasting gain refitting buys; the card's
+rule needs no change for it. The rest of the gap to TAB's first book is in what ours knows, not in how fresh it is.
+Next: what does TAB's opening book get wrong that ours could learn, fitted with TAB's opening book as its starting
+point?
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
