@@ -5935,6 +5935,129 @@ December 2023 to June 2024, inside them, but the slices never were). Next: the t
 or more before the jump, six or fewer at the bet, 450 to 549 m), the weak slice (grade 5) and BSP's misses (maidens,
 7pm and later), stated now, on May 2023 to January 2025.
 
+## Test 66: the edge map's leads, on the Betwatch years before them (16 Nov 2026, gh topaz run 43831752302, `topaz_round48.py`)
+
+Test 65 named three leads, one weak slice and two places where BSP's own price was too short, all from February 2025
+on. Stated before this run, the same measures on the Betwatch years no slice test had looked at: April 2023 to January
+2025, 16,080 races and 114,194 runners that ran at TAB's first price, TAB's first price time known for every race. The
+held blend's two weights were fitted on December 2023 to June 2024, inside these years, but the slices never were. 17
+minutes.
+
+The slices Test 65 named, each against the rest:
+
+| slice | value | edge 1.1+: bets with a BSP | BSP's return per bet | its standard error | May 2023 to Apr 2024 | May 2024 to Jan 2025 | realised flat ROI | winners | BSP's expected winners | edge 1.3+: bets with a BSP | BSP's return per bet | realised flat ROI |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| every candidate | all | 2,057 | +29.9% | 1.4% | +35.8% | +14.2% | +22.8% | 566 | 599.1 | 248 | +80.4% | +62.3% |
+| TAB's first price to the jump | 24 hours or more | 296 | +41.7% | 3.1% | +42.4% | +28.6% | +40.3% | 86 | 90.7 | 49 | +72.8% | +49.8% |
+| TAB's first price to the jump | under 24 hours | 1,761 | +28.0% | 1.5% | +34.3% | +13.8% | +19.9% | 480 | 508.4 | 199 | +82.3% | +65.4% |
+| TAB's first price to the jump, 48 | 48 hours or more | 67 | +39.6% | 5.4% | +40.6% | +33.1% | +39.3% | 20 | 19.2 | 9 | +62.7% | -100.0% |
+| TAB's first price to the jump, 48 | under 48 hours | 1,990 | +29.6% | 1.4% | +35.6% | +13.9% | +22.2% | 546 | 579.9 | 239 | +81.1% | +68.4% |
+| field at the bet | 6 or fewer | 348 | +32.8% | 4.4% | +39.6% | +18.7% | +31.8% | 106 | 112.5 | 47 | +112.8% | +90.8% |
+| field at the bet | 7 or 8 | 1,709 | +29.4% | 1.4% | +35.1% | +13.1% | +21.0% | 460 | 486.6 | 201 | +72.8% | +55.6% |
+| distance | 450 to 549 m | 718 | +26.0% | 1.9% | +31.0% | +12.8% | +10.5% | 185 | 208.3 | 89 | +62.4% | +44.1% |
+| distance | other distances | 1,339 | +32.0% | 1.9% | +38.4% | +14.9% | +29.4% | 381 | 390.7 | 159 | +90.5% | +72.5% |
+| class | grade 5 | 878 | +29.9% | 1.9% | +35.7% | +13.2% | +18.6% | 234 | 247.1 | 106 | +73.9% | +51.8% |
+| class | maiden | 348 | +35.5% | 5.0% | +40.8% | +23.9% | +47.2% | 106 | 100.2 | 54 | +111.0% | +94.4% |
+| class | other classes | 831 | +27.7% | 1.7% | +34.0% | +10.3% | +17.1% | 226 | 251.8 | 88 | +69.5% | +55.2% |
+| Melbourne hour of the race | 7pm and later | 674 | +29.9% | 2.2% | +36.9% | +12.6% | +23.8% | 181 | 199.9 | 86 | +68.1% | +54.7% |
+| Melbourne hour of the race | before 7pm | 1,383 | +30.0% | 1.8% | +35.3% | +15.0% | +22.3% | 385 | 399.1 | 162 | +87.0% | +66.3% |
+
+The whole map on the same years:
+
+| slice | value | edge 1.1+: bets with a BSP | BSP's return per bet | its standard error | May 2023 to Apr 2024 | May 2024 to Jan 2025 | realised flat ROI | winners | BSP's expected winners | edge 1.3+: bets with a BSP | BSP's return per bet | realised flat ROI |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| track | GEL | 191 | +28.9% | 3.5% | +34.1% | +16.7% | +23.6% | 53 | 60.7 | 21 | +62.7% | +199.3% |
+| track | WBL | 264 | +32.2% | 3.7% | +40.2% | +9.4% | +21.7% | 77 | 81.0 | 29 | +99.5% | +114.6% |
+| track | WGL | 191 | +31.7% | 3.9% | +38.3% | +9.9% | +17.9% | 54 | 56.6 | 26 | +58.2% | -32.2% |
+| track | BEN | 204 | +32.9% | 3.7% | +42.8% | +9.3% | +42.9% | 65 | 57.7 | 24 | +86.4% | +50.8% |
+| track | BAL | 174 | +33.8% | 5.7% | +41.0% | +14.2% | +14.3% | 41 | 50.8 | 23 | +85.8% | +34.8% |
+| track | HVL | 217 | +21.4% | 3.5% | +24.6% | +13.1% | +4.4% | 50 | 61.4 | 26 | +25.3% | +99.6% |
+| track | TRA | 191 | +39.8% | 5.2% | +40.9% | +29.1% | +51.4% | 56 | 51.8 | 31 | +90.2% | +116.4% |
+| track | SHP | 124 | +37.9% | 10.5% | +42.7% | +25.3% | +67.6% | 39 | 32.2 | 17 | +184.4% | +35.3% |
+| track | HOR | 107 | +27.5% | 4.1% | +31.6% | +14.1% | +34.3% | 38 | 34.2 | 5 | +34.5% | +132.0% |
+| track | SLE | 98 | +17.8% | 6.6% | +29.7% | +9.7% | -20.5% | 19 | 26.5 | 11 | +88.3% | -6.7% |
+| track | MEP | 85 | +17.3% | 5.4% | +20.3% | +10.4% | -4.2% | 19 | 23.6 | 15 | +83.2% | +28.0% |
+| track | SAP | 81 | +18.1% | 4.6% | +21.9% | +9.2% | -4.6% | 22 | 25.4 | 4 | +85.8% | -100.0% |
+| track | other tracks | 130 | +33.5% | 4.0% | +34.6% | +30.7% | +14.9% | 33 | 37.1 | 16 | +53.6% | -40.6% |
+| distance | under 350 m | 118 | +19.3% | 5.1% | +20.8% | +15.0% | +9.6% | 27 | 33.8 | 10 | +21.2% | +379.0% |
+| distance | 350 to 449 m | 1,114 | +33.8% | 2.1% | +40.6% | +14.9% | +30.4% | 321 | 323.9 | 140 | +96.5% | +57.7% |
+| distance | 450 to 549 m | 718 | +26.0% | 1.9% | +31.0% | +12.8% | +10.5% | 185 | 208.3 | 89 | +62.4% | +44.1% |
+| distance | 550 m and over | 107 | +27.6% | 3.9% | +33.7% | +15.0% | +40.6% | 33 | 33.0 | 9 | +74.2% | -38.9% |
+| class | grade 4 or better | 205 | +25.5% | 3.3% | +30.4% | +13.2% | +4.2% | 50 | 60.9 | 29 | +70.7% | -3.9% |
+| class | grade 5 | 1,011 | +29.3% | 1.7% | +34.9% | +12.7% | +19.3% | 271 | 290.2 | 120 | +71.7% | +43.7% |
+| class | grade 6, 7, novice | 408 | +27.9% | 2.7% | +35.1% | +9.7% | +23.3% | 117 | 121.9 | 35 | +73.6% | +158.4% |
+| class | maiden | 348 | +35.5% | 5.0% | +40.8% | +23.9% | +47.2% | 106 | 100.2 | 54 | +111.0% | +94.4% |
+| class | unknown | 85 | +36.2% | 5.6% | +42.5% | +7.1% | +6.8% | 22 | 25.9 | 10 | +71.9% | -32.4% |
+| box | 1 | 376 | +24.1% | 2.6% | +27.6% | +12.9% | +7.4% | 104 | 115.2 | 46 | +67.3% | -6.6% |
+| box | 2 | 355 | +32.8% | 3.3% | +38.6% | +13.3% | +33.5% | 104 | 105.5 | 39 | +74.0% | +54.0% |
+| box | 3 | 223 | +37.8% | 6.5% | +45.5% | +11.9% | +15.6% | 55 | 65.2 | 32 | +103.0% | +102.4% |
+| box | 4 | 259 | +27.5% | 3.2% | +32.4% | +14.5% | +19.9% | 70 | 74.5 | 29 | +58.4% | +38.2% |
+| box | 5 | 158 | +33.4% | 5.2% | +43.8% | +8.8% | +64.2% | 51 | 44.6 | 15 | +102.5% | +150.0% |
+| box | 6 | 190 | +32.4% | 5.1% | +39.5% | +18.6% | +9.4% | 45 | 54.0 | 24 | +102.3% | +78.1% |
+| box | 7 | 212 | +28.2% | 3.7% | +33.8% | +13.8% | +20.6% | 59 | 59.2 | 31 | +73.3% | +119.0% |
+| box | 8 | 284 | +27.8% | 3.2% | +33.1% | +17.2% | +25.5% | 78 | 80.8 | 32 | +84.6% | +45.3% |
+| our odds | 2 to 3 | 673 | +17.7% | 1.2% | +22.1% | +7.4% | +12.0% | 265 | 275.4 | 54 | +48.9% | +27.2% |
+| our odds | 3 to 5 | 814 | +21.1% | 1.4% | +23.8% | +13.8% | +8.5% | 203 | 224.9 | 90 | +46.7% | +12.8% |
+| our odds | 5 to 8 | 336 | +50.7% | 5.0% | +61.0% | +23.0% | +43.3% | 67 | 67.5 | 59 | +113.0% | +35.6% |
+| our odds | 8 to 15 | 234 | +66.1% | 7.0% | +76.7% | +27.0% | +74.0% | 31 | 31.3 | 45 | +143.0% | +238.2% |
+| field at the bet | 6 or fewer | 348 | +32.8% | 4.4% | +39.6% | +18.7% | +31.8% | 106 | 112.5 | 47 | +112.8% | +90.8% |
+| field at the bet | 7 | 655 | +25.8% | 2.3% | +31.3% | +11.9% | +16.0% | 179 | 192.2 | 76 | +73.4% | +86.5% |
+| field at the bet | 8 | 1,054 | +31.6% | 1.7% | +37.3% | +13.9% | +24.0% | 281 | 294.3 | 125 | +72.5% | +36.8% |
+| scratched after the open | none | 1,835 | +29.5% | 1.5% | +35.5% | +14.8% | +20.4% | 488 | 528.6 | 218 | +81.6% | +61.0% |
+| scratched after the open | one or more | 222 | +33.9% | 3.9% | +37.8% | +1.6% | +42.8% | 78 | 70.5 | 30 | +71.9% | +71.6% |
+| TAB's book at its first price | under 115% | 9 | +52.5% | 25.2% | +85.2% | +26.3% | +61.1% | 2 | 1.9 | 7 | +65.0% | +0.0% |
+| TAB's book at its first price | 115 to 125% | 57 | +31.4% | 8.7% | +36.2% | +23.2% | +22.7% | 16 | 18.4 | 7 | +91.7% | -100.0% |
+| TAB's book at its first price | 125 to 135% | 1,658 | +31.6% | 1.6% | +36.0% | +16.7% | +22.2% | 458 | 489.7 | 197 | +85.4% | +73.5% |
+| TAB's book at its first price | 135% and over | 333 | +20.7% | 2.7% | +32.9% | +6.3% | +24.7% | 90 | 89.0 | 37 | +54.6% | +45.1% |
+| hours from TAB's first price to the jump | under 6 | 301 | +28.0% | 4.1% | +34.0% | +17.2% | +36.6% | 84 | 82.3 | 35 | +87.7% | +44.3% |
+| hours from TAB's first price to the jump | 6 to 12 | 776 | +23.0% | 2.4% | +32.0% | +12.9% | +11.7% | 211 | 223.1 | 83 | +83.4% | +38.9% |
+| hours from TAB's first price to the jump | 12 to 24 | 684 | +33.6% | 2.2% | +35.9% | +12.9% | +21.8% | 185 | 202.9 | 81 | +78.9% | +101.6% |
+| hours from TAB's first price to the jump | 24 to 48 | 229 | +42.3% | 3.6% | +42.9% | +22.8% | +40.6% | 66 | 71.5 | 40 | +75.0% | +83.4% |
+| hours from TAB's first price to the jump | 48 and over | 67 | +39.6% | 5.4% | +40.6% | +33.1% | +39.3% | 20 | 19.2 | 9 | +62.7% | -100.0% |
+| Melbourne hour TAB first priced it | midnight to 6am | 9 | +32.6% | 27.5% | +49.0% | +12.0% | +12.2% | 2 | 3.0 | 2 | +124.1% | +405.0% |
+| Melbourne hour TAB first priced it | 6am to noon | 1,182 | +23.4% | 1.9% | +31.6% | +13.7% | +19.3% | 325 | 334.5 | 124 | +80.0% | +28.0% |
+| Melbourne hour TAB first priced it | noon to 6pm | 43 | +42.3% | 7.9% | +45.9% | +19.9% | +38.1% | 14 | 13.0 | 7 | +87.7% | +0.0% |
+| Melbourne hour TAB first priced it | 6pm to midnight | 823 | +38.6% | 2.0% | +38.6% | +43.1% | +27.1% | 225 | 248.6 | 115 | +79.7% | +97.1% |
+| Melbourne hour of the race | before 4pm | 702 | +27.2% | 2.4% | +31.0% | +15.9% | +26.9% | 191 | 197.2 | 82 | +85.1% | +76.3% |
+| Melbourne hour of the race | 4pm to 7pm | 681 | +32.9% | 2.6% | +39.9% | +14.3% | +17.6% | 194 | 201.9 | 80 | +88.9% | +56.1% |
+| Melbourne hour of the race | 7pm and later | 674 | +29.9% | 2.2% | +36.9% | +12.6% | +23.8% | 181 | 199.9 | 86 | +68.1% | +54.7% |
+
+What it shows:
+
+- **One lead holds, and it is the earliest markets.** Races TAB first priced 24 hours or more before the jump are worth
+  +41.7% a bet (3.1) by BSP, against +28.0% (1.5) for the rest. That is a gap of about four standard errors, in both
+  halves (+42.4% and +28.6%, against +34.3% and +13.8%). BSP's fairness is the same on both sides (86 winners against
+  90.7, 480 against 508.4), and the result agrees (+40.3% realised, against +19.9%). At 48 hours or more it is +39.6%
+  (5.4) against +29.6%, with 20 winners where BSP expected 19.2. So in both windows, from April 2023 to November
+  2026, the races TAB first prices a day or more before the jump are the ones most worth taking at TAB's first
+  price. Under a day the bands do not rise in order (+28.0%, +23.0%, +33.6% here). That is the founder's "win long
+  term on opening", now out of sample.
+- **The other leads do not hold.** Six or fewer at the bet is +32.8% (4.4) against +29.4% (1.4), inside its standard
+  error. 450 to 549 m reverses: +26.0% against +32.0% for the other distances, and +10.5% realised against +29.4%.
+  Grade 5 is not weak here (+29.9%, against +27.7% for the other classes). BSP's miss on maidens reverses (106 winners
+  where it expected 100.2). Only BSP's miss on races from 7pm repeats (181 against 199.9, 0.91 of what it expected,
+  against 0.96 before 7pm). So Test 65's warning about false leads was right: of three leads, one survived.
+- **The edge was much bigger before 2025, and it has shrunk every year.** Judged by BSP, flat from 1.1x, the held
+  blend's candidates were worth +35.8% a bet from May 2023 to April 2024, then +14.2% from May 2024 to January 2025,
+  then +11.8% to January 2026 and +7.1% since (Test 62). There were also fewer of them: 2,057 candidates with a BSP in
+  the 22 months to January 2025, against 1,120 in the 22 months since. At 1.3x there were 248 against 96. Realised,
+  the years before February 2025 made +22.8% flat from 1.1x and +62.3% from 1.3x. Here BSP expected a few more winners
+  than came (566 against 599.1), so it flatters these years a little.
+- **TAB's first price moved from the night before to the morning.** In these years 823 of the 2,057 candidates were
+  races TAB first priced between 6pm and midnight, and they were worth +38.6% a bet (+38.6% and +43.1% in the
+  halves), against +23.4% for morning first prices. Since February 2025 there are 7 such candidates, and 1,074 of
+  1,120 are first priced between 6am and noon (Test 65). Over the same time TAB's book got bigger: 135% or more on 333
+  of 2,057 candidates before, against 409 of 1,120 since. TAB now opens later and with more margin. The shrinking
+  edge is partly that, but not only that: morning first prices themselves went from +23.4% to +8.3% a bet.
+- **One thing this cannot separate**: "TAB's first price" is the first TAB price Betwatch recorded. If Betwatch began
+  recording later in the day, that would look the same as TAB opening later. The live tracker reads the same feed,
+  so the card is judged on the same clock either way.
+
+What it means: the card's edge is real but shrinking, and it lives most in the markets TAB prices earliest. Next: the
+edge quarter by quarter, to see whether it is still falling. For each quarter, the log loss of TAB's first book, ours
+alone, the held blend and BSP, which shows whether TAB got sharper or ours got duller. Also TAB's book and how early it
+priced, and the candidates and their worth.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
