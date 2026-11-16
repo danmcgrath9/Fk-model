@@ -7215,6 +7215,85 @@ says the bets need them. The card does not change.
 **Next:** the founder's pending decisions, the threshold (Test 63) and the stake (Test 64), re-judged by the corrected
 BSP. Test 64's 10,000 replays drew each dog's win from BSP's chance, so they inherit the same lean.
 
+## Test 77: the threshold and the stake, re-judged by the corrected BSP (16 Nov 2026, gh topaz run 43932710883, `topaz_round59.py`)
+
+Two of the founder's open decisions rest on BSP's figures. The threshold question rests on Test 63, which valued the
+bets 1.2x adds at +14% a unit. The stake question rests on Test 64, whose 10,000 replays drew each dog's win from
+BSP's chance. Test 76 showed that BSP over-rates GRV's first tip, which is most of the card's bets. This round re-runs
+both tests with Test 76's corrected BSP beside BSP.
+
+**The test, stated before the run.** Round 58's field and corrected BSP, the held blend without Isolynx (the card), in 21
+minutes.
+
+- **Both judges see the same bets.** Every row is judged only on the bets that have a corrected chance, so BSP and the
+  corrected BSP rate the same bets. A few figures move from Tests 63 and 64 because of this.
+- **The stakes.** The card's stake, Kelly on the model's own chance (x75, cap 4), and in the replays one unit flat.
+
+Test 63 again, both judges:
+
+| period | stake | bets | bets judged | winners | BSP's expected | corrected expected | units staked | realised units | BSP's units | per unit | corrected units | per unit |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 to Jan 2026 | the card's stake, 1.3x | 57 | 57 | 18 | 17.6 | 17.0 | 70 | +43.6 | +48.8 | +69.5% | +45.2 | +64.4% |
+| Feb 2025 to Jan 2026 | the card's stake, 1.2x | 97 | 97 | 22 | 28.3 | 27.4 | 85 | +33.0 | +51.0 | +59.8% | +46.8 | +54.9% |
+| Feb 2025 to Jan 2026 | the card's stake, 1.2x, not 1.3x | 40 | 40 | 4 | 10.7 | 10.3 | 15 | -10.5 | +2.1 | +14.2% | +1.6 | +10.6% |
+| Feb 2025 to Jan 2026 | Kelly on the model, 1.3x | 57 | 57 | 18 | 17.6 | 17.0 | 219 | +85.8 | +127.8 | +58.5% | +116.0 | +53.1% |
+| Feb 2025 to Jan 2026 | Kelly on the model, 1.2x | 178 | 176 | 40 | 49.5 | 47.8 | 643 | -20.0 | +179.4 | +27.9% | +149.1 | +23.2% |
+| Feb 2025 to Jan 2026 | Kelly on the model, 1.2x, not 1.3x | 121 | 119 | 22 | 32.0 | 30.7 | 424 | -105.7 | +51.6 | +12.2% | +33.1 | +7.8% |
+| Feb 2026 on | the card's stake, 1.3x | 41 | 39 | 12 | 9.7 | 9.3 | 54 | +25.3 | +22.4 | +41.7% | +19.8 | +36.8% |
+| Feb 2026 on | the card's stake, 1.2x | 79 | 77 | 20 | 18.1 | 17.4 | 61 | +21.7 | +23.5 | +38.4% | +20.6 | +33.6% |
+| Feb 2026 on | the card's stake, 1.2x, not 1.3x | 38 | 38 | 8 | 8.4 | 8.1 | 8 | -3.6 | +1.1 | +15.0% | +0.8 | +11.3% |
+| Feb 2026 on | Kelly on the model, 1.3x | 41 | 39 | 12 | 9.7 | 9.3 | 146 | +95.6 | +38.6 | +26.3% | +30.7 | +21.0% |
+| Feb 2026 on | Kelly on the model, 1.2x | 139 | 135 | 36 | 34.0 | 32.8 | 475 | +101.9 | +92.1 | +19.4% | +71.1 | +15.0% |
+| Feb 2026 on | Kelly on the model, 1.2x, not 1.3x | 98 | 96 | 24 | 24.3 | 23.5 | 328 | +6.2 | +53.6 | +16.3% | +40.4 | +12.3% |
+| Feb 2025 on | the card's stake, 1.3x | 98 | 96 | 30 | 27.2 | 26.3 | 124 | +68.9 | +71.2 | +57.5% | +65.0 | +52.4% |
+| Feb 2025 on | the card's stake, 1.2x | 176 | 174 | 42 | 46.4 | 44.8 | 146 | +54.8 | +74.5 | +50.9% | +67.4 | +46.0% |
+| Feb 2025 on | the card's stake, 1.2x, not 1.3x | 78 | 78 | 12 | 19.2 | 18.5 | 22 | -14.1 | +3.3 | +14.5% | +2.4 | +10.9% |
+| Feb 2025 on | Kelly on the model, 1.3x | 98 | 96 | 30 | 27.2 | 26.3 | 365 | +181.4 | +166.4 | +45.6% | +146.7 | +40.2% |
+| Feb 2025 on | Kelly on the model, 1.2x | 317 | 311 | 76 | 83.5 | 80.6 | 1,117 | +81.9 | +271.6 | +24.3% | +220.2 | +19.7% |
+| Feb 2025 on | Kelly on the model, 1.2x, not 1.3x | 219 | 215 | 46 | 56.3 | 54.3 | 752 | -99.5 | +105.2 | +14.0% | +73.5 | +9.8% |
+
+Test 64 again, 10,000 replays of the same bets since February 2025, each dog winning with each judge's chance:
+
+| stake | judge | bets | median units won | 5th percentile | 95th percentile | chance of being behind | median worst drawdown | 95th percentile worst drawdown | as a share of a 75-unit bank |
+|---|---|---|---|---|---|---|---|---|---|
+| the card's stake | BSP | 96 | +71.2 | +16.7 | +128.6 | 1.6% | 16.7 | 32.8 | 44% |
+| the card's stake | BSP corrected | 96 | +64.7 | +11.0 | +122.0 | 2.4% | 17.5 | 34.7 | 46% |
+| Kelly on the model | BSP | 96 | +166.2 | +22.4 | +318.3 | 2.7% | 50.6 | 97.5 | 130% |
+| Kelly on the model | BSP corrected | 96 | +145.6 | +7.0 | +298.5 | 4.2% | 53.8 | 103.7 | 138% |
+| one unit flat | BSP | 96 | +43.7 | +4.6 | +86.3 | 3.2% | 13.6 | 25.9 | 35% |
+| one unit flat | BSP corrected | 96 | +38.5 | -0.0 | +81.5 | 5.0% | 14.3 | 27.6 | 37% |
+
+What it shows:
+
+- **The bets 1.2x adds are worth less than Test 63 said, and they have lost.** Since February 2025:
+  - The corrected BSP rates them at +10.9% a unit on the card's stake and +9.8% on Kelly on the model. BSP said +14.5%
+    and +14.0%.
+  - Realised, they lost 14.1 units on the card's stake (12 winners against 18.5 expected by the corrected BSP), and
+    99.5 units on Kelly on the model (46 against 54.3).
+  - The shortfall is about 1.3 to 1.6 standard deviations, so it could be bad luck. But the corrected judge and the
+    results both point the same way: the bets between 1.2x and 1.3x are thin.
+  - On the card's stake those bets carry 22 of 146 units staked, because the card's Kelly gives them little. Moving to
+    1.2x changes little on the card's stake either way.
+- **The card at 1.3x holds up under the corrected judge.**
+  - On its own stake: +65.0 units on 124 staked (+52.4% a unit), against BSP's +71.2 (+57.5%), and +68.9 realised.
+  - Kelly on the model: +146.7 units on 365 staked (+40.2% a unit), against +166.4 (+45.6%), and +181.4 realised.
+- **The replays move a little, and the stake question is unchanged.**
+  - The card's stake: a median of +64.7 units over the 22 months, a 5th percentile of +11.0, and a 2.4% chance of being
+    behind. Its 95th-percentile worst drawdown is 34.7 units, 46% of a 75-unit bank.
+  - Kelly on the model: a median of +145.6 units, about two and a quarter times the card's. Its 5th percentile is +7.0
+    and the chance of being behind is 4.2%. But its 95th-percentile worst drawdown is 103.7 units, 138% of a 75-unit
+    bank. Ran at x75, it would lose the whole bank one time in twenty or more. If the founder wants more of Kelly on
+    the model's growth, a smaller multiplier is the way to get it. Half the multiplier halves every unit figure.
+  - One unit flat: a median of +38.5, a 5th percentile of 0.0, and a 5.0% chance of being behind.
+
+What it means for the founder's two decisions:
+
+- **The threshold.** Stay at 1.3x. By the corrected judge the bets 1.2x adds are worth about +10% a unit, against +52%
+  for the card's own bets, and they have lost so far.
+- **The stake.** The card's stake is the safe one: its worst likely drawdown is under half a 75-unit bank. Kelly on the
+  model at the same multiplier is not safe at that bank size.
+- **These are recommendations; the decisions are the founder's.** The card does not change.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
