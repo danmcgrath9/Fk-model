@@ -6200,4 +6200,21 @@ What it shows:
   Test 54's held blend made 99 bets in 22 months since February 2025, about one a week, so none in nine nights is
   what the backtest expects; it will take months to say anything.
 
+### The kept cards, from 15 Nov (settled by gh topaz track itself)
+
+From 15 Nov each card is kept in the Actions cache and the job settles it the afternoon after. Betfair has not yet
+published November, so there is no BSP yet.
+
+| day | run | card races | found in TAB's market | every dog on the card | card bets | settled | winners | expected at the price taken | units staked | units won | still 1.3x at TAB's first price | rule at TAB's open: bets |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 15 Nov | 43860008304 | 24 | 24 | 22 | 4 | 4 | 2 | 1.26 | 5.34 | +5.77 | 0 | 0 |
+
+All four 15 Nov bets opened shorter on TAB than GRV's evening price (TAB at 24% to 49% of it) and below the card's own
+blended price, the same pattern as the first nine nights. Two won, at TAB's first price less the deduction: +5.77
+units on 5.34 staked, +66.2% flat. Four bets is noise.
+
+The card as sent so far, 6 to 15 Nov: 60 bets, 59 settled (one refund), 23 winners against 23.03 expected at the
+prices taken (A/E 1.00), 136.16 units staked, -23.63 units won (-17.4% at the card's units, -9.3% flat), -21.92 at the
+best first price of three. The rule at TAB's open has made no bet yet.
+
 Results go here as they come in.
