@@ -1,0 +1,21 @@
+{
+ "day": "Wednesday",
+ "date": "18 November",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Sandown",
+   "note": "",
+   "bets": [
+    {
+     "race": 5,
+     "time": "5:25PM",
+     "horse": "Breathless Spirit",
+     "price": "$5.50",
+     "rated": "$3.29",
+     "units": "2.53u"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "day": "Tuesday",
+ "date": "17 November",
+ "footer": "Win bets.",
+ "brand": true,
+ "meetings": [
+  {
+   "name": "Kyneton",
+   "note": "",
+   "bets": [
+    {
+     "race": 3,
+     "time": "2:30PM",
+     "horse": "The Sheriff",
+     "price": "$34",
+     "units": "0.77u",
+     "scr": true
+    },
+    {
+     "race": 5,
+     "time": "3:30PM",
+     "horse": "Hollerasaurous",
+     "price": "$19",
+     "units": "0.72u"
+    },
+    {
+     "race": 5,
+     "time": "3:30PM",
+     "horse": "Winning Toast",
+     "price": "$6.50",
+     "units": "2.76u"
+    },
+    {
+     "race": 7,
+     "time": "4:30PM",
+     "horse": "Hotspur Reale",
+     "price": "$5",
+     "units": "1.71u"
+    },
+    {
+     "race": 7,
+     "time": "4:30PM",
+     "horse": "Marlion's Dream",
+     "price": "$8.50",
+     "units": "1.18u"
+    },
+    {
+     "race": 8,
+     "time": "5:00PM",
+     "horse": "Bliss Bomb",
+     "price": "$2.70",
+     "units": "6.79u"
+    }
+   ]
+  }
+ ]
+}
