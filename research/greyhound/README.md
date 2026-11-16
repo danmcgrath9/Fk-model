@@ -5023,7 +5023,8 @@ What it shows:
 - **The other books look like a big step**: C's log loss is 0.009 to 0.021 better than A's in every period, and at
   1.3x it bets about ten times as often (1,022 bets since February 2025) at much the same A/E (1.44), z +6.4, 16 of 22
   months in profit, BSP under the price paid on 77%.
-- **But its weights say what it is reading**: Ladbrokes +1.39, TAB -0.47, Sportsbet -0.14. That is "bet where Ladbrokes
+- **But its weights say what it is reading** (and Test 57 confirmed it was a look ahead; C and D are withdrawn):
+  Ladbrokes +1.39, TAB -0.47, Sportsbet -0.14. That is "bet where Ladbrokes
   rates a dog above TAB's opening price", which is exactly what a blend would learn if Ladbrokes' first price comes
   later and knows more. Round 38 took each book's first price whenever Betwatch recorded it, not the price standing
   when TAB's first price was there to take. Until that is checked, **C and D are not a result**: round 39 measures when
@@ -5034,6 +5035,80 @@ What it shows:
   A/E was 1.12 to 1.15 against 1.37 held. Held weights stay the better choice.
 - A's weights refitted on the window came out 0.55 / 0.65 (Test 51: 0.54 / 0.67, on slightly different data) and make
   116 bets since February 2025 against Test 55's 98: the result is sensitive to the TAB weight, as Test 55's grid showed.
+
+## Test 57: the other books were a look ahead (16 Nov 2026, gh topaz run 43777833516, `topaz_round39.py`)
+
+Test 56's other-books blend took each book's first price whenever Betwatch recorded it. Here each race is rebuilt at
+the moment of the bet: at TAB's first price with the other books' prices standing then (a book not open yet gives no
+price, and TAB's chance stands in), and at the moment all three books are open, with TAB's price, the other books'
+prices and the field all as they stood then, and TAB's deduction for the dogs scratched after it. Every blend fitted on
+Test 51's window and held, as in Test 56. Read from the same saved walk; 21 minutes.
+
+**When each book opens**, race by race (the first price each book shows on any runner, against TAB's):
+
+| period | races | Sportsbet open, hours after TAB's (median) | Ladbrokes | Sportsbet at or before TAB | Ladbrokes at or before TAB | all three open, hours after TAB's (median) | all three open before the jump | TAB's field priced by Sportsbet at TAB's open | by Ladbrokes |
+|---|---|---|---|---|---|---|---|---|---|
+| to Aug 2023 | 12,450 | +0.2 | +0.3 | 10% | 8% | 0.3 | 100% | 10% | 7% |
+| Sep 2023 to Jan 2025 | 21,063 | +0.0 | +0.0 | 14% | 13% | 0.0 | 98% | 14% | 12% |
+| Feb 2025 on | 26,300 | +1.6 | +1.6 | 5% | 8% | 1.7 | 95% | 4% | 7% |
+
+| blend | weights, fitted on Dec 2023 to Jun 2024 and held |
+|---|---|
+| at TAB's open, the other books' first prices whenever (Test 56's C) | ours 0.44, TAB -0.47, Sportsbet -0.14, Ladbrokes 1.39 |
+| at TAB's open, prices standing then: A. ours + TAB | ours 0.55, TAB 0.65 |
+| at TAB's open, prices standing then: C. ours + TAB + Sportsbet + Ladbrokes | ours 0.54, TAB -0.47, Sportsbet 0.49, Ladbrokes 0.64 |
+| once all three are open: A | ours 0.48, TAB 0.74 |
+| once all three are open: C | ours 0.45, TAB -0.40, Sportsbet -0.06, Ladbrokes 1.24 |
+
+Log loss, races with nothing scratched after the bet (the two bet times are different race sets, so compare within one):
+
+| period | at TAB's open: C, first prices whenever | A | C, prices standing then | BSP | once all three are open: A | C | BSP |
+|---|---|---|---|---|---|---|---|
+| to Aug 2023 | 1.5783 | 1.5999 | 1.6000 | 1.5296 | 1.5728 | 1.5712 | 1.5218 |
+| Sep 2023 to Jan 2025 | 1.5681 | 1.5763 | 1.5763 | 1.5085 | 1.5691 | 1.5678 | 1.5070 |
+| Feb 2025 on | 1.5594 | 1.5688 | 1.5686 | 1.5065 | 1.5274 | 1.5263 | 1.4739 |
+
+The card's rule at 1.3x on TAB's price at the bet, after TAB's deduction, every race:
+
+| period | bet | blend | bets | winners | A/E vs the price taken | z | flat ROI | Kelly ROI | units won | months in profit | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| to Aug 2023 | TAB's first price | C, first prices whenever | 2,047 | 484 | 1.563 | +11.0 | +63.4% | +71.5% | +3,108 | 9 of 10 | 90.4% | +0.404 |
+| to Aug 2023 | TAB's first price | A | 224 | 64 | 1.653 | +4.6 | +82.3% | +83.4% | +228 | 8 of 10 | 92.4% | +0.500 |
+| to Aug 2023 | TAB's first price | C, prices standing then | 237 | 66 | 1.613 | +4.4 | +79.9% | +82.8% | +241 | 9 of 10 | 90.7% | +0.471 |
+| to Aug 2023 | all three open | A | 33 | 8 | 1.127 | +0.4 | +48.5% | +13.2% | +7 | 6 of 10 | 93.9% | +0.371 |
+| to Aug 2023 | all three open | C | 107 | 22 | 1.248 | +1.2 | +32.7% | +28.0% | +49 | 7 of 10 | 92.5% | +0.338 |
+| Sep 2023 to Jan 2025 | TAB's first price | C, first prices whenever | 1,256 | 263 | 1.418 | +6.3 | +46.1% | +58.9% | +1,295 | 15 of 17 | 84.3% | +0.332 |
+| Sep 2023 to Jan 2025 | TAB's first price | A | 157 | 36 | 1.373 | +2.1 | +51.2% | +64.9% | +125 | 10 of 17 | 86.5% | +0.443 |
+| Sep 2023 to Jan 2025 | TAB's first price | C, prices standing then | 172 | 37 | 1.285 | +1.7 | +30.6% | +45.8% | +98 | 9 of 17 | 85.4% | +0.422 |
+| Sep 2023 to Jan 2025 | all three open | A | 25 | 8 | 1.785 | +1.9 | +105.6% | +125.7% | +34 | 6 of 10 | 84.0% | +0.492 |
+| Sep 2023 to Jan 2025 | all three open | C | 150 | 32 | 1.470 | +2.4 | +43.2% | +59.7% | +136 | 10 of 17 | 77.3% | +0.288 |
+| Feb 2025 on | TAB's first price | C, first prices whenever | 1,025 | 243 | 1.431 | +6.3 | +35.6% | +50.8% | +956 | 16 of 22 | 76.8% | +0.240 |
+| Feb 2025 on | TAB's first price | A | 116 | 32 | 1.455 | +2.4 | +24.2% | +55.4% | +81 | 16 of 22 | 66.7% | +0.217 |
+| Feb 2025 on | TAB's first price | C, prices standing then | 125 | 34 | 1.523 | +2.8 | +25.2% | +58.3% | +89 | 15 of 22 | 61.5% | +0.161 |
+| Feb 2025 on | all three open | A | 33 | 9 | 1.532 | +1.4 | +33.9% | +42.0% | +21 | 7 of 15 | 63.6% | +0.163 |
+| Feb 2025 on | all three open | C | 107 | 23 | 1.388 | +1.8 | +19.9% | +47.2% | +74 | 12 of 22 | 68.9% | +0.154 |
+
+(The first block's "to Aug 2023" rows differ from Test 56's because this rebuild keeps every race Betwatch has from May
+2023, where Test 56 kept only the races its monthly refit priced. In the later periods A matches Test 56 to the bet;
+the first-prices C differs by a few bets, because here the other books' first prices also cover dogs scratched later.)
+
+What it shows:
+
+- **Test 56's gain was a look ahead.** At TAB's first price Sportsbet and Ladbrokes have priced only 4% to 14% of the
+  field; since February 2025 they open a median 1.6 hours after TAB. With only the prices standing at the bet, the
+  four-book blend is the two-book blend (log loss 1.5686 against 1.5688, 125 bets against 116). The tenfold bets and the
+  0.009 log loss came from prices that did not exist when TAB's first price could be taken.
+- **Waiting for the other books does not pay.** Once all three are open (a median 1.7 hours after TAB's open since
+  February 2025, 9.7 hours from the jump), TAB has already moved toward them: the two-book blend makes 33 bets there
+  and the four-book blend 107 (A/E 1.39, +19.9% flat, 12 of 22 months), both weaker than the two-book blend at TAB's
+  first price (116 bets, A/E 1.46, +24.2% flat, +55.4% Kelly, 16 of 22 months).
+- **So the bet stays where it was: ours + TAB at TAB's first price, held weights.** The edge is TAB's opening price
+  before the market forms, which is the founder's thesis ("we will win long term on opening"), and the other books do
+  not add to it at that moment.
+
+What it means: Test 56's C and D are withdrawn. The blend to improve is ours + TAB, and the way to improve it is ours:
+since February 2025 TAB's first book beats ours alone (Test 55: 1.5913 against 1.5992). Next: does refitting ours more
+often help (the live model retrains weekly; every walk so far refits every six months)?
 
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
