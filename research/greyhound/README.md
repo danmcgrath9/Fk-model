@@ -7391,6 +7391,207 @@ What it means: the card's first-tip bets are not hiding a sub-rule that does bet
 and the card's 1.3x line already cuts at the right place. The young-dog and maiden lead is the one to watch on the
 tracker, not one to bet on. The card does not change.
 
+## Test 79: what does TAB's opening price get wrong? Every input, one at a time (17 Nov 2026, gh topaz run 43979155195, `topaz_round61.py`)
+
+Founder: "We HAVE to be able to beat Victoria, I can guarantee you we have more knowlege than TAB", then "Do research,
+you have all the information". Tests 71 to 74 checked TAB's calibration across a handful of groups. This round checks
+it across every input ours has.
+
+**The test, stated before the run.** Round 58's field: 25,130 races and 180,489 runners with nothing scratched after the
+open and a BSP on every runner, from May 2023, in 18 minutes.
+
+- **The cuts.** Each of the 117 inputs that vary within a race (of 188) is cut by the dog's order on it within its
+  race and by the fifth of all runners it falls in. An input with five values or fewer is cut by its values.
+  That makes 219 cuts and 1,100 cells.
+- **The forecasts.** In each cell, the A/E and z in each half for four of them: TAB's first book after its
+  favourite-longshot bias, the card's blend, the blend with Isolynx, and the corrected BSP.
+- **The rule.** A cell counts for a forecast only with |z| of 2 or more in both halves and the same sign. About one per
+  forecast would pass by chance.
+- **The first tips.** The same scan inside GRV's first tips, each input still cut on the whole field.
+
+**How many cells each forecast gets wrong in both halves:**
+
+| forecast | every runner | inside GRV's first tips |
+|---|---|---|
+| TAB's first book after its favourite bias | 71 | 216 |
+| the card's blend | 74 | 193 |
+| the blend with Isolynx | 35 | 197 |
+| BSP corrected | 3 | 2 |
+
+Inside the first tips most cells pass simply because the group itself is mispriced: TAB under-rates every first tip by 3
+to 7%, and the blends over-rate every first tip by 4 to 6%. The counts there say little; the tables below say more.
+
+Some inputs, so the tables can be read:
+
+- **Ratings and form:**
+  - `grv_rating`: GRV's rating.
+  - `elo` and `margin_elo`: our Elo ratings.
+  - `time_rating_last`, `_mean5`, `_best5`, `_ewm` and `_shrunk`: time ratings at the last start, over the last 5,
+    the best of the last 5, a weighted average, and shrunk toward the grade.
+  - `form_trend`: the last time rating against its 5-run mean.
+  - `finish_mean5` and `last5_mean`: average finishing place over the last 5; higher is worse.
+- **The dog's earlier prices:** `mkt_lsp_mean5` and `mkt_prev_lsp`: its starting prices over its last 5 runs and its
+  last run, as logs; lower is a shorter price.
+- **Isolynx tracking:**
+  - `iso_max_speed_last`, `iso_last100_last`, `iso_v100_last` and `iso_t100/t50_*`: speeds and section times from its
+    tracked runs, the last one or the mean of three.
+  - `chk_*`: checks, meaning interference in a run.
+- **Early speed:** `p_lead` and `lead_rank`: our chance of the dog leading, and its order on that.
+- **Breeding and the trainer:** `dam_id_*` and `sire_id_*`: the dam's and sire's other runners' records.
+  `trainer_id_*`: the trainer's win and place rates.
+- **GRV's tip:** `tip_rank`: 0 untipped, 1 the first tip.
+
+**Where TAB's first price is wrong, every runner** (the first 25 by the smaller |z|; A/E (z), May 2023 to January 2025 /
+since February 2025; over 1 wins more than it says. A cell where every forecast has 0 winners, `weight` missing, is
+108 dogs with no weigh-in that never won, which is a data point and not a lean, and is left out of all the tables):
+
+| input | cut | value | runners | TAB after its favourite bias | the card's blend | blend with Isolynx | BSP corrected |
+|---|---|---|---|---|---|---|---|
+| tip_rank | value | 0 | 80,444 | 0.924 (-4.4) / 0.904 (-5.4) | 1.050 (+2.7) / 1.030 (+1.5) | 1.048 (+2.6) / 1.030 (+1.6) | 0.993 (-0.4) / 1.011 (+0.6) |
+| iso_max_speed_last | order in the race | highest in the race | 23,648 | 1.079 (+4.5) / 1.067 (+3.8) | 1.056 (+3.3) / 1.050 (+2.9) | 1.025 (+1.5) / 1.029 (+1.7) | 1.025 (+1.5) / 1.020 (+1.2) |
+| iso_last100_last | fifth of all runners | fifth 5 | 22,608 | 1.076 (+3.8) / 1.068 (+3.4) | 1.069 (+3.5) / 1.057 (+3.0) | 1.044 (+2.3) / 1.041 (+2.2) | 1.039 (+2.1) / 1.031 (+1.7) |
+| dam_id_won_365D | order in the race | highest in the race | 25,920 | 1.049 (+3.3) / 1.056 (+3.5) | 1.003 (+0.2) / 1.015 (+0.9) | 1.004 (+0.3) / 1.015 (+0.9) | 1.011 (+0.8) / 1.014 (+0.9) |
+| form_trend | order in the race | highest in the race | 25,448 | 1.058 (+3.2) / 1.080 (+4.1) | 1.033 (+1.9) / 1.051 (+2.7) | 1.033 (+1.9) / 1.051 (+2.7) | 1.028 (+1.6) / 1.041 (+2.2) |
+| time_rating_last | order in the race | highest in the race | 25,134 | 1.046 (+3.1) / 1.057 (+3.5) | 0.990 (-0.7) / 1.000 (+0.0) | 0.989 (-0.8) / 1.000 (-0.0) | 1.007 (+0.5) / 1.011 (+0.7) |
+| time_rating_last_trk | order in the race | highest in the race | 25,134 | 1.046 (+3.1) / 1.057 (+3.5) | 0.990 (-0.7) / 1.000 (+0.0) | 0.989 (-0.8) / 1.000 (-0.0) | 1.007 (+0.5) / 1.011 (+0.7) |
+| iso_last100_last | order in the race | highest in the race | 24,301 | 1.075 (+4.0) / 1.060 (+3.1) | 1.069 (+3.7) / 1.050 (+2.6) | 1.034 (+1.8) / 1.032 (+1.7) | 1.030 (+1.6) / 1.019 (+1.0) |
+| grv_rating | order in the race | highest in the race | 28,523 | 1.048 (+3.7) / 1.041 (+3.0) | 0.978 (-1.8) / 0.992 (-0.6) | 0.977 (-1.9) / 0.990 (-0.8) | 0.986 (-1.1) / 1.015 (+1.2) |
+| dog_type_surprise | order in the race | highest in the race | 24,963 | 1.062 (+3.4) / 1.059 (+3.0) | 1.043 (+2.4) / 1.025 (+1.3) | 1.043 (+2.4) / 1.025 (+1.3) | 1.044 (+2.5) / 1.020 (+1.1) |
+| margin_elo | order in the race | 4th or lower | 103,795 | 0.958 (-3.4) / 0.960 (-3.0) | 1.025 (+2.0) / 1.017 (+1.2) | 1.026 (+2.1) / 1.018 (+1.3) | 1.026 (+2.1) / 1.010 (+0.8) |
+| age_days | fifth of all runners | fifth 1 | 36,125 | 1.057 (+4.1) / 1.046 (+2.9) | 1.029 (+2.2) / 1.024 (+1.6) | 1.032 (+2.4) / 1.025 (+1.6) | 1.026 (+1.9) / 1.023 (+1.5) |
+| iso_max_speed_m3 | order in the race | highest in the race | 23,595 | 1.080 (+4.8) / 1.049 (+2.9) | 1.055 (+3.4) / 1.030 (+1.8) | 1.021 (+1.3) / 1.007 (+0.4) | 1.024 (+1.5) / 1.002 (+0.1) |
+| elo | order in the race | 4th or lower | 103,771 | 0.958 (-3.5) / 0.963 (-2.8) | 1.022 (+1.7) / 1.019 (+1.4) | 1.023 (+1.8) / 1.020 (+1.5) | 1.023 (+1.9) / 1.012 (+0.9) |
+| trainer_id_place_28D | fifth of all runners | fifth 5 | 34,833 | 0.921 (-3.9) / 0.934 (-2.8) | 0.970 (-1.5) / 0.986 (-0.6) | 0.968 (-1.5) / 0.985 (-0.6) | 0.967 (-1.6) / 0.987 (-0.6) |
+| dam_id_won_91D | fifth of all runners | fifth 5 | 35,592 | 1.037 (+2.8) / 1.055 (+3.6) | 1.007 (+0.6) / 1.024 (+1.6) | 1.008 (+0.6) / 1.024 (+1.6) | 1.018 (+1.4) / 1.023 (+1.6) |
+| lead_rank | fifth of all runners | fifth 5 | 30,797 | 0.873 (-4.4) / 0.911 (-2.8) | 0.990 (-0.3) / 1.005 (+0.2) | 0.993 (-0.2) / 1.011 (+0.3) | 1.006 (+0.2) / 1.022 (+0.6) |
+| iso_v100_last | order in the race | highest in the race | 23,643 | 1.068 (+3.9) / 1.049 (+2.8) | 1.047 (+2.8) / 1.034 (+1.9) | 1.019 (+1.1) / 1.013 (+0.8) | 1.022 (+1.3) / 1.003 (+0.2) |
+| dam_id_won_91D | order in the race | highest in the race | 26,634 | 1.041 (+2.7) / 1.061 (+3.6) | 1.006 (+0.4) / 1.024 (+1.5) | 1.007 (+0.4) / 1.024 (+1.5) | 1.018 (+1.3) / 1.020 (+1.2) |
+| iso_t100_m3 | order in the race | highest in the race | 23,778 | 1.115 (+6.8) / 1.047 (+2.7) | 1.092 (+5.5) / 1.032 (+1.8) | 1.056 (+3.5) / 1.007 (+0.4) | 1.052 (+3.2) / 1.002 (+0.1) |
+| elo | fifth of all runners | fifth 1 | 36,098 | 0.921 (-3.2) / 0.933 (-2.7) | 1.031 (+1.2) / 1.020 (+0.7) | 1.031 (+1.2) / 1.022 (+0.8) | 1.043 (+1.7) / 1.018 (+0.7) |
+| tip_rank | value | 1 | 25,089 | 1.031 (+2.7) / 1.066 (+5.0) | 0.943 (-5.2) / 0.962 (-3.1) | 0.944 (-5.1) / 0.961 (-3.2) | 1.002 (+0.2) / 0.998 (-0.1) |
+| tip_top | value | 1 | 25,089 | 1.031 (+2.7) / 1.066 (+5.0) | 0.943 (-5.2) / 0.962 (-3.1) | 0.944 (-5.1) / 0.961 (-3.2) | 1.002 (+0.2) / 0.998 (-0.1) |
+| lead_rank | fifth of all runners | fifth 4 | 24,103 | 0.854 (-5.3) / 0.924 (-2.5) | 0.933 (-2.3) / 0.992 (-0.3) | 0.934 (-2.3) / 0.994 (-0.2) | 0.928 (-2.5) / 0.978 (-0.7) |
+| chk_rate5 | fifth of all runners | fifth 3 | 42,415 | 1.048 (+3.4) / 1.045 (+2.5) | 1.049 (+3.4) / 1.056 (+3.2) | 1.035 (+2.5) / 1.043 (+2.5) | 1.022 (+1.6) / 1.030 (+1.7) |
+
+**Where the card's blend is wrong, every runner** (the first 25):
+
+| input | cut | value | runners | TAB after its favourite bias | the card's blend | blend with Isolynx | BSP corrected |
+|---|---|---|---|---|---|---|---|
+| mkt_lsp_mean5 | fifth of all runners | fifth 1 | 34,684 | 0.998 (-0.1) / 0.983 (-1.3) | 0.961 (-3.3) / 0.955 (-3.4) | 0.962 (-3.2) / 0.955 (-3.4) | 0.984 (-1.3) / 0.980 (-1.5) |
+| finish_mean5 | order in the race | highest in the race | 27,717 | 1.032 (+1.2) / 1.013 (+0.5) | 1.101 (+3.8) / 1.087 (+3.3) | 1.101 (+3.8) / 1.087 (+3.3) | 1.031 (+1.2) / 1.057 (+2.2) |
+| chk_rate5 | fifth of all runners | fifth 3 | 42,415 | 1.048 (+3.4) / 1.045 (+2.5) | 1.049 (+3.4) / 1.056 (+3.2) | 1.035 (+2.5) / 1.043 (+2.5) | 1.022 (+1.6) / 1.030 (+1.7) |
+| time_rating_shrunk | order in the race | highest in the race | 25,635 | 1.016 (+1.1) / 1.006 (+0.4) | 0.955 (-3.4) / 0.956 (-3.1) | 0.954 (-3.5) / 0.955 (-3.2) | 0.975 (-1.9) / 0.981 (-1.3) |
+| tip_rank | value | 1 | 25,089 | 1.031 (+2.7) / 1.066 (+5.0) | 0.943 (-5.2) / 0.962 (-3.1) | 0.944 (-5.1) / 0.961 (-3.2) | 1.002 (+0.2) / 0.998 (-0.1) |
+| tip_top | value | 1 | 25,089 | 1.031 (+2.7) / 1.066 (+5.0) | 0.943 (-5.2) / 0.962 (-3.1) | 0.944 (-5.1) / 0.961 (-3.2) | 1.002 (+0.2) / 0.998 (-0.1) |
+| last5_mean | fifth of all runners | fifth 5 | 32,552 | 1.037 (+1.7) / 1.021 (+0.9) | 1.086 (+3.8) / 1.075 (+3.1) | 1.085 (+3.7) / 1.076 (+3.1) | 1.023 (+1.0) / 1.048 (+2.0) |
+| mkt_prev_lsp | fifth of all runners | fifth 4 | 35,872 | 1.037 (+1.8) / 1.056 (+2.7) | 1.061 (+3.1) / 1.082 (+3.9) | 1.060 (+3.0) / 1.081 (+3.8) | 1.033 (+1.7) / 1.057 (+2.8) |
+| mkt_prev_lsp | order in the race | 2nd | 25,455 | 1.039 (+1.6) / 1.054 (+2.1) | 1.075 (+3.0) / 1.093 (+3.5) | 1.073 (+2.9) / 1.090 (+3.4) | 1.040 (+1.7) / 1.061 (+2.3) |
+| iso_last100_last | fifth of all runners | fifth 5 | 22,608 | 1.076 (+3.8) / 1.068 (+3.4) | 1.069 (+3.5) / 1.057 (+3.0) | 1.044 (+2.3) / 1.041 (+2.2) | 1.039 (+2.1) / 1.031 (+1.7) |
+| mkt_lsp_mean5 | order in the race | 2nd | 25,009 | 1.034 (+1.3) / 1.037 (+1.3) | 1.090 (+3.3) / 1.084 (+2.9) | 1.087 (+3.2) / 1.083 (+2.9) | 1.054 (+2.1) / 1.042 (+1.5) |
+| iso_max_speed_last | order in the race | highest in the race | 23,648 | 1.079 (+4.5) / 1.067 (+3.8) | 1.056 (+3.3) / 1.050 (+2.9) | 1.025 (+1.5) / 1.029 (+1.7) | 1.025 (+1.5) / 1.020 (+1.2) |
+| finish_mean5 | fifth of all runners | fifth 5 | 33,758 | 1.021 (+1.0) / 1.008 (+0.3) | 1.074 (+3.3) / 1.068 (+2.8) | 1.074 (+3.3) / 1.069 (+2.8) | 1.018 (+0.8) / 1.047 (+2.0) |
+| time_rating_shrunk | order in the race | 4th or lower | 103,708 | 0.984 (-1.4) / 1.005 (+0.3) | 1.035 (+2.8) / 1.047 (+3.6) | 1.036 (+2.9) / 1.048 (+3.6) | 1.013 (+1.1) / 1.025 (+1.9) |
+| time_rating_mean5 | order in the race | highest in the race | 25,125 | 1.018 (+1.3) / 1.013 (+0.8) | 0.959 (-3.1) / 0.960 (-2.8) | 0.958 (-3.2) / 0.959 (-2.9) | 0.978 (-1.7) / 0.987 (-0.9) |
+| time_rating_mean5_trk | order in the race | highest in the race | 25,125 | 1.018 (+1.3) / 1.013 (+0.8) | 0.959 (-3.1) / 0.960 (-2.8) | 0.958 (-3.2) / 0.959 (-2.9) | 0.978 (-1.7) / 0.987 (-0.9) |
+| style_late | fifth of all runners | fifth 5 | 34,668 | 1.019 (+0.9) / 1.012 (+0.5) | 1.082 (+3.7) / 1.065 (+2.7) | 1.080 (+3.6) / 1.062 (+2.6) | 1.065 (+3.0) / 1.037 (+1.6) |
+| time_rating_mean5_trk | order in the race | 4th or lower | 100,649 | 0.985 (-1.2) / 0.993 (-0.5) | 1.035 (+2.8) / 1.036 (+2.7) | 1.037 (+2.9) / 1.037 (+2.8) | 1.014 (+1.2) / 1.015 (+1.2) |
+| time_rating_mean5 | order in the race | 4th or lower | 100,649 | 0.985 (-1.2) / 0.993 (-0.5) | 1.035 (+2.8) / 1.036 (+2.7) | 1.037 (+2.9) / 1.037 (+2.8) | 1.014 (+1.2) / 1.015 (+1.2) |
+| last5_mean | order in the race | highest in the race | 28,608 | 1.040 (+1.6) / 1.008 (+0.3) | 1.101 (+3.9) / 1.069 (+2.7) | 1.099 (+3.8) / 1.068 (+2.6) | 1.026 (+1.1) / 1.035 (+1.4) |
+| iso_last100_last | order in the race | highest in the race | 24,301 | 1.075 (+4.0) / 1.060 (+3.1) | 1.069 (+3.7) / 1.050 (+2.6) | 1.034 (+1.8) / 1.032 (+1.7) | 1.030 (+1.6) / 1.019 (+1.0) |
+| time_rating_mean5 | fifth of all runners | fifth 1 | 35,162 | 0.998 (-0.1) / 1.012 (+0.5) | 1.054 (+2.5) / 1.063 (+2.6) | 1.056 (+2.6) / 1.064 (+2.6) | 1.025 (+1.2) / 1.036 (+1.6) |
+| time_rating_mean5_trk | fifth of all runners | fifth 1 | 35,162 | 0.998 (-0.1) / 1.009 (+0.4) | 1.054 (+2.5) / 1.061 (+2.5) | 1.056 (+2.6) / 1.061 (+2.5) | 1.025 (+1.2) / 1.034 (+1.5) |
+| mkt_lsp_mean5 | order in the race | 4th or lower | 98,491 | 0.995 (-0.6) / 0.992 (-0.9) | 0.975 (-2.9) / 0.977 (-2.5) | 0.975 (-2.9) / 0.978 (-2.4) | 0.986 (-1.6) / 0.990 (-1.1) |
+| time_rating_band | order in the race | highest in the race | 25,113 | 1.041 (+3.1) / 1.022 (+1.5) | 0.970 (-2.3) / 0.966 (-2.5) | 0.970 (-2.4) / 0.965 (-2.6) | 0.982 (-1.4) / 0.992 (-0.6) |
+
+**Where both are wrong the same way, every runner:**
+
+| input | cut | value | runners | TAB after its favourite bias | the card's blend | blend with Isolynx | BSP corrected |
+|---|---|---|---|---|---|---|---|
+| chk_rate5 | fifth of all runners | fifth 3 | 42,415 | 1.048 (+3.4) / 1.045 (+2.5) | 1.049 (+3.4) / 1.056 (+3.2) | 1.035 (+2.5) / 1.043 (+2.5) | 1.022 (+1.6) / 1.030 (+1.7) |
+| iso_last100_last | fifth of all runners | fifth 5 | 22,608 | 1.076 (+3.8) / 1.068 (+3.4) | 1.069 (+3.5) / 1.057 (+3.0) | 1.044 (+2.3) / 1.041 (+2.2) | 1.039 (+2.1) / 1.031 (+1.7) |
+| iso_max_speed_last | order in the race | highest in the race | 23,648 | 1.079 (+4.5) / 1.067 (+3.8) | 1.056 (+3.3) / 1.050 (+2.9) | 1.025 (+1.5) / 1.029 (+1.7) | 1.025 (+1.5) / 1.020 (+1.2) |
+| iso_last100_last | order in the race | highest in the race | 24,301 | 1.075 (+4.0) / 1.060 (+3.1) | 1.069 (+3.7) / 1.050 (+2.6) | 1.034 (+1.8) / 1.032 (+1.7) | 1.030 (+1.6) / 1.019 (+1.0) |
+| iso_max_speed_m3 | order in the race | 2nd | 21,503 | 1.050 (+2.5) / 1.045 (+2.2) | 1.047 (+2.3) / 1.042 (+2.1) | 1.026 (+1.3) / 1.028 (+1.4) | 1.024 (+1.2) / 1.022 (+1.1) |
+
+**Inside GRV's first tips: where TAB is wrong** (the first 15):
+
+| input | cut | value | runners | TAB after its favourite bias | the card's blend | blend with Isolynx | BSP corrected |
+|---|---|---|---|---|---|---|---|
+| iso_v100_last | order in the race | highest in the race | 5,111 | 1.108 (+4.4) / 1.108 (+4.2) | 1.015 (+0.7) / 1.008 (+0.3) | 0.997 (-0.2) / 0.992 (-0.3) | 1.051 (+2.2) / 1.009 (+0.4) |
+| lead_rank | fifth of all runners | fifth 1 | 15,632 | 1.061 (+4.4) / 1.063 (+4.1) | 0.963 (-2.9) / 0.959 (-2.9) | 0.963 (-2.9) / 0.957 (-3.1) | 1.014 (+1.1) / 0.990 (-0.7) |
+| dam_id_place_91D | fifth of all runners | fifth 1 | 7,853 | 1.073 (+4.0) / 1.122 (+5.7) | 0.976 (-1.5) / 1.011 (+0.5) | 0.975 (-1.5) / 1.009 (+0.5) | 1.030 (+1.7) / 1.036 (+1.8) |
+| iso_max_speed_last | order in the race | highest in the race | 5,215 | 1.096 (+4.0) / 1.125 (+5.0) | 1.003 (+0.1) / 1.024 (+1.0) | 0.984 (-0.7) / 1.009 (+0.4) | 1.037 (+1.6) / 1.028 (+1.2) |
+| iso_max_speed_m3 | order in the race | highest in the race | 5,669 | 1.088 (+3.9) / 1.099 (+4.2) | 0.999 (-0.1) / 1.003 (+0.1) | 0.978 (-1.1) / 0.987 (-0.6) | 1.026 (+1.2) / 1.010 (+0.5) |
+| iso_t100_m3 | order in the race | highest in the race | 5,421 | 1.119 (+5.0) / 1.095 (+3.8) | 1.027 (+1.2) / 0.996 (-0.2) | 1.006 (+0.3) / 0.978 (-1.0) | 1.056 (+2.5) / 1.005 (+0.2) |
+| iso_t100_last | fifth of all runners | fifth 5 | 5,000 | 1.091 (+3.8) / 1.115 (+4.5) | 1.000 (+0.0) / 1.015 (+0.6) | 0.986 (-0.6) / 1.001 (+0.1) | 1.041 (+1.8) / 1.029 (+1.2) |
+| time_rating_last | fifth of all runners | fifth 5 | 8,157 | 1.069 (+3.8) / 1.121 (+5.8) | 0.968 (-1.9) / 1.005 (+0.2) | 0.968 (-1.9) / 1.004 (+0.2) | 1.021 (+1.2) / 1.040 (+2.1) |
+| time_rating_last_trk | fifth of all runners | fifth 5 | 8,157 | 1.069 (+3.8) / 1.121 (+5.8) | 0.968 (-1.9) / 1.005 (+0.2) | 0.968 (-1.9) / 1.004 (+0.2) | 1.021 (+1.2) / 1.040 (+2.1) |
+| trainer_id_place_91D | order in the race | 4th or lower | 18,234 | 1.049 (+3.7) / 1.072 (+4.9) | 0.955 (-3.7) / 0.966 (-2.5) | 0.956 (-3.6) / 0.965 (-2.5) | 1.014 (+1.1) / 1.001 (+0.1) |
+| time_rating_best5 | fifth of all runners | fifth 5 | 9,310 | 1.062 (+3.7) / 1.097 (+5.0) | 0.971 (-1.8) / 0.986 (-0.8) | 0.970 (-2.0) / 0.984 (-0.9) | 1.027 (+1.7) / 1.017 (+1.0) |
+| grv_rating | fifth of all runners | fifth 5 | 11,062 | 1.057 (+3.6) / 1.074 (+4.3) | 0.954 (-3.2) / 0.971 (-1.8) | 0.953 (-3.3) / 0.969 (-2.0) | 1.002 (+0.1) / 1.015 (+0.9) |
+| time_rating_ewm | order in the race | highest in the race | 9,089 | 1.076 (+4.5) / 1.068 (+3.6) | 0.972 (-1.8) / 0.961 (-2.2) | 0.972 (-1.8) / 0.960 (-2.3) | 1.024 (+1.5) / 1.000 (-0.0) |
+| map_speed_rank | fifth of all runners | fifth 1 | 10,676 | 1.063 (+3.7) / 1.067 (+3.6) | 0.968 (-2.0) / 0.964 (-2.1) | 0.968 (-2.0) / 0.963 (-2.2) | 1.020 (+1.2) / 1.004 (+0.2) |
+| time_rating_best5_trk | fifth of all runners | fifth 5 | 9,308 | 1.061 (+3.6) / 1.097 (+5.0) | 0.970 (-1.9) / 0.986 (-0.8) | 0.968 (-2.0) / 0.985 (-0.8) | 1.026 (+1.6) / 1.018 (+1.0) |
+
+**Inside GRV's first tips: where the card's blend is wrong** (the first 12. The 9,176 first tips with no tracked run
+appear in about 30 cells, one per Isolynx input; one is shown):
+
+| input | cut | value | runners | TAB after its favourite bias | the card's blend | blend with Isolynx | BSP corrected |
+|---|---|---|---|---|---|---|---|
+| iso_t100_last | fifth of all runners | missing | 9,176 | 0.998 (-0.1) / 1.018 (+0.8) | 0.912 (-5.1) / 0.916 (-3.8) | 0.925 (-4.3) / 0.923 (-3.4) | 0.988 (-0.7) / 0.966 (-1.5) |
+| form_trend | order in the race | 4th or lower | 11,409 | 1.006 (+0.3) / 1.031 (+1.6) | 0.927 (-4.4) / 0.932 (-3.7) | 0.927 (-4.4) / 0.931 (-3.8) | 0.988 (-0.7) / 0.977 (-1.3) |
+| mkt_lsp_mean5 | order in the race | 4th or lower | 19,216 | 1.025 (+2.0) / 1.050 (+3.5) | 0.938 (-5.1) / 0.951 (-3.7) | 0.939 (-5.1) / 0.950 (-3.8) | 1.000 (-0.0) / 0.994 (-0.5) |
+| mkt_prev_lsp | order in the race | 4th or lower | 18,304 | 1.019 (+1.4) / 1.050 (+3.3) | 0.933 (-5.4) / 0.950 (-3.6) | 0.934 (-5.4) / 0.949 (-3.7) | 0.995 (-0.4) / 0.993 (-0.5) |
+| runs_track | order in the race | 4th or lower | 15,577 | 1.029 (+2.0) / 1.051 (+3.1) | 0.941 (-4.3) / 0.947 (-3.6) | 0.942 (-4.3) / 0.946 (-3.6) | 1.002 (+0.1) / 0.984 (-1.1) |
+| pv_HERE | value | 0 | 20,120 | 1.027 (+2.1) / 1.054 (+3.7) | 0.940 (-5.0) / 0.952 (-3.6) | 0.940 (-4.9) / 0.950 (-3.7) | 0.999 (-0.0) / 0.988 (-0.8) |
+| pv_LAST | value | 0 | 20,241 | 1.021 (+1.6) / 1.054 (+3.6) | 0.935 (-5.4) / 0.952 (-3.5) | 0.935 (-5.4) / 0.951 (-3.6) | 0.995 (-0.4) / 0.991 (-0.6) |
+| jump_Medium | order in the race | 4th or lower | 12,602 | 1.033 (+2.0) / 1.020 (+1.1) | 0.946 (-3.5) / 0.923 (-4.5) | 0.947 (-3.4) / 0.922 (-4.6) | 1.005 (+0.3) / 0.962 (-2.2) |
+| split_rating_last | fifth of all runners | fifth 1 | 3,097 | 0.953 (-1.4) / 0.957 (-1.0) | 0.886 (-3.6) / 0.863 (-3.5) | 0.885 (-3.6) / 0.864 (-3.4) | 0.950 (-1.5) / 0.902 (-2.5) |
+| last5_mean | order in the race | 4th or lower | 17,946 | 1.032 (+2.4) / 1.054 (+3.5) | 0.943 (-4.6) / 0.951 (-3.5) | 0.943 (-4.5) / 0.950 (-3.5) | 1.007 (+0.5) / 0.994 (-0.4) |
+
+What it shows:
+
+- **The founder is right: ours knows more than TAB's opening price, and the card already uses most of it.**
+  - TAB's first price is wrong in 71 cells in both halves. The card's blend shares only five, and all five are Isolynx
+    inputs (four speeds and a check rate); the blend with Isolynx halves those.
+  - It under-rates GRV's top-rated dog (1.048, 1.041), the dog with the best last time rating (1.046, 1.057), the
+    dog whose form is improving most (1.058, 1.080), the youngest fifth (1.057, 1.046), the dog with the best record
+    among its dam's other runners (1.049, 1.056), and the dog with the best Isolynx top speed (1.079, 1.067).
+  - It over-rates untipped dogs (0.924, 0.904), dogs low in the Elo order (0.958, 0.960), dogs our lead model gives
+    little chance of leading (0.850, 0.930 for the lowest fifth), and the trainers placing most in the last 28 days
+    (0.921, 0.934).
+  - On almost every one of these the card's blend is within a few points of 1.
+  - Inside GRV's first tips, TAB's misses are larger: 1.07 to 1.13 for a first tip that also has the best Isolynx
+    speed, the best last time rating or the best dam's record. The card's blend is about right on those (0.97 to
+    1.02).
+  - This is the card's edge: TAB's opening price leaves out public form, and GRV's first tip is where several of its
+    misses stack on one dog.
+- **The card's blend has as many errors of its own, in places where TAB is right.** It is wrong in 74 cells:
+  - **Too much faith in a dog's recent ratings and past market support.** The dog with the best shrunk time rating wins
+    0.955 and 0.956 of what the blend says. The best 5-run time rating wins 0.959 and 0.960. The shortest earlier
+    starting prices (the lowest fifth of `mkt_lsp_mean5`) win 0.961 and 0.955. TAB is at 0.98 to 1.02 on all three.
+  - **Too little for dogs with poor recent finishes and late runners.** The worst average finish wins 1.101 and 1.087 of
+    what it says. The worst `last5_mean` wins 1.086 and 1.075, and the late runners' top fifth 1.082 and 1.065. TAB is at
+    1.01 to 1.04.
+  - **Inside the first tips, the biggest error is the 9,176 first tips with no tracked run.** The blend gives them 9%
+    too much (0.912, 0.916, z -5.1 and -3.8), and TAB is right on them (0.998, 1.018). The same holds for first tips
+    whose earlier prices were longer than their rivals' (0.938, 0.951), those whose form is falling (0.927, 0.932), and
+    those with few runs at the track (0.941, 0.947).
+  - Each of these is a false edge. When the card bets, it cannot tell a dog TAB has wrong from one ours has wrong.
+- **BSP corrected is right almost everywhere:** 3 cells of 1,100, which is chance. The closing market knows all of
+  this. The card does not need to know more than the closing market, only more than TAB's opening price, which it does.
+
+What it means: we know more than TAB's opening price, and the card's bets are made of that knowledge. What keeps the
+card to four or five bets a month at +40% is ours' own errors, which are as many as TAB's.
+- **Why those errors matter.** They put dogs over the 1.3x line that should not be there, and they make the card
+  demand a large edge before it trusts one.
+- **The fix.** Remove ours' errors, so a real disagreement with TAB can be trusted at a smaller size.
+- **The tool for it** is Test 59's correction, a model that learns only where the blend is wrong, now started from the
+  blend with Isolynx and judged by the corrected BSP.
+
+**Next:** that correction, on the winners and on the corrected BSP, walked forward from November 2024. It is judged by
+how many of these cells it still gets wrong, by the card's rule, and at the same numbers of bets (round 62, running).
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
