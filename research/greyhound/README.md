@@ -5546,6 +5546,151 @@ rule by the return BSP's chance implies, price paid x BSP's chance - 1. That has
 results. First check that BSP is a fair judge out here, with its expected winners against the actual winners in each
 rung.
 
+## Test 62: the closing line as the judge (16 Nov 2026, gh topaz run 43816637822, `topaz_round44.py`)
+
+Test 61 found that 22 months of results cannot rank the models, because every model's ladder swings by about its own
+standard error from rung to rung. So each bet is judged here by what BSP says it was worth: the price paid after TAB's
+deduction x BSP's chance - 1. That is a figure for every bet, winner or not, and it has a fraction of the noise of the
+result. It is only a fair judge if BSP's chances are right for the dogs we pick, so that was checked first. In every
+rung, BSP's expected winners (the sum of its chances) are set against the actual winners. Every race from February
+2025 at TAB's first price: 17,205 races, 119,763 runners that ran, 116,848 of them with a BSP; corrections read back
+from the walk cache; 25 minutes.
+
+The edge ladder judged by BSP, February 2025 on (flat at the price paid after TAB's deduction):
+
+| model | edge | bets with a BSP | winners | BSP's expected winners | z | realised flat ROI | BSP's return per bet | its standard error | BSP's return, units |
+|---|---|---|---|---|---|---|---|---|---|
+| blend, held | under 0.9 | 56,553 | 10,297 | 10,274.6 | +0.3 | -28.7% | -29.1% | 0.1% | -16,451.9 |
+| blend, held | 0.9 to 1.0 | 7,401 | 2,037 | 2,035.1 | +0.1 | -10.5% | -10.6% | 0.3% | -784.1 |
+| blend, held | 1.0 to 1.1 | 2,831 | 767 | 777.4 | -0.5 | -5.6% | -2.5% | 0.6% | -72.1 |
+| blend, held | 1.1 to 1.2 | 809 | 219 | 213.4 | +0.5 | +8.2% | +4.1% | 1.3% | +33.5 |
+| blend, held | 1.2 to 1.3 | 215 | 46 | 56.3 | -1.7 | -14.0% | +14.2% | 3.2% | +30.6 |
+| blend, held | 1.3 to 1.5 | 82 | 28 | 22.8 | +1.4 | +51.6% | +34.8% | 6.7% | +28.6 |
+| blend, held | 1.5 and over | 14 | 2 | 4.4 | -1.5 | -12.1% | +112.3% | 43.4% | +15.7 |
+| correction on the winners | under 0.9 | 56,836 | 10,403 | 10,419.9 | -0.2 | -28.9% | -29.1% | 0.1% | -16,562.4 |
+| correction on the winners | 0.9 to 1.0 | 7,470 | 1,983 | 1,969.1 | +0.4 | -10.9% | -10.7% | 0.3% | -800.2 |
+| correction on the winners | 1.0 to 1.1 | 2,927 | 768 | 745.9 | +1.0 | -1.1% | -4.3% | 0.6% | -125.6 |
+| correction on the winners | 1.1 to 1.2 | 1,015 | 224 | 243.3 | -1.5 | -6.4% | +4.7% | 1.3% | +47.3 |
+| correction on the winners | 1.2 to 1.3 | 326 | 80 | 73.9 | +0.9 | +11.5% | +9.8% | 2.5% | +32.0 |
+| correction on the winners | 1.3 to 1.5 | 159 | 32 | 32.6 | -0.1 | +12.8% | +16.9% | 4.6% | +26.9 |
+| correction on the winners | 1.5 and over | 38 | 5 | 9.5 | -1.8 | -25.0% | +74.2% | 18.8% | +28.2 |
+| correction on BSP | under 0.9 | 56,661 | 10,373 | 10,358.9 | +0.2 | -28.4% | -29.0% | 0.1% | -16,452.3 |
+| correction on BSP | 0.9 to 1.0 | 7,308 | 2,066 | 2,044.9 | +0.6 | -8.7% | -8.4% | 0.3% | -612.9 |
+| correction on BSP | 1.0 to 1.1 | 2,481 | 683 | 680.4 | +0.1 | -0.6% | -0.7% | 0.7% | -16.2 |
+| correction on BSP | 1.1 to 1.2 | 771 | 197 | 201.6 | -0.4 | +7.2% | +9.5% | 1.5% | +73.6 |
+| correction on BSP | 1.2 to 1.3 | 317 | 65 | 71.8 | -1.0 | -2.3% | +13.9% | 3.2% | +44.0 |
+| correction on BSP | 1.3 to 1.5 | 205 | 37 | 38.9 | -0.4 | +6.1% | +19.9% | 3.9% | +40.8 |
+| correction on BSP | 1.5 and over | 71 | 10 | 16.3 | -1.9 | +6.0% | +61.8% | 12.1% | +43.9 |
+| correction on BSP, halfway | under 0.9 | 56,983 | 10,383 | 10,370.2 | +0.1 | -28.6% | -29.1% | 0.1% | -16,562.3 |
+| correction on BSP, halfway | 0.9 to 1.0 | 7,307 | 2,076 | 2,054.3 | +0.6 | -8.1% | -8.9% | 0.3% | -651.2 |
+| correction on BSP, halfway | 1.0 to 1.1 | 2,423 | 664 | 671.1 | -0.3 | -4.0% | -0.6% | 0.7% | -14.9 |
+| correction on BSP, halfway | 1.1 to 1.2 | 814 | 230 | 215.0 | +1.3 | +18.8% | +10.0% | 1.5% | +81.4 |
+| correction on BSP, halfway | 1.2 to 1.3 | 228 | 40 | 54.1 | -2.3 | -16.1% | +12.8% | 3.2% | +29.2 |
+| correction on BSP, halfway | 1.3 to 1.5 | 116 | 27 | 26.1 | +0.2 | +6.3% | +23.6% | 5.1% | +27.3 |
+| correction on BSP, halfway | 1.5 and over | 35 | 5 | 10.2 | -2.1 | -18.6% | +94.1% | 20.0% | +32.9 |
+
+Actual winners against BSP's expected winners, pooled over the rungs (worked here from the ladder above):
+
+| model | edge 1.1 and over | edge 1.1 to 1.5 | edge 1.3 and over |
+|---|---|---|---|
+| blend, held | 295 against 296.9 (0.99) | 293 against 292.5 (1.00) | 30 against 27.2 (1.10) |
+| correction on the winners | 341 against 359.3 (0.95) | 336 against 349.8 (0.96) | 37 against 42.1 (0.88) |
+| correction on BSP | 309 against 328.6 (0.94) | 299 against 312.3 (0.96) | 47 against 55.2 (0.85) |
+| correction on BSP, halfway | 302 against 305.4 (0.99) | 297 against 295.2 (1.01) | 32 against 36.3 (0.88) |
+
+The rules judged by BSP, by period:
+
+| period | model | rule | bets with a BSP | winners | BSP's expected winners | z | realised flat ROI | BSP's return per bet | its standard error | BSP's return, units |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 to Jan 2026 | blend, held | flat, 1.0x | 2,141 | 570 | 583.9 | -0.7 | -2.1% | +1.5% | 0.8% | +32.4 |
+| Feb 2025 to Jan 2026 | blend, held | flat, 1.1x | 617 | 158 | 167.5 | -0.9 | +1.7% | +11.8% | 2.0% | +72.8 |
+| Feb 2025 to Jan 2026 | blend, held | flat, 1.2x | 176 | 40 | 49.5 | -1.7 | -3.8% | +27.6% | 5.3% | +48.6 |
+| Feb 2025 to Jan 2026 | blend, held | flat, 1.3x | 57 | 18 | 17.6 | +0.1 | +33.5% | +59.0% | 13.4% | +33.6 |
+| Feb 2025 to Jan 2026 | correction on BSP | flat, 1.0x | 2,214 | 562 | 570.7 | -0.4 | +1.1% | +3.6% | 0.9% | +79.5 |
+| Feb 2025 to Jan 2026 | correction on BSP | flat, 1.1x | 800 | 180 | 196.9 | -1.5 | +0.4% | +14.0% | 1.9% | +111.9 |
+| Feb 2025 to Jan 2026 | correction on BSP | flat, 1.2x | 354 | 67 | 78.3 | -1.6 | -1.4% | +19.7% | 3.5% | +69.9 |
+| Feb 2025 to Jan 2026 | correction on BSP | flat, 1.3x | 170 | 30 | 34.5 | -0.9 | +7.0% | +30.9% | 6.0% | +52.5 |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway | flat, 1.0x | 2,008 | 527 | 536.9 | -0.5 | -0.0% | +4.0% | 0.9% | +80.9 |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway | flat, 1.1x | 688 | 171 | 180.5 | -0.9 | +6.3% | +15.0% | 1.9% | +102.9 |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway | flat, 1.2x | 225 | 42 | 55.8 | -2.3 | -10.1% | +25.4% | 4.6% | +57.0 |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway | flat, 1.3x | 90 | 20 | 22.9 | -0.8 | +0.9% | +45.8% | 9.5% | +41.2 |
+| Feb 2026 on | blend, held | flat, 1.0x | 1,810 | 492 | 490.4 | +0.1 | -2.1% | +0.2% | 0.9% | +3.9 |
+| Feb 2026 on | blend, held | flat, 1.1x | 503 | 137 | 129.5 | +0.8 | +13.2% | +7.1% | 2.0% | +35.5 |
+| Feb 2026 on | blend, held | flat, 1.2x | 135 | 36 | 34.0 | +0.4 | +12.7% | +19.4% | 4.7% | +26.2 |
+| Feb 2026 on | blend, held | flat, 1.3x | 39 | 12 | 9.7 | +0.9 | +55.2% | +27.4% | 8.7% | +10.7 |
+| Feb 2026 on | correction on BSP | flat, 1.0x | 1,631 | 430 | 438.2 | -0.5 | +1.6% | +6.5% | 1.0% | +106.6 |
+| Feb 2026 on | correction on BSP | flat, 1.1x | 564 | 129 | 131.7 | -0.3 | +11.0% | +16.0% | 2.3% | +90.4 |
+| Feb 2026 on | correction on BSP | flat, 1.2x | 239 | 45 | 48.6 | -0.6 | +6.1% | +24.6% | 4.2% | +58.9 |
+| Feb 2026 on | correction on BSP | flat, 1.3x | 106 | 17 | 20.6 | -0.9 | +4.6% | +30.5% | 6.3% | +32.3 |
+| Feb 2026 on | correction on BSP, halfway | flat, 1.0x | 1,608 | 439 | 439.8 | -0.0 | +1.3% | +4.7% | 1.0% | +75.0 |
+| Feb 2026 on | correction on BSP, halfway | flat, 1.1x | 505 | 131 | 125.0 | +0.7 | +14.7% | +13.4% | 2.3% | +67.9 |
+| Feb 2026 on | correction on BSP, halfway | flat, 1.2x | 154 | 30 | 34.7 | -1.0 | -8.7% | +21.0% | 4.6% | +32.4 |
+| Feb 2026 on | correction on BSP, halfway | flat, 1.3x | 61 | 12 | 13.5 | -0.5 | -0.1% | +31.2% | 7.8% | +19.0 |
+| Feb 2025 on | blend, held | flat, 1.0x | 3,951 | 1,062 | 1,074.4 | -0.5 | -2.1% | +0.9% | 0.6% | +36.3 |
+| Feb 2025 on | blend, held | flat, 1.1x | 1,120 | 295 | 297.0 | -0.1 | +6.9% | +9.7% | 1.4% | +108.3 |
+| Feb 2025 on | blend, held | flat, 1.2x | 311 | 76 | 83.5 | -1.0 | +3.4% | +24.1% | 3.6% | +74.9 |
+| Feb 2025 on | blend, held | flat, 1.3x | 96 | 30 | 27.2 | +0.7 | +42.3% | +46.1% | 8.8% | +44.3 |
+| Feb 2025 on | correction on BSP | flat, 1.0x | 3,845 | 992 | 1,008.9 | -0.7 | +1.3% | +4.8% | 0.7% | +186.2 |
+| Feb 2025 on | correction on BSP | flat, 1.1x | 1,364 | 309 | 328.5 | -1.3 | +4.8% | +14.8% | 1.4% | +202.3 |
+| Feb 2025 on | correction on BSP | flat, 1.2x | 593 | 112 | 126.9 | -1.6 | +1.6% | +21.7% | 2.7% | +128.8 |
+| Feb 2025 on | correction on BSP | flat, 1.3x | 276 | 47 | 55.1 | -1.3 | +6.1% | +30.7% | 4.4% | +84.7 |
+| Feb 2025 on | correction on BSP, halfway | flat, 1.0x | 3,616 | 966 | 976.7 | -0.4 | +0.6% | +4.3% | 0.7% | +155.9 |
+| Feb 2025 on | correction on BSP, halfway | flat, 1.1x | 1,193 | 302 | 305.5 | -0.2 | +9.8% | +14.3% | 1.5% | +170.8 |
+| Feb 2025 on | correction on BSP, halfway | flat, 1.2x | 379 | 72 | 90.5 | -2.4 | -9.5% | +23.6% | 3.3% | +89.4 |
+| Feb 2025 on | correction on BSP, halfway | flat, 1.3x | 151 | 32 | 36.4 | -0.9 | +0.5% | +39.9% | 6.5% | +60.3 |
+
+The card's rule at 1.3x, on its own Kelly stakes:
+
+| period | model | bets with a BSP | Kelly units staked | realised Kelly units | BSP's return, Kelly units | BSP's return per unit staked |
+|---|---|---|---|---|---|---|
+| Feb 2025 to Jan 2026 | blend, held | 57 | 70 | +43.6 | +48.8 | +69.5% |
+| Feb 2025 to Jan 2026 | correction on BSP | 168 | 205 | +29.7 | +116.3 | +56.7% |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway | 89 | 116 | +28.9 | +80.2 | +69.0% |
+| Feb 2026 on | blend, held | 39 | 54 | +25.3 | +22.4 | +41.7% |
+| Feb 2026 on | correction on BSP | 105 | 130 | -17.1 | +54.3 | +41.6% |
+| Feb 2026 on | correction on BSP, halfway | 61 | 77 | +3.4 | +34.9 | +45.3% |
+| Feb 2025 on | blend, held | 96 | 124 | +68.9 | +71.2 | +57.5% |
+| Feb 2025 on | correction on BSP | 273 | 335 | +12.7 | +170.5 | +50.8% |
+| Feb 2025 on | correction on BSP, halfway | 150 | 193 | +32.3 | +115.1 | +59.6% |
+
+What it shows:
+
+- **BSP is a fair judge of the held blend's bets and the shrunk correction's, and flatters the corrections fitted to
+  it.** Below an edge of 1.1 it is right in every model (z between -0.5 and +1.0 in every rung). From 1.1
+  to 1.5 it is right for the held blend (293 winners against 292.5 expected) and for the shrunk correction (297
+  against 295.2). For the two corrections it expects about 4% more winners than came (299 against 312.3, 336
+  against 349.8). That is what judging a model fitted to predict BSP by BSP should do: the correction picks the dogs BSP will
+  like, so BSP's misses on those dogs are picked with them. Above 1.5 BSP expects too many winners for every model (2
+  against 4.4 for the held blend, 10 against 16.3 for the BSP correction), so BSP's returns there (+62% to +112% a
+  bet) are not to be believed.
+- **Judged by BSP, the held blend's edge rises smoothly, and the card sits where it is largest.** The held blend
+  returns -2.5% a bet at 1.0 to 1.1, then +4.1% (plus or minus 1.3) at 1.1 to 1.2, +14.2% (3.2) at 1.2 to 1.3 and
+  +34.8% (6.7) at 1.3 to 1.5. Test 60's lumpy ladder is luck on top of this curve: BSP says the 1.2 to 1.3 rung was
+  worth +14.2% and it returned -14.0% (46 winners where BSP expected 56.3), and the 1.3 to 1.5 rung was worth +34.8%
+  and returned +51.6% (28 where BSP expected 22.8). So the card's bets at 1.3 to 1.5 are worth about +35% a bet, not
+  the +52% they returned. That is still a large edge, and it is the clearest number on the card's worth we have.
+- **On the card's own staking, BSP agrees with the result.** The card at 1.3x staked 124 Kelly units on its 96 bets
+  with a BSP and returned +68.9 units; BSP says they were worth +71.2 (+57.5% a unit staked). That includes the 14
+  bets above 1.5, where BSP is too generous (it values them at +112% a bet), so the 1.3 to 1.5 rung's +34.8% a bet
+  is the better figure for what the card's bets are worth.
+- **The shrunk correction is worth at least as much as the held blend on every rule, and makes more units.** Judged
+  by BSP, flat from 1.1x it returns +14.3% a bet (1.5) over 1,193 bets, +171 units, against the held blend's +9.7%
+  (1.4) over 1,120, +108 units. On the card's rule at 1.3x it returns +59.6% a unit staked over 193 units, +115,
+  against the held blend's +57.5% over 124, +71. BSP is fair to both from 1.1 to 1.5, so this is not the flattery
+  the full corrections get. Above 1.3, where BSP expects 4 more winners than came for the shrunk correction and 3 fewer
+  for the held blend, the comparison is too thin to call. The realised results say the opposite on the card's rule
+  (+32.3 Kelly units for the shrunk correction against +68.9), which is the noise of Test 61, but it is the money
+  that would have been made.
+- **Flat from 1.1x, BSP puts the shrunk correction ahead of the held blend in both halves.** The shrunk correction
+  is worth +15.0% a bet (1.9) to January 2026 and +13.4% (2.3) since; the held blend +11.8% (2.0) and +7.1% (2.0).
+
+What it means: the held blend's edge is real and smooth, about +35% a bet where the card bets, and the card's backtest
++47% is that plus luck. The shrunk correction looks a little better than the held blend by the fairer judge, and worse
+by the results. Neither difference is big enough to change the card on, and using it live needs TAB's first book,
+which the evening card does not have, so it would mean a second pricing run when TAB opens. Next, on the card's own
+staking and judged both ways: the card's rule at 1.2x for the held blend, where BSP says the 1.2 to 1.3 rung is worth
++14% a bet and its Kelly stake is small.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
