@@ -81,9 +81,9 @@ def named_walks(d: str, t0: float) -> pd.DataFrame:
 
 def ll_table(t: pd.DataFrame, cols: dict, periods: list) -> None:
     clean = t[(t.n_later == 0).values]
-    full = clean.p_bsp.notna().groupby(clean.race_id.values).transform("all").values
+    full = clean.p_bsp.notna().groupby(clean.race_id.values).transform("all").to_numpy(copy=True)
     for c in cols.values():
-        full &= clean[c].notna().groupby(clean.race_id.values).transform("all").values
+        full = full & clean[c].notna().groupby(clean.race_id.values).transform("all").to_numpy()
     w = clean[full & (clean.won == 1).values]
     print("| period | races | TAB's first book | " + " | ".join(cols) + " | BSP |\n|" + "---|" * (len(cols) + 4))
     for pname, lo, hi in periods:
