@@ -7085,6 +7085,136 @@ What it means:
 and applied to the other, used to re-judge the card and the blends with the terms at 1.3x and at the same numbers of
 bets.
 
+## Test 76: a judge without the first-tip lean (16 Nov 2026, gh topaz run 43927796157, `topaz_round58.py`)
+
+Test 75 found the card's edge since February 2025 is GRV's first tip priced long at TAB's open. It also found the blend
+with terms for its leans forecasts better, while BSP rated its bets lower and the results mostly rated them higher. BSP
+over-rates GRV's first tip and dogs up 0.5 kg or more, so it was a biased judge of the bets the terms move. This round
+builds a judge without those leans.
+
+**The test, stated before the run.** On round 57's field: 32,548 races at TAB's first price, in 23 minutes.
+
+- **The corrected judge.** BSP's chances with a term for the first tip and one for a weight rise of 0.5 kg or more.
+  The terms are fitted on one half, on races with nothing scratched after the open, and applied to the other half.
+  98.5% of the runners get a corrected chance; races without a BSP on every runner get none.
+- **What it re-judges.** The card's bets and round 57's six blends.
+
+The correction, fitted on one half and applied to the other:
+
+| fitted on | BSP's power | first tip | up 0.5 kg or more |
+|---|---|---|---|
+| May 2023 to Jan 2025 | 1.034 | x0.912 | x0.925 |
+| Feb 2025 on | 1.013 | x0.927 | x0.863 |
+
+Calibration out of the half each fit came from, A/E (z), May 2023 to January 2025 / since February 2025:
+
+| group | value | runners | winners | BSP | BSP corrected | the card's blend | leans in both halves |
+|---|---|---|---|---|---|---|---|
+| GRV's tip | first tip | 25,089 | 8,297 | 0.965 (-3.2) / 0.963 (-3.1) | 1.002 (+0.2) / 0.998 (-0.1) | 0.943 (-5.2) / 0.962 (-3.1) | BSP, the card's blend |
+| GRV's tip | second to fourth tip | 74,956 | 11,721 | 1.024 (+2.2) / 1.020 (+1.7) | 1.002 (+0.2) / 0.996 (-0.3) | 1.023 (+2.1) / 1.015 (+1.2) |  |
+| GRV's tip | not tipped | 80,444 | 5,112 | 1.005 (+0.3) / 1.016 (+0.8) | 0.993 (-0.4) / 1.011 (+0.6) | 1.050 (+2.7) / 1.030 (+1.5) |  |
+| the weight change | down 0.5 kg or more | 11,460 | 1,486 | 1.011 (+0.3) / 1.034 (+1.0) | 1.003 (+0.1) / 1.030 (+0.9) | 1.010 (+0.3) / 1.034 (+1.0) |  |
+| the weight change | within 0.5 kg | 141,106 | 20,053 | 1.001 (+0.1) / 1.009 (+1.0) | 0.994 (-0.7) / 1.005 (+0.6) | 1.003 (+0.4) / 1.006 (+0.7) |  |
+| the weight change | up 0.5 kg or more | 12,793 | 1,634 | 0.950 (-1.8) / 0.907 (-3.1) | 1.048 (+1.6) / 0.955 (-1.5) | 0.946 (-2.0) / 0.910 (-3.0) |  |
+| the weight change | unknown | 15,130 | 1,957 | 1.027 (+1.1) / 0.965 (-1.2) | 1.018 (+0.7) / 0.960 (-1.4) | 1.011 (+0.4) / 0.994 (-0.2) |  |
+
+The card's bets split by GRV's first tip, judged by the corrected BSP (Test 75 has the same split by BSP):
+
+| period | rule | group | in it | bets | bets with a BSP | winners | BSP's expected winners | z | realised flat ROI | BSP's return per bet | its standard error | BSP's return, units |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| May 2023 to Jan 2025 | 1.3x, the card's rule | first tip | yes | 114 | 114 | 29 | 34.4 | -1.2 | +14.0% | +53.1% | 10.5% | +60.5 |
+| May 2023 to Jan 2025 | 1.3x, the card's rule | first tip | no | 114 | 114 | 24 | 28.2 | -1.0 | +114.3% | +103.7% | 11.4% | +118.3 |
+| May 2023 to Jan 2025 | 1.3x, the card's rule | box 1 | yes | 43 | 43 | 8 | 13.7 | -2.0 | -12.9% | +66.1% | 9.7% | +28.4 |
+| May 2023 to Jan 2025 | 1.3x, the card's rule | box 1 | no | 185 | 185 | 45 | 48.9 | -0.7 | +82.1% | +81.3% | 9.5% | +150.4 |
+| May 2023 to Jan 2025 | 1.3x, the card's rule | up 0.5 kg or more | yes | 14 | 14 | 3 | 3.7 | -0.4 | +180.4% | +95.1% | 45.0% | +13.3 |
+| May 2023 to Jan 2025 | 1.3x, the card's rule | up 0.5 kg or more | no | 214 | 214 | 50 | 58.9 | -1.4 | +56.5% | +77.3% | 8.0% | +165.5 |
+| May 2023 to Jan 2025 | flat from 1.1x | first tip | yes | 1,078 | 1,074 | 322 | 339.2 | -1.2 | +2.5% | +14.9% | 1.5% | +160.1 |
+| May 2023 to Jan 2025 | flat from 1.1x | first tip | no | 829 | 826 | 195 | 202.2 | -0.6 | +44.8% | +44.5% | 2.6% | +368.0 |
+| May 2023 to Jan 2025 | flat from 1.1x | box 1 | yes | 343 | 343 | 97 | 102.1 | -0.6 | +9.0% | +22.2% | 2.8% | +76.2 |
+| May 2023 to Jan 2025 | flat from 1.1x | box 1 | no | 1,564 | 1,557 | 420 | 439.3 | -1.1 | +23.6% | +29.0% | 1.7% | +451.8 |
+| May 2023 to Jan 2025 | flat from 1.1x | up 0.5 kg or more | yes | 139 | 139 | 29 | 32.9 | -0.8 | +7.2% | +16.3% | 6.0% | +22.7 |
+| May 2023 to Jan 2025 | flat from 1.1x | up 0.5 kg or more | no | 1,768 | 1,761 | 488 | 508.5 | -1.1 | +22.0% | +28.7% | 1.5% | +505.3 |
+| Feb 2025 on | 1.3x, the card's rule | first tip | yes | 85 | 83 | 27 | 23.9 | +0.8 | +44.0% | +40.8% | 9.8% | +33.9 |
+| Feb 2025 on | 1.3x, the card's rule | first tip | no | 13 | 13 | 3 | 2.4 | +0.5 | +31.5% | +40.5% | 18.8% | +5.3 |
+| Feb 2025 on | 1.3x, the card's rule | box 1 | yes | 11 | 11 | 4 | 3.6 | +0.3 | +55.5% | +126.8% | 50.6% | +13.9 |
+| Feb 2025 on | 1.3x, the card's rule | box 1 | no | 87 | 85 | 26 | 22.7 | +0.9 | +40.6% | +29.7% | 6.8% | +25.2 |
+| Feb 2025 on | 1.3x, the card's rule | up 0.5 kg or more | yes | 7 | 7 | 2 | 2.1 | -0.1 | -4.9% | +33.4% | 25.5% | +2.3 |
+| Feb 2025 on | 1.3x, the card's rule | up 0.5 kg or more | no | 91 | 89 | 28 | 24.2 | +1.0 | +46.0% | +41.4% | 9.3% | +36.8 |
+| Feb 2025 on | flat from 1.1x | first tip | yes | 854 | 839 | 243 | 232.4 | +0.9 | +7.9% | +6.0% | 1.6% | +50.6 |
+| Feb 2025 on | flat from 1.1x | first tip | no | 290 | 281 | 52 | 54.9 | -0.5 | +3.7% | +5.3% | 2.9% | +14.9 |
+| Feb 2025 on | flat from 1.1x | box 1 | yes | 129 | 127 | 36 | 36.0 | -0.0 | +2.9% | +7.8% | 6.1% | +9.9 |
+| Feb 2025 on | flat from 1.1x | box 1 | no | 1,015 | 993 | 259 | 251.2 | +0.6 | +7.4% | +5.6% | 1.4% | +55.6 |
+| Feb 2025 on | flat from 1.1x | up 0.5 kg or more | yes | 90 | 89 | 26 | 22.4 | +0.9 | +16.7% | +4.6% | 4.4% | +4.1 |
+| Feb 2025 on | flat from 1.1x | up 0.5 kg or more | no | 1,054 | 1,031 | 269 | 264.9 | +0.3 | +6.0% | +6.0% | 1.5% | +61.4 |
+
+BSP's verdict at 1.3x since February 2025, flat, by the corrected BSP (the realised results are Test 75's):
+
+| period | blend | rule | bets with a BSP | winners | BSP's expected winners | z | realised flat ROI | BSP's return per bet | its standard error | BSP's return, units |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 on | no Isolynx, 0.54 / 0.67 (the card) | 1.3x | 96 | 30 | 26.3 | +0.9 | +42.3% | +40.8% | 8.8% | +39.2 |
+| Feb 2025 on | no Isolynx, refitted | 1.3x | 114 | 30 | 29.7 | +0.1 | +19.8% | +36.2% | 7.7% | +41.3 |
+| Feb 2025 on | no Isolynx, refitted with the terms | 1.3x | 88 | 25 | 22.5 | +0.6 | +33.0% | +43.9% | 9.6% | +38.6 |
+| Feb 2025 on | with Isolynx, 0.54 / 0.67 | 1.3x | 89 | 28 | 24.5 | +0.9 | +57.3% | +43.6% | 9.3% | +38.8 |
+| Feb 2025 on | with Isolynx, refitted | 1.3x | 143 | 35 | 34.9 | +0.0 | +18.7% | +31.5% | 6.8% | +45.0 |
+| Feb 2025 on | with Isolynx, refitted with the terms | 1.3x | 123 | 34 | 29.3 | +1.1 | +57.4% | +29.7% | 5.9% | +36.5 |
+
+The card's rule on its own Kelly stakes since February 2025, by the corrected BSP:
+
+| period | model | bets with a BSP | Kelly units staked | realised Kelly units | BSP's return, Kelly units | BSP's return per unit staked |
+|---|---|---|---|---|---|---|
+| Feb 2025 on | no Isolynx, 0.54 / 0.67 (the card) | 96 | 124 | +68.9 | +65.0 | +52.4% |
+| Feb 2025 on | no Isolynx, refitted | 114 | 141 | +66.8 | +70.5 | +50.1% |
+| Feb 2025 on | no Isolynx, refitted with the terms | 88 | 107 | +42.5 | +55.1 | +51.7% |
+| Feb 2025 on | with Isolynx, 0.54 / 0.67 | 89 | 117 | +79.1 | +56.1 | +47.8% |
+| Feb 2025 on | with Isolynx, refitted | 143 | 179 | +96.5 | +74.5 | +41.7% |
+| Feb 2025 on | with Isolynx, refitted with the terms | 122 | 144 | +84.0 | +56.2 | +38.9% |
+
+The best N candidates by edge since February 2025, flat, by the corrected BSP (BSP's own figure from Test 75 in
+brackets):
+
+| best | the card: corrected (BSP) | no Isolynx, with the terms: corrected (BSP) | with Isolynx, 0.54 / 0.67: corrected (BSP) | with Isolynx, with the terms: corrected (BSP) | standard error |
+|---|---|---|---|---|---|
+| 50 | +55.5% (+61.5%) | +60.3% (+62.8%) | +45.7% (+51.5%) | +43.8% (+46.9%) | 10.2% to 14.7% |
+| 100 | +41.6% (+46.8%) | +40.6% (+42.9%) | +41.7% (+46.8%) | +29.9% (+32.4%) | 7.0% to 8.6% |
+| 200 | +24.5% (+29.5%) | +28.4% (+30.1%) | +24.1% (+28.8%) | +27.2% (+28.4%) | 5.0% to 5.1% |
+| 400 | +17.0% (+21.4%) | +17.0% (+18.3%) | +17.1% (+21.1%) | +17.0% (+17.9%) | 3.0% to 3.0% |
+| 800 | +9.4% (+13.4%) | +8.8% (+10.0%) | +11.3% (+15.0%) | +9.7% (+10.4%) | 1.8% to 1.8% |
+| 1,600 | +3.8% (+7.2%) | +4.6% (+5.6%) | +5.0% (+8.4%) | +4.4% (+5.3%) | 1.1% to 1.1% |
+
+What it shows:
+
+- **The correction removes BSP's first-tip lean out of sample.**
+  - The first tip goes from 0.965 and 0.963 to 1.002 and 0.998. The fitted factors are x0.912 and x0.927.
+  - The weight-rise factor is less stable, x0.925 and x0.863. Applied across, it overshoots the first half (1.048) and
+    undershoots the second (0.955).
+- **By the corrected judge, the card's bets are still worth a great deal, a little less than BSP said.**
+  - At 1.3x flat since February 2025, +40.8% a bet (standard error 8.8), against BSP's +46.1%.
+  - On the card's own stakes, +52.4% a unit staked against +57.5%.
+  - Its first tips: +40.8% a bet against +47.6%. From 1.1x: +6.0% a bet against +11.8%.
+  - Before 2025 the corrected judge still finds the card's first-tip bets weaker than its others: +53.1% against +103.7%
+    a bet at 1.3x, and +14.9% against +44.5% from 1.1x.
+- **Most of the disagreement in Test 75 was the judge.**
+  - At the best 200 the blends with the terms are now ahead: +28.4% against +24.5% without Isolynx, and +27.2% against
+    +24.1% with it.
+  - At the best 400 all four are at +17.0% to +17.1%.
+  - At the best 800 and 1,600 they are within one standard error either way.
+  - Only the best 100 with Isolynx is still clearly lower with the terms: +29.9% against +41.7%, a standard error of 7
+    to 8.5. The realised results there point the other way (+45.2% against +59.3% for the same pair).
+  - So the terms neither help nor hurt the bets by a margin these two years can show. Judged by the corrected BSP, they
+    make the forecast better and leave the bets about the same.
+- **The thin-edged bets below the card's line are worth less than BSP said.**
+  - The best 800 by the card's blend are worth +9.4% a bet, not +13.4%. The best 1,600 are worth +3.8%, not +7.2%.
+  - Most of the drop is the first tips, which make up most of those candidates.
+  - That bears on the founder's threshold question. Test 63 valued the bets 1.2x adds at about +14% a bet by BSP, and
+    that figure is likely too kind for the same reason.
+
+What it means: for a card whose bets are mostly GRV's first tips, the corrected BSP is the fairer judge, and the card
+holds up under it at about +41% a bet. The terms are worth keeping in mind as the better forecast, but nothing here
+says the bets need them. The card does not change.
+
+**Next:** the founder's pending decisions, the threshold (Test 63) and the stake (Test 64), re-judged by the corrected
+BSP. Test 64's 10,000 replays drew each dog's win from BSP's chance, so they inherit the same lean.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
