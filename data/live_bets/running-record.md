@@ -6,12 +6,13 @@ Rebuilt by research/form_gbm/running_record.py after every settle (founder, 16 N
 
 | Period | Bets | Won | Staked | P/L | ROI | At $50 |
 |---|---|---|---|---|---|---|
-| All settled (2026-11-02 on) | 53 | 13 | 120.19u | +99.74u | +83% | $+4,987 |
-| Since 12 Nov (full units) | 19 | 2 | 46.93u | -17.59u | -37% | $-879 |
-| Last 7 race days | 26 | 4 | 62.97u | +1.84u | +3% | $+92 |
+| All settled (2026-11-02 on) | 59 | 13 | 131.33u | +88.60u | +67% | $+4,430 |
+| Since 12 Nov (full units) | 25 | 2 | 58.07u | -28.73u | -49% | $-1,436 |
+| Last 7 race days | 30 | 3 | 67.59u | -23.86u | -35% | $-1,193 |
 
 | Day | Bets | Won | Staked | P/L | ROI | At $50 |
 |---|---|---|---|---|---|---|
+| 2026-11-16 | 6 | 0 | 11.14u | -11.14u | -100% | $-557 |
 | 2026-11-15 | 5 | 0 | 15.27u | -15.27u | -100% | $-764 |
 | 2026-11-14 | 5 | 0 | 11.31u | -11.31u | -100% | $-566 |
 | 2026-11-13 | 4 | 1 | 13.71u | +1.66u | +12% | $+83 |
@@ -26,10 +27,16 @@ Rebuilt by research/form_gbm/running_record.py after every settle (founder, 16 N
 | 2026-11-03 | 7 | 3 | 13.06u | +30.06u | +230% | $+1,503 |
 | 2026-11-02 | 5 | 2 | 14.22u | +34.31u | +241% | $+1,715 |
 
-Running total by day: 11-02 +34.3u, 11-03 +64.4u, 11-04 +95.7u, 11-05 +86.6u, 11-06 +92.2u, 11-07 +97.9u, 11-08 +112.5u, 11-09 +111.0u, 11-11 +117.3u, 11-12 +124.7u, 11-13 +126.3u, 11-14 +115.0u, 11-15 +99.7u
+Running total by day: 11-02 +34.3u, 11-03 +64.4u, 11-04 +95.7u, 11-05 +86.6u, 11-06 +92.2u, 11-07 +97.9u, 11-08 +112.5u, 11-09 +111.0u, 11-11 +117.3u, 11-12 +124.7u, 11-13 +126.3u, 11-14 +115.0u, 11-15 +99.7u, 11-16 +88.6u
 
 | Date | Meeting | Race | Horse | Units | Open | Result | P/L |
 |---|---|---|---|---|---|---|---|
+| 2026-11-16 | wangaratta | R8 | Vaderlee | 1.71u | $8 | 9th | -1.71u |
+| 2026-11-16 | wangaratta | R7 | Epic Centre | 0.75u | $26 | 2nd | -0.75u |
+| 2026-11-16 | wangaratta | R6 | Dance Lady | 0.83u | $15 | 12th | -0.83u |
+| 2026-11-16 | wangaratta | R6 | Cashemcowboy | 4.92u | $11 | 3rd | -4.92u |
+| 2026-11-16 | wangaratta | R5 | The Cellist | 1.52u | $8 | 2nd | -1.52u |
+| 2026-11-16 | wangaratta | R5 | Snakeinthegrass | 1.41u | $15 | 3rd | -1.41u |
 | 2026-11-15 | moe | R9 | Stole Him | 0.73u | $18.5 | 8th | -0.73u |
 | 2026-11-15 | moe | R5 | Yes Yoshi | 6.35u | $2.6 | 2nd | -6.35u |
 | 2026-11-15 | moe | R4 | Fridge Monster | 4.24u | $14 | 4th | -4.24u |

@@ -1270,3 +1270,13 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - BetMatic: nothing sent (send hold). No 9am list.
 - Ours/1.6 lay rule: no lay on Sunday; since 9 Oct 48 lays, 1 winner, +18.24u; from 13 Nov 6 lays -20.40u.
 - Back book ($500 a unit): Panda's Spectrum Donald R7 BSP $5.53 4th, Nautique Moe R1 BSP $4.18 4th: -2.00u (-$1,000).
+
+## Monday 16 Nov Wangaratta settled (Form King results, Mon 5:45pm, re-pulled by date)
+- No winner; two 2nds and two 3rds. No-Mercer card (the open, full units): Snakeinthegrass R5 1.41u $15 3rd, The Cellist
+  R5 1.52u $8 2nd, Cashemcowboy R6 4.92u $11 3rd, Dance Lady R6 0.83u $15 12th, Epic Centre R7 0.75u $26 2nd, Vaderlee R8
+  1.71u $8 9th: -11.14u (-$557 at $50). Mercer card (9:37am best prices, same units): -11.14u (-$557).
+- BetMatic: nothing sent (send hold). No 9am list.
+- Ours/1.6 lay rule: no lay on Monday; since 9 Oct 48 lays, 1 winner, +18.24u; from 13 Nov -20.40u.
+- Back book ($500 a unit): Bottas R5 BSP $5.40 4th -1.00u (-$500); R8 had no Betfair SP.
+- Running record (data/live_bets/running-record.md): the model +88.60u since 2 Nov (59 bets, 13 won), -28.73u since
+  12 Nov; 9am list 3 bets, 0 won, -$2,926 a bookie.
