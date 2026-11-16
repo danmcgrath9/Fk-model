@@ -5691,6 +5691,87 @@ which the evening card does not have, so it would mean a second pricing run when
 staking and judged both ways: the card's rule at 1.2x for the held blend, where BSP says the 1.2 to 1.3 rung is worth
 +14% a bet and its Kelly stake is small.
 
+## Test 63: the card's rule at 1.2x and its stakes, judged two ways (16 Nov 2026, gh topaz run 43820334720, `topaz_round45.py`)
+
+Test 62 found the held blend's edge, judged by BSP, at about +14% a bet at 1.2 to 1.3 and +35% at 1.3 to 1.5. The
+card bets from 1.3x, and its Kelly stake, on half the model's chance and half TAB's book, puts little on anything
+under about 1.2x. Stated before the run, for the held blend and the BSP correction shrunk halfway, the test covers:
+
+- the card's rule at 1.3x and at 1.2x, and the bets 1.2x adds on their own
+- two stakes: the card's own, and Kelly on the model's own chance, with the card's multiplier (75) and cap (4 units),
+  both sized on TAB's price before any deduction because a later scratching is not known when the bet is struck
+
+Each is realised and judged by BSP. Every race from February 2025 at TAB's first price, 17,205 races; 18 minutes.
+
+| period | model | stake | bets | bets with a BSP | winners | BSP's expected winners | units staked | realised units | realised per unit | BSP's units | BSP's return per unit |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 to Jan 2026 | blend, held | the card's stake, 1.3x | 57 | 57 | 18 | 17.6 | 70 | +43.6 | +62.0% | +48.8 | +69.5% |
+| Feb 2025 to Jan 2026 | blend, held | the card's stake, 1.2x | 97 | 97 | 22 | 28.3 | 85 | +33.0 | +38.8% | +51.0 | +59.8% |
+| Feb 2025 to Jan 2026 | blend, held | the card's stake, 1.2x, not 1.3x | 40 | 40 | 4 | 10.7 | 15 | -10.5 | -70.3% | +2.1 | +14.2% |
+| Feb 2025 to Jan 2026 | blend, held | Kelly on the model, 1.3x | 57 | 57 | 18 | 17.6 | 219 | +85.8 | +39.2% | +127.8 | +58.5% |
+| Feb 2025 to Jan 2026 | blend, held | Kelly on the model, 1.2x | 178 | 176 | 40 | 49.5 | 643 | -20.0 | -3.1% | +179.4 | +27.9% |
+| Feb 2025 to Jan 2026 | blend, held | Kelly on the model, 1.2x, not 1.3x | 121 | 119 | 22 | 32.0 | 424 | -105.7 | -24.9% | +51.6 | +12.2% |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway | the card's stake, 1.3x | 89 | 89 | 19 | 22.7 | 116 | +28.9 | +24.9% | +80.2 | +69.0% |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway | the card's stake, 1.2x | 134 | 133 | 25 | 33.7 | 132 | +20.7 | +15.6% | +83.2 | +62.9% |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway | the card's stake, 1.2x, not 1.3x | 45 | 44 | 6 | 10.9 | 16 | -8.2 | -51.7% | +2.9 | +18.4% |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway | Kelly on the model, 1.3x | 90 | 90 | 20 | 22.9 | 329 | +18.7 | +5.7% | +157.8 | +48.0% |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway | Kelly on the model, 1.2x | 229 | 225 | 42 | 55.8 | 781 | -81.6 | -10.4% | +219.7 | +28.1% |
+| Feb 2025 to Jan 2026 | correction on BSP, halfway | Kelly on the model, 1.2x, not 1.3x | 139 | 135 | 22 | 32.9 | 452 | -100.3 | -22.2% | +61.9 | +13.7% |
+| Feb 2026 on | blend, held | the card's stake, 1.3x | 41 | 39 | 12 | 9.7 | 54 | +25.3 | +47.1% | +22.4 | +41.7% |
+| Feb 2026 on | blend, held | the card's stake, 1.2x | 79 | 77 | 20 | 18.1 | 61 | +21.7 | +35.5% | +23.5 | +38.4% |
+| Feb 2026 on | blend, held | the card's stake, 1.2x, not 1.3x | 38 | 38 | 8 | 8.4 | 8 | -3.6 | -47.3% | +1.1 | +15.0% |
+| Feb 2026 on | blend, held | Kelly on the model, 1.3x | 41 | 39 | 12 | 9.7 | 146 | +95.6 | +65.3% | +38.6 | +26.3% |
+| Feb 2026 on | blend, held | Kelly on the model, 1.2x | 139 | 135 | 36 | 34.0 | 475 | +101.9 | +21.5% | +92.1 | +19.4% |
+| Feb 2026 on | blend, held | Kelly on the model, 1.2x, not 1.3x | 98 | 96 | 24 | 24.3 | 328 | +6.2 | +1.9% | +53.6 | +16.3% |
+| Feb 2026 on | correction on BSP, halfway | the card's stake, 1.3x | 64 | 61 | 12 | 13.5 | 77 | +3.4 | +4.5% | +34.9 | +45.3% |
+| Feb 2026 on | correction on BSP, halfway | the card's stake, 1.2x | 99 | 96 | 17 | 21.3 | 84 | +2.4 | +2.8% | +36.4 | +43.4% |
+| Feb 2026 on | correction on BSP, halfway | the card's stake, 1.2x, not 1.3x | 35 | 35 | 5 | 7.8 | 7 | -1.1 | -15.4% | +1.5 | +21.7% |
+| Feb 2026 on | correction on BSP, halfway | Kelly on the model, 1.3x | 64 | 61 | 12 | 13.5 | 221 | +23.0 | +10.4% | +69.7 | +31.6% |
+| Feb 2026 on | correction on BSP, halfway | Kelly on the model, 1.2x | 160 | 154 | 30 | 34.7 | 516 | +4.6 | +0.9% | +123.4 | +23.9% |
+| Feb 2026 on | correction on BSP, halfway | Kelly on the model, 1.2x, not 1.3x | 96 | 93 | 18 | 21.2 | 295 | -18.4 | -6.2% | +53.7 | +18.2% |
+| Feb 2025 on | blend, held | the card's stake, 1.3x | 98 | 96 | 30 | 27.2 | 124 | +68.9 | +55.5% | +71.2 | +57.5% |
+| Feb 2025 on | blend, held | the card's stake, 1.2x | 176 | 174 | 42 | 46.4 | 146 | +54.8 | +37.4% | +74.5 | +50.9% |
+| Feb 2025 on | blend, held | the card's stake, 1.2x, not 1.3x | 78 | 78 | 12 | 19.2 | 22 | -14.1 | -62.6% | +3.3 | +14.5% |
+| Feb 2025 on | blend, held | Kelly on the model, 1.3x | 98 | 96 | 30 | 27.2 | 365 | +181.4 | +49.7% | +166.4 | +45.6% |
+| Feb 2025 on | blend, held | Kelly on the model, 1.2x | 317 | 311 | 76 | 83.5 | 1,117 | +81.9 | +7.3% | +271.6 | +24.3% |
+| Feb 2025 on | blend, held | Kelly on the model, 1.2x, not 1.3x | 219 | 215 | 46 | 56.3 | 752 | -99.5 | -13.2% | +105.2 | +14.0% |
+| Feb 2025 on | correction on BSP, halfway | the card's stake, 1.3x | 153 | 150 | 31 | 36.2 | 193 | +32.3 | +16.7% | +115.1 | +59.6% |
+| Feb 2025 on | correction on BSP, halfway | the card's stake, 1.2x | 233 | 229 | 42 | 54.9 | 216 | +23.0 | +10.7% | +119.5 | +55.3% |
+| Feb 2025 on | correction on BSP, halfway | the card's stake, 1.2x, not 1.3x | 80 | 79 | 11 | 18.7 | 23 | -9.3 | -40.7% | +4.4 | +19.4% |
+| Feb 2025 on | correction on BSP, halfway | Kelly on the model, 1.3x | 154 | 151 | 32 | 36.4 | 549 | +41.7 | +7.6% | +227.4 | +41.4% |
+| Feb 2025 on | correction on BSP, halfway | Kelly on the model, 1.2x | 389 | 379 | 72 | 90.5 | 1,297 | -77.0 | -5.9% | +343.1 | +26.4% |
+| Feb 2025 on | correction on BSP, halfway | Kelly on the model, 1.2x, not 1.3x | 235 | 228 | 40 | 54.1 | 748 | -118.7 | -15.9% | +115.6 | +15.5% |
+
+What it shows:
+
+- **Moving the card to 1.2x adds almost nothing on its own stakes.** Its 78 extra bets carry 22 units of stake against
+  124 on the card's 98, because the card's stake is small where its edge is small. They lost 14.1 units (12 winners
+  where BSP expected 19.2). BSP values them at +3.3 units (+14.5% a unit), so the loss is the unlucky 1.2 to 1.3 rung
+  of Test 62. Either way the card's units barely move: +54.8 realised and +74.5 by BSP at 1.2x, against +68.9 and
+  +71.2 at 1.3x.
+- **The stake is the bigger lever, not the threshold.** At 1.3x, Kelly on the held blend's own chance stakes 365 units
+  on the same 98 bets, three times the card's 124. It returned +181.4 units (+49.7% a unit), and BSP values it at
+  +166.4 (+45.6%). That is about two and a half times the card's +68.9 and +71.2, for 6 points less a unit staked
+  realised and 12 less by BSP. Each extra unit it stakes over the card's is worth about +40% by BSP and +47% realised. Judged both ways, the
+  card's stake leaves money on the bets it already makes. It does so for the reason it was designed: it shrinks the
+  model halfway to TAB's book, which Test 60 found is right for a model that overclaims its biggest edges.
+- **But the gain is in one half, and its risk is not measured yet.** Since February 2026, Kelly on the model at 1.3x
+  is worth +26.3% a unit by BSP, against the card's +41.7%. It did better realised (+95.6 units on 146) because its
+  12 winners came in where BSP expected 9.7. To January 2026 it is worth +58.5% against the card's +69.5%. Staking
+  three times as much roughly triples the swings, and the worst drawdown is not in this run.
+- **At 1.2x, Kelly on the model's chance loses realised and is worth +14% a unit by BSP on the bets it adds.** Those
+  are 219 bets and 752 units, -99.5 realised (46 winners where BSP expected 56.3, as in Test 62's 1.2 to 1.3 rung)
+  against +105.2 by BSP. That is the rung's luck again: to January 2026 those bets landed 22 winners where BSP
+  expected 32.0, and since February 2026, 24 where it expected 24.3.
+- **The shrunk correction gains nothing from either change.** On the card's stake at 1.3x it returned +32.3 units and
+  is worth +115.1 by BSP. Kelly on its own chance stakes 549 units for +41.7 realised and +227.4 by BSP, the same
+  split between the two judges as before.
+
+What it means: the threshold stays at 1.3x. The stake is the founder's call on risk, not a model question, and it
+needs the drawdown first. Next: the stake sizes at 1.3x on the held blend, with what each would have cost at its
+worst. That is the card's stake, Kelly on the model, the same at half size, and one unit flat. The measures are the
+worst drawdown as a share of a 75-unit bank, the longest losing run, months in profit and the worst month.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
