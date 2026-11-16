@@ -6741,6 +6741,98 @@ wrong, which is where an edge at the open has to come from.
 - **The rule, stated before the run.** A lean counts only if both halves (May 2023 to January 2025, and since
   February 2025) agree with |z| of 2 or more.
 
+## Test 73: where is TAB's opening price wrong? A calibration scan by group (16 Nov 2026, gh topaz run 43911699143, `topaz_round55.py`)
+
+Test 71 found a lean in TAB's first price by checking its calibration across one group. An edge at TAB's open has to
+come from where its price is wrong, so this scans other groups the same way.
+
+**The test, stated before the run.** Round 50's prices, on races with nothing scratched after the open and a BSP on
+every runner from May 2023: 25,130 races and 180,489 runners, 26 minutes.
+
+- **What it measures.** For each group value: winners against TAB's first-book chances (A/E and z) in each half, and,
+  since February 2025, the same for ours with Isolynx, the card's blend, the blend with Isolynx and BSP.
+- **The rule.** A lean counts only if TAB's first book has |z| of 2 or more in both halves, with the same sign.
+
+The scan also took the field, distance and grade. Those are race-level: every runner in a race has the same value and
+the chances sum to the one winner, so they are 1.000 by construction. They should not have been in it, and are left
+out here (the run log has them). "Days since, unknown" is the same 4,465 runners as "first start" and is left out too.
+
+Winners against the chances given, A/E (z):
+
+| group | value | runners | winners | TAB's first book, May 2023 to Jan 2025 | TAB's first book, Feb 2025 on | ours, with Isolynx, Feb 2025 on | the card's blend, Feb 2025 on | blend with Isolynx, Feb 2025 on | BSP, Feb 2025 on | lean in both halves |
+|---|---|---|---|---|---|---|---|---|---|---|
+| GRV's tip | first tip | 25,089 | 8,297 | 1.145 (+11.3) | 1.175 (+12.2) | 0.957 (-3.5) | 0.962 (-3.1) | 0.961 (-3.2) | 0.963 (-3.1) | wins more than TAB says |
+| GRV's tip | second to fourth tip | 74,956 | 11,721 | 1.006 (+0.5) | 1.001 (+0.1) | 1.016 (+1.3) | 1.015 (+1.2) | 1.016 (+1.3) | 1.020 (+1.7) |  |
+| GRV's tip | not tipped | 80,444 | 5,112 | 0.814 (-11.3) | 0.811 (-11.1) | 1.037 (+1.9) | 1.030 (+1.5) | 1.030 (+1.6) | 1.016 (+0.8) | wins less than TAB says |
+| GRV's best bet | best bet | 6,987 | 3,098 | 1.227 (+11.0) | 1.239 (+10.4) | 0.977 (-1.3) | 0.975 (-1.3) | 0.974 (-1.4) | 0.975 (-1.4) | wins more than TAB says |
+| GRV's best bet | not | 173,502 | 22,032 | 0.974 (-3.2) | 0.974 (-3.0) | 1.003 (+0.4) | 1.004 (+0.4) | 1.004 (+0.4) | 1.004 (+0.4) | wins less than TAB says |
+| box | 1 | 24,585 | 4,373 | 0.999 (-0.1) | 0.976 (-1.3) | 1.017 (+0.9) | 0.959 (-2.3) | 0.960 (-2.3) | 1.020 (+1.1) |  |
+| box | 2 | 24,448 | 3,810 | 1.084 (+4.2) | 0.972 (-1.3) | 0.981 (-0.9) | 0.962 (-1.9) | 0.964 (-1.8) | 0.983 (-0.8) |  |
+| box | 3 | 21,025 | 2,616 | 0.954 (-2.0) | 0.988 (-0.4) | 1.003 (+0.1) | 1.007 (+0.3) | 1.007 (+0.3) | 1.002 (+0.1) |  |
+| box | 4 | 24,299 | 3,197 | 0.992 (-0.4) | 1.036 (+1.6) | 1.006 (+0.3) | 1.038 (+1.7) | 1.038 (+1.7) | 1.012 (+0.5) |  |
+| box | 5 | 16,432 | 2,043 | 0.986 (-0.5) | 1.074 (+2.4) | 1.057 (+1.9) | 1.090 (+3.0) | 1.089 (+3.0) | 1.065 (+2.2) |  |
+| box | 6 | 21,429 | 2,550 | 0.986 (-0.6) | 0.959 (-1.6) | 0.928 (-2.9) | 0.963 (-1.5) | 0.961 (-1.5) | 0.939 (-2.4) |  |
+| box | 7 | 23,901 | 3,018 | 0.989 (-0.5) | 1.013 (+0.6) | 1.024 (+1.0) | 1.037 (+1.6) | 1.038 (+1.6) | 1.007 (+0.3) |  |
+| box | 8 | 24,370 | 3,523 | 0.988 (-0.6) | 1.017 (+0.8) | 0.993 (-0.3) | 1.004 (+0.2) | 1.003 (+0.1) | 0.985 (-0.7) |  |
+| starts before the race | first start | 4,465 | 631 | 0.871 (-3.0) | 0.976 (-0.4) | 0.948 (-1.0) | 0.969 (-0.6) | 0.970 (-0.6) | 0.936 (-1.3) |  |
+| starts before the race | 1 to 3 | 12,151 | 2,122 | 1.049 (+2.0) | 1.044 (+1.5) | 0.998 (-0.1) | 0.994 (-0.2) | 0.997 (-0.1) | 0.984 (-0.6) |  |
+| starts before the race | 4 to 10 | 25,903 | 4,771 | 1.083 (+4.8) | 1.079 (+4.0) | 1.024 (+1.3) | 1.019 (+1.0) | 1.019 (+1.0) | 1.021 (+1.1) | wins more than TAB says |
+| starts before the race | 11 or more | 137,970 | 17,606 | 0.977 (-2.5) | 0.979 (-2.2) | 0.996 (-0.4) | 0.997 (-0.3) | 0.997 (-0.3) | 0.999 (-0.1) | wins less than TAB says |
+| days since the last run | under 8 | 110,533 | 15,436 | 1.014 (+1.4) | 1.003 (+0.3) | 1.006 (+0.6) | 1.004 (+0.4) | 1.004 (+0.4) | 1.005 (+0.5) |  |
+| days since the last run | 8 to 14 | 40,435 | 5,680 | 1.002 (+0.1) | 1.008 (+0.5) | 1.001 (+0.0) | 1.002 (+0.1) | 1.003 (+0.2) | 1.002 (+0.1) |  |
+| days since the last run | 15 to 28 | 13,985 | 1,870 | 0.941 (-2.2) | 0.978 (-0.7) | 0.987 (-0.5) | 0.985 (-0.5) | 0.983 (-0.6) | 0.991 (-0.3) |  |
+| days since the last run | 29 to 60 | 6,698 | 927 | 1.011 (+0.3) | 0.963 (-0.8) | 0.984 (-0.4) | 0.982 (-0.4) | 0.979 (-0.5) | 0.995 (-0.1) |  |
+| days since the last run | 61 or more | 4,373 | 586 | 0.998 (-0.0) | 0.980 (-0.4) | 0.952 (-0.9) | 0.984 (-0.3) | 0.977 (-0.4) | 0.930 (-1.4) |  |
+| class step | dropping in class | 25,853 | 3,925 | 1.032 (+1.6) | 1.023 (+1.1) | 1.000 (-0.0) | 1.001 (+0.1) | 1.000 (+0.0) | 0.997 (-0.1) |  |
+| class step | same class | 100,815 | 13,347 | 0.999 (-0.1) | 0.972 (-2.6) | 0.985 (-1.4) | 0.982 (-1.7) | 0.982 (-1.7) | 0.987 (-1.3) |  |
+| class step | rising in class | 35,803 | 4,989 | 0.983 (-1.0) | 1.041 (+2.2) | 1.035 (+1.9) | 1.042 (+2.3) | 1.042 (+2.3) | 1.035 (+2.0) |  |
+| class step | unknown | 18,018 | 2,869 | 0.994 (-0.3) | 1.048 (+1.9) | 1.018 (+0.7) | 1.022 (+0.9) | 1.022 (+0.9) | 1.011 (+0.4) |  |
+| the trainer's runs | under 50 | 3,914 | 477 | 0.940 (-1.2) | 0.930 (-1.1) | 0.907 (-1.5) | 0.927 (-1.2) | 0.926 (-1.2) | 0.894 (-1.8) |  |
+| the trainer's runs | 50 to 299 | 21,227 | 2,709 | 0.949 (-2.4) | 1.010 (+0.4) | 1.024 (+0.9) | 1.027 (+1.0) | 1.024 (+0.9) | 1.016 (+0.6) |  |
+| the trainer's runs | 300 to 999 | 55,585 | 7,263 | 0.980 (-1.5) | 0.979 (-1.3) | 0.990 (-0.6) | 0.993 (-0.4) | 0.992 (-0.5) | 0.990 (-0.6) |  |
+| the trainer's runs | 1,000 or more | 99,763 | 14,681 | 1.027 (+2.6) | 1.009 (+0.9) | 1.003 (+0.3) | 1.001 (+0.1) | 1.002 (+0.2) | 1.005 (+0.5) |  |
+| age | under 2 years | 25,909 | 4,912 | 1.072 (+4.2) | 1.080 (+4.2) | 1.031 (+1.7) | 1.020 (+1.1) | 1.021 (+1.2) | 1.021 (+1.2) | wins more than TAB says |
+| age | 2 to 3 | 87,793 | 13,260 | 1.023 (+2.2) | 1.003 (+0.2) | 0.999 (-0.1) | 0.990 (-0.9) | 0.990 (-0.9) | 0.996 (-0.4) |  |
+| age | 3 to 4 | 49,885 | 5,498 | 0.929 (-4.3) | 0.937 (-3.8) | 0.968 (-1.9) | 0.978 (-1.4) | 0.977 (-1.4) | 0.973 (-1.7) | wins less than TAB says |
+| age | 4 and over | 16,902 | 1,460 | 0.815 (-5.6) | 1.009 (+0.3) | 1.041 (+1.3) | 1.107 (+3.3) | 1.103 (+3.2) | 1.074 (+2.3) |  |
+| TAB's order | favourite | 25,130 | 9,797 | 1.151 (+12.7) | 1.166 (+13.1) | 1.115 (+9.6) | 1.013 (+1.1) | 1.008 (+0.8) | 1.003 (+0.3) | wins more than TAB says |
+| TAB's order | second | 25,130 | 5,411 | 1.024 (+1.5) | 0.998 (-0.1) | 0.999 (-0.1) | 0.972 (-1.6) | 0.972 (-1.6) | 0.957 (-2.6) |  |
+| TAB's order | third | 25,130 | 3,686 | 0.973 (-1.3) | 0.942 (-2.7) | 0.955 (-2.1) | 0.987 (-0.6) | 0.988 (-0.5) | 0.990 (-0.5) |  |
+| TAB's order | fourth and longer | 105,099 | 6,236 | 0.829 (-11.4) | 0.839 (-9.8) | 0.879 (-7.3) | 1.013 (+0.7) | 1.019 (+1.1) | 1.042 (+2.3) | wins less than TAB says |
+
+What it shows:
+
+- **Ten leans meet the rule, and they are mostly one lean.**
+  - TAB's first book, normalised to chances, has a strong favourite-longshot bias. Its favourites win 1.151 and 1.166
+    times what it says (z +12.7, +13.1). Its fourth and longer win 0.829 and 0.839 times (z -11.4, -9.8). This is the
+    standard pattern in a book whose overround is spread evenly over the field.
+  - The other leans are groups that line up with TAB's order. GRV's first tip (1.145, 1.175) and best bet (1.227,
+    1.239) are mostly favourites. The untipped dogs (0.814, 0.811) are mostly long. The dogs with 4 to 10 starts and
+    those under two years win more, and the dogs with 11 or more starts and those 3 to 4 years old win less.
+  - None of this was checked against TAB's order inside the group, so how much of each lean is TAB's order and how much
+    is the group itself is not yet known.
+- **The card's blend already corrects the favourite-longshot bias.** Since February 2025 its favourites are at 1.013 and
+  its fourth and longer at 1.013. That is the first thing ours adds to TAB's price. It is not where the card's bets come
+  from: the card bets where ours rates a dog well above TAB, and a bias spread evenly over the order does not make 30%
+  edges.
+- **After that correction, a few single-half leans remain since February 2025.** They are in the card's blend, and in
+  BSP too:
+  - GRV's first tip wins less than the blend says: 0.962 (z -3.1). BSP is at 0.963 (z -3.1) and ours alone at 0.957.
+  - Box 5 wins more: 1.090 (z +3.0), with BSP at 1.065 (z +2.2). Box 1 wins less: 0.959 (z -2.3), with BSP at 1.020.
+  - Dogs rising in class win more: 1.042 (z +2.3), with BSP at 1.035 (z +2.0).
+  - Dogs 4 and over win more: 1.107 (z +3.3), with BSP at 1.074 (z +2.3).
+  - These were looked at in one half only, among about 40 values. About 2 of 40 would pass |z| of 2 by chance.
+  - Where BSP leans the same way, BSP's verdict cannot see an edge in them.
+
+What it means: the scan as stated was the wrong test. TAB's first book has to be judged after its favourite-longshot
+bias, because the blend already removes that bias and most of the leans come from it. The question worth answering is
+what the card's blend gets wrong, in both halves.
+
+**Next:** the same scan on the card's blend, the blend with Isolynx, ours with Isolynx, BSP, and TAB's first book after
+its favourite-longshot bias. That last is TAB's chances alone, refitted with one power on Test 51's window. The scan
+covers runner-level groups only, adds the weight change and early-speed order within the race, and uses the two-halves
+rule on each forecast. A group the card's blend gets wrong in both halves, and BSP does not, is a lean the card can use.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
