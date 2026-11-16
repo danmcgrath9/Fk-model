@@ -58,11 +58,11 @@ def top_n(t: pd.DataFrame, col: str, mask: np.ndarray, n: int):
     return x, paid, float(e[pick[-1]])
 
 
-def ladder(t: pd.DataFrame, groups: dict, ns: tuple) -> None:
+def ladder(t: pd.DataFrame, groups: dict, ns: tuple, blends: dict = None) -> None:
     print("| group | blend | best | edge of the last one in | " + R44.HEAD + " |\n|" + "---|" * 12)
     for gname, g in groups.items():
         for n in ns:
-            for name, col in BLENDS.items():
+            for name, col in (BLENDS if blends is None else blends).items():
                 x, paid, edge = top_n(t, col, g, n)
                 if x is None:
                     print(f"| {gname} | {name} | {n} | fewer candidates |" + " |" * 8)

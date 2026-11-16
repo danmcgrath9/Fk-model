@@ -6482,6 +6482,138 @@ and without a tracked run before the race, by our-odds band. And log loss by rac
 tracked, none tracked. If ours with Isolynx marks dogs down just for having no tracking history, the fix (a correction
 for that group, fitted on the early months and held) is walked forward next. The card does not change.
 
+## Test 71: does ours with Isolynx mark a dog down for having no tracking history? (16 Nov 2026, gh topaz run 43900961431, `topaz_round53.py`)
+
+Test 70 found that ours with Isolynx gives a winner with a tracked run before the race a much better chance than ours
+without it, and a winner with none a worse one. That could mean the model has learned to mark a dog down just for
+having no tracking history, which would be a fault. Calibration tells the two apart.
+
+**The test, stated before the run.** Round 50's prices, on races with nothing scratched after the open and a BSP on
+every runner from May 2023: 25,130 races and 180,489 runners, 21 minutes.
+
+- **The races.** Every runner has a tracked run before the race in 27% of the races, some do in 67%, and none do in
+  6%.
+- **Calibration.** Winners against the chances given (A/E and z) for each forecast, in the mixed races, for the runners
+  with and without a tracked run.
+- **Two checks.** The same calibration for ours by its own odds, and log loss by race make-up.
+
+In races where every runner is tracked, or none is, every forecast's chances sum to the winners by construction, so
+those rows (all 1.000) are left out here. The run log has them.
+
+Winners against the chances given, in the mixed races:
+
+| period | race make-up | runners | model | runners | winners | expected | A/E | z |
+|---|---|---|---|---|---|---|---|---|
+| May 2023 to Jan 2025 | some tracked | a tracked run before | TAB's first book | 33,382 | 4,772 | 4,583.7 | 1.041 | +3.1 |
+| May 2023 to Jan 2025 | some tracked | a tracked run before | ours, no Isolynx | 33,382 | 4,772 | 4,587.1 | 1.040 | +3.2 |
+| May 2023 to Jan 2025 | some tracked | a tracked run before | ours, with Isolynx | 33,382 | 4,772 | 4,776.7 | 0.999 | -0.1 |
+| May 2023 to Jan 2025 | some tracked | a tracked run before | blend, no Isolynx (the card) | 33,382 | 4,772 | 4,585.3 | 1.041 | +3.2 |
+| May 2023 to Jan 2025 | some tracked | a tracked run before | blend, with Isolynx | 33,382 | 4,772 | 4,686.3 | 1.018 | +1.5 |
+| May 2023 to Jan 2025 | some tracked | a tracked run before | BSP | 33,382 | 4,772 | 4,709.4 | 1.013 | +1.1 |
+| May 2023 to Jan 2025 | some tracked | none | TAB's first book | 32,133 | 4,240 | 4,428.3 | 0.957 | -3.2 |
+| May 2023 to Jan 2025 | some tracked | none | ours, no Isolynx | 32,133 | 4,240 | 4,424.9 | 0.958 | -3.2 |
+| May 2023 to Jan 2025 | some tracked | none | ours, with Isolynx | 32,133 | 4,240 | 4,235.3 | 1.001 | +0.1 |
+| May 2023 to Jan 2025 | some tracked | none | blend, no Isolynx (the card) | 32,133 | 4,240 | 4,426.7 | 0.958 | -3.3 |
+| May 2023 to Jan 2025 | some tracked | none | blend, with Isolynx | 32,133 | 4,240 | 4,325.7 | 0.980 | -1.5 |
+| May 2023 to Jan 2025 | some tracked | none | BSP | 32,133 | 4,240 | 4,302.6 | 0.985 | -1.1 |
+| Feb 2025 on | some tracked | a tracked run before | TAB's first book | 33,642 | 4,663 | 4,578.4 | 1.018 | +1.4 |
+| Feb 2025 on | some tracked | a tracked run before | ours, no Isolynx | 33,642 | 4,663 | 4,540.9 | 1.027 | +2.1 |
+| Feb 2025 on | some tracked | a tracked run before | ours, with Isolynx | 33,642 | 4,663 | 4,612.3 | 1.011 | +0.9 |
+| Feb 2025 on | some tracked | a tracked run before | blend, no Isolynx (the card) | 33,642 | 4,663 | 4,554.2 | 1.024 | +1.9 |
+| Feb 2025 on | some tracked | a tracked run before | blend, with Isolynx | 33,642 | 4,663 | 4,592.8 | 1.015 | +1.2 |
+| Feb 2025 on | some tracked | a tracked run before | BSP | 33,642 | 4,663 | 4,627.7 | 1.008 | +0.6 |
+| Feb 2025 on | some tracked | none | TAB's first book | 22,558 | 3,099 | 3,183.4 | 0.973 | -1.7 |
+| Feb 2025 on | some tracked | none | ours, no Isolynx | 22,558 | 3,099 | 3,221.1 | 0.962 | -2.5 |
+| Feb 2025 on | some tracked | none | ours, with Isolynx | 22,558 | 3,099 | 3,149.7 | 0.984 | -1.0 |
+| Feb 2025 on | some tracked | none | blend, no Isolynx (the card) | 22,558 | 3,099 | 3,207.8 | 0.966 | -2.2 |
+| Feb 2025 on | some tracked | none | blend, with Isolynx | 22,558 | 3,099 | 3,169.2 | 0.978 | -1.5 |
+| Feb 2025 on | some tracked | none | BSP | 22,558 | 3,099 | 3,134.3 | 0.989 | -0.7 |
+
+Ours by its own odds, in the mixed races (the run log has BSP's rows):
+
+| period | runners | model | its odds | runners | winners | expected | A/E | z |
+|---|---|---|---|---|---|---|---|---|
+| May 2023 to Jan 2025 | a tracked run before | ours, no Isolynx | under 3 | 2,898 | 1,307 | 1,294.9 | 1.009 | +0.5 |
+| May 2023 to Jan 2025 | a tracked run before | ours, no Isolynx | 3 to 6 | 7,188 | 1,754 | 1,678.1 | 1.045 | +2.1 |
+| May 2023 to Jan 2025 | a tracked run before | ours, no Isolynx | 6 to 12 | 8,372 | 1,104 | 1,008.2 | 1.095 | +3.2 |
+| May 2023 to Jan 2025 | a tracked run before | ours, no Isolynx | 12 and over | 14,924 | 607 | 606.0 | 1.002 | +0.0 |
+| May 2023 to Jan 2025 | a tracked run before | ours, with Isolynx | under 3 | 3,211 | 1,420 | 1,445.1 | 0.983 | -0.9 |
+| May 2023 to Jan 2025 | a tracked run before | ours, with Isolynx | 3 to 6 | 7,382 | 1,718 | 1,733.3 | 0.991 | -0.4 |
+| May 2023 to Jan 2025 | a tracked run before | ours, with Isolynx | 6 to 12 | 8,414 | 1,089 | 1,015.4 | 1.072 | +2.5 |
+| May 2023 to Jan 2025 | a tracked run before | ours, with Isolynx | 12 and over | 14,375 | 545 | 582.8 | 0.935 | -1.6 |
+| May 2023 to Jan 2025 | none | ours, no Isolynx | under 3 | 2,728 | 1,164 | 1,222.1 | 0.952 | -2.3 |
+| May 2023 to Jan 2025 | none | ours, no Isolynx | 3 to 6 | 6,868 | 1,564 | 1,596.3 | 0.980 | -0.9 |
+| May 2023 to Jan 2025 | none | ours, no Isolynx | 6 to 12 | 8,548 | 991 | 1,028.9 | 0.963 | -1.3 |
+| May 2023 to Jan 2025 | none | ours, no Isolynx | 12 and over | 13,989 | 521 | 577.5 | 0.902 | -2.4 |
+| May 2023 to Jan 2025 | none | ours, with Isolynx | under 3 | 2,440 | 1,064 | 1,089.0 | 0.977 | -1.0 |
+| May 2023 to Jan 2025 | none | ours, with Isolynx | 3 to 6 | 6,579 | 1,543 | 1,528.8 | 1.009 | +0.4 |
+| May 2023 to Jan 2025 | none | ours, with Isolynx | 6 to 12 | 8,523 | 1,061 | 1,022.7 | 1.037 | +1.3 |
+| May 2023 to Jan 2025 | none | ours, with Isolynx | 12 and over | 14,591 | 572 | 594.8 | 0.962 | -1.0 |
+| Feb 2025 on | a tracked run before | ours, no Isolynx | under 3 | 2,740 | 1,239 | 1,218.4 | 1.017 | +0.8 |
+| Feb 2025 on | a tracked run before | ours, no Isolynx | 3 to 6 | 7,144 | 1,733 | 1,666.4 | 1.040 | +1.9 |
+| Feb 2025 on | a tracked run before | ours, no Isolynx | 6 to 12 | 8,620 | 1,049 | 1,039.6 | 1.009 | +0.3 |
+| Feb 2025 on | a tracked run before | ours, no Isolynx | 12 and over | 15,138 | 642 | 616.5 | 1.041 | +1.1 |
+| Feb 2025 on | a tracked run before | ours, with Isolynx | under 3 | 2,948 | 1,318 | 1,319.3 | 0.999 | -0.0 |
+| Feb 2025 on | a tracked run before | ours, with Isolynx | 3 to 6 | 7,077 | 1,686 | 1,651.8 | 1.021 | +1.0 |
+| Feb 2025 on | a tracked run before | ours, with Isolynx | 6 to 12 | 8,611 | 1,048 | 1,037.3 | 1.010 | +0.4 |
+| Feb 2025 on | a tracked run before | ours, with Isolynx | 12 and over | 15,006 | 611 | 603.9 | 1.012 | +0.3 |
+| Feb 2025 on | none | ours, no Isolynx | under 3 | 2,036 | 838 | 898.8 | 0.932 | -2.8 |
+| Feb 2025 on | none | ours, no Isolynx | 3 to 6 | 5,108 | 1,165 | 1,197.8 | 0.973 | -1.1 |
+| Feb 2025 on | none | ours, no Isolynx | 6 to 12 | 6,075 | 725 | 732.5 | 0.990 | -0.3 |
+| Feb 2025 on | none | ours, no Isolynx | 12 and over | 9,339 | 371 | 392.0 | 0.946 | -1.1 |
+| Feb 2025 on | none | ours, with Isolynx | under 3 | 1,943 | 819 | 853.7 | 0.959 | -1.6 |
+| Feb 2025 on | none | ours, with Isolynx | 3 to 6 | 4,984 | 1,161 | 1,165.7 | 0.996 | -0.2 |
+| Feb 2025 on | none | ours, with Isolynx | 6 to 12 | 6,029 | 730 | 727.5 | 1.003 | +0.1 |
+| Feb 2025 on | none | ours, with Isolynx | 12 and over | 9,602 | 389 | 402.8 | 0.966 | -0.7 |
+
+Log loss on the winners, by race make-up (lower is better):
+
+| period | race make-up | races | TAB's first book | ours, no Isolynx | ours, with Isolynx | blend, no Isolynx (the card) | blend, with Isolynx | BSP |
+|---|---|---|---|---|---|---|---|---|
+| May 2023 to Jan 2025 | every runner tracked | 3,321 | 1.5625 | 1.5628 | 1.5554 | 1.5350 | 1.5312 | 1.4859 |
+| May 2023 to Jan 2025 | some tracked | 9,012 | 1.6242 | 1.6073 | 1.6045 | 1.5866 | 1.5849 | 1.5116 |
+| May 2023 to Jan 2025 | none tracked | 1,204 | 1.6385 | 1.6238 | 1.6240 | 1.6007 | 1.6011 | 1.5179 |
+| Feb 2025 on | every runner tracked | 3,484 | 1.5540 | 1.5669 | 1.5582 | 1.5326 | 1.5285 | 1.4679 |
+| Feb 2025 on | some tracked | 7,762 | 1.6086 | 1.6145 | 1.6099 | 1.5855 | 1.5835 | 1.5261 |
+| Feb 2025 on | none tracked | 347 | 1.5787 | 1.5824 | 1.5815 | 1.5502 | 1.5498 | 1.4542 |
+
+What it shows:
+
+- **The fault is the other way round, and it is in TAB's book.** In the mixed races TAB's first price under-rates the
+  dogs with a tracked run and over-rates the dogs without one.
+  - May 2023 to January 2025: A/E 1.041 (z +3.1) for the tracked dogs and 0.957 (z -3.2) for the rest.
+  - Since February 2025: 1.018 and 0.973, the same direction but smaller.
+  - Ours without Isolynx has the same fault (1.040 and 0.958, then 1.027 and 0.962), and so does the card's blend
+    (1.041 and 0.958, then 1.024 and 0.966).
+  - Even BSP leans the same way, slightly: 1.013 and 0.985, then 1.008 and 0.989.
+  - In a mixed race, a dog that has run at The Meadows, Sandown, Healesville, Traralgon or Cranbourne wins more often
+    than the market's opening price says, and the dogs that have not win less.
+- **Ours with Isolynx is the forecast without the fault.** It is at 0.999 and 1.001 before 2025, and 1.011 and 0.984
+  since. That is closer to 1 than BSP before 2025, and about as close as BSP since. By its own odds it is within a few
+  points of 1 in every band since February 2025. The one exception is the tracked dogs at 6 to 12 before 2025, at
+  1.072 (z +2.5).
+  - Test 70's split by the winner's group was this fault being corrected. Ours without Isolynx gave the untracked dogs
+    too much, which happened to help its log loss on the races an untracked dog won.
+- **The blend with Isolynx only half-corrects.** It is at 1.018 and 0.980, then 1.015 and 0.978. TAB carries 0.67 of
+  the blend, so the blend keeps about half of TAB's lean before 2025 and most of it since.
+- **The cleanest measure of what the tracking knows is the races where every runner is tracked**, because there
+  nothing shifts between groups.
+  - Ours is better there by 0.0074 before 2025 and 0.0087 since, and the blend by 0.0038 and 0.0041.
+  - In the mixed races ours is better by 0.0028 and 0.0046. Where no runner is tracked there is no change (0.0002 worse,
+    then 0.0009 better), as there should be.
+  - Ours with Isolynx is still behind TAB's first book where every runner is tracked: 1.5582 against 1.5540 since
+    February 2025.
+
+What it means: the worry is ruled out. Isolynx is not marking untracked dogs down. It removes a lean that TAB's opening
+price, the old ours and the card's blend all share. The blend keeps part of that lean because it gives TAB the larger
+weight. That part can be fixed directly: add a term to the blend that shifts chance toward the tracked dogs in a mixed
+race (it changes nothing in a race where every runner is tracked, or none is), fitted on Test 51's window and held.
+
+**Next:** the blend with that term, for ours with and without Isolynx. It is judged by log loss, by calibration by
+group, by the card's rule at 1.3x, by BSP's verdict, and at the same numbers of bets as Test 70. Because BSP leans the
+same way slightly, BSP's verdict may under-credit the tracked dogs a little, so the realised results sit beside it. The
+card does not change.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
