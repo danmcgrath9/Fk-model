@@ -59,8 +59,9 @@ def apply_weights(x: pd.DataFrame, cols: list, wb) -> pd.Series:
     return out
 
 
-def named_walks(d: str, t0: float) -> pd.DataFrame:
-    """Round 50's runners with both saved walks' prices, read by name (no refit)."""
+def named_walks(d: str, t0: float, with_inputs: bool = False):
+    """Round 50's runners with both saved walks' prices, read by name (no refit); with the walk's input list too when
+    with_inputs."""
     df, num, rel, note = R50.base(d)
     print(note)
     a, log_a = W.walk_cached(df.copy(), num, rel, pd.Period(R50.FIRST, "M"), t0, 6)
@@ -76,7 +77,7 @@ def named_walks(d: str, t0: float) -> pd.DataFrame:
     out["p_i"] = b.p_a.values
     out = out[(out.date >= R50.BW_FROM) & out.p_a.notna() & out.p_i.notna()].copy()
     out["p_x"] = out.p_a
-    return out
+    return (out, list(num)) if with_inputs else out
 
 
 def ll_table(t: pd.DataFrame, cols: dict, periods: list) -> None:
