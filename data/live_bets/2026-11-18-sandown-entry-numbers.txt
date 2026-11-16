@@ -1,0 +1,74 @@
+1|1|Cahaba Lad|False|False
+1|2|Jetsetter|False|False
+1|5|La La Lilly|False|False
+1|4|The King Maker|False|False
+1|6|Anori Dancer|False|False
+1|3|Munger|False|False
+2|3|Table Twentyeight|False|False
+2|7|Oh La Belle|False|False
+2|5|Blue Parrot|False|False
+2|2|Royal Maximus|False|False
+2|1|Montostratus|False|False
+2|6|Hilily Hilily Hilo|False|False
+2|4|Perfect Dismount|False|False
+2|8|Celestique|False|False
+2|10|Savanina|False|False
+2|11|Sondera|False|False
+2|9|Cirque De Coco|False|False
+3|6|Oceans Blue|False|False
+3|3|Home Tomurra|False|False
+3|1|Fontein Jewel|False|False
+3|2|Fammi|False|False
+3|7|Sound Byte|False|False
+3|5|Sunbliss|False|False
+3|4|Senza Nome|False|False
+4|4|Rick's Cafe|False|False
+4|6|Spirit Angel|False|False
+4|1|Pariah Pearl|False|False
+4|5|Almago|False|False
+4|3|Navy Heart|False|False
+4|2|Certainly Quiet|False|False
+4|7|Pandie Pandie|False|False
+5|6|Chihuly|False|False
+5|8|Roaring Engine|False|False
+5|5|Avenues|False|False
+5|3|Samuel Langhorne|False|False
+5|2|Tishman|False|False
+5|7|Pure Grunt|False|False
+5|1|Breathless Spirit|False|False
+5|4|Mickidabeel|False|False
+5|9|Ned Kelly|False|False
+6|2|Flying Mikki|False|False
+6|11|The King And I|False|False
+6|1|Expeetee|False|False
+6|3|Seethru|False|False
+6|8|Ashau Valley|False|False
+6|7|Shidan|False|False
+6|9|Twilight Elegance|False|False
+6|4|Prince Magnetite|False|False
+6|6|Torn|False|False
+6|10|Millsy's Award|False|False
+6|5|Rainsun|False|False
+7|11|Russian Front|False|False
+7|7|Blue Bandit|False|False
+7|6|Waco Kid|False|False
+7|8|Move The Torana|False|False
+7|5|Orovero|False|False
+7|3|King's Coronation|False|False
+7|10|Jamesjohno|False|False
+7|2|Harbour Town|False|False
+7|12|Blue Valentine|False|False
+7|4|Onavuitton|False|False
+7|1|Ole Royale|False|False
+7|9|Russian Choice|False|False
+8|4|She's Pretty Rich|False|False
+8|9|Highly Intrigued|False|False
+8|1|Maisy|False|False
+8|11|Claymore Mine|False|False
+8|3|Pula|False|False
+8|2|Sister Shay|False|False
+8|10|Legacy Bay|False|False
+8|7|Befuddle|False|False
+8|6|Lathlain|False|False
+8|8|The Volta|False|False
+8|5|White Hot Mama|False|False
