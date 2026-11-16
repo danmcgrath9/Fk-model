@@ -6058,6 +6058,78 @@ edge quarter by quarter, to see whether it is still falling. For each quarter, t
 alone, the held blend and BSP, which shows whether TAB got sharper or ours got duller. Also TAB's book and how early it
 priced, and the candidates and their worth.
 
+## Test 67: the edge quarter by quarter (16 Nov 2026, gh topaz run 43835138428, `topaz_round49.py`)
+
+Test 66 found the edge much bigger before 2025 and TAB's first price moved from the night before to the morning. Here
+it is quarter by quarter from April 2023 at TAB's first price: 33,285 races and 233,957 runners that ran, 26 minutes.
+Each quarter gets the log loss of each forecast on winners in races with nothing scratched after the open and a BSP on
+every runner. The race mix changes from quarter to quarter, so each forecast's distance from BSP is the comparison,
+not its level. Then TAB's market, and the held blend's candidates flat from 1.1x and 1.3x, judged by BSP and realised.
+
+Log loss by quarter (lower is better):
+
+| quarter | races | TAB's first book | ours alone | blend, held | BSP | TAB's first book minus BSP | ours minus BSP | blend minus BSP |
+|---|---|---|---|---|---|---|---|---|
+| 2023Q2 | 1,743 | 1.6494 | 1.6095 | 1.6002 | 1.5299 | +0.1194 | +0.0796 | +0.0702 |
+| 2023Q3 | 1,809 | 1.6095 | 1.5868 | 1.5689 | 1.4918 | +0.1177 | +0.0951 | +0.0771 |
+| 2023Q4 | 2,023 | 1.6344 | 1.6111 | 1.5947 | 1.5235 | +0.1109 | +0.0876 | +0.0712 |
+| 2024Q1 | 1,902 | 1.6200 | 1.6134 | 1.5905 | 1.5080 | +0.1119 | +0.1054 | +0.0825 |
+| 2024Q2 | 1,901 | 1.6016 | 1.5870 | 1.5624 | 1.5007 | +0.1009 | +0.0863 | +0.0617 |
+| 2024Q3 | 1,957 | 1.5995 | 1.6004 | 1.5711 | 1.5028 | +0.0968 | +0.0977 | +0.0683 |
+| 2024Q4 | 1,998 | 1.5814 | 1.5851 | 1.5519 | 1.5018 | +0.0796 | +0.0833 | +0.0500 |
+| 2025Q1 | 1,824 | 1.6201 | 1.6253 | 1.6022 | 1.5299 | +0.0902 | +0.0954 | +0.0723 |
+| 2025Q2 | 1,542 | 1.5940 | 1.5919 | 1.5640 | 1.5169 | +0.0771 | +0.0750 | +0.0472 |
+| 2025Q3 | 1,535 | 1.5626 | 1.5636 | 1.5328 | 1.4778 | +0.0848 | +0.0858 | +0.0551 |
+| 2025Q4 | 1,441 | 1.5881 | 1.5931 | 1.5628 | 1.5053 | +0.0828 | +0.0878 | +0.0575 |
+| 2026Q1 | 1,693 | 1.5947 | 1.6247 | 1.5866 | 1.5116 | +0.0831 | +0.1132 | +0.0751 |
+| 2026Q2 | 1,770 | 1.6104 | 1.6139 | 1.5864 | 1.5319 | +0.0785 | +0.0820 | +0.0545 |
+| 2026Q3 | 1,908 | 1.5941 | 1.5990 | 1.5712 | 1.4990 | +0.0950 | +0.1000 | +0.0721 |
+| 2026Q4 | 644 | 1.5331 | 1.5313 | 1.4956 | 1.4166 | +0.1164 | +0.1147 | +0.0790 |
+
+TAB's market and the held blend's candidates by quarter:
+
+| quarter | TAB's mean book | median hours from its first price to the jump | first priced 6pm to midnight | first priced a day or more ahead | from 1.1x: bets with a BSP | worth a bet by BSP | its standard error | realised flat ROI | from 1.3x: bets with a BSP | worth a bet by BSP | realised flat ROI |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2023Q2 | 131.8% | 22.3 | 98% | 34% | 447 | +37.6% | 2.8% | +41.5% | 64 | +79.8% | +138.8% |
+| 2023Q3 | 134.0% | 21.6 | 83% | 30% | 377 | +39.3% | 3.0% | +9.8% | 49 | +84.3% | +67.6% |
+| 2023Q4 | 132.9% | 9.1 | 13% | 8% | 316 | +29.8% | 3.8% | +38.9% | 44 | +86.5% | +44.5% |
+| 2024Q1 | 132.4% | 8.6 | 0% | 2% | 256 | +38.0% | 6.0% | +42.9% | 33 | +126.5% | +108.2% |
+| 2024Q2 | 132.6% | 8.8 | 1% | 2% | 264 | +27.0% | 3.2% | +11.9% | 31 | +66.2% | -20.6% |
+| 2024Q3 | 133.4% | 9.4 | 0% | 1% | 188 | +9.7% | 2.5% | -14.2% | 11 | +14.8% | -61.8% |
+| 2024Q4 | 134.0% | 9.3 | 1% | 3% | 142 | +7.4% | 2.8% | -3.7% | 11 | +20.5% | -100.0% |
+| 2025Q1 | 133.9% | 10.2 | 3% | 1% | 188 | +13.0% | 3.2% | +15.0% | 20 | +62.6% | +42.7% |
+| 2025Q2 | 134.2% | 10.6 | 0% | 2% | 153 | +16.5% | 5.6% | +0.8% | 15 | +105.7% | +86.4% |
+| 2025Q3 | 134.7% | 10.7 | 0% | 1% | 150 | +9.2% | 3.2% | +2.1% | 13 | +19.1% | +2.3% |
+| 2025Q4 | 135.2% | 11.0 | 0% | 2% | 139 | +11.1% | 3.5% | -0.0% | 12 | +30.4% | +6.7% |
+| 2026Q1 | 134.6% | 10.7 | 2% | 1% | 171 | +0.7% | 2.5% | -6.9% | 13 | +19.4% | -26.4% |
+| 2026Q2 | 134.6% | 10.4 | 0% | 1% | 172 | +8.7% | 3.6% | +26.9% | 13 | +27.9% | +106.5% |
+| 2026Q3 | 134.4% | 10.3 | 0% | 1% | 169 | +8.0% | 3.2% | +4.7% | 11 | +21.7% | +119.1% |
+| 2026Q4 | 134.9% | 10.0 | 0% | 2% | 45 | +17.7% | 8.6% | +35.6% | 4 | +102.3% | -100.0% |
+
+What it shows:
+
+- **The edge fell in one step in mid-2024, not steadily, and it has held since.** Judged by BSP, the held blend's
+  candidates from 1.1x were worth +27% to +39% a bet in every quarter from April 2023 to June 2024. From July 2024 on
+  they are worth +0.7% to +17.7% (+9.7% and +7.4% in the two quarters after the step, then +13.0%, +16.5%, +9.2%,
+  +11.1%, +0.7%, +8.7%, +8.0% and +17.7% on the part of this quarter so far). That is roughly flat at about +10%,
+  with a standard error near 3 points a quarter. At 1.3x the card's bets fell from 31 to 64 a quarter to 11 to 20.
+- **The step is TAB getting sharper, not ours getting worse.** TAB's first book was 0.11 to 0.12 worse than BSP
+  from April 2023 to March 2024, then 0.101, 0.097 and 0.080 through the rest of 2024, and 0.077 to 0.095 since (0.116
+  in the part of this quarter so far). Ours alone stayed 0.075 to 0.115 from BSP the whole time. From April 2023 to
+  June 2024 ours beat TAB's first book by 0.040, 0.023, 0.023, 0.007 and 0.015 a quarter. From July 2024 on they are
+  level, within about 0.005 either way in every quarter but one, 2026Q1, when ours was 0.030 worse. The edge was the
+  gap between ours and TAB's first book, and TAB closed it.
+- **It is not the move to the morning.** TAB's first price moved from the night before (98% of races in 2023Q2) to
+  the morning (13% in 2023Q4, none from 2024Q1) a full half-year before the step. Through that half-year the edge held
+  at +27% to +38% a bet. TAB's mean book has crept up from 132% to 135%.
+- **The blend still beats TAB's first book alone in every quarter**, by 0.008 to 0.049 of log loss (0.02 to 0.03 in
+  most quarters since mid-2024). So ours still adds to TAB's price. What it no longer does is beat it on its own.
+
+What it means: the edge that pays now is about +10% a bet across the band, and about +35% where the card bets (Test
+62). It has held for nine quarters. To widen it, ours has to know something TAB's opening price does not. The biggest
+single step any test has found for ours, Isolynx tracking and the checks (Test 35, "the biggest single step since
+GRV's rating"), was decided for the win model and has never been walked forward. That is next.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
