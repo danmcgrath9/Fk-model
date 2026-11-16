@@ -5315,6 +5315,113 @@ check whether the profit rises with that edge. That tells us whether a model kno
 a threshold for it. Also split the bets the held blend and the BSP correction share from the ones only one of them
 makes.
 
+## Test 60: does the correction know where its edge is? (16 Nov 2026, gh topaz run 43808984875, `topaz_round42.py`)
+
+Test 59's corrections, recomputed the same way (the refit logs match Test 59 line for line) and now saved to the walk
+cache, so later rounds read them back instead of refitting. Three checks that do not choose a threshold for any model.
+They use every race from February 2025 at TAB's first price: 17,205 races and 119,763 runners that ran, all three
+models priced; 37 minutes.
+
+- **the edge ladder**: every candidate in the card's band (our odds 2 to 15), by how far TAB's first price sits over
+  the model's chance (price x chance), flat at the price paid after TAB's deduction. "A/E it claims" is the model's
+  own chances over TAB's (sum of its chances / sum of 1 / price), so a model that knows its edge gets about what it
+  claims, and a model whose edge is real does better the higher the ladder goes.
+- **the top bets**: each model's 100, 200 and 400 biggest edges, so all three are compared on as many bets.
+- **the split**: at the card's 1.3x rule, the bets the held blend and each correction share, and the ones only one of
+  them makes.
+
+The edge ladder:
+
+| model | edge (TAB's first price x its chance) | bets | winners | A/E it claims | A/E it got | z | flat ROI | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|
+| blend, held | under 0.9 | 57,952 | 10,567 | 0.715 | 0.767 | -32.5 | -28.5% | 13.5% | -0.426 |
+| blend, held | 0.9 to 1.0 | 7,571 | 2,076 | 0.944 | 0.930 | -4.1 | -11.0% | 31.4% | -0.161 |
+| blend, held | 1.0 to 1.1 | 2,888 | 782 | 1.039 | 0.989 | -0.4 | -5.4% | 40.9% | -0.083 |
+| blend, held | 1.1 to 1.2 | 827 | 221 | 1.139 | 1.092 | +1.5 | +6.7% | 48.2% | -0.022 |
+| blend, held | 1.2 to 1.3 | 219 | 49 | 1.240 | 1.004 | +0.0 | -7.2% | 56.7% | +0.059 |
+| blend, held | 1.3 to 1.5 | 84 | 30 | 1.365 | 1.755 | +3.6 | +56.9% | 65.9% | +0.204 |
+| blend, held | 1.5 and over | 14 | 2 | 1.634 | 0.969 | -0.0 | -12.1% | 78.6% | +0.555 |
+| correction on the winners | under 0.9 | 58,238 | 10,679 | 0.718 | 0.765 | -33.0 | -28.7% | 13.4% | -0.426 |
+| correction on the winners | 0.9 to 1.0 | 7,649 | 2,026 | 0.943 | 0.941 | -3.4 | -11.1% | 31.1% | -0.162 |
+| correction on the winners | 1.0 to 1.1 | 3,000 | 781 | 1.040 | 1.019 | +0.6 | -1.7% | 39.6% | -0.100 |
+| correction on the winners | 1.1 to 1.2 | 1,033 | 229 | 1.140 | 0.989 | -0.2 | -5.3% | 46.5% | -0.028 |
+| correction on the winners | 1.2 to 1.3 | 330 | 81 | 1.240 | 1.255 | +2.3 | +11.1% | 51.8% | +0.012 |
+| correction on the winners | 1.3 to 1.5 | 163 | 35 | 1.363 | 1.278 | +1.6 | +16.4% | 55.3% | +0.035 |
+| correction on the winners | 1.5 and over | 39 | 5 | 1.594 | 0.904 | -0.2 | -26.9% | 73.7% | +0.400 |
+| correction on BSP | under 0.9 | 58,066 | 10,655 | 0.723 | 0.766 | -32.8 | -28.2% | 13.2% | -0.422 |
+| correction on BSP | 0.9 to 1.0 | 7,473 | 2,102 | 0.942 | 0.958 | -2.4 | -9.1% | 33.5% | -0.133 |
+| correction on BSP | 1.0 to 1.1 | 2,526 | 693 | 1.039 | 1.028 | +0.9 | -0.9% | 44.5% | -0.059 |
+| correction on BSP | 1.1 to 1.2 | 787 | 201 | 1.141 | 1.104 | +1.7 | +7.0% | 54.1% | +0.024 |
+| correction on BSP | 1.2 to 1.3 | 326 | 68 | 1.242 | 1.093 | +0.8 | +3.7% | 54.3% | +0.028 |
+| correction on BSP | 1.3 to 1.5 | 208 | 38 | 1.377 | 1.219 | +1.4 | +6.2% | 60.0% | +0.069 |
+| correction on BSP | 1.5 and over | 73 | 11 | 1.685 | 1.158 | +0.5 | +8.6% | 64.8% | +0.290 |
+
+Each model's biggest edges, as many bets each:
+
+| model | top bets | smallest edge among them | bets | winners | A/E it claims | A/E it got | z | flat ROI | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| blend, held | 100 | 1.30 | 100 | 32 | 1.392 | 1.633 | +3.2 | +44.1% | 68.4% | +0.261 |
+| correction on the winners | 100 | 1.38 | 100 | 17 | 1.490 | 1.149 | +0.6 | -0.4% | 64.9% | +0.207 |
+| correction on BSP | 100 | 1.45 | 100 | 14 | 1.624 | 1.053 | +0.2 | -3.2% | 61.2% | +0.242 |
+| blend, held | 200 | 1.24 | 200 | 51 | 1.325 | 1.229 | +1.7 | +7.5% | 59.9% | +0.152 |
+| correction on the winners | 200 | 1.30 | 200 | 38 | 1.403 | 1.168 | +1.1 | +4.0% | 59.0% | +0.105 |
+| correction on BSP | 200 | 1.35 | 200 | 38 | 1.498 | 1.307 | +1.8 | +18.8% | 62.2% | +0.160 |
+| blend, held | 400 | 1.18 | 400 | 102 | 1.263 | 1.171 | +1.8 | +11.2% | 60.7% | +0.111 |
+| correction on the winners | 400 | 1.23 | 400 | 86 | 1.325 | 1.218 | +2.1 | +7.3% | 55.7% | +0.060 |
+| correction on BSP | 400 | 1.25 | 400 | 71 | 1.386 | 1.123 | +1.1 | +2.2% | 58.2% | +0.097 |
+
+The card's rule at 1.3x, the bets the held blend and each correction share (flat, so a shared dog counts once at one
+price):
+
+| bets made by | bets | winners | A/E it claims | A/E it got | z | flat ROI | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|
+| held blend and the correction on the winners | 64 | 20 | 1.430 | 1.729 | +2.8 | +48.8% | 71.0% | +0.357 |
+| only the held blend | 34 | 12 | 1.341 | 1.581 | +1.8 | +43.8% | 61.8% | +0.068 |
+| only the correction on the winners | 137 | 20 | 1.385 | 0.940 | -0.3 | -10.2% | 53.7% | -0.007 |
+| held blend and the correction on BSP | 83 | 25 | 1.407 | 1.620 | +2.7 | +38.9% | 69.1% | +0.284 |
+| only the held blend | 15 | 7 | 1.343 | 1.880 | +2.0 | +92.0% | 60.0% | +0.100 |
+| only the correction on BSP | 195 | 24 | 1.411 | 0.966 | -0.2 | -5.1% | 57.3% | +0.056 |
+
+Pooled from the rungs above (worked here, bets-weighted from the printed rates, so to about a tenth of a point):
+
+| model | edge 1.1 and over: bets, flat ROI | edge 1.1 to 1.3: bets, flat ROI |
+|---|---|---|
+| blend, held | 1,144, +7.5% | 1,046, +3.8% |
+| correction on the winners | 1,565, -0.1% | 1,363, -1.3% |
+| correction on BSP | 1,394, +6.2% | 1,113, +6.0% |
+
+What it shows:
+
+- **The card's +47% sits on one rung that beat even what the held blend claimed for it.** Its 84 bets at 1.3 to 1.5
+  claimed A/E 1.365 and got 1.755 (+56.9% flat), about 1.6 standard deviations above what the model itself expected
+  (30 winners where it expected about 23). The rung just below, 219 bets at 1.2 to 1.3, claimed 1.240 and got 1.004
+  (-7.2% flat), about 1.7 below (49 winners where it expected about 60). Taken together, 1.2 to 1.5 is close to
+  what the model claims (79 winners where it expected about 84). So the 1.3x line happens to split an unlucky
+  patch from a lucky one. The held blend does have an edge: from 1.1 up it makes about +7.5% flat over 1,144 bets.
+  But the card's backtest figure is very likely higher than its true edge. That fits the live tracker's first 55
+  settled bets (A/E 0.96), though those are far too few to judge on their own.
+- **The BSP correction knows the direction of its edge, and overclaims the top.** Its A/E rises rung by rung from 0.9
+  up (0.958, 1.028, 1.104, 1.093, 1.219, 1.158) and gets close to its claim through 1.2. At the top it claims 1.377
+  and 1.685 and gets 1.219 and 1.158, so its biggest disagreements with TAB's first book are partly its own errors.
+  Its top 100 edges lose (-3.2% flat, 14 winners), and so do the winners' correction's (-0.4%, 17 winners).
+- **Below the card's threshold the BSP correction ranks bets at least as well as the held blend.** From 1.1 to 1.3
+  it makes about +6.0% flat over 1,113 bets, against the held blend's +3.8% over 1,046. From 1.1 up the two are about
+  level (+6.2% and +7.5%), and both make about +86 flat units. That is the same as or more than the card's
+  98 bets at 1.3x (+46 flat units), over twelve to fourteen times the bets. The winners' correction is about breakeven
+  from 1.1 up. The top-200 and top-400 rows change order with the count (BSP best at 200, held blend best at 400),
+  which says those comparisons are mostly noise.
+- **At 1.3x the corrections neither add good bets nor drop bad ones.** The bets they share with the held blend are as
+  good as the held blend's (64 at +48.8%, 83 at +38.9%), the bets only a correction makes lose (137 at -10.2%, 195 at
+  -5.1%), and the held blend's own extra bets still win (34 at +43.8%, 15 at +92.0%).
+
+What it means: no correction is promoted, and the card stays as it is. Two cautions, both honest: the card's +47%
+backtest is flattered by one lucky rung, and a model's biggest disagreements with TAB's first book are where it is
+most often wrong. The lead worth testing is a lower threshold: from 1.1 up, both the held blend and the BSP correction
+make as many flat units as the card from twelve to fourteen times the bets. But 1.1 was read off this ladder, so it is a lead, not a
+result. Next: the rule at 1.1x, 1.2x and 1.3x by period for the held blend and the BSP correction, with Kelly units,
+months in profit and the worst drawdown. Then the one pre-stated fix for the overclaiming: the BSP correction shrunk
+halfway back to the held blend.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
