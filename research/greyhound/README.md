@@ -8545,6 +8545,119 @@ All of these models read TAB's opening book, so they can only price a race once 
 night before, so taking these bets live means pricing each race again once TAB opens, which the card does not do
 today. Building that, first on paper, is the founder's call. Nothing changes the card.
 
+## Test 87: the 2-point margin rule, taken apart and staked (17 Nov 2026, gh topaz run 44075853820, `topaz_round69.py`)
+
+Founder: "Keep going, find more winning bets".
+
+Test 86 found the best rule so far: bet when the model's chance is at least 2 points over the chance TAB's first price
+(after the deduction) needs. With the longer fit it made 2,430 bets in 22 months and +305.4 units by the corrected BSP.
+This test takes it apart (where its bets sit, the margin and the price cap around it, and a margin that grows with the
+price) and stakes it by a quarter of Kelly. Both saved models; no new walk.
+
+**Where the 2-point margin's bets sit**, the longer fit, by its fair price, flat:
+
+| period | fair price | bets | a month | A/E | realised flat ROI | realised units | corrected BSP per bet (SE) | corrected BSP units |
+|---|---|---|---|---|---|---|---|---|
+| Feb 2025 on | under $2 | 669 | 30.4 | 0.983 | +8.2% | +54.8 | +8.7% (0.8%) | +56.3 |
+| Feb 2025 on | $2 to $4 | 1,189 | 54.0 | 0.969 | +8.9% | +105.5 | +11.6% (1.0%) | +135.0 |
+| Feb 2025 on | $4 to $8 | 472 | 21.5 | 1.087 | +25.9% | +122.0 | +20.2% (2.8%) | +93.4 |
+| Feb 2025 on | $8 to $15 | 100 | 4.5 | 1.160 | +63.9% | +63.9 | +21.6% (8.7%) | +20.7 |
+| Feb 2025 to Jan 2026 | under $2 | 349 | 29.1 | 1.018 | +9.4% | +32.9 | +7.1% (1.1%) | +24.6 |
+| Feb 2025 to Jan 2026 | $2 to $4 | 701 | 58.4 | 0.923 | +4.2% | +29.2 | +10.3% (1.3%) | +71.6 |
+| Feb 2025 to Jan 2026 | $4 to $8 | 260 | 21.7 | 1.146 | +34.7% | +90.2 | +19.3% (3.8%) | +50.1 |
+| Feb 2025 to Jan 2026 | $8 to $15 | 60 | 5.0 | 1.357 | +81.5% | +48.9 | +16.5% (10.9%) | +9.7 |
+| Feb 2026 on | under $2 | 320 | 32.0 | 0.946 | +6.9% | +22.0 | +10.5% (1.1%) | +31.7 |
+| Feb 2026 on | $2 to $4 | 488 | 48.8 | 1.034 | +15.6% | +76.3 | +13.6% (1.5%) | +63.4 |
+| Feb 2026 on | $4 to $8 | 212 | 21.2 | 1.015 | +15.0% | +31.9 | +21.3% (4.0%) | +43.3 |
+| Feb 2026 on | $8 to $15 | 40 | 4.0 | 0.866 | +37.5% | +15.0 | +29.7% (14.4%) | +11.0 |
+
+**The margin and the price cap around 2 points**, flat, corrected BSP units (bets):
+
+| rule | Feb 2025 on | Feb 2025 to Jan 2026 | Feb 2026 on | per bet, Feb 2025 on (SE) |
+|---|---|---|---|---|
+| the longer fit, 1.5 points | +320.4 (2,986) | +147.1 (1,658) | +173.2 (1,328) | +11.0% (0.7%) |
+| the longer fit, **2 points** | **+305.4 (2,430)** | +156.1 (1,370) | +149.3 (1,060) | +12.9% (0.8%) |
+| the longer fit, 2.5 points | +274.0 (1,997) | +139.9 (1,144) | +134.1 (853) | +14.0% (0.9%) |
+| Test 83's model, 1.5 points | +301.6 (2,830) | +143.9 (1,589) | +157.6 (1,241) | +10.9% (0.8%) |
+| Test 83's model, 2 points | +287.7 (2,281) | +145.6 (1,285) | +142.1 (996) | +12.9% (0.9%) |
+| Test 83's model, 2.5 points | +254.8 (1,820) | +135.2 (1,048) | +119.7 (772) | +14.3% (1.0%) |
+| the longer fit, 2 points, fair price under $10 | +300.6 (2,387) | +155.7 (1,346) | +144.9 (1,041) | +12.9% (0.8%) |
+| the longer fit, 2 points, fair price under $20 | +307.8 (2,435) | +158.9 (1,374) | +148.8 (1,061) | +12.9% (0.8%) |
+
+**A margin that grows with the price's own spread** (the model's chance at least k x sqrt(need x (1 - need)) over the
+chance needed), the longer fit, under $15, flat:
+
+| k | bets | a month | realised units | corrected BSP per bet (SE) | corrected BSP units | Feb 2025 to Jan 2026 | Feb 2026 on |
+|---|---|---|---|---|---|---|---|
+| 0.03 | 3,307 | 150.3 | +298.4 | +9.7% (0.7%) | +312.1 | +140.4 | +171.7 |
+| 0.04 | 2,791 | 126.9 | +289.1 | +11.6% (0.8%) | +315.5 | +150.1 | +165.5 |
+| 0.05 | 2,343 | 106.5 | +331.4 | +13.4% (0.9%) | +305.8 | +155.7 | +150.1 |
+| 0.06 | 1,963 | 89.2 | +351.5 | +15.4% (1.0%) | +295.6 | +160.4 | +135.2 |
+| 0.08 | 1,400 | 63.6 | +335.0 | +18.3% (1.3%) | +249.9 | +140.8 | +109.1 |
+
+**Flat against a quarter of Kelly, the longer fit**, bets with a corrected BSP (February 2025 to October 2026, 21
+months; November has none yet):
+
+| rule | period | staking | bets | corrected BSP per unit staked (SE) | corrected BSP units | realised units | luck in the realised units (SD) | largest stake | deepest fall, realised | losing months |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1.1x | Feb 2025 on | flat | 1,539 | +15.2% (1.3%) | +233.8 | +250.2 | 94.9 | 1.0 | 48.0 | 6 of 21 |
+| 1.1x | Feb 2025 on | quarter Kelly | 1,539 | +21.4% (1.6%) | +329.4 | +284.4 | 91.5 | 3.5 | 44.6 | 5 of 21 |
+| 1.1x + favourites from 5% | Feb 2025 on | flat | 2,050 | +13.8% (1.0%) | +282.0 | +289.0 | 97.1 | 1.0 | 47.7 | 6 of 21 |
+| 1.1x + favourites from 5% | Feb 2025 on | quarter Kelly | 2,050 | +17.1% (1.0%) | +349.4 | +312.4 | 78.9 | 2.7 | 38.7 | 4 of 21 |
+| **2 points** | Feb 2025 on | flat | 2,372 | +12.9% (0.8%) | +305.4 | +321.1 | 88.4 | 1.0 | 33.4 | 5 of 21 |
+| **2 points** | Feb 2025 on | **quarter Kelly** | 2,372 | **+15.4% (0.9%)** | **+365.0** | +323.2 | 79.6 | 2.7 | 42.0 | 3 of 21 |
+| 2 points | Feb 2025 to Jan 2026 | flat | 1,362 | +11.5% (1.1%) | +156.1 | +190.1 | 67.2 | 1.0 | 32.4 | 2 of 12 |
+| 2 points | Feb 2025 to Jan 2026 | quarter Kelly | 1,362 | +14.5% (1.3%) | +197.6 | +170.9 | 61.5 | 2.7 | 42.0 | 2 of 12 |
+| 2 points | Feb 2026 on | flat | 1,010 | +14.8% (1.2%) | +149.3 | +131.0 | 57.5 | 1.0 | 33.4 | 3 of 9 |
+| 2 points | Feb 2026 on | quarter Kelly | 1,010 | +16.7% (1.2%) | +167.3 | +152.3 | 50.5 | 2.7 | 30.1 | 1 of 9 |
+
+The deepest fall and the losing months here count only bets with a corrected BSP, so November is out. Test 86 counted
+November's bets in both (6 of 22 losing months for 1.1x flat).
+
+**By three months, the longer fit**, corrected BSP units / realised units:
+
+| three months | 1.1x, flat | 2 points, flat | 2 points, quarter Kelly |
+|---|---|---|---|
+| Feb 2025 to Apr 2025 | +39.0 / +17.8 | +47.7 / +15.1 | +68.9 / +12.4 |
+| May 2025 to Jul 2025 | +33.5 / +32.6 | +44.7 / +51.7 | +49.2 / +64.0 |
+| Aug 2025 to Oct 2025 | +23.4 / +78.8 | +35.9 / +91.2 | +43.1 / +67.9 |
+| Nov 2025 to Jan 2026 | +25.5 / +58.3 | +27.8 / +32.0 | +36.4 / +26.5 |
+| Feb 2026 to Apr 2026 | +31.4 / -33.6 | +46.9 / +12.9 | +55.3 / +0.9 |
+| May 2026 to Jul 2026 | +20.5 / +18.2 | +31.3 / +18.7 | +38.3 / +49.1 |
+| Aug 2026 to Oct 2026 | +60.4 / +78.1 | +71.1 / +99.4 | +73.7 / +102.3 |
+
+**Clean races** (nothing scratched after TAB's open), the longer fit, flat, February 2025 on: 1.1x, 1,212 bets, +14.2%
+a bet (SE 1.5%), +168.1 units; 1.5 points, 2,091 bets, +10.4% (SE 0.9%), +212.8; 2 points, 1,693 bets, +12.2% (SE
+1.0%), +201.5; 2.5 points, 1,371 bets, +13.5% (SE 1.2%), +180.5.
+
+What it shows:
+
+- **The 2-point margin wins at every price.** Every fair-price band is positive by the corrected BSP in both halves.
+  - Three in four of its bets are under $4: 669 favourites under $2 (+56.3 units) and 1,189 from $2 to $4 (+135.0).
+    The card's 1.1x rule has never bet a dog under $2, and its $2 to $4 bets need 10% expected value where the margin
+    asks about 4% to 9%.
+  - The $4 to $8 bets are the richest a bet (+20.2%). Above $8 the margin asks 20% or more, so only 100 bets pass.
+- **2 points is the right margin.** 1.5 points adds 556 bets for +15.0 units (about +2.7% each) and is behind 2 points
+  in the first half. 2.5 points drops 433 bets and 31.4 units. The price cap barely matters: under $10, +300.6; under
+  $20, +307.8.
+- **A margin that grows with the price gives the same as a fixed one.** At the same number of bets (k 0.05, 2,343
+  bets) it makes +305.8 units against the fixed margin's +305.4. The simple rule stays.
+- **Staked by a quarter of Kelly, the 2-point margin makes the most of anything tested**: +365.0 units by the
+  corrected BSP over 21 months, +15.4% for each unit staked.
+  - That is +59.6 over the same bets flat, ahead in both halves (+14.5% and +16.7% a unit against +11.5% and +14.8%).
+  - It is +131.2 over the card's 1.1x flat (+233.8), 56% more.
+  - Realised, it made +323.2 against flat's +321.1, with less luck in it (79.6 against 88.4), and 3 losing months of
+    21 against 5. Its deepest fall was deeper, 42.0 units against 33.4.
+- **The 2-point margin had no losing quarter in the seven measured, realised or by the corrected BSP.** Its worst was +12.9 realised
+  (February to April 2026), the quarter the card's 1.1x lost 33.6.
+- **It holds in clean races**: 1,693 bets and +201.5 units, against 1.1x's 1,212 and +168.1.
+
+What it means: the best card found is the longer fit at a 2-point margin, staked by a quarter of Kelly. It makes about
+113 bets a month (26 a week) and, by the corrected BSP, about +17 units a month. The card's 1.1x makes about 73 bets
+and +11 units a month. Like every model since Test 80 it reads TAB's opening book, so it can only price a race once
+TAB opens, which the card does not do today. Tracking it on paper first is the founder's call. Nothing changes the
+card.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
