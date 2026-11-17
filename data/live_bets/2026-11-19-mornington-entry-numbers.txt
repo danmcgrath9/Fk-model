@@ -1,0 +1,87 @@
+1|2|Call Me Francis|False|False
+1|6|Rang A Round Up|False|False
+1|3|Grey Sabre|False|False
+1|5|Parera|False|False
+1|13|Spin Class|True|False
+1|1|Billie Stardom|False|False
+1|4|Jakbe Nimble|False|False
+1|7|The Long Mover|False|False
+1|8|The White Bull|False|False
+1|14|Flying Riches|True|False
+1|10|Who'llstoplorraine|False|False
+1|9|Latassa|False|False
+1|11|Enticement|False|False
+1|12|Raisonic|False|False
+2|5|Unriddle|False|False
+2|2|Kings Commission|False|False
+2|4|Pull My Finger|False|False
+2|1|Radical Dude|False|False
+2|3|Nitro Sonic|False|False
+2|6|Mystic River Queen|False|False
+3|3|Steel A Deal|False|False
+3|6|Rockbourg|False|False
+3|12|Frandema|True|False
+3|4|Imperial Meeting|False|False
+3|1|Johnny Tightlips|False|False
+3|5|Magica|False|False
+3|2|Peiriant|False|False
+3|13|Reina Del Rio|True|False
+3|10|She Got Me Again|True|False
+3|11|Idmiston|True|False
+3|8|Luna Vega|False|False
+3|9|Royal Tea|False|False
+3|7|Bossy Babe|False|False
+4|6|Monumentum|False|False
+4|7|Pasatiempo|False|False
+4|1|Briagolong|False|False
+4|3|Irish Eclipse|False|False
+4|4|Kirkstone|False|False
+4|2|Diamond Dawn|False|False
+4|8|Runaway Rose|False|False
+4|5|Media Darling|False|False
+4|9|Yes It's Time|False|False
+5|3|Mywifeisnothere|False|False
+5|13|Gold Nugget|True|False
+5|1|Dexter|False|False
+5|6|Youmanetic|False|False
+5|14|The Dorkstar|True|False
+5|15|Full Of Knowledge|True|False
+5|12|Scentrique|False|False
+5|2|Doctorate|False|False
+5|5|Time Poor|False|False
+5|4|Pray Tell|False|False
+5|9|Pinamilloy|False|False
+5|8|Flyaway|False|False
+5|7|Berardo|False|False
+5|10|Plinian|False|False
+5|11|Weeping Wonder|False|False
+6|9|Duhlata|False|False
+6|10|Mrs Gossip|False|False
+6|2|Frank Express|False|False
+6|1|Fam Gorman|False|False
+6|6|Hollandia|False|False
+6|3|Trump Card|False|False
+6|7|Up And Under|False|False
+6|8|Jonquil|False|False
+6|4|Power Pivot|False|False
+6|5|Precambrian|False|False
+7|8|Diamond Mila|False|False
+7|3|Just Think Twice|False|False
+7|1|Capital Charlie|False|False
+7|2|Chandler|False|False
+7|6|Sealand|False|False
+7|5|Yeah Right|False|False
+7|4|Covert Action|False|False
+7|7|What Once Was|False|False
+8|11|Moose Jaw|False|False
+8|2|Fullproof|False|False
+8|6|Turnaquid|False|False
+8|12|Dominant Miss|False|False
+8|4|Manchego|False|False
+8|10|Ravens Bay|False|False
+8|7|Every Little Thing|False|False
+8|1|Packers Journey|False|False
+8|5|Arabian Myth|False|False
+8|9|Stewart|False|False
+8|8|Heidi Dancer|False|False
+8|3|Blaze Away|False|False

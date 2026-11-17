@@ -1,0 +1,9 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,MORN_191126_1,Latassa,top_pick,0.0,0.0,0.0,,,3.44,-1.0,Class drop (rating),1.0,no,,
+2,MORN_191126_2,Mystic River Queen,top_pick,0.0,0.0,0.0,,,2.87,-1.0,,1.0,no,,
+3,MORN_191126_3,Luna Vega,top_pick,0.0,0.0,0.0,,,1.91,-1.0,Already run to today's class; Class drop (rating); Late 600 beyond the tempo; Above the field in all three sections; EARLY ONLY: bet near the open,1.0,no,,
+4,MORN_191126_4,Monumentum,top_pick,0.0,0.0,0.0,,,2.66,-1.0,Already run to today's class; Class drop (rating); Late 600 beyond the tempo,1.0,no,,
+5,MORN_191126_5,Pray Tell,top_pick,0.0,0.0,0.0,,,2.63,-1.0,Already run to today's class,1.0,no,,
+6,MORN_191126_6,Fam Gorman,top_pick,0.0,0.0,0.0,,,3.73,-1.0,,1.0,no,,
+7,MORN_191126_7,Chandler,top_pick,0.0,0.0,0.0,,,1.69,-1.0,"Already run to today's class; New career-best last start; Third-up, improving; Class drop (rating); Above the field in all three sections",1.0,no,,
+8,MORN_191126_8,Manchego,top_pick,0.0,0.0,0.0,,,3.3,-1.0,,1.0,no,,
