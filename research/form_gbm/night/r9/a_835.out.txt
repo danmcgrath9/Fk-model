@@ -1,0 +1,20 @@
+TAB's price from 8:35am to 9:00am, 36616 runners: unchanged 77%, shorter 9%, longer 14%; moved 5%+ either way 19.7%
+best major price from 8:35am to 9:00am: unchanged 74%, shorter 10%, longer 16%; moved 5%+ 21.7%
+on the listed runners (326): best major price 8:35 -> 9:00 unchanged 77%, shorter by 9:00 14%, longer 8%; median ratio 1.000
+  TAB prices that moved between 9:00-120 min and 9:00-60 min: 52.8%
+  TAB prices that moved between 9:00-60 min and 9:00-30 min: 29.8%
+  TAB prices that moved between 9:00-30 min and 9:00-10 min: 21.6%
+  TAB prices that moved between 9:00-10 min and 9:00+0 min: 11.1%
+  TAB prices that moved between 9:00+0 min and 9:00+10 min: 9.1%
+  TAB prices that moved between 9:00+10 min and 9:00+30 min: 16.0%
+  TAB prices that moved between 9:00+30 min and 9:00+60 min: 20.3%
+
+### The list made at 8:35am against one made at 9:00am (TAB's price, one bet at TAB at 9:00)
+
+| | bets | won | staked | profit | ROI |
+|---|---|---|---|---|---|
+| list made at 9:00, bet at 9:00 | 139 | 41 | $56,976 | $+14,870 | +26% |
+| list made at 8:35, bet at 9:00 whatever TAB is then | 158 | 45 | $63,419 | $+14,508 | +23% |
+| list made at 8:35, bet at 9:00 only if TAB is still at the 8:35 take price | 126 | 36 | $49,515 | $+14,652 | +30% |
+| on the 9:00 list but NOT on the 8:35 list (missed) | 5 | 0 | $2,057 | $-2,057 | -100% |
+| on the 8:35 list, gone from the 9:00 list (stale) | 24 | 4 | $8,500 | $-2,419 | -28% |

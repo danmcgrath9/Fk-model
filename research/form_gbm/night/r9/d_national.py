@@ -88,6 +88,12 @@ for label, Xc, names in (("market only", X[:, :1], ["median"]), ("market + move"
         print("\nby threshold, every state but Victoria: " + "; ".join(f"{t:.2f}x {int(h.sum())} bets ${pl_.sum():+,.0f} {pl_.sum() / max(s_.sum(), 1):+.0%}" for t in (1.0, 1.03, 1.05, 1.08, 1.12)
               for h, s_, pl_ in [tuple(x[oth] for x in bets(p, ok, t))]))
         np.save(os.path.join(HERE, "nat_fair.npy"), p)
+        k = hit.sum(1); print("\nby how many majors are at the take price, every state but Victoria (one bookmaker alone can be a stale price in the feed)\n" + HEAD)
+        for a_, b2, lab in ((1, 1, "one major"), (2, 3, "2-3 majors"), (4, 7, "4 or more")): print(row(lab, hit, st, pl, oth & (k >= a_) & (k <= b2)))
+        fpz = np.where(p > 0, 1 / np.maximum(p, 1e-12), np.nan); print("\nby fair price, every state but Victoria\n" + HEAD)
+        for a_, b2 in ((1.6, 3), (3, 5), (5, 8), (8, 15)): print(row(f"${a_:g}-${b2:g}", hit, st, pl, oth & (fpz >= a_) & (fpz < b2)))
+        print("\nby the move before 9am, every state but Victoria\n" + HEAD)
+        for a_, b2, lab in ((-9, -0.22, "firmed 20%+ since the open"), (-0.22, -0.05, "firmed 5-20%"), (-0.05, 0.05, "held"), (0.05, 9, "drifted 5%+")): print(row(lab, hit, st, pl, oth & (mv >= a_) & (mv < b2)))
 # B. walk-forward by month on everything
 months = sorted(set(month[ok])); p = np.zeros(n); b = None
 for mo in months[4:]:
