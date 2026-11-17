@@ -18,7 +18,6 @@
 2|1|Radical Dude|False|False
 2|3|Nitro Sonic|False|False
 2|6|Mystic River Queen|False|False
-3|3|Steel A Deal|False|False
 3|6|Rockbourg|False|False
 3|12|Frandema|True|False
 3|4|Imperial Meeting|False|False

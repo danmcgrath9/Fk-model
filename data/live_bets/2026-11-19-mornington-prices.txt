@@ -1,4 +1,4 @@
-# Mornington Thu 19 Nov, official going, final fields; no market yet; PROVISIONAL: 13 runners without a rider
+# Mornington Thu 19 Nov, official going, final fields; no market yet; PROVISIONAL: 1 runners without a rider
 1, Call Me Francis, 0, 0
 1, Rang A Round Up, 0, 0
 1, Grey Sabre, 0, 0
@@ -19,7 +19,6 @@
 2, Radical Dude, 0, 0
 2, Nitro Sonic, 0, 0
 2, Mystic River Queen, 0, 0
-3, Steel A Deal, 0, 0
 3, Rockbourg, 0, 0
 3, Frandema, SCR
 3, Imperial Meeting, 0, 0
