@@ -6,7 +6,7 @@ Rebuilt by research/form_gbm/running_record.py after every settle (founder, 16 N
 
 | Period | Bets | Won | Staked | P/L | ROI | At $50 |
 |---|---|---|---|---|---|---|
-| All settled (2026-11-02 on) | 59 | 13 | 131.33u | +74.09u | +56% | $+3,705 |
+| All settled (2026-11-02 on) | 60 | 14 | 134.44u | +81.27u | +60% | $+4,064 |
 | Since 12 Nov (full units) | 25 | 2 | 58.07u | -28.73u | -49% | $-1,436 |
 | Last 7 race days | 30 | 3 | 67.59u | -27.39u | -41% | $-1,369 |
 
@@ -24,10 +24,24 @@ Rebuilt by research/form_gbm/running_record.py after every settle (founder, 16 N
 | 2026-11-06 | 3 | 1 | 7.90u | +5.59u | +71% | $+279 |
 | 2026-11-05 | 3 | 0 | 9.12u | -9.12u | -100% | $-456 |
 | 2026-11-04 | 5 | 2 | 7.17u | +25.17u | +351% | $+1,258 |
-| 2026-11-03 | 7 | 3 | 13.06u | +30.06u | +230% | $+1,503 |
+| 2026-11-03 | 8 | 4 | 16.17u | +37.23u | +230% | $+1,862 |
 | 2026-11-02 | 5 | 2 | 14.22u | +29.54u | +208% | $+1,477 |
 
-Running total by day: 11-02 +29.5u, 11-03 +59.6u, 11-04 +84.8u, 11-05 +75.6u, 11-06 +81.2u, 11-07 +86.9u, 11-08 +101.5u, 11-09 +100.0u, 11-11 +102.8u, 11-12 +110.2u, 11-13 +111.8u, 11-14 +100.5u, 11-15 +85.2u, 11-16 +74.1u
+## Since live (Fri 9 Oct)
+
+The weeks to Sun 1 Nov are the book's own settled entries (betmatic-book.md, 3 Nov), not rebuilt here; from Mon 2 Nov each week is rebuilt from the sheets, the opening prices, the results and TAB's reported deductions.
+
+| Week | Bets | Won | Staked | P/L | ROI | At $50 |
+|---|---|---|---|---|---|---|
+| Fri 9 - Sun 18 Oct (from the book) | 49 | 9 | 49.53u | +49.15u | +99% | $+2,458 |
+| Mon 19 - Sun 25 Oct (from the book) | 22 | 10 | 61.46u | +135.57u | +221% | $+6,778 |
+| Mon 26 Oct - Sun 1 Nov (from the book) | 41 | 6 | 127.84u | +32.95u | +26% | $+1,648 |
+| Mon 2 Nov - Sun 8 Nov | 30 | 11 | 66.85u | +108.66u | +163% | $+5,433 |
+| Mon 9 Nov - Sun 15 Nov | 24 | 3 | 56.45u | -16.25u | -29% | $-812 |
+| Mon 16 Nov - Mon 16 Nov (week not finished) | 6 | 0 | 11.14u | -11.14u | -100% | $-557 |
+| **Since Fri 9 Oct** | **172** | **39** | **373.27u** | **+298.94u** | **+80%** | **$+14,947** |
+
+Running total by day: 11-02 +29.5u, 11-03 +66.8u, 11-04 +91.9u, 11-05 +82.8u, 11-06 +88.4u, 11-07 +94.1u, 11-08 +108.7u, 11-09 +107.2u, 11-11 +110.0u, 11-12 +117.3u, 11-13 +119.0u, 11-14 +107.7u, 11-15 +92.4u, 11-16 +81.3u
 
 | Date | Meeting | Race | Horse | Units | Open | TAB deduction | Paid at | Result | P/L |
 |---|---|---|---|---|---|---|---|---|---|
@@ -81,8 +95,9 @@ Running total by day: 11-02 +29.5u, 11-03 +59.6u, 11-04 +84.8u, 11-05 +75.6u, 11
 | 2026-11-04 | kyneton | R1 | Sabrina | 1.19u | $11 | 31c | $7.90 | 4th | -1.19u |
 | 2026-11-03 | wangaratta | R3 | Startin'sumthin' | 0.89u | $21 | - | $21.00 | 8th | -0.89u |
 | 2026-11-03 | wangaratta | R3 | Just Basil | 2.33u | $6 | - | $6.00 | 7th | -2.33u |
-| 2026-11-03 | flemington | R8 | Ranarsson | 3.93u | $4 | - | $4.00 | WON | +11.79u |
-| 2026-11-03 | flemington | R8 | Mr Natural | 0.79u | $17 | - | $17.00 | 5th | -0.79u |
+| 2026-11-03 | flemington | R8 | Ranarsson | 3.25u | $4 | - | $4.00 | WON | +9.75u |
+| 2026-11-03 | flemington | R3 | Star Of Macedon | 1.87u | $6 | - | $6.00 | 3rd | -1.87u |
+| 2026-11-03 | flemington | R2 | Yauson | 2.71u | $4.8 | - | $4.80 | WON | +10.30u |
 | 2026-11-03 | echuca | R5 | Celestial Option | 0.96u | $13 | - | $13.00 | WON | +11.52u |
 | 2026-11-03 | echuca | R3 | Frewdamoss | 0.77u | $16 | - | $16.00 | 7th | -0.77u |
 | 2026-11-03 | echuca | R1 | Frozen Tide | 3.39u | $4.4 | - | $4.40 | WON | +11.53u |
@@ -98,7 +113,7 @@ The price is the open after TAB's reported deduction.
 
 | Period | Bets with a BSP | Price beat BSP | Price / BSP (stake-weighted) | Winners |
 |---|---|---|---|---|
-| All settled | 57 | 35 | 1.26x | 13 won, 11.3 expected at BSP |
+| All settled | 58 | 36 | 1.26x | 14 won, 11.8 expected at BSP |
 | Since 12 Nov | 24 | 16 | 1.28x | 2 won, 4.6 expected at BSP |
 | Last 7 race days | 28 | 17 | 1.23x | 3 won, 5.3 expected at BSP |
 

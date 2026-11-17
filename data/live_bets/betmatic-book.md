@@ -1295,3 +1295,13 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
   (was 36 of 57 and 1.32x on the open before deductions).
 - The verify step (research/form_gbm/verify.py, observe mode from today) is what showed the two settles disagreeing;
   the record and the day page now agree on every settled meeting, and a winner that differs between them would block.
+- LATER THE SAME AFTERNOON, a second correction, found when the founder asked for the model since live: the running record
+  read Flemington Tue 3 Nov off the old uncapped sheet (Ranarsson 3.93u, Mr Natural 0.79u at $17) where the book settled
+  it on the $12 metro cap sheet (2026-11-03-flemington-s6-cap12-orders-all.csv: Yauson 2.71u $4.80 WON, Star Of Macedon
+  1.87u $6 3rd, Ranarsson 3.25u $4 WON). 7.17u short. running_record.py now names that sheet (SHEET_OF_RECORD), and the
+  week Mon 2 - Sun 8 Nov rebuilds to exactly the book's figure: 30 bets, 11 won, 66.85u, +108.66u.
+  THE MODEL SINCE 2 NOV IS +81.27u (60 bets, 14 won), not +74.09u and not +88.60u.
+- SINCE LIVE, Fri 9 Oct - Mon 16 Nov (the open book, paper, model stakes at Form King's open, TAB's deductions where
+  reported): 172 bets, 39 won, 373.27u staked, +298.94u (+80%), +$14,947 at $50. By week: 9-18 Oct +49.15u, 19-25 Oct
+  +135.57u, 26 Oct-1 Nov +32.95u (those three from this file's 3 Nov table, not rebuilt), 2-8 Nov +108.66u, 9-15 Nov
+  -16.25u, Mon 16 Nov -11.14u. The table is in data/live_bets/running-record.md ("Since live") and rebuilds on every settle.

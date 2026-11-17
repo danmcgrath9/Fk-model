@@ -69,7 +69,7 @@ def open_fills(L, P):
     """The open book for one meeting, as running_record.py and betmatic_html.py count it."""
     px = read_prices(L, P)
     by = collections.OrderedDict()
-    for o in csv.DictReader(open(f"{L}/{P}-betmatic-preopen.csv")):
+    for o in csv.DictReader(open(rr.sheet_for(P, L))):
         k = (int(o["race"]), norm(o["horse"]))
         p = px.get(k)
         if not p or p["scr"] or p["open"] is None:
@@ -261,7 +261,7 @@ def page_settle(L, P):
     """The day page's own settle of the open book, by running betmatic_html.py on a blank page. -> {key: (units, pl)}"""
     with tempfile.TemporaryDirectory() as td:
         page = os.path.join(td, "p.html"); open(page, "w").write("<h1>x</h1>")
-        r = subprocess.run([sys.executable, "betmatic_html.py", f"{L}/{P}-betmatic-preopen.csv", P, page, "--results",
+        r = subprocess.run([sys.executable, "betmatic_html.py", rr.sheet_for(P, L), P, page, "--results",
                             f"{L}/{P}-results.txt"], cwd=here, capture_output=True, text=True)
         if r.returncode:
             return None

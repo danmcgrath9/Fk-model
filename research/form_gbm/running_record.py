@@ -24,9 +24,24 @@ from opens import parse_opens
 
 L = os.path.join(here, "../../data/live_bets")
 OUT = os.path.join(L, "running-record.md")
+SINCE_LIVE = None
 UNIT = 50   # dollars a unit for the $ column (founder, 14 Nov 2026: "$50 units")
 NOT_BET = set()   # 9am-list prefixes the founder did not bet, e.g. {"2026-11-14-sandown"}
 norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower())
+# A meeting whose sheet of record is not <prefix>-betmatic-preopen.csv. Flemington Tue 3 Nov was settled in the book on
+# the $12 metro cap sheet (founder, 1 Nov: "we go back to normal stakes but we cap at $12"; betmatic-book.md "Flemington
+# Tue 3 Nov under the $12 metro cap"): Yauson 2.71u, Star Of Macedon 1.87u, Ranarsson 3.25u. The first cut of this file
+# read the older uncapped sheet and was 7.17u short of the book for that day.
+SHEET_OF_RECORD = {"2026-11-03-flemington": "2026-11-03-flemington-s6-cap12-orders-all.csv"}
+# The weeks before the results files this script reads (they start Mon 2 Nov), from the book's own settled entries
+# (betmatic-book.md, "The book since 9 Oct, as it happened", 3 Nov 2026): open book, model stakes at Form King's open,
+# TAB's deductions where reported, abandoned meetings void. NOT rebuilt here: label, bets, won, staked, P/L.
+EARLIER_WEEKS = [("Fri 9 - Sun 18 Oct", 49, 9, 49.53, 49.15), ("Mon 19 - Sun 25 Oct", 22, 10, 61.46, 135.57),
+                 ("Mon 26 Oct - Sun 1 Nov", 41, 6, 127.84, 32.95)]
+
+
+def sheet_for(P, folder=None):
+    return os.path.join(folder or L, SHEET_OF_RECORD.get(P, f"{P}-betmatic-preopen.csv"))
 
 
 def finishes(path):
@@ -53,7 +68,7 @@ def open_book():
     rows = []
     for res in sorted(glob.glob(f"{L}/2026-*-results.txt")):
         P = os.path.basename(res)[:-len("-results.txt")]
-        sheet, prices = f"{L}/{P}-betmatic-preopen.csv", f"{L}/{P}-prices.txt"
+        sheet, prices = sheet_for(P), f"{L}/{P}-prices.txt"
         if not (os.path.exists(sheet) and os.path.exists(prices)):
             continue
         px = {}
@@ -140,6 +155,28 @@ def main():
     run, cum = [], 0.0
     for d in days:
         cum += sum(r["pl"] for r in live if r["date"] == d); run.append((d, cum))
+    # SINCE LIVE (founder, 17 Nov 2026: "Whats the model since we went live over the last month?"): live = Fri 9 Oct
+    # (founder, 3 Nov: "since we've been live October 9"). The weeks to Sun 1 Nov from the book, the rest from this record.
+    import datetime as _dt
+    wk = collections.OrderedDict()
+    for r in live:
+        d0 = _dt.date.fromisoformat(r["date"]); mon = d0 - _dt.timedelta(days=d0.weekday())
+        w = wk.setdefault(mon, [0, 0, 0.0, 0.0, d0])
+        w[0] += 1; w[1] += r["result"] == "WON"; w[2] += r["units"]; w[3] += r["pl"]; w[4] = max(w[4], d0)
+    fd = lambda d: f"{d:%a} {d.day} {d:%b}"
+    weeks = [(lab + " (from the book)", n, w_, st, pl) for lab, n, w_, st, pl in EARLIER_WEEKS]
+    for mon, (n, w_, st, pl, last_) in wk.items():
+        sun = mon + _dt.timedelta(days=6)
+        weeks.append((f"{fd(mon)} - {fd(sun)}" if last_ == sun else f"{fd(mon)} - {fd(last_)} (week not finished)", n, w_, st, pl))
+    tn, tw, tst, tpl = (sum(x[i] for x in weeks) for i in (1, 2, 3, 4))
+    global SINCE_LIVE
+    SINCE_LIVE = (tn, tw, tst, tpl)
+    out += ["", "## Since live (Fri 9 Oct)", "",
+            "The weeks to Sun 1 Nov are the book's own settled entries (betmatic-book.md, 3 Nov), not rebuilt here; from "
+            "Mon 2 Nov each week is rebuilt from the sheets, the opening prices, the results and TAB's reported deductions.", "",
+            "| Week | Bets | Won | Staked | P/L | ROI | At $50 |", "|---|---|---|---|---|---|---|"]
+    out += [f"| {lab} | {n} | {w_} | {st:.2f}u | {pl:+.2f}u | {pl / st:+.0%} | ${pl * UNIT:+,.0f} |" for lab, n, w_, st, pl in weeks]
+    out += [f"| **Since Fri 9 Oct** | **{tn}** | **{tw}** | **{tst:.2f}u** | **{tpl:+.2f}u** | **{tpl / tst:+.0%}** | **${tpl * UNIT:+,.0f}** |"]
     out += ["", "Running total by day: " + ", ".join(f"{d[5:]} {c:+.1f}u" for d, c in run), "",
             "| Date | Meeting | Race | Horse | Units | Open | TAB deduction | Paid at | Result | P/L |",
             "|---|---|---|---|---|---|---|---|---|---|"]
@@ -181,6 +218,8 @@ def main():
             f"${r['to_win']:,.0f} | {r['result']} | ${r['pl']:+,.0f} |" for r in reversed(nm)]
     open(OUT, "w").write("\n".join(out) + "\n")
     print("\n".join(out[7:12]))
+    print(f"since live (9 Oct): {SINCE_LIVE[0]} bets, {SINCE_LIVE[1]} won, {SINCE_LIVE[2]:.2f}u staked, {SINCE_LIVE[3]:+.2f}u "
+          f"(${SINCE_LIVE[3] * UNIT:+,.0f} at ${UNIT})")
     print(f"model: {len(live)} bets, {sum(1 for r in live if r['result'] == 'WON')} won, "
           f"{sum(r['pl'] for r in live):+.2f}u since {days[0] if days else '-'}; 9am list: {len(bet)} bets, {w} won, "
           f"${tot:+,.0f} a bookie -> {OUT}")
