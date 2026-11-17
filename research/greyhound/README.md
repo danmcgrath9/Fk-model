@@ -8270,6 +8270,131 @@ is worth about four extra bets a month at +20% to +30% each. Running it live wou
 race opens, which the card does not fetch today, so it is the founder's call whether that is worth building. Nothing
 changes the card, and the paper tracker keeps Test 80's corrected blend.
 
+## Test 85: more bets from the best model, by its own expected value, every price, and staked by the edge (17 Nov 2026, gh topaz run 44055677055, `topaz_round67.py`)
+
+Founder: "Keep going, find more winning bets".
+
+Test 84 found the edge is at TAB's open, so more bets have to come from the open. Test 83's model bets only inside the
+card's fair-price band ($2 to $15) and by the card's ratio rule. This test looks at everything else it would bet.
+
+**The test, stated before the run.**
+
+- **The model's own expected value** at TAB's first price, after TAB's deduction: price paid x the model's chance - 1,
+  with the model's chance over the runners that ran (Test 83's model, read from the walk cache).
+- **Its bets by that expected value** (0%, 5%, 10%, 15%, 20%, 30% and over), in four bands of its own fair price:
+  under $2, $2 to $15 (the card's band), $15 to $30, and $30 and over. Flat, realised and by the corrected BSP, from
+  February 2025 and by half.
+- **Staking**: the same bets staked by a quarter of Kelly on the model's chance (capped at 5% of the bank before
+  scaling), scaled so the mean stake is one unit, beside flat.
+- **A longer fit**: Test 83's inputs walked forward again with up to 4,000 rounds a refit (Test 83's walk sat at its
+  2,000 cap at 10 of 13 refits).
+
+In the card's band, an expected value of 10% or more is close to the card's 1.1x rule: 1,458 bets and +222.0 units, against
+1.1x's 1,466 and +222.1.
+
+**By expected value, each slice on its own**, Test 83's model, February 2025 on (22 months):
+
+| fair price | expected value | bets | a month | A/E | realised flat ROI | realised units | corrected BSP per bet (SE) | corrected BSP units |
+|---|---|---|---|---|---|---|---|---|
+| under $2 | 0% to 5% | 556 | 25.3 | 0.992 | +1.3% | +7.2 | +1.9% (0.6%) | +10.2 |
+| under $2 | 5% to 10% | 274 | 12.5 | 1.001 | +5.8% | +15.8 | +4.8% (1.0%) | +12.9 |
+| under $2 | 10% to 15% | 133 | 6.0 | 0.938 | +1.6% | +2.2 | +10.1% (1.6%) | +12.8 |
+| under $2 | 15% to 20% | 42 | 1.9 | 1.002 | +18.9% | +7.9 | +17.2% (3.8%) | +6.9 |
+| under $2 | 20% to 30% | 33 | 1.5 | 1.121 | +46.4% | +15.3 | +29.6% (3.7%) | +9.5 |
+| under $2 | 30% and over | 12 | 0.5 | 1.049 | +84.1% | +10.1 | +59.5% (13.1%) | +7.1 |
+| $2 to $15 | 0% to 5% | 1,722 | 78.3 | 1.048 | +1.6% | +27.7 | -1.8% (0.7%) | -30.0 |
+| $2 to $15 | 5% to 10% | 1,017 | 46.2 | 0.951 | -5.5% | -55.7 | +1.0% (1.0%) | +9.7 |
+| $2 to $15 | 10% to 15% | 531 | 24.1 | 0.928 | +3.1% | +16.6 | +7.9% (1.6%) | +41.2 |
+| $2 to $15 | 15% to 20% | 307 | 14.0 | 1.026 | +2.7% | +8.2 | +8.4% (2.6%) | +25.2 |
+| $2 to $15 | 20% to 30% | 312 | 14.2 | 1.154 | +49.5% | +154.5 | +22.4% (3.0%) | +68.2 |
+| $2 to $15 | 30% and over | 308 | 14.0 | 0.891 | +27.4% | +84.5 | +29.1% (4.3%) | +87.4 |
+| $15 to $30 | 0% and over | 168 | 7.6 | | | -28.7 | | +16.5 |
+| $30 and over | 0% and over | 44 | 2.0 | 0.000 | -100.0% | -44.0 | | +3.2 |
+
+The last two rows add up their six slices: 168 bets from $15 to $30 at a corrected BSP standard error of 9 to 23
+points a slice, and 44 bets at $30 and over with no winner.
+
+**The favourites under $2, by threshold and by half** (any price less the $2-and-over rows, Test 83's model):
+
+| expected value | period | bets | a month | realised units | corrected BSP units | corrected BSP per bet |
+|---|---|---|---|---|---|---|
+| 0% or more | Feb 2025 on | 1,050 | 47.7 | +58.5 | +59.3 (SE about 5.4) | +5.6% |
+| 0% or more | Feb 2025 to Jan 2026 | 544 | 45.3 | +36.0 | +21.4 | +3.9% |
+| 0% or more | Feb 2026 on | 506 | 50.6 | +22.5 | +37.9 | +7.5% |
+| 5% or more | Feb 2025 on | 494 | 22.5 | +51.3 | +49.2 (SE about 4.3) | +10.0% |
+| 5% or more | Feb 2025 to Jan 2026 | 264 | 22.0 | +28.8 | +22.4 | +8.5% |
+| 5% or more | Feb 2026 on | 230 | 23.0 | +22.5 | +26.8 | +11.7% |
+| 10% or more | Feb 2025 on | 220 | 10.0 | +35.5 | +36.2 (SE about 3.3) | +16.5% |
+
+The per-bet figure here is the units over the bets, so it counts the few bets with no BSP as nothing.
+
+**Staked by a quarter of Kelly**, the card's band, February 2025 on. The mean stake is one unit, so the units staked
+equal the bets and the return per unit staked is the units over the bets:
+
+| expected value | bets | flat: realised | flat: corrected BSP | quarter Kelly: realised | quarter Kelly: corrected BSP | largest stake |
+|---|---|---|---|---|---|---|
+| 0% or more | 4,197 | +235.9 (+5.6%) | +201.8 (+4.8%) | +528.4 (+12.6%) | +585.1 (+13.9%) | 6.7 units |
+| 5% or more | 2,475 | +208.2 (+8.4%) | +231.8 (+9.4%) | +338.1 (+13.7%) | +397.8 (+16.1%) | 4.5 units |
+| 10% or more | 1,458 | +263.9 (+18.1%) | +222.0 (+15.2%) | +281.0 (+19.3%) | +300.3 (+20.6%) | 3.6 units |
+| 20% or more | 620 | +239.0 (+38.5%) | +155.6 (+25.1%) | +186.5 (+30.1%) | +182.5 (+29.4%) | 2.9 units |
+
+**The longer fit is a little better.** Walked at up to 4,000 rounds, the refits stopped at 3,650 to 4,000 rounds (three
+at the cap, ten within 100 of it). On the same clean races from February 2025, 51.31 thousandths from BSP (+40.8% of
+TAB's distance closed) and a winners' log loss of 1.5568, against Test 83's 52.04 (+40.0%) and 1.5577. Its inputs by
+share of gain: our model's chance 26.3%, the gap between ours and TAB's 25.6%, TAB's chance 5.5%, the tip rank 2.1%,
+the track 1.5%.
+
+**The card's ratio rule at TAB's first price, flat, both models**, February 2025 on:
+
+| model | ratio | bets | a month | winners | corrected BSP's expected winners | realised flat ROI | realised units | corrected BSP per bet (SE) | corrected BSP units |
+|---|---|---|---|---|---|---|---|---|---|
+| Test 83's model | 1.1x | 1,466 | 66.6 | 341 | 340.4 | +17.8% | +261.1 | +15.5% (1.4%) | +222.1 |
+| Test 83's model | 1.2x | 615 | 28.0 | 134 | 126.8 | +36.2% | +222.6 | +25.3% (2.7%) | +151.5 |
+| Test 83's model | 1.3x | 307 | 14.0 | 55 | 56.1 | +28.0% | +86.0 | +28.6% (4.4%) | +85.3 |
+| Test 83's model | 1.5x | 99 | 4.5 | 20 | 20.3 | +51.9% | +51.3 | +51.4% (9.3%) | +49.8 |
+| **up to 4,000 rounds** | 1.1x | 1,573 | 71.5 | 371 | 365.4 | +17.2% | +271.2 | +15.2% (1.3%) | **+233.8** |
+| **up to 4,000 rounds** | 1.2x | 651 | 29.6 | 147 | 133.5 | +39.7% | +258.6 | +25.4% (2.6%) | **+160.8** |
+| **up to 4,000 rounds** | 1.3x | 336 | 15.3 | 64 | 63.8 | +37.9% | +127.3 | +31.5% (4.2%) | **+103.1** |
+| **up to 4,000 rounds** | 1.5x | 103 | 4.7 | 20 | 21.1 | +56.6% | +58.3 | +53.9% (9.3%) | **+54.4** |
+
+By half, corrected BSP units, Test 83's model against the longer fit: 1.1x +124.8 and +121.5 (February 2025 to January
+2026), +97.3 and +112.4 (February 2026 on); 1.2x +82.0 and +91.7, then +69.5 and +69.1; 1.3x +49.4 and +61.0, then
++35.9 and +42.1.
+
+In races with nothing scratched after TAB's open, the card's band at 10% or more: Test 83's model 1,127 bets, +14.4% a
+bet (SE 1.6%), +159.4 units; the longer fit 1,212 bets, +14.2% (SE 1.5%), +168.1 units.
+
+What it shows:
+
+- **The favourites the card has always skipped make money at TAB's open.** Under $2 by the model's price, every
+  expected-value slice is positive by the corrected BSP, and their winners came in where BSP said they would (A/E 0.94
+  to 1.12). From 0% expected value, 1,050 bets in 22 months (48 a month), +59 units by the corrected BSP and +58
+  realised. From 5%, 494 bets (22 a month), +49 and +51. Both halves are positive at every threshold.
+  - They are small edges on short prices: +5.6% a bet from 0%, +10% from 5%. They need bigger stakes to matter, and
+    TAB's limits on a short favourite at the open are unknown.
+- **On the favourites the model's expected value is close to what it gets.** A 0% to 5% slice gets +1.9%, 10% to 15%
+  gets +10.1%, 20% to 30% gets +29.6%.
+- **From $2 to $15 it gets about seven points less than it expects.** Its 0% to 5% slice loses 1.8% a bet and its 5% to
+  10% slice is level. The same error in the model's chance moves the expected value much more on an $8 dog than on a
+  $1.80 one. So below 10% in the card's band there are more bets and no more money: 5% or more adds 1,017 bets and
+  +9.8 units over 10% or more.
+- **Over $15 is too few and too noisy to bet.** 168 bets from $15 to $30 are +16.5 units by the corrected BSP and -28.7
+  realised. Two of the six slices had no winner. At $30 and over, 44 bets and no winner.
+- **Staking by the edge earns more for each unit staked.** At 10% or more, a quarter of Kelly returns +20.6% a unit by
+  the corrected BSP against +15.2% flat, on the same 1,458 bets, with stakes from a fraction of a unit to 3.6 units. From 0%,
+  Kelly's +585 units against flat's +202 is mostly Kelly staking the high-edge bets harder; per unit staked it is
+  +13.9%, a little under flat at 10% or more.
+  - The Kelly table has no halves and no standard error, so how steady it is has not been measured yet.
+- **The longer fit is better at every ratio over the 22 months**: +11.7 units at 1.1x, +9.3 at 1.2x and +17.8 at 1.3x
+  by the corrected BSP, with 7% more bets. By half it is behind twice, by 3.3 units (1.1x, first half) and 0.4 (1.2x,
+  second half). It sits at its 4,000-round cap too, so a faster learning rate or more rounds may help again,
+  by less.
+
+What it means: the clearest new bets are the favourites. Adding the model's favourites under $2 at 5% expected value or
+more to the card's 1.1x bets would be about 22 more bets a month and about +49 units over 22 months by the corrected
+BSP, a fifth more than the +222 the card's band makes alone. That is the next test, with the longer fit, the halves
+and the Kelly standard errors measured. Nothing changes the card, and the paper tracker keeps Test 80's corrected blend.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
