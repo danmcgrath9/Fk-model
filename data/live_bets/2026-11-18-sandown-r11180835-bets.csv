@@ -1,0 +1,8 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+2,SANL_181126_2,Royal Maximus,top_pick,1.7,1.7,2.8,2.8,,2.32,0.205,Already run to today's class; EARLY ONLY: bet near the open,1.0,no,,
+3,SANL_181126_3,Sunbliss,top_pick,2.35,2.35,4.0,4.0,,2.36,0.694,Already run to today's class; Proven wet on a wet track; Class drop (rating),1.0,no,,
+4,SANL_181126_4,Navy Heart,top_pick,3.8,3.8,4.6,4.6,,4.06,0.134,,1.0,no,,
+5,SANL_181126_5,Breathless Spirit,top_pick,3.5,3.5,5.5,5.5,,3.44,0.599,,1.0,no,,
+6,SANL_181126_6,Flying Mikki,top_pick,3.7,3.7,3.75,3.75,,4.08,-0.081,Beaten by the pace last start; Already run to today's class; Class drop (rating),1.0,no,,
+7,SANL_181126_7,Onavuitton,top_pick,4.4,4.4,3.7,3.7,,4.17,-0.112,New career-best last start; Late 600 beyond the tempo,1.0,no,,
+8,SANL_181126_8,Befuddle,top_pick,2.8,2.8,3.5,3.5,,2.9,0.205,Beaten by the pace last start,1.0,no,,
