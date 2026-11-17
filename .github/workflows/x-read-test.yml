@@ -1,0 +1,24 @@
+name: x read test
+
+# One read from the X API with the app's Bearer Token (twitter environment). Proves the token and the credits work.
+on:
+  workflow_dispatch:
+    inputs:
+      post_id:
+        description: 'public post id to read (one read, half a cent)'
+        default: '2122457608963395586'
+
+permissions:
+  contents: read
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: twitter
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read one post
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+        run: python scripts/x_read_test.py "${{ github.event.inputs.post_id }}"
