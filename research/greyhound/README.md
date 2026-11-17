@@ -8645,13 +8645,19 @@ published November, so there is no BSP yet.
 | day | run | card races | found in TAB's market | every dog on the card | card bets | settled | winners | expected at the price taken | units staked | units won | still 1.3x at TAB's first price | rule at TAB's open: bets |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 15 Nov | 43860008304 | 24 | 24 | 22 | 4 | 4 | 2 | 1.26 | 5.34 | +5.77 | 0 | 0 |
+| 16 Nov | 44075152202 | 50 | 50 | 36 | 10 | 10 | 4 | 4.17 | 22.26 | -5.00 | 0 | 0 |
 
 All four 15 Nov bets opened shorter on TAB than GRV's evening price (TAB at 24% to 49% of it) and below the card's own
 blended price, the same pattern as the first nine nights. Two won, at TAB's first price less the deduction: +5.77
 units on 5.34 staked, +66.2% flat. Four bets is noise.
 
-The card as sent so far, 6 to 15 Nov: 60 bets, 59 settled (one refund), 23 winners against 23.03 expected at the
-prices taken (A/E 1.00), 136.16 units staked, -23.63 units won (-17.4% at the card's units, -9.3% flat), -21.92 at the
-best first price of three. The rule at TAB's open has made no bet yet.
+All ten 16 Nov bets opened shorter on TAB than GRV's evening price too (TAB at 21% to 57% of it), and every one was
+below 1.3x at TAB's first price (TAB's price times the card's blend 0.40 to 0.77). Four won: -5.00 units on 22.26
+staked, -22.3% flat. The 16 Nov run is the first to print rows for the corrected blend; it has none until the 18 Nov
+card.
+
+The card as sent so far, 6 to 16 Nov: 70 bets, 69 settled (one refund), 27 winners against 27.20 expected at the
+prices taken (A/E 0.99), 158.42 units staked, -28.63 units won (-18.1% at the card's units, -11.1% flat), -26.92 at
+the best first price of three. The rule at TAB's open has made no bet yet.
 
 Results go here as they come in.
