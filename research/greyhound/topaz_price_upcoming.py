@@ -325,9 +325,28 @@ def compare_prices(a: pd.DataFrame, b: pd.DataFrame) -> dict:
                 top_same=int(top.sum()), corr=float(np.corrcoef(la, lb)[0, 1]) if len(m) > 1 else np.nan)
 
 
+def iso_card(cache, rows, races, day, since, keep) -> None:
+    """The corrected blend's card (research/greyhound/topaz_iso.py), paper only, after the card is kept. Anything that
+    goes wrong here is reported by kind and place only and never touches the card."""
+    if not os.environ.get("ISO_DIR", "").strip():
+        return
+    try:
+        import topaz_iso
+        print(topaz_iso.price(cache, rows, races, day, since, Path(keep), build_day, txt))
+    except Exception as e:                               # the card stands whatever happens here
+        import traceback
+        tb = traceback.extract_tb(e.__traceback__)[-1]
+        print(f"the corrected-blend card failed ({type(e).__name__} at {Path(tb.filename).name}:{tb.lineno}); "
+              "the card is unaffected")
+
+
 def main(d, label):
-    if os.environ.get("PRICE_MODE", "").strip().lower() == "train":
+    mode = os.environ.get("PRICE_MODE", "").strip().lower()
+    if mode == "train":
         return train(d, label)
+    if mode == "train_iso":
+        import topaz_iso
+        return topaz_iso.train(d, label)
     day = os.environ.get("PRICE_DAY") or pd.Timestamp.now(tz=SYDNEY).strftime("%Y-%m-%d")
     client = TopazClient(max_per_minute=float(os.environ.get("TOPAZ_PER_MINUTE", "72") or 72))
     t_fetch = time.time()
@@ -398,6 +417,7 @@ def main(d, label):
     if keep:
         f = save_card(card, day, payload["blend"], Path(keep))
         print(f"tonight's card kept for the live tracker (Actions cache only): {f.name}, {len(card)} runners")
+        iso_card(cache, rows, races, day, since, keep)
     plain = json.dumps(payload, separators=(",", ":")).encode()
     lines, sha = seal(plain)
     print(f"tonight's card is sealed (GRV's values are personal use and this log is public): {len(payload['races'])} races "

@@ -3,6 +3,8 @@ dog (4 Nov 2026, founder: "BUILD THE BEST MODEL IN THE WORLD"; MODELS_RESEARCH.m
 
     python -m greyhound.isolynx pull  --runs DIR --out DIR [--since 2022-01-01] [--workers 8] [--per-minute 72]
                                       [--max-minutes 280]
+    python -m greyhound.isolynx topup --runs DIR --out DIR --since YYYY-MM-DD --day YYYY-MM-DD
+                                      # the nightly top-up: dogs with a tracked run since --since, pulled again
     python -m greyhound.isolynx table --out DIR          # prints the flattened table's shape and fill rates
     python -m greyhound.isolynx probe --runs DIR [--since] # one tracked race: which Isolynx endpoints the key may call
 
@@ -199,6 +201,56 @@ def flatten(run: dict) -> dict:
     return row
 
 
+def topup_file(out: Path, day: str) -> Path:
+    """The night's top-up file. It matches table()'s glob and sorts after the numbered groups, so a run already held
+    in an older file wins the de-duplication."""
+    return out / f"isolynx_dogs_t{day.replace('-', '')}.json.gz"
+
+
+def topup(client: TopazClient, runs_dir: Path, out: Path, since: str, day: str, workers: int = 8,
+          max_minutes: float = 30) -> dict:
+    """The nightly top-up (17 Nov 2026, founder: "Yep build it"): the group files are never pulled again, so a dog's
+    tracked runs after its group was pulled are missing. Every dog with a tracked run on or after `since` is pulled
+    again into one file for `day`, written whole or not at all (a dog that fails is left out and named in the count;
+    the next night's top-up covers it). A file already there for `day` is kept."""
+    out.mkdir(parents=True, exist_ok=True)
+    path = topup_file(out, day)
+    rep = {"dogs": 0, "with_data": 0, "runs": 0, "failed": 0, "held": path.exists(), "left": 0}
+    if path.exists():
+        return rep
+    dogs = tracked_dogs(runs_dir, since)
+    rep["dogs"] = len(dogs)
+    deadline = time.monotonic() + max_minutes * 60
+    got = []
+
+    def one(dog):
+        if time.monotonic() > deadline:
+            return dog, None, "time"
+        try:
+            rows = client._get(f"isolynx/dog/{dog}/splits")
+            return dog, (rows if isinstance(rows, list) else []), None
+        except TopazNoAccess:
+            return dog, [], None
+        except TopazForbidden:
+            raise
+        except TopazError as e:
+            return dog, None, str(e)
+
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        got = list(ex.map(one, dogs))
+    ok = [(d, rows) for d, rows, err in got if err is None]
+    rep["failed"] = sum(1 for _, _, err in got if err not in (None, "time"))
+    rep["left"] = sum(1 for _, _, err in got if err == "time")
+    rep["with_data"] = sum(1 for _, rows in ok if rows)
+    rep["runs"] = sum(len(rows) for _, rows in ok)
+    if ok:
+        tmp = path.with_suffix(".part")
+        with gzip.open(tmp, "wt", encoding="utf-8") as fh:
+            json.dump([{"dogId": d, "runs": rows} for d, rows in ok], fh, separators=(",", ":"))
+        os.replace(tmp, path)
+    return rep
+
+
 def table(out: Path):
     import pandas as pd
     rows = []
@@ -222,6 +274,11 @@ def main(argv=None) -> int:
     p.add_argument("--runs", type=Path, required=True); p.add_argument("--out", type=Path, required=True)
     p.add_argument("--since", default="2022-01-01"); p.add_argument("--workers", type=int, default=8)
     p.add_argument("--per-minute", type=float, default=72); p.add_argument("--max-minutes", type=float, default=280)
+    u = sp.add_parser("topup")
+    u.add_argument("--runs", type=Path, required=True); u.add_argument("--out", type=Path, required=True)
+    u.add_argument("--since", required=True); u.add_argument("--day", required=True)
+    u.add_argument("--workers", type=int, default=8); u.add_argument("--per-minute", type=float, default=72)
+    u.add_argument("--max-minutes", type=float, default=30)
     t = sp.add_parser("table"); t.add_argument("--out", type=Path, required=True)
     pr = sp.add_parser("probe"); pr.add_argument("--runs", type=Path, required=True); pr.add_argument("--since", default="2022-01-01")
     a = ap.parse_args(argv)
@@ -242,6 +299,20 @@ def main(argv=None) -> int:
         except TopazError as e:
             print(f"Topaz refused or failed: {e}")
             return 1
+    if a.cmd == "topup":
+        try:
+            client = TopazClient(max_per_minute=a.per_minute)
+            rep = topup(client, a.runs, a.out, a.since, a.day, a.workers, a.max_minutes)
+        except TopazError as e:
+            print(f"Topaz refused or failed: {e}")
+            return 1
+        if rep["held"]:
+            print(f"top-up for {a.day} already held")
+            return 0
+        print(f"top-up for {a.day}: {rep['dogs']:,} dogs with a tracked run since {a.since}, {client.calls} calls; "
+              f"{rep['with_data']:,} with tracking data, {rep['runs']:,} tracked runs; {rep['failed']} failed, "
+              f"{rep['left']} left at the time limit")
+        return 0
     dogs = tracked_dogs(a.runs, a.since)
     print(f"{len(dogs):,} dogs raced at a tracked track since {a.since}: {-(-len(dogs) // GROUP)} groups of {GROUP}")
     try:

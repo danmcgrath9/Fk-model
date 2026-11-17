@@ -9,6 +9,10 @@ name: gh topaz nightly
 # April (AEST, UTC+10) they run an hour earlier in Melbourne. Off the hour on purpose: the 5 Nov 10pm (minute 0) run
 # never started, and GitHub delays or drops scheduled runs at the top of the hour; the train ends well before the price.
 # Nothing is bet: the card is the founder's to read.
+# 17 Nov 2026 (founder: "Yep build it, track both 1.1x and 1.2x"): the corrected blend (Tests 80 and 81,
+# research/greyhound/topaz_iso.py) rides beside the card, paper only. Every night the Isolynx pull is topped up and
+# tomorrow's runners are priced by ours with Isolynx (card_iso, kept with the card); the weekly train also fits ours
+# with Isolynx and the correction (mode=train_iso does only that). The card's own model, rule and page are unchanged.
 
 on:
   schedule:
@@ -17,7 +21,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'train (fit and save the model) or price (tomorrow, or the date below, with the saved model)'
+        description: 'train (fit and save the model, then ours with Isolynx and the correction), train_iso (only ours with Isolynx and the correction), or price (tomorrow, or the date below, with the saved model)'
         default: 'price'
       date:
         description: 'mode=price: YYYY-MM-DD to price; blank = tomorrow in Melbourne'
@@ -42,7 +46,7 @@ permissions:
 jobs:
   nightly:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
     env:
       PYTHONUNBUFFERED: '1'
       TOPAZ_API_KEY: ${{ secrets.TOPAZ_API_KEY }}
@@ -75,8 +79,31 @@ jobs:
           path: greyhound/cache/topaz
           key: topaz-VIC-${{ github.run_id }}
 
+      - name: Restore the Isolynx pull (Actions cache, this repository only)
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/isolynx
+          key: topaz-isolynx-${{ github.run_id }}
+          restore-keys: topaz-isolynx-
+
+      - name: Top up the Isolynx pull (the dogs with a tracked run in the last four days; counts only)
+        if: env.MODE == 'price' && hashFiles('greyhound/cache/isolynx/*') != ''
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m greyhound.isolynx topup --runs greyhound/cache/topaz --out greyhound/cache/isolynx \
+            --since "$(TZ=Australia/Melbourne date -d '-4 days' +%F)" --day "$(TZ=Australia/Melbourne date +%F)" \
+            --max-minutes 20 | tail -2
+
+      - name: Save the Isolynx pull (Actions cache)
+        if: always() && env.MODE == 'price' && hashFiles('greyhound/cache/isolynx/*') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: greyhound/cache/isolynx
+          key: topaz-isolynx-${{ github.run_id }}
+
       - name: Betfair's free ANZ greyhound files (BSP, the training label)
-        if: env.MODE == 'train'
+        if: env.MODE == 'train' || env.MODE == 'train_iso'
         run: |
           mkdir -p bf
           for f in ANZ_Greyhounds_2020.zip ANZ_Greyhounds_2021.zip ANZ_Greyhounds_2022.zip ANZ_Greyhounds_2023.zip \
@@ -92,15 +119,31 @@ jobs:
           key: topaz-model-${{ github.run_id }}
           restore-keys: topaz-model-
 
-      - name: Restore the kept cards (Actions cache, this repository only; for gh topaz track)
-        if: env.MODE != 'train'
+      - name: Restore the kept cards (Actions cache, this repository only; for gh topaz track and the correction)
         uses: actions/cache/restore@v4
         with:
           path: greyhound/cache/cards
           key: topaz-cards-${{ github.run_id }}
           restore-keys: topaz-cards-
 
+      - name: Restore the Betwatch price history (Actions cache, read only; the correction's training races)
+        if: env.MODE == 'train' || env.MODE == 'train_iso'
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/betwatch
+          key: betwatch-VIC-G-${{ github.run_id }}
+          restore-keys: betwatch-VIC-G-
+
+      - name: Restore the research walks (Actions cache, read only; ours with Isolynx out of sample, copied once)
+        if: env.MODE == 'train' || env.MODE == 'train_iso'
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/walk
+          key: walk-${{ github.run_id }}
+          restore-keys: walk-
+
       - name: Train, or price tomorrow's card
+        if: env.MODE != 'train_iso'
         run: |
           set -o pipefail
           [ -d bf ] && export BETFAIR_DIR="$PWD/bf"
@@ -116,20 +159,34 @@ jobs:
           else
             DAY="${{ github.event.inputs.date }}"; [ -n "$DAY" ] || DAY=$(TZ=Australia/Melbourne date -d tomorrow +%F)
             # the card is also kept (race, dog, our chance, GRV's price) for the live tracker, gh topaz track
+            # the corrected blend's card (paper only) is kept beside it when the Isolynx pull is here
+            [ -d greyhound/cache/isolynx ] && export ISO_DIR="$PWD/greyhound/cache/isolynx"
             PRICE_CARD_DIR="$PWD/greyhound/cache/cards" PRICE_DAY="$DAY" PRICE_TRACK="${{ github.event.inputs.tracks }}" \
               PRICE_HISTORY_FROM="${{ github.event.inputs.history_from || '2020-01' }}" PRICE_COMPARE_FROM="${{ github.event.inputs.compare_from }}" \
               python research/greyhound/topaz_price_upcoming.py greyhound/cache/topaz "topaz VIC prices for $DAY"
           fi
 
+      - name: Train ours with Isolynx and the corrected blend (paper only; never stops the card's model being saved)
+        if: env.MODE == 'train' || env.MODE == 'train_iso'
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          [ -d bf ] && export BETFAIR_DIR="$PWD/bf"
+          export RACES_DIR="$PWD/greyhound/cache/topaz" WALK_GRV_RATING=yes WALK_ROUNDS_A=4000 MODEL_DIR="$PWD/greyhound/cache/model"
+          export WALK_RELIABLE=yes WALK_LEAD=yes WALK_SP_WEIGHT=0.5 WALK_TRACK=yes
+          export ISO_DIR="$PWD/greyhound/cache/isolynx" BETWATCH_DIR="$PWD/greyhound/cache/betwatch" \
+                 WALK_CACHE_DIR="$PWD/greyhound/cache/walk" CARDS_DIR="$PWD/greyhound/cache/cards"
+          PRICE_MODE=train_iso python research/greyhound/topaz_price_upcoming.py greyhound/cache/topaz "topaz VIC weekly train, ours with Isolynx" | tee -a "$GITHUB_STEP_SUMMARY"
+
       - name: Keep the card (Actions cache; race, dog, our chance and GRV's price only)
-        if: env.MODE != 'train' && hashFiles('greyhound/cache/cards/*') != ''
+        if: env.MODE == 'price' && hashFiles('greyhound/cache/cards/*') != ''
         uses: actions/cache/save@v4
         with:
           path: greyhound/cache/cards
           key: topaz-cards-${{ github.run_id }}
 
       - name: Save the trained model (Actions cache)
-        if: env.MODE == 'train'
+        if: env.MODE == 'train' || env.MODE == 'train_iso'
         uses: actions/cache/save@v4
         with:
           path: greyhound/cache/model

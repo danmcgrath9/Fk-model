@@ -12,6 +12,10 @@ scratched after it) up to date, and settles three ways of betting the card as if
   3. the rule at TAB's open (Tests 51 and 54): our chance over the field at TAB's first price, blended with TAB's own
      book there, held at 0.54 ours / 0.67 TAB; a bet when TAB's first price is at least 1.3x the blended price, the
      blended price $2 to $15, Kelly units
+  4, 5. the corrected blend at TAB's open (Tests 80 and 81; research/greyhound/topaz_iso.py), paper only: ours with
+     Isolynx over TAB's field at its first price, blended at 0.54 / 0.67 and corrected for its own mistakes; a bet when
+     TAB's first price is at least 1.1x (4) or 1.2x (5) the corrected price, the corrected price $2 to $15, one unit
+     flat. MODEL_DIR holds the correction; CARDS_DIR the card_iso files
 
 Settling: TAB's first price less TAB's deduction for the dogs scratched after it (topaz_round33.field_rows, the same
 deduction the backtests used). A bet on a dog scratched after the bet is a refund; a dog scratched before TAB opened was
@@ -51,7 +55,10 @@ RATIO, BAND = 1.3, (2, 15)
 CARD_BLEND = (0.51, 0.66)         # the card's own blend with GRV's pre-race price (Test 27), when a card lacks it
 VARIANTS = {"card": "1. the card as sent, at TAB's first price",
             "card_still": "2. the card's bets still 1.3x at TAB's first price",
-            "open": "3. the rule at TAB's open, blend held 0.54 / 0.67"}
+            "open": "3. the rule at TAB's open, blend held 0.54 / 0.67",
+            "corr11": "4. the corrected blend at TAB's open, 1.1x, flat (paper)",
+            "corr12": "5. the corrected blend at TAB's open, 1.2x, flat (paper)"}
+CORR = {"corr11": 1.1, "corr12": 1.2}   # topaz_iso.RATIOS, one variant each (founder, 17 Nov 2026: "track both")
 CARD_COLS = ["day", "race_key", "venue", "race_no", "start", "box", "dog_name", "p_model", "grv_price", "w_ours",
              "w_grv"]
 FACT_COLS = ["date", "bw_race", "venue", "race_no", "start", "dog_name", "price", "p_book", "ran", "s_later",
@@ -209,8 +216,10 @@ def best_first(f: pd.DataFrame) -> np.ndarray:
     return b.where(b > 1).max(axis=1).where(b.price > 1).values
 
 
-def ledger(cards: pd.DataFrame, facts: pd.DataFrame) -> tuple:
-    """(one row per bet of each variant, coverage counts). Cards and facts join on (day, normalised dog name)."""
+def ledger(cards: pd.DataFrame, facts: pd.DataFrame, iso=None) -> tuple:
+    """(one row per bet of each variant, coverage counts). Cards and facts join on (day, normalised dog name). iso:
+    (the kept card_iso rows, the correction, its meta) for variants 4 and 5 (research/greyhound/topaz_iso.py), or
+    None to leave them out."""
     cards = cards.assign(_dn=norm(cards.dog_name))
     facts = facts.assign(_dn=norm(facts.dog_name), best=best_first(facts)) if len(facts) else facts.assign(_dn=[], best=[])
     fx = facts.drop_duplicates(["date", "_dn"], keep=False).set_index(["date", "_dn"])
@@ -259,6 +268,17 @@ def ledger(cards: pd.DataFrame, facts: pd.DataFrame) -> tuple:
                 c = pd.Series({"day": r.date, "venue": r.card_venue, "race_no": r.card_race_no, "box": r.box,
                                "dog_name": r.card_dog, "p_model": r.p_model, "grv_price": r.grv_price})
                 add("open", c, r.pb, units, r)
+    if iso is not None and len(facts):
+        import topaz_iso
+        ic, bst, meta = iso
+        ic = ic[ic.day.isin(set(cards.day))] if len(ic) else ic
+        x = topaz_iso.at_open(facts[facts.date.isin(set(cards.day))], ic, bst, meta)
+        cov["corrected"] = int(x.bw_race.nunique()) if len(x) else 0
+        for v, r_ in CORR.items():
+            for _, r in x[topaz_iso.bets(x, r_)].iterrows() if len(x) else []:
+                c = pd.Series({"day": r.date, "venue": r.card_venue, "race_no": r.card_race_no, "box": r.card_box,
+                               "dog_name": r.card_dog, "p_model": r.p_iso, "grv_price": np.nan})
+                add(v, c, r.p_corr, 1.0, r)
     return pd.DataFrame(rows), cov
 
 
@@ -268,7 +288,8 @@ def report(led: pd.DataFrame, cov: dict, days: list) -> None:
     """Counts and units only."""
     print(f"Cards settled: {len(days)} days ({days[0] if days else ''} to {days[-1] if days else ''}); "
           f"{cov['races']:,} card races, {cov['in_market']:,} of them found in TAB's market, "
-          f"{cov['priced']:,} with every dog in TAB's field at its open on the card.\n")
+          f"{cov['priced']:,} with every dog in TAB's field at its open on the card"
+          + (f", {cov['corrected']:,} on the corrected blend's card" if "corrected" in cov else "") + ".\n")
     print("| way of betting | bets | void (not in TAB's market) | refunded | unsettled | settled | winners | expected "
           "at the price taken | A/E | units staked | units won | Kelly ROI | flat ROI | units won at the best first "
           "price of three | bets with a BSP | BSP under the price paid |\n|" + "---|" * 16)
@@ -290,12 +311,29 @@ def report(led: pd.DataFrame, cov: dict, days: list) -> None:
               f"{(b.bsp < b.paid).sum()} |")
     if len(led):
         print("\n| day | card bets | settled | winners | units won | 1.3x still at TAB's open | rule at TAB's open: bets "
-              "| settled | winners | units won |\n|---|---|---|---|---|---|---|---|---|---|")
+              "| settled | winners | units won | corrected 1.1x: bets | settled | winners | units won | corrected 1.2x: "
+              "bets | settled | winners | units won |\n|" + "---|" * 18)
         for d in days:
-            a, s2, o = (led[(led.variant == v) & (led.day == d)] for v in ("card", "card_still", "open"))
-            sa, so = a[a.status.isin(["won", "lost"])], o[o.status.isin(["won", "lost"])]
-            print(f"| {d} | {len(a)} | {len(sa)} | {(sa.status == 'won').sum()} | {sa.units_won.sum():+.2f} | {len(s2)} | "
-                  f"{len(o)} | {len(so)} | {(so.status == 'won').sum()} | {so.units_won.sum():+.2f} |")
+            a, s2, o, c1, c2 = (led[(led.variant == v) & (led.day == d)]
+                                for v in ("card", "card_still", "open", "corr11", "corr12"))
+
+            def part(g):
+                s_ = g[g.status.isin(["won", "lost"])]
+                return f"{len(g)} | {len(s_)} | {(s_.status == 'won').sum()} | {s_.units_won.sum():+.2f}"
+            print(f"| {d} | {part(a)} | {len(s2)} | {part(o)} | {part(c1)} | {part(c2)} |")
+
+
+def load_iso(cards_dir: str):
+    """The corrected blend's kept cards and its correction (MODEL_DIR), or None when there is no correction meta yet;
+    a correction that kept no rounds is the blend itself."""
+    import topaz_iso
+    mf = topaz_iso.model_dir() / "corr_meta.json"
+    if not mf.exists():
+        print("No corrected-blend model yet (corr_meta.json in MODEL_DIR): variants 4 and 5 are left out\n")
+        return None
+    meta = json.loads(mf.read_text())
+    bst, _ = topaz_iso.load_model("corr.txt", "corr_meta.json")
+    return topaz_iso.iso_cards(cards_dir), bst, meta
 
 
 def main(d, label):
@@ -316,7 +354,8 @@ def main(d, label):
     cards = cards[cards.day.isin(held)]
     days = sorted(cards.day.unique())
     facts = market_facts(d, bdir, bf_dir, days) if days else pd.DataFrame(columns=FACT_COLS)
-    led, cov = ledger(cards, facts) if days else (pd.DataFrame(), {"races": 0, "in_market": 0, "priced": 0})
+    iso = load_iso(os.environ.get("CARDS_DIR", ""))
+    led, cov = ledger(cards, facts, iso) if days else (pd.DataFrame(), {"races": 0, "in_market": 0, "priced": 0})
     report(led, cov, days)
     payload = {"ledger": json.loads(led.to_json(orient="records")) if len(led) else []}
     a, b = os.environ.get("FACTS_FROM", "").strip(), os.environ.get("FACTS_TO", "").strip() or today
