@@ -7592,6 +7592,184 @@ card to four or five bets a month at +40% is ours' own errors, which are as many
 **Next:** that correction, on the winners and on the corrected BSP, walked forward from November 2024. It is judged by
 how many of these cells it still gets wrong, by the card's rule, and at the same numbers of bets (round 62, running).
 
+## Test 80: the blend corrected for its own mistakes (17 Nov 2026, gh topaz run 43982699119, `topaz_round62.py`)
+
+Founder: "All I care about is winning", then "find more winning bets - mate need way more than this for amount of bets".
+
+Test 79 found the card's blend wrong in 74 cells where TAB's first price is right. Those errors put false edges on the
+card, so it has to wait for a 30% gap before it trusts one. This round takes Test 59's correction, a race softmax that
+starts from a blend and learns only where that blend is wrong, and starts it from the blend with Isolynx.
+
+**The test, stated before the run.**
+
+- **The two labels.**
+  - The winners.
+  - BSP corrected for its first-tip and weight leans. The correction's factors are fitted on May 2023 to January 2025:
+    power 1.034, first tip x0.912, up 0.5 kg or more x0.925.
+- **Walked forward exactly as Test 59.** Refitted every two months from November 2024 on the races before. The number
+  of rounds is chosen on the three months before each refit, so nothing it prices has been seen.
+- **The judges, from February 2025.** Log loss; how many of Test 79's cells each forecast still gets wrong in both halves
+  (here February 2025 to January 2026, and since February 2026); the card's rule; BSP's verdict by the corrected BSP;
+  and the same numbers of bets.
+
+The corrections took 56 minutes (the run log has every refit). On BSP corrected they kept 725 to 1,200 rounds at each
+of the 13 refits, and on the winners 75 to 625. The inputs each leaned on most:
+
+- track 4.2%, mkt_lsp_mean5_rel 3.0%, lp_ours 2.8%, mkt_lsp_mean5 2.3%, chk_dip_last 1.9%, weight_change 1.8%, map_left_speed 1.7%, p_lead_rel 1.5%, mkt_prev_lsp 1.5%, mkt_prev_lsp_rel 1.5%, finish_mean5_rel 1.4%, age_days 1.4% (on the winners)
+- lp_ours 7.1%, gap 5.8%, tip_top 4.7%, lp_tab 3.7%, tip_rank 3.6%, track 3.5%, last5_mean_rel 2.9%, grade_prior 2.8%, mkt_lsp_mean5_rel 2.4%, box 2.4%, weight_change 1.6%, trainer_rate 1.5% (on BSP corrected)
+
+Log loss on the winners (lower is better):
+
+| period | races | TAB's first book | the card's blend | blend with Isolynx | with Isolynx, corrected on the winners | with Isolynx, corrected on BSP corrected | BSP |
+|---|---|---|---|---|---|---|---|
+| Feb 2025 to Jan 2026 | 6,083 | 1.5901 | 1.5666 | 1.5636 | 1.5610 | 1.5586 | 1.5108 |
+| Feb 2026 on | 5,510 | 1.5926 | 1.5708 | 1.5686 | 1.5642 | 1.5615 | 1.5017 |
+| Feb 2025 on | 11,593 | 1.5913 | 1.5686 | 1.5659 | 1.5625 | 1.5600 | 1.5065 |
+
+**How many of the 1,100 cells of every input each still gets wrong in both halves, since February 2025:** TAB after its
+favourite bias 14, the card's blend 7, the blend with Isolynx 5, either correction 0, and BSP corrected 0.
+
+The card's rule at 1.3x, at TAB's first price after TAB's deduction:
+
+| period | blend | bets | winners | A/E vs the price taken | z | flat ROI | Kelly ROI | units won | months in profit | BSP under the price paid | mean log(price paid / BSP) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 to Jan 2026 | the card's blend | 57 | 18 | 1.620 | +2.4 | +33.5% | +62.0% | +44 | 8 of 12 | 64.9% | +0.278 |
+| Feb 2025 to Jan 2026 | blend with Isolynx | 45 | 14 | 1.563 | +1.9 | +35.1% | +46.5% | +29 | 7 of 12 | 68.9% | +0.348 |
+| Feb 2025 to Jan 2026 | with Isolynx, corrected on the winners | 110 | 28 | 1.416 | +2.1 | +41.5% | +13.9% | +18 | 7 of 12 | 51.8% | +0.109 |
+| Feb 2025 to Jan 2026 | with Isolynx, corrected on BSP corrected | 157 | 27 | 1.181 | +1.0 | +18.6% | +22.2% | +44 | 7 of 12 | 57.4% | +0.111 |
+| Feb 2026 on | the card's blend | 41 | 14 | 1.740 | +2.4 | +65.9% | +66.3% | +39 | 8 of 10 | 56.4% | +0.102 |
+| Feb 2026 on | blend with Isolynx | 47 | 17 | 1.876 | +3.0 | +90.4% | +108.6% | +68 | 7 of 10 | 61.4% | +0.102 |
+| Feb 2026 on | with Isolynx, corrected on the winners | 90 | 27 | 1.794 | +3.4 | +61.3% | +66.0% | +68 | 8 of 10 | 56.0% | +0.088 |
+| Feb 2026 on | with Isolynx, corrected on BSP corrected | 118 | 24 | 1.426 | +1.9 | +13.2% | +49.0% | +68 | 5 of 10 | 54.5% | +0.102 |
+| Feb 2025 on | the card's blend | 98 | 32 | 1.670 | +3.3 | +47.1% | +64.0% | +83 | 16 of 22 | 61.5% | +0.207 |
+| Feb 2025 on | blend with Isolynx | 92 | 31 | 1.721 | +3.5 | +63.3% | +78.0% | +97 | 14 of 22 | 65.2% | +0.226 |
+| Feb 2025 on | with Isolynx, corrected on the winners | 200 | 55 | 1.579 | +3.8 | +50.4% | +36.7% | +86 | 15 of 22 | 53.6% | +0.100 |
+| Feb 2025 on | with Isolynx, corrected on BSP corrected | 275 | 51 | 1.285 | +2.0 | +16.3% | +33.3% | +112 | 12 of 22 | 56.2% | +0.107 |
+
+BSP's verdict, flat, by the corrected BSP:
+
+| period | blend | rule | bets with a BSP | winners | BSP's expected winners | z | realised flat ROI | BSP's return per bet | its standard error | BSP's return, units |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 to Jan 2026 | the card's blend | 1.1x | 617 | 158 | 162.1 | -0.4 | +1.7% | +7.9% | 2.0% | +48.6 |
+| Feb 2025 to Jan 2026 | the card's blend | 1.3x | 57 | 18 | 17.0 | +0.3 | +33.5% | +53.5% | 13.3% | +30.5 |
+| Feb 2025 to Jan 2026 | blend with Isolynx | 1.1x | 601 | 160 | 162.4 | -0.2 | +6.3% | +9.0% | 2.0% | +54.0 |
+| Feb 2025 to Jan 2026 | blend with Isolynx | 1.3x | 45 | 14 | 14.2 | -0.1 | +35.1% | +64.3% | 15.9% | +28.9 |
+| Feb 2025 to Jan 2026 | with Isolynx, corrected on the winners | 1.1x | 923 | 221 | 218.2 | +0.2 | +10.4% | +6.6% | 1.6% | +60.7 |
+| Feb 2025 to Jan 2026 | with Isolynx, corrected on the winners | 1.3x | 110 | 28 | 26.5 | +0.4 | +41.5% | +29.2% | 8.0% | +32.1 |
+| Feb 2025 to Jan 2026 | with Isolynx, corrected on BSP corrected | 1.1x | 794 | 201 | 192.5 | +0.7 | +20.6% | +12.3% | 1.9% | +97.3 |
+| Feb 2025 to Jan 2026 | with Isolynx, corrected on BSP corrected | 1.3x | 155 | 27 | 31.4 | -1.0 | +20.1% | +31.5% | 6.7% | +48.8 |
+| Feb 2026 on | the card's blend | 1.1x | 503 | 137 | 125.2 | +1.3 | +13.2% | +3.4% | 2.0% | +16.9 |
+| Feb 2026 on | the card's blend | 1.3x | 39 | 12 | 9.3 | +1.1 | +55.2% | +22.3% | 9.1% | +8.7 |
+| Feb 2026 on | blend with Isolynx | 1.1x | 539 | 149 | 140.9 | +0.8 | +6.5% | +6.1% | 1.8% | +32.6 |
+| Feb 2026 on | blend with Isolynx | 1.3x | 44 | 14 | 10.3 | +1.4 | +79.9% | +22.4% | 8.3% | +9.8 |
+| Feb 2026 on | with Isolynx, corrected on the winners | 1.1x | 699 | 174 | 167.3 | +0.6 | +8.4% | +8.7% | 1.8% | +61.1 |
+| Feb 2026 on | with Isolynx, corrected on the winners | 1.3x | 84 | 24 | 17.7 | +1.8 | +58.2% | +22.0% | 6.5% | +18.5 |
+| Feb 2026 on | with Isolynx, corrected on BSP corrected | 1.1x | 553 | 128 | 131.4 | -0.4 | +5.0% | +15.6% | 2.2% | +86.0 |
+| Feb 2026 on | with Isolynx, corrected on BSP corrected | 1.3x | 110 | 20 | 20.2 | -0.0 | +7.7% | +26.4% | 6.5% | +29.1 |
+| Feb 2025 on | the card's blend | 1.1x | 1,120 | 295 | 287.3 | +0.6 | +6.9% | +5.8% | 1.4% | +65.5 |
+| Feb 2025 on | the card's blend | 1.3x | 96 | 30 | 26.3 | +0.9 | +42.3% | +40.8% | 8.8% | +39.2 |
+| Feb 2025 on | blend with Isolynx | 1.1x | 1,140 | 309 | 303.3 | +0.4 | +6.4% | +7.6% | 1.4% | +86.6 |
+| Feb 2025 on | blend with Isolynx | 1.3x | 89 | 28 | 24.5 | +0.9 | +57.3% | +43.6% | 9.3% | +38.8 |
+| Feb 2025 on | with Isolynx, corrected on the winners | 1.1x | 1,622 | 395 | 385.5 | +0.6 | +9.6% | +7.5% | 1.2% | +121.8 |
+| Feb 2025 on | with Isolynx, corrected on the winners | 1.3x | 194 | 52 | 44.2 | +1.4 | +48.8% | +26.1% | 5.3% | +50.6 |
+| Feb 2025 on | with Isolynx, corrected on BSP corrected | 1.1x | 1,347 | 329 | 323.9 | +0.3 | +14.2% | +13.6% | 1.4% | +183.3 |
+| Feb 2025 on | with Isolynx, corrected on BSP corrected | 1.3x | 265 | 47 | 51.6 | -0.8 | +15.0% | +29.4% | 4.7% | +77.9 |
+
+The card's rule on its own Kelly stakes, by the corrected BSP:
+
+| period | model | bets with a BSP | Kelly units staked | realised Kelly units | BSP's return, Kelly units | BSP's return per unit staked |
+|---|---|---|---|---|---|---|
+| Feb 2025 to Jan 2026 | the card's blend | 57 | 70 | +43.6 | +45.2 | +64.4% |
+| Feb 2025 to Jan 2026 | blend with Isolynx | 45 | 61 | +28.6 | +36.8 | +60.0% |
+| Feb 2025 to Jan 2026 | with Isolynx, corrected on the winners | 110 | 132 | +18.4 | +50.7 | +38.3% |
+| Feb 2025 to Jan 2026 | with Isolynx, corrected on BSP corrected | 155 | 197 | +45.0 | +97.4 | +49.5% |
+| Feb 2026 on | the card's blend | 39 | 54 | +25.3 | +19.8 | +36.8% |
+| Feb 2026 on | blend with Isolynx | 44 | 56 | +50.6 | +19.3 | +34.5% |
+| Feb 2026 on | with Isolynx, corrected on the winners | 84 | 94 | +50.8 | +34.6 | +36.8% |
+| Feb 2026 on | with Isolynx, corrected on BSP corrected | 110 | 127 | +47.5 | +47.5 | +37.4% |
+| Feb 2025 on | the card's blend | 96 | 124 | +68.9 | +65.0 | +52.4% |
+| Feb 2025 on | blend with Isolynx | 89 | 117 | +79.1 | +56.1 | +47.8% |
+| Feb 2025 on | with Isolynx, corrected on the winners | 194 | 226 | +69.2 | +85.3 | +37.7% |
+| Feb 2025 on | with Isolynx, corrected on BSP corrected | 265 | 324 | +92.5 | +144.9 | +44.8% |
+
+The best N candidates by edge, flat (the corrected BSP's return per bet / the realised flat ROI). Since February 2025:
+
+| best | the card: corrected BSP / realised | with Isolynx: corrected BSP / realised | corrected on the winners: corrected BSP / realised | corrected on BSP corrected: corrected BSP / realised |
+|---|---|---|---|---|
+| 50 | +55.5% / +71.4% | +45.7% / +52.2% | +51.3% / -2.0% | +62.2% / +88.4% |
+| 100 | +41.6% / +36.6% | +41.7% / +59.3% | +32.2% / +7.1% | +48.4% / +30.7% |
+| 200 | +24.5% / +1.3% | +24.1% / +25.0% | +24.6% / +51.7% | +34.3% / +27.5% |
+| 400 | +17.0% / +9.4% | +17.1% / +13.0% | +16.2% / +28.1% | +25.3% / +22.1% |
+| 800 | +9.4% / +6.6% | +11.3% / +4.7% | +12.2% / +17.7% | +18.9% / +13.6% |
+| 1,600 | +3.8% / +6.8% | +5.0% / +6.0% | +7.5% / +9.8% | +11.2% / +13.3% |
+
+February 2025 to January 2026, at half the counts:
+
+| best | the card: corrected BSP / realised | with Isolynx: corrected BSP / realised | corrected on the winners: corrected BSP / realised | corrected on BSP corrected: corrected BSP / realised |
+|---|---|---|---|---|
+| 25 | +82.3% / +27.1% | +65.7% / +1.5% | +60.8% / -49.3% | +78.1% / +77.2% |
+| 50 | +60.4% / +34.7% | +59.9% / +42.8% | +36.8% / -9.6% | +51.8% / +69.4% |
+| 100 | +33.9% / -7.0% | +31.7% / +18.3% | +30.6% / +32.9% | +40.6% / +24.8% |
+| 200 | +21.3% / -9.0% | +22.3% / +5.7% | +18.2% / +31.2% | +27.6% / +7.9% |
+| 400 | +11.7% / -4.3% | +15.1% / +4.2% | +12.6% / +15.3% | +19.1% / +18.8% |
+| 800 | +6.8% / +0.2% | +7.0% / +7.7% | +7.0% / +9.8% | +12.1% / +20.2% |
+
+Since February 2026, at half the counts:
+
+| best | the card: corrected BSP / realised | with Isolynx: corrected BSP / realised | corrected on the winners: corrected BSP / realised | corrected on BSP corrected: corrected BSP / realised |
+|---|---|---|---|---|
+| 25 | +24.7% / +108.4% | +27.7% / +102.8% | +38.7% / +45.2% | +42.9% / +24.0% |
+| 50 | +19.9% / +28.6% | +24.5% / +75.7% | +26.7% / +14.8% | +37.4% / +1.1% |
+| 100 | +17.9% / +9.8% | +17.9% / +40.5% | +20.5% / +48.0% | +30.0% / +8.8% |
+| 200 | +13.4% / +39.1% | +12.2% / +22.2% | +17.4% / +28.3% | +24.0% / +11.5% |
+| 400 | +6.2% / +15.5% | +7.6% / +4.1% | +12.1% / +14.1% | +18.6% / +3.5% |
+| 800 | +0.4% / +7.2% | +2.8% / +2.2% | +7.1% / +5.9% | +11.7% / +6.6% |
+
+What it shows:
+
+- **This is the best forecaster we have, by a distance.**
+  - Corrected on the corrected BSP, the blend with Isolynx has a log loss of 1.5600 since February 2025. That is
+    against 1.5659 for the blend with Isolynx and 1.5686 for the card, and it is better in both halves.
+  - It gets none of the 1,100 cells wrong in both halves, where the card's blend gets 7 wrong over the same split.
+  - The correction on the winners is second, at 1.5625.
+- **It makes far more bets that win.** Flat from 1.1x since February 2025, against the card's blend:
+  - **Bets.** The corrected blend makes 1,347 bets: 63 a month, about 15 a week. The card's blend makes 1,120.
+  - **Value per bet.** +13.6% a bet by the corrected BSP (standard error 1.4) and +14.2% realised, with 329 winners
+    against the corrected BSP's 323.9. The card's blend is at +5.8% and +6.9%.
+  - **Units.** +183 by the corrected BSP and about +191 realised. The card's blend makes +65 and +77.
+  - **Both halves win, both ways.** February 2025 to January 2026: 794 bets, +12.3% by the corrected BSP and +20.6%
+    realised. Since February 2026: 553 bets, +15.6% and +5.0%.
+- **At every count from the best 200 down, the corrected blend's bets are worth more.**
+  - Since February 2025, by the corrected BSP: +34.3% against +24.5% at the best 200, +25.3% against +17.0% at 400,
+    +18.9% against +9.4% at 800, and +11.2% against +3.8% at 1,600.
+  - Realised, the corrected blend is ahead at 200, 400, 800 and 1,600: +27.5% against +1.3%, +22.1% against +9.4%,
+    +13.6% against +6.6%, and +13.3% against +6.8%.
+  - Each half shows the same from the best 100 to 800 by the corrected BSP. Realised, the first half agrees. In the
+    second half the card is ahead at the best 200 and 400 (+39.1% and +15.5% against +11.5% and +3.5%), and the two are
+    level at 800 (+7.2% against +6.6%).
+- **At the card's own 1.3x it makes 275 bets instead of 98.**
+  - +112 Kelly units against +83, and 12 of 22 months in profit against 16.
+  - The corrected BSP rates them +29.4% a bet against +40.8%. The realised flat ROI is +16.3% (A/E 1.285) against
+    +47.1%.
+  - At 1.3x it is more bets of a lower edge each. The corrected blend's strength is lower down, where its bets are
+    worth two to three times the card's.
+- **The judge.** This correction learns BSP, and BSP judges it, which could flatter it. The results say it does not:
+  - At every count and in both halves, its winners are close to what the corrected BSP expected: z between -1.8 and
+    +0.7, and within one standard error at 15 of the 18 counts.
+  - Its realised returns are positive in both halves.
+
+What it means:
+
+- **The model that finds more winning bets exists.** The blend with Isolynx, corrected for its own mistakes, bet flat
+  from 1.1x at TAB's first price, made about 15 bets a week since February 2025, worth about +14% each, for about +190
+  flat units, both realised and by the corrected BSP. The card made about one bet a week for about +46 flat units.
+- **Putting it on the card is the founder's decision.** It needs two things built into the nightly run:
+  - the Isolynx pull for the day's dogs;
+  - the correction, trained weekly beside ours.
+- **It should be paper-tracked before any money goes on it.**
+
+**Next:** round 63 (running) puts the same bets at every bookmaker's first price.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
