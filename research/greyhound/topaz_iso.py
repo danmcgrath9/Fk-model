@@ -136,19 +136,38 @@ def fit_correction(R: pd.DataFrame, XR: pd.DataFrame) -> tuple:
     return bst, meta
 
 
+def iso_walk(df: pd.DataFrame, num: list, rel: list, mdir: Path, t0: float) -> str:
+    """The correction's out-of-sample chances before the kept cards: ours with Isolynx walked forward, refitted every six
+    months from November 2022 (round 50), kept once in the model dir as iso_walk.csv.gz. Copied from the research walk
+    when the walk cache holds it; walked here otherwise (about 75 minutes, once). A walk the time guard stopped is not
+    kept, so the next train walks again. Returns a note."""
+    import topaz_walk as W
+    f = mdir / "iso_walk.csv.gz"
+    if f.exists():
+        return "held"
+    wf = Path(os.environ.get("WALK_CACHE_DIR", "")) / f"walk_{ISO_WALK}.csv.gz"
+    if wf.exists():
+        shutil.copy(wf, f)
+        return f"copied from the research walk {ISO_WALK}"
+    a, log = W.walk(df.copy(), num, rel, pd.Period("2022-11", "M"), t0, 6)
+    if any("time guard" in s_ for _, s_ in log):
+        return "walked, but stopped by the time guard: not kept"
+    a.loc[a.p_a.notna(), ["race_id", "dog", "p_a", "p_b"]].to_csv(f, index=False, float_format="%.9g")
+    return f"walked here every six months from 2022-11: {int(a.p_a.notna().sum()):,} runners priced"
+
+
 def train(d, label) -> int:
     """PRICE_MODE=train_iso: ours with Isolynx, then the correction."""
+    import time
     import topaz_walk as W
     from greyhound.preview import SYDNEY
+    t0 = time.monotonic()
     iso = os.environ.get(ISO_ENV, "")
     if not iso or not os.path.isdir(iso):
         print(f"# {label}\n\nNo Isolynx pull ({ISO_ENV}): nothing trained")
         return 1
     mdir = model_dir()
     mdir.mkdir(parents=True, exist_ok=True)
-    wf = Path(os.environ.get("WALK_CACHE_DIR", "")) / f"walk_{ISO_WALK}.csv.gz"
-    if not (mdir / "iso_walk.csv.gz").exists() and wf.exists():
-        shutil.copy(wf, mdir / "iso_walk.csv.gz")       # kept with the model, so the walk cache may expire
     os.environ.pop("WALK_LEAD_MODEL", None)             # the training rows' lead chance is forward-chained, as the card's
     with isolynx_env(iso):
         df, num, rel, note = W.build_full(d)
@@ -168,6 +187,8 @@ def train(d, label) -> int:
     if not bdir or not os.path.isdir(bdir):
         print("No Betwatch files (BETWATCH_DIR): the correction is not trained")
         return 1
+    print(f"ours with Isolynx out of sample: {iso_walk(df, num, rel, mdir, t0)} ({(time.monotonic() - t0) / 60:.0f} "
+          "minutes in)")
     oos = oos_chances(mdir, os.environ.get("CARDS_DIR", ""))
     R, XR = correction_field(df, X, oos, bdir)
     cb, cmeta = fit_correction(R, XR)
