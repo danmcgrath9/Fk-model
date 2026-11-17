@@ -129,18 +129,18 @@ The price is the open after TAB's reported deduction.
 
 From data/live_bets/rule-tracker.csv (research/form_gbm/track_rules.py; run it before this file). A rule's P/L is per 1 unit at Betfair SP, 8% commission on winnings. The rules overlap, so the rows do not add up.
 
-| Rule | 11-17 | Since 12 Nov | Since 2 Nov | Since 9 Oct |
-|---|---|---|---|---|
-| Lay $15-$40, BSP >= 1.5x ours (current, failing live) | +2.76u (3 bets, 0 won) | -9.81u (55 bets, 2 won) | -29.70u (163 bets, 7 won) | -0.60u (385 bets, 16 won) |
-| Lay $8-$12, BSP >= 1.6x ours (current) | +1.84u (2 bets, 0 won) | -14.24u (18 bets, 3 won) | -10.02u (35 bets, 4 won) | -16.59u (70 bets, 8 won) |
-| Back $3-$5, firmed 1.5x from open | +0.13u (3 bets, 1 won) | -0.15u (15 bets, 4 won) | -11.01u (45 bets, 9 won) | +4.83u (112 bets, 31 won) |
-| Back $4-$7, firmed 1.5x from open | -4.00u (4 bets, 0 won) | -1.53u (21 bets, 4 won) | +15.64u (55 bets, 14 won) | +35.11u (134 bets, 34 won) |
-| Back $4-$7, ours >= 1.6x BSP (any runner) | -2.00u (2 bets, 0 won) | -7.72u (18 bets, 2 won) | +9.38u (37 bets, 9 won) | +10.97u (110 bets, 25 won) |
-| Lay $25-$40, drifted 2x from open | +0.92u (1 bets, 0 won) | -8.00u (26 bets, 1 won) | +44.44u (83 bets, 1 won) | +114.64u (194 bets, 2 won) |
-| Lay $12-$15, drifted 1.25x from open | - | +12.42u (27 bets, 1 won) | -2.90u (70 bets, 5 won) | +15.33u (163 bets, 10 won) |
-| Lay $8-$12, firmed 1.5x from open | +3.68u (4 bets, 0 won) | +2.92u (14 bets, 1 won) | +13.16u (37 bets, 2 won) | +34.02u (71 bets, 3 won) |
-| Back BSP fav $4-$7, ours >= 1.6x BSP (current) | - | -2.00u (2 bets, 0 won) | -5.00u (5 bets, 0 won) | +5.48u (25 bets, 7 won) |
-| Lay $25-$40, BSP <= ours/1.6 | - | -19.48u (7 bets, 1 won) | -3.84u (24 bets, 1 won) | +18.24u (48 bets, 1 won) |
+| Rule | 11-17 | Since 9 Oct |
+|---|---|---|
+| Lay $15-$40, BSP >= 1.5x ours (current, failing live) | +2.76u (3 bets, 0 won) | -0.60u (385 bets, 16 won) |
+| Lay $8-$12, BSP >= 1.6x ours (current) | +1.84u (2 bets, 0 won) | -16.59u (70 bets, 8 won) |
+| Back $3-$5, firmed 1.5x from open | +0.13u (3 bets, 1 won) | +4.83u (112 bets, 31 won) |
+| Back $4-$7, firmed 1.5x from open | -4.00u (4 bets, 0 won) | +35.11u (134 bets, 34 won) |
+| Back $4-$7, ours >= 1.6x BSP (any runner) | -2.00u (2 bets, 0 won) | +10.97u (110 bets, 25 won) |
+| Lay $25-$40, drifted 2x from open | +0.92u (1 bets, 0 won) | +114.64u (194 bets, 2 won) |
+| Lay $12-$15, drifted 1.25x from open | - | +15.33u (163 bets, 10 won) |
+| Lay $8-$12, firmed 1.5x from open | +3.68u (4 bets, 0 won) | +34.02u (71 bets, 3 won) |
+| Back BSP fav $4-$7, ours >= 1.6x BSP (current) | - | +5.48u (25 bets, 7 won) |
+| Lay $25-$40, BSP <= ours/1.6 | - | +18.24u (48 bets, 1 won) |
 
 ## The 9am list (the founder's bets, per bookie)
 

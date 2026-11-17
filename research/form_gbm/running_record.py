@@ -238,9 +238,8 @@ def main():
         out += ["", "## The rules (paper, at Betfair SP)", "",
                 "From data/live_bets/rule-tracker.csv (research/form_gbm/track_rules.py; run it before this file). "
                 "A rule's P/L is per 1 unit at Betfair SP, 8% commission on winnings. The rules overlap, so the rows do not add up.", "",
-                f"| Rule | {lastday[5:]} | Since 12 Nov | Since 2 Nov | Since 9 Oct |", "|---|---|---|---|---|"]
-        out += [f"| {names.get(k, k)} | {cell(k, None, lastday)} | {cell(k, '2026-11-12')} | {cell(k, '2026-11-02')} | "
-                f"{cell(k, '2026-10-09')} |" for k in keys]
+                f"| Rule | {lastday[5:]} | Since 9 Oct |", "|---|---|---|"]   # founder, 18 Nov: "a P&L for the day and ... since 9 October"
+        out += [f"| {names.get(k, k)} | {cell(k, None, lastday)} | {cell(k, '2026-10-09')} |" for k in keys]
     bet = [r for r in nm if r["result"] not in ("void", "not bet")]
     tot = sum(r["pl"] for r in bet); w = sum(1 for r in bet if r["result"] == "WON")
     staked = sum(r["stake"] for r in bet)
