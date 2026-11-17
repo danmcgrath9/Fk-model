@@ -8835,6 +8835,111 @@ more bets at smaller edges, or other markets. Round 72 tests the first two cheap
 keeps the 2-point bets' stakes fixed while adding the dogs at lower margins at their own smaller stakes. Nothing changes
 the card.
 
+## Test 90: the fits averaged, and more bets at the same Kelly (17 Nov 2026, gh topaz run 44141851338, `topaz_round72.py`)
+
+Founder: "Keep going, find more winning bets".
+
+Test 89 left two cheap questions, both answered here from the three saved fits with no new walk:
+
+- **Do all three fits averaged beat any one?** The fits are Test 88's fit, twice the rounds and bigger trees.
+- **Does betting smaller edges add money?** A quarter of Kelly already stakes a small edge lightly. This test fixes the
+  stake scale once, so the 2-point bets' mean stake is one unit, and lowers the margin to 1.5, 1, 0.5 and 0 points. The
+  2-point bets keep exactly the stakes they had, and each extra dog adds its own smaller stake. Whatever the lower
+  margins add is the extra dogs' own money. Bets are kept only where the quarter-Kelly stake is above zero.
+
+The workflow can now read a second saved walk (`WALK_ALSO`), so the two walks run side by side in Test 89 were read
+together.
+
+**Distance to BSP**, February 2025 on, clean races (83,187 runners in 11,593 races; TAB's first price 86.70
+thousandths):
+
+| model | distance to BSP (thousandths) | of TAB's distance closed | winners' log loss |
+|---|---|---|---|
+| Test 88's fit | 50.96 | +41.2% | 1.5562 |
+| twice the rounds | 50.77 | +41.4% | 1.5557 |
+| bigger trees | 50.72 | +41.5% | 1.5558 |
+| Test 88's fit and twice the rounds, averaged | 50.79 | +41.4% | 1.5559 |
+| Test 88's fit and bigger trees, averaged | 50.61 | +41.6% | 1.5558 |
+| twice the rounds and bigger trees, averaged | **50.52** | **+41.7%** | **1.5555** |
+| all three averaged | 50.58 | +41.7% | 1.5557 |
+
+**The margin rule, flat**, fair price under $15, February 2025 on, corrected BSP units (bets):
+
+| model | margin | Feb 2025 on | Feb 2025 to Jan 2026 | Feb 2026 on | per bet (SE) | realised units | A/E |
+|---|---|---|---|---|---|---|---|
+| Test 88's fit | 2 points | +325.4 (2,640) | +163.5 | +161.9 | +12.6% (0.8%) | +372.9 | 0.999 |
+| Test 88's fit | 1.5 points | +328.2 (3,243) | +152.1 | +176.1 | +10.4% (0.7%) | +325.5 | 0.988 |
+| all three averaged | 2 points | +326.4 (2,683) | +157.2 | +169.2 | +12.5% (0.8%) | +312.5 | 0.980 |
+| all three averaged | 1.5 points | +338.0 (3,287) | +160.9 | +177.0 | +10.5% (0.7%) | +282.8 | 0.979 |
+
+**A quarter of Kelly at one scale**, the margin lowered, bets with a corrected BSP, February 2025 to October 2026 (21
+months):
+
+| model | margin, fair price cap | bets | units staked | corrected BSP per unit staked (SE) | corrected BSP units | Feb 2025 to Jan 2026 | Feb 2026 on | realised units | deepest fall, realised | losing months |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Test 88's fit | **2 points, under $15** | 2,580 | 2,576 | +15.1% (0.9%) | **+388.8** | +205.1 | +183.6 | **+351.4** | 39.7 | 3 of 21 |
+| Test 88's fit | 1.5 points, under $15 | 3,170 | 2,790 | +14.0% (0.8%) | +390.5 | +201.9 | +188.6 | +336.7 | 43.9 | 3 of 21 |
+| Test 88's fit | 1 point, under $15 | 3,838 | 2,956 | +13.3% (0.8%) | +392.5 | +200.3 | +192.2 | +320.9 | 44.5 | 5 of 21 |
+| Test 88's fit | 0.5 points, under $15 | 4,722 | 3,088 | +12.7% (0.7%) | +391.5 | +198.0 | +193.5 | +320.5 | 47.3 | 5 of 21 |
+| Test 88's fit | 0 points, under $15 | 5,767 | 3,136 | +12.4% (0.7%) | +390.4 | +196.6 | +193.8 | +323.2 | 47.1 | 3 of 21 |
+| Test 88's fit | 1 point, under $40 | 3,880 | 2,966 | +13.3% (0.8%) | +394.7 | +201.5 | +193.1 | +321.3 | 45.3 | 4 of 21 |
+| all three averaged | 2 points, under $15 | 2,620 | 2,615 | +15.1% (0.8%) | +395.8 | +206.6 | +189.3 | +330.5 | 34.9 | 3 of 21 |
+| all three averaged | 1.5 points, under $15 | 3,204 | 2,825 | +14.2% (0.8%) | +400.2 | +207.6 | +192.6 | +325.9 | 46.2 | 4 of 21 |
+| all three averaged | 1 point, under $15 | 3,916 | 3,005 | +13.3% (0.7%) | +400.3 | +204.5 | +195.7 | +328.5 | 46.4 | 5 of 21 |
+| all three averaged | 0.5 points, under $15 | 4,770 | 3,134 | +12.7% (0.7%) | +398.4 | +201.5 | +197.0 | +326.0 | 47.3 | 3 of 21 |
+| all three averaged | 0 points, under $15 | 5,849 | 3,184 | +12.5% (0.7%) | +398.0 | +200.7 | +197.3 | +327.0 | 46.7 | 3 of 21 |
+| all three averaged | 1 point, under $40 | 3,964 | 3,016 | +13.3% (0.7%) | +402.5 | +205.5 | +196.9 | +327.5 | 47.4 | 4 of 21 |
+
+The largest stake is 2.7 units in every row; the luck in the realised units is 84 to 86 units (SD) in every row.
+
+**By three months, a quarter of Kelly at one scale**, corrected BSP units / realised units:
+
+| three months | Test 88's fit, 2 points | Test 88's fit, 1 point | Test 88's fit, 0 points | all three averaged, 2 points | all three averaged, 1 point | all three averaged, 0 points |
+|---|---|---|---|---|---|---|
+| Feb 2025 to Apr 2025 | +73.3 / +25.0 | +71.5 / +18.7 | +70.0 / +18.7 | +72.1 / +26.7 | +71.9 / +16.5 | +70.4 / +17.0 |
+| May 2025 to Jul 2025 | +50.1 / +59.5 | +49.2 / +56.4 | +48.1 / +58.6 | +48.5 / +47.7 | +48.5 / +55.0 | +47.1 / +56.7 |
+| Aug 2025 to Oct 2025 | +41.3 / +74.3 | +41.3 / +74.0 | +40.5 / +69.8 | +44.3 / +77.3 | +43.7 / +74.4 | +43.2 / +74.7 |
+| Nov 2025 to Jan 2026 | +40.4 / +39.0 | +38.4 / +33.0 | +38.0 / +30.8 | +41.7 / +33.5 | +40.5 / +37.6 | +40.0 / +34.1 |
+| Feb 2026 to Apr 2026 | +59.0 / +11.5 | +63.0 / +1.7 | +63.4 / +5.3 | +60.0 / +1.8 | +61.6 / -2.0 | +62.4 / -0.3 |
+| May 2026 to Jul 2026 | +45.0 / +49.2 | +44.5 / +38.4 | +45.2 / +41.0 | +48.0 / +46.4 | +48.0 / +41.7 | +48.0 / +43.7 |
+| Aug 2026 to Oct 2026 | +79.6 / +93.0 | +84.7 / +98.7 | +85.2 / +99.2 | +81.2 / +97.1 | +86.2 / +105.2 | +86.9 / +101.0 |
+
+What it shows:
+
+- **Smaller edges add bets, not money.** For Test 88's fit, going from 2 points to 0 adds 3,187 bets (2,580 to 5,767)
+  and 560 units staked, for +1.6 units by the corrected BSP. That is +0.3% on the extra stake. Going to 1 point adds
+  1,258 bets and 380 units staked, for +3.7 units (+1.0%). In realised units the lower margins make 28 to 31 units
+  less. By TAB's opening price, the dogs with an edge of 0 to 2 points are worth about nothing: their edge is
+  about the size of the model's own error.
+- **Lower margins lose in the first year and gain in the second**, for Test 88's fit at 0 points against 2:
+  - February 2025 to January 2026: −8.5 units.
+  - February 2026 on: +10.2 units, from +4.4 in February to April 2026 and +5.6 in August to October 2026.
+  - That fits a model whose small edges get more real as later refits train on more data. It is a hint, not a
+    finding: 10 units is well inside the noise.
+- **All three fits averaged is level with Test 88's fit.**
+  - It sits closer to BSP: 50.58 thousandths against 50.96.
+  - At 2 points and a quarter of Kelly, by the corrected BSP: +395.8 against +388.8.
+  - Realised: +330.5 against +351.4.
+  - Flat at 2 points: +326.4 against +325.4.
+  - Its best row is 1 point under $40, at +402.5 from 3,964 bets, and it realised +327.5.
+  - None of these gaps is outside a total's standard error of about 23 units.
+- **The closest to BSP of any model yet** is twice the rounds and bigger trees, averaged: 50.52 thousandths, 41.7% of
+  TAB's distance to BSP closed. That distance has improved by about 0.8 thousandths across Tests 88 to 90 without
+  changing the bets.
+- **No model or margin lost money in any three months by the corrected BSP.** Realised, all three averaged lost 2.0
+  units at 1 point and 0.3 at 0 points from February to April 2026, the only two losing quarters in the table.
+
+What it means: the card's best stays Test 88's fit at a 2-point margin, under $15, staked by a quarter of Kelly. That
+is about 123 bets a month for about +18.5 units a month by the corrected BSP. The bigger questions behind "more
+winning bets" now have answers:
+
+- Fitting harder does not add money (Test 89).
+- Averaging fits does not add money (this test).
+- Smaller edges at the same price do not add money (this test).
+
+The 2-point margin already takes almost all the money there is in TAB's opening book, for this model. More money will
+need more races, a second price per race, or new information the model does not yet have. Nothing changes the card.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
