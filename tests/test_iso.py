@@ -147,3 +147,25 @@ def test_the_correction_fits_on_the_corrected_bsp_with_rounds_chosen_on_the_last
     bst, meta = I.fit_correction(R, XR)
     assert bst is not None and meta["rounds"] > 0 and meta["cols"] == ["x"] + I.EXTRA
     assert meta["races"] == 1500 and "the correction" in meta["check"]
+
+
+def test_the_iso_walk_is_held_copied_or_walked_once(tmp_path, monkeypatch):
+    import topaz_walk as W
+    md, wd = tmp_path / "m", tmp_path / "w"
+    md.mkdir()
+    wd.mkdir()
+    pd.DataFrame({"race_id": [1], "dog": ["5"], "p_a": [1.0], "p_b": [1.0]}).to_csv(wd / f"walk_{I.ISO_WALK}.csv.gz",
+                                                                                     index=False)
+    monkeypatch.setenv("WALK_CACHE_DIR", str(wd))
+    assert I.iso_walk(None, [], [], md, 0.0).startswith("copied") and (md / "iso_walk.csv.gz").exists()
+    assert I.iso_walk(None, [], [], md, 0.0) == "held"
+    md2 = tmp_path / "m2"
+    md2.mkdir()
+    monkeypatch.setenv("WALK_CACHE_DIR", str(tmp_path / "none"))
+    df = pd.DataFrame({"race_id": [1, 1, 2], "dog": ["5", "6", "7"]})
+    monkeypatch.setattr(W, "walk", lambda d, *a: (d.assign(p_a=[0.5, 0.5, np.nan], p_b=0.5), [("2022-11", "fit")]))
+    assert "2 runners priced" in I.iso_walk(df, [], [], md2, 0.0)
+    monkeypatch.setattr(W, "walk", lambda d, *a: (d.assign(p_a=0.5, p_b=0.5), [("2023-05", "time guard: stopped")]))
+    md3 = tmp_path / "m3"
+    md3.mkdir()
+    assert "not kept" in I.iso_walk(df, [], [], md3, 0.0) and not (md3 / "iso_walk.csv.gz").exists()

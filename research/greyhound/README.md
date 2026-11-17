@@ -7951,9 +7951,13 @@ live". Every backtest above reads history; this reads the cards as they were sen
     runners are priced by ours with Isolynx and kept beside the card (`card_iso_DAY`, with every input the correction
     needs).
   - **Each Sunday** the weekly train also fits ours with Isolynx on every resulted race, the way the card's model is
-    fitted, and the correction on every race at TAB's first price that has an out-of-sample chance. Those are the
-    research walk to 13 Nov 2026 and the kept card_iso files after it. The number of rounds is chosen on the last
+    fitted, and the correction on every race at TAB's first price that has an out-of-sample chance. Those come from
+    ours with Isolynx walked forward every six months from November 2022, as in round 50 (walked once by the first
+    train, kept with the model), and the kept card_iso files after it. The number of rounds is chosen on the last
     three months, as in Test 59.
+  - **Why it is walked again.** GitHub lets a run read only the caches of its own branch and the default branch. The
+    research's Isolynx pull and walks were made on the research branch, so the nightly run on main cannot read them.
+    The Isolynx pull was redone on main on 17 Nov (gh topaz run 44000072279).
   - **Isolated from the card.** Both run as separate steps, so nothing in them can change the card, its model or its
     page.
 - **Settling** is the backtests' rule: TAB's first price less TAB's deduction for the dogs scratched after it
