@@ -212,10 +212,17 @@ def scratched_races(L, P):
     races = {k[0] for k, p in read_prices(L, P).items() if p["scr"]}
     res = f"{L}/{P}-results.txt"
     if os.path.exists(res):
+        ran = set()
         for l in open(res):
-            m = re.match(r"R(\d+) .+?\s+finish None", l)
+            m = re.match(r"R(\d+) (.+?)\s+finish (\S+)", l)
             if m:
-                races.add(int(m[1]))
+                ran.add((int(m[1]), norm(m[2])))
+                if m[3] == "None":
+                    races.add(int(m[1]))
+        # a late scratching is simply missing from the results: a runner in the last prices pull that did not run
+        # (Kyneton 17 Nov R8: Turnaquid and True Spirit, which is where the founder's 2c came from)
+        raced = {k[0] for k in ran}
+        races |= {k[0] for k, p in read_prices(L, P).items() if not p["scr"] and k[0] in raced and k not in ran}
     return races
 
 

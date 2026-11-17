@@ -1305,3 +1305,15 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
   reported): 172 bets, 39 won, 373.27u staked, +298.94u (+80%), +$14,947 at $50. By week: 9-18 Oct +49.15u, 19-25 Oct
   +135.57u, 26 Oct-1 Nov +32.95u (those three from this file's 3 Nov table, not rebuilt), 2-8 Nov +108.66u, 9-15 Nov
   -16.25u, Mon 16 Nov -11.14u. The table is in data/live_bets/running-record.md ("Since live") and rebuilds on every settle.
+
+## Tuesday 17 Nov Kyneton settled (Form King results, Wed 8:45am)
+- Every bet lost; Hollerasaurous R5 was scratched late (void, refunded). No-Mercer card (the open, full units): Winning
+  Toast R5 2.76u $21 8th, Hotspur Reale R7 1.71u $7.50 4th, Marlion's Dream R7 1.18u $51 6th, Bliss Bomb R8 6.79u $2.60
+  6th: -12.44u (-$622 at $50). Mercer card (posted prices, same units): -12.44u (-$622). The founder's TAB deductions
+  (R5 37c, R6 12c, R7 26c, R8 2c) had no winner to come off; R8's 2c was the late scratchings of Turnaquid and True Spirit.
+- BetMatic: nothing sent (send hold). No 9am list.
+- Ours/1.6 lay rule: no lay on Tuesday; since 9 Oct 48 lays, 1 winner, +18.24u; from 13 Nov -20.40u.
+- Back book ($500 a unit): no backs.
+- Running record: the model +68.83u since 2 Nov (64 bets, 14 won), -41.17u since 12 Nov; since live (9 Oct) +286.50u
+  (176 bets, 39 won, +$14,325 at $50). Price against Betfair SP since 12 Nov 1.29x (19 of 28 beat it). 9am list 3 bets,
+  0 won, -$2,926 a bookie.

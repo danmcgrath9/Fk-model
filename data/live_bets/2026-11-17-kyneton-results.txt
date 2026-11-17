@@ -1,0 +1,77 @@
+## kyneton-20261117: 76 entries
+R1 Voltrix                  finish 1  SP 1.45  BSP 1.71
+R1 Contarini                finish 2  SP 6.0  BSP 7.2
+R1 Tandarra                 finish 3  SP 101.0  BSP 551.47
+R1 Slugger                  finish 4  SP 12.0  BSP 12.5
+R1 Rentier                  finish 5  SP 7.5  BSP 10.0
+R1 Crimson Storm            finish 6  SP 9.0  BSP 12.47
+R2 Oak Park Mia             finish 1  SP 9.0  BSP 10.51
+R2 Charlotte's Web          finish 2  SP 7.5  BSP 9.0
+R2 Ravens Glow              finish 3  SP 2.7  BSP 2.94
+R2 Madame Petite            finish 4  SP 4.8  BSP 6.2
+R2 Pretty Stylish           finish 5  SP 6.5  BSP 8.6
+R2 Spirit Of Omaha          finish 6  SP 41.0  BSP 79.82
+R2 Cirque                   finish 7  SP 8.0  BSP 10.58
+R2 Dear Heart               finish 8  SP 15.0  BSP 18.81
+R2 Angel Don't Cry          finish 9  SP 151.0  BSP 833.43
+R2 Janie's Got A Gun        finish 10  SP 51.0  BSP 110.25
+R2 Shalwedash               finish 11  SP 101.0  BSP 250.0
+R3 Blue Light Disco         finish 1  SP 1.55  BSP 1.72
+R3 Mistressof Mayfair       finish 2  SP 3.2  BSP 3.79
+R3 Victimised               finish 3  SP 9.0  BSP 11.5
+R3 Thundering Shadow        finish 4  SP 14.0  BSP 23.0
+R3 Precious Alicia          finish 5  SP 61.0  BSP 126.49
+R3 Tycoonette               finish 6  SP 31.0  BSP 61.84
+R3 Costly Exercise          finish 7  SP 101.0  BSP 390.0
+R4 Exploit                  finish 1  SP 3.2  BSP 3.31
+R4 Beast Fighter            finish 2  SP 3.6  BSP 4.4
+R4 Crush Puppy              finish 3  SP 7.5  BSP 10.01
+R4 Royal Business           finish 4  SP 8.0  BSP 11.0
+R4 Platinum Rush            finish 5  SP 4.4  BSP 5.9
+R4 Gypsy Moon               finish 6  SP 81.0  BSP 210.48
+R4 Ghaluge                  finish 7  SP 101.0  BSP 320.0
+R4 Lipstick Legal           finish 8  SP 26.0  BSP 36.0
+R4 Edge Of Wonder           finish 9  SP 14.0  BSP 19.96
+R5 Royal Heritage           finish 1  SP 3.9  BSP 4.67
+R5 Into You                 finish 2  SP 4.8  BSP 5.41
+R5 Swycho                   finish 3  SP 8.5  BSP 9.46
+R5 Bow Ribbon               finish 4  SP 2.7  BSP 3.3
+R5 Hell's Itch              finish 5  SP 26.0  BSP 42.59
+R5 Strike First             finish 6  SP 14.0  BSP 20.0
+R5 Knock Of Beers           finish 7  SP 41.0  BSP 65.0
+R5 Winning Toast            finish 8  SP 7.5  BSP 10.1
+R6 Winter Nights            finish 1  SP 2.2  BSP 2.63
+R6 Our Smokeshow            finish 2  SP 41.0  BSP 60.0
+R6 Surely Special           finish 3  SP 5.5  BSP 6.31
+R6 Cliste                   finish 4  SP 12.0  BSP 18.0
+R6 Grunnettan               finish 5  SP 41.0  BSP 50.0
+R6 Crossoverkid             finish 6  SP 5.0  BSP 6.0
+R6 Nightynight              finish 7  SP 12.0  BSP 14.5
+R6 Baby Rider               finish 8  SP 71.0  BSP 130.0
+R6 Women In Uniform         finish 9  SP 26.0  BSP 44.0
+R6 Soul Mistress            finish 10  SP 18.0  BSP 26.0
+R6 Brassi Road              finish 11  SP 101.0  BSP 311.68
+R6 Olympiad                 finish 12  SP 18.0  BSP 25.0
+R7 Eeteedee                 finish 1  SP 6.0  BSP 7.73
+R7 Asawin                   finish 2  SP 14.0  BSP 18.0
+R7 Rattle'n'roll            finish 3  SP 6.5  BSP 9.6
+R7 Hotspur Reale            finish 4  SP 2.6  BSP 2.7
+R7 Adieu Grasse             finish 5  SP 10.0  BSP 12.5
+R7 Marlion's Dream          finish 6  SP 7.0  BSP 9.8
+R7 Divine Vicky             finish 7  SP 12.0  BSP 15.23
+R7 Nicaloha                 finish 8  SP 17.0  BSP 25.97
+R7 O'mosa                   finish 9  SP 31.0  BSP 41.54
+R7 Mickidamuzz              finish 10  SP 101.0  BSP 225.23
+R7 Fashion Fighter          finish 11  SP 61.0  BSP 120.0
+R7 Spinhof                  finish 12  SP 61.0  BSP 113.34
+R8 Our Little Star          finish 1  SP 5.5  BSP 6.6
+R8 Showtime Kistena         finish 2  SP 8.0  BSP 10.86
+R8 Smoke Screen             finish 3  SP 6.0  BSP 9.0
+R8 Brave Carol              finish 4  SP 12.0  BSP 16.0
+R8 Flying Straz             finish 5  SP 31.0  BSP 65.0
+R8 Bliss Bomb               finish 6  SP 2.4  BSP 2.58
+R8 Enigmatise               finish 7  SP 7.5  BSP 8.72
+R8 Adki                     finish 8  SP 19.0  BSP 23.0
+R8 Snow On Her              finish 9  SP 101.0  BSP 450.0
+R8 Deep Joy                 finish 10  SP 61.0  BSP 99.17
+R8 Costae                   finish 11  SP 31.0  BSP 44.0

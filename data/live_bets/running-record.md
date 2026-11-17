@@ -6,12 +6,13 @@ Rebuilt by research/form_gbm/running_record.py after every settle (founder, 16 N
 
 | Period | Bets | Won | Staked | P/L | ROI | At $50 |
 |---|---|---|---|---|---|---|
-| All settled (2026-11-02 on) | 60 | 14 | 134.44u | +81.27u | +60% | $+4,064 |
-| Since 12 Nov (full units) | 25 | 2 | 58.07u | -28.73u | -49% | $-1,436 |
-| Last 7 race days | 30 | 3 | 67.59u | -27.39u | -41% | $-1,369 |
+| All settled (2026-11-02 on) | 64 | 14 | 146.88u | +68.83u | +47% | $+3,442 |
+| Since 12 Nov (full units) | 29 | 2 | 70.51u | -41.17u | -58% | $-2,058 |
+| Last 7 race days | 32 | 3 | 78.53u | -38.33u | -49% | $-1,916 |
 
 | Day | Bets | Won | Staked | P/L | ROI | At $50 |
 |---|---|---|---|---|---|---|
+| 2026-11-17 | 4 | 0 | 12.44u | -12.44u | -100% | $-622 |
 | 2026-11-16 | 6 | 0 | 11.14u | -11.14u | -100% | $-557 |
 | 2026-11-15 | 5 | 0 | 15.27u | -15.27u | -100% | $-764 |
 | 2026-11-14 | 5 | 0 | 11.31u | -11.31u | -100% | $-566 |
@@ -38,13 +39,18 @@ The weeks to Sun 1 Nov are the book's own settled entries (betmatic-book.md, 3 N
 | Mon 26 Oct - Sun 1 Nov (from the book) | 41 | 6 | 127.84u | +32.95u | +26% | $+1,648 |
 | Mon 2 Nov - Sun 8 Nov | 30 | 11 | 66.85u | +108.66u | +163% | $+5,433 |
 | Mon 9 Nov - Sun 15 Nov | 24 | 3 | 56.45u | -16.25u | -29% | $-812 |
-| Mon 16 Nov - Mon 16 Nov (week not finished) | 6 | 0 | 11.14u | -11.14u | -100% | $-557 |
-| **Since Fri 9 Oct** | **172** | **39** | **373.27u** | **+298.94u** | **+80%** | **$+14,947** |
+| Mon 16 Nov - Tue 17 Nov (week not finished) | 10 | 0 | 23.58u | -23.58u | -100% | $-1,179 |
+| **Since Fri 9 Oct** | **176** | **39** | **385.71u** | **+286.50u** | **+74%** | **$+14,325** |
 
-Running total by day: 11-02 +29.5u, 11-03 +66.8u, 11-04 +91.9u, 11-05 +82.8u, 11-06 +88.4u, 11-07 +94.1u, 11-08 +108.7u, 11-09 +107.2u, 11-11 +110.0u, 11-12 +117.3u, 11-13 +119.0u, 11-14 +107.7u, 11-15 +92.4u, 11-16 +81.3u
+Running total by day: 11-02 +29.5u, 11-03 +66.8u, 11-04 +91.9u, 11-05 +82.8u, 11-06 +88.4u, 11-07 +94.1u, 11-08 +108.7u, 11-09 +107.2u, 11-11 +110.0u, 11-12 +117.3u, 11-13 +119.0u, 11-14 +107.7u, 11-15 +92.4u, 11-16 +81.3u, 11-17 +68.8u
 
 | Date | Meeting | Race | Horse | Units | Open | TAB deduction | Paid at | Result | P/L |
 |---|---|---|---|---|---|---|---|---|---|
+| 2026-11-17 | kyneton | R8 | Bliss Bomb | 6.79u | $2.6 | 2c | $2.57 | 6th | -6.79u |
+| 2026-11-17 | kyneton | R7 | Marlion's Dream | 1.18u | $51 | 26c | $38.00 | 6th | -1.18u |
+| 2026-11-17 | kyneton | R7 | Hotspur Reale | 1.71u | $7.5 | 26c | $5.81 | 4th | -1.71u |
+| 2026-11-17 | kyneton | R5 | Winning Toast | 2.76u | $21 | 37c | $13.60 | 8th | -2.76u |
+| 2026-11-17 | kyneton | R5 | Hollerasaurous | 0.72u | $26 | 37c | $16.75 | void | +0.00u |
 | 2026-11-16 | wangaratta | R8 | Vaderlee | 1.71u | $8 | - | $8.00 | 9th | -1.71u |
 | 2026-11-16 | wangaratta | R7 | Epic Centre | 0.75u | $26 | - | $26.00 | 2nd | -0.75u |
 | 2026-11-16 | wangaratta | R6 | Dance Lady | 0.83u | $15 | - | $15.00 | 12th | -0.83u |
@@ -113,9 +119,9 @@ The price is the open after TAB's reported deduction.
 
 | Period | Bets with a BSP | Price beat BSP | Price / BSP (stake-weighted) | Winners |
 |---|---|---|---|---|
-| All settled | 58 | 36 | 1.26x | 14 won, 11.8 expected at BSP |
-| Since 12 Nov | 24 | 16 | 1.28x | 2 won, 4.6 expected at BSP |
-| Last 7 race days | 28 | 17 | 1.23x | 3 won, 5.3 expected at BSP |
+| All settled | 62 | 39 | 1.27x | 14 won, 12.7 expected at BSP |
+| Since 12 Nov | 28 | 19 | 1.29x | 2 won, 5.5 expected at BSP |
+| Last 7 race days | 30 | 20 | 1.26x | 3 won, 6.1 expected at BSP |
 
 ## The 9am list (the founder's bets, per bookie)
 
