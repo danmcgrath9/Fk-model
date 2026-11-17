@@ -7923,6 +7923,123 @@ worth chasing at the low ratios. At 1.3x and over they add a few bets a week of 
 later. Which ratio, and whether to add the other books, are the founder's calls. Nothing changes the card until he
 says so, and the corrected blend is paper-tracked first.
 
+## Test 82: what takes TAB's opening price to BSP? Every data set, one at a time (17 Nov 2026, gh topaz run 44016104575, `topaz_round64.py`)
+
+Founder: "MATE WE HAVE SO MUCH DATA WE CAN ABSOLUTELY BEAT THAT, just find out the data sets that are key in going
+towards BSP".
+
+Every winning bet so far is TAB's open priced longer than the dog's true chance, and BSP is the best estimate of that
+chance we have. So the question is which of our data sets tell us, at the open, where BSP will close.
+
+**The test, stated before the run.** Round 62's field: 32,548 races and 228,695 runners that ran at TAB's first price,
+from May 2023, in 48 minutes.
+
+- **The label.** BSP corrected for its first-tip and weight leans, the factors fitted on May 2023 to January 2025 (Test
+  80's label).
+- **The distance to BSP.** For each race, the sum of BSP's chance x log(BSP's chance / the forecast's chance), averaged
+  over races, in thousandths. TAB's opening book is the start, and each forecast is scored by the share of that
+  distance it closes. Scored on the 11,593 races from February 2025 with a BSP on every runner and nothing scratched
+  after the open.
+- **The data sets.** Our inputs grouped by where they come from, plus one new set: **the market's moves on earlier
+  runs**. For each runner, how far BSP moved from TAB's opening book on the dog's last run and its last five
+  (`dog_mv_last`, `dog_mv_mean5`, `dog_mv_n`), and on its trainer's earlier runners, shrunk toward none
+  (`trainer_mv`, `trainer_mv_n`). Earlier days only. The dog's moves cover 96% of the scored runners.
+- **One model per row.** Test 59's race-softmax correction, started from TAB's opening book alone and learning only
+  where it is wrong. Fitted on the races before February 2025, with the rounds chosen on November 2024 to January 2025
+  by the distance to BSP. TAB's book is in every row (its chances over the runners that ran, its overround and the
+  field). Each data set is added alone; then everything; then everything but each one. The share scratched after the
+  open is in no row, because it is not known at the bet.
+- **Then everything, walked forward** exactly as Test 80's corrections, from TAB's book, and its bets beside the card's
+  blend, the blend with Isolynx and Test 80's corrected blend. Also shown on races with nothing scratched after the
+  open only. Test 80's correction saw the share scratched after the open, and every forecast here is normalised over
+  the runners that ran, which the bettor at the open does not know.
+
+**The data sets** (inputs named; "everything else" is 140 inputs, among them the box, distance, weight, age, class, the
+dog's style and split ratings, the track's character, and the words of GRV's analyst comment):
+
+| data set | inputs | closes alone, over TAB's book alone | lost when left out of everything |
+|---|---|---|---|
+| our model's forecast (`lp_ours`, `gap`) | 2 | +12.4% | +3.4% |
+| **the market's moves on earlier runs (new)** | 5 | +2.1% | **+2.7%** |
+| the dog's past prices (`mkt_*`) | 5 | -0.9% | +1.4% |
+| everything else (the race, the box, the dog) | 140 | +5.2% | +1.0% |
+| early speed and the map | 10 | +2.2% | +0.0% |
+| time ratings, Elo and finishes | 28 | -0.2% | +0.1% |
+| Isolynx tracking | 26 | +1.1% | -0.1% |
+| the trainer's record | 10 | +0.5% | -0.1% |
+| GRV's rating and tips | 4 | -0.5% | -0.2% |
+| breeding | 8 | +0.1% | -0.2% |
+
+All as shares of TAB's distance to BSP. The forecasts themselves:
+
+| forecast | distance to BSP (thousandths) | share of TAB's distance closed | winners' log loss |
+|---|---|---|---|
+| TAB's opening book, as it is | 86.70 | 0% | 1.5913 |
+| TAB's book with its favourite bias learnt | 71.03 | +18.1% | 1.5785 |
+| TAB's book + our model's forecast | 60.32 | +30.4% | 1.5662 |
+| the blend with Isolynx (0.54 / 0.67) | 60.68 | +30.0% | 1.5659 |
+| everything, fitted once | 55.55 | +35.9% | 1.5614 |
+| Test 80's corrected blend | 54.64 | +37.0% | 1.5600 |
+| **everything, walked forward from TAB's book** | **52.80** | **+39.1%** | **1.5583** |
+| BSP corrected | 0 | +100% | 1.5058 |
+
+In the model fitted once on everything, our model's forecast carries 57.4% of the gain. Next come everything else
+(12.9%), the time ratings (7.6%), TAB's book (5.0%) and the market's moves on earlier runs (3.2%). By input: `gap`
+34.4%, `lp_ours` 23.0%, `lp_tab` 4.7%, `margin_elo_rel` 1.5%, `track` 1.3%, `dog_mv_mean5` 1.1%, `dog_mv_last` 1.1%. The
+walked model kept 1,100 to 1,200 rounds at every refit, the cap, so it may want more.
+
+**The bets at TAB's first price, flat, after TAB's deduction** (A/E is the winners over the corrected BSP's expected
+winners):
+
+| period | model | ratio | bets | a month | A/E | realised flat ROI | realised units | corrected BSP per bet (SE) | corrected BSP units |
+|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 on | Test 80's corrected blend | 1.1x | 1,380 | 62.7 | 1.050 | +16.2% | +223.1 | +13.6% (1.4%) | +183.3 |
+| Feb 2025 on | everything, from TAB's open | 1.1x | 1,389 | 63.1 | 1.003 | +14.5% | +202.0 | +14.5% (1.4%) | +197.1 |
+| Feb 2025 on | Test 80's corrected blend | 1.2x | 550 | 25.0 | 1.027 | +23.7% | +130.6 | +23.0% (2.9%) | +122.8 |
+| Feb 2025 on | everything, from TAB's open | 1.2x | 556 | 25.3 | 1.096 | +35.7% | +198.5 | +23.4% (2.9%) | +127.0 |
+| Feb 2025 on | Test 80's corrected blend | 1.3x | 275 | 12.5 | 0.988 | +16.3% | +44.8 | +29.4% (4.7%) | +77.9 |
+| Feb 2025 on | everything, from TAB's open | 1.3x | 296 | 13.5 | 1.057 | +37.7% | +111.6 | +26.7% (4.4%) | +76.9 |
+| Feb 2025 on | the card's blend | 1.3x | 98 | 4.5 | 1.217 | +47.1% | +46.1 | +40.8% (8.8%) | +39.2 |
+| Feb 2025 to Jan 2026 | everything, from TAB's open | 1.1x | 822 | 68.5 | 1.006 | +21.7% | +178.6 | +14.1% (1.9%) | +114.8 |
+| Feb 2026 on | everything, from TAB's open | 1.1x | 567 | 56.7 | 1.000 | +4.1% | +23.4 | +15.1% (2.2%) | +82.3 |
+| Feb 2025 to Jan 2026 | everything, from TAB's open | 1.2x | 322 | 26.8 | 1.037 | +36.6% | +117.9 | +22.1% (3.9%) | +70.4 |
+| Feb 2026 on | everything, from TAB's open | 1.2x | 234 | 23.4 | 1.179 | +34.5% | +80.7 | +25.3% (4.3%) | +56.6 |
+
+**On races with nothing scratched after the open**, from February 2025: Test 80's corrected blend at 1.1x makes 1,069
+bets, +11.8% a bet by the corrected BSP (SE 1.6) and +22.1% realised. Everything, from TAB's open, makes 1,074, +13.3%
+and +19.7%. At 1.2x the two are +20.1% and +20.7% by the corrected BSP (418 and 425 bets). The card's blend falls by
+about as much on these races (+5.8% to +4.2% at 1.1x), so the drop is the races, not the corrected blend seeing the
+scratchings.
+
+What it shows:
+
+- **Our model is the data set that takes TAB's open to BSP.** On its own it closes 12.4% of the distance beyond TAB's
+  own favourite bias, and it carries 57% of everything's gain.
+  - GRV's ratings and tips, Isolynx, the time ratings, early speed, the trainer's record and breeding add nothing on
+    top of it: between -0.2% and +0.1% each when left out.
+  - That is not because they do not matter. They are already inside our model, which is built from them.
+- **The new set is the biggest new information we have found.** How the market moved on the dog's earlier runs closes
+  2.7% of the distance that nothing else closes, more than any data set but our model.
+  - How the market moved on a dog's earlier runs says something about how it will move today, and TAB's open does
+    not price it. This test does not show which way; the next one should.
+  - The dog's own moves count; its trainer's count for little (`trainer_mv` 0.4% of the gain).
+- **The dog's past starting prices add 1.4%**, and everything else (the race, the box, the analyst's words) 1.0%.
+- **Everything walked from TAB's book is the best forecast we have**: 39.1% of the distance closed, against 37.0% for
+  Test 80's corrected blend. Its log loss is 1.5583, against 1.5600.
+- **Its bets are about as good as the corrected blend's, a little better by the fair judge.** By the corrected BSP it
+  makes +197 units at 1.1x against +183, and +127 at 1.2x against +123.
+  - Its realised 1.2x and 1.3x results (+35.7% and +37.7%) are above what the corrected BSP expected (A/E 1.096 and
+    1.057). Expect nearer +23% to +27%.
+  - Both halves are positive at every ratio by both judges. The weak one is 1.1x since February 2026: +4.1% realised,
+    with exactly the expected winners (127 against 127.0) and +15.1% by the corrected BSP.
+- **61% of the distance to BSP is still unexplained.** That is what the market learns after the open: the money, late
+  mail, scratchings, the dogs on the day. None of our data sets holds it at the open.
+
+What it means: the key to getting nearer BSP is not another form input. It is our model's opinion against TAB's, plus
+the market's own history: which dogs it backs. The new set is worth building on: the dog's moves at each price change
+rather than open to BSP, the moves of its kennel, and when a backed dog is first up. Nothing changes the card, and the
+paper tracker keeps Test 80's corrected blend; whether to move the paper to this model is the founder's call.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
