@@ -7938,6 +7938,24 @@ live". Every backtest above reads history; this reads the cards as they were sen
   3. the rule at TAB's open (Tests 51 and 54): ours over the field at TAB's first price, blended with TAB's book there,
      held at 0.54 ours / 0.67 TAB; a bet at 1.3x, $2 to $15, Kelly units. A race counts only when every dog in TAB's
      field at its open is on the card.
+  4. and 5. **the corrected blend at TAB's open, paper only, from 18 Nov 2026** (founder, 17 Nov: "Yep build it, track
+     both 1.1x and 1.2x"; Tests 80 and 81; `topaz_iso.py`).
+     - **What it is.** Ours with Isolynx, over every dog in TAB's field at its first price, blended with TAB's book at
+       0.54 / 0.67, then corrected for its own mistakes.
+     - **The bet.** One unit flat when TAB's first price is at least 1.1x (4) or 1.2x (5) the corrected price, $2 to
+       $15.
+     - **Only what is known at the open.** No dog is known to be scratched later, so a dog scratched after the bet is a
+       refund. The backtests put those dogs at TAB's chance instead (Test 51).
+- **How the corrected blend is kept and trained.**
+  - **Each night** the Isolynx pull is topped up (the dogs with a tracked run in the last four days), and tomorrow's
+    runners are priced by ours with Isolynx and kept beside the card (`card_iso_DAY`, with every input the correction
+    needs).
+  - **Each Sunday** the weekly train also fits ours with Isolynx on every resulted race, the way the card's model is
+    fitted, and the correction on every race at TAB's first price that has an out-of-sample chance. Those are the
+    research walk to 13 Nov 2026 and the kept card_iso files after it. The number of rounds is chosen on the last
+    three months, as in Test 59.
+  - **Isolated from the card.** Both run as separate steps, so nothing in them can change the card, its model or its
+    page.
 - **Settling** is the backtests' rule: TAB's first price less TAB's deduction for the dogs scratched after it
   (`topaz_round33.field_rows`). A bet on a dog scratched after the bet is a refund; a card bet on a dog scratched before
   TAB opened is void. A race with a winner settles every dog in it (a dog that fell lost). The best first price of

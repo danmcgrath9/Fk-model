@@ -98,3 +98,39 @@ def test_trouble_finds_a_check_between_the_first_and_last_100_metres():
     t = trouble(clean, 400)
     assert t["checked"] == 0 and t["pos_lost"] == 0 and abs(t["dip"] - (16.9 - 16.9)) < 1e-12
     assert trouble([], 400) == {"dip": None, "pos_lost": None, "checked": None}
+
+
+def test_topup_pulls_recent_dogs_into_one_file_that_older_groups_win(tmp_path, monkeypatch):
+    runs = tmp_path / "runs"
+    runs.mkdir()
+    write_runs(runs, "runs_VIC_2026-11.json.gz", [
+        {"raceId": 900, "dogId": 7, "trackName": "The Meadows", "meetingDate": "2026-11-15T00:00:00"},
+        {"raceId": 901, "dogId": 8, "trackName": "Sandown Park", "meetingDate": "2026-11-09T00:00:00"}])
+    out = tmp_path / "iso"
+    out.mkdir()
+    # an older group already holds dog 7's race 10; the top-up brings race 10 again and the new race 900
+    with gzip.open(I.group_file(out, 0), "wt", encoding="utf-8") as fh:
+        json.dump([{"dogId": 7, "runs": [run_payload(10, 7, "2026-10-01")]}], fh)
+    s = Session(Resp(200, [run_payload(10, 7, "2026-10-01"), run_payload(900, 7, "2026-11-15")]))
+    c = TopazClient("k", session=s, sleep=lambda _: None, max_per_minute=100000)
+    rep = I.topup(c, runs, out, "2026-11-13", "2026-11-17", workers=1)
+    assert rep["dogs"] == 1 and rep["runs"] == 2 and len(s.asked) == 1            # dog 8 raced before --since
+    assert I.topup_file(out, "2026-11-17").exists()
+    t = I.table(out)
+    assert sorted(t.race_id) == [10, 900]                                          # race 10 once
+    rep2 = I.topup(c, runs, out, "2026-11-13", "2026-11-17", workers=1)
+    assert rep2["held"] and len(s.asked) == 1                                      # the night's file is kept
+
+
+def test_topup_leaves_failed_dogs_out_and_writes_the_rest(tmp_path):
+    runs = tmp_path / "runs"
+    runs.mkdir()
+    write_runs(runs, "runs_VIC_2026-11.json.gz", [
+        {"raceId": 900, "dogId": 7, "trackName": "The Meadows", "meetingDate": "2026-11-15T00:00:00"},
+        {"raceId": 901, "dogId": 8, "trackName": "Sandown Park", "meetingDate": "2026-11-16T00:00:00"}])
+    out = tmp_path / "iso"
+    s = Session(Resp(200, [run_payload(900, 7, "2026-11-15")]), Resp(500), Resp(500), Resp(500), Resp(500), Resp(500))
+    c = TopazClient("k", session=s, sleep=lambda _: None, max_per_minute=100000)
+    rep = I.topup(c, runs, out, "2026-11-13", "2026-11-17", workers=1)
+    assert rep["failed"] == 1 and rep["runs"] == 1
+    assert list(I.table(out).race_id) == [900]

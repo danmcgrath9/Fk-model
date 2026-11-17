@@ -96,10 +96,17 @@ jobs:
           key: topaz-cards-${{ github.run_id }}
           restore-keys: topaz-cards-
 
+      - name: Restore the saved model (Actions cache, read only; the corrected blend's correction)
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/model
+          key: topaz-model-${{ github.run_id }}
+          restore-keys: topaz-model-
+
       - name: Settle the cards at TAB's first price (counts and units; the bets sealed)
         run: |
           set -o pipefail
-          export CARDS_DIR="$PWD/greyhound/cache/cards" BETWATCH_DIR="$PWD/greyhound/cache/betwatch"
+          export CARDS_DIR="$PWD/greyhound/cache/cards" BETWATCH_DIR="$PWD/greyhound/cache/betwatch" MODEL_DIR="$PWD/greyhound/cache/model"
           [ -n "$(ls bf 2>/dev/null)" ] && export BETFAIR_DIR="$PWD/bf"
           export TRACK_FROM="${{ github.event.inputs.track_from }}" FACTS_FROM="${{ github.event.inputs.facts_from }}" \
                  FACTS_TO="${{ github.event.inputs.facts_to }}"
