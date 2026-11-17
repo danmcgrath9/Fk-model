@@ -1,0 +1,29 @@
+{
+ "day": "Thursday",
+ "date": "19 November",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Mornington",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "2:55PM",
+     "horse": "Parera",
+     "price": "$5",
+     "rated": "$3.58",
+     "units": "2.82u"
+    },
+    {
+     "race": 2,
+     "time": "3:30PM",
+     "horse": "Nitro Sonic",
+     "price": "$17",
+     "rated": "$6.64",
+     "units": "3.32u"
+    }
+   ]
+  }
+ ]
+}

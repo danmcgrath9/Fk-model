@@ -2,6 +2,18 @@
 
 research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop the send or the message once the gate enforces; CHECK = read it; INFO = a note.
 
+## 2026-11-17 16:45 (observe), from 2026-11-17: 0 would block, 8 to check, 2 notes
+- CHECK card card_thu19_mercer_now.json: Mornington R1 Parera: the prices file has no opening price yet, so the card's $4.80 is unconfirmed
+- CHECK card card_thu19_mercer_now.json: Mornington R2 Nitro Sonic: the prices file has no opening price yet, so the card's $10 is unconfirmed
+- CHECK card card_thu19_plain_open.json: Mornington R1 Parera: the prices file has no opening price yet, so the card's $5 is unconfirmed
+- CHECK card card_thu19_plain_open.json: Mornington R2 Nitro Sonic: the prices file has no opening price yet, so the card's $17 is unconfirmed
+- CHECK card card_wed18_mercer_now.json: no prices_as_at: the time its prices were pulled is not on the card
+- CHECK card card_wed18_mercer_now.json: Sandown R5 Breathless Spirit: the prices file has no opening price yet, so the card's $4 is unconfirmed
+- CHECK card card_wed18_plain_open.json: Sandown R5 Breathless Spirit: the prices file has no opening price yet, so the card's $5.50 is unconfirmed
+- CHECK deductions 2026-11-17-kyneton: R8 2c: no scratched runner in that race at this meeting (a late scratching the last pull has not seen?)
+- INFO betmatic 2026-11-14-dunkeld-betmatic-preopen: 99 orders sent, status read for 99, 2 confirmed placed ($155)
+- INFO betmatic 2026-11-14-dunkeld-probe: 9 orders sent, status read for 9, 1 confirmed placed ($126)
+
 ## 2026-11-17 16:12 (observe), from 2026-11-17: 0 would block, 4 to check, 3 notes
 - CHECK card card_wed18_mercer_now.json: no prices_as_at: the time its prices were pulled is not on the card
 - CHECK card card_wed18_mercer_now.json: Sandown R5 Breathless Spirit: the prices file has no opening price yet, so the card's $4 is unconfirmed
@@ -11,6 +23,7 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - INFO betmatic 2026-11-14-dunkeld-probe: 9 orders sent, status read for 9, 1 confirmed placed ($126)
 - INFO settle card card_fri13_plain_open.json: Pakenham R4 Melek: card 10.43u at $2.80, record 5.43u at $2.9 (the card adds the 9am fill at the blended price; the record keeps the 9am list apart)
 
+
 ## 2026-11-17 16:04 (observe), from 2026-11-17: 0 would block, 4 to check, 3 notes
 - CHECK card card_wed18_mercer_now.json: no prices_as_at: the time its prices were pulled is not on the card
 - CHECK card card_wed18_mercer_now.json: Sandown R5 Breathless Spirit: the prices file has no opening price yet, so the card's $4 is unconfirmed
@@ -19,6 +32,7 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - INFO betmatic 2026-11-14-dunkeld-betmatic-preopen: 99 orders sent, status read for 99, 2 confirmed placed ($155)
 - INFO betmatic 2026-11-14-dunkeld-probe: 9 orders sent, status read for 9, 1 confirmed placed ($126)
 - INFO settle card card_fri13_plain_open.json: Pakenham R4 Melek: card 10.43u at $2.80, record 5.43u at $2.9 (the card adds the 9am fill at the blended price; the record keeps the 9am list apart)
+
 
 
 ## 2026-11-17 15:55 (observe), from 2026-11-17: 0 would block, 5 to check, 3 notes
