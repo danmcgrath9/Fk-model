@@ -8395,6 +8395,156 @@ more to the card's 1.1x bets would be about 22 more bets a month and about +49 u
 BSP, a fifth more than the +222 the card's band makes alone. That is the next test, with the longer fit, the halves
 and the Kelly standard errors measured. Nothing changes the card, and the paper tracker keeps Test 80's corrected blend.
 
+## Test 86: the card with its favourites, one margin rule for every price, and Kelly by half (17 Nov 2026, gh topaz run 44070280405, `topaz_round68.py`)
+
+Founder: "Keep going, find more winning bets".
+
+Test 85 found the favourites the card has always skipped make money at TAB's open, and that from $2 to $15 the model
+gets about seven points less than it expects, because the same error in its chance moves the expected value more on a
+longer price. This test puts the favourites on the card and tries a rule built around that finding.
+
+**The test, stated before the run.** Both saved models (Test 83's, and the longer fit of Test 85, its inputs walked at
+up to 4,000 rounds), read from the walk cache; no new walk.
+
+- **The favourites in detail**: the model's fair price under $1.50 and $1.50 to $2, by expected value (0%, 3%, 5%,
+  10% and over), from February 2025 and by half.
+- **One rule for every price**: bet when the model's chance is at least d points over the chance the price paid
+  needs (1 / the price paid after TAB's deduction), d from 1 to 5 points, the model's fair price under $15. A fixed
+  margin in chance asks a longer price for a bigger expected value: at 2 points, a $1.80 favourite needs about 4%, a
+  $5 dog 10%, a $10 dog 20%.
+- **The card with its favourites**: the card's ratio rule ($2 to $15) plus the favourites at 0% or 5% expected value.
+  A dog is one bet whichever rule takes it.
+- **Kelly by half**: a quarter of Kelly against flat, with a standard error, by half, by three months, the deepest
+  fall from a high point (realised) and the losing months.
+- **Clean races**: the same with nothing scratched after TAB's open.
+
+Betfair has not published November, so November's bets have no corrected BSP. The flat tables count them in the bets
+and the realised units; the staked tables and the three-month table leave them out.
+
+**The favourites, the longer fit**, February 2025 on (22 months):
+
+| fair price | expected value | bets | a month | A/E | realised flat ROI | realised units | corrected BSP per bet (SE) | corrected BSP units |
+|---|---|---|---|---|---|---|---|---|
+| under $1.50 | 0% or more | 236 | 10.7 | 0.999 | +7.9% | +18.8 | +5.9% (0.8%) | +13.2 |
+| under $1.50 | 5% or more | 115 | 5.2 | 1.052 | +16.4% | +18.8 | +9.0% (1.2%) | +9.9 |
+| $1.50 to $2 | 0% or more | 859 | 39.0 | 1.003 | +5.7% | +48.6 | +5.5% (0.7%) | +46.3 |
+| $1.50 to $2 | 5% or more | 425 | 19.3 | 0.968 | +8.0% | +34.1 | +10.4% (1.1%) | +43.2 |
+| under $2 | 0% or more | 1,095 | 49.8 | 1.002 | +6.2% | +67.4 | +5.6% (0.6%) | +59.5 |
+| under $2 | 3% or more | 707 | 32.1 | 0.988 | +8.4% | +59.7 | +8.4% (0.8%) | +57.5 |
+| under $2 | 5% or more | 540 | 24.5 | 0.990 | +9.8% | +52.9 | +10.1% (0.9%) | +53.1 |
+| under $2 | 10% or more | 237 | 10.8 | 1.009 | +17.2% | +40.8 | +15.2% (1.6%) | +34.7 |
+
+By half, under $2 from 5%: 289 bets, +8.5% a bet (SE 1.3%), +24.3 units (February 2025 to January 2026); 251 bets,
++12.1% (SE 1.2%), +28.8 units (February 2026 on). From 0%: +22.7 and +36.8. Test 83's model gives within a few units
+of the same: from 5%, 494 bets and +49.2.
+
+**One rule for every price, the longer fit**, the model's fair price under $15:
+
+| period | margin | bets | a month | A/E | realised flat ROI | realised units | corrected BSP per bet (SE) | corrected BSP units |
+|---|---|---|---|---|---|---|---|---|
+| Feb 2025 on | 1 point | 3,661 | 166.4 | 0.984 | +7.2% | +262.3 | +9.0% (0.7%) | +321.3 |
+| Feb 2025 on | **2 points** | **2,430** | **110.5** | 0.988 | +14.2% | +346.3 | **+12.9% (0.8%)** | **+305.4** |
+| Feb 2025 on | 3 points | 1,617 | 73.5 | 0.985 | +17.1% | +276.3 | +16.3% (1.1%) | +257.5 |
+| Feb 2025 on | 4 points | 1,104 | 50.2 | 0.974 | +16.1% | +178.1 | +18.0% (1.3%) | +194.0 |
+| Feb 2025 on | 5 points | 730 | 33.2 | 0.986 | +22.2% | +162.3 | +21.7% (1.7%) | +154.1 |
+| Feb 2025 to Jan 2026 | 1 point | 2,043 | 170.2 | 0.999 | +9.0% | +183.7 | +6.9% (0.9%) | +140.8 |
+| Feb 2025 to Jan 2026 | 2 points | 1,370 | 114.2 | 0.987 | +14.7% | +201.1 | +11.5% (1.1%) | +156.1 |
+| Feb 2025 to Jan 2026 | 3 points | 913 | 76.1 | 0.974 | +16.2% | +147.5 | +15.4% (1.4%) | +139.5 |
+| Feb 2026 on | 1 point | 1,618 | 161.8 | 0.966 | +4.9% | +78.6 | +11.7% (1.0%) | +180.5 |
+| Feb 2026 on | 2 points | 1,060 | 106.0 | 0.989 | +13.7% | +145.1 | +14.8% (1.2%) | +149.3 |
+| Feb 2026 on | 3 points | 704 | 70.4 | 0.998 | +18.3% | +128.8 | +17.6% (1.6%) | +118.0 |
+
+Test 83's model at 2 points: 2,281 bets, +12.9% a bet (SE 0.9%), +287.7 units; by half +145.6 and +142.1.
+
+**The card with its favourites, the longer fit, flat:**
+
+| period | rule | of them favourites | bets | a month | A/E | realised flat ROI | realised units | corrected BSP per bet (SE) | corrected BSP units |
+|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 on | 1.1x | 0 | 1,573 | 71.5 | 0.988 | +17.2% | +271.2 | +15.2% (1.3%) | +233.8 |
+| Feb 2025 on | 1.1x + favourites from 0% | 1,081 | 2,654 | 120.6 | 0.995 | +12.4% | +328.8 | +11.1% (0.8%) | +288.4 |
+| Feb 2025 on | 1.1x + favourites from 5% | 526 | 2,099 | 95.4 | 0.986 | +15.0% | +314.3 | +13.8% (1.0%) | +282.0 |
+| Feb 2025 on | 1.2x | 0 | 651 | 29.6 | 1.049 | +39.7% | +258.6 | +25.4% (2.6%) | +160.8 |
+| Feb 2025 on | 1.2x + favourites from 5% | 535 | 1,186 | 53.9 | 1.003 | +25.5% | +301.9 | +18.2% (1.5%) | +209.8 |
+| Feb 2025 on | 1.3x + favourites from 5% | 537 | 873 | 39.7 | 0.980 | +19.9% | +173.4 | +18.1% (1.7%) | +153.4 |
+| Feb 2025 to Jan 2026 | 1.1x | 0 | 907 | 75.6 | 0.994 | +21.9% | +199.0 | +13.5% (1.8%) | +121.5 |
+| Feb 2025 to Jan 2026 | 1.1x + favourites from 5% | 281 | 1,188 | 99.0 | 0.993 | +18.3% | +216.9 | +12.0% (1.4%) | +142.1 |
+| Feb 2026 on | 1.1x | 0 | 666 | 66.6 | 0.980 | +10.8% | +72.2 | +17.6% (2.0%) | +112.4 |
+| Feb 2026 on | 1.1x + favourites from 5% | 245 | 911 | 91.1 | 0.978 | +10.7% | +97.5 | +16.1% (1.5%) | +139.9 |
+
+Test 83's model, 1.1x + favourites from 5%: 1,946 bets, +13.9% (SE 1.1%), +264.8 units.
+
+**By three months, the longer fit**, corrected BSP units / realised units:
+
+| three months | 1.1x, flat | 1.1x + favourites from 5%, flat | 1.1x + favourites from 5%, quarter Kelly |
+|---|---|---|---|
+| Feb 2025 to Apr 2025 | +39.0 / +17.8 | +44.4 / +10.2 | +68.9 / +15.3 |
+| May 2025 to Jul 2025 | +33.5 / +32.6 | +38.5 / +43.1 | +45.2 / +58.7 |
+| Aug 2025 to Oct 2025 | +23.4 / +78.8 | +29.2 / +88.9 | +40.5 / +66.7 |
+| Nov 2025 to Jan 2026 | +25.5 / +58.3 | +29.9 / +63.7 | +36.4 / +30.4 |
+| Feb 2026 to Apr 2026 | +31.4 / -33.6 | +40.2 / -29.9 | +51.7 / -10.2 |
+| May 2026 to Jul 2026 | +20.5 / +18.2 | +27.2 / +25.2 | +35.4 / +51.1 |
+| Aug 2026 to Oct 2026 | +60.4 / +78.1 | +72.5 / +87.9 | +71.3 / +100.3 |
+
+**Flat against a quarter of Kelly, the longer fit**, bets with a corrected BSP (stakes scaled to a mean of one unit
+from February 2025, so the units staked are close to the bets):
+
+| rule | period | staking | bets | corrected BSP per unit staked (SE) | corrected BSP units | realised units | luck in the realised units (SD) | largest stake | deepest fall, realised | losing months |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1.1x | Feb 2025 on | flat | 1,539 | +15.2% (1.3%) | +233.8 | +250.2 | 94.9 | 1.0 | 47.5 | 6 of 22 |
+| 1.1x | Feb 2025 on | quarter Kelly | 1,539 | +21.4% (1.6%) | +329.4 | +284.4 | 91.5 | 3.5 | 44.6 | 5 of 22 |
+| 1.1x | Feb 2025 to Jan 2026 | flat | 901 | +13.5% (1.8%) | +121.5 | +187.5 | 71.9 | 1.0 | 44.6 | 3 of 12 |
+| 1.1x | Feb 2025 to Jan 2026 | quarter Kelly | 901 | +20.8% (2.2%) | +190.6 | +153.5 | 70.6 | 3.5 | 44.6 | 2 of 12 |
+| 1.1x | Feb 2026 on | flat | 638 | +17.6% (2.0%) | +112.4 | +62.7 | 62.0 | 1.0 | 47.5 | 3 of 10 |
+| 1.1x | Feb 2026 on | quarter Kelly | 638 | +22.3% (2.3%) | +138.7 | +130.9 | 58.1 | 3.5 | 32.9 | 3 of 10 |
+| 1.1x + favourites from 5% | Feb 2025 on | flat | 2,050 | +13.8% (1.0%) | +282.0 | +289.0 | 97.1 | 1.0 | 44.3 | 6 of 22 |
+| 1.1x + favourites from 5% | Feb 2025 on | quarter Kelly | 2,050 | +17.1% (1.0%) | +349.4 | +312.4 | 78.9 | 2.7 | 38.7 | 3 of 22 |
+| 1.1x + favourites from 5% | Feb 2025 to Jan 2026 | flat | 1,180 | +12.0% (1.4%) | +142.1 | +205.8 | 73.5 | 1.0 | 44.3 | 3 of 12 |
+| 1.1x + favourites from 5% | Feb 2025 to Jan 2026 | quarter Kelly | 1,180 | +16.1% (1.5%) | +191.0 | +171.1 | 60.9 | 2.7 | 38.7 | 2 of 12 |
+| 1.1x + favourites from 5% | Feb 2026 on | flat | 870 | +16.1% (1.5%) | +139.9 | +83.2 | 63.5 | 1.0 | 44.1 | 3 of 10 |
+| 1.1x + favourites from 5% | Feb 2026 on | quarter Kelly | 870 | +18.5% (1.4%) | +158.4 | +141.2 | 50.2 | 2.7 | 27.4 | 1 of 10 |
+
+"Luck" is how far the realised units would swing from luck alone if the corrected BSP's chances were the truth (one
+standard deviation). The deepest fall runs within the period, in date order.
+
+**Clean races** (nothing scratched after TAB's open), the longer fit, flat, February 2025 on: 1.1x, 1,212 bets, +14.2%
+a bet (SE 1.5%), +168.1 units; 1.1x + favourites from 5%, 1,496 bets, +13.5% (SE 1.2%), +198.4 units.
+
+What it shows:
+
+- **The favourites hold with the longer fit**: from 5%, 540 bets (24 a month), +53.1 units by the corrected BSP and
+  +52.9 realised, both halves positive (+24.3 and +28.8). Most of it is $1.50 to $2 (425 bets, +43.2). Under $1.50 is
+  smaller (115 bets, +9.9).
+- **Putting them on the card adds bets and units in both halves.** 1.1x + favourites from 5%: 2,099 bets (95 a month)
+  and +282.0 units, against 1.1x alone, 1,573 bets and +233.8. That is 526 more bets and +48.2 units, +20.6 in the first
+  half and +27.5 in the second. It holds in clean races (+30.3 units).
+- **A fixed margin in chance is the best rule found.** At 2 points the longer fit makes 2,430 bets (110 a month, 54%
+  more than the card's 1.1x), +12.9% a bet (SE 0.8%), +305.4 units by the corrected BSP and +346.3 realised.
+  - That is +71.6 units over the card's 1.1x (+31%), and it is ahead in both halves: +156.1 against +121.5, and +149.3
+    against +112.4.
+  - It beats the card with its favourites by 331 bets and +23.4 units.
+  - At 1 point it makes 3,661 bets (166 a month), but the 1,231 extra bets add only +15.9 units, about +1% each.
+  - It works because it asks a long price for more, where the model's errors are biggest, and a short price for less,
+    where they are small. That is Test 85's finding turned into a rule.
+- **Every three months is positive by the corrected BSP**, on all three rules (+20.5 to +72.5 units a quarter for the
+  flat rules). Realised, one quarter lost: February to April 2026, -33.6 units on the card's 1.1x against +31.4 expected.
+  That is about two standard deviations of luck short (an estimate: the quarter's luck was not printed).
+- **A quarter of Kelly is better in both halves**, per unit staked by the corrected BSP: 1.1x +20.8% and +22.3% against
+  flat's +13.5% and +17.6%; with the favourites, +16.1% and +18.5% against +12.0% and +16.1%.
+  - It is also steadier. With the favourites its luck is 78.9 units against flat's 97.1, its deepest fall 38.7 units
+    against 44.3, and it lost 3 months of 22 against 6.
+  - Realised, Kelly made less than flat in the first half (+171.1 against +205.8, with the favourites). That is inside
+    the luck in either figure (60 to 74 units).
+- **The longer fit gives a few more units than Test 83's** at each rule, the same as Test 85 found.
+
+What it means: there are more winning bets at TAB's open than the card takes, and they are where Test 85 said: the
+favourites, and a rule that asks long prices for more. The strongest card found so far is the longer fit at a 2-point
+margin: about 110 bets a month, +13% a bet by the corrected BSP, both halves ahead of the card's 1.1x by about +35
+units each. Staked by a quarter of Kelly it should do better again, but that combination has not been run yet.
+
+All of these models read TAB's opening book, so they can only price a race once TAB opens. The card is priced the
+night before, so taking these bets live means pricing each race again once TAB opens, which the card does not do
+today. Building that, first on paper, is the founder's call. Nothing changes the card.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
