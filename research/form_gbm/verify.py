@@ -27,7 +27,8 @@ What it checks, from today on unless noted:
               never read back is named, so a paper fill is never reported as a bet
   settle      DIFFERENTIAL: the running record (running_record.py) against the day page's own settle
               (betmatic_html.py, run on a blank page) for every settled meeting, and against the no-Mercer card for
-              the day; any difference in bets, units or P/L is named with the likely reason
+              the day; any difference in bets, units or P/L is named with the likely reason. Both paths pay a winner
+              after TAB's deduction as the founder reported it; a winner that differs would block
 """
 import argparse, collections, csv, datetime as dt, glob, html, json, os, re, subprocess, sys, tempfile
 
@@ -280,12 +281,10 @@ def check_settle(L, C, F, today, every=False):
     for r in rr.open_book():
         if r["date"] >= since:
             rec[f"{r['date']}-{r['meeting']}"][(r["race"], norm(r["horse"]))] = r
-    ded = []                                             # winners the day page settles after the TAB deduction
     for P in sorted(rec):
         pg = page_settle(L, P)
         if pg is None:
             F.append(("CHECK", f"settle {P}", "the day page's settle could not be run")); continue
-        has_ded = os.path.exists(f"{L}/{P}-deductions-actual.txt")
         for k in sorted(set(rec[P]) | set(pg)):
             a, b = rec[P].get(k), pg.get(k)
             who = f"R{k[0]} {(a or {}).get('horse', k[1])}"
@@ -294,15 +293,9 @@ def check_settle(L, C, F, today, every=False):
             if abs(a["units"] - b[0]) > 0.011:
                 F.append(("BLOCK", f"settle {P}", f"{who}: record {a['units']:.2f}u, day page {b[0]:.2f}u"))
             if b[1] is not None and abs(a["pl"] - b[1]) > 0.011:
-                if has_ded and a["result"] == "WON":
-                    ded.append((P, who, a["pl"], b[1])); continue
                 why = "the day page counts a non-runner as a loss, the record voids it" if a["result"] == "void" else "unexplained"
                 F.append(("CHECK" if why != "unexplained" else "BLOCK", f"settle {P}",
                           f"{who}: record {a['pl']:+.2f}u, day page {b[1]:+.2f}u ({why})"))
-    if ded:
-        F.append(("CHECK", "settle deductions", f"{len(ded)} winners: the day page settles after the reported TAB deduction "
-                  f"({sum(x[3] for x in ded):+.2f}u), the running record at the price taken ({sum(x[2] for x in ded):+.2f}u): "
-                  + "; ".join(f"{P[5:]} {who}" for P, who, _, _ in ded)))
     # the no-Mercer card for each settled day against the record for that day
     by_day = collections.defaultdict(dict)
     for P, bets in rec.items():

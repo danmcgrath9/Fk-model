@@ -4,9 +4,13 @@
     python3.13 running_record.py            writes data/live_bets/running-record.md and prints the totals
 
 THE MODEL (the open book): every order on a meeting's sheet of record (<prefix>-betmatic-preopen.csv) that fills at Form
-King's opening price, min_odds <= open <= max_odds, exactly as betmatic_html.py counts it, settled at the open price with
-no scratching deductions (founder, 1 Nov 2026: "Just completely scrap the deduction pay"). Units as on the sheet. A runner
-with no finish (scratched after the open) is void. Paper: not what BetMatic placed.
+King's opening price, min_odds <= open <= max_odds, exactly as betmatic_html.py counts it. A WINNER IS PAID AFTER TAB'S
+DEDUCTION FOR ITS RACE AS THE FOUNDER REPORTED IT (<prefix>-deductions-actual.txt, "race, cents"): paid = 1 + (open - 1) x
+(1 - cents/100), the same sum the day page does (TIPPING_RULES.md, 1 Nov 2026: nothing is estimated, and a bet settles
+at the price taken "unless the founder reports TAB's actual deduction for the race"). The first cut of this file (16 Nov)
+left the reported deductions out and overstated five winners by 14.51u; the founder, 17 Nov: "Deductions? Are you
+kidding?" No reported figure for a race = the price taken. Units as on the sheet. A runner with no finish (scratched
+after the open) is void. Paper: not what BetMatic placed.
 
 THE 9AM LIST: every horse in a <prefix>-9am.csv, settled at the price it was listed at, per bookie: won = to_win, lost =
 minus stake_a_bookie. The founder bets it himself, so this assumes every listed horse was bet; a day he did not bet is
@@ -34,6 +38,17 @@ def finishes(path):
     return fin
 
 
+def reported_deductions(P):
+    """TAB's deduction per race as the founder reported it: {race: share of winnings}. No file, or no line = none."""
+    out, f = {}, f"{L}/{P}-deductions-actual.txt"
+    if os.path.exists(f):
+        for l in open(f):
+            pa = [x.strip() for x in l.split("#")[0].split(",")]
+            if len(pa) >= 2 and pa[0].isdigit():
+                out[int(pa[0])] = float(pa[1]) / 100
+    return out
+
+
 def open_book():
     rows = []
     for res in sorted(glob.glob(f"{L}/2026-*-results.txt")):
@@ -49,6 +64,7 @@ def open_book():
                 fk, tab = (None, None) if scr else parse_opens(", ".join(pa[3:]))
                 px[(int(pa[0]), norm(pa[1]))] = (fk or tab, scr)
         fin = finishes(res)
+        ded = reported_deductions(P)
         by = collections.OrderedDict()
         for o in csv.DictReader(open(sheet)):
             k = (int(o["race"]), norm(o["horse"]))
@@ -59,14 +75,16 @@ def open_book():
             b["units"] += float(o["stake_units"])
         for k, b in by.items():
             f = fin.get(k)
+            d = ded.get(k[0], 0.0)
+            paid = 1 + (b["open"] - 1) * (1 - d)          # the price after TAB's reported deduction
             if f in (None, "None", "0"):
                 res_, pl = "void", 0.0
             elif f == "1":
-                res_, pl = "WON", b["units"] * (b["open"] - 1)
+                res_, pl = "WON", b["units"] * (paid - 1)
             else:
                 res_, pl = f"{f}th" if f not in ("2", "3") else {"2": "2nd", "3": "3rd"}[f], -b["units"]
             rows.append(dict(date=P[:10], meeting=P[11:], race=k[0], horse=b["horse"], units=b["units"], open=b["open"],
-                             result=res_, pl=pl))
+                             ded=d, paid=paid, result=res_, pl=pl))
     return rows
 
 
@@ -101,7 +119,8 @@ def main():
     out = ["# Running record", "",
            "Rebuilt by research/form_gbm/running_record.py after every settle (founder, 16 Nov 2026: \"just want you to keep a "
            "record of it\"). The model = the open book: every sheet-of-record order that fills at Form King's opening price, "
-           "settled at that price, no deductions, units as on the sheet (paper, not what BetMatic placed). The 9am list = "
+           "a winner paid after TAB's deduction for its race as the founder reported it (no figure reported = the price "
+           "taken), units as on the sheet (paper, not what BetMatic placed). The 9am list = "
            "the founder's own bets at the listed price, per bookie, assuming every listed horse was bet.", ""]
 
     def line(sel, label):
@@ -122,11 +141,13 @@ def main():
     for d in days:
         cum += sum(r["pl"] for r in live if r["date"] == d); run.append((d, cum))
     out += ["", "Running total by day: " + ", ".join(f"{d[5:]} {c:+.1f}u" for d, c in run), "",
-            "| Date | Meeting | Race | Horse | Units | Open | Result | P/L |", "|---|---|---|---|---|---|---|---|"]
-    out += [f"| {r['date']} | {r['meeting']} | R{r['race']} | {r['horse']} | {r['units']:.2f}u | ${r['open']:g} | {r['result']} | "
-            f"{r['pl']:+.2f}u |" for r in reversed(ob)]
-    # Price taken against Betfair SP (founder, 16 Nov 2026: "Still beating open towards bsp though"): how many open
-    # prices beat BSP, the stake-weighted ratio, and winners against those expected at BSP (1/BSP each).
+            "| Date | Meeting | Race | Horse | Units | Open | TAB deduction | Paid at | Result | P/L |",
+            "|---|---|---|---|---|---|---|---|---|---|"]
+    out += [f"| {r['date']} | {r['meeting']} | R{r['race']} | {r['horse']} | {r['units']:.2f}u | ${r['open']:g} | "
+            f"{f'{r['ded'] * 100:.0f}c' if r['ded'] else '-'} | ${r['paid']:.2f} | {r['result']} | {r['pl']:+.2f}u |" for r in reversed(ob)]
+    # Price taken against Betfair SP (founder, 16 Nov 2026: "Still beating open towards bsp though"): how many prices
+    # beat BSP, the stake-weighted ratio, and winners against those expected at BSP (1/BSP each). The price is the open
+    # AFTER TAB's reported deduction: BSP is struck after the scratching, so the open before it is not the same bet.
     bsp = {}
     for res in glob.glob(f"{L}/2026-*-results.txt"):
         P = os.path.basename(res)[:-len("-results.txt")]
@@ -140,11 +161,12 @@ def main():
         s = [(r, b) for r, b in s if b]
         if not s:
             return f"| {label} | 0 | - | - | - |"
-        wl = sum(r["units"] * math.log(r["open"] / b) for r, b in s) / sum(r["units"] for r, b in s)
-        return (f"| {label} | {len(s)} | {sum(1 for r, b in s if r['open'] > b)} | {math.exp(wl):.2f}x | "
+        wl = sum(r["units"] * math.log(r["paid"] / b) for r, b in s) / sum(r["units"] for r, b in s)
+        return (f"| {label} | {len(s)} | {sum(1 for r, b in s if r['paid'] > b)} | {math.exp(wl):.2f}x | "
                 f"{sum(1 for r, b in s if r['result'] == 'WON')} won, {sum(1 / b for r, b in s):.1f} expected at BSP |")
     out += ["", "## Price taken against Betfair SP", "",
-            "| Period | Bets with a BSP | Open beat BSP | Open / BSP (stake-weighted) | Winners |", "|---|---|---|---|---|",
+            "The price is the open after TAB's reported deduction.", "",
+            "| Period | Bets with a BSP | Price beat BSP | Price / BSP (stake-weighted) | Winners |", "|---|---|---|---|---|",
             clv(lambda r: True, "All settled"), clv(lambda r: r["date"] >= "2026-11-12", "Since 12 Nov"),
             clv(lambda r: r["date"] in last7, "Last 7 race days")]
     bet = [r for r in nm if r["result"] not in ("void", "not bet")]

@@ -1280,3 +1280,18 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - Back book ($500 a unit): Bottas R5 BSP $5.40 4th -1.00u (-$500); R8 had no Betfair SP.
 - Running record (data/live_bets/running-record.md): the model +88.60u since 2 Nov (59 bets, 13 won), -28.73u since
   12 Nov; 9am list 3 bets, 0 won, -$2,926 a bookie.
+
+## Tue 17 Nov: the running record corrected for TAB's reported deductions (founder: "Deductions? Are you kidding?")
+- The running record built on Mon 16 Nov settled every winner at the open and left out TAB's deductions as the founder
+  reported them. That was wrong: the standing rule (TIPPING_RULES.md, 1 Nov) is that nothing is estimated and a bet
+  settles at the price taken "unless the founder reports TAB's actual deduction for the race", and the day page and
+  every book entry above already settle that way. running_record.py now pays a winner at 1 + (open - 1) x (1 - cents/100).
+- Five winners move: Marco Polo R4 Ballarat 2 Nov 4c (+24.25u -> +23.28u), Wintery R6 19c (+19.98u -> +16.18u),
+  Emanating R3 Kyneton 4 Nov 13c (+19.60u -> +17.05u), Gregolimo R6 22c (+16.65u -> +12.99u), Goodness R1 Ballarat
+  11 Nov 33c (+10.70u -> +7.17u). 14.51u in total.
+- THE MODEL SINCE 2 NOV IS +74.09u (59 bets, 13 won), NOT +88.60u as Monday's entry above and Monday's messages said.
+  Since 12 Nov is unchanged at -28.73u (neither winner had a reported deduction). The 9am list is unchanged.
+- Price against Betfair SP now uses the price after the reported deduction: 35 of 57 beat BSP, 1.26x stake-weighted
+  (was 36 of 57 and 1.32x on the open before deductions).
+- The verify step (research/form_gbm/verify.py, observe mode from today) is what showed the two settles disagreeing;
+  the record and the day page now agree on every settled meeting, and a winner that differs between them would block.
