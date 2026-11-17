@@ -1,0 +1,12 @@
+### Grades: the live list (0.20 ours + 1.00 best price now) and the move model, every major at its own 9am price, 13 test months
+
+| grade | runners | bookie bets | winners | staked | profit | ROI | resampled race days: profit 5th-95th pct | chance of a loss |
+|---|---|---|---|---|---|---|---|---|
+| A: on both lists | 95 | 407 | 31 | $156,991 | $+100,632 | +64% | $+32,352 to $+173,840 | 0% |
+| B1: live list only | 78 | 278 | 28 | $191,859 | $+25,059 | +13% | $-32,350 to $+83,301 | 25% |
+| B2: move model only | 243 | 721 | 54 | $262,118 | $+32,391 | +12% | $-33,034 to $+99,774 | 22% |
+| the live list as it is (A + B1) | 169 | 685 | 55 | $348,850 | $+125,691 | +36% | $+30,849 to $+225,590 | 1% |
+| the move model (A + B2) | 326 | 1128 | 83 | $419,110 | $+133,023 | +32% | $+40,479 to $+229,317 | 1% |
+| everything (A + B1 + B2) | 400 | 1406 | 107 | $610,969 | $+158,082 | +26% | $+40,234 to $+282,096 | 1% |
+
+an A runner: median fair price $3.88, median our price / median major 0.81, majors at the take price: median 6; day meetings 78% within 8 hours of 9am

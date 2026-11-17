@@ -1,0 +1,15 @@
+| model | weights (last fit) | test log loss | runners | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|---|---|
+| market only | lm +1.18 | 1.8418 | 129 | 396 | 25 | $106,483 | $+58,588 | +55.0% | 8 of 13 |
+| market + move (NO MODEL) | lm +1.16, mv -0.16 | 1.8407 | 164 | 478 | 35 | $140,177 | $+71,154 | +50.8% | 9 of 13 |
+| ours + market | lo +0.23, lm +0.95 | 1.8383 | 169 | 510 | 40 | $189,233 | $+84,616 | +44.7% | 7 of 13 |
+| ours + market + move | lo +0.28, lm +0.88, mv -0.22 | 1.8360 | 326 | 1128 | 83 | $419,110 | $+133,023 | +31.7% | 11 of 13 |
+| ours + market + move (open = first major price) | lo +0.27, lm +0.89, mv_m -0.21 | 1.8360 | 316 | 1037 | 82 | $408,802 | $+119,346 | +29.2% | 12 of 13 |
+| ours + market + overnight move + earlier move | lo +0.27, lm +0.88, mv_eve -0.14, mv_early -0.24 | 1.8361 | 332 | 1165 | 88 | $450,502 | $+162,956 | +36.2% | 12 of 13 |
+| ours + market + drift + firm | lo +0.28, lm +0.89, drift -0.14, firm -0.25 | 1.8361 | 334 | 1175 | 85 | $444,576 | $+140,707 | +31.6% | 12 of 13 |
+
+market + move (NO MODEL): profit $+71,154 on 345 race days; resampled days: 5th-95th pct $+19,713 to $+131,853, ROI +20% to +73%; chance of a loss over the 13 months 0.7%
+  by month: 25-11 $+4k, 25-12 $+1k, 26-01 $+14k, 26-02 $+1k, 26-03 $+6k, 26-04 $+2k, 26-05 $+6k, 26-06 $+25k, 26-07 $+24k, 26-08 $-2k, 26-09 $-5k, 26-10 $-2k, 26-11 $-2k
+
+ours + market + move: profit $+133,023 on 345 race days; resampled days: 5th-95th pct $+41,736 to $+234,857, ROI +11% to +53%; chance of a loss over the 13 months 0.7%
+  by month: 25-11 $+2k, 25-12 $+0k, 26-01 $+13k, 26-02 $+3k, 26-03 $+14k, 26-04 $-1k, 26-05 $+10k, 26-06 $-6k, 26-07 $+47k, 26-08 $+32k, 26-09 $+1k, 26-10 $+11k, 26-11 $+6k

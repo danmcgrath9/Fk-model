@@ -1,0 +1,26 @@
+### The move model's 9am list by when the meeting starts (the limits start at 2pm for a night meeting)
+
+| | runners | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| first race before 3pm (day meeting) | 286 | 1025 | 75 | $393,205 | $+131,573 | +33.5% | 11 of 13 |
+| first race 3pm-5pm (twilight) | 8 | 24 | 3 | $8,113 | $+1,521 | +18.7% | 1 of 4 |
+| first race 5pm or later (night) | 32 | 79 | 5 | $17,792 | $-71 | -0.4% | 1 of 4 |
+
+by hours from 9am to the jump
+| | runners | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| 0-4 hours | 22 | 99 | 9 | $40,201 | $+28,923 | +71.9% | 5 of 7 |
+| 4-6 hours | 106 | 365 | 33 | $152,889 | $+74,544 | +48.8% | 9 of 11 |
+| 6-8 hours | 136 | 498 | 26 | $176,514 | $+29,034 | +16.4% | 7 of 13 |
+| 8-14 hours | 62 | 166 | 15 | $49,505 | $+522 | +1.1% | 4 of 10 |
+
+by day
+| | runners | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| Mon | 29 | 84 | 5 | $22,221 | $+6,225 | +28.0% | 4 of 11 |
+| Tue | 36 | 131 | 8 | $32,793 | $+5,315 | +16.2% | 5 of 9 |
+| Wed | 36 | 121 | 10 | $68,378 | $+11,500 | +16.8% | 5 of 9 |
+| Thu | 39 | 159 | 10 | $39,750 | $+17,695 | +44.5% | 3 of 8 |
+| Fri | 39 | 87 | 7 | $25,301 | $-562 | -2.2% | 3 of 10 |
+| Sat | 72 | 250 | 23 | $155,065 | $+69,231 | +44.6% | 8 of 11 |
+| Sun | 75 | 296 | 20 | $75,602 | $+23,619 | +31.2% | 5 of 10 |

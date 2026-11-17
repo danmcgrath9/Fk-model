@@ -1,0 +1,55 @@
+runners 51453, races 5105, months 2025-07 to 2026-11; test from 2025-11: 3801 races
+
+| model | weights fitted on all but the last month | test log loss | against the live blend |
+|---|---|---|---|
+| LIVE 0.20 ours + 1.00 TAB | fixed | 1.8400 | +0.0000 |
+| 0.20 ours + 1.00 median majors | fixed | 1.8376 | -0.0024 |
+| market only (median majors) | lm +1.18 | 1.8418 | +0.0017 |
+| ours + TAB | lo +0.27, lt +0.90 | 1.8402 | +0.0002 |
+| ours + median majors | lo +0.23, lm +0.95 | 1.8383 | -0.0017 |
+| ours + median + TAB gap | lo +0.23, lm +0.95, dtm +0.13 | 1.8385 | -0.0015 |
+| ours + median + move | lo +0.28, lm +0.88, mv -0.22 | 1.8360 | -0.0041 |
+| ours + median + TAB gap + move | lo +0.28, lm +0.88, dtm +0.10, mv -0.22 | 1.8361 | -0.0039 |
+| ours + median all + shortest major + gap + move | lo +0.27, la +1.37, lmn -0.49, dtm +0.22, mv -0.23 | 1.8365 | -0.0035 |
+ours + median majors against live, per race: +0.0017 (SE 0.0010, t 1.7)
+ours + median + TAB gap + move against live, per race: +0.0039 (SE 0.0014, t 2.8)
+
+### Money on the test months: every major at its own 9am price, 1.05x the fair price, to win the limit
+Late scratchings are in the 9am market, their bets void, winners paid after the deduction.
+
+| | runners | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| THE OLD TEST of the live rule: late scratchings left out of the race, no deduction | 589 | 2560 | 116 | $903,504 | $+42,590 | +4.7% | 5 of 13 |
+| LIVE 0.20 ours + 1.00 TAB | 240 | 686 | 50 | $267,455 | $+40,681 | +15.2% | 8 of 13 |
+| 0.20 ours + 1.00 median majors | 174 | 508 | 41 | $194,357 | $+92,368 | +47.5% | 7 of 13 |
+| market only (median majors) | 129 | 396 | 25 | $106,483 | $+58,588 | +55.0% | 8 of 13 |
+| ours + TAB | 263 | 783 | 52 | $269,126 | $+32,503 | +12.1% | 8 of 13 |
+| ours + median majors | 169 | 510 | 40 | $189,233 | $+84,616 | +44.7% | 7 of 13 |
+| ours + median + TAB gap | 168 | 498 | 38 | $176,798 | $+81,420 | +46.1% | 7 of 13 |
+| ours + median + move | 326 | 1128 | 83 | $419,110 | $+133,023 | +31.7% | 11 of 13 |
+| ours + median + TAB gap + move | 319 | 1093 | 83 | $412,366 | $+132,534 | +32.1% | 11 of 13 |
+| ours + median all + shortest major + gap + move | 390 | 1420 | 83 | $506,641 | $+43,295 | +8.5% | 6 of 13 |
+
+LIVE 0.20 ours + 1.00 TAB, by period
+| | runners | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| Nov 2025-Feb 2026 | 42 | 120 | 11 | $58,507 | $+21,268 | +36.4% | 3 of 4 |
+| Mar-Jun 2026 | 96 | 249 | 18 | $116,136 | $-13,838 | -11.9% | 2 of 4 |
+| Jul-Aug 2026 | 63 | 260 | 15 | $72,567 | $+38,456 | +53.0% | 2 of 2 |
+| Sep-Nov 2026 | 39 | 57 | 6 | $20,245 | $-5,206 | -25.7% | 1 of 3 |
+
+0.20 ours + 1.00 median majors, by period
+| | runners | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| Nov 2025-Feb 2026 | 21 | 69 | 7 | $38,830 | $+25,051 | +64.5% | 3 of 4 |
+| Mar-Jun 2026 | 58 | 160 | 14 | $80,720 | $+7,660 | +9.5% | 1 of 4 |
+| Jul-Aug 2026 | 51 | 221 | 14 | $57,363 | $+55,075 | +96.0% | 2 of 2 |
+| Sep-Nov 2026 | 44 | 58 | 6 | $17,444 | $+4,581 | +26.3% | 1 of 3 |
+
+ours + median + TAB gap + move, by period
+| | runners | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| Nov 2025-Feb 2026 | 17 | 61 | 6 | $30,632 | $+17,305 | +56.5% | 4 of 4 |
+| Mar-Jun 2026 | 128 | 459 | 34 | $211,532 | $+21,227 | +10.0% | 2 of 4 |
+| Jul-Aug 2026 | 85 | 360 | 23 | $109,565 | $+85,278 | +77.8% | 2 of 2 |
+| Sep-Nov 2026 | 89 | 213 | 20 | $60,637 | $+8,724 | +14.4% | 3 of 3 |

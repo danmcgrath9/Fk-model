@@ -1,0 +1,14 @@
+base: ours +0.28, median +0.88, move -0.22; test log loss 1.8360
+
+| our price's weight allowed to differ in | share of runners | extra weight there (last fit) | test log loss change | per-race t |
+|---|---|---|---|---|
+| metro | 20% | +0.01 | +0.0003 | -1.0 |
+| field of 12+ | 36% | +0.04 | +0.0010 | -1.6 |
+| a first starter in the race | 25% | +0.05 | -0.0001 | +0.5 |
+| jumps within 6 h of 9am | 43% | -0.01 | +0.0005 | -1.6 |
+| jumps 8 h+ after 9am | 17% | -0.00 | +0.0008 | -1.4 |
+| market favourite (median under $4) | 13% | -0.03 | +0.0004 | -0.7 |
+| median $8+ | 63% | +0.03 | +0.0001 | -0.2 |
+| going_gap above its median | 49% | -0.03 | -0.0002 | +1.1 |
+| prize_log above its median | 49% | -0.02 | -0.0001 | +0.2 |
+| field_strength above its median | 47% | -0.01 | +0.0003 | -0.9 |

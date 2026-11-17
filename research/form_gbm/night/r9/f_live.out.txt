@@ -1,0 +1,10 @@
+| rule | weights | test log loss | runners | bookie bets (majors) | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|---|---|
+| LIVE TODAY: 0.20 ours + 1.00 BEST price now | +0.20, +1.00 | 1.8376 | 169 | 685 | 55 | $348,850 | $+125,691 | +36.0% | 9 of 13 |
+| 0.20 ours + 1.00 average price now | +0.20, +1.00 | 1.8377 | 156 | 475 | 35 | $157,317 | $+78,262 | +49.7% | 6 of 13 |
+| ours + average, fitted walk-forward | +0.23, +0.97 | 1.8385 | 153 | 466 | 34 | $159,316 | $+72,290 | +45.4% | 8 of 13 |
+| ours + average + move, fitted walk-forward | +0.27, +0.90, -0.22 | 1.8361 | 287 | 984 | 67 | $365,245 | $+88,034 | +24.1% | 10 of 13 |
+
+FINAL WEIGHTS for the live rule, fitted on all 17 months: ours +0.267, average price now +0.903, move -0.215
+runners listed (best price now at the take price): 500 over 345 race days = 1.45 a race day; bookmakers at or above the take price on a listed runner: median 2, mean 7.8
+runners with at least one MAJOR at the take price: 287 | by day of week: {'Mon': 25, 'Tue': 32, 'Wed': 24, 'Thu': 36, 'Fri': 38, 'Sat': 69, 'Sun': 63}

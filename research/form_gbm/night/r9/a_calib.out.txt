@@ -1,0 +1,7 @@
+| runners | n | won | the move model expected | the live blend expected | the market expected | our model alone expected |
+|---|---|---|---|---|---|---|
+| A: both lists | 95 | 31 | 25.0 | 24.7 | 21.8 | 26.0 |
+| B1: live list only | 74 | 24 | 22.6 | 24.9 | 19.7 | 24.5 |
+| B2: move model only | 231 | 52 | 48.5 | 40.6 | 38.8 | 47.6 |
+| every listed runner | 400 | 107 | 96.1 | 90.2 | 80.3 | 98.2 |
+| not listed, fair $1.60-$15 | 16786 | 2890 | 2853.4 | 2884.9 | 2743.8 | 2732.1 |
