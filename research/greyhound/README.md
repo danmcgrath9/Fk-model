@@ -8940,6 +8940,102 @@ winning bets" now have answers:
 The 2-point margin already takes almost all the money there is in TAB's opening book, for this model. More money will
 need more races, a second price per race, or new information the model does not yet have. Nothing changes the card.
 
+## Test 91: the best model at every bookmaker's first price (18 Nov 2026, gh topaz run 44146374086, `topaz_round73.py`)
+
+Founder: "Keep going, find more winning bets".
+
+Tests 89 and 90 found no more money at TAB's open from fitting harder, averaging fits or betting smaller edges. The
+other bookmakers price every race too, and each opens on its own, so their first prices are a second chance to bet.
+Test 81 tried them on the card's blend, where they added little at its low ratios. They had never been tried on Test
+88's fit or its margin rule.
+
+**The test, stated before the run.** Test 88's fit, February 2025 on, bets with a corrected BSP, a quarter of Kelly at
+one scale (TAB's 2-point bets' mean stake is one unit), and the deduction priced as at TAB.
+
+- **One price at a time.** The 2-point margin, fair price under $15, at:
+  - TAB's first price;
+  - Ladbrokes' first price;
+  - Sportsbet's first price;
+  - the best first price of those two;
+  - the best first price of all three.
+- **A second chance.** TAB's open's 2-point bets as they are, plus, on dogs TAB's open did not bet, the best of
+  Ladbrokes' and Sportsbet's first prices, where it clears 1.5, 2, 3 or 5 points. Each dog is bet once.
+
+The model's chance is read from TAB's opening book. Ladbrokes and Sportsbet open a median 1.6 hours after TAB (97% and
+95% of runners priced), so by then the market may have moved while the model has not. The corrected BSP judges whatever
+that costs.
+
+**One price at a time**, the 2-point margin, February 2025 to October 2026:
+
+| price | bets | units staked | corrected BSP per unit staked (SE) | corrected BSP units | Feb 2025 to Jan 2026 | Feb 2026 on | realised units | deepest fall, realised | losing months |
+|---|---|---|---|---|---|---|---|---|---|
+| **TAB's first price** | 2,580 | 2,576 | **+15.1% (0.9%)** | **+388.8** | +205.1 | +183.6 | +351.4 | 39.7 | 3 of 21 |
+| Ladbrokes' first price | 2,524 | 2,364 | +4.6% (0.7%) | +108.9 | +55.6 | +53.3 | +200.1 | 49.0 | 8 of 21 |
+| Sportsbet's first price | 2,508 | 2,483 | +5.3% (0.7%) | +131.3 | +88.0 | +43.2 | +163.2 | 79.4 | 11 of 21 |
+| the best of Ladbrokes' and Sportsbet's | 3,177 | 3,087 | +6.8% (0.7%) | +209.2 | +136.1 | +73.1 | +254.0 | 83.1 | 10 of 21 |
+| the best of all three | 4,157 | 4,162 | +12.1% (0.6%) | +502.7 | +291.1 | +211.6 | +522.4 | 49.1 | 3 of 21 |
+
+The best of all three cannot really be bet. It takes TAB's price on some dogs and a later book's on others, chosen
+knowing both prices. TAB's first price is usually gone by the time the others open, so this row is a ceiling, not a
+plan.
+
+**A second chance**, TAB's open's 2-point bets plus the best of Ladbrokes' and Sportsbet's first prices on dogs TAB's
+open did not bet:
+
+| second chance's margin | the extra bets | their units staked | their corrected BSP per unit staked (SE) | their corrected BSP units | their realised units | their losing months | the two together: corrected BSP units | the two together: realised units |
+|---|---|---|---|---|---|---|---|---|
+| 1.5 points | 2,118 | 1,475 | +2.0% (0.8%) | +29.4 | -74.6 | 13 of 21 | +418.2 | +276.9 |
+| 2 points | 1,577 | 1,285 | +2.6% (1.0%) | +33.3 | -61.0 | 14 of 21 | +422.1 | +290.4 |
+| 3 points | 909 | 959 | +4.6% (1.2%) | +44.3 | -38.2 | 14 of 21 | +433.1 | +313.2 |
+| 5 points | 331 | 509 | +9.7% (2.1%) | +49.3 | -7.0 | 12 of 21 | +438.1 | +344.4 |
+
+At every margin the extra bets did better by the corrected BSP in the first year than in the second:
+
+| second chance's margin | Feb 2025 to Jan 2026 | Feb 2026 on |
+|---|---|---|
+| 2 points | +32.0 (+3.7% a unit) | +1.3 (+0.3%) |
+| 5 points | +41.0 (+11.0%) | +8.3 (+6.1%) |
+
+**By three months**, the 2-point margin, corrected BSP units / realised units:
+
+| three months | TAB's open | the extra bets | the two together |
+|---|---|---|---|
+| Feb 2025 to Apr 2025 | +73.3 / +25.0 | +27.8 / +12.4 | +101.1 / +37.4 |
+| May 2025 to Jul 2025 | +50.1 / +59.5 | +14.4 / +42.9 | +64.5 / +102.4 |
+| Aug 2025 to Oct 2025 | +41.3 / +74.3 | -5.8 / -30.0 | +35.5 / +44.3 |
+| Nov 2025 to Jan 2026 | +40.4 / +39.0 | -4.5 / -5.8 | +36.0 / +33.2 |
+| Feb 2026 to Apr 2026 | +59.0 / +11.5 | -5.5 / -16.0 | +53.5 / -4.5 |
+| May 2026 to Jul 2026 | +45.0 / +49.2 | -1.1 / -44.5 | +43.9 / +4.7 |
+| Aug 2026 to Oct 2026 | +79.6 / +93.0 | +7.9 / -20.1 | +87.5 / +72.8 |
+
+What it shows:
+
+- **The edge lives at TAB's open.** The same model and the same rule earn +15.1% a unit at TAB's first price and
+  +4.6% to +5.3% at Ladbrokes' and Sportsbet's, about a third as much. The other books open 1.6 hours later, after the
+  market has moved, and their first prices already carry what the model was going to find.
+- **The other books' first prices are still positive on their own**, about 7 standard errors above zero by the
+  corrected BSP. They add little, though, and they are rough:
+  - Sportsbet's first price had 11 losing months of 21 and a deepest fall of 79.4 units.
+  - It realised -37.3 units from February 2026.
+- **The second chance adds almost nothing.** At 2 points, the extra 1,577 bets made +33.3 units by the corrected BSP
+  and lost 61.0 realised. At 5 points the extra 331 bets made +49.3 by the corrected BSP (+9.7% a unit, SE 2.1%) and
+  lost 7.0 realised.
+- **The second chance has faded.** At every margin, almost all of its corrected BSP units came in the first year:
+  - At 2 points it has been -5.8 to +7.9 a quarter since August 2025.
+  - Its realised units have been negative in five quarters running.
+- **The best of all three is a ceiling, not a plan.** It would make +502.7 by the corrected BSP, against +388.8 for
+  TAB's open alone. Getting it needs the choice between TAB's price and a later book's made knowing both, and TAB's
+  first price has usually moved by the time the others open.
+
+What it means: this confirms the founder's thesis, "we will win long term on opening". TAB's open is where the model's
+edge is, about three times what it is at the other books' first prices. A second chance at the other books is worth at
+most a few units a month by the corrected BSP, nothing realised, and it is fading, so it is not worth the accounts it
+would need. The card's best stays Test 88's fit at TAB's first price, 2-point margin, under $15, a quarter of Kelly.
+Nothing changes the card.
+
+More money now needs more races. The same Topaz key covers every state and Betfair's ANZ files carry their BSPs;
+Betwatch would need a pull for each state. Whether to backtest NSW is the founder's call.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
