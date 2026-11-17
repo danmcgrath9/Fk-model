@@ -138,19 +138,40 @@ def main():
            "taken), units as on the sheet (paper, not what BetMatic placed). The 9am list = "
            "the founder's own bets at the listed price, per bookie, assuming every listed horse was bet.", ""]
 
+    bsp = {}
+    for res in glob.glob(f"{L}/2026-*-results.txt"):
+        P = os.path.basename(res)[:-len("-results.txt")]
+        for l in open(res):
+            m = re.match(r"R(\d+) (.+?)\s+finish \S+\s+SP \S+\s+BSP (\S+)", l)
+            if m and m[3] not in ("None", "0.0", "0"):
+                bsp[(P[:10], P[11:], int(m[1]), norm(m[2]))] = float(m[3])
+
+    def vs_bsp(s):
+        """Price taken (the open after TAB's reported deduction) against Betfair SP: 'n of m', stake-weighted ratio."""
+        s = [(r, bsp.get((r["date"], r["meeting"], r["race"], norm(r["horse"])))) for r in s]
+        s = [(r, b) for r, b in s if b]
+        if not s:
+            return "-", "-"
+        wl = sum(r["units"] * math.log(r["paid"] / b) for r, b in s) / sum(r["units"] for r, b in s)
+        return f"{sum(1 for r, b in s if r['paid'] > b)} of {len(s)}", f"{math.exp(wl):.2f}x"
+
     def line(sel, label):
         s = [r for r in live if sel(r)]
         st, pl, w = sum(r["units"] for r in s), sum(r["pl"] for r in s), sum(1 for r in s if r["result"] == "WON")
-        return (f"| {label} | {len(s)} | {w} | {st:.2f}u | {pl:+.2f}u | {pl / st:+.0%} | ${pl * UNIT:+,.0f} |" if st
-                else f"| {label} | 0 | 0 | - | - | - | - |")
+        beat, ratio = vs_bsp(s)
+        return (f"| {label} | {len(s)} | {w} | {st:.2f}u | {pl:+.2f}u | {pl / st:+.0%} | ${pl * UNIT:+,.0f} | {beat} | {ratio} |" if st
+                else f"| {label} | 0 | 0 | - | - | - | - | - | - |")
 
     out += ["## The model (the open book)", "",
-            "| Period | Bets | Won | Staked | P/L | ROI | At $50 |", "|---|---|---|---|---|---|---|",
+            "| Period | Bets | Won | Staked | P/L | ROI | At $50 | Beat BSP | Price / BSP |", "|---|---|---|---|---|---|---|---|---|",
             line(lambda r: True, f"All settled ({days[0] if days else '-'} on)"),
             line(lambda r: r["date"] >= "2026-11-12", "Since 12 Nov (full units)")]
     last7 = days[-7:]
-    out += [line(lambda r: r["date"] in last7, "Last 7 race days"), "", "| Day | Bets | Won | Staked | P/L | ROI | At $50 |",
-            "|---|---|---|---|---|---|---|"]
+    out += [line(lambda r: r["date"] in last7, "Last 7 race days"), "",
+            "Beat BSP and Price / BSP: the price taken (the open after TAB's reported deduction) against Betfair SP, the "
+            "ratio weighted by stake.", "",
+            "| Day | Bets | Won | Staked | P/L | ROI | At $50 | Beat BSP | Price / BSP |",
+            "|---|---|---|---|---|---|---|---|---|"]
     out += [line(lambda r, d=d: r["date"] == d, d) for d in reversed(days)]
     run, cum = [], 0.0
     for d in days:
@@ -185,14 +206,6 @@ def main():
     # Price taken against Betfair SP (founder, 16 Nov 2026: "Still beating open towards bsp though"): how many prices
     # beat BSP, the stake-weighted ratio, and winners against those expected at BSP (1/BSP each). The price is the open
     # AFTER TAB's reported deduction: BSP is struck after the scratching, so the open before it is not the same bet.
-    bsp = {}
-    for res in glob.glob(f"{L}/2026-*-results.txt"):
-        P = os.path.basename(res)[:-len("-results.txt")]
-        for l in open(res):
-            m = re.match(r"R(\d+) (.+?)\s+finish \S+\s+SP \S+\s+BSP (\S+)", l)
-            if m and m[3] not in ("None", "0.0", "0"):
-                bsp[(P[:10], P[11:], int(m[1]), norm(m[2]))] = float(m[3])
-
     def clv(sel, label):
         s = [(r, bsp.get((r["date"], r["meeting"], r["race"], norm(r["horse"])))) for r in live if sel(r)]
         s = [(r, b) for r, b in s if b]
@@ -206,6 +219,28 @@ def main():
             "| Period | Bets with a BSP | Price beat BSP | Price / BSP (stake-weighted) | Winners |", "|---|---|---|---|---|",
             clv(lambda r: True, "All settled"), clv(lambda r: r["date"] >= "2026-11-12", "Since 12 Nov"),
             clv(lambda r: r["date"] in last7, "Last 7 race days")]
+    rt = os.path.join(L, "rule-tracker.csv")
+    if os.path.exists(rt):
+        try:
+            from track_rules import RULES
+            names = {k: d for k, _, d, _ in RULES}
+        except Exception:
+            names = {}
+        rows = list(csv.DictReader(open(rt)))
+        lastday = max(r["date"] for r in rows)
+
+        def cell(key, since, only=None):
+            s = [r for r in rows if r["rule"] == key and (r["date"] == only if only else r["date"] >= since)]
+            if not s:
+                return "-"
+            return f"{sum(float(r['units']) for r in s):+.2f}u ({len(s)} bets, {sum(r['won'] == '1' for r in s)} won)"
+        keys = list(dict.fromkeys(r["rule"] for r in rows))
+        out += ["", "## The rules (paper, at Betfair SP)", "",
+                "From data/live_bets/rule-tracker.csv (research/form_gbm/track_rules.py; run it before this file). "
+                "A rule's P/L is per 1 unit at Betfair SP, 8% commission on winnings. The rules overlap, so the rows do not add up.", "",
+                f"| Rule | {lastday[5:]} | Since 12 Nov | Since 2 Nov | Since 9 Oct |", "|---|---|---|---|---|"]
+        out += [f"| {names.get(k, k)} | {cell(k, None, lastday)} | {cell(k, '2026-11-12')} | {cell(k, '2026-11-02')} | "
+                f"{cell(k, '2026-10-09')} |" for k in keys]
     bet = [r for r in nm if r["result"] not in ("void", "not bet")]
     tot = sum(r["pl"] for r in bet); w = sum(1 for r in bet if r["result"] == "WON")
     staked = sum(r["stake"] for r in bet)
