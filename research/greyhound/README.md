@@ -7770,6 +7770,159 @@ What it means:
 
 **Next:** round 63 (running) puts the same bets at every bookmaker's first price.
 
+## Test 81: more winning bets, at every bookmaker's first price (17 Nov 2026, gh topaz run 43990967502, `topaz_round63.py`)
+
+Founder: "find more winning bets - mate need way more than this for amount of bets".
+
+Test 80's corrected blend makes about 15 bets a week at TAB's first price. The other bookmakers open later and price
+separately, so their first prices are further chances to bet. Test 53 found the best first price of the three made
+many more bets than TAB's alone, on a blend the card no longer uses.
+
+**The test, stated before the run.** Round 58's field, 32,548 races, in 21 minutes.
+
+- **The books.** Every bookmaker in the Betwatch files, each with its first price before the jump.
+- **The rule.** The card's rule flat at 1.1x to 1.5x, after TAB's deduction, at each book's first price and at the best
+  of the bookmakers' first prices.
+- **The blends.** The card's blend, the blend with Isolynx, and Test 80's corrected blend.
+- **The judges.** Realised, and the corrected BSP.
+- **The caveat.** The best first price needs an account with every book and a bet placed as each opens, and bookmakers
+  limit winning accounts.
+
+Here every bet is counted in the realised columns, including the few with no BSP. That is why Test 80's 1,347 bets at
+1.1x are 1,380 here, at +16.2% realised rather than +14.2%.
+
+The books, since February 2025:
+
+| book | runners it priced | median hours after TAB's first price |
+|---|---|---|
+| Ladbrokes | 97% | 1.6 |
+| Sportsbet | 95% | 1.6 |
+
+The card's rule at every price since February 2025, flat:
+
+| period | price | blend | ratio | bets | bets a month | winners | corrected BSP's expected winners | realised flat ROI | realised units | corrected BSP per bet | its standard error | corrected BSP units |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 on | TAB's first price | the card's blend | 1.1x | 1,144 | 52.0 | 302 | 287.3 | +7.5% | +86.0 | +5.8% | 1.4% | +65.5 |
+| Feb 2025 on | TAB's first price | the card's blend | 1.2x | 317 | 14.4 | 81 | 80.6 | +9.6% | +30.4 | +19.5% | 3.6% | +60.7 |
+| Feb 2025 on | TAB's first price | the card's blend | 1.3x | 98 | 4.5 | 32 | 26.3 | +47.1% | +46.1 | +40.8% | 8.8% | +39.2 |
+| Feb 2025 on | TAB's first price | the card's blend | 1.5x | 14 | 0.6 | 2 | 4.3 | -12.1% | -1.7 | +105.5% | 42.8% | +14.8 |
+| Feb 2025 on | TAB's first price | blend with Isolynx | 1.1x | 1,167 | 53.0 | 320 | 303.3 | +8.9% | +104.3 | +7.6% | 1.4% | +86.6 |
+| Feb 2025 on | TAB's first price | blend with Isolynx | 1.2x | 297 | 13.5 | 81 | 73.4 | +24.4% | +72.6 | +19.1% | 3.8% | +55.4 |
+| Feb 2025 on | TAB's first price | blend with Isolynx | 1.3x | 92 | 4.2 | 31 | 24.5 | +63.3% | +58.3 | +43.6% | 9.3% | +38.8 |
+| Feb 2025 on | TAB's first price | blend with Isolynx | 1.5x | 16 | 0.7 | 7 | 4.5 | +131.3% | +21.0 | +65.2% | 19.0% | +9.8 |
+| Feb 2025 on | TAB's first price | with Isolynx, corrected on BSP corrected | 1.1x | 1,380 | 62.7 | 340 | 323.9 | +16.2% | +223.1 | +13.6% | 1.4% | +183.3 |
+| Feb 2025 on | TAB's first price | with Isolynx, corrected on BSP corrected | 1.2x | 550 | 25.0 | 116 | 113.0 | +23.7% | +130.6 | +23.0% | 2.9% | +122.8 |
+| Feb 2025 on | TAB's first price | with Isolynx, corrected on BSP corrected | 1.3x | 275 | 12.5 | 51 | 51.6 | +16.3% | +44.8 | +29.4% | 4.7% | +77.9 |
+| Feb 2025 on | TAB's first price | with Isolynx, corrected on BSP corrected | 1.5x | 86 | 3.9 | 15 | 17.9 | +34.5% | +29.7 | +46.7% | 10.1% | +39.7 |
+| Feb 2025 on | Ladbrokes's first price | the card's blend | 1.1x | 1,175 | 53.4 | 262 | 245.5 | -5.7% | -67.5 | -7.5% | 1.2% | -86.2 |
+| Feb 2025 on | Ladbrokes's first price | the card's blend | 1.2x | 380 | 17.3 | 75 | 69.6 | +0.2% | +0.9 | -3.1% | 2.7% | -11.4 |
+| Feb 2025 on | Ladbrokes's first price | the card's blend | 1.3x | 146 | 6.6 | 25 | 23.6 | +17.1% | +25.0 | +5.1% | 5.7% | +7.3 |
+| Feb 2025 on | Ladbrokes's first price | the card's blend | 1.5x | 38 | 1.7 | 5 | 5.2 | +80.9% | +30.7 | +33.3% | 17.9% | +12.7 |
+| Feb 2025 on | Ladbrokes's first price | blend with Isolynx | 1.1x | 1,194 | 54.3 | 269 | 259.6 | -6.0% | -72.0 | -5.9% | 1.2% | -69.0 |
+| Feb 2025 on | Ladbrokes's first price | blend with Isolynx | 1.2x | 366 | 16.6 | 86 | 68.1 | +22.5% | +82.2 | -0.2% | 2.8% | -0.7 |
+| Feb 2025 on | Ladbrokes's first price | blend with Isolynx | 1.3x | 133 | 6.0 | 26 | 20.5 | +36.2% | +48.1 | +2.6% | 4.6% | +3.3 |
+| Feb 2025 on | Ladbrokes's first price | blend with Isolynx | 1.5x | 33 | 1.5 | 6 | 4.2 | +123.5% | +40.7 | +14.2% | 13.2% | +4.5 |
+| Feb 2025 on | Ladbrokes's first price | with Isolynx, corrected on BSP corrected | 1.1x | 1,554 | 70.6 | 315 | 313.3 | +4.8% | +75.4 | -1.9% | 1.1% | -29.2 |
+| Feb 2025 on | Ladbrokes's first price | with Isolynx, corrected on BSP corrected | 1.2x | 616 | 28.0 | 107 | 104.6 | +19.4% | +119.7 | +2.8% | 2.1% | +17.1 |
+| Feb 2025 on | Ladbrokes's first price | with Isolynx, corrected on BSP corrected | 1.3x | 285 | 13.0 | 45 | 42.1 | +56.5% | +161.0 | +6.5% | 3.7% | +17.9 |
+| Feb 2025 on | Ladbrokes's first price | with Isolynx, corrected on BSP corrected | 1.5x | 92 | 4.2 | 11 | 11.8 | +145.9% | +134.3 | +20.4% | 8.7% | +18.7 |
+| Feb 2025 on | Sportsbet's first price | the card's blend | 1.1x | 1,086 | 49.4 | 226 | 228.6 | -14.4% | -156.1 | -6.3% | 1.2% | -67.0 |
+| Feb 2025 on | Sportsbet's first price | the card's blend | 1.2x | 377 | 17.1 | 64 | 70.1 | -7.6% | -28.8 | -0.1% | 2.4% | -0.3 |
+| Feb 2025 on | Sportsbet's first price | the card's blend | 1.3x | 165 | 7.5 | 23 | 25.8 | +3.4% | +5.7 | +4.6% | 4.3% | +7.6 |
+| Feb 2025 on | Sportsbet's first price | the card's blend | 1.5x | 59 | 2.7 | 7 | 6.7 | +59.7% | +35.2 | +5.6% | 7.6% | +3.3 |
+| Feb 2025 on | Sportsbet's first price | blend with Isolynx | 1.1x | 1,079 | 49.0 | 243 | 235.9 | -5.6% | -60.5 | -5.4% | 1.2% | -56.7 |
+| Feb 2025 on | Sportsbet's first price | blend with Isolynx | 1.2x | 369 | 16.8 | 70 | 70.1 | +1.7% | +6.4 | +1.4% | 2.4% | +5.0 |
+| Feb 2025 on | Sportsbet's first price | blend with Isolynx | 1.3x | 150 | 6.8 | 22 | 23.3 | +17.3% | +25.9 | +5.4% | 4.4% | +8.1 |
+| Feb 2025 on | Sportsbet's first price | blend with Isolynx | 1.5x | 52 | 2.4 | 8 | 6.4 | +74.1% | +38.5 | +6.2% | 8.2% | +3.1 |
+| Feb 2025 on | Sportsbet's first price | with Isolynx, corrected on BSP corrected | 1.1x | 1,469 | 66.8 | 308 | 307.4 | +4.3% | +63.0 | -2.1% | 1.0% | -30.4 |
+| Feb 2025 on | Sportsbet's first price | with Isolynx, corrected on BSP corrected | 1.2x | 623 | 28.3 | 106 | 113.0 | +15.7% | +98.0 | +1.9% | 1.8% | +11.8 |
+| Feb 2025 on | Sportsbet's first price | with Isolynx, corrected on BSP corrected | 1.3x | 303 | 13.8 | 46 | 47.5 | +42.0% | +127.2 | +8.2% | 2.9% | +24.3 |
+| Feb 2025 on | Sportsbet's first price | with Isolynx, corrected on BSP corrected | 1.5x | 103 | 4.7 | 15 | 13.0 | +149.4% | +153.9 | +12.0% | 5.8% | +12.4 |
+| Feb 2025 on | the best first price of the bookmakers | the card's blend | 1.1x | 2,090 | 95.0 | 492 | 470.5 | -0.7% | -15.1 | +1.3% | 1.0% | +26.3 |
+| Feb 2025 on | the best first price of the bookmakers | the card's blend | 1.2x | 739 | 33.6 | 154 | 153.2 | -0.6% | -4.7 | +7.5% | 2.1% | +54.4 |
+| Feb 2025 on | the best first price of the bookmakers | the card's blend | 1.3x | 305 | 13.9 | 61 | 58.7 | +13.3% | +40.6 | +16.5% | 3.9% | +49.6 |
+| Feb 2025 on | the best first price of the bookmakers | the card's blend | 1.5x | 85 | 3.9 | 10 | 12.3 | +32.4% | +27.5 | +28.9% | 10.2% | +24.6 |
+| Feb 2025 on | the best first price of the bookmakers | blend with Isolynx | 1.1x | 2,097 | 95.3 | 515 | 495.8 | +1.4% | +30.2 | +2.9% | 1.0% | +60.2 |
+| Feb 2025 on | the best first price of the bookmakers | blend with Isolynx | 1.2x | 706 | 32.1 | 164 | 149.8 | +16.7% | +117.8 | +10.3% | 2.1% | +71.1 |
+| Feb 2025 on | the best first price of the bookmakers | blend with Isolynx | 1.3x | 275 | 12.5 | 57 | 52.5 | +26.1% | +71.8 | +19.3% | 4.3% | +52.2 |
+| Feb 2025 on | the best first price of the bookmakers | blend with Isolynx | 1.5x | 78 | 3.5 | 14 | 11.8 | +57.8% | +45.0 | +24.7% | 8.4% | +18.8 |
+| Feb 2025 on | the best first price of the bookmakers | with Isolynx, corrected on BSP corrected | 1.1x | 2,517 | 114.4 | 578 | 556.8 | +13.3% | +335.2 | +7.6% | 1.0% | +187.0 |
+| Feb 2025 on | the best first price of the bookmakers | with Isolynx, corrected on BSP corrected | 1.2x | 1,083 | 49.2 | 214 | 214.9 | +22.1% | +239.6 | +14.4% | 1.8% | +153.3 |
+| Feb 2025 on | the best first price of the bookmakers | with Isolynx, corrected on BSP corrected | 1.3x | 538 | 24.5 | 93 | 95.2 | +36.6% | +196.9 | +20.7% | 2.9% | +109.1 |
+| Feb 2025 on | the best first price of the bookmakers | with Isolynx, corrected on BSP corrected | 1.5x | 186 | 8.5 | 28 | 30.1 | +103.7% | +192.8 | +32.6% | 5.7% | +60.3 |
+
+TAB's and the best first price in each half, for the card's blend and the corrected blend (the run log has the blend
+with Isolynx):
+
+| period | price | blend | ratio | bets | bets a month | winners | corrected BSP's expected winners | realised flat ROI | realised units | corrected BSP per bet | its standard error | corrected BSP units |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Feb 2025 to Jan 2026 | TAB's first price | the card's blend | 1.1x | 629 | 52.4 | 161 | 162.1 | +2.6% | +16.4 | +7.9% | 2.0% | +48.6 |
+| Feb 2025 to Jan 2026 | TAB's first price | the card's blend | 1.2x | 178 | 14.8 | 42 | 47.8 | +2.8% | +4.9 | +22.9% | 5.2% | +40.3 |
+| Feb 2025 to Jan 2026 | TAB's first price | the card's blend | 1.3x | 57 | 4.8 | 18 | 17.0 | +33.5% | +19.1 | +53.5% | 13.3% | +30.5 |
+| Feb 2025 to Jan 2026 | TAB's first price | the card's blend | 1.5x | 8 | 0.7 | 2 | 2.1 | +53.8% | +4.3 | +138.0% | 71.8% | +11.0 |
+| Feb 2025 to Jan 2026 | TAB's first price | with Isolynx, corrected on BSP corrected | 1.1x | 801 | 66.8 | 204 | 192.5 | +21.7% | +173.9 | +12.3% | 1.9% | +97.3 |
+| Feb 2025 to Jan 2026 | TAB's first price | with Isolynx, corrected on BSP corrected | 1.2x | 320 | 26.7 | 69 | 70.6 | +27.6% | +88.2 | +22.5% | 3.8% | +71.5 |
+| Feb 2025 to Jan 2026 | TAB's first price | with Isolynx, corrected on BSP corrected | 1.3x | 157 | 13.1 | 27 | 31.4 | +18.6% | +29.2 | +31.5% | 6.7% | +48.8 |
+| Feb 2025 to Jan 2026 | TAB's first price | with Isolynx, corrected on BSP corrected | 1.5x | 54 | 4.5 | 10 | 11.0 | +56.8% | +30.7 | +48.9% | 14.6% | +26.4 |
+| Feb 2025 to Jan 2026 | the best first price of the bookmakers | the card's blend | 1.1x | 1,194 | 99.5 | 287 | 280.3 | +0.3% | +3.7 | +4.4% | 1.4% | +51.6 |
+| Feb 2025 to Jan 2026 | the best first price of the bookmakers | the card's blend | 1.2x | 432 | 36.0 | 98 | 96.9 | +7.8% | +33.9 | +12.3% | 2.8% | +52.5 |
+| Feb 2025 to Jan 2026 | the best first price of the bookmakers | the card's blend | 1.3x | 183 | 15.2 | 38 | 39.4 | +19.8% | +36.2 | +23.9% | 5.5% | +43.8 |
+| Feb 2025 to Jan 2026 | the best first price of the bookmakers | the card's blend | 1.5x | 52 | 4.3 | 7 | 7.6 | +57.8% | +30.0 | +32.4% | 14.7% | +16.9 |
+| Feb 2025 to Jan 2026 | the best first price of the bookmakers | with Isolynx, corrected on BSP corrected | 1.1x | 1,549 | 129.1 | 373 | 354.9 | +20.3% | +315.1 | +7.5% | 1.2% | +115.8 |
+| Feb 2025 to Jan 2026 | the best first price of the bookmakers | with Isolynx, corrected on BSP corrected | 1.2x | 663 | 55.2 | 143 | 140.0 | +36.9% | +244.6 | +15.0% | 2.3% | +99.1 |
+| Feb 2025 to Jan 2026 | the best first price of the bookmakers | with Isolynx, corrected on BSP corrected | 1.3x | 333 | 27.8 | 57 | 63.5 | +56.9% | +189.6 | +23.6% | 3.8% | +78.0 |
+| Feb 2025 to Jan 2026 | the best first price of the bookmakers | with Isolynx, corrected on BSP corrected | 1.5x | 124 | 10.3 | 20 | 19.7 | +151.1% | +187.3 | +32.7% | 7.4% | +40.5 |
+| Feb 2026 on | TAB's first price | the card's blend | 1.1x | 515 | 51.5 | 141 | 125.2 | +13.5% | +69.6 | +3.4% | 2.0% | +16.9 |
+| Feb 2026 on | TAB's first price | the card's blend | 1.2x | 139 | 13.9 | 39 | 32.8 | +18.3% | +25.4 | +15.1% | 4.8% | +20.4 |
+| Feb 2026 on | TAB's first price | the card's blend | 1.3x | 41 | 4.1 | 14 | 9.3 | +65.9% | +27.0 | +22.3% | 9.1% | +8.7 |
+| Feb 2026 on | TAB's first price | the card's blend | 1.5x | 6 | 0.6 | 0 | 2.2 | -100.0% | -6.0 | +62.1% | 29.1% | +3.7 |
+| Feb 2026 on | TAB's first price | with Isolynx, corrected on BSP corrected | 1.1x | 579 | 57.9 | 136 | 131.4 | +8.5% | +49.2 | +15.6% | 2.2% | +86.0 |
+| Feb 2026 on | TAB's first price | with Isolynx, corrected on BSP corrected | 1.2x | 230 | 23.0 | 47 | 42.5 | +18.4% | +42.4 | +23.7% | 4.6% | +51.3 |
+| Feb 2026 on | TAB's first price | with Isolynx, corrected on BSP corrected | 1.3x | 118 | 11.8 | 24 | 20.2 | +13.2% | +15.5 | +26.4% | 6.5% | +29.1 |
+| Feb 2026 on | TAB's first price | with Isolynx, corrected on BSP corrected | 1.5x | 32 | 3.2 | 5 | 6.9 | -3.1% | -1.0 | +43.0% | 11.2% | +13.3 |
+| Feb 2026 on | the best first price of the bookmakers | the card's blend | 1.1x | 896 | 89.6 | 205 | 190.1 | -2.1% | -18.8 | -2.9% | 1.4% | -25.3 |
+| Feb 2026 on | the best first price of the bookmakers | the card's blend | 1.2x | 307 | 30.7 | 56 | 56.2 | -12.6% | -38.6 | +0.6% | 3.0% | +1.9 |
+| Feb 2026 on | the best first price of the bookmakers | the card's blend | 1.3x | 122 | 12.2 | 23 | 19.3 | +3.6% | +4.4 | +4.9% | 5.2% | +5.8 |
+| Feb 2026 on | the best first price of the bookmakers | the card's blend | 1.5x | 33 | 3.3 | 3 | 4.7 | -7.6% | -2.5 | +23.4% | 12.9% | +7.7 |
+| Feb 2026 on | the best first price of the bookmakers | with Isolynx, corrected on BSP corrected | 1.1x | 968 | 96.8 | 205 | 201.9 | +2.1% | +20.0 | +7.7% | 1.6% | +71.2 |
+| Feb 2026 on | the best first price of the bookmakers | with Isolynx, corrected on BSP corrected | 1.2x | 420 | 42.0 | 71 | 74.9 | -1.2% | -5.1 | +13.5% | 2.9% | +54.2 |
+| Feb 2026 on | the best first price of the bookmakers | with Isolynx, corrected on BSP corrected | 1.3x | 205 | 20.5 | 36 | 31.6 | +3.5% | +7.2 | +16.0% | 4.6% | +31.1 |
+| Feb 2026 on | the best first price of the bookmakers | with Isolynx, corrected on BSP corrected | 1.5x | 62 | 6.2 | 8 | 10.5 | +8.9% | +5.5 | +32.5% | 8.9% | +19.8 |
+
+What it shows:
+
+- **The money is in the corrected blend at TAB's first price.** Since February 2025:
+
+  | bet | bets | a week | realised | corrected BSP |
+  |---|---|---|---|---|
+  | at 1.1x | 1,380 | about 15 | +16.2%, +223 units | +13.6% a bet, +183 units |
+  | at 1.2x | 550 | about 6 | +23.7%, +131 units | +23.0% a bet, +123 units |
+  | the card | 98 | about 1 | +46 units | +39 units |
+
+  - Both halves are positive both ways at 1.1x and 1.2x.
+- **Sportsbet's and Ladbrokes' first prices on their own add little, by the corrected judge.** They open a median 1.6
+  hours after TAB, after the market has moved.
+  - For the corrected blend, the corrected BSP rates them at -1.9% and -2.1% a bet at 1.1x.
+  - At 1.3x they rate +6.5% and +8.2%, where TAB's own first price is +29.4%.
+  - Realised, they look far better at 1.3x and 1.5x (+42% to +149%), but on a few hundred bets that is a handful of
+    long-priced winners. Their winners are close to what the corrected BSP expected (45 against 42.1, and 46 against
+    47.5, at 1.3x).
+- **The best first price of the bookmakers doubles the bets and adds little value.**
+  - For the corrected blend at 1.1x it makes 2,517 bets, about 27 a week. That is +13.3% realised (+335 units), but
+    only +7.6% a bet by the corrected BSP, +187 units.
+  - The 1,137 bets it adds to TAB's own are worth about +4 units by the corrected BSP.
+  - Since February 2026 the realised result is +2.1% at 1.1x and -1.2% at 1.2x, against +8.5% and +18.4% at TAB's
+    first price.
+  - At 1.3x and 1.5x the best price adds about +30 and +20 units by the corrected BSP over TAB's alone.
+- **The card's blend at the other books loses.** At 1.1x Ladbrokes is -5.7% realised and -7.5% by the corrected BSP,
+  and Sportsbet is -14.4% and -6.3%. Only the corrected blend finds value there, and only at the higher ratios.
+
+What it means: the way to many more winning bets is Test 80's corrected blend at TAB's first price, from 1.1x (about 15
+bets a week, +14% to +16% each) or from 1.2x (about 6 a week, +23% each). The other bookmakers' first prices are not
+worth chasing at the low ratios. At 1.3x and over they add a few bets a week of modest value, which may be worth it
+later. Which ratio, and whether to add the other books, are the founder's calls. Nothing changes the card until he
+says so, and the corrected blend is paper-tracked first.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
