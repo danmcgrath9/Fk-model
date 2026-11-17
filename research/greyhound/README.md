@@ -8040,6 +8040,236 @@ the market's own history: which dogs it backs. The new set is worth building on:
 rather than open to BSP, the moves of its kennel, and when a backed dog is first up. Nothing changes the card, and the
 paper tracker keeps Test 80's corrected blend; whether to move the paper to this model is the founder's call.
 
+## Test 83: the market's history, built out, and which way it points (17 Nov 2026, gh topaz run 44024534013, `topaz_round65.py`)
+
+Founder: "Build the market history next, find more winning bets".
+
+Test 82 found that how the market moved on a dog's earlier runs closes 2.7% of TAB's distance to BSP that nothing
+else closes, and left two questions: which way it points, and whether more of the market's history closes more.
+
+**The test, stated before the run.** Test 82's field, label, judge and scoring (11,593 races from February 2025), with
+four new parts of the market's history beside Test 82's five inputs. All from earlier days only: every run on the same
+day sees the history as it stood the night before.
+
+- **TAB's own moves** on the dog's last run and its last five: TAB's opening price against its last (`mh_tab_*`),
+  against its first change (`mh_first_*`), and how many prices TAB showed (`mh_nfl_*`). From Betwatch.
+- **The other books' opening prices** against TAB's, last run and last five (`mh_books_*`): the geometric mean of the
+  first prices of every book that is neither TAB nor an exchange.
+- **The backed and drifted rates** over the dog's last five: the share of runs where BSP closed 25% or more shorter
+  than TAB's open (backed, 19.3% of runs) or longer (drifted, 48.3%).
+- **The trainer's last 90 days**: the mean BSP move, the backed rate and the runners, the day itself left out.
+
+The parts cover 93% to 100% of the scored runners. Then the same ranking as Test 82, a walk forward of everything with
+the history from TAB's open, and its bets. The walk was allowed 2,000 rounds a refit, against Test 82's 1,200,
+because Test 82's walk hit its cap at every refit.
+
+**Which way each points**, from February 2025, by fifths of each input (fifth 1 the lowest). "Winners / TAB" is the
+winners over what TAB's opening book expects after its favourite bias is learnt; "winners / BSP" the same against the
+corrected BSP:
+
+| input | fifth 1 | fifth 5 | today's mean move to BSP, fifth 1 / fifth 5 | winners / TAB, fifth 1 / fifth 5 | winners / BSP, fifth 1 / fifth 5 |
+|---|---|---|---|---|---|
+| the dog's move to BSP last run (`dog_mv_last`) | drifted most | backed most | -46.5% / -14.8% | 0.931 / 1.042 | 0.999 / 0.993 |
+| TAB's own move last run (`mh_tab_last`) | lengthened most | shortened most | -42.1% / -21.2% | 0.942 / 1.067 | 1.008 / 1.023 |
+| the backed rate, last five (`mh_steam5`) | least | most | -37.4% / -14.8% | 0.984 / 1.031 | 1.032 / 0.985 |
+| the drifted rate, last five (`mh_drift5`) | least | most | -11.9% / -45.0% | 1.030 / 0.974 | 0.994 / 1.035 |
+| the trainer's last 90 days (`mh_tr90_mv`) | drifted most | backed most | -43.4% / -13.7% | 0.948 / 1.033 | 1.013 / 0.993 |
+| the other books' open, last five (`mh_books_mean5`) | they opened longest | they opened shortest | -31.6% / -30.6% | 0.987 / 1.067 | 1.011 / 1.039 |
+
+A move is the log of BSP's chance over TAB's opening chance, so the average runner's is negative: TAB's open is a
+book over 100%, and its longshots drift hardest. Each fifth holds about 16,000 runners and, on average, 2,300 winners,
+so a ratio is good to about 2%.
+
+**How much of TAB's distance to BSP each closes**, from February 2025:
+
+| forecast | distance to BSP (thousandths) | share of TAB's distance closed | winners' log loss |
+|---|---|---|---|
+| TAB's book with its favourite bias learnt | 71.03 | +18.1% | 1.5785 |
+| TAB's book + all the market history | 68.24 | +21.3% | 1.5768 |
+| everything without any market history | 57.85 | +33.3% | 1.5636 |
+| Test 82's everything | 55.55 | +35.9% | 1.5614 |
+| everything + all the market history | 55.47 | +36.0% | 1.5613 |
+| ... but Test 82's five history inputs | 56.08 | +35.3% | 1.5620 |
+| ... but TAB's own moves | 55.26 | +36.3% | 1.5613 |
+| ... but the other books' opening prices | 55.40 | +36.1% | 1.5612 |
+| ... but the backed and drifted rates | 55.42 | +36.1% | 1.5610 |
+| ... but the trainer's last 90 days | 55.45 | +36.0% | 1.5613 |
+| Test 82's walk (1,200 rounds) | 52.80 | +39.1% | 1.5583 |
+| **everything + all the market history, walked (2,000 rounds)** | **52.04** | **+40.0%** | **1.5577** |
+
+All the market history carries 5.2% of the model's gain. By input: `dog_mv_last` 0.8%, `mh_tab_mean5` 0.7%,
+`dog_mv_mean5` 0.6%, `mh_tab_last` 0.4%, and every other history input 0.3% or less. The walked model kept 1,750 to
+2,000 rounds, at the cap in 10 of 13 refits.
+
+**The bets at TAB's first price, flat, after TAB's deduction**, from February 2025 (22 months):
+
+| model | ratio | bets | a month | A/E | realised flat ROI | realised units | corrected BSP per bet (SE) | corrected BSP units |
+|---|---|---|---|---|---|---|---|---|
+| the card's blend | 1.1x | 1,144 | 52.0 | 1.051 | +7.5% | +86.0 | +5.8% (1.4%) | +65.5 |
+| Test 80's corrected blend | 1.1x | 1,380 | 62.7 | 1.050 | +16.2% | +223.1 | +13.6% (1.4%) | +183.3 |
+| Test 82's model | 1.1x | 1,389 | 63.1 | 1.003 | +14.5% | +202.0 | +14.5% (1.4%) | +197.1 |
+| **with the market history** | **1.1x** | **1,466** | **66.6** | **1.002** | **+17.8%** | **+261.1** | **+15.5% (1.4%)** | **+222.1** |
+| the card's blend | 1.2x | 317 | 14.4 | 1.005 | +9.6% | +30.4 | +19.5% (3.6%) | +60.7 |
+| Test 80's corrected blend | 1.2x | 550 | 25.0 | 1.027 | +23.7% | +130.6 | +23.0% (2.9%) | +122.8 |
+| Test 82's model | 1.2x | 556 | 25.3 | 1.096 | +35.7% | +198.5 | +23.4% (2.9%) | +127.0 |
+| **with the market history** | **1.2x** | **615** | **28.0** | **1.057** | **+36.2%** | **+222.6** | **+25.3% (2.7%)** | **+151.5** |
+| the card's blend | 1.3x | 98 | 4.5 | 1.217 | +47.1% | +46.1 | +40.8% (8.8%) | +39.2 |
+| Test 80's corrected blend | 1.3x | 275 | 12.5 | 0.988 | +16.3% | +44.8 | +29.4% (4.7%) | +77.9 |
+| Test 82's model | 1.3x | 296 | 13.5 | 1.057 | +37.7% | +111.6 | +26.7% (4.4%) | +76.9 |
+| **with the market history** | **1.3x** | **307** | **14.0** | **0.980** | **+28.0%** | **+86.0** | **+28.6% (4.4%)** | **+85.3** |
+| Test 82's model | 1.5x | 84 | 3.8 | 0.904 | +50.8% | +42.6 | +55.8% (10.5%) | +46.8 |
+| **with the market history** | **1.5x** | **99** | **4.5** | **0.985** | **+51.9%** | **+51.3** | **+51.4% (9.3%)** | **+49.8** |
+
+By half, with the market history:
+
+| period | ratio | bets | a month | A/E | realised flat ROI | realised units | corrected BSP per bet (SE) | corrected BSP units |
+|---|---|---|---|---|---|---|---|---|
+| Feb 2025 to Jan 2026 | 1.1x | 853 | 71.1 | 1.000 | +25.6% | +218.3 | +14.7% (1.8%) | +124.8 |
+| Feb 2026 on | 1.1x | 613 | 61.3 | 1.005 | +7.0% | +42.9 | +16.5% (2.1%) | +97.3 |
+| Feb 2025 to Jan 2026 | 1.2x | 352 | 29.3 | 1.053 | +47.1% | +165.7 | +23.5% (3.6%) | +82.0 |
+| Feb 2026 on | 1.2x | 263 | 26.3 | 1.062 | +21.6% | +56.9 | +27.8% (4.0%) | +69.5 |
+| Feb 2025 to Jan 2026 | 1.3x | 182 | 15.2 | 0.877 | +21.5% | +39.2 | +27.5% (5.8%) | +49.4 |
+| Feb 2026 on | 1.3x | 125 | 12.5 | 1.136 | +37.5% | +46.9 | +30.4% (6.6%) | +35.9 |
+
+**On races with nothing scratched after the open**, from February 2025, the market-history model makes 1,127 bets at
+1.1x, +14.4% a bet by the corrected BSP (SE 1.6%) and +22.3% realised (A/E 1.033); Test 82's model makes 1,074, +13.3%;
+Test 80's corrected blend 1,069, +11.8%. At 1.2x: 476 bets, +23.5% (SE 3.0%), against 425 at +20.7% and 418 at +20.1%.
+So the gain holds where the scratchings cannot help it.
+
+What it shows:
+
+- **Now we know which way it points: the market repeats itself, and TAB's open does not see it coming.**
+  - A dog the market drifted on its last run drifts again: the fifth that drifted most last time moves -46.5% today,
+    the fifth backed most -14.8%. The same holds for the trainer's runners over 90 days.
+  - TAB's open misses it. Dogs in the most-drifted fifth win 7% less than TAB's open expects (0.931), and dogs in the
+    most-backed fifth win 4% more (1.042). The same split shows on TAB's own moves (0.942 against 1.067).
+  - BSP gets it right: the same fifths win 0.999 and 0.993 of what the corrected BSP expects.
+  - So the edge is to bet the dogs the market has backed before, and not the ones it drifts, at TAB's open. That is
+    what the model learns from these inputs.
+  - One fifth looks short even at BSP: dogs whose other books opened shortest against TAB over their last five win
+    1.039 of the corrected BSP's expected winners. That is under two standard errors and the other fifths of the same
+    input do not line up behind it, so it is not a finding yet.
+- **The four new parts add almost nothing beyond Test 82's five inputs.** Together they move the distance closed from
+  35.9% to 36.0%. Leaving out Test 82's five costs 0.7 points. Leaving out any new part costs nothing: each
+  forecast is as good or better without it, by 0.3 points without TAB's own moves. The market's memory of a dog is mostly in one number: how far BSP moved from TAB's
+  open last time.
+- **The walked model is the best forecast yet**: 40.0% of the distance closed, against 39.1% for Test 82's walk, and
+  log loss 1.5577 against 1.5583. Most of that gain is probably the longer fit (2,000 rounds against 1,200), not the
+  new parts, since they add 0.1 points in the fixed fit. It was at the 2,000-round cap in 10 of 13 refits, so it may
+  still want more.
+- **It makes more winning bets than anything before it, by the fair judge.**
+  - At 1.1x: 1,466 bets in 22 months (67 a month), +15.5% a bet by the corrected BSP. That is +222 units, against
+    +197 for Test 82's model and +183 for Test 80's corrected blend.
+  - At 1.2x: 615 bets (28 a month), +25.3% a bet, +152 units, against +127 and +123.
+  - A/E is 1.002 at 1.1x: the winners came in exactly as the corrected BSP expected. The realised +17.8% is near the
+    fair +15.5%.
+  - At 1.2x the realised +36.2% sits above what was expected (A/E 1.057). Expect nearer +25%.
+- **Both halves are positive at every ratio by both judges.** The weak spot is the same as Test 82's: 1.1x since
+  February 2026 is +7.0% realised, with the expected winners (140 against 139.3) and +16.5% by the corrected BSP. The
+  winners that came in were shorter-priced than usual; the bets were not worse.
+- **In units a month** (one unit a bet): about +10 at 1.1x and +7 at 1.2x by the corrected BSP. The units scale with
+  the stake, and what TAB lets us put on at its open is the limit, not the model.
+
+What it means: the market's history is worth one number, not a family of them, and the walk with more rounds is a
+better model than Test 82's. Nothing changes the card, and the paper tracker keeps Test 80's corrected blend. The next
+step is round 66: the same model given a second look at each race 60 and 120 minutes after TAB opens, with the
+morning's moves, to find bets the open did not offer.
+
+## Test 84: a second look at each race, 60 and 120 minutes after TAB opens (17 Nov 2026, gh topaz run 44036120233, `topaz_round66.py`)
+
+Founder: "Keep going, find more winning bets".
+
+Every bet so far is taken at TAB's opening price. TAB's price moves after the open, toward BSP, and the other books
+open. A second look later in the morning could find value the open did not offer, on dogs the open did not bet.
+
+**The test, stated before the run.** For each race, TAB's price and the other books' prices as they stood 60 and 120
+minutes after TAB's first price (from Betwatch). At each time:
+
+- **The morning's moves**, known at that moment: TAB's move since its open (`td_tab`), the price then against TAB's
+  open (`td_price`), the other books' opening prices against TAB's open (`td_books`, the books open by then) and how
+  many books had opened (`td_nbooks`).
+- **The same model as Test 83** (everything + the market's history), started from TAB's book at that moment instead
+  of its open, with and without the morning's moves, ranked by the distance to BSP, then walked forward from
+  November 2024 at up to 2,000 rounds.
+- **Its bets at TAB's price at that moment**, after TAB's deduction, beside the card's blend at the same price.
+- **The two looks together**: Test 83's model at TAB's open, plus this look's bets on runners the open did not bet,
+  so no dog is bet twice.
+
+Other books had opened by 60 minutes for 34% of the scored runners, and by 120 minutes for 87%. Scored on the 12,300
+races (60 minutes) and 15,792 races (120 minutes) from February 2025 with TAB's price at that moment.
+
+**TAB's price moves a long way toward BSP in the first two hours.** On the same races, TAB's open is 14.6% farther from
+BSP than its price 60 minutes later, and 19.4% farther than at 120 minutes.
+
+| forecast, distance to BSP from Feb 2025 | 60 minutes | 120 minutes |
+|---|---|---|
+| TAB's book then, as it is | 75.24 (0%) | 71.40 (0%) |
+| TAB's book then, its favourite bias learnt | 58.97 (+21.6%) | 55.81 (+21.8%) |
+| TAB's book then + the morning's moves | 58.28 (+22.5%) | 55.01 (+23.0%) |
+| everything + the market's history | 46.66 (+38.0%) | 44.24 (+38.0%) |
+| everything + the market's history + the morning's moves | 46.41 (+38.3%) | 43.90 (+38.5%) |
+| **the same, walked forward** | **44.11 (+41.4%)** | **41.85 (+41.4%)** |
+
+In thousandths, with the share of TAB's distance at that moment closed. In the walked model the morning's moves carry
+about 7% of the gain (`td_tab` 3.7%, `td_price` 2.7%, `td_books` 0.8% at 60 minutes).
+
+**The bets at TAB's price at that moment, flat, after TAB's deduction**, from February 2025 (22 months):
+
+| look | model | ratio | bets | a month | A/E | realised flat ROI | realised units | corrected BSP per bet (SE) | corrected BSP units |
+|---|---|---|---|---|---|---|---|---|---|
+| 60 minutes | the card's blend | 1.1x | 1,088 | 49.5 | 1.106 | +0.3% | +2.8 | -3.7% (1.2%) | -39.3 |
+| 60 minutes | the card's blend | 1.2x | 308 | 14.0 | 1.033 | -1.5% | -4.5 | +10.3% (2.8%) | +30.9 |
+| 60 minutes | the card's blend | 1.3x | 115 | 5.2 | 1.234 | +21.6% | +24.8 | +24.3% (5.4%) | +27.3 |
+| 60 minutes | **with the morning's moves** | 1.1x | 272 | 12.4 | 1.032 | +27.0% | +73.3 | +22.6% (2.7%) | +59.3 |
+| 60 minutes | **with the morning's moves** | 1.2x | 94 | 4.3 | 1.005 | +33.3% | +31.3 | +36.7% (5.6%) | +33.4 |
+| 60 minutes | **with the morning's moves** | 1.3x | 42 | 1.9 | 1.262 | +70.8% | +29.7 | +53.9% (9.2%) | +22.1 |
+| 120 minutes | the card's blend | 1.1x | 1,067 | 48.5 | 1.103 | -0.7% | -7.7 | -6.6% (1.1%) | -69.1 |
+| 120 minutes | the card's blend | 1.2x | 274 | 12.5 | 1.075 | -5.2% | -14.3 | -0.5% (2.6%) | -1.3 |
+| 120 minutes | **with the morning's moves** | 1.1x | 175 | 8.0 | 0.909 | +13.0% | +22.7 | +19.5% (3.4%) | +33.5 |
+| 120 minutes | **with the morning's moves** | 1.2x | 41 | 1.9 | 0.680 | -13.6% | -5.6 | +38.8% (8.0%) | +15.9 |
+
+By half, the 60-minute look at 1.1x: February 2025 to January 2026, 137 bets, +19.8% a bet by the corrected BSP (SE
+3.9%) and +5.6% realised (A/E 0.806); February 2026 on, 135 bets, +25.5% (SE 3.9%) and +48.6% realised (A/E 1.272).
+
+**The two looks together**, Test 83's model at TAB's open plus the later look's bets on runners the open did not bet,
+from February 2025:
+
+| looks | ratio | bets | of them, the later look's | a week | realised flat ROI | realised units | corrected BSP per bet (SE) | corrected BSP units | over the open alone (Test 83) |
+|---|---|---|---|---|---|---|---|---|---|
+| open + 60 minutes | 1.1x | 1,564 | 98 | 16.9 | +18.0% | +280.8 | +16.4% (1.3%) | +251.3 | +29.2 |
+| open + 60 minutes | 1.2x | 674 | 59 | 7.3 | +37.4% | +252.4 | +26.2% (2.5%) | +171.4 | +19.9 |
+| open + 60 minutes | 1.3x | 339 | 32 | 3.7 | +36.2% | +122.7 | +30.5% (4.1%) | +100.2 | +14.9 |
+| open + 60 minutes | 1.5x | 110 | 11 | 1.2 | +47.6% | +52.3 | +51.8% (8.6%) | +56.0 | +6.2 |
+| open + 120 minutes | 1.1x | 1,516 | 50 | 16.4 | +18.0% | +272.4 | +15.9% (1.4%) | +235.5 | +13.4 |
+| open + 120 minutes | 1.2x | 630 | 15 | 6.8 | +34.8% | +219.4 | +25.7% (2.6%) | +157.6 | +6.1 |
+
+The last column is the corrected BSP units over Test 83's open-only bets at the same ratio (+222.1, +151.5, +85.3 and
++49.8).
+
+What it shows:
+
+- **The card's edge is at the open, and only there.** The card's blend at TAB's price 60 minutes later loses 3.7% a bet
+  at 1.1x by the corrected BSP, and 6.6% at 120 minutes, against +5.8% at the open (Test 83). TAB's price closes most
+  of the gap within the first hour. This is the founder's "we will win long term on opening", measured.
+- **A second look at 60 minutes adds bets the open missed, and they are good ones.** The model at that moment makes
+  272 bets at 1.1x, +22.6% a bet by the corrected BSP. Most are dogs the open had already bet; 98 are new.
+  - Together with the open, that is +251 units by the corrected BSP at 1.1x over 22 months, against +222 for the open
+    alone: about +29 units, or 1.3 a month. At 1.2x, +20 units.
+  - That is a real gain and a small one: four or five extra bets a month.
+- **The 120-minute look adds less**: 50 new bets at 1.1x and +13 units, because by then TAB has moved further toward
+  BSP and the books have opened. Its 1.2x bets came in well short of expectation (7 winners against 10.3).
+- **The morning's moves themselves add little to the forecast.** They close 0.3 to 0.5 points more of the distance in
+  the fixed fit. Most of what the second look knows is what it knew at the open; it is TAB's moved price, not new
+  information, that leaves fewer bets.
+- **The caveat on the halves.** The 60-minute look's realised results swing between the halves (A/E 0.806, then
+  1.272) on about 135 bets each. The corrected BSP's +20% and +26% a bet are the figures to trust; the realised ones
+  are noise around them.
+
+What it means: the open is where the money is, and the card should keep taking it there. A second look at 60 minutes
+is worth about four extra bets a month at +20% to +30% each. Running it live would need TAB's price an hour after each
+race opens, which the card does not fetch today, so it is the founder's call whether that is worth building. Nothing
+changes the card, and the paper tracker keeps Test 80's corrected blend.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
