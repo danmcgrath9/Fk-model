@@ -234,6 +234,36 @@ jobs:
               && echo "$f $(stat -c %s "bf/$f") bytes" || { rm -f "bf/$f"; echo "not published: $f"; }
           done
 
+      # A second saved walk, named in the env input as WALK_ALSO=walk-<run id>: restored first and set aside, then the
+      # latest walk is restored over the empty folder and the second walk's files are added only where the latest has
+      # no file of that name. Lets one round read models saved by two runs that ran side by side.
+      - name: Name a second saved walk (WALK_ALSO in the env input)
+        id: walkalso
+        if: github.event.inputs.mode == 'run'
+        env:
+          ENV_INPUT: ${{ github.event.inputs.env }}
+        run: |
+          key=""
+          for kv in $ENV_INPUT; do
+            case "$kv" in WALK_ALSO=walk-[0-9]*) key="${kv#WALK_ALSO=}" ;; esac
+          done
+          echo "key=$key" >> "$GITHUB_OUTPUT"
+          [ -n "$key" ] && echo "second saved walk: $key" || echo "no second saved walk"
+
+      - name: Restore the second saved walk (Actions cache, this repository only)
+        if: github.event.inputs.mode == 'run' && steps.walkalso.outputs.key != ''
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/walk
+          key: ${{ steps.walkalso.outputs.key }}
+          fail-on-cache-miss: true
+
+      - name: Set the second saved walk aside
+        if: github.event.inputs.mode == 'run' && steps.walkalso.outputs.key != ''
+        run: |
+          mv greyhound/cache/walk greyhound/cache/walk_also
+          echo "second saved walk: $(ls greyhound/cache/walk_also | wc -l) files"
+
       - name: Restore the saved walk-forward prices (Actions cache, this repository only)
         if: github.event.inputs.mode == 'run'
         uses: actions/cache/restore@v4
@@ -241,6 +271,18 @@ jobs:
           path: greyhound/cache/walk
           key: walk-${{ github.run_id }}
           restore-keys: walk-
+
+      - name: Add the second saved walk's files the latest lacks
+        if: github.event.inputs.mode == 'run' && steps.walkalso.outputs.key != ''
+        run: |
+          mkdir -p greyhound/cache/walk
+          n=0
+          for f in greyhound/cache/walk_also/*; do
+            b=$(basename "$f")
+            [ -e "greyhound/cache/walk/$b" ] || { cp "$f" "greyhound/cache/walk/$b"; n=$((n + 1)); }
+          done
+          rm -rf greyhound/cache/walk_also
+          echo "added from the second saved walk: $n files"
 
       - name: Run the scripts (results only; the data is not kept)
         if: github.event.inputs.mode == 'run' && steps.pullrun.outputs.complete == 'yes' && (github.event.inputs.trials != 'yes' || steps.pulltrials.outputs.complete == 'yes') && (github.event.inputs.races != 'yes' || steps.pullraces.outputs.complete == 'yes')

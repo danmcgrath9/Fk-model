@@ -8740,6 +8740,101 @@ Kelly. It makes about 123 bets a month (28 a week) and, by the corrected BSP, ab
 round fits further again. It still reads TAB's opening book, so live use still needs a race priced after TAB opens.
 Nothing changes the card.
 
+## Test 89: the fit pushed further two ways, and fits averaged (17 Nov 2026, gh topaz runs 44098015090 and 44098029602, `topaz_round71.py`)
+
+Founder: "Keep going, find more winning bets".
+
+Test 88 ended with six of its thirteen refits still stopping at or near the round cap, so the fit still wanted more.
+This round runs two walks, side by side, against Test 88's fit. Both use the same inputs, refit dates and learning
+rate (0.04):
+
+- **Twice the rounds** (71a): up to 8,000 rounds a refit, 15 leaves. Saved as `corr_r71a` in walk-44098015090.
+- **Bigger trees** (71b): 31 leaves, up to 4,000 rounds. Saved as `corr_r71b` in walk-44098029602.
+
+Each walk is also averaged with Test 88's fit, chance by chance.
+
+**The walks.**
+- Twice the rounds: its refits chose 1,600 to 8,000 rounds. Two stopped at the 8,000 cap and one at 7,975, so the cap
+  no longer binds most refits.
+- Bigger trees: its refits chose 950 to 4,000 rounds. Two stopped at the cap and two more within 75 rounds of it.
+- Both lead their inputs, by share of gain, the same way Test 88's fit does: ours against TAB (lp_ours 20 to 21%,
+  gap 19 to 20%, lp_tab 4.7%), then the track and the first tip's rank (about 2% each).
+
+**Distance to BSP**, February 2025 on, clean races, the same races for all:
+
+| model | distance to BSP (thousandths) | of TAB's distance closed | winners' log loss |
+|---|---|---|---|
+| Test 88's fit | 50.96 | +41.2% | 1.5562 |
+| twice the rounds | 50.77 | +41.4% | 1.5557 |
+| bigger trees | 50.72 | +41.5% | 1.5558 |
+| Test 88's fit and twice the rounds, averaged | 50.79 | +41.4% | 1.5559 |
+| Test 88's fit and bigger trees, averaged | **50.61** | **+41.6%** | 1.5558 |
+
+**The margin rule**, fair price under $15, flat, February 2025 on. Units are by the corrected BSP, with bets in
+brackets:
+
+| model | 1.5 points | 2 points | 2 points, Feb 2025 to Jan 2026 | 2 points, Feb 2026 on | 2 points, per bet (SE) | 2 points, realised units | A/E |
+|---|---|---|---|---|---|---|---|
+| Test 88's fit | +328.2 (3,243) | +325.4 (2,640) | +163.5 | +161.9 | +12.6% (0.8%) | +372.9 | 0.999 |
+| twice the rounds | +335.6 (3,437) | +326.4 (2,846) | +162.1 | +164.3 | +11.8% (0.8%) | +299.4 | 0.987 |
+| bigger trees | +321.5 (3,416) | +325.3 (2,777) | +156.7 | +168.6 | +12.0% (0.8%) | +330.4 | 0.993 |
+| Test 88's fit and twice the rounds, averaged | +334.4 (3,310) | +324.7 (2,713) | +163.4 | +161.3 | +12.3% (0.8%) | +322.3 | 0.988 |
+| Test 88's fit and bigger trees, averaged | +329.1 (3,243) | +326.5 (2,616) | +155.7 | +170.7 | +12.8% (0.8%) | +312.7 | 0.983 |
+
+**The 2-point margin, a quarter of Kelly** (stakes scaled to a mean of one unit), bets with a corrected BSP,
+February 2025 to October 2026, 21 months:
+
+| model | bets | corrected BSP per unit staked (SE) | corrected BSP units | Feb 2025 to Jan 2026 | Feb 2026 on | realised units | luck in the realised units (SD) | deepest fall, realised | losing months |
+|---|---|---|---|---|---|---|---|---|---|
+| Test 88's fit | 2,580 | +15.1% (0.9%) | +388.8 | +205.1 | +183.6 | **+351.4** | 83.5 | 39.7 | 3 of 21 |
+| twice the rounds | 2,774 | +14.3% (0.8%) | +397.3 | +207.3 | +189.9 | +335.1 | 86.2 | 40.6 | 3 of 21 |
+| bigger trees | 2,703 | +14.7% (0.8%) | **+397.8** | +205.9 | +191.9 | +338.5 | 84.5 | 48.1 | 4 of 21 |
+| Test 88's fit and twice the rounds, averaged | 2,647 | +14.8% (0.8%) | +392.5 | +206.7 | +185.8 | +338.1 | 84.4 | 40.1 | 3 of 21 |
+| Test 88's fit and bigger trees, averaged | 2,553 | +15.4% (0.9%) | +393.0 | +205.0 | +188.0 | +327.5 | 82.5 | 40.0 | 3 of 21 |
+
+**By three months, the 2-point margin, quarter Kelly**, corrected BSP units / realised units:
+
+| three months | Test 88's fit | twice the rounds | bigger trees |
+|---|---|---|---|
+| Feb 2025 to Apr 2025 | +73.3 / +25.0 | +72.4 / +20.2 | +71.5 / +12.2 |
+| May 2025 to Jul 2025 | +50.1 / +59.5 | +47.5 / +58.1 | +46.8 / +55.7 |
+| Aug 2025 to Oct 2025 | +41.3 / +74.3 | +45.1 / +74.2 | +45.5 / +81.1 |
+| Nov 2025 to Jan 2026 | +40.4 / +39.0 | +42.4 / +35.9 | +42.1 / +42.9 |
+| Feb 2026 to Apr 2026 | +59.0 / +11.5 | +60.9 / +6.5 | +58.9 / +0.2 |
+| May 2026 to Jul 2026 | +45.0 / +49.2 | +47.3 / +47.5 | +49.5 / +43.1 |
+| Aug 2026 to Oct 2026 | +79.6 / +93.0 | +81.7 / +92.8 | +83.6 / +103.2 |
+
+What it shows:
+
+- **Fitting further has stopped paying on bets.** Both new fits sit a little closer to BSP than Test 88's fit (50.77
+  and 50.72 against 50.96), so the fit is still improving. On bets the results are level:
+  - Flat at 2 points, all three are within 1.1 units of each other (+325.3 to +326.4).
+  - At a quarter of Kelly, both new fits make about 9 units more by the corrected BSP (+397.3 and +397.8 against
+    +388.8) and 13 to 16 units less realised (+335.1 and +338.5 against +351.4).
+  - Every one of these gaps is well inside a total's standard error of about 23 units.
+- **The new fits bet more dogs at the same total.** At 2 points, twice the rounds takes 206 more bets than Test 88's
+  fit and bigger trees 137 more, for the same corrected BSP units, so each bet is worth a little less (+11.8% and
+  +12.0% a bet against +12.6%).
+- **Averaging gets the closest to BSP yet.** Test 88's fit and bigger trees, averaged, is 50.61 thousandths, the best
+  of any model so far (+41.6% of TAB's distance closed). On bets it is level again: +326.5 flat and +393.0 at quarter
+  Kelly. It bets the fewest dogs (2,616 at 2 points) at the highest rate per bet (+12.8%).
+- **Twice the rounds and Test 88's fit average to nothing new** (50.79 against twice the rounds alone at 50.77). Those
+  two are likely the same trees grown further, so they make the same mistakes. Bigger trees are a different shape, so
+  their mistakes partly cancel.
+- **A/E is under 1 for every new model** (0.983 to 0.993, against 0.999 for Test 88's fit): slightly fewer winners
+  than the corrected BSP expected. At a quarter of Kelly the four new models' realised units sit 54 to 66 units below
+  their corrected BSP units, against 37 for Test 88's fit. The luck SD is 82 to 86 units, so that gap is within luck,
+  not a sign the new models are worse.
+- **No losing quarter.** Every model made money in every three months by the corrected BSP, and realised too. The
+  worst realised quarter was bigger trees from February to April 2026, at +0.2 units.
+
+What it means: the card's best model stays Test 88's fit at a 2-point margin, staked by a quarter of Kelly. The two new
+fits are not better on bets, and both cost more to fit. Pushing the same inputs further has now reached the point where
+each step moves the result by less than its error. More winning bets will have to come from elsewhere: more data,
+more bets at smaller edges, or other markets. Round 72 tests the first two cheaply. It averages all three fits, and
+keeps the 2-point bets' stakes fixed while adding the dogs at lower margins at their own smaller stakes. Nothing changes
+the card.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
