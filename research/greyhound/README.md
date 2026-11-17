@@ -8658,6 +8658,88 @@ and +11 units a month. Like every model since Test 80 it reads TAB's opening boo
 TAB opens, which the card does not do today. Tracking it on paper first is the founder's call. Nothing changes the
 card.
 
+## Test 88: the longer fit, let run further (17 Nov 2026, gh topaz run 44080355910, `topaz_round70.py`)
+
+Founder: "Keep going, find more winning bets".
+
+Test 87's best card is the longer fit (Test 83's inputs walked at a learning rate of 0.02, up to 4,000 rounds a refit)
+at a 2-point margin, staked by a quarter of Kelly. Its refits still stopped at or near the 4,000-round cap, so the fit
+wanted more. Twice the rounds would double the time, so this walk doubles the learning rate instead (0.04, up to
+4,000 rounds a refit), which reaches about as far as 8,000 rounds at 0.02. Same inputs, same refit dates, saved as
+`corr_r70` in the walk cache (walk-44080355910).
+
+**The walk.** Thirteen refits chose 1,600 to 4,000 rounds. Five stopped at the 4,000 cap and one at 3,975, so six of
+thirteen still wanted more. Its inputs by share of gain lead with ours against TAB (lp_ours 23.3%, gap 22.2%,
+lp_tab 5.1%), then the first tip's rank (2.2%) and the track (1.9%).
+
+**Distance to BSP**, February 2025 on, clean races, the same races for both: the learning rate 0.04 fit 50.96
+thousandths (it closes 41.2% of TAB's distance to BSP), winners' log loss 1.5562; the longer fit 51.31 (40.8%),
+1.5568.
+
+**The margin rule**, fair price under $15, flat, corrected BSP units (bets):
+
+| rule | Feb 2025 on | Feb 2025 to Jan 2026 | Feb 2026 on | per bet, Feb 2025 on (SE) | realised units | A/E |
+|---|---|---|---|---|---|---|
+| the longer fit, 1.5 points | +320.4 (2,986) | +147.1 (1,658) | +173.2 (1,328) | +11.0% (0.7%) | +365.0 | 0.992 |
+| the longer fit, 2 points | +305.4 (2,430) | +156.1 (1,370) | +149.3 (1,060) | +12.9% (0.8%) | +346.3 | 0.988 |
+| the longer fit, 2.5 points | +274.0 (1,997) | +139.9 (1,144) | +134.1 (853) | +14.0% (0.9%) | +334.9 | 0.993 |
+| learning rate 0.04, 1.5 points | +328.2 (3,243) | +152.1 (1,788) | +176.1 (1,455) | +10.4% (0.7%) | +325.5 | 0.988 |
+| learning rate 0.04, **2 points** | **+325.4 (2,640)** | +163.5 (1,470) | +161.9 (1,170) | +12.6% (0.8%) | +372.9 | 0.999 |
+| learning rate 0.04, 2.5 points | +291.8 (2,145) | +149.7 (1,183) | +142.0 (962) | +13.9% (0.9%) | +321.0 | 0.990 |
+
+**The 2-point margin, flat against a quarter of Kelly**, bets with a corrected BSP (February 2025 to October 2026, 21
+months):
+
+| model | period | staking | bets | corrected BSP per unit staked (SE) | corrected BSP units | realised units | luck in the realised units (SD) | largest stake | deepest fall, realised | losing months |
+|---|---|---|---|---|---|---|---|---|---|---|
+| the longer fit | Feb 2025 on | flat | 2,372 | +12.9% (0.8%) | +305.4 | +321.1 | 88.4 | 1.0 | 33.4 | 5 of 21 |
+| the longer fit | Feb 2025 on | quarter Kelly | 2,372 | +15.4% (0.9%) | +365.0 | +323.2 | 79.6 | 2.7 | 42.0 | 3 of 21 |
+| learning rate 0.04 | Feb 2025 on | flat | 2,580 | +12.6% (0.8%) | +325.4 | +350.5 | 93.0 | 1.0 | 41.5 | 5 of 21 |
+| learning rate 0.04 | Feb 2025 on | **quarter Kelly** | 2,580 | **+15.1% (0.9%)** | **+388.8** | +351.4 | 83.5 | 2.7 | 39.7 | 3 of 21 |
+| learning rate 0.04 | Feb 2025 to Jan 2026 | flat | 1,462 | +11.2% (1.1%) | +163.5 | +227.2 | 70.2 | 1.0 | 41.5 | 2 of 12 |
+| learning rate 0.04 | Feb 2025 to Jan 2026 | quarter Kelly | 1,458 | +14.1% (1.2%) | +205.1 | +197.8 | 64.0 | 2.7 | 39.7 | 2 of 12 |
+| learning rate 0.04 | Feb 2026 on | flat | 1,118 | +14.5% (1.1%) | +161.9 | +123.3 | 61.0 | 1.0 | 38.2 | 3 of 9 |
+| learning rate 0.04 | Feb 2026 on | quarter Kelly | 1,118 | +16.4% (1.2%) | +183.6 | +153.6 | 53.6 | 2.7 | 29.8 | 1 of 9 |
+
+The longer fit's halves are in Test 87 (quarter Kelly: +197.6 and +167.3).
+
+**By three months, the 2-point margin, quarter Kelly**, corrected BSP units / realised units:
+
+| three months | the longer fit | learning rate 0.04 |
+|---|---|---|
+| Feb 2025 to Apr 2025 | +68.9 / +12.4 | +73.3 / +25.0 |
+| May 2025 to Jul 2025 | +49.2 / +64.0 | +50.1 / +59.5 |
+| Aug 2025 to Oct 2025 | +43.1 / +67.9 | +41.3 / +74.3 |
+| Nov 2025 to Jan 2026 | +36.4 / +26.5 | +40.4 / +39.0 |
+| Feb 2026 to Apr 2026 | +55.3 / +0.9 | +59.0 / +11.5 |
+| May 2026 to Jul 2026 | +38.3 / +49.1 | +45.0 / +49.2 |
+| Aug 2026 to Oct 2026 | +73.7 / +102.3 | +79.6 / +93.0 |
+
+What it shows:
+
+- **Fitting further is a small, steady gain.** The learning rate 0.04 fit sits a little closer to BSP (50.96
+  thousandths against 51.31) and makes more at the 2-point margin, in both halves.
+  - Flat: +325.4 units against +305.4, from 2,640 bets against 2,430.
+  - A quarter of Kelly: +388.8 against +365.0, about 6.5% more.
+- **The gain is spread, not lumped.** By the corrected BSP the faster fit is ahead in six of the seven quarters. It is
+  behind only from August to October 2025, by 1.8 units. Realised, it is ahead in five of seven.
+- **The margin stays at 2 points.** At 1.5 points the faster fit adds 603 bets for +2.8 units by the corrected BSP, and
+  realised it makes less (+325.5 against +372.9). At 2.5 points it drops 495 bets and 33.6 units.
+- **The steps are not shrinking yet.** Flat at 2 points, Test 83's model made +287.7. The longer fit made +305.4
+  (+17.7), and this fit makes +325.4 (+20.0). Six of its thirteen refits still stopped at or near the cap.
+- **How sure:** the two models bet mostly the same dogs, so the gap between them is smaller than either total's
+  standard error (about 23 units). Being ahead in both halves and six of seven quarters is the evidence it is real;
+  a paired test was not run.
+- **No losing quarter, again.** Both models made money in every three months, by the corrected BSP and realised. The
+  faster fit's worst realised quarter was +11.5 (February to April 2026). It had 3 losing months of 21, and its
+  deepest fall was 39.7 units.
+
+What it means: the best card found is now the learning rate 0.04 fit at a 2-point margin, staked by a quarter of
+Kelly. It makes about 123 bets a month (28 a week) and, by the corrected BSP, about +18.5 units a month. The card's
+1.1x makes about 73 bets and +11 units a month. The step is small but has come out the same way twice, so the next
+round fits further again. It still reads TAB's opening book, so live use still needs a race priced after TAB opens.
+Nothing changes the card.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
