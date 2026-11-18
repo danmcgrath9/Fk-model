@@ -188,6 +188,8 @@ def flatten(run: dict) -> dict:
         row[f"t{d}"] = s.get("elapsedTime") if s else None
         row[f"v{d}"] = s.get("splitSpeed") if s else None
         row[f"pos{d}"] = s.get("positionInRunning") if s else None
+        if d in (100, 200, 300):
+            row[f"rail{d}"] = s.get("averageToRail") if s else None     # the split's distance off the rail, as at the jump
     # the run home: the last two 50 m splits to the finish, summed
     fin = [s for s in finish if isinstance(s, dict) and s.get("deltaTime") is not None]
     fin = sorted(fin, key=lambda s: -(s.get("splitDistance") or 0))    # distance TO the finish: last = the finish
