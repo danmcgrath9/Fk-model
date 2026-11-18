@@ -92,7 +92,63 @@ def test_watch_prices_each_race_once(monkeypatch):
     polls = [[race("a", [[[3.0, "t"]]]), race("b", [[]])],
              [race("a", [[[3.0, "t"]]]), race("b", [[[2.0, "t"]]])],
              [race("a", [[[3.0, "t"]]]), race("b", [[[2.0, "t"]]])]]
-    bets, n, seen = M.watch("2026-11-18", None, None, None, datetime(2026, 11, 18, 7, 3, tzinfo=M.MEL), 0,
+    bets, n, seen, h = M.watch("2026-11-18", None, None, None, datetime(2026, 11, 18, 7, 3, tzinfo=M.MEL), 0,
                             lambda: polls.pop(0), clock=lambda: next(t), sleep=lambda s: None)
     # poll 1 prices race a (b is not fully priced yet), poll 2 prices b only, poll 3 nothing new
     assert calls == [["a"], ["b"]] and n == 3 and seen == {"a", "b"} and len(bets) == 2
+
+
+def test_feed_health_counts_runners_not_scratched():
+    races = [race("a", [[[3.0, "t"]], []]), race("b", [[], []])]
+    races[1]["runners"][0]["books"]["Sportsbet"] = {"last": [4.0, "t"], "flucs": []}
+    races[1]["runners"][1]["scratched"] = "2026-11-19T07:00:00Z"
+    h = M.feed_health(races)
+    assert h == {"races": 2, "runners": 3, "tab_runners": 1, "tab_races": 1, "any_runners": 2}
+
+
+def _clock(start, step_s):
+    from datetime import timedelta
+    state = {"t": start}
+
+    def tick():
+        return state["t"]
+
+    def sleep(s):
+        state["t"] = state["t"] + timedelta(seconds=step_s)
+    return tick, sleep
+
+
+def test_watch_waits_on_for_a_late_open(monkeypatch):
+    """No TAB price at 8:20: the watch runs on to `late`; a stray runner priced is not TAB's open."""
+    from datetime import datetime
+    monkeypatch.setattr(M.T, "open_field", lambda races: pd.DataFrame())
+    tick, sleep = _clock(datetime(2026, 11, 19, 8, 0, tzinfo=M.MEL), 600)
+    stray = [race("a", [[[3.0, "t"]], []]), race("b", [[], []]), race("c", [[], []])]
+    _, n, seen, h = M.watch("2026-11-19", None, None, None, datetime(2026, 11, 19, 8, 20, tzinfo=M.MEL), 0,
+                            lambda: stray, clock=tick, sleep=sleep, late=datetime(2026, 11, 19, 9, 50, tzinfo=M.MEL))
+    # polls at 8:00, 8:10, ..., 9:40: eleven, none past 9:50
+    assert n == 11 and not seen and h["first_open"] is None and h["tab_runners"] == 1
+
+
+def test_watch_stops_an_hour_after_a_late_open(monkeypatch):
+    from datetime import datetime
+    monkeypatch.setattr(M.T, "open_field", lambda races: pd.DataFrame())
+    tick, sleep = _clock(datetime(2026, 11, 19, 8, 0, tzinfo=M.MEL), 600)
+    closed = [race("a", [[]]), race("b", [[]])]
+    opened = [race("a", [[[3.0, "t"]]]), race("b", [[]])]
+    feed = iter([closed] * 4 + [opened] * 20)          # TAB opens on the poll at 8:40
+    _, n, _, h = M.watch("2026-11-19", None, None, None, datetime(2026, 11, 19, 8, 20, tzinfo=M.MEL), 0,
+                         lambda: next(feed), clock=tick, sleep=sleep, late=datetime(2026, 11, 19, 9, 50, tzinfo=M.MEL))
+    # open seen at 8:40, so the watch runs to 9:40: polls at 8:00 ... 9:30, ten
+    assert h["first_open"].strftime("%H:%M") == "08:40" and n == 10
+
+
+def test_watch_on_a_normal_morning_stops_at_until(monkeypatch):
+    from datetime import datetime
+    monkeypatch.setattr(M.T, "open_field", lambda races: pd.DataFrame())
+    tick, sleep = _clock(datetime(2026, 11, 19, 7, 0, tzinfo=M.MEL), 600)
+    opened = [race("a", [[[3.0, "t"]]])]
+    _, n, _, h = M.watch("2026-11-19", None, None, None, datetime(2026, 11, 19, 8, 20, tzinfo=M.MEL), 0,
+                         lambda: opened, clock=tick, sleep=sleep, late=datetime(2026, 11, 19, 9, 50, tzinfo=M.MEL))
+    # open at 7:00, an hour after is 8:00, before 8:20: polls at 7:00 ... 8:10, eight
+    assert n == 8 and h["first_open"].strftime("%H:%M") == "07:00"

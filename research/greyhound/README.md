@@ -9353,6 +9353,69 @@ What it means: the founder's reading of the draw is right, and it is already par
 TAB's opening price misses it; ours does not. Whether the lines add money once the correction can see them is round
 78. Nothing changes the card.
 
+## Test 97: does the running line make the best model more money? (18 Nov 2026, gh topaz run 44227254682, `topaz_round78.py`)
+
+Founder: "once the running line job is ran, want to know if it increase profitablity".
+
+Test 88's fit was walked again with two changes:
+- ours with Isolynx is Test 96's walk with the running line (walk_a0e86c9a2f5330d5);
+- the 82 running-line inputs are inputs to the correction too, 336 in all.
+
+Same settings and refits; February 2025 to October 2026.
+
+| model | distance to BSP | winners' log loss | 2 points flat: bets / corrected BSP units / realised | quarter Kelly: bets / corrected BSP per unit (SE) / corrected BSP units / realised | deepest fall | losing months |
+|---|---|---|---|---|---|---|
+| Test 88's fit | 50.96 | 1.5562 | 2,640 / +325.4 / +372.9 | 2,580 / +15.1% (0.9%) / +388.8 / +351.4 | 39.7 | 3 of 21 |
+| with the running line | 50.92 | 1.5550 | 2,730 / +306.5 / +328.5 | 2,663 / +14.6% (0.9%) / +388.9 / +337.0 | 30.5 | 4 of 21 |
+
+The running line's inputs took 5.1% of the gain, none more than 0.2%. The model still leads on ours against TAB
+(lp_ours 28.8%, gap 23.2%, lp_tab 3.8%).
+
+What it shows: the running line makes no money. At a quarter of Kelly it is level with Test 88's fit by the corrected
+BSP (+388.9 against +388.8) and 14 units behind realised. Flat at 2 points it is 19 units behind. It is a little closer
+to the winners (log loss 1.5550 against 1.5562), and its deepest fall is shallower, but neither is outside the noise.
+TAB's opening book misses the founder's dogs (Test 96), and the correction already caught that through ours against
+TAB. The running line stays out of the model.
+
+## Test 98: the best model with only what is known on a live morning (18 Nov 2026, gh topaz run 44227209413, `topaz_round79.py`)
+
+Founder: "Port the best model into the morning program".
+
+Ten of Test 88's inputs are built from BSP: how far BSP closed from TAB's open on the dog's and the trainer's earlier
+runs, the backed and drifted rates, and the trainer's last 90 days (`dog_mv_last`, `dog_mv_mean5`, `dog_mv_n`,
+`trainer_mv`, `trainer_mv_n`, `mh_steam5`, `mh_drift5`, `mh_tr90_mv`, `mh_tr90_steam`, `mh_tr90_n`). Betfair publishes
+its BSP files about a month after the racing, so on a live morning those ten would be a month stale. Test 88's fit was
+walked again without them, 244 inputs. Same settings and refits; February 2025 to October 2026.
+
+| model | distance to BSP | winners' log loss | 2 points flat: bets / corrected BSP units / realised | quarter Kelly: bets / corrected BSP per unit (SE) / corrected BSP units / realised | deepest fall | losing months |
+|---|---|---|---|---|---|---|
+| Test 88's fit | 50.96 | 1.5562 | 2,640 / +325.4 / +372.9 | 2,580 / +15.1% (0.9%) / +388.8 / +351.4 | 39.7 | 3 of 21 |
+| **known on the morning** | 51.82 | 1.5568 | 2,621 / +298.0 / +302.2 | 2,559 / **+14.4% (0.9%) / +365.5** / +282.3 | 44.9 | 5 of 21 |
+
+By three months, a quarter of Kelly, corrected BSP units / realised units: +65.2 / +14.9, +50.4 / +61.3,
++41.1 / +51.1, +37.6 / +36.3, +58.7 / -19.1, +37.2 / +38.9, +75.2 / +99.0.
+
+What it shows:
+- **The model that can run live keeps 94% of the edge by the corrected BSP:** +365.5 units against +388.8, about 17
+  units a month, at +14.4% a unit.
+- **Realised, it made +282.3** against Test 88's +351.4. The 69-unit gap is inside the luck in either total (SD about
+  83 units). Realised, it lost one quarter (February to April 2026, -19.1); by the corrected BSP every quarter was
+  positive.
+- **It is about twice the corrected blend.** The corrected blend at 1.1x made +183.3 by the corrected BSP over the same
+  months (Test 94), on 1,347 bets against this model's 2,559.
+
+What it means: this is the version to run live. It was ported the same night (`topaz_best.py`): fitted beside the
+corrected blend by the weekly train, on the same races and inputs the nightly card keeps, with the market's history
+from Betwatch. The morning program prices it at TAB's open from 19 November, paper only.
+
+What the live version changes, and why it may differ a little from this test:
+- **The form inputs** are the ones the nightly card keeps for the corrected blend, so live and trained match by
+  construction.
+- **The market's history** is each dog's earlier runs in Betwatch. This test read it from the runs in the walk.
+- **The model** is fitted once on every race, not walked.
+
+The paper results will show whether those differences cost anything. Nothing changes the card.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
