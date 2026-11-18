@@ -345,3 +345,75 @@ first price here is the first Betwatch recorded (not guaranteed to be the open) 
 Backing at BSP on the form price alone loses 14% to 16% in both halves after commission. **No bet is suggested.** What
 would change that: the TAB-open result holding on more bets once sectionals are in, then paper bets recorded forward at
 real morning prices before any money.
+
+## Test 9: a form price against TAB's first price, then TAB priced in (18 Nov 2026, bw_form.py, runs 44386590720 and 44389293619)
+
+Founder, 18 Nov: "I want to create a model that beats tab without its prices and then if we price tab in can we win".
+Same races and splits as Test 8, restricted to races where every runner has a TAB first price (holdout 9,804 races,
+2026, two halves). Two new form prices, neither seeing any price from the race being priced:
+- **form+** (110 inputs): Test 8's inputs plus each horse's Betwatch record (finishing positions in every Betwatch race,
+  including those Betfair lacks; its rating at TAB's last price in earlier races and how those prices moved), stable and
+  driver form over the last 60 days, class and handicap change, and every key rating against the race (minus the race
+  mean, and rank). Tested on earlier races only;
+- **pure form** (64 inputs): form+ with every input built from any price removed (past BSP, past TAB, in-running
+  prices, records measured against a price). Positions, wins, places, driver, trainer, class, handicap, draw, days.
+
+**Part 1: does a form price beat TAB's first price? No.**
+
+| price | LL 1st half | LL 2nd half | KL to BSP 1st half | KL 2nd half | gap to BSP closed | beats TAB first? |
+|---|---|---|---|---|---|---|
+| people (Test 8) | 1.9731 | 1.9766 | 0.4012 | 0.4087 | 32.5% | no |
+| form+ | 1.9576 | 1.9607 | 0.3852 | 0.3937 | 35.0% | no |
+| pure form | 1.9740 | 1.9799 | 0.4061 | 0.4152 | 32.1% | no |
+| TAB first price | 1.7120 | 1.7027 | 0.1514 | 0.1475 | 76.2% | |
+| stage 2: form+ with TAB first (0.15 / 1.10) | 1.6967 | 1.6868 | 0.1348 | 0.1307 | 78.7% | yes, both halves |
+| stage 2: pure form with TAB first (0.20 / 1.10) | 1.6963 | 1.6868 | 0.1348 | 0.1308 | 78.7% | yes, both halves |
+| TAB last price | 1.5907 | 1.5892 | 0.0303 | 0.0305 | 95.3% | yes |
+
+The new inputs add 2.5 points (32.5% to 35.0%); finishing positions and past TAB prices add little beyond what was
+there. Biggest inputs: track 13%, trainer win rate against the race 11%, class 9%, driver win rate rank 8%. Pure form
+is as good as people, so almost none of the form signal comes from past prices. What the form prices lack is how fast
+a horse runs: times and sectionals (RISE).
+
+**Part 2: with TAB priced in, can we win? On paper at TAB's first price, yes in both halves; but read Part 3.**
+Backing at TAB's first price where the stage-2 chance x that price clears an edge (no commission):
+
+| edge at least | form+ 1st half | form+ 2nd half | pure form 1st half | pure form 2nd half |
+|---|---|---|---|---|
+| 5% | 286 bets, +11.9% | 307, +20.1% | 312, +19.6% | 327, +22.8% |
+| 10% | 198, +28.8% | 218, +42.6% | 230, +22.8% | 232, +33.1% |
+| 20% | 117, +41.5% | 126, +63.7% | 124, +49.5% | 138, +41.3% |
+
+Positive at every cut, both halves, both models; with each group's ten biggest wins removed, every row is -18% to
+-52% (a harsh cut on 50 to 100 winners, but the profits do lean on long winners). The form price alone, backed at TAB's
+first price, loses 43% to 47%: TAB's first prices carry a large margin (every runner backed at TAB's first price
+returns -36.9%).
+
+**Part 3: closing-line value: where the profit comes from.**
+
+| stage-2 bets, edge at least | half | bets | TAB price shortened after the bet | drifted | mean log(first / last) | ROI at TAB first | at TAB last | at BSP, 8% comm. | A/E v BSP |
+|---|---|---|---|---|---|---|---|---|---|
+| form+, 5% | 1st | 286 | 74% | 22% | +0.294 | +11.9% | -34.4% | -30.4% | 0.82 |
+| form+, 5% | 2nd | 307 | 74% | 22% | +0.317 | +20.1% | -26.5% | -17.0% | 0.99 |
+| form+, 10% | 1st | 198 | 75% | 22% | +0.329 | +28.8% | -28.1% | -24.7% | 0.87 |
+| form+, 10% | 2nd | 218 | 78% | 18% | +0.408 | +42.6% | -18.9% | -9.2% | 1.06 |
+| pure form, 10% | 1st | 230 | 73% | 23% | +0.305 | +22.8% | -28.0% | -25.8% | 0.87 |
+| pure form, 10% | 2nd | 232 | 77% | 20% | +0.378 | +33.1% | -12.4% | +4.3% | 1.04 |
+| every runner (baseline) | both | 87,709 | 30% | 64% | -0.258 | -36.9% | -33.2% | -10.8% | 1.00 |
+
+What this says, plainly:
+- The model is good at spotting TAB first prices that are too big: 72% to 83% of its bets shorten afterwards, against
+  30% of all runners, and on average TAB's last price is 25% to 40% shorter than the price taken (log 0.29 to 0.54).
+  That holds in both halves and is not carried by a few winners.
+- The same horses are NOT better than the market thinks. At BSP they win about as often as BSP says (A/E 0.82 to 1.06,
+  around 0.95 overall) and lose after commission; at TAB's last price they lose 12% to 34%. The model has no edge on
+  the horses; its edge is on TAB's early price.
+- So the paper profit exists only if TAB's first price can actually be taken, in size, before TAB moves it. That is
+  exactly the bet TAB limits accounts for, and the "first price" here is the first Betwatch recorded (not guaranteed
+  to be bettable at that moment, or to be the open).
+
+**Decision for the founder: no bet.** The honest answer to "can we win" is: on TAB's early prices, perhaps, while the
+account lasts; on the horses themselves, not yet. To test the early-price edge properly it has to be recorded forward:
+at the moment a TAB price first appears, log the model's chance and the price that could really be taken, and see if
+the bet would have been accepted (paper; and Test 5's recorder reads TAB through the founder's session, which is why it
+is paused). To get an edge on the horses themselves, the form needs times and sectionals.
