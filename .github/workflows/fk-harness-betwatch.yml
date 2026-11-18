@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'probe (counts only, sample days) or pull (month files into the Actions cache, resumable)'
+        description: 'probe (counts only, sample days), pull (month files into the Actions cache, resumable), or model (research/harness/bw_model.py over the cache and Betfair files; scores only)'
         default: 'probe'
       type:
         description: 'Harness, Thoroughbred or Greyhound'
@@ -49,6 +49,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install 'requests>=2.31'
+      - if: github.event.inputs.mode == 'model'
+        run: pip install pandas pyarrow lightgbm scikit-learn
 
       - name: Probe (counts only)
         if: github.event.inputs.mode == 'probe'
@@ -58,7 +60,7 @@ jobs:
 
       # v2 (18 Nov 2026): race class and track condition kept; v1 caches dropped them, so they are not restored.
       - name: Restore the pulled months (Actions cache, this repository only)
-        if: github.event.inputs.mode == 'pull'
+        if: github.event.inputs.mode == 'pull' || github.event.inputs.mode == 'model'
         uses: actions/cache/restore@v4
         with:
           path: betwatch-cache/${{ github.event.inputs.type }}
@@ -71,6 +73,22 @@ jobs:
           T="${{ github.event.inputs.to }}"
           python -m greyhound.betwatch pull --type "$TYPE" --locations Australia --from "${{ github.event.inputs.from }}" ${T:+--to "$T"} \
             --dir "betwatch-cache/$TYPE" --max-minutes "${{ github.event.inputs.max_minutes }}" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Download Betfair's free harness files (model)
+        if: github.event.inputs.mode == 'model'
+        run: |
+          mkdir -p bf
+          for f in ANZ_Harness_2020.zip ANZ_Harness_2021.zip ANZ_Harness_2022.zip ANZ_Harness_2023.zip ANZ_Harness_2024.zip \
+                   ANZ_Harness_2025.zip $(for m in 01 02 03 04 05 06 07 08 09 10 11; do echo ANZ_Harness_2026_$m.csv; done); do
+            curl -fsSL --retry 3 -o "bf/$f" "https://betfair-datascientists.github.io/data/assets/$f" \
+              && echo "$f $(stat -c %s "bf/$f") bytes" || { echo "not published: $f"; rm -f "bf/$f"; }
+          done
+
+      - name: Model (scores only; no Betwatch row is printed or uploaded)
+        if: github.event.inputs.mode == 'model'
+        run: |
+          set -o pipefail
+          python research/harness/bw_model.py bf "betwatch-cache/$TYPE" "Australian harness" | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Save the pulled months (Actions cache)
         if: always() && github.event.inputs.mode == 'pull'

@@ -40,9 +40,10 @@ def kl_to_bsp(p, q, race):
     return float(t.groupby(np.asarray(race)).sum().mean())
 
 
-def fit(tr, va, ho, feats):
-    """Trees and a logistic regression on these inputs, each renormalised per race, blended on validation log loss."""
-    X = feats + CATS
+def fit(tr, va, ho, feats, cats=CATS):
+    """Trees and a logistic regression on these inputs, each renormalised per race, blended on validation log loss.
+    The categorical inputs go to the trees only."""
+    X = feats + list(cats)
     m = lgb.LGBMClassifier(n_estimators=3000, learning_rate=0.03, num_leaves=63, min_child_samples=200,
                            subsample=0.8, subsample_freq=1, colsample_bytree=0.8, reg_lambda=1.0, verbose=-1)
     m.fit(tr[X], tr.won, eval_set=[(va[X], va.won)], callbacks=[lgb.early_stopping(100, verbose=False)])
