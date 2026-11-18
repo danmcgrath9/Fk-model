@@ -178,6 +178,7 @@ def main():
         td["p_s2"] = apply2(td, sa, sb)
         td["edge"] = td.p_s2 * td.tab_open - 1
         picks = td[td.edge >= EDGE].sort_values("start")
+        near = td[td.edge < EDGE].sort_values("edge", ascending=False).head(10)   # closest, NOT bets
         print(f"\ntoday: {len(picks)} paper picks at an edge of {EDGE:.0%} or more, in {picks.race.nunique()} races "
               f"(sealed below)")
         rows = [{"start_sydney": r.start.tz_localize("UTC").tz_convert(SYD).strftime("%H:%M"), "track": r.TRACK, "race": r.race_number,
@@ -185,10 +186,14 @@ def main():
                  "tab_first": r.tab_open, "tab_first_hours_before": round(r.tab_open_hours, 1),
                  "tab_latest": r.tab_last, "form_chance": round(r.p_model, 4), "stage2_chance": round(r.p_s2, 4),
                  "fair_price": round(1 / r.p_s2, 2), "edge": round(r.edge, 3)} for r in picks.itertuples()]
+        near_rows = [{"start_sydney": r.start.tz_localize("UTC").tz_convert(SYD).strftime("%H:%M"), "track": r.TRACK,
+                      "race": r.race_number, "no": int(r.number), "horse": r.horse_name, "tab_first": r.tab_open,
+                      "tab_latest": r.tab_last, "fair_price": round(1 / r.p_s2, 2), "edge": round(r.edge, 3)}
+                     for r in near.itertuples()]
         from greyhound import sealed
         with tempfile.NamedTemporaryFile("wb", suffix=".pem", delete=False) as fh:
             fh.write(base64.b64decode(a.pub)); pk = fh.name
-        lines, sha = sealed.seal(json.dumps({"day": str(today), "picks": rows}).encode(), Path(pk))
+        lines, sha = sealed.seal(json.dumps({"day": str(today), "picks": rows, "closest_not_bets": near_rows}).encode(), Path(pk))
         print(f"sha256 {sha}")
         print("\n".join(lines))
     else:
