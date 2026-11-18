@@ -284,3 +284,8 @@ first starters, no race whose book adds to under 1.18). Stake: the open book's u
 min(10, 78.125 x (best / fair - 1) / (best - 1)), $50 a unit, one bet a horse at the best price. The founder places it
 himself; nothing goes to BetMatic, and it stays off the account BetMatic uses for the open book. The old rule's list
 (blend_9am.py) is still shown for the record. Research: night/RESEARCH_2026-11-18.md (Parts 5 and 7).
+
+Prices (fixed 18 Nov, the first morning): the list uses the seven majors' prices from the Betwatch pull (the median,
+the best major price, TAB's move from its first price), exactly as the research did. Form King's "average now" ran a
+median 7% under the majors at Sandown on 18 Nov and listed Navy Heart, which the tested rule would not have. Without the
+Betwatch pull the list falls back to Form King's average and every row says so. The Betwatch trial ends Fri 20 Nov.

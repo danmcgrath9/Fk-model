@@ -239,6 +239,8 @@ def check_9am_bets(L, today, F):
                 F.append(("BLOCK", f"9am bets {P}", f"{who}: {u:g}u is not the open book's units at ${best:g} ({want:g}u)"))
             if abs(d - 50 * u) > 1:
                 F.append(("BLOCK", f"9am bets {P}", f"{who}: ${d:g} is not {u:g}u at $50"))
+            if r.get("price_source") and r["price_source"] != "majors-median":
+                F.append(("CHECK", f"9am bets {P}", f"{who}: priced on {r['price_source']}, not the seven majors' prices the rule was tested on"))
 
 
 def scratched_races(L, P):
