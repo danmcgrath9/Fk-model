@@ -238,8 +238,7 @@ whole books only, by margin: 1.05-1.08x: 32 bets +63%; 1.08-1.12x: 8 bets +117%;
 whole books only (1.08 and over): 829 bets on 215 runners, $+113,944 on $463,521 (+25%); months up 3 of 4; Nov-Jun 829 bets on 215 runners, $+113,944 on $463,521 (+25%); Jul-Nov 0 bets on 0 runners, $+0 on $0 (+0%)
 whole books only, by margin: 1.05-1.08x: 317 bets +0%; 1.08-1.12x: 300 bets +57%; 1.12-1.20x: 168 bets -10%; 1.20-9.00x: 44 bets +141%
 
-## The short books: 0 races. First eight, every runner the pull holds:
-
+## The short books: 0 races. (The runner-by-runner listing is left out of the committed file: it is price data from the pull.)
 ## How sure? 1.05x and over, whole books (1.20 and over), race days resampled 4,000 times
 
 | model | bets | runners | staked | profit | ROI | 90% range of the ROI | chance it is above zero |
