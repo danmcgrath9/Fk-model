@@ -27,6 +27,12 @@ on:
       script:
         description: 'mode=model: the script to run (research/harness/bw_model.py = Test 8, bw_form.py = Test 9)'
         default: 'research/harness/bw_model.py'
+      pub:
+        description: 'mode=live: base64 of the PEM public key the picks are sealed to (the private key never leaves the reader)'
+        default: ''
+      day:
+        description: 'mode=live: the race day YYYY-MM-DD (blank = today in Sydney)'
+        default: ''
       max_minutes:
         description: 'mode=pull: minutes of pulling before the cache is saved (the rest resumes next run)'
         default: '300'
@@ -52,7 +58,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install 'requests>=2.31'
-      - if: github.event.inputs.mode == 'model'
+      - if: github.event.inputs.mode == 'model' || github.event.inputs.mode == 'live'
         run: pip install pandas pyarrow lightgbm scikit-learn
 
       - name: Probe (counts only)
@@ -63,7 +69,7 @@ jobs:
 
       # v2 (18 Nov 2026): race class and track condition kept; v1 caches dropped them, so they are not restored.
       - name: Restore the pulled months (Actions cache, this repository only)
-        if: github.event.inputs.mode == 'pull' || github.event.inputs.mode == 'model'
+        if: github.event.inputs.mode == 'pull' || github.event.inputs.mode == 'model' || github.event.inputs.mode == 'live'
         uses: actions/cache/restore@v4
         with:
           path: betwatch-cache/${{ github.event.inputs.type }}
@@ -92,6 +98,15 @@ jobs:
         run: |
           set -o pipefail
           python "${{ github.event.inputs.script }}" bf "betwatch-cache/$TYPE" "Australian harness" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Today's paper picks (counts and scores in the clear; the picks sealed)
+        if: github.event.inputs.mode == 'live'
+        env:
+          PUB: ${{ github.event.inputs.pub }}
+          DAY: ${{ github.event.inputs.day }}
+        run: |
+          set -o pipefail
+          python research/harness/bw_live.py "betwatch-cache/$TYPE" --pub "$PUB" ${DAY:+--day "$DAY"}
 
       - name: Save the pulled months (Actions cache)
         if: always() && github.event.inputs.mode == 'pull'
