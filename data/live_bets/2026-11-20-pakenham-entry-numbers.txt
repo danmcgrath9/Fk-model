@@ -1,0 +1,87 @@
+1|1|Duke Of Oman|False|False
+1|3|Silver Lightning|False|False
+1|2|Native Spirit|False|False
+1|10|Unannounced|False|False
+1|9|Angling Angel|False|False
+1|8|Victorious Dream|False|False
+1|6|Dissident Woods|False|False
+1|4|Another Pothole|False|False
+1|7|King Campania|False|False
+1|5|Boutin|False|False
+2|1|Ask The Captain|False|False
+2|7|Ashoka Tano|False|False
+2|4|Whatwashethinking|False|False
+2|10|Wizardess|False|False
+2|8|Galway Gal|False|False
+2|9|Sweet Champagne|False|False
+2|2|Russian Firebird|False|False
+2|3|Urban Creed|False|False
+2|5|Tequila's Bro|False|False
+2|11|Kermalina|False|False
+2|6|Terracotta Warrior|False|False
+3|1|Action Point|False|False
+3|4|Hammer Head|False|False
+3|3|Gilgeous|False|False
+3|10|Frankie's Promise|False|False
+3|11|Helizangel|False|False
+3|6|Prestige Blackjack|False|False
+3|7|Savfield|False|False
+3|9|Tagged|False|False
+3|5|Hurtling|False|False
+3|8|Southpole|False|False
+3|2|Brandon Bay|False|False
+4|5|Miss Lil|False|False
+4|1|Alodie|False|False
+4|2|Doubt It's Love|False|False
+4|4|Kadesh|False|False
+4|3|Hilovely|False|False
+4|6|Vespers|False|False
+4|10|Storm Bella|False|False
+4|12|Unkechaug|False|False
+4|9|Sabrina|False|False
+4|7|Heat Map|False|False
+4|11|Takasago|False|False
+4|13|Royal Tea|True|False
+4|8|Lady Lola|False|False
+5|7|She Daresthe Devil|False|False
+5|2|Egerton|False|False
+5|8|Soju|False|False
+5|3|Miss Cotoletta|False|False
+5|1|Flowerdale|False|False
+5|9|Tillya Tepe|False|False
+5|5|Invincible Lover|False|False
+5|6|The Birthday Party|False|False
+5|4|Jundah|False|False
+6|9|Wind Dreamer|False|False
+6|10|Free To Play|False|False
+6|5|Bangholme|False|False
+6|1|Mafee|False|False
+6|2|Leantothemoon|False|False
+6|4|Pocket Size|False|False
+6|3|Chandler|False|False
+6|7|Sealand|False|False
+6|8|Determined Rose|False|False
+6|6|Vegas Missile|False|False
+7|11|Night Eruption|False|False
+7|3|Flash Of Dallas|False|False
+7|4|Lots Of Time|False|False
+7|7|Castelli In Aria|False|False
+7|6|Venetian Choice|False|False
+7|9|Farakta|False|False
+7|2|Meleys|False|False
+7|5|Himalayan|False|False
+7|10|Sabeeria|False|False
+7|8|Imponderable|False|False
+7|1|Sunlit Serenade|False|False
+8|3|Cryptic Clue|False|False
+8|5|Count Of Toulouse|False|False
+8|6|Gymkhana|False|False
+8|8|Crimson Miss|False|False
+8|11|Clarapatra|False|False
+8|7|Celestial Option|False|False
+8|12|Tipsy Gypsy|False|False
+8|4|Mike's Hope|False|False
+8|2|The Quiet Immortal|False|False
+8|10|Zovozo|False|False
+8|1|Rough Enuff|False|False
+8|9|Plucky Enuff|False|False
