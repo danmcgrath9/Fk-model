@@ -1,0 +1,36 @@
+{
+ "day": "Friday",
+ "date": "20 November",
+ "footer": "Win bets.",
+ "brand": true,
+ "prices_as_at": "2026-11-18T17:15",
+ "meetings": [
+  {
+   "name": "Pakenham",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "6:15PM",
+     "horse": "Angling Angel",
+     "price": "$2.20",
+     "units": "5.12u"
+    },
+    {
+     "race": 4,
+     "time": "7:45PM",
+     "horse": "Heat Map",
+     "price": "$5",
+     "units": "3.05u"
+    },
+    {
+     "race": 6,
+     "time": "8:45PM",
+     "horse": "Sealand",
+     "price": "$11",
+     "units": "1.06u"
+    }
+   ]
+  }
+ ]
+}

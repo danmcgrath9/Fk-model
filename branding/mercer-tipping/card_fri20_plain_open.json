@@ -1,0 +1,37 @@
+{
+ "day": "Friday",
+ "date": "20 November",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Pakenham",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "6:15PM",
+     "horse": "Angling Angel",
+     "price": "$3",
+     "rated": "$2.19",
+     "units": "5.12u"
+    },
+    {
+     "race": 4,
+     "time": "7:45PM",
+     "horse": "Heat Map",
+     "price": "$6.50",
+     "rated": "$3.94",
+     "units": "3.05u"
+    },
+    {
+     "race": 6,
+     "time": "8:45PM",
+     "horse": "Sealand",
+     "price": "$17",
+     "rated": "$9.86",
+     "units": "1.06u"
+    }
+   ]
+  }
+ ]
+}
