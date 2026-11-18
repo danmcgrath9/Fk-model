@@ -9242,6 +9242,39 @@ and has to go on within seconds of it. The two ways to do that are:
 
 Nothing changes the card.
 
+## Test 95: the first minutes after TAB's open (18 Nov 2026, gh topaz run 44212051375, `topaz_round75.py`, ROUND75_TIMES=0,1,2,3,5)
+
+Founder, on BetMatic's live odds: "doesn't that cost extra?" BetMatic's own notes say its "Get live odds" can take up
+to a minute to answer. This is Test 93 again at 1, 2, 3 and 5 minutes after TAB's open, to see what a minute costs.
+
+| model and rule | minutes after TAB's open | bets | of the open's bets | corrected BSP per unit staked (SE) | corrected BSP units | of the open's units | realised units |
+|---|---|---|---|---|---|---|---|
+| Test 88's fit, only if it still clears | 0 | 2,580 | 100% | +15.1% (0.9%) | +388.8 | 100% | +351.4 |
+| Test 88's fit, only if it still clears | **1** | 2,449 | 95% | +13.7% (0.8%) | **+335.9** | **86%** | +333.6 |
+| Test 88's fit, only if it still clears | 2 | 2,426 | 94% | +13.3% (0.8%) | +324.5 | 83% | +317.6 |
+| Test 88's fit, only if it still clears | 3 | 2,270 | 88% | +11.7% (0.8%) | +267.7 | 69% | +248.8 |
+| Test 88's fit, only if it still clears | 5 | 2,190 | 85% | +10.8% (0.8%) | +241.2 | 62% | +236.0 |
+| the corrected blend, only if it still clears | 0 | 1,347 | 100% | +13.6% (1.4%) | +183.3 | 100% | +191.1 |
+| the corrected blend, only if it still clears | 1 | 1,264 | 94% | +11.7% (1.4%) | +148.5 | 81% | +179.5 |
+| the corrected blend, only if it still clears | 2 | 1,245 | 92% | +11.1% (1.4%) | +138.5 | 76% | +171.2 |
+| the corrected blend, only if it still clears | 3 | 1,157 | 86% | +8.5% (1.4%) | +98.1 | 54% | +107.0 |
+| the corrected blend, only if it still clears | 5 | 1,112 | 83% | +7.5% (1.4%) | +83.1 | 45% | +97.8 |
+
+TAB's first price on Test 88's 2-point bets was unchanged after 1 minute on 93% of them, after 2 minutes on 92%,
+after 3 minutes on 82% and after 5 minutes on 76%.
+
+What it shows:
+
+- **A minute keeps most of it.** Placed a minute after TAB's open, Test 88's fit keeps 86% of its corrected BSP units
+  (+335.9 of +388.8) and 95% of realised (+333.6 of +351.4). Two minutes keeps 83%.
+- **The third minute is where it goes.** Between 2 and 3 minutes, the bets whose price TAB has already cut go from 5%
+  to 12%, and the units fall from +324.5 to +267.7. TAB's first corrections come about three minutes after the open.
+- **The open is as Betwatch saw it.** Betwatch's first TAB price may itself come a little after TAB's real open, so
+  "0 minutes" here is Betwatch's first sight of the price.
+
+What it means: a program that sees TAB's open through BetMatic's live odds and bets within a minute or two keeps 80%
+to 86% of the edge. Past three minutes it starts to cost a third or more. Nothing changes the card.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model

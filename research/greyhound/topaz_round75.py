@@ -36,7 +36,7 @@ import topaz_round67 as R67       # noqa: E402
 import topaz_round68 as R68       # noqa: E402
 import topaz_round73 as R73       # noqa: E402
 
-TIMES = (0, 5, 15, 30, 60)
+TIMES = tuple(int(v) for v in os.environ.get("ROUND75_TIMES", "0,5,15,30,60").split(",") if v.strip())  # minutes
 MARGIN = 0.02
 RATIO = 1.1
 

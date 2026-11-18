@@ -1,17 +1,30 @@
 name: gh topaz morning
 
-# The corrected blend priced at TAB's first price on the morning TAB opens (18 Nov 2026, founder: "how aren't we
-# matching against TAB opening price"). TAB opens Victorian greyhounds at a median 7:25am Melbourne (Test 92). This
-# reads today's prices from Betwatch, last night's kept card_iso and the saved correction (Actions cache, read only),
-# and SEALS the bets to the card key: the log prints counts only. Paper only; nothing is bet.
+# The 7am program, paper only (18 Nov 2026, founder: "Build the 7am program, paper only"). TAB opens Victorian
+# greyhounds at a median 7:25am Melbourne (Test 92), and a bet placed a minute after the open keeps about 86% of the
+# edge, three minutes about 69% (Test 95). mode=watch polls Betwatch every 45 seconds until 8:20am Melbourne and
+# prices each race on the corrected blend the moment TAB has priced its whole field (last night's kept card_iso and
+# the saved correction, Actions cache, read only). Each bet is logged at TAB's price when seen, or as missed if TAB had
+# already cut it below 1.1x. The days before are settled first, from Betwatch's results. The ledger lives in the
+# Actions cache; the log prints counts and units only and SEALS the bets to the card key. Nothing is bet.
+# mode=once prices the day once, as it stands.
 
 on:
   schedule:
-    - cron: '45 20 * * *'      # 7:45am Melbourne in daylight time (6:45am in standard time); GitHub may start it late
+    # three starts, in case GitHub starts one late; the first to run watches, the rest find the day watched
+    - cron: '41 19 * * *'      # 6:41am Melbourne in daylight time (5:41am in standard time)
+    - cron: '53 19 * * *'
+    - cron: '7 20 * * *'
   workflow_dispatch:
     inputs:
+      mode:
+        description: 'watch (poll until 8:20am Melbourne, keep the paper ledger) or once (price the day as it stands)'
+        default: 'watch'
       day:
         description: 'YYYY-MM-DD in Melbourne (blank = today)'
+        default: ''
+      test_until:
+        description: 'a test only: watch until this HH:MM Melbourne, from now, on a throwaway ledger (blank = the real one)'
         default: ''
 
 concurrency:
@@ -24,7 +37,7 @@ permissions:
 jobs:
   morning:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 200
     env:
       PYTHONUNBUFFERED: '1'
       BETWATCH_API_KEY: ${{ secrets.BETWATCH_API_KEY }}
@@ -49,10 +62,29 @@ jobs:
           key: topaz-model-${{ github.run_id }}
           restore-keys: topaz-model-
 
-      - name: The corrected blend at TAB's open (counts; the bets sealed)
+      - name: Restore the paper ledger (Actions cache, this repository only)
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/morning
+          key: topaz-morning-${{ github.run_id }}
+          restore-keys: topaz-morning-
+
+      - name: The corrected blend at TAB's open (counts and units; the bets sealed)
         run: |
           set -o pipefail
-          export CARDS_DIR="$PWD/greyhound/cache/cards" MODEL_DIR="$PWD/greyhound/cache/model"
-          export MORNING_DAY="${{ github.event.inputs.day }}"
+          export CARDS_DIR="$PWD/greyhound/cache/cards" MODEL_DIR="$PWD/greyhound/cache/model" \
+                 MORNING_DIR="$PWD/greyhound/cache/morning"
+          export MORNING_DAY="${{ github.event.inputs.day }}" MORNING_MODE="${{ github.event.inputs.mode || 'watch' }}"
+          if [ -n "${{ github.event.inputs.test_until }}" ]; then
+            export MORNING_UNTIL="${{ github.event.inputs.test_until }}" MORNING_FROM="00:00" MORNING_DIR="$RUNNER_TEMP/morning-test"
+            echo "TEST: watching until ${{ github.event.inputs.test_until }} on a throwaway ledger"
+          fi
           python research/greyhound/topaz_morning.py "topaz morning" | tee morning.out
           grep -v '^SEALED' morning.out >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Save the paper ledger (Actions cache)
+        if: always() && hashFiles('greyhound/cache/morning/*') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: greyhound/cache/morning
+          key: topaz-morning-${{ github.run_id }}
