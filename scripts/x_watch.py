@@ -12,7 +12,7 @@ read by OCR (rapidocr-onnxruntime, installed only when there is an image to read
 parsed too. OCR misreads ("R1" as "RI", the bar as "1", no spaces in the track), so a tip is only ever marked
 "read", never "verified": the live path must match venue, race and runner to BetMatic's schedule before any bet.
 Token from X_BEARER_TOKEN, never printed. His tips are for the founder's own betting; never reposted."""
-import datetime, argparse, json, os, re, subprocess, sys, urllib.error, urllib.parse, urllib.request
+import datetime, difflib, argparse, json, os, re, subprocess, sys, urllib.error, urllib.parse, urllib.request
 
 ap = argparse.ArgumentParser(); ap.add_argument("user"); ap.add_argument("--unit", type=float, default=50.0)
 ap.add_argument("--first", type=int, default=5, help="posts to read on the very first run")
@@ -31,8 +31,13 @@ def ocr_lines(path):
         subprocess.run([sys.executable, "-m", "pip", "install", "-q", "rapidocr-onnxruntime"], check=False)
         from rapidocr_onnxruntime import RapidOCR
     res, _ = RapidOCR()(path)
-    rows = sorted(((b[0][1], b[0][0], t) for b, t, _ in (res or [])), key=lambda x: (round(x[0] / 12), x[1]))
-    return [t.strip() for _, _, t in rows if t.strip()]
+    # boxes into rows by their height on the page (a big horse name comes back as two boxes a few pixels apart), left to right
+    bx = sorted(((sum(q[1] for q in b) / 4, min(q[0] for q in b), max(q[1] for q in b) - min(q[1] for q in b), t.strip()) for b, t, _ in (res or []) if t.strip()), key=lambda x: x[0])
+    rows = []
+    for y, x0, h, t in bx:
+        if rows and abs(y - rows[-1][0]) <= 0.6 * max(h, rows[-1][1]): rows[-1][2].append((x0, t))
+        else: rows.append([y, h, [(x0, t)]])
+    return [" ".join(t for _, t in sorted(r[2])) for r in rows]
 
 
 # Two shapes, both his (18 Nov 2026). The TIP as he posts it, in text, when he gives it:
@@ -40,8 +45,8 @@ def ocr_lines(path):
 # and the recap CARD (an image, posted later): WARWICK FARM - R1 / CHURCHILLIAN / $3.50 | 5 UNITS WIN
 RACE = re.compile(r"^([A-Z][A-Z .'&]*?)\s*[-–—]?\s*R(?:ACE)?\s*([0-9IlO|]{1,2})(?:\s*[-–—:]\s*([A-Z].*))?$")
 PRICE = re.compile(r"\$\s*(\d+(?:\.\d{1,2})?)")
-UNITS = re.compile(r"(\d+(?:\.\d+)?)\s*UNITS?\b", re.I)
-KIND = re.compile(r"\b(EACH\s*WAY|E/W|WIN|PLACE)\b", re.I)
+UNITS = re.compile(r"(\d+(?:\.\d+)?)\s*UNITS?", re.I)
+KIND = re.compile(r"(EACH\s*WAY|E/W|WIN|PLACE)\b", re.I)
 num = lambda s: int(s.replace("I", "1").replace("l", "1").replace("|", "1").replace("O", "0"))
 name = lambda h: re.sub(r"[A-Za-z]+(?:'[A-Za-z]+)?", lambda m: m.group(0).capitalize(), h.strip())
 clean = lambda l: re.sub(r"\s+", " ", re.sub(r"^[^A-Za-z0-9$]+", "", l)).strip()          # drop a leading emoji
@@ -149,14 +154,20 @@ for p in posts:
         try:
             with urllib.request.urlopen(urllib.request.Request(m["url"], headers={"User-Agent": "Mozilla/5.0"}), timeout=30) as r_, open(fn, "wb") as fh:
                 fh.write(r_.read())
-            ls = ocr_lines(fn); ocr.append(ls); tips += parse(ls)
+            ls = ocr_lines(fn); ocr.append(ls); tips += [dict(t, card=True) for t in parse(ls)]
         except Exception as ex:
             ocr.append([f"OCR FAILED {type(ex).__name__} {getattr(ex, 'code', '')} {m['url'][:60]}"])
     # one tip a runner a day: his recap card repeats the tips he posted in text earlier
     key = lambda t: f"{melb_day(p.get('created_at'))}|{re.sub(r'[^A-Z]', '', t['track'].upper())}|{t['race']}|{re.sub(r'[^A-Z]', '', (t['horse'] or '').upper())}"
     seen = st.setdefault("seen", [])
+    race_key = lambda t: "|".join(key(t).split("|")[:3]) + "|"
     for t in tips:
         t["repeat"] = key(t) in seen
+        if not t["repeat"] and t.get("card") and any(k_.startswith(race_key(t)) for k_ in seen):
+            mine = key(t).split("|")[3]; theirs = [k_.split("|")[3] for k_ in seen if k_.startswith(race_key(t))]
+            near = any(mine and (mine in o or o in mine or difflib.SequenceMatcher(None, mine, o).ratio() >= 0.6) for o in theirs)
+            if t["flags"] or near: t["repeat"] = True              # the same tip, however the reader took the name off the card
+            else: t["flags"].append("the card names a different horse to the text tip in this race")
         if not t["repeat"] and not t["flags"]: seen.append(key(t))
     st["seen"] = seen[-200:]
     rec = dict(id=p["id"], at=p.get("created_at"), text=p.get("text", ""), ocr=ocr, tips=tips, mode="shadow")
