@@ -7,6 +7,8 @@ name: gh topaz morning
 # the saved correction, Actions cache, read only). Each bet is logged at TAB's price when seen, or as missed if TAB had
 # already cut it below 1.1x. The days before are settled first, from Betwatch's results. The ledger lives in the
 # Actions cache; the log prints counts and units only and SEALS the bets to the card key. Nothing is bet.
+# From 19 Nov the best model (Test 98, topaz_best) is priced beside the corrected blend once the weekly train has fitted
+# it (best.txt in the model cache); it reads each dog's earlier runs in the Betwatch history (cache, to yesterday).
 # mode=once prices the day once, as it stands.
 
 on:
@@ -62,6 +64,13 @@ jobs:
           key: topaz-model-${{ github.run_id }}
           restore-keys: topaz-model-
 
+      - name: Restore the Betwatch price history (Actions cache, read only; the best model's market history to yesterday)
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/betwatch
+          key: betwatch-VIC-G-${{ github.run_id }}
+          restore-keys: betwatch-VIC-G-
+
       - name: Restore the paper ledger (Actions cache, this repository only)
         uses: actions/cache/restore@v4
         with:
@@ -73,7 +82,7 @@ jobs:
         run: |
           set -o pipefail
           export CARDS_DIR="$PWD/greyhound/cache/cards" MODEL_DIR="$PWD/greyhound/cache/model" \
-                 MORNING_DIR="$PWD/greyhound/cache/morning"
+                 MORNING_DIR="$PWD/greyhound/cache/morning" BETWATCH_DIR="$PWD/greyhound/cache/betwatch"
           export MORNING_DAY="${{ github.event.inputs.day }}" MORNING_MODE="${{ github.event.inputs.mode || 'watch' }}"
           if [ -n "${{ github.event.inputs.test_until }}" ]; then
             export MORNING_UNTIL="${{ github.event.inputs.test_until }}" MORNING_FROM="00:00" MORNING_DIR="$RUNNER_TEMP/morning-test"
