@@ -19,6 +19,7 @@ join(bf, bw) -> Betfair rows (hx_data.load) with the Betwatch columns added on (
 add_people(df) -> point-in-time driver, trainer and barrier form, from earlier races only.
 """
 import gzip, json, os, re
+from datetime import datetime, timezone
 import numpy as np, pandas as pd
 
 
@@ -62,7 +63,15 @@ def positions(results):
 
 
 def _ts(s):
-    return pd.to_datetime(s, utc=True, errors="coerce") if s else pd.NaT
+    """An ISO time as an aware Timestamp (UTC when no zone is given), or NaT. Plain datetime parsing: pd.to_datetime
+    per price change made the join take 16 minutes on four years of flucs."""
+    if not s:
+        return pd.NaT
+    try:
+        t = datetime.fromisoformat(str(s).replace("Z", "+00:00"))
+    except ValueError:
+        return pd.NaT
+    return pd.Timestamp(t if t.tzinfo else t.replace(tzinfo=timezone.utc))
 
 
 def runner_rows(race):

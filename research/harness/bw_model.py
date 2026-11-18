@@ -31,6 +31,31 @@ START, TRAIN_END, VALID_END = "2023-01-01", "2025-07-01", "2026-01-01"
 COMMISSION = 0.08
 
 
+BARRIER = ["barrier", "barrier_rel", "bar_ae", "bar_runs"]
+
+
+def leak_check(df):
+    """Counts only. Test 8's first run beat BSP, so before any score is believed: does Betwatch's barrier (or any
+    input) carry the result? A barrier that matches the finishing position, or a win rate by barrier far steeper than
+    by TAB number, would mean it does."""
+    j = df[df.bw_race.notna()]
+    print("\n## Leak check (counts only)\n")
+    print(f"- barrier = TAB number on {(j.barrier == j.TAB_NUMBER).mean():.1%} of joined runners; barrier = Betwatch "
+          f"finishing position on {(j.barrier == j.bw_pos).mean():.1%}; winners with barrier 1: "
+          f"{((j.won == 1) & (j.barrier == 1)).sum() / max((j.won == 1).sum(), 1):.1%}")
+    print(f"- rank correlation with the finishing position: barrier {j.barrier.corr(j.bw_pos, method='spearman'):.3f}, "
+          f"TAB number {j.TAB_NUMBER.corr(j.bw_pos, method='spearman'):.3f}")
+    print("\n| value | runners with this barrier | win rate | runners with this TAB number | win rate |\n|---|---|---|---|---|")
+    for v in range(1, 13):
+        b, t = j[j.barrier == v], j[j.TAB_NUMBER == v]
+        print(f"| {v} | {len(b):,} | {b.won.mean() if len(b) else float('nan'):.1%} | {len(t):,} | "
+              f"{t.won.mean() if len(t) else float('nan'):.1%} |")
+    print(f"| other | {(~j.barrier.between(1, 12)).sum():,} | | | |")
+    o = df[df.bw_race.notna()].sort_values(["start", "race"])
+    d = o.groupby(["TRACK", "trot", "barrier"], sort=False).start.transform(lambda s: s.diff().dt.total_seconds())
+    print(f"- bar_ae rows whose previous same-key race started at the same time as this one: {(d == 0).mean():.2%}")
+
+
 def stage2(va, ho, base, mkt):
     """Benter's second stage: weights on log(model) and log(market), fitted on validation log loss."""
     grid = np.arange(0, 1.51, 0.05)
@@ -92,9 +117,12 @@ def main(bf_dir, bw_dir, label):
     print(f"\nraces: train {tr.race.nunique():,} ({START} to {TRAIN_END}), validation {va.race.nunique():,}, holdout "
           f"{ho.race.nunique():,} ({ho.date.min():%Y-%m-%d} to {ho.date.max():%Y-%m-%d})\n")
 
+    leak_check(df)
     people = FEATURES_V3 + PEOPLE
     va1, ho1, _, _ = fit(tr, va, ho, FEATURES_V3)
     va2, ho2, m2, _ = fit(tr, va, ho, people, CATS + PEOPLE_CATS)
+    no_bar = [f for f in people if f not in BARRIER]
+    _, ho2b, m2b, _ = fit(tr, va, ho, no_bar, CATS + PEOPLE_CATS)
     has = lambda d: d[d.groupby("race").p_tab_open.transform(lambda s: s.notna().all())]
     va3, ho3, m3, _ = fit(has(tr), has(va), has(ho), people + ["log_tab_open", "tab_open_hours"], CATS + PEOPLE_CATS)
 
@@ -103,6 +131,7 @@ def main(bf_dir, bw_dir, label):
                     "p_model"]].rename(columns={"p_model": "p_open_model"})
     h = h.merge(ho1[keyc + ["p_model"]].rename(columns={"p_model": "p_v3"}), on=keyc)
     h = h.merge(ho2[keyc + ["p_model"]].rename(columns={"p_model": "p_people"}), on=keyc)
+    h = h.merge(ho2b[keyc + ["p_model"]].rename(columns={"p_model": "p_people_nobar"}), on=keyc)
     v = va3[keyc + ["won", "p_tab_open"]].merge(va2[keyc + ["p_model"]].rename(columns={"p_model": "p_people"}), on=keyc)
     a, b = stage2(v, h, "p_people", "p_tab_open")
     print(f"stage 2 on validation: log p = {a:.2f} log(v3 + people) + {b:.2f} log(TAB open)")
@@ -117,6 +146,7 @@ def main(bf_dir, bw_dir, label):
           "closed |\n|---|---|---|---|---|---|")
     le, lb = winner_ll(h.p_equal, h.won, h.race), winner_ll(h.p_bsp, h.won, h.race)
     for name, col in (("equal chances", "p_equal"), ("v3 (market history)", "p_v3"), ("v3 + people", "p_people"),
+                      ("v3 + people, no barrier inputs", "p_people_nobar"),
                       ("v3 + people + TAB open", "p_open_model"), ("stage 2", "p_stage2"), ("TAB open", "p_tab_open"),
                       ("TAB last", "p_tab_last"), ("pre-play WAP", "p_wap"), ("BSP", "p_bsp")):
         s = h[h.groupby("race")[col].transform(lambda x: x.notna().all())]
@@ -127,6 +157,7 @@ def main(bf_dir, bw_dir, label):
         print(f"| {name}{note} | {r[0]:.4f} | {r[1]:.4f} | {k[0]:.4f} | {k[1]:.4f} | {(le - lm) / (le - lb):.1%} |")
 
     for name, m, X in (("v3 + people", m2, people + CATS + PEOPLE_CATS),
+                       ("v3 + people, no barrier inputs", m2b, no_bar + CATS + PEOPLE_CATS),
                        ("v3 + people + TAB open", m3, people + ["log_tab_open", "tab_open_hours"] + CATS + PEOPLE_CATS)):
         imp = pd.Series(m.booster_.feature_importance("gain"), index=X).sort_values(ascending=False)
         print(f"\n## {name}: tree inputs by gain (top 15)\n")
