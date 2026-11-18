@@ -27,8 +27,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+import warnings
+
 import numpy as np
 import pandas as pd
+
+warnings.filterwarnings("ignore", category=pd.errors.PerformanceWarning)   # 45-second polls, one line each
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
