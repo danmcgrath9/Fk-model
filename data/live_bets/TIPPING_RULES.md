@@ -275,3 +275,12 @@ Which of these go live on Betfair from Fri 13 Nov is the founder's call.
 
 ## Bounce block OFF (11 Nov 2026)
 Founder, on the night audit (research/form_gbm/night/README.md 3.9: the bets the bounce block stops made +22% at the open on 11 walk-forward months and +24% on the 16-month blend; they lose only at BSP): "lol what the fuck then we should be betting them". research/form_gbm/fu_json.py BOUNCE_BLOCK = False from the Sandown, Pakenham and Geelong sheets of 11 Nov. Flat since June (+2%, -7%), so watch it live.
+
+## The 9am bets: the new version at the open book's units (19 Nov 2026)
+Founder, 18 Nov 2026: "Bet the new version from tomorrow at $50 units", then "yes, open book units from tomorrow".
+From Thu 19 Nov the 9am list the founder bets is research/form_gbm/blend_9am_v2.py's: our price at 0.27, the market's
+average at 0.90 and the move since the open, listed when the best price at 9am is 1.05x its fair price ($1.60-$15, no
+first starters, no race whose book adds to under 1.18). Stake: the open book's units on the list's own edge,
+min(10, 78.125 x (best / fair - 1) / (best - 1)), $50 a unit, one bet a horse at the best price. The founder places it
+himself; nothing goes to BetMatic, and it stays off the account BetMatic uses for the open book. The old rule's list
+(blend_9am.py) is still shown for the record. Research: night/RESEARCH_2026-11-18.md (Parts 5 and 7).

@@ -1,2 +1,2 @@
-date,venue,race,number,horse,our_price,avg_now,open,fair_price,best_now,take_at_or_above,also_on_live_list,to_win,stake_at_best
-2026-11-18,Sandown,4,3,Navy Heart,4.06,2.90,4.60,3.58,3.80,3.75,no,2000,714
+date,venue,race,number,horse,our_price,avg_now,open,fair_price,best_now,take_at_or_above,also_on_live_list,best_bookies,stake_units,stake_dollars,units_at_take
+2026-11-18,Sandown,4,3,Navy Heart,4.06,2.90,4.60,3.58,3.80,3.75,no,betright,1.75,88,1.42

@@ -218,6 +218,29 @@ def check_9am(L, today, F):
                           f"pre-date a scratching, and a bet at them would carry the deduction"))
 
 
+def check_9am_bets(L, today, F):
+    """The 9am bets (blend_9am_v2.py, bet by the founder from 19 Nov 2026 at the open book's units)."""
+    for f in sorted(glob.glob(f"{L}/{today}-*-9am-v2.csv")):
+        P = os.path.basename(f)[:-len("-9am-v2.csv")]
+        for r in csv.DictReader(open(f)):
+            if "stake_units" not in r: continue
+            who = f"R{r['race']} {r['horse']}"
+            best, take, fair = float(r["best_now"]), float(r["take_at_or_above"]), float(r["fair_price"])
+            u, d = float(r["stake_units"]), float(r["stake_dollars"])
+            ua = lambda fr: min(10.0, 78.125 * max(0.0, best / fr - 1) / (best - 1)) if best > 1 else 0.0
+            lo_u, hi_u = ua(fair + 0.005), ua(fair - 0.005); want = round(ua(fair), 2)      # the sheet rounds the fair price
+            if best + 1e-9 < take:
+                F.append(("BLOCK", f"9am bets {P}", f"{who}: best price ${best:g} is under the take price ${take:g}"))
+            if abs(take - 1.05 * fair) > 0.02:
+                F.append(("BLOCK", f"9am bets {P}", f"{who}: take price ${take:g} is not 1.05 x the fair price ${fair:g}"))
+            if not 1.6 <= fair <= 15:
+                F.append(("BLOCK", f"9am bets {P}", f"{who}: fair price ${fair:g} is outside $1.60-$15"))
+            if not lo_u - 0.011 <= u <= hi_u + 0.011 or u > 10:
+                F.append(("BLOCK", f"9am bets {P}", f"{who}: {u:g}u is not the open book's units at ${best:g} ({want:g}u)"))
+            if abs(d - 50 * u) > 1:
+                F.append(("BLOCK", f"9am bets {P}", f"{who}: ${d:g} is not {u:g}u at $50"))
+
+
 def scratched_races(L, P):
     races = {k[0] for k, p in read_prices(L, P).items() if p["scr"]}
     res = f"{L}/{P}-results.txt"
@@ -350,6 +373,7 @@ def run(L, C, today, now, settle=True, every=False):
     check_sheets(L, today, F)
     check_cards(L, C, today, now, F)
     check_9am(L, today, F)
+    check_9am_bets(L, today, F)
     check_deductions(L, today, F)
     check_betmatic(L, today, F)
     if settle:
@@ -373,6 +397,10 @@ def selftest():
         open(f"{L}/{P}-9am.csv", "w").write("date,venue,race,number,horse,our_price,blend_price,price_now,take_at_or_above,to_win,stake_a_bookie\n"
                                             f"{day},Testville,1,4,Alpha,2.60,2.22,2.40,2.33,2000,1429\n"   # clean
                                             f"{day},Testville,2,2,Gamma,2.46,2.65,2.70,2.78,2000,800\n")   # under the take price, wrong stake
+        open(f"{L}/{P}-9am-v2.csv", "w").write("date,venue,race,number,horse,our_price,avg_now,open,fair_price,best_now,take_at_or_above,"
+                                               "also_on_live_list,best_bookies,stake_units,stake_dollars,units_at_take\n"
+                                               f"{day},Testville,1,4,Alpha,2.60,2.40,3.00,2.22,2.40,2.33,no,tab,4.52,226,2.94\n"   # clean
+                                               f"{day},Testville,3,7,Echo,6.50,6.00,9.00,5.00,6.00,5.25,no,tab,4.00,200,1.00\n")   # 4u, the rule says 3.12u
         open(f"{L}/{P}-betmatic-preopen-ledger.csv", "w").write("label,race,number,horse,min_odds,max_odds,stake,notification_ids,message\n"
                                                                 "x-r1-n4-s1,1,4,Alpha,4.00,18.00,100,111,sent\n")
         json.dump({"day": "Saturday", "date": "5 January", "brand": True, "meetings": [{"name": "Testville", "bets": [
@@ -392,7 +420,8 @@ def selftest():
                 "R3 12c: no scratched runner", "is under the take price", "stake $800 is not",
                 "never read back", "no prices_as_at", "card $4.2 against $2.8", "Delta: scratched, and the card does not mark it",
                 "card_sat05b_mercer_now.json: prices are 120 minutes old",
-                "card $18, Form King's open $5", "Gamma 5.00u is an open-book bet and is not on the card"]
+                "card $18, Form King's open $5", "Gamma 5.00u is an open-book bet and is not on the card",
+                "Echo: 4u is not the open book's units"]
         miss = [w for w in want if w not in text]
         clean_bad = [l for l in text.splitlines() if "R1 20c" in l or ("Alpha" in l and "9am" in l)
                      or ("sat05c" in l and "minutes old" in l) or ("sat05c" in l and "prices_as_at" in l)]
