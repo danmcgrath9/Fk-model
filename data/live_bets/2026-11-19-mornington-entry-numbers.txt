@@ -37,7 +37,6 @@
 4|4|Kirkstone|False|False
 4|2|Diamond Dawn|False|False
 4|8|Runaway Rose|False|False
-4|5|Media Darling|False|False
 4|9|Yes It's Time|False|False
 5|3|Mywifeisnothere|False|False
 5|13|Gold Nugget|True|False
@@ -50,7 +49,6 @@
 5|5|Time Poor|False|False
 5|4|Pray Tell|False|False
 5|9|Pinamilloy|False|False
-5|8|Flyaway|False|False
 5|7|Berardo|False|False
 5|10|Plinian|False|False
 5|11|Weeping Wonder|False|False
@@ -59,13 +57,11 @@
 6|2|Frank Express|False|False
 6|1|Fam Gorman|False|False
 6|6|Hollandia|False|False
-6|3|Trump Card|False|False
 6|7|Up And Under|False|False
 6|8|Jonquil|False|False
 6|4|Power Pivot|False|False
 6|5|Precambrian|False|False
 7|8|Diamond Mila|False|False
-7|3|Just Think Twice|False|False
 7|1|Capital Charlie|False|False
 7|2|Chandler|False|False
 7|6|Sealand|False|False

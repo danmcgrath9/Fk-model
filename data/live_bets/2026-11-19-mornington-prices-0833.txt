@@ -1,0 +1,87 @@
+# Mornington Thu 19 Nov, official going, final fields; no market yet; PROVISIONAL: 1 runners without a rider
+1, Call Me Francis, 0, 0
+1, Rang A Round Up, 0, 0
+1, Grey Sabre, 0, 0
+1, Parera, 0, 0
+1, Spin Class, SCR
+1, Billie Stardom, 0, 0
+1, Jakbe Nimble, 0, 0
+1, The Long Mover, 0, 0
+1, The White Bull, 0, 0
+1, Flying Riches, SCR
+1, Who'llstoplorraine, 0, 0
+1, Latassa, 0, 0
+1, Enticement, 0, 0
+1, Raisonic, 0, 0
+2, Unriddle, 0, 0
+2, Kings Commission, 0, 0
+2, Pull My Finger, 0, 0
+2, Radical Dude, 0, 0
+2, Nitro Sonic, 0, 0
+2, Mystic River Queen, 0, 0
+3, Rockbourg, 0, 0
+3, Frandema, SCR
+3, Imperial Meeting, 0, 0
+3, Johnny Tightlips, 0, 0
+3, Magica, 0, 0
+3, Peiriant, 0, 0
+3, Reina Del Rio, SCR
+3, She Got Me Again, SCR
+3, Idmiston, SCR
+3, Luna Vega, 0, 0
+3, Royal Tea, 0, 0
+3, Bossy Babe, 0, 0
+4, Monumentum, 0, 0
+4, Pasatiempo, 0, 0
+4, Briagolong, 0, 0
+4, Irish Eclipse, 0, 0
+4, Kirkstone, 0, 0
+4, Diamond Dawn, 0, 0
+4, Runaway Rose, 0, 0
+4, Media Darling, 0, 0
+4, Yes It's Time, 0, 0
+5, Mywifeisnothere, 0, 0
+5, Gold Nugget, SCR
+5, Dexter, 0, 0
+5, Youmanetic, 0, 0
+5, The Dorkstar, SCR
+5, Full Of Knowledge, SCR
+5, Scentrique, 0, 0
+5, Doctorate, 0, 0
+5, Time Poor, 0, 0
+5, Pray Tell, 0, 0
+5, Pinamilloy, 0, 0
+5, Flyaway, 0, 0
+5, Berardo, 0, 0
+5, Plinian, 0, 0
+5, Weeping Wonder, 0, 0
+6, Duhlata, 0, 0
+6, Mrs Gossip, 0, 0
+6, Frank Express, 0, 0
+6, Fam Gorman, 0, 0
+6, Hollandia, 0, 0
+6, Trump Card, 0, 0
+6, Up And Under, 0, 0
+6, Jonquil, 0, 0
+6, Power Pivot, 0, 0
+6, Precambrian, 0, 0
+7, Diamond Mila, 0, 0
+7, Just Think Twice, 0, 0
+7, Capital Charlie, 0, 0
+7, Chandler, 0, 0
+7, Sealand, 0, 0
+7, Yeah Right, 0, 0
+7, Covert Action, 0, 0
+7, What Once Was, 0, 0
+8, Moose Jaw, 0, 0
+8, Fullproof, 0, 0
+8, Turnaquid, 0, 0
+8, Dominant Miss, 0, 0
+8, Manchego, 0, 0
+8, Ravens Bay, 0, 0
+8, Every Little Thing, 0, 0
+8, Packers Journey, 0, 0
+8, Arabian Myth, 0, 0
+8, Stewart, 0, 0
+8, Heidi Dancer, 0, 0
+8, Blaze Away, 0, 0
