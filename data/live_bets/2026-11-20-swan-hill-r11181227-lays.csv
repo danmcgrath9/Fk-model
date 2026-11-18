@@ -1,0 +1,82 @@
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,Press Jonkit,2.99,8.00,12,0,,8-12
+1,Press Jonkit,2.99,15.00,40,0,,15-40
+1,Locard,3.70,8.00,12,0,,8-12
+1,Locard,3.70,15.00,40,0,,15-40
+1,Hansa Danca,4.91,8.00,12,0,first starter: excluded,8-12
+1,Hansa Danca,4.91,15.00,40,0,first starter: excluded,15-40
+1,Stylish Beau,13.21,19.82,40,0,first starter: excluded,15-40
+1,Cavallo Corsa,16.31,24.46,40,0,first starter: excluded,15-40
+2,Hells Gates,2.30,8.00,12,0,,8-12
+2,Hells Gates,2.30,15.00,40,0,,15-40
+2,Begonia,4.28,8.00,12,0,,8-12
+2,Begonia,4.28,15.00,40,0,,15-40
+2,Big Storm,10.23,15.34,40,0,,15-40
+2,Miss Verona,11.21,16.81,40,0,,15-40
+2,Isitmeoryou,14.97,22.46,40,0,first starter: excluded,15-40
+2,Frewdamoss,25.49,38.24,40,0,,15-40
+3,Catch A Princess,3.43,8.00,12,0,,8-12
+3,Catch A Princess,3.43,15.00,40,0,,15-40
+3,Intervened,6.44,10.31,12,0,,8-12
+3,Intervened,6.44,15.00,40,0,,15-40
+3,Some Chance,8.47,15.00,40,0,,15-40
+3,Water Mill,11.81,17.71,40,0,,15-40
+3,Poorlittlerichkid,12.54,18.80,40,0,,15-40
+3,He's On Song,15.20,22.80,40,0,,15-40
+3,Jaffa Cake,19.19,28.79,40,0,first starter: excluded,15-40
+3,Upcoming,20.82,31.23,40,0,,15-40
+3,Lady Colonist,21.39,32.09,40,0,,15-40
+3,Lord Lonny,25.68,38.53,40,0,,15-40
+4,Stuntman,5.74,9.19,12,0,,8-12
+4,Stuntman,5.74,15.00,40,0,,15-40
+4,Tell Me Why,6.37,10.19,12,0,,8-12
+4,Tell Me Why,6.37,15.00,40,0,,15-40
+4,Asal,7.86,15.00,40,0,,15-40
+4,Hidden Witness,8.08,15.00,40,0,,15-40
+4,Surfy Pete,9.03,15.00,40,0,,15-40
+4,Dealer Sing,13.10,19.65,40,0,,15-40
+4,No Overtaking,17.89,26.84,40,0,,15-40
+4,The Daily Planet,18.34,27.52,40,0,,15-40
+4,Frozen Tide,21.41,32.12,40,0,,15-40
+5,Fuwari,7.24,11.58,12,0,,8-12
+5,Fuwari,7.24,15.00,40,0,,15-40
+5,Callawadda,7.54,15.00,40,0,,15-40
+5,Crossoverkid,8.43,15.00,40,0,,15-40
+5,Initial Moment,9.16,15.00,40,0,,15-40
+5,Creusa,12.09,18.13,40,0,,15-40
+5,Semper Fortis,12.67,19.01,40,0,,15-40
+5,King Kauffo,13.98,20.97,40,0,,15-40
+5,Dschingis Prestige,15.11,22.66,40,0,,15-40
+5,Legs Power,18.22,27.34,40,0,,15-40
+5,Endean Ace,18.41,27.61,40,0,,15-40
+6,Caribbean Villa,3.73,8.00,12,0,,8-12
+6,Caribbean Villa,3.73,15.00,40,0,,15-40
+6,Unobscured,5.71,9.13,12,0,,8-12
+6,Unobscured,5.71,15.00,40,0,,15-40
+6,Francine,6.31,10.10,12,0,,8-12
+6,Francine,6.31,15.00,40,0,,15-40
+6,Pacific Glamour,7.35,11.76,12,0,,8-12
+6,Pacific Glamour,7.35,15.00,40,0,,15-40
+6,Mayfair Street,8.21,15.00,40,0,,15-40
+6,Strike Gold,15.12,22.69,40,0,,15-40
+7,Ville De Lumiere,6.41,10.26,12,0,,8-12
+7,Ville De Lumiere,6.41,15.00,40,0,,15-40
+7,Artpark,6.61,10.57,12,0,,8-12
+7,Artpark,6.61,15.00,40,0,,15-40
+7,Popthebubbly,6.87,11.00,12,0,,8-12
+7,Popthebubbly,6.87,15.00,40,0,,15-40
+7,Ambello,9.61,15.00,40,0,,15-40
+7,Here Comes Wozza,11.38,17.06,40,0,,15-40
+7,Attain,12.53,18.79,40,0,,15-40
+7,Ponte Arcobaleno,15.32,22.99,40,0,,15-40
+7,Kikkuli,23.48,35.23,40,0,,15-40
+7,Drunken Sailor,25.81,38.71,40,0,,15-40
+8,Share The Music,3.86,8.00,12,0,,8-12
+8,Share The Music,3.86,15.00,40,0,,15-40
+8,Regal Surge,7.93,15.00,40,0,,15-40
+8,Zetheros,9.11,15.00,40,0,,15-40
+8,Where's My Sock,9.37,15.00,40,0,,15-40
+8,Sir Loyne,10.00,15.01,40,0,,15-40
+8,Somebody Told Me,11.57,17.35,40,0,,15-40
+8,Watt On Earth,12.17,18.26,40,0,,15-40
+8,Billie Bronx,24.97,37.46,40,0,,15-40

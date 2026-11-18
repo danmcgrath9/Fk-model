@@ -1,0 +1,117 @@
+1|8|Finnish Girl|False|False
+1|2|Titus Augustus|False|False
+1|1|Malbec|False|False
+1|10|Noddy's Girl|False|False
+1|9|Josie Kate|False|False
+1|6|Song'n'dance|False|False
+1|11|Locard|False|False
+1|3|Cavallo Corsa|False|False
+1|7|Stylish Beau|False|False
+1|4|Hansa Danca|False|False
+1|5|Press Jonkit|False|False
+2|10|Oh La Belle|False|False
+2|1|Big Storm|False|False
+2|2|Engineering Marvel|False|False
+2|3|San Marco Kid|False|False
+2|8|Just Dusty|False|False
+2|6|Begonia|False|False
+2|7|Charming Chords|False|False
+2|9|My Infinity|False|False
+2|12|Miss Verona|False|False
+2|11|Frewdamoss|False|False
+2|4|Hells Gates|False|False
+2|5|Isitmeoryou|False|False
+3|6|Roughnut|False|False
+3|4|Lord Lonny|False|False
+3|11|Cee Rose|False|False
+3|15|Al's Diemen|True|False
+3|13|Lady Colonist|False|False
+3|3|Khan Capital|False|False
+3|1|He's On Song|False|False
+3|14|Some Chance|False|False
+3|18|Dimachaerus|True|False
+3|7|Upcoming|False|False
+3|2|Intervened|False|False
+3|16|Apadana|True|False
+3|10|Catch A Princess|False|False
+3|5|Poorlittlerichkid|False|False
+3|17|Katiya|True|False
+3|8|Water Mill|False|False
+3|9|Jaffa Cake|False|False
+4|8|Jefferson|False|False
+4|3|Baby Rider|False|False
+4|18|Winds Of March|True|False
+4|5|Surfy Pete|False|False
+4|17|Bellakai|True|False
+4|13|Hidden Witness|False|False
+4|10|Harry Devil|False|False
+4|4|Frozen Tide|False|False
+4|14|Vivid Blooms|False|False
+4|7|Asal|False|False
+4|6|The Daily Planet|False|False
+4|15|Sweater Girl|True|False
+4|12|No Overtaking|False|False
+4|16|Burning Sensation|True|False
+4|1|Stuntman|False|False
+4|2|Dealer Sing|False|False
+4|9|Tell Me Why|False|False
+4|11|Hexed|False|False
+5|15|Bannerton|True|False
+5|7|Semper Fortis|False|False
+5|4|Gift Of Oratory|False|False
+5|6|Last Raider|False|False
+5|9|Endean Ace|False|False
+5|8|Crossoverkid|False|False
+5|2|Dschingis Prestige|False|False
+5|16|Kawhia|True|False
+5|3|Smokin' Rohie|False|False
+5|1|Callawadda|False|False
+5|12|Initial Moment|False|False
+5|14|Fuwari|False|False
+5|17|Danzagrunt|True|False
+5|13|Legs Power|False|False
+5|10|Sasterion|False|False
+5|5|King Kauffo|False|False
+5|11|Creusa|False|False
+6|13|Ask For More|True|False
+6|6|Francine|False|False
+6|12|Padstow Polly|False|False
+6|9|El Salto|False|False
+6|4|Strike Gold|False|False
+6|11|Doubt I'm Rich|False|False
+6|10|Ellie's Song|False|False
+6|7|Unobscured|False|False
+6|5|Pacific Glamour|False|False
+6|8|Gamadale Possum|False|False
+6|2|Caribbean Villa|False|False
+6|3|Mayfair Street|False|False
+7|17|Mahjing|True|False
+7|9|Ambello|False|False
+7|16|Whiskey And Beer|True|False
+7|10|Owl Witness|False|False
+7|14|Artpark|False|False
+7|6|The Mount|False|False
+7|12|Larza City|False|False
+7|2|Here Comes Wozza|False|False
+7|3|Drunken Sailor|False|False
+7|1|Attain|False|False
+7|5|Ponte Arcobaleno|False|False
+7|8|Ville De Lumiere|False|False
+7|4|Mythic|False|False
+7|7|Kikkuli|False|False
+7|13|Foxiet|False|False
+7|11|Popthebubbly|False|False
+7|15|Scartaka|True|False
+8|2|Lim's Ida|False|False
+8|11|Billie Bronx|False|False
+8|1|The Genius|False|False
+8|4|Where's My Sock|False|False
+8|10|Wareo Road|False|False
+8|3|Regal Surge|False|False
+8|12|Melodee Rose|False|False
+8|13|More Give It|False|False
+8|9|Watt On Earth|False|False
+8|5|Share The Music|False|False
+8|6|Sir Loyne|False|False
+8|7|Somebody Told Me|False|False
+8|8|Zetheros|False|False
