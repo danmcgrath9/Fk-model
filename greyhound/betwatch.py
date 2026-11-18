@@ -313,7 +313,8 @@ def now_rows(races: list[dict]) -> list[dict]:
             row = {"track": c.get("track"), "race": c.get("number"), "start": c.get("start"), "number": ru.get("number"),
                    "name": ru.get("name"), "scratched": ru.get("scratched"),
                    "tab_open": tab[0][0] if tab else None, "tab_open_at": tab[0][1] if tab else None,
-                   "tab_now": tab[-1][0] if tab else None, "tab_now_at": tab[-1][1] if tab else None}
+                   "tab_now": tab[-1][0] if tab else None, "tab_now_at": tab[-1][1] if tab else None,
+                   "tab_flucs": tab, "results": c.get("results")}
             for bk in ("Sportsbet", "Ladbrokes"):
                 last = (b.get(bk) or {}).get("last") or [None, None]
                 row[f"{bk.lower()}_now"], row[f"{bk.lower()}_now_at"] = last[0], last[1]
