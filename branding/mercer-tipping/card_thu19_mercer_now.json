@@ -3,7 +3,7 @@
  "date": "19 November",
  "footer": "Win bets.",
  "brand": true,
- "prices_as_at": "2026-11-17T16:43",
+ "prices_as_at": "2026-11-19T10:32",
  "meetings": [
   {
    "name": "Mornington",
@@ -20,7 +20,7 @@
      "race": 2,
      "time": "3:30PM",
      "horse": "Nitro Sonic",
-     "price": "$10",
+     "price": "$11",
      "units": "3.32u"
     }
    ]
