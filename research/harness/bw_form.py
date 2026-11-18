@@ -52,6 +52,36 @@ def band_table(h, chance, edge):
                   f"{ret.mean():+.1%} | {trim:+.1%} | {b.won.sum() / b[chance].sum():.2f} |")
 
 
+def clv_table(h, chance, edges):
+    """Closing-line value of the bets backed at TAB's first price: did the market come to them? Results swing on a few
+    long winners; whether TAB's price SHORTENED after the bet does not, so it is the steadier read of a real edge.
+    CLV = mean log(TAB first / TAB last before the start): positive = we got a bigger price than TAB ended at. Then the
+    same bets at TAB's last price and at BSP (8% commission), and wins against BSP's chances (A/E)."""
+    print(f"\n### Closing-line value: {chance} bets at TAB's first price\n")
+    print("| edge at least | half | bets | TAB price shortened after the bet | drifted | mean CLV (log first / last) | "
+          "ROI at TAB first | ROI at TAB last | ROI at BSP, 8% commission | A/E against BSP |\n"
+          "|---|---|---|---|---|---|---|---|---|---|")
+    for e in edges:
+        for half, s in h.groupby("half"):
+            b = s[(s[chance] * s.tab_open >= 1 + e) & (s.tab_open > 1) & (s.tab_last > 1)]
+            if not len(b):
+                continue
+            clv = np.log(b.tab_open / b.tab_last)
+            r_open = np.where(b.won == 1, b.tab_open - 1, -1.0).mean()
+            r_last = np.where(b.won == 1, b.tab_last - 1, -1.0).mean()
+            r_bsp = np.where(b.won == 1, (b.WIN_BSP - 1) * (1 - COMMISSION), -1.0).mean()
+            print(f"| {e:.0%} | {half} | {len(b):,} | {(b.tab_last < b.tab_open).mean():.0%} | "
+                  f"{(b.tab_last > b.tab_open).mean():.0%} | {clv.mean():+.3f} | {r_open:+.1%} | {r_last:+.1%} | "
+                  f"{r_bsp:+.1%} | {b.won.sum() / b.p_bsp.sum():.2f} |")
+    s = h[(h.tab_open > 1) & (h.tab_last > 1)]
+    print(f"| every runner (baseline) | both | {len(s):,} | {(s.tab_last < s.tab_open).mean():.0%} | "
+          f"{(s.tab_last > s.tab_open).mean():.0%} | {np.log(s.tab_open / s.tab_last).mean():+.3f} | "
+          f"{np.where(s.won == 1, s.tab_open - 1, -1.0).mean():+.1%} | "
+          f"{np.where(s.won == 1, s.tab_last - 1, -1.0).mean():+.1%} | "
+          f"{np.where(s.won == 1, (s.WIN_BSP - 1) * (1 - COMMISSION), -1.0).mean():+.1%} | "
+          f"{s.won.sum() / s.p_bsp.sum():.2f} |")
+
+
 def main(bf_dir, bw_dir, label):
     bw = add_bw_history(load_betwatch(bw_dir))
     df, _ = join(history(load(bf_dir)), bw)
@@ -78,7 +108,8 @@ def main(bf_dir, bw_dir, label):
     for name, feats in (("people", people), ("form+", plus), ("pure form", pf)):
         va_, ho_, m, _ = fit(tr, va, ho, feats, CATS + PEOPLE_CATS)
         fits[name] = (va_, ho_, m, feats)
-    h = fits["form+"][1][keyc + ["date", "won", "field", "p_bsp", "p_tab_open", "p_tab_last", "tab_open", "WIN_BSP"]]
+    h = fits["form+"][1][keyc + ["date", "won", "field", "p_bsp", "p_tab_open", "p_tab_last", "tab_open", "tab_last",
+                                 "WIN_BSP"]]
     v = fits["form+"][0][keyc + ["won", "p_tab_open"]]
     for name, col in (("people", "p_people"), ("form+", "p_plus"), ("pure form", "p_pure")):
         h = h.merge(fits[name][1][keyc + ["p_model"]].rename(columns={"p_model": col}), on=keyc)
@@ -123,6 +154,8 @@ def main(bf_dir, bw_dir, label):
                        ("p_plus", "form+ alone")):
         roi_table(h, f"Back at TAB's first price: {title} chance x price", col, "tab_open", 0, (0.05, 0.10, 0.20, 0.40))
     band_table(h, "p_s2_plus", 0.10)
+    clv_table(h, "p_s2_plus", (0.05, 0.10, 0.20))
+    clv_table(h, "p_s2_pure", (0.05, 0.10, 0.20))
     roi_table(h, "Back at BSP: form+ chance x BSP, 8% commission", "p_plus", "WIN_BSP", COMMISSION, (0.10, 0.20, 0.40))
 
 
