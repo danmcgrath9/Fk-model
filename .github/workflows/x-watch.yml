@@ -11,6 +11,9 @@ on:
       user:
         description: 'X username to watch'
         default: 'AnthonyDon_'
+      from_id:
+        description: 'Re-read the posts after this post id (a test; blank for a normal run)'
+        default: ''
 
 permissions:
   contents: write
@@ -33,7 +36,8 @@ jobs:
       - name: Read new posts
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
-        run: python scripts/x_watch.py "${{ github.event.inputs.user || 'AnthonyDon_' }}" --unit 50
+          FROM_ID: ${{ github.event.inputs.from_id }}
+        run: python scripts/x_watch.py "${{ github.event.inputs.user || 'AnthonyDon_' }}" --unit 50 ${FROM_ID:+--from-id "$FROM_ID"}
       - name: Raise the tips as an issue
         if: hashFiles('data/x-watch/new-tips.md') != ''
         env:
