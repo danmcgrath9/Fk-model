@@ -1,0 +1,58 @@
+name: gh topaz morning
+
+# The corrected blend priced at TAB's first price on the morning TAB opens (18 Nov 2026, founder: "how aren't we
+# matching against TAB opening price"). TAB opens Victorian greyhounds at a median 7:25am Melbourne (Test 92). This
+# reads today's prices from Betwatch, last night's kept card_iso and the saved correction (Actions cache, read only),
+# and SEALS the bets to the card key: the log prints counts only. Paper only; nothing is bet.
+
+on:
+  schedule:
+    - cron: '45 20 * * *'      # 7:45am Melbourne in daylight time (6:45am in standard time); GitHub may start it late
+  workflow_dispatch:
+    inputs:
+      day:
+        description: 'YYYY-MM-DD in Melbourne (blank = today)'
+        default: ''
+
+concurrency:
+  group: gh-topaz-morning
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  morning:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONUNBUFFERED: '1'
+      BETWATCH_API_KEY: ${{ secrets.BETWATCH_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'requests>=2.31' pandas numpy lightgbm scikit-learn scipy
+
+      - name: Restore the kept cards (Actions cache, this repository only)
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/cards
+          key: topaz-cards-${{ github.run_id }}
+          restore-keys: topaz-cards-
+
+      - name: Restore the saved model (Actions cache, read only; the corrected blend's correction)
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/model
+          key: topaz-model-${{ github.run_id }}
+          restore-keys: topaz-model-
+
+      - name: The corrected blend at TAB's open (counts; the bets sealed)
+        run: |
+          set -o pipefail
+          export CARDS_DIR="$PWD/greyhound/cache/cards" MODEL_DIR="$PWD/greyhound/cache/model"
+          export MORNING_DAY="${{ github.event.inputs.day }}"
+          python research/greyhound/topaz_morning.py "topaz morning" | tee morning.out
+          grep -v '^SEALED' morning.out >> "$GITHUB_STEP_SUMMARY"
