@@ -289,3 +289,9 @@ Prices (fixed 18 Nov, the first morning): the list uses the seven majors' prices
 the best major price, TAB's move from its first price), exactly as the research did. Form King's "average now" ran a
 median 7% under the majors at Sandown on 18 Nov and listed Navy Heart, which the tested rule would not have. Without the
 Betwatch pull the list falls back to Form King's average and every row says so. The Betwatch trial ends Fri 20 Nov.
+
+Stakes stay at the open book's units for now (founder, 18 Nov 2026: "Ok keep it at open book units for now", after
+asking whether to increase them). Suggested review, the founder's call: after 50 settled 9am bets, judge on one number,
+the price taken against Betfair SP, stake-weighted: 5% or more over BSP, double the units; 0-5%, keep them; under BSP,
+stop. Bookmakers must lay a 9am bet to win $1,000 ($2,000 metro) in VIC, NSW, QLD and WA, so doubled stakes mostly stay
+inside the minimum bet limit; the bets stay off the account BetMatic uses for the open book.
