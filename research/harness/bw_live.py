@@ -131,6 +131,15 @@ def main():
     bw = load_betwatch(a.cache)
     recent = fetch_recent(bw, today)
     bw = pd.concat([bw, recent], ignore_index=True).drop_duplicates(["bw_race", "number"], keep="last")
+    t0 = bw[pd.to_datetime(bw.bw_date).dt.date == today]
+    t0 = t0[~t0.scratched]
+    print(f"today's runners not scratched: {len(t0)}; with a TAB price change logged {t0.tab_open.notna().sum()}; "
+          f"with a current TAB price {pd.to_numeric(t0.tab_now, errors='coerce').gt(1).sum()}")
+    # Today only: where Betwatch has logged no TAB price change yet, TAB's current price is the first price seen.
+    now_px = pd.to_numeric(bw.tab_now, errors="coerce").where(lambda x: x > 1)
+    is_today = pd.to_datetime(bw.bw_date).dt.date == today
+    bw.loc[is_today, "tab_open"] = bw.loc[is_today, "tab_open"].fillna(now_px[is_today])
+    bw.loc[is_today, "tab_last"] = bw.loc[is_today, "tab_last"].fillna(now_px[is_today])
     df = frame(bw, today)
     past = df[~df.today & df.res]
     g = past.groupby("race")

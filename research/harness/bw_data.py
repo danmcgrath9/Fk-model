@@ -98,7 +98,8 @@ def runner_rows(race):
             "bw_pos": pos.get(num) if pos else np.nan, "bw_has_results": bool(pos),
             "tab_open": tab[0][0] if tab else np.nan,
             "tab_open_hours": (st - o_at).total_seconds() / 3600 if tab and not pd.isna(st) else np.nan,
-            "tab_last": before[-1][0] if before else np.nan, "tab_n": len(tab)})
+            "tab_last": before[-1][0] if before else np.nan, "tab_n": len(tab),
+            "tab_now": (((ru.get("books") or {}).get("Tab") or {}).get("last") or [None])[0]})
     return out
 
 
