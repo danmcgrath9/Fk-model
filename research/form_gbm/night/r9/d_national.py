@@ -36,6 +36,15 @@ ok_all = ok.copy(); ok = ok & ~night
 metro = np.array([any(t.lower().startswith(m) for m in METRO.get(s, ())) for t, s in zip(track, state)])
 lim = np.where(metro, 2000.0, 1000.0)
 inv = np.where(ok, 1 / np.where(ok, med, 2.0), 0.0); tot = np.bincount(ri, weights=inv, minlength=nR)
+# THE WHOLE-BOOK GUARD (m_exact.py, 18 Nov): a race whose 9am book adds to well under its state's usual has prices
+# that pre-date a scratching (Geelong 4 Jun and Ballarat 12 Jul 2026: books of 0.51-0.99 against a usual 1.28).
+# Every runner in it reads as over the odds and none of it could be bet without a deduction. Such races are left out.
+_rs = np.array([state[np.where(ri == r)[0][0]] for r in range(nR)]) if False else None
+_first = np.zeros(nR, int); _first[ri[::-1]] = np.arange(n)[::-1]; _rstate = state[_first]; _used = np.bincount(ri, weights=ok, minlength=nR) > 0
+_usual = {s_: np.median(tot[_used & (_rstate == s_)]) for s_ in set(_rstate[_used])}
+whole = tot[ri] >= 0.90 * np.array([_usual.get(s_, 9.0) for s_ in state])
+print("whole-book guard: usual 9am book by state " + ", ".join(f"{k} {v_:.2f}" for k, v_ in sorted(_usual.items())) + f"; races left out {int((_used & (tot < 0.90 * np.array([_usual.get(s_, 9.0) for s_ in _rstate]))).sum())}")
+ok = ok & whole; inv = np.where(ok, 1 / np.where(ok, med, 2.0), 0.0); tot = np.bincount(ri, weights=inv, minlength=nR)
 share = inv / np.maximum(tot[ri], 1e-12); DED = np.minimum(np.bincount(ri, weights=np.where(ok & ~ran, share, 0), minlength=nR), 0.9)[ri]
 lm = -np.log(np.where(ok, med, 1.0)); mv = np.log(np.where(ok, T9, 1.0)) - np.log(np.where(ok, first, 1.0))
 X = np.column_stack([lm, mv])

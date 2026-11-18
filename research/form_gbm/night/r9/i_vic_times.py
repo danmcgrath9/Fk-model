@@ -47,7 +47,7 @@ def fit(m, Xc):
         p = soft(Xo @ b, m); return -np.log(np.maximum(p[m & won], 1e-300)).sum() / nr, -(Xo[m & won].sum(0) - (p[:, None] * Xo).sum(0)) / nr
     return minimize(f, np.zeros(Xc.shape[1]), jac=True, method="L-BFGS-B").x
 print("\n| time | races | weights (ours, median then, move) | runners bet | bookie bets | winners | staked | profit | ROI | months up | not on an earlier list: bets, profit, ROI |\n|---|---|---|---|---|---|---|---|---|---|---|")
-earlier = np.zeros((n, len(MAJORS)), bool)
+earlier = np.zeros((n, len(MAJORS)), bool); FIX = []
 for label, sfx, tmin in (("9:00am", "0900", None), ("4 h before the jump", "t240", -240.0), ("1 h before", "t60", -60.0), ("10 min before", "t10", -10.0), ("1 min before", "t1", -1.0)):
     B = np.column_stack([D[f"{b}_{sfx}"][v] for b in MAJORS]); B[B <= 1.011] = np.nan
     tt = nine if tmin is None else np.full(n, tmin)
@@ -57,6 +57,9 @@ for label, sfx, tmin in (("9:00am", "0900", None), ("4 h before the jump", "t240
     inm = ~gone & after9 & ~night & (np.isfinite(B).sum(1) >= 4) & np.isfinite(B[:, 0]) & np.isfinite(first) & (first > 1.011) & (~ran | np.isfinite(Pm))
     cnt = np.bincount(ri, weights=inm, minlength=nR); w1 = np.bincount(ri, weights=inm & won, minlength=nR); miss = np.bincount(ri, weights=ran & ~inm, minlength=nR)
     ok = inm & (cnt[ri] >= 4) & (w1[ri] == 1) & (miss[ri] == 0)
+    inv = np.where(ok, 1 / np.where(ok, med, 2.0), 0.0); tot = np.bincount(ri, weights=inv, minlength=nR)
+    # the whole-book guard (m_exact.py): leave out a race whose book then is under 90% of the usual book at that time
+    used = np.bincount(ri, weights=ok, minlength=nR) > 0; usual = np.median(tot[used]); ok = ok & (tot[ri] >= 0.90 * usual)
     inv = np.where(ok, 1 / np.where(ok, med, 2.0), 0.0); tot = np.bincount(ri, weights=inv, minlength=nR); share = inv / np.maximum(tot[ri], 1e-12)
     Q = np.bincount(ri, weights=np.where(ok & ~ran, share, 0), minlength=nR); DED = np.minimum(Q, 0.9)[ri]
     ps = np.bincount(ri, weights=np.where(ok & ran, Pm, 0.0), minlength=nR)
@@ -73,5 +76,16 @@ for label, sfx, tmin in (("9:00am", "0900", None), ("4 h before the jump", "t240
     print(f"| {label} | {len(np.unique(ri[test]))} | {b[0]:+.2f}, {b[1]:+.2f}, {b[2]:+.2f} | {int(hit.any(1).sum())} | {int(hit.sum())} | {int((hit.any(1) & won).sum())} | ${st.sum():,.0f} | ${pl.sum():+,.0f} | "
           f"{pl.sum() / max(st.sum(), 1):+.1%} | {up} of {len(mos)} | {int(new.sum())}, ${pl[new].sum():+,.0f}, {pl[new].sum() / max(st[new].sum(), 1):+.0%} |", flush=True)
     earlier |= hit
+    pF = soft(X @ b, ok); fF = np.where(pF > 0, 1 / np.maximum(pF, 1e-12), np.nan); allm = ok
+    eF = allm & ran & ~fs & (fF >= 1.6) & (fF <= 15); hF = eF[:, None] & np.isfinite(B) & (B >= 1.05 * fF[:, None])
+    sF = np.where(hF, lim[:, None] / np.maximum(B - 1, 1e-9), 0.0); lF = np.where(hF, np.where(won[:, None], (lim * (1 - DED))[:, None], -sF), 0.0)
+    mosF = sorted(set(month[hF.any(1)])); upF = sum(lF[month == mo].sum() > 0 for mo in mosF); h1 = date < "2026-07-01"
+    FIX.append(f"| {label} | {len(np.unique(ri[ok]))} | {int(hF.any(1).sum())} | {int(hF.sum())} | {int((hF.any(1) & won).sum())} | {pF[hF.any(1)].sum():.0f} | ${sF.sum():,.0f} | ${lF.sum():+,.0f} | {lF.sum() / max(sF.sum(), 1):+.1%} | {upF} of {len(mosF)} | "
+               f"{int(hF[h1].sum())} bets {lF[h1].sum() / max(sF[h1].sum(), 1):+.0%} | {int(hF[~h1].sum())} bets {lF[~h1].sum() / max(sF[~h1].sum(), 1):+.0%} |")
+    if tmin is None:
+        np.savez(os.path.join(HERE, "i_vic_9am.npz"), date=date, race=race, name=name, fp=fp, ok=ok, test=test, hits=hit.sum(1), Pe=Pe, med=med, pl=pl.sum(1), st=st.sum(1), ran=ran, fs=fs, DED=DED, B=B, won=won)
     if tmin is None:
         print(f"|   (9:00am: late scratchings by their exact time: {int((ok & ~ran).sum())} in {len(np.unique(ri[ok & ~ran]))} races) | | | | | | | | | | |")
+
+print("\n### The same with each time's LAST fitted weights used on every month from Nov 2025 (whole books only)\n\n| time | races | runners bet | bookie bets | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov |\n|---|---|---|---|---|---|---|---|---|---|---|---|")
+print("\n".join(FIX))

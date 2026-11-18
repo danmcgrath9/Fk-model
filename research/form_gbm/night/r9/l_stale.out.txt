@@ -1,0 +1,37 @@
+  MED7 = np.nanmedian(B7, 1)
+
+## ours + median + move
+
+### price 1.05-1.20x fair: 858 bets on 260 runners, $+100,773 on $374,593 (+26.9%)
+by major: tab 135 bets $+20,403 (+34%); sportsbet 139 bets $+17,718 (+32%); ladbrokes 110 bets $+13,445 (+26%); neds 110 bets $+13,445 (+26%); pointsbet 121 bets $+16,389 (+32%); unibet 123 bets $+14,321 (+27%); betr 120 bets $+5,052 (+10%)
+by how many majors show it: one: 90 bets $+4,909 (+17%); two or three: 153 bets $+21,539 (+36%); four or more: 615 bets $+74,325 (+26%)
+the 9am price is that major's FIRST price (never moved): 87 bets $+14,483 (+51%); it had moved: 771 bets $+86,290 (+25%)
+that major's price later in the morning against its 9am price (858 bets): cut by 10%+ 21%, within 10% 78%, pushed out 10%+ 1%; median 1.00
+  Nov 2025-Jun 2026: 450 bets $+21,351 (+9%); by major tab 68, sportsbet 73, ladbrokes 66, neds 66, pointsbet 57, unibet 64, betr 56
+  Jul-Nov 2026: 408 bets $+79,422 (+55%); by major tab 67, sportsbet 66, ladbrokes 44, neds 44, pointsbet 64, unibet 59, betr 64
+
+### price 1.20-9.00x fair: 313 bets on 90 runners, $+36,707 on $66,383 (+55.3%)
+by major: tab 22 bets $+3,307 (+57%); sportsbet 73 bets $+7,400 (+49%); ladbrokes 40 bets $+5,594 (+66%); neds 40 bets $+5,594 (+66%); pointsbet 43 bets $+4,881 (+53%); unibet 42 bets $+5,140 (+58%); betr 53 bets $+4,792 (+47%)
+by how many majors show it: one: 46 bets $+3,608 (+42%); two or three: 4 bets $-841 (-100%); four or more: 263 bets $+33,941 (+60%)
+the 9am price is that major's FIRST price (never moved): 67 bets $+9,155 (+90%); it had moved: 246 bets $+27,552 (+49%)
+that major's price later in the morning against its 9am price (313 bets): cut by 10%+ 25%, within 10% 74%, pushed out 10%+ 0%; median 1.00
+  Nov 2025-Jun 2026: 115 bets $+19,233 (+56%); by major tab 15, sportsbet 31, ladbrokes 12, neds 12, pointsbet 16, unibet 15, betr 14
+  Jul-Nov 2026: 198 bets $+17,474 (+55%); by major tab 7, sportsbet 42, ladbrokes 28, neds 28, pointsbet 27, unibet 27, betr 39
+
+## LIVE 0.20 ours + 1.00 TAB
+
+### price 1.05-1.20x fair: 464 bets on 186 runners, $-37,081 on $232,082 (-16.0%)
+by major: tab 28 bets $+1,757 (+10%); sportsbet 71 bets $-9,987 (-30%); ladbrokes 115 bets $-7,584 (-13%); neds 115 bets $-7,584 (-13%); pointsbet 42 bets $-2,161 (-11%); unibet 42 bets $-4,668 (-24%); betr 51 bets $-6,853 (-29%)
+by how many majors show it: one: 53 bets $-12,375 (-63%); two or three: 208 bets $-283 (-0%); four or more: 203 bets $-24,423 (-24%)
+the 9am price is that major's FIRST price (never moved): 62 bets $+5,589 (+23%); it had moved: 402 bets $-42,670 (-21%)
+that major's price later in the morning against its 9am price (464 bets): cut by 10%+ 19%, within 10% 76%, pushed out 10%+ 4%; median 1.00
+  Nov 2025-Jun 2026: 329 bets $-43,787 (-26%); by major tab 22, sportsbet 50, ladbrokes 87, neds 87, pointsbet 28, unibet 28, betr 27
+  Jul-Nov 2026: 135 bets $+6,706 (+10%); by major tab 6, sportsbet 21, ladbrokes 28, neds 28, pointsbet 14, unibet 14, betr 24
+
+### price 1.20-9.00x fair: 268 bets on 70 runners, $+63,528 on $66,406 (+95.7%)
+by major: tab 11 bets $+2,881 (+73%); sportsbet 64 bets $+13,550 (+96%); ladbrokes 38 bets $+9,576 (+98%); neds 38 bets $+9,576 (+99%); pointsbet 38 bets $+8,695 (+93%); unibet 39 bets $+9,707 (+99%); betr 40 bets $+9,543 (+99%)
+by how many majors show it: one: 30 bets $+6,228 (+105%); two or three: 4 bets $+1,429 (+153%); four or more: 234 bets $+55,871 (+94%)
+the 9am price is that major's FIRST price (never moved): 59 bets $+8,561 (+85%); it had moved: 209 bets $+54,967 (+97%)
+that major's price later in the morning against its 9am price (268 bets): cut by 10%+ 24%, within 10% 75%, pushed out 10%+ 1%; median 1.00
+  Nov 2025-Jun 2026: 86 bets $+36,983 (+92%); by major tab 10, sportsbet 22, ladbrokes 10, neds 10, pointsbet 11, unibet 12, betr 11
+  Jul-Nov 2026: 182 bets $+26,545 (+101%); by major tab 1, sportsbet 42, ladbrokes 28, neds 28, pointsbet 27, unibet 27, betr 29

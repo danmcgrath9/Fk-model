@@ -206,6 +206,16 @@ def check_9am(L, today, F):
                 F.append(("BLOCK", f"9am {P}", f"{who}: blend price ${blend:g} is outside $1.60-$15"))
             if abs(stake - win / (now - 1)) > 1.0:
                 F.append(("BLOCK", f"9am {P}", f"{who}: stake ${stake:g} is not ${win:g} / (price {now:g} - 1)"))
+        # THE WHOLE BOOK (18 Nov research, night/r9/m_exact.py): when horses are scratched shortly before 9am and the
+        # prices have not been re-framed yet, the race's book adds to well under its usual (1.23 on best prices, 1.33 on
+        # the average, never under 1.11 in our own pulls) and every runner left reads as over the odds. Geelong 4 Jun
+        # and Ballarat 12 Jul 2026 had books of 0.51-0.99; a bet taken then carries the deduction. Flag, never bet blind.
+        px = read_prices(L, P); listed = {int(r["race"]) for r in csv.DictReader(open(f))}
+        for rc in sorted(listed):
+            nows = [p["now"] for k, p in px.items() if k[0] == rc and not p["scr"] and p["now"]]
+            if len(nows) >= 4 and sum(1 / x for x in nows) < 1.08:
+                F.append(("CHECK", f"9am {P}", f"R{rc}: the prices add to {sum(1 / x for x in nows):.2f} of a book (usual 1.23 or more): they may "
+                          f"pre-date a scratching, and a bet at them would carry the deduction"))
 
 
 def scratched_races(L, P):

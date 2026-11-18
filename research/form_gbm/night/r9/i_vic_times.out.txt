@@ -1,0 +1,22 @@
+Victoria in the national pull: 73588 runners, 5607 races, 2025-07-01 to 2026-11-16; runners that ran matched to the dataset: 51663 of 55752
+
+| time | races | weights (ours, median then, move) | runners bet | bookie bets | winners | staked | profit | ROI | months up | not on an earlier list: bets, profit, ROI |
+|---|---|---|---|---|---|---|---|---|---|---|
+/tmp/claude-0/-home-user-cafe-copilot/3bac7eba-1a73-583c-b23d-aae29b750b5b/scratchpad/r9/i_vic_times.py:56: RuntimeWarning: All-NaN slice encountered
+  med = np.nanmedian(B, 1)
+| 9:00am | 3451 | +0.29, +0.87, -0.23 | 279 | 851 | 74 | $367,795 | $+53,390 | +14.5% | 8 of 12 | 851, $+53,390, +15% |
+|   (9:00am: late scratchings by their exact time: 709 in 598 races) | | | | | | | | | | |
+| 4 h before the jump | 3220 | +0.27, +0.89, -0.20 | 178 | 433 | 40 | $199,205 | $+7,272 | +3.7% | 7 of 12 | 95, $-2,316, -8% |
+| 1 h before | 3499 | +0.26, +0.88, -0.16 | 105 | 241 | 26 | $100,968 | $+17,860 | +17.7% | 5 of 13 | 46, $+2,872, +22% |
+| 10 min before | 3500 | +0.08, +1.08, -0.10 | 101 | 109 | 22 | $41,187 | $+3,665 | +8.9% | 9 of 12 | 74, $+3,710, +14% |
+| 1 min before | 3491 | +0.05, +1.09, -0.04 | 248 | 269 | 47 | $81,797 | $+1,494 | +1.8% | 6 of 13 | 215, $+605, +1% |
+
+### The same with each time's LAST fitted weights used on every month from Nov 2025 (whole books only)
+
+| time | races | runners bet | bookie bets | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 9:00am | 4717 | 375 | 1151 | 107 | 90 | $519,085 | $+107,513 | +20.7% | 9 of 17 | 772 bets +5% | 379 bets +59% |
+| 4 h before the jump | 4385 | 241 | 613 | 61 | 57 | $292,571 | $+58,900 | +20.1% | 10 of 17 | 378 bets +0% | 235 bets +58% |
+| 1 h before | 4765 | 125 | 275 | 33 | 26 | $109,862 | $+43,855 | +39.9% | 8 of 17 | 178 bets +33% | 97 bets +50% |
+| 10 min before | 4766 | 106 | 117 | 27 | 25 | $46,905 | $+19,487 | +41.5% | 11 of 17 | 62 bets +59% | 55 bets +21% |
+| 1 min before | 4755 | 245 | 266 | 49 | 51 | $79,041 | $+7,824 | +9.9% | 8 of 16 | 111 bets +18% | 155 bets +5% |

@@ -1,0 +1,1 @@
+302238 runners; 2025-07-01 to 2026-11-16 ; by state: [(np.str_('NSW'), 90928), (np.str_('VIC'), 73588), (np.str_('QLD'), 66101), (np.str_('WA'), 32147), (np.str_('SA'), 24333), (np.str_('TAS'), 7349), (np.str_('NT'), 4826), (np.str_('ACT'), 2966)]

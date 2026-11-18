@@ -1,0 +1,423 @@
+Victoria, 2025-07-01 to 2026-11-16: 3467 day races usable at 9am; exact late scratchings in them 531 in 450 races
+
+### FITTED: 0.28 ours + 0.88 median - 0.22 move
+
+| 9am price / fair | bookie bets | runners | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov | no late scratching in the race | a late scratching |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0.95-1.00x | 4905 | 1450 | 399 | 394 | $3,206,701 | $+36,993 | +1.2% | 6 of 13 | 3231 bets +3% | 1674 bets -2% | 4302 bets +2% | 603 bets -2% |
+| 1.00-1.03x | 1303 | 475 | 135 | 135 | $835,754 | $-52,144 | -6.2% | 7 of 13 | 800 bets -8% | 503 bets -2% | 1124 bets -5% | 179 bets -11% |
+| 1.03-1.05x | 516 | 194 | 60 | 55 | $291,629 | $+23,274 | +8.0% | 8 of 13 | 278 bets -7% | 238 bets +31% | 433 bets +7% | 83 bets +12% |
+| 1.05-1.08x | 439 | 166 | 46 | 43 | $213,319 | $+14,705 | +6.9% | 7 of 13 | 258 bets -16% | 181 bets +54% | 379 bets +1% | 60 bets +50% |
+| 1.08-1.12x | 239 | 99 | 32 | 25 | $94,462 | $+35,475 | +37.6% | 9 of 13 | 152 bets +9% | 87 bets +96% | 222 bets +34% | 17 bets +82% |
+| 1.12-1.20x | 109 | 51 | 13 | 12 | $45,101 | $+7,503 | +16.6% | 4 of 11 | 49 bets -56% | 60 bets +55% | 94 bets +32% | 15 bets -100% |
+| 1.20-1.35x | 77 | 37 | 9 | 8 | $18,769 | $+11,896 | +63.4% | 6 of 13 | 36 bets +192% | 41 bets -7% | 70 bets +81% | 7 bets -100% |
+| 1.35x and over | 174 | 38 | 10 | 8 | $25,304 | $+23,168 | +91.6% | 6 of 8 | 34 bets +46% | 140 bets +116% | 172 bets +91% | 2 bets +157% |
+| **1.05x and over** | 1038 | 313 | 86 | 73 | $396,955 | $+92,747 | +23.4% | 9 of 13 | 529 bets -4% | 509 bets +64% | 937 bets +23% | 101 bets +30% |
+| **1.08x and over** | 599 | 196 | 54 | 45 | $183,636 | $+78,043 | +42.5% | 9 of 13 | 271 bets +15% | 328 bets +72% | 558 bets +47% | 41 bets -8% |
+
+1.05x and over, by how many majors are at the take price: one: 114 bets $+8,281 (+21%); two or three: 184 bets $+17,571 (+25%); four or more: 740 bets $+66,895 (+23%)
+1.05x and over, by fair price: $1.6-$3: 225 bets $+5,793 (+3%); $3-$5: 388 bets $+68,368 (+47%); $5-$8: 282 bets $+6,745 (+12%); $8-$15.01: 143 bets $+11,841 (+78%)
+1.05x and over, by month: 25-11 65 $-9.9k; 25-12 59 $+2.2k; 26-01 36 $+12.1k; 26-02 43 $-7.4k; 26-03 42 $+11.0k; 26-04 42 $+0.1k; 26-05 72 $-1.9k; 26-06 170 $-15.4k; 26-07 230 $+36.3k; 26-08 86 $+48.0k; 26-09 70 $+1.5k; 26-10 90 $+10.1k; 26-11 33 $+5.9k
+
+### LIVE: 0.20 ours + 1.00 TAB
+
+| 9am price / fair | bookie bets | runners | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov | no late scratching in the race | a late scratching |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0.95-1.00x | 4147 | 1223 | 368 | 364 | $3,092,390 | $-111,464 | -3.6% | 5 of 13 | 2625 bets -3% | 1522 bets -5% | 3628 bets -1% | 519 bets -23% |
+| 1.00-1.03x | 862 | 333 | 96 | 101 | $572,954 | $-18,676 | -3.3% | 4 of 13 | 555 bets -7% | 307 bets +3% | 737 bets -1% | 125 bets -17% |
+| 1.03-1.05x | 203 | 93 | 25 | 27 | $124,429 | $-19,291 | -15.5% | 5 of 13 | 120 bets -16% | 83 bets -15% | 189 bets -18% | 14 bets +9% |
+| 1.05-1.08x | 180 | 88 | 20 | 24 | $107,456 | $-15,690 | -14.6% | 5 of 13 | 120 bets -25% | 60 bets +8% | 157 bets -24% | 23 bets +63% |
+| 1.08-1.12x | 94 | 49 | 7 | 12 | $42,677 | $+1,448 | +3.4% | 3 of 13 | 64 bets -53% | 30 bets +62% | 78 bets +15% | 16 bets -100% |
+| 1.12-1.20x | 76 | 31 | 5 | 8 | $26,599 | $+480 | +1.8% | 4 of 10 | 37 bets +52% | 39 bets -52% | 73 bets +5% | 3 bets -100% |
+| 1.20-1.35x | 53 | 26 | 9 | 6 | $12,074 | $+10,764 | +89.1% | 5 of 9 | 24 bets +36% | 29 bets +115% | 52 bets +95% | 1 bets -100% |
+| 1.35x and over | 161 | 32 | 9 | 7 | $23,238 | $+21,426 | +92.2% | 5 of 7 | 26 bets +43% | 135 bets +118% | 158 bets +93% | 3 bets +59% |
+| **1.05x and over** | 564 | 198 | 45 | 48 | $212,043 | $+18,428 | +8.7% | 6 of 13 | 271 bets -15% | 293 bets +40% | 518 bets +8% | 46 bets +12% |
+| **1.08x and over** | 384 | 121 | 27 | 27 | $104,587 | $+34,118 | +32.6% | 6 of 13 | 151 bets +1% | 233 bets +59% | 361 bets +40% | 23 bets -84% |
+
+1.05x and over, by how many majors are at the take price: one: 58 bets $-1,702 (-10%); two or three: 180 bets $+4,289 (+4%); four or more: 326 bets $+15,841 (+16%)
+1.05x and over, by fair price: $1.6-$3: 140 bets $+12,083 (+10%); $3-$5: 165 bets $-3,131 (-6%); $5-$8: 161 bets $+6,957 (+23%); $8-$15.01: 98 bets $+2,519 (+27%)
+1.05x and over, by month: 25-11 22 $+5.6k; 25-12 15 $+14.1k; 26-01 7 $-1.5k; 26-02 22 $-8.0k; 26-03 26 $+2.0k; 26-04 35 $-7.7k; 26-05 36 $-18.1k; 26-06 108 $-4.0k; 26-07 193 $+22.1k; 26-08 46 $+23.3k; 26-09 22 $-8.1k; 26-10 20 $-6.5k; 26-11 12 $+5.4k
+
+### MARKET ONLY: 1.19 median
+
+| 9am price / fair | bookie bets | runners | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov | no late scratching in the race | a late scratching |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0.95-1.00x | 1291 | 469 | 152 | 157 | $1,519,513 | $+24,616 | +1.6% | 9 of 13 | 768 bets -3% | 523 bets +8% | 1099 bets +2% | 192 bets +2% |
+| 1.00-1.03x | 133 | 74 | 30 | 23 | $121,541 | $+29,639 | +24.4% | 6 of 12 | 77 bets +20% | 56 bets +32% | 123 bets +29% | 10 bets -43% |
+| 1.03-1.05x | 41 | 25 | 4 | 7 | $35,806 | $-18,420 | -51.4% | 3 of 10 | 29 bets -50% | 12 bets -62% | 37 bets -50% | 4 bets -100% |
+| 1.05-1.08x | 28 | 19 | 3 | 5 | $12,743 | $-1,696 | -13.3% | 2 of 10 | 16 bets +45% | 12 bets -100% | 23 bets -22% | 5 bets +60% |
+| 1.08-1.12x | 19 | 16 | 2 | 4 | $6,136 | $-3,303 | -53.8% | 1 of 8 | 5 bets +9% | 14 bets -75% | 18 bets -53% | 1 bets -100% |
+| 1.12-1.20x | 32 | 18 | 2 | 4 | $8,303 | $-5,719 | -68.9% | 2 of 9 | 11 bets +48% | 21 bets -100% | 30 bets -66% | 2 bets -100% |
+| 1.20-1.35x | 40 | 18 | 5 | 4 | $8,940 | $+5,200 | +58.2% | 4 of 7 | 24 bets -26% | 16 bets +114% | 39 bets +61% | 1 bets -100% |
+| 1.35x and over | 170 | 35 | 9 | 8 | $25,297 | $+22,967 | +90.8% | 5 of 6 | 26 bets +44% | 144 bets +113% | 168 bets +90% | 2 bets +157% |
+| **1.05x and over** | 289 | 95 | 20 | 21 | $61,419 | $+17,450 | +28.4% | 6 of 13 | 82 bets +31% | 207 bets +27% | 278 bets +29% | 11 bets +20% |
+| **1.08x and over** | 261 | 79 | 17 | 17 | $48,676 | $+19,146 | +39.3% | 5 of 11 | 66 bets +24% | 195 bets +46% | 255 bets +41% | 6 bets -22% |
+
+1.05x and over, by how many majors are at the take price: one: 52 bets $+666 (+5%); two or three: 16 bets $+1,691 (+21%); four or more: 221 bets $+15,093 (+38%)
+1.05x and over, by fair price: $1.6-$3: 47 bets $+14,483 (+63%); $3-$5: 106 bets $+5,515 (+23%); $5-$8: 82 bets $-5,768 (-56%); $8-$15.01: 54 bets $+3,219 (+79%)
+1.05x and over, by month: 25-11 1 $-0.5k; 25-12 1 $+1.0k; 26-01 1 $-0.3k; 26-02 3 $+3.9k; 26-03 7 $+2.3k; 26-04 4 $+1.6k; 26-05 5 $-1.0k; 26-06 60 $+0.0k; 26-07 153 $+23.3k; 26-08 25 $-8.4k; 26-09 16 $-1.1k; 26-10 9 $-2.4k; 26-11 4 $-1.0k
+
+### LIVE AS BUILT: 0.20 ours + 1.00 best major price
+
+| 9am price / fair | bookie bets | runners | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov | no late scratching in the race | a late scratching |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0.95-1.00x | 4133 | 1091 | 368 | 361 | $3,413,566 | $-72,096 | -2.1% | 5 of 13 | 2597 bets -3% | 1536 bets -1% | 3632 bets +0% | 501 bets -19% |
+| 1.00-1.03x | 744 | 264 | 90 | 93 | $730,960 | $-110,226 | -15.1% | 2 of 13 | 456 bets -18% | 288 bets -11% | 618 bets -16% | 126 bets -6% |
+| 1.03-1.05x | 190 | 61 | 22 | 22 | $165,075 | $+6,823 | +4.1% | 5 of 13 | 122 bets -15% | 68 bets +41% | 165 bets +14% | 25 bets -43% |
+| 1.05-1.08x | 118 | 46 | 12 | 16 | $98,369 | $+2,132 | +2.2% | 4 of 13 | 48 bets -50% | 70 bets +46% | 110 bets -14% | 8 bets +167% |
+| 1.08-1.12x | 64 | 24 | 7 | 7 | $31,912 | $+16,532 | +51.8% | 5 of 9 | 35 bets +41% | 29 bets +68% | 52 bets +38% | 12 bets +172% |
+| 1.12-1.20x | 31 | 15 | 4 | 4 | $10,256 | $+490 | +4.8% | 2 of 8 | 12 bets -2% | 19 bets +7% | 27 bets -56% | 4 bets +493% |
+| 1.20-1.35x | 32 | 12 | 4 | 3 | $8,354 | $+4,839 | +57.9% | 3 of 5 | 22 bets -19% | 10 bets +118% | 32 bets +58% | 0 bets +0% |
+| 1.35x and over | 159 | 27 | 7 | 6 | $23,286 | $+21,589 | +92.7% | 3 of 3 | 22 bets +57% | 137 bets +109% | 159 bets +93% | 0 bets +0% |
+| **1.05x and over** | 404 | 98 | 28 | 28 | $172,177 | $+45,582 | +26.5% | 6 of 13 | 139 bets -14% | 265 bets +60% | 380 bets +12% | 24 bets +196% |
+| **1.08x and over** | 286 | 65 | 18 | 16 | $73,808 | $+43,450 | +58.9% | 5 of 10 | 91 bets +34% | 195 bets +79% | 270 bets +46% | 16 bets +254% |
+
+1.05x and over, by how many majors are at the take price: one: 28 bets $-941 (-6%); two or three: 26 bets $-7,972 (-27%); four or more: 350 bets $+54,495 (+43%)
+1.05x and over, by fair price: $1.6-$3: 116 bets $+24,546 (+24%); $3-$5: 150 bets $-8,530 (-16%); $5-$8: 85 bets $+26,845 (+199%); $8-$15.01: 53 bets $+2,721 (+58%)
+1.05x and over, by month: 25-11 15 $+13.5k; 25-12 4 $+3.0k; 26-01 1 $-0.3k; 26-02 5 $-4.5k; 26-03 13 $-3.8k; 26-04 24 $-10.5k; 26-05 9 $-9.9k; 26-06 68 $+1.5k; 26-07 173 $+33.3k; 26-08 50 $+24.3k; 26-09 13 $-5.6k; 26-10 10 $-3.8k; 26-11 19 $+8.4k
+
+### LIVE WEIGHTS ON THE MEDIAN: 0.20 ours + 1.00 median
+
+| 9am price / fair | bookie bets | runners | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov | no late scratching in the race | a late scratching |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0.95-1.00x | 3260 | 1002 | 335 | 315 | $2,766,520 | $-29,859 | -1.1% | 5 of 13 | 2093 bets -2% | 1167 bets +1% | 2810 bets +3% | 450 bets -27% |
+| 1.00-1.03x | 562 | 240 | 76 | 78 | $497,459 | $-13,217 | -2.7% | 6 of 13 | 322 bets -1% | 240 bets -5% | 474 bets -7% | 88 bets +19% |
+| 1.03-1.05x | 94 | 52 | 15 | 17 | $78,510 | $-2,060 | -2.6% | 5 of 13 | 50 bets -16% | 44 bets +15% | 84 bets -8% | 10 bets +49% |
+| 1.05-1.08x | 105 | 53 | 13 | 15 | $73,643 | $+20,916 | +28.4% | 4 of 13 | 50 bets -32% | 55 bets +107% | 99 bets +19% | 6 bets +424% |
+| 1.08-1.12x | 42 | 22 | 7 | 7 | $22,784 | $+4,525 | +19.9% | 5 of 10 | 22 bets +37% | 20 bets +4% | 40 bets +26% | 2 bets -100% |
+| 1.12-1.20x | 52 | 25 | 7 | 6 | $15,621 | $+8,638 | +55.3% | 4 of 10 | 29 bets +56% | 23 bets +55% | 46 bets +24% | 6 bets +353% |
+| 1.20-1.35x | 41 | 22 | 6 | 4 | $8,352 | $+7,092 | +84.9% | 4 of 9 | 25 bets +7% | 16 bets +146% | 40 bets +89% | 1 bets -100% |
+| 1.35x and over | 163 | 31 | 8 | 6 | $23,825 | $+22,050 | +92.5% | 4 of 5 | 24 bets +54% | 139 bets +110% | 161 bets +91% | 2 bets +157% |
+| **1.05x and over** | 403 | 136 | 35 | 33 | $144,226 | $+63,221 | +43.8% | 6 of 13 | 150 bets +0% | 253 bets +89% | 386 bets +37% | 17 bets +239% |
+| **1.08x and over** | 298 | 90 | 25 | 21 | $70,583 | $+42,305 | +59.9% | 7 of 11 | 100 bets +43% | 198 bets +73% | 287 bets +56% | 11 bets +140% |
+
+1.05x and over, by how many majors are at the take price: one: 69 bets $-1,260 (-5%); two or three: 44 bets $-4,285 (-13%); four or more: 290 bets $+68,766 (+79%)
+1.05x and over, by fair price: $1.6-$3: 106 bets $+24,976 (+31%); $3-$5: 129 bets $+2,968 (+8%); $5-$8: 116 bets $+31,925 (+149%); $8-$15.01: 52 bets $+3,352 (+85%)
+1.05x and over, by month: 25-11 11 $+12.2k; 25-12 5 $+4.0k; 26-01 3 $-1.5k; 26-02 9 $-4.9k; 26-03 13 $-6.0k; 26-04 18 $-7.4k; 26-05 15 $-4.8k; 26-06 76 $+8.3k; 26-07 159 $+27.8k; 26-08 45 $+30.6k; 26-09 16 $-0.9k; 26-10 20 $-6.2k; 26-11 13 $+11.9k
+
+### MORE OF OURS: 0.40 ours + 0.80 median - 0.22 move
+
+| 9am price / fair | bookie bets | runners | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov | no late scratching in the race | a late scratching |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0.95-1.00x | 6750 | 1908 | 494 | 510 | $3,890,697 | $-184,906 | -4.8% | 5 of 13 | 4342 bets -1% | 2408 bets -11% | 5926 bets -3% | 824 bets -15% |
+| 1.00-1.03x | 2449 | 817 | 249 | 243 | $1,545,836 | $-3,479 | -0.2% | 5 of 13 | 1580 bets -4% | 869 bets +5% | 2176 bets -2% | 273 bets +13% |
+| 1.03-1.05x | 1074 | 394 | 119 | 118 | $637,003 | $+8,793 | +1.4% | 6 of 13 | 699 bets -6% | 375 bets +14% | 954 bets +3% | 120 bets -11% |
+| 1.05-1.08x | 1134 | 389 | 115 | 118 | $704,077 | $-37,973 | -5.4% | 5 of 13 | 770 bets -7% | 364 bets -2% | 991 bets -2% | 143 bets -30% |
+| 1.08-1.12x | 859 | 296 | 80 | 83 | $437,675 | $+12,594 | +2.9% | 6 of 13 | 524 bets -11% | 335 bets +27% | 736 bets -1% | 123 bets +26% |
+| 1.12-1.20x | 522 | 163 | 49 | 42 | $217,704 | $+59,155 | +27.2% | 9 of 13 | 300 bets +1% | 222 bets +66% | 468 bets +24% | 54 bets +53% |
+| 1.20-1.35x | 163 | 60 | 13 | 14 | $56,958 | $+20,080 | +35.3% | 9 of 13 | 92 bets -26% | 71 bets +86% | 145 bets +49% | 18 bets -100% |
+| 1.35x and over | 190 | 43 | 12 | 10 | $31,015 | $+14,574 | +47.0% | 7 of 10 | 49 bets +87% | 141 bets +22% | 186 bets +51% | 4 bets -36% |
+| **1.05x and over** | 2868 | 716 | 198 | 193 | $1,447,429 | $+68,430 | +4.7% | 5 of 13 | 1735 bets -6% | 1133 bets +26% | 2526 bets +6% | 342 bets -2% |
+| **1.08x and over** | 1734 | 461 | 125 | 120 | $743,352 | $+106,404 | +14.3% | 7 of 13 | 965 bets -6% | 769 bets +44% | 1535 bets +13% | 199 bets +25% |
+
+1.05x and over, by how many majors are at the take price: one: 176 bets $+11,286 (+16%); two or three: 392 bets $+21,419 (+12%); four or more: 2300 bets $+35,724 (+3%)
+1.05x and over, by fair price: $1.6-$3: 888 bets $-42,282 (-5%); $3-$5: 1164 bets $+19,351 (+4%); $5-$8: 586 bets $+75,696 (+59%); $8-$15.01: 230 bets $+15,665 (+58%)
+1.05x and over, by month: 25-11 254 $+23.3k; 25-12 211 $-15.2k; 26-01 147 $+27.1k; 26-02 173 $-4.1k; 26-03 182 $-7.4k; 26-04 208 $-39.3k; 26-05 252 $-16.0k; 26-06 308 $-28.4k; 26-07 443 $+45.4k; 26-08 234 $+71.7k; 26-09 149 $-8.5k; 26-10 227 $-7.0k; 26-11 80 $+26.9k
+
+## Is the 9am book whole?
+
+usable races: median book 1.281; 5th-95th 1.218-1.312; races with a horse scratched in the 2 h before 9am: 2156, their median book 1.282
+
+### FITTED: 0.28 ours + 0.88 median - 0.22 move, 1.05x and over
+
+| 9am book (sum of 1/median) | bets |
+|---|---|
+| 0.00-1.00 | 222 bets on 36 runners, $+27,730 on $36,038 (+77%) |
+| 1.00-1.08 | 16 bets on 4 runners, $+4,531 on $3,141 (+144%) |
+| 1.08-1.14 | 25 bets on 5 runners, $+9,910 on $9,755 (+102%) |
+| 1.14-1.20 | 13 bets on 4 runners, $-10,408 on $10,408 (-100%) |
+| 1.20-9.00 | 762 bets on 264 runners, $+60,984 on $337,614 (+18%) |
+
+| last scratching before 9am in the race | bets |
+|---|---|
+| none before 9am | 63 bets on 26 runners, $-10,321 on $25,423 (-41%) |
+| within 30 min of 9am | 51 bets on 15 runners, $+8,503 on $11,307 (+75%) |
+| 30-120 min before | 740 bets on 216 runners, $+79,826 on $250,660 (+32%) |
+| more than 2 h before | 184 bets on 56 runners, $+14,739 on $109,565 (+13%) |
+
+whole books only (1.08 and over): 800 bets on 273 runners, $+60,487 on $357,776 (+17%); months up 9 of 13; Nov-Jun 466 bets on 149 runners, $-13,681 on $223,367 (-6%); Jul-Nov 334 bets on 124 runners, $+74,168 on $134,410 (+55%)
+whole books only, by margin: 1.05-1.08x: 425 bets +5%; 1.08-1.12x: 223 bets +41%; 1.12-1.20x: 89 bets +25%; 1.20-9.00x: 63 bets +17%
+
+### LIVE: 0.20 ours + 1.00 TAB, 1.05x and over
+
+| 9am book (sum of 1/median) | bets |
+|---|---|
+| 0.00-1.00 | 219 bets on 36 runners, $+20,662 on $34,550 (+60%) |
+| 1.00-1.08 | 5 bets on 2 runners, $-1,526 on $1,526 (-100%) |
+| 1.08-1.14 | 25 bets on 6 runners, $+11,371 on $10,446 (+109%) |
+| 1.14-1.20 | 13 bets on 5 runners, $-11,327 on $11,327 (-100%) |
+| 1.20-9.00 | 302 bets on 149 runners, $-752 on $154,194 (-0%) |
+
+| last scratching before 9am in the race | bets |
+|---|---|
+| none before 9am | 38 bets on 22 runners, $-8,189 on $25,079 (-33%) |
+| within 30 min of 9am | 56 bets on 11 runners, $+5,746 on $13,272 (+43%) |
+| 30-120 min before | 399 bets on 139 runners, $+21,251 on $121,702 (+17%) |
+| more than 2 h before | 71 bets on 26 runners, $-380 on $51,991 (-1%) |
+
+whole books only (1.08 and over): 340 bets on 160 runners, $-708 on $175,967 (-0%); months up 6 of 13; Nov-Jun 214 bets on 100 runners, $-16,389 on $107,755 (-15%); Jul-Nov 126 bets on 60 runners, $+15,682 on $68,213 (+23%)
+whole books only, by margin: 1.05-1.08x: 174 bets -13%; 1.08-1.12x: 86 bets +4%; 1.12-1.20x: 53 bets +23%; 1.20-9.00x: 27 bets +93%
+
+### MARKET ONLY: 1.19 median, 1.05x and over
+
+| 9am book (sum of 1/median) | bets |
+|---|---|
+| 0.00-1.00 | 209 bets on 34 runners, $+22,201 on $34,233 (+65%) |
+| 1.00-1.08 | 7 bets on 1 runners, $-3,249 on $3,249 (-100%) |
+| 1.08-1.14 | 8 bets on 2 runners, $-1,295 on $3,448 (-38%) |
+| 1.14-1.20 | 2 bets on 1 runners, $+4,000 on $3,478 (+115%) |
+| 1.20-9.00 | 63 bets on 57 runners, $-4,207 on $17,012 (-25%) |
+
+| last scratching before 9am in the race | bets |
+|---|---|
+| none before 9am | 8 bets on 6 runners, $+2,549 on $4,929 (+52%) |
+| within 30 min of 9am | 41 bets on 11 runners, $+8,934 on $8,930 (+100%) |
+| 30-120 min before | 230 bets on 69 runners, $+5,300 on $44,439 (+12%) |
+| more than 2 h before | 10 bets on 9 runners, $+667 on $3,121 (+21%) |
+
+whole books only (1.08 and over): 73 bets on 60 runners, $-1,502 on $23,938 (-6%); months up 5 of 13; Nov-Jun 25 bets on 21 runners, $+8,362 on $9,420 (+89%); Jul-Nov 48 bets on 39 runners, $-9,864 on $14,517 (-68%)
+whole books only, by margin: 1.05-1.08x: 22 bets -1%; 1.08-1.12x: 18 bets -52%; 1.12-1.20x: 15 bets -61%; 1.20-9.00x: 18 bets +116%
+
+### LIVE AS BUILT: 0.20 ours + 1.00 best major price, 1.05x and over
+
+| 9am book (sum of 1/median) | bets |
+|---|---|
+| 0.00-1.00 | 209 bets on 34 runners, $+22,201 on $34,233 (+65%) |
+| 1.00-1.08 | 11 bets on 2 runners, $-3,864 on $3,864 (-100%) |
+| 1.08-1.14 | 18 bets on 3 runners, $+9,141 on $9,124 (+100%) |
+| 1.14-1.20 | 19 bets on 4 runners, $+947 on $15,206 (+6%) |
+| 1.20-9.00 | 147 bets on 55 runners, $+17,157 on $109,749 (+16%) |
+
+| last scratching before 9am in the race | bets |
+|---|---|
+| none before 9am | 43 bets on 13 runners, $+12,256 on $32,427 (+38%) |
+| within 30 min of 9am | 45 bets on 10 runners, $+6,035 on $12,983 (+46%) |
+| 30-120 min before | 275 bets on 62 runners, $+19,001 on $88,983 (+21%) |
+| more than 2 h before | 41 bets on 13 runners, $+8,290 on $37,784 (+22%) |
+
+whole books only (1.08 and over): 184 bets on 62 runners, $+27,245 on $134,080 (+20%); months up 6 of 13; Nov-Jun 82 bets on 30 runners, $-9,671 on $65,313 (-15%); Jul-Nov 102 bets on 32 runners, $+36,915 on $68,767 (+54%)
+whole books only, by margin: 1.05-1.08x: 110 bets +5%; 1.08-1.12x: 54 bets +64%; 1.12-1.20x: 14 bets +41%; 1.20-9.00x: 6 bets +49%
+
+### LIVE WEIGHTS ON THE MEDIAN: 0.20 ours + 1.00 median, 1.05x and over
+
+| 9am book (sum of 1/median) | bets |
+|---|---|
+| 0.00-1.00 | 215 bets on 34 runners, $+28,201 on $35,566 (+79%) |
+| 1.00-1.08 | 7 bets on 1 runners, $-3,249 on $3,249 (-100%) |
+| 1.08-1.14 | 20 bets on 4 runners, $+11,141 on $9,458 (+118%) |
+| 1.14-1.20 | 17 bets on 5 runners, $+4,606 on $11,548 (+40%) |
+| 1.20-9.00 | 144 bets on 92 runners, $+22,522 on $84,406 (+27%) |
+
+| last scratching before 9am in the race | bets |
+|---|---|
+| none before 9am | 34 bets on 17 runners, $+17,100 on $21,159 (+81%) |
+| within 30 min of 9am | 42 bets on 12 runners, $+9,641 on $9,377 (+103%) |
+| 30-120 min before | 289 bets on 88 runners, $+36,270 on $83,954 (+43%) |
+| more than 2 h before | 38 bets on 19 runners, $+210 on $29,736 (+1%) |
+
+whole books only (1.08 and over): 181 bets on 101 runners, $+38,269 on $105,411 (+36%); months up 6 of 13; Nov-Jun 87 bets on 46 runners, $-4,579 on $58,587 (-8%); Jul-Nov 94 bets on 55 runners, $+42,848 on $46,824 (+92%)
+whole books only, by margin: 1.05-1.08x: 101 bets +32%; 1.08-1.12x: 33 bets -8%; 1.12-1.20x: 29 bets +136%; 1.20-9.00x: 18 bets +100%
+
+### MORE OF OURS: 0.40 ours + 0.80 median - 0.22 move, 1.05x and over
+
+| 9am book (sum of 1/median) | bets |
+|---|---|
+| 0.00-1.00 | 205 bets on 33 runners, $+23,090 on $34,376 (+67%) |
+| 1.00-1.08 | 14 bets on 4 runners, $+5,440 on $2,232 (+244%) |
+| 1.08-1.14 | 28 bets on 5 runners, $+12,610 on $10,805 (+117%) |
+| 1.14-1.20 | 54 bets on 11 runners, $+18,117 on $46,779 (+39%) |
+| 1.20-9.00 | 2567 bets on 663 runners, $+9,173 on $1,353,237 (+1%) |
+
+| last scratching before 9am in the race | bets |
+|---|---|
+| none before 9am | 261 bets on 77 runners, $-21,145 on $181,491 (-12%) |
+| within 30 min of 9am | 51 bets on 15 runners, $+2,250 on $17,560 (+13%) |
+| 30-120 min before | 1858 bets on 460 runners, $+33,181 on $849,744 (+4%) |
+| more than 2 h before | 698 bets on 164 runners, $+54,144 on $398,633 (+14%) |
+
+whole books only (1.08 and over): 2649 bets on 679 runners, $+39,900 on $1,410,820 (+3%); months up 5 of 13; Nov-Jun 1676 bets on 422 runners, $-65,582 on $937,600 (-7%); Jul-Nov 973 bets on 257 runners, $+105,482 on $473,220 (+22%)
+whole books only, by margin: 1.05-1.08x: 1130 bets -5%; 1.08-1.12x: 843 bets +2%; 1.12-1.20x: 511 bets +28%; 1.20-9.00x: 165 bets +17%
+
+## The short books: 9 races. First eight, every runner the pull holds:
+
+2026-06-04 Geelong R1: 9am book 0.99, 9am was 211 min before the jump
+   Bourne Legacy          ran                              majors with a 9am price 7, median 4.80, TAB first 5.00, in the 9am market: True BET
+   Exceed Sonic           ran                              majors with a 9am price 7, median 10.00, TAB first 11.00, in the 9am market: True
+   Exploit                ran                              majors with a 9am price 7, median 51.00, TAB first 26.00, in the 9am market: True
+   Insolence              ran                              majors with a 9am price 7, median 6.00, TAB first 3.90, in the 9am market: True
+   Moon Lander            scratched 2673 min before 9am    majors with a 9am price 0, median nan, TAB first nan, in the 9am market: False
+   Pray For Elegance      ran                              majors with a 9am price 7, median 4.20, TAB first 6.00, in the 9am market: True
+   Resonant               scratched 101 min before 9am     majors with a 9am price 7, median 3.50, TAB first 2.90, in the 9am market: False
+   Adakite                scratched 86 min before 9am      majors with a 9am price 7, median 61.00, TAB first 34.00, in the 9am market: False
+   Cirque De Coco         ran                              majors with a 9am price 7, median 27.00, TAB first 26.00, in the 9am market: True
+   Lady Of Pompeii        ran                              majors with a 9am price 7, median 5.50, TAB first 11.00, in the 9am market: True BET WON
+   Oman                   scratched 1023 min before 9am    majors with a 9am price 7, median 16.00, TAB first 34.00, in the 9am market: False
+   Shinsiena              ran                              majors with a 9am price 7, median 34.00, TAB first 101.00, in the 9am market: True
+   Tsuki                  ran                              majors with a 9am price 7, median 91.00, TAB first 101.00, in the 9am market: True
+
+2026-06-04 Geelong R3: 9am book 0.75, 9am was 285 min before the jump
+   Blue Ensign            ran                              majors with a 9am price 7, median 26.00, TAB first 19.00, in the 9am market: True
+   Boss Boy               ran                              majors with a 9am price 7, median 71.00, TAB first 51.00, in the 9am market: True
+   Captain Sparrow        scratched 1003 min before 9am    majors with a 9am price 7, median 151.00, TAB first 101.00, in the 9am market: False
+   Fear The Impact        scratched 81 min before 9am      majors with a 9am price 7, median 21.00, TAB first 19.00, in the 9am market: False
+   King Maywin            scratched 101 min before 9am     majors with a 9am price 7, median 4.00, TAB first 3.10, in the 9am market: False
+   Shalaakei              ran                              majors with a 9am price 7, median 11.00, TAB first 8.50, in the 9am market: True BET
+   Triumvirate            ran                              majors with a 9am price 7, median 5.00, TAB first 5.00, in the 9am market: True BET
+   Enchanted Lass         scratched 96 min before 9am      majors with a 9am price 7, median 14.00, TAB first 11.00, in the 9am market: False
+   Expanding Power        scratched 86 min before 9am      majors with a 9am price 7, median 5.00, TAB first 16.00, in the 9am market: False
+   Forever Jeune          ran                              majors with a 9am price 7, median 4.40, TAB first 5.00, in the 9am market: True BET
+   Gordeeva               scratched 1119 min before 9am    majors with a 9am price 7, median 34.00, TAB first 26.00, in the 9am market: False
+   Jenni Bassett          ran                              majors with a 9am price 7, median 11.00, TAB first 8.50, in the 9am market: True BET
+   Ta Ta Tango            ran                              majors with a 9am price 7, median 51.00, TAB first 34.00, in the 9am market: True
+   Think About Her        scratched 96 min before 9am      majors with a 9am price 7, median 101.00, TAB first 51.00, in the 9am market: False
+   Fastobid               ran                              majors with a 9am price 7, median 51.00, TAB first 51.00, in the 9am market: True WON
+   Velvet City            ran                              majors with a 9am price 7, median 91.00, TAB first 71.00, in the 9am market: True
+   West Forty Seventh     ran                              majors with a 9am price 7, median 26.00, TAB first 26.00, in the 9am market: True
+   Youmzain Express       scratched 1165 min before 9am    majors with a 9am price 6, median 26.50, TAB first 26.00, in the 9am market: False
+
+2026-06-04 Geelong R4: 9am book 0.83, 9am was 308 min before the jump
+   Duke Of Clarence       ran                              majors with a 9am price 7, median 9.00, TAB first 34.00, in the 9am market: True BET
+   Erupt                  ran                              majors with a 9am price 7, median 5.50, TAB first 7.50, in the 9am market: True BET
+   Helter Peltzer         ran                              majors with a 9am price 7, median 41.00, TAB first 51.00, in the 9am market: True
+   Rainsun                ran                              majors with a 9am price 7, median 3.00, TAB first 3.00, in the 9am market: True BET WON
+   Tennesseetwopiece      scratched 627 min before 9am     majors with a 9am price 7, median 6.00, TAB first 5.50, in the 9am market: False
+   The Grump              scratched 1094 min before 9am    majors with a 9am price 7, median 20.00, TAB first 19.00, in the 9am market: False
+   Companera              scratched 116 min before 9am     majors with a 9am price 7, median 101.00, TAB first 151.00, in the 9am market: False
+   Crafty Queen           ran                              majors with a 9am price 7, median 71.00, TAB first 101.00, in the 9am market: True
+   Lady Tenshi            scratched 91 min before 9am      majors with a 9am price 7, median 26.00, TAB first 23.00, in the 9am market: False
+   Pari Moi               scratched 91 min before 9am      majors with a 9am price 7, median 2.90, TAB first 2.60, in the 9am market: False
+   Sloane Raider          scratched 2763 min before 9am    majors with a 9am price 0, median nan, TAB first nan, in the 9am market: False
+   Sweet Champagne        ran                              majors with a 9am price 7, median 21.00, TAB first 23.00, in the 9am market: True
+   Toomanysteps           ran                              majors with a 9am price 7, median 71.00, TAB first 101.00, in the 9am market: True
+   Who'llstoplorraine     ran                              majors with a 9am price 7, median 19.00, TAB first 19.00, in the 9am market: True
+   Tarnation              scratched 91 min before 9am      majors with a 9am price 7, median 67.00, TAB first 71.00, in the 9am market: False
+   Lepracanto             scratched 101 min before 9am     majors with a 9am price 7, median 15.00, TAB first 19.00, in the 9am market: False
+   Grecia Girl            ran                              majors with a 9am price 7, median 31.00, TAB first 51.00, in the 9am market: True
+   Mr Vegas               scratched 91 min before 9am      majors with a 9am price 7, median 17.00, TAB first 19.00, in the 9am market: False
+   Tornado Anwa           ran                              majors with a 9am price 7, median 71.00, TAB first 126.00, in the 9am market: True
+
+2026-07-12 Ballarat R2: 9am book 0.87, 9am was 224 min before the jump
+   Australian Legacy      ran                              majors with a 9am price 7, median 2.90, TAB first 2.90, in the 9am market: True BET WON
+   Cicconi Rain           ran                              majors with a 9am price 7, median 14.00, TAB first 11.00, in the 9am market: True BET
+   Frosted Miss           ran                              majors with a 9am price 7, median 4.50, TAB first 4.40, in the 9am market: True BET
+   I'lluvyoulongtime      scratched 46 min before 9am      majors with a 9am price 7, median 9.00, TAB first 7.50, in the 9am market: False
+   Lady In Red            ran                              majors with a 9am price 7, median 16.00, TAB first 17.00, in the 9am market: True
+   Lost The Plot          scratched 18 min before 9am      majors with a 9am price 7, median 23.00, TAB first 26.00, in the 9am market: False
+   Massalia               ran                              majors with a 9am price 7, median 9.00, TAB first 13.00, in the 9am market: True
+   Saatchi                scratched 2571 min before 9am    majors with a 9am price 6, median 12.00, TAB first 13.00, in the 9am market: False
+   Snitchy                ran                              majors with a 9am price 7, median 16.00, TAB first 26.00, in the 9am market: True BET
+   Social Pages           scratched 46 min before 9am      majors with a 9am price 7, median 3.90, TAB first 4.40, in the 9am market: False
+
+2026-07-12 Ballarat R4: 9am book 0.66, 9am was 300 min before the jump
+   Autumnheat             ran                              majors with a 9am price 7, median 7.50, TAB first 7.00, in the 9am market: True BET
+   Shoma                  scratched 157 min before 9am     majors with a 9am price 7, median 9.00, TAB first 8.00, in the 9am market: False
+   Deadly Press           scratched 46 min before 9am      majors with a 9am price 7, median 6.00, TAB first 5.00, in the 9am market: False
+   Savvie Blanc           ran                              majors with a 9am price 7, median 6.00, TAB first 9.50, in the 9am market: True BET WON
+   Amphactor              ran                              majors with a 9am price 7, median 6.50, TAB first 6.00, in the 9am market: True BET
+   Komito                 scratched 46 min before 9am      majors with a 9am price 7, median 3.60, TAB first 4.00, in the 9am market: False
+   Compressing            scratched 46 min before 9am      majors with a 9am price 7, median 19.00, TAB first 26.00, in the 9am market: False
+   Zeshadow               ran                              majors with a 9am price 7, median 4.80, TAB first 8.00, in the 9am market: True BET
+   Big Sister Ava         scratched 45 min before 9am      majors with a 9am price 7, median 7.50, TAB first 6.00, in the 9am market: False
+
+2026-07-12 Ballarat R5: 9am book 0.54, 9am was 340 min before the jump
+   Black Hex              ran                              majors with a 9am price 7, median 81.00, TAB first 51.00, in the 9am market: True
+   Boss Boy               scratched 45 min before 9am      majors with a 9am price 7, median 13.00, TAB first 11.00, in the 9am market: False
+   De Ascot               scratched 45 min before 9am      majors with a 9am price 7, median 3.10, TAB first 3.10, in the 9am market: False
+   Durham                 scratched 45 min before 9am      majors with a 9am price 7, median 9.50, TAB first 9.00, in the 9am market: False
+   Fierce Fiasco          ran                              majors with a 9am price 7, median 6.50, TAB first 5.50, in the 9am market: True BET
+   King Tagaloa           scratched 45 min before 9am      majors with a 9am price 7, median 29.00, TAB first 26.00, in the 9am market: False
+   Lion City Express      ran                              majors with a 9am price 7, median 101.00, TAB first 101.00, in the 9am market: True
+   Newcombe               ran                              majors with a 9am price 7, median 21.00, TAB first 17.00, in the 9am market: True BET WON
+   Vespasian              ran                              majors with a 9am price 7, median 13.00, TAB first 13.00, in the 9am market: True BET
+   Wazza                  ran                              majors with a 9am price 7, median 5.50, TAB first 11.00, in the 9am market: True
+   El Reno                scratched 45 min before 9am      majors with a 9am price 7, median 61.00, TAB first 51.00, in the 9am market: False
+   Elegant Force          ran                              majors with a 9am price 7, median 101.00, TAB first 101.00, in the 9am market: True
+   Just Curious           ran                              majors with a 9am price 7, median 23.00, TAB first 17.00, in the 9am market: True BET
+   Justibella             scratched 45 min before 9am      majors with a 9am price 7, median 4.60, TAB first 4.40, in the 9am market: False
+   Knucklehead            scratched 45 min before 9am      majors with a 9am price 6, median 23.00, TAB first 51.00, in the 9am market: False
+   Immortal Diva          scratched 45 min before 9am      majors with a 9am price 6, median 126.00, TAB first 101.00, in the 9am market: False
+   Victory Blues          scratched 45 min before 9am      majors with a 9am price 6, median 101.00, TAB first 101.00, in the 9am market: False
+
+2026-07-12 Ballarat R6: 9am book 0.59, 9am was 380 min before the jump
+   Flying Mikki           scratched 46 min before 9am      majors with a 9am price 7, median 6.00, TAB first 6.00, in the 9am market: False
+   The Narrator           scratched 46 min before 9am      majors with a 9am price 7, median 9.00, TAB first 6.50, in the 9am market: False
+   Zourain                scratched 46 min before 9am      majors with a 9am price 7, median 8.50, TAB first 14.00, in the 9am market: False
+   Margie's Boy           scratched 46 min before 9am      majors with a 9am price 7, median 12.00, TAB first 14.00, in the 9am market: False
+   Zorro's Flight         scratched 46 min before 9am      majors with a 9am price 7, median 4.20, TAB first 4.40, in the 9am market: False
+   Vianarra               ran                              majors with a 9am price 7, median 8.00, TAB first 6.50, in the 9am market: True BET
+   Champagne Jenni        ran                              majors with a 9am price 7, median 13.00, TAB first 15.00, in the 9am market: True BET
+   Bon's Bling            scratched 182 min before 9am     majors with a 9am price 7, median 13.00, TAB first 11.00, in the 9am market: False
+   Puglia                 ran                              majors with a 9am price 7, median 7.50, TAB first 6.50, in the 9am market: True BET WON
+   Rose Of Shalaa         ran                              majors with a 9am price 7, median 16.00, TAB first 19.00, in the 9am market: True BET
+   Crossoverkid           ran                              majors with a 9am price 7, median 12.00, TAB first 34.00, in the 9am market: True BET
+   Wild Ruby              ran                              majors with a 9am price 7, median 9.50, TAB first 11.00, in the 9am market: True BET
+
+2026-07-12 Ballarat R7: 9am book 0.51, 9am was 420 min before the jump
+   Endless Summer         ran                              majors with a 9am price 7, median 13.00, TAB first 10.00, in the 9am market: True BET
+   Golden Magnate         scratched 46 min before 9am      majors with a 9am price 7, median 2.40, TAB first 3.50, in the 9am market: False
+   Dazzling Secret        scratched 46 min before 9am      majors with a 9am price 7, median 15.00, TAB first 16.00, in the 9am market: False
+   The Opportunist        ran                              majors with a 9am price 7, median 9.00, TAB first 16.00, in the 9am market: True BET
+   I'm Helro              scratched 1478 min before 9am    majors with a 9am price 6, median 17.00, TAB first 17.00, in the 9am market: False
+   Princess Sakiko        ran                              majors with a 9am price 7, median 14.00, TAB first 13.00, in the 9am market: True BET
+   Salizou                ran                              majors with a 9am price 7, median 4.80, TAB first 6.50, in the 9am market: True BET WON
+   Eire To The Jungle     ran                              majors with a 9am price 7, median 29.00, TAB first 21.00, in the 9am market: True
+   Queen Christine        scratched 18 min before 9am      majors with a 9am price 7, median 3.50, TAB first 2.20, in the 9am market: False
+   Platinum Executive     ran                              majors with a 9am price 7, median 126.00, TAB first 151.00, in the 9am market: True
+   Flying D'amore         scratched 34 min before 9am      majors with a 9am price 7, median 126.00, TAB first 151.00, in the 9am market: False
+
+## How sure? 1.05x and over, whole books (1.20 and over), race days resampled 4,000 times
+
+| model | bets | runners | staked | profit | ROI | 90% range of the ROI | chance it is above zero |
+|---|---|---|---|---|---|---|---|
+| FITTED: 0.28 ours + 0.88 median - 0.22 move | 762 | 264 | $337,614 | $+60,984 | +18.1% | -6% to +44% | 89% |
+| LIVE: 0.20 ours + 1.00 TAB | 302 | 149 | $154,194 | $-752 | -0.5% | -29% to +29% | 47% |
+| MARKET ONLY: 1.19 median | 63 | 57 | $17,012 | $-4,207 | -24.7% | -60% to +17% | 14% |
+| LIVE AS BUILT: 0.20 ours + 1.00 best major price | 147 | 55 | $109,749 | $+17,157 | +15.6% | -31% to +59% | 70% |
+| LIVE WEIGHTS ON THE MEDIAN: 0.20 ours + 1.00 median | 144 | 92 | $84,406 | $+22,522 | +26.7% | -28% to +78% | 78% |
+| MORE OF OURS: 0.40 ours + 0.80 median - 0.22 move | 2567 | 663 | $1,353,237 | $+9,173 | +0.7% | -12% to +13% | 52% |
+
+## Grades, whole books: on the live list, on the fitted list, or both
+
+| | bookie bets | runners | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| A: on both lists (bet at the fitted list's prices) | 164 | 71 | 17 | $98,402 | $-17,168 | -17.4% | 4 of 13 |
+| B1: on the live list only | 173 | 78 | 17 | $86,980 | $+6,050 | +7.0% | 5 of 13 |
+| B2: on the fitted list only | 598 | 193 | 58 | $239,212 | $+78,152 | +32.7% | 10 of 13 |
+
+## The fitted list by hours from 9am to the jump, whole books
+
+| | bookie bets | runners | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| 0-4 h | 67 | 20 | 9 | $26,883 | $+18,522 | +68.9% | 6 of 9 |
+| 4-5 h | 125 | 41 | 12 | $56,336 | $+22,927 | +40.7% | 5 of 12 |
+| 5-6 h | 146 | 53 | 17 | $65,685 | $+17,800 | +27.1% | 9 of 13 |
+| 6-7 h | 146 | 55 | 10 | $59,748 | $-2,044 | -3.4% | 3 of 12 |
+| 7-12 h | 278 | 95 | 27 | $128,961 | $+3,780 | +2.9% | 6 of 13 |
+
+## The fitted list by the move before 9am (TAB 9am against TAB's first price), whole books
+
+| | bookie bets | runners | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| firmed 20%+ | 663 | 227 | 61 | $288,356 | $+31,230 | +10.8% | 5 of 13 |
+| firmed 5-20% | 55 | 21 | 6 | $36,034 | $+3,344 | +9.3% | 3 of 10 |
+| held | 21 | 7 | 4 | $6,811 | $+12,109 | +177.8% | 3 of 5 |
+| drifted 5%+ | 23 | 9 | 4 | $6,413 | $+14,301 | +223.0% | 3 of 6 |
+
+## The fitted list by our price against the 9am median, whole books
+
+| | bookie bets | runners | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| ours longer than the market | 247 | 126 | 35 | $121,139 | $+5,932 | +4.9% | 6 of 13 |
+| ours up to 1.5x shorter | 415 | 116 | 33 | $189,965 | $+29,178 | +15.4% | 8 of 13 |
+| ours 1.5-2.5x shorter | 83 | 19 | 6 | $25,029 | $+21,997 | +87.9% | 5 of 10 |
+| ours 2.5x+ shorter | 17 | 3 | 1 | $1,481 | $+3,876 | +261.8% | 1 of 2 |
+
+## The fitted list by track type and day, whole books
+
+| | bookie bets | runners | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| metro | 260 | 82 | 20 | $178,770 | $-5,127 | -2.9% | 5 of 13 |
+| country and provincial | 502 | 182 | 55 | $158,844 | $+66,112 | +41.6% | 9 of 13 |
+| Saturday | 242 | 79 | 22 | $133,186 | $+23,098 | +17.3% | 7 of 13 |
+| Sunday | 82 | 38 | 11 | $36,050 | $+153 | +0.4% | 5 of 11 |
+| Monday-Friday | 438 | 147 | 42 | $168,378 | $+37,733 | +22.4% | 10 of 13 |

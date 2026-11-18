@@ -1,2 +1,2 @@
-date,venue,race,number,horse,our_price,avg_now,open,fair_price,best_now,take_at_or_above,grade,to_win,stake_at_best
-2026-11-17,Kyneton,4,4,Exploit,5.60,3.70,34.00,3.98,4.40,4.18,B,1000,294
+date,venue,race,number,horse,our_price,avg_now,open,fair_price,best_now,take_at_or_above,also_on_live_list,to_win,stake_at_best
+2026-11-17,Kyneton,4,4,Exploit,5.60,3.70,34.00,3.98,4.40,4.18,no,1000,294

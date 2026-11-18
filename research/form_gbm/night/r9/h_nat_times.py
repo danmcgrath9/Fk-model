@@ -42,6 +42,9 @@ for label, sfx, tmin in (("9:00am local", "0900", None), ("4 h before the jump",
     cnt = np.bincount(ri, weights=inm, minlength=nR); w1 = np.bincount(ri, weights=inm & won, minlength=nR); miss = np.bincount(ri, weights=ran & ~inm, minlength=nR)
     ok = inm & (cnt[ri] >= 4) & (w1[ri] == 1) & (miss[ri] == 0)
     inv = np.where(ok, 1 / np.where(ok, med, 2.0), 0.0); tot = np.bincount(ri, weights=inv, minlength=nR)
+    # the whole-book guard (m_exact.py): leave out a race whose book then is under 90% of the usual book at that time
+    used = np.bincount(ri, weights=ok, minlength=nR) > 0; usual = np.median(tot[used]); ok = ok & (tot[ri] >= 0.90 * usual)
+    inv = np.where(ok, 1 / np.where(ok, med, 2.0), 0.0); tot = np.bincount(ri, weights=inv, minlength=nR)
     DED = np.minimum(np.bincount(ri, weights=np.where(ok & ~ran, inv / np.maximum(tot[ri], 1e-12), 0), minlength=nR), 0.9)[ri]
     X = np.column_stack([-np.log(np.where(ok, med, 1.0)), np.log(np.where(ok, B[:, 0], 1.0)) - np.log(np.where(ok, first, 1.0))])
     months = sorted(set(month[ok])); p = np.zeros(n); b = np.zeros(2)

@@ -1,2 +1,2 @@
-date,venue,race,number,horse,our_price,avg_now,open,fair_price,best_now,take_at_or_above,grade,to_win,stake_at_best
-2026-11-14,Dunkeld,6,8,Tennessee Song,2.18,1.98,2.73,2.10,2.35,2.21,B,1000,741
+date,venue,race,number,horse,our_price,avg_now,open,fair_price,best_now,take_at_or_above,also_on_live_list,to_win,stake_at_best
+2026-11-14,Dunkeld,6,8,Tennessee Song,2.18,1.98,2.73,2.10,2.35,2.21,no,1000,741

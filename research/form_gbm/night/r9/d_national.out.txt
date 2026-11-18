@@ -1,0 +1,86 @@
+/tmp/claude-0/-home-user-cafe-copilot/3bac7eba-1a73-583c-b23d-aae29b750b5b/scratchpad/r9/d_national.py:25: RuntimeWarning: All-NaN slice encountered
+  med = np.nanmedian(B, 1)
+whole-book guard: usual 9am book by state ACT 1.30, NSW 1.29, NT 1.29, QLD 1.28, SA 1.29, TAS 1.30, VIC 1.28, WA 1.29; races left out 50
+302238 runners, 24582 races, 2025-07-01 to 2026-11-16; day-meeting races usable at 9am: 21813 (night meetings left out: 1154 races); late scratchings in them: 2631
+/tmp/claude-0/-home-user-cafe-copilot/3bac7eba-1a73-583c-b23d-aae29b750b5b/scratchpad/r9/d_national.py:55: RuntimeWarning: invalid value encountered in subtract
+  e = np.where(m, np.exp(s - mx[ri]), 0.0); t = np.bincount(ri, weights=e, minlength=nR)
+
+### A. market only: weights fitted on Victoria only (median +1.18), every state
+
+| | races | runners bet | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|---|
+| VIC (fitted here) | 4960 | 88 | 96 | 16 | $27,657 | $+1,687 | +6.1% | 5 of 14 |
+| NSW | 6645 | 152 | 166 | 34 | $43,129 | $+9,803 | +22.7% | 8 of 13 |
+| QLD | 4393 | 87 | 94 | 19 | $27,017 | $+6,202 | +23.0% | 4 of 11 |
+| SA | 1782 | 21 | 23 | 4 | $6,196 | $-937 | -15.1% | 2 of 9 |
+| WA | 2781 | 12 | 16 | 4 | $7,265 | $+4,063 | +55.9% | 2 of 4 |
+| TAS | 431 | 1 | 2 | 0 | $526 | $-526 | -100.0% | 0 of 1 |
+| ACT | 256 | 11 | 11 | 1 | $1,976 | $-576 | -29.1% | 1 of 2 |
+| NT | 565 | 31 | 40 | 6 | $10,044 | $-149 | -1.5% | 3 of 10 |
+| **every state but Victoria** | 16853 | 315 | 352 | 68 | $96,153 | $+17,880 | +18.6% | 8 of 14 |
+
+winner log loss outside Victoria: 1.8264 against 1.8335 for the raw median price
+
+### A. market + move: weights fitted on Victoria only (median +1.16, move -0.16), every state
+
+| | races | runners bet | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|---|
+| VIC (fitted here) | 4960 | 143 | 202 | 31 | $80,183 | $+1,488 | +1.9% | 8 of 16 |
+| NSW | 6645 | 219 | 256 | 47 | $83,727 | $-357 | -0.4% | 7 of 17 |
+| QLD | 4393 | 132 | 172 | 25 | $57,492 | $-77 | -0.1% | 8 of 16 |
+| SA | 1782 | 35 | 48 | 9 | $22,184 | $-3,398 | -15.3% | 5 of 12 |
+| WA | 2781 | 29 | 39 | 10 | $13,344 | $+5,492 | +41.2% | 8 of 13 |
+| TAS | 431 | 2 | 3 | 0 | $1,053 | $-1,053 | -100.0% | 0 of 2 |
+| ACT | 256 | 13 | 13 | 1 | $2,380 | $-980 | -41.2% | 1 of 4 |
+| NT | 565 | 32 | 41 | 7 | $9,722 | $+1,339 | +13.8% | 4 of 11 |
+| **every state but Victoria** | 16853 | 462 | 572 | 99 | $189,902 | $+967 | +0.5% | 7 of 17 |
+
+winner log loss outside Victoria: 1.8262 against 1.8335 for the raw median price
+
+by half-year, every state but Victoria
+| | races | runners bet | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|---|
+| Jul-Dec 2025 | 6104 | 88 | 132 | 22 | $46,499 | $+8,232 | +17.7% | 3 of 6 |
+| Jan-Jun 2026 | 6146 | 103 | 128 | 25 | $54,121 | $-4,659 | -8.6% | 2 of 6 |
+| Jul-Nov 2026 | 4603 | 271 | 312 | 52 | $89,282 | $-2,605 | -2.9% | 2 of 5 |
+
+by threshold, every state but Victoria: 1.00x 1701 bets $-103,439 -10%; 1.03x 820 bets $-1,905 -1%; 1.05x 572 bets $+967 +1%; 1.08x 385 bets $+22,544 +22%; 1.12x 267 bets $+19,104 +29%
+
+by how many majors are at the take price, every state but Victoria (one bookmaker alone can be a stale price in the feed)
+| | races | runners bet | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|---|
+| one major | 283 | 385 | 385 | 87 | $115,390 | $+29,505 | +25.6% | 11 of 17 |
+| 2-3 majors | 66 | 71 | 150 | 11 | $54,376 | $-17,877 | -32.9% | 5 of 14 |
+| 4 or more | 6 | 6 | 37 | 1 | $20,136 | $-10,660 | -52.9% | 1 of 5 |
+
+by fair price, every state but Victoria
+| | races | runners bet | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|---|
+| $1.6-$3 | 7162 | 77 | 98 | 32 | $76,257 | $-5,193 | -6.8% | 6 of 15 |
+| $3-$5 | 11419 | 128 | 174 | 37 | $62,342 | $+16,893 | +27.1% | 11 of 16 |
+| $5-$8 | 13173 | 153 | 187 | 25 | $40,479 | $-5,277 | -13.0% | 6 of 17 |
+| $8-$15 | 14866 | 104 | 113 | 5 | $10,824 | $-5,455 | -50.4% | 2 of 15 |
+
+by the move before 9am, every state but Victoria
+| | races | runners bet | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|---|
+| firmed 20%+ since the open | 14714 | 392 | 480 | 87 | $168,063 | $+2,961 | +1.8% | 8 of 17 |
+| firmed 5-20% | 13331 | 45 | 55 | 9 | $16,436 | $-163 | -1.0% | 4 of 12 |
+| held | 11640 | 8 | 8 | 3 | $1,683 | $+1,889 | +112.3% | 3 of 6 |
+| drifted 5%+ | 13824 | 17 | 29 | 0 | $3,720 | $-3,720 | -100.0% | 0 of 6 |
+
+### B. market + move, weights fitted walk-forward on every state (last fit: median +1.16, move -0.12), test months 2025-11 on
+
+| | races | runners bet | bookie bets | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|---|
+| VIC | 3687 | 102 | 115 | 16 | $32,134 | $-9,879 | -30.7% | 4 of 11 |
+| NSW | 5086 | 163 | 173 | 36 | $47,866 | $+9,848 | +20.6% | 8 of 10 |
+| QLD | 3262 | 100 | 114 | 21 | $40,098 | $-640 | -1.6% | 4 of 9 |
+| SA | 1380 | 15 | 16 | 1 | $4,704 | $-3,550 | -75.5% | 1 of 8 |
+| WA | 2122 | 14 | 14 | 6 | $3,360 | $+4,699 | +139.9% | 4 of 6 |
+| TAS | 349 | 0 | 0 | 0 | $0 | $+0 | +0.0% | 0 of 0 |
+| ACT | 191 | 12 | 12 | 1 | $2,198 | $-798 | -36.3% | 1 of 3 |
+| NT | 436 | 26 | 30 | 7 | $7,663 | $+3,399 | +44.4% | 4 of 8 |
+| **all** | 16513 | 432 | 474 | 88 | $138,023 | $+3,079 | +2.2% | 7 of 12 |
+
+by major, all states: tab 26 bets $-250 -2%; sportsbet 205 bets $+7,391 +11%; ladbrokes 12 bets $-513 -12%; neds 12 bets $-513 -12%; pointsbet 14 bets $-1,716 -43%; unibet 15 bets $-2,502 -48%; betr 190 bets $+1,181 +3%
