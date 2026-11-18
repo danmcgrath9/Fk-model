@@ -1,0 +1,129 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-21,Cranbourne,1,,1,Doubt Time,WIN,2.91,3.99,4.34,217,1 of 2,4.34u,2.45,opens under $4: edge 1.15
+2026-11-21,Cranbourne,1,,1,Doubt Time,WIN,3.64,3.99,1.03,52,2 of 2,5.37u,2.45,opens under $4: edge 1.15
+2026-11-21,Cranbourne,1,,1,Doubt Time,WIN,4.00,14.68,4.72,236,1 of 3,4.72u,2.45,
+2026-11-21,Cranbourne,1,,1,Doubt Time,WIN,4.00,14.68,0.86,43,2 of 3,5.58u,2.45,
+2026-11-21,Cranbourne,1,,1,Doubt Time,WIN,5.39,14.68,4.42,221,3 of 3,10.00u,2.45,opens $5.39+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,1,,6,Ladhar,WIN,12.52,55.83,0.91,46,1 of 2,0.91u,9.30,
+2026-11-21,Cranbourne,1,,6,Ladhar,WIN,15.65,55.83,0.22,11,2 of 2,1.13u,9.30,
+2026-11-21,Cranbourne,1,,4,Mongolian Hero,WIN,11.41,51.11,1.01,50,1 of 2,1.01u,8.52,
+2026-11-21,Cranbourne,1,,4,Mongolian Hero,WIN,14.26,51.11,0.24,12,2 of 2,1.25u,8.52,
+2026-11-21,Cranbourne,1,,2,Valaroso,WIN,4.98,23.21,2.57,128,1 of 3,2.57u,3.87,
+2026-11-21,Cranbourne,1,,2,Valaroso,WIN,6.23,23.21,0.55,28,2 of 3,3.12u,3.87,
+2026-11-21,Cranbourne,1,,2,Valaroso,WIN,8.52,23.21,3.12,156,3 of 3,6.24u,3.87,opens $8.52+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,2,,8,Bajaria,WIN,5.78,26.76,2.15,108,1 of 3,2.15u,4.46,
+2026-11-21,Cranbourne,2,,8,Bajaria,WIN,7.23,26.76,0.48,24,2 of 3,2.63u,4.46,
+2026-11-21,Cranbourne,2,,8,Bajaria,WIN,9.82,26.76,2.63,132,3 of 3,5.26u,4.46,opens $9.82+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,2,,7,Dirty Look,WIN,2.99,3.99,4.18,209,1 of 2,4.18u,2.51,opens under $4: edge 1.15
+2026-11-21,Cranbourne,2,,7,Dirty Look,WIN,3.74,3.99,1.00,50,2 of 2,5.18u,2.51,opens under $4: edge 1.15
+2026-11-21,Cranbourne,2,,7,Dirty Look,WIN,4.00,15.07,4.54,227,1 of 3,4.54u,2.51,
+2026-11-21,Cranbourne,2,,7,Dirty Look,WIN,4.00,15.07,0.84,42,2 of 3,5.38u,2.51,
+2026-11-21,Cranbourne,2,,7,Dirty Look,WIN,5.53,15.07,4.62,231,3 of 3,10.00u,2.51,opens $5.53+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,2,,4,Santa Ana Moon,WIN,19.32,84.33,0.58,29,1 of 2,0.58u,14.05,
+2026-11-21,Cranbourne,2,,4,Santa Ana Moon,WIN,24.15,84.33,0.14,7,2 of 2,0.72u,14.05,
+2026-11-21,Cranbourne,2,,6,You Sexy Thing,WIN,10.02,45.15,1.16,58,1 of 3,1.16u,7.53,
+2026-11-21,Cranbourne,2,,6,You Sexy Thing,WIN,12.52,45.15,0.28,14,2 of 3,1.44u,7.53,
+2026-11-21,Cranbourne,2,,6,You Sexy Thing,WIN,16.56,45.15,1.44,72,3 of 3,2.88u,7.53,opens $16.56+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,3,,8,Marsept,WIN,5.84,15.01,2.12,106,1 of 3,2.12u,4.51,EARLY: $15 or shorter only
+2026-11-21,Cranbourne,3,,8,Marsept,WIN,7.30,15.01,0.47,24,2 of 3,2.59u,4.51,EARLY: $15 or shorter only
+2026-11-21,Cranbourne,3,,8,Marsept,WIN,9.92,15.01,2.59,130,3 of 3,5.18u,4.51,EARLY: $15 or shorter only; opens $9.92+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,3,,1,Naifah,WIN,12.85,57.22,0.89,44,1 of 2,0.89u,9.54,
+2026-11-21,Cranbourne,3,,1,Naifah,WIN,16.06,57.22,0.21,10,2 of 2,1.10u,9.54,
+2026-11-21,Cranbourne,3,,4,Swift Force,WIN,4.33,20.32,3.04,152,1 of 3,3.04u,3.39,
+2026-11-21,Cranbourne,3,,4,Swift Force,WIN,5.41,20.32,0.63,32,2 of 3,3.67u,3.39,
+2026-11-21,Cranbourne,3,,4,Swift Force,WIN,7.45,20.32,3.67,184,3 of 3,7.34u,3.39,opens $7.45+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,3,,5,Torsheen,WIN,7.99,36.44,1.49,74,1 of 3,1.49u,6.07,
+2026-11-21,Cranbourne,3,,5,Torsheen,WIN,9.99,36.44,0.34,17,2 of 3,1.83u,6.07,
+2026-11-21,Cranbourne,3,,5,Torsheen,WIN,13.37,36.44,1.83,92,3 of 3,3.66u,6.07,opens $13.37+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,4,,4,Col Klink,WIN,4.74,22.17,2.72,136,1 of 3,2.72u,3.69,
+2026-11-21,Cranbourne,4,,4,Col Klink,WIN,5.93,22.17,0.57,28,2 of 3,3.29u,3.69,
+2026-11-21,Cranbourne,4,,4,Col Klink,WIN,8.13,22.17,3.29,164,3 of 3,6.58u,3.69,opens $8.13+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,4,,3,Highland Harley,WIN,13.88,15.01,0.45,22,1 of 1,0.45u,10.26,EARLY: $15 or shorter only
+2026-11-21,Cranbourne,4,,2,Interest Point,WIN,16.59,72.95,0.68,34,1 of 2,0.68u,12.16,
+2026-11-21,Cranbourne,4,,2,Interest Point,WIN,20.74,72.95,0.16,8,2 of 2,0.84u,12.16,
+2026-11-21,Cranbourne,4,,5,Jackpot Park,WIN,16.05,70.73,0.70,35,1 of 2,0.70u,11.79,
+2026-11-21,Cranbourne,4,,5,Jackpot Park,WIN,20.06,70.73,0.17,8,2 of 2,0.87u,11.79,
+2026-11-21,Cranbourne,4,,1,Nation State,WIN,7.70,15.01,1.55,78,1 of 3,1.55u,5.86,EARLY: $15 or shorter only
+2026-11-21,Cranbourne,4,,1,Nation State,WIN,9.62,15.01,0.36,18,2 of 3,1.91u,5.86,EARLY: $15 or shorter only
+2026-11-21,Cranbourne,4,,1,Nation State,WIN,12.89,15.01,1.91,96,3 of 3,3.82u,5.86,EARLY: $15 or shorter only; opens $12.89+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,4,,6,Stakes,WIN,9.83,44.33,1.19,60,1 of 3,1.19u,7.39,
+2026-11-21,Cranbourne,4,,6,Stakes,WIN,12.29,44.33,0.28,14,2 of 3,1.47u,7.39,
+2026-11-21,Cranbourne,4,,6,Stakes,WIN,16.26,44.33,1.47,74,3 of 3,2.94u,7.39,opens $16.26+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,5,,11,Ardashir,WIN,6.46,29.75,1.89,94,1 of 3,1.89u,4.96,
+2026-11-21,Cranbourne,5,,11,Ardashir,WIN,8.07,29.75,0.43,22,2 of 3,2.32u,4.96,
+2026-11-21,Cranbourne,5,,11,Ardashir,WIN,10.91,29.75,2.32,116,3 of 3,4.64u,4.96,opens $10.91+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,5,,2,Bur Dubai,WIN,16.64,73.17,0.68,34,1 of 2,0.68u,12.19,
+2026-11-21,Cranbourne,5,,2,Bur Dubai,WIN,20.80,73.17,0.16,8,2 of 2,0.84u,12.19,
+2026-11-21,Cranbourne,5,,3,Dad And Dave,WIN,8.72,39.59,1.35,68,1 of 3,1.35u,6.60,
+2026-11-21,Cranbourne,5,,3,Dad And Dave,WIN,10.90,39.59,0.32,16,2 of 3,1.67u,6.60,
+2026-11-21,Cranbourne,5,,3,Dad And Dave,WIN,14.52,39.59,1.67,84,3 of 3,3.34u,6.60,opens $14.52+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,5,,9,So Brave,WIN,16.25,71.53,0.69,34,1 of 2,0.69u,11.92,
+2026-11-21,Cranbourne,5,,9,So Brave,WIN,20.31,71.53,0.17,8,2 of 2,0.86u,11.92,
+2026-11-21,Cranbourne,5,,4,Tishman,WIN,9.37,15.01,1.25,62,1 of 2,1.25u,7.07,EARLY: $15 or shorter only
+2026-11-21,Cranbourne,5,,4,Tishman,WIN,11.71,15.01,0.29,14,2 of 2,1.54u,7.07,EARLY: $15 or shorter only
+2026-11-21,Cranbourne,6,,9,Cooly,WIN,16.65,73.24,0.68,34,1 of 2,0.68u,12.21,
+2026-11-21,Cranbourne,6,,9,Cooly,WIN,20.81,73.24,0.16,8,2 of 2,0.84u,12.21,
+2026-11-21,Cranbourne,6,,5,Flying Mikki,WIN,8.40,38.21,1.41,70,1 of 3,1.41u,6.37,
+2026-11-21,Cranbourne,6,,5,Flying Mikki,WIN,10.50,38.21,0.32,16,2 of 3,1.73u,6.37,
+2026-11-21,Cranbourne,6,,5,Flying Mikki,WIN,14.02,38.21,1.73,86,3 of 3,3.46u,6.37,opens $14.02+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,6,,11,Jenni Multabella,WIN,7.54,34.47,1.59,80,1 of 3,1.59u,5.75,
+2026-11-21,Cranbourne,6,,11,Jenni Multabella,WIN,9.43,34.47,0.36,18,2 of 3,1.95u,5.75,
+2026-11-21,Cranbourne,6,,11,Jenni Multabella,WIN,12.65,34.47,1.95,98,3 of 3,3.90u,5.75,opens $12.65+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,6,,4,Lario,WIN,11.90,53.21,0.96,48,1 of 2,0.96u,8.87,
+2026-11-21,Cranbourne,6,,4,Lario,WIN,14.88,53.21,0.23,12,2 of 2,1.19u,8.87,
+2026-11-21,Cranbourne,6,,10,Stung,WIN,20.35,88.63,0.55,28,1 of 2,0.55u,14.77,
+2026-11-21,Cranbourne,6,,10,Stung,WIN,25.44,88.63,0.13,6,2 of 2,0.68u,14.77,
+2026-11-21,Cranbourne,6,,3,Taung,WIN,15.15,66.91,0.75,38,1 of 2,0.75u,11.15,
+2026-11-21,Cranbourne,6,,3,Taung,WIN,18.94,66.91,0.18,9,2 of 2,0.93u,11.15,
+2026-11-21,Cranbourne,7,,8,Alero,WIN,11.38,50.99,1.01,50,1 of 2,1.01u,8.50,
+2026-11-21,Cranbourne,7,,8,Alero,WIN,14.23,50.99,0.24,12,2 of 2,1.25u,8.50,
+2026-11-21,Cranbourne,7,,2,Celsius Star,WIN,10.49,47.16,1.11,56,1 of 3,1.11u,7.86,
+2026-11-21,Cranbourne,7,,2,Celsius Star,WIN,13.11,47.16,0.26,13,2 of 3,1.37u,7.86,
+2026-11-21,Cranbourne,7,,2,Celsius Star,WIN,17.30,47.16,1.37,68,3 of 3,2.74u,7.86,opens $17.30+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,7,,10,Job Done,WIN,7.68,15.01,1.56,78,1 of 3,1.56u,5.85,EARLY: $15 or shorter only
+2026-11-21,Cranbourne,7,,10,Job Done,WIN,9.60,15.01,0.35,18,2 of 3,1.91u,5.85,EARLY: $15 or shorter only
+2026-11-21,Cranbourne,7,,10,Job Done,WIN,12.87,15.01,1.91,96,3 of 3,3.82u,5.85,EARLY: $15 or shorter only; opens $12.87+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,7,,4,Laa De Sha,WIN,15.93,70.20,0.71,36,1 of 2,0.71u,11.70,
+2026-11-21,Cranbourne,7,,4,Laa De Sha,WIN,19.91,70.20,0.17,8,2 of 2,0.88u,11.70,
+2026-11-21,Cranbourne,7,,7,Markdel,WIN,9.99,45.03,1.17,58,1 of 3,1.17u,7.50,
+2026-11-21,Cranbourne,7,,7,Markdel,WIN,12.49,45.03,0.27,14,2 of 3,1.44u,7.50,
+2026-11-21,Cranbourne,7,,7,Markdel,WIN,16.52,45.03,1.44,72,3 of 3,2.88u,7.50,opens $16.52+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,8,,8,Amenable,WIN,17.05,74.90,0.66,33,1 of 2,0.66u,12.48,
+2026-11-21,Cranbourne,8,,8,Amenable,WIN,21.31,74.90,0.16,8,2 of 2,0.82u,12.48,
+2026-11-21,Cranbourne,8,,1,Another Wil,WIN,9.35,42.28,1.25,62,1 of 3,1.25u,7.05,
+2026-11-21,Cranbourne,8,,1,Another Wil,WIN,11.69,42.28,0.30,15,2 of 3,1.55u,7.05,
+2026-11-21,Cranbourne,8,,1,Another Wil,WIN,15.51,42.28,1.55,78,3 of 3,3.10u,7.05,opens $15.51+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,8,,14,Astral Flame,WIN,13.88,61.57,0.82,41,1 of 2,0.82u,10.26,
+2026-11-21,Cranbourne,8,,14,Astral Flame,WIN,17.35,61.57,0.20,10,2 of 2,1.02u,10.26,
+2026-11-21,Cranbourne,8,,3,Cote Atlantique,WIN,20.20,87.99,0.55,28,1 of 2,0.55u,14.67,
+2026-11-21,Cranbourne,8,,3,Cote Atlantique,WIN,25.25,87.99,0.14,7,2 of 2,0.69u,14.67,
+2026-11-21,Cranbourne,8,,4,Just Folk,WIN,16.29,71.72,0.69,34,1 of 2,0.69u,11.95,
+2026-11-21,Cranbourne,8,,4,Just Folk,WIN,20.36,71.72,0.17,8,2 of 2,0.86u,11.95,
+2026-11-21,Cranbourne,8,,12,On Display,WIN,18.69,81.73,0.60,30,1 of 2,0.60u,13.62,
+2026-11-21,Cranbourne,8,,12,On Display,WIN,23.36,81.73,0.14,7,2 of 2,0.74u,13.62,
+2026-11-21,Cranbourne,8,,2,Warnie,WIN,10.07,45.38,1.16,58,1 of 3,1.16u,7.56,
+2026-11-21,Cranbourne,8,,2,Warnie,WIN,12.59,45.38,0.27,14,2 of 3,1.43u,7.56,
+2026-11-21,Cranbourne,8,,2,Warnie,WIN,16.64,45.38,1.43,72,3 of 3,2.86u,7.56,opens $16.64+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,9,,6,Charm Stone,WIN,17.39,76.31,0.65,32,1 of 2,0.65u,12.72,
+2026-11-21,Cranbourne,9,,6,Charm Stone,WIN,21.74,76.31,0.15,8,2 of 2,0.80u,12.72,
+2026-11-21,Cranbourne,9,,11,Inkaruna,WIN,12.36,55.15,0.93,46,1 of 2,0.93u,9.19,
+2026-11-21,Cranbourne,9,,11,Inkaruna,WIN,15.45,55.15,0.22,11,2 of 2,1.15u,9.19,
+2026-11-21,Cranbourne,9,,2,Mazu,WIN,16.23,71.47,0.69,34,1 of 2,0.69u,11.91,
+2026-11-21,Cranbourne,9,,2,Mazu,WIN,20.29,71.47,0.17,8,2 of 2,0.86u,11.91,
+2026-11-21,Cranbourne,9,,9,Meridius,WIN,12.20,15.01,0.52,26,1 of 1,0.52u,9.08,EARLY: $15 or shorter only
+2026-11-21,Cranbourne,9,,5,Ndola,WIN,11.09,49.76,1.04,52,1 of 2,1.04u,8.29,
+2026-11-21,Cranbourne,9,,5,Ndola,WIN,13.86,49.76,0.25,12,2 of 2,1.29u,8.29,
+2026-11-21,Cranbourne,9,,4,Smooth Chino,WIN,6.84,31.39,1.78,89,1 of 3,1.78u,5.23,
+2026-11-21,Cranbourne,9,,4,Smooth Chino,WIN,8.55,31.39,0.40,20,2 of 3,2.18u,5.23,
+2026-11-21,Cranbourne,9,,4,Smooth Chino,WIN,11.52,31.39,2.18,109,3 of 3,4.36u,5.23,opens $11.52+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,9,,8,Watchme Win,WIN,16.82,73.93,0.67,34,1 of 2,0.67u,12.32,
+2026-11-21,Cranbourne,9,,8,Watchme Win,WIN,21.02,73.93,0.16,8,2 of 2,0.83u,12.32,
+2026-11-21,Cranbourne,10,,10,Choir Point,WIN,6.51,29.97,1.88,94,1 of 3,1.88u,5.00,
+2026-11-21,Cranbourne,10,,10,Choir Point,WIN,8.14,29.97,0.42,21,2 of 3,2.30u,5.00,
+2026-11-21,Cranbourne,10,,10,Choir Point,WIN,10.99,29.97,2.30,115,3 of 3,4.60u,5.00,opens $10.99+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,10,,12,Fieldelo,WIN,12.54,15.01,0.50,25,1 of 1,0.50u,9.32,EARLY: $15 or shorter only
+2026-11-21,Cranbourne,10,,6,I'm Foxing,WIN,8.27,37.61,1.44,72,1 of 3,1.44u,6.27,
+2026-11-21,Cranbourne,10,,6,I'm Foxing,WIN,10.34,37.61,0.33,16,2 of 3,1.77u,6.27,
+2026-11-21,Cranbourne,10,,6,I'm Foxing,WIN,13.80,37.61,1.77,88,3 of 3,3.54u,6.27,opens $13.80+ (2.2x ours): stake doubled
+2026-11-21,Cranbourne,10,,3,Mainmankash,WIN,14.10,62.50,0.81,40,1 of 2,0.81u,10.42,
+2026-11-21,Cranbourne,10,,3,Mainmankash,WIN,17.62,62.50,0.19,10,2 of 2,1.00u,10.42,

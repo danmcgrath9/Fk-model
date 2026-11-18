@@ -1,0 +1,11 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,CRAN_211126_1,Doubt Time,top_pick,0.0,0.0,0.0,,,2.45,-1.0,,1.0,no,,
+2,CRAN_211126_2,Dirty Look,top_pick,0.0,0.0,0.0,,,2.51,-1.0,Already run to today's class,1.0,no,,
+3,CRAN_211126_3,Swift Force,top_pick,0.0,0.0,0.0,,,3.39,-1.0,"Beaten by the pace last start; Already run to today's class; Third-up, improving; Class drop (rating)",1.0,no,,
+4,CRAN_211126_4,Col Klink,top_pick,0.0,0.0,0.0,,,3.69,-1.0,Well backed before a bad last run; Proven wet on a wet track; Class drop (rating),1.0,no,,
+5,CRAN_211126_5,Ardashir,top_pick,0.0,0.0,0.0,,,4.96,-1.0,,1.0,no,,
+6,CRAN_211126_6,Jenni Multabella,top_pick,0.0,0.0,0.0,,,5.75,-1.0,Already run to today's class; Class drop (rating),1.0,no,,
+7,CRAN_211126_7,Job Done,top_pick,0.0,0.0,0.0,,,5.85,-1.0,; EARLY ONLY: bet near the open,1.0,no,,
+8,CRAN_211126_8,Another Wil,top_pick,0.0,0.0,0.0,,,7.05,-1.0,,1.0,no,,
+9,CRAN_211126_9,Smooth Chino,top_pick,0.0,0.0,0.0,,,5.23,-1.0,Late 600 beyond the tempo; Above the field in all three sections,1.0,no,,
+10,CRAN_211126_10,Choir Point,top_pick,0.0,0.0,0.0,,,5.0,-1.0,Already run to today's class; Well backed before a bad last run; Proven wet on a wet track,1.0,no,,

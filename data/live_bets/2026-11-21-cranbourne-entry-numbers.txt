@@ -1,0 +1,121 @@
+1|1|Doubt Time|False|False
+1|6|Ladhar|False|False
+1|4|Mongolian Hero|False|False
+1|5|Sound Byte|False|False
+1|2|Valaroso|False|False
+1|3|Obambulate|False|False
+2|1|Zain Blue|False|False
+2|2|Ryanman|False|False
+2|4|Santa Ana Moon|False|False
+2|3|Warrior Within|False|False
+2|5|Currawood|False|False
+2|6|You Sexy Thing|False|False
+2|8|Bajaria|False|False
+2|9|Loft Vega|False|False
+2|7|Dirty Look|False|False
+3|7|Fluent|False|False
+3|6|Xarpo|False|False
+3|3|Davida|False|False
+3|2|Rohesia|False|False
+3|1|Naifah|False|False
+3|4|Swift Force|False|False
+3|5|Torsheen|False|False
+3|8|Marsept|False|False
+4|3|Highland Harley|False|False
+4|7|Small Town Hero|False|False
+4|1|Nation State|False|False
+4|10|Hustle In Heels|False|False
+4|11|Legacy Bel|False|False
+4|2|Interest Point|False|False
+4|8|Sugar Schnapps|False|False
+4|9|Art's Alive|False|False
+4|5|Jackpot Park|False|False
+4|4|Col Klink|False|False
+4|6|Stakes|False|False
+5|1|Affluential|False|False
+5|8|Slane|False|False
+5|10|Superstock|False|False
+5|4|Tishman|False|False
+5|7|Budjik Boy|False|False
+5|9|So Brave|False|False
+5|5|Hawk Power|False|False
+5|12|Power Pivot|False|False
+5|2|Bur Dubai|False|False
+5|6|Mickidabeel|False|False
+5|11|Ardashir|False|False
+5|3|Dad And Dave|False|False
+6|5|Flying Mikki|False|False
+6|1|Itsukushima|False|False
+6|6|Just Berrilliant|False|False
+6|2|Chakado|False|False
+6|7|Coco Jen|False|False
+6|11|Jenni Multabella|False|False
+6|4|Lario|False|False
+6|12|Champagne Jenni|False|False
+6|13|Chest Of Gold|False|False
+6|3|Taung|False|False
+6|14|Spex|False|False
+6|9|Cooly|False|False
+6|10|Stung|False|False
+6|8|Tiptop Tori|False|False
+7|2|Celsius Star|False|False
+7|6|Ka Ying Cheer|False|False
+7|11|Fission|False|False
+7|3|Elouyou|False|False
+7|4|Laa De Sha|False|False
+7|5|Mytemptation|False|False
+7|1|Stoli Bolli|False|False
+7|9|Mometz|False|False
+7|7|Markdel|False|False
+7|8|Alero|False|False
+7|12|Brave Design|False|False
+7|10|Job Done|False|False
+8|4|Just Folk|False|False
+8|11|St Lawrence|False|False
+8|5|Pinstriped|False|False
+8|8|Amenable|False|False
+8|9|Freedom Rally|False|False
+8|7|Hughes|False|False
+8|1|Another Wil|False|False
+8|16|Cartoon Graveyard|False|False
+8|15|Aztec Ruler|False|False
+8|17|Alder|True|False
+8|10|Air Assault|False|False
+8|13|Scheelite|False|False
+8|6|Regal Zeus|False|False
+8|12|On Display|False|False
+8|2|Warnie|False|False
+8|3|Cote Atlantique|False|False
+8|14|Astral Flame|False|False
+8|18|Miss Playlounge|True|False
+9|2|Mazu|False|False
+9|9|Meridius|False|False
+9|1|Desert Lightning|False|False
+9|7|Zou Sensation|False|False
+9|3|Arkansaw Kid|False|False
+9|8|Watchme Win|False|False
+9|6|Charm Stone|False|False
+9|10|Perilous Fighter|False|False
+9|13|Gentle Steel|False|False
+9|14|Immortal Star|False|False
+9|5|Ndola|False|False
+9|4|Smooth Chino|False|False
+9|12|Jenni The Fox|False|False
+9|11|Inkaruna|False|False
+10|2|Unflinching|False|False
+10|11|Mr Tickles|False|False
+10|1|Philosopher|False|False
+10|7|Castellar|False|False
+10|4|Always Enuff|False|False
+10|3|Mainmankash|False|False
+10|12|Fieldelo|False|False
+10|5|You're Two Vain|False|False
+10|15|Sharing Moments|True|False
+10|8|Lake Forest|False|False
+10|10|Choir Point|False|False
+10|14|Wintery|False|False
+10|6|I'm Foxing|False|False
+10|9|Saluted|False|False
+10|16|Yolo|True|False
+10|17|Cannyworth|True|False
+10|13|Gin Twist|False|False
