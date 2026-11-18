@@ -86,7 +86,8 @@ def runner_rows(race):
         num = as_int(ru.get("number"))
         out.append({
             "bw_race": race.get("id"), "race_bw_bf": bf_market(race.get("betfair_win")),
-            "horse_bw": as_int(ru.get("betfair_id")), "bw_date": race.get("date"), "bw_start": st,
+            "horse_bw": as_int(ru.get("betfair_id")), "horse_name": (ru.get("name") or "").strip().upper() or None,
+            "bw_date": race.get("date"), "bw_start": st,
             "bw_track": (race.get("track") or "").upper(), "bw_state": race.get("location"),
             "bw_distance": as_int(race.get("distance")), "class": race.get("class"),
             "track_condition": race.get("track_condition"), "number": num, "barrier": as_int(ru.get("barrier")),
@@ -127,7 +128,7 @@ def join(bf, bw):
     k["race"], k["horse"] = k.race_bw_bf.astype("int64"), k.horse_bw.astype("int64")
     k = k.drop_duplicates(["race", "horse"])
     cols = ["bw_race", "class", "track_condition", "number", "barrier", "emergency", "driver", "trainer", "bw_pos",
-            "bw_has_results", "tab_open", "tab_open_hours", "tab_last", "tab_n"]
+            "bw_has_results", "tab_open", "tab_open_hours", "tab_last", "tab_n"] + [c for c in BWH if c in k]
     df = bf.merge(k[["race", "horse"] + cols], on=["race", "horse"], how="left")
     span = (bf.date >= pd.Timestamp(bw.bw_date.min())) & (bf.date <= pd.Timestamp(bw.bw_date.max()))
     au = span & (bf.STATE_CODE != "NZ")
@@ -211,3 +212,107 @@ PEOPLE = ["driver_runs", "driver_win_rate", "driver_resid", "trainer_runs", "tra
           "combo_runs", "combo_resid", "dr_track_runs", "dr_track_resid", "driver_change", "driver_up", "barrier",
           "barrier_rel", "bar_ae", "bar_runs", "class_num", "emergency"]
 PEOPLE_CATS = ["class_cat", "cond"]
+
+
+# --- Test 9 (18 Nov 2026, founder: "a model that beats TAB without its prices, then if we price TAB in can we win") ---
+
+BWH = ["bwh_runs", "bwh_days", "bwh_last_pos", "bwh_last_pos_rel", "bwh_pos_ewm", "bwh_win_rate", "bwh_place_rate",
+       "bwh_last_tab_mr", "bwh_tab_mr_ewm", "bwh_tab_mr_best5", "bwh_tabperf_ewm", "bwh_last_move", "bwh_move_ewm",
+       "bwh_class_change", "bwh_hcp_change", "handicap", "handicap_vs_min"]
+
+
+def add_bw_history(bw):
+    """Each horse's record from Betwatch alone, earlier races only (a horse is never in two races at once, so a shift
+    within the horse's own start-ordered runs is strict). Covers every Betwatch race, including the ~11% Betfair's files
+    lack. Keyed by Betfair selection id, or by name where Betwatch gives no id.
+    - finishing positions: last, last as a share of the field, smoothed; win and top-three rates (shrunk);
+    - PAST TAB prices: the horse's rating at TAB's last price before each earlier start, log(chance x field), last and
+      smoothed and best of five; how it ran against that price (won minus chance), smoothed; how its TAB price moved
+      from first to last in earlier races (log first / last: positive = it firmed), last and smoothed;
+    - class change (the number in today's class against last start's) and handicap metres (Betwatch's harness
+      'barrier' field: 0 for most, the same for the whole field in most races) against its last start and the race.
+    No price from the race being priced is used."""
+    b = bw[~bw.scratched].copy()
+    b["hkey"] = b.horse_bw.map(lambda x: f"id{int(x)}" if pd.notna(x) else None)
+    b["hkey"] = b.hkey.fillna(b.horse_name.map(lambda n: f"nm{n}" if n else None))
+    b = b[b.hkey.notna() & b.bw_start.notna()].copy()
+    b["field_bw"] = b.groupby("bw_race").bw_race.transform("size")
+    b["pos_rel"] = b.bw_pos / b.field_bw
+    b["won_bw"] = (b.bw_pos == 1).astype(float).where(b.bw_pos.notna())
+    b["placed_bw"] = (b.bw_pos <= 3).astype(float).where(b.bw_pos.notna())
+    inv = (1 / b.tab_last).where(b.tab_last > 1)
+    full = inv.notna().groupby(b.bw_race).transform("all")
+    b["p_tl"] = (inv / inv.groupby(b.bw_race).transform("sum")).where(full)
+    b["tab_mr"] = np.log(b.p_tl * b.field_bw)
+    b["tabperf"] = b.won_bw - b.p_tl
+    b["move"] = np.log(b.tab_open / b.tab_last).where((b.tab_open > 1) & (b.tab_last > 1))
+    b["class_num_bw"] = pd.to_numeric(b["class"].astype("string").str.extract(r"(\d+)", expand=False), errors="coerce")
+    b = b.sort_values(["hkey", "bw_start", "bw_race"])
+    g = b.groupby("hkey", sort=False)
+    ewm = lambda c: g[c].transform(lambda x: x.shift(1).ewm(alpha=0.3, ignore_na=True).mean())
+    b["bwh_runs"] = g.cumcount()
+    b["bwh_days"] = (b.bw_start - g.bw_start.shift(1)).dt.total_seconds() / 86400
+    b["bwh_last_pos"], b["bwh_last_pos_rel"] = g.bw_pos.shift(1), g.pos_rel.shift(1)
+    b["bwh_pos_ewm"] = ewm("pos_rel")
+    wins = g.won_bw.transform(lambda x: x.fillna(0).cumsum()) - b.won_bw.fillna(0)
+    places = g.placed_bw.transform(lambda x: x.fillna(0).cumsum()) - b.placed_bw.fillna(0)
+    b["bwh_win_rate"] = (wins + 0.1) / (b.bwh_runs + 1)
+    b["bwh_place_rate"] = (places + 0.3) / (b.bwh_runs + 1)
+    b["bwh_last_tab_mr"], b["bwh_tab_mr_ewm"] = g.tab_mr.shift(1), ewm("tab_mr")
+    b["bwh_tab_mr_best5"] = g.tab_mr.transform(lambda x: x.shift(1).rolling(5, min_periods=1).max())
+    b["bwh_tabperf_ewm"] = ewm("tabperf")
+    b["bwh_last_move"], b["bwh_move_ewm"] = g.move.shift(1), ewm("move")
+    b["bwh_class_change"] = b.class_num_bw - g.class_num_bw.shift(1)
+    b["handicap"] = b.barrier
+    b["bwh_hcp_change"] = b.barrier - g.barrier.shift(1)
+    b["handicap_vs_min"] = b.barrier - b.groupby("bw_race").barrier.transform("min")
+    out = bw.copy()
+    for c in BWH:
+        out.loc[b.index, c] = b[c]
+    return out
+
+
+def windowed_form(df, key, days):
+    """Runs and wins for this key in the `days` before this race's start (earlier starts only), shrunk: a stable or
+    driver in form now, which a career strike rate dilutes."""
+    o = df[df[key].notna()]
+    t = o.assign(_n=1, _w=o.won).groupby([key, "start"], sort=True)[["_n", "_w"]].sum().reset_index()
+    t[["cn", "cw"]] = t.groupby(key, sort=False)[["_n", "_w"]].cumsum().to_numpy()
+    res = []
+    for _, gk in t.groupby(key, sort=False):
+        st = gk.start.to_numpy()
+        lo = np.searchsorted(st, st - np.timedelta64(days, "D"), side="left")   # first start inside the window
+        cn, cw = gk.cn.to_numpy(), gk.cw.to_numpy()
+        n0, w0 = np.where(lo > 0, cn[lo - 1], 0), np.where(lo > 0, cw[lo - 1], 0)
+        res.append(pd.DataFrame({"n": cn - gk["_n"].to_numpy() - n0, "w": cw - gk["_w"].to_numpy() - w0},
+                                index=gk.index))
+    r = pd.concat(res)
+    t["n"], t["w"] = r.n, r.w
+    m = o[[key, "start"]].merge(t[[key, "start", "n", "w"]], on=[key, "start"], how="left")
+    m.index = o.index
+    return m.n, (m.w + 0.5) / (m.n + 5)
+
+
+REL = ["driver_win_rate", "trainer_win_rate", "driver_resid", "trainer_resid", "mr_ewm", "p_place_ewm",
+       "bwh_tab_mr_ewm", "bwh_pos_ewm", "bwh_win_rate", "bwh_place_rate", "trainer60_rate", "driver60_rate"]
+
+
+def add_form_plus(df):
+    """Recent stable and driver form, then every key rating against the race: minus the race's mean, and its rank (1 =
+    best). A rating means most beside the ratings it races against."""
+    df = df.copy()
+    for key, name in (("trainer", "trainer60"), ("driver", "driver60")):
+        n, r = windowed_form(df, key, 60)
+        df[f"{name}_runs"], df[f"{name}_rate"] = n, r
+    for c in REL:
+        if c not in df:
+            continue
+        x = df[c].astype(float)
+        df[f"{c}_vs_race"] = x - x.groupby(df.race).transform("mean")
+        better_low = c == "bwh_pos_ewm"                     # a lower finishing share is better
+        df[f"{c}_rank"] = x.groupby(df.race).rank(ascending=better_low, method="min")
+    return df
+
+
+FORM_PLUS = (BWH + ["trainer60_runs", "trainer60_rate", "driver60_runs", "driver60_rate"]
+             + [f"{c}_vs_race" for c in REL] + [f"{c}_rank" for c in REL])

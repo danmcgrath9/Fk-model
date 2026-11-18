@@ -101,3 +101,34 @@ def test_a_key_shared_inside_one_race_never_sees_that_race():
         assert h.loc[(0, hz), "bar_runs"] == 0 and h.loc[(0, hz), "bar_ae"] == 1.0
     assert h.loc[(1, 1), "trainer_runs"] == 2 and np.isclose(h.loc[(1, 1), "trainer_win_rate"], (1 + 1) / (2 + 10))
     assert h.loc[(1, 1), "bar_runs"] == 2 and np.isclose(h.loc[(1, 1), "bar_ae"], (1 + 5) / (1.0 + 5))
+
+
+def test_betwatch_history_uses_earlier_races_only():
+    # horse 11 runs three times a week apart: 2nd, 1st, 3rd of two/two/three; TAB last prices 3.0, 2.0, 4.0
+    rows = []
+    for i, (pos, tl, others) in enumerate(((2, 3.0, 1), (1, 2.0, 1), (3, 4.0, 2))):
+        st = pd.Timestamp("2026-01-01", tz="UTC") + pd.Timedelta(days=7 * i)
+        rows.append(dict(bw_race=f"r{i}", horse_bw=11, horse_name="A", bw_start=st, bw_pos=pos, tab_open=tl * 1.2,
+                         tab_last=tl, scratched=False, barrier=0, **{"class": f"NR {50 + 5 * i}"}))
+        for j in range(others):
+            rows.append(dict(bw_race=f"r{i}", horse_bw=100 + 10 * i + j, horse_name=None, bw_start=st,
+                             bw_pos=1 if (pos != 1 and j == 0) else 2 + j, tab_open=2.0, tab_last=2.0, scratched=False,
+                             barrier=0, **{"class": f"NR {50 + 5 * i}"}))
+    out = W.add_bw_history(pd.DataFrame(rows))
+    a = out[out.horse_bw == 11].set_index("bw_race")
+    assert a.loc["r0", "bwh_runs"] == 0 and np.isnan(a.loc["r0", "bwh_last_pos"])
+    assert a.loc["r1", "bwh_last_pos"] == 2 and a.loc["r2", "bwh_last_pos"] == 1      # last start, never this one
+    # rating at TAB's last price in race 0: chance (1/3) / (1/3 + 1/2) = 0.4, field 2 -> log(0.8)
+    assert np.isclose(a.loc["r1", "bwh_last_tab_mr"], np.log(0.8))
+    assert np.isclose(a.loc["r1", "bwh_last_move"], np.log(1.2))                       # first 3.60, last 3.00: firmed
+    assert a.loc["r1", "bwh_class_change"] == 5 and a.loc["r2", "bwh_win_rate"] == (1 + 0.1) / (2 + 1)
+
+
+def test_windowed_form_counts_the_last_60_days_only():
+    d = pd.DataFrame({"trainer": ["T"] * 4, "won": [1, 1, 0, 1], "race": [0, 1, 2, 3],
+                      "start": pd.to_datetime(["2026-01-01", "2026-01-31", "2026-03-12", "2026-03-12"])})
+    n, r = W.windowed_form(d, "trainer", 60)
+    # 31 Jan sees 1 Jan (30 days back). 12 Mar sees 31 Jan only: 1 Jan is 70 days back, and the other 12 Mar race
+    # started at the same moment, so neither counts.
+    assert list(n) == [0, 1, 1, 1]
+    assert np.isclose(r.iloc[0], 0.5 / 5) and np.isclose(r.iloc[1], 1.5 / 6) and np.isclose(r.iloc[3], 1.5 / 6)

@@ -24,6 +24,9 @@ on:
       to:
         description: 'mode=pull: last month YYYY-MM (blank = this month)'
         default: ''
+      script:
+        description: 'mode=model: the script to run (research/harness/bw_model.py = Test 8, bw_form.py = Test 9)'
+        default: 'research/harness/bw_model.py'
       max_minutes:
         description: 'mode=pull: minutes of pulling before the cache is saved (the rest resumes next run)'
         default: '300'
@@ -88,7 +91,7 @@ jobs:
         if: github.event.inputs.mode == 'model'
         run: |
           set -o pipefail
-          python research/harness/bw_model.py bf "betwatch-cache/$TYPE" "Australian harness" | tee -a "$GITHUB_STEP_SUMMARY"
+          python "${{ github.event.inputs.script }}" bf "betwatch-cache/$TYPE" "Australian harness" | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Save the pulled months (Actions cache)
         if: always() && github.event.inputs.mode == 'pull'
