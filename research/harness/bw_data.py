@@ -142,24 +142,34 @@ def join(bf, bw):
     return df, c
 
 
+def prior_totals(df, keys, cols):
+    """Per row: how many rows with the same key, and the sums of `cols` over them, among races that STARTED EARLIER
+    than this row's race. Totals are built per (key, start) first, so nothing from the same race, or from another
+    race starting at the same moment, is ever counted. (Test 8's first run summed row by row in start order, and a
+    key every runner in a race shares, such as Betwatch's harness barrier field, or a trainer with two runners in one
+    race, then carried that race's own result into the rows sorted after the winner.)"""
+    keys = [keys] if isinstance(keys, str) else list(keys)
+    o = df[df[keys].notna().all(axis=1)]
+    t = o.assign(_n=1, **{c: o[c].fillna(0) for c in cols}).groupby(keys + ["start"], sort=True)[["_n"] + cols].sum()
+    before = t.groupby(level=list(range(len(keys))), sort=False).cumsum() - t     # strictly earlier starts only
+    out = o[keys + ["start"]].join(before, on=keys + ["start"])
+    return out.drop(columns=keys + ["start"]).rename(columns={"_n": "runs"})
+
+
 def _shrunk_form(df, key, k_resid=30):
-    """For each row, from earlier rows with the same key only: runs, wins, and wins against what BSP expected, shrunk
+    """For each row, from earlier races with the same key only: runs, wins, and wins against what BSP expected, shrunk
     toward zero with k_resid pseudo-runs (a driver with 3 drives says almost nothing)."""
-    o = df[df[key].notna()].sort_values(["start", "race"])
-    g = o.groupby(key, sort=False)
-    runs = g.cumcount()
-    wins = g.won.cumsum() - o.won
-    resid = g.perf.transform(lambda x: x.fillna(0).cumsum()) - o.perf.fillna(0)
-    out = pd.DataFrame(index=o.index)
-    out[f"{key}_runs"] = runs
-    out[f"{key}_win_rate"] = (wins + 1) / (runs + 10)
-    out[f"{key}_resid"] = resid / (runs + k_resid)
+    t = prior_totals(df, key, ["won", "perf"])
+    out = pd.DataFrame(index=t.index)
+    out[f"{key}_runs"] = t.runs
+    out[f"{key}_win_rate"] = (t.won + 1) / (t.runs + 10)
+    out[f"{key}_resid"] = t.perf / (t.runs + k_resid)
     return out
 
 
 def add_people(df):
     """Driver, trainer and driver x trainer form; whether the horse's driver changed since its last start; barrier
-    form at this track and gait. Earlier races only (cumulative sums less the row itself, in start order)."""
+    form at this track and gait. Earlier races only: totals over races that started before this one (prior_totals)."""
     df = df.copy()
     for c in ("barrier", "number", "tab_open", "tab_last", "tab_open_hours", "tab_n", "bw_pos"):
         if c in df:
@@ -179,13 +189,9 @@ def add_people(df):
     df.loc[o.index, "prev_driver_resid"] = o.groupby("horse", sort=False).driver_resid.shift(1)
     df["driver_up"] = df.driver_resid - df.prev_driver_resid
     df["barrier_rel"] = df.barrier / df.field.where(df.field > 0)
-    o = df[df.barrier.notna()].sort_values(["start", "race"])
-    k = o.groupby([o.TRACK, o.trot, o.barrier], sort=False)
-    runs = k.cumcount()
-    wins = k.won.cumsum() - o.won
-    exp = k.p_bsp.transform(lambda x: x.fillna(0).cumsum()) - o.p_bsp.fillna(0)
-    df.loc[o.index, "bar_ae"] = (wins + 5) / (exp + 5)
-    df.loc[o.index, "bar_runs"] = runs
+    t = prior_totals(df, ["TRACK", "trot", "barrier"], ["won", "p_bsp"])
+    df.loc[t.index, "bar_ae"] = (t.won + 5) / (t.p_bsp + 5)
+    df.loc[t.index, "bar_runs"] = t.runs
     cls = df["class"].astype("string")
     df["class_num"] = pd.to_numeric(cls.str.extract(r"(\d+)", expand=False), errors="coerce")
     top = cls.value_counts().head(60).index

@@ -87,3 +87,17 @@ def test_tab_chances_only_where_every_runner_has_a_price():
     h = W.add_people(people_frame())
     assert np.allclose(h.p_tab_open, 0.5)                    # both runners at 2.0
     assert h.p_tab_last.isna().all()                         # one runner has no last price: the race gets none
+
+
+def test_a_key_shared_inside_one_race_never_sees_that_race():
+    # trainer T has both runners in race 0 (one wins); every runner in race 0 shares barrier value 2240. Race 1, a week
+    # later, is the first to see race 0's result.
+    f = people_frame()
+    f.loc[f.race == 0, "trainer"] = "T"
+    f["barrier"] = 2240
+    h = W.add_people(f).set_index(["race", "horse"])
+    for hz in (1, 100):
+        assert h.loc[(0, hz), "trainer_runs"] == 0 and h.loc[(0, hz), "trainer_win_rate"] == 0.1   # no peeking
+        assert h.loc[(0, hz), "bar_runs"] == 0 and h.loc[(0, hz), "bar_ae"] == 1.0
+    assert h.loc[(1, 1), "trainer_runs"] == 2 and np.isclose(h.loc[(1, 1), "trainer_win_rate"], (1 + 1) / (2 + 10))
+    assert h.loc[(1, 1), "bar_runs"] == 2 and np.isclose(h.loc[(1, 1), "bar_ae"], (1 + 5) / (1.0 + 5))

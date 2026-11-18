@@ -51,6 +51,11 @@ def leak_check(df):
         print(f"| {v} | {len(b):,} | {b.won.mean() if len(b) else float('nan'):.1%} | {len(t):,} | "
               f"{t.won.mean() if len(t) else float('nan'):.1%} |")
     print(f"| other | {(~j.barrier.between(1, 12)).sum():,} | | | |")
+    q = j.barrier.quantile([0.01, 0.1, 0.5, 0.9, 0.99])
+    one = j.groupby("race").barrier.nunique()
+    print(f"- barrier values, 1st/10th/50th/90th/99th percentile: {' / '.join(f'{v:g}' for v in q)}; races where every "
+          f"runner has the same barrier value: {(one == 1).mean():.1%}; barrier = race distance on "
+          f"{(j.barrier == j.DISTANCE).mean():.1%} of runners")
     o = df[df.bw_race.notna()].sort_values(["start", "race"])
     d = o.groupby(["TRACK", "trot", "barrier"], sort=False).start.transform(lambda s: s.diff().dt.total_seconds())
     print(f"- bar_ae rows whose previous same-key race started at the same time as this one: {(d == 0).mean():.2%}")
