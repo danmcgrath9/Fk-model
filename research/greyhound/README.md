@@ -9410,7 +9410,7 @@ from Betwatch. The morning program prices it at TAB's open from 19 November, pap
 
 What the live version changes, and why it may differ a little from this test:
 - **The form inputs** are the ones the nightly card keeps for the corrected blend, so live and trained match by
-  construction. This test's walk had a few the nightly does not build.
+  construction.
 - **The market's history** is each dog's earlier runs in Betwatch. This test read it from the runs in the walk.
 - **The model** is fitted once on every race, not walked.
 
