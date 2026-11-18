@@ -9275,6 +9275,84 @@ What it shows:
 What it means: a program that sees TAB's open through BetMatic's live odds and bets within a minute or two keeps 80%
 to 86% of the edge. Past three minutes it starts to cost a third or more. Nothing changes the card.
 
+## Test 96: the running line, and today's draw against it, in our own price (18 Nov 2026, gh topaz run 44210201808, `topaz_round77.py`)
+
+Founder, on You Good: "it was slow out, went around horses down the straight, stayed to the outside ... if it draws 1,
+it can't win today, but was box 6 in that price"; "make it as complicated as possible".
+
+Our own price had never seen a dog's running line against today's box. The one input meant for it (topaz_v2's
+`map_rail_vs_box`) read a column nothing builds, so it was blank in every model. `topaz_lines.add_lines` builds 82
+inputs, every one from runs on earlier days:
+- **Topaz's comment codes.** Every word on at least 0.5% of runs, as the share of the last 10 runs carrying it.
+- **GRV's run-line and jump codes**, the same way.
+- **The run-line code in metres from the rail**, against dogs drawn in the same box at the same track and distance,
+  from tracked runs before February 2025.
+- **The dog's own tracked rail distances** against its box: on average, at the jump, at its closest, and at 100, 200
+  and 300 m.
+- **Today's draw against the lines**: the line rank against the box rank (`clash`); the dogs either side, their lines,
+  their early speed and the gaps to them; whether they will come across it (`squeeze`); how many quicker dogs drawn
+  inside it run wider (`crossers_in`); how many quicker dogs want its lane (`contention`); and a slow beginner's clash.
+
+Ours with Isolynx was walked again with them, on the same refit dates (saved as walk_a0e86c9a2f5330d5, 131 minutes).
+
+**What was found:**
+- Topaz's `comment` is GRV's analyst comment ("has early speed, can lead from here"), not the stewards' report. Its
+  commonest words are TO, HERE, IN, CAN, THE, PLACE, EARLY, DANGER, DRAW, SAFE and so on.
+- GRV's run-line code is NORMAL on 96% of runs, WIDE on 3% and RAILER on 1%. On tracked runs a WIDE code runs +0.98 m
+  wider than its box, and a NORMAL one +0.05 m.
+- Isolynx gives the rail distance at the jump, 100, 200 and 300 m on 94% to 95% of tracked runs.
+- A running line is known for 93% of runners.
+
+**Distance to BSP**, February 2025 on, clean races (83,187 runners):
+
+| price | distance to BSP (thousandths) | of TAB's distance closed | winners' log loss |
+|---|---|---|---|
+| TAB's first book | 86.70 | | 1.5913 |
+| ours as saved | 91.37 | -5.4% | 1.5935 |
+| ours with the lines | 91.17 | -5.2% | 1.5924 |
+
+**Actual wins against expected**, February 2025 on, runners with a corrected BSP:
+
+| dogs | runners | wins | A/E vs ours as saved | A/E vs ours with the lines | A/E vs TAB's first book | A/E vs the corrected BSP | SE |
+|---|---|---|---|---|---|---|---|
+| a wide runner drawn inside (clash 3 or more) | 19,920 | 2,826 | 1.003 | 1.016 | **0.960** | 1.019 | 0.019 |
+| wider than drawn (clash 1 or 2) | 26,012 | 3,892 | 1.017 | 1.017 | 1.005 | 1.010 | 0.016 |
+| drawn about where it runs | 18,984 | 2,857 | 1.025 | 1.014 | 1.033 | 1.014 | 0.019 |
+| a railer drawn wide (clash -3 or less) | 21,872 | 2,969 | 0.971 | 0.975 | 0.992 | 0.983 | 0.018 |
+| squeezed by a neighbour | 3,413 | 375 | 1.010 | 1.018 | 0.963 | 1.018 | 0.052 |
+| two or more quicker dogs inside run wider | 3,318 | 356 | 1.006 | 0.996 | 0.984 | 1.003 | 0.053 |
+| two or more quicker dogs want its lane | 71,725 | 8,654 | 1.006 | 1.004 | **0.972** | 1.002 | 0.011 |
+| a slow beginner with a clash (top tenth) | 11,555 | 1,349 | 1.013 | 1.030 | **0.924** | 1.026 | 0.027 |
+| no running line known | 3,995 | 611 | 0.968 | 0.965 | 1.009 | 0.957 | 0.040 |
+
+**The order sheet with no TAB price** (Test 94's rules) is no better with the lines: -12.4% a unit at 1.1x (-1,285
+units), -3.8% at 1.5x, -2.3% at the 2-point margin, against -12.3%, -3.5% and -2.4% as saved.
+
+**By track**, February 2025 on, Test 88's fit at 2 points and a quarter of Kelly (bets / corrected BSP units /
+realised units): Warragul 234 / +42.1 / +21.7, Geelong 263 / +33.6 / +63.5, Ballarat 264 / +39.3 / +8.4,
+Warrnambool 282 / +30.1 / +42.8, Bendigo 238 / +32.0 / +29.1, Shepparton 218 / +34.5 / -6.6, Healesville
+277 / +49.1 / +93.4, Sale 181 / +20.8 / +11.5, Horsham 151 / +20.9 / +26.8, The Meadows (both codes) 197 / +37.0 /
++5.2, Sandown (both codes) 220 / +48.1 / +43.3, Traralgon 55 / +1.3 / +12.4.
+
+What it shows:
+
+- **The lines barely move our own price.** Ours gets 0.20 thousandths closer to BSP and 0.0011 better on the winners'
+  log loss. Most of what the draw says was already in ours, through the box, the early-speed map and the Isolynx
+  ratings.
+- **TAB's opening book is the one that misses the founder's dogs.** Our price has them about right; TAB's first book
+  does not:
+  - A wide runner drawn inside wins 4% less often than TAB's first book says (A/E 0.960, about 2 standard errors).
+  - A slow beginner with a clash wins 8% less often (A/E 0.924, about 3 standard errors).
+  - A dog with two or more quicker dogs after its lane wins 3% less often (0.972, about 2.5 standard errors).
+  - Our price, with or without the lines, has each of them within about 2% to 3%, and the corrected BSP agrees with it.
+- **Healesville is not special.** Test 88's fit makes money at every track. At its average of +0.15 units a bet,
+  Healesville's 277 bets would make about +42 by the corrected BSP; they made +49.1, within the noise. The 18 November
+  bets landing there were chance.
+
+What it means: the founder's reading of the draw is right, and it is already part of why our model beats TAB's open.
+TAB's opening price misses it; ours does not. Whether the lines add money once the correction can see them is round
+78. Nothing changes the card.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
@@ -9376,6 +9454,7 @@ published November, so there is no BSP yet.
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 15 Nov | 43860008304 | 24 | 24 | 22 | 4 | 4 | 2 | 1.26 | 5.34 | +5.77 | 0 | 0 |
 | 16 Nov | 44075152202 | 50 | 50 | 36 | 10 | 10 | 4 | 4.17 | 22.26 | -5.00 | 0 | 0 |
+| 17 Nov | 44296970713 | 37 | 37 | 23 | 8 | 8 | 4 | 2.91 | 19.73 | +10.94 | 1 | 0 |
 
 All four 15 Nov bets opened shorter on TAB than GRV's evening price (TAB at 24% to 49% of it) and below the card's own
 blended price, the same pattern as the first nine nights. Two won, at TAB's first price less the deduction: +5.77
@@ -9386,8 +9465,14 @@ below 1.3x at TAB's first price (TAB's price times the card's blend 0.40 to 0.77
 staked, -22.3% flat. The 16 Nov run is the first to print rows for the corrected blend; it has none until the 18 Nov
 card.
 
-The card as sent so far, 6 to 16 Nov: 70 bets, 69 settled (one refund), 27 winners against 27.20 expected at the
-prices taken (A/E 0.99), 158.42 units staked, -28.63 units won (-18.1% at the card's units, -11.1% flat), -26.92 at
+Seven of the eight 17 Nov bets opened shorter on TAB than GRV's evening price (TAB at 9% to 86% of it). The eighth, at
+Ballarat, opened longer than GRV's price (TAB at 118% of it) and was still 1.3x the card's blended price at TAB's open,
+the second bet to do so since 6 Nov. It won: +16.28 units at its 4 units, less a 26c deduction. Four of the eight
+won: +10.94 units on 19.73 staked, +50.6% flat. The corrected blend's rows (variants 4 and 5) start with the 18 Nov
+card, so the 17 Nov run (44296970713) still shows none.
+
+The card as sent so far, 6 to 17 Nov: 78 bets, 77 settled (one refund), 31 winners against 30.11 expected at the
+prices taken (A/E 1.03), 178.15 units staked, -17.69 units won (-9.9% at the card's units, -4.7% flat), -15.41 at
 the best first price of three. The rule at TAB's open has made no bet yet.
 
 Results go here as they come in.
