@@ -25,6 +25,9 @@ on:
       max_minutes:
         description: 'mode=pull: minutes of pulling before the cache is saved (the rest resumes next run)'
         default: '300'
+      locations:
+        description: 'the state, e.g. VIC or NSW (each state has its own cache: betwatch-<STATE>-G-)'
+        default: 'VIC'
 
 concurrency:
   group: gh-betwatch-${{ github.event.inputs.mode }}
@@ -64,19 +67,20 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: greyhound/cache/betwatch
-          key: betwatch-VIC-G-${{ github.run_id }}
-          restore-keys: betwatch-VIC-G-
+          key: betwatch-${{ github.event.inputs.locations || 'VIC' }}-G-${{ github.run_id }}
+          restore-keys: betwatch-${{ github.event.inputs.locations || 'VIC' }}-G-
 
       - name: Pull (counts only)
         if: github.event.inputs.mode == 'pull'
         run: |
           T="${{ github.event.inputs.to }}"
           python -m greyhound.betwatch pull --from "${{ github.event.inputs.from }}" ${T:+--to "$T"} \
-            --dir greyhound/cache/betwatch --max-minutes "${{ github.event.inputs.max_minutes }}" | tee -a "$GITHUB_STEP_SUMMARY"
+            --dir greyhound/cache/betwatch --max-minutes "${{ github.event.inputs.max_minutes }}" \
+            --locations "${{ github.event.inputs.locations || 'VIC' }}" | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Save the pulled months (Actions cache)
         if: always() && github.event.inputs.mode == 'pull'
         uses: actions/cache/save@v4
         with:
           path: greyhound/cache/betwatch
-          key: betwatch-VIC-G-${{ github.run_id }}
+          key: betwatch-${{ github.event.inputs.locations || 'VIC' }}-G-${{ github.run_id }}
