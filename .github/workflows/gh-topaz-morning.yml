@@ -23,6 +23,9 @@ on:
       day:
         description: 'YYYY-MM-DD in Melbourne (blank = today)'
         default: ''
+      test_until:
+        description: 'a test only: watch until this HH:MM Melbourne, from now, on a throwaway ledger (blank = the real one)'
+        default: ''
 
 concurrency:
   group: gh-topaz-morning
@@ -72,6 +75,10 @@ jobs:
           export CARDS_DIR="$PWD/greyhound/cache/cards" MODEL_DIR="$PWD/greyhound/cache/model" \
                  MORNING_DIR="$PWD/greyhound/cache/morning"
           export MORNING_DAY="${{ github.event.inputs.day }}" MORNING_MODE="${{ github.event.inputs.mode || 'watch' }}"
+          if [ -n "${{ github.event.inputs.test_until }}" ]; then
+            export MORNING_UNTIL="${{ github.event.inputs.test_until }}" MORNING_FROM="00:00" MORNING_DIR="$RUNNER_TEMP/morning-test"
+            echo "TEST: watching until ${{ github.event.inputs.test_until }} on a throwaway ledger"
+          fi
           python research/greyhound/topaz_morning.py "topaz morning" | tee morning.out
           grep -v '^SEALED' morning.out >> "$GITHUB_STEP_SUMMARY"
 
