@@ -1,0 +1,31 @@
+name: x stream test
+
+# A TEST, by hand only: can X push a new post to us within seconds (the stream), and how often may the timeline be
+# polled? Reads only; bets nothing. scripts/x_stream_test.py.
+on:
+  workflow_dispatch:
+    inputs:
+      user:
+        description: 'X username'
+        default: 'AnthonyDon_'
+      hold:
+        description: 'Seconds to hold the stream open'
+        default: '25'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: twitter
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Stream and poll test
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+        run: python scripts/x_stream_test.py "${{ github.event.inputs.user }}" --hold "${{ github.event.inputs.hold }}"
