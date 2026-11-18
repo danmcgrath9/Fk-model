@@ -1,0 +1,75 @@
+## sandown-lakeside-20261118: 74 entries (from Betwatch, 18 Nov: the database was read-only. 'unplaced' = ran, out of the first four; SP = TAB's last price before the jump; BSP rounded)
+R1 Cahaba Lad               finish 1  SP 3.4  BSP 4.57
+R1 Munger                   finish 2  SP 7.5  BSP 8.60
+R1 La La Lilly              finish 3  SP 2  BSP 2.38
+R1 Jetsetter                finish 4  SP 9  BSP 12.50
+R1 The King Maker           finish unplaced  SP 71  BSP 180.00
+R1 Anori Dancer             finish unplaced  SP 7.5  BSP 6.62
+R2 Savanina                 finish 1  SP 11  BSP 12.00
+R2 Sondera                  finish 2  SP 3.5  BSP 3.90
+R2 Royal Maximus            finish 3  SP 1.6  BSP 2.08
+R2 Table Twentyeight        finish 4  SP 31  BSP 55.00
+R2 Montostratus             finish unplaced  SP 151  BSP 31.84
+R2 Perfect Dismount         finish None  SP 1.01  BSP None
+R2 Blue Parrot              finish unplaced  SP 12  BSP 12.00
+R2 Hilily Hilily Hilo       finish None  SP 1.01  BSP None
+R2 Oh La Belle              finish None  SP 1.01  BSP None
+R2 Celestique               finish unplaced  SP 14  BSP 15.97
+R2 Cirque De Coco           finish None  SP 1.01  BSP None
+R3 Sound Byte               finish 1  SP 2  BSP 2.07
+R3 Sunbliss                 finish 2  SP 2.8  BSP 3.65
+R3 Senza Nome               finish 3  SP 17  BSP 22.39
+R3 Fontein Jewel            finish 4  SP 5.5  BSP 6.20
+R3 Fammi                    finish None  SP 2.4  BSP None
+R3 Home Tomurra             finish unplaced  SP 16  BSP 23.23
+R3 Oceans Blue              finish None  SP 2.6  BSP None
+R4 Pariah Pearl             finish 1  SP 3.5  BSP 4.60
+R4 Almago                   finish 2  SP 4  BSP 4.50
+R4 Pandie Pandie            finish 3  SP 12  BSP 20.33
+R4 Spirit Angel             finish 4  SP 23  BSP 23.00
+R4 Certainly Quiet          finish unplaced  SP 5.5  BSP 6.40
+R4 Navy Heart               finish unplaced  SP 3.3  BSP 4.32
+R4 Rick's Cafe              finish unplaced  SP 13  BSP 14.50
+R5 Breathless Spirit        finish 1  SP 3.5  BSP 4.21
+R5 Samuel Langhorne         finish 2  SP 34  BSP 50.00
+R5 Pure Grunt               finish 3  SP 11  BSP 19.71
+R5 Mickidabeel              finish 4  SP 2.5  BSP 3.05
+R5 Tishman                  finish None  SP 1.01  BSP None
+R5 Avenues                  finish unplaced  SP 15  BSP 15.50
+R5 Chihuly                  finish unplaced  SP 3.7  BSP 4.03
+R5 Roaring Engine           finish unplaced  SP 15  BSP 19.50
+R5 Ned Kelly                finish None  SP 1.01  BSP None
+R6 Flying Mikki             finish 1  SP 2.9  BSP 3.05
+R6 Rainsun                  finish 2  SP 5.5  BSP 5.47
+R6 Twilight Elegance        finish 3  SP 11  BSP 18.00
+R6 Seethru                  finish 4  SP 4.4  BSP 5.22
+R6 Expeetee                 finish unplaced  SP 16  BSP 22.00
+R6 Prince Magnetite         finish unplaced  SP 13  BSP 18.00
+R6 Torn                     finish unplaced  SP 9  BSP 13.29
+R6 Shidan                   finish unplaced  SP 21  BSP 38.07
+R6 Ashau Valley             finish unplaced  SP 51  BSP 65.00
+R6 Millsy's Award           finish unplaced  SP 31  BSP 45.54
+R6 The King And I           finish unplaced  SP 81  BSP 171.40
+R7 Russian Choice           finish 1  SP 2.7  BSP 2.74
+R7 King's Coronation        finish 2  SP 23  BSP 27.00
+R7 Harbour Town             finish 3  SP 6.5  BSP 9.11
+R7 Blue Valentine           finish 4  SP 14  BSP 16.50
+R7 Ole Royale               finish unplaced  SP 15  BSP 20.00
+R7 Onavuitton               finish unplaced  SP 3.7  BSP 4.40
+R7 Orovero                  finish unplaced  SP 11  BSP 12.45
+R7 Waco Kid                 finish unplaced  SP 23  BSP 29.40
+R7 Blue Bandit              finish None  SP 10  BSP None
+R7 Move The Torana          finish None  SP 13  BSP None
+R7 Jamesjohno               finish unplaced  SP 8.5  BSP 12.30
+R7 Russian Front            finish None  SP 26  BSP None
+R8 Befuddle                 finish 1  SP 2.6  BSP 3.00
+R8 Sister Shay              finish 2  SP 8.5  BSP 9.20
+R8 Legacy Bay               finish 3  SP 5.5  BSP 7.00
+R8 The Volta                finish 4  SP 3.2  BSP 3.48
+R8 Maisy                    finish None  SP 4.8  BSP None
+R8 Pula                     finish None  SP 10  BSP None
+R8 She's Pretty Rich        finish unplaced  SP 13  BSP 20.39
+R8 White Hot Mama           finish unplaced  SP 26  BSP 60.00
+R8 Lathlain                 finish None  SP 16  BSP None
+R8 Highly Intrigued         finish unplaced  SP 18  BSP 32.00
+R8 Claymore Mine            finish unplaced  SP 19  BSP 27.12
