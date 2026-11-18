@@ -143,7 +143,8 @@ def compact(race: dict) -> dict:
            "type": m.get("type"), "betfair_win": bf.get("win"), "betfair_place": bf.get("place"),
            "number": race.get("number"), "name": race.get("name"), "status": race.get("status"),
            "start": race.get("startTime"), "actual_start": race.get("actualStartTime"),
-           "distance": race.get("distance"), "results": race.get("results"), "runners": []}
+           "distance": race.get("distance"), "class": race.get("classConditions"),
+           "track_condition": race.get("trackCondition"), "results": race.get("results"), "runners": []}
     for ru in race.get("runners") or []:
         books = {}
         for bm in ru.get("bookmakerMarkets") or []:

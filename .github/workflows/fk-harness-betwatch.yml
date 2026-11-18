@@ -56,13 +56,14 @@ jobs:
           D="${{ github.event.inputs.days }}"
           python -m greyhound.betwatch probe --type "$TYPE" --locations Australia ${D:+--days "$D"} | tee -a "$GITHUB_STEP_SUMMARY"
 
+      # v2 (18 Nov 2026): race class and track condition kept; v1 caches dropped them, so they are not restored.
       - name: Restore the pulled months (Actions cache, this repository only)
         if: github.event.inputs.mode == 'pull'
         uses: actions/cache/restore@v4
         with:
           path: betwatch-cache/${{ github.event.inputs.type }}
-          key: betwatch-AU-${{ github.event.inputs.type }}-${{ github.run_id }}
-          restore-keys: betwatch-AU-${{ github.event.inputs.type }}-
+          key: betwatch-AU-v2-${{ github.event.inputs.type }}-${{ github.run_id }}
+          restore-keys: betwatch-AU-v2-${{ github.event.inputs.type }}-
 
       - name: Pull (counts only)
         if: github.event.inputs.mode == 'pull'
@@ -76,4 +77,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: betwatch-cache/${{ github.event.inputs.type }}
-          key: betwatch-AU-${{ github.event.inputs.type }}-${{ github.run_id }}
+          key: betwatch-AU-v2-${{ github.event.inputs.type }}-${{ github.run_id }}

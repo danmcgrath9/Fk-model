@@ -86,6 +86,14 @@ def test_compact_keeps_betfair_ids_trainer_and_driver():
     assert c["runners"][1]["rider"] is None                    # missing fields stay None, never guessed
 
 
+def test_compact_keeps_class_and_track_condition():
+    r = _race()
+    r["trackCondition"] = "Good"
+    c = B.compact(r)
+    assert (c["class"], c["track_condition"]) == ("Grade 5", "Good")
+    assert B.compact(_race())["track_condition"] is None        # not sent: None, not a default
+
+
 def test_tags_and_locations():
     assert B.tag(["Greyhound"], ["VIC"]) == "VIC_G"            # the original greyhound files keep their name
     assert B.tag(["Harness"], B.locations_arg("Australia")) == "AU_H"
