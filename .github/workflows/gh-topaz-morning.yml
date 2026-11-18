@@ -10,6 +10,9 @@ name: gh topaz morning
 # From 19 Nov the best model (Test 98, topaz_best) is priced beside the corrected blend once the weekly train has fitted
 # it (best.txt in the model cache); it reads each dog's earlier runs in the Betwatch history (cache, to yesterday).
 # mode=once prices the day once, as it stands.
+# 19 Nov 2026: Betwatch showed no price from any bookmaker all morning, so nothing was priced. If TAB has not
+# opened (half the day's races priced) by 8:20, the watch runs on to an hour after it does, to 9:50 at the latest
+# (MORNING_LATE); the log says plainly when there was no TAB price at all.
 
 on:
   schedule:
@@ -39,7 +42,7 @@ permissions:
 jobs:
   morning:
     runs-on: ubuntu-latest
-    timeout-minutes: 200
+    timeout-minutes: 280      # 5:41am in standard time, to 9:50 at the latest
     env:
       PYTHONUNBUFFERED: '1'
       BETWATCH_API_KEY: ${{ secrets.BETWATCH_API_KEY }}
