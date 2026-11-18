@@ -143,6 +143,8 @@ def main():
     ap.add_argument("--drop", default="", help="race ids to leave out, comma separated (Form King's stale weights-stage copies of a race)")
     ap.add_argument("--morning", action="store_true", help="race-morning re-price (founder, 12 Nov: 8:30am, ready to bet at 9): "
                     "--odds --all, today's meetings, the sheet of record never touched, the open-bets box and the 9am list per meeting")
+    ap.add_argument("--soft-export", default="", help="an fk-export upcoming npz exported with a Soft going (fk-export going 'Soft 5'), "
+                    "for the meeting(s) in --only that were flagged 'needs a Soft export': they are priced from it (18 Nov 2026)")
     ap.add_argument("--test", action="store_true", help="files under <prefix>-test, no commit (a timing test on meetings already priced)")
     a = ap.parse_args()
     if a.morning:
@@ -171,7 +173,7 @@ def main():
         ids = sorted({r["race_id"] for r in fl} - set(a.drop.split(",")))
         if not ids:
             log(f"STOP {mid}: no race ids in its fluc output"); continue
-        up = W / f"upcoming-{d}.npz"
+        up = Path(a.soft_export) if a.soft_export and a.only and mid in a.only.split(",") else W / f"upcoming-{d}.npz"
         cut = W / f"{mid}.npz"; adj = W / f"{mid}-adj.npz"
         subprocess.run([sys.executable, str(S / "cut_meeting.py"), str(up), str(cut), ",".join(ids)], check=True)
         fa = subprocess.run([sys.executable, str(R / "form_adjust_npz.py"), str(cut), str(adj)], capture_output=True, text=True, cwd=R)
@@ -211,7 +213,7 @@ def main():
         title = f"{name} {dow}" + (" (paper)" if paper else " (provisional)" if no_rider else "")
         info[mid] = dict(m=m, P=P, paper=paper, no_rider=no_rider, rain=rain, rday=rday, opened=opened, fl=fl,
                          head=head, title=title, name=name, adj=adj_note, soft=(rain or 0) >= 15, hist=hist_n)
-        if (rain or 0) >= 15:
+        if (rain or 0) >= 15 and not (a.soft_export and a.only and mid in a.only.split(",")):
             log(f"{mid}: {rain}mm in the 3 days before: needs a Soft export (fk-export going) before pricing; NOT priced here")
             continue
         jobs.append((mid, P, adj, md / "scratchings.md", md / "entry_numbers.md", head, title))
