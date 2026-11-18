@@ -1,0 +1,41 @@
+Victoria 2025-07-01 to 2026-11-09: 4664 day races with a whole 9am book
+
+## NEW VERSION: 0.28 ours + 0.88 median - 0.22 move
+
+horses on the list: 330; with a Betfair SP: 330; winners 94
+
+| one bet a horse | staked | profit | return |
+|---|---|---|---|
+| best major price at 9am, to win the limit | $135,840 | $+29,918 | +22.0% |
+| Betfair SP, to win the limit, before commission | $146,609 | $+25,704 | +17.5% |
+| Betfair SP, to win the limit, after 8% commission | $146,609 | $+15,944 | +10.9% |
+| level $100 a horse at the 9am best price | $33,000 | $+13,082 | +39.6% |
+| level $100 a horse at Betfair SP, after commission | $33,000 | $+7,078 | +21.4% |
+
+9am best price against Betfair SP: beat BSP on 177 of 330 (54%); median 9am price $5.00, median BSP $4.90; 9am / BSP median 1.03x, average 1.07x, weighted by stake 1.03x
+  spread of 9am / BSP: shorter at 9am than BSP by 10%+ 99, within 10% 102, 10-30% longer at 9am 73, 30-60% longer 36, 60%+ longer 20
+  the same bookmaker an hour before the jump (961 of 961 bookie bets): shorter than its 9am price on 54%, the same on 22%, longer on 25%; 9am / then median 1.03x, average 1.08x
+  the same bookmaker a minute before the jump (961 of 961 bookie bets): shorter than its 9am price on 63%, the same on 11%, longer on 27%; 9am / then median 1.10x, average 1.14x
+  the majors' median price a minute before the jump against their median at 9am (330 horses): 9am / jump median 1.04x; firmed on 55%
+  by period (one bet a horse to win the limit): Jul-Oct 2025: 9am +17%, BSP +10% (66 horses); Nov 2025-Jun 2026: 9am +11%, BSP +2% (142 horses); Jul-Nov 2026: 9am +43%, BSP +25% (122 horses)
+  winners 94 against 75.2 that BSP expects and 78.8 that the list's fair price expects
+
+## TODAY'S LIST: 0.20 ours + 1.00 best major price
+
+horses on the list: 70; with a Betfair SP: 70; winners 23
+
+| one bet a horse | staked | profit | return |
+|---|---|---|---|
+| best major price at 9am, to win the limit | $55,132 | $+1,761 | +3.2% |
+| Betfair SP, to win the limit, before commission | $55,786 | $+1,485 | +2.7% |
+| Betfair SP, to win the limit, after 8% commission | $55,786 | $-1,555 | -2.8% |
+| level $100 a horse at the 9am best price | $7,000 | $+2,483 | +35.5% |
+| level $100 a horse at Betfair SP, after commission | $7,000 | $+779 | +11.1% |
+
+9am best price against Betfair SP: beat BSP on 38 of 70 (54%); median 9am price $3.30, median BSP $3.17; 9am / BSP median 1.01x, average 1.05x, weighted by stake 1.00x
+  spread of 9am / BSP: shorter at 9am than BSP by 10%+ 19, within 10% 32, 10-30% longer at 9am 10, 30-60% longer 5, 60%+ longer 4
+  the same bookmaker an hour before the jump (200 of 200 bookie bets): shorter than its 9am price on 48%, the same on 28%, longer on 23%; 9am / then median 1.00x, average 1.05x
+  the same bookmaker a minute before the jump (200 of 200 bookie bets): shorter than its 9am price on 62%, the same on 12%, longer on 26%; 9am / then median 1.05x, average 1.08x
+  the majors' median price a minute before the jump against their median at 9am (70 horses): 9am / jump median 1.03x; firmed on 54%
+  by period (one bet a horse to win the limit): Jul-Oct 2025: 9am +12%, BSP +5% (15 horses); Nov 2025-Jun 2026: 9am -26%, BSP -29% (25 horses); Jul-Nov 2026: 9am +21%, BSP +13% (30 horses)
+  winners 23 against 21.7 that BSP expects and 23.3 that the list's fair price expects
