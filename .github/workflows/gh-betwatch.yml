@@ -8,8 +8,11 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'probe (counts only, sample days) or pull (month files into the Actions cache, resumable)'
+        description: 'probe (counts only, sample days), pull (month files into the Actions cache, resumable) or now (the day as it stands, sealed)'
         default: 'probe'
+      day:
+        description: 'mode=now: the day, YYYY-MM-DD (blank = today on the runner, UTC)'
+        default: ''
       days:
         description: 'mode=probe: days to sample, comma separated YYYY-MM-DD (blank = five from Nov 2022 to now)'
         default: ''
@@ -49,6 +52,12 @@ jobs:
         run: |
           D="${{ github.event.inputs.days }}"
           python -m greyhound.betwatch probe ${D:+--days "$D"} | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: The day as it stands (sealed to the card key; counts only in the clear)
+        if: github.event.inputs.mode == 'now'
+        run: |
+          D="${{ github.event.inputs.day }}"
+          python -m greyhound.betwatch now ${D:+--day "$D"}
 
       - name: Restore the pulled months (Actions cache, this repository only)
         if: github.event.inputs.mode == 'pull'

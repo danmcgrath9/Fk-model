@@ -301,9 +301,45 @@ def pull(a: str, b: str, out_dir: Path, max_minutes: float, types=("Greyhound",)
     return 0
 
 
+def now_rows(races: list[dict]) -> list[dict]:
+    """Per runner of the day's races (compacted): TAB's first price and when, TAB's latest price and when, and the
+    latest Sportsbet and Ladbrokes prices. For the founder's own card, sealed: Betwatch data is never shown."""
+    rows = []
+    for r in races:
+        c = compact(r)
+        for ru in c["runners"]:
+            b = ru.get("books") or {}
+            tab = (b.get("Tab") or {}).get("flucs") or []
+            row = {"track": c.get("track"), "race": c.get("number"), "start": c.get("start"), "number": ru.get("number"),
+                   "name": ru.get("name"), "scratched": ru.get("scratched"),
+                   "tab_open": tab[0][0] if tab else None, "tab_open_at": tab[0][1] if tab else None,
+                   "tab_now": tab[-1][0] if tab else None, "tab_now_at": tab[-1][1] if tab else None}
+            for bk in ("Sportsbet", "Ladbrokes"):
+                last = (b.get(bk) or {}).get("last") or [None, None]
+                row[f"{bk.lower()}_now"], row[f"{bk.lower()}_now_at"] = last[0], last[1]
+            rows.append(row)
+    return rows
+
+
+def now(day: str, types=("Greyhound",), locations=("VIC",)) -> int:
+    """The day's prices as they stand, sealed to the card key: the log carries counts and sealed lines only."""
+    import json as _json
+
+    from greyhound import sealed
+
+    rows = now_rows(fetch_day(_session(), day, types, locations))
+    with_tab = sum(1 for x in rows if x["tab_open"])
+    print(f"{day}: {len(rows):,} runners, {with_tab:,} with a TAB price")
+    lines, sha = sealed.seal(_json.dumps({"day": day, "rows": rows}).encode())
+    print(f"sealed, sha256 {sha}")
+    print("\n".join(lines))
+    return 0
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser()
-    p.add_argument("mode", choices=["probe", "pull"])
+    p.add_argument("mode", choices=["probe", "pull", "now"])
+    p.add_argument("--day", default=datetime.now().strftime("%Y-%m-%d"), help="mode=now: the day, YYYY-MM-DD")
     p.add_argument("--days", default="2022-11-15,2023-11-14,2024-11-12,2025-11-11,2026-11-10")
     p.add_argument("--from", dest="a", default="2022-11")
     p.add_argument("--to", dest="b", default=datetime.now().strftime("%Y-%m"))
@@ -315,6 +351,8 @@ def main(argv=None) -> int:
     types, locs = [t.strip() for t in a.type.split(",") if t.strip()], locations_arg(a.locations)
     if a.mode == "probe":
         return probe(a.days.split(","), types, locs)
+    if a.mode == "now":
+        return now(a.day, types, locs)
     return pull(a.a, a.b, Path(a.dir), a.max_minutes, types, locs)
 
 

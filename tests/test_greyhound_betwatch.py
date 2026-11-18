@@ -103,3 +103,20 @@ def test_fetch_day_sends_the_type_and_states(monkeypatch):
     assert seen["types"] == ["Harness"] and seen["locations"] == B.AU_STATES and seen["dateFrom"] == "2026-11-10"
     B.fetch_day(None, "2026-11-10")
     assert seen["types"] == ["Greyhound"] and seen["locations"] == ["VIC"]
+
+
+def test_now_rows_open_latest_and_other_books():
+    from greyhound import betwatch as B
+    race = {"id": "r1", "number": 8, "startTime": "2026-11-18T02:10:00Z",
+            "meeting": {"date": "2026-11-18", "track": "Healesville", "location": "VIC", "type": "Greyhound"},
+            "runners": [{"id": "a", "number": 8, "name": "DOG A", "bookmakerMarkets": [
+                {"bookmaker": "Tab", "fixedWin": {"price": 2.6, "lastUpdated": "2026-11-17T23:00:00Z", "flucs": [
+                    {"price": 2.6, "lastUpdated": "2026-11-17T23:00:00Z"},
+                    {"price": 3.0, "lastUpdated": "2026-11-17T21:00:00Z"}]}},
+                {"bookmaker": "Sportsbet", "fixedWin": {"price": 2.7, "lastUpdated": "2026-11-17T23:10:00Z"}}]},
+                {"id": "b", "number": 1, "name": "DOG B", "bookmakerMarkets": []}]}
+    a, b = B.now_rows([race])
+    # flucs are put in time order, so TAB's open is the 21:00 price and its latest the 23:00 one
+    assert (a["tab_open"], a["tab_now"], a["sportsbet_now"], a["ladbrokes_now"]) == (3.0, 2.6, 2.7, None)
+    assert a["track"] == "Healesville" and a["race"] == 8 and a["number"] == 8
+    assert b["tab_open"] is None and b["tab_now"] is None

@@ -9036,6 +9036,96 @@ Nothing changes the card.
 More money now needs more races. The same Topaz key covers every state and Betfair's ANZ files carry their BSPs;
 Betwatch would need a pull for each state. Whether to backtest NSW is the founder's call.
 
+## Test 92: the edge TAB cannot limit, at midday (18 Nov 2026, gh topaz run 44201947355, `topaz_round74.py`)
+
+Founder, on the edge at TAB's open: "they wont let big limits on that". Then: "Yep run it".
+
+TAB limits accounts that win, and a bet at TAB's open is the one it protects itself against most. Greyhound Racing
+Victoria's minimum bet limit makes an approved operator lay a fixed-odds win bet on a Victorian greyhound race up to
+a set amount, once per runner per customer per race, however the account has done. GRV's wagering FAQ says the
+conditions apply to bets placed after midday where the meeting's first race starts at 2pm or later.
+
+Not confirmed here, because grv.org.au is outside this session's network:
+- the amounts (one source gives $500 at country meetings, $1,000 at metropolitan meetings and $2,000 at Group 1);
+- the rule for meetings that start before 2pm.
+
+**The test, stated before the run.** Test 88's fit, February 2025 on, bets with a corrected BSP, a quarter of Kelly at
+one scale (TAB's open's 2-point bets' mean stake is one unit). It reports:
+- when TAB opens each race;
+- where the open's 2-point bets fall against the midday rule;
+- at meetings from 2pm, TAB's price at the first moment the limit applies. That is midday, or TAB's open when TAB
+  opens after midday, with the deduction for dogs scratched after that moment. It is tested with the model as it
+  stood at TAB's open, and with the model moved by TAB's own move since the open;
+- what the bets would make staked to win $1,000 at a metropolitan meeting and $500 elsewhere.
+
+The price history runs to 12 November, so nothing since the live tracker began is in it.
+
+**When TAB opens**, races since February 2025 (17,205 with an opening and a start time; 76% at meetings whose first
+race starts at 2pm or later):
+
+| races | TAB opens, Melbourne clock (10th / 25th / median / 75th / 90th percentile) | hours before the race (median) | TAB opens after midday |
+|---|---|---|---|
+| all | 07:05 / 07:17 / 07:25 / 07:36 / 07:57 | 10.6 | 2% |
+| meetings from 2pm | 07:06 / 07:17 / 07:25 / 07:35 / 07:57 | 11.7 | 1% |
+| meetings before 2pm | 07:03 / 07:17 / 07:27 / 07:38 / 08:02 | 5.7 | 3% |
+
+**Where TAB's open's 2-point bets fall**, February 2025 to October 2026:
+
+| where | bets | corrected BSP per unit staked (SE) | corrected BSP units | realised units |
+|---|---|---|---|---|
+| meeting from 2pm, TAB opens after midday: the limit already applies | 45 | +31.4% (6.6%) | +13.0 | +4.6 |
+| meeting from 2pm, TAB opens before midday | 1,879 | +14.5% (1.0%) | +271.9 | +238.1 |
+| meeting before 2pm: rule not confirmed | 656 | +15.8% (1.5%) | +103.9 | +108.7 |
+
+**At meetings from 2pm, the first moment the limit applies** (25,102 races), a quarter of Kelly at one scale:
+
+| price | bets | corrected BSP per unit staked (SE) | corrected BSP units | Feb 2025 to Jan 2026 | Feb 2026 on | realised units | deepest fall, realised | losing months |
+|---|---|---|---|---|---|---|---|---|
+| **TAB's open, the same races** | 1,924 | **+14.8% (1.0%)** | **+284.9** | +149.3 | +135.5 | +242.7 | 35.8 | 5 of 21 |
+| the limit's moment, the model at TAB's open | 2,220 | -0.2% (0.7%) | -3.4 | -23.4 | +20.0 | -56.7 | 144.2 | 10 of 21 |
+| the limit's moment, the model moved by TAB's move | 1,751 | +1.0% (0.7%) | +15.9 | -6.8 | +22.7 | -31.0 | 79.7 | 9 of 21 |
+
+**By three months**, corrected BSP units / realised units:
+
+| three months | TAB's open, the same races | the limit's moment, the model at TAB's open | the limit's moment, the model moved by TAB's move |
+|---|---|---|---|
+| Feb 2025 to Apr 2025 | +54.9 / +4.0 | -6.1 / -79.4 | -0.0 / -61.3 |
+| May 2025 to Jul 2025 | +34.6 / +32.2 | -1.1 / +7.2 | -2.1 / +3.4 |
+| Aug 2025 to Oct 2025 | +29.3 / +55.7 | -14.4 / -30.6 | -6.3 / +5.7 |
+| Nov 2025 to Jan 2026 | +30.6 / +29.4 | -1.9 / +35.9 | +1.7 / +7.4 |
+| Feb 2026 to Apr 2026 | +40.7 / +7.4 | +8.7 / -60.3 | +12.6 / -27.7 |
+| May 2026 to Jul 2026 | +35.2 / +47.9 | +9.7 / +45.5 | +4.1 / +20.0 |
+| Aug 2026 to Oct 2026 | +59.6 / +66.1 | +1.6 / +25.0 | +6.0 / +21.5 |
+
+**Staked to win the minimum**, $1,000 at a metropolitan meeting (Sandown on a Thursday night, The Meadows on a Saturday
+night) and $500 elsewhere, meetings from 2pm, February 2025 on, a month:
+
+| price | bets | dollars staked | expected dollars, corrected BSP | realised dollars | luck in the realised dollars (SD) |
+|---|---|---|---|---|---|
+| TAB's open, the same races | 1,924 | 30,261 | +2,487 | +1,928 | 858 |
+| the limit's moment, the model at TAB's open | 2,220 | 28,022 | -596 | -1,128 | 816 |
+| the limit's moment, the model moved by TAB's move | 1,751 | 26,139 | -90 | -417 | 797 |
+
+What it shows:
+
+- **TAB opens Victorian greyhounds at about 7:25am**, 10.6 hours before a median race, and 98% of races open before
+  midday. So almost every bet at TAB's open is placed before the minimum bet limit applies, and TAB may limit it.
+- **By midday the edge is gone.** At meetings from 2pm the same model makes +14.8% a unit at TAB's open and -0.2% at
+  TAB's midday price (+1.0% when the model is moved by TAB's own move). Four and a half hours of TAB's market takes
+  out what the model knew at 7:25am.
+- **The bets the limit already protects are too few to matter.** Only 45 of the 2,580 2-point bets opened after midday
+  at a meeting from 2pm. They made +13.0 units by the corrected BSP in 21 months.
+- **The prize at the open is real money, if TAB lets it be taken.** Staked to win $500 a bet, or $1,000 at a metro
+  meeting, the open's bets at meetings from 2pm stake about $30,000 a month. By the corrected BSP that is worth about
+  +$2,500 a month, and it realised +$1,928. At midday, the same staking is worth about nothing (-$596 and -$90 by the
+  corrected BSP).
+
+What it means: the founder is right to worry about limits. The edge exists only at TAB's opening price, about 7:25am,
+before the minimum bet limit applies, and it is gone by midday when the limit would protect a bet. The size that can
+be taken at the open is TAB's to decide, account by account. A model fitted to TAB's midday book with the morning's
+moves (as Test 84 did at 60 and 120 minutes) has not been tried. Test 84 found its second look worth about four bets
+a month, so a midday model is unlikely to be worth much. Nothing changes the card.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
