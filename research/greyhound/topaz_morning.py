@@ -36,12 +36,14 @@ warnings.filterwarnings("ignore", category=pd.errors.PerformanceWarning)   # 45-
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+import topaz_best                 # noqa: E402
 import topaz_iso                  # noqa: E402
 import topaz_round33 as R33       # noqa: E402
 import topaz_track as T           # noqa: E402
 from greyhound import betwatch as B   # noqa: E402
 
 MEL = ZoneInfo("Australia/Melbourne")
+BLEND, BEST = "corrected blend", "best model"
 
 
 def latest_prices(races: list) -> dict:
@@ -95,9 +97,31 @@ def detect(x: pd.DataFrame, races: list, now: datetime, day: str) -> list:
     out = []
     for b in morning_bets(x, latest_prices(races)):
         p = b.get("tab_now")
-        out.append({**b, "day": day, "detected_at": stamp, "tab_at_detect": p,
+        out.append({**b, "model": BLEND, "day": day, "detected_at": stamp, "tab_at_detect": p,
                     "placed": bool(p is not None and float(p) >= b["need_11"])})
     return out
+
+
+def best_detect(xb: pd.DataFrame, races: list, now: datetime, day: str) -> list:
+    """The best model's bets in the races just priced: the 2-point margin at TAB's first price, our fair price under
+    $15, the price it needs (1 / (our chance - 2 points)), the quarter-Kelly share of the bank; placed at TAB's price
+    when seen if that still needs no more than it, else missed."""
+    if xb is None or xb.empty or "best_bet" not in xb:
+        return []
+    stamp = now.astimezone(timezone.utc).isoformat(timespec="seconds")
+    lp = latest_prices(races)
+    out = []
+    for _, r in xb[xb.best_bet.values].iterrows():
+        p = float(r.p_best)
+        need = round(1 / (p - topaz_best.MARGIN), 2)
+        now_p = lp.get((r.venue, str(r.race_no), T.norm(pd.Series([r.dog_name or ""]))[0]), {})
+        tp = now_p.get("tab_now")
+        out.append({"model": BEST, "venue": r.venue, "race_no": str(r.race_no), "start": r.start,
+                    "box": str(r.card_box), "dog": r.card_dog, "fair": round(1 / p, 3), "need": need,
+                    "kelly": round(float(r.best_kelly), 4), "tab_open": float(r.price), "tab_open_at": r.tab_first_t,
+                    **now_p, "day": day, "detected_at": stamp, "tab_at_detect": tp,
+                    "placed": bool(tp is not None and float(tp) >= need)})
+    return sorted(out, key=lambda b: str(b["start"]))
 
 
 def settle(rows: list, races: list) -> list:
@@ -124,19 +148,27 @@ def settle(rows: list, races: list) -> list:
     return out
 
 
+def by_model(rows: list) -> str:
+    """Each model's summary on one line ('corrected blend' for rows from before the best model)."""
+    models = sorted({b.get("model", BLEND) for b in rows}, key=lambda m: (m != BEST, m))
+    return "; ".join(f"{m}: " + summary([b for b in rows if b.get("model", BLEND) == m]) for m in models) or "no bets"
+
+
 def summary(rows: list) -> str:
     """Counts and units only (the log is public)."""
     placed = [b for b in rows if b.get("placed")]
     st = [b for b in placed if b.get("settled")]
     units = sum(b["profit"] for b in st)
     return (f"{len(rows)} bets seen, {len(placed)} placed ({len(rows) - len(placed)} missed: TAB had cut the price "
-            f"below 1.1x by then), {len(st)} settled, {sum(b['won'] for b in st)} won, {units:+.2f} units "
+            f"below the price it needed by then), {len(st)} settled, {sum(b['won'] for b in st)} won, {units:+.2f} units "
             f"({units / len(st):+.1%} a bet)" if st else
             f"{len(rows)} bets seen, {len(placed)} placed, none settled yet")
 
 
-def watch(day: str, cards, bst, meta, until: datetime, every: float, fetch, clock=None, sleep=time.sleep) -> tuple:
-    """Poll today's races until `until`, pricing each race the first time TAB has priced its whole field."""
+def watch(day: str, cards, bst, meta, until: datetime, every: float, fetch, clock=None, sleep=time.sleep,
+          best=None) -> tuple:
+    """Poll today's races until `until`, pricing each race the first time TAB has priced its whole field: the corrected
+    blend, and the best model when `best` is (booster, meta, Betwatch history)."""
     clock = clock or (lambda: datetime.now(MEL))
     seen, bets, polls = set(), [], 0
     while clock() < until:
@@ -150,6 +182,8 @@ def watch(day: str, cards, bst, meta, until: datetime, every: float, fetch, cloc
             x = topaz_iso.at_open(facts, cards, bst, meta) if len(facts) else pd.DataFrame()
             if len(x):
                 new = detect(x, races, now, day)
+                if best is not None and best[1] is not None:
+                    new += best_detect(topaz_best.at_open(x, *best), races, now, day)
                 bets += new
                 seen |= set(x.bw_race.unique())
                 print(f"{now:%H:%M:%S} poll {polls}: {len(set(x.bw_race.unique()))} race(s) priced, {len(new)} bet(s) "
@@ -175,9 +209,22 @@ def run_watch(day: str, cards, bst, meta) -> int:
         rest = [b for b in ledger if b["day"] != d]
         ledger = rest + settle(mine, races)
     for d in sorted({b["day"] for b in ledger})[-14:]:
-        print(f"{d}: " + summary([b for b in ledger if b["day"] == d]))
+        print(f"{d}: " + by_model([b for b in ledger if b["day"] == d]))
     if ledger:
-        print("All days: " + summary(ledger))
+        print("All days: " + by_model(ledger))
+    best = None
+    bb, bm = topaz_best.load_best()
+    bdir = os.environ.get("BETWATCH_DIR", "")
+    if bm is None:
+        print("No best model yet (best_meta.json in MODEL_DIR): the corrected blend only")
+    elif not bdir or not os.path.isdir(bdir):
+        print("No Betwatch history (BETWATCH_DIR): the best model is left out")
+    else:
+        import topaz_round65 as R65
+        hist = topaz_best.runs_history(R65.tab_and_books(bdir))
+        best = (bb, bm, hist)
+        print(f"The best model: {bm.get('rounds', 0)} rounds, trained {bm.get('trained', '?')}; "
+              f"{len(hist):,} Betwatch runs of history")
     hh, mm = (int(v) for v in os.environ.get("MORNING_UNTIL", "08:20").split(":"))
     until = datetime.now(MEL).replace(hour=hh, minute=mm, second=0, microsecond=0)
     every = float(os.environ.get("MORNING_EVERY", "45") or 45)
@@ -189,8 +236,8 @@ def run_watch(day: str, cards, bst, meta) -> int:
     if datetime.now(MEL) < until and not any(b["day"] == day for b in ledger):
         print(f"\nWatching {day} until {until:%H:%M} Melbourne, every {every:.0f} seconds")
         today, polls, seen = watch(day, cards, bst, meta, until, every,
-                                   lambda: [B.compact(r) for r in B.fetch_day(session, day)])
-        print(f"{polls} polls, {len(seen)} races priced. {day}: " + summary(today))
+                                   lambda: [B.compact(r) for r in B.fetch_day(session, day)], best=best)
+        print(f"{polls} polls, {len(seen)} races priced. {day}: " + by_model(today))
         ledger += today
     lp.parent.mkdir(parents=True, exist_ok=True)
     lp.write_text(json.dumps(ledger, default=str))

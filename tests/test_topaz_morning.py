@@ -74,7 +74,7 @@ def test_settle_by_hand():
     # dog 1 won at $6.00, no scratching: +5 units; dog 2 lost: -1; the missed bet is not settled; race zz has no result
     assert got[0]["won"] and got[0]["profit"] == 5.0 and got[1]["profit"] == -1.0
     assert "settled" not in got[2] and "settled" not in got[3]
-    assert M.summary(got) == ("4 bets seen, 3 placed (1 missed: TAB had cut the price below 1.1x by then), "
+    assert M.summary(got) == ("4 bets seen, 3 placed (1 missed: TAB had cut the price below the price it needed by then), "
                               "2 settled, 1 won, +4.00 units (+200.0% a bet)")
 
 

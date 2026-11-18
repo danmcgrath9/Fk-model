@@ -201,6 +201,11 @@ def train(d, label) -> int:
     print(f"the correction: {len(oos):,} out-of-sample chances; fitted on {cmeta['races']:,} races at TAB's first price "
           f"({cmeta['first_day']} to {cmeta['last_day']}), {cmeta['rounds']} rounds ({cmeta['check']}); "
           f"{len(cmeta['cols'])} inputs")
+    try:                                    # the best model (Test 98) on the same races; never stops the blend's save
+        import topaz_best
+        print(topaz_best.train_best(R, XR, bdir, LABEL_FIT, cmeta["trained"]))
+    except Exception as e:                  # the type and the place only: the log is public
+        print(f"the best model was not trained: {type(e).__name__} in topaz_best.train_best")
     return 0
 
 
