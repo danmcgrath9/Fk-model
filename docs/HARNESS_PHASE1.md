@@ -282,3 +282,66 @@ Same answer with v2 (a = 0.00). The fit gives the model NO weight: a model built
 knows nothing the market does not, because those prices are the market's own opinion. Benter's edge came from form the
 market had not fully priced; this is the measured case for waiting on RISE's form and sectionals. Stage 1 can still be
 made closer to BSP on Betfair data, but no bet should be expected from it until stage 2 gives the model a weight.
+
+## Test 8: Betwatch's driver, trainer, class and TAB prices joined to Betfair (18 Nov 2026, bw_model.py, run 44261848718)
+
+Founder, 18 Nov: "Times and sectionals would be the most important but sure, Option 3": build now from Betwatch (driver,
+trainer, class, track condition, TAB's timestamped prices from Nov 2022) joined to Betfair's free files, and add RISE's
+times and sectionals when its reseller is available. Betwatch data is for our own use only: it lives in this
+repository's Actions cache, the logs print counts and scores, and nothing per runner is committed or uploaded.
+
+**The pull** (run 44209230835, 87 minutes): all 49 months from Nov 2022 to 17 Nov 2026, every month complete. 59,159
+races and 533,999 runners not scratched, 1,000 to 1,400 races a month; TAB price changes on 99%+ of runners in every
+month.
+
+**The join**, by Betfair market id and selection id only: 99.1% of Betwatch races carry a Betfair win market id. Of the
+57,342 Australian Betfair races inside Betwatch's dates, 51,168 joined (89.2%), 460,807 runners (88.9%). Betfair's winner
+is also first in Betwatch's results in 50,636 of 50,668 races, and Betwatch's runner number equals Betfair's TAB number
+on 100.0% of joined runners. Model races (every starter joined, all with a BSP, one winner, field 4+, from 2023): 48,630,
+with a driver on 99.9% of runners, a trainer on 99.8%, a TAB first price on every runner in 99.8% of races.
+
+**The first run is void (runs 44249952697 and 44258812960).** It closed 108% of the gap to BSP, i.e. beat BSP, and
+showed +100% ROI at TAB prices, which cannot happen without the result leaking in. It did: driver, trainer and barrier
+records were running sums taken row by row in start order, and a key that more than one runner in a race shares then
+carried that race's winner into the rows sorted after it. Two keys did this. Betwatch's `barrier` field for harness is
+not a barrier draw: it is 0 for most runners (99th percentile 20) and the same for every runner in 95.8% of races,
+which reads as a handicap in metres; its record "at this barrier" was the leak's biggest carrier and was the top input.
+And a trainer with two runners in one race. Records are now totals over races that STARTED EARLIER only
+(bw_data.prior_totals), with a test for both cases; the leak check stays in the script. The draw itself is in the model
+through the TAB number, which in Australian harness follows the barrier draw.
+
+**Holdout** (9,804 races, 1 Jan to 31 Oct 2026, never seen in fitting; train 2023 to Jun 2025, validation Jul-Dec 2025):
+
+| price | LL 1st half | LL 2nd half | KL to BSP 1st half | KL 2nd half | gap to BSP closed |
+|---|---|---|---|---|---|
+| equal chances | 2.1698 | 2.1773 | 0.6071 | 0.6182 | 0% |
+| v3, market history only (Tests 3 and 6, refitted on these races) | 2.0794 | 2.0789 | 0.5066 | 0.5082 | 15.4% |
+| **v3 + driver, trainer, class, condition (a form price, no price from the race)** | **1.9706** | **1.9739** | **0.4002** | **0.4078** | **32.9%** |
+| the same without the barrier field | 1.9723 | 1.9778 | 0.4021 | 0.4088 | 32.4% |
+| TAB's first price (median about 9 to 22 hours before the jump) | 1.7120 | 1.7027 | 0.1514 | 0.1475 | 76.2% |
+| v3 + people + TAB's first price as an input | 1.6982 | 1.6898 | 0.1399 | 0.1360 | 78.3% |
+| **stage 2: log p = 0.20 log(form price) + 1.10 log(TAB first price)** | **1.6963** | **1.6866** | **0.1343** | **0.1303** | **78.8%** |
+| TAB's last price before the start | 1.5907 | 1.5892 | 0.0303 | 0.0305 | 95.3% |
+| pre-play WAP (9,792 races) | 1.5719 | 1.5707 | 0.0104 | 0.0120 | 98.4% |
+| BSP | 1.5609 | 1.5616 | 0 | 0 | 100% |
+
+What this says:
+- Driver and trainer are real form. They double what market history alone gets (15.4% to 32.9% of the gap), in both
+  halves. The biggest inputs: track 13.6%, driver win rate 10.8%, class 9.6%, trainer win rate 9.4%, rating against
+  today's rivals 5.1%. The barrier field adds nothing (32.4% without it).
+- For the first time, stage 2 gives the form model a weight against a market price: 0.20 on the form price with 1.10
+  on TAB's first price (Test 7 gave market history 0.00 against WAP). The combined price is closer to BSP than TAB's
+  first price in both halves (KL 0.134 against 0.151; 0.130 against 0.148): the form sees some of how TAB's morning
+  price will move. It is a small step: 76.2% to 78.8%, while TAB's own price moves from 76% to 95% between the morning
+  and the jump.
+- No price here is close to BSP yet. That needs what the market has and this does not: times, sectionals, gear,
+  trials. RISE remains the gap.
+
+**Paper bets on the holdout (no money).** Backing at TAB's first price where the stage-2 chance x that price was at
+least 1.05: 307 bets in the first half +17.2%, 317 in the second +20.4%; at 1.10: +29.0% and +37.0%. Both halves are
+positive at every cut and for both TAB-open models, BUT with each group's ten biggest wins removed every row is
+-15% to -55%: a few long winners carry it, on a few hundred bets a half. That is not evidence of an edge, and TAB's
+first price here is the first Betwatch recorded (not guaranteed to be the open) at a bookmaker that limits winners.
+Backing at BSP on the form price alone loses 14% to 16% in both halves after commission. **No bet is suggested.** What
+would change that: the TAB-open result holding on more bets once sectionals are in, then paper bets recorded forward at
+real morning prices before any money.
