@@ -1,0 +1,85 @@
+{
+ "day": "Saturday",
+ "date": "21 November",
+ "footer": "Win bets.",
+ "brand": true,
+ "prices_as_at": "2026-11-18T16:13",
+ "meetings": [
+  {
+   "name": "Cranbourne",
+   "note": "",
+   "bets": [
+    {
+     "race": 2,
+     "time": "12:50PM",
+     "horse": "Bajaria",
+     "price": "$5.50",
+     "units": "2.15u"
+    },
+    {
+     "race": 4,
+     "time": "2:00PM",
+     "horse": "Col Klink",
+     "price": "$5",
+     "units": "3.29u"
+    },
+    {
+     "race": 4,
+     "time": "2:00PM",
+     "horse": "Nation State",
+     "price": "$10",
+     "units": "1.55u"
+    },
+    {
+     "race": 5,
+     "time": "2:35PM",
+     "horse": "Ardashir",
+     "price": "$5.50",
+     "units": "1.89u"
+    },
+    {
+     "race": 5,
+     "time": "2:35PM",
+     "horse": "Tishman",
+     "price": "$7",
+     "units": "1.25u"
+    },
+    {
+     "race": 7,
+     "time": "3:45PM",
+     "horse": "Job Done",
+     "price": "$6.50",
+     "units": "1.91u"
+    },
+    {
+     "race": 7,
+     "time": "3:45PM",
+     "horse": "Celsius Star",
+     "price": "$14",
+     "units": "1.37u"
+    },
+    {
+     "race": 7,
+     "time": "3:45PM",
+     "horse": "Markdel",
+     "price": "$6.50",
+     "units": "1.17u"
+    },
+    {
+     "race": 8,
+     "time": "4:25PM",
+     "horse": "Astral Flame",
+     "price": "$18",
+     "units": "0.82u"
+    },
+    {
+     "race": 9,
+     "time": "5:05PM",
+     "horse": "Inkaruna",
+     "price": "$12",
+     "units": "0.93u"
+    }
+   ]
+  }
+ ]
+}
