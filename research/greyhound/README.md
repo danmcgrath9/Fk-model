@@ -9126,6 +9126,122 @@ be taken at the open is TAB's to decide, account by account. A model fitted to T
 moves (as Test 84 did at 60 and 120 minutes) has not been tried. Test 84 found its second look worth about four bets
 a month, so a midday model is unlikely to be worth much. Nothing changes the card.
 
+## Test 93: how fast is fast enough at TAB's open (18 Nov 2026, gh topaz run 44206550780, `topaz_round75.py`)
+
+Founder: "Wait so how would we bet this at the open".
+
+Every bet so far is judged at TAB's first price. This test places the same bets later: the bet is decided at TAB's
+open and placed 0, 5, 15, 30 or 60 minutes after the race's market opened. It is taken at TAB's price at that moment,
+with TAB's deduction for the dogs scratched after it. February 2025 to October 2026, bets with a corrected BSP.
+
+Three ways of betting:
+- **Test 88's fit, placed only if it still clears.** The 2-point margin, a quarter of Kelly on one scale, the bet
+  placed only if TAB's price then still clears 2 points, at the stake for that price.
+- **Test 88's fit at whatever the price is.** The open's bets at the open's stakes, at TAB's price then.
+- **The corrected blend.** 1.1x, flat, the bet placed only if TAB's price then is still at least 1.1x the fair price.
+
+**What the edge is worth, by how late the bet goes on:**
+
+| model and rule | minutes after TAB's open | bets | of the open's bets | units staked | corrected BSP per unit staked (SE) | corrected BSP units | realised units |
+|---|---|---|---|---|---|---|---|
+| Test 88's fit, only if it still clears | **0** | 2,580 | 100% | 2,576 | **+15.1% (0.9%)** | **+388.8** | +351.4 |
+| Test 88's fit, only if it still clears | 5 | 2,190 | 85% | 2,224 | +10.8% (0.8%) | +241.2 | +236.0 |
+| Test 88's fit, only if it still clears | 15 | 1,971 | 76% | 2,039 | +7.9% (0.8%) | +161.7 | +219.0 |
+| Test 88's fit, only if it still clears | 30 | 1,923 | 75% | 1,997 | +7.6% (0.8%) | +152.5 | +199.0 |
+| Test 88's fit, only if it still clears | 60 | 1,857 | 72% | 1,952 | +7.4% (0.8%) | +144.7 | +200.4 |
+| Test 88's fit, at whatever the price is | 5 | 2,544 | 99% | 2,544 | +10.0% (0.7%) | +253.8 | +239.9 |
+| Test 88's fit, at whatever the price is | 15 | 2,545 | 99% | 2,544 | +6.8% (0.7%) | +173.7 | +202.8 |
+| Test 88's fit, at whatever the price is | 60 | 2,549 | 99% | 2,547 | +5.5% (0.6%) | +140.9 | +169.7 |
+| the corrected blend, only if it still clears | **0** | 1,347 | 100% | 1,347 | **+13.6% (1.4%)** | **+183.3** | +191.1 |
+| the corrected blend, only if it still clears | 5 | 1,112 | 83% | 1,112 | +7.5% (1.4%) | +83.1 | +97.8 |
+| the corrected blend, only if it still clears | 15 | 985 | 73% | 985 | +3.9% (1.4%) | +38.4 | +86.8 |
+| the corrected blend, only if it still clears | 60 | 919 | 68% | 919 | +2.6% (1.6%) | +23.8 | +78.4 |
+
+**What became of TAB's first price on the open's bets:**
+
+| minutes after TAB's open | bets | the same | shorter | longer | gone |
+|---|---|---|---|---|---|
+| 5 | Test 88's fit, 2 points | 76% | 17% | 6% | 1% |
+| 5 | the corrected blend, 1.1x | 73% | 18% | 7% | 1% |
+| 15 | Test 88's fit, 2 points | 61% | 28% | 9% | 1% |
+| 15 | the corrected blend, 1.1x | 58% | 30% | 10% | 1% |
+| 60 | Test 88's fit, 2 points | 51% | 37% | 11% | 1% |
+| 60 | the corrected blend, 1.1x | 50% | 37% | 12% | 1% |
+
+What it shows:
+
+- **Five minutes costs about two fifths of the money.** Test 88's fit at TAB's first price makes +388.8 units by the
+  corrected BSP. Placed five minutes later, only where it still clears, it makes +241.2 (+10.8% a unit). After 15
+  minutes it makes +161.7, and after that it barely changes (+144.7 at an hour).
+- **The corrected blend loses more, faster.** It falls from +183.3 at the open to +83.1 at five minutes and +38.4 at
+  fifteen.
+- **The prices that move first are the ones that matter.** In the first five minutes 17% of the model's bets
+  shortened, and they carried much of the value. The bets whose price stood are worth less.
+- **Realised units fall less than the corrected BSP's** (+351 at the open, +236 at five minutes, +219 at fifteen).
+  The two judges agree on the shape: most of the edge goes in the first five to fifteen minutes.
+
+What it means: the edge has to be taken in the first seconds after TAB opens. A phone alert, or a job that reads
+TAB's prices and then sends bets, gives up 40% to 60% of the money. The way to bet it is an order loaded into BetMatic
+before TAB opens (a market-open bet fires within a couple of seconds of the open). That needs each dog's minimum price
+decided before TAB's price exists, which is what Test 94 measures. Nothing changes the card.
+
+## Test 94: the order sheet with no TAB price in it (18 Nov 2026, gh topaz run 44207733242, `topaz_round76.py`)
+
+Founder: "whats our profit on back test without tabs price".
+
+An order loaded into BetMatic before TAB opens fires within a couple of seconds of the open, at TAB's first price, if
+that price is at or above the order's minimum. A sheet built from our own price alone needs nothing from TAB: each
+dog's minimum is a multiple of our own fair price, known the night before.
+
+**The test.** February 2025 to October 2026, bets with a corrected BSP, every bet at TAB's first price after its
+deduction. The sheet uses our own price, with Isolynx and without (our chance over TAB's field at its first price):
+- a bet when TAB's first price is at least 1.1x, 1.2x, 1.3x, 1.5x or 2x our fair price, our fair price $2 to $15, flat;
+- the 2-point margin on our own chance, at a quarter of Kelly on Test 88's scale.
+
+Beside them are the two models that need TAB's opening book.
+
+| rule | bets | a month | corrected BSP per unit staked (SE) | corrected BSP units | Feb 2025 to Jan 2026 | Feb 2026 on | realised units | losing months |
+|---|---|---|---|---|---|---|---|---|
+| the sheet: ours with Isolynx, 1.1x | 10,311 | 469 | -12.3% (0.4%) | -1,267.8 | -648.1 | -619.7 | -941.4 | 17 of 21 |
+| the sheet: ours with Isolynx, 1.2x | 6,949 | 316 | -10.1% (0.5%) | -702.7 | -349.0 | -353.6 | -412.2 | 14 of 21 |
+| the sheet: ours with Isolynx, 1.3x | 4,650 | 211 | -8.1% (0.7%) | -377.2 | -178.8 | -198.4 | -260.4 | 14 of 21 |
+| the sheet: ours with Isolynx, 1.5x | 2,140 | 97 | -3.5% (1.2%) | -75.8 | -31.3 | -44.6 | +36.6 | 11 of 21 |
+| the sheet: ours with Isolynx, 2x | 394 | 18 | +11.4% (3.6%) | +44.9 | +24.5 | +20.4 | -17.5 | 11 of 21 |
+| the sheet: ours with Isolynx, 2 points, quarter Kelly | 8,904 | 405 | -2.4% (0.5%) | -218.1 | -82.1 | -136.0 | -11.4 | 8 of 21 |
+| the sheet: ours without Isolynx, 1.1x | 10,532 | 479 | -14.1% (0.4%) | -1,483.5 | -762.6 | -720.8 | -1,049.8 | 17 of 21 |
+| the sheet: ours without Isolynx, 1.5x | 2,223 | 101 | -5.4% (1.1%) | -119.5 | -53.7 | -65.8 | -99.3 | 13 of 21 |
+| the sheet: ours without Isolynx, 2x | 414 | 19 | +9.4% (3.6%) | +39.0 | +21.2 | +17.8 | +49.5 | 11 of 21 |
+| the sheet: ours without Isolynx, 2 points, quarter Kelly | 9,003 | 409 | -3.9% (0.5%) | -352.6 | -149.9 | -202.6 | -271.1 | 11 of 21 |
+| **needs TAB's book: Test 88's fit, 2 points, quarter Kelly** | 2,580 | 117 | **+15.1% (0.9%)** | **+388.8** | +205.1 | +183.6 | +351.4 | 3 of 21 |
+| needs TAB's book: the corrected blend, 1.1x | 1,347 | 61 | +13.6% (1.4%) | +183.3 | +97.3 | +86.0 | +191.1 | 8 of 21 |
+
+What it shows:
+
+- **Our own price alone loses at TAB's open.** Betting every dog TAB opens at 1.1x our fair price or more makes
+  about 470 bets a month at -12.3% a unit by the corrected BSP, -1,268 units in 21 months (-941 realised). The loss
+  shrinks as the ratio rises, and only at 2x does it turn positive: 18 bets a month, +11.4% a unit (SE 3.6%) by the
+  corrected BSP, and -17.5 realised.
+- **The disagreements are mostly our mistakes.** Where our price alone says TAB is too generous, the corrected BSP
+  usually sides with TAB. On their own the two are about equally good: the live tracker's first read gave log loss
+  1.585 for ours and 1.592 for TAB's first book, 6 to 12 November. So the dogs where they disagree carry both models'
+  errors, and a sheet built on ours alone bets every one of ours.
+- **The edge comes from putting the two together.** Test 88's fit reads ours against TAB's opening book and the
+  market's history. It bets 117 dogs a month at +15.1% a unit: a quarter as many bets as the 1.1x sheet, with the
+  opposite sign. Our model is worth something only beside TAB's price.
+
+What it means: an order sheet with no TAB price in it does not work. With Test 93, the bet needs TAB's opening price
+and has to go on within seconds of it. The two ways to do that are:
+
+- **React to TAB's open within seconds.** For example, BetMatic's live odds feed (its WebSocket, which BetMatic
+  switches on by request) read by a program running from about 7am. It would price each race in a second and send
+  bets at once.
+- **A sheet that estimates the blend in advance.** It would predict where TAB will open the rest of each field and
+  set each dog's minimum TAB price from that. The dog's own TAB price is the trigger either way, so this may keep
+  most of the edge. It has not been tested. It needs the correction models saved month by month, which the walks do
+  not do yet.
+
+Nothing changes the card.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
