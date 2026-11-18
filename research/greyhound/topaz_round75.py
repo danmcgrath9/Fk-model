@@ -16,6 +16,10 @@ minutes after the race's market opened, at TAB's price then, with TAB's deductio
 
     python research/greyhound/topaz_round75.py DIR LABEL    (as round 73; the walk cache holds corr_r70 and corr_r62)
 
+Seconds as well as minutes (19 Nov 2026, founder: "We are missing a fair chunk of value I have seen from prices when
+seen"): ROUND75_TIMES takes fractions of a minute (0.25 is 15 seconds), and ROUND75_FIT names the saved fit as
+TAG:COLUMN (default r70:c_f, Test 88's fit; r79:c_v is the best model the morning program runs, Test 98).
+
 Counts, sums and rates only: no race, dog or price is printed.
 """
 import os
@@ -36,9 +40,16 @@ import topaz_round67 as R67       # noqa: E402
 import topaz_round68 as R68       # noqa: E402
 import topaz_round73 as R73       # noqa: E402
 
-TIMES = tuple(int(v) for v in os.environ.get("ROUND75_TIMES", "0,5,15,30,60").split(",") if v.strip())  # minutes
+TIMES = tuple(float(v) for v in os.environ.get("ROUND75_TIMES", "0,5,15,30,60").split(",") if v.strip())  # minutes
+FIT_TAG, FIT_COL = (os.environ.get("ROUND75_FIT", "r70:c_f").split(":") + ["c_f"])[:2]
+FIT = "the best model (Test 98)" if FIT_TAG == "r79" else "Test 88's fit" if FIT_TAG == "r70" else f"corr_{FIT_TAG}"
 MARGIN = 0.02
 RATIO = 1.1
+
+
+def when(k: float) -> str:
+    """k minutes after the open, for the tables: '15 seconds' under a minute, else minutes."""
+    return f"{k * 60:g} seconds" if 0 < k < 1 else f"{k:g}"
 
 
 def prices_at(t: pd.DataFrame, fr: pd.DataFrame, k: int) -> tuple:
@@ -66,8 +77,8 @@ def main(d, label):
         print("No Betwatch files (BETWATCH_DIR): nothing to test")
         return 1
     x, _, _, _ = R62.field(d, t0)
-    if not R67.read_saved(x, "r70", "c_f"):
-        print("Test 88's fit (corr_r70) is not in the walk cache: nothing to test")
+    if not R67.read_saved(x, FIT_TAG, FIT_COL):
+        print(f"{FIT} (corr_{FIT_TAG}, column {FIT_COL}) is not in the walk cache: nothing to test")
         return 1
     has_cb = R63.read_corrections(x)
     t = x[x.is_ran.astype(bool).values].reset_index(drop=True)
@@ -78,7 +89,7 @@ def main(d, label):
     print(f"Runners that ran at TAB's first price: {len(t):,} in {t.race_id.nunique():,} races. The corrected blend "
           f"{'is' if has_cb else 'is NOT'} in the walk cache. {(time.monotonic() - t0) / 60:.0f} minutes in.\n")
 
-    pm = R67.model_chance(t, "c_f")
+    pm = R67.model_chance(t, FIT_COL)
     paid0 = R68.paid_price(t)
     m88 = R68.margin_bets(t, pm, MARGIN)
     raw0 = R73.raw_kelly(pm, paid0)
@@ -93,14 +104,14 @@ def main(d, label):
     fates = []
     print(f"| model and rule | minutes after TAB's open | period | {head} |\n|" + "---|" * 9)
     for k in TIMES:
-        pk, dk = prices_at(t, fr, k) if k else (open_price, t.ded.fillna(0).values.astype(float))
+        pk, dk = prices_at(t, fr, k) if k > 0 else (open_price, t.ded.fillna(0).values.astype(float))
         tk = t.assign(price=pk, ded=dk)
         paidk = R68.paid_price(tk)
         uk = R73.raw_kelly(pm, paidk) / scale
         still88 = m88 & R68.margin_bets(tk, pm, MARGIN) & (uk > 0)
         blind = m88 & np.isfinite(pk) & (pk > 1)
-        rows = [("Test 88's fit, 2 points, quarter Kelly, placed only if it still clears", still88, paidk, uk, m88),
-                ("Test 88's fit, 2 points, the open's bets at whatever the price is", blind, paidk, u0, m88)]
+        rows = [(f"{FIT}, 2 points, quarter Kelly, placed only if it still clears", still88, paidk, uk, m88),
+                (f"{FIT}, 2 points, the open's bets at whatever the price is", blind, paidk, u0, m88)]
         if has_cb:
             stillcb = mcb & R63.bets(tk, "c_q", pk, RATIO)[0]
             rows.append(("the corrected blend, 1.1x, flat, placed only if it still clears", stillcb, paidk,
@@ -109,13 +120,13 @@ def main(d, label):
             for lab, lo, hi in periods:
                 per = R63.R36.in_period(t, lo, hi)
                 s = R68.staked(tq, m & per, paid, u)
-                nb = R68.staked(tq, base & per, paid0, u0 if "88" in nm else np.ones(len(t)))
+                nb = R68.staked(tq, base & per, paid0, u0 if nm.startswith(FIT) else np.ones(len(t)))
                 if not s["n"]:
-                    print(f"| {nm} | {k} | {lab} | 0 | | | | | |")
+                    print(f"| {nm} | {when(k)} | {lab} | 0 | | | | | |")
                     continue
-                print(f"| {nm} | {k} | {lab} | {s['n']:,} | {s['n'] / max(nb['n'], 1):.0%} | {s['staked']:,.0f} | "
+                print(f"| {nm} | {when(k)} | {lab} | {s['n']:,} | {s['n'] / max(nb['n'], 1):.0%} | {s['staked']:,.0f} | "
                       f"{s['per']:+.1%} ({s['se']:.1%}) | {s['units']:+,.1f} | {s['real']:+,.1f} |")
-        if k:
+        if k > 0:
             fates.append((k, what_became(open_price, pk, m88 & since),
                           what_became(open_price, pk, mcb & since) if has_cb else None))
 
@@ -123,10 +134,10 @@ def main(d, label):
     print("| minutes after TAB's open | bets | the same | shorter | longer | gone (no price, or the race started) |\n"
           "|---|---|---|---|---|---|")
     for k, a, b in fates:
-        for nm, f in (("Test 88's fit, 2 points", a), ("the corrected blend, 1.1x", b)):
+        for nm, f in ((f"{FIT}, 2 points", a), ("the corrected blend, 1.1x", b)):
             if f is None:
                 continue
-            print(f"| {k} | {nm} | {f['same']:.0%} | {f['shorter']:.0%} | {f['longer']:.0%} | {f['gone']:.0%} |")
+            print(f"| {when(k)} | {nm} | {f['same']:.0%} | {f['shorter']:.0%} | {f['longer']:.0%} | {f['gone']:.0%} |")
     print(f"\n{(time.monotonic() - t0) / 60:.0f} minutes")
     return 0
 

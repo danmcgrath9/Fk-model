@@ -32,7 +32,7 @@ import warnings
 import numpy as np
 import pandas as pd
 
-warnings.filterwarnings("ignore", category=pd.errors.PerformanceWarning)   # 45-second polls, one line each
+warnings.filterwarnings("ignore", category=pd.errors.PerformanceWarning)   # polls every few seconds, one line each
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
@@ -181,8 +181,26 @@ def health_line(h: dict) -> str:
             f"{h.get('runners', 0)} runners); any bookmaker {h.get('any_runners', 0)} runners")
 
 
+def race_opened_at(r: dict) -> datetime | None:
+    """When Betwatch first showed a TAB price in this race (its earliest TAB fluc), or None."""
+    ts = [B._ts(f[1]) for ru in r.get("runners", []) for f in (((ru.get("books") or {}).get("Tab") or {}).get("flucs")
+                                                                or []) if f and len(f) > 1]
+    ts = [t for t in ts if t is not None]
+    return min(ts) if ts else None
+
+
+def delay_line(lags: list) -> str:
+    """The delay from Betwatch's first TAB price in a race to that race's bets being ready, in seconds."""
+    if not lags:
+        return "No race priced, so no delay to measure"
+    a = np.sort(np.asarray(lags, float))
+    return (f"From Betwatch's first TAB price in a race to its bets being ready: median {np.median(a):.0f} seconds, "
+            f"9 in 10 within {np.quantile(a, 0.9):.0f}, longest {a[-1]:.0f} ({len(a)} races)")
+
+
 def watch(day: str, cards, bst, meta, until: datetime, every: float, fetch, clock=None, sleep=time.sleep,
-          best=None, late: datetime | None = None, after_open: float = 60) -> tuple:
+          best=None, late: datetime | None = None, after_open: float = 60, fast: float | None = None,
+          fast_for: float = 10, timer=time.monotonic) -> tuple:
     """Poll today's races until `until`, pricing each race the first time TAB has priced its whole field: the corrected
     blend, and the best model when `best` is (booster, meta, Betwatch history).
 
@@ -190,10 +208,17 @@ def watch(day: str, cards, bst, meta, until: datetime, every: float, fetch, cloc
     runners, against 338 of 338 by 8am the day before). So when `late` is later than `until`, the watch runs past
     `until`: to `late` until TAB has opened (priced half the day's races), else to `after_open` minutes after the poll
     that first saw it open, never past `late`. (bets, polls, races priced, the last poll's feed_health with
-    'first_open', the poll time that first saw TAB open)."""
+    'first_open', the poll time that first saw TAB open, and 'lags', 'fetch_s', 'price_s': the seconds from each
+    race's first TAB price to its bets being ready, and each poll's fetching and pricing time).
+
+    The edge goes in the first minutes after TAB's open (Test 95), so the polls run start to start, `every` seconds
+    apart (19 Nov: a 45-second wait AFTER each poll's fetch and pricing made 50 to 62 seconds), and `fast` seconds
+    apart for `fast_for` minutes after a poll that saw a race newly priced by TAB or newly full, while any race is
+    still to price."""
     clock = clock or (lambda: datetime.now(MEL))
     seen, bets, polls = set(), [], 0
     first_open, shown, h = None, None, {}
+    moved, lags, fetch_s, price_s = None, [], [], []
 
     def stop_at() -> datetime:
         if late is None or late <= until:
@@ -203,19 +228,24 @@ def watch(day: str, cards, bst, meta, until: datetime, every: float, fetch, cloc
         return min(late, max(until, first_open + timedelta(minutes=after_open)))
 
     while clock() < stop_at():
+        t_start = timer()
         races = fetch()
         polls += 1
         now = clock()
+        fetch_s.append(timer() - t_start)
         h = feed_health(races)
         if first_open is None and h["races"] and 2 * h["tab_races"] >= h["races"]:
             first_open = now                  # TAB's open: half the day's races priced (19 Nov: 3 stray runners at 6:25)
         full = full_fields(races)
         if (h["tab_races"], len(full)) != shown:
+            if shown is not None or h["tab_races"]:
+                moved = now                   # a race newly priced by TAB, or newly full: TAB is opening races
             shown = (h["tab_races"], len(full))
             print(f"{now:%H:%M:%S} poll {polls}: {health_line(h)}; {len(full)} fields full")
         full -= seen
         facts = T.open_field(races)
         if len(facts) and full:
+            t_price = timer()
             facts = facts[facts.bw_race.isin(full)]
             x = topaz_iso.at_open(facts, cards, bst, meta) if len(facts) else pd.DataFrame()
             if len(x):
@@ -223,11 +253,20 @@ def watch(day: str, cards, bst, meta, until: datetime, every: float, fetch, cloc
                 if best is not None and best[1] is not None:
                     new += best_detect(topaz_best.at_open(x, *best), races, now, day)
                 bets += new
-                seen |= set(x.bw_race.unique())
+                done = set(x.bw_race.unique())
+                took = timer() - t_price
+                price_s.append(took)
+                for r in races:
+                    o = race_opened_at(r) if r.get("id") in done else None
+                    if o is not None:
+                        lags.append((now - o).total_seconds() + took)
+                seen |= done
                 print(f"{now:%H:%M:%S} poll {polls}: {len(set(x.bw_race.unique()))} race(s) priced, {len(new)} bet(s) "
                       f"({sum(b['placed'] for b in new)} still at the price); {len(seen)} races priced today")
-        sleep(every)
-    return bets, polls, seen, {**h, "first_open": first_open}
+        quick = (fast is not None and moved is not None and now < moved + timedelta(minutes=fast_for)
+                 and len(seen) < h.get("races", 0))
+        sleep(max(1.0, (fast if quick else every) - (timer() - t_start)))
+    return bets, polls, seen, {**h, "first_open": first_open, "lags": lags, "fetch_s": fetch_s, "price_s": price_s}
 
 
 def ledger_path() -> Path:
@@ -266,24 +305,30 @@ def run_watch(day: str, cards, bst, meta) -> int:
               f"{len(hist):,} Betwatch runs of history")
     hh, mm = (int(v) for v in os.environ.get("MORNING_UNTIL", "08:20").split(":"))
     until = datetime.now(MEL).replace(hour=hh, minute=mm, second=0, microsecond=0)
-    every = float(os.environ.get("MORNING_EVERY", "45") or 45)
+    every = float(os.environ.get("MORNING_EVERY", "30") or 30)
+    fast = float(os.environ.get("MORNING_FAST", "10") or 10)
     today = []
     fh, fm = (int(v) for v in os.environ.get("MORNING_FROM", "06:45").split(":"))
     start = datetime.now(MEL).replace(hour=fh, minute=fm, second=0, microsecond=0)
     if datetime.now(MEL) < start and not any(b["day"] == day for b in ledger):
         time.sleep((start - datetime.now(MEL)).total_seconds())     # a start in standard time comes an hour early
     if datetime.now(MEL) < until and not any(b["day"] == day for b in ledger):
-        print(f"\nWatching {day} until {until:%H:%M} Melbourne, every {every:.0f} seconds")
+        print(f"\nWatching {day} until {until:%H:%M} Melbourne, every {every:.0f} seconds, and every {fast:.0f} "
+              "while TAB is opening races")
         lh, lm = (int(v) for v in os.environ.get("MORNING_LATE", "09:50").split(":"))
         late = datetime.now(MEL).replace(hour=lh, minute=lm, second=0, microsecond=0)
         if late > until:
             print(f"If TAB has not opened by then, watching on to {late:%H:%M} at the latest")
         today, polls, seen, h = watch(day, cards, bst, meta, until, every,
-                                      lambda: [B.compact(r) for r in B.fetch_day(session, day)], best=best, late=late)
+                                      lambda: [B.compact(r) for r in B.fetch_day(session, day)], best=best, late=late,
+                                      fast=fast)
         print(f"{polls} polls, {len(seen)} races priced. {day}: " + by_model(today))
         fo = h.get("first_open")
         print(f"At the last poll: {health_line(h)}. TAB open (half the races priced) first seen: "
               + (f"{fo:%H:%M}" if fo else "never") + ".")
+        print(delay_line(h.get("lags", [])) + ". A poll's fetch took a median "
+              f"{np.median(h['fetch_s']) if h.get('fetch_s') else 0:.1f} seconds; pricing the races it found full, a "
+              f"median {np.median(h['price_s']) if h.get('price_s') else 0:.1f}.")
         if not h.get("tab_runners"):
             print("NO TAB PRICE: Betwatch showed none for today's races all morning, so nothing could be priced. The "
                   "feed, or TAB, was late; this is not a day without a bet.")
