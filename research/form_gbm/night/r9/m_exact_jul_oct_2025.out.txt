@@ -1,0 +1,298 @@
+Victoria, 2025-07-01 to 2026-11-16: 1266 day races usable at 9am; exact late scratchings in them 180 in 150 races
+
+### FITTED: 0.28 ours + 0.88 median - 0.22 move
+
+| 9am price / fair | bookie bets | runners | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov | no late scratching in the race | a late scratching |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0.95-1.00x | 1623 | 504 | 124 | 131 | $1,047,633 | $-63,831 | -6.1% | 2 of 4 | 1623 bets -6% | 0 bets +0% | 1499 bets -5% | 124 bets -23% |
+| 1.00-1.03x | 399 | 156 | 47 | 43 | $264,901 | $+78,699 | +29.7% | 4 of 4 | 399 bets +30% | 0 bets +0% | 334 bets +31% | 65 bets +22% |
+| 1.03-1.05x | 153 | 59 | 18 | 14 | $81,715 | $+31,413 | +38.4% | 3 of 4 | 153 bets +38% | 0 bets +0% | 132 bets +57% | 21 bets -89% |
+| 1.05-1.08x | 124 | 50 | 13 | 13 | $70,604 | $+3,703 | +5.2% | 2 of 4 | 124 bets +5% | 0 bets +0% | 117 bets +10% | 7 bets -100% |
+| 1.08-1.12x | 45 | 19 | 5 | 4 | $21,355 | $-291 | -1.4% | 2 of 4 | 45 bets -1% | 0 bets +0% | 40 bets -7% | 5 bets +132% |
+| 1.12-1.20x | 26 | 9 | 4 | 2 | $13,376 | $+23,166 | +173.2% | 2 of 4 | 26 bets +173% | 0 bets +0% | 26 bets +173% | 0 bets +0% |
+| 1.20-1.35x | 7 | 1 | 0 | 0 | $1,944 | $-1,944 | -100.0% | 0 of 1 | 7 bets -100% | 0 bets +0% | 7 bets -100% | 0 bets +0% |
+| 1.35x and over | 0 | 0 | 0 | 0 | $0 | $+0 | +0.0% | 0 of 0 | 0 bets +0% | 0 bets +0% | 0 bets +0% | 0 bets +0% |
+| **1.05x and over** | 202 | 68 | 20 | 17 | $107,280 | $+24,634 | +23.0% | 2 of 4 | 202 bets +23% | 0 bets +0% | 190 bets +25% | 12 bets -45% |
+| **1.08x and over** | 78 | 27 | 8 | 6 | $36,676 | $+20,930 | +57.1% | 4 of 4 | 78 bets +57% | 0 bets +0% | 73 bets +55% | 5 bets +132% |
+
+1.05x and over, by how many majors are at the take price: one: 27 bets $+2,455 (+20%); two or three: 39 bets $+9,287 (+48%); four or more: 136 bets $+12,891 (+17%)
+1.05x and over, by fair price: $1.6-$3: 72 bets $+2,970 (+5%); $3-$5: 51 bets $+10,580 (+41%); $5-$8: 51 bets $+9,364 (+64%); $8-$15.01: 28 bets $+1,721 (+47%)
+1.05x and over, by month: 25-07 43 $+20.9k; 25-08 69 $+12.4k; 25-09 54 $-2.7k; 25-10 36 $-5.9k
+
+### LIVE: 0.20 ours + 1.00 TAB
+
+| 9am price / fair | bookie bets | runners | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov | no late scratching in the race | a late scratching |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0.95-1.00x | 1214 | 396 | 103 | 112 | $907,697 | $-136,998 | -15.1% | 1 of 4 | 1214 bets -15% | 0 bets +0% | 1058 bets -12% | 156 bets -33% |
+| 1.00-1.03x | 252 | 99 | 22 | 28 | $192,988 | $-7,268 | -3.8% | 3 of 4 | 252 bets -4% | 0 bets +0% | 215 bets -12% | 37 bets +43% |
+| 1.03-1.05x | 90 | 36 | 12 | 10 | $71,416 | $+36,444 | +51.0% | 3 of 4 | 90 bets +51% | 0 bets +0% | 78 bets +63% | 12 bets -100% |
+| 1.05-1.08x | 67 | 31 | 11 | 9 | $48,339 | $+21,974 | +45.5% | 3 of 4 | 67 bets +45% | 0 bets +0% | 56 bets +43% | 11 bets +64% |
+| 1.08-1.12x | 17 | 9 | 2 | 2 | $10,053 | $+3,458 | +34.4% | 2 of 4 | 17 bets +34% | 0 bets +0% | 16 bets +38% | 1 bets -100% |
+| 1.12-1.20x | 11 | 6 | 1 | 1 | $3,245 | $-620 | -19.1% | 1 of 4 | 11 bets -19% | 0 bets +0% | 9 bets +7% | 2 bets -100% |
+| 1.20-1.35x | 2 | 1 | 1 | 0 | $235 | $+1,890 | +803.2% | 1 of 1 | 2 bets +803% | 0 bets +0% | 0 bets +0% | 2 bets +803% |
+| 1.35x and over | 0 | 0 | 0 | 0 | $0 | $+0 | +0.0% | 0 of 0 | 0 bets +0% | 0 bets +0% | 0 bets +0% | 0 bets +0% |
+| **1.05x and over** | 97 | 43 | 12 | 11 | $61,873 | $+26,702 | +43.2% | 3 of 4 | 97 bets +43% | 0 bets +0% | 81 bets +40% | 16 bets +63% |
+| **1.08x and over** | 30 | 16 | 4 | 4 | $13,534 | $+4,727 | +34.9% | 1 of 4 | 30 bets +35% | 0 bets +0% | 25 bets +32% | 5 bets +61% |
+
+1.05x and over, by how many majors are at the take price: one: 6 bets $-398 (-10%); two or three: 72 bets $+7,620 (+19%); four or more: 19 bets $+19,480 (+116%)
+1.05x and over, by fair price: $1.6-$3: 35 bets $+11,188 (+27%); $3-$5: 15 bets $+3,969 (+52%); $5-$8: 37 bets $+11,242 (+99%); $8-$15.01: 10 bets $+303 (+16%)
+1.05x and over, by month: 25-07 21 $+7.3k; 25-08 35 $+11.4k; 25-09 20 $-8.6k; 25-10 21 $+16.6k
+
+### MARKET ONLY: 1.19 median
+
+| 9am price / fair | bookie bets | runners | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov | no late scratching in the race | a late scratching |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0.95-1.00x | 456 | 178 | 63 | 60 | $503,117 | $-2,413 | -0.5% | 2 of 4 | 456 bets -0% | 0 bets +0% | 372 bets +0% | 84 bets -4% |
+| 1.00-1.03x | 50 | 26 | 7 | 8 | $45,602 | $-4,382 | -9.6% | 1 of 4 | 50 bets -10% | 0 bets +0% | 46 bets -12% | 4 bets +93% |
+| 1.03-1.05x | 3 | 2 | 0 | 1 | $3,833 | $-3,833 | -100.0% | 0 of 2 | 3 bets -100% | 0 bets +0% | 3 bets -100% | 0 bets +0% |
+| 1.05-1.08x | 3 | 1 | 1 | 0 | $3,158 | $+6,000 | +190.0% | 1 of 1 | 3 bets +190% | 0 bets +0% | 3 bets +190% | 0 bets +0% |
+| 1.08-1.12x | 0 | 0 | 0 | 0 | $0 | $+0 | +0.0% | 0 of 0 | 0 bets +0% | 0 bets +0% | 0 bets +0% | 0 bets +0% |
+| 1.12-1.20x | 1 | 1 | 0 | 0 | $476 | $-476 | -100.0% | 0 of 1 | 1 bets -100% | 0 bets +0% | 1 bets -100% | 0 bets +0% |
+| 1.20-1.35x | 0 | 0 | 0 | 0 | $0 | $+0 | +0.0% | 0 of 0 | 0 bets +0% | 0 bets +0% | 0 bets +0% | 0 bets +0% |
+| 1.35x and over | 0 | 0 | 0 | 0 | $0 | $+0 | +0.0% | 0 of 0 | 0 bets +0% | 0 bets +0% | 0 bets +0% | 0 bets +0% |
+| **1.05x and over** | 4 | 2 | 1 | 1 | $3,634 | $+5,524 | +152.0% | 1 of 1 | 4 bets +152% | 0 bets +0% | 4 bets +152% | 0 bets +0% |
+| **1.08x and over** | 1 | 1 | 0 | 0 | $476 | $-476 | -100.0% | 0 of 1 | 1 bets -100% | 0 bets +0% | 1 bets -100% | 0 bets +0% |
+
+1.05x and over, by how many majors are at the take price: one: 1 bets $-476 (-100%); two or three: 3 bets $+6,000 (+190%); four or more: 0 bets $+0 (+0%)
+1.05x and over, by fair price: $1.6-$3: 4 bets $+5,524 (+152%); $3-$5: 0 bets $+0 (+0%); $5-$8: 0 bets $+0 (+0%); $8-$15.01: 0 bets $+0 (+0%)
+1.05x and over, by month: 25-10 4 $+5.5k
+
+### LIVE AS BUILT: 0.20 ours + 1.00 best major price
+
+| 9am price / fair | bookie bets | runners | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov | no late scratching in the race | a late scratching |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0.95-1.00x | 1333 | 368 | 117 | 121 | $1,113,612 | $-71,504 | -6.4% | 2 of 4 | 1333 bets -6% | 0 bets +0% | 1172 bets -3% | 161 bets -37% |
+| 1.00-1.03x | 212 | 69 | 22 | 26 | $229,965 | $-32,223 | -14.0% | 2 of 4 | 212 bets -14% | 0 bets +0% | 179 bets -18% | 33 bets +6% |
+| 1.03-1.05x | 55 | 19 | 9 | 7 | $56,531 | $+36,739 | +65.0% | 3 of 4 | 55 bets +65% | 0 bets +0% | 49 bets +72% | 6 bets +10% |
+| 1.05-1.08x | 37 | 12 | 4 | 5 | $51,132 | $+4,470 | +8.7% | 2 of 4 | 37 bets +9% | 0 bets +0% | 27 bets -16% | 10 bets +117% |
+| 1.08-1.12x | 20 | 6 | 4 | 2 | $19,015 | $+24,147 | +127.0% | 2 of 3 | 20 bets +127% | 0 bets +0% | 20 bets +127% | 0 bets +0% |
+| 1.12-1.20x | 3 | 1 | 1 | 0 | $3,158 | $+6,000 | +190.0% | 1 of 1 | 3 bets +190% | 0 bets +0% | 3 bets +190% | 0 bets +0% |
+| 1.20-1.35x | 0 | 0 | 0 | 0 | $0 | $+0 | +0.0% | 0 of 0 | 0 bets +0% | 0 bets +0% | 0 bets +0% | 0 bets +0% |
+| 1.35x and over | 0 | 0 | 0 | 0 | $0 | $+0 | +0.0% | 0 of 0 | 0 bets +0% | 0 bets +0% | 0 bets +0% | 0 bets +0% |
+| **1.05x and over** | 60 | 16 | 7 | 6 | $73,305 | $+34,617 | +47.2% | 2 of 4 | 60 bets +47% | 0 bets +0% | 50 bets +37% | 10 bets +117% |
+| **1.08x and over** | 23 | 6 | 4 | 2 | $22,173 | $+30,147 | +136.0% | 2 of 3 | 23 bets +136% | 0 bets +0% | 23 bets +136% | 0 bets +0% |
+
+1.05x and over, by how many majors are at the take price: one: 4 bets $-2,880 (-100%); two or three: 11 bets $+9,733 (+85%); four or more: 45 bets $+27,764 (+47%)
+1.05x and over, by fair price: $1.6-$3: 45 bets $+18,430 (+30%); $3-$5: 15 bets $+16,187 (+147%); $5-$8: 0 bets $+0 (+0%); $8-$15.01: 0 bets $+0 (+0%)
+1.05x and over, by month: 25-07 21 $+41.0k; 25-08 1 $-0.9k; 25-09 13 $-19.7k; 25-10 25 $+14.1k
+
+### LIVE WEIGHTS ON THE MEDIAN: 0.20 ours + 1.00 median
+
+| 9am price / fair | bookie bets | runners | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov | no late scratching in the race | a late scratching |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0.95-1.00x | 1070 | 358 | 108 | 111 | $926,510 | $-97,429 | -10.5% | 1 of 4 | 1070 bets -11% | 0 bets +0% | 947 bets -7% | 123 bets -43% |
+| 1.00-1.03x | 161 | 67 | 25 | 22 | $169,149 | $+55,819 | +33.0% | 3 of 4 | 161 bets +33% | 0 bets +0% | 121 bets +34% | 40 bets +29% |
+| 1.03-1.05x | 48 | 18 | 6 | 7 | $56,358 | $+16,750 | +29.7% | 3 of 4 | 48 bets +30% | 0 bets +0% | 42 bets +33% | 6 bets +8% |
+| 1.05-1.08x | 32 | 15 | 7 | 4 | $22,534 | $+14,217 | +63.1% | 3 of 4 | 32 bets +63% | 0 bets +0% | 30 bets +75% | 2 bets -100% |
+| 1.08-1.12x | 8 | 4 | 3 | 1 | $6,675 | $+7,785 | +116.6% | 2 of 3 | 8 bets +117% | 0 bets +0% | 6 bets +92% | 2 bets +803% |
+| 1.12-1.20x | 1 | 1 | 0 | 0 | $476 | $-476 | -100.0% | 0 of 1 | 1 bets -100% | 0 bets +0% | 1 bets -100% | 0 bets +0% |
+| 1.20-1.35x | 0 | 0 | 0 | 0 | $0 | $+0 | +0.0% | 0 of 0 | 0 bets +0% | 0 bets +0% | 0 bets +0% | 0 bets +0% |
+| 1.35x and over | 0 | 0 | 0 | 0 | $0 | $+0 | +0.0% | 0 of 0 | 0 bets +0% | 0 bets +0% | 0 bets +0% | 0 bets +0% |
+| **1.05x and over** | 41 | 17 | 8 | 5 | $29,685 | $+21,526 | +72.5% | 2 of 4 | 41 bets +73% | 0 bets +0% | 37 bets +76% | 4 bets +24% |
+| **1.08x and over** | 9 | 5 | 3 | 2 | $7,151 | $+7,309 | +102.2% | 2 of 3 | 9 bets +102% | 0 bets +0% | 7 bets +78% | 2 bets +803% |
+
+1.05x and over, by how many majors are at the take price: one: 4 bets $+291 (+9%); two or three: 24 bets $+13,755 (+112%); four or more: 13 bets $+7,480 (+53%)
+1.05x and over, by fair price: $1.6-$3: 19 bets $+10,337 (+49%); $3-$5: 12 bets $+7,061 (+122%); $5-$8: 8 bets $+2,238 (+90%); $8-$15.01: 2 bets $+1,890 (+803%)
+1.05x and over, by month: 25-07 9 $+11.7k; 25-08 6 $-3.3k; 25-09 13 $-1.6k; 25-10 13 $+14.7k
+
+### MORE OF OURS: 0.40 ours + 0.80 median - 0.22 move
+
+| 9am price / fair | bookie bets | runners | winners | expected | staked | profit | ROI | months up | Nov-Jun | Jul-Nov | no late scratching in the race | a late scratching |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0.95-1.00x | 2452 | 733 | 170 | 190 | $1,401,685 | $-142,496 | -10.2% | 1 of 4 | 2452 bets -10% | 0 bets +0% | 2164 bets -10% | 288 bets -13% |
+| 1.00-1.03x | 885 | 297 | 80 | 80 | $505,795 | $-2,246 | -0.4% | 2 of 4 | 885 bets -0% | 0 bets +0% | 796 bets +0% | 89 bets -5% |
+| 1.03-1.05x | 348 | 133 | 37 | 39 | $207,201 | $-18,543 | -8.9% | 1 of 4 | 348 bets -9% | 0 bets +0% | 324 bets -5% | 24 bets -73% |
+| 1.05-1.08x | 317 | 126 | 34 | 34 | $185,512 | $+214 | +0.1% | 2 of 4 | 317 bets +0% | 0 bets +0% | 274 bets +6% | 43 bets -37% |
+| 1.08-1.12x | 300 | 101 | 28 | 26 | $166,876 | $+95,615 | +57.3% | 3 of 4 | 300 bets +57% | 0 bets +0% | 255 bets +68% | 45 bets +16% |
+| 1.12-1.20x | 168 | 54 | 13 | 13 | $91,688 | $-9,316 | -10.2% | 3 of 4 | 168 bets -10% | 0 bets +0% | 163 bets -11% | 5 bets +6% |
+| 1.20-1.35x | 44 | 13 | 5 | 3 | $19,444 | $+27,431 | +141.1% | 3 of 4 | 44 bets +141% | 0 bets +0% | 44 bets +141% | 0 bets +0% |
+| 1.35x and over | 0 | 0 | 0 | 0 | $0 | $+0 | +0.0% | 0 of 0 | 0 bets +0% | 0 bets +0% | 0 bets +0% | 0 bets +0% |
+| **1.05x and over** | 829 | 215 | 60 | 55 | $463,521 | $+113,944 | +24.6% | 3 of 4 | 829 bets +25% | 0 bets +0% | 736 bets +29% | 93 bets -7% |
+| **1.08x and over** | 512 | 138 | 39 | 34 | $278,009 | $+113,730 | +40.9% | 3 of 4 | 512 bets +41% | 0 bets +0% | 462 bets +45% | 50 bets +15% |
+
+1.05x and over, by how many majors are at the take price: one: 47 bets $-2,324 (-11%); two or three: 153 bets $+23,534 (+37%); four or more: 629 bets $+92,735 (+25%)
+1.05x and over, by fair price: $1.6-$3: 294 bets $+55,171 (+20%); $3-$5: 255 bets $+44,191 (+38%); $5-$8: 177 bets $+4,772 (+9%); $8-$15.01: 103 bets $+9,810 (+75%)
+1.05x and over, by month: 25-07 225 $+62.0k; 25-08 235 $+26.2k; 25-09 178 $+40.2k; 25-10 191 $-14.4k
+
+## Is the 9am book whole?
+
+usable races: median book 1.283; 5th-95th 1.220-1.308; races with a horse scratched in the 2 h before 9am: 730, their median book 1.286
+
+### FITTED: 0.28 ours + 0.88 median - 0.22 move, 1.05x and over
+
+| 9am book (sum of 1/median) | bets |
+|---|---|
+| 0.00-1.00 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.00-1.08 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.08-1.14 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.14-1.20 | 3 bets on 2 runners, $+1,556 on $1,983 (+78%) |
+| 1.20-9.00 | 199 bets on 66 runners, $+23,078 on $105,297 (+22%) |
+
+| last scratching before 9am in the race | bets |
+|---|---|
+| none before 9am | 23 bets on 8 runners, $-8,350 on $8,350 (-100%) |
+| within 30 min of 9am | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 30-120 min before | 112 bets on 38 runners, $+16,422 on $63,891 (+26%) |
+| more than 2 h before | 67 bets on 22 runners, $+16,561 on $35,039 (+47%) |
+
+whole books only (1.08 and over): 202 bets on 68 runners, $+24,634 on $107,280 (+23%); months up 2 of 4; Nov-Jun 202 bets on 68 runners, $+24,634 on $107,280 (+23%); Jul-Nov 0 bets on 0 runners, $+0 on $0 (+0%)
+whole books only, by margin: 1.05-1.08x: 124 bets +5%; 1.08-1.12x: 45 bets -1%; 1.12-1.20x: 26 bets +173%; 1.20-9.00x: 7 bets -100%
+
+### LIVE: 0.20 ours + 1.00 TAB, 1.05x and over
+
+| 9am book (sum of 1/median) | bets |
+|---|---|
+| 0.00-1.00 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.00-1.08 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.08-1.14 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.14-1.20 | 4 bets on 3 runners, $+825 on $2,713 (+30%) |
+| 1.20-9.00 | 93 bets on 40 runners, $+25,876 on $59,160 (+44%) |
+
+| last scratching before 9am in the race | bets |
+|---|---|
+| none before 9am | 13 bets on 4 runners, $+11,558 on $10,044 (+115%) |
+| within 30 min of 9am | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 30-120 min before | 53 bets on 24 runners, $+8,620 on $28,175 (+31%) |
+| more than 2 h before | 31 bets on 15 runners, $+6,523 on $23,654 (+28%) |
+
+whole books only (1.08 and over): 97 bets on 43 runners, $+26,702 on $61,873 (+43%); months up 3 of 4; Nov-Jun 97 bets on 43 runners, $+26,702 on $61,873 (+43%); Jul-Nov 0 bets on 0 runners, $+0 on $0 (+0%)
+whole books only, by margin: 1.05-1.08x: 67 bets +45%; 1.08-1.12x: 17 bets +34%; 1.12-1.20x: 11 bets -19%; 1.20-9.00x: 2 bets +803%
+
+### MARKET ONLY: 1.19 median, 1.05x and over
+
+| 9am book (sum of 1/median) | bets |
+|---|---|
+| 0.00-1.00 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.00-1.08 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.08-1.14 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.14-1.20 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.20-9.00 | 4 bets on 2 runners, $+5,524 on $3,634 (+152%) |
+
+| last scratching before 9am in the race | bets |
+|---|---|
+| none before 9am | 3 bets on 1 runners, $+6,000 on $3,158 (+190%) |
+| within 30 min of 9am | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 30-120 min before | 1 bets on 1 runners, $-476 on $476 (-100%) |
+| more than 2 h before | 0 bets on 0 runners, $+0 on $0 (+0%) |
+
+whole books only (1.08 and over): 4 bets on 2 runners, $+5,524 on $3,634 (+152%); months up 1 of 1; Nov-Jun 4 bets on 2 runners, $+5,524 on $3,634 (+152%); Jul-Nov 0 bets on 0 runners, $+0 on $0 (+0%)
+whole books only, by margin: 1.05-1.08x: 3 bets +190%; 1.08-1.12x: 0 bets +0%; 1.12-1.20x: 1 bets -100%; 1.20-9.00x: 0 bets +0%
+
+### LIVE AS BUILT: 0.20 ours + 1.00 best major price, 1.05x and over
+
+| 9am book (sum of 1/median) | bets |
+|---|---|
+| 0.00-1.00 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.00-1.08 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.08-1.14 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.14-1.20 | 7 bets on 1 runners, $+14,000 on $11,138 (+126%) |
+| 1.20-9.00 | 53 bets on 15 runners, $+20,617 on $62,167 (+33%) |
+
+| last scratching before 9am in the race | bets |
+|---|---|
+| none before 9am | 11 bets on 2 runners, $+6,381 on $15,221 (+42%) |
+| within 30 min of 9am | 1 bets on 1 runners, $-435 on $435 (-100%) |
+| 30-120 min before | 23 bets on 7 runners, $+6,112 on $29,081 (+21%) |
+| more than 2 h before | 25 bets on 6 runners, $+22,559 on $28,568 (+79%) |
+
+whole books only (1.08 and over): 60 bets on 16 runners, $+34,617 on $73,305 (+47%); months up 2 of 4; Nov-Jun 60 bets on 16 runners, $+34,617 on $73,305 (+47%); Jul-Nov 0 bets on 0 runners, $+0 on $0 (+0%)
+whole books only, by margin: 1.05-1.08x: 37 bets +9%; 1.08-1.12x: 20 bets +127%; 1.12-1.20x: 3 bets +190%; 1.20-9.00x: 0 bets +0%
+
+### LIVE WEIGHTS ON THE MEDIAN: 0.20 ours + 1.00 median, 1.05x and over
+
+| 9am book (sum of 1/median) | bets |
+|---|---|
+| 0.00-1.00 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.00-1.08 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.08-1.14 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.14-1.20 | 1 bets on 1 runners, $+2,000 on $1,538 (+130%) |
+| 1.20-9.00 | 40 bets on 16 runners, $+19,526 on $28,146 (+69%) |
+
+| last scratching before 9am in the race | bets |
+|---|---|
+| none before 9am | 7 bets on 1 runners, $+14,000 on $7,602 (+184%) |
+| within 30 min of 9am | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 30-120 min before | 18 bets on 9 runners, $+6,370 on $8,585 (+74%) |
+| more than 2 h before | 16 bets on 7 runners, $+1,156 on $13,498 (+9%) |
+
+whole books only (1.08 and over): 41 bets on 17 runners, $+21,526 on $29,685 (+73%); months up 2 of 4; Nov-Jun 41 bets on 17 runners, $+21,526 on $29,685 (+73%); Jul-Nov 0 bets on 0 runners, $+0 on $0 (+0%)
+whole books only, by margin: 1.05-1.08x: 32 bets +63%; 1.08-1.12x: 8 bets +117%; 1.12-1.20x: 1 bets -100%; 1.20-9.00x: 0 bets +0%
+
+### MORE OF OURS: 0.40 ours + 0.80 median - 0.22 move, 1.05x and over
+
+| 9am book (sum of 1/median) | bets |
+|---|---|
+| 0.00-1.00 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.00-1.08 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.08-1.14 | 0 bets on 0 runners, $+0 on $0 (+0%) |
+| 1.14-1.20 | 14 bets on 5 runners, $+8,886 on $16,252 (+55%) |
+| 1.20-9.00 | 815 bets on 210 runners, $+105,058 on $447,269 (+23%) |
+
+| last scratching before 9am in the race | bets |
+|---|---|
+| none before 9am | 104 bets on 25 runners, $+8,514 on $58,661 (+15%) |
+| within 30 min of 9am | 9 bets on 3 runners, $+13,530 on $5,324 (+254%) |
+| 30-120 min before | 452 bets on 120 runners, $+46,794 on $250,770 (+19%) |
+| more than 2 h before | 264 bets on 67 runners, $+45,106 on $148,766 (+30%) |
+
+whole books only (1.08 and over): 829 bets on 215 runners, $+113,944 on $463,521 (+25%); months up 3 of 4; Nov-Jun 829 bets on 215 runners, $+113,944 on $463,521 (+25%); Jul-Nov 0 bets on 0 runners, $+0 on $0 (+0%)
+whole books only, by margin: 1.05-1.08x: 317 bets +0%; 1.08-1.12x: 300 bets +57%; 1.12-1.20x: 168 bets -10%; 1.20-9.00x: 44 bets +141%
+
+## The short books: 0 races. First eight, every runner the pull holds:
+
+## How sure? 1.05x and over, whole books (1.20 and over), race days resampled 4,000 times
+
+| model | bets | runners | staked | profit | ROI | 90% range of the ROI | chance it is above zero |
+|---|---|---|---|---|---|---|---|
+| FITTED: 0.28 ours + 0.88 median - 0.22 move | 199 | 66 | $105,297 | $+23,078 | +21.9% | -25% to +72% | 77% |
+| LIVE: 0.20 ours + 1.00 TAB | 93 | 40 | $59,160 | $+25,876 | +43.7% | -16% to +98% | 89% |
+| MARKET ONLY: 1.19 median | 4 | 2 | $3,634 | $+5,524 | +152.0% | -100% to +190% | 63% |
+| LIVE AS BUILT: 0.20 ours + 1.00 best major price | 53 | 15 | $62,167 | $+20,617 | +33.2% | -45% to +116% | 76% |
+| LIVE WEIGHTS ON THE MEDIAN: 0.20 ours + 1.00 median | 40 | 16 | $28,146 | $+19,526 | +69.4% | -42% to +168% | 86% |
+| MORE OF OURS: 0.40 ours + 0.80 median - 0.22 move | 815 | 210 | $447,269 | $+105,058 | +23.5% | +1% to +47% | 95% |
+
+## Grades, whole books: on the live list, on the fitted list, or both
+
+| | bookie bets | runners | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| A: on both lists (bet at the fitted list's prices) | 30 | 14 | 3 | $20,872 | $-12,945 | -62.0% | 1 of 4 |
+| B1: on the live list only | 62 | 26 | 8 | $37,886 | $+33,567 | +88.6% | 3 of 4 |
+| B2: on the fitted list only | 169 | 52 | 16 | $84,425 | $+36,023 | +42.7% | 3 of 4 |
+
+## The fitted list by hours from 9am to the jump, whole books
+
+| | bookie bets | runners | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| 0-4 h | 39 | 8 | 2 | $18,726 | $-4,660 | -24.9% | 1 of 3 |
+| 4-5 h | 47 | 15 | 5 | $18,008 | $+28,290 | +157.1% | 3 of 4 |
+| 5-6 h | 17 | 5 | 2 | $8,842 | $+4,897 | +55.4% | 2 of 2 |
+| 6-7 h | 31 | 16 | 2 | $20,427 | $-11,101 | -54.3% | 1 of 4 |
+| 7-12 h | 65 | 22 | 8 | $39,294 | $+5,654 | +14.4% | 1 of 4 |
+
+## The fitted list by the move before 9am (TAB 9am against TAB's first price), whole books
+
+| | bookie bets | runners | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| firmed 20%+ | 162 | 50 | 14 | $71,652 | $+39,008 | +54.4% | 3 of 4 |
+| firmed 5-20% | 29 | 11 | 3 | $29,212 | $-17,298 | -59.2% | 1 of 4 |
+| held | 7 | 4 | 2 | $4,069 | $+1,733 | +42.6% | 2 of 3 |
+| drifted 5%+ | 1 | 1 | 0 | $364 | $-364 | -100.0% | 0 of 1 |
+
+## The fitted list by our price against the 9am median, whole books
+
+| | bookie bets | runners | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| ours longer than the market | 39 | 17 | 6 | $24,767 | $+6,654 | +26.9% | 2 of 4 |
+| ours up to 1.5x shorter | 128 | 40 | 9 | $71,588 | $-5,041 | -7.0% | 2 of 4 |
+| ours 1.5-2.5x shorter | 28 | 8 | 4 | $8,676 | $+21,732 | +250.5% | 3 of 4 |
+| ours 2.5x+ shorter | 4 | 1 | 0 | $267 | $-267 | -100.0% | 0 of 1 |
+
+## The fitted list by track type and day, whole books
+
+| | bookie bets | runners | winners | staked | profit | ROI | months up |
+|---|---|---|---|---|---|---|---|
+| metro | 100 | 30 | 8 | $66,845 | $-2,311 | -3.5% | 2 of 4 |
+| country and provincial | 99 | 36 | 11 | $38,452 | $+25,389 | +66.0% | 3 of 4 |
+| Saturday | 82 | 27 | 8 | $45,650 | $+15,659 | +34.3% | 2 of 4 |
+| Sunday | 16 | 6 | 1 | $15,532 | $-13,341 | -85.9% | 1 of 4 |
+| Monday-Friday | 101 | 33 | 10 | $44,115 | $+20,761 | +47.1% | 3 of 4 |
