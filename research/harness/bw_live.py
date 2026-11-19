@@ -200,6 +200,20 @@ def main():
               f"winners, ROI {np.where(bb.won == 1, bb.tab_open - 1, -1.0).mean():+.1%}; TAB price shortened after "
               f"{(bb.tab_last < bb.tab_open).mean():.0%}; ROI at TAB's last price "
               f"{np.where(bb.won == 1, bb.tab_last - 1, -1.0).mean():+.1%}")
+    # TAB's first book (sum of 1 / first price over the race): under 100% means every runner was priced too big at
+    # once, which reads as a placeholder or error market rather than a price anyone could take in size
+    te_["book_first"] = (1 / te_.tab_open).groupby(te_.race).transform("sum")
+    print("\n## 2026 paper bets at 10% edge by TAB's first book\n\n| TAB first book | bets | winners | ROI at TAB first "
+          "| ROI at TAB last |\n|---|---|---|---|---|")
+    bb = te_[(te_.p_s2 * te_.tab_open >= 1 + EDGE) & (te_.tab_last > 1)]
+    for lo, hi in ((0, 0.9), (0.9, 1.0), (1.0, 1.1), (1.1, 1.2), (1.2, 1.3), (1.3, 9)):
+        x = bb[(bb.book_first >= lo) & (bb.book_first < hi)]
+        if len(x):
+            print(f"| {lo:.0%} to {hi:.0%} | {len(x)} | {int(x.won.sum())} | "
+                  f"{np.where(x.won == 1, x.tab_open - 1, -1.0).mean():+.1%} | "
+                  f"{np.where(x.won == 1, x.tab_last - 1, -1.0).mean():+.1%} |")
+    races_book = te_.groupby("race").book_first.first()
+    print(f"\n2026 races with a TAB first book under 100%: {(races_book < 1).sum()} of {len(races_book)}")
     b = te_[(te_.p_s2 * te_.tab_open >= 1 + EDGE) & (te_.tab_last > 1)]
     ret = np.where(b.won == 1, b.tab_open - 1, -1.0)
     by_m = b.assign(r=ret, mo=b.date.dt.strftime("%Y-%m")).groupby("mo").agg(bets=("r", "size"), roi=("r", "mean"))
@@ -211,6 +225,11 @@ def main():
         td["p_model"] = renorm(m.predict_proba(td[feats + CATS], num_iteration=m.best_iteration_)[:, 1], td.race)
         td["p_s2"] = s2(td)
         td["edge"] = td.p_s2 * td.tab_open - 1
+        td["book_first"] = (1 / td.tab_open).groupby(td.race).transform("sum")
+        suspect = td[(td.edge >= EDGE) & (td.book_first < 1)]
+        td = td[td.book_first >= 1]                         # a first book under 100% is not a price to bet into
+        print(f"races left out because TAB's first book was under 100%: {suspect.race.nunique()} "
+              f"({len(suspect)} runners that would have been picks)")
         picks = td[td.edge >= EDGE].sort_values("start")
         near = td[td.edge < EDGE].sort_values("edge", ascending=False).head(10)   # closest, NOT bets
         print(f"\ntoday: {len(picks)} paper picks at an edge of {EDGE:.0%} or more, in {picks.race.nunique()} races "
