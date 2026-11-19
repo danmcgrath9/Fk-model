@@ -1,0 +1,83 @@
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,Royal Overture,3.74,8.00,12,0,,8-12
+1,Royal Overture,3.74,15.00,40,0,,15-40
+1,Valiant Dreamer,4.94,8.00,12,0,,8-12
+1,Valiant Dreamer,4.94,15.00,40,0,,15-40
+1,Jezebel Jenni,5.45,8.72,12,0,,8-12
+1,Jezebel Jenni,5.45,15.00,40,0,,15-40
+1,She's Astunnerarch,5.88,9.40,12,0,,8-12
+1,She's Astunnerarch,5.88,15.00,40,0,,15-40
+1,Belle Fille,12.31,18.47,40,0,,15-40
+2,Profumo,2.26,8.00,12,0,,8-12
+2,Profumo,2.26,15.00,40,0,,15-40
+2,Boridi,4.56,8.00,12,0,,8-12
+2,Boridi,4.56,15.00,40,0,,15-40
+2,Valentina Girl,11.10,16.64,40,0,,15-40
+2,Skadoodle,14.79,22.18,40,0,first starter: excluded,15-40
+2,Prestige Maddy,15.64,23.46,40,0,,15-40
+2,Xtra Black,21.60,32.40,40,0,,15-40
+3,Best Terms,1.84,8.00,12,0,,8-12
+3,Best Terms,1.84,15.00,40,0,,15-40
+3,A Rus In Grinzing,5.52,8.83,12,0,,8-12
+3,A Rus In Grinzing,5.52,15.00,40,0,,15-40
+3,Under Control,12.21,18.32,40,0,,15-40
+3,Hot Opera,14.94,22.42,40,0,,15-40
+3,Flying Riches,18.97,28.46,40,0,,15-40
+4,Strummer,5.42,8.68,12,0,,8-12
+4,Strummer,5.42,15.00,40,0,,15-40
+4,Stole Him,5.62,8.99,12,0,,8-12
+4,Stole Him,5.62,15.00,40,0,,15-40
+4,Devine Grunt,6.43,10.29,12,0,,8-12
+4,Devine Grunt,6.43,15.00,40,0,,15-40
+4,Prestige Geoffrey,7.68,15.00,40,0,,15-40
+4,Pendante,10.60,15.90,40,0,,15-40
+4,Testing The Cugat,15.20,22.80,40,0,,15-40
+4,Whistler Girl,19.38,29.06,40,0,,15-40
+4,I Could Do Better,20.68,31.02,40,0,,15-40
+5,Eternal Darkness,4.96,8.00,12,0,,8-12
+5,Eternal Darkness,4.96,15.00,40,0,,15-40
+5,Twister,6.55,10.48,12,0,,8-12
+5,Twister,6.55,15.00,40,0,,15-40
+5,Lagunanini,9.05,15.00,40,0,,15-40
+5,Do It Now,9.75,15.00,40,0,,15-40
+5,Daynes Dahwun,9.76,15.00,40,0,,15-40
+5,Cumboogle,14.50,21.76,40,0,,15-40
+5,Elena Montero,14.57,21.85,40,0,,15-40
+5,Simply Luscious,18.73,28.10,40,0,,15-40
+5,Written Royalty,22.66,33.99,40,0,,15-40
+5,Time Angel,23.10,34.65,40,0,,15-40
+6,Monsun's Pride,4.21,8.00,12,0,,8-12
+6,Monsun's Pride,4.21,15.00,40,0,,15-40
+6,Trinity's D'oro,6.33,10.12,12,0,,8-12
+6,Trinity's D'oro,6.33,15.00,40,0,,15-40
+6,Slate Ripper,8.65,15.00,40,0,,15-40
+6,Amphactor,10.04,15.07,40,0,,15-40
+6,Too Big,11.26,16.88,40,0,,15-40
+6,Gold Gladiator,15.95,23.93,40,0,,15-40
+6,Our Paramour,16.87,25.30,40,0,,15-40
+6,Beauer,18.74,28.11,40,0,,15-40
+6,Without Fail,20.03,30.05,40,0,,15-40
+6,Ruscello,22.07,33.10,40,0,,15-40
+7,Regal Tycoon,4.96,8.00,12,0,,8-12
+7,Regal Tycoon,4.96,15.00,40,0,,15-40
+7,Romantic Encounter,7.94,15.00,40,0,,15-40
+7,Shaalute,8.20,15.00,40,0,,15-40
+7,Make It Sweet,11.35,17.03,40,0,,15-40
+7,Annotate,11.47,17.21,40,0,,15-40
+7,Chicago Blues,12.78,19.17,40,0,,15-40
+7,Roadcone,13.74,20.61,40,0,,15-40
+7,Enna's Dream,13.83,20.75,40,0,,15-40
+7,Blazing Sword,15.51,23.27,40,0,,15-40
+7,Didn't Miss Many,17.07,25.60,40,0,,15-40
+8,It's Gnarly,6.08,9.72,12,0,,8-12
+8,It's Gnarly,6.08,15.00,40,0,,15-40
+8,Bakersbend,7.07,11.31,12,0,,8-12
+8,Bakersbend,7.07,15.00,40,0,,15-40
+8,Silver Snow,7.67,15.00,40,0,,15-40
+8,Cumbrian Queen,9.30,15.00,40,0,,15-40
+8,Savethebesttillast,9.87,15.00,40,0,,15-40
+8,King's Taj,12.92,19.38,40,0,,15-40
+8,Mishima,13.43,20.14,40,0,,15-40
+8,Darating,14.48,21.72,40,0,,15-40
+8,Clinger,15.20,22.80,40,0,,15-40
+8,Darken,21.37,32.05,40,0,,15-40

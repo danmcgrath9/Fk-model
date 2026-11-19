@@ -1,0 +1,90 @@
+1|3|Whata Stretch|False|False
+1|6|Mamzelle Raine|False|False
+1|2|Smart And Mighty|False|False
+1|1|Holler's Vision|False|False
+1|5|Lange Nelle|False|False
+1|4|Jondens Boy|False|False
+1|8|Kiss Me In Paris|False|False
+1|9|Orchid Sky|False|False
+1|7|Goddess Storm|False|False
+2|4|Sugar And Sweet|False|False
+2|12|Kasami|True|False
+2|8|Monsoon Reins|False|False
+2|2|Gopher Frank|False|False
+2|7|Frose|False|False
+2|3|La Cache A Vin|False|False
+2|14|Peintre's Pride|True|False
+2|13|Squagaga|True|False
+2|11|Two Kay Klick|True|False
+2|1|Flux|False|False
+2|6|Zamora|False|False
+2|10|The Crusader|False|False
+2|5|Grumpyoldcol|False|False
+2|9|Star Fortian|False|False
+3|1|Challenging|False|False
+3|5|Ambisaam|False|False
+3|14|Tycoon Iggy|True|False
+3|10|Rei Ayanami|False|False
+3|2|Hellofacury|False|False
+3|8|Native Dance|False|False
+3|6|Buchan Outkast|False|False
+3|9|Peace Seeker|False|False
+3|7|Miss Fine|False|False
+3|12|Unclaimed|True|False
+3|4|Gunnatippatinnie|False|False
+3|13|Opunake|True|False
+3|11|Yahweh Rapha|True|False
+4|2|Hay Joe|False|False
+4|4|Lord Porchester|False|False
+4|9|High Altitude|False|False
+4|11|Infer|True|False
+4|12|Spike Almighty|True|False
+4|13|Don't Matta Me|True|False
+4|6|Dazzling Sky|False|False
+4|3|Icy Pole|False|False
+4|5|Becauseyou're Mine|False|False
+4|1|Winning Toast|False|False
+4|7|Abby's Crossword|False|False
+4|8|Ramelle|False|False
+4|10|Fox Phire|False|False
+5|2|Champagne Sabre|False|False
+5|6|Tarin's Rock|False|False
+5|7|Blues Jazz|False|False
+5|8|Miss Delightful|False|False
+5|1|Awaywiththepixies|False|False
+5|11|Jack Will|True|False
+5|9|Platinum Rush|False|False
+5|12|Slick Vixen|True|False
+5|4|Piccadilly Thunder|False|False
+5|13|Numbersneverseen|True|False
+5|5|Presno|False|False
+5|14|Flaws And Sins|True|False
+5|3|Fire Type|False|False
+5|10|Big Trouble|False|False
+6|12|State Of Maine|True|False
+6|14|Drink Then Kiss|True|False
+6|8|Alpinova|False|False
+6|1|Handsome Devil|False|False
+6|9|Nicking Gracie|False|False
+6|4|Whiskey And Beer|False|False
+6|11|Coldenkim|True|False
+6|2|Mont Saint Michel|False|False
+6|3|Quizlet|False|False
+6|13|Chica Con Suerte|True|False
+6|6|Flying Shelby|False|False
+6|10|Steely Hustler|False|False
+6|5|Bare To Witness|False|False
+6|7|First Return|False|False
+7|12|Unamerican|True|False
+7|14|Spanish Snitzel|True|False
+7|9|Super Snitch|False|False
+7|7|Male Model|False|False
+7|3|Foujita San|False|False
+7|6|Unseen Ruler|False|False
+7|4|Any Luck|False|False
+7|1|Aftermath|False|False
+7|8|Dartboard|False|False
+7|10|Vizie|False|False
+7|11|Pianta|True|False
+7|5|Rich Champagne|False|False
+7|13|King Leonidas|True|False

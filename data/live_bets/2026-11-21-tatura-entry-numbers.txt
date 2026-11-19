@@ -1,0 +1,111 @@
+1|1|Couldbetracy|False|False
+1|7|Mighty Mongoose|False|False
+1|5|La Shadow|False|False
+1|6|Madame Makwela|False|False
+1|4|Jezebel Jenni|False|False
+1|9|She's Astunnerarch|False|False
+1|8|Royal Overture|False|False
+1|2|Go Go Ruby|False|False
+1|10|Valiant Dreamer|False|False
+1|3|I'm Good|False|False
+1|11|Belle Fille|False|False
+2|1|Kensington City|False|False
+2|16|It's Justa Guess|True|False
+2|6|Brilliant Beagle|False|False
+2|13|Magnus Mclaren|True|False
+2|8|Tara's Crown|False|False
+2|14|Baltic|True|False
+2|7|Prestige Maddy|False|False
+2|12|Winna's Sister|False|False
+2|5|Xtra Black|False|False
+2|3|Profumo|False|False
+2|2|Boridi|False|False
+2|11|Valentina Girl|False|False
+2|4|Skadoodle|False|False
+2|15|Little Gangster|True|False
+2|10|Moore Hart|False|False
+3|5|Shades Of Sheriff|False|False
+3|9|Mwamba|False|False
+3|1|All Too Swift|False|False
+3|3|Conjurer|False|False
+3|8|Hot Opera|False|False
+3|10|Under Control|False|False
+3|2|Best Terms|False|False
+3|7|Flying Riches|False|False
+3|4|Opinion Leader|False|False
+3|6|Amsterdam Nights|False|False
+3|11|A Rus In Grinzing|False|False
+4|9|I Could Do Better|False|False
+4|11|Testing The Cugat|False|False
+4|14|Dente's Inferno|True|False
+4|5|Dreamstone|False|False
+4|6|Whistler Girl|False|False
+4|8|Dashing Donkey|False|False
+4|7|Pendante|False|False
+4|10|Brookers Turbo|False|False
+4|13|Brassi Road|True|False
+4|2|Strummer|False|False
+4|12|Conaltri|False|False
+4|1|Devine Grunt|False|False
+4|4|Stole Him|False|False
+4|3|Prestige Geoffrey|False|False
+5|15|Swift Hit|True|False
+5|14|First Division|True|False
+5|4|Cumboogle|False|False
+5|6|Written Royalty|False|False
+5|1|Do It Now|False|False
+5|8|Time Angel|False|False
+5|10|Elena Montero|False|False
+5|9|Grouse Mountain|False|False
+5|3|Simply Luscious|False|False
+5|13|Master Jack|True|False
+5|16|Bronco Revolution|True|False
+5|5|Eternal Darkness|False|False
+5|2|Twister|False|False
+5|11|Hegely|False|False
+5|12|Lagunanini|False|False
+5|7|Daynes Dahwun|False|False
+6|7|Amphactor|False|False
+6|14|Bellakai|True|False
+6|8|Trinity's D'oro|False|False
+6|9|Beauer|False|False
+6|6|Slate Ripper|False|False
+6|2|Monsun's Pride|False|False
+6|13|Sacred Ingot|True|False
+6|3|Too Big|False|False
+6|15|Second Guess|True|False
+6|12|Our Paramour|False|False
+6|4|Without Fail|False|False
+6|11|Kaddari|False|False
+6|10|Ruscello|False|False
+6|1|Gold Gladiator|False|False
+7|12|Quamby|True|False
+7|15|San Marco|True|False
+7|1|Roadcone|False|False
+7|10|Make It Sweet|False|False
+7|9|Annotate|False|False
+7|8|The Shaper|False|False
+7|4|Enna's Dream|False|False
+7|2|Didn't Miss Many|False|False
+7|3|Shaalute|False|False
+7|6|Blazing Sword|False|False
+7|7|Regal Tycoon|False|False
+7|11|Chicago Blues|False|False
+7|5|Romantic Encounter|False|False
+7|14|Tempt The Gods|True|False
+7|13|Vim Vitae|True|False
+8|8|Tasman Park|False|False
+8|13|Winds Of March|True|False
+8|10|Cumbrian Queen|False|False
+8|7|Mishima|False|False
+8|12|French Love|True|False
+8|5|King's Taj|False|False
+8|9|Savethebesttillast|False|False
+8|15|Rivazza|True|False
+8|1|Bakersbend|False|False
+8|11|Darken|False|False
+8|4|Silver Snow|False|False
+8|3|Darating|False|False
+8|2|Clinger|False|False
+8|14|Duel Missile|True|False
+8|6|It's Gnarly|False|False

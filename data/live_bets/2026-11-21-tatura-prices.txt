@@ -1,0 +1,112 @@
+# Tatura Sat 21 Nov, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 5 runners without a rider
+1, Couldbetracy, 0, 0
+1, Mighty Mongoose, 0, 0
+1, La Shadow, 0, 0
+1, Madame Makwela, 0, 0
+1, Jezebel Jenni, 0, 0
+1, She's Astunnerarch, 0, 0
+1, Royal Overture, 0, 0
+1, Go Go Ruby, 0, 0
+1, Valiant Dreamer, 0, 0
+1, I'm Good, 0, 0
+1, Belle Fille, 0, 0
+2, Kensington City, 0, 0
+2, It's Justa Guess, SCR
+2, Brilliant Beagle, 0, 0
+2, Magnus Mclaren, SCR
+2, Tara's Crown, 0, 0
+2, Baltic, SCR
+2, Prestige Maddy, 0, 0
+2, Winna's Sister, 0, 0
+2, Xtra Black, 0, 0
+2, Profumo, 0, 0
+2, Boridi, 0, 0
+2, Valentina Girl, 0, 0
+2, Skadoodle, 0, 0
+2, Little Gangster, SCR
+2, Moore Hart, 0, 0
+3, Shades Of Sheriff, 0, 0
+3, Mwamba, 0, 0
+3, All Too Swift, 0, 0
+3, Conjurer, 0, 0
+3, Hot Opera, 0, 0
+3, Under Control, 0, 0
+3, Best Terms, 0, 0
+3, Flying Riches, 0, 0
+3, Opinion Leader, 0, 0
+3, Amsterdam Nights, 0, 0
+3, A Rus In Grinzing, 0, 0
+4, I Could Do Better, 0, 0
+4, Testing The Cugat, 0, 0
+4, Dente's Inferno, SCR
+4, Dreamstone, 0, 0
+4, Whistler Girl, 0, 0
+4, Dashing Donkey, 0, 0
+4, Pendante, 0, 0
+4, Brookers Turbo, 0, 0
+4, Brassi Road, SCR
+4, Strummer, 0, 0
+4, Conaltri, 0, 0
+4, Devine Grunt, 0, 0
+4, Stole Him, 0, 0
+4, Prestige Geoffrey, 0, 0
+5, Swift Hit, SCR
+5, First Division, SCR
+5, Cumboogle, 0, 0
+5, Written Royalty, 0, 0
+5, Do It Now, 0, 0
+5, Time Angel, 0, 0
+5, Elena Montero, 0, 0
+5, Grouse Mountain, 0, 0
+5, Simply Luscious, 0, 0
+5, Master Jack, SCR
+5, Bronco Revolution, SCR
+5, Eternal Darkness, 0, 0
+5, Twister, 0, 0
+5, Hegely, 0, 0
+5, Lagunanini, 0, 0
+5, Daynes Dahwun, 0, 0
+6, Amphactor, 0, 0
+6, Bellakai, SCR
+6, Trinity's D'oro, 0, 0
+6, Beauer, 0, 0
+6, Slate Ripper, 0, 0
+6, Monsun's Pride, 0, 0
+6, Sacred Ingot, SCR
+6, Too Big, 0, 0
+6, Second Guess, SCR
+6, Our Paramour, 0, 0
+6, Without Fail, 0, 0
+6, Kaddari, 0, 0
+6, Ruscello, 0, 0
+6, Gold Gladiator, 0, 0
+7, Quamby, SCR
+7, San Marco, SCR
+7, Roadcone, 0, 0
+7, Make It Sweet, 0, 0
+7, Annotate, 0, 0
+7, The Shaper, 0, 0
+7, Enna's Dream, 0, 0
+7, Didn't Miss Many, 0, 0
+7, Shaalute, 0, 0
+7, Blazing Sword, 0, 0
+7, Regal Tycoon, 0, 0
+7, Chicago Blues, 0, 0
+7, Romantic Encounter, 0, 0
+7, Tempt The Gods, SCR
+7, Vim Vitae, SCR
+8, Tasman Park, 0, 0
+8, Winds Of March, SCR
+8, Cumbrian Queen, 0, 0
+8, Mishima, 0, 0
+8, French Love, SCR
+8, King's Taj, 0, 0
+8, Savethebesttillast, 0, 0
+8, Rivazza, SCR
+8, Bakersbend, 0, 0
+8, Darken, 0, 0
+8, Silver Snow, 0, 0
+8, Darating, 0, 0
+8, Clinger, 0, 0
+8, Duel Missile, SCR
+8, It's Gnarly, 0, 0

@@ -1,0 +1,9 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,TAT_211126_1,Royal Overture,top_pick,0.0,0.0,0.0,,,3.74,-1.0,,1.0,no,,
+2,TAT_211126_2,Profumo,top_pick,0.0,0.0,0.0,,,2.26,-1.0,Already run to today's class,1.0,no,,
+3,TAT_211126_3,Best Terms,top_pick,0.0,0.0,0.0,,,1.84,-1.0,,1.0,no,,
+4,TAT_211126_4,Strummer,top_pick,0.0,0.0,0.0,,,5.42,-1.0,Already run to today's class; Class drop (rating); Late 600 beyond the tempo,1.0,no,,
+5,TAT_211126_5,Eternal Darkness,top_pick,0.0,0.0,0.0,,,4.96,-1.0,Proven wet on a wet track; Class drop (rating); Blinkers first time,1.0,no,,
+6,TAT_211126_6,Monsun's Pride,top_pick,0.0,0.0,0.0,,,4.21,-1.0,Beaten by the pace last start; Already run to today's class; Proven wet on a wet track; Above the field in all three sections,1.0,no,,
+7,TAT_211126_7,Regal Tycoon,top_pick,0.0,0.0,0.0,,,4.96,-1.0,,1.0,no,,
+8,TAT_211126_8,It's Gnarly,top_pick,0.0,0.0,0.0,,,6.08,-1.0,Declining deep in prep; Proven wet on a wet track,1.0,no,,
