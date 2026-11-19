@@ -221,3 +221,8 @@ def test_summary_counts_quarter_kelly_in_units():
             {"placed": True, "settled": True, "won": False, "profit": -1.0, "kelly": 0.00935, "tab_at_detect": 5.0}]
     assert M.summary(rows) == "2 bets seen, 2 placed (0 missed: TAB had cut the price below the price it needed by " \
                               "then), 2 settled, 1 won, +3.50 units on 2.50 staked (+140.0%)"
+
+
+def test_the_open_model_s_old_name_is_read_under_the_new_one():
+    # 20 Nov 2026, founder: "stop sayin best model"
+    assert M.BEST == "open model" and M.OLD_NAMES["best model"] == "open model"
