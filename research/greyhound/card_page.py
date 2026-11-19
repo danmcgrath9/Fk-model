@@ -219,11 +219,11 @@ def sheet_section(a, sheet: list, races: list, started) -> None:
           "</details></td></tr>")
     if not live:
         a("<tr><td colspan='4' style='text-align:left'>No dog on the sheet today.</td></tr>")
-    a("</table></div><div class='note'>Test 101's band sheet: the best model (Test 98) priced the night before at 28 TAB "
-      "prices for each dog, the rest of the field at the TAB-open model's predicted prices. Each order is a price band "
+    a("</table></div><div class='note'>Test 101's band sheet: the open model (Test 98) priced the night before at 28 TAB "
+      "prices for each dog, the rest of the field at the price forecast's predicted TAB prices. Each order is a price band "
       "with its own stake: it fires only if TAB's FIRST price is inside it, staked at a quarter of Kelly, at most 5% of "
       f"the bank. 1 unit is the backtest's average quarter-Kelly bet, {SHEET_UNIT:.2%} of the bank: "
-      f"{dollars(SHEET_UNIT)} on a ${SHEET_BANK:,} bank. In the backtest it kept about 95% of the best model's edge at TAB's open (+346 of +364 "
+      f"{dollars(SHEET_UNIT)} on a ${SHEET_BANK:,} bank. In the backtest it kept about 95% of the open model's edge at TAB's open (+346 of +364 "
       "corrected BSP units, 21 months). Paper: tracked each morning at TAB's first price; nothing goes to BetMatic "
       "without your OK.</div></div>")
 

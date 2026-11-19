@@ -44,7 +44,10 @@ import topaz_track as T           # noqa: E402
 from greyhound import betwatch as B   # noqa: E402
 
 MEL = ZoneInfo("Australia/Melbourne")
-BLEND, BEST = "corrected blend", "best model"
+# 20 Nov 2026, founder: "stop sayin best model". Test 98's model is the OPEN model (our chance read against TAB's
+# opening prices); ledger rows written before under its old name are read under the new one
+BLEND, BEST = "corrected blend", "open model"
+OLD_NAMES = {"best model": BEST}
 
 
 def latest_prices(races: list) -> dict:
@@ -322,6 +325,8 @@ def run_watch(day: str, cards, bst, meta) -> int:
     from greyhound import sealed
     lp = ledger_path()
     ledger = json.loads(lp.read_text()) if lp.exists() else []
+    ledger = [{**b, "model": OLD_NAMES.get(b.get("model"), b.get("model"))} if b.get("model") in OLD_NAMES else b
+              for b in ledger]
     session = B._session()
     open_days = sorted({b["day"] for b in ledger if b.get("placed") and not b.get("settled") and b["day"] < day})
     for d in open_days[-7:]:
@@ -337,14 +342,14 @@ def run_watch(day: str, cards, bst, meta) -> int:
     bb, bm = topaz_best.load_best()
     bdir = os.environ.get("BETWATCH_DIR", "")
     if bm is None:
-        print("No best model yet (best_meta.json in MODEL_DIR): the corrected blend only")
+        print("No open model yet (best_meta.json in MODEL_DIR): the corrected blend only")
     elif not bdir or not os.path.isdir(bdir):
-        print("No Betwatch history (BETWATCH_DIR): the best model is left out")
+        print("No Betwatch history (BETWATCH_DIR): the open model is left out")
     else:
         import topaz_round65 as R65
         hist = topaz_best.runs_history(R65.tab_and_books(bdir))
         best = (bb, bm, topaz_best.mh_table(hist))     # built once, so a poll at TAB's open prices in seconds
-        print(f"The best model: {bm.get('rounds', 0)} rounds, trained {bm.get('trained', '?')}; "
+        print(f"The open model: {bm.get('rounds', 0)} rounds, trained {bm.get('trained', '?')}; "
               f"{len(hist):,} Betwatch runs of history")
     sheet = topaz_sheet.load_sheet(os.environ.get("CARDS_DIR", ""), day)
     print(f"The band sheet: {len(sheet)} orders on {sheet.groupby(['race_key', 'dog']).ngroups if len(sheet) else 0} "
