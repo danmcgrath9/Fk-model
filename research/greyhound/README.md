@@ -9575,6 +9575,69 @@ Two things are not known yet. One is whether BetMatic fires within seconds of TA
 price. The other is whether a dog can carry ten or more band orders. The placement-timing probe (one $1 bet, with the
 founder's OK) checks both. Nothing changes the card or the morning program.
 
+## Test 102: the dog that comes across, read from where dogs get to at the first point (19 Nov 2026, gh topaz run 44465744526, `topaz_cross.py`, `topaz_round83.py`)
+
+Founder, on Warragul race 3 that day, where the best model backed box 5 (Echo Hunter): "Yes the 6 crossed it, add
+that input and test it", then "The market drifted the 5 because of this, had to of, was $3.50 out to $5".
+
+Test 96's map counts a dog drawn outside as a crosser only when its early-speed rating is quicker. Box 6 was slower on
+that rating (5th fastest against box 5's 4th) but had led at the first point in 4 of its last 10 runs against box 5's
+3 in 10. So the new inputs read the threat from position. They use each dog's mean place at the first point and share
+of runs led over its last 10 runs, its running line in metres from the rail, and the day's draw, all known the night
+before. For each runner (`topaz_cross.cross_map`):
+- **cx_out_first** counts the dogs drawn outside it that are usually ahead of it at the first point and run no more
+  than 0.5 m wider.
+- **cx_out_led** is the same count, judged by the share of runs led.
+- **cx_in_first** counts the dogs drawn inside it that are usually ahead of it and run more than 0.5 m wider.
+- **cx_out_pressure** is the outside crossers' lead over it at the first point, each divided by how many boxes away
+  it is drawn.
+- **cx_nb_out_first and cx_nb_out_led** are the same two measures against the next dog out.
+
+Test 98's walk was run again with the six inputs added (250 inputs), February 2025 on. Of the runners, 56% have at
+least one crosser outside them and 34% have two or more.
+
+| the 2-point margin, February 2025 on | bets | quarter Kelly: corrected BSP per unit (SE) | corrected BSP units / realised | flat: corrected BSP units | distance to BSP, clean races (thousandths) |
+|---|---|---|---|---|---|
+| **Test 98's fit** | 2,559 | +14.4% (0.9%) | **+365.5** / +282.3 | +298.0 | 51.82 |
+| with the crossing inputs | 2,538 | +14.5% (0.9%) | +364.3 / +293.6 | +303.5 | 51.80 |
+| Test 98, skipping a dog with a crosser outside | 1,636 | +15.7% (1.1%) | +264.4 / +193.2 | +207.3 | |
+
+The crossing inputs took 0.6% of the fit's gain.
+
+| runners, February 2025 on | runners | A/E against Test 98's fit (SE) | A/E against TAB's first book | A/E against the corrected BSP | TAB's first price to BSP | share that drifted |
+|---|---|---|---|---|---|---|
+| no crosser outside | 46,748 | 0.996 (0.009) | 1.035 | 0.996 | +29.6% | 59% |
+| one crosser outside | 26,194 | 1.005 (0.014) | 0.995 | 1.002 | +40.4% | 65% |
+| two or more | 39,856 | 1.004 (0.012) | 0.951 | 1.012 | +53.2% | 70% |
+| the next dog out a tenth of the field or more ahead | 32,492 | 1.004 (0.015) | 0.940 | 1.004 | +57.3% | 71% |
+| the crossers' pressure, the top tenth | 6,261 | 1.050 (0.038) | 0.935 | 1.049 | +77.8% | 76% |
+| a dog inside ahead and running wider | 14,023 | 0.979 (0.021) | 0.963 | 0.983 | +47.4% | 67% |
+
+"TAB's first price to BSP" is how far the price went out, on average (the geometric mean). TAB's book carries its
+margin and BSP's does not, so even dogs with no crosser go out by 30%.
+
+Of Test 98's bets, 943 had a crosser outside. They made +11.8% a unit staked, +101.1 corrected BSP units, against
++15.7% for the 1,678 without.
+
+What it shows:
+- **The founder's drift is real.** Dogs with a crosser outside go out from TAB's first price to Betfair's starting
+  price more than dogs without: by 53% with two or more crossers against 30% with none, and by 78% for the tenth under
+  the most pressure. TAB's first book overrates them, so they win 5% to 7% less often than its price says. BSP has
+  them right.
+- **Part of that may be price, not the crossing.** A dog that several dogs outside it usually beat to the first point
+  is a slow beginner, and those tend to be longer in the betting, where TAB's margin is heavier. This test did not
+  separate the two.
+- **The best model already has them right.** Their A/E against it is 1.00 in every group, within its standard error.
+  So the new inputs add nothing: 0.6% of the gain, the distance to BSP 51.82 to 51.80, and +364.3 quarter-Kelly units
+  against +365.5.
+- **Skipping them throws money away.** The best model's bets on crossed dogs make +101 units: less a unit than its
+  other bets, but well clear of zero.
+
+What it means: the best model already reads the start well enough that a dog being crossed is priced in. On Warragul
+race 3 it backed Echo Hunter at $3.40 against its own $3.10. Its drift to $5 is the kind these dogs show on average,
+and over 39,856 runners with two or more crossers the model's chances held up. Nothing changes the card. The inputs
+stay in `topaz_cross.py`.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
