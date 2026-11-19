@@ -15,7 +15,7 @@ date-and-race-ordered runs): last value, smoothed value (EWMA, alpha 0.4) and be
 relatives, and runs with sectionals. Keyed by horse name (Racing Queensland gives no id) and joined to Betwatch by
 date, track, race number and name.
 """
-import os, re
+import io, os, re
 import numpy as np, pandas as pd
 
 SECTIONS = {"lead": "LeadTime", "first_half": "FirstHalf", "mid_half": "MiddleHalf", "last_half": "LastHalf",
@@ -47,7 +47,15 @@ def parse_file(path):
     m = re.match(r"(\d{8})_(.+)_H\.csv$", base)
     if not m:
         return pd.DataFrame()
-    df = pd.read_csv(path, dtype=str)
+    with open(path, encoding="utf-8", errors="replace") as fh:
+        lines = fh.read().splitlines()
+    head = next((i for i, l in enumerate(lines) if "Horse" in l.split(",")), None)   # some files open with a title
+    if head is None:
+        return pd.DataFrame()
+    try:
+        df = pd.read_csv(io.StringIO("\n".join(lines[head:])), dtype=str)
+    except pd.errors.ParserError:
+        return pd.DataFrame()
     df.columns = [c.strip() for c in df.columns]
     if "Horse" not in df:
         return pd.DataFrame()
@@ -72,7 +80,9 @@ def parse_file(path):
 
 
 def load_dir(d):
-    parts = [parse_file(os.path.join(d, f)) for f in sorted(os.listdir(d)) if f.endswith(".csv")]
+    names = [f for f in sorted(os.listdir(d)) if f.endswith(".csv")]
+    parts = [parse_file(os.path.join(d, f)) for f in names]
+    print(f"RQ files read: {sum(1 for p in parts if len(p)):,} of {len(names):,} (the rest unreadable or empty)")
     parts = [p for p in parts if len(p)]
     return pd.concat(parts, ignore_index=True) if parts else pd.DataFrame()
 

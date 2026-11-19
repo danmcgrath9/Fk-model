@@ -53,3 +53,10 @@ def test_history_uses_earlier_runs_only(tmp_path):
     first, second = h.loc[(pd.Timestamp("2026-11-01"), "ACE")], h.loc[(pd.Timestamp("2026-11-08"), "ACE")]
     assert first.sec_runs == 0 and np.isnan(first.sec_last_v_last_half)
     assert second.sec_runs == 1 and np.isclose(second.sec_last_v_last_half, 806 / 56)   # not this run's 806/59
+
+
+def test_a_file_with_a_title_line_is_still_read(tmp_path):
+    p = write(tmp_path, "20240105_Marburg_H.csv", [[horse(1, 1, "Ace")]])
+    body = p.read_text()
+    p.write_text("Marburg Sectionals Report\n\n" + body)
+    assert list(Q.parse_file(p).name) == ["ACE"]
