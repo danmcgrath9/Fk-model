@@ -100,10 +100,29 @@ def check(a):
     print("bookmaker:", tab[0] if tab else f"{want!r} not found by title")
 
 
-def label(o, step, tag=""):
+PREFIX = {"Galloping": "fk", "Greyhounds": "gh", "Harness": "hn"}   # labels per code: Bendigo, Traralgon and Sale race
+                                                                   # gallops and dogs on one day with the same numbers
+
+
+def vnorm(s) -> str:
+    """A venue as letters only, without a leading 'the' (Topaz's 'The Meadows' against BetMatic's own name)."""
+    return re.sub(r"[^a-z]", "", re.sub(r"^\s*the\s+", "", str(s).lower()))
+
+
+def skip_reason(prob: str) -> str:
+    """A skip's kind, naming no runner (for --quiet's counts)."""
+    for key, kind in (("not in BetMatic's race schedule", "race not in BetMatic's schedule"),
+                      ("not running (scratched)", "scratched"), ("on BetMatic, not", "another runner at that number"),
+                      ("not (uniquely)", "name not found in BetMatic's field")):
+        if key in prob:
+            return kind
+    return "other"
+
+
+def label(o, step, tag="", code="Galloping"):
     # tag: a resend after BetMatic has already fired (and so will not cancel) the first set; the fired labels stay live
     # and would block the duplicate check, so the resend carries its own (16 Oct 2026, Avoca fired before the TAB priced)
-    return f"fk-{o['date']}-{o['venue'].lower().replace(' ', '')}-r{o['race']}-n{o['number']}-s{step}" + (f"-{tag}" if tag else "")
+    return f"{PREFIX.get(code, 'fk')}-{o['date']}-{o['venue'].lower().replace(' ', '')}-r{o['race']}-n{o['number']}-s{step}" + (f"-{tag}" if tag else "")
 
 
 def send(a):
@@ -123,8 +142,8 @@ def send(a):
         stake = round(float(o["stake_units"]) * a.unit)
         if stake < 1:
             continue
-        bets.append((label(o, step[k], getattr(a, "tag", "")), o, {
-            "type": "Fixed Wager", "sports": "RACING", "competition": o["venue"].upper(), "code": "Galloping",
+        bets.append((label(o, step[k], getattr(a, "tag", ""), a.code), o, {
+            "type": "Fixed Wager", "sports": "RACING", "competition": o["venue"].upper(), "code": a.code,
             "event_number": int(o["race"]), "market": "Fixed Place" if str(o.get("bet", "WIN")).upper() == "PLACE" else "Fixed Win",  # PLACE rows: each-way copies (31 Oct 2026)
             "selection": str(o["number"]), "stake": stake,
             "check_odds": True, "odds": float(o["min_odds"]),
@@ -137,6 +156,13 @@ def send(a):
             # a standard bet only (not Market Open), works from one total, and spans every running session.
             b = bets[-1][2]; b.update(type="High Odds First", total_wager=b["stake"])
     total = sum(b[2]["stake"] for b in bets)
+    # --quiet (20 Nov 2026, greyhound band sheets): no line names a runner, race or price, only counts at the end, because
+    # GRV's values are personal use and the Actions logs are public
+    say = (lambda *x, **k: None) if getattr(a, "quiet", False) else print
+    tally = {}
+
+    def count(kind):
+        tally[kind] = tally.get(kind, 0) + 1
     print(f"{len(bets)} bets, ${total:,} if every one fired, unit ${a.unit}")
     # dry run (21 Oct 2026): logs in and checks every bet against BetMatic's race schedule too (venue, race, the
     # number at that name), so a dry run proves the order would land on the right horse; it only stops short of posting
@@ -180,14 +206,20 @@ def send(a):
     # A bet is skipped if that race is not in the schedule, its saddlecloth is no longer running (scratched runners
     # leave "runners"), or the name at that number is not our horse.
     sched = bm.get_all("/competition/namecodes/")
-    on_day = {}
+    on_day, by_norm = {}, {}
     for c in sched:
-        if isinstance(c, dict) and c.get("code") == "Galloping":
-            on_day[(str(c.get("name", "")).upper(), int(c.get("event_number", 0)), str(c.get("startTime", ""))[:10])] = c
+        if isinstance(c, dict) and c.get("code") == a.code:
+            k = (int(c.get("event_number", 0)), str(c.get("startTime", ""))[:10])
+            on_day[(str(c.get("name", "")).upper(), *k)] = c
+            by_norm.setdefault((vnorm(c.get("name", "")), *k), []).append(c)
     norm = lambda s: re.sub(r"[^a-z0-9]", "", str(s).lower())
 
     def race_problem(o, body):
         c = on_day.get((body["competition"], body["event_number"], o["date"]))
+        alias = by_norm.get((vnorm(body["competition"]), body["event_number"], o["date"]), [])
+        if c is None and len(alias) == 1:            # the same venue under BetMatic's own name (one match only)
+            c = alias[0]
+            body["competition"] = str(c.get("name", "")).upper()
         if c is None:
             return f"{body['competition']} R{body['event_number']} on {o['date']} is not in BetMatic's race schedule"
         nums = [x.strip() for x in str(c.get("runners", "")).split(",")]
@@ -198,7 +230,7 @@ def send(a):
             if len(hit) != 1:
                 return (f"{o['horse']!r} is not (uniquely) in BetMatic's field for {body['competition']} R{body['event_number']}: "
                         f"runners {nums}, names {names}")
-            body["selection"] = o["number"] = hit[0]; print(f"{o['horse']}: No. {hit[0]} in BetMatic's field")
+            body["selection"] = o["number"] = hit[0]; say(f"{o['horse']}: No. {hit[0]} in BetMatic's field")
         if body["selection"] not in nums:
             return f"No. {body['selection']} is not running (scratched) in BetMatic's schedule"
         if len(names) == len(nums) and norm(names[nums.index(body["selection"])]) != norm(o["horse"]):
@@ -213,25 +245,28 @@ def send(a):
         for lab, o, body in bets:
             prob = race_problem(o, body)
             if prob:
-                print(f"SKIP {lab}: {prob}"); w.writerow([lab, o["race"], o["number"], o["horse"], o["min_odds"], o.get("max_odds", ""), body["stake"], "", "SKIPPED: " + prob]); continue
+                say(f"SKIP {lab}: {prob}"); count("skipped: " + skip_reason(prob))
+                w.writerow([lab, o["race"], o["number"], o["horse"], o["min_odds"], o.get("max_odds", ""), body["stake"], "", "SKIPPED: " + prob]); continue
             if not a.send:
                 shown = dict(body, label=lab)
                 if not getattr(a, "best_price", False): shown.update(bookies=f"<{a.bookie}>", target_session=str(a.session))
-                print("DRY RUN, would send:", json.dumps(shown)); continue
+                say("DRY RUN, would send:", json.dumps(shown)); count("dry run, would send"); continue
             # exact label only: the docs do not say whether ?label= matches exactly or as part of a longer label
             # a cancelled notification keeps its label, so it does not count as already sent (15 Oct 2026: Horsham was
             # cancelled to re-price after the gear changes, and the re-send would otherwise have skipped every bet)
             if any(isinstance(n, dict) and n.get("label") == lab and not n.get("is_canceled")
                    for n in results(bm.get("/notification/", label=lab, page_size=100))):
-                print(f"SKIP {lab}: already on BetMatic"); skipped.append(lab); continue
+                say(f"SKIP {lab}: already on BetMatic"); skipped.append(lab); count("already on BetMatic"); continue
             body.update(label=lab) if getattr(a, "best_price", False) else body.update(label=lab, bookies=bid, target_session=str(a.session))
             code, resp = bm.post("/notification/create/", body)
             msg = resp.get("message", "") if isinstance(resp, dict) else str(resp)
             ids = str(resp.get("id", "")) if isinstance(resp, dict) else ""
             ok = code == 200 and ids and "no signal" not in msg.lower()
-            print(f"{'OK ' if ok else 'FAIL'} {lab} ${body['stake']} min {body['odds']} -> {code} {msg} {ids}")
+            say(f"{'OK ' if ok else 'FAIL'} {lab} ${body['stake']} min {body['odds']} -> {code} {msg} {ids}")
+            count("sent" if ok else f"failed ({code})")
             w.writerow([lab, o["race"], o["number"], o["horse"], o["min_odds"], o.get("max_odds", ""), body["stake"], ids, msg])
             time.sleep(0.2)
+    print("; ".join(f"{k}: {v}" for k, v in sorted(tally.items())) or "nothing to send")
     if skipped:
         print(f"\n*** {len(skipped)} of {len(bets)} bets NOT SENT: their labels are already on BetMatic "
               f"(a previous send of this file). To send them again, re-run with a new tag (eg --tag b). ***")
@@ -410,6 +445,8 @@ if __name__ == "__main__":
     s.add_argument("--tag", default="", help="suffix for every label, for a resend after the first set already fired (e.g. b)")
     s.add_argument("--race", help="only this race's rows"); s.add_argument("--number", help="only this saddlecloth number (with --race)")
     s.add_argument("--send", action="store_true")
+    s.add_argument("--code", default="Galloping", choices=["Galloping", "Greyhounds", "Harness"], help="BetMatic's race code")
+    s.add_argument("--quiet", action="store_true", help="counts only in the output (greyhound sheets: the logs are public)")
     c = sp.add_parser("cancel"); c.add_argument("ledger"); c.add_argument("--race"); c.add_argument("--number"); c.add_argument("--send", action="store_true")
     t = sp.add_parser("status"); t.add_argument("ledger")
     pn = sp.add_parser("pending"); pn.add_argument("ledger")

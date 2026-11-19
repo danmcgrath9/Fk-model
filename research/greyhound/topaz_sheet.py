@@ -20,7 +20,9 @@ seeing TAB's open quickly. This is that sheet, priced on the live models:
     the price paid after TAB's deduction, which a sheet cannot know; with no scratching after the open they agree)
 
     sheet_for_day(day, cards_dir)   after topaz_iso.price has kept card_iso_DAY.csv.gz: the orders, kept beside it as
-                                    sheet_DAY.csv.gz (Actions cache only) and returned for the sealed card
+                                    sheet_DAY.csv.gz and as BetMatic's order file sheet_DAY-betmatic.csv (Actions cache
+                                    only; gh-betmatic-sheet.yml sends it, with the founder's approval) and returned for
+                                    the sealed card
     train_tabopen(R, XR, bdir, ...) in the weekly train, after the best model: fit and keep tabopen.txt
     fired(sheet, facts, ...)        the morning program: each dog's order that TAB's first price falls in, as a paper bet
 
@@ -225,6 +227,23 @@ def build(cards: pd.DataFrame, bst, meta: dict, tob, tmeta: dict, mh_tab: pd.Dat
                "orders": int(len(o))}
 
 
+def betmatic_orders(o: pd.DataFrame) -> pd.DataFrame:
+    """The sheet as a BetMatic order file for betmatic/betmatic_send.py (--code Greyhounds): one Market Open order a
+    band, the box as the saddlecloth number (the sender checks the dog's name at that number in BetMatic's own field and
+    skips a mismatch, as for a reserve), stake_units in percent of the bank (the send's unit is the dollars for 1%)."""
+    if o.empty:
+        return pd.DataFrame(columns=["date", "venue", "race", "number", "horse", "stake_units", "min_odds", "max_odds",
+                                     "bet"])
+    return pd.DataFrame({"date": o.day.astype(str), "venue": o.venue.astype(str).str.upper(), "race": o.race_no.astype(str),
+                         "number": [str(int(float(b))) for b in o.box], "horse": o.dog_name.astype(str),
+                         "stake_units": (o.stake.astype(float) * 100).round(2), "min_odds": o.low.round(2),
+                         "max_odds": o.high.round(2), "bet": "WIN"})
+
+
+def betmatic_path(cards_dir, day: str) -> Path:
+    return Path(cards_dir) / f"sheet_{day}-betmatic.csv"
+
+
 def sheet_path(cards_dir, day: str) -> Path:
     return Path(cards_dir) / f"sheet_{day}.csv.gz"
 
@@ -251,6 +270,7 @@ def sheet_for_day(day: str, cards_dir: str) -> tuple:
     o, n = build(cards, bst, meta, tob, tmeta, topaz_best.mh_table(hist))
     f = sheet_path(cards_dir, day)
     o.to_csv(f, index=False, compression="gzip")
+    betmatic_orders(o).to_csv(betmatic_path(cards_dir, day), index=False)
     rows = [[r.venue, r.race_no, r.box, r.dog_name, float(r.low), float(r.high), float(r.stake)]
             for r in o.itertuples()]
     per = o.groupby(["race_key", "dog"]).size() if len(o) else pd.Series(dtype=int)
