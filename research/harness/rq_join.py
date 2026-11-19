@@ -126,3 +126,57 @@ def horse_history(r):
 SEC_FEATS = (["sec_runs", "sec_days"] + [f"sec_last_{c}" for c in RUN_FEATS] + [f"sec_ewm_{c}" for c in RUN_FEATS]
              + [f"sec_best5_{c}" for c in ("v_last_half", "v_q4", "v_lead", "top_speed", "v_last_half_rel",
                                            "v_lead_rel")])
+
+
+def horse_state(r):
+    """Each horse's sectional record after ALL its runs: what its next run will be given (the same quantities
+    horse_history gives a run from the runs before it). For pricing a race that has not been run yet."""
+    r = r.sort_values(["name", "date", "race_number"])
+    g = r.groupby("name", sort=False)
+    out = pd.DataFrame({"sec_runs": g.size(), "sec_last_date": g.date.max()})
+    for c in RUN_FEATS:
+        out[f"sec_last_{c}"] = g[c].apply(lambda x: x.iloc[-1])                   # the last run, NaN kept
+        out[f"sec_ewm_{c}"] = g[c].apply(lambda x: x.ewm(alpha=0.4, ignore_na=True).mean().iloc[-1])
+    for c in ("v_last_half", "v_q4", "v_lead", "top_speed", "v_last_half_rel", "v_lead_rel"):
+        out[f"sec_best5_{c}"] = g[c].apply(lambda x: x.rolling(5, min_periods=1).max().iloc[-1])
+    return out
+
+
+def attach(df, runs, today=None):
+    """Sectional records onto Betwatch rows (bw_live.frame): a raced row gets the horse's record from its earlier
+    sectional runs, joined by date, track, race number and name; a row on `today` (not yet raced) gets the horse's
+    record after all its runs, joined by name, with days since its last sectional run."""
+    df = df.copy()
+    df["k_track"], df["k_name"] = df.TRACK.astype(str).map(norm_track), df.horse_name.map(norm_name)
+    df["race_number"] = pd.to_numeric(df.race_number, errors="coerce").astype(float)
+    df["k_date"] = df.date
+    hist = horse_history(runs).rename(columns={"track": "k_track", "name": "k_name", "date": "k_date"})
+    hist = hist.drop_duplicates(["k_date", "k_track", "race_number", "k_name"])
+    df = df.merge(hist, on=["k_date", "k_track", "race_number", "k_name"], how="left")
+    df["rq_track"] = df.k_track.isin(set(hist.k_track))
+    if today is not None and df.today.any():
+        st = horse_state(runs)
+        t = df.today
+        got = df.loc[t, ["k_name"]].join(st, on="k_name")
+        for c in SEC_FEATS:
+            if c == "sec_days":
+                df.loc[t, c] = (df.loc[t, "date"] - got.sec_last_date).dt.days.to_numpy()
+            elif c in got:
+                df.loc[t, c] = got[c].to_numpy()
+    return df
+
+
+VS = ["sec_ewm_v_last_half_rel", "sec_ewm_v_lead_rel", "sec_ewm_v_last_half", "sec_best5_v_last_half",
+      "sec_ewm_top_speed", "sec_ewm_q1_pos"]
+
+
+def add_vs(df):
+    new = {}
+    for c in VS:
+        x = df[c].astype(float)
+        new[f"{c}_vs_race"] = x - x.groupby(df.race).transform("mean")
+        new[f"{c}_rank"] = x.groupby(df.race).rank(ascending=(c == "sec_ewm_q1_pos"), method="min")
+    return pd.concat([df, pd.DataFrame(new, index=df.index)], axis=1)
+
+
+SECT_ALL = SEC_FEATS + [f"{c}_vs_race" for c in VS] + [f"{c}_rank" for c in VS]

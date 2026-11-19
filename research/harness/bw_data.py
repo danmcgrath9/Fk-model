@@ -130,7 +130,8 @@ def join(bf, bw):
     k["race"], k["horse"] = k.race_bw_bf.astype("int64"), k.horse_bw.astype("int64")
     k = k.drop_duplicates(["race", "horse"])
     cols = ["bw_race", "class", "track_condition", "number", "barrier", "emergency", "driver", "trainer", "bw_pos",
-            "bw_has_results", "tab_open", "tab_open_hours", "tab_last", "tab_n"] + [c for c in BWH if c in k]
+            "bw_has_results", "tab_open", "tab_open_hours", "tab_last", "tab_n", "horse_name", "race_number"] + [
+            c for c in BWH if c in k]
     df = bf.merge(k[["race", "horse"] + cols], on=["race", "horse"], how="left")
     span = (bf.date >= pd.Timestamp(bw.bw_date.min())) & (bf.date <= pd.Timestamp(bw.bw_date.max()))
     au = span & (bf.STATE_CODE != "NZ")

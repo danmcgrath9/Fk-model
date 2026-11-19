@@ -60,3 +60,17 @@ def test_a_file_with_a_title_line_is_still_read(tmp_path):
     body = p.read_text()
     p.write_text("Marburg Sectionals Report\n\n" + body)
     assert list(Q.parse_file(p).name) == ["ACE"]
+
+
+def test_state_is_what_the_next_run_would_see(tmp_path):
+    write(tmp_path, "20261101_Redcliffe_H.csv", [[horse(1, 1, "Ace", "0:56.00"), horse(2, 2, "Bee")]])
+    write(tmp_path, "20261108_Redcliffe_H.csv", [[horse(2, 1, "Ace", "0:59.00"), horse(1, 2, "Cee")]])
+    runs = Q.run_features(Q.load_dir(tmp_path))
+    st = Q.horse_state(runs).loc["ACE"]
+    # add a third run and read what history gives it: it must equal the state after two runs
+    write(tmp_path, "20261115_Redcliffe_H.csv", [[horse(1, 1, "Ace", "0:57.00"), horse(2, 2, "Dee")]])
+    h = Q.horse_history(Q.run_features(Q.load_dir(tmp_path))).set_index(["date", "name"]).loc[
+        (pd.Timestamp("2026-11-15"), "ACE")]
+    for c in ("sec_runs", "sec_last_v_last_half", "sec_ewm_v_last_half", "sec_best5_v_last_half", "sec_ewm_extra_dist"):
+        assert np.isclose(st[c], h[c]), c
+    assert np.isclose(st.sec_last_v_last_half, 806 / 59)

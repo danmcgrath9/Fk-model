@@ -126,6 +126,7 @@ def apply2(d, a, b):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cache"); ap.add_argument("--pub", required=True); ap.add_argument("--day", default="")
+    ap.add_argument("--rq", default="", help="Racing Queensland sectional files (rq_sectionals.py pull); blank = none")
     a = ap.parse_args()
     today = date.fromisoformat(a.day) if a.day else datetime.now(SYD).date()
     bw = load_betwatch(a.cache)
@@ -141,6 +142,19 @@ def main():
     bw.loc[is_today, "tab_open"] = bw.loc[is_today, "tab_open"].fillna(now_px[is_today])
     bw.loc[is_today, "tab_last"] = bw.loc[is_today, "tab_last"].fillna(now_px[is_today])
     df = frame(bw, today)
+    feats = FEATS
+    if a.rq:
+        from rq_join import load_dir, run_features, attach, add_vs, SECT_ALL
+        runs = run_features(load_dir(a.rq))
+        df = add_vs(attach(df, runs, today))
+        feats = FEATS + SECT_ALL
+        # a race is priced "with sectionals" when it is at one of RQ's tracks (today) or RQ timed it (raced)
+        df["qld"] = df.rq_track & (df.today | df.groupby("race").sec_runs.transform(lambda s: s.notna().any()))
+        print(f"sectionals: RQ to {runs.date.max():%Y-%m-%d}; today's runners at RQ tracks "
+              f"{int((df.today & df.qld).sum())}, of them with an earlier sectional run "
+              f"{int((df.today & df.qld & (df.sec_runs > 0)).sum())}")
+    else:
+        df["qld"] = False
     past = df[~df.today & df.res]
     g = past.groupby("race")
     past = past[(g.won.transform("sum") == 1) & (past.field >= 4) & g.p_tab_open.transform(lambda s: s.notna().all())
@@ -152,30 +166,50 @@ def main():
     print(f"races: train {tr.race.nunique():,}, validation {va.race.nunique():,}, scored 2026 {te.race.nunique():,} "
           f"(to {te.date.max():%Y-%m-%d}); today {df[df.today].race.nunique()} races, {td.race.nunique()} with a TAB "
           f"first price on every runner; trot races {past.groupby('race').trot.first().mean():.1%}\n")
-    va_, te_, m, _ = fit(tr, va, te, FEATS, CATS)
-    sa, sb = stage2_fit(va_)
-    te_["p_s2"] = apply2(te_, sa, sb)
+    va_, te_, m, _ = fit(tr, va, te, feats, CATS)
+    # stage 2 weights separately for races priced with sectionals and the rest (the form means more with them)
+    w = {}
+    for grp in (True, False):
+        v = va_[va_.qld == grp]
+        w[grp] = stage2_fit(v) if v.race.nunique() >= 200 else stage2_fit(va_)
+        print(f"stage 2, {'with' if grp else 'without'} sectionals ({v.race.nunique():,} validation races): "
+              f"log p = {w[grp][0]:.2f} log(form) + {w[grp][1]:.2f} log(TAB first)")
+    def s2(d):
+        out = pd.Series(np.nan, index=d.index)
+        for grp in (True, False):
+            k = d.qld == grp
+            if k.any():
+                out[k] = apply2(d[k], *w[grp])
+        return out.to_numpy()
+    te_["p_s2"] = s2(te_)
     te_["p_equal"] = 1 / te_.field
-    print(f"stage 2: log p = {sa:.2f} log(form) + {sb:.2f} log(TAB first)\n")
-    print("## 2026 so far (never seen in fitting)\n\n| price | winner log loss | beats TAB first? |\n|---|---|---|")
-    lt = winner_ll(te_.p_tab_open, te_.won, te_.race)
-    for n, c in (("equal", "p_equal"), ("pure form", "p_model"), ("TAB first", "p_tab_open"), ("stage 2", "p_s2")):
-        l = winner_ll(te_[c], te_.won, te_.race)
-        print(f"| {n} | {l:.4f} | {'' if c == 'p_tab_open' else 'yes' if l < lt else 'no'} |")
+    print("\n## 2026 so far (never seen in fitting)\n\n| races | price | winner log loss | beats TAB first? |\n"
+          "|---|---|---|---|")
+    for gname, part in (("all", te_), ("with sectionals (QLD)", te_[te_.qld]), ("without", te_[~te_.qld])):
+        if not len(part):
+            continue
+        lt = winner_ll(part.p_tab_open, part.won, part.race)
+        for n, c in (("equal", "p_equal"), ("form", "p_model"), ("TAB first", "p_tab_open"), ("stage 2", "p_s2")):
+            l = winner_ll(part[c], part.won, part.race)
+            print(f"| {gname} ({part.race.nunique():,}) | {n} | {l:.4f} | {'' if c == 'p_tab_open' else 'yes' if l < lt else 'no'} |")
+    for gname, part in (("all", te_), ("with sectionals (QLD)", te_[te_.qld]), ("without", te_[~te_.qld])):
+        bb = part[(part.p_s2 * part.tab_open >= 1 + EDGE) & (part.tab_last > 1)]
+        if not len(bb):
+            continue
+        print(f"\npaper bets at TAB's first price, edge {EDGE:.0%}, {gname}: {len(bb):,} bets, {int(bb.won.sum())} "
+              f"winners, ROI {np.where(bb.won == 1, bb.tab_open - 1, -1.0).mean():+.1%}; TAB price shortened after "
+              f"{(bb.tab_last < bb.tab_open).mean():.0%}; ROI at TAB's last price "
+              f"{np.where(bb.won == 1, bb.tab_last - 1, -1.0).mean():+.1%}")
     b = te_[(te_.p_s2 * te_.tab_open >= 1 + EDGE) & (te_.tab_last > 1)]
     ret = np.where(b.won == 1, b.tab_open - 1, -1.0)
-    print(f"\npaper bets at TAB's first price, edge {EDGE:.0%}: {len(b):,} bets, {int(b.won.sum())} winners, ROI "
-          f"{ret.mean():+.1%}; TAB price shortened after {(b.tab_last < b.tab_open).mean():.0%} of them (every runner "
-          f"{(te_.tab_last < te_.tab_open).mean():.0%}); ROI at TAB's last price "
-          f"{np.where(b.won == 1, b.tab_last - 1, -1.0).mean():+.1%}")
     by_m = b.assign(r=ret, mo=b.date.dt.strftime("%Y-%m")).groupby("mo").agg(bets=("r", "size"), roi=("r", "mean"))
     print("\n| month | bets | ROI at TAB first |\n|---|---|---|")
     for mo, r in by_m.iterrows():
         print(f"| {mo} | {int(r.bets)} | {r.roi:+.1%} |")
 
     if len(td):
-        td["p_model"] = renorm(m.predict_proba(td[FEATS + CATS], num_iteration=m.best_iteration_)[:, 1], td.race)
-        td["p_s2"] = apply2(td, sa, sb)
+        td["p_model"] = renorm(m.predict_proba(td[feats + CATS], num_iteration=m.best_iteration_)[:, 1], td.race)
+        td["p_s2"] = s2(td)
         td["edge"] = td.p_s2 * td.tab_open - 1
         picks = td[td.edge >= EDGE].sort_values("start")
         near = td[td.edge < EDGE].sort_values("edge", ascending=False).head(10)   # closest, NOT bets
@@ -185,10 +219,12 @@ def main():
                  "no": int(r.number), "horse": r.horse_name, "driver": r.driver, "trainer": r.trainer,
                  "tab_first": r.tab_open, "tab_first_hours_before": round(r.tab_open_hours, 1),
                  "tab_latest": r.tab_last, "form_chance": round(r.p_model, 4), "stage2_chance": round(r.p_s2, 4),
-                 "fair_price": round(1 / r.p_s2, 2), "edge": round(r.edge, 3)} for r in picks.itertuples()]
+                 "fair_price": round(1 / r.p_s2, 2), "edge": round(r.edge, 3), "sectionals": bool(r.qld)}
+                for r in picks.itertuples()]
         near_rows = [{"start_sydney": r.start.tz_localize("UTC").tz_convert(SYD).strftime("%H:%M"), "track": r.TRACK,
                       "race": r.race_number, "no": int(r.number), "horse": r.horse_name, "tab_first": r.tab_open,
-                      "tab_latest": r.tab_last, "fair_price": round(1 / r.p_s2, 2), "edge": round(r.edge, 3)}
+                      "tab_latest": r.tab_last, "fair_price": round(1 / r.p_s2, 2), "edge": round(r.edge, 3),
+                      "sectionals": bool(r.qld)}
                      for r in near.itertuples()]
         from greyhound import sealed
         with tempfile.NamedTemporaryFile("wb", suffix=".pem", delete=False) as fh:
