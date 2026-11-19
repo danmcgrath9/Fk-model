@@ -145,6 +145,9 @@ def main():
                     "--odds --all, today's meetings, the sheet of record never touched, the open-bets box and the 9am list per meeting")
     ap.add_argument("--soft-export", default="", help="an fk-export upcoming npz exported with a Soft going (fk-export going 'Soft 5'), "
                     "for the meeting(s) in --only that were flagged 'needs a Soft export': they are priced from it (18 Nov 2026)")
+    ap.add_argument("--scratchings-from", default="", help="a scripts/betwatch_national.py output: every runner it shows as scratched "
+                    "is marked scratched in the meeting's entry numbers before pricing (19 Nov 2026: the database went read-only, so Form "
+                    "King's scratchings stopped being stored and the morning re-price priced horses scratched that morning)")
     ap.add_argument("--test", action="store_true", help="files under <prefix>-test, no commit (a timing test on meetings already priced)")
     a = ap.parse_args()
     if a.morning:
@@ -223,8 +226,21 @@ def main():
     t_model = time.time(); res = []
     # A. each meeting: entry numbers, prices file (mkprices), scratched runners dropped (drop_scr) -> model/<TAG>-scr.npz
     ready = []
+    bw_scr = set()
+    if a.scratchings_from:
+        csv.field_size_limit(10 ** 9); t_ = open(a.scratchings_from).read(); i_ = t_.find("CSV-BEGIN") + 9; j_ = t_.find("CSV-END")
+        for r in csv.DictReader(io.StringIO(t_[i_:j_ if j_ > 0 else len(t_)].strip())):
+            if r.get("scr_min"): bw_scr.add((r["date"], re.sub(r"[^a-z0-9]", "", r["track"].lower()), int(r["race"]), re.sub(r"[^a-z0-9]", "", r["name"].lower())))
     for mid, P, npz, scr, nums, head, title in jobs:
         TAG = P.replace("-", ""); SN = S / "model" / f"{TAG}-scr.npz"
+        if bw_scr:
+            d_ = info[mid]["m"]["date"]; tk = re.sub(r"[^a-z0-9]", "", info[mid]["m"]["track"].lower()).split("park")[0]
+            Ls, n_ = Path(nums).read_text().split("\n"), 0
+            for k_, l_ in enumerate(Ls):
+                pa = l_.split("|")
+                if len(pa) == 5 and pa[0].isdigit() and pa[4] != "True" and any(x[0] == d_ and x[1].startswith(tk) and x[2] == int(pa[0]) and x[3] == re.sub(r"[^a-z0-9]", "", pa[2].lower()) for x in bw_scr):
+                    pa[4] = "True"; Ls[k_] = "|".join(pa); n_ += 1
+            Path(nums).write_text("\n".join(Ls)); log(f"{mid}: {n_} more runners marked scratched from {a.scratchings_from}")
         subprocess.run(["cp", str(nums), str(L / f"{P}-entry-numbers.txt")], check=True)
         if a.morning and (L / f"{P}-prices.txt").exists():   # the previous prices kept, as the 9:30 re-price always did
             snap = L / f"{P}-prices-{dt.datetime.now(MEL):%H%M}.txt"; subprocess.run(["cp", str(L / f"{P}-prices.txt"), str(snap)])
