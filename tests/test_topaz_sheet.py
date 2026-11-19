@@ -108,7 +108,7 @@ def test_card_page_groups_a_dog_s_orders():
     assert d[0][6] == [[2.10, 2.74], [3.20, 3.59]]
     out = []
     C.sheet_section(out.append, sheet, races, lambda r: False)
-    assert "3 orders" in "".join(out) and "$2.10-$2.74" in "".join(out).replace("&#36;", "$")
+    assert "3 orders" in "".join(out) and "$2.10-$2.74" in "".join(out).replace("&#36;", "$") and "$200-$400" in "".join(out)
 
 
 def test_betmatic_orders_are_one_market_open_order_a_band():
