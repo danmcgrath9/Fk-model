@@ -9509,6 +9509,72 @@ gallops order files have used max_odds since 14 Oct 2026). So a dog can carry se
 its own stake, and the sheet can follow the edge up the price ladder and stop where it ends. That is Test 101
 (round 81). Nothing changes the card or the morning program.
 
+**Correction (Test 101, 19 Nov).** Test 100 found each minimum against TAB's raw first price, with the chance over the
+dogs that ran, and paid the price after TAB's deduction. Test 98 compares that chance with the price after deduction.
+In the 29% of runners in a race with a scratching after the open, the raw price overstates the edge. So Test 100's
+sheet rows are wrong in those races (round 82 measured how much for the band sheet: Test 101). The minimum-only sheet
+was not run again. Its finding that a minimum alone fires on dogs whose edge is gone comes from the ladder, not the
+deduction, and stands.
+
+## Test 101: the order sheet in price bands, with a maximum as well as a minimum (19 Nov 2026, gh topaz runs 44449565432 and 44463222792, `topaz_round81.py`, `topaz_round82.py`)
+
+Founder, after Test 100: "Yep build it". A minimum alone fires on dogs whose edge is gone at the price TAB actually
+opens. BetMatic orders also carry a maximum price, so each dog can carry several orders, each covering a band of
+prices with its own stake.
+
+**The test.** It uses Test 98's walk with each refit's model (Test 100's), February 2025 to October 2026.
+- **The ladder.** For every runner, the best model's chance at 28 TAB prices from $1.15 to $41, evenly spaced on a log
+  scale. The rest of the field is predicted the three ways of Test 100.
+- **A band gets an order** when the best model makes the bet at both of its ends, at a margin of 2, 4, 6 or 8 points
+  (fair price under $15). Flat, bands that touch join into one order. At a quarter of Kelly each band is its own order,
+  staked at the smaller Kelly of its two ends.
+- **The order fires** when TAB's first price falls inside a band. It is paid TAB's first price after its deduction.
+- **Beside it** is the same rule at TAB's actual price, which is what a sheet with an endlessly fine ladder would do.
+
+**Round 81 got the footing wrong, and round 82 put it right.** Test 98's bet compares the chance over the dogs that ran
+with TAB's first price after its deduction for dogs scratched after the open. Both are known only afterwards, and they
+roughly cancel: the field shrinks and the price is cut by about the same share. Round 81 compared that chance with
+TAB's raw first price, as Test 100 had. In the races with a scratching after the open, that overstated the edge, and
+the sheet fired on dogs the best model would not back. Round 82 sets the bet at each ladder price against the price
+it would be paid, as Test 98 does. It also reports separately the races with no scratching after the open, where
+nothing known after the open enters any rule. There the two rounds agree to the unit.
+
+| rule (round 82 unless named) | quarter Kelly: bets | corrected BSP per unit (SE) | corrected BSP units / realised | deepest fall | losing months | races with no scratching after the open: corrected BSP units | flat: corrected BSP units |
+|---|---|---|---|---|---|---|---|
+| **the best model on TAB's whole opening book (Test 98)** | 2,574 | +14.2% (0.9%) | **+364.3** / +266.3 | 35.6 | 4 of 21 | +235.9 | +289.5 |
+| **the TAB-open model, the rest not moving, 2 points, bands** | 3,180 | +10.9% (0.8%) | **+346.0** / +360.3 | 59.5 | 3 of 21 | +222.3 | +226.2 |
+| the same, at TAB's actual price | 4,446 | +8.7% (0.7%) | +388.8 / +372.1 | 80.4 | 3 of 21 | +256.6 | +240.5 |
+| the TAB-open model, the rest not moving, 4 points, bands | 2,244 | +14.4% (1.1%) | +323.4 / +378.7 | 40.2 | 4 of 21 | +206.9 | +185.6 |
+| the TAB-open model, 2 points, bands | 2,677 | +10.5% (0.8%) | +281.7 / +249.0 | 66.9 | 1 of 21 | +186.3 | +214.2 |
+| ours, 2 points, bands | 1,948 | +12.9% (1.0%) | +251.1 / +195.2 | 53.4 | 4 of 21 | +160.0 | +210.3 |
+| round 81: the TAB-open model, the rest not moving, 2 points, bands (raw price) | 5,664 | +3.6% (0.6%) | +204.6 / +250.0 | 112.9 | 9 of 21 | +222.3 | +18.5 |
+
+In the races with a scratching after the open, the same band sheet made +123.7 on round 82's footing (Test 98:
++128.4) and -17.7 as round 81 ran it. Round 81's whole shortfall was there.
+
+The best band sheet (the TAB-open model, the rest not moving, 2 points):
+- **Who makes the bet**, at a quarter of Kelly: both, +370.3 corrected BSP units (1,971 bets); the sheet only, -24.3
+  (1,126); Test 98 only, +31.5 (603).
+- **By half:** +190.0 then +156.0, against Test 98's +196.7 then +167.6.
+- **By three months:** within 8 units of Test 98 in every quarter, and ahead in two.
+- **Orders:** 44,853 dogs given an order and 3,189 fired. Flat, a dog needs a median of 1 order and at most 2. At a
+  quarter of Kelly it needs a median of 10, and up to 27.
+
+What it shows:
+- **A sheet set the night before keeps about 95% of the best model's edge at TAB's open** (+346.0 of +364.3), and 94%
+  in the races where nothing after the open is known (+222.3 of +235.9). That is what a bet placed within 15 seconds
+  of Betwatch's first price keeps (Test 99: 95%). It beats 30 seconds (88%) and the morning program's 19 Nov reaction
+  (about 87%). And it does not depend on Betwatch seeing TAB's open quickly.
+- **The bands are what make it work.** The bets only the sheet makes now lose 24 units, not 201 as in round 81.
+- **It costs some steadiness.** Its deepest fall is 59.5 units against Test 98's 35.6, and it makes 10.9% a unit against
+  14.2%. At 4 points it makes 14.4% a unit with a deepest fall of 40.2, for +323.4.
+- **Flat, it is weaker:** +226.2 against Test 98's +289.5 (78%). The staking by band is worth having.
+
+What it means: BetMatic's market-open order, priced in bands the night before, is the way to get TAB's first price.
+Two things are not known yet. One is whether BetMatic fires within seconds of TAB's open on greyhounds, at TAB's first
+price. The other is whether a dog can carry ten or more band orders. The placement-timing probe (one $1 bet, with the
+founder's OK) checks both. Nothing changes the card or the morning program.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
