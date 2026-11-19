@@ -1,0 +1,118 @@
+# Swan Hill Fri 20 Nov, official going, final fields; no market yet; PROVISIONAL: 8 runners without a rider
+1, Finnish Girl, 0, 0
+1, Titus Augustus, 0, 0
+1, Malbec, 0, 0
+1, Noddy's Girl, 0, 0
+1, Josie Kate, 0, 0
+1, Song'n'dance, 0, 0
+1, Locard, 0, 0
+1, Cavallo Corsa, 0, 0
+1, Stylish Beau, 0, 0
+1, Hansa Danca, 0, 0
+1, Press Jonkit, 0, 0
+2, Oh La Belle, 0, 0
+2, Big Storm, 0, 0
+2, Engineering Marvel, 0, 0
+2, San Marco Kid, 0, 0
+2, Just Dusty, 0, 0
+2, Begonia, 0, 0
+2, Charming Chords, 0, 0
+2, My Infinity, 0, 0
+2, Miss Verona, 0, 0
+2, Frewdamoss, 0, 0
+2, Hells Gates, 0, 0
+2, Isitmeoryou, 0, 0
+3, Roughnut, 0, 0
+3, Lord Lonny, 0, 0
+3, Cee Rose, 0, 0
+3, Al's Diemen, SCR
+3, Lady Colonist, 0, 0
+3, Khan Capital, 0, 0
+3, He's On Song, 0, 0
+3, Some Chance, 0, 0
+3, Dimachaerus, SCR
+3, Upcoming, 0, 0
+3, Intervened, 0, 0
+3, Apadana, SCR
+3, Catch A Princess, 0, 0
+3, Poorlittlerichkid, 0, 0
+3, Katiya, SCR
+3, Water Mill, 0, 0
+3, Jaffa Cake, 0, 0
+4, Jefferson, 0, 0
+4, Baby Rider, 0, 0
+4, Winds Of March, SCR
+4, Surfy Pete, 0, 0
+4, Bellakai, SCR
+4, Hidden Witness, 0, 0
+4, Harry Devil, 0, 0
+4, Frozen Tide, 0, 0
+4, Vivid Blooms, 0, 0
+4, Asal, 0, 0
+4, The Daily Planet, 0, 0
+4, Sweater Girl, SCR
+4, No Overtaking, 0, 0
+4, Burning Sensation, SCR
+4, Stuntman, 0, 0
+4, Dealer Sing, 0, 0
+4, Tell Me Why, 0, 0
+4, Hexed, 0, 0
+5, Bannerton, SCR
+5, Semper Fortis, 0, 0
+5, Gift Of Oratory, 0, 0
+5, Last Raider, 0, 0
+5, Endean Ace, 0, 0
+5, Crossoverkid, 0, 0
+5, Dschingis Prestige, 0, 0
+5, Kawhia, SCR
+5, Smokin' Rohie, 0, 0
+5, Callawadda, 0, 0
+5, Initial Moment, 0, 0
+5, Fuwari, 0, 0
+5, Danzagrunt, SCR
+5, Legs Power, 0, 0
+5, Sasterion, 0, 0
+5, King Kauffo, 0, 0
+5, Creusa, 0, 0
+6, Ask For More, SCR
+6, Francine, 0, 0
+6, Padstow Polly, 0, 0
+6, El Salto, 0, 0
+6, Strike Gold, 0, 0
+6, Doubt I'm Rich, 0, 0
+6, Ellie's Song, 0, 0
+6, Unobscured, 0, 0
+6, Pacific Glamour, 0, 0
+6, Gamadale Possum, 0, 0
+6, Caribbean Villa, 0, 0
+6, Mayfair Street, 0, 0
+7, Mahjing, SCR
+7, Ambello, 0, 0
+7, Whiskey And Beer, SCR
+7, Owl Witness, 0, 0
+7, Artpark, 0, 0
+7, The Mount, 0, 0
+7, Larza City, 0, 0
+7, Here Comes Wozza, 0, 0
+7, Drunken Sailor, 0, 0
+7, Attain, 0, 0
+7, Ponte Arcobaleno, 0, 0
+7, Ville De Lumiere, 0, 0
+7, Mythic, 0, 0
+7, Kikkuli, 0, 0
+7, Foxiet, 0, 0
+7, Popthebubbly, 0, 0
+7, Scartaka, SCR
+8, Lim's Ida, 0, 0
+8, Billie Bronx, 0, 0
+8, The Genius, 0, 0
+8, Where's My Sock, 0, 0
+8, Wareo Road, 0, 0
+8, Regal Surge, 0, 0
+8, Melodee Rose, 0, 0
+8, More Give It, 0, 0
+8, Watt On Earth, 0, 0
+8, Share The Music, 0, 0
+8, Sir Loyne, 0, 0
+8, Somebody Told Me, 0, 0
+8, Zetheros, 0, 0

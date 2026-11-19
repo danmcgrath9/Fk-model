@@ -1,0 +1,96 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-20,Swan Hill,1,,11,Locard,WIN,4.82,22.52,2.67,134,1 of 3,2.67u,3.75,
+2026-11-20,Swan Hill,1,,11,Locard,WIN,6.03,22.52,0.56,28,2 of 3,3.23u,3.75,
+2026-11-20,Swan Hill,1,,11,Locard,WIN,8.26,22.52,3.23,162,3 of 3,6.46u,3.75,opens $8.26+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,1,,5,Press Jonkit,WIN,3.50,3.99,3.40,170,1 of 1,3.40u,2.92,opens under $4: edge 1.15
+2026-11-20,Swan Hill,1,,5,Press Jonkit,WIN,4.00,17.50,3.70,185,1 of 3,3.70u,2.92,
+2026-11-20,Swan Hill,1,,5,Press Jonkit,WIN,4.62,17.50,0.73,36,2 of 3,4.43u,2.92,
+2026-11-20,Swan Hill,1,,5,Press Jonkit,WIN,6.42,17.50,4.43,222,3 of 3,8.86u,2.92,opens $6.42+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,2,,1,Big Storm,WIN,9.78,44.15,1.19,60,1 of 3,1.19u,7.36,
+2026-11-20,Swan Hill,2,,1,Big Storm,WIN,12.22,44.15,0.28,14,2 of 3,1.47u,7.36,
+2026-11-20,Swan Hill,2,,1,Big Storm,WIN,16.19,44.15,1.47,74,3 of 3,2.94u,7.36,opens $16.19+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,2,,4,Hells Gates,WIN,2.16,3.99,6.70,335,1 of 2,6.70u,1.85,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-20,Swan Hill,2,,4,Hells Gates,WIN,2.70,3.99,1.33,66,2 of 2,8.03u,1.85,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-20,Swan Hill,2,,4,Hells Gates,WIN,4.00,11.07,7.22,361,1 of 3,7.22u,1.85,EARLY: $15 or shorter only
+2026-11-20,Swan Hill,2,,4,Hells Gates,WIN,4.00,11.07,1.08,54,2 of 3,8.30u,1.85,EARLY: $15 or shorter only
+2026-11-20,Swan Hill,2,,4,Hells Gates,WIN,4.07,11.07,1.70,85,3 of 3,10.00u,1.85,EARLY: $15 or shorter only; opens $4.07+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,2,,12,Miss Verona,WIN,10.56,47.49,1.10,55,1 of 3,1.10u,7.91,
+2026-11-20,Swan Hill,2,,12,Miss Verona,WIN,13.20,47.49,0.26,13,2 of 3,1.36u,7.91,
+2026-11-20,Swan Hill,2,,12,Miss Verona,WIN,17.42,47.49,1.36,68,3 of 3,2.72u,7.91,opens $17.42+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,3,,10,Catch A Princess,WIN,3.38,3.99,3.55,178,1 of 1,3.55u,2.82,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-20,Swan Hill,3,,10,Catch A Princess,WIN,4.00,15.01,3.87,194,1 of 3,3.87u,2.82,EARLY: $15 or shorter only
+2026-11-20,Swan Hill,3,,10,Catch A Princess,WIN,4.46,15.01,0.75,38,2 of 3,4.62u,2.82,EARLY: $15 or shorter only
+2026-11-20,Swan Hill,3,,10,Catch A Princess,WIN,6.21,15.01,4.62,231,3 of 3,9.24u,2.82,EARLY: $15 or shorter only; opens $6.21+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,3,,2,Intervened,WIN,7.14,15.01,1.69,84,1 of 3,1.69u,5.45,EARLY: $15 or shorter only
+2026-11-20,Swan Hill,3,,2,Intervened,WIN,8.92,15.01,0.39,20,2 of 3,2.08u,5.45,EARLY: $15 or shorter only
+2026-11-20,Swan Hill,3,,2,Intervened,WIN,12.00,15.01,2.08,104,3 of 3,4.16u,5.45,EARLY: $15 or shorter only; opens $12.00+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,3,,5,Poorlittlerichkid,WIN,14.65,64.82,0.77,38,1 of 2,0.77u,10.80,
+2026-11-20,Swan Hill,3,,5,Poorlittlerichkid,WIN,18.31,64.82,0.19,10,2 of 2,0.96u,10.80,
+2026-11-20,Swan Hill,3,,14,Some Chance,WIN,9.62,15.01,1.21,60,1 of 2,1.21u,7.24,EARLY: $15 or shorter only
+2026-11-20,Swan Hill,3,,14,Some Chance,WIN,12.02,15.01,0.29,14,2 of 2,1.50u,7.24,EARLY: $15 or shorter only
+2026-11-20,Swan Hill,3,,7,Upcoming,WIN,19.02,83.09,0.59,30,1 of 2,0.59u,13.85,
+2026-11-20,Swan Hill,3,,7,Upcoming,WIN,23.77,83.09,0.14,7,2 of 2,0.73u,13.85,
+2026-11-20,Swan Hill,4,,7,Asal,WIN,8.79,39.87,1.34,67,1 of 3,1.34u,6.64,
+2026-11-20,Swan Hill,4,,7,Asal,WIN,10.99,39.87,0.31,16,2 of 3,1.65u,6.64,
+2026-11-20,Swan Hill,4,,7,Asal,WIN,14.62,39.87,1.65,82,3 of 3,3.30u,6.64,opens $14.62+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,4,,2,Dealer Sing,WIN,15.02,66.38,0.75,38,1 of 2,0.75u,11.06,
+2026-11-20,Swan Hill,4,,2,Dealer Sing,WIN,18.77,66.38,0.19,10,2 of 2,0.94u,11.06,
+2026-11-20,Swan Hill,4,,1,Stuntman,WIN,6.41,29.55,1.90,95,1 of 3,1.90u,4.93,
+2026-11-20,Swan Hill,4,,1,Stuntman,WIN,8.01,29.55,0.43,22,2 of 3,2.33u,4.93,
+2026-11-20,Swan Hill,4,,1,Stuntman,WIN,10.84,29.55,2.33,116,3 of 3,4.66u,4.93,opens $10.84+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,4,,5,Surfy Pete,WIN,10.21,46.00,1.14,57,1 of 3,1.14u,7.67,
+2026-11-20,Swan Hill,4,,5,Surfy Pete,WIN,12.76,46.00,0.27,14,2 of 3,1.41u,7.67,
+2026-11-20,Swan Hill,4,,5,Surfy Pete,WIN,16.87,46.00,1.41,70,3 of 3,2.82u,7.67,opens $16.87+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,4,,9,Tell Me Why,WIN,6.78,15.01,1.79,90,1 of 3,1.79u,5.19,EARLY: $15 or shorter only
+2026-11-20,Swan Hill,4,,9,Tell Me Why,WIN,8.47,15.01,0.41,20,2 of 3,2.20u,5.19,EARLY: $15 or shorter only
+2026-11-20,Swan Hill,4,,9,Tell Me Why,WIN,11.43,15.01,2.20,110,3 of 3,4.40u,5.19,EARLY: $15 or shorter only; opens $11.43+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,5,,1,Callawadda,WIN,10.32,46.45,1.13,56,1 of 3,1.13u,7.74,
+2026-11-20,Swan Hill,5,,1,Callawadda,WIN,12.90,46.45,0.26,13,2 of 3,1.39u,7.74,
+2026-11-20,Swan Hill,5,,1,Callawadda,WIN,17.04,46.45,1.39,70,3 of 3,2.78u,7.74,opens $17.04+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,5,,11,Creusa,WIN,16.13,71.02,0.70,35,1 of 2,0.70u,11.84,
+2026-11-20,Swan Hill,5,,11,Creusa,WIN,20.16,71.02,0.17,8,2 of 2,0.87u,11.84,
+2026-11-20,Swan Hill,5,,8,Crossoverkid,WIN,10.74,48.24,1.08,54,1 of 2,1.08u,8.04,
+2026-11-20,Swan Hill,5,,8,Crossoverkid,WIN,13.43,48.24,0.25,12,2 of 2,1.33u,8.04,
+2026-11-20,Swan Hill,5,,2,Dschingis Prestige,WIN,18.67,81.66,0.60,30,1 of 2,0.60u,13.61,
+2026-11-20,Swan Hill,5,,2,Dschingis Prestige,WIN,23.34,81.66,0.15,8,2 of 2,0.75u,13.61,
+2026-11-20,Swan Hill,5,,9,Endean Ace,WIN,18.20,79.70,0.62,31,1 of 2,0.62u,13.28,
+2026-11-20,Swan Hill,5,,9,Endean Ace,WIN,22.75,79.70,0.15,8,2 of 2,0.77u,13.28,
+2026-11-20,Swan Hill,5,,14,Fuwari,WIN,8.84,40.09,1.33,66,1 of 3,1.33u,6.68,
+2026-11-20,Swan Hill,5,,14,Fuwari,WIN,11.05,40.09,0.31,16,2 of 3,1.64u,6.68,
+2026-11-20,Swan Hill,5,,14,Fuwari,WIN,14.70,40.09,1.64,82,3 of 3,3.28u,6.68,opens $14.70+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,5,,12,Initial Moment,WIN,11.94,53.36,0.96,48,1 of 2,0.96u,8.89,
+2026-11-20,Swan Hill,5,,12,Initial Moment,WIN,14.92,53.36,0.23,12,2 of 2,1.19u,8.89,
+2026-11-20,Swan Hill,5,,7,Semper Fortis,WIN,16.44,72.33,0.69,34,1 of 2,0.69u,12.06,
+2026-11-20,Swan Hill,5,,7,Semper Fortis,WIN,20.55,72.33,0.16,8,2 of 2,0.85u,12.06,
+2026-11-20,Swan Hill,6,,2,Caribbean Villa,WIN,4.74,22.14,2.73,136,1 of 3,2.73u,3.69,
+2026-11-20,Swan Hill,6,,2,Caribbean Villa,WIN,5.93,22.14,0.57,28,2 of 3,3.30u,3.69,
+2026-11-20,Swan Hill,6,,2,Caribbean Villa,WIN,8.12,22.14,3.30,165,3 of 3,6.60u,3.69,opens $8.12+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,6,,6,Francine,WIN,7.97,36.35,1.49,74,1 of 3,1.49u,6.06,
+2026-11-20,Swan Hill,6,,6,Francine,WIN,9.96,36.35,0.35,18,2 of 3,1.84u,6.06,
+2026-11-20,Swan Hill,6,,6,Francine,WIN,13.33,36.35,1.84,92,3 of 3,3.68u,6.06,opens $13.33+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,6,,3,Mayfair Street,WIN,10.68,15.01,1.08,54,1 of 1,1.08u,8.00,EARLY: $15 or shorter only
+2026-11-20,Swan Hill,6,,5,Pacific Glamour,WIN,9.87,44.51,1.18,59,1 of 3,1.18u,7.42,
+2026-11-20,Swan Hill,6,,5,Pacific Glamour,WIN,12.34,44.51,0.28,14,2 of 3,1.46u,7.42,
+2026-11-20,Swan Hill,6,,5,Pacific Glamour,WIN,16.33,44.51,1.46,73,3 of 3,2.92u,7.42,opens $16.33+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,7,,9,Ambello,WIN,9.85,44.42,1.18,59,1 of 3,1.18u,7.40,
+2026-11-20,Swan Hill,7,,9,Ambello,WIN,12.31,44.42,0.28,14,2 of 3,1.46u,7.40,
+2026-11-20,Swan Hill,7,,9,Ambello,WIN,16.29,44.42,1.46,73,3 of 3,2.92u,7.40,opens $16.29+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,7,,14,Artpark,WIN,5.67,26.26,2.21,110,1 of 3,2.21u,4.38,
+2026-11-20,Swan Hill,7,,14,Artpark,WIN,7.09,26.26,0.48,24,2 of 3,2.69u,4.38,
+2026-11-20,Swan Hill,7,,14,Artpark,WIN,9.63,26.26,2.69,134,3 of 3,5.38u,4.38,opens $9.63+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,7,,2,Here Comes Wozza,WIN,10.78,48.43,1.07,54,1 of 2,1.07u,8.07,
+2026-11-20,Swan Hill,7,,2,Here Comes Wozza,WIN,13.47,48.43,0.26,13,2 of 2,1.33u,8.07,
+2026-11-20,Swan Hill,7,,5,Ponte Arcobaleno,WIN,15.67,69.11,0.72,36,1 of 2,0.72u,11.52,
+2026-11-20,Swan Hill,7,,5,Ponte Arcobaleno,WIN,19.59,69.11,0.17,8,2 of 2,0.89u,11.52,
+2026-11-20,Swan Hill,7,,8,Ville De Lumiere,WIN,6.65,15.01,1.83,92,1 of 3,1.83u,5.10,EARLY: $15 or shorter only
+2026-11-20,Swan Hill,7,,8,Ville De Lumiere,WIN,8.31,15.01,0.41,20,2 of 3,2.24u,5.10,EARLY: $15 or shorter only
+2026-11-20,Swan Hill,7,,8,Ville De Lumiere,WIN,11.22,15.01,2.24,112,3 of 3,4.48u,5.10,EARLY: $15 or shorter only; opens $11.22+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,8,,5,Share The Music,WIN,4.58,21.44,2.83,142,1 of 3,2.83u,3.57,
+2026-11-20,Swan Hill,8,,5,Share The Music,WIN,5.72,21.44,0.60,30,2 of 3,3.43u,3.57,
+2026-11-20,Swan Hill,8,,5,Share The Music,WIN,7.87,21.44,3.43,172,3 of 3,6.86u,3.57,opens $7.87+ (2.2x ours): stake doubled
+2026-11-20,Swan Hill,8,,6,Sir Loyne,WIN,12.29,54.85,0.93,46,1 of 2,0.93u,9.14,
+2026-11-20,Swan Hill,8,,6,Sir Loyne,WIN,15.36,54.85,0.22,11,2 of 2,1.15u,9.14,
+2026-11-20,Swan Hill,8,,4,Where's My Sock,WIN,11.46,51.31,1.01,50,1 of 2,1.01u,8.55,
+2026-11-20,Swan Hill,8,,4,Where's My Sock,WIN,14.33,51.31,0.23,12,2 of 2,1.24u,8.55,
+2026-11-20,Swan Hill,8,,8,Zetheros,WIN,10.89,48.87,1.06,53,1 of 2,1.06u,8.15,
+2026-11-20,Swan Hill,8,,8,Zetheros,WIN,13.61,48.87,0.25,12,2 of 2,1.31u,8.15,
