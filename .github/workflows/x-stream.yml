@@ -1,0 +1,42 @@
+name: x stream (shadow)
+
+# The tipster's posts the moment they are made: holds X's filtered stream open for up to ~6 hours (scripts/x_stream.py).
+# Started by hand or by the 8:30am and 12:15pm routines; a new run cancels the one before it (X allows one stream
+# connection). SHADOW ONLY (founder, 18 Nov 2026: "Don't do it live until I say it"): no BetMatic login, no bets.
+on:
+  workflow_dispatch:
+    inputs:
+      user:
+        description: 'X username'
+        default: 'AnthonyDon_'
+      hours:
+        description: 'hours to hold the stream (max 5.8)'
+        default: '5.8'
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: x-stream
+  cancel-in-progress: true
+
+jobs:
+  stream:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    environment: twitter
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: OCR for card images
+        run: pip install -q rapidocr-onnxruntime
+      - name: Hold the stream
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "x stream" && git config user.email "actions@users.noreply.github.com"
+          python scripts/x_stream.py "${{ github.event.inputs.user }}" --unit 50 --hours "${{ github.event.inputs.hours }}"
