@@ -1,0 +1,99 @@
+name: gh betmatic sheet
+
+# Sends the night's greyhound band sheet (Test 101, research/greyhound/topaz_sheet.py) to BetMatic as Market Open bets
+# on TAB, or cancels them (20 Nov 2026, founder: "We need to create like a betmatic sheet to bet before open"). Each
+# order is one price band with its own stake: it fires only if TAB's FIRST price is inside it.
+#
+# The sheet holds GRV's values, which are personal use, so it lives in this repository's Actions cache only (the
+# nightly card keeps it as sheet_DAY-betmatic.csv); this job restores it from there, keeps its ledger there too, and the
+# log prints counts only (betmatic_send.py --quiet). It runs in the "betmatic" environment, which needs the founder's
+# approval in GitHub before it starts and holds the BetMatic login: Claude starts it, the founder's approval is the
+# send. DRY RUN by default: dry_run=yes logs in, checks every order against BetMatic's race schedule, and sends nothing.
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'send (the sheet as Market Open bets) or cancel (every order this job sent for the day)'
+        type: choice
+        options: [send, cancel]
+        default: 'send'
+      day:
+        description: 'the race day, YYYY-MM-DD in Melbourne (blank = tomorrow)'
+        default: ''
+      unit:
+        description: 'dollars for 1% of the bank (a $1,000 bank is $10); each order stakes its percent of the bank'
+        default: '10'
+      dry_run:
+        description: 'yes = check every order against BetMatic, send nothing'
+        default: 'yes'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gh-betmatic-sheet
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    environment: betmatic
+    timeout-minutes: 90
+    env:
+      BETMATIC_EMAIL: ${{ secrets.BETMATIC_EMAIL }}
+      BETMATIC_PASSWORD: ${{ secrets.BETMATIC_PASSWORD }}
+      SESSION: ${{ secrets.BETMATIC_TAB_SESSION }}
+      A: ${{ github.event.inputs.action }}
+      UNIT: ${{ github.event.inputs.unit }}
+      DRY: ${{ github.event.inputs.dry_run }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+
+      - name: Restore the kept cards (Actions cache, read only; the night's sheet)
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/cards
+          key: topaz-cards-${{ github.run_id }}
+          restore-keys: topaz-cards-
+
+      - name: Restore the sheet ledger (Actions cache)
+        uses: actions/cache/restore@v4
+        with:
+          path: greyhound/cache/sheet-ledger
+          key: gh-sheet-ledger-${{ github.run_id }}
+          restore-keys: gh-sheet-ledger-
+
+      - name: BetMatic (counts only)
+        run: |
+          set -e
+          [ -n "$BETMATIC_EMAIL" ] && [ -n "$BETMATIC_PASSWORD" ] || { echo "BETMATIC_EMAIL / BETMATIC_PASSWORD are empty: add them under Settings > Environments > betmatic > Environment secrets"; exit 1; }
+          DAY="${{ github.event.inputs.day }}"; [ -n "$DAY" ] || DAY=$(TZ=Australia/Melbourne date -d tomorrow +%F)
+          F="greyhound/cache/cards/sheet_${DAY}-betmatic.csv"
+          L="greyhound/cache/sheet-ledger"
+          mkdir -p "$L"
+          SEND=""; [ "$DRY" = "yes" ] || SEND="--send"
+          case "$A" in
+            send)
+              [ -f "$F" ] || { echo "No sheet for $DAY in the kept cards: the nightly card makes it (gh topaz nightly, price)"; exit 1; }
+              echo "The sheet for $DAY: $(($(wc -l < "$F") - 1)) orders"
+              cp "$F" "$L/"        # the sender writes its ledger beside the order file it reads
+              python betmatic/betmatic_send.py send "$L/$(basename "$F")" --code Greyhounds --quiet --unit "$UNIT" \
+                --session "$SESSION" $SEND ;;
+            cancel)
+              G="$L/sheet_${DAY}-betmatic-ledger.csv"
+              [ -f "$G" ] || { echo "No ledger for $DAY: nothing this job sent to cancel"; exit 1; }
+              python betmatic/betmatic_send.py cancel "$G" $SEND ;;
+            *) echo "unknown action $A"; exit 1 ;;
+          esac
+
+      - name: Keep the sheet ledger (Actions cache)
+        if: always() && github.event.inputs.dry_run != 'yes' && hashFiles('greyhound/cache/sheet-ledger/*-ledger.csv') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: greyhound/cache/sheet-ledger
+          key: gh-sheet-ledger-${{ github.run_id }}

@@ -109,3 +109,23 @@ def test_card_page_groups_a_dog_s_orders():
     out = []
     C.sheet_section(out.append, sheet, races, lambda r: False)
     assert "3 orders" in "".join(out) and "$2.10-$2.74" in "".join(out).replace("&#36;", "$")
+
+
+def test_betmatic_orders_are_one_market_open_order_a_band():
+    o = pd.DataFrame({"day": "2026-11-21", "race_key": "k", "venue": "The Meadows", "race_no": "2", "box": "7.0",
+                      "dog_name": "SPHINX KEEPING", "dog": "1", "low": [2.10, 2.40], "high": [2.39, 2.74],
+                      "stake": [0.0213, 0.031]})
+    b = S.betmatic_orders(o)
+    assert list(b.number) == ["7", "7"] and list(b.venue) == ["THE MEADOWS"] * 2
+    # stake_units is percent of the bank: 2.13% and 3.1%
+    assert list(b.stake_units) == [2.13, 3.1] and list(b.min_odds) == [2.10, 2.40] and list(b.max_odds) == [2.39, 2.74]
+
+
+def test_sender_labels_and_venues_for_greyhounds():
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "betmatic"))
+    import betmatic_send as BS
+    o = {"date": "2026-11-21", "venue": "Bendigo", "race": "3", "number": "4"}
+    # a greyhound order at Bendigo never shares a label with a gallops order there the same day
+    assert BS.label(o, 1, code="Greyhounds").startswith("gh-") and BS.label(o, 1).startswith("fk-")
+    assert BS.vnorm("The Meadows") == BS.vnorm("MEADOWS") == "meadows" and BS.vnorm("Theodore") == "theodore"
+    assert BS.skip_reason("No. 7 is 'X' on BetMatic, not 'Y'") == "another runner at that number"

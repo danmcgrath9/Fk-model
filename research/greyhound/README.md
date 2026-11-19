@@ -9638,6 +9638,36 @@ race 3 it backed Echo Hunter at $3.40 against its own $3.10. Its drift to $5 is 
 and over 39,856 runners with two or more crossers the model's chances held up. Nothing changes the card. The inputs
 stay in `topaz_cross.py`.
 
+## The band sheet, live: BetMatic orders for TAB's open, set the night before (20 Nov 2026, `topaz_sheet.py`, `gh-betmatic-sheet.yml`)
+
+Founder, on 20 Nov: "We need to create like a betmatic sheet to bet before open". This puts Test 101's sheet on the
+live models. It is paper only until the founder says otherwise.
+
+- **The TAB-open model.** It predicts TAB's opening chance from the best model's inputs, minus the three built from
+  TAB's price, using round 80's settings and 600 rounds. TAB's usual book for each field size (the median over six
+  months) is kept beside it. It is fitted in the weekly train, after the best model, and was fitted once on 20 Nov.
+- **Each night** after the card is priced, every dog's best-model chance is priced at the 28 ladder prices from $1.15
+  to $41, with the rest of the field held at its predicted prices (Test 101's best sheet).
+- **A band gets an order** when the 2-point margin holds at both its ends and our fair price is under $15. Each band
+  is staked at the smaller quarter-Kelly share of the bank of its two ends, capped at 5%. The bands tile the prices to
+  the cent, so TAB's first price fires exactly one order.
+- **Where the sheet goes:**
+  - kept as `sheet_DAY.csv.gz` and as BetMatic's order file `sheet_DAY-betmatic.csv` (Actions cache only);
+  - sealed on the card, which shows it as "BetMatic sheet for TAB's open";
+  - scored each morning by the morning program at TAB's first price, as the "Band sheet" paper model.
+- **The send** (`gh-betmatic-sheet.yml`). It runs in the betmatic environment, so it needs the founder's approval,
+  and it does a dry run by default. Each band goes as one Market Open, Fixed Win bet on TAB, with its minimum and
+  maximum price. The stake is the order's percent of the bank times the unit (the dollars for 1%). The sender checks
+  every dog's name at its number in BetMatic's own field. The log prints counts only (`--quiet`), and the ledger stays
+  in the Actions cache.
+- **The sender's changes** (`betmatic/betmatic_send.py`):
+  - `--code Greyhounds`;
+  - labels start "gh-", so they never clash with a gallops label at Bendigo, Traralgon or Sale on the same day;
+  - a venue is matched to BetMatic's own name without a leading "The".
+- **Still to prove live:** whether BetMatic places within seconds of TAB's open at TAB's first price. BetMatic fired
+  Geelong R1's eight market-open orders at TAB's open on 27 Oct, but the bot skipped them because the TAB account held
+  under $1.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
