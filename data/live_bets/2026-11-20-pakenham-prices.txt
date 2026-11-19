@@ -1,88 +1,88 @@
-# Pakenham Park Fri 20 Nov, official going, final fields; no market yet; PROVISIONAL: 5 runners without a rider
-1, Duke Of Oman, 0, 0
-1, Silver Lightning, 0, 0
-1, Native Spirit, 0, 0
-1, Unannounced, 0, 0
-1, Angling Angel, 0, 0
-1, Victorious Dream, 0, 0
-1, Dissident Woods, 0, 0
-1, Another Pothole, 0, 0
-1, King Campania, 0, 0
-1, Boutin, 0, 0
-2, Ask The Captain, 0, 0
-2, Ashoka Tano, 0, 0
-2, Whatwashethinking, 0, 0
-2, Wizardess, 0, 0
-2, Galway Gal, 0, 0
-2, Sweet Champagne, 0, 0
-2, Russian Firebird, 0, 0
-2, Urban Creed, 0, 0
-2, Tequila's Bro, 0, 0
-2, Kermalina, 0, 0
-2, Terracotta Warrior, 0, 0
-3, Action Point, 0, 0
+# Pakenham Park Fri 20 Nov, official going, final fields; market open in R1,2,3,4,5,6,7,8
+1, Duke Of Oman, 51.00, 51.00, fk_open 51.00
+1, Silver Lightning, 13.00, 13.00, fk_open 11.00
+1, Native Spirit, 61.00, 61.00, fk_open 51.00
+1, Unannounced, 8.50, 8.50, fk_open 8.25
+1, Angling Angel, 2.05, 2.05, fk_open 2.85
+1, Victorious Dream, 3.70, 3.70, fk_open 3.00
+1, Dissident Woods, 10.00, 10.00, fk_open 8.25
+1, Another Pothole, SCR
+1, King Campania, 17.00, 17.00, fk_open 11.00
+1, Boutin, 10.00, 10.00, fk_open 11.00
+2, Ask The Captain, 151.00, 151.00, fk_open 151.00
+2, Ashoka Tano, 101.00, 101.00, fk_open 61.00
+2, Whatwashethinking, 41.00, 41.00, fk_open 31.00
+2, Wizardess, 101.00, 101.00, fk_open 61.00
+2, Galway Gal, 1.45, 1.45, fk_open 1.95
+2, Sweet Champagne, 13.00, 13.00, fk_open 11.00
+2, Russian Firebird, 15.00, 15.00, fk_open 11.00
+2, Urban Creed, 4.40, 4.40, fk_open 4.00
+2, Tequila's Bro, 16.00, 16.00, fk_open 31.00
+2, Kermalina, 19.00, 19.00, fk_open 13.00
+2, Terracotta Warrior, SCR
+3, Action Point, 5.00, 5.00, fk_open 4.40
 3, Hammer Head, 0, 0
-3, Gilgeous, 0, 0
-3, Frankie's Promise, 0, 0
-3, Helizangel, 0, 0
-3, Prestige Blackjack, 0, 0
-3, Savfield, 0, 0
-3, Tagged, 0, 0
-3, Hurtling, 0, 0
-3, Southpole, 0, 0
+3, Gilgeous, 4.60, 4.60, fk_open 3.50
+3, Frankie's Promise, 11.00, 11.00, fk_open 11.00
+3, Helizangel, 67.00, 67.00, fk_open 26.00
+3, Prestige Blackjack, 151.00, 151.00, fk_open 51.00
+3, Savfield, 7.50, 7.50, fk_open 8.00
+3, Tagged, 2.90, 2.90, fk_open 6.00
+3, Hurtling, 5.50, 5.50, fk_open 11.00
+3, Southpole, 17.00, 17.00, fk_open 8.00
 3, Brandon Bay, 0, 0
-4, Miss Lil, 0, 0
-4, Alodie, 0, 0
+4, Miss Lil, 101.00, 101.00, fk_open 101.00
+4, Alodie, 101.00, 101.00, fk_open 81.00
 4, Doubt It's Love, 0, 0
-4, Kadesh, 0, 0
-4, Hilovely, 0, 0
-4, Vespers, 0, 0
-4, Storm Bella, 0, 0
-4, Unkechaug, 0, 0
-4, Sabrina, 0, 0
-4, Heat Map, 0, 0
-4, Takasago, 0, 0
+4, Kadesh, 5.50, 5.50, fk_open 10.00
+4, Hilovely, 61.00, 61.00, fk_open 51.00
+4, Vespers, 9.00, 9.00, fk_open 7.50
+4, Storm Bella, 27.00, 27.00, fk_open 26.00
+4, Unkechaug, 1.60, 1.60, fk_open 1.65
+4, Sabrina, 12.00, 12.00, fk_open 21.00
+4, Heat Map, SCR
+4, Takasago, 7.00, 7.00, fk_open 7.00
 4, Royal Tea, SCR
-4, Lady Lola, 0, 0
-5, She Daresthe Devil, 0, 0
-5, Egerton, 0, 0
-5, Soju, 0, 0
-5, Miss Cotoletta, 0, 0
-5, Flowerdale, 0, 0
-5, Tillya Tepe, 0, 0
-5, Invincible Lover, 0, 0
-5, The Birthday Party, 0, 0
-5, Jundah, 0, 0
-6, Wind Dreamer, 0, 0
-6, Free To Play, 0, 0
-6, Bangholme, 0, 0
-6, Mafee, 0, 0
-6, Leantothemoon, 0, 0
-6, Pocket Size, 0, 0
-6, Chandler, 0, 0
-6, Sealand, 0, 0
-6, Determined Rose, 0, 0
-6, Vegas Missile, 0, 0
-7, Night Eruption, 0, 0
-7, Flash Of Dallas, 0, 0
-7, Lots Of Time, 0, 0
-7, Castelli In Aria, 0, 0
-7, Venetian Choice, 0, 0
-7, Farakta, 0, 0
-7, Meleys, 0, 0
-7, Himalayan, 0, 0
-7, Sabeeria, 0, 0
-7, Imponderable, 0, 0
-7, Sunlit Serenade, 0, 0
-8, Cryptic Clue, 0, 0
-8, Count Of Toulouse, 0, 0
-8, Gymkhana, 0, 0
-8, Crimson Miss, 0, 0
-8, Clarapatra, 0, 0
-8, Celestial Option, 0, 0
-8, Tipsy Gypsy, 0, 0
-8, Mike's Hope, 0, 0
-8, The Quiet Immortal, 0, 0
-8, Zovozo, 0, 0
-8, Rough Enuff, 0, 0
-8, Plucky Enuff, 0, 0
+4, Lady Lola, 23.00, 23.00, fk_open 26.00
+5, She Daresthe Devil, 23.00, 23.00, fk_open 22.50
+5, Egerton, 10.00, 10.00, fk_open 11.00
+5, Soju, 8.50, 8.50, fk_open 8.00
+5, Miss Cotoletta, 3.70, 3.70, fk_open 2.40
+5, Flowerdale, 7.00, 7.00, fk_open 11.00
+5, Tillya Tepe, 13.00, 13.00, fk_open 11.00
+5, Invincible Lover, 6.00, 6.00, fk_open 4.40
+5, The Birthday Party, 27.00, 27.00, fk_open 11.00
+5, Jundah, 3.60, 3.60, fk_open 6.25
+6, Wind Dreamer, 51.00, 51.00, fk_open 101.00
+6, Free To Play, SCR
+6, Bangholme, 35.00, 35.00, fk_open 41.00
+6, Mafee, 6.00, 6.00, fk_open 14.00
+6, Leantothemoon, 7.50, 7.50, fk_open 16.00
+6, Pocket Size, 5.50, 5.50, fk_open 21.00
+6, Chandler, SCR
+6, Sealand, 4.20, 4.20, fk_open 17.00
+6, Determined Rose, 5.00, 5.00, fk_open 5.50
+6, Vegas Missile, 3.90, 3.90, fk_open 6.50
+7, Night Eruption, 151.00, 151.00, fk_open 101.00
+7, Flash Of Dallas, 51.00, 51.00, fk_open 26.00
+7, Lots Of Time, 11.00, 11.00, fk_open 15.00
+7, Castelli In Aria, 4.40, 4.40, fk_open 8.00
+7, Venetian Choice, 23.00, 23.00, fk_open 15.00
+7, Farakta, 5.00, 5.00, fk_open 4.00
+7, Meleys, 8.50, 8.50, fk_open 6.00
+7, Himalayan, 4.40, 4.40, fk_open 4.00
+7, Sabeeria, 13.00, 13.00, fk_open 11.00
+7, Imponderable, 5.00, 5.00, fk_open 6.00
+7, Sunlit Serenade, 27.00, 27.00, fk_open 11.00
+8, Cryptic Clue, 151.00, 151.00, fk_open 101.00
+8, Count Of Toulouse, 35.00, 35.00, fk_open 31.00
+8, Gymkhana, 27.00, 27.00, fk_open 15.00
+8, Crimson Miss, 12.00, 12.00, fk_open 9.00
+8, Clarapatra, 23.00, 23.00, fk_open 21.00
+8, Celestial Option, 27.00, 27.00, fk_open 23.00
+8, Tipsy Gypsy, 8.50, 8.50, fk_open 13.00
+8, Mike's Hope, 5.00, 5.00, fk_open 5.00
+8, The Quiet Immortal, 4.00, 4.00, fk_open 4.40
+8, Zovozo, 11.00, 11.00, fk_open 10.00
+8, Rough Enuff, 3.70, 3.70, fk_open 3.50
+8, Plucky Enuff, 14.00, 14.00, fk_open 7.50

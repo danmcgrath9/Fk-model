@@ -1,0 +1,79 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-20,Pakenham,1,,9,Angling Angel,WIN,2.29,3.99,6.11,306,1 of 2,6.11u,1.95,opens under $4: edge 1.15
+2026-11-20,Pakenham,1,,9,Angling Angel,WIN,2.86,3.99,1.28,64,2 of 2,7.39u,1.95,opens under $4: edge 1.15
+2026-11-20,Pakenham,1,,9,Angling Angel,WIN,4.00,11.71,6.57,328,1 of 3,6.57u,1.95,
+2026-11-20,Pakenham,1,,9,Angling Angel,WIN,4.00,11.71,1.06,53,2 of 3,7.63u,1.95,
+2026-11-20,Pakenham,1,,9,Angling Angel,WIN,4.30,11.71,2.37,118,3 of 3,10.00u,1.95,opens $4.30+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,1,,5,Boutin,WIN,15.81,69.71,0.71,36,1 of 2,0.71u,11.62,
+2026-11-20,Pakenham,1,,5,Boutin,WIN,19.76,69.71,0.18,9,2 of 2,0.89u,11.62,
+2026-11-20,Pakenham,1,,10,Unannounced,WIN,19.00,83.03,0.59,30,1 of 2,0.59u,13.84,
+2026-11-20,Pakenham,1,,10,Unannounced,WIN,23.75,83.03,0.14,7,2 of 2,0.73u,13.84,
+2026-11-20,Pakenham,1,,8,Victorious Dream,WIN,5.80,26.85,2.14,107,1 of 3,2.14u,4.48,
+2026-11-20,Pakenham,1,,8,Victorious Dream,WIN,7.25,26.85,0.47,24,2 of 3,2.61u,4.48,
+2026-11-20,Pakenham,1,,8,Victorious Dream,WIN,9.85,26.85,2.61,130,3 of 3,5.22u,4.48,opens $9.85+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,2,,8,Galway Gal,WIN,1.87,3.99,8.58,429,1 of 2,8.58u,1.61,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-20,Pakenham,2,,8,Galway Gal,WIN,2.34,3.99,1.42,71,2 of 2,10.00u,1.61,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-20,Pakenham,2,,8,Galway Gal,WIN,4.00,9.64,10.00,500,1 of 1,10.00u,1.61,EARLY: $15 or shorter only; opens $4.00+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,2,,3,Urban Creed,WIN,7.86,15.01,1.52,76,1 of 3,1.52u,5.97,EARLY: $15 or shorter only
+2026-11-20,Pakenham,2,,3,Urban Creed,WIN,9.83,15.01,0.35,18,2 of 3,1.87u,5.97,EARLY: $15 or shorter only
+2026-11-20,Pakenham,2,,3,Urban Creed,WIN,13.15,15.01,1.87,94,3 of 3,3.74u,5.97,EARLY: $15 or shorter only; opens $13.15+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,3,,1,Action Point,WIN,13.78,61.16,0.82,41,1 of 2,0.82u,10.19,
+2026-11-20,Pakenham,3,,1,Action Point,WIN,17.22,61.16,0.20,10,2 of 2,1.02u,10.19,
+2026-11-20,Pakenham,3,,3,Gilgeous,WIN,10.09,45.47,1.15,57,1 of 3,1.15u,7.58,
+2026-11-20,Pakenham,3,,3,Gilgeous,WIN,12.61,45.47,0.27,14,2 of 3,1.42u,7.58,
+2026-11-20,Pakenham,3,,3,Gilgeous,WIN,16.68,45.47,1.42,71,3 of 3,2.84u,7.58,opens $16.68+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,3,,9,Tagged,WIN,5.33,24.79,2.36,118,1 of 3,2.36u,4.13,
+2026-11-20,Pakenham,3,,9,Tagged,WIN,6.66,24.79,0.52,26,2 of 3,2.88u,4.13,
+2026-11-20,Pakenham,3,,9,Tagged,WIN,9.10,24.79,2.88,144,3 of 3,5.76u,4.13,opens $9.10+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,4,,11,Takasago,WIN,12.85,15.01,0.49,24,1 of 1,0.49u,9.54,EARLY: $15 or shorter only
+2026-11-20,Pakenham,4,,12,Unkechaug,WIN,2.06,3.99,7.30,365,1 of 3,7.30u,1.76,opens under $4: edge 1.15
+2026-11-20,Pakenham,4,,12,Unkechaug,WIN,2.58,3.99,1.35,68,2 of 3,8.65u,1.76,opens under $4: edge 1.15
+2026-11-20,Pakenham,4,,12,Unkechaug,WIN,3.88,3.99,1.35,68,3 of 3,10.00u,1.76,opens under $4: edge 1.15; opens $3.88+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,4,,12,Unkechaug,WIN,4.00,10.56,10.00,500,1 of 1,10.00u,1.76,opens $4.00+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,4,,6,Vespers,WIN,14.69,15.01,0.42,21,1 of 1,0.42u,10.84,EARLY: $15 or shorter only
+2026-11-20,Pakenham,5,,2,Egerton,WIN,16.52,72.66,0.68,34,1 of 2,0.68u,12.11,
+2026-11-20,Pakenham,5,,2,Egerton,WIN,20.65,72.66,0.17,8,2 of 2,0.85u,12.11,
+2026-11-20,Pakenham,5,,5,Invincible Lover,WIN,8.62,39.16,1.37,68,1 of 3,1.37u,6.53,
+2026-11-20,Pakenham,5,,5,Invincible Lover,WIN,10.77,39.16,0.32,16,2 of 3,1.69u,6.53,
+2026-11-20,Pakenham,5,,5,Invincible Lover,WIN,14.36,39.16,1.69,84,3 of 3,3.38u,6.53,opens $14.36+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,5,,4,Jundah,WIN,8.77,39.78,1.34,67,1 of 3,1.34u,6.63,
+2026-11-20,Pakenham,5,,4,Jundah,WIN,10.96,39.78,0.32,16,2 of 3,1.66u,6.63,
+2026-11-20,Pakenham,5,,4,Jundah,WIN,14.59,39.78,1.66,83,3 of 3,3.32u,6.63,opens $14.59+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,5,,3,Miss Cotoletta,WIN,5.44,25.26,2.31,116,1 of 3,2.31u,4.21,
+2026-11-20,Pakenham,5,,3,Miss Cotoletta,WIN,6.80,25.26,0.50,25,2 of 3,2.81u,4.21,
+2026-11-20,Pakenham,5,,3,Miss Cotoletta,WIN,9.27,25.26,2.81,140,3 of 3,5.62u,4.21,opens $9.27+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,5,,8,Soju,WIN,13.84,61.42,0.82,41,1 of 2,0.82u,10.24,
+2026-11-20,Pakenham,5,,8,Soju,WIN,17.30,61.42,0.20,10,2 of 2,1.02u,10.24,
+2026-11-20,Pakenham,6,,8,Determined Rose,WIN,7.05,32.32,1.71,86,1 of 3,1.71u,5.39,
+2026-11-20,Pakenham,6,,8,Determined Rose,WIN,8.81,32.32,0.39,20,2 of 3,2.10u,5.39,
+2026-11-20,Pakenham,6,,8,Determined Rose,WIN,11.86,32.32,2.10,105,3 of 3,4.20u,5.39,opens $11.86+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,6,,1,Mafee,WIN,6.86,31.52,1.77,88,1 of 3,1.77u,5.25,
+2026-11-20,Pakenham,6,,1,Mafee,WIN,8.58,31.52,0.39,20,2 of 3,2.16u,5.25,
+2026-11-20,Pakenham,6,,1,Mafee,WIN,11.56,31.52,2.16,108,3 of 3,4.32u,5.25,opens $11.56+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,6,,4,Pocket Size,WIN,11.55,51.71,1.00,50,1 of 2,1.00u,8.62,
+2026-11-20,Pakenham,6,,4,Pocket Size,WIN,14.44,51.71,0.23,12,2 of 2,1.23u,8.62,
+2026-11-20,Pakenham,6,,7,Sealand,WIN,5.44,25.26,2.31,116,1 of 3,2.31u,4.21,
+2026-11-20,Pakenham,6,,7,Sealand,WIN,6.80,25.26,0.50,25,2 of 3,2.81u,4.21,
+2026-11-20,Pakenham,6,,7,Sealand,WIN,9.27,25.26,2.81,140,3 of 3,5.62u,4.21,opens $9.27+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,7,,7,Castelli In Aria,WIN,14.85,65.66,0.76,38,1 of 2,0.76u,10.94,
+2026-11-20,Pakenham,7,,7,Castelli In Aria,WIN,18.56,65.66,0.19,10,2 of 2,0.95u,10.94,
+2026-11-20,Pakenham,7,,9,Farakta,WIN,6.52,30.02,1.87,94,1 of 3,1.87u,5.00,
+2026-11-20,Pakenham,7,,9,Farakta,WIN,8.15,30.02,0.42,21,2 of 3,2.29u,5.00,
+2026-11-20,Pakenham,7,,9,Farakta,WIN,11.01,30.02,2.29,114,3 of 3,4.58u,5.00,opens $11.01+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,7,,5,Himalayan,WIN,8.10,36.91,1.46,73,1 of 3,1.46u,6.15,
+2026-11-20,Pakenham,7,,5,Himalayan,WIN,10.12,36.91,0.34,17,2 of 3,1.80u,6.15,
+2026-11-20,Pakenham,7,,5,Himalayan,WIN,13.54,36.91,1.80,90,3 of 3,3.60u,6.15,opens $13.54+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,8,,8,Crimson Miss,WIN,14.21,62.97,0.80,40,1 of 2,0.80u,10.50,
+2026-11-20,Pakenham,8,,8,Crimson Miss,WIN,17.76,62.97,0.19,10,2 of 2,0.99u,10.50,
+2026-11-20,Pakenham,8,,4,Mike's Hope,WIN,9.83,44.34,1.19,60,1 of 3,1.19u,7.39,
+2026-11-20,Pakenham,8,,4,Mike's Hope,WIN,12.29,44.34,0.28,14,2 of 3,1.47u,7.39,
+2026-11-20,Pakenham,8,,4,Mike's Hope,WIN,16.26,44.34,1.47,74,3 of 3,2.94u,7.39,opens $16.26+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,8,,9,Plucky Enuff,WIN,19.45,84.88,0.57,28,1 of 2,0.57u,14.15,
+2026-11-20,Pakenham,8,,9,Plucky Enuff,WIN,24.31,84.88,0.14,7,2 of 2,0.71u,14.15,
+2026-11-20,Pakenham,8,,1,Rough Enuff,WIN,4.52,21.18,2.88,144,1 of 3,2.88u,3.53,
+2026-11-20,Pakenham,8,,1,Rough Enuff,WIN,5.65,21.18,0.60,30,2 of 3,3.48u,3.53,
+2026-11-20,Pakenham,8,,1,Rough Enuff,WIN,7.77,21.18,3.48,174,3 of 3,6.96u,3.53,opens $7.77+ (2.2x ours): stake doubled
+2026-11-20,Pakenham,8,,2,The Quiet Immortal,WIN,12.19,54.42,0.94,47,1 of 2,0.94u,9.07,
+2026-11-20,Pakenham,8,,2,The Quiet Immortal,WIN,15.24,54.42,0.23,12,2 of 2,1.17u,9.07,
+2026-11-20,Pakenham,8,,10,Zovozo,WIN,17.06,74.94,0.66,33,1 of 2,0.66u,12.49,
+2026-11-20,Pakenham,8,,10,Zovozo,WIN,21.32,74.94,0.16,8,2 of 2,0.82u,12.49,

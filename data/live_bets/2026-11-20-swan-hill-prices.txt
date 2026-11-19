@@ -1,118 +1,121 @@
-# Swan Hill Fri 20 Nov, official going, final fields; no market yet; PROVISIONAL: 8 runners without a rider
-1, Finnish Girl, 0, 0
-1, Titus Augustus, 0, 0
-1, Malbec, 0, 0
-1, Noddy's Girl, 0, 0
-1, Josie Kate, 0, 0
-1, Song'n'dance, 0, 0
-1, Locard, 0, 0
-1, Cavallo Corsa, 0, 0
-1, Stylish Beau, 0, 0
-1, Hansa Danca, 0, 0
-1, Press Jonkit, 0, 0
-2, Oh La Belle, 0, 0
-2, Big Storm, 0, 0
-2, Engineering Marvel, 0, 0
-2, San Marco Kid, 0, 0
-2, Just Dusty, 0, 0
-2, Begonia, 0, 0
-2, Charming Chords, 0, 0
-2, My Infinity, 0, 0
-2, Miss Verona, 0, 0
-2, Frewdamoss, 0, 0
-2, Hells Gates, 0, 0
-2, Isitmeoryou, 0, 0
-3, Roughnut, 0, 0
-3, Lord Lonny, 0, 0
-3, Cee Rose, 0, 0
-3, Al's Diemen, SCR
-3, Lady Colonist, 0, 0
-3, Khan Capital, 0, 0
-3, He's On Song, 0, 0
-3, Some Chance, 0, 0
+# Swan Hill Fri 20 Nov, official going, final fields; market open in R1,2,3,4,5,6,7,8
+1, Finnish Girl, 81.00, 81.00, fk_open 51.00
+1, Titus Augustus, 14.00, 14.00, fk_open 11.00
+1, Malbec, 201.00, 201.00, fk_open 101.00
+1, Noddy's Girl, 101.00, 101.00, fk_open 51.00
+1, Josie Kate, 151.00, 151.00, fk_open 101.00
+1, Song'n'dance, 151.00, 151.00, fk_open 101.00
+1, Locard, 3.10, 3.10, fk_open 3.90
+1, Cavallo Corsa, 9.50, 9.50, fk_open 8.00
+1, Stylish Beau, 23.00, 23.00, fk_open 11.00
+1, Hansa Danca, 6.00, 6.00, fk_open 4.40
+1, Press Jonkit, 2.00, 2.00, fk_open 2.15
+2, Oh La Belle, 151.00, 151.00, fk_open 101.00
+2, Big Storm, 4.50, 4.50, fk_open 2.25
+2, Engineering Marvel, 71.00, 71.00, fk_open 21.00
+2, San Marco Kid, 27.00, 27.00, fk_open 7.50
+2, Just Dusty, 151.00, 151.00, fk_open 101.00
+2, Begonia, SCR
+2, Charming Chords, 151.00, 151.00, fk_open 101.00
+2, My Infinity, 71.00, 71.00, fk_open 101.00
+2, Miss Verona, 5.50, 5.50, fk_open 7.50
+2, Frewdamoss, 14.00, 14.00, fk_open 26.00
+2, Hells Gates, 1.70, 1.70, fk_open 2.50
+2, Isitmeoryou, 10.00, 10.00, fk_open 14.00
+3, Roughnut, 151.00, 151.00, fk_open 76.00
+3, Lord Lonny, 34.00, 34.00, fk_open 21.00
+3, Cee Rose, 81.00, 81.00, fk_open 41.00
+3, Fabulous One, SCR
+3, Al's Diemen, 11.00, 11.00, fk_open 19.50
+3, Lady Colonist, SCR
+3, Khan Capital, 101.00, 101.00, fk_open 41.00
+3, He's On Song, 15.00, 15.00, fk_open 9.83
+3, Some Chance, 6.00, 6.00, fk_open 6.00
 3, Dimachaerus, SCR
-3, Upcoming, 0, 0
-3, Intervened, 0, 0
-3, Apadana, SCR
-3, Catch A Princess, 0, 0
-3, Poorlittlerichkid, 0, 0
-3, Katiya, SCR
-3, Water Mill, 0, 0
-3, Jaffa Cake, 0, 0
-4, Jefferson, 0, 0
-4, Baby Rider, 0, 0
-4, Winds Of March, SCR
-4, Surfy Pete, 0, 0
-4, Bellakai, SCR
-4, Hidden Witness, 0, 0
-4, Harry Devil, 0, 0
-4, Frozen Tide, 0, 0
-4, Vivid Blooms, 0, 0
-4, Asal, 0, 0
-4, The Daily Planet, 0, 0
+3, Upcoming, 7.00, 7.00, fk_open 6.75
+3, Intervened, 5.00, 5.00, fk_open 5.00
+3, Apadana, 8.50, 8.50, fk_open 16.00
+3, Catch A Princess, 3.20, 3.20, fk_open 3.15
+3, Poorlittlerichkid, 12.00, 12.00, fk_open 7.00
+3, Katiya, 151.00, 151.00, fk_open 76.00
+3, Water Mill, SCR
+3, Jaffa Cake, SCR
+4, Jefferson, 51.00, 51.00, fk_open 32.50
+4, Baby Rider, 51.00, 51.00, fk_open 32.50
+4, Winds Of March, 101.00, 101.00, fk_open 76.00
+4, Surfy Pete, 7.00, 7.00, fk_open 8.75
+4, Bellakai, 61.00, 61.00, fk_open 74.00
+4, Hidden Witness, SCR
+4, Harry Devil, SCR
+4, Frozen Tide, 11.00, 11.00, fk_open 8.75
+4, Vivid Blooms, 35.00, 35.00, fk_open 33.00
+4, Asal, 4.00, 4.00, fk_open 5.75
+4, The Daily Planet, 16.00, 16.00, fk_open 16.00
 4, Sweater Girl, SCR
-4, No Overtaking, 0, 0
+4, No Overtaking, 11.00, 11.00, fk_open 12.50
 4, Burning Sensation, SCR
-4, Stuntman, 0, 0
+4, Stuntman, 3.50, 3.50, fk_open 3.90
 4, Dealer Sing, 0, 0
-4, Tell Me Why, 0, 0
-4, Hexed, 0, 0
-5, Bannerton, SCR
-5, Semper Fortis, 0, 0
-5, Gift Of Oratory, 0, 0
-5, Last Raider, 0, 0
-5, Endean Ace, 0, 0
-5, Crossoverkid, 0, 0
-5, Dschingis Prestige, 0, 0
-5, Kawhia, SCR
-5, Smokin' Rohie, 0, 0
+4, Tell Me Why, 5.25, 5.25, fk_open 8.25
+4, Hexed, 31.00, 31.00, fk_open 17.50
+5, Bannerton, 51.00, 51.00, fk_open 41.00
+5, Semper Fortis, 12.00, 12.00, fk_open 17.00
+5, Gift Of Oratory, 26.00, 26.00, fk_open 34.00
+5, Last Raider, 23.00, 23.00, fk_open 34.00
+5, Endean Ace, 5.50, 5.50, fk_open 23.00
+5, Crossoverkid, 4.20, 4.20, fk_open 5.50
+5, Dschingis Prestige, 9.50, 9.50, fk_open 8.50
+5, Kawhia, 26.00, 26.00, fk_open 81.00
+5, Smokin' Rohie, 16.00, 16.00, fk_open 21.00
 5, Callawadda, 0, 0
-5, Initial Moment, 0, 0
+5, Initial Moment, 7.50, 7.50, fk_open 8.50
 5, Fuwari, 0, 0
-5, Danzagrunt, SCR
-5, Legs Power, 0, 0
-5, Sasterion, 0, 0
-5, King Kauffo, 0, 0
-5, Creusa, 0, 0
-6, Ask For More, SCR
-6, Francine, 0, 0
-6, Padstow Polly, 0, 0
-6, El Salto, 0, 0
-6, Strike Gold, 0, 0
-6, Doubt I'm Rich, 0, 0
-6, Ellie's Song, 0, 0
-6, Unobscured, 0, 0
-6, Pacific Glamour, 0, 0
-6, Gamadale Possum, 0, 0
-6, Caribbean Villa, 0, 0
-6, Mayfair Street, 0, 0
-7, Mahjing, SCR
-7, Ambello, 0, 0
-7, Whiskey And Beer, SCR
-7, Owl Witness, 0, 0
-7, Artpark, 0, 0
-7, The Mount, 0, 0
-7, Larza City, 0, 0
-7, Here Comes Wozza, 0, 0
-7, Drunken Sailor, 0, 0
-7, Attain, 0, 0
-7, Ponte Arcobaleno, 0, 0
-7, Ville De Lumiere, 0, 0
-7, Mythic, 0, 0
-7, Kikkuli, 0, 0
-7, Foxiet, 0, 0
-7, Popthebubbly, 0, 0
-7, Scartaka, SCR
-8, Lim's Ida, 0, 0
-8, Billie Bronx, 0, 0
-8, The Genius, 0, 0
-8, Where's My Sock, 0, 0
-8, Wareo Road, 0, 0
-8, Regal Surge, 0, 0
-8, Melodee Rose, 0, 0
-8, More Give It, 0, 0
-8, Watt On Earth, 0, 0
-8, Share The Music, 0, 0
-8, Sir Loyne, 0, 0
-8, Somebody Told Me, 0, 0
-8, Zetheros, 0, 0
+5, Danzagrunt, 101.00, 101.00, fk_open 81.00
+5, Legs Power, 14.00, 14.00, fk_open 21.00
+5, Sasterion, 17.00, 17.00, fk_open 21.00
+5, King Kauffo, SCR
+5, Creusa, 6.50, 6.50, fk_open 8.50
+6, Ask For More, 201.00, 201.00, fk_open 86.00
+6, Francine, 9.00, 9.00, fk_open 7.50
+6, Padstow Polly, 201.00, 201.00, fk_open 86.00
+6, El Salto, 21.00, 21.00, fk_open 8.75
+6, Strike Gold, 8.00, 8.00, fk_open 9.25
+6, Doubt I'm Rich, SCR
+6, In Love, SCR
+6, Ellie's Song, 201.00, 201.00, fk_open 46.00
+6, Unobscured, 3.50, 3.50, fk_open 5.25
+6, Pacific Glamour, 10.00, 10.00, fk_open 4.90
+6, Gamadale Possum, 41.00, 41.00, fk_open 23.50
+6, Caribbean Villa, 3.10, 3.10, fk_open 3.75
+6, Mayfair Street, 6.75, 6.75, fk_open 5.50
+7, Mahjing, 81.00, 81.00, fk_open 81.00
+7, Ambello, 10.00, 10.00, fk_open 6.50
+7, Whiskey And Beer, 0, 0
+7, Owl Witness, 21.00, 21.00, fk_open 26.00
+7, Artpark, 3.30, 3.30, fk_open 8.00
+7, The Mount, SCR
+7, Larza City, 23.00, 23.00, fk_open 34.00
+7, Here Comes Wozza, 10.00, 10.00, fk_open 8.00
+7, Drunken Sailor, 9.50, 9.50, fk_open 10.00
+7, Attain, SCR
+7, Ponte Arcobaleno, 7.50, 7.50, fk_open 9.00
+7, Ville De Lumiere, 4.00, 4.00, fk_open 9.00
+7, Mythic, SCR
+7, Kikkuli, 11.00, 11.00, fk_open 12.00
+7, Foxiet, 26.00, 26.00, fk_open 26.00
+7, Popthebubbly, SCR
+7, Scartaka, 81.00, 81.00, fk_open 81.00
+8, Lim's Ida, 26.00, 26.00, fk_open 10.50
+8, Blakmax, SCR
+8, Billie Bronx, 21.00, 21.00, fk_open 17.00
+8, The Genius, 51.00, 51.00, fk_open 26.00
+8, Where's My Sock, 9.00, 9.00, fk_open 10.00
+8, Wareo Road, 51.00, 51.00, fk_open 41.00
+8, Regal Surge, 5.50, 5.50, fk_open 9.00
+8, Melodee Rose, 31.00, 31.00, fk_open 17.00
+8, More Give It, 61.00, 61.00, fk_open 37.50
+8, Watt On Earth, SCR
+8, Share The Music, 2.80, 2.80, fk_open 2.95
+8, Sir Loyne, 7.50, 7.50, fk_open 6.50
+8, Somebody Told Me, 14.00, 14.00, fk_open 17.00
+8, Zetheros, 5.25, 5.25, fk_open 6.25

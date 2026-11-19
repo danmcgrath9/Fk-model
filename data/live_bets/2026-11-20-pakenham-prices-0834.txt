@@ -1,0 +1,88 @@
+# Pakenham Park Fri 20 Nov, official going, final fields; no market yet; PROVISIONAL: 5 runners without a rider
+1, Duke Of Oman, 0, 0
+1, Silver Lightning, 0, 0
+1, Native Spirit, 0, 0
+1, Unannounced, 0, 0
+1, Angling Angel, 0, 0
+1, Victorious Dream, 0, 0
+1, Dissident Woods, 0, 0
+1, Another Pothole, 0, 0
+1, King Campania, 0, 0
+1, Boutin, 0, 0
+2, Ask The Captain, 0, 0
+2, Ashoka Tano, 0, 0
+2, Whatwashethinking, 0, 0
+2, Wizardess, 0, 0
+2, Galway Gal, 0, 0
+2, Sweet Champagne, 0, 0
+2, Russian Firebird, 0, 0
+2, Urban Creed, 0, 0
+2, Tequila's Bro, 0, 0
+2, Kermalina, 0, 0
+2, Terracotta Warrior, 0, 0
+3, Action Point, 0, 0
+3, Hammer Head, 0, 0
+3, Gilgeous, 0, 0
+3, Frankie's Promise, 0, 0
+3, Helizangel, 0, 0
+3, Prestige Blackjack, 0, 0
+3, Savfield, 0, 0
+3, Tagged, 0, 0
+3, Hurtling, 0, 0
+3, Southpole, 0, 0
+3, Brandon Bay, 0, 0
+4, Miss Lil, 0, 0
+4, Alodie, 0, 0
+4, Doubt It's Love, 0, 0
+4, Kadesh, 0, 0
+4, Hilovely, 0, 0
+4, Vespers, 0, 0
+4, Storm Bella, 0, 0
+4, Unkechaug, 0, 0
+4, Sabrina, 0, 0
+4, Heat Map, 0, 0
+4, Takasago, 0, 0
+4, Royal Tea, SCR
+4, Lady Lola, 0, 0
+5, She Daresthe Devil, 0, 0
+5, Egerton, 0, 0
+5, Soju, 0, 0
+5, Miss Cotoletta, 0, 0
+5, Flowerdale, 0, 0
+5, Tillya Tepe, 0, 0
+5, Invincible Lover, 0, 0
+5, The Birthday Party, 0, 0
+5, Jundah, 0, 0
+6, Wind Dreamer, 0, 0
+6, Free To Play, 0, 0
+6, Bangholme, 0, 0
+6, Mafee, 0, 0
+6, Leantothemoon, 0, 0
+6, Pocket Size, 0, 0
+6, Chandler, 0, 0
+6, Sealand, 0, 0
+6, Determined Rose, 0, 0
+6, Vegas Missile, 0, 0
+7, Night Eruption, 0, 0
+7, Flash Of Dallas, 0, 0
+7, Lots Of Time, 0, 0
+7, Castelli In Aria, 0, 0
+7, Venetian Choice, 0, 0
+7, Farakta, 0, 0
+7, Meleys, 0, 0
+7, Himalayan, 0, 0
+7, Sabeeria, 0, 0
+7, Imponderable, 0, 0
+7, Sunlit Serenade, 0, 0
+8, Cryptic Clue, 0, 0
+8, Count Of Toulouse, 0, 0
+8, Gymkhana, 0, 0
+8, Crimson Miss, 0, 0
+8, Clarapatra, 0, 0
+8, Celestial Option, 0, 0
+8, Tipsy Gypsy, 0, 0
+8, Mike's Hope, 0, 0
+8, The Quiet Immortal, 0, 0
+8, Zovozo, 0, 0
+8, Rough Enuff, 0, 0
+8, Plucky Enuff, 0, 0
