@@ -7,7 +7,7 @@ number, horse, finishing position (None when Betwatch has no result yet), scratc
 price before the start. The picks themselves are matched where the private key is (the picks were sealed the same
 way), so the public log carries counts only.
 """
-import argparse, base64, json, os, sys, tempfile
+import argparse, base64, json, math, os, sys, tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -23,10 +23,10 @@ def main():
     rows = []
     for r in races:
         for x in runner_rows(B.compact(r)):
+            val = lambda v: None if v is None or (isinstance(v, float) and math.isnan(v)) else v
             rows.append({"track": x["bw_track"], "race": x["race_number"], "no": x["number"], "horse": x["horse_name"],
-                         "pos": None if x["bw_pos"] != x["bw_pos"] else int(x["bw_pos"]), "scratched": x["scratched"],
-                         "tab_first": x["tab_open"] if x["tab_open"] == x["tab_open"] else None,
-                         "tab_last": x["tab_last"] if x["tab_last"] == x["tab_last"] else None})
+                         "pos": None if val(x["bw_pos"]) is None else int(x["bw_pos"]), "scratched": x["scratched"],
+                         "tab_first": val(x["tab_open"]), "tab_last": val(x["tab_last"])})
     done = len({(r["track"], r["race"]) for r in rows if r["pos"] is not None})
     print(f"{a.day}: {len(races)} races, {len(rows)} runners; races with a result {done}")
     with tempfile.NamedTemporaryFile("wb", suffix=".pem", delete=False) as fh:
