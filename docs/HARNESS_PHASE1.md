@@ -475,3 +475,43 @@ even (-2.2% at 5% and 10%), which the form alone never did: a first sign of an e
 TAB's opener. The second half is much weaker than the first in every row, and these are a few hundred bets in one
 state, so this is direction, not proof. Next: the 62 unreadable files, whether the 26% of unjoined runners are a name
 mismatch, and the live picks (bw_live.py) to carry sectionals for Queensland races.
+
+## Test 11: with sectionals, how close to BSP, and profit at TAB's first price? (19 Nov 2026, bw_bsp_sect.py, run 44439467885)
+
+Founder, 19 Nov: "we also want to get close to BSP and make a profit on tabs opening price". Test 9's Betfair-joined
+form+ with and without Racing Queensland's sectional records (Test 10), on Queensland's 2026 races (1,713 with a BSP
+and a TAB first price on every runner); stage 2 fitted on Queensland validation.
+
+| price | LL 1st half | LL 2nd half | KL to BSP 1st half | KL 2nd half | gap to BSP closed |
+|---|---|---|---|---|---|
+| equal chances | 2.1274 | 2.1592 | 0.6193 | 0.6369 | 0% |
+| form+ | 1.9383 | 1.9317 | 0.4294 | 0.4115 | 30.3% |
+| **form+ + sectionals** | **1.8300** | **1.8348** | **0.3295** | **0.3284** | **45.1%** |
+| TAB first price | 1.6577 | 1.6343 | 0.1604 | 0.1553 | 72.2% |
+| stage 2: form+ with TAB first (0.20 / 1.25) | 1.6260 | 1.5933 | 0.1313 | 0.1255 | 77.5% |
+| **stage 2: form+ + sectionals with TAB first (0.30 / 1.15)** | **1.6224** | **1.5901** | **0.1291** | **0.1224** | **78.0%** |
+| TAB last price | 1.5085 | 1.4902 | 0.0322 | 0.0299 | 93.5% |
+| pre-play WAP | 1.4780 | 1.4603 | 0.0113 | 0.0111 | 97.9% |
+| BSP | 1.4602 | 1.4489 | 0 | 0 | 100% |
+
+On its own the form price moves from 30% to 45% of the way to BSP with sectionals, the largest step any input has
+given; with TAB's first price it is 78%, half a point better than without. So in Queensland the form price is about
+halfway to BSP and the combined price is closer to BSP than TAB's opener, but well short of where the market ends.
+
+**Paper bets at TAB's first price, stage 2 with sectionals** (without sectionals in brackets, same edge and half):
+
+| edge | half | bets | ROI at TAB first | at TAB last | at BSP, 8% comm. | A/E v BSP |
+|---|---|---|---|---|---|---|
+| 5% | 1st | 184 (87) | +28.6% (+39.8%) | -7.6% | -4.5% | 1.07 |
+| 5% | 2nd | 214 (104) | -14.3% (+0.9%) | -38.3% | -35.1% | 0.80 |
+| 10% | 1st | 95 (58) | +56.8% (+64.3%) | +3.5% | +2.5% | 1.31 |
+| 10% | 2nd | 123 (70) | +5.5% (+5.7%) | -28.7% | -27.2% | 0.92 |
+| 20% | 1st | 44 (34) | +128.4% (+100.6%) | +36.4% | +26.1% | 1.53 |
+| 20% | 2nd | 57 (44) | +34.0% (+19.3%) | -19.4% | -20.2% | 0.96 |
+
+The first half is the first time any version has been profitable at BSP (10% and 20% edges, winners 1.31 and 1.53
+times what BSP expected). The second half loses at BSP and at TAB's last price at every edge, and at TAB's first price
+it is barely positive at 10%. On 50 to 200 bets a half that split is what noise looks like; neither half settles it.
+Backing at BSP on the form price alone loses 22% to 39% (A/E 0.85 to 0.93): the form price is not close enough to
+BSP to bet against it. **No bet suggested.** What would move it: more sectional coverage (Victoria, NSW), more races
+per state, and the forward paper record.
