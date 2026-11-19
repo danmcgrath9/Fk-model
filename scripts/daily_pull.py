@@ -59,6 +59,11 @@ def store_past_events(db: Db, hid: str, events: list[dict], fetched_at: datetime
     """Race past events into past_events; those carrying a BenchmarkedRun also into
     benchmarked_runs. Returns the number of benchmarked runs stored."""
     stored = 0
+    # A benchmarked run's raw is the same PastEvent as past_events.raw, so it is stored once, there
+    # (19 Nov 2026: the second copy filled the disk). A later copy of that run WITHOUT its benchmark
+    # must not replace the one with it, or the run's sectionals would have nowhere left to come from.
+    leaning = {r[0] for r in db.conn.execute(
+        "select run_id from fk.benchmarked_runs where horse_id = %s and raw is null", (hid,)).fetchall()}
     for p in events:
         # Races and barrier trials are kept (a trial is a first-upper's only recent form);
         # spells and scratchings are not runs.
@@ -69,6 +74,8 @@ def store_past_events(db: Db, hid: str, events: list[dict], fetched_at: datetime
             continue
         pid = f"{hid}:{rid}"
         d = F.past_event_date(p)
+        if pid in leaning and not F.past_event_benchmark(p):
+            continue
         db.upsert("past_events", ["past_event_id"], dict(
             past_event_id=pid, horse_id=hid, event_date=d, track=F.past_event_track(p), distance_m=F.past_event_distance(p),
             finish_position=F.past_event_finish(p), margin=F.past_event_margin(p), raw=p, fetched_at=fetched_at))
@@ -77,7 +84,7 @@ def store_past_events(db: Db, hid: str, events: list[dict], fetched_at: datetime
                 run_id=pid, horse_id=hid, past_event_id=pid, event_date=d,
                 track_speed_verified=F.past_event_track_speed_verified(p),
                 sections=F.SPLIT_LABELS, positions=F.run_positions(p), vs_class=F.run_splits_vs_class(p),
-                raw=p, fetched_at=fetched_at))
+                raw=None, fetched_at=fetched_at))
             stored += 1
     return stored
 

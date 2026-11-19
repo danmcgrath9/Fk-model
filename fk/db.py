@@ -121,9 +121,13 @@ class Db:
 
     def runs_for_horse(self, horse_id: str, limit: int) -> list[dict[str, Any]]:
         rows = self.conn.execute(
-            """select run_id, event_date, track_speed_verified, sections, positions, vs_class, raw
-               from fk.benchmarked_runs where horse_id = %s
-               order by event_date desc nulls last, run_id desc limit %s""",
+            # raw is null where it was the same PastEvent as past_events.raw (scripts/db_slim.py,
+            # 19 Nov 2026): the run reads that copy, as long as it still carries the benchmark
+            """select b.run_id, b.event_date, b.track_speed_verified, b.sections, b.positions, b.vs_class,
+                      coalesce(b.raw, case when p.raw ? 'benchmark' then p.raw end)
+               from fk.benchmarked_runs b left join fk.past_events p on p.past_event_id = b.past_event_id
+               where b.horse_id = %s
+               order by b.event_date desc nulls last, b.run_id desc limit %s""",
             (horse_id, limit),
         ).fetchall()
         keys = ["run_id", "event_date", "track_speed_verified", "sections", "positions", "vs_class", "raw"]

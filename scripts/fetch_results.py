@@ -55,7 +55,10 @@ def main() -> None:
             for r in F.meeting_races(payload):
                 rid = F.race_id(r)
                 db.upsert("races", ["race_id"], dict(race_id=rid, meeting_id=m["meeting_id"], race_number=F.race_number(r),
-                                                    race_name=F.race_name(r), distance_m=F.race_distance(r), raw=r, fetched_at=at))
+                                                    race_name=F.race_name(r), distance_m=F.race_distance(r),
+                                                    # the runners' results, odds and scratchings are stored below; a
+                                                    # second copy of every runner in races.raw is what refilled the disk
+                                                    raw={k: v for k, v in r.items() if k != "entries"}, fetched_at=at))
                 for e in F.race_entries(r):
                     hid = F.horse_id(e)
                     db.upsert("horses", ["horse_id"], dict(horse_id=hid, name=F.horse_name(e), fetched_at=at))
