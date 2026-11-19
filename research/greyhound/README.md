@@ -9416,6 +9416,41 @@ What the live version changes, and why it may differ a little from this test:
 
 The paper results will show whether those differences cost anything. Nothing changes the card.
 
+## Test 99: the first seconds after TAB's open (19 Nov 2026, gh topaz run 44429514070, `topaz_round75.py`, ROUND75_TIMES=0,0.25,0.5,0.75,1,2,3 ROUND75_FIT=r79:c_v)
+
+Founder: "We are missing a fair chunk of value I have seen from prices when seen". On 19 Nov the morning program saw
+each race 14 to 50 seconds after Betwatch's first TAB price, and Jill's Fantasy went from $4.40 to $3.50 fifteen
+seconds after it. This is Test 95 again in seconds, on the best model the morning program runs (Test 98's walk,
+corr_r79), February 2025 on, each bet placed only if TAB's price then still clears the 2-point margin, at the quarter
+Kelly stake for that price.
+
+| after TAB's open (Betwatch's first price) | the best model: bets | of the open's | corrected BSP per unit (SE) | corrected BSP units | of the open's units | realised units | the corrected blend, 1.1x flat: corrected BSP units | of the open's |
+|---|---|---|---|---|---|---|---|---|
+| 0 | 2,559 | 100% | +14.4% (0.9%) | **+367.1** | 100% | +283.6 | +183.3 | 100% |
+| 15 seconds | 2,491 | 97% | +14.0% (0.9%) | +347.6 | **95%** | +286.9 | +169.8 | 93% |
+| 30 seconds | 2,458 | 96% | +13.1% (0.9%) | +322.7 | **88%** | +275.1 | +153.9 | 84% |
+| 45 seconds | 2,444 | 96% | +13.0% (0.9%) | +317.1 | 86% | +264.8 | +151.4 | 83% |
+| 1 minute | 2,434 | 95% | +12.8% (0.9%) | +312.1 | 85% | +272.0 | +148.5 | 81% |
+| 2 minutes | 2,408 | 94% | +12.4% (0.9%) | +299.7 | 82% | +252.9 | +138.5 | 76% |
+| 3 minutes | 2,260 | 88% | +10.8% (0.8%) | +246.1 | 67% | +179.3 | +98.1 | 54% |
+
+TAB's first price on the best model's bets was unchanged 15 seconds on for 96% of them (1% shorter), 30 seconds on
+for 95% (3% shorter), a minute on for 93% (4% shorter), and three minutes on for 83% (12% shorter).
+
+What it shows:
+
+- **The first 30 seconds cost an eighth of the money.** 15 seconds keeps 95% of the corrected BSP units, 30 seconds
+  88%. From 30 seconds to two minutes it costs little more (88% to 82%); the third minute takes another sixth.
+- **The few prices TAB cuts first are the valuable ones.** Only 3% of the bets are shorter at 30 seconds, yet the
+  units fall 12%: the dogs TAB cuts first are the ones the model was most right about.
+- **"0" is Betwatch's first sight of TAB's price**, which may itself come after TAB's real open (Betwatch: its first
+  price "can miss a sharp early move"). So these are the least the first seconds cost.
+
+What it means: the morning program's 19 Nov reaction (a median of about 35 seconds) kept about 87% of the edge. The
+new polling (every 10 seconds while TAB opens races, the history table built once) should bring that near 15 seconds
+and 95%. A market-open order fired by BetMatic within a couple of seconds of the open keeps it all, if its minimum
+price can be set before TAB opens: that is Test 100 (round 80). Nothing changes the card.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
