@@ -83,6 +83,14 @@ jobs:
           python -m greyhound.betwatch pull --type "$TYPE" --locations Australia --from "${{ github.event.inputs.from }}" ${T:+--to "$T"} \
             --dir "betwatch-cache/$TYPE" --max-minutes "${{ github.event.inputs.max_minutes }}" | tee -a "$GITHUB_STEP_SUMMARY"
 
+      - name: Restore Racing Queensland's sectionals (model; Actions cache, personal use)
+        if: github.event.inputs.mode == 'model'
+        uses: actions/cache/restore@v4
+        with:
+          path: rq-cache
+          key: rq-sectionals-none
+          restore-keys: rq-sectionals-
+
       - name: Download Betfair's free harness files (model)
         if: github.event.inputs.mode == 'model'
         run: |
