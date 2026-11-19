@@ -417,3 +417,61 @@ account lasts; on the horses themselves, not yet. To test the early-price edge p
 at the moment a TAB price first appears, log the model's chance and the price that could really be taken, and see if
 the bet would have been accepted (paper; and Test 5's recorder reads TAB through the founder's session, which is why it
 is paused). To get an edge on the horses themselves, the form needs times and sectionals.
+
+## Test 10: Racing Queensland's sectionals in the form price (19 Nov 2026, bw_sect.py, run 44437276233)
+
+Founder, 19 Nov: "Just plug in". Racing Queensland publishes a sectional CSV for every TAB harness meeting
+(racingqueensland.com.au/industry/harness/harness-sectionals). Its Disclaimer and Copyright page, read first: the site's
+information "is intended to be used for personal use only and may not be used for commercial purposes without the
+prior written consent of Racing Queensland", and except as the Copyright Act permits nothing "may be reproduced,
+re-used or redistributed for any purpose whatsoever, without the express prior written permission". Our use is
+personal: the files are in this repository's Actions cache only, the logs print counts. (HRV's Sectionals Hub refuses
+every request from GitHub's runners, robots.txt included; it was not worked around.)
+
+**The data** (rq_sectionals.py, run 44433257303): 835 meeting files listed, Nov 2023 to 18 Nov 2026; all fetched; 773
+read (62 unreadable or empty, to look at). 59,978 runner rows in 6,734 races. Per runner: lead time, first, middle and
+last half, the four quarters (time, metres travelled, position), last mile, top speed, metres travelled.
+rq_join.py turns each run into speeds (metres travelled over time: last half, last quarter, first half, lead time),
+top speed, each against the race's mean, ground covered beyond the shortest route anyone took, and position at the
+first and third quarter; then each horse's record from EARLIER runs only (last, EWMA, best of five). Tested.
+
+**The join** (date, track, race number, horse name): 73.6% of Betwatch runners at RQ's tracks inside RQ's dates; on
+joined runners RQ's winner is Betwatch's winner 100.0% of the time and the TAB numbers agree 100.0%. 82% of 2026
+Queensland runners had at least one earlier sectional run.
+
+**Holdout: Queensland 2026, 2,039 races** (train 2023 to Jun 2025, of which 3,699 Queensland races with sectionals;
+validation Jul-Dec 2025; stage 2 fitted on Queensland validation for both prices, so they compare fairly):
+
+| price | LL 1st half | LL 2nd half | beats TAB first? |
+|---|---|---|---|
+| equal chances | 2.1335 | 2.1637 | no |
+| form (Betwatch-only pure form, the live model) | 1.9419 | 1.9638 | no |
+| **form + sectionals** | **1.8218** | **1.8381** | no |
+| TAB first price | 1.6520 | 1.6344 | |
+| stage 2: form + TAB first (0.25 / 1.30) | 1.6130 | 1.5922 | yes, both halves |
+| **stage 2: form + sectionals + TAB first (0.30 / 1.20)** | **1.6090** | **1.5889** | yes, both halves |
+| TAB last price | 1.5053 | 1.4988 | yes |
+
+Sectionals are the biggest single lift the form price has had: 0.12 off the log loss in both halves. Measured from
+equal chances to TAB's first price, the form price goes from about 39% of the way there to about 63%. Inside stage 2
+the gain is small (0.003 to 0.004), and the form's weight rises only from 0.25 to 0.30: TAB's price already knows most
+of what the sectionals say. Sectional inputs carry 8% of the tree's gain; the largest is the horse's smoothed
+last-half speed against the race, measured against today's field.
+
+**Paper bets at TAB's first price, Queensland 2026** (no commission):
+
+| edge | half | without sectionals: bets, ROI at TAB first, at TAB last | with sectionals: bets, ROI at TAB first, at TAB last |
+|---|---|---|---|
+| 5% | 1st | 201, +20.4%, -17.4% | 287, +32.7%, -2.2% |
+| 5% | 2nd | 187, -7.6%, -32.7% | 285, +6.4%, -22.3% |
+| 10% | 1st | 114, +31.3%, -22.1% | 164, +46.1%, -2.2% |
+| 10% | 2nd | 109, -2.2%, -36.4% | 154, +9.3%, -31.6% |
+| 20% | 1st | 55, +75.0%, -11.0% | 60, +79.4%, -7.3% |
+| 20% | 2nd | 63, +4.1%, -46.1% | 74, +37.0%, -25.2% |
+
+With sectionals the bets are better at every cut in both halves, at TAB's first price and at TAB's last. 71% to 84% of
+them shorten after the bet, as in Test 9. At TAB's last price they still lose, but the first half comes close to break
+even (-2.2% at 5% and 10%), which the form alone never did: a first sign of an edge on the horses rather than only on
+TAB's opener. The second half is much weaker than the first in every row, and these are a few hundred bets in one
+state, so this is direction, not proof. Next: the 62 unreadable files, whether the 26% of unjoined runners are a name
+mismatch, and the live picks (bw_live.py) to carry sectionals for Queensland races.
