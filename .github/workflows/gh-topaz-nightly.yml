@@ -126,8 +126,8 @@ jobs:
           key: topaz-cards-${{ github.run_id }}
           restore-keys: topaz-cards-
 
-      - name: Restore the Betwatch price history (Actions cache, read only; the correction's training races)
-        if: env.MODE == 'train' || env.MODE == 'train_iso'
+      - name: Restore the Betwatch price history (Actions cache, read only; the correction's training races, and the band sheet's market inputs)
+        if: env.MODE == 'train' || env.MODE == 'train_iso' || env.MODE == 'price'
         uses: actions/cache/restore@v4
         with:
           path: greyhound/cache/betwatch
@@ -161,6 +161,9 @@ jobs:
             # the card is also kept (race, dog, our chance, GRV's price) for the live tracker, gh topaz track
             # the corrected blend's card (paper only) is kept beside it when the Isolynx pull is here
             [ -d greyhound/cache/isolynx ] && export ISO_DIR="$PWD/greyhound/cache/isolynx"
+            # the band sheet (Test 101, paper only) reads each dog's earlier runs in the Betwatch history, as the best
+            # model does at TAB's open
+            [ -d greyhound/cache/betwatch ] && export BETWATCH_DIR="$PWD/greyhound/cache/betwatch"
             PRICE_CARD_DIR="$PWD/greyhound/cache/cards" PRICE_DAY="$DAY" PRICE_TRACK="${{ github.event.inputs.tracks }}" \
               PRICE_HISTORY_FROM="${{ github.event.inputs.history_from || '2020-01' }}" PRICE_COMPARE_FROM="${{ github.event.inputs.compare_from }}" \
               python research/greyhound/topaz_price_upcoming.py greyhound/cache/topaz "topaz VIC prices for $DAY"

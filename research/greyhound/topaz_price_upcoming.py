@@ -340,6 +340,23 @@ def iso_card(cache, rows, races, day, since, keep) -> None:
               "the card is unaffected")
 
 
+def sheet_card(day, keep) -> list:
+    """The band sheet (research/greyhound/topaz_sheet.py, Test 101), paper only, after the corrected blend's card is
+    kept: BetMatic orders for TAB's open, for the sealed card. Anything that goes wrong is reported by kind and place
+    only and never touches the card."""
+    try:
+        import topaz_sheet
+        rows, note = topaz_sheet.sheet_for_day(day, keep)
+        print(note)
+        return rows
+    except Exception as e:                               # the card stands whatever happens here
+        import traceback
+        tb = traceback.extract_tb(e.__traceback__)[-1]
+        print(f"the band sheet failed ({type(e).__name__} at {Path(tb.filename).name}:{tb.lineno}); the card is "
+              "unaffected")
+        return []
+
+
 def main(d, label):
     mode = os.environ.get("PRICE_MODE", "").strip().lower()
     if mode == "train":
@@ -418,11 +435,12 @@ def main(d, label):
         f = save_card(card, day, payload["blend"], Path(keep))
         print(f"tonight's card kept for the live tracker (Actions cache only): {f.name}, {len(card)} runners")
         iso_card(cache, rows, races, day, since, keep)
+        payload["sheet"] = sheet_card(day, keep)
     plain = json.dumps(payload, separators=(",", ":")).encode()
     lines, sha = seal(plain)
     print(f"tonight's card is sealed (GRV's values are personal use and this log is public): {len(payload['races'])} races "
           f"at {', '.join(payload['tracks']) or 'no track'}, {sum(len(r['r']) for r in payload['races'])} runners, "
-          f"{len(payload['bets'])} rule bets across the card; {len(plain):,} bytes, sha256 {sha}; "
+          f"{len(payload['bets'])} rule bets across the card, {len(payload.get('sheet', []))} band-sheet orders; {len(plain):,} bytes, sha256 {sha}; "
           f"{time.time() - t_fetch:,.0f}s from the first call")
     print("\n".join(lines))
     return 0
