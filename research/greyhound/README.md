@@ -9735,11 +9735,12 @@ What it shows:
 From 15 Nov each card is kept in the Actions cache and the job settles it the afternoon after. Betfair has not yet
 published November, so there is no BSP yet.
 
-| day | run | card races | found in TAB's market | every dog on the card | card bets | settled | winners | expected at the price taken | units staked | units won | still 1.3x at TAB's first price | rule at TAB's open: bets |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 15 Nov | 43860008304 | 24 | 24 | 22 | 4 | 4 | 2 | 1.26 | 5.34 | +5.77 | 0 | 0 |
-| 16 Nov | 44075152202 | 50 | 50 | 36 | 10 | 10 | 4 | 4.17 | 22.26 | -5.00 | 0 | 0 |
-| 17 Nov | 44296970713 | 37 | 37 | 23 | 8 | 8 | 4 | 2.91 | 19.73 | +10.94 | 1 | 0 |
+| day | run | card races | found in TAB's market | every dog on the card | card bets | settled | winners | expected at the price taken | units staked | units won | still 1.3x at TAB's first price | rule at TAB's open: bets | corrected blend 1.1x: bets, winners, units won (flat) | corrected blend 1.2x: bets, winners, units won (flat) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 15 Nov | 43860008304 | 24 | 24 | 22 | 4 | 4 | 2 | 1.26 | 5.34 | +5.77 | 0 | 0 | not kept yet | not kept yet |
+| 16 Nov | 44075152202 | 50 | 50 | 36 | 10 | 10 | 4 | 4.17 | 22.26 | -5.00 | 0 | 0 | not kept yet | not kept yet |
+| 17 Nov | 44296970713 | 37 | 37 | 23 | 8 | 8 | 4 | 2.91 | 19.73 | +10.94 | 1 | 0 | not kept yet | not kept yet |
+| 18 Nov | 44517107055 | 48 | 48 | 0 | 10 | 10 | 4 | 4.70 | 18.90 | -5.85 | 0 | 0 | 3, 2, +8.50 (+283.3%) | 1, 1, +4.50 (+450.0%) |
 
 All four 15 Nov bets opened shorter on TAB than GRV's evening price (TAB at 24% to 49% of it) and below the card's own
 blended price, the same pattern as the first nine nights. Two won, at TAB's first price less the deduction: +5.77
@@ -9756,8 +9757,22 @@ the second bet to do so since 6 Nov. It won: +16.28 units at its 4 units, less a
 won: +10.94 units on 19.73 staked, +50.6% flat. The corrected blend's rows (variants 4 and 5) start with the 18 Nov
 card, so the 17 Nov run (44296970713) still shows none.
 
-The card as sent so far, 6 to 17 Nov: 78 bets, 77 settled (one refund), 31 winners against 30.11 expected at the
-prices taken (A/E 1.03), 178.15 units staked, -17.69 units won (-9.9% at the card's units, -4.7% flat), -15.41 at
-the best first price of three. The rule at TAB's open has made no bet yet.
+All ten 18 Nov bets opened shorter on TAB than the card's own blended price, and none was still 1.3x it at TAB's
+open. Four won: -5.85 units on 18.90 staked, -16.4% flat. The 18 Nov card is the first the corrected blend settles
+(variants 4 and 5, paper, one unit flat), all three bets at Healesville:
+- **At 1.1x: three bets, two won, +8.50 units.** Innocent Beauty (R1) won at $6.00 against its corrected price of
+  $5.01, and You Good (R3) won at $5.50 against $4.34. Negative Nibbs (R7) lost at $4.40 against $3.94.
+- **At 1.2x: one bet, which won, +4.50 units.** You Good was the only one. Innocent Beauty missed 1.2x by a cent:
+  $6.00 against $6.01.
+- **The sample is far too small to read.** Four bets mean nothing yet.
+- **The rule at TAB's open could price no 18 Nov race.** None counted as having every dog in TAB's field at its open
+  on the card, against 81 of 111 races on 15 to 17 Nov. The corrected blend's check found 43 of the 48 races whole
+  on its own copy of the card, so the cause is in the card side of the rule's check, not the market data. It is being
+  looked into. The rule has made no bet on any day so far, so nothing it would have taken is missing from the totals.
+
+The card as sent so far, 6 to 18 Nov: 88 bets, 87 settled (one refund), 35 winners against 34.81 expected at the
+prices taken (A/E 1.01), 197.05 units staked, -23.54 units won (-11.9% at the card's units, -6.1% flat), -21.15 at
+the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 3 bets at
+1.1x (+8.50 units) and 1 at 1.2x (+4.50).
 
 Results go here as they come in.
