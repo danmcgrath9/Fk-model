@@ -5,6 +5,8 @@ import psycopg
 with psycopg.connect(os.environ["DATABASE_URL"].strip()) as c:
     q = lambda s: c.execute(s).fetchall()
     print("host:", os.environ["DATABASE_URL"].split("@")[-1].split("/")[0].split(":")[0].split(".", 1)[-1])
+    u = os.environ["DATABASE_URL"].split("//", 1)[-1].split("@")[0].split(":")[0]
+    print("project ref:", u.split(".", 1)[1] if "." in u else "(not in the user name)")      # a project id, not a credential
     for s in ("show default_transaction_read_only", "show transaction_read_only", "select pg_is_in_recovery()", "select version()",
               "select pg_size_pretty(pg_database_size(current_database()))", "select current_user"):
         try: print(f"{s}: {q(s)[0][0]}")
