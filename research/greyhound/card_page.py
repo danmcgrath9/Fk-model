@@ -161,6 +161,13 @@ def anchor(r: dict) -> str:
     return f"{slug(r['t'])}-r{r['n']}"
 
 
+SHEET_BANK = 10_000   # dollars (founder, 20 Nov 2026: "Bank is 10 000"); the sheet's stakes are shares of it
+
+
+def dollars(share: float) -> str:
+    return f"${share * SHEET_BANK:,.0f}"
+
+
 def sheet_dogs(sheet: list, races: list) -> list:
     """The band sheet's orders ([venue, race, box, dog, low, high, stake]) grouped by dog, in race order: (race or
     None, venue, race number, box, dog, [(low, high, stake)] in price order, the price ranges the orders cover)."""
@@ -195,8 +202,9 @@ def sheet_section(a, sheet: list, races: list, started) -> None:
         link = f"<a href='#{anchor(r)}'>{html.escape(short(r['t']))} R{n}</a> {when(r['s'])}" if r else f"{html.escape(short(v))} R{n}"
         rng = ", ".join(f"{money(lo)}-{money(hi)}" for lo, hi in spans)
         lo_st, hi_st = min(x[2] for x in bs), max(x[2] for x in bs)
-        stk = f"{lo_st:.1%}" if abs(hi_st - lo_st) < 5e-4 else f"{lo_st:.1%}-{hi_st:.1%}"
-        bands = "".join(f"<tr><td></td><td>{money(lo)}-{money(hi)}</td><td>{st:.2%}</td><td></td></tr>" for lo, hi, st in bs)
+        stk = dollars(lo_st) if abs(hi_st - lo_st) < 5e-4 else f"{dollars(lo_st)}-{dollars(hi_st)}"
+        bands = "".join(f"<tr><td></td><td>{money(lo)}-{money(hi)}</td><td>{dollars(st)}<span class='u'>{st:.2%}</span></td>"
+                        "<td></td></tr>" for lo, hi, st in bs)
         a(f"<tr><td>{link}<span class='dn'>{html.escape(box_txt(b))}. {html.escape(title_case(d))}</span></td>"
           f"<td><b>{rng}</b></td><td><b>{stk}</b></td><td>{len(bs)}</td></tr>")
         a(f"<tr><td colspan='4' style='text-align:left'><details><summary>Each order</summary><table>{bands}</table>"
@@ -206,7 +214,7 @@ def sheet_section(a, sheet: list, races: list, started) -> None:
     a("</table></div><div class='note'>Test 101's band sheet: the best model (Test 98) priced the night before at 28 TAB "
       "prices for each dog, the rest of the field at the TAB-open model's predicted prices. Each order is a price band "
       "with its own stake: it fires only if TAB's FIRST price is inside it, staked at a quarter of Kelly (a share of the "
-      "bank, at most 5%). In the backtest it kept about 95% of the best model's edge at TAB's open (+346 of +364 "
+      f"bank, at most 5%; dollars on a ${SHEET_BANK:,} bank). In the backtest it kept about 95% of the best model's edge at TAB's open (+346 of +364 "
       "corrected BSP units, 21 months). Paper: tracked each morning at TAB's first price; nothing goes to BetMatic "
       "without your OK.</div></div>")
 
