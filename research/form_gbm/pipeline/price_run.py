@@ -106,6 +106,35 @@ def refetch_weather(path: Path, race_day: str, track: str, mid: str):
     return rain, rday
 
 
+def soft_export(d: str, out: Path):
+    """One fk-export of a date's upcoming races priced as if the going were Soft 5, fetched to `out` (None on failure)."""
+    t0 = time.time()
+    try:
+        gh("/actions/workflows/fk-export.yml/dispatches", {"ref": "main", "inputs": {"date": d, "going": "Soft 5"}})
+    except Exception as e:
+        log(f"Soft 5 export for {d}: dispatch failed ({e}); wet meetings NOT priced"); return None
+    rid = None
+    for _ in range(40):
+        time.sleep(6)
+        for x in gh("/actions/workflows/fk-export.yml/runs?per_page=5")["workflow_runs"]:
+            if dt.datetime.fromisoformat(x["created_at"].replace("Z", "+00:00")).timestamp() >= t0 - 5:
+                rid = x["id"]
+        if rid: break
+    if not rid:
+        log(f"Soft 5 export for {d}: the run never started; wet meetings NOT priced"); return None
+    while gh(f"/actions/runs/{rid}")["status"] != "completed":
+        time.sleep(10)
+    if gh(f"/actions/runs/{rid}")["conclusion"] != "success":
+        log(f"Soft 5 export for {d}: run {rid} failed; wet meetings NOT priced"); return None
+    subprocess.run(f"cd {FK} && git fetch -q origin upcoming && git show origin/upcoming:upcoming.npz > {out}", shell=True, check=True)
+    import numpy as np
+    z = np.load(out, allow_pickle=True)
+    if set(map(str, z["date"])) != {d}:
+        log(f"Soft 5 export for {d}: the file holds {set(map(str, z['date']))}, not {d}; wet meetings NOT priced"); return None
+    log(f"Soft 5 export for {d}: run {rid}, {len(z['race_idx'])} runners, in {time.time() - t0:.0f}s")
+    return out
+
+
 def rain_before(path: Path, race_day: str):
     """mm of rain on the three days before race day (actual or forecast), and race day itself."""
     if not path.exists():
@@ -172,13 +201,25 @@ def main():
     hist = model_history()
     now = dt.datetime.now(MEL); G = "r" + now.strftime("%m%d%H%M")
     jobs, info = [], {}
+    # RAIN: SOFT 5 WITHOUT A SECOND STEP (founder, 19 Nov 2026: "How's this taking so long", then "I want everything re priced
+    # for game day"). A meeting with 15mm+ in the 3 days before is priced on a Soft 5 export. It used to stop here and wait
+    # for one by hand, so the race-morning re-price silently skipped every wet meeting: on Sat 21 Nov that would have been
+    # three of the four. Now one fk-export a date is made here, with going 'Soft 5', and those meetings are priced from it.
+    soft_up = {}
+    if not a.soft_export:
+        wet = sorted({m["date"] for m in new if (rain_before(W / m["meeting_id"] / "forecast.md", m["date"])[0] or 0) >= 15})
+        for d in wet:
+            f = soft_export(d, W / f"upcoming-{d}-soft5.npz")
+            if f: soft_up[d] = f
     for m in new:
         mid, d, P = m["meeting_id"], m["date"], m["prefix"]; md = W / mid
         fl = fluc_rows(md / "fluc.md")
         ids = sorted({r["race_id"] for r in fl} - set(a.drop.split(",")))
         if not ids:
             log(f"STOP {mid}: no race ids in its fluc output"); continue
-        up = Path(a.soft_export) if a.soft_export and a.only and mid in a.only.split(",") else W / f"upcoming-{d}.npz"
+        given_soft = bool(a.soft_export and a.only and mid in a.only.split(","))
+        auto_soft = (not given_soft and d in soft_up and (rain_before(md / "forecast.md", d)[0] or 0) >= 15)
+        up = Path(a.soft_export) if given_soft else soft_up[d] if auto_soft else W / f"upcoming-{d}.npz"
         cut = W / f"{mid}.npz"; adj = W / f"{mid}-adj.npz"
         subprocess.run([sys.executable, str(S / "cut_meeting.py"), str(up), str(cut), ",".join(ids)], check=True)
         fa = subprocess.run([sys.executable, str(R / "form_adjust_npz.py"), str(cut), str(adj)], capture_output=True, text=True, cwd=R)
@@ -218,7 +259,7 @@ def main():
         title = f"{name} {dow}" + (" (paper)" if paper else " (provisional)" if no_rider else "")
         info[mid] = dict(m=m, P=P, paper=paper, no_rider=no_rider, rain=rain, rday=rday, opened=opened, fl=fl,
                          head=head, title=title, name=name, adj=adj_note, soft=(rain or 0) >= 15, hist=hist_n)
-        if (rain or 0) >= 15 and not (a.soft_export and a.only and mid in a.only.split(",")):
+        if (rain or 0) >= 15 and not (given_soft or auto_soft):
             log(f"{mid}: {rain}mm in the 3 days before: needs a Soft export (fk-export going) before pricing; NOT priced here")
             continue
         jobs.append((mid, P, adj, md / "scratchings.md", md / "entry_numbers.md", head, title))
@@ -255,8 +296,9 @@ def main():
             log(f"STOP {mid}: {(mk.stdout + mk.stderr + ds.stdout + ds.stderr)[-300:]}"); res.append((mid, False, 0, W / f"{mid}-price.log")); continue
         info[mid]["mk"] = mk.stdout.strip(); ready.append((mid, P, npz, scr, nums, head, title, SN))
     # B. ONE price_day3 for every meeting: its networks train on the whole history (about 3 minutes), so once a run
-    if ready:
-        Z = [dict(np.load(r[7], allow_pickle=True)) for r in ready]
+    def model_run(subset, tag, allow):
+        """price_day3 once over every meeting in subset: (return code, rows, last stdout line, stdout)."""
+        Z = [dict(np.load(r[7], allow_pickle=True)) for r in subset]
         comb, off = {}, 0
         for z in Z:
             nrun, nrace = len(z["race_idx"]), len(z["race_id"])
@@ -267,15 +309,36 @@ def main():
             off += nrace
         for k, v in list(comb.items()):
             if isinstance(v, list): comb[k] = np.concatenate(v)
-        CS = S / "model" / f"run-{G}-scr.npz"; CJ = S / "model" / f"run-{G}-v5s1.json"
+        CS = S / "model" / f"run-{tag}-scr.npz"; CJ = S / "model" / f"run-{tag}-v5s1.json"
         np.savez(CS, **comb)
-        log(f"one model run for {len(ready)} meetings ({int(comb['race_idx'].max()) + 1} races, {len(comb['race_idx'])} runners)")
-        pdr = subprocess.run([sys.executable, "price_day3.py", str(CS), str(CJ)] + (["--allow-gaps"] if a.allow_gaps else []),
+        log(f"one model run for {len(subset)} meetings ({int(comb['race_idx'].max()) + 1} races, {len(comb['race_idx'])} runners)")
+        pdr = subprocess.run([sys.executable, "price_day3.py", str(CS), str(CJ)] + (["--allow-gaps"] if allow else []),
                              cwd=S / "model", capture_output=True, text=True)
-        log(f"model run done in {round(time.time() - t_model)}s: {pdr.stdout.strip().splitlines()[-1] if pdr.stdout.strip() else ''}")
-        if pdr.returncode:
+        last = pdr.stdout.strip().splitlines()[-1] if pdr.stdout.strip() else ""
+        log(f"model run done in {round(time.time() - t_model)}s: {last}")
+        return pdr.returncode, (json.load(open(CJ)) if pdr.returncode == 0 else []), last, pdr
+    if ready:
+        rc, allrows, last, pdr = model_run(ready, G, a.allow_gaps)
+        # PAPER MEETINGS DO NOT STOP THE DAY (19 Nov 2026: Healesville, paper only, had 13% of its raced runners without a
+        # last-start speed rating and stopped the whole run; nothing on a paper meeting is bet). When the guard stops a run
+        # that holds a paper meeting, the real-money meetings are priced again on their own WITH the guard, and the paper
+        # ones on their own past it, with the gap named in the log. A real-money meeting with the gap still stops the day.
+        paper_ids = {mid for mid in info if info[mid]["paper"]}
+        if rc and "speed rating" in (pdr.stdout + pdr.stderr) and any(r[0] in paper_ids for r in ready):
+            real = [r for r in ready if r[0] not in paper_ids]; paper = [r for r in ready if r[0] in paper_ids]
+            log(f"the speed-rating guard stopped a run with paper meetings in it ({', '.join(r[0] for r in paper)}): pricing the "
+                f"real-money meetings with the guard and the paper ones past it")
+            allrows = []
+            if real:
+                rc, rows, last, pdr = model_run(real, G + "r", a.allow_gaps)
+                if rc:
+                    sys.exit(f"STOP: price_day3 {pdr.stdout[-400:]} {pdr.stderr[-400:]}")
+                allrows += rows
+            rc, rows, last, pdr = model_run(paper, G + "p", True)
+            log(f"paper meetings priced past the guard: {last}")
+            allrows += rows
+        if rc:
             sys.exit(f"STOP: price_day3 {pdr.stdout[-400:]} {pdr.stderr[-400:]}")
-        allrows = json.load(open(CJ))
         for mid, P, npz, scr, nums, head, title, SN in ready:
             ids = set(map(str, np.load(SN, allow_pickle=True)["race_id"]))
             mine = [r for r in allrows if r["race_id"] in ids]
