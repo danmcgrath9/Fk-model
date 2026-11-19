@@ -58,7 +58,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install 'requests>=2.31'
-      - if: github.event.inputs.mode == 'model' || github.event.inputs.mode == 'live'
+      - if: github.event.inputs.mode == 'model' || github.event.inputs.mode == 'live' || github.event.inputs.mode == 'settle'
         run: pip install pandas pyarrow lightgbm scikit-learn
 
       - name: Probe (counts only)
@@ -126,6 +126,13 @@ jobs:
         run: |
           set -o pipefail
           python research/harness/bw_live.py "betwatch-cache/$TYPE" --pub "$PUB" ${DAY:+--day "$DAY"} --rq rq-cache
+
+      - name: Settle a day (results and TAB prices sealed; counts in the clear)
+        if: github.event.inputs.mode == 'settle'
+        env:
+          PUB: ${{ github.event.inputs.pub }}
+          DAY: ${{ github.event.inputs.day }}
+        run: python research/harness/bw_settle.py --day "$DAY" --pub "$PUB"
 
       - name: Save the pulled months (Actions cache)
         if: always() && github.event.inputs.mode == 'pull'
