@@ -9451,6 +9451,64 @@ new polling (every 10 seconds while TAB opens races, the history table built onc
 and 95%. A market-open order fired by BetMatic within a couple of seconds of the open keeps it all, if its minimum
 price can be set before TAB opens: that is Test 100 (round 80). Nothing changes the card.
 
+## Test 100: the best model's order sheet, set before TAB opens (19 Nov 2026, gh topaz run 44429505551, `topaz_round80.py`)
+
+Founder: "We missed early prices on even the ones we'd bet with like a 70c difference", then "Yep build it".
+
+A market-open order in BetMatic fires within a couple of seconds of TAB's open, at TAB's first price, if that price is
+at least the order's minimum. Test 94 found that a sheet built on our own price alone loses. The edge comes from
+reading our price against TAB's opening book. The best model (Test 98) does that, so its order needs each dog's
+minimum TAB price worked out before TAB has priced anything. The dog's own TAB price triggers the order. The rest of
+the field has to be predicted.
+
+**The test.** Test 98's walk was run again, keeping each refit's model, from February 2025 to October 2026. It differs
+from the saved walk by 0.0035 in chance on average. For every runner:
+- **The rest of the field is predicted three ways.** Ours, scaled to TAB's usual book. A TAB-open model, which
+  predicts TAB's opening chance from everything known the night before. And the TAB-open model with the rest of the
+  field not moving.
+- **The minimum** is the lowest TAB price at which the best model makes the bet (the 2-point margin, fair price under
+  $15), found on a 12-point ladder and halved seven times.
+- **The order fires** when TAB's first price is at least the minimum. It is paid TAB's first price after its deduction.
+
+The field predictions miss: ours by a median 35% of TAB's first price, the TAB-open model by 25% (42% of runners
+within 20%). TAB's book total is close, a median miss of 0.7%.
+
+| rule | flat: bets | flat: corrected BSP per unit (SE) | flat: corrected BSP units / realised | quarter Kelly: bets | quarter Kelly: corrected BSP per unit (SE) | quarter Kelly: corrected BSP units / realised | deepest fall | losing months |
+|---|---|---|---|---|---|---|---|---|
+| **the best model on TAB's whole opening book (Test 98)** | 2,574 | +11.2% (0.8%) | +289.5 / +221.4 | 2,574 | **+14.2% (0.9%)** | **+364.3 / +266.3** | 35.6 | 4 of 21 |
+| the sheet, the field from ours | 5,005 | -4.2% (0.6%) | -208.9 / -173.3 | 3,006 | +10.6% (0.8%) | +280.3 / +234.1 | 61.3 | 4 of 21 |
+| the sheet, the field from the TAB-open model | 6,196 | -4.1% (0.5%) | -252.6 / -246.0 | 4,046 | +8.6% (0.7%) | +308.4 / +247.4 | 79.3 | 6 of 21 |
+| the sheet, the TAB-open model, the rest not moving | 6,506 | -0.3% (0.4%) | -20.3 / -25.5 | 4,882 | +8.3% (0.6%) | +382.8 / +355.7 | 87.1 | 7 of 21 |
+
+The quarter-Kelly rows are not what a minimum-only order can do. Each bet is staked by the sheet's own edge at TAB's
+actual first price, and a dog is bet only where that edge is positive. A minimum-only order has one fixed stake and
+fires at any price above it.
+
+| field from | orders set | fired | bets Test 98 makes too | Test 98's bets the sheet misses | flat: both | flat: the sheet only | flat: Test 98 only |
+|---|---|---|---|---|---|---|---|
+| ours | 36,450 | 5,129 | 2,055 | 579 | +249.4 (2,011) | -458.2 (2,994) | +40.2 (563) |
+| the TAB-open model | 39,659 | 6,347 | 2,412 | 222 | +269.4 (2,361) | -522.1 (3,835) | +20.1 (213) |
+| the TAB-open model, the rest not moving | 48,216 | 6,682 | 2,471 | 163 | +278.7 (2,416) | -299.0 (4,090) | +10.9 (158) |
+
+(Corrected BSP units, bets in brackets.)
+
+What it shows:
+- **A minimum alone loses money flat.** The sheet fires on twice to two and a half times as many dogs as Test 98. The
+  extra dogs, the ones the best model would not back on TAB's whole book, lose 7% to 15% a unit: -299 to -522 units.
+- **It does catch the edge.** It makes up to 94% of Test 98's bets (2,471 of 2,634), and those shared bets made +249
+  to +279 of Test 98's +289.5 units, flat.
+- **The losers are dogs whose edge is gone at the price TAB actually opened.** On 25% to 40% of the orders that fired,
+  the sheet's own model saw no edge at TAB's first price. The minimum search found that the rule fails again higher up
+  on only 6 to 713 of them, because its 12-point ladder is coarse. A dog's edge does not keep growing as TAB lengthens
+  it: the model's chance follows TAB's price down.
+- **Staked by the edge at TAB's actual price, the same sheet makes money:** +280 to +383 corrected BSP units, at 8%
+  to 11% a unit against Test 98's 14%. It does so on more units staked and with deeper falls.
+
+What it means: an order with only a minimum is the wrong instrument. BetMatic orders carry a maximum price as well (the
+gallops order files have used max_odds since 14 Oct 2026). So a dog can carry several orders, each a price band with
+its own stake, and the sheet can follow the edge up the price ladder and stop where it ends. That is Test 101
+(round 81). Nothing changes the card or the morning program.
+
 ## The live tracker: what the card would have taken at TAB's open (from 14 Nov 2026, `topaz_track.py`, gh topaz track)
 
 Founder, 14 Nov 2026: "There's a key that pulls the live races on GitHub, can you track what we would of taken the model
