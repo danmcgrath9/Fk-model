@@ -75,7 +75,16 @@ def test_settle_by_hand():
     assert got[0]["won"] and got[0]["profit"] == 5.0 and got[1]["profit"] == -1.0
     assert "settled" not in got[2] and "settled" not in got[3]
     assert M.summary(got) == ("4 bets seen, 3 placed (1 missed: TAB had cut the price below the price it needed by then), "
-                              "2 settled, 1 won, +4.00 units (+200.0% a bet)")
+                              "2 settled, 1 won, +4.00 units (+200.0% a bet); 0 of 2 beat TAB's final price, by "
+                              "+0.0% on average")
+
+
+def test_settle_keeps_tab_s_final_price():
+    # dog 1 taken at $6.00 at the open; TAB's last price before the race $4.50: beaten by 6 / 4.5 - 1 = 33.3%
+    r = race("a", [[[6.0, "2026-11-17T20:16:00Z"], [4.5, "2026-11-18T00:20:00Z"]], [[2.0, "t"]]], results=[[2], [1]])
+    got = M.settle([{"placed": True, "bw_race": "a", "number": 1, "tab_at_detect": 6.0, "day": "2026-11-18"}], [r])
+    assert got[0]["tab_final"] == 4.5 and not got[0]["won"]
+    assert M.summary(got).endswith("1 of 1 beat TAB's final price, by +33.3% on average")
 
 
 def test_watch_prices_each_race_once(monkeypatch):

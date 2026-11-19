@@ -138,9 +138,20 @@ def sheet_detect(rows: list, races: list, now: datetime, day: str) -> list:
     return out
 
 
+def tab_final(race: dict, number) -> float | None:
+    """TAB's last price for the runner before the race (its latest TAB fluc in the settled race), or None."""
+    for ru in race.get("runners", []):
+        if str(ru.get("number")) == str(number):
+            fl = sorted((((ru.get("books") or {}).get("Tab") or {}).get("flucs") or []), key=lambda f: str(f[1]))
+            return float(fl[-1][0]) if fl else None
+    return None
+
+
 def settle(rows: list, races: list) -> list:
     """Each placed paper bet settled on Betwatch's result: one unit at TAB's price when it was seen, less TAB's deduction
-    for the dogs scratched after its first price. A race with no result yet stays unsettled."""
+    for the dogs scratched after its first price. A race with no result yet stays unsettled. Each also carries TAB's
+    final price (20 Nov 2026, founder: "I need to see this profitable before it's live"): a price taken above TAB's
+    final price is the edge showing itself in weeks, where the wins and losses need months."""
     byid = {r.get("id"): r for r in races}
     out = []
     for b in rows:
@@ -157,8 +168,9 @@ def settle(rows: list, races: list) -> list:
         fr = R33.field_rows(r, times=(0,))
         ded = float(fr[0]["ded"]) if fr else 0.0
         paid = 1 + (float(b["tab_at_detect"]) - 1) * (1 - ded)
+        fin = tab_final(r, b.get("number"))
         out.append({**b, "settled": True, "won": won, "ded": ded, "paid": round(paid, 4),
-                    "profit": round(paid - 1, 4) if won else -1.0})
+                    "profit": round(paid - 1, 4) if won else -1.0, "tab_final": fin})
     return out
 
 
@@ -173,9 +185,13 @@ def summary(rows: list) -> str:
     placed = [b for b in rows if b.get("placed")]
     st = [b for b in placed if b.get("settled")]
     units = sum(b["profit"] for b in st)
+    fin = [b for b in st if b.get("tab_final")]
+    beat = (f"; {sum(float(b['tab_at_detect']) > float(b['tab_final']) for b in fin)} of {len(fin)} beat TAB's final "
+            f"price, by {np.mean([float(b['tab_at_detect']) / float(b['tab_final']) - 1 for b in fin]):+.1%} on average"
+            if fin else "")
     return (f"{len(rows)} bets seen, {len(placed)} placed ({len(rows) - len(placed)} missed: TAB had cut the price "
             f"below the price it needed by then), {len(st)} settled, {sum(b['won'] for b in st)} won, {units:+.2f} units "
-            f"({units / len(st):+.1%} a bet)" if st else
+            f"({units / len(st):+.1%} a bet){beat}" if st else
             f"{len(rows)} bets seen, {len(placed)} placed, none settled yet")
 
 
