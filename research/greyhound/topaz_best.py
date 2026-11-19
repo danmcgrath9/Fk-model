@@ -33,6 +33,16 @@ MH = ("tab", "first", "books", "nfl")
 MARGIN = 0.02
 FAIR_UNDER = 15.0
 KELLY, CAP = 0.25, 0.05
+# THE UNIT (20 Nov 2026, founder: "do units, I thought we were doing quarter kelly staking"): the stake is a quarter of
+# Kelly as a share of the bank; results are counted in units of the backtest's average quarter-Kelly bet (Test 98's
+# scale in rounds 81 and 82: 1.87% of the bank, $187 on the founder's $10,000), so a big edge stakes 2 or 3 units and a
+# thin one a quarter of a unit, and the paper results read on the same scale as Tests 98 and 101.
+UNIT_SHARE = 0.0187
+
+
+def units_of(share) -> float:
+    """A quarter-Kelly share of the bank in units."""
+    return float(share) / UNIT_SHARE
 LEARNING_RATE, MAX_ROUNDS = 0.04, 4000
 MODEL, META = "best.txt", "best_meta.json"
 
