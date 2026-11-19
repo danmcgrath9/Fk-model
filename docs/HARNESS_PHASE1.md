@@ -515,3 +515,14 @@ it is barely positive at 10%. On 50 to 200 bets a half that split is what noise 
 Backing at BSP on the form price alone loses 22% to 39% (A/E 0.85 to 0.93): the form price is not close enough to
 BSP to bet against it. **No bet suggested.** What would move it: more sectional coverage (Victoria, NSW), more races
 per state, and the forward paper record.
+
+### Test 11b: the same, trained on Queensland races only (run 44460818171)
+
+Founder: "What about just QLD". Train 3,384 Queensland races (all with sectionals), validation 787, scored on the
+same 1,713 Queensland races of 2026. Gap to BSP closed: form+ 26.8% (was 30.3% trained on every state), **form+ +
+sectionals 45.3%** (45.1%), stage 2 with TAB first **78.5%** (78.0%), and the sectionals' gain inside stage 2 is
+larger here (77.3% to 78.5%). Paper bets at TAB's first price, 10% edge: without sectionals 60 bets +64.2% and 66
+bets +0.3% (+$38.7 on 126); **with sectionals 79 bets +76.0% and 98 bets +9.0% (+$68.9 on 177, +39%)**, against +$60.7
+on 218 (+28%) for the all-states model. At BSP the same bets make +8.4% in the first half and lose 24.9% in the
+second. A Queensland-only model is at least as good as the all-states one in Queensland and better on the bets; the
+halves still disagree at BSP.
