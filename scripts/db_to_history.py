@@ -148,7 +148,10 @@ def cmd_delete(a) -> int:
                 (ids[i:i + DELETE_BATCH], cutoff))
             gone += cur.rowcount
         print(f"deleted {gone} runner rows from {len(ids)} races")
-        conn.execute("vacuum full fk.entries")
+        # FULL rewrites the table at its new size and returns the rest to the disk, but needs free disk the size of
+        # what stays. Plain (the weekly run, 19 Nov 2026, when the disk was nearly full) makes the space reusable by
+        # the next weeks' runners, so the table stops growing without needing any room to do it.
+        conn.execute("vacuum full fk.entries" if a.vacuum == "full" else "vacuum fk.entries")
         print(f"after:  {sizes()}")
     return 0
 
@@ -164,6 +167,7 @@ def main() -> int:
         p.add_argument("--check", required=True, help="a fresh download of the history release")
         if name == "delete":
             p.add_argument("--yes", action="store_true")
+            p.add_argument("--vacuum", choices=["full", "plain"], default="full")
     a = ap.parse_args()
     if a.cmd == "copy":
         cmd_copy(a)
