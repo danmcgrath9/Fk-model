@@ -300,7 +300,7 @@ def run_watch(day: str, cards, bst, meta) -> int:
     else:
         import topaz_round65 as R65
         hist = topaz_best.runs_history(R65.tab_and_books(bdir))
-        best = (bb, bm, hist)
+        best = (bb, bm, topaz_best.mh_table(hist))     # built once, so a poll at TAB's open prices in seconds
         print(f"The best model: {bm.get('rounds', 0)} rounds, trained {bm.get('trained', '?')}; "
               f"{len(hist):,} Betwatch runs of history")
     hh, mm = (int(v) for v in os.environ.get("MORNING_UNTIL", "08:20").split(":"))
