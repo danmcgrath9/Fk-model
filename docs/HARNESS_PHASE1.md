@@ -526,3 +526,27 @@ bets +0.3% (+$38.7 on 126); **with sectionals 79 bets +76.0% and 98 bets +9.0% (
 on 218 (+28%) for the all-states model. At BSP the same bets make +8.4% in the first half and lose 24.9% in the
 second. A Queensland-only model is at least as good as the all-states one in Queensland and better on the bets; the
 halves still disagree at BSP.
+
+## Test 12: half of the TAB-first-price profit came from placeholder markets (20 Nov 2026, bw_live.py, run 44640424773)
+
+The first automatic morning run picked 7 of the 8 runners in one race. TAB's first prices in that race added to a book
+of about 49%: every runner priced at roughly twice its odds at once, which is a placeholder or error market, not a
+price anyone could take in size. So the 2026 paper bets (live model with sectionals, 10% edge) were split by the
+race's TAB first book (sum of 1 / first price):
+
+| TAB first book | bets | winners | ROI at TAB first | ROI at TAB last |
+|---|---|---|---|---|
+| under 90% | 347 | 66 | +59.2% | -27.7% |
+| 90% to 100% | 128 | 41 | +20.4% | -13.5% |
+| 100% to 110% | 90 | 34 | +23.9% | +6.7% |
+| 110% to 120% | 51 | 22 | +22.6% | -1.4% |
+| 120% to 130% | 25 | 12 | +29.0% | -3.4% |
+| 130% and over | 94 | 42 | +11.4% | -11.3% |
+
+Only 169 of 12,192 races (1.4%) opened with a book under 100%, but they produced 475 of the 735 bets (65%), and the
+under-90% books alone 47%. **The +38% "every month positive" result of Tests 9 and the live re-score leaned on those
+markets.** In races with a real book (100% and over): 260 bets, about +$51, **+19.6% at TAB's first price**, and
+-2.4% at TAB's last. In books of 100% to 130%, the markets most like a normal TAB opener: 166 bets, +24.3% at TAB
+first and **+2.7% at TAB's last**, the first slice of any test that does not lose at TAB's closing price. Small, but
+it is the honest number. From today the daily picks leave out any race whose TAB first book is under 100% and report
+it separately; every earlier TAB-first-price figure in this document should be read as including those markets.
