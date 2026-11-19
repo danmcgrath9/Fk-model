@@ -34,6 +34,9 @@ def main(bf_dir, bw_dir, label):
     df["qld"] = df.rq_track & df.groupby("race").sec_runs.transform(lambda s: s.notna().any())
     for col in CATS + PEOPLE_CATS:
         df[col] = df[col].astype("category")
+    if os.environ.get("QLD_ONLY"):
+        df = df[df.qld].copy()                  # train, validate and score on Queensland races with sectionals only
+        label += " (trained on Queensland races only)"
     tr = df[df.date < TRAIN_END]; va = df[(df.date >= TRAIN_END) & (df.date < VALID_END)]; ho = df[df.date >= VALID_END]
     plus = FEATURES_V3 + PEOPLE + FORM_PLUS
     print(f"# {label}: Test 11, sectionals against BSP and TAB's first price (Queensland)\n")
