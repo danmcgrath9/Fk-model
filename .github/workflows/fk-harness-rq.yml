@@ -1,0 +1,54 @@
+name: fk harness rq sectionals
+
+# Racing Queensland's harness sectional CSVs (research/harness/rq_sectionals.py). Terms read 19 Nov 2026: personal use
+# only, no reproduction or redistribution. The files live in this repository's Actions cache only (never a commit,
+# release or artifact); logs print counts and column names, never a horse or a time.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'probe (three files: columns and counts) or pull (every listed CSV into the Actions cache, resumable)'
+        default: 'probe'
+      max_minutes:
+        description: 'mode=pull: minutes of fetching before the cache is saved'
+        default: '300'
+
+concurrency:
+  group: fk-harness-rq-${{ github.event.inputs.mode }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  rq:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    env:
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas
+      - name: Probe
+        if: github.event.inputs.mode == 'probe'
+        run: python research/harness/rq_sectionals.py probe rq-cache | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Restore the held files (Actions cache)
+        if: github.event.inputs.mode == 'pull'
+        uses: actions/cache/restore@v4
+        with:
+          path: rq-cache
+          key: rq-sectionals-${{ github.run_id }}
+          restore-keys: rq-sectionals-
+      - name: Pull
+        if: github.event.inputs.mode == 'pull'
+        run: python research/harness/rq_sectionals.py pull rq-cache --max-minutes "${{ github.event.inputs.max_minutes }}" | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Save the held files (Actions cache)
+        if: always() && github.event.inputs.mode == 'pull'
+        uses: actions/cache/save@v4
+        with:
+          path: rq-cache
+          key: rq-sectionals-${{ github.run_id }}
