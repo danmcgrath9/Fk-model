@@ -39,6 +39,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 import topaz_best                 # noqa: E402
 import topaz_iso                  # noqa: E402
 import topaz_round33 as R33       # noqa: E402
+import topaz_sheet                # noqa: E402
 import topaz_track as T           # noqa: E402
 from greyhound import betwatch as B   # noqa: E402
 
@@ -124,6 +125,19 @@ def best_detect(xb: pd.DataFrame, races: list, now: datetime, day: str) -> list:
     return sorted(out, key=lambda b: str(b["start"]))
 
 
+def sheet_detect(rows: list, races: list, now: datetime, day: str) -> list:
+    """The band sheet's orders that TAB's first price fired (topaz_sheet.fired), as paper bets: placed at TAB's first
+    price, which is what a BetMatic market-open order is paid, with the dog's number for the result."""
+    stamp = now.astimezone(timezone.utc).isoformat(timespec="seconds")
+    lp = latest_prices(races)
+    out = []
+    for b in rows:
+        now_p = lp.get((b["venue"], str(b["race_no"]), T.norm(pd.Series([b["dog"] or ""]))[0]), {})
+        out.append({**b, **{k: v for k, v in now_p.items() if k != "bw_race"}, "day": day, "detected_at": stamp,
+                    "tab_at_detect": b["tab_open"], "placed": True})
+    return out
+
+
 def settle(rows: list, races: list) -> list:
     """Each placed paper bet settled on Betwatch's result: one unit at TAB's price when it was seen, less TAB's deduction
     for the dogs scratched after its first price. A race with no result yet stays unsettled."""
@@ -200,9 +214,10 @@ def delay_line(lags: list) -> str:
 
 def watch(day: str, cards, bst, meta, until: datetime, every: float, fetch, clock=None, sleep=time.sleep,
           best=None, late: datetime | None = None, after_open: float = 60, fast: float | None = None,
-          fast_for: float = 10, timer=time.monotonic) -> tuple:
+          fast_for: float = 10, timer=time.monotonic, sheet: pd.DataFrame | None = None) -> tuple:
     """Poll today's races until `until`, pricing each race the first time TAB has priced its whole field: the corrected
-    blend, and the best model when `best` is (booster, meta, Betwatch history).
+    blend, and the best model when `best` is (booster, meta, Betwatch history). The band sheet's orders (`sheet`, last
+    night's topaz_sheet orders) are read against each race's TAB first price the first time its field is full.
 
     TAB's open is the bet, whenever it comes (19 Nov 2026: at 8:38am Betwatch showed no price from any bookmaker on 390
     runners, against 338 of 338 by 8am the day before). So when `late` is later than `until`, the watch runs past
@@ -216,7 +231,7 @@ def watch(day: str, cards, bst, meta, until: datetime, every: float, fetch, cloc
     apart for `fast_for` minutes after a poll that saw a race newly priced by TAB or newly full, while any race is
     still to price."""
     clock = clock or (lambda: datetime.now(MEL))
-    seen, bets, polls = set(), [], 0
+    seen, bets, polls, sheet_seen = set(), [], 0, set()
     first_open, shown, h = None, None, {}
     moved, lags, fetch_s, price_s = None, [], [], []
 
@@ -242,8 +257,15 @@ def watch(day: str, cards, bst, meta, until: datetime, every: float, fetch, cloc
                 moved = now                   # a race newly priced by TAB, or newly full: TAB is opening races
             shown = (h["tab_races"], len(full))
             print(f"{now:%H:%M:%S} poll {polls}: {health_line(h)}; {len(full)} fields full")
-        full -= seen
         facts = T.open_field(races)
+        if sheet is not None and len(sheet) and len(facts) and full - sheet_seen:
+            sf = facts[facts.bw_race.isin(full - sheet_seen)]
+            fs = sheet_detect(topaz_sheet.fired(sheet, sf), races, now, day)
+            bets += fs
+            sheet_seen |= set(sf.bw_race.unique())
+            if fs:
+                print(f"{now:%H:%M:%S} poll {polls}: {len(fs)} band-sheet order(s) fired at TAB's first price")
+        full -= seen
         if len(facts) and full:
             t_price = timer()
             facts = facts[facts.bw_race.isin(full)]
@@ -303,6 +325,9 @@ def run_watch(day: str, cards, bst, meta) -> int:
         best = (bb, bm, topaz_best.mh_table(hist))     # built once, so a poll at TAB's open prices in seconds
         print(f"The best model: {bm.get('rounds', 0)} rounds, trained {bm.get('trained', '?')}; "
               f"{len(hist):,} Betwatch runs of history")
+    sheet = topaz_sheet.load_sheet(os.environ.get("CARDS_DIR", ""), day)
+    print(f"The band sheet: {len(sheet)} orders on {sheet.groupby(['race_key', 'dog']).ngroups if len(sheet) else 0} "
+          f"dogs" if len(sheet) else f"No band sheet for {day} (sheet_{day}.csv.gz in CARDS_DIR): left out")
     hh, mm = (int(v) for v in os.environ.get("MORNING_UNTIL", "08:20").split(":"))
     until = datetime.now(MEL).replace(hour=hh, minute=mm, second=0, microsecond=0)
     every = float(os.environ.get("MORNING_EVERY", "30") or 30)
@@ -321,7 +346,7 @@ def run_watch(day: str, cards, bst, meta) -> int:
             print(f"If TAB has not opened by then, watching on to {late:%H:%M} at the latest")
         today, polls, seen, h = watch(day, cards, bst, meta, until, every,
                                       lambda: [B.compact(r) for r in B.fetch_day(session, day)], best=best, late=late,
-                                      fast=fast)
+                                      fast=fast, sheet=sheet)
         print(f"{polls} polls, {len(seen)} races priced. {day}: " + by_model(today))
         fo = h.get("first_open")
         print(f"At the last poll: {health_line(h)}. TAB open (half the races priced) first seen: "

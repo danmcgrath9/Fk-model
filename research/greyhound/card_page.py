@@ -161,6 +161,56 @@ def anchor(r: dict) -> str:
     return f"{slug(r['t'])}-r{r['n']}"
 
 
+def sheet_dogs(sheet: list, races: list) -> list:
+    """The band sheet's orders ([venue, race, box, dog, low, high, stake]) grouped by dog, in race order: (race or
+    None, venue, race number, box, dog, [(low, high, stake)] in price order, the price ranges the orders cover)."""
+    by = {}
+    for v, n, b, d, lo, hi, st in sheet:
+        by.setdefault((v, str(n), str(b), d), []).append((float(lo), float(hi), float(st)))
+    out = []
+    for (v, n, b, d), bs in by.items():
+        bs.sort()
+        r = next((r for r in races if str(r["n"]) == n and any(x[1].upper() == d.upper() for x in r["r"])), None)
+        spans = []
+        for lo, hi, _ in bs:
+            if spans and lo <= spans[-1][1] + 0.011:
+                spans[-1][1] = hi
+            else:
+                spans.append([lo, hi])
+        out.append((r, v, n, b, d, bs, spans))
+    out.sort(key=lambda t: (t[0]["s"] if t[0] else "~", t[2], t[3]))
+    return out
+
+
+def sheet_section(a, sheet: list, races: list, started) -> None:
+    """The band sheet (Test 101): each dog's BetMatic orders for TAB's open, set the night before."""
+    dogs = sheet_dogs(sheet, races)
+    live = [t for t in dogs if not (t[0] and started(t[0]))]
+    a("<div class='bets' id='sheet'><h2>BetMatic sheet for TAB's open ({} dogs, {} orders)</h2>".format(
+        len(live), sum(len(t[5]) for t in live))
+      + (f"<div class='hd'>{len(dogs) - len(live)} more in races already run, left out</div>" if len(live) < len(dogs) else "")
+      + "<div class='tw'><table>")
+    a("<tr><th>Race</th><th>Bets if TAB opens</th><th>Stake</th><th>Orders</th></tr>")
+    for r, v, n, b, d, bs, spans in live:
+        link = f"<a href='#{anchor(r)}'>{html.escape(short(r['t']))} R{n}</a> {when(r['s'])}" if r else f"{html.escape(short(v))} R{n}"
+        rng = ", ".join(f"{money(lo)}-{money(hi)}" for lo, hi in spans)
+        lo_st, hi_st = min(x[2] for x in bs), max(x[2] for x in bs)
+        stk = f"{lo_st:.1%}" if abs(hi_st - lo_st) < 5e-4 else f"{lo_st:.1%}-{hi_st:.1%}"
+        bands = "".join(f"<tr><td></td><td>{money(lo)}-{money(hi)}</td><td>{st:.2%}</td><td></td></tr>" for lo, hi, st in bs)
+        a(f"<tr><td>{link}<span class='dn'>{html.escape(box_txt(b))}. {html.escape(title_case(d))}</span></td>"
+          f"<td><b>{rng}</b></td><td><b>{stk}</b></td><td>{len(bs)}</td></tr>")
+        a(f"<tr><td colspan='4' style='text-align:left'><details><summary>Each order</summary><table>{bands}</table>"
+          "</details></td></tr>")
+    if not live:
+        a("<tr><td colspan='4' style='text-align:left'>No dog on the sheet today.</td></tr>")
+    a("</table></div><div class='note'>Test 101's band sheet: the best model (Test 98) priced the night before at 28 TAB "
+      "prices for each dog, the rest of the field at the TAB-open model's predicted prices. Each order is a price band "
+      "with its own stake: it fires only if TAB's FIRST price is inside it, staked at a quarter of Kelly (a share of the "
+      "bank, at most 5%). In the backtest it kept about 95% of the best model's edge at TAB's open (+346 of +364 "
+      "corrected BSP units, 21 months). Paper: tracked each morning at TAB's first price; nothing goes to BetMatic "
+      "without your OK.</div></div>")
+
+
 def page(card: dict, opens: dict, made: str, now: datetime | None = None) -> str:
     """The page; `now` (aware) leaves races already started out of the watch list, never out of the card."""
     card = boxed(card)
@@ -205,6 +255,8 @@ def page(card: dict, opens: dict, made: str, now: datetime | None = None) -> str
       f"Victorian races, {card['rounds']:,} rounds, with GRV's preview, tips and rating). "
       + ("" if single else f"{len(order)} meetings, {len(races)} races, in TAB's order under each meeting. ")
       + "Melbourne time. Nothing here has been bet.</div>")
+    if card.get("sheet") is not None:
+        sheet_section(a, card["sheet"], races, started)
     rule = sorted(card.get("bets") or [], key=lambda b: next((r["s"] for r in races if r["t"] == b[0] and r["n"] == b[1]), ""))
     if card.get("bets") is not None:
         bw = card.get("blend") or [0.51, 0.66]
@@ -251,7 +303,8 @@ def page(card: dict, opens: dict, made: str, now: datetime | None = None) -> str
       "already has long, so look at them first. Don't add to or re-take a dog that drifts 30% from its shortest price "
       "before the jump (Test 25). This rule made +55% / +48% at GRV's SP (Test 21) and has never been tested at TAB's "
       "open: that needs the opens recorded. Paper: nothing goes to BetMatic without your OK.</div></div>")
-    a("<nav class='nav'>" + ("<a href='#rule' class='hb'>Rule</a>" if card.get("bets") is not None else "") + "<a href='#bets' class='hb'>TAB</a>" + "".join(
+    a("<nav class='nav'>" + ("<a href='#sheet' class='hb'>Sheet</a>" if card.get("sheet") is not None else "")
+      + ("<a href='#rule' class='hb'>Rule</a>" if card.get("bets") is not None else "") + "<a href='#bets' class='hb'>TAB</a>" + "".join(
         f"<a href='#m-{slug(t)}'{' class=\"hb\"' if t in with_bet else ''}>{html.escape(short(t))}</a>" for t in order)
       + "</nav>")
     for t in order:

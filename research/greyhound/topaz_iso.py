@@ -206,6 +206,11 @@ def train(d, label) -> int:
         print(topaz_best.train_best(R, XR, bdir, LABEL_FIT, cmeta["trained"]))
     except Exception as e:                  # the type and the place only: the log is public
         print(f"the best model was not trained: {type(e).__name__} in topaz_best.train_best")
+    try:                                    # the band sheet's TAB-open model (Test 101), on the best model's inputs
+        import topaz_sheet
+        print(topaz_sheet.train_tabopen(R, XR, bdir, cmeta["trained"]))
+    except Exception as e:                  # the type and the place only: the log is public
+        print(f"the TAB-open model was not trained: {type(e).__name__} in topaz_sheet.train_tabopen")
     return 0
 
 
