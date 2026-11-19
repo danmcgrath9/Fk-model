@@ -148,6 +148,8 @@ def main():
     ap.add_argument("--scratchings-from", default="", help="a scripts/betwatch_national.py output: every runner it shows as scratched "
                     "is marked scratched in the meeting's entry numbers before pricing (19 Nov 2026: the database went read-only, so Form "
                     "King's scratchings stopped being stored and the morning re-price priced horses scratched that morning)")
+    ap.add_argument("--allow-gaps", action="store_true", help="price past price_day3's guard (over 10%% of raced runners without a "
+                    "last-start speed rating); the guard was built for September's 80%%, and the message names the gap")
     ap.add_argument("--test", action="store_true", help="files under <prefix>-test, no commit (a timing test on meetings already priced)")
     a = ap.parse_args()
     if a.morning:
@@ -268,7 +270,8 @@ def main():
         CS = S / "model" / f"run-{G}-scr.npz"; CJ = S / "model" / f"run-{G}-v5s1.json"
         np.savez(CS, **comb)
         log(f"one model run for {len(ready)} meetings ({int(comb['race_idx'].max()) + 1} races, {len(comb['race_idx'])} runners)")
-        pdr = subprocess.run([sys.executable, "price_day3.py", str(CS), str(CJ)], cwd=S / "model", capture_output=True, text=True)
+        pdr = subprocess.run([sys.executable, "price_day3.py", str(CS), str(CJ)] + (["--allow-gaps"] if a.allow_gaps else []),
+                             cwd=S / "model", capture_output=True, text=True)
         log(f"model run done in {round(time.time() - t_model)}s: {pdr.stdout.strip().splitlines()[-1] if pdr.stdout.strip() else ''}")
         if pdr.returncode:
             sys.exit(f"STOP: price_day3 {pdr.stdout[-400:]} {pdr.stderr[-400:]}")
