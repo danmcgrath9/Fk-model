@@ -75,7 +75,7 @@ def test_settle_by_hand():
     assert got[0]["won"] and got[0]["profit"] == 5.0 and got[1]["profit"] == -1.0
     assert "settled" not in got[2] and "settled" not in got[3]
     assert M.summary(got) == ("4 bets seen, 3 placed (1 missed: TAB had cut the price below the price it needed by then), "
-                              "2 settled, 1 won, +4.00 units (+200.0% a bet); 0 of 2 beat TAB's final price, by "
+                              "2 settled, 1 won, +4.00 units on 2.00 staked (+200.0%); 0 of 2 beat TAB's final price, by "
                               "+0.0% on average")
 
 
@@ -212,3 +212,12 @@ def test_watch_records_the_delay_from_tab_open(monkeypatch):
                          lambda: [r], clock=lambda: next(t), sleep=lambda s: None, timer=lambda: 0.0)
     assert h["lags"] == [35.0] and M.delay_line(h["lags"]).startswith("From Betwatch's first TAB price in a race to "
                                                                        "its bets being ready: median 35 seconds")
+
+
+def test_summary_counts_quarter_kelly_in_units():
+    # a quarter-Kelly row staked 3.74% of the bank is 2 units (1 unit = 1.87%); it won at $3.00: +4 units. A 0.935% row
+    # (half a unit) lost: -0.5. Together +3.5 units on 2.5 staked, +140%
+    rows = [{"placed": True, "settled": True, "won": True, "profit": 2.0, "kelly": 0.0374, "tab_at_detect": 3.0},
+            {"placed": True, "settled": True, "won": False, "profit": -1.0, "kelly": 0.00935, "tab_at_detect": 5.0}]
+    assert M.summary(rows) == "2 bets seen, 2 placed (0 missed: TAB had cut the price below the price it needed by " \
+                              "then), 2 settled, 1 won, +3.50 units on 2.50 staked (+140.0%)"

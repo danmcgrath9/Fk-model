@@ -181,17 +181,22 @@ def by_model(rows: list) -> str:
 
 
 def summary(rows: list) -> str:
-    """Counts and units only (the log is public)."""
+    """Counts and units only (the log is public). A unit is the backtest's average quarter-Kelly bet (topaz_best.UNIT_SHARE,
+    1.87% of the bank); a flat row is one unit."""
     placed = [b for b in rows if b.get("placed")]
     st = [b for b in placed if b.get("settled")]
-    units = sum(b["profit"] for b in st)
+    # quarter-Kelly rows (the best model, the band sheet) count their stake in units of the backtest's average bet;
+    # the corrected blend is flat, one unit a bet (Test 80)
+    stake = [topaz_best.units_of(b["kelly"]) if b.get("kelly") is not None else 1.0 for b in st]
+    units = sum(b["profit"] * u for b, u in zip(st, stake))
+    staked = sum(stake)
     fin = [b for b in st if b.get("tab_final")]
     beat = (f"; {sum(float(b['tab_at_detect']) > float(b['tab_final']) for b in fin)} of {len(fin)} beat TAB's final "
             f"price, by {np.mean([float(b['tab_at_detect']) / float(b['tab_final']) - 1 for b in fin]):+.1%} on average"
             if fin else "")
     return (f"{len(rows)} bets seen, {len(placed)} placed ({len(rows) - len(placed)} missed: TAB had cut the price "
-            f"below the price it needed by then), {len(st)} settled, {sum(b['won'] for b in st)} won, {units:+.2f} units "
-            f"({units / len(st):+.1%} a bet){beat}" if st else
+            f"below the price it needed by then), {len(st)} settled, {sum(b['won'] for b in st)} won, {units:+.2f} units on "
+            f"{staked:.2f} staked ({units / staked if staked else 0:+.1%}){beat}" if st else
             f"{len(rows)} bets seen, {len(placed)} placed, none settled yet")
 
 

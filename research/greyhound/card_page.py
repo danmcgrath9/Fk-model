@@ -164,8 +164,15 @@ def anchor(r: dict) -> str:
 SHEET_BANK = 10_000   # dollars (founder, 20 Nov 2026: "Bank is 10 000"); the sheet's stakes are shares of it
 
 
+SHEET_UNIT = 0.0187   # the unit: the backtest's average quarter-Kelly bet, 1.87% of the bank (topaz_best.UNIT_SHARE)
+
+
 def dollars(share: float) -> str:
     return f"${share * SHEET_BANK:,.0f}"
+
+
+def sheet_units(share: float) -> str:
+    return f"{share / SHEET_UNIT:.2f}u"
 
 
 def sheet_dogs(sheet: list, races: list) -> list:
@@ -202,9 +209,10 @@ def sheet_section(a, sheet: list, races: list, started) -> None:
         link = f"<a href='#{anchor(r)}'>{html.escape(short(r['t']))} R{n}</a> {when(r['s'])}" if r else f"{html.escape(short(v))} R{n}"
         rng = ", ".join(f"{money(lo)}-{money(hi)}" for lo, hi in spans)
         lo_st, hi_st = min(x[2] for x in bs), max(x[2] for x in bs)
-        stk = dollars(lo_st) if abs(hi_st - lo_st) < 5e-4 else f"{dollars(lo_st)}-{dollars(hi_st)}"
-        bands = "".join(f"<tr><td></td><td>{money(lo)}-{money(hi)}</td><td>{dollars(st)}<span class='u'>{st:.2%}</span></td>"
-                        "<td></td></tr>" for lo, hi, st in bs)
+        stk = (f"{sheet_units(lo_st)}<span class='u'>{dollars(lo_st)}</span>" if abs(hi_st - lo_st) < 5e-4 else
+               f"{sheet_units(lo_st)}-{sheet_units(hi_st)}<span class='u'>{dollars(lo_st)}-{dollars(hi_st)}</span>")
+        bands = "".join(f"<tr><td></td><td>{money(lo)}-{money(hi)}</td><td>{sheet_units(st)}<span class='u'>{dollars(st)}"
+                        "</span></td><td></td></tr>" for lo, hi, st in bs)
         a(f"<tr><td>{link}<span class='dn'>{html.escape(box_txt(b))}. {html.escape(title_case(d))}</span></td>"
           f"<td><b>{rng}</b></td><td><b>{stk}</b></td><td>{len(bs)}</td></tr>")
         a(f"<tr><td colspan='4' style='text-align:left'><details><summary>Each order</summary><table>{bands}</table>"
@@ -213,8 +221,9 @@ def sheet_section(a, sheet: list, races: list, started) -> None:
         a("<tr><td colspan='4' style='text-align:left'>No dog on the sheet today.</td></tr>")
     a("</table></div><div class='note'>Test 101's band sheet: the best model (Test 98) priced the night before at 28 TAB "
       "prices for each dog, the rest of the field at the TAB-open model's predicted prices. Each order is a price band "
-      "with its own stake: it fires only if TAB's FIRST price is inside it, staked at a quarter of Kelly (a share of the "
-      f"bank, at most 5%; dollars on a ${SHEET_BANK:,} bank). In the backtest it kept about 95% of the best model's edge at TAB's open (+346 of +364 "
+      "with its own stake: it fires only if TAB's FIRST price is inside it, staked at a quarter of Kelly, at most 5% of "
+      f"the bank. 1 unit is the backtest's average quarter-Kelly bet, {SHEET_UNIT:.2%} of the bank: "
+      f"{dollars(SHEET_UNIT)} on a ${SHEET_BANK:,} bank. In the backtest it kept about 95% of the best model's edge at TAB's open (+346 of +364 "
       "corrected BSP units, 21 months). Paper: tracked each morning at TAB's first price; nothing goes to BetMatic "
       "without your OK.</div></div>")
 
