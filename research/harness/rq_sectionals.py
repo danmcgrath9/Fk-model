@@ -64,6 +64,29 @@ def probe(d):
     return 0
 
 
+def mask(v):
+    """A cell's shape with its content removed: digits become 9, letters A (so '1:58.3' prints as '9:99.9')."""
+    if v is None or (isinstance(v, float) and v != v):
+        return "."
+    return re.sub(r"[A-Za-z]", "A", re.sub(r"\d", "9", str(v)))[:14]
+
+
+def shape(d):
+    """The first 14 rows of one recent and one 2024 file as cell shapes only: how races are separated and how the
+    times are written, without printing a horse, a driver or a time."""
+    import pandas as pd
+    files = listing()
+    for p in (files[0], [f for f in files if fname(f).startswith("2024")][0]):
+        df = pd.read_csv(io.BytesIO(get(f"{BASE}/RacingFile.ashx?path={p}")), dtype=str, header=None)
+        print(f"## {fname(p)[:8]} (shapes only; row 0 is the header, printed as names)\n")
+        print(" | ".join(str(x) for x in df.iloc[0]))
+        for i in range(1, min(15, len(df))):
+            print(" | ".join(mask(x) for x in df.iloc[i]))
+        print()
+        time.sleep(PAUSE)
+    return 0
+
+
 def pull(d, max_minutes):
     os.makedirs(d, exist_ok=True)
     files = listing(); t0 = time.monotonic()
@@ -89,7 +112,7 @@ def pull(d, max_minutes):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("mode", choices=["probe", "pull"]); ap.add_argument("dir")
+    ap.add_argument("mode", choices=["probe", "pull", "shape"]); ap.add_argument("dir")
     ap.add_argument("--max-minutes", type=float, default=300)
     a = ap.parse_args()
-    sys.exit(probe(a.dir) if a.mode == "probe" else pull(a.dir, a.max_minutes))
+    sys.exit(probe(a.dir) if a.mode == "probe" else shape(a.dir) if a.mode == "shape" else pull(a.dir, a.max_minutes))

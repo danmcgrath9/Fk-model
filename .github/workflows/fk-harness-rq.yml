@@ -36,6 +36,9 @@ jobs:
       - name: Probe
         if: github.event.inputs.mode == 'probe'
         run: python research/harness/rq_sectionals.py probe rq-cache | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Shape (cell shapes only)
+        if: github.event.inputs.mode == 'shape'
+        run: python research/harness/rq_sectionals.py shape rq-cache
       - name: Restore the held files (Actions cache)
         if: github.event.inputs.mode == 'pull'
         uses: actions/cache/restore@v4
