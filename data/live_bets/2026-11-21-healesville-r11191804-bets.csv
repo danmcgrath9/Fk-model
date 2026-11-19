@@ -1,0 +1,7 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,HEAL_211126_1,Boudica Warrior,top_pick,0.0,0.0,0.0,,,3.32,-1.0,,1.0,no,,
+2,HEAL_211126_2,Eidfjord,top_pick,0.0,0.0,0.0,,,1.97,-1.0,,1.0,no,,
+3,HEAL_211126_3,Grand Sage,top_pick,0.0,0.0,0.0,,,3.56,-1.0,Proven wet on a wet track; Class drop (rating),1.0,no,,
+4,HEAL_211126_4,Dama Royale,top_pick,0.0,0.0,0.0,,,1.85,-1.0,Already run to today's class; Class drop (rating),1.0,no,,
+5,HEAL_211126_5,Desert Boots,top_pick,0.0,0.0,0.0,,,3.42,-1.0,Already run to today's class; Class drop (rating); Blinkers first time; EARLY ONLY: bet near the open,1.0,no,,
+6,HEAL_211126_6,Lottaroc,top_pick,0.0,0.0,0.0,,,3.84,-1.0,Already run to today's class; Class drop (rating),1.0,no,,

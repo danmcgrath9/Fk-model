@@ -1,0 +1,51 @@
+1|7|Nasrin|False|False
+1|2|Belriah|False|False
+1|3|Overtoux|False|False
+1|4|Boudica Warrior|False|False
+1|6|Reisner|False|False
+1|1|Rock Glory|False|False
+1|5|Dunnenkate Bro|False|False
+2|2|Pipe Hitter|False|False
+2|3|Wallace And Gromit|False|False
+2|4|Hopkins Star|False|False
+2|1|Eidfjord|False|False
+2|5|Princess Chic|False|False
+2|6|Specific Outcome|False|False
+3|10|Anything But|False|False
+3|3|Lika Mosh|False|False
+3|2|Red Stiletto|False|False
+3|12|Popeye The Sailor|True|False
+3|6|Downtown Man|False|False
+3|7|Nic Says No|False|False
+3|8|Everett|False|False
+3|1|Besson|False|False
+3|13|Discobay|True|False
+3|11|A Blue Star|True|False
+3|4|Grand Sage|False|False
+3|9|Springer Time|False|False
+3|5|Stella Cantante|False|False
+4|4|Captivating Storm|False|False
+4|7|Miss Lil|False|False
+4|8|Triple Match|False|False
+4|2|Knight Wink|False|False
+4|6|Haunted Kynexion|False|False
+4|1|Fantasy Reel|False|False
+4|5|Dama Royale|False|False
+5|2|Jenni Of Avalon|False|False
+5|4|Mexican Fiddler|False|False
+5|7|Persuasive Star|False|False
+5|5|Sierra Sun|False|False
+5|8|Enough War|False|False
+5|9|Stormyfriendship|True|False
+5|3|Elite Pete|False|False
+5|1|Desert Boots|False|False
+5|6|Duel Missile|False|False
+6|2|Lottaroc|False|False
+6|5|Aria Electra|False|False
+6|7|Wilma Wombat|False|False
+6|1|Epicus|False|False
+6|8|Kilmister|False|False
+6|4|Miss Himalaya|False|False
+6|9|Royal Summer|True|False
+6|3|Nuggies|False|False
+6|6|Iconique|False|False
