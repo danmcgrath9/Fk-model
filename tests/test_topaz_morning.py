@@ -152,3 +152,54 @@ def test_watch_on_a_normal_morning_stops_at_until(monkeypatch):
                          lambda: opened, clock=tick, sleep=sleep, late=datetime(2026, 11, 19, 9, 50, tzinfo=M.MEL))
     # open at 7:00, an hour after is 8:00, before 8:20: polls at 7:00 ... 8:10, eight
     assert n == 8 and h["first_open"].strftime("%H:%M") == "07:00"
+
+
+def test_race_opened_at_is_the_earliest_tab_price():
+    from datetime import datetime, timezone
+    r = race("a", [[[3.0, "2026-11-18T22:19:10Z"], [4.4, "2026-11-18T22:18:55Z"]], [[2.0, "t"]], []])
+    assert M.race_opened_at(r) == datetime(2026, 11, 18, 22, 18, 55, tzinfo=timezone.utc)
+    assert M.race_opened_at(race("b", [[], []])) is None
+
+
+def test_watch_polls_fast_while_tab_opens_races(monkeypatch):
+    """Start to start: 30 seconds while nothing moves, 10 for ten minutes after TAB prices a race."""
+    from datetime import datetime
+    monkeypatch.setattr(M.T, "open_field", lambda races: pd.DataFrame())
+    waits = []
+    state = {"t": datetime(2026, 11, 19, 9, 0, tzinfo=M.MEL)}
+
+    def sleep(s):
+        waits.append(round(s))
+        state["t"] = state["t"] + __import__("datetime").timedelta(seconds=s)
+    closed = [race("a", [[]]), race("b", [[]])]
+    opened = [race("a", [[[3.0, "t"]]]), race("b", [[]])]
+    feed = iter([closed] * 3 + [opened] * 200)            # TAB prices race a on the fourth poll, at 9:01:30
+    M.watch("2026-11-19", None, None, None, datetime(2026, 11, 19, 9, 20, tzinfo=M.MEL), 30, lambda: next(feed),
+            clock=lambda: state["t"], sleep=sleep, fast=10, fast_for=10, timer=lambda: 0.0)
+    assert waits[:3] == [30, 30, 30] and waits[3] == 10
+    # fast from 9:01:30 to 9:11:30, then back to 30
+    assert waits.count(10) == 60 and set(waits[63:]) == {30}
+
+
+def test_watch_counts_the_poll_s_own_time_in_the_wait(monkeypatch):
+    """A 30-second poll whose fetch took 12 seconds waits 18, not 30 (19 Nov: 45 after the work made 50 to 62)."""
+    from datetime import datetime
+    monkeypatch.setattr(M.T, "open_field", lambda races: pd.DataFrame())
+    t = iter([datetime(2026, 11, 19, 7, 0, 0, tzinfo=M.MEL)] * 2 + [datetime(2026, 11, 19, 7, 0, 2, tzinfo=M.MEL)])
+    ticks, waits = iter([0.0, 12.0, 12.0]), []           # the poll's start, its fetch done, the wait worked out
+    M.watch("2026-11-19", None, None, None, datetime(2026, 11, 19, 7, 0, 1, tzinfo=M.MEL), 30, lambda: [],
+            clock=lambda: next(t), sleep=waits.append, timer=lambda: next(ticks))
+    assert waits == [18.0]
+
+
+def test_watch_records_the_delay_from_tab_open(monkeypatch):
+    from datetime import datetime
+    monkeypatch.setattr(M.T, "open_field", lambda races: pd.DataFrame({"bw_race": [r["id"] for r in races]}))
+    monkeypatch.setattr(M.topaz_iso, "at_open", lambda facts, cards, bst, meta: facts)
+    monkeypatch.setattr(M, "detect", lambda x, races, now, day: [])
+    t = iter([datetime(2026, 11, 19, 9, 19, 30, tzinfo=M.MEL)] * 2 + [datetime(2026, 11, 19, 9, 30, tzinfo=M.MEL)])
+    r = race("a", [[[4.4, "2026-11-18T22:18:55Z"]]])          # 9:18:55 Melbourne; seen at 9:19:30
+    _, _, _, h = M.watch("2026-11-19", None, None, None, datetime(2026, 11, 19, 9, 20, tzinfo=M.MEL), 30,
+                         lambda: [r], clock=lambda: next(t), sleep=lambda s: None, timer=lambda: 0.0)
+    assert h["lags"] == [35.0] and M.delay_line(h["lags"]).startswith("From Betwatch's first TAB price in a race to "
+                                                                       "its bets being ready: median 35 seconds")

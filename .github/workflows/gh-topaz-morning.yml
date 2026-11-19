@@ -2,7 +2,8 @@ name: gh topaz morning
 
 # The 7am program, paper only (18 Nov 2026, founder: "Build the 7am program, paper only"). TAB opens Victorian
 # greyhounds at a median 7:25am Melbourne (Test 92), and a bet placed a minute after the open keeps about 86% of the
-# edge, three minutes about 69% (Test 95). mode=watch polls Betwatch every 45 seconds until 8:20am Melbourne and
+# edge, three minutes about 69% (Test 95). mode=watch polls Betwatch every 30 seconds, start to start, and every 10
+# while TAB is opening races (MORNING_EVERY, MORNING_FAST; 19 Nov 2026), until 8:20am Melbourne and
 # prices each race on the corrected blend the moment TAB has priced its whole field (last night's kept card_iso and
 # the saved correction, Actions cache, read only). Each bet is logged at TAB's price when seen, or as missed if TAB had
 # already cut it below 1.1x. The days before are settled first, from Betwatch's results. The ledger lives in the

@@ -114,11 +114,12 @@ def choose_rounds(fit_rows: tuple, val_rows: tuple):
     return best_k, base, best_l
 
 
-def walk_correction(R: pd.DataFrame, X: pd.DataFrame, label: np.ndarray, use: np.ndarray):
+def walk_correction(R: pd.DataFrame, X: pd.DataFrame, label: np.ndarray, use: np.ndarray, models: list | None = None):
     """The correction walked forward over R (runners that ran, races together, with date, race_id, won, off): refit
     every EVERY months from FROM on the `use` rows before the month, rounds chosen on the VAL_MONTHS before it.
     Returns the chances over each race's runners that ran (nan before FROM), the refit log and the mean gain share by
-    input over the refits that kept any rounds."""
+    input over the refits that kept any rounds. When `models` is a list, each refit's (month, booster or None) is
+    appended to it, so a later step can price the same races again at other prices (round 80)."""
     d, race, off, won = R.date.values, R.race_id.values, R.off.values, R.won.values.astype(float)
     p = np.full(len(R), np.nan)
     log, bst, fitted, gains = [], None, None, []
@@ -133,6 +134,8 @@ def walk_correction(R: pd.DataFrame, X: pd.DataFrame, label: np.ndarray, use: np
             k, l0, lk = choose_rounds((X[a], label[a], off[a], race[a]), (X[v], won[v], off[v], race[v]))
             tr = use & (d < start)
             bst, fitted = fit(X[tr], label[tr], off[tr], race[tr], k), M
+            if models is not None:
+                models.append((M, bst))
             log.append(f"{M}: {k} rounds (three months before: {l0:.4f} to {lk:.4f}), fit on "
                        f"{pd.unique(race[tr]).size:,} races")
             if bst is not None:

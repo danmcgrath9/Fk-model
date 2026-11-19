@@ -30,6 +30,8 @@ def test_mh_for_uses_earlier_days_only():
     assert np.isclose(m.mh_tab_last[1], 0.9) and np.isclose(m.mh_tab_mean5[1], 1.3 / 3)
     assert np.isnan(m.mh_tab_last[2]) and np.isnan(m.mh_tab_last[3])
     assert list(m.columns) == [f"mh_{c}_{k}" for c in B.MH for k in ("last", "mean5")]
+    # the table built once a morning looks up the same values
+    pd.testing.assert_frame_equal(B.mh_for(keys, B.mh_table(hist)), m)
 
 
 def test_bets_and_kelly_by_hand():

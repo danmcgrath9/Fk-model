@@ -52,23 +52,36 @@ def runs_history(bw: pd.DataFrame) -> pd.DataFrame:
     return out.replace([np.inf, -np.inf], np.nan)
 
 
-def mh_for(keys: pd.DataFrame, hist: pd.DataFrame) -> pd.DataFrame:
-    """For each key (date, _dn): the dog's last run on an EARLIER day and the mean of its last five, for every history
-    input (mh_<x>_last, mh_<x>_mean5). Aligned to keys' rows; nan where the dog has no earlier run."""
-    cols = [f"mh_{c}_{k}" for c in MH for k in ("last", "mean5")]
-    out = pd.DataFrame(np.nan, index=np.arange(len(keys)), columns=cols)
-    if hist is None or hist.empty or not len(keys):
-        return out
+MH_COLS = [f"mh_{c}_{k}" for c in MH for k in ("last", "mean5")]
+
+
+def mh_table(hist: pd.DataFrame) -> pd.DataFrame:
+    """Every history input on each dog's runs (one row a dog a day, its last and the mean of its last five), in date
+    order, ready for mh_for to look up. The slow part of mh_for: the morning program builds it once before TAB opens
+    (19 Nov 2026: pricing the races took 13 seconds a poll when every poll rebuilt it)."""
+    if hist is None or hist.empty:
+        return pd.DataFrame(columns=["date", "_dn", *MH_COLS])
     h = hist.dropna(subset=["date"]).sort_values(["_dn", "date"], kind="mergesort").reset_index(drop=True)
     h = h.drop_duplicates(["_dn", "date"], keep="last")
     g = h.groupby("_dn", sort=False)
     for c in MH:
         h[f"mh_{c}_last"] = h[c]
         h[f"mh_{c}_mean5"] = g[c].transform(lambda s: s.rolling(5, min_periods=1).mean())
+    return h[["date", "_dn", *MH_COLS]].sort_values("date", kind="mergesort")
+
+
+def mh_for(keys: pd.DataFrame, hist: pd.DataFrame) -> pd.DataFrame:
+    """For each key (date, _dn): the dog's last run on an EARLIER day and the mean of its last five, for every history
+    input (mh_<x>_last, mh_<x>_mean5). Aligned to keys' rows; nan where the dog has no earlier run. hist is the runs
+    (runs_history) or a table mh_table already built from them."""
+    cols = MH_COLS
+    out = pd.DataFrame(np.nan, index=np.arange(len(keys)), columns=cols)
+    if hist is None or hist.empty or not len(keys):
+        return out
+    h = hist if set(cols) <= set(hist.columns) else mh_table(hist)
     k = pd.DataFrame({"date": pd.to_datetime(keys.date.values), "_dn": keys._dn.values, "_i": np.arange(len(keys))})
     k = k.dropna(subset=["date"]).sort_values("date", kind="mergesort")
-    m = pd.merge_asof(k, h[["date", "_dn", *cols]].sort_values("date", kind="mergesort"), on="date", by="_dn",
-                      allow_exact_matches=False, direction="backward")
+    m = pd.merge_asof(k, h, on="date", by="_dn", allow_exact_matches=False, direction="backward")
     out.loc[m._i.values, cols] = m[cols].values
     return out
 

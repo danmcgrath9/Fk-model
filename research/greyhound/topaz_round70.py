@@ -41,12 +41,15 @@ WALK_ROUNDS = 4000
 MARGINS = (0.015, 0.02, 0.025)
 
 
-def walk_faster(R: pd.DataFrame, X: pd.DataFrame, q: np.ndarray, use: np.ndarray):
-    """Round 41's walk at LEARNING_RATE and up to WALK_ROUNDS a refit; the module's settings are put back after."""
+def walk_faster(R: pd.DataFrame, X: pd.DataFrame, q: np.ndarray, use: np.ndarray, models: list | None = None):
+    """Round 41's walk at LEARNING_RATE and up to WALK_ROUNDS a refit; the module's settings are put back after.
+    `models`, when a list, collects each refit's (month, booster) (round 80)."""
     old_rounds, old_params = R41.MAX_ROUNDS, R41.PARAMS
     R41.MAX_ROUNDS, R41.PARAMS = WALK_ROUNDS, dict(R41.PARAMS, learning_rate=LEARNING_RATE)
     try:
-        return R41.walk_correction(R, X, q, use)
+        if models is None:
+            return R41.walk_correction(R, X, q, use)
+        return R41.walk_correction(R, X, q, use, models=models)
     finally:
         R41.MAX_ROUNDS, R41.PARAMS = old_rounds, old_params
 
