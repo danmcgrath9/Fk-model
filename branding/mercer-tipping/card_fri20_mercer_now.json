@@ -3,8 +3,28 @@
  "date": "20 November",
  "footer": "Win bets.",
  "brand": true,
- "prices_as_at": "2026-11-18T17:15",
+ "prices_as_at": "2026-11-19T15:46",
  "meetings": [
+  {
+   "name": "Swan Hill",
+   "note": "",
+   "bets": [
+    {
+     "race": 4,
+     "time": "2:55PM",
+     "horse": "Tell Me Why",
+     "price": "$8.50",
+     "units": "1.41u"
+    },
+    {
+     "race": 7,
+     "time": "4:50PM",
+     "horse": "Ville De Lumiere",
+     "price": "$4.40",
+     "units": "1.40u"
+    }
+   ]
+  },
   {
    "name": "Pakenham",
    "note": "",
@@ -17,17 +37,10 @@
      "units": "5.12u"
     },
     {
-     "race": 4,
-     "time": "7:45PM",
-     "horse": "Heat Map",
-     "price": "$5",
-     "units": "3.05u"
-    },
-    {
      "race": 6,
      "time": "8:45PM",
      "horse": "Sealand",
-     "price": "$11",
+     "price": "$9",
      "units": "1.06u"
     }
    ]

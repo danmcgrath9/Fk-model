@@ -4,6 +4,28 @@
  "brand": false,
  "meetings": [
   {
+   "name": "Swan Hill",
+   "note": "",
+   "bets": [
+    {
+     "race": 4,
+     "time": "2:55PM",
+     "horse": "Tell Me Why",
+     "price": "$8.50",
+     "rated": "$6.37",
+     "units": "1.41u"
+    },
+    {
+     "race": 7,
+     "time": "4:50PM",
+     "horse": "Ville De Lumiere",
+     "price": "$9",
+     "rated": "$6.41",
+     "units": "1.40u"
+    }
+   ]
+  },
+  {
    "name": "Pakenham",
    "note": "",
    "bets": [
@@ -14,14 +36,6 @@
      "price": "$3",
      "rated": "$2.19",
      "units": "5.12u"
-    },
-    {
-     "race": 4,
-     "time": "7:45PM",
-     "horse": "Heat Map",
-     "price": "$6.50",
-     "rated": "$3.94",
-     "units": "3.05u"
     },
     {
      "race": 6,
