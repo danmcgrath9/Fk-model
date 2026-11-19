@@ -1317,3 +1317,14 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - Running record: the model +68.83u since 2 Nov (64 bets, 14 won), -41.17u since 12 Nov; since live (9 Oct) +286.50u
   (176 bets, 39 won, +$14,325 at $50). Price against Betfair SP since 12 Nov 1.29x (19 of 28 beat it). 9am list 3 bets,
   0 won, -$2,926 a bookie.
+
+## Thursday 19 Nov Mornington settled (Form King results, re-pulled Fri 9:15am after the database was writable again)
+
+- Open book (sheet of record at Form King's open): Parera R1 2.82u at $5, WON (+11.28u, Betfair SP $5.93); Nitro Sonic R2
+  3.32u at $17, WON (+53.12u, Betfair SP $16.50); Sealand R7 1.21u at $15, scratched, void. Day: 2 bets, 2 won, +64.40u
+  (+$3,220 at $50). No TAB deduction reported, so both winners are paid at the price taken. Both no-Mercer and Mercer
+  cards carried the same two horses at the same units.
+- BetMatic: nothing sent (send hold).
+- The 9am bets (new rule, first day): none listed. Old rule: none.
+- Running record: since live (9 Oct) +362.29u (179 bets, 42 won, +$18,114 at $50); the model +144.62u since 2 Nov
+  (67 bets, 17 won), price against Betfair SP 1.25x (41 of 65 beat it).
