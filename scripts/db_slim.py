@@ -57,13 +57,13 @@ def mb(n) -> str:
     return f"{(n or 0) / 1024 / 1024:.1f} MB"
 
 
-def stream(conn, sql: str, *args):
-    """Rows without holding them all: a server-side cursor, 2,000 at a time."""
-    with conn.transaction():
-        with conn.cursor(name="slim") as cur:
-            cur.itersize = 2000
-            cur.execute(sql, args)
-            yield from cur
+def batches(conn, key_sql: str, rows_sql: str, size: int):
+    """Rows a batch of keys at a time. No cursor and no sort: on 19 Nov even a server-side cursor
+    wrote temporary files, and the full disk refused them. Each batch is a plain query on the
+    primary key, which streams straight to us."""
+    keys = [r[0] for r in conn.execute(key_sql).fetchall()]
+    for i in range(0, len(keys), size):
+        yield from conn.execute(rows_sql, (keys[i:i + size],)).fetchall()
 
 
 def sizes(conn) -> str:
@@ -75,16 +75,19 @@ def sizes(conn) -> str:
 def backup(a) -> None:
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     with connect(load_settings().database_url) as conn:
+        conn.autocommit = True
         conn.read_only = True
         print(sizes(conn))
         man = {"bench": {}, "races": {}}
         with gzip.open(out / "bench.jsonl.gz", "wt", encoding="utf-8") as f:
-            for row in stream(conn, f"select {BENCH_SELECT} from fk.benchmarked_runs"):
+            for row in batches(conn, "select run_id from fk.benchmarked_runs",
+                               f"select {BENCH_SELECT} from fk.benchmarked_runs where run_id = any(%s)", 1000):
                 vals = list(row)
                 f.write(json.dumps(vals) + "\n")
                 man["bench"][vals[0]] = row_md5(vals)
         with gzip.open(out / "races.jsonl.gz", "wt", encoding="utf-8") as f:
-            for rid, raw in stream(conn, "select race_id, raw::text from fk.races where raw ? 'entries'"):
+            for rid, raw in batches(conn, "select race_id from fk.races where raw ? 'entries'",
+                                    "select race_id, raw::text from fk.races where race_id = any(%s)", 25):
                 f.write(json.dumps([rid, raw]) + "\n")
                 man["races"][rid] = md5(raw)
         (out / "manifest.json").write_text(json.dumps(man), encoding="utf-8")
