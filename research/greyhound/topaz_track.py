@@ -72,7 +72,11 @@ def norm(s) -> np.ndarray:
 # ---- the cards ----------------------------------------------------------------------------------------------------
 
 def cards_from_dir(d: str) -> pd.DataFrame:
-    fs = sorted(Path(d).glob("card_*.csv.gz")) if d and os.path.isdir(d) else []
+    """The kept nightly cards (card_YYYY-MM-DD.csv.gz) only. 20 Nov 2026: the glob was card_*.csv.gz, which from 17 Nov
+    also read the corrected blend's card_iso_DAY files beside them, so every dog was on the card twice, once with no
+    p_model, and the rule at TAB's open found no race whose every dog had our chance (0 of 48 on 18 Nov)."""
+    fs = sorted(f for f in Path(d).glob("card_*.csv.gz") if not f.name.startswith("card_iso_")) \
+        if d and os.path.isdir(d) else []
     if not fs:
         return pd.DataFrame(columns=CARD_COLS)
     return pd.concat([pd.read_csv(f, dtype={"race_no": str, "box": str}) for f in fs], ignore_index=True)
