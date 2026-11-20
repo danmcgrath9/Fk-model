@@ -53,13 +53,14 @@
      "horse": "Job Done",
      "price": "$11",
      "rated": "$5.85",
-     "units": "1.91u"
+     "units": "1.91u",
+     "scr": true
     },
     {
      "race": 7,
      "time": "3:45PM",
      "horse": "Celsius Star",
-     "price": "$15",
+     "price": "$16",
      "rated": "$7.86",
      "units": "1.37u"
     },
