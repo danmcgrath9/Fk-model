@@ -1,91 +1,93 @@
-# Penshurst Sat 21 Nov, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 1 runners without a rider; PAPER ONLY (the model has 8 races at this venue, 0 since the 3 Jun holdout)
-1, Whata Stretch, 0, 0
-1, Mamzelle Raine, 0, 0
-1, Smart And Mighty, 0, 0
-1, Holler's Vision, 0, 0
-1, Lange Nelle, 0, 0
-1, Jondens Boy, 0, 0
-1, Kiss Me In Paris, 0, 0
-1, Orchid Sky, 0, 0
-1, Goddess Storm, 0, 0
-2, Sugar And Sweet, 0, 0
-2, Kasami, SCR
-2, Monsoon Reins, 0, 0
-2, Gopher Frank, 0, 0
-2, Frose, 0, 0
-2, La Cache A Vin, 0, 0
-2, Peintre's Pride, SCR
-2, Squagaga, SCR
-2, Two Kay Klick, SCR
+# Penshurst Sat 21 Nov, official going, final fields; market open in R1,2,3,4,5,6,7; PROVISIONAL: 1 runners without a rider; PAPER ONLY (the model has 8 races at this venue, 0 since the 3 Jun holdout)
+1, Whata Stretch, 31.00, 31.00, fk_open 26.00
+1, Mamzelle Raine, 41.00, 41.00, fk_open 26.00
+1, Smart And Mighty, 12.00, 12.00, fk_open 15.00
+1, Holler's Vision, 18.00, 18.00, fk_open 11.00
+1, Lange Nelle, 6.00, 6.00, fk_open 4.40
+1, Jondens Boy, 34.00, 34.00, fk_open 19.00
+1, Kiss Me In Paris, 4.80, 4.80, fk_open 4.40
+1, Orchid Sky, 1.95, 1.95, fk_open 2.15
+1, Goddess Storm, 7.50, 7.50, fk_open 9.00
+2, Sugar And Sweet, 5.50, 5.50, fk_open 9.00
+2, Kasami, 0, 0
+2, Monsoon Reins, 14.00, 14.00, fk_open 11.00
+2, Gopher Frank, 7.00, 7.00, fk_open 5.75
+2, Frose, 4.40, 4.40, fk_open 3.20
+2, La Cache A Vin, 21.00, 21.00, fk_open 14.00
+2, Peintre's Pride, 0, 0
+2, Squagaga, 0, 0
+2, Two Kay Klick, 23.00, 23.00, fk_open 17.50
 2, Flux, 0, 0
-2, Zamora, 0, 0
-2, The Crusader, 0, 0
-2, Grumpyoldcol, 0, 0
-2, Star Fortian, 0, 0
-3, Challenging, 0, 0
-3, Ambisaam, 0, 0
-3, Tycoon Iggy, SCR
-3, Rei Ayanami, 0, 0
-3, Hellofacury, 0, 0
-3, Native Dance, 0, 0
-3, Buchan Outkast, 0, 0
+2, Zamora, 7.50, 7.50, fk_open 5.75
+2, The Crusader, 12.00, 12.00, fk_open 13.00
+2, Grumpyoldcol, 6.50, 6.50, fk_open 6.00
+2, Star Fortian, 15.00, 15.00, fk_open 10.00
+3, Challenging, 13.00, 13.00, fk_open 19.00
+3, Ambisaam, 19.00, 19.00, fk_open 15.00
+3, Tycoon Iggy, 0, 0
+3, Rei Ayanami, 9.50, 9.50, fk_open 8.00
+3, Hellofacury, 1.70, 1.70, fk_open 1.55
+3, Native Dance, 11.00, 11.00, fk_open 8.00
+3, Buchan Outkast, 151.00, 151.00, fk_open 101.00
+3, Zercardy, SCR
 3, Peace Seeker, 0, 0
-3, Miss Fine, 0, 0
-3, Unclaimed, SCR
-3, Gunnatippatinnie, 0, 0
+3, Miss Fine, 7.50, 7.50, fk_open 11.00
+3, Unclaimed, 7.50, 7.50, fk_open 8.00
+3, Gunnatippatinnie, 35.00, 35.00, fk_open 26.00
 3, Opunake, SCR
-3, Yahweh Rapha, SCR
-4, Hay Joe, 0, 0
-4, Lord Porchester, 0, 0
-4, High Altitude, 0, 0
-4, Infer, SCR
-4, Spike Almighty, SCR
-4, Don't Matta Me, SCR
-4, Dazzling Sky, 0, 0
-4, Icy Pole, 0, 0
-4, Becauseyou're Mine, 0, 0
-4, Winning Toast, 0, 0
-4, Abby's Crossword, 0, 0
+3, Yahweh Rapha, 35.00, 35.00, fk_open 26.00
+4, Hay Joe, 15.00, 15.00, fk_open 15.00
+4, Lord Porchester, 20.00, 20.00, fk_open 18.00
+4, High Altitude, 41.00, 41.00, fk_open 36.00
+4, Infer, 41.00, 41.00, fk_open 36.00
+4, Spike Almighty, 0, 0
+4, Don't Matta Me, 0, 0
+4, Dazzling Sky, 51.00, 51.00, fk_open 41.00
+4, Icy Pole, 4.00, 4.00, fk_open 3.85
+4, Becauseyou're Mine, 4.60, 4.60, fk_open 4.55
+4, Winning Toast, 14.00, 14.00, fk_open 12.50
+4, Abby's Crossword, 3.00, 3.00, fk_open 2.90
 4, Ramelle, 0, 0
-4, Fox Phire, 0, 0
-5, Champagne Sabre, 0, 0
-5, Tarin's Rock, 0, 0
-5, Blues Jazz, 0, 0
-5, Miss Delightful, 0, 0
-5, Awaywiththepixies, 0, 0
-5, Jack Will, SCR
-5, Platinum Rush, 0, 0
-5, Slick Vixen, SCR
-5, Piccadilly Thunder, 0, 0
-5, Numbersneverseen, SCR
-5, Presno, 0, 0
-5, Flaws And Sins, SCR
-5, Fire Type, 0, 0
-5, Big Trouble, 0, 0
-6, State Of Maine, SCR
-6, Drink Then Kiss, SCR
-6, Alpinova, 0, 0
-6, Handsome Devil, 0, 0
-6, Nicking Gracie, 0, 0
-6, Whiskey And Beer, 0, 0
-6, Coldenkim, SCR
-6, Mont Saint Michel, 0, 0
-6, Quizlet, 0, 0
-6, Chica Con Suerte, SCR
-6, Flying Shelby, 0, 0
-6, Steely Hustler, 0, 0
-6, Bare To Witness, 0, 0
-6, First Return, 0, 0
-7, Unamerican, SCR
-7, Spanish Snitzel, SCR
-7, Super Snitch, 0, 0
-7, Male Model, 0, 0
-7, Foujita San, 0, 0
-7, Unseen Ruler, 0, 0
-7, Any Luck, 0, 0
-7, Aftermath, 0, 0
-7, Dartboard, 0, 0
-7, Vizie, 0, 0
-7, Pianta, SCR
-7, Rich Champagne, 0, 0
-7, King Leonidas, SCR
+4, Fox Phire, 5.00, 5.00, fk_open 4.90
+5, Champagne Sabre, 11.00, 11.00, fk_open 11.00
+5, Tarin's Rock, 41.00, 41.00, fk_open 35.00
+5, Blues Jazz, 51.00, 51.00, fk_open 35.00
+5, Miss Delightful, 14.00, 14.00, fk_open 14.00
+5, Awaywiththepixies, 81.00, 81.00, fk_open 81.00
+5, Jack Will, 0, 0
+5, Platinum Rush, 2.35, 2.35, fk_open 2.35
+5, Slick Vixen, 0, 0
+5, Piccadilly Thunder, 81.00, 81.00, fk_open 81.00
+5, Numbersneverseen, 0, 0
+5, Presno, 6.00, 6.00, fk_open 6.00
+5, Flaws And Sins, 0, 0
+5, Fire Type, 2.90, 2.90, fk_open 2.70
+5, Big Trouble, 6.50, 6.50, fk_open 6.50
+6, State Of Maine, 0, 0
+6, Drink Then Kiss, 0, 0
+6, Alpinova, 6.50, 6.50, fk_open 6.00
+6, Handsome Devil, 21.00, 21.00, fk_open 19.00
+6, Nicking Gracie, 5.50, 5.50, fk_open 5.50
+6, Whiskey And Beer, 8.00, 8.00, fk_open 7.00
+6, Coldenkim, 0, 0
+6, Mont Saint Michel, 6.50, 6.50, fk_open 6.00
+6, Quizlet, 26.00, 26.00, fk_open 23.00
+6, Chica Con Suerte, 0, 0
+6, Flying Shelby, 13.00, 13.00, fk_open 12.00
+6, Steely Hustler, 3.60, 3.60, fk_open 3.30
+6, Bare To Witness, 8.00, 8.00, fk_open 7.00
+6, First Return, 17.00, 17.00, fk_open 15.00
+7, Unamerican, 151.00, 151.00, fk_open 81.00
+7, Spanish Snitzel, 126.00, 126.00, fk_open 81.00
+7, Super Snitch, 26.00, 26.00, fk_open 26.00
+7, Male Model, 13.00, 13.00, fk_open 13.00
+7, Foujita San, 4.80, 4.80, fk_open 4.20
+7, Unseen Ruler, 4.60, 4.60, fk_open 4.00
+7, Any Luck, 23.00, 23.00, fk_open 15.00
+7, Aftermath, 2.80, 2.80, fk_open 2.50
+7, Dartboard, 8.00, 8.00, fk_open 12.00
+7, Vizie, 23.00, 23.00, fk_open 19.00
+7, Pianta, 41.00, 41.00, fk_open 34.00
+7, Rich Champagne, 6.50, 6.50, fk_open 10.00
+7, Vegas Jack, SCR
+7, King Leonidas, 126.00, 126.00, fk_open 101.00

@@ -1,0 +1,9 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,TAT_211126_1,Royal Overture,top_pick,2.25,2.25,2.4,2.4,,3.65,-0.342,,1.0,no,,
+2,TAT_211126_2,Profumo,top_pick,1.35,1.35,1.98,1.98,,2.05,-0.032,Already run to today's class,1.0,no,,
+3,TAT_211126_3,Best Terms,top_pick,2.2,2.2,1.6,1.6,,1.78,-0.102,Already run to today's class; Well backed before a bad last run,1.0,no,,
+4,TAT_211126_4,Strummer,top_pick,4.6,4.6,3.85,3.85,,4.42,-0.129,Already run to today's class; Class drop (rating); Late 600 beyond the tempo,1.0,no,,
+5,TAT_211126_5,Eternal Darkness,top_pick,4.2,4.2,6.0,6.0,,6.59,-0.09,Class drop (rating); Blinkers first time,1.0,no,,
+6,TAT_211126_6,Monsun's Pride,top_pick,2.75,2.75,3.5,3.5,,3.95,-0.114,Beaten by the pace last start; Already run to today's class; Above the field in all three sections,1.0,no,,
+7,TAT_211126_7,Regal Tycoon,top_pick,6.5,6.5,3.8,3.8,,5.12,-0.258,,1.0,no,,
+8,TAT_211126_8,Bakersbend,top_pick,5.5,5.5,5.25,5.25,,7.27,-0.278,New career-best last start; Class drop (rating),1.0,no,,

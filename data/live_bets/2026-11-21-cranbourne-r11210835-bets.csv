@@ -1,0 +1,11 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,CRAN_211126_1,Doubt Time,top_pick,2.8,2.8,2.55,2.55,,2.51,0.017,Blinkers first time,1.0,no,,
+2,CRAN_211126_2,Dirty Look,top_pick,1.9,1.9,1.8,1.8,,2.33,-0.228,Already run to today's class,1.0,no,,
+3,CRAN_211126_3,Swift Force,top_pick,2.8,2.8,2.7,2.7,,3.24,-0.168,"Beaten by the pace last start; Already run to today's class; Third-up, improving; Class drop (rating)",1.0,no,,
+4,CRAN_211126_4,Col Klink,top_pick,3.9,3.9,6.0,6.0,,4.49,0.336,Well backed before a bad last run; Class drop (rating),1.0,no,,
+5,CRAN_211126_5,Ardashir,top_pick,3.8,3.8,8.0,8.0,,5.26,0.522,,1.0,no,,
+6,CRAN_211126_6,Jenni Multabella,top_pick,1.65,1.65,3.0,3.0,,2.75,0.091,Already run to today's class; Class drop (rating),1.0,no,,
+7,CRAN_211126_7,Stoli Bolli,top_pick,5.5,5.5,4.6,4.6,,5.91,-0.221,Already run to today's class; Well backed before a bad last run; Class drop (rating),1.0,no,,
+8,CRAN_211126_8,Another Wil,top_pick,0.0,0.0,0.0,,,6.78,-1.0,,1.0,no,,
+9,CRAN_211126_9,Smooth Chino,top_pick,3.1,3.1,2.5,2.5,,4.22,-0.407,Late 600 beyond the tempo; Above the field in all three sections,1.0,no,,
+10,CRAN_211126_10,Choir Point,top_pick,4.2,4.2,4.0,4.0,,5.46,-0.267,Already run to today's class; Well backed before a bad last run,1.0,no,,

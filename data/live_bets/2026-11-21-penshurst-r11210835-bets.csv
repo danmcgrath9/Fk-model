@@ -1,0 +1,8 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,PENS_211126_1,Orchid Sky,top_pick,1.95,1.95,2.15,2.15,,2.11,0.019,Already run to today's class; Class drop (rating),1.0,no,,
+2,PENS_211126_2,Frose,top_pick,4.4,4.4,3.2,3.2,,4.97,-0.357,,1.0,no,,
+3,PENS_211126_3,Hellofacury,top_pick,1.7,1.7,1.55,1.55,,1.75,-0.113,Already run to today's class; Class drop (rating),1.0,no,,
+4,PENS_211126_4,Icy Pole,top_pick,4.0,4.0,3.85,3.85,,4.18,-0.08,,1.0,no,,
+5,PENS_211126_5,Fire Type,top_pick,2.9,2.9,2.7,2.7,,2.85,-0.053,Already run to today's class; Well backed before a bad last run; Class drop (rating),1.0,no,,
+6,PENS_211126_6,Steely Hustler,top_pick,3.6,3.6,3.3,3.3,,3.84,-0.141,Above the field in all three sections,1.0,no,,
+7,PENS_211126_7,Foujita San,top_pick,4.8,4.8,4.2,4.2,,4.43,-0.051,Already run to today's class,1.0,no,,

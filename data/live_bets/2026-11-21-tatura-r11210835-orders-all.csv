@@ -1,0 +1,106 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-21,Tatura,1,,11,Belle Fille,WIN,15.96,70.33,0.71,36,1 of 2,0.71u,11.72,
+2026-11-21,Tatura,1,,11,Belle Fille,WIN,19.95,70.33,0.17,8,2 of 2,0.88u,11.72,
+2026-11-21,Tatura,1,,4,Jezebel Jenni,WIN,7.36,33.67,1.63,82,1 of 3,1.63u,5.61,
+2026-11-21,Tatura,1,,4,Jezebel Jenni,WIN,9.20,33.67,0.38,19,2 of 3,2.01u,5.61,
+2026-11-21,Tatura,1,,4,Jezebel Jenni,WIN,12.35,33.67,2.01,100,3 of 3,4.02u,5.61,opens $12.35+ (2.2x ours): stake doubled
+2026-11-21,Tatura,1,,8,Royal Overture,WIN,5.10,23.77,2.49,125,1 of 3,2.49u,3.96,
+2026-11-21,Tatura,1,,8,Royal Overture,WIN,6.38,23.77,0.53,26,2 of 3,3.02u,3.96,
+2026-11-21,Tatura,1,,8,Royal Overture,WIN,8.72,23.77,3.02,151,3 of 3,6.04u,3.96,opens $8.72+ (2.2x ours): stake doubled
+2026-11-21,Tatura,1,,9,She's Astunnerarch,WIN,7.66,34.99,1.56,78,1 of 3,1.56u,5.83,
+2026-11-21,Tatura,1,,9,She's Astunnerarch,WIN,9.57,34.99,0.36,18,2 of 3,1.92u,5.83,
+2026-11-21,Tatura,1,,9,She's Astunnerarch,WIN,12.83,34.99,1.92,96,3 of 3,3.84u,5.83,opens $12.83+ (2.2x ours): stake doubled
+2026-11-21,Tatura,1,,10,Valiant Dreamer,WIN,6.02,27.81,2.05,102,1 of 3,2.05u,4.63,
+2026-11-21,Tatura,1,,10,Valiant Dreamer,WIN,7.52,27.81,0.46,23,2 of 3,2.51u,4.63,
+2026-11-21,Tatura,1,,10,Valiant Dreamer,WIN,10.20,27.81,2.51,125,3 of 3,5.02u,4.63,opens $10.20+ (2.2x ours): stake doubled
+2026-11-21,Tatura,2,,2,Boridi,WIN,3.77,3.99,3.09,154,1 of 1,3.09u,3.13,opens under $4: edge 1.15
+2026-11-21,Tatura,2,,2,Boridi,WIN,4.00,18.77,3.36,168,1 of 3,3.36u,3.13,
+2026-11-21,Tatura,2,,2,Boridi,WIN,4.97,18.77,0.69,34,2 of 3,4.05u,3.13,
+2026-11-21,Tatura,2,,2,Boridi,WIN,6.89,18.77,4.05,202,3 of 3,8.10u,3.13,opens $6.89+ (2.2x ours): stake doubled
+2026-11-21,Tatura,2,,3,Profumo,WIN,2.56,3.99,5.19,260,1 of 2,5.19u,2.17,opens under $4: edge 1.15
+2026-11-21,Tatura,2,,3,Profumo,WIN,3.20,3.99,1.15,57,2 of 2,6.34u,2.17,opens under $4: edge 1.15
+2026-11-21,Tatura,2,,3,Profumo,WIN,4.00,13.01,5.63,282,1 of 3,5.63u,2.17,
+2026-11-21,Tatura,2,,3,Profumo,WIN,4.00,13.01,0.94,47,2 of 3,6.57u,2.17,
+2026-11-21,Tatura,2,,3,Profumo,WIN,4.78,13.01,3.43,172,3 of 3,10.00u,2.17,opens $4.78+ (2.2x ours): stake doubled
+2026-11-21,Tatura,3,,11,A Rus In Grinzing,WIN,7.35,33.62,1.64,82,1 of 3,1.64u,5.60,
+2026-11-21,Tatura,3,,11,A Rus In Grinzing,WIN,9.19,33.62,0.37,18,2 of 3,2.01u,5.60,
+2026-11-21,Tatura,3,,11,A Rus In Grinzing,WIN,12.33,33.62,2.01,100,3 of 3,4.02u,5.60,opens $12.33+ (2.2x ours): stake doubled
+2026-11-21,Tatura,3,,2,Best Terms,WIN,2.11,3.99,7.04,352,1 of 3,7.04u,1.80,opens under $4: edge 1.15
+2026-11-21,Tatura,3,,2,Best Terms,WIN,2.64,3.99,1.34,67,2 of 3,8.38u,1.80,opens under $4: edge 1.15
+2026-11-21,Tatura,3,,2,Best Terms,WIN,3.96,3.99,1.62,81,3 of 3,10.00u,1.80,opens under $4: edge 1.15; opens $3.96+ (2.2x ours): stake doubled
+2026-11-21,Tatura,3,,2,Best Terms,WIN,4.00,10.79,10.00,500,1 of 1,10.00u,1.80,opens $4.00+ (2.2x ours): stake doubled
+2026-11-21,Tatura,3,,10,Under Control,WIN,15.88,70.00,0.71,36,1 of 2,0.71u,11.67,
+2026-11-21,Tatura,3,,10,Under Control,WIN,19.85,70.00,0.17,8,2 of 2,0.88u,11.67,
+2026-11-21,Tatura,4,,1,Devine Grunt,WIN,9.09,41.15,1.29,64,1 of 3,1.29u,6.86,
+2026-11-21,Tatura,4,,1,Devine Grunt,WIN,11.36,41.15,0.30,15,2 of 3,1.59u,6.86,
+2026-11-21,Tatura,4,,1,Devine Grunt,WIN,15.09,41.15,1.59,80,3 of 3,3.18u,6.86,opens $15.09+ (2.2x ours): stake doubled
+2026-11-21,Tatura,4,,7,Pendante,WIN,14.92,65.96,0.76,38,1 of 2,0.76u,10.99,
+2026-11-21,Tatura,4,,7,Pendante,WIN,18.65,65.96,0.18,9,2 of 2,0.94u,10.99,
+2026-11-21,Tatura,4,,3,Prestige Geoffrey,WIN,10.35,46.59,1.12,56,1 of 3,1.12u,7.77,
+2026-11-21,Tatura,4,,3,Prestige Geoffrey,WIN,12.94,46.59,0.27,14,2 of 3,1.39u,7.77,
+2026-11-21,Tatura,4,,3,Prestige Geoffrey,WIN,17.09,46.59,1.39,70,3 of 3,2.78u,7.77,opens $17.09+ (2.2x ours): stake doubled
+2026-11-21,Tatura,4,,4,Stole Him,WIN,5.95,27.50,2.08,104,1 of 3,2.08u,4.58,
+2026-11-21,Tatura,4,,4,Stole Him,WIN,7.44,27.50,0.46,23,2 of 3,2.54u,4.58,
+2026-11-21,Tatura,4,,4,Stole Him,WIN,10.09,27.50,2.54,127,3 of 3,5.08u,4.58,opens $10.09+ (2.2x ours): stake doubled
+2026-11-21,Tatura,4,,2,Strummer,WIN,5.52,25.61,2.27,114,1 of 3,2.27u,4.27,
+2026-11-21,Tatura,4,,2,Strummer,WIN,6.90,25.61,0.50,25,2 of 3,2.77u,4.27,
+2026-11-21,Tatura,4,,2,Strummer,WIN,9.40,25.61,2.77,138,3 of 3,5.54u,4.27,opens $9.40+ (2.2x ours): stake doubled
+2026-11-21,Tatura,5,,7,Daynes Dahwun,WIN,11.81,52.80,0.97,48,1 of 2,0.97u,8.80,
+2026-11-21,Tatura,5,,7,Daynes Dahwun,WIN,14.76,52.80,0.23,12,2 of 2,1.20u,8.80,
+2026-11-21,Tatura,5,,1,Do It Now,WIN,11.96,53.44,0.96,48,1 of 2,0.96u,8.91,
+2026-11-21,Tatura,5,,1,Do It Now,WIN,14.95,53.44,0.23,12,2 of 2,1.19u,8.91,
+2026-11-21,Tatura,5,,10,Elena Montero,WIN,18.42,80.62,0.61,30,1 of 2,0.61u,13.44,
+2026-11-21,Tatura,5,,10,Elena Montero,WIN,23.03,80.62,0.15,8,2 of 2,0.76u,13.44,
+2026-11-21,Tatura,5,,12,Lagunanini,WIN,10.98,49.29,1.05,52,1 of 2,1.05u,8.21,
+2026-11-21,Tatura,5,,12,Lagunanini,WIN,13.73,49.29,0.25,12,2 of 2,1.30u,8.21,
+2026-11-21,Tatura,5,,2,Twister,WIN,10.15,45.74,1.15,57,1 of 3,1.15u,7.62,
+2026-11-21,Tatura,5,,2,Twister,WIN,12.69,45.74,0.26,13,2 of 3,1.41u,7.62,
+2026-11-21,Tatura,5,,2,Twister,WIN,16.78,45.74,1.41,70,3 of 3,2.82u,7.62,opens $16.78+ (2.2x ours): stake doubled
+2026-11-21,Tatura,6,,7,Amphactor,WIN,13.04,58.01,0.88,44,1 of 2,0.88u,9.67,
+2026-11-21,Tatura,6,,7,Amphactor,WIN,16.30,58.01,0.21,10,2 of 2,1.09u,9.67,
+2026-11-21,Tatura,6,,1,Gold Gladiator,WIN,20.20,88.01,0.55,28,1 of 2,0.55u,14.67,
+2026-11-21,Tatura,6,,1,Gold Gladiator,WIN,25.25,88.01,0.14,7,2 of 2,0.69u,14.67,
+2026-11-21,Tatura,6,,2,Monsun's Pride,WIN,5.03,23.44,2.54,127,1 of 3,2.54u,3.91,
+2026-11-21,Tatura,6,,2,Monsun's Pride,WIN,6.29,23.44,0.54,27,2 of 3,3.08u,3.91,
+2026-11-21,Tatura,6,,2,Monsun's Pride,WIN,8.60,23.44,3.08,154,3 of 3,6.16u,3.91,opens $8.60+ (2.2x ours): stake doubled
+2026-11-21,Tatura,6,,6,Slate Ripper,WIN,9.89,44.61,1.18,59,1 of 3,1.18u,7.43,
+2026-11-21,Tatura,6,,6,Slate Ripper,WIN,12.36,44.61,0.28,14,2 of 3,1.46u,7.43,
+2026-11-21,Tatura,6,,6,Slate Ripper,WIN,16.36,44.61,1.46,73,3 of 3,2.92u,7.43,opens $16.36+ (2.2x ours): stake doubled
+2026-11-21,Tatura,6,,3,Too Big,WIN,17.22,75.59,0.65,32,1 of 2,0.65u,12.60,
+2026-11-21,Tatura,6,,3,Too Big,WIN,21.52,75.59,0.16,8,2 of 2,0.81u,12.60,
+2026-11-21,Tatura,6,,8,Trinity's D'oro,WIN,8.26,37.59,1.43,72,1 of 3,1.43u,6.26,
+2026-11-21,Tatura,6,,8,Trinity's D'oro,WIN,10.32,37.59,0.34,17,2 of 3,1.77u,6.26,
+2026-11-21,Tatura,6,,8,Trinity's D'oro,WIN,13.79,37.59,1.77,88,3 of 3,3.54u,6.26,opens $13.79+ (2.2x ours): stake doubled
+2026-11-21,Tatura,7,,9,Annotate,WIN,15.43,68.08,0.73,36,1 of 2,0.73u,11.35,
+2026-11-21,Tatura,7,,9,Annotate,WIN,19.29,68.08,0.18,9,2 of 2,0.91u,11.35,
+2026-11-21,Tatura,7,,11,Chicago Blues,WIN,15.77,69.54,0.72,36,1 of 2,0.72u,11.59,
+2026-11-21,Tatura,7,,11,Chicago Blues,WIN,19.71,69.54,0.17,8,2 of 2,0.89u,11.59,
+2026-11-21,Tatura,7,,7,Regal Tycoon,WIN,6.17,28.47,2.00,100,1 of 3,2.00u,4.74,
+2026-11-21,Tatura,7,,7,Regal Tycoon,WIN,7.71,28.47,0.44,22,2 of 3,2.44u,4.74,
+2026-11-21,Tatura,7,,7,Regal Tycoon,WIN,10.44,28.47,2.44,122,3 of 3,4.88u,4.74,opens $10.44+ (2.2x ours): stake doubled
+2026-11-21,Tatura,7,,1,Roadcone,WIN,18.84,82.36,0.59,30,1 of 2,0.59u,13.73,
+2026-11-21,Tatura,7,,1,Roadcone,WIN,23.55,82.36,0.15,8,2 of 2,0.74u,13.73,
+2026-11-21,Tatura,7,,5,Romantic Encounter,WIN,9.86,44.48,1.18,59,1 of 3,1.18u,7.41,
+2026-11-21,Tatura,7,,5,Romantic Encounter,WIN,12.32,44.48,0.28,14,2 of 3,1.46u,7.41,
+2026-11-21,Tatura,7,,5,Romantic Encounter,WIN,16.31,44.48,1.46,73,3 of 3,2.92u,7.41,opens $16.31+ (2.2x ours): stake doubled
+2026-11-21,Tatura,7,,3,Shaalute,WIN,12.27,54.77,0.93,46,1 of 2,0.93u,9.13,
+2026-11-21,Tatura,7,,3,Shaalute,WIN,15.34,54.77,0.23,12,2 of 2,1.16u,9.13,
+2026-11-21,Tatura,8,,1,Bakersbend,WIN,8.75,39.70,1.35,68,1 of 3,1.35u,6.62,
+2026-11-21,Tatura,8,,1,Bakersbend,WIN,10.94,39.70,0.31,16,2 of 3,1.66u,6.62,
+2026-11-21,Tatura,8,,1,Bakersbend,WIN,14.56,39.70,1.66,83,3 of 3,3.32u,6.62,opens $14.56+ (2.2x ours): stake doubled
+2026-11-21,Tatura,8,,2,Clinger,WIN,20.16,87.85,0.55,28,1 of 2,0.55u,14.64,
+2026-11-21,Tatura,8,,2,Clinger,WIN,25.20,87.85,0.14,7,2 of 2,0.69u,14.64,
+2026-11-21,Tatura,8,,10,Cumbrian Queen,WIN,12.98,57.78,0.88,44,1 of 2,0.88u,9.63,
+2026-11-21,Tatura,8,,10,Cumbrian Queen,WIN,16.23,57.78,0.21,10,2 of 2,1.09u,9.63,
+2026-11-21,Tatura,8,,6,It's Gnarly,WIN,7.00,32.09,1.73,86,1 of 3,1.73u,5.35,
+2026-11-21,Tatura,8,,6,It's Gnarly,WIN,8.75,32.09,0.39,20,2 of 3,2.12u,5.35,
+2026-11-21,Tatura,8,,6,It's Gnarly,WIN,11.77,32.09,2.12,106,3 of 3,4.24u,5.35,opens $11.77+ (2.2x ours): stake doubled
+2026-11-21,Tatura,8,,5,King's Taj,WIN,16.35,71.98,0.69,34,1 of 2,0.69u,12.00,
+2026-11-21,Tatura,8,,5,King's Taj,WIN,20.44,71.98,0.17,8,2 of 2,0.86u,12.00,
+2026-11-21,Tatura,8,,7,Mishima,WIN,17.63,77.32,0.64,32,1 of 2,0.64u,12.89,
+2026-11-21,Tatura,8,,7,Mishima,WIN,22.04,77.32,0.15,8,2 of 2,0.79u,12.89,
+2026-11-21,Tatura,8,,9,Savethebesttillast,WIN,12.31,54.93,0.93,46,1 of 2,0.93u,9.15,
+2026-11-21,Tatura,8,,9,Savethebesttillast,WIN,15.39,54.93,0.22,11,2 of 2,1.15u,9.15,
+2026-11-21,Tatura,8,,4,Silver Snow,WIN,9.37,42.38,1.25,62,1 of 3,1.25u,7.06,
+2026-11-21,Tatura,8,,4,Silver Snow,WIN,11.71,42.38,0.29,14,2 of 3,1.54u,7.06,
+2026-11-21,Tatura,8,,4,Silver Snow,WIN,15.54,42.38,1.54,77,3 of 3,3.08u,7.06,opens $15.54+ (2.2x ours): stake doubled

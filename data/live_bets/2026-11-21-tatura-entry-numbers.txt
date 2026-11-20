@@ -14,13 +14,14 @@
 2|6|Brilliant Beagle|False|False
 2|13|Magnus Mclaren|True|False
 2|8|Tara's Crown|False|False
-2|14|Baltic|True|False
-2|7|Prestige Maddy|False|False
-2|12|Winna's Sister|False|False
+2|14|Baltic|True|True
+2|7|Prestige Maddy|False|True
+2|12|Winna's Sister|False|True
 2|5|Xtra Black|False|False
 2|3|Profumo|False|False
 2|2|Boridi|False|False
-2|11|Valentina Girl|False|False
+2|9|Duchess Xenia|False|True
+2|11|Valentina Girl|False|True
 2|4|Skadoodle|False|False
 2|15|Little Gangster|True|False
 2|10|Moore Hart|False|False
@@ -32,13 +33,13 @@
 3|10|Under Control|False|False
 3|2|Best Terms|False|False
 3|7|Flying Riches|False|False
-3|4|Opinion Leader|False|False
+3|4|Opinion Leader|False|True
 3|6|Amsterdam Nights|False|False
 3|11|A Rus In Grinzing|False|False
 4|9|I Could Do Better|False|False
 4|11|Testing The Cugat|False|False
 4|14|Dente's Inferno|True|False
-4|5|Dreamstone|False|False
+4|5|Dreamstone|False|True
 4|6|Whistler Girl|False|False
 4|8|Dashing Donkey|False|False
 4|7|Pendante|False|False
@@ -66,14 +67,15 @@
 5|12|Lagunanini|False|False
 5|7|Daynes Dahwun|False|False
 6|7|Amphactor|False|False
-6|14|Bellakai|True|False
+6|14|Bellakai|True|True
+6|5|Mutsuhito|False|True
 6|8|Trinity's D'oro|False|False
-6|9|Beauer|False|False
+6|9|Beauer|False|True
 6|6|Slate Ripper|False|False
 6|2|Monsun's Pride|False|False
 6|13|Sacred Ingot|True|False
 6|3|Too Big|False|False
-6|15|Second Guess|True|False
+6|15|Second Guess|True|True
 6|12|Our Paramour|False|False
 6|4|Without Fail|False|False
 6|11|Kaddari|False|False
@@ -103,7 +105,7 @@
 8|9|Savethebesttillast|False|False
 8|15|Rivazza|True|False
 8|1|Bakersbend|False|False
-8|11|Darken|False|False
+8|11|Darken|False|True
 8|4|Silver Snow|False|False
 8|3|Darating|False|False
 8|2|Clinger|False|False

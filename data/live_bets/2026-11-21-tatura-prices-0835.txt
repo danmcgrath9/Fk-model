@@ -1,0 +1,112 @@
+# Tatura Sat 21 Nov, Soft (15mm+ rain), final fields; market open in R1,2,3,4,5,6,7,8; PROVISIONAL: 5 runners without a rider
+1, Couldbetracy, 201.00, 201.00, fk_open 138.50
+1, Mighty Mongoose, 101.00, 101.00, fk_open 71.00
+1, La Shadow, 67.00, 67.00, fk_open 64.00
+1, Madame Makwela, 51.00, 51.00, fk_open 46.00
+1, Jezebel Jenni, 6.50, 6.50, fk_open 6.25
+1, She's Astunnerarch, 5.00, 5.00, fk_open 4.20
+1, Royal Overture, 2.50, 2.50, fk_open 2.40
+1, Go Go Ruby, 51.00, 51.00, fk_open 28.50
+1, Valiant Dreamer, 3.80, 3.80, fk_open 4.45
+1, I'm Good, 21.00, 21.00, fk_open 10.00
+1, Belle Fille, 9.00, 9.00, fk_open 15.00
+2, Kensington City, 151.00, 151.00, fk_open 113.50
+2, It's Justa Guess, SCR, fk_open 86.00
+2, Brilliant Beagle, 101.00, 101.00, fk_open 66.00
+2, Magnus Mclaren, SCR, fk_open 113.50
+2, Tara's Crown, 41.00, 41.00, fk_open 26.50
+2, Baltic, SCR, fk_open 81.00
+2, Prestige Maddy, 21.00, 21.00, fk_open 20.50
+2, Winna's Sister, 71.00, 71.00, fk_open 69.00
+2, Xtra Black, 27.00, 27.00, fk_open 19.00
+2, Profumo, 1.90, 1.90, fk_open 1.98
+2, Boridi, 5.50, 5.50, fk_open 7.75
+2, Valentina Girl, 6.50, 6.50, fk_open 4.80
+2, Skadoodle, 4.40, 4.40, fk_open 4.55
+2, Little Gangster, SCR, fk_open 81.00
+2, Moore Hart, 23.00, 23.00, fk_open 15.00
+3, Shades Of Sheriff, 61.00, 61.00, fk_open 31.00
+3, Mwamba, 101.00, 101.00, fk_open 81.00
+3, All Too Swift, 151.00, 151.00, fk_open 101.00
+3, Conjurer, 23.00, 23.00, fk_open 17.00
+3, Hot Opera, 12.00, 12.00, fk_open 13.00
+3, Under Control, 11.00, 11.00, fk_open 16.00
+3, Best Terms, 2.00, 2.00, fk_open 1.60
+3, Flying Riches, 12.00, 12.00, fk_open 17.00
+3, Opinion Leader, 151.00, 151.00, fk_open 101.00
+3, Amsterdam Nights, 21.00, 21.00, fk_open 19.00
+3, A Rus In Grinzing, 2.90, 2.90, fk_open 3.20
+4, I Could Do Better, 20.00, 20.00, fk_open 14.67
+4, Testing The Cugat, 16.00, 16.00, fk_open 16.00
+4, Dente's Inferno, SCR, fk_open 61.00
+4, Dreamstone, 51.00, 51.00, fk_open 41.75
+4, Whistler Girl, 12.00, 12.00, fk_open 13.00
+4, Dashing Donkey, 16.00, 16.00, fk_open 15.50
+4, Pendante, 7.50, 7.50, fk_open 6.67
+4, Brookers Turbo, 41.00, 41.00, fk_open 36.67
+4, Brassi Road, SCR, fk_open 23.50
+4, Strummer, 4.00, 4.00, fk_open 3.85
+4, Conaltri, 71.00, 71.00, fk_open 101.00
+4, Devine Grunt, 7.50, 7.50, fk_open 5.27
+4, Stole Him, 3.90, 3.90, fk_open 5.10
+4, Prestige Geoffrey, 6.00, 6.00, fk_open 5.15
+5, Swift Hit, SCR, fk_open 51.00
+5, First Division, SCR, fk_open 51.00
+5, Cumboogle, 8.00, 8.00, fk_open 9.50
+5, Written Royalty, 27.00, 27.00, fk_open 34.00
+5, Do It Now, 9.50, 9.50, fk_open 7.00
+5, Time Angel, 13.00, 13.00, fk_open 7.00
+5, Elena Montero, 10.00, 10.00, fk_open 15.00
+5, Grouse Mountain, 46.00, 46.00, fk_open 31.00
+5, Simply Luscious, 23.00, 23.00, fk_open 16.00
+5, Master Jack, SCR, fk_open 21.00
+5, Bronco Revolution, SCR, fk_open 12.00
+5, Eternal Darkness, 5.50, 5.50, fk_open 6.00
+5, Twister, 4.80, 4.80, fk_open 5.00
+5, Hegely, 19.00, 19.00, fk_open 13.00
+5, Lagunanini, 7.50, 7.50, fk_open 5.00
+5, Daynes Dahwun, 6.00, 6.00, fk_open 9.50
+6, Amphactor, 8.00, 8.00, fk_open 11.00
+6, Bellakai, SCR, fk_open 26.00
+6, Trinity's D'oro, 4.80, 4.80, fk_open 8.50
+6, Beauer, 26.00, 26.00, fk_open 17.00
+6, Slate Ripper, 10.00, 10.00, fk_open 6.50
+6, Monsun's Pride, 2.80, 2.80, fk_open 3.50
+6, Sacred Ingot, SCR, fk_open 13.00
+6, Too Big, 23.00, 23.00, fk_open 23.00
+6, Second Guess, SCR, fk_open 126.00
+6, Our Paramour, 10.00, 10.00, fk_open 13.00
+6, Without Fail, 14.00, 14.00, fk_open 7.50
+6, Kaddari, 23.00, 23.00, fk_open 12.00
+6, Ruscello, 15.00, 15.00, fk_open 6.50
+6, Gold Gladiator, 41.00, 41.00, fk_open 18.00
+7, Quamby, SCR, fk_open 43.50
+7, San Marco, SCR, fk_open 81.00
+7, Roadcone, 9.00, 9.00, fk_open 10.50
+7, Make It Sweet, 8.00, 8.00, fk_open 12.00
+7, Annotate, 15.00, 15.00, fk_open 12.50
+7, The Shaper, 27.00, 27.00, fk_open 18.50
+7, Enna's Dream, 11.00, 11.00, fk_open 10.00
+7, Didn't Miss Many, 12.00, 12.00, fk_open 11.00
+7, Shaalute, 4.80, 4.80, fk_open 6.25
+7, Blazing Sword, 23.00, 23.00, fk_open 16.50
+7, Regal Tycoon, 5.50, 5.50, fk_open 3.80
+7, Chicago Blues, 9.00, 9.00, fk_open 7.75
+7, Romantic Encounter, 6.00, 6.00, fk_open 8.75
+7, Tempt The Gods, SCR, fk_open 31.00
+7, Vim Vitae, SCR, fk_open 12.00
+8, Tasman Park, 46.00, 46.00, fk_open 26.50
+8, Winds Of March, SCR, fk_open 38.00
+8, Cumbrian Queen, 6.50, 6.50, fk_open 4.50
+8, Mishima, 15.00, 15.00, fk_open 11.00
+8, French Love, SCR, fk_open 46.00
+8, King's Taj, 9.50, 9.50, fk_open 10.00
+8, Savethebesttillast, 7.50, 7.50, fk_open 7.50
+8, Rivazza, SCR, fk_open 10.50
+8, Bakersbend, 5.50, 5.50, fk_open 5.25
+8, Darken, 17.00, 17.00, fk_open 11.00
+8, Silver Snow, 5.50, 5.50, fk_open 4.80
+8, Darating, 17.00, 17.00, fk_open 13.50
+8, Clinger, 8.00, 8.00, fk_open 12.50
+8, Duel Missile, SCR, fk_open 28.50
+8, It's Gnarly, 6.00, 6.00, fk_open 12.50

@@ -28,11 +28,12 @@
 3|2|Hellofacury|False|False
 3|8|Native Dance|False|False
 3|6|Buchan Outkast|False|False
+3|3|Zercardy|False|True
 3|9|Peace Seeker|False|False
 3|7|Miss Fine|False|False
 3|12|Unclaimed|True|False
 3|4|Gunnatippatinnie|False|False
-3|13|Opunake|True|False
+3|13|Opunake|True|True
 3|11|Yahweh Rapha|True|False
 4|2|Hay Joe|False|False
 4|4|Lord Porchester|False|False
@@ -87,4 +88,5 @@
 7|10|Vizie|False|False
 7|11|Pianta|True|False
 7|5|Rich Champagne|False|False
+7|2|Vegas Jack|False|True
 7|13|King Leonidas|True|False

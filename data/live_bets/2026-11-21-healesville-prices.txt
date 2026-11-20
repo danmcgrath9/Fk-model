@@ -1,8 +1,8 @@
-# Healesville Sat 21 Nov, official going, final fields; no market yet; PROVISIONAL: 3 runners without a rider; PAPER ONLY (the model has 0 races at this venue, 0 since the 3 Jun holdout)
+# Healesville Sat 21 Nov, official going, final fields; no market yet; PAPER ONLY (the model has 0 races at this venue, 0 since the 3 Jun holdout)
 1, Nasrin, 0, 0
 1, Belriah, 0, 0
 1, Overtoux, 0, 0
-1, Boudica Warrior, 0, 0
+1, Boudica Warrior, SCR
 1, Reisner, 0, 0
 1, Rock Glory, 0, 0
 1, Dunnenkate Bro, 0, 0
@@ -14,19 +14,20 @@
 2, Specific Outcome, 0, 0
 3, Anything But, 0, 0
 3, Lika Mosh, 0, 0
-3, Red Stiletto, 0, 0
-3, Popeye The Sailor, SCR
+3, Red Stiletto, SCR
+3, Popeye The Sailor, 0, 0
 3, Downtown Man, 0, 0
 3, Nic Says No, 0, 0
 3, Everett, 0, 0
-3, Besson, 0, 0
-3, Discobay, SCR
-3, A Blue Star, SCR
+3, Besson, SCR
+3, Discobay, 0, 0
+3, A Blue Star, 0, 0
 3, Grand Sage, 0, 0
 3, Springer Time, 0, 0
 3, Stella Cantante, 0, 0
+4, Powershare, SCR
 4, Captivating Storm, 0, 0
-4, Miss Lil, 0, 0
+4, Miss Lil, SCR
 4, Triple Match, 0, 0
 4, Knight Wink, 0, 0
 4, Haunted Kynexion, 0, 0
@@ -37,16 +38,16 @@
 5, Persuasive Star, 0, 0
 5, Sierra Sun, 0, 0
 5, Enough War, 0, 0
-5, Stormyfriendship, SCR
+5, Stormyfriendship, 0, 0
 5, Elite Pete, 0, 0
 5, Desert Boots, 0, 0
-5, Duel Missile, 0, 0
+5, Duel Missile, SCR
 6, Lottaroc, 0, 0
 6, Aria Electra, 0, 0
 6, Wilma Wombat, 0, 0
 6, Epicus, 0, 0
 6, Kilmister, 0, 0
 6, Miss Himalaya, 0, 0
-6, Royal Summer, SCR
-6, Nuggies, 0, 0
+6, Royal Summer, 0, 0
+6, Nuggies, SCR
 6, Iconique, 0, 0
