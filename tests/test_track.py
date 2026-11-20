@@ -104,3 +104,15 @@ def test_results_settle_a_dog_that_did_not_finish_as_beaten(tmp_path):
         json.dump(rows, fh)
     r = TR.topaz_results(str(tmp_path), ["2026-11-10"]).set_index("_dn").won
     assert r["DOGA"] == 0 and r["DOGB"] == 1 and np.isnan(r["DOGC"])   # race 2 has no result yet
+
+
+def test_cards_from_dir_leaves_the_corrected_blend_s_cards_out(tmp_path):
+    # 20 Nov 2026: card_iso_DAY.csv.gz sits beside card_DAY.csv.gz from 17 Nov and must not be read as a second card
+    pd.DataFrame({"day": ["2026-11-18"], "race_key": ["2026-11-18|Sale|1"], "venue": ["Sale"], "race_no": ["1"],
+                  "start": [""], "box": ["1"], "dog_name": ["A"], "p_model": [0.3], "grv_price": [3.0], "w_ours": [0.5],
+                  "w_grv": [0.6]}).to_csv(tmp_path / "card_2026-11-18.csv.gz", index=False, compression="gzip")
+    pd.DataFrame({"day": ["2026-11-18"], "race_key": ["2026-11-18|Sale|1"], "venue": ["Sale"], "race_no": ["1"],
+                  "box": ["1"], "dog_name": ["A"], "p_iso": [0.31]}).to_csv(tmp_path / "card_iso_2026-11-18.csv.gz",
+                                                                        index=False, compression="gzip")
+    c = TR.cards_from_dir(str(tmp_path))
+    assert len(c) == 1 and c.p_model.notna().all()
