@@ -1,0 +1,10 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,TAT_211126_1,Royal Overture,top_pick,2.5,2.5,2.4,2.4,,3.47,-0.309,,1.0,no,,
+2,TAT_211126_2,Profumo,top_pick,1.9,1.9,1.98,1.98,,2.19,-0.096,Already run to today's class,1.0,no,,
+3,TAT_211126_3,Best Terms,top_pick,2.0,2.0,1.6,1.6,,1.82,-0.122,,1.0,no,,
+4,TAT_211126_4,Stole Him,top_pick,3.9,3.9,5.1,5.1,,5.08,0.004,,1.0,no,,
+5,TAT_211126_5,Eternal Darkness,top_pick,5.5,5.5,6.0,6.0,,5.42,0.107,Proven wet on a wet track; Class drop (rating); Blinkers first time,1.0,no,,
+6,TAT_211126_6,Monsun's Pride,top_pick,2.8,2.8,3.5,3.5,,4.01,-0.128,Beaten by the pace last start; Already run to today's class; Proven wet on a wet track; Above the field in all three sections,1.0,no,,
+6,TAT_211126_6,Too Big,value_20c,23.0,23.0,23.0,23.0,,13.66,0.684,,1.06,no,,
+7,TAT_211126_7,Regal Tycoon,top_pick,5.5,5.5,3.8,3.8,,4.73,-0.197,,1.0,no,,
+8,TAT_211126_8,Bakersbend,top_pick,5.5,5.5,5.25,5.25,,6.81,-0.229,,1.0,no,,
