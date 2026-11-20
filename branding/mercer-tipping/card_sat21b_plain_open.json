@@ -1,0 +1,59 @@
+{
+ "day": "Saturday",
+ "date": "21 November",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Tatura",
+   "note": "Soft 5",
+   "bets": [
+    {
+     "race": 2,
+     "time": "1:41PM",
+     "horse": "Boridi",
+     "price": "$7.75",
+     "rated": "$4.56",
+     "units": "2.56u"
+    },
+    {
+     "race": 6,
+     "time": "4:01PM",
+     "horse": "Too Big",
+     "price": "$23",
+     "rated": "$11.26",
+     "units": "0.92u"
+    },
+    {
+     "race": 6,
+     "time": "4:01PM",
+     "horse": "Trinity's D'oro",
+     "price": "$8.50",
+     "rated": "$6.33",
+     "units": "1.42u"
+    },
+    {
+     "race": 8,
+     "time": "5:24PM",
+     "horse": "It's Gnarly",
+     "price": "$12.50",
+     "rated": "$6.08",
+     "units": "1.83u"
+    }
+   ]
+  },
+  {
+   "name": "Penshurst (paper)",
+   "note": "R1-R6 not open yet",
+   "bets": [
+    {
+     "race": 7,
+     "time": "5:30PM",
+     "horse": "Dartboard",
+     "price": "$12",
+     "rated": "$7.32",
+     "units": "1.20u"
+    }
+   ]
+  }
+ ]
+}
