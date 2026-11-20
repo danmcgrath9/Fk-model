@@ -1,0 +1,9 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,KILM_221126_1,Somethingintheair,top_pick,2.45,2.45,1.7,1.7,,2.31,-0.265,,1.0,no,,
+3,KILM_221126_3,Aston,top_pick,3.1,3.1,2.6,2.6,,4.03,-0.354,Class drop (rating),1.0,no,,
+5,KILM_221126_5,Fieldelo,top_pick,2.5,2.5,3.8,3.8,,4.36,-0.128,Already run to today's class; Proven wet on a wet track; Above the field in all three sections; EARLY ONLY: bet near the open,1.0,no,,
+6,KILM_221126_6,Vim Vitae,top_pick,3.3,3.3,2.9,2.9,,3.9,-0.257,"Third-up, improving; Above the field in all three sections",1.0,no,,
+7,KILM_221126_7,Bold Strike,top_pick,3.9,3.9,4.4,4.4,,4.18,0.052,,1.0,no,,
+8,KILM_221126_8,Sabaj,top_pick,3.1,3.1,3.5,3.5,,3.65,-0.042,,1.0,no,,
+8,KILM_221126_8,Jenni's Meadow,value_20c,11.0,11.0,13.0,13.0,,8.97,0.45,,0.84,no,,
+9,KILM_221126_9,Jenni You Think,top_pick,2.7,2.7,3.8,3.8,,2.94,0.293,,1.0,no,,
