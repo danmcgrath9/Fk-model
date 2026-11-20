@@ -9770,7 +9770,8 @@ published November, so there is no BSP yet.
 | 15 Nov | 43860008304 | 24 | 24 | 22 | 4 | 4 | 2 | 1.26 | 5.34 | +5.77 | 0 | 0 | not kept yet | not kept yet |
 | 16 Nov | 44075152202 | 50 | 50 | 36 | 10 | 10 | 4 | 4.17 | 22.26 | -5.00 | 0 | 0 | not kept yet | not kept yet |
 | 17 Nov | 44296970713 | 37 | 37 | 23 | 8 | 8 | 4 | 2.91 | 19.73 | +10.94 | 1 | 0 | not kept yet | not kept yet |
-| 18 Nov | 44517107055 | 48 | 48 | 0 | 10 | 10 | 4 | 4.70 | 18.90 | -5.85 | 0 | 0 | 3, 2, +8.50 (+283.3%) | 1, 1, +4.50 (+450.0%) |
+| 18 Nov | 44517107055 | 48 | 48 | 0 (a bug, fixed 20 Nov) | 10 | 10 | 4 | 4.70 | 18.90 | -5.85 | 0 | 0 | 3, 2, +8.50 (+283.3%) | 1, 1, +4.50 (+450.0%) |
+| 19 Nov | 44729935724 | 50 | 50 | 90 over 18 and 19 Nov | 7 | 7 | 3 | 3.00 | 11.47 | -0.75 | 0 | 0 | 1, 1, +10.00 (+1000.0%) | 1, 1, +10.00 (+1000.0%) |
 
 All four 15 Nov bets opened shorter on TAB than GRV's evening price (TAB at 24% to 49% of it) and below the card's own
 blended price, the same pattern as the first nine nights. Two won, at TAB's first price less the deduction: +5.77
@@ -9797,12 +9798,31 @@ open. Four won: -5.85 units on 18.90 staked, -16.4% flat. The 18 Nov card is the
 - **The sample is far too small to read.** Four bets mean nothing yet.
 - **The rule at TAB's open could price no 18 Nov race.** None counted as having every dog in TAB's field at its open
   on the card, against 81 of 111 races on 15 to 17 Nov. The corrected blend's check found 43 of the 48 races whole
-  on its own copy of the card, so the cause is in the card side of the rule's check, not the market data. It is being
-  looked into. The rule has made no bet on any day so far, so nothing it would have taken is missing from the totals.
+  on its own copy of the card, so the cause is in the card side of the rule's check, not the market data. **Found
+  and fixed on 20 Nov (PR 225):** the tracker read the kept cards with the pattern card_*.csv.gz, which from the 18
+  Nov card also matched the corrected blend's card_iso files beside them. Every dog was on the card twice, once with
+  no chance from ours, so no race had every dog priced. With the fix, 171 of the 209 races from 15 to 19 Nov are
+  whole. The rule has made no bet on any day so far, so nothing it would have taken is missing from the totals.
 
-The card as sent so far, 6 to 18 Nov: 88 bets, 87 settled (one refund), 35 winners against 34.81 expected at the
-prices taken (A/E 1.01), 197.05 units staked, -23.54 units won (-11.9% at the card's units, -6.1% flat), -21.15 at
-the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 3 bets at
-1.1x (+8.50 units) and 1 at 1.2x (+4.50).
+Seven 19 Nov bets on the card as sent, three won: -0.75 units on 11.47 staked, +11.4% flat, -0.70 at the best first
+price of three. None was still 1.3x the card's blended price at TAB's open. The corrected blend took one bet at both
+1.1x and 1.2x, Heathcote Rupee (The Meadows R12), which won at $11.00: +10.00 units each.
+
+The rule at TAB's open priced the 18 and 19 Nov races once the fix was in and still made no bet, and that is the
+rule itself, not the data. On the 233 whole races at TAB's open from 6 to 14 Nov (1,708 runners), the most TAB
+offered on any runner priced $2-$15 by the blend was 1.29x the blended price, and 99% were under 1.12x. TAB's opening
+book has a median of 1.35, a 35% margin, and the blend leans on TAB's own price (0.67 against ours at 0.54), so the
+1.3x hurdle that works against GRV's SP cannot be cleared at TAB's open. The open model and the band sheet are built
+for TAB's open; this rule is not.
+
+The corrected blend's 18 Nov rows stay as first scored. The 20 Nov run re-scored 18 Nov with the correction refitted
+that morning and found a second 1.2x bet: a dog on the line moving across it with the refit, not a leak, because the
+correction trains only on races with Betfair's starting price for every runner, which arrive about a month late. A
+day's paper bets are the ones the model made at the time.
+
+The card as sent so far, 6 to 19 Nov: 95 bets, 94 settled (one refund), 38 winners against 37.81 expected at the
+prices taken (A/E 1.01), 208.52 units staked, -24.30 units won (-11.7% at the card's units, -4.8% flat), -21.85 at
+the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 4 bets at
+1.1x (3 won, +18.50 units) and 2 at 1.2x (both won, +14.50).
 
 Results go here as they come in.
