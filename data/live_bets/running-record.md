@@ -6,14 +6,15 @@ Rebuilt by research/form_gbm/running_record.py after every settle (founder, 16 N
 
 | Period | Bets | Won | Staked | P/L | ROI | At $50 | Beat BSP | Price / BSP |
 |---|---|---|---|---|---|---|---|---|
-| All settled (2026-11-02 on) | 67 | 17 | 155.55u | +144.62u | +93% | $+7,231 | 41 of 65 | 1.25x |
-| Since 12 Nov (full units) | 32 | 5 | 79.18u | +34.62u | +44% | $+1,731 | 21 of 31 | 1.26x |
-| Last 7 race days | 27 | 4 | 72.54u | +27.29u | +38% | $+1,364 | 18 of 26 | 1.24x |
+| All settled (2026-11-02 on) | 70 | 18 | 163.13u | +151.63u | +93% | $+7,581 | 44 of 68 | 1.27x |
+| Since 12 Nov (full units) | 35 | 6 | 86.76u | +41.63u | +48% | $+2,081 | 24 of 34 | 1.28x |
+| Last 7 race days | 26 | 4 | 66.41u | +32.64u | +49% | $+1,632 | 20 of 25 | 1.28x |
 
 Beat BSP and Price / BSP: the price taken (the open after TAB's reported deduction) against Betfair SP, the ratio weighted by stake.
 
 | Day | Bets | Won | Staked | P/L | ROI | At $50 | Beat BSP | Price / BSP |
 |---|---|---|---|---|---|---|---|---|
+| 2026-11-20 | 3 | 1 | 7.58u | +7.01u | +93% | $+351 | 3 of 3 | 1.50x |
 | 2026-11-19 | 2 | 2 | 6.14u | +64.40u | +1049% | $+3,220 | 1 of 2 | 0.94x |
 | 2026-11-18 | 1 | 1 | 2.53u | +11.38u | +450% | $+569 | 1 of 1 | 1.31x |
 | 2026-11-17 | 4 | 0 | 12.44u | -12.44u | -100% | $-622 | 3 of 4 | 1.35x |
@@ -43,13 +44,16 @@ The weeks to Sun 1 Nov are the book's own settled entries (betmatic-book.md, 3 N
 | Mon 26 Oct - Sun 1 Nov (from the book) | 41 | 6 | 127.84u | +32.95u | +26% | $+1,648 |
 | Mon 2 Nov - Sun 8 Nov | 30 | 11 | 66.85u | +108.66u | +163% | $+5,433 |
 | Mon 9 Nov - Sun 15 Nov | 24 | 3 | 56.45u | -16.25u | -29% | $-812 |
-| Mon 16 Nov - Thu 19 Nov (week not finished) | 13 | 3 | 32.25u | +52.21u | +162% | $+2,610 |
-| **Since Fri 9 Oct** | **179** | **42** | **394.38u** | **+362.29u** | **+92%** | **$+18,114** |
+| Mon 16 Nov - Fri 20 Nov (week not finished) | 16 | 4 | 39.83u | +59.22u | +149% | $+2,961 |
+| **Since Fri 9 Oct** | **182** | **43** | **401.96u** | **+369.30u** | **+92%** | **$+18,465** |
 
-Running total by day: 11-02 +29.5u, 11-03 +66.8u, 11-04 +91.9u, 11-05 +82.8u, 11-06 +88.4u, 11-07 +94.1u, 11-08 +108.7u, 11-09 +107.2u, 11-11 +110.0u, 11-12 +117.3u, 11-13 +119.0u, 11-14 +107.7u, 11-15 +92.4u, 11-16 +81.3u, 11-17 +68.8u, 11-18 +80.2u, 11-19 +144.6u
+Running total by day: 11-02 +29.5u, 11-03 +66.8u, 11-04 +91.9u, 11-05 +82.8u, 11-06 +88.4u, 11-07 +94.1u, 11-08 +108.7u, 11-09 +107.2u, 11-11 +110.0u, 11-12 +117.3u, 11-13 +119.0u, 11-14 +107.7u, 11-15 +92.4u, 11-16 +81.3u, 11-17 +68.8u, 11-18 +80.2u, 11-19 +144.6u, 11-20 +151.6u
 
 | Date | Meeting | Race | Horse | Units | Open | TAB deduction | Paid at | Result | P/L |
 |---|---|---|---|---|---|---|---|---|---|
+| 2026-11-20 | swan-hill | R7 | Ville De Lumiere | 1.40u | $9 | - | $9.00 | 7th | -1.40u |
+| 2026-11-20 | pakenham | R6 | Sealand | 1.06u | $17 | - | $17.00 | 2nd | -1.06u |
+| 2026-11-20 | pakenham | R1 | Angling Angel | 5.12u | $2.85 | - | $2.85 | WON | +9.47u |
 | 2026-11-19 | mornington | R7 | Sealand | 1.21u | $15 | - | $15.00 | void | +0.00u |
 | 2026-11-19 | mornington | R2 | Nitro Sonic | 3.32u | $17 | - | $17.00 | WON | +53.12u |
 | 2026-11-19 | mornington | R1 | Parera | 2.82u | $5 | - | $5.00 | WON | +11.28u |
@@ -127,26 +131,26 @@ The price is the open after TAB's reported deduction.
 
 | Period | Bets with a BSP | Price beat BSP | Price / BSP (stake-weighted) | Winners |
 |---|---|---|---|---|
-| All settled | 65 | 41 | 1.25x | 17 won, 13.2 expected at BSP |
-| Since 12 Nov | 31 | 21 | 1.26x | 5 won, 6.0 expected at BSP |
-| Last 7 race days | 26 | 18 | 1.24x | 4 won, 5.1 expected at BSP |
+| All settled | 68 | 44 | 1.27x | 18 won, 14.0 expected at BSP |
+| Since 12 Nov | 34 | 24 | 1.28x | 6 won, 6.8 expected at BSP |
+| Last 7 race days | 25 | 20 | 1.28x | 4 won, 4.8 expected at BSP |
 
 ## The rules (paper, at Betfair SP)
 
 From data/live_bets/rule-tracker.csv (research/form_gbm/track_rules.py; run it before this file). A rule's P/L is per 1 unit at Betfair SP, 8% commission on winnings. The rules overlap, so the rows do not add up.
 
-| Rule | 11-19 | Since 9 Oct |
+| Rule | 11-20 | Since 9 Oct |
 |---|---|---|
-| Lay $15-$40, BSP >= 1.5x ours (current, failing live) | -12.74u (4 bets, 1 won) | -6.90u (396 bets, 17 won) |
-| Lay $8-$12, BSP >= 1.6x ours (current) | - | -16.59u (70 bets, 8 won) |
-| Back $3-$5, firmed 1.5x from open | - | +2.83u (114 bets, 31 won) |
-| Back $4-$7, firmed 1.5x from open | -2.00u (2 bets, 0 won) | +32.11u (137 bets, 34 won) |
-| Back $4-$7, ours >= 1.6x BSP (any runner) | -2.00u (2 bets, 0 won) | +8.97u (112 bets, 25 won) |
-| Lay $25-$40, drifted 2x from open | +2.76u (3 bets, 0 won) | +119.24u (199 bets, 2 won) |
-| Lay $12-$15, drifted 1.25x from open | +4.60u (5 bets, 0 won) | +20.85u (169 bets, 10 won) |
-| Lay $8-$12, firmed 1.5x from open | +0.92u (1 bets, 0 won) | +35.86u (73 bets, 3 won) |
-| Back BSP fav $4-$7, ours >= 1.6x BSP (current) | - | +5.48u (25 bets, 7 won) |
-| Lay $25-$40, BSP <= ours/1.6 | - | +19.16u (49 bets, 1 won) |
+| Lay $15-$40, BSP >= 1.5x ours (current, failing live) | +11.04u (12 bets, 0 won) | +4.14u (408 bets, 17 won) |
+| Lay $8-$12, BSP >= 1.6x ours (current) | +0.92u (1 bets, 0 won) | -15.67u (71 bets, 8 won) |
+| Back $3-$5, firmed 1.5x from open | +4.57u (9 bets, 4 won) | +7.39u (123 bets, 35 won) |
+| Back $4-$7, firmed 1.5x from open | +3.72u (5 bets, 2 won) | +35.82u (142 bets, 36 won) |
+| Back $4-$7, ours >= 1.6x BSP (any runner) | +0.76u (3 bets, 1 won) | +9.73u (115 bets, 26 won) |
+| Lay $25-$40, drifted 2x from open | -28.21u (7 bets, 1 won) | +91.03u (206 bets, 3 won) |
+| Lay $12-$15, drifted 1.25x from open | +6.44u (7 bets, 0 won) | +27.29u (176 bets, 10 won) |
+| Lay $8-$12, firmed 1.5x from open | - | +35.86u (73 bets, 3 won) |
+| Back BSP fav $4-$7, ours >= 1.6x BSP (current) | +2.76u (1 bets, 1 won) | +8.24u (26 bets, 8 won) |
+| Lay $25-$40, BSP <= ours/1.6 | +0.92u (1 bets, 0 won) | +20.08u (50 bets, 1 won) |
 
 ## The 9am list (the founder's bets, per bookie)
 

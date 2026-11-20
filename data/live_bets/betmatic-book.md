@@ -1328,3 +1328,15 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - The 9am bets (new rule, first day): none listed. Old rule: none.
 - Running record: since live (9 Oct) +362.29u (179 bets, 42 won, +$18,114 at $50); the model +144.62u since 2 Nov
   (67 bets, 17 won), price against Betfair SP 1.25x (41 of 65 beat it).
+
+## Friday 20 Nov Pakenham and Swan Hill settled (Form King results, Sat 8:50am)
+
+- Open book (sheet of record at Form King's open): Angling Angel (Pakenham R1) 5.12u at $2.85, WON (+9.47u, Betfair SP
+  $2.16); Sealand (Pakenham R6) 1.06u at $17, 2nd (-1.06u, BSP $6.60); Ville De Lumiere (Swan Hill R7) 1.40u at $9, 7th
+  (-1.40u, BSP $5.58). Day: 3 bets, 1 won, +7.01u (+$351 at $50); all three beat Betfair SP (1.50x). No TAB deduction
+  reported, so the winner is paid at the price taken.
+- No-Mercer card (as set): the three above plus Tell Me Why (Swan Hill R4) 1.41u at TAB's $8.50, 4th, which Form King's
+  open did not fill on the sheet: card +5.60u.
+- BetMatic: nothing sent (send hold). The 9am bets: none. Old rule: none.
+- Running record: since live (9 Oct) +369.30u (182 bets, 43 won, +$18,465 at $50); the model +151.63u since 2 Nov
+  (70 bets, 18 won), price against Betfair SP 1.27x (44 of 68 beat it).
