@@ -10,6 +10,9 @@ name: fk db weekly
 # The move only runs while the history release is a DRAFT (private): the Form King licence is personal and the
 # repository is public, so racing data is never uploaded to a published release.
 #   step = check   read-only: proves gh can read a draft release by tag (scripts/gh_draft_check.py)
+#   step = private turns the history release (Form King race data, licensed to the founder alone) into a draft, so only
+#                  people with push access can see or download it; every workflow reads it through gh, which finds a draft
+#                  by its tag (proved by step=check on 19 Nov 2026). Founder, 20 Nov: "Do whatever is best".
 
 on:
   schedule:
@@ -17,7 +20,7 @@ on:
   workflow_dispatch:
     inputs:
       step:
-        description: 'weekly (the clear-out) or check (read-only draft check)'
+        description: 'weekly (the clear-out), check (read-only draft check) or private (history release to draft)'
         default: 'weekly'
       keep_days:
         description: 'keep this many recent days of runners in the database'
@@ -62,6 +65,15 @@ jobs:
       - name: Draft check
         if: env.STEP == 'check'
         run: python scripts/gh_draft_check.py fk-db-backup | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Make the history release private (a draft)
+        if: env.STEP == 'private'
+        run: |
+          set -euo pipefail
+          ID=$(gh api "repos/$GH_REPO/releases?per_page=100" --jq '.[] | select(.tag_name=="history") | .id' | head -1)
+          [ -n "$ID" ] || { echo "no history release"; exit 1; }
+          gh api -X PATCH "repos/$GH_REPO/releases/$ID" -F draft=true --jq '"history release \(.id): draft=\(.draft), \(.assets | length) assets"' | tee -a "$GITHUB_STEP_SUMMARY"
+          python scripts/gh_draft_check.py history moved.json | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Size before
         if: env.STEP == 'weekly'
