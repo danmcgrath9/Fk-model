@@ -226,3 +226,16 @@ def test_summary_counts_quarter_kelly_in_units():
 def test_the_open_model_s_old_name_is_read_under_the_new_one():
     # 20 Nov 2026, founder: "stop sayin best model"
     assert M.BEST == "open model" and M.OLD_NAMES["best model"] == "open model"
+
+
+def test_watch_leaves_a_race_tab_opened_days_early_out_of_the_delay(monkeypatch):
+    # 21 Nov 2026: Sandown was priced on Wednesday, so its "delay" read 230,814 seconds
+    from datetime import datetime
+    monkeypatch.setattr(M.T, "open_field", lambda races: pd.DataFrame({"bw_race": [r["id"] for r in races]}))
+    monkeypatch.setattr(M.topaz_iso, "at_open", lambda facts, cards, bst, meta: facts)
+    monkeypatch.setattr(M, "detect", lambda x, races, now, day: [])
+    t = iter([datetime(2026, 11, 21, 6, 45, tzinfo=M.MEL)] * 2 + [datetime(2026, 11, 21, 9, 30, tzinfo=M.MEL)])
+    r = race("a", [[[6.0, "2026-11-18T03:38:13Z"]]])
+    _, _, _, h = M.watch("2026-11-21", None, None, None, datetime(2026, 11, 21, 6, 46, tzinfo=M.MEL), 30,
+                         lambda: [r], clock=lambda: next(t), sleep=lambda s: None, timer=lambda: 0.0)
+    assert h["lags"] == []

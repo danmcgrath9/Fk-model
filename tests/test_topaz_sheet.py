@@ -129,3 +129,36 @@ def test_sender_labels_and_venues_for_greyhounds():
     assert BS.label(o, 1, code="Greyhounds").startswith("gh-") and BS.label(o, 1).startswith("fk-")
     assert BS.vnorm("The Meadows") == BS.vnorm("MEADOWS") == "meadows" and BS.vnorm("Theodore") == "theodore"
     assert BS.skip_reason("No. 7 is 'X' on BetMatic, not 'Y'") == "another runner at that number"
+
+
+def test_a_market_tab_opened_before_the_sheet_is_not_placed():
+    # 21 Nov 2026: TAB priced Sandown on Wednesday 18 Nov at 2:38pm, three days before the race and two days before
+    # the sheet; Ballarat opened at 8:10am on race day, after it
+    races = [{"id": "r1", "track": "Sandown Park", "number": 2, "runners": [
+        {"name": "Blue Storm", "number": 6, "books": {"Tab": {"flucs": [[6.0, "2026-11-18T03:38:13.32Z"]]}}}]}]
+    from datetime import datetime, timezone
+    now = datetime(2026, 11, 20, 19, 45, tzinfo=timezone.utc)
+    early = {"model": S.SHEET, "venue": "Sandown Park", "race_no": "2", "start": "x", "box": "6", "dog": "BLUE STORM",
+             "low": 5.64, "high": 6.42, "kelly": 0.0315, "tab_open": 6.0, "tab_open_at": "2026-11-18T03:38:13.32Z",
+             "bw_race": "r1"}
+    late = {**early, "tab_open_at": "2026-11-20T21:10:58Z"}
+    a, b = M.sheet_detect([early, late], races, now, "2026-11-21")
+    assert not a["placed"] and b["placed"]
+    # the sheet's own time wins over the 11pm fallback: an open at 10pm the night before, after a 9pm sheet, fires
+    c = M.sheet_detect([{**early, "tab_open_at": "2026-11-20T11:00:00Z", "sheet_at": "2026-11-20T10:00:00Z"}], races,
+                       now, "2026-11-21")[0]
+    assert c["placed"]
+    # a row kept placed before the rule is re-marked; a settled one is left as it was
+    kept = [{**a, "placed": True}, {**a, "placed": True, "settled": True}]
+    assert [r["placed"] for r in M.recheck_sheet(kept)] == [False, True]
+    assert "(1 missed: TAB opened the market before the card was made)" in M.summary([a, b])
+
+
+def test_fired_carries_the_sheet_s_time():
+    sheet = pd.DataFrame({"day": "2026-11-21", "race_key": "k", "venue": "The Meadows", "race_no": "2", "box": "7",
+                          "dog_name": "SPHINX KEEPING", "dog": "1", "low": [2.40], "high": [2.74], "stake": [0.031],
+                          "made_at": "2026-11-20T12:05:00+00:00"})
+    facts = pd.DataFrame({"date": pd.to_datetime(["2026-11-21"]), "dog_name": ["Sphinx Keeping"], "price": [2.40],
+                          "tab_first_t": "2026-11-20T20:10:35Z", "venue": "The Meadows", "race_no": "2",
+                          "start": "2026-11-21T08:19:00Z", "bw_race": "r1"})
+    assert S.fired(sheet, facts)[0]["sheet_at"] == "2026-11-20T12:05:00+00:00"
