@@ -33,6 +33,7 @@ import json
 import math
 import os
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
@@ -268,6 +269,8 @@ def sheet_for_day(day: str, cards_dir: str) -> tuple:
         return [], f"no band sheet: no kept card_iso for {day}"
     hist = topaz_best.runs_history(R65.tab_and_books(bdir))
     o, n = build(cards, bst, meta, tob, tmeta, topaz_best.mh_table(hist))
+    # when the sheet existed: a market TAB opened before this cannot fire one of its orders (topaz_morning.opened_early)
+    o = o.assign(made_at=datetime.now(timezone.utc).isoformat(timespec="seconds"))
     f = sheet_path(cards_dir, day)
     o.to_csv(f, index=False, compression="gzip")
     betmatic_orders(o).to_csv(betmatic_path(cards_dir, day), index=False)
@@ -308,5 +311,6 @@ def fired(sheet: pd.DataFrame, facts: pd.DataFrame) -> list:
         out.append({"model": SHEET, "venue": r.bw_venue, "race_no": str(r.bw_race_no), "start": r.start,
                     "box": str(r.box), "dog": r.dog_name, "low": float(r.low), "high": float(r.high),
                     "kelly": float(r.stake), "tab_open": float(r.price), "tab_open_at": r.tab_first_t,
-                    "bw_race": r.bw_race})
+                    "bw_race": r.bw_race, **({"sheet_at": r.made_at} if isinstance(getattr(r, "made_at", None), str)
+                                             else {})})
     return sorted(out, key=lambda b: str(b["start"]))

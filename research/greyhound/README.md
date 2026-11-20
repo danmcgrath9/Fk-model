@@ -9643,10 +9643,10 @@ stay in `topaz_cross.py`.
 Founder, on 20 Nov: "We need to create like a betmatic sheet to bet before open". This puts Test 101's sheet on the
 live models. It is paper only until the founder says otherwise.
 
-- **The TAB-open model.** It predicts TAB's opening chance from the best model's inputs, minus the three built from
+- **The TAB-open model.** It predicts TAB's opening chance from the open model's inputs, minus the three built from
   TAB's price, using round 80's settings and 600 rounds. TAB's usual book for each field size (the median over six
-  months) is kept beside it. It is fitted in the weekly train, after the best model, and was fitted once on 20 Nov.
-- **Each night** after the card is priced, every dog's best-model chance is priced at the 28 ladder prices from $1.15
+  months) is kept beside it. It is fitted in the weekly train, after the open model, and was fitted once on 20 Nov.
+- **Each night** after the card is priced, every dog's open-model chance is priced at the 28 ladder prices from $1.15
   to $41, with the rest of the field held at its predicted prices (Test 101's best sheet).
 - **A band gets an order** when the 2-point margin holds at both its ends and our fair price is under $15. Each band
   is staked at the smaller quarter-Kelly share of the bank of its two ends, capped at 5%. The bands tile the prices to
@@ -9664,6 +9664,15 @@ live models. It is paper only until the founder says otherwise.
   - `--code Greyhounds`;
   - labels start "gh-", so they never clash with a gallops label at Bendigo, Traralgon or Sale on the same day;
   - a venue is matched to BetMatic's own name without a leading "The".
+- **A market TAB opened before the sheet existed cannot fire an order** (21 Nov 2026). TAB priced all twelve Sandown
+  races on Wednesday 18 Nov at 2:38pm, three days before the meeting and two days before the sheet, so the first morning
+  scored three band-sheet orders as placed at Wednesday's prices. No order made on Friday night could have taken them.
+  Each sheet now records when it was made (`made_at`), and the morning places a band-sheet order only when TAB's first
+  price came after it (`topaz_morning.opened_early`). A sheet without the time is taken as made at 11pm the night
+  before. The unsettled rows already kept are re-marked by the same rule. The open model and the corrected blend
+  never placed those races, because TAB had cut the prices by the morning. Their misses are now counted apart:
+  "TAB had cut the price" or "TAB opened the market before the card was made". The delay figure also leaves out a race
+  TAB opened more than ten minutes before the first poll; Sandown's had read 230,814 seconds.
 - **Still to prove live:** whether BetMatic places within seconds of TAB's open at TAB's first price. BetMatic fired
   Geelong R1's eight market-open orders at TAB's open on 27 Oct, but the bot skipped them because the TAB account held
   under $1.

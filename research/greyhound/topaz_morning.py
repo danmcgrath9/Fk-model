@@ -128,17 +128,42 @@ def best_detect(xb: pd.DataFrame, races: list, now: datetime, day: str) -> list:
     return sorted(out, key=lambda b: str(b["start"]))
 
 
+def card_cutoff(day: str) -> datetime:
+    """When last night's card (and its band sheet) existed, for rows that do not carry the sheet's own time: 11pm
+    Melbourne the night before the race day (the nightly card is made from 10:40pm)."""
+    d = datetime.strptime(day, "%Y-%m-%d").replace(tzinfo=MEL) - timedelta(days=1)
+    return d.replace(hour=23)
+
+
+def opened_early(b: dict) -> bool:
+    """TAB opened this market before the card and the sheet existed (21 Nov 2026: TAB priced all twelve Sandown races
+    on Wednesday afternoon, three days early), so no order made the night before could have caught its first price."""
+    t = B._ts(b.get("tab_open_at")) if b.get("tab_open_at") else None
+    at = B._ts(b["sheet_at"]) if b.get("sheet_at") else card_cutoff(b["day"])
+    return t is not None and t < at
+
+
 def sheet_detect(rows: list, races: list, now: datetime, day: str) -> list:
     """The band sheet's orders that TAB's first price fired (topaz_sheet.fired), as paper bets: placed at TAB's first
-    price, which is what a BetMatic market-open order is paid, with the dog's number for the result."""
+    price, which is what a BetMatic market-open order is paid, with the dog's number for the result. Not placed when
+    TAB opened the market before the sheet was made (opened_early): a market-open order cannot catch an open that
+    came before it."""
     stamp = now.astimezone(timezone.utc).isoformat(timespec="seconds")
     lp = latest_prices(races)
     out = []
     for b in rows:
         now_p = lp.get((b["venue"], str(b["race_no"]), T.norm(pd.Series([b["dog"] or ""]))[0]), {})
-        out.append({**b, **{k: v for k, v in now_p.items() if k != "bw_race"}, "day": day, "detected_at": stamp,
-                    "tab_at_detect": b["tab_open"], "placed": True})
+        r = {**b, **{k: v for k, v in now_p.items() if k != "bw_race"}, "day": day, "detected_at": stamp,
+             "tab_at_detect": b["tab_open"]}
+        out.append({**r, "placed": not opened_early(r)})
     return out
+
+
+def recheck_sheet(ledger: list) -> list:
+    """Band-sheet rows kept before 21 Nov 2026 were placed even when TAB had opened the market before the sheet was
+    made; an unsettled one is re-marked by the same rule as a new one (sheet_detect)."""
+    return [{**b, "placed": not opened_early(b)} if b.get("model") == topaz_sheet.SHEET and not b.get("settled") else b
+            for b in ledger]
 
 
 def tab_final(race: dict, number) -> float | None:
@@ -197,10 +222,15 @@ def summary(rows: list) -> str:
     beat = (f"; {sum(float(b['tab_at_detect']) > float(b['tab_final']) for b in fin)} of {len(fin)} beat TAB's final "
             f"price, by {np.mean([float(b['tab_at_detect']) / float(b['tab_final']) - 1 for b in fin]):+.1%} on average"
             if fin else "")
-    return (f"{len(rows)} bets seen, {len(placed)} placed ({len(rows) - len(placed)} missed: TAB had cut the price "
-            f"below the price it needed by then), {len(st)} settled, {sum(b['won'] for b in st)} won, {units:+.2f} units on "
+    early = sum(opened_early(b) for b in rows if not b.get("placed"))
+    cut = len(rows) - len(placed) - early
+    why_cut, why_early = "TAB had cut the price below the price it needed by then", "TAB opened the market before the card was made"
+    missed = (f"{cut} because {why_cut}, {early} because {why_early}" if cut and early else why_early if early
+              else why_cut)
+    return (f"{len(rows)} bets seen, {len(placed)} placed ({len(rows) - len(placed)} missed: {missed}), {len(st)} settled, {sum(b['won'] for b in st)} won, {units:+.2f} units on "
             f"{staked:.2f} staked ({units / staked if staked else 0:+.1%}){beat}" if st else
-            f"{len(rows)} bets seen, {len(placed)} placed, none settled yet")
+            f"{len(rows)} bets seen, {len(placed)} placed" + (f" ({early} missed: {why_early})" if early else "")
+            + ", none settled yet")
 
 
 def feed_health(races: list) -> dict:
@@ -255,6 +285,7 @@ def watch(day: str, cards, bst, meta, until: datetime, every: float, fetch, cloc
     apart for `fast_for` minutes after a poll that saw a race newly priced by TAB or newly full, while any race is
     still to price."""
     clock = clock or (lambda: datetime.now(MEL))
+    began = None                          # the first poll: a race TAB opened well before it is not a delay of ours
     seen, bets, polls, sheet_seen = set(), [], 0, set()
     first_open, shown, h = None, None, {}
     moved, lags, fetch_s, price_s = None, [], [], []
@@ -271,6 +302,7 @@ def watch(day: str, cards, bst, meta, until: datetime, every: float, fetch, cloc
         races = fetch()
         polls += 1
         now = clock()
+        began = began or now
         fetch_s.append(timer() - t_start)
         h = feed_health(races)
         if first_open is None and h["races"] and 2 * h["tab_races"] >= h["races"]:
@@ -304,7 +336,7 @@ def watch(day: str, cards, bst, meta, until: datetime, every: float, fetch, cloc
                 price_s.append(took)
                 for r in races:
                     o = race_opened_at(r) if r.get("id") in done else None
-                    if o is not None:
+                    if o is not None and o >= began - timedelta(minutes=10):   # not one TAB opened days early
                         lags.append((now - o).total_seconds() + took)
                 seen |= done
                 print(f"{now:%H:%M:%S} poll {polls}: {len(set(x.bw_race.unique()))} race(s) priced, {len(new)} bet(s) "
@@ -327,6 +359,7 @@ def run_watch(day: str, cards, bst, meta) -> int:
     ledger = json.loads(lp.read_text()) if lp.exists() else []
     ledger = [{**b, "model": OLD_NAMES.get(b.get("model"), b.get("model"))} if b.get("model") in OLD_NAMES else b
               for b in ledger]
+    ledger = recheck_sheet(ledger)
     session = B._session()
     open_days = sorted({b["day"] for b in ledger if b.get("placed") and not b.get("settled") and b["day"] < day})
     for d in open_days[-7:]:
