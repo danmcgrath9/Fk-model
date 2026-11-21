@@ -1,0 +1,105 @@
+{
+ "day": "Saturday",
+ "date": "21 November",
+ "footer": "Win bets.",
+ "brand": true,
+ "prices_as_at": "2026-11-21T11:44",
+ "meetings": [
+  {
+   "name": "Cranbourne",
+   "note": "",
+   "bets": [
+    {
+     "race": 2,
+     "time": "12:50PM",
+     "horse": "Bajaria",
+     "price": "$5",
+     "units": "2.15u"
+    },
+    {
+     "race": 4,
+     "time": "2:00PM",
+     "horse": "Col Klink",
+     "price": "$3.80",
+     "units": "3.29u"
+    },
+    {
+     "race": 4,
+     "time": "2:00PM",
+     "horse": "Nation State",
+     "price": "$4.60",
+     "units": "1.55u"
+    },
+    {
+     "race": 5,
+     "time": "2:35PM",
+     "horse": "Ardashir",
+     "price": "$4",
+     "units": "1.89u"
+    },
+    {
+     "race": 5,
+     "time": "2:35PM",
+     "horse": "Tishman",
+     "price": "$5",
+     "units": "1.25u"
+    },
+    {
+     "race": 7,
+     "time": "3:45PM",
+     "horse": "Celsius Star",
+     "price": "$7",
+     "units": "1.37u"
+    },
+    {
+     "race": 8,
+     "time": "4:25PM",
+     "horse": "Astral Flame",
+     "price": "$12",
+     "units": "0.82u"
+    },
+    {
+     "race": 9,
+     "time": "5:05PM",
+     "horse": "Inkaruna",
+     "price": "$12",
+     "units": "0.93u"
+    }
+   ]
+  },
+  {
+   "name": "Tatura",
+   "note": "",
+   "bets": [
+    {
+     "race": 2,
+     "time": "1:41PM",
+     "horse": "Boridi",
+     "price": "$3.30",
+     "units": "2.56u"
+    },
+    {
+     "race": 6,
+     "time": "4:01PM",
+     "horse": "Trinity's D'oro",
+     "price": "$4.60",
+     "units": "1.42u"
+    },
+    {
+     "race": 6,
+     "time": "4:01PM",
+     "horse": "Too Big",
+     "price": "$12",
+     "units": "0.92u"
+    },
+    {
+     "race": 8,
+     "time": "5:24PM",
+     "horse": "It's Gnarly",
+     "price": "$5.50",
+     "units": "1.83u"
+    }
+   ]
+  }
+ ]
+}
