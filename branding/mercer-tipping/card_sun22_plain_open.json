@@ -1,0 +1,61 @@
+{
+ "day": "Sunday",
+ "date": "22 November",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Kilmore",
+   "note": "priced after every race opened",
+   "bets": [
+    {
+     "race": 1,
+     "time": "1:00PM",
+     "horse": "Terracotta Warrior",
+     "price": "$6",
+     "units": "4.03u",
+     "rated": "$3.14"
+    },
+    {
+     "race": 4,
+     "time": "2:35PM",
+     "horse": "Heat Map",
+     "price": "$9",
+     "units": "1.42u",
+     "rated": "$6.32"
+    },
+    {
+     "race": 6,
+     "time": "3:45PM",
+     "horse": "Lathlain",
+     "price": "$13",
+     "units": "0.94u",
+     "rated": "$9.05"
+    },
+    {
+     "race": 7,
+     "time": "4:15PM",
+     "horse": "Catch The Moon",
+     "price": "$8.50",
+     "units": "2.22u",
+     "rated": "$5.14"
+    },
+    {
+     "race": 8,
+     "time": "4:50PM",
+     "horse": "Jenni's Meadow",
+     "price": "$13",
+     "units": "1.11u",
+     "rated": "$7.84"
+    },
+    {
+     "race": 9,
+     "time": "5:28PM",
+     "horse": "Jenni You Think",
+     "price": "$3.80",
+     "units": "3.62u",
+     "rated": "$2.78"
+    }
+   ]
+  }
+ ]
+}

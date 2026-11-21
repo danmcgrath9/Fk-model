@@ -1,0 +1,53 @@
+{
+ "day": "Tuesday",
+ "date": "24 November",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Ararat (paper)",
+   "note": "priced after every race opened",
+   "bets": [
+    {
+     "race": 1,
+     "time": "1:30PM",
+     "horse": "Rockin' Dee Fox",
+     "price": "$7.50",
+     "units": "2.62u",
+     "rated": "$4.47"
+    },
+    {
+     "race": 3,
+     "time": "2:30PM",
+     "horse": "Bourne Legacy",
+     "price": "$22",
+     "units": "0.55u",
+     "rated": "$14.61"
+    },
+    {
+     "race": 6,
+     "time": "4:00PM",
+     "horse": "Fenestella",
+     "price": "$6",
+     "units": "2.10u",
+     "rated": "$4.54"
+    },
+    {
+     "race": 7,
+     "time": "4:30PM",
+     "horse": "Hidden Witness",
+     "price": "$14",
+     "units": "3.96u",
+     "rated": "$5.67"
+    },
+    {
+     "race": 7,
+     "time": "4:30PM",
+     "horse": "Tempt The Gods",
+     "price": "$11",
+     "units": "1.08u",
+     "rated": "$8.03"
+    }
+   ]
+  }
+ ]
+}
