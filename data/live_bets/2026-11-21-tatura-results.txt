@@ -1,0 +1,86 @@
+## tatura-20261121: 85 entries
+R1 Valiant Dreamer          finish 1  SP 3.3  BSP 4.0
+R1 Royal Overture           finish 2  SP 2.8  BSP 3.7
+R1 Jezebel Jenni            finish 3  SP 7  BSP 9.8
+R1 She's Astunnerarch       finish 4  SP 4.2  BSP 4.57
+R1 La Shadow                finish 5  SP 51  BSP 90.0
+R1 Belle Fille              finish 6  SP 11  BSP 13.25
+R1 Go Go Ruby               finish 7  SP 31  BSP 40.0
+R1 Couldbetracy             finish 8  SP 101  BSP 1000.0
+R1 I'm Good                 finish 9  SP 31  BSP 70.0
+R1 Mighty Mongoose          finish 10  SP 101  BSP 685.96
+R2 Profumo                  finish 1  SP 1.5  BSP 1.65
+R2 Brilliant Beagle         finish 2  SP 31  BSP 70.0
+R2 Boridi                   finish 3  SP 2.8  BSP 3.69
+R2 Moore Hart               finish 4  SP 26  BSP 61.34
+R2 Tara's Crown             finish 5  SP 19  BSP 34.25
+R2 It's Justa Guess         finish 6  SP 21  BSP 39.24
+R2 Magnus Mclaren           finish 7  SP 101  BSP 923.13
+R2 Little Gangster          finish 8  SP 41  BSP 138.48
+R3 Under Control            finish 1  SP 8  BSP 11.75
+R3 A Rus In Grinzing        finish 2  SP 2.9  BSP 3.63
+R3 Hot Opera                finish 3  SP 8  BSP 9.58
+R3 Shades Of Sheriff        finish 4  SP 31  BSP 59.11
+R3 Best Terms               finish 5  SP 2.3  BSP 2.54
+R3 All Too Swift            finish 6  SP 101  BSP 270.0
+R3 Mwamba                   finish 7  SP 101  BSP 521.9
+R3 Conjurer                 finish 8  SP 21  BSP 33.54
+R3 Amsterdam Nights         finish 9  SP 21  BSP 29.53
+R3 Flying Riches            finish 10  SP 21  BSP 31.92
+R4 Prestige Geoffrey        finish 1  SP 8  BSP 9.96
+R4 Stole Him                finish 2  SP 4.6  BSP 4.9
+R4 I Could Do Better        finish 3  SP 26  BSP 46.0
+R4 Brassi Road              finish 4  SP 17  BSP 24.0
+R4 Devine Grunt             finish 5  SP 3.4  BSP 3.95
+R4 Pendante                 finish 6  SP 6.5  BSP 7.4
+R4 Testing The Cugat        finish 7  SP 26  BSP 46.0
+R4 Whistler Girl            finish 8  SP 19  BSP 22.37
+R4 Strummer                 finish 9  SP 6  BSP 7.35
+R4 Conaltri                 finish 10  SP 101  BSP 171.02
+R4 Brookers Turbo           finish 11  SP 31  BSP 38.43
+R4 Dashing Donkey           finish 12  SP 21  BSP 31.55
+R5 First Division           finish 1  SP 31  BSP 56.38
+R5 Eternal Darkness         finish 2  SP 3.6  BSP 3.81
+R5 Written Royalty          finish 3  SP 16  BSP 23.0
+R5 Grouse Mountain          finish 4  SP 26  BSP 34.08
+R5 Simply Luscious          finish 5  SP 21  BSP 27.0
+R5 Hegely                   finish 6  SP 19  BSP 32.0
+R5 Daynes Dahwun            finish 7  SP 4.6  BSP 5.9
+R5 Elena Montero            finish 8  SP 5.5  BSP 7.22
+R5 Master Jack              finish 9  SP 12  BSP 16.5
+R5 Cumboogle                finish 10  SP 9  BSP 14.5
+R5 Lagunanini               finish 11  SP 10  BSP 10.25
+R5 Time Angel               finish 12  SP 18  BSP 30.0
+R6 Slate Ripper             finish 1  SP 10  BSP 15.28
+R6 Kaddari                  finish 2  SP 21  BSP 36.0
+R6 Monsun's Pride           finish 3  SP 2.35  BSP 2.44
+R6 Too Big                  finish 4  SP 10  BSP 13.03
+R6 Trinity's D'oro          finish 5  SP 5  BSP 7.15
+R6 Sacred Ingot             finish 6  SP 21  BSP 38.0
+R6 Ruscello                 finish 7  SP 31  BSP 55.0
+R6 Our Paramour             finish 8  SP 10  BSP 14.98
+R6 Amphactor                finish 9  SP 8.5  BSP 12.72
+R6 Gold Gladiator           finish 10  SP 61  BSP 140.0
+R6 Without Fail             finish 11  SP 15  BSP 21.0
+R7 Regal Tycoon             finish 1  SP 4.4  BSP 4.65
+R7 Vim Vitae                finish 2  SP 11  BSP 12.4
+R7 Didn't Miss Many         finish 3  SP 14  BSP 22.0
+R7 Chicago Blues            finish 4  SP 9  BSP 10.5
+R7 Roadcone                 finish 5  SP 11  BSP 17.5
+R7 Romantic Encounter       finish 6  SP 7  BSP 9.42
+R7 Make It Sweet            finish 7  SP 5  BSP 5.72
+R7 Shaalute                 finish 8  SP 6  BSP 7.8
+R7 Enna's Dream             finish 9  SP 13  BSP 19.84
+R7 Annotate                 finish 10  SP 16  BSP 21.0
+R7 Quamby                   finish 11  SP 91  BSP 180.0
+R8 Tasman Park              finish 1  SP 31  BSP 55.0
+R8 Silver Snow              finish 2  SP 5.5  BSP 5.83
+R8 It's Gnarly              finish 3  SP 4.6  BSP 5.21
+R8 Savethebesttillast       finish 4  SP 10  BSP 14.26
+R8 Cumbrian Queen           finish 5  SP 7.5  BSP 11.0
+R8 Clinger                  finish 6  SP 8  BSP 11.5
+R8 Bakersbend               finish 7  SP 7.5  BSP 9.78
+R8 Darating                 finish 8  SP 16  BSP 22.0
+R8 Mishima                  finish 9  SP 14  BSP 15.5
+R8 King's Taj               finish 10  SP 8.5  BSP 9.84
+R8 French Love              finish 11  SP 19  BSP 29.0

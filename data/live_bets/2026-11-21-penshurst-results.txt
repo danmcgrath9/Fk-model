@@ -1,0 +1,70 @@
+## penshurst-20261121: 69 entries
+R1 Lange Nelle              finish 1  SP 5.5  BSP 6.0
+R1 Orchid Sky               finish 2  SP 1.55  BSP 1.91
+R1 Smart And Mighty         finish 3  SP 21  BSP 37.27
+R1 Jondens Boy              finish 4  SP 81  BSP 410.0
+R1 Goddess Storm            finish 5  SP 7  BSP 7.57
+R1 Kiss Me In Paris         finish 6  SP 10  BSP 12.5
+R1 Whata Stretch            finish 7  SP 20  BSP 26.47
+R1 Mamzelle Raine           finish 8  SP 51  BSP 75.0
+R1 Holler's Vision          finish 9  SP 61  BSP 150.0
+R2 Grumpyoldcol             finish 1  SP 7  BSP 10.5
+R2 Zamora                   finish 2  SP 9  BSP 12.41
+R2 Sugar And Sweet          finish 3  SP 5.5  BSP 6.2
+R2 Monsoon Reins            finish 4  SP 14  BSP 16.72
+R2 Frose                    finish 5  SP 3.7  BSP 4.11
+R2 La Cache A Vin           finish 6  SP 31  BSP 42.0
+R2 Gopher Frank             finish 7  SP 6  BSP 7.4
+R2 Two Kay Klick            finish 8  SP 31  BSP 49.64
+R2 Star Fortian             finish 9  SP 17  BSP 26.3
+R2 The Crusader             finish 10  SP 7  BSP 7.4
+R3 Hellofacury              finish 1  SP 1.45  BSP 1.52
+R3 Native Dance             finish 2  SP 9.5  BSP 14.48
+R3 Ambisaam                 finish 3  SP 21  BSP 48.65
+R3 Unclaimed                finish 4  SP 6.5  BSP 10.16
+R3 Rei Ayanami              finish 5  SP 41  BSP 98.57
+R3 Gunnatippatinnie         finish 6  SP 31  BSP 60.0
+R3 Miss Fine                finish 7  SP 18  BSP 34.67
+R3 Challenging              finish 8  SP 15  BSP 23.31
+R3 Buchan Outkast           finish 9  SP 51  BSP 142.34
+R3 Yahweh Rapha             finish 10  SP 26  BSP 45.81
+R4 Abby's Crossword         finish 1  SP 2.7  BSP 3.37
+R4 Icy Pole                 finish 2  SP 4.4  BSP 4.4
+R4 Becauseyou're Mine       finish 3  SP 4  BSP 4.4
+R4 Infer                    finish 4  SP 41  BSP 90.0
+R4 Hay Joe                  finish 5  SP 12  BSP 19.5
+R4 Fox Phire                finish 6  SP 8.5  BSP 12.5
+R4 Winning Toast            finish 7  SP 13  BSP 17.15
+R4 Lord Porchester          finish 8  SP 20  BSP 36.0
+R4 High Altitude            finish 9  SP 41  BSP 70.0
+R4 Dazzling Sky             finish 10  SP 101  BSP 859.69
+R5 Platinum Rush            finish 1  SP 2.5  BSP 2.89
+R5 Miss Delightful          finish 2  SP 21  BSP 36.0
+R5 Fire Type                finish 3  SP 2.6  BSP 2.6
+R5 Champagne Sabre          finish 4  SP 15  BSP 25.2
+R5 Blues Jazz               finish 5  SP 71  BSP 190.0
+R5 Presno                   finish 6  SP 7  BSP 8.59
+R5 Awaywiththepixies        finish 7  SP 91  BSP 180.0
+R5 Tarin's Rock             finish 8  SP 41  BSP 84.62
+R5 Big Trouble              finish 9  SP 8  BSP 13.54
+R5 Piccadilly Thunder       finish 10  SP 151  BSP 393.5
+R6 Steely Hustler           finish 1  SP 3.5  BSP 5.0
+R6 Whiskey And Beer         finish 2  SP 8  BSP 11.5
+R6 Bare To Witness          finish 3  SP 21  BSP 29.0
+R6 Mont Saint Michel        finish 4  SP 6  BSP 6.8
+R6 Flying Shelby            finish 5  SP 19  BSP 27.0
+R6 Alpinova                 finish 6  SP 6.5  BSP 7.24
+R6 Handsome Devil           finish 7  SP 31  BSP 46.0
+R6 Nicking Gracie           finish 8  SP 3  BSP 2.86
+R6 Quizlet                  finish 9  SP 91  BSP 191.33
+R6 First Return             finish 10  SP 26  BSP 47.19
+R7 Aftermath                finish 1  SP 3  BSP 3.49
+R7 Foujita San              finish 2  SP 3.7  BSP 4.62
+R7 Unseen Ruler             finish 3  SP 5  BSP 6.75
+R7 Rich Champagne           finish 4  SP 7  BSP 8.07
+R7 Vizie                    finish 5  SP 16  BSP 19.21
+R7 Super Snitch             finish 6  SP 26  BSP 40.0
+R7 Male Model               finish 7  SP 9.5  BSP 11.5
+R7 Pianta                   finish 8  SP 61  BSP 150.0
+R7 Unamerican               finish 9  SP 101  BSP 840.0
+R7 Any Luck                 finish 10  SP 17  BSP 26.95

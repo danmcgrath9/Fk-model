@@ -1340,3 +1340,19 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - BetMatic: nothing sent (send hold). The 9am bets: none. Old rule: none.
 - Running record: since live (9 Oct) +369.30u (182 bets, 43 won, +$18,465 at $50); the model +151.63u since 2 Nov
   (70 bets, 18 won), price against Betfair SP 1.27x (44 of 68 beat it).
+## Saturday 21 Nov Cranbourne, Healesville (paper), Penshurst (paper) and Tatura settled (Form King results, Sun 9:45am)
+- Open book (sheet of record at Form King's open): Cranbourne Bajaria R2 2.15u at $6, 4th; Col Klink R4 3.29u at $6, WON
+  (+16.45u, Betfair SP $3.91); Nation State R4 1.55u at $8, 4th; Ardashir R5 1.89u at $8, 9th; Tishman R5 1.25u at $11,
+  5th; Celsius Star R7 1.37u at $16, 7th; Astral Flame R8 0.82u at $15, 12th; Inkaruna R9 0.93u at $15, 3rd: +6.49u.
+  Tatura Boridi R2 2.56u at $7.75, 3rd; Too Big R6 0.92u at $23, 4th; Trinity's D'oro R6 1.42u at $8.50, 5th; It's Gnarly
+  R8 1.83u at $12.50, 3rd: -6.73u. Penshurst (paper) Sugar And Sweet R2 1.37u at $9, 3rd; Fire Type R5 4.92u at $2.70,
+  3rd; Dartboard R7 1.20u at $12, scratched, void: -6.29u. Healesville (paper): no bets. Day: 14 bets, 1 won, -6.53u
+  (-$326 at $50); Cranbourne and Tatura alone -0.24u. 13 of 14 beat Betfair SP (1.52x). No TAB deduction reported, so
+  Col Klink is paid at the price taken.
+- No-Mercer card (as set, card_sat21day): the twelve Cranbourne and Tatura bets above, -0.24u. Mercer card at 11:44am prices
+  -7.48u (Col Klink won at $3.80); the Tatura Mercer card with Boridi taken off -4.17u.
+- BetMatic: nothing sent (send hold).
+- The 9am bets (new rule): It's Gnarly (Tatura R8) 1.20u at $6.50 (betr), 3rd, -1.20u (-$60); Betfair SP $5.21, so the
+  price beat BSP (1.25x). Since 19 Nov: 1 bet, 0 won, -1.20u. Old rule: none.
+- Running record: since live (9 Oct) +362.77u (196 bets, 44 won, +$18,138 at $50); the model +145.10u since 2 Nov
+  (84 bets, 19 won), price against Betfair SP 1.30x (57 of 82 beat it).

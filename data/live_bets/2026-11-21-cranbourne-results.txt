@@ -1,0 +1,93 @@
+## cranbourne-20261121: 92 entries
+R1 Obambulate               finish 1  SP 10  BSP 15.35
+R1 Valaroso                 finish 2  SP 2.2  BSP 2.28
+R1 Mongolian Hero           finish 3  SP 4.6  BSP 5.4
+R1 Ladhar                   finish 4  SP 18  BSP 19.56
+R1 Doubt Time               finish 5  SP 2.9  BSP 3.8
+R2 Dirty Look               finish 1  SP 1.8  BSP 2.04
+R2 Loft Vega                finish 2  SP 9  BSP 12.0
+R2 Santa Ana Moon           finish 3  SP 11  BSP 16.37
+R2 Bajaria                  finish 4  SP 4.8  BSP 5.5
+R2 You Sexy Thing           finish 5  SP 6  BSP 7.8
+R2 Ryanman                  finish 6  SP 71  BSP 170.0
+R2 Zain Blue                finish 7  SP 26  BSP 44.0
+R2 Warrior Within           finish 8  SP 101  BSP 313.16
+R3 Torsheen                 finish 1  SP 3.4  BSP 3.86
+R3 Swift Force              finish 2  SP 2.9  BSP 3.27
+R3 Marsept                  finish 3  SP 6.5  BSP 8.61
+R3 Xarpo                    finish 4  SP 14  BSP 15.0
+R3 Rohesia                  finish 5  SP 11  BSP 16.97
+R3 Fluent                   finish 6  SP 51  BSP 103.41
+R3 Naifah                   finish 7  SP 6  BSP 7.72
+R3 Davida                   finish 8  SP 16  BSP 17.77
+R4 Col Klink                finish 1  SP 3.5  BSP 3.91
+R4 Highland Harley          finish 2  SP 7.5  BSP 7.92
+R4 Stakes                   finish 3  SP 3.5  BSP 4.4
+R4 Nation State             finish 4  SP 5.5  BSP 5.7
+R4 Interest Point           finish 5  SP 5.5  BSP 6.95
+R4 Small Town Hero          finish 6  SP 18  BSP 21.0
+R4 Art's Alive              finish 7  SP 21  BSP 30.0
+R4 Legacy Bel               finish 8  SP 61  BSP 120.0
+R5 Power Pivot              finish 1  SP 8  BSP 10.41
+R5 Dad And Dave             finish 2  SP 4.8  BSP 6.2
+R5 Slane                    finish 3  SP 15  BSP 14.66
+R5 Hawk Power               finish 4  SP 11  BSP 12.26
+R5 Tishman                  finish 5  SP 4.6  BSP 4.7
+R5 Budjik Boy               finish 6  SP 31  BSP 52.26
+R5 Affluential              finish 7  SP 19  BSP 30.22
+R5 Superstock               finish 8  SP 14  BSP 16.5
+R5 Ardashir                 finish 9  SP 3.1  BSP 4.0
+R6 Jenni Multabella         finish 1  SP 1.5  BSP 1.86
+R6 Coco Jen                 finish 2  SP 26  BSP 55.0
+R6 Champagne Jenni          finish 3  SP 15  BSP 17.13
+R6 Lario                    finish 4  SP 9  BSP 9.28
+R6 Spex                     finish 5  SP 11  BSP 13.51
+R6 Just Berrilliant         finish 6  SP 71  BSP 150.0
+R6 Tiptop Tori              finish 7  SP 7.5  BSP 9.48
+R6 Chakado                  finish 8  SP 18  BSP 23.08
+R7 Brave Design             finish 1  SP 10  BSP 13.89
+R7 Alero                    finish 2  SP 5.5  BSP 5.4
+R7 Stoli Bolli              finish 3  SP 4.6  BSP 5.44
+R7 Ka Ying Cheer            finish 4  SP 17  BSP 25.0
+R7 Markdel                  finish 5  SP 6.5  BSP 8.0
+R7 Mometz                   finish 6  SP 26  BSP 43.17
+R7 Celsius Star             finish 7  SP 6  BSP 6.13
+R7 Mytemptation             finish 8  SP 12  BSP 13.5
+R7 Fission                  finish 9  SP 10  BSP 12.0
+R7 Elouyou                  finish 10  SP 12  BSP 14.85
+R8 Scheelite                finish 1  SP 19  BSP 24.0
+R8 Warnie                   finish 2  SP 2.9  BSP 3.1
+R8 Amenable                 finish 3  SP 8.5  BSP 9.2
+R8 Regal Zeus               finish 4  SP 26  BSP 34.48
+R8 St Lawrence              finish 5  SP 16  BSP 23.47
+R8 Air Assault              finish 6  SP 15  BSP 16.0
+R8 Aztec Ruler              finish 7  SP 31  BSP 46.0
+R8 Alder                    finish 8  SP 101  BSP 210.0
+R8 Pinstriped               finish 9  SP 7.5  BSP 7.66
+R8 Freedom Rally            finish 10  SP 9.5  BSP 11.5
+R8 Just Folk                finish 11  SP 8  BSP 10.5
+R8 Astral Flame             finish 12  SP 9.5  BSP 10.5
+R9 Arkansaw Kid             finish 1  SP 31  BSP 40.0
+R9 Charm Stone              finish 2  SP 12  BSP 10.93
+R9 Inkaruna                 finish 3  SP 14  BSP 16.24
+R9 Mazu                     finish 4  SP 6  BSP 7.2
+R9 Zou Sensation            finish 5  SP 31  BSP 44.0
+R9 Desert Lightning         finish 6  SP 26  BSP 38.0
+R9 Meridius                 finish 7  SP 11  BSP 13.5
+R9 Watchme Win              finish 8  SP 14  BSP 16.31
+R9 Ndola                    finish 9  SP 6.5  BSP 7.55
+R9 Smooth Chino             finish 10  SP 2.6  BSP 3.5
+R9 Gentle Steel             finish 11  SP 51  BSP 70.0
+R9 Immortal Star            finish 12  SP 31  BSP 50.0
+R9 Jenni The Fox            finish 13  SP 91  BSP 170.0
+R9 Perilous Fighter         finish 14  SP 151  BSP 208.89
+R10 Choir Point              finish 1  SP 3.6  BSP 3.78
+R10 You're Two Vain          finish 2  SP 7  BSP 8.13
+R10 Gin Twist                finish 3  SP 7  BSP 9.15
+R10 Mainmankash              finish 4  SP 11  BSP 13.88
+R10 Sharing Moments          finish 5  SP 16  BSP 17.51
+R10 I'm Foxing               finish 6  SP 4  BSP 4.25
+R10 Cannyworth               finish 7  SP 10  BSP 10.5
+R10 Always Enuff             finish 8  SP 31  BSP 37.47
+R10 Saluted                  finish 9  SP 15  BSP 23.0
+R10 Unflinching              finish 10  SP 61  BSP 89.39

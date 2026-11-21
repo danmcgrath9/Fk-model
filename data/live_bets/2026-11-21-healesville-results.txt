@@ -1,0 +1,41 @@
+## healesville-20261121: 40 entries
+R1 Reisner                  finish 1  SP 5  BSP 0.0
+R1 Overtoux                 finish 2  SP 3  BSP 0.0
+R1 Dunnenkate Bro           finish 3  SP 3.4  BSP 0.0
+R1 Nasrin                   finish 4  SP 15  BSP 0.0
+R1 Belriah                  finish 5  SP 6  BSP 0.0
+R1 Rock Glory               finish 6  SP 7  BSP 0.0
+R2 Wallace And Gromit       finish 1  SP 8.5  BSP 0.0
+R2 Princess Chic            finish 2  SP 4.2  BSP 0.0
+R2 Specific Outcome         finish 3  SP 18  BSP 0.0
+R2 Eidfjord                 finish 4  SP 1.8  BSP 0.0
+R2 Pipe Hitter              finish 5  SP 11  BSP 0.0
+R2 Hopkins Star             finish 6  SP 4  BSP 0.0
+R3 Downtown Man             finish 0  SP 15  BSP 0.0
+R3 Nic Says No              finish 1  SP 11  BSP 0.0
+R3 Popeye The Sailor        finish 2  SP 14  BSP 0.0
+R3 Springer Time            finish 3  SP 5  BSP 0.0
+R3 Grand Sage               finish 4  SP 6  BSP 0.0
+R3 Everett                  finish 5  SP 3.7  BSP 0.0
+R3 Anything But             finish 6  SP 21  BSP 0.0
+R3 Lika Mosh                finish 7  SP 15  BSP 0.0
+R3 A Blue Star              finish 8  SP 21  BSP 0.0
+R3 Stella Cantante          finish 9  SP 6  BSP 0.0
+R4 Dama Royale              finish 1  SP 1.7  BSP 0.0
+R4 Knight Wink              finish 2  SP 9  BSP 0.0
+R4 Fantasy Reel             finish 3  SP 6  BSP 0.0
+R4 Haunted Kynexion         finish 4  SP 18  BSP 0.0
+R4 Captivating Storm        finish 5  SP 4  BSP 0.0
+R5 Elite Pete               finish 1  SP 3.3  BSP 0.0
+R5 Persuasive Star          finish 2  SP 10  BSP 0.0
+R5 Sierra Sun               finish 3  SP 10  BSP 0.0
+R5 Mexican Fiddler          finish 4  SP 3.6  BSP 0.0
+R5 Enough War               finish 5  SP 17  BSP 0.0
+R5 Desert Boots             finish 6  SP 2.6  BSP 0.0
+R6 Lottaroc                 finish 1  SP 6  BSP 0.0
+R6 Royal Summer             finish 2  SP 21  BSP 0.0
+R6 Wilma Wombat             finish 3  SP 3.3  BSP 0.0
+R6 Miss Himalaya            finish 4  SP 2.7  BSP 0.0
+R6 Aria Electra             finish 5  SP 14  BSP 0.0
+R6 Epicus                   finish 6  SP 4  BSP 0.0
+R6 Iconique                 finish 7  SP 14  BSP 0.0
