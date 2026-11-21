@@ -1,0 +1,112 @@
+1|7|Rockin' Dee Fox|False|False
+1|4|Charlie Messy Hair|False|False
+1|1|Aki|False|False
+1|2|Alltogethernow|False|False
+1|13|Up For A Flag|True|False
+1|8|Vadar|False|False
+1|14|Iskadeel|True|False
+1|16|Studio Artist|True|False
+1|9|Aitana|False|False
+1|10|Helichrysum|False|False
+1|6|Paramount War|False|False
+1|15|Imminent Touch|True|False
+1|3|An Poitin Still|False|False
+1|5|I'mnodrummerboy|False|False
+1|11|Ideas Galore|False|False
+1|12|The Moops|False|False
+2|8|Warrandyte Road|False|False
+2|9|Circa|False|False
+2|11|Dukey|False|False
+2|3|Devine Grunt|False|False
+2|7|Reel Hot|False|False
+2|10|Reel Blessed|False|False
+2|4|Limosa|False|False
+2|5|Sanika|False|False
+2|6|Meritage|False|False
+2|1|Churchill Lane|False|False
+2|2|Ned Kelly|False|False
+3|9|Sabrina|False|False
+3|4|Lunetta|False|False
+3|11|Swiss Impact|False|False
+3|3|Indigo Smile|False|False
+3|2|Bourne Legacy|False|False
+3|7|Chestnut Teal|False|False
+3|1|Boridi|False|False
+3|8|On A Journey|False|False
+3|6|Russian Moonlite|False|False
+3|10|Spellbinding|False|False
+3|12|Temple Of Venus|False|False
+3|5|Meritorious|False|False
+4|9|Wavendon|False|False
+4|5|Malbec|False|False
+4|2|Dream For Free|False|False
+4|12|Red Rabbit|False|False
+4|4|Full Of Knowledge|False|False
+4|11|Josie Kate|False|False
+4|7|Russian Into It|False|False
+4|3|Enniscrone|False|False
+4|10|Isabellas|False|False
+4|1|Billy Be Good|False|False
+4|6|Pare Brise|False|False
+4|8|Sammie Ellen Boy|False|False
+5|6|Graceful Mist|False|False
+5|3|Xiguous Equus|False|False
+5|12|Victory Blues|False|False
+5|2|Satellite Chester|False|False
+5|11|The Secret|False|False
+5|1|Dramatic Dream|False|False
+5|7|Hellica|False|False
+5|8|Hilily Hilily Hilo|False|False
+5|9|Incoherent|False|False
+5|4|Zercardy|False|False
+5|10|Peace Seeker|False|False
+5|5|The Pallet Man|False|False
+5|14|La Dupeur|False|False
+5|13|Bella Blaze|False|False
+6|2|Cawdor|False|False
+6|1|Royal Infantry|False|False
+6|5|Manchego|False|False
+6|3|French Navy|False|False
+6|10|Impending Swan|False|False
+6|11|Triomphe|False|False
+6|6|Back Up Barbie|False|False
+6|8|Fenestella|False|False
+6|7|Belgian Chocolate|False|False
+6|9|Queen Of The Surf|False|False
+6|4|Extreme Turbo|False|False
+7|17|Drink Then Kiss|True|False
+7|12|Real Alliance|False|False
+7|13|Hidden Witness|False|False
+7|4|Great Prosperity|False|False
+7|18|Serin|True|False
+7|5|Lika Wreckin' Ball|False|False
+7|15|Our Paramour|True|False
+7|7|Celestial Option|False|False
+7|11|Littlebitcheeky|False|False
+7|6|Ballistic Romeo|False|False
+7|14|Hellish Lee|False|False
+7|1|Tempt The Gods|False|False
+7|2|French Reign|False|False
+7|8|Prince Iadora|False|False
+7|9|Plucky Enuff|False|False
+7|3|Caledonian Summer|False|False
+7|10|Shades Of Stardom|False|False
+7|16|Backflips|True|False
+8|16|Raging Monkey|True|False
+8|18|Ask For More|True|False
+8|17|Padstow Polly|True|False
+8|13|Spinhof|False|False
+8|1|Helluva Barty|False|False
+8|11|Bridgeitall|False|False
+8|3|I'm Da Boss|False|False
+8|7|Girls Night|False|False
+8|2|Just Remember It|False|False
+8|15|Sweet City Dancer|True|False
+8|8|Master Jack|False|False
+8|14|Noubentekh|False|False
+8|12|Heidi Dancer|False|False
+8|9|Real Heir|False|False
+8|4|Harry De Lad|False|False
+8|10|Maya's Ace|False|False
+8|5|Invisible Caravan|False|False
+8|6|Positive Image|False|False
