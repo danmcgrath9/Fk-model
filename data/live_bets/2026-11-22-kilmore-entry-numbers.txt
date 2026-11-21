@@ -4,51 +4,52 @@
 1|2|Somethingintheair|False|False
 1|9|Sarazain|False|False
 1|1|Dimachaerus|False|False
-1|8|Katiya|False|False
+1|8|Katiya|False|True
 1|4|Hammer Head|False|False
 1|5|Our Brud|False|False
 1|6|Terracotta Warrior|False|False
 1|11|Vanara Princess|False|False
 2|2|Turquoise Parrot|False|False
 2|11|Sloane Raider|True|False
-2|7|Dextrose|False|False
+2|7|Dextrose|False|True
 2|8|I Believe I Belong|False|False
 2|1|Diamond Virtue|False|False
 2|5|Love The Farmer|False|False
 2|3|Ali Spinks|False|False
 2|9|Assisi|False|False
 2|10|Lake Moraine|False|False
-2|4|Boutin|False|False
-2|6|Vivid Legend|False|False
+2|4|Boutin|False|True
+2|6|Vivid Legend|False|True
 3|3|Hellofa Gamble|False|False
 3|10|Atomic Blitz|False|False
 3|1|Bon Over|False|False
 3|4|Love Dad|False|False
 3|11|Toy Maker|False|False
-3|12|Storm Bella|False|False
+3|2|Full Of Knowledge|False|True
+3|12|Storm Bella|False|True
 3|8|Pinamilloy|False|False
 3|6|Flyaway|False|False
-3|7|Hells Gates|False|False
+3|7|Hells Gates|False|True
 3|5|Aston|False|False
 3|9|Weeping Wonder|False|False
 4|1|Long Island Oyster|False|False
-4|2|Lunetta|False|False
+4|2|Lunetta|False|True
 4|6|Heat Map|False|False
-4|11|Swiss Impact|False|False
+4|11|Swiss Impact|False|True
 4|5|Vellure|False|False
 4|4|Truant|False|False
 4|9|On A Profit|False|False
 4|8|On A Journey|False|False
 4|10|Spellbinding|False|False
-4|7|Lady Lola|False|False
+4|7|Lady Lola|False|True
 4|3|Meritorious|False|False
 5|11|Golden Age|False|False
-5|4|Shaime|False|False
+5|4|Shaime|False|True
 5|3|Fieldelo|False|False
 5|2|Frosted In Time|False|False
 5|1|Delicate Lady|False|False
 5|8|Sugar Schnapps|False|False
-5|6|Mystic Reign|False|False
+5|6|Mystic Reign|False|True
 5|10|Please Me Do|False|False
 5|7|Nordic Strike|False|False
 5|5|Yukaina|False|False
@@ -61,21 +62,21 @@
 6|9|Shipstern Bluff|False|False
 6|2|Silver Bullet|False|False
 6|8|Meleys|False|False
-6|6|Discover Lupino|False|False
+6|6|Discover Lupino|False|True
 6|3|Lathlain|False|False
 6|5|Sunlit Serenade|False|False
-6|4|Vim Vitae|False|False
-6|13|Obambulate|True|False
+6|4|Vim Vitae|False|True
+6|13|Obambulate|True|True
 7|12|Phoenix Flyer|False|False
 7|6|Savvie Blanc|False|False
-7|7|Star Blazer|False|False
+7|7|Star Blazer|False|True
 7|3|Flag Flyer|False|False
-7|13|Tishman|True|False
-7|4|Razzo Rosso|False|False
+7|13|Tishman|True|True
+7|4|Razzo Rosso|False|True
 7|8|Revolver|False|False
 7|2|Bold Strike|False|False
 7|11|Just Dance|False|False
-7|10|Hurco|False|False
+7|10|Hurco|False|True
 7|1|Kurakka|False|False
 7|9|Catch The Moon|False|False
 7|5|Royal Emblem|False|False
@@ -84,6 +85,7 @@
 8|5|Al Duca|False|False
 8|9|Goldenstatewarrior|False|False
 8|7|Makdane|False|False
+8|8|The Pendragon|False|True
 8|10|Jenni's Meadow|False|False
 8|16|Chase Your Dreams|True|False
 8|11|Military Academy|False|False
@@ -93,11 +95,12 @@
 8|4|Too Darn Discreet|False|False
 8|15|Saganti|True|False
 8|12|Single Choice|False|False
+8|13|Roulette King|True|True
 9|10|Diamanda|False|False
 9|3|Confrontational|False|False
 9|6|Macy Moon|False|False
 9|2|Seeyou Raider|False|False
-9|14|Late Harvest|False|False
+9|14|Late Harvest|False|True
 9|8|Bit Of Shoosh|False|False
 9|11|Jenni You Think|False|False
 9|13|Mahmudah|False|False

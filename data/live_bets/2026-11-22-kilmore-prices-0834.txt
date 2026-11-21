@@ -1,0 +1,110 @@
+# Kilmore Sun 22 Nov, Soft (15mm+ rain), final fields; market open in R1,2,3,4,5,6,7,8,9; PROVISIONAL: 2 runners without a rider
+1, Style Guide, 13.00, 13.00, fk_open 9.00
+1, Bologna Baby, 151.00, 151.00, fk_open 101.00
+1, Welkin Star, 16.00, 16.00, fk_open 9.00
+1, Somethingintheair, 2.45, 2.45, fk_open 1.70
+1, Sarazain, 151.00, 151.00, fk_open 101.00
+1, Dimachaerus, 27.00, 27.00, fk_open 17.00
+1, Katiya, 101.00, 101.00, fk_open 51.00
+1, Hammer Head, 15.00, 15.00, fk_open 11.00
+1, Our Brud, 23.00, 23.00, fk_open 17.00
+1, Terracotta Warrior, 2.40, 2.40, fk_open 6.00
+1, Vanara Princess, 16.00, 16.00, fk_open 11.00
+2, Turquoise Parrot, 151.00, 151.00, fk_open 101.00
+2, Sloane Raider, SCR, fk_open 51.00
+2, Dextrose, 12.00, 12.00, fk_open 9.00
+2, I Believe I Belong, 7.50, 7.50, fk_open 5.50
+2, Diamond Virtue, 4.00, 4.00, fk_open 5.50
+2, Love The Farmer, 13.00, 13.00, fk_open 15.00
+2, Ali Spinks, 31.00, 31.00, fk_open 13.00
+2, Assisi, 27.00, 27.00, fk_open 15.00
+2, Lake Moraine, 5.50, 5.50, fk_open 7.50
+2, Boutin, 5.50, 5.50, fk_open 7.50
+2, Vivid Legend, 3.70, 3.70, fk_open 2.70
+3, Hellofa Gamble, 151.00, 151.00, fk_open 101.00
+3, Atomic Blitz, 151.00, 151.00, fk_open 101.00
+3, Bon Over, 51.00, 51.00, fk_open 26.00
+3, Love Dad, 151.00, 151.00, fk_open 101.00
+3, Toy Maker, 41.00, 41.00, fk_open 26.00
+3, Storm Bella, 20.00, 20.00, fk_open 26.00
+3, Pinamilloy, 5.00, 5.00, fk_open 5.50
+3, Flyaway, 3.20, 3.20, fk_open 3.90
+3, Hells Gates, 4.40, 4.40, fk_open 4.40
+3, Aston, 3.10, 3.10, fk_open 2.60
+3, Weeping Wonder, 11.00, 11.00, fk_open 7.50
+4, Long Island Oyster, 9.50, 9.50, fk_open 7.50
+4, Lunetta, 5.00, 5.00, fk_open 3.90
+4, Heat Map, 4.20, 4.20, fk_open 9.00
+4, Swiss Impact, 8.00, 8.00, fk_open 5.50
+4, Vellure, 10.00, 10.00, fk_open 9.00
+4, Truant, 8.50, 8.50, fk_open 11.00
+4, On A Profit, 10.00, 10.00, fk_open 7.50
+4, On A Journey, 5.50, 5.50, fk_open 7.50
+4, Spellbinding, 67.00, 67.00, fk_open 26.00
+4, Lady Lola, 27.00, 27.00, fk_open 17.00
+4, Meritorious, 27.00, 27.00, fk_open 15.00
+5, Golden Age, 151.00, 151.00, fk_open 101.00
+5, Shaime, 31.00, 31.00, fk_open 16.00
+5, Fieldelo, 2.50, 2.50, fk_open 3.80
+5, Frosted In Time, 4.80, 4.80, fk_open 4.40
+5, Delicate Lady, 11.00, 11.00, fk_open 7.00
+5, Sugar Schnapps, 10.00, 10.00, fk_open 7.00
+5, Mystic Reign, 31.00, 31.00, fk_open 16.00
+5, Please Me Do, 31.00, 31.00, fk_open 16.00
+5, Nordic Strike, 8.50, 8.50, fk_open 8.50
+5, Yukaina, 7.00, 7.00, fk_open 7.00
+5, Crank, 15.00, 15.00, fk_open 10.00
+6, First Tosen, SCR, fk_open 101.00
+6, The Shaper, SCR, fk_open 6.00
+6, Gunado, 17.00, 17.00, fk_open 17.00
+6, Ain't Tellin, 126.00, 126.00, fk_open 101.00
+6, Galant Knight, 7.00, 7.00, fk_open 7.00
+6, Shipstern Bluff, 18.00, 18.00, fk_open 13.00
+6, Silver Bullet, 5.50, 5.50, fk_open 8.50
+6, Meleys, 6.00, 6.00, fk_open 3.90
+6, Discover Lupino, 7.00, 7.00, fk_open 7.00
+6, Lathlain, 8.00, 8.00, fk_open 13.00
+6, Sunlit Serenade, 12.00, 12.00, fk_open 11.00
+6, Vim Vitae, 3.30, 3.30, fk_open 2.90
+6, Obambulate, SCR, fk_open 26.00
+7, Phoenix Flyer, 201.00, 201.00, fk_open 101.00
+7, Savvie Blanc, 13.00, 13.00, fk_open 10.00
+7, Star Blazer, 91.00, 91.00, fk_open 26.00
+7, Flag Flyer, 15.00, 15.00, fk_open 8.50
+7, Tishman, SCR, fk_open 4.00
+7, Razzo Rosso, 15.00, 15.00, fk_open 7.00
+7, Revolver, 6.50, 6.50, fk_open 7.00
+7, Bold Strike, 3.90, 3.90, fk_open 4.40
+7, Just Dance, 41.00, 41.00, fk_open 26.00
+7, Hurco, 23.00, 23.00, fk_open 16.00
+7, Kurakka, 5.50, 5.50, fk_open 3.80
+7, Catch The Moon, 4.40, 4.40, fk_open 8.50
+7, Royal Emblem, 8.50, 8.50, fk_open 16.00
+8, Pounding, 12.00, 12.00, fk_open 7.50
+8, Virtuous Circle, SCR, fk_open 17.00
+8, Al Duca, 9.00, 9.00, fk_open 7.50
+8, Goldenstatewarrior, 34.00, 34.00, fk_open 34.00
+8, Makdane, 11.00, 11.00, fk_open 17.00
+8, Jenni's Meadow, 11.00, 11.00, fk_open 13.00
+8, Chase Your Dreams, SCR, fk_open 51.00
+8, Military Academy, 7.50, 7.50, fk_open 17.00
+8, Sabaj, 3.10, 3.10, fk_open 3.50
+8, Augustus, 23.00, 23.00, fk_open 17.00
+8, Craig, 41.00, 41.00, fk_open 34.00
+8, Too Darn Discreet, 5.00, 5.00, fk_open 4.60
+8, Saganti, SCR, fk_open 51.00
+8, Single Choice, 18.00, 18.00, fk_open 9.00
+9, Diamanda, 27.00, 27.00, fk_open 26.00
+9, Confrontational, 67.00, 67.00, fk_open 16.00
+9, Macy Moon, 51.00, 51.00, fk_open 34.00
+9, Seeyou Raider, 11.00, 11.00, fk_open 12.00
+9, Late Harvest, 18.00, 18.00, fk_open 51.00
+9, Bit Of Shoosh, 16.00, 16.00, fk_open 10.00
+9, Jenni You Think, 2.70, 2.70, fk_open 3.80
+9, Mahmudah, 7.50, 7.50, fk_open 14.00
+9, Blazing Sword, 20.00, 20.00, fk_open 8.50
+9, Il Cielo, 35.00, 35.00, fk_open 16.00
+9, Mike's Hope, 7.00, 7.00, fk_open 8.50
+9, Dealer Sing, 19.00, 19.00, fk_open 14.00
+9, Couldthisbetheone, 13.00, 13.00, fk_open 8.50
+9, Till Queen, 8.50, 8.50, fk_open 5.50

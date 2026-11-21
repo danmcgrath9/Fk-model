@@ -1,0 +1,111 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-22,Kilmore,1,,2,Somethingintheair,WIN,2.95,3.99,4.27,213,1 of 2,4.27u,2.48,opens under $4: edge 1.15
+2026-11-22,Kilmore,1,,2,Somethingintheair,WIN,3.69,3.99,1.01,50,2 of 2,5.28u,2.48,opens under $4: edge 1.15
+2026-11-22,Kilmore,1,,2,Somethingintheair,WIN,4.00,14.86,4.62,231,1 of 3,4.62u,2.48,
+2026-11-22,Kilmore,1,,2,Somethingintheair,WIN,4.00,14.86,0.86,43,2 of 3,5.48u,2.48,
+2026-11-22,Kilmore,1,,2,Somethingintheair,WIN,5.45,14.86,4.52,226,3 of 3,10.00u,2.48,opens $5.45+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,1,,6,Terracotta Warrior,WIN,3.72,3.99,3.14,157,1 of 1,3.14u,3.09,opens under $4: edge 1.15
+2026-11-22,Kilmore,1,,6,Terracotta Warrior,WIN,4.00,18.54,3.42,171,1 of 3,3.42u,3.09,
+2026-11-22,Kilmore,1,,6,Terracotta Warrior,WIN,4.91,18.54,0.70,35,2 of 3,4.12u,3.09,
+2026-11-22,Kilmore,1,,6,Terracotta Warrior,WIN,6.80,18.54,4.12,206,3 of 3,8.24u,3.09,opens $6.80+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,1,,11,Vanara Princess,WIN,18.84,82.36,0.59,30,1 of 2,0.59u,13.73,
+2026-11-22,Kilmore,1,,11,Vanara Princess,WIN,23.55,82.36,0.15,8,2 of 2,0.74u,13.73,
+2026-11-22,Kilmore,2,,1,Diamond Virtue,WIN,3.15,3.99,3.92,196,1 of 2,3.92u,2.63,opens under $4: edge 1.15
+2026-11-22,Kilmore,2,,1,Diamond Virtue,WIN,3.94,3.99,0.94,47,2 of 2,4.86u,2.63,opens under $4: edge 1.15
+2026-11-22,Kilmore,2,,1,Diamond Virtue,WIN,4.00,15.80,4.24,212,1 of 3,4.24u,2.63,
+2026-11-22,Kilmore,2,,1,Diamond Virtue,WIN,4.15,15.80,0.81,40,2 of 3,5.05u,2.63,
+2026-11-22,Kilmore,2,,1,Diamond Virtue,WIN,5.80,15.80,4.95,248,3 of 3,10.00u,2.63,opens $5.80+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,3,,5,Aston,WIN,3.93,3.99,2.92,146,1 of 1,2.92u,3.26,opens under $4: edge 1.15
+2026-11-22,Kilmore,3,,5,Aston,WIN,4.15,19.54,3.19,160,1 of 3,3.19u,3.26,
+2026-11-22,Kilmore,3,,5,Aston,WIN,5.19,19.54,0.66,33,2 of 3,3.85u,3.26,
+2026-11-22,Kilmore,3,,5,Aston,WIN,7.17,19.54,3.85,192,3 of 3,7.70u,3.26,opens $7.17+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,3,,6,Flyaway,WIN,3.96,3.99,2.90,145,1 of 1,2.90u,3.28,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-22,Kilmore,3,,6,Flyaway,WIN,4.18,15.01,3.16,158,1 of 3,3.16u,3.28,EARLY: $15 or shorter only
+2026-11-22,Kilmore,3,,6,Flyaway,WIN,5.22,15.01,0.66,33,2 of 3,3.82u,3.28,EARLY: $15 or shorter only
+2026-11-22,Kilmore,3,,6,Flyaway,WIN,7.22,15.01,3.82,191,3 of 3,7.64u,3.28,EARLY: $15 or shorter only; opens $7.22+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,3,,8,Pinamilloy,WIN,6.85,15.01,1.77,88,1 of 3,1.77u,5.25,EARLY: $15 or shorter only
+2026-11-22,Kilmore,3,,8,Pinamilloy,WIN,8.56,15.01,0.40,20,2 of 3,2.17u,5.25,EARLY: $15 or shorter only
+2026-11-22,Kilmore,3,,8,Pinamilloy,WIN,11.55,15.01,2.17,108,3 of 3,4.34u,5.25,EARLY: $15 or shorter only; opens $11.55+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,3,,9,Weeping Wonder,WIN,7.84,15.01,1.52,76,1 of 3,1.52u,5.96,EARLY: $15 or shorter only
+2026-11-22,Kilmore,3,,9,Weeping Wonder,WIN,9.80,15.01,0.35,18,2 of 3,1.87u,5.96,EARLY: $15 or shorter only
+2026-11-22,Kilmore,3,,9,Weeping Wonder,WIN,13.11,15.01,1.87,94,3 of 3,3.74u,5.96,EARLY: $15 or shorter only; opens $13.11+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,4,,6,Heat Map,WIN,4.90,22.87,2.61,130,1 of 3,2.61u,3.81,
+2026-11-22,Kilmore,4,,6,Heat Map,WIN,6.12,22.87,0.56,28,2 of 3,3.17u,3.81,
+2026-11-22,Kilmore,4,,6,Heat Map,WIN,8.39,22.87,3.17,158,3 of 3,6.34u,3.81,opens $8.39+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,4,,1,Long Island Oyster,WIN,7.68,15.01,1.55,78,1 of 3,1.55u,5.85,EARLY: $15 or shorter only
+2026-11-22,Kilmore,4,,1,Long Island Oyster,WIN,9.60,15.01,0.36,18,2 of 3,1.91u,5.85,EARLY: $15 or shorter only
+2026-11-22,Kilmore,4,,1,Long Island Oyster,WIN,12.87,15.01,1.91,96,3 of 3,3.82u,5.85,EARLY: $15 or shorter only; opens $12.87+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,4,,8,On A Journey,WIN,9.22,41.73,1.27,64,1 of 3,1.27u,6.96,
+2026-11-22,Kilmore,4,,8,On A Journey,WIN,11.53,41.73,0.30,15,2 of 3,1.57u,6.96,
+2026-11-22,Kilmore,4,,8,On A Journey,WIN,15.31,41.73,1.57,78,3 of 3,3.14u,6.96,opens $15.31+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,4,,4,Truant,WIN,20.63,89.78,0.54,27,1 of 2,0.54u,14.96,
+2026-11-22,Kilmore,4,,4,Truant,WIN,25.79,89.78,0.13,6,2 of 2,0.67u,14.96,
+2026-11-22,Kilmore,4,,5,Vellure,WIN,7.41,15.01,1.62,81,1 of 3,1.62u,5.65,EARLY: $15 or shorter only
+2026-11-22,Kilmore,4,,5,Vellure,WIN,9.26,15.01,0.37,18,2 of 3,1.99u,5.65,EARLY: $15 or shorter only
+2026-11-22,Kilmore,4,,5,Vellure,WIN,12.43,15.01,1.99,100,3 of 3,3.98u,5.65,EARLY: $15 or shorter only; opens $12.43+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,5,,9,Crank,WIN,12.42,55.39,0.92,46,1 of 2,0.92u,9.23,
+2026-11-22,Kilmore,5,,9,Crank,WIN,15.53,55.39,0.22,11,2 of 2,1.14u,9.23,
+2026-11-22,Kilmore,5,,1,Delicate Lady,WIN,12.52,55.82,0.91,46,1 of 2,0.91u,9.30,
+2026-11-22,Kilmore,5,,1,Delicate Lady,WIN,15.65,55.82,0.22,11,2 of 2,1.13u,9.30,
+2026-11-22,Kilmore,5,,3,Fieldelo,WIN,5.45,15.01,2.31,116,1 of 3,2.31u,4.22,EARLY: $15 or shorter only
+2026-11-22,Kilmore,5,,3,Fieldelo,WIN,6.81,15.01,0.50,25,2 of 3,2.81u,4.22,EARLY: $15 or shorter only
+2026-11-22,Kilmore,5,,3,Fieldelo,WIN,9.28,15.01,2.81,140,3 of 3,5.62u,4.22,EARLY: $15 or shorter only; opens $9.28+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,5,,2,Frosted In Time,WIN,5.12,23.85,2.48,124,1 of 3,2.48u,3.97,
+2026-11-22,Kilmore,5,,2,Frosted In Time,WIN,6.40,23.85,0.53,26,2 of 3,3.01u,3.97,
+2026-11-22,Kilmore,5,,2,Frosted In Time,WIN,8.75,23.85,3.01,150,3 of 3,6.02u,3.97,opens $8.75+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,5,,7,Nordic Strike,WIN,11.16,50.03,1.03,52,1 of 2,1.03u,8.34,
+2026-11-22,Kilmore,5,,7,Nordic Strike,WIN,13.95,50.03,0.25,12,2 of 2,1.28u,8.34,
+2026-11-22,Kilmore,5,,5,Yukaina,WIN,15.75,69.43,0.72,36,1 of 2,0.72u,11.57,
+2026-11-22,Kilmore,5,,5,Yukaina,WIN,19.69,69.43,0.17,8,2 of 2,0.89u,11.57,
+2026-11-22,Kilmore,6,,1,Galant Knight,WIN,11.12,49.88,1.04,52,1 of 2,1.04u,8.31,
+2026-11-22,Kilmore,6,,1,Galant Knight,WIN,13.90,49.88,0.24,12,2 of 2,1.28u,8.31,
+2026-11-22,Kilmore,6,,7,Gunado,WIN,13.73,60.96,0.83,42,1 of 2,0.83u,10.16,
+2026-11-22,Kilmore,6,,7,Gunado,WIN,17.16,60.96,0.20,10,2 of 2,1.03u,10.16,
+2026-11-22,Kilmore,6,,3,Lathlain,WIN,7.85,35.83,1.52,76,1 of 3,1.52u,5.97,
+2026-11-22,Kilmore,6,,3,Lathlain,WIN,9.81,35.83,0.35,18,2 of 3,1.87u,5.97,
+2026-11-22,Kilmore,6,,3,Lathlain,WIN,13.14,35.83,1.87,94,3 of 3,3.74u,5.97,opens $13.14+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,6,,8,Meleys,WIN,7.41,33.91,1.62,81,1 of 3,1.62u,5.65,
+2026-11-22,Kilmore,6,,8,Meleys,WIN,9.26,33.91,0.37,18,2 of 3,1.99u,5.65,
+2026-11-22,Kilmore,6,,8,Meleys,WIN,12.44,33.91,1.99,100,3 of 3,3.98u,5.65,opens $12.44+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,6,,2,Silver Bullet,WIN,5.89,27.23,2.11,106,1 of 3,2.11u,4.54,
+2026-11-22,Kilmore,6,,2,Silver Bullet,WIN,7.36,27.23,0.46,23,2 of 3,2.57u,4.54,
+2026-11-22,Kilmore,6,,2,Silver Bullet,WIN,9.99,27.23,2.57,128,3 of 3,5.14u,4.54,opens $9.99+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,6,,5,Sunlit Serenade,WIN,9.80,44.21,1.19,60,1 of 3,1.19u,7.37,
+2026-11-22,Kilmore,6,,5,Sunlit Serenade,WIN,12.25,44.21,0.28,14,2 of 3,1.47u,7.37,
+2026-11-22,Kilmore,6,,5,Sunlit Serenade,WIN,16.21,44.21,1.47,74,3 of 3,2.94u,7.37,opens $16.21+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,7,,2,Bold Strike,WIN,4.88,22.79,2.62,131,1 of 3,2.62u,3.80,
+2026-11-22,Kilmore,7,,2,Bold Strike,WIN,6.10,22.79,0.56,28,2 of 3,3.18u,3.80,
+2026-11-22,Kilmore,7,,2,Bold Strike,WIN,8.36,22.79,3.18,159,3 of 3,6.36u,3.80,opens $8.36+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,7,,9,Catch The Moon,WIN,6.20,28.59,1.99,100,1 of 3,1.99u,4.77,
+2026-11-22,Kilmore,7,,9,Catch The Moon,WIN,7.75,28.59,0.44,22,2 of 3,2.43u,4.77,
+2026-11-22,Kilmore,7,,9,Catch The Moon,WIN,10.49,28.59,2.43,122,3 of 3,4.86u,4.77,opens $10.49+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,7,,1,Kurakka,WIN,12.49,55.70,0.92,46,1 of 2,0.92u,9.28,
+2026-11-22,Kilmore,7,,1,Kurakka,WIN,15.61,55.70,0.22,11,2 of 2,1.14u,9.28,
+2026-11-22,Kilmore,7,,8,Revolver,WIN,11.85,52.97,0.97,48,1 of 2,0.97u,8.83,
+2026-11-22,Kilmore,7,,8,Revolver,WIN,14.81,52.97,0.23,12,2 of 2,1.20u,8.83,
+2026-11-22,Kilmore,7,,5,Royal Emblem,WIN,8.62,15.01,1.37,68,1 of 3,1.37u,6.52,EARLY: $15 or shorter only
+2026-11-22,Kilmore,7,,5,Royal Emblem,WIN,10.77,15.01,0.32,16,2 of 3,1.69u,6.52,EARLY: $15 or shorter only
+2026-11-22,Kilmore,7,,5,Royal Emblem,WIN,14.36,15.01,1.69,84,3 of 3,3.38u,6.52,EARLY: $15 or shorter only; opens $14.36+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,7,,6,Savvie Blanc,WIN,17.23,75.66,0.65,32,1 of 2,0.65u,12.61,
+2026-11-22,Kilmore,7,,6,Savvie Blanc,WIN,21.54,75.66,0.16,8,2 of 2,0.81u,12.61,
+2026-11-22,Kilmore,8,,5,Al Duca,WIN,10.48,47.14,1.11,56,1 of 3,1.11u,7.86,
+2026-11-22,Kilmore,8,,5,Al Duca,WIN,13.10,47.14,0.26,13,2 of 3,1.37u,7.86,
+2026-11-22,Kilmore,8,,5,Al Duca,WIN,17.29,47.14,1.37,68,3 of 3,2.74u,7.86,opens $17.29+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,8,,10,Jenni's Meadow,WIN,9.89,44.60,1.18,59,1 of 3,1.18u,7.43,
+2026-11-22,Kilmore,8,,10,Jenni's Meadow,WIN,12.36,44.60,0.28,14,2 of 3,1.46u,7.43,
+2026-11-22,Kilmore,8,,10,Jenni's Meadow,WIN,16.36,44.60,1.46,73,3 of 3,2.92u,7.43,opens $16.36+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,8,,2,Sabaj,WIN,4.89,22.83,2.62,131,1 of 3,2.62u,3.81,
+2026-11-22,Kilmore,8,,2,Sabaj,WIN,6.11,22.83,0.56,28,2 of 3,3.18u,3.81,
+2026-11-22,Kilmore,8,,2,Sabaj,WIN,8.38,22.83,3.18,159,3 of 3,6.36u,3.81,opens $8.38+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,8,,4,Too Darn Discreet,WIN,7.55,34.50,1.59,80,1 of 3,1.59u,5.75,
+2026-11-22,Kilmore,8,,4,Too Darn Discreet,WIN,9.44,34.50,0.36,18,2 of 3,1.95u,5.75,
+2026-11-22,Kilmore,8,,4,Too Darn Discreet,WIN,12.66,34.50,1.95,98,3 of 3,3.90u,5.75,opens $12.66+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,9,,9,Dealer Sing,WIN,14.86,65.70,0.76,38,1 of 2,0.76u,10.95,
+2026-11-22,Kilmore,9,,9,Dealer Sing,WIN,18.57,65.70,0.19,10,2 of 2,0.95u,10.95,
+2026-11-22,Kilmore,9,,11,Jenni You Think,WIN,3.22,3.99,3.80,190,1 of 1,3.80u,2.69,opens under $4: edge 1.15
+2026-11-22,Kilmore,9,,11,Jenni You Think,WIN,4.00,16.15,4.12,206,1 of 3,4.12u,2.69,
+2026-11-22,Kilmore,9,,11,Jenni You Think,WIN,4.25,16.15,0.79,40,2 of 3,4.91u,2.69,
+2026-11-22,Kilmore,9,,11,Jenni You Think,WIN,5.93,16.15,4.91,246,3 of 3,9.82u,2.69,opens $5.93+ (2.2x ours): stake doubled
+2026-11-22,Kilmore,9,,13,Mahmudah,WIN,15.28,67.46,0.74,37,1 of 2,0.74u,11.24,
+2026-11-22,Kilmore,9,,13,Mahmudah,WIN,19.10,67.46,0.18,9,2 of 2,0.92u,11.24,
+2026-11-22,Kilmore,9,,7,Till Queen,WIN,13.06,15.01,0.48,24,1 of 1,0.48u,9.69,EARLY: $15 or shorter only

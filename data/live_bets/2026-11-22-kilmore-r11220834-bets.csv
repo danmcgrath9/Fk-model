@@ -1,0 +1,10 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,KILM_221126_1,Somethingintheair,top_pick,2.6,2.6,1.7,1.7,,2.29,-0.257,,1.0,no,,
+2,KILM_221126_2,Diamond Virtue,top_pick,2.6,2.6,5.5,5.5,,2.79,0.972,Class drop (rating),1.0,no,,
+3,KILM_221126_3,Aston,top_pick,2.7,2.7,2.6,2.6,,3.07,-0.153,Class drop (rating),1.0,no,,
+4,KILM_221126_4,Heat Map,top_pick,2.7,2.7,9.0,9.0,,4.22,1.131,Already run to today's class; Late 600 beyond the tempo,1.0,no,,
+5,KILM_221126_5,Frosted In Time,top_pick,4.2,4.2,4.4,4.4,,4.11,0.072,,1.0,no,,
+6,KILM_221126_6,Silver Bullet,top_pick,4.2,4.2,8.5,8.5,,5.29,0.606,"Third-up, improving; Class drop (rating); Blinkers first time",1.0,no,,
+7,KILM_221126_7,Bold Strike,top_pick,3.9,3.9,4.4,4.4,,3.78,0.164,,1.0,no,,
+8,KILM_221126_8,Sabaj,top_pick,2.9,2.9,3.5,3.5,,3.98,-0.12,,1.0,no,,
+9,KILM_221126_9,Jenni You Think,top_pick,2.6,2.6,3.8,3.8,,2.86,0.329,,1.0,no,,
