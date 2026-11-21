@@ -10,13 +10,6 @@
    "note": "",
    "bets": [
     {
-     "race": 2,
-     "time": "1:41PM",
-     "horse": "Boridi",
-     "price": "$3.30",
-     "units": "2.56u"
-    },
-    {
      "race": 6,
      "time": "4:01PM",
      "horse": "Trinity's D'oro",
