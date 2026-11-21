@@ -9781,6 +9781,7 @@ published November, so there is no BSP yet.
 | 17 Nov | 44296970713 | 37 | 37 | 23 | 8 | 8 | 4 | 2.91 | 19.73 | +10.94 | 1 | 0 | not kept yet | not kept yet |
 | 18 Nov | 44517107055 | 48 | 48 | 0 (a bug, fixed 20 Nov) | 10 | 10 | 4 | 4.70 | 18.90 | -5.85 | 0 | 0 | 3, 2, +8.50 (+283.3%) | 1, 1, +4.50 (+450.0%) |
 | 19 Nov | 44729935724 | 50 | 50 | 90 over 18 and 19 Nov | 7 | 7 | 3 | 3.00 | 11.47 | -0.75 | 0 | 0 | 1, 1, +10.00 (+1000.0%) | 1, 1, +10.00 (+1000.0%) |
+| 20 Nov | 44900288784 | 47 | 47 | 35 | 7 | 7 | 3 | 3.57 | 17.04 | -4.94 | 0 | 0 | 1, 1, +3.20 (+320.0%) | 0 |
 
 All four 15 Nov bets opened shorter on TAB than GRV's evening price (TAB at 24% to 49% of it) and below the card's own
 blended price, the same pattern as the first nine nights. Two won, at TAB's first price less the deduction: +5.77
@@ -9829,9 +9830,16 @@ that morning and found a second 1.2x bet: a dog on the line moving across it wit
 correction trains only on races with Betfair's starting price for every runner, which arrive about a month late. A
 day's paper bets are the ones the model made at the time.
 
-The card as sent so far, 6 to 19 Nov: 95 bets, 94 settled (one refund), 38 winners against 37.81 expected at the
-prices taken (A/E 1.01), 208.52 units staked, -24.30 units won (-11.7% at the card's units, -4.8% flat), -21.85 at
-the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 4 bets at
-1.1x (3 won, +18.50 units) and 2 at 1.2x (both won, +14.50).
+Seven 20 Nov bets on the card as sent, three won: -4.94 units on 17.04 staked (-17.9% flat), -4.69 at the best first
+price of three. All seven opened on TAB at 13% to 75% of GRV's evening price, and none was still 1.3x the card's
+blended price at TAB's open. The rule at TAB's open priced the day's whole races and, as expected, made no bet. The
+corrected blend took one bet at 1.1x, Opawa Victoria (The Meadows R7). It won at $4.20 against its corrected price
+of $3.72: +3.20 units. It missed 1.2x, which needed $4.43. The morning program scored the same bet live at TAB's
+first price.
+
+The card as sent so far, 6 to 20 Nov: 102 bets, 101 settled (one refund), 41 winners against 41.38 expected at the
+prices taken (A/E 0.99), 225.56 units staked, -29.24 units won (-13.0% at the card's units, -5.7% flat), -26.54 at
+the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 5 bets at
+1.1x (4 won, +21.70 units) and 2 at 1.2x (both won, +14.50), each day as first scored.
 
 Results go here as they come in.
