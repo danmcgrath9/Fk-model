@@ -1,0 +1,45 @@
+{
+ "day": "Saturday",
+ "date": "21 November",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Tatura",
+   "note": "",
+   "bets": [
+    {
+     "race": 2,
+     "time": "1:41PM",
+     "horse": "Boridi",
+     "price": "$7.75",
+     "units": "2.56u",
+     "rated": "$4.56"
+    },
+    {
+     "race": 6,
+     "time": "4:01PM",
+     "horse": "Trinity's D'oro",
+     "price": "$8.50",
+     "units": "1.42u",
+     "rated": "$6.33"
+    },
+    {
+     "race": 6,
+     "time": "4:01PM",
+     "horse": "Too Big",
+     "price": "$23",
+     "units": "0.92u",
+     "rated": "$11.26"
+    },
+    {
+     "race": 8,
+     "time": "5:24PM",
+     "horse": "It's Gnarly",
+     "price": "$12.50",
+     "units": "1.83u",
+     "rated": "$6.08"
+    }
+   ]
+  }
+ ]
+}

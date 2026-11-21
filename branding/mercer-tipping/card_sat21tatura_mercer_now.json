@@ -1,0 +1,43 @@
+{
+ "day": "Saturday",
+ "date": "21 November",
+ "footer": "Win bets.",
+ "brand": true,
+ "prices_as_at": "2026-11-21T12:29",
+ "meetings": [
+  {
+   "name": "Tatura",
+   "note": "",
+   "bets": [
+    {
+     "race": 2,
+     "time": "1:41PM",
+     "horse": "Boridi",
+     "price": "$3.30",
+     "units": "2.56u"
+    },
+    {
+     "race": 6,
+     "time": "4:01PM",
+     "horse": "Trinity's D'oro",
+     "price": "$4.80",
+     "units": "1.42u"
+    },
+    {
+     "race": 6,
+     "time": "4:01PM",
+     "horse": "Too Big",
+     "price": "$12",
+     "units": "0.92u"
+    },
+    {
+     "race": 8,
+     "time": "5:24PM",
+     "horse": "It's Gnarly",
+     "price": "$5.50",
+     "units": "1.83u"
+    }
+   ]
+  }
+ ]
+}
