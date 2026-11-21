@@ -1,0 +1,57 @@
+{
+ "day": "Sunday",
+ "date": "22 November",
+ "footer": "Win bets.",
+ "brand": true,
+ "prices_as_at": "2026-11-22T09:31",
+ "meetings": [
+  {
+   "name": "Kilmore",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "1:00PM",
+     "horse": "Terracotta Warrior",
+     "price": "$2.30",
+     "units": "4.03u"
+    },
+    {
+     "race": 4,
+     "time": "2:35PM",
+     "horse": "Heat Map",
+     "price": "$2.70",
+     "units": "1.42u"
+    },
+    {
+     "race": 6,
+     "time": "3:45PM",
+     "horse": "Lathlain",
+     "price": "$4.60",
+     "units": "0.94u"
+    },
+    {
+     "race": 7,
+     "time": "4:15PM",
+     "horse": "Catch The Moon",
+     "price": "$3.30",
+     "units": "2.22u"
+    },
+    {
+     "race": 8,
+     "time": "4:50PM",
+     "horse": "Jenni's Meadow",
+     "price": "$10",
+     "units": "1.11u"
+    },
+    {
+     "race": 9,
+     "time": "5:28PM",
+     "horse": "Jenni You Think",
+     "price": "$2.60",
+     "units": "3.62u"
+    }
+   ]
+  }
+ ]
+}
