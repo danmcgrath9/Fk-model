@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       dates:
-        description: 'meeting dates YYYY-MM-DD, comma separated (blank = the next three days, Melbourne)'
+        description: 'meeting dates YYYY-MM-DD, comma separated (blank = the next four days, Melbourne)'
         default: ''
       pull:
         description: 'yes = pull the dates first (only races not already stored are paid for); no = read only'
@@ -77,7 +77,7 @@ jobs:
         id: d
         run: |
           D="${{ github.event.inputs.dates }}"
-          [ -n "$D" ] || D="$(for n in 1 2 3; do TZ=Australia/Melbourne date -d "+$n days" +%F; done | paste -sd,)"
+          [ -n "$D" ] || D="$(for n in 1 2 3 4; do TZ=Australia/Melbourne date -d "+$n days" +%F; done | paste -sd,)"
           echo "dates=$D" >> "$GITHUB_OUTPUT"; echo "dates $D" | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Pull
         if: github.event.inputs.pull != 'no'
