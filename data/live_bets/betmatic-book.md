@@ -1366,3 +1366,11 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
   (Heat Map $2.70, Catch The Moon $3.30, Jenni's Meadow $10). No TAB deduction reported.
 - BetMatic: nothing sent (send hold). The 9am bets: none. Old rule: none.
 - Running record: since live (9 Oct) +362.77u (196 bets, 44 won, +$18,138 at $50), unchanged.
+## Correction, Mon 23 Nov: Cranbourne Sat 21 Nov out of the open book (founder: "Yeah take it at record")
+- Cranbourne's sheet of record was written Wed 18 Nov 4:04pm, but Form King's first fluc on every race was 1:06pm to
+  2:17pm that day (TAB's first price at the same times): the market had opened on all ten races before we priced. The
+  database was read-only, so the pricer could not see the opens and kept every race on the sheet. The 8 bets counted at
+  the open (+6.49u, Col Klink's +16.45u win among them) could not have been taken. running_record.py now leaves them
+  out (OPENED_BEFORE_SHEET). Every other meeting since 13 Nov was checked: its sheet was written before its opens.
+- Saturday 21 Nov is now 6 bets, 0 won, -13.02u (-$651); Mon 16 - Sat 21 Nov +46.20u; since live (9 Oct) +356.28u
+  (188 bets, 43 won, +$17,814 at $50). The Saturday entry above stands as written then; this supersedes its totals.

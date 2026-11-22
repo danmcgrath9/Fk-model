@@ -40,6 +40,14 @@ EARLIER_WEEKS = [("Fri 9 - Sun 18 Oct", 49, 9, 49.53, 49.15), ("Mon 19 - Sun 25 
                  ("Mon 26 Oct - Sun 1 Nov", 41, 6, 127.84, 32.95)]
 
 
+# Races whose market had ALREADY OPENED when the sheet of record was written, so no order on them could have been taken
+# at the open, yet the sheet kept them. Out of the open book (founder, 23 Nov 2026: "Yeah take it at record").
+# Cranbourne Sat 21 Nov: the sheet was written Wed 18 Nov 4:04pm; Form King's first fluc on every race was 1:06pm to
+# 2:17pm that day (TAB's first price at the same times). The database was read-only, so the pricer could not see the
+# opens and left all ten races on the sheet; 8 bets, +6.49u, were counted at prices nobody could have had.
+OPENED_BEFORE_SHEET = {"2026-11-21-cranbourne": set(range(1, 11))}
+
+
 def sheet_for(P, folder=None):
     return os.path.join(folder or L, SHEET_OF_RECORD.get(P, f"{P}-betmatic-preopen.csv"))
 
@@ -83,6 +91,8 @@ def open_book():
         by = collections.OrderedDict()
         for o in csv.DictReader(open(sheet)):
             k = (int(o["race"]), norm(o["horse"]))
+            if k[0] in OPENED_BEFORE_SHEET.get(P, ()):
+                continue
             op, scr = px.get(k, (None, True))
             if scr or op is None or op < float(o["min_odds"]) or (o.get("max_odds") and op > float(o["max_odds"])):
                 continue

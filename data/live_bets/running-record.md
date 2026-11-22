@@ -6,15 +6,15 @@ Rebuilt by research/form_gbm/running_record.py after every settle (founder, 16 N
 
 | Period | Bets | Won | Staked | P/L | ROI | At $50 | Beat BSP | Price / BSP |
 |---|---|---|---|---|---|---|---|---|
-| All settled (2026-11-02 on) | 84 | 19 | 189.40u | +145.10u | +77% | $+7,255 | 57 of 82 | 1.30x |
-| Since 12 Nov (full units) | 49 | 7 | 113.03u | +35.10u | +31% | $+1,755 | 37 of 48 | 1.33x |
-| Last 7 race days | 35 | 5 | 81.37u | +37.42u | +46% | $+1,871 | 29 of 34 | 1.36x |
+| All settled (2026-11-02 on) | 76 | 18 | 176.15u | +138.61u | +79% | $+6,930 | 50 of 74 | 1.28x |
+| Since 12 Nov (full units) | 41 | 6 | 99.78u | +28.61u | +29% | $+1,430 | 30 of 40 | 1.30x |
+| Last 7 race days | 27 | 4 | 68.12u | +30.93u | +45% | $+1,546 | 22 of 26 | 1.33x |
 
 Beat BSP and Price / BSP: the price taken (the open after TAB's reported deduction) against Betfair SP, the ratio weighted by stake.
 
 | Day | Bets | Won | Staked | P/L | ROI | At $50 | Beat BSP | Price / BSP |
 |---|---|---|---|---|---|---|---|---|
-| 2026-11-21 | 14 | 1 | 26.27u | -6.53u | -25% | $-326 | 13 of 14 | 1.52x |
+| 2026-11-21 | 6 | 0 | 13.02u | -13.02u | -100% | $-651 | 6 of 6 | 1.46x |
 | 2026-11-20 | 3 | 1 | 7.58u | +7.01u | +93% | $+351 | 3 of 3 | 1.50x |
 | 2026-11-19 | 2 | 2 | 6.14u | +64.40u | +1049% | $+3,220 | 1 of 2 | 0.94x |
 | 2026-11-18 | 1 | 1 | 2.53u | +11.38u | +450% | $+569 | 1 of 1 | 1.31x |
@@ -45,10 +45,10 @@ The weeks to Sun 1 Nov are the book's own settled entries (betmatic-book.md, 3 N
 | Mon 26 Oct - Sun 1 Nov (from the book) | 41 | 6 | 127.84u | +32.95u | +26% | $+1,648 |
 | Mon 2 Nov - Sun 8 Nov | 30 | 11 | 66.85u | +108.66u | +163% | $+5,433 |
 | Mon 9 Nov - Sun 15 Nov | 24 | 3 | 56.45u | -16.25u | -29% | $-812 |
-| Mon 16 Nov - Sat 21 Nov (week not finished) | 30 | 5 | 66.10u | +52.69u | +80% | $+2,634 |
-| **Since Fri 9 Oct** | **196** | **44** | **428.23u** | **+362.77u** | **+85%** | **$+18,138** |
+| Mon 16 Nov - Sat 21 Nov (week not finished) | 22 | 4 | 52.85u | +46.20u | +87% | $+2,310 |
+| **Since Fri 9 Oct** | **188** | **43** | **414.98u** | **+356.28u** | **+86%** | **$+17,814** |
 
-Running total by day: 11-02 +29.5u, 11-03 +66.8u, 11-04 +91.9u, 11-05 +82.8u, 11-06 +88.4u, 11-07 +94.1u, 11-08 +108.7u, 11-09 +107.2u, 11-11 +110.0u, 11-12 +117.3u, 11-13 +119.0u, 11-14 +107.7u, 11-15 +92.4u, 11-16 +81.3u, 11-17 +68.8u, 11-18 +80.2u, 11-19 +144.6u, 11-20 +151.6u, 11-21 +145.1u
+Running total by day: 11-02 +29.5u, 11-03 +66.8u, 11-04 +91.9u, 11-05 +82.8u, 11-06 +88.4u, 11-07 +94.1u, 11-08 +108.7u, 11-09 +107.2u, 11-11 +110.0u, 11-12 +117.3u, 11-13 +119.0u, 11-14 +107.7u, 11-15 +92.4u, 11-16 +81.3u, 11-17 +68.8u, 11-18 +80.2u, 11-19 +144.6u, 11-20 +151.6u, 11-21 +138.6u
 
 | Date | Meeting | Race | Horse | Units | Open | TAB deduction | Paid at | Result | P/L |
 |---|---|---|---|---|---|---|---|---|---|
@@ -59,14 +59,6 @@ Running total by day: 11-02 +29.5u, 11-03 +66.8u, 11-04 +91.9u, 11-05 +82.8u, 11
 | 2026-11-21 | penshurst | R7 | Dartboard | 1.20u | $12 | - | $12.00 | void | +0.00u |
 | 2026-11-21 | penshurst | R5 | Fire Type | 4.92u | $2.7 | - | $2.70 | 3rd | -4.92u |
 | 2026-11-21 | penshurst | R2 | Sugar And Sweet | 1.37u | $9 | - | $9.00 | 3rd | -1.37u |
-| 2026-11-21 | cranbourne | R9 | Inkaruna | 0.93u | $15 | - | $15.00 | 3rd | -0.93u |
-| 2026-11-21 | cranbourne | R8 | Astral Flame | 0.82u | $15 | - | $15.00 | 12th | -0.82u |
-| 2026-11-21 | cranbourne | R7 | Celsius Star | 1.37u | $16 | - | $16.00 | 7th | -1.37u |
-| 2026-11-21 | cranbourne | R5 | Tishman | 1.25u | $11 | - | $11.00 | 5th | -1.25u |
-| 2026-11-21 | cranbourne | R5 | Ardashir | 1.89u | $8 | - | $8.00 | 9th | -1.89u |
-| 2026-11-21 | cranbourne | R4 | Nation State | 1.55u | $8 | - | $8.00 | 4th | -1.55u |
-| 2026-11-21 | cranbourne | R4 | Col Klink | 3.29u | $6 | - | $6.00 | WON | +16.45u |
-| 2026-11-21 | cranbourne | R2 | Bajaria | 2.15u | $6 | - | $6.00 | 4th | -2.15u |
 | 2026-11-20 | swan-hill | R7 | Ville De Lumiere | 1.40u | $9 | - | $9.00 | 7th | -1.40u |
 | 2026-11-20 | pakenham | R6 | Sealand | 1.06u | $17 | - | $17.00 | 2nd | -1.06u |
 | 2026-11-20 | pakenham | R1 | Angling Angel | 5.12u | $2.85 | - | $2.85 | WON | +9.47u |
@@ -147,9 +139,9 @@ The price is the open after TAB's reported deduction.
 
 | Period | Bets with a BSP | Price beat BSP | Price / BSP (stake-weighted) | Winners |
 |---|---|---|---|---|
-| All settled | 82 | 57 | 1.30x | 19 won, 16.6 expected at BSP |
-| Since 12 Nov | 48 | 37 | 1.33x | 7 won, 9.4 expected at BSP |
-| Last 7 race days | 34 | 29 | 1.36x | 5 won, 6.3 expected at BSP |
+| All settled | 74 | 50 | 1.28x | 18 won, 15.2 expected at BSP |
+| Since 12 Nov | 40 | 30 | 1.30x | 6 won, 8.0 expected at BSP |
+| Last 7 race days | 26 | 22 | 1.33x | 4 won, 4.9 expected at BSP |
 
 ## The rules (paper, at Betfair SP)
 
