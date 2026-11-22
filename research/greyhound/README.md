@@ -9782,6 +9782,7 @@ published November, so there is no BSP yet.
 | 18 Nov | 44517107055 | 48 | 48 | 0 (a bug, fixed 20 Nov) | 10 | 10 | 4 | 4.70 | 18.90 | -5.85 | 0 | 0 | 3, 2, +8.50 (+283.3%) | 1, 1, +4.50 (+450.0%) |
 | 19 Nov | 44729935724 | 50 | 50 | 90 over 18 and 19 Nov | 7 | 7 | 3 | 3.00 | 11.47 | -0.75 | 0 | 0 | 1, 1, +10.00 (+1000.0%) | 1, 1, +10.00 (+1000.0%) |
 | 20 Nov | 44900288784 | 47 | 47 | 35 | 7 | 7 | 3 | 3.57 | 17.04 | -4.94 | 0 | 0 | 1, 1, +3.20 (+320.0%) | 0 |
+| 21 Nov | 45018519555 | 24 | 24 | 12 | 3 | 3 | 1 | 0.77 | 4.69 | -2.87 | 0 | 0 | 2, 1, +4.00 (+200.0%) | 2, 1, +4.00 (+200.0%) |
 
 All four 15 Nov bets opened shorter on TAB than GRV's evening price (TAB at 24% to 49% of it) and below the card's own
 blended price, the same pattern as the first nine nights. Two won, at TAB's first price less the deduction: +5.77
@@ -9837,9 +9838,21 @@ corrected blend took one bet at 1.1x, Opawa Victoria (The Meadows R7). It won at
 of $3.72: +3.20 units. It missed 1.2x, which needed $4.43. The morning program scored the same bet live at TAB's
 first price.
 
-The card as sent so far, 6 to 20 Nov: 102 bets, 101 settled (one refund), 41 winners against 41.38 expected at the
-prices taken (A/E 0.99), 225.56 units staked, -29.24 units won (-13.0% at the card's units, -5.7% flat), -26.54 at
-the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 5 bets at
-1.1x (4 won, +21.70 units) and 2 at 1.2x (both won, +14.50), each day as first scored.
+Three 21 Nov bets on the card as sent, one won: -2.87 units on 4.69 staked (+60.0% flat), the same at the best
+first price of three. Maximum Ruby (Ballarat R6) won at $4.80; Rachel (Ballarat R10) and Power Squeeze (Sandown Park
+R1) lost. All three opened on TAB at 40% to 58% of GRV's evening price, and none was still 1.3x the card's blended
+price at TAB's open. The rule at TAB's open made no bet, as expected. The corrected blend took the same two bets at
+1.1x and 1.2x: Ruby Ruby (Ballarat R1) lost at $13.00 and Blue Storm (Sandown Park R2) won at $6.00, +4.00 units each.
+**Blue Storm's $6.00 could not have been taken from the card.** TAB opened Sandown on Wednesday 18 Nov, two days
+before the card was made, and the tracker scores every bet at TAB's first price whenever it came. The morning
+program, which since PR 227 places a bet only when TAB's first price came after the card, scored Blue Storm as
+missed and has the corrected blend at -1.00 for the day. Power Squeeze, the card's Sandown bet, also opened on 18 Nov.
+Without Blue Storm the corrected blend's 21 Nov rows are one bet each at -1.00.
+
+The card as sent so far, 6 to 21 Nov: 105 bets, 104 settled (one refund), 42 winners against 42.15 expected at the
+prices taken (A/E 1.00), 230.25 units staked, -32.11 units won (-13.9% at the card's units, -3.8% flat), -29.41 at
+the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 7 bets at
+1.1x (5 won, +25.70 units) and 4 at 1.2x (3 won, +18.50), each day as first scored; Blue Storm's +5.00 at both is in
+those totals and came from a market TAB opened before the card.
 
 Results go here as they come in.
