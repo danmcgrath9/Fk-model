@@ -1356,3 +1356,13 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
   price beat BSP (1.25x). Since 19 Nov: 1 bet, 0 won, -1.20u. Old rule: none.
 - Running record: since live (9 Oct) +362.77u (196 bets, 44 won, +$18,138 at $50); the model +145.10u since 2 Nov
   (84 bets, 19 won), price against Betfair SP 1.30x (57 of 82 beat it).
+## Sunday 22 Nov Kilmore settled (Form King results, Mon 6:30am)
+- Open book (sheet of record at Form King's open): no bets. Every race had opened before Kilmore was priced (Fri 11:24),
+  so the sheet of record holds no orders and the running record does not move.
+- No-Mercer card (Form King's opens, the bets the full order list fills at the open, which could not have been taken):
+  Terracotta Warrior R1 4.03u at $6, 5th; Heat Map R4 1.42u at $9, WON (+11.36u, Betfair SP $2.48); Lathlain R6 0.94u at
+  $13, 3rd; Catch The Moon R7 2.22u at $8.50, WON (+16.65u, BSP $3.15); Jenni's Meadow R8 1.11u at $13, WON (+13.32u, BSP
+  $18.02); Jenni You Think R9 3.62u at $3.80, 2nd. Card +32.74u (+$1,637 at $50). Mercer card at the 9:31am prices +8.92u
+  (Heat Map $2.70, Catch The Moon $3.30, Jenni's Meadow $10). No TAB deduction reported.
+- BetMatic: nothing sent (send hold). The 9am bets: none. Old rule: none.
+- Running record: since live (9 Oct) +362.77u (196 bets, 44 won, +$18,138 at $50), unchanged.
