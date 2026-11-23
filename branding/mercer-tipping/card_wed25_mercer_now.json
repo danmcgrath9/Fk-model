@@ -1,0 +1,64 @@
+{
+ "day": "Wednesday",
+ "date": "25 November",
+ "footer": "Win bets.",
+ "brand": true,
+ "prices_as_at": "2026-11-23T14:49",
+ "meetings": [
+  {
+   "name": "Geelong",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "2:30PM",
+     "horse": "Subscription",
+     "price": "$7.50",
+     "units": "1.29u"
+    },
+    {
+     "race": 3,
+     "time": "3:40PM",
+     "horse": "Perfect Dismount",
+     "price": "$11",
+     "units": "0.63u"
+    },
+    {
+     "race": 4,
+     "time": "4:15PM",
+     "horse": "Gypsy Storm",
+     "price": "$7.50",
+     "units": "2.07u"
+    },
+    {
+     "race": 5,
+     "time": "4:50PM",
+     "horse": "Chocolate Royal",
+     "price": "$6.50",
+     "units": "1.37u"
+    },
+    {
+     "race": 5,
+     "time": "4:50PM",
+     "horse": "Mozu Marcassin",
+     "price": "$11",
+     "units": "0.86u"
+    },
+    {
+     "race": 6,
+     "time": "5:25PM",
+     "horse": "Lady Of Pompeii",
+     "price": "$15",
+     "units": "0.55u"
+    },
+    {
+     "race": 7,
+     "time": "6:00PM",
+     "horse": "Model Gigi",
+     "price": "$21",
+     "units": "1.05u"
+    }
+   ]
+  }
+ ]
+}

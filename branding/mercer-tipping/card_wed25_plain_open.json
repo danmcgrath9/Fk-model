@@ -1,0 +1,69 @@
+{
+ "day": "Wednesday",
+ "date": "25 November",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Geelong",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "2:30PM",
+     "horse": "Subscription",
+     "price": "$19",
+     "units": "1.29u",
+     "rated": "$8.28"
+    },
+    {
+     "race": 3,
+     "time": "3:40PM",
+     "horse": "Perfect Dismount",
+     "price": "$19",
+     "units": "0.63u",
+     "rated": "$12.97"
+    },
+    {
+     "race": 4,
+     "time": "4:15PM",
+     "horse": "Gypsy Storm",
+     "price": "$11",
+     "units": "2.07u",
+     "rated": "$5.45"
+    },
+    {
+     "race": 5,
+     "time": "4:50PM",
+     "horse": "Chocolate Royal",
+     "price": "$17",
+     "units": "1.37u",
+     "rated": "$7.83"
+    },
+    {
+     "race": 5,
+     "time": "4:50PM",
+     "horse": "Mozu Marcassin",
+     "price": "$15",
+     "units": "0.86u",
+     "rated": "$9.81"
+    },
+    {
+     "race": 6,
+     "time": "5:25PM",
+     "horse": "Lady Of Pompeii",
+     "price": "$23",
+     "units": "0.55u",
+     "rated": "$14.66"
+    },
+    {
+     "race": 7,
+     "time": "6:00PM",
+     "horse": "Model Gigi",
+     "price": "$19",
+     "units": "1.05u",
+     "rated": "$9.98"
+    }
+   ]
+  }
+ ]
+}
