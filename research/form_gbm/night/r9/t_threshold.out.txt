@@ -1,0 +1,34 @@
+/tmp/claude-0/-home-user-cafe-copilot/3bac7eba-1a73-583c-b23d-aae29b750b5b/scratchpad/r9/t_threshold.py:31: RuntimeWarning: All-NaN slice encountered
+  with np.errstate(all="ignore"): med = np.nanmedian(B, 1); med1 = np.nanmedian(T1, 1)
+Victoria 2025-07-01 to 2026-11-09, whole books, exact scratching times
+## Take line (best price / fair), everything at or above it
+| | horses | winners | staked | P/L at 9am best price | ROI | P/L at BSP after 8% | ROI | months up | chance above zero |
+|---|---|---|---|---|---|---|---|---|---|
+| 1.00x and over | 930 | 267 (253.6 fair) | $60,359 (1.30u avg) | $+20,497 | +34.0% | $+8,353 | +13.8% | 14 of 17 | 100% |
+| 1.01x and over | 743 | 214 (199.1 fair) | $58,646 (1.58u avg) | $+20,545 | +35.0% | $+8,388 | +14.3% | 14 of 17 | 100% |
+| 1.02x and over | 613 | 175 (161.8 fair) | $55,110 (1.80u avg) | $+20,436 | +37.1% | $+8,218 | +14.9% | 14 of 17 | 100% |
+| 1.03x and over | 493 | 140 (126.0 fair) | $49,853 (2.02u avg) | $+20,499 | +41.1% | $+8,452 | +17.0% | 14 of 17 | 100% |
+| 1.04x and over | 386 | 113 (97.2 fair) | $44,212 (2.29u avg) | $+20,680 | +46.8% | $+8,769 | +19.8% | 14 of 17 | 100% |
+| 1.05x and over | 310 | 90 (76.9 fair) | $39,056 (2.52u avg) | $+19,738 | +50.5% | $+8,419 | +21.6% | 13 of 17 | 100% |
+## Band by band (what each step down ADDS)
+| | horses | winners | staked | P/L at 9am best price | ROI | P/L at BSP after 8% | ROI | months up | chance above zero |
+|---|---|---|---|---|---|---|---|---|---|
+| 0.97-1.00x | 0 | | | | | | | |
+| 1.00-1.02x | 317 | 92 (91.8 fair) | $5,250 (0.33u avg) | $+61 | +1.2% | $+135 | +2.6% | 10 of 17 | 55% |
+| 1.02-1.03x | 120 | 35 (35.8 fair) | $5,256 (0.88u avg) | $-63 | -1.2% | $-234 | -4.4% | 9 of 17 | 45% |
+| 1.03-1.04x | 107 | 27 (28.8 fair) | $5,642 (1.05u avg) | $-181 | -3.2% | $-318 | -5.6% | 8 of 17 | 42% |
+| 1.04-1.05x | 76 | 23 (20.3 fair) | $5,156 (1.36u avg) | $+942 | +18.3% | $+350 | +6.8% | 11 of 17 | 84% |
+| 1.05-1.08x | 148 | 42 (37.9 fair) | $12,657 (1.71u avg) | $+1,760 | +13.9% | $+1,025 | +8.1% | 9 of 17 | 84% |
+| 1.08-99.00x | 162 | 48 (39.0 fair) | $26,399 (3.26u avg) | $+17,978 | +68.1% | $+7,395 | +28.0% | 13 of 17 | 100% |
+## The 1.03-1.05x band by period
+| | horses | winners | staked | P/L at 9am best price | ROI | P/L at BSP after 8% | ROI | months up | chance above zero |
+|---|---|---|---|---|---|---|---|---|---|
+| Jul-Oct 2025 | 49 | 16 (11.4 fair) | $2,172 (0.89u avg) | $+1,114 | +51.3% | $+1,143 | +52.6% | 4 of 4 | 95% |
+| Nov 2025-Jun 2026 | 73 | 17 (20.3 fair) | $4,520 (1.24u avg) | $-409 | -9.0% | $-912 | -20.2% | 2 of 8 | 30% |
+| Jul-Nov 2026 | 61 | 17 (17.5 fair) | $4,106 (1.35u avg) | $+56 | +1.4% | $-199 | -4.8% | 2 of 5 | 51% |
+## 1.05x and over by period (today's rule)
+| | horses | winners | staked | P/L at 9am best price | ROI | P/L at BSP after 8% | ROI | months up | chance above zero |
+|---|---|---|---|---|---|---|---|---|---|
+| Jul-Oct 2025 | 62 | 19 (16.0 fair) | $6,854 (2.21u avg) | $+1,749 | +25.5% | $+1,786 | +26.1% | 3 of 4 | 84% |
+| Nov 2025-Jun 2026 | 135 | 39 (35.3 fair) | $17,750 (2.63u avg) | $+11,987 | +67.5% | $+4,727 | +26.6% | 6 of 8 | 98% |
+| Jul-Nov 2026 | 113 | 32 (25.6 fair) | $14,451 (2.56u avg) | $+6,002 | +41.5% | $+1,907 | +13.2% | 4 of 5 | 96% |
