@@ -1,0 +1,98 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-25,Geelong,1,,5,Blackbelt,WIN,2.26,3.99,6.27,314,1 of 2,6.27u,1.92,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-25,Geelong,1,,5,Blackbelt,WIN,2.82,3.99,1.30,65,2 of 2,7.57u,1.92,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-25,Geelong,1,,5,Blackbelt,WIN,4.00,11.53,6.78,339,1 of 3,6.78u,1.92,EARLY: $15 or shorter only
+2026-11-25,Geelong,1,,5,Blackbelt,WIN,4.00,11.53,1.03,52,2 of 3,7.81u,1.92,EARLY: $15 or shorter only
+2026-11-25,Geelong,1,,5,Blackbelt,WIN,4.23,11.53,2.19,110,3 of 3,10.00u,1.92,EARLY: $15 or shorter only; opens $4.23+ (2.2x ours): stake doubled
+2026-11-25,Geelong,1,,2,Brutal Tempo,WIN,14.82,65.53,0.76,38,1 of 2,0.76u,10.92,
+2026-11-25,Geelong,1,,2,Brutal Tempo,WIN,18.52,65.53,0.19,10,2 of 2,0.95u,10.92,
+2026-11-25,Geelong,1,,7,Subscription,WIN,11.08,49.71,1.04,52,1 of 2,1.04u,8.28,
+2026-11-25,Geelong,1,,7,Subscription,WIN,13.85,49.71,0.25,12,2 of 2,1.29u,8.28,
+2026-11-25,Geelong,2,,1,Bella Blaze,WIN,3.40,3.99,3.54,177,1 of 1,3.54u,2.83,opens under $4: edge 1.15
+2026-11-25,Geelong,2,,1,Bella Blaze,WIN,4.00,16.99,3.85,192,1 of 3,3.85u,2.83,
+2026-11-25,Geelong,2,,1,Bella Blaze,WIN,4.49,16.99,0.75,38,2 of 3,4.60u,2.83,
+2026-11-25,Geelong,2,,1,Bella Blaze,WIN,6.24,16.99,4.60,230,3 of 3,9.20u,2.83,opens $6.24+ (2.2x ours): stake doubled
+2026-11-25,Geelong,2,,7,Seagoe,WIN,3.68,3.99,3.19,160,1 of 1,3.19u,3.06,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-25,Geelong,2,,7,Seagoe,WIN,4.00,15.01,3.47,174,1 of 3,3.47u,3.06,EARLY: $15 or shorter only
+2026-11-25,Geelong,2,,7,Seagoe,WIN,4.85,15.01,0.70,35,2 of 3,4.17u,3.06,EARLY: $15 or shorter only
+2026-11-25,Geelong,2,,7,Seagoe,WIN,6.73,15.01,4.17,208,3 of 3,8.34u,3.06,EARLY: $15 or shorter only; opens $6.73+ (2.2x ours): stake doubled
+2026-11-25,Geelong,2,,8,Victimised,WIN,9.26,41.90,1.27,64,1 of 3,1.27u,6.98,
+2026-11-25,Geelong,2,,8,Victimised,WIN,11.57,41.90,0.29,14,2 of 3,1.56u,6.98,
+2026-11-25,Geelong,2,,8,Victimised,WIN,15.37,41.90,1.56,78,3 of 3,3.12u,6.98,opens $15.37+ (2.2x ours): stake doubled
+2026-11-25,Geelong,3,,11,Cirque De Coco,WIN,7.99,15.01,1.49,74,1 of 3,1.49u,6.07,EARLY: $15 or shorter only
+2026-11-25,Geelong,3,,11,Cirque De Coco,WIN,9.99,15.01,0.34,17,2 of 3,1.83u,6.07,EARLY: $15 or shorter only
+2026-11-25,Geelong,3,,11,Cirque De Coco,WIN,13.35,15.01,1.83,92,3 of 3,3.66u,6.07,EARLY: $15 or shorter only; opens $13.35+ (2.2x ours): stake doubled
+2026-11-25,Geelong,3,,4,Gallantry,WIN,10.45,47.01,1.11,56,1 of 3,1.11u,7.83,
+2026-11-25,Geelong,3,,4,Gallantry,WIN,13.06,47.01,0.26,13,2 of 3,1.37u,7.83,
+2026-11-25,Geelong,3,,4,Gallantry,WIN,17.24,47.01,1.37,68,3 of 3,2.74u,7.83,opens $17.24+ (2.2x ours): stake doubled
+2026-11-25,Geelong,3,,8,Perfect Dismount,WIN,17.75,77.83,0.63,32,1 of 2,0.63u,12.97,
+2026-11-25,Geelong,3,,8,Perfect Dismount,WIN,22.19,77.83,0.16,8,2 of 2,0.79u,12.97,
+2026-11-25,Geelong,3,,9,Superwill,WIN,9.52,15.01,1.23,62,1 of 2,1.23u,7.17,EARLY: $15 or shorter only
+2026-11-25,Geelong,3,,9,Superwill,WIN,11.90,15.01,0.29,14,2 of 2,1.52u,7.17,EARLY: $15 or shorter only
+2026-11-25,Geelong,4,,1,Bjorson,WIN,13.49,59.92,0.84,42,1 of 2,0.84u,9.99,
+2026-11-25,Geelong,4,,1,Bjorson,WIN,16.86,59.92,0.21,10,2 of 2,1.05u,9.99,
+2026-11-25,Geelong,4,,6,Carnevale,WIN,2.91,3.99,4.34,217,1 of 2,4.34u,2.45,opens under $4: edge 1.15
+2026-11-25,Geelong,4,,6,Carnevale,WIN,3.64,3.99,1.03,52,2 of 2,5.37u,2.45,opens under $4: edge 1.15
+2026-11-25,Geelong,4,,6,Carnevale,WIN,4.00,14.68,4.70,235,1 of 3,4.70u,2.45,
+2026-11-25,Geelong,4,,6,Carnevale,WIN,4.00,14.68,0.86,43,2 of 3,5.56u,2.45,
+2026-11-25,Geelong,4,,6,Carnevale,WIN,5.39,14.68,4.44,222,3 of 3,10.00u,2.45,opens $5.39+ (2.2x ours): stake doubled
+2026-11-25,Geelong,4,,10,Gypsy Storm,WIN,7.14,15.01,1.69,84,1 of 3,1.69u,5.45,EARLY: $15 or shorter only
+2026-11-25,Geelong,4,,10,Gypsy Storm,WIN,8.92,15.01,0.38,19,2 of 3,2.07u,5.45,EARLY: $15 or shorter only
+2026-11-25,Geelong,4,,10,Gypsy Storm,WIN,12.00,15.01,2.07,103,3 of 3,4.14u,5.45,EARLY: $15 or shorter only; opens $12.00+ (2.2x ours): stake doubled
+2026-11-25,Geelong,4,,7,Lavancher,WIN,12.69,56.54,0.90,45,1 of 2,0.90u,9.42,
+2026-11-25,Geelong,4,,7,Lavancher,WIN,15.86,56.54,0.22,11,2 of 2,1.12u,9.42,
+2026-11-25,Geelong,5,,5,Chocolate Royal,WIN,10.44,46.98,1.11,56,1 of 3,1.11u,7.83,
+2026-11-25,Geelong,5,,5,Chocolate Royal,WIN,13.05,46.98,0.26,13,2 of 3,1.37u,7.83,
+2026-11-25,Geelong,5,,5,Chocolate Royal,WIN,17.23,46.98,1.37,68,3 of 3,2.74u,7.83,opens $17.23+ (2.2x ours): stake doubled
+2026-11-25,Geelong,5,,7,Corona Lad,WIN,10.12,45.60,1.15,57,1 of 3,1.15u,7.60,
+2026-11-25,Geelong,5,,7,Corona Lad,WIN,12.65,45.60,0.27,14,2 of 3,1.42u,7.60,
+2026-11-25,Geelong,5,,7,Corona Lad,WIN,16.72,45.60,1.42,71,3 of 3,2.84u,7.60,opens $16.72+ (2.2x ours): stake doubled
+2026-11-25,Geelong,5,,10,Julep,WIN,20.54,89.40,0.54,27,1 of 2,0.54u,14.90,
+2026-11-25,Geelong,5,,10,Julep,WIN,25.67,89.40,0.14,7,2 of 2,0.68u,14.90,
+2026-11-25,Geelong,5,,2,Mickio,WIN,10.53,47.35,1.10,55,1 of 3,1.10u,7.89,
+2026-11-25,Geelong,5,,2,Mickio,WIN,13.16,47.35,0.26,13,2 of 3,1.36u,7.89,
+2026-11-25,Geelong,5,,2,Mickio,WIN,17.37,47.35,1.36,68,3 of 3,2.72u,7.89,opens $17.37+ (2.2x ours): stake doubled
+2026-11-25,Geelong,5,,9,Mozu Marcassin,WIN,13.23,58.85,0.86,43,1 of 2,0.86u,9.81,
+2026-11-25,Geelong,5,,9,Mozu Marcassin,WIN,16.54,58.85,0.21,10,2 of 2,1.07u,9.81,
+2026-11-25,Geelong,5,,1,Sixty Grand,WIN,8.68,39.40,1.36,68,1 of 3,1.36u,6.57,
+2026-11-25,Geelong,5,,1,Sixty Grand,WIN,10.85,39.40,0.32,16,2 of 3,1.68u,6.57,
+2026-11-25,Geelong,5,,1,Sixty Grand,WIN,14.45,39.40,1.68,84,3 of 3,3.36u,6.57,opens $14.45+ (2.2x ours): stake doubled
+2026-11-25,Geelong,5,,11,Verifier,WIN,17.24,75.66,0.65,32,1 of 2,0.65u,12.61,
+2026-11-25,Geelong,5,,11,Verifier,WIN,21.55,75.66,0.16,8,2 of 2,0.81u,12.61,
+2026-11-25,Geelong,6,,7,Azzacool,WIN,10.73,48.21,1.08,54,1 of 2,1.08u,8.03,
+2026-11-25,Geelong,6,,7,Azzacool,WIN,13.41,48.21,0.25,12,2 of 2,1.33u,8.03,
+2026-11-25,Geelong,6,,3,Hustle In Heels,WIN,17.39,76.30,0.65,32,1 of 2,0.65u,12.72,
+2026-11-25,Geelong,6,,3,Hustle In Heels,WIN,21.74,76.30,0.15,8,2 of 2,0.80u,12.72,
+2026-11-25,Geelong,6,,13,Lady Of Pompeii,WIN,20.19,87.95,0.55,28,1 of 2,0.55u,14.66,
+2026-11-25,Geelong,6,,13,Lady Of Pompeii,WIN,25.24,87.95,0.14,7,2 of 2,0.69u,14.66,
+2026-11-25,Geelong,6,,10,Satoshi,WIN,9.56,43.19,1.22,61,1 of 3,1.22u,7.20,
+2026-11-25,Geelong,6,,10,Satoshi,WIN,11.95,43.19,0.29,14,2 of 3,1.51u,7.20,
+2026-11-25,Geelong,6,,10,Satoshi,WIN,15.84,43.19,1.51,76,3 of 3,3.02u,7.20,opens $15.84+ (2.2x ours): stake doubled
+2026-11-25,Geelong,6,,6,Superliv,WIN,15.62,68.91,0.72,36,1 of 2,0.72u,11.48,
+2026-11-25,Geelong,6,,6,Superliv,WIN,19.52,68.91,0.18,9,2 of 2,0.90u,11.48,
+2026-11-25,Geelong,6,,11,Unwavering,WIN,10.30,46.36,1.13,56,1 of 3,1.13u,7.73,
+2026-11-25,Geelong,6,,11,Unwavering,WIN,12.88,46.36,0.26,13,2 of 3,1.39u,7.73,
+2026-11-25,Geelong,6,,11,Unwavering,WIN,17.00,46.36,1.39,70,3 of 3,2.78u,7.73,opens $17.00+ (2.2x ours): stake doubled
+2026-11-25,Geelong,7,,1,Jackpot Park,WIN,8.64,39.22,1.37,68,1 of 3,1.37u,6.54,
+2026-11-25,Geelong,7,,1,Jackpot Park,WIN,10.80,39.22,0.31,16,2 of 3,1.68u,6.54,
+2026-11-25,Geelong,7,,1,Jackpot Park,WIN,14.39,39.22,1.68,84,3 of 3,3.36u,6.54,opens $14.39+ (2.2x ours): stake doubled
+2026-11-25,Geelong,7,,12,Layla,WIN,4.76,15.01,2.70,135,1 of 3,2.70u,3.71,EARLY: $15 or shorter only
+2026-11-25,Geelong,7,,12,Layla,WIN,5.95,15.01,0.58,29,2 of 3,3.28u,3.71,EARLY: $15 or shorter only
+2026-11-25,Geelong,7,,12,Layla,WIN,8.16,15.01,3.28,164,3 of 3,6.56u,3.71,EARLY: $15 or shorter only; opens $8.16+ (2.2x ours): stake doubled
+2026-11-25,Geelong,7,,14,Model Gigi,WIN,13.48,59.90,0.84,42,1 of 2,0.84u,9.98,
+2026-11-25,Geelong,7,,14,Model Gigi,WIN,16.85,59.90,0.21,10,2 of 2,1.05u,9.98,
+2026-11-25,Geelong,8,,2,Albanian I Am,WIN,14.82,65.56,0.76,38,1 of 2,0.76u,10.93,
+2026-11-25,Geelong,8,,2,Albanian I Am,WIN,18.52,65.56,0.19,10,2 of 2,0.95u,10.93,
+2026-11-25,Geelong,8,,7,Dame Of Dubai,WIN,8.87,40.21,1.33,66,1 of 3,1.33u,6.70,
+2026-11-25,Geelong,8,,7,Dame Of Dubai,WIN,11.09,40.21,0.31,16,2 of 3,1.64u,6.70,
+2026-11-25,Geelong,8,,7,Dame Of Dubai,WIN,14.75,40.21,1.64,82,3 of 3,3.28u,6.70,opens $14.75+ (2.2x ours): stake doubled
+2026-11-25,Geelong,8,,11,Jenni Poppins,WIN,8.58,38.97,1.38,69,1 of 3,1.38u,6.49,
+2026-11-25,Geelong,8,,11,Jenni Poppins,WIN,10.72,38.97,0.32,16,2 of 3,1.70u,6.49,
+2026-11-25,Geelong,8,,11,Jenni Poppins,WIN,14.29,38.97,1.70,85,3 of 3,3.40u,6.49,opens $14.29+ (2.2x ours): stake doubled
+2026-11-25,Geelong,8,,8,Just My Lot,WIN,13.40,59.54,0.85,42,1 of 2,0.85u,9.92,
+2026-11-25,Geelong,8,,8,Just My Lot,WIN,16.75,59.54,0.20,10,2 of 2,1.05u,9.92,
+2026-11-25,Geelong,8,,9,M'lady Rose,WIN,4.80,15.01,2.68,134,1 of 3,2.68u,3.73,EARLY: $15 or shorter only
+2026-11-25,Geelong,8,,9,M'lady Rose,WIN,6.00,15.01,0.57,28,2 of 3,3.25u,3.73,EARLY: $15 or shorter only
+2026-11-25,Geelong,8,,9,M'lady Rose,WIN,8.22,15.01,3.25,162,3 of 3,6.50u,3.73,EARLY: $15 or shorter only; opens $8.22+ (2.2x ours): stake doubled
+2026-11-25,Geelong,8,,10,Two To Tango,WIN,14.12,62.59,0.80,40,1 of 2,0.80u,10.43,
+2026-11-25,Geelong,8,,10,Two To Tango,WIN,17.65,62.59,0.20,10,2 of 2,1.00u,10.43,
