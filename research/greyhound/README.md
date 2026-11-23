@@ -9783,6 +9783,7 @@ published November, so there is no BSP yet.
 | 19 Nov | 44729935724 | 50 | 50 | 90 over 18 and 19 Nov | 7 | 7 | 3 | 3.00 | 11.47 | -0.75 | 0 | 0 | 1, 1, +10.00 (+1000.0%) | 1, 1, +10.00 (+1000.0%) |
 | 20 Nov | 44900288784 | 47 | 47 | 35 | 7 | 7 | 3 | 3.57 | 17.04 | -4.94 | 0 | 0 | 1, 1, +3.20 (+320.0%) | 0 |
 | 21 Nov | 45018519555 | 24 | 24 | 12 | 3 | 3 | 1 | 0.77 | 4.69 | -2.87 | 0 | 0 | 2, 1, +4.00 (+200.0%) | 2, 1, +4.00 (+200.0%) |
+| 22 Nov | 45167524626 | 24 | 24 | 22 | 2 | 2 | 1 | 0.91 | 7.99 | -0.59 | 0 | 0 | 3, 0, -3.00 (-100.0%) | 3, 0, -3.00 (-100.0%) |
 
 All four 15 Nov bets opened shorter on TAB than GRV's evening price (TAB at 24% to 49% of it) and below the card's own
 blended price, the same pattern as the first nine nights. Two won, at TAB's first price less the deduction: +5.77
@@ -9849,10 +9850,20 @@ program, which since PR 227 places a bet only when TAB's first price came after 
 missed and has the corrected blend at -1.00 for the day. Power Squeeze, the card's Sandown bet, also opened on 18 Nov.
 Without Blue Storm the corrected blend's 21 Nov rows are one bet each at -1.00.
 
-The card as sent so far, 6 to 21 Nov: 105 bets, 104 settled (one refund), 42 winners against 42.15 expected at the
-prices taken (A/E 1.00), 230.25 units staked, -32.11 units won (-13.9% at the card's units, -3.8% flat), -29.41 at
-the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 7 bets at
-1.1x (5 won, +25.70 units) and 4 at 1.2x (3 won, +18.50), each day as first scored; Blue Storm's +5.00 at both is in
+Two 22 Nov bets on the card as sent, both at Healesville, one won: -0.59 units on 7.99 staked (-7.5% flat), the
+same at the best first price of three. Santana Boy (R7) won at $1.85, +3.40 at its 4 units; Willow Star (R10) lost at
+$2.70. Both opened on TAB at 54% to 61% of GRV's evening price, and neither was still 1.3x the card's blended price
+at TAB's open. The rule at TAB's open made no bet, as expected. The corrected blend took the same three bets at 1.1x
+and 1.2x, and all three lost: Archie McIvor (Healesville R9) at $7.50, You Good (Healesville R10) at $13.00 and Once
+More (Sale R10) at $9.50, -3.00 units each. All five TAB first prices came between 8:52 and 9:06am on race morning,
+after the card, so every one could have been taken; the morning program scored the corrected blend's three as placed
+and lost. The 23 Nov run re-scored the earlier days with the refitted correction (at 1.2x it now finds two 18 Nov
+bets and none on 19 Nov); the kept rows stay as first scored.
+
+The card as sent so far, 6 to 22 Nov: 107 bets, 106 settled (one refund), 43 winners against 43.06 expected at the
+prices taken (A/E 1.00), 238.24 units staked, -32.70 units won (-13.7% at the card's units, -3.8% flat), -30.00 at
+the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 10 bets at
+1.1x (5 won, +22.70 units) and 7 at 1.2x (3 won, +15.50), each day as first scored; Blue Storm's +5.00 at both is in
 those totals and came from a market TAB opened before the card.
 
 Results go here as they come in.
