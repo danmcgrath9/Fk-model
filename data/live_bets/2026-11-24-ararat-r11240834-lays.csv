@@ -1,0 +1,83 @@
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,Rockin' Dee Fox,4.67,8.00,12,5.00,,8-12
+1,Rockin' Dee Fox,4.67,15.00,40,5.00,,15-40
+1,Vadar,8.96,15.00,40,5.00,,15-40
+1,Ideas Galore,10.36,15.54,40,10.00,,15-40
+1,Charlie Messy Hair,11.24,16.86,40,11.00,,15-40
+1,Paramount War,11.55,17.33,40,4.20,,15-40
+1,Up For A Flag,13.03,19.54,40,7.00,,15-40
+1,I'mnodrummerboy,13.75,20.62,40,20.00,,15-40
+1,Iskadeel,14.71,22.06,40,12.00,,15-40
+1,An Poitin Still,15.23,22.85,40,34.00,,15-40
+2,Ned Kelly,5.00,8.00,12,3.90,,8-12
+2,Ned Kelly,5.00,15.00,40,3.90,,15-40
+2,Devine Grunt,6.08,9.72,12,6.50,,8-12
+2,Devine Grunt,6.08,15.00,40,6.50,,15-40
+2,Churchill Lane,6.85,10.95,12,5.00,,8-12
+2,Churchill Lane,6.85,15.00,40,5.00,,15-40
+2,Meritage,8.08,15.00,40,5.50,,15-40
+2,Warrandyte Road,8.32,15.00,40,10.00,,15-40
+2,Sanika,9.30,15.00,40,17.00,,15-40
+2,Limosa,15.19,22.78,40,8.50,,15-40
+2,Circa,19.97,29.95,40,11.00,,15-40
+3,Lunetta,3.64,8.00,12,5.75,first starter: excluded,8-12
+3,Lunetta,3.64,15.00,40,5.75,first starter: excluded,15-40
+3,Swiss Impact,5.00,8.00,12,4.80,,8-12
+3,Swiss Impact,5.00,15.00,40,4.80,,15-40
+3,Russian Moonlite,5.35,8.57,12,1.85,first starter: excluded,8-12
+3,Russian Moonlite,5.35,15.00,40,1.85,first starter: excluded,15-40
+3,Indigo Smile,5.95,9.52,12,6.50,first starter: excluded,8-12
+3,Indigo Smile,5.95,15.00,40,6.50,first starter: excluded,15-40
+3,Bourne Legacy,12.25,18.37,40,11.00,,15-40
+3,Meritorious,26.63,39.95,40,11.00,,15-40
+4,Red Rabbit,2.77,8.00,12,3.40,,8-12
+4,Red Rabbit,2.77,15.00,40,3.40,,15-40
+4,Dream For Free,3.37,8.00,12,2.80,,8-12
+4,Dream For Free,3.37,15.00,40,2.80,,15-40
+4,Pare Brise,5.71,9.13,12,3.50,first starter: excluded,8-12
+4,Pare Brise,5.71,15.00,40,3.50,first starter: excluded,15-40
+4,Russian Into It,18.26,27.38,40,11.00,,15-40
+4,Enniscrone,19.13,28.70,40,12.00,,15-40
+4,Wavendon,20.77,31.16,40,9.50,,15-40
+5,Dramatic Dream,3.41,8.00,12,4.20,,8-12
+5,Dramatic Dream,3.41,15.00,40,4.20,,15-40
+5,Incoherent,4.55,8.00,12,3.00,,8-12
+5,Incoherent,4.55,15.00,40,3.00,,15-40
+5,Zercardy,8.94,15.00,40,9.00,,15-40
+5,The Pallet Man,9.27,15.00,40,5.25,,15-40
+5,La Dupeur,9.95,15.00,40,6.00,first starter: excluded,15-40
+5,Hellica,19.86,29.78,40,12.00,,15-40
+5,The Secret,22.54,33.81,40,23.00,,15-40
+5,Hilily Hilily Hilo,26.02,39.03,40,14.00,,15-40
+6,Fenestella,4.17,8.00,12,4.00,,8-12
+6,Fenestella,4.17,15.00,40,4.00,,15-40
+6,Manchego,4.44,8.00,12,3.60,,8-12
+6,Manchego,4.44,15.00,40,3.60,,15-40
+6,French Navy,8.96,15.00,40,6.00,,15-40
+6,Royal Infantry,10.47,15.71,40,6.50,,15-40
+6,Back Up Barbie,10.57,15.86,40,6.50,,15-40
+6,Impending Swan,14.71,22.07,40,11.00,,15-40
+6,Belgian Chocolate,15.08,22.62,40,13.00,,15-40
+6,Queen Of The Surf,18.49,27.74,40,7.00,,15-40
+7,Hidden Witness,5.62,8.99,12,5.00,,8-12
+7,Hidden Witness,5.62,15.00,40,5.00,,15-40
+7,Tempt The Gods,6.38,10.21,12,6.25,,8-12
+7,Tempt The Gods,6.38,15.00,40,6.25,,15-40
+7,French Reign,9.02,15.00,40,4.20,,15-40
+7,Shades Of Stardom,9.20,15.00,40,8.50,,15-40
+7,Plucky Enuff,9.59,15.00,40,9.00,,15-40
+7,Great Prosperity,10.29,15.44,40,13.00,,15-40
+7,Ballistic Romeo,10.65,15.98,40,5.50,,15-40
+7,Prince Iadora,17.42,26.13,40,26.00,,15-40
+7,Real Alliance,18.14,27.22,40,23.00,,15-40
+8,Harry De Lad,5.24,8.38,12,5.50,,8-12
+8,Harry De Lad,5.24,15.00,40,5.50,,15-40
+8,Real Heir,5.47,8.75,12,5.00,,8-12
+8,Real Heir,5.47,15.00,40,5.00,,15-40
+8,Maya's Ace,5.88,9.40,12,3.90,,8-12
+8,Maya's Ace,5.88,15.00,40,3.90,,15-40
+8,I'm Da Boss,6.58,10.53,12,4.60,,8-12
+8,I'm Da Boss,6.58,15.00,40,4.60,,15-40
+8,Just Remember It,7.85,15.00,40,7.50,,15-40
+8,Girls Night,18.13,27.20,40,18.00,,15-40
+8,Helluva Barty,23.17,34.75,40,15.00,,15-40

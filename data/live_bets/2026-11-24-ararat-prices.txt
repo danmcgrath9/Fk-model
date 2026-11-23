@@ -1,113 +1,113 @@
-# Ararat Tue 24 Nov, official going, final fields; market open in R1,2,3,4,5,6,7,8; PROVISIONAL: 1 runners without a rider; PAPER ONLY (the model has 47 races at this venue, 0 since the 3 Jun holdout)
-1, Rockin' Dee Fox, 6.00, 6.00, fk_open 7.50
-1, Charlie Messy Hair, 7.50, 7.50, fk_open 5.50
-1, Aki, 101.00, 101.00, fk_open 71.00
-1, Alltogethernow, 35.00, 35.00, fk_open 19.00
-1, Up For A Flag, SCR, fk_open 4.40
-1, Vadar, 6.00, 6.00, fk_open 5.50
-1, Iskadeel, SCR, fk_open 26.00
-1, Studio Artist, SCR, fk_open 81.00
-1, Aitana, 6.00, 6.00, fk_open 7.50
-1, Helichrysum, 14.00, 14.00, fk_open 26.00
-1, Paramount War, 4.60, 4.60, fk_open 5.00
-1, Imminent Touch, SCR, fk_open 81.00
-1, An Poitin Still, 27.00, 27.00, fk_open 19.00
-1, I'mnodrummerboy, 18.00, 18.00, fk_open 7.50
-1, Ideas Galore, 8.00, 8.00, fk_open 5.50
-1, The Moops, 19.00, 19.00, fk_open 26.00
-2, Warrandyte Road, 9.00, 9.00, fk_open 4.40
-2, Circa, 13.00, 13.00, fk_open 19.00
+# Ararat Tue 24 Nov, official going, final fields; market open in R1,2,3,4,5,6,7,8; PAPER ONLY (the model has 47 races at this venue, 0 since the 3 Jun holdout)
+1, Rockin' Dee Fox, 5.00, 5.00, fk_open 7.50
+1, Charlie Messy Hair, 11.00, 11.00, fk_open 5.50
+1, Aki, 151.00, 151.00, fk_open 71.00
+1, Alltogethernow, 46.00, 46.00, fk_open 19.00
+1, Up For A Flag, 7.00, 7.00, fk_open 4.40
+1, Vadar, 5.00, 5.00, fk_open 5.50
+1, Iskadeel, 12.00, 12.00, fk_open 26.00
+1, Studio Artist, 101.00, 101.00, fk_open 81.00
+1, Aitana, SCR
+1, Helichrysum, 15.00, 15.00, fk_open 26.00
+1, Paramount War, 4.20, 4.20, fk_open 5.00
+1, Imminent Touch, 61.00, 61.00, fk_open 81.00
+1, An Poitin Still, 34.00, 34.00, fk_open 19.00
+1, I'mnodrummerboy, 20.00, 20.00, fk_open 7.50
+1, Ideas Galore, 10.00, 10.00, fk_open 5.50
+1, The Moops, 21.00, 21.00, fk_open 26.00
+2, Warrandyte Road, 10.00, 10.00, fk_open 4.40
+2, Circa, 11.00, 11.00, fk_open 19.00
 2, Dukey, 151.00, 151.00, fk_open 101.00
-2, Devine Grunt, 6.00, 6.00, fk_open 5.50
-2, Reel Hot, 81.00, 81.00, fk_open 61.00
+2, Devine Grunt, 6.50, 6.50, fk_open 5.50
+2, Reel Hot, 61.00, 61.00, fk_open 61.00
 2, Reel Blessed, 151.00, 151.00, fk_open 151.00
-2, Limosa, 7.00, 7.00, fk_open 9.00
-2, Sanika, 13.00, 13.00, fk_open 11.00
-2, Meritage, 5.00, 5.00, fk_open 5.00
+2, Limosa, 8.50, 8.50, fk_open 9.00
+2, Sanika, 17.00, 17.00, fk_open 11.00
+2, Meritage, 5.50, 5.50, fk_open 5.00
 2, Churchill Lane, 5.00, 5.00, fk_open 4.80
-2, Ned Kelly, 5.00, 5.00, fk_open 4.40
-3, Sabrina, 51.00, 51.00, fk_open 26.00
-3, Lunetta, 7.50, 7.50, fk_open 8.25
-3, Swiss Impact, 7.00, 7.00, fk_open 5.00
-3, Indigo Smile, 11.00, 11.00, fk_open 16.50
-3, Bourne Legacy, 9.50, 9.50, fk_open 22.00
-3, Chestnut Teal, 18.00, 18.00, fk_open 28.50
-3, Boridi, 6.50, 6.50, fk_open 6.00
-3, On A Journey, 5.00, 5.00, fk_open 3.80
-3, Russian Moonlite, 3.50, 3.50, fk_open 2.85
-3, Spellbinding, 81.00, 81.00, fk_open 81.00
-3, Temple Of Venus, 81.00, 81.00, fk_open 56.00
-3, Meritorious, 41.00, 41.00, fk_open 56.00
-4, Wavendon, 10.00, 10.00, fk_open 22.00
+2, Ned Kelly, 3.90, 3.90, fk_open 4.40
+3, Sabrina, 15.00, 15.00, fk_open 26.00
+3, Lunetta, 5.75, 5.75, fk_open 8.25
+3, Swiss Impact, 4.80, 4.80, fk_open 5.00
+3, Indigo Smile, 6.50, 6.50, fk_open 16.50
+3, Bourne Legacy, 11.00, 11.00, fk_open 22.00
+3, Chestnut Teal, SCR, last 12.00, fk_open 28.50
+3, Boridi, SCR
+3, On A Journey, SCR, last 5.00, fk_open 3.80
+3, Russian Moonlite, 1.85, 1.85, fk_open 2.85
+3, Spellbinding, SCR
+3, Temple Of Venus, 61.00, 61.00, fk_open 56.00
+3, Meritorious, 11.00, 11.00, fk_open 56.00
+4, Wavendon, 9.50, 9.50, fk_open 22.00
 4, Malbec, 151.00, 151.00, fk_open 91.00
 4, Dream For Free, 2.80, 2.80, fk_open 1.98
-4, Red Rabbit, 3.90, 3.90, fk_open 2.75
-4, Full Of Knowledge, 34.00, 34.00, fk_open 91.00
-4, Josie Kate, 151.00, 151.00, fk_open 91.00
-4, Russian Into It, 9.50, 9.50, fk_open 9.25
-4, Enniscrone, 10.00, 10.00, fk_open 33.50
-4, Isabellas, 126.00, 126.00, fk_open 91.00
-4, Billy Be Good, 31.00, 31.00, fk_open 41.00
-4, Pare Brise, 4.80, 4.80, fk_open 5.75
-4, Sammie Ellen Boy, 81.00, 81.00, fk_open 41.00
-5, Graceful Mist, 101.00, 101.00, fk_open 71.00
-5, Xiguous Equus, 301.00, 301.00, fk_open 151.00
-5, Victory Blues, 201.00, 201.00, fk_open 151.00
+4, Red Rabbit, 3.40, 3.40, fk_open 2.75
+4, Full Of Knowledge, SCR
+4, Josie Kate, 201.00, 201.00, fk_open 91.00
+4, Russian Into It, 11.00, 11.00, fk_open 9.25
+4, Enniscrone, 12.00, 12.00, fk_open 33.50
+4, Isabellas, 151.00, 151.00, fk_open 91.00
+4, Billy Be Good, SCR, last 34.00, fk_open 41.00
+4, Pare Brise, 3.50, 3.50, fk_open 5.75
+4, Sammie Ellen Boy, 101.00, 101.00, fk_open 41.00
+5, Graceful Mist, 41.00, 41.00, fk_open 71.00
+5, Xiguous Equus, 151.00, 151.00, fk_open 151.00
+5, Victory Blues, 151.00, 151.00, fk_open 151.00
 5, Satellite Chester, 151.00, 151.00, fk_open 151.00
-5, The Secret, 41.00, 41.00, fk_open 34.00
-5, Dramatic Dream, 4.60, 4.60, fk_open 6.50
-5, Hellica, 23.00, 23.00, fk_open 12.00
-5, Hilily Hilily Hilo, 27.00, 27.00, fk_open 14.50
-5, Incoherent, 5.50, 5.50, fk_open 4.20
-5, Zercardy, 12.00, 12.00, fk_open 10.00
-5, Peace Seeker, 41.00, 41.00, fk_open 14.50
-5, The Pallet Man, 13.00, 13.00, fk_open 10.00
-5, La Dupeur, 8.50, 8.50, fk_open 7.50
-5, Bella Blaze, 2.30, 2.30, fk_open 2.85
-6, Cawdor, 61.00, 61.00, fk_open 26.00
-6, Royal Infantry, 6.00, 6.00, fk_open 5.00
-6, Manchego, 4.40, 4.40, fk_open 3.50
-6, French Navy, 7.00, 7.00, fk_open 6.00
-6, Impending Swan, 14.00, 14.00, fk_open 19.00
-6, Triomphe, 51.00, 51.00, fk_open 71.00
-6, Back Up Barbie, 8.50, 8.50, fk_open 10.00
-6, Fenestella, 4.40, 4.40, fk_open 6.00
-6, Belgian Chocolate, 17.00, 17.00, fk_open 13.00
-6, Queen Of The Surf, 8.50, 8.50, fk_open 11.00
-6, Extreme Turbo, 10.00, 10.00, fk_open 8.00
-7, Drink Then Kiss, SCR, fk_open 71.00
-7, Real Alliance, 26.00, 26.00, fk_open 19.00
+5, The Secret, 23.00, 23.00, fk_open 34.00
+5, Dramatic Dream, 4.20, 4.20, fk_open 6.50
+5, Hellica, 12.00, 12.00, fk_open 12.00
+5, Hilily Hilily Hilo, 14.00, 14.00, fk_open 14.50
+5, Incoherent, 3.00, 3.00, fk_open 4.20
+5, Zercardy, 9.00, 9.00, fk_open 10.00
+5, Peace Seeker, 23.00, 23.00, fk_open 14.50
+5, The Pallet Man, 5.25, 5.25, fk_open 10.00
+5, La Dupeur, 6.00, 6.00, fk_open 7.50
+5, Bella Blaze, SCR
+6, Cawdor, 41.00, 41.00, fk_open 26.00
+6, Royal Infantry, 6.50, 6.50, fk_open 5.00
+6, Manchego, 3.60, 3.60, fk_open 3.50
+6, French Navy, 6.00, 6.00, fk_open 6.00
+6, Impending Swan, 11.00, 11.00, fk_open 19.00
+6, Triomphe, 15.00, 15.00, fk_open 71.00
+6, Back Up Barbie, 6.50, 6.50, fk_open 10.00
+6, Fenestella, 4.00, 4.00, fk_open 6.00
+6, Belgian Chocolate, 13.00, 13.00, fk_open 13.00
+6, Queen Of The Surf, 7.00, 7.00, fk_open 11.00
+6, Extreme Turbo, SCR, last 11.00, fk_open 8.00
+7, Drink Then Kiss, SCR, last 61.00, fk_open 71.00
+7, Real Alliance, 23.00, 23.00, fk_open 19.00
 7, Hidden Witness, 5.00, 5.00, fk_open 14.00
-7, Great Prosperity, 15.00, 15.00, fk_open 11.00
-7, Serin, SCR, fk_open 126.00
-7, Lika Wreckin' Ball, 101.00, 101.00, fk_open 51.00
-7, Our Paramour, SCR, fk_open 34.00
-7, Celestial Option, 9.50, 9.50, fk_open 14.00
-7, Littlebitcheeky, 41.00, 41.00, fk_open 26.00
-7, Ballistic Romeo, 7.00, 7.00, fk_open 6.00
-7, Hellish Lee, 19.00, 19.00, fk_open 19.00
-7, Tempt The Gods, 10.00, 10.00, fk_open 11.00
+7, Great Prosperity, 13.00, 13.00, fk_open 11.00
+7, Serin, 151.00, 151.00, fk_open 126.00
+7, Lika Wreckin' Ball, 81.00, 81.00, fk_open 51.00
+7, Our Paramour, SCR
+7, Celestial Option, SCR
+7, Littlebitcheeky, 31.00, 31.00, fk_open 26.00
+7, Ballistic Romeo, 5.50, 5.50, fk_open 6.00
+7, Hellish Lee, SCR
+7, Tempt The Gods, 6.25, 6.25, fk_open 11.00
 7, French Reign, 4.20, 4.20, fk_open 2.90
 7, Prince Iadora, 26.00, 26.00, fk_open 19.00
-7, Plucky Enuff, 9.50, 9.50, fk_open 6.00
-7, Caledonian Summer, 41.00, 41.00, fk_open 26.00
-7, Shades Of Stardom, 10.00, 10.00, fk_open 11.00
-7, Backflips, SCR, fk_open 51.00
-8, Raging Monkey, SCR, fk_open 34.00
-8, Ask For More, SCR, fk_open 126.00
-8, Padstow Polly, SCR, fk_open 126.00
-8, Spinhof, 71.00, 71.00, fk_open 51.00
-8, Helluva Barty, 16.00, 16.00, fk_open 12.00
-8, Bridgeitall, 34.00, 34.00, fk_open 26.00
-8, I'm Da Boss, 5.00, 5.00, fk_open 7.50
-8, Girls Night, 17.00, 17.00, fk_open 19.00
-8, Just Remember It, 7.00, 7.00, fk_open 5.50
-8, Sweet City Dancer, SCR, fk_open 51.00
-8, Master Jack, 26.00, 26.00, fk_open 51.00
-8, Noubentekh, 61.00, 61.00, fk_open 41.00
-8, Heidi Dancer, 17.00, 17.00, fk_open 23.00
-8, Real Heir, 7.00, 7.00, fk_open 7.50
-8, Harry De Lad, 6.00, 6.00, fk_open 3.80
-8, Maya's Ace, 4.80, 4.80, fk_open 4.60
-8, Invisible Caravan, 34.00, 34.00, fk_open 26.00
-8, Positive Image, 17.00, 17.00, fk_open 12.00
+7, Plucky Enuff, 9.00, 9.00, fk_open 6.00
+7, Caledonian Summer, SCR, last 34.00, fk_open 26.00
+7, Shades Of Stardom, 8.50, 8.50, fk_open 11.00
+7, Backflips, SCR, last 41.00, fk_open 51.00
+8, Raging Monkey, 51.00, 51.00, fk_open 34.00
+8, Ask For More, 201.00, 201.00, fk_open 126.00
+8, Padstow Polly, 151.00, 151.00, fk_open 126.00
+8, Spinhof, SCR, last 51.00, fk_open 51.00
+8, Helluva Barty, 15.00, 15.00, fk_open 12.00
+8, Bridgeitall, 26.00, 26.00, fk_open 26.00
+8, I'm Da Boss, 4.60, 4.60, fk_open 7.50
+8, Girls Night, 18.00, 18.00, fk_open 19.00
+8, Just Remember It, 7.50, 7.50, fk_open 5.50
+8, Sweet City Dancer, 41.00, 41.00, fk_open 51.00
+8, Master Jack, SCR
+8, Noubentekh, SCR, last 51.00, fk_open 41.00
+8, Heidi Dancer, SCR, last 17.00, fk_open 23.00
+8, Real Heir, 5.00, 5.00, fk_open 7.50
+8, Harry De Lad, 5.50, 5.50, fk_open 3.80
+8, Maya's Ace, 3.90, 3.90, fk_open 4.60
+8, Invisible Caravan, 31.00, 31.00, fk_open 26.00
+8, Positive Image, SCR, last 17.00, fk_open 12.00

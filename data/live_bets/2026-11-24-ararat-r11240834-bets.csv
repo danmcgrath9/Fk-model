@@ -1,0 +1,8 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,ARAT_241126_1,Rockin' Dee Fox,top_pick,5.0,5.0,7.5,7.5,,5.34,0.405,Already run to today's class; New career-best last start; Class drop (rating),1.0,no,,
+2,ARAT_241126_2,Ned Kelly,top_pick,3.9,3.9,4.4,4.4,,5.05,-0.129,"Third-up, improving",1.0,no,,
+4,ARAT_241126_4,Red Rabbit,top_pick,3.4,3.4,2.75,2.75,,2.83,-0.028,Already run to today's class; Well backed before a bad last run; Class drop (rating),1.0,no,,
+5,ARAT_241126_5,Dramatic Dream,top_pick,4.2,4.2,6.5,6.5,,3.74,0.738,"Beaten by the pace last start; New career-best last start; Third-up, improving",1.0,no,,
+6,ARAT_241126_6,Manchego,top_pick,3.6,3.6,3.5,3.5,,4.22,-0.171,,1.0,no,,
+7,ARAT_241126_7,Hidden Witness,top_pick,5.0,5.0,14.0,14.0,,6.74,1.078,Beaten by the pace last start,1.0,no,,
+8,ARAT_241126_8,Harry De Lad,top_pick,5.5,5.5,3.8,3.8,,4.95,-0.232,Beaten by the pace last start; Late 600 beyond the tempo,1.0,no,,
