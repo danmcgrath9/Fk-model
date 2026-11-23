@@ -5,20 +5,24 @@ name: fk fields watch
 # 10:45pm Melbourne (daylight saving), one Get Upcoming Meetings call for every state (1 credit), a row for every meeting
 # whose status changed, committed to the fields-watch branch (data/schedule/fields-watch.csv) so main is not touched
 # 70 times a day. About 68 credits a day, under 500 for the week. Switch it off after Mon 30 Nov.
+# NO CRON (23 Nov 2026): GitHub's schedule for this repo runs 5 to 7 hours late (fk-results' 3am run starts after 8am),
+# and the 15-minute cron never fired once in its first three hours. So one run loops for `hours`, checking every 15
+# minutes, and a scheduled task in the Claude session dispatches it at 5:55am, 11:55am and 5:55pm Melbourne (the same
+# way the X stream is kept open); a new run cancels the one before it.
 
 on:
-  schedule:
-    - cron: '*/15 19-23 * * *'   # 6:00am to 10:45am Melbourne (UTC+11)
-    - cron: '*/15 0-11 * * *'    # 11:00am to 10:45pm Melbourne
   workflow_dispatch:
     inputs:
       dry_run:
         description: 'yes = price the call only, no network'
         default: 'no'
+      hours:
+        description: 'how long to keep checking, every 15 minutes'
+        default: '5.8'
 
 concurrency:
   group: fk-fields-watch
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -26,7 +30,7 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 360
     env:
       FK_SPEC_PATH: b2c-openapi.yaml
       FK_LEDGER: postgres
@@ -43,27 +47,24 @@ jobs:
           cache: pip
           cache-dependency-path: requirements.txt
       - run: pip install -r requirements.txt
-      - name: Bring in the watch file from its branch
-        run: |
-          git fetch -q origin fields-watch && git show origin/fields-watch:data/schedule/fields-watch.csv > /tmp/fields-watch.csv 2>/dev/null || true
-      - name: Watch
+      - name: Watch every 15 minutes
         run: |
           LIVE_FLAG="$(echo "${{ vars.FK_LIVE }}" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
           [ "$LIVE_FLAG" = "true" ] || { echo "FK_LIVE is not true"; exit 1; }
-          DRY=""; [ "${{ github.event.inputs.dry_run }}" = "yes" ] && DRY="--dry-run"
-          python scripts/fields_watch.py --out /tmp/fields-watch.csv $DRY | tee -a "$GITHUB_STEP_SUMMARY"
-      - name: Commit to the fields-watch branch
-        if: github.event.inputs.dry_run != 'yes'
-        run: |
-          [ -f /tmp/fields-watch.csv ] || exit 0
+          if [ "${{ github.event.inputs.dry_run }}" = "yes" ]; then python scripts/fields_watch.py --out /tmp/fields-watch.csv --dry-run; exit 0; fi
           git config user.name "fk-fields-watch"; git config user.email "actions@users.noreply.github.com"
-          if git ls-remote --exit-code origin fields-watch >/dev/null; then
-            git fetch -q origin fields-watch && git checkout -q -B fields-watch origin/fields-watch
-          else
-            git checkout -q --orphan fields-watch && git rm -rq --cached . && git clean -fdq -e /tmp
-          fi
-          mkdir -p data/schedule && cp /tmp/fields-watch.csv data/schedule/fields-watch.csv
-          git add data/schedule/fields-watch.csv
-          git diff --cached --quiet && { echo "no change"; exit 0; }
-          git commit -qm "fields watch $(date -u +%FT%H:%MZ)"
-          for i in 1 2 3; do git push -q origin fields-watch && break; sleep 5; git pull -q --rebase origin fields-watch; done
+          END=$(( $(date +%s) + $(python -c "print(int(float('${{ github.event.inputs.hours || '5.8' }}') * 3600))") ))
+          while [ "$(date +%s)" -lt "$END" ]; do
+            WT=$(mktemp -d)
+            if git ls-remote --exit-code origin fields-watch >/dev/null; then
+              git fetch -q origin fields-watch && git worktree add -q -f "$WT" origin/fields-watch
+            else
+              git worktree add -q -f --detach "$WT" && (cd "$WT" && git checkout -q --orphan fields-watch && git rm -rq --cached . && git clean -fdq)
+            fi
+            mkdir -p "$WT/data/schedule"
+            python scripts/fields_watch.py --out "$WT/data/schedule/fields-watch.csv" | tee -a "$GITHUB_STEP_SUMMARY" || true
+            (cd "$WT" && git add data/schedule/fields-watch.csv && { git diff --cached --quiet || git commit -qm "fields watch $(date -u +%FT%H:%MZ)"; } \
+              && for i in 1 2 3; do git push -q origin HEAD:fields-watch && break; sleep 5; git pull -q --rebase origin fields-watch; done) || true
+            git worktree remove -f "$WT" || true
+            sleep 900
+          done
