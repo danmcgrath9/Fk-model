@@ -1374,3 +1374,6 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
   out (OPENED_BEFORE_SHEET). Every other meeting since 13 Nov was checked: its sheet was written before its opens.
 - Saturday 21 Nov is now 6 bets, 0 won, -13.02u (-$651); Mon 16 - Sat 21 Nov +46.20u; since live (9 Oct) +356.28u
   (188 bets, 43 won, +$17,814 at $50). The Saturday entry above stands as written then; this supersedes its totals.
+- REVERSED, Mon 23 Nov 11:40am (founder: "NOOOO KEEP IT FOR ALL OF THEM"): Cranbourne stays in the open book like every
+  other meeting. Totals back to: Saturday 21 Nov 14 bets, 1 won, -6.53u; since live (9 Oct) +362.77u (196 bets, 44 won,
+  +$18,138 at $50).

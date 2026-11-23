@@ -45,7 +45,9 @@ EARLIER_WEEKS = [("Fri 9 - Sun 18 Oct", 49, 9, 49.53, 49.15), ("Mon 19 - Sun 25 
 # Cranbourne Sat 21 Nov: the sheet was written Wed 18 Nov 4:04pm; Form King's first fluc on every race was 1:06pm to
 # 2:17pm that day (TAB's first price at the same times). The database was read-only, so the pricer could not see the
 # opens and left all ten races on the sheet; 8 bets, +6.49u, were counted at prices nobody could have had.
-OPENED_BEFORE_SHEET = {"2026-11-21-cranbourne": set(range(1, 11))}
+# REVERSED the same morning (founder, 23 Nov 2026: "NOOOO KEEP IT FOR ALL OF THEM"): the open book counts every meeting's
+# sheet at Form King's open, Cranbourne included, so nothing is excluded. Kept as a mechanism, empty.
+OPENED_BEFORE_SHEET = {}
 
 
 def sheet_for(P, folder=None):
