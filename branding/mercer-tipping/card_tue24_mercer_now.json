@@ -1,0 +1,43 @@
+{
+ "day": "Tuesday",
+ "date": "24 November",
+ "footer": "Win bets.",
+ "brand": true,
+ "prices_as_at": "2026-11-24T09:35",
+ "meetings": [
+  {
+   "name": "Ararat",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "1:30PM",
+     "horse": "Rockin' Dee Fox",
+     "price": "$4.20",
+     "units": "2.62u"
+    },
+    {
+     "race": 6,
+     "time": "4:00PM",
+     "horse": "Fenestella",
+     "price": "$4",
+     "units": "2.10u"
+    },
+    {
+     "race": 7,
+     "time": "4:30PM",
+     "horse": "Hidden Witness",
+     "price": "$5",
+     "units": "3.96u"
+    },
+    {
+     "race": 7,
+     "time": "4:30PM",
+     "horse": "Tempt The Gods",
+     "price": "$6",
+     "units": "1.08u"
+    }
+   ]
+  }
+ ]
+}

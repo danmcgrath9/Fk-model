@@ -21,6 +21,7 @@
      "horse": "Bourne Legacy",
      "price": "$22",
      "units": "0.55u",
+     "scr": true,
      "rated": "$14.61"
     },
     {
