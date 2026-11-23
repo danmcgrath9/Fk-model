@@ -1,0 +1,101 @@
+# Geelong Wed 25 Nov, official going, final fields; no market yet; PROVISIONAL: 22 runners without a rider
+1, Miss Xtravaganza, 0, 0
+1, Better Shape Up, 0, 0
+1, The Toronado Kid, 0, 0
+1, Brutal Tempo, 0, 0
+1, Madame Makwela, 0, 0
+1, Irish Master, 0, 0
+1, Pride In Motion, 0, 0
+1, Subscription, 0, 0
+1, Blackbelt, 0, 0
+1, Vivid Legend, 0, 0
+2, Flying Cloud, 0, 0
+2, La Dupeur, 0, 0
+2, Jenni The French, 0, 0
+2, Rubicube, 0, 0
+2, Ruby From Zadar, 0, 0
+2, Victimised, 0, 0
+2, Bella Blaze, 0, 0
+2, Seagoe, 0, 0
+3, Perfect Dismount, 0, 0
+3, Tufflee, 0, 0
+3, Gallantry, 0, 0
+3, Discmania, 0, 0
+3, Famous Rosy, 0, 0
+3, Loyalty, 0, 0
+3, Our Bee Gee, 0, 0
+3, On Fire Zachariah, 0, 0
+3, Gordacious, 0, 0
+3, Superwill, 0, 0
+3, Cirque De Coco, 0, 0
+3, Brandon Bay, 0, 0
+4, Granite Hill, 0, 0
+4, Bjorson, 0, 0
+4, Flight Du Jour, 0, 0
+4, Zercardy, 0, 0
+4, Brilliant Bull Ant, 0, 0
+4, Gypsy Storm, 0, 0
+4, Alpine Point, 0, 0
+4, Lavancher, 0, 0
+4, Rumours Fly, 0, 0
+4, Carnevale, 0, 0
+5, Corona Lad, 0, 0
+5, Verifier, 0, 0
+5, Chocolate Royal, 0, 0
+5, Callawadda, 0, 0
+5, Nicoffhome, 0, 0
+5, Mozu Marcassin, 0, 0
+5, Mickio, 0, 0
+5, Pee Bee Noir, 0, 0
+5, Bling Baby, 0, 0
+5, Fierce Fiasco, 0, 0
+5, Molesworth, 0, 0
+5, Sixty Grand, 0, 0
+5, Julep, 0, 0
+6, Turn Up The Night, SCR
+6, Egerton, 0, 0
+6, Jackie's Maid, 0, 0
+6, I'm Da Boss, SCR
+6, Pocket Size, 0, 0
+6, Just Bolts, 0, 0
+6, Hustle In Heels, 0, 0
+6, Mystic Reign, 0, 0
+6, Bold Bordeaux, 0, 0
+6, Azzacool, 0, 0
+6, Superliv, 0, 0
+6, Pee Plater, SCR
+6, Lady Of Pompeii, 0, 0
+6, Hellfire Jess, 0, 0
+6, What Once Was, 0, 0
+6, Pretty Panther, SCR
+6, Unwavering, 0, 0
+6, Satoshi, 0, 0
+7, Blondeau, 0, 0
+7, Dollar Chaser, 0, 0
+7, Empressive Enuff, 0, 0
+7, Royal Infantry, SCR
+7, Move The Torana, 0, 0
+7, Romuald, SCR
+7, Mykindakandy, 0, 0
+7, Brazenga, 0, 0
+7, Venetian Choice, 0, 0
+7, Watt On Earth, 0, 0
+7, Jackpot Park, 0, 0
+7, Big Vee, 0, 0
+7, Layla, 0, 0
+7, Circus Lights, 0, 0
+7, Valedictorian, 0, 0
+7, Model Gigi, 0, 0
+8, Albanian I Am, 0, 0
+8, Mickidamuzz, 0, 0
+8, Sara's Rocket, 0, 0
+8, Weather Delay, 0, 0
+8, Manhattan Empire, 0, 0
+8, Swing Your Magic, 0, 0
+8, Il Cielo, 0, 0
+8, M'lady Rose, 0, 0
+8, Itsagiven, 0, 0
+8, Jenni Poppins, 0, 0
+8, Dame Of Dubai, 0, 0
+8, Just My Lot, 0, 0
+8, Two To Tango, 0, 0
