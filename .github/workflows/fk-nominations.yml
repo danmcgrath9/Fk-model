@@ -5,6 +5,9 @@ name: fk nominations
 # (2 credits a horse) on every horse whose stored entry has already been run, so a winner
 # since then is priced as a winner. Live key only for the refresh; the credit cap and the
 # balance floor apply.
+# FOUNDER, 23 Nov 2026: a nomination lookup gives him RATINGS and form, not these prices ("Get rid of price, we know prices
+# aren't that good without the rest of the inputs"): no barrier, weight, rider or penalty yet. Refresh is the default, so
+# every horse's latest run carries its rating (the results job stores finishes, not ratings).
 
 on:
   workflow_dispatch:
@@ -23,7 +26,7 @@ on:
         default: ''
       refresh:
         description: 'yes = pay for fresh horse form on horses whose stored entry has run'
-        default: 'no'
+        default: 'yes'
 
 concurrency:
   group: fk-daily-pull
