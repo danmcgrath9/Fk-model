@@ -1,4 +1,4 @@
-# Mornington Thu 26 Nov, official going, final fields; no market yet; PROVISIONAL: 11 runners without a rider
+# Mornington Thu 26 Nov, official going, final fields; no market yet; PROVISIONAL: 4 runners without a rider
 1, Zaac, 0, 0
 1, Market Warrior, 0, 0
 1, Exceed Sonic, 0, 0
@@ -52,7 +52,6 @@
 5, Umgawa, 0, 0
 5, Smoke 'n' Oakum, 0, 0
 5, Shooter Mcgavin, 0, 0
-5, Vaafee, 0, 0
 5, Trebilco, 0, 0
 5, Outer Banks, 0, 0
 5, Gunz, 0, 0

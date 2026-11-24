@@ -51,7 +51,6 @@
 5|2|Umgawa|False|False
 5|5|Smoke 'n' Oakum|False|False
 5|1|Shooter Mcgavin|False|False
-5|11|Vaafee|False|False
 5|4|Trebilco|False|False
 5|10|Outer Banks|False|False
 5|3|Gunz|False|False
