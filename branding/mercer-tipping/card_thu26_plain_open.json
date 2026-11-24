@@ -1,0 +1,45 @@
+{
+ "day": "Thursday",
+ "date": "26 November",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Mornington",
+   "note": "",
+   "bets": [
+    {
+     "race": 5,
+     "time": "5:00PM",
+     "horse": "Gunz",
+     "price": "$3.70",
+     "units": "3.27u",
+     "rated": "$3.00"
+    },
+    {
+     "race": 5,
+     "time": "5:00PM",
+     "horse": "Outer Banks",
+     "price": "$19",
+     "units": "0.71u",
+     "rated": "$11.61"
+    },
+    {
+     "race": 7,
+     "time": "6:00PM",
+     "horse": "Bel Lupa",
+     "price": "$5",
+     "units": "4.15u",
+     "rated": "$3.06"
+    },
+    {
+     "race": 7,
+     "time": "6:00PM",
+     "horse": "No Limitation",
+     "price": "$19",
+     "units": "0.68u",
+     "rated": "$12.12"
+    }
+   ]
+  }
+ ]
+}

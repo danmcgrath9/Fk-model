@@ -1377,3 +1377,15 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - REVERSED, Mon 23 Nov 11:40am (founder: "NOOOO KEEP IT FOR ALL OF THEM"): Cranbourne stays in the open book like every
   other meeting. Totals back to: Saturday 21 Nov 14 bets, 1 won, -6.53u; since live (9 Oct) +362.77u (196 bets, 44 won,
   +$18,138 at $50).
+## Tuesday 24 Nov Ararat settled (Form King results, Wed 5:30am)
+- Open book (paper; sheet of record at Form King's open): no bets. Ararat opened Sat 21 Nov about 10:08am and was priced
+  at 11:20am, so every race had opened first and the sheet of record holds no orders; the running record does not move.
+- No-Mercer card (as set, card_tue24_plain_open, the bets the full order list fills at Form King's open): Rockin' Dee Fox
+  R1 2.62u at $7.50, 6th; Bourne Legacy R3 0.55u, scratched (refund); Fenestella R6 2.10u at $6, WON (+10.50u, Betfair SP
+  $4.90); Hidden Witness R7 3.96u at $14, 2nd; Tempt The Gods R7 1.08u at $11, 3rd. Card +2.84u on 9.76u (+$142 at $50).
+  Mercer card at the 9:35am prices (Bourne Legacy off): Fenestella won at $4 (+6.30u); card -1.36u (-$68). No TAB
+  deduction reported.
+- BetMatic: nothing sent (send hold). The 9am bets: none (closest Rockin' Dee Fox, 1.039x against the 1.05x line). Old
+  rule: none.
+- Rules (paper at Betfair SP) on the day: held-on-backtest rules -3.00u, the rest -13.12u, all rules -16.12u.
+- Running record: since live (9 Oct) +362.77u (196 bets, 44 won, +$18,138 at $50), unchanged.
