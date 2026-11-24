@@ -84,3 +84,5 @@ observed_utc,date,state,track,status,races,meeting_id
 2026-11-24T03:42:49+00:00,2026-11-28,NSW,Wagga Riverside,WEIGHTS,6,wagga-riverside-20261128
 2026-11-24T04:13:08+00:00,2026-11-27,QLD,Sunshine Coast,WEIGHTS,7,sunshine-coast-20261127
 2026-11-24T04:13:08+00:00,2026-11-28,QLD,Gold Coast,WEIGHTS,8,gold-coast-20261128
+2026-11-24T04:28:19+00:00,2026-11-28,QLD,Doomben,WEIGHTS,10,doomben-20261128
+2026-11-24T04:28:19+00:00,2026-11-29,QLD,Sunshine Coast Poly Track,NOMINATIONS,8,sunshine-coast-poly-20261129
