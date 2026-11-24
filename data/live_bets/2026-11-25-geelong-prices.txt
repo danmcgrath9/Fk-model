@@ -48,23 +48,23 @@
 5, Mickio, 7.50, 7.50, fk_open 5.50
 5, Pee Bee Noir, 31.00, 31.00, fk_open 24.50
 5, Bling Baby, 31.00, 31.00, fk_open 56.00
-5, Fierce Fiasco, 19.00, 19.00, fk_open 20.00
+5, Fierce Fiasco, SCR, fk_open 20.00
 5, Molesworth, 15.00, 15.00, fk_open 16.00
 5, Sixty Grand, 4.60, 4.60, fk_open 3.50
 5, Julep, SCR, last 17.00, fk_open 13.50
 6, Turn Up The Night, SCR
 6, Egerton, 13.00, 13.00, fk_open 14.50
-6, Jackie's Maid, 17.00, 17.00, fk_open 10.00
-6, I'm Da Boss, 20.00, 20.00, fk_open 19.00
+6, Jackie's Maid, SCR, fk_open 10.00
+6, I'm Da Boss, SCR, fk_open 19.00
 6, Pocket Size, 15.00, 15.00, fk_open 24.50
 6, Just Bolts, 26.00, 26.00, fk_open 42.50
 6, Hustle In Heels, 8.50, 8.50, fk_open 10.00
 6, Mystic Reign, SCR, last 35.00, fk_open 20.00
 6, Bold Bordeaux, 8.00, 8.00, fk_open 7.75
 6, Azzacool, 4.40, 4.40, fk_open 8.00
-6, Superliv, 16.00, 16.00, fk_open 14.50
+6, Superliv, SCR, fk_open 14.50
 6, Pee Plater, 23.00, 23.00, fk_open 26.00
-6, Lady Of Pompeii, 11.00, 11.00, fk_open 24.50
+6, Lady Of Pompeii, SCR, fk_open 24.50
 6, Hellfire Jess, SCR, last 9.50, fk_open 5.50
 6, What Once Was, 13.00, 13.00, fk_open 14.50
 6, Pretty Panther, 21.00, 21.00, fk_open 26.00
@@ -78,14 +78,14 @@
 7, Romuald, 23.00, 23.00, fk_open 15.00
 7, Mykindakandy, 26.00, 26.00, fk_open 19.00
 7, Brazenga, 8.00, 8.00, fk_open 11.00
-7, Venetian Choice, 34.00, 34.00, fk_open 26.00
+7, Venetian Choice, SCR, fk_open 26.00
 7, Watt On Earth, 67.00, 67.00, fk_open 51.00
 7, Jackpot Park, 3.60, 3.60, fk_open 3.90
 7, Big Vee, SCR, last 23.00, fk_open 15.50
 7, Layla, 1.85, 1.85, fk_open 2.10
-7, Circus Lights, 14.00, 14.00, fk_open 15.50
-7, Valedictorian, 23.00, 23.00, fk_open 15.50
-7, Model Gigi, 26.00, 26.00, fk_open 19.00
+7, Circus Lights, SCR, fk_open 15.50
+7, Valedictorian, SCR, fk_open 15.50
+7, Model Gigi, SCR, fk_open 19.00
 8, Albanian I Am, 9.50, 9.50, fk_open 11.50
 8, Mickidamuzz, 51.00, 51.00, fk_open 151.00
 8, Sara's Rocket, 71.00, 71.00, fk_open 56.00

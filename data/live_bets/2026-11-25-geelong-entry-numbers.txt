@@ -47,23 +47,23 @@
 5|2|Mickio|False|False
 5|12|Pee Bee Noir|False|False
 5|13|Bling Baby|False|False
-5|8|Fierce Fiasco|False|False
+5|8|Fierce Fiasco|False|True
 5|6|Molesworth|False|False
 5|1|Sixty Grand|False|False
 5|10|Julep|False|True
 6|17|Turn Up The Night|True|True
 6|5|Egerton|False|False
-6|9|Jackie's Maid|False|False
-6|18|I'm Da Boss|True|False
+6|9|Jackie's Maid|False|True
+6|18|I'm Da Boss|True|True
 6|8|Pocket Size|False|False
 6|4|Just Bolts|False|False
 6|3|Hustle In Heels|False|False
 6|2|Mystic Reign|False|True
 6|1|Bold Bordeaux|False|False
 6|7|Azzacool|False|False
-6|6|Superliv|False|False
+6|6|Superliv|False|True
 6|16|Pee Plater|True|False
-6|13|Lady Of Pompeii|False|False
+6|13|Lady Of Pompeii|False|True
 6|12|Hellfire Jess|False|True
 6|14|What Once Was|False|False
 6|15|Pretty Panther|True|False
@@ -77,14 +77,14 @@
 7|15|Romuald|True|False
 7|7|Mykindakandy|False|False
 7|10|Brazenga|False|False
-7|13|Venetian Choice|False|False
+7|13|Venetian Choice|False|True
 7|9|Watt On Earth|False|False
 7|1|Jackpot Park|False|False
 7|5|Big Vee|False|True
 7|12|Layla|False|False
-7|11|Circus Lights|False|False
-7|8|Valedictorian|False|False
-7|14|Model Gigi|False|False
+7|11|Circus Lights|False|True
+7|8|Valedictorian|False|True
+7|14|Model Gigi|False|True
 8|2|Albanian I Am|False|False
 8|13|Mickidamuzz|False|False
 8|12|Sara's Rocket|False|False
