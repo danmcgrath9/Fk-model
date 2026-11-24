@@ -2,6 +2,36 @@
 
 research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop the send or the message once the gate enforces; CHECK = read it; INFO = a note.
 
+## 2026-11-25 09:05 (observe), from 2026-11-25: 0 would block, 9 to check, 0 notes
+- CHECK card card_thu26_mercer_now.json: prices are 214 minutes old: pull again before it is posted
+- CHECK card card_thu26_mercer_now.json: Mornington R5 Gunz: the prices file has no opening price yet, so the card's $3 is unconfirmed
+- CHECK card card_thu26_mercer_now.json: Mornington R5 Outer Banks: the prices file has no opening price yet, so the card's $9.50 is unconfirmed
+- CHECK card card_thu26_mercer_now.json: Mornington R7 Bel Lupa: the prices file has no opening price yet, so the card's $3.30 is unconfirmed
+- CHECK card card_thu26_mercer_now.json: Mornington R7 No Limitation: the prices file has no opening price yet, so the card's $12 is unconfirmed
+- CHECK card card_thu26_plain_open.json: Mornington R5 Gunz: the prices file has no opening price yet, so the card's $3.70 is unconfirmed
+- CHECK card card_thu26_plain_open.json: Mornington R5 Outer Banks: the prices file has no opening price yet, so the card's $19 is unconfirmed
+- CHECK card card_thu26_plain_open.json: Mornington R7 Bel Lupa: the prices file has no opening price yet, so the card's $5 is unconfirmed
+- CHECK card card_thu26_plain_open.json: Mornington R7 No Limitation: the prices file has no opening price yet, so the card's $19 is unconfirmed
+
+## 2026-11-25 09:04 (observe), from 2026-11-25: 2 would block, 14 to check, 0 notes
+- BLOCK card card_wed25_mercer_now.json: Geelong R6 Lady Of Pompeii: scratched, and the card does not mark it
+- BLOCK card card_wed25_mercer_now.json: Geelong R7 Model Gigi: scratched, and the card does not mark it
+- CHECK card card_thu26_mercer_now.json: prices are 214 minutes old: pull again before it is posted
+- CHECK card card_thu26_mercer_now.json: Mornington R5 Gunz: the prices file has no opening price yet, so the card's $3 is unconfirmed
+- CHECK card card_thu26_mercer_now.json: Mornington R5 Outer Banks: the prices file has no opening price yet, so the card's $9.50 is unconfirmed
+- CHECK card card_thu26_mercer_now.json: Mornington R7 Bel Lupa: the prices file has no opening price yet, so the card's $3.30 is unconfirmed
+- CHECK card card_thu26_mercer_now.json: Mornington R7 No Limitation: the prices file has no opening price yet, so the card's $12 is unconfirmed
+- CHECK card card_thu26_plain_open.json: Mornington R5 Gunz: the prices file has no opening price yet, so the card's $3.70 is unconfirmed
+- CHECK card card_thu26_plain_open.json: Mornington R5 Outer Banks: the prices file has no opening price yet, so the card's $19 is unconfirmed
+- CHECK card card_thu26_plain_open.json: Mornington R7 Bel Lupa: the prices file has no opening price yet, so the card's $5 is unconfirmed
+- CHECK card card_thu26_plain_open.json: Mornington R7 No Limitation: the prices file has no opening price yet, so the card's $19 is unconfirmed
+- CHECK card card_wed25_mercer_now.json: prices are 2536 minutes old: pull again before it is posted
+- CHECK card card_wed25_mercer_now.json: Geelong R4 Gypsy Storm: card $7.5 against $5.5 at the last pull
+- CHECK card card_wed25_mercer_now.json: Geelong R5 Chocolate Royal: card $6.5 against $4.6 at the last pull
+- CHECK card card_wed25_mercer_now.json: Geelong R6 Lady Of Pompeii: the prices file has no opening price yet, so the card's $15 is unconfirmed
+- CHECK card card_wed25_mercer_now.json: Geelong R7 Model Gigi: the prices file has no opening price yet, so the card's $21 is unconfirmed
+
+
 ## 2026-11-25 08:38 (observe), from 2026-11-25: 0 would block, 13 to check, 0 notes
 - CHECK card card_thu26_mercer_now.json: prices are 187 minutes old: pull again before it is posted
 - CHECK card card_thu26_mercer_now.json: Mornington R5 Gunz: the prices file has no opening price yet, so the card's $3 is unconfirmed
@@ -16,6 +46,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_wed25_mercer_now.json: Geelong R4 Gypsy Storm: card $7.5 against $5.5 at the last pull
 - CHECK card card_wed25_mercer_now.json: Geelong R5 Chocolate Royal: card $6.5 against $4.6 at the last pull
 - CHECK card card_wed25_mercer_now.json: Geelong R6 Lady Of Pompeii: card $15 against $11 at the last pull
+
+
 
 ## 2026-11-25 08:37 (observe), from 2026-11-25: 4 would block, 13 to check, 0 notes
 - BLOCK card card_wed25_plain_open.json: Geelong R1 Subscription: card $19, Form King's open $17
@@ -35,6 +67,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_wed25_mercer_now.json: Geelong R4 Gypsy Storm: card $7.5 against $5.5 at the last pull
 - CHECK card card_wed25_mercer_now.json: Geelong R5 Chocolate Royal: card $6.5 against $4.6 at the last pull
 - CHECK card card_wed25_mercer_now.json: Geelong R6 Lady Of Pompeii: card $15 against $11 at the last pull
+
+
 
 
 ## 2026-11-25 05:36 (observe), from 2026-11-25: 0 would block, 53 to check, 0 notes
@@ -94,6 +128,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-24 14:21 (observe), from 2026-11-24: 0 would block, 25 to check, 0 notes
 - CHECK sheet 2026-11-24-ararat: the sheet has no orders
 - CHECK card card_tue24_mercer_now.json: prices are 287 minutes old: pull again before it is posted
@@ -124,6 +160,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-24 13:22 (observe), from 2026-11-24: 0 would block, 25 to check, 0 notes
 - CHECK sheet 2026-11-24-ararat: the sheet has no orders
 - CHECK card card_tue24_mercer_now.json: prices are 227 minutes old: pull again before it is posted
@@ -150,6 +188,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_wed25_plain_open.json: Geelong R5 Mozu Marcassin: the prices file has no opening price yet, so the card's $15 is unconfirmed
 - CHECK card card_wed25_plain_open.json: Geelong R6 Lady Of Pompeii: the prices file has no opening price yet, so the card's $23 is unconfirmed
 - CHECK card card_wed25_plain_open.json: Geelong R7 Model Gigi: the prices file has no opening price yet, so the card's $19 is unconfirmed
+
+
 
 
 
@@ -187,6 +227,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-24 08:39 (observe), from 2026-11-24: 0 would block, 21 to check, 0 notes
 - CHECK sheet 2026-11-24-ararat: the sheet has no orders
 - CHECK card card_tue24_plain_open.json: Ararat R1 Rockin' Dee Fox: on the card, and Form King's open $7.5 fills nothing on the sheet
@@ -216,6 +258,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-23 13:22 (observe), from 2026-11-23: 0 would block, 6 to check, 0 notes
 - CHECK sheet 2026-11-24-ararat: the sheet has no orders
 - CHECK card card_tue24_plain_open.json: Ararat R1 Rockin' Dee Fox: on the card, and Form King's open $7.5 fills nothing on the sheet
@@ -231,6 +275,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-23 11:25 (observe), from 2026-11-23: 0 would block, 6 to check, 0 notes
 - CHECK sheet 2026-11-24-ararat: the sheet has no orders
 - CHECK card card_tue24_plain_open.json: Ararat R1 Rockin' Dee Fox: on the card, and Form King's open $7.5 fills nothing on the sheet
@@ -238,6 +284,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_tue24_plain_open.json: Ararat R6 Fenestella: on the card, and Form King's open $6 fills nothing on the sheet
 - CHECK card card_tue24_plain_open.json: Ararat R7 Hidden Witness: on the card, and Form King's open $14 fills nothing on the sheet
 - CHECK card card_tue24_plain_open.json: Ararat R7 Tempt The Gods: on the card, and Form King's open $11 fills nothing on the sheet
+
+
 
 
 
@@ -294,6 +342,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-23 06:33 (observe), from 2026-11-23: 0 would block, 36 to check, 0 notes
 - CHECK sheet 2026-11-24-ararat: the sheet has no orders
 - CHECK card card_tue24_plain_open.json: Ararat R1 Rockin' Dee Fox: on the card, and Form King's open $7.5 fills nothing on the sheet
@@ -331,6 +381,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK settle card card_sat21tatura_plain_open.json: cranbourne R9 Inkaruna 0.93u: in the running record, not on the card
 - CHECK settle card card_sat21tatura_plain_open.json: penshurst R2 Sugar And Sweet 1.37u: in the running record, not on the card
 - CHECK settle card card_sat21tatura_plain_open.json: penshurst R5 Fire Type 4.92u: in the running record, not on the card
+
+
 
 
 
@@ -404,6 +456,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-22 08:38 (observe), from 2026-11-22: 0 would block, 13 to check, 0 notes
 - CHECK sheet 2026-11-22-kilmore: the sheet has no orders
 - CHECK sheet 2026-11-24-ararat: the sheet has no orders
@@ -418,6 +472,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_tue24_plain_open.json: Ararat R6 Fenestella: on the card, and Form King's open $6 fills nothing on the sheet
 - CHECK card card_tue24_plain_open.json: Ararat R7 Hidden Witness: on the card, and Form King's open $14 fills nothing on the sheet
 - CHECK card card_tue24_plain_open.json: Ararat R7 Tempt The Gods: on the card, and Form King's open $11 fills nothing on the sheet
+
+
 
 
 
@@ -451,6 +507,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_sat21b_mercer_now.json: Penshurst (paper) R5 Fire Type 4.92u is an open-book bet and is not on the card
 - CHECK card card_sat21b_plain_open.json: Penshurst (paper) R2 Sugar And Sweet 1.37u is an open-book bet and is not on the card
 - CHECK card card_sat21b_plain_open.json: Penshurst (paper) R5 Fire Type 4.92u is an open-book bet and is not on the card
+
+
 
 
 
@@ -500,6 +558,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-21 08:51 (observe), from 2026-11-21: 0 would block, 19 to check, 0 notes
 - CHECK sheet 2026-11-22-kilmore: the sheet has no orders
 - CHECK card card_sat21_mercer_now.json: prices are 3878 minutes old: pull again before it is posted
@@ -520,6 +580,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_sat21b_plain_open.json: Penshurst (paper) R2 Sugar And Sweet 1.37u is an open-book bet and is not on the card
 - CHECK card card_sat21b_plain_open.json: Penshurst (paper) R5 Fire Type 4.92u is an open-book bet and is not on the card
 - CHECK settle card card_fri20_plain_open.json: Swan Hill R4 Tell Me Why: on the card, not in the running record
+
+
 
 
 
@@ -572,6 +634,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-21 08:39 (observe), from 2026-11-21: 3 would block, 20 to check, 0 notes
 - BLOCK card card_sat21_mercer_now.json: Cranbourne R7 Job Done: scratched, and the card does not mark it
 - BLOCK card card_sat21_plain_open.json: Cranbourne R7 Job Done: scratched, and the card does not mark it
@@ -596,6 +660,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_sat21b_mercer_now.json: Penshurst (paper) R5 Fire Type 4.92u is an open-book bet and is not on the card
 - CHECK card card_sat21b_plain_open.json: Penshurst (paper) R2 Sugar And Sweet 1.37u is an open-book bet and is not on the card
 - CHECK card card_sat21b_plain_open.json: Penshurst (paper) R5 Fire Type 4.92u is an open-book bet and is not on the card
+
+
 
 
 
@@ -660,6 +726,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-20 09:08 (observe), from 2026-11-20: 0 would block, 25 to check, 1 notes
 - CHECK card card_fri20_mercer_now.json: prices are 1043 minutes old: pull again before it is posted
 - CHECK card card_fri20_mercer_now.json: Swan Hill R4 Tell Me Why: on the card, and Form King's open $8.25 fills nothing on the sheet
@@ -687,6 +755,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_sat21_plain_open.json: Cranbourne R8 Astral Flame: the prices file has no opening price yet, so the card's $15 is unconfirmed
 - CHECK card card_sat21_plain_open.json: Cranbourne R9 Inkaruna: the prices file has no opening price yet, so the card's $15 is unconfirmed
 - INFO settle card card_fri13_plain_open.json: Pakenham R4 Melek: card 10.43u at $2.80, record 5.43u at $2.9 (the card adds the 9am fill at the blended price; the record keeps the 9am list apart)
+
+
 
 
 
@@ -754,6 +824,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-20 08:38 (observe), from 2026-11-20: 1 would block, 25 to check, 0 notes
 - BLOCK card card_fri20_plain_open.json: Pakenham R1 Angling Angel: card $3, Form King's open $2.85
 - CHECK card card_fri20_mercer_now.json: prices are 1012 minutes old: pull again before it is posted
@@ -781,6 +853,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_sat21_plain_open.json: Cranbourne R7 Markdel: the prices file has no opening price yet, so the card's $11 is unconfirmed
 - CHECK card card_sat21_plain_open.json: Cranbourne R8 Astral Flame: the prices file has no opening price yet, so the card's $15 is unconfirmed
 - CHECK card card_sat21_plain_open.json: Cranbourne R9 Inkaruna: the prices file has no opening price yet, so the card's $15 is unconfirmed
+
+
 
 
 
@@ -860,6 +934,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-19 11:19 (observe), from 2026-11-19: 0 would block, 31 to check, 0 notes
 - CHECK card card_fri20_mercer_now.json: prices are 1085 minutes old: pull again before it is posted
 - CHECK card card_fri20_mercer_now.json: Pakenham R1 Angling Angel: the prices file has no opening price yet, so the card's $2.20 is unconfirmed
@@ -892,6 +968,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_thu19_mercer_now.json: prices are 48 minutes old: pull again before it is posted
 - CHECK card card_thu19_mercer_now.json: Mornington R7 Sealand 1.21u is an open-book bet and is not on the card
 - CHECK card card_thu19_plain_open.json: Mornington R7 Sealand 1.21u is an open-book bet and is not on the card
+
+
 
 
 
@@ -972,6 +1050,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-18 16:05 (observe), from 2026-11-18: 0 would block, 7 to check, 0 notes
 - CHECK card card_thu19_mercer_now.json: prices are 1402 minutes old: pull again before it is posted
 - CHECK card card_thu19_mercer_now.json: Mornington R1 Parera: the prices file has no opening price yet, so the card's $4.80 is unconfirmed
@@ -980,6 +1060,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_thu19_plain_open.json: Mornington R2 Nitro Sonic: the prices file has no opening price yet, so the card's $17 is unconfirmed
 - CHECK card card_wed18_mercer_now.json: no prices_as_at: the time its prices were pulled is not on the card
 - CHECK card card_wed18_mercer_now.json: Sandown R5 Breathless Spirit: card $4 against $3.5 at the last pull
+
+
 
 
 
@@ -1041,6 +1123,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-18 11:50 (observe), from 2026-11-18: 0 would block, 7 to check, 0 notes
 - CHECK card card_thu19_mercer_now.json: prices are 1148 minutes old: pull again before it is posted
 - CHECK card card_thu19_mercer_now.json: Mornington R1 Parera: the prices file has no opening price yet, so the card's $4.80 is unconfirmed
@@ -1049,6 +1133,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_thu19_plain_open.json: Mornington R2 Nitro Sonic: the prices file has no opening price yet, so the card's $17 is unconfirmed
 - CHECK card card_wed18_mercer_now.json: no prices_as_at: the time its prices were pulled is not on the card
 - CHECK card card_wed18_mercer_now.json: Sandown R5 Breathless Spirit: card $4 against $3.5 at the last pull
+
+
 
 
 
@@ -1115,6 +1201,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-18 11:32 (observe), from 2026-11-18: 0 would block, 7 to check, 0 notes
 - CHECK card card_thu19_mercer_now.json: prices are 1129 minutes old: pull again before it is posted
 - CHECK card card_thu19_mercer_now.json: Mornington R1 Parera: the prices file has no opening price yet, so the card's $4.80 is unconfirmed
@@ -1123,6 +1211,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_thu19_plain_open.json: Mornington R2 Nitro Sonic: the prices file has no opening price yet, so the card's $17 is unconfirmed
 - CHECK card card_wed18_mercer_now.json: no prices_as_at: the time its prices were pulled is not on the card
 - CHECK card card_wed18_mercer_now.json: Sandown R5 Breathless Spirit: card $4 against $3.5 at the last pull
+
+
 
 
 
@@ -1192,6 +1282,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-18 08:47 (observe), from 2026-11-18: 0 would block, 7 to check, 1 notes
 - CHECK card card_thu19_mercer_now.json: prices are 964 minutes old: pull again before it is posted
 - CHECK card card_thu19_mercer_now.json: Mornington R1 Parera: the prices file has no opening price yet, so the card's $4.80 is unconfirmed
@@ -1201,6 +1293,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_wed18_mercer_now.json: no prices_as_at: the time its prices were pulled is not on the card
 - CHECK card card_wed18_mercer_now.json: Sandown R5 Breathless Spirit: card $4 against $3.5 at the last pull
 - INFO settle card card_fri13_plain_open.json: Pakenham R4 Melek: card 10.43u at $2.80, record 5.43u at $2.9 (the card adds the 9am fill at the blended price; the record keeps the 9am list apart)
+
+
 
 
 
@@ -1276,6 +1370,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-18 08:39 (observe), from 2026-11-18: 0 would block, 8 to check, 0 notes
 - CHECK card card_thu19_mercer_now.json: prices are 957 minutes old: pull again before it is posted
 - CHECK card card_thu19_mercer_now.json: Mornington R1 Parera: the prices file has no opening price yet, so the card's $4.80 is unconfirmed
@@ -1285,6 +1381,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - CHECK card card_wed18_mercer_now.json: no prices_as_at: the time its prices were pulled is not on the card
 - CHECK card card_wed18_mercer_now.json: Sandown R5 Breathless Spirit: card $4 against $3.5 at the last pull
 - CHECK deductions 2026-11-17-kyneton: R8 2c: no scratched runner in that race at this meeting (a late scratching the last pull has not seen?)
+
+
 
 
 
@@ -1365,6 +1463,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-17 16:12 (observe), from 2026-11-17: 0 would block, 4 to check, 3 notes
 - CHECK card card_wed18_mercer_now.json: no prices_as_at: the time its prices were pulled is not on the card
 - CHECK card card_wed18_mercer_now.json: Sandown R5 Breathless Spirit: the prices file has no opening price yet, so the card's $4 is unconfirmed
@@ -1409,6 +1509,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 
 
 
+
+
 ## 2026-11-17 16:04 (observe), from 2026-11-17: 0 would block, 4 to check, 3 notes
 - CHECK card card_wed18_mercer_now.json: no prices_as_at: the time its prices were pulled is not on the card
 - CHECK card card_wed18_mercer_now.json: Sandown R5 Breathless Spirit: the prices file has no opening price yet, so the card's $4 is unconfirmed
@@ -1417,6 +1519,8 @@ research/form_gbm/verify.py, newest first, the last 60 runs. BLOCK = would stop 
 - INFO betmatic 2026-11-14-dunkeld-betmatic-preopen: 99 orders sent, status read for 99, 2 confirmed placed ($155)
 - INFO betmatic 2026-11-14-dunkeld-probe: 9 orders sent, status read for 9, 1 confirmed placed ($126)
 - INFO settle card card_fri13_plain_open.json: Pakenham R4 Melek: card 10.43u at $2.80, record 5.43u at $2.9 (the card adds the 9am fill at the blended price; the record keeps the 9am list apart)
+
+
 
 
 
