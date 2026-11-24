@@ -9784,6 +9784,7 @@ published November, so there is no BSP yet.
 | 20 Nov | 44900288784 | 47 | 47 | 35 | 7 | 7 | 3 | 3.57 | 17.04 | -4.94 | 0 | 0 | 1, 1, +3.20 (+320.0%) | 0 |
 | 21 Nov | 45018519555 | 24 | 24 | 12 | 3 | 3 | 1 | 0.77 | 4.69 | -2.87 | 0 | 0 | 2, 1, +4.00 (+200.0%) | 2, 1, +4.00 (+200.0%) |
 | 22 Nov | 45167524626 | 24 | 24 | 22 | 2 | 2 | 1 | 0.91 | 7.99 | -0.59 | 0 | 0 | 3, 0, -3.00 (-100.0%) | 3, 0, -3.00 (-100.0%) |
+| 23 Nov | 45387400796 | 47 | 48 | 41 | 14 | 13 | 6 | 5.20 | 40.87 | +19.78 | 1 | 0 | 4, 1, +11.00 (+275.0%) | 0 |
 
 All four 15 Nov bets opened shorter on TAB than GRV's evening price (TAB at 24% to 49% of it) and below the card's own
 blended price, the same pattern as the first nine nights. Two won, at TAB's first price less the deduction: +5.77
@@ -9860,10 +9861,24 @@ after the card, so every one could have been taken; the morning program scored t
 and lost. The 23 Nov run re-scored the earlier days with the refitted correction (at 1.2x it now finds two 18 Nov
 bets and none on 19 Nov); the kept rows stay as first scored.
 
-The card as sent so far, 6 to 22 Nov: 107 bets, 106 settled (one refund), 43 winners against 43.06 expected at the
-prices taken (A/E 1.00), 238.24 units staked, -32.70 units won (-13.7% at the card's units, -3.8% flat), -30.00 at
-the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 10 bets at
-1.1x (5 won, +22.70 units) and 7 at 1.2x (3 won, +15.50), each day as first scored; Blue Storm's +5.00 at both is in
+Fourteen 23 Nov bets on the card as sent, thirteen settled: Paw Nessy (Ballarat R5) was not in TAB's market at its
+open, so it is void. Six won: +19.78 units on 40.87 staked (+48.4% at the card's units, +44.2% flat), against 5.20
+winners expected at the prices taken, and +22.18 at the best first price of three. Every TAB first price came between
+7:51 and 8:46am on race morning, after the card (made at 10:41pm the night before), so every bet could have been
+taken. Shepparton R4, the race whose GRV book summed to 58% on five dogs, carried four of the card's bets at 4 units
+each: Got A Rustler won at $6.00 (+20.00) and the other three lost, +8.00 units on 16 staked. A book that far under
+100% makes every dog in the race look long against the blend, so that race says more about GRV's prices than about
+the rule. Big White Skier (Warrnambool R4) was still 1.3x the card's blended price at TAB's open and won at $4.00,
++12.00 at its 4 units. The corrected blend had four bets at 1.1x and one winner, Lacrimal (Warrnambool R5) at
+$15.00, +11.00 units; none reached 1.2x. The run counts 48 races found in TAB's market against 47 on the card because
+the count takes every Betwatch race on the day, including one that was not on the card. This run (45387400796) is a
+re-run: the first (45386549245) was sealed to the old card key, which was lost when the cloud container was
+replaced, and PR 239 put a new key in its place.
+
+The card as sent so far, 6 to 23 Nov: 121 bets, 119 settled (one refund, one void), 49 winners against 48.26 expected
+at the prices taken (A/E 1.02), 279.11 units staked, -12.92 units won (-4.6% at the card's units, +1.4% flat), -7.82
+at the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 14 bets at
+1.1x (6 won, +33.70 units) and 7 at 1.2x (3 won, +15.50), each day as first scored; Blue Storm's +5.00 at both is in
 those totals and came from a market TAB opened before the card.
 
 Results go here as they come in.
