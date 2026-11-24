@@ -78,3 +78,4 @@ observed_utc,date,state,track,status,races,meeting_id
 2026-11-24T01:56:42+00:00,2026-11-28,VIC,Yarra Valley,WEIGHTS,7,yarra-glen-20261128
 2026-11-24T01:56:42+00:00,2026-11-29,VIC,Warrnambool,FINAL_FIELDS,1,warrnambool-20261129
 2026-11-24T02:27:01+00:00,2026-11-26,QLD,Rockhampton,FINAL_FIELDS,6,rockhampton-20261126
+2026-11-24T02:42:11+00:00,2026-11-24,NSW,Tamworth,INTERIM_RESULTS,8,tamworth-20261124
