@@ -11,7 +11,7 @@
      "race": 1,
      "time": "2:30PM",
      "horse": "Subscription",
-     "price": "$19",
+     "price": "$17",
      "units": "1.29u",
      "rated": "$8.28"
     },
@@ -35,7 +35,7 @@
      "race": 5,
      "time": "4:50PM",
      "horse": "Chocolate Royal",
-     "price": "$17",
+     "price": "$15.33",
      "units": "1.37u",
      "rated": "$7.83"
     },
@@ -43,7 +43,7 @@
      "race": 5,
      "time": "4:50PM",
      "horse": "Mozu Marcassin",
-     "price": "$15",
+     "price": "$16",
      "units": "0.86u",
      "rated": "$9.81"
     },
@@ -51,8 +51,9 @@
      "race": 6,
      "time": "5:25PM",
      "horse": "Lady Of Pompeii",
-     "price": "$23",
+     "price": "$24.50",
      "units": "0.55u",
+     "scr": true,
      "rated": "$14.66"
     },
     {
@@ -61,6 +62,7 @@
      "horse": "Model Gigi",
      "price": "$19",
      "units": "1.05u",
+     "scr": true,
      "rated": "$9.98"
     }
    ]
