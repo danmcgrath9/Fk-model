@@ -3,6 +3,6 @@
  "holdout_kl": 0.0819,
  "races": "5433 2026-11-22",
  "trained_through": "2026-11-22",
- "trained_utc": "2026-11-23T05:08Z",
+ "trained_utc": "2026-11-24T08:26Z",
  "note": "holdout KL is a did-anything-break check, not a comparison with the live model"
 }
