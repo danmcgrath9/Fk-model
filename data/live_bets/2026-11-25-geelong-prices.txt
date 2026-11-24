@@ -1,101 +1,101 @@
-# Geelong Wed 25 Nov, official going, final fields; no market yet; PROVISIONAL: 1 runners without a rider
-1, Miss Xtravaganza, 0, 0
-1, Better Shape Up, 0, 0
-1, The Toronado Kid, 0, 0
-1, Brutal Tempo, 0, 0
-1, Madame Makwela, 0, 0
-1, Irish Master, 0, 0
-1, Pride In Motion, 0, 0
-1, Subscription, 0, 0
-1, Blackbelt, 0, 0
-1, Vivid Legend, 0, 0
-2, Flying Cloud, 0, 0
-2, La Dupeur, 0, 0
-2, Jenni The French, 0, 0
-2, Rubicube, 0, 0
-2, Ruby From Zadar, 0, 0
-2, Victimised, 0, 0
-2, Bella Blaze, 0, 0
-2, Seagoe, 0, 0
-3, Perfect Dismount, 0, 0
-3, Tufflee, 0, 0
-3, Gallantry, 0, 0
-3, Discmania, 0, 0
-3, Famous Rosy, 0, 0
-3, Loyalty, 0, 0
-3, Our Bee Gee, 0, 0
-3, On Fire Zachariah, 0, 0
-3, Gordacious, 0, 0
-3, Superwill, 0, 0
-3, Cirque De Coco, 0, 0
-3, Brandon Bay, 0, 0
-4, Granite Hill, 0, 0
-4, Bjorson, 0, 0
-4, Flight Du Jour, 0, 0
-4, Zercardy, 0, 0
-4, Brilliant Bull Ant, 0, 0
-4, Gypsy Storm, 0, 0
-4, Alpine Point, 0, 0
-4, Lavancher, 0, 0
-4, Rumours Fly, 0, 0
-4, Carnevale, 0, 0
-5, Corona Lad, 0, 0
-5, Verifier, 0, 0
-5, Chocolate Royal, 0, 0
-5, Callawadda, 0, 0
-5, Nicoffhome, 0, 0
-5, Mozu Marcassin, 0, 0
-5, Mickio, 0, 0
-5, Pee Bee Noir, 0, 0
-5, Bling Baby, 0, 0
-5, Fierce Fiasco, 0, 0
-5, Molesworth, 0, 0
-5, Sixty Grand, 0, 0
-5, Julep, 0, 0
+# Geelong Wed 25 Nov, official going, final fields; market open in R1,2,3,4,5,6,7,8
+1, Miss Xtravaganza, 81.00, 81.00, fk_open 51.00
+1, Better Shape Up, 15.00, 15.00, fk_open 11.00
+1, The Toronado Kid, 151.00, 151.00, fk_open 101.00
+1, Brutal Tempo, 5.50, 5.50, fk_open 4.00
+1, Madame Makwela, 31.00, 31.00, fk_open 51.00
+1, Irish Master, 34.00, 34.00, fk_open 26.00
+1, Pride In Motion, 151.00, 151.00, fk_open 101.00
+1, Subscription, 7.00, 7.00, fk_open 17.00
+1, Blackbelt, 1.70, 1.70, fk_open 1.50
+1, Vivid Legend, 6.00, 6.00, fk_open 6.00
+2, Flying Cloud, 10.00, 10.00, fk_open 19.00
+2, La Dupeur, SCR, last 10.00, fk_open 6.00
+2, Jenni The French, 7.50, 7.50, fk_open 11.00
+2, Rubicube, 34.00, 34.00, fk_open 34.00
+2, Ruby From Zadar, 51.00, 51.00, fk_open 71.00
+2, Victimised, 5.50, 5.50, fk_open 4.40
+2, Bella Blaze, 2.90, 2.90, fk_open 2.40
+2, Seagoe, 2.35, 2.35, fk_open 3.10
+3, Perfect Dismount, 11.00, 11.00, fk_open 19.00
+3, Tufflee, 6.50, 6.50, fk_open 6.00
+3, Gallantry, 6.50, 6.50, fk_open 4.40
+3, Discmania, 6.00, 6.00, fk_open 11.00
+3, Famous Rosy, 7.50, 7.50, fk_open 8.00
+3, Loyalty, 41.00, 41.00, fk_open 26.00
+3, Our Bee Gee, 151.00, 151.00, fk_open 101.00
+3, On Fire Zachariah, 20.00, 20.00, fk_open 15.00
+3, Gordacious, 20.00, 20.00, fk_open 11.00
+3, Superwill, 4.20, 4.20, fk_open 8.00
+3, Cirque De Coco, SCR
+3, Brandon Bay, 7.50, 7.50, fk_open 11.00
+4, Granite Hill, 151.00, 151.00, fk_open 101.00
+4, Bjorson, 10.00, 10.00, fk_open 6.00
+4, Flight Du Jour, 17.00, 17.00, fk_open 15.00
+4, Zercardy, SCR, last 17.00, fk_open 19.00
+4, Brilliant Bull Ant, 14.00, 14.00, fk_open 15.00
+4, Gypsy Storm, 5.50, 5.50, fk_open 11.00
+4, Alpine Point, 11.00, 11.00, fk_open 8.00
+4, Lavancher, 7.50, 7.50, fk_open 4.40
+4, Rumours Fly, 41.00, 41.00, fk_open 26.00
+4, Carnevale, 1.80, 1.80, fk_open 2.10
+5, Corona Lad, 5.00, 5.00, fk_open 7.50
+5, Verifier, 13.00, 13.00, fk_open 11.50
+5, Chocolate Royal, 4.60, 4.60, fk_open 15.33
+5, Callawadda, 12.00, 12.00, fk_open 7.75
+5, Nicoffhome, 12.00, 12.00, fk_open 7.75
+5, Mozu Marcassin, 11.00, 11.00, fk_open 16.00
+5, Mickio, 7.00, 7.00, fk_open 5.50
+5, Pee Bee Noir, 31.00, 31.00, fk_open 24.50
+5, Bling Baby, 31.00, 31.00, fk_open 56.00
+5, Fierce Fiasco, 19.00, 19.00, fk_open 20.00
+5, Molesworth, 15.00, 15.00, fk_open 16.00
+5, Sixty Grand, 4.60, 4.60, fk_open 3.50
+5, Julep, SCR, last 17.00, fk_open 13.50
 6, Turn Up The Night, SCR
-6, Egerton, 0, 0
-6, Jackie's Maid, 0, 0
-6, I'm Da Boss, SCR
-6, Pocket Size, 0, 0
-6, Just Bolts, 0, 0
-6, Hustle In Heels, 0, 0
-6, Mystic Reign, 0, 0
-6, Bold Bordeaux, 0, 0
-6, Azzacool, 0, 0
-6, Superliv, 0, 0
-6, Pee Plater, SCR
-6, Lady Of Pompeii, 0, 0
-6, Hellfire Jess, 0, 0
-6, What Once Was, 0, 0
-6, Pretty Panther, SCR
-6, Unwavering, 0, 0
-6, Satoshi, 0, 0
-7, Blondeau, 0, 0
-7, Dollar Chaser, 0, 0
-7, Empressive Enuff, 0, 0
-7, Royal Infantry, SCR
-7, Move The Torana, 0, 0
-7, Romuald, SCR
-7, Mykindakandy, 0, 0
-7, Brazenga, 0, 0
-7, Venetian Choice, 0, 0
-7, Watt On Earth, 0, 0
-7, Jackpot Park, 0, 0
-7, Big Vee, 0, 0
-7, Layla, 0, 0
-7, Circus Lights, 0, 0
-7, Valedictorian, 0, 0
-7, Model Gigi, 0, 0
-8, Albanian I Am, 0, 0
-8, Mickidamuzz, 0, 0
-8, Sara's Rocket, 0, 0
-8, Weather Delay, 0, 0
-8, Manhattan Empire, 0, 0
-8, Swing Your Magic, 0, 0
-8, Il Cielo, 0, 0
-8, M'lady Rose, 0, 0
-8, Itsagiven, 0, 0
-8, Jenni Poppins, 0, 0
-8, Dame Of Dubai, 0, 0
-8, Just My Lot, 0, 0
-8, Two To Tango, 0, 0
+6, Egerton, 14.00, 14.00, fk_open 14.50
+6, Jackie's Maid, 17.00, 17.00, fk_open 10.00
+6, I'm Da Boss, 20.00, 20.00, fk_open 19.00
+6, Pocket Size, 16.00, 16.00, fk_open 24.50
+6, Just Bolts, 26.00, 26.00, fk_open 42.50
+6, Hustle In Heels, 8.50, 8.50, fk_open 10.00
+6, Mystic Reign, SCR, last 35.00, fk_open 20.00
+6, Bold Bordeaux, 8.50, 8.50, fk_open 7.75
+6, Azzacool, 5.50, 5.50, fk_open 8.00
+6, Superliv, 16.00, 16.00, fk_open 14.50
+6, Pee Plater, 26.00, 26.00, fk_open 26.00
+6, Lady Of Pompeii, 11.00, 11.00, fk_open 24.50
+6, Hellfire Jess, SCR, last 9.50, fk_open 5.50
+6, What Once Was, 14.00, 14.00, fk_open 14.50
+6, Pretty Panther, 21.00, 21.00, fk_open 26.00
+6, Unwavering, 5.50, 5.50, fk_open 4.70
+6, Satoshi, 5.00, 5.00, fk_open 7.75
+7, Blondeau, 31.00, 31.00, fk_open 101.00
+7, Dollar Chaser, 26.00, 26.00, fk_open 41.00
+7, Empressive Enuff, 12.00, 12.00, fk_open 15.50
+7, Royal Infantry, SCR, last 23.00, fk_open 15.00
+7, Move The Torana, 26.00, 26.00, fk_open 19.00
+7, Romuald, 23.00, 23.00, fk_open 15.00
+7, Mykindakandy, 27.00, 27.00, fk_open 19.00
+7, Brazenga, 8.00, 8.00, fk_open 11.00
+7, Venetian Choice, 34.00, 34.00, fk_open 26.00
+7, Watt On Earth, 67.00, 67.00, fk_open 51.00
+7, Jackpot Park, 3.70, 3.70, fk_open 3.90
+7, Big Vee, SCR, last 23.00, fk_open 15.50
+7, Layla, 1.85, 1.85, fk_open 2.10
+7, Circus Lights, 14.00, 14.00, fk_open 15.50
+7, Valedictorian, 23.00, 23.00, fk_open 15.50
+7, Model Gigi, 26.00, 26.00, fk_open 19.00
+8, Albanian I Am, 9.00, 9.00, fk_open 11.50
+8, Mickidamuzz, 51.00, 51.00, fk_open 151.00
+8, Sara's Rocket, 61.00, 61.00, fk_open 56.00
+8, Weather Delay, 31.00, 31.00, fk_open 24.50
+8, Manhattan Empire, 9.50, 9.50, fk_open 37.50
+8, Swing Your Magic, SCR, last 21.00, fk_open 11.50
+8, Il Cielo, 26.00, 26.00, fk_open 20.00
+8, M'lady Rose, 3.20, 3.20, fk_open 3.25
+8, Itsagiven, 61.00, 61.00, fk_open 56.00
+8, Jenni Poppins, 5.50, 5.50, fk_open 5.50
+8, Dame Of Dubai, 4.20, 4.20, fk_open 4.30
+8, Just My Lot, SCR, last 8.50, fk_open 7.00
+8, Two To Tango, 7.50, 7.50, fk_open 9.00

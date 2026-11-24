@@ -1,0 +1,10 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,GEEL_251126_1,Blackbelt,top_pick,1.7,1.7,1.5,1.5,,1.79,-0.161,Beaten by the pace last start; Already run to today's class; EARLY ONLY: bet near the open,1.0,no,,
+2,GEEL_251126_2,Seagoe,top_pick,2.35,2.35,3.1,3.1,,2.79,0.113,Already run to today's class; New career-best last start; Class drop (rating); EARLY ONLY: bet near the open,1.0,no,,
+4,GEEL_251126_4,Carnevale,top_pick,1.8,1.8,2.1,2.1,,2.25,-0.065,Above the field in all three sections; Blinkers first time,1.0,no,,
+5,GEEL_251126_5,Sixty Grand,top_pick,4.6,4.6,3.5,3.5,,5.32,-0.342,Well backed before a bad last run,1.0,no,,
+6,GEEL_251126_6,Unwavering,top_pick,5.5,5.5,4.7,4.7,,6.07,-0.226,Class drop (rating),1.0,no,,
+6,GEEL_251126_6,Superliv,value_20c,16.0,16.0,14.5,14.5,,11.26,0.287,,1.0,no,,
+7,GEEL_251126_7,Layla,top_pick,1.85,1.85,2.1,2.1,,2.77,-0.243,Already run to today's class; Class drop (rating); EARLY ONLY: bet near the open,1.0,no,,
+7,GEEL_251126_7,Model Gigi,value_20c,26.0,26.0,19.0,19.0,,13.22,0.437,,1.26,no,,
+8,GEEL_251126_8,M'lady Rose,top_pick,3.2,3.2,3.25,3.25,,3.24,0.003,; EARLY ONLY: bet near the open,1.0,no,,

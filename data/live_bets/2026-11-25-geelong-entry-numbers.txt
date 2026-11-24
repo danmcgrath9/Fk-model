@@ -9,7 +9,7 @@
 1|5|Blackbelt|False|False
 1|8|Vivid Legend|False|False
 2|2|Flying Cloud|False|False
-2|4|La Dupeur|False|False
+2|4|La Dupeur|False|True
 2|3|Jenni The French|False|False
 2|5|Rubicube|False|False
 2|6|Ruby From Zadar|False|False
@@ -26,12 +26,12 @@
 3|6|On Fire Zachariah|False|False
 3|5|Gordacious|False|False
 3|9|Superwill|False|False
-3|11|Cirque De Coco|False|False
+3|11|Cirque De Coco|False|True
 3|1|Brandon Bay|False|False
 4|3|Granite Hill|False|False
 4|1|Bjorson|False|False
 4|9|Flight Du Jour|False|False
-4|4|Zercardy|False|False
+4|4|Zercardy|False|True
 4|2|Brilliant Bull Ant|False|False
 4|10|Gypsy Storm|False|False
 4|5|Alpine Point|False|False
@@ -50,21 +50,21 @@
 5|8|Fierce Fiasco|False|False
 5|6|Molesworth|False|False
 5|1|Sixty Grand|False|False
-5|10|Julep|False|False
-6|17|Turn Up The Night|True|False
+5|10|Julep|False|True
+6|17|Turn Up The Night|True|True
 6|5|Egerton|False|False
 6|9|Jackie's Maid|False|False
 6|18|I'm Da Boss|True|False
 6|8|Pocket Size|False|False
 6|4|Just Bolts|False|False
 6|3|Hustle In Heels|False|False
-6|2|Mystic Reign|False|False
+6|2|Mystic Reign|False|True
 6|1|Bold Bordeaux|False|False
 6|7|Azzacool|False|False
 6|6|Superliv|False|False
 6|16|Pee Plater|True|False
 6|13|Lady Of Pompeii|False|False
-6|12|Hellfire Jess|False|False
+6|12|Hellfire Jess|False|True
 6|14|What Once Was|False|False
 6|15|Pretty Panther|True|False
 6|11|Unwavering|False|False
@@ -72,7 +72,7 @@
 7|6|Blondeau|False|False
 7|2|Dollar Chaser|False|False
 7|4|Empressive Enuff|False|False
-7|16|Royal Infantry|True|False
+7|16|Royal Infantry|True|True
 7|3|Move The Torana|False|False
 7|15|Romuald|True|False
 7|7|Mykindakandy|False|False
@@ -80,7 +80,7 @@
 7|13|Venetian Choice|False|False
 7|9|Watt On Earth|False|False
 7|1|Jackpot Park|False|False
-7|5|Big Vee|False|False
+7|5|Big Vee|False|True
 7|12|Layla|False|False
 7|11|Circus Lights|False|False
 7|8|Valedictorian|False|False
@@ -90,11 +90,11 @@
 8|12|Sara's Rocket|False|False
 8|4|Weather Delay|False|False
 8|5|Manhattan Empire|False|False
-8|3|Swing Your Magic|False|False
+8|3|Swing Your Magic|False|True
 8|1|Il Cielo|False|False
 8|9|M'lady Rose|False|False
 8|6|Itsagiven|False|False
 8|11|Jenni Poppins|False|False
 8|7|Dame Of Dubai|False|False
-8|8|Just My Lot|False|False
+8|8|Just My Lot|False|True
 8|10|Two To Tango|False|False
