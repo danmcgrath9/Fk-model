@@ -1,0 +1,29 @@
+{
+ "day": "Saturday",
+ "date": "28 November",
+ "footer": "Win bets.",
+ "brand": true,
+ "prices_as_at": "2026-11-25T15:00",
+ "meetings": [
+  {
+   "name": "Sandown",
+   "note": "R4 not open yet",
+   "bets": [
+    {
+     "race": 3,
+     "time": "1:25PM",
+     "horse": "Franked Up",
+     "price": "$5",
+     "units": "1.44u"
+    },
+    {
+     "race": 6,
+     "time": "3:10PM",
+     "horse": "Lafarna",
+     "price": "$6.50",
+     "units": "1.28u"
+    }
+   ]
+  }
+ ]
+}
