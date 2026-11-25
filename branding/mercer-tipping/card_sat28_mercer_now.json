@@ -3,7 +3,7 @@
  "date": "28 November",
  "footer": "Win bets.",
  "brand": true,
- "prices_as_at": "2026-11-25T15:00",
+ "prices_as_at": "2026-11-25T15:05",
  "meetings": [
   {
    "name": "Sandown",
@@ -19,9 +19,9 @@
     {
      "race": 6,
      "time": "3:10PM",
-     "horse": "Lafarna",
-     "price": "$6.50",
-     "units": "1.28u"
+     "horse": "Cavill Avenue",
+     "price": "$2.15",
+     "units": "10u"
     }
    ]
   }
