@@ -12,16 +12,16 @@
      "time": "1:25PM",
      "horse": "Franked Up",
      "price": "$8",
-     "units": "1.44u",
-     "rated": "$5.21"
+     "units": "1.43u",
+     "rated": "$5.22"
     },
     {
      "race": 6,
      "time": "3:10PM",
      "horse": "Cavill Avenue",
-     "price": "$2.15",
+     "price": "$2.20",
      "units": "10u",
-     "rated": "$2.44"
+     "rated": "$2.56"
     }
    ]
   }

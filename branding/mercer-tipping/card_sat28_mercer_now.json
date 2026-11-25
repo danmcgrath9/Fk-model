@@ -3,7 +3,7 @@
  "date": "28 November",
  "footer": "Win bets.",
  "brand": true,
- "prices_as_at": "2026-11-25T15:05",
+ "prices_as_at": "2026-11-25T16:10",
  "meetings": [
   {
    "name": "Sandown",
@@ -13,14 +13,14 @@
      "race": 3,
      "time": "1:25PM",
      "horse": "Franked Up",
-     "price": "$5",
-     "units": "1.44u"
+     "price": "$4.60",
+     "units": "1.43u"
     },
     {
      "race": 6,
      "time": "3:10PM",
      "horse": "Cavill Avenue",
-     "price": "$2.15",
+     "price": "$2.20",
      "units": "10u"
     }
    ]
