@@ -1,0 +1,10 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,PAKM_271126_1,Majestic Son,top_pick,2.05,2.05,2.8,2.8,,2.38,0.177,Already run to today's class; Class drop (rating); Late 600 beyond the tempo; EARLY ONLY: bet near the open,1.0,no,,
+3,PAKM_271126_3,Abydos,top_pick,4.2,4.2,4.2,4.2,,4.8,-0.125,,1.0,no,,
+4,PAKM_271126_4,Montesquieu,top_pick,2.9,2.9,2.5,2.5,,3.27,-0.236,,1.0,no,,
+5,PAKM_271126_5,Alexander Thegreat,EDGE,10.0,10.0,10.0,10.0,,7.68,0.302,"Third-up, improving",1.22,no,,
+5,PAKM_271126_5,Alexander Thegreat,value_20c,10.0,10.0,10.0,10.0,,7.68,0.302,"Third-up, improving",1.22,no,,
+5,PAKM_271126_5,Mount Sabyinyo,top_pick,4.5,4.5,5.5,5.5,,5.82,-0.055,,1.0,no,,
+6,PAKM_271126_6,There Were Roses,top_pick,7.0,7.0,5.0,5.0,,4.12,0.213,Proven wet on a wet track,1.0,no,,
+7,PAKM_271126_7,General Blu,top_pick,3.4,3.4,3.33,3.33,,3.53,-0.058,Already run to today's class; Above the field in all three sections; EARLY ONLY: bet near the open,1.0,no,,
+8,PAKM_271126_8,Barari,top_pick,5.0,5.0,4.8,4.8,,4.33,0.109,Well backed before a bad last run; Proven wet on a wet track; Class drop (rating),1.0,no,,

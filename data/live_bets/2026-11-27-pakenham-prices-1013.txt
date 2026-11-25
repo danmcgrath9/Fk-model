@@ -1,0 +1,104 @@
+# Pakenham Park Fri 27 Nov, Soft 7 (set by hand for the rain: 0.3mm in the 3 days before, 42.9mm on the day), final fields; no market yet; PROVISIONAL: 1 runners without a rider
+1, Brazen Bold, 0, 0
+1, Lord Of The Earth, 0, 0
+1, Mr Sapphire, 0, 0
+1, Bohemian Rhapsody, 0, 0
+1, Majestic Son, 0, 0
+1, Activating, 0, 0
+1, Capital Storm, 0, 0
+1, Tiz The Tycoon, 0, 0
+1, Adhara, 0, 0
+2, Spirit Nature, 0, 0
+2, Blue Jeans Talk, 0, 0
+2, Nyad, 0, 0
+2, Dancell, 0, 0
+2, Blue Ivy, 0, 0
+2, Epponnee Rae, 0, 0
+2, Kensington, 0, 0
+2, Assunta, 0, 0
+2, Media Darling, 0, 0
+2, Please Please Me, 0, 0
+2, Amber Queen, SCR
+2, Renecca, 0, 0
+2, Wolfmaama, 0, 0
+3, Maurie's Pride, 0, 0
+3, Abydos, 0, 0
+3, Soundwave, 0, 0
+3, Shy Velocity, 0, 0
+3, Kokeshi, 0, 0
+3, Russian Nights, SCR
+3, Grey Flyer, SCR
+3, Shipping Steel, SCR
+3, Barossa Bourbon, 0, 0
+3, Hurtado, 0, 0
+3, Another Pothole, 0, 0
+3, Percipient, 0, 0
+3, Red Tide, 0, 0
+3, Fort Rock, 0, 0
+3, Pocket Watch, 0, 0
+4, Chronic, 0, 0
+4, Always Shining, 0, 0
+4, Faro Lady, 0, 0
+4, Seinfeld, 0, 0
+4, Full Zoom, 0, 0
+4, Asparagus, 0, 0
+4, Montesquieu, 0, 0
+4, Tecknoking, 0, 0
+4, Ardad Ned, 0, 0
+4, Tequila's Bro, 0, 0
+4, Wollemi, 0, 0
+4, Zametovka, 0, 0
+5, Aristonous, 0, 0
+5, Hey Bella, 0, 0
+5, Untapped, 0, 0
+5, Rogan, 0, 0
+5, Terrortorian, 0, 0
+5, So You Excel, 0, 0
+5, Alexander Thegreat, 0, 0
+5, Caelius, 0, 0
+5, Mount Sabyinyo, 0, 0
+5, Chillies, 0, 0
+6, Russian Front, 0, 0
+6, Hola Amigos, 0, 0
+6, Blue Bandit, 0, 0
+6, Surperb Frost, 0, 0
+6, Zourain, 0, 0
+6, Venetian Choice, 0, 0
+6, There Were Roses, 0, 0
+6, Yum, 0, 0
+6, Posh Diamante, SCR
+6, Jetsetter Jack, SCR
+6, King Maywin, SCR
+6, Discover Lupino, 0, 0
+6, Cherry Hills, 0, 0
+6, Perfect Night, 0, 0
+6, Seaborn, 0, 0
+6, Tiger Fox, SCR
+7, All Torque, 0, 0
+7, Titan's Spirit, 0, 0
+7, Glisk, 0, 0
+7, Hook 'n' Spur, 0, 0
+7, General Blu, 0, 0
+7, Astiquer, 0, 0
+7, Ngongotaha, 0, 0
+7, Mighty Mystic, 0, 0
+7, Shares, 0, 0
+7, Pure Silk, 0, 0
+7, Circus Lights, 0, 0
+7, Barbarino, 0, 0
+8, Mr Tickles, 0, 0
+8, Weapon Clear, 0, 0
+8, Room For Bingo, 0, 0
+8, Jakivy, 0, 0
+8, Spirit Of Wealth, SCR
+8, Noetzie, SCR
+8, Monix, 0, 0
+8, Landmark, 0, 0
+8, It's A Yes, 0, 0
+8, Headbanger, 0, 0
+8, Hello Romeo, 0, 0
+8, Yolo, 0, 0
+8, Magnabelle Royale, 0, 0
+8, Barari, 0, 0
+8, Mongolian Gobi, SCR
+8, Vivid Sun, SCR

@@ -1,4 +1,4 @@
-# Wodonga Fri 27 Nov, Soft 7 (set by hand for the rain: 0.7mm in the 3 days before, 29.9mm on the day), final fields; no market yet; PROVISIONAL: 5 runners without a rider
+# Wodonga Fri 27 Nov, official going, final fields; no market yet; PROVISIONAL: 4 runners without a rider
 1, Kiptum, 0, 0
 1, Magna Peak, 0, 0
 1, Bourne Legacy, 0, 0
@@ -26,8 +26,10 @@
 3, Princess Prussia, 0, 0
 3, Estival, 0, 0
 3, Scorpion, 0, 0
+3, Money Bags, SCR
 3, Fiore Darancio, 0, 0
 3, Veloce, SCR
+3, Ninetyfiveinafifty, SCR
 3, Bar La La, 0, 0
 3, Katie On The Edge, 0, 0
 3, Acroman, 0, 0
@@ -86,7 +88,7 @@
 7, Three Musketeers, SCR
 7, Before The War, 0, 0
 7, Abstruse, 0, 0
-7, The Shaper, 0, 0
+7, The Shaper, SCR
 7, Prandium Tempus, SCR
 7, Fourthtimelucky, 0, 0
 7, More Highs On Me, SCR
