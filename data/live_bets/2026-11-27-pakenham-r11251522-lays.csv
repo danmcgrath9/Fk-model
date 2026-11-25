@@ -1,0 +1,85 @@
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,Majestic Son,2.26,8.00,12,0,,8-12
+1,Majestic Son,2.26,15.00,40,0,,15-40
+1,Bohemian Rhapsody,4.83,8.00,12,0,,8-12
+1,Bohemian Rhapsody,4.83,15.00,40,0,,15-40
+1,Lord Of The Earth,7.64,15.00,40,0,first starter: excluded,15-40
+1,Tiz The Tycoon,14.57,21.86,40,0,,15-40
+1,Adhara,15.94,23.91,40,0,first starter: excluded,15-40
+2,Assunta,5.70,9.11,12,0,first starter: excluded,8-12
+2,Assunta,5.70,15.00,40,0,first starter: excluded,15-40
+2,Renecca,6.32,10.12,12,0,first starter: excluded,8-12
+2,Renecca,6.32,15.00,40,0,first starter: excluded,15-40
+2,Media Darling,6.52,10.44,12,0,first starter: excluded,8-12
+2,Media Darling,6.52,15.00,40,0,first starter: excluded,15-40
+2,Nyad,8.01,15.00,40,0,first starter: excluded,15-40
+2,Wolfmaama,9.97,15.00,40,0,,15-40
+2,Spirit Nature,10.43,15.65,40,0,,15-40
+2,Please Please Me,13.89,20.84,40,0,first starter: excluded,15-40
+3,Fort Rock,4.55,8.00,12,0,first starter: excluded,8-12
+3,Fort Rock,4.55,15.00,40,0,first starter: excluded,15-40
+3,Abydos,4.94,8.00,12,0,,8-12
+3,Abydos,4.94,15.00,40,0,,15-40
+3,Kokeshi,5.35,8.56,12,0,,8-12
+3,Kokeshi,5.35,15.00,40,0,,15-40
+3,Percipient,6.83,10.92,12,0,,8-12
+3,Percipient,6.83,15.00,40,0,,15-40
+3,Red Tide,14.29,21.44,40,0,,15-40
+3,Soundwave,18.45,27.68,40,0,,15-40
+3,Pocket Watch,23.80,35.70,40,0,,15-40
+4,Montesquieu,3.42,8.00,12,0,,8-12
+4,Montesquieu,3.42,15.00,40,0,,15-40
+4,Wollemi,6.76,10.82,12,0,,8-12
+4,Wollemi,6.76,15.00,40,0,,15-40
+4,Seinfeld,6.91,11.06,12,0,,8-12
+4,Seinfeld,6.91,15.00,40,0,,15-40
+4,Ardad Ned,9.42,15.00,40,0,,15-40
+4,Chronic,14.06,21.08,40,0,,15-40
+4,Faro Lady,18.49,27.74,40,0,,15-40
+4,Zametovka,24.24,36.36,40,0,,15-40
+4,Tequila's Bro,25.40,38.11,40,0,first starter: excluded,15-40
+4,Full Zoom,26.53,39.79,40,0,,15-40
+5,Mount Sabyinyo,5.70,9.12,12,0,,8-12
+5,Mount Sabyinyo,5.70,15.00,40,0,,15-40
+5,Untapped,5.81,9.30,12,0,,8-12
+5,Untapped,5.81,15.00,40,0,,15-40
+5,Alexander Thegreat,6.64,10.62,12,0,,8-12
+5,Alexander Thegreat,6.64,15.00,40,0,,15-40
+5,Chillies,7.08,11.33,12,0,,8-12
+5,Chillies,7.08,15.00,40,0,,15-40
+5,Terrortorian,9.11,15.00,40,0,,15-40
+5,Hey Bella,13.04,19.56,40,0,,15-40
+5,Caelius,13.13,19.69,40,0,,15-40
+5,Aristonous,17.67,26.51,40,0,,15-40
+6,There Were Roses,3.83,8.00,12,0,,8-12
+6,There Were Roses,3.83,15.00,40,0,,15-40
+6,Perfect Night,7.92,15.00,40,0,,15-40
+6,Hola Amigos,11.68,17.52,40,0,,15-40
+6,Cherry Hills,13.04,19.56,40,0,,15-40
+6,Blue Bandit,13.06,19.59,40,0,,15-40
+6,Surperb Frost,13.50,20.24,40,0,,15-40
+6,Discover Lupino,13.63,20.44,40,0,,15-40
+6,Yum,16.44,24.66,40,0,,15-40
+6,Russian Front,16.68,25.02,40,0,,15-40
+6,Seaborn,18.84,28.26,40,0,,15-40
+7,General Blu,3.55,8.00,12,0,,8-12
+7,General Blu,3.55,15.00,40,0,,15-40
+7,Astiquer,4.66,8.00,12,0,,8-12
+7,Astiquer,4.66,15.00,40,0,,15-40
+7,Barbarino,8.81,15.00,40,0,,15-40
+7,Hook 'n' Spur,9.78,15.00,40,0,,15-40
+7,Circus Lights,13.33,19.99,40,0,,15-40
+7,Mighty Mystic,16.20,24.29,40,0,,15-40
+7,Shares,17.73,26.59,40,0,,15-40
+7,Titan's Spirit,19.19,28.79,40,0,,15-40
+8,Barari,4.15,8.00,12,0,,8-12
+8,Barari,4.15,15.00,40,0,,15-40
+8,Yolo,7.25,11.60,12,0,,8-12
+8,Yolo,7.25,15.00,40,0,,15-40
+8,Hello Romeo,9.31,15.00,40,0,,15-40
+8,Headbanger,9.92,15.00,40,0,,15-40
+8,Landmark,10.65,15.98,40,0,,15-40
+8,It's A Yes,11.16,16.74,40,0,,15-40
+8,Magnabelle Royale,12.47,18.71,40,0,,15-40
+8,Jakivy,21.76,32.64,40,0,,15-40
+8,Weapon Clear,24.26,36.39,40,0,,15-40
