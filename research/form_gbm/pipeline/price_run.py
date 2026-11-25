@@ -70,6 +70,10 @@ def fetch(run_id: str) -> Path:
     """The pricing branch for this run. The reports step runs after the push, so the branch is there before the run
     finishes; poll until RUN_ID matches."""
     out = S / "run" / run_id
+    # the pricing branch holds only the newest run, so an older run's inputs come from the copy already fetched here
+    # (25 Nov 2026: Sandown's Heavy 8 re-price on run 45524486192's inputs, after Friday's run had replaced it)
+    if (out / "index.tsv").exists() and (out / "RUN_ID").exists() and (out / "RUN_ID").read_text().strip() == run_id:
+        return out
     for _ in range(60):
         subprocess.run(["git", "-C", str(FK), "fetch", "-q", "origin", "pricing"], check=False)
         rid = subprocess.run(["git", "-C", str(FK), "show", "origin/pricing:RUN_ID"], capture_output=True, text=True).stdout.strip()
@@ -106,13 +110,14 @@ def refetch_weather(path: Path, race_day: str, track: str, mid: str):
     return rain, rday
 
 
-def soft_export(d: str, out: Path):
-    """One fk-export of a date's upcoming races priced as if the going were Soft 5, fetched to `out` (None on failure)."""
+def soft_export(d: str, out: Path, going: str = "Soft 5"):
+    """One fk-export of a date's upcoming races priced as if the going were `going` (Soft 5 by default), fetched to `out`
+    (None on failure)."""
     t0 = time.time()
     try:
-        gh("/actions/workflows/fk-export.yml/dispatches", {"ref": "main", "inputs": {"date": d, "going": "Soft 5"}})
+        gh("/actions/workflows/fk-export.yml/dispatches", {"ref": "main", "inputs": {"date": d, "going": going}})
     except Exception as e:
-        log(f"Soft 5 export for {d}: dispatch failed ({e}); wet meetings NOT priced"); return None
+        log(f"{going} export for {d}: dispatch failed ({e}); wet meetings NOT priced"); return None
     rid = None
     for _ in range(40):
         time.sleep(6)
@@ -121,17 +126,17 @@ def soft_export(d: str, out: Path):
                 rid = x["id"]
         if rid: break
     if not rid:
-        log(f"Soft 5 export for {d}: the run never started; wet meetings NOT priced"); return None
+        log(f"{going} export for {d}: the run never started; wet meetings NOT priced"); return None
     while gh(f"/actions/runs/{rid}")["status"] != "completed":
         time.sleep(10)
     if gh(f"/actions/runs/{rid}")["conclusion"] != "success":
-        log(f"Soft 5 export for {d}: run {rid} failed; wet meetings NOT priced"); return None
+        log(f"{going} export for {d}: run {rid} failed; wet meetings NOT priced"); return None
     subprocess.run(f"cd {FK} && git fetch -q origin upcoming && git show origin/upcoming:upcoming.npz > {out}", shell=True, check=True)
     import numpy as np
     z = np.load(out, allow_pickle=True)
     if set(map(str, z["date"])) != {d}:
-        log(f"Soft 5 export for {d}: the file holds {set(map(str, z['date']))}, not {d}; wet meetings NOT priced"); return None
-    log(f"Soft 5 export for {d}: run {rid}, {len(z['race_idx'])} runners, in {time.time() - t0:.0f}s")
+        log(f"{going} export for {d}: the file holds {set(map(str, z['date']))}, not {d}; wet meetings NOT priced"); return None
+    log(f"{going} export for {d}: run {rid}, {len(z['race_idx'])} runners, in {time.time() - t0:.0f}s")
     return out
 
 
@@ -177,6 +182,7 @@ def main():
     ap.add_argument("--scratchings-from", default="", help="a scripts/betwatch_national.py output: every runner it shows as scratched "
                     "is marked scratched in the meeting's entry numbers before pricing (19 Nov 2026: the database went read-only, so Form "
                     "King's scratchings stopped being stored and the morning re-price priced horses scratched that morning)")
+    ap.add_argument("--going", default="", help="price the meeting(s) in --only on this going (e.g. 'Heavy 8'), one fk-export of their date with it (25 Nov 2026, founder: \"Re-price Pakenham and Wodonga for the race day rain and Sandown\"); the header names it. The model reads the band only: 1-4 good, 5-7 soft, 8+ heavy")
     ap.add_argument("--allow-gaps", action="store_true", help="price past price_day3's guard (over 10%% of raced runners without a "
                     "last-start speed rating); the guard was built for September's 80%%, and the message names the gap")
     ap.add_argument("--test", action="store_true", help="files under <prefix>-test, no commit (a timing test on meetings already priced)")
@@ -206,7 +212,15 @@ def main():
     # for one by hand, so the race-morning re-price silently skipped every wet meeting: on Sat 21 Nov that would have been
     # three of the four. Now one fk-export a date is made here, with going 'Soft 5', and those meetings are priced from it.
     soft_up = {}
-    if not a.soft_export:
+    set_up = {}
+    if a.going:
+        if not a.only:
+            sys.exit("--going needs --only")
+        for d in sorted({m["date"] for m in new if m["meeting_id"] in a.only.split(",")}):
+            f = soft_export(d, W / f"upcoming-{d}-{a.going.replace(' ', '').lower()}.npz", a.going)
+            if not f: sys.exit(f"STOP: the {a.going} export for {d} failed; nothing priced")
+            set_up[d] = f
+    if not a.soft_export and not a.going:
         wet = sorted({m["date"] for m in new if (rain_before(W / m["meeting_id"] / "forecast.md", m["date"])[0] or 0) >= 15})
         for d in wet:
             f = soft_export(d, W / f"upcoming-{d}-soft5.npz")
@@ -218,8 +232,9 @@ def main():
         if not ids:
             log(f"STOP {mid}: no race ids in its fluc output"); continue
         given_soft = bool(a.soft_export and a.only and mid in a.only.split(","))
+        given_going = bool(a.going and mid in a.only.split(","))
         auto_soft = (not given_soft and d in soft_up and (rain_before(md / "forecast.md", d)[0] or 0) >= 15)
-        up = Path(a.soft_export) if given_soft else soft_up[d] if auto_soft else W / f"upcoming-{d}.npz"
+        up = set_up[d] if given_going else Path(a.soft_export) if given_soft else soft_up[d] if auto_soft else W / f"upcoming-{d}.npz"
         cut = W / f"{mid}.npz"; adj = W / f"{mid}-adj.npz"
         subprocess.run([sys.executable, str(S / "cut_meeting.py"), str(up), str(cut), ",".join(ids)], check=True)
         fa = subprocess.run([sys.executable, str(R / "form_adjust_npz.py"), str(cut), str(adj)], capture_output=True, text=True, cwd=R)
@@ -245,7 +260,8 @@ def main():
         # fewer than 20 races in the model's history, or none since the 3 Jun holdout began
         vs = {venue(t) for t in tracks}; hist_n = sum(hist[0][v] for v in vs); all_n = sum(hist[1][v] for v in vs)
         paper = hist_n == 0 or all_n < 20
-        going_word = ("Soft (15mm+ rain)" if (rain or 0) >= 15 else "official going"
+        going_word = (f"{a.going} (set by hand for the rain: {rain}mm in the 3 days before, {rday}mm on the day)" if given_going
+                      else "Soft (15mm+ rain)" if (rain or 0) >= 15 else "official going"
                       + (" (RAIN UNKNOWN: every weather source failed)" if rain is None else ""))
         opened = sorted({int(r["race"]) for r in fl if r.get("open") or r.get("race_open_ms")})
         dow = dt.date.fromisoformat(d).strftime("%a %-d %b")
@@ -259,7 +275,7 @@ def main():
         title = f"{name} {dow}" + (" (paper)" if paper else " (provisional)" if no_rider else "")
         info[mid] = dict(m=m, P=P, paper=paper, no_rider=no_rider, rain=rain, rday=rday, opened=opened, fl=fl,
                          head=head, title=title, name=name, adj=adj_note, soft=(rain or 0) >= 15, hist=hist_n)
-        if (rain or 0) >= 15 and not (given_soft or auto_soft):
+        if (rain or 0) >= 15 and not (given_soft or auto_soft or given_going):
             log(f"{mid}: {rain}mm in the 3 days before: needs a Soft export (fk-export going) before pricing; NOT priced here")
             continue
         jobs.append((mid, P, adj, md / "scratchings.md", md / "entry_numbers.md", head, title))
