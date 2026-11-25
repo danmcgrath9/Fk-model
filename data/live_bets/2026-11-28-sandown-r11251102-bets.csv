@@ -1,0 +1,11 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,SANH_281126_1,Royal Press,top_pick,0.0,0.0,0.0,,,3.87,-1.0,,1.0,no,,
+2,SANH_281126_2,Billycart,top_pick,0.0,0.0,0.0,,,2.27,-1.0,,1.0,no,,
+3,SANH_281126_3,Cavill Avenue,top_pick,0.0,0.0,0.0,,,3.1,-1.0,,1.0,no,,
+4,SANH_281126_4,Karren,top_pick,0.0,0.0,0.0,,,9.16,-1.0,,1.0,no,,
+5,SANH_281126_5,Jenni Multabella,top_pick,0.0,0.0,0.0,,,9.28,-1.0,,1.0,no,,
+6,SANH_281126_6,Jett Smash,top_pick,0.0,0.0,0.0,,,4.48,-1.0,,1.0,no,,
+7,SANH_281126_7,Sulek,top_pick,0.0,0.0,0.0,,,6.35,-1.0,Beaten by the pace last start; Late 600 beyond the tempo,1.0,no,,
+8,SANH_281126_8,Paltrow Miss,top_pick,0.0,0.0,0.0,,,6.47,-1.0,Already run to today's class; Above the field in all three sections; EARLY ONLY: bet near the open,1.0,no,,
+9,SANH_281126_9,Autumn Mystery,top_pick,0.0,0.0,0.0,,,6.63,-1.0,Already run to today's class; Late 600 beyond the tempo,1.0,no,,
+10,SANH_281126_10,Jenni Multabella,top_pick,0.0,0.0,0.0,,,5.04,-1.0,,1.0,no,,

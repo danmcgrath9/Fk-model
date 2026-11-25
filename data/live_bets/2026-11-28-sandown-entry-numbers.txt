@@ -1,0 +1,217 @@
+1|150|Royal Press|False|False
+1|50|Hanseatic Girl|False|False
+1|30|Crystal Affair|False|False
+1|70|In Eutopia|False|False
+1|90|Natural Emotion|False|False
+1|120|Odenkirk|False|False
+1|20|Confection|False|False
+1|130|Oversourced|False|False
+1|110|Noctis|False|False
+1|100|Nissaki|False|False
+1|160|Rubitrix|False|False
+1|170|Soladin|False|False
+1|180|The King Maker|False|False
+1|80|Lewashaa|False|False
+1|60|High Table|False|False
+1|10|Blingaling|False|False
+1|140|Refractive|False|False
+1|40|Darn Spicy|False|False
+2|20|Chancellor|False|False
+2|30|Chip In|False|False
+2|10|Billycart|False|False
+2|70|Gilgeous|False|False
+2|60|Franked Up|False|False
+2|80|Mossquillo|False|False
+2|50|Fine And Sunny|False|False
+2|90|Propellant|False|False
+2|40|Exultant|False|False
+2|100|Town Planner|False|False
+3|50|Oceans Blue|False|False
+3|60|Pasatiempo|False|False
+3|10|Cavill Avenue|False|False
+3|40|Lafarna|False|False
+3|120|Tale Of Genji|False|False
+3|30|Handee|False|False
+3|70|Sayalero|False|False
+3|100|Sound Byte|False|False
+3|90|Shintono|False|False
+3|110|Sunbliss|False|False
+3|20|Engulf|False|False
+3|80|Seagoe|False|False
+4|380|Vail Mountain|False|False
+4|360|Umgawa|False|False
+4|160|Ivan's Hero|False|False
+4|130|Dirty Grin|False|False
+4|340|Tanganyika|False|False
+4|250|Overactive|False|False
+4|270|Quafftide|False|False
+4|120|Delivering|False|False
+4|330|Some People Callme|False|False
+4|220|Maisy|False|False
+4|100|Dantooine|False|False
+4|370|Until Valhalla|False|False
+4|200|King Tut|False|False
+4|60|Cardi Bee|False|False
+4|300|Rosa Aotearoa|False|False
+4|290|Ronny Bee|False|False
+4|240|Move The Torana|False|False
+4|70|Charming Nic|False|False
+4|20|Arcandam|False|False
+4|180|Join The Que|False|False
+4|310|Sergeant Major|False|False
+4|320|Sister Shay|False|False
+4|30|Art's Alive|False|False
+4|10|Alero|False|False
+4|260|Princess Que|False|False
+4|280|Regal Tycoon|False|False
+4|390|Zourain|False|False
+4|90|Currawood|False|False
+4|150|Esmahli|False|False
+4|350|Trapdoor|False|False
+4|40|Bacash|False|False
+4|50|Befuddle|False|False
+4|170|Jackpot Park|False|False
+4|210|Layla|False|False
+4|230|Miewa|False|False
+4|80|Col Klink|False|False
+4|190|Karren|False|False
+4|140|Eeteedee|False|False
+4|110|Danzsin|False|False
+5|460|Van Roy|False|False
+5|170|Gregolimo|False|False
+5|30|Black Storm|False|False
+5|70|Charisse|False|False
+5|190|He'll Rip|False|False
+5|150|Flying Mikki|False|False
+5|220|Itsukushima|False|False
+5|130|El Soleado|False|False
+5|40|Bullets High|False|False
+5|160|Flying Valley|False|False
+5|140|Fiorenot|False|False
+5|360|Seethru|False|False
+5|250|Jawsome Rob|False|False
+5|320|Nearing Liberty|False|False
+5|330|No Fuss|False|False
+5|50|Cat Noir|False|False
+5|180|Haaracaine|False|False
+5|290|Maisy|False|False
+5|100|Dantooine|False|False
+5|10|Autumn Slide|False|False
+5|60|Chakado|False|False
+5|80|Coco Jen|False|False
+5|260|Jenni Multabella|False|False
+5|380|Skippers Canyon|False|False
+5|450|Two Wolves|False|False
+5|480|World's My Oyster|False|False
+5|410|Stay Humble|False|False
+5|20|Bergasun|False|False
+5|340|Oak Beach|False|False
+5|300|Midnite Storm|False|False
+5|120|Dubai Watch|False|False
+5|390|Somewhere|False|False
+5|200|Houdini|False|False
+5|440|Test Of Love|False|False
+5|310|Moonlight Circus|False|False
+5|430|Taung|False|False
+5|470|Wetumpka|False|False
+5|90|Cooly|False|False
+5|350|Options|False|False
+5|270|Just A Journey|False|False
+5|230|Jackknife|False|False
+5|280|Lightening Mann|False|False
+5|240|Jareth|False|False
+5|210|Impulsive Reaction|False|False
+5|420|Sulek|False|False
+5|370|Silvasista|False|False
+5|110|Danzsin|False|False
+5|400|Space Rider|False|False
+6|20|Dashing|False|False
+6|70|Klabel|False|False
+6|80|Marble Nine|False|False
+6|130|Quiseen|False|False
+6|90|Oak Hill|False|False
+6|140|Sunshineinmypocket|False|False
+6|160|Until Valhalla|False|False
+6|100|Perilous Fighter|False|False
+6|170|Verdoux|False|False
+6|110|Photograph|False|False
+6|30|Guerite|False|False
+6|40|Jett Smash|False|False
+6|50|Jimmy Recard|False|False
+6|150|Tres Magnifique|False|False
+6|120|Prestige Lucky|False|False
+6|10|Col Klink|False|False
+6|60|Karren|False|False
+7|90|Phearson|False|False
+7|30|Here To Shock|False|False
+7|40|Holymanz|False|False
+7|160|Sammarco|False|False
+7|50|Hughes|False|False
+7|110|Punch Lane|False|False
+7|70|King Zephyr|False|False
+7|150|Run Harry Run|False|False
+7|140|Regal Zeus|False|False
+7|100|Point And Shoot|False|False
+7|130|Recon|False|False
+7|10|Bustling|False|False
+7|120|Ramadan|False|False
+7|80|Miss Playlounge|False|False
+7|20|Guerite|False|False
+7|60|Karren|False|False
+7|170|Sulek|False|False
+8|20|Charterhouse|False|False
+8|10|Bianco Vilano|False|False
+8|70|Holymanz|False|False
+8|60|Flying Mikki|False|False
+8|190|Williamsburg|False|False
+8|50|Fiorenot|False|False
+8|90|Makdane|False|False
+8|200|Wymark|False|False
+8|140|Revelare|False|False
+8|130|Regal Zeus|False|False
+8|30|Chase Your Dreams|False|False
+8|170|Somewhere|False|False
+8|160|Sav On Ice|False|False
+8|100|Moonlight Circus|False|False
+8|40|Cilacap|False|False
+8|110|Nobler|False|False
+8|150|Roulette King|False|False
+8|120|Paltrow Miss|False|False
+8|80|Impulsive Reaction|False|False
+8|180|Sulek|False|False
+9|150|Wuddzz|False|False
+9|50|Black Peppermint|False|False
+9|140|Vauban|False|False
+9|20|Asterix|False|False
+9|10|Affluential|False|False
+9|90|Manzor Blue|False|False
+9|40|Beach Pad|False|False
+9|60|Federer|False|False
+9|130|Suffolk Star|False|False
+9|120|Sir Chartwell|False|False
+9|110|Sam Hawkens|False|False
+9|70|Hawk Power|False|False
+9|80|Highland Bling|False|False
+9|100|Power Pivot|False|False
+9|30|Autumn Mystery|False|False
+10|130|Jazz Affair|False|False
+10|40|Bon Mistress|False|False
+10|50|Cat Noir|False|False
+10|170|Maisy|False|False
+10|10|Autumn Slide|False|False
+10|60|Coco Jen|False|False
+10|140|Jenni Multabella|False|False
+10|210|World's My Oyster|False|False
+10|180|Oak Beach|False|False
+10|120|Illyivy|False|False
+10|30|Bon Fete|False|False
+10|200|Sister Shay|False|False
+10|150|Jenni You Think|False|False
+10|70|Cooly|False|False
+10|100|Farakta|False|False
+10|80|Cushioned|False|False
+10|20|Befuddle|False|False
+10|160|Just A Journey|False|False
+10|90|Dame Of Dubai|False|False
+10|190|Silvasista|False|False
+10|110|Goodness|False|False

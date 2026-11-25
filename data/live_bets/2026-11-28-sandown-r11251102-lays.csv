@@ -1,0 +1,94 @@
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,Royal Press,3.87,8.00,12,0,,8-12
+1,Royal Press,3.87,15.00,40,0,,15-40
+1,Odenkirk,8.33,15.00,40,0,first starter: excluded,15-40
+1,Noctis,12.94,19.41,40,0,first starter: excluded,15-40
+1,Oversourced,13.27,19.90,40,0,first starter: excluded,15-40
+1,Crystal Affair,14.05,21.07,40,0,first starter: excluded,15-40
+1,Natural Emotion,16.83,25.25,40,0,,15-40
+1,Refractive,20.92,31.38,40,0,first starter: excluded,15-40
+1,In Eutopia,21.85,32.78,40,0,first starter: excluded,15-40
+1,Confection,24.79,37.19,40,0,first starter: excluded,15-40
+1,High Table,25.12,37.68,40,0,first starter: excluded,15-40
+2,Billycart,2.27,8.00,12,0,,8-12
+2,Billycart,2.27,15.00,40,0,,15-40
+2,Franked Up,4.32,8.00,12,0,,8-12
+2,Franked Up,4.32,15.00,40,0,,15-40
+2,Town Planner,8.79,15.00,40,0,,15-40
+2,Gilgeous,9.09,15.00,40,0,,15-40
+3,Cavill Avenue,3.10,8.00,12,0,,8-12
+3,Cavill Avenue,3.10,15.00,40,0,,15-40
+3,Lafarna,4.48,8.00,12,0,,8-12
+3,Lafarna,4.48,15.00,40,0,,15-40
+3,Sound Byte,13.07,19.61,40,0,,15-40
+3,Sunbliss,13.97,20.95,40,0,,15-40
+3,Handee,14.24,21.36,40,0,,15-40
+3,Shintono,14.83,22.25,40,0,,15-40
+3,Oceans Blue,15.19,22.79,40,0,,15-40
+3,Tale Of Genji,22.42,33.64,40,0,,15-40
+4,Karren,9.16,15.00,40,0,,15-40
+4,Regal Tycoon,13.89,20.83,40,0,,15-40
+4,Rosa Aotearoa,14.38,21.57,40,0,,15-40
+4,Befuddle,18.74,28.11,40,0,,15-40
+4,Layla,20.18,30.28,40,0,,15-40
+4,Bacash,20.38,30.58,40,0,,15-40
+4,Col Klink,21.55,32.32,40,0,,15-40
+4,Esmahli,23.04,34.56,40,0,,15-40
+4,Alero,26.42,39.63,40,0,,15-40
+5,Jenni Multabella,9.28,15.00,40,0,,15-40
+5,Sulek,12.82,19.22,40,0,,15-40
+5,Somewhere,17.86,26.79,40,0,,15-40
+5,Wetumpka,18.97,28.45,40,0,,15-40
+5,Autumn Slide,22.21,33.32,40,0,,15-40
+6,Jett Smash,4.48,8.00,12,0,,8-12
+6,Jett Smash,4.48,15.00,40,0,,15-40
+6,Photograph,9.63,15.00,40,0,,15-40
+6,Karren,10.14,15.21,40,0,,15-40
+6,Tres Magnifique,10.43,15.64,40,0,,15-40
+6,Jimmy Recard,10.76,16.14,40,0,,15-40
+6,Verdoux,15.86,23.79,40,0,,15-40
+6,Col Klink,18.60,27.91,40,0,,15-40
+6,Sunshineinmypocket,19.77,29.65,40,0,,15-40
+6,Marble Nine,24.55,36.82,40,0,,15-40
+7,Sulek,6.35,10.16,12,0,,8-12
+7,Sulek,6.35,15.00,40,0,,15-40
+7,King Zephyr,7.67,15.00,40,0,,15-40
+7,Run Harry Run,8.69,15.00,40,0,,15-40
+7,Recon,10.21,15.32,40,0,,15-40
+7,Point And Shoot,11.25,16.87,40,0,,15-40
+7,Karren,11.59,17.38,40,0,,15-40
+7,Bustling,13.61,20.41,40,0,,15-40
+7,Regal Zeus,18.35,27.52,40,0,,15-40
+8,Paltrow Miss,6.47,10.35,12,0,,8-12
+8,Paltrow Miss,6.47,15.00,40,0,,15-40
+8,Nobler,8.88,15.00,40,0,,15-40
+8,Sulek,9.15,15.00,40,0,,15-40
+8,Roulette King,9.69,15.00,40,0,,15-40
+8,Somewhere,15.01,22.51,40,0,,15-40
+8,Revelare,16.57,24.86,40,0,,15-40
+8,Fiorenot,16.81,25.22,40,0,,15-40
+8,Sav On Ice,22.00,33.01,40,0,,15-40
+8,Cilacap,22.41,33.62,40,0,,15-40
+8,Regal Zeus,22.99,34.48,40,0,,15-40
+9,Autumn Mystery,6.63,10.60,12,0,,8-12
+9,Autumn Mystery,6.63,15.00,40,0,,15-40
+9,Manzor Blue,8.32,15.00,40,0,,15-40
+9,Highland Bling,8.58,15.00,40,0,,15-40
+9,Vauban,9.92,15.00,40,0,,15-40
+9,Beach Pad,9.94,15.00,40,0,,15-40
+9,Black Peppermint,11.27,16.90,40,0,,15-40
+9,Federer,14.51,21.76,40,0,,15-40
+9,Sam Hawkens,17.02,25.54,40,0,,15-40
+9,Power Pivot,23.82,35.73,40,0,,15-40
+10,Jenni Multabella,5.04,8.06,12,0,,8-12
+10,Jenni Multabella,5.04,15.00,40,0,,15-40
+10,Befuddle,10.47,15.71,40,0,,15-40
+10,Jenni You Think,10.82,16.24,40,0,,15-40
+10,Autumn Slide,12.84,19.26,40,0,,15-40
+10,Sister Shay,20.20,30.30,40,0,,15-40
+10,Farakta,21.23,31.85,40,0,,15-40
+10,Cooly,21.83,32.75,40,0,,15-40
+10,Coco Jen,22.86,34.28,40,0,,15-40
+10,Maisy,25.02,37.53,40,0,,15-40
+10,Dame Of Dubai,25.38,38.07,40,0,,15-40
+10,Goodness,25.76,38.64,40,0,,15-40
