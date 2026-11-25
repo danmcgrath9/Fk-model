@@ -1,0 +1,28 @@
+rows 1603 with lead-3 race-day forecast 1579 last rating 1603
+['yea: 11 meetings', 'no coordinates: burrumbeet']
+## Race-day rain: forecast N days ahead against what fell (ERA5; 10mm+ = a wet day)
+| lead | n | correlation | avg miss mm | wet days caught | forecast wet days that were wet |
+| 1 day | 1573 | 0.71 | 1.1 | 37% of 86 | 56% |
+| 2 days | 1570 | 0.71 | 1.2 | 40% of 86 | 60% |
+| 3 days | 1568 | 0.68 | 1.3 | 44% of 86 | 60% |
+| 4 days | 1568 | 0.54 | 1.5 | 36% of 86 | 49% |
+| 5 days | 1567 | 0.41 | 1.6 | 26% of 86 | 40% |
+## The same against the forecast model's own final rain (om_day)
+| 1 | 1584 | 0.72 | 1.1 | 39% of 89 | 58% |
+| 2 | 1581 | 0.71 | 1.2 | 39% of 89 | 60% |
+| 3 | 1579 | 0.68 | 1.3 | 46% of 89 | 61% |
+| 4 | 1579 | 0.55 | 1.5 | 38% of 89 | 52% |
+| 5 | 1578 | 0.43 | 1.6 | 26% of 89 | 40% |
+## Is race day harder to forecast than the days before it? correlation with ERA5 at the same lead
+| lead | 3 days before | 2 days before | day before | race day |
+| 1 | 0.76 | 0.72 | 0.79 | 0.71 |
+| 2 | 0.67 | 0.71 | 0.73 | 0.71 |
+| 3 | 0.57 | 0.52 | 0.64 | 0.68 |
+## Predicting the last race's official rating (fitted on 2024, 533 meetings; tested on 2025-26, 1035)
+| what we know | avg miss (points) | within 1 point | right band (good/soft/heavy) | heavy days called heavy |
+| track usual only | 1.50 | 62% | 36% | 0% of 138 |
+| hindsight: actual 3 days + actual race day | 1.15 | 71% | 60% | 4% of 138 |
+| Wednesday for Saturday: 3-day forecast total only (the rule) | 1.27 | 69% | 56% | 0% of 138 |
+| Wednesday for Saturday: each day's forecast incl. race day | 1.14 | 72% | 60% | 4% of 138 |
+| Day before: actual 3 days + race-day forecast (1 day out) | 1.16 | 70% | 61% | 11% of 138 |
+| the rule as written (Soft 5 at 15mm+, else the track's usual) | 1.30 | 71% | 63% | 0% of 138 |

@@ -1,0 +1,20 @@
+band table (pre-2025, actual rain): most likely band, P(heavy)
+  3d bin 0 ['Good 2% (n=1130)', 'Good 15% (n=161)', 'Soft 33% (n=51)', 'Soft 33% (n=15)']
+  3d bin 1 ['Good 10% (n=355)', 'Soft 33% (n=121)', 'Heavy 44% (n=25)', 'Soft 43% (n=7)']
+  3d bin 2 ['Soft 24% (n=97)', 'Heavy 52% (n=27)', 'Heavy 50% (n=10)', 'Heavy 60% (n=10)']
+  3d bin 3 ['Soft 21% (n=85)', 'Heavy 48% (n=31)', 'Heavy 57% (n=7)', 'Heavy 50% (n=4)']
+2025-26 meetings: 1035; actual bands Good 640, Soft 257, Heavy 138
+| how the band is called | right band | heavy days called heavy | heavy calls (right) | wet days priced Good | Good days priced wet |
+| the rule: Soft at 15mm+ in 3 days (Wednesday forecast), else Good | 63% | 0 of 138 | 0 (0% right) | 320 | 22 |
+| table, Wednesday forecast of 3 days + race day | 67% | 26 of 138 | 42 (62% right) | 251 | 30 |
+| same, Heavy when 40%+ of such meetings were Heavy | 67% | 28 of 138 | 45 (62% right) | 251 | 30 |
+| table, day before: actual 3 days + race-day forecast | 67% | 23 of 138 | 40 (58% right) | 244 | 33 |
+| same, Heavy at 40%+ | 67% | 25 of 138 | 42 (60% right) | 244 | 33 |
+| hindsight: actual 3 days + actual race day | 68% | 30 of 138 | 49 (61% right) | 227 | 40 |
+## Only the meetings the rule prices Soft 5 (Wednesday forecast 15mm+ in the 3 days): the official rating plays no part there
+97 meetings: finished Good 22, Soft 34, Heavy 41
+rule (Soft 5): right band 34 of 97; table with race-day forecast: right band 45 of 97, Heavy calls 32 (21 right)
+  Wednesday race-day forecast day <2: n=65, Good 21, Soft 24, Heavy 20
+  Wednesday race-day forecast day 2-10: n=24, Good 1, Soft 7, Heavy 16
+  Wednesday race-day forecast day 10-20: n=6, Good 0, Soft 2, Heavy 4
+  Wednesday race-day forecast day 20+: n=2, Good 0, Soft 1, Heavy 1

@@ -1,0 +1,46 @@
+meetings 3171
+## How the LAST race's rating moves with each day's rain (mean rating above the track's dry usual)
+| mm that day | 3 days before | 2 days before | day before | RACE DAY |
+| <1 | +0.77 (n=2185) | +0.73 (n=2234) | +0.57 (n=2242) | +0.57 (n=2257) |
+| 1-5 | +1.27 (n=570) | +1.46 (n=564) | +1.73 (n=551) | +1.65 (n=518) |
+| 5-10 | +1.82 (n=225) | +1.84 (n=197) | +2.40 (n=199) | +2.38 (n=203) |
+| 10-20 | +2.00 (n=133) | +2.25 (n=123) | +2.78 (n=124) | +2.82 (n=147) |
+| 20-30 | +2.76 (n=37) | +2.26 (n=35) | +3.14 (n=36) | +3.44 (n=32) |
+| 30+ | +1.29 (n=21) | +2.44 (n=18) | +2.26 (n=19) | +3.57 (n=14) |
+train (to 2024) 2136 meetings, test (2025-26) 1035
+## Predicting the FIRST race's official rating (test years only, 2025-26)
+| model | per-mm weights (log1p) | mean error, rating points | within 1 point | R2 |
+| track usual only | - | 1.25 | 77% | -0.00 |
+| 3-day total (the rule's information) | 3d 0.67 | 1.12 | 72% | 0.15 |
+| race day only | day 0.74 | 1.24 | 74% | 0.10 |
+| 3-day total + race day | 3d 0.59, day 0.58 | 1.09 | 75% | 0.20 |
+| each day separately | d3 0.32, d2 0.32, d1 0.57, day 0.54 | 1.06 | 76% | 0.23 |
+## Predicting the LAST race's official rating (test years only, 2025-26)
+| model | per-mm weights (log1p) | mean error, rating points | within 1 point | R2 |
+| track usual only | - | 1.52 | 60% | -0.00 |
+| 3-day total (the rule's information) | 3d 0.68 | 1.33 | 66% | 0.15 |
+| race day only | day 0.94 | 1.25 | 68% | 0.17 |
+| 3-day total + race day | 3d 0.56, day 0.79 | 1.22 | 69% | 0.27 |
+| each day separately | d3 0.32, d2 0.30, d1 0.53, day 0.75 | 1.19 | 69% | 0.28 |
+## 3-day rain x race-day rain: the LAST race's official rating (mean; % Soft 5+; % Heavy 8+; n)
+| | day <2 | day 2-10 | day 10-20 | day 20+ |
+|---|---|---|---|---|
+| 3d <5 | 4.1; 22%; 3%; n=1719 | 5.2; 49%; 16%; n=239 | 6.3; 79%; 27%; n=77 | 7.1; 86%; 41%; n=22 |
+| 3d 5-15 | 4.9; 46%; 10%; n=515 | 6.3; 73%; 32%; n=171 | 7.2; 80%; 51%; n=41 | 7.5; 90%; 50%; n=10 |
+| 3d 15-25 | 6.1; 71%; 27%; n=148 | 7.6; 90%; 58%; n=40 | 7.1; 82%; 47%; n=17 | 8.3; 100%; 60%; n=10 |
+| 3d 25+ | 6.1; 76%; 24%; n=107 | 7.3; 85%; 54%; n=39 | 7.3; 100%; 50%; n=12 | 6.5; 75%; 50%; n=4 |
+## The rule's Soft 5 (3 days 15mm+) against what the track was, by race-day rain
+- day <2 (n=255): Good 4 or firmer 27%, Soft 5 16%, Soft 6-7 31%, Heavy 8+ 26%
+- day 2-10 (n=79): Good 4 or firmer 13%, Soft 5 8%, Soft 6-7 24%, Heavy 8+ 56%
+- day 10-20 (n=29): Good 4 or firmer 10%, Soft 5 14%, Soft 6-7 28%, Heavy 8+ 48%
+- day 20+ (n=14): Good 4 or firmer 7%, Soft 5 0%, Soft 6-7 36%, Heavy 8+ 57%
+## Meetings UNDER the rule's 15mm line, by race-day rain
+- day <2 (n=2234): Good 4 or firmer 72%, Soft 5 11%, Soft 6-7 12%, Heavy 8+ 5%
+- day 2-10 (n=410): Good 4 or firmer 41%, Soft 5 13%, Soft 6-7 23%, Heavy 8+ 23%
+- day 10-20 (n=118): Good 4 or firmer 20%, Soft 5 14%, Soft 6-7 30%, Heavy 8+ 36%
+- day 20+ (n=32): Good 4 or firmer 12%, Soft 5 9%, Soft 6-7 34%, Heavy 8+ 44%
+## Rating change across the day (first race to last) by race-day rain
+- day <2 (n=1486): mean -0.37, worsened in 2%, by 2+ in 0%
+- day 2-10 (n=285): mean +0.09, worsened in 19%, by 2+ in 9%
+- day 10-20 (n=86): mean +0.34, worsened in 28%, by 2+ in 14%
+- day 20+ (n=23): mean +1.48, worsened in 61%, by 2+ in 48%
