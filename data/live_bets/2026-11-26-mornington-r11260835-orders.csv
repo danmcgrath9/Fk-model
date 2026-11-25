@@ -1,0 +1,75 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-26,Mornington,1,,7,Cirque De Coco,WIN,7.08,15.01,1.71,86,1 of 3,1.71u,5.41,EARLY: $15 or shorter only
+2026-11-26,Mornington,1,,7,Cirque De Coco,WIN,8.85,15.01,0.38,19,2 of 3,2.09u,5.41,EARLY: $15 or shorter only
+2026-11-26,Mornington,1,,7,Cirque De Coco,WIN,11.90,15.01,2.09,104,3 of 3,4.18u,5.41,EARLY: $15 or shorter only; opens $11.90+ (2.2x ours): stake doubled
+2026-11-26,Mornington,1,,4,Optimus,WIN,13.00,57.84,0.88,44,1 of 2,0.88u,9.64,
+2026-11-26,Mornington,1,,4,Optimus,WIN,16.25,57.84,0.21,10,2 of 2,1.09u,9.64,
+2026-11-26,Mornington,2,,11,Ravens Glow,WIN,2.78,3.99,4.63,232,1 of 2,4.63u,2.34,opens under $4: edge 1.15
+2026-11-26,Mornington,2,,11,Ravens Glow,WIN,3.47,3.99,1.08,54,2 of 2,5.71u,2.34,opens under $4: edge 1.15
+2026-11-26,Mornington,2,,11,Ravens Glow,WIN,4.00,14.04,5.01,250,1 of 3,5.01u,2.34,
+2026-11-26,Mornington,2,,11,Ravens Glow,WIN,4.00,14.04,0.91,46,2 of 3,5.92u,2.34,
+2026-11-26,Mornington,2,,11,Ravens Glow,WIN,5.15,14.04,4.08,204,3 of 3,10.00u,2.34,opens $5.15+ (2.2x ours): stake doubled
+2026-11-26,Mornington,2,,7,San Pueblo,WIN,8.35,37.96,1.42,71,1 of 3,1.42u,6.33,
+2026-11-26,Mornington,2,,7,San Pueblo,WIN,10.44,37.96,0.33,16,2 of 3,1.75u,6.33,
+2026-11-26,Mornington,2,,7,San Pueblo,WIN,13.92,37.96,1.75,88,3 of 3,3.50u,6.33,opens $13.92+ (2.2x ours): stake doubled
+2026-11-26,Mornington,2,,12,The Secret,WIN,12.45,55.52,0.92,46,1 of 2,0.92u,9.25,
+2026-11-26,Mornington,2,,12,The Secret,WIN,15.56,55.52,0.22,11,2 of 2,1.14u,9.25,
+2026-11-26,Mornington,3,,11,Ocean Mirage,WIN,3.67,3.99,3.19,160,1 of 1,3.19u,3.05,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-26,Mornington,3,,11,Ocean Mirage,WIN,4.00,15.01,3.48,174,1 of 3,3.48u,3.05,EARLY: $15 or shorter only
+2026-11-26,Mornington,3,,11,Ocean Mirage,WIN,4.85,15.01,0.70,35,2 of 3,4.18u,3.05,EARLY: $15 or shorter only
+2026-11-26,Mornington,3,,11,Ocean Mirage,WIN,6.72,15.01,4.18,209,3 of 3,8.36u,3.05,EARLY: $15 or shorter only; opens $6.72+ (2.2x ours): stake doubled
+2026-11-26,Mornington,4,,11,Ashina,WIN,11.43,51.18,1.01,50,1 of 2,1.01u,8.53,
+2026-11-26,Mornington,4,,11,Ashina,WIN,14.29,51.18,0.24,12,2 of 2,1.25u,8.53,
+2026-11-26,Mornington,4,,13,Kissattack,WIN,11.60,51.93,0.99,50,1 of 2,0.99u,8.65,
+2026-11-26,Mornington,4,,13,Kissattack,WIN,14.50,51.93,0.24,12,2 of 2,1.23u,8.65,
+2026-11-26,Mornington,4,,9,Sentaloa,WIN,11.56,51.75,1.00,50,1 of 2,1.00u,8.62,
+2026-11-26,Mornington,4,,9,Sentaloa,WIN,14.45,51.75,0.23,12,2 of 2,1.23u,8.62,
+2026-11-26,Mornington,4,,10,Soaring Legend,WIN,2.76,3.99,4.70,235,1 of 2,4.70u,2.32,opens under $4: edge 1.15
+2026-11-26,Mornington,4,,10,Soaring Legend,WIN,3.45,3.99,1.07,54,2 of 2,5.77u,2.32,opens under $4: edge 1.15
+2026-11-26,Mornington,4,,10,Soaring Legend,WIN,4.00,13.94,5.08,254,1 of 3,5.08u,2.32,
+2026-11-26,Mornington,4,,10,Soaring Legend,WIN,4.00,13.94,0.91,46,2 of 3,5.99u,2.32,
+2026-11-26,Mornington,4,,10,Soaring Legend,WIN,5.11,13.94,4.01,200,3 of 3,10.00u,2.32,opens $5.11+ (2.2x ours): stake doubled
+2026-11-26,Mornington,5,,3,Gunz,WIN,3.53,3.99,3.35,168,1 of 1,3.35u,2.94,opens under $4: edge 1.15
+2026-11-26,Mornington,5,,3,Gunz,WIN,4.00,17.64,3.66,183,1 of 3,3.66u,2.94,
+2026-11-26,Mornington,5,,3,Gunz,WIN,4.66,17.64,0.72,36,2 of 3,4.38u,2.94,
+2026-11-26,Mornington,5,,3,Gunz,WIN,6.47,17.64,4.38,219,3 of 3,8.76u,2.94,opens $6.47+ (2.2x ours): stake doubled
+2026-11-26,Mornington,5,,7,Ole Daze,WIN,6.85,31.46,1.77,88,1 of 3,1.77u,5.24,
+2026-11-26,Mornington,5,,7,Ole Daze,WIN,8.56,31.46,0.40,20,2 of 3,2.17u,5.24,
+2026-11-26,Mornington,5,,7,Ole Daze,WIN,11.54,31.46,2.17,108,3 of 3,4.34u,5.24,opens $11.54+ (2.2x ours): stake doubled
+2026-11-26,Mornington,5,,10,Outer Banks,WIN,14.28,63.28,0.79,40,1 of 2,0.79u,10.55,
+2026-11-26,Mornington,5,,10,Outer Banks,WIN,17.85,63.28,0.20,10,2 of 2,0.99u,10.55,
+2026-11-26,Mornington,5,,4,Trebilco,WIN,11.39,51.02,1.01,50,1 of 2,1.01u,8.50,
+2026-11-26,Mornington,5,,4,Trebilco,WIN,14.24,51.02,0.24,12,2 of 2,1.25u,8.50,
+2026-11-26,Mornington,6,,3,Brutal World,WIN,9.47,42.81,1.24,62,1 of 3,1.24u,7.14,
+2026-11-26,Mornington,6,,3,Brutal World,WIN,11.84,42.81,0.28,14,2 of 3,1.52u,7.14,
+2026-11-26,Mornington,6,,3,Brutal World,WIN,15.70,42.81,1.52,76,3 of 3,3.04u,7.14,opens $15.70+ (2.2x ours): stake doubled
+2026-11-26,Mornington,6,,1,Dragon Scroll,WIN,5.34,24.81,2.36,118,1 of 3,2.36u,4.13,
+2026-11-26,Mornington,6,,1,Dragon Scroll,WIN,6.67,24.81,0.52,26,2 of 3,2.88u,4.13,
+2026-11-26,Mornington,6,,1,Dragon Scroll,WIN,9.10,24.81,2.88,144,3 of 3,5.76u,4.13,opens $9.10+ (2.2x ours): stake doubled
+2026-11-26,Mornington,6,,9,Hey Kleine Maus,WIN,6.04,15.01,2.05,102,1 of 3,2.05u,4.65,EARLY: $15 or shorter only
+2026-11-26,Mornington,6,,9,Hey Kleine Maus,WIN,7.55,15.01,0.45,22,2 of 3,2.50u,4.65,EARLY: $15 or shorter only
+2026-11-26,Mornington,6,,9,Hey Kleine Maus,WIN,10.23,15.01,2.50,125,3 of 3,5.00u,4.65,EARLY: $15 or shorter only; opens $10.23+ (2.2x ours): stake doubled
+2026-11-26,Mornington,7,,12,Bel Lupa,WIN,2.95,3.99,4.26,213,1 of 2,4.26u,2.48,opens under $4: edge 1.15
+2026-11-26,Mornington,7,,12,Bel Lupa,WIN,3.69,3.99,1.01,50,2 of 2,5.27u,2.48,opens under $4: edge 1.15
+2026-11-26,Mornington,7,,12,Bel Lupa,WIN,4.00,14.88,4.63,232,1 of 3,4.63u,2.48,
+2026-11-26,Mornington,7,,12,Bel Lupa,WIN,4.00,14.88,0.85,42,2 of 3,5.48u,2.48,
+2026-11-26,Mornington,7,,12,Bel Lupa,WIN,5.46,14.88,4.52,226,3 of 3,10.00u,2.48,opens $5.46+ (2.2x ours): stake doubled
+2026-11-26,Mornington,7,,3,Ilovediamonds,WIN,7.32,33.50,1.64,82,1 of 3,1.64u,5.58,
+2026-11-26,Mornington,7,,3,Ilovediamonds,WIN,9.15,33.50,0.38,19,2 of 3,2.02u,5.58,
+2026-11-26,Mornington,7,,3,Ilovediamonds,WIN,12.29,33.50,2.02,101,3 of 3,4.04u,5.58,opens $12.29+ (2.2x ours): stake doubled
+2026-11-26,Mornington,7,,5,No Limitation,WIN,12.09,54.02,0.95,48,1 of 2,0.95u,9.00,
+2026-11-26,Mornington,7,,5,No Limitation,WIN,15.11,54.02,0.22,11,2 of 2,1.17u,9.00,
+2026-11-26,Mornington,7,,2,Ottalaus,WIN,18.37,80.38,0.61,30,1 of 2,0.61u,13.40,
+2026-11-26,Mornington,7,,2,Ottalaus,WIN,22.96,80.38,0.15,8,2 of 2,0.76u,13.40,
+2026-11-26,Mornington,7,,10,Skjaldmo,WIN,10.86,48.75,1.07,54,1 of 2,1.07u,8.12,
+2026-11-26,Mornington,7,,10,Skjaldmo,WIN,13.57,48.75,0.25,12,2 of 2,1.32u,8.12,
+2026-11-26,Mornington,8,,1,Ashau Valley,WIN,14.28,63.27,0.79,40,1 of 2,0.79u,10.55,
+2026-11-26,Mornington,8,,1,Ashau Valley,WIN,17.85,63.27,0.20,10,2 of 2,0.99u,10.55,
+2026-11-26,Mornington,8,,6,Goodness,WIN,4.23,19.87,3.13,156,1 of 3,3.13u,3.31,
+2026-11-26,Mornington,8,,6,Goodness,WIN,5.29,19.87,0.65,32,2 of 3,3.78u,3.31,
+2026-11-26,Mornington,8,,6,Goodness,WIN,7.29,19.87,3.78,189,3 of 3,7.56u,3.31,opens $7.29+ (2.2x ours): stake doubled
+2026-11-26,Mornington,8,,2,Rough Enuff,WIN,3.14,3.99,3.94,197,1 of 2,3.94u,2.63,opens under $4: edge 1.15
+2026-11-26,Mornington,8,,2,Rough Enuff,WIN,3.93,3.99,0.94,47,2 of 2,4.88u,2.63,opens under $4: edge 1.15
+2026-11-26,Mornington,8,,2,Rough Enuff,WIN,4.00,15.77,4.26,213,1 of 3,4.26u,2.63,
+2026-11-26,Mornington,8,,2,Rough Enuff,WIN,4.14,15.77,0.80,40,2 of 3,5.06u,2.63,
+2026-11-26,Mornington,8,,2,Rough Enuff,WIN,5.79,15.77,4.94,247,3 of 3,10.00u,2.63,opens $5.79+ (2.2x ours): stake doubled

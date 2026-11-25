@@ -14,7 +14,7 @@
 2|11|Ravens Glow|False|False
 2|3|Dexter|False|False
 2|6|Mr Jameson|False|False
-2|2|Bowdacious Gold|False|False
+2|2|Bowdacious Gold|False|True
 2|1|Barossa Baron|False|False
 2|9|Imperial Meeting|False|False
 2|8|Hilovely|False|False
@@ -23,8 +23,8 @@
 3|6|Sweet Champagne|False|False
 3|2|Fulham Fox|False|False
 3|7|Symphony Royale|False|False
-3|1|Belle Flamme|False|False
-3|4|Gypsy Storm|False|False
+3|1|Belle Flamme|False|True
+3|4|Gypsy Storm|False|True
 3|8|Five Roses|False|False
 3|9|I'm A Believer|False|False
 3|12|Transience|False|False
@@ -37,20 +37,21 @@
 4|12|Heidi High|False|False
 4|4|Grey Sabre|False|False
 4|6|Jakbe Nimble|False|False
-4|16|Startin'sumthin'|True|False
+4|16|Startin'sumthin'|True|True
 4|14|Tennessee Link|False|False
 4|5|Guthrie|False|False
-4|17|Lady Of Alsace|True|False
+4|17|Lady Of Alsace|True|True
 4|11|Ashina|False|False
 4|13|Kissattack|False|False
 4|15|Verry Zeductive|True|False
-4|8|Amsterdam Nights|False|False
+4|8|Amsterdam Nights|False|True
 4|10|Soaring Legend|False|False
 4|9|Sentaloa|False|False
-5|6|Empressive Enuff|False|False
+5|6|Empressive Enuff|False|True
 5|2|Umgawa|False|False
 5|5|Smoke 'n' Oakum|False|False
 5|1|Shooter Mcgavin|False|False
+5|11|Vaafee|False|True
 5|4|Trebilco|False|False
 5|10|Outer Banks|False|False
 5|3|Gunz|False|False
@@ -62,19 +63,19 @@
 6|14|Dominant Miss|False|False
 6|3|Brutal World|False|False
 6|4|Glisk|False|False
-6|11|Heidi Dancer|False|False
+6|11|Heidi Dancer|False|True
 6|9|Hey Kleine Maus|False|False
-6|2|Gabor|False|False
+6|2|Gabor|False|True
 6|10|Lotta City|False|False
-6|5|The Birthday Party|False|False
+6|5|The Birthday Party|False|True
 6|7|Divine Empress|False|False
-6|12|Our Yonglee|False|False
-6|6|Catch It Kiss It|False|False
+6|12|Our Yonglee|False|True
+6|6|Catch It Kiss It|False|True
 6|1|Dragon Scroll|False|False
-6|15|Lady Of Pompeii|True|False
-7|1|Fileeta|False|False
-7|7|Bella Cinque|False|False
-7|11|Soju|False|False
+6|15|Lady Of Pompeii|True|True
+7|1|Fileeta|False|True
+7|7|Bella Cinque|False|True
+7|11|Soju|False|True
 7|3|Ilovediamonds|False|False
 7|4|Just Think Twice|False|False
 7|8|Stahnado|False|False
@@ -83,14 +84,14 @@
 7|5|No Limitation|False|False
 7|9|Anyways|False|False
 7|12|Bel Lupa|False|False
-7|6|Freshen|False|False
+7|6|Freshen|False|True
 8|9|I'm Dynamite|False|False
 8|10|Shout Out Girl|False|False
 8|1|Ashau Valley|False|False
 8|4|Sacro Catino|False|False
 8|8|Fearless Monarch|False|False
 8|3|Colizzi|False|False
-8|7|Jenni Poppins|False|False
+8|7|Jenni Poppins|False|True
 8|2|Rough Enuff|False|False
-8|5|Strangethingdesire|False|False
+8|5|Strangethingdesire|False|True
 8|6|Goodness|False|False

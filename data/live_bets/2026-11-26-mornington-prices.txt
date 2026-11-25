@@ -1,97 +1,98 @@
-# Mornington Thu 26 Nov, official going, final fields; no market yet; PROVISIONAL: 3 runners without a rider
-1, Zaac, 0, 0
-1, Market Warrior, 0, 0
-1, Exceed Sonic, 0, 0
-1, Ruptured, 0, 0
-1, Optimus, 0, 0
-1, Just Jean, 0, 0
-1, Cirque De Coco, 0, 0
-1, Flying White Robe, 0, 0
-2, San Pueblo, 0, 0
-2, Galagacisco, 0, 0
-2, Fulhamzedge, 0, 0
-2, Law's Dream, 0, 0
-2, The Secret, 0, 0
-2, Ravens Glow, 0, 0
-2, Dexter, 0, 0
-2, Mr Jameson, 0, 0
-2, Bowdacious Gold, 0, 0
-2, Barossa Baron, 0, 0
-2, Imperial Meeting, 0, 0
-2, Hilovely, 0, 0
-3, Graceful Mist, 0, 0
-3, Slick Vixen, 0, 0
-3, Sweet Champagne, 0, 0
-3, Fulham Fox, 0, 0
-3, Symphony Royale, 0, 0
-3, Belle Flamme, 0, 0
-3, Gypsy Storm, 0, 0
-3, Five Roses, 0, 0
-3, I'm A Believer, 0, 0
-3, Transience, 0, 0
-3, Kazekage, 0, 0
-3, Ocean Mirage, 0, 0
-4, Clydebank Robber, 0, 0
-4, Marquisard, 0, 0
-4, Call Me Francis, 0, 0
-4, Fantastic Beast, 0, 0
-4, Heidi High, 0, 0
-4, Grey Sabre, 0, 0
-4, Jakbe Nimble, 0, 0
-4, Startin'sumthin', SCR
-4, Tennessee Link, 0, 0
-4, Guthrie, 0, 0
-4, Lady Of Alsace, SCR
-4, Ashina, 0, 0
-4, Kissattack, 0, 0
-4, Verry Zeductive, SCR
-4, Amsterdam Nights, 0, 0
-4, Soaring Legend, 0, 0
-4, Sentaloa, 0, 0
-5, Empressive Enuff, 0, 0
-5, Umgawa, 0, 0
-5, Smoke 'n' Oakum, 0, 0
-5, Shooter Mcgavin, 0, 0
-5, Trebilco, 0, 0
-5, Outer Banks, 0, 0
-5, Gunz, 0, 0
-5, Ole Daze, 0, 0
-5, Valedictorian, 0, 0
-5, Extreme Turbo, 0, 0
-6, Russian Benefits, 0, 0
-6, Gracious Diva, 0, 0
-6, Dominant Miss, 0, 0
-6, Brutal World, 0, 0
-6, Glisk, 0, 0
-6, Heidi Dancer, 0, 0
-6, Hey Kleine Maus, 0, 0
-6, Gabor, 0, 0
-6, Lotta City, 0, 0
-6, The Birthday Party, 0, 0
-6, Divine Empress, 0, 0
-6, Our Yonglee, 0, 0
-6, Catch It Kiss It, 0, 0
-6, Dragon Scroll, 0, 0
-6, Lady Of Pompeii, SCR
-7, Fileeta, 0, 0
-7, Bella Cinque, 0, 0
-7, Soju, 0, 0
-7, Ilovediamonds, 0, 0
-7, Just Think Twice, 0, 0
-7, Stahnado, 0, 0
-7, Ottalaus, 0, 0
-7, Skjaldmo, 0, 0
-7, No Limitation, 0, 0
-7, Anyways, 0, 0
-7, Bel Lupa, 0, 0
-7, Freshen, 0, 0
-8, I'm Dynamite, 0, 0
-8, Shout Out Girl, 0, 0
-8, Ashau Valley, 0, 0
-8, Sacro Catino, 0, 0
-8, Fearless Monarch, 0, 0
-8, Colizzi, 0, 0
-8, Jenni Poppins, 0, 0
-8, Rough Enuff, 0, 0
-8, Strangethingdesire, 0, 0
-8, Goodness, 0, 0
+# Mornington Thu 26 Nov, official going, final fields; market open in R1,2,3,4,5,6,7,8
+1, Zaac, 81.00, 81.00, fk_open 61.00
+1, Market Warrior, 126.00, 126.00, fk_open 28.50
+1, Exceed Sonic, 26.00, 26.00, fk_open 12.00
+1, Ruptured, 2.70, 2.70, fk_open 5.50
+1, Optimus, 3.00, 3.00, fk_open 3.35
+1, Just Jean, 151.00, 151.00, fk_open 86.00
+1, Cirque De Coco, 5.00, 5.00, fk_open 2.60
+1, Flying White Robe, 3.70, 3.70, fk_open 3.30
+2, San Pueblo, 3.20, 3.20, fk_open 5.00
+2, Galagacisco, 126.00, 126.00, fk_open 51.00
+2, Fulhamzedge, 61.00, 61.00, fk_open 51.00
+2, Law's Dream, 151.00, 151.00, fk_open 101.00
+2, The Secret, 8.50, 8.50, fk_open 11.00
+2, Ravens Glow, 1.95, 1.95, fk_open 1.55
+2, Dexter, 126.00, 126.00, fk_open 101.00
+2, Mr Jameson, 11.00, 11.00, fk_open 8.00
+2, Bowdacious Gold, SCR
+2, Barossa Baron, 26.00, 26.00, fk_open 26.00
+2, Imperial Meeting, 41.00, 41.00, fk_open 51.00
+2, Hilovely, 9.50, 9.50, fk_open 8.00
+3, Graceful Mist, 23.00, 23.00, fk_open 30.00
+3, Slick Vixen, 41.00, 41.00, fk_open 37.50
+3, Sweet Champagne, 10.00, 10.00, fk_open 19.00
+3, Fulham Fox, 81.00, 81.00, fk_open 71.00
+3, Symphony Royale, 126.00, 126.00, fk_open 81.00
+3, Belle Flamme, SCR, fk_open 6.50
+3, Gypsy Storm, SCR, last 7.50, fk_open 6.50
+3, Five Roses, 9.50, 9.50, fk_open 8.00
+3, I'm A Believer, 13.00, 13.00, fk_open 12.00
+3, Transience, 4.40, 4.40, fk_open 6.50
+3, Kazekage, 8.00, 8.00, fk_open 11.00
+3, Ocean Mirage, 2.00, 2.00, fk_open 2.43
+4, Clydebank Robber, 151.00, 151.00, fk_open 61.00
+4, Marquisard, 151.00, 151.00, fk_open 126.00
+4, Call Me Francis, 34.00, 34.00, fk_open 19.00
+4, Fantastic Beast, 21.00, 21.00, fk_open 10.50
+4, Heidi High, 31.00, 31.00, fk_open 19.00
+4, Grey Sabre, 8.50, 8.50, fk_open 19.00
+4, Jakbe Nimble, 61.00, 61.00, fk_open 28.50
+4, Startin'sumthin', SCR, fk_open 71.00
+4, Tennessee Link, 151.00, 151.00, fk_open 126.00
+4, Guthrie, 31.00, 31.00, fk_open 61.00
+4, Lady Of Alsace, SCR, fk_open 81.00
+4, Ashina, 7.00, 7.00, fk_open 8.25
+4, Kissattack, 7.00, 7.00, fk_open 4.40
+4, Verry Zeductive, 101.00, 101.00, fk_open 71.00
+4, Amsterdam Nights, SCR, last 101.00, fk_open 91.00
+4, Soaring Legend, 2.35, 2.35, fk_open 2.30
+4, Sentaloa, 5.50, 5.50, fk_open 5.25
+5, Empressive Enuff, SCR, last 10.00, fk_open 8.00
+5, Umgawa, 61.00, 61.00, fk_open 51.00
+5, Smoke 'n' Oakum, 31.00, 31.00, fk_open 26.00
+5, Shooter Mcgavin, 14.00, 14.00, fk_open 11.00
+5, Vaafee, SCR
+5, Trebilco, 7.00, 7.00, fk_open 4.80
+5, Outer Banks, 10.00, 10.00, fk_open 19.00
+5, Gunz, 2.60, 2.60, fk_open 3.70
+5, Ole Daze, 3.30, 3.30, fk_open 3.70
+5, Valedictorian, 9.00, 9.00, fk_open 8.00
+5, Extreme Turbo, 14.00, 14.00, fk_open 8.00
+6, Russian Benefits, 18.00, 18.00, fk_open 20.00
+6, Gracious Diva, 23.00, 23.00, fk_open 37.50
+6, Dominant Miss, 101.00, 101.00, fk_open 113.50
+6, Brutal World, 5.50, 5.50, fk_open 5.50
+6, Glisk, 31.00, 31.00, fk_open 56.00
+6, Heidi Dancer, SCR, last 51.00, fk_open 56.00
+6, Hey Kleine Maus, 4.00, 4.00, fk_open 5.00
+6, Gabor, SCR
+6, Lotta City, 3.80, 3.80, fk_open 7.00
+6, The Birthday Party, SCR, fk_open 8.75
+6, Divine Empress, 16.00, 16.00, fk_open 14.50
+6, Our Yonglee, SCR, last 13.00, fk_open 13.67
+6, Catch It Kiss It, SCR, fk_open 14.50
+6, Dragon Scroll, 3.00, 3.00, fk_open 4.15
+6, Lady Of Pompeii, SCR, fk_open 6.00
+7, Fileeta, SCR, last 26.00, fk_open 28.50
+7, Bella Cinque, SCR, fk_open 13.00
+7, Soju, SCR, last 5.00, fk_open 9.00
+7, Ilovediamonds, 4.20, 4.20, fk_open 4.40
+7, Just Think Twice, 12.00, 12.00, fk_open 13.00
+7, Stahnado, 21.00, 21.00, fk_open 56.00
+7, Ottalaus, 10.00, 10.00, fk_open 9.00
+7, Skjaldmo, 6.25, 6.25, fk_open 5.25
+7, No Limitation, 8.00, 8.00, fk_open 21.00
+7, Anyways, 9.00, 9.00, fk_open 13.00
+7, Bel Lupa, 2.70, 2.70, fk_open 5.00
+7, Freshen, SCR, last 9.00, fk_open 9.00
+8, I'm Dynamite, 67.00, 67.00, fk_open 101.00
+8, Shout Out Girl, 151.00, 151.00, fk_open 151.00
+8, Ashau Valley, 7.00, 7.00, fk_open 9.25
+8, Sacro Catino, 10.00, 10.00, fk_open 15.00
+8, Fearless Monarch, 8.50, 8.50, fk_open 15.00
+8, Colizzi, 9.50, 9.50, fk_open 15.00
+8, Jenni Poppins, SCR, last 2.90, fk_open 2.60
+8, Rough Enuff, 2.70, 2.70, fk_open 3.10
+8, Strangethingdesire, SCR
+8, Goodness, 2.70, 2.70, fk_open 3.40

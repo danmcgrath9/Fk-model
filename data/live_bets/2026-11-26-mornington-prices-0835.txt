@@ -1,0 +1,97 @@
+# Mornington Thu 26 Nov, official going, final fields; no market yet; PROVISIONAL: 3 runners without a rider
+1, Zaac, 0, 0
+1, Market Warrior, 0, 0
+1, Exceed Sonic, 0, 0
+1, Ruptured, 0, 0
+1, Optimus, 0, 0
+1, Just Jean, 0, 0
+1, Cirque De Coco, 0, 0
+1, Flying White Robe, 0, 0
+2, San Pueblo, 0, 0
+2, Galagacisco, 0, 0
+2, Fulhamzedge, 0, 0
+2, Law's Dream, 0, 0
+2, The Secret, 0, 0
+2, Ravens Glow, 0, 0
+2, Dexter, 0, 0
+2, Mr Jameson, 0, 0
+2, Bowdacious Gold, 0, 0
+2, Barossa Baron, 0, 0
+2, Imperial Meeting, 0, 0
+2, Hilovely, 0, 0
+3, Graceful Mist, 0, 0
+3, Slick Vixen, 0, 0
+3, Sweet Champagne, 0, 0
+3, Fulham Fox, 0, 0
+3, Symphony Royale, 0, 0
+3, Belle Flamme, 0, 0
+3, Gypsy Storm, 0, 0
+3, Five Roses, 0, 0
+3, I'm A Believer, 0, 0
+3, Transience, 0, 0
+3, Kazekage, 0, 0
+3, Ocean Mirage, 0, 0
+4, Clydebank Robber, 0, 0
+4, Marquisard, 0, 0
+4, Call Me Francis, 0, 0
+4, Fantastic Beast, 0, 0
+4, Heidi High, 0, 0
+4, Grey Sabre, 0, 0
+4, Jakbe Nimble, 0, 0
+4, Startin'sumthin', SCR
+4, Tennessee Link, 0, 0
+4, Guthrie, 0, 0
+4, Lady Of Alsace, SCR
+4, Ashina, 0, 0
+4, Kissattack, 0, 0
+4, Verry Zeductive, SCR
+4, Amsterdam Nights, 0, 0
+4, Soaring Legend, 0, 0
+4, Sentaloa, 0, 0
+5, Empressive Enuff, 0, 0
+5, Umgawa, 0, 0
+5, Smoke 'n' Oakum, 0, 0
+5, Shooter Mcgavin, 0, 0
+5, Trebilco, 0, 0
+5, Outer Banks, 0, 0
+5, Gunz, 0, 0
+5, Ole Daze, 0, 0
+5, Valedictorian, 0, 0
+5, Extreme Turbo, 0, 0
+6, Russian Benefits, 0, 0
+6, Gracious Diva, 0, 0
+6, Dominant Miss, 0, 0
+6, Brutal World, 0, 0
+6, Glisk, 0, 0
+6, Heidi Dancer, 0, 0
+6, Hey Kleine Maus, 0, 0
+6, Gabor, 0, 0
+6, Lotta City, 0, 0
+6, The Birthday Party, 0, 0
+6, Divine Empress, 0, 0
+6, Our Yonglee, 0, 0
+6, Catch It Kiss It, 0, 0
+6, Dragon Scroll, 0, 0
+6, Lady Of Pompeii, SCR
+7, Fileeta, 0, 0
+7, Bella Cinque, 0, 0
+7, Soju, 0, 0
+7, Ilovediamonds, 0, 0
+7, Just Think Twice, 0, 0
+7, Stahnado, 0, 0
+7, Ottalaus, 0, 0
+7, Skjaldmo, 0, 0
+7, No Limitation, 0, 0
+7, Anyways, 0, 0
+7, Bel Lupa, 0, 0
+7, Freshen, 0, 0
+8, I'm Dynamite, 0, 0
+8, Shout Out Girl, 0, 0
+8, Ashau Valley, 0, 0
+8, Sacro Catino, 0, 0
+8, Fearless Monarch, 0, 0
+8, Colizzi, 0, 0
+8, Jenni Poppins, 0, 0
+8, Rough Enuff, 0, 0
+8, Strangethingdesire, 0, 0
+8, Goodness, 0, 0
