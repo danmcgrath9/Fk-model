@@ -1,0 +1,36 @@
+{
+ "day": "Friday",
+ "date": "27 November",
+ "footer": "Win bets.",
+ "brand": true,
+ "prices_as_at": "2026-11-26T10:11",
+ "meetings": [
+  {
+   "name": "Pakenham",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "6:15PM",
+     "horse": "Majestic Son",
+     "price": "$2",
+     "units": "4.93u"
+    },
+    {
+     "race": 5,
+     "time": "8:15PM",
+     "horse": "Alexander Thegreat",
+     "price": "$10",
+     "units": "1.34u"
+    },
+    {
+     "race": 7,
+     "time": "9:15PM",
+     "horse": "Hook 'n' Spur",
+     "price": "$6",
+     "units": "1.07u"
+    }
+   ]
+  }
+ ]
+}

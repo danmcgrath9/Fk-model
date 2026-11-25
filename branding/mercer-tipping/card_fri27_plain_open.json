@@ -1,0 +1,37 @@
+{
+ "day": "Friday",
+ "date": "27 November",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Pakenham",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "6:15PM",
+     "horse": "Majestic Son",
+     "price": "$2.80",
+     "units": "4.93u",
+     "rated": "$2.25"
+    },
+    {
+     "race": 5,
+     "time": "8:15PM",
+     "horse": "Alexander Thegreat",
+     "price": "$10",
+     "units": "1.34u",
+     "rated": "$6.64"
+    },
+    {
+     "race": 7,
+     "time": "9:15PM",
+     "horse": "Hook 'n' Spur",
+     "price": "$18.33",
+     "units": "1.07u",
+     "rated": "$9.78"
+    }
+   ]
+  }
+ ]
+}
