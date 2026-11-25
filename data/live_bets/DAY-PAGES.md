@@ -31,4 +31,5 @@ re-price, settling). A meeting the rules keep on paper is named so, e.g. "Balnar
 | Tue 24 Nov | https://claude.ai/artifact/UruPK19MUguS7UNxs7FySN | Ararat (paper) RQEex9isUWCDecZJnCHBEQ |
 | Wed 25 Nov | https://claude.ai/artifact/6mjSDMTgcLo1JTTUZwEMsB | Geelong (provisional) L7QpyayLPxRqjojDA2bCNm |
 | Thu 26 Nov | https://claude.ai/artifact/3B1CTLcoNhm1hZwbHnpUq5 | Mornington (provisional) 55qjoqLFERjjkPJPCi7JxC |
+| Fri 27 Nov | https://claude.ai/artifact/S5NyyMkK666tTNqN9TP52W | Pakenham Park (provisional) LWwAJDMnq28nP1QHGk64kA; Wodonga (provisional) SSvnwtQJixoawMMqfDs44Y |
 | Sat 28 Nov | https://claude.ai/artifact/PWhdhm6EpjXVPPVbTbqHK2 | Sandown (provisional) RcPZJ9YaYyjeqSUyWgH8wy |
