@@ -3,7 +3,7 @@
  "date": "26 November",
  "footer": "Win bets.",
  "brand": true,
- "prices_as_at": "2026-11-25T05:31",
+ "prices_as_at": "2026-11-26T08:33",
  "meetings": [
   {
    "name": "Mornington",
@@ -13,29 +13,29 @@
      "race": 5,
      "time": "5:00PM",
      "horse": "Gunz",
-     "price": "$3",
+     "price": "$2.60",
      "units": "3.27u"
     },
     {
      "race": 5,
      "time": "5:00PM",
      "horse": "Outer Banks",
-     "price": "$9.50",
+     "price": "$10",
      "units": "0.71u"
     },
     {
      "race": 7,
      "time": "6:00PM",
      "horse": "Bel Lupa",
-     "price": "$3.30",
+     "price": "$2.70",
      "units": "4.15u"
     },
     {
      "race": 7,
      "time": "6:00PM",
      "horse": "No Limitation",
-     "price": "$12",
-     "units": "0.68u"
+     "price": "$8",
+     "units": "0.85u"
     }
    ]
   }
