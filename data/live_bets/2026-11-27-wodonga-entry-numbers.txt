@@ -1,0 +1,107 @@
+1|3|Kiptum|False|False
+1|7|Magna Peak|False|False
+1|1|Bourne Legacy|False|False
+1|5|Tough Revelation|False|False
+1|6|Borata's Girl|False|False
+1|4|Prince Of Glam|False|False
+1|2|Cosmic Snitz|False|False
+1|8|Zou Owe Me|False|False
+2|3|Magnus Maximus|False|False
+2|1|Dagger One|False|False
+2|10|News Scoop|False|False
+2|13|Arties A Star|True|False
+2|8|Ima Vixen|False|False
+2|9|Muddy|False|False
+2|11|Regal Belle|False|False
+2|7|Azka Veloce|False|False
+2|2|Doctorate|False|False
+2|5|Pray For Elegance|False|False
+2|12|Winna's Sister|False|False
+2|4|Ordinary Star|False|False
+2|6|Skadoodle|False|False
+3|17|Cookardinia Miss|True|False
+3|16|Legal Size|True|False
+3|1|He's Our Boy|False|False
+3|13|Princess Prussia|False|False
+3|8|Estival|False|False
+3|2|Scorpion|False|False
+3|11|Money Bags|False|False
+3|9|Fiore Darancio|False|False
+3|15|Veloce|True|False
+3|12|Ninetyfiveinafifty|False|False
+3|7|Bar La La|False|False
+3|10|Katie On The Edge|False|False
+3|3|Acroman|False|False
+3|14|I'm Confused|False|False
+3|5|Boots Off|False|False
+3|4|Astatine|False|False
+3|6|Inner Light|False|False
+4|9|Surely Special|False|False
+4|6|Sorry Sunshine|False|False
+4|5|Quamby|False|False
+4|2|Dartboard|False|False
+4|3|Star Blazer|False|False
+4|1|Just Call Me Jonny|False|False
+4|10|Under The Hat|False|False
+4|4|Mistressofillusion|False|False
+4|7|Doc March|False|False
+4|13|Murgasty|True|False
+4|14|Perfectly Good|True|False
+4|8|She's Stargazing|False|False
+4|11|Carnival Riches|False|False
+4|12|Victrix Swan|False|False
+5|6|Star Buyer|False|False
+5|4|San Marco|False|False
+5|12|Strategic Defense|False|False
+5|2|Giant's Reprieve|False|False
+5|7|Scottish Pearl|False|False
+5|1|Shotaro|False|False
+5|10|Midnight Eagle|False|False
+5|5|Sir Basil|False|False
+5|9|Ashen Knight|False|False
+5|3|Palladium|False|False
+5|11|Red Light Rachel|False|False
+5|8|Bottas|False|False
+6|9|Indispensable|False|False
+6|2|El Rocko|False|False
+6|17|Grey Lad|True|False
+6|11|Eamonn's Memory|False|False
+6|5|Presser|False|False
+6|7|Black Storm|False|False
+6|15|Fox Appeal|True|False
+6|16|Morning Darling|True|False
+6|10|Itsukushima|False|False
+6|4|El Soleado|False|False
+6|8|Bullets High|False|False
+6|3|Tuff Tu Mus|False|False
+6|12|Expeetee|False|False
+6|13|Make It Sweet|False|False
+6|14|Sister Shay|False|False
+6|1|Buccleuch|False|False
+6|6|Space Rider|False|False
+7|2|Projeto|False|False
+7|5|Commands Success|False|False
+7|10|Rosie's Prophecy|False|False
+7|11|Roussillon|False|False
+7|6|Foreman's Gully|False|False
+7|16|Three Musketeers|True|False
+7|4|Before The War|False|False
+7|7|Abstruse|False|False
+7|3|The Shaper|False|False
+7|15|Prandium Tempus|True|False
+7|8|Fourthtimelucky|False|False
+7|13|More Highs On Me|True|False
+7|12|Alice Alice|False|False
+7|14|Pacific Glamour|True|False
+7|1|Brenlyn's Legacy|False|False
+7|9|Hazardous|False|False
+8|3|Copperfield|False|False
+8|7|Blushing Tycoon|False|False
+8|9|Deeling Aces|False|False
+8|1|Tanganyika|False|False
+8|2|Future Fund|False|False
+8|10|Steve's Way|False|False
+8|8|Doubtfree|False|False
+8|4|Lord Of Valor|False|False
+8|5|Paparazzo|False|False
+8|6|Shoma|False|False
