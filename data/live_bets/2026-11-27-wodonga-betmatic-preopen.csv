@@ -1,84 +1,86 @@
 date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
-2026-11-27,Wodonga,1,,6,Borata's Girl,WIN,7.99,15.01,1.49,74,1 of 3,1.49u,6.07,EARLY: $15 or shorter only
-2026-11-27,Wodonga,1,,6,Borata's Girl,WIN,9.99,15.01,0.34,17,2 of 3,1.83u,6.07,EARLY: $15 or shorter only
-2026-11-27,Wodonga,1,,6,Borata's Girl,WIN,13.36,15.01,1.83,92,3 of 3,3.66u,6.07,EARLY: $15 or shorter only; opens $13.36+ (2.2x ours): stake doubled
-2026-11-27,Wodonga,1,,1,Bourne Legacy,WIN,3.56,3.99,3.33,166,1 of 1,3.33u,2.96,opens under $4: edge 1.15
-2026-11-27,Wodonga,1,,1,Bourne Legacy,WIN,4.00,17.77,3.63,182,1 of 3,3.63u,2.96,
-2026-11-27,Wodonga,1,,1,Bourne Legacy,WIN,4.70,17.77,0.72,36,2 of 3,4.35u,2.96,
-2026-11-27,Wodonga,1,,1,Bourne Legacy,WIN,6.52,17.77,4.35,217,3 of 3,8.70u,2.96,opens $6.52+ (2.2x ours): stake doubled
-2026-11-27,Wodonga,2,,10,News Scoop,WIN,11.97,53.51,0.96,48,1 of 2,0.96u,8.92,
-2026-11-27,Wodonga,2,,10,News Scoop,WIN,14.96,53.51,0.23,12,2 of 2,1.19u,8.92,
-2026-11-27,Wodonga,2,,4,Ordinary Star,WIN,13.53,60.10,0.84,42,1 of 2,0.84u,10.02,
-2026-11-27,Wodonga,2,,4,Ordinary Star,WIN,16.91,60.10,0.20,10,2 of 2,1.04u,10.02,
-2026-11-27,Wodonga,2,,5,Pray For Elegance,WIN,2.47,3.99,5.52,276,1 of 2,5.52u,2.09,EARLY: $15 or shorter only; opens under $4: edge 1.15
-2026-11-27,Wodonga,2,,5,Pray For Elegance,WIN,3.09,3.99,1.18,59,2 of 2,6.70u,2.09,EARLY: $15 or shorter only; opens under $4: edge 1.15
-2026-11-27,Wodonga,2,,5,Pray For Elegance,WIN,4.00,12.54,5.94,297,1 of 3,5.94u,2.09,EARLY: $15 or shorter only
-2026-11-27,Wodonga,2,,5,Pray For Elegance,WIN,4.00,12.54,1.00,50,2 of 3,6.94u,2.09,EARLY: $15 or shorter only
-2026-11-27,Wodonga,2,,5,Pray For Elegance,WIN,4.60,12.54,3.06,153,3 of 3,10.00u,2.09,EARLY: $15 or shorter only; opens $4.60+ (2.2x ours): stake doubled
-2026-11-27,Wodonga,3,,5,Boots Off,WIN,10.67,15.01,1.08,54,1 of 1,1.08u,7.99,EARLY: $15 or shorter only
-2026-11-27,Wodonga,3,,12,Ninetyfiveinafifty,WIN,6.26,28.87,1.96,98,1 of 3,1.96u,4.81,
-2026-11-27,Wodonga,3,,12,Ninetyfiveinafifty,WIN,7.82,28.87,0.44,22,2 of 3,2.40u,4.81,
-2026-11-27,Wodonga,3,,12,Ninetyfiveinafifty,WIN,10.59,28.87,2.40,120,3 of 3,4.80u,4.81,opens $10.59+ (2.2x ours): stake doubled
-2026-11-27,Wodonga,3,,2,Scorpion,WIN,8.30,37.75,1.43,72,1 of 3,1.43u,6.29,
-2026-11-27,Wodonga,3,,2,Scorpion,WIN,10.38,37.75,0.33,16,2 of 3,1.76u,6.29,
-2026-11-27,Wodonga,3,,2,Scorpion,WIN,13.85,37.75,1.76,88,3 of 3,3.52u,6.29,opens $13.85+ (2.2x ours): stake doubled
-2026-11-27,Wodonga,4,,11,Carnival Riches,WIN,11.60,51.93,0.99,50,1 of 2,0.99u,8.65,
-2026-11-27,Wodonga,4,,11,Carnival Riches,WIN,14.50,51.93,0.24,12,2 of 2,1.23u,8.65,
-2026-11-27,Wodonga,4,,2,Dartboard,WIN,11.64,52.10,0.99,50,1 of 2,0.99u,8.68,
-2026-11-27,Wodonga,4,,2,Dartboard,WIN,14.55,52.10,0.23,12,2 of 2,1.22u,8.68,
-2026-11-27,Wodonga,4,,1,Just Call Me Jonny,WIN,4.90,15.01,2.62,131,1 of 3,2.62u,3.81,EARLY: $15 or shorter only
-2026-11-27,Wodonga,4,,1,Just Call Me Jonny,WIN,6.12,15.01,0.56,28,2 of 3,3.18u,3.81,EARLY: $15 or shorter only
-2026-11-27,Wodonga,4,,1,Just Call Me Jonny,WIN,8.38,15.01,3.18,159,3 of 3,6.36u,3.81,EARLY: $15 or shorter only; opens $8.38+ (2.2x ours): stake doubled
-2026-11-27,Wodonga,4,,5,Quamby,WIN,13.19,58.66,0.86,43,1 of 2,0.86u,9.78,
-2026-11-27,Wodonga,4,,5,Quamby,WIN,16.49,58.66,0.21,10,2 of 2,1.07u,9.78,
-2026-11-27,Wodonga,4,,8,She's Stargazing,WIN,15.16,66.96,0.75,38,1 of 2,0.75u,11.16,
-2026-11-27,Wodonga,4,,8,She's Stargazing,WIN,18.95,66.96,0.18,9,2 of 2,0.93u,11.16,
-2026-11-27,Wodonga,4,,9,Surely Special,WIN,10.30,46.39,1.13,56,1 of 3,1.13u,7.73,
-2026-11-27,Wodonga,4,,9,Surely Special,WIN,12.88,46.39,0.26,13,2 of 3,1.39u,7.73,
-2026-11-27,Wodonga,4,,9,Surely Special,WIN,17.01,46.39,1.39,70,3 of 3,2.78u,7.73,opens $17.01+ (2.2x ours): stake doubled
-2026-11-27,Wodonga,5,,8,Bottas,WIN,10.46,47.06,1.11,56,1 of 3,1.11u,7.84,
-2026-11-27,Wodonga,5,,8,Bottas,WIN,13.08,47.06,0.26,13,2 of 3,1.37u,7.84,
-2026-11-27,Wodonga,5,,8,Bottas,WIN,17.26,47.06,1.37,68,3 of 3,2.74u,7.84,opens $17.26+ (2.2x ours): stake doubled
-2026-11-27,Wodonga,5,,2,Giant's Reprieve,WIN,11.78,15.01,0.98,49,1 of 1,0.98u,8.78,EARLY: $15 or shorter only
-2026-11-27,Wodonga,5,,3,Palladium,WIN,12.24,54.62,0.94,47,1 of 2,0.94u,9.10,
-2026-11-27,Wodonga,5,,3,Palladium,WIN,15.30,54.62,0.22,11,2 of 2,1.16u,9.10,
-2026-11-27,Wodonga,5,,6,Star Buyer,WIN,16.57,72.88,0.68,34,1 of 2,0.68u,12.15,
-2026-11-27,Wodonga,5,,6,Star Buyer,WIN,20.71,72.88,0.16,8,2 of 2,0.84u,12.15,
-2026-11-27,Wodonga,5,,12,Strategic Defense,WIN,9.37,42.36,1.25,62,1 of 3,1.25u,7.06,
-2026-11-27,Wodonga,5,,12,Strategic Defense,WIN,11.71,42.36,0.29,14,2 of 3,1.54u,7.06,
-2026-11-27,Wodonga,5,,12,Strategic Defense,WIN,15.54,42.36,1.54,77,3 of 3,3.08u,7.06,opens $15.54+ (2.2x ours): stake doubled
-2026-11-27,Wodonga,6,,1,Buccleuch,WIN,3.36,3.99,3.59,180,1 of 1,3.59u,2.80,opens under $4: edge 1.15
-2026-11-27,Wodonga,6,,1,Buccleuch,WIN,4.00,16.82,3.91,196,1 of 3,3.91u,2.80,
-2026-11-27,Wodonga,6,,1,Buccleuch,WIN,4.44,16.82,0.75,38,2 of 3,4.66u,2.80,
-2026-11-27,Wodonga,6,,1,Buccleuch,WIN,6.17,16.82,4.66,233,3 of 3,9.32u,2.80,opens $6.17+ (2.2x ours): stake doubled
-2026-11-27,Wodonga,6,,8,Bullets High,WIN,19.82,86.43,0.56,28,1 of 2,0.56u,14.40,
-2026-11-27,Wodonga,6,,8,Bullets High,WIN,24.77,86.43,0.14,7,2 of 2,0.70u,14.40,
-2026-11-27,Wodonga,6,,5,Presser,WIN,14.05,62.29,0.81,40,1 of 2,0.81u,10.38,
-2026-11-27,Wodonga,6,,5,Presser,WIN,17.56,62.29,0.19,10,2 of 2,1.00u,10.38,
-2026-11-27,Wodonga,6,,14,Sister Shay,WIN,14.01,62.12,0.81,40,1 of 2,0.81u,10.35,
-2026-11-27,Wodonga,6,,14,Sister Shay,WIN,17.51,62.12,0.20,10,2 of 2,1.01u,10.35,
-2026-11-27,Wodonga,6,,6,Space Rider,WIN,8.66,39.30,1.36,68,1 of 3,1.36u,6.55,
-2026-11-27,Wodonga,6,,6,Space Rider,WIN,10.82,39.30,0.32,16,2 of 3,1.68u,6.55,
-2026-11-27,Wodonga,6,,6,Space Rider,WIN,14.42,39.30,1.68,84,3 of 3,3.36u,6.55,opens $14.42+ (2.2x ours): stake doubled
-2026-11-27,Wodonga,7,,4,Before The War,WIN,13.34,59.31,0.85,42,1 of 2,0.85u,9.89,
-2026-11-27,Wodonga,7,,4,Before The War,WIN,16.68,59.31,0.21,10,2 of 2,1.06u,9.89,
-2026-11-27,Wodonga,7,,1,Brenlyn's Legacy,WIN,11.90,53.18,0.97,48,1 of 2,0.97u,8.86,
-2026-11-27,Wodonga,7,,1,Brenlyn's Legacy,WIN,14.88,53.18,0.23,12,2 of 2,1.20u,8.86,
-2026-11-27,Wodonga,7,,9,Hazardous,WIN,3.94,3.99,2.91,146,1 of 1,2.91u,3.26,opens under $4: edge 1.15
-2026-11-27,Wodonga,7,,9,Hazardous,WIN,4.16,19.59,3.18,159,1 of 3,3.18u,3.26,
-2026-11-27,Wodonga,7,,9,Hazardous,WIN,5.20,19.59,0.66,33,2 of 3,3.84u,3.26,
-2026-11-27,Wodonga,7,,9,Hazardous,WIN,7.19,19.59,3.84,192,3 of 3,7.68u,3.26,opens $7.19+ (2.2x ours): stake doubled
-2026-11-27,Wodonga,8,,8,Doubtfree,WIN,16.08,70.81,0.70,35,1 of 2,0.70u,11.80,
-2026-11-27,Wodonga,8,,8,Doubtfree,WIN,20.10,70.81,0.17,8,2 of 2,0.87u,11.80,
-2026-11-27,Wodonga,8,,2,Future Fund,WIN,16.89,74.24,0.67,34,1 of 2,0.67u,12.37,
-2026-11-27,Wodonga,8,,2,Future Fund,WIN,21.11,74.24,0.16,8,2 of 2,0.83u,12.37,
-2026-11-27,Wodonga,8,,4,Lord Of Valor,WIN,10.99,49.30,1.05,52,1 of 2,1.05u,8.22,
-2026-11-27,Wodonga,8,,4,Lord Of Valor,WIN,13.74,49.30,0.25,12,2 of 2,1.30u,8.22,
-2026-11-27,Wodonga,8,,5,Paparazzo,WIN,10.29,46.33,1.13,56,1 of 3,1.13u,7.72,
-2026-11-27,Wodonga,8,,5,Paparazzo,WIN,12.86,46.33,0.26,13,2 of 3,1.39u,7.72,
-2026-11-27,Wodonga,8,,5,Paparazzo,WIN,16.99,46.33,1.39,70,3 of 3,2.78u,7.72,opens $16.99+ (2.2x ours): stake doubled
-2026-11-27,Wodonga,8,,10,Steve's Way,WIN,11.08,49.68,1.04,52,1 of 2,1.04u,8.28,
-2026-11-27,Wodonga,8,,10,Steve's Way,WIN,13.85,49.68,0.25,12,2 of 2,1.29u,8.28,
-2026-11-27,Wodonga,8,,1,Tanganyika,WIN,10.28,46.28,1.13,56,1 of 3,1.13u,7.71,
-2026-11-27,Wodonga,8,,1,Tanganyika,WIN,12.85,46.28,0.27,14,2 of 3,1.40u,7.71,
-2026-11-27,Wodonga,8,,1,Tanganyika,WIN,16.97,46.28,1.40,70,3 of 3,2.80u,7.71,opens $16.97+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,1,,6,Borata's Girl,WIN,7.96,15.01,1.49,74,1 of 3,1.49u,6.05,EARLY: $15 or shorter only
+2026-11-27,Wodonga,1,,6,Borata's Girl,WIN,9.95,15.01,0.35,18,2 of 3,1.84u,6.05,EARLY: $15 or shorter only
+2026-11-27,Wodonga,1,,6,Borata's Girl,WIN,13.31,15.01,1.84,92,3 of 3,3.68u,6.05,EARLY: $15 or shorter only; opens $13.31+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,1,,1,Bourne Legacy,WIN,3.60,3.99,3.27,164,1 of 1,3.27u,2.99,opens under $4: edge 1.15
+2026-11-27,Wodonga,1,,1,Bourne Legacy,WIN,4.00,17.97,3.57,178,1 of 3,3.57u,2.99,
+2026-11-27,Wodonga,1,,1,Bourne Legacy,WIN,4.75,17.97,0.71,36,2 of 3,4.28u,2.99,
+2026-11-27,Wodonga,1,,1,Bourne Legacy,WIN,6.59,17.97,4.28,214,3 of 3,8.56u,2.99,opens $6.59+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,1,,7,Magna Peak,WIN,20.15,87.77,0.55,28,1 of 2,0.55u,14.63,
+2026-11-27,Wodonga,1,,7,Magna Peak,WIN,25.19,87.77,0.14,7,2 of 2,0.69u,14.63,
+2026-11-27,Wodonga,2,,10,News Scoop,WIN,11.85,53.00,0.97,48,1 of 2,0.97u,8.83,
+2026-11-27,Wodonga,2,,10,News Scoop,WIN,14.81,53.00,0.23,12,2 of 2,1.20u,8.83,
+2026-11-27,Wodonga,2,,4,Ordinary Star,WIN,14.01,62.12,0.81,40,1 of 2,0.81u,10.35,
+2026-11-27,Wodonga,2,,4,Ordinary Star,WIN,17.51,62.12,0.20,10,2 of 2,1.01u,10.35,
+2026-11-27,Wodonga,2,,5,Pray For Elegance,WIN,2.41,3.99,5.66,283,1 of 2,5.66u,2.05,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-27,Wodonga,2,,5,Pray For Elegance,WIN,3.01,3.99,1.23,62,2 of 2,6.89u,2.05,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-27,Wodonga,2,,5,Pray For Elegance,WIN,4.00,12.28,6.13,306,1 of 3,6.13u,2.05,EARLY: $15 or shorter only
+2026-11-27,Wodonga,2,,5,Pray For Elegance,WIN,4.00,12.28,1.00,50,2 of 3,7.13u,2.05,EARLY: $15 or shorter only
+2026-11-27,Wodonga,2,,5,Pray For Elegance,WIN,4.51,12.28,2.87,144,3 of 3,10.00u,2.05,EARLY: $15 or shorter only; opens $4.51+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,3,,5,Boots Off,WIN,10.94,15.01,1.05,52,1 of 1,1.05u,8.19,EARLY: $15 or shorter only
+2026-11-27,Wodonga,3,,12,Ninetyfiveinafifty,WIN,6.06,28.01,2.03,101,1 of 3,2.03u,4.67,
+2026-11-27,Wodonga,3,,12,Ninetyfiveinafifty,WIN,7.57,28.01,0.46,23,2 of 3,2.49u,4.67,
+2026-11-27,Wodonga,3,,12,Ninetyfiveinafifty,WIN,10.28,28.01,2.49,125,3 of 3,4.98u,4.67,opens $10.28+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,3,,2,Scorpion,WIN,8.20,37.31,1.45,72,1 of 3,1.45u,6.22,
+2026-11-27,Wodonga,3,,2,Scorpion,WIN,10.25,37.31,0.33,16,2 of 3,1.78u,6.22,
+2026-11-27,Wodonga,3,,2,Scorpion,WIN,13.69,37.31,1.78,89,3 of 3,3.56u,6.22,opens $13.69+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,4,,11,Carnival Riches,WIN,12.23,54.61,0.94,47,1 of 2,0.94u,9.10,
+2026-11-27,Wodonga,4,,11,Carnival Riches,WIN,15.29,54.61,0.22,11,2 of 2,1.16u,9.10,
+2026-11-27,Wodonga,4,,2,Dartboard,WIN,11.77,52.62,0.98,49,1 of 2,0.98u,8.77,
+2026-11-27,Wodonga,4,,2,Dartboard,WIN,14.71,52.62,0.23,12,2 of 2,1.21u,8.77,
+2026-11-27,Wodonga,4,,1,Just Call Me Jonny,WIN,4.94,15.01,2.58,129,1 of 3,2.58u,3.84,EARLY: $15 or shorter only
+2026-11-27,Wodonga,4,,1,Just Call Me Jonny,WIN,6.18,15.01,0.56,28,2 of 3,3.14u,3.84,EARLY: $15 or shorter only
+2026-11-27,Wodonga,4,,1,Just Call Me Jonny,WIN,8.46,15.01,3.14,157,3 of 3,6.28u,3.84,EARLY: $15 or shorter only; opens $8.46+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,4,,5,Quamby,WIN,12.76,56.86,0.90,45,1 of 2,0.90u,9.48,
+2026-11-27,Wodonga,4,,5,Quamby,WIN,15.95,56.86,0.21,10,2 of 2,1.11u,9.48,
+2026-11-27,Wodonga,4,,8,She's Stargazing,WIN,15.11,66.76,0.75,38,1 of 2,0.75u,11.13,
+2026-11-27,Wodonga,4,,8,She's Stargazing,WIN,18.89,66.76,0.18,9,2 of 2,0.93u,11.13,
+2026-11-27,Wodonga,4,,9,Surely Special,WIN,9.88,44.56,1.18,59,1 of 3,1.18u,7.43,
+2026-11-27,Wodonga,4,,9,Surely Special,WIN,12.35,44.56,0.28,14,2 of 3,1.46u,7.43,
+2026-11-27,Wodonga,4,,9,Surely Special,WIN,16.34,44.56,1.46,73,3 of 3,2.92u,7.43,opens $16.34+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,5,,8,Bottas,WIN,10.54,47.38,1.10,55,1 of 3,1.10u,7.90,
+2026-11-27,Wodonga,5,,8,Bottas,WIN,13.17,47.38,0.26,13,2 of 3,1.36u,7.90,
+2026-11-27,Wodonga,5,,8,Bottas,WIN,17.38,47.38,1.36,68,3 of 3,2.72u,7.90,opens $17.38+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,5,,2,Giant's Reprieve,WIN,11.56,15.01,1.00,50,1 of 1,1.00u,8.62,EARLY: $15 or shorter only
+2026-11-27,Wodonga,5,,3,Palladium,WIN,12.03,53.73,0.95,48,1 of 2,0.95u,8.96,
+2026-11-27,Wodonga,5,,3,Palladium,WIN,15.04,53.73,0.23,12,2 of 2,1.18u,8.96,
+2026-11-27,Wodonga,5,,6,Star Buyer,WIN,16.84,74.00,0.67,34,1 of 2,0.67u,12.33,
+2026-11-27,Wodonga,5,,6,Star Buyer,WIN,21.05,74.00,0.16,8,2 of 2,0.83u,12.33,
+2026-11-27,Wodonga,5,,12,Strategic Defense,WIN,9.45,42.74,1.24,62,1 of 3,1.24u,7.12,
+2026-11-27,Wodonga,5,,12,Strategic Defense,WIN,11.81,42.74,0.29,14,2 of 3,1.53u,7.12,
+2026-11-27,Wodonga,5,,12,Strategic Defense,WIN,15.68,42.74,1.53,76,3 of 3,3.06u,7.12,opens $15.68+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,6,,1,Buccleuch,WIN,3.33,3.99,3.62,181,1 of 1,3.62u,2.78,opens under $4: edge 1.15
+2026-11-27,Wodonga,6,,1,Buccleuch,WIN,4.00,16.68,3.95,198,1 of 3,3.95u,2.78,
+2026-11-27,Wodonga,6,,1,Buccleuch,WIN,4.40,16.68,0.77,38,2 of 3,4.72u,2.78,
+2026-11-27,Wodonga,6,,1,Buccleuch,WIN,6.12,16.68,4.72,236,3 of 3,9.44u,2.78,opens $6.12+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,6,,8,Bullets High,WIN,19.76,86.15,0.57,28,1 of 2,0.57u,14.36,
+2026-11-27,Wodonga,6,,8,Bullets High,WIN,24.70,86.15,0.13,6,2 of 2,0.70u,14.36,
+2026-11-27,Wodonga,6,,5,Presser,WIN,14.04,62.26,0.81,40,1 of 2,0.81u,10.38,
+2026-11-27,Wodonga,6,,5,Presser,WIN,17.55,62.26,0.19,10,2 of 2,1.00u,10.38,
+2026-11-27,Wodonga,6,,14,Sister Shay,WIN,14.62,64.68,0.78,39,1 of 2,0.78u,10.78,
+2026-11-27,Wodonga,6,,14,Sister Shay,WIN,18.27,64.68,0.18,9,2 of 2,0.96u,10.78,
+2026-11-27,Wodonga,6,,6,Space Rider,WIN,8.34,37.94,1.42,71,1 of 3,1.42u,6.32,
+2026-11-27,Wodonga,6,,6,Space Rider,WIN,10.43,37.94,0.33,16,2 of 3,1.75u,6.32,
+2026-11-27,Wodonga,6,,6,Space Rider,WIN,13.92,37.94,1.75,88,3 of 3,3.50u,6.32,opens $13.92+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,7,,4,Before The War,WIN,13.24,58.89,0.86,43,1 of 2,0.86u,9.81,
+2026-11-27,Wodonga,7,,4,Before The War,WIN,16.55,58.89,0.21,10,2 of 2,1.07u,9.81,
+2026-11-27,Wodonga,7,,1,Brenlyn's Legacy,WIN,11.96,53.45,0.96,48,1 of 2,0.96u,8.91,
+2026-11-27,Wodonga,7,,1,Brenlyn's Legacy,WIN,14.95,53.45,0.23,12,2 of 2,1.19u,8.91,
+2026-11-27,Wodonga,7,,9,Hazardous,WIN,3.82,3.99,3.04,152,1 of 1,3.04u,3.17,opens under $4: edge 1.15
+2026-11-27,Wodonga,7,,9,Hazardous,WIN,4.03,19.00,3.32,166,1 of 3,3.32u,3.17,
+2026-11-27,Wodonga,7,,9,Hazardous,WIN,5.04,19.00,0.67,34,2 of 3,3.99u,3.17,
+2026-11-27,Wodonga,7,,9,Hazardous,WIN,6.97,19.00,3.99,200,3 of 3,7.98u,3.17,opens $6.97+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,8,,8,Doubtfree,WIN,15.47,68.26,0.73,36,1 of 2,0.73u,11.38,
+2026-11-27,Wodonga,8,,8,Doubtfree,WIN,19.34,68.26,0.18,9,2 of 2,0.91u,11.38,
+2026-11-27,Wodonga,8,,2,Future Fund,WIN,17.14,75.26,0.66,33,1 of 2,0.66u,12.54,
+2026-11-27,Wodonga,8,,2,Future Fund,WIN,21.43,75.26,0.15,8,2 of 2,0.81u,12.54,
+2026-11-27,Wodonga,8,,4,Lord Of Valor,WIN,11.52,51.59,1.00,50,1 of 2,1.00u,8.60,
+2026-11-27,Wodonga,8,,4,Lord Of Valor,WIN,14.40,51.59,0.24,12,2 of 2,1.24u,8.60,
+2026-11-27,Wodonga,8,,5,Paparazzo,WIN,10.22,46.02,1.14,57,1 of 3,1.14u,7.67,
+2026-11-27,Wodonga,8,,5,Paparazzo,WIN,12.78,46.02,0.27,14,2 of 3,1.41u,7.67,
+2026-11-27,Wodonga,8,,5,Paparazzo,WIN,16.88,46.02,1.41,70,3 of 3,2.82u,7.67,opens $16.88+ (2.2x ours): stake doubled
+2026-11-27,Wodonga,8,,10,Steve's Way,WIN,11.68,52.26,0.98,49,1 of 2,0.98u,8.71,
+2026-11-27,Wodonga,8,,10,Steve's Way,WIN,14.60,52.26,0.24,12,2 of 2,1.22u,8.71,
+2026-11-27,Wodonga,8,,1,Tanganyika,WIN,9.91,44.70,1.18,59,1 of 3,1.18u,7.45,
+2026-11-27,Wodonga,8,,1,Tanganyika,WIN,12.39,44.70,0.27,14,2 of 3,1.45u,7.45,
+2026-11-27,Wodonga,8,,1,Tanganyika,WIN,16.40,44.70,1.45,72,3 of 3,2.90u,7.45,opens $16.40+ (2.2x ours): stake doubled

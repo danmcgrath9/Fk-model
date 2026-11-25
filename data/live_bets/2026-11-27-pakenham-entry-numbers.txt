@@ -1,58 +1,25 @@
-1|30|Aerial Pursuit|False|False
-1|100|Ciphered|False|False
-1|160|Little Boy Blue|False|False
-1|70|Brazen Bold|False|False
-1|170|Lord Of The Earth|False|False
-1|40|Aurora Mink|False|False
-1|180|Lunetta|False|False
-1|130|Excelamidas|False|False
-1|260|Tassie Tiger|False|False
-1|250|Sunshine Boy|False|False
-1|90|Cherry On Toff|False|False
-1|210|Mr Sapphire|False|False
-1|190|Magnusaurus Rex|False|False
-1|220|Pinasette|False|False
-1|60|Bohemian Rhapsody|False|False
-1|230|Seven Day Rebels|False|False
-1|240|Skadoodle|False|False
-1|150|Levrier|False|False
-1|110|Cosmic Snitz|False|False
-1|200|Majestic Son|False|False
-1|120|Danforth|False|False
-1|50|Ballsintheair|False|False
-1|10|Activating|False|False
-1|140|Flying White Robe|False|False
-1|80|Capital Storm|False|False
-1|270|Tiz The Tycoon|False|False
-1|20|Adhara|False|False
-2|220|Spirit Nature|False|False
-2|150|Locard|False|False
-2|50|Blue Jeans Talk|False|False
-2|180|Nyad|False|False
-2|90|Flash Inquiry|False|False
-2|70|Dancell|False|False
-2|230|Swiss Impact|False|False
-2|40|Blue Ivy|False|False
-2|240|Tricky Miss|False|False
-2|80|Epponnee Rae|False|False
-2|110|Hattitude|False|False
-2|130|Kensington|False|False
-2|260|Velocite Belle|False|False
-2|140|Kirkabetta|False|False
-2|30|Assunta|False|False
-2|250|Valentina Girl|False|False
-2|60|Cruise On Bye|False|False
-2|200|Queen's English|False|False
-2|160|Media Darling|False|False
-2|190|Please Please Me|False|False
-2|100|Goddess Storm|False|False
-2|20|Amber Queen|False|False
-2|120|Kejayaan|False|False
-2|210|Renecca|False|False
-2|10|Aerial Icon|False|False
-2|270|Wolfmaama|False|False
-2|280|Zou Owe Me|False|False
-2|170|Native Grace|False|False
+1|4|Brazen Bold|False|False
+1|6|Lord Of The Earth|False|False
+1|8|Mr Sapphire|False|False
+1|3|Bohemian Rhapsody|False|False
+1|7|Majestic Son|False|False
+1|1|Activating|False|False
+1|5|Capital Storm|False|False
+1|9|Tiz The Tycoon|False|False
+1|2|Adhara|False|False
+2|11|Spirit Nature|False|False
+2|3|Blue Jeans Talk|False|False
+2|8|Nyad|False|False
+2|4|Dancell|False|False
+2|2|Blue Ivy|False|False
+2|5|Epponnee Rae|False|False
+2|6|Kensington|False|False
+2|1|Assunta|False|False
+2|7|Media Darling|False|False
+2|9|Please Please Me|False|False
+2|13|Amber Queen|True|False
+2|10|Renecca|False|False
+2|12|Wolfmaama|False|False
 3|3|Maurie's Pride|False|False
 3|1|Abydos|False|False
 3|5|Soundwave|False|False

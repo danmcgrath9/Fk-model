@@ -1,59 +1,26 @@
 # Pakenham Park Fri 27 Nov, official going, final fields; no market yet; PROVISIONAL: 10 runners without a rider
-1, Aerial Pursuit, 0, 0
-1, Ciphered, 0, 0
-1, Little Boy Blue, 0, 0
 1, Brazen Bold, 0, 0
 1, Lord Of The Earth, 0, 0
-1, Aurora Mink, 0, 0
-1, Lunetta, 0, 0
-1, Excelamidas, 0, 0
-1, Tassie Tiger, 0, 0
-1, Sunshine Boy, 0, 0
-1, Cherry On Toff, 0, 0
 1, Mr Sapphire, 0, 0
-1, Magnusaurus Rex, 0, 0
-1, Pinasette, 0, 0
 1, Bohemian Rhapsody, 0, 0
-1, Seven Day Rebels, 0, 0
-1, Skadoodle, 0, 0
-1, Levrier, 0, 0
-1, Cosmic Snitz, 0, 0
 1, Majestic Son, 0, 0
-1, Danforth, 0, 0
-1, Ballsintheair, 0, 0
 1, Activating, 0, 0
-1, Flying White Robe, 0, 0
 1, Capital Storm, 0, 0
 1, Tiz The Tycoon, 0, 0
 1, Adhara, 0, 0
 2, Spirit Nature, 0, 0
-2, Locard, 0, 0
 2, Blue Jeans Talk, 0, 0
 2, Nyad, 0, 0
-2, Flash Inquiry, 0, 0
 2, Dancell, 0, 0
-2, Swiss Impact, 0, 0
 2, Blue Ivy, 0, 0
-2, Tricky Miss, 0, 0
 2, Epponnee Rae, 0, 0
-2, Hattitude, 0, 0
 2, Kensington, 0, 0
-2, Velocite Belle, 0, 0
-2, Kirkabetta, 0, 0
 2, Assunta, 0, 0
-2, Valentina Girl, 0, 0
-2, Cruise On Bye, 0, 0
-2, Queen's English, 0, 0
 2, Media Darling, 0, 0
 2, Please Please Me, 0, 0
-2, Goddess Storm, 0, 0
-2, Amber Queen, 0, 0
-2, Kejayaan, 0, 0
+2, Amber Queen, SCR
 2, Renecca, 0, 0
-2, Aerial Icon, 0, 0
 2, Wolfmaama, 0, 0
-2, Zou Owe Me, 0, 0
-2, Native Grace, 0, 0
 3, Maurie's Pride, 0, 0
 3, Abydos, 0, 0
 3, Soundwave, 0, 0
