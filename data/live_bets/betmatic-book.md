@@ -1389,3 +1389,17 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
   rule: none.
 - Rules (paper at Betfair SP) on the day: held-on-backtest rules -3.00u, the rest -13.12u, all rules -16.12u.
 - Running record: since live (9 Oct) +362.77u (196 bets, 44 won, +$18,138 at $50), unchanged.
+## Wednesday 25 Nov Geelong settled (Form King results, Thu 6:30am; from Fri results go at 5:30am, founder: "Change it to 5:30")
+- Open book (paper; sheet of record at Form King's open): 5 bets, 6.22u. Subscription R1 1.29u at $17, WON (+20.64u,
+  Betfair SP $7.60); Perfect Dismount R3 0.63u at $19, 8th; Gypsy Storm R4 2.07u at $11, 2nd; Chocolate Royal R5 1.37u at
+  $15.33, 2nd; Mozu Marcassin R5 0.86u at $16, 8th. +15.71u (+$786 at $50), 5 of 5 beat Betfair SP (2.25x). No TAB
+  deduction reported (R3 to R5 had scratchings; paid at the price taken).
+- No-Mercer card (card_wed25_plain_open, Form King's opens): the same five plus Lady Of Pompeii R6 and Model Gigi R7,
+  both scratched (refund): +15.71u on 6.22u. Mercer card at the 9:00am prices (scratched removed): Subscription won at $7
+  (+7.74u); card +2.81u (+$141).
+- Back book (settle_backs, $500 a unit): Azzacool R6, back if favourite $4 to $5.02, Betfair SP $4.85, WON, +3.54u.
+- BetMatic: nothing sent (send hold). The 9am bets: none. Azzacool was on the 9am list at 8:55am and came off when Betr cut
+  it to $4.20, under its take-at price; it WON (Betfair SP $4.85). Old rule: none.
+- Rules (paper at Betfair SP) on the day: held-on-backtest rules +1.54u, the rest +9.66u, all rules +11.20u.
+- Running record: since live (9 Oct) +378.48u (201 bets, 45 won, +$18,924 at $50); the model +160.81u since 2 Nov
+  (89 bets, 20 won), price against Betfair SP 1.32x (62 of 87 beat it).
