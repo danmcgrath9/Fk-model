@@ -1,0 +1,71 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-27,Pakenham,1,,7,Majestic Son,WIN,2.68,3.99,4.90,245,1 of 2,4.90u,2.26,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-27,Pakenham,1,,7,Majestic Son,WIN,3.35,3.99,1.10,55,2 of 2,6.00u,2.26,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-27,Pakenham,1,,7,Majestic Son,WIN,4.00,13.55,5.31,266,1 of 3,5.31u,2.26,EARLY: $15 or shorter only
+2026-11-27,Pakenham,1,,7,Majestic Son,WIN,4.00,13.55,0.92,46,2 of 3,6.23u,2.26,EARLY: $15 or shorter only
+2026-11-27,Pakenham,1,,7,Majestic Son,WIN,4.97,13.55,3.77,188,3 of 3,10.00u,2.26,EARLY: $15 or shorter only; opens $4.97+ (2.2x ours): stake doubled
+2026-11-27,Pakenham,2,,11,Spirit Nature,WIN,14.12,62.58,0.80,40,1 of 2,0.80u,10.43,
+2026-11-27,Pakenham,2,,11,Spirit Nature,WIN,17.65,62.58,0.20,10,2 of 2,1.00u,10.43,
+2026-11-27,Pakenham,2,,12,Wolfmaama,WIN,13.46,15.01,0.46,23,1 of 1,0.46u,9.97,EARLY: $15 or shorter only
+2026-11-27,Pakenham,3,,1,Abydos,WIN,6.44,29.65,1.90,95,1 of 3,1.90u,4.94,
+2026-11-27,Pakenham,3,,1,Abydos,WIN,8.05,29.65,0.43,22,2 of 3,2.33u,4.94,
+2026-11-27,Pakenham,3,,1,Abydos,WIN,10.88,29.65,2.33,116,3 of 3,4.66u,4.94,opens $10.88+ (2.2x ours): stake doubled
+2026-11-27,Pakenham,3,,12,Kokeshi,WIN,7.00,32.12,1.73,86,1 of 3,1.73u,5.35,
+2026-11-27,Pakenham,3,,12,Kokeshi,WIN,8.75,32.12,0.39,20,2 of 3,2.12u,5.35,
+2026-11-27,Pakenham,3,,12,Kokeshi,WIN,11.78,32.12,2.12,106,3 of 3,4.24u,5.35,opens $11.78+ (2.2x ours): stake doubled
+2026-11-27,Pakenham,3,,9,Percipient,WIN,9.04,40.96,1.30,65,1 of 3,1.30u,6.83,
+2026-11-27,Pakenham,3,,9,Percipient,WIN,11.30,40.96,0.30,15,2 of 3,1.60u,6.83,
+2026-11-27,Pakenham,3,,9,Percipient,WIN,15.02,40.96,1.60,80,3 of 3,3.20u,6.83,opens $15.02+ (2.2x ours): stake doubled
+2026-11-27,Pakenham,3,,11,Red Tide,WIN,19.66,85.74,0.57,28,1 of 2,0.57u,14.29,
+2026-11-27,Pakenham,3,,11,Red Tide,WIN,24.57,85.74,0.14,7,2 of 2,0.71u,14.29,
+2026-11-27,Pakenham,4,,4,Chronic,WIN,19.32,84.34,0.58,29,1 of 2,0.58u,14.06,
+2026-11-27,Pakenham,4,,4,Chronic,WIN,24.15,84.34,0.14,7,2 of 2,0.72u,14.06,
+2026-11-27,Pakenham,4,,7,Seinfeld,WIN,9.16,41.46,1.28,64,1 of 3,1.28u,6.91,
+2026-11-27,Pakenham,4,,7,Seinfeld,WIN,11.45,41.46,0.30,15,2 of 3,1.58u,6.91,
+2026-11-27,Pakenham,4,,7,Seinfeld,WIN,15.21,41.46,1.58,79,3 of 3,3.16u,6.91,opens $15.21+ (2.2x ours): stake doubled
+2026-11-27,Pakenham,4,,10,Wollemi,WIN,8.95,40.56,1.32,66,1 of 3,1.32u,6.76,
+2026-11-27,Pakenham,4,,10,Wollemi,WIN,11.19,40.56,0.30,15,2 of 3,1.62u,6.76,
+2026-11-27,Pakenham,4,,10,Wollemi,WIN,14.88,40.56,1.62,81,3 of 3,3.24u,6.76,opens $14.88+ (2.2x ours): stake doubled
+2026-11-27,Pakenham,5,,4,Alexander Thegreat,WIN,8.78,39.82,1.34,67,1 of 3,1.34u,6.64,
+2026-11-27,Pakenham,5,,4,Alexander Thegreat,WIN,10.97,39.82,0.32,16,2 of 3,1.66u,6.64,
+2026-11-27,Pakenham,5,,4,Alexander Thegreat,WIN,14.61,39.82,1.66,83,3 of 3,3.32u,6.64,opens $14.61+ (2.2x ours): stake doubled
+2026-11-27,Pakenham,5,,6,Caelius,WIN,17.98,78.75,0.62,31,1 of 2,0.62u,13.13,
+2026-11-27,Pakenham,5,,6,Caelius,WIN,22.48,78.75,0.16,8,2 of 2,0.78u,13.13,
+2026-11-27,Pakenham,5,,9,Hey Bella,WIN,17.85,78.24,0.63,32,1 of 2,0.63u,13.04,
+2026-11-27,Pakenham,5,,9,Hey Bella,WIN,22.31,78.24,0.15,8,2 of 2,0.78u,13.04,
+2026-11-27,Pakenham,5,,3,Mount Sabyinyo,WIN,7.48,34.21,1.60,80,1 of 3,1.60u,5.70,
+2026-11-27,Pakenham,5,,3,Mount Sabyinyo,WIN,9.35,34.21,0.37,18,2 of 3,1.97u,5.70,
+2026-11-27,Pakenham,5,,3,Mount Sabyinyo,WIN,12.55,34.21,1.97,98,3 of 3,3.94u,5.70,opens $12.55+ (2.2x ours): stake doubled
+2026-11-27,Pakenham,5,,1,Terrortorian,WIN,12.24,54.64,0.94,47,1 of 2,0.94u,9.11,
+2026-11-27,Pakenham,5,,1,Terrortorian,WIN,15.30,54.64,0.22,11,2 of 2,1.16u,9.11,
+2026-11-27,Pakenham,5,,2,Untapped,WIN,7.64,34.89,1.57,78,1 of 3,1.57u,5.81,
+2026-11-27,Pakenham,5,,2,Untapped,WIN,9.55,34.89,0.36,18,2 of 3,1.93u,5.81,
+2026-11-27,Pakenham,5,,2,Untapped,WIN,12.80,34.89,1.93,96,3 of 3,3.86u,5.81,opens $12.80+ (2.2x ours): stake doubled
+2026-11-27,Pakenham,6,,3,Blue Bandit,WIN,17.90,78.42,0.63,32,1 of 2,0.63u,13.07,
+2026-11-27,Pakenham,6,,3,Blue Bandit,WIN,22.38,78.42,0.15,8,2 of 2,0.78u,13.07,
+2026-11-27,Pakenham,6,,5,Discover Lupino,WIN,18.72,81.84,0.60,30,1 of 2,0.60u,13.64,
+2026-11-27,Pakenham,6,,5,Discover Lupino,WIN,23.40,81.84,0.14,7,2 of 2,0.74u,13.64,
+2026-11-27,Pakenham,6,,12,Perfect Night,WIN,10.57,47.53,1.10,55,1 of 3,1.10u,7.92,
+2026-11-27,Pakenham,6,,12,Perfect Night,WIN,13.21,47.53,0.26,13,2 of 3,1.36u,7.92,
+2026-11-27,Pakenham,6,,12,Perfect Night,WIN,17.43,47.53,1.36,68,3 of 3,2.72u,7.92,opens $17.43+ (2.2x ours): stake doubled
+2026-11-27,Pakenham,6,,4,Surperb Frost,WIN,18.52,81.03,0.60,30,1 of 2,0.60u,13.50,
+2026-11-27,Pakenham,6,,4,Surperb Frost,WIN,23.15,81.03,0.15,8,2 of 2,0.75u,13.50,
+2026-11-27,Pakenham,7,,1,Barbarino,WIN,11.83,15.01,0.97,48,1 of 1,0.97u,8.81,EARLY: $15 or shorter only
+2026-11-27,Pakenham,7,,2,General Blu,WIN,4.55,15.01,2.86,143,1 of 3,2.86u,3.55,EARLY: $15 or shorter only
+2026-11-27,Pakenham,7,,2,General Blu,WIN,5.69,15.01,0.60,30,2 of 3,3.46u,3.55,EARLY: $15 or shorter only
+2026-11-27,Pakenham,7,,2,General Blu,WIN,7.81,15.01,3.46,173,3 of 3,6.92u,3.55,EARLY: $15 or shorter only; opens $7.81+ (2.2x ours): stake doubled
+2026-11-27,Pakenham,7,,5,Hook 'n' Spur,WIN,13.20,58.71,0.86,43,1 of 2,0.86u,9.78,
+2026-11-27,Pakenham,7,,5,Hook 'n' Spur,WIN,16.50,58.71,0.21,10,2 of 2,1.07u,9.78,
+2026-11-27,Pakenham,8,,10,Headbanger,WIN,13.40,59.55,0.85,42,1 of 2,0.85u,9.92,
+2026-11-27,Pakenham,8,,10,Headbanger,WIN,16.75,59.55,0.20,10,2 of 2,1.05u,9.92,
+2026-11-27,Pakenham,8,,2,Hello Romeo,WIN,12.53,55.85,0.91,46,1 of 2,0.91u,9.31,
+2026-11-27,Pakenham,8,,2,Hello Romeo,WIN,15.66,55.85,0.22,11,2 of 2,1.13u,9.31,
+2026-11-27,Pakenham,8,,11,It's A Yes,WIN,15.16,66.96,0.75,38,1 of 2,0.75u,11.16,
+2026-11-27,Pakenham,8,,11,It's A Yes,WIN,18.95,66.96,0.18,9,2 of 2,0.93u,11.16,
+2026-11-27,Pakenham,8,,3,Landmark,WIN,14.43,63.92,0.79,40,1 of 2,0.79u,10.65,
+2026-11-27,Pakenham,8,,3,Landmark,WIN,18.04,63.92,0.18,9,2 of 2,0.97u,10.65,
+2026-11-27,Pakenham,8,,5,Magnabelle Royale,WIN,17.04,74.84,0.66,33,1 of 2,0.66u,12.47,
+2026-11-27,Pakenham,8,,5,Magnabelle Royale,WIN,21.30,74.84,0.16,8,2 of 2,0.82u,12.47,
+2026-11-27,Pakenham,8,,9,Yolo,WIN,9.63,43.50,1.21,60,1 of 3,1.21u,7.25,
+2026-11-27,Pakenham,8,,9,Yolo,WIN,12.04,43.50,0.29,14,2 of 3,1.50u,7.25,
+2026-11-27,Pakenham,8,,9,Yolo,WIN,15.95,43.50,1.50,75,3 of 3,3.00u,7.25,opens $15.95+ (2.2x ours): stake doubled
