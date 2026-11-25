@@ -1,83 +1,65 @@
-# Sandown Hillside Sat 28 Nov, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 217 runners without a rider
-1, Royal Press, 0, 0
-1, Hanseatic Girl, 0, 0
-1, Crystal Affair, 0, 0
-1, In Eutopia, 0, 0
-1, Natural Emotion, 0, 0
-1, Odenkirk, 0, 0
-1, Confection, 0, 0
-1, Oversourced, 0, 0
-1, Noctis, 0, 0
-1, Nissaki, 0, 0
-1, Rubitrix, 0, 0
-1, Soladin, 0, 0
-1, The King Maker, 0, 0
-1, Lewashaa, 0, 0
-1, High Table, 0, 0
-1, Blingaling, 0, 0
-1, Refractive, 0, 0
-1, Darn Spicy, 0, 0
-2, Chancellor, 0, 0
-2, Chip In, 0, 0
-2, Billycart, 0, 0
-2, Gilgeous, 0, 0
-2, Franked Up, 0, 0
-2, Mossquillo, 0, 0
-2, Fine And Sunny, 0, 0
-2, Propellant, 0, 0
-2, Exultant, 0, 0
-2, Town Planner, 0, 0
-3, Oceans Blue, 0, 0
-3, Pasatiempo, 0, 0
-3, Cavill Avenue, 0, 0
-3, Lafarna, 0, 0
-3, Tale Of Genji, 0, 0
-3, Handee, 0, 0
-3, Sayalero, 0, 0
-3, Sound Byte, 0, 0
-3, Shintono, 0, 0
-3, Sunbliss, 0, 0
-3, Engulf, 0, 0
-3, Seagoe, 0, 0
-4, Vail Mountain, 0, 0
-4, Umgawa, 0, 0
-4, Ivan's Hero, 0, 0
-4, Dirty Grin, 0, 0
-4, Tanganyika, 0, 0
-4, Overactive, 0, 0
-4, Quafftide, 0, 0
-4, Delivering, 0, 0
-4, Some People Callme, 0, 0
-4, Maisy, 0, 0
-4, Dantooine, 0, 0
-4, Until Valhalla, 0, 0
-4, King Tut, 0, 0
-4, Cardi Bee, 0, 0
-4, Rosa Aotearoa, 0, 0
-4, Ronny Bee, 0, 0
-4, Move The Torana, 0, 0
-4, Charming Nic, 0, 0
-4, Arcandam, 0, 0
-4, Join The Que, 0, 0
-4, Sergeant Major, 0, 0
-4, Sister Shay, 0, 0
-4, Art's Alive, 0, 0
-4, Alero, 0, 0
-4, Princess Que, 0, 0
-4, Regal Tycoon, 0, 0
-4, Zourain, 0, 0
-4, Currawood, 0, 0
-4, Esmahli, 0, 0
-4, Trapdoor, 0, 0
-4, Bacash, 0, 0
-4, Befuddle, 0, 0
-4, Jackpot Park, 0, 0
-4, Layla, 0, 0
-4, Miewa, 0, 0
-4, Col Klink, 0, 0
-4, Karren, 0, 0
-4, Eeteedee, 0, 0
-4, Danzsin, 0, 0
+# Sandown Hillside Sat 28 Nov, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 75 runners without a rider
+1, Jazz Affair, 0, 0
+1, Bon Mistress, 0, 0
+1, Cat Noir, 0, 0
+1, Coco Jen, 0, 0
+1, World's My Oyster, 0, 0
+1, Oak Beach, 0, 0
+1, Illyivy, 0, 0
+1, Bon Fete, 0, 0
+1, Jenni You Think, 0, 0
+1, Cooly, 0, 0
+1, Silvasista, 0, 0
+2, Ivan's Hero, 0, 0
+2, Dirty Grin, 0, 0
+2, Overactive, 0, 0
+2, Maisy, 0, 0
+2, Until Valhalla, 0, 0
+2, King Tut, 0, 0
+2, Rosa Aotearoa, 0, 0
+2, Charming Nic, 0, 0
+2, Sergeant Major, 0, 0
+2, Princess Que, 0, 0
+2, Esmahli, 0, 0
+2, Trapdoor, 0, 0
+2, Bacash, 0, 0
+2, Miewa, 0, 0
+2, Danzsin, 0, 0
+3, Chancellor, 0, 0
+3, Chip In, 0, 0
+3, Billycart, 0, 0
+3, Gilgeous, 0, 0
+3, Franked Up, 0, 0
+3, Mossquillo, 0, 0
+3, Fine And Sunny, 0, 0
+3, Exultant, 0, 0
+3, Town Planner, 0, 0
+4, Royal Press, 0, 0
+4, Hanseatic Girl, 0, 0
+4, Crystal Affair, 0, 0
+4, In Eutopia, 0, 0
+4, Natural Emotion, 0, 0
+4, Odenkirk, 0, 0
+4, Confection, 0, 0
+4, Oversourced, 0, 0
+4, Noctis, 0, 0
+4, Nissaki, 0, 0
+4, Rubitrix, 0, 0
+4, Soladin, 0, 0
+4, Lewashaa, 0, 0
+4, Blingaling, 0, 0
+4, Darn Spicy, 0, 0
+5, Klabel, 0, 0
+5, Marble Nine, 0, 0
+5, Quiseen, 0, 0
+5, Oak Hill, 0, 0
+5, Photograph, 0, 0
+5, Guerite, 0, 0
+5, Jett Smash, 0, 0
+5, Jimmy Recard, 0, 0
+5, Tres Magnifique, 0, 0
+5, Prestige Lucky, 0, 0
+5, Karren, 0, 0
 5, Van Roy, 0, 0
 5, Gregolimo, 0, 0
 5, Black Storm, 0, 0
@@ -126,93 +108,72 @@
 5, Silvasista, 0, 0
 5, Danzsin, 0, 0
 5, Space Rider, 0, 0
-6, Dashing, 0, 0
-6, Klabel, 0, 0
-6, Marble Nine, 0, 0
-6, Quiseen, 0, 0
-6, Oak Hill, 0, 0
-6, Sunshineinmypocket, 0, 0
-6, Until Valhalla, 0, 0
-6, Perilous Fighter, 0, 0
-6, Verdoux, 0, 0
-6, Photograph, 0, 0
-6, Guerite, 0, 0
-6, Jett Smash, 0, 0
-6, Jimmy Recard, 0, 0
-6, Tres Magnifique, 0, 0
-6, Prestige Lucky, 0, 0
-6, Col Klink, 0, 0
-6, Karren, 0, 0
-7, Phearson, 0, 0
-7, Here To Shock, 0, 0
-7, Holymanz, 0, 0
-7, Sammarco, 0, 0
-7, Hughes, 0, 0
-7, Punch Lane, 0, 0
-7, King Zephyr, 0, 0
-7, Run Harry Run, 0, 0
-7, Regal Zeus, 0, 0
-7, Point And Shoot, 0, 0
-7, Recon, 0, 0
-7, Bustling, 0, 0
-7, Ramadan, 0, 0
-7, Miss Playlounge, 0, 0
-7, Guerite, 0, 0
-7, Karren, 0, 0
-7, Sulek, 0, 0
-8, Charterhouse, 0, 0
-8, Bianco Vilano, 0, 0
+6, Oceans Blue, 0, 0
+6, Pasatiempo, 0, 0
+6, Cavill Avenue, 0, 0
+6, Lafarna, 0, 0
+6, Tale Of Genji, 0, 0
+6, Handee, 0, 0
+6, Sayalero, 0, 0
+6, Sound Byte, 0, 0
+6, Shintono, 0, 0
+6, Sunbliss, 0, 0
+6, Engulf, 0, 0
+7, Wuddzz, 0, 0
+7, Black Peppermint, 0, 0
+7, Vauban, 0, 0
+7, Asterix, 0, 0
+7, Affluential, 0, 0
+7, Manzor Blue, 0, 0
+7, Beach Pad, 0, 0
+7, Suffolk Star, 0, 0
+7, Sir Chartwell, 0, 0
+7, Sam Hawkens, 0, 0
+7, Hawk Power, 0, 0
+7, Highland Bling, 0, 0
+7, Power Pivot, 0, 0
+7, Autumn Mystery, 0, 0
+8, Phearson, 0, 0
+8, Here To Shock, 0, 0
 8, Holymanz, 0, 0
-8, Flying Mikki, 0, 0
-8, Williamsburg, 0, 0
-8, Fiorenot, 0, 0
-8, Makdane, 0, 0
-8, Wymark, 0, 0
-8, Revelare, 0, 0
-8, Regal Zeus, 0, 0
-8, Chase Your Dreams, 0, 0
-8, Somewhere, 0, 0
-8, Sav On Ice, 0, 0
-8, Moonlight Circus, 0, 0
-8, Cilacap, 0, 0
-8, Nobler, 0, 0
-8, Roulette King, 0, 0
-8, Paltrow Miss, 0, 0
-8, Impulsive Reaction, 0, 0
-8, Sulek, 0, 0
-9, Wuddzz, 0, 0
-9, Black Peppermint, 0, 0
-9, Vauban, 0, 0
-9, Asterix, 0, 0
-9, Affluential, 0, 0
-9, Manzor Blue, 0, 0
-9, Beach Pad, 0, 0
-9, Federer, 0, 0
-9, Suffolk Star, 0, 0
-9, Sir Chartwell, 0, 0
-9, Sam Hawkens, 0, 0
-9, Hawk Power, 0, 0
-9, Highland Bling, 0, 0
-9, Power Pivot, 0, 0
-9, Autumn Mystery, 0, 0
-10, Jazz Affair, 0, 0
-10, Bon Mistress, 0, 0
-10, Cat Noir, 0, 0
-10, Maisy, 0, 0
-10, Autumn Slide, 0, 0
-10, Coco Jen, 0, 0
-10, Jenni Multabella, 0, 0
-10, World's My Oyster, 0, 0
-10, Oak Beach, 0, 0
-10, Illyivy, 0, 0
-10, Bon Fete, 0, 0
-10, Sister Shay, 0, 0
-10, Jenni You Think, 0, 0
-10, Cooly, 0, 0
-10, Farakta, 0, 0
-10, Cushioned, 0, 0
-10, Befuddle, 0, 0
+8, Sammarco, 0, 0
+8, Punch Lane, 0, 0
+8, King Zephyr, 0, 0
+8, Run Harry Run, 0, 0
+8, Recon, 0, 0
+8, Ramadan, 0, 0
+8, Miss Playlounge, 0, 0
+9, Charterhouse, 0, 0
+9, Bianco Vilano, 0, 0
+9, Williamsburg, 0, 0
+9, Fiorenot, 0, 0
+9, Makdane, 0, 0
+9, Wymark, 0, 0
+9, Revelare, 0, 0
+9, Sav On Ice, 0, 0
+9, Moonlight Circus, 0, 0
+9, Cilacap, 0, 0
+9, Nobler, 0, 0
+9, Roulette King, 0, 0
+9, Paltrow Miss, 0, 0
+9, Sulek, 0, 0
+10, Charisse, 0, 0
+10, He'll Rip, 0, 0
+10, Flying Mikki, 0, 0
+10, No Fuss, 0, 0
+10, Haaracaine, 0, 0
+10, Two Wolves, 0, 0
+10, Stay Humble, SCR
+10, Bergasun, 0, 0
+10, Midnite Storm, 0, 0
+10, Somewhere, 0, 0
+10, Houdini, 0, 0
+10, Test Of Love, 0, 0
+10, Taung, 0, 0
+10, Wetumpka, SCR
+10, Options, 0, 0
 10, Just A Journey, 0, 0
-10, Dame Of Dubai, 0, 0
-10, Silvasista, 0, 0
-10, Goodness, 0, 0
+10, Lightening Mann, SCR
+10, Jareth, 0, 0
+10, Impulsive Reaction, 0, 0
+10, Space Rider, SCR
