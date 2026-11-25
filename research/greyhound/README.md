@@ -9785,6 +9785,7 @@ published November, so there is no BSP yet.
 | 21 Nov | 45018519555 | 24 | 24 | 12 | 3 | 3 | 1 | 0.77 | 4.69 | -2.87 | 0 | 0 | 2, 1, +4.00 (+200.0%) | 2, 1, +4.00 (+200.0%) |
 | 22 Nov | 45167524626 | 24 | 24 | 22 | 2 | 2 | 1 | 0.91 | 7.99 | -0.59 | 0 | 0 | 3, 0, -3.00 (-100.0%) | 3, 0, -3.00 (-100.0%) |
 | 23 Nov | 45387400796 | 47 | 48 | 41 | 14 | 13 | 6 | 5.20 | 40.87 | +19.78 | 1 | 0 | 4, 1, +11.00 (+275.0%) | 0 |
+| 24 Nov | 45606740507 | 37 | 37 | 15 | 4 | 4 | 2 | 1.90 | 8.61 | +3.41 | 0 | 0 | 2, 0, -2.00 (-100.0%) | 1, 0, -1.00 (-100.0%) |
 
 All four 15 Nov bets opened shorter on TAB than GRV's evening price (TAB at 24% to 49% of it) and below the card's own
 blended price, the same pattern as the first nine nights. Two won, at TAB's first price less the deduction: +5.77
@@ -9875,10 +9876,20 @@ the count takes every Betwatch race on the day, including one that was not on th
 re-run: the first (45386549245) was sealed to the old card key, which was lost when the cloud container was
 replaced, and PR 239 put a new key in its place.
 
-The card as sent so far, 6 to 23 Nov: 121 bets, 119 settled (one refund, one void), 49 winners against 48.26 expected
-at the prices taken (A/E 1.02), 279.11 units staked, -12.92 units won (-4.6% at the card's units, +1.4% flat), -7.82
-at the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 14 bets at
-1.1x (6 won, +33.70 units) and 7 at 1.2x (3 won, +15.50), each day as first scored; Blue Storm's +5.00 at both is in
+Four 24 Nov bets on the card as sent, two won: +3.41 units on 8.61 staked (+39.6% at the card's units, -2.2%
+flat), +3.65 at the best first price of three. Zipping Merlina (Geelong R1) won at $2.30, +5.20 at its 4 units, and
+Lightning Range (Horsham R4) won at $1.90 less a 32c deduction for a scratching; Aston Hercules (Horsham R10) and Fast
+Bowler (Warragul R3) lost. Every TAB first price came between 7:40 and 8:16am on race morning, after the card (made at
+about 10:40pm the night before), so every bet could have been taken. None was still 1.3x the card's blended price at
+TAB's open, and the rule at TAB's open made no bet, as expected. The corrected blend took two bets at 1.1x, Sinister
+Six (Horsham R3) at $5.50 and Odds Assassin (Warragul R3) at $11.00, and both lost, -2.00 units; Odds Assassin was
+also its one bet at 1.2x, -1.00. The 24 Nov run's totals re-score the earlier days with the refitted correction; the
+kept rows stay as first scored.
+
+The card as sent so far, 6 to 24 Nov: 125 bets, 123 settled (one refund, one void), 51 winners against 50.16 expected
+at the prices taken (A/E 1.02), 287.72 units staked, -9.51 units won (-3.3% at the card's units, +1.3% flat), -4.17
+at the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 16 bets at
+1.1x (6 won, +31.70 units) and 8 at 1.2x (3 won, +14.50), each day as first scored; Blue Storm's +5.00 at both is in
 those totals and came from a market TAB opened before the card.
 
 Results go here as they come in.
