@@ -1,7 +1,8 @@
 """Mercer Tipping price-arrow card (26 Oct 2026, founder: "happy to build multiple?"): winners, each drawn from the price
 we tipped (gold) down to where Betfair SP had them (white), on one log price scale; a headline and one honest line under.
 1080x1350, tipcard.py's look.   python arrowcard.py ARROW.json OUT.png
-ARROW.json: {"title", "sub", "head", "rows": [{"horse", "where", "taken", "bsp"}], "line"}"""
+ARROW.json: {"title", "sub", "head", "rows": [{"horse", "where", "taken", "bsp"}], "line", "to_label" (default "Betfair SP")}
+The arrowhead points the way the price went (25 Nov 2026: a drifter on the prices-now card)."""
 import asyncio, glob, html, json, math, sys
 from tipcard import CSS as TIP_CSS, NAVY, INK, GOLD, PALE, LINE
 CSS = TIP_CSS.replace("{hs}", "40") + f"""
@@ -9,12 +10,13 @@ CSS = TIP_CSS.replace("{hs}", "40") + f"""
 svg{{display:block;margin:0}} svg text{{font-family:BC}}
 .line{{font:600 34px/1.25 BC;color:{PALE};margin-top:20px}} .line b{{color:{INK}}}
 """
-def chart(rows, W=936):
-    RH = 86; H = RH * len(rows) + 50; L, R = 300, 48
-    lo, hi = math.log(1.6), math.log(18)
-    x = lambda p: L + (math.log(min(max(p, 1.6), 18)) - lo) / (hi - lo) * (W - L - R)
+def chart(rows, W=936, RH=86, plo=1.6, phi=18, ticks=(2, 3, 5, 8, 12)):
+    """plo/phi/ticks/RH: a card with few rows or a narrow price range zooms in (row_h, lo, hi, ticks in ARROW.json)."""
+    H = RH * len(rows) + 50; L, R = 300, 48
+    lo, hi = math.log(plo), math.log(phi)
+    x = lambda p: L + (math.log(min(max(p, plo), phi)) - lo) / (hi - lo) * (W - L - R)
     s = []
-    for p in (2, 3, 5, 8, 12):
+    for p in ticks:
         s.append(f"<line x1='{x(p):.1f}' x2='{x(p):.1f}' y1='0' y2='{H-40}' stroke='{LINE}' stroke-width='2'/>"
                  f"<text x='{x(p):.1f}' y='{H-8}' text-anchor='middle' font-size='26' font-weight='600' fill='{PALE}'>${p}</text>")
     fm = lambda p: f"${p:g}" if p == int(p) else f"${p:.2f}"
@@ -22,8 +24,9 @@ def chart(rows, W=936):
         cy = i * RH + RH / 2; a, b = x(r["taken"]), x(r["bsp"])
         s.append(f"<text x='0' y='{cy-4:.1f}' font-size='36' font-weight='800' fill='{INK}'>{html.escape(r['horse'].upper())}</text>"
                  f"<text x='0' y='{cy+26:.1f}' font-size='22' font-weight='600' fill='{PALE}' letter-spacing='2'>{html.escape(r.get('where','').upper())}</text>")
-        s.append(f"<line x1='{a:.1f}' x2='{b+14:.1f}' y1='{cy:.1f}' y2='{cy:.1f}' stroke='{GOLD}' stroke-width='6'/>"
-                 f"<polygon points='{b+2:.1f},{cy:.1f} {b+20:.1f},{cy-11:.1f} {b+20:.1f},{cy+11:.1f}' fill='{GOLD}'/>"
+        g = 1 if b <= a else -1   # the head points the way the price went: left when it shortened, right when it drifted
+        s.append(f"<line x1='{a:.1f}' x2='{b+14*g:.1f}' y1='{cy:.1f}' y2='{cy:.1f}' stroke='{GOLD}' stroke-width='6'/>"
+                 f"<polygon points='{b+2*g:.1f},{cy:.1f} {b+20*g:.1f},{cy-11:.1f} {b+20*g:.1f},{cy+11:.1f}' fill='{GOLD}'/>"
                  f"<circle cx='{b:.1f}' cy='{cy:.1f}' r='9' fill='{INK}'/><circle cx='{a:.1f}' cy='{cy:.1f}' r='12' fill='{GOLD}'/>"
                  f"<text x='{a:.1f}' y='{cy-22:.1f}' text-anchor='middle' font-size='30' font-weight='800' fill='{GOLD}'>{fm(r['taken'])}</text>"
                  f"<text x='{b:.1f}' y='{cy+40:.1f}' text-anchor='middle' font-size='26' font-weight='600' fill='{INK}'>{fm(r['bsp'])}</text>")
@@ -31,11 +34,11 @@ def chart(rows, W=936):
 def card(d):
     key = (f"<div style='display:flex;gap:34px;font:800 28px/1 BC;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px'>"
            f"<span><i style='display:inline-block;width:22px;height:22px;border-radius:50%;background:{GOLD};margin-right:10px;vertical-align:-3px'></i>We tipped</span>"
-           f"<span><i style='display:inline-block;width:18px;height:18px;border-radius:50%;background:{INK};margin-right:10px;vertical-align:-2px'></i>Betfair SP</span></div>")
+           f"<span><i style='display:inline-block;width:18px;height:18px;border-radius:50%;background:{INK};margin-right:10px;vertical-align:-2px'></i>{html.escape(d.get('to_label', 'Betfair SP'))}</span></div>")
     return (f"<html><head><style>{CSS}</style></head><body>"
             f"<div class='top'><div class='lock'><div class='mark'><span>M</span></div><div class='brand'>MERCER<span>TIPPING</span></div></div>"
             f"<div class='when'>{html.escape(d['title'])}<span>{html.escape(d['sub'])}</span></div></div>"
-            f"<div class='head'>{d['head']}</div>{key}{chart(d['rows'])}<div class='line'>{d['line']}</div><div style='flex:1'></div>"
+            f"<div class='head'>{d['head']}</div>{key}{chart(d['rows'], RH=d.get('row_h', 86), plo=d.get('lo', 1.6), phi=d.get('hi', 18), ticks=tuple(d.get('ticks', (2, 3, 5, 8, 12))))}<div class='line'>{d['line']}</div><div style='flex:1'></div>"
             f"<div class='foot'><span>Win bets.</span><span>18+ · Gamble responsibly</span></div></body></html>")
 async def main(src, out):
     from playwright.async_api import async_playwright

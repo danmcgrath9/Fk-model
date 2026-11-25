@@ -1,0 +1,45 @@
+{
+ "title": "Thursday",
+ "sub": "26 November",
+ "to_label": "Now",
+ "head": "Mornington <span>prices now</span>",
+ "rows": [
+  {
+   "horse": "Gunz",
+   "where": "R5 \u00b7 5:00pm",
+   "taken": 3.0,
+   "bsp": 2.6
+  },
+  {
+   "horse": "Outer Banks",
+   "where": "R5 \u00b7 5:00pm",
+   "taken": 9.5,
+   "bsp": 10.0
+  },
+  {
+   "horse": "Bel Lupa",
+   "where": "R7 \u00b7 6:00pm",
+   "taken": 3.3,
+   "bsp": 2.6
+  },
+  {
+   "horse": "No Limitation",
+   "where": "R7 \u00b7 6:00pm",
+   "taken": 12.0,
+   "bsp": 8.5
+  }
+ ],
+ "line": "<b>3 of our 4</b> have come in since we posted them. Best price at 10:00am.",
+ "prices_as_at": "2026-11-26T10:01",
+ "row_h": 150,
+ "lo": 2.2,
+ "hi": 13.5,
+ "ticks": [
+  3,
+  4,
+  6,
+  8,
+  10,
+  12
+ ]
+}
