@@ -1,16 +1,16 @@
 1|4|Brazen Bold|False|False
 1|6|Lord Of The Earth|False|False
 1|8|Mr Sapphire|False|False
-1|3|Bohemian Rhapsody|False|False
+1|3|Bohemian Rhapsody|False|True
 1|7|Majestic Son|False|False
 1|1|Activating|False|False
 1|5|Capital Storm|False|False
 1|9|Tiz The Tycoon|False|False
 1|2|Adhara|False|False
-2|11|Spirit Nature|False|False
-2|3|Blue Jeans Talk|False|False
+2|11|Spirit Nature|False|True
+2|3|Blue Jeans Talk|False|True
 2|8|Nyad|False|False
-2|4|Dancell|False|False
+2|4|Dancell|False|True
 2|2|Blue Ivy|False|False
 2|5|Epponnee Rae|False|False
 2|6|Kensington|False|False
@@ -19,18 +19,18 @@
 2|9|Please Please Me|False|False
 2|13|Amber Queen|True|False
 2|10|Renecca|False|False
-2|12|Wolfmaama|False|False
+2|12|Wolfmaama|False|True
 3|3|Maurie's Pride|False|False
 3|1|Abydos|False|False
 3|5|Soundwave|False|False
 3|4|Shy Velocity|False|False
-3|12|Kokeshi|False|False
-3|15|Russian Nights|True|False
+3|12|Kokeshi|False|True
+3|15|Russian Nights|True|True
 3|13|Grey Flyer|True|False
 3|14|Shipping Steel|True|False
 3|2|Barossa Bourbon|False|False
 3|8|Hurtado|False|False
-3|6|Another Pothole|False|False
+3|6|Another Pothole|False|True
 3|9|Percipient|False|False
 3|11|Red Tide|False|False
 3|7|Fort Rock|False|False
@@ -40,18 +40,18 @@
 4|12|Faro Lady|False|False
 4|7|Seinfeld|False|False
 4|5|Full Zoom|False|False
-4|3|Asparagus|False|False
+4|3|Asparagus|False|True
 4|6|Montesquieu|False|False
 4|8|Tecknoking|False|False
 4|2|Ardad Ned|False|False
 4|9|Tequila's Bro|False|False
 4|10|Wollemi|False|False
 4|11|Zametovka|False|False
-5|5|Aristonous|False|False
+5|5|Aristonous|False|True
 5|9|Hey Bella|False|False
 5|2|Untapped|False|False
-5|7|Rogan|False|False
-5|1|Terrortorian|False|False
+5|7|Rogan|False|True
+5|1|Terrortorian|False|True
 5|10|So You Excel|False|False
 5|4|Alexander Thegreat|False|False
 5|6|Caelius|False|False
@@ -61,43 +61,43 @@
 6|8|Hola Amigos|False|False
 6|3|Blue Bandit|False|False
 6|4|Surperb Frost|False|False
-6|1|Zourain|False|False
+6|1|Zourain|False|True
 6|11|Venetian Choice|False|False
 6|10|There Were Roses|False|False
 6|2|Yum|False|False
 6|13|Posh Diamante|True|False
 6|15|Jetsetter Jack|True|False
-6|16|King Maywin|True|False
-6|5|Discover Lupino|False|False
+6|16|King Maywin|True|True
+6|5|Discover Lupino|False|True
 6|9|Cherry Hills|False|False
 6|12|Perfect Night|False|False
 6|7|Seaborn|False|False
-6|14|Tiger Fox|True|False
+6|14|Tiger Fox|True|True
 7|12|All Torque|False|False
 7|9|Titan's Spirit|False|False
-7|10|Glisk|False|False
+7|10|Glisk|False|True
 7|5|Hook 'n' Spur|False|False
-7|2|General Blu|False|False
+7|2|General Blu|False|True
 7|8|Astiquer|False|False
 7|6|Ngongotaha|False|False
 7|3|Mighty Mystic|False|False
-7|4|Shares|False|False
+7|4|Shares|False|True
 7|11|Pure Silk|False|False
 7|7|Circus Lights|False|False
 7|1|Barbarino|False|False
 8|4|Mr Tickles|False|False
-8|7|Weapon Clear|False|False
+8|7|Weapon Clear|False|True
 8|12|Room For Bingo|False|False
 8|8|Jakivy|False|False
 8|13|Spirit Of Wealth|True|False
 8|15|Noetzie|True|False
-8|6|Monix|False|False
+8|6|Monix|False|True
 8|3|Landmark|False|False
-8|11|It's A Yes|False|False
+8|11|It's A Yes|False|True
 8|10|Headbanger|False|False
 8|2|Hello Romeo|False|False
 8|9|Yolo|False|False
 8|5|Magnabelle Royale|False|False
 8|1|Barari|False|False
 8|16|Mongolian Gobi|True|False
-8|14|Vivid Sun|True|False
+8|14|Vivid Sun|True|True

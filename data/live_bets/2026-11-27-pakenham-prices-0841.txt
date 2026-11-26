@@ -1,0 +1,104 @@
+# Pakenham Park Fri 27 Nov, official going, final fields; market open in R1,2,3,4,5,6,7,8; PROVISIONAL: 1 runners without a rider
+1, Brazen Bold, 19.00, 19.00, fk_open 10.00
+1, Lord Of The Earth, 5.00, 5.00, fk_open 4.20
+1, Mr Sapphire, 61.00, 61.00, fk_open 14.00
+1, Bohemian Rhapsody, 3.80, 3.80, fk_open 4.20
+1, Majestic Son, 2.05, 2.05, fk_open 2.80
+1, Activating, 151.00, 151.00, fk_open 101.00
+1, Capital Storm, 18.00, 18.00, fk_open 10.00
+1, Tiz The Tycoon, 17.00, 17.00, fk_open 7.50
+1, Adhara, 12.00, 12.00, fk_open 10.00
+2, Spirit Nature, 3.90, 3.90, fk_open 3.80
+2, Blue Jeans Talk, 151.00, 151.00, fk_open 101.00
+2, Nyad, 8.00, 8.00, fk_open 8.00
+2, Dancell, 13.00, 13.00, fk_open 18.50
+2, Blue Ivy, 11.00, 11.00, fk_open 16.00
+2, Epponnee Rae, 26.00, 26.00, fk_open 34.00
+2, Kensington, 81.00, 81.00, fk_open 26.00
+2, Assunta, 8.50, 8.50, fk_open 4.80
+2, Media Darling, 4.60, 4.60, fk_open 5.00
+2, Please Please Me, 9.50, 9.50, fk_open 7.25
+2, Amber Queen, SCR, fk_open 8.50
+2, Renecca, 12.00, 12.00, fk_open 6.25
+2, Wolfmaama, 8.50, 8.50, fk_open 19.00
+3, Maurie's Pride, 126.00, 126.00, fk_open 51.00
+3, Abydos, 4.20, 4.20, fk_open 4.20
+3, Soundwave, 10.00, 10.00, fk_open 5.50
+3, Shy Velocity, 61.00, 61.00, fk_open 26.00
+3, Kokeshi, 5.00, 5.00, fk_open 5.50
+3, Russian Nights, SCR, fk_open 81.00
+3, Grey Flyer, SCR, fk_open 15.00
+3, Shipping Steel, SCR, fk_open 26.00
+3, Barossa Bourbon, 151.00, 151.00, fk_open 101.00
+3, Hurtado, 51.00, 51.00, fk_open 26.00
+3, Another Pothole, 21.00, 21.00, fk_open 10.00
+3, Percipient, 4.80, 4.80, fk_open 5.50
+3, Red Tide, 9.50, 9.50, fk_open 7.50
+3, Fort Rock, 4.00, 4.00, fk_open 10.00
+3, Pocket Watch, 18.00, 18.00, fk_open 7.50
+4, Chronic, 12.00, 12.00, fk_open 12.00
+4, Always Shining, 81.00, 81.00, fk_open 26.00
+4, Faro Lady, 27.00, 27.00, fk_open 26.00
+4, Seinfeld, 5.50, 5.50, fk_open 7.50
+4, Full Zoom, 23.00, 23.00, fk_open 10.00
+4, Asparagus, 151.00, 151.00, fk_open 41.00
+4, Montesquieu, 2.90, 2.90, fk_open 2.50
+4, Tecknoking, 26.00, 26.00, fk_open 23.00
+4, Ardad Ned, 5.50, 5.50, fk_open 3.70
+4, Tequila's Bro, 10.00, 10.00, fk_open 31.00
+4, Wollemi, 5.50, 5.50, fk_open 6.50
+4, Zametovka, 19.00, 19.00, fk_open 34.00
+5, Aristonous, 16.00, 16.00, fk_open 10.00
+5, Hey Bella, 10.00, 10.00, fk_open 10.00
+5, Untapped, 5.00, 5.00, fk_open 5.15
+5, Rogan, 20.00, 20.00, fk_open 14.50
+5, Terrortorian, 5.00, 5.00, fk_open 5.50
+5, So You Excel, 101.00, 101.00, fk_open 51.00
+5, Alexander Thegreat, 10.00, 10.00, fk_open 10.00
+5, Caelius, 9.00, 9.00, fk_open 5.50
+5, Mount Sabyinyo, 4.50, 4.50, fk_open 5.50
+5, Chillies, 6.50, 6.50, fk_open 4.20
+6, Russian Front, 11.00, 11.00, fk_open 12.00
+6, Hola Amigos, 8.50, 8.50, fk_open 14.00
+6, Blue Bandit, 9.50, 9.50, fk_open 14.00
+6, Surperb Frost, 10.00, 10.00, fk_open 8.50
+6, Zourain, 23.00, 23.00, fk_open 17.00
+6, Venetian Choice, 34.00, 34.00, fk_open 26.00
+6, There Were Roses, 7.00, 7.00, fk_open 5.00
+6, Yum, 11.00, 11.00, fk_open 7.50
+6, Posh Diamante, SCR, fk_open 21.00
+6, Jetsetter Jack, SCR, fk_open 13.00
+6, King Maywin, SCR, fk_open 34.00
+6, Discover Lupino, 5.00, 5.00, fk_open 5.50
+6, Cherry Hills, 14.00, 14.00, fk_open 10.00
+6, Perfect Night, 5.00, 5.00, fk_open 7.00
+6, Seaborn, 9.50, 9.50, fk_open 7.50
+6, Tiger Fox, SCR, fk_open 34.00
+7, All Torque, 151.00, 151.00, fk_open 113.50
+7, Titan's Spirit, 19.00, 19.00, fk_open 24.50
+7, Glisk, 81.00, 81.00, fk_open 113.50
+7, Hook 'n' Spur, 6.00, 6.00, fk_open 18.33
+7, General Blu, 3.40, 3.40, fk_open 3.33
+7, Astiquer, 5.50, 5.50, fk_open 3.87
+7, Ngongotaha, 23.00, 23.00, fk_open 15.00
+7, Mighty Mystic, 13.00, 13.00, fk_open 15.00
+7, Shares, 15.00, 15.00, fk_open 10.50
+7, Pure Silk, 34.00, 34.00, fk_open 24.50
+7, Circus Lights, 9.50, 9.50, fk_open 7.75
+7, Barbarino, 4.80, 4.80, fk_open 3.87
+8, Mr Tickles, 27.00, 27.00, fk_open 21.00
+8, Weapon Clear, 19.00, 19.00, fk_open 16.00
+8, Room For Bingo, 34.00, 34.00, fk_open 31.00
+8, Jakivy, 11.00, 11.00, fk_open 16.00
+8, Spirit Of Wealth, SCR, fk_open 21.00
+8, Noetzie, SCR, fk_open 4.70
+8, Monix, 31.00, 31.00, fk_open 26.00
+8, Landmark, 5.00, 5.00, fk_open 4.20
+8, It's A Yes, 8.50, 8.50, fk_open 6.50
+8, Headbanger, 5.50, 5.50, fk_open 6.50
+8, Hello Romeo, 11.00, 11.00, fk_open 8.00
+8, Yolo, 6.50, 6.50, fk_open 9.00
+8, Magnabelle Royale, 12.00, 12.00, fk_open 11.00
+8, Barari, 5.00, 5.00, fk_open 4.80
+8, Mongolian Gobi, SCR, fk_open 9.00
+8, Vivid Sun, SCR, fk_open 4.00

@@ -1,0 +1,105 @@
+# Wodonga Fri 27 Nov, official going, final fields; no market yet; PROVISIONAL: 4 runners without a rider
+1, Kiptum, 0, 0
+1, Magna Peak, 0, 0
+1, Bourne Legacy, 0, 0
+1, Tough Revelation, 0, 0
+1, Borata's Girl, 0, 0
+1, Prince Of Glam, 0, 0
+1, Cosmic Snitz, 0, 0
+1, Zou Owe Me, 0, 0
+2, Magnus Maximus, 0, 0
+2, Dagger One, 0, 0
+2, News Scoop, 0, 0
+2, Arties A Star, SCR
+2, Ima Vixen, 0, 0
+2, Muddy, 0, 0
+2, Regal Belle, 0, 0
+2, Azka Veloce, 0, 0
+2, Doctorate, 0, 0
+2, Pray For Elegance, 0, 0
+2, Winna's Sister, 0, 0
+2, Ordinary Star, 0, 0
+2, Skadoodle, 0, 0
+3, Cookardinia Miss, SCR
+3, Legal Size, SCR
+3, He's Our Boy, 0, 0
+3, Princess Prussia, 0, 0
+3, Estival, 0, 0
+3, Scorpion, 0, 0
+3, Fiore Darancio, 0, 0
+3, Veloce, SCR
+3, Bar La La, 0, 0
+3, Katie On The Edge, 0, 0
+3, Acroman, 0, 0
+3, I'm Confused, 0, 0
+3, Boots Off, 0, 0
+3, Astatine, 0, 0
+3, Inner Light, 0, 0
+4, Surely Special, 0, 0
+4, Sorry Sunshine, 0, 0
+4, Quamby, 0, 0
+4, Dartboard, 0, 0
+4, Star Blazer, 0, 0
+4, Just Call Me Jonny, 0, 0
+4, Under The Hat, 0, 0
+4, Mistressofillusion, 0, 0
+4, Doc March, 0, 0
+4, Murgasty, SCR
+4, Perfectly Good, SCR
+4, She's Stargazing, 0, 0
+4, Carnival Riches, 0, 0
+4, Victrix Swan, 0, 0
+5, Star Buyer, 0, 0
+5, San Marco, 0, 0
+5, Strategic Defense, 0, 0
+5, Giant's Reprieve, 0, 0
+5, Scottish Pearl, 0, 0
+5, Shotaro, 0, 0
+5, Midnight Eagle, 0, 0
+5, Sir Basil, 0, 0
+5, Ashen Knight, 0, 0
+5, Palladium, 0, 0
+5, Red Light Rachel, 0, 0
+5, Bottas, 0, 0
+6, Indispensable, 0, 0
+6, El Rocko, 0, 0
+6, Grey Lad, SCR
+6, Eamonn's Memory, 0, 0
+6, Presser, 0, 0
+6, Black Storm, 0, 0
+6, Fox Appeal, SCR
+6, Morning Darling, SCR
+6, Itsukushima, 0, 0
+6, El Soleado, 0, 0
+6, Bullets High, 0, 0
+6, Tuff Tu Mus, 0, 0
+6, Expeetee, 0, 0
+6, Make It Sweet, 0, 0
+6, Sister Shay, 0, 0
+6, Buccleuch, 0, 0
+6, Space Rider, 0, 0
+7, Projeto, 0, 0
+7, Commands Success, 0, 0
+7, Rosie's Prophecy, 0, 0
+7, Roussillon, 0, 0
+7, Foreman's Gully, 0, 0
+7, Three Musketeers, SCR
+7, Before The War, 0, 0
+7, Abstruse, 0, 0
+7, Prandium Tempus, SCR
+7, Fourthtimelucky, 0, 0
+7, More Highs On Me, SCR
+7, Alice Alice, 0, 0
+7, Pacific Glamour, SCR
+7, Brenlyn's Legacy, 0, 0
+7, Hazardous, 0, 0
+8, Copperfield, 0, 0
+8, Blushing Tycoon, 0, 0
+8, Deeling Aces, 0, 0
+8, Tanganyika, 0, 0
+8, Future Fund, 0, 0
+8, Steve's Way, 0, 0
+8, Doubtfree, 0, 0
+8, Lord Of Valor, 0, 0
+8, Paparazzo, 0, 0
+8, Shoma, 0, 0
