@@ -25,10 +25,8 @@
 3|13|Princess Prussia|False|False
 3|8|Estival|False|False
 3|2|Scorpion|False|False
-3|11|Money Bags|False|True
 3|9|Fiore Darancio|False|False
 3|15|Veloce|True|False
-3|12|Ninetyfiveinafifty|False|True
 3|7|Bar La La|False|False
 3|10|Katie On The Edge|False|False
 3|3|Acroman|False|False
@@ -87,7 +85,6 @@
 7|16|Three Musketeers|True|False
 7|4|Before The War|False|False
 7|7|Abstruse|False|False
-7|3|The Shaper|False|True
 7|15|Prandium Tempus|True|False
 7|8|Fourthtimelucky|False|False
 7|13|More Highs On Me|True|False

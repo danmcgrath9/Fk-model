@@ -1,0 +1,77 @@
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,Bourne Legacy,3.29,8.00,12,0,,8-12
+1,Bourne Legacy,3.29,15.00,40,0,,15-40
+1,Cosmic Snitz,3.60,8.00,12,0,first starter: excluded,8-12
+1,Cosmic Snitz,3.60,15.00,40,0,first starter: excluded,15-40
+1,Borata's Girl,6.23,9.97,12,0,,8-12
+1,Borata's Girl,6.23,15.00,40,0,,15-40
+1,Zou Owe Me,10.31,15.47,40,0,first starter: excluded,15-40
+1,Magna Peak,15.36,23.04,40,0,,15-40
+1,Prince Of Glam,17.88,26.82,40,0,,15-40
+2,Pray For Elegance,2.04,8.00,12,0,,8-12
+2,Pray For Elegance,2.04,15.00,40,0,,15-40
+2,Skadoodle,7.70,15.00,40,0,first starter: excluded,15-40
+2,Ordinary Star,9.77,15.00,40,0,,15-40
+2,News Scoop,9.90,15.00,40,0,,15-40
+2,Magnus Maximus,13.53,20.30,40,0,,15-40
+3,I'm Confused,3.35,8.00,12,0,first starter: excluded,8-12
+3,I'm Confused,3.35,15.00,40,0,first starter: excluded,15-40
+3,Scorpion,5.08,8.13,12,0,,8-12
+3,Scorpion,5.08,15.00,40,0,,15-40
+3,Boots Off,5.09,8.15,12,0,,8-12
+3,Boots Off,5.09,15.00,40,0,,15-40
+3,He's Our Boy,12.93,19.40,40,0,,15-40
+3,Bar La La,16.08,24.12,40,0,,15-40
+3,Estival,17.09,25.63,40,0,,15-40
+3,Fiore Darancio,21.51,32.26,40,0,,15-40
+4,Just Call Me Jonny,3.81,8.00,12,0,,8-12
+4,Just Call Me Jonny,3.81,15.00,40,0,,15-40
+4,Surely Special,7.44,11.90,12,0,,8-12
+4,Surely Special,7.44,15.00,40,0,,15-40
+4,Dartboard,8.87,15.00,40,0,,15-40
+4,Carnival Riches,9.27,15.00,40,0,,15-40
+4,Quamby,9.61,15.00,40,0,,15-40
+4,She's Stargazing,11.13,16.69,40,0,,15-40
+4,Doc March,16.26,24.39,40,0,,15-40
+5,Shotaro,5.19,8.31,12,0,,8-12
+5,Shotaro,5.19,15.00,40,0,,15-40
+5,Bottas,7.64,15.00,40,0,,15-40
+5,Strategic Defense,7.73,15.00,40,0,,15-40
+5,Palladium,9.00,15.00,40,0,,15-40
+5,Giant's Reprieve,9.11,15.00,40,0,,15-40
+5,Star Buyer,11.72,17.58,40,0,,15-40
+5,Midnight Eagle,16.98,25.46,40,0,,15-40
+5,San Marco,18.14,27.21,40,0,,15-40
+5,Scottish Pearl,19.54,29.31,40,0,,15-40
+5,Red Light Rachel,25.97,38.96,40,0,,15-40
+6,Buccleuch,2.73,8.00,12,0,,8-12
+6,Buccleuch,2.73,15.00,40,0,,15-40
+6,Space Rider,6.25,10.01,12,0,,8-12
+6,Space Rider,6.25,15.00,40,0,,15-40
+6,Sister Shay,10.86,16.28,40,0,,15-40
+6,Presser,12.83,19.24,40,0,,15-40
+6,Bullets High,13.83,20.74,40,0,,15-40
+6,Black Storm,22.62,33.93,40,0,,15-40
+6,El Rocko,24.80,37.19,40,0,,15-40
+6,Make It Sweet,25.02,37.53,40,0,,15-40
+7,Hazardous,3.22,8.00,12,0,,8-12
+7,Hazardous,3.22,15.00,40,0,,15-40
+7,Brenlyn's Legacy,7.35,11.77,12,0,,8-12
+7,Brenlyn's Legacy,7.35,15.00,40,0,,15-40
+7,Roussillon,7.52,15.00,40,0,,15-40
+7,Before The War,9.95,15.00,40,0,,15-40
+7,Rosie's Prophecy,16.17,24.26,40,0,,15-40
+7,Commands Success,17.34,26.01,40,0,,15-40
+7,Alice Alice,17.35,26.03,40,0,,15-40
+7,Foreman's Gully,20.23,30.34,40,0,,15-40
+8,Shoma,6.37,10.20,12,0,,8-12
+8,Shoma,6.37,15.00,40,0,,15-40
+8,Lord Of Valor,7.51,15.00,40,0,,15-40
+8,Tanganyika,7.65,15.00,40,0,,15-40
+8,Paparazzo,8.13,15.00,40,0,,15-40
+8,Steve's Way,9.03,15.00,40,0,,15-40
+8,Doubtfree,9.24,15.00,40,0,,15-40
+8,Future Fund,13.69,20.53,40,0,,15-40
+8,Copperfield,13.73,20.59,40,0,,15-40
+8,Deeling Aces,18.95,28.42,40,0,,15-40
+8,Blushing Tycoon,25.97,38.96,40,0,,15-40

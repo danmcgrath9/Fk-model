@@ -1,0 +1,70 @@
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,Queen's English,3.99,8.00,12,0,,8-12
+1,Queen's English,3.99,15.00,40,0,,15-40
+1,Seven Day Rebels,4.38,8.00,12,0,,8-12
+1,Seven Day Rebels,4.38,15.00,40,0,,15-40
+1,Excelamidas,7.28,11.64,12,0,first starter: excluded,8-12
+1,Excelamidas,7.28,15.00,40,0,first starter: excluded,15-40
+1,Valentina Girl,8.95,15.00,40,0,,15-40
+1,Magica,9.94,15.00,40,0,first starter: excluded,15-40
+1,Wanted Enuff,17.29,25.93,40,0,,15-40
+1,Duchess Xenia,19.99,29.99,40,0,,15-40
+2,Mistressof Mayfair,1.92,8.00,12,0,,8-12
+2,Mistressof Mayfair,1.92,15.00,40,0,,15-40
+2,Velocite Belle,7.84,15.00,40,0,,15-40
+2,Heavy Is The Head,8.44,15.00,40,0,,15-40
+2,Love Rustler,8.61,15.00,40,0,,15-40
+2,Prestige Maddy,13.73,20.60,40,0,,15-40
+3,Gozaimasu,2.68,8.00,12,0,first starter: excluded,8-12
+3,Gozaimasu,2.68,15.00,40,0,first starter: excluded,15-40
+3,Xtra Black,3.87,8.00,12,0,,8-12
+3,Xtra Black,3.87,15.00,40,0,,15-40
+3,Stomping Ground,7.53,15.00,40,0,,15-40
+3,Bruceismyname,14.04,21.06,40,0,first starter: excluded,15-40
+3,Mo Mo's Choise,14.61,21.91,40,0,,15-40
+3,Welcometodetroit,23.62,35.43,40,0,,15-40
+4,Altruist,4.86,8.00,12,0,,8-12
+4,Altruist,4.86,15.00,40,0,,15-40
+4,Beau Strada,6.05,9.68,12,0,,8-12
+4,Beau Strada,6.05,15.00,40,0,,15-40
+4,Epic Centre,6.08,9.73,12,0,,8-12
+4,Epic Centre,6.08,15.00,40,0,,15-40
+4,Bronco Revolution,7.28,11.65,12,0,,8-12
+4,Bronco Revolution,7.28,15.00,40,0,,15-40
+4,Sleeping Tiger,9.10,15.00,40,0,,15-40
+4,Densetsu,13.16,19.73,40,0,,15-40
+4,Brazen Fling,19.89,29.84,40,0,,15-40
+4,Bring The Thunder,22.43,33.65,40,0,,15-40
+5,Paltinian,4.59,8.00,12,0,,8-12
+5,Paltinian,4.59,15.00,40,0,,15-40
+5,Monsun's Pride,7.12,11.40,12,0,,8-12
+5,Monsun's Pride,7.12,15.00,40,0,,15-40
+5,Mannerheim,7.92,15.00,40,0,,15-40
+5,Larryoctane,8.20,15.00,40,0,,15-40
+5,Tipsy Gypsy,9.36,15.00,40,0,,15-40
+5,King Kauffo,11.66,17.50,40,0,,15-40
+5,Chateau Dancer,11.98,17.98,40,0,,15-40
+5,I'mfallinforyou,12.34,18.51,40,0,,15-40
+6,Silver Snow,3.15,8.00,12,0,,8-12
+6,Silver Snow,3.15,15.00,40,0,,15-40
+6,Hellish Lee,6.73,10.77,12,0,,8-12
+6,Hellish Lee,6.73,15.00,40,0,,15-40
+6,Jingu Express,7.13,11.41,12,0,,8-12
+6,Jingu Express,7.13,15.00,40,0,,15-40
+6,Pensatore,10.36,15.53,40,0,,15-40
+6,Sheer Lunacy,11.22,16.82,40,0,,15-40
+6,Ricky Runs,15.51,23.26,40,0,,15-40
+6,Chambers Bay,16.50,24.74,40,0,,15-40
+6,Scholl Deep,18.09,27.14,40,0,,15-40
+7,Arabian Myth,5.90,9.45,12,0,,8-12
+7,Arabian Myth,5.90,15.00,40,0,,15-40
+7,Popthebubbly,6.21,9.93,12,0,,8-12
+7,Popthebubbly,6.21,15.00,40,0,,15-40
+7,Too Much Too Soon,7.57,15.00,40,0,,15-40
+7,Headstock,9.28,15.00,40,0,,15-40
+7,Vaafee,11.82,17.73,40,0,,15-40
+7,True Prophet,12.53,18.80,40,0,,15-40
+7,Mythic,12.70,19.04,40,0,,15-40
+7,Wild Irish Rover,13.95,20.93,40,0,,15-40
+7,Monte Cassino,17.22,25.83,40,0,,15-40
+7,Dubai Fountain,17.62,26.43,40,0,,15-40
