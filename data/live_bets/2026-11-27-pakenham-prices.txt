@@ -67,7 +67,7 @@
 6, There Were Roses, 8.00, 8.00, fk_open 5.00
 6, Yum, 12.00, 12.00, fk_open 7.50
 6, Posh Diamante, 17.00, 17.00, fk_open 21.00
-6, Jetsetter Jack, 8.50, 8.50, fk_open 13.00
+6, Jetsetter Jack, 8.00, 8.00, fk_open 13.00
 6, King Maywin, SCR, fk_open 34.00
 6, Discover Lupino, SCR, last 5.00, fk_open 5.50
 6, Cherry Hills, 15.00, 15.00, fk_open 10.00
@@ -75,30 +75,30 @@
 6, Seaborn, 11.00, 11.00, fk_open 7.50
 6, Tiger Fox, SCR, fk_open 34.00
 7, All Torque, 101.00, 101.00, fk_open 113.50
-7, Titan's Spirit, 13.00, 13.00, fk_open 24.50
+7, Titan's Spirit, 14.00, 14.00, fk_open 24.50
 7, Glisk, SCR, last 81.00, fk_open 113.50
-7, Hook 'n' Spur, 5.00, 5.00, fk_open 18.33
+7, Hook 'n' Spur, 5.25, 5.25, fk_open 18.33
 7, General Blu, SCR, last 3.40, fk_open 3.33
 7, Astiquer, 3.20, 3.20, fk_open 3.87
 7, Ngongotaha, 14.00, 14.00, fk_open 15.00
-7, Mighty Mystic, 9.50, 9.50, fk_open 15.00
+7, Mighty Mystic, 9.00, 9.00, fk_open 15.00
 7, Shares, SCR, last 15.00, fk_open 10.50
-7, Pure Silk, 19.00, 19.00, fk_open 24.50
-7, Circus Lights, 6.75, 6.75, fk_open 7.75
+7, Pure Silk, 21.00, 21.00, fk_open 24.50
+7, Circus Lights, 7.00, 7.00, fk_open 7.75
 7, Barbarino, 3.60, 3.60, fk_open 3.87
-8, Mr Tickles, 41.00, 41.00, fk_open 21.00
+8, Mr Tickles, 51.00, 51.00, fk_open 21.00
 8, Weapon Clear, SCR, last 19.00, fk_open 16.00
-8, Room For Bingo, 101.00, 101.00, fk_open 31.00
-8, Jakivy, 18.00, 18.00, fk_open 16.00
-8, Spirit Of Wealth, 17.00, 17.00, fk_open 21.00
-8, Noetzie, 4.40, 4.40, fk_open 4.70
+8, Room For Bingo, 126.00, 126.00, fk_open 31.00
+8, Jakivy, 21.00, 21.00, fk_open 16.00
+8, Spirit Of Wealth, 19.00, 19.00, fk_open 21.00
+8, Noetzie, 3.90, 3.90, fk_open 4.70
 8, Monix, SCR, last 31.00, fk_open 26.00
-8, Landmark, 6.75, 6.75, fk_open 4.20
+8, Landmark, 8.00, 8.00, fk_open 4.20
 8, It's A Yes, SCR, fk_open 6.50
-8, Headbanger, 7.00, 7.00, fk_open 6.50
-8, Hello Romeo, 17.00, 17.00, fk_open 8.00
-8, Yolo, 7.00, 7.00, fk_open 9.00
-8, Magnabelle Royale, 23.00, 23.00, fk_open 11.00
-8, Barari, 4.20, 4.20, fk_open 4.80
-8, Mongolian Gobi, 11.00, 11.00, fk_open 9.00
+8, Headbanger, 8.00, 8.00, fk_open 6.50
+8, Hello Romeo, 21.00, 21.00, fk_open 8.00
+8, Yolo, 7.50, 7.50, fk_open 9.00
+8, Magnabelle Royale, 26.00, 26.00, fk_open 11.00
+8, Barari, 4.40, 4.40, fk_open 4.80
+8, Mongolian Gobi, 9.50, 9.50, fk_open 9.00
 8, Vivid Sun, SCR, last 4.40, fk_open 4.00
