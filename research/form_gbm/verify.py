@@ -183,7 +183,7 @@ def check_cards(L, C, today, now, F):
                         F.append(("BLOCK", f"card {fn}", f"{who}: card ${price:g}, Form King's open ${fl['open']:g}"))
                     if b.get("rated") and abs(money(b["rated"]) - fl["rated"]) > 0.011:
                         F.append(("BLOCK", f"card {fn}", f"{who}: rated {b['rated']}, the sheet has ${fl['rated']:.2f}"))
-                elif not d.get("posted") and p["now"] and price > p["now"] * 1.10:
+                elif not (d.get("posted") or m.get("posted")) and p["now"] and price > p["now"] * 1.10:   # a meeting already tweeted keeps the price it was posted at
                     F.append(("CHECK", f"card {fn}", f"{who}: card ${price:g} against ${p['now']:g} at the last pull"))
             for k, fl in fills.items():
                 if k not in on_card:
