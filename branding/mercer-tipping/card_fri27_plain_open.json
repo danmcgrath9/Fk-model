@@ -32,6 +32,20 @@
      "rated": "$9.78"
     }
    ]
+  },
+  {
+   "name": "Wodonga",
+   "note": "",
+   "bets": [
+    {
+     "race": 8,
+     "time": "5:30PM",
+     "horse": "Steve's Way",
+     "price": "$19",
+     "units": "1.19u",
+     "rated": "$8.93"
+    }
+   ]
   }
  ]
 }

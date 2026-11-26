@@ -3,7 +3,7 @@
  "date": "27 November",
  "footer": "Win bets.",
  "brand": true,
- "prices_as_at": "2026-11-27T05:01",
+ "prices_as_at": "2026-11-27T08:49",
  "meetings": [
   {
    "name": "Pakenham",
@@ -20,7 +20,7 @@
      "race": 5,
      "time": "8:15PM",
      "horse": "Alexander Thegreat",
-     "price": "$9",
+     "price": "$6.50",
      "units": "1.34u"
     },
     {
@@ -29,6 +29,19 @@
      "horse": "Hook 'n' Spur",
      "price": "$5",
      "units": "1.07u"
+    }
+   ]
+  },
+  {
+   "name": "Wodonga",
+   "note": "",
+   "bets": [
+    {
+     "race": 8,
+     "time": "5:30PM",
+     "horse": "Steve's Way",
+     "price": "$21",
+     "units": "1.19u"
     }
    ]
   }
