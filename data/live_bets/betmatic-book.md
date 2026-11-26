@@ -1403,3 +1403,14 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - Rules (paper at Betfair SP) on the day: held-on-backtest rules +1.54u, the rest +9.66u, all rules +11.20u.
 - Running record: since live (9 Oct) +378.48u (201 bets, 45 won, +$18,924 at $50); the model +160.81u since 2 Nov
   (89 bets, 20 won), price against Betfair SP 1.32x (62 of 87 beat it).
+## Thursday 26 Nov Mornington settled (Form King results, Fri 5:20am, the new 5:30am results routine)
+- Open book (paper; sheet of record at Form King's open): 4 bets, 8.98u. Gunz R5 3.27u at $3.70, 2nd; Outer Banks R5
+  0.71u at $19, WON (+12.78u, Betfair SP $7.80); Bel Lupa R7 4.15u at $5, WON (+16.60u, Betfair SP $2.79); No Limitation
+  R7 0.85u at $21, 4th. +25.26u (+$1,263 at $50), 4 of 4 beat Betfair SP (1.60x). No TAB deduction reported.
+- No-Mercer card (card_thu26_plain_open, rebuilt Thu 8:40am on Form King's opens): the same four, +25.26u on 8.98u.
+  Mercer card AS POSTED (card_thu26_mercer_now, posted Wed: $3, $9.50, $3.30, $12; No Limitation 0.68u): Outer Banks won
+  at $9.50 (+6.04u), Bel Lupa at $3.30 (+9.54u); card +11.63u on 8.81u (+$582 at $50).
+- Back book: no backs. BetMatic: nothing sent (send hold). The 9am bets: none. Old rule: none.
+- Rules (paper at Betfair SP) on the day: held-on-backtest rules +3.69u, the rest +9.20u, all rules +12.89u.
+- Running record: since live (9 Oct) +403.74u (205 bets, 47 won, +$20,187 at $50); the model +186.07u since 2 Nov
+  (93 bets, 22 won), price against Betfair SP 1.33x (66 of 91 beat it).
