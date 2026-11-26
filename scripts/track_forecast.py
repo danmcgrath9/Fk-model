@@ -30,7 +30,8 @@ COORDS = {"echuca": (-36.13, 144.75), "mildura": (-34.21, 142.13), "wangaratta":
           "edenhope": (-37.04, 141.30), "st arnaud": (-36.62, 143.26), "wycheproof": (-36.08, 143.23), "mortlake": (-38.08, 142.80),
           "healesville": (-37.65, 145.52), "avoca": (-37.09, 143.47), "murtoa": (-36.62, 142.47), "nhill": (-36.33, 141.65),
           "werribee": (-37.90, 144.66), "tatura": (-36.44, 145.23), "wangaratta": (-36.36, 146.31),
-          "dunkeld": (-37.65, 142.34), "yea": (-37.21, 145.43)}
+          "dunkeld": (-37.65, 142.34), "yea": (-37.21, 145.43),
+          "woolamai": (-38.54, 145.53)}   # 26 Nov 2026: Woolamai was priced "RAIN UNKNOWN" (no course location); from track_weather.py
 MEL = ZoneInfo("Australia/Melbourne")
 UA = {"User-Agent": "fk-model-weather/1.0 (github.com/danmcgrath9/Fk-model)"}   # api.met.no refuses a request without one
 
