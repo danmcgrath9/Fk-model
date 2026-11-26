@@ -1,411 +1,138 @@
-1|200|Perfect Dismount|False|False
-1|300|The Pallet Man|False|False
-1|90|Flying Cloud|False|False
-1|110|I'm Confused|False|False
-1|260|Sophia's Legacy|False|False
-1|170|Mr Flourescent|False|False
-1|70|Exceed Sonic|False|False
-1|180|Normandy Peace|False|False
-1|210|Pretend|False|False
-1|50|Crimson Flame|False|False
-1|40|Classic Harry|False|False
-1|290|Stormin' Angel|False|False
-1|80|Famous Rosy|False|False
-1|20|Another Pothole|False|False
-1|140|Loyalty|False|False
-1|190|Nothin' Surer|False|False
-1|130|Jenni The French|False|False
-1|60|Deekaysgift|False|False
-1|150|Marvellous Marvin|False|False
-1|160|Mauna Loa|False|False
-1|250|Silverleaves|False|False
-1|220|Pride In Motion|False|False
-1|100|Huntrix|False|False
-1|230|Royal Canvas|False|False
-1|30|Balgownie Miss|False|False
-1|240|Ruby From Zadar|False|False
-1|320|Victimised|False|False
-1|310|Transience|False|False
-1|120|Istvan|False|False
-1|280|Stayinharmony|False|False
-1|270|Star Kells|False|False
-1|330|Yahweh Rapha|False|False
-1|10|Activating|False|False
-2|670|Te Awam Utu|False|False
-2|330|Hughie's Spirit|False|False
-2|250|Don't Say No Mikki|False|False
-2|370|It's Justa Guess|False|False
-2|160|Charlotte's Web|False|False
-2|100|Blues Jazz|False|False
-2|590|Satellite Chester|False|False
-2|10|A Little Reward|False|False
-2|200|Crafty Queen|False|False
-2|700|Trojan King|False|False
-2|150|Challenging|False|False
-2|280|Fear The Impact|False|False
-2|90|Bjorson|False|False
-2|610|Singapore Splash|False|False
-2|420|Love Rustler|False|False
-2|400|Kinky Mistress|False|False
-2|550|Piklemegranmother|False|False
-2|650|Symphony Sista|False|False
-2|310|Fram Strait|False|False
-2|490|Niccotein|False|False
-2|350|Incoherent|False|False
-2|470|Native Dance|False|False
-2|70|Begonia|False|False
-2|220|Dark Galaxy|False|False
-2|560|Rebel's Legacy|False|False
-2|540|Philly Idol|False|False
-2|760|Zephyr's Reward|False|False
-2|740|Wanted Enuff|False|False
-2|580|Russian Into It|False|False
-2|690|Thinkyahot|False|False
-2|240|Doctorate|False|False
-2|300|Flaws And Sins|False|False
-2|80|Billy Be Good|False|False
-2|510|Pare Brise|False|False
-2|520|Peace Seeker|False|False
-2|530|Perfect Dismount|False|False
-2|320|Hard And Forst|False|False
-2|50|Amber Smile|False|False
-2|170|Ciphered|False|False
-2|630|Spirit Nature|False|False
-2|40|Alpine Point|False|False
-2|120|Brazen Panda|False|False
-2|290|Flash Inquiry|False|False
-2|620|Sophia's Legacy|False|False
-2|260|Exceed Sonic|False|False
-2|230|Discmania|False|False
-2|570|Ruptured|False|False
-2|180|Classic Harry|False|False
-2|720|Veneto Street|False|False
-2|710|Velocite Belle|False|False
-2|270|Famous Rosy|False|False
-2|360|Indigo Smile|False|False
-2|500|Optimus|False|False
-2|430|Loyalty|False|False
-2|440|Magnusaurus Rex|False|False
-2|380|Jenni's Lady|False|False
-2|110|Bourne Legacy|False|False
-2|460|Mongolian Eagle|False|False
-2|450|Marvellous Marvin|False|False
-2|130|Carnevale|False|False
-2|390|King Koruna|False|False
-2|340|Huntrix|False|False
-2|60|Balgownie Miss|False|False
-2|660|Take Cover|False|False
-2|210|Cruise On Bye|False|False
-2|730|Victimised|False|False
-2|190|Cosmic Snitz|False|False
-2|680|Temple Of Venus|False|False
-2|640|Star Kells|False|False
-2|750|Yahweh Rapha|False|False
-2|140|Celestaria|False|False
-2|20|Activating|False|False
-2|600|Silver Tsar|False|False
-2|410|Lilac Storm|False|False
-2|30|Adhara|False|False
-2|480|Native Grace|False|False
-3|460|Spanish Snitzel|False|False
-3|220|Fox Gem|False|False
-3|10|Albanian I Am|False|False
-3|470|Stonecoat|False|False
-3|350|Peyton Jane|False|False
-3|260|King Alla|False|False
-3|310|Monsun's Pride|False|False
-3|150|Crimson Miss|False|False
-3|390|Seethru|False|False
-3|380|Second Fix|False|False
-3|400|Shal Exceed|False|False
-3|40|Bare To Witness|False|False
-3|180|Desert Anthem|False|False
-3|480|Tauri|False|False
-3|210|Final Quarter|False|False
-3|190|En Flique|False|False
-3|270|Lots To Love|False|False
-3|540|Winston|False|False
-3|520|Tulchan|False|False
-3|450|Sotomayor|False|False
-3|370|Rose Velvet|False|False
-3|530|Vivid Blooms|False|False
-3|340|Parkrun|False|False
-3|410|Share The Stars|False|False
-3|30|Asal|False|False
-3|500|The Daily Planet|False|False
-3|130|Chantra|False|False
-3|240|Jenni You Think|False|False
-3|80|Cachink|False|False
-3|440|So Long Ago|False|False
-3|510|Triomphe|False|False
-3|230|Il Cielo|False|False
-3|420|Shotaro|False|False
-3|20|Al's Diemen|False|False
-3|200|Exclude|False|False
-3|170|Dealer Sing|False|False
-3|120|Celestial Splendor|False|False
-3|60|Blindato|False|False
-3|330|Panda's Spectrum|False|False
-3|50|Bertrand|False|False
-3|140|Cool Savanna|False|False
-3|300|Madesian|False|False
-3|70|Boggy Creek Boys|False|False
-3|320|Octane Reign|False|False
-3|290|Lunar Force|False|False
-3|90|Caelius|False|False
-3|160|Dame Of Dubai|False|False
-3|280|Lunaman|False|False
-3|360|Plucky Enuff|False|False
-3|250|Just My Lot|False|False
-3|100|Caledonian Summer|False|False
-3|430|Snakeinthegrass|False|False
-3|110|Carnival Riches|False|False
-3|490|The Cellist|False|False
-4|530|Salsbury Hill|False|False
-4|350|Jet Jitsu|False|False
-4|660|Van Roy|False|False
-4|460|Port Louis|False|False
-4|290|Headstock|False|False
-4|580|Stonecoat|False|False
-4|440|Owl Witness|False|False
-4|590|Tanganyika|False|False
-4|300|High Altitude|False|False
-4|430|Overactive|False|False
-4|370|King Alla|False|False
-4|140|Buzitup|False|False
-4|120|Brave Apache|False|False
-4|30|Amizetta|False|False
-4|210|Delivering|False|False
-4|520|Royal Infantry|False|False
-4|230|Drunken Sailor|False|False
-4|400|Maisy|False|False
-4|190|Dantooine|False|False
-4|640|Turned Down|False|False
-4|70|Bare To Witness|False|False
-4|240|French Navy|False|False
-4|680|Winston|False|False
-4|330|I Will Shine|False|False
-4|250|Frosty Night|False|False
-4|630|Tulchan|False|False
-4|570|Sotomayor|False|False
-4|260|Geffina|False|False
-4|220|Dobkins|False|False
-4|510|Rose Velvet|False|False
-4|420|Move The Torana|False|False
-4|50|Asal|False|False
-4|500|Romuald|False|False
-4|620|Triomphe|False|False
-4|670|Whathappensinvegas|False|False
-4|340|Il Cielo|False|False
-4|470|Princess Toro|False|False
-4|700|Zourain|False|False
-4|40|Antalian|False|False
-4|560|Shotaro|False|False
-4|320|Hook 'n' Spur|False|False
-4|170|Corro|False|False
-4|410|Miss Ellaneous|False|False
-4|130|Brazenga|False|False
-4|110|Black Aces|False|False
-4|550|Shoma|False|False
-4|60|Azzacool|False|False
-4|610|There Were Roses|False|False
-4|80|Beautifully|False|False
-4|90|Bertrand|False|False
-4|600|The Mean Fiddler|False|False
-4|100|Big Vee|False|False
-4|360|Jetsetter Jack|False|False
-4|390|Madesian|False|False
-4|380|Le Beau Gosse|False|False
-4|10|Accuser|False|False
-4|480|Ramelle|False|False
-4|180|Dame Of Dubai|False|False
-4|650|Two To Tango|False|False
-4|540|She's A Jett|False|False
-4|450|Perfect Night|False|False
-4|310|Hiney's Bar|False|False
-4|160|Circus Lights|False|False
-4|270|Goodness|False|False
-4|200|Danzsin|False|False
-4|690|Zetheros|False|False
-4|20|Alzaro|False|False
-4|490|Reel Deadly|False|False
-4|150|Centenary Florin|False|False
-4|280|Grifter|False|False
-5|520|Unamerican|False|False
-5|470|Spanish Snitzel|False|False
-5|210|Flying Basil|False|False
-5|140|Duhlata|False|False
-5|200|Final Impact|False|False
-5|480|Super Snitch|False|False
-5|500|Tikemyson|False|False
-5|280|Lightning Express|False|False
-5|410|Peyton Jane|False|False
-5|110|Dartboard|False|False
-5|320|Mannerheim|False|False
-5|260|Just Call Me Jonny|False|False
-5|430|Pianta|False|False
-5|440|Seethru|False|False
-5|460|Skytalker|False|False
-5|220|Foix|False|False
-5|370|Nicoffhome|False|False
-5|130|Don Rubio|False|False
-5|150|Duke Of Clarence|False|False
-5|360|Navy King|False|False
-5|160|El James|False|False
-5|380|Nightowl|False|False
-5|80|Colour Our World|False|False
-5|540|Winston|False|False
-5|190|Fiery Deal|False|False
-5|170|Eminent Ella|False|False
-5|120|Devine Grunt|False|False
-5|510|Tulchan|False|False
-5|530|Vivid Blooms|False|False
-5|400|Parkrun|False|False
-5|100|Cute Girl|False|False
-5|290|Limosa|False|False
-5|350|My Uncle Did It|False|False
-5|70|Cliste|False|False
-5|490|The Muffin Man|False|False
-5|30|Bold Strike|False|False
-5|450|She's Stargazing|False|False
-5|180|Exclude|False|False
-5|20|Blindato|False|False
-5|90|Cushioned|False|False
-5|10|Bertrand|False|False
-5|270|Lightening Mann|False|False
-5|240|Jareth|False|False
-5|390|Octane Reign|False|False
-5|310|Lunar Force|False|False
-5|300|Lunaman|False|False
-5|420|Philharmonic|False|False
-5|230|I'mnodrummerboy|False|False
-5|330|Millsy's Award|False|False
-5|50|Cashemcowboy|False|False
-5|340|My Rosalie|False|False
-5|250|Julep|False|False
-5|40|Carnival Riches|False|False
-5|60|Chip In|False|False
-6|390|Prince Sonic|False|False
-6|120|Fileeta|False|False
-6|140|Frose|False|False
-6|340|Mr Magnus|False|False
-6|350|Mr Tickles|False|False
-6|480|Tookay Pete|False|False
-6|460|Talkin' Italian|False|False
-6|470|The Kill Club|False|False
-6|420|Soju|False|False
-6|150|Gaylord|False|False
-6|260|Laura's Gold|False|False
-6|370|Pano's Pride|False|False
-6|210|Jackie's Maid|False|False
-6|510|Weapon Clear|False|False
-6|280|Masked Marauder|False|False
-6|270|Majesticity|False|False
-6|220|Just Bolts|False|False
-6|430|Southern Crescent|False|False
-6|50|Castellar|False|False
-6|440|Spirit Of Wealth|False|False
-6|300|Miss Cotoletta|False|False
-6|230|Kid Dynamite|False|False
-6|190|Inside Man|False|False
-6|330|Monix|False|False
-6|90|Du Clisson|False|False
-6|40|Big Sexy|False|False
-6|310|Miss Toronado|False|False
-6|250|Lake Forest|False|False
-6|380|Peace Centre|False|False
-6|200|It's A Yes|False|False
-6|360|Nordic Strike|False|False
-6|240|Killiana|False|False
-6|400|Queen Peta|False|False
-6|530|Wintery|False|False
-6|410|Sea Trader|False|False
-6|180|Hello Romeo|False|False
-6|540|Yolo|False|False
-6|60|Chandler|False|False
-6|490|Tower Bridge|False|False
-6|500|Twister|False|False
-6|80|Divine Empress|False|False
-6|100|Dynamite Dancer|False|False
-6|20|Barari|False|False
-6|320|Mongolian Gobi|False|False
-6|160|Gwen's Girl|False|False
-6|290|Meisho|False|False
-6|450|Swoboda|False|False
-6|30|Bazzar|False|False
-6|130|Freshen|False|False
-6|10|Alzaro|False|False
-6|70|Crickwood|False|False
-6|110|Farmelia|False|False
-6|170|Hellfire Jess|False|False
-6|520|What Once Was|False|False
-7|1|Farag|False|False
-7|8|Matthew Mark|False|False
-7|9|Mister Popcorn|False|False
-7|13|The Cunning Fox|False|False
-7|6|Legend Beast|False|False
-7|10|Roaring Engine|False|False
-7|17|Endean Ace|True|False
-7|16|Topspin|True|False
-7|11|Smokin' Rohie|False|False
-7|4|I Love This Song|False|False
-7|3|Genrichero|False|False
-7|2|Diwali|False|False
-7|12|Tempest Moon|False|False
-7|14|Three Reel Roses|False|False
-7|5|Kicking King|False|False
-7|7|Legs Power|False|False
-7|18|Devoted To You|True|False
-7|15|Haiiro|True|False
-8|110|Fileeta|False|False
-8|330|Tango Jewel|False|False
-8|350|Thailess|False|False
-8|160|Maisy|False|False
-8|140|Jackie's Maid|False|False
-8|40|Ballynacally|False|False
-8|300|Southern Crescent|False|False
-8|60|Cardi Bee|False|False
-8|310|Spirit Of Wealth|False|False
-8|290|She's Impeccable|False|False
-8|180|Miss Cotoletta|False|False
-8|120|Frosty Night|False|False
-8|100|Dobkins|False|False
-8|200|Move The Torana|False|False
-8|170|Mckeyla|False|False
-8|210|My Zephyr|False|False
-8|250|Racey Casey|False|False
-8|340|Tennessee Song|False|False
-8|230|Noubentekh|False|False
-8|190|Miss Ellaneous|False|False
-8|20|Astiquer|False|False
-8|30|Azzacool|False|False
-8|240|Queen Peta|False|False
-8|150|Layla|False|False
-8|90|Divine Empress|False|False
-8|260|Ramelle|False|False
-8|320|Star Of Omaha|False|False
-8|50|Barari|False|False
-8|280|Royal Sway|False|False
-8|220|Neziha|False|False
-8|70|Circus Lights|False|False
-8|270|Restless Wind|False|False
-8|10|Alzaro|False|False
-8|80|Crickwood|False|False
-8|130|Handee|False|False
-9|170|Warrandyte Road|False|False
-9|60|Grinding Away|False|False
-9|80|Hula Beat|False|False
-9|40|Final Impact|False|False
-9|150|Semper Fortis|False|False
-9|30|Endean Ace|False|False
-9|160|Topspin|False|False
-9|100|Kawhia|False|False
-9|10|Charlie Messy Hair|False|False
-9|50|Fuwari|False|False
-9|120|Reel Hot|False|False
-9|140|Sanika|False|False
-9|20|Devoted To You|False|False
-9|110|Phoenician|False|False
-9|130|Rollin'ontheriver|False|False
-9|90|Ideas Galore|False|False
-9|70|Haiiro|False|False
+1|8|Sophia's Legacy|False|False
+1|5|Crimson Flame|False|False
+1|1|Classic Harry|False|False
+1|9|Stormin' Angel|False|False
+1|7|Nothin' Surer|False|False
+1|2|Deekaysgift|False|False
+1|3|Marvellous Marvin|False|False
+1|6|Mauna Loa|False|False
+1|4|Balgownie Miss|False|False
+2|4|Hughie's Spirit|False|False
+2|2|Don't Say No Mikki|False|False
+2|16|A Little Reward|True|False
+2|12|Crafty Queen|False|False
+2|1|Challenging|False|False
+2|3|Fram Strait|False|False
+2|5|Niccotein|False|False
+2|11|Begonia|False|False
+2|6|Zephyr's Reward|False|False
+2|15|Flaws And Sins|True|False
+2|7|Amber Smile|False|False
+2|8|Brazen Panda|False|False
+2|10|Veneto Street|False|False
+2|14|Star Kells|False|False
+2|13|Celestaria|False|False
+2|9|Silver Tsar|False|False
+3|2|Second Fix|False|False
+3|17|Bare To Witness|True|False
+3|1|Desert Anthem|False|False
+3|12|Tauri|False|False
+3|18|Final Quarter|True|False
+3|4|En Flique|False|False
+3|14|Vivid Blooms|False|False
+3|15|Share The Stars|True|False
+3|8|The Daily Planet|False|False
+3|11|Chantra|False|False
+3|5|Cachink|False|False
+3|16|So Long Ago|True|False
+3|6|Exclude|False|False
+3|9|Celestial Splendor|False|False
+3|7|Madesian|False|False
+3|3|Boggy Creek Boys|False|False
+3|10|Just My Lot|False|False
+3|13|The Cellist|False|False
+4|15|Unamerican|True|False
+4|17|Spanish Snitzel|True|False
+4|3|Flying Basil|False|False
+4|7|Super Snitch|False|False
+4|2|Tikemyson|False|False
+4|5|Lightning Express|False|False
+4|4|Just Call Me Jonny|False|False
+4|1|El James|False|False
+4|8|Colour Our World|False|False
+4|16|Eminent Ella|True|False
+4|6|Cute Girl|False|False
+4|10|My Uncle Did It|False|False
+4|9|Lunar Force|False|False
+4|11|Philharmonic|False|False
+4|13|I'mnodrummerboy|False|False
+4|14|My Rosalie|False|False
+4|12|Carnival Riches|False|False
+5|11|Warrandyte Road|False|False
+5|16|Grinding Away|True|False
+5|4|Hula Beat|False|False
+5|10|Final Impact|False|False
+5|6|Semper Fortis|False|False
+5|2|Endean Ace|False|False
+5|3|Topspin|False|False
+5|14|Kawhia|True|False
+5|9|Fuwari|False|False
+5|12|Reel Hot|False|False
+5|5|Sanika|False|False
+5|8|Devoted To You|False|False
+5|7|Phoenician|False|False
+5|13|Rollin'ontheriver|True|False
+5|15|Ideas Galore|True|False
+5|1|Haiiro|False|False
+6|10|Thailess|False|False
+6|4|Ballynacally|False|False
+6|1|Southern Crescent|False|False
+6|8|She's Impeccable|False|False
+6|13|Dobkins|False|False
+6|2|Mckeyla|False|False
+6|5|My Zephyr|False|False
+6|12|Tennessee Song|False|False
+6|9|Miss Ellaneous|False|False
+6|3|Royal Sway|False|False
+6|6|Neziha|False|False
+6|7|Restless Wind|False|False
+6|11|Crickwood|False|False
+7|15|Prince Sonic|True|False
+7|12|Fileeta|False|False
+7|1|Mr Tickles|False|False
+7|8|Talkin' Italian|False|False
+7|4|Weapon Clear|False|False
+7|11|Masked Marauder|False|False
+7|14|Majesticity|False|False
+7|5|Kid Dynamite|False|False
+7|3|Monix|False|False
+7|2|Big Sexy|False|False
+7|7|Peace Centre|False|False
+7|6|Killiana|False|False
+7|9|Wintery|False|False
+7|13|Gwen's Girl|False|False
+7|10|Bazzar|False|False
+8|1|Farag|False|False
+8|8|Matthew Mark|False|False
+8|9|Mister Popcorn|False|False
+8|13|The Cunning Fox|False|False
+8|6|Legend Beast|False|False
+8|10|Roaring Engine|False|False
+8|17|Endean Ace|True|False
+8|16|Topspin|True|False
+8|11|Smokin' Rohie|False|False
+8|4|I Love This Song|False|False
+8|3|Genrichero|False|False
+8|2|Diwali|False|False
+8|12|Tempest Moon|False|False
+8|14|Three Reel Roses|False|False
+8|5|Kicking King|False|False
+8|7|Legs Power|False|False
+8|18|Devoted To You|True|False
+8|15|Haiiro|True|False
+9|6|Jet Jitsu|False|False
+9|4|Stonecoat|False|False
+9|16|Owl Witness|True|False
+9|5|Buzitup|False|False
+9|3|Amizetta|False|False
+9|15|Drunken Sailor|True|False
+9|2|Dantooine|False|False
+9|13|Sotomayor|False|False
+9|11|Asal|False|False
+9|14|Whathappensinvegas|False|False
+9|7|Princess Toro|False|False
+9|1|Zourain|False|False
+9|9|Corro|False|False
+9|12|She's A Jett|False|False
+9|10|Zetheros|False|False
+9|8|Centenary Florin|False|False

@@ -1,412 +1,139 @@
-# Warrnambool Sun 29 Nov, official going, final fields; no market yet; PROVISIONAL: 394 runners without a rider
-1, Perfect Dismount, 0, 0
-1, The Pallet Man, 0, 0
-1, Flying Cloud, 0, 0
-1, I'm Confused, 0, 0
+# Warrnambool Sun 29 Nov, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 11 runners without a rider
 1, Sophia's Legacy, 0, 0
-1, Mr Flourescent, 0, 0
-1, Exceed Sonic, 0, 0
-1, Normandy Peace, 0, 0
-1, Pretend, 0, 0
 1, Crimson Flame, 0, 0
 1, Classic Harry, 0, 0
 1, Stormin' Angel, 0, 0
-1, Famous Rosy, 0, 0
-1, Another Pothole, 0, 0
-1, Loyalty, 0, 0
 1, Nothin' Surer, 0, 0
-1, Jenni The French, 0, 0
 1, Deekaysgift, 0, 0
 1, Marvellous Marvin, 0, 0
 1, Mauna Loa, 0, 0
-1, Silverleaves, 0, 0
-1, Pride In Motion, 0, 0
-1, Huntrix, 0, 0
-1, Royal Canvas, 0, 0
 1, Balgownie Miss, 0, 0
-1, Ruby From Zadar, 0, 0
-1, Victimised, 0, 0
-1, Transience, 0, 0
-1, Istvan, 0, 0
-1, Stayinharmony, 0, 0
-1, Star Kells, 0, 0
-1, Yahweh Rapha, 0, 0
-1, Activating, 0, 0
-2, Te Awam Utu, 0, 0
 2, Hughie's Spirit, 0, 0
 2, Don't Say No Mikki, 0, 0
-2, It's Justa Guess, 0, 0
-2, Charlotte's Web, 0, 0
-2, Blues Jazz, 0, 0
-2, Satellite Chester, 0, 0
-2, A Little Reward, 0, 0
+2, A Little Reward, SCR
 2, Crafty Queen, 0, 0
-2, Trojan King, 0, 0
 2, Challenging, 0, 0
-2, Fear The Impact, 0, 0
-2, Bjorson, 0, 0
-2, Singapore Splash, 0, 0
-2, Love Rustler, 0, 0
-2, Kinky Mistress, 0, 0
-2, Piklemegranmother, 0, 0
-2, Symphony Sista, 0, 0
 2, Fram Strait, 0, 0
 2, Niccotein, 0, 0
-2, Incoherent, 0, 0
-2, Native Dance, 0, 0
 2, Begonia, 0, 0
-2, Dark Galaxy, 0, 0
-2, Rebel's Legacy, 0, 0
-2, Philly Idol, 0, 0
 2, Zephyr's Reward, 0, 0
-2, Wanted Enuff, 0, 0
-2, Russian Into It, 0, 0
-2, Thinkyahot, 0, 0
-2, Doctorate, 0, 0
-2, Flaws And Sins, 0, 0
-2, Billy Be Good, 0, 0
-2, Pare Brise, 0, 0
-2, Peace Seeker, 0, 0
-2, Perfect Dismount, 0, 0
-2, Hard And Forst, 0, 0
+2, Flaws And Sins, SCR
 2, Amber Smile, 0, 0
-2, Ciphered, 0, 0
-2, Spirit Nature, 0, 0
-2, Alpine Point, 0, 0
 2, Brazen Panda, 0, 0
-2, Flash Inquiry, 0, 0
-2, Sophia's Legacy, 0, 0
-2, Exceed Sonic, 0, 0
-2, Discmania, 0, 0
-2, Ruptured, 0, 0
-2, Classic Harry, 0, 0
 2, Veneto Street, 0, 0
-2, Velocite Belle, 0, 0
-2, Famous Rosy, 0, 0
-2, Indigo Smile, 0, 0
-2, Optimus, 0, 0
-2, Loyalty, 0, 0
-2, Magnusaurus Rex, 0, 0
-2, Jenni's Lady, 0, 0
-2, Bourne Legacy, 0, 0
-2, Mongolian Eagle, 0, 0
-2, Marvellous Marvin, 0, 0
-2, Carnevale, 0, 0
-2, King Koruna, 0, 0
-2, Huntrix, 0, 0
-2, Balgownie Miss, 0, 0
-2, Take Cover, 0, 0
-2, Cruise On Bye, 0, 0
-2, Victimised, 0, 0
-2, Cosmic Snitz, 0, 0
-2, Temple Of Venus, 0, 0
 2, Star Kells, 0, 0
-2, Yahweh Rapha, 0, 0
 2, Celestaria, 0, 0
-2, Activating, 0, 0
 2, Silver Tsar, 0, 0
-2, Lilac Storm, 0, 0
-2, Adhara, 0, 0
-2, Native Grace, 0, 0
-3, Spanish Snitzel, 0, 0
-3, Fox Gem, 0, 0
-3, Albanian I Am, 0, 0
-3, Stonecoat, 0, 0
-3, Peyton Jane, 0, 0
-3, King Alla, 0, 0
-3, Monsun's Pride, 0, 0
-3, Crimson Miss, 0, 0
-3, Seethru, 0, 0
 3, Second Fix, 0, 0
-3, Shal Exceed, 0, 0
-3, Bare To Witness, 0, 0
+3, Bare To Witness, SCR
 3, Desert Anthem, 0, 0
 3, Tauri, 0, 0
-3, Final Quarter, 0, 0
+3, Final Quarter, SCR
 3, En Flique, 0, 0
-3, Lots To Love, 0, 0
-3, Winston, 0, 0
-3, Tulchan, 0, 0
-3, Sotomayor, 0, 0
-3, Rose Velvet, 0, 0
 3, Vivid Blooms, 0, 0
-3, Parkrun, 0, 0
-3, Share The Stars, 0, 0
-3, Asal, 0, 0
+3, Share The Stars, SCR
 3, The Daily Planet, 0, 0
 3, Chantra, 0, 0
-3, Jenni You Think, 0, 0
 3, Cachink, 0, 0
-3, So Long Ago, 0, 0
-3, Triomphe, 0, 0
-3, Il Cielo, 0, 0
-3, Shotaro, 0, 0
-3, Al's Diemen, 0, 0
+3, So Long Ago, SCR
 3, Exclude, 0, 0
-3, Dealer Sing, 0, 0
 3, Celestial Splendor, 0, 0
-3, Blindato, 0, 0
-3, Panda's Spectrum, 0, 0
-3, Bertrand, 0, 0
-3, Cool Savanna, 0, 0
 3, Madesian, 0, 0
 3, Boggy Creek Boys, 0, 0
-3, Octane Reign, 0, 0
-3, Lunar Force, 0, 0
-3, Caelius, 0, 0
-3, Dame Of Dubai, 0, 0
-3, Lunaman, 0, 0
-3, Plucky Enuff, 0, 0
 3, Just My Lot, 0, 0
-3, Caledonian Summer, 0, 0
-3, Snakeinthegrass, 0, 0
-3, Carnival Riches, 0, 0
 3, The Cellist, 0, 0
-4, Salsbury Hill, 0, 0
-4, Jet Jitsu, 0, 0
-4, Van Roy, 0, 0
-4, Port Louis, 0, 0
-4, Headstock, 0, 0
-4, Stonecoat, 0, 0
-4, Owl Witness, 0, 0
-4, Tanganyika, 0, 0
-4, High Altitude, 0, 0
-4, Overactive, 0, 0
-4, King Alla, 0, 0
-4, Buzitup, 0, 0
-4, Brave Apache, 0, 0
-4, Amizetta, 0, 0
-4, Delivering, 0, 0
-4, Royal Infantry, 0, 0
-4, Drunken Sailor, 0, 0
-4, Maisy, 0, 0
-4, Dantooine, 0, 0
-4, Turned Down, 0, 0
-4, Bare To Witness, 0, 0
-4, French Navy, 0, 0
-4, Winston, 0, 0
-4, I Will Shine, 0, 0
-4, Frosty Night, 0, 0
-4, Tulchan, 0, 0
-4, Sotomayor, 0, 0
-4, Geffina, 0, 0
-4, Dobkins, 0, 0
-4, Rose Velvet, 0, 0
-4, Move The Torana, 0, 0
-4, Asal, 0, 0
-4, Romuald, 0, 0
-4, Triomphe, 0, 0
-4, Whathappensinvegas, 0, 0
-4, Il Cielo, 0, 0
-4, Princess Toro, 0, 0
-4, Zourain, 0, 0
-4, Antalian, 0, 0
-4, Shotaro, 0, 0
-4, Hook 'n' Spur, 0, 0
-4, Corro, 0, 0
-4, Miss Ellaneous, 0, 0
-4, Brazenga, 0, 0
-4, Black Aces, 0, 0
-4, Shoma, 0, 0
-4, Azzacool, 0, 0
-4, There Were Roses, 0, 0
-4, Beautifully, 0, 0
-4, Bertrand, 0, 0
-4, The Mean Fiddler, 0, 0
-4, Big Vee, 0, 0
-4, Jetsetter Jack, 0, 0
-4, Madesian, 0, 0
-4, Le Beau Gosse, 0, 0
-4, Accuser, 0, 0
-4, Ramelle, 0, 0
-4, Dame Of Dubai, 0, 0
-4, Two To Tango, 0, 0
-4, She's A Jett, 0, 0
-4, Perfect Night, 0, 0
-4, Hiney's Bar, 0, 0
-4, Circus Lights, 0, 0
-4, Goodness, 0, 0
-4, Danzsin, 0, 0
-4, Zetheros, 0, 0
-4, Alzaro, 0, 0
-4, Reel Deadly, 0, 0
-4, Centenary Florin, 0, 0
-4, Grifter, 0, 0
-5, Unamerican, 0, 0
-5, Spanish Snitzel, 0, 0
-5, Flying Basil, 0, 0
-5, Duhlata, 0, 0
+4, Unamerican, SCR
+4, Spanish Snitzel, SCR
+4, Flying Basil, 0, 0
+4, Super Snitch, 0, 0
+4, Tikemyson, 0, 0
+4, Lightning Express, 0, 0
+4, Just Call Me Jonny, 0, 0
+4, El James, 0, 0
+4, Colour Our World, 0, 0
+4, Eminent Ella, SCR
+4, Cute Girl, 0, 0
+4, My Uncle Did It, 0, 0
+4, Lunar Force, 0, 0
+4, Philharmonic, 0, 0
+4, I'mnodrummerboy, 0, 0
+4, My Rosalie, 0, 0
+4, Carnival Riches, 0, 0
+5, Warrandyte Road, 0, 0
+5, Grinding Away, SCR
+5, Hula Beat, 0, 0
 5, Final Impact, 0, 0
-5, Super Snitch, 0, 0
-5, Tikemyson, 0, 0
-5, Lightning Express, 0, 0
-5, Peyton Jane, 0, 0
-5, Dartboard, 0, 0
-5, Mannerheim, 0, 0
-5, Just Call Me Jonny, 0, 0
-5, Pianta, 0, 0
-5, Seethru, 0, 0
-5, Skytalker, 0, 0
-5, Foix, 0, 0
-5, Nicoffhome, 0, 0
-5, Don Rubio, 0, 0
-5, Duke Of Clarence, 0, 0
-5, Navy King, 0, 0
-5, El James, 0, 0
-5, Nightowl, 0, 0
-5, Colour Our World, 0, 0
-5, Winston, 0, 0
-5, Fiery Deal, 0, 0
-5, Eminent Ella, 0, 0
-5, Devine Grunt, 0, 0
-5, Tulchan, 0, 0
-5, Vivid Blooms, 0, 0
-5, Parkrun, 0, 0
-5, Cute Girl, 0, 0
-5, Limosa, 0, 0
-5, My Uncle Did It, 0, 0
-5, Cliste, 0, 0
-5, The Muffin Man, 0, 0
-5, Bold Strike, 0, 0
-5, She's Stargazing, 0, 0
-5, Exclude, 0, 0
-5, Blindato, 0, 0
-5, Cushioned, 0, 0
-5, Bertrand, 0, 0
-5, Lightening Mann, 0, 0
-5, Jareth, 0, 0
-5, Octane Reign, 0, 0
-5, Lunar Force, 0, 0
-5, Lunaman, 0, 0
-5, Philharmonic, 0, 0
-5, I'mnodrummerboy, 0, 0
-5, Millsy's Award, 0, 0
-5, Cashemcowboy, 0, 0
-5, My Rosalie, 0, 0
-5, Julep, 0, 0
-5, Carnival Riches, 0, 0
-5, Chip In, 0, 0
-6, Prince Sonic, 0, 0
-6, Fileeta, 0, 0
-6, Frose, 0, 0
-6, Mr Magnus, 0, 0
-6, Mr Tickles, 0, 0
-6, Tookay Pete, 0, 0
-6, Talkin' Italian, 0, 0
-6, The Kill Club, 0, 0
-6, Soju, 0, 0
-6, Gaylord, 0, 0
-6, Laura's Gold, 0, 0
-6, Pano's Pride, 0, 0
-6, Jackie's Maid, 0, 0
-6, Weapon Clear, 0, 0
-6, Masked Marauder, 0, 0
-6, Majesticity, 0, 0
-6, Just Bolts, 0, 0
+5, Semper Fortis, 0, 0
+5, Endean Ace, 0, 0
+5, Topspin, 0, 0
+5, Kawhia, SCR
+5, Fuwari, 0, 0
+5, Reel Hot, 0, 0
+5, Sanika, 0, 0
+5, Devoted To You, 0, 0
+5, Phoenician, 0, 0
+5, Rollin'ontheriver, SCR
+5, Ideas Galore, SCR
+5, Haiiro, 0, 0
+6, Thailess, 0, 0
+6, Ballynacally, 0, 0
 6, Southern Crescent, 0, 0
-6, Castellar, 0, 0
-6, Spirit Of Wealth, 0, 0
-6, Miss Cotoletta, 0, 0
-6, Kid Dynamite, 0, 0
-6, Inside Man, 0, 0
-6, Monix, 0, 0
-6, Du Clisson, 0, 0
-6, Big Sexy, 0, 0
-6, Miss Toronado, 0, 0
-6, Lake Forest, 0, 0
-6, Peace Centre, 0, 0
-6, It's A Yes, 0, 0
-6, Nordic Strike, 0, 0
-6, Killiana, 0, 0
-6, Queen Peta, 0, 0
-6, Wintery, 0, 0
-6, Sea Trader, 0, 0
-6, Hello Romeo, 0, 0
-6, Yolo, 0, 0
-6, Chandler, 0, 0
-6, Tower Bridge, 0, 0
-6, Twister, 0, 0
-6, Divine Empress, 0, 0
-6, Dynamite Dancer, 0, 0
-6, Barari, 0, 0
-6, Mongolian Gobi, 0, 0
-6, Gwen's Girl, 0, 0
-6, Meisho, 0, 0
-6, Swoboda, 0, 0
-6, Bazzar, 0, 0
-6, Freshen, 0, 0
-6, Alzaro, 0, 0
+6, She's Impeccable, 0, 0
+6, Dobkins, 0, 0
+6, Mckeyla, 0, 0
+6, My Zephyr, 0, 0
+6, Tennessee Song, 0, 0
+6, Miss Ellaneous, 0, 0
+6, Royal Sway, 0, 0
+6, Neziha, 0, 0
+6, Restless Wind, 0, 0
 6, Crickwood, 0, 0
-6, Farmelia, 0, 0
-6, Hellfire Jess, 0, 0
-6, What Once Was, 0, 0
-7, Farag, 0, 0
-7, Matthew Mark, 0, 0
-7, Mister Popcorn, 0, 0
-7, The Cunning Fox, 0, 0
-7, Legend Beast, 0, 0
-7, Roaring Engine, 0, 0
-7, Endean Ace, SCR
-7, Topspin, SCR
-7, Smokin' Rohie, 0, 0
-7, I Love This Song, 0, 0
-7, Genrichero, 0, 0
-7, Diwali, 0, 0
-7, Tempest Moon, 0, 0
-7, Three Reel Roses, 0, 0
-7, Kicking King, 0, 0
-7, Legs Power, 0, 0
-7, Devoted To You, SCR
-7, Haiiro, SCR
-8, Fileeta, 0, 0
-8, Tango Jewel, 0, 0
-8, Thailess, 0, 0
-8, Maisy, 0, 0
-8, Jackie's Maid, 0, 0
-8, Ballynacally, 0, 0
-8, Southern Crescent, 0, 0
-8, Cardi Bee, 0, 0
-8, Spirit Of Wealth, 0, 0
-8, She's Impeccable, 0, 0
-8, Miss Cotoletta, 0, 0
-8, Frosty Night, 0, 0
-8, Dobkins, 0, 0
-8, Move The Torana, 0, 0
-8, Mckeyla, 0, 0
-8, My Zephyr, 0, 0
-8, Racey Casey, 0, 0
-8, Tennessee Song, 0, 0
-8, Noubentekh, 0, 0
-8, Miss Ellaneous, 0, 0
-8, Astiquer, 0, 0
-8, Azzacool, 0, 0
-8, Queen Peta, 0, 0
-8, Layla, 0, 0
-8, Divine Empress, 0, 0
-8, Ramelle, 0, 0
-8, Star Of Omaha, 0, 0
-8, Barari, 0, 0
-8, Royal Sway, 0, 0
-8, Neziha, 0, 0
-8, Circus Lights, 0, 0
-8, Restless Wind, 0, 0
-8, Alzaro, 0, 0
-8, Crickwood, 0, 0
-8, Handee, 0, 0
-9, Warrandyte Road, 0, 0
-9, Grinding Away, 0, 0
-9, Hula Beat, 0, 0
-9, Final Impact, 0, 0
-9, Semper Fortis, 0, 0
-9, Endean Ace, 0, 0
-9, Topspin, 0, 0
-9, Kawhia, 0, 0
-9, Charlie Messy Hair, 0, 0
-9, Fuwari, 0, 0
-9, Reel Hot, 0, 0
-9, Sanika, 0, 0
-9, Devoted To You, 0, 0
-9, Phoenician, 0, 0
-9, Rollin'ontheriver, 0, 0
-9, Ideas Galore, 0, 0
-9, Haiiro, 0, 0
+7, Prince Sonic, SCR
+7, Fileeta, 0, 0
+7, Mr Tickles, 0, 0
+7, Talkin' Italian, 0, 0
+7, Weapon Clear, 0, 0
+7, Masked Marauder, 0, 0
+7, Majesticity, 0, 0
+7, Kid Dynamite, 0, 0
+7, Monix, 0, 0
+7, Big Sexy, 0, 0
+7, Peace Centre, 0, 0
+7, Killiana, 0, 0
+7, Wintery, 0, 0
+7, Gwen's Girl, 0, 0
+7, Bazzar, 0, 0
+8, Farag, 0, 0
+8, Matthew Mark, 0, 0
+8, Mister Popcorn, 0, 0
+8, The Cunning Fox, 0, 0
+8, Legend Beast, 0, 0
+8, Roaring Engine, 0, 0
+8, Endean Ace, SCR
+8, Topspin, SCR
+8, Smokin' Rohie, 0, 0
+8, I Love This Song, 0, 0
+8, Genrichero, 0, 0
+8, Diwali, 0, 0
+8, Tempest Moon, 0, 0
+8, Three Reel Roses, 0, 0
+8, Kicking King, 0, 0
+8, Legs Power, 0, 0
+8, Devoted To You, SCR
+8, Haiiro, SCR
+9, Jet Jitsu, 0, 0
+9, Stonecoat, 0, 0
+9, Owl Witness, SCR
+9, Buzitup, 0, 0
+9, Amizetta, 0, 0
+9, Drunken Sailor, SCR
+9, Dantooine, 0, 0
+9, Sotomayor, 0, 0
+9, Asal, 0, 0
+9, Whathappensinvegas, 0, 0
+9, Princess Toro, 0, 0
+9, Zourain, 0, 0
+9, Corro, 0, 0
+9, She's A Jett, 0, 0
+9, Zetheros, 0, 0
+9, Centenary Florin, 0, 0
