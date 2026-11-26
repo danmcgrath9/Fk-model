@@ -1,0 +1,88 @@
+1|5|Mathletes|False|False
+1|3|Highland Diva|False|False
+1|11|Immortal Truth|True|False
+1|7|Wanted Enuff|False|False
+1|4|Magica|False|False
+1|6|Reina Del Rio|False|False
+1|1|Excelamidas|False|False
+1|2|Seven Day Rebels|False|False
+1|8|Duchess Xenia|False|False
+1|10|Valentina Girl|False|False
+1|9|Queen's English|False|False
+2|6|Ta Ta Tango|False|False
+2|12|Gold Nugget|True|False
+2|11|Think Sassy|True|False
+2|2|Inner Thoughts|False|False
+2|3|Love Rustler|False|False
+2|5|Prestige Maddy|False|False
+2|1|Heavy Is The Head|False|False
+2|4|Our Alexa|False|False
+2|7|Torzannie|False|False
+2|8|Mistressof Mayfair|False|False
+2|9|Setfortakeoff|False|False
+2|10|Velocite Belle|False|False
+3|3|Now Hear This|False|False
+3|5|Welcometodetroit|False|False
+3|2|Mo Mo's Choise|False|False
+3|4|Smart Eddie|False|False
+3|1|Bowdacious Gold|False|False
+3|6|Western Edge|False|False
+3|9|Stomping Ground|False|False
+3|10|Xtra Black|False|False
+3|7|Bruceismyname|False|False
+3|8|Gozaimasu|False|False
+4|9|Sheila|False|False
+4|12|Aquilion Girl|True|False
+4|4|Sleeping Tiger|False|False
+4|1|Epic Centre|False|False
+4|14|Laura's Gold|True|False
+4|6|Densetsu|False|False
+4|11|Shyleah|True|False
+4|3|Altruist|False|False
+4|2|Bring The Thunder|False|False
+4|7|Brazen Fling|False|False
+4|8|Bronco Revolution|False|False
+4|13|Rock Glory|True|False
+4|5|Beau Strada|False|False
+4|10|Wild Roses Grow|False|False
+5|13|Amphactor|True|False
+5|7|Blanche Bass|False|False
+5|2|Mannerheim|False|False
+5|3|Monsun's Pride|False|False
+5|5|Larryoctane|False|False
+5|4|Paltinian|False|False
+5|8|I'mfallinforyou|False|False
+5|11|Eight Under|True|False
+5|10|Chateau Dancer|False|False
+5|14|Scandoval|True|False
+5|6|Riozino|False|False
+5|9|Tipsy Gypsy|False|False
+5|12|Stole Him|True|False
+5|1|King Kauffo|False|False
+6|2|Sheer Lunacy|False|False
+6|12|Alpinova|True|False
+6|1|Chambers Bay|False|False
+6|13|Stand By Me Ned|True|False
+6|5|Ricky Runs|False|False
+6|11|Sinhalese|True|False
+6|9|Scholl Deep|False|False
+6|7|Jazzanski|False|False
+6|4|Pensatore|False|False
+6|3|Silver Snow|False|False
+6|10|Jingu Express|False|False
+6|6|Hellish Lee|False|False
+6|14|Slippery Thinker|True|False
+7|1|Headstock|False|False
+7|7|Wild Irish Rover|False|False
+7|14|Iliad|True|False
+7|2|True Prophet|False|False
+7|6|Vaafee|False|False
+7|13|Point Of Ecstasy|True|False
+7|5|Mythic|False|False
+7|12|Tipping Rain|True|False
+7|3|Arabian Myth|False|False
+7|11|Stewart|True|False
+7|4|Monte Cassino|False|False
+7|8|Dubai Fountain|False|False
+7|9|Popthebubbly|False|False
+7|10|Too Much Too Soon|False|False

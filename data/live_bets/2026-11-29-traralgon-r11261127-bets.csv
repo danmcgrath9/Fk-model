@@ -1,0 +1,9 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,TRAR_291126_1,Ambition In Bloom,top_pick,0.0,0.0,0.0,,,2.5,-1.0,Already run to today's class,1.0,no,,
+2,TRAR_291126_2,Levrier,top_pick,0.0,0.0,0.0,,,3.74,-1.0,Already run to today's class; Class drop (rating),1.0,no,,
+3,TRAR_291126_3,Fully Funded,top_pick,0.0,0.0,0.0,,,3.26,-1.0,,1.0,no,,
+4,TRAR_291126_4,Weasel Sea,top_pick,0.0,0.0,0.0,,,3.83,-1.0,Already run to today's class; Class drop (rating); Above the field in all three sections,1.0,no,,
+5,TRAR_291126_5,Yum,top_pick,0.0,0.0,0.0,,,4.49,-1.0,,1.0,no,,
+6,TRAR_291126_6,Winter Nights,top_pick,0.0,0.0,0.0,,,4.75,-1.0,Above the field in all three sections,1.0,no,,
+7,TRAR_291126_7,Oceana Dream,top_pick,0.0,0.0,0.0,,,3.09,-1.0,,1.0,no,,
+8,TRAR_291126_8,The Sheriff,top_pick,0.0,0.0,0.0,,,5.22,-1.0,"Third-up, improving; Above the field in all three sections",1.0,no,,

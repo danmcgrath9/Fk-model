@@ -1,0 +1,98 @@
+# Traralgon Sun 29 Nov, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 12 runners without a rider; PAPER ONLY (the model has 15 races at this venue, 0 since the 3 Jun holdout)
+1, Rough Edges, 0, 0
+1, Maharani Miss, 0, 0
+1, Rang A Round Up, 0, 0
+1, Hansard, 0, 0
+1, Who'llstoplorraine, 0, 0
+1, Lady Of Alsace, 0, 0
+1, Aces Full, 0, 0
+1, Zverev, 0, 0
+1, Mr Myrtlevale, 0, 0
+1, Ambition In Bloom, 0, 0
+1, The Underquoter, 0, 0
+2, Little Boy Blue, 0, 0
+2, Blue Jeans Talk, 0, 0
+2, Pray For Elegance, 0, 0
+2, Li'l Tugs, 0, 0
+2, Levrier, 0, 0
+2, Cosmic Snitz, 0, 0
+2, Nerves Of Steel, 0, 0
+2, Single Throne, 0, 0
+2, Zou Owe Me, 0, 0
+2, Adhara, 0, 0
+3, Mission Miss, 0, 0
+3, Now Hear This, 0, 0
+3, Gostumpygo, 0, 0
+3, Hirarkee, 0, 0
+3, Zouie, 0, 0
+3, Immortal Truth, 0, 0
+3, Onaqui Outlaw, 0, 0
+3, Full Of Knowledge, 0, 0
+3, Fully Funded, 0, 0
+3, Sinful Simon, 0, 0
+3, Divine Bellini, 0, 0
+4, Zwasp, 0, 0
+4, Knight Wink, SCR
+4, Station Road, SCR
+4, Dun Gracefully, 0, 0
+4, Weasel Sea, 0, 0
+4, Go Go Ruby, 0, 0
+4, Russian Nights, 0, 0
+4, Chauhan, 0, 0
+4, Shipping Steel, 0, 0
+4, Madame Nightingale, 0, 0
+4, Mystery Train, 0, 0
+4, Alabama Flame, 0, 0
+5, Cudmore Street, 0, 0
+5, Turfie, 0, 0
+5, Power Cable, 0, 0
+5, Count Of Toulouse, 0, 0
+5, Ze Bee Nine, SCR
+5, Finance Shogun, 0, 0
+5, Littlebirdie, SCR
+5, She Nailed It, 0, 0
+5, Veins Within Rock, 0, 0
+5, Yum, 0, 0
+5, Regal Visions, 0, 0
+5, Aubaine, 0, 0
+6, Rick's Cafe, 0, 0
+6, Satin Image, SCR
+6, Redwood Shadow, SCR
+6, Aseventy Seven, 0, 0
+6, Avonview, 0, 0
+6, Opus, 0, 0
+6, Great Prosperity, 0, 0
+6, Razzo Rosso, 0, 0
+6, Preservator, 0, 0
+6, Duke Of Clarence, 0, 0
+6, Sinister Sauce, 0, 0
+6, She's Stargazing, 0, 0
+6, King Of Savoy, 0, 0
+6, Winter Nights, 0, 0
+7, Red On Red, SCR
+7, Gregolimo, 0, 0
+7, Anythink Goes, 0, 0
+7, Cable Dancer, 0, 0
+7, Grand Pierro, 0, 0
+7, Saveadateforme, SCR
+7, Nearing Liberty, SCR
+7, Yahoo Bar, 0, 0
+7, The Pendragon, 0, 0
+7, Chase Your Dreams, 0, 0
+7, Statuario, 0, 0
+7, Oceana Dream, 0, 0
+7, Dubai Watch, 0, 0
+7, Bring Forth, 0, 0
+7, Johnich, 0, 0
+8, Magic Drum, 0, 0
+8, Sub Gauge, 0, 0
+8, Do It Now, 0, 0
+8, Bleak Mid Winter, 0, 0
+8, Diamond Mila, 0, 0
+8, Moonbolt, 0, 0
+8, Sexy Warrior, 0, 0
+8, Doc's Nipper, 0, 0
+8, Heidi Dancer, 0, 0
+8, Dirty Diana, 0, 0
+8, The Sheriff, 0, 0
+8, Freshen, 0, 0

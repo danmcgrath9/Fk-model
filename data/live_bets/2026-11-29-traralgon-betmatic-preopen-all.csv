@@ -1,0 +1,82 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-29,Traralgon,1,,11,Ambition In Bloom,WIN,2.97,3.99,4.21,210,1 of 2,4.21u,2.50,opens under $4: edge 1.15
+2026-11-29,Traralgon,1,,11,Ambition In Bloom,WIN,3.71,3.99,1.02,51,2 of 2,5.23u,2.50,opens under $4: edge 1.15
+2026-11-29,Traralgon,1,,11,Ambition In Bloom,WIN,4.00,14.97,4.59,230,1 of 3,4.59u,2.50,
+2026-11-29,Traralgon,1,,11,Ambition In Bloom,WIN,4.00,14.97,0.84,42,2 of 3,5.43u,2.50,
+2026-11-29,Traralgon,1,,11,Ambition In Bloom,WIN,5.50,14.97,4.57,228,3 of 3,10.00u,2.50,opens $5.50+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,1,,7,The Underquoter,WIN,5.93,27.41,2.09,104,1 of 3,2.09u,4.57,
+2026-11-29,Traralgon,1,,7,The Underquoter,WIN,7.41,27.41,0.46,23,2 of 3,2.55u,4.57,
+2026-11-29,Traralgon,1,,7,The Underquoter,WIN,10.05,27.41,2.55,127,3 of 3,5.10u,4.57,opens $10.05+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,1,,6,Zverev,WIN,4.85,22.64,2.65,132,1 of 3,2.65u,3.77,
+2026-11-29,Traralgon,1,,6,Zverev,WIN,6.06,22.64,0.56,28,2 of 3,3.21u,3.77,
+2026-11-29,Traralgon,1,,6,Zverev,WIN,8.30,22.64,3.21,160,3 of 3,6.42u,3.77,opens $8.30+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,2,,5,Pray For Elegance,WIN,5.17,15.01,2.45,123,1 of 3,2.45u,4.01,EARLY: $15 or shorter only
+2026-11-29,Traralgon,2,,5,Pray For Elegance,WIN,6.46,15.01,0.53,26,2 of 3,2.98u,4.01,EARLY: $15 or shorter only
+2026-11-29,Traralgon,2,,5,Pray For Elegance,WIN,8.83,15.01,2.98,149,3 of 3,5.96u,4.01,EARLY: $15 or shorter only; opens $8.83+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,3,,7,Divine Bellini,WIN,4.81,22.49,2.66,133,1 of 3,2.66u,3.75,
+2026-11-29,Traralgon,3,,7,Divine Bellini,WIN,6.01,22.49,0.57,28,2 of 3,3.23u,3.75,
+2026-11-29,Traralgon,3,,7,Divine Bellini,WIN,8.25,22.49,3.23,162,3 of 3,6.46u,3.75,opens $8.25+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,3,,8,Fully Funded,WIN,3.93,3.99,2.92,146,1 of 1,2.92u,3.26,opens under $4: edge 1.15
+2026-11-29,Traralgon,3,,8,Fully Funded,WIN,4.15,19.54,3.19,160,1 of 3,3.19u,3.26,
+2026-11-29,Traralgon,3,,8,Fully Funded,WIN,5.19,19.54,0.66,33,2 of 3,3.85u,3.26,
+2026-11-29,Traralgon,3,,8,Fully Funded,WIN,7.17,19.54,3.85,192,3 of 3,7.70u,3.26,opens $7.17+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,3,,9,Immortal Truth,WIN,17.91,78.48,0.63,32,1 of 2,0.63u,13.08,
+2026-11-29,Traralgon,3,,9,Immortal Truth,WIN,22.39,78.48,0.15,8,2 of 2,0.78u,13.08,
+2026-11-29,Traralgon,3,,11,Zouie,WIN,6.14,28.34,2.00,100,1 of 3,2.00u,4.72,
+2026-11-29,Traralgon,3,,11,Zouie,WIN,7.67,28.34,0.45,22,2 of 3,2.45u,4.72,
+2026-11-29,Traralgon,3,,11,Zouie,WIN,10.40,28.34,2.45,123,3 of 3,4.90u,4.72,opens $10.40+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,4,,4,Weasel Sea,WIN,4.93,23.00,2.59,130,1 of 3,2.59u,3.83,
+2026-11-29,Traralgon,4,,4,Weasel Sea,WIN,6.16,23.00,0.56,28,2 of 3,3.15u,3.83,
+2026-11-29,Traralgon,4,,4,Weasel Sea,WIN,8.44,23.00,3.15,158,3 of 3,6.30u,3.83,opens $8.44+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,5,,3,Aubaine,WIN,6.72,30.91,1.81,90,1 of 3,1.81u,5.15,
+2026-11-29,Traralgon,5,,3,Aubaine,WIN,8.40,30.91,0.40,20,2 of 3,2.21u,5.15,
+2026-11-29,Traralgon,5,,3,Aubaine,WIN,11.34,30.91,2.21,110,3 of 3,4.42u,5.15,opens $11.34+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,5,,4,Finance Shogun,WIN,5.83,26.99,2.13,106,1 of 3,2.13u,4.50,
+2026-11-29,Traralgon,5,,4,Finance Shogun,WIN,7.29,26.99,0.47,24,2 of 3,2.60u,4.50,
+2026-11-29,Traralgon,5,,4,Finance Shogun,WIN,9.90,26.99,2.60,130,3 of 3,5.20u,4.50,opens $9.90+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,5,,1,Yum,WIN,5.81,26.91,2.13,106,1 of 3,2.13u,4.49,
+2026-11-29,Traralgon,5,,1,Yum,WIN,7.26,26.91,0.48,24,2 of 3,2.61u,4.49,
+2026-11-29,Traralgon,5,,1,Yum,WIN,9.87,26.91,2.61,130,3 of 3,5.22u,4.49,opens $9.87+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,6,,4,Aseventy Seven,WIN,14.98,66.19,0.76,38,1 of 2,0.76u,11.03,
+2026-11-29,Traralgon,6,,4,Aseventy Seven,WIN,18.73,66.19,0.18,9,2 of 2,0.94u,11.03,
+2026-11-29,Traralgon,6,,8,Great Prosperity,WIN,12.65,56.38,0.90,45,1 of 2,0.90u,9.40,
+2026-11-29,Traralgon,6,,8,Great Prosperity,WIN,15.81,56.38,0.22,11,2 of 2,1.12u,9.40,
+2026-11-29,Traralgon,6,,1,Razzo Rosso,WIN,16.97,74.57,0.66,33,1 of 2,0.66u,12.43,
+2026-11-29,Traralgon,6,,1,Razzo Rosso,WIN,21.21,74.57,0.16,8,2 of 2,0.82u,12.43,
+2026-11-29,Traralgon,6,,3,Rick's Cafe,WIN,8.02,36.57,1.48,74,1 of 3,1.48u,6.09,
+2026-11-29,Traralgon,6,,3,Rick's Cafe,WIN,10.02,36.57,0.34,17,2 of 3,1.82u,6.09,
+2026-11-29,Traralgon,6,,3,Rick's Cafe,WIN,13.41,36.57,1.82,91,3 of 3,3.64u,6.09,opens $13.41+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,6,,5,She's Stargazing,WIN,12.92,57.52,0.88,44,1 of 2,0.88u,9.59,
+2026-11-29,Traralgon,6,,5,She's Stargazing,WIN,16.15,57.52,0.22,11,2 of 2,1.10u,9.59,
+2026-11-29,Traralgon,6,,6,Sinister Sauce,WIN,14.88,65.80,0.76,38,1 of 2,0.76u,10.97,
+2026-11-29,Traralgon,6,,6,Sinister Sauce,WIN,18.60,65.80,0.18,9,2 of 2,0.94u,10.97,
+2026-11-29,Traralgon,6,,2,Winter Nights,WIN,6.17,28.49,1.99,100,1 of 3,1.99u,4.75,
+2026-11-29,Traralgon,6,,2,Winter Nights,WIN,7.71,28.49,0.45,22,2 of 3,2.44u,4.75,
+2026-11-29,Traralgon,6,,2,Winter Nights,WIN,10.45,28.49,2.44,122,3 of 3,4.88u,4.75,opens $10.45+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,7,,3,Bring Forth,WIN,17.47,76.66,0.64,32,1 of 2,0.64u,12.78,
+2026-11-29,Traralgon,7,,3,Bring Forth,WIN,21.84,76.66,0.16,8,2 of 2,0.80u,12.78,
+2026-11-29,Traralgon,7,,7,Gregolimo,WIN,16.65,73.20,0.68,34,1 of 2,0.68u,12.20,
+2026-11-29,Traralgon,7,,7,Gregolimo,WIN,20.81,73.20,0.16,8,2 of 2,0.84u,12.20,
+2026-11-29,Traralgon,7,,10,Johnich,WIN,13.09,58.25,0.87,44,1 of 2,0.87u,9.71,
+2026-11-29,Traralgon,7,,10,Johnich,WIN,16.36,58.25,0.21,10,2 of 2,1.08u,9.71,
+2026-11-29,Traralgon,7,,8,Oceana Dream,WIN,3.72,3.99,3.15,158,1 of 1,3.15u,3.09,opens under $4: edge 1.15
+2026-11-29,Traralgon,7,,8,Oceana Dream,WIN,4.00,18.52,3.42,171,1 of 3,3.42u,3.09,
+2026-11-29,Traralgon,7,,8,Oceana Dream,WIN,4.90,18.52,0.70,35,2 of 3,4.12u,3.09,
+2026-11-29,Traralgon,7,,8,Oceana Dream,WIN,6.80,18.52,4.12,206,3 of 3,8.24u,3.09,opens $6.80+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,7,,11,Yahoo Bar,WIN,20.65,89.86,0.54,27,1 of 2,0.54u,14.98,
+2026-11-29,Traralgon,7,,11,Yahoo Bar,WIN,25.81,89.86,0.13,6,2 of 2,0.67u,14.98,
+2026-11-29,Traralgon,8,,8,Dirty Diana,WIN,8.17,37.21,1.45,72,1 of 3,1.45u,6.20,
+2026-11-29,Traralgon,8,,8,Dirty Diana,WIN,10.21,37.21,0.34,17,2 of 3,1.79u,6.20,
+2026-11-29,Traralgon,8,,8,Dirty Diana,WIN,13.65,37.21,1.79,90,3 of 3,3.58u,6.20,opens $13.65+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,8,,3,Do It Now,WIN,15.65,69.01,0.72,36,1 of 2,0.72u,11.50,
+2026-11-29,Traralgon,8,,3,Do It Now,WIN,19.56,69.01,0.18,9,2 of 2,0.90u,11.50,
+2026-11-29,Traralgon,8,,9,Doc's Nipper,WIN,12.08,53.96,0.95,48,1 of 2,0.95u,8.99,
+2026-11-29,Traralgon,8,,9,Doc's Nipper,WIN,15.10,53.96,0.23,12,2 of 2,1.18u,8.99,
+2026-11-29,Traralgon,8,,5,Freshen,WIN,7.10,32.56,1.70,85,1 of 3,1.70u,5.43,
+2026-11-29,Traralgon,8,,5,Freshen,WIN,8.88,32.56,0.39,20,2 of 3,2.09u,5.43,
+2026-11-29,Traralgon,8,,5,Freshen,WIN,11.94,32.56,2.09,104,3 of 3,4.18u,5.43,opens $11.94+ (2.2x ours): stake doubled
+2026-11-29,Traralgon,8,,1,Sub Gauge,WIN,16.69,73.40,0.67,34,1 of 2,0.67u,12.23,
+2026-11-29,Traralgon,8,,1,Sub Gauge,WIN,20.86,73.40,0.17,8,2 of 2,0.84u,12.23,
+2026-11-29,Traralgon,8,,4,The Sheriff,WIN,6.82,31.31,1.78,89,1 of 3,1.78u,5.22,
+2026-11-29,Traralgon,8,,4,The Sheriff,WIN,8.53,31.31,0.40,20,2 of 3,2.18u,5.22,
+2026-11-29,Traralgon,8,,4,The Sheriff,WIN,11.48,31.31,2.18,109,3 of 3,4.36u,5.22,opens $11.48+ (2.2x ours): stake doubled

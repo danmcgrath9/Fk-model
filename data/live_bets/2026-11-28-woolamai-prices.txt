@@ -1,0 +1,46 @@
+# Woolamai Sat 28 Nov, official going (RAIN UNKNOWN: every weather source failed), final fields; no market yet; PROVISIONAL: 4 runners without a rider; PAPER ONLY (the model has 0 races at this venue, 0 since the 3 Jun holdout)
+1, Powershare, 0, 0
+1, Triple Match, 0, 0
+1, Excelaot, 0, 0
+1, Ghazi, 0, 0
+1, Bay Of Joy, 0, 0
+1, Miss Belajo, 0, 0
+1, Chilled Hans, 0, 0
+1, Ricky Stanicky, 0, 0
+2, Gamadale Indi, 0, 0
+2, Time To Rumble, 0, 0
+2, Strum, 0, 0
+2, Crying Cougar, 0, 0
+2, Tartan Queen, 0, 0
+2, Banjette, 0, 0
+2, The Crusader, 0, 0
+3, Here's To Jane, 0, 0
+3, Midivani, 0, 0
+3, Up To Me, SCR
+3, Italian Informant, 0, 0
+3, Alpinova, 0, 0
+3, Peintre's Pride, 0, 0
+3, Irresistible Sir, 0, 0
+3, King Ben, 0, 0
+3, Heartattack Jack, 0, 0
+3, Loveofmylife, 0, 0
+3, Nuggies, 0, 0
+4, Couldbetracy, 0, 0
+4, Pipe Hitter, 0, 0
+4, Good Lordy Me, 0, 0
+4, Zouthila, 0, 0
+5, Tofik Tok, 0, 0
+5, Sierra Sun, 0, 0
+5, Librarchy's Dancer, 0, 0
+5, First Tosen, 0, 0
+5, Shintaro Samurai, 0, 0
+5, Second Guess, 0, 0
+5, Ain't Tellin, 0, 0
+5, Maristela, 0, 0
+6, Understated, 0, 0
+6, Phoenix Flyer, 0, 0
+6, Redwood Shadow, 0, 0
+6, In Your Hands, 0, 0
+6, Discobay, 0, 0
+6, Rule Of Salex, 0, 0
+6, Scandoval, 0, 0

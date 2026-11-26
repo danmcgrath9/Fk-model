@@ -1,0 +1,45 @@
+1|3|Powershare|False|False
+1|8|Triple Match|False|False
+1|1|Excelaot|False|False
+1|2|Ghazi|False|False
+1|4|Bay Of Joy|False|False
+1|6|Miss Belajo|False|False
+1|5|Chilled Hans|False|False
+1|7|Ricky Stanicky|False|False
+2|2|Gamadale Indi|False|False
+2|1|Time To Rumble|False|False
+2|6|Strum|False|False
+2|3|Crying Cougar|False|False
+2|5|Tartan Queen|False|False
+2|7|Banjette|False|False
+2|4|The Crusader|False|False
+3|10|Here's To Jane|False|False
+3|8|Midivani|False|False
+3|11|Up To Me|True|False
+3|3|Italian Informant|False|False
+3|7|Alpinova|False|False
+3|6|Peintre's Pride|False|False
+3|2|Irresistible Sir|False|False
+3|5|King Ben|False|False
+3|1|Heartattack Jack|False|False
+3|9|Loveofmylife|False|False
+3|4|Nuggies|False|False
+4|4|Couldbetracy|False|False
+4|2|Pipe Hitter|False|False
+4|1|Good Lordy Me|False|False
+4|3|Zouthila|False|False
+5|8|Tofik Tok|False|False
+5|1|Sierra Sun|False|False
+5|5|Librarchy's Dancer|False|False
+5|2|First Tosen|False|False
+5|4|Shintaro Samurai|False|False
+5|6|Second Guess|False|False
+5|3|Ain't Tellin|False|False
+5|7|Maristela|False|False
+6|3|Understated|False|False
+6|7|Phoenix Flyer|False|False
+6|2|Redwood Shadow|False|False
+6|6|In Your Hands|False|False
+6|4|Discobay|False|False
+6|1|Rule Of Salex|False|False
+6|5|Scandoval|False|False
