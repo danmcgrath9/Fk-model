@@ -9786,6 +9786,7 @@ published November, so there is no BSP yet.
 | 22 Nov | 45167524626 | 24 | 24 | 22 | 2 | 2 | 1 | 0.91 | 7.99 | -0.59 | 0 | 0 | 3, 0, -3.00 (-100.0%) | 3, 0, -3.00 (-100.0%) |
 | 23 Nov | 45387400796 | 47 | 48 | 41 | 14 | 13 | 6 | 5.20 | 40.87 | +19.78 | 1 | 0 | 4, 1, +11.00 (+275.0%) | 0 |
 | 24 Nov | 45606740507 | 37 | 37 | 15 | 4 | 4 | 2 | 1.90 | 8.61 | +3.41 | 0 | 0 | 2, 0, -2.00 (-100.0%) | 1, 0, -1.00 (-100.0%) |
+| 25 Nov | 45812865122 | 52 | 52 | 50 | 7 | 7 | 3 | 3.06 | 16.82 | -1.37 | 0 | 0 | 4, 2, +6.30 (+157.5%) | 2, 1, +2.80 (+140.0%) |
 
 All four 15 Nov bets opened shorter on TAB than GRV's evening price (TAB at 24% to 49% of it) and below the card's own
 blended price, the same pattern as the first nine nights. Two won, at TAB's first price less the deduction: +5.77
@@ -9886,10 +9887,20 @@ Six (Horsham R3) at $5.50 and Odds Assassin (Warragul R3) at $11.00, and both lo
 also its one bet at 1.2x, -1.00. The 24 Nov run's totals re-score the earlier days with the refitted correction; the
 kept rows stay as first scored.
 
-The card as sent so far, 6 to 24 Nov: 125 bets, 123 settled (one refund, one void), 51 winners against 50.16 expected
-at the prices taken (A/E 1.02), 287.72 units staked, -9.51 units won (-3.3% at the card's units, +1.3% flat), -4.17
-at the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 16 bets at
-1.1x (6 won, +31.70 units) and 8 at 1.2x (3 won, +14.50), each day as first scored; Blue Storm's +5.00 at both is in
+Seven 25 Nov bets on the card as sent, three won: -1.37 units on 16.82 staked (-8.1% at the card's units, -17.9%
+flat), the same at the best first price of three. Buster Bazooka (Bendigo R1) won at $2.00, Cool Disguise (Ballarat
+R10) at $2.10 and Flywheel Jess (Traralgon R10) at $1.65; Finesse (Ballarat R10), Paw Gusto (Ballarat R6), Delightful
+Rain (Traralgon R13) and Find The Sun (Cranbourne R10) lost. Every TAB first price came between 8:06 and 9:30am on
+race morning, after the card (made at about 11:00pm the night before), so every bet could have been taken. None was
+still 1.3x the card's blended price at TAB's open, and the rule at TAB's open made no bet, as expected. The corrected
+blend took four bets at 1.1x and two won, +6.30 units: Jewel Edition (Ballarat R4) at $4.80 and Lektra Princess
+(Ballarat R12) at $5.50; Hanna's Avatar (Traralgon R6) at $11.00 and She's A Vision (Bendigo R1) at $10.00 lost. At
+1.2x it took Jewel Edition and Hanna's Avatar, +2.80. The kept rows of earlier days stay as first scored.
+
+The card as sent so far, 6 to 25 Nov: 132 bets, 130 settled (one refund, one void), 54 winners against 53.22 expected
+at the prices taken (A/E 1.01), 304.54 units staked, -10.88 units won (-3.6% at the card's units, +0.3% flat), -5.54
+at the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 20 bets at
+1.1x (8 won, +38.00 units) and 10 at 1.2x (4 won, +17.30), each day as first scored; Blue Storm's +5.00 at both is in
 those totals and came from a market TAB opened before the card.
 
 Results go here as they come in.
