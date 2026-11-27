@@ -1,8 +1,8 @@
 1|9|Jazz Affair|False|False
-1|3|Bon Mistress|False|False
+1|3|Bon Mistress|False|True
 1|8|Cat Noir|False|False
 1|5|Coco Jen|False|False
-1|2|World's My Oyster|False|False
+1|2|World's My Oyster|False|True
 1|4|Oak Beach|False|False
 1|7|Illyivy|False|False
 1|11|Bon Fete|False|False
@@ -16,7 +16,7 @@
 2|4|Until Valhalla|False|False
 2|11|King Tut|False|False
 2|7|Rosa Aotearoa|False|False
-2|10|Charming Nic|False|False
+2|10|Charming Nic|False|True
 2|3|Sergeant Major|False|False
 2|5|Princess Que|False|False
 2|2|Esmahli|False|False
@@ -50,7 +50,7 @@
 4|11|Darn Spicy|False|False
 5|2|Klabel|False|False
 5|3|Marble Nine|False|False
-5|8|Quiseen|False|False
+5|8|Quiseen|False|True
 5|1|Oak Hill|False|False
 5|4|Photograph|False|False
 5|5|Guerite|False|False
@@ -111,14 +111,14 @@
 6|11|Pasatiempo|False|False
 6|1|Cavill Avenue|False|False
 6|6|Lafarna|False|False
-6|9|Tale Of Genji|False|False
+6|9|Tale Of Genji|False|True
 6|2|Handee|False|False
 6|8|Sayalero|False|False
 6|4|Sound Byte|False|False
 6|3|Shintono|False|False
 6|5|Sunbliss|False|False
 6|10|Engulf|False|False
-7|10|Wuddzz|False|False
+7|10|Wuddzz|False|True
 7|9|Black Peppermint|False|False
 7|1|Vauban|False|False
 7|2|Asterix|False|False
@@ -141,34 +141,34 @@
 8|3|Run Harry Run|False|False
 8|6|Recon|False|False
 8|2|Ramadan|False|False
-8|9|Miss Playlounge|False|False
+8|9|Miss Playlounge|False|True
 9|9|Charterhouse|False|False
 9|1|Bianco Vilano|False|True
 9|10|Williamsburg|False|False
 9|12|Fiorenot|False|True
 9|5|Makdane|False|False
 9|3|Wymark|False|False
-9|2|Revelare|False|False
+9|2|Revelare|False|True
 9|6|Sav On Ice|False|False
 9|14|Moonlight Circus|False|False
 9|4|Cilacap|False|False
 9|8|Nobler|False|False
 9|11|Roulette King|False|False
 9|7|Paltrow Miss|False|True
-9|13|Sulek|False|False
+9|13|Sulek|False|True
 10|7|Charisse|False|False
 10|1|He'll Rip|False|True
 10|8|Flying Mikki|False|False
 10|5|No Fuss|False|True
-10|11|Haaracaine|False|False
-10|10|Two Wolves|False|False
+10|11|Haaracaine|False|True
+10|10|Two Wolves|False|True
 10|19|Stay Humble|True|False
 10|16|Bergasun|False|False
-10|4|Midnite Storm|False|False
+10|4|Midnite Storm|False|True
 10|6|Somewhere|False|False
 10|12|Houdini|False|False
 10|3|Test Of Love|False|False
-10|15|Taung|False|False
+10|15|Taung|False|True
 10|17|Wetumpka|True|False
 10|9|Options|False|False
 10|13|Just A Journey|False|False
