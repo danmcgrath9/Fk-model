@@ -1,0 +1,179 @@
+# Sandown Hillside Sat 28 Nov, Heavy 8 (set by hand for the rain: 17.9mm in the 3 days before, 24.4mm on the day), final fields; no market yet; PROVISIONAL: 27 runners without a rider
+1, Jazz Affair, 0, 0
+1, Bon Mistress, 0, 0
+1, Cat Noir, 0, 0
+1, Coco Jen, 0, 0
+1, World's My Oyster, 0, 0
+1, Oak Beach, 0, 0
+1, Illyivy, 0, 0
+1, Bon Fete, 0, 0
+1, Jenni You Think, 0, 0
+1, Cooly, 0, 0
+1, Silvasista, 0, 0
+2, Ivan's Hero, 0, 0
+2, Dirty Grin, 0, 0
+2, Overactive, 0, 0
+2, Maisy, 0, 0
+2, Until Valhalla, 0, 0
+2, King Tut, 0, 0
+2, Rosa Aotearoa, 0, 0
+2, Charming Nic, 0, 0
+2, Sergeant Major, 0, 0
+2, Princess Que, 0, 0
+2, Esmahli, 0, 0
+2, Trapdoor, 0, 0
+2, Bacash, 0, 0
+2, Miewa, 0, 0
+2, Danzsin, 0, 0
+3, Chancellor, 0, 0
+3, Chip In, 0, 0
+3, Billycart, 0, 0
+3, Gilgeous, 0, 0
+3, Franked Up, 0, 0
+3, Mossquillo, 0, 0
+3, Fine And Sunny, 0, 0
+3, Exultant, 0, 0
+3, Town Planner, 0, 0
+4, Royal Press, 0, 0
+4, Hanseatic Girl, 0, 0
+4, Crystal Affair, 0, 0
+4, In Eutopia, 0, 0
+4, Natural Emotion, 0, 0
+4, Odenkirk, 0, 0
+4, Confection, 0, 0
+4, Oversourced, 0, 0
+4, Noctis, 0, 0
+4, Nissaki, 0, 0
+4, Rubitrix, 0, 0
+4, Soladin, 0, 0
+4, Lewashaa, 0, 0
+4, Blingaling, 0, 0
+4, Darn Spicy, 0, 0
+5, Klabel, 0, 0
+5, Marble Nine, 0, 0
+5, Quiseen, 0, 0
+5, Oak Hill, 0, 0
+5, Photograph, 0, 0
+5, Guerite, 0, 0
+5, Jett Smash, 0, 0
+5, Jimmy Recard, 0, 0
+5, Tres Magnifique, 0, 0
+5, Prestige Lucky, 0, 0
+5, Karren, 0, 0
+5, Van Roy, 0, 0
+5, Gregolimo, 0, 0
+5, Black Storm, 0, 0
+5, Charisse, 0, 0
+5, He'll Rip, 0, 0
+5, Flying Mikki, 0, 0
+5, Itsukushima, 0, 0
+5, El Soleado, 0, 0
+5, Bullets High, 0, 0
+5, Flying Valley, 0, 0
+5, Fiorenot, 0, 0
+5, Seethru, 0, 0
+5, Jawsome Rob, 0, 0
+5, Nearing Liberty, 0, 0
+5, No Fuss, 0, 0
+5, Cat Noir, 0, 0
+5, Haaracaine, 0, 0
+5, Maisy, 0, 0
+5, Dantooine, 0, 0
+5, Autumn Slide, 0, 0
+5, Chakado, 0, 0
+5, Coco Jen, 0, 0
+5, Jenni Multabella, 0, 0
+5, Skippers Canyon, 0, 0
+5, Two Wolves, 0, 0
+5, World's My Oyster, 0, 0
+5, Stay Humble, 0, 0
+5, Bergasun, 0, 0
+5, Oak Beach, 0, 0
+5, Midnite Storm, 0, 0
+5, Dubai Watch, 0, 0
+5, Somewhere, 0, 0
+5, Houdini, 0, 0
+5, Test Of Love, 0, 0
+5, Moonlight Circus, 0, 0
+5, Taung, 0, 0
+5, Wetumpka, 0, 0
+5, Cooly, 0, 0
+5, Options, 0, 0
+5, Just A Journey, 0, 0
+5, Jackknife, 0, 0
+5, Lightening Mann, 0, 0
+5, Jareth, 0, 0
+5, Impulsive Reaction, 0, 0
+5, Sulek, 0, 0
+5, Silvasista, 0, 0
+5, Danzsin, 0, 0
+5, Space Rider, 0, 0
+6, Oceans Blue, 0, 0
+6, Pasatiempo, 0, 0
+6, Cavill Avenue, 0, 0
+6, Lafarna, 0, 0
+6, Tale Of Genji, 0, 0
+6, Handee, 0, 0
+6, Sayalero, 0, 0
+6, Sound Byte, 0, 0
+6, Shintono, 0, 0
+6, Sunbliss, 0, 0
+6, Engulf, 0, 0
+7, Wuddzz, 0, 0
+7, Black Peppermint, 0, 0
+7, Vauban, 0, 0
+7, Asterix, 0, 0
+7, Affluential, 0, 0
+7, Manzor Blue, 0, 0
+7, Beach Pad, 0, 0
+7, Suffolk Star, 0, 0
+7, Sir Chartwell, 0, 0
+7, Sam Hawkens, 0, 0
+7, Hawk Power, 0, 0
+7, Highland Bling, 0, 0
+7, Power Pivot, 0, 0
+7, Autumn Mystery, 0, 0
+8, Phearson, 0, 0
+8, Here To Shock, 0, 0
+8, Holymanz, 0, 0
+8, Sammarco, 0, 0
+8, Punch Lane, 0, 0
+8, King Zephyr, 0, 0
+8, Run Harry Run, 0, 0
+8, Recon, 0, 0
+8, Ramadan, 0, 0
+8, Miss Playlounge, 0, 0
+9, Charterhouse, 0, 0
+9, Bianco Vilano, 0, 0
+9, Williamsburg, 0, 0
+9, Fiorenot, 0, 0
+9, Makdane, 0, 0
+9, Wymark, 0, 0
+9, Revelare, 0, 0
+9, Sav On Ice, 0, 0
+9, Moonlight Circus, 0, 0
+9, Cilacap, 0, 0
+9, Nobler, 0, 0
+9, Roulette King, 0, 0
+9, Paltrow Miss, 0, 0
+9, Sulek, 0, 0
+10, Charisse, 0, 0
+10, He'll Rip, 0, 0
+10, Flying Mikki, 0, 0
+10, No Fuss, 0, 0
+10, Haaracaine, 0, 0
+10, Two Wolves, 0, 0
+10, Stay Humble, SCR
+10, Bergasun, 0, 0
+10, Midnite Storm, 0, 0
+10, Somewhere, 0, 0
+10, Houdini, 0, 0
+10, Test Of Love, 0, 0
+10, Taung, 0, 0
+10, Wetumpka, SCR
+10, Options, 0, 0
+10, Just A Journey, 0, 0
+10, Lightening Mann, SCR
+10, Jareth, 0, 0
+10, Impulsive Reaction, 0, 0
+10, Space Rider, SCR

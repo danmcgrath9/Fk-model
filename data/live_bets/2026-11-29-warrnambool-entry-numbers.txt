@@ -12,7 +12,7 @@
 2|16|A Little Reward|True|False
 2|12|Crafty Queen|False|False
 2|1|Challenging|False|False
-2|3|Fram Strait|False|False
+2|3|Fram Strait|False|True
 2|5|Niccotein|False|False
 2|11|Begonia|False|False
 2|6|Zephyr's Reward|False|False
@@ -22,14 +22,14 @@
 2|10|Veneto Street|False|False
 2|14|Star Kells|False|False
 2|13|Celestaria|False|False
-2|9|Silver Tsar|False|False
+2|9|Silver Tsar|False|True
 3|2|Second Fix|False|False
 3|17|Bare To Witness|True|False
 3|1|Desert Anthem|False|False
 3|12|Tauri|False|False
 3|18|Final Quarter|True|False
 3|4|En Flique|False|False
-3|14|Vivid Blooms|False|False
+3|14|Vivid Blooms|False|True
 3|15|Share The Stars|True|False
 3|8|The Daily Planet|False|False
 3|11|Chantra|False|False

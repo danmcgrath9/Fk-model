@@ -9,7 +9,7 @@
 1|10|Jenni You Think|False|False
 1|6|Cooly|False|False
 1|1|Silvasista|False|False
-2|9|Ivan's Hero|False|False
+2|9|Ivan's Hero|False|True
 2|1|Dirty Grin|False|False
 2|14|Overactive|False|False
 2|15|Maisy|False|False
@@ -143,7 +143,7 @@
 8|2|Ramadan|False|False
 8|9|Miss Playlounge|False|False
 9|9|Charterhouse|False|False
-9|1|Bianco Vilano|False|False
+9|1|Bianco Vilano|False|True
 9|10|Williamsburg|False|False
 9|12|Fiorenot|False|False
 9|5|Makdane|False|False
@@ -154,12 +154,12 @@
 9|4|Cilacap|False|False
 9|8|Nobler|False|False
 9|11|Roulette King|False|False
-9|7|Paltrow Miss|False|False
+9|7|Paltrow Miss|False|True
 9|13|Sulek|False|False
 10|7|Charisse|False|False
-10|1|He'll Rip|False|False
+10|1|He'll Rip|False|True
 10|8|Flying Mikki|False|False
-10|5|No Fuss|False|False
+10|5|No Fuss|False|True
 10|11|Haaracaine|False|False
 10|10|Two Wolves|False|False
 10|19|Stay Humble|True|False
@@ -175,4 +175,4 @@
 10|18|Lightening Mann|True|False
 10|14|Jareth|False|False
 10|2|Impulsive Reaction|False|False
-10|20|Space Rider|True|False
+10|20|Space Rider|True|True

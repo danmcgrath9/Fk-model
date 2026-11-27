@@ -1,4 +1,4 @@
-# Traralgon Sun 29 Nov, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 12 runners without a rider; PAPER ONLY (the model has 15 races at this venue, 0 since the 3 Jun holdout)
+# Traralgon Sun 29 Nov, Soft (15mm+ rain), final fields; market open in R7; PROVISIONAL: 3 runners without a rider; PAPER ONLY (the model has 15 races at this venue, 0 since the 3 Jun holdout)
 1, Rough Edges, 0, 0
 1, Maharani Miss, 0, 0
 1, Rang A Round Up, 0, 0
@@ -69,21 +69,21 @@
 6, She's Stargazing, 0, 0
 6, King Of Savoy, 0, 0
 6, Winter Nights, 0, 0
-7, Red On Red, SCR
-7, Gregolimo, 0, 0
-7, Anythink Goes, 0, 0
-7, Cable Dancer, 0, 0
-7, Grand Pierro, 0, 0
-7, Saveadateforme, SCR
-7, Nearing Liberty, SCR
-7, Yahoo Bar, 0, 0
-7, The Pendragon, 0, 0
-7, Chase Your Dreams, 0, 0
-7, Statuario, 0, 0
-7, Oceana Dream, 0, 0
-7, Dubai Watch, 0, 0
-7, Bring Forth, 0, 0
-7, Johnich, 0, 0
+7, Red On Red, SCR, fk_open 71.00
+7, Gregolimo, 11.00, 11.00, fk_open 11.00
+7, Anythink Goes, 11.00, 11.00, fk_open 11.00
+7, Cable Dancer, 13.00, 13.00, fk_open 12.00
+7, Grand Pierro, 19.00, 19.00, fk_open 15.00
+7, Saveadateforme, SCR, fk_open 31.00
+7, Nearing Liberty, SCR, fk_open 23.00
+7, Yahoo Bar, 14.00, 14.00, fk_open 11.00
+7, The Pendragon, 13.00, 13.00, fk_open 6.50
+7, Chase Your Dreams, 8.50, 8.50, fk_open 9.00
+7, Statuario, 21.00, 21.00, fk_open 15.00
+7, Oceana Dream, 3.10, 3.10, fk_open 3.90
+7, Dubai Watch, 35.00, 35.00, fk_open 26.00
+7, Bring Forth, 11.00, 11.00, fk_open 5.50
+7, Johnich, 5.50, 5.50, fk_open 8.50
 8, Magic Drum, 0, 0
 8, Sub Gauge, 0, 0
 8, Do It Now, 0, 0

@@ -1,0 +1,139 @@
+# Warrnambool Sun 29 Nov, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 11 runners without a rider
+1, Sophia's Legacy, 0, 0
+1, Crimson Flame, 0, 0
+1, Classic Harry, 0, 0
+1, Stormin' Angel, 0, 0
+1, Nothin' Surer, 0, 0
+1, Deekaysgift, 0, 0
+1, Marvellous Marvin, 0, 0
+1, Mauna Loa, 0, 0
+1, Balgownie Miss, 0, 0
+2, Hughie's Spirit, 0, 0
+2, Don't Say No Mikki, 0, 0
+2, A Little Reward, SCR
+2, Crafty Queen, 0, 0
+2, Challenging, 0, 0
+2, Fram Strait, 0, 0
+2, Niccotein, 0, 0
+2, Begonia, 0, 0
+2, Zephyr's Reward, 0, 0
+2, Flaws And Sins, SCR
+2, Amber Smile, 0, 0
+2, Brazen Panda, 0, 0
+2, Veneto Street, 0, 0
+2, Star Kells, 0, 0
+2, Celestaria, 0, 0
+2, Silver Tsar, 0, 0
+3, Second Fix, 0, 0
+3, Bare To Witness, SCR
+3, Desert Anthem, 0, 0
+3, Tauri, 0, 0
+3, Final Quarter, SCR
+3, En Flique, 0, 0
+3, Vivid Blooms, 0, 0
+3, Share The Stars, SCR
+3, The Daily Planet, 0, 0
+3, Chantra, 0, 0
+3, Cachink, 0, 0
+3, So Long Ago, SCR
+3, Exclude, 0, 0
+3, Celestial Splendor, 0, 0
+3, Madesian, 0, 0
+3, Boggy Creek Boys, 0, 0
+3, Just My Lot, 0, 0
+3, The Cellist, 0, 0
+4, Unamerican, SCR
+4, Spanish Snitzel, SCR
+4, Flying Basil, 0, 0
+4, Super Snitch, 0, 0
+4, Tikemyson, 0, 0
+4, Lightning Express, 0, 0
+4, Just Call Me Jonny, 0, 0
+4, El James, 0, 0
+4, Colour Our World, 0, 0
+4, Eminent Ella, SCR
+4, Cute Girl, 0, 0
+4, My Uncle Did It, 0, 0
+4, Lunar Force, 0, 0
+4, Philharmonic, 0, 0
+4, I'mnodrummerboy, 0, 0
+4, My Rosalie, 0, 0
+4, Carnival Riches, 0, 0
+5, Warrandyte Road, 0, 0
+5, Grinding Away, SCR
+5, Hula Beat, 0, 0
+5, Final Impact, 0, 0
+5, Semper Fortis, 0, 0
+5, Endean Ace, 0, 0
+5, Topspin, 0, 0
+5, Kawhia, SCR
+5, Fuwari, 0, 0
+5, Reel Hot, 0, 0
+5, Sanika, 0, 0
+5, Devoted To You, 0, 0
+5, Phoenician, 0, 0
+5, Rollin'ontheriver, SCR
+5, Ideas Galore, SCR
+5, Haiiro, 0, 0
+6, Thailess, 0, 0
+6, Ballynacally, 0, 0
+6, Southern Crescent, 0, 0
+6, She's Impeccable, 0, 0
+6, Dobkins, 0, 0
+6, Mckeyla, 0, 0
+6, My Zephyr, 0, 0
+6, Tennessee Song, 0, 0
+6, Miss Ellaneous, 0, 0
+6, Royal Sway, 0, 0
+6, Neziha, 0, 0
+6, Restless Wind, 0, 0
+6, Crickwood, 0, 0
+7, Prince Sonic, SCR
+7, Fileeta, 0, 0
+7, Mr Tickles, 0, 0
+7, Talkin' Italian, 0, 0
+7, Weapon Clear, 0, 0
+7, Masked Marauder, 0, 0
+7, Majesticity, 0, 0
+7, Kid Dynamite, 0, 0
+7, Monix, 0, 0
+7, Big Sexy, 0, 0
+7, Peace Centre, 0, 0
+7, Killiana, 0, 0
+7, Wintery, 0, 0
+7, Gwen's Girl, 0, 0
+7, Bazzar, 0, 0
+8, Farag, 0, 0
+8, Matthew Mark, 0, 0
+8, Mister Popcorn, 0, 0
+8, The Cunning Fox, 0, 0
+8, Legend Beast, 0, 0
+8, Roaring Engine, 0, 0
+8, Endean Ace, SCR
+8, Topspin, SCR
+8, Smokin' Rohie, 0, 0
+8, I Love This Song, 0, 0
+8, Genrichero, 0, 0
+8, Diwali, 0, 0
+8, Tempest Moon, 0, 0
+8, Three Reel Roses, 0, 0
+8, Kicking King, 0, 0
+8, Legs Power, 0, 0
+8, Devoted To You, SCR
+8, Haiiro, SCR
+9, Jet Jitsu, 0, 0
+9, Stonecoat, 0, 0
+9, Owl Witness, SCR
+9, Buzitup, 0, 0
+9, Amizetta, 0, 0
+9, Drunken Sailor, SCR
+9, Dantooine, 0, 0
+9, Sotomayor, 0, 0
+9, Asal, 0, 0
+9, Whathappensinvegas, 0, 0
+9, Princess Toro, 0, 0
+9, Zourain, 0, 0
+9, Corro, 0, 0
+9, She's A Jett, 0, 0
+9, Zetheros, 0, 0
+9, Centenary Florin, 0, 0

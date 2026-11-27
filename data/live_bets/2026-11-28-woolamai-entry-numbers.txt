@@ -15,7 +15,7 @@
 2|4|The Crusader|False|False
 3|10|Here's To Jane|False|False
 3|8|Midivani|False|False
-3|11|Up To Me|True|False
+3|11|Up To Me|True|True
 3|3|Italian Informant|False|False
 3|7|Alpinova|False|False
 3|6|Peintre's Pride|False|False

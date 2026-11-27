@@ -1,139 +1,139 @@
-# Warrnambool Sun 29 Nov, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 11 runners without a rider
-1, Sophia's Legacy, 0, 0
-1, Crimson Flame, 0, 0
-1, Classic Harry, 0, 0
-1, Stormin' Angel, 0, 0
-1, Nothin' Surer, 0, 0
-1, Deekaysgift, 0, 0
-1, Marvellous Marvin, 0, 0
-1, Mauna Loa, 0, 0
-1, Balgownie Miss, 0, 0
-2, Hughie's Spirit, 0, 0
-2, Don't Say No Mikki, 0, 0
-2, A Little Reward, SCR
-2, Crafty Queen, 0, 0
-2, Challenging, 0, 0
-2, Fram Strait, 0, 0
-2, Niccotein, 0, 0
-2, Begonia, 0, 0
-2, Zephyr's Reward, 0, 0
-2, Flaws And Sins, SCR
-2, Amber Smile, 0, 0
-2, Brazen Panda, 0, 0
-2, Veneto Street, 0, 0
-2, Star Kells, 0, 0
-2, Celestaria, 0, 0
-2, Silver Tsar, 0, 0
-3, Second Fix, 0, 0
-3, Bare To Witness, SCR
-3, Desert Anthem, 0, 0
-3, Tauri, 0, 0
-3, Final Quarter, SCR
-3, En Flique, 0, 0
-3, Vivid Blooms, 0, 0
-3, Share The Stars, SCR
-3, The Daily Planet, 0, 0
-3, Chantra, 0, 0
-3, Cachink, 0, 0
-3, So Long Ago, SCR
-3, Exclude, 0, 0
-3, Celestial Splendor, 0, 0
-3, Madesian, 0, 0
-3, Boggy Creek Boys, 0, 0
-3, Just My Lot, 0, 0
-3, The Cellist, 0, 0
-4, Unamerican, SCR
-4, Spanish Snitzel, SCR
-4, Flying Basil, 0, 0
-4, Super Snitch, 0, 0
-4, Tikemyson, 0, 0
-4, Lightning Express, 0, 0
-4, Just Call Me Jonny, 0, 0
-4, El James, 0, 0
-4, Colour Our World, 0, 0
-4, Eminent Ella, SCR
-4, Cute Girl, 0, 0
-4, My Uncle Did It, 0, 0
-4, Lunar Force, 0, 0
-4, Philharmonic, 0, 0
-4, I'mnodrummerboy, 0, 0
-4, My Rosalie, 0, 0
-4, Carnival Riches, 0, 0
-5, Warrandyte Road, 0, 0
-5, Grinding Away, SCR
-5, Hula Beat, 0, 0
-5, Final Impact, 0, 0
-5, Semper Fortis, 0, 0
-5, Endean Ace, 0, 0
-5, Topspin, 0, 0
-5, Kawhia, SCR
-5, Fuwari, 0, 0
-5, Reel Hot, 0, 0
-5, Sanika, 0, 0
-5, Devoted To You, 0, 0
-5, Phoenician, 0, 0
-5, Rollin'ontheriver, SCR
-5, Ideas Galore, SCR
-5, Haiiro, 0, 0
-6, Thailess, 0, 0
-6, Ballynacally, 0, 0
-6, Southern Crescent, 0, 0
-6, She's Impeccable, 0, 0
-6, Dobkins, 0, 0
-6, Mckeyla, 0, 0
-6, My Zephyr, 0, 0
-6, Tennessee Song, 0, 0
-6, Miss Ellaneous, 0, 0
-6, Royal Sway, 0, 0
-6, Neziha, 0, 0
-6, Restless Wind, 0, 0
-6, Crickwood, 0, 0
-7, Prince Sonic, SCR
-7, Fileeta, 0, 0
-7, Mr Tickles, 0, 0
-7, Talkin' Italian, 0, 0
-7, Weapon Clear, 0, 0
-7, Masked Marauder, 0, 0
-7, Majesticity, 0, 0
-7, Kid Dynamite, 0, 0
-7, Monix, 0, 0
-7, Big Sexy, 0, 0
-7, Peace Centre, 0, 0
-7, Killiana, 0, 0
-7, Wintery, 0, 0
-7, Gwen's Girl, 0, 0
-7, Bazzar, 0, 0
-8, Farag, 0, 0
-8, Matthew Mark, 0, 0
-8, Mister Popcorn, 0, 0
-8, The Cunning Fox, 0, 0
-8, Legend Beast, 0, 0
-8, Roaring Engine, 0, 0
-8, Endean Ace, SCR
-8, Topspin, SCR
-8, Smokin' Rohie, 0, 0
-8, I Love This Song, 0, 0
-8, Genrichero, 0, 0
-8, Diwali, 0, 0
-8, Tempest Moon, 0, 0
-8, Three Reel Roses, 0, 0
-8, Kicking King, 0, 0
-8, Legs Power, 0, 0
-8, Devoted To You, SCR
-8, Haiiro, SCR
-9, Jet Jitsu, 0, 0
-9, Stonecoat, 0, 0
-9, Owl Witness, SCR
-9, Buzitup, 0, 0
-9, Amizetta, 0, 0
-9, Drunken Sailor, SCR
-9, Dantooine, 0, 0
-9, Sotomayor, 0, 0
-9, Asal, 0, 0
-9, Whathappensinvegas, 0, 0
-9, Princess Toro, 0, 0
-9, Zourain, 0, 0
-9, Corro, 0, 0
-9, She's A Jett, 0, 0
-9, Zetheros, 0, 0
-9, Centenary Florin, 0, 0
+# Warrnambool Sun 29 Nov, Soft (15mm+ rain), final fields; market open in R1,2,3,4,5,6,7,8,9; PROVISIONAL: 2 runners without a rider
+1, Sophia's Legacy, 5.00, 5.00, fk_open 4.40
+1, Crimson Flame, 7.50, 7.50, fk_open 11.00
+1, Classic Harry, 151.00, 151.00, fk_open 101.00
+1, Stormin' Angel, 5.00, 5.00, fk_open 5.50
+1, Nothin' Surer, 4.60, 4.60, fk_open 3.40
+1, Deekaysgift, 7.00, 7.00, fk_open 11.00
+1, Marvellous Marvin, 7.00, 7.00, fk_open 8.00
+1, Mauna Loa, 6.50, 6.50, fk_open 4.40
+1, Balgownie Miss, 27.00, 27.00, fk_open 15.00
+2, Hughie's Spirit, 51.00, 51.00, fk_open 61.00
+2, Don't Say No Mikki, 46.00, 46.00, fk_open 31.00
+2, A Little Reward, SCR, fk_open 101.00
+2, Crafty Queen, 20.00, 20.00, fk_open 19.00
+2, Challenging, 151.00, 151.00, fk_open 101.00
+2, Fram Strait, SCR
+2, Niccotein, 7.50, 7.50, fk_open 5.50
+2, Begonia, 6.50, 6.50, fk_open 9.00
+2, Zephyr's Reward, 35.00, 35.00, fk_open 19.00
+2, Flaws And Sins, SCR, fk_open 101.00
+2, Amber Smile, 3.10, 3.10, fk_open 3.30
+2, Brazen Panda, 4.20, 4.20, fk_open 3.95
+2, Veneto Street, 10.00, 10.00, fk_open 6.50
+2, Star Kells, 11.00, 11.00, fk_open 9.00
+2, Celestaria, 12.00, 12.00, fk_open 27.00
+2, Silver Tsar, SCR
+3, Second Fix, 16.00, 16.00, fk_open 12.00
+3, Bare To Witness, SCR, fk_open 81.00
+3, Desert Anthem, 3.60, 3.60, fk_open 3.70
+3, Tauri, 41.00, 41.00, fk_open 51.00
+3, Final Quarter, SCR, fk_open 81.00
+3, En Flique, 16.00, 16.00, fk_open 19.00
+3, Vivid Blooms, SCR, last 23.00, fk_open 19.00
+3, Share The Stars, SCR, fk_open 26.00
+3, The Daily Planet, 26.00, 26.00, fk_open 23.00
+3, Chantra, 18.00, 18.00, fk_open 8.50
+3, Cachink, 11.00, 11.00, fk_open 23.00
+3, So Long Ago, SCR, fk_open 51.00
+3, Exclude, 61.00, 61.00, fk_open 81.00
+3, Celestial Splendor, 6.50, 6.50, fk_open 6.50
+3, Madesian, 18.00, 18.00, fk_open 12.00
+3, Boggy Creek Boys, 18.00, 18.00, fk_open 16.00
+3, Just My Lot, 5.00, 5.00, fk_open 4.80
+3, The Cellist, 12.00, 12.00, fk_open 8.50
+4, Unamerican, SCR, fk_open 51.00
+4, Spanish Snitzel, SCR, fk_open 126.00
+4, Flying Basil, 41.00, 41.00, fk_open 41.00
+4, Super Snitch, 27.00, 27.00, fk_open 26.00
+4, Tikemyson, 34.00, 34.00, fk_open 26.00
+4, Lightning Express, 18.00, 18.00, fk_open 9.50
+4, Just Call Me Jonny, 5.00, 5.00, fk_open 8.50
+4, El James, 14.00, 14.00, fk_open 12.00
+4, Colour Our World, 7.00, 7.00, fk_open 6.50
+4, Eminent Ella, SCR, fk_open 81.00
+4, Cute Girl, 6.50, 6.50, fk_open 5.00
+4, My Uncle Did It, 14.00, 14.00, fk_open 23.00
+4, Lunar Force, 9.50, 9.50, fk_open 12.00
+4, Philharmonic, 18.00, 18.00, fk_open 14.00
+4, I'mnodrummerboy, 81.00, 81.00, fk_open 51.00
+4, My Rosalie, 7.50, 7.50, fk_open 12.00
+4, Carnival Riches, 7.00, 7.00, fk_open 3.50
+5, Warrandyte Road, 9.50, 9.50, fk_open 13.00
+5, Grinding Away, SCR, fk_open 31.00
+5, Hula Beat, 23.00, 23.00, fk_open 23.00
+5, Final Impact, 61.00, 61.00, fk_open 81.00
+5, Semper Fortis, 17.00, 17.00, fk_open 19.00
+5, Endean Ace, 4.00, 4.00, fk_open 3.20
+5, Topspin, 23.00, 23.00, fk_open 23.00
+5, Kawhia, SCR, fk_open 51.00
+5, Fuwari, 8.50, 8.50, fk_open 11.00
+5, Reel Hot, 41.00, 41.00, fk_open 41.00
+5, Sanika, 7.50, 7.50, fk_open 8.00
+5, Devoted To You, 8.50, 8.50, fk_open 5.00
+5, Phoenician, 8.50, 8.50, fk_open 7.00
+5, Rollin'ontheriver, SCR, fk_open 26.00
+5, Ideas Galore, SCR, fk_open 31.00
+5, Haiiro, 4.60, 4.60, fk_open 4.40
+6, Thailess, 34.00, 34.00, fk_open 61.00
+6, Ballynacally, 41.00, 41.00, fk_open 31.00
+6, Southern Crescent, 7.50, 7.50, fk_open 4.20
+6, She's Impeccable, 23.00, 23.00, fk_open 21.00
+6, Dobkins, 71.00, 71.00, fk_open 126.00
+6, Mckeyla, 7.50, 7.50, fk_open 5.50
+6, My Zephyr, 21.00, 21.00, fk_open 19.00
+6, Tennessee Song, 11.00, 11.00, fk_open 32.50
+6, Miss Ellaneous, 23.00, 23.00, fk_open 19.00
+6, Royal Sway, 5.50, 5.50, fk_open 6.00
+6, Neziha, 7.00, 7.00, fk_open 8.50
+6, Restless Wind, 7.00, 7.00, fk_open 6.00
+6, Crickwood, 4.60, 4.60, fk_open 4.40
+7, Prince Sonic, SCR, fk_open 81.00
+7, Fileeta, 101.00, 101.00, fk_open 61.00
+7, Mr Tickles, 46.00, 46.00, fk_open 16.00
+7, Talkin' Italian, 18.00, 18.00, fk_open 19.00
+7, Weapon Clear, 23.00, 23.00, fk_open 19.00
+7, Masked Marauder, 41.00, 41.00, fk_open 21.00
+7, Majesticity, 12.00, 12.00, fk_open 10.00
+7, Kid Dynamite, 6.00, 6.00, fk_open 7.50
+7, Monix, 61.00, 61.00, fk_open 26.00
+7, Big Sexy, 7.00, 7.00, fk_open 5.50
+7, Peace Centre, 20.00, 20.00, fk_open 34.00
+7, Killiana, 12.00, 12.00, fk_open 10.00
+7, Wintery, 5.50, 5.50, fk_open 10.00
+7, Gwen's Girl, 4.40, 4.40, fk_open 4.20
+7, Bazzar, 8.50, 8.50, fk_open 5.50
+8, Farag, 13.00, 13.00, fk_open 14.00
+8, Matthew Mark, 26.00, 26.00, fk_open 23.00
+8, Mister Popcorn, 71.00, 71.00, fk_open 81.00
+8, The Cunning Fox, 3.60, 3.60, fk_open 3.80
+8, Legend Beast, 5.00, 5.00, fk_open 5.00
+8, Roaring Engine, 13.00, 13.00, fk_open 12.00
+8, Endean Ace, SCR, fk_open 17.00
+8, Topspin, SCR, fk_open 61.00
+8, Smokin' Rohie, 61.00, 61.00, fk_open 51.00
+8, I Love This Song, 51.00, 51.00, fk_open 41.00
+8, Genrichero, 9.50, 9.50, fk_open 9.00
+8, Diwali, 7.00, 7.00, fk_open 6.50
+8, Tempest Moon, 11.00, 11.00, fk_open 13.00
+8, Three Reel Roses, 5.50, 5.50, fk_open 4.40
+8, Kicking King, 51.00, 51.00, fk_open 34.00
+8, Legs Power, 51.00, 51.00, fk_open 41.00
+8, Devoted To You, SCR, fk_open 34.00
+8, Haiiro, SCR, fk_open 21.00
+9, Jet Jitsu, 151.00, 151.00, fk_open 101.00
+9, Stonecoat, 35.00, 35.00, fk_open 21.00
+9, Owl Witness, SCR, fk_open 81.00
+9, Buzitup, 23.00, 23.00, fk_open 12.00
+9, Amizetta, 46.00, 46.00, fk_open 23.00
+9, Drunken Sailor, SCR, fk_open 51.00
+9, Dantooine, 3.90, 3.90, fk_open 5.50
+9, Sotomayor, 14.00, 14.00, fk_open 9.00
+9, Asal, 10.00, 10.00, fk_open 15.00
+9, Whathappensinvegas, 126.00, 126.00, fk_open 101.00
+9, Princess Toro, 8.50, 8.50, fk_open 6.50
+9, Zourain, 21.00, 21.00, fk_open 12.00
+9, Corro, 16.00, 16.00, fk_open 17.00
+9, She's A Jett, 23.00, 23.00, fk_open 26.00
+9, Zetheros, 15.00, 15.00, fk_open 23.00
+9, Centenary Florin, 2.70, 2.70, fk_open 2.50

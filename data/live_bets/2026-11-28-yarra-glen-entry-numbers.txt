@@ -56,7 +56,7 @@
 5|10|Chateau Dancer|False|False
 5|14|Scandoval|True|False
 5|6|Riozino|False|False
-5|9|Tipsy Gypsy|False|False
+5|9|Tipsy Gypsy|False|True
 5|12|Stole Him|True|False
 5|1|King Kauffo|False|False
 6|2|Sheer Lunacy|False|False
@@ -71,6 +71,7 @@
 6|3|Silver Snow|False|False
 6|10|Jingu Express|False|False
 6|6|Hellish Lee|False|False
+6|8|Sweet But Sassy|False|True
 6|14|Slippery Thinker|True|False
 7|1|Headstock|False|False
 7|7|Wild Irish Rover|False|False
