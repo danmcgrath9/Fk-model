@@ -8,7 +8,7 @@
 1|11|Bon Fete|False|False
 1|10|Jenni You Think|False|False
 1|6|Cooly|False|False
-1|1|Silvasista|False|False
+1|1|Silvasista|False|True
 2|9|Ivan's Hero|False|True
 2|1|Dirty Grin|False|False
 2|14|Overactive|False|False
@@ -41,7 +41,7 @@
 4|5|Odenkirk|False|False
 4|9|Confection|False|False
 4|14|Oversourced|False|False
-4|4|Noctis|False|False
+4|4|Noctis|False|True
 4|13|Nissaki|False|False
 4|15|Rubitrix|False|False
 4|6|Soladin|False|False
@@ -57,7 +57,7 @@
 5|7|Jett Smash|False|False
 5|6|Jimmy Recard|False|False
 5|9|Tres Magnifique|False|False
-5|11|Prestige Lucky|False|False
+5|11|Prestige Lucky|False|True
 5|10|Karren|False|False
 5|460|Van Roy|False|False
 5|170|Gregolimo|False|False
@@ -145,7 +145,7 @@
 9|9|Charterhouse|False|False
 9|1|Bianco Vilano|False|True
 9|10|Williamsburg|False|False
-9|12|Fiorenot|False|False
+9|12|Fiorenot|False|True
 9|5|Makdane|False|False
 9|3|Wymark|False|False
 9|2|Revelare|False|False

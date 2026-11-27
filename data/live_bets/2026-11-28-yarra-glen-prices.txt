@@ -1,90 +1,90 @@
-# Yarra Valley Sat 28 Nov, official going, final fields; no market yet; PROVISIONAL: 1 runners without a rider; PAPER ONLY (the model has 62 races at this venue, 0 since the 3 Jun holdout)
-1, Mathletes, 0, 0
-1, Highland Diva, 0, 0
-1, Immortal Truth, SCR
-1, Wanted Enuff, 0, 0
-1, Magica, 0, 0
-1, Reina Del Rio, 0, 0
-1, Excelamidas, 0, 0
-1, Seven Day Rebels, 0, 0
-1, Duchess Xenia, 0, 0
-1, Valentina Girl, 0, 0
-1, Queen's English, 0, 0
-2, Ta Ta Tango, 0, 0
-2, Gold Nugget, SCR
+# Yarra Valley Sat 28 Nov, official going, final fields; market open in R1,2,3,4,5,6,7; PAPER ONLY (the model has 62 races at this venue, 0 since the 3 Jun holdout)
+1, Mathletes, 13.00, 13.00, fk_open 18.60
+1, Highland Diva, SCR
+1, Immortal Truth, 15.00, 15.00, fk_open 9.80
+1, Wanted Enuff, 6.50, 6.50, fk_open 4.10
+1, Magica, 6.25, 6.25, fk_open 13.60
+1, Reina Del Rio, 7.00, 7.00, fk_open 8.30
+1, Excelamidas, SCR
+1, Seven Day Rebels, 3.20, 3.20, fk_open 2.64
+1, Duchess Xenia, SCR
+1, Valentina Girl, 3.20, 3.20, fk_open 2.64
+1, Queen's English, SCR
+2, Ta Ta Tango, 101.00, 101.00, fk_open 60.20
+2, Gold Nugget, 51.00, 51.00, fk_open 29.00
 2, Think Sassy, SCR
-2, Inner Thoughts, 0, 0
-2, Love Rustler, 0, 0
-2, Prestige Maddy, 0, 0
-2, Heavy Is The Head, 0, 0
-2, Our Alexa, 0, 0
-2, Torzannie, 0, 0
-2, Mistressof Mayfair, 0, 0
-2, Setfortakeoff, 0, 0
-2, Velocite Belle, 0, 0
-3, Now Hear This, 0, 0
-3, Welcometodetroit, 0, 0
-3, Mo Mo's Choise, 0, 0
-3, Smart Eddie, 0, 0
-3, Bowdacious Gold, 0, 0
-3, Western Edge, 0, 0
-3, Stomping Ground, 0, 0
-3, Xtra Black, 0, 0
-3, Bruceismyname, 0, 0
-3, Gozaimasu, 0, 0
-4, Sheila, 0, 0
+2, Inner Thoughts, SCR
+2, Love Rustler, 2.15, 2.15, fk_open 2.51
+2, Prestige Maddy, 4.20, 4.20, fk_open 3.38
+2, Heavy Is The Head, 2.90, 2.90, fk_open 2.46
+2, Our Alexa, 31.00, 31.00, fk_open 29.00
+2, Torzannie, 8.00, 8.00, fk_open 6.40
+2, Mistressof Mayfair, SCR
+2, Setfortakeoff, SCR
+2, Velocite Belle, SCR
+3, Now Hear This, 34.00, 34.00, fk_open 41.00
+3, Welcometodetroit, 7.50, 7.50, fk_open 10.00
+3, Mo Mo's Choise, 8.50, 8.50, fk_open 5.00
+3, Smart Eddie, 41.00, 41.00, fk_open 23.00
+3, Bowdacious Gold, 41.00, 41.00, fk_open 16.00
+3, Western Edge, 67.00, 67.00, fk_open 23.00
+3, Stomping Ground, SCR
+3, Xtra Black, 2.70, 2.70, fk_open 2.15
+3, Bruceismyname, 11.00, 11.00, fk_open 16.00
+3, Gozaimasu, 2.30, 2.30, fk_open 3.10
+4, Sheila, 14.00, 14.00, fk_open 19.00
 4, Aquilion Girl, SCR
-4, Sleeping Tiger, 0, 0
-4, Epic Centre, 0, 0
-4, Laura's Gold, SCR
-4, Densetsu, 0, 0
-4, Shyleah, SCR
-4, Altruist, 0, 0
-4, Bring The Thunder, 0, 0
-4, Brazen Fling, 0, 0
-4, Bronco Revolution, 0, 0
-4, Rock Glory, SCR
-4, Beau Strada, 0, 0
-4, Wild Roses Grow, 0, 0
-5, Amphactor, SCR
-5, Blanche Bass, 0, 0
-5, Mannerheim, 0, 0
-5, Monsun's Pride, 0, 0
-5, Larryoctane, 0, 0
-5, Paltinian, 0, 0
-5, I'mfallinforyou, 0, 0
+4, Sleeping Tiger, SCR
+4, Epic Centre, 4.60, 4.60, fk_open 3.50
+4, Laura's Gold, 11.00, 11.00, fk_open 10.00
+4, Densetsu, SCR
+4, Shyleah, 35.00, 35.00, fk_open 26.00
+4, Altruist, 3.00, 3.00, fk_open 4.20
+4, Bring The Thunder, 11.00, 11.00, fk_open 7.50
+4, Brazen Fling, SCR
+4, Bronco Revolution, 8.00, 8.00, fk_open 6.00
+4, Rock Glory, 71.00, 71.00, fk_open 34.00
+4, Beau Strada, 4.50, 4.50, fk_open 3.50
+4, Wild Roses Grow, SCR
+5, Amphactor, 8.00, 8.00, fk_open 9.00
+5, Blanche Bass, 17.00, 17.00, fk_open 13.00
+5, Mannerheim, 5.50, 5.50, fk_open 4.80
+5, Monsun's Pride, SCR
+5, Larryoctane, SCR
+5, Paltinian, 3.20, 3.20, fk_open 2.85
+5, I'mfallinforyou, 7.50, 7.50, fk_open 9.50
 5, Eight Under, SCR
-5, Chateau Dancer, 0, 0
-5, Scandoval, SCR
-5, Riozino, 0, 0
+5, Chateau Dancer, 7.00, 7.00, fk_open 10.50
+5, Scandoval, 34.00, 34.00, fk_open 30.50
+5, Riozino, 20.00, 20.00, fk_open 14.00
 5, Tipsy Gypsy, SCR
 5, Stole Him, SCR
-5, King Kauffo, 0, 0
-6, Sheer Lunacy, 0, 0
-6, Alpinova, SCR
-6, Chambers Bay, 0, 0
+5, King Kauffo, 5.00, 5.00, fk_open 3.90
+6, Sheer Lunacy, 11.00, 11.00, fk_open 7.17
+6, Alpinova, 7.50, 7.50, fk_open 7.17
+6, Chambers Bay, 11.00, 11.00, fk_open 12.33
 6, Stand By Me Ned, SCR
-6, Ricky Runs, 0, 0
+6, Ricky Runs, 15.00, 15.00, fk_open 9.67
 6, Sinhalese, SCR
-6, Scholl Deep, 0, 0
-6, Jazzanski, 0, 0
-6, Pensatore, 0, 0
-6, Silver Snow, 0, 0
-6, Jingu Express, 0, 0
-6, Hellish Lee, 0, 0
+6, Scholl Deep, 12.00, 12.00, fk_open 17.33
+6, Jazzanski, SCR
+6, Pensatore, 8.00, 8.00, fk_open 10.67
+6, Silver Snow, 3.20, 3.20, fk_open 2.58
+6, Jingu Express, 10.00, 10.00, fk_open 13.33
+6, Hellish Lee, 6.50, 6.50, fk_open 4.60
 6, Sweet But Sassy, SCR
-6, Slippery Thinker, SCR
-7, Headstock, 0, 0
-7, Wild Irish Rover, 0, 0
+6, Slippery Thinker, 17.00, 17.00, fk_open 12.33
+7, Headstock, 10.00, 10.00, fk_open 7.50
+7, Wild Irish Rover, SCR
 7, Iliad, SCR
-7, True Prophet, 0, 0
-7, Vaafee, 0, 0
+7, True Prophet, 9.00, 9.00, fk_open 9.38
+7, Vaafee, SCR
 7, Point Of Ecstasy, SCR
-7, Mythic, 0, 0
-7, Tipping Rain, SCR
-7, Arabian Myth, 0, 0
-7, Stewart, SCR
-7, Monte Cassino, 0, 0
-7, Dubai Fountain, 0, 0
-7, Popthebubbly, 0, 0
-7, Too Much Too Soon, 0, 0
+7, Mythic, 18.00, 18.00, fk_open 18.00
+7, Tipping Rain, 4.40, 4.40, fk_open 7.13
+7, Arabian Myth, 7.00, 7.00, fk_open 5.50
+7, Stewart, 15.00, 15.00, fk_open 17.75
+7, Monte Cassino, 12.00, 12.00, fk_open 13.75
+7, Dubai Fountain, 12.00, 12.00, fk_open 7.38
+7, Popthebubbly, 7.00, 7.00, fk_open 5.88
+7, Too Much Too Soon, 5.50, 5.50, fk_open 3.15

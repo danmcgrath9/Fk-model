@@ -1,64 +1,64 @@
-# Sandown Hillside Sat 28 Nov, official going, final fields; market open in R1,2,3,4,5,6,7,8,9,10; PROVISIONAL: 50 runners without a rider
-1, Jazz Affair, 12.00, 12.00, fk_open 11.00
-1, Bon Mistress, 29.00, 29.00, fk_open 15.00
-1, Cat Noir, 12.00, 12.00, fk_open 13.00
-1, Coco Jen, 7.50, 7.50, fk_open 8.00
-1, World's My Oyster, 29.00, 29.00, fk_open 19.00
-1, Oak Beach, 11.00, 11.00, fk_open 7.50
-1, Illyivy, 12.00, 12.00, fk_open 9.00
-1, Bon Fete, 7.00, 7.00, fk_open 7.50
-1, Jenni You Think, 3.00, 3.00, fk_open 3.50
-1, Cooly, 8.50, 8.50, fk_open 7.00
-1, Silvasista, 18.00, 18.00, fk_open 15.00
+# Sandown Hillside Sat 28 Nov, official going, final fields; market open in R1,2,3,4,5,6,7,8,9,10; PROVISIONAL: 49 runners without a rider
+1, Jazz Affair, 11.00, 11.00, fk_open 11.00
+1, Bon Mistress, 23.00, 23.00, fk_open 15.00
+1, Cat Noir, 11.00, 11.00, fk_open 13.00
+1, Coco Jen, 6.50, 6.50, fk_open 8.00
+1, World's My Oyster, 0, 0
+1, Oak Beach, 9.00, 9.00, fk_open 7.50
+1, Illyivy, 11.00, 11.00, fk_open 9.00
+1, Bon Fete, 6.50, 6.50, fk_open 7.50
+1, Jenni You Think, 2.90, 2.90, fk_open 3.50
+1, Cooly, 8.00, 8.00, fk_open 7.00
+1, Silvasista, SCR
 2, Ivan's Hero, SCR
-2, Dirty Grin, 71.00, 71.00, fk_open 71.00
-2, Overactive, 35.00, 35.00, fk_open 18.00
-2, Maisy, 18.00, 18.00, fk_open 15.00
-2, Until Valhalla, 81.00, 81.00, fk_open 46.00
-2, King Tut, 15.00, 15.00, fk_open 15.00
+2, Dirty Grin, 81.00, 81.00, fk_open 71.00
+2, Overactive, 41.00, 41.00, fk_open 18.00
+2, Maisy, 21.00, 21.00, fk_open 15.00
+2, Until Valhalla, 101.00, 101.00, fk_open 46.00
+2, King Tut, 13.00, 13.00, fk_open 15.00
 2, Rosa Aotearoa, 5.00, 5.00, fk_open 6.50
-2, Charming Nic, 34.00, 34.00, fk_open 28.50
+2, Charming Nic, 41.00, 41.00, fk_open 28.50
 2, Sergeant Major, 13.00, 13.00, fk_open 15.00
-2, Princess Que, 15.00, 15.00, fk_open 15.00
-2, Esmahli, 5.00, 5.00, fk_open 4.60
+2, Princess Que, 14.00, 14.00, fk_open 15.00
+2, Esmahli, 5.25, 5.25, fk_open 4.60
 2, Trapdoor, 7.00, 7.00, fk_open 5.75
 2, Bacash, 7.00, 7.00, fk_open 9.50
 2, Miewa, 12.00, 12.00, fk_open 13.00
-2, Danzsin, 13.00, 13.00, fk_open 15.00
-3, Chancellor, 81.00, 81.00, fk_open 101.00
-3, Chip In, 23.00, 23.00, fk_open 21.00
-3, Billycart, 1.55, 1.55, fk_open 1.60
-3, Gilgeous, 10.00, 10.00, fk_open 8.50
-3, Franked Up, 5.00, 5.00, fk_open 8.00
-3, Mossquillo, 51.00, 51.00, fk_open 41.00
-3, Fine And Sunny, 23.00, 23.00, fk_open 17.00
+2, Danzsin, 12.00, 12.00, fk_open 15.00
+3, Chancellor, 126.00, 126.00, fk_open 101.00
+3, Chip In, 27.00, 27.00, fk_open 21.00
+3, Billycart, 1.65, 1.65, fk_open 1.60
+3, Gilgeous, 11.00, 11.00, fk_open 8.50
+3, Franked Up, 4.80, 4.80, fk_open 8.00
+3, Mossquillo, 71.00, 71.00, fk_open 41.00
+3, Fine And Sunny, 26.00, 26.00, fk_open 17.00
 3, Exultant, 51.00, 51.00, fk_open 101.00
-3, Town Planner, 7.50, 7.50, fk_open 4.40
-4, Royal Press, 3.90, 3.90, fk_open 3.80
-4, Hanseatic Girl, 41.00, 41.00, fk_open 19.00
-4, Crystal Affair, 21.00, 21.00, fk_open 16.00
+3, Town Planner, 8.00, 8.00, fk_open 4.40
+4, Royal Press, 3.60, 3.60, fk_open 3.80
+4, Hanseatic Girl, 31.00, 31.00, fk_open 19.00
+4, Crystal Affair, 18.00, 18.00, fk_open 16.00
 4, In Eutopia, 15.00, 15.00, fk_open 9.50
-4, Natural Emotion, 12.00, 12.00, fk_open 8.00
-4, Odenkirk, 6.00, 6.00, fk_open 8.50
-4, Confection, 14.00, 14.00, fk_open 19.00
-4, Oversourced, 10.00, 10.00, fk_open 16.00
-4, Noctis, 8.50, 8.50, fk_open 9.50
-4, Nissaki, 21.00, 21.00, fk_open 19.00
-4, Rubitrix, 12.00, 12.00, fk_open 8.50
-4, Soladin, 71.00, 71.00, fk_open 51.00
-4, Lewashaa, 26.00, 26.00, fk_open 26.00
-4, Blingaling, 26.00, 26.00, fk_open 23.00
-4, Darn Spicy, 16.00, 16.00, fk_open 16.00
-5, Klabel, 101.00, 101.00, fk_open 66.00
+4, Natural Emotion, 11.00, 11.00, fk_open 8.00
+4, Odenkirk, 5.50, 5.50, fk_open 8.50
+4, Confection, 13.00, 13.00, fk_open 19.00
+4, Oversourced, 9.00, 9.00, fk_open 16.00
+4, Noctis, SCR
+4, Nissaki, 19.00, 19.00, fk_open 19.00
+4, Rubitrix, 11.00, 11.00, fk_open 8.50
+4, Soladin, 67.00, 67.00, fk_open 51.00
+4, Lewashaa, 23.00, 23.00, fk_open 26.00
+4, Blingaling, 23.00, 23.00, fk_open 23.00
+4, Darn Spicy, 14.00, 14.00, fk_open 16.00
+5, Klabel, 81.00, 81.00, fk_open 66.00
 5, Marble Nine, 21.00, 21.00, fk_open 17.67
-5, Quiseen, 34.00, 34.00, fk_open 26.00
-5, Oak Hill, 27.00, 27.00, fk_open 19.00
-5, Photograph, 4.20, 4.20, fk_open 4.70
+5, Quiseen, 0, 0
+5, Oak Hill, 26.00, 26.00, fk_open 19.00
+5, Photograph, 4.00, 4.00, fk_open 4.70
 5, Guerite, 21.00, 21.00, fk_open 13.50
 5, Jett Smash, 2.60, 2.60, fk_open 3.35
-5, Jimmy Recard, 9.00, 9.00, fk_open 9.75
-5, Tres Magnifique, 8.00, 8.00, fk_open 5.00
-5, Prestige Lucky, 23.00, 23.00, fk_open 16.00
+5, Jimmy Recard, 8.50, 8.50, fk_open 9.75
+5, Tres Magnifique, 7.00, 7.00, fk_open 5.00
+5, Prestige Lucky, SCR
 5, Karren, 8.00, 8.00, fk_open 6.75
 5, Van Roy, 0, 0
 5, Gregolimo, 0, 0
@@ -108,72 +108,72 @@
 5, Silvasista, 0, 0
 5, Danzsin, 0, 0
 5, Space Rider, 0, 0
-6, Oceans Blue, 7.50, 7.50, fk_open 9.00
+6, Oceans Blue, 8.00, 8.00, fk_open 9.00
 6, Pasatiempo, 151.00, 151.00, fk_open 101.00
 6, Cavill Avenue, 2.05, 2.05, fk_open 1.90
-6, Lafarna, 7.00, 7.00, fk_open 10.00
-6, Tale Of Genji, 41.00, 41.00, fk_open 34.00
+6, Lafarna, 8.00, 8.00, fk_open 10.00
+6, Tale Of Genji, 0, 0
 6, Handee, 10.00, 10.00, fk_open 7.25
-6, Sayalero, 81.00, 81.00, fk_open 81.00
-6, Sound Byte, 15.00, 15.00, fk_open 9.00
-6, Shintono, 21.00, 21.00, fk_open 18.00
-6, Sunbliss, 6.50, 6.50, fk_open 7.25
-6, Engulf, 51.00, 51.00, fk_open 32.50
-7, Wuddzz, 51.00, 51.00, fk_open 26.00
+6, Sayalero, 126.00, 126.00, fk_open 81.00
+6, Sound Byte, 13.00, 13.00, fk_open 9.00
+6, Shintono, 15.00, 15.00, fk_open 18.00
+6, Sunbliss, 7.00, 7.00, fk_open 7.25
+6, Engulf, 61.00, 61.00, fk_open 32.50
+7, Wuddzz, 0, 0
 7, Black Peppermint, 21.00, 21.00, fk_open 19.00
-7, Vauban, 9.50, 9.50, fk_open 7.75
+7, Vauban, 9.00, 9.00, fk_open 7.75
 7, Asterix, 14.00, 14.00, fk_open 15.50
-7, Affluential, 101.00, 101.00, fk_open 51.00
+7, Affluential, 81.00, 81.00, fk_open 51.00
 7, Manzor Blue, 4.00, 4.00, fk_open 5.50
-7, Beach Pad, 11.00, 11.00, fk_open 6.50
+7, Beach Pad, 10.00, 10.00, fk_open 6.50
 7, Suffolk Star, 51.00, 51.00, fk_open 23.00
 7, Sir Chartwell, 21.00, 21.00, fk_open 18.00
-7, Sam Hawkens, 20.00, 20.00, fk_open 34.00
-7, Hawk Power, 81.00, 81.00, fk_open 41.00
+7, Sam Hawkens, 18.00, 18.00, fk_open 34.00
+7, Hawk Power, 61.00, 61.00, fk_open 41.00
 7, Highland Bling, 5.00, 5.00, fk_open 4.60
 7, Power Pivot, 17.00, 17.00, fk_open 19.00
-7, Autumn Mystery, 5.25, 5.25, fk_open 4.60
-8, Phearson, 18.00, 18.00, fk_open 17.00
-8, Here To Shock, 11.00, 11.00, fk_open 15.00
-8, Holymanz, 27.00, 27.00, fk_open 21.00
-8, Sammarco, 151.00, 151.00, fk_open 81.00
+7, Autumn Mystery, 5.75, 5.75, fk_open 4.60
+8, Phearson, 17.00, 17.00, fk_open 17.00
+8, Here To Shock, 12.00, 12.00, fk_open 15.00
+8, Holymanz, 23.00, 23.00, fk_open 21.00
+8, Sammarco, 126.00, 126.00, fk_open 81.00
 8, Punch Lane, 10.00, 10.00, fk_open 9.00
 8, King Zephyr, 3.60, 3.60, fk_open 4.40
-8, Run Harry Run, 4.20, 4.20, fk_open 3.20
+8, Run Harry Run, 4.60, 4.60, fk_open 3.20
 8, Recon, 3.80, 3.80, fk_open 6.00
-8, Ramadan, 8.50, 8.50, fk_open 5.00
-8, Miss Playlounge, 67.00, 67.00, fk_open 26.00
-9, Charterhouse, 67.00, 67.00, fk_open 61.00
+8, Ramadan, 8.00, 8.00, fk_open 5.00
+8, Miss Playlounge, 0, 0
+9, Charterhouse, 27.00, 27.00, fk_open 61.00
 9, Bianco Vilano, SCR
-9, Williamsburg, 41.00, 41.00, fk_open 26.00
-9, Fiorenot, 7.50, 7.50, fk_open 7.50
-9, Makdane, 23.00, 23.00, fk_open 13.00
-9, Wymark, 41.00, 41.00, fk_open 41.00
-9, Revelare, 5.75, 5.75, fk_open 5.00
-9, Sav On Ice, 26.00, 26.00, fk_open 26.00
-9, Moonlight Circus, 41.00, 41.00, fk_open 26.00
-9, Cilacap, 11.00, 11.00, fk_open 15.00
-9, Nobler, 3.40, 3.40, fk_open 4.80
-9, Roulette King, 8.50, 8.50, fk_open 7.75
+9, Williamsburg, 17.00, 17.00, fk_open 26.00
+9, Fiorenot, SCR
+9, Makdane, 9.50, 9.50, fk_open 13.00
+9, Wymark, 18.00, 18.00, fk_open 41.00
+9, Revelare, 0, 0
+9, Sav On Ice, 13.00, 13.00, fk_open 26.00
+9, Moonlight Circus, 19.00, 19.00, fk_open 26.00
+9, Cilacap, 6.00, 6.00, fk_open 15.00
+9, Nobler, 2.30, 2.30, fk_open 4.80
+9, Roulette King, 6.00, 6.00, fk_open 7.75
 9, Paltrow Miss, SCR
-9, Sulek, 4.80, 4.80, fk_open 6.50
+9, Sulek, 0, 0
 10, Charisse, 81.00, 81.00, fk_open 51.00
 10, He'll Rip, SCR
-10, Flying Mikki, 14.00, 14.00, fk_open 15.00
+10, Flying Mikki, 13.00, 13.00, fk_open 15.00
 10, No Fuss, SCR
-10, Haaracaine, 26.00, 26.00, fk_open 21.00
-10, Two Wolves, 14.00, 14.00, fk_open 9.00
-10, Stay Humble, SCR, fk_open 18.00
-10, Bergasun, 71.00, 71.00, fk_open 41.00
-10, Midnite Storm, 9.00, 9.00, fk_open 21.00
-10, Somewhere, 7.50, 7.50, fk_open 4.40
-10, Houdini, 14.00, 14.00, fk_open 7.50
-10, Test Of Love, 16.00, 16.00, fk_open 14.00
-10, Taung, 23.00, 23.00, fk_open 12.00
-10, Wetumpka, SCR, fk_open 4.80
-10, Options, 8.00, 8.00, fk_open 12.00
-10, Just A Journey, 13.00, 13.00, fk_open 17.00
-10, Lightening Mann, SCR, fk_open 61.00
+10, Haaracaine, 0, 0
+10, Two Wolves, 0, 0
+10, Stay Humble, 18.00, 18.00, fk_open 18.00
+10, Bergasun, 81.00, 81.00, fk_open 41.00
+10, Midnite Storm, 0, 0
+10, Somewhere, 6.00, 6.00, fk_open 4.40
+10, Houdini, 12.00, 12.00, fk_open 7.50
+10, Test Of Love, 15.00, 15.00, fk_open 14.00
+10, Taung, 21.00, 21.00, fk_open 12.00
+10, Wetumpka, 3.60, 3.60, fk_open 4.80
+10, Options, 9.00, 9.00, fk_open 12.00
+10, Just A Journey, 11.00, 11.00, fk_open 17.00
+10, Lightening Mann, 61.00, 61.00, fk_open 61.00
 10, Jareth, 23.00, 23.00, fk_open 17.00
-10, Impulsive Reaction, 13.00, 13.00, fk_open 14.00
+10, Impulsive Reaction, 12.00, 12.00, fk_open 14.00
 10, Space Rider, SCR

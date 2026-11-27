@@ -1,0 +1,84 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-11-28,Yarra Glen,1,,2,Seven Day Rebels,WIN,2.87,3.99,4.42,221,1 of 2,4.42u,2.42,opens under $4: edge 1.15
+2026-11-28,Yarra Glen,1,,2,Seven Day Rebels,WIN,3.59,3.99,1.03,52,2 of 2,5.45u,2.42,opens under $4: edge 1.15
+2026-11-28,Yarra Glen,1,,2,Seven Day Rebels,WIN,4.00,14.49,4.79,240,1 of 3,4.79u,2.42,
+2026-11-28,Yarra Glen,1,,2,Seven Day Rebels,WIN,4.00,14.49,0.87,44,2 of 3,5.66u,2.42,
+2026-11-28,Yarra Glen,1,,2,Seven Day Rebels,WIN,5.32,14.49,4.34,217,3 of 3,10.00u,2.42,opens $5.32+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,1,,10,Valentina Girl,WIN,5.76,26.66,2.16,108,1 of 3,2.16u,4.44,
+2026-11-28,Yarra Glen,1,,10,Valentina Girl,WIN,7.20,26.66,0.48,24,2 of 3,2.64u,4.44,
+2026-11-28,Yarra Glen,1,,10,Valentina Girl,WIN,9.78,26.66,2.64,132,3 of 3,5.28u,4.44,opens $9.78+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,1,,7,Wanted Enuff,WIN,13.27,15.01,0.47,24,1 of 1,0.47u,9.83,EARLY: $15 or shorter only
+2026-11-28,Yarra Glen,2,,1,Heavy Is The Head,WIN,3.18,3.99,3.86,193,1 of 2,3.86u,2.66,opens under $4: edge 1.15
+2026-11-28,Yarra Glen,2,,1,Heavy Is The Head,WIN,3.98,3.99,0.93,46,2 of 2,4.79u,2.66,opens under $4: edge 1.15
+2026-11-28,Yarra Glen,2,,1,Heavy Is The Head,WIN,4.00,15.97,4.19,210,1 of 3,4.19u,2.66,
+2026-11-28,Yarra Glen,2,,1,Heavy Is The Head,WIN,4.20,15.97,0.79,40,2 of 3,4.98u,2.66,
+2026-11-28,Yarra Glen,2,,1,Heavy Is The Head,WIN,5.86,15.97,4.98,249,3 of 3,9.96u,2.66,opens $5.86+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,2,,3,Love Rustler,WIN,3.88,3.99,2.98,149,1 of 1,2.98u,3.21,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-11-28,Yarra Glen,2,,3,Love Rustler,WIN,4.10,15.01,3.25,162,1 of 3,3.25u,3.21,EARLY: $15 or shorter only
+2026-11-28,Yarra Glen,2,,3,Love Rustler,WIN,5.12,15.01,0.67,34,2 of 3,3.92u,3.21,EARLY: $15 or shorter only
+2026-11-28,Yarra Glen,2,,3,Love Rustler,WIN,7.08,15.01,3.92,196,3 of 3,7.84u,3.21,EARLY: $15 or shorter only; opens $7.08+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,2,,5,Prestige Maddy,WIN,5.61,26.03,2.22,111,1 of 3,2.22u,4.34,
+2026-11-28,Yarra Glen,2,,5,Prestige Maddy,WIN,7.01,26.03,0.49,24,2 of 3,2.71u,4.34,
+2026-11-28,Yarra Glen,2,,5,Prestige Maddy,WIN,9.55,26.03,2.71,136,3 of 3,5.42u,4.34,opens $9.55+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,3,,10,Xtra Black,WIN,4.79,15.01,2.69,134,1 of 3,2.69u,3.73,EARLY: $15 or shorter only
+2026-11-28,Yarra Glen,3,,10,Xtra Black,WIN,5.99,15.01,0.57,28,2 of 3,3.26u,3.73,EARLY: $15 or shorter only
+2026-11-28,Yarra Glen,3,,10,Xtra Black,WIN,8.21,15.01,3.26,163,3 of 3,6.52u,3.73,EARLY: $15 or shorter only; opens $8.21+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,4,,3,Altruist,WIN,4.41,15.01,2.97,148,1 of 3,2.97u,3.45,EARLY: $15 or shorter only
+2026-11-28,Yarra Glen,4,,3,Altruist,WIN,5.51,15.01,0.62,31,2 of 3,3.59u,3.45,EARLY: $15 or shorter only
+2026-11-28,Yarra Glen,4,,3,Altruist,WIN,7.59,15.01,3.59,180,3 of 3,7.18u,3.45,EARLY: $15 or shorter only; opens $7.59+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,4,,5,Beau Strada,WIN,6.31,29.10,1.94,97,1 of 3,1.94u,4.85,
+2026-11-28,Yarra Glen,4,,5,Beau Strada,WIN,7.89,29.10,0.44,22,2 of 3,2.38u,4.85,
+2026-11-28,Yarra Glen,4,,5,Beau Strada,WIN,10.67,29.10,2.38,119,3 of 3,4.76u,4.85,opens $10.67+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,4,,8,Bronco Revolution,WIN,6.99,32.05,1.73,86,1 of 3,1.73u,5.34,
+2026-11-28,Yarra Glen,4,,8,Bronco Revolution,WIN,8.74,32.05,0.39,20,2 of 3,2.12u,5.34,
+2026-11-28,Yarra Glen,4,,8,Bronco Revolution,WIN,11.76,32.05,2.12,106,3 of 3,4.24u,5.34,opens $11.76+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,4,,1,Epic Centre,WIN,6.19,28.57,1.99,100,1 of 3,1.99u,4.76,
+2026-11-28,Yarra Glen,4,,1,Epic Centre,WIN,7.74,28.57,0.44,22,2 of 3,2.43u,4.76,
+2026-11-28,Yarra Glen,4,,1,Epic Centre,WIN,10.48,28.57,2.43,122,3 of 3,4.86u,4.76,opens $10.48+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,5,,10,Chateau Dancer,WIN,9.71,43.84,1.20,60,1 of 3,1.20u,7.31,
+2026-11-28,Yarra Glen,5,,10,Chateau Dancer,WIN,12.14,43.84,0.28,14,2 of 3,1.48u,7.31,
+2026-11-28,Yarra Glen,5,,10,Chateau Dancer,WIN,16.08,43.84,1.48,74,3 of 3,2.96u,7.31,opens $16.08+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,5,,8,I'mfallinforyou,WIN,8.59,39.02,1.37,68,1 of 3,1.37u,6.50,
+2026-11-28,Yarra Glen,5,,8,I'mfallinforyou,WIN,10.74,39.02,0.32,16,2 of 3,1.69u,6.50,
+2026-11-28,Yarra Glen,5,,8,I'mfallinforyou,WIN,14.31,39.02,1.69,84,3 of 3,3.38u,6.50,opens $14.31+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,5,,1,King Kauffo,WIN,9.64,43.54,1.21,60,1 of 3,1.21u,7.26,
+2026-11-28,Yarra Glen,5,,1,King Kauffo,WIN,12.05,43.54,0.29,14,2 of 3,1.50u,7.26,
+2026-11-28,Yarra Glen,5,,1,King Kauffo,WIN,15.97,43.54,1.50,75,3 of 3,3.00u,7.26,opens $15.97+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,5,,2,Mannerheim,WIN,6.74,30.96,1.81,90,1 of 3,1.81u,5.16,
+2026-11-28,Yarra Glen,5,,2,Mannerheim,WIN,8.43,30.96,0.40,20,2 of 3,2.21u,5.16,
+2026-11-28,Yarra Glen,5,,2,Mannerheim,WIN,11.36,30.96,2.21,110,3 of 3,4.42u,5.16,opens $11.36+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,5,,4,Paltinian,WIN,3.85,3.99,3.01,150,1 of 1,3.01u,3.19,opens under $4: edge 1.15
+2026-11-28,Yarra Glen,5,,4,Paltinian,WIN,4.06,19.13,3.28,164,1 of 3,3.28u,3.19,
+2026-11-28,Yarra Glen,5,,4,Paltinian,WIN,5.07,19.13,0.67,34,2 of 3,3.95u,3.19,
+2026-11-28,Yarra Glen,5,,4,Paltinian,WIN,7.02,19.13,3.95,198,3 of 3,7.90u,3.19,opens $7.02+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,6,,1,Chambers Bay,WIN,18.88,82.53,0.59,30,1 of 2,0.59u,13.75,
+2026-11-28,Yarra Glen,6,,1,Chambers Bay,WIN,23.60,82.53,0.15,8,2 of 2,0.74u,13.75,
+2026-11-28,Yarra Glen,6,,6,Hellish Lee,WIN,8.25,37.56,1.44,72,1 of 3,1.44u,6.26,
+2026-11-28,Yarra Glen,6,,6,Hellish Lee,WIN,10.31,37.56,0.33,16,2 of 3,1.77u,6.26,
+2026-11-28,Yarra Glen,6,,6,Hellish Lee,WIN,13.78,37.56,1.77,88,3 of 3,3.54u,6.26,opens $13.78+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,6,,10,Jingu Express,WIN,9.30,42.06,1.26,63,1 of 3,1.26u,7.01,
+2026-11-28,Yarra Glen,6,,10,Jingu Express,WIN,11.62,42.06,0.30,15,2 of 3,1.56u,7.01,
+2026-11-28,Yarra Glen,6,,10,Jingu Express,WIN,15.43,42.06,1.56,78,3 of 3,3.12u,7.01,opens $15.43+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,6,,4,Pensatore,WIN,15.96,70.32,0.71,36,1 of 2,0.71u,11.72,
+2026-11-28,Yarra Glen,6,,4,Pensatore,WIN,19.95,70.32,0.17,8,2 of 2,0.88u,11.72,
+2026-11-28,Yarra Glen,6,,2,Sheer Lunacy,WIN,16.32,71.84,0.69,34,1 of 2,0.69u,11.97,
+2026-11-28,Yarra Glen,6,,2,Sheer Lunacy,WIN,20.40,71.84,0.17,8,2 of 2,0.86u,11.97,
+2026-11-28,Yarra Glen,6,,3,Silver Snow,WIN,3.56,3.99,3.33,166,1 of 1,3.33u,2.96,opens under $4: edge 1.15
+2026-11-28,Yarra Glen,6,,3,Silver Snow,WIN,4.00,17.77,3.63,182,1 of 3,3.63u,2.96,
+2026-11-28,Yarra Glen,6,,3,Silver Snow,WIN,4.70,17.77,0.72,36,2 of 3,4.35u,2.96,
+2026-11-28,Yarra Glen,6,,3,Silver Snow,WIN,6.52,17.77,4.35,217,3 of 3,8.70u,2.96,opens $6.52+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,7,,3,Arabian Myth,WIN,6.17,28.46,2.00,100,1 of 3,2.00u,4.74,
+2026-11-28,Yarra Glen,7,,3,Arabian Myth,WIN,7.71,28.46,0.44,22,2 of 3,2.44u,4.74,
+2026-11-28,Yarra Glen,7,,3,Arabian Myth,WIN,10.44,28.46,2.44,122,3 of 3,4.88u,4.74,opens $10.44+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,7,,1,Headstock,WIN,11.48,51.40,1.00,50,1 of 2,1.00u,8.57,
+2026-11-28,Yarra Glen,7,,1,Headstock,WIN,14.35,51.40,0.24,12,2 of 2,1.24u,8.57,
+2026-11-28,Yarra Glen,7,,5,Mythic,WIN,14.23,63.06,0.80,40,1 of 2,0.80u,10.51,
+2026-11-28,Yarra Glen,7,,5,Mythic,WIN,17.79,63.06,0.19,10,2 of 2,0.99u,10.51,
+2026-11-28,Yarra Glen,7,,9,Popthebubbly,WIN,7.03,32.23,1.72,86,1 of 3,1.72u,5.37,
+2026-11-28,Yarra Glen,7,,9,Popthebubbly,WIN,8.79,32.23,0.39,20,2 of 3,2.11u,5.37,
+2026-11-28,Yarra Glen,7,,9,Popthebubbly,WIN,11.82,32.23,2.11,106,3 of 3,4.22u,5.37,opens $11.82+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,7,,10,Too Much Too Soon,WIN,7.40,33.84,1.62,81,1 of 3,1.62u,5.64,
+2026-11-28,Yarra Glen,7,,10,Too Much Too Soon,WIN,9.25,33.84,0.37,18,2 of 3,1.99u,5.64,
+2026-11-28,Yarra Glen,7,,10,Too Much Too Soon,WIN,12.41,33.84,1.99,100,3 of 3,3.98u,5.64,opens $12.41+ (2.2x ours): stake doubled
+2026-11-28,Yarra Glen,7,,2,True Prophet,WIN,16.31,71.80,0.69,34,1 of 2,0.69u,11.97,
+2026-11-28,Yarra Glen,7,,2,True Prophet,WIN,20.39,71.80,0.17,8,2 of 2,0.86u,11.97,

@@ -1,0 +1,90 @@
+# Yarra Valley Sat 28 Nov, official going, final fields; no market yet; PROVISIONAL: 1 runners without a rider; PAPER ONLY (the model has 62 races at this venue, 0 since the 3 Jun holdout)
+1, Mathletes, 0, 0
+1, Highland Diva, 0, 0
+1, Immortal Truth, SCR
+1, Wanted Enuff, 0, 0
+1, Magica, 0, 0
+1, Reina Del Rio, 0, 0
+1, Excelamidas, 0, 0
+1, Seven Day Rebels, 0, 0
+1, Duchess Xenia, 0, 0
+1, Valentina Girl, 0, 0
+1, Queen's English, 0, 0
+2, Ta Ta Tango, 0, 0
+2, Gold Nugget, SCR
+2, Think Sassy, SCR
+2, Inner Thoughts, 0, 0
+2, Love Rustler, 0, 0
+2, Prestige Maddy, 0, 0
+2, Heavy Is The Head, 0, 0
+2, Our Alexa, 0, 0
+2, Torzannie, 0, 0
+2, Mistressof Mayfair, 0, 0
+2, Setfortakeoff, 0, 0
+2, Velocite Belle, 0, 0
+3, Now Hear This, 0, 0
+3, Welcometodetroit, 0, 0
+3, Mo Mo's Choise, 0, 0
+3, Smart Eddie, 0, 0
+3, Bowdacious Gold, 0, 0
+3, Western Edge, 0, 0
+3, Stomping Ground, 0, 0
+3, Xtra Black, 0, 0
+3, Bruceismyname, 0, 0
+3, Gozaimasu, 0, 0
+4, Sheila, 0, 0
+4, Aquilion Girl, SCR
+4, Sleeping Tiger, 0, 0
+4, Epic Centre, 0, 0
+4, Laura's Gold, SCR
+4, Densetsu, 0, 0
+4, Shyleah, SCR
+4, Altruist, 0, 0
+4, Bring The Thunder, 0, 0
+4, Brazen Fling, 0, 0
+4, Bronco Revolution, 0, 0
+4, Rock Glory, SCR
+4, Beau Strada, 0, 0
+4, Wild Roses Grow, 0, 0
+5, Amphactor, SCR
+5, Blanche Bass, 0, 0
+5, Mannerheim, 0, 0
+5, Monsun's Pride, 0, 0
+5, Larryoctane, 0, 0
+5, Paltinian, 0, 0
+5, I'mfallinforyou, 0, 0
+5, Eight Under, SCR
+5, Chateau Dancer, 0, 0
+5, Scandoval, SCR
+5, Riozino, 0, 0
+5, Tipsy Gypsy, SCR
+5, Stole Him, SCR
+5, King Kauffo, 0, 0
+6, Sheer Lunacy, 0, 0
+6, Alpinova, SCR
+6, Chambers Bay, 0, 0
+6, Stand By Me Ned, SCR
+6, Ricky Runs, 0, 0
+6, Sinhalese, SCR
+6, Scholl Deep, 0, 0
+6, Jazzanski, 0, 0
+6, Pensatore, 0, 0
+6, Silver Snow, 0, 0
+6, Jingu Express, 0, 0
+6, Hellish Lee, 0, 0
+6, Sweet But Sassy, SCR
+6, Slippery Thinker, SCR
+7, Headstock, 0, 0
+7, Wild Irish Rover, 0, 0
+7, Iliad, SCR
+7, True Prophet, 0, 0
+7, Vaafee, 0, 0
+7, Point Of Ecstasy, SCR
+7, Mythic, 0, 0
+7, Tipping Rain, SCR
+7, Arabian Myth, 0, 0
+7, Stewart, SCR
+7, Monte Cassino, 0, 0
+7, Dubai Fountain, 0, 0
+7, Popthebubbly, 0, 0
+7, Too Much Too Soon, 0, 0
