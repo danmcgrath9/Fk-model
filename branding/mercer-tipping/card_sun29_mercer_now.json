@@ -3,7 +3,7 @@
  "date": "29 November",
  "footer": "Win bets.",
  "brand": true,
- "prices_as_at": "2026-11-28T08:52",
+ "prices_as_at": "2026-11-28T10:02",
  "meetings": [
   {
    "name": "Warrnambool",
@@ -22,14 +22,6 @@
      "horse": "Cachink",
      "price": "$12",
      "units": "0.84u"
-    },
-    {
-     "race": 4,
-     "time": "2:20PM",
-     "horse": "Just Call Me Jonny",
-     "price": "$5",
-     "units": "1.46u",
-     "scr": true
     },
     {
      "race": 4,
@@ -63,13 +55,20 @@
   },
   {
    "name": "Traralgon",
-   "note": "R1-R6 and R8 not open yet",
+   "note": "",
    "bets": [
+    {
+     "race": 3,
+     "time": "2:00PM",
+     "horse": "Zouie",
+     "price": "$6.50",
+     "units": "2.00u"
+    },
     {
      "race": 7,
      "time": "4:30PM",
      "horse": "Oceana Dream",
-     "price": "$3",
+     "price": "$3.10",
      "units": "3.15u"
     }
    ]

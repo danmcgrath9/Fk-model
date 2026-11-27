@@ -26,15 +26,6 @@
     {
      "race": 4,
      "time": "2:20PM",
-     "horse": "Just Call Me Jonny",
-     "price": "$8.50",
-     "units": "1.46u",
-     "rated": "$6.17",
-     "scr": true
-    },
-    {
-     "race": 4,
-     "time": "2:20PM",
      "horse": "My Uncle Did It",
      "price": "$23",
      "units": "0.77u",
@@ -68,8 +59,16 @@
   },
   {
    "name": "Traralgon",
-   "note": "R1-R6 and R8 not open yet",
+   "note": "",
    "bets": [
+    {
+     "race": 3,
+     "time": "2:00PM",
+     "horse": "Zouie",
+     "price": "$7",
+     "units": "2.00u",
+     "rated": "$4.72"
+    },
     {
      "race": 7,
      "time": "4:30PM",
