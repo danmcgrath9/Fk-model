@@ -1,0 +1,143 @@
+# Kyneton Mon 30 Nov, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 33 runners without a rider
+1, Perfectly Fine, 0, 0
+1, Prestige Magic, 0, 0
+1, Flash Inquiry, 0, 0
+1, Kermie, 0, 0
+1, Lucky Leoni, 0, 0
+1, Chestnut Teal, 0, 0
+1, Media Darling, 0, 0
+1, Roses For Rita, 0, 0
+1, Celestaria, 0, 0
+1, Hot Samba, 0, 0
+1, Tiffany, 0, 0
+1, Native Grace, 0, 0
+2, It's Justa Guess, SCR
+2, Frosted Amber, 0, 0
+2, Mo Mo's Choise, 0, 0
+2, Bellitsy, 0, 0
+2, Pretty Stylish, 0, 0
+2, Love Rustler, 0, 0
+2, Prestige Erick, 0, 0
+2, Spirit Of Omaha, SCR
+2, Parak, 0, 0
+2, Begonia, SCR
+2, Chasing Atlantis, 0, 0
+2, Ubique, 0, 0
+2, Bold Amore, 0, 0
+2, Many Peaks, 0, 0
+2, Avedis, 0, 0
+2, Take Cover, 0, 0
+2, Silver Tsar, SCR
+3, Daniel Boone, 0, 0
+3, Angel Don't Cry, SCR
+3, Jack Will, 0, 0
+3, Dimachaerus, SCR
+3, Symphony Sista, 0, 0
+3, Numbersneverseen, 0, 0
+3, Beast Fighter, 0, 0
+3, Shalwedash, 0, 0
+3, My Infinity, 0, 0
+3, Musical Journey, 0, 0
+3, Pandoro, 0, 0
+3, Alabama Flame, SCR
+4, Grinding Away, 0, 0
+4, Style Guide, 0, 0
+4, Wizardess, SCR
+4, Good Lordy Me, 0, 0
+4, Almorina, 0, 0
+4, Empress Of China, 0, 0
+4, Rough Act, 0, 0
+4, Deelamour, SCR
+4, Foxalation, SCR
+4, Ghaluge, 0, 0
+4, Te Taniwha, 0, 0
+4, Poorlittlerichkid, 0, 0
+4, Princess Of Sol, 0, 0
+4, Typhoon Bassett, SCR
+4, Chancellor, 0, 0
+4, Fiorente Charm, 0, 0
+4, Prestige Blackjack, 0, 0
+5, Nightynight, 0, 0
+5, Gymkhana, 0, 0
+5, Our Smokeshow, 0, 0
+5, Brassi Road, SCR
+5, Nightowl, 0, 0
+5, Battle Point, 0, 0
+5, Danzagrunt, 0, 0
+5, Dirty Robber, 0, 0
+5, Diggers Aim, 0, 0
+5, Wondering Spirit, 0, 0
+5, African Grey, 0, 0
+5, Hurco, 0, 0
+5, Our Pierro, 0, 0
+5, Cashemcowboy, 0, 0
+6, Surely Special, 0, 0
+6, They Call Me Dusty, 0, 0
+6, Baby Rider, 0, 0
+6, Graham, 0, 0
+6, Blonde Suspect, SCR
+6, Rippa Buddy, 0, 0
+6, Tarakash, 0, 0
+6, Mannerheim, 0, 0
+6, Late Harvest, 0, 0
+6, Holly's Star, 0, 0
+6, Eminent Ella, 0, 0
+6, Stole Him, 0, 0
+6, Fierce Fiasco, 0, 0
+6, Birdie Time, 0, 0
+7, Diamond War, 0, 0
+7, Elle Mcfearsome, 0, 0
+7, Jewel Bay, 0, 0
+7, Swycho, SCR
+7, Into You, 0, 0
+7, Kilmer, SCR
+7, Sensational Ruler, 0, 0
+7, Darn Hot Miss, 0, 0
+7, Blaze Away, SCR
+7, King Maywin, SCR
+7, Accuser, 0, 0
+7, Model Gigi, 0, 0
+7, Tiger Fox, 0, 0
+8, Magic Drum, SCR
+8, Snappy Pierro, 0, 0
+8, Smashing Ruby, 0, 0
+8, Divine Vicky, 0, 0
+8, Snow On Her, 0, 0
+8, Kilmister, 0, 0
+8, Artpark, 0, 0
+8, Deep Joy, 0, 0
+8, More Give It, 0, 0
+8, Colt Forty Five, 0, 0
+8, Please Me Do, 0, 0
+8, Affirmative Lad, 0, 0
+8, Olatunde, 0, 0
+8, Krasnoludek, 0, 0
+9, Thunder Park, 0, 0
+9, Mahjing, SCR
+9, Spinhof, 0, 0
+9, Count Of Anjou, 0, 0
+9, Asawin, 0, 0
+9, Stormyfriendship, 0, 0
+9, Flying D'amore, 0, 0
+9, Montrock, 0, 0
+9, Blue Moon Summit, 0, 0
+9, Snappy Beau, 0, 0
+9, Tipping Rain, 0, 0
+9, Adieu Grasse, 0, 0
+9, Very Torquee, 0, 0
+9, Onlooker, 0, 0
+10, Snappy Secret, 0, 0
+10, Turn Up The Night, 0, 0
+10, Soju, 0, 0
+10, Gaylord, 0, 0
+10, Strike Gold, SCR
+10, Jackie's Maid, 0, 0
+10, Our Little Star, 0, 0
+10, Brave Carol, SCR
+10, Packers Journey, 0, 0
+10, Heidi Dancer, SCR
+10, Works Dirty, SCR
+10, Oak Park Mia, 0, 0
+10, Dynamite Dancer, 0, 0
+10, Lil Orlov, 0, 0
+10, Caribbean Villa, 0, 0

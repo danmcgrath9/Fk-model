@@ -1,0 +1,142 @@
+1|9|Perfectly Fine|False|False
+1|10|Prestige Magic|False|False
+1|3|Flash Inquiry|False|False
+1|5|Kermie|False|False
+1|6|Lucky Leoni|False|False
+1|2|Chestnut Teal|False|False
+1|7|Media Darling|False|False
+1|11|Roses For Rita|False|False
+1|1|Celestaria|False|False
+1|4|Hot Samba|False|False
+1|12|Tiffany|False|False
+1|8|Native Grace|False|False
+2|15|It's Justa Guess|True|False
+2|10|Frosted Amber|False|False
+2|2|Mo Mo's Choise|False|False
+2|8|Bellitsy|False|False
+2|12|Pretty Stylish|False|False
+2|11|Love Rustler|False|False
+2|4|Prestige Erick|False|False
+2|14|Spirit Of Omaha|True|False
+2|3|Parak|False|False
+2|17|Begonia|True|False
+2|9|Chasing Atlantis|False|False
+2|13|Ubique|False|False
+2|1|Bold Amore|False|False
+2|6|Many Peaks|False|False
+2|5|Avedis|False|False
+2|7|Take Cover|False|False
+2|16|Silver Tsar|True|False
+3|2|Daniel Boone|False|False
+3|11|Angel Don't Cry|True|False
+3|3|Jack Will|False|False
+3|10|Dimachaerus|True|False
+3|9|Symphony Sista|False|False
+3|4|Numbersneverseen|False|False
+3|1|Beast Fighter|False|False
+3|8|Shalwedash|False|False
+3|7|My Infinity|False|False
+3|5|Musical Journey|False|False
+3|6|Pandoro|False|False
+3|12|Alabama Flame|True|False
+4|3|Grinding Away|False|False
+4|13|Style Guide|False|False
+4|17|Wizardess|True|False
+4|2|Good Lordy Me|False|False
+4|10|Almorina|False|False
+4|11|Empress Of China|False|False
+4|5|Rough Act|False|False
+4|16|Deelamour|True|False
+4|14|Foxalation|True|False
+4|1|Ghaluge|False|False
+4|6|Te Taniwha|False|False
+4|4|Poorlittlerichkid|False|False
+4|12|Princess Of Sol|False|False
+4|15|Typhoon Bassett|True|False
+4|7|Chancellor|False|False
+4|8|Fiorente Charm|False|False
+4|9|Prestige Blackjack|False|False
+5|10|Nightynight|False|False
+5|4|Gymkhana|False|False
+5|1|Our Smokeshow|False|False
+5|14|Brassi Road|True|False
+5|9|Nightowl|False|False
+5|12|Battle Point|False|False
+5|13|Danzagrunt|False|False
+5|8|Dirty Robber|False|False
+5|3|Diggers Aim|False|False
+5|7|Wondering Spirit|False|False
+5|11|African Grey|False|False
+5|5|Hurco|False|False
+5|6|Our Pierro|False|False
+5|2|Cashemcowboy|False|False
+6|4|Surely Special|False|False
+6|13|They Call Me Dusty|False|False
+6|1|Baby Rider|False|False
+6|3|Graham|False|False
+6|14|Blonde Suspect|True|False
+6|11|Rippa Buddy|False|False
+6|9|Tarakash|False|False
+6|7|Mannerheim|False|False
+6|5|Late Harvest|False|False
+6|8|Holly's Star|False|False
+6|12|Eminent Ella|False|False
+6|10|Stole Him|False|False
+6|2|Fierce Fiasco|False|False
+6|6|Birdie Time|False|False
+7|3|Diamond War|False|False
+7|8|Elle Mcfearsome|False|False
+7|2|Jewel Bay|False|False
+7|11|Swycho|True|False
+7|5|Into You|False|False
+7|10|Kilmer|True|False
+7|4|Sensational Ruler|False|False
+7|6|Darn Hot Miss|False|False
+7|12|Blaze Away|True|False
+7|13|King Maywin|True|False
+7|1|Accuser|False|False
+7|9|Model Gigi|False|False
+7|7|Tiger Fox|False|False
+8|14|Magic Drum|True|False
+8|9|Snappy Pierro|False|False
+8|12|Smashing Ruby|False|False
+8|5|Divine Vicky|False|False
+8|13|Snow On Her|False|False
+8|11|Kilmister|False|False
+8|8|Artpark|False|False
+8|10|Deep Joy|False|False
+8|3|More Give It|False|False
+8|2|Colt Forty Five|False|False
+8|7|Please Me Do|False|False
+8|4|Affirmative Lad|False|False
+8|1|Olatunde|False|False
+8|6|Krasnoludek|False|False
+9|5|Thunder Park|False|False
+9|14|Mahjing|True|False
+9|7|Spinhof|False|False
+9|10|Count Of Anjou|False|False
+9|4|Asawin|False|False
+9|13|Stormyfriendship|False|False
+9|12|Flying D'amore|False|False
+9|11|Montrock|False|False
+9|6|Blue Moon Summit|False|False
+9|8|Snappy Beau|False|False
+9|9|Tipping Rain|False|False
+9|1|Adieu Grasse|False|False
+9|3|Very Torquee|False|False
+9|2|Onlooker|False|False
+10|3|Snappy Secret|False|False
+10|5|Turn Up The Night|False|False
+10|11|Soju|False|False
+10|8|Gaylord|False|False
+10|13|Strike Gold|True|False
+10|9|Jackie's Maid|False|False
+10|6|Our Little Star|False|False
+10|14|Brave Carol|True|False
+10|4|Packers Journey|False|False
+10|15|Heidi Dancer|True|False
+10|12|Works Dirty|True|False
+10|10|Oak Park Mia|False|False
+10|1|Dynamite Dancer|False|False
+10|2|Lil Orlov|False|False
+10|7|Caribbean Villa|False|False

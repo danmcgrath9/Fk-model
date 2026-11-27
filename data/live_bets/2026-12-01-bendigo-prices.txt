@@ -1,0 +1,124 @@
+# Bendigo Tue 1 Dec, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 11 runners without a rider
+1, Victorious Dream, 0, 0
+1, Action Point, 0, 0
+1, Tequila's Bro, 0, 0
+1, Jaffa Cake, 0, 0
+1, Baccano, 0, 0
+1, Aquafy, 0, 0
+1, Power Of The Moon, 0, 0
+1, Royal Canvas, 0, 0
+1, Fullboardsupport, 0, 0
+1, Stunning Kitty, 0, 0
+1, Tagged, 0, 0
+2, Si Si Sir, 0, 0
+2, Exceed And Believe, 0, 0
+2, Empress Of China, SCR
+2, Deal Done Fast, 0, 0
+2, Freshwater Fox, 0, 0
+2, Maggie Moo, 0, 0
+2, Upcoming, 0, 0
+2, Sihaya, 0, 0
+2, Cape Radstock, 0, 0
+2, Moab, 0, 0
+2, Belle Flamme, 0, 0
+2, Russian Monarch, 0, 0
+2, Classical Power, SCR
+2, Interrogate, 0, 0
+2, Genomic, 0, 0
+2, Ardad Ned, 0, 0
+3, Lean And Keen, 0, 0
+3, Mathletes, 0, 0
+3, Immortal Truth, SCR
+3, Chasing Atlantis, SCR
+3, Big Boy Bowie, 0, 0
+3, Divine Bellini, 0, 0
+3, Thundering Shadow, 0, 0
+3, Red Mink, 0, 0
+3, Nyad, SCR
+3, She Excels, 0, 0
+3, Xtra Black, 0, 0
+3, Brookelinda, 0, 0
+3, Cherry On Toff, 0, 0
+3, Skadoodle, 0, 0
+3, Cupani, 0, 0
+3, Capital Storm, 0, 0
+3, Adhara, 0, 0
+4, He's Our Boy, 0, 0
+4, Source Of Delight, 0, 0
+4, Kinky Mistress, 0, 0
+4, Scusies, 0, 0
+4, Beast Fighter, 0, 0
+4, Kokeshi, 0, 0
+4, Amber Smile, 0, 0
+4, Mistressof Mayfair, 0, 0
+4, Edge Of Wonder, 0, 0
+4, Honeysuckle Hill, 0, 0
+4, Doolin, 0, 0
+4, Calexpo, 0, 0
+4, Mauna Loa, 0, 0
+4, Roses For Rita, SCR
+4, Alabama Flame, 0, 0
+5, Heavenly Eagle, 0, 0
+5, Bow Ribbon, 0, 0
+5, Quafftide, 0, 0
+5, Stormyfriendship, SCR
+5, Brave Carol, 0, 0
+5, Veins Within Rock, 0, 0
+5, Twisted Love, 0, 0
+5, Zourain, 0, 0
+5, Lady Of Lubeck, 0, 0
+5, Beautifully, 0, 0
+5, Till Queen, 0, 0
+5, Cherry Hills, 0, 0
+5, Perfect Night, 0, 0
+6, El Salto, SCR
+6, Barnage, 0, 0
+6, Cumboogle, SCR
+6, Over Shady, SCR
+6, Thinking Of Gerty, 0, 0
+6, Loving Mandy, 0, 0
+6, Divine Thoughts, 0, 0
+6, Majesticity, SCR
+6, Miss Cotoletta, 0, 0
+6, Noetzie, 0, 0
+6, Du Clisson, 0, 0
+6, Mystic Reign, 0, 0
+6, It's A Yes, 0, 0
+6, Killiana, 0, 0
+6, Yolo, 0, 0
+6, Chandler, 0, 0
+6, Freshen, 0, 0
+6, Prestar, 0, 0
+7, Villa Capitalista, 0, 0
+7, Doc's Nipper, SCR
+7, Hotspur Reale, 0, 0
+7, Astiquer, 0, 0
+7, Eeny Meeny, 0, 0
+7, Strong Box, 0, 0
+7, Chasing Rainbows, 0, 0
+7, Vintell, 0, 0
+7, Super Scholar, 0, 0
+7, Gattino Veloce, 0, 0
+7, Best Of The Best, 0, 0
+7, Alzaro, 0, 0
+7, Farmelia, 0, 0
+7, Running Rich, 0, 0
+7, Palmento, 0, 0
+8, Surfy Pete, SCR
+8, Queen Of Tuscany, 0, 0
+8, Alternate, 0, 0
+8, Jawsome Rob, SCR
+8, Desert Anthem, 0, 0
+8, Patsy's Star, 0, 0
+8, Holly's Star, SCR
+8, Rose Velvet, 0, 0
+8, Rogan, 0, 0
+8, Olney, SCR
+8, Blazing Sword, 0, 0
+8, Positivo, 0, 0
+8, Akari Spirit, 0, 0
+8, Cool Savanna, 0, 0
+8, Madesian, 0, 0
+8, Which Floor, 0, 0
+8, Strangethingdesire, 0, 0
+8, Set Me Free, 0, 0

@@ -1,0 +1,123 @@
+1|11|Victorious Dream|False|False
+1|1|Action Point|False|False
+1|10|Tequila's Bro|False|False
+1|5|Jaffa Cake|False|False
+1|3|Baccano|False|False
+1|2|Aquafy|False|False
+1|6|Power Of The Moon|False|False
+1|7|Royal Canvas|False|False
+1|4|Fullboardsupport|False|False
+1|8|Stunning Kitty|False|False
+1|9|Tagged|False|False
+2|7|Si Si Sir|False|False
+2|3|Exceed And Believe|False|False
+2|16|Empress Of China|True|False
+2|2|Deal Done Fast|False|False
+2|11|Freshwater Fox|False|False
+2|12|Maggie Moo|False|False
+2|8|Upcoming|False|False
+2|14|Sihaya|False|False
+2|10|Cape Radstock|False|False
+2|13|Moab|False|False
+2|9|Belle Flamme|False|False
+2|6|Russian Monarch|False|False
+2|15|Classical Power|True|False
+2|5|Interrogate|False|False
+2|4|Genomic|False|False
+2|1|Ardad Ned|False|False
+3|8|Lean And Keen|False|False
+3|9|Mathletes|False|False
+3|15|Immortal Truth|True|False
+3|17|Chasing Atlantis|True|False
+3|1|Big Boy Bowie|False|False
+3|7|Divine Bellini|False|False
+3|10|Thundering Shadow|False|False
+3|13|Red Mink|False|False
+3|16|Nyad|True|False
+3|14|She Excels|False|False
+3|6|Xtra Black|False|False
+3|11|Brookelinda|False|False
+3|4|Cherry On Toff|False|False
+3|5|Skadoodle|False|False
+3|12|Cupani|False|False
+3|3|Capital Storm|False|False
+3|2|Adhara|False|False
+4|3|He's Our Boy|False|False
+4|11|Source Of Delight|False|False
+4|8|Kinky Mistress|False|False
+4|10|Scusies|False|False
+4|1|Beast Fighter|False|False
+4|9|Kokeshi|False|False
+4|5|Amber Smile|False|False
+4|14|Mistressof Mayfair|False|False
+4|7|Edge Of Wonder|False|False
+4|12|Honeysuckle Hill|False|False
+4|6|Doolin|False|False
+4|2|Calexpo|False|False
+4|13|Mauna Loa|False|False
+4|15|Roses For Rita|True|False
+4|4|Alabama Flame|False|False
+5|3|Heavenly Eagle|False|False
+5|9|Bow Ribbon|False|False
+5|4|Quafftide|False|False
+5|13|Stormyfriendship|True|False
+5|12|Brave Carol|False|False
+5|6|Veins Within Rock|False|False
+5|8|Twisted Love|False|False
+5|1|Zourain|False|False
+5|10|Lady Of Lubeck|False|False
+5|5|Beautifully|False|False
+5|2|Till Queen|False|False
+5|7|Cherry Hills|False|False
+5|11|Perfect Night|False|False
+6|18|El Salto|True|False
+6|6|Barnage|False|False
+6|17|Cumboogle|True|False
+6|16|Over Shady|True|False
+6|12|Thinking Of Gerty|False|False
+6|11|Loving Mandy|False|False
+6|1|Divine Thoughts|False|False
+6|15|Majesticity|True|False
+6|10|Miss Cotoletta|False|False
+6|5|Noetzie|False|False
+6|13|Du Clisson|False|False
+6|8|Mystic Reign|False|False
+6|3|It's A Yes|False|False
+6|4|Killiana|False|False
+6|2|Yolo|False|False
+6|7|Chandler|False|False
+6|14|Freshen|False|False
+6|9|Prestar|False|False
+7|5|Villa Capitalista|False|False
+7|15|Doc's Nipper|True|False
+7|9|Hotspur Reale|False|False
+7|8|Astiquer|False|False
+7|1|Eeny Meeny|False|False
+7|7|Strong Box|False|False
+7|12|Chasing Rainbows|False|False
+7|2|Vintell|False|False
+7|10|Super Scholar|False|False
+7|13|Gattino Veloce|False|False
+7|3|Best Of The Best|False|False
+7|11|Alzaro|False|False
+7|14|Farmelia|False|False
+7|4|Running Rich|False|False
+7|6|Palmento|False|False
+8|15|Surfy Pete|True|False
+8|6|Queen Of Tuscany|False|False
+8|2|Alternate|False|False
+8|17|Jawsome Rob|True|False
+8|4|Desert Anthem|False|False
+8|3|Patsy's Star|False|False
+8|18|Holly's Star|True|False
+8|14|Rose Velvet|False|False
+8|5|Rogan|False|False
+8|16|Olney|True|False
+8|1|Blazing Sword|False|False
+8|9|Positivo|False|False
+8|7|Akari Spirit|False|False
+8|13|Cool Savanna|False|False
+8|8|Madesian|False|False
+8|12|Which Floor|False|False
+8|11|Strangethingdesire|False|False
+8|10|Set Me Free|False|False
