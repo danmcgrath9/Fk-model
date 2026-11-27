@@ -23,7 +23,6 @@
 2|9|Chasing Atlantis|False|False
 2|13|Ubique|False|False
 2|1|Bold Amore|False|False
-2|6|Many Peaks|False|False
 2|5|Avedis|False|False
 2|7|Take Cover|False|False
 2|16|Silver Tsar|True|False
@@ -132,7 +131,6 @@
 10|13|Strike Gold|True|False
 10|9|Jackie's Maid|False|False
 10|6|Our Little Star|False|False
-10|14|Brave Carol|True|False
 10|4|Packers Journey|False|False
 10|15|Heidi Dancer|True|False
 10|12|Works Dirty|True|False

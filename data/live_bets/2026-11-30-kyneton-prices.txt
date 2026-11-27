@@ -1,4 +1,4 @@
-# Kyneton Mon 30 Nov, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 33 runners without a rider
+# Kyneton Mon 30 Nov, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 11 runners without a rider
 1, Perfectly Fine, 0, 0
 1, Prestige Magic, 0, 0
 1, Flash Inquiry, 0, 0
@@ -24,7 +24,6 @@
 2, Chasing Atlantis, 0, 0
 2, Ubique, 0, 0
 2, Bold Amore, 0, 0
-2, Many Peaks, 0, 0
 2, Avedis, 0, 0
 2, Take Cover, 0, 0
 2, Silver Tsar, SCR
@@ -133,7 +132,6 @@
 10, Strike Gold, SCR
 10, Jackie's Maid, 0, 0
 10, Our Little Star, 0, 0
-10, Brave Carol, SCR
 10, Packers Journey, 0, 0
 10, Heidi Dancer, SCR
 10, Works Dirty, SCR
