@@ -297,7 +297,7 @@ def main():
             Ls, n_ = Path(nums).read_text().split("\n"), 0
             for k_, l_ in enumerate(Ls):
                 pa = l_.split("|")
-                if len(pa) == 5 and pa[0].isdigit() and pa[4] != "True" and any(x[0] == d_ and x[1].startswith(tk) and x[2] == int(pa[0]) and x[3] == re.sub(r"[^a-z0-9]", "", pa[2].lower()) for x in bw_scr):
+                if len(pa) == 5 and pa[0].isdigit() and pa[4] != "True" and any(x[0] == d_ and (x[1].startswith(tk) or tk.startswith(x[1])) and x[2] == int(pa[0]) and x[3] == re.sub(r"[^a-z0-9]", "", pa[2].lower()) for x in bw_scr):
                     pa[4] = "True"; Ls[k_] = "|".join(pa); n_ += 1
             Path(nums).write_text("\n".join(Ls)); log(f"{mid}: {n_} more runners marked scratched from {a.scratchings_from}")
         subprocess.run(["cp", str(nums), str(L / f"{P}-entry-numbers.txt")], check=True)
