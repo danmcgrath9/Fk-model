@@ -1,0 +1,12 @@
+race,race_id,horse,plan,price,price_now,open,fk_open,tab_open,model_price,value,angles,stake,hurdle,result,returned
+1,WNBL_291126_1,Stormin' Angel,top_pick,5.0,5.0,5.5,5.5,,4.64,0.186,Already run to today's class; Class drop (rating),1.0,no,,
+2,WNBL_291126_2,Amber Smile,top_pick,3.2,3.2,3.3,3.3,,4.35,-0.242,; EARLY ONLY: bet near the open,1.0,no,,
+3,WNBL_291126_3,Desert Anthem,top_pick,3.9,3.9,3.7,3.7,,3.89,-0.05,Already run to today's class; Proven wet on a wet track; Class drop (rating); Above the field in all three sections; EARLY ONLY: bet near the open,1.0,no,,
+4,WNBL_291126_4,Colour Our World,top_pick,5.5,5.5,6.5,6.5,,5.02,0.295,"Already run to today's class; Third-up, improving; Proven wet on a wet track; Class drop (rating)",1.0,no,,
+5,WNBL_291126_5,Haiiro,top_pick,4.6,4.6,4.4,4.4,,4.65,-0.053,,1.0,no,,
+6,WNBL_291126_6,Miss Ellaneous,EDGE,21.0,21.0,19.0,19.0,,14.99,0.267,Proven wet on a wet track; Above the field in all three sections,0.72,no,,
+6,WNBL_291126_6,Miss Ellaneous,value_20c,21.0,21.0,19.0,19.0,,14.99,0.267,Proven wet on a wet track; Above the field in all three sections,0.72,no,,
+6,WNBL_291126_6,Southern Crescent,top_pick,8.5,8.5,4.2,4.2,,7.19,-0.415,,1.0,no,,
+7,WNBL_291126_7,Gwen's Girl,top_pick,4.6,4.6,4.2,4.2,,6.52,-0.356,,1.0,no,,
+8,WNBL_291126_8,The Cunning Fox,top_pick,3.6,3.6,3.8,3.8,,4.34,-0.125,,1.0,no,,
+9,WNBL_291126_9,Centenary Florin,top_pick,3.0,3.0,2.5,2.5,,3.14,-0.205,"Already run to today's class; New career-best last start; Third-up, improving; Late 600 beyond the tempo; Above the field in all three sections",1.0,no,,

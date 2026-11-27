@@ -47,7 +47,7 @@
 4|7|Super Snitch|False|False
 4|2|Tikemyson|False|False
 4|5|Lightning Express|False|False
-4|4|Just Call Me Jonny|False|False
+4|4|Just Call Me Jonny|False|True
 4|1|El James|False|False
 4|8|Colour Our World|False|False
 4|16|Eminent Ella|True|False
@@ -57,7 +57,7 @@
 4|11|Philharmonic|False|False
 4|13|I'mnodrummerboy|False|False
 4|14|My Rosalie|False|False
-4|12|Carnival Riches|False|False
+4|12|Carnival Riches|False|True
 5|11|Warrandyte Road|False|False
 5|16|Grinding Away|True|False
 5|4|Hula Beat|False|False
@@ -129,7 +129,7 @@
 9|2|Dantooine|False|False
 9|13|Sotomayor|False|False
 9|11|Asal|False|False
-9|14|Whathappensinvegas|False|False
+9|14|Whathappensinvegas|False|True
 9|7|Princess Toro|False|False
 9|1|Zourain|False|False
 9|9|Corro|False|False

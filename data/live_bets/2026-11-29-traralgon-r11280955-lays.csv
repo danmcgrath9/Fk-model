@@ -1,0 +1,72 @@
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,Ambition In Bloom,2.51,8.00,12,2.10,,8-12
+1,Ambition In Bloom,2.51,15.00,40,2.10,,15-40
+1,Zverev,3.82,8.00,12,3.40,,8-12
+1,Zverev,3.82,15.00,40,3.40,,15-40
+1,The Underquoter,4.46,8.00,12,3.40,,8-12
+1,The Underquoter,4.46,15.00,40,3.40,,15-40
+2,Levrier,1.94,8.00,12,2.25,,8-12
+2,Levrier,1.94,15.00,40,2.25,,15-40
+2,Little Boy Blue,4.95,8.00,12,5.00,first starter: excluded,8-12
+2,Little Boy Blue,4.95,15.00,40,5.00,first starter: excluded,15-40
+2,Blue Jeans Talk,10.09,15.13,40,15.00,,15-40
+2,Single Throne,10.47,15.70,40,5.00,first starter: excluded,15-40
+2,Nerves Of Steel,19.02,28.53,40,11.00,,15-40
+3,Fully Funded,3.24,8.00,12,0,,8-12
+3,Fully Funded,3.24,15.00,40,0,,15-40
+3,Divine Bellini,3.88,8.00,12,0,,8-12
+3,Divine Bellini,3.88,15.00,40,0,,15-40
+3,Zouie,4.74,8.00,12,0,,8-12
+3,Zouie,4.74,15.00,40,0,,15-40
+3,Immortal Truth,11.31,16.96,40,0,,15-40
+4,Weasel Sea,3.58,8.00,12,2.60,,8-12
+4,Weasel Sea,3.58,15.00,40,2.60,,15-40
+4,Chauhan,5.47,8.75,12,6.00,first starter: excluded,8-12
+4,Chauhan,5.47,15.00,40,6.00,first starter: excluded,15-40
+4,Alabama Flame,5.55,8.88,12,5.50,first starter: excluded,8-12
+4,Alabama Flame,5.55,15.00,40,5.50,first starter: excluded,15-40
+4,Madame Nightingale,5.60,8.96,12,4.80,first starter: excluded,8-12
+4,Madame Nightingale,5.60,15.00,40,4.80,first starter: excluded,15-40
+4,Mystery Train,16.33,24.49,40,10.00,,15-40
+4,Shipping Steel,19.67,29.51,40,6.00,,15-40
+5,Finance Shogun,3.59,8.00,12,0,,8-12
+5,Finance Shogun,3.59,15.00,40,0,,15-40
+5,Veins Within Rock,3.88,8.00,12,0,,8-12
+5,Veins Within Rock,3.88,15.00,40,0,,15-40
+5,Aubaine,4.05,8.00,12,0,,8-12
+5,Aubaine,4.05,15.00,40,0,,15-40
+5,Count Of Toulouse,12.74,19.11,40,0,,15-40
+5,Power Cable,21.40,32.10,40,0,,15-40
+6,Winter Nights,4.84,8.00,12,0,,8-12
+6,Winter Nights,4.84,15.00,40,0,,15-40
+6,Rick's Cafe,6.23,9.97,12,0,,8-12
+6,Rick's Cafe,6.23,15.00,40,0,,15-40
+6,She's Stargazing,8.74,15.00,40,0,,15-40
+6,Great Prosperity,9.15,15.00,40,0,,15-40
+6,Aseventy Seven,10.74,16.10,40,0,,15-40
+6,Sinister Sauce,11.08,16.62,40,0,,15-40
+6,Razzo Rosso,12.63,18.95,40,0,,15-40
+6,Duke Of Clarence,20.74,31.10,40,0,,15-40
+6,Preservator,23.54,35.31,40,0,,15-40
+7,Oceana Dream,2.94,8.00,12,3.10,,8-12
+7,Oceana Dream,2.94,15.00,40,3.10,,15-40
+7,Johnich,10.58,15.86,40,5.50,,15-40
+7,Chase Your Dreams,11.60,17.40,40,7.00,,15-40
+7,Yahoo Bar,11.70,17.54,40,14.00,,15-40
+7,Gregolimo,11.99,17.99,40,11.00,,15-40
+7,Bring Forth,12.86,19.29,40,10.00,,15-40
+7,Grand Pierro,14.94,22.41,40,18.00,,15-40
+7,The Pendragon,18.68,28.01,40,13.00,,15-40
+7,Cable Dancer,19.08,28.62,40,12.00,,15-40
+7,Statuario,25.56,38.35,40,20.00,,15-40
+8,The Sheriff,4.92,8.00,12,0,,8-12
+8,The Sheriff,4.92,15.00,40,0,,15-40
+8,Freshen,5.56,8.89,12,0,,8-12
+8,Freshen,5.56,15.00,40,0,,15-40
+8,Dirty Diana,6.45,10.31,12,0,,8-12
+8,Dirty Diana,6.45,15.00,40,0,,15-40
+8,Doc's Nipper,9.40,15.00,40,0,,15-40
+8,Do It Now,12.24,18.36,40,0,,15-40
+8,Sub Gauge,13.09,19.63,40,0,,15-40
+8,Heidi Dancer,15.50,23.24,40,0,,15-40
+8,Moonbolt,22.55,33.82,40,0,,15-40

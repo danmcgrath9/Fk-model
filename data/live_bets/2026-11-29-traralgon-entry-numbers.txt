@@ -11,14 +11,14 @@
 1|7|The Underquoter|False|False
 2|4|Little Boy Blue|False|False
 2|7|Blue Jeans Talk|False|False
-2|5|Pray For Elegance|False|False
+2|5|Pray For Elegance|False|True
 2|8|Li'l Tugs|False|False
 2|3|Levrier|False|False
-2|2|Cosmic Snitz|False|False
+2|2|Cosmic Snitz|False|True
 2|9|Nerves Of Steel|False|False
 2|6|Single Throne|False|False
-2|10|Zou Owe Me|False|False
-2|1|Adhara|False|False
+2|10|Zou Owe Me|False|True
+2|1|Adhara|False|True
 3|10|Mission Miss|False|False
 3|4|Now Hear This|False|False
 3|2|Gostumpygo|False|False
@@ -51,7 +51,7 @@
 5|12|Littlebirdie|True|False
 5|10|She Nailed It|False|False
 5|2|Veins Within Rock|False|False
-5|1|Yum|False|False
+5|1|Yum|False|True
 5|9|Regal Visions|False|False
 5|3|Aubaine|False|False
 6|3|Rick's Cafe|False|False
@@ -70,7 +70,7 @@
 6|2|Winter Nights|False|False
 7|13|Red On Red|True|False
 7|7|Gregolimo|False|False
-7|4|Anythink Goes|False|False
+7|4|Anythink Goes|False|True
 7|9|Cable Dancer|False|False
 7|5|Grand Pierro|False|False
 7|15|Saveadateforme|True|False
