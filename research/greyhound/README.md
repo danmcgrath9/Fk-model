@@ -9787,6 +9787,7 @@ published November, so there is no BSP yet.
 | 23 Nov | 45387400796 | 47 | 48 | 41 | 14 | 13 | 6 | 5.20 | 40.87 | +19.78 | 1 | 0 | 4, 1, +11.00 (+275.0%) | 0 |
 | 24 Nov | 45606740507 | 37 | 37 | 15 | 4 | 4 | 2 | 1.90 | 8.61 | +3.41 | 0 | 0 | 2, 0, -2.00 (-100.0%) | 1, 0, -1.00 (-100.0%) |
 | 25 Nov | 45812865122 | 52 | 52 | 50 | 7 | 7 | 3 | 3.06 | 16.82 | -1.37 | 0 | 0 | 4, 2, +6.30 (+157.5%) | 2, 1, +2.80 (+140.0%) |
+| 26 Nov | 45992573997 | 50 | 50 | 42 | 5 | 5 | 1 | 2.55 | 10.69 | -4.49 | 0 | 0 | 4, 1, +2.00 (+50.0%) | 3, 1, +3.00 (+100.0%) |
 
 All four 15 Nov bets opened shorter on TAB than GRV's evening price (TAB at 24% to 49% of it) and below the card's own
 blended price, the same pattern as the first nine nights. Two won, at TAB's first price less the deduction: +5.77
@@ -9897,10 +9898,19 @@ blend took four bets at 1.1x and two won, +6.30 units: Jewel Edition (Ballarat R
 (Ballarat R12) at $5.50; Hanna's Avatar (Traralgon R6) at $11.00 and She's A Vision (Bendigo R1) at $10.00 lost. At
 1.2x it took Jewel Edition and Hanna's Avatar, +2.80. The kept rows of earlier days stay as first scored.
 
-The card as sent so far, 6 to 25 Nov: 132 bets, 130 settled (one refund, one void), 54 winners against 53.22 expected
-at the prices taken (A/E 1.01), 304.54 units staked, -10.88 units won (-3.6% at the card's units, +0.3% flat), -5.54
-at the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 20 bets at
-1.1x (8 won, +38.00 units) and 10 at 1.2x (4 won, +17.30), each day as first scored; Blue Storm's +5.00 at both is in
+Five 26 Nov bets on the card as sent, one won: -4.49 units on 10.69 staked (-42.0% at the card's units, -69.0%
+flat), the same at the best first price of three. Minter Delicious (Shepparton R13) won at $1.55; Madam Serious
+(Warrnambool R7), Mighty (Shepparton R1), Change Paige (Shepparton R9) and Space Invader (Warragul R6) lost. Every
+TAB first price came between 7:28 and 9:00am on race morning, after the card (made at about 11:00pm the night
+before), so every bet could have been taken. None was still 1.3x the card's blended price at TAB's open, and the rule
+at TAB's open made no bet. The corrected blend took four bets at 1.1x and one won, +2.00 units: Bomb Peter (Warragul
+R2) at $6.00; Big Darryl (Shepparton R1), Chattahooche (Shepparton R5) and Habanero (Warragul R2) lost. At 1.2x it
+took Big Darryl, Bomb Peter and Habanero, +3.00. The kept rows of earlier days stay as first scored.
+
+The card as sent so far, 6 to 26 Nov: 137 bets, 135 settled (one refund, one void), 55 winners against 55.77 expected
+at the prices taken (A/E 0.99), 315.23 units staked, -15.37 units won (-4.9% at the card's units, -2.3% flat), -10.03
+at the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 24 bets at
+1.1x (9 won, +40.00 units) and 13 at 1.2x (5 won, +20.30), each day as first scored; Blue Storm's +5.00 at both is in
 those totals and came from a market TAB opened before the card.
 
 Results go here as they come in.
