@@ -3,7 +3,7 @@
  "date": "29 November",
  "footer": "Win bets.",
  "brand": true,
- "prices_as_at": "2026-11-27T12:47",
+ "prices_as_at": "2026-11-28T08:52",
  "meetings": [
   {
    "name": "Warrnambool",
@@ -13,7 +13,7 @@
      "race": 2,
      "time": "1:10PM",
      "horse": "Celestaria",
-     "price": "$13",
+     "price": "$14",
      "units": "0.73u"
     },
     {
@@ -28,27 +28,28 @@
      "time": "2:20PM",
      "horse": "Just Call Me Jonny",
      "price": "$5",
-     "units": "1.46u"
+     "units": "1.46u",
+     "scr": true
     },
     {
      "race": 4,
      "time": "2:20PM",
      "horse": "My Uncle Did It",
-     "price": "$15",
+     "price": "$11",
      "units": "0.77u"
     },
     {
      "race": 5,
      "time": "2:55PM",
      "horse": "Topspin",
-     "price": "$23",
+     "price": "$21",
      "units": "0.56u"
     },
     {
      "race": 6,
      "time": "3:35PM",
      "horse": "Miss Ellaneous",
-     "price": "$23",
+     "price": "$21",
      "units": "0.60u"
     },
     {
@@ -68,7 +69,7 @@
      "race": 7,
      "time": "4:30PM",
      "horse": "Oceana Dream",
-     "price": "$3.10",
+     "price": "$3",
      "units": "3.15u"
     }
    ]
