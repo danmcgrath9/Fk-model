@@ -1,0 +1,77 @@
+{
+ "day": "Sunday",
+ "date": "29 November",
+ "footer": "Win bets.",
+ "brand": true,
+ "prices_as_at": "2026-11-27T12:47",
+ "meetings": [
+  {
+   "name": "Warrnambool",
+   "note": "",
+   "bets": [
+    {
+     "race": 2,
+     "time": "1:10PM",
+     "horse": "Celestaria",
+     "price": "$13",
+     "units": "0.73u"
+    },
+    {
+     "race": 3,
+     "time": "1:45PM",
+     "horse": "Cachink",
+     "price": "$12",
+     "units": "0.84u"
+    },
+    {
+     "race": 4,
+     "time": "2:20PM",
+     "horse": "Just Call Me Jonny",
+     "price": "$5",
+     "units": "1.46u"
+    },
+    {
+     "race": 4,
+     "time": "2:20PM",
+     "horse": "My Uncle Did It",
+     "price": "$15",
+     "units": "0.77u"
+    },
+    {
+     "race": 5,
+     "time": "2:55PM",
+     "horse": "Topspin",
+     "price": "$23",
+     "units": "0.56u"
+    },
+    {
+     "race": 6,
+     "time": "3:35PM",
+     "horse": "Miss Ellaneous",
+     "price": "$23",
+     "units": "0.60u"
+    },
+    {
+     "race": 7,
+     "time": "4:10PM",
+     "horse": "Wintery",
+     "price": "$5.50",
+     "units": "1.43u"
+    }
+   ]
+  },
+  {
+   "name": "Traralgon",
+   "note": "R1-R6 and R8 not open yet",
+   "bets": [
+    {
+     "race": 7,
+     "time": "4:30PM",
+     "horse": "Oceana Dream",
+     "price": "$3.10",
+     "units": "3.15u"
+    }
+   ]
+  }
+ ]
+}
