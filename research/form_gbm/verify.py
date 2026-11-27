@@ -117,7 +117,8 @@ def card_day(d, year):
 
 def prefix_for(L, day, name):
     slug = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
-    for cand in (slug, slug.split("-")[0]):
+    alias = {"yarra-valley": "yarra-glen"}.get(slug)   # the card says Yarra Valley; Form King's meeting id (and our files) say yarra-glen
+    for cand in (slug, slug.split("-")[0]) + ((alias,) if alias else ()):
         if os.path.exists(f"{L}/{day}-{cand}-betmatic-preopen.csv"):
             return f"{day}-{cand}"
     return None
