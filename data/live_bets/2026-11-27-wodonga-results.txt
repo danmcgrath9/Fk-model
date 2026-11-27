@@ -1,0 +1,87 @@
+## wodonga-20261127: 86 entries
+R1 Bourne Legacy            finish 1  SP 1.55  BSP 1.58
+R1 Kiptum                   finish 2  SP 81.0  BSP 195.14
+R1 Tough Revelation         finish 3  SP 51.0  BSP 156.79
+R1 Magna Peak               finish 4  SP 8.5  BSP 11.0
+R1 Cosmic Snitz             finish 5  SP 4.4  BSP 6.31
+R1 Prince Of Glam           finish 6  SP 12.0  BSP 13.89
+R1 Borata's Girl            finish 7  SP 9.5  BSP 16.83
+R2 Pray For Elegance        finish 1  SP 1.75  BSP 1.94
+R2 Ordinary Star            finish 2  SP 4.2  BSP 5.0
+R2 Muddy                    finish 3  SP 16.0  BSP 22.0
+R2 Magnus Maximus           finish 4  SP 10.0  BSP 14.27
+R2 Arties A Star            finish 5  SP 61.0  BSP 120.0
+R2 News Scoop               finish 6  SP 10.0  BSP 14.5
+R2 Winna's Sister           finish 7  SP 61.0  BSP 110.0
+R2 Doctorate                finish 8  SP 151.0  BSP 768.2
+R2 Ima Vixen                finish 9  SP 101.0  BSP 372.19
+R2 Dagger One               finish 10  SP 61.0  BSP 116.8
+R2 Azka Veloce              finish 11  SP 11.0  BSP 14.0
+R3 I'm Confused             finish 1  SP 2.3  BSP 2.84
+R3 Boots Off                finish 2  SP 3.2  BSP 4.26
+R3 Legal Size               finish 3  SP 51.0  BSP 94.84
+R3 Veloce                   finish 4  SP 26.0  BSP 27.69
+R3 Fiore Darancio           finish 5  SP 31.0  BSP 50.0
+R3 Katie On The Edge        finish 6  SP 81.0  BSP 170.0
+R3 Bar La La                finish 7  SP 20.0  BSP 28.79
+R3 Estival                  finish 8  SP 20.0  BSP 27.72
+R3 Astatine                 finish 9  SP 151.0  BSP 544.86
+R3 Scorpion                 finish 10  SP 4.2  BSP 4.73
+R3 Cookardinia Miss         finish 11  SP 151.0  BSP 360.0
+R3 Acroman                  finish 12  SP 71.0  BSP 177.63
+R3 Princess Prussia         finish 13  SP 81.0  BSP 140.0
+R4 Just Call Me Jonny       finish 1  SP 2.25  BSP 2.72
+R4 Dartboard                finish 2  SP 9.0  BSP 11.5
+R4 Quamby                   finish 3  SP 14.0  BSP 21.0
+R4 She's Stargazing         finish 4  SP 14.0  BSP 15.5
+R4 Sorry Sunshine           finish 5  SP 51.0  BSP 100.0
+R4 Surely Special           finish 6  SP 6.5  BSP 6.4
+R4 Carnival Riches          finish 7  SP 4.8  BSP 5.58
+R4 Victrix Swan             finish 8  SP 31.0  BSP 60.0
+R4 Mistressofillusion       finish 9  SP 41.0  BSP 68.2
+R4 Doc March                finish 10  SP 41.0  BSP 63.98
+R4 Perfectly Good           finish 11  SP 151.0  BSP 525.83
+R4 Under The Hat            finish 12  SP 19.0  BSP 27.0
+R5 Star Buyer               finish 1  SP 6.0  BSP 6.96
+R5 San Marco                finish 2  SP 9.0  BSP 8.93
+R5 Bottas                   finish 3  SP 3.9  BSP 4.48
+R5 Shotaro                  finish 4  SP 2.8  BSP 3.08
+R5 Giant's Reprieve         finish 5  SP 11.0  BSP 10.46
+R5 Scottish Pearl           finish 6  SP 41.0  BSP 42.86
+R5 Midnight Eagle           finish 7  SP 18.0  BSP 18.75
+R5 Ashen Knight             finish 8  SP 61.0  BSP 98.22
+R5 Sir Basil                finish 9  SP 26.0  BSP 37.35
+R6 Sister Shay              finish 1  SP 11.0  BSP 14.0
+R6 Buccleuch                finish 2  SP 1.55  BSP 1.62
+R6 Eamonn's Memory          finish 3  SP 101.0  BSP 330.0
+R6 Presser                  finish 4  SP 9.0  BSP 12.5
+R6 Make It Sweet            finish 5  SP 18.0  BSP 26.42
+R6 Morning Darling          finish 6  SP 41.0  BSP 80.0
+R6 Bullets High             finish 7  SP 9.0  BSP 11.5
+R6 Expeetee                 finish 8  SP 51.0  BSP 70.0
+R6 Itsukushima              finish 9  SP 15.0  BSP 21.78
+R6 Indispensable            finish 10  SP 31.0  BSP 40.0
+R6 Fox Appeal               finish 11  SP 101.0  BSP 370.0
+R6 Black Storm              finish 12  SP 26.0  BSP 36.0
+R6 Grey Lad                 finish 13  SP 151.0  BSP 440.0
+R7 Foreman's Gully          finish 1  SP 31.0  BSP 32.0
+R7 Roussillon               finish 2  SP 4.2  BSP 3.85
+R7 Commands Success         finish 3  SP 9.0  BSP 11.0
+R7 Pacific Glamour          finish 4  SP 13.0  BSP 19.0
+R7 Rosie's Prophecy         finish 5  SP 7.0  BSP 8.53
+R7 Hazardous                finish 6  SP 3.2  BSP 3.75
+R7 Abstruse                 finish 7  SP 51.0  BSP 68.31
+R7 Before The War           finish 8  SP 15.0  BSP 22.0
+R7 Prandium Tempus          finish 9  SP 41.0  BSP 52.22
+R7 Brenlyn's Legacy         finish 10  SP 10.0  BSP 14.0
+R7 More Highs On Me         finish 11  SP 13.0  BSP 18.0
+R7 Projeto                  finish 12  SP 41.0  BSP 55.0
+R8 Lord Of Valor            finish 1  SP 3.2  BSP 3.45
+R8 Doubtfree                finish 2  SP 8.0  BSP 11.5
+R8 Tanganyika               finish 3  SP 5.5  BSP 6.92
+R8 Paparazzo                finish 4  SP 5.5  BSP 6.4
+R8 Shoma                    finish 5  SP 4.4  BSP 5.56
+R8 Copperfield              finish 6  SP 26.0  BSP 39.91
+R8 Future Fund              finish 7  SP 21.0  BSP 30.0
+R8 Blushing Tycoon          finish 8  SP 31.0  BSP 50.0
+R8 Steve's Way              finish 9  SP 14.0  BSP 20.0

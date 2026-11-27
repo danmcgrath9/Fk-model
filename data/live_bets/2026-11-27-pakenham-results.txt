@@ -1,0 +1,73 @@
+## pakenham-20261127: 72 entries
+R1 Lord Of The Earth        finish 1  SP 3.6  BSP 3.93
+R1 Majestic Son             finish 2  SP 1.75  BSP 2.21
+R1 Adhara                   finish 3  SP 7.0  BSP 8.85
+R1 Mr Sapphire              finish 4  SP 31.0  BSP 55.0
+R1 Capital Storm            finish 5  SP 16.0  BSP 29.0
+R1 Tiz The Tycoon           finish 6  SP 15.0  BSP 17.0
+R1 Brazen Bold              finish 7  SP 21.0  BSP 44.0
+R2 Assunta                  finish 1  SP 6.5  BSP 7.6
+R2 Renecca                  finish 2  SP 9.5  BSP 13.7
+R2 Media Darling            finish 3  SP 3.8  BSP 4.57
+R2 Blue Ivy                 finish 4  SP 8.5  BSP 10.0
+R2 Kensington               finish 5  SP 41.0  BSP 70.0
+R2 Please Please Me         finish 6  SP 4.8  BSP 5.5
+R2 Nyad                     finish 7  SP 3.5  BSP 4.4
+R2 Epponnee Rae             finish 8  SP 21.0  BSP 38.12
+R3 Red Tide                 finish 1  SP 6.5  BSP 9.0
+R3 Percipient               finish 2  SP 3.1  BSP 3.65
+R3 Hurtado                  finish 3  SP 5.5  BSP 7.0
+R3 Fort Rock                finish 4  SP 3.9  BSP 3.9
+R3 Grey Flyer               finish 5  SP 26.0  BSP 40.0
+R3 Soundwave                finish 6  SP 7.5  BSP 9.53
+R3 Shipping Steel           finish 7  SP 26.0  BSP 40.0
+R3 Pocket Watch             finish 8  SP 20.0  BSP 23.0
+R3 Maurie's Pride           finish 9  SP 101.0  BSP 243.8
+R3 Shy Velocity             finish 10  SP 51.0  BSP 79.2
+R4 Montesquieu              finish 1  SP 2.05  BSP 2.04
+R4 Seinfeld                 finish 2  SP 5.0  BSP 6.89
+R4 Ardad Ned                finish 3  SP 10.0  BSP 13.35
+R4 Tecknoking               finish 4  SP 21.0  BSP 42.0
+R4 Faro Lady                finish 5  SP 26.0  BSP 36.0
+R4 Wollemi                  finish 6  SP 7.5  BSP 10.5
+R4 Full Zoom                finish 7  SP 51.0  BSP 75.0
+R4 Chronic                  finish 8  SP 17.0  BSP 26.0
+R4 Tequila's Bro            finish 9  SP 21.0  BSP 29.23
+R4 Zametovka                finish 10  SP 16.0  BSP 20.52
+R4 Always Shining           finish 11  SP 101.0  BSP 210.0
+R5 Untapped                 finish 1  SP 3.1  BSP 3.34
+R5 Mount Sabyinyo           finish 2  SP 2.9  BSP 3.7
+R5 Chillies                 finish 3  SP 5.5  BSP 9.2
+R5 Caelius                  finish 4  SP 4.6  BSP 4.63
+R5 Hey Bella                finish 5  SP 8.5  BSP 14.35
+R5 So You Excel             finish 6  SP 41.0  BSP 95.0
+R6 Jetsetter Jack           finish 1  SP 5.5  BSP 8.4
+R6 Perfect Night            finish 2  SP 4.4  BSP 5.74
+R6 Blue Bandit              finish 3  SP 10.0  BSP 14.5
+R6 Yum                      finish 4  SP 13.0  BSP 15.65
+R6 Seaborn                  finish 5  SP 15.0  BSP 17.79
+R6 Hola Amigos              finish 6  SP 8.0  BSP 10.92
+R6 Venetian Choice          finish 7  SP 41.0  BSP 42.02
+R6 Surperb Frost            finish 8  SP 17.0  BSP 20.3
+R6 Posh Diamante            finish 9  SP 14.0  BSP 13.5
+R6 There Were Roses         finish 10  SP 5.0  BSP 5.1
+R6 Russian Front            finish 11  SP 10.0  BSP 9.98
+R7 Barbarino                finish 1  SP 2.8  BSP 2.75
+R7 Circus Lights            finish 2  SP 5.5  BSP 9.0
+R7 Mighty Mystic            finish 3  SP 7.0  BSP 8.97
+R7 Titan's Spirit           finish 4  SP 9.0  BSP 10.39
+R7 Ngongotaha               finish 5  SP 17.0  BSP 18.96
+R7 Hook 'n' Spur            finish 6  SP 3.6  BSP 4.15
+R7 All Torque               finish 7  SP 101.0  BSP 228.42
+R7 Pure Silk                finish 8  SP 16.0  BSP 16.83
+R8 Hello Romeo              finish 1  SP 13.0  BSP 14.5
+R8 Jakivy                   finish 2  SP 31.0  BSP 50.0
+R8 Barari                   finish 3  SP 7.5  BSP 11.48
+R8 Landmark                 finish 4  SP 9.5  BSP 14.23
+R8 Mongolian Gobi           finish 5  SP 8.0  BSP 9.8
+R8 Magnabelle Royale        finish 6  SP 17.0  BSP 14.17
+R8 Yolo                     finish 7  SP 10.0  BSP 13.14
+R8 Spirit Of Wealth         finish 8  SP 21.0  BSP 36.0
+R8 Room For Bingo           finish 9  SP 51.0  BSP 65.0
+R8 Noetzie                  finish 10  SP 2.15  BSP 2.19
+R8 Mr Tickles               finish 11  SP 21.0  BSP 38.0

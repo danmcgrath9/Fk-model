@@ -6,14 +6,15 @@ Rebuilt by research/form_gbm/running_record.py after every settle (founder, 16 N
 
 | Period | Bets | Won | Staked | P/L | ROI | At $50 | Beat BSP | Price / BSP |
 |---|---|---|---|---|---|---|---|---|
-| All settled (2026-11-02 on) | 93 | 22 | 204.60u | +186.07u | +91% | $+9,303 | 66 of 91 | 1.33x |
-| Since 12 Nov (full units) | 58 | 10 | 128.23u | +76.07u | +59% | $+3,803 | 46 of 57 | 1.39x |
-| Last 7 race days | 33 | 8 | 70.16u | +104.80u | +149% | $+5,240 | 30 of 33 | 1.48x |
+| All settled (2026-11-02 on) | 96 | 22 | 211.79u | +178.88u | +84% | $+8,944 | 68 of 94 | 1.34x |
+| Since 12 Nov (full units) | 61 | 10 | 135.42u | +68.88u | +51% | $+3,444 | 48 of 60 | 1.39x |
+| Last 7 race days | 32 | 8 | 64.91u | +110.05u | +170% | $+5,502 | 29 of 32 | 1.50x |
 
 Beat BSP and Price / BSP: the price taken (the open after TAB's reported deduction) against Betfair SP, the ratio weighted by stake.
 
 | Day | Bets | Won | Staked | P/L | ROI | At $50 | Beat BSP | Price / BSP |
 |---|---|---|---|---|---|---|---|---|
+| 2026-11-27 | 3 | 0 | 7.19u | -7.19u | -100% | $-360 | 2 of 3 | 1.41x |
 | 2026-11-26 | 4 | 2 | 8.98u | +25.26u | +281% | $+1,263 | 4 of 4 | 1.60x |
 | 2026-11-25 | 5 | 1 | 6.22u | +15.71u | +253% | $+786 | 5 of 5 | 2.25x |
 | 2026-11-21 | 14 | 1 | 26.27u | -6.53u | -25% | $-326 | 13 of 14 | 1.52x |
@@ -48,13 +49,17 @@ The weeks to Sun 1 Nov are the book's own settled entries (betmatic-book.md, 3 N
 | Mon 2 Nov - Sun 8 Nov | 30 | 11 | 66.85u | +108.66u | +163% | $+5,433 |
 | Mon 9 Nov - Sun 15 Nov | 24 | 3 | 56.45u | -16.25u | -29% | $-812 |
 | Mon 16 Nov - Sat 21 Nov (week not finished) | 30 | 5 | 66.10u | +52.69u | +80% | $+2,634 |
-| Mon 23 Nov - Thu 26 Nov (week not finished) | 9 | 3 | 15.20u | +40.97u | +270% | $+2,048 |
-| **Since Fri 9 Oct** | **205** | **47** | **443.43u** | **+403.74u** | **+91%** | **$+20,187** |
+| Mon 23 Nov - Fri 27 Nov (week not finished) | 12 | 3 | 22.39u | +33.78u | +151% | $+1,689 |
+| **Since Fri 9 Oct** | **208** | **47** | **450.62u** | **+396.55u** | **+88%** | **$+19,827** |
 
-Running total by day: 11-02 +29.5u, 11-03 +66.8u, 11-04 +91.9u, 11-05 +82.8u, 11-06 +88.4u, 11-07 +94.1u, 11-08 +108.7u, 11-09 +107.2u, 11-11 +110.0u, 11-12 +117.3u, 11-13 +119.0u, 11-14 +107.7u, 11-15 +92.4u, 11-16 +81.3u, 11-17 +68.8u, 11-18 +80.2u, 11-19 +144.6u, 11-20 +151.6u, 11-21 +145.1u, 11-25 +160.8u, 11-26 +186.1u
+Running total by day: 11-02 +29.5u, 11-03 +66.8u, 11-04 +91.9u, 11-05 +82.8u, 11-06 +88.4u, 11-07 +94.1u, 11-08 +108.7u, 11-09 +107.2u, 11-11 +110.0u, 11-12 +117.3u, 11-13 +119.0u, 11-14 +107.7u, 11-15 +92.4u, 11-16 +81.3u, 11-17 +68.8u, 11-18 +80.2u, 11-19 +144.6u, 11-20 +151.6u, 11-21 +145.1u, 11-25 +160.8u, 11-26 +186.1u, 11-27 +178.9u
 
 | Date | Meeting | Race | Horse | Units | Open | TAB deduction | Paid at | Result | P/L |
 |---|---|---|---|---|---|---|---|---|---|
+| 2026-11-27 | wodonga | R8 | Steve's Way | 1.19u | $16 | - | $16.00 | 9th | -1.19u |
+| 2026-11-27 | pakenham | R7 | Hook 'n' Spur | 1.07u | $18.33 | - | $18.33 | 6th | -1.07u |
+| 2026-11-27 | pakenham | R5 | Alexander Thegreat | 1.34u | $10 | - | $10.00 | void | +0.00u |
+| 2026-11-27 | pakenham | R1 | Majestic Son | 4.93u | $2.8 | - | $2.80 | 2nd | -4.93u |
 | 2026-11-26 | mornington | R7 | No Limitation | 0.85u | $21 | - | $21.00 | 4th | -0.85u |
 | 2026-11-26 | mornington | R7 | Bel Lupa | 4.15u | $5 | - | $5.00 | WON | +16.60u |
 | 2026-11-26 | mornington | R5 | Outer Banks | 0.71u | $19 | - | $19.00 | WON | +12.78u |
@@ -159,26 +164,26 @@ The price is the open after TAB's reported deduction.
 
 | Period | Bets with a BSP | Price beat BSP | Price / BSP (stake-weighted) | Winners |
 |---|---|---|---|---|
-| All settled | 91 | 66 | 1.33x | 22 won, 18.2 expected at BSP |
-| Since 12 Nov | 57 | 46 | 1.39x | 10 won, 11.1 expected at BSP |
-| Last 7 race days | 33 | 30 | 1.48x | 8 won, 6.5 expected at BSP |
+| All settled | 94 | 68 | 1.34x | 22 won, 19.0 expected at BSP |
+| Since 12 Nov | 60 | 48 | 1.39x | 10 won, 11.8 expected at BSP |
+| Last 7 race days | 32 | 29 | 1.50x | 8 won, 6.3 expected at BSP |
 
 ## The rules (paper, at Betfair SP)
 
 From data/live_bets/rule-tracker.csv (research/form_gbm/track_rules.py; run it before this file). A rule's P/L is per 1 unit at Betfair SP, 8% commission on winnings. The rules overlap, so the rows do not add up.
 
-| Rule | 11-26 | Since 9 Oct |
+| Rule | 11-27 | Since 9 Oct |
 |---|---|---|
-| Lay $15-$40, BSP >= 1.5x ours (current, failing live) | +3.68u (4 bets, 0 won) | -58.64u (443 bets, 21 won) |
-| Lay $8-$12, BSP >= 1.6x ours (current) | - | -11.99u (75 bets, 8 won) |
-| Back $3-$5, firmed 1.5x from open | -1.00u (1 bets, 0 won) | +8.22u (137 bets, 39 won) |
-| Back $4-$7, firmed 1.5x from open | - | +27.60u (160 bets, 38 won) |
-| Back $4-$7, ours >= 1.6x BSP (any runner) | +2.85u (1 bets, 1 won) | +14.18u (120 bets, 28 won) |
-| Lay $25-$40, drifted 2x from open | +1.84u (2 bets, 0 won) | +114.03u (231 bets, 3 won) |
-| Lay $12-$15, drifted 1.25x from open | +2.76u (3 bets, 0 won) | +50.29u (201 bets, 10 won) |
-| Lay $8-$12, firmed 1.5x from open | +0.92u (1 bets, 0 won) | +36.74u (83 bets, 4 won) |
+| Lay $15-$40, BSP >= 1.5x ours (current, failing live) | +13.80u (15 bets, 0 won) | -44.84u (458 bets, 21 won) |
+| Lay $8-$12, BSP >= 1.6x ours (current) | +2.76u (3 bets, 0 won) | -9.23u (78 bets, 8 won) |
+| Back $3-$5, firmed 1.5x from open | -0.85u (4 bets, 1 won) | +7.38u (141 bets, 40 won) |
+| Back $4-$7, firmed 1.5x from open | +4.48u (2 bets, 1 won) | +32.08u (162 bets, 39 won) |
+| Back $4-$7, ours >= 1.6x BSP (any runner) | -2.00u (2 bets, 0 won) | +12.18u (122 bets, 28 won) |
+| Lay $25-$40, drifted 2x from open | +6.44u (7 bets, 0 won) | +120.47u (238 bets, 3 won) |
+| Lay $12-$15, drifted 1.25x from open | -6.14u (9 bets, 1 won) | +44.15u (210 bets, 11 won) |
+| Lay $8-$12, firmed 1.5x from open | -3.72u (5 bets, 1 won) | +33.02u (88 bets, 5 won) |
 | Back BSP fav $4-$7, ours >= 1.6x BSP (current) | - | +8.24u (26 bets, 8 won) |
-| Lay $25-$40, BSP <= ours/1.6 | +1.84u (2 bets, 0 won) | +29.28u (60 bets, 1 won) |
+| Lay $25-$40, BSP <= ours/1.6 | +0.92u (1 bets, 0 won) | +30.20u (61 bets, 1 won) |
 
 ## The 9am list (the founder's bets, per bookie)
 

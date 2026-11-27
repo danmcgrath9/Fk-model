@@ -1414,3 +1414,15 @@ Sat 14 Nov is priced by the model with no hand shade for the leader bias.
 - Rules (paper at Betfair SP) on the day: held-on-backtest rules +3.69u, the rest +9.20u, all rules +12.89u.
 - Running record: since live (9 Oct) +403.74u (205 bets, 47 won, +$20,187 at $50); the model +186.07u since 2 Nov
   (93 bets, 22 won), price against Betfair SP 1.33x (66 of 91 beat it).
+## Friday 27 Nov Pakenham and Wodonga settled (Form King results, Sat 5:30am)
+- Open book (paper; sheet of record at Form King's open): 3 bets, 7.19u. Pakenham: Majestic Son R1 4.93u at $2.80, 2nd
+  (Betfair SP $2.21); Alexander Thegreat R5 1.34u at $10, scratched (void); Hook 'n' Spur R7 1.07u at $18.33, 6th (Betfair
+  SP $4.15). Wodonga: Steve's Way R8 1.19u at $16 (Form King's open, stored at 9:00am once R7-R8 opened), 9th (Betfair SP
+  $20). -7.19u (-$360 at $50), 2 of 3 beat Betfair SP (1.41x). No TAB deduction reported.
+- No-Mercer card (card_fri27_plain_open, Form King's opens): the same, -7.19u. Mercer card: Pakenham AS POSTED Thu ($2,
+  $10, $6): Majestic Son and Hook 'n' Spur lost, Alexander Thegreat void, -6.00u (-$300); Wodonga line (Steve's Way $17,
+  1.19u) not marked posted, -1.19u if it was.
+- Back book: no backs. BetMatic: nothing sent (send hold). The 9am bets: none. Old rule: none.
+- Rules (paper at Betfair SP) on the day: held-on-backtest rules -1.93u, the rest +17.62u, all rules +15.69u.
+- Running record: since live (9 Oct) +396.55u (208 bets, 47 won, +$19,827 at $50); the model +178.88u since 2 Nov
+  (96 bets, 22 won), price against Betfair SP 1.34x (68 of 94 beat it).
