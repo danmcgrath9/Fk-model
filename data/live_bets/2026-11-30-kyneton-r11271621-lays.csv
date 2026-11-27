@@ -1,0 +1,108 @@
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,Perfectly Fine,4.63,8.00,12,0,,8-12
+1,Perfectly Fine,4.63,15.00,40,0,,15-40
+1,Tiffany,4.93,8.00,12,0,,8-12
+1,Tiffany,4.93,15.00,40,0,,15-40
+1,Media Darling,8.98,15.00,40,0,first starter: excluded,15-40
+1,Kermie,10.07,15.11,40,0,first starter: excluded,15-40
+1,Flash Inquiry,11.93,17.90,40,0,,15-40
+1,Hot Samba,12.98,19.47,40,0,,15-40
+1,Chestnut Teal,13.98,20.97,40,0,,15-40
+1,Celestaria,21.35,32.02,40,0,,15-40
+2,Love Rustler,3.56,8.00,12,0,,8-12
+2,Love Rustler,3.56,15.00,40,0,,15-40
+2,Avedis,5.58,8.93,12,0,,8-12
+2,Avedis,5.58,15.00,40,0,,15-40
+2,Take Cover,9.52,15.00,40,0,first starter: excluded,15-40
+2,Parak,10.38,15.57,40,0,,15-40
+2,Prestige Erick,15.93,23.89,40,0,,15-40
+2,Frosted Amber,16.86,25.30,40,0,,15-40
+2,Pretty Stylish,17.83,26.75,40,0,,15-40
+2,Ubique,21.14,31.71,40,0,,15-40
+3,Beast Fighter,2.90,8.00,12,0,,8-12
+3,Beast Fighter,2.90,15.00,40,0,,15-40
+3,Daniel Boone,4.55,8.00,12,0,,8-12
+3,Daniel Boone,4.55,15.00,40,0,,15-40
+3,Symphony Sista,6.34,10.14,12,0,,8-12
+3,Symphony Sista,6.34,15.00,40,0,,15-40
+3,Jack Will,7.13,11.41,12,0,,8-12
+3,Jack Will,7.13,15.00,40,0,,15-40
+3,Pandoro,15.21,22.81,40,0,first starter: excluded,15-40
+3,Musical Journey,22.08,33.12,40,0,,15-40
+4,Fiorente Charm,4.52,8.00,12,0,,8-12
+4,Fiorente Charm,4.52,15.00,40,0,,15-40
+4,Princess Of Sol,7.42,11.87,12,0,,8-12
+4,Princess Of Sol,7.42,15.00,40,0,,15-40
+4,Prestige Blackjack,7.61,15.00,40,0,,15-40
+4,Almorina,8.53,15.00,40,0,,15-40
+4,Poorlittlerichkid,12.21,18.32,40,0,,15-40
+4,Chancellor,12.34,18.51,40,0,,15-40
+4,Good Lordy Me,12.37,18.55,40,0,,15-40
+4,Te Taniwha,14.95,22.43,40,0,,15-40
+5,Our Pierro,6.32,10.11,12,0,,8-12
+5,Our Pierro,6.32,15.00,40,0,,15-40
+5,Nightowl,9.00,15.00,40,0,,15-40
+5,Hurco,9.35,15.00,40,0,,15-40
+5,Gymkhana,9.69,15.00,40,0,,15-40
+5,African Grey,9.70,15.00,40,0,,15-40
+5,Cashemcowboy,9.98,15.00,40,0,,15-40
+5,Wondering Spirit,14.16,21.25,40,0,,15-40
+5,Diggers Aim,14.37,21.56,40,0,,15-40
+5,Nightynight,15.73,23.60,40,0,,15-40
+5,Our Smokeshow,17.71,26.56,40,0,,15-40
+6,Surely Special,4.35,8.00,12,0,,8-12
+6,Surely Special,4.35,15.00,40,0,,15-40
+6,Stole Him,6.09,9.74,12,0,,8-12
+6,Stole Him,6.09,15.00,40,0,,15-40
+6,Tarakash,8.45,15.00,40,0,,15-40
+6,Mannerheim,10.35,15.53,40,0,,15-40
+6,Late Harvest,10.62,15.93,40,0,,15-40
+6,Fierce Fiasco,15.49,23.23,40,0,,15-40
+6,Rippa Buddy,15.82,23.73,40,0,,15-40
+6,Holly's Star,18.60,27.90,40,0,,15-40
+7,Model Gigi,3.35,8.00,12,0,,8-12
+7,Model Gigi,3.35,15.00,40,0,,15-40
+7,Into You,6.18,9.89,12,0,,8-12
+7,Into You,6.18,15.00,40,0,,15-40
+7,Jewel Bay,7.05,11.28,12,0,,8-12
+7,Jewel Bay,7.05,15.00,40,0,,15-40
+7,Accuser,9.63,15.00,40,0,,15-40
+7,Darn Hot Miss,11.55,17.33,40,0,,15-40
+7,Tiger Fox,14.68,22.02,40,0,,15-40
+7,Sensational Ruler,15.64,23.46,40,0,,15-40
+7,Elle Mcfearsome,20.08,30.12,40,0,,15-40
+8,Olatunde,5.62,9.00,12,0,,8-12
+8,Olatunde,5.62,15.00,40,0,,15-40
+8,Please Me Do,5.67,9.07,12,0,,8-12
+8,Please Me Do,5.67,15.00,40,0,,15-40
+8,Snappy Pierro,7.68,15.00,40,0,,15-40
+8,Artpark,7.98,15.00,40,0,,15-40
+8,Colt Forty Five,8.97,15.00,40,0,,15-40
+8,Affirmative Lad,11.52,17.27,40,0,,15-40
+8,More Give It,15.58,23.37,40,0,,15-40
+8,Divine Vicky,19.57,29.36,40,0,,15-40
+8,Smashing Ruby,24.64,36.97,40,0,,15-40
+9,Very Torquee,5.04,8.07,12,0,,8-12
+9,Very Torquee,5.04,15.00,40,0,,15-40
+9,Adieu Grasse,5.63,9.01,12,0,,8-12
+9,Adieu Grasse,5.63,15.00,40,0,,15-40
+9,Asawin,6.20,9.92,12,0,,8-12
+9,Asawin,6.20,15.00,40,0,,15-40
+9,Tipping Rain,7.30,11.69,12,0,,8-12
+9,Tipping Rain,7.30,15.00,40,0,,15-40
+9,Snappy Beau,12.25,18.38,40,0,,15-40
+9,Onlooker,12.42,18.63,40,0,,15-40
+9,Thunder Park,14.28,21.41,40,0,,15-40
+9,Blue Moon Summit,22.29,33.43,40,0,,15-40
+10,Dynamite Dancer,3.29,8.00,12,0,,8-12
+10,Dynamite Dancer,3.29,15.00,40,0,,15-40
+10,Gaylord,9.07,15.00,40,0,,15-40
+10,Lil Orlov,9.89,15.00,40,0,,15-40
+10,Jackie's Maid,10.87,16.31,40,0,,15-40
+10,Soju,12.20,18.31,40,0,,15-40
+10,Packers Journey,16.78,25.17,40,0,,15-40
+10,Caribbean Villa,16.93,25.40,40,0,,15-40
+10,Turn Up The Night,16.98,25.46,40,0,,15-40
+10,Snappy Secret,19.30,28.95,40,0,,15-40
+10,Our Little Star,24.20,36.30,40,0,,15-40
+10,Oak Park Mia,24.83,37.25,40,0,,15-40

@@ -1,0 +1,82 @@
+race,horse,ours,lay_if_bsp_at_least,lay_if_bsp_at_most,price_now,note,band
+1,Victorious Dream,2.83,8.00,12,0,,8-12
+1,Victorious Dream,2.83,15.00,40,0,,15-40
+1,Power Of The Moon,5.21,8.34,12,0,,8-12
+1,Power Of The Moon,5.21,15.00,40,0,,15-40
+1,Fullboardsupport,6.40,10.25,12,0,,8-12
+1,Fullboardsupport,6.40,15.00,40,0,,15-40
+1,Tagged,8.27,15.00,40,0,,15-40
+1,Action Point,15.34,23.01,40,0,,15-40
+1,Baccano,23.26,34.89,40,0,,15-40
+1,Royal Canvas,23.81,35.71,40,0,,15-40
+2,Deal Done Fast,2.11,8.00,12,0,,8-12
+2,Deal Done Fast,2.11,15.00,40,0,,15-40
+2,Interrogate,6.75,10.79,12,0,,8-12
+2,Interrogate,6.75,15.00,40,0,,15-40
+2,Ardad Ned,10.60,15.91,40,0,,15-40
+2,Sihaya,14.08,21.12,40,0,,15-40
+2,Genomic,16.38,24.57,40,0,,15-40
+2,Belle Flamme,17.63,26.45,40,0,,15-40
+3,She Excels,5.24,8.38,12,0,first starter: excluded,8-12
+3,She Excels,5.24,15.00,40,0,first starter: excluded,15-40
+3,Cupani,7.25,11.60,12,0,first starter: excluded,8-12
+3,Cupani,7.25,15.00,40,0,first starter: excluded,15-40
+3,Capital Storm,8.45,15.00,40,0,,15-40
+3,Skadoodle,9.68,15.00,40,0,first starter: excluded,15-40
+3,Divine Bellini,11.38,17.06,40,0,,15-40
+3,Big Boy Bowie,11.48,17.22,40,0,,15-40
+3,Adhara,13.39,20.08,40,0,first starter: excluded,15-40
+3,Cherry On Toff,16.32,24.49,40,0,first starter: excluded,15-40
+3,Brookelinda,24.80,37.20,40,0,,15-40
+4,Mistressof Mayfair,2.98,8.00,12,0,,8-12
+4,Mistressof Mayfair,2.98,15.00,40,0,,15-40
+4,Amber Smile,6.29,10.07,12,0,,8-12
+4,Amber Smile,6.29,15.00,40,0,,15-40
+4,Source Of Delight,9.88,15.00,40,0,,15-40
+4,Calexpo,11.11,16.66,40,0,,15-40
+4,Kokeshi,11.16,16.73,40,0,,15-40
+4,Alabama Flame,16.08,24.12,40,0,first starter: excluded,15-40
+4,Beast Fighter,19.26,28.89,40,0,,15-40
+4,Kinky Mistress,24.10,36.15,40,0,,15-40
+5,Till Queen,6.04,9.67,12,0,,8-12
+5,Till Queen,6.04,15.00,40,0,,15-40
+5,Perfect Night,7.04,11.26,12,0,,8-12
+5,Perfect Night,7.04,15.00,40,0,,15-40
+5,Beautifully,7.29,11.66,12,0,,8-12
+5,Beautifully,7.29,15.00,40,0,,15-40
+5,Cherry Hills,8.00,15.00,40,0,,15-40
+5,Lady Of Lubeck,10.16,15.24,40,0,,15-40
+5,Veins Within Rock,12.13,18.20,40,0,,15-40
+5,Twisted Love,12.83,19.24,40,0,,15-40
+5,Bow Ribbon,13.19,19.79,40,0,,15-40
+6,Chandler,3.60,8.00,12,0,,8-12
+6,Chandler,3.60,15.00,40,0,,15-40
+6,Noetzie,7.12,11.39,12,0,,8-12
+6,Noetzie,7.12,15.00,40,0,,15-40
+6,Prestar,7.80,15.00,40,0,,15-40
+6,Miss Cotoletta,10.72,16.08,40,0,,15-40
+6,It's A Yes,13.14,19.71,40,0,,15-40
+6,Yolo,15.02,22.54,40,0,,15-40
+6,Du Clisson,16.31,24.47,40,0,,15-40
+6,Thinking Of Gerty,20.66,30.99,40,0,,15-40
+7,Farmelia,7.23,11.57,12,0,,8-12
+7,Farmelia,7.23,15.00,40,0,,15-40
+7,Running Rich,7.98,15.00,40,0,,15-40
+7,Eeny Meeny,8.96,15.00,40,0,,15-40
+7,Astiquer,9.65,15.00,40,0,,15-40
+7,Alzaro,11.44,17.17,40,0,,15-40
+7,Hotspur Reale,12.96,19.44,40,0,,15-40
+7,Best Of The Best,13.12,19.68,40,0,,15-40
+7,Chasing Rainbows,14.52,21.78,40,0,,15-40
+7,Gattino Veloce,15.41,23.11,40,0,,15-40
+7,Villa Capitalista,24.95,37.42,40,0,,15-40
+8,Desert Anthem,4.21,8.00,12,0,,8-12
+8,Desert Anthem,4.21,15.00,40,0,,15-40
+8,Set Me Free,8.55,15.00,40,0,,15-40
+8,Madesian,10.62,15.93,40,0,,15-40
+8,Blazing Sword,10.69,16.04,40,0,,15-40
+8,Which Floor,11.62,17.42,40,0,,15-40
+8,Cool Savanna,12.84,19.25,40,0,,15-40
+8,Positivo,15.37,23.05,40,0,,15-40
+8,Rose Velvet,15.93,23.89,40,0,,15-40
+8,Akari Spirit,20.42,30.63,40,0,,15-40
