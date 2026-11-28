@@ -9788,6 +9788,7 @@ published November, so there is no BSP yet.
 | 24 Nov | 45606740507 | 37 | 37 | 15 | 4 | 4 | 2 | 1.90 | 8.61 | +3.41 | 0 | 0 | 2, 0, -2.00 (-100.0%) | 1, 0, -1.00 (-100.0%) |
 | 25 Nov | 45812865122 | 52 | 52 | 50 | 7 | 7 | 3 | 3.06 | 16.82 | -1.37 | 0 | 0 | 4, 2, +6.30 (+157.5%) | 2, 1, +2.80 (+140.0%) |
 | 26 Nov | 45992573997 | 50 | 50 | 42 | 5 | 5 | 1 | 2.55 | 10.69 | -4.49 | 0 | 0 | 4, 1, +2.00 (+50.0%) | 3, 1, +3.00 (+100.0%) |
+| 27 Nov | 46141042388 | 47 | 47 | 26 | 6 | 6 | 3 | 2.53 | 11.19 | +0.76 | 0 | 0 | 3, 1, -0.40 (-13.3%) | 2, 0, -2.00 (-100.0%) |
 
 All four 15 Nov bets opened shorter on TAB than GRV's evening price (TAB at 24% to 49% of it) and below the card's own
 blended price, the same pattern as the first nine nights. Two won, at TAB's first price less the deduction: +5.77
@@ -9907,10 +9908,20 @@ at TAB's open made no bet. The corrected blend took four bets at 1.1x and one wo
 R2) at $6.00; Big Darryl (Shepparton R1), Chattahooche (Shepparton R5) and Habanero (Warragul R2) lost. At 1.2x it
 took Big Darryl, Bomb Peter and Habanero, +3.00. The kept rows of earlier days stay as first scored.
 
-The card as sent so far, 6 to 26 Nov: 137 bets, 135 settled (one refund, one void), 55 winners against 55.77 expected
-at the prices taken (A/E 0.99), 315.23 units staked, -15.37 units won (-4.9% at the card's units, -2.3% flat), -10.03
-at the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 24 bets at
-1.1x (9 won, +40.00 units) and 13 at 1.2x (5 won, +20.30), each day as first scored; Blue Storm's +5.00 at both is in
+Six 27 Nov bets on the card as sent, three won: +0.76 units on 11.19 staked (+6.8% at the card's units, +32.6%
+flat), the same at the best first price of three. Star Fury (Traralgon R3) won at $1.86 after a 5c deduction, She's A
+Brute (Healesville R2) at $3.70 and Quest For Storm (The Meadows R8) at $2.40; Extremity (Traralgon R5), Never Thought
+(Geelong R2) and Elusive Cazz (Healesville R2) lost. Every TAB first price came between 6:46 and 7:49am on race
+morning, after the card (made at about 11:00pm the night before), so every bet could have been taken. None was still
+1.3x the card's blended price at TAB's open, and the rule at TAB's open made no bet. The corrected blend took three
+bets at 1.1x and one won, -0.40 units: Dr. Bill (Healesville R5) at $2.60; Stalking (The Meadows R1) and Regal Jyle
+(Geelong R6) lost. At 1.2x it took Stalking and Regal Jyle, -2.00. The kept rows of earlier days stay as first
+scored.
+
+The card as sent so far, 6 to 27 Nov: 143 bets, 141 settled (one refund, one void), 58 winners against 58.30 expected
+at the prices taken (A/E 0.99), 326.42 units staked, -14.61 units won (-4.5% at the card's units, -0.8% flat), -9.27
+at the best first price of three. The rule at TAB's open has made no bet yet. The corrected blend so far: 27 bets at
+1.1x (10 won, +39.60 units) and 15 at 1.2x (5 won, +18.30), each day as first scored; Blue Storm's +5.00 at both is in
 those totals and came from a market TAB opened before the card.
 
 Results go here as they come in.
