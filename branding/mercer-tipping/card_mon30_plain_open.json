@@ -1,0 +1,101 @@
+{
+ "day": "Monday",
+ "date": "30 November",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Kyneton",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "12:30PM",
+     "horse": "Chestnut Teal",
+     "price": "$20",
+     "units": "0.58u",
+     "rated": "$13.98"
+    },
+    {
+     "race": 2,
+     "time": "1:00PM",
+     "horse": "Avedis",
+     "price": "$9",
+     "units": "1.64u",
+     "rated": "$5.58"
+    },
+    {
+     "race": 4,
+     "time": "2:00PM",
+     "horse": "Almorina",
+     "price": "$12",
+     "units": "1.02u",
+     "rated": "$8.42"
+    },
+    {
+     "race": 4,
+     "time": "2:00PM",
+     "horse": "Good Lordy Me",
+     "price": "$41",
+     "units": "0.83u",
+     "rated": "$12.37"
+    },
+    {
+     "race": 5,
+     "time": "2:30PM",
+     "horse": "African Grey",
+     "price": "$14",
+     "units": "0.88u",
+     "rated": "$9.61"
+    },
+    {
+     "race": 6,
+     "time": "3:00PM",
+     "horse": "Mannerheim",
+     "price": "$23",
+     "units": "1.02u",
+     "rated": "$10.25"
+    },
+    {
+     "race": 7,
+     "time": "3:30PM",
+     "horse": "Jewel Bay",
+     "price": "$9.50",
+     "units": "1.24u",
+     "rated": "$7.09"
+    },
+    {
+     "race": 7,
+     "time": "3:30PM",
+     "horse": "Accuser",
+     "price": "$13",
+     "units": "0.88u",
+     "rated": "$9.62"
+    },
+    {
+     "race": 8,
+     "time": "4:00PM",
+     "horse": "Snappy Pierro",
+     "price": "$31",
+     "units": "2.80u",
+     "rated": "$7.70"
+    },
+    {
+     "race": 8,
+     "time": "4:00PM",
+     "horse": "Olatunde",
+     "price": "$7.50",
+     "units": "1.66u",
+     "rated": "$5.55"
+    },
+    {
+     "race": 8,
+     "time": "4:00PM",
+     "horse": "Affirmative Lad",
+     "price": "$31",
+     "units": "0.90u",
+     "rated": "$11.40"
+    }
+   ]
+  }
+ ]
+}
