@@ -3,7 +3,7 @@
  "date": "30 November",
  "footer": "Win bets.",
  "brand": true,
- "prices_as_at": "2026-11-28T12:27",
+ "prices_as_at": "2026-11-28T13:24",
  "meetings": [
   {
    "name": "Kyneton",
@@ -13,7 +13,7 @@
      "race": 1,
      "time": "12:30PM",
      "horse": "Chestnut Teal",
-     "price": "$15",
+     "price": "$16",
      "units": "0.58u"
     },
     {
@@ -27,21 +27,21 @@
      "race": 4,
      "time": "2:00PM",
      "horse": "Almorina",
-     "price": "$11",
+     "price": "$8",
      "units": "1.02u"
     },
     {
      "race": 4,
      "time": "2:00PM",
      "horse": "Good Lordy Me",
-     "price": "$31",
+     "price": "$20",
      "units": "0.83u"
     },
     {
      "race": 5,
      "time": "2:30PM",
      "horse": "African Grey",
-     "price": "$9.50",
+     "price": "$10",
      "units": "0.88u"
     },
     {
@@ -55,35 +55,35 @@
      "race": 7,
      "time": "3:30PM",
      "horse": "Jewel Bay",
-     "price": "$11",
+     "price": "$10",
      "units": "1.24u"
     },
     {
      "race": 7,
      "time": "3:30PM",
      "horse": "Accuser",
-     "price": "$10",
+     "price": "$9.50",
      "units": "0.88u"
     },
     {
      "race": 8,
      "time": "4:00PM",
      "horse": "Snappy Pierro",
-     "price": "$8.50",
+     "price": "$7.50",
      "units": "2.80u"
     },
     {
      "race": 8,
      "time": "4:00PM",
      "horse": "Olatunde",
-     "price": "$5.50",
+     "price": "$4.60",
      "units": "1.66u"
     },
     {
      "race": 8,
      "time": "4:00PM",
      "horse": "Affirmative Lad",
-     "price": "$16",
+     "price": "$11",
      "units": "0.90u"
     }
    ]
