@@ -236,3 +236,5 @@ observed_utc,date,state,track,status,races,meeting_id
 2026-11-28T07:12:15+00:00,2026-11-28,NSW,Wagga Riverside,RESULTED,7,wagga-riverside-20261128
 2026-11-28T07:27:24+00:00,2026-11-28,SA,Morphettville Parks,RESULTED,9,morphettville-parks-20261128
 2026-11-28T07:42:33+00:00,2026-11-28,VIC,Sandown Hillside,RESULTED,10,sandown-hillside-20261128
+2026-11-28T07:57:41+00:00,2026-11-28,QLD,Doomben,RESULTED,10,doomben-20261128
+2026-11-28T07:57:41+00:00,2026-11-28,QLD,Toowoomba,INTERIM_RESULTS,8,toowoomba-20261128
