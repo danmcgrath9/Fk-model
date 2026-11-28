@@ -1,0 +1,61 @@
+{
+ "day": "Tuesday",
+ "date": "1 December",
+ "brand": false,
+ "meetings": [
+  {
+   "name": "Bendigo",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "1:30PM",
+     "horse": "Victorious Dream",
+     "price": "$6",
+     "units": "4.60u",
+     "rated": "$2.83"
+    },
+    {
+     "race": 2,
+     "time": "2:00PM",
+     "horse": "Deal Done Fast",
+     "price": "$4.40",
+     "units": "6.81u",
+     "rated": "$2.11"
+    },
+    {
+     "race": 5,
+     "time": "3:30PM",
+     "horse": "Till Queen",
+     "price": "$11",
+     "units": "1.84u",
+     "rated": "$6.04"
+    },
+    {
+     "race": 6,
+     "time": "4:00PM",
+     "horse": "Miss Cotoletta",
+     "price": "$15",
+     "units": "0.78u",
+     "rated": "$10.72"
+    },
+    {
+     "race": 7,
+     "time": "4:30PM",
+     "horse": "Running Rich",
+     "price": "$11",
+     "units": "1.09u",
+     "rated": "$7.98"
+    },
+    {
+     "race": 7,
+     "time": "4:30PM",
+     "horse": "Hotspur Reale",
+     "price": "$26",
+     "units": "0.79u",
+     "rated": "$12.96"
+    }
+   ]
+  }
+ ]
+}

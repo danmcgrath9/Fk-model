@@ -1,0 +1,57 @@
+{
+ "day": "Tuesday",
+ "date": "1 December",
+ "footer": "Win bets.",
+ "brand": true,
+ "prices_as_at": "2026-11-28T11:19",
+ "meetings": [
+  {
+   "name": "Bendigo",
+   "note": "",
+   "bets": [
+    {
+     "race": 1,
+     "time": "1:30PM",
+     "horse": "Victorious Dream",
+     "price": "$4.60",
+     "units": "4.60u"
+    },
+    {
+     "race": 2,
+     "time": "2:00PM",
+     "horse": "Deal Done Fast",
+     "price": "$2.60",
+     "units": "6.81u"
+    },
+    {
+     "race": 5,
+     "time": "3:30PM",
+     "horse": "Till Queen",
+     "price": "$5",
+     "units": "1.84u"
+    },
+    {
+     "race": 6,
+     "time": "4:00PM",
+     "horse": "Miss Cotoletta",
+     "price": "$6",
+     "units": "0.78u"
+    },
+    {
+     "race": 7,
+     "time": "4:30PM",
+     "horse": "Running Rich",
+     "price": "$8.50",
+     "units": "1.09u"
+    },
+    {
+     "race": 7,
+     "time": "4:30PM",
+     "horse": "Hotspur Reale",
+     "price": "$13",
+     "units": "0.79u"
+    }
+   ]
+  }
+ ]
+}
