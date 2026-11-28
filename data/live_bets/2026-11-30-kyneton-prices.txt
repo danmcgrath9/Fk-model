@@ -1,44 +1,43 @@
-# Kyneton Mon 30 Nov, Soft (15mm+ rain), final fields; no market yet; PROVISIONAL: 8 runners without a rider
-1, Perfectly Fine, 0, 0
-1, Prestige Magic, 0, 0
-1, Flash Inquiry, 0, 0
-1, Kermie, 0, 0
-1, Lucky Leoni, 0, 0
-1, Chestnut Teal, 0, 0
-1, Media Darling, 0, 0
-1, Roses For Rita, 0, 0
-1, Celestaria, 0, 0
-1, Hot Samba, 0, 0
-1, Tiffany, 0, 0
-1, Native Grace, 0, 0
-2, It's Justa Guess, SCR
-2, Frosted Amber, 0, 0
-2, Mo Mo's Choise, 0, 0
-2, Bellitsy, 0, 0
-2, Pretty Stylish, 0, 0
-2, Love Rustler, 0, 0
-2, Prestige Erick, 0, 0
-2, Spirit Of Omaha, SCR
-2, Parak, 0, 0
-2, Begonia, SCR
-2, Chasing Atlantis, 0, 0
-2, Ubique, 0, 0
-2, Bold Amore, 0, 0
-2, Avedis, 0, 0
-2, Take Cover, 0, 0
-2, Silver Tsar, SCR
-3, Daniel Boone, 0, 0
-3, Angel Don't Cry, SCR
-3, Jack Will, 0, 0
-3, Dimachaerus, SCR
-3, Symphony Sista, 0, 0
-3, Numbersneverseen, 0, 0
-3, Beast Fighter, 0, 0
-3, Shalwedash, 0, 0
-3, My Infinity, 0, 0
-3, Musical Journey, 0, 0
-3, Pandoro, 0, 0
-3, Alabama Flame, SCR
+# Kyneton Mon 30 Nov, Soft (15mm+ rain), final fields; market open in R1,2,3; PROVISIONAL: 7 runners without a rider
+1, Perfectly Fine, 4.20, 4.20, fk_open 4.20
+1, Prestige Magic, 23.00, 23.00, fk_open 16.50
+1, Flash Inquiry, 7.50, 7.50, fk_open 5.50
+1, Kermie, 7.00, 7.00, fk_open 8.50
+1, Lucky Leoni, 12.00, 12.00, fk_open 9.75
+1, Chestnut Teal, 14.00, 14.00, fk_open 20.00
+1, Roses For Rita, 81.00, 81.00, fk_open 113.50
+1, Celestaria, 16.00, 16.00, fk_open 18.50
+1, Hot Samba, 7.50, 7.50, fk_open 7.00
+1, Tiffany, 4.40, 4.40, fk_open 4.20
+1, Native Grace, 9.00, 9.00, fk_open 7.00
+2, It's Justa Guess, SCR, fk_open 71.00
+2, Frosted Amber, 13.00, 13.00, fk_open 9.00
+2, Mo Mo's Choise, 51.00, 51.00, fk_open 41.00
+2, Bellitsy, 18.00, 18.00, fk_open 14.00
+2, Pretty Stylish, 15.00, 15.00, fk_open 12.00
+2, Love Rustler, 3.20, 3.20, fk_open 2.90
+2, Prestige Erick, 12.00, 12.00, fk_open 12.00
+2, Spirit Of Omaha, SCR, fk_open 51.00
+2, Parak, 9.00, 9.00, fk_open 10.00
+2, Begonia, SCR, fk_open 6.00
+2, Chasing Atlantis, 23.00, 23.00, fk_open 14.00
+2, Ubique, 14.00, 14.00, fk_open 14.00
+2, Bold Amore, 41.00, 41.00, fk_open 26.00
+2, Avedis, 6.50, 6.50, fk_open 9.00
+2, Take Cover, 5.50, 5.50, fk_open 4.80
+2, Silver Tsar, SCR, fk_open 4.40
+3, Daniel Boone, 4.00, 4.00, fk_open 3.95
+3, Angel Don't Cry, SCR, fk_open 81.00
+3, Jack Will, 6.00, 6.00, fk_open 6.00
+3, Dimachaerus, SCR, fk_open 51.00
+3, Symphony Sista, 4.80, 4.80, fk_open 4.70
+3, Numbersneverseen, 34.00, 34.00, fk_open 32.50
+3, Beast Fighter, 2.50, 2.50, fk_open 2.50
+3, Shalwedash, 126.00, 126.00, fk_open 101.00
+3, My Infinity, 61.00, 61.00, fk_open 101.00
+3, Musical Journey, 12.00, 12.00, fk_open 11.50
+3, Pandoro, 5.50, 5.50, fk_open 6.25
+3, Alabama Flame, SCR, fk_open 7.00
 4, Grinding Away, 0, 0
 4, Style Guide, 0, 0
 4, Wizardess, SCR

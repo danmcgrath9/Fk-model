@@ -4,7 +4,6 @@
 1|5|Kermie|False|False
 1|6|Lucky Leoni|False|False
 1|2|Chestnut Teal|False|False
-1|7|Media Darling|False|False
 1|11|Roses For Rita|False|False
 1|1|Celestaria|False|False
 1|4|Hot Samba|False|False
