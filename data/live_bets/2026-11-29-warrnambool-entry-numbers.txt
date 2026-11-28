@@ -130,7 +130,7 @@
 9|13|Sotomayor|False|False
 9|11|Asal|False|False
 9|14|Whathappensinvegas|False|True
-9|7|Princess Toro|False|False
+9|7|Princess Toro|False|True
 9|1|Zourain|False|False
 9|9|Corro|False|False
 9|12|She's A Jett|False|False

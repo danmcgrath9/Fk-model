@@ -1,0 +1,78 @@
+date,venue,race,jump,number,horse,bet,min_odds,max_odds,stake_units,stake_dollars,order,total_if_all_fire,our_price,note
+2026-12-01,Bendigo,1,,4,Fullboardsupport,WIN,8.53,38.77,1.38,69,1 of 3,1.38u,6.46,
+2026-12-01,Bendigo,1,,4,Fullboardsupport,WIN,10.66,38.77,0.32,16,2 of 3,1.70u,6.46,
+2026-12-01,Bendigo,1,,4,Fullboardsupport,WIN,14.22,38.77,1.70,85,3 of 3,3.40u,6.46,opens $14.22+ (2.2x ours): stake doubled
+2026-12-01,Bendigo,1,,6,Power Of The Moon,WIN,7.02,15.01,1.72,86,1 of 3,1.72u,5.37,EARLY: $15 or shorter only
+2026-12-01,Bendigo,1,,6,Power Of The Moon,WIN,8.77,15.01,0.39,20,2 of 3,2.11u,5.37,EARLY: $15 or shorter only
+2026-12-01,Bendigo,1,,6,Power Of The Moon,WIN,11.81,15.01,2.11,106,3 of 3,4.22u,5.37,EARLY: $15 or shorter only; opens $11.81+ (2.2x ours): stake doubled
+2026-12-01,Bendigo,1,,9,Tagged,WIN,11.17,50.08,1.03,52,1 of 2,1.03u,8.35,
+2026-12-01,Bendigo,1,,9,Tagged,WIN,13.96,50.08,0.25,12,2 of 2,1.28u,8.35,
+2026-12-01,Bendigo,1,,11,Victorious Dream,WIN,3.36,3.99,3.59,180,1 of 1,3.59u,2.80,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-12-01,Bendigo,1,,11,Victorious Dream,WIN,4.00,15.01,3.89,194,1 of 3,3.89u,2.80,EARLY: $15 or shorter only
+2026-12-01,Bendigo,1,,11,Victorious Dream,WIN,4.42,15.01,0.77,38,2 of 3,4.66u,2.80,EARLY: $15 or shorter only
+2026-12-01,Bendigo,1,,11,Victorious Dream,WIN,6.17,15.01,4.66,233,3 of 3,9.32u,2.80,EARLY: $15 or shorter only; opens $6.17+ (2.2x ours): stake doubled
+2026-12-01,Bendigo,2,,2,Deal Done Fast,WIN,2.53,3.99,5.31,266,1 of 2,5.31u,2.14,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-12-01,Bendigo,2,,2,Deal Done Fast,WIN,3.16,3.99,1.16,58,2 of 2,6.47u,2.14,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-12-01,Bendigo,2,,2,Deal Done Fast,WIN,4.00,12.83,5.74,287,1 of 3,5.74u,2.14,EARLY: $15 or shorter only
+2026-12-01,Bendigo,2,,2,Deal Done Fast,WIN,4.00,12.83,0.96,48,2 of 3,6.70u,2.14,EARLY: $15 or shorter only
+2026-12-01,Bendigo,2,,2,Deal Done Fast,WIN,4.71,12.83,3.30,165,3 of 3,10.00u,2.14,EARLY: $15 or shorter only; opens $4.71+ (2.2x ours): stake doubled
+2026-12-01,Bendigo,2,,4,Genomic,WIN,19.02,83.12,0.59,30,1 of 2,0.59u,13.85,
+2026-12-01,Bendigo,2,,4,Genomic,WIN,23.77,83.12,0.14,7,2 of 2,0.73u,13.85,
+2026-12-01,Bendigo,2,,5,Interrogate,WIN,9.36,42.33,1.25,62,1 of 3,1.25u,7.06,
+2026-12-01,Bendigo,2,,5,Interrogate,WIN,11.70,42.33,0.29,14,2 of 3,1.54u,7.06,
+2026-12-01,Bendigo,2,,5,Interrogate,WIN,15.53,42.33,1.54,77,3 of 3,3.08u,7.06,opens $15.53+ (2.2x ours): stake doubled
+2026-12-01,Bendigo,2,,14,Sihaya,WIN,19.71,85.96,0.57,28,1 of 2,0.57u,14.33,
+2026-12-01,Bendigo,2,,14,Sihaya,WIN,24.64,85.96,0.14,7,2 of 2,0.71u,14.33,
+2026-12-01,Bendigo,3,,7,Divine Bellini,WIN,11.58,51.82,0.99,50,1 of 2,0.99u,8.64,
+2026-12-01,Bendigo,3,,7,Divine Bellini,WIN,14.47,51.82,0.24,12,2 of 2,1.23u,8.64,
+2026-12-01,Bendigo,4,,5,Amber Smile,WIN,8.33,15.01,1.42,71,1 of 3,1.42u,6.31,EARLY: $15 or shorter only
+2026-12-01,Bendigo,4,,5,Amber Smile,WIN,10.41,15.01,0.33,16,2 of 3,1.75u,6.31,EARLY: $15 or shorter only
+2026-12-01,Bendigo,4,,5,Amber Smile,WIN,13.89,15.01,1.75,88,3 of 3,3.50u,6.31,EARLY: $15 or shorter only; opens $13.89+ (2.2x ours): stake doubled
+2026-12-01,Bendigo,4,,9,Kokeshi,WIN,14.86,65.73,0.76,38,1 of 2,0.76u,10.95,
+2026-12-01,Bendigo,4,,9,Kokeshi,WIN,18.57,65.73,0.19,10,2 of 2,0.95u,10.95,
+2026-12-01,Bendigo,4,,14,Mistressof Mayfair,WIN,3.61,3.99,3.26,163,1 of 1,3.26u,3.00,EARLY: $15 or shorter only; opens under $4: edge 1.15
+2026-12-01,Bendigo,4,,14,Mistressof Mayfair,WIN,4.00,15.01,3.55,178,1 of 3,3.55u,3.00,EARLY: $15 or shorter only
+2026-12-01,Bendigo,4,,14,Mistressof Mayfair,WIN,4.76,15.01,0.71,36,2 of 3,4.26u,3.00,EARLY: $15 or shorter only
+2026-12-01,Bendigo,4,,14,Mistressof Mayfair,WIN,6.61,15.01,4.26,213,3 of 3,8.52u,3.00,EARLY: $15 or shorter only; opens $6.61+ (2.2x ours): stake doubled
+2026-12-01,Bendigo,5,,9,Bow Ribbon,WIN,16.50,72.60,0.68,34,1 of 2,0.68u,12.10,
+2026-12-01,Bendigo,5,,9,Bow Ribbon,WIN,20.62,72.60,0.17,8,2 of 2,0.85u,12.10,
+2026-12-01,Bendigo,5,,7,Cherry Hills,WIN,11.15,15.01,1.04,52,1 of 1,1.04u,8.33,EARLY: $15 or shorter only
+2026-12-01,Bendigo,5,,10,Lady Of Lubeck,WIN,13.74,60.99,0.83,42,1 of 2,0.83u,10.17,
+2026-12-01,Bendigo,5,,10,Lady Of Lubeck,WIN,17.18,60.99,0.20,10,2 of 2,1.03u,10.17,
+2026-12-01,Bendigo,5,,11,Perfect Night,WIN,9.61,43.40,1.22,61,1 of 3,1.22u,7.23,
+2026-12-01,Bendigo,5,,11,Perfect Night,WIN,12.01,43.40,0.28,14,2 of 3,1.50u,7.23,
+2026-12-01,Bendigo,5,,11,Perfect Night,WIN,15.92,43.40,1.50,75,3 of 3,3.00u,7.23,opens $15.92+ (2.2x ours): stake doubled
+2026-12-01,Bendigo,5,,2,Till Queen,WIN,7.92,36.11,1.50,75,1 of 3,1.50u,6.02,
+2026-12-01,Bendigo,5,,2,Till Queen,WIN,9.90,36.11,0.35,18,2 of 3,1.85u,6.02,
+2026-12-01,Bendigo,5,,2,Till Queen,WIN,13.24,36.11,1.85,92,3 of 3,3.70u,6.02,opens $13.24+ (2.2x ours): stake doubled
+2026-12-01,Bendigo,5,,8,Twisted Love,WIN,18.54,81.11,0.60,30,1 of 2,0.60u,13.52,
+2026-12-01,Bendigo,5,,8,Twisted Love,WIN,23.17,81.11,0.15,8,2 of 2,0.75u,13.52,
+2026-12-01,Bendigo,6,,7,Chandler,WIN,3.98,3.99,2.87,144,1 of 1,2.87u,3.30,opens under $4: edge 1.15
+2026-12-01,Bendigo,6,,7,Chandler,WIN,4.21,19.79,3.14,157,1 of 3,3.14u,3.30,
+2026-12-01,Bendigo,6,,7,Chandler,WIN,5.26,19.79,0.65,32,2 of 3,3.79u,3.30,
+2026-12-01,Bendigo,6,,7,Chandler,WIN,7.26,19.79,3.79,190,3 of 3,7.58u,3.30,opens $7.26+ (2.2x ours): stake doubled
+2026-12-01,Bendigo,6,,13,Du Clisson,WIN,19.67,85.81,0.57,28,1 of 2,0.57u,14.30,
+2026-12-01,Bendigo,6,,13,Du Clisson,WIN,24.59,85.81,0.14,7,2 of 2,0.71u,14.30,
+2026-12-01,Bendigo,6,,3,It's A Yes,WIN,15.26,67.40,0.74,37,1 of 2,0.74u,11.23,
+2026-12-01,Bendigo,6,,3,It's A Yes,WIN,19.07,67.40,0.18,9,2 of 2,0.92u,11.23,
+2026-12-01,Bendigo,6,,10,Miss Cotoletta,WIN,11.33,50.76,1.02,51,1 of 2,1.02u,8.46,
+2026-12-01,Bendigo,6,,10,Miss Cotoletta,WIN,14.16,50.76,0.24,12,2 of 2,1.26u,8.46,
+2026-12-01,Bendigo,6,,2,Yolo,WIN,17.11,75.15,0.66,33,1 of 2,0.66u,12.53,
+2026-12-01,Bendigo,6,,2,Yolo,WIN,21.39,75.15,0.16,8,2 of 2,0.82u,12.53,
+2026-12-01,Bendigo,7,,1,Eeny Meeny,WIN,9.38,42.43,1.25,62,1 of 3,1.25u,7.07,
+2026-12-01,Bendigo,7,,1,Eeny Meeny,WIN,11.73,42.43,0.29,14,2 of 3,1.54u,7.07,
+2026-12-01,Bendigo,7,,1,Eeny Meeny,WIN,15.56,42.43,1.54,77,3 of 3,3.08u,7.07,opens $15.56+ (2.2x ours): stake doubled
+2026-12-01,Bendigo,7,,14,Farmelia,WIN,10.34,15.01,1.12,56,1 of 1,1.12u,7.75,EARLY: $15 or shorter only
+2026-12-01,Bendigo,7,,9,Hotspur Reale,WIN,19.06,83.25,0.59,30,1 of 2,0.59u,13.87,
+2026-12-01,Bendigo,7,,9,Hotspur Reale,WIN,23.82,83.25,0.14,7,2 of 2,0.73u,13.87,
+2026-12-01,Bendigo,7,,4,Running Rich,WIN,10.85,48.70,1.07,54,1 of 2,1.07u,8.12,
+2026-12-01,Bendigo,7,,4,Running Rich,WIN,13.56,48.70,0.25,12,2 of 2,1.32u,8.12,
+2026-12-01,Bendigo,8,,13,Cool Savanna,WIN,15.48,68.31,0.73,36,1 of 2,0.73u,11.38,
+2026-12-01,Bendigo,8,,13,Cool Savanna,WIN,19.35,68.31,0.18,9,2 of 2,0.91u,11.38,
+2026-12-01,Bendigo,8,,4,Desert Anthem,WIN,4.84,15.01,2.65,132,1 of 3,2.65u,3.77,EARLY: $15 or shorter only
+2026-12-01,Bendigo,8,,4,Desert Anthem,WIN,6.05,15.01,0.57,28,2 of 3,3.22u,3.77,EARLY: $15 or shorter only
+2026-12-01,Bendigo,8,,4,Desert Anthem,WIN,8.29,15.01,3.22,161,3 of 3,6.44u,3.77,EARLY: $15 or shorter only; opens $8.29+ (2.2x ours): stake doubled
+2026-12-01,Bendigo,8,,9,Positivo,WIN,18.26,79.94,0.61,30,1 of 2,0.61u,13.32,
+2026-12-01,Bendigo,8,,9,Positivo,WIN,22.83,79.94,0.15,8,2 of 2,0.76u,13.32,
+2026-12-01,Bendigo,8,,10,Set Me Free,WIN,10.90,48.94,1.06,53,1 of 2,1.06u,8.16,
+2026-12-01,Bendigo,8,,10,Set Me Free,WIN,13.62,48.94,0.25,12,2 of 2,1.31u,8.16,

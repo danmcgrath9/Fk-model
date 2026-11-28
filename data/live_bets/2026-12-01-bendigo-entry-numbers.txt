@@ -40,8 +40,8 @@
 3|4|Cherry On Toff|False|False
 3|5|Skadoodle|False|False
 3|12|Cupani|False|False
-3|3|Capital Storm|False|False
-3|2|Adhara|False|False
+3|3|Capital Storm|False|True
+3|2|Adhara|False|True
 4|3|He's Our Boy|False|False
 4|11|Source Of Delight|False|False
 4|8|Kinky Mistress|False|False
@@ -79,7 +79,7 @@
 6|1|Divine Thoughts|False|False
 6|15|Majesticity|True|False
 6|10|Miss Cotoletta|False|False
-6|5|Noetzie|False|False
+6|5|Noetzie|False|True
 6|13|Du Clisson|False|False
 6|8|Mystic Reign|False|False
 6|3|It's A Yes|False|False
@@ -113,7 +113,7 @@
 8|14|Rose Velvet|False|False
 8|5|Rogan|False|False
 8|16|Olney|True|False
-8|1|Blazing Sword|False|False
+8|1|Blazing Sword|False|True
 8|9|Positivo|False|False
 8|7|Akari Spirit|False|False
 8|13|Cool Savanna|False|False
