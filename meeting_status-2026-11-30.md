@@ -1,0 +1,11 @@
+## 2026-11-30 Kyneton (kyneton-20261130) {"status": "FINAL_FIELDS", "going": "Dead"}
+- R1 {"status": "FINAL_FIELDS", "going": "Dead"} odds [('opening', 22, '2026-11-28 01:52'), ('current', 22, '2026-11-28 01:52')] results 0
+- R2 {"status": "FINAL_FIELDS", "going": "Dead"} odds [('opening', 32, '2026-11-28 01:41'), ('current', 32, '2026-11-28 01:41')] results 0
+- R3 {"status": "FINAL_FIELDS", "going": "Dead"} odds [('opening', 24, '2026-11-28 01:53'), ('current', 24, '2026-11-28 01:53')] results 0
+- R4 {"status": "FINAL_FIELDS", "going": "Dead"} odds [('opening', 16, '2026-11-28 01:53'), ('current', 16, '2026-11-28 01:53')] results 0
+- R5 {"status": "FINAL_FIELDS", "going": "Dead"} odds [('opening', 13, '2026-11-28 02:08'), ('current', 13, '2026-11-28 02:08')] results 0
+- R6 {"status": "FINAL_FIELDS", "going": "Dead"} odds [('opening', 14, '2026-11-28 01:52'), ('current', 14, '2026-11-28 01:52')] results 0
+- R7 {"status": "FINAL_FIELDS", "going": "Dead"} odds [('opening', 13, '2026-11-28 01:41'), ('current', 13, '2026-11-28 01:41')] results 0
+- R8 {"status": "FINAL_FIELDS", "going": "Dead"} odds [('opening', 14, '2026-11-28 01:39'), ('current', 14, '2026-11-28 01:39')] results 0
+- R9 {"status": "FINAL_FIELDS", "going": "Dead"} odds [('opening', 14, '2026-11-28 01:52'), ('current', 14, '2026-11-28 01:52')] results 0
+- R10 {"status": "FINAL_FIELDS", "going": "Dead"} odds [('opening', 14, '2026-11-28 01:52'), ('current', 14, '2026-11-28 01:52')] results 0
