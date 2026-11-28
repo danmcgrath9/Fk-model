@@ -45,7 +45,6 @@
 4|11|Empress Of China|False|False
 4|5|Rough Act|False|False
 4|16|Deelamour|True|False
-4|14|Foxalation|True|False
 4|1|Ghaluge|False|False
 4|6|Te Taniwha|False|False
 4|4|Poorlittlerichkid|False|False
@@ -55,7 +54,6 @@
 4|8|Fiorente Charm|False|False
 4|9|Prestige Blackjack|False|False
 5|10|Nightynight|False|False
-5|4|Gymkhana|False|False
 5|1|Our Smokeshow|False|False
 5|14|Brassi Road|True|False
 5|9|Nightowl|False|False
